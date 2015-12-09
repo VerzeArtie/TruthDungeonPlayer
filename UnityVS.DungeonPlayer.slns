@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.DungeonPlayer.CSharp", "UnityVS.DungeonPlayer.CSharp.csproj", "{D758B37C-7C8A-AD4F-6A9F-416A3E06143A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.DungeonPlayer.CSharp.Editor", "UnityVS.DungeonPlayer.CSharp.Editor.csproj", "{7A0766E3-86DE-E4C1-C05C-B465917B7963}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D758B37C-7C8A-AD4F-6A9F-416A3E06143A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D758B37C-7C8A-AD4F-6A9F-416A3E06143A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D758B37C-7C8A-AD4F-6A9F-416A3E06143A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D758B37C-7C8A-AD4F-6A9F-416A3E06143A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A0766E3-86DE-E4C1-C05C-B465917B7963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A0766E3-86DE-E4C1-C05C-B465917B7963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A0766E3-86DE-E4C1-C05C-B465917B7963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A0766E3-86DE-E4C1-C05C-B465917B7963}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
