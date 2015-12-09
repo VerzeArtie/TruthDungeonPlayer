@@ -2,6 +2,7 @@
 Thumbs.db
 ehthumbs.db
 
+<<<<<<< HEAD
 # Folders
 [Ll]ibrary/
 [Tt]emp/
@@ -19,6 +20,8 @@ ehthumbs.db
 *.pidb
 *.booproj
 
+=======
+>>>>>>> 4e23c3d3a792b8a220c6dde5d6ddb2014b661dd1
 # Folder config file
 Desktop.ini
 
