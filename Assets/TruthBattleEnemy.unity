@@ -157,6 +157,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 10860520}
+--- !u!1 &13452323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 13452325}
+  - 222: {fileID: 13452326}
+  - 114: {fileID: 13452324}
+  m_Layer: 5
+  m_Name: IsSorcery34
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &13452324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13452323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &13452325
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13452323}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 539575659}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &13452326
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13452323}
 --- !u!1 &15380502
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,108 +644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &91632168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,6 +718,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 91632164}
+--- !u!1 &95721916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 95721918}
+  - 222: {fileID: 95721919}
+  - 114: {fileID: 95721917}
+  m_Layer: 5
+  m_Name: IsSorcery23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &95721917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95721916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &95721918
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95721916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 351616683}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &95721919
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95721916}
 --- !u!1 &104166326
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +814,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1144235591}
   m_Father: {fileID: 446421538}
   m_RootOrder: 27
   m_AnchorMin: {x: 0, y: 0}
@@ -916,108 +949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &104166332
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1192,7 +1123,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1076581403}
   m_Father: {fileID: 446421538}
   m_RootOrder: 20
   m_AnchorMin: {x: 0, y: 0}
@@ -1258,108 +1190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &188975034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1463,7 +1293,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1356261829}
   m_Father: {fileID: 446421538}
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
@@ -1597,108 +1428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &197247095
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1734,7 +1463,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1853829531}
   m_Father: {fileID: 446421538}
   m_RootOrder: 21
   m_AnchorMin: {x: 0, y: 0}
@@ -1800,108 +1530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &213056995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,7 +1633,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1081513730}
   m_Father: {fileID: 446421538}
   m_RootOrder: 11
   m_AnchorMin: {x: 0, y: 0}
@@ -2071,108 +1700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &235911968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2414,108 +1941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &248579204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2806,6 +2231,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 314523449}
+--- !u!1 &327991463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 327991464}
+  - 222: {fileID: 327991466}
+  - 114: {fileID: 327991465}
+  m_Layer: 5
+  m_Name: IsSorcery15
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &327991464
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327991463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1042482987}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &327991465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327991463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &327991466
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327991463}
 --- !u!1 &330520759
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,7 +2534,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 95721918}
   m_Father: {fileID: 446421538}
   m_RootOrder: 12
   m_AnchorMin: {x: 0, y: 0}
@@ -3108,108 +2601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &351616686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3313,7 +2704,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 949070602}
   m_Father: {fileID: 446421538}
   m_RootOrder: 19
   m_AnchorMin: {x: 0, y: 0}
@@ -3379,108 +2771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &365490307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3718,108 +3008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &380472939
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3855,7 +3043,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1117363317}
   m_Father: {fileID: 446421538}
   m_RootOrder: 26
   m_AnchorMin: {x: 0, y: 0}
@@ -3989,108 +3178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &386762305
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4508,6 +3595,16 @@ MonoBehaviour:
   imgShadowPact1: {fileID: 0}
   imgWordOfLife1: {fileID: 0}
   imgPoison1: {fileID: 0}
+  IsSorcery1:
+  - {fileID: 1027933764}
+  - {fileID: 1043356349}
+  - {fileID: 1263284879}
+  - {fileID: 749958680}
+  - {fileID: 327991465}
+  - {fileID: 1356261830}
+  - {fileID: 659928442}
+  - {fileID: 642247125}
+  - {fileID: 664806881}
   player2Arrow: {fileID: 380472935}
   playerActionLabel2: {fileID: 1754280503}
   buttonTargetPlayer2: {fileID: 651665800}
@@ -4523,6 +3620,16 @@ MonoBehaviour:
   imgShadowPact2: {fileID: 0}
   imgWordOfLife2: {fileID: 0}
   imgPoison2: {fileID: 0}
+  IsSorcery2:
+  - {fileID: 1896792222}
+  - {fileID: 1081513729}
+  - {fileID: 95721917}
+  - {fileID: 1459471162}
+  - {fileID: 1823313426}
+  - {fileID: 925348766}
+  - {fileID: 1709943358}
+  - {fileID: 1251061612}
+  - {fileID: 578029728}
   player3Arrow: {fileID: 248579205}
   playerActionLabel3: {fileID: 861781366}
   buttonTargetPlayer3: {fileID: 813659583}
@@ -4538,6 +3645,16 @@ MonoBehaviour:
   imgShadowPact3: {fileID: 0}
   imgWordOfLife3: {fileID: 0}
   imgPoison3: {fileID: 0}
+  IsSorcery3:
+  - {fileID: 949070601}
+  - {fileID: 1076581402}
+  - {fileID: 1853829530}
+  - {fileID: 13452324}
+  - {fileID: 804632187}
+  - {fileID: 1128176759}
+  - {fileID: 1805637946}
+  - {fileID: 1117363316}
+  - {fileID: 1144235590}
   enemy1Arrow: {fileID: 1941943790}
   enemyActionLabel1: {fileID: 330520760}
   buttonTargetEnemy1: {fileID: 744476696}
@@ -5932,7 +5049,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 13452325}
   m_Father: {fileID: 446421538}
   m_RootOrder: 22
   m_AnchorMin: {x: 0, y: 0}
@@ -5998,108 +5116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &539575662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6241,6 +5257,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 551187756}
+--- !u!1 &578029727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 578029729}
+  - 222: {fileID: 578029730}
+  - 114: {fileID: 578029728}
+  m_Layer: 5
+  m_Name: IsSorcery29
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &578029728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 578029727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &578029729
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 578029727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1204763271}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &578029730
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 578029727}
 --- !u!1 &590511349
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,6 +5572,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 640350417}
+--- !u!1 &642247123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 642247124}
+  - 222: {fileID: 642247126}
+  - 114: {fileID: 642247125}
+  m_Layer: 5
+  m_Name: IsSorcery18
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &642247124
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642247123}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1365302181}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &642247125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642247123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &642247126
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642247123}
 --- !u!1 &651665798
 GameObject:
   m_ObjectHideFlags: 0
@@ -6652,108 +5802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &651665804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6827,6 +5875,140 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 651672533}
+--- !u!1 &659928440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 659928441}
+  - 222: {fileID: 659928443}
+  - 114: {fileID: 659928442}
+  m_Layer: 5
+  m_Name: IsSorcery17
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &659928441
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 659928440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 975760188}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &659928442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 659928440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &659928443
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 659928440}
+--- !u!1 &664806879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 664806880}
+  - 222: {fileID: 664806882}
+  - 114: {fileID: 664806881}
+  m_Layer: 5
+  m_Name: IsSorcery19
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &664806880
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 664806879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1100322132}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &664806881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 664806879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &664806882
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 664806879}
 --- !u!1 &744476692
 GameObject:
   m_ObjectHideFlags: 0
@@ -6922,108 +6104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &744476696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7098,6 +6178,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 744476692}
+--- !u!1 &749958678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 749958679}
+  - 222: {fileID: 749958681}
+  - 114: {fileID: 749958680}
+  m_Layer: 5
+  m_Name: IsSorcery14
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &749958679
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749958678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1192324188}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &749958680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749958678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &749958681
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749958678}
 --- !u!1 &795810255
 GameObject:
   m_ObjectHideFlags: 0
@@ -7165,6 +6312,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 795810255}
+--- !u!1 &804632186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 804632188}
+  - 222: {fileID: 804632189}
+  - 114: {fileID: 804632187}
+  m_Layer: 5
+  m_Name: IsSorcery35
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &804632187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804632186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &804632188
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804632186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1291434161}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &804632189
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804632186}
 --- !u!1 &806873617
 GameObject:
   m_ObjectHideFlags: 0
@@ -7400,108 +6614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &813659587
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7944,114 +7056,146 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &923956356
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 923956350}
+--- !u!1 &925348765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 925348767}
+  - 222: {fileID: 925348768}
+  - 114: {fileID: 925348766}
+  m_Layer: 5
+  m_Name: IsSorcery26
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &925348766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925348765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &925348767
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925348765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2108012259}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &925348768
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 925348765}
+--- !u!1 &949070600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 949070602}
+  - 222: {fileID: 949070603}
+  - 114: {fileID: 949070601}
+  m_Layer: 5
+  m_Name: IsSorcery31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &949070601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949070600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &949070602
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949070600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 365490304}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &949070603
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949070600}
 --- !u!1 &975760187
 GameObject:
   m_ObjectHideFlags: 0
@@ -8081,7 +7225,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 659928441}
   m_Father: {fileID: 446421538}
   m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
@@ -8215,108 +7360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &975760193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8418,108 +7461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &1011080052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8666,6 +7607,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1025938072}
+--- !u!1 &1027933762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1027933763}
+  - 222: {fileID: 1027933765}
+  - 114: {fileID: 1027933764}
+  m_Layer: 5
+  m_Name: IsSorcery11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1027933763
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027933762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2069691654}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1027933764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027933762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1027933765
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1027933762}
 --- !u!1 &1042482986
 GameObject:
   m_ObjectHideFlags: 0
@@ -8695,7 +7703,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 327991464}
   m_Father: {fileID: 446421538}
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
@@ -8761,108 +7770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &1042482990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8937,6 +7844,207 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1042482986}
+--- !u!1 &1043356347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1043356348}
+  - 222: {fileID: 1043356350}
+  - 114: {fileID: 1043356349}
+  m_Layer: 5
+  m_Name: IsSorcery12
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1043356348
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1043356347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2104414082}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1043356349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1043356347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1043356350
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1043356347}
+--- !u!1 &1076581401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1076581403}
+  - 222: {fileID: 1076581404}
+  - 114: {fileID: 1076581402}
+  m_Layer: 5
+  m_Name: IsSorcery32
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1076581402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076581401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1076581403
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076581401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 188975031}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1076581404
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076581401}
+--- !u!1 &1081513728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1081513730}
+  - 222: {fileID: 1081513731}
+  - 114: {fileID: 1081513729}
+  m_Layer: 5
+  m_Name: IsSorcery22
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1081513729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081513728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1081513730
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081513728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 235911965}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1081513731
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081513728}
 --- !u!1 &1091586954
 GameObject:
   m_ObjectHideFlags: 0
@@ -9038,7 +8146,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 664806880}
   m_Father: {fileID: 446421538}
   m_RootOrder: 9
   m_AnchorMin: {x: 0, y: 0}
@@ -9172,114 +8281,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1100322137
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1100322131}
+--- !u!1 &1117363315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1117363317}
+  - 222: {fileID: 1117363318}
+  - 114: {fileID: 1117363316}
+  m_Layer: 5
+  m_Name: IsSorcery38
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1117363316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117363315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1117363317
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117363315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 386762300}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1117363318
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117363315}
 --- !u!1 &1120869262
 GameObject:
   m_ObjectHideFlags: 0
@@ -9456,6 +8530,140 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1127941018}
+--- !u!1 &1128176758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1128176760}
+  - 222: {fileID: 1128176761}
+  - 114: {fileID: 1128176759}
+  m_Layer: 5
+  m_Name: IsSorcery36
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1128176759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1128176758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1128176760
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1128176758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1411585899}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1128176761
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1128176758}
+--- !u!1 &1144235589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1144235591}
+  - 222: {fileID: 1144235592}
+  - 114: {fileID: 1144235590}
+  m_Layer: 5
+  m_Name: IsSorcery39
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1144235590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1144235589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1144235591
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1144235589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 104166327}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1144235592
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1144235589}
 --- !u!1 &1192324187
 GameObject:
   m_ObjectHideFlags: 0
@@ -9485,7 +8693,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 749958679}
   m_Father: {fileID: 446421538}
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
@@ -9551,108 +8760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &1192324191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9756,7 +8863,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 578029729}
   m_Father: {fileID: 446421538}
   m_RootOrder: 18
   m_AnchorMin: {x: 0, y: 0}
@@ -9890,114 +8998,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1204763276
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1204763270}
+--- !u!1 &1251061611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1251061613}
+  - 222: {fileID: 1251061614}
+  - 114: {fileID: 1251061612}
+  m_Layer: 5
+  m_Name: IsSorcery28
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1251061612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1251061611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1251061613
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1251061611}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1540967416}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1251061614
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1251061611}
 --- !u!1 &1258617034
 GameObject:
   m_ObjectHideFlags: 0
@@ -10065,6 +9138,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1258617034}
+--- !u!1 &1263284877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1263284878}
+  - 222: {fileID: 1263284880}
+  - 114: {fileID: 1263284879}
+  m_Layer: 5
+  m_Name: IsSorcery13
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1263284878
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1263284877}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1344934385}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1263284879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1263284877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1263284880
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1263284877}
 --- !u!1 &1266025445
 GameObject:
   m_ObjectHideFlags: 0
@@ -10374,108 +9514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1279067056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10560,108 +9598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &1291434158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10745,7 +9681,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 804632188}
   m_Father: {fileID: 446421538}
   m_RootOrder: 23
   m_AnchorMin: {x: 0, y: 0}
@@ -10921,7 +9858,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1263284878}
   m_Father: {fileID: 446421538}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
@@ -10987,108 +9925,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &1344934388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11163,6 +9999,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1344934384}
+--- !u!1 &1356261828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1356261829}
+  - 222: {fileID: 1356261831}
+  - 114: {fileID: 1356261830}
+  m_Layer: 5
+  m_Name: IsSorcery16
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1356261829
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1356261828}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 197247090}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1356261830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1356261828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1356261831
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1356261828}
 --- !u!1 &1365302180
 GameObject:
   m_ObjectHideFlags: 0
@@ -11192,7 +10095,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 642247124}
   m_Father: {fileID: 446421538}
   m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
@@ -11326,108 +10230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1365302186
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11647,7 +10449,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1128176760}
   m_Father: {fileID: 446421538}
   m_RootOrder: 24
   m_AnchorMin: {x: 0, y: 0}
@@ -11781,108 +10584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1411585904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12028,6 +10729,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1443886783}
+--- !u!1 &1459471161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1459471163}
+  - 222: {fileID: 1459471164}
+  - 114: {fileID: 1459471162}
+  m_Layer: 5
+  m_Name: IsSorcery24
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1459471162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1459471161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1459471163
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1459471161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2028407450}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1459471164
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1459471161}
 --- !u!1 &1476116946
 GameObject:
   m_ObjectHideFlags: 0
@@ -12210,7 +10978,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1823313427}
   m_Father: {fileID: 446421538}
   m_RootOrder: 14
   m_AnchorMin: {x: 0, y: 0}
@@ -12276,108 +11045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &1507516414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12481,7 +11148,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1251061613}
   m_Father: {fileID: 446421538}
   m_RootOrder: 17
   m_AnchorMin: {x: 0, y: 0}
@@ -12615,108 +11283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1540967421
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13141,7 +11707,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1709943359}
   m_Father: {fileID: 446421538}
   m_RootOrder: 16
   m_AnchorMin: {x: 0, y: 0}
@@ -13275,108 +11842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1674502976
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13412,7 +11877,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1896792223}
   m_Father: {fileID: 446421538}
   m_RootOrder: 10
   m_AnchorMin: {x: 0, y: 0}
@@ -13478,108 +11944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &1692904870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13654,6 +12018,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692904866}
+--- !u!1 &1709943357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1709943359}
+  - 222: {fileID: 1709943360}
+  - 114: {fileID: 1709943358}
+  m_Layer: 5
+  m_Name: IsSorcery27
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1709943358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1709943357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1709943359
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1709943357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1674502971}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1709943360
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1709943357}
 --- !u!1 &1748498479
 GameObject:
   m_ObjectHideFlags: 0
@@ -14031,108 +12462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1772708185
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14235,7 +12564,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1805637947}
   m_Father: {fileID: 446421538}
   m_RootOrder: 25
   m_AnchorMin: {x: 0, y: 0}
@@ -14369,114 +12699,213 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &1791642800
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1791642794}
+--- !u!1 &1805637945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1805637947}
+  - 222: {fileID: 1805637948}
+  - 114: {fileID: 1805637946}
+  m_Layer: 5
+  m_Name: IsSorcery37
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1805637946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1805637945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1805637947
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1805637945}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1791642795}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1805637948
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1805637945}
+--- !u!1 &1823313425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1823313427}
+  - 222: {fileID: 1823313428}
+  - 114: {fileID: 1823313426}
+  m_Layer: 5
+  m_Name: IsSorcery25
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1823313426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1823313425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1823313427
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1823313425}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1507516411}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1823313428
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1823313425}
+--- !u!1 &1853829529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1853829531}
+  - 222: {fileID: 1853829532}
+  - 114: {fileID: 1853829530}
+  m_Layer: 5
+  m_Name: IsSorcery33
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1853829530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1853829529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1853829531
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1853829529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 213056992}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1853829532
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1853829529}
 --- !u!1 &1875747841
 GameObject:
   m_ObjectHideFlags: 0
@@ -14549,6 +12978,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1875747841}
+--- !u!1 &1896792221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1896792223}
+  - 222: {fileID: 1896792224}
+  - 114: {fileID: 1896792222}
+  m_Layer: 5
+  m_Name: IsSorcery21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1896792222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1896792221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!224 &1896792223
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1896792221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1692904867}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &1896792224
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1896792221}
 --- !u!1 &1941943785
 GameObject:
   m_ObjectHideFlags: 0
@@ -14644,108 +13140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &1941943789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15060,7 +13454,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1459471163}
   m_Father: {fileID: 446421538}
   m_RootOrder: 13
   m_AnchorMin: {x: 0, y: 0}
@@ -15126,108 +13521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &2028407453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15405,7 +13698,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1027933763}
   m_Father: {fileID: 446421538}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -15424,108 +13718,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &2069691656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15870,7 +14062,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1043356348}
   m_Father: {fileID: 446421538}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -15936,108 +14129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!114 &2104414085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16141,7 +14232,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 925348767}
   m_Father: {fileID: 446421538}
   m_RootOrder: 15
   m_AnchorMin: {x: 0, y: 0}
@@ -16275,108 +14367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sg1: {fileID: 0}
-  sg2: {fileID: 0}
-  sg3: {fileID: 0}
-  sg4: {fileID: 0}
-  sg5: {fileID: 0}
-  sg6: {fileID: 0}
-  sg7: {fileID: 0}
-  sg8: {fileID: 0}
-  imgFlameAura: {fileID: 0}
-  imgProtection: {fileID: 0}
-  imgShadowPact: {fileID: 0}
-  imgWordOfLife: {fileID: 0}
-  imgDeflection: {fileID: 0}
-  imgTruthVision: {fileID: 0}
-  imgPoison: {fileID: 0}
-  debugMessage: {fileID: 0}
-  debugButton: {fileID: 0}
-  command1: {fileID: 0}
-  command2: {fileID: 0}
-  command3: {fileID: 0}
-  command4: {fileID: 0}
-  command5: {fileID: 0}
-  command2_1: {fileID: 0}
-  command2_2: {fileID: 0}
-  command2_3: {fileID: 0}
-  command2_4: {fileID: 0}
-  command2_5: {fileID: 0}
-  command3_1: {fileID: 0}
-  command3_2: {fileID: 0}
-  command3_3: {fileID: 0}
-  command3_4: {fileID: 0}
-  command3_5: {fileID: 0}
-  mainMessage: {fileID: 0}
-  sandGlass: {fileID: 0}
-  txtSandGlass: {fileID: 0}
-  player1: {fileID: 0}
-  player1Name: {fileID: 0}
-  player1Life: {fileID: 0}
-  player1LifeMeter: {fileID: 0}
-  player1ManaMeter: {fileID: 0}
-  player1SkillMeter: {fileID: 0}
-  player1Instant: {fileID: 0}
-  player1InstantMeter: {fileID: 0}
-  player1Damage: {fileID: 0}
-  player1Critical: {fileID: 0}
-  imgShadowPact1: {fileID: 0}
-  imgWordOfLife1: {fileID: 0}
-  imgPoison1: {fileID: 0}
-  player2: {fileID: 0}
-  player2Name: {fileID: 0}
-  player2Life: {fileID: 0}
-  player2LifeMeter: {fileID: 0}
-  player2ManaMeter: {fileID: 0}
-  player2SkillMeter: {fileID: 0}
-  player2Instant: {fileID: 0}
-  player2InstantMeter: {fileID: 0}
-  player2Damage: {fileID: 0}
-  player2Critical: {fileID: 0}
-  imgShadowPact2: {fileID: 0}
-  imgWordOfLife2: {fileID: 0}
-  imgPoison2: {fileID: 0}
-  player3: {fileID: 0}
-  player3Name: {fileID: 0}
-  player3Life: {fileID: 0}
-  player3LifeMeter: {fileID: 0}
-  player3ManaMeter: {fileID: 0}
-  player3SkillMeter: {fileID: 0}
-  player3Instant: {fileID: 0}
-  player3InstantMeter: {fileID: 0}
-  player3Damage: {fileID: 0}
-  player3Critical: {fileID: 0}
-  imgShadowPact3: {fileID: 0}
-  imgWordOfLife3: {fileID: 0}
-  imgPoison3: {fileID: 0}
-  enemy1: {fileID: 0}
-  enemy1Name: {fileID: 0}
-  enemy1Life: {fileID: 0}
-  enemy1LifeMeter: {fileID: 0}
-  enemy1Damage: {fileID: 0}
-  enemy1Critical: {fileID: 0}
-  imgShadowPactE1: {fileID: 0}
-  imgWordOfLifeE1: {fileID: 0}
-  imgPoisonE1: {fileID: 0}
-  enemy2: {fileID: 0}
-  enemy2Name: {fileID: 0}
-  enemy2Life: {fileID: 0}
-  enemy2LifeMeter: {fileID: 0}
-  enemy2Damage: {fileID: 0}
-  enemy2Critical: {fileID: 0}
-  imgShadowPactE2: {fileID: 0}
-  imgWordOfLifeE2: {fileID: 0}
-  imgPoisonE2: {fileID: 0}
-  enemy3: {fileID: 0}
-  enemy3Name: {fileID: 0}
-  enemy3Life: {fileID: 0}
-  enemy3LifeMeter: {fileID: 0}
-  enemy3Damage: {fileID: 0}
-  enemy3Critical: {fileID: 0}
-  imgShadowPactE3: {fileID: 0}
-  imgWordOfLifeE3: {fileID: 0}
-  imgPoisonE3: {fileID: 0}
-  firstAction: 0
 --- !u!222 &2108012264
 CanvasRenderer:
   m_ObjectHideFlags: 0

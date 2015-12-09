@@ -4480,10 +4480,9 @@ namespace DungeonPlayer
                 this.DropItem[ii] = String.Empty;
             }
 
-            // todo
             // 敵はスキル・魔法が使えなくなっていても、DUELでは使える風に見せかけるため、常にTRUEとします。
-            //this.availableMana = true;
-            //this.availableSkill = true;
+            this.AvailableMana = true;
+            this.AvailableSkill = true;
 
             // todo
             this.Name = createName;

@@ -94,6 +94,7 @@ namespace DungeonPlayer
         public Image imgShadowPact1;
         public Image imgWordOfLife1;
         public Image imgPoison1;
+        public Image[] IsSorcery1;
 
         public Image player2Arrow;
         public Text playerActionLabel2;
@@ -110,6 +111,7 @@ namespace DungeonPlayer
         public Image imgShadowPact2;
         public Image imgWordOfLife2;
         public Image imgPoison2;
+        public Image[] IsSorcery2;
 
         public Image player3Arrow;
         public Text playerActionLabel3;
@@ -126,6 +128,7 @@ namespace DungeonPlayer
         public Image imgShadowPact3;
         public Image imgWordOfLife3;
         public Image imgPoison3;
+        public Image[] IsSorcery3;
 
         public Image enemy1Arrow;
         public Text enemyActionLabel1;
@@ -142,6 +145,7 @@ namespace DungeonPlayer
         public Image imgShadowPactE1;
         public Image imgWordOfLifeE1;
         public Image imgPoisonE1;
+        //public Image[] IsSorceryE1;
 
         public Image enemy2Arrow;
         public Text enemyActionLabel2;
@@ -158,6 +162,7 @@ namespace DungeonPlayer
         public Image imgShadowPactE2;
         public Image imgWordOfLifeE2;
         public Image imgPoisonE2;
+        //public Image[] IsSorceryE2;
 
         public Image enemy3Arrow;
         public Text enemyActionLabel3;
@@ -171,6 +176,7 @@ namespace DungeonPlayer
         //	public Image enemy3InstantMeter;
         public Text enemy3Damage;
         public Text enemy3Critical;
+        //public Image[] IsSorceryE3;
 
         public GameObject BuffPanel1;
         public GameObject BuffPanel2;
@@ -214,7 +220,7 @@ namespace DungeonPlayer
             Text damageLabel, Text criticalLabel,
             TruthImage[] buffList,
             Text keyNum1, Text keyNum2, Text keyNum3, Text keyNum4, Text keyNum5, Text keyNum6, Text keyNum7, Text keyNum8, Text keyNum9,
-            Image sorcery1, Image sorcery2, Image sorcery3, Image sorcery4, Image sorcery5, Image sorcery6, Image sorcery7, Image sorcery8, Image sorcery9
+            Image[] sorceryMark
             )
         {
             if (true) // player != null) // todo null指定はできない
@@ -526,7 +532,7 @@ namespace DungeonPlayer
 
                 // 味方側、魔法・スキルをセットアップ
                 // プレイヤースキル・魔法習得に応じて、アクションボタンを登録
-                UpdateBattleCommandSetting(player, action1, action2, action3, action4, action5, action6, action7, action8, action9, sorcery1, sorcery2, sorcery3, sorcery4, sorcery5, sorcery6, sorcery7, sorcery8, sorcery9);
+                UpdateBattleCommandSetting(player, action1, action2, action3, action4, action5, action6, action7, action8, action9, sorceryMark);
 
                 #region "敵側、名前の色と各ＵＩポジションを再配置"
                 //if (player == ec1 || player == ec2 || player == ec3)
@@ -753,9 +759,33 @@ namespace DungeonPlayer
         }
 
         private void UpdateBattleCommandSetting(MainCharacter player, Button action1, Button action2, Button action3, Button action4, Button action5, Button action6, Button action7, Button action8, Button action9,
-    Image sorcery1, Image sorcery2, Image sorcery3, Image sorcery4, Image sorcery5, Image sorcery6, Image sorcery7, Image sorcery8, Image sorcery9)
+    Image[] sorceryMark)
         {
-            if (player == null) return;
+            if (player == null) { return; }
+            if (player.BattleActionCommandList == null) { return; }
+
+            for (int jj = 0; jj < player.BattleActionCommandList.Count; jj++)
+            {
+                for (int kk = 0; kk < GroundOne.resourceList.Count; kk++)
+                {
+                    if (player.BattleActionCommandList[jj] == GroundOne.resourceList[kk].name)
+                    {
+                        player.ActionButtonList[jj].image.sprite = GroundOne.resourceList[kk];
+                        player.ActionButtonList[jj].name = GroundOne.resourceList[kk].name;
+
+                        if (TruthActionCommand.GetTimingType(player.BattleActionCommandList[jj]) == TruthActionCommand.TimingType.Sorcery)
+                        {
+                            sorceryMark[jj].sprite = Resources.Load<Sprite>("sorcery_mark");
+                        }
+                        else
+                        {
+                            sorceryMark[jj].sprite = Resources.Load<Sprite>("instant_mark");
+                        }
+                        break;
+                    }
+                }
+            }
+
 
             // todo
             //string fileExt = ".bmp";
@@ -883,7 +913,8 @@ namespace DungeonPlayer
                 SetupBuff( pbBuffEnemy2, PanelBuffEnemy2, ii);
                 SetupBuff( pbBuffEnemy3, PanelBuffEnemy3, ii);                
             }
-            this.mc = new MainCharacter();
+            GameObject baseObj = new GameObject("object");
+            this.mc = baseObj.AddComponent<MainCharacter>();
             this.mc.Name = Database.EIN_WOLENCE_FULL;
             this.mc.Strength = 5;
             this.mc.Agility = 3;
@@ -918,12 +949,12 @@ namespace DungeonPlayer
             this.mc.BattleActionCommandList.Add(Database.FRESH_HEAL);
             this.mc.BattleActionCommandList.Add(Database.STRAIGHT_SMASH);
             this.mc.BattleActionCommandList.Add(Database.WORD_OF_LIFE);
-            this.mc.BattleActionCommandList.Add(Database.STAY_EN);
+            this.mc.BattleActionCommandList.Add(Database.LAVA_ANNIHILATION);
             this.mc.BattleActionCommandList.Add(Database.STAY_EN);
             this.mc.BattleActionCommandList.Add(Database.STAY_EN);
             this.playerList.Add(this.mc);
 
-            this.sc = new MainCharacter();
+            this.sc = baseObj.AddComponent<MainCharacter>();
             this.sc.Name = Database.RANA_AMILIA_FULL;
             this.sc.Strength = 2;
             this.sc.Agility = 4;
@@ -963,7 +994,7 @@ namespace DungeonPlayer
             this.sc.BattleActionCommandList.Add(Database.STAY_EN);
             this.playerList.Add(this.sc);
 
-            this.tc = new MainCharacter();
+            this.tc = baseObj.AddComponent<MainCharacter>();
             this.tc.Name = Database.OL_LANDIS_FULL;
             this.tc.Strength = 3;
             this.tc.Agility = 5;
@@ -1003,7 +1034,7 @@ namespace DungeonPlayer
             this.tc.BattleActionCommandList.Add(Database.STAY_EN);
             this.playerList.Add(this.tc);
 
-            this.ec1 = new TruthEnemyCharacter("Gate Keeper");
+            this.ec1 = baseObj.AddComponent<TruthEnemyCharacter>();
             this.ec1.Name = "Gate Keeper";
             this.ec1.Strength = 1;
             this.ec1.Agility = 2;
@@ -1032,7 +1063,7 @@ namespace DungeonPlayer
             this.ec1.CriticalLabel = enemy1Critical;
             this.enemyList.Add(this.ec1);
 
-            this.ec2 = new TruthEnemyCharacter("Black Soldier");
+            this.ec2 = baseObj.AddComponent<TruthEnemyCharacter>();
             this.ec2.Name = "Black Soldier";
             this.ec2.Strength = 1;
             this.ec2.Agility = 3;
@@ -1061,7 +1092,7 @@ namespace DungeonPlayer
             this.ec2.CriticalLabel = enemy2Critical;
             this.enemyList.Add(this.ec2);
 
-            this.ec3 = new TruthEnemyCharacter("White Soldier");
+            this.ec3 = baseObj.AddComponent<TruthEnemyCharacter>();
             this.ec3.Name = "White Soldier";
             this.ec3.Strength = 1;
             this.ec3.Agility = 4;
@@ -1092,19 +1123,14 @@ namespace DungeonPlayer
 
             // todo 色々とまだコンポーネント登録しなければならない
 //            ActivateSomeCharacter(mc, ec1, nameLabel1, lifeLabel1, null, currentSkillPoint1, null, currentManaPoint1, currentInstantPoint1, null, ActionButton11, ActionButton12, ActionButton13, ActionButton14, ActionButton15, ActionButton16, ActionButton17, ActionButton18, ActionButton19, playerActionLabel1, BuffPanel1, buttonTargetPlayer1, mc.PlayerBattleColor, pbPlayerTargetTarget1, SelectPlayerArrow(mc), null, null, labelDamage1, labelCritical1, pbBuffPlayer1, keyNum1_1, keyNum1_2, keyNum1_3, keyNum1_4, keyNum1_5, keyNum1_6, keyNum1_7, keyNum1_8, keyNum1_9, IsSorcery11, IsSorcery12, IsSorcery13, IsSorcery14, IsSorcery15, IsSorcery16, IsSorcery17, IsSorcery18, IsSorcery19);
-            ActivateSomeCharacter(mc, ec1, player1Name, player1Life, null, null, null, null, player1Instant, null, ActionButton1[0], ActionButton1[1], ActionButton1[2], ActionButton1[3], ActionButton1[4], ActionButton1[5], ActionButton1[6], ActionButton1[7], ActionButton1[8], playerActionLabel1, BuffPanel1, buttonTargetPlayer1, new Color(Database.COLOR_BATTLE_TARGET1_EIN_R, Database.COLOR_BATTLE_TARGET1_EIN_G, Database.COLOR_BATTLE_TARGET1_EIN_B), null, null, null, null, null, null, pbBuffPlayer1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-            ActivateSomeCharacter(sc, ec1, player2Name, player2Life, null, null, null, null, player2Instant, null, ActionButton2[0], ActionButton2[1], ActionButton2[2], ActionButton2[3], ActionButton2[4], ActionButton2[5], ActionButton2[6], ActionButton2[7], ActionButton2[8], playerActionLabel2, BuffPanel2, buttonTargetPlayer2, new Color(Database.COLOR_BATTLE_TARGET1_RANA_R, Database.COLOR_BATTLE_TARGET1_RANA_G, Database.COLOR_BATTLE_TARGET1_RANA_B), null, null, null, null, null, null, pbBuffPlayer2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-            ActivateSomeCharacter(tc, ec1, player3Name, player3Life, null, null, null, null, player3Instant, null, ActionButton3[0], ActionButton3[1], ActionButton3[2], ActionButton3[3],
-                ActionButton3[4], ActionButton3[5], ActionButton3[6], ActionButton3[7], ActionButton3[8], playerActionLabel3, BuffPanel3, buttonTargetPlayer3,
-                new Color(Database.COLOR_BATTLE_TARGET1_OL_R, Database.COLOR_BATTLE_TARGET1_OL_G, Database.COLOR_BATTLE_TARGET1_OL_B), null, null, null, null, null, null, pbBuffPlayer3,
-                null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            ActivateSomeCharacter(mc, ec1, player1Name, player1Life, null, null, null, null, player1Instant, null, ActionButton1[0], ActionButton1[1], ActionButton1[2], ActionButton1[3], ActionButton1[4], ActionButton1[5], ActionButton1[6], ActionButton1[7], ActionButton1[8], playerActionLabel1, BuffPanel1, buttonTargetPlayer1, new Color(Database.COLOR_BATTLE_TARGET1_EIN_R, Database.COLOR_BATTLE_TARGET1_EIN_G, Database.COLOR_BATTLE_TARGET1_EIN_B), null, null, null, null, null, null, pbBuffPlayer1, null, null, null, null, null, null, null, null, null, IsSorcery1);
+            ActivateSomeCharacter(sc, ec1, player2Name, player2Life, null, null, null, null, player2Instant, null, ActionButton2[0], ActionButton2[1], ActionButton2[2], ActionButton2[3], ActionButton2[4], ActionButton2[5], ActionButton2[6], ActionButton2[7], ActionButton2[8], playerActionLabel2, BuffPanel2, buttonTargetPlayer2, new Color(Database.COLOR_BATTLE_TARGET1_RANA_R, Database.COLOR_BATTLE_TARGET1_RANA_G, Database.COLOR_BATTLE_TARGET1_RANA_B), null, null, null, null, null, null, pbBuffPlayer2, null, null, null, null, null, null, null, null, null, IsSorcery2);
+            ActivateSomeCharacter(tc, ec1, player3Name, player3Life, null, null, null, null, player3Instant, null, ActionButton3[0], ActionButton3[1], ActionButton3[2], ActionButton3[3], ActionButton3[4], ActionButton3[5], ActionButton3[6], ActionButton3[7], ActionButton3[8], playerActionLabel3, BuffPanel3, buttonTargetPlayer3, new Color(Database.COLOR_BATTLE_TARGET1_OL_R, Database.COLOR_BATTLE_TARGET1_OL_G, Database.COLOR_BATTLE_TARGET1_OL_B), null, null, null, null, null, null, pbBuffPlayer3, null, null, null, null, null, null, null, null, null, IsSorcery3);
 //            ActivateSomeCharacter(ec1, mc, enemyNameLabel1, lblLifeEnemy1, null, currentEnemySkillPoint1, null, currentEnemyManaPoint1, currentEnemyInstantPoint1, specialInstant, null, null, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, buttonTargetEnemy1, Color.DarkRed, pbEnemyTargetTarget1, bmpEnemy1, bmpShadowEnemy1_2, bmpShadowEnemy1_3, labelEnemyDamage1, labelEnemyCritical1, pbBuffEnemy1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
             //ActivateSomeCharacter(ec1, mc, enemy1Name, enemy1Life, enemyActionLabel1, pbBuffEnemy1);
-            ActivateSomeCharacter(ec1, mc, enemy1Name, enemy1Life, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, null, new Color(50, 100, 150), null, null, null, null, null, null, pbBuffEnemy1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-            ActivateSomeCharacter(ec2, mc, enemy2Name, enemy2Life, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, enemyActionLabel2, PanelBuffEnemy2, null, new Color(150, 50, 100), null, null, null, null, null, null, pbBuffEnemy2, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-            ActivateSomeCharacter(ec3, mc, enemy3Name, enemy3Life, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, enemyActionLabel3, PanelBuffEnemy3, null, new Color(100, 150, 50), null, null, null, null, null, null, pbBuffEnemy3, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-            //ActivateSomeCharacter(ec2, mc, enemy2Name, enemy2Life, enemyActionLabel2, pbBuffEnemy2);
-            //ActivateSomeCharacter(ec3, mc, enemy3Name, enemy3Life, enemyActionLabel3, pbBuffEnemy3);
+            ActivateSomeCharacter(ec1, mc, enemy1Name, enemy1Life, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, null, new Color(50, 100, 150), null, null, null, null, null, null, pbBuffEnemy1, null, null, null, null, null, null, null, null, null, null);
+            ActivateSomeCharacter(ec2, mc, enemy2Name, enemy2Life, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, enemyActionLabel2, PanelBuffEnemy2, null, new Color(150, 50, 100), null, null, null, null, null, null, pbBuffEnemy2, null, null, null, null, null, null, null, null, null, null);
+            ActivateSomeCharacter(ec3, mc, enemy3Name, enemy3Life, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, enemyActionLabel3, PanelBuffEnemy3, null, new Color(100, 150, 50), null, null, null, null, null, null, pbBuffEnemy3, null, null, null, null, null, null, null, null, null, null);
 
             // debug
             ec3.PA = MainCharacter.PlayerAction.UseSpell;
@@ -1120,22 +1146,6 @@ namespace DungeonPlayer
 
             this.currentPlayer = this.mc;
             //tapFirstChara ();
-
-            for (int ii = 0; ii < playerList.Count; ii++)
-            {
-                for (int jj = 0; jj < playerList[ii].BattleActionCommandList.Count; jj++)
-                {
-                    for (int kk = 0; kk < GroundOne.resourceList.Count; kk++)
-                    {
-                        if (playerList[ii].BattleActionCommandList[jj] == GroundOne.resourceList[kk].name)
-                        {
-                            playerList[ii].ActionButtonList[jj].image.sprite = GroundOne.resourceList[kk];
-                            playerList[ii].ActionButtonList[jj].name = GroundOne.resourceList[kk].name;
-                            break;
-                        }
-                    }
-                }
-            }
         }
 
         bool isEscDown = false;
