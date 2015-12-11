@@ -2571,7 +2571,6 @@ namespace DungeonPlayer
         public const string VINSGALDE = @"ヴィンスガルデ";
         
         // 画面名称(add unity)
-        public const string TruthStatusPlayer = @"TruthStatusPlayer";
         public const string TruthAnswer = @"TruthAnswer";
         public const string TruthBattleEnemy = @"TruthBattleEnemy";
         public const string TruthBattleSetting = @"TruthBattleSetting";
@@ -2595,6 +2594,7 @@ namespace DungeonPlayer
         public const string TruthSelectCharacter = @"TruthSelectCharacter";
         public const string TruthSelectEquipment = @"TruthSelectEquipment";
         public const string TruthSkillSpellDesc = @"TruthSkillSpellDesc";
+        public const string TruthStatusPlayer = @"TruthStatusPlayer";
         public const string TruthWill = @"TruthWill";
     }
 }
