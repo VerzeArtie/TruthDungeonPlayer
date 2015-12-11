@@ -9,6 +9,7 @@ namespace DungeonPlayer
     public class TruthBattleSetting : MonoBehaviour
     {
         public Image[] pbAction;
+        public Image[] pbSorcery;
         public Image[] pbCurrentAction;
         public Image moveActionBox;
 
@@ -432,9 +433,10 @@ namespace DungeonPlayer
 
         public void tapBasic()
         {
-            for (int ii = 0; ii < this.basicList.Count; ii++) { this.basicList[ii].enabled = true; }
-            for (int ii = 0; ii < this.spellList.Count; ii++) { this.spellList[ii].enabled = false; }
-            for (int ii = 0; ii < this.skillList.Count; ii++) { this.skillList[ii].enabled = false; }
+            SceneDimension.Back();
+            //for (int ii = 0; ii < this.basicList.Count; ii++) { this.basicList[ii].enabled = true; }
+            //for (int ii = 0; ii < this.spellList.Count; ii++) { this.spellList[ii].enabled = false; }
+            //for (int ii = 0; ii < this.skillList.Count; ii++) { this.skillList[ii].enabled = false; }
         }
         public void tapSpell()
         {
@@ -466,7 +468,16 @@ namespace DungeonPlayer
             bool[] ssAvailable = TruthActionCommand.GetAvailableActionList(currentPlayer);
             for (int ii = 0; ii < Database.TOTAL_COMMAND_NUM; ii++)
             {
-                try { if (ssAvailable[ii]) { pbAction[ii].sprite = Resources.Load<Sprite>(ssName[ii]); } } // Image.FromFile(Database.BaseResourceFolder + ssName[ii] + fileExt); } else { pbAction[ii].Image = null; } }
+                try { 
+                    if (ssAvailable[ii]) {
+                        pbAction[ii].sprite = Resources.Load<Sprite>(ssName[ii]);
+                        if (TruthActionCommand.GetTimingType(ssName[ii]) == TruthActionCommand.TimingType.Sorcery) {
+                            pbSorcery[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
+                        } else {
+                            pbSorcery[ii].sprite = Resources.Load<Sprite>("instant_mark");
+                        }
+                    }
+                }
                 catch { }
             }
 
