@@ -3189,6 +3189,7 @@ namespace DungeonPlayer
 
         public void BattleSettingButton_Click()
         {
+            Application.LoadLevel("TruthBattleSetting");
             // todo バトル設定を表示して、コマンド内容を書き換える。
             //using (TruthBattleSetting TBS = new TruthBattleSetting())
             //{
