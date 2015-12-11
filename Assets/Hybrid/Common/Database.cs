@@ -2569,6 +2569,33 @@ namespace DungeonPlayer
         public const string MUGEN_LOOP = @"９８３２６";
 
         public const string VINSGALDE = @"ヴィンスガルデ";
+        
+        // 画面名称(add unity)
+        public const string TruthStatusPlayer = @"TruthStatusPlayer";
+        public const string TruthAnswer = @"TruthAnswer";
+        public const string TruthBattleEnemy = @"TruthBattleEnemy";
+        public const string TruthBattleSetting = @"TruthBattleSetting";
+        public const string TruthChoiceStatue = @"TruthChoiceStatue";
+        public const string TruthChooseCommand = @"TruthChooseCommand";
+        public const string TruthDecision = @"TruthDecision";
+        public const string TruthDecision2 = @"TruthDecision2";
+        public const string TruthDuelPlayerStatus = @"TruthDuelPlayerStatus";
+        public const string TruthDuelRule = @"TruthDuelRule";
+        public const string TruthDuelSelect = @"TruthDuelSelect";
+        public const string TruthDungeon = @"TruthDungeon";
+        public const string TruthEquipmentShop = @"TruthEquipmentShop";
+        public const string TruthHomeTown = @"TruthHomeTown";
+        public const string TruthInformation = @"TruthInformation";
+        public const string TruthItemBank = @"TruthItemBank";
+        public const string TruthItemDesc = @"TruthItemDesc";
+        public const string TruthPlaybackMessage = @"TruthPlaybackMessage";
+        public const string TruthPlayerInformation = @"TruthPlayerInformation";
+        public const string TruthPotionShop = @"TruthPotionShop";
+        public const string TruthRequestFood = @"TruthRequestFood";
+        public const string TruthSelectCharacter = @"TruthSelectCharacter";
+        public const string TruthSelectEquipment = @"TruthSelectEquipment";
+        public const string TruthSkillSpellDesc = @"TruthSkillSpellDesc";
+        public const string TruthWill = @"TruthWill";
     }
 }
 
