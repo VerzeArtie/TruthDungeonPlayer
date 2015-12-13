@@ -4821,11 +4821,6 @@ namespace DungeonPlayer
             throw new NotImplementedException();
         }
 
-        private void PlayerSpellIceNeedle(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
         private void PlayerSpellLavaAnnihilation(MainCharacter player, MainCharacter target)
         {
             throw new NotImplementedException();

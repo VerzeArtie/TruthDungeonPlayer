@@ -192,9 +192,6 @@ namespace DungeonPlayer
 
         bool gameStart = false;
 
-        MainCharacter mc;
-        MainCharacter sc;
-        MainCharacter tc;
         TruthEnemyCharacter ec1;
         TruthEnemyCharacter ec2;
         TruthEnemyCharacter ec3;
@@ -207,7 +204,6 @@ namespace DungeonPlayer
         public bool firstAction = false;
 
         int activatePlayerNumber = 0;
-//        SortedList<int, MainCharacter> ActiveList = new SortedList<int, MainCharacter>();
         List<MainCharacter> ActiveList = new List<MainCharacter>();
         private static System.Random rand = new System.Random(DateTime.Now.Millisecond * System.Environment.TickCount);
 
@@ -758,61 +754,32 @@ namespace DungeonPlayer
             }
         }
 
+        const int CURRENT_ACTION_NUM = 9;
+        const int BASIC_ACTION_NUM = 8; // 基本行動
+        const int MIX_ACTION_NUM = 45; // [警告] 暫定、本来Databaseに記載するべき
+        const int MIX_ACTION_NUM_2 = 30; // [警告]暫定、本来Databaseに記載するべき
+        const int ARCHETYPE_NUM = 1; // アーキタイプ
         private void UpdateBattleCommandSetting(MainCharacter player, Button[] actionButton, Image[] sorceryMark)
         {
-            if (player == null) { return; }
-            if (player.BattleActionCommandList == null) { return; }
-
-            for (int jj = 0; jj < player.BattleActionCommandList.Count; jj++)
+            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
             {
-                for (int kk = 0; kk < GroundOne.resourceList.Count; kk++)
+                for (int ii = 0; ii < player.BattleActionCommandList.Length; ii++)
                 {
-                    if (player.BattleActionCommandList[jj] == GroundOne.resourceList[kk].name)
+                    if (player.BattleActionCommandList[ii] != "")
                     {
-                        player.ActionButtonList[jj].image.sprite = GroundOne.resourceList[kk];
-                        player.ActionButtonList[jj].name = GroundOne.resourceList[kk].name;
-
-                        if (TruthActionCommand.GetTimingType(player.BattleActionCommandList[jj]) == TruthActionCommand.TimingType.Sorcery)
+                        actionButton[ii].image.sprite = Resources.Load<Sprite>(player.BattleActionCommandList[ii]);
+                        actionButton[ii].name = player.BattleActionCommandList[ii];
+                        if (TruthActionCommand.GetTimingType(player.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Sorcery)
                         {
-                            sorceryMark[jj].sprite = Resources.Load<Sprite>("sorcery_mark");
+                            sorceryMark[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
                         }
                         else
                         {
-                            sorceryMark[jj].sprite = Resources.Load<Sprite>("instant_mark");
+                            sorceryMark[ii].sprite = Resources.Load<Sprite>("instant_mark");
                         }
-                        break;
                     }
                 }
             }
-
-
-            // todo
-            //string fileExt = ".bmp";
-            //Bitmap sorceryMark = new Bitmap(Database.BaseResourceFolder + "sorcery_mark.bmp");
-            //Bitmap instantMark = new Bitmap(Database.BaseResourceFolder + "instant_mark.bmp");
-            //if (player == mc || player == sc || player == tc)
-            //{
-            //    if (player.BattleActionCommand1 != "") { action1.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand1 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand1) == TruthActionCommand.TimingType.Sorcery) { sorcery1.Image = sorceryMark; } else { sorcery1.Image = instantMark; sorcery1.Update(); } }
-            //    if (player.BattleActionCommand2 != "") { action2.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand2 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand2) == TruthActionCommand.TimingType.Sorcery) { sorcery2.Image = sorceryMark; } else { sorcery2.Image = instantMark; sorcery2.Update(); } }
-            //    if (player.BattleActionCommand3 != "") { action3.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand3 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand3) == TruthActionCommand.TimingType.Sorcery) { sorcery3.Image = sorceryMark; } else { sorcery3.Image = instantMark; sorcery3.Update(); } }
-            //    if (player.BattleActionCommand4 != "") { action4.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand4 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand4) == TruthActionCommand.TimingType.Sorcery) { sorcery4.Image = sorceryMark; } else { sorcery4.Image = instantMark; sorcery4.Update(); } }
-            //    if (player.BattleActionCommand5 != "") { action5.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand5 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand5) == TruthActionCommand.TimingType.Sorcery) { sorcery5.Image = sorceryMark; } else { sorcery5.Image = instantMark; sorcery5.Update(); } }
-            //    if (player.BattleActionCommand6 != "") { action6.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand6 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand6) == TruthActionCommand.TimingType.Sorcery) { sorcery6.Image = sorceryMark; } else { sorcery6.Image = instantMark; sorcery6.Update(); } }
-            //    if (player.BattleActionCommand7 != "") { action7.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand7 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand7) == TruthActionCommand.TimingType.Sorcery) { sorcery7.Image = sorceryMark; } else { sorcery7.Image = instantMark; sorcery7.Update(); } }
-            //    if (player.BattleActionCommand8 != "") { action8.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand8 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand8) == TruthActionCommand.TimingType.Sorcery) { sorcery8.Image = sorceryMark; } else { sorcery8.Image = instantMark; sorcery8.Update(); } }
-            //    if (player.BattleActionCommand9 != "") { action9.Image = new Bitmap(Database.BaseResourceFolder + player.BattleActionCommand9 + fileExt); if (TruthActionCommand.GetTimingType(player.BattleActionCommand9) == TruthActionCommand.TimingType.Sorcery) { sorcery9.Image = sorceryMark; } else { sorcery9.Image = instantMark; sorcery9.Update(); } }
-
-            //    player.BattleActionCommandList = new string[CURRENT_ACTION_NUM];
-            //    player.BattleActionCommandList[0] = player.BattleActionCommand1;
-            //    player.BattleActionCommandList[1] = player.BattleActionCommand2;
-            //    player.BattleActionCommandList[2] = player.BattleActionCommand3;
-            //    player.BattleActionCommandList[3] = player.BattleActionCommand4;
-            //    player.BattleActionCommandList[4] = player.BattleActionCommand5;
-            //    player.BattleActionCommandList[5] = player.BattleActionCommand6;
-            //    player.BattleActionCommandList[6] = player.BattleActionCommand7;
-            //    player.BattleActionCommandList[7] = player.BattleActionCommand8;
-            //    player.BattleActionCommandList[8] = player.BattleActionCommand9;
-            //}
         }
         void PointerEnter(TruthImage currentImage)
         {
@@ -891,12 +858,27 @@ namespace DungeonPlayer
             pbBuff[ii].gameObject.SetActive(false);
             pbBuff[ii].transform.SetParent(buffPanel.transform, false);
         }
-        
+        private static bool created = false;
+        void Awake()
+        {
+            Debug.Log("TruthBattleEnemy Awake");
+            if (!created)
+            {
+                DontDestroyOnLoad(this.gameObject);
+                created = true;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+                GroundOne.CallBattleSettingAwake = true;
+            }
+
+            GroundOne.InitializeGroundOne();
+        }
+
         // Use this for initialization
         void Start()
         {
-            GroundOne.InitializeGroundOne();
-
             pbBuffPlayer1 = new TruthImage[Database.BUFF_NUM];
             pbBuffPlayer2 = new TruthImage[Database.BUFF_NUM];
             pbBuffPlayer3 = new TruthImage[Database.BUFF_NUM];
@@ -913,125 +895,95 @@ namespace DungeonPlayer
                 SetupBuff( pbBuffEnemy3, PanelBuffEnemy3, ii);                
             }
             GameObject baseObj = new GameObject("object");
-            this.mc = baseObj.AddComponent<MainCharacter>();
-            this.mc.Name = Database.EIN_WOLENCE_FULL;
-            this.mc.Strength = 5;
-            this.mc.Agility = 3;
-            this.mc.Intelligence = 2;
-            this.mc.Stamina = 7;
-            this.mc.Mind = 3;
-            this.mc.CurrentLife = this.mc.MaxLife;
-            this.mc.CurrentMana = this.mc.MaxMana;
-            this.mc.CurrentSkillPoint = this.mc.MaxSkillPoint;
-            this.mc.MagicAttackValue = 20;
-            this.mc.CurrentCommand = Database.ATTACK_EN;
-            this.mc.CurrentInstantPoint = 0;
-            this.mc.MainFaceArrow = this.player1Arrow;
-            this.mc.MainObjectButton = this.buttonTargetPlayer1;
-            this.mc.ActionLabel = this.playerActionLabel1;
-            this.mc.labelName = this.player1Name;
-            this.mc.labelCurrentLifePoint = this.player1Life;
-            this.mc.meterCurrentLifePoint = this.player1LifeMeter;
-            this.mc.labelCurrentManaPoint = null;
-            this.mc.meterCurrentManaPoint = this.player1ManaMeter;
-            this.mc.labelCurrentSkillPoint = null;
-            this.mc.meterCurrentSkillPoint = this.player1SkillMeter;
-            this.mc.labelCurrentInstantPoint = this.player1Instant;
-            this.mc.meterCurrentInstantPoint = this.player1InstantMeter;
-            this.mc.DamageLabel = this.player1Damage;
-            this.mc.CriticalLabel = this.player1Critical;
-            this.mc.btnBaseCommand = this.buttonTargetPlayer1;
-            this.mc.ActionButtonList.AddRange(this.ActionButton1);
-            this.mc.BattleActionCommandList.Add(Database.ATTACK_EN);
-            this.mc.BattleActionCommandList.Add(Database.DEFENSE_EN);
-            this.mc.BattleActionCommandList.Add(Database.HEAT_BOOST);
-            this.mc.BattleActionCommandList.Add(Database.FRESH_HEAL);
-            this.mc.BattleActionCommandList.Add(Database.STRAIGHT_SMASH);
-            this.mc.BattleActionCommandList.Add(Database.WORD_OF_LIFE);
-            this.mc.BattleActionCommandList.Add(Database.LAVA_ANNIHILATION);
-            this.mc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.mc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.playerList.Add(this.mc);
+            GroundOne.MC.Name = Database.EIN_WOLENCE_FULL;
+            GroundOne.MC.Strength = 5;
+            GroundOne.MC.Agility = 3;
+            GroundOne.MC.Intelligence = 2;
+            GroundOne.MC.Stamina = 7;
+            GroundOne.MC.Mind = 3;
+            GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife;
+            GroundOne.MC.CurrentMana = GroundOne.MC.MaxMana;
+            GroundOne.MC.CurrentSkillPoint = GroundOne.MC.MaxSkillPoint;
+            GroundOne.MC.MagicAttackValue = 20;
+            GroundOne.MC.CurrentCommand = Database.ATTACK_EN;
+            GroundOne.MC.CurrentInstantPoint = 0;
+            GroundOne.MC.MainFaceArrow = this.player1Arrow;
+            GroundOne.MC.MainObjectButton = this.buttonTargetPlayer1;
+            GroundOne.MC.ActionLabel = this.playerActionLabel1;
+            GroundOne.MC.labelName = this.player1Name;
+            GroundOne.MC.labelCurrentLifePoint = this.player1Life;
+            GroundOne.MC.meterCurrentLifePoint = this.player1LifeMeter;
+            GroundOne.MC.labelCurrentManaPoint = null;
+            GroundOne.MC.meterCurrentManaPoint = this.player1ManaMeter;
+            GroundOne.MC.labelCurrentSkillPoint = null;
+            GroundOne.MC.meterCurrentSkillPoint = this.player1SkillMeter;
+            GroundOne.MC.labelCurrentInstantPoint = this.player1Instant;
+            GroundOne.MC.meterCurrentInstantPoint = this.player1InstantMeter;
+            GroundOne.MC.DamageLabel = this.player1Damage;
+            GroundOne.MC.CriticalLabel = this.player1Critical;
+            GroundOne.MC.btnBaseCommand = this.buttonTargetPlayer1;
+            GroundOne.MC.ActionButtonList.AddRange(this.ActionButton1);
+            this.playerList.Add(GroundOne.MC);
 
-            this.sc = baseObj.AddComponent<MainCharacter>();
-            this.sc.Name = Database.RANA_AMILIA_FULL;
-            this.sc.Strength = 2;
-            this.sc.Agility = 4;
-            this.sc.Intelligence = 5;
-            this.sc.Stamina = 5;
-            this.sc.Mind = 3;
-            this.sc.CurrentLife = this.sc.MaxLife;
-            this.sc.CurrentMana = this.sc.MaxMana;
-            this.sc.CurrentSkillPoint = this.sc.MaxSkillPoint;
-            this.sc.MagicAttackValue = 50;
-            this.sc.CurrentCommand = Database.ATTACK_EN;
-            this.sc.CurrentInstantPoint = 0;
-            this.sc.MainFaceArrow = this.player2Arrow;
-            this.sc.MainObjectButton = this.buttonTargetPlayer2;
-            this.sc.ActionLabel = this.playerActionLabel2;
-            this.sc.labelName = this.player2Name;
-            this.sc.labelCurrentLifePoint = this.player2Life;
-            this.sc.meterCurrentLifePoint = this.player2LifeMeter;
-            this.sc.labelCurrentManaPoint = null;
-            this.sc.meterCurrentManaPoint = this.player2ManaMeter;
-            this.sc.labelCurrentSkillPoint = null;
-            this.sc.meterCurrentSkillPoint = this.player2SkillMeter;
-            this.sc.labelCurrentInstantPoint = this.player2Instant;
-            this.sc.meterCurrentInstantPoint = this.player2InstantMeter;
-            this.sc.DamageLabel = this.player2Damage;
-            this.sc.CriticalLabel = this.player2Critical;
-            this.sc.btnBaseCommand = this.buttonTargetPlayer2;
-            this.sc.ActionButtonList.AddRange(this.ActionButton2);
-            this.sc.BattleActionCommandList.Add(Database.ATTACK_EN);
-            this.sc.BattleActionCommandList.Add(Database.ICE_NEEDLE);
-            this.sc.BattleActionCommandList.Add(Database.SHADOW_PACT);
-            this.sc.BattleActionCommandList.Add(Database.COUNTER_ATTACK);
-            this.sc.BattleActionCommandList.Add(Database.ENIGMA_SENSE);
-            this.sc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.sc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.sc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.sc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.playerList.Add(this.sc);
+            GroundOne.SC.Name = Database.RANA_AMILIA_FULL;
+            GroundOne.SC.Strength = 2;
+            GroundOne.SC.Agility = 4;
+            GroundOne.SC.Intelligence = 5;
+            GroundOne.SC.Stamina = 5;
+            GroundOne.SC.Mind = 3;
+            GroundOne.SC.CurrentLife = GroundOne.SC.MaxLife;
+            GroundOne.SC.CurrentMana = GroundOne.SC.MaxMana;
+            GroundOne.SC.CurrentSkillPoint = GroundOne.SC.MaxSkillPoint;
+            GroundOne.SC.MagicAttackValue = 50;
+            GroundOne.SC.CurrentCommand = Database.ATTACK_EN;
+            GroundOne.SC.CurrentInstantPoint = 0;
+            GroundOne.SC.MainFaceArrow = this.player2Arrow;
+            GroundOne.SC.MainObjectButton = this.buttonTargetPlayer2;
+            GroundOne.SC.ActionLabel = this.playerActionLabel2;
+            GroundOne.SC.labelName = this.player2Name;
+            GroundOne.SC.labelCurrentLifePoint = this.player2Life;
+            GroundOne.SC.meterCurrentLifePoint = this.player2LifeMeter;
+            GroundOne.SC.labelCurrentManaPoint = null;
+            GroundOne.SC.meterCurrentManaPoint = this.player2ManaMeter;
+            GroundOne.SC.labelCurrentSkillPoint = null;
+            GroundOne.SC.meterCurrentSkillPoint = this.player2SkillMeter;
+            GroundOne.SC.labelCurrentInstantPoint = this.player2Instant;
+            GroundOne.SC.meterCurrentInstantPoint = this.player2InstantMeter;
+            GroundOne.SC.DamageLabel = this.player2Damage;
+            GroundOne.SC.CriticalLabel = this.player2Critical;
+            GroundOne.SC.btnBaseCommand = this.buttonTargetPlayer2;
+            GroundOne.SC.ActionButtonList.AddRange(this.ActionButton2);
+            this.playerList.Add(GroundOne.SC);
 
-            this.tc = baseObj.AddComponent<MainCharacter>();
-            this.tc.Name = Database.OL_LANDIS_FULL;
-            this.tc.Strength = 3;
-            this.tc.Agility = 5;
-            this.tc.Intelligence = 4;
-            this.tc.Stamina = 3;
-            this.tc.Mind = 5;
-            this.tc.CurrentLife = this.tc.MaxLife;
-            this.tc.CurrentMana = this.tc.MaxMana;
-            this.tc.CurrentSkillPoint = this.tc.MaxSkillPoint;
-            this.tc.MagicAttackValue = 30;
-            this.tc.CurrentCommand = Database.ATTACK_EN;
-            this.tc.CurrentInstantPoint = 0;
-            this.tc.MainFaceArrow = this.player3Arrow;
-            this.tc.MainObjectButton = this.buttonTargetPlayer3;
-            this.tc.ActionLabel = this.playerActionLabel3;
-            this.tc.labelName = this.player3Name;
-            this.tc.labelCurrentLifePoint = this.player3Life;
-            this.tc.meterCurrentLifePoint = this.player3LifeMeter;
-            this.tc.labelCurrentManaPoint = null;
-            this.tc.meterCurrentManaPoint = this.player3ManaMeter;
-            this.tc.labelCurrentSkillPoint = null;
-            this.tc.meterCurrentSkillPoint = this.player3SkillMeter;
-            this.tc.labelCurrentInstantPoint = player3Instant;
-            this.tc.meterCurrentInstantPoint = this.player3InstantMeter;
-            this.tc.DamageLabel = player3Damage;
-            this.tc.CriticalLabel = player3Critical;
-            this.tc.btnBaseCommand = this.buttonTargetPlayer3;
-            this.tc.ActionButtonList.AddRange(this.ActionButton3);
-            this.tc.BattleActionCommandList.Add(Database.ATTACK_EN);
-            this.tc.BattleActionCommandList.Add(Database.FRESH_HEAL);
-            this.tc.BattleActionCommandList.Add(Database.WORD_OF_POWER);
-            this.tc.BattleActionCommandList.Add(Database.COUNTER_ATTACK);
-            this.tc.BattleActionCommandList.Add(Database.NEGATE);
-            this.tc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.tc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.tc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.tc.BattleActionCommandList.Add(Database.STAY_EN);
-            this.playerList.Add(this.tc);
+            GroundOne.TC.Name = Database.OL_LANDIS_FULL;
+            GroundOne.TC.Strength = 3;
+            GroundOne.TC.Agility = 5;
+            GroundOne.TC.Intelligence = 4;
+            GroundOne.TC.Stamina = 3;
+            GroundOne.TC.Mind = 5;
+            GroundOne.TC.CurrentLife = GroundOne.TC.MaxLife;
+            GroundOne.TC.CurrentMana = GroundOne.TC.MaxMana;
+            GroundOne.TC.CurrentSkillPoint = GroundOne.TC.MaxSkillPoint;
+            GroundOne.TC.MagicAttackValue = 30;
+            GroundOne.TC.CurrentCommand = Database.ATTACK_EN;
+            GroundOne.TC.CurrentInstantPoint = 0;
+            GroundOne.TC.MainFaceArrow = this.player3Arrow;
+            GroundOne.TC.MainObjectButton = this.buttonTargetPlayer3;
+            GroundOne.TC.ActionLabel = this.playerActionLabel3;
+            GroundOne.TC.labelName = this.player3Name;
+            GroundOne.TC.labelCurrentLifePoint = this.player3Life;
+            GroundOne.TC.meterCurrentLifePoint = this.player3LifeMeter;
+            GroundOne.TC.labelCurrentManaPoint = null;
+            GroundOne.TC.meterCurrentManaPoint = this.player3ManaMeter;
+            GroundOne.TC.labelCurrentSkillPoint = null;
+            GroundOne.TC.meterCurrentSkillPoint = this.player3SkillMeter;
+            GroundOne.TC.labelCurrentInstantPoint = player3Instant;
+            GroundOne.TC.meterCurrentInstantPoint = this.player3InstantMeter;
+            GroundOne.TC.DamageLabel = player3Damage;
+            GroundOne.TC.CriticalLabel = player3Critical;
+            GroundOne.TC.btnBaseCommand = this.buttonTargetPlayer3;
+            GroundOne.TC.ActionButtonList.AddRange(this.ActionButton3);
+            this.playerList.Add(GroundOne.TC);
 
             this.ec1 = baseObj.AddComponent<TruthEnemyCharacter>();
             this.ec1.Name = "Gate Keeper";
@@ -1121,15 +1073,16 @@ namespace DungeonPlayer
             this.enemyList.Add(this.ec3);
 
             // todo 色々とまだコンポーネント登録しなければならない
+
 //            ActivateSomeCharacter(mc, ec1, nameLabel1, lifeLabel1, null, currentSkillPoint1, null, currentManaPoint1, currentInstantPoint1, null, ActionButton11, ActionButton12, ActionButton13, ActionButton14, ActionButton15, ActionButton16, ActionButton17, ActionButton18, ActionButton19, playerActionLabel1, BuffPanel1, buttonTargetPlayer1, mc.PlayerBattleColor, pbPlayerTargetTarget1, SelectPlayerArrow(mc), null, null, labelDamage1, labelCritical1, pbBuffPlayer1, keyNum1_1, keyNum1_2, keyNum1_3, keyNum1_4, keyNum1_5, keyNum1_6, keyNum1_7, keyNum1_8, keyNum1_9, IsSorcery11, IsSorcery12, IsSorcery13, IsSorcery14, IsSorcery15, IsSorcery16, IsSorcery17, IsSorcery18, IsSorcery19);
-            ActivateSomeCharacter(mc, ec1, player1Name, player1Life, null, null, null, null, player1Instant, null, ActionButton1, playerActionLabel1, BuffPanel1, buttonTargetPlayer1, new Color(Database.COLOR_BATTLE_TARGET1_EIN_R, Database.COLOR_BATTLE_TARGET1_EIN_G, Database.COLOR_BATTLE_TARGET1_EIN_B), null, null, null, null, null, null, pbBuffPlayer1, null, null, null, null, null, null, null, null, null, IsSorcery1);
-            ActivateSomeCharacter(sc, ec1, player2Name, player2Life, null, null, null, null, player2Instant, null, ActionButton2, playerActionLabel2, BuffPanel2, buttonTargetPlayer2, new Color(Database.COLOR_BATTLE_TARGET1_RANA_R, Database.COLOR_BATTLE_TARGET1_RANA_G, Database.COLOR_BATTLE_TARGET1_RANA_B), null, null, null, null, null, null, pbBuffPlayer2, null, null, null, null, null, null, null, null, null, IsSorcery2);
-            ActivateSomeCharacter(tc, ec1, player3Name, player3Life, null, null, null, null, player3Instant, null, ActionButton3, playerActionLabel3, BuffPanel3, buttonTargetPlayer3, new Color(Database.COLOR_BATTLE_TARGET1_OL_R, Database.COLOR_BATTLE_TARGET1_OL_G, Database.COLOR_BATTLE_TARGET1_OL_B), null, null, null, null, null, null, pbBuffPlayer3, null, null, null, null, null, null, null, null, null, IsSorcery3);
+            ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1Life, null, null, null, null, player1Instant, null, ActionButton1, playerActionLabel1, BuffPanel1, buttonTargetPlayer1, new Color(Database.COLOR_BATTLE_TARGET1_EIN_R, Database.COLOR_BATTLE_TARGET1_EIN_G, Database.COLOR_BATTLE_TARGET1_EIN_B), null, null, null, null, null, null, pbBuffPlayer1, null, null, null, null, null, null, null, null, null, IsSorcery1);
+            ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2Life, null, null, null, null, player2Instant, null, ActionButton2, playerActionLabel2, BuffPanel2, buttonTargetPlayer2, new Color(Database.COLOR_BATTLE_TARGET1_RANA_R, Database.COLOR_BATTLE_TARGET1_RANA_G, Database.COLOR_BATTLE_TARGET1_RANA_B), null, null, null, null, null, null, pbBuffPlayer2, null, null, null, null, null, null, null, null, null, IsSorcery2);
+            ActivateSomeCharacter(GroundOne.TC, ec1, player3Name, player3Life, null, null, null, null, player3Instant, null, ActionButton3, playerActionLabel3, BuffPanel3, buttonTargetPlayer3, new Color(Database.COLOR_BATTLE_TARGET1_OL_R, Database.COLOR_BATTLE_TARGET1_OL_G, Database.COLOR_BATTLE_TARGET1_OL_B), null, null, null, null, null, null, pbBuffPlayer3, null, null, null, null, null, null, null, null, null, IsSorcery3);
 //            ActivateSomeCharacter(ec1, mc, enemyNameLabel1, lblLifeEnemy1, null, currentEnemySkillPoint1, null, currentEnemyManaPoint1, currentEnemyInstantPoint1, specialInstant, null, null, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, buttonTargetEnemy1, Color.DarkRed, pbEnemyTargetTarget1, bmpEnemy1, bmpShadowEnemy1_2, bmpShadowEnemy1_3, labelEnemyDamage1, labelEnemyCritical1, pbBuffEnemy1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
             //ActivateSomeCharacter(ec1, mc, enemy1Name, enemy1Life, enemyActionLabel1, pbBuffEnemy1);
-            ActivateSomeCharacter(ec1, mc, enemy1Name, enemy1Life, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, null, new Color(50, 100, 150), null, null, null, null, null, null, pbBuffEnemy1, null, null, null, null, null, null, null, null, null, null);
-            ActivateSomeCharacter(ec2, mc, enemy2Name, enemy2Life, null, null, null, null, null, null, null, enemyActionLabel2, PanelBuffEnemy2, null, new Color(150, 50, 100), null, null, null, null, null, null, pbBuffEnemy2, null, null, null, null, null, null, null, null, null, null);
-            ActivateSomeCharacter(ec3, mc, enemy3Name, enemy3Life, null, null, null, null, null, null, null, enemyActionLabel3, PanelBuffEnemy3, null, new Color(100, 150, 50), null, null, null, null, null, null, pbBuffEnemy3, null, null, null, null, null, null, null, null, null, null);
+            ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1Life, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, null, new Color(50, 100, 150), null, null, null, null, null, null, pbBuffEnemy1, null, null, null, null, null, null, null, null, null, null);
+            ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, enemy2Life, null, null, null, null, null, null, null, enemyActionLabel2, PanelBuffEnemy2, null, new Color(150, 50, 100), null, null, null, null, null, null, pbBuffEnemy2, null, null, null, null, null, null, null, null, null, null);
+            ActivateSomeCharacter(ec3, GroundOne.MC, enemy3Name, enemy3Life, null, null, null, null, null, null, null, enemyActionLabel3, PanelBuffEnemy3, null, new Color(100, 150, 50), null, null, null, null, null, null, pbBuffEnemy3, null, null, null, null, null, null, null, null, null, null);
 
             // debug
             ec3.PA = MainCharacter.PlayerAction.UseSpell;
@@ -1143,7 +1096,7 @@ namespace DungeonPlayer
                 UpdateSkillPoint(this.ActiveList[ii]);
             }
 
-            this.currentPlayer = this.mc;
+            this.currentPlayer = GroundOne.MC;
             //tapFirstChara ();
         }
 
@@ -1151,6 +1104,29 @@ namespace DungeonPlayer
         // Update is called once per frame
         void Update()
         {
+            #region "SceneBack Refresh Logic"
+            if (GroundOne.CallBattleSetting && GroundOne.CallBattleSettingAwake)
+            {
+                Debug.Log("CallBattleSetting true, then reflesh");
+                GroundOne.CallBattleSetting = false;
+                GroundOne.CallBattleSettingAwake = false;
+
+                UpdateBattleCommandSetting(GroundOne.MC, ActionButton1, IsSorcery1);
+                //UpdateBattleCommandSetting(mc, mc.ActionButton1, mc.ActionButton2, mc.ActionButton3, mc.ActionButton4, mc.ActionButton5, mc.ActionButton6, mc.ActionButton7, mc.ActionButton8, mc.ActionButton9,
+                //                               mc.IsSorceryMark1, mc.IsSorceryMark2, mc.IsSorceryMark3, mc.IsSorceryMark4, mc.IsSorceryMark5, mc.IsSorceryMark6, mc.IsSorceryMark7, mc.IsSorceryMark8, mc.IsSorceryMark9);
+                //if (we.AvailableSecondCharacter && this.DuelMode == false)
+                //{
+                //    UpdateBattleCommandSetting(sc, sc.ActionButton1, sc.ActionButton2, sc.ActionButton3, sc.ActionButton4, sc.ActionButton5, sc.ActionButton6, sc.ActionButton7, sc.ActionButton8, sc.ActionButton9,
+                //                                   sc.IsSorceryMark1, sc.IsSorceryMark2, sc.IsSorceryMark3, sc.IsSorceryMark4, sc.IsSorceryMark5, sc.IsSorceryMark6, sc.IsSorceryMark7, sc.IsSorceryMark8, sc.IsSorceryMark9);
+                //}
+                //if (we.AvailableThirdCharacter && this.DuelMode == false)
+                //{
+                //    UpdateBattleCommandSetting(tc, tc.ActionButton1, tc.ActionButton2, tc.ActionButton3, tc.ActionButton4, tc.ActionButton5, tc.ActionButton6, tc.ActionButton7, tc.ActionButton8, tc.ActionButton9,
+                //                                   tc.IsSorceryMark1, tc.IsSorceryMark2, tc.IsSorceryMark3, tc.IsSorceryMark4, tc.IsSorceryMark5, tc.IsSorceryMark6, tc.IsSorceryMark7, tc.IsSorceryMark8, tc.IsSorceryMark9);
+                //}
+            }
+            #endregion
+
             #region "キー制御"
             bool detectShift = false;
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -1376,7 +1352,7 @@ namespace DungeonPlayer
             //pbPlayer1.Invalidate();
 
             // BattleEndPhase // todo
-            if (this.mc.CurrentLife <= 0 && this.sc.CurrentLife <= 0 && this.tc.CurrentLife <= 0)
+            if (GroundOne.MC.CurrentLife <= 0 && GroundOne.SC.CurrentLife <= 0 && GroundOne.TC.CurrentLife <= 0)
             {
                 if (this.mainMessage != null)
                 {
@@ -1798,11 +1774,11 @@ namespace DungeonPlayer
 
         private void UpdatePlayerNextDecision(MainCharacter player)
         {
-            if (player == mc || player == sc || player == tc) return; // コンピューター専用ルーチンのため、プレイヤー側は何もしない。
+            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC) return; // コンピューター専用ルーチンのため、プレイヤー側は何もしない。
 
             if (player.Name == Database.DUEL_OL_LANDIS) // オル・ランディスは常に戦術を変更可能とする。ヴェルゼなど主要人物は全て該当。
             {
-                ((TruthEnemyCharacter)player).NextAttackDecision(mc, mc, sc, tc, ec1, ec2, ec3);
+                ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
             }
             else if (player.Name == Database.VERZE_ARTIE_FULL || player.Name == Database.VERZE_ARTIE
                   || player.Name == Database.ENEMY_LAST_RANA_AMILIA
@@ -1811,12 +1787,12 @@ namespace DungeonPlayer
                   || player.Name == Database.ENEMY_LAST_VERZE_ARTIE
                   || player.Name == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
             {
-                ((TruthEnemyCharacter)player).NextAttackDecision(mc, mc, sc, tc, ec1, ec2, ec3);
+                ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
             }
             else if ((player.Name == Database.DUEL_SHUVALTZ_FLORE) ||
                      (player.Name == Database.DUEL_SIN_OSCURETE))
             {
-                ((TruthEnemyCharacter)player).NextAttackDecision(mc, mc, sc, tc, ec1, ec2, ec3);
+                ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
             }
             else
             {
@@ -1827,32 +1803,32 @@ namespace DungeonPlayer
 
                     if (((TruthEnemyCharacter)player).InitialTarget == TruthEnemyCharacter.TargetLogic.Front)
                     {
-                        if (mc != null && !mc.Dead)
+                        if (GroundOne.MC != null && !GroundOne.MC.Dead)
                         {
-                            ((TruthEnemyCharacter)player).NextAttackDecision(mc, mc, sc, tc, ec1, ec2, ec3);
+                            ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
-                        else if (sc != null && !sc.Dead)
+                        else if (GroundOne.SC != null && !GroundOne.SC.Dead)
                         {
-                            ((TruthEnemyCharacter)player).NextAttackDecision(sc, mc, sc, tc, ec1, ec2, ec3);
+                            ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.SC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
-                        else if (tc != null && !tc.Dead)
+                        else if (GroundOne.TC != null && !GroundOne.TC.Dead)
                         {
-                            ((TruthEnemyCharacter)player).NextAttackDecision(tc, mc, sc, tc, ec1, ec2, ec3);
+                            ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.TC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
                     }
                     else if (((TruthEnemyCharacter)player).InitialTarget == TruthEnemyCharacter.TargetLogic.Back)
                     {
-                        if (tc != null && !tc.Dead)
+                        if (GroundOne.TC != null && !GroundOne.TC.Dead)
                         {
-                            ((TruthEnemyCharacter)player).NextAttackDecision(tc, mc, sc, tc, ec1, ec2, ec3);
+                            ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.TC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
-                        else if (sc != null && !sc.Dead)
+                        else if (GroundOne.SC != null && !GroundOne.SC.Dead)
                         {
-                            ((TruthEnemyCharacter)player).NextAttackDecision(sc, mc, sc, tc, ec1, ec2, ec3);
+                            ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.SC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
-                        else if (mc != null && !mc.Dead)
+                        else if (GroundOne.MC != null && !GroundOne.MC.Dead)
                         {
-                            ((TruthEnemyCharacter)player).NextAttackDecision(mc, mc, sc, tc, ec1, ec2, ec3);
+                            ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
                     }
                     //player.ActionLabel.Update();
@@ -1897,17 +1873,17 @@ namespace DungeonPlayer
             for (int ii = 0; ii < this.enemyList.Count; ii++)
             {
                 // enemy A.I
-                if (this.mc.CurrentLife > 0)
+                if (GroundOne.MC.CurrentLife > 0)
                 {
-                    this.enemyList[ii].Target = mc;
+                    this.enemyList[ii].Target = GroundOne.MC;
                 }
-                else if (this.sc.CurrentLife > 0)
+                else if (GroundOne.SC.CurrentLife > 0)
                 {
-                    this.enemyList[ii].Target = sc;
+                    this.enemyList[ii].Target = GroundOne.SC;
                 }
-                else if (this.tc.CurrentLife > 0)
+                else if (GroundOne.TC.CurrentLife > 0)
                 {
-                    this.enemyList[ii].Target = tc;
+                    this.enemyList[ii].Target = GroundOne.TC;
                 }
             }
 
@@ -2239,9 +2215,9 @@ namespace DungeonPlayer
             {
                 if (!ActiveList[ii].Dead)
                 {
-                    if (ActiveList[ii] == mc ||
-                        ActiveList[ii] == sc ||
-                        ActiveList[ii] == tc)
+                    if (ActiveList[ii] == GroundOne.MC ||
+                        ActiveList[ii] == GroundOne.SC ||
+                        ActiveList[ii] == GroundOne.TC)
                     {
                         return false;
                     }
@@ -2264,7 +2240,7 @@ namespace DungeonPlayer
         private bool IsPlayerAlly(MainCharacter player)
         {
             if (player == null) { return false; }
-            if ((player == mc) || (player == sc) || (player == tc))
+            if ((player == GroundOne.MC) || (player == GroundOne.SC) || (player == GroundOne.TC))
             {
                 return true;
             }
@@ -2834,7 +2810,7 @@ namespace DungeonPlayer
             //buttonTargetPlayer1.image.sprite = obj.image.sprite;
             mainMessage.text = command;
 
-            ActionCommand(false, mc, obj.name);
+            ActionCommand(false, GroundOne.MC, obj.name);
 
             //PlayerInstantCommand(this.currentPlayer, WhoTarget(this.currentPlayer, command), command);
         }
@@ -2844,7 +2820,7 @@ namespace DungeonPlayer
             buttonTargetPlayer2.image.sprite = obj.image.sprite;
             mainMessage.text = command;
 
-            ActionCommand(false, sc, obj.name);
+            ActionCommand(false, GroundOne.SC, obj.name);
 
             //PlayerInstantCommand(this.currentPlayer, WhoTarget(this.currentPlayer, command), command);
         }
@@ -2854,44 +2830,50 @@ namespace DungeonPlayer
             buttonTargetPlayer3.image.sprite = obj.image.sprite;
             mainMessage.text = command;
 
-            ActionCommand(false, tc, obj.name);
+            ActionCommand(false, GroundOne.TC, obj.name);
 
             //PlayerInstantCommand(this.currentPlayer, WhoTarget(this.currentPlayer, command), command);
         }
 
+        public void tapBattleSetting()
+        {
+            Debug.Log("tapBattleSetting");
+            GroundOne.CallBattleSetting = true;
+            SceneDimension.Go(Database.TruthBattleEnemy, Database.TruthBattleSetting);
+        }
         public void tapPanel1()
         {
-            this.currentPlayer = this.mc;
-            this.mc.EnableGUI();
-            this.sc.DisableGUI();
-            this.tc.DisableGUI();
+            this.currentPlayer = GroundOne.MC;
+            GroundOne.MC.EnableGUI();
+            GroundOne.SC.DisableGUI();
+            GroundOne.TC.DisableGUI();
         }
         public void tapPanel2()
         {
-            this.currentPlayer = this.sc;
-            this.mc.DisableGUI();
-            this.sc.EnableGUI();
-            this.tc.DisableGUI();
+            this.currentPlayer = GroundOne.SC;
+            GroundOne.MC.DisableGUI();
+            GroundOne.SC.EnableGUI();
+            GroundOne.TC.DisableGUI();
         }
         public void tapPanel3()
         {
-            this.currentPlayer = this.tc;
-            this.mc.DisableGUI();
-            this.sc.DisableGUI();
-            this.tc.EnableGUI();
+            this.currentPlayer = GroundOne.TC;
+            GroundOne.MC.DisableGUI();
+            GroundOne.SC.DisableGUI();
+            GroundOne.TC.EnableGUI();
         }
 
         public void tapFirstChara()
         {
-            this.currentPlayer.Target2 = this.mc;
+            this.currentPlayer.Target2 = GroundOne.MC;
         }
         public void tapSecondChara()
         {
-            this.currentPlayer.Target2 = this.sc;
+            this.currentPlayer.Target2 = GroundOne.SC;
         }
         public void tapThirdChara()
         {
-            this.currentPlayer.Target2 = this.tc;
+            this.currentPlayer.Target2 = GroundOne.TC;
         }
         private void ChangeBaseAction(MainCharacter player)
         {
@@ -2899,15 +2881,15 @@ namespace DungeonPlayer
         }
         public void tapFirstCharaAction()
         {
-            ChangeBaseAction(mc);
+            ChangeBaseAction(GroundOne.MC);
         }
         public void tapSecondCharaAction()
         {
-            ChangeBaseAction(sc);
+            ChangeBaseAction(GroundOne.SC);
         }
         public void tapThirdCharaAction()
         {
-            ChangeBaseAction(tc);
+            ChangeBaseAction(GroundOne.TC);
         }
 
         // 通常攻撃を抽象化したロジック。通常攻撃やストレートスマッシュは全てここに含まれる。
@@ -2953,7 +2935,7 @@ namespace DungeonPlayer
             target.ActivateFlameAura(imgFlameAura, 99999);
         }
         // アイスニードル
-        private void PlayerSpellIceNeedle(MainCharacter player, MainCharacter target)
+        private void PlayerSpellIceNeedle(MainCharacter player, MainCharacter target, int p1, int p2)
         {
             double value = 30.0 + player.Intelligence * 1.9f;
             AbstractMagicAttack(player, target, Database.ICE_NEEDLE, value);
@@ -3134,7 +3116,7 @@ namespace DungeonPlayer
             }
             else if (command == Database.ICE_NEEDLE)
             {
-                PlayerSpellIceNeedle(player, target);
+                PlayerSpellIceNeedle(player, target, 0, 0);
             }
             else if (command == Database.CLEANSING)
             {
@@ -3186,45 +3168,6 @@ namespace DungeonPlayer
         {
             //throw new System.NotImplementedException();// todo
         }
-
-        public void BattleSettingButton_Click()
-        {
-            SceneDimension.playbackScene.Add("TruthBattleEnemy");
-            Application.LoadLevel("TruthBattleSetting");
-            // todo バトル設定を表示して、コマンド内容を書き換える。
-            //using (TruthBattleSetting TBS = new TruthBattleSetting())
-            //{
-            //    TBS.Opacity = 0.95f;
-            //    TBS.StartPosition = FormStartPosition.CenterParent;
-            //    TBS.MC = this.mc;
-            //    TBS.SC = this.sc;
-            //    TBS.TC = this.tc;
-            //    TBS.WE = this.we;
-            //    TBS.DuelMode = this.DuelMode;
-            //    TBS.ShowDialog();
-            //    if (TBS.DialogResult == System.Windows.Forms.DialogResult.OK)
-            //    {
-            //        this.mc = TBS.MC;
-            //        this.sc = TBS.SC;
-            //        this.tc = TBS.TC;
-            //        this.we = TBS.WE;
-            //    }
-            //}
-            //UpdateBattleCommandSetting(mc, mc.ActionButton1, mc.ActionButton2, mc.ActionButton3, mc.ActionButton4, mc.ActionButton5, mc.ActionButton6, mc.ActionButton7, mc.ActionButton8, mc.ActionButton9,
-            //                               mc.IsSorceryMark1, mc.IsSorceryMark2, mc.IsSorceryMark3, mc.IsSorceryMark4, mc.IsSorceryMark5, mc.IsSorceryMark6, mc.IsSorceryMark7, mc.IsSorceryMark8, mc.IsSorceryMark9);
-            //if (we.AvailableSecondCharacter && this.DuelMode == false)
-            //{
-            //    UpdateBattleCommandSetting(sc, sc.ActionButton1, sc.ActionButton2, sc.ActionButton3, sc.ActionButton4, sc.ActionButton5, sc.ActionButton6, sc.ActionButton7, sc.ActionButton8, sc.ActionButton9,
-            //                                   sc.IsSorceryMark1, sc.IsSorceryMark2, sc.IsSorceryMark3, sc.IsSorceryMark4, sc.IsSorceryMark5, sc.IsSorceryMark6, sc.IsSorceryMark7, sc.IsSorceryMark8, sc.IsSorceryMark9);
-            //}
-            //if (we.AvailableThirdCharacter && this.DuelMode == false)
-            //{
-            //    UpdateBattleCommandSetting(tc, tc.ActionButton1, tc.ActionButton2, tc.ActionButton3, tc.ActionButton4, tc.ActionButton5, tc.ActionButton6, tc.ActionButton7, tc.ActionButton8, tc.ActionButton9,
-            //                                   tc.IsSorceryMark1, tc.IsSorceryMark2, tc.IsSorceryMark3, tc.IsSorceryMark4, tc.IsSorceryMark5, tc.IsSorceryMark6, tc.IsSorceryMark7, tc.IsSorceryMark8, tc.IsSorceryMark9);
-            //}
-
-        }
-
 
         private void UseItemButton_Click()
         {

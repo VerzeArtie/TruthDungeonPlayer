@@ -1952,7 +1952,7 @@ namespace DungeonPlayer
         public Button btnBaseCommand = null;
 
         // battle command list (manual)
-       	public List<string> BattleActionCommandList = new List<string>();
+       	public string[] BattleActionCommandList = new string[Database.BATTLE_COMMAND_MAX];
 
         protected bool nowExecActionFlag = false; // 後編追加　現在自分が行動実行中であることを示すフラグ
         public bool NowExecActionFlag

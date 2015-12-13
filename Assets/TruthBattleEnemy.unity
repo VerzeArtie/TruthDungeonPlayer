@@ -560,7 +560,6 @@ GameObject:
   - 222: {fileID: 91632170}
   - 114: {fileID: 91632169}
   - 114: {fileID: 91632168}
-  - 114: {fileID: 91632167}
   - 114: {fileID: 91632166}
   m_Layer: 5
   m_Name: enemy2MainButton
@@ -633,17 +632,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &91632167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 91632164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &91632168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +784,6 @@ GameObject:
   - 222: {fileID: 104166332}
   - 114: {fileID: 104166329}
   - 114: {fileID: 104166328}
-  - 114: {fileID: 104166331}
   - 114: {fileID: 104166330}
   m_Layer: 5
   m_Name: command39
@@ -938,17 +925,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &104166331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 104166326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &104166332
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1105,7 +1081,6 @@ GameObject:
   - 222: {fileID: 188975036}
   - 114: {fileID: 188975035}
   - 114: {fileID: 188975034}
-  - 114: {fileID: 188975033}
   - 114: {fileID: 188975032}
   m_Layer: 5
   m_Name: command32
@@ -1179,17 +1154,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &188975033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 188975030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &188975034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1275,7 +1239,6 @@ GameObject:
   - 222: {fileID: 197247095}
   - 114: {fileID: 197247092}
   - 114: {fileID: 197247091}
-  - 114: {fileID: 197247094}
   - 114: {fileID: 197247093}
   m_Layer: 5
   m_Name: command16
@@ -1417,17 +1380,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &197247094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 197247089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &197247095
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1445,7 +1397,6 @@ GameObject:
   - 222: {fileID: 213056997}
   - 114: {fileID: 213056996}
   - 114: {fileID: 213056995}
-  - 114: {fileID: 213056994}
   - 114: {fileID: 213056993}
   m_Layer: 5
   m_Name: command33
@@ -1519,17 +1470,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &213056994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 213056991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &213056995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1615,7 +1555,6 @@ GameObject:
   - 222: {fileID: 235911970}
   - 114: {fileID: 235911969}
   - 114: {fileID: 235911968}
-  - 114: {fileID: 235911967}
   - 114: {fileID: 235911966}
   m_Layer: 5
   m_Name: command22
@@ -1689,17 +1628,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &235911967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 235911964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &235911968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,7 +1785,6 @@ GameObject:
   - 222: {fileID: 248579206}
   - 114: {fileID: 248579205}
   - 114: {fileID: 248579204}
-  - 114: {fileID: 248579203}
   - 114: {fileID: 248579202}
   m_Layer: 5
   m_Name: player3Arrow
@@ -1930,17 +1857,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &248579203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 248579200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &248579204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2516,7 +2432,6 @@ GameObject:
   - 222: {fileID: 351616688}
   - 114: {fileID: 351616687}
   - 114: {fileID: 351616686}
-  - 114: {fileID: 351616685}
   - 114: {fileID: 351616684}
   m_Layer: 5
   m_Name: command23
@@ -2590,17 +2505,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &351616685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 351616682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &351616686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2686,7 +2590,6 @@ GameObject:
   - 222: {fileID: 365490309}
   - 114: {fileID: 365490308}
   - 114: {fileID: 365490307}
-  - 114: {fileID: 365490306}
   - 114: {fileID: 365490305}
   m_Layer: 5
   m_Name: command31
@@ -2760,17 +2663,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &365490306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 365490303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &365490307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2856,7 +2748,6 @@ GameObject:
   - 222: {fileID: 380472939}
   - 114: {fileID: 380472935}
   - 114: {fileID: 380472934}
-  - 114: {fileID: 380472938}
   - 114: {fileID: 380472937}
   m_Layer: 5
   m_Name: player2Arrow
@@ -2997,17 +2888,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &380472938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 380472933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &380472939
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3025,7 +2905,6 @@ GameObject:
   - 222: {fileID: 386762305}
   - 114: {fileID: 386762302}
   - 114: {fileID: 386762301}
-  - 114: {fileID: 386762304}
   - 114: {fileID: 386762303}
   m_Layer: 5
   m_Name: command38
@@ -3167,17 +3046,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &386762304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 386762299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &386762305
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3478,11 +3346,11 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1024, y: 1024}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -5031,7 +4899,6 @@ GameObject:
   - 222: {fileID: 539575664}
   - 114: {fileID: 539575663}
   - 114: {fileID: 539575662}
-  - 114: {fileID: 539575661}
   - 114: {fileID: 539575660}
   m_Layer: 5
   m_Name: command34
@@ -5105,17 +4972,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &539575661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 539575658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &539575662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5650,7 +5506,6 @@ GameObject:
   - 222: {fileID: 651665804}
   - 114: {fileID: 651665801}
   - 114: {fileID: 651665800}
-  - 114: {fileID: 651665803}
   - 114: {fileID: 651665802}
   m_Layer: 5
   m_Name: player2MainButton
@@ -5791,17 +5646,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &651665803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 651665798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &651665804
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6020,7 +5864,6 @@ GameObject:
   - 222: {fileID: 744476698}
   - 114: {fileID: 744476697}
   - 114: {fileID: 744476696}
-  - 114: {fileID: 744476695}
   - 114: {fileID: 744476694}
   m_Layer: 5
   m_Name: enemy1MainButton
@@ -6093,17 +5936,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &744476695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 744476692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &744476696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6462,7 +6294,6 @@ GameObject:
   - 222: {fileID: 813659587}
   - 114: {fileID: 813659584}
   - 114: {fileID: 813659583}
-  - 114: {fileID: 813659586}
   - 114: {fileID: 813659585}
   m_Layer: 5
   m_Name: player3MainButton
@@ -6603,17 +6434,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &813659586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 813659581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &813659587
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6904,7 +6724,6 @@ GameObject:
   - 222: {fileID: 923956356}
   - 114: {fileID: 923956352}
   - 114: {fileID: 923956351}
-  - 114: {fileID: 923956355}
   - 114: {fileID: 923956354}
   m_Layer: 5
   m_Name: enemy2Arrow
@@ -7045,17 +6864,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &923956355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 923956350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &923956356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7207,7 +7015,6 @@ GameObject:
   - 222: {fileID: 975760193}
   - 114: {fileID: 975760190}
   - 114: {fileID: 975760189}
-  - 114: {fileID: 975760192}
   - 114: {fileID: 975760191}
   m_Layer: 5
   m_Name: command17
@@ -7349,17 +7156,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &975760192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 975760187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &975760193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7377,7 +7173,6 @@ GameObject:
   - 222: {fileID: 1011080054}
   - 114: {fileID: 1011080053}
   - 114: {fileID: 1011080052}
-  - 114: {fileID: 1011080051}
   - 114: {fileID: 1011080050}
   m_Layer: 5
   m_Name: enemy3MainButton
@@ -7450,17 +7245,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1011080051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011080048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1011080052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7685,7 +7469,6 @@ GameObject:
   - 222: {fileID: 1042482992}
   - 114: {fileID: 1042482991}
   - 114: {fileID: 1042482990}
-  - 114: {fileID: 1042482989}
   - 114: {fileID: 1042482988}
   m_Layer: 5
   m_Name: command15
@@ -7759,17 +7542,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1042482989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1042482986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1042482990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8128,7 +7900,6 @@ GameObject:
   - 222: {fileID: 1100322137}
   - 114: {fileID: 1100322134}
   - 114: {fileID: 1100322133}
-  - 114: {fileID: 1100322136}
   - 114: {fileID: 1100322135}
   m_Layer: 5
   m_Name: command19
@@ -8270,17 +8041,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1100322136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1100322131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1100322137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8494,7 +8254,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1127941021}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 446421542}
+        m_MethodName: tapBattleSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1127941021
@@ -8675,7 +8446,6 @@ GameObject:
   - 222: {fileID: 1192324193}
   - 114: {fileID: 1192324192}
   - 114: {fileID: 1192324191}
-  - 114: {fileID: 1192324190}
   - 114: {fileID: 1192324189}
   m_Layer: 5
   m_Name: command14
@@ -8749,17 +8519,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1192324190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1192324187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1192324191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8845,7 +8604,6 @@ GameObject:
   - 222: {fileID: 1204763276}
   - 114: {fileID: 1204763273}
   - 114: {fileID: 1204763272}
-  - 114: {fileID: 1204763275}
   - 114: {fileID: 1204763274}
   m_Layer: 5
   m_Name: command29
@@ -8987,17 +8745,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1204763275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1204763270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1204763276
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9362,7 +9109,6 @@ GameObject:
   - 222: {fileID: 1279067056}
   - 114: {fileID: 1279067053}
   - 114: {fileID: 1279067052}
-  - 114: {fileID: 1279067055}
   - 114: {fileID: 1279067054}
   m_Layer: 5
   m_Name: player1MainButton
@@ -9503,17 +9249,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1279067055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1279067050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1279067056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9531,7 +9266,6 @@ GameObject:
   - 222: {fileID: 1291434160}
   - 114: {fileID: 1291434159}
   - 114: {fileID: 1291434158}
-  - 114: {fileID: 1291434157}
   - 114: {fileID: 1291434156}
   m_Layer: 5
   m_Name: command35
@@ -9587,17 +9321,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1291434157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1291434155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1291434158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9840,7 +9563,6 @@ GameObject:
   - 222: {fileID: 1344934390}
   - 114: {fileID: 1344934389}
   - 114: {fileID: 1344934388}
-  - 114: {fileID: 1344934387}
   - 114: {fileID: 1344934386}
   m_Layer: 5
   m_Name: command13
@@ -9914,17 +9636,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1344934387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1344934384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1344934388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10077,7 +9788,6 @@ GameObject:
   - 222: {fileID: 1365302186}
   - 114: {fileID: 1365302183}
   - 114: {fileID: 1365302182}
-  - 114: {fileID: 1365302185}
   - 114: {fileID: 1365302184}
   m_Layer: 5
   m_Name: command18
@@ -10219,17 +9929,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1365302185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1365302180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1365302186
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10431,7 +10130,6 @@ GameObject:
   - 222: {fileID: 1411585904}
   - 114: {fileID: 1411585901}
   - 114: {fileID: 1411585900}
-  - 114: {fileID: 1411585903}
   - 114: {fileID: 1411585902}
   m_Layer: 5
   m_Name: command36
@@ -10573,17 +10271,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1411585903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1411585898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1411585904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10960,7 +10647,6 @@ GameObject:
   - 222: {fileID: 1507516416}
   - 114: {fileID: 1507516415}
   - 114: {fileID: 1507516414}
-  - 114: {fileID: 1507516413}
   - 114: {fileID: 1507516412}
   m_Layer: 5
   m_Name: command25
@@ -11034,17 +10720,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1507516413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1507516410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1507516414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11130,7 +10805,6 @@ GameObject:
   - 222: {fileID: 1540967421}
   - 114: {fileID: 1540967418}
   - 114: {fileID: 1540967417}
-  - 114: {fileID: 1540967420}
   - 114: {fileID: 1540967419}
   m_Layer: 5
   m_Name: command28
@@ -11272,17 +10946,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1540967420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1540967415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1540967421
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11689,7 +11352,6 @@ GameObject:
   - 222: {fileID: 1674502976}
   - 114: {fileID: 1674502973}
   - 114: {fileID: 1674502972}
-  - 114: {fileID: 1674502975}
   - 114: {fileID: 1674502974}
   m_Layer: 5
   m_Name: command27
@@ -11831,17 +11493,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1674502975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1674502970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1674502976
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11859,7 +11510,6 @@ GameObject:
   - 222: {fileID: 1692904872}
   - 114: {fileID: 1692904871}
   - 114: {fileID: 1692904870}
-  - 114: {fileID: 1692904869}
   - 114: {fileID: 1692904868}
   m_Layer: 5
   m_Name: command21
@@ -11933,17 +11583,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1692904869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1692904866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1692904870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12310,7 +11949,6 @@ GameObject:
   - 222: {fileID: 1772708185}
   - 114: {fileID: 1772708181}
   - 114: {fileID: 1772708180}
-  - 114: {fileID: 1772708184}
   - 114: {fileID: 1772708183}
   m_Layer: 5
   m_Name: enemy3Arrow
@@ -12451,17 +12089,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1772708184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1772708179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1772708185
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12546,7 +12173,6 @@ GameObject:
   - 222: {fileID: 1791642800}
   - 114: {fileID: 1791642797}
   - 114: {fileID: 1791642796}
-  - 114: {fileID: 1791642799}
   - 114: {fileID: 1791642798}
   m_Layer: 5
   m_Name: command37
@@ -12688,17 +12314,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1791642799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1791642794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1791642800
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13056,7 +12671,6 @@ GameObject:
   - 222: {fileID: 1941943791}
   - 114: {fileID: 1941943790}
   - 114: {fileID: 1941943789}
-  - 114: {fileID: 1941943788}
   - 114: {fileID: 1941943787}
   m_Layer: 5
   m_Name: enemy1Arrow
@@ -13129,17 +12743,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1941943788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1941943785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1941943789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13436,7 +13039,6 @@ GameObject:
   - 222: {fileID: 2028407455}
   - 114: {fileID: 2028407454}
   - 114: {fileID: 2028407453}
-  - 114: {fileID: 2028407452}
   - 114: {fileID: 2028407451}
   m_Layer: 5
   m_Name: command24
@@ -13510,17 +13112,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &2028407452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2028407449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2028407453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13606,7 +13197,6 @@ GameObject:
   - 222: {fileID: 2069691653}
   - 114: {fileID: 2069691652}
   - 114: {fileID: 2069691651}
-  - 114: {fileID: 2069691655}
   - 114: {fileID: 2069691656}
   m_Layer: 5
   m_Name: command11
@@ -13707,17 +13297,6 @@ RectTransform:
   m_AnchoredPosition: {x: 220, y: 195}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2069691655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2069691650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2069691656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14044,7 +13623,6 @@ GameObject:
   - 222: {fileID: 2104414087}
   - 114: {fileID: 2104414086}
   - 114: {fileID: 2104414085}
-  - 114: {fileID: 2104414084}
   - 114: {fileID: 2104414083}
   m_Layer: 5
   m_Name: command12
@@ -14118,17 +13696,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &2104414084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2104414081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2104414085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14214,7 +13781,6 @@ GameObject:
   - 222: {fileID: 2108012264}
   - 114: {fileID: 2108012261}
   - 114: {fileID: 2108012260}
-  - 114: {fileID: 2108012263}
   - 114: {fileID: 2108012262}
   m_Layer: 5
   m_Name: command26
@@ -14356,17 +13922,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &2108012263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2108012258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafba582b1aa0476dbfe27708fc99b9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &2108012264
 CanvasRenderer:
   m_ObjectHideFlags: 0

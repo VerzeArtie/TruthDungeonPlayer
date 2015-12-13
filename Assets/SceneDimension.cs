@@ -6,10 +6,15 @@ public static class SceneDimension
 {
     public static List<string> playbackScene = new List<string>();
     
+    public static void Go(string src, string dst)
+    {
+        playbackScene.Add(src);
+        Application.LoadLevel(dst);
+    }
     public static void Back()
     {
-        string backScene = playbackScene[0];
-        playbackScene.Clear();
+        string backScene = playbackScene[playbackScene.Count-1];
+        playbackScene.Remove(backScene);
         Application.LoadLevel(backScene);        
     }
 }

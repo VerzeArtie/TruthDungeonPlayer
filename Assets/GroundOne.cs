@@ -36,187 +36,200 @@ namespace DungeonPlayer {
         public static bool EnableBGM = true; // ミュージック、デフォルトはオン
         public static bool EnableSoundEffect = true; // 効果音、デフォルトはオン
 
+        public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
+
+        public static bool CallBattleSetting = false;
+        public static bool CallBattleSettingAwake = false;
+
         public static void InitializeGroundOne()
         {
-            if (GroundOne.resourceList == null)
-            {
-                GroundOne.resourceList = new List<Sprite>();
-                GroundOne.resourceList.AddRange(Resources.LoadAll<Sprite>(""));
-            }
-            if (GroundOne.Truth_KnownTileInfo == null)
-            {
-                GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
-            }
+            if (AlreadyInitialize == false) { AlreadyInitialize = true; }
+            else { Debug.Log("already initialize"); return; }
 
-            if (GroundOne.WE == null)
-            {
-                GroundOne.WE = new WorldEnvironment();
-                GroundOne.WE.DungeonArea = 1;
-            }
-            if (GroundOne.WE2 == null)
-            {
-                GroundOne.WE2 = new TruthWorldEnvironment();
-            }
+            GroundOne.resourceList = new List<Sprite>();
+            GroundOne.resourceList.AddRange(Resources.LoadAll<Sprite>(""));
+            GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
+            GroundOne.WE = new WorldEnvironment();
+            GroundOne.WE.DungeonArea = 1;
+            GroundOne.WE2 = new TruthWorldEnvironment();
 
-            if (GroundOne.MC == null)
-            {
-                GameObject obj = new GameObject("obj");
-                GroundOne.MC = obj.AddComponent<MainCharacter>();
-                // debug
-                GroundOne.MC.AvailableMana = true;
-                GroundOne.MC.FreshHeal = true;
-                GroundOne.MC.Protection = true;
-                GroundOne.MC.HolyShock = true;
-                GroundOne.MC.SaintPower = true;
-                GroundOne.MC.Glory = true;
-                GroundOne.MC.Resurrection = true;
-                GroundOne.MC.CelestialNova = true;
-                GroundOne.MC.DarkBlast = true;
-                GroundOne.MC.ShadowPact = true;
-                GroundOne.MC.LifeTap = true;
-                GroundOne.MC.DevouringPlague = true;
-                GroundOne.MC.BlackContract = true;
-                GroundOne.MC.BloodyVengeance = true;
-                GroundOne.MC.Damnation = true;
-                GroundOne.MC.FireBall = true;
-                GroundOne.MC.FlameAura = true;
-                GroundOne.MC.HeatBoost = true;
-                GroundOne.MC.VolcanicWave = true;
-                GroundOne.MC.FlameStrike = true;
-                GroundOne.MC.ImmortalRave = true;
-                GroundOne.MC.LavaAnnihilation = true;
-                GroundOne.MC.IceNeedle = true;
-                GroundOne.MC.AbsorbWater = true;
-                GroundOne.MC.Cleansing = true;
-                GroundOne.MC.MirrorImage = true;
-                GroundOne.MC.FrozenLance = true;
-                GroundOne.MC.PromisedKnowledge = true;
-                GroundOne.MC.AbsoluteZero = true;
-                GroundOne.MC.WordOfPower = true;
-                GroundOne.MC.GaleWind = true;
-                GroundOne.MC.WordOfLife = true;
-                GroundOne.MC.WordOfFortune = true;
-                GroundOne.MC.AetherDrive = true;
-                GroundOne.MC.Genesis = true;
-                GroundOne.MC.EternalPresence = true;
-                GroundOne.MC.DispelMagic = true;
-                GroundOne.MC.RiseOfImage = true;
-                GroundOne.MC.Tranquility = true;
-                GroundOne.MC.Deflection = true;
-                GroundOne.MC.OneImmunity = true;
-                GroundOne.MC.WhiteOut = true;
-                GroundOne.MC.TimeStop = true;
-                GroundOne.MC.StraightSmash = true;
-                GroundOne.MC.DoubleSlash = true;
-                GroundOne.MC.CrushingBlow = true;
-                GroundOne.MC.SoulInfinity = true;
-                GroundOne.MC.CounterAttack = true;
-                GroundOne.MC.PurePurification = true;
-                GroundOne.MC.AntiStun = true;
-                GroundOne.MC.StanceOfDeath = true;
-                GroundOne.MC.StanceOfFlow = true;
-                GroundOne.MC.EnigmaSence = true;
-                GroundOne.MC.SilentRush = true;
-                GroundOne.MC.OboroImpact = true;
-                GroundOne.MC.StanceOfStanding = true;
-                GroundOne.MC.InnerInspiration = true;
-                GroundOne.MC.KineticSmash = true;
-                GroundOne.MC.Catastrophe = true;
-                GroundOne.MC.TruthVision = true;
-                GroundOne.MC.HighEmotionality = true;
-                GroundOne.MC.StanceOfEyes = true;
-                GroundOne.MC.PainfulInsanity = true;
-                GroundOne.MC.Negate = true;
-                GroundOne.MC.VoidExtraction = true;
-                GroundOne.MC.CarnageRush = true;
-                GroundOne.MC.NothingOfNothingness = true;
-                GroundOne.MC.PsychicTrance = true;
-                GroundOne.MC.BlindJustice = true;
-                GroundOne.MC.TranscendentWish = true;
-                GroundOne.MC.FlashBlaze = true;
-                GroundOne.MC.LightDetonator = true;
-                GroundOne.MC.AscendantMeteor = true;
-                GroundOne.MC.SkyShield = true;
-                GroundOne.MC.SacredHeal = true;
-                GroundOne.MC.EverDroplet = true;
-                GroundOne.MC.HolyBreaker = true;
-                GroundOne.MC.ExaltedField = true;
-                GroundOne.MC.HymnContract = true;
-                GroundOne.MC.StarLightning = true;
-                GroundOne.MC.AngelBreath = true;
-                GroundOne.MC.EndlessAnthem = true;
-                GroundOne.MC.BlackFire = true;
-                GroundOne.MC.BlazingField = true;
-                GroundOne.MC.DemonicIgnite = true;
-                GroundOne.MC.BlueBullet = true;
-                GroundOne.MC.DeepMirror = true;
-                GroundOne.MC.DeathDeny = true;
-                GroundOne.MC.WordOfMalice = true;
-                GroundOne.MC.AbyssEye = true;
-                GroundOne.MC.SinFortune = true;
-                GroundOne.MC.DarkenField = true;
-                GroundOne.MC.DoomBlade = true;
-                GroundOne.MC.EclipseEnd = true;
-                GroundOne.MC.FrozenAura = true;
-                GroundOne.MC.ChillBurn = true;
-                GroundOne.MC.ZetaExplosion = true;
-                GroundOne.MC.EnrageBlast = true;
-                GroundOne.MC.PiercingFlame = true;
-                GroundOne.MC.SigilOfHomura = true;
-                GroundOne.MC.Immolate = true;
-                GroundOne.MC.PhantasmalWind = true;
-                GroundOne.MC.RedDragonWill = true;
-                GroundOne.MC.WordOfAttitude = true;
-                GroundOne.MC.StaticBarrier = true;
-                GroundOne.MC.AusterityMatrix = true;
-                GroundOne.MC.VanishWave = true;
-                GroundOne.MC.VortexField = true;
-                GroundOne.MC.BlueDragonWill = true;
-                GroundOne.MC.SeventhMagic = true;
-                GroundOne.MC.ParadoxImage = true;
-                GroundOne.MC.WarpGate = true;
-                GroundOne.MC.NeutralSmash = true;
-                GroundOne.MC.StanceOfDouble = true;
-                GroundOne.MC.SwiftStep = true;
-                GroundOne.MC.VigorSense = true;
-                GroundOne.MC.CircleSlash = true;
-                GroundOne.MC.RisingAura = true;
-                GroundOne.MC.RumbleShout = true;
-                GroundOne.MC.OnslaughtHit = true;
-                GroundOne.MC.SmoothingMove = true;
-                GroundOne.MC.AscensionAura = true;
-                GroundOne.MC.FutureVision = true;
-                GroundOne.MC.UnknownShock = true;
-                GroundOne.MC.ReflexSpirit = true;
-                GroundOne.MC.FatalBlow = true;
-                GroundOne.MC.SharpGlare = true;
-                GroundOne.MC.ConcussiveHit = true;
-                GroundOne.MC.TrustSilence = true;
-                GroundOne.MC.MindKilling = true;
-                GroundOne.MC.SurpriseAttack = true;
-                GroundOne.MC.StanceOfMystic = true;
-                GroundOne.MC.PsychicWave = true;
-                GroundOne.MC.NourishSense = true;
-                GroundOne.MC.Recover = true;
-                GroundOne.MC.ImpulseHit = true;
-                GroundOne.MC.ViolentSlash = true;
-                GroundOne.MC.ONEAuthority = true;
-                GroundOne.MC.OuterInspiration = true;
-                GroundOne.MC.HardestParry = true;
-                GroundOne.MC.StanceOfSuddenness = true;
-                GroundOne.MC.SoulExecution = true;
+            GameObject obj = new GameObject("obj");
+            MC = obj.AddComponent<MainCharacter>();
+            // debug
+            MC.AvailableMana = true;
+            MC.FreshHeal = true;
+            MC.Protection = true;
+            MC.HolyShock = true;
+            MC.SaintPower = true;
+            MC.Glory = true;
+            MC.Resurrection = true;
+            MC.CelestialNova = true;
+            MC.DarkBlast = true;
+            MC.ShadowPact = true;
+            MC.LifeTap = true;
+            MC.DevouringPlague = true;
+            MC.BlackContract = true;
+            MC.BloodyVengeance = true;
+            MC.Damnation = true;
+            MC.FireBall = true;
+            MC.FlameAura = true;
+            MC.HeatBoost = true;
+            MC.VolcanicWave = true;
+            MC.FlameStrike = true;
+            MC.ImmortalRave = true;
+            MC.LavaAnnihilation = true;
+            MC.IceNeedle = true;
+            MC.AbsorbWater = true;
+            MC.Cleansing = true;
+            MC.MirrorImage = true;
+            MC.FrozenLance = true;
+            MC.PromisedKnowledge = true;
+            MC.AbsoluteZero = true;
+            MC.WordOfPower = true;
+            MC.GaleWind = true;
+            MC.WordOfLife = true;
+            MC.WordOfFortune = true;
+            MC.AetherDrive = true;
+            MC.Genesis = true;
+            MC.EternalPresence = true;
+            MC.DispelMagic = true;
+            MC.RiseOfImage = true;
+            MC.Tranquility = true;
+            MC.Deflection = true;
+            MC.OneImmunity = true;
+            MC.WhiteOut = true;
+            MC.TimeStop = true;
+            MC.StraightSmash = true;
+            MC.DoubleSlash = true;
+            MC.CrushingBlow = true;
+            MC.SoulInfinity = true;
+            MC.CounterAttack = true;
+            MC.PurePurification = true;
+            MC.AntiStun = true;
+            MC.StanceOfDeath = true;
+            MC.StanceOfFlow = true;
+            MC.EnigmaSence = true;
+            MC.SilentRush = true;
+            MC.OboroImpact = true;
+            MC.StanceOfStanding = true;
+            MC.InnerInspiration = true;
+            MC.KineticSmash = true;
+            MC.Catastrophe = true;
+            MC.TruthVision = true;
+            MC.HighEmotionality = true;
+            MC.StanceOfEyes = true;
+            MC.PainfulInsanity = true;
+            MC.Negate = true;
+            MC.VoidExtraction = true;
+            MC.CarnageRush = true;
+            MC.NothingOfNothingness = true;
+            MC.PsychicTrance = true;
+            MC.BlindJustice = true;
+            MC.TranscendentWish = true;
+            MC.FlashBlaze = true;
+            MC.LightDetonator = true;
+            MC.AscendantMeteor = true;
+            MC.SkyShield = true;
+            MC.SacredHeal = true;
+            MC.EverDroplet = true;
+            MC.HolyBreaker = true;
+            MC.ExaltedField = true;
+            MC.HymnContract = true;
+            MC.StarLightning = true;
+            MC.AngelBreath = true;
+            MC.EndlessAnthem = true;
+            MC.BlackFire = true;
+            MC.BlazingField = true;
+            MC.DemonicIgnite = true;
+            MC.BlueBullet = true;
+            MC.DeepMirror = true;
+            MC.DeathDeny = true;
+            MC.WordOfMalice = true;
+            MC.AbyssEye = true;
+            MC.SinFortune = true;
+            MC.DarkenField = true;
+            MC.DoomBlade = true;
+            MC.EclipseEnd = true;
+            MC.FrozenAura = true;
+            MC.ChillBurn = true;
+            MC.ZetaExplosion = true;
+            MC.EnrageBlast = true;
+            MC.PiercingFlame = true;
+            MC.SigilOfHomura = true;
+            MC.Immolate = true;
+            MC.PhantasmalWind = true;
+            MC.RedDragonWill = true;
+            MC.WordOfAttitude = true;
+            MC.StaticBarrier = true;
+            MC.AusterityMatrix = true;
+            MC.VanishWave = true;
+            MC.VortexField = true;
+            MC.BlueDragonWill = true;
+            MC.SeventhMagic = true;
+            MC.ParadoxImage = true;
+            MC.WarpGate = true;
+            MC.NeutralSmash = true;
+            MC.StanceOfDouble = true;
+            MC.SwiftStep = true;
+            MC.VigorSense = true;
+            MC.CircleSlash = true;
+            MC.RisingAura = true;
+            MC.RumbleShout = true;
+            MC.OnslaughtHit = true;
+            MC.SmoothingMove = true;
+            MC.AscensionAura = true;
+            MC.FutureVision = true;
+            MC.UnknownShock = true;
+            MC.ReflexSpirit = true;
+            MC.FatalBlow = true;
+            MC.SharpGlare = true;
+            MC.ConcussiveHit = true;
+            MC.TrustSilence = true;
+            MC.MindKilling = true;
+            MC.SurpriseAttack = true;
+            MC.StanceOfMystic = true;
+            MC.PsychicWave = true;
+            MC.NourishSense = true;
+            MC.Recover = true;
+            MC.ImpulseHit = true;
+            MC.ViolentSlash = true;
+            MC.ONEAuthority = true;
+            MC.OuterInspiration = true;
+            MC.HardestParry = true;
+            MC.StanceOfSuddenness = true;
+            MC.SoulExecution = true;
 
+            MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+            MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+            MC.BattleActionCommandList[2] = Database.HEAT_BOOST;
+            MC.BattleActionCommandList[3] = Database.FRESH_HEAL;
+            MC.BattleActionCommandList[4] = Database.STRAIGHT_SMASH;
+            MC.BattleActionCommandList[5] = Database.WORD_OF_LIFE;
+            MC.BattleActionCommandList[6] = Database.LAVA_ANNIHILATION;
+            MC.BattleActionCommandList[7] = Database.STAY_EN;
+            MC.BattleActionCommandList[8] = Database.STAY_EN;
 
+            SC = obj.AddComponent<MainCharacter>();
+            SC.BattleActionCommandList[0] = Database.ATTACK_EN;
+            SC.BattleActionCommandList[1] = Database.ICE_NEEDLE;
+            SC.BattleActionCommandList[2] = Database.SHADOW_PACT;
+            SC.BattleActionCommandList[3] = Database.COUNTER_ATTACK;
+            SC.BattleActionCommandList[4] = Database.ENIGMA_SENSE;
+            SC.BattleActionCommandList[5] = Database.STAY_EN;
+            SC.BattleActionCommandList[6] = Database.STAY_EN;
+            SC.BattleActionCommandList[7] = Database.STAY_EN;
+            SC.BattleActionCommandList[8] = Database.STAY_EN;
 
-            }
-            if (GroundOne.SC == null)
-            {
-                GroundOne.SC = new MainCharacter();
-            }
-            if (GroundOne.TC == null)
-            {
-                GroundOne.TC = new MainCharacter();
-            }
+            TC = obj.AddComponent<MainCharacter>();
+            TC.BattleActionCommandList[0] = Database.ATTACK_EN;
+            TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
+            TC.BattleActionCommandList[2] = Database.STAY_EN;
+            TC.BattleActionCommandList[3] = Database.STAY_EN;
+            TC.BattleActionCommandList[4] = Database.STAY_EN;
+            TC.BattleActionCommandList[5] = Database.STAY_EN;
+            TC.BattleActionCommandList[6] = Database.STAY_EN;
+            TC.BattleActionCommandList[7] = Database.STAY_EN;
+            TC.BattleActionCommandList[8] = Database.STAY_EN;
         }
 		public static void InitializeNetworkConnection()
 		{
