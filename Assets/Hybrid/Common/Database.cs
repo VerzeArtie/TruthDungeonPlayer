@@ -2571,6 +2571,7 @@ namespace DungeonPlayer
         public const string VINSGALDE = @"ヴィンスガルデ";
         
         // 画面名称(add unity)
+        public const string Title = @"Title";
         public const string TruthAnswer = @"TruthAnswer";
         public const string TruthBattleEnemy = @"TruthBattleEnemy";
         public const string TruthBattleSetting = @"TruthBattleSetting";
