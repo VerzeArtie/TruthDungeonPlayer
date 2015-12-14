@@ -3440,7 +3440,7 @@ MonoBehaviour:
   - {fileID: 1791642796}
   - {fileID: 386762301}
   - {fileID: 104166328}
-  mainMessage: {fileID: 34928731}
+  txtBattleMessage: {fileID: 34928731}
   labelBattleTurn: {fileID: 2110059844}
   pbSandglass: {fileID: 1423324821}
   lblTimerCount: {fileID: 1579655331}

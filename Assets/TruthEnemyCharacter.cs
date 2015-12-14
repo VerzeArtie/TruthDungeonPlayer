@@ -4472,8 +4472,9 @@ namespace DungeonPlayer
         }
 
 
-        public TruthEnemyCharacter(string createName)
+        public void Initialize(string createName)
         {
+            Debug.Log("TruthEnemyCharacter(S) " + createName);
             this.DropItem = new string[MAX_DROPITEM_SIZE];
             for (int ii = 0; ii < MAX_DROPITEM_SIZE; ii++)
             {
@@ -4490,21 +4491,21 @@ namespace DungeonPlayer
             {
                 //#region "ダンジョン１階"
                 //#region "エリア１"
-                //case Database.ENEMY_KOUKAKU_WURM:
-                //    this.baseStrength = 7;
-                //    this.baseAgility = 2;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 1;
-                //    this.baseMind = 1;
-                //    this.baseLife = 45;
-                //    this.experience = 102;
-                //    this.level = 1;
-                //    this.gold = 44;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area11;
-                //    this.DropItem[0] = "ワームの甲殻";
-                //    break;
+                case Database.ENEMY_KOUKAKU_WURM:
+                    this.baseStrength = 7;
+                    this.baseAgility = 2;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 1;
+                    this.baseMind = 1;
+                    this.baseLife = 45;
+                    this.experience = 102;
+                    this.level = 1;
+                    this.gold = 44;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area11;
+                    this.DropItem[0] = "ワームの甲殻";
+                    break;
                 //case Database.ENEMY_HIYOWA_BEATLE:
                 //    this.baseStrength = 6;
                 //    this.baseAgility = 3;
@@ -6738,16 +6739,16 @@ namespace DungeonPlayer
                     break;
             }
 
-            // todo
-            //if (this.baseLife == 0)
-            //{
-            //    this.baseLife = 50 + (this.level - 1) * 20;
-            //}
-            //if (this.baseMana == 0)
-            //{
-            //    this.baseMana = 80 + (this.level - 1) * 15;
-            //}
+            if (this.baseLife == 0)
+            {
+                this.baseLife = 50 + (this.level - 1) * 20;
+            }
+            if (this.baseMana == 0)
+            {
+                this.baseMana = 80 + (this.level - 1) * 15;
+            }
 
+            // todo
             //float powerValue = 1.0f;
             //if (GroundOne.Difficulty == 1)
             //{
@@ -6785,8 +6786,9 @@ namespace DungeonPlayer
             //}
             //// c 後編編集
 
-            //this.currentLife = this.MaxLife; // c 後編編集
-            //this.currentMana = this.MaxMana; // c 後編編集
+            this.currentLife = this.MaxLife; // c 後編編集
+            Debug.Log("currentLife: " + this.currentLife.ToString());
+            this.currentMana = this.MaxMana; // c 後編編集
 
         }
 

@@ -70,7 +70,7 @@ namespace DungeonPlayer
         public Button[] ActionButton1;
         public Button[] ActionButton2;
         public Button[] ActionButton3;
-        public Text mainMessage;
+        public Text txtBattleMessage;
         public Text labelBattleTurn;
         public Image pbSandglass;
         public Text lblTimerCount;
@@ -986,14 +986,16 @@ namespace DungeonPlayer
             this.playerList.Add(GroundOne.TC);
 
             this.ec1 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec1.Name = "Gate Keeper";
-            this.ec1.Strength = 1;
-            this.ec1.Agility = 2;
-            this.ec1.Intelligence = 2;
-            this.ec1.Stamina = 587;
-            this.ec1.Mind = 3;
-            //this.enemyObj1.MaxLife = 5920;
-            this.ec1.CurrentLife = 5920;
+            this.ec1.Initialize(Database.ENEMY_KOUKAKU_WURM);
+            //this.ec1.Name = "Gate Keeper";
+            //this.ec1.Strength = 1;
+            //this.ec1.Agility = 2;
+            //this.ec1.Intelligence = 2;
+            //this.ec1.Stamina = 587;
+            //this.ec1.Mind = 3;
+            ////this.enemyObj1.MaxLife = 5920;
+            //this.ec1.CurrentLife = 5920;
+            Debug.Log(this.ec1.CurrentLife.ToString());
             this.ec1.CurrentMana = this.ec1.MaxMana;
             this.ec1.MagicAttackValue = 1;
             this.ec1.CurrentCommand = Database.ATTACK_EN;
@@ -1354,19 +1356,19 @@ namespace DungeonPlayer
             // BattleEndPhase // todo
             if (GroundOne.MC.CurrentLife <= 0 && GroundOne.SC.CurrentLife <= 0 && GroundOne.TC.CurrentLife <= 0)
             {
-                if (this.mainMessage != null)
+                if (this.txtBattleMessage != null)
                 {
-                    this.mainMessage.text = "You lose..." + this.endFlag.ToString();
-                    this.mainMessage.enabled = true;
+                    this.txtBattleMessage.text = "You lose..." + this.endFlag.ToString();
+                    this.txtBattleMessage.enabled = true;
                 }
                 this.endFlag = true;
             }
             else if (this.ec1.CurrentLife <= 0 && this.ec2.CurrentLife <= 0 && this.ec3.CurrentLife <= 0)
             {
-                if (this.mainMessage != null)
+                if (this.txtBattleMessage != null)
                 {
-                    this.mainMessage.text = "YOU WIN !!";
-                    this.mainMessage.enabled = true;
+                    this.txtBattleMessage.text = "YOU WIN !!";
+                    this.txtBattleMessage.enabled = true;
                 }
                 this.endFlag = true;
             }
@@ -2808,7 +2810,7 @@ namespace DungeonPlayer
         {
             string command = obj.name;
             //buttonTargetPlayer1.image.sprite = obj.image.sprite;
-            mainMessage.text = command;
+            txtBattleMessage.text = command;
 
             ActionCommand(false, GroundOne.MC, obj.name);
 
@@ -2818,7 +2820,7 @@ namespace DungeonPlayer
         {
             string command = obj.name;
             buttonTargetPlayer2.image.sprite = obj.image.sprite;
-            mainMessage.text = command;
+            txtBattleMessage.text = command;
 
             ActionCommand(false, GroundOne.SC, obj.name);
 
@@ -2828,7 +2830,7 @@ namespace DungeonPlayer
         {
             string command = obj.name;
             buttonTargetPlayer3.image.sprite = obj.image.sprite;
-            mainMessage.text = command;
+            txtBattleMessage.text = command;
 
             ActionCommand(false, GroundOne.TC, obj.name);
 
@@ -3242,12 +3244,13 @@ namespace DungeonPlayer
         }
         private void RunAwayButton_Click()
         {
-            //if (this.cannotRunAway)
-            //{
-            //    txtBattleMessage.Text = txtBattleMessage.Text.Insert(0, "アインは今逃げられない状態に居る。\r\n");
-            //    return;
-            //}
+            if (this.cannotRunAway)
+            {
+                txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは今逃げられない状態に居る。\r\n");
+                return;
+            }
 
+            // todo
             //if (th != null)
             //{
             //    tempStopFlag = true;

@@ -53,41 +53,205 @@ namespace DungeonPlayer
         protected int baseStamina = 4;
         protected int baseMind = 3;
 
+        protected int level = 1;
+        protected int experience = 0;
+        protected int baseLife = 50;
+        protected int currentLife = 50;
+        protected int baseSkillPoint = 100;
+        protected int currentSkillPoint = 100;
+        protected int baseInstantPoint = 1000; // 後編追加
+        protected int baseSpecialInstant = 20000; // 後編追加
+        protected double currentInstantPoint = 0; // 後編追加// 「コメント」初期直感ではMAX値に戻しておくほうがいいと思ったが、プレイしてみてはじめは０のほうが、ゲーム性は面白く感じられると思った。
+        protected double currentSpecialInstant = 0; // 後編追加
+        protected int gold = 0;
+        protected PlayerStance stance = PlayerStance.None; // 後編追加
+        protected AdditionalSpellType additionSpellType = AdditionalSpellType.None; // 後編追加
+        protected AdditionalSkillType additionSkillType = AdditionalSkillType.None; // 後編追加
+
+        protected int baseMana = 80;
+        protected int currentMana = 80;
+        protected bool availableSkill = false;
+        protected bool availableMana = false;
+        protected bool availableArchitect = false;
+
         // core parameter
         public string Name { get; set; }
-        public int Level { get; set; }
         public int Strength { get; set; }
         public int Agility { get; set; }
         public int Intelligence { get; set; }
         public int Stamina { get; set; }
         public int Mind { get; set; }
-        public int CurrentLife { get; set; }
-        public int CurrentMana { get; set; }
-        public int CurrentSkillPoint { get; set; }
-        public int CurrentInstantPoint { get; set; }
         protected string currentArchetypeName = string.Empty; // 後編追加
         public string CurrentArchetypeName
         {
             get { return currentArchetypeName; }
             set { currentArchetypeName = value; }
         }
+
+        public int BaseLife
+        {
+            get { return baseLife; }
+            set { baseLife = value; }
+        }
         public int MaxLife
         {
-            get { return 50 + this.TotalStamina * 10; }
+            get
+            {
+                int result = baseLife;
+                result += TotalStamina * 10;
+                result += CurrentBlackElixirValue;
+                return result;
+            }
+        }
+        public int BaseMana
+        {
+            get { return baseMana; }
+            set { baseMana = value; }
         }
         public int MaxMana
         {
-            get { return 30 + this.TotalIntelligence * 10; }
+            get { return baseMana + TotalIntelligence * 10; } // 後編編集
+        }
+        public int BaseSkillPoint
+        {
+            get { return baseSkillPoint; }
+            set { baseSkillPoint = value; }
         }
         public int MaxSkillPoint
         {
-            get { return 100; }
+            get
+            {
+                int result = baseSkillPoint;
+                if (this.accessory != null)
+                {
+                    result += (int)this.accessory.EffectValue1;
+                }
+                if (this.accessory2 != null)
+                {
+                    result += (int)this.accessory2.EffectValue1;
+                }
+
+                if (this.currentSkillPoint > result) this.currentSkillPoint = result;
+                return result; 
+            }
+        }
+        public int BaseInstantPoint
+        {
+            get { return baseInstantPoint; }
+            set { baseInstantPoint = value; }
         }
         public int MaxInstantPoint
         {
-            get { return 300; }
+            get
+            {
+                if (baseInstantPoint < 1000) baseInstantPoint = 1000;
+                return baseInstantPoint;
+            }
         }
 
+        
+        public int Level
+        {
+            get { return level; }
+            set { level = value; }
+        }
+        public int Exp
+        {
+            get { return experience; }
+            set 
+            {
+                if (value <= 0)
+                {
+                    experience = 0;
+                }
+                else
+                {
+                    experience = value;
+                }
+            }
+        }
+        public int CurrentLife
+        {
+            get { return currentLife; }
+            set
+            {
+                if (value >= MaxLife)
+                {
+                    value = MaxLife;
+                }
+                if (value <= 0)
+                {
+                    value = 0;
+                }
+                currentLife = value;
+            }
+        }
+        public int CurrentMana
+        {
+            get { return currentMana; }
+            set
+            {
+                if (value >= MaxMana)
+                {
+                    value = MaxMana;
+                }
+                if (value <= 0)
+                {
+                    value = 0;
+                }
+                currentMana = value;
+            }
+        }
+        public int CurrentSkillPoint
+        {
+            get { return currentSkillPoint; }
+            set
+            {
+                if (value >= MaxSkillPoint)
+                {
+                    value = MaxSkillPoint;
+                }
+                currentSkillPoint = value;
+            }
+        }
+        // s 後編追加
+        public double CurrentInstantPoint
+        {
+            get { return currentInstantPoint; }
+            set
+            {
+                if (value >= MaxInstantPoint)
+                {
+                    value = MaxInstantPoint;
+                }
+                currentInstantPoint = value;
+            }
+        }
+        public double CurrentSpecialInstant
+        {
+            get { return currentSpecialInstant; }
+            set
+            {
+                if (value >= MaxSpecialInstant)
+                {
+                    value = MaxSpecialInstant;
+                }
+                currentSpecialInstant = value;
+            }
+        }
+        public int BaseSpecialInstant
+        {
+            get { return baseSpecialInstant; }
+            set { baseSpecialInstant = value; }
+        }
+        public int MaxSpecialInstant
+        {
+            get
+            {
+                if (baseSpecialInstant < 1) baseSpecialInstant = 1;
+                return baseSpecialInstant;
+            }
+        }        
         public JobClass.Job Job { get; set; }
 
         // buff up(+)
@@ -2019,33 +2183,8 @@ namespace DungeonPlayer
         public Image meterCurrentInstantPoint = null;
 
         public Text labelCurrentSpecialInstant = null;
-        protected int baseSpecialInstant = 20000; // 後編追加
-        public int BaseSpecialInstant
-        {
-            get { return baseSpecialInstant; }
-            set { baseSpecialInstant = value; }
-        }
-        public int MaxSpecialInstant
-        {
-            get
-            {
-                if (baseSpecialInstant < 1) baseSpecialInstant = 1;
-                return baseSpecialInstant;
-            }
-        }
-        public double currentSpecialInstant = 0;
-        public double CurrentSpecialInstant
-        {
-            get { return currentSpecialInstant; }
-            set
-            {
-                if (value >= MaxSpecialInstant)
-                {
-                    value = MaxSpecialInstant;
-                }
-                currentSpecialInstant = value;
-            }
-        }
+
+
         public Text DamageLabel = null;
         public Text CriticalLabel = null;
 
@@ -2287,6 +2426,8 @@ namespace DungeonPlayer
         {
             get { return this.baseMind + this.buffMind_MainWeapon + this.buffMind_Accessory + this.buffMind_Accessory2 + this.BuffMind_Food; } // c 後編追加
         }
+
+
 
         public void ActivateCharacter()
         {
