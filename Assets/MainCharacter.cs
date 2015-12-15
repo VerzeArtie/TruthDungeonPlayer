@@ -53,6 +53,13 @@ namespace DungeonPlayer
         protected int baseStamina = 4;
         protected int baseMind = 3;
 
+        protected int baseResistFire = 0; // 後編追加
+        protected int baseResistIce = 0; // 後編追加
+        protected int baseResistLight = 0; // 後編追加
+        protected int baseResistShadow = 0; // 後編追加
+        protected int baseResistForce = 0; // 後編追加
+        protected int baseResistWill = 0; // 後編追加
+
         protected int level = 1;
         protected int experience = 0;
         protected int baseLife = 50;
@@ -333,6 +340,69 @@ namespace DungeonPlayer
         public int ResistShadow { get; set; }
         public int ResistForce { get; set; }
         public int ResistWill { get; set; }
+
+        // Debuff耐性
+        protected bool battleResistStun = false; // 後編追加
+        protected bool battleResistSilence = false; // 後編追加
+        protected bool battleResistPoison = false; // 後編追加
+        protected bool battleResistTemptation = false; // 後編追加
+        protected bool battleResistFrozen = false; // 後編追加
+        protected bool battleResistParalyze = false; // 後編追加
+        protected bool battleResistSlow = false; // 後編追加
+        protected bool battleResistBlind = false; // 後編追加
+        protected bool battleResistSlip = false; // 後編追加
+        protected bool battleResistNoResurrection = false; // 後編追加
+
+        public bool ResistStun
+        {
+            get { return battleResistStun; }
+            set { battleResistStun = value; }
+        }
+        public bool ResistSilence
+        {
+            get { return battleResistSilence; }
+            set { battleResistSilence = value; }
+        }
+        public bool ResistPoison
+        {
+            get { return battleResistPoison; }
+            set { battleResistPoison = value; }
+        }
+        public bool ResistTemptation
+        {
+            get { return battleResistTemptation; }
+            set { battleResistTemptation = value; }
+        }
+        public bool ResistFrozen
+        {
+            get { return battleResistFrozen; }
+            set { battleResistFrozen = value; }
+        }
+        public bool ResistParalyze
+        {
+            get { return battleResistParalyze; }
+            set { battleResistParalyze = value; }
+        }
+        public bool ResistNoResurrection
+        {
+            get { return battleResistNoResurrection; }
+            set { battleResistNoResurrection = value; }
+        }
+        public bool ResistSlow
+        {
+            get { return battleResistSlow; }
+            set { battleResistSlow = value; }
+        }
+        public bool ResistBlind
+        {
+            get { return battleResistBlind; }
+            set { battleResistBlind = value; }
+        }
+        public bool ResistSlip
+        {
+            get { return battleResistSlip; }
+            set { battleResistSlip = value; }
+        }
 
         // s 後編追加
         // 以下、ボス戦など敵が汎用的にパワーアップしようとして作成したもの
@@ -2140,17 +2210,6 @@ namespace DungeonPlayer
         //	public int CurrentPoison = 0;
         //	public int CurrentPoisonValue = 0;
 
-        // -BUFF resist
-        public bool battleResistStun { get; set; }
-        public bool battleResistSilence { get; set; }
-        public bool battleResistPoison { get; set; }
-        public bool battleResistTemptation { get; set; }
-        public bool battleResistFrozen { get; set; }
-        public bool battleResistParalyze { get; set; }
-        public bool battleResistSlow { get; set; }
-        public bool battleResistBlind { get; set; }
-        public bool battleResistSlip { get; set; }
-        public bool battleResistNoResurrection { get; set; }
 
         // basic parameter up
         //	public int CurrentStrengthUp { get; set; }
@@ -2487,14 +2546,16 @@ namespace DungeonPlayer
             {
                 // 【要検討】リザレクション対象にするため、生死に関わらず、対象とする事を許可
                 //this.MainObjectButton.Enabled = false; // delete
+                // todo
                 //			this.MainObjectButton.BackColor = Color.DarkSlateGray;
             }
+            // todo
             //		if (this.pbTargetTarget != null)
             //		{
             //			this.pbTargetTarget.BackColor = Color.DarkSlateGray;
             //		}
-            //		if (this.labelName != null) this.labelName.ForeColor = System.Drawing.Color.Red;
-            //		if (this.labelLife != null) this.labelLife.ForeColor = System.Drawing.Color.Red;
+            if (this.labelName != null) this.labelName.color = Color.red;
+            if (this.labelCurrentLifePoint != null) this.labelCurrentLifePoint.color = Color.red;
         }
 
         public void ResurrectPlayer(int life)
@@ -2503,6 +2564,7 @@ namespace DungeonPlayer
             {
                 this.CurrentLife = life;
                 this.Dead = false;
+                // todo
                 //			if (this.MainObjectButton != null)
                 //			{
                 //				this.MainObjectButton.Enabled = true;
@@ -2512,8 +2574,8 @@ namespace DungeonPlayer
                 //			{
                 //				this.pbTargetTarget.BackColor = this.MainColor;
                 //			}
-                //			if (this.labelName != null) { this.labelName.ForeColor = System.Drawing.Color.Black; }
-                //			if (this.labelLife != null) { this.labelLife.ForeColor = System.Drawing.Color.Black; this.labelLife.Text = this.currentLife.ToString(); }
+                if (this.labelName != null) { this.labelName.color = Color.black; }
+                if (this.labelCurrentLifePoint != null) { this.labelCurrentLifePoint.color = Color.black; this.labelCurrentLifePoint.text = CurrentLife.ToString(); }
             }
         }
 

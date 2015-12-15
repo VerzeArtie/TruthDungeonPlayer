@@ -4489,8 +4489,8 @@ namespace DungeonPlayer
             this.Name = createName;
             switch (createName)
             {
-                //#region "ダンジョン１階"
-                //#region "エリア１"
+                #region "ダンジョン１階"
+                #region "エリア１"
                 case Database.ENEMY_KOUKAKU_WURM:
                     this.baseStrength = 7;
                     this.baseAgility = 2;
@@ -4506,1485 +4506,1486 @@ namespace DungeonPlayer
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = "ワームの甲殻";
                     break;
-                //case Database.ENEMY_HIYOWA_BEATLE:
-                //    this.baseStrength = 6;
-                //    this.baseAgility = 3;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 1;
-                //    this.baseMind = 1;
-                //    this.baseLife = 40;
-                //    this.experience = 109;
-                //    this.level = 1;
-                //    this.gold = 47;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area11;
-                //    this.DropItem[0] = "ビートルの尖った角";
-                //    break;
-                //case Database.ENEMY_GREEN_CHILD:
-                //    this.baseStrength = 5;
-                //    this.baseAgility = 5;
-                //    this.baseIntelligence = 12;
-                //    this.baseStamina = 1;
-                //    this.baseMind = 1;
-                //    this.baseLife = 30;
-                //    this.experience = 126;
-                //    this.level = 1;
-                //    this.gold = 54;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area11;
-                //    this.DropItem[0] = "緑化色素";
-                //    break;
-                //case Database.ENEMY_MANDRAGORA:
-                //    this.baseStrength = 16;
-                //    this.baseAgility = 7;
-                //    this.baseIntelligence = 21;
-                //    this.baseStamina = 14;
-                //    this.baseLife = 0;
-                //    this.experience = 215;
-                //    this.level = 4;
-                //    this.gold = 92;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area11;
-                //    this.DropItem[0] = "マンドラゴラの根";
-                //    break;
-                //#endregion
+                case Database.ENEMY_HIYOWA_BEATLE:
+                    this.baseStrength = 6;
+                    this.baseAgility = 3;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 1;
+                    this.baseMind = 1;
+                    this.baseLife = 40;
+                    this.experience = 109;
+                    this.level = 1;
+                    this.gold = 47;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area11;
+                    this.DropItem[0] = "ビートルの尖った角";
+                    break;
+                case Database.ENEMY_GREEN_CHILD:
+                    this.baseStrength = 5;
+                    this.baseAgility = 5;
+                    this.baseIntelligence = 12;
+                    this.baseStamina = 1;
+                    this.baseMind = 1;
+                    this.baseLife = 30;
+                    this.experience = 126;
+                    this.level = 1;
+                    this.gold = 54;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area11;
+                    this.DropItem[0] = "緑化色素";
+                    break;
+                case Database.ENEMY_MANDRAGORA:
+                    this.baseStrength = 16;
+                    this.baseAgility = 7;
+                    this.baseIntelligence = 21;
+                    this.baseStamina = 14;
+                    this.baseLife = 0;
+                    this.experience = 215;
+                    this.level = 4;
+                    this.gold = 92;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area11;
+                    this.DropItem[0] = "マンドラゴラの根";
+                    break;
+                #endregion
 
-                //#region "エリア２"
-                //case Database.ENEMY_SUN_FLOWER:
-                //    this.baseResistFire = 30;
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 10;
-                //    this.baseIntelligence = 25;
-                //    this.baseStamina = 12;
-                //    this.baseMind = 14;
-                //    this.experience = 172;
-                //    this.level = 6;
-                //    this.gold = 64;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area12;
-                //    this.DropItem[0] = "太陽の葉";
-                //    break;
-                //case Database.ENEMY_RED_HOPPER:
-                //    this.baseStrength = 20;
-                //    this.baseAgility = 21;
-                //    this.baseIntelligence = 5;
-                //    this.baseStamina = 8;
-                //    this.baseMind = 3;
-                //    this.experience = 186;
-                //    this.level = 6;
-                //    this.gold = 70;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Regist_Physical;
-                //    this.Area = MonsterArea.Area12;
-                //    this.DropItem[0] = "蝗";
-                //    break;
-                //case Database.ENEMY_EARTH_SPIDER:
-                //    this.baseStrength = 56;
-                //    this.baseAgility = 11;
-                //    this.baseIntelligence = 11;
-                //    this.baseStamina = 15;
-                //    this.experience = 198;
-                //    this.level = 6;
-                //    this.gold = 75;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area12;
-                //    this.DropItem[0] = "スパイダーシルク";
-                //    break;
-                //case Database.ENEMY_ALRAUNE:
-                //    this.baseStrength = 5;
-                //    this.baseAgility = 35;
-                //    this.baseIntelligence = 38;
-                //    this.baseStamina = 25;
-                //    this.experience = 337;
-                //    this.level = 9;
-                //    this.gold = 116;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area12;
-                //    this.DropItem[0] = "アルラウネの花粉";
-                //    break;
-                //case Database.ENEMY_POISON_MARY:
-                //    this.baseStrength = 8;
-                //    this.baseAgility = 48;
-                //    this.baseIntelligence = 52;
-                //    this.baseStamina = 39;
-                //    this.baseMind = 40;
-                //    this.experience = 506;
-                //    this.level = 13;
-                //    this.gold = 209;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area12;
-                //    this.DropItem[0] = "マリーキッス";
-                //    this.DropItem[1] = "ブルーマテリアル";
-                //    break;
-                //#endregion
+                #region "エリア２"
+                case Database.ENEMY_SUN_FLOWER:
+                    this.baseResistFire = 30;
+                    this.baseStrength = 1;
+                    this.baseAgility = 10;
+                    this.baseIntelligence = 25;
+                    this.baseStamina = 12;
+                    this.baseMind = 14;
+                    this.experience = 172;
+                    this.level = 6;
+                    this.gold = 64;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area12;
+                    this.DropItem[0] = "太陽の葉";
+                    break;
+                case Database.ENEMY_RED_HOPPER:
+                    this.baseStrength = 20;
+                    this.baseAgility = 21;
+                    this.baseIntelligence = 5;
+                    this.baseStamina = 8;
+                    this.baseMind = 3;
+                    this.experience = 186;
+                    this.level = 6;
+                    this.gold = 70;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Regist_Physical;
+                    this.Area = MonsterArea.Area12;
+                    this.DropItem[0] = "蝗";
+                    break;
+                case Database.ENEMY_EARTH_SPIDER:
+                    this.baseStrength = 56;
+                    this.baseAgility = 11;
+                    this.baseIntelligence = 11;
+                    this.baseStamina = 15;
+                    this.experience = 198;
+                    this.level = 6;
+                    this.gold = 75;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area12;
+                    this.DropItem[0] = "スパイダーシルク";
+                    break;
+                case Database.ENEMY_ALRAUNE:
+                    this.baseStrength = 5;
+                    this.baseAgility = 35;
+                    this.baseIntelligence = 38;
+                    this.baseStamina = 25;
+                    this.experience = 337;
+                    this.level = 9;
+                    this.gold = 116;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area12;
+                    this.DropItem[0] = "アルラウネの花粉";
+                    break;
+                case Database.ENEMY_POISON_MARY:
+                    this.baseStrength = 8;
+                    this.baseAgility = 48;
+                    this.baseIntelligence = 52;
+                    this.baseStamina = 39;
+                    this.baseMind = 40;
+                    this.experience = 506;
+                    this.level = 13;
+                    this.gold = 209;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area12;
+                    this.DropItem[0] = "マリーキッス";
+                    this.DropItem[1] = "ブルーマテリアル";
+                    break;
+                #endregion
 
-                //#region "エリア３"
-                //case Database.ENEMY_ZASSYOKU_RABBIT:
-                //    this.baseStrength = 72;
-                //    this.baseAgility = 35;
-                //    this.baseIntelligence = 2;
-                //    this.baseStamina = 30;
-                //    this.experience = 405;
-                //    this.level = 11;
-                //    this.gold = 146;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area13;
-                //    this.DropItem[0] = "ウサギの毛皮";
-                //    this.DropItem[1] = "ウサギの肉";
-                //    break;
-                //case Database.ENEMY_SPEEDY_TAKA:
-                //    this.baseStrength = 66;
-                //    this.baseAgility = 55;
-                //    this.baseIntelligence = 22;
-                //    this.baseStamina = 33;
-                //    this.experience = 437;
-                //    this.level = 11;
-                //    this.gold = 158;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area13;
-                //    this.DropItem[0] = "鷹の白羽";
-                //    break;
-                //case Database.ENEMY_WONDER_SEED:
-                //    this.baseStrength = 93;
-                //    this.baseAgility = 30;
-                //    this.baseIntelligence = 56;
-                //    this.baseStamina = 51;
-                //    this.experience = 743;
-                //    this.level = 14;
-                //    this.gold = 247;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area13;
-                //    this.DropItem[0] = "プラントノイドの種";
-                //    break;
-                //case Database.ENEMY_FLANSIS_KNIGHT:
-                //    this.baseStrength = 115;
-                //    this.baseAgility = 13;
-                //    this.baseIntelligence = 3;
-                //    this.baseStamina = 65;
-                //    this.baseMind = 5;
-                //    this.experience = 751;
-                //    this.level = 15;
-                //    this.gold = 249;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area13;
-                //    this.DropItem[0] = "刺の生えた触手";
-                //    break;
-                //case Database.ENEMY_SHOTGUN_HYUI:
-                //    this.baseStrength = 85;
-                //    this.baseAgility = 113;
-                //    this.baseIntelligence = 42;
-                //    this.baseStamina = 81;
-                //    this.baseMind = 53;
-                //    this.experience = 1126;
-                //    this.level = 18;
-                //    this.gold = 449;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area13;
-                //    this.DropItem[0] = "ヒューイの種";
-                //    this.DropItem[1] = "ブルーマテリアル";
-                //    break;
-                //#endregion
+                #region "エリア３"
+                case Database.ENEMY_ZASSYOKU_RABBIT:
+                    this.baseStrength = 72;
+                    this.baseAgility = 35;
+                    this.baseIntelligence = 2;
+                    this.baseStamina = 30;
+                    this.experience = 405;
+                    this.level = 11;
+                    this.gold = 146;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area13;
+                    this.DropItem[0] = "ウサギの毛皮";
+                    this.DropItem[1] = "ウサギの肉";
+                    break;
+                case Database.ENEMY_SPEEDY_TAKA:
+                    this.baseStrength = 66;
+                    this.baseAgility = 55;
+                    this.baseIntelligence = 22;
+                    this.baseStamina = 33;
+                    this.experience = 437;
+                    this.level = 11;
+                    this.gold = 158;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area13;
+                    this.DropItem[0] = "鷹の白羽";
+                    break;
+                case Database.ENEMY_WONDER_SEED:
+                    this.baseStrength = 93;
+                    this.baseAgility = 30;
+                    this.baseIntelligence = 56;
+                    this.baseStamina = 51;
+                    this.experience = 743;
+                    this.level = 14;
+                    this.gold = 247;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area13;
+                    this.DropItem[0] = "プラントノイドの種";
+                    break;
+                case Database.ENEMY_FLANSIS_KNIGHT:
+                    this.baseStrength = 115;
+                    this.baseAgility = 13;
+                    this.baseIntelligence = 3;
+                    this.baseStamina = 65;
+                    this.baseMind = 5;
+                    this.experience = 751;
+                    this.level = 15;
+                    this.gold = 249;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area13;
+                    this.DropItem[0] = "刺の生えた触手";
+                    break;
+                case Database.ENEMY_SHOTGUN_HYUI:
+                    this.baseStrength = 85;
+                    this.baseAgility = 113;
+                    this.baseIntelligence = 42;
+                    this.baseStamina = 81;
+                    this.baseMind = 53;
+                    this.experience = 1126;
+                    this.level = 18;
+                    this.gold = 449;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area13;
+                    this.DropItem[0] = "ヒューイの種";
+                    this.DropItem[1] = "ブルーマテリアル";
+                    break;
+                #endregion
 
-                //#region "エリア４"
-                //case Database.ENEMY_WAR_WOLF:
-                //    this.baseStrength = 85;
-                //    this.baseAgility = 62;
-                //    this.baseIntelligence = 10;
-                //    this.baseStamina = 62;
-                //    this.experience = 901;
-                //    this.level = 19;
-                //    this.gold = 314;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area14;
-                //    this.DropItem[0] = "狼の牙";
-                //    break;
-                //case Database.ENEMY_BRILLIANT_BUTTERFLY:
-                //    this.baseStrength = 2;
-                //    this.baseAgility = 9;
-                //    this.baseIntelligence = 135;
-                //    this.baseStamina = 48;
-                //    this.experience = 946;
-                //    this.level = 19;
-                //    this.gold = 330;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area14;
-                //    this.DropItem[0] = "輝きの燐粉";
-                //    break;
-                //case Database.ENEMY_BLOOD_MOSS:
-                //    this.baseStrength = 96;
-                //    this.baseAgility = 3;
-                //    this.baseIntelligence = 90;
-                //    this.baseStamina = 66;
-                //    this.baseMind = 20;
-                //    this.experience = 1608;
-                //    this.level = 21;
-                //    this.gold = 514;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area14;
-                //    this.DropItem[0] = "赤い胞子";
-                //    break;
-                //case Database.ENEMY_MOSSGREEN_DADDY:
-                //    this.baseStrength = 145;
-                //    this.baseAgility = 39;
-                //    this.baseIntelligence = 131;
-                //    this.baseStamina = 82;
-                //    this.baseMind = 30;
-                //    this.experience = 2413;
-                //    this.level = 24;
-                //    this.gold = 926;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area14;
-                //    this.DropItem[0] = "モスグリーンのエキス";
-                //    this.DropItem[1] = "ブルーマテリアル";
-                //    this.DropItem[2] = "成長リキッド【知】";
-                //    break;
-                //#endregion
+                #region "エリア４"
+                case Database.ENEMY_WAR_WOLF:
+                    this.baseStrength = 85;
+                    this.baseAgility = 62;
+                    this.baseIntelligence = 10;
+                    this.baseStamina = 62;
+                    this.experience = 901;
+                    this.level = 19;
+                    this.gold = 314;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area14;
+                    this.DropItem[0] = "狼の牙";
+                    break;
+                case Database.ENEMY_BRILLIANT_BUTTERFLY:
+                    this.baseStrength = 2;
+                    this.baseAgility = 9;
+                    this.baseIntelligence = 135;
+                    this.baseStamina = 48;
+                    this.experience = 946;
+                    this.level = 19;
+                    this.gold = 330;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area14;
+                    this.DropItem[0] = "輝きの燐粉";
+                    break;
+                case Database.ENEMY_BLOOD_MOSS:
+                    this.baseStrength = 96;
+                    this.baseAgility = 3;
+                    this.baseIntelligence = 90;
+                    this.baseStamina = 66;
+                    this.baseMind = 20;
+                    this.experience = 1608;
+                    this.level = 21;
+                    this.gold = 514;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area14;
+                    this.DropItem[0] = "赤い胞子";
+                    break;
+                case Database.ENEMY_MOSSGREEN_DADDY:
+                    this.baseStrength = 145;
+                    this.baseAgility = 39;
+                    this.baseIntelligence = 131;
+                    this.baseStamina = 82;
+                    this.baseMind = 30;
+                    this.experience = 2413;
+                    this.level = 24;
+                    this.gold = 926;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area14;
+                    this.DropItem[0] = "モスグリーンのエキス";
+                    this.DropItem[1] = "ブルーマテリアル";
+                    this.DropItem[2] = "成長リキッド【知】";
+                    break;
+                #endregion
 
-                //#region "ボス"
-                //case Database.ENEMY_BOSS_KARAMITUKU_FLANSIS:
-                //    this.baseStrength = 195;
-                //    this.baseAgility = 100;
-                //    this.baseIntelligence = 150;
-                //    this.baseStamina = 210;
-                //    this.experience = 4825;
-                //    this.baseLife = 3500;
-                //    this.baseInstantPoint = 3000;
-                //    this.level = 30;
-                //    this.gold = 10000;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss1;
-                //    this.DropItem[0] = Database.EPIC_ORB_GROW_GREEN;
-                //    this.UseStackCommand = true;
-                //    break;
+                #region "ボス"
+                case Database.ENEMY_BOSS_KARAMITUKU_FLANSIS:
+                    this.baseStrength = 195;
+                    this.baseAgility = 100;
+                    this.baseIntelligence = 150;
+                    this.baseStamina = 210;
+                    this.experience = 4825;
+                    this.baseLife = 3500;
+                    this.baseInstantPoint = 3000;
+                    this.level = 30;
+                    this.gold = 10000;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss1;
+                    this.DropItem[0] = Database.EPIC_ORB_GROW_GREEN;
+                    this.UseStackCommand = true;
+                    break;
 
-                //case Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD:
-                //    this.baseStrength = 68590;
-                //    this.baseAgility = 1;//4241;会話専用のため、スピードを減らす。
-                //    this.baseIntelligence = 77610;
-                //    this.baseStamina = 40650;
-                //    this.baseMind = 2150;
-                //    this.experience = 0;//15000000;
-                //    this.baseLife = 34359122;
-                //    this.level = 251;
-                //    this.gold = 15000000;
-                //    this.Area = MonsterArea.TruthBoss1;
-                //    this.Rare = RareString.Purple;
-                //    this.Armor = ArmorType.Normal;
-                //    this.UseStackCommand = true;
-                //    break;
-                //#endregion
-                //#endregion
-                //#region "ダンジョン２階"
-                //#region "エリア１"
-                //case Database.ENEMY_DAGGER_FISH:
-                //    this.baseStrength = 220;
-                //    this.baseAgility = 133;
-                //    this.baseIntelligence = 10;
-                //    this.baseStamina = 85;
-                //    this.experience = 3475;
-                //    this.level = 25;
-                //    this.gold = 1488;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area21;
-                //    this.DropItem[0] = Database.COMMON_DAGGERFISH_UROKO;
-                //    break;
+                case Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD:
+                    this.baseStrength = 68590;
+                    this.baseAgility = 1;//4241;会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 77610;
+                    this.baseStamina = 40650;
+                    this.baseMind = 2150;
+                    this.experience = 0;//15000000;
+                    this.baseLife = 34359122;
+                    this.level = 251;
+                    this.gold = 15000000;
+                    this.Area = MonsterArea.TruthBoss1;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.UseStackCommand = true;
+                    break;
+                #endregion
+                #endregion
+                #region "ダンジョン２階"
+                #region "エリア１"
+                case Database.ENEMY_DAGGER_FISH:
+                    this.baseStrength = 220;
+                    this.baseAgility = 133;
+                    this.baseIntelligence = 10;
+                    this.baseStamina = 85;
+                    this.experience = 3475;
+                    this.level = 25;
+                    this.gold = 1488;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area21;
+                    this.DropItem[0] = Database.COMMON_DAGGERFISH_UROKO;
+                    break;
 
-                //case Database.ENEMY_SIPPU_FLYING_FISH:
-                //    this.baseStrength = 220;
-                //    this.baseAgility = 230;
-                //    this.baseIntelligence = 55;
-                //    this.baseStamina = 77;
-                //    this.experience = 3579;
-                //    this.level = 25;
-                //    this.gold = 1522;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area21;
-                //    this.DropItem[0] = Database.COMMON_SIPPUU_HIRE;
-                //    break;
+                case Database.ENEMY_SIPPU_FLYING_FISH:
+                    this.baseStrength = 220;
+                    this.baseAgility = 230;
+                    this.baseIntelligence = 55;
+                    this.baseStamina = 77;
+                    this.experience = 3579;
+                    this.level = 25;
+                    this.gold = 1522;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area21;
+                    this.DropItem[0] = Database.COMMON_SIPPUU_HIRE;
+                    break;
 
-                //case Database.ENEMY_ORB_SHELLFISH:
-                //    this.baseStrength = 30;
-                //    this.baseAgility = 105;
-                //    this.baseIntelligence = 170;
-                //    this.baseStamina = 88;
-                //    this.experience = 3686;
-                //    this.level = 25;
-                //    this.gold = 1605;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area21;
-                //    this.DropItem[0] = Database.COMMON_WHITE_MAGATAMA;
-                //    this.DropItem[1] = Database.COMMON_BLUE_MAGATAMA;
-                //    break;
+                case Database.ENEMY_ORB_SHELLFISH:
+                    this.baseStrength = 30;
+                    this.baseAgility = 105;
+                    this.baseIntelligence = 170;
+                    this.baseStamina = 88;
+                    this.experience = 3686;
+                    this.level = 25;
+                    this.gold = 1605;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area21;
+                    this.DropItem[0] = Database.COMMON_WHITE_MAGATAMA;
+                    this.DropItem[1] = Database.COMMON_BLUE_MAGATAMA;
+                    break;
 
-                //case Database.ENEMY_SPLASH_KURIONE:
-                //    this.baseStrength = 120;
-                //    this.baseAgility = 155;
-                //    this.baseIntelligence = 309;
-                //    this.baseStamina = 112;
-                //    this.experience = 4976;
-                //    this.level = 30;
-                //    this.gold = 2029;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area21;
-                //    this.DropItem[0] = Database.COMMON_BLUEWHITE_SHARP_TOGE;
-                //    this.DropItem[1] = Database.COMMON_KURIONE_ZOUMOTU;
-                //    break;
-                //#endregion
+                case Database.ENEMY_SPLASH_KURIONE:
+                    this.baseStrength = 120;
+                    this.baseAgility = 155;
+                    this.baseIntelligence = 309;
+                    this.baseStamina = 112;
+                    this.experience = 4976;
+                    this.level = 30;
+                    this.gold = 2029;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area21;
+                    this.DropItem[0] = Database.COMMON_BLUEWHITE_SHARP_TOGE;
+                    this.DropItem[1] = Database.COMMON_KURIONE_ZOUMOTU;
+                    break;
+                #endregion
 
-                //#region "エリア２"
-                //case Database.ENEMY_ROLLING_MAGURO:
-                //    this.baseStrength = 450;
-                //    this.baseAgility = 85;
-                //    this.baseIntelligence = 5;
-                //    this.baseStamina = 140;
-                //    this.experience = 3732;
-                //    this.level = 28;
-                //    this.gold = 1720;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area22;
-                //    this.DropItem[0] = Database.COMMON_RENEW_AKAMI;
-                //    break;
+                #region "エリア２"
+                case Database.ENEMY_ROLLING_MAGURO:
+                    this.baseStrength = 450;
+                    this.baseAgility = 85;
+                    this.baseIntelligence = 5;
+                    this.baseStamina = 140;
+                    this.experience = 3732;
+                    this.level = 28;
+                    this.gold = 1720;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area22;
+                    this.DropItem[0] = Database.COMMON_RENEW_AKAMI;
+                    break;
 
-                //case Database.ENEMY_RANBOU_SEA_ARTINE:
-                //    this.baseStrength = 360;
-                //    this.baseAgility = 156;
-                //    this.baseIntelligence = 5;
-                //    this.baseStamina = 120;
-                //    this.experience = 3844;
-                //    this.level = 28;
-                //    this.gold = 1778;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area22;
-                //    this.DropItem[0] = Database.COMMON_SEA_WASI_KUTIBASI;
-                //    break;
+                case Database.ENEMY_RANBOU_SEA_ARTINE:
+                    this.baseStrength = 360;
+                    this.baseAgility = 156;
+                    this.baseIntelligence = 5;
+                    this.baseStamina = 120;
+                    this.experience = 3844;
+                    this.level = 28;
+                    this.gold = 1778;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area22;
+                    this.DropItem[0] = Database.COMMON_SEA_WASI_KUTIBASI;
+                    break;
 
-                //case Database.ENEMY_BLUE_SEA_WASI:
-                //    this.baseStrength = 320;
-                //    this.baseAgility = 410;
-                //    this.baseIntelligence = 40;
-                //    this.baseStamina = 115;
-                //    this.experience = 3960;
-                //    this.level = 28;
-                //    this.gold = 1832;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area22;
-                //    this.DropItem[0] = Database.COMMON_WASI_BLUE_FEATHER;
-                //    break;
+                case Database.ENEMY_BLUE_SEA_WASI:
+                    this.baseStrength = 320;
+                    this.baseAgility = 410;
+                    this.baseIntelligence = 40;
+                    this.baseStamina = 115;
+                    this.experience = 3960;
+                    this.level = 28;
+                    this.gold = 1832;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area22;
+                    this.DropItem[0] = Database.COMMON_WASI_BLUE_FEATHER;
+                    break;
 
-                //case Database.ENEMY_GANGAME:
-                //    this.baseStrength = 165;
-                //    this.baseAgility = 50;
-                //    this.baseIntelligence = 168;
-                //    this.baseStamina = 240;
-                //    this.experience = 4752;
-                //    this.level = 31;
-                //    this.gold = 2298;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area22;
-                //    this.DropItem[0] = Database.COMMON_GANGAME_EGG;
-                //    break;
+                case Database.ENEMY_GANGAME:
+                    this.baseStrength = 165;
+                    this.baseAgility = 50;
+                    this.baseIntelligence = 168;
+                    this.baseStamina = 240;
+                    this.experience = 4752;
+                    this.level = 31;
+                    this.gold = 2298;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area22;
+                    this.DropItem[0] = Database.COMMON_GANGAME_EGG;
+                    break;
 
-                //case Database.ENEMY_BIGMOUSE_JOE:
-                //    this.baseStrength = 560;
-                //    this.baseAgility = 110;
-                //    this.baseIntelligence = 370;
-                //    this.baseStamina = 412;
-                //    this.experience = 6652;
-                //    this.level = 35;
-                //    this.gold = 3337;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area22;
-                //    this.DropItem[0] = Database.RARE_JOE_ARM;
-                //    this.DropItem[1] = Database.RARE_JOE_LEG;
-                //    this.DropItem[2] = Database.RARE_JOE_TONGUE;
-                //    break;
-                //#endregion
+                case Database.ENEMY_BIGMOUSE_JOE:
+                    this.baseStrength = 560;
+                    this.baseAgility = 110;
+                    this.baseIntelligence = 370;
+                    this.baseStamina = 412;
+                    this.experience = 6652;
+                    this.level = 35;
+                    this.gold = 3337;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area22;
+                    this.DropItem[0] = Database.RARE_JOE_ARM;
+                    this.DropItem[1] = Database.RARE_JOE_LEG;
+                    this.DropItem[2] = Database.RARE_JOE_TONGUE;
+                    break;
+                #endregion
 
-                //#region "エリア３"
-                //case Database.ENEMY_MOGURU_MANTA:
-                //    this.baseStrength = 120;
-                //    this.baseAgility = 40;
-                //    this.baseIntelligence = 460;
-                //    this.baseStamina = 350;
-                //    this.experience = 4989;
-                //    this.level = 33;
-                //    this.gold = 2636;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area23;
-                //    this.DropItem[0] = Database.COMMON_SOFT_BIG_HIRE;
-                //    break;
+                #region "エリア３"
+                case Database.ENEMY_MOGURU_MANTA:
+                    this.baseStrength = 120;
+                    this.baseAgility = 40;
+                    this.baseIntelligence = 460;
+                    this.baseStamina = 350;
+                    this.experience = 4989;
+                    this.level = 33;
+                    this.gold = 2636;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area23;
+                    this.DropItem[0] = Database.COMMON_SOFT_BIG_HIRE;
+                    break;
 
-                //case Database.ENEMY_FLOATING_GOLD_FISH:
-                //    this.baseStrength = 10;
-                //    this.baseAgility = 350;
-                //    this.baseIntelligence = 420;
-                //    this.baseStamina = 320;
-                //    this.experience = 5139;
-                //    this.level = 33;
-                //    this.gold = 2767;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area23;
-                //    this.DropItem[0] = Database.COMMON_PURE_WHITE_BIGEYE;
-                //    break;
+                case Database.ENEMY_FLOATING_GOLD_FISH:
+                    this.baseStrength = 10;
+                    this.baseAgility = 350;
+                    this.baseIntelligence = 420;
+                    this.baseStamina = 320;
+                    this.experience = 5139;
+                    this.level = 33;
+                    this.gold = 2767;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area23;
+                    this.DropItem[0] = Database.COMMON_PURE_WHITE_BIGEYE;
+                    break;
 
-                //case Database.ENEMY_GOEI_HERMIT_CLUB:
-                //    this.baseStrength = 520;
-                //    this.baseAgility = 405;
-                //    this.baseIntelligence = 10;
-                //    this.baseStamina = 470;
-                //    this.experience = 6167;
-                //    this.level = 36;
-                //    this.gold = 3756;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area23;
-                //    this.DropItem[0] = Database.COMMON_GOTUGOTU_KARA;
-                //    break;
+                case Database.ENEMY_GOEI_HERMIT_CLUB:
+                    this.baseStrength = 520;
+                    this.baseAgility = 405;
+                    this.baseIntelligence = 10;
+                    this.baseStamina = 470;
+                    this.experience = 6167;
+                    this.level = 36;
+                    this.gold = 3756;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area23;
+                    this.DropItem[0] = Database.COMMON_GOTUGOTU_KARA;
+                    break;
 
-                //case Database.ENEMY_VANISHING_CORAL:
-                //    this.baseStrength = 10;
-                //    this.baseAgility = 580;
-                //    this.baseIntelligence = 500;
-                //    this.baseStamina = 510;
-                //    this.experience = 6228;
-                //    this.level = 36;
-                //    this.gold = 3783;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area23;
-                //    this.DropItem[0] = Database.COMMON_HALF_TRANSPARENT_ROCK_ASH;
-                //    break;
+                case Database.ENEMY_VANISHING_CORAL:
+                    this.baseStrength = 10;
+                    this.baseAgility = 580;
+                    this.baseIntelligence = 500;
+                    this.baseStamina = 510;
+                    this.experience = 6228;
+                    this.level = 36;
+                    this.gold = 3783;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area23;
+                    this.DropItem[0] = Database.COMMON_HALF_TRANSPARENT_ROCK_ASH;
+                    break;
 
-                //case Database.ENEMY_CASSY_CANCER:
-                //    this.baseStrength = 690;
-                //    this.baseAgility = 510;
-                //    this.baseIntelligence = 515;
-                //    this.baseStamina = 620;
-                //    this.experience = 8720;
-                //    this.level = 40;
-                //    this.gold = 6010;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area23;
-                //    this.DropItem[0] = Database.RARE_SEKIKASSYOKU_HASAMI;
-                //    break;
-                //#endregion
+                case Database.ENEMY_CASSY_CANCER:
+                    this.baseStrength = 690;
+                    this.baseAgility = 510;
+                    this.baseIntelligence = 515;
+                    this.baseStamina = 620;
+                    this.experience = 8720;
+                    this.level = 40;
+                    this.gold = 6010;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area23;
+                    this.DropItem[0] = Database.RARE_SEKIKASSYOKU_HASAMI;
+                    break;
+                #endregion
 
-                //#region "エリア４"
-                //case Database.ENEMY_BLACK_STARFISH:
-                //    this.baseStrength = 10;
-                //    this.baseAgility = 10;
-                //    this.baseIntelligence = 352;
-                //    this.baseStamina = 166;
-                //    this.experience = 6104;
-                //    this.level = 38;
-                //    this.gold = 4507;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area24;
-                //    this.DropItem[0] = Database.COMMON_KOUSITUKA_MATERIAL;
-                //    break;
+                #region "エリア４"
+                case Database.ENEMY_BLACK_STARFISH:
+                    this.baseStrength = 10;
+                    this.baseAgility = 10;
+                    this.baseIntelligence = 352;
+                    this.baseStamina = 166;
+                    this.experience = 6104;
+                    this.level = 38;
+                    this.gold = 4507;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area24;
+                    this.DropItem[0] = Database.COMMON_KOUSITUKA_MATERIAL;
+                    break;
 
-                //case Database.ENEMY_RAINBOW_ANEMONE:
-                //    this.baseStrength = 10;
-                //    this.baseAgility = 288;
-                //    this.baseIntelligence = 271;
-                //    this.baseStamina = 115;
-                //    this.experience = 6287;
-                //    this.level = 38;
-                //    this.gold = 4683;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area24;
-                //    this.DropItem[0] = Database.COMMON_NANAIRO_SYOKUSYU;
-                //    break;
+                case Database.ENEMY_RAINBOW_ANEMONE:
+                    this.baseStrength = 10;
+                    this.baseAgility = 288;
+                    this.baseIntelligence = 271;
+                    this.baseStamina = 115;
+                    this.experience = 6287;
+                    this.level = 38;
+                    this.gold = 4683;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area24;
+                    this.DropItem[0] = Database.COMMON_NANAIRO_SYOKUSYU;
+                    break;
 
-                //case Database.ENEMY_EDGED_HIGH_SHARK:
-                //    this.baseStrength = 412;
-                //    this.baseAgility = 224;
-                //    this.baseIntelligence = 10;
-                //    this.baseStamina = 233;
-                //    this.experience = 7544;
-                //    this.level = 41;
-                //    this.gold = 6745;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area24;
-                //    this.DropItem[0] = Database.COMMON_AOSAME_KENSHI;
-                //    this.DropItem[1] = Database.COMMON_AOSAME_UROKO;
-                //    break;
+                case Database.ENEMY_EDGED_HIGH_SHARK:
+                    this.baseStrength = 412;
+                    this.baseAgility = 224;
+                    this.baseIntelligence = 10;
+                    this.baseStamina = 233;
+                    this.experience = 7544;
+                    this.level = 41;
+                    this.gold = 6745;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area24;
+                    this.DropItem[0] = Database.COMMON_AOSAME_KENSHI;
+                    this.DropItem[1] = Database.COMMON_AOSAME_UROKO;
+                    break;
 
-                //case Database.ENEMY_EIGHT_EIGHT:
-                //    this.baseStrength = 10;
-                //    this.baseAgility = 322;
-                //    this.baseIntelligence = 511;
-                //    this.baseStamina = 380;
-                //    this.experience = 10562;
-                //    this.level = 45;
-                //    this.gold = 11341;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area24;
-                //    this.DropItem[0] = Database.COMMON_EIGHTEIGHT_KUROSUMI;
-                //    this.DropItem[1] = Database.COMMON_EIGHTEIGHT_KYUUBAN;
-                //    break;
-                //#endregion
+                case Database.ENEMY_EIGHT_EIGHT:
+                    this.baseStrength = 10;
+                    this.baseAgility = 322;
+                    this.baseIntelligence = 511;
+                    this.baseStamina = 380;
+                    this.experience = 10562;
+                    this.level = 45;
+                    this.gold = 11341;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area24;
+                    this.DropItem[0] = Database.COMMON_EIGHTEIGHT_KUROSUMI;
+                    this.DropItem[1] = Database.COMMON_EIGHTEIGHT_KYUUBAN;
+                    break;
+                #endregion
 
-                //#region "力の部屋：ボス"
-                //case Database.ENEMY_BRILLIANT_SEA_PRINCE:
-                //    this.baseStrength = 360;
-                //    this.baseAgility = 280;
-                //    this.baseIntelligence = 400;
-                //    this.baseStamina = 200;
-                //    this.experience = 10984;
-                //    this.baseLife = 16000;
-                //    this.baseInstantPoint = 2400;
-                //    this.level = 50;
-                //    this.gold = 15000;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss21;
-                //    break;
+                #region "力の部屋：ボス"
+                case Database.ENEMY_BRILLIANT_SEA_PRINCE:
+                    this.baseStrength = 360;
+                    this.baseAgility = 280;
+                    this.baseIntelligence = 400;
+                    this.baseStamina = 200;
+                    this.experience = 10984;
+                    this.baseLife = 16000;
+                    this.baseInstantPoint = 2400;
+                    this.level = 50;
+                    this.gold = 15000;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss21;
+                    break;
 
-                //case Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN:
-                //    this.baseStrength = 250;
-                //    this.baseAgility = 140;
-                //    this.baseIntelligence = 650;
-                //    this.baseStamina = 200;
-                //    this.experience = 11424;
-                //    this.baseLife = 19500;
-                //    this.baseInstantPoint = 1800;
-                //    this.level = 51;
-                //    this.gold = 16000;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss22;
-                //    break;
+                case Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN:
+                    this.baseStrength = 250;
+                    this.baseAgility = 140;
+                    this.baseIntelligence = 650;
+                    this.baseStamina = 200;
+                    this.experience = 11424;
+                    this.baseLife = 19500;
+                    this.baseInstantPoint = 1800;
+                    this.level = 51;
+                    this.gold = 16000;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss22;
+                    break;
 
-                //case Database.ENEMY_SHELL_SWORD_KNIGHT:
-                //    this.baseStrength = 720;
-                //    this.baseAgility = 450;
-                //    this.baseIntelligence = 10;
-                //    this.baseStamina = 300;
-                //    this.experience = 11881;
-                //    this.baseLife = 22000;
-                //    this.baseInstantPoint = 3900;
-                //    this.level = 52;
-                //    this.gold = 17000;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss23;
-                //    break;
+                case Database.ENEMY_SHELL_SWORD_KNIGHT:
+                    this.baseStrength = 720;
+                    this.baseAgility = 450;
+                    this.baseIntelligence = 10;
+                    this.baseStamina = 300;
+                    this.experience = 11881;
+                    this.baseLife = 22000;
+                    this.baseInstantPoint = 3900;
+                    this.level = 52;
+                    this.gold = 17000;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss23;
+                    break;
 
-                //case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
-                //    this.baseStrength = 150;
-                //    this.baseAgility = 250;
-                //    this.baseIntelligence = 900;
-                //    this.baseStamina = 280;
-                //    this.experience = 12356;
-                //    this.baseLife = 20000;
-                //    this.baseInstantPoint = 2200;
-                //    this.level = 53;
-                //    this.gold = 18000;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss24;
-                //    //this.baseResistFire = 2000; // これだと画面上で分からないため、BattleEnemy側の初期化でサポート
-                //    break;
+                case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
+                    this.baseStrength = 150;
+                    this.baseAgility = 250;
+                    this.baseIntelligence = 900;
+                    this.baseStamina = 280;
+                    this.experience = 12356;
+                    this.baseLife = 20000;
+                    this.baseInstantPoint = 2200;
+                    this.level = 53;
+                    this.gold = 18000;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss24;
+                    //this.baseResistFire = 2000; // これだと画面上で分からないため、BattleEnemy側の初期化でサポート
+                    break;
 
-                //case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
-                //    this.baseStrength = 150;
-                //    this.baseAgility = 250;
-                //    this.baseIntelligence = 900;
-                //    this.baseStamina = 280;
-                //    this.experience = 12356;
-                //    this.baseLife = 20000;
-                //    this.baseInstantPoint = 2700;
-                //    this.level = 53;
-                //    this.gold = 18000;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss24;
-                //    //this.baseResistIce = 2000; // これだと画面上で分からないため、BattleEnemy側の初期化でサポート
-                //    break;
+                case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
+                    this.baseStrength = 150;
+                    this.baseAgility = 250;
+                    this.baseIntelligence = 900;
+                    this.baseStamina = 280;
+                    this.experience = 12356;
+                    this.baseLife = 20000;
+                    this.baseInstantPoint = 2700;
+                    this.level = 53;
+                    this.gold = 18000;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss24;
+                    //this.baseResistIce = 2000; // これだと画面上で分からないため、BattleEnemy側の初期化でサポート
+                    break;
 
 
-                //case Database.ENEMY_SEA_STAR_ORIGIN_KING:
-                //    this.baseStrength = 750;
-                //    this.baseAgility = 100;
-                //    this.baseIntelligence = 750;
-                //    this.baseStamina = 500;
-                //    this.experience = 12850;
-                //    this.baseLife = 28000;
-                //    this.baseInstantPoint = 15000;
-                //    this.level = 55;
-                //    this.gold = 19000;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss25;
-                //    break;
+                case Database.ENEMY_SEA_STAR_ORIGIN_KING:
+                    this.baseStrength = 750;
+                    this.baseAgility = 100;
+                    this.baseIntelligence = 750;
+                    this.baseStamina = 500;
+                    this.experience = 12850;
+                    this.baseLife = 28000;
+                    this.baseInstantPoint = 15000;
+                    this.level = 55;
+                    this.gold = 19000;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss25;
+                    break;
 
-                //case Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU:
-                //    this.baseStrength = 350;
-                //    this.baseAgility = 420;
-                //    this.baseIntelligence = 50;
-                //    this.baseStamina = 320;
-                //    this.experience = 12850;
-                //    this.baseLife = 15000;
-                //    this.baseInstantPoint = 5400;
-                //    this.level = 50;
-                //    this.gold = 19000;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss25;
-                //    break;
+                case Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU:
+                    this.baseStrength = 350;
+                    this.baseAgility = 420;
+                    this.baseIntelligence = 50;
+                    this.baseStamina = 320;
+                    this.experience = 12850;
+                    this.baseLife = 15000;
+                    this.baseInstantPoint = 5400;
+                    this.level = 50;
+                    this.gold = 19000;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss25;
+                    break;
 
-                //case Database.ENEMY_SEA_STAR_KNIGHT_AMARA:
-                //    this.baseStrength = 420;
-                //    this.baseAgility = 350;
-                //    this.baseIntelligence = 50;
-                //    this.baseStamina = 320;
-                //    this.experience = 12850;
-                //    this.baseLife = 15000;
-                //    this.baseInstantPoint = 3600;
-                //    this.level = 50;
-                //    this.gold = 19000;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss25;
-                //    break;
+                case Database.ENEMY_SEA_STAR_KNIGHT_AMARA:
+                    this.baseStrength = 420;
+                    this.baseAgility = 350;
+                    this.baseIntelligence = 50;
+                    this.baseStamina = 320;
+                    this.experience = 12850;
+                    this.baseLife = 15000;
+                    this.baseInstantPoint = 3600;
+                    this.level = 50;
+                    this.gold = 19000;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss25;
+                    break;
 
-                //#endregion
+                #endregion
 
-                //#region "ボス"
+                #region "ボス"
 
-                //case Database.ENEMY_BOSS_LEVIATHAN:
-                //    this.baseStrength = 850;
-                //    this.baseAgility = 700;
-                //    this.baseIntelligence = 1000;
-                //    this.baseStamina = 600;
-                //    this.baseMind = 250;
-                //    this.experience = 25700;
-                //    this.baseLife = 40000;
-                //    this.baseInstantPoint = 75000;
-                //    this.level = 57;
-                //    this.gold = 50000;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss2;
-                //    this.DropItem[0] = Database.EPIC_ORB_GROUNDSEA_STAR;
-                //    this.UseStackCommand = true;
-                //    break;
+                case Database.ENEMY_BOSS_LEVIATHAN:
+                    this.baseStrength = 850;
+                    this.baseAgility = 700;
+                    this.baseIntelligence = 1000;
+                    this.baseStamina = 600;
+                    this.baseMind = 250;
+                    this.experience = 25700;
+                    this.baseLife = 40000;
+                    this.baseInstantPoint = 75000;
+                    this.level = 57;
+                    this.gold = 50000;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss2;
+                    this.DropItem[0] = Database.EPIC_ORB_GROUNDSEA_STAR;
+                    this.UseStackCommand = true;
+                    break;
 
-                //case Database.ENEMY_DRAGON_TINKOU_DEEPSEA:
-                //    this.baseStrength = 35510;
-                //    this.baseAgility = 100;//2566;会話専用のため、スピードを減らす。
-                //    this.baseIntelligence = 91210;
-                //    this.baseStamina = 61120;
-                //    this.baseMind = 2150;
-                //    this.experience = 0;//15000000;
-                //    this.baseLife = 41226289;
-                //    this.level = 252;
-                //    this.gold = 15000000;
-                //    this.Area = MonsterArea.TruthBoss2;
-                //    this.Rare = RareString.Purple;
-                //    this.Armor = ArmorType.Normal;
-                //    this.UseStackCommand = true;
-                //    break;
-                //#endregion
-                //#endregion
-                //#region "３階"
-                //#region "エリア１"
-                //case Database.ENEMY_TOSSIN_ORC:
-                //    this.baseStrength = 788;
-                //    this.baseAgility = 60;
-                //    this.baseIntelligence = 2;
-                //    this.baseStamina = 500;
-                //    this.baseLife = 26000;
-                //    this.baseMind = 0;
-                //    this.experience = 19032;
-                //    this.level = 50;
-                //    this.gold = 7123;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area31;
-                //    this.DropItem[0] = Database.COMMON_ORC_MOMONIKU;
-                //    break;
+                case Database.ENEMY_DRAGON_TINKOU_DEEPSEA:
+                    this.baseStrength = 35510;
+                    this.baseAgility = 100;//2566;会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 91210;
+                    this.baseStamina = 61120;
+                    this.baseMind = 2150;
+                    this.experience = 0;//15000000;
+                    this.baseLife = 41226289;
+                    this.level = 252;
+                    this.gold = 15000000;
+                    this.Area = MonsterArea.TruthBoss2;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.UseStackCommand = true;
+                    break;
+                #endregion
+                #endregion
+                #region "３階"
+                #region "エリア１"
+                case Database.ENEMY_TOSSIN_ORC:
+                    this.baseStrength = 788;
+                    this.baseAgility = 60;
+                    this.baseIntelligence = 2;
+                    this.baseStamina = 500;
+                    this.baseLife = 26000;
+                    this.baseMind = 0;
+                    this.experience = 19032;
+                    this.level = 50;
+                    this.gold = 7123;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area31;
+                    this.DropItem[0] = Database.COMMON_ORC_MOMONIKU;
+                    break;
 
-                //case Database.ENEMY_SNOW_CAT:
-                //    this.baseStrength = 566;
-                //    this.baseAgility = 488;
-                //    this.baseIntelligence = 271;
-                //    this.baseStamina = 115;
-                //    this.baseLife = 22000;
-                //    this.baseMind = 0;
-                //    this.experience = 19603;
-                //    this.level = 50;
-                //    this.gold = 7271;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area31;
-                //    this.DropItem[0] = Database.COMMON_SNOW_CAT_KEGAWA;
-                //    break;
+                case Database.ENEMY_SNOW_CAT:
+                    this.baseStrength = 566;
+                    this.baseAgility = 488;
+                    this.baseIntelligence = 271;
+                    this.baseStamina = 115;
+                    this.baseLife = 22000;
+                    this.baseMind = 0;
+                    this.experience = 19603;
+                    this.level = 50;
+                    this.gold = 7271;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area31;
+                    this.DropItem[0] = Database.COMMON_SNOW_CAT_KEGAWA;
+                    break;
 
-                //case Database.ENEMY_WAR_MAMMOTH:
-                //    this.baseStrength = 720;
-                //    this.baseAgility = 50;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 550;
-                //    this.baseLife = 32000;
-                //    this.baseMind = 0;
-                //    this.experience = 20191;
-                //    this.level = 50;
-                //    this.gold = 7634;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area31;
-                //    this.DropItem[0] = Database.COMMON_BIG_HIZUME;
-                //    break;
+                case Database.ENEMY_WAR_MAMMOTH:
+                    this.baseStrength = 720;
+                    this.baseAgility = 50;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 550;
+                    this.baseLife = 32000;
+                    this.baseMind = 0;
+                    this.experience = 20191;
+                    this.level = 50;
+                    this.gold = 7634;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area31;
+                    this.DropItem[0] = Database.COMMON_BIG_HIZUME;
+                    break;
 
-                //case Database.ENEMY_WINGED_COLD_FAIRY:
-                //    this.baseStrength = 5;
-                //    this.baseAgility = 252;
-                //    this.baseIntelligence = 1015;
-                //    this.baseStamina = 330;
-                //    this.baseLife = 25000;
-                //    this.baseMind = 0;
-                //    this.experience = 27257;
-                //    this.level = 54;
-                //    this.gold = 9479;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area31;
-                //    this.DropItem[0] = Database.COMMON_FAIRY_POWDER;
-                //    break;
-                //#endregion
-                //#region "エリア２"
-                //case Database.ENEMY_BRUTAL_OGRE:
-                //    this.baseStrength = 850;
-                //    this.baseAgility = 550;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 160;
-                //    this.baseLife = 36000;
-                //    this.baseMind = 0;
-                //    this.gold = 8135;
-                //    this.experience = 20443;
-                //    this.level = 55;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area32;
-                //    this.DropItem[0] = Database.COMMON_GOTUGOTU_KONBOU;
-                //    break;
-                //case Database.ENEMY_HYDRO_LIZARD:
-                //    this.baseStrength = 650;
-                //    this.baseAgility = 320;
-                //    this.baseIntelligence = 650;
-                //    this.baseStamina = 220;
-                //    this.baseLife = 41000;
-                //    this.baseMind = 0;
-                //    this.gold = 8386;
-                //    this.experience = 21056;
-                //    this.level = 55;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area32;
-                //    this.DropItem[0] = Database.COMMON_LIZARD_UROKO;
-                //    break;
-                //case Database.ENEMY_PENGUIN_STAR:
-                //    this.baseStrength = 380;
-                //    this.baseAgility = 380;
-                //    this.baseIntelligence = 380;
-                //    this.baseStamina = 380;
-                //    this.baseLife = 45000;
-                //    this.baseMind = 380;
-                //    this.gold = 8623;
-                //    this.experience = 21688;
-                //    this.level = 55;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area32;
-                //    this.DropItem[0] = Database.COMMON_EMBLEM_OF_PENGUIN;
-                //    break;
-                //case Database.ENEMY_SWORD_TOOTH_TIGER:
-                //    this.baseStrength = 1100;
-                //    this.baseAgility = 1;
-                //    this.baseIntelligence = 650;
-                //    this.baseStamina = 350;
-                //    this.baseLife = 60000;
-                //    this.baseMind = 0;
-                //    this.gold = 10652;
-                //    this.experience = 26026;
-                //    this.level = 58;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area32;
-                //    this.DropItem[0] = Database.COMMON_SHARPNESS_TIGER_TOOTH;
-                //    break;
-                //case Database.ENEMY_FEROCIOUS_RAGE_BEAR:
-                //    this.baseStrength = 1500;
-                //    this.baseAgility = 1;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 1000;
-                //    this.baseLife = 85000;
-                //    this.baseMind = 0;
-                //    this.gold = 15173;
-                //    this.experience = 36436;
-                //    this.level = 62;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area32;
-                //    this.DropItem[0] = Database.RARE_BEAR_CLAW_KAKERA;
-                //    break;
-                //#endregion
+                case Database.ENEMY_WINGED_COLD_FAIRY:
+                    this.baseStrength = 5;
+                    this.baseAgility = 252;
+                    this.baseIntelligence = 1015;
+                    this.baseStamina = 330;
+                    this.baseLife = 25000;
+                    this.baseMind = 0;
+                    this.experience = 27257;
+                    this.level = 54;
+                    this.gold = 9479;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area31;
+                    this.DropItem[0] = Database.COMMON_FAIRY_POWDER;
+                    break;
+                #endregion
+                #region "エリア２"
+                case Database.ENEMY_BRUTAL_OGRE:
+                    this.baseStrength = 850;
+                    this.baseAgility = 550;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 160;
+                    this.baseLife = 36000;
+                    this.baseMind = 0;
+                    this.gold = 8135;
+                    this.experience = 20443;
+                    this.level = 55;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area32;
+                    this.DropItem[0] = Database.COMMON_GOTUGOTU_KONBOU;
+                    break;
+                case Database.ENEMY_HYDRO_LIZARD:
+                    this.baseStrength = 650;
+                    this.baseAgility = 320;
+                    this.baseIntelligence = 650;
+                    this.baseStamina = 220;
+                    this.baseLife = 41000;
+                    this.baseMind = 0;
+                    this.gold = 8386;
+                    this.experience = 21056;
+                    this.level = 55;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area32;
+                    this.DropItem[0] = Database.COMMON_LIZARD_UROKO;
+                    break;
+                case Database.ENEMY_PENGUIN_STAR:
+                    this.baseStrength = 380;
+                    this.baseAgility = 380;
+                    this.baseIntelligence = 380;
+                    this.baseStamina = 380;
+                    this.baseLife = 45000;
+                    this.baseMind = 380;
+                    this.gold = 8623;
+                    this.experience = 21688;
+                    this.level = 55;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area32;
+                    this.DropItem[0] = Database.COMMON_EMBLEM_OF_PENGUIN;
+                    break;
+                case Database.ENEMY_SWORD_TOOTH_TIGER:
+                    this.baseStrength = 1100;
+                    this.baseAgility = 1;
+                    this.baseIntelligence = 650;
+                    this.baseStamina = 350;
+                    this.baseLife = 60000;
+                    this.baseMind = 0;
+                    this.gold = 10652;
+                    this.experience = 26026;
+                    this.level = 58;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area32;
+                    this.DropItem[0] = Database.COMMON_SHARPNESS_TIGER_TOOTH;
+                    break;
+                case Database.ENEMY_FEROCIOUS_RAGE_BEAR:
+                    this.baseStrength = 1500;
+                    this.baseAgility = 1;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 1000;
+                    this.baseLife = 85000;
+                    this.baseMind = 0;
+                    this.gold = 15173;
+                    this.experience = 36436;
+                    this.level = 62;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area32;
+                    this.DropItem[0] = Database.RARE_BEAR_CLAW_KAKERA;
+                    break;
+                #endregion
 
-                //#region "エリア３"
-                //case Database.ENEMY_WINTER_ORB:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 200;
-                //    this.baseIntelligence = 1200;
-                //    this.baseStamina = 650;
-                //    this.baseLife = 50000;
-                //    this.baseMind = 0;
-                //    this.gold = 12121;
-                //    this.experience = 27327;
-                //    this.level = 60;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area33;
-                //    this.DropItem[0] = Database.COMMON_TOUMEI_SNOW_CRYSTAL;
-                //    break;
-                //case Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 300;
-                //    this.baseIntelligence = 700;
-                //    this.baseStamina = 600;
-                //    this.baseLife = 65000;
-                //    this.baseMind = 500;
-                //    this.gold = 12691;
-                //    this.experience = 28147;
-                //    this.level = 60;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area33;
-                //    this.DropItem[0] = Database.COMMON_WHITE_AZARASHI_MEAT;
-                //    break;
-                //case Database.ENEMY_INTELLIGENCE_ARGONIAN:
-                //    this.baseStrength = 1015;
-                //    this.baseAgility = 300;
-                //    this.baseIntelligence = 1020;
-                //    this.baseStamina = 700;
-                //    this.baseLife = 73000;
-                //    this.baseMind = 0;
-                //    this.gold = 16997;
-                //    this.experience = 33776;
-                //    this.level = 63;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area33;
-                //    this.DropItem[0] = Database.COMMON_ARGONIAN_PURPLE_UROKO;
-                //    break;
-                //case Database.ENEMY_MAGIC_HYOU_RIFLE:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 1000;
-                //    this.baseIntelligence = 1800;
-                //    this.baseStamina = 200;
-                //    this.baseLife = 86000;
-                //    this.baseMind = 0;
-                //    this.gold = 17117;
-                //    this.experience = 34114;
-                //    this.level = 63;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area33;
-                //    this.DropItem[0] = Database.COMMON_BLUE_DANGAN_KAKERA;
-                //    break;
-                //case Database.ENEMY_PURE_BLIZZARD_CRYSTAL:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 1;
-                //    this.baseIntelligence = 2600;
-                //    this.baseStamina = 1000;
-                //    this.baseLife = 110000;
-                //    this.baseMind = 0;
-                //    this.gold = 26811;
-                //    this.experience = 47759;
-                //    this.level = 67;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area33;
-                //    this.DropItem[0] = Database.RARE_PURE_CRYSTAL;
-                //    break;
-                //#endregion
+                #region "エリア３"
+                case Database.ENEMY_WINTER_ORB:
+                    this.baseStrength = 1;
+                    this.baseAgility = 200;
+                    this.baseIntelligence = 1200;
+                    this.baseStamina = 650;
+                    this.baseLife = 50000;
+                    this.baseMind = 0;
+                    this.gold = 12121;
+                    this.experience = 27327;
+                    this.level = 60;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area33;
+                    this.DropItem[0] = Database.COMMON_TOUMEI_SNOW_CRYSTAL;
+                    break;
+                case Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI:
+                    this.baseStrength = 1;
+                    this.baseAgility = 300;
+                    this.baseIntelligence = 700;
+                    this.baseStamina = 600;
+                    this.baseLife = 65000;
+                    this.baseMind = 500;
+                    this.gold = 12691;
+                    this.experience = 28147;
+                    this.level = 60;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area33;
+                    this.DropItem[0] = Database.COMMON_WHITE_AZARASHI_MEAT;
+                    break;
+                case Database.ENEMY_INTELLIGENCE_ARGONIAN:
+                    this.baseStrength = 1015;
+                    this.baseAgility = 300;
+                    this.baseIntelligence = 1020;
+                    this.baseStamina = 700;
+                    this.baseLife = 73000;
+                    this.baseMind = 0;
+                    this.gold = 16997;
+                    this.experience = 33776;
+                    this.level = 63;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area33;
+                    this.DropItem[0] = Database.COMMON_ARGONIAN_PURPLE_UROKO;
+                    break;
+                case Database.ENEMY_MAGIC_HYOU_RIFLE:
+                    this.baseStrength = 1;
+                    this.baseAgility = 1000;
+                    this.baseIntelligence = 1800;
+                    this.baseStamina = 200;
+                    this.baseLife = 86000;
+                    this.baseMind = 0;
+                    this.gold = 17117;
+                    this.experience = 34114;
+                    this.level = 63;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area33;
+                    this.DropItem[0] = Database.COMMON_BLUE_DANGAN_KAKERA;
+                    break;
+                case Database.ENEMY_PURE_BLIZZARD_CRYSTAL:
+                    this.baseStrength = 1;
+                    this.baseAgility = 1;
+                    this.baseIntelligence = 2600;
+                    this.baseStamina = 1000;
+                    this.baseLife = 110000;
+                    this.baseMind = 0;
+                    this.gold = 26811;
+                    this.experience = 47759;
+                    this.level = 67;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area33;
+                    this.DropItem[0] = Database.RARE_PURE_CRYSTAL;
+                    break;
+                #endregion
 
-                //#region "エリア４"
-                //case Database.ENEMY_PURPLE_EYE_WARE_WOLF:
-                //    this.baseStrength = 1400;
-                //    this.baseAgility = 800;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 700;
-                //    this.baseLife = 85000;
-                //    this.baseMind = 0;
-                //    this.gold = 20268;
-                //    this.experience = 33432;
-                //    this.level = 65;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area34;
-                //    this.DropItem[0] = Database.COMMON_WOLF_KEGAWA;
-                //    break;
-                //case Database.ENEMY_FROST_HEART:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 700;
-                //    this.baseIntelligence = 1900;
-                //    this.baseStamina = 300;
-                //    this.baseLife = 75000;
-                //    this.baseMind = 0;
-                //    this.gold = 21031;
-                //    this.experience = 34435;
-                //    this.level = 65;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area34;
-                //    this.DropItem[0] = Database.COMMON_FROZEN_HEART;
-                //    break;
-                //case Database.ENEMY_WIND_BREAKER:
-                //    this.baseStrength = 1800;
-                //    this.baseAgility = 1400;
-                //    this.baseIntelligence = 1200;
-                //    this.baseStamina = 800;
-                //    this.baseLife = 110000;
-                //    this.baseMind = 0;
-                //    this.gold = 30009;
-                //    this.experience = 41321;
-                //    this.level = 69;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area34;
-                //    this.DropItem[0] = Database.COMMON_ESSENCE_OF_WIND;
-                //    break;
-                //case Database.ENEMY_TUNDRA_LONGHORN_DEER:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 750;
-                //    this.baseIntelligence = 3500;
-                //    this.baseStamina = 1600;
-                //    this.baseLife = 150000;
-                //    this.baseMind = 1600;
-                //    this.gold = 50016;
-                //    this.experience = 57850;
-                //    this.level = 73;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area34;
-                //    this.DropItem[0] = Database.RARE_TUNDRA_DEER_HORN;
-                //    break;
-                //#endregion
+                #region "エリア４"
+                case Database.ENEMY_PURPLE_EYE_WARE_WOLF:
+                    this.baseStrength = 1400;
+                    this.baseAgility = 800;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 700;
+                    this.baseLife = 85000;
+                    this.baseMind = 0;
+                    this.gold = 20268;
+                    this.experience = 33432;
+                    this.level = 65;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area34;
+                    this.DropItem[0] = Database.COMMON_WOLF_KEGAWA;
+                    break;
+                case Database.ENEMY_FROST_HEART:
+                    this.baseStrength = 1;
+                    this.baseAgility = 700;
+                    this.baseIntelligence = 1900;
+                    this.baseStamina = 300;
+                    this.baseLife = 75000;
+                    this.baseMind = 0;
+                    this.gold = 21031;
+                    this.experience = 34435;
+                    this.level = 65;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area34;
+                    this.DropItem[0] = Database.COMMON_FROZEN_HEART;
+                    break;
+                case Database.ENEMY_WIND_BREAKER:
+                    this.baseStrength = 1800;
+                    this.baseAgility = 1400;
+                    this.baseIntelligence = 1200;
+                    this.baseStamina = 800;
+                    this.baseLife = 110000;
+                    this.baseMind = 0;
+                    this.gold = 30009;
+                    this.experience = 41321;
+                    this.level = 69;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area34;
+                    this.DropItem[0] = Database.COMMON_ESSENCE_OF_WIND;
+                    break;
+                case Database.ENEMY_TUNDRA_LONGHORN_DEER:
+                    this.baseStrength = 1;
+                    this.baseAgility = 750;
+                    this.baseIntelligence = 3500;
+                    this.baseStamina = 1600;
+                    this.baseLife = 150000;
+                    this.baseMind = 1600;
+                    this.gold = 50016;
+                    this.experience = 57850;
+                    this.level = 73;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area34;
+                    this.DropItem[0] = Database.RARE_TUNDRA_DEER_HORN;
+                    break;
+                #endregion
 
-                //#region "ボス"
-                //case Database.ENEMY_BOSS_HOWLING_SEIZER:
-                //    this.baseStrength = 4500;
-                //    this.baseAgility = 950;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 3400;
-                //    this.baseMind = 1200;
-                //    this.experience = 115700;
-                //    this.baseLife = 560000;
-                //    this.baseInstantPoint = 15000;
-                //    this.level = 85;
-                //    this.gold = 200000;
-                //    this.ResistStun = true;
-                //    this.ResistParalyze = true;
-                //    this.ResistFrozen = true;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss3;
-                //    this.DropItem[0] = Database.EPIC_ORB_SILENT_COLD_ICE;
-                //    this.UseStackCommand = true;
-                //    break;
+                #region "ボス"
+                case Database.ENEMY_BOSS_HOWLING_SEIZER:
+                    this.baseStrength = 4500;
+                    this.baseAgility = 950;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 3400;
+                    this.baseMind = 1200;
+                    this.experience = 115700;
+                    this.baseLife = 560000;
+                    this.baseInstantPoint = 15000;
+                    this.level = 85;
+                    this.gold = 200000;
+                    this.ResistStun = true;
+                    this.ResistParalyze = true;
+                    this.ResistFrozen = true;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss3;
+                    this.DropItem[0] = Database.EPIC_ORB_SILENT_COLD_ICE;
+                    this.UseStackCommand = true;
+                    break;
 
-                //case Database.ENEMY_DRAGON_DESOLATOR_AZOLD:
-                //    this.baseStrength = 99930;
-                //    this.baseAgility = 500;//4543;会話専用のため、スピードを減らす。
-                //    this.baseIntelligence = 11250;
-                //    this.baseStamina = 44510;
-                //    this.baseMind = 3190;
-                //    this.experience = 0;//15000000;
-                //    this.baseLife = 49938705;
-                //    this.baseInstantPoint = 100000;
-                //    this.level = 253;
-                //    this.gold = 15000000;
-                //    this.Rare = RareString.Purple;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.TruthBoss3;
-                //    this.UseStackCommand = true;
-                //    break;
-                //#endregion
-                //#endregion
-                //#region "４階"
-                //#region "エリア１"
-                //case Database.ENEMY_GENAN_HUNTER:
-                //    this.baseStrength = 1600;
-                //    this.baseAgility = 1200;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 800;
-                //    this.baseLife = 98000;
-                //    this.baseMind = 0;
-                //    this.gold = 45010;
-                //    this.experience = 42439;
-                //    this.level = 75;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area41;
-                //    this.DropItem[0] = Database.COMMON_HUNTER_SEVEN_TOOL;
-                //    this.InitialTarget = TargetLogic.Back;
-                //    break;
-                //case Database.ENEMY_BEAST_MASTER:
-                //    this.baseStrength = 1700;
-                //    this.baseAgility = 800;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 800;
-                //    this.baseLife = 105000;
-                //    this.baseMind = 0;
-                //    this.gold = 45361;
-                //    this.experience = 43712;
-                //    this.level = 75;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area41;
-                //    this.DropItem[0] = Database.COMMON_BEAST_KEGAWA;
-                //    break;
-                //case Database.ENEMY_ELDER_ASSASSIN:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 1800;
-                //    this.baseIntelligence = 1300;
-                //    this.baseStamina = 900;
-                //    this.baseLife = 86000;
-                //    this.baseMind = 0;
-                //    this.gold = 46219;
-                //    this.experience = 45023;
-                //    this.level = 75;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area41;
-                //    this.DropItem[0] = Database.RARE_BLOOD_DAGGER_KAKERA;
-                //    this.InitialTarget = TargetLogic.Back;
-                //    break;
-                //case Database.ENEMY_FALLEN_SEEKER:
-                //    this.baseStrength = 1500;
-                //    this.baseAgility = 1200;
-                //    this.baseIntelligence = 1200;
-                //    this.baseStamina = 1400;
-                //    this.baseLife = 140000;
-                //    this.baseMind = 0;
-                //    this.gold = 50572;
-                //    this.experience = 60781;
-                //    this.level = 78;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area41;
-                //    this.DropItem[0] = Database.COMMON_SABI_BUGU;
-                //    break;
-                //#endregion
-                //#region "エリア２"
-                //case Database.ENEMY_MASTER_LOAD:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 1400;
-                //    this.baseIntelligence = 1800;
-                //    this.baseStamina = 1700;
-                //    this.baseLife = 280000;
-                //    this.baseMind = 0;
-                //    this.gold = 47401;
-                //    this.experience = 45586;
-                //    this.level = 79;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area42;
-                //    this.DropItem[0] = Database.RARE_ESSENCE_OF_DARK;
-                //    break;
-                //case Database.ENEMY_EXECUTIONER:
-                //    this.baseStrength = 2500;
-                //    this.baseAgility = 700;
-                //    this.baseIntelligence = 1000;
-                //    this.baseStamina = 2000;
-                //    this.baseLife = 330000;
-                //    this.baseMind = 0;
-                //    this.gold = 47993;
-                //    this.experience = 46954;
-                //    this.level = 79;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area42;
-                //    this.DropItem[0] = Database.COMMON_EXECUTIONER_ROBE;
-                //    break;
-                //case Database.ENEMY_DARK_MESSENGER:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 1;
-                //    this.baseIntelligence = 4500;
-                //    this.baseStamina = 500;
-                //    this.baseLife = 180000;
-                //    this.baseMind = 0;
-                //    this.gold = 48552;
-                //    this.experience = 48362;
-                //    this.level = 79;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area42;
-                //    this.DropItem[0] = Database.COMMON_SEEKER_HEAD;
-                //    break;
-                //case Database.ENEMY_BLACKFIRE_MASTER_BLADE:
-                //    this.baseStrength = 3000;
-                //    this.baseAgility = 1400;
-                //    this.baseIntelligence = 2500;
-                //    this.baseStamina = 2200;
-                //    this.baseLife = 380000;
-                //    this.baseMind = 0;
-                //    this.gold = 53341;
-                //    this.experience = 58035;
-                //    this.level = 83;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area42;
-                //    this.DropItem[0] = Database.RARE_MASTERBLADE_KAKERA;
-                //    this.DropItem[1] = Database.RARE_MASTERBLADE_FIRE;
-                //    break;
-                //case Database.ENEMY_SIN_THE_DARKELF:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 1200;
-                //    this.baseIntelligence = 4500;
-                //    this.baseStamina = 2000;
-                //    this.baseLife = 460000;
-                //    this.baseMind = 0;
-                //    this.gold = 64015;
-                //    this.experience = 81249;
-                //    this.level = 87;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area42;
-                //    this.DropItem[0] = Database.COMMON_GREAT_JEWELCROWN;
-                //    break;
-                //#endregion
-                //#region "エリア３"
-                //case Database.ENEMY_SUN_STRIDER:
-                //    this.baseStrength = 2800;
-                //    this.baseAgility = 1600;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 2500;
-                //    this.baseLife = 450000;
-                //    this.baseMind = 0;
-                //    this.gold = 56810;
-                //    this.experience = 60936;
-                //    this.level = 85;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area43;
-                //    this.DropItem[0] = Database.RARE_ESSENCE_OF_SHINE;
-                //    break;
-                //case Database.ENEMY_ARC_DEMON:
-                //    this.baseStrength = 2900;
-                //    this.baseAgility = 1100;
-                //    this.baseIntelligence = 2200;
-                //    this.baseStamina = 1000;
-                //    this.baseLife = 490000;
-                //    this.baseMind = 0;
-                //    this.gold = 58155;
-                //    this.experience = 62765;
-                //    this.level = 85;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area43;
-                //    this.DropItem[0] = Database.RARE_DEMON_HORN;
-                //    break;
-                //case Database.ENEMY_BALANCE_IDLE:
-                //    this.baseStrength = 2222;
-                //    this.baseAgility = 2222;
-                //    this.baseIntelligence = 2222;
-                //    this.baseStamina = 2222;
-                //    this.baseLife = 550000;
-                //    this.baseMind = 0;
-                //    this.gold = 68322;
-                //    this.experience = 75317;
-                //    this.level = 89;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area43;
-                //    this.DropItem[0] = Database.COMMON_KUMITATE_TENBIN;
-                //    this.DropItem[1] = Database.COMMON_KUMITATE_TENBIN_BOU;
-                //    this.DropItem[2] = Database.COMMON_KUMITATE_TENBIN_DOU;
-                //    break;
-                //case Database.ENEMY_GO_FLAME_SLASHER:
-                //    this.baseStrength = 3300;
-                //    this.baseAgility = 2200;
-                //    this.baseIntelligence = 3600;
-                //    this.baseStamina = 3000;
-                //    this.baseLife = 570000;
-                //    this.baseMind = 0;
-                //    this.gold = 68065;
-                //    this.experience = 76071;
-                //    this.level = 89;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area43;
-                //    this.DropItem[0] = Database.RARE_ESSENCE_OF_FLAME;
-                //    break;
-                //case Database.ENEMY_DEVIL_CHILDREN:
-                //    this.baseStrength = 3000;
-                //    this.baseAgility = 2500;
-                //    this.baseIntelligence = 4000;
-                //    this.baseStamina = 1000;
-                //    this.baseLife = 666666;
-                //    this.baseMind = 0;
-                //    this.gold = 91489;
-                //    this.experience = 106499;
-                //    this.level = 93;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area43;
-                //    this.DropItem[0] = Database.RARE_BLACK_SEAL_IMPRESSION;
-                //    break;
-                //#endregion
-                //#region "エリア４"
-                //case Database.ENEMY_HOWLING_HORROR:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 2800;
-                //    this.baseIntelligence = 3300;
-                //    this.baseStamina = 2000;
-                //    this.baseLife = 590000;
-                //    this.baseMind = 0;
-                //    this.gold = 76042;
-                //    this.experience = 74549;
-                //    this.level = 91;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area44;
-                //    this.DropItem[0] = Database.COMMON_ONRYOU_HAKO;
-                //    break;
-                //case Database.ENEMY_PAIN_ANGEL:
-                //    this.baseStrength = 4600;
-                //    this.baseAgility = 2000;
-                //    this.baseIntelligence = 3500;
-                //    this.baseStamina = 2200;
-                //    this.baseLife = 630000;
-                //    this.baseMind = 0;
-                //    this.gold = 77844;
-                //    this.experience = 76786;
-                //    this.level = 91;
-                //    this.Rare = RareString.Black;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area44;
-                //    this.DropItem[0] = Database.RARE_ANGEL_SILK;
-                //    break;
-                //case Database.ENEMY_CHAOS_WARDEN:
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 1000;
-                //    this.baseIntelligence = 5500;
-                //    this.baseStamina = 4000;
-                //    this.baseLife = 700000;
-                //    this.baseMind = 0;
-                //    this.gold = 99037;
-                //    this.experience = 92143;
-                //    this.level = 95;
-                //    this.Rare = RareString.Blue;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area44;
-                //    this.DropItem[0] = Database.RARE_CHAOS_SIZUKU;
-                //    break;
-                //case Database.ENEMY_DOOM_BRINGER:
-                //    this.baseStrength = 6000;
-                //    this.baseAgility = 3000;
-                //    this.baseIntelligence = 1;
-                //    this.baseStamina = 2000;
-                //    this.baseLife = 800000;
-                //    this.baseMind = 0;
-                //    this.gold = 146267;
-                //    this.experience = 129000;
-                //    this.level = 99;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area44;
-                //    this.DropItem[0] = Database.RARE_DOOMBRINGER_KAKERA;
-                //    this.DropItem[1] = Database.RARE_DOOMBRINGER_TUKA;
-                //    break;
-                //#endregion
+                case Database.ENEMY_DRAGON_DESOLATOR_AZOLD:
+                    this.baseStrength = 99930;
+                    this.baseAgility = 500;//4543;会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 11250;
+                    this.baseStamina = 44510;
+                    this.baseMind = 3190;
+                    this.experience = 0;//15000000;
+                    this.baseLife = 49938705;
+                    this.baseInstantPoint = 100000;
+                    this.level = 253;
+                    this.gold = 15000000;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.TruthBoss3;
+                    this.UseStackCommand = true;
+                    break;
+                #endregion
+                #endregion
+                #region "４階"
+                #region "エリア１"
+                case Database.ENEMY_GENAN_HUNTER:
+                    this.baseStrength = 1600;
+                    this.baseAgility = 1200;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 800;
+                    this.baseLife = 98000;
+                    this.baseMind = 0;
+                    this.gold = 45010;
+                    this.experience = 42439;
+                    this.level = 75;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area41;
+                    this.DropItem[0] = Database.COMMON_HUNTER_SEVEN_TOOL;
+                    this.InitialTarget = TargetLogic.Back;
+                    break;
+                case Database.ENEMY_BEAST_MASTER:
+                    this.baseStrength = 1700;
+                    this.baseAgility = 800;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 800;
+                    this.baseLife = 105000;
+                    this.baseMind = 0;
+                    this.gold = 45361;
+                    this.experience = 43712;
+                    this.level = 75;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area41;
+                    this.DropItem[0] = Database.COMMON_BEAST_KEGAWA;
+                    break;
+                case Database.ENEMY_ELDER_ASSASSIN:
+                    this.baseStrength = 1;
+                    this.baseAgility = 1800;
+                    this.baseIntelligence = 1300;
+                    this.baseStamina = 900;
+                    this.baseLife = 86000;
+                    this.baseMind = 0;
+                    this.gold = 46219;
+                    this.experience = 45023;
+                    this.level = 75;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area41;
+                    this.DropItem[0] = Database.RARE_BLOOD_DAGGER_KAKERA;
+                    this.InitialTarget = TargetLogic.Back;
+                    break;
+                case Database.ENEMY_FALLEN_SEEKER:
+                    this.baseStrength = 1500;
+                    this.baseAgility = 1200;
+                    this.baseIntelligence = 1200;
+                    this.baseStamina = 1400;
+                    this.baseLife = 140000;
+                    this.baseMind = 0;
+                    this.gold = 50572;
+                    this.experience = 60781;
+                    this.level = 78;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area41;
+                    this.DropItem[0] = Database.COMMON_SABI_BUGU;
+                    break;
+                #endregion
+                #region "エリア２"
+                case Database.ENEMY_MASTER_LOAD:
+                    this.baseStrength = 1;
+                    this.baseAgility = 1400;
+                    this.baseIntelligence = 1800;
+                    this.baseStamina = 1700;
+                    this.baseLife = 280000;
+                    this.baseMind = 0;
+                    this.gold = 47401;
+                    this.experience = 45586;
+                    this.level = 79;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area42;
+                    this.DropItem[0] = Database.RARE_ESSENCE_OF_DARK;
+                    break;
+                case Database.ENEMY_EXECUTIONER:
+                    this.baseStrength = 2500;
+                    this.baseAgility = 700;
+                    this.baseIntelligence = 1000;
+                    this.baseStamina = 2000;
+                    this.baseLife = 330000;
+                    this.baseMind = 0;
+                    this.gold = 47993;
+                    this.experience = 46954;
+                    this.level = 79;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area42;
+                    this.DropItem[0] = Database.COMMON_EXECUTIONER_ROBE;
+                    break;
+                case Database.ENEMY_DARK_MESSENGER:
+                    this.baseStrength = 1;
+                    this.baseAgility = 1;
+                    this.baseIntelligence = 4500;
+                    this.baseStamina = 500;
+                    this.baseLife = 180000;
+                    this.baseMind = 0;
+                    this.gold = 48552;
+                    this.experience = 48362;
+                    this.level = 79;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area42;
+                    this.DropItem[0] = Database.COMMON_SEEKER_HEAD;
+                    break;
+                case Database.ENEMY_BLACKFIRE_MASTER_BLADE:
+                    this.baseStrength = 3000;
+                    this.baseAgility = 1400;
+                    this.baseIntelligence = 2500;
+                    this.baseStamina = 2200;
+                    this.baseLife = 380000;
+                    this.baseMind = 0;
+                    this.gold = 53341;
+                    this.experience = 58035;
+                    this.level = 83;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area42;
+                    this.DropItem[0] = Database.RARE_MASTERBLADE_KAKERA;
+                    this.DropItem[1] = Database.RARE_MASTERBLADE_FIRE;
+                    break;
+                case Database.ENEMY_SIN_THE_DARKELF:
+                    this.baseStrength = 1;
+                    this.baseAgility = 1200;
+                    this.baseIntelligence = 4500;
+                    this.baseStamina = 2000;
+                    this.baseLife = 460000;
+                    this.baseMind = 0;
+                    this.gold = 64015;
+                    this.experience = 81249;
+                    this.level = 87;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area42;
+                    this.DropItem[0] = Database.COMMON_GREAT_JEWELCROWN;
+                    break;
+                #endregion
+                #region "エリア３"
+                case Database.ENEMY_SUN_STRIDER:
+                    this.baseStrength = 2800;
+                    this.baseAgility = 1600;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 2500;
+                    this.baseLife = 450000;
+                    this.baseMind = 0;
+                    this.gold = 56810;
+                    this.experience = 60936;
+                    this.level = 85;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area43;
+                    this.DropItem[0] = Database.RARE_ESSENCE_OF_SHINE;
+                    break;
+                case Database.ENEMY_ARC_DEMON:
+                    this.baseStrength = 2900;
+                    this.baseAgility = 1100;
+                    this.baseIntelligence = 2200;
+                    this.baseStamina = 1000;
+                    this.baseLife = 490000;
+                    this.baseMind = 0;
+                    this.gold = 58155;
+                    this.experience = 62765;
+                    this.level = 85;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area43;
+                    this.DropItem[0] = Database.RARE_DEMON_HORN;
+                    break;
+                case Database.ENEMY_BALANCE_IDLE:
+                    this.baseStrength = 2222;
+                    this.baseAgility = 2222;
+                    this.baseIntelligence = 2222;
+                    this.baseStamina = 2222;
+                    this.baseLife = 550000;
+                    this.baseMind = 0;
+                    this.gold = 68322;
+                    this.experience = 75317;
+                    this.level = 89;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area43;
+                    this.DropItem[0] = Database.COMMON_KUMITATE_TENBIN;
+                    this.DropItem[1] = Database.COMMON_KUMITATE_TENBIN_BOU;
+                    this.DropItem[2] = Database.COMMON_KUMITATE_TENBIN_DOU;
+                    break;
+                case Database.ENEMY_GO_FLAME_SLASHER:
+                    this.baseStrength = 3300;
+                    this.baseAgility = 2200;
+                    this.baseIntelligence = 3600;
+                    this.baseStamina = 3000;
+                    this.baseLife = 570000;
+                    this.baseMind = 0;
+                    this.gold = 68065;
+                    this.experience = 76071;
+                    this.level = 89;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area43;
+                    this.DropItem[0] = Database.RARE_ESSENCE_OF_FLAME;
+                    break;
+                case Database.ENEMY_DEVIL_CHILDREN:
+                    this.baseStrength = 3000;
+                    this.baseAgility = 2500;
+                    this.baseIntelligence = 4000;
+                    this.baseStamina = 1000;
+                    this.baseLife = 666666;
+                    this.baseMind = 0;
+                    this.gold = 91489;
+                    this.experience = 106499;
+                    this.level = 93;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area43;
+                    this.DropItem[0] = Database.RARE_BLACK_SEAL_IMPRESSION;
+                    break;
+                #endregion
+                #region "エリア４"
+                case Database.ENEMY_HOWLING_HORROR:
+                    this.baseStrength = 1;
+                    this.baseAgility = 2800;
+                    this.baseIntelligence = 3300;
+                    this.baseStamina = 2000;
+                    this.baseLife = 590000;
+                    this.baseMind = 0;
+                    this.gold = 76042;
+                    this.experience = 74549;
+                    this.level = 91;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area44;
+                    this.DropItem[0] = Database.COMMON_ONRYOU_HAKO;
+                    break;
+                case Database.ENEMY_PAIN_ANGEL:
+                    this.baseStrength = 4600;
+                    this.baseAgility = 2000;
+                    this.baseIntelligence = 3500;
+                    this.baseStamina = 2200;
+                    this.baseLife = 630000;
+                    this.baseMind = 0;
+                    this.gold = 77844;
+                    this.experience = 76786;
+                    this.level = 91;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area44;
+                    this.DropItem[0] = Database.RARE_ANGEL_SILK;
+                    break;
+                case Database.ENEMY_CHAOS_WARDEN:
+                    this.baseStrength = 1;
+                    this.baseAgility = 1000;
+                    this.baseIntelligence = 5500;
+                    this.baseStamina = 4000;
+                    this.baseLife = 700000;
+                    this.baseMind = 0;
+                    this.gold = 99037;
+                    this.experience = 92143;
+                    this.level = 95;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area44;
+                    this.DropItem[0] = Database.RARE_CHAOS_SIZUKU;
+                    break;
+                case Database.ENEMY_DOOM_BRINGER:
+                    this.baseStrength = 6000;
+                    this.baseAgility = 3000;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 2000;
+                    this.baseLife = 800000;
+                    this.baseMind = 0;
+                    this.gold = 146267;
+                    this.experience = 129000;
+                    this.level = 99;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area44;
+                    this.DropItem[0] = Database.RARE_DOOMBRINGER_KAKERA;
+                    this.DropItem[1] = Database.RARE_DOOMBRINGER_TUKA;
+                    break;
+                #endregion
 
-                //#region "ボス"
-                //case Database.ENEMY_BOSS_LEGIN_ARZE_1:
-                //case Database.ENEMY_BOSS_LEGIN_ARZE_2:
-                //case Database.ENEMY_BOSS_LEGIN_ARZE_3:
-                //    //this.name = Database.ENEMY_BOSS_LEGIN_ARZE;
-                //    this.baseStrength = 1;
-                //    this.baseAgility = 1500;
-                //    this.baseIntelligence = 1300; // ベース値が強すぎると、BUFFDOWN魔法の威力が強すぎなので、意図的に弱体化//13000;
-                //    this.baseStamina = 17000;
-                //    this.baseMind = 100;
-                //    this.experience = 125000;
-                //    this.baseLife = 2590000;
-                //    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_2) this.baseLife = 2800000;
-                //    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_3) this.baseLife = 3100000;
-                //    this.baseMana = 2720000;
-                //    this.baseInstantPoint = 25000;
-                //    this.level = 107;
-                //    this.gold = 500000;
-                //    this.ResistStun = true;
-                //    this.ResistParalyze = true;
-                //    this.ResistFrozen = true;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss4;
-                //    //this.DropItem[0] = Database.EPIC_ORB_DESTRUCT_FIRE;
-                //    this.UseStackCommand = true;
-                //    break;
+                #region "ボス"
+                case Database.ENEMY_BOSS_LEGIN_ARZE_1:
+                case Database.ENEMY_BOSS_LEGIN_ARZE_2:
+                case Database.ENEMY_BOSS_LEGIN_ARZE_3:
+                    //this.name = Database.ENEMY_BOSS_LEGIN_ARZE;
+                    this.baseStrength = 1;
+                    this.baseAgility = 1500;
+                    this.baseIntelligence = 1300; // ベース値が強すぎると、BUFFDOWN魔法の威力が強すぎなので、意図的に弱体化//13000;
+                    this.baseStamina = 17000;
+                    this.baseMind = 100;
+                    this.experience = 125000;
+                    this.baseLife = 2590000;
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_2) this.baseLife = 2800000;
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_3) this.baseLife = 3100000;
+                    this.baseMana = 2720000;
+                    this.baseInstantPoint = 25000;
+                    this.level = 107;
+                    this.gold = 500000;
+                    this.ResistStun = true;
+                    this.ResistParalyze = true;
+                    this.ResistFrozen = true;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss4;
+                    //this.DropItem[0] = Database.EPIC_ORB_DESTRUCT_FIRE;
+                    this.UseStackCommand = true;
+                    break;
 
-                //case Database.ENEMY_DRAGON_IDEA_CAGE_ZEED:
-                //    this.baseStrength = 21260;
-                //    this.baseAgility = 1000; // 会話専用のため、スピードを減らす。
-                //    this.baseIntelligence = 92370;
-                //    this.baseStamina = 81100;
-                //    this.baseMind = 3950;
-                //    this.experience = 0;
-                //    this.baseLife = 53910687;
-                //    this.baseInstantPoint = 100000;
-                //    this.level = 254;
-                //    this.gold = 15000000;
-                //    this.Rare = RareString.Purple;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.TruthBoss4;
-                //    this.UseStackCommand = true;
-                //    break;
-                //#endregion
-                //#endregion
-                //#region "５階"
-                //case Database.ENEMY_PHOENIX:
-                //    this.baseStrength = 3400;
-                //    this.baseAgility = 2500;
-                //    this.baseIntelligence = 5100;
-                //    this.baseStamina = 5000;
-                //    this.baseLife = 500000;
-                //    this.baseMind = 0;
-                //    this.baseResistFire = 30000;
-                //    this.gold = 560000;
-                //    this.experience = 130000;
-                //    this.level = 110;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area51;
-                //    break;
+                case Database.ENEMY_DRAGON_IDEA_CAGE_ZEED:
+                    this.baseStrength = 21260;
+                    this.baseAgility = 1000; // 会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 92370;
+                    this.baseStamina = 81100;
+                    this.baseMind = 3950;
+                    this.experience = 0;
+                    this.baseLife = 53910687;
+                    this.baseInstantPoint = 100000;
+                    this.level = 254;
+                    this.gold = 15000000;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.TruthBoss4;
+                    this.UseStackCommand = true;
+                    break;
+                #endregion
+                #endregion
+                #region "５階"
+                case Database.ENEMY_PHOENIX:
+                    this.baseStrength = 3400;
+                    this.baseAgility = 2500;
+                    this.baseIntelligence = 5100;
+                    this.baseStamina = 5000;
+                    this.baseLife = 500000;
+                    this.baseMind = 0;
+                    this.baseResistFire = 30000;
+                    this.gold = 560000;
+                    this.experience = 130000;
+                    this.level = 110;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area51;
+                    break;
 
-                //case Database.ENEMY_NINE_TAIL:
-                //    this.baseStrength = 6100;
-                //    this.baseAgility = 2800;
-                //    this.baseIntelligence = 1600;
-                //    this.baseStamina = 5500;
-                //    this.baseLife = 550000;
-                //    this.baseMind = 0;
-                //    this.gold = 620000;
-                //    this.experience = 130000;
-                //    this.level = 111;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area51;
-                //    break;
+                case Database.ENEMY_NINE_TAIL:
+                    this.baseStrength = 6100;
+                    this.baseAgility = 2800;
+                    this.baseIntelligence = 1600;
+                    this.baseStamina = 5500;
+                    this.baseLife = 550000;
+                    this.baseMind = 0;
+                    this.gold = 620000;
+                    this.experience = 130000;
+                    this.level = 111;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area51;
+                    break;
 
-                //case Database.ENEMY_JUDGEMENT:
-                //    this.baseStrength = 3800;
-                //    this.baseAgility = 2400;
-                //    this.baseIntelligence = 3800;
-                //    this.baseStamina = 6000;
-                //    this.baseLife = 650000;
-                //    this.baseMind = 0;
-                //    this.gold = 680000;
-                //    this.experience = 130000;
-                //    this.level = 112;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area51;
-                //    break;
+                case Database.ENEMY_JUDGEMENT:
+                    this.baseStrength = 3800;
+                    this.baseAgility = 2400;
+                    this.baseIntelligence = 3800;
+                    this.baseStamina = 6000;
+                    this.baseLife = 650000;
+                    this.baseMind = 0;
+                    this.gold = 680000;
+                    this.experience = 130000;
+                    this.level = 112;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area51;
+                    break;
 
-                //case Database.ENEMY_EMERALD_DRAGON:
-                //    this.baseStrength = 2200;
-                //    this.baseAgility = 3000;
-                //    this.baseIntelligence = 6200;
-                //    this.baseStamina = 4600;
-                //    this.baseLife = 600000;
-                //    this.baseMind = 0;
-                //    this.gold = 730000;
-                //    this.experience = 130000;
-                //    this.level = 113;
-                //    this.Rare = RareString.Red;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Area51;
-                //    break;
+                case Database.ENEMY_EMERALD_DRAGON:
+                    this.baseStrength = 2200;
+                    this.baseAgility = 3000;
+                    this.baseIntelligence = 6200;
+                    this.baseStamina = 4600;
+                    this.baseLife = 600000;
+                    this.baseMind = 0;
+                    this.gold = 730000;
+                    this.experience = 130000;
+                    this.level = 113;
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area51;
+                    break;
 
-                //case Database.ENEMY_BOSS_BYSTANDER_EMPTINESS:
-                //    this.baseStrength = 3000;
-                //    this.baseAgility = 100;
-                //    this.baseIntelligence = 3000;
-                //    this.baseStamina = 9999;
-                //    this.baseLife = 9900009;
-                //    this.baseMind = 1;
-                //    this.baseInstantPoint = 8000;
-                //    this.ResistBlind = true;
-                //    this.ResistFrozen = true;
-                //    this.ResistNoResurrection = true;
-                //    this.ResistParalyze = true;
-                //    this.ResistPoison = true;
-                //    this.ResistSilence = true;
-                //    this.ResistSlip = true;
-                //    this.ResistSlow = true;
-                //    this.ResistStun = true;
-                //    this.ResistTemptation = true;
-                //    this.gold = 0;
-                //    this.experience = 0;
-                //    this.level = 200;
-                //    this.Rare = RareString.Gold;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.Boss5;
-                //    break;
+                case Database.ENEMY_BOSS_BYSTANDER_EMPTINESS:
+                    this.baseStrength = 3000;
+                    this.baseAgility = 100;
+                    this.baseIntelligence = 3000;
+                    this.baseStamina = 9999;
+                    this.baseLife = 9900009;
+                    this.baseMind = 1;
+                    this.baseInstantPoint = 8000;
+                    this.ResistBlind = true;
+                    this.ResistFrozen = true;
+                    this.ResistNoResurrection = true;
+                    this.ResistParalyze = true;
+                    this.ResistPoison = true;
+                    this.ResistSilence = true;
+                    this.ResistSlip = true;
+                    this.ResistSlow = true;
+                    this.ResistStun = true;
+                    this.ResistTemptation = true;
+                    this.gold = 0;
+                    this.experience = 0;
+                    this.level = 200;
+                    this.Rare = RareString.Gold;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Boss5;
+                    break;
 
-                //case Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA:
-                //    this.baseStrength = 78772;
-                //    this.baseAgility = 1000; // 会話専用のため、スピードを減らす。
-                //    this.baseIntelligence = 56910;
-                //    this.baseStamina = 92500;
-                //    this.baseMind = 5850;
-                //    this.experience = 0;
-                //    this.baseLife = 68119820;
-                //    this.baseInstantPoint = 100000;
-                //    this.level = 255;
-                //    this.gold = 15000000;
-                //    this.Rare = RareString.Purple;
-                //    this.Armor = ArmorType.Normal;
-                //    this.Area = MonsterArea.TruthBoss5;
-                //    this.UseStackCommand = true;
-                //    break;
-                //#endregion
+                case Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA:
+                    this.baseStrength = 78772;
+                    this.baseAgility = 1000; // 会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 56910;
+                    this.baseStamina = 92500;
+                    this.baseMind = 5850;
+                    this.experience = 0;
+                    this.baseLife = 68119820;
+                    this.baseInstantPoint = 100000;
+                    this.level = 255;
+                    this.gold = 15000000;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.TruthBoss5;
+                    this.UseStackCommand = true;
+                    break;
+                #endregion
 
-                //#region "真実世界"
+                // todo
+                #region "真実世界"
                 //case Database.ENEMY_LAST_RANA_AMILIA:
                 //    this.fullName = Database.ENEMY_LAST_RANA_AMILIA;
                 //    this.baseStrength = 1150;
@@ -6692,9 +6693,10 @@ namespace DungeonPlayer
                 //    this.Accessory2 = new ItemBackPack(Database.COMMON_LOYAL_RING);
                 //    this.Area = MonsterArea.Duel;
                 //    break;
-                //#endregion
+                #endregion
 
-                //#region "ヴェルゼ・アーティDUELその１"
+                    // todo
+                #region "ヴェルゼ・アーティDUELその１"
                 //case Database.VERZE_ARTIE:
                 //    this.fullName = Database.VERZE_ARTIE_FULL;
                 //    this.baseStrength = 100;
@@ -6717,24 +6719,24 @@ namespace DungeonPlayer
                 //    this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING_0);
                 //    this.Area = MonsterArea.Duel;
                 //    break;
-                //#endregion
+                #endregion
 
-                //#region "ダミー素振り君"
-                //case Database.DUEL_DUMMY_SUBURI:
-                //    this.baseStrength = 1000;
-                //    this.baseAgility = 500;
-                //    this.baseIntelligence = 1000;
-                //    this.baseStamina = 9999;
-                //    this.baseMind = 700;
-                //    this.experience = 0;
-                //    this.baseLife = 9990009;
-                //    this.ResistFire = 99999999;
-                //    this.Rare = RareString.Black;
-                //    this.level = 1;
-                //    this.gold = 0;
-                //    this.Area = MonsterArea.Area31;
-                //    break;
-                //#endregion
+                #region "ダミー素振り君"
+                case Database.DUEL_DUMMY_SUBURI:
+                    this.baseStrength = 1000;
+                    this.baseAgility = 500;
+                    this.baseIntelligence = 1000;
+                    this.baseStamina = 9999;
+                    this.baseMind = 700;
+                    this.experience = 0;
+                    this.baseLife = 9990009;
+                    this.ResistFire = 99999999;
+                    this.Rare = RareString.Black;
+                    this.level = 1;
+                    this.gold = 0;
+                    this.Area = MonsterArea.Area31;
+                    break;
+                #endregion
                 default:
                     break;
             }

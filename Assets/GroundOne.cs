@@ -55,6 +55,7 @@ namespace DungeonPlayer {
 
             GameObject obj = new GameObject("obj");
             MC = obj.AddComponent<MainCharacter>();
+            MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
             // debug
             MC.AvailableMana = true;
             MC.FreshHeal = true;

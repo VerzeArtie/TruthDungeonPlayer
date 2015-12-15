@@ -987,15 +987,6 @@ namespace DungeonPlayer
 
             this.ec1 = baseObj.AddComponent<TruthEnemyCharacter>();
             this.ec1.Initialize(Database.ENEMY_KOUKAKU_WURM);
-            //this.ec1.Name = "Gate Keeper";
-            //this.ec1.Strength = 1;
-            //this.ec1.Agility = 2;
-            //this.ec1.Intelligence = 2;
-            //this.ec1.Stamina = 587;
-            //this.ec1.Mind = 3;
-            ////this.enemyObj1.MaxLife = 5920;
-            //this.ec1.CurrentLife = 5920;
-            Debug.Log(this.ec1.CurrentLife.ToString());
             this.ec1.CurrentMana = this.ec1.MaxMana;
             this.ec1.MagicAttackValue = 1;
             this.ec1.CurrentCommand = Database.ATTACK_EN;
@@ -1017,14 +1008,7 @@ namespace DungeonPlayer
             this.enemyList.Add(this.ec1);
 
             this.ec2 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec2.Name = "Black Soldier";
-            this.ec2.Strength = 1;
-            this.ec2.Agility = 3;
-            this.ec2.Intelligence = 2;
-            this.ec2.Stamina = 187;
-            this.ec2.Mind = 3;
-            //this.enemyObj2.MaxLife = 1920;
-            this.ec2.CurrentLife = 1920;
+            this.ec2.Initialize(Database.ENEMY_HIYOWA_BEATLE);
             this.ec2.CurrentMana = this.ec2.MaxMana;
             this.ec2.MagicAttackValue = 1;
             this.ec2.CurrentCommand = Database.ATTACK_EN;
@@ -1046,14 +1030,7 @@ namespace DungeonPlayer
             this.enemyList.Add(this.ec2);
 
             this.ec3 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec3.Name = "White Soldier";
-            this.ec3.Strength = 1;
-            this.ec3.Agility = 4;
-            this.ec3.Intelligence = 200;
-            this.ec3.Stamina = 187;
-            this.ec3.Mind = 3;
-            //this.enemyObj3.MaxLife = 1920;
-            this.ec3.CurrentLife = 1920;
+            this.ec3.Initialize(Database.ENEMY_GREEN_CHILD);
             this.ec3.CurrentMana = this.ec3.MaxMana;
             this.ec3.MagicAttackValue = 1;
             this.ec3.CurrentCommand = Database.PROTECTION;
