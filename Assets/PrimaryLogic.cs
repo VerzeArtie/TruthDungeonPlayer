@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 // 武器・防具・プレイ
 namespace DungeonPlayer
@@ -188,6 +189,7 @@ namespace DungeonPlayer
                 {
                     if (player.MainWeapon != null)
                     {
+                        Debug.Log("MainWeapon plus! " + player.MainWeapon.Name + " " + player.MainWeapon.MinValue + " " + player.MainWeapon.MaxValue);
                         min += player.MainWeapon.PhysicalAttackMinValue * pWeapon;
                         max += player.MainWeapon.PhysicalAttackMaxValue * pWeapon;
                     }
@@ -372,14 +374,13 @@ namespace DungeonPlayer
             }
 
             double result = CoreDamage(player, type, min, max);
-
+       
             // 武器、防具、アクセサリからの増強
             if ((player.MainWeapon != null) && (player.MainWeapon.AmplifyPhysicalDefense != 0.0f)) result = result * player.MainWeapon.AmplifyPhysicalDefense;
             if ((player.SubWeapon != null) && (player.SubWeapon.AmplifyPhysicalDefense != 0.0f)) result = result * player.SubWeapon.AmplifyPhysicalDefense;
             if ((player.MainArmor != null) && (player.MainArmor.AmplifyPhysicalDefense != 0.0f)) result = result * player.MainArmor.AmplifyPhysicalDefense;
             if ((player.Accessory != null) && (player.Accessory.AmplifyPhysicalDefense != 0.0f)) result = result * player.Accessory.AmplifyPhysicalDefense;
             if ((player.Accessory2 != null) && (player.Accessory2.AmplifyPhysicalDefense != 0.0f)) result = result * player.Accessory2.AmplifyPhysicalDefense;
-
 
             if (player.CurrentBlindJustice > 0)
             {
@@ -746,7 +747,7 @@ namespace DungeonPlayer
                 max = 40.0F + (double)(player.TotalAgility - 1000.0F) / 450.0F;
             }
 
-            Random rd = new Random(DateTime.Now.Millisecond);
+            System.Random rd = new System.Random(DateTime.Now.Millisecond);
             int result = AP.Math.RandomInteger(100);
             if (player.CurrentWordOfFortune >= 1)
             {
@@ -1141,7 +1142,7 @@ namespace DungeonPlayer
             double result = PhysicalAttackValue(player, NeedType.Random, pStr, pAgl, pInt, pMind, pWeapon, stance, spellSkill, duelMode);
 
             // 弱すぎる場合の最低値を付与した上で
-            Random rd = new Random(DateTime.Now.Millisecond * Environment.TickCount);
+            System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
             result += rd.Next(minBorder, maxBorder);
 
             // それを返す！
@@ -1165,7 +1166,7 @@ namespace DungeonPlayer
             double result = MagicAttackValue(player, NeedType.Random, pInt, pMind, stance, spellSkill, ignoreChargeCount, duelMode);
 
             // 弱すぎる場合の最低値を付与した上で
-            Random rd = new Random(DateTime.Now.Millisecond * Environment.TickCount);
+            System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
             result += rd.Next(minBorder, maxBorder);
 
             // それを返す！
@@ -1664,6 +1665,16 @@ namespace DungeonPlayer
             // マナゲイン
             // 1/20回復
             return player.MaxLife / 20.0F;
+        }
+
+        internal static double EternalFateRingValue(MainCharacter player)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static double EternalLoyalRingValue(MainCharacter player)
+        {
+            throw new NotImplementedException();
         }
     }
 }

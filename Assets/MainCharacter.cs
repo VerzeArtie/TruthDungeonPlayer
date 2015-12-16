@@ -46,7 +46,8 @@ namespace DungeonPlayer
         }
 
         // basic parameter
-        public string FullName { get; set; }
+        protected string fullName = string.Empty;
+        protected string name = string.Empty;
         protected int baseStrength = 5;
         protected int baseAgility = 3;
         protected int baseIntelligence = 2;
@@ -82,12 +83,52 @@ namespace DungeonPlayer
         protected bool availableArchitect = false;
 
         // core parameter
-        public string Name { get; set; }
-        public int Strength { get; set; }
-        public int Agility { get; set; }
-        public int Intelligence { get; set; }
-        public int Stamina { get; set; }
-        public int Mind { get; set; }
+        public string FullName
+        {
+            get { return fullName; }
+            set { fullName = value; }
+        }
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public int Strength
+        {
+            get { return baseStrength; }
+            set { baseStrength = value; }
+        }
+        public int Agility
+        {
+            get { return baseAgility; }
+            set { baseAgility = value; }
+        }
+        public int Intelligence
+        {
+            get { return baseIntelligence; }
+            set { baseIntelligence = value; }
+        }
+        public int Stamina
+        {
+            get { return baseStamina; }
+            set { baseStamina = value; }
+        }
+        public int Mind
+        {
+            get
+            {
+                if (((this.accessory != null) && (this.accessory.Name == Database.RARE_VOID_HYMNSONIA)) ||
+                    ((this.accessory2 != null) && (this.accessory2.Name == Database.RARE_VOID_HYMNSONIA)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return baseMind;
+                }
+            }
+            set { baseMind = value; }
+        }
         protected string currentArchetypeName = string.Empty; // 後編追加
         public string CurrentArchetypeName
         {
@@ -3000,6 +3041,11 @@ namespace DungeonPlayer
         }
 
         internal void ChangeLifeCountStatus(int p)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        internal void RemoveSinFortune()
         {
             throw new System.NotImplementedException();
         }

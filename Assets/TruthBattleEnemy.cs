@@ -208,7 +208,7 @@ namespace DungeonPlayer
         private static System.Random rand = new System.Random(DateTime.Now.Millisecond * System.Environment.TickCount);
 
         void ActivateSomeCharacter(MainCharacter player, MainCharacter target,
-            Text name, Text life, Text backSkillPoint, Text currentSkillPoint, Text backManaPoint, Text currentManaPoint, Text currentInstantPoint, Text currentSpecialInstant,
+            Text charaName, Text life, Text backSkillPoint, Text currentSkillPoint, Text backManaPoint, Text currentManaPoint, Text currentInstantPoint, Text currentSpecialInstant,
             Button[] actionButton,
             Text actionLabel,
             GameObject buffPanel, // Panel
@@ -225,7 +225,7 @@ namespace DungeonPlayer
 
                 // 戦闘画面UIへの初期設定
                 // MainCharacterクラス内容と戦闘画面UIの割り当て
-                player.labelName = name;
+                player.labelName = charaName;
                 player.labelName.text = player.Name;
 
                 player.labelCurrentLifePoint = life;
@@ -2895,9 +2895,642 @@ namespace DungeonPlayer
         }
         private bool PlayerNormalAttack(MainCharacter player, MainCharacter target, double magnification, int crushingBlow, bool ignoreDefense, bool skipCounterPhase, double atkBase, int interval, string soundName, int textNumber, bool ignoreDoubleAttack, CriticalType critical)
         {
-            double value = player.TotalStrength;
-            AbstractPhysicalAttack(player, target, Database.ATTACK_EN, value);
+            //double value = player.TotalStrength; 
+            //AbstractPhysicalAttack(player, target, Database.ATTACK_EN, value);
+
              // todo
+            //if (skipCounterPhase == false)
+            //{
+            //    if (CheckCounterAttack(player))
+            //    {
+            //        PlayerNormalAttack(target, player, 0, false, false);
+            //        return;
+            //    }
+            //}
+
+            for (int ii = 0; ii < 2; ii++) // サブウェポンによる2回攻撃を考慮
+            {
+                // 攻撃ミス判定する前にGlory効果（Gloryは自身対象なので、適用対象ＯＫ仕様は前編時代と同じ）
+                // Gloryによる効果
+                if (player.CurrentGlory > 0)
+                {
+                    MainCharacter memoTarget = player.Target;
+                    player.Target = player;
+                    PlayerSpellFreshHeal(player, player);
+                    player.Target = memoTarget;
+                }
+
+                // todo
+                // ミス判定
+                //if (CheckDodge(player, target, false))
+                //{
+                //    // 回避された場合、ダメージは発生しない。デフレクション判定なども同様。
+                //    // 一番下にサブウェポンによる二回攻撃判定があるので、それは別とする。
+                //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.Black, true, false, String.Empty);
+                //}
+                //else if (CheckBlindMiss(player, target))
+                //{
+                //    // 暗闇により攻撃を外した場合ダメージは発生しない。デフレクション判定なども同様。
+                //    // 一番下にサブウェポンによる二回攻撃判定があるので、それは別とする。
+                //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.Black, true, false, String.Empty);
+                //}
+                //else
+                {
+                    double damage = 0;
+                    // ダメージ加算
+                    if (atkBase == 0)
+                    {
+                        if (ii == 0)
+                        {
+                            damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
+                        }
+                        else
+                        {
+                            damage = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0, 0, 0, 1.0F, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, this.DuelMode);
+                        }
+                    }
+                    else
+                    {
+                        damage = atkBase;
+                    }
+                    if (magnification > 0)
+                    {
+                        damage = damage * magnification;
+                    }
+                    if (player.CurrentSaintPower > 0)
+                    {
+                        damage = damage * 1.5F;
+                    }
+                    if (player.CurrentEternalPresence > 0)
+                    {
+                        damage = damage * 1.3F;
+                    }
+                    if (player.CurrentAetherDrive > 0)
+                    {
+                        damage = damage * 2.0F;
+                    }
+                    if (player.CurrentBlindJustice > 0)
+                    {
+                        damage = damage * 1.7F;
+                    }
+                    if (player.CurrentRisingAura > 0)
+                    {
+                        damage = damage * 1.4F;
+                    }
+                    if (player.CurrentMazeCube > 0)
+                    {
+                        damage = damage * PrimaryLogic.MazeCubeValue(player);
+                    }
+                    if (player.CurrentEternalFateRing > 0)
+                    {
+                        damage = damage * PrimaryLogic.EternalFateRingValue(player);
+                    }
+
+                    // ダメージ軽減
+                    damage -= PrimaryLogic.PhysicalDefenseValue(target, PrimaryLogic.NeedType.Random, this.DuelMode);
+                    if (damage <= 0.0f) damage = 0.0f;
+
+                    if (target.CurrentProtection > 0 && player.CurrentTruthVision <= 0)
+                    {
+                        damage = (int)((float)damage / 1.2F);
+                    }
+                    if (target.CurrentEternalPresence > 0)
+                    {
+                        damage = damage * 0.8F;
+                    }
+                    if (target.CurrentExaltedField > 0 && player.CurrentTruthVision <= 0)
+                    {
+                        damage = damage / 1.4F;
+                    }
+                    if (target.CurrentAetherDrive > 0 && player.CurrentTruthVision <= 0)
+                    {
+                        damage = damage * 0.5f;
+                    }
+
+                    if (ignoreDefense == false)
+                    {
+                        if (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0)
+                        {
+                            if ((target.CurrentAbsoluteZero > 0) ||
+                                (target.CurrentFrozen > 0) ||
+                                (target.CurrentParalyze > 0) ||
+                                (target.CurrentStunning > 0))
+                            {
+                                UpdateBattleText(target.GetCharacterSentence(88));
+                            }
+                            else
+                            {
+                                if (target.SubWeapon != null)
+                                {
+                                    if (target.SubWeapon.Type == ItemBackPack.ItemType.Shield)
+                                    {
+                                        damage = damage / 4.0f;
+                                    }
+                                    else
+                                    {
+                                        damage = damage / 3.0f;
+                                    }
+                                }
+                                else
+                                {
+                                    damage = damage / 3.0f;
+                                }
+                            }
+                        }
+                        // ワン・イムーニティによる軽減
+                        if (target.CurrentOneImmunity > 0 && (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0))
+                        {
+                            if (target.CurrentAbsoluteZero > 0)
+                            {
+                                UpdateBattleText(target.GetCharacterSentence(88));
+                            }
+                            else
+                            {
+                                damage = 0;
+                            }
+                        }
+                    }
+
+                    // クリティカル判定
+                    bool detectCritical = false;
+                    if (critical == CriticalType.Random) detectCritical = PrimaryLogic.CriticalDetect(player);
+                    if (critical == CriticalType.None) detectCritical = false;
+                    if (critical == CriticalType.Absolute) detectCritical = true;
+                    if (crushingBlow > 0) detectCritical = false;
+                    if (IsPlayerEnemy(player))
+                    {
+                        if (((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area11 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area12 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area13 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area14 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area21 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area22 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area23 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area24 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area31 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area32 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area33 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area34 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area41 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area42 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area43 ||
+                            ((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area44)
+                        //((TruthEnemyCharacter)player).Area == TruthEnemyCharacter.MonsterArea.Area51) 最後の雑魚ぐらいはクリティカル通常判定で。
+                        {
+                            if (AP.Math.RandomInteger(2) != 0) // 雑魚クリティカルは二分の一に機会を減らす
+                            {
+                                detectCritical = false;
+                            }
+                        }
+                    }
+                    if (detectCritical)
+                    {
+                        damage = damage * PrimaryLogic.CriticalDamageValue(player, this.DuelMode);
+                        if (player.CurrentSinFortune > 0)
+                        {
+                            damage = damage * PrimaryLogic.SinFortuneValue(player);
+                            player.RemoveSinFortune();
+                        }
+                    }
+
+                    // 効果音の再生
+                    if (soundName != string.Empty)
+                    {
+                        GroundOne.PlaySoundEffect(soundName);
+                    }
+                    else
+                    {
+                        if (player == ec1 || player == ec2 || player == ec3)
+                        {
+                            GroundOne.PlaySoundEffect(Database.SOUND_ENEMY_ATTACK1);
+                        }
+                        else
+                        {
+                            GroundOne.PlaySoundEffect(Database.SOUND_SWORD_SLASH1);
+                        }
+                    }
+
+                    // todo
+                    // デフレクション効果はクリティカル値も反映させる
+                    // デフレクションによる物理攻撃反射
+                    //if (skipCounterPhase)
+                    //{
+                    //    if (target.CurrentDeflection > 0)
+                    //    {
+                    //        UpdateBattleText(target.GetCharacterSentence(62));
+                    //        this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.Black, true, false, Database.FAIL_DEFLECTION);
+                    //        target.CurrentDeflection = 0;
+                    //        target.pbDeflection.Image = null;
+                    //        target.pbDeflection.Update();
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (target.CurrentDeflection > 0)
+                    //    {
+                    //        damage = DamageIsZero(damage, player);
+                    //        LifeDamage(damage, player);
+                    //        target.CurrentDeflection = 0;
+                    //        target.pbDeflection.Image = null;
+                    //        target.pbDeflection.Update();
+                    //        return true;
+                    //    }
+                    //}
+
+                    // StaticBarrierによる効果
+                    if (target.CurrentStaticBarrier > 0)
+                    {
+                        target.CurrentStaticBarrierValue--;
+                        target.ChangeStaticBarrierStatus(target.CurrentStaticBarrierValue);
+                        damage = damage * 0.5f;
+                    }
+
+                    // todo
+                    // StanceOfMysticによる効果
+                    //if (target.CurrentStanceOfMysticValue > 0)
+                    //{
+                    //    target.CurrentStanceOfMysticValue--;
+                    //    target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMysticValue);
+                    //    damage = 0;
+                    //    LifeDamage(damage, target, interval, false);
+                    //    return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
+                    //}
+                    //// HardestParryによる効果
+                    //if (target.CurrentHardestParry)
+                    //{
+                    //    target.CurrentHardestParry = false;
+                    //    damage = 0;
+                    //    LifeDamage(damage, target, interval, false);
+                    //    return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
+                    //}
+
+                    // todo
+                    // ダメージ０変換
+                    //damage = DamageIsZero(damage, target);
+
+                    //// スケール・オブ・ブルーレイジによる効果
+                    //if ((target.MainArmor != null) && (target.MainArmor.Name == Database.RARE_SCALE_BLUERAGE))
+                    //{
+                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.ScaleOfBlueRageValue(player))
+                    //    {
+                    //        this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
+                    //        damage = 0;
+                    //    }
+                    //}
+                    //// スライド・スルー・シールドによる効果
+                    //if ((target.SubWeapon != null) && (target.SubWeapon.Name == Database.RARE_SLIDE_THROUGH_SHIELD))
+                    //{
+                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.SlideThroughShieldValue(player))
+                    //    {
+                    //        this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
+                    //        damage = 0;
+                    //    }
+                    //}
+
+                    // メッセージ更新
+                    if (detectCritical)
+                    {
+                        UpdateBattleText(player.GetCharacterSentence(117));
+                    }
+                    if (soundName == Database.SOUND_STRAIGHT_SMASH)
+                    {
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(124), target.Name, (int)damage), interval);
+                    }
+                    else if (textNumber != -1)
+                    {
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(textNumber), target.Name, (int)damage), interval);
+                    }
+                    else
+                    {
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(115), target.Name, (int)damage), interval);
+                    }
+
+                    // ライフを更新
+                    LifeDamage(damage, target, interval, detectCritical);
+
+                    // todo
+                    // アビス・ファイアによる効果
+                    //if (player.CurrentAbyssFire > 0)
+                    //{
+                    //    double effectValue = PrimaryLogic.AbyssFireValue(target); // ダメージ発生源はレギィンアーゼ
+                    //    LifeDamage(effectValue, player, interval, detectCritical);
+                    //    UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.Name, ((int)effectValue).ToString()), interval);
+                    //}
+
+                    //// シェズル・ミラージュ・ランサーの場合、ダブルヒット扱いとする。
+                    //if (((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.EPIC_SHEZL_THE_MIRAGE_LANCER)) ||
+                    //    ((ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.EPIC_SHEZL_THE_MIRAGE_LANCER)))
+                    //{
+                    //    LifeDamage(damage, target, interval, detectCritical);
+                    //}
+
+                    //// 対象者のシール・オブ・バランスによる効果
+                    //if ((target.Accessory != null) && (target.Accessory.Name == Database.RARE_SEAL_OF_BALANCE))
+                    //{
+                    //    PlayerAbstractManaGain(target, target, 0, PrimaryLogic.SealOfBalanceValue_A(target), 0, Database.SOUND_FRESH_HEAL, 5003);
+                    //}
+                    //if ((target.Accessory2 != null) && (target.Accessory2.Name == Database.RARE_SEAL_OF_BALANCE))
+                    //{
+                    //    PlayerAbstractManaGain(target, target, 0, PrimaryLogic.SealOfBalanceValue_A(target), 0, Database.SOUND_FRESH_HEAL, 5003);
+                    //}
+
+                    //// 集中と断絶効果がある場合、途切れさす
+                    //if (player.CurrentSyutyu_Danzetsu > 0)
+                    //{
+                    //    player.CurrentSyutyu_Danzetsu = 0;
+                    //    player.DeBuff(player.pbSyutyuDanzetsu);
+                    //}
+
+                    //// HolyBreakerによるダメージ反射
+                    //if (target.CurrentHolyBreaker > 0)
+                    //{
+                    //    LifeDamage(damage, player);
+                    //}
+
+                    //// 黒氷刀による効果
+                    //if ((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.RARE_BLACK_ICE_SWORD) ||
+                    //    (ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.RARE_BLACK_ICE_SWORD))
+                    //{
+                    //    double effectValue = PrimaryLogic.BlackIceSwordValue(player);
+                    //    effectValue = GainIsZero(effectValue, player);
+                    //    player.CurrentMana += (int)effectValue;
+                    //    UpdateMana(player, (int)effectValue, true, true, 0);
+                    //}
+                    //// メンタライズド・フォース・クローによる効果
+                    //if ((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.RARE_MENTALIZED_FORCE_CLAW) ||
+                    //    (ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.RARE_MENTALIZED_FORCE_CLAW))
+                    //{
+                    //    double effectValue = PrimaryLogic.MentalizedForceClawValue(player);
+                    //    effectValue = GainIsZero(effectValue, player);
+                    //    player.CurrentSkillPoint += (int)effectValue;
+                    //    UpdateSkillPoint(player, (int)effectValue, true, true, 0);
+                    //}
+                    //// クレイモア・オブ・ザックスによる効果
+                    //if ((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.RARE_CLAYMORE_ZUKS))
+                    //{
+                    //    double effectValue = PrimaryLogic.ClaymoreZuksValue(player);
+                    //    effectValue = GainIsZero(effectValue, player);
+                    //    player.CurrentLife += (int)effectValue;
+                    //    UpdateLife(player, (int)effectValue, true, true, 0, false);
+                    //}
+                    //// ソード・オブ・ディバイドによる効果
+                    //if ((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.RARE_SWORD_OF_DIVIDE) ||
+                    //    (ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.RARE_SWORD_OF_DIVIDE))
+                    //{
+                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.SwordOfDivideValue_A(player))
+                    //    {
+                    //        double effectValue = PrimaryLogic.SwordOfDivideValue(target);
+                    //        effectValue = DamageIsZero(effectValue, target);
+                    //        LifeDamage(effectValue, target);
+                    //    }
+                    //}
+                    //// 真紅炎・マスターブレイドによる効果
+                    //if ((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.RARE_TRUERED_MASTER_BLADE) ||
+                    //    (ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.RARE_TRUERED_MASTER_BLADE))
+                    //{
+                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.SinkouenMasterBladeValue_A(player))
+                    //    {
+                    //        // ワード・オブ・パワーを発動
+                    //        PlayerSpellWordOfPower(player, target, 0, 0);
+                    //    }
+                    //}
+                    //// デビルキラーによる効果
+                    //if ((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.RARE_DEVIL_KILLER) ||
+                    //    (ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.RARE_DEVIL_KILLER))
+                    //{
+                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.DevilKillerValue(player))
+                    //    {
+                    //        PlayerDeath(player, target);
+                    //    }
+                    //}
+
+                    //// ジュザ・ファンタズマル・クローによる効果
+                    //if ((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.EPIC_JUZA_THE_PHANTASMAL_CLAW) ||
+                    //    (ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.EPIC_JUZA_THE_PHANTASMAL_CLAW))
+                    //{
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_JUZA_PHANTASMAL);
+                    //}
+
+                    //// エターナル・フェイトリングによる効果
+                    //if ((player.Accessory != null) && (player.Accessory.Name == Database.EPIC_FATE_RING_OMEGA))
+                    //{
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_ETERNAL_FATE);
+                    //}
+                    //if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.EPIC_FATE_RING_OMEGA))
+                    //{
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_ETERNAL_FATE);
+                    //}
+
+                    //// エターナル・ロイヤルリングによる効果
+                    //if ((player.Accessory != null) && (player.Accessory.Name == Database.EPIC_FATE_RING_OMEGA))
+                    //{
+                    //    double effectValue = PrimaryLogic.EternalLoyalRingValue(player);
+                    //    effectValue = GainIsZero(effectValue, player);
+                    //    player.CurrentSkillPoint += (int)effectValue;
+                    //    UpdateSkillPoint(player, (int)effectValue, true, true, 0);
+                    //}
+                    //if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.EPIC_FATE_RING_OMEGA))
+                    //{
+                    //    double effectValue = PrimaryLogic.EternalLoyalRingValue(player);
+                    //    effectValue = GainIsZero(effectValue, player);
+                    //    player.CurrentSkillPoint += (int)effectValue;
+                    //    UpdateSkillPoint(player, (int)effectValue, true, true, 0);
+                    //}
+
+                    //// ライト・サーヴァントによる効果
+                    //if ((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_LIGHT_SERVANT))
+                    //{
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_LIGHT_SERVANT);
+                    //}
+                    //if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_LIGHT_SERVANT))
+                    //{
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_LIGHT_SERVANT);
+                    //}
+
+                    //// シャドウ・サーヴァントによる効果
+                    //if ((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_SHADOW_SERVANT))
+                    //{
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_SHADOW_SERVANT);
+                    //}
+                    //if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_SHADOW_SERVANT))
+                    //{
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_SHADOW_SERVANT);
+                    //}
+
+                    //// メイズ・キューブによる効果
+                    //if ((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_MAZE_CUBE) && (player.Accessory.SwitchStatus1 == false))
+                    //{
+                    //    player.Accessory.SwitchStatus1 = true;
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_MAZE_CUBE);
+                    //}
+                    //if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_MAZE_CUBE) && (player.Accessory2.SwitchStatus1 == false))
+                    //{
+                    //    player.Accessory2.SwitchStatus1 = true;
+                    //    PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_MAZE_CUBE);
+                    //}
+
+                    //// エムブレム・オブ・ヴァルキリーによる効果
+                    //if ((player.Accessory != null) && (player.Accessory.Name == Database.RARE_EMBLEM_OF_VALKYRIE) ||
+                    //    (player.Accessory2 != null) && (player.Accessory2.Name == Database.RARE_EMBLEM_OF_VALKYRIE))
+                    //{
+                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.EmblemOfValkyrieValue(player))
+                    //    {
+                    //        NowStunning(player, target, (int)PrimaryLogic.EmblemOfValkyrieValue_A(player));
+                    //    }
+                    //}
+                    //// エムブレム・オブ・ハデスによる効果
+                    //if ((player.Accessory != null) && (player.Accessory.Name == Database.RARE_EMBLEM_OF_HADES) ||
+                    //    (player.Accessory2 != null) && (player.Accessory2.Name == Database.RARE_EMBLEM_OF_HADES))
+                    //{
+                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.EmblemOfHades(player))
+                    //    {
+                    //        PlayerDeath(player, target);
+                    //    }
+                    //}
+                    //// 氷絶零の宝珠による効果
+                    //if ((player.Accessory != null) && (player.Accessory.Name == Database.EPIC_ORB_SILENT_COLD_ICE) ||
+                    //    (player.Accessory2 != null) && (player.Accessory2.Name == Database.EPIC_ORB_SILENT_COLD_ICE))
+                    //{
+                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.SilentColdIceValue(player))
+                    //    {
+                    //        NowFrozen(player, target, (int)PrimaryLogic.SilentColdIceValue_A(player));
+                    //        target.RemoveBuffSpell();
+                    //    }
+                    //}
+
+                    //// CrushingBlowによる気絶
+                    //if (crushingBlow > 0)
+                    //{
+                    //    UpdateBattleText(String.Format(player.GetCharacterSentence(70), target.Name, (int)damage));
+                    //    if (target.CurrentAntiStun > 0)
+                    //    {
+                    //        target.RemoveAntiStun();
+                    //        UpdateBattleText(target.GetCharacterSentence(94));
+                    //    }
+                    //    else
+                    //    {
+                    //        if ((target.Accessory != null) && (target.Accessory.Name == "鋼鉄の石像"))
+                    //        {
+                    //            System.Random rd3 = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
+                    //            if (rd3.Next(1, 101) <= target.Accessory.MinValue)
+                    //            {
+                    //                UpdateBattleText(target.Name + "が装備している鋼鉄の石像が光り輝いた！\r\n", 1000);
+                    //                UpdateBattleText(target.Name + "はスタン状態に陥らなかった。\r\n");
+                    //            }
+                    //            else
+                    //            {
+                    //                NowStunning(player, target, crushingBlow);
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            NowStunning(player, target, crushingBlow);
+                    //        }
+                    //    }
+                    //}
+
+                    //// FlameAuraによる追加攻撃
+                    //if (player.CurrentFlameAura > 0)
+                    //{
+                    //    double additional = PrimaryLogic.FlameAuraValue(player, this.DuelMode);
+                    //    if (ignoreDefense == false)
+                    //    {
+                    //        if (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0)
+                    //        {
+                    //            if (target.CurrentAbsoluteZero > 0)
+                    //            {
+                    //                UpdateBattleText(target.GetCharacterSentence(88));
+                    //            }
+                    //            else
+                    //            {
+                    //                additional = (int)((float)additional / 3.0F);
+                    //            }
+                    //        }
+                    //        if (target.CurrentOneImmunity > 0 && (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0))
+                    //        {
+                    //            if (target.CurrentAbsoluteZero > 0)
+                    //            {
+                    //                UpdateBattleText(target.GetCharacterSentence(88));
+                    //            }
+                    //            else
+                    //            {
+                    //                additional = 0;
+                    //            }
+                    //        }
+                    //    }
+
+                    //    additional = DamageIsZero(additional, target);
+                    //    LifeDamage(additional, target, interval);
+                    //    UpdateBattleText(String.Format(player.GetCharacterSentence(14), additional.ToString()));
+                    //}
+                    //// FrozenAuraによる追加攻撃
+                    //if (player.CurrentFrozenAura > 0)
+                    //{
+                    //    double additional = PrimaryLogic.FrozenAuraValue(player, this.DuelMode);
+                    //    if (ignoreDefense == false)
+                    //    {
+                    //        if (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0)
+                    //        {
+                    //            if (target.CurrentAbsoluteZero > 0)
+                    //            {
+                    //                UpdateBattleText(target.GetCharacterSentence(88));
+                    //            }
+                    //            else
+                    //            {
+                    //                additional = (int)((float)additional / 3.0F);
+                    //            }
+                    //        }
+                    //        if (target.CurrentOneImmunity > 0 && (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0))
+                    //        {
+                    //            if (target.CurrentAbsoluteZero > 0)
+                    //            {
+                    //                UpdateBattleText(target.GetCharacterSentence(88));
+                    //            }
+                    //            else
+                    //            {
+                    //                additional = 0;
+                    //            }
+                    //        }
+                    //    }
+                    //    additional = DamageIsZero(additional, target);
+                    //    LifeDamage(additional, target, interval);
+                    //    UpdateBattleText(String.Format(player.GetCharacterSentence(140), additional.ToString()));
+                    //}
+
+                    // ImmortalRaveによる追加攻撃
+                    if (player.CurrentImmortalRave == 3)
+                    {
+                        PlayerSpellFireBall(player, target, 0, 0);
+                    }
+                    else if (player.CurrentImmortalRave == 2)
+                    {
+                        PlayerSpellFlameStrike(player, target, 0, 0);
+                    }
+                    else if (player.CurrentImmortalRave == 1)
+                    {
+                        PlayerSpellVolcanicWave(player, target, 0, 0);
+                    }
+                }
+
+                // サブウェポンがある場合、二回攻撃となる。
+                if (player.SubWeapon == null)
+                {
+                    return true;
+                }
+                if (player.SubWeapon.Name == "")
+                {
+                    return true;
+                }
+                if ((player.SubWeapon.Type == ItemBackPack.ItemType.Weapon_Rod || player.SubWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand || player.SubWeapon.Type == ItemBackPack.ItemType.Shield))
+                {
+                    return true;
+                }
+                // スキルや特殊攻撃からの場合、サブウェポン2回攻撃を強制的に実施しない場合
+                if (ignoreDoubleAttack)
+                {
+                    return true;
+                }
+            }
             return true;
         }
         // 魔法攻撃
@@ -3000,6 +3633,49 @@ namespace DungeonPlayer
             // negate is stack-in-the-command only
         }
 
+        private void UpdateLife(MainCharacter player, double damage, bool plusValue, bool animationDamage, int interval, bool critical)
+        {
+            UpdateLife(player);
+            // todo
+            //if (player.labelLife != null)
+            //{
+            //    player.labelLife.Text = player.CurrentLife.ToString();
+            //    if (player.CurrentLife >= player.MaxLife)
+            //    {
+            //        player.labelLife.ForeColor = Color.Green;
+            //        if (this.NowTimeStop)
+            //        {
+            //            player.labelLife.ForeColor = Color.LightGreen;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        player.labelLife.ForeColor = Color.Black;
+            //        if (this.NowTimeStop)
+            //        {
+            //            player.labelLife.ForeColor = Color.White;
+            //        }
+            //    }
+            //    player.labelLife.Update();
+            //}
+            //if (animationDamage)
+            //{
+            //    Color color = Color.Black;
+            //    if (plusValue)
+            //    {
+            //        color = Color.Green;
+            //        if (this.NowTimeStop)
+            //        {
+            //            color = Color.LightGreen;
+            //        }
+            //    }
+            //    else if (this.NowTimeStop)
+            //    {
+            //        color = Color.White;
+            //    }
+            //    this.Invoke(new _AnimationDamage(AnimationDamage), damage, player, interval, color, false, critical, String.Empty);
+            //}
+        }
         private void UpdateLife(MainCharacter player)
         {
             float dx = (float)player.CurrentLife / (float)player.MaxLife;
@@ -3013,6 +3689,20 @@ namespace DungeonPlayer
             }
         }
 
+        private void UpdateMana(MainCharacter player, double effectValue, bool plusValue, bool animationDamage, int interval)
+        {
+            UpdateMana(player);
+            // todo
+            //if (player.labelCurrentManaPoint != null)
+            //{
+            //    player.labelCurrentManaPoint.Text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
+            //    player.labelCurrentManaPoint.Update();
+            //}
+            //if (animationDamage)
+            //{
+            //    this.Invoke(new _AnimationDamage(AnimationDamage), effectValue, player, interval, Color.Blue, false, false, String.Empty);
+            //}
+        }
         private void UpdateMana(MainCharacter player)
         {
             float dx = (float)player.CurrentMana / (float)player.MaxMana;
@@ -3074,7 +3764,6 @@ namespace DungeonPlayer
             }
             else if (command == Database.PROTECTION)
             {
-                Debug.Log("call protection 1");
                 PlayerSpellProtection(player, target);
             }
             else if (command == Database.DARK_BLAST)
@@ -3254,7 +3943,6 @@ namespace DungeonPlayer
 
         public void OnMouseEnterImage(Button sender)
         {
-            Debug.Log("Image OnMouseEnter");
         }
 
         delegate void _AnimationDamage(double damage, MainCharacter target, int interval, Color plusValue, bool avoid, bool critical, string customString);

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 namespace DungeonPlayer
 {
@@ -28,6 +29,15 @@ namespace DungeonPlayer
             Useless,
         }
 
+        public enum Equipable
+        {
+            All,
+            Ein,
+            Lana,
+            Verze,
+            Ol, // 後編追加
+            Kahl, // 後編追加
+        }
         public enum RareLevel
         {
             Poor,
@@ -37,86 +47,119 @@ namespace DungeonPlayer
             Legendary,
         }
 
-        public ItemBackPack(string name)
+        public ItemBackPack(string createName)
         {
-            this.Name = name;
+            this.Name = createName;
+
+            switch (createName)
+            {
+                case Database.COMMON_FINE_SWORD: // １階：エリア１：ランダムドロップ
+                    description = "そつなく使える剣。攻撃力５～８";
+                    minValue = 5;
+                    maxValue = 8;
+                    cost = 560;
+                    AdditionalDescription(ItemType.Weapon_Heavy);
+                    rareLevel = RareLevel.Common;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+            }
         }
 
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public int MinValue { get; set; } // todo: but delete it
-        public int MaxValue { get; set; } // todo: bnt delete it
-        public int MagicMinValue { get; set; } // todo: but delete it
-        public int MagicMaxValue { get; set; } // todo: but delete it
-        public int Cost { get; set; }
-        public ItemType Type { get; set; }
-        public RareLevel Rare { get; set; }
-        public int PhysicalAttackMinValue { get; set; }
-        public int PhysicalAttackMaxValue { get; set; }
-        public int PhysicalDefenseMinValue { get; set; }
-        public int PhysicalDefenseMaxValue { get; set; }
-        public int MagicAttackMinValue { get; set; }
-        public int MagicAttackMaxValue { get; set; }
-        public int MagicDefenseMinValue { get; set; }
-        public int MagicDefenseMaxValue { get; set; }
-        public int BuffUpStrength { get; set; }
-        public int BuffUpAgility { get; set; }
-        public int BuffUpIntelligence { get; set; }
-        public int BuffUpStamina { get; set; }
-        public int BuffUpMind { get; set; }
-        public int ResistLight { get; set; }
-        public int ResistShadow { get; set; }
-        public int ResistFire { get; set; }
-        public int ResistIce { get; set; }
-        public int ResistForce { get; set; }
-        public int ResistWill { get; set; }
-        public bool ResistStun { get; set; }
-        public bool ResistSilence { get; set; }
-        public bool ResistPoison { get; set; }
-        public bool ResistTemptation { get; set; }
-        public bool ResistFrozen { get; set; }
-        public bool ResistParalyze { get; set; }
-        public bool ResistSlow { get; set; }
-        public bool ResistBlind { get; set; }
-        public bool ResistSlip { get; set; }
-        public bool ResistNoResurrection { get; set; }
-        public double AmplifyPhysicalAttack { get; set; }
-        public double AmplifyPhysicalDefense { get; set; }
-        public double AmplifyMagicAttack { get; set; }
-        public double AmplifyMagicDefense { get; set; }
-        public double AmplifyBattleSpeed { get; set; }
-        public double AmplifyBattleResponse { get; set; }
-        public double AmplifyPotential { get; set; }
-        public double AmplifyLight { get; set; }
-        public double AmplifyShadow { get; set; }
-        public double AmplifyFire { get; set; }
-        public double AmplifyIce { get; set; }
-        public double AmplifyForce { get; set; }
-        public double AmplifyWill { get; set; }
-        public double ManaCostReduction = 0; // 後編追加(魔法消費軽減)
-        public double ManaCostReductionLight = 0; // 後編追加
-        public double ManaCostReductionShadow = 0; // 後編追加
-        public double ManaCostReductionFire = 0; // 後編追加
-        public double ManaCostReductionIce = 0; // 後編追加
-        public double ManaCostReductionForce = 0; // 後編追加
-        public double ManaCostReductionWill = 0; // 後編追加
-        public double SkillCostReduction = 0; // 後編追加（スキル消費軽減）
-        public double SkillCostReductionActive = 0; // 後編追加
-        public double SkillCostReductionPassive = 0; // 後編追加
-        public double SkillCostReductionSoft = 0; // 後編追加
-        public double SkillCostReductionHard = 0; // 後編追加
-        public double SkillCostReductionTruth = 0; // 後編追加
-        public double SkillCostReductionVoid = 0; // 後編追加
+        protected string name = string.Empty;
+        protected string description = string.Empty;
+        protected int minValue = 0;
+        protected int maxValue = 0;
+        protected int cost = 0;
+        protected ItemType type = ItemType.None;
+        protected Equipable equipablePerson = Equipable.All;
+        protected RareLevel rareLevel = RareLevel.Poor;
+        protected int buffUpStrength = 0;
+        protected int buffUpAgility = 0;
+        protected int buffUpIntelligence = 0;
+        protected int buffUpStamina = 0;
+        protected int buffUpMind = 0;
+        protected double amplifyPhysicalAttack = 0.0f; // 後編追加
+        protected double amplifyPhysicalDefense = 0.0f; // 後編追加
+        protected double amplifyMagicAttack = 0.0f; // 後編追加
+        protected double amplifyMagicDefense = 0.0f; // 後編追加
+        protected double amplifyBattleSpeed = 0.0f; // 後編追加
+        protected double amplifyBattleResponse = 0.0f; // 後編追加
+        protected double amplifyPotential = 0.0f; // 後編追加
+        protected double amplifyLight = 0.0f; // 後編追加
+        protected double amplifyShadow = 0.0f; // 後編追加
+        protected double amplifyFire = 0.0f; // 後編追加
+        protected double amplifyIce = 0.0f; // 後編追加
+        protected double amplifyForce = 0.0f; // 後編追加
+        protected double amplifyWill = 0.0f; // 後編追加
 
-        public double EffectValue1 { get; set; } // 後編追加(最大スキルポイント増加)
-        public bool SwitchStatus1 { get; set; }
-        public string Information { get; set; }
-        public bool UseSpecialAbility { get; set; }
-        public bool AfterBroken { get; set; }
-        public bool EffectStatus { get; set; }
-        public bool OnlyOnce { get; set; }
-        public string ImprintCommand { get; set; }
+        protected double effectValue1 = 0; // 後編追加(最大スキルポイント増加)
+        protected double manaCostReduction = 0; // 後編追加(魔法消費軽減)
+        protected double manaCostReductionLight = 0; // 後編追加
+        protected double manaCostReductionShadow = 0; // 後編追加
+        protected double manaCostReductionFire = 0; // 後編追加
+        protected double manaCostReductionIce = 0; // 後編追加
+        protected double manaCostReductionForce = 0; // 後編追加
+        protected double manaCostReductionWill = 0; // 後編追加
+        protected double skillCostReduction = 0; // 後編追加（スキル消費軽減）
+        protected double skillCostReductionActive = 0; // 後編追加
+        protected double skillCostReductionPassive = 0; // 後編追加
+        protected double skillCostReductionSoft = 0; // 後編追加
+        protected double skillCostReductionHard = 0; // 後編追加
+        protected double skillCostReductionTruth = 0; // 後編追加
+        protected double skillCostReductionVoid = 0; // 後編追加
 
+        protected bool switchStatus1 = false; // 後編追加（メイズ・キューブの物理/魔法の対象切り替えにつくった値)
+
+        protected string information = string.Empty;
+        protected bool useSpecialAbility = false;
+        protected bool afterBroken = false; // ジャンク・タリスマン発動時、戦闘終了後にアイテム破棄するために用意したフラグ
+        protected bool onlyOnce = false; // デタッチメント・オーブにより、戦闘中に一度しか発動できないために用意したフラグ
+        protected string imprintCommand = string.Empty; // 悪魔封じの壺により、キャンセル対象魔法の名前を覚えるために用意した
+        protected bool effectStatus = false; // 玉手箱『秋玉』により、死亡時一度だけ蘇生するために用意したフラグ
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+        public int MinValue
+        {
+            get { return minValue; }
+            set { minValue = value; }
+        }
+        public int MaxValue
+        {
+            get { return maxValue; }
+            set { maxValue = value; }
+        }
+        public int MagicMinValue { get; set; } // 後編追加
+        public int MagicMaxValue { get; set; } // 後編追加
+
+        public int Cost
+        {
+            get { return cost; }
+            set { cost = value; }
+        }
+        public ItemType Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
+        public Equipable EquipablePerson
+        {
+            get { return equipablePerson; }
+            set { equipablePerson = value; }
+        }
+        public RareLevel Rare
+        {
+            get { return rareLevel; }
+            set { rareLevel = value; }
+        }
         // s 後編追加
         public int StackValue
         {
@@ -129,6 +172,271 @@ namespace DungeonPlayer
             set { limitValue = value; }
         }
         // e 後編追加
+        public int BuffUpStrength
+        {
+            get { return buffUpStrength; }
+            set { buffUpStrength = value; }
+        }
+        public int BuffUpAgility
+        {
+            get { return buffUpAgility; }
+            set { buffUpAgility = value; }
+        }
+        public int BuffUpIntelligence
+        {
+            get { return buffUpIntelligence; }
+            set { buffUpIntelligence = value; }
+        }
+        public int BuffUpStamina
+        {
+            get { return buffUpStamina; }
+            set { buffUpStamina = value; }
+        }
+        public int BuffUpMind
+        {
+            get { return buffUpMind; }
+            set { buffUpMind = value; }
+        }
+        // s 後編追加
+        public double AmplifyPhysicalAttack
+        {
+            get { return amplifyPhysicalAttack; }
+            set { amplifyPhysicalAttack = value; }
+        }
+        public double AmplifyPhysicalDefense
+        {
+            get { return amplifyPhysicalDefense; }
+            set { amplifyPhysicalDefense = value; }
+        }
+        public double AmplifyMagicAttack
+        {
+            get { return amplifyMagicAttack; }
+            set { amplifyMagicAttack = value; }
+        }
+        public double AmplifyMagicDefense
+        {
+            get { return amplifyMagicDefense; }
+            set { amplifyMagicDefense = value; }
+        }
+        public double AmplifyBattleSpeed
+        {
+            get { return amplifyBattleSpeed; }
+            set { amplifyBattleSpeed = value; }
+        }
+        public double AmplifyBattleResponse
+        {
+            get { return amplifyBattleResponse; }
+            set { amplifyBattleResponse = value; }
+        }
+        public double AmplifyPotential
+        {
+            get { return amplifyPotential; }
+            set { amplifyPotential = value; }
+        }
+        public double AmplifyLight
+        {
+            get { return amplifyLight; }
+            set { amplifyLight = value; }
+        }
+        public double AmplifyShadow
+        {
+            get { return amplifyShadow; }
+            set { amplifyShadow = value; }
+        }
+        public double AmplifyFire
+        {
+            get { return amplifyFire; }
+            set { amplifyFire = value; }
+        }
+        public double AmplifyIce
+        {
+            get { return amplifyIce; }
+            set { amplifyIce = value; }
+        }
+        public double AmplifyForce
+        {
+            get { return amplifyForce; }
+            set { amplifyForce = value; }
+        }
+        public double AmplifyWill
+        {
+            get { return amplifyWill; }
+            set { amplifyWill = value; }
+        }
+        public double EffectValue1
+        {
+            get { return effectValue1; }
+            set { effectValue1 = value; }
+        }
+        public double ManaCostReduction
+        {
+            get { return manaCostReduction; }
+            set { manaCostReduction = value; }
+        }
+
+        public double ManaCostReductionLight
+        {
+            get { return manaCostReductionLight; }
+            set { manaCostReductionLight = value; }
+        }
+        public double ManaCostReductionShadow
+        {
+            get { return manaCostReductionShadow; }
+            set { manaCostReductionShadow = value; }
+        }
+        public double ManaCostReductionFire
+        {
+            get { return manaCostReductionFire; }
+            set { manaCostReductionFire = value; }
+        }
+        public double ManaCostReductionIce
+        {
+            get { return manaCostReductionIce; }
+            set { manaCostReductionIce = value; }
+        }
+        public double ManaCostReductionForce
+        {
+            get { return manaCostReductionForce; }
+            set { manaCostReductionForce = value; }
+        }
+        public double ManaCostReductionWill
+        {
+            get { return manaCostReductionWill; }
+            set { manaCostReductionWill = value; }
+        }
+
+        public double SkillCostReduction
+        {
+            get { return skillCostReduction; }
+            set { skillCostReduction = value; }
+        }
+        public double SkillCostReductionActive
+        {
+            get { return skillCostReductionActive; }
+            set { skillCostReductionActive = value; }
+        }
+        public double SkillCostReductionPassive
+        {
+            get { return skillCostReductionPassive; }
+            set { skillCostReductionPassive = value; }
+        }
+        public double SkillCostReductionSoft
+        {
+            get { return skillCostReductionSoft; }
+            set { skillCostReductionSoft = value; }
+        }
+        public double SkillCostReductionHard
+        {
+            get { return skillCostReductionHard; }
+            set { skillCostReductionHard = value; }
+        }
+        public double SkillCostReductionTruth
+        {
+            get { return skillCostReductionTruth; }
+            set { skillCostReductionTruth = value; }
+        }
+        public double SkillCostReductionVoid
+        {
+            get { return skillCostReductionVoid; }
+            set { skillCostReductionVoid = value; }
+        }
+
+        public bool SwitchStatus1
+        {
+            get { return switchStatus1; }
+            set { switchStatus1 = value; }
+        }
+        // e 後編追加
+
+        public string Information
+        {
+            get { return information; }
+            set { information = value; }
+        }
+        // s 後編追加
+        public int ResistFire { get; set; }
+        public int ResistIce { get; set; }
+        public int ResistLight { get; set; }
+        public int ResistShadow { get; set; }
+        public int ResistForce { get; set; }
+        public int ResistWill { get; set; }
+        // e 後編追加
+        public bool UseSpecialAbility
+        {
+            get { return useSpecialAbility; }
+            set { useSpecialAbility = value; }
+        }
+        // s 後編追加
+        public bool AfterBroken
+        {
+            get { return afterBroken; }
+            set { afterBroken = value; }
+        }
+        public bool EffectStatus
+        {
+            get { return effectStatus; }
+            set { effectStatus = value; }
+        }
+        public bool OnlyOnce
+        {
+            get { return onlyOnce; }
+            set { onlyOnce = value; }
+        }
+        public string ImprintCommand
+        {
+            get { return imprintCommand; }
+            set { imprintCommand = value; }
+        }
+        // e 後編追加
+
+        // s 後編追加
+        public bool ResistStun { get; set; }
+        public bool ResistSilence { get; set; }
+        public bool ResistPoison { get; set; }
+        public bool ResistTemptation { get; set; }
+        public bool ResistFrozen { get; set; }
+        public bool ResistParalyze { get; set; }
+        public bool ResistSlow { get; set; }
+        public bool ResistBlind { get; set; }
+        public bool ResistSlip { get; set; }
+        public bool ResistNoResurrection { get; set; }
+        // e 後編追加
+
+        public int UseIt()
+        {
+            System.Random rd = new System.Random(DateTime.Now.Millisecond);
+            return rd.Next(minValue, maxValue + 1);
+        }
+
+        protected void AdditionalDescription(ItemType s_type)
+        {
+            this.type = s_type;
+            if (s_type == ItemType.Material_Equip)
+            {
+                this.description = this.description.Insert(0, Database.DESCRIPTION_EQUIP_MATERIAL);
+            }
+            else if (s_type == ItemType.Material_Food)
+            {
+                this.description = this.description.Insert(0, Database.DESCRIPTION_FOOD_MATERIAL);
+            }
+            else if (s_type == ItemType.Material_Potion)
+            {
+                this.description = this.description.Insert(0, Database.DESCRIPTION_POTION_MATERIAL);
+            }
+            else if (s_type == ItemType.Useless || type == ItemType.None)
+            {
+                this.description = this.description.Insert(0, Database.DESCRIPTION_SELL_ONLY);
+            }
+        }
+        public int PhysicalAttackMinValue { get; set; }
+        public int PhysicalAttackMaxValue { get; set; }
+        public int PhysicalDefenseMinValue { get; set; }
+        public int PhysicalDefenseMaxValue { get; set; }
+        public int MagicAttackMinValue { get; set; }
+        public int MagicAttackMaxValue { get; set; }
+        public int MagicDefenseMinValue { get; set; }
+        public int MagicDefenseMaxValue { get; set; }
+
         // s 後編追加
         protected int stackValue = 1; // 生成した時点で１つのオブジェクトがあるため、明示的に１を宣言
         protected int limitValue = Database.MAX_ITEM_STACK_SIZE; // オブジェクトがスタックできる最大数
