@@ -90,7 +90,15 @@ namespace DungeonPlayer
         }
         void Update()
         {
-            txtCounter.text = this.count.ToString();
+            if (0 < this.count && this.count <= 99)
+            {
+                txtCounter.text = this.count.ToString();
+            }
+            else
+            {
+                txtCounter.text = "";
+            }
+
         }
         // todo
         //    Rectangle fixedRect = new Rectangle(0, 0, 25, 25);

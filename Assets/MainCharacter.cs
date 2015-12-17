@@ -4197,5 +4197,395 @@ namespace DungeonPlayer
             pbLifeCount.Cumulative = currentLifeCountValue;
             AbstractChangeStatus(Database.LIFE_COUNT, this.CurrentLifeCountValue, pbLifeCount, this.RemoveLifeCount, count);
         }
+
+
+        protected void AbstractCountDownBuff(TruthImage picture, ref int countBase)
+        {
+            int dummy1 = 0;
+            AbstractCountDownBuff(picture, ref countBase, ref dummy1);
+        }
+        protected void AbstractCountDownBuff(TruthImage picture, ref int countBase, ref int value1)
+        {
+            int value2 = 0;
+            AbstractCountDownBuff(picture, ref countBase, ref value1, ref value2);
+        }
+        protected void AbstractCountDownBuff(TruthImage picture, ref int countBase, ref int value1, ref int value2)
+        {
+            int value3 = 0;
+            AbstractCountDownBuff(picture, ref countBase, ref value1, ref value2, ref value3);
+        }
+        protected void AbstractCountDownBuff(TruthImage picture, ref int countBase, ref int value1, ref int value2, ref int value3)
+        {
+            int value4 = 0;
+            AbstractCountDownBuff(picture, ref countBase, ref value1, ref value2, ref value3, ref value4);
+        }
+        protected void AbstractCountDownBuff(TruthImage picture, ref int countBase, ref int value1, ref int value2, ref int value3, ref int value4)
+        {
+            int value5 = 0;
+            AbstractCountDownBuff(picture, ref countBase, ref value1, ref value2, ref value3, ref value4, ref value5);
+        }
+        protected void AbstractCountDownBuff(TruthImage picture, ref int countBase, ref int value1, ref int value2, ref int value3, ref int value4, ref int value5)
+        {
+            bool flag1 = false;
+            AbstractCountDownBuff(picture, ref countBase, ref value1, ref value2, ref value3, ref value4, ref value5, ref flag1);
+        }
+        protected void AbstractCountDownBuff(TruthImage picture, ref int countBase, ref int value1, ref int value2, ref int value3, ref int value4, ref int value5, ref bool flag1)
+        {
+            if (countBase > 0)
+            {
+                Debug.Log("countBase: " + countBase.ToString());
+                countBase--;
+                if (picture != null)
+                {
+                    picture.Count--;
+                    //picture.Invalidate();
+                }
+                if (countBase <= 0)
+                {
+                    flag1 = true; // [警告]:deadSignForTranscendentWishをtrueにするために採用したフラグだが、他の展開を考えた時、デフォルトtrue指定するようになるので留意必須。
+                    value1 = 0;
+                    value2 = 0;
+                    value3 = 0;
+                    value4 = 0;
+                    value5 = 0;
+                    if (picture != null)
+                    {
+                        Debug.Log("call RemoveOneBuff");
+                        RemoveOneBuff(picture);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+        }
+        // [警告]：BattleEnemy_Load、MainCharacter:CleanUpEffect, MainCharacter:CleanUpBattleEndの展開ミスが増え続けています。
+        public void CleanUpEffect()
+        {
+            CleanUpEffect(true, true);
+        }
+        public void CleanUpEffect(bool ClearActionInfo, bool ClearBeforeAction)
+        {
+            if (PA == PlayerAction.UseSkill && currentSkillName == Database.GENESIS)
+            {
+                // Genesisスキルは前回の情報をクリアしないことでそれを使い続けます。
+            }
+            else if (PA == PlayerAction.UseSkill && currentSkillName == Database.STANCE_OF_DOUBLE)
+            {
+                // StanceOfDoubleスキルは前回の情報をクリアしないことでそれを使い続けます。
+            }
+            else
+            {
+                // todo
+                //if (ClearBeforeAction == true)
+                //{
+                //    this.beforePA = PA;
+                //    this.beforeUsingItem = currentUsingItem;
+                //    this.beforeSkillName = currentSkillName;
+                //    this.beforeSpellName = currentSpellName;
+                //    this.beforeArchetypeName = currentArchetypeName; // 後編追加
+                //    this.beforeTarget = target;
+                //    this.beforeTarget2 = target2; // 後編追加
+                //    // this.alreadyPlayArchetype = false; [元核発動フラグは一日立たないと戻らない]
+                //}
+            }
+
+            // todo
+            //if (ClearActionInfo)
+            //{
+            //    CurrentUsingItem = string.Empty;
+            //    CurrentSkillName = string.Empty;
+            //    CurrentSpellName = string.Empty;
+            //    CurrentArchetypeName = string.Empty; // 後編追加
+            //    PA = PlayerAction.None;
+            //    target = null;
+            //    target2 = null; // 後編追加
+            //}
+
+            // 循環と誓約がかかっている場合、カウントダウンしない。
+            if (this.CurrentJunkan_Seiyaku <= 0)
+            {
+                // change start 後編編集（抽象化メソッドを使って一行で表す様、修正）
+                // 動
+                // 静
+                if (this.realTimeBattle == false) // 後編追加、リアルタイムでは、ターン終了で解除せず、別のフェーズで解除する。
+                {
+                    CurrentCounterAttack = 0; // 後編編集
+                }
+                // s 後編追加
+                else
+                {
+                    // todo
+                    //AbstractCountDownBuff(pbCounterAttack, ref currentCounterAttack);
+                }
+                // e 後編追加
+
+                // todo
+                //    AbstractCountDownBuff(pbAntiStun, ref currentAntiStun);
+                //    AbstractCountDownBuff(pbStanceOfDeath, ref currentStanceOfDeath);
+
+                //    // 柔
+                //    AbstractCountDownBuff(pbStanceOfFlow, ref currentStanceOfFlow);
+                //    // 剛
+                //    AbstractCountDownBuff(pbStanceOfStanding, ref currentStanceOfStanding); // 後編編集
+                //    // 心眼
+                //    AbstractCountDownBuff(pbTruthVision, ref currentTruthVision);
+                //    AbstractCountDownBuff(pbHighEmotionality, ref currentHighEmotionality, ref buffStrength_HighEmotionality, ref buffAgility_HighEmotionality, ref buffIntelligence_HighEmotionality, ref buffStamina_HighEmotionality, ref buffMind_HighEmotionality);
+                //    AbstractCountDownBuff(pbStanceOfEyes, ref currentStanceOfEyes); // 後編編集
+                //    AbstractCountDownBuff(pbPainfulInsanity, ref currentPainfulInsanity);
+                //    // 無心
+                //    AbstractCountDownBuff(pbNegate, ref currentNegate); // 後編編集
+                //    AbstractCountDownBuff(pbVoidExtraction, ref currentVoidExtraction, ref buffStrength_VoidExtraction, ref buffAgility_VoidExtraction, ref buffIntelligence_VoidExtraction, ref buffStamina_VoidExtraction, ref buffMind_VoidExtraction);
+                //    AbstractCountDownBuff(pbNothingOfNothingness, ref currentNothingOfNothingness);
+
+                //    // 聖
+                //    AbstractCountDownBuff(pbProtection, ref currentProtection);
+                //    AbstractCountDownBuff(pbSaintPower, ref currentSaintPower);
+                //    AbstractCountDownBuff(pbGlory, ref currentGlory);
+                //    // 闇
+                //    AbstractCountDownBuff(pbShadowPact, ref currentShadowPact);
+                //    AbstractCountDownBuff(pbBlackContract, ref currentBlackContract);
+                //    AbstractCountDownBuff(pbBloodyVengeance, ref currentBloodyVengeance, ref buffStrength_BloodyVengeance);
+                //    AbstractCountDownBuff(pbDamnation, ref currentDamnation);                
+                //    // 火
+                //    AbstractCountDownBuff(pbFlameAura, ref currentFlameAura);
+                //    AbstractCountDownBuff(pbHeatBoost, ref currentHeatBoost, ref buffAgility_HeatBoost);
+                //    AbstractCountDownBuff(pbImmortalRave, ref currentImmortalRave);
+                //    // 水
+                //    AbstractCountDownBuff(pbAbsorbWater, ref currentAbsorbWater);
+                //    AbstractCountDownBuff(pbMirrorImage, ref currentMirrorImage);
+                //    AbstractCountDownBuff(pbPromisedKnowledge, ref currentPromisedKnowledge, ref buffIntelligence_PromisedKnowledge);
+                //    AbstractCountDownBuff(pbAbsoluteZero, ref currentAbsoluteZero);
+                //    // 理
+                    AbstractCountDownBuff(pbGaleWind, ref CurrentGaleWind);
+                //    AbstractCountDownBuff(pbWordOfLife, ref currentWordOfLife);
+                //    AbstractCountDownBuff(pbWordOfFortune, ref currentWordOfFortune);
+                //    AbstractCountDownBuff(pbAetherDrive, ref currentAetherDrive);
+                //    AbstractCountDownBuff(pbEternalPresence, ref currentEternalPresence);
+                //    // 空
+                //    AbstractCountDownBuff(pbRiseOfImage, ref currentRiseOfImage, ref buffMind_RiseOfImage);
+                //    AbstractCountDownBuff(pbDeflection, ref currentDeflection);
+                //    AbstractCountDownBuff(pbOneImmunity, ref currentOneImmunity);
+                //    AbstractCountDownBuff(pbTimeStop, ref currentTimeStop);
+
+                //    // 聖＋闇
+                //    AbstractCountDownBuff(pbPsychicTrance, ref currentPsychicTrance);
+                //    AbstractCountDownBuff(pbBlindJustice, ref currentBlindJustice);
+                //    AbstractCountDownBuff(pbTranscendentWish, ref currentTranscendentWish, ref buffStrength_TranscendentWish, ref buffAgility_TranscendentWish, ref buffIntelligence_TranscendentWish, ref buffStamina_TranscendentWish, ref buffMind_TranscendentWish, ref deadSignForTranscendentWish);
+                //    // 聖＋火
+                //    AbstractCountDownBuff(pbFlashBlaze, ref currentFlashBlazeCount);
+                //    // 聖＋水
+                //    AbstractCountDownBuff(pbSkyShield, ref currentSkyShield, ref currentSkyShieldValue);
+                //    AbstractCountDownBuff(pbEverDroplet, ref currentEverDroplet);
+                //    // 聖＋理
+                //    AbstractCountDownBuff(pbHolyBreaker, ref currentHolyBreaker);
+                //    AbstractCountDownBuff(pbExaltedField, ref currentExaltedField);
+                //    AbstractCountDownBuff(pbHymnContract, ref currentHymnContract);
+                //    // 聖＋空
+                //    AbstractCountDownBuff(pbStarLightning, ref currentStarLightning);
+                //    // 闇＋火
+                //    AbstractCountDownBuff(pbBlackFire, ref currentBlackFire);
+                //    AbstractCountDownBuff(pbBlazingField, ref currentBlazingField, ref currentBlazingFieldFactor);
+                //    // 闇＋水
+                //    currentDeepMirror = false;
+                //    // 闇＋理
+                //    AbstractCountDownBuff(pbWordOfMalice, ref currentWordOfMalice);
+                //    AbstractCountDownBuff(pbSinFortune, ref currentSinFortune);
+                //    // 闇＋空
+                //    AbstractCountDownBuff(pbDarkenField, ref currentDarkenField);
+                //    AbstractCountDownBuff(pbEclipseEnd, ref currentEclipseEnd);
+                //    // 火＋水
+                //    AbstractCountDownBuff(pbFrozenAura, ref currentFrozenAura);
+                //    // 火＋理
+                //    AbstractCountDownBuff(pbEnrageBlast, ref currentEnrageBlast);
+                //    AbstractCountDownBuff(pbSigilOfHomura, ref currentSigilOfHomura);
+                //    // 火＋空
+                //    AbstractCountDownBuff(pbImmolate, ref currentImmolate);
+                //    AbstractCountDownBuff(pbPhantasmalWind, ref currentPhantasmalWind);
+                //    AbstractCountDownBuff(pbRedDragonWill, ref currentRedDragonWill);
+                //    // 水＋理
+                //    AbstractCountDownBuff(pbStaticBarrier, ref currentStaticBarrier, ref currentStaticBarrierValue);
+                //    AbstractCountDownBuff(pbAusterityMatrix, ref currentAusterityMatrix);
+                //    // 水＋空
+                //    AbstractCountDownBuff(pbBlueDragonWill, ref currentBlueDragonWill);
+                //    // 理＋空
+                //    AbstractCountDownBuff(pbSeventhMagic, ref currentSeventhMagic);
+                //    AbstractCountDownBuff(pbParadoxImage, ref currentParadoxImage);
+                //    // 動＋静
+                //    AbstractCountDownBuff(pbStanceOfDouble, ref currentStanceOfDouble);
+                //    // 動＋柔
+                //    AbstractCountDownBuff(pbSwiftStep, ref currentSwiftStep);
+                //    AbstractCountDownBuff(pbVigorSense, ref currentVigorSense);
+                //    // 動＋剛
+                //    AbstractCountDownBuff(pbRisingAura, ref currentRisingAura);
+                //    // 動＋心眼
+                //    AbstractCountDownBuff(pbOnslaughtHit, ref currentOnslaughtHit, ref currentOnslaughtHitValue);
+                //    // 動＋無心
+                //    AbstractCountDownBuff(pbSmoothingMove, ref currentSmoothingMove);
+                //    AbstractCountDownBuff(pbAscensionAura, ref currentAscensionAura);
+                //    // 静＋柔
+                //    AbstractCountDownBuff(pbFutureVision, ref currentFutureVision);
+                //    // 静＋剛
+                //    AbstractCountDownBuff(pbReflexSpirit, ref currentReflexSpirit);
+                //    // 静＋心眼
+                //    AbstractCountDownBuff(pbConcussiveHit, ref currentConcussiveHit, ref currentConcussiveHitValue);
+                //    // 静＋無心
+                //    AbstractCountDownBuff(pbTrustSilence, ref currentTrustSilence);
+                //    // 柔＋剛
+                //    AbstractCountDownBuff(pbStanceOfMystic, ref currentStanceOfMystic, ref currentStanceOfMysticValue);
+                //    // 柔＋心眼
+                //    AbstractCountDownBuff(pbNourishSense, ref currentNourishSense);
+                //    // 柔＋無心
+                //    AbstractCountDownBuff(pbImpulseHit, ref currentImpulseHit, ref currentImpulseHitValue);
+                //    // 剛＋心眼
+                //    AbstractCountDownBuff(pbOneAuthority, ref currentOneAuthority);
+                //    // 剛＋無心
+                //    currentHardestParry = false;
+                //    // 心眼＋無心
+                //    currentStanceOfSuddenness = false;
+
+                //    // 武器特有
+                //    AbstractCountDownBuff(pbFeltus, ref currentFeltus, ref currentFeltusValue);
+                //    AbstractCountDownBuff(pbJuzaPhantasmal, ref currentJuzaPhantasmal, ref currentJuzaPhantasmalValue);
+                //    AbstractCountDownBuff(pbEternalFateRing, ref currentEternalFateRing, ref currentEternalFateRingValue);
+                //    AbstractCountDownBuff(pbLightServant, ref currentLightServant, ref currentLightServantValue);
+                //    AbstractCountDownBuff(pbShadowServant, ref currentShadowServant, ref currentShadowServantValue);
+                //    AbstractCountDownBuff(pbAdilBlueBurn, ref currentAdilBlueBurn, ref currentAdilBlueBurnValue);
+                //    AbstractCountDownBuff(pbMazeCube, ref currentMazeCube, ref currentMazeCubeValue);
+                //    AbstractCountDownBuff(pbShadowBible, ref currentShadowBible);
+                //    AbstractCountDownBuff(pbDetachmentOrb, ref currentDetachmentOrb);
+                //    AbstractCountDownBuff(pbDevilSummonerTome, ref currentDevilSummonerTome);
+                //    AbstractCountDownBuff(pbVoidHymnsonia, ref currentVoidHymnsonia);
+                //    AbstractCountDownBuff(pbSagePotionMini, ref currentSagePotionMini);
+                //    AbstractCountDownBuff(pbGenseiTaima, ref currentGenseiTaima);
+                //    AbstractCountDownBuff(pbShiningAether, ref currentShiningAether);
+                //    AbstractCountDownBuff(pbBlackElixir, ref currentBlackElixir, ref currentBlackElixirValue);
+                //    AbstractCountDownBuff(pbElementalSeal, ref currentElementalSeal);
+                //    AbstractCountDownBuff(pbColoressAntidote, ref currentColoressAntidote);
+
+                //    // 最終戦ライフカウント
+                //    //AbstractCountDownBuff(pbLifeCount, ref currentLifeCount, ref currentLifeCountValue); // ターンのクリーンナップでカウントダウンはしない
+                //    AbstractCountDownBuff(pbChaoticSchema, ref currentChaoticSchema);
+
+                //    // 正の影響効果
+                //    AbstractCountDownBuff(pbBlinded, ref currentBlinded);
+                //    // SpeedBoostはBattleEnemyフォーム側でマイナスさせます。
+                //    // CurrentChargeCountは「ためる」コマンドのため、CleanUpEffectでは減算しません。
+                //    // CurrentPhysicalChargeCountは「ためる」コマンドのため、CleanUpEffectでは減算しません。
+                //    AbstractCountDownBuff(pbPhysicalAttackUp, ref currentPhysicalAttackUp, ref currentPhysicalAttackUpValue);
+                //    AbstractCountDownBuff(pbPhysicalDefenseUp, ref currentPhysicalDefenseUp, ref currentPhysicalDefenseUpValue);
+                //    AbstractCountDownBuff(pbMagicAttackUp, ref currentMagicAttackUp, ref currentMagicAttackUpValue);
+                //    AbstractCountDownBuff(pbMagicDefenseUp, ref currentMagicDefenseUp, ref currentMagicDefenseUpValue);
+                //    AbstractCountDownBuff(pbSpeedUp, ref currentSpeedUp, ref currentSpeedUpValue);
+                //    AbstractCountDownBuff(pbReactionUp, ref currentReactionUp, ref currentReactionUpValue);
+                //    AbstractCountDownBuff(pbPotentialUp, ref currentPotentialUp, ref currentPotentialUpValue);
+
+                //    AbstractCountDownBuff(pbStrengthUp, ref currentStrengthUp, ref currentStrengthUpValue);
+                //    AbstractCountDownBuff(pbAgilityUp, ref currentAgilityUp, ref currentAgilityUpValue);
+                //    AbstractCountDownBuff(pbIntelligenceUp, ref currentIntelligenceUp, ref currentIntelligenceUpValue);
+                //    AbstractCountDownBuff(pbStaminaUp, ref currentStaminaUp, ref currentStaminaUpValue);
+                //    AbstractCountDownBuff(pbMindUp, ref currentMindUp, ref currentMindUpValue);
+
+                //    AbstractCountDownBuff(pbLightUp, ref currentLightUp, ref currentLightUpValue);
+                //    AbstractCountDownBuff(pbShadowUp, ref currentShadowUp, ref currentShadowUpValue);
+                //    AbstractCountDownBuff(pbFireUp, ref currentFireUp, ref currentFireUpValue);
+                //    AbstractCountDownBuff(pbIceUp, ref currentIceUp, ref currentIceUpValue);
+                //    AbstractCountDownBuff(pbForceUp, ref currentForceUp, ref currentForceUpValue);
+                //    AbstractCountDownBuff(pbWillUp, ref currentWillUp, ref currentWillUpValue);
+
+                //    AbstractCountDownBuff(pbResistLightUp, ref currentResistLightUp, ref currentResistLightUpValue);
+                //    AbstractCountDownBuff(pbResistShadowUp, ref currentResistShadowUp, ref currentResistShadowUpValue);
+                //    AbstractCountDownBuff(pbResistFireUp, ref currentResistFireUp, ref currentResistFireUpValue);
+                //    AbstractCountDownBuff(pbResistIceUp, ref currentResistIceUp, ref currentResistIceUpValue);
+                //    AbstractCountDownBuff(pbResistForceUp, ref currentResistForceUp, ref currentResistForceUpValue);
+                //    AbstractCountDownBuff(pbResistWillUp, ref currentResistWillUp, ref currentResistWillUpValue);
+
+                //    // 集中と断絶
+                //    AbstractCountDownBuff(pbSyutyuDanzetsu, ref currentSyutyu_Danzetsu);               
+                //}
+
+                //// 循環と誓約(コレ自身は、【循環と誓約】効果対象外）
+                //AbstractCountDownBuff(pbJunkanSeiyaku, ref currentJunkan_Seiyaku);
+
+                //// 負の影響効果(【循環と誓約】効果対象外）
+                //AbstractCountDownBuff(pbPreStunning, ref currentPreStunning);
+                //AbstractCountDownBuff(pbStun, ref currentStunning);
+                //AbstractCountDownBuff(pbSilence, ref currentSilence);
+                //AbstractCountDownBuff(pbPoison, ref currentPoison, ref currentPoisonValue);
+                //AbstractCountDownBuff(pbTemptation, ref currentTemptation);
+                //AbstractCountDownBuff(pbFrozen, ref currentFrozen);
+                //AbstractCountDownBuff(pbParalyze, ref currentParalyze);
+                //AbstractCountDownBuff(pbNoResurrection, ref currentNoResurrection);
+                //// s 後編追加
+                //AbstractCountDownBuff(pbSlip, ref currentSlip);
+                //AbstractCountDownBuff(pbSlow, ref currentSlow);
+                //AbstractCountDownBuff(pbNoGainLife, ref currentNoGainLife);
+                //AbstractCountDownBuff(pbBlind, ref currentBlind);
+
+                //AbstractCountDownBuff(pbPhysicalAttackDown, ref currentPhysicalAttackDown, ref currentPhysicalAttackDownValue);
+                //AbstractCountDownBuff(pbPhysicalDefenseDown, ref currentPhysicalDefenseDown, ref currentPhysicalDefenseDownValue);
+                //AbstractCountDownBuff(pbMagicAttackDown, ref currentMagicAttackDown, ref currentMagicAttackDownValue);
+                //AbstractCountDownBuff(pbMagicDefenseDown, ref currentMagicDefenseDown, ref currentMagicDefenseDownValue);
+                //AbstractCountDownBuff(pbSpeedDown, ref currentSpeedDown, ref currentSpeedDownValue);
+                //AbstractCountDownBuff(pbReactionDown, ref currentReactionDown, ref currentReactionDownValue);
+                //AbstractCountDownBuff(pbPotentialDown, ref currentPotentialDown, ref currentPotentialDownValue);
+
+                //// pbStrengthDown系が存在しない
+
+                //AbstractCountDownBuff(pbLightDown, ref currentLightDown, ref currentLightDownValue);
+                //AbstractCountDownBuff(pbShadowDown, ref currentShadowDown, ref currentShadowDownValue);
+                //AbstractCountDownBuff(pbFireDown, ref currentFireDown, ref currentFireDownValue);
+                //AbstractCountDownBuff(pbIceDown, ref currentIceDown, ref currentIceDownValue);
+                //AbstractCountDownBuff(pbForceDown, ref currentForceDown, ref currentForceDownValue);
+                //AbstractCountDownBuff(pbWillDown, ref currentWillDown, ref currentWillDownValue);
+
+                //// pbResistLightDown系が存在しない
+
+                //AbstractCountDownBuff(pbAfterReviveHalf, ref currentAfterReviveHalf);
+
+                //AbstractCountDownBuff(pbFireDamage2, ref currentFireDamage2);
+
+                //AbstractCountDownBuff(pbBlackMagic, ref currentBlackMagic);
+
+                ////AbstractCountDownBuff(pbChaosDesperate, ref currentChaosDesperate, ref currentChaosDesperateValue);
+                //if (currentChaosDesperate > 0)
+                //{
+                //    currentChaosDesperate--;
+                //    currentChaosDesperateValue--;
+                //    if (currentChaosDesperate <= 0 || currentChaosDesperateValue <= 0)
+                //    {
+                //        //currentChaosDesperate = 0; 外部クラスで判定材料にするため、あえてコメントアウト
+                //        currentChaosDesperateValue = 0;
+                //        if (pbChaosDesperate != null)
+                //        {
+                //            RemoveOneBuff(pbChaosDesperate);
+                //            this.BuffNumber--;
+                //        }
+                //    }
+                //}
+
+                //AbstractCountDownBuff(pbIchinaruHomura, ref currentIchinaruHomura);
+                //AbstractCountDownBuff(pbAbyssFire, ref currentAbyssFire);
+                //AbstractCountDownBuff(pbLightAndShadow, ref currentLightAndShadow);
+                //AbstractCountDownBuff(pbEternalDroplet, ref currentEternalDroplet);
+                //AbstractCountDownBuff(pbAusterityMatrixOmega, ref currentAusterityMatrixOmega);
+                //AbstractCountDownBuff(pbVoiceOfAbyss, ref currentVoiceOfAbyss);
+                //AbstractCountDownBuff(pbAbyssWill, ref currentAbyssWill, ref currentAbyssWillValue);
+                //AbstractCountDownBuff(pbTheAbyssWall, ref currentTheAbyssWall);
+                //// e 後編追加
+
+                //poolLifeConsumption = 0;
+                //poolManaConsumption = 0;
+                //poolSkillConsumption = 0;
+
+                //// 後編
+                //// s 後編「コメント」以下は、戦闘中永続であり、カウントダウンを含めない。
+                ////amplifyPhysicalAttack;
+                ////amplifyPhysicalDefense;
+                ////amplifyMagicAttack;
+                ////amplifyMagicDefense;
+                ////amplifyBattleSpeed;
+                ////amplifyBattleResponse;
+                ////amplifyPotential;
+            }
+        }
     }
 }
