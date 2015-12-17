@@ -221,7 +221,7 @@ namespace DungeonPlayer
                 //{
                 //    if (target == ec1 || target == ec2 || target == ec3)
                 //    {
-                //        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, Database.MISS_ACTION);
+                //        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, Database.MISS_ACTION);
                 //        player.CurrentPreStunning = 0;
                 //        player.DeBuff(player.pbPreStunning);
                 //        NowStunning(player, player, 2);
@@ -263,7 +263,7 @@ namespace DungeonPlayer
             //        if (AP.Math.RandomInteger(100) < PrimaryLogic.FloatingWhiteBallValue(player))
             //        {
             //            UpdateBattleText(target.Name + "が装着している" + Database.COMMON_FLOATING_WHITE_BALL + "が突如オーラを放ち、回避行動を" + target.Name + "にとらせた！\r\n");
-            //            this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, Database.MISS_ACTION);
+            //            this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, Database.MISS_ACTION);
             //            return;
             //        }
             //    }
@@ -340,11 +340,11 @@ namespace DungeonPlayer
                 #endregion
 
                 // todo
-                //#region "スキル"
-                //case MainCharacter.PlayerAction.UseSkill:
-                //    PreExecPlaySkill(player, target, withoutCost, mainPhase, CurrentSkillName);
-                //    break;
-                //#endregion
+                #region "スキル"
+                case MainCharacter.PlayerAction.UseSkill:
+                    PreExecPlaySkill(player, target, withoutCost, mainPhase, CurrentSkillName);
+                    break;
+                #endregion
 
                 // todo
                 //#region "元核"
@@ -583,7 +583,7 @@ namespace DungeonPlayer
                 //        case Database.COMMON_WAR_DRUM:
                 //            for (int ii = 0; ii < groupAlly.Count; ii++)
                 //            {
-                //                this.Invoke(new _AnimationDamage(AnimationDamage), 0, groupAlly[ii], 0, Color.Black, false, false, Database.PHYSICAL_ATTACK_UP);
+                //                this.Invoke(new _AnimationDamage(AnimationDamage), 0, groupAlly[ii], 0, Color.black, false, false, Database.PHYSICAL_ATTACK_UP);
                 //                groupAlly[ii].CurrentStrengthUp = Database.INFINITY;
                 //                groupAlly[ii].CurrentStrengthUpValue = (int)PrimaryLogic.WarDrumValue(player);
                 //                groupAlly[ii].ActivateBuff(groupAlly[ii].pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
@@ -666,7 +666,7 @@ namespace DungeonPlayer
                 //        case Database.COMMON_WINTERS_HORN:
                 //            for (int ii = 0; ii < groupAlly.Count; ii++)
                 //            {
-                //                this.Invoke(new _AnimationDamage(AnimationDamage), 0, groupAlly[ii], 0, Color.Black, false, false, Database.MAGIC_ATTACK_UP);
+                //                this.Invoke(new _AnimationDamage(AnimationDamage), 0, groupAlly[ii], 0, Color.black, false, false, Database.MAGIC_ATTACK_UP);
                 //                groupAlly[ii].CurrentIntelligenceUp = Database.INFINITY;
                 //                groupAlly[ii].CurrentIntelligenceUpValue = (int)PrimaryLogic.WintersHornValue(player);
                 //                groupAlly[ii].ActivateBuff(groupAlly[ii].pbIntelligenceUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
@@ -1385,7 +1385,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "は鱗の表面を膨張させた！\r\n");
             //                        // 物理攻撃UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
             //                        effectValue = 250.0F;
             //                        player.CurrentPhysicalAttackUp = 3;
             //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
@@ -1415,7 +1415,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "は首を引っ込めて、厚い甲羅を強化してきた！\r\n");
             //                        // 物理防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理防御UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
             //                        effectValue = 300.0F;
             //                        player.CurrentPhysicalDefenseUp = 3;
             //                        player.CurrentPhysicalDefenseUpValue = (int)effectValue;
@@ -1435,7 +1435,7 @@ namespace DungeonPlayer
             //                        // 技UP
             //                        effectValue = 300.0F;
 
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "技UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "技UP");
             //                        player.CurrentAgilityUp = 3;
             //                        player.CurrentAgilityUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp.bmp", 3);
@@ -1488,7 +1488,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "は踊るような跳びはね方をしてきた！\r\n");
             //                        // スピードUP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "戦闘速度UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘速度UP");
             //                        player.CurrentSpeedUp = 2;
             //                        player.CurrentSpeedUpValue = (int)250;
             //                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 2);
@@ -1528,13 +1528,13 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "は自分の姿を透明化させてきた！\r\n");
             //                        // 物理防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理防御UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
             //                        effectValue = 9999.9F;
             //                        player.CurrentPhysicalDefenseUp = 1;
             //                        player.CurrentPhysicalDefenseUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, 1);
             //                        // 魔法防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.Black, false, false, "魔法防御UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "魔法防御UP");
             //                        player.Target2.CurrentMagicDefenseUp = 1;
             //                        player.Target2.CurrentMagicDefenseUpValue = 9999;
             //                        player.Target2.ActivateBuff(player.Target2.pbMagicDefenseUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_UP, 1);
@@ -1557,7 +1557,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "は自らの甲殻を増強してきた！\r\n");
             //                        // 物理防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理防御UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
             //                        effectValue = 9999.9F;
             //                        player.CurrentPhysicalDefenseUp = 10;
             //                        player.CurrentPhysicalDefenseUpValue = (int)effectValue;
@@ -1602,7 +1602,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "は真っ黒い墨を自分自身にブチ巻けた\r\n");
             //                        effectValue = 250.0F;
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "魔法攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
             //                        player.CurrentMagicAttackUp = Database.INFINITY;
             //                        player.CurrentMagicAttackUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
@@ -1627,12 +1627,12 @@ namespace DungeonPlayer
             //                        effectValue = 200.0f;
 
             //                        // 魔法攻撃UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "魔法攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
             //                        player.CurrentMagicAttackUp = 3;
             //                        player.CurrentMagicAttackUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, 3);
             //                        // スピードUP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "戦闘速度UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘速度UP");
             //                        player.CurrentSpeedUp = 3;
             //                        player.CurrentSpeedUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 3);
@@ -1645,12 +1645,12 @@ namespace DungeonPlayer
 
             //                        effectValue = 160.0F;
 
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "力UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "力UP");
             //                        player.CurrentStrengthUp = 3;
             //                        player.CurrentStrengthUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", 3);
 
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "心UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "心UP");
             //                        player.CurrentMindUp = 3;
             //                        player.CurrentMindUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp.bmp", 3);
@@ -1708,7 +1708,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "はアンダート神に対する誓いの詠唱を謡った！\r\n");
             //                        // 物理防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理防御UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
             //                        effectValue = 9999.9F;
             //                        player.CurrentPhysicalDefenseUp = 3;
             //                        player.CurrentPhysicalDefenseUpValue = (int)effectValue;
@@ -1749,7 +1749,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "：海星源。永遠なる王のため！！\r\n");
             //                        // 物理攻撃UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
             //                        effectValue = 550.0F;
             //                        player.CurrentPhysicalAttackUp = 3;
             //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
@@ -1870,7 +1870,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "はスターソード『煌』を地面に差し込んだ！\r\n");
 
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.Black, false, false, "物理防御UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "物理防御UP");
             //                        player.Target2.CurrentPhysicalDefenseUp = 4;
             //                        player.Target2.CurrentPhysicalDefenseUpValue = 3000;
             //                        player.Target2.ActivateBuff(player.Target2.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, 4);
@@ -1900,7 +1900,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "はスターソード『艶』を地面に差し込んだ！\r\n");
 
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.Black, false, false, "魔法防御UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "魔法防御UP");
             //                        player.Target2.CurrentMagicDefenseUp = 4;
             //                        player.Target2.CurrentMagicDefenseUpValue = 3000;
             //                        player.Target2.ActivateBuff(player.Target2.pbMagicDefenseUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_UP, 4);
@@ -1921,7 +1921,7 @@ namespace DungeonPlayer
             //                            PlayerSpellProtection(player, group[ii]);
             //                            PlayerSpellSaintPower(player, group[ii]);
             //                            PlayerSpellDeflection(player, group[ii]);
-            //                            this.Invoke(new _AnimationDamage(AnimationDamage), 0, group[ii], 0, Color.Black, false, false, "授印");
+            //                            this.Invoke(new _AnimationDamage(AnimationDamage), 0, group[ii], 0, Color.black, false, false, "授印");
             //                        }
             //                    }
             //                    break;
@@ -1955,21 +1955,21 @@ namespace DungeonPlayer
             //                        // パワーアップ
             //                        effectValue = 500.0F;
             //                        UpdateBattleText(player.Name + "は【魔法攻撃】が" + effectValue.ToString() + "上昇\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "魔法攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
             //                        player.CurrentMagicAttackUp = Database.INFINITY;
             //                        player.CurrentMagicAttackUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
 
             //                        effectValue = 500.0F;
             //                        UpdateBattleText(player.Name + "は【物理攻撃】が" + effectValue.ToString() + "上昇\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
             //                        player.CurrentPhysicalAttackUp = Database.INFINITY;
             //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, Database.INFINITY);
 
             //                        effectValue = 2500.0F;
             //                        UpdateBattleText(player.Name + "は【戦闘反応】が" + effectValue.ToString() + "上昇\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "戦闘反応UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘反応UP");
             //                        player.CurrentReactionUp = Database.INFINITY;
             //                        player.CurrentReactionUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + Database.BUFF_REACTION_UP, Database.INFINITY);
@@ -2270,7 +2270,7 @@ namespace DungeonPlayer
             //                    else if (player.ActionLabel.Text == "自己増強")
             //                    {
             //                        UpdateBattleText(player.Name + "は手足の先を地面に食い込ませ、力を入れ始めた！\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
             //                        effectValue = 750.0F;
             //                        player.CurrentPhysicalAttackUp = 4;
             //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
@@ -2459,7 +2459,7 @@ namespace DungeonPlayer
             //                        {
             //                            effectValue = 2500.0F;
 
-            //                            this.Invoke(new _AnimationDamage(AnimationDamage), 0, group[ii], 0, Color.Black, false, false, "力UP");
+            //                            this.Invoke(new _AnimationDamage(AnimationDamage), 0, group[ii], 0, Color.black, false, false, "力UP");
             //                            group[ii].CurrentStrengthUp = 3;
             //                            group[ii].CurrentStrengthUpValue = (int)effectValue;
             //                            group[ii].ActivateBuff(group[ii].pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", 3);
@@ -2483,7 +2483,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.Name + "の発光状態の青さが増していく！\r\n");
             //                        effectValue = 10000.0F;
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "魔法攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
             //                        player.CurrentMagicAttackUp = Database.INFINITY;
             //                        player.CurrentMagicAttackUpValue += (int)effectValue;
             //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
@@ -2808,14 +2808,14 @@ namespace DungeonPlayer
             //                    {
             //                        effectValue = 2000.0F;
             //                        UpdateBattleText(player.Name + "は【物理攻撃】が" + effectValue.ToString() + "上昇\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "物理攻撃UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
             //                        player.CurrentPhysicalAttackUp = 2;
             //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, 2);
 
             //                        effectValue = 1200.0F;
             //                        UpdateBattleText(player.Name + "は【戦闘速度】が" + effectValue.ToString() + "上昇\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "戦闘速度UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘速度UP");
             //                        player.CurrentSpeedUp = 2;
             //                        player.CurrentSpeedUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 2);
@@ -2864,7 +2864,7 @@ namespace DungeonPlayer
             //                        player.CurrentShadowUp = Database.INFINITY;
             //                        player.CurrentShadowUpValue = 4500;
             //                        player.ActivateBuff(player.pbShadowUp, Database.BaseResourceFolder + Database.BUFF_SHADOW_UP + fileExt, Database.INFINITY);
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "闇属性UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "闇属性UP");
             //                    }
             //                    else if (player.ActionLabel.Text == "純潔の聖天使契約")
             //                    {
@@ -2872,7 +2872,7 @@ namespace DungeonPlayer
             //                        player.CurrentLightUp = Database.INFINITY;
             //                        player.CurrentLightUpValue = 7500;
             //                        player.ActivateBuff(player.pbLightUp, Database.BaseResourceFolder + Database.BUFF_LIGHT_UP + fileExt, Database.INFINITY);
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.Black, false, false, "聖属性UP");
+            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "聖属性UP");
             //                    }
             //                    else if (player.ActionLabel.Text == "ホーリー・バレット")
             //                    {
@@ -2976,7 +2976,7 @@ namespace DungeonPlayer
             //                        {
             //                            if (AP.Math.RandomInteger(3) == 0)
             //                            {
-            //                                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.Black, false, false, "即死");
+            //                                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, "即死");
             //                                PlayerDeath(player, target);
             //                            }
             //                        }
@@ -3025,7 +3025,7 @@ namespace DungeonPlayer
             //                        foreach (TruthEnemyCharacter current in group)
             //                        {
             //                            UpdateBattleText(player.Name + "は" + current.Name + "の魂に黒龍の生命エネルギーを呪変換を行った！\r\n");
-            //                            this.Invoke(new _AnimationDamage(AnimationDamage), 0, current, 0, Color.Black, false, false, "復活");
+            //                            this.Invoke(new _AnimationDamage(AnimationDamage), 0, current, 0, Color.black, false, false, "復活");
             //                            current.ResurrectPlayer(current.MaxLife);
             //                            break;
             //                        }
@@ -4352,8 +4352,63 @@ namespace DungeonPlayer
                         UseInstantPoint(player);
                     }
                 }
-                Debug.Log("Call ExecPlaySpell");
+                Debug.Log("Call ExecPlaySpell: " + CurrentSpellName);
                 ExecPlaySpell(player, target, CurrentSpellName);
+            }
+        }
+
+        private bool EffectCheckDarknessCoin(MainCharacter player)
+        {
+            if (((player.Accessory != null) && (player.Accessory.Name == Database.RARE_DARKNESS_COIN)) ||
+                ((player.Accessory2 != null) && (player.Accessory2.Name == Database.RARE_DARKNESS_COIN)))
+            {
+                // ライフを消費して、発動
+                double effectValue = PrimaryLogic.DarknessCoinValue(player);
+                UpdateBattleText(player.Name + "が装着している" + Database.RARE_DARKNESS_COIN + "が禍々しいオーラを放つ！\r\n");
+                UpdateBattleText(player.Name + "のライフが" + ((int)effectValue).ToString() + "削り取られ、スキル発動が強要された！\r\n");
+                LifeDamage(effectValue, player);
+                return true;
+            }
+            return false;
+        }
+        private void PreExecPlaySkill(MainCharacter player, MainCharacter target, bool withoutCost, bool mainPhase, string commandName)
+        {
+            if ((!withoutCost) && (player.CurrentSkillPoint < TruthActionCommand.Cost(commandName, player)))
+            {
+                if (EffectCheckDarknessCoin(player))
+                {
+                    // 代償を支払ったため、スルー
+                }
+                else
+                {
+                    MissNotEnoughSkill(player);
+                }
+            }
+            else if ((TruthActionCommand.GetTimingType(commandName) == TruthActionCommand.TimingType.Sorcery) &&
+                     (mainPhase) &&
+                     (player.CurrentInstantPoint < player.MaxInstantPoint))
+            {
+                MissNotEnoughInstant(player);
+            }
+            else if (player.CurrentAbsoluteZero > 0)
+            {
+                MissSkillAbsoluteZero(player);
+            }
+            else
+            {
+                if (!withoutCost)
+                {
+                    player.CurrentSkillPoint -= TruthActionCommand.Cost(commandName, player);
+                    UpdateSkillPoint(player);
+
+                    if (TruthActionCommand.GetTimingType(commandName) == TruthActionCommand.TimingType.Sorcery)
+                    {
+                        player.CurrentInstantPoint = 0;
+                        UseInstantPoint(player);
+                    }
+                }
+                Debug.Log("Call ExecPlaySkill: " + commandName);
+                ExecPlaySkill(player, target, commandName);
             }
         }
 
@@ -4377,7 +4432,6 @@ namespace DungeonPlayer
             }
             else if (CurrentSpellName == Database.PROTECTION)
             {
-                Debug.Log("call protection 2");
                 PlayerSpellProtection(player, target);
             }
             else if (CurrentSpellName == Database.HOLY_SHOCK)
@@ -4511,7 +4565,7 @@ namespace DungeonPlayer
             else if (CurrentSpellName == Database.GENESIS)
             {
                 // todo
-                //PlayerSpellGenesis(player, player.BeforeTarget);
+                // PlayerSpellGenesis(player, player.BeforeTarget);
             }
             else if (CurrentSpellName == Database.ETERNAL_PRESENCE)
             {
@@ -4746,6 +4800,264 @@ namespace DungeonPlayer
             //if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); }
         }
 
+        private void ExecPlaySkill(MainCharacter player, MainCharacter target, string CurrentSkillName)
+        {
+            // todo
+            //if (CheckStanceOfEyes(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            //if (CheckCounterAttack(player, CurrentSkillName)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            //if (CheckDeepMirror(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            //if (CheckHymnContract(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            //if (CheckFutureVision(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            //if (CheckStanceOfMystic(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            //if (CheckStanceOfSuddenness(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+
+            // 動 //
+            if (CurrentSkillName == Database.STRAIGHT_SMASH)
+            {
+                PlayerSkillStraightSmash(player, target, 0, false);
+            }
+            // todo
+            //else if (CurrentSkillName == Database.DOUBLE_SLASH)
+            //{
+            //    PlayerSkillDoubleSlash(player, target, 0, false);
+            //}
+            //else if (CurrentSkillName == Database.CRUSHING_BLOW)
+            //{
+            //    PlayerSkillCrushingBlow(player);
+            //}
+            //else if (CurrentSkillName == Database.SOUL_INFINITY)
+            //{
+            //    PlayerSkillSoulInfinity(player, target);
+            //}
+            //// 静 //
+            //else if (CurrentSkillName == Database.COUNTER_ATTACK)
+            //{
+            //    PlayerSkillCounterAttack(player, target);
+            //}
+            //else if (CurrentSkillName == Database.PURE_PURIFICATION)
+            //{
+            //    PlayerSkillPurePurification(player);
+            //}
+            //else if (CurrentSkillName == Database.ANTI_STUN)
+            //{
+            //    PlayerSkillAntiStun(player);
+            //}
+            //else if (CurrentSkillName == Database.STANCE_OF_DEATH)
+            //{
+            //    PlayerSkillStanceOfDeath(player);
+            //}
+            //// 柔 //
+            //else if (CurrentSkillName == Database.STANCE_OF_FLOW)
+            //{
+            //    PlayerSkillStanceOfFlow(player);
+            //}
+            //else if (CurrentSkillName == Database.ENIGMA_SENSE)
+            //{
+            //    PlayerSkillEnigmaSense(player, target);
+            //}
+            //else if (CurrentSkillName == Database.SILENT_RUSH)
+            //{
+            //    PlayerSkillSilentRush(player, target);
+            //}
+            //else if (CurrentSkillName == Database.OBORO_IMPACT)
+            //{
+            //    PlayerSkillOboroImpact(player, target);
+            //}
+            //// 剛 //
+            //else if (CurrentSkillName == Database.STANCE_OF_STANDING)
+            //{
+            //    PlayerSkillStanceOfStanding(player, target);
+            //}
+            //else if (CurrentSkillName == Database.INNER_INSPIRATION)
+            //{
+            //    PlayerSkillInnerInspiration(player);
+            //}
+            //else if (CurrentSkillName == Database.KINETIC_SMASH)
+            //{
+            //    PlayerSkillKineticSmash(player, target);
+            //}
+            //else if (CurrentSkillName == Database.CATASTROPHE)
+            //{
+            //    PlayerSkillCatastrophe(player, target);
+            //    // こちらでスキル全消費
+            //    player.CurrentSkillPoint = 0;
+            //    UpdateSkillPoint(player);
+            //}
+            //// 心眼 //
+            //else if (CurrentSkillName == Database.TRUTH_VISION)
+            //{
+            //    PlayerSkillTruthVision(player, target);
+            //}
+            //else if (CurrentSkillName == Database.HIGH_EMOTIONALITY)
+            //{
+            //    PlayerSkillHighEmotionality(player);
+            //}
+            //else if (CurrentSkillName == Database.STANCE_OF_EYES)
+            //{
+            //    PlayerSkillStanceOfEyes(player);
+            //}
+            //else if (CurrentSkillName == Database.PAINFUL_INSANITY)
+            //{
+            //    PlayerSkillPainfulInsanity(player);
+            //}
+            //// 無心 //
+            //else if (CurrentSkillName == Database.NEGATE)
+            //{
+            //    PlayerSkillNegate(player);
+            //}
+            //else if (CurrentSkillName == Database.VOID_EXTRACTION)
+            //{
+            //    PlayerSkillVoidExtraction(player);
+            //}
+            //else if (CurrentSkillName == Database.CARNAGE_RUSH)
+            //{
+            //    PlayerSkillCarnageRush(player, target);
+            //}
+            //else if (CurrentSkillName == Database.NOTHING_OF_NOTHINGNESS)
+            //{
+            //    PlayerSkillNothingOfNothingness(player);
+            //}
+            // todo
+            //// 動＋静（完全逆）
+            //else if (CurrentSkillName == Database.NEUTRAL_SMASH)
+            //{
+            //    PlayerSkillNeutralSmash(player, target);
+            //}
+            //else if (CurrentSkillName == Database.STANCE_OF_DOUBLE)
+            //{
+            //    PlayerSkillStanceOfDouble(player, target);
+            //}
+            //// 動＋柔
+            //else if (CurrentSkillName == Database.SWIFT_STEP)
+            //{
+            //    PlayerSkillSwiftStep(player, target);
+            //}
+            //else if (CurrentSkillName == Database.VIGOR_SENSE)
+            //{
+            //    PlayerSkillVigorSense(player, target);
+            //}
+            //// 動＋剛
+            //else if (CurrentSkillName == Database.CIRCLE_SLASH)
+            //{
+            //    PlayerSkillCircleSlash(player, target);
+            //}
+            //else if (CurrentSkillName == Database.RISING_AURA)
+            //{
+            //    PlayerSkillRisingAura(player, target);
+            //}
+            //// 動＋心眼
+            //else if (CurrentSkillName == Database.RUMBLE_SHOUT)
+            //{
+            //    PlayerSkillRumbleShout(player, target);
+            //}
+            //else if (CurrentSkillName == Database.ONSLAUGHT_HIT)
+            //{
+            //    PlayerSkillOnslaughtHit(player, target);
+            //}
+            //// 動＋無心
+            //else if (CurrentSkillName == Database.SMOOTHING_MOVE)
+            //{
+            //    PlayerSkillSmoothingMove(player, target);
+            //}
+            //else if (CurrentSkillName == Database.ASCENSION_AURA)
+            //{
+            //    PlayerSkillAscensionAura(player, target);
+            //}
+            //// 静＋柔
+            //else if (CurrentSkillName == Database.FUTURE_VISION)
+            //{
+            //    PlayerSkillFutureVision(player, target);
+            //}
+            //else if (CurrentSkillName == Database.UNKNOWN_SHOCK)
+            //{
+            //    PlayerSkillUnknownShock(player, target);
+            //}
+            //// 静＋剛
+            //else if (CurrentSkillName == Database.REFLEX_SPIRIT)
+            //{
+            //    PlayerSkillReflexSpirit(player, target);
+            //}
+            //else if (CurrentSkillName == Database.FATAL_BLOW)
+            //{
+            //    PlayerSkillFatalBlow(player, target);
+            //}
+            //// 静＋心眼
+            //else if (CurrentSkillName == Database.SHARP_GLARE)
+            //{
+            //    PlayerSkillSharpGlare(player, target);
+            //}
+            //else if (CurrentSkillName == Database.CONCUSSIVE_HIT)
+            //{
+            //    PlayerSkillConcussiveHit(player, target);
+            //}
+            //// 静＋無心
+            //else if (CurrentSkillName == Database.TRUST_SILENCE)
+            //{
+            //    PlayerSkillTrustSilence(player, target);
+            //}
+            //else if (CurrentSkillName == Database.MIND_KILLING)
+            //{
+            //    PlayerSkillMindKilling(player, target);
+            //}
+            //// 柔＋剛（完全逆）
+            //else if (CurrentSkillName == Database.SURPRISE_ATTACK)
+            //{
+            //    PlayerSkillSurpriseAttack(player, target);
+            //}
+            //else if (CurrentSkillName == Database.STANCE_OF_MYSTIC)
+            //{
+            //    PlayerSkillStanceOfMystic(player, target);
+            //}
+            //// 柔＋心眼
+            //else if (CurrentSkillName == Database.PSYCHIC_WAVE)
+            //{
+            //    PlayerSkillPsychicWave(player, target);
+            //}
+            //else if (CurrentSkillName == Database.NOURISH_SENSE)
+            //{
+            //    PlayerSkillNourishSense(player, target);
+            //}
+            //// 柔＋無心
+            //else if (CurrentSkillName == Database.RECOVER)
+            //{
+            //    PlayerSkillRecover(player, target);
+            //}
+            //else if (CurrentSkillName == Database.IMPULSE_HIT)
+            //{
+            //    PlayerSkillImpulseHit(player, target);
+            //}
+            //// 剛＋心眼
+            //else if (CurrentSkillName == Database.VIOLENT_SLASH)
+            //{
+            //    PlayerSkillViolentSlash(player, target);
+            //}
+            //else if (CurrentSkillName == Database.ONE_AUTHORITY)
+            //{
+            //    PlayerSkillOneAuthority(player, target);
+            //}
+            //// 剛＋無心
+            //else if (CurrentSkillName == Database.OUTER_INSPIRATION)
+            //{
+            //    PlayerSkillOuterInspiration(player, target);
+            //}
+            //else if (CurrentSkillName == Database.HARDEST_PARRY)
+            //{
+            //    PlayerSkillHardestParry(player, target);
+            //}
+            //// 心眼＋無心（完全逆）
+            //else if (CurrentSkillName == Database.STANCE_OF_SUDDENNESS)
+            //{
+            //    PlayerSkillStanceOfSuddenness(player, target);
+            //}
+            //else if (CurrentSkillName == Database.SOUL_EXECUTION)
+            //{
+            //    PlayerSkillSoulExecution(player, target);
+            //}
+            //
+            //if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); }
+        }
+
+
         private void PlayerSpellTimeStop(MainCharacter player, MainCharacter target)
         {
             throw new NotImplementedException();
@@ -4782,11 +5094,6 @@ namespace DungeonPlayer
         }
 
         private void PlayerSpellWordOfFortune(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellGaleWind(MainCharacter player)
         {
             throw new NotImplementedException();
         }
@@ -4977,5 +5284,389 @@ namespace DungeonPlayer
             //player.BeforeTarget = shadowBeforeTarget;
             //player.BeforeTarget2 = shadowBeforeTarget2;
         }
+
+        private void Invoke(Delegate method, params object[] args)
+        {
+            // todo
+        }
+        private void NowStunning(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if (target.CurrentReflexSpirit > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_STUN);
+                target.RemoveReflexSpirit();
+                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeStunはtrueにしない。
+            }
+            else if ((target.CheckResistStun) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)) ||
+                     (CheckResistWithItem(target, Database.POOR_JUNK_TARISMAN_STUN)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_STUN);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeStun = true;
+                }
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_STUN);
+                if (target.CurrentStunning <= 0) // 重ねがけは出来ない仕様
+                {
+                    target.CurrentStunning = effectTime;
+                }
+                target.ActivateBuff(target.pbStun, Database.BaseResourceFolder + "Stunning.bmp", target.CurrentStunning);
+                UpdateBattleText(target.Name + "は気絶した。\r\n");
+            }
+        }
+
+        private void NowSilence(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if (target.CurrentTrustSilence > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_SILENCE);
+                target.RemoveTrustSilence();
+                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeSilenceはtrueにしない。
+            }
+            else if ((target.CheckResistSilence) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_SILENCE);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeSilence = true;
+                }
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_SILENCE);
+                target.CurrentSilence = effectTime;
+                target.ActivateBuff(target.pbSilence, Database.BaseResourceFolder + "Silence.bmp", effectTime);
+                UpdateBattleText(target.Name + "は沈黙にかかった。\r\n");
+            }
+        }
+
+        private void NowPoison(MainCharacter player, MainCharacter target, int effectValue, bool cumulative)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if ((target.CheckResistPoison) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_POISON);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBePoison = true;
+                }
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_POISON);
+                target.CurrentPoison = effectValue;
+                if (cumulative)
+                {
+                    target.CurrentPoisonValue++;
+                    target.ChangePoisonStatus(effectValue);
+                }
+                else
+                {
+                    target.CurrentPoisonValue = 1;
+                    target.ActivateBuff(target.pbPoison, Database.BaseResourceFolder + "Poison.bmp", effectValue);
+                }
+                UpdateBattleText(target.Name + "は猛毒におかされた。\r\n");
+            }
+        }
+
+        private void NowTemptation(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if (target.CurrentTrustSilence > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_TEMPTATION);
+                target.RemoveTrustSilence();
+                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeTemptationはtrueにしない。
+            }
+            else if ((target.CheckResistTemptation) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_TEMPTATION);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeTemptation = true;
+                }
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_TEMPTATION);
+                target.CurrentTemptation = effectTime;
+                target.ActivateBuff(target.pbTemptation, Database.BaseResourceFolder + "Temptation.bmp", effectTime);
+                UpdateBattleText(target.Name + "は誘惑にかかった。\r\n");
+            }
+        }
+
+        private bool NowFrozen(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if (target.CurrentReflexSpirit > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_FROZEN);
+                target.RemoveReflexSpirit();
+                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeFrozenはtrueにしない。
+                return false;
+            }
+            else if ((target.CheckResistFrozen) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)) ||
+                     (CheckResistWithItem(target, Database.POOR_JUNK_TARISMAN_FROZEN)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_FROZEN);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeFrozen = true;
+                }
+                return false;
+            }
+
+            if (target.CurrentFrozen <= 0) // 重ねがけは出来ない仕様
+            {
+                target.CurrentFrozen = effectTime;
+            }
+            this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_FROZEN);
+            target.ActivateBuff(target.pbFrozen, Database.BaseResourceFolder + "Frozen.bmp", effectTime);
+            UpdateBattleText(target.Name + "は凍結した。\r\n");
+            return true;
+        }
+
+        private bool NowParalyze(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if (target.CurrentReflexSpirit > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_PARALYZE);
+                target.RemoveReflexSpirit();
+                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeParalyzeはtrueにしない。
+                return false;
+            }
+            else if ((target.CheckResistParalyze) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)) ||
+                     (CheckResistWithItem(target, Database.POOR_JUNK_TARISMAN_PARALYZE)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_PARALYZE);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeParalyze = true;
+                }
+                return false;
+            }
+            else
+            {
+                if (target.CurrentParalyze <= 0) // 重ねがけは出来ない仕様
+                {
+                    target.CurrentParalyze = effectTime;
+                }
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_PARALYZE);
+                target.ActivateBuff(target.pbParalyze, Database.BaseResourceFolder + "Paralyze.bmp", effectTime);
+                UpdateBattleText(target.Name + "は麻痺した。\r\n");
+            }
+            return true;
+        }
+
+        private void NowSlow(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if ((target.CheckResistSlow) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_SLOW);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeSlow = true;
+                }
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_SLOW);
+                target.CurrentSlow = effectTime;
+                target.ActivateBuff(target.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectTime);
+                UpdateBattleText(target.Name + "は動きが鈍くなった。\r\n");
+            }
+        }
+
+        private void NowBlind(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if (target.CurrentTrustSilence > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_BLIND);
+                target.RemoveTrustSilence();
+                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeBlindはtrueにしない。
+            }
+            else if ((target.CheckResistBlind) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_BLIND);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeBlind = true;
+                }
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_BLIND);
+                target.CurrentBlind = effectTime;
+                target.ActivateBuff(target.pbBlind, Database.BaseResourceFolder + "Blind.bmp", effectTime);
+                UpdateBattleText(target.Name + "は暗闇にかかった。\r\n");
+            }
+        }
+
+        private void NowSlip(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if ((target.CheckResistSlip) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_SLIP);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeSlip = true;
+                }
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_SLIP);
+                target.CurrentSlip = effectTime;
+                target.ActivateBuff(target.pbSlip, Database.BaseResourceFolder + "Slip.bmp", effectTime);
+                UpdateBattleText(target.Name + "はひどい傷を負った。\r\n");
+            }
+        }
+
+        private void NowNoResurrection(MainCharacter player, MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if ((target.CheckResistNoResurrection) ||
+                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_NORESURRECTION);
+                if (player.GetType() == typeof(TruthEnemyCharacter))
+                {
+                    ((TruthEnemyCharacter)player).DetectCannotBeNoResurrection = true;
+                }
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_NORESURRECTION);
+                target.CurrentNoResurrection = effectTime;
+                target.ActivateBuff(target.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection.bmp", effectTime);
+                UpdateBattleText(target.Name + "はリザレクションによる復活が不可能になった。\r\n");
+            }
+        }
+
+        private void NowNoGainLife(MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_NOGAIN_LIFE);
+                target.CurrentNoGainLife = effectTime;
+                target.ActivateBuff(target.pbNoGainLife, Database.BaseResourceFolder + "NoGainLife.bmp", effectTime);
+                UpdateBattleText(target.Name + "はライフ回復が不可能になった。\r\n");
+            }
+        }
+
+        private bool CheckResistWithItem(MainCharacter target, string itemName)
+        {
+            if ((target.MainWeapon != null) && (target.MainWeapon.Name == itemName))
+            {
+                target.MainWeapon.AfterBroken = true;
+                return true;
+            }
+            else if ((target.SubWeapon != null) && (target.SubWeapon.Name == itemName))
+            {
+                target.SubWeapon.AfterBroken = true;
+                return true;
+            }
+            else if ((target.MainArmor != null) && (target.MainArmor.Name == itemName))
+            {
+                target.MainArmor.AfterBroken = true;
+                return true;
+            }
+            else if ((target.Accessory != null) && (target.Accessory.Name == itemName))
+            {
+                target.Accessory.AfterBroken = true;
+                return true;
+            }
+            else if ((target.Accessory2 != null) && (target.Accessory2.Name == itemName))
+            {
+                target.Accessory2.AfterBroken = true;
+                return true;
+            }
+
+            return false;
+        }
+
+
+        private void NowBlinded(MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_BLINDED);
+                target.CurrentBlinded = effectTime;
+                target.ActivateBuff(target.pbBlinded, Database.BaseResourceFolder + "Blinded.bmp", effectTime);
+                UpdateBattleText(target.Name + "は退避状態に入った。\r\n");
+            }
+        }
+
+        private void NowPreStunning(MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_PRESTUNNING);
+                target.CurrentPreStunning = effectTime;
+                target.ActivateBuff(target.pbPreStunning, Database.BaseResourceFolder + "PreStunning.bmp", effectTime);
+                UpdateBattleText(target.Name + "は恐怖に駆られた。\r\n");
+            }
+        }
+
+
     }
 }

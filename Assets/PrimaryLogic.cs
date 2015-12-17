@@ -1189,6 +1189,273 @@ namespace DungeonPlayer
         }
 
 
+        //   スキル！！！  //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        /// <summary>
+        /// ストレート・スマッシュ値の算出
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public static double StraightSmashValue(MainCharacter player, bool duelMode)
+        {
+            // 力1.0　技2.0-3.0　知0.0  心0.0  武器1.0-2.0
+            double pAgl = (double)(2.0F + (AP.Math.RandomInteger(1000) + 1) / 1000.0F);
+            double pWeapon = (double)(1.0F + (AP.Math.RandomInteger(1000) + 1) / 1000.0F);
+            return ConstructPhysicalDamage(player, 1.0F, pAgl, 0.0F, 0.0F, pWeapon, 0, 1, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+        }
+
+
+        // ヴァイオレント・スラッシュ値の算出
+        public static double ViolentSlashValue(MainCharacter player, bool duelMode)
+        {
+            // 力2.5  技0.0  知0.0  心0.0  武器1.0
+            return ConstructPhysicalDamage(player, 2.5F, 0.0F, 0.0F, 0.0F, 1.0, 0, 1, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+        }
+
+        // サイキック・ウェイブ値の算出
+        public static double PsychicWaveValue(MainCharacter player, bool duelMode)
+        {
+            return ConstructPhysicalDamage(player, 2.0F, 0, 0, 0, 1.0F, 0, 1, MainCharacter.PlayerStance.BackOffence, SpellSkillType.PsychicWave, duelMode);
+        }
+        // マインド・キリング（マナダメージ）値の算出
+        public static double MindKillingValue(MainCharacter player, bool duelMode)
+        {
+            return ConstructPhysicalDamage(player, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 100, 200, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+        }
+
+        // ワン・オーソリティ（スキル回復量）値の算出
+        public static double OneAuthorityValue(MainCharacter player, bool duelMode)
+        {
+            double min = 0;
+            double max = 0;
+
+            // ベース値＋１５は固定
+            // 心      [ 1 - 100 ] -->   0 + 心 / 5
+            //      [ 101 - 1000 ] -->  25 + 心 / 25
+            //    [ 1001 - 10000 ] -->  61 + 心 / 450
+            if (0 <= player.TotalMind && player.TotalMind <= 100)
+            {
+                min = 0.0F;
+                max = 0.0F + (double)player.TotalMind / 4.0F;
+            }
+            else if (101 <= player.TotalMind && player.TotalMind <= 1000)
+            {
+                min = 25.0F;
+                max = 25.0F + (double)(player.TotalMind - 100.0F) / 30.0F;
+            }
+            else if (1001 <= player.TotalMind && player.TotalMind <= 9999)
+            {
+                min = 55.0F;
+                max = 55.0F + (double)(player.TotalMind - 1000.0F) / 300.0F;
+            }
+
+            System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
+            double result = rd.Next((int)min, (int)(max + 1.0F)) + 10.0F;
+
+            return result;
+        }
+
+        /// <summary>
+        /// エニグマ・センス値の算出（弱小スキルなため、後編で増強）
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public static double EnigmaSenseValue(MainCharacter player, bool duelMode)
+        {
+            // MAX(力、技、知）
+            double atkBase = Math.Max(player.TotalStrength, Math.Max(player.TotalAgility, player.TotalIntelligence));
+            double pStr = 0.0F;
+            double pAgl = 0.0F;
+            double pInt = 0.0F;
+            if (atkBase == player.TotalIntelligence)
+            {
+                // [修正]SeventhMagicで弱体化するつもりはないため、ここで再反転させておく。
+                if (player.CurrentSeventhMagic > 0)
+                {
+                    pStr = (double)((2.0F + (AP.Math.RandomInteger(3000) + 1) / 1000.0F));
+                    pAgl = 0.0F;
+                    pInt = 0.0F;
+                }
+                else
+                {
+                    pStr = 0.0F;
+                    pAgl = 0.0F;
+                    pInt = (double)((2.0F + (AP.Math.RandomInteger(3000) + 1) / 1000.0F));
+                }
+            }
+            else if (atkBase == player.TotalAgility)
+            {
+                pStr = 0.0F;
+                pAgl = (double)((2.0F + (AP.Math.RandomInteger(3000) + 1) / 1000.0F));
+                pInt = 0.0F;
+            }
+            else  // でなければ「力」
+            {
+                // [修正]SeventhMagicで弱体化するつもりはないため、ここで再反転させておく。
+                if (player.CurrentSeventhMagic > 0)
+                {
+                    pStr = 0.0F;
+                    pAgl = 0.0F;
+                    pInt = (double)((2.0F + (AP.Math.RandomInteger(3000) + 1) / 1000.0F));
+                }
+                else
+                {
+                    pStr = (double)((2.0F + (AP.Math.RandomInteger(3000) + 1) / 1000.0F));
+                    pAgl = 0.0F;
+                    pInt = 0.0F;
+                }
+            }
+            return ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 30, 35, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+        }
+
+        /// <summary>
+        /// キネティック・スマッシュ値の算出
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public static double KineticSmashValue(MainCharacter player, bool duelMode)
+        {
+            double result = ConstructPhysicalDamage(player, 1.0F, 0.0F, 0.0F, 1.0F, 3.0F, 2000, 3000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            result = result * PotentialValue(player, duelMode);
+            return result;
+        }
+
+        /// <summary>
+        /// ソウル・インフィニティ値の算出
+        /// </summary>
+        public static double SoulInfinityValue(MainCharacter player, bool duelMode)
+        {
+            // ( 力＋技＋知 ) ｘ 1.2 ｘ 潜在能力
+            double pStr = 1.2F;
+            double pAgl = 1.2F;
+            double pInt = 1.2F;
+
+            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 6000, 8000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            result = result * PotentialValue(player, duelMode);
+            return result;
+        }
+
+        /// <summary>
+        /// 朧・インパクト値の算出
+        /// </summary>
+        public static double OboroImpactValue(MainCharacter player, bool duelMode)
+        {
+            // ( max x 1.5 + mid x 1.0 + min x 0.5 ) x 潜在能力
+            double pStr = 0.0F;
+            double pAgl = 0.0F;
+            double pInt = 0.0F;
+            double max = Math.Max(Math.Max(player.TotalStrength, player.TotalAgility), player.TotalIntelligence);
+            double min = Math.Min(Math.Min(player.TotalStrength, player.TotalAgility), player.TotalIntelligence);
+            if (max == player.TotalStrength)
+            {
+                pStr = 1.5F;
+                if (min == player.TotalAgility)
+                {
+                    pAgl = 0.5F;
+                    pInt = 1.0F;
+                }
+                else
+                {
+                    pAgl = 1.0F;
+                    pInt = 0.5F;
+                }
+            }
+            else if (max == player.TotalAgility)
+            {
+                pAgl = 1.5F;
+                if (min == player.TotalStrength)
+                {
+                    pStr = 0.5F;
+                    pInt = 1.0F;
+                }
+                else
+                {
+                    pStr = 1.0F;
+                    pInt = 0.5F;
+                }
+            }
+            else if (max == player.TotalIntelligence)
+            {
+                pInt = 1.5F;
+                if (min == player.TotalStrength)
+                {
+                    pStr = 0.5F;
+                    pAgl = 1.0F;
+                }
+                else
+                {
+                    pStr = 1.0F;
+                    pAgl = 0.5F;
+                }
+            }
+            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 0.0F, 6000, 8000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            result = result * PotentialValue(player, duelMode);
+            return result;
+        }
+
+        /// <summary>
+        /// カタストロフィ値の算出
+        /// </summary>
+        public static double CatastropheValue(MainCharacter player, bool duelMode)
+        {
+            // (MAX x 0.0 + MID x 0.0 + MIN x 5.0 ) ｘ 潜在能力
+            double pStr = 0.0F;
+            double pAgl = 0.0F;
+            double pInt = 0.0F;
+            double min = Math.Min(Math.Min(player.TotalStrength, player.TotalAgility), player.TotalIntelligence);
+            if (min == player.TotalStrength) { pStr = 5.0F; }
+            else if (min == player.TotalAgility) { pAgl = 5.0F; }
+            else if (min == player.TotalIntelligence) { pInt = 5.0F; }
+
+            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 6000, 8000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            result = result * PotentialValue(player, duelMode);
+            return result;
+        }
+
+        public static double PainfulInsanityValue(MainCharacter player, bool duelMode)
+        {
+            // 心ｘ３　（前編から後編にかけて、さらに潜在能力値増幅を追加）
+            double result = ConstructMagicDamage(player, 0.0f, 3.0f, 2000, 3000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, true, duelMode);
+            result = result * PotentialValue(player, duelMode);
+            return result;
+        }
+
+        /// <summary>
+        /// インナー・インスピレーション値の算出（前編ではパラメタＭＡＸが１００前後、後編では９９９９ＭＡＸを意識した値に調整）
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public static double InnerInspirationValue(MainCharacter player)
+        {
+            double min = 0;
+            double max = 0;
+
+            // ベース値＋１０は固定
+            // 心      [ 1 - 100 ] -->   0 + 心 / 10
+            //      [ 101 - 1000 ] -->  10 + 心 / 90
+            //    [ 1001 - 10000 ] -->  20 + 心 / 900
+            if (0 <= player.TotalMind && player.TotalMind <= 100)
+            {
+                min = 0.0F;
+                max = 0.0F + (double)player.TotalMind / 10.0F;
+            }
+            else if (101 <= player.TotalMind && player.TotalMind <= 1000)
+            {
+                min = 10.0F;
+                max = 10.0F + (double)(player.TotalMind - 100.0F) / 90.0F;
+            }
+            else if (1001 <= player.TotalMind && player.TotalMind <= 9999)
+            {
+                min = 20.0F;
+                max = 20.0F + (double)(player.TotalMind - 1000.0F) / 900.0F;
+            }
+
+            System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
+            double result = rd.Next((int)min, (int)(max + 1.0F)) + 10.0F;
+
+            return result;
+        }
 
         ////　アイテム！！！ ////////////////////////////////////////////
 

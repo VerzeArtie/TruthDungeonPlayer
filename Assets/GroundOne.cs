@@ -207,7 +207,7 @@ namespace DungeonPlayer {
             MC.BattleActionCommandList[4] = Database.STRAIGHT_SMASH;
             MC.BattleActionCommandList[5] = Database.WORD_OF_LIFE;
             MC.BattleActionCommandList[6] = Database.LAVA_ANNIHILATION;
-            MC.BattleActionCommandList[7] = Database.STAY_EN;
+            MC.BattleActionCommandList[7] = Database.GALE_WIND;
             MC.BattleActionCommandList[8] = Database.STAY_EN;
 
             SC = obj.AddComponent<MainCharacter>();

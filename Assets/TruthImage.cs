@@ -63,6 +63,11 @@ public class TruthImage : Image
     {
 
     }
+
+    void Update()
+    {
+        Debug.Log("TruthImage:Update");
+    }
 //    Rectangle fixedRect = new Rectangle(0, 0, 25, 25);
 //    PointF fixedPointCount = new PointF(4, 22);
 //    PointF fixedPointCumulative = new PointF(12, -3);

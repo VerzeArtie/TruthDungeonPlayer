@@ -2334,22 +2334,11 @@ namespace DungeonPlayer
             CurrentPoisonValue++;
             if (pbPoison != null) { pbPoison.sprite = img; pbPoison.enabled = true; }
         }
-        public void RemovePoison()
-        {
-            CurrentPoison = 0;
-            CurrentPoisonValue = 0;
-            if (pbPoison != null) { pbPoison.enabled = false; }
-        }
 
         public void ActivateFlameAura(Sprite img, int effectTime)
         {
             CurrentFlameAura = effectTime;
             if (pbFlameAura != null) { pbFlameAura.sprite = img; pbFlameAura.enabled = true; }
-        }
-        public void RemoveFlameAura()
-        {
-            CurrentFlameAura = 0;
-            if (pbFlameAura != null) { pbFlameAura.enabled = false; }
         }
 
         public void ActivateProtection(Sprite img, int effectTime)
@@ -2357,21 +2346,11 @@ namespace DungeonPlayer
             CurrentProtection = effectTime;
             if (pbProtection != null) { pbProtection.sprite = img; pbProtection.enabled = true; }
         }
-        public void RemoveProtection()
-        {
-            CurrentProtection = 0;
-            if (pbProtection != null) { pbProtection.enabled = false; }
-        }
 
         public void ActivateShadowPact(Sprite img, int effectTime)
         {
             CurrentShadowPact = effectTime;
             if (pbShadowPact != null) { pbShadowPact.sprite = img; pbShadowPact.enabled = true; }
-        }
-        public void RemoveShadowPact()
-        {
-            CurrentShadowPact = 0;
-            if (pbShadowPact != null) { pbShadowPact.enabled = false; }
         }
 
         public void ActivateWordOfLife(Sprite img, int effectTime)
@@ -2379,21 +2358,11 @@ namespace DungeonPlayer
             CurrentWordOfLife = effectTime;
             if (pbWordOfLife != null) { pbWordOfLife.sprite = img; pbWordOfLife.enabled = true; }
         }
-        public void RemoveWordOfLife()
-        {
-            CurrentWordOfLife = 0;
-            if (pbWordOfLife != null) { pbWordOfLife.enabled = false; }
-        }
 
         public void ActivateDeflection(Sprite img, int effectTime)
         {
             CurrentDeflection = effectTime;
             if (pbDeflection != null) { pbDeflection.sprite = img; pbDeflection.enabled = true; }
-        }
-        public void RemoveDeflection()
-        {
-            CurrentDeflection = 0;
-            if (pbDeflection != null) { pbDeflection.enabled = false; }
         }
 
         public void ActivateTruthVision(Sprite img, int effectTime)
@@ -2401,11 +2370,7 @@ namespace DungeonPlayer
             CurrentTruthVision = effectTime;
             if (pbTruthVision != null) { pbTruthVision.sprite = img; pbTruthVision.enabled = true; }
         }
-        public void RemoveTruthVision()
-        {
-            CurrentTruthVision = 0;
-            if (pbTruthVision != null) { pbTruthVision.enabled = false; }
-        }
+
 
         // basic parameter
         // Totalはベース値＋戦闘中UP＋常在型BUFFUPの合計値
@@ -2649,6 +2614,22 @@ namespace DungeonPlayer
                 imageData.Count = count;
                 imageData.gameObject.SetActive(true);
                 this.BuffNumber++;
+            }
+        }
+
+        public void ChangeBuffImage(TruthImage imageData, string imageName)
+        {
+            if (imageData.sprite != null)
+            {
+                imageData.sprite = Resources.Load<Sprite>(imageName);
+            }
+        }
+        public void DeBuff(TruthImage imageData)
+        {
+            if (imageData.sprite != null)
+            {
+                RemoveOneBuff(imageData);
+                this.BuffNumber--;
             }
         }
 
@@ -2966,47 +2947,6 @@ namespace DungeonPlayer
             }
         }
 
-        internal void ChangeSkyShieldStatus(int p)
-        {
-            // todo
-            throw new System.NotImplementedException();
-        }
-
-        internal void ChangeStaticBarrierStatus(int p)
-        {
-            // todo
-            throw new System.NotImplementedException();
-        }
-
-        internal void ChangeConcussiveHitStatus(int p)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        internal void ChangeOnslaughtHitStatus(int p)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        internal void ChangeImpulseHitStatus(int p)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        internal void ChangeStanceOfMysticStatus(int p)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        internal void ChangeFeltusStatus(int p)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        internal void ChangeJuzaPhantasmalStatus(int p)
-        {
-            throw new System.NotImplementedException();
-        }
 
         public int CurrentEternalFateRingValue
         {
@@ -3015,41 +2955,1247 @@ namespace DungeonPlayer
         }
         public int CurrentEternalFateRing { get; set; }
 
-        internal void ChangeEternalFateRingStatus(int p)
+        public bool CheckResistStun
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                if (this.battleResistStun) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistStun)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistStun)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistStun)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistStun)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistStun)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistSilence
+        {
+            get
+            {
+                if (this.battleResistSilence) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistSilence)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistSilence)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistSilence)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistSilence)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistSilence)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistPoison
+        {
+            get
+            {
+                if (this.battleResistPoison) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistPoison)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistPoison)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistPoison)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistPoison)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistPoison)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistTemptation
+        {
+            get
+            {
+                if (this.battleResistTemptation) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistTemptation)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistTemptation)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistTemptation)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistTemptation)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistTemptation)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistFrozen
+        {
+            get
+            {
+                if (this.battleResistFrozen) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistFrozen)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistFrozen)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistFrozen)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistFrozen)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistFrozen)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistParalyze
+        {
+            get
+            {
+                if (this.battleResistParalyze) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistParalyze)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistParalyze)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistParalyze)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistParalyze)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistParalyze)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistSlow
+        {
+            get
+            {
+                if (this.battleResistSlow) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistSlow)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistSlow)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistSlow)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistSlow)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistSlow)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistBlind
+        {
+            get
+            {
+                if (this.battleResistBlind) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistBlind)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistBlind)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistBlind)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistBlind)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistBlind)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistSlip
+        {
+            get
+            {
+                if (this.battleResistSlip) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                if (this.CurrentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistSlip)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistSlip)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistSlip)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistSlip)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistSlip)) return true;
+                return false;
+            }
+        }
+        public bool CheckResistNoResurrection
+        {
+            get
+            {
+                if (this.battleResistNoResurrection) return true;
+                if (this.CurrentSagePotionMini > 0) return true;
+                //if (this.currentElementalSeal > 0) return true;
+                if ((this.MainWeapon != null) && (MainWeapon.ResistNoResurrection)) return true;
+                if ((this.SubWeapon != null) && (SubWeapon.ResistNoResurrection)) return true;
+                if ((this.MainArmor != null) && (MainArmor.ResistNoResurrection)) return true;
+                if ((this.Accessory != null) && (Accessory.ResistNoResurrection)) return true;
+                if ((this.Accessory2 != null) && (Accessory2.ResistNoResurrection)) return true;
+                return false;
+            }
         }
 
-        internal void ChangeLightServantStatus(int p)
+        // s 後編追加（以下、前編とメソッドが、かぶらないようにしたい。もしかぶると、Debuffメソッドで例外エラーとなるためそれを避けたい）
+        public void RemoveProtection()
         {
-            throw new System.NotImplementedException();
+            this.CurrentProtection = 0;
+            this.DeBuff(this.pbProtection);
+        }
+        public void RemoveSaintPower()
+        {
+            this.CurrentSaintPower = 0;
+            this.DeBuff(this.pbSaintPower);
+        }
+        public void RemoveGlory()
+        {
+            this.CurrentGlory = 0;
+            this.DeBuff(this.pbGlory);
+        }
+        public void RemoveShadowPact()
+        {
+            this.CurrentShadowPact = 0;
+            this.DeBuff(this.pbShadowPact);
+        }
+        public void RemoveBlackContract()
+        {
+            this.CurrentBlackContract = 0;
+            this.DeBuff(this.pbBlackContract);
+        }
+        public void RemoveDamnation()
+        {
+            this.CurrentDamnation = 0;
+            this.DeBuff(this.pbDamnation);
+        }
+        public void RemoveFlameAura()
+        {
+            this.CurrentFlameAura = 0;
+            this.DeBuff(this.pbFlameAura);
+        }
+        public void RemoveImmortalRave()
+        {
+            this.CurrentImmortalRave = 0;
+            this.DeBuff(this.pbImmortalRave);
+        }
+        public void RemoveAbsorbWater()
+        {
+            this.CurrentAbsorbWater = 0;
+            this.DeBuff(this.pbAbsorbWater);
+        }
+        public void RemoveMirrorImage()
+        {
+            this.CurrentMirrorImage = 0;
+            this.DeBuff(this.pbMirrorImage);
+        }
+        public void RemoveAbsoluteZero()
+        {
+            this.CurrentAbsoluteZero = 0;
+            this.DeBuff(this.pbAbsoluteZero);
+        }
+        public void RemoveGaleWind()
+        {
+            this.CurrentGaleWind = 0;
+            this.DeBuff(this.pbGaleWind);
+        }
+        public void RemoveWordOfLife()
+        {
+            this.CurrentWordOfLife = 0;
+            this.DeBuff(this.pbWordOfLife);
+        }
+        public void RemoveWordOfFortune()
+        {
+            this.CurrentWordOfFortune = 0;
+            this.DeBuff(this.pbWordOfFortune);
+        }
+        public void RemoveAetherDrive()
+        {
+            this.CurrentAetherDrive = 0;
+            this.DeBuff(this.pbAetherDrive);
+        }
+        public void RemoveEternalPresence()
+        {
+            this.CurrentEternalPresence = 0;
+            this.DeBuff(this.pbEternalPresence);
+        }
+        public void RemoveDeflection()
+        {
+            this.CurrentDeflection = 0;
+            this.DeBuff(this.pbDeflection);
+        }
+        public void RemoveOneImmunity()
+        {
+            this.CurrentOneImmunity = 0;
+            this.DeBuff(this.pbOneImmunity);
+        }
+        public void RemoveTimeStop()
+        {
+            this.CurrentTimeStop = 0;
+            this.CurrentTimeStopImmediate = false;
+            this.DeBuff(this.pbTimeStop);
+        }
+        public void RemoveBloodyVengeance()
+        {
+            this.CurrentBloodyVengeance = 0;
+            this.BuffStrength_BloodyVengeance = 0;
+            this.DeBuff(this.pbBloodyVengeance);
+        }
+        public void RemoveHeatBoost()
+        {
+            this.CurrentHeatBoost = 0;
+            this.BuffAgility_HeatBoost = 0;
+            this.DeBuff(this.pbHeatBoost);
+        }
+        public void RemovePromisedKnowledge()
+        {
+            this.CurrentPromisedKnowledge = 0;
+            this.BuffIntelligence_PromisedKnowledge = 0;
+            this.DeBuff(this.pbPromisedKnowledge);
+        }
+        public void RemoveRiseOfImage()
+        {
+            this.CurrentRiseOfImage = 0;
+            this.BuffMind_RiseOfImage = 0;
+            this.DeBuff(this.pbRiseOfImage);
+        }
+        public void RemovePsychicTrance()
+        {
+            this.CurrentPsychicTrance = 0;
+            this.DeBuff(this.pbPsychicTrance);
+        }
+        public void RemoveBlindJustice()
+        {
+            this.CurrentBlindJustice = 0;
+            this.DeBuff(this.pbBlindJustice);
+        }
+        public void RemoveTranscendentWish()
+        {
+            this.CurrentTranscendentWish = 0;
+            this.BuffStrength_TranscendentWish = 0;
+            this.BuffAgility_TranscendentWish = 0;
+            this.BuffIntelligence_TranscendentWish = 0;
+            this.BuffStamina_TranscendentWish = 0;
+            this.BuffMind_TranscendentWish = 0;
+            this.DeBuff(this.pbTranscendentWish);
+        }
+        public void RemoveFlashBlaze()
+        {
+            this.CurrentFlashBlazeCount = 0;
+            this.DeBuff(this.pbFlashBlaze);
+        }
+        public void RemoveSkyShield()
+        {
+            this.CurrentSkyShield = 0;
+            this.CurrentSkyShieldValue = 0;
+            this.DeBuff(this.pbSkyShield);
+        }
+        public void RemoveEverDroplet()
+        {
+            this.CurrentEverDroplet = 0;
+            this.DeBuff(this.pbEverDroplet);
+        }
+        public void RemoveHolyBreaker()
+        {
+            this.CurrentHolyBreaker = 0;
+            this.DeBuff(this.pbHolyBreaker);
+        }
+        public void RemoveExaltedField()
+        {
+            this.CurrentExaltedField = 0;
+            this.DeBuff(this.pbExaltedField);
+        }
+        public void RemoveHymnContract()
+        {
+            this.CurrentHymnContract = 0;
+            this.DeBuff(this.pbHymnContract);
+        }
+        public void RemoveStarLightning()
+        {
+            this.CurrentStarLightning = 0;
+            this.DeBuff(this.pbStarLightning);
+        }
+        public void RemoveEndlessAnthem()
+        {
+            //this.CurrentEndlessAnthem = 0;
+            //this.DeBuff(this.pbEndlessAnthem);
+        }
+        public void RemoveBlackFire()
+        {
+            this.CurrentBlackFire = 0;
+            this.DeBuff(this.pbBlackFire);
+        }
+        public void RemoveBlazingField()
+        {
+            this.CurrentBlazingField = 0;
+            this.CurrentBlazingFieldFactor = 0;
+            this.DeBuff(this.pbBlazingField);
+        }
+        public void RemoveDemonicIgnite()
+        {
+            //this.CurrentDemonicIgnite = 0;
+            //this.DeBuff(this.pbDemonicIgnite);
+        }
+        public void RemoveWordOfMalice()
+        {
+            this.CurrentWordOfMalice = 0;
+            this.DeBuff(this.pbWordOfMalice);
+        }
+        public void RemoveSinFortune()
+        {
+            this.CurrentSinFortune = 0;
+            this.DeBuff(this.pbSinFortune);
+        }
+        public void RemoveDarkenField()
+        {
+            this.CurrentDarkenField = 0;
+            this.DeBuff(this.pbDarkenField);
+        }
+        public void RemoveEclipseEnd()
+        {
+            this.CurrentEclipseEnd = 0;
+            this.DeBuff(this.pbEclipseEnd);
+        }
+        public void RemoveFrozenAura()
+        {
+            this.CurrentFrozenAura = 0;
+            this.DeBuff(this.pbFrozenAura);
+        }
+        public void RemoveChillBurn()
+        {
+            //this.CurrentChillBurn = 0;
+            //this.DeBuff(this.pbChillBurn);
+        }
+        public void RemoveEnrageBlast()
+        {
+            this.CurrentEnrageBlast = 0;
+            this.DeBuff(this.pbEnrageBlast);
+        }
+        //public void RemoveSigilOfHomura()
+        //{
+        //    this.CurrentSigilOfHomura = 0;
+        //    this.DeBuff(this.pbSigilOfHomura);
+        //}
+        public void RemoveImmolate()
+        {
+            this.CurrentImmolate = 0;
+            this.DeBuff(this.pbImmolate);
+        }
+        public void RemovePhantasmalWind()
+        {
+            this.CurrentPhantasmalWind = 0;
+            this.DeBuff(this.pbPhantasmalWind);
+        }
+        public void RemoveRedDragonWill()
+        {
+            this.CurrentRedDragonWill = 0;
+            this.DeBuff(this.pbRedDragonWill);
+        }
+        public void RemoveStaticBarrier()
+        {
+            this.CurrentStaticBarrier = 0;
+            this.CurrentStaticBarrierValue = 0;
+            this.DeBuff(this.pbStaticBarrier);
+        }
+        public void RemoveAusterityMatrix()
+        {
+            this.CurrentAusterityMatrix = 0;
+            this.DeBuff(this.pbAusterityMatrix);
+        }
+        public void RemoveVanishWave()
+        {
+            //this.CurrentVanishWave = 0;
+            //this.DeBuff(this.pbVanishWave);
+        }
+        public void RemoveVortexField()
+        {
+            //this.CurrentVortexField = 0;
+            //this.DeBuff(this.pbVortexField);
+        }
+        public void RemoveBlueDragonWill()
+        {
+            this.CurrentBlueDragonWill = 0;
+            this.DeBuff(this.pbBlueDragonWill);
+        }
+        public void RemoveSeventhMagic()
+        {
+            this.CurrentSeventhMagic = 0;
+            this.DeBuff(this.pbSeventhMagic);
+        }
+        public void RemoveParadoxImage()
+        {
+            this.CurrentParadoxImage = 0;
+            this.DeBuff(this.pbParadoxImage);
         }
 
-        internal void ChangeShadowServantStatus(int p)
+        public void RemoveAntiStun()
         {
-            throw new System.NotImplementedException();
+            this.CurrentAntiStun = 0;
+            this.DeBuff(this.pbAntiStun);
+        }
+        public void RemoveStanceOfDeath()
+        {
+            this.CurrentStanceOfDeath = 0;
+            this.DeBuff(this.pbStanceOfDeath);
+        }
+        public void RemoveStanceOfFlow()
+        {
+            this.CurrentStanceOfFlow = 0;
+            this.DeBuff(this.pbStanceOfFlow);
+        }
+        public void RemoveTruthVision()
+        {
+            this.CurrentTruthVision = 0;
+            this.DeBuff(this.pbTruthVision);
+        }
+        public void RemoveHighEmotionality()
+        {
+            this.CurrentHighEmotionality = 0;
+            this.BuffStrength_HighEmotionality = 0;
+            this.BuffAgility_HighEmotionality = 0;
+            this.BuffIntelligence_HighEmotionality = 0;
+            this.BuffStamina_HighEmotionality = 0;
+            this.BuffMind_HighEmotionality = 0;
+            this.DeBuff(this.pbHighEmotionality);
+        }
+        // s 後編追加
+        public void RemoveCounterAttack()
+        {
+            this.CurrentCounterAttack = 0;
+            this.DeBuff(this.pbCounterAttack);
+        }
+        public void RemoveStanceOfEyes()
+        {
+            this.CurrentStanceOfEyes = 0;
+            this.DeBuff(this.pbStanceOfEyes);
+        }
+        public void RemoveNegate()
+        {
+            this.CurrentNegate = 0;
+            this.DeBuff(this.pbNegate);
+        }
+        public void RemoveStanceOfStanding()
+        {
+            this.CurrentStanceOfStanding = 0;
+            this.DeBuff(this.pbStanceOfStanding);
+        }
+        // e 後編追加
+        public void RemovePainfulInsanity()
+        {
+            this.CurrentPainfulInsanity = 0;
+            this.DeBuff(this.pbPainfulInsanity);
+        }
+        public void RemoveVoidExtraction()
+        {
+            this.CurrentVoidExtraction = 0;
+            this.BuffStrength_VoidExtraction = 0;
+            this.BuffAgility_VoidExtraction = 0;
+            this.BuffIntelligence_VoidExtraction = 0;
+            this.BuffStamina_VoidExtraction = 0;
+            this.BuffMind_VoidExtraction = 0;
+            this.DeBuff(this.pbVoidExtraction);
+        }
+        public void RemoveNothingOfNothingness()
+        {
+            this.CurrentNothingOfNothingness = 0;
+            this.DeBuff(this.pbNothingOfNothingness);
+        }
+        public void RemoveStanceOfDouble()
+        {
+            this.CurrentStanceOfDouble = 0;
+            this.DeBuff(this.pbStanceOfDouble);
+        }
+        public void RemoveSwiftStep()
+        {
+            this.CurrentSwiftStep = 0;
+            this.DeBuff(this.pbSwiftStep);
+        }
+        public void RemoveVigorSense()
+        {
+            this.CurrentVigorSense = 0;
+            this.DeBuff(this.pbVigorSense);
+        }
+        public void RemoveRisingAura()
+        {
+            this.CurrentRisingAura = 0;
+            this.DeBuff(this.pbRisingAura);
+        }
+        public void RemoveOnslaughtHit()
+        {
+            this.CurrentOnslaughtHit = 0;
+            this.CurrentOnslaughtHitValue = 0;
+            this.DeBuff(this.pbOnslaughtHit);
+        }
+        public void RemoveSmoothingMove()
+        {
+            this.CurrentSmoothingMove = 0;
+            this.DeBuff(this.pbSmoothingMove);
+        }
+        public void RemoveAscensionAura()
+        {
+            this.CurrentAscensionAura = 0;
+            this.DeBuff(this.pbAscensionAura);
+        }
+        public void RemoveFutureVision()
+        {
+            this.CurrentFutureVision = 0;
+            this.DeBuff(this.pbFutureVision);
+        }
+        public void RemoveReflexSpirit()
+        {
+            this.CurrentReflexSpirit = 0;
+            this.DeBuff(this.pbReflexSpirit);
+        }
+        public void RemoveConcussiveHit()
+        {
+            this.CurrentConcussiveHit = 0;
+            this.CurrentConcussiveHitValue = 0;
+            this.DeBuff(this.pbConcussiveHit);
+        }
+        public void RemoveTrustSilence()
+        {
+            this.CurrentTrustSilence = 0;
+            this.DeBuff(this.pbTrustSilence);
+        }
+        public void RemoveStanceOfMystic()
+        {
+            this.CurrentStanceOfMystic = 0;
+            this.CurrentStanceOfMysticValue = 0;
+            this.DeBuff(this.pbStanceOfMystic);
+        }
+        public void RemoveNourishSense()
+        {
+            this.CurrentNourishSense = 0;
+            this.DeBuff(this.pbNourishSense);
+        }
+        public void RemoveImpulseHit()
+        {
+            this.CurrentImpulseHit = 0;
+            this.CurrentImpulseHitValue = 0;
+            this.DeBuff(this.pbImpulseHit);
+        }
+        public void RemoveOneAuthority()
+        {
+            this.CurrentOneAuthority = 0;
+            this.DeBuff(this.pbOneAuthority);
         }
 
-        internal void ChangeAdilBlueBurnStatus(int p)
+        public void RemovePhysicalAttackUp()
         {
-            throw new System.NotImplementedException();
+            CurrentPhysicalAttackUp = 0;
+            CurrentPhysicalAttackUpValue = 0;
+            DeBuff(pbPhysicalAttackUp);
+        }
+        public void RemovePhysicalAttackDown()
+        {
+            CurrentPhysicalAttackDown = 0;
+            CurrentPhysicalAttackDownValue = 0;
+            DeBuff(pbPhysicalAttackDown);
+        }
+        public void RemovePhysicalDefenseUp()
+        {
+            CurrentPhysicalDefenseUp = 0;
+            CurrentPhysicalDefenseUpValue = 0;
+            DeBuff(pbPhysicalDefenseUp);
+        }
+        public void RemovePhysicalDefenseDown()
+        {
+            CurrentPhysicalDefenseDown = 0;
+            CurrentPhysicalDefenseDownValue = 0;
+            DeBuff(pbPhysicalDefenseDown);
         }
 
-        internal void ChangeMazeCubeStatus(int p)
+        public void RemoveMagicAttackUp()
         {
-            throw new System.NotImplementedException();
+            CurrentMagicAttackUp = 0;
+            CurrentMagicAttackUpValue = 0;
+            DeBuff(pbMagicAttackUp);
+        }
+        public void RemoveMagicAttackDown()
+        {
+            CurrentMagicAttackDown = 0;
+            CurrentMagicAttackDownValue = 0;
+            DeBuff(pbMagicAttackDown);
         }
 
-        internal void ChangeLifeCountStatus(int p)
+        public void RemoveMagicDefenseUp()
         {
-            throw new System.NotImplementedException();
+            CurrentMagicDefenseUp = 0;
+            CurrentMagicDefenseUpValue = 0;
+            DeBuff(pbMagicDefenseUp);
+        }
+        public void RemoveMagicDefenseDown()
+        {
+            CurrentMagicDefenseDown = 0;
+            CurrentMagicDefenseDownValue = 0;
+            DeBuff(pbMagicDefenseDown);
         }
 
-        internal void RemoveSinFortune()
+        public void RemoveSpeedUp()
         {
-            throw new System.NotImplementedException();
+            CurrentSpeedUp = 0;
+            CurrentSpeedUpValue = 0;
+            DeBuff(pbSpeedUp);
+        }
+        public void RemoveSpeedDown()
+        {
+            CurrentSpeedDown = 0;
+            CurrentSpeedDownValue = 0;
+            DeBuff(pbSpeedDown);
+        }
+
+        public void RemoveReactionUp()
+        {
+            CurrentReactionUp = 0;
+            CurrentReactionUpValue = 0;
+            DeBuff(pbReactionUp);
+        }
+        public void RemoveReactionDown()
+        {
+            CurrentReactionDown = 0;
+            CurrentReactionDownValue = 0;
+            DeBuff(pbReactionDown);
+        }
+
+        public void RemovePotentialUp()
+        {
+            CurrentPotentialUp = 0;
+            CurrentPotentialUpValue = 0;
+            DeBuff(pbPotentialUp);
+        }
+        public void RemovePotentialDown()
+        {
+            CurrentPotentialDown = 0;
+            CurrentPotentialDownValue = 0;
+            DeBuff(pbPotentialDown);
+        }
+
+        public void RemoveStrengthUp()
+        {
+            CurrentStrengthUp = 0;
+            CurrentStrengthUpValue = 0;
+            DeBuff(pbStrengthUp);
+        }
+
+        public void RemoveAgilityUp()
+        {
+            CurrentAgilityUp = 0;
+            CurrentAgilityUpValue = 0;
+            DeBuff(pbAgilityUp);
+        }
+
+        public void RemoveIntelligenceUp()
+        {
+            CurrentIntelligenceUp = 0;
+            CurrentIntelligenceUpValue = 0;
+            DeBuff(pbIntelligenceUp);
+        }
+
+        public void RemoveStaminaUp()
+        {
+            CurrentStaminaUp = 0;
+            CurrentStaminaUpValue = 0;
+            DeBuff(pbStaminaUp);
+        }
+
+        public void RemoveMindUp()
+        {
+            CurrentMindUp = 0;
+            CurrentMindUpValue = 0;
+            DeBuff(pbMindUp);
+        }
+
+        public void RemoveLightUp()
+        {
+            CurrentLightUp = 0;
+            CurrentLightUpValue = 0;
+            DeBuff(pbLightUp);
+        }
+        public void RemoveLightDown()
+        {
+            CurrentLightDown = 0;
+            CurrentLightDownValue = 0;
+            DeBuff(pbLightDown);
+        }
+        public void RemoveShadowUp()
+        {
+            CurrentShadowUp = 0;
+            CurrentShadowUpValue = 0;
+            DeBuff(pbShadowUp);
+        }
+        public void RemoveShadowDown()
+        {
+            CurrentShadowDown = 0;
+            CurrentShadowDownValue = 0;
+            DeBuff(pbShadowDown);
+        }
+        public void RemoveFireUp()
+        {
+            CurrentFireUp = 0;
+            CurrentFireUpValue = 0;
+            DeBuff(pbFireUp);
+        }
+        public void RemoveFireDown()
+        {
+            CurrentFireDown = 0;
+            CurrentFireDownValue = 0;
+            DeBuff(pbFireDown);
+        }
+        public void RemoveIceUp()
+        {
+            CurrentIceUp = 0;
+            CurrentIceUpValue = 0;
+            DeBuff(pbIceUp);
+        }
+        public void RemoveIceDown()
+        {
+            CurrentIceDown = 0;
+            CurrentIceDownValue = 0;
+            DeBuff(pbIceDown);
+        }
+        public void RemoveForceUp()
+        {
+            CurrentForceUp = 0;
+            CurrentForceUpValue = 0;
+            DeBuff(pbForceUp);
+        }
+        public void RemoveForceDown()
+        {
+            CurrentForceDown = 0;
+            CurrentForceDownValue = 0;
+            DeBuff(pbForceDown);
+        }
+        public void RemoveWillUp()
+        {
+            CurrentWillUp = 0;
+            CurrentWillUpValue = 0;
+            DeBuff(pbWillUp);
+        }
+        public void RemoveWillDown()
+        {
+            CurrentWillDown = 0;
+            CurrentWillDownValue = 0;
+            DeBuff(pbWillDown);
+        }
+        public void RemoveResistLightUp()
+        {
+            CurrentResistLightUp = 0;
+            CurrentResistLightUpValue = 0;
+            DeBuff(pbResistLightUp);
+        }
+
+        public void RemoveResistShadowUp()
+        {
+            CurrentResistShadowUp = 0;
+            CurrentResistShadowUpValue = 0;
+            DeBuff(pbResistShadowUp);
+        }
+
+        public void RemoveResistFireUp()
+        {
+            CurrentResistFireUp = 0;
+            CurrentResistFireUpValue = 0;
+            DeBuff(pbResistFireUp);
+        }
+
+        public void RemoveResistIceUp()
+        {
+            CurrentResistIceUp = 0;
+            CurrentResistIceUpValue = 0;
+            DeBuff(pbResistIceUp);
+        }
+
+        public void RemoveResistForceUp()
+        {
+            CurrentResistForceUp = 0;
+            CurrentResistForceUpValue = 0;
+            DeBuff(pbResistForceUp);
+        }
+
+        public void RemoveResistWillUp()
+        {
+            CurrentResistWillUp = 0;
+            CurrentResistWillUpValue = 0;
+            DeBuff(pbResistWillUp);
+        }
+
+        public void RemoveAfterReviveHalf()
+        {
+            CurrentAfterReviveHalf = 0;
+            DeBuff(pbAfterReviveHalf);
+        }
+        public void RemoveFireDamage2()
+        {
+            CurrentFireDamage2 = 0;
+            DeBuff(pbFireDamage2);
+        }
+        public void RemoveBlackMagic()
+        {
+            CurrentBlackMagic = 0;
+            DeBuff(pbBlackMagic);
+        }
+        public void RemoveChaosDesperate()
+        {
+            CurrentChaosDesperate = 0;
+            CurrentChaosDesperateValue = 0;
+            DeBuff(pbChaosDesperate);
+        }
+        public void RemoveIchinaruHomura()
+        {
+            CurrentIchinaruHomura = 0;
+            DeBuff(pbIchinaruHomura);
+        }
+
+        public void RemoveAbyssFire()
+        {
+            CurrentAbyssFire = 0;
+            DeBuff(pbAbyssFire);
+        }
+
+        public void RemoveLightAndShadow()
+        {
+            CurrentLightAndShadow = 0;
+            DeBuff(pbLightAndShadow);
+        }
+
+        public void RemoveEternalDroplet()
+        {
+            CurrentEternalDroplet = 0;
+            DeBuff(pbEternalDroplet);
+        }
+
+        public void RemoveAusterityMatrixOmega()
+        {
+            CurrentAusterityMatrixOmega = 0;
+            DeBuff(pbAusterityMatrixOmega);
+        }
+
+        public void RemoveVoiceOfAbyss()
+        {
+            CurrentVoiceOfAbyss = 0;
+            DeBuff(pbVoiceOfAbyss);
+        }
+
+        public void RemoveAbyssWill()
+        {
+            CurrentAbyssWill = 0;
+            CurrentAbyssWillValue = 0;
+            DeBuff(pbAbyssWill);
+        }
+
+        public void RemoveTheAbyssWall()
+        {
+            CurrentTheAbyssWall = 0;
+            DeBuff(pbTheAbyssWall);
+        }
+
+        public void RemovePreStunning()
+        {
+            this.CurrentPreStunning = 0;
+            this.DeBuff(this.pbPreStunning);
+        }
+        public void RemoveStun()
+        {
+            this.CurrentStunning = 0;
+            this.DeBuff(this.pbStun);
+        }
+        public void RemoveSilence()
+        {
+            this.CurrentSilence = 0;
+            this.DeBuff(this.pbSilence);
+        }
+        public void RemovePoison()
+        {
+            this.CurrentPoison = 0;
+            this.CurrentPoisonValue = 0;
+            this.DeBuff(this.pbPoison);
+        }
+        public void RemoveTemptation()
+        {
+            this.CurrentTemptation = 0;
+            this.DeBuff(this.pbTemptation);
+        }
+        public void RemoveFrozen()
+        {
+            this.CurrentFrozen = 0;
+            this.DeBuff(this.pbFrozen);
+        }
+        public void RemoveParalyze()
+        {
+            this.CurrentParalyze = 0;
+            this.DeBuff(this.pbParalyze);
+        }
+        public void RemoveNoResurrection()
+        {
+            this.CurrentNoResurrection = 0;
+            this.DeBuff(this.pbNoResurrection);
+        }
+        public void RemoveSlow()
+        {
+            this.CurrentSlow = 0;
+            this.DeBuff(this.pbSlow);
+        }
+        public void RemoveBlind()
+        {
+            this.CurrentBlind = 0;
+            this.DeBuff(this.pbBlind);
+        }
+        public void RemoveSlip()
+        {
+            this.CurrentSlip = 0;
+            this.DeBuff(this.pbSlip);
+        }
+        public void RemoveNoGainLife()
+        {
+            this.CurrentNoGainLife = 0;
+            this.DeBuff(this.pbNoGainLife);
+        }
+        public void RemoveBlinded()
+        {
+            this.CurrentBlinded = 0;
+            this.DeBuff(this.pbBlinded);
+        }
+        public void RemoveSpeedBoost()
+        {
+            currentSpeedBoost = 0;
+        }
+
+        public void RemoveChargeCount()
+        {
+            currentChargeCount = 0;
+        }
+
+        public void RemovePhysicalChargeCount()
+        {
+            currentPhysicalChargeCount = 0;
+        }
+
+        // 武器特有
+        public void RemoveFeltus()
+        {
+            this.CurrentFeltus = 0;
+            this.CurrentFeltusValue = 0;
+            this.DeBuff(this.pbFeltus);
+        }
+        public void RemoveJuzaPhantasmal()
+        {
+            this.CurrentJuzaPhantasmal = 0;
+            this.CurrentJuzaPhantasmalValue = 0;
+            this.DeBuff(this.pbJuzaPhantasmal);
+        }
+        public void RemoveEternalFateRing()
+        {
+            this.CurrentEternalDroplet = 0;
+            this.CurrentEternalFateRingValue = 0;
+            this.DeBuff(this.pbEternalFateRing);
+        }
+        public void RemoveLightServant()
+        {
+            this.CurrentLightServant = 0;
+            this.CurrentLightServantValue = 0;
+            this.DeBuff(this.pbLightServant);
+        }
+        public void RemoveShadowServant()
+        {
+            this.CurrentShadowServant = 0;
+            this.CurrentShadowServantValue = 0;
+            this.DeBuff(this.pbShadowServant);
+        }
+        public void RemoveAdilBlueBurn()
+        {
+            this.CurrentAdilBlueBurn = 0;
+            this.CurrentAdilBlueBurnValue = 0;
+            this.DeBuff(this.pbAdilBlueBurn);
+        }
+        public void RemoveMazeCube()
+        {
+            this.CurrentMazeCube = 0;
+            this.CurrentMazeCubeValue = 0;
+            this.DeBuff(this.pbMazeCube);
+        }
+        public void RemoveShadowBible()
+        {
+            this.CurrentShadowBible = 0;
+            this.DeBuff(this.pbShadowBible);
+        }
+        public void RemoveDetachmentOrb()
+        {
+            this.CurrentDetachmentOrb = 0;
+            this.DeBuff(this.pbDetachmentOrb);
+        }
+        public void RemoveDevilSummonerTome()
+        {
+            this.CurrentDevilSummonerTome = 0;
+            this.DeBuff(this.pbDevilSummonerTome);
+        }
+        public void RemoveVoidHymnsonia()
+        {
+            this.CurrentVoidHymnsonia = 0;
+            this.DeBuff(this.pbVoidHymnsonia);
+        }
+
+        public void RemoveSagePotionMini()
+        {
+            this.CurrentSagePotionMini = 0;
+            this.DeBuff(this.pbSagePotionMini);
+        }
+        public void RemoveGenseiTaima()
+        {
+            this.CurrentGenseiTaima = 0;
+            this.DeBuff(this.pbGenseiTaima);
+        }
+        public void RemoveShiningAether()
+        {
+            this.CurrentShiningAether = 0;
+            this.DeBuff(this.pbShiningAether);
+        }
+        public void RemoveBlackElixir()
+        {
+            this.CurrentBlackElixir = 0;
+            this.CurrentBlackElixirValue = 0;
+            this.DeBuff(this.pbBlackElixir);
+        }
+        public void RemoveElementalSeal()
+        {
+            this.CurrentElementalSeal = 0;
+            this.DeBuff(this.pbElementalSeal);
+        }
+        public void RemoveColoressAntidote()
+        {
+            this.CurrentColoressAntidote = 0;
+            this.DeBuff(this.pbColoressAntidote);
+        }
+        public void RemoveLifeCount()
+        {
+            this.CurrentLife = 0;
+            this.CurrentLifeCount = 0;
+            this.DeBuff(this.pbLifeCount);
+        }
+        public void RemoveChaoticSchema()
+        {
+            this.CurrentChaoticSchema = 0;
+            this.DeBuff(this.pbChaoticSchema);
+        }
+        // e 後編追加
+
+
+        public void RecoverStunning()
+        {
+            CurrentStunning = 0;
+            this.DeBuff(this.pbStun);
+        }
+        public void RecoverParalyze()
+        {
+            CurrentParalyze = 0;
+            this.DeBuff(this.pbParalyze);
+        }
+        public void RecoverFrozen()
+        {
+            CurrentFrozen = 0;
+            this.DeBuff(this.pbFrozen);
+        }
+        public void RecoverPoison()
+        {
+            CurrentPoison = 0;
+            currentPoisonValue = 0; // 後編追加
+            this.DeBuff(this.pbPoison);
+        }
+        public void RecoverSlow()
+        {
+            CurrentSlow = 0;
+            this.DeBuff(this.pbSlow);
+        }
+        public void RecoverBlind()
+        {
+            CurrentBlind = 0;
+            this.DeBuff(this.pbBlind);
+        }
+        public void RecoverSilence()
+        {
+            CurrentSilence = 0;
+            this.DeBuff(this.pbSilence);
+        }
+        public void RecoverSlip()
+        {
+            CurrentSlip = 0;
+            this.DeBuff(this.pbSlip);
+        }
+        public void RecoverTemptation()
+        {
+            currentTemptation = 0;
+            this.DeBuff(this.pbTemptation);
+        }
+        public void RecoverPreStunning()
+        {
+            currentPreStunning = 0;
+            this.DeBuff(this.pbPreStunning);
+        }
+        public void RecoverNoResurrection()
+        {
+            CurrentNoResurrection = 0;
+            this.DeBuff(this.pbNoResurrection);
+        }
+
+
+        public delegate void RemoveBuff();
+        public void AbstractChangeStatus(string bmpName, int value, TruthImage pbData, RemoveBuff remove, int count)
+        {
+            if (value <= 0)
+            {
+                remove();
+            }
+            else if ((value == 1) && (pbData.sprite == null))
+            {
+                this.ActivateBuff(pbData, Database.BaseResourceFolder + bmpName + ".bmp", count);
+            }
+            // todo
+            //else
+            //{
+            //    pbData.Invalidate();
+            //}
+        }
+        public void ChangePoisonStatus(int count)
+        {
+            pbPoison.Cumulative = currentPoisonValue;
+            AbstractChangeStatus("Poison", this.CurrentPoisonValue, pbPoison, this.RemovePoison, count);
+        }
+        public void ChangeConcussiveHitStatus(int count)
+        {
+            pbConcussiveHit.Cumulative = currentConcussiveHitValue;
+            AbstractChangeStatus(Database.CONCUSSIVE_HIT, this.CurrentConcussiveHitValue, pbConcussiveHit, this.RemoveConcussiveHit, count);
+        }
+        public void ChangeOnslaughtHitStatus(int count)
+        {
+            pbOnslaughtHit.Cumulative = currentOnslaughtHitValue;
+            AbstractChangeStatus(Database.ONSLAUGHT_HIT, this.CurrentOnslaughtHitValue, pbOnslaughtHit, this.RemoveOnslaughtHit, count);
+        }
+        public void ChangeImpulseHitStatus(int count)
+        {
+            pbImpulseHit.Cumulative = currentImpulseHitValue;
+            AbstractChangeStatus(Database.IMPULSE_HIT, this.CurrentImpulseHitValue, pbImpulseHit, this.RemoveImpulseHit, count);
+        }
+        public void ChangeSkyShieldStatus(int count)
+        {
+            pbSkyShield.Cumulative = currentSkyShieldValue;
+            AbstractChangeStatus(Database.SKY_SHIELD, this.CurrentSkyShieldValue, pbSkyShield, this.RemoveSkyShield, count);
+        }
+        public void ChangeStaticBarrierStatus(int count)
+        {
+            pbStaticBarrier.Cumulative = currentStaticBarrierValue;
+            AbstractChangeStatus(Database.STATIC_BARRIER, this.CurrentStaticBarrierValue, pbStaticBarrier, this.RemoveStaticBarrier, count);
+        }
+        public void ChangeStanceOfMysticStatus(int count)
+        {
+            pbStanceOfMystic.Cumulative = currentStanceOfMysticValue;
+            AbstractChangeStatus(Database.STANCE_OF_MYSTIC, this.CurrentStanceOfMysticValue, pbStanceOfMystic, this.RemoveStanceOfMystic, count);
+        }
+        public void ChangeFeltusStatus(int count)
+        {
+            pbFeltus.Cumulative = currentFeltusValue;
+            AbstractChangeStatus(Database.ITEMCOMMAND_FELTUS, this.currentFeltusValue, pbFeltus, this.RemoveFeltus, count);
+        }
+        public void ChangeJuzaPhantasmalStatus(int count)
+        {
+            pbJuzaPhantasmal.Cumulative = currentJuzaPhantasmalValue;
+            AbstractChangeStatus(Database.ITEMCOMMAND_JUZA_PHANTASMAL, this.CurrentJuzaPhantasmalValue, pbJuzaPhantasmal, this.RemoveJuzaPhantasmal, count);
+        }
+        public void ChangeEternalFateRingStatus(int count)
+        {
+            pbEternalFateRing.Cumulative = currentEternalFateRingValue;
+            AbstractChangeStatus(Database.ITEMCOMMAND_ETERNAL_FATE, this.currentEternalFateRingValue, pbEternalFateRing, this.RemoveEternalFateRing, count);
+        }
+        public void ChangeLightServantStatus(int count)
+        {
+            pbLightServant.Cumulative = currentLightServantValue;
+            AbstractChangeStatus(Database.ITEMCOMMAND_LIGHT_SERVANT, this.CurrentLightServantValue, pbLightServant, this.RemoveLightServant, count);
+        }
+        public void ChangeShadowServantStatus(int count)
+        {
+            pbShadowServant.Cumulative = currentShadowServantValue;
+            AbstractChangeStatus(Database.ITEMCOMMAND_SHADOW_SERVANT, this.CurrentShadowServantValue, pbShadowServant, this.RemoveShadowServant, count);
+        }
+        public void ChangeAdilBlueBurnStatus(int count)
+        {
+            pbAdilBlueBurn.Cumulative = currentAdilBlueBurnValue;
+            AbstractChangeStatus(Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN, this.CurrentAdilBlueBurnValue, pbAdilBlueBurn, this.RemoveAdilBlueBurn, count);
+        }
+        public void ChangeMazeCubeStatus(int count)
+        {
+            pbMazeCube.Cumulative = currentMazeCubeValue;
+            AbstractChangeStatus(Database.ITEMCOMMAND_MAZE_CUBE, this.CurrentMazeCubeValue, pbMazeCube, this.RemoveMazeCube, count);
+        }
+        public void ChangeLifeCountStatus(int count)
+        {
+            pbLifeCount.Cumulative = currentLifeCountValue;
+            AbstractChangeStatus(Database.LIFE_COUNT, this.CurrentLifeCountValue, pbLifeCount, this.RemoveLifeCount, count);
         }
     }
-
-
 }
