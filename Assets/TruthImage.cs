@@ -99,6 +99,27 @@ namespace DungeonPlayer
                 txtCounter.text = "";
             }
 
+            if (cumulative > 0)
+            {
+                //                if (this.align == CumulativeTextAlign.TopRight)
+                //                {
+                //
+                //                    if (cumulative >= 10)
+                //                    {
+                //                        e.DrawString(cumulative.ToString(), fixedFontCumulative, Brushes.Black, fixedPointCumulative_2);
+                //                    }
+                //                    else
+                //                    {
+                //                        e.DrawString(cumulative.ToString(), fixedFontCumulative, Brushes.Black, fixedPointCumulative);
+                //                    }
+                //                }
+                //                else
+                //                {
+                //                    e.DrawString(cumulative.ToString(), fixedFontCumulative, Brushes.Black, fixedPointCumulativeCenter);
+                //                }
+
+            }
+
         }
         // todo
         //    Rectangle fixedRect = new Rectangle(0, 0, 25, 25);
