@@ -62,6 +62,161 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
+                 #region "１階：ランダムドロップ"
+                // 単一UP
+                case Database.POOR_HINJAKU_ARMRING: // １階：エリア１：ランダムドロップ
+                    description = "ほんのりパワーを感じ取れる腕輪。力＋２";
+                    BuffUpStrength = 2;
+                    cost = 210;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_USUYOGORETA_FEATHER: // １階：エリア１：ランダムドロップ
+                    description = "みすぼらしい付け羽。少しだけ軽さを感じ取れる。技＋２";
+                    BuffUpAgility = 2;
+                    cost = 210;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_NON_BRIGHT_ORB: // １階：エリア１：ランダムドロップ
+                    description = "知性が枯渇しているオーブ。知＋２";
+                    BuffUpIntelligence = 2;
+                    cost = 210;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_KUKEI_BANGLE: // １階：エリア１：ランダムドロップ
+                    description = "丸みを帯びてないため、装着しにくいバングル。体＋１";
+                    BuffUpStamina = 1;
+                    cost = 180;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_SUTERARESHI_EMBLEM: // １階：エリア１：ランダムドロップ
+                    description = "惨敗した者が捨てていった名もなき紋章。心＋３";
+                    BuffUpMind = 3;
+                    cost = 210;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+
+                // ２箇所UP
+                case Database.POOR_ARIFURETA_STATUE: // １階：エリア１：ランダムドロップ
+                    description = "特にこれといった特徴の無い彫像。技＋１、心＋１";
+                    BuffUpAgility = 1;
+                    BuffUpMind = 1;
+                    cost = 240;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_NON_ADJUST_BELT: // １階：エリア１：ランダムドロップ
+                    description = "付け心地の悪いベルト。力＋１、技＋１";
+                    BuffUpStrength = 1;
+                    BuffUpAgility = 1;
+                    cost = 240;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_SIMPLE_EARRING: // １階：エリア１：ランダムドロップ
+                    description = "単に丸い形をしてるイヤリング。知＋１、心＋１";
+                    BuffUpIntelligence = 1;
+                    BuffUpMind = 1;
+                    cost = 240;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_KATAKUZURESHITA_FINGERRING: // １階：エリア１：ランダムドロップ
+                    description = "すでに型が崩れているはめにくい指輪。技＋１、知＋１";
+                    BuffUpAgility = 1;
+                    BuffUpIntelligence = 1;
+                    cost = 240;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+
+                // ３箇所UP
+                case Database.POOR_IROASETA_CHOKER: // １階：エリア１：ランダムドロップ
+                    description = "元の色が分からないぐらいに色褪せたチョーカー。力＋１、知＋１、体＋１";
+                    BuffUpStrength = 1;
+                    BuffUpIntelligence = 1;
+                    BuffUpStamina = 1;
+                    cost = 310;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_YOREYORE_MANTLE: // １階：エリア１：ランダムドロップ
+                    description = "特に手入れがされていないマント。僅かな何かを感じられる。技＋１、知＋１、心＋１";
+                    BuffUpAgility = 1;
+                    BuffUpIntelligence = 1;
+                    BuffUpMind = 1;
+                    cost = 310;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.POOR_NON_HINSEI_CROWN: // １階：エリア１：ランダムドロップ
+                    description = "付けているとダサイが、ほんのりパワーを感じる。力＋１、技＋１、知＋１";
+                    BuffUpStrength = 1;
+                    BuffUpAgility = 1;
+                    BuffUpIntelligence = 1;
+                    cost = 310;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Poor;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+
+                // 単一：Common
+                case Database.COMMON_RED_PENDANT: // １階：エリア１：ランダムドロップ
+                    description = "赤色をしたペンダント。ほのかに【力】を感じ取ることが出来る。力＋５";
+                    BuffUpStrength = 5;
+                    cost = 520;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Common;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_BLUE_PENDANT: // １階：エリア１：ランダムドロップ
+                    description = "青色をしたペンダント。ほのかに【技】を感じ取ることが出来る。技＋５";
+                    BuffUpAgility = 5;
+                    cost = 520;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Common;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_PURPLE_PENDANT: // １階：エリア１：ランダムドロップ
+                    description = "紫色をしたペンダント。ほのかに【知】を感じ取ることが出来る。知＋５";
+                    BuffUpIntelligence = 5;
+                    cost = 520;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Common;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_GREEN_PENDANT: // １階：エリア１：ランダムドロップ
+                    description = "黄色をしたペンダント。ほのかに【体】を感じ取ることが出来る。体＋５";
+                    BuffUpStamina = 5;
+                    cost = 520;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Common;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_YELLOW_PENDANT: // １階：エリア１：ランダムドロップ
+                    description = "黄色をしたペンダント。ほのかに【心】を感じ取ることが出来る。心＋５";
+                    BuffUpMind = 5;
+                    cost = 520;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Common;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+#endregion
             }
         }
 
