@@ -12,6 +12,20 @@ namespace DungeonPlayer
 {
     public partial class TruthEquipmentShop : MonoBehaviour
     {
+        public Text[] equipList;
+        public Text[] costList;
+        public Text[] backpackList;
+        public Text[] backpackStack;
+        public GameObject[] backEquip;
+        public GameObject[] backCost;
+
+        protected int MAX_EQUIPLIST = 25; // 後編編集
+
+        void Start()
+        {
+            GroundOne.InitializeGroundOne();
+            SetupAvailableList(1);
+        }
         // todo
         //protected string titleName = String.Empty;
         //public string TitleName
@@ -963,499 +977,528 @@ namespace DungeonPlayer
         //    #endregion
         //    #endregion
         //}
-        //protected override void SetupAvailableList(int level)
-        //{
-        //    for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
-        //    {
-        //        equipList[ii].Text = "";
-        //        costList[ii].Text = "";
-        //    }
+        protected void SetupAvailableList(int level)
+        {
+            for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
+            {
+                equipList[ii].text = "";
+                costList[ii].text = "";
+            }
 
-        //    ItemBackPack item = null;
-        //    switch (level)
-        //    {
-        //        case 1:
-        //            int ii = 0;
-        //            item = new ItemBackPack(Database.COMMON_BRONZE_SWORD);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+            ItemBackPack item = null;
+            switch (level)
+            {
+                case 1:
+                    int ii = 0;
+                    item = new ItemBackPack(Database.COMMON_BRONZE_SWORD);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_FIT_ARMOR);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_FIT_ARMOR);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_LIGHT_SHIELD);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_LIGHT_SHIELD);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_FINE_SWORD_1);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_FINE_SWORD_1);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
                     
-        //            item = new ItemBackPack(Database.COMMON_BASTARD_SWORD_1);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_BASTARD_SWORD_1);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_FINE_ARMOR_1);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_FINE_ARMOR_1);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_FINE_SHIELD_1);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_FINE_SHIELD_1);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_LIGHT_CLAW_1);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_LIGHT_CLAW_1);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_KASHI_ROD_1);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_KASHI_ROD_1);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_LETHER_CLOTHING_1);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_LETHER_CLOTHING_1);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_IRON_SWORD);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_IRON_SWORD);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_KUSARI_KATABIRA);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_KUSARI_KATABIRA);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.RARE_FLOWER_WAND);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.RARE_FLOWER_WAND);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_SURVIVAL_CLAW);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_SURVIVAL_CLAW);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_SUPERIOR_CROSS);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_SUPERIOR_CROSS);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
                     
-        //            item = new ItemBackPack(Database.COMMON_BLACER_OF_SYOJIN);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_BLACER_OF_SYOJIN);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_ZIAI_PENDANT);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_ZIAI_PENDANT);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_11)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_KOUKAKU_ARMOR);
-        //                equipList[ii].Text = item.Name;
-        //                //equipList[5].Font = new Font("MS UI Gothic", 10F, FontStyle.Strikeout);
-        //                //costList[5].Font = new Font("MS UI Gothic", 10F, FontStyle.Strikeout);
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_11)
+                    {
+                        item = new ItemBackPack(Database.COMMON_KOUKAKU_ARMOR);
+                        equipList[ii].text = item.Name;
+                        //equipList[5].Font = new Font("MS UI Gothic", 10F, FontStyle.Strikeout);
+                        //costList[5].Font = new Font("MS UI Gothic", 10F, FontStyle.Strikeout);
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_12)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_SISSO_TUKEHANE);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_12)
+                    {
+                        item = new ItemBackPack(Database.COMMON_SISSO_TUKEHANE);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_13)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_WAR_WOLF_BLADE);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_13)
+                    {
+                        item = new ItemBackPack(Database.RARE_WAR_WOLF_BLADE);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_14)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_BLUE_COPPER_ARMOR_KAI);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_14)
+                    {
+                        item = new ItemBackPack(Database.COMMON_BLUE_COPPER_ARMOR_KAI);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_15)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_RABBIT_SHOES);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
-        //            break;
+                    if (GroundOne.WE2.EquipAvailable_15)
+                    {
+                        item = new ItemBackPack(Database.COMMON_RABBIT_SHOES);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
+                    break;
 
-        //        case 2:
-        //            ii = 0;
-        //            item = new ItemBackPack(Database.COMMON_SMART_SWORD_2);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                case 2:
+                    ii = 0;
+                    item = new ItemBackPack(Database.COMMON_SMART_SWORD_2);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_SMART_CLAW_2);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_SMART_CLAW_2);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_RAUGE_SWORD_2);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_RAUGE_SWORD_2);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_SMART_ROD_2);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_SMART_ROD_2);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_SMART_SHIELD_2);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_SMART_SHIELD_2);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_SMART_PLATE_2);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_SMART_PLATE_2);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_SMART_CLOTHING_2);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_SMART_CLOTHING_2);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_SMART_ROBE_2);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_SMART_ROBE_2);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_STEEL_SWORD);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_STEEL_SWORD);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_BERSERKER_PLATE);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_BERSERKER_PLATE);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_MIX_HINOKI_ROD);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_MIX_HINOKI_ROD);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_FACILITY_CLAW);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_FACILITY_CLAW);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.COMMON_BRIGHTNESS_ROBE);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.COMMON_BRIGHTNESS_ROBE);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            item = new ItemBackPack(Database.RARE_WILD_HEART_SPADE);
-        //            equipList[ii].Text = item.Name;
-        //            UpdateRareColor(item, equipList[ii]);
-        //            ii++;
+                    item = new ItemBackPack(Database.RARE_WILD_HEART_SPADE);
+                    equipList[ii].text = item.Name;
+                    UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_21)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_WHITE_WAVE_RING);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_21)
+                    {
+                        item = new ItemBackPack(Database.COMMON_WHITE_WAVE_RING);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_22)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_NEEDLE_FEATHER);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_22)
+                    {
+                        item = new ItemBackPack(Database.COMMON_NEEDLE_FEATHER);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_23)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_KOUSHITU_ORB);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_23)
+                    {
+                        item = new ItemBackPack(Database.COMMON_KOUSHITU_ORB);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_24)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_RED_ARM_BLADE);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_24)
+                    {
+                        item = new ItemBackPack(Database.RARE_RED_ARM_BLADE);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_25)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_STRONG_SERPENT_CLAW);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_25)
+                    {
+                        item = new ItemBackPack(Database.RARE_STRONG_SERPENT_CLAW);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            if (GroundOne.WE2.EquipAvailable_26)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_STRONG_SERPENT_SHIELD);
-        //                equipList[ii].Text = item.Name;
-        //                UpdateRareColor(item, equipList[ii]);
-        //            }
-        //            ii++;
+                    if (GroundOne.WE2.EquipAvailable_26)
+                    {
+                        item = new ItemBackPack(Database.RARE_STRONG_SERPENT_SHIELD);
+                        equipList[ii].text = item.Name;
+                        UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
+                    ii++;
 
-        //            break;
+                    break;
 
-        //        case 3:
-        //            item = new ItemBackPack(Database.COMMON_WINTERS_HORN);
-        //            equipList[0].Text = item.Name;
-        //            UpdateRareColor(item, equipList[0]);
+                case 3:
+                    item = new ItemBackPack(Database.COMMON_WINTERS_HORN);
+                    equipList[0].text = item.Name;
+                    UpdateRareColor(item, equipList[0], backEquip[0]);
 
-        //            item = new ItemBackPack(Database.RARE_CHILL_BONE_SHIELD);
-        //            equipList[1].Text = item.Name;
-        //            UpdateRareColor(item, equipList[1]);
+                    item = new ItemBackPack(Database.RARE_CHILL_BONE_SHIELD);
+                    equipList[1].text = item.Name;
+                    UpdateRareColor(item, equipList[1], backEquip[1]);
 
-        //            if (GroundOne.WE2.EquipAvailable_31)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_SNOW_GUARD);
-        //                equipList[2].Text = item.Name;
-        //                UpdateRareColor(item, equipList[2]);
-        //            }
+                    if (GroundOne.WE2.EquipAvailable_31)
+                    {
+                        item = new ItemBackPack(Database.COMMON_SNOW_GUARD);
+                        equipList[2].text = item.Name;
+                        UpdateRareColor(item, equipList[2], backEquip[2]);
+                    }
 
-        //            if (GroundOne.WE2.EquipAvailable_32)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_LIZARDSCALE_ARMOR);
-        //                equipList[3].Text = item.Name;
-        //                UpdateRareColor(item, equipList[3]);
-        //            }
+                    if (GroundOne.WE2.EquipAvailable_32)
+                    {
+                        item = new ItemBackPack(Database.COMMON_LIZARDSCALE_ARMOR);
+                        equipList[3].text = item.Name;
+                        UpdateRareColor(item, equipList[3], backEquip[3]);
+                    }
 
-        //            if (GroundOne.WE2.EquipAvailable_33)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_STEEL_BLADE);
-        //                equipList[4].Text = item.Name;
-        //                UpdateRareColor(item, equipList[4]);
-        //            }
+                    if (GroundOne.WE2.EquipAvailable_33)
+                    {
+                        item = new ItemBackPack(Database.COMMON_STEEL_BLADE);
+                        equipList[4].text = item.Name;
+                        UpdateRareColor(item, equipList[4], backEquip[4]);
+                    }
 
-        //            if (GroundOne.WE2.EquipAvailable_34)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_PENGUIN_OF_PENGUIN);
-        //                equipList[5].Text = item.Name;
-        //                UpdateRareColor(item, equipList[5]);
-        //            }
+                    if (GroundOne.WE2.EquipAvailable_34)
+                    {
+                        item = new ItemBackPack(Database.COMMON_PENGUIN_OF_PENGUIN);
+                        equipList[5].text = item.Name;
+                        UpdateRareColor(item, equipList[5], backEquip[5]);
+                    }
 
-        //            if (GroundOne.WE2.EquipAvailable_35)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_ARGNIAN_TUNIC);
-        //                equipList[6].Text = item.Name;
-        //                UpdateRareColor(item, equipList[6]);
-        //            }
+                    if (GroundOne.WE2.EquipAvailable_35)
+                    {
+                        item = new ItemBackPack(Database.COMMON_ARGNIAN_TUNIC);
+                        equipList[6].text = item.Name;
+                        UpdateRareColor(item, equipList[6], backEquip[6]);
+                    }
 
-        //            if (GroundOne.WE2.EquipAvailable_36)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_SPLASH_BARE_CLAW);
-        //                equipList[7].Text = item.Name;
-        //                UpdateRareColor(item, equipList[7]);
-        //            }
+                    if (GroundOne.WE2.EquipAvailable_36)
+                    {
+                        item = new ItemBackPack(Database.RARE_SPLASH_BARE_CLAW);
+                        equipList[7].text = item.Name;
+                        UpdateRareColor(item, equipList[7], backEquip[7]);
+                    }
 
-        //            if (GroundOne.WE2.EquipAvailable_37)
-        //            {
-        //                item = new ItemBackPack(Database.COMMON_WOLF_BATTLE_CLOTH);
-        //                equipList[8].Text = item.Name;
-        //                UpdateRareColor(item, equipList[8]);
-        //            }
+                    if (GroundOne.WE2.EquipAvailable_37)
+                    {
+                        item = new ItemBackPack(Database.COMMON_WOLF_BATTLE_CLOTH);
+                        equipList[8].text = item.Name;
+                        UpdateRareColor(item, equipList[8], backEquip[8]);
+                    }
 
-        //            if (GroundOne.WE2.EquipAvailable_38)
-        //            {
-        //                item = new ItemBackPack(Database.EPIC_GATO_HAWL_OF_GREAT);
-        //                equipList[9].Text = item.Name;
-        //                UpdateRareColor(item, equipList[9]);
-        //            }
-        //            break;
+                    if (GroundOne.WE2.EquipAvailable_38)
+                    {
+                        item = new ItemBackPack(Database.EPIC_GATO_HAWL_OF_GREAT);
+                        equipList[9].text = item.Name;
+                        UpdateRareColor(item, equipList[9], backEquip[9]);
+                    }
+                    break;
 
-        //        case 4:
-        //            item = new ItemBackPack(Database.RARE_SUPERIOR_CHOSEN_ROD);
-        //            equipList[0].Text = item.Name;
-        //            UpdateRareColor(item, equipList[0]);
+                case 4:
+                    item = new ItemBackPack(Database.RARE_SUPERIOR_CHOSEN_ROD);
+                    equipList[0].text = item.Name;
+                    UpdateRareColor(item, equipList[0], backEquip[0]);
 
-        //            item = new ItemBackPack(Database.RARE_TYOU_KOU_SWORD);
-        //            equipList[1].Text = item.Name;
-        //            UpdateRareColor(item, equipList[1]);
+                    item = new ItemBackPack(Database.RARE_TYOU_KOU_SWORD);
+                    equipList[1].text = item.Name;
+                    UpdateRareColor(item, equipList[1], backEquip[1]);
 
-        //            item = new ItemBackPack(Database.RARE_TYOU_KOU_ARMOR);
-        //            equipList[2].Text = item.Name;
-        //            UpdateRareColor(item, equipList[2]);
+                    item = new ItemBackPack(Database.RARE_TYOU_KOU_ARMOR);
+                    equipList[2].text = item.Name;
+                    UpdateRareColor(item, equipList[2], backEquip[2]);
 
-        //            item = new ItemBackPack(Database.RARE_TYOU_KOU_SHIELD);
-        //            equipList[3].Text = item.Name;
-        //            UpdateRareColor(item, equipList[3]);
+                    item = new ItemBackPack(Database.RARE_TYOU_KOU_SHIELD);
+                    equipList[3].text = item.Name;
+                    UpdateRareColor(item, equipList[3], backEquip[3]);
 
-        //            item = new ItemBackPack(Database.RARE_WHITE_GOLD_CROSS);
-        //            equipList[4].Text = item.Name;
-        //            UpdateRareColor(item, equipList[4]);
+                    item = new ItemBackPack(Database.RARE_WHITE_GOLD_CROSS);
+                    equipList[4].text = item.Name;
+                    UpdateRareColor(item, equipList[4], backEquip[4]);
 
-        //            if (GroundOne.WE2.EquipAvailable_41)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_HUNTERS_EYE);
-        //                equipList[5].Text = item.Name;
-        //                UpdateRareColor(item, equipList[5]);
-        //            }
-        //            if (GroundOne.WE2.EquipAvailable_42)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_ONEHUNDRED_BUTOUGI);
-        //                equipList[6].Text = item.Name;
-        //                UpdateRareColor(item, equipList[6]);
-        //            }
-        //            if (GroundOne.WE2.EquipAvailable_43)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_DARKANGEL_CROSS);
-        //                equipList[7].Text = item.Name;
-        //                UpdateRareColor(item, equipList[7]);
-        //            }
-        //            if (GroundOne.WE2.EquipAvailable_44)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_DEVIL_KILLER);
-        //                equipList[8].Text = item.Name;
-        //                UpdateRareColor(item, equipList[8]);
-        //            }
-        //            if (GroundOne.WE2.EquipAvailable_45)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_TRUERED_MASTER_BLADE);
-        //                equipList[9].Text = item.Name;
-        //                UpdateRareColor(item, equipList[9]);
-        //            }
-        //            if (GroundOne.WE2.EquipAvailable_46)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_VOID_HYMNSONIA);
-        //                equipList[10].Text = item.Name;
-        //                UpdateRareColor(item, equipList[10]);
-        //            }
-        //            if (GroundOne.WE2.EquipAvailable_47)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_SEAL_OF_BALANCE);
-        //                equipList[11].Text = item.Name;
-        //                UpdateRareColor(item, equipList[11]);
-        //            }
-        //            if (GroundOne.WE2.EquipAvailable_48)
-        //            {
-        //                item = new ItemBackPack(Database.RARE_DOOMBRINGER);
-        //                equipList[12].Text = item.Name;
-        //                UpdateRareColor(item, equipList[12]);
-        //            }
-        //            if (GroundOne.WE2.EquipAvailable_49)
-        //            {
-        //                item = new ItemBackPack(Database.EPIC_MEIKOU_DOOMBRINGER);
-        //                equipList[13].Text = item.Name;
-        //                UpdateRareColor(item, equipList[13]);
-        //            }
+                    if (GroundOne.WE2.EquipAvailable_41)
+                    {
+                        item = new ItemBackPack(Database.RARE_HUNTERS_EYE);
+                        equipList[5].text = item.Name;
+                        UpdateRareColor(item, equipList[5], backEquip[5]);
+                    }
+                    if (GroundOne.WE2.EquipAvailable_42)
+                    {
+                        item = new ItemBackPack(Database.RARE_ONEHUNDRED_BUTOUGI);
+                        equipList[6].text = item.Name;
+                        UpdateRareColor(item, equipList[6], backEquip[6]);
+                    }
+                    if (GroundOne.WE2.EquipAvailable_43)
+                    {
+                        item = new ItemBackPack(Database.RARE_DARKANGEL_CROSS);
+                        equipList[7].text = item.Name;
+                        UpdateRareColor(item, equipList[7], backEquip[7]);
+                    }
+                    if (GroundOne.WE2.EquipAvailable_44)
+                    {
+                        item = new ItemBackPack(Database.RARE_DEVIL_KILLER);
+                        equipList[8].text = item.Name;
+                        UpdateRareColor(item, equipList[8], backEquip[8]);
+                    }
+                    if (GroundOne.WE2.EquipAvailable_45)
+                    {
+                        item = new ItemBackPack(Database.RARE_TRUERED_MASTER_BLADE);
+                        equipList[9].text = item.Name;
+                        UpdateRareColor(item, equipList[9], backEquip[9]);
+                    }
+                    if (GroundOne.WE2.EquipAvailable_46)
+                    {
+                        item = new ItemBackPack(Database.RARE_VOID_HYMNSONIA);
+                        equipList[10].text = item.Name;
+                        UpdateRareColor(item, equipList[10], backEquip[10]);
+                    }
+                    if (GroundOne.WE2.EquipAvailable_47)
+                    {
+                        item = new ItemBackPack(Database.RARE_SEAL_OF_BALANCE);
+                        equipList[11].text = item.Name;
+                        UpdateRareColor(item, equipList[11], backEquip[11]);
+                    }
+                    if (GroundOne.WE2.EquipAvailable_48)
+                    {
+                        item = new ItemBackPack(Database.RARE_DOOMBRINGER);
+                        equipList[12].text = item.Name;
+                        UpdateRareColor(item, equipList[12], backEquip[12]);
+                    }
+                    if (GroundOne.WE2.EquipAvailable_49)
+                    {
+                        item = new ItemBackPack(Database.EPIC_MEIKOU_DOOMBRINGER);
+                        equipList[13].text = item.Name;
+                        UpdateRareColor(item, equipList[13], backEquip[13]);
+                    }
                     
-        //            break;
+                    break;
 
-        //        case 5:
-        //            item = new ItemBackPack(Database.COMMON_GORGEOUS_RED_POTION);
-        //            equipList[0].Text = item.Name;
-        //            UpdateRareColor(item, equipList[0]);
+                case 5:
+                    item = new ItemBackPack(Database.COMMON_GORGEOUS_RED_POTION);
+                    equipList[0].text = item.Name;
+                    UpdateRareColor(item, equipList[0], backEquip[0]);
 
-        //            item = new ItemBackPack(Database.COMMON_GORGEOUS_BLUE_POTION);
-        //            equipList[1].Text = item.Name;
-        //            UpdateRareColor(item, equipList[1]);
+                    item = new ItemBackPack(Database.COMMON_GORGEOUS_BLUE_POTION);
+                    equipList[1].text = item.Name;
+                    UpdateRareColor(item, equipList[1], backEquip[1]);
 
-        //            item = new ItemBackPack(Database.COMMON_GORGEOUS_GREEN_POTION);
-        //            equipList[2].Text = item.Name;
-        //            UpdateRareColor(item, equipList[2]);
+                    item = new ItemBackPack(Database.COMMON_GORGEOUS_GREEN_POTION);
+                    equipList[2].text = item.Name;
+                    UpdateRareColor(item, equipList[2], backEquip[2]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_1);
-        //            equipList[3].Text = item.Name;
-        //            UpdateRareColor(item, equipList[3]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_1);
+                    equipList[3].text = item.Name;
+                    UpdateRareColor(item, equipList[3], backEquip[3]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_2);
-        //            equipList[4].Text = item.Name;
-        //            UpdateRareColor(item, equipList[4]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_2);
+                    equipList[4].text = item.Name;
+                    UpdateRareColor(item, equipList[4], backEquip[4]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_3);
-        //            equipList[5].Text = item.Name;
-        //            UpdateRareColor(item, equipList[5]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_3);
+                    equipList[5].text = item.Name;
+                    UpdateRareColor(item, equipList[5], backEquip[5]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_4);
-        //            equipList[6].Text = item.Name;
-        //            UpdateRareColor(item, equipList[6]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_4);
+                    equipList[6].text = item.Name;
+                    UpdateRareColor(item, equipList[6], backEquip[6]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_5);
-        //            equipList[7].Text = item.Name;
-        //            UpdateRareColor(item, equipList[7]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_5);
+                    equipList[7].text = item.Name;
+                    UpdateRareColor(item, equipList[7], backEquip[7]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_6);
-        //            equipList[8].Text = item.Name;
-        //            UpdateRareColor(item, equipList[8]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_6);
+                    equipList[8].text = item.Name;
+                    UpdateRareColor(item, equipList[8], backEquip[8]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_7);
-        //            equipList[9].Text = item.Name;
-        //            UpdateRareColor(item, equipList[9]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_7);
+                    equipList[9].text = item.Name;
+                    UpdateRareColor(item, equipList[9], backEquip[9]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_8);
-        //            equipList[10].Text = item.Name;
-        //            UpdateRareColor(item, equipList[10]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_8);
+                    equipList[10].text = item.Name;
+                    UpdateRareColor(item, equipList[10], backEquip[10]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_9);
-        //            equipList[11].Text = item.Name;
-        //            UpdateRareColor(item, equipList[11]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_9);
+                    equipList[11].text = item.Name;
+                    UpdateRareColor(item, equipList[11], backEquip[11]);
 
-        //            item = new ItemBackPack(Database.COMMON_PLATINUM_RING_10);
-        //            equipList[12].Text = item.Name;
-        //            UpdateRareColor(item, equipList[12]);
+                    item = new ItemBackPack(Database.COMMON_PLATINUM_RING_10);
+                    equipList[12].text = item.Name;
+                    UpdateRareColor(item, equipList[12], backEquip[12]);
 
-        //            item = new ItemBackPack(Database.RARE_ETHREAL_EDGE_SABRE);
-        //            equipList[13].Text = item.Name;
-        //            UpdateRareColor(item, equipList[13]);
+                    item = new ItemBackPack(Database.RARE_ETHREAL_EDGE_SABRE);
+                    equipList[13].text = item.Name;
+                    UpdateRareColor(item, equipList[13], backEquip[13]);
 
-        //            item = new ItemBackPack(Database.RARE_BLOODY_DIRTY_SCYTHE);
-        //            equipList[14].Text = item.Name;
-        //            UpdateRareColor(item, equipList[14]);
+                    item = new ItemBackPack(Database.RARE_BLOODY_DIRTY_SCYTHE);
+                    equipList[14].text = item.Name;
+                    UpdateRareColor(item, equipList[14], backEquip[14]);
 
-        //            item = new ItemBackPack(Database.EPIC_MEIKOU_DOOMBRINGER);
-        //            equipList[15].Text = item.Name;
-        //            UpdateRareColor(item, equipList[15]);
+                    item = new ItemBackPack(Database.EPIC_MEIKOU_DOOMBRINGER);
+                    equipList[15].text = item.Name;
+                    UpdateRareColor(item, equipList[15], backEquip[15]);
 
-        //            item = new ItemBackPack(Database.RARE_WHITE_DIAMOND_SHIELD);
-        //            equipList[16].Text = item.Name;
-        //            UpdateRareColor(item, equipList[16]);
+                    item = new ItemBackPack(Database.RARE_WHITE_DIAMOND_SHIELD);
+                    equipList[16].text = item.Name;
+                    UpdateRareColor(item, equipList[16], backEquip[16]);
 
-        //            break;
-        //    }
+                    break;
+            }
 
-        //    for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
-        //    {
-        //        if (equipList[ii].Text != "")
-        //        {
-        //            ItemBackPack temp4 = new ItemBackPack(equipList[ii].Text);
-        //            costList[ii].Text = temp4.Cost.ToString();
-        //        }
-        //        else
-        //        {
-        //            costList[ii].Text = "";
-        //        }
-        //    }
-        //}
+            for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
+            {
+                if (equipList[ii].text != "")
+                {
+                    ItemBackPack temp4 = new ItemBackPack(equipList[ii].text);
+                    costList[ii].text = temp4.Cost.ToString();
+                }
+                else
+                {
+                    costList[ii].text = "";
+                    backEquip[ii].SetActive(false);
+                    backCost[ii].SetActive(false);
+                }
+            }
+        }
 
+        // todo
+        private void UpdateRareColor(ItemBackPack item, Text target1, GameObject target2)
+        {
+            switch (item.Rare)
+            {
+                case ItemBackPack.RareLevel.Poor:
+                    target1.color = Color.white;
+                    target2.gameObject.GetComponent<Image>().color = Color.gray;
+                    break;
+                case ItemBackPack.RareLevel.Common:
+                    target1.color = Color.white;
+                    target2.gameObject.GetComponent<Image>().color = Color.green;
+                    break;
+                case ItemBackPack.RareLevel.Rare:
+                    target1.color = Color.white;
+                    target2.gameObject.GetComponent<Image>().color = UnityColor.DarkBlue;
+                    break;
+                case ItemBackPack.RareLevel.Epic:
+                    target1.color = Color.white;
+                    target2.gameObject.GetComponent<Image>().color = UnityColor.Purple;
+                    break;
+                case ItemBackPack.RareLevel.Legendary: // 後編追加
+                    target1.color = Color.white;
+                    target2.gameObject.GetComponent<Image>().color = UnityColor.Orangered;
+                    break;
+            }
+        }
 
         //protected virtual void OnEquipmentShop_Shown()
         //{
@@ -1913,5 +1956,17 @@ namespace DungeonPlayer
         //    popupInfo.CurrentInfo += "\r\n";
         //}
 
+        public void tapChara1()
+        {
+            Debug.Log("tapChara1");
+        }
+        public void tapChara2()
+        {
+            Debug.Log("tapChara2");
+        }
+        public void tapChara3()
+        {
+            Debug.Log("tapChara3");
+        }
     }
 }
