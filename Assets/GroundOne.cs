@@ -54,8 +54,11 @@ namespace DungeonPlayer {
             GroundOne.WE2 = new TruthWorldEnvironment();
 
             GameObject obj = new GameObject("obj");
+            GameObject obj2 = new GameObject("obj2");
+            GameObject obj3 = new GameObject("obj3");
             MC = obj.AddComponent<MainCharacter>();
             MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
+            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             // debug
             MC.AvailableMana = true;
             MC.FreshHeal = true;
@@ -210,7 +213,7 @@ namespace DungeonPlayer {
             MC.BattleActionCommandList[7] = Database.GALE_WIND;
             MC.BattleActionCommandList[8] = Database.STAY_EN;
 
-            SC = obj.AddComponent<MainCharacter>();
+            SC = obj2.AddComponent<MainCharacter>();
             SC.BattleActionCommandList[0] = Database.ATTACK_EN;
             SC.BattleActionCommandList[1] = Database.ICE_NEEDLE;
             SC.BattleActionCommandList[2] = Database.SHADOW_PACT;
@@ -221,7 +224,7 @@ namespace DungeonPlayer {
             SC.BattleActionCommandList[7] = Database.STAY_EN;
             SC.BattleActionCommandList[8] = Database.STAY_EN;
 
-            TC = obj.AddComponent<MainCharacter>();
+            TC = obj3.AddComponent<MainCharacter>();
             TC.BattleActionCommandList[0] = Database.ATTACK_EN;
             TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
             TC.BattleActionCommandList[2] = Database.STAY_EN;

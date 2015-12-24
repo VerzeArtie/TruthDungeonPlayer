@@ -12,12 +12,15 @@ namespace DungeonPlayer
 {
     public partial class TruthEquipmentShop : MonoBehaviour
     {
+        public Text mainMessage;
         public Text[] equipList;
         public Text[] costList;
         public Text[] backpackList;
         public Text[] backpackStack;
         public GameObject[] backEquip;
         public GameObject[] backCost;
+        public GameObject[] back_backpackList;
+        public GameObject[] back_backpackStack;
 
         protected int MAX_EQUIPLIST = 25; // 後編編集
 
@@ -25,6 +28,7 @@ namespace DungeonPlayer
         {
             GroundOne.InitializeGroundOne();
             SetupAvailableList(1);
+            UpdateBackPackLabelInterface(GroundOne.MC);
         }
         // todo
         //protected string titleName = String.Empty;
@@ -121,64 +125,64 @@ namespace DungeonPlayer
         //    }
         //}
 
-       
-        //protected override void UpdateBackPackLabelInterface(MainCharacter target)
-        //{
-        //    //base.UpdateBackPackLabel(target);
 
-        //    ItemBackPack[] temp = target.GetBackPackInfo();
+        protected void UpdateBackPackLabelInterface(MainCharacter target)
+        {
+            //base.UpdateBackPackLabel(target);
 
-        //    for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
-        //    {
-        //        int baseNumber = 0;
+            ItemBackPack[] temp = target.GetBackPackInfo();
 
-        //        if (temp[ii + baseNumber] != null)
-        //        {
-        //            backpackList[ii].Text = temp[ii + baseNumber].Name;
-        //            backpackList[ii].Cursor = System.Windows.Forms.Cursors.Hand;
-        //            switch (temp[ii + baseNumber].Rare)
-        //            {
-        //                case ItemBackPack.RareLevel.Poor:
-        //                    backpackList[ii].BackColor = Color.Gray;
-        //                    backpackList[ii].ForeColor = Color.White;
-        //                    break;
-        //                case ItemBackPack.RareLevel.Common:
-        //                    backpackList[ii].BackColor = Color.Green;
-        //                    backpackList[ii].ForeColor = Color.White;
-        //                    break;
-        //                case ItemBackPack.RareLevel.Rare:
-        //                    backpackList[ii].BackColor = Color.DarkBlue;
-        //                    backpackList[ii].ForeColor = Color.White;
-        //                    break;
-        //                case ItemBackPack.RareLevel.Epic:
-        //                    backpackList[ii].BackColor = Color.Purple;
-        //                    backpackList[ii].ForeColor = Color.White;
-        //                    break;
-        //                case ItemBackPack.RareLevel.Legendary:
-        //                    backpackList[ii].BackColor = Color.OrangeRed;
-        //                    backpackList[ii].ForeColor = Color.White;
-        //                    break;
-        //            }
+            for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
+            {
+                int baseNumber = 0;
 
-        //            backpackStack[ii].Text = "x" + temp[ii + baseNumber].StackValue.ToString();
+                if (temp[ii + baseNumber] != null)
+                {
+                    backpackList[ii].text = temp[ii + baseNumber].Name;
+                    //backpackList[ii].Cursor = System.Windows.Forms.Cursors.Hand; // todo
+                    switch (temp[ii + baseNumber].Rare)
+                    {
+                        case ItemBackPack.RareLevel.Poor:
+                            backpackList[ii].color =Color.grey;
+                            back_backpackList[ii].gameObject.GetComponent<Image>().color = Color.white;
+                            break;
+                        case ItemBackPack.RareLevel.Common:
+                            backpackList[ii].color = Color.green;
+                            back_backpackList[ii].gameObject.GetComponent<Image>().color = Color.white;
+                            break;
+                        case ItemBackPack.RareLevel.Rare:
+                            backpackList[ii].color = UnityColor.DarkBlue;
+                            back_backpackList[ii].gameObject.GetComponent<Image>().color = Color.white;
+                            break;
+                        case ItemBackPack.RareLevel.Epic:
+                            backpackList[ii].color = UnityColor.Purple;
+                            back_backpackList[ii].gameObject.GetComponent<Image>().color = Color.white;
+                            break;
+                        case ItemBackPack.RareLevel.Legendary:
+                            backpackList[ii].color = UnityColor.Orangered;
+                            back_backpackList[ii].gameObject.GetComponent<Image>().color = Color.white;
+                            break;
+                    }
 
-        //        }
-        //        else
-        //        {
-        //            backpackList[ii].Text = "";
-        //            backpackList[ii].Cursor = System.Windows.Forms.Cursors.Default;
+                    backpackStack[ii].text = "x" + temp[ii + baseNumber].StackValue.ToString();
 
-        //            backpackStack[ii].Text = "";
-        //            backpackStack[ii].Cursor = System.Windows.Forms.Cursors.Default;
-        //        }
-        //    }
+                }
+                else
+                {
+                    backpackList[ii].text = "";
+                    //backpackList[ii].Cursor = System.Windows.Forms.Cursors.Default; // todo
 
-        //    //for (int jj = 10; jj < Database.MAX_BACKPACK_SIZE; jj++)
-        //    //{
-        //    //    backpackList[jj].Visible = false;
-        //    //    backpackStack[jj].Visible = false;
-        //    //}
-        //}
+                    backpackStack[ii].text = "";
+                    //backpackStack[ii].Cursor = System.Windows.Forms.Cursors.Default; // todo
+                }
+            }
+
+            for (int jj = 10; jj < Database.MAX_BACKPACK_SIZE; jj++)
+            {
+                backpackList[jj].gameObject.SetActive(false);
+                backpackStack[jj].gameObject.SetActive(false);
+            }
+        }
 
         //protected override int SelectSellStackValue(object sender, EventArgs e, ItemBackPack backpackData, int ii)
         //{
@@ -1955,6 +1959,702 @@ namespace DungeonPlayer
         //    }
         //    popupInfo.CurrentInfo += "\r\n";
         //}
+
+        protected void EquipmentShop_Click(Text sender)
+        {
+            Debug.Log("EquipmentShop_Click");
+            for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
+            {
+            //    if (((Text)sender).Name == "equipList" + ii.ToString())
+            //    {
+            //        ItemBackPack backpackData = new ItemBackPack(((Text)sender).text);
+            //        if (!GroundOne.WE.AvailableEquipShop5)
+            //        {
+            //            switch (backpackData.Name)
+            //            {
+            //                case "ショートソード": // ガンツの武具屋販売（ダンジョン１階）
+            //                    UpdateMainMessage("ガンツ：そいつは標準的なショートソードだね。買うかね？");
+            //                    break;
+            //                case "洗練されたロングソード": // ガンツの武具屋販売（ダンジョン１階）
+            //                    UpdateMainMessage("ガンツ：普通のロングソードだがヴァスタ爺が少し鍛えてある。買うかね？");
+            //                    break;
+            //                case "冒険者用の鎖かたびら": // ガンツの武具屋販売（ダンジョン１階）
+            //                    UpdateMainMessage("ガンツ：冒険者なら必需品といえる防御を誇る。買うかね？");
+            //                    break;
+            //                case "青銅の鎧": // ガンツの武具屋販売（ダンジョン１階）
+            //                    UpdateMainMessage("ガンツ：文句なしの良品質な一品だ。買うかね？");
+            //                    break;
+            //                case "神剣  フェルトゥーシュ":
+            //                    UpdateMainMessage("ガンツ：ヴァスタ爺の最高傑作だが、先客が買占めてしまったようだ。すまない。");
+            //                    return;
+            //                case "些細なパワーリング": // ガンツの武具屋販売（ダンジョン１階）
+            //                    UpdateMainMessage("ガンツ：目の付け所が良いな。買うかね？");
+            //                    break;
+            //                case "紺碧のスターエムブレム": // ガンツの武具屋販売（ダンジョン２階）
+            //                    UpdateMainMessage("ガンツ：ハンナの思い付きを採用した一品だ。買うかね？");
+            //                    break;
+            //                case "闘魂バンド": // ガンツの武具屋販売（ダンジョン２階）
+            //                    UpdateMainMessage("ガンツ：やる気を出すにはこのバンドが最適だ。買うかね？");
+            //                    break;
+            //                case "ウェルニッケの腕輪": // ガンツの武具屋販売（ダンジョン３階）
+            //                    UpdateMainMessage("ウェルニッケ素材を使う事で体力の源を宿らせた腕輪だ。買うかね？");
+            //                    break;
+            //                case "賢者の眼鏡": // ガンツの武具屋販売（ダンジョン３階）
+            //                    UpdateMainMessage("ヴァスタ爺が１日の思いつきで作ったユニークな眼鏡だ。買うかね？");
+            //                    break;
+            //                case "ファルシオン": // ガンツの武具屋販売（ダンジョン３階）
+            //                    UpdateMainMessage("過去の文献を参考にして作り上げた剣だ。買うかね？");
+            //                    break;
+            //                case "フィスト・クロス": // ガンツの武具屋販売（ダンジョン３階）
+            //                    UpdateMainMessage("打撃系同士の打ち合いに特化させた衣だ。買うかね？");
+            //                    break;
+
+            //                case "青銅の剣": // ガンツの武具屋販売（ダンジョン２階）
+            //                    UpdateMainMessage("青銅の剣は重さと威力が良いバランスじゃよ。買うかね？");
+            //                    break;
+            //                case "メタルフィスト": // ガンツの武具屋販売（ダンジョン２階）
+            //                    UpdateMainMessage("メタル製は若干重いものの、慣れれば扱いは良いはず。買うかね？");
+            //                    break;
+            //                case "光沢のある鉄のプレート": // ガンツの武具屋販売（ダンジョン２階）
+            //                    UpdateMainMessage("鉄製のプレートにイエローマテリアルを幾つか埋め込んだ。買うかね？");
+            //                    break;
+            //                case "シルクの武道衣": // ガンツの武具屋販売（ダンジョン２階）
+            //                    UpdateMainMessage("シルク製だが、縫い目をキメ細かくしてあり頑丈なものになっておる。買うかね？");
+            //                    break;
+
+            //                case "プラチナソード": // ガンツの武具屋販売（ダンジョン３階）
+            //                    UpdateMainMessage("プラチナ素材で精製した剣だ。シンプルじゃろ。買うかね？");
+            //                    break;
+            //                case "アイアンクロー": // ガンツの武具屋販売（ダンジョン３階）
+            //                    UpdateMainMessage("鉄製の爪だ。シンプルじゃろ。買うかね？");
+            //                    break;
+            //                case "シルバーアーマー": // ガンツの武具屋販売（ダンジョン３階）
+            //                    UpdateMainMessage("銀素材を少しずつ埋め込む事で耐久性をあげた鎧だ。買うかね？");
+            //                    break;
+            //                case "獣皮製の舞踏衣": // ガンツの武具屋販売（ダンジョン３階）
+            //                    UpdateMainMessage("ギルブロンド種族の皮を使って生成したものだ。買うかね？");
+            //                    break;
+
+            //                case "ライトプラズマブレード": // ガンツの武具屋販売（ダンジョン４階）
+            //                    UpdateMainMessage("イエローとブルーマテリアルをふんだんに使ったブレードだ。買うかね？");
+            //                    break;
+            //                case "イスリアルフィスト": // ガンツの武具屋販売（ダンジョン４階）
+            //                    UpdateMainMessage("ほぼ透明で、重さを感じさせないが威力は確かなものとした。買うかね？");
+            //                    break;
+            //                case "プリズマティックアーマー": // ガンツの武具屋販売（ダンジョン４階）
+            //                    UpdateMainMessage("カラーマテリアルを幾つか合成して作成したものだ。買うかね？");
+            //                    break;
+            //                case "極薄合金製の羽衣": // ガンツの武具屋販売（ダンジョン４階）
+            //                    UpdateMainMessage("この薄さの合金に仕立てるのは苦労させられた。買うかね？");
+            //                    break;
+
+            //                case "七色プリズムバンド": // ガンツの武具屋販売（ダンジョン４階）
+            //                    UpdateMainMessage("カラーマテリアルを上手く組み合わせて作ったアクセサリだ。買うかね？");
+            //                    break;
+            //                case "再生の紋章": // ガンツの武具屋販売（ダンジョン４階）
+            //                    UpdateMainMessage("ウェルニッケの素材を極小にして、埋め込んだものだ。買うかね？");
+            //                    break;
+            //                case "シールオブアクア＆ファイア": // ガンツの武具屋販売（ダンジョン４階）
+            //                    UpdateMainMessage("少し一風変わっておるだろ。買うかね？");
+            //                    break;
+            //                case "ドラゴンのベルト": // ガンツの武具屋販売（ダンジョン４階）
+            //                    UpdateMainMessage("希少価値のあるドラゴン素材を使ったものだ。買うかね？");
+            //                    break;
+
+
+            //                // 武具屋で以下のものは販売予定ありません。
+            //                case "小さい赤ポーション":
+            //                case "普通の赤ポーション":
+            //                case "大きな赤ポーション":
+            //                case "特大赤ポーション":
+            //                case "豪華な赤ポーション":
+            //                case "名前がとても長いわりにはまったく役に立たず、何の効果も発揮しない役立たずであるにもかかわらずデコレーションが長い超豪華なスーパーミラクルポーション":
+            //                case "神聖水": // ２階アイテム
+
+            //                case "練習用の剣": // アイン初期装備
+            //                case "ナックル": // ラナ初期装備
+            //                case "白銀の剣（レプリカ）": // ヴェルゼ初期装備
+            //                case "シャムシール": // ３階アイテム
+            //                case "エスパダス": // ダンジョン４階のアイテム
+            //                case "ルナ・エグゼキュージョナー": // ダンジョン５階
+            //                case "蒼黒・氷大蛇の爪": // ダンジョン５階
+            //                case "ファージル・ジ・エスペランザ": // ダンジョン５階
+            //                case "双剣  ジュノセレステ":
+            //                case "極剣  ゼムルギアス":
+            //                case "クロノス・ロマティッド・ソード":
+
+            //                case "コート・オブ・プレート": // アイン初期装備
+            //                case "ライト・クロス": // ラナ初期装備
+            //                case "黒真空の鎧（レプリカ）": // ヴェルゼ初期装備
+            //                case "真鍮の鎧": // ２階アイテム
+            //                case "プレート・アーマー": // ３階アイテム
+            //                case "ラメラ・アーマー": // ３階アイテム
+            //                case "ブリガンダィン": // ダンジョン４階のアイテム
+            //                case "ロリカ・セグメンタータ": // ダンジョン４階のアイテム
+            //                case "アヴォイド・クロス": // ダンジョン４階のアイテム
+            //                case "ソード・オブ・ブルールージュ": // ダンジョン４階のアイテム
+            //                case "ヘパイストス・パナッサロイニ":
+
+            //                case "珊瑚のブレスレット": // ラナ初期装備
+            //                case "天空の翼（レプリカ）": // ヴェルゼ初期装備
+            //                case "炎授天使の護符": // １階アイテム
+            //                case "チャクラオーブ": // １階アイテム
+            //                case "鷹の刻印": // ２階アイテム
+            //                case "身かわしのマント": // ２階アイテム
+            //                case "ライオンハート": // ３階アイテム
+            //                case "オーガの腕章": // ３階アイテム
+            //                case "鋼鉄の石像": // ３階アイテム
+            //                case "ファラ様信仰のシール": // ３階アイテム
+            //                case "剣紋章ペンダント": // ラナレベルアップ時でもらえるアイテム
+            //                case "夢見の印章": // ダンジョン４階のアイテム
+            //                case "天使の契約書": // ダンジョン４階のアイテム
+            //                case "エルミ・ジョルジュ　ファージル王家の刻印":
+            //                case "ファラ・フローレ　天使のペンダント":
+            //                case "シニキア・カールハンツ　魔道デビルアイ":
+            //                case "オル・ランディス　炎神グローブ":
+            //                case "ヴェルゼ・アーティ　天空の翼":
+
+            //                case "ブルーマテリアル": // １階アイテム
+            //                case "レッドマテリアル": // ３階アイテム
+            //                case "グリーンマテリアル": // ダンジョン４階のアイテム
+            //                case "リーベストランクポーション":
+            //                case "リヴァイヴポーション":
+            //                case "アカシジアの実":
+            //                case "遠見の青水晶": // 初期ラナ会話イベントで入手アイテム
+            //                case "オーバーシフティング": // ダンジョン５階
+            //                case "レジェンド・レッドホース": // ダンジョン５階
+            //                case "ラナのイヤリング": // ダンジョン５階（ラナのイベント）
+            //                case "タイム・オブ・ルーセ": // ダンジョン５階の隠しアイテム
+            //                default:
+            //                    VendorBuyMessage(backpackData); // 後編編集
+            //                    break; // 後編編集
+            //            }
+            //        }
+            //        else
+            //        {
+            //            if (backpackData.Name == "神剣  フェルトゥーシュ")
+            //            {
+            //                UpdateMainMessage(this.currentPlayer.GetCharacterSentence(3010));
+            //                return;
+            //            }
+
+            //            UpdateMainMessage(String.Format(this.currentPlayer.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()));
+            //        }
+
+            //        // [警告] 購入手続きのロジックが綺麗ではありません。ベストコーディングを狙ってください。
+            //        using (YesNoRequestMini yesno = new YesNoRequestMini())
+            //        {
+            //            yesno.Large = this.LayoutLarge; // 後編追加
+            //            yesno.Location = new Point(this.Location.X + YESNO_LOCATION_X, this.Location.Y + YESNO_LOCATION_Y); // 後編編集
+            //            yesno.ShowDialog();
+            //            if (yesno.DialogResult == DialogResult.Yes)
+            //            {
+            //                if (GroundOne.MC.Gold < backpackData.Cost)
+            //                {
+            //                    MessageExchange1(backpackData, GroundOne.MC); // 後編編集
+            //                }
+            //                else
+            //                {
+            //                    if (((currentPlayer == GroundOne.MC) && (backpackData.Type == ItemBackPack.ItemType.Armor_Heavy))
+            //                       || ((currentPlayer == GroundOne.MC) && (backpackData.Type == ItemBackPack.ItemType.Weapon_TwoHand)) // 後編追加
+            //                       || ((currentPlayer == GroundOne.MC) && (backpackData.Type == ItemBackPack.ItemType.Weapon_Heavy))
+            //                       || ((currentPlayer == GroundOne.SC) && (backpackData.Type == ItemBackPack.ItemType.Armor_Light))
+            //                       || ((currentPlayer == GroundOne.SC) && (backpackData.Type == ItemBackPack.ItemType.Weapon_Light))
+            //                       || ((currentPlayer == GroundOne.SC) && (backpackData.Type == ItemBackPack.ItemType.Weapon_Rod)) // 後編追加
+            //                       || ((currentPlayer == GroundOne.TC) && (backpackData.Type == ItemBackPack.ItemType.Armor_Middle))
+            //                       || ((currentPlayer == GroundOne.TC) && (backpackData.Type == ItemBackPack.ItemType.Weapon_Middle))
+            //                       || ((currentPlayer == GroundOne.TC) && (backpackData.Type == ItemBackPack.ItemType.Weapon_Rod)) // 後編追加
+            //                       || (backpackData.Type == ItemBackPack.ItemType.Accessory))
+            //                    {
+            //                        // 装備可能なため装備するかどうか、問い合わせ。
+            //                        SetupMessageText(3011);
+            //                        using (YesNoRequestMini yesno2 = new YesNoRequestMini())
+            //                        {
+            //                            yesno2.Large = this.LayoutLarge; // 後編追加
+            //                            yesno2.Location = new Point(this.Location.X + YESNO_LOCATION_X, this.Location.Y + YESNO_LOCATION_Y); // 後編編集
+            //                            yesno2.ShowDialog();
+            //                            if (yesno2.DialogResult == DialogResult.Yes)
+            //                            {
+            //                                // s 後編追加
+            //                                // 現在装備が売却可能かどうかを確認
+            //                                if ((currentPlayer.MainWeapon.Name == Database.LEGENDARY_FELTUS) ||
+            //                                    (currentPlayer.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_1) ||
+            //                                    (currentPlayer.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_2) ||
+            //                                    (currentPlayer.MainWeapon.Name == Database.COMMON_PRACTICE_SWORD_3) ||
+            //                                    (currentPlayer.MainWeapon.Name == Database.COMMON_PRACTICE_SWORD_4) ||
+            //                                    (currentPlayer.MainWeapon.Name == Database.RARE_PRACTICE_SWORD_5) ||
+            //                                    (currentPlayer.MainWeapon.Name == Database.RARE_PRACTICE_SWORD_6) ||
+            //                                    (currentPlayer.MainWeapon.Name == Database.EPIC_PRACTICE_SWORD_7))
+            //                                {
+            //                                    bool success = this.currentPlayer.AddBackPack(backpackData);
+            //                                    if (!success)
+            //                                    {
+            //                                        // アイテムが一杯の時、取引不成立。
+            //                                        MessageExchange2(); // 後編編集
+            //                                        return;
+            //                                    }
+            //                                    else
+            //                                    {
+            //                                        // 新しいアイテムを追加して、支払い。取引成立。
+            //                                        mc.Gold -= backpackData.Cost;
+            //                                        label2.Text = mc.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+            //                                        UpdateBackPackLabel(this.currentPlayer);
+            //                                        MessageExchange3(); // 後編編集
+            //                                        return;
+            //                                    }
+            //                                }
+            //                                // e 後編追加
+
+            //                                // 現在装備と取替えで現在装備売却するかどうか、問い合わせ。
+            //                                int cost = 0;
+            //                                if ((backpackData.Type == ItemBackPack.ItemType.Armor_Middle) || (backpackData.Type == ItemBackPack.ItemType.Armor_Light) || (backpackData.Type == ItemBackPack.ItemType.Armor_Heavy))
+            //                                {
+            //                                    cost = currentPlayer.MainArmor.Cost / 2;
+            //                                    SetupMessageText(3012, currentPlayer.MainArmor.Name, cost.ToString());
+            //                                }
+            //                                else if ((backpackData.Type == ItemBackPack.ItemType.Weapon_Rod) || (backpackData.Type == ItemBackPack.ItemType.Weapon_TwoHand) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Heavy) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Light) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Middle)) // 後編編集
+            //                                {
+            //                                    cost = currentPlayer.MainWeapon.Cost / 2;
+            //                                    SetupMessageText(3012, currentPlayer.MainWeapon.Name, cost.ToString());
+            //                                }
+            //                                else if (backpackData.Type == ItemBackPack.ItemType.Accessory)
+            //                                {
+            //                                    cost = currentPlayer.Accessory.Cost / 2;
+            //                                    SetupMessageText(3012, currentPlayer.Accessory.Name, cost.ToString());
+            //                                }
+            //                                using (YesNoRequestMini yesno3 = new YesNoRequestMini())
+            //                                {
+            //                                    yesno3.Large = this.LayoutLarge; // 後編追加
+            //                                    yesno3.Location = new Point(this.Location.X + YESNO_LOCATION_X, this.Location.Y + YESNO_LOCATION_Y); // 後編編集
+            //                                    yesno3.ShowDialog();
+            //                                    if (yesno3.DialogResult == DialogResult.Yes)
+            //                                    {
+            //                                        // 現在装備と取替え成立。買い取り額をプラスする。
+            //                                        mc.Gold += cost;
+            //                                        label2.Text = mc.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+            //                                    }
+            //                                    else
+            //                                    {
+            //                                        // 現在装備と取替えしないため、荷物がいっぱいの場合、取引不成立とする。
+            //                                        if ((backpackData.Type == ItemBackPack.ItemType.Armor_Middle) || (backpackData.Type == ItemBackPack.ItemType.Armor_Light) || (backpackData.Type == ItemBackPack.ItemType.Armor_Heavy))
+            //                                        {
+            //                                            if (!currentPlayer.AddBackPack(currentPlayer.MainArmor))
+            //                                            {
+            //                                                MessageExchange2(); // 後編編集
+            //                                                return;
+            //                                            }
+            //                                        }
+            //                                        else if ((backpackData.Type == ItemBackPack.ItemType.Weapon_Rod) || (backpackData.Type == ItemBackPack.ItemType.Weapon_TwoHand) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Heavy) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Light) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Middle)) // 後編編集
+            //                                        {
+            //                                            if (!currentPlayer.AddBackPack(currentPlayer.MainWeapon))
+            //                                            {
+            //                                                MessageExchange2(); // 後編編集
+            //                                                return;
+            //                                            }
+            //                                        }
+            //                                        else if (backpackData.Type == ItemBackPack.ItemType.Accessory)
+            //                                        {
+            //                                            if (!currentPlayer.AddBackPack(currentPlayer.Accessory))
+            //                                            {
+            //                                                MessageExchange2(); // 後編編集
+            //                                                return;
+            //                                            }
+            //                                        }
+            //                                        UpdateBackPackLabel(this.currentPlayer);
+            //                                    }
+
+            //                                    // s 後編編集
+            //                                    if ((backpackData.Type == ItemBackPack.ItemType.Weapon_Rod) || (backpackData.Type == ItemBackPack.ItemType.Weapon_TwoHand))
+            //                                    {
+            //                                        cost = currentPlayer.SubWeapon.Cost / 2;
+            //                                        SetupMessageText(3012, currentPlayer.SubWeapon.Name, cost.ToString());
+
+            //                                        using (YesNoRequestMini yesno4 = new YesNoRequestMini())
+            //                                        {
+            //                                            yesno4.Large = this.LayoutLarge; // 後編追加
+            //                                            yesno4.Location = new Point(this.Location.X + YESNO_LOCATION_X, this.Location.Y + YESNO_LOCATION_Y);
+            //                                            yesno4.ShowDialog();
+            //                                            if (yesno4.DialogResult == DialogResult.Yes)
+            //                                            {
+            //                                                // 現在装備と取替え成立。買い取り額をプラスする。
+            //                                                mc.Gold += cost;
+            //                                                label2.Text = mc.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+            //                                            }
+            //                                            else
+            //                                            {
+            //                                                MessageExchange7(backpackData.Name);
+            //                                                Method.AddItemBank(we, backpackData.Name);
+            //                                                //MessageExchange2(); // 後編編集
+            //                                                //return;
+            //                                                UpdateBackPackLabel(this.currentPlayer);
+            //                                                OKRequest ok = new OKRequest();
+            //                                                ok.StartPosition = FormStartPosition.Manual;
+            //                                                ok.Location = new Point(this.Location.X + OK_LOCATION_X, this.Location.Y + OK_LOCATION_Y); // 後編編集
+            //                                                ok.ShowDialog();
+            //                                            }
+            //                                        }
+            //                                    }
+            //                                    // e 後編編集
+
+            //                                    // 新しいアイテムを装備させて、支払いを行い、取引完了。
+            //                                    if ((backpackData.Type == ItemBackPack.ItemType.Armor_Middle) || (backpackData.Type == ItemBackPack.ItemType.Armor_Light) || (backpackData.Type == ItemBackPack.ItemType.Armor_Heavy))
+            //                                    {
+            //                                        currentPlayer.MainArmor = backpackData;
+            //                                    }
+            //                                    else if ((backpackData.Type == ItemBackPack.ItemType.Weapon_Rod) || (backpackData.Type == ItemBackPack.ItemType.Weapon_TwoHand) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Heavy) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Light) || (backpackData.Type == ItemBackPack.ItemType.Weapon_Middle)) // 後編編集
+            //                                    {
+            //                                        currentPlayer.MainWeapon = backpackData;
+            //                                        if ((backpackData.Type == ItemBackPack.ItemType.Weapon_Rod) || (backpackData.Type == ItemBackPack.ItemType.Weapon_TwoHand))
+            //                                        {
+            //                                            currentPlayer.SubWeapon = new ItemBackPack("");
+            //                                        }
+            //                                    }
+            //                                    else if (backpackData.Type == ItemBackPack.ItemType.Accessory)
+            //                                    {
+            //                                        currentPlayer.Accessory = backpackData;
+            //                                    }
+            //                                    mc.Gold -= backpackData.Cost;
+            //                                    label2.Text = mc.Gold.ToString() + "[G]";
+            //                                    MessageExchange3(); // 後編編集
+            //                                }
+            //                            }
+            //                            else
+            //                            {
+            //                                // 装備させず、新しいアイテムを購入。
+            //                                bool success = this.currentPlayer.AddBackPack(backpackData);
+            //                                if (!success)
+            //                                {
+            //                                    // アイテムが一杯の時、取引不成立。
+            //                                    MessageExchange2(); // 後編編集
+            //                                }
+            //                                else
+            //                                {
+            //                                    // 新しいアイテムを追加して、支払い。取引成立。
+            //                                    mc.Gold -= backpackData.Cost;
+            //                                    label2.Text = mc.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+            //                                    UpdateBackPackLabel(this.currentPlayer);
+            //                                    MessageExchange3(); // 後編編集
+            //                                }
+            //                            }
+            //                        }
+            //                    }
+            //                    else
+            //                    {
+            //                        if (mc.Gold >= backpackData.Cost)
+            //                        {
+            //                            bool success = this.currentPlayer.AddBackPack(backpackData);
+            //                            if (!success)
+            //                            {
+            //                                MessageExchange2(); // 後編編集
+            //                            }
+            //                            else
+            //                            {
+            //                                mc.Gold -= backpackData.Cost;
+            //                                label2.Text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+            //                                UpdateBackPackLabel(this.currentPlayer);
+            //                                MessageExchange3(); // 後編編集
+            //                            }
+            //                        }
+            //                        else
+            //                        {
+            //                            MessageExchange1(backpackData, GroundOne.MC); // 後編編集
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //            else
+            //            {
+            //                MessageExchange4(); // 後編編集
+            //            }
+            //        }
+            //        return;
+            //    }
+            //}
+
+            //for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
+            //{
+            //    int stack = 1; // 後編追加
+
+            //    if (((Label)sender).Name == "backpackList" + ii.ToString())
+            //    {
+            //        ItemBackPack backpackData = new ItemBackPack(((Label)sender).Text);
+            //        switch (backpackData.Name)
+            //        {
+            //            // [コメント]：特別なアイテムの場合別会話を繰り広げてください。
+            //            // s 後編
+            //            case Database.EPIC_OLD_TREE_MIKI_DANPEN:
+            //                if (!we.GanzGift1)
+            //                {
+            //                    UpdateMainMessage("ガンツ：・・・アインよ、良い物を見つけてきたな。");
+
+            //                    UpdateMainMessage("アイン：おじさん、これは一体？");
+
+            //                    UpdateMainMessage("ガンツ：この大陸の遥か北にある山脈ウェクスラーには、かつて古代栄樹が生えておったのだ。");
+
+            //                    UpdateMainMessage("アイン：古代栄樹？？　伝説上のおとぎ話じゃないんですか？");
+
+            //                    UpdateMainMessage("ガンツ：今ではおとぎ話として伝えられておるのは、事実だ。");
+
+            //                    UpdateMainMessage("ガンツ：古代栄樹は一旦その姿を消滅した後、全く新しい場所で再生が行われる。");
+
+            //                    UpdateMainMessage("ガンツ：その話自体は真実ではあるが、それを信じる者はこの今の時代では数少なかろう。");
+
+            //                    UpdateMainMessage("アイン：っで、このゴツゴツした木の幹の一部みたいなのが・・・？");
+
+            //                    UpdateMainMessage("ガンツ：そう、これこそまさしく古代栄樹木の幹の断片。よくぞ手に入れた。");
+
+            //                    UpdateMainMessage("ガンツ：アインよ、すまんがこれをワシに託してもらえんかね？");
+
+            //                    UpdateMainMessage("アイン：っえ！？");
+
+            //                    UpdateMainMessage("ラナ：っちょっと、そこのバカアイン。何考えてるのよ？");
+
+            //                    UpdateMainMessage("アイン：っい、いやいやいや。別に何も考えてねえさ、ッハッハッハ！");
+
+            //                    UpdateMainMessage("ラナ：ふ～ん、ならいいんだけど♪");
+
+            //                    UpdateMainMessage("アイン：と、当然だろ！？　何一つやましい事は考えてねえさ！");
+
+            //                    UpdateMainMessage("ラナ：ッフフ、自爆しなくても良いのに♪");
+
+            //                    UpdateMainMessage("アイン：っあ！ったく・・・まあ良いか。");
+
+            //                    UpdateMainMessage("アイン：いや、何でもねえんだ。おじさん、受け取ってくれ。");
+
+            //                    UpdateMainMessage("ガンツ：心遣い、感謝する。");
+
+            //                    UpdateMainMessage("ガンツ：この素材を使って、一つワシなりの最高傑作を作ってみせよう。");
+
+            //                    UpdateMainMessage("アイン：ッマジで！！！");
+
+            //                    UpdateMainMessage("ガンツ：二言はない。");
+
+            //                    UpdateMainMessage("ガンツ：出来上がったら、こちらから連絡する。楽しみにしておれ。");
+
+            //                    UpdateMainMessage("アイン：やった！　すげぇ、楽しみだぜ！！");
+
+            //                    we.GanzGift1 = true;
+            //                    SellBackPackItem(backpackData, ((Label)sender), stack, ii);
+            //                    return;
+            //                }
+            //                break;
+            //            // e 後編
+            //            case "タイム・オブ・ルーセ":
+            //                if (!we.AvailableEquipShop5)
+            //                {
+            //                    OKRequest ok = new OKRequest();
+            //                    ok.StartPosition = FormStartPosition.Manual;
+            //                    ok.Location = new Point(this.Location.X + OK_LOCATION_X, this.Location.Y + OK_LOCATION_Y); // 後編編集
+            //                    UpdateMainMessage("アイン：ガンツ叔父さん、これはいくらぐらいだ？");
+
+            //                    UpdateMainMessage("ガンツ：ん？おお、どれ見せてみなさい。");
+
+            //                    UpdateMainMessage("ガンツ：なんと！！　アイン、これはどこで見つけた？");
+
+            //                    UpdateMainMessage("アイン：最下層の一直線の所の手前で妙に色が違う壁があったんだ。");
+
+            //                    UpdateMainMessage("ガンツ：そうか・・・大したものだ。でかしたぞアイン。");
+
+            //                    UpdateMainMessage("ガンツ：すまんが、これをワシに託してもらえないかね？");
+
+            //                    UpdateMainMessage("ラナ：アイン、叔父さんがせっかくこう言ってるんだから、渡しておけば？");
+
+            //                    UpdateMainMessage("アイン：そうだなあ・・・渡してしまうか？");
+
+            //                    using (YesNoRequestMini ynr = new YesNoRequestMini())
+            //                    {
+            //                        ynr.Large = this.LayoutLarge; // 後編追加
+            //                        ynr.Location = new Point(this.Location.X + YESNO_LOCATION_X, this.Location.Y + YESNO_LOCATION_X); // 後編編集
+            //                        ynr.ShowDialog();
+            //                        if (ynr.DialogResult == DialogResult.Yes)
+            //                        {
+            //                            UpdateMainMessage("アイン：まあ正直俺が持っていても何に使えるか全然分からねえしな。");
+
+            //                            UpdateMainMessage("アイン：叔父さん、受け取ってくれ！");
+
+            //                            UpdateMainMessage("ガンツ：アインよ、恩にきる。");
+
+            //                            UpdateMainMessage("ラナ：それ何に使うものなんですか？");
+
+            //                            UpdateMainMessage("ガンツ：ある伝説の武具を作成するためのモノと言われておる。");
+
+            //                            UpdateMainMessage("ラナ：神の七遺産とは違うんですか？");
+
+            //                            UpdateMainMessage("ガンツ：神の七遺産とは違うものだとヴァスタ爺は言っておった。");
+
+            //                            UpdateMainMessage("ガンツ：ワシはこの『タイム・オブ・ルーセ』を持ってヴァスタ爺に会いに行こうと思う。");
+
+            //                            UpdateMainMessage("アイン：ヴァスタ爺さんが何か知ってるっていうのか？");
+
+            //                            UpdateMainMessage("ガンツ：ああ、そうだ。ワシらの間での昔からの約束だ。");
+
+            //                            UpdateMainMessage("アイン：そうか、良かったじゃねえか！約束果たせそうで！");
+
+            //                            UpdateMainMessage("ガンツ：ああ、本当に感謝するぞ、アインよ。");
+
+            //                            this.currentPlayer.DeleteBackPack(backpackData);
+            //                            ((Label)sender).Text = "";
+            //                            ((Label)sender).Cursor = System.Windows.Forms.Cursors.Default;
+            //                            WE.SpecialTreasure1 = true;
+            //                            return;
+            //                        }
+            //                        else
+            //                        {
+            //                            UpdateMainMessage("アイン：叔父さん・・・これっていくらぐらいだ？");
+
+            //                            UpdateMainMessage("ラナ：アイン！　ちょっとそれは無いんじゃない！？");
+
+            //                            UpdateMainMessage("ガンツ：値段は付けようが無い、すまないが買い取りというのは出来ん。");
+
+            //                            UpdateMainMessage("ラナ：ちょっとアイン、素直に渡してあげてよ？");
+
+            //                            while (true)
+            //                            {
+            //                                using (YesNoRequestMini ynr2 = new YesNoRequestMini())
+            //                                {
+            //                                    ynr2.Large = this.LayoutLarge; // 後編追加
+            //                                    ynr2.Location = new Point(this.Location.X + YESNO_LOCATION_X, this.Location.Y + YESNO_LOCATION_Y); // 後編編集
+            //                                    ynr2.ShowDialog();
+            //                                    if (ynr2.DialogResult == DialogResult.Yes)
+            //                                    {
+            //                                        UpdateMainMessage("アイン：まあ正直俺が持っていても何に使えるか全然分からねえしな。");
+
+            //                                        UpdateMainMessage("アイン：叔父さん、受け取ってくれ！");
+
+            //                                        UpdateMainMessage("ガンツ：アインよ、恩にきる。");
+
+            //                                        UpdateMainMessage("ラナ：それ何に使うものなんですか？");
+
+            //                                        UpdateMainMessage("ガンツ：ある伝説の武具を作成するためのモノと言われておる。");
+
+            //                                        UpdateMainMessage("ラナ：神の七遺産とは違うんですか？");
+
+            //                                        UpdateMainMessage("ガンツ：神の七遺産とは違うものだとヴァスタ爺は言っておった。");
+
+            //                                        UpdateMainMessage("ガンツ：ワシはこの『タイム・オブ・ルーセ』を持ってヴァスタ爺に会いに行こうと思う。");
+
+            //                                        UpdateMainMessage("アイン：ヴァスタ爺さんが何か知ってるっていうのか？");
+
+            //                                        UpdateMainMessage("ガンツ：ああ、そうだ。ワシらの間での昔からの約束だ。");
+
+            //                                        UpdateMainMessage("アイン：そうか、良かったじゃねえか！約束果たせそうで！");
+
+            //                                        UpdateMainMessage("ガンツ：ああ、本当に感謝するぞ、アインよ。");
+
+            //                                        this.currentPlayer.DeleteBackPack(backpackData);
+            //                                        ((Label)sender).Text = "";
+            //                                        ((Label)sender).Cursor = System.Windows.Forms.Cursors.Default;
+            //                                        WE.SpecialTreasure1 = true;
+            //                                        return;
+            //                                    }
+            //                                    else
+            //                                    {
+            //                                        UpdateMainMessage("アイン：叔父さん・・・これって・・・・いくら・・・");
+
+            //                                        UpdateMainMessage("ラナ：ジィーーー・・・（白い目）");
+
+            //                                        continue;
+            //                                    }
+            //                                }
+            //                            }
+            //                        }
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    MessageExchange5(); // 後編編集
+            //                    return;
+            //                }
+
+            //            // [コメント]：特別なアイテムの場合別会話を繰り広げてください。
+            //            case "剣紋章ペンダント": // ラナレベルアップ時でもらえるアイテム
+            //                SetupMessageText(3008, (backpackData.Cost / 2).ToString());
+            //                break;
+
+
+            //            default:
+            //                if (backpackData.Cost <= 0)
+            //                {
+            //                    MessageExchange5(); // 後編編集
+            //                    return;
+            //                }
+            //                // s 後編追加
+            //                else if ((backpackData.Name == Database.LEGENDARY_FELTUS) ||
+            //                         (backpackData.Name == Database.POOR_PRACTICE_SWORD_1) ||
+            //                         (backpackData.Name == Database.POOR_PRACTICE_SWORD_2) ||
+            //                         (backpackData.Name == Database.COMMON_PRACTICE_SWORD_3) ||
+            //                         (backpackData.Name == Database.COMMON_PRACTICE_SWORD_4) ||
+            //                         (backpackData.Name == Database.RARE_PRACTICE_SWORD_5) ||
+            //                         (backpackData.Name == Database.RARE_PRACTICE_SWORD_6) ||
+            //                         (backpackData.Name == Database.EPIC_PRACTICE_SWORD_7))
+            //                {
+            //                    MessageExchange5();
+            //                    return;
+            //                }
+            //                // e 後編追加
+            //                else
+            //                {
+            //                    // s 後編編集
+            //                    stack = SelectSellStackValue(sender, e, backpackData, ii);
+            //                    if (stack == -1) return; // 複数量指定の時、ESCキャンセルはｰ1で抜けてくるので、即時Return
+
+            //                    MessageExchange6(backpackData, stack, ii);
+            //                }
+            //                break;
+            //        }
+            //        using (YesNoRequestMini yesno = new YesNoRequestMini())
+            //        {
+            //            yesno.Large = this.LayoutLarge; // 後編追加
+            //            yesno.Location = new Point(this.Location.X + YESNO_LOCATION_X, this.Location.Y + YESNO_LOCATION_Y); // 後編編集
+            //            yesno.ShowDialog();
+            //            if (yesno.DialogResult == DialogResult.Yes)
+            //            {
+            //                mc.Gold += stack * backpackData.Cost / 2; // 後編編集
+            //                label2.Text = mc.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+            //                // this.currentPlayer.DeleteBackPack(backpackData);
+            //                SellBackPackItem(backpackData, ((Label)sender), stack, ii);
+            //                MessageExchange3(); // 後編編集
+            //            }
+            //            else
+            //            {
+            //                MessageExchange4(); // 後編編集
+            //            }
+            //        }
+            //        return;
+            //    }
+            }
+        }
+
+        private void MessageExchange5()
+        {
+            // todo
+        }
+
+        private void MessageExchange6(ItemBackPack backpackData, int stack, int ii)
+        {
+            // todo
+        }
+
+        private void MessageExchange3()
+        {
+            // todo
+        }
+
+        private void MessageExchange4()
+        {
+            // todo
+        }
+
+        private void UpdateMainMessage(string p)
+        {
+            // todo
+        }
+
+        private void VendorBuyMessage(ItemBackPack backpackData)
+        {
+            // todo
+        }
+
 
         public void tapChara1()
         {
