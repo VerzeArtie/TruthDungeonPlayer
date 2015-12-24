@@ -1960,7 +1960,7 @@ namespace DungeonPlayer
         //    popupInfo.CurrentInfo += "\r\n";
         //}
 
-        protected void EquipmentShop_Click(Text sender)
+        public void EquipmentShop_Click(Text sender)
         {
             Debug.Log("EquipmentShop_Click");
             for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
