@@ -13,6 +13,7 @@ namespace DungeonPlayer
     public partial class TruthEquipmentShop : MonoBehaviour
     {
         public Text mainMessage;
+        public Text labelTitle;
         public Text[] equipList;
         public Text[] costList;
         public Text[] backpackList;
@@ -24,87 +25,24 @@ namespace DungeonPlayer
 
         protected int MAX_EQUIPLIST = 25; // 後編編集
 
+        protected MainCharacter ganz;
+        protected MainCharacter currentPlayer;
+
         void Start()
         {
             GroundOne.InitializeGroundOne();
+            this.currentPlayer = GroundOne.MC;
             SetupAvailableList(1);
             UpdateBackPackLabelInterface(GroundOne.MC);
+            //labelTitle.text = titleName; // todo
         }
+        void Update()
+        {
+            // todo keydown(EquipmentShop_KeyDown)
+            // todo keyup(TruthEquipmentShop_KeyUp)
+        }
+
         // todo
-        //protected string titleName = String.Empty;
-        //public string TitleName
-        //{
-        //    get { return titleName; }
-        //    set
-        //    {
-        //        titleName = value;
-        //        if (this.label1 != null) { this.label1.Text = titleName; }
-        //    }
-        //}
-        //protected Label[] backpackStack;
-
-        //public TruthEquipmentShop()
-        //{
-        //    this.KeyDown += new KeyEventHandler(EquipmentShop_KeyDown);
-        //    this.KeyUp += new KeyEventHandler(TruthEquipmentShop_KeyUp);
-
-        //    base.Width = Database.WIDTH_1024;
-        //    base.Height = Database.HEIGHT_768;
-        //    base.mainMessage.Width = Database.WIDTH_1024;
-        //    base.mainMessage.Height = Database.HEIGHT_MAIN_MESSAGE;
-        //    base.mainMessage.Location = new Point(0, Database.HEIGHT_768 - Database.HEIGHT_MAIN_MESSAGE);
-        //    base.button1.Location = new Point(Database.WIDTH_1024 - Database.WIDTH_OK_BUTTON, Database.HEIGHT_768 - Database.HEIGHT_MAIN_MESSAGE);
-        //    base.label2.Location = new Point(base.label2.Location.X, Database.HEIGHT_768 - Database.HEIGHT_MAIN_MESSAGE - 30);
-
-        //    YESNO_LOCATION_X = 784;
-        //    YESNO_LOCATION_Y = 708;
-
-        //    base.LayoutLarge = true;
-        //}
-
-        //protected override void OnInitializeLayout()
-        //{
-        //    base.OnInitializeLayout();
-
-        //    OK_LOCATION_X = 904;
-        //    OK_LOCATION_Y = 708;
-        //    OK_SIZE_X = 120;
-        //    OK_SIZE_Y = 60;
-        //    button1.Size = new Size(OK_SIZE_X, OK_SIZE_Y);
-            
-
-        //    for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
-        //    {
-        //        equipList[ii].Font = new System.Drawing.Font("MS UI Gothic", 13f, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        equipList[ii].Location = new System.Drawing.Point(50, 100 + 24 * ii); // 後編編集
-
-        //        costList[ii].Font = new System.Drawing.Font("MS UI Gothic", 13f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        costList[ii].Location = new System.Drawing.Point(50 + 200, 100 + 24 * ii); // 後編編集
-        //    }
-
-        //    backpackStack = new Label[Database.MAX_BACKPACK_SIZE];
-        //    for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
-        //    {
-        //        backpackList[ii].Font = new System.Drawing.Font("MS UI Gothic", 13f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        backpackList[ii].Location = new System.Drawing.Point(50 + 400, 116 + 29 * ii);
-
-        //        backpackStack[ii] = new Label();
-        //        backpackStack[ii].Font = new System.Drawing.Font("MS UI Gothic", 13f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        backpackStack[ii].Location = new System.Drawing.Point(420, 116 + 29 * ii);
-        //        backpackStack[ii].Name = "backpackList" + ii.ToString();
-        //        backpackStack[ii].Size = new Size(200, 12);
-        //        backpackStack[ii].TabIndex = 0;
-        //        backpackStack[ii].AutoSize = true;
-        //        this.Controls.Add(backpackStack[ii]);
-        //    }
-
-
-        //    if (titleName != String.Empty)
-        //    {
-        //        this.label1.Text = titleName;
-        //    }
-        //}
-
         //bool IsShift = false;
         //protected void TruthEquipmentShop_KeyUp(object sender, KeyEventArgs e)
         //{
@@ -125,11 +63,8 @@ namespace DungeonPlayer
         //    }
         //}
 
-
         protected void UpdateBackPackLabelInterface(MainCharacter target)
         {
-            //base.UpdateBackPackLabel(target);
-
             ItemBackPack[] temp = target.GetBackPackInfo();
 
             for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
@@ -184,6 +119,7 @@ namespace DungeonPlayer
             }
         }
 
+        // todo
         //protected override int SelectSellStackValue(object sender, EventArgs e, ItemBackPack backpackData, int ii)
         //{
         //    int exchangeValue = Convert.ToInt32(backpackStack[ii].Text.Remove(0, 1), 10);
@@ -206,781 +142,779 @@ namespace DungeonPlayer
         //    }
         //}
 
-        //protected override void SellBackPackItem(ItemBackPack backpackData, Label sender, int stack, int ii)
-        //{
-        //    int MaxStack = Convert.ToInt32(backpackStack[ii].Text.Remove(0, 1), 10);
-        //    int updateWE2Value = 0;
+        protected void SellBackPackItem(ItemBackPack backpackData, Text sender, int stack, int ii)
+        {
+            int MaxStack = Convert.ToInt32(backpackStack[ii].text.Remove(0, 1), 10);
+            int updateWE2Value = 0;
 
-        //    if (stack >= MaxStack)
-        //    {
-        //        this.currentPlayer.DeleteBackPack(backpackData);
-        //        sender.Text = "";
-        //        sender.Cursor = System.Windows.Forms.Cursors.Default;
-        //        backpackStack[ii].Text = "";
-        //        updateWE2Value = MaxStack;
-        //    }
-        //    else
-        //    {
-        //        this.currentPlayer.DeleteBackPack(backpackData, stack);
-        //        backpackStack[ii].Text = "x" + Convert.ToString(MaxStack - stack);
-        //        updateWE2Value = MaxStack - stack;
-        //    }
+            if (stack >= MaxStack)
+            {
+                this.currentPlayer.DeleteBackPack(backpackData);
+                sender.text = "";
+                //sender.Cursor = System.Windows.Forms.Cursors.Default; // todo
+                backpackStack[ii].text = "";
+                updateWE2Value = MaxStack;
+            }
+            else
+            {
+                this.currentPlayer.DeleteBackPack(backpackData, stack);
+                backpackStack[ii].text = "x" + Convert.ToString(MaxStack - stack);
+                updateWE2Value = MaxStack - stack;
+            }
 
-        //    // 素材売却情報を記憶する。
-        //    #region "武具"
-        //    #region "１階"
-        //    if (backpackData.Name == Database.COMMON_WARM_NO_KOUKAKU)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_11 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_BEATLE_TOGATTA_TUNO)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_12 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_TAKA_FETHER)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_13 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SUN_LEAF)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_14 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_OOKAMI_FANG)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_15 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_TOGE_HAETA_SYOKUSYU)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_16 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ORANGE_MATERIAL)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_17 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_YELLOW_MATERIAL)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_18 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_BLUE_COPPER)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_19 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_RABBIT_KEGAWA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_110 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SPIDER_SILK)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_111 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "２階"
-        //    else if (backpackData.Name == Database.COMMON_WHITE_MAGATAMA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_21 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_BLUE_MAGATAMA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_22 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_WASI_BLUE_FEATHER)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_23 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_BLUEWHITE_SHARP_TOGE)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_24 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_GOTUGOTU_KARA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_25 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_SEKIKASSYOKU_HASAMI)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_26 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_JOE_ARM)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_27 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_AOSAME_KENSHI)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_28 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_KOUSITUKA_MATERIAL)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_29 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_AOSAME_UROKO)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_210 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_HALF_TRANSPARENT_ROCK_ASH)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_211 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "３階"
-        //    else if (backpackData.Name == Database.COMMON_SNOW_CAT_KEGAWA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_31 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_LIZARD_UROKO)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_32 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_GOTUGOTU_KONBOU)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_33 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_EMBLEM_OF_PENGUIN)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_34 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ARGONIAN_PURPLE_UROKO)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_35 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_BEAR_CLAW_KAKERA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_36 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ESSENCE_OF_EARTH)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_37 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_WOLF_KEGAWA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_38 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_TUNDRA_DEER_HORN)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_39 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.EPIC_OLD_TREE_MIKI_DANPEN)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_310 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "４階"
-        //    else if (backpackData.Name == Database.COMMON_HUNTER_SEVEN_TOOL)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_41 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_BEAST_KEGAWA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_42 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_EXECUTIONER_ROBE)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_43 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_ANGEL_SILK)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_44 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SABI_BUGU)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_45 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_ESSENCE_OF_DARK)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_46 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SEEKER_HEAD)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_47 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_MASTERBLADE_KAKERA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_48 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_ESSENCE_OF_FLAME)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_49 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_GREAT_JEWELCROWN)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_410 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ONRYOU_HAKO)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_411 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_KUMITATE_TENBIN)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_412 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_KUMITATE_TENBIN_DOU)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_413 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_KUMITATE_TENBIN_BOU)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_414 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_DOOMBRINGER_TUKA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_415 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_DOOMBRINGER_KAKERA)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_416 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_DOOMBRINGER)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_417 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_JOUKA_TANZOU)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_418 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_ESSENCE_OF_ADAMANTINE)
-        //    {
-        //        GroundOne.WE2.EquipMaterial_419 += updateWE2Value;
-        //    }
+            // 素材売却情報を記憶する。
+            #region "武具"
+            #region "１階"
+            if (backpackData.Name == Database.COMMON_WARM_NO_KOUKAKU)
+            {
+                GroundOne.WE2.EquipMaterial_11 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_BEATLE_TOGATTA_TUNO)
+            {
+                GroundOne.WE2.EquipMaterial_12 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_TAKA_FETHER)
+            {
+                GroundOne.WE2.EquipMaterial_13 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SUN_LEAF)
+            {
+                GroundOne.WE2.EquipMaterial_14 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_OOKAMI_FANG)
+            {
+                GroundOne.WE2.EquipMaterial_15 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_TOGE_HAETA_SYOKUSYU)
+            {
+                GroundOne.WE2.EquipMaterial_16 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ORANGE_MATERIAL)
+            {
+                GroundOne.WE2.EquipMaterial_17 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_YELLOW_MATERIAL)
+            {
+                GroundOne.WE2.EquipMaterial_18 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_BLUE_COPPER)
+            {
+                GroundOne.WE2.EquipMaterial_19 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_RABBIT_KEGAWA)
+            {
+                GroundOne.WE2.EquipMaterial_110 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SPIDER_SILK)
+            {
+                GroundOne.WE2.EquipMaterial_111 += updateWE2Value;
+            }
+            #endregion
+            #region "２階"
+            else if (backpackData.Name == Database.COMMON_WHITE_MAGATAMA)
+            {
+                GroundOne.WE2.EquipMaterial_21 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_BLUE_MAGATAMA)
+            {
+                GroundOne.WE2.EquipMaterial_22 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_WASI_BLUE_FEATHER)
+            {
+                GroundOne.WE2.EquipMaterial_23 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_BLUEWHITE_SHARP_TOGE)
+            {
+                GroundOne.WE2.EquipMaterial_24 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_GOTUGOTU_KARA)
+            {
+                GroundOne.WE2.EquipMaterial_25 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_SEKIKASSYOKU_HASAMI)
+            {
+                GroundOne.WE2.EquipMaterial_26 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_JOE_ARM)
+            {
+                GroundOne.WE2.EquipMaterial_27 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_AOSAME_KENSHI)
+            {
+                GroundOne.WE2.EquipMaterial_28 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_KOUSITUKA_MATERIAL)
+            {
+                GroundOne.WE2.EquipMaterial_29 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_AOSAME_UROKO)
+            {
+                GroundOne.WE2.EquipMaterial_210 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_HALF_TRANSPARENT_ROCK_ASH)
+            {
+                GroundOne.WE2.EquipMaterial_211 += updateWE2Value;
+            }
+            #endregion
+            #region "３階"
+            else if (backpackData.Name == Database.COMMON_SNOW_CAT_KEGAWA)
+            {
+                GroundOne.WE2.EquipMaterial_31 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_LIZARD_UROKO)
+            {
+                GroundOne.WE2.EquipMaterial_32 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_GOTUGOTU_KONBOU)
+            {
+                GroundOne.WE2.EquipMaterial_33 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_EMBLEM_OF_PENGUIN)
+            {
+                GroundOne.WE2.EquipMaterial_34 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ARGONIAN_PURPLE_UROKO)
+            {
+                GroundOne.WE2.EquipMaterial_35 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_BEAR_CLAW_KAKERA)
+            {
+                GroundOne.WE2.EquipMaterial_36 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ESSENCE_OF_EARTH)
+            {
+                GroundOne.WE2.EquipMaterial_37 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_WOLF_KEGAWA)
+            {
+                GroundOne.WE2.EquipMaterial_38 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_TUNDRA_DEER_HORN)
+            {
+                GroundOne.WE2.EquipMaterial_39 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.EPIC_OLD_TREE_MIKI_DANPEN)
+            {
+                GroundOne.WE2.EquipMaterial_310 += updateWE2Value;
+            }
+            #endregion
+            #region "４階"
+            else if (backpackData.Name == Database.COMMON_HUNTER_SEVEN_TOOL)
+            {
+                GroundOne.WE2.EquipMaterial_41 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_BEAST_KEGAWA)
+            {
+                GroundOne.WE2.EquipMaterial_42 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_EXECUTIONER_ROBE)
+            {
+                GroundOne.WE2.EquipMaterial_43 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_ANGEL_SILK)
+            {
+                GroundOne.WE2.EquipMaterial_44 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SABI_BUGU)
+            {
+                GroundOne.WE2.EquipMaterial_45 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_ESSENCE_OF_DARK)
+            {
+                GroundOne.WE2.EquipMaterial_46 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SEEKER_HEAD)
+            {
+                GroundOne.WE2.EquipMaterial_47 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_MASTERBLADE_KAKERA)
+            {
+                GroundOne.WE2.EquipMaterial_48 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_ESSENCE_OF_FLAME)
+            {
+                GroundOne.WE2.EquipMaterial_49 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_GREAT_JEWELCROWN)
+            {
+                GroundOne.WE2.EquipMaterial_410 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ONRYOU_HAKO)
+            {
+                GroundOne.WE2.EquipMaterial_411 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_KUMITATE_TENBIN)
+            {
+                GroundOne.WE2.EquipMaterial_412 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_KUMITATE_TENBIN_DOU)
+            {
+                GroundOne.WE2.EquipMaterial_413 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_KUMITATE_TENBIN_BOU)
+            {
+                GroundOne.WE2.EquipMaterial_414 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_DOOMBRINGER_TUKA)
+            {
+                GroundOne.WE2.EquipMaterial_415 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_DOOMBRINGER_KAKERA)
+            {
+                GroundOne.WE2.EquipMaterial_416 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_DOOMBRINGER)
+            {
+                GroundOne.WE2.EquipMaterial_417 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_JOUKA_TANZOU)
+            {
+                GroundOne.WE2.EquipMaterial_418 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_ESSENCE_OF_ADAMANTINE)
+            {
+                GroundOne.WE2.EquipMaterial_419 += updateWE2Value;
+            }
 
-        //    #endregion
-        //    #endregion
-        //    #region "ポーション/強化薬"
-        //    #region "１階"
-        //    else if (backpackData.Name == Database.COMMON_GREEN_SIKISO)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_11 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_POISON_EKISU)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_12 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_RED_HOUSI)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_13 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_MARY_KISS)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_14 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ALRAUNE_KAHUN)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_15 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_HYUI_SEED)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_16 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_NEBARIITO_KUMO)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_17 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_MANDORAGORA_ROOT)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_18 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_BRILLIANT_RINPUN)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_19 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_MOSSGREEN_EKISU)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_110 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_DREAM_POWDER)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_111 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "２階"
-        //    else if (backpackData.Name == Database.COMMON_GANGAME_EGG)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_21 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_NANAIRO_SYOKUSYU)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_22 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_EIGHTEIGHT_KUROSUMI)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_23 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "３階"
-        //    else if (backpackData.Name == Database.COMMON_FAIRY_POWDER)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_31 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ESSENCE_OF_WIND)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_32 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_FROZEN_HEART)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_33 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SHARPNESS_TIGER_TOOTH)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_34 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_PURE_CRYSTAL)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_35 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "４階"
-        //    else if (backpackData.Name == Database.RARE_BLOOD_DAGGER_KAKERA)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_41 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_DEMON_HORN)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_42 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_ESSENCE_OF_SHINE)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_43 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_BLACK_SEAL_IMPRESSION)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_44 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_CHAOS_SIZUKU)
-        //    {
-        //        GroundOne.WE2.PotionMaterial_45 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #endregion
-        //    #region "料理素材"
-        //    #region "１階"
-        //    else if (backpackData.Name == Database.COMMON_INAGO)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_11 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_RABBIT_MEAT)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_12 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_PLANTNOID_SEED)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_13 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_GREEN_EGG_KAIGARA)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_14 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "２階"
-        //    else if (backpackData.Name == Database.COMMON_SEA_WASI_KUTIBASI)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_21 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_JOE_TONGUE)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_22 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_JOE_LEG)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_23 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_DAGGERFISH_UROKO)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_24 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_PURE_WHITE_BIGEYE)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_25 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SIPPUU_HIRE)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_26 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SOFT_BIG_HIRE)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_27 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_KURIONE_ZOUMOTU)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_28 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_EIGHTEIGHT_KYUUBAN)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_29 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_RENEW_AKAMI)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_210 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "３階"
-        //    else if (backpackData.Name == Database.COMMON_WHITE_AZARASHI_MEAT)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_31 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_KESSYOU_SEA_WATER_SALT)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_32 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ORC_MOMONIKU)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_33 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_RED_ONION)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_34 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_BIG_HIZUME)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_35 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_WHITE_POWDER)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_36 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_BLUE_DANGAN_KAKERA)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_37 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_TOUMEI_SNOW_CRYSTAL)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_38 += updateWE2Value;
-        //    }
-        //    #endregion
-        //    #region "４階"
-        //    else if (backpackData.Name == Database.COMMON_BLACK_SALT)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_41 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_FEBL_ANIS)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_42 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.RARE_MASTERBLADE_FIRE)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_43 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SMORKY_HUNNY)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_44 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ANGEL_DUST)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_45 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_SUN_TARAGON)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_46 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_ECHO_BEAST_MEAT)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_47 += updateWE2Value;
-        //    }
-        //    else if (backpackData.Name == Database.COMMON_CHAOS_TONGUE)
-        //    {
-        //        GroundOne.WE2.FoodMaterial_48 += updateWE2Value;
-        //    }            
-        //    #endregion
-        //    #endregion
+            #endregion
+            #endregion
+            #region "ポーション/強化薬"
+            #region "１階"
+            else if (backpackData.Name == Database.COMMON_GREEN_SIKISO)
+            {
+                GroundOne.WE2.PotionMaterial_11 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_POISON_EKISU)
+            {
+                GroundOne.WE2.PotionMaterial_12 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_RED_HOUSI)
+            {
+                GroundOne.WE2.PotionMaterial_13 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_MARY_KISS)
+            {
+                GroundOne.WE2.PotionMaterial_14 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ALRAUNE_KAHUN)
+            {
+                GroundOne.WE2.PotionMaterial_15 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_HYUI_SEED)
+            {
+                GroundOne.WE2.PotionMaterial_16 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_NEBARIITO_KUMO)
+            {
+                GroundOne.WE2.PotionMaterial_17 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_MANDORAGORA_ROOT)
+            {
+                GroundOne.WE2.PotionMaterial_18 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_BRILLIANT_RINPUN)
+            {
+                GroundOne.WE2.PotionMaterial_19 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_MOSSGREEN_EKISU)
+            {
+                GroundOne.WE2.PotionMaterial_110 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_DREAM_POWDER)
+            {
+                GroundOne.WE2.PotionMaterial_111 += updateWE2Value;
+            }
+            #endregion
+            #region "２階"
+            else if (backpackData.Name == Database.COMMON_GANGAME_EGG)
+            {
+                GroundOne.WE2.PotionMaterial_21 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_NANAIRO_SYOKUSYU)
+            {
+                GroundOne.WE2.PotionMaterial_22 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_EIGHTEIGHT_KUROSUMI)
+            {
+                GroundOne.WE2.PotionMaterial_23 += updateWE2Value;
+            }
+            #endregion
+            #region "３階"
+            else if (backpackData.Name == Database.COMMON_FAIRY_POWDER)
+            {
+                GroundOne.WE2.PotionMaterial_31 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ESSENCE_OF_WIND)
+            {
+                GroundOne.WE2.PotionMaterial_32 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_FROZEN_HEART)
+            {
+                GroundOne.WE2.PotionMaterial_33 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SHARPNESS_TIGER_TOOTH)
+            {
+                GroundOne.WE2.PotionMaterial_34 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_PURE_CRYSTAL)
+            {
+                GroundOne.WE2.PotionMaterial_35 += updateWE2Value;
+            }
+            #endregion
+            #region "４階"
+            else if (backpackData.Name == Database.RARE_BLOOD_DAGGER_KAKERA)
+            {
+                GroundOne.WE2.PotionMaterial_41 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_DEMON_HORN)
+            {
+                GroundOne.WE2.PotionMaterial_42 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_ESSENCE_OF_SHINE)
+            {
+                GroundOne.WE2.PotionMaterial_43 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_BLACK_SEAL_IMPRESSION)
+            {
+                GroundOne.WE2.PotionMaterial_44 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_CHAOS_SIZUKU)
+            {
+                GroundOne.WE2.PotionMaterial_45 += updateWE2Value;
+            }
+            #endregion
+            #endregion
+            #region "料理素材"
+            #region "１階"
+            else if (backpackData.Name == Database.COMMON_INAGO)
+            {
+                GroundOne.WE2.FoodMaterial_11 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_RABBIT_MEAT)
+            {
+                GroundOne.WE2.FoodMaterial_12 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_PLANTNOID_SEED)
+            {
+                GroundOne.WE2.FoodMaterial_13 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_GREEN_EGG_KAIGARA)
+            {
+                GroundOne.WE2.FoodMaterial_14 += updateWE2Value;
+            }
+            #endregion
+            #region "２階"
+            else if (backpackData.Name == Database.COMMON_SEA_WASI_KUTIBASI)
+            {
+                GroundOne.WE2.FoodMaterial_21 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_JOE_TONGUE)
+            {
+                GroundOne.WE2.FoodMaterial_22 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_JOE_LEG)
+            {
+                GroundOne.WE2.FoodMaterial_23 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_DAGGERFISH_UROKO)
+            {
+                GroundOne.WE2.FoodMaterial_24 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_PURE_WHITE_BIGEYE)
+            {
+                GroundOne.WE2.FoodMaterial_25 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SIPPUU_HIRE)
+            {
+                GroundOne.WE2.FoodMaterial_26 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SOFT_BIG_HIRE)
+            {
+                GroundOne.WE2.FoodMaterial_27 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_KURIONE_ZOUMOTU)
+            {
+                GroundOne.WE2.FoodMaterial_28 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_EIGHTEIGHT_KYUUBAN)
+            {
+                GroundOne.WE2.FoodMaterial_29 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_RENEW_AKAMI)
+            {
+                GroundOne.WE2.FoodMaterial_210 += updateWE2Value;
+            }
+            #endregion
+            #region "３階"
+            else if (backpackData.Name == Database.COMMON_WHITE_AZARASHI_MEAT)
+            {
+                GroundOne.WE2.FoodMaterial_31 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_KESSYOU_SEA_WATER_SALT)
+            {
+                GroundOne.WE2.FoodMaterial_32 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ORC_MOMONIKU)
+            {
+                GroundOne.WE2.FoodMaterial_33 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_RED_ONION)
+            {
+                GroundOne.WE2.FoodMaterial_34 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_BIG_HIZUME)
+            {
+                GroundOne.WE2.FoodMaterial_35 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_WHITE_POWDER)
+            {
+                GroundOne.WE2.FoodMaterial_36 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_BLUE_DANGAN_KAKERA)
+            {
+                GroundOne.WE2.FoodMaterial_37 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_TOUMEI_SNOW_CRYSTAL)
+            {
+                GroundOne.WE2.FoodMaterial_38 += updateWE2Value;
+            }
+            #endregion
+            #region "４階"
+            else if (backpackData.Name == Database.COMMON_BLACK_SALT)
+            {
+                GroundOne.WE2.FoodMaterial_41 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_FEBL_ANIS)
+            {
+                GroundOne.WE2.FoodMaterial_42 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_MASTERBLADE_FIRE)
+            {
+                GroundOne.WE2.FoodMaterial_43 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SMORKY_HUNNY)
+            {
+                GroundOne.WE2.FoodMaterial_44 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ANGEL_DUST)
+            {
+                GroundOne.WE2.FoodMaterial_45 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SUN_TARAGON)
+            {
+                GroundOne.WE2.FoodMaterial_46 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ECHO_BEAST_MEAT)
+            {
+                GroundOne.WE2.FoodMaterial_47 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_CHAOS_TONGUE)
+            {
+                GroundOne.WE2.FoodMaterial_48 += updateWE2Value;
+            }            
+            #endregion
+            #endregion
 
-        //    // 獲得した素材が調合の条件を満たしている場合、調合日を記憶する。
-        //    #region "武具"
-        //    #region "１階"
-        //    if (GroundOne.WE2.EquipMaterial_11 >= 1 && GroundOne.WE2.EquipMaterial_12 >= 1 && GroundOne.WE2.EquipMixtureDay_11 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_11 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_13 >= 1 && GroundOne.WE2.EquipMaterial_14 >= 1 && GroundOne.WE2.EquipMixtureDay_12 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_12 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_15 >= 1 && GroundOne.WE2.EquipMaterial_16 >= 1 && GroundOne.WE2.EquipMaterial_17 >= 1 && GroundOne.WE2.EquipMixtureDay_13 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_13 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_18 >= 1 && GroundOne.WE2.EquipMaterial_19 >= 1 && GroundOne.WE2.EquipMixtureDay_14 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_14 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_110 >= 1 && GroundOne.WE2.EquipMaterial_111 >= 1 && GroundOne.WE2.EquipMixtureDay_15 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_15 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "２階"
-        //    if (GroundOne.WE2.EquipMaterial_21 >= 1 && GroundOne.WE2.EquipMaterial_22 >= 1 && GroundOne.WE2.EquipMixtureDay_21 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_21 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_23 >= 1 && GroundOne.WE2.EquipMaterial_24 >= 1 && GroundOne.WE2.EquipMixtureDay_22 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_22 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_25 >= 1 && GroundOne.WE2.EquipMixtureDay_23 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_23 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_26 >= 1 && GroundOne.WE2.EquipMaterial_27 >= 1 && GroundOne.WE2.EquipMixtureDay_24 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_24 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_28 >= 1 && GroundOne.WE2.EquipMaterial_29 >= 1 && GroundOne.WE2.EquipMixtureDay_25 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_25 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_210 >= 1 && GroundOne.WE2.EquipMaterial_211 >= 1 && GroundOne.WE2.EquipMixtureDay_26 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_26 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "３階"
-        //    if (GroundOne.WE2.EquipMaterial_31 >= 1 && GroundOne.WE2.EquipMixtureDay_31 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_31 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_32 >= 1 && GroundOne.WE2.EquipMixtureDay_32 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_32 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_33 >= 1 && GroundOne.WE2.EquipMixtureDay_33 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_33 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_34 >= 1 && GroundOne.WE2.EquipMixtureDay_34 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_34 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_35 >= 1 && GroundOne.WE2.EquipMixtureDay_35 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_35 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_36 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_37 >= 1 && GroundOne.WE2.EquipMixtureDay_36 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_36 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_38 >= 1 && GroundOne.WE2.EquipMixtureDay_37 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_37 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_39 >= 1 && 
-        //        GroundOne.WE2.EquipMaterial_310 >= 1 && GroundOne.WE2.EquipMixtureDay_38 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_38 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "４階"
-        //    if (GroundOne.WE2.EquipMaterial_41 >= 1 && GroundOne.WE2.EquipMixtureDay_41 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_41 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_42 >= 1 && GroundOne.WE2.EquipMixtureDay_42 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_42 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_43 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_44 >= 1 && GroundOne.WE2.EquipMixtureDay_43 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_43 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_45 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_46 >= 1 && GroundOne.WE2.EquipMixtureDay_44 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_44 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_47 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_48 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_49 >= 1 && GroundOne.WE2.EquipMixtureDay_45 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_45 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_410 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_411 >= 1 && GroundOne.WE2.EquipMixtureDay_46 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_46 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_412 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_413 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_414 >= 1 && GroundOne.WE2.EquipMixtureDay_47 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_47 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_415 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_416 >= 1 && GroundOne.WE2.EquipMixtureDay_48 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_48 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_417 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMixtureDay_49 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_49 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.EquipMaterial_418 >= 1 &&
-        //        GroundOne.WE2.EquipMaterial_419 >= 1 && GroundOne.WE2.EquipMixtureDay_410 <= 0)
-        //    {
-        //        GroundOne.WE2.EquipMixtureDay_410 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #endregion
-
-
-        //    #region "ポーション/強化薬"
-        //    #region "１階"
-        //    if (GroundOne.WE2.PotionMaterial_11 >= 1 && GroundOne.WE2.PotionMaterial_12 >= 1 && GroundOne.WE2.PotionMixtureDay_11 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_11 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_13 >= 1 && GroundOne.WE2.PotionMaterial_14 >= 1 && GroundOne.WE2.PotionMixtureDay_12 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_12 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_15 >= 1 && GroundOne.WE2.PotionMaterial_16 >= 1 && GroundOne.WE2.PotionMaterial_17 >= 1 && GroundOne.WE2.PotionMixtureDay_13 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_13 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_18 >= 1 && GroundOne.WE2.PotionMaterial_19 >= 1 && GroundOne.WE2.PotionMixtureDay_14 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_14 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_110 >= 1 && GroundOne.WE2.PotionMaterial_111 >= 1 && GroundOne.WE2.PotionMixtureDay_15 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_15 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "２階"
-        //    if (GroundOne.WE2.PotionMaterial_21 >= 1 && GroundOne.WE2.PotionMixtureDay_21 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_21 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_22 >= 1 && GroundOne.WE2.PotionMixtureDay_22 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_22 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_23 >= 1 && GroundOne.WE2.PotionMixtureDay_23 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_23 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "３階"
-        //    if (GroundOne.WE2.PotionMaterial_31 >= 1 &&
-        //        GroundOne.WE2.PotionMaterial_32 >= 1 && GroundOne.WE2.PotionMixtureDay_31 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_31 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_33 >= 1 && 
-        //        GroundOne.WE2.PotionMaterial_34 >= 1 && GroundOne.WE2.PotionMixtureDay_32 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_32 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_35 >= 1 && GroundOne.WE2.PotionMixtureDay_33 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_33 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "４階"
-        //    if (GroundOne.WE2.PotionMaterial_41 >= 1 && GroundOne.WE2.PotionMixtureDay_41 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_41 = WE.GameDay;
-        //        GroundOne.WE2.PotionMixtureDay_42 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_42 >= 1 && GroundOne.WE2.PotionMixtureDay_43 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_43 = WE.GameDay;
-        //        GroundOne.WE2.PotionMixtureDay_44 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_43 >= 1 && GroundOne.WE2.PotionMixtureDay_45 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_45 = WE.GameDay;
-        //        GroundOne.WE2.PotionMixtureDay_46 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_44 >= 1 && GroundOne.WE2.PotionMixtureDay_47 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_47 = WE.GameDay;
-        //        GroundOne.WE2.PotionMixtureDay_48 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.PotionMaterial_45 >= 1 && GroundOne.WE2.PotionMixtureDay_49 <= 0)
-        //    {
-        //        GroundOne.WE2.PotionMixtureDay_49 = WE.GameDay;
-        //        GroundOne.WE2.PotionMixtureDay_410 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #endregion
-
-        //    #region "食品"
-        //    #region "１階"
-        //    if (GroundOne.WE2.FoodMaterial_11 >= 1 && GroundOne.WE2.FoodMixtureDay_11 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_11 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_12 >= 1 && GroundOne.WE2.FoodMixtureDay_12 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_12 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_13 >= 1 && GroundOne.WE2.FoodMaterial_14 >= 1 && GroundOne.WE2.FoodMixtureDay_13 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_13 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "２階"
-        //    if (GroundOne.WE2.FoodMaterial_21 >= 1 && GroundOne.WE2.FoodMaterial_22 >= 1 && GroundOne.WE2.FoodMixtureDay_21 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_21 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_23 >= 1 && GroundOne.WE2.FoodMaterial_24 >= 1 && GroundOne.WE2.FoodMaterial_25 >= 1 && GroundOne.WE2.FoodMixtureDay_22 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_22 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_26 >= 1 && GroundOne.WE2.FoodMaterial_27 >= 1 && GroundOne.WE2.FoodMixtureDay_23 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_23 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_28 >= 1 && GroundOne.WE2.FoodMaterial_29 >= 1 && GroundOne.WE2.FoodMaterial_210 >= 1 && GroundOne.WE2.FoodMixtureDay_24 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_24 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "３階"
-        //    if (GroundOne.WE2.FoodMaterial_31 >= 1 && 
-        //        GroundOne.WE2.FoodMaterial_32 >= 1 && GroundOne.WE2.FoodMixtureDay_31 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_31 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_33 >= 1 &&
-        //        GroundOne.WE2.FoodMaterial_34 >= 1 && GroundOne.WE2.FoodMixtureDay_32 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_32 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_35 >= 1 &&
-        //        GroundOne.WE2.FoodMaterial_36 >= 1 && GroundOne.WE2.FoodMixtureDay_33 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_33 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_37 >= 1 &&
-        //        GroundOne.WE2.FoodMaterial_38 >= 1 && GroundOne.WE2.FoodMixtureDay_34 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_34 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #region "４階"
-        //    if (GroundOne.WE2.FoodMaterial_41 >= 1 &&
-        //        GroundOne.WE2.FoodMaterial_42 >= 1 && GroundOne.WE2.FoodMixtureDay_41 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_41 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_43 >= 1 &&
-        //        GroundOne.WE2.FoodMaterial_44 >= 1 && GroundOne.WE2.FoodMixtureDay_42 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_42 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_45 >= 1 &&
-        //        GroundOne.WE2.FoodMaterial_46 >= 1 && GroundOne.WE2.FoodMixtureDay_43 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_43 = WE.GameDay;
-        //    }
-        //    if (GroundOne.WE2.FoodMaterial_47 >= 1 &&
-        //        GroundOne.WE2.FoodMaterial_48 >= 1 && GroundOne.WE2.FoodMixtureDay_44 <= 0)
-        //    {
-        //        GroundOne.WE2.FoodMixtureDay_44 = WE.GameDay;
-        //    }
-        //    #endregion
-        //    #endregion
-        //}
+            // 獲得した素材が調合の条件を満たしている場合、調合日を記憶する。
+            #region "武具"
+            #region "１階"
+            if (GroundOne.WE2.EquipMaterial_11 >= 1 && GroundOne.WE2.EquipMaterial_12 >= 1 && GroundOne.WE2.EquipMixtureDay_11 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_11 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_13 >= 1 && GroundOne.WE2.EquipMaterial_14 >= 1 && GroundOne.WE2.EquipMixtureDay_12 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_12 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_15 >= 1 && GroundOne.WE2.EquipMaterial_16 >= 1 && GroundOne.WE2.EquipMaterial_17 >= 1 && GroundOne.WE2.EquipMixtureDay_13 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_13 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_18 >= 1 && GroundOne.WE2.EquipMaterial_19 >= 1 && GroundOne.WE2.EquipMixtureDay_14 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_14 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_110 >= 1 && GroundOne.WE2.EquipMaterial_111 >= 1 && GroundOne.WE2.EquipMixtureDay_15 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_15 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "２階"
+            if (GroundOne.WE2.EquipMaterial_21 >= 1 && GroundOne.WE2.EquipMaterial_22 >= 1 && GroundOne.WE2.EquipMixtureDay_21 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_21 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_23 >= 1 && GroundOne.WE2.EquipMaterial_24 >= 1 && GroundOne.WE2.EquipMixtureDay_22 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_22 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_25 >= 1 && GroundOne.WE2.EquipMixtureDay_23 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_23 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_26 >= 1 && GroundOne.WE2.EquipMaterial_27 >= 1 && GroundOne.WE2.EquipMixtureDay_24 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_24 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_28 >= 1 && GroundOne.WE2.EquipMaterial_29 >= 1 && GroundOne.WE2.EquipMixtureDay_25 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_25 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_210 >= 1 && GroundOne.WE2.EquipMaterial_211 >= 1 && GroundOne.WE2.EquipMixtureDay_26 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_26 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "３階"
+            if (GroundOne.WE2.EquipMaterial_31 >= 1 && GroundOne.WE2.EquipMixtureDay_31 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_31 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_32 >= 1 && GroundOne.WE2.EquipMixtureDay_32 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_32 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_33 >= 1 && GroundOne.WE2.EquipMixtureDay_33 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_33 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_34 >= 1 && GroundOne.WE2.EquipMixtureDay_34 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_34 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_35 >= 1 && GroundOne.WE2.EquipMixtureDay_35 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_35 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_36 >= 1 &&
+                GroundOne.WE2.EquipMaterial_37 >= 1 && GroundOne.WE2.EquipMixtureDay_36 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_36 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_38 >= 1 && GroundOne.WE2.EquipMixtureDay_37 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_37 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_39 >= 1 && 
+                GroundOne.WE2.EquipMaterial_310 >= 1 && GroundOne.WE2.EquipMixtureDay_38 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_38 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "４階"
+            if (GroundOne.WE2.EquipMaterial_41 >= 1 && GroundOne.WE2.EquipMixtureDay_41 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_41 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_42 >= 1 && GroundOne.WE2.EquipMixtureDay_42 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_42 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_43 >= 1 &&
+                GroundOne.WE2.EquipMaterial_44 >= 1 && GroundOne.WE2.EquipMixtureDay_43 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_43 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_45 >= 1 &&
+                GroundOne.WE2.EquipMaterial_46 >= 1 && GroundOne.WE2.EquipMixtureDay_44 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_44 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_47 >= 1 &&
+                GroundOne.WE2.EquipMaterial_48 >= 1 &&
+                GroundOne.WE2.EquipMaterial_49 >= 1 && GroundOne.WE2.EquipMixtureDay_45 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_45 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_410 >= 1 &&
+                GroundOne.WE2.EquipMaterial_411 >= 1 && GroundOne.WE2.EquipMixtureDay_46 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_46 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_412 >= 1 &&
+                GroundOne.WE2.EquipMaterial_413 >= 1 &&
+                GroundOne.WE2.EquipMaterial_414 >= 1 && GroundOne.WE2.EquipMixtureDay_47 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_47 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_415 >= 1 &&
+                GroundOne.WE2.EquipMaterial_416 >= 1 && GroundOne.WE2.EquipMixtureDay_48 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_48 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_417 >= 1 &&
+                GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMixtureDay_49 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_49 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_418 >= 1 &&
+                GroundOne.WE2.EquipMaterial_419 >= 1 && GroundOne.WE2.EquipMixtureDay_410 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_410 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #endregion
+            #region "ポーション/強化薬"
+            #region "１階"
+            if (GroundOne.WE2.PotionMaterial_11 >= 1 && GroundOne.WE2.PotionMaterial_12 >= 1 && GroundOne.WE2.PotionMixtureDay_11 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_11 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_13 >= 1 && GroundOne.WE2.PotionMaterial_14 >= 1 && GroundOne.WE2.PotionMixtureDay_12 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_12 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_15 >= 1 && GroundOne.WE2.PotionMaterial_16 >= 1 && GroundOne.WE2.PotionMaterial_17 >= 1 && GroundOne.WE2.PotionMixtureDay_13 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_13 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_18 >= 1 && GroundOne.WE2.PotionMaterial_19 >= 1 && GroundOne.WE2.PotionMixtureDay_14 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_14 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_110 >= 1 && GroundOne.WE2.PotionMaterial_111 >= 1 && GroundOne.WE2.PotionMixtureDay_15 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_15 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "２階"
+            if (GroundOne.WE2.PotionMaterial_21 >= 1 && GroundOne.WE2.PotionMixtureDay_21 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_21 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_22 >= 1 && GroundOne.WE2.PotionMixtureDay_22 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_22 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_23 >= 1 && GroundOne.WE2.PotionMixtureDay_23 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_23 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "３階"
+            if (GroundOne.WE2.PotionMaterial_31 >= 1 &&
+                GroundOne.WE2.PotionMaterial_32 >= 1 && GroundOne.WE2.PotionMixtureDay_31 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_31 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_33 >= 1 && 
+                GroundOne.WE2.PotionMaterial_34 >= 1 && GroundOne.WE2.PotionMixtureDay_32 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_32 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_35 >= 1 && GroundOne.WE2.PotionMixtureDay_33 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_33 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "４階"
+            if (GroundOne.WE2.PotionMaterial_41 >= 1 && GroundOne.WE2.PotionMixtureDay_41 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_41 = GroundOne.WE.GameDay;
+                GroundOne.WE2.PotionMixtureDay_42 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_42 >= 1 && GroundOne.WE2.PotionMixtureDay_43 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_43 = GroundOne.WE.GameDay;
+                GroundOne.WE2.PotionMixtureDay_44 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_43 >= 1 && GroundOne.WE2.PotionMixtureDay_45 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_45 = GroundOne.WE.GameDay;
+                GroundOne.WE2.PotionMixtureDay_46 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_44 >= 1 && GroundOne.WE2.PotionMixtureDay_47 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_47 = GroundOne.WE.GameDay;
+                GroundOne.WE2.PotionMixtureDay_48 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.PotionMaterial_45 >= 1 && GroundOne.WE2.PotionMixtureDay_49 <= 0)
+            {
+                GroundOne.WE2.PotionMixtureDay_49 = GroundOne.WE.GameDay;
+                GroundOne.WE2.PotionMixtureDay_410 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #endregion
+            #region "食品"
+            #region "１階"
+            if (GroundOne.WE2.FoodMaterial_11 >= 1 && GroundOne.WE2.FoodMixtureDay_11 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_11 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_12 >= 1 && GroundOne.WE2.FoodMixtureDay_12 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_12 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_13 >= 1 && GroundOne.WE2.FoodMaterial_14 >= 1 && GroundOne.WE2.FoodMixtureDay_13 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_13 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "２階"
+            if (GroundOne.WE2.FoodMaterial_21 >= 1 && GroundOne.WE2.FoodMaterial_22 >= 1 && GroundOne.WE2.FoodMixtureDay_21 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_21 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_23 >= 1 && GroundOne.WE2.FoodMaterial_24 >= 1 && GroundOne.WE2.FoodMaterial_25 >= 1 && GroundOne.WE2.FoodMixtureDay_22 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_22 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_26 >= 1 && GroundOne.WE2.FoodMaterial_27 >= 1 && GroundOne.WE2.FoodMixtureDay_23 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_23 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_28 >= 1 && GroundOne.WE2.FoodMaterial_29 >= 1 && GroundOne.WE2.FoodMaterial_210 >= 1 && GroundOne.WE2.FoodMixtureDay_24 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_24 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "３階"
+            if (GroundOne.WE2.FoodMaterial_31 >= 1 && 
+                GroundOne.WE2.FoodMaterial_32 >= 1 && GroundOne.WE2.FoodMixtureDay_31 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_31 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_33 >= 1 &&
+                GroundOne.WE2.FoodMaterial_34 >= 1 && GroundOne.WE2.FoodMixtureDay_32 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_32 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_35 >= 1 &&
+                GroundOne.WE2.FoodMaterial_36 >= 1 && GroundOne.WE2.FoodMixtureDay_33 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_33 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_37 >= 1 &&
+                GroundOne.WE2.FoodMaterial_38 >= 1 && GroundOne.WE2.FoodMixtureDay_34 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_34 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #region "４階"
+            if (GroundOne.WE2.FoodMaterial_41 >= 1 &&
+                GroundOne.WE2.FoodMaterial_42 >= 1 && GroundOne.WE2.FoodMixtureDay_41 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_41 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_43 >= 1 &&
+                GroundOne.WE2.FoodMaterial_44 >= 1 && GroundOne.WE2.FoodMixtureDay_42 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_42 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_45 >= 1 &&
+                GroundOne.WE2.FoodMaterial_46 >= 1 && GroundOne.WE2.FoodMixtureDay_43 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_43 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.FoodMaterial_47 >= 1 &&
+                GroundOne.WE2.FoodMaterial_48 >= 1 && GroundOne.WE2.FoodMixtureDay_44 <= 0)
+            {
+                GroundOne.WE2.FoodMixtureDay_44 = GroundOne.WE.GameDay;
+            }
+            #endregion
+            #endregion
+        }
+        
         protected void SetupAvailableList(int level)
         {
             for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
@@ -1476,7 +1410,6 @@ namespace DungeonPlayer
             }
         }
 
-        // todo
         private void UpdateRareColor(ItemBackPack item, Text target1, GameObject target2)
         {
             switch (item.Rare)
@@ -1504,10 +1437,11 @@ namespace DungeonPlayer
             }
         }
 
+        // todo
         //protected virtual void OnEquipmentShop_Shown()
         //{
         //    #region "１階"
-        //    if (!GroundOne.WE2.EquipAvailable_11 && (GroundOne.WE2.EquipMixtureDay_11 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_11))
+        //    if (!GroundOne.WE2.EquipAvailable_11 && (GroundOne.WE2.EquipMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_11))
         //    {
         //        GroundOne.WE2.EquipAvailable_11 = true;
         //        using (TruthItemDesc TID = new TruthItemDesc())
