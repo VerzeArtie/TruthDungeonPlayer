@@ -218,6 +218,11 @@ namespace DungeonPlayer
                 }
             }
         }
+        public int Gold
+        {
+            get { return gold; }
+            set { gold = value; }
+        }
         public int CurrentLife
         {
             get { return currentLife; }
@@ -2601,6 +2606,43 @@ namespace DungeonPlayer
                         return this.Name + "：準備が出来たら、とっとと行くわよ♪";
                 }
             }
+            #region "ガンツ"
+            else if (this.name == "ガンツ")
+            {
+                switch (sentenceNumber)
+                {
+                    case 3000: // 店に入った時の台詞
+                        return this.name + "：ゆっくり見ていくがいい。";
+                    case 3001: // 支払い要求時
+                        return this.name + "：{0}は{1}Goldだ。買うかね？";
+                    case 3002: // 持ち物いっぱいで買えない時
+                        return this.name + "：おや、荷物がいっぱいだよ。手持ちを減らしてからまた来なさい。";
+                    case 3003: // 購入完了時
+                        return this.name + "：はいよ、まいどあり。";
+                    case 3004: // Gold不足で購入できない場合
+                        return this.name + "：すまない、こちらも商売でな。後{0}必要だ。";
+                    case 3005: // 購入せずキャンセルした場合
+                        return this.name + "：他のも見ていくがいい。";
+                    case 3006: // 売れないアイテムを売ろうとした場合
+                        return this.name + "：すまないが、それは買い取れん。";
+                    case 3007: // アイテム売却時
+                        return this.name + "：ふむ、{0}だな。{1}Goldで買い取ろうか。";
+                    case 3008: // 剣紋章ペンダント売却時
+                        return this.name + "：ふむ・・・良い出来具合のアクセサリだ。{0}Goldだが、本当に買い取って良いのか？";
+                    case 3009: // 武具店を出る時
+                        return this.name + "：またいつでも寄りなさい。";
+                    case 3010: // ガンツ不在時の売りきれフェルトゥーシュを見て一言
+                        return "";
+                    case 3011: // 装備可能なものが購入された時
+                        return this.name + "：ふむ、今ここで装備していくかね？";
+                    case 3012: // 装備していた物を売却対象かどうか聞く時
+                        return this.name + "：現在の装備品を売却するかね？{0}は{1}Goldで買い取ろう。";
+                    case 3013: // 両手持ち装備をした後、サブ武器を売却せず、手元に残そうとして、バックパックがいっぱいの時
+                        return this.name + "：荷物がいっぱいのようだな。{0}はハンナの宿屋倉庫に後で送っておこう。";
+                }
+            }
+            #endregion
+
             return "";
         }
 

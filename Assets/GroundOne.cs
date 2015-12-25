@@ -202,6 +202,8 @@ namespace DungeonPlayer {
             MC.HardestParry = true;
             MC.StanceOfSuddenness = true;
             MC.SoulExecution = true;
+            
+            MC.Gold = 5000;
 
             MC.BattleActionCommandList[0] = Database.ATTACK_EN;
             MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
