@@ -2620,7 +2620,7 @@ namespace DungeonPlayer
                     case 3003: // 購入完了時
                         return this.name + "：はいよ、まいどあり。";
                     case 3004: // Gold不足で購入できない場合
-                        return this.name + "：すまない、こちらも商売でな。後{0}必要だ。";
+                        return this.name + "：すまない、こちらも商売でな。後{0}Gold必要だ。";
                     case 3005: // 購入せずキャンセルした場合
                         return this.name + "：他のも見ていくがいい。";
                     case 3006: // 売れないアイテムを売ろうとした場合

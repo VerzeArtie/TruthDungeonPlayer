@@ -111,6 +111,7 @@ namespace DungeonPlayer
 
         public static double AttackValue(MainCharacter player, NeedType type, DmgAttr attr, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool ignoreChargeCount, bool duelMode, bool subWeapon)
         {
+            Debug.Log("AttackValue start: " + subWeapon.ToString());
             double min = 0;
             double max = 0;
             double minFactor = 0.0f;
@@ -187,6 +188,7 @@ namespace DungeonPlayer
                 // 武器による加算値（メイン）
                 if (subWeapon == false)
                 {
+                    if (player.MainWeapon == null) { Debug.Log("fail...mainwaeapon null."); }
                     if (player.MainWeapon != null)
                     {
                         Debug.Log("MainWeapon plus! " + player.MainWeapon.Name + " " + player.MainWeapon.MinValue + " " + player.MainWeapon.MaxValue);

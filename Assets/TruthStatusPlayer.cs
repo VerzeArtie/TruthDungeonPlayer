@@ -16,25 +16,29 @@ namespace DungeonPlayer
         string workDebug;
         public Text txtName;
         public Text txtLevel;
+        public Text txtExperience;
         public Text txtJobClass;
-        public Text txtLife;
-        public Text txtMana;
-        public Text txtSkill;
+        public Text txtGold;
+        public Text life;
+        public Text mana;
+        public Text skill;
+        public GameObject btnMana;
+        public GameObject btnSkill;
         public Button btnStrength;
         public Button btnAgility;
         public Button btnIntelligence;
         public Button btnStamina;
         public Button btnMind;
-        public Text txtStrength;
-        public Text txtStrength2;
-        public Text txtAgility;
-        public Text txtAgility2;
-        public Text txtIntelligence;
-        public Text txtIntelligence2;
-        public Text txtStamina;
-        public Text txtStamina2;
-        public Text txtMind;
-        public Text txtMind2;
+        public Text strength;
+        public Text addStrength;
+        public Text agility;
+        public Text addAgility;
+        public Text intelligence;
+        public Text addIntelligence;
+        public Text stamina;
+        public Text addStamina;
+        public Text mind;
+        public Text addMind;
         public Text txtPhysicalAttack;
         public Text txtPhysicalDefense;
         public Text txtMagicAttack;
@@ -42,13 +46,16 @@ namespace DungeonPlayer
         public Text txtBattleSpeed;
         public Text txtBattleResponse;
         public Text txtPotential;
-        public Text txtMainWeapon;
-        public Text txtSubWeapon;
-        public Text txtArmor;
-        public Text txtAccessory1;
-        public Text txtAccessory2;
-        public Text txtExperience;
-        public Text txtGold;
+        public Text weapon;
+        public Text subWeapon;
+        public Text armor;
+        public Text accessory;
+        public Text accessory2;
+        public GameObject back_weapon;
+        public GameObject back_subWeapon;
+        public GameObject back_armor;
+        public GameObject back_accessory;
+        public GameObject back_accessory2;
 
         private string workName;
         private string workLevel;
@@ -67,34 +74,8 @@ namespace DungeonPlayer
         private string workJobclass;
         private string[] workBackpack = new string[Database.MAX_BACKPACK_SIZE];
         private bool firstAction = false;
-        private MainCharacter player;
 
-        private MainCharacter mc;
-        public MainCharacter MC
-        {
-            get { return mc; }
-            set { mc = value; }
-        }
-
-        private MainCharacter sc;
-        public MainCharacter SC
-        {
-            get { return sc; }
-            set { sc = value; }
-        }
-        private MainCharacter tc;
-        public MainCharacter TC
-        {
-            get { return tc; }
-            set { tc = value; }
-        }
-
-        private WorldEnvironment we;
-        public WorldEnvironment WE
-        {
-            get { return we; }
-            set { we = value; }
-        }
+        ItemBackPack[] backpackData = null;
 
         // s 後編追加
         private bool initializeLevelUp;
@@ -154,6 +135,7 @@ namespace DungeonPlayer
         }
 
 
+        public GameObject[] back_Backpack;
         public Text[] backpack;
         public Text[] backpackStack;
         private GameObject[] backpackIcon; // pb
@@ -175,16 +157,147 @@ namespace DungeonPlayer
         // Use this for initialization
         void Start()
         {
+            GroundOne.InitializeGroundOne();
             GroundOne.InitializeNetworkConnection();
             if (GroundOne.IsConnect)
             {
                 GroundOne.CS.rcm += new ClientSocket.ReceiveClientMessage(ReceiveFromClientSocket);
             }
 
-            player = new MainCharacter();
-            //SetupBackpackData(); [todo]
+            SettingCharacterData(GroundOne.MC);
+            RefreshPartyMembersBattleStatus(GroundOne.MC);
 
+            //SetupBackpackData(); [todo]
+            backpackData = GroundOne.MC.GetBackPackInfo();
+            if (this.backpackData != null)
+            {
+                for (int ii = 0; ii < this.backpackData.Length; ii++)
+                {
+                    if (this.backpackData[ii] != null)
+                    {
+                        this.backpack[ii].text = this.backpackData[ii].Name;
+                        Method.UpdateRareColor(backpackData[ii], backpack[ii], back_Backpack[ii]);
+                    }
+                    else
+                    {
+                        this.backpack[ii].text = "";
+                    }
+                }
+            }
         }
+
+        //private void TruthStatusPlayer_Load(object sender, EventArgs e)
+        //{
+        //    this.basePhysicalLocation = this.PhysicalAttck.Location;
+
+        //    this.buttonStrength.BackgroundImageLayout = ImageLayout.Stretch;
+        //    this.buttonStrength.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "StrengthMark.bmp");
+        //    this.buttonAgility.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "AgilityMark.bmp");
+        //    this.buttonIntelligence.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "IntelligenceMark.bmp");
+        //    this.buttonStamina.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "StaminaMark.bmp");
+        //    this.buttonMind.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "MindMark.bmp");
+
+        //    // this.gold.Text = mc.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+
+        //    this.BackColor = currentStatusView;
+        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
+        //    {
+        //        SettingCharacterData(mc);
+        //        RefreshPartyMembersBattleStatus(mc);
+        //    }
+        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
+        //    {
+        //        SettingCharacterData(sc);
+        //        RefreshPartyMembersBattleStatus(sc);
+        //    }
+        //    else if (tc != null && sc.PlayerStatusColor == this.BackColor)
+        //    {
+        //        SettingCharacterData(tc);
+        //        RefreshPartyMembersBattleStatus(tc);
+        //    }
+        //    if (mc != null) { button2.BackColor = mc.PlayerColor; }
+        //    if (sc != null) { button3.BackColor = sc.PlayerColor; }
+        //    if (tc != null) { button4.BackColor = tc.PlayerColor; }
+
+        //    RefreshPartyMembersLife();
+
+        //    if (!we.AvailableSecondCharacter && !we.AvailableThirdCharacter)
+        //    {
+        //        button2.Visible = false;
+        //        labelFirstPlayerLife.Visible = false;
+        //    }
+        //    if (this.duelMode == true)
+        //    {
+        //        button2.Visible = false;
+        //        labelFirstPlayerLife.Visible = false;
+        //    }
+
+        //    if (we.AvailableSecondCharacter && this.duelMode == false)
+        //    {
+        //        button3.Visible = true;
+        //        labelSecondPlayerLife.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        button3.Visible = false;
+        //        labelSecondPlayerLife.Visible = false;
+        //    }
+        //    if (we.AvailableThirdCharacter && this.duelMode == false)
+        //    {
+        //        button4.Visible = true;
+        //        labelThirdPlayerLife.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        button4.Visible = false;
+        //        labelThirdPlayerLife.Visible = false;
+        //    }
+
+        //    if (!levelUp)
+        //    {
+        //        //buttonStrength.Enabled = false;
+        //        //buttonAgility.Enabled = false;
+        //        //buttonIntelligence.Enabled = false;
+        //        //buttonStamina.Enabled = false;
+        //        //buttonMind.Enabled = false;
+
+        //        mainMessage.Text = "";
+        //    }
+        //    else
+        //    {
+        //        button1.Visible = false;
+        //        if (CumultiveLvUpValue >= 2)
+        //        {
+        //            mainMessage.Text = CumultiveLvUpValue.ToString() + "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
+        //        }
+        //        else
+        //        {
+        //            mainMessage.Text = "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
+        //        }
+        //    }
+
+        //    if (this.OnlySelectTrash)
+        //    {
+        //        button1.Text = "諦める";
+        //        mainMessage.Text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
+        //        FirstViewToSecondView = true;
+        //        grpBattleStatus.Width = 0;
+        //        grpEquipment.Width = 0;
+        //        grpParameter.Width = 0;
+        //        grpBackPack.Width = BACKPACK_WIDTH;
+        //        grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
+        //    }
+
+        //    if (this.onlyUseItem)
+        //    {
+        //        FirstViewToSecondView = true;
+        //        grpBattleStatus.Width = 0;
+        //        grpEquipment.Width = 0;
+        //        grpParameter.Width = 0;
+        //        grpBackPack.Width = BACKPACK_WIDTH;
+        //        grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
+        //    }
+        //}
 
         string GetString(string msg, string protocolStr)
         {
@@ -217,13 +330,13 @@ namespace DungeonPlayer
                 string msgData = GetString(msg, Protocol.LoadCharacter);
 
                 var dict = MiniJSON.Json.Deserialize(msgData) as Dictionary<string, object>;
-                player.Name = dict["name"].ToString();
-                player.Level = System.Convert.ToInt32(dict["level"]);
-                player.Strength = System.Convert.ToInt32(dict["strength"]);
-                player.Agility = System.Convert.ToInt32(dict["agility"]);
-                player.Intelligence = System.Convert.ToInt32(dict["intelligence"]);
-                player.Stamina = System.Convert.ToInt32(dict["stamina"]);
-                player.Mind = System.Convert.ToInt32(dict["mind"]);
+                GroundOne.MC.Name = dict["name"].ToString();
+                GroundOne.MC.Level = System.Convert.ToInt32(dict["level"]);
+                GroundOne.MC.Strength = System.Convert.ToInt32(dict["strength"]);
+                GroundOne.MC.Agility = System.Convert.ToInt32(dict["agility"]);
+                GroundOne.MC.Intelligence = System.Convert.ToInt32(dict["intelligence"]);
+                GroundOne.MC.Stamina = System.Convert.ToInt32(dict["stamina"]);
+                GroundOne.MC.Mind = System.Convert.ToInt32(dict["mind"]);
 
                 this.workName = dict["name"].ToString();
                 this.workLevel = ((long)dict["level"]).ToString();
@@ -231,27 +344,27 @@ namespace DungeonPlayer
                 if (dict["mainweapon"] != null)
                 {
                     this.workMainWeapon = dict["mainweapon"].ToString();
-                    player.MainWeapon = new ItemBackPack(workMainWeapon);
+                    GroundOne.MC.MainWeapon = new ItemBackPack(workMainWeapon);
                 }
                 if (dict["subweapon"] != null)
                 {
                     this.workSubWeapon = dict["subweapon"].ToString();
-                    player.SubWeapon = new ItemBackPack(workSubWeapon);
+                    GroundOne.MC.SubWeapon = new ItemBackPack(workSubWeapon);
                 }
                 if (dict["mainarmor"] != null)
                 {
                     this.workArmor = dict["mainarmor"].ToString();
-                    player.MainArmor = new ItemBackPack(workArmor);
+                    GroundOne.MC.MainArmor = new ItemBackPack(workArmor);
                 }
                 if (dict["accessory1"] != null)
                 {
                     this.workAccessory1 = dict["accessory1"].ToString();
-                    player.Accessory = new ItemBackPack(workAccessory1);
+                    GroundOne.MC.Accessory = new ItemBackPack(workAccessory1);
                 }
                 if (dict["accessory2"] != null)
                 {
                     this.workAccessory2 = dict["accessory2"].ToString();
-                    player.Accessory2 = new ItemBackPack(workAccessory2);
+                    GroundOne.MC.Accessory2 = new ItemBackPack(workAccessory2);
                 }
                 this.workExperience = (long)dict["experience"] + " / " + "200";
                 this.workGold = dict["gold"].ToString();
@@ -294,18 +407,18 @@ namespace DungeonPlayer
                 workDebug += "call ok3 " + type + "\r\n";
                 if (type == "メイン")
                 {
-                    player.MainWeapon.PhysicalAttackMinValue = System.Convert.ToInt32(dict["MinValue"]);
-                    player.MainWeapon.PhysicalAttackMaxValue = System.Convert.ToInt32(dict["MaxValue"]);
-                    UpdateParameter(player);
+                    GroundOne.MC.MainWeapon.PhysicalAttackMinValue = System.Convert.ToInt32(dict["MinValue"]);
+                    GroundOne.MC.MainWeapon.PhysicalAttackMaxValue = System.Convert.ToInt32(dict["MaxValue"]);
+                    UpdateParameter(GroundOne.MC);
                     dict.Clear();
                     byte[] bb2 = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workArmor);
                     GroundOne.CS.SendMessage(bb2);
                 }
                 else if (type == "サブ")
                 {
-                    player.MainArmor.PhysicalDefenseMinValue = System.Convert.ToInt32(dict["MinValue"]);
-                    player.MainArmor.PhysicalDefenseMaxValue = System.Convert.ToInt32(dict["MaxValue"]);
-                    UpdateParameter(player);
+                    GroundOne.MC.MainArmor.PhysicalDefenseMinValue = System.Convert.ToInt32(dict["MinValue"]);
+                    GroundOne.MC.MainArmor.PhysicalDefenseMaxValue = System.Convert.ToInt32(dict["MaxValue"]);
+                    UpdateParameter(GroundOne.MC);
                     dict.Clear();
                     byte[] bb3 = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workAccessory1);
                     GroundOne.CS.SendMessage(bb3);
@@ -316,18 +429,18 @@ namespace DungeonPlayer
                     {
                         getAccessory1 = true;
                         workDebug += System.Convert.ToInt32(dict["strength"]).ToString() + "\r\n";
-                        player.Accessory.BuffUpStrength = System.Convert.ToInt32(dict["strength"]);
-                        workStrengthUp += player.Accessory.BuffUpStrength;
-                        player.Accessory.BuffUpAgility = System.Convert.ToInt32(dict["agility"]);
-                        workAgilityUp += player.Accessory.BuffUpAgility;
-                        player.Accessory.BuffUpIntelligence = System.Convert.ToInt32(dict["intelligence"]);
-                        workIntelligenceUp += player.Accessory.BuffUpIntelligence;
-                        player.Accessory.BuffUpStamina = System.Convert.ToInt32(dict["stamina"]);
-                        workStaminaUp += player.Accessory.BuffUpStamina;
-                        player.Accessory.BuffUpMind = System.Convert.ToInt32(dict["mind"]);
-                        workMindUp += player.Accessory.BuffUpMind;
+                        GroundOne.MC.Accessory.BuffUpStrength = System.Convert.ToInt32(dict["strength"]);
+                        workStrengthUp += GroundOne.MC.Accessory.BuffUpStrength;
+                        GroundOne.MC.Accessory.BuffUpAgility = System.Convert.ToInt32(dict["agility"]);
+                        workAgilityUp += GroundOne.MC.Accessory.BuffUpAgility;
+                        GroundOne.MC.Accessory.BuffUpIntelligence = System.Convert.ToInt32(dict["intelligence"]);
+                        workIntelligenceUp += GroundOne.MC.Accessory.BuffUpIntelligence;
+                        GroundOne.MC.Accessory.BuffUpStamina = System.Convert.ToInt32(dict["stamina"]);
+                        workStaminaUp += GroundOne.MC.Accessory.BuffUpStamina;
+                        GroundOne.MC.Accessory.BuffUpMind = System.Convert.ToInt32(dict["mind"]);
+                        workMindUp += GroundOne.MC.Accessory.BuffUpMind;
                         workDebug += " update parameter call \r\n";
-                        UpdateParameter(player);
+                        UpdateParameter(GroundOne.MC);
                         workDebug += " update parameter call ok \r\n";
                         dict.Clear();
 
@@ -346,12 +459,12 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        player.Accessory2.BuffUpStrength = System.Convert.ToInt32(dict["strength"]);
-                        player.Accessory2.BuffUpAgility = System.Convert.ToInt32(dict["agility"]);
-                        player.Accessory2.BuffUpIntelligence = System.Convert.ToInt32(dict["intelligence"]);
-                        player.Accessory2.BuffUpStamina = System.Convert.ToInt32(dict["stamina"]);
-                        player.Accessory2.BuffUpMind = System.Convert.ToInt32(dict["mind"]);
-                        UpdateParameter(player);
+                        GroundOne.MC.Accessory2.BuffUpStrength = System.Convert.ToInt32(dict["strength"]);
+                        GroundOne.MC.Accessory2.BuffUpAgility = System.Convert.ToInt32(dict["agility"]);
+                        GroundOne.MC.Accessory2.BuffUpIntelligence = System.Convert.ToInt32(dict["intelligence"]);
+                        GroundOne.MC.Accessory2.BuffUpStamina = System.Convert.ToInt32(dict["stamina"]);
+                        GroundOne.MC.Accessory2.BuffUpMind = System.Convert.ToInt32(dict["mind"]);
+                        UpdateParameter(GroundOne.MC);
                         dict.Clear();
                     }
                 }
@@ -477,59 +590,56 @@ namespace DungeonPlayer
                 }
             }
 
-            this.debug.text = this.workDebug;
-            this.txtName.text = "Name:  " + this.workName;
-            this.txtLevel.text = "Level  " + this.workLevel;
-            this.txtStrength2.text = workStrengthUp.ToString();
-            this.txtAgility2.text = workAgilityUp.ToString();
-            this.txtIntelligence2.text = workIntelligenceUp.ToString();
-            this.txtStamina2.text = workStaminaUp.ToString();
-            this.txtMind2.text = workMindUp.ToString();
+            // after delete
+            //this.debug.text = this.workDebug;
+            //this.txtName.text = "Name:  " + this.workName;
+            //this.txtLevel.text = "Level  " + this.workLevel;
+            //this.txtStrength2.text = workStrengthUp.ToString();
+            //this.txtAgility2.text = workAgilityUp.ToString();
+            //this.txtIntelligence2.text = workIntelligenceUp.ToString();
+            //this.txtStamina2.text = workStaminaUp.ToString();
+            //this.txtMind2.text = workMindUp.ToString();
 
-            this.txtMainWeapon.text = this.workMainWeapon;
-            if (this.workMainWeapon == string.Empty)
-            {
-                this.txtMainWeapon.text = "( No Equipment )";
-            }
+            //this.weapon.text = this.workMainWeapon;
+            //if (this.workMainWeapon == string.Empty)
+            //{
+            //    this.weapon.text = "( No Equipment )";
+            //}
 
-            this.txtSubWeapon.text = this.workSubWeapon;
-            if (this.workSubWeapon == string.Empty)
-            {
-                this.txtSubWeapon.text = "( No Equipment )";
-            }
+            //this.subWeapon.text = this.workSubWeapon;
+            //if (this.workSubWeapon == string.Empty)
+            //{
+            //    this.subWeapon.text = "( No Equipment )";
+            //}
 
-            this.txtArmor.text = this.workArmor;
-            if (this.workArmor == string.Empty)
-            {
-                this.txtArmor.text = "( No Equipment )";
-            }
+            //this.armor.text = this.workArmor;
+            //if (this.workArmor == string.Empty)
+            //{
+            //    this.armor.text = "( No Equipment )";
+            //}
 
-            this.txtAccessory1.text = this.workAccessory1;
-            if (this.workAccessory1 == string.Empty)
-            {
-                this.txtAccessory1.text = "( No Equipment )";
-            }
+            //this.accessory.text = this.workAccessory1;
+            //if (this.workAccessory1 == string.Empty)
+            //{
+            //    this.accessory.text = "( No Equipment )";
+            //}
 
-            this.txtAccessory2.text = this.workAccessory2;
-            if (this.workAccessory2 == string.Empty)
-            {
-                this.txtAccessory2.text = "( No Equipment )";
-            }
+            //this.accessory2.text = this.workAccessory2;
+            //if (this.workAccessory2 == string.Empty)
+            //{
+            //    this.accessory2.text = "( No Equipment )";
+            //}
 
-            this.txtExperience.text = "Experience:  " + this.workExperience;
-            this.txtGold.text = "Gold:  " + this.workGold;
-            this.txtJobClass.text = "JobClass:  " + this.workJobclass;
+            //this.txtExperience.text = "Experience:  " + this.workExperience;
+            //this.txtGold.text = "Gold:  " + this.workGold;
+            //this.txtJobClass.text = "JobClass:  " + this.workJobclass;
 
-            this.txtMagicAttack.text = (player.TotalIntelligence * 2).ToString();
-            this.txtMagicDefense.text = (player.TotalIntelligence * 0.4).ToString();
-            this.txtBattleSpeed.text = (player.TotalAgility * 2).ToString();
-            this.txtBattleResponse.text = (player.TotalAgility * 0.4).ToString();
-            this.txtPotential.text = (player.TotalMind * 2).ToString();
+            //this.txtMagicAttack.text = (GroundOne.MC.TotalIntelligence * 2).ToString();
+            //this.txtMagicDefense.text = (GroundOne.MC.TotalIntelligence * 0.4).ToString();
+            //this.txtBattleSpeed.text = (GroundOne.MC.TotalAgility * 2).ToString();
+            //this.txtBattleResponse.text = (GroundOne.MC.TotalAgility * 0.4).ToString();
+            //this.txtPotential.text = (GroundOne.MC.TotalMind * 2).ToString();
 
-            for (int ii = 0; ii < this.backpack.Length; ii++ )
-            {
-                this.backpack[ii].text = this.workBackpack[ii];
-            }
         }
 
         public void tapClose()
@@ -2189,119 +2299,6 @@ namespace DungeonPlayer
         //    }
         //}
 
-        //private void TruthStatusPlayer_Load(object sender, EventArgs e)
-        //{
-        //    this.basePhysicalLocation = this.PhysicalAttck.Location;
-
-        //    this.buttonStrength.BackgroundImageLayout = ImageLayout.Stretch;
-        //    this.buttonStrength.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "StrengthMark.bmp");
-        //    this.buttonAgility.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "AgilityMark.bmp");
-        //    this.buttonIntelligence.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "IntelligenceMark.bmp");
-        //    this.buttonStamina.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "StaminaMark.bmp");
-        //    this.buttonMind.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "MindMark.bmp");
-
-        //    // this.gold.Text = mc.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
-
-        //    this.BackColor = currentStatusView;
-        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        SettingCharacterData(mc);
-        //        RefreshPartyMembersBattleStatus(mc);
-        //    }
-        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        SettingCharacterData(sc);
-        //        RefreshPartyMembersBattleStatus(sc);
-        //    }
-        //    else if (tc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        SettingCharacterData(tc);
-        //        RefreshPartyMembersBattleStatus(tc);
-        //    }
-        //    if (mc != null) { button2.BackColor = mc.PlayerColor; }
-        //    if (sc != null) { button3.BackColor = sc.PlayerColor; }
-        //    if (tc != null) { button4.BackColor = tc.PlayerColor; }
-
-        //    RefreshPartyMembersLife();
-
-        //    if (!we.AvailableSecondCharacter && !we.AvailableThirdCharacter)
-        //    {
-        //        button2.Visible = false;
-        //        labelFirstPlayerLife.Visible = false;
-        //    }
-        //    if (this.duelMode == true)
-        //    {
-        //        button2.Visible = false;
-        //        labelFirstPlayerLife.Visible = false;
-        //    }
-
-        //    if (we.AvailableSecondCharacter && this.duelMode == false)
-        //    {
-        //        button3.Visible = true;
-        //        labelSecondPlayerLife.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        button3.Visible = false;
-        //        labelSecondPlayerLife.Visible = false;
-        //    }
-        //    if (we.AvailableThirdCharacter && this.duelMode == false)
-        //    {
-        //        button4.Visible = true;
-        //        labelThirdPlayerLife.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        button4.Visible = false;
-        //        labelThirdPlayerLife.Visible = false;
-        //    }
-
-        //    if (!levelUp)
-        //    {
-        //        //buttonStrength.Enabled = false;
-        //        //buttonAgility.Enabled = false;
-        //        //buttonIntelligence.Enabled = false;
-        //        //buttonStamina.Enabled = false;
-        //        //buttonMind.Enabled = false;
-
-        //        mainMessage.Text = "";
-        //    }
-        //    else
-        //    {
-        //        button1.Visible = false;
-        //        if (CumultiveLvUpValue >= 2)
-        //        {
-        //            mainMessage.Text = CumultiveLvUpValue.ToString() + "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
-        //        }
-        //        else
-        //        {
-        //            mainMessage.Text = "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
-        //        }
-        //    }
-
-        //    if (this.OnlySelectTrash)
-        //    {
-        //        button1.Text = "諦める";
-        //        mainMessage.Text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
-        //        FirstViewToSecondView = true;
-        //        grpBattleStatus.Width = 0;
-        //        grpEquipment.Width = 0;
-        //        grpParameter.Width = 0;
-        //        grpBackPack.Width = BACKPACK_WIDTH;
-        //        grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
-        //    }
-
-        //    if (this.onlyUseItem)
-        //    {
-        //        FirstViewToSecondView = true;
-        //        grpBattleStatus.Width = 0;
-        //        grpEquipment.Width = 0;
-        //        grpParameter.Width = 0;
-        //        grpBackPack.Width = BACKPACK_WIDTH;
-        //        grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
-        //    }
-        //}
-
 
         //private void CheckUpPoint()
         //{
@@ -2326,44 +2323,50 @@ namespace DungeonPlayer
 
 
 
-        //private void SettingCharacterData(MainCharacter chara)
-        //{
-        //    this.playerName.Text = chara.FullName;
-        //    this.level.Text = chara.Level.ToString();
-        //    if (chara.Level < Database.CHARACTER_MAX_LEVEL5)
-        //    {
-        //        this.experience.Text = chara.Exp.ToString() + " / " + chara.NextLevelBorder.ToString();
-        //    }
-        //    else
-        //    {
-        //        this.experience.Text = "-----" + " / " + "-----";
-        //    }
+        private void SettingCharacterData(MainCharacter chara)
+        {
+            this.txtName.text = chara.FullName;
+            this.txtLevel.text = chara.Level.ToString();
+            if (chara.Level < Database.CHARACTER_MAX_LEVEL5)
+            {
+                this.txtExperience.text = chara.Exp.ToString() + " / " + chara.NextLevelBorder.ToString();
+            }
+            else
+            {
+                this.txtExperience.text = "-----" + " / " + "-----";
+            }
 
-        //    this.strength.Text = chara.Strength.ToString();
-        //    this.addStrength.Text = " + " + chara.BuffStrength_Accessory.ToString();
-        //    if (chara.BuffStrength_Food == 0) this.addStrength2.Text = "";
-        //    else this.addStrength2.Text = " + " + chara.BuffStrength_Food.ToString();
+            this.strength.text = chara.Strength.ToString();
+            // todo
+            //this.addStrength.text = " + " + chara.BuffStrength_Accessory.ToString();
+            //if (chara.BuffStrength_Food == 0) this.addStrength2.text = "";
+            //else this.addStrength2.text = " + " + chara.BuffStrength_Food.ToString();
 
-        //    this.agility.Text = chara.Agility.ToString();
-        //    this.addAgility.Text = " + " + chara.BuffAgility_Accessory.ToString();
-        //    if (chara.BuffAgility_Food == 0) this.addAgility2.Text = "";
-        //    else this.addAgility2.Text = " + " + chara.BuffAgility_Food.ToString();
+            this.agility.text = chara.Agility.ToString();
+            // todo
+            //this.addAgility.text = " + " + chara.BuffAgility_Accessory.ToString();
+            //if (chara.BuffAgility_Food == 0) this.addAgility2.text = "";
+            //else this.addAgility2.text = " + " + chara.BuffAgility_Food.ToString();
 
-        //    this.intelligence.Text = chara.Intelligence.ToString();
-        //    this.addIntelligence.Text = " + " + chara.BuffIntelligence_Accessory.ToString();
-        //    if (chara.BuffIntelligence_Food == 0) this.addIntelligence2.Text = "";
-        //    else this.addIntelligence2.Text = " + " + chara.BuffIntelligence_Food.ToString();
+            this.intelligence.text = chara.Intelligence.ToString();
+            // todo
+            //this.addIntelligence.text = " + " + chara.BuffIntelligence_Accessory.ToString();
+            //if (chara.BuffIntelligence_Food == 0) this.addIntelligence2.text = "";
+            //else this.addIntelligence2.text = " + " + chara.BuffIntelligence_Food.ToString();
 
-        //    this.stamina.Text = chara.Stamina.ToString();
-        //    this.addStamina.Text = " + " + chara.BuffStamina_Accessory.ToString();
-        //    if (chara.BuffStamina_Food == 0) this.addStamina2.Text = "";
-        //    else this.addStamina2.Text = " + " + chara.BuffStamina_Food.ToString();
+            this.stamina.text = chara.Stamina.ToString();
+            // todo
+            //this.addStamina.text = " + " + chara.BuffStamina_Accessory.ToString();
+            //if (chara.BuffStamina_Food == 0) this.addStamina2.text = "";
+            //else this.addStamina2.text = " + " + chara.BuffStamina_Food.ToString();
 
-        //    this.mindLabel.Text = chara.Mind.ToString();
-        //    this.addMind.Text = " + " + chara.BuffMind_Accessory.ToString();
-        //    if (chara.BuffMind_Food == 0) this.addMind2.Text = "";
-        //    else this.addMind2.Text = " + " + chara.BuffMind_Food.ToString();
+            this.mind.text = chara.Mind.ToString();
+            // todo
+            //this.addMind.text = " + " + chara.BuffMind_Accessory.ToString();
+            //if (chara.BuffMind_Food == 0) this.addMind2.text = "";
+            //else this.addMind2.text = " + " + chara.BuffMind_Food.ToString();
 
+            // todo
         //    // over shifting
         //    if (this.useOverShifting)
         //    {
@@ -2386,141 +2389,131 @@ namespace DungeonPlayer
         //    }
         //    //
 
-        //    RefreshPartyMembersLife();
-        //    this.life.Text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
+        //    RefreshPartyMembersLife(); // todo
+            this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
 
-        //    if (chara.AvailableSkill)
-        //    {
-        //        label24.Visible = true;
-        //        skill.Visible = true;
-        //        if (chara.CurrentSkillPoint > chara.MaxSkillPoint)
-        //        {
-        //            chara.CurrentSkillPoint = chara.MaxSkillPoint;
-        //        }
-        //        skill.Text = chara.CurrentSkillPoint.ToString() + " / " + chara.MaxSkillPoint.ToString();
-        //    }
-        //    else
-        //    {
-        //        label24.Visible = false;
-        //        skill.Visible = false;
-        //    }
+            if (chara.AvailableSkill)
+            {
+                btnSkill.SetActive(true);
+                skill.gameObject.SetActive(true);
+                if (chara.CurrentSkillPoint > chara.MaxSkillPoint)
+                {
+                    chara.CurrentSkillPoint = chara.MaxSkillPoint;
+                }
+                skill.text = chara.CurrentSkillPoint.ToString() + " / " + chara.MaxSkillPoint.ToString();
+            }
+            else
+            {
+                btnSkill.SetActive(false);
+                skill.gameObject.SetActive(false);
+            }
 
-        //    if (chara.AvailableMana)
-        //    {
-        //        label25.Visible = true;
-        //        mana.Visible = true;
-        //        mana.Text = chara.CurrentMana.ToString() + " / " + chara.MaxMana.ToString();
-        //    }
-        //    else
-        //    {
-        //        label25.Visible = false;
-        //        mana.Visible = false;
-        //    }
+            if (chara.AvailableMana)
+            {
+                btnMana.SetActive(true);
+                mana.gameObject.SetActive(true);
+                mana.text = chara.CurrentMana.ToString() + " / " + chara.MaxMana.ToString();
+            }
+            else
+            {
+                btnMana.SetActive(false);
+                mana.gameObject.SetActive(false);
+            }
 
-        //    this.weapon.Text = "";
-        //    this.subWeapon.Text = "";
-        //    this.armor.Text = "";
-        //    this.accessory.Text = "";
-        //    this.accessory2.Text = "";
-        //    if (chara.MainWeapon != null)
-        //    {
-        //        if (chara.MainWeapon.Name == "")
-        //        {
-        //            this.weapon.AutoSize = false;
-        //            this.weapon.BackColor = Color.Transparent;
-        //        }
-        //        else
-        //        {
-        //            this.weapon.AutoSize = true;
-        //            this.weapon.Text = chara.MainWeapon.Name;
-        //            UpdateLabelColorForRare(ref this.weapon, chara.MainWeapon.Rare);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        this.weapon.AutoSize = false;
-        //        this.weapon.BackColor = Color.Transparent;
-        //    }
+            this.weapon.text = "";
+            this.subWeapon.text = "";
+            this.armor.text = "";
+            this.accessory.text = "";
+            this.accessory2.text = "";
+            if (chara.MainWeapon != null)
+            {
+                if (chara.MainWeapon.Name == "")
+                {
+                    this.weapon.text = "( No Equipment )";
+                    //                    this.weapon.BackColor = Color.Transparent; // todo
+                }
+                else
+                {
+                    this.weapon.text = chara.MainWeapon.Name;
+                    Method.UpdateRareColor(chara.MainWeapon, weapon, back_weapon);
+                }
+            }
+            else
+            {
+                this.weapon.text = "( No Equipment )";
+                //                this.weapon.BackColor = Color.Transparent; // todo
+            }
 
-        //    if (chara.SubWeapon != null)
-        //    {
-        //        if (chara.SubWeapon.Name == "")
-        //        {
-        //            this.subWeapon.AutoSize = false;
-        //            this.subWeapon.BackColor = Color.Transparent;
-        //        }
-        //        else
-        //        {
-        //            this.subWeapon.AutoSize = true;
-        //            this.subWeapon.Text = chara.SubWeapon.Name;
-        //            UpdateLabelColorForRare(ref this.subWeapon, chara.SubWeapon.Rare);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        this.subWeapon.AutoSize = false;
-        //        this.subWeapon.BackColor = Color.Transparent;
-        //    }
+            if (chara.SubWeapon != null)
+            {
+                if (chara.SubWeapon.Name == "")
+                {
+                    this.subWeapon.text = "( No Equipment )";
+                }
+                else
+                {
+                    this.subWeapon.text = chara.SubWeapon.Name;
+                    Method.UpdateRareColor(chara.SubWeapon, subWeapon, back_subWeapon);
+                }
+            }
+            else
+            {
+                this.subWeapon.text = "( No Equipment )";
+            }
 
-        //    if (chara.MainArmor != null)
-        //    {
-        //        if (chara.MainArmor.Name == "")
-        //        {
-        //            this.armor.AutoSize = false;
-        //            this.armor.BackColor = Color.Transparent;
-        //        }
-        //        else
-        //        {
-        //            this.armor.AutoSize = true;
-        //            this.armor.Text = chara.MainArmor.Name;
-        //            UpdateLabelColorForRare(ref this.armor, chara.MainArmor.Rare);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        this.armor.AutoSize = false;
-        //        this.armor.BackColor = Color.Transparent;
-        //    }
+            if (chara.MainArmor != null)
+            {
+                if (chara.MainArmor.Name == "")
+                {
+                    this.armor.text = "( No Equipment )";
+                }
+                else
+                {
+                    this.armor.text = chara.MainArmor.Name;
+                    Method.UpdateRareColor(chara.MainArmor, armor, back_armor);
+                }
+            }
+            else
+            {
+                this.armor.text = "( No Equipment )";
+            }
 
-        //    if (chara.Accessory != null)
-        //    {
-        //        if (chara.Accessory.Name == "")
-        //        {
-        //            this.accessory.AutoSize = false;
-        //            this.accessory.BackColor = Color.Transparent;
-        //        }
-        //        else
-        //        {
-        //            this.accessory.AutoSize = true;
-        //            this.accessory.Text = chara.Accessory.Name;
-        //            UpdateLabelColorForRare(ref this.accessory, chara.Accessory.Rare);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        this.accessory.AutoSize = false;
-        //        this.accessory.BackColor = Color.Transparent;
-        //    }
+            if (chara.Accessory != null)
+            {
+                if (chara.Accessory.Name == "")
+                {
+                    this.accessory.text = "( No Equipment )";
+                }
+                else
+                {
+                    this.accessory.text = chara.Accessory.Name;
+                    Method.UpdateRareColor(chara.Accessory, accessory, back_accessory);
+                }
+            }
+            else
+            {
+                this.accessory.text = "( No Equipment )";
+            }
 
-        //    if (chara.Accessory2 != null)
-        //    {
-        //        if (chara.Accessory2.Name == "")
-        //        {
-        //            this.accessory2.AutoSize = false;
-        //            this.accessory2.BackColor = Color.Transparent;
-        //        }
-        //        else
-        //        {
-        //            this.accessory2.AutoSize = true;
-        //            this.accessory2.Text = chara.Accessory2.Name;
-        //            UpdateLabelColorForRare(ref this.accessory2, chara.Accessory2.Rare);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        this.accessory2.AutoSize = false;
-        //        this.accessory2.BackColor = Color.Transparent;
-        //    }
+            if (chara.Accessory2 != null)
+            {
+                if (chara.Accessory2.Name == "")
+                {
+                    this.accessory2.text = "( No Equipment )";
+                }
+                else
+                {
+                    this.accessory2.text = chara.Accessory2.Name;
+                    Method.UpdateRareColor(chara.Accessory2, accessory2, back_accessory2);
+                }
+            }
+            else
+            {
+                this.accessory2.text = "( No Equipment )";
+            }
+            txtGold.text = GroundOne.MC.Gold.ToString() + "[G]";
+
+            // todo
         //    UpdateBackPackLabel(chara);
         //    UpdateSpellSkillLabel(chara);
         //    UpdateResistStatus(chara);
@@ -2528,7 +2521,7 @@ namespace DungeonPlayer
         //    //this.btnLifeTap.Visible = chara.LifeTap;
         //    //this.btnResurrection.Visible = chara.Resurrection;
         //    //this.btnCelestialNova.Visible = chara.CelestialNova;
-        //}
+        }
 
         //private void UpdateSpellSkillLabel(MainCharacter target)
         //{
@@ -2703,52 +2696,52 @@ namespace DungeonPlayer
         //}
 
         //Point basePhysicalLocation;
-        //private void RefreshPartyMembersBattleStatus(MainCharacter player)
-        //{
-        //    double temp1 = 0;
-        //    double temp2 = 0;
-        //    temp1 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
-        //    temp2 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
-        //    PhysicalAttck.Text = temp1.ToString("F2");
-        //    PhysicalAttck.Text += " - " + temp2.ToString("F2");
+        private void RefreshPartyMembersBattleStatus(MainCharacter player)
+        {
+            double temp1 = 0;
+            double temp2 = 0;
+            temp1 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
+            temp2 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
+            txtPhysicalAttack.text = temp1.ToString("F2");
+            txtPhysicalAttack.text += " - " + temp2.ToString("F2");
 
-        //    temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, PlayerStance.None, false);
-        //    temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, PlayerStance.None, false);
-        //    if (temp1 > 0)
-        //    {
-        //        PhysicalAttck.Location = new Point(this.basePhysicalLocation.X, this.basePhysicalLocation.Y - 10);
-        //        PhysicalAttck.Text += "\r\n" + temp1.ToString("F2");
-        //        PhysicalAttck.Text += " - " + temp2.ToString("F2");
-        //    }
-        //    else
-        //    {
-        //        PhysicalAttck.Location = new Point(this.basePhysicalLocation.X, this.basePhysicalLocation.Y);
-        //    }
+            temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false);
+            temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false);
+            if (temp1 > 0)
+            {
+                //txtPhysicalAttack.Location = new Point(this.basePhysicalLocation.X, this.basePhysicalLocation.Y - 10); // todo
+                txtPhysicalAttack.text += "\r\n" + temp1.ToString("F2");
+                txtPhysicalAttack.text += " - " + temp2.ToString("F2");
+            }
+            else
+            {
+                //txtPhysicalAttack.Location = new Point(this.basePhysicalLocation.X, this.basePhysicalLocation.Y); // todo
+            }
 
-        //    temp1 = PrimaryLogic.PhysicalDefenseValue(player, PrimaryLogic.NeedType.Min, false);
-        //    temp2 = PrimaryLogic.PhysicalDefenseValue(player, PrimaryLogic.NeedType.Max, false);
-        //    PhysicalDefense.Text = temp1.ToString("F2");
-        //    PhysicalDefense.Text += " - " + temp2.ToString("F2");
+            temp1 = PrimaryLogic.PhysicalDefenseValue(player, PrimaryLogic.NeedType.Min, false);
+            temp2 = PrimaryLogic.PhysicalDefenseValue(player, PrimaryLogic.NeedType.Max, false);
+            txtPhysicalDefense.text = temp1.ToString("F2");
+            txtPhysicalDefense.text += " - " + temp2.ToString("F2");
 
-        //    temp1 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
-        //    temp2 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
-        //    MagicAttack.Text = temp1.ToString("F2");
-        //    MagicAttack.Text += " - " + temp2.ToString("F2");
+            temp1 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
+            temp2 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
+            txtMagicAttack.text = temp1.ToString("F2");
+            txtMagicAttack.text += " - " + temp2.ToString("F2");
 
-        //    temp1 = PrimaryLogic.MagicDefenseValue(player, PrimaryLogic.NeedType.Min, false);
-        //    temp2 = PrimaryLogic.MagicDefenseValue(player, PrimaryLogic.NeedType.Max, false);
-        //    MagicDefense.Text = temp1.ToString("F2");
-        //    MagicDefense.Text += " - " + temp2.ToString("F2");
+            temp1 = PrimaryLogic.MagicDefenseValue(player, PrimaryLogic.NeedType.Min, false);
+            temp2 = PrimaryLogic.MagicDefenseValue(player, PrimaryLogic.NeedType.Max, false);
+            txtMagicDefense.text = temp1.ToString("F2");
+            txtMagicDefense.text += " - " + temp2.ToString("F2");
 
-        //    temp1 = PrimaryLogic.BattleSpeedValue(player, false);
-        //    BattleSpeed.Text = temp1.ToString("F2");
+            temp1 = PrimaryLogic.BattleSpeedValue(player, false);
+            txtBattleSpeed.text = temp1.ToString("F2");
 
-        //    temp1 = PrimaryLogic.BattleResponseValue(player, false);
-        //    BattleResponse.Text = temp1.ToString("F2");
+            temp1 = PrimaryLogic.BattleResponseValue(player, false);
+            txtBattleResponse.text = temp1.ToString("F2");
 
-        //    temp1 = PrimaryLogic.PotentialValue(player, false);
-        //    Potential.Text = temp1.ToString("F2");
-        //}
+            temp1 = PrimaryLogic.PotentialValue(player, false);
+            txtPotential.text = temp1.ToString("F2");
+        }
 
         //private void RefreshPartyMembersLife()
         //{
@@ -3502,10 +3495,10 @@ namespace DungeonPlayer
         //    RefreshPartyMembersLife();
         //}
 
-        //private void weapon_Click(object sender, EventArgs e)
-        //{
-        //    ChangeEquipment(0);
-        //}
+        public void weapon_Click(Text sender)
+        {
+            ChangeEquipment(0);
+        }
         //private void subWeapon_Click(object sender, System.EventArgs e)
         //{
         //    MainCharacter targetPlayer = null;
@@ -3555,112 +3548,115 @@ namespace DungeonPlayer
         //    ChangeEquipment(4);
         //}
 
-        //// equipType: 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
-        //private void ChangeEquipment(int equipType)
-        //{
-        //    MainCharacter targetPlayer = null;
-        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = mc;
-        //    }
-        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = sc;
-        //    }
-        //    else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = tc;
-        //    }
+        // equipType: 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
+        private void ChangeEquipment(int equipType)
+        {
+            MainCharacter targetPlayer = GroundOne.MC;
+            // todo
+            //if (mc != null && mc.PlayerStatusColor == this.BackColor)
+            //{
+            //    targetPlayer = mc;
+            //}
+            //else if (sc != null && sc.PlayerStatusColor == this.BackColor)
+            //{
+            //    targetPlayer = sc;
+            //}
+            //else if (tc != null && tc.PlayerStatusColor == this.BackColor)
+            //{
+            //    targetPlayer = tc;
+            //}
 
-        //    TruthSelectEquipment tse = new TruthSelectEquipment();
-        //    ItemBackPack[] temp = targetPlayer.GetBackPackInfo();
-        //    int counter = 0;
-        //    for (int ii = 0; ii < temp.Length; ii++)
-        //    {
-        //        if (temp[ii] == null)
-        //            continue;
+            // todo
+            //TruthSelectEquipment tse = new TruthSelectEquipment();
+            //ItemBackPack[] temp = targetPlayer.GetBackPackInfo();
+            //int counter = 0;
+            //for (int ii = 0; ii < temp.Length; ii++)
+            //{
+            //    if (temp[ii] == null)
+            //        continue;
 
-        //        if (CheckEquipmentType(targetPlayer, temp[ii], equipType))
-        //        {
-        //            tse.btn[counter].Text = temp[ii].Name;
-        //            counter++;
-        //        }
-        //    }
-        //    tse.StartPosition = FormStartPosition.CenterParent;
-        //    tse.Player = targetPlayer;
-        //    tse.EquipType = equipType;
-        //    tse.ShowDialog();
-        //    if (tse.DialogResult == System.Windows.Forms.DialogResult.OK)
-        //    {
-        //        ItemBackPack exchangeItem = new ItemBackPack(tse.SelectValue);
-        //        ItemBackPack tempItem = null;
-        //        if (equipType == 0)
-        //        {
-        //            tempItem = targetPlayer.MainWeapon;
-        //            targetPlayer.MainWeapon = exchangeItem;
-        //            if ((exchangeItem.Type == ItemBackPack.ItemType.Weapon_Rod) ||
-        //                (exchangeItem.Type == ItemBackPack.ItemType.Weapon_TwoHand))
-        //            {
-        //                if (targetPlayer.SubWeapon != null)
-        //                {
-        //                    if (targetPlayer.SubWeapon.Name != "")
-        //                    {
-        //                        targetPlayer.AddBackPack(targetPlayer.SubWeapon);
-        //                    }
-        //                    targetPlayer.SubWeapon = null;
-        //                }
-        //            }
-        //        }
-        //        else if (equipType == 1)
-        //        {
-        //            tempItem = targetPlayer.SubWeapon;
-        //            targetPlayer.SubWeapon = exchangeItem;
-        //            if (targetPlayer.MainWeapon != null)
-        //            {
-        //                if (targetPlayer.MainWeapon.Name != "")
-        //                {
-        //                    if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
-        //                        (targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand))
-        //                    {
-        //                        targetPlayer.AddBackPack(targetPlayer.MainWeapon);
-        //                        targetPlayer.MainWeapon = null;
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        else if (equipType == 2)
-        //        {
-        //            tempItem = targetPlayer.MainArmor;
-        //            targetPlayer.MainArmor = exchangeItem;
-        //        }
-        //        else if (equipType == 3)
-        //        {
-        //            tempItem = targetPlayer.Accessory;
-        //            targetPlayer.Accessory = exchangeItem;
-        //        }
-        //        else if (equipType == 4)
-        //        {
-        //            tempItem = targetPlayer.Accessory2;
-        //            targetPlayer.Accessory2 = exchangeItem;
-        //        }
-        //        if (exchangeItem != null)
-        //        {
-        //            if (exchangeItem.Name != "")
-        //            {
-        //                targetPlayer.DeleteBackPack(exchangeItem);
-        //            }
-        //        }
-        //        if (tempItem != null)
-        //        {
-        //            if (tempItem.Name != "")
-        //            {
-        //                targetPlayer.AddBackPack(tempItem);
-        //            }
-        //        }
-        //        SettingCharacterData(targetPlayer);
-        //        RefreshPartyMembersBattleStatus(targetPlayer);
-        //    }
-        //}
+            //    if (CheckEquipmentType(targetPlayer, temp[ii], equipType))
+            //    {
+            //        tse.btn[counter].Text = temp[ii].Name;
+            //        counter++;
+            //    }
+            //}
+            SceneDimension.Go(Database.TruthStatusPlayer, Database.TruthSelectEquipment);
+            //tse.StartPosition = FormStartPosition.CenterParent;
+            //tse.Player = targetPlayer;
+            //tse.EquipType = equipType;
+            //tse.ShowDialog();
+            //if (tse.DialogResult == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    ItemBackPack exchangeItem = new ItemBackPack(tse.SelectValue);
+            //    ItemBackPack tempItem = null;
+            //    if (equipType == 0)
+            //    {
+            //        tempItem = targetPlayer.MainWeapon;
+            //        targetPlayer.MainWeapon = exchangeItem;
+            //        if ((exchangeItem.Type == ItemBackPack.ItemType.Weapon_Rod) ||
+            //            (exchangeItem.Type == ItemBackPack.ItemType.Weapon_TwoHand))
+            //        {
+            //            if (targetPlayer.SubWeapon != null)
+            //            {
+            //                if (targetPlayer.SubWeapon.Name != "")
+            //                {
+            //                    targetPlayer.AddBackPack(targetPlayer.SubWeapon);
+            //                }
+            //                targetPlayer.SubWeapon = null;
+            //            }
+            //        }
+            //    }
+            //    else if (equipType == 1)
+            //    {
+            //        tempItem = targetPlayer.SubWeapon;
+            //        targetPlayer.SubWeapon = exchangeItem;
+            //        if (targetPlayer.MainWeapon != null)
+            //        {
+            //            if (targetPlayer.MainWeapon.Name != "")
+            //            {
+            //                if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
+            //                    (targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand))
+            //                {
+            //                    targetPlayer.AddBackPack(targetPlayer.MainWeapon);
+            //                    targetPlayer.MainWeapon = null;
+            //                }
+            //            }
+            //        }
+            //    }
+            //    else if (equipType == 2)
+            //    {
+            //        tempItem = targetPlayer.MainArmor;
+            //        targetPlayer.MainArmor = exchangeItem;
+            //    }
+            //    else if (equipType == 3)
+            //    {
+            //        tempItem = targetPlayer.Accessory;
+            //        targetPlayer.Accessory = exchangeItem;
+            //    }
+            //    else if (equipType == 4)
+            //    {
+            //        tempItem = targetPlayer.Accessory2;
+            //        targetPlayer.Accessory2 = exchangeItem;
+            //    }
+            //    if (exchangeItem != null)
+            //    {
+            //        if (exchangeItem.Name != "")
+            //        {
+            //            targetPlayer.DeleteBackPack(exchangeItem);
+            //        }
+            //    }
+            //    if (tempItem != null)
+            //    {
+            //        if (tempItem.Name != "")
+            //        {
+            //            targetPlayer.AddBackPack(tempItem);
+            //        }
+            //    }
+            //    SettingCharacterData(targetPlayer);
+            //    RefreshPartyMembersBattleStatus(targetPlayer);
+            //}
+        }
 
         //// equipType: 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
         //private bool CheckEquipmentType(MainCharacter player, ItemBackPack item, int equipType)

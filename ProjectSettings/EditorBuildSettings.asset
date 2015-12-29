@@ -25,3 +25,5 @@ EditorBuildSettings:
     path: Assets/TruthDungeon.unity
   - enabled: 1
     path: Assets/TruthBattleEnemy.unity
+  - enabled: 1
+    path: Assets/TruthSelectEquipment.unity

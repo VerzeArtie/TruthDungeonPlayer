@@ -799,9 +799,7 @@ namespace DungeonPlayer
         }
         #endregion
     }
-	public void tapEquip() {
-        mainMessage.text = "アイン：ガンツさん、まだ店を開いてないみたいだな。";
-    }
+
 	public void tapDuel() {
         mainMessage.text = "アイン：DUEL闘技場は閉まってる。他の所へ行こう。";
 	}
@@ -2607,6 +2605,10 @@ namespace DungeonPlayer
         Application.Quit();
     }
 
+    public void CallStatusPlayer()
+    {
+        SceneDimension.Go(Database.TruthHomeTown, Database.TruthStatusPlayer);
+    }
     // todo
     private string PracticeSwordLevel(MainCharacter mainCharacter)
     {
