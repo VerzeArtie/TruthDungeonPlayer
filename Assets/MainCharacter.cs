@@ -308,12 +308,37 @@ namespace DungeonPlayer
         public JobClass.Job Job { get; set; }
 
         // buff up(+)
-        public int BuffStrength_Food = 0;
-        public int BuffAgility_Food = 0;
-        public int BuffIntelligence_Food = 0;
-        public int BuffStamina_Food = 0;
-        public int BuffMind_Food = 0;
+        protected int buffStrength_Food = 0;
+        protected int buffAgility_Food = 0;
+        protected int buffIntelligence_Food = 0;
+        protected int buffStamina_Food = 0;
+        protected int buffMind_Food = 0;
 
+        public int BuffStrength_Food
+        {
+            get { return buffStrength_Food; }
+            set { buffStrength_Food = value; }
+        }
+        public int BuffAgility_Food
+        {
+            get { return buffAgility_Food; }
+            set { buffAgility_Food = value; }
+        }
+        public int BuffIntelligence_Food
+        {
+            get { return buffIntelligence_Food; }
+            set { buffIntelligence_Food = value; }
+        }
+        public int BuffStamina_Food
+        {
+            get { return buffStamina_Food; }
+            set { buffStamina_Food = value; }
+        }
+        public int BuffMind_Food
+        {
+            get { return buffMind_Food; }
+            set { buffMind_Food = value; }
+        }
         // 負の影響効果（ボス専用、対象行動されると失敗しスタンになる）
         protected int currentPreStunning = 0;
         // 負の影響効果
@@ -753,76 +778,228 @@ namespace DungeonPlayer
         public int CurrentChaoticSchema = 0;
 
         // 各魔法・スキル・アクセサリによるパラメタＵＰ
-        public int BuffStrength_BloodyVengeance = 0;
-        public int BuffAgility_HeatBoost = 0;
-        public int BuffIntelligence_PromisedKnowledge = 0;
-        public int BuffStamina_Unknown = 0; // [将来]：StaminaのBUFFUPスペルを構築
-        public int BuffMind_RiseOfImage = 0;
+        protected int buffStrength_BloodyVengeance = 0;
+        protected int buffAgility_HeatBoost = 0;
+        protected int buffIntelligence_PromisedKnowledge = 0;
+        protected int buffStamina_Unknown = 0; // [将来]：StaminaのBUFFUPスペルを構築
+        protected int buffMind_RiseOfImage = 0;
 
-        public int BuffStrength_VoidExtraction = 0;
-        public int BuffAgility_VoidExtraction = 0;
-        public int BuffIntelligence_VoidExtraction = 0;
-        public int BuffStamina_VoidExtraction = 0; // [将来]：StaminaのBuffUPスキルを構築
-        public int BuffMind_VoidExtraction = 0;
+        protected int buffStrength_VoidExtraction = 0;
+        protected int buffAgility_VoidExtraction = 0;
+        protected int buffIntelligence_VoidExtraction = 0;
+        protected int buffStamina_VoidExtraction = 0; // [将来]：StaminaのBuffUPスキルを構築
+        protected int buffMind_VoidExtraction = 0;
 
-        public int BuffStrength_HighEmotionality = 0;
-        public int BuffAgility_HighEmotionality = 0;
-        public int BuffIntelligence_HighEmotionality = 0;
-        public int BuffStamina_HighEmotionality = 0; // [将来]：StaminaのBuffUPスキルを構築
-        public int BuffMind_HighEmotionality = 0;
+        protected int buffStrength_HighEmotionality = 0;
+        protected int buffAgility_HighEmotionality = 0;
+        protected int buffIntelligence_HighEmotionality = 0;
+        protected int buffStamina_HighEmotionality = 0; // [将来]：StaminaのBuffUPスキルを構築
+        protected int buffMind_HighEmotionality = 0;
 
         // s 後編追加
-        public int BuffStrength_TranscendentWish = 0;
-        public int BuffAgility_TranscendentWish = 0;
-        public int BuffIntelligence_TranscendentWish = 0;
-        public int BuffStamina_TranscendentWish = 0;
-        public int BuffMind_TranscendentWish = 0;
+        protected int buffStrength_TranscendentWish = 0;
+        protected int buffAgility_TranscendentWish = 0;
+        protected int buffIntelligence_TranscendentWish = 0;
+        protected int buffStamina_TranscendentWish = 0;
+        protected int buffMind_TranscendentWish = 0;
         // e 後編追加
 
         // s 後編追加
-        public int BuffStrength_Hiyaku_Kassei = 0;
-        public int BuffAgility_Hiyaku_Kassei = 0;
-        public int BuffIntelligence_Hiyaku_Kassei = 0;
-        public int BuffStamina_Hiyaku_Kassei = 0;
-        public int BuffMind_Hiyaku_Kassei = 0;
+        protected int buffStrength_Hiyaku_Kassei = 0;
+        protected int buffAgility_Hiyaku_Kassei = 0;
+        protected int buffIntelligence_Hiyaku_Kassei = 0;
+        protected int buffStamina_Hiyaku_Kassei = 0;
+        protected int buffMind_Hiyaku_Kassei = 0;
         // e 後編追加
 
+
+        public int BuffStrength_BloodyVengeance
+        {
+            get { return buffStrength_BloodyVengeance; }
+            set { buffStrength_BloodyVengeance = value; }
+        }
+        public int BuffAgility_HeatBoost
+        {
+            get { return buffAgility_HeatBoost; }
+            set { buffAgility_HeatBoost = value; }
+        }
+        public int BuffIntelligence_PromisedKnowledge
+        {
+            get { return buffIntelligence_PromisedKnowledge; }
+            set { buffIntelligence_PromisedKnowledge = value; }
+        }
+        public int BuffStamina_Unknown
+        {
+            get { return buffStamina_Unknown; }
+            set { buffStamina_Unknown = value; }
+        }
+        public int BuffMind_RiseOfImage
+        {
+            get { return buffMind_RiseOfImage; }
+            set { buffMind_RiseOfImage = value; }
+        }
+
+        public int BuffStrength_VoidExtraction
+        {
+            get { return buffStrength_VoidExtraction; }
+            set { buffStrength_VoidExtraction = value; }
+        }
+        public int BuffAgility_VoidExtraction
+        {
+            get { return buffAgility_VoidExtraction; }
+            set { buffAgility_VoidExtraction = value; }
+        }
+        public int BuffIntelligence_VoidExtraction
+        {
+            get { return buffIntelligence_VoidExtraction; }
+            set { buffIntelligence_VoidExtraction = value; }
+        }
+        public int BuffStamina_VoidExtraction
+        {
+            get { return buffStamina_VoidExtraction; }
+            set { buffStamina_VoidExtraction = value; }
+        }
+        public int BuffMind_VoidExtraction
+        {
+            get { return buffMind_VoidExtraction; }
+            set { buffMind_VoidExtraction = value; }
+        }
+
+        public int BuffStrength_HighEmotionality
+        {
+            get { return buffStrength_HighEmotionality; }
+            set { buffStrength_HighEmotionality = value; }
+        }
+        public int BuffAgility_HighEmotionality
+        {
+            get { return buffAgility_HighEmotionality; }
+            set { buffAgility_HighEmotionality = value; }
+        }
+        public int BuffIntelligence_HighEmotionality
+        {
+            get { return buffIntelligence_HighEmotionality; }
+            set { buffIntelligence_HighEmotionality = value; }
+        }
+        public int BuffStamina_HighEmotionality
+        {
+            get { return buffStamina_HighEmotionality; }
+            set { buffStamina_HighEmotionality = value; }
+        }
+        public int BuffMind_HighEmotionality
+        {
+            get { return buffMind_HighEmotionality; }
+            set { buffMind_HighEmotionality = value; }
+        }
+
+        // s 後編追加
+        public int BuffStrength_TranscendentWish
+        {
+            get { return buffStrength_TranscendentWish; }
+            set { buffStrength_TranscendentWish = value; }
+        }
+        public int BuffAgility_TranscendentWish
+        {
+            get { return buffAgility_TranscendentWish; }
+            set { buffAgility_TranscendentWish = value; }
+        }
+        public int BuffIntelligence_TranscendentWish
+        {
+            get { return buffIntelligence_TranscendentWish; }
+            set { buffIntelligence_TranscendentWish = value; }
+        }
+        public int BuffStamina_TranscendentWish
+        {
+            get { return buffStamina_TranscendentWish; }
+            set { buffStamina_TranscendentWish = value; }
+        }
+        public int BuffMind_TranscendentWish
+        {
+            get { return buffMind_TranscendentWish; }
+            set { buffMind_TranscendentWish = value; }
+        }
+
+        public int BuffStrength_Hiyaku_Kassei
+        {
+            get { return buffStrength_Hiyaku_Kassei; }
+            set { buffStrength_Hiyaku_Kassei = value; }
+        }
+        public int BuffAgility_Hiyaku_Kassei
+        {
+            get { return buffAgility_Hiyaku_Kassei; }
+            set { buffAgility_Hiyaku_Kassei = value; }
+        }
+        public int BuffIntelligence_Hiyaku_Kassei
+        {
+            get { return buffIntelligence_Hiyaku_Kassei; }
+            set { buffIntelligence_Hiyaku_Kassei = value; }
+        }
+        public int BuffStamina_Hiyaku_Kassei
+        {
+            get { return buffStamina_Hiyaku_Kassei; }
+            set { buffStamina_Hiyaku_Kassei = value; }
+        }
+        public int BuffMind_Hiyaku_Kassei
+        {
+            get { return buffMind_Hiyaku_Kassei; }
+            set { buffMind_Hiyaku_Kassei = value; }
+        }
         public ItemBackPack iw = null;
         public ItemBackPack sw = null;
         public ItemBackPack ia = null;
         public ItemBackPack accessory = null;
         public ItemBackPack accessory2 = null;
 
-        public int buffStrength_MainWeapon = 0;
-        public int buffAgility_MainWeapon = 0;
-        public int buffIntelligence_MainWeapon = 0;
-        public int buffStamina_MainWeapon = 0;
-        public int buffMind_MainWeapon = 0;
+        protected int buffStrength_MainWeapon = 0;
+        protected int buffAgility_MainWeapon = 0;
+        protected int buffIntelligence_MainWeapon = 0;
+        protected int buffStamina_MainWeapon = 0;
+        protected int buffMind_MainWeapon = 0;
 
-        public int buffStrength_SubWeapon = 0;
-        public int buffAgility_SubWeapon = 0;
-        public int buffIntelligence_SubWeapon = 0;
-        public int buffStamina_SubWeapon = 0;
-        public int buffMind_SubWeapon = 0;
+        protected int buffStrength_SubWeapon = 0;
+        protected int buffAgility_SubWeapon = 0;
+        protected int buffIntelligence_SubWeapon = 0;
+        protected int buffStamina_SubWeapon = 0;
+        protected int buffMind_SubWeapon = 0;
 
-        public int buffStrength_Armor = 0;
-        public int buffAgility_Armor = 0;
-        public int buffIntelligence_Armor = 0;
-        public int buffStamina_Armor = 0;
-        public int buffMind_Armor = 0;
+        protected int buffStrength_Armor = 0;
+        protected int buffAgility_Armor = 0;
+        protected int buffIntelligence_Armor = 0;
+        protected int buffStamina_Armor = 0;
+        protected int buffMind_Armor = 0;
 
-        public int buffStrength_Accessory = 0;
-        public int buffAgility_Accessory = 0;
-        public int buffIntelligence_Accessory = 0;
-        public int buffStamina_Accessory = 0;
-        public int buffMind_Accessory = 0;
+        protected int buffStrength_Accessory = 0;
+        protected int buffAgility_Accessory = 0;
+        protected int buffIntelligence_Accessory = 0;
+        protected int buffStamina_Accessory = 0;
+        protected int buffMind_Accessory = 0;
 
-        public int buffStrength_Accessory2 = 0;
-        public int buffAgility_Accessory2 = 0;
-        public int buffIntelligence_Accessory2 = 0;
-        public int buffStamina_Accessory2 = 0;
-        public int buffMind_Accessory2 = 0;
+        protected int buffStrength_Accessory2 = 0;
+        protected int buffAgility_Accessory2 = 0;
+        protected int buffIntelligence_Accessory2 = 0;
+        protected int buffStamina_Accessory2 = 0;
+        protected int buffMind_Accessory2 = 0;
 
+
+        public int BuffStrength_Accessory
+        {
+            get { return buffStrength_MainWeapon + buffStrength_SubWeapon + buffStrength_Armor + buffStrength_Accessory + buffStrength_Accessory2; } // c 後編追加
+        }
+        public int BuffAgility_Accessory
+        {
+            get { return buffAgility_MainWeapon + buffAgility_SubWeapon + buffAgility_Armor + buffAgility_Accessory + buffAgility_Accessory2; } // c 後編追加
+        }
+        public int BuffIntelligence_Accessory
+        {
+            get { return buffIntelligence_MainWeapon + buffIntelligence_SubWeapon + buffIntelligence_Armor + buffIntelligence_Accessory + buffIntelligence_Accessory2; } // c 後編追加
+        }
+        public int BuffStamina_Accessory
+        {
+            get { return buffStamina_MainWeapon + buffStamina_SubWeapon + buffStamina_Armor + buffStamina_Accessory + buffStamina_Accessory2; } // c 後編追加
+        }
+        public int BuffMind_Accessory
+        {
+            get { return buffMind_MainWeapon + buffMind_SubWeapon + buffMind_Armor + buffMind_Accessory + buffMind_Accessory2; } // c 後編追加
+        }
         // 負の影響効果の重ねがけ効果
         public int CurrentPoisonValue = 0; // 後編追加
         public int CurrentConcussiveHitValue = 0; // 後編追加
@@ -2383,118 +2560,115 @@ namespace DungeonPlayer
         {
             get
             {
-                return this.Strength;
-                // todo
-                //			this.buffStrength_BloodyVengeance +
-                //				this.buffStrength_HighEmotionality +
-                //					this.buffStrength_VoidExtraction + 
-                //					this.buffStrength_TranscendentWish + // 後編追加
-                //					this.buffStrength_Hiyaku_Kassei + // c 後編追加
-                //					this.buffStrength_MainWeapon + // 後編追加
-                //					this.buffStrength_SubWeapon + // 後編追加
-                //					this.buffStrength_Armor +  // 後編追加
-                //					this.buffStrength_Accessory +
-                //					this.buffStrength_Accessory2 + // 後編追加
-                //					this.buffStrength_Food + // 後編追加
-                //					this.CurrentStrengthUpValue; // 後編追加    
+                return this.baseStrength + 
+                    this.buffStrength_BloodyVengeance +
+                    this.buffStrength_HighEmotionality +
+                    this.buffStrength_VoidExtraction +
+                    this.buffStrength_TranscendentWish + // 後編追加
+                    this.buffStrength_Hiyaku_Kassei + // c 後編追加
+                    this.buffStrength_MainWeapon + // 後編追加
+                    this.buffStrength_SubWeapon + // 後編追加
+                    this.buffStrength_Armor +  // 後編追加
+                    this.buffStrength_Accessory +
+                    this.buffStrength_Accessory2 + // 後編追加
+                    this.buffStrength_Food + // 後編追加
+                    this.CurrentStrengthUpValue; // 後編追加    
             } // c 後編追加
         }
         public int TotalAgility
         {
             get
             {
-                return this.Agility;
-                // todo
-                //			this.buffAgility_HeatBoost +
-                //				this.buffAgility_HighEmotionality +
-                //					this.buffAgility_VoidExtraction +
-                //					this.buffAgility_TranscendentWish + // 後編追加
-                //					this.buffAgility_Hiyaku_Kassei + // c 後編追加
-                //					this.buffAgility_MainWeapon + // 後編追加
-                //					this.buffAgility_SubWeapon + // 後編追加
-                //					this.buffAgility_Armor + // 後編追加
-                //					this.buffAgility_Accessory +
-                //					this.buffAgility_Accessory2 + // 後編追加
-                //					this.buffAgility_Food + // 後編追加
-                //					this.CurrentAgilityUpValue; } // c 後編追加
+                return this.baseAgility + 
+                	this.buffAgility_HeatBoost +
+                	this.buffAgility_HighEmotionality +
+                	this.buffAgility_VoidExtraction +
+                	this.buffAgility_TranscendentWish + // 後編追加
+                	this.buffAgility_Hiyaku_Kassei + // c 後編追加
+                	this.buffAgility_MainWeapon + // 後編追加
+                	this.buffAgility_SubWeapon + // 後編追加
+                	this.buffAgility_Armor + // 後編追加
+                	this.buffAgility_Accessory +
+                	this.buffAgility_Accessory2 + // 後編追加
+                	this.buffAgility_Food + // 後編追加
+                	this.CurrentAgilityUpValue; // c 後編追加
             }
         }
         public int TotalIntelligence
         {
-            get { return this.Intelligence; }
-            // todo
-            //			this.buffIntelligence_PromisedKnowledge +
-            //				this.buffIntelligence_HighEmotionality +
-            //					this.buffIntelligence_VoidExtraction +
-            //					this.buffIntelligence_TranscendentWish + // 後編追加
-            //					this.buffIntelligence_Hiyaku_Kassei + // c 後編追加
-            //					this.buffIntelligence_MainWeapon + // 後編追加
-            //					this.buffIntelligence_SubWeapon + // 後編追加
-            //					this.buffIntelligence_Armor + // 後編追加
-            //					this.buffIntelligence_Accessory +
-            //					this.buffIntelligence_Accessory2 + // 後編追加
-            //					this.buffIntelligence_Food + // 後編追加
-            //					this.CurrentIntelligenceUpValue; } // c 後編追加
+            get { return this.baseIntelligence +
+                    this.buffIntelligence_PromisedKnowledge +
+                    this.buffIntelligence_HighEmotionality +
+                    this.buffIntelligence_VoidExtraction +
+                    this.buffIntelligence_TranscendentWish + // 後編追加
+                    this.buffIntelligence_Hiyaku_Kassei + // c 後編追加
+                    this.buffIntelligence_MainWeapon + // 後編追加
+                    this.buffIntelligence_SubWeapon + // 後編追加
+                    this.buffIntelligence_Armor + // 後編追加
+                    this.buffIntelligence_Accessory +
+                    this.buffIntelligence_Accessory2 + // 後編追加
+                    this.buffIntelligence_Food + // 後編追加
+                    this.CurrentIntelligenceUpValue; // 後編追加
+            }
         }
         public int TotalStamina
         {
-            get { return this.Stamina; }
-            // todo
-            //			this.buffStamina_Unknown +
-            //				this.buffStamina_HighEmotionality +
-            //					this.buffStamina_VoidExtraction +
-            //					this.buffStamina_TranscendentWish + // 後編追加
-            //					this.buffStamina_Hiyaku_Kassei + // c 後編追加
-            //					this.buffStamina_MainWeapon + // 後編追加
-            //					this.buffStamina_SubWeapon + // 後編追加
-            //					this.buffStamina_Armor + // 後編追加
-            //					this.buffStamina_Accessory +
-            //					this.buffStamina_Accessory2 + // 後編追加
-            //					this.buffStamina_Food + // 後編追加
-            //					this.CurrentStaminaUpValue; } // c 後編追加
+            get { return this.baseStamina +
+                    this.buffStamina_Unknown +
+                    this.buffStamina_HighEmotionality +
+                    this.buffStamina_VoidExtraction +
+                    this.buffStamina_TranscendentWish + // 後編追加
+                    this.buffStamina_Hiyaku_Kassei + // c 後編追加
+                    this.buffStamina_MainWeapon + // 後編追加
+                    this.buffStamina_SubWeapon + // 後編追加
+                    this.buffStamina_Armor + // 後編追加
+                    this.buffStamina_Accessory +
+                    this.buffStamina_Accessory2 + // 後編追加
+                    this.buffStamina_Food + // 後編追加
+                    this.CurrentStaminaUpValue; // 後編追加
+            }
         }
         public int TotalMind
         {
             get
             {
-                return this.Mind;
-                // todo
-                //				this.buffMind_RiseOfImage +
-                //					this.buffMind_HighEmotionality +
-                //					this.buffMind_VoidExtraction +
-                //					this.buffMind_TranscendentWish + // 後編追加
-                //					this.buffMind_Hiyaku_Kassei + // c 後編追加
-                //					this.buffMind_MainWeapon + // 後編追加
-                //					this.buffMind_SubWeapon + // 後編追加
-                //					this.buffMind_Armor + // 後編追加
-                //					this.buffMind_Accessory +
-                //					this.buffMind_Accessory2 + // 後編追加
-                //					this.buffMind_Food + // 後編追加
-                //					this.CurrentMindUpValue + // c 後編追加
-                //					this.CurrentFeltusValue * (int)(PrimaryLogic.FeltusValue(this)); // 後編追加
+                return this.baseMind +
+                    this.buffMind_RiseOfImage +
+                    this.buffMind_HighEmotionality +
+                    this.buffMind_VoidExtraction +
+                    this.buffMind_TranscendentWish + // 後編追加
+                    this.buffMind_Hiyaku_Kassei + // c 後編追加
+                    this.buffMind_MainWeapon + // 後編追加
+                    this.buffMind_SubWeapon + // 後編追加
+                    this.buffMind_Armor + // 後編追加
+                    this.buffMind_Accessory +
+                    this.buffMind_Accessory2 + // 後編追加
+                    this.buffMind_Food + // 後編追加
+                    this.CurrentMindUpValue + // c 後編追加
+                    this.CurrentFeltusValue * (int)(PrimaryLogic.FeltusValue(this)); // 後編追加
             }
         }
 
         // Standardはベース値＋常在型BUFFUP＋食事常在BUFFUPの合計値
         public int StandardStrength
         {
-            get { return this.baseStrength + this.buffStrength_MainWeapon + this.buffStrength_Accessory + this.buffStrength_Accessory2 + this.BuffStrength_Food; } // c 後編追加
+            get { return this.baseStrength + this.buffStrength_MainWeapon + this.buffStrength_Accessory + this.buffStrength_Accessory2 + this.buffStrength_Food; } // c 後編追加
         }
         public int StandardAgility
         {
-            get { return this.baseAgility + this.buffAgility_MainWeapon + this.buffAgility_Accessory + this.buffAgility_Accessory2 + this.BuffAgility_Food; } // c 後編追加
+            get { return this.baseAgility + this.buffAgility_MainWeapon + this.buffAgility_Accessory + this.buffAgility_Accessory2 + this.buffAgility_Food; } // c 後編追加
         }
         public int StandardIntelligence
         {
-            get { return this.baseIntelligence + this.buffIntelligence_MainWeapon + this.buffIntelligence_Accessory + this.buffIntelligence_Accessory2 + this.BuffIntelligence_Food; } // c 後編追加
+            get { return this.baseIntelligence + this.buffIntelligence_MainWeapon + this.buffIntelligence_Accessory + this.buffIntelligence_Accessory2 + this.buffIntelligence_Food; } // c 後編追加
         }
         public int StandardStamina
         {
-            get { return this.baseStamina + this.buffStamina_MainWeapon + this.buffStamina_Accessory + this.buffStamina_Accessory2 + this.BuffStamina_Food; } // c 後編追加
+            get { return this.baseStamina + this.buffStamina_MainWeapon + this.buffStamina_Accessory + this.buffStamina_Accessory2 + this.buffStamina_Food; } // c 後編追加
         }
         public int StandardMind
         {
-            get { return this.baseMind + this.buffMind_MainWeapon + this.buffMind_Accessory + this.buffMind_Accessory2 + this.BuffMind_Food; } // c 後編追加
+            get { return this.baseMind + this.buffMind_MainWeapon + this.buffMind_Accessory + this.buffMind_Accessory2 + this.buffMind_Food; } // c 後編追加
         }
 
 
@@ -2592,20 +2766,2809 @@ namespace DungeonPlayer
 
         public string GetCharacterSentence(int sentenceNumber)
         {
-            if (this.Name == "ラナ")
+            // 0 ~ 999 戦闘中
+            // 10000 ~ 99999 戦闘中(後編追加)
+            // 1000 ~ 1999 ホームタウン会話
+            // 2000 ~ 2999 ステータス表示時
+            // 3000 ~ 3999 ガンツ武具店会話
+            // 4000 ~ 4999 後編戦闘の戦闘コマンド設定時
+
+            #region "アイン"
+            if (this.name == "アイン")
             {
                 switch (sentenceNumber)
                 {
-                    case 1001: // Home Town 1 コミュニケーション済で、休む前のアイン一人を対象
-                        return this.Name + "：今日はもう休んで、明日に備えたら？";
-                    case 1002: // Home Town 2 コミュニケーション済で、休んだ後のアイン一人を対象
-                        return this.Name + "：ホラホラ、とっとと行って来い♪";
-                    case 1003: // Home Town 1 コミュニケーション済で、休む前のアイン・ラナ２人を対象
-                        return this.Name + "：じゃ、私は一旦戻るとするわね。明日に備えて休みましょ。";
-                    case 1004: // Home Town 2 コミュニケーション済で、休んだ後のアイン・ラナ２人を対象
-                        return this.Name + "：準備が出来たら、とっとと行くわよ♪";
+                    case 0: // スキル不足
+                        return this.name + "：しまった！スキルポイントが足りねぇ！\r\n";
+                    case 1: // Straight Smash
+                        return this.name + "：行くぜ！オラァ！！\r\n";
+                    case 2: // Double Slash 1
+                        return this.name + "：ほらよ！\r\n";
+                    case 3: // Double Slash 2
+                        return this.name + "：もういっちょ！\r\n";
+                    case 4: // Painful Insanity
+                        return this.name + "：【心眼奥義】狂乱の痛みを食らい続けな！\r\n";
+                    case 5: // empty skill
+                        return this.name + "：しまった。スキルを選択してねえ！！\r\n";
+                    case 6: // 絡みつくフランシスの必殺を食らった時
+                        return this.name + "：ってぇな！！クソ！\r\n";
+                    case 7: // Lizenosの必殺を食らった時
+                        return this.name + ": 全然・・・動きが見えねえ・・・\r\n";
+                    case 8: // Minfloreの必殺を食らった時
+                        return this.name + "：ッグ、ガハアァァ！！！\r\n";
+                    case 9: // Fresh Healによるライフ回復
+                        return this.name + "：{0} 回復したぜ。\r\n";
+                    case 10: // Fire Ball
+                        return this.name + "：この炎をくらえ！FireBall！ {0} へ {1} のダメージ\r\n";
+                    case 11: // Flame Strike
+                        return this.name + "：焼け落ちろ！FlameStrike！ {0} へ {1} のダメージ\r\n";
+                    case 12: // Volcanic Wave
+                        return this.name + "：灼熱の業火！くらえ！VolcanicWave！ {0} へ {1} のダメージ\r\n";
+                    case 13: // 通常攻撃クリティカルヒット
+                        return this.name + "：オラァ、クリティカルヒット！ {0} へ {1}のダメージ\r\n";
+                    case 14: // FlameAuraによる追加攻撃
+                        return this.name + "：燃えろ！ {0}の追加ダメージ\r\n";
+                    case 15: //遠見の青水晶を戦闘中に使ったとき
+                        return this.name + "：戦闘中は使えねえぞコレ。\r\n";
+                    case 16: // 効果を発揮しないアイテムを戦闘中に使ったとき
+                        return this.name + "：・・・？？ よく分からないアイテムだ。何もおきねえ！\r\n";
+                    case 17: // 魔法でマナ不足
+                        return this.name + "：マナが足りねぇ！\r\n";
+                    case 18: // Protection
+                        return this.name + "：聖神の加護、Protection！物理防御力：ＵＰ\r\n";
+                    case 19: // Absorb Water
+                        return this.name + "：水女神の加護・・・AbsorbWater！ 魔法防御力：ＵＰ。\r\n";
+                    case 20: // Saint Power
+                        return this.name + "：力こそ全て、SaintPower！ 物理攻撃力：ＵＰ\r\n";
+                    case 21: // Shadow Pact
+                        return this.name + "：闇との契約・・・ShadowPact！ 魔法攻撃力：ＵＰ\r\n";
+                    case 22: // Bloody Vengeance
+                        return this.name + "：闇の使者よ力を示せ・・・BloodyVengeance！ 力パラメタが {0} ＵＰ\r\n";
+                    case 23: // Holy Shock
+                        return this.name + "：聖なる鉄槌、HolyShock！ {0} へ {1} のダメージ\r\n";
+                    case 24: // Glory
+                        return this.name + "：常に栄光あれ。Glory！ 直接攻撃＋FreshHeal連携のオーラ\r\n";
+                    case 25: // CelestialNova 1
+                        return this.name + "：聖なる波動、CelestialNova！ {0} 回復したぜ。\r\n";
+                    case 26: // CelestialNova 2
+                        return this.name + "：聖なる裁きを食らえ、CelestialNova！ {0} のダメージ\r\n";
+                    case 27: // Dark Blast
+                        return this.name + "：黒の波動を食らえ、DarkBlast！ {0} へ {1} のダメージ\r\n";
+                    case 28: // Lava Annihilation
+                        return this.name + "：炎授天使、召還！くらえ！LavaAnnihilation！ {0} へ {1} のダメージ\r\n";
+                    case 10028: // Lava Annihilation後編
+                        return this.name + "：炎授天使、召還！くらえ！LavaAnnihilation！\r\n";
+                    case 29: // Devouring Plague
+                        return this.name + "：体力を食らい尽くすぜ。DevouringPlague！ {0} ライフを吸い取った\r\n";
+                    case 30: // Ice Needle
+                        return this.name + "：氷の刃を食らえ、IceNeedle！ {0} へ {1} のダメージ\r\n";
+                    case 31: // Frozen Lance
+                        return this.name + "：凍りの槍でぶち抜かれろ、FrozenLance！ {0} へ {1} のダメージ\r\n";
+                    case 32: // Tidal Wave
+                        return this.name + "：大海原よ！その力を見せ付けろ、TidalWave！ {0} のダメージ\r\n";
+                    case 33: // Word of Power
+                        return this.name + "：この衝撃波でも食らえ、WordOfPower！ {0} へ {1} のダメージ\r\n";
+                    case 34: // White Out
+                        return this.name + "：全ての感覚から抹殺せしめろ、WhiteOut！ {0} へ {1} のダメージ\r\n";
+                    case 35: // Black Contract
+                        return this.name + "：悪魔取引だ、BlackContract！ " + this.name + "のスキル、魔法コストは０になる。\r\n";
+                    case 36: // Flame Aura詠唱
+                        return this.name + "：炎のシンボルよ来たれ、FlameAura！ 直接攻撃に炎の追加効果が付与される。\r\n";
+                    case 37: // Damnation
+                        return this.name + "：朽ち果てろ、Damnation！ 死淵より出でる黒が空間を歪ませる。\r\n";
+                    case 38: // Heat Boost
+                        return this.name + "：炎授天使よ、炎の勢い借りるぜ、HeatBoost！ 技パラメタが {0} ＵＰ。\r\n";
+                    case 39: // Immortal Rave
+                        return this.name + "：オラオラオラァいくぜ、ImmortalRave！ " + this.name + "の周りに３つの炎が宿った。\r\n";
+                    case 40: // Gale Wind
+                        return this.name + "：同時に行くぜ、GaleWind！ もう一人の" + this.name + "が現れた。\r\n";
+                    case 41: // Word of Life
+                        return this.name + "：自然と共にあれ、WordOfLife！ 大自然からの強い息吹を感じ取れるようになった。\r\n";
+                    case 42: // Word of Fortune
+                        return this.name + "：強き未来を示せ、WordOfFortune！ 決死のオーラが湧き上がった。\r\n";
+                    case 43: // Aether Drive
+                        return this.name + "：空想の物理力を示せ、AetherDrive！ 周囲全体に空想物理力がみなぎる。\r\n";
+                    case 44: // Eternal Presence 1
+                        return this.name + "：法則と原理を呼び起こすぜ、EternalPresence！ " + this.name + "の周りに新しい法則が構築される。\r\n";
+                    case 45: // Eternal Presence 2
+                        return this.name + "の物理攻撃、物理防御、魔法攻撃、魔法防御がＵＰした！\r\n";
+                    case 46: // One Immunity
+                        return this.name + "：空間障壁、OneImmunity！ " + this.name + "の周囲に目に見えない障壁が発生。\r\n";
+                    case 47: // Time Stop
+                        return this.name + "：全ては時空干渉から・・・TimeStop！ 敵の時空を引き裂き時間停止させた。\r\n";
+                    case 48: // Dispel Magic
+                        return this.name + "：ウザってぇ効果は消えて無くなれ、DispelMagic！ \r\n";
+                    case 49: // Rise of Image
+                        return this.name + "：時空の支配者より新たなるイメージを借りるぜ・・・RiseOfImage！ 心パラメタが {0} ＵＰ\r\n";
+                    case 50: // 空詠唱
+                        return this.name + "：しまった。空詠唱だ！！\r\n";
+                    case 51: // Inner Inspiration
+                        return this.name + "：は潜在集中力を高めた。精神が研ぎ澄まされる。 {0} スキルポイント回復\r\n";
+                    case 52: // Resurrection 1
+                        return this.name + "：偉大なる聖の力。奇跡起こすぜ、Resurrection！！\r\n";
+                    case 53: // Resurrection 2
+                        return this.name + "：しまった！対象を間違えたじゃねえか！！\r\n";
+                    case 54: // Resurrection 3
+                        return this.name + "：しまった！死んでねぇぞ！！\r\n";
+                    case 55: // Resurrection 4
+                        return this.name + "：おいおい、自分にやっても意味ねえからな・・・\r\n";
+                    case 56: // Stance Of Standing
+                        return this.name + "：この体制のまま・・・っしゃ、攻撃だ！\r\n";
+                    case 57: // Mirror Image
+                        return this.name + "：魔法をはね返すぜ、MirrorImage！ {0}の周囲に青い空間が発生した。\r\n";
+                    case 58: // Mirror Image 2
+                        return this.name + "：おっしゃ、はね返せ！ {0} ダメージを {1} に反射した！\r\n";
+                    case 59: // Mirror Image 3
+                        return this.name + "：おっしゃ、はね返せ！ 【しかし、強力な威力ではね返せない！】" + this.name + "：バカな！？\r\n";
+                    case 60: // Deflection
+                        return this.name + "：物理攻撃をはね返すぜ、Deflection！ {0}の周囲に白い空間が発生した。\r\n";
+                    case 61: // Deflection 2
+                        return this.name + "：おっしゃ、はね返せ！ {0} ダメージを {1} に反射した！\r\n";
+                    case 62: // Deflection 3
+                        return this.name + "：おっしゃ、はね返せ！ 【しかし、強力な威力ではね返せない！】" + this.name + "：ッグ、グアァ！\r\n";
+                    case 63: // Truth Vision
+                        return this.name + "：本質を見切ってやるぜ、TruthVision！　" + this.name + "は対象のパラメタＵＰを無視するようになった。\r\n";
+                    case 64: // Stance Of Flow
+                        return this.name + "：俺はこれ苦手だけどな・・・StanceOfFlow！　" + this.name + "は次３ターン、必ず後攻を取るように構えた。\r\n";
+                    case 65: // Carnage Rush 1
+                        return this.name + "：オラオラ、連発ラッシュいくぜ、CarnageRush！ ほらよ！ {0}ダメージ・・・   ";
+                    case 66: // Carnage Rush 2
+                        return "もういっちょ！ {0}ダメージ   ";
+                    case 67: // Carnage Rush 3
+                        return "オラオラァ！ {0}ダメージ   ";
+                    case 68: // Carnage Rush 4
+                        return "まだまだまぁ！ {0}ダメージ   ";
+                    case 69: // Carnage Rush 5
+                        return "食らええぇ！！ {0}のダメージ\r\n";
+                    case 70: // Crushing Blow
+                        return this.name + "：ガツンと一撃止めて見せるぜ、CrushingBlow！  {0} へ {1} のダメージ。\r\n";
+                    case 71: // リーベストランクポーション戦闘使用時
+                        return this.name + "：これでも・・・食らいな！\r\n";
+                    case 72: // Enigma Sence
+                        return this.name + "：力以外のチカラっての見せてやるぜ、EnigmaSennce！\r\n";
+                    case 73: // Soul Infinity
+                        return this.name + "：俺の全てを注ぎ込むぜ！オラアアァァ！！ SoulInfinity！！！\r\n";
+                    case 74: // Kinetic Smash
+                        return this.name + "：剣による攻撃、最大限にやってやるぜ！オラァ、KineticSmash！\r\n";
+                    case 75: // Silence Shot (Altomo専用)
+                        return "";
+                    case 76: // Silence Shot、AbsoluteZero沈黙による詠唱失敗
+                        return this.name + "：・・・ックソ！詠唱失敗だ！！\r\n";
+                    case 77: // Cleansing
+                        return this.name + "：妙な効果は全部これで洗い流すぜ、Cleansing！\r\n";
+                    case 78: // Pure Purification
+                        return this.name + "：精神さえしっかり保てば直せるはずだ、PurePurification・・・\r\n";
+                    case 79: // Void Extraction
+                        return this.name + "：最大限界値、さらに超えるぜ。VoidExtraction！" + this.name + "の {0} が {1}ＵＰ！\r\n";
+                    case 80: // アカシジアの実使用時
+                        return this.name + "：ほらよ、これで少しは目が醒めるだろ。\r\n";
+                    case 81: // Absolute Zero
+                        return this.name + "：氷付けにしてやるぜ！　AbsoluteZero！ 氷吹雪効果により、ライフ回復不可、スペル詠唱不可、スキル使用不可、防御不可となった。\r\n";
+                    case 82: // BUFFUP効果が望めない場合
+                        return "しかし、既にそのパラメタは上昇しているため、効果がなかった。\r\n";
+                    case 83: // Promised Knowledge
+                        return this.name + "：知識も一つの力だぜ、PromiesdKnowledge！　知パラメタが {0} ＵＰ\r\n";
+                    case 84: // Tranquility
+                        return this.name + "：うっとおしい効果だな。消えちまいな、Tranquility！\r\n";
+                    case 85: // High Emotionality 1
+                        return this.name + "：俺の最大能力はこんなものじゃねえ、ウオオォォ、HighEmotionality！\r\n";
+                    case 86: // High Emotionality 2
+                        return this.name + "の力、技、知、心パラメタがＵＰした！\r\n";
+                    case 87: // AbsoluteZeroでスキル使用失敗
+                        return this.name + "：だ・・・だめだ、全く動けねえ！　スキル使用ミスったぜ。\r\n";
+                    case 88: // AbsoluteZeroによる防御失敗
+                        return this.name + "：くそ・・・体が・・・防御できねえ！ \r\n";
+                    case 89: // Silent Rush 1
+                        return this.name + "：この３連打、受けてみろ、SilentRush！ ほらよ！ {0}ダメージ・・・   ";
+                    case 90: // Silent Rush 2
+                        return "もういっちょ！ {0}ダメージ   ";
+                    case 91: // Silent Rush 3
+                        return "３発目だ！おらぁ！ {0}のダメージ\r\n";
+                    case 92: // BUFFUP以外の永続効果が既についている場合
+                        return "しかし、既にその効果は付与されている。\r\n";
+                    case 93: // Anti Stun
+                        return this.name + "：スタン効果は俺には効かねえぜ、AntiStun！ " + this.name + "はスタン効果への耐性が付いた\r\n";
+                    case 94: // Anti Stunによるスタン回避
+                        return this.name + "：ってぇ・・・だが、スタンしないぜ。\r\n";
+                    case 95: // Stance Of Death
+                        return this.name + "：俺は耐えて見せるぜ、StanceOfDeath！ " + this.name + "は致死を１度回避できるようになった\r\n";
+                    case 96: // Oboro Impact 1
+                        return this.name + "：朧、刻むぜ【究極奥義】Oboro Impact！！\r\n";
+                    case 97: // Oboro Impact 2
+                        return this.name + "：オラアアァァァ！！　 {0}へ{1}のダメージ\r\n";
+                    case 98: // Catastrophe 1
+                        return this.name + "：芯から破壊してやるぜ【究極奥義】Catastrophe！\r\n";
+                    case 99: // Catastrophe 2
+                        return this.name + "：食らいやがれぇ！！　 {0}のダメージ\r\n";
+                    case 100: // Stance Of Eyes
+                        return this.name + "：その行動、見切ってみせるぜ、 StanceOfEyes！ " + this.name + "は、相手の行動に備えている・・・\r\n";
+                    case 101: // Stance Of Eyesによるキャンセル時
+                        return this.name + "：っしゃ、ソコだ！！　" + this.name + "は相手のモーションを見切って、行動キャンセルした！\r\n";
+                    case 102: // Stance Of Eyesによるキャンセル失敗時
+                        return this.name + "：駄目だ・・・全然見切れねえ・・・　" + this.name + "は相手のモーションを見切れなかった！\r\n";
+                    case 103: // Negate
+                        return this.name + "：スペル詠唱なんかさせるかよ、Negate！　" + this.name + "は相手のスペル詠唱に備えている・・・\r\n";
+                    case 104: // Negateによるスペル詠唱キャンセル時
+                        return this.name + "：お見通しだぜ！" + this.name + "は相手のスペル詠唱を弾いた！\r\n";
+                    case 105: // Negateによるスペル詠唱キャンセル失敗時
+                        return this.name + "：っくそ、全然詠唱タイミングが・・・" + this.name + "は相手のスペル詠唱を見切れなかった！\r\n";
+                    case 106: // Nothing Of Nothingness 1
+                        return this.name + "：もうゼロに還したりさせねえぜ、【究極奥義】NothingOfNothingness！ " + this.name + "に無色のオーラが宿り始める！ \r\n";
+                    case 107: // Nothing Of Nothingness 2
+                        return this.name + "は無効化魔法を無効化、　無効化するスキルを無効化するようになった！\r\n";
+                    case 108: // Genesis
+                        return this.name + "：行動原理の起源、刻み込んであるぜ、Genesis！  " + this.name + "は前回の行動を自分へと投影させた！\r\n";
+                    case 109: // Cleansing詠唱失敗時
+                        return this.name + "：っくそ・・・調子が思わしくねえ、悪いがCleansingは出来ねえ。\r\n";
+                    case 110: // CounterAttackを無視した時
+                        return this.Name + "：その構えはもう見飽きたぜ！\r\n";
+                    case 111: // 神聖水使用時
+                        return this.name + "：ライフ・スキル・マナが30%ずつ回復したぜ。\r\n";
+                    case 112: // 神聖水、既に使用済みの場合
+                        return this.name + "：もう枯れてしまってるぜ。一日１回だけだな。\r\n";
+                    case 113: // CounterAttackによる反撃メッセージ
+                        return this.name + "：おっしゃ、見切った！カウンターだ！\r\n";
+                    case 114: // CounterAttackに対する反撃がNothingOfNothingnessによって防がれた時
+                        return this.name + "：ックソ、どうなってんだ。見切れねえ！\r\n";
+                    case 115: // 通常攻撃のヒット
+                        return this.name + "の攻撃がヒット。 {0} へ {1} のダメージ\r\n";
+                    case 116: // 防御を無視して攻撃する時
+                        return this.name + "：防御なんてお見通しだぜ！貫通しろ！！\r\n";
+                    case 117: // StraightSmashなどのスキルクリティカル
+                        return this.name + "：っしゃ！クリティカルだぜ！\r\n";
+                    case 118: // 戦闘時、リヴァイヴポーションによる復活のかけ声
+                        return this.name + "：っしゃ！これで復活だぜ！\r\n";
+                    case 119: // Absolute Zeroによりライフ回復できない場合
+                        return this.name + "：っくそ・・・ライフが回復できねえ・・・\r\n";
+                    case 120: // 魔法攻撃のヒット
+                        return "{0} へ {1} のダメージ\r\n";
+                    case 121: // Absolute Zeroによりマナ回復できない場合
+                        return this.name + "：っくそ・・・マナが回復できねえ・・・\r\n";
+                    case 122: // 「ためる」行動時
+                        return this.name + "：魔力、蓄えさせてもらったぜ。\r\n";
+                    case 123: // 「ためる」行動で溜まりきっている場合
+                        return this.name + "：魔力の蓄積はこれが上限みたいだな。\r\n";
+                    case 124: // StraightSmashのダメージ値
+                        return this.name + "のストレート・スマッシュがヒット。 {0} へ {1}のダメージ\r\n";
+                    case 125: // アイテム使用ゲージが溜まってないとき
+                        return this.name + "：アイテムゲージが溜まってないとアイテムは使えないぜ。\r\n";
+                    case 126: // FlashBlase
+                        return this.name + "：この閃光でも食らいな、FlashBlaze！ {0} へ {1} のダメージ\r\n";
+                    case 127: // 複合魔法でインスタント不足
+                        return this.name + "：っくそ、まだインスタント値が足りねぇ！\r\n";
+                    case 128: // 複合魔法はインスタントタイミングでうてない
+                        return this.name + "：だめだ、これはインスタントで発動できねえ。\r\n";
+                    case 129: // PsychicTrance
+                        return this.name + "：多少の犠牲を払ってでも魔法攻撃力、更に強化するぜ！PsychicTrance！\r\n";
+                    case 130: // BlindJustice
+                        return this.name + "：打ち合い覚悟だ。物理攻撃、更に強化するぜ！BlindJustice！\r\n";
+                    case 131: // TranscendentWish
+                        return this.name + "：この一瞬でケリをつける、TranscendentWish！\r\n";
+                    case 132: // LightDetonator
+                        return this.name + "：そのフィールド全体、もらった！ LightDetonator！\r\n";
+                    case 133: // AscendantMeteor
+                        return this.name + "：食らえ！怒涛の１０連撃、AscendantMeteor！\r\n";
+                    case 134: // SkyShield
+                        return this.name + "：空と聖より加護を得るぜ、SkyShield！\r\n";
+                    case 135: // SacredHeal
+                        return this.name + "：全員回復っと！　SacredHeal！\r\n";
+                    case 136: // EverDroplet
+                        return this.name + "：マナの循環もらったぜ、EverDroplet！\r\n";
+                    case 137: // FrozenAura
+                        return this.name + "：氷の魔法剣を発動するぜ、FrozenAura！\r\n";
+                    case 138: // ChillBurn
+                        return this.name + "：凍りつけ！ ChillBurn！\r\n";
+                    case 139: // ZetaExplosion
+                        return this.name + "：究極！ ZetaExplosion！\r\n";
+                    case 140: // FrozenAura追加効果ダメージで
+                        return this.name + "：凍りつきな！ {0}の追加ダメージ\r\n";
+                    case 141: // StarLightning
+                        return this.name + "：コレで気絶しな、StarLightning！\r\n";
+                    case 142: // WordOfMalice
+                        return this.name + "：動きを鈍くさせるぜ、WordOfMalice！\r\n";
+                    case 143: // BlackFire
+                        return this.name + "：魔法防御落としてやるぜ、BlackFire！\r\n";
+                    case 144: // EnrageBlast
+                        return this.name + "：ブチかますぜ、EnrageBlast！\r\n";
+                    case 145: // Immolate
+                        return this.name + "：物理防御落としてやるぜ、Immolate！\r\n";
+                    case 146: // VanishWave
+                        return this.name + "：黙らせてやるぜ、VanishWave！\r\n";
+                    case 147: // WordOfAttitude
+                        return this.name + "：インスタント回復させるぜ、WordOfAttitude！\r\n";
+                    case 148: // HolyBreaker
+                        return this.name + "：これでダメージレースを優位にしてみせる。HolyBreaker！\r\n";
+                    case 149: // DarkenField
+                        return this.name + "：防御力をガタ落ちにしてやるぜ、DarkenField！\r\n";
+                    case 150: // SeventhMagic
+                        return this.name + "：今、全てを覆すぜ、SeventhMagic！\r\n";
+                    case 151: // BlueBullet
+                        return this.name + "：氷の弾丸を連射するぜ、BlueBullet！\r\n";
+                    case 152: // NeutralSmash
+                        return this.name + "：っしゃ、NeutralSmash！\r\n";
+                    case 153: // SwiftStep
+                        return this.name + "：速度値上げてくぜ、SwiftStep！\r\n";
+                    case 154: // CircleSlash
+                        return this.name + "：コレでも食らいな、CircleSlash！\r\n";
+                    case 155: // RumbleShout
+                        return this.name + "：どこ見てる、コッチだ！\r\n";
+                    case 156: // SmoothingMove
+                        return this.name + "：スライド式戦闘法、SmoothingMove！\r\n";
+                    case 157: // FutureVision
+                        return this.name + "：次のターン、見切ったぜ。FutureVision！\r\n";
+                    case 158: // ReflexSpirit
+                        return this.name + "：スタンや麻痺はゴメンだぜ、ReflexSpirit！\r\n";
+                    case 159: // SharpGlare
+                        return this.name + "：黙らせてやるぜ、SharpGlare！\r\n";
+                    case 160: // TrustSilence
+                        return this.name + "：沈黙や誘惑にかかってられるか、TrustSilence！\r\n";
+                    case 161: // SurpriseAttack
+                        return this.name + "：全員蹴散らしてやるぜ、SurpriseAttack！\r\n";
+                    case 162: // PsychicWave
+                        return this.name + "：この技は止められやしねえぜ、PsychicWave！\r\n";
+                    case 163: // Recover
+                        return this.name + "：しっかりしろ！Recover！\r\n";
+                    case 164: // ViolentSlash
+                        return this.name + "：見切れねえだろコイツは、ViolentSlash！\r\n";
+                    case 165: // OuterInspiration
+                        return this.name + "：ポテンシャル、引き戻すぜ、OuterInspiration！\r\n";
+                    case 166: // StanceOfSuddenness
+                        return this.name + "：っしゃ、ソレだ！StanceOfSuddenness！\r\n";
+                    case 167: // インスタント対象で発動不可
+                        return this.name + "：ダメだ、こいつはインスタント対象専用だ。\r\n";
+                    case 168: // StanceOfMystic
+                        return this.name + "：もうダメージは喰らわねえ、StanceOfMystic！\r\n";
+                    case 169: // HardestParry
+                        return this.name + "：瞬間で捉えてみせる。HardestParry！\r\n";
+                    case 170: // ConcussiveHit
+                        return this.name + "：これでも食らいな、コンカッシヴ・ヒット！\r\n";
+                    case 171: // Onslaught hit
+                        return this.name + "：これでも食らいな、オンスロート・ヒット！\r\n";
+                    case 172: // Impulse hit
+                        return this.name + "：これでも食らいな、インパルス・ヒット！\r\n";
+                    case 173: // Fatal Blow
+                        return this.name + "：砕け散れ、フェイタル・ブロー！\r\n";
+                    case 174: // Exalted Field
+                        return this.name + "：賛美の場を構築するぜ、イグザルティッド・フィールド！\r\n";
+                    case 175: // Rising Aura
+                        return this.name + "：ガンガン行くぜ、ライジング・オーラ！\r\n";
+                    case 176: // Ascension Aura
+                        return this.name + "：どんどんぶちかますぜ、アセンション・オーラ！\r\n";
+                    case 177: // Angel Breath
+                        return this.name + "：っしゃ、全員の状態を戻すぜ、エンジェル・ブレス！\r\n";
+                    case 178: // Blazing Field
+                        return this.name + "：燃やし尽くすぜ、ブレイジング・フィールド！\r\n";
+                    case 179: // Deep Mirror
+                        return this.name + "：その手は通さないぜ、ディープ・ミラー！\r\n";
+                    case 180: // Abyss Eye
+                        return this.name + "：深淵の眼、アビス・アイ！\r\n";
+                    case 181: // Doom Blade
+                        return this.name + "：精神まで切り刻むぜ、ドゥーム・ブレイド！\r\n";
+                    case 182: // Piercing Flame
+                        return this.name + "：っしゃ、これでも食らいな！ピアッシング・フレイム！\r\n";
+                    case 183: // Phantasmal Wind
+                        return this.name + "：反応上げていくぜ、ファンタズマル・ウィンド！\r\n";
+                    case 184: // Paradox Image
+                        return this.name + "：・・・パラドックス・イメージ！\r\n";
+                    case 185: // Vortex Field
+                        return this.name + "：この渦の中に埋もれさせてやるぜ、ヴォルテックス・フィールド！\r\n";
+                    case 186: // Static Barrier
+                        return this.name + "：水と理より加護を得るぜ、スタティック・バリア！\r\n";
+                    case 187: // Unknown Shock
+                        return this.name + "：盲目にしてやるぜ、アンノウン・ショック！\r\n";
+                    case 188: // SoulExecution
+                        return this.name + "：奥義　ソウル・エグゼキューション！\r\n";
+                    case 189: // SoulExecution hit 01
+                        return this.name + "：ッラ！\r\n";
+                    case 190: // SoulExecution hit 02
+                        return this.name + "：ラァ！\r\n";
+                    case 191: // SoulExecution hit 03
+                        return this.name + "：ッシャ！\r\n";
+                    case 192: // SoulExecution hit 04
+                        return this.name + "：ッティ！\r\n";
+                    case 193: // SoulExecution hit 05
+                        return this.name + "：トォ！\r\n";
+                    case 194: // SoulExecution hit 06
+                        return this.name + "：ッフ！\r\n";
+                    case 195: // SoulExecution hit 07
+                        return this.name + "：ッハ！\r\n";
+                    case 196: // SoulExecution hit 08
+                        return this.name + "：ッハァ！\r\n";
+                    case 197: // SoulExecution hit 09
+                        return this.name + "：オラァ！\r\n";
+                    case 198: // SoulExecution hit 10
+                        return this.name + "：終わりだ！！！\r\n";
+                    case 199: // Nourish Sense
+                        return this.name + "：さらに回復していくぜ、ノリッシュ・センス！\r\n";
+                    case 200: // Mind Killing
+                        return this.name + "：精神切り刻むぜ、マインド・キリング！\r\n";
+                    case 201: // Vigor Sense
+                        return this.name + "：反応値上げていくぜ、ヴィゴー・センス！\r\n";
+                    case 202: // ONE Authority
+                        return this.name + "：おっしゃ、全員上げていこうぜ！ワン・オーソリティ！\r\n";
+                    case 203: // 集中と断絶
+                        return this.name + "：【集中と断絶】　発動。\r\n";
+                    case 204: // 【元核】発動済み
+                        return this.name + "：【元核】は今日もう使っちまったぜ。\r\n";
+                    case 205: // 【元核】通常行動選択時
+                        return this.name + "：【元核】はインスタントタイミング限定だな。\r\n";
+                    case 206: // Sigil Of Homura
+                        return this.name + "：焔の威力、思い知れ！シギル・オブ・ホムラ！\r\n";
+                    case 207: // Austerity Matrix
+                        return this.name + "：支配封じさせてもらうぜ、アゥステリティ・マトリクス！\r\n";
+                    case 208: // Red Dragon Will
+                        return this.name + "：火の竜よ、俺に更なる力を！レッド・ドラゴン・ウィル！\r\n";
+                    case 209: // Blue Dragon Will
+                        return this.name + "：水の竜よ、俺に更なる力を！ブルー・ドラゴン・ウィル！\r\n";
+                    case 210: // Eclipse End
+                        return this.name + "：究極の全抹消、エクリプス・エンド！\r\n";
+                    case 211: // Sin Fortune
+                        return this.name + "：次で決めるぜ、シン・フォーチュン！\r\n";
+                    case 212: // AfterReviveHalf
+                        return this.name + "：死耐性（ハーフ）を付けるぜ！\r\n";
+                    case 213: // Demonic Ignite
+                        return this.name + "：黒の焔をその身で受けろ！デーモニック・イグナイト！\r\n";
+                    case 214: // Death Deny
+                        return this.name + "：死者を完全なる状態で蘇生させるぜ、デス・ディナイ！\r\n";
+                    case 215: // Stance of Double
+                        return this.name + "：究極の行動原理、スタンス・オブ・ダブル！  " + this.name + "は前回行動を示す自分の分身を発生させた！\r\n";
+                    case 216: // 最終戦ライフカウント消費
+                        return this.name + "：まだだ・・・まだ、負けられねえんだ！！\r\n";
+                    case 217: // 最終戦ライフカウント消滅時
+                        return this.name + "：・・・ッグ・・・っく・・・\r\n";
+
+                    case 2001: // ポーションまたは魔法による回復時
+                        return this.name + "：よし、{0} 回復したぜ。";
+                    case 2002: // レベルアップ終了催促
+                        return this.name + "：レベルアップしてからにしようぜ。";
+                    case 2003: // 荷物を減らせる催促
+                        return this.name + "：{0}、少し荷物を減らしておけよ。アイテムが渡せねえぞ。";
+                    case 2004: // 装備判断
+                        return this.name + "：よし、装備しとくか？";
+                    case 2005: // 装備完了
+                        return this.name + "：オーケー、装備完了！";
+                    case 2006: // 遠見の青水晶を使用
+                        return this.name + "：いったん、町へ戻るか？";
+                    case 2007: // 売却専用品に対する一言
+                        return this.name + "：売却専用品だな。";
+                    case 2008: // 非戦闘時のマナ不足
+                        return this.name + "：マナ不足だな。";
+                    case 2009: // 神聖水使用時
+                        return this.name + "：ライフ・スキル・マナが30%ずつ回復したぜ。";
+                    case 2010: // 神聖水、既に使用済みの場合
+                        return this.name + "：もう枯れてしまってるぜ。一日１回だけだな。";
+                    case 2011: // リーベストランクポーション非戦闘使用時
+                        return this.name + "：戦闘中専用品だな。";
+                    case 2012: // 遠見の青水晶を使用（町滞在時）
+                        return this.name + "：すでに町の中だ。使うだけ無駄だな。";
+                    case 2013: // 遠見の青水晶を捨てられない時の台詞
+                        return this.name + "：おいおい、さすがにこれを捨てたら駄目だろ。";
+                    case 2014: // 非戦闘時のスキル不足
+                        return this.name + "：スキル不足だな。";
+                    case 2015: // 他プレイヤーが捨ててしまおうとした場合
+                        return this.name + "：おっと、それは捨ててもらっちゃ困るぜ。";
+                    case 2016: // リヴァイヴポーションによる復活
+                        return this.name + "：っしゃ、復活だぜ！サンキュー！";
+                    case 2017: // リヴァイヴポーション不要な時
+                        return this.name + "：{0}はまだ生きてるじゃねえか。使用する必要はないぜ。";
+                    case 2018: // リヴァイヴポーション対象が自分の時
+                        return this.name + "：俺自身に使っても意味ないだろ。";
+                    case 2019: // 装備不可のアイテムを装備しようとした時
+                        return this.name + "：俺には装備出来ないようだ。";
+                    case 2020: // ラスボス撃破の後、遠見の青水晶を使用不可
+                        return this.name + "：いや、今コレは使うつもりはねえ";
+                    case 2021: // アイテム捨てるの催促
+                        return this.name + "：バックパックの整理を先にしようぜ。";
+                    case 2022: // オーバーシフティング使用開始時
+                        return this.name + "：凄えぜ・・・身体のパラメタが再構築されていく・・・";
+                    case 2023: // オーバーシフティングによるパラメタ割り振り時
+                        return this.name + "：オーバーシフティングによる割り振りを早いトコやってしまおうぜ。";
+                    case 2024: // 成長リキッドを使用した時
+                        return this.name + "：【{0}】パラメタが {1} 上昇したぜ！";
+                    case 2025:
+                        return this.name + "：両手武器を持ってる場合、サブは装備できねえぜ。";
+                    case 2026:
+                        return this.name + "：武器（メイン）にまず何か装備しようぜ。";
+                    case 2027: // 清透水使用時
+                        return this.name + "：ライフが100%回復したぜ。";
+                    case 2028: // 清透水、既に使用済みの場合
+                        return this.name + "：もう枯れてしまってるぜ。一日１回だけだな。";
+                    case 2029: // 荷物一杯で装備が外せない時
+                        return this.name + "：バックパックがいっぱいだ。装備外す前にバックパック整理しようぜ。";
+                    case 2030: // 荷物一杯で何かを捨てる時の台詞
+                        return this.name + "：{0}を捨てて新しいアイテムを入手するか？";
+                    case 2031: // 戦闘中のアイテム使用限定
+                        return this.name + "：戦闘中だし、アイテム使用に集中しようぜ。";
+                    case 2032: // 戦闘中、アイテム使用できないアイテムを選択したとき
+                        return this.name + "：このアイテムは戦闘中に使用は出来ないぜ。";
+                    case 2033: // 預けられない場合
+                        return this.name + "：これを預けておくわけにはいかねえよな。";
+                    case 2034: // アイテムいっぱいで預かり所から引き出せない場合
+                        return this.name + "：おっと荷物がいっぱいだぜ。";
+                    case 2035: // Sacred Heal
+                        return this.name + "：おし、回復したぜ。";
+
+                    case 3000: // 店に入った時の台詞
+                        return this.name + "：本当に誰も見張り役が居ないんだな。";
+                    case 3001: // 支払い要求時
+                        return this.name + "：おし、この {0} を買うぜ。 {1} Gold払えば良いんだな？";
+                    case 3002: // 持ち物いっぱいで買えない時
+                        return this.name + "：しまった、持ち物がいっぱいだ。手持ちのアイテムを整理してからだな。";
+                    case 3003: // 購入完了時
+                        return this.name + "：よっしゃ、売買成立！・・・だよな？";
+                    case 3004: // Gold不足で購入できない場合
+                        return this.name + "：クソ、Goldがまだ{0}足りねえ・・・";
+                    case 3005: // 購入せずキャンセルした場合
+                        return this.name + "：他のアイテムでも見てみるか";
+                    case 3006: // 売れないアイテムを売ろうとした場合
+                        return this.name + "：これは手放すわけにはいかねえな。";
+                    case 3007: // アイテム売却時
+                        return this.name + "：相手がいねえが・・・{0}を置いて、{1}Gold・・・いただくぜ？";
+                    case 3008: // 剣紋章ペンダント売却時
+                        return this.name + "：コレはちょっと売るのは心がひけるが・・・{0}Goldいただくぜ？";
+                    case 3009: // 武具店を出る時
+                        return this.name + "：ガンツ叔父さん、見張り人ぐらい付けるといいのにな・・・";
+                    case 3010: // ガンツ不在時の売りきれフェルトゥーシュを見て一言
+                        return this.name + "：元々売ってるわけがねえんだよな・・・";
+                    case 3011: // 装備可能なものが購入された時
+                        return this.name + "：っしゃ、ここで装備していくぜ？";
+                    case 3012: // 装備していた物を売却対象かどうか聞く時
+                        return this.name + "：今装備しているは、{0}だ。{1}Goldぐらいで買い取ってもらえるんじゃねえか？";
+
+                    case 4001: // 通常攻撃を選択
+                        return this.name + "：っしゃ、攻撃だ！\r\n";
+                    case 4002: // 防御を選択
+                        return this.name + "：防御姿勢で構えておくか。\r\n";
+                    case 4003: // 待機を選択
+                        return this.name + "：何もせず待機と行くか・・・\r\n";
+                    case 4004: // フレッシュヒールを選択
+                        return this.name + "：ここはフレッシュヒールで回復だ。\r\n";
+                    case 4005: // プロテクションを選択
+                        return this.name + "：防御力上げるぜ、プロテクションだ。\r\n";
+                    case 4006: // ファイア・ボールを選択
+                        return this.name + "：ファイアボールだ！\r\n";
+                    case 4007: // フレイム・オーラを選択
+                        return this.name + "：ここは、フレイムを付けておくぜ。\r\n";
+                    case 4008: // ストレート・スマッシュを選択
+                        return this.name + "：いくぜ！ストレートスマッシュ！\r\n";
+                    case 4009: // ダブル・スマッシュを選択
+                        return this.name + "：２連撃いくぜ、ダブルスマッシュ！\r\n";
+                    case 4010: // スタンス・オブ・スタンディングを選択
+                        return this.name + "：守って攻める、スタンディングの構えだ。\r\n";
+                    case 4011: // アイス・ニードルを選択
+                        return this.name + "：アイスニードルでいくぜ！\r\n";
+                    case 4012:
+                    case 4013:
+                    case 4014:
+                    case 4015:
+                    case 4016:
+                    case 4017:
+                    case 4018:
+                    case 4019:
+                    case 4020:
+                    case 4021:
+                    case 4022:
+                    case 4023:
+                    case 4024:
+                    case 4025:
+                    case 4026:
+                    case 4027:
+                    case 4028:
+                    case 4029:
+                    case 4030:
+                    case 4031:
+                    case 4032:
+                    case 4033:
+                    case 4034:
+                    case 4035:
+                    case 4036:
+                    case 4037:
+                    case 4038:
+                    case 4039:
+                    case 4040:
+                    case 4041:
+                    case 4042:
+                    case 4043:
+                    case 4044:
+                    case 4045:
+                    case 4046:
+                    case 4047:
+                    case 4048:
+                    case 4049:
+                    case 4050:
+                    case 4051:
+                    case 4052:
+                    case 4053:
+                    case 4054:
+                    case 4055:
+                    case 4056:
+                    case 4057:
+                    case 4058:
+                    case 4059:
+                    case 4060:
+                    case 4061:
+                    case 4062:
+                    case 4063:
+                    case 4064:
+                    case 4065:
+                    case 4066:
+                    case 4067:
+                    case 4068:
+                    case 4069:
+                    case 4070:
+                    case 4071:
+                        return this.name + "：" + this.ActionLabel.text + "でいくぜ。\r\n";
+
+                    case 4072:
+                        return this.name + "：これは敵にかけられないぜ。\r\n";
+                    case 4073:
+                        return this.name + "：これは敵にかけられないぜ。\r\n";
+                    case 4074:
+                        return this.name + "：これは味方にかけたくはねえ。\r\n";
+                    case 4075:
+                        return this.name + "：これは味方にかけたくはねえ。\r\n";
+                    case 4076:
+                        return this.name + "：味方に攻撃は仕掛けられないぜ。\r\n";
+                    case 4077: // 「ためる」コマンド
+                        return this.name + "：パワーをためるぜ。\r\n";
+                    case 4078: // 武器発動「メイン」
+                        return this.name + "：メイン武器の効果を発動させるぜ。\r\n";
+                    case 4079: // 武器発動「サブ」
+                        return this.name + "：サブ武器の効果を発動させるぜ。\r\n";
+                    case 4080: // アクセサリ１発動
+                        return this.name + "：アクセサリ１の効果を発動させるぜ。\r\n";
+                    case 4081: // アクセサリ２発動
+                        return this.name + "：アクセサリ２の効果を発動させるぜ。\r\n";
+
+                    case 4082: // FlashBlaze
+                        return this.name + "：フラッシュブレイズいくぜ！\r\n";
+
+                    // 武器攻撃
+                    case 5001:
+                        return this.name + "：これでも食らいな！エアロ・スラッシュ！ {0} へ {1} のダメージ\r\n";
+                    case 5002:
+                        return this.name + "：{0} 回復っと！ \r\n";
+                    case 5003:
+                        return this.name + "：{0}マナ回復っと！\r\n";
+                    case 5004:
+                        return this.name + "：凍りつけ！アイシクル・スラッシュ！ {0} へ {1} のダメージ\r\n";
+                    case 5005:
+                        return this.name + "：砕けろ！エレクトロ・ブロー！ {0} へ {1} のダメージ\r\n";
+                    case 5006:
+                        return this.name + "：これでも食らいな！ブルー・ライトニング！ {0} へ {1} のダメージ\r\n";
+                    case 5007:
+                        return this.name + "：これでも食らいな！バーニング・クレイモア！ {0} へ {1} のダメージ\r\n";
+                    case 5008:
+                        return this.name + "：この蒼の炎でも食らうんだな！ {0} へ {1} のダメージ\r\n";
+                    case 5009:
+                        return this.name + "：{0}スキルポイント回復っと！\r\n";
+                    case 5010:
+                        return this.name + "が装着している指輪が強烈に蒼い光を放った！ {0} へ {1} のダメージ\r\n";
                 }
             }
+            #endregion
+            #region "ラナ"
+            else if (this.name == "ラナ")
+            {
+                switch (sentenceNumber)
+                {
+                    case 0: // スキル不足
+                        return this.name + "：っちょっと、スキルポイントが足りないじゃない！\r\n";
+                    case 1: // Straight Smash
+                        return this.name + "：いくわよ。\r\n";
+                    case 2: // Double Slash 1
+                        return this.name + "：ハイッ！\r\n";
+                    case 3: // Double Slash 2
+                        return this.name + "：セイッ！\r\n";
+                    case 4: // Painful Insanity
+                        return this.name + "：【心眼奥義】終わらない痛み、受け続けるが良いわ。\r\n";
+                    case 5: // empty skill
+                        return this.name + "：っちょっと、スキル選択してないじゃない！\r\n";
+                    case 6: // 絡みつくフランシスの必殺を食らった時
+                        return this.name + "：痛っ！　辛いわね・・・\r\n";
+                    case 7: // Lizenosの必殺を食らった時
+                        return this.name + ": 駄目・・・私じゃ全然追えないわ・・・\r\n";
+                    case 8: // Minfloreの必殺を食らった時
+                        return this.name + "：っよ、避け切れない！ッキャアアァ！！！\r\n";
+                    case 9: // Fresh Healによるライフ回復
+                        return this.name + "：{0} 回復ね。\r\n";
+                    case 10: // Fire Ball
+                        return this.name + "：炎の玉、FireBallよ。 {0} へ {1} のダメージ\r\n";
+                    case 11: // Flame Strike
+                        return this.name + "：炎の槍、FlameStrikeよ。 {0} へ {1} のダメージ\r\n";
+                    case 12: // Volcanic Wave
+                        return this.name + "：真紅の業火、VolcanicWaveよ。 {0} へ {1} のダメージ\r\n";
+                    case 13: // 通常攻撃クリティカルヒット
+                        return this.name + "：クリティカルヒットよ！ {0} へ {1} のダメージ\r\n";
+                    case 14: // FlameAuraによる追加攻撃
+                        return this.name + "：フレイム！ {0}の追加ダメージ\r\n";
+                    case 15: // 遠見の青水晶を戦闘中に使ったとき
+                        return this.name + "：戦闘中に使っても意味ないのよね。\r\n";
+                    case 16: // 効果を発揮しないアイテムを戦闘中に使ったとき
+                        return this.name + "：ホント、使えないアイテムね。何も起きないわ。\r\n";
+                    case 17: // 魔法でマナ不足
+                        return this.name + "：あ、マナ不足だったわ。\r\n";
+                    case 18: // Protection
+                        return this.name + "：聖なる神による加護、Protectionよ。物理防御力：ＵＰ\r\n";
+                    case 19: // Absorb Water
+                        return this.name + "：水の女神による加護・・・AbsorbWaterよ。 魔法防御力：ＵＰ。\r\n";
+                    case 20: // Saint Power
+                        return this.name + "：聖なる神よ我に力を、SaintPower。 物理攻撃力：ＵＰ\r\n";
+                    case 21: // Shadow Pact
+                        return this.name + "：闇との契約、ShadowPactよ。 魔法攻撃力：ＵＰ\r\n";
+                    case 22: // Bloody Vengeance
+                        return this.name + "：闇の使者による加護・・・BloodyVengeanceよ。 力パラメタが {0} ＵＰ\r\n";
+                    case 23: // Holy Shock
+                        return this.name + "：ハンマーでドカンっとね♪ HolyShock！ {0} へ {1} のダメージ\r\n";
+                    case 24: // Glory
+                        return this.name + "：栄光の光を照らせ、Gloryよ。 直接攻撃＋FreshHeal連携のオーラ\r\n";
+                    case 25: // CelestialNova 1
+                        return this.name + "：聖なる光で包み込むわ、CelestialNovaよ。 {0} 回復ね。\r\n";
+                    case 26: // CelestialNova 2
+                        return this.name + "：聖なる裁きの光、CelestialNovaよ。 {0} のダメージ\r\n";
+                    case 27: // Dark Blast
+                        return this.name + "：黒い波動、耐えられるかしら、DarkBlastよ。 {0} へ {1} のダメージ\r\n";
+                    case 28: // Lava Annihilation
+                        return this.name + "：これが私の炎授天使様よ、LavaAnnihilation！ {0} へ {1} のダメージ\r\n";
+                    case 10028: // Lava Annihilation後編
+                        return this.name + "：これが私の炎授天使様よ、LavaAnnihilation！\r\n";
+                    case 29: // Devouring Plague
+                        return this.name + "：体力を頂くとするわ、DevouringPlagueよ。 {0} ライフを吸い取った\r\n";
+                    case 30: // Ice Needle
+                        return this.name + "：それっ、氷の針よ♪ IceNeedle。 {0} へ {1} のダメージ\r\n";
+                    case 31: // Frozen Lance
+                        return this.name + "：凍結された槍、受けてみなさい、FrozenLanceよ。 {0} へ {1} のダメージ\r\n";
+                    case 32: // Tidal Wave
+                        return this.name + "：大地をも飲み込む壮大なる唸り、TidalWaveよ！ {0} のダメージ\r\n";
+                    case 33: // Word of Power
+                        return this.name + "：言葉にも力はあるわ、WordOfPowerよ。 {0} へ {1} のダメージ\r\n";
+                    case 34: // White Out
+                        return this.name + "：五感の全てが消え去る瞬間、WhiteOutよ。 {0} へ {1} のダメージ\r\n";
+                    case 35: // Black Contract
+                        return this.name + "：悪魔からの確約された力、BlackContractよ。 " + this.name + "のスキル、魔法コストは０になる。\r\n";
+                    case 36: // Flame Aura詠唱
+                        return this.name + "：エンチャント炎って便利ね、FlameAuraよ。 直接攻撃に炎の追加効果が付与される。\r\n";
+                    case 37: // Damnation
+                        return this.name + "：闇の深遠、逃れられないわよ、Damnation！ 死淵より出でる黒が空間を歪ませる。\r\n";
+                    case 38: // Heat Boost
+                        return this.name + "：炎授天使より加護を得る、HeatBoostよ。 技パラメタが {0} ＵＰ。\r\n";
+                    case 39: // Immortal Rave
+                        return this.name + "：炎術演舞、ImmortalRaveよ！ " + this.name + "の周りに３つの炎が宿った。\r\n";
+                    case 40: // Gale Wind
+                        return this.name + "：真実の幻影、GaleWindよ。 もう一人の" + this.name + "が現れた。\r\n";
+                    case 41: // Word of Life
+                        return this.name + "：永久なる自然の恩恵、WordOfLifeよ。 大自然からの強い息吹を感じ取れるようになった。\r\n";
+                    case 42: // Word of Fortune
+                        return this.name + "：強き理、未来、確定のWordOfFortuneよ。 決死のオーラが湧き上がった。\r\n";
+                    case 43: // Aether Drive
+                        return this.name + "：創造上の物理使わせてもらうわ、AetherDrive！ 周囲全体に空想物理力がみなぎる。\r\n";
+                    case 44: // Eternal Presence 1
+                        return this.name + "：新しき創造と原理構築、EternalPresenceよ。 " + this.name + "の周りに新しい法則が構築される。\r\n";
+                    case 45: // Eternal Presence 2
+                        return this.name + "の物理攻撃、物理防御、魔法攻撃、魔法防御がＵＰした！\r\n";
+                    case 46: // One Immunity
+                        return this.name + "：空間の壁ってとこかしら♪ OneImmunityよ。 " + this.name + "の周囲に目に見えない障壁が発生。\r\n";
+                    case 47: // Time Stop
+                        return this.name + "：時空断裂、認識自体を飛ばすわよ、TimeStop！ 敵の時空を引き裂き時間停止させた。\r\n";
+                    case 48: // Dispel Magic
+                        return this.name + "：永続的効果は無に帰るべきね、DispelMagicよ。 \r\n";
+                    case 49: // Rise of Image
+                        return this.name + "：時空の支配者より加護を得る、RiseOfImageよ。 心パラメタが {0} ＵＰ\r\n";
+                    case 50: // 空詠唱
+                        return this.name + "：っちょっと、空詠唱じゃないの！\r\n";
+                    case 51: // Inner Inspiration
+                        return this.name + "：は潜在集中力を高めた。精神が研ぎ澄まされる。 {0} スキルポイント回復\r\n";
+                    case 52: // Resurrection 1
+                        return this.name + "：聖の力は奇跡すら起こせるのよ、Resurrection！！\r\n";
+                    case 53: // Resurrection 2
+                        return this.name + "：っちょっと、対象間違えちゃったじゃない！！\r\n";
+                    case 54: // Resurrection 3
+                        return this.name + "：あ、生きてた・・・ゴメンね♪\r\n";
+                    case 55: // Resurrection 4
+                        return this.name + "：自分にやっても効果ないのよね・・・\r\n";
+                    case 56: // Stance Of Standing
+                        return this.name + "：防御体制を維持したまま・・・攻撃よ！\r\n";
+                    case 57: // Mirror Image
+                        return this.name + "：純蒼の女神より魔法反射の加護を得る、MirrorImageよ。{0}の周囲に青い空間が発生した。\r\n";
+                    case 58: // Mirror Image 2
+                        return this.name + "：来たわ、はね返すのよ！ {0} ダメージを {1} に反射した！\r\n";
+                    case 59: // Mirror Image 3
+                        return this.name + "：来たわ、はね返すのよ！ 【しかし、強力な威力ではね返せない！】" + this.name + "：っう、ウソ！？\r\n";
+                    case 60: // Deflection
+                        return this.name + "：純白の使者より物理反射の加護を得る、Deflectionよ。 {0}の周囲に白い空間が発生した。\r\n";
+                    case 61: // Deflection 2
+                        return this.name + "：来たわ、はね返すのよ！ {0} ダメージを {1} に反射した！\r\n";
+                    case 62: // Deflection 3
+                        return this.name + "：来たわ、はね返すのよ！ 【しかし、強力な威力ではね返せない！】" + this.name + "：キャアアッ！！\r\n";
+                    case 63: // Truth Vision
+                        return this.name + "：本質さえ見えれば怖くないわ、TruthVisionよ。　" + this.name + "は対象のパラメタＵＰを無視するようになった。\r\n";
+                    case 64: // Stance Of Flow
+                        return this.name + "：後手必勝、必ず会得してみせるわ、StanceOfFlowよ。　" + this.name + "は次３ターン、必ず後攻を取るように構えた。\r\n";
+                    case 65: // Carnage Rush 1
+                        return this.name + "：この連続コンボ、耐えられるかしら？CarnageRushよ。 ッハイ！ {0}ダメージ・・・   ";
+                    case 66: // Carnage Rush 2
+                        return "ッセイ！ {0}ダメージ   ";
+                    case 67: // Carnage Rush 3
+                        return "ヤァァ！ {0}ダメージ   ";
+                    case 68: // Carnage Rush 4
+                        return "ッフ！ {0}ダメージ   ";
+                    case 69: // Carnage Rush 5
+                        return "ハアアァァァ！！ {0}のダメージ\r\n";
+                    case 70: // Crushing Blow
+                        return this.name + "：この一撃で動きを止めて見せるわ。CrushingBlowよ。  {0} へ {1} のダメージ。\r\n";
+                    case 71: // リーベストランクポーション戦闘使用時
+                        return this.name + "：ッフフ、これでも食らいなさい。\r\n";
+                    case 72: // Enigma Sence
+                        return this.name + "：力の源は人によって違うのよ、EnigmaSence！\r\n";
+                    case 73: // Soul Infinity
+                        return this.name + "：私の能力を全て使って叩き込むわ。ッハアアァァァ・・・SoulInfinity！！\r\n";
+                    case 74: // Kinetic Smash
+                        return this.name + "：私の拳、最大限の運動性を引き出してみせるわ、KineticSmashよ！\r\n";
+                    case 75: // Silence Shot (Altomo専用)
+                        return "";
+                    case 76: // Silence Shot、AbsoluteZero沈黙による詠唱失敗
+                        return this.name + "：・・・ッダメ！詠唱できなかったわ！！\r\n";
+                    case 77: // Cleansing
+                        return this.name + "：純蒼の女神による浄化、Cleansingよ。\r\n";
+                    case 78: // Pure Purification
+                        return this.name + "：精神潜在からの浄化、PurePurification・・・\r\n";
+                    case 79: // Void Extraction
+                        return this.name + "：最大の能力、最大限に引き出すわ、VoidExtractionよ。" + this.name + "の {0} が {1}ＵＰ！\r\n";
+                    case 80: // アカシジアの実使用時
+                        return this.name + "：っそれ、これで気付けになるわよ。\r\n";
+                    case 81: // Absolute Zero
+                        return this.name + "：氷の女神より絶対零度を受けなさい。AbsoluteZero！ 氷吹雪効果により、ライフ回復不可、スペル詠唱不可、スキル使用不可、防御不可となった。\r\n";
+                    case 82: // BUFFUP効果が望めない場合
+                        return "しかし、既にそのパラメタは上昇しているため、効果がなかった。\r\n";
+                    case 83: // Promised Knowledge
+                        return this.name + "：雪の女神よ、聡明なる知恵を授けたまえ、PromiesdKnowledgeよ。　知パラメタが {0} ＵＰ\r\n";
+                    case 84: // Tranquility
+                        return this.name + "：その効果さえ、消えてしまうがいいわ！ Tranquilityよ！\r\n";
+                    case 85: // High Emotionality 1
+                        return this.name + "：私の潜在能力はこんなものじゃないわ、HighEmotionalityよ！\r\n";
+                    case 86: // High Emotionality 2
+                        return this.name + "の力、技、知、心パラメタがＵＰした！\r\n";
+                    case 87: // AbsoluteZeroでスキル使用失敗
+                        return this.name + "：全然・・・動けない・・・、スキル使用できないわ。\r\n";
+                    case 88: // AbsoluteZeroによる防御失敗
+                        return this.name + "：防御の・・・構えが取れないわ！ \r\n";
+                    case 89: // Silent Rush 1
+                        return this.name + "：動きを最小限に抑えた連続攻撃、SilentRushよ。　ッハイ！ {0}ダメージ・・・　";
+                    case 90: // Silent Rush 2
+                        return "ッセイ！ {0}ダメージ   ";
+                    case 91: // Silent Rush 3
+                        return "ヤアァァ！ {0}のダメージ\r\n";
+                    case 92: // BUFFUP以外の永続効果が既についている場合
+                        return "しかし、既にその効果は付与されている。\r\n";
+                    case 93: // Anti Stun
+                        return this.name + "：この構えでスタンを防ぐわ、AntiStunよ。 " + this.name + "はスタン効果への耐性が付いた\r\n";
+                    case 94: // Anti Stunによるスタン回避
+                        return this.name + "：っく、痛いわね。でもスタンは避けたわ。\r\n";
+                    case 95: // Stance Of Death
+                        return this.name + "：そう簡単にやられないわよ、StanceOfDeath！ " + this.name + "は致死を１度回避できるようになった\r\n";
+                    case 96: // Oboro Impact 1
+                        return this.name + "：朧の容、【究極奥義】Oboro Impactよ！\r\n";
+                    case 97: // Oboro Impact 2
+                        return this.name + "：ッハアァァ・・・ッセイ！！　 {0}へ{1}のダメージ\r\n";
+                    case 98: // Catastrophe 1
+                        return this.name + "：身体の根幹へと伝わる・・・【究極奥義】Catastropheよ！\r\n";
+                    case 99: // Catastrophe 2
+                        return this.name + "：ッセエエエエェ！！　 {0}のダメージ\r\n";
+                    case 100: // Stance Of Eyes
+                        return this.name + "：行動には必ずモーションがあるはず、 StanceOfEyesよ。 " + this.name + "は、相手の行動に備えている・・・\r\n";
+                    case 101: // Stance Of Eyesによるキャンセル時
+                        return this.name + "：っそれね！！　" + this.name + "は相手のモーションを見切って、行動キャンセルした！\r\n";
+                    case 102: // Stance Of Eyesによるキャンセル失敗時
+                        return this.name + "：っうそ・・・動いた形跡が無いわ・・・　" + this.name + "は相手のモーションを見切れなかった！\r\n";
+                    case 103: // Negate
+                        return this.name + "：詠唱なんかさせないわ、Negateよ。" + this.name + "は相手のスペル詠唱に備えている・・・\r\n";
+                    case 104: // Negateによるスペル詠唱キャンセル時
+                        return this.name + "：詠唱するとこ、見つけたわ！" + this.name + "は相手のスペル詠唱を弾いた！\r\n";
+                    case 105: // Negateによるスペル詠唱キャンセル失敗時
+                        return this.name + "：っうそ・・・詠唱タイミングがわからない・・・" + this.name + "は相手のスペル詠唱を見切れなかった！\r\n";
+                    case 106: // Nothing Of Nothingness 1
+                        return this.name + "：これが、完全なる否定魔法【究極奥義】NothingOfNothingnessよ！ " + this.name + "に無色のオーラが宿り始める！ \r\n";
+                    case 107: // Nothing Of Nothingness 2
+                        return this.name + "は無効化魔法を無効化、　無効化するスキルを無効化するようになった！\r\n";
+                    case 108: // Genesis
+                        return this.name + "：全ての行動をもう一度呼び起こすわ、Genesisよ。  " + this.name + "は前回の行動を自分へと投影させた！\r\n";
+                    case 109: // Cleansing詠唱失敗時
+                        return this.name + "：っう・・・駄目、調子が悪くてCleansingは出来そうにないわ。\r\n";
+                    case 110: // CounterAttackを無視した時
+                        return this.Name + "：甘いわね、その構えは既にお見通しよ。\r\n";
+                    case 111: // 神聖水使用時
+                        return this.name + "：ライフ・スキル・マナが30%ずつ回復したわよ。\r\n";
+                    case 112: // 神聖水、既に使用済みの場合
+                        return this.name + "：もう枯れてしまってるわ。一日１回だけのようね。\r\n";
+                    case 113: // CounterAttackによる反撃メッセージ
+                        return this.name + "：その動きもらったわ、カウンターよ。\r\n";
+                    case 114: // CounterAttackに対する反撃がNothingOfNothingnessによって防がれた時
+                        return this.name + "：駄目・・・見切れないわ。\r\n";
+                    case 115: // 通常攻撃のヒット
+                        return this.name + "の攻撃がヒット。 {0} へ {1} のダメージ\r\n";
+                    case 116: // 防御を無視して攻撃する時
+                        return this.name + "：防御の構えは無駄よ！\r\n";
+                    case 117: // StraightSmashなどのスキルクリティカル
+                        return this.name + "：クリティカルヒットよ！\r\n";
+                    case 118: // 戦闘時、リヴァイヴポーションによる復活のかけ声
+                        return this.name + "：このポーションで復活よ。ッハイ！\r\n";
+                    case 119: // Absolute Zeroによりライフ回復できない場合
+                        return this.name + "：ライフが・・・回復できないわ・・・\r\n";
+                    case 120: // 魔法攻撃のヒット
+                        return "{0} へ {1} のダメージ\r\n";
+                    case 121: // Absolute Zeroによりマナ回復できない場合
+                        return this.name + "：マナが・・・回復できないわ・・・\r\n";
+                    case 122: // 「ためる」行動時
+                        return this.name + "：魔力、蓄えさせてもらったわよ。\r\n";
+                    case 123: // 「ためる」行動で溜まりきっている場合
+                        return this.name + "：これ以上、魔力は蓄えられないみたいね。\r\n";
+                    case 124: // StraightSmashのダメージ値
+                        return this.name + "のストレート・スマッシュがヒット。 {0} へ {1}のダメージ\r\n";
+                    case 125: // アイテム使用ゲージが溜まってないとき
+                        return this.name + "：アイテムゲージが溜まってないわね。アイテムはまだ使えないわよ。\r\n";
+                    case 126: // FlashBlase
+                        return this.name + "：聖なる炎で焼いてあげるわ、FlashBlazeよ。 {0} へ {1} のダメージ\r\n";
+                    case 127: // 複合魔法でインスタント不足
+                        return this.name + "：っあ！インスタント値足りないじゃない！\r\n";
+                    case 128: // 複合魔法はインスタントタイミングでうてない
+                        return this.name + "：インスタントタイミングじゃ発動できないわ。\r\n";
+                    case 129: // PsychicTrance
+                        return this.name + "：少し怖いけど・・・魔法攻撃力強化よ、PsychicTrance。\r\n";
+                    case 130: // BlindJustice
+                        return this.name + "：この魔法危険だけど・・・物理攻撃強化よ、BlindJustice。\r\n";
+                    case 131: // TranscendentWish
+                        return this.name + "：お願い、ケリを付けさせてちょうだい、TranscendentWishよ\r\n";
+                    case 132: // LightDetonator
+                        return this.name + "：ここね、フィールド展開！ LightDetonatorよ\r\n";
+                    case 133: // AscendantMeteor
+                        return this.name + "：アッハハハ、死ねば良いわ。　AscendantMeteorよ\r\n";
+                    case 134: // SkyShield
+                        return this.name + "：空と聖から加護を受けるわ、SkyShieldよ\r\n";
+                    case 135: // SacredHeal
+                        return this.name + "：全員回復させるわ、SacredHeal\r\n";
+                    case 136: // EverDroplet
+                        return this.name + "：これでマナ枯渇の心配は不要ね、EverDropletよ\r\n";
+                    case 137: // FrozenAura
+                        return this.name + "：氷属性を付与するわ、FrozenAura。\r\n";
+                    case 138: // ChillBurn
+                        return this.name + "：凍結してちょうだい、ChillBurn。\r\n";
+                    case 139: // ZetaExplosion
+                        return this.name + "：古の禁呪、ZetaExplosionよ！\r\n";
+                    case 140: // FrozenAura追加効果ダメージで
+                        return this.name + "：凍って！ {0}の追加ダメージ\r\n";
+                    case 141: // StarLightning
+                        return this.name + "：お願い。気絶して、StarLightningよ！\r\n";
+                    case 142: // WordOfMalice
+                        return this.name + "：動きを鈍化させてあげるわ、WordOfMalice。\r\n";
+                    case 143: // BlackFire
+                        return this.name + "：魔法防御を劣化させてあげるわ、BlackFire。\r\n";
+                    case 144: // EnrageBlast
+                        return this.name + "：打ち上げ花火♪　EnrageBlast♪　\r\n";
+                    case 145: // Immolate
+                        return this.name + "：物理防御を劣化させてあげるわ、Immolate。\r\n";
+                    case 146: // VanishWave
+                        return this.name + "：少し黙っててちょうだい、VanishWave！\r\n";
+                    case 147: // WordOfAttitude
+                        return this.name + "：インスタント回復させるわ、WordOfAttitudeよ。\r\n";
+                    case 148: // HolyBreaker
+                        return this.name + "：ダメージの引き換えをあげるわ、HolyBreaker！\r\n";
+                    case 149: // DarkenField
+                        return this.name + "：防御力を全面ダウンさせてあげる、DarkenField！\r\n";
+                    case 150: // SeventhMagic
+                        return this.name + "：原点の反転を行うわ、SeventhMagic！\r\n";
+                    case 151: // BlueBullet
+                        return this.name + "：氷魔法を連射するわ、BlueBulletよ。\r\n";
+                    case 152: // NeutralSmash
+                        return this.name + "：NeutralSmashよ、ハイ！\r\n";
+                    case 153: // SwiftStep
+                        return this.name + "：戦闘の速度を上げるわよ、SwiftStep。\r\n";
+                    case 154: // CircleSlash
+                        return this.name + "：みんな邪魔よ、CircleSlash！\r\n";
+                    case 155: // RumbleShout
+                        return this.name + "：どこ見てんのよ！コッチよ！\r\n";
+                    case 156: // SmoothingMove
+                        return this.name + "：流れるように攻められるわ、SmoothingMove！\r\n";
+                    case 157: // FutureVision
+                        return this.name + "：次のターン、何もさせないわよ、FutureVision！\r\n";
+                    case 158: // ReflexSpirit
+                        return this.name + "：スタン系は絶対回避するわ、ReflexSpiritよ。\r\n";
+                    case 159: // SharpGlare
+                        return this.name + "：少し黙っててちょうだい、SharpGlareよ。\r\n";
+                    case 160: // TrustSilence
+                        return this.name + "：沈黙や誘惑とか面倒だしね、TrustSilenceよ。\r\n";
+                    case 161: // SurpriseAttack
+                        return this.name + "：全員吹っ飛ばしてあげるわ、SurpriseAttackよ！\r\n";
+                    case 162: // PsychicWave
+                        return this.name + "：この技は止められるかしら、PsychicWaveよ。\r\n";
+                    case 163: // Recover
+                        return this.name + "：しっかりしてよね、Recoverよ。\r\n";
+                    case 164: // ViolentSlash
+                        return this.name + "：ッフフ、見きれるかしら、ViolentSlashよ！\r\n";
+                    case 165: // OuterInspiration
+                        return this.name + "：ステータスを元通りに、OuterInspiration！\r\n";
+                    case 166: // StanceOfSuddenness
+                        return this.name + "：ッココね！StanceOfSuddenness！\r\n";
+                    case 167: // インスタント対象で発動不可
+                        return this.name + "：これはインスタント対象専用よね。\r\n";
+                    case 168: // StanceOfMystic
+                        return this.name + "：当てようとしても、もう無駄よ。StanceOfMystic！\r\n";
+                    case 169: // HardestParry
+                        return this.name + "：その攻撃、捉えてみせるわ。HardestParryよ。\r\n";
+                    case 170: // ConcussiveHit
+                        return this.name + "：食らいなさい、ConcussiveHit！\r\n";
+                    case 171: // Onslaught hit
+                        return this.name + "：食らいなさい、OnslaughtHit！\r\n";
+                    case 172: // Impulse hit
+                        return this.name + "：食らいなさい、ImpulseHit！\r\n";
+                    case 173: // Fatal Blow
+                        return this.name + "：これで終わりよ、FatalBlow！\r\n";
+                    case 174: // Exalted Field
+                        return this.name + "：賛美の声を集うわ、ExaltedField！\r\n";
+                    case 175: // Rising Aura
+                        return this.name + "：物理攻撃、上げて行くわよ。RisingAura！\r\n";
+                    case 176: // Ascension Aura
+                        return this.name + "：魔法攻撃、上げて行くわよ。AscensionAura！\r\n";
+                    case 177: // Angel Breath
+                        return this.name + "：みんな頑張って、元の状態に。　AngelBreath\r\n";
+                    case 178: // Blazing Field
+                        return this.name + "：この炎で燃やしてあげるわ、BlazingField！\r\n";
+                    case 179: // Deep Mirror
+                        return this.name + "：それは通さないわよ、DeepMirror！\r\n";
+                    case 180: // Abyss Eye
+                        return this.name + "：深淵の眼から逃れられないわよ、AbyssEye！\r\n";
+                    case 181: // Doom Blade
+                        return this.name + "：精神力もろともいただくわ、DoomBlade！\r\n";
+                    case 182: // Piercing Flame
+                        return this.name + "：貫通の火を打ち込んであげるわ、PiercingFlame！\r\n";
+                    case 183: // Phantasmal Wind
+                        return this.name + "：反応力を上げるわ、PhantasmalWindよ。\r\n";
+                    case 184: // Paradox Image
+                        return this.name + "：潜在能力を引き出すわ、ParadoxImageよ。\r\n";
+                    case 185: // Vortex Field
+                        return this.name + "：これで皆を鈍足にするわね、VortexField。\r\n";
+                    case 186: // Static Barrier
+                        return this.name + "：水と理から加護を受けるわ、StaticBarrierよ\r\n";
+                    case 187: // Unknown Shock
+                        return this.name + "：真っ暗な中で戦うといいわ、UnknownShockよ\r\n";
+                    case 188: // SoulExecution
+                        return this.name + "：行くわよ、奥義　SoulExecusion！\r\n";
+                    case 189: // SoulExecution hit 01
+                        return this.name + "：ッセィ！\r\n";
+                    case 190: // SoulExecution hit 02
+                        return this.name + "：ッハ！\r\n";
+                    case 191: // SoulExecution hit 03
+                        return this.name + "：ッハイ！\r\n";
+                    case 192: // SoulExecution hit 04
+                        return this.name + "：ッフ！\r\n";
+                    case 193: // SoulExecution hit 05
+                        return this.name + "：ッセイ！\r\n";
+                    case 194: // SoulExecution hit 06
+                        return this.name + "：ッハ！\r\n";
+                    case 195: // SoulExecution hit 07
+                        return this.name + "：ッフ！\r\n";
+                    case 196: // SoulExecution hit 08
+                        return this.name + "：ッハアァ！\r\n";
+                    case 197: // SoulExecution hit 09
+                        return this.name + "：セエェェィ！\r\n";
+                    case 198: // SoulExecution hit 10
+                        return this.name + "：決めるわ！！！\r\n";
+                    case 199: // Nourish Sense
+                        return this.name + "：回復量をあげていくわ、NourishSenseよ。\r\n";
+                    case 200: // Mind Killing
+                        return this.name + "：精神を切り刻んであげるわ、MindKilling！\r\n";
+                    case 201: // Vigor Sense
+                        return this.name + "：反応値上げるわよ、VigorSense！\r\n";
+                    case 202: // ONE Authority
+                        return this.name + "：みんな、上げていくわよ。OneAuthority！\r\n";
+                    case 203: // 集中と断絶
+                        return this.name + "：【集中と断絶】　発動。\r\n";
+                    case 204: // 【元核】発動済み
+                        return this.name + "：【元核】は今日もう使ってしまってるわ。\r\n";
+                    case 205: // 【元核】通常行動選択時
+                        return this.name + "：【元核】はインスタントタイミングで使用するものよ。\r\n";
+                    case 206: // Sigil Of Homura
+                        return this.name + "：焔の印を受けなさい、SigilOfHomura！\r\n";
+                    case 207: // Austerity Matrix
+                        return this.name + "：支配力を切らせてもらうわ、AusterityMatrixよ。\r\n";
+                    case 208: // Red Dragon Will
+                        return this.name + "：火竜よ、私に力を与えよ、RedDragonWill！\r\n";
+                    case 209: // Blue Dragon Will
+                        return this.name + "：水竜よ、私に力を与えよ、BlueDragonWill！\r\n";
+                    case 210: // Eclipse End
+                        return this.name + "：全てを抹消せし無を今ここに、EclipseEnd！\r\n";
+                    case 211: // Sin Fortune
+                        return this.name + "：次のヒットで決めてみせるわ、SinFortuneよ。\r\n";
+                    case 212: // AfterReviveHalf
+                        return this.name + "：死耐性（ハーフ）を付与するわね。\r\n";
+                    case 213: // Demonic Ignite
+                        return this.name + "：黒炎から逃れられないわよ、DemonicIgnite！\r\n";
+                    case 214: // Death Deny
+                        return this.name + "：死者を完全に復活させるわよ、DeathDeny！\r\n";
+                    case 215: // Stance of Double
+                        return this.name + "：究極行動原理、StanceOfDouble！  " + this.name + "は前回行動を示す自分の分身を発生させた！\r\n";
+                    case 216: // 最終戦ライフカウント消費
+                        return this.name + "：うっ・・・まだよ・・・まだ倒れるわけにはいかないわ！\r\n";
+                    case 217: // 最終戦ライフカウント消滅時
+                        return this.name + "：・・・ご・・・ごめん・・・な・・さ・・・\r\n";
+
+                    case 1001: // Home Town 1 コミュニケーション済で、休む前のアイン一人を対象
+                        return this.name + "：今日はもう休んで、明日に備えたら？";
+                    case 1002: // Home Town 2 コミュニケーション済で、休んだ後のアイン一人を対象
+                        return this.name + "：ホラホラ、とっとと行って来い♪";
+                    case 1003: // Home Town 1 コミュニケーション済で、休む前のアイン・ラナ２人を対象
+                        return this.name + "：じゃ、私は一旦戻るとするわね。明日に備えて休みましょ。";
+                    case 1004: // Home Town 2 コミュニケーション済で、休んだ後のアイン・ラナ２人を対象
+                        return this.name + "：準備が出来たら、とっとと行くわよ♪";
+
+                    case 2001: // ポーション回復時
+                        return this.name + "：{0} 回復したわよ。";
+                    case 2002: // レベルアップ終了催促
+                        return this.name + "：レベルアップが先ね。";
+                    case 2003: // 荷物を減らせる催促
+                        return this.name + "：{0}、荷物を減らしておいたら？アイテムが渡せないわよ。";
+                    case 2004: // 装備判断
+                        return this.name + "：じゃ、装備しようか？";
+                    case 2005: // 装備完了
+                        return this.name + "：装備完了♪";
+                    case 2006: // 遠見の青水晶を使用
+                        return this.name + "：町に戻るとしますか♪";
+                    case 2007: // 売却専用品に対する一言
+                        return this.name + "：売却専用の品物ね。";
+                    case 2008: // 非戦闘時のマナ不足
+                        return this.name + "：マナが不足してるわね。";
+                    case 2009: // 神聖水使用時
+                        return this.name + "：ライフ・スキル・マナが30%ずつ回復したわよ。";
+                    case 2010: // 神聖水、既に使用済みの場合
+                        return this.name + "：もう枯れてしまってるわ。一日１回だけのようね。";
+                    case 2011: // リーベストランクポーション非戦闘使用時
+                        return this.name + "：戦闘中専用品のようね。";
+                    case 2012: // 遠見の青水晶を使用（町滞在時）
+                        return this.name + "：今は町の中にいるから使っても意味ないわよ。";
+                    case 2013: // 遠見の青水晶を捨てられない時の台詞
+                        return this.name + "：これを捨てたら私達、酷い目に会うわよ。";
+                    case 2014: // 非戦闘時のスキル不足
+                        return this.name + "：スキルが不足してるわね。";
+                    case 2015: // 他プレイヤーが捨ててしまおうとした場合
+                        return this.name + "：あ、ちょっと、それは捨てないでよ。";
+                    case 2016: // リヴァイヴポーションによる復活
+                        return this.name + "：よし、復活できたわ。ホントありがと♪";
+                    case 2017: // リヴァイヴポーション不要な時
+                        return this.name + "：{0}はまだ死んではいないわ。使用する必要はなさそうね。";
+                    case 2018: // リヴァイヴポーション対象が自分の時
+                        return this.name + "：私はまだ生きてるわよ。失礼ね。";
+                    case 2019: // 装備不可のアイテムを装備しようとした時
+                        return this.name + "：私じゃ装備できないみたいね。";
+                    case 2020: // ラスボス撃破の後、遠見の青水晶を使用不可
+                        return this.name + "：ごめんなさい、今はもうこれは使わないつもりだから。";
+                    case 2021: // アイテム捨てるの催促
+                        return this.name + "：バックパックの整理が先よね。";
+                    case 2022: // オーバーシフティング使用開始時
+                        return this.name + "：凄いわ・・・身体能力が再構築されていくのを感じるわ。";
+                    case 2023: // オーバーシフティングによるパラメタ割り振り時
+                        return this.name + "：オーバーシフティングの割り振りを先にしましょ。";
+                    case 2024: // 成長リキッドを使用した時
+                        return this.name + "：【{0}】パラメタが {1} 上昇したわ♪";
+                    case 2025:
+                        return this.name + "：今は両手武器を装備しているわ。サブは装備できないわね。";
+                    case 2026:
+                        return this.name + "：武器（メイン）に何か装備してからにしましょ。";
+                    case 2027: // 清透水使用時
+                        return this.name + "：ライフが100%回復したわよ。";
+                    case 2028: // 清透水、既に使用済みの場合
+                        return this.name + "：もう枯れてしまってるわ。一日１回だけのようね。";
+                    case 2029: // 荷物一杯で装備が外せない時
+                        return this.name + "：バックパックがいっぱいみたいだわ。装備は外せないわね。";
+                    case 2030: // 荷物一杯で何かを捨てる時の台詞
+                        return this.name + "：{0}を捨てるわね？";
+                    case 2031: // 戦闘中のアイテム使用限定
+                        return this.name + "：今は戦闘中よ。他のパラメタなんか探ってる余裕は無いわ。";
+                    case 2032: // 戦闘中、アイテム使用できないアイテムを選択したとき
+                        return this.name + "：このアイテムは戦闘中に使用は出来ないみたいね。";
+                    case 2033: // 預けられない場合
+                        return this.name + "：う～ん、ちょっとこれは手元から外せないわね。";
+                    case 2034: // アイテムいっぱいで預かり所から引き出せない場合
+                        return this.name + "：う～ん、荷物はもういっぱいみたいね。";
+                    case 2035: // Sacred Heal
+                        return this.name + "：うん、全員回復したわよ。";
+
+                    case 3000: // 店に入った時の台詞
+                        return this.name + "：ホンット誰もいないわね。";
+                    case 3001: // 支払い要求時
+                        return this.name + "：私、この{0}が欲しいわ。 {1}Gold置いてくわよ？";
+                    case 3002: // 持ち物いっぱいで買えない時
+                        return this.name + "：持ち物がいっぱいのようね。少しアイテム整理するわ。";
+                    case 3003: // 購入完了時
+                        return this.name + "：これで売買成立してるわよね？ガンツ叔父さん。";
+                    case 3004: // Gold不足で購入できない場合
+                        return this.name + "：Goldが{0}足りないわね・・・";
+                    case 3005: // 購入せずキャンセルした場合
+                        return this.name + "：他のアイテムも見て回りましょ。";
+                    case 3006: // 売れないアイテムを売ろうとした場合
+                        return this.name + "：このアイテムは手放せないわね。";
+                    case 3007: // アイテム売却時
+                        return this.name + "：{0}を置いてくわよ、{1}Goldもらって良いはずよね？";
+                    case 3008: // 剣紋章ペンダント売却時
+                        return this.name + "：ちょっとコレせっかく私が作ったものよ。まあ、{0}Goldぐらいはもらえそうだけど？";
+                    case 3009: // 武具店を出る時
+                        return this.name + "：ガンツ叔父さん、時空のルーツ見つかるといいわね。";
+                    case 3010: // ガンツ不在時の売りきれフェルトゥーシュを見て一言
+                        return this.name + "：この剣は元々売り切れって話じゃないわよね・・・";
+                    case 3011: // 装備可能なものが購入された時
+                        return this.name + "：ここで装備していくわよ。良いわよね？";
+                    case 3012: // 装備していた物を売却対象かどうか聞く時
+                        return this.name + "：っとと、今装備してる{0}も売っておきたいわね。{1}Goldぐらいよね、ガンツ叔父さん？";
+
+                    case 3013: // 店の担当者としてお迎えの挨拶
+                        return this.name + "：どうぞお買い求めください♪";
+                    case 3014: // 店の担当者としてお別れの挨拶
+                        return this.name + "：また、おいでくださいませ♪";
+                    case 3015: // 店の担当者としてお買い上げをヒアリングするとき
+                        return this.name + "：{0}ですね。{1}Goldですが、お買い上げになりますか？";
+                    case 3016: // 店の担当者として、Goldが不足してるときの台詞
+                        return this.name + "：すいませんが、後{0}Goldだけ不足しております。";
+                    case 3017: // 店の担当者として、買い手が購入決定・完了したとき
+                        return this.name + "：ありがとうございました♪";
+                    case 3018: // 買い手の持ち物がいっぱいである事をお伝えするとき
+                        return this.name + "：あの、すいませんが荷物がいっぱいのようです。";
+                    case 3019: // 買い手が購入せずキャンセルされた場合
+                        return this.name + "：他にも良ければ、見て行ってくださいませ♪";
+                    case 3020: // 買い手が売却不可能なものを提示してきた場合
+                        return this.name + "：すいませんが、その品物は買取りができません。";
+                    case 3021: // 買い手が売却可能なものを提示してきた場合
+                        return this.name + "：{0}ですね。{1}Goldでの買取らせていただきましょうか？";
+
+                    case 4001: // 通常攻撃を選択
+                        return this.name + "：普通に攻撃ね。\r\n";
+                    case 4002: // 防御を選択
+                        return this.name + "：危ないときは防御かな。\r\n";
+                    case 4003: // 待機を選択
+                        return this.name + "：待機で次に備えるわよ。\r\n";
+                    case 4004: // フレッシュヒールを選択
+                        return this.name + "：フレッシュヒールで行こうかしら。\r\n";
+                    case 4005: // プロテクションを選択
+                        return this.name + "：防御力ＵＰ、プロテクションよ。\r\n";
+                    case 4006: // ファイア・ボールを選択
+                        return this.name + "：ファイアボールを撃ち込むわよ。\r\n";
+                    case 4007: // フレイム・オーラを選択
+                        return this.name + "：フレイム属性攻撃の準備ね。\r\n";
+                    case 4008: // ストレート・スマッシュを選択
+                        return this.name + "：次、ストレートスマッシュ行くわよ。\r\n";
+                    case 4009: // ダブル・スマッシュを選択
+                        return this.name + "：２回攻撃、ダブルスマッシュ行くわよ。\r\n";
+                    case 4010: // スタンス・オブ・スタンディングを選択
+                        return this.name + "：スタンディングの構え。守って攻めるわよ。\r\n";
+                    case 4011: // アイス・ニードルを選択
+                        return this.name + "：アイスニードルを撃ち込むわよ。\r\n";
+                    case 4012:
+                    case 4013:
+                    case 4014:
+                    case 4015:
+                    case 4016:
+                    case 4017:
+                    case 4018:
+                    case 4019:
+                    case 4020:
+                    case 4021:
+                    case 4022:
+                    case 4023:
+                    case 4024:
+                    case 4025:
+                    case 4026:
+                    case 4027:
+                    case 4028:
+                    case 4029:
+                    case 4030:
+                    case 4031:
+                    case 4032:
+                    case 4033:
+                    case 4034:
+                    case 4035:
+                    case 4036:
+                    case 4037:
+                    case 4038:
+                    case 4039:
+                    case 4040:
+                    case 4041:
+                    case 4042:
+                    case 4043:
+                    case 4044:
+                    case 4045:
+                    case 4046:
+                    case 4047:
+                    case 4048:
+                    case 4049:
+                    case 4050:
+                    case 4051:
+                    case 4052:
+                    case 4053:
+                    case 4054:
+                    case 4055:
+                    case 4056:
+                    case 4057:
+                    case 4058:
+                    case 4059:
+                    case 4060:
+                    case 4061:
+                    case 4062:
+                    case 4063:
+                    case 4064:
+                    case 4065:
+                    case 4066:
+                    case 4067:
+                    case 4068:
+                    case 4069:
+                    case 4070:
+                    case 4071:
+                        return this.name + "：" + this.ActionLabel.text + "にするわね。\r\n";
+                    case 4072:
+                        return this.name + "：敵に放ちたくないわね。\r\n";
+                    case 4073:
+                        return this.name + "：敵に放ちたくないわね。\r\n";
+                    case 4074:
+                        return this.name + "：味方に放つわけには行かないわ。\r\n";
+                    case 4075:
+                        return this.name + "：味方に放つわけには行かないわ。\r\n";
+                    case 4076:
+                        return this.name + "：味方に攻撃するわけには行かないわ。\r\n";
+                    case 4077: // 「ためる」コマンド
+                        return this.name + "：魔力をためるわ。\r\n";
+                    case 4078: // 武器発動「メイン」
+                        return this.name + "：メイン武器の効果を発動させるわね。\r\n";
+                    case 4079: // 武器発動「サブ」
+                        return this.name + "：サブ武器の効果を発動させるわね。\r\n";
+                    case 4080: // アクセサリ１発動
+                        return this.name + "：アクセサリ１の効果を発動させるわね。\r\n";
+                    case 4081: // アクセサリ２発動
+                        return this.name + "：アクセサリ２の効果を発動させるわね。\r\n";
+
+                    case 4082: // FlashBlaze
+                        return this.name + "：フラッシュブレイズで行こうかしら。\r\n";
+
+                    // 武器攻撃
+                    case 5001:
+                        return this.name + "：風で切り裂くわよ、エアロ・スラッシュ！ {0} へ {1} のダメージ\r\n";
+                    case 5002:
+                        return this.name + "：{0} 回復よ \r\n";
+                    case 5003:
+                        return this.name + "：{0} マナ回復よ \r\n";
+                    case 5004:
+                        return this.name + "：凍りつくが良いわ！アイシクル・スラッシュ！ {0} へ {1} のダメージ\r\n";
+                    case 5005:
+                        return this.name + "：行くわよ！エレクトロ・ブロー！ {0} へ {1} のダメージ\r\n";
+                    case 5006:
+                        return this.name + "：いくわよ！ブルー・ライトニング！ {0} へ {1} のダメージ\r\n";
+                    case 5007:
+                        return this.name + "：いくわよ！バーニング・クレイモア！ {0} へ {1} のダメージ\r\n";
+                    case 5008:
+                        return this.name + "：赤蒼授からの炎、食らうわがいいわ！ {0} へ {1} のダメージ\r\n";
+                    case 5009:
+                        return this.name + "：{0} スキルポイント回復よ \r\n";
+                    case 5010:
+                        return this.name + "が装着している指輪が強烈に蒼い光を放った！ {0} へ {1} のダメージ\r\n";
+                }
+            }
+            #endregion
+            #region "ヴェルゼ"
+            else if (this.name == "ヴェルゼ" || this.name == "ヴェルゼ・アーティ")
+            {
+                switch (sentenceNumber)
+                {
+                    case 0: // スキル不足
+                        return this.name + "：スキルポイントが足りませんね。\r\n";
+                    case 1: // Straight Smash
+                        return this.name + "：ッハアアァァァァァ！！！\r\n";
+                    case 2: // Double Slash 1 Carnage Rush 1
+                        return this.name + "：ひとつ\r\n";
+                    case 3: // Double Slash 2 Carnage Rush 2
+                        return this.name + "：ふたつ\r\n";
+                    case 4: // Painful Insanity
+                        return this.name + "：【心眼奥義】あなたには分からないでしょう、無限の苦しみ。\r\n";
+                    case 5: // empty skill
+                        return this.name + "：スキル選択ミスですね。\r\n";
+                    case 6: // 絡みつくフランシスの必殺を食らった時
+                        return this.name + "：さて、これは・・・なかなか。\r\n";
+                    case 7: // Lizenosの必殺を食らった時
+                        return this.name + ": このボクでさえ・・・まったく見えません・・・\r\n";
+                    case 8: // Minfloreの必殺を食らった時
+                        return this.name + "：こ・・・この剣、強すぎ・・る・・・\r\n";
+                    case 9: // Fresh Healによるライフ回復
+                        return this.name + "：{0} 回復です。\r\n";
+                    case 10: // Fire Ball
+                        return this.name + "：軽くどうでしょう、FireBallです。 {0} へ {1} のダメージ\r\n";
+                    case 11: // Flame Strike
+                        return this.name + "：こんな赤いものはいかがでしょう、FlameStrikeです。 {0} へ {1} のダメージ\r\n";
+                    case 12: // Volcanic Wave
+                        return this.name + "：業火ぐらい大した事ないでしょう？ VolcanicWaveです。 {0} へ {1} のダメージ\r\n";
+                    case 13: // 通常攻撃クリティカルヒット
+                        return this.name + "：クリティカルヒットです。ッハアアァァァ！！ {0} へ {1}のダメージ\r\n";
+                    case 14: // FlameAuraによる追加攻撃
+                        return this.name + "：火の粉です。 {0}の追加ダメージ\r\n";
+                    case 15: // 遠見の青水晶を戦闘中に使ったとき
+                        return this.name + "：これは戦闘中では使えませんね。\r\n";
+                    case 16: // 効果を発揮しないアイテムを戦闘中に使ったとき
+                        return this.name + "：ッチ、役立たずアイテムが。　こんなもの使えねえ！！\r\n";
+                    case 17: // 魔法でマナ不足
+                        return this.name + "：マナが不足していますね。\r\n";
+                    case 18: // Protection
+                        return this.name + "：聖の防御円、Protectionです。物理防御力：ＵＰ\r\n";
+                    case 19: // Absorb Water
+                        return this.name + "：水の防御円、AbsorbWaterです。 魔法防御力：ＵＰ。\r\n";
+                    case 20: // Saint Power
+                        return this.name + "：聖の攻撃円、SaintPowerです。 物理攻撃力：ＵＰ\r\n";
+                    case 21: // Shadow Pact
+                        return this.name + "：ククッ、闇からの力、ShadowPactです。 魔法攻撃力：ＵＰ\r\n";
+                    case 22: // Bloody Vengeance
+                        return this.name + "：闇の使者がボクに力をくれる。BloodyVengeanceです。 力パラメタが {0} ＵＰ\r\n";
+                    case 23: // Holy Shock
+                        return this.name + "：鉄槌なんていかがですか、HolyShockです。 {0} へ {1} のダメージ\r\n";
+                    case 24: // Glory
+                        return this.name + "：誰でも光輝く時代があったんですよ。Gloryです。 直接攻撃＋FreshHeal連携のオーラ\r\n";
+                    case 25: // CelestialNova 1
+                        return this.name + "：光による癒し、CelestialNovaです。 {0} 回復です。\r\n";
+                    case 26: // CelestialNova 2
+                        return this.name + "：ッハッハハハ！裁き食らえやあぁぁぁ！　CelestialNova！！ {0} のダメージ\r\n";
+                    case 27: // Dark Blast
+                        return this.name + "：ククク、闇の波動こそ全て、DarkBlastです。 {0} へ {1} のダメージ\r\n";
+                    case 28: // Lava Annihilation
+                        return this.name + "：炎授天使ぐらい造作も無い、LavaAnnihilationです。 {0} へ {1} のダメージ\r\n";
+                    case 10028: // Lava Annihilation後編
+                        return this.name + "：炎授天使ぐらい造作も無い、LavaAnnihilationです。\r\n";
+                    case 29: // Devouring Plague
+                        return this.name + "：体力吸収だ、死ね死ね死ねぇ！DevouringPlague！ {0} ライフを吸い取った\r\n";
+                    case 30: // Ice Needle
+                        return this.name + "：無数の氷でも食らってください、IceNeedleです。 {0} へ {1} のダメージ\r\n";
+                    case 31: // Frozen Lance
+                        return this.name + "：どうです、氷の槍で串刺しってのは？　FrozenLanceです。 {0} へ {1} のダメージ\r\n";
+                    case 32: // Tidal Wave
+                        return this.name + "：水に呑まれて死んじまえよおおぉぉ！！！TidalWave！ {0} のダメージ\r\n";
+                    case 33: // Word of Power
+                        return this.name + "：あなたこの魔法止めれませんよ、WordOfPowerです。 {0} へ {1} のダメージ\r\n";
+                    case 34: // White Out
+                        return this.name + "：五・・・五感があああぁぁぁぁぁ！　WhiteOut！！！ {0} へ {1} のダメージ\r\n";
+                    case 35: // Black Contract
+                        return this.name + "：悪魔、なんて美しい強さだ・・・、BlackContractです。 " + this.name + "のスキル、魔法コストは０になる。\r\n";
+                    case 36: // Flame Aura詠唱
+                        return this.name + "：炎をで丸焦げにしてやるぜええぇぇ！！FlameAura！！！ 直接攻撃に炎の追加効果が付与される。\r\n";
+                    case 37: // Damnation
+                        return this.name + "：闇闇闇闇闇闇闇闇闇・・・絶望・・・Damnation。 死淵より出でる黒が空間を歪ませる。\r\n";
+                    case 38: // Heat Boost
+                        return this.name + "：炎授天使の加速円、HeatBoostです。 技パラメタが {0} ＵＰ。\r\n";
+                    case 39: // Immortal Rave
+                        return this.name + "：炎術の舞なんて、簡単すぎる・・・ImmortalRaveです。 " + this.name + "の周りに３つの炎が宿った。\r\n";
+                    case 40: // Gale Wind
+                        return this.name + "：全盛期ボクは常にこの状態だった、GaleWindです。 もう一人の" + this.name + "が現れた。\r\n";
+                    case 41: // Word of Life
+                        return this.name + "：ックク、自然の力いただくぜええぇ！WordOfLife！！！ 大自然からの強い息吹を感じ取れるようになった。\r\n";
+                    case 42: // Word of Fortune
+                        return this.name + "：全盛期ボクはこんな魔法不要でした、WordOfFortuneです。 決死のオーラが湧き上がった。\r\n";
+                    case 43: // Aether Drive
+                        return this.name + "：空想物理なんて大したものじゃありませんよ？AetherDriveです。 周囲全体に空想物理力がみなぎる。\r\n";
+                    case 44: // Eternal Presence 1
+                        return this.name + "：創造と原理なんて大げさ過ぎる、普通ですよ。EternalPresence。 " + this.name + "の周りに新しい法則が構築される。\r\n";
+                    case 45: // Eternal Presence 2
+                        return this.name + "の物理攻撃、物理防御、魔法攻撃、魔法防御がＵＰした！\r\n";
+                    case 46: // One Immunity
+                        return this.name + "：２回行動できたとしたら最強だと思いません？ OneImmunityです。 " + this.name + "の周囲に目に見えない障壁が発生。\r\n";
+                    case 47: // Time Stop
+                        return this.name + "：アッハハハハハ！時空の歪に消えちまいなぁ！TimeStop！！！ 敵の時空を引き裂き時間停止させた。\r\n";
+                    case 48: // Dispel Magic
+                        return this.name + "：元々はカラッポのくせに、ッククク。DispelMagicです。\r\n";
+                    case 49: // Rise of Image
+                        return this.name + "：時空の支配者の上昇円、RiseOfImageです。 心パラメタが {0} ＵＰ\r\n";
+                    case 50: // 空詠唱
+                        return this.name + "：空詠唱ですね。\r\n";
+                    case 51: // Inner Inspiration
+                        return this.name + "：は潜在集中力を高めた。精神が研ぎ澄まされる。 {0} スキルポイント回復\r\n";
+                    case 52: // Resurrection 1
+                        return this.name + "：奇跡？このぐらいの聖スペル普通でしょう、Resurrectionです。\r\n";
+                    case 53: // Resurrection 2
+                        return this.name + "：てめえなんか対象にするわけねえだろおおぉ！！\r\n";
+                    case 54: // Resurrection 3
+                        return this.name + "：生きてましたね。すいませんでした。\r\n";
+                    case 55: // Resurrection 4
+                        return this.name + "：ボク自身は生きてるのか？というブラックジョークです、意味はありません。\r\n";
+                    case 56: // Stance Of Standing
+                        return this.name + "：防御兼攻撃とは、こうやるんですよ。\r\n";
+                    case 57: // Mirror Image
+                        return this.name + "：女神より蒼の魔法反射円、MirrorImageです。{0}の周囲に青い空間が発生した。\r\n";
+                    case 58: // Mirror Image 2
+                        return this.name + "：ックク、掛かったな！ {0} ダメージを {1} に反射した！\r\n";
+                    case 59: // Mirror Image 3
+                        return this.name + "：ックク、掛かったな！ 【しかし、強力な威力ではね返せない！】" + this.name + "：し、しまったボクとした事がぁぁ！\r\n";
+                    case 60: // Deflection
+                        return this.name + "：白の者より物理反射円、Deflectionです。 {0}の周囲に白い空間が発生した。\r\n";
+                    case 61: // Deflection 2
+                        return this.name + "：ックク、掛かったな！ {0} ダメージを {1} に反射した！\r\n";
+                    case 62: // Deflection 3
+                        return this.name + "：ックク、掛かったな！ 【しかし、強力な威力ではね返せない！】" + this.name + "：しまった、ボクとしたことがあぁ！\r\n";
+                    case 63: // Truth Vision
+                        return this.name + "：本質？あるわけないでしょう、TruthVisionです。　" + this.name + "は対象のパラメタＵＰを無視するようになった。\r\n";
+                    case 64: // Stance Of Flow
+                        return this.name + "：相手の動き、封殺してみせましょう。StanceOfFlowです。　" + this.name + "は次３ターン、必ず後攻を取るように構えた。\r\n";
+                    case 65: // Carnage Rush 1
+                        return this.name + "：技があれば容易いコンボでしょう、CarnageRushです。 ひとつ {0}ダメージ・・・   ";
+                    case 66: // Carnage Rush 2
+                        return "ふたつ {0}ダメージ   ";
+                    case 67: // Carnage Rush 3
+                        return "みっつ {0}ダメージ   ";
+                    case 68: // Carnage Rush 4
+                        return "よっつ {0}ダメージ   ";
+                    case 69: // Carnage Rush 5
+                        return "そして最後です。ハアアァァァ！！ {0}のダメージ\r\n";
+                    case 70: // Crushing Blow
+                        return this.name + "：少し寝ててください。CrushingBlowです。  {0} へ {1} のダメージ。\r\n";
+                    case 71: // リーベストランクポーション戦闘使用時
+                        return this.name + "：こんなアイテムがあるんですよ、いかがでしょう。\r\n";
+                    case 72: // Enigma Sence
+                        return this.name + "：力は見せ方次第だと思いませんか？EnigmaSennceです\r\n";
+                    case 73: // Soul Infinity
+                        return this.name + "：これがボクの全ての能力を注ぎ込んだパワーです。SoulInfinity！\r\n";
+                    case 74: // Kinetic Smash
+                        return this.name + "：物理運動に沿った最大限の攻撃とはこうですかね。KineticSmashです。\r\n";
+                    case 75: // Silence Shot (Altomo専用)
+                        return "";
+                    case 76: // Silence Shot、AbsoluteZero沈黙による詠唱失敗
+                        return this.name + "：・・・っこのタイミングで・・・！？　詠唱ミスです。\r\n";
+                    case 77: // Cleansing
+                        return this.name + "：浄化というより、元々何も無いんですよ。Cleansingです。\r\n";
+                    case 78: // Pure Purification
+                        return this.name + "：精神の洗い直しから治せる事もあるんです、PurePurification・・・\r\n";
+                    case 79: // Void Extraction
+                        return this.name + "：ボクに限界なんて無いんですよ、VoidExtractionです。" + this.name + "の {0} が {1}ＵＰ！\r\n";
+                    case 80: // アカシジアの実使用時
+                        return this.name + "：アカシジアの実です。良い気付けになるでしょう。\r\n";
+                    case 81: // Absolute Zero
+                        return this.name + "：絶対零度で凍り付けえええぇぇぇぇ。AbsoluteZero！ 氷吹雪効果により、ライフ回復不可、スペル詠唱不可、スキル使用不可、防御不可となった。\r\n";
+                    case 82: // BUFFUP効果が望めない場合
+                        return "しかし、既にそのパラメタは上昇しているため、効果がなかった。\r\n";
+                    case 83: // Promised Knowledge
+                        return this.name + "：知恵と知識の組み合わせ最強だと思いません？ PromiesdKnowledgeです。　知パラメタが {0} ＵＰ\r\n";
+                    case 84: // Tranquility
+                        return this.name + "：平穏と無、どちらも同じなんでしょうね、Tranquilityです。\r\n";
+                    case 85: // High Emotionality 1
+                        return this.name + "：ッハアアアアアアアァァァァ！！！　HighEmotionality！\r\n";
+                    case 86: // High Emotionality 2
+                        return this.name + "の力、技、知、心パラメタがＵＰした！\r\n";
+                    case 87: // AbsoluteZeroでスキル使用失敗
+                        return this.name + "：・・・っく、思うように動けません・・・、スキル使用ミスです。\r\n";
+                    case 88: // AbsoluteZeroによる防御失敗
+                        return this.name + "：っく・・・防御が・・・思うようにできません！ \r\n";
+                    case 89: // Silent Rush 1
+                        return this.name + "：貴方は姿すら捉えられないでしょうね、SilentRushです。　一つ {0}ダメージ・・・　";
+                    case 90: // Silent Rush 2
+                        return "ふたつ {0}ダメージ   ";
+                    case 91: // Silent Rush 3
+                        return "そして、みっつめです。ハアァァァ！ {0}のダメージ\r\n";
+                    case 92: // BUFFUP以外の永続効果が既についている場合
+                        return "しかし、既にその効果は付与されている。\r\n";
+                    case 93: // Anti Stun
+                        return this.name + "：スタン効果はボクには効きませんよ。AntiStunです。 " + this.name + "はスタン効果への耐性が付いた\r\n";
+                    case 94: // Anti Stunによるスタン回避
+                        return this.name + "：言ったはずです。ボクにスタンは効かない。\r\n";
+                    case 95: // Stance Of Death
+                        return this.name + "：死・・・破滅の言葉ですよ、ッククク、StanceOfDeath！ " + this.name + "は致死を１度回避できるようになった\r\n";
+                    case 96: // Oboro Impact 1
+                        return this.name + "：見えますか？この容が、【究極奥義】Oboro Impactです。\r\n";
+                    case 97: // Oboro Impact 2
+                        return this.name + "：ッハアアァァ！！　 {0}へ{1}のダメージ\r\n";
+                    case 98: // Catastrophe 1
+                        return this.name + "：全てを破壊・・・破壊してあげましょう【究極奥義】Catastropheです\r\n";
+                    case 99: // Catastrophe 2
+                        return this.name + "：ッハアアァァァアアア！！　 {0}のダメージ\r\n";
+                    case 100: // Stance Of Eyes
+                        return this.name + "：無駄です。全て見切ってさしあげましょう、 StanceOfEyesです。 " + this.name + "は、相手の行動に備えている・・・\r\n";
+                    case 101: // Stance Of Eyesによるキャンセル時
+                        return this.name + "：ソコのモーションですね、　" + this.name + "は相手のモーションを見切って、行動キャンセルした！\r\n";
+                    case 102: // Stance Of Eyesによるキャンセル失敗時
+                        return this.name + "：っばかな！？動きがまったく読めない！　" + this.name + "は相手のモーションを見切れなかった！\r\n";
+                    case 103: // Negate
+                        return this.name + "：詠唱とは必ず隙があります。Negateです。" + this.name + "は相手のスペル詠唱に備えている・・・\r\n";
+                    case 104: // Negateによるスペル詠唱キャンセル時
+                        return this.name + "：ッハハハ！詠唱動作が見え見えですよ！" + this.name + "は相手のスペル詠唱を弾いた！\r\n";
+                    case 105: // Negateによるスペル詠唱キャンセル失敗時
+                        return this.name + "：っばかな！・・・何時の間に詠唱を！？" + this.name + "は相手のスペル詠唱を見切れなかった！\r\n";
+                    case 106: // Nothing Of Nothingness 1
+                        return this.name + "：ッハハハハハ！！真なるゼロ【究極奥義】NothingOfNothingness！ " + this.name + "に無色のオーラが宿り始める！ \r\n";
+                    case 107: // Nothing Of Nothingness 2
+                        return this.name + "は無効化魔法を無効化、　無効化するスキルを無効化するようになった！\r\n";
+                    case 108: // Genesis
+                        return this.name + "：これが超然たる起源、Genesisです。  " + this.name + "は前回の行動を自分へと投影させた！\r\n";
+                    case 109: // Cleansing詠唱失敗時
+                        return this.name + "：っす、すいません・・・調子が悪くてCleansingが発動できません。\r\n";
+                    case 110: // CounterAttackを無視した時
+                        return this.Name + "：ッハハハハ！そんな構え、見え見えですよ！\r\n";
+                    case 111: // 神聖水使用時
+                        return this.name + "：ライフ・スキル・マナが30%ずつ回復です。\r\n";
+                    case 112: // 神聖水、既に使用済みの場合
+                        return this.name + "：もう水は残ってないようです。一日待たないと駄目ですね。\r\n";
+                    case 113: // CounterAttackによる反撃メッセージ
+                        return this.name + "：甘いですね、カウンターです。\r\n";
+                    case 114: // CounterAttackに対する反撃がNothingOfNothingnessによって防がれた時
+                        return this.name + "：ッバ、バカな！このボクが見切れないなんて！\r\n";
+                    case 115: // 通常攻撃のヒット
+                        return this.name + "の攻撃がヒット。 {0} へ {1} のダメージ\r\n";
+                    case 116: // 防御を無視して攻撃する時
+                        return this.name + "：防御出来る・・・とでも思いましたか？\r\n";
+                    case 117: // StraightSmashなどのスキルクリティカル
+                        return this.name + "：クリティカルヒットです。\r\n";
+                    case 118: // 戦闘時、リヴァイヴポーションによる復活のかけ声
+                        return this.name + "：リヴァイヴポーションです。これで復活ですね。\r\n";
+                    case 119: // Absolute Zeroによりライフ回復できない場合
+                        return this.name + "：この凍てつく寒さ・・・ライフ回復できません。\r\n";
+                    case 120: // 魔法攻撃のヒット
+                        return "{0} へ {1} のダメージ\r\n";
+                    case 121: // Absolute Zeroによりマナ回復できない場合
+                        return this.name + "：この凍てつく寒さ・・・マナ回復できません。\r\n";
+                    case 122: // 「ためる」行動時
+                        return this.name + "：ッハハハ、こんな簡単に魔力を蓄えさせてもらえるとは。\r\n";
+                    case 123: // 「ためる」行動で溜まりきっている場合
+                        return this.name + "：魔力は十分蓄えてあります。もう十分でしょう。\r\n";
+                    case 124: // StraightSmashのダメージ値
+                        return this.name + "のストレート・スマッシュがヒット。 {0} へ {1}のダメージ\r\n";
+                    case 125: // アイテム使用ゲージが溜まってないとき
+                        return this.name + "：アイテムゲージが溜まってない間、アイテムは使えませんね。\r\n";
+                    case 126: // FlashBlase
+                        return this.name + "：これは痛いでしょうね、FlashBlazeです。 {0} へ {1} のダメージ\r\n";
+                    case 127: // 複合魔法でインスタント不足
+                        return this.name + "：ボクとしたことが・・・インスタント値が足りません\r\n";
+                    case 128: // 複合魔法はインスタントタイミングでうてない
+                        return this.name + "：インスタントのタイミングで発動したい所ですが。\r\n";
+                    case 129: // PsychicTrance
+                        return this.name + "：ッハハハ、更に魔法攻撃強化、PsychicTrance。\r\n";
+                    case 130: // BlindJustice
+                        return this.name + "：ッククク、更に物理攻撃強化、BlindJustice。\r\n";
+                    case 131: // TranscendentWish
+                        return this.name + "：死など恐れませんよ、TranscendentWish。\r\n";
+                    case 132: // LightDetonator
+                        return this.name + "：そこに行くと分かってました、LightDetonator。\r\n";
+                    case 133: // AscendantMeteor
+                        return this.name + "焼け焦げるが良い、AscendantMeteor\r\n";
+                    case 134: // SkyShield
+                        return this.name + "：空聖の加護、SkyShield\r\n";
+                    case 135: // SacredHeal
+                        return this.name + "：全員回復です、SacredHeal\r\n";
+                    case 136: // EverDroplet
+                        return this.name + "：ッククク、これを許すとは愚かな、EverDroplet\r\n";
+                    case 137: // FrozenAura
+                        return this.name + "：氷属性を付与、FrozenAuraです。\r\n";
+                    case 138: // ChillBurn
+                        return this.name + "：ChillBurnで凍結してください。\r\n";
+                    case 139: // ZetaExplosion
+                        return this.name + "：よみがえれ、Zeta！　ッハハ・・・ッハハハハ！！！\r\n";
+                    case 140: // FrozenAura追加効果ダメージで
+                        return this.name + "：凍ってください。 {0}の追加ダメージ\r\n";
+                    case 141: // StarLightning
+                        return this.name + "：ほんの一瞬です、StarLightning。\r\n";
+                    case 142: // WordOfMalice
+                        return this.name + "：ハハハ、さらに遅くなりますよ、WordOfMalice。\r\n";
+                    case 143: // BlackFire
+                        return this.name + "：魔法防御低下、BlackFire。\r\n";
+                    case 144: // EnrageBlast
+                        return this.name + "：さて、焼かれてもらいましょう、EnrageBlast。\r\n";
+                    case 145: // Immolate
+                        return this.name + "：物理防御低下、Immolate。\r\n";
+                    case 146: // VanishWave
+                        return this.name + "：黙っていてくれませんか、VanishWave。\r\n";
+                    case 147: // WordOfAttitude
+                        return this.name + "：卑怯と呼んでもらって構いませんよ、WordOfAttitude。\r\n";
+                    case 148: // HolyBreaker
+                        return this.name + "：ダメージの差を付けましょう、HolyBreaker。\r\n";
+                    case 149: // DarkenField
+                        return this.name + "：防御力全面低下、DarkenField。\r\n";
+                    case 150: // SeventhMagic
+                        return this.name + "：原則を覆すとしましょう、SeventhMagic。\r\n";
+                    case 151: // BlueBullet
+                        return this.name + "：氷の飛礫、BlueBulletです。\r\n";
+                    case 152: // NeutralSmash
+                        return this.name + "：NeutralSmash、ッハァ！\r\n";
+                    case 153: // SwiftStep
+                        return this.name + "：速度上げさせてもらいます、SwiftStep。\r\n";
+                    case 154: // CircleSlash
+                        return this.name + "：邪魔ですねどいてください、CircleSlash。\r\n";
+                    case 155: // RumbleShout
+                        return this.name + "：どこを見てるんですか？コチラです。\r\n";
+                    case 156: // SmoothingMove
+                        return this.name + "：ッククク、ほぼ無限コンボです、SmoothingMove。\r\n";
+                    case 157: // FutureVision
+                        return this.name + "：ボクが見きれないハズがない、FutureVision。\r\n";
+                    case 158: // ReflexSpirit
+                        return this.name + "：スタン系は事前回避に限ります、ReflexSpirit。\r\n";
+                    case 159: // SharpGlare
+                        return this.name + "：黙っていてくれませんか、SharpGlare。\r\n";
+                    case 160: // TrustSilence
+                        return this.name + "：沈黙などボクには無縁ですね、TrustSilence。\r\n";
+                    case 161: // SurpriseAttack
+                        return this.name + "ッハハハハ、これで気絶しちまいなぁ！SurpriseAttack！！\r\n";
+                    case 162: // PsychicWave
+                        return this.name + "：ッハハハ、止められないでしょう、PsychicWave。\r\n";
+                    case 163: // Recover
+                        return this.name + "：しっかりしてください、Recoverです。\r\n";
+                    case 164: // ViolentSlash
+                        return this.name + "：トドメェェェ！！　ViolentSlash！！！\r\n";
+                    case 165: // OuterInspiration
+                        return this.name + "：さて、これで元通りですね、OuterInspiration。\r\n";
+                    case 166: // StanceOfSuddenness
+                        return this.name + "：ッハハハハ！StanceOfSuddenness！ッハッハハハハ！！\r\n";
+                    case 167: // インスタント対象で発動不可
+                        return this.name + "：対象のインスタントコマンドが無いですね。\r\n";
+                    case 168: // StanceOfMystic
+                        return this.name + "：見切ったつもりでしょうが、甘いです。StanceOfMystic。\r\n";
+                    case 169: // HardestParry
+                        return this.name + "：その攻撃、瞬間で回避してみせましょう。HardestParryです。\r\n";
+                    case 170: // ConcussiveHit
+                        return this.name + "：防御率DOWNです、ConcussiveHit。\r\n";
+                    case 171: // Onslaught hit
+                        return this.name + "：攻撃率DOWNです、OnslaughtHit。\r\n";
+                    case 172: // Impulse hit
+                        return this.name + "：速度率DOWNです、ImpulseHit。\r\n";
+                    case 173: // Fatal Blow
+                        return this.name + "：さて、死んでもらいましょう、FatalBlow。\r\n";
+                    case 174: // Exalted Field
+                        return this.name + "：この場にて更なる増強をかけます、ExaltedField。\r\n";
+                    case 175: // Rising Aura
+                        return this.name + "：更に攻撃を増しますよ、RisingAuraです。\r\n";
+                    case 176: // Ascension Aura
+                        return this.name + "：更に魔法攻撃を上げましょうか、AscensionAuraです。\r\n";
+                    case 177: // Angel Breath
+                        return this.name + "：天使の加護による状態異常回復を、AngelBreathです。\r\n";
+                    case 178: // Blazing Field
+                        return this.name + "：すぐに燃やし尽くしてあげますよ、BlazingField。\r\n";
+                    case 179: // Deep Mirror
+                        return this.name + "：それが通るとは思ってないでしょう、DeepMirrorです。\r\n";
+                    case 180: // Abyss Eye
+                        return this.name + "：この眼を見た時が最後です、AbyssEye。\r\n";
+                    case 181: // Doom Blade
+                        return this.name + "：マナを断ち切らせてもらいます、DoomBlade。\r\n";
+                    case 182: // Piercing Flame
+                        return this.name + "：ここは貫通の火を使いましょう、PiercingFlame。\r\n";
+                    case 183: // Phantasmal Wind
+                        return this.name + "：さらに上げていきます、PhantasmalWindです。\r\n";
+                    case 184: // Paradox Image
+                        return this.name + "：潜在の源、ParadoxImageです。\r\n";
+                    case 185: // Vortex Field
+                        return this.name + "：皆さん鈍足になってください、VortexFieldです。\r\n";
+                    case 186: // Static Barrier
+                        return this.name + "：水理の加護、StaticBarrier\r\n";
+                    case 187: // Unknown Shock
+                        return this.name + "：あなたが暗闇で戦えるとは思えませんけどね、UnknownShockです。\r\n";
+                    case 188: // SoulExecution
+                        return this.name + "：ックク・・・SoulExecusion。\r\n";
+                    case 189: // SoulExecution hit 01
+                        return this.name + "：トゥ！\r\n";
+                    case 190: // SoulExecution hit 02
+                        return this.name + "：シッ！\r\n";
+                    case 191: // SoulExecution hit 03
+                        return this.name + "：ツェ！\r\n";
+                    case 192: // SoulExecution hit 04
+                        return this.name + "：セィ！\r\n";
+                    case 193: // SoulExecution hit 05
+                        return this.name + "：スゥ！\r\n";
+                    case 194: // SoulExecution hit 06
+                        return this.name + "：フッ！\r\n";
+                    case 195: // SoulExecution hit 07
+                        return this.name + "：ドゥ！\r\n";
+                    case 196: // SoulExecution hit 08
+                        return this.name + "：セイ！\r\n";
+                    case 197: // SoulExecution hit 09
+                        return this.name + "：ハアアァァ！\r\n";
+                    case 198: // SoulExecution hit 10
+                        return this.name + "：トドメです！ハアァァァ！！！\r\n";
+                    case 199: // Nourish Sense
+                        return this.name + "：回復量を上げさせてもらいましょう、NourishSenseです。\r\n";
+                    case 200: // Mind Killing
+                        return this.name + "：精神から攻めさせてもらいましょう、MindKilling。\r\n";
+                    case 201: // Vigor Sense
+                        return this.name + "：反応値を更に上げさせてもらいます、VigorSenseです。\r\n";
+                    case 202: // ONE Authority
+                        return this.name + "：全員上げていきましょうか、OneAuthority。\r\n";
+                    case 203: // 集中と断絶
+                        return this.name + "：【集中と断絶】　発動。\r\n";
+                    case 204: // 【元核】発動済み
+                        return this.name + "：すみませんが【元核】は、今日すでに発動済みです。\r\n";
+                    case 205: // 【元核】通常行動選択時
+                        return this.name + "：【元核】はインスタントタイミング限定です。\r\n";
+                    case 206: // Sigil Of Homura
+                        return this.name + "：これが決まったら、ほぼ終わりですね。SigilOfHomuraです。\r\n";
+                    case 207: // Austerity Matrix
+                        return this.name + "：支配力、変えさせてもらいます、AusterityMatrix。\r\n";
+                    case 208: // Red Dragon Will
+                        return this.name + "：火竜よ、ボクに仕えよ、RedDragonWill。\r\n";
+                    case 209: // Blue Dragon Will
+                        return this.name + "：水竜よ、ボクに仕えよ、BlueDragonWill。\r\n";
+                    case 210: // Eclipse End
+                        return this.name + "：ックク、これで全てが無駄となりますね、EclipseEnd。\r\n";
+                    case 211: // Sin Fortune
+                        return this.name + "：次のクリティカル、覚悟してください、SinFortuneです。\r\n";
+                    case 212: // AfterReviveHalf
+                        return this.name + "：死耐性（ハーフ）を付与させてもらいます。\r\n";
+                    case 213: // Demonic Ignite
+                        return this.name + "：これでほぼ詰みですね、DemonicIgniteです。\r\n";
+                    case 214: // Death Deny
+                        return this.name + "：冒涜ではなく完全なる蘇りです、DeathDeny。\r\n";
+                    case 215: // Stance of Double
+                        return this.name + "：これぞ究極原理、StanceOfDoubleです。  " + this.name + "は前回行動を示す自分の分身を発生させた！\r\n";
+                    case 216: // 最終戦ライフカウント消費
+                        return this.name + "：神具よ！我に永遠の生命を！！ッハアアアァァァ！！！\r\n";
+                    case 217: // 最終戦ライフカウント消滅時
+                        return this.name + "：ッグ・・・セ・・・セフィ・・・ネ・・・\r\n";
+
+                    case 2001: // ポーション回復時
+                        return this.name + "：{0} 回復です。";
+                    case 2002: // レベルアップ終了催促
+                        return this.name + "：レベルアップを先にしてください。";
+                    case 2003: // 荷物を減らせる催促
+                        return this.name + "：{0}、荷物いっぱいですね？アイテムを減らしてからまた言ってください。";
+                    case 2004: // 装備判断
+                        return this.name + "：装備してもいいですか？";
+                    case 2005: // 装備完了
+                        return this.name + "：装備完了です。";
+                    case 2006: // 遠見の青水晶を使用
+                        return this.name + "：いったん、町に戻りましょうか？";
+                    case 2007: // 売却専用品に対する一言
+                        return this.name + "：売却専用の品物です。";
+                    case 2008: // 非戦闘時のマナ不足
+                        return this.name + "：マナが不足していますね。";
+                    case 2009: // 神聖水使用時
+                        return this.name + "：ライフ・スキル・マナが30%ずつ回復です。";
+                    case 2010: // 神聖水、既に使用済みの場合
+                        return this.name + "：もう水は残ってないようです。一日待たないと駄目ですね。";
+                    case 2011: // リーベストランクポーション非戦闘使用時
+                        return this.name + "：戦闘中専用品です。";
+                    case 2012: // 遠見の青水晶を使用（町滞在時）
+                        return this.name + "：町の中から使っても意味はありませんね。";
+                    case 2013: // 遠見の青水晶を捨てられない時の台詞
+                        return this.name + "：これはさすがに捨てられません。";
+                    case 2014: // 非戦闘時のスキル不足
+                        return this.name + "：スキルが不足していますね。";
+                    case 2015: // 他プレイヤーが捨ててしまおうとした場合
+                        return this.name + "：すいません、それはちょっと捨てないでください。";
+                    case 2016: // リヴァイヴポーションによる復活
+                        return this.name + "：おかげで復活できました。ありがとうございます。";
+                    case 2017: // リヴァイヴポーション不要な時
+                        return this.name + "：{0}は生きてないのでは？というブラックジョークです。";
+                    case 2018: // リヴァイヴポーション対象が自分の時
+                        return this.name + "：もしボクが死んでいたら使う行為自体できないはず。面白いジョークですね。";
+                    case 2019: // 装備不可のアイテムを装備しようとした時
+                        return this.name + "：これはボクでは装備できませんね。";
+                    case 2020: // ラスボス撃破の後、遠見の青水晶を使用不可
+                        return this.name + "：すいません、今の状況でこのアイテムを使う必要はなさそうです。";
+                    case 2021: // アイテム捨てるの催促
+                        return this.name + "：先にバックパックの整理をしませんか？";
+                    case 2022: // オーバーシフティング使用開始時
+                        return this.name + "：こ、これは・・・身体能力が再構築されるとは・・・素晴らしいですね。";
+                    case 2023: // オーバーシフティングによるパラメタ割り振り時
+                        return this.name + "：オーバーシフティングによる割り振りが終わってからにしましょう。";
+                    case 2024: // 成長リキッドを使用した時
+                        return this.name + "：【{0}】パラメタ、 {1} 上昇しましたね。";
+                    case 2025:
+                        return this.name + "：両手武器を装備していますからね。サブは装備できません。";
+                    case 2026:
+                        return this.name + "：武器（メイン）をはじめに何か装備しないといけませんね。";
+                    case 2027: // 清透水使用時
+                        return this.name + "：ライフが100%回復しましたね。";
+                    case 2028: // 清透水、既に使用済みの場合
+                        return this.name + "：もう水は残ってないゆです。一日待たないと駄目ですね。";
+                    case 2029: // 荷物一杯で装備が外せない時
+                        return this.name + "：バックパックを空けましょう。今のままでは装備は外せませんね。";
+                    case 2030: // 荷物一杯で何かを捨てる時の台詞
+                        return this.name + "：{0}を捨てましょう。いいですね？";
+                    case 2031: // 戦闘中のアイテム使用限定
+                        return this.name + "：戦闘中です。使用するアイテムを早く決めませんか？";
+                    case 2032: // 戦闘中、アイテム使用できないアイテムを選択したとき
+                        return this.name + "：このアイテムは戦闘中に使用は出来ませんね。";
+                    case 2033: // 預けられない場合
+                        return this.name + "：これを預けるのは得策ではありませんね。";
+                    case 2034: // アイテムいっぱいで預かり所から引き出せない場合
+                        return this.name + "：いえ、これ以上は持って行く必要はありませんね。";
+                    case 2035: // Sacred Heal
+                        return this.name + "：全員回復しましたね。";
+
+                    case 3000: // 店に入った時の台詞
+                        return this.name + "：無防備な状態ですね・・・";
+                    case 3001: // 支払い要求時
+                        return this.name + "：{0}を購入しましょう。 {1}Gold置きましょう。";
+                    case 3002: // 持ち物いっぱいで買えない時
+                        return this.name + "：アイテムがいっぱいのようです。少し整理させてください。";
+                    case 3003: // 購入完了時
+                        return this.name + "：これで・・・売買成立とさせてください。";
+                    case 3004: // Gold不足で購入できない場合
+                        return this.name + "：Goldがあと{0}足りないようです。";
+                    case 3005: // 購入せずキャンセルした場合
+                        return this.name + "：他を見させてください。";
+                    case 3006: // 売れないアイテムを売ろうとした場合
+                        return this.name + "：すいません、このアイテムは売却できません。";
+                    case 3007: // アイテム売却時
+                        return this.name + "：{0}を売却します。つまり、{1}Gold頂いても良いハズですね。";
+                    case 3008: // 剣紋章ペンダント売却時
+                        return this.name + "：コレはラナさんの作ったアクセサリですね。{0}Goldで本当に売るのでしょうか？";
+                    case 3009: // 武具店を出る時
+                        return this.name + "：また・・・いつか帰ってきてください。";
+                    case 3010: // ガンツ不在時の売りきれフェルトゥーシュを見て一言
+                        return this.name + "：この剣は・・・確かに売り切れですね。";
+                    case 3011: // 装備可能なものが購入された時
+                        return this.name + "：この場で装備しても良いでしょうか？";
+                    case 3012: // 装備していた物を売却対象かどうか聞く時
+                        return this.name + "：現在は、{0}を装備しています。鑑定は不得意ですが{1}Goldぐらいで売れるでしょう。";
+
+                    case 4001: // 通常攻撃を選択
+                    case 4002: // 防御を選択
+                    case 4003: // 待機を選択
+                    case 4004: // フレッシュヒールを選択
+                    case 4005: // プロテクションを選択
+                    case 4006: // ファイア・ボールを選択
+                    case 4007: // フレイム・オーラを選択
+                    case 4008: // ストレート・スマッシュを選択
+                    case 4009: // ダブル・スマッシュを選択
+                    case 4010: // スタンス・オブ・スタンディングを選択
+                    case 4011: // アイス・ニードルを選択
+                    case 4012:
+                    case 4013:
+                    case 4014:
+                    case 4015:
+                    case 4016:
+                    case 4017:
+                    case 4018:
+                    case 4019:
+                    case 4020:
+                    case 4021:
+                    case 4022:
+                    case 4023:
+                    case 4024:
+                    case 4025:
+                    case 4026:
+                    case 4027:
+                    case 4028:
+                    case 4029:
+                    case 4030:
+                    case 4031:
+                    case 4032:
+                    case 4033:
+                    case 4034:
+                    case 4035:
+                    case 4036:
+                    case 4037:
+                    case 4038:
+                    case 4039:
+                    case 4040:
+                    case 4041:
+                    case 4042:
+                    case 4043:
+                    case 4044:
+                    case 4045:
+                    case 4046:
+                    case 4047:
+                    case 4048:
+                    case 4049:
+                    case 4050:
+                    case 4051:
+                    case 4052:
+                    case 4053:
+                    case 4054:
+                    case 4055:
+                    case 4056:
+                    case 4057:
+                    case 4058:
+                    case 4059:
+                    case 4060:
+                    case 4061:
+                    case 4062:
+                    case 4063:
+                    case 4064:
+                    case 4065:
+                    case 4066:
+                    case 4067:
+                    case 4068:
+                    case 4069:
+                    case 4070:
+                    case 4071:
+                        return this.name + "：" + this.ActionLabel.text + "でいきます。\r\n";
+                    case 4072:
+                        return this.name + "：敵を対象にするわけにはいきませんね。\r\n";
+                    case 4073:
+                        return this.name + "：敵を対象にするわけにはいきませんね。\r\n";
+                    case 4074:
+                        return this.name + "：味方を対象にはできませんね。\r\n";
+                    case 4075:
+                        return this.name + "：味方を対象にはできませんね。\r\n";
+                    case 4076:
+                        return this.name + "：味方に攻撃をするつもりはありません。\r\n";
+                    case 4077: // 「ためる」コマンド
+                        return this.name + "：魔力をため込みます。\r\n";
+                    case 4078: // 武器発動「メイン」
+                        return this.name + "：メイン武器の効果を発動させます。\r\n";
+                    case 4079: // 武器発動「サブ」
+                        return this.name + "：サブ武器の効果を発動させます。\r\n";
+                    case 4080: // アクセサリ１発動
+                        return this.name + "：アクセサリ１の効果を発動させます。\r\n";
+                    case 4081: // アクセサリ２発動
+                        return this.name + "：アクセサリ２の効果を発動させます。\r\n";
+
+                    case 4082: // FlashBlaze
+                        return this.name + "：ここはフラッシュブレイズですね。\r\n";
+
+                    // 武器攻撃
+                    case 5001:
+                        return this.name + "：エアロ・スラッシュです。ハアアァ！！ {0} へ {1} のダメージ\r\n";
+                    case 5002:
+                        return this.name + "：{0} 回復です \r\n";
+                    case 5003:
+                        return this.name + "：{0} マナ回復です \r\n";
+                    case 5004:
+                        return this.name + "：アイシクル・スラッシュ、行きます！ {0} へ {1} のダメージ\r\n";
+                    case 5005:
+                        return this.name + "：エレクトロ・ブローです、ハアァァ！ {0} へ {1} のダメージ\r\n";
+                    case 5006:
+                        return this.name + "：ブルー・ライトニングです。ハアァァ！ {0} へ {1} のダメージ\r\n";
+                    case 5007:
+                        return this.name + "：バーニング・クレイモアです。ハアァァ！ {0} へ {1} のダメージ\r\n";
+                    case 5008:
+                        return this.name + "：赤蒼授からの炎です。ハアァァ！ {0} へ {1} のダメージ\r\n";
+                    case 5009:
+                        return this.name + "：{0} スキルポイント回復です \r\n";
+                    case 5010:
+                        return this.name + "が装着している指輪が強烈に蒼い光を放った！ {0} へ {1} のダメージ\r\n";
+                }
+            }
+            #endregion
+            #region "ランディス"
+            if (this.name == "ランディス")
+            {
+                switch (sentenceNumber)
+                {
+                    case 0: // スキル不足
+                        return this.name + "：ッチ・・・スキルがねぇ\r\n";
+                    case 1: // Straight Smash
+                        return this.name + "：ッラァ！！\r\n";
+                    case 2: // Double Slash 1
+                        return this.name + "：ッラ！\r\n";
+                    case 3: // Double Slash 2
+                        return this.name + "：ッドラァ！\r\n";
+                    case 4: // Painful Insanity
+                        return this.name + "：精神勝負で負ける気はしねえ、朽ちろや。\r\n";
+                    case 5: // empty skill
+                        return this.name + "：ッチ・・・スキル未定とは・・・\r\n";
+                    case 6: // 絡みつくフランシスの必殺を食らった時
+                        return this.name + "：っきかねえなぁ・・・\r\n";
+                    case 7: // Lizenosの必殺を食らった時
+                        return this.name + "：やるじゃねぇか・・・\r\n";
+                    case 8: // Minfloreの必殺を食らった時
+                        return this.name + "：ッケ・・・ドジったか・・・\r\n";
+                    case 9: // Fresh Healによるライフ回復
+                        return this.name + "：{0} 回復しといたぞ。\r\n";
+                    case 10: // Fire Ball
+                        return this.name + "：ファイア！ {0} へ {1} のダメージ\r\n";
+                    case 11: // Flame Strike
+                        return this.name + "：フレスト！ {0} へ {1} のダメージ\r\n";
+                    case 12: // Volcanic Wave
+                        return this.name + "：ヴォルカニィ！ {0} へ {1} のダメージ\r\n";
+                    case 13: // 通常攻撃クリティカルヒット
+                        return this.name + "：ッシャオラ、来た来たぁ！ {0} へ {1}のダメージ\r\n";
+                    case 14: // FlameAuraによる追加攻撃
+                        return this.name + "：オラヨ！ {0}の追加ダメージ\r\n";
+                    case 15: //遠見の青水晶を戦闘中に使ったとき
+                        return this.name + "：コイツは戦闘中使えねぇ。\r\n";
+                    case 16: // 効果を発揮しないアイテムを戦闘中に使ったとき
+                        return this.name + "：ッチィ！使えねぇアイテムだな！\r\n";
+                    case 17: // 魔法でマナ不足
+                        return this.name + "：ッケ・・・もうマナはねぇ\r\n";
+                    case 18: // Protection
+                        return this.name + "：プロッツ！ 物理防御上げとくぞ。\r\n";
+                    case 19: // Absorb Water
+                        return this.name + "：ァヴソーヴ！ 魔法防御上げとくぞ。\r\n";
+                    case 20: // Saint Power
+                        return this.name + "：セイント！ 物理攻撃上げとくぞ。\r\n";
+                    case 21: // Shadow Pact
+                        return this.name + "：シャドウ！ 魔法攻撃上げとくぞ。r\n";
+                    case 22: // Bloody Vengeance
+                        return this.name + "：ヴェンジェ！ 【力】を {0} 上げとくぞ。\r\n";
+                    case 23: // Holy Shock
+                        return this.name + "：ショック！ {0} へ {1} のダメージ\r\n";
+                    case 24: // Glory
+                        return this.name + "：グローリ！ 直接攻撃＋FreshHeal連携のオーラ\r\n";
+                    case 25: // CelestialNova 1
+                        return this.name + "：ノヴァ！ {0} 回復しといたぞ。\r\n";
+                    case 26: // CelestialNova 2
+                        return this.name + "：ノヴァ！ {0} のダメージ\r\n";
+                    case 27: // Dark Blast
+                        return this.name + "：ブラスト！ {0} へ {1} のダメージ\r\n";
+                    case 28: // Lava Annihilation
+                        return this.name + "：ダーッハッハッハ！燃えちまいなぁ！ {0} へ {1} のダメージ\r\n";
+                    case 10028: // Lava Annihilation後編
+                        return this.name + "：ダーッハッハッハ！燃えちまいなぁ！\r\n";
+                    case 29: // Devouring Plague
+                        return this.name + "：デヴォプラァ！ {0} ライフを吸い取った\r\n";
+                    case 30: // Ice Needle
+                        return this.name + "：ニードル！ {0} へ {1} のダメージ\r\n";
+                    case 31: // Frozen Lance
+                        return this.name + "：ランス！ {0} へ {1} のダメージ\r\n";
+                    case 32: // Tidal Wave
+                        return this.name + "：ウェイヴ！ {0} のダメージ\r\n";
+                    case 33: // Word of Power
+                        return this.name + "：ワーパワー！ {0} へ {1} のダメージ\r\n";
+                    case 34: // White Out
+                        return this.name + "：ホワイアウト！ {0} へ {1} のダメージ\r\n";
+                    case 35: // Black Contract
+                        return this.name + "：ッカッカッカ、コイツで撃ち放題だ。 " + this.name + "のスキル、魔法コストは０になる。\r\n";
+                    case 36: // Flame Aura詠唱
+                        return this.name + "：炎でぶった斬る。　 直接攻撃に炎の追加効果が付与される。\r\n";
+                    case 37: // Damnation
+                        return this.name + "：ソコで死んでろぉ、ダムネーション！　　死淵より出でる黒が空間を歪ませる。\r\n";
+                    case 38: // Heat Boost
+                        return this.name + "：ブースト！ 【技】を {0} 上げとくぞ。\r\n";
+                    case 39: // Immortal Rave
+                        return this.name + "：ラアアァァァァ！レイヴ！！ " + this.name + "の周りに３つの炎が宿った。\r\n";
+                    case 40: // Gale Wind
+                        return this.name + "：ゲイル！　 もう一人の" + this.name + "が現れた。\r\n";
+                    case 41: // Word of Life
+                        return this.name + "：ワーライフ！ 大自然からの強い息吹を感じ取れるようになった。\r\n";
+                    case 42: // Word of Fortune
+                        return this.name + "：ワーフォーチュ！ 決死のオーラが湧き上がった。\r\n";
+                    case 43: // Aether Drive
+                        return this.name + "：ドライヴ！ 周囲全体に空想物理力がみなぎる。\r\n";
+                    case 44: // Eternal Presence 1
+                        return this.name + "：ッゼンス！ " + this.name + "の周りに新しい法則が構築される。\r\n";
+                    case 45: // Eternal Presence 2
+                        return this.name + "の物理攻撃、物理防御、魔法攻撃、魔法防御がＵＰした！\r\n";
+                    case 46: // One Immunity
+                        return this.name + "：ワンイム！ " + this.name + "の周囲に目に見えない障壁が発生。\r\n";
+                    case 47: // Time Stop
+                        return this.name + "：ストップ！ 敵の時空を引き裂き時間停止させた。\r\n";
+                    case 48: // Dispel Magic
+                        return this.name + "：ディスペル！ \r\n";
+                    case 49: // Rise of Image
+                        return this.name + "：ライズ！ 【心】を {0} 上げとくぞ。\r\n";
+                    case 50: // 空詠唱
+                        return this.name + "：ッカ・・・詠唱してねぇぞ・・・\r\n";
+                    case 51: // Inner Inspiration
+                        return this.name + "：は潜在集中力を高めた。精神が研ぎ澄まされる。 {0} スキルポイント回復\r\n";
+                    case 52: // Resurrection 1
+                        return this.name + "：リザレク！\r\n";
+                    case 53: // Resurrection 2
+                        return this.name + "：ヴォケが！対象ちげぇ！！\r\n";
+                    case 54: // Resurrection 3
+                        return this.name + "：ヴォケが！死んでねぇ！！\r\n";
+                    case 55: // Resurrection 4
+                        return this.name + "：ヴォケも大概にしろ。\r\n";
+                    case 56: // Stance Of Standing
+                        return this.name + "：ッフン！\r\n";
+                    case 57: // Mirror Image
+                        return this.name + "：ミライメ！ {0}の周囲に青い空間が発生した。\r\n";
+                    case 58: // Mirror Image 2
+                        return this.name + "：返すぞオラァ！ {0} ダメージを {1} に反射した！\r\n";
+                    case 59: // Mirror Image 3
+                        return this.name + "：返すぞオラァ！ 【しかし、強力な威力ではね返せない！】" + this.name + "：ッケ、クソが\r\n";
+                    case 60: // Deflection
+                        return this.name + "：デフレク！ {0}の周囲に白い空間が発生した。\r\n";
+                    case 61: // Deflection 2
+                        return this.name + "：返すぞオラァ！ {0} ダメージを {1} に反射した！\r\n";
+                    case 62: // Deflection 3
+                        return this.name + "：返すぞオラァ！ 【しかし、強力な威力ではね返せない！】" + this.name + "：ッケ、クソが\r\n";
+                    case 63: // Truth Vision
+                        return this.name + "：トルゥス！　" + this.name + "は対象のパラメタＵＰを無視するようになった。\r\n";
+                    case 64: // Stance Of Flow
+                        return this.name + "：スタンフロウ！　" + this.name + "は次３ターン、必ず後攻を取るように構えた。\r\n";
+                    case 65: // Carnage Rush 1
+                        return this.name + "：オラァ！ {0}ダメージ・・・   ";
+                    case 66: // Carnage Rush 2
+                        return "ッラァ！ {0}ダメージ   ";
+                    case 67: // Carnage Rush 3
+                        return "ッラアァ！ {0}ダメージ   ";
+                    case 68: // Carnage Rush 4
+                        return "ッラアァァ！ {0}ダメージ   ";
+                    case 69: // Carnage Rush 5
+                        return "ウォラアァァァ！！ {0}のダメージ\r\n";
+                    case 70: // Crushing Blow
+                        return this.name + "：クラッシュ！  {0} へ {1} のダメージ。\r\n";
+                    case 71: // リーベストランクポーション戦闘使用時
+                        return this.name + "：コイツでも飲んでな。\r\n";
+                    case 72: // Enigma Sence
+                        return this.name + "：エニグマ！\r\n";
+                    case 73: // Soul Infinity
+                        return this.name + "：ブッッッッタ斬る、ラァァァ！！！\r\n";
+                    case 74: // Kinetic Smash
+                        return this.name + "：スマァッシュ！！\r\n";
+                    case 75: // Silence Shot (Altomo専用)
+                        return "";
+                    case 76: // Silence Shot、AbsoluteZero沈黙による詠唱失敗
+                        return this.name + "：・・・ッケ、詠唱妨害か、くだらねぇ。\r\n";
+                    case 77: // Cleansing
+                        return this.name + "：クリーン！\r\n";
+                    case 78: // Pure Purification
+                        return this.name + "：ピュリファイ！\r\n";
+                    case 79: // Void Extraction
+                        return this.name + "：ヴォイデクス！" + this.name + "の {0} が {1}ＵＰ！\r\n";
+                    case 80: // アカシジアの実使用時
+                        return this.name + "：少しは目を醒ませ。\r\n";
+                    case 81: // Absolute Zero
+                        return this.name + "：アブスゼロ！ 氷吹雪効果により、ライフ回復不可、スペル詠唱不可、スキル使用不可、防御不可となった。\r\n";
+                    case 82: // BUFFUP効果が望めない場合
+                        return "しかし、既にそのパラメタは上昇しているため、効果がなかった。\r\n";
+                    case 83: // Promised Knowledge
+                        return this.name + "：プロナレ！　【知】を {0} 上げとくぞ。\r\n";
+                    case 84: // Tranquility
+                        return this.name + "：トランキィ！\r\n";
+                    case 85: // High Emotionality 1
+                        return this.name + "：ハイエモ！　来たきたぁ！！\r\n";
+                    case 86: // High Emotionality 2
+                        return this.name + "の力、技、知、心パラメタがＵＰした！\r\n";
+                    case 87: // AbsoluteZeroでスキル使用失敗
+                        return this.name + "：ッケ・・・使えねぇなぁ。\r\n";
+                    case 88: // AbsoluteZeroによる防御失敗
+                        return this.name + "：ッカ・・・防御できねぇとはな。 \r\n";
+                    case 89: // Silent Rush 1
+                        return this.name + "：ラッシュ！！ {0}ダメージ・・・   ";
+                    case 90: // Silent Rush 2
+                        return "ッフン！ {0}ダメージ   ";
+                    case 91: // Silent Rush 3
+                        return "ッラアァァ！ {0}のダメージ\r\n";
+                    case 92: // BUFFUP以外の永続効果が既についている場合
+                        return "しかし、既にその効果は付与されている。\r\n";
+                    case 93: // Anti Stun
+                        return this.name + "：アンスタ！ " + this.name + "はスタン効果への耐性が付いた\r\n";
+                    case 94: // Anti Stunによるスタン回避
+                        return this.name + "：スタン回避ぐらいとぉぜんだ。\r\n";
+                    case 95: // Stance Of Death
+                        return this.name + "：スタンデス！ " + this.name + "は致死を１度回避できるようになった\r\n";
+                    case 96: // Oboro Impact 1
+                        return this.name + "：オボロ行くぞ・・・ッフウウウゥゥゥゥ・・・\r\n";
+                    case 97: // Oboro Impact 2
+                        return this.name + "：ウオォォラアアァ！！　 {0}へ{1}のダメージ\r\n";
+                    case 98: // Catastrophe 1
+                        return this.name + "：悪いがコッパミジンだ、カタスト！\r\n";
+                    case 99: // Catastrophe 2
+                        return this.name + "：死んでこいやああぁぁ！！　 {0}のダメージ\r\n";
+                    case 100: // Stance Of Eyes
+                        return this.name + "：スタンアイ！ " + this.name + "は、相手の行動に備えている・・・\r\n";
+                    case 101: // Stance Of Eyesによるキャンセル時
+                        return this.name + "：おせぇな！！　" + this.name + "は相手のモーションを見切って、行動キャンセルした！\r\n";
+                    case 102: // Stance Of Eyesによるキャンセル失敗時
+                        return this.name + "：ッケ・・・　" + this.name + "は相手のモーションを見切れなかった！\r\n";
+                    case 103: // Negate
+                        return this.name + "：ニゲイト！　" + this.name + "は相手のスペル詠唱に備えている・・・\r\n";
+                    case 104: // Negateによるスペル詠唱キャンセル時
+                        return this.name + "：おせえぇ！" + this.name + "は相手のスペル詠唱を弾いた！\r\n";
+                    case 105: // Negateによるスペル詠唱キャンセル失敗時
+                        return this.name + "：ッカ・・・" + this.name + "は相手のスペル詠唱を見切れなかった！\r\n";
+                    case 106: // Nothing Of Nothingness 1
+                        return this.name + "：ナッシング！ " + this.name + "に無色のオーラが宿り始める！ \r\n";
+                    case 107: // Nothing Of Nothingness 2
+                        return this.name + "は無効化魔法を無効化、　無効化するスキルを無効化するようになった！\r\n";
+                    case 108: // Genesis
+                        return this.name + "：ジェネ！  " + this.name + "は前回の行動を自分へと投影させた！\r\n";
+                    case 109: // Cleansing詠唱失敗時
+                        return this.name + "：クリーンジングミスだ。\r\n";
+                    case 110: // CounterAttackを無視した時
+                        return this.Name + "：無駄だな。\r\n";
+                    case 111: // 神聖水使用時
+                        return this.name + "：ライフ・スキル・マナが30%ずつ回復しといたぞ。\r\n";
+                    case 112: // 神聖水、既に使用済みの場合
+                        return this.name + "：一日１回だ。\r\n";
+                    case 113: // CounterAttackによる反撃メッセージ
+                        return this.name + "：おせぇ！カウンター！\r\n";
+                    case 114: // CounterAttackに対する反撃がNothingOfNothingnessによって防がれた時
+                        return this.name + "：ッカ・・・ッスったか・・・\r\n";
+                    case 115: // 通常攻撃のヒット
+                        return this.name + "の攻撃がヒット。 {0} へ {1} のダメージ\r\n";
+                    case 116: // 防御を無視して攻撃する時
+                        return this.name + "：無駄だな。\r\n";
+                    case 117: // StraightSmashなどのスキルクリティカル
+                        return this.name + "：ッシャラァ！クリティカル！\r\n";
+                    case 118: // 戦闘時、リヴァイヴポーションによる復活のかけ声
+                        return this.name + "：復活させるぞ。\r\n";
+                    case 119: // Absolute Zeroによりライフ回復できない場合
+                        return this.name + "：ッケ・・・回復も無駄だったな\r\n";
+                    case 120: // 魔法攻撃のヒット
+                        return "{0} へ {1} のダメージ\r\n";
+                    case 121: // Absolute Zeroによりマナ回復できない場合
+                        return this.name + "：ッカ・・・マナ回復も無駄だったな\r\n";
+                    case 122: // 「ためる」行動時
+                        return this.name + "：魔力、蓄えるぞ。\r\n";
+                    case 123: // 「ためる」行動で溜まりきっている場合
+                        return this.name + "：蓄積上限だ。\r\n";
+                    case 124: // StraightSmashのダメージ値
+                        return this.name + "のストレート・スマッシュがヒット。 {0} へ {1}のダメージ\r\n";
+                    case 125: // アイテム使用ゲージが溜まってないとき
+                        return this.name + "：アイテムゲージがまだだ。\r\n";
+                    case 126: // FlashBlase
+                        return this.name + "：ブレイズ！ {0} へ {1} のダメージ\r\n";
+                    case 127: // 複合魔法でインスタント不足
+                        return this.name + "：ヴォケが、インスタント足りねぇだろぉが！\r\n";
+                    case 128: // 複合魔法はインスタントタイミングでうてない
+                        return this.name + "：コイツはインスタントだ。\r\n";
+                    case 129: // PsychicTrance
+                        return this.name + "：サイトラ！　魔法攻撃強化だ。\r\n";
+                    case 130: // BlindJustice
+                        return this.name + "：ジャスティス！　物理攻撃強化だ。\r\n";
+                    case 131: // TranscendentWish
+                        return this.name + "：トラッセン！　\r\n";
+                    case 132: // LightDetonator
+                        return this.name + "：デトネイト！\r\n";
+                    case 133: // AscendantMeteor
+                        return this.name + "：ッラアアァァ！！　メテオ！！\r\n";
+                    case 134: // SkyShield
+                        return this.name + "：シールド！\r\n";
+                    case 135: // SacredHeal
+                        return this.name + "：サークレッド！\r\n";
+                    case 136: // EverDroplet
+                        return this.name + "：エヴァドロー！\r\n";
+                    case 137: // FrozenAura
+                        return this.name + "：アイスオーラ！\r\n";
+                    case 138: // ChillBurn
+                        return this.name + "：食らえ、ッバーン！\r\n";
+                    case 139: // ZetaExplosion
+                        return this.name + "：ゼータ！\r\n";
+                    case 140: // FrozenAura追加効果ダメージで
+                        return this.name + "：凍れや！ {0}の追加ダメージ\r\n";
+                    case 141: // StarLightning
+                        return this.name + "：ライトニング！\r\n";
+                    case 142: // WordOfMalice
+                        return this.name + "：ワーマリス！\r\n";
+                    case 143: // BlackFire
+                        return this.name + "：ブラックファイア！\r\n";
+                    case 144: // EnrageBlast
+                        return this.name + "：エンレイジ！\r\n";
+                    case 145: // Immolate
+                        return this.name + "：イモレ！\r\n";
+                    case 146: // VanishWave
+                        return this.name + "：ヴァニッシュ！\r\n";
+                    case 147: // WordOfAttitude
+                        return this.name + "：ワーアッティ！\r\n";
+                    case 148: // HolyBreaker
+                        return this.name + "：ブレイカー！\r\n";
+                    case 149: // DarkenField
+                        return this.name + "：ダーケン！\r\n";
+                    case 150: // SeventhMagic
+                        return this.name + "：セヴェンス！\r\n";
+                    case 151: // BlueBullet
+                        return this.name + "：ブルバレ！\r\n";
+                    case 152: // NeutralSmash
+                        return this.name + "：ッシャァ！スマッシュ！\r\n";
+                    case 153: // SwiftStep
+                        return this.name + "：スウィフト！\r\n";
+                    case 154: // CircleSlash
+                        return this.name + "：サークル！\r\n";
+                    case 155: // RumbleShout
+                        return this.name + "：コッチだ、オラァ！\r\n";
+                    case 156: // SmoothingMove
+                        return this.name + "：スムージン！\r\n";
+                    case 157: // FutureVision
+                        return this.name + "：フューチャーヴィ！\r\n";
+                    case 158: // ReflexSpirit
+                        return this.name + "：リフレ！\r\n";
+                    case 159: // SharpGlare
+                        return this.name + "：シャーグレ！\r\n";
+                    case 160: // TrustSilence
+                        return this.name + "：トラッサイレン！\r\n";
+                    case 161: // SurpriseAttack
+                        return this.name + "：ップライズ！\r\n";
+                    case 162: // PsychicWave
+                        return this.name + "：サイキック！\r\n";
+                    case 163: // Recover
+                        return this.name + "：リカバ！\r\n";
+                    case 164: // ViolentSlash
+                        return this.name + "：ッヴァイオレン！\r\n";
+                    case 165: // OuterInspiration
+                        return this.name + "：アウスピ！\r\n";
+                    case 166: // StanceOfSuddenness
+                        return this.name + "：ッサドン！\r\n";
+                    case 167: // インスタント対象で発動不可
+                        return this.name + "：コイツはインスタント対象専用だ。\r\n";
+                    case 168: // StanceOfMystic
+                        return this.name + "：ミスティッ！\r\n";
+                    case 169: // HardestParry
+                        return this.name + "：ッカ、面倒くせぇ、ハードパリィ！\r\n";
+                    case 170: // ConcussiveHit
+                        return this.name + "：カッシヴ！\r\n";
+                    case 171: // Onslaught hit
+                        return this.name + "：オンッスロ！";
+                    case 172: // Impulse hit
+                        return this.name + "：パルス！";
+                    case 173: // Fatal Blow
+                        return this.name + "：フェタル！";
+                    case 174: // Exalted Field
+                        return this.name + "：ッハァ、悪ぃな！　イグッザルツ！\r\n";
+                    case 175: // Rising Aura
+                        return this.name + "：ライジンッ！\r\n";
+                    case 176: // Ascension Aura
+                        return this.name + "：セッション！\r\n";
+                    case 177: // Angel Breath
+                        return this.name + "：ッカ、面倒くせえ、ブレス！\r\n";
+                    case 178: // Blazing Field
+                        return this.name + "：レイジン・フィー！\r\n";
+                    case 179: // Deep Mirror
+                        return this.name + "：ディプミラ！\r\n";
+                    case 180: // Abyss Eye
+                        return this.name + "：アビッスァ！\r\n";
+                    case 181: // Doom Blade
+                        return this.name + "：ドゥーム・レイ！\r\n";
+                    case 182: // Piercing Flame
+                        return this.name + "：ピアッ・フレイ！\r\n";
+                    case 183: // Phantasmal Wind
+                        return this.name + "：ファンタズマ！\r\n";
+                    case 184: // Paradox Image
+                        return this.name + "：ドックス！\r\n";
+                    case 185: // Vortex Field
+                        return this.name + "：テックス・フィール！\r\n";
+                    case 186: // Static Barrier
+                        return this.name + "：スタック・バリア！\r\n";
+                    case 187: // Unknown Shock
+                        return this.name + "：アン・ショック！\r\n";
+                    case 188: // SoulExecution
+                        return this.name + "：ッハーーッハッハッハァ！　ソウル・エグゼッ！！！\r\n";
+                    case 189: // SoulExecution hit 01
+                        return this.name + "：ラァ！\r\n";
+                    case 190: // SoulExecution hit 02
+                        return this.name + "：ッラァ！\r\n";
+                    case 191: // SoulExecution hit 03
+                        return this.name + "：オラァ！\r\n";
+                    case 192: // SoulExecution hit 04
+                        return this.name + "：オラアァ！\r\n";
+                    case 193: // SoulExecution hit 05
+                        return this.name + "：ッラ！\r\n";
+                    case 194: // SoulExecution hit 06
+                        return this.name + "：ッララ！\r\n";
+                    case 195: // SoulExecution hit 07
+                        return this.name + "：ッララアァァ！\r\n";
+                    case 196: // SoulExecution hit 08
+                        return this.name + "：オラララアアァ！\r\n";
+                    case 197: // SoulExecution hit 09
+                        return this.name + "：オラオラオラ！\r\n";
+                    case 198: // SoulExecution hit 10
+                        return this.name + "：食らえやあ！ラアアァァ！！！\r\n";
+                    case 199: // Nourish Sense
+                        return this.name + "：ノッセンス！\r\n";
+                    case 200: // Mind Killing
+                        return this.name + "：マイン・ッキル！\r\n";
+                    case 201: // Vigor Sense
+                        return this.name + "：ヴィゴー！\r\n";
+                    case 202: // ONE Authority
+                        return this.name + "：ワン・オース！\r\n";
+                    case 203: // 集中と断絶
+                        return this.name + "：【集中と断絶】　発動。\r\n";
+                    case 204: // 【元核】発動済み
+                        return this.name + "：ッケ、そんな何度も発動してらんねぇぜ。\r\n";
+                    case 205: // 【元核】通常行動選択時
+                        return this.name + "：んなの、いつでもいいだろ。\r\n";
+                    case 206: // Sigil Of Homura
+                        return this.name + "：シギィル！\r\n";
+                    case 207: // Austerity Matrix
+                        return this.name + "：アゥス・トゥリックス！\r\n";
+                    case 208: // Red Dragon Will
+                        return this.name + "：レッドラァ！\r\n";
+                    case 209: // Blue Dragon Will
+                        return this.name + "：ブルードラァ！\r\n";
+                    case 210: // Eclipse End
+                        return this.name + "：イクス・エンッ！\r\n";
+                    case 211: // Sin Fortune
+                        return this.name + "：ッシン！\r\n";
+                    case 212: // AfterReviveHalf
+                        return this.name + "：デッド・レジ・ハーフ！\r\n";
+                    case 213: // Demonic Ignite
+                        return this.name + "：ディーモッ！\r\n";
+                    case 214: // Death Deny
+                        return this.name + "：ッディナ！\r\n";
+                    case 215: // Stance of Double
+                        return this.name + "：スタンッダブル！  " + this.name + "は前回行動を示す自分の分身を発生させた！\r\n";
+                    case 216: // 最終戦ライフカウント消費
+                        return this.name + "：ッハ、この程度でくたばると思うなよ。\r\n";
+                    case 217: // 最終戦ライフカウント消滅時
+                        return this.name + "：・・・　ッ・・・\r\n";
+
+                    case 2001: // ポーションまたは魔法による回復時
+                        return this.name + "：{0} 回復しといたぞ。";
+                    case 2002: // レベルアップ終了催促
+                        return this.name + "：レベルアップさせろ。";
+                    case 2003: // 荷物を減らせる催促
+                        return this.name + "：{0}、荷物を減らせ。アイテムを渡させろ。";
+                    case 2004: // 装備判断
+                        return this.name + "：装備だな？";
+                    case 2005: // 装備完了
+                        return this.name + "：装備したぞ。";
+                    case 2006: // 遠見の青水晶を使用
+                        return this.name + "：町戻るか？";
+                    case 2007: // 売却専用品に対する一言
+                        return this.name + "：売却専用品だ。";
+                    case 2008: // 非戦闘時のマナ不足
+                        return this.name + "：マナ不足だ。";
+                    case 2009: // 神聖水使用時
+                        return this.name + "：ライフ・スキル・マナが30%ずつ回復しといたぞ。";
+                    case 2010: // 神聖水、既に使用済みの場合
+                        return this.name + "：もう枯れてる。一日１回だ。";
+                    case 2011: // リーベストランクポーション非戦闘使用時
+                        return this.name + "：戦闘中専用品だ。";
+                    case 2012: // 遠見の青水晶を使用（町滞在時）
+                        return this.name + "：町ん中じゃ無駄だ。";
+                    case 2013: // 遠見の青水晶を捨てられない時の台詞
+                        return this.name + "：コイツは捨てれねぇ。";
+                    case 2014: // 非戦闘時のスキル不足
+                        return this.name + "：スキル不足だ。";
+                    case 2015: // 他プレイヤーが捨ててしまおうとした場合
+                        return this.name + "：ッオイ、ソイツは捨てるな。";
+                    case 2016: // リヴァイヴポーションによる復活
+                        return this.name + "：復活！";
+                    case 2017: // リヴァイヴポーション不要な時
+                        return this.name + "：{0}にコイツは不要だ。";
+                    case 2018: // リヴァイヴポーション対象が自分の時
+                        return this.name + "：ヴォケも大概にしろ。";
+                    case 2019: // 装備不可のアイテムを装備しようとした時
+                        return this.name + "：んなもん、装備させんな。";
+                    case 2020: // ラスボス撃破の後、遠見の青水晶を使用不可
+                        return this.name + "：今はそんな時じゃねぇ。";
+                    case 2021: // アイテム捨てるの催促
+                        return this.name + "：バックパック整備ぐらいしろ。";
+                    case 2022: // オーバーシフティング使用開始時
+                        return this.name + "：パラメタ再構築させてもらうぞ。";
+                    case 2023: // オーバーシフティングによるパラメタ割り振り時
+                        return this.name + "：オーバーシフティング割り振りが先にさせろ。";
+                    case 2024: // 成長リキッドを使用した時
+                        return this.name + "：【{0}】パラメタ {1} 上昇。";
+                    case 2025:
+                        return this.name + "：両手武器なんでな、サブは装備できねえ。";
+                    case 2026:
+                        return this.name + "：武器（メイン）にまず装備だ。";
+                    case 2027: // 清透水使用時
+                        return this.name + "：ライフ100%回復しといたぞ。";
+                    case 2028: // 清透水、既に使用済みの場合
+                        return this.name + "：もう枯れてしまってるな。一日１回だ。";
+                    case 2029: // 荷物一杯で装備が外せない時
+                        return this.name + "：バックパック満杯だ。装備外す前に整備しとけ。";
+                    case 2030: // 荷物一杯で何かを捨てる時の台詞
+                        return this.name + "：{0}捨ててこのアイテム、入手か？";
+                    case 2031: // 戦闘中のアイテム使用限定
+                        return this.name + "：戦闘中だ。アイテム使用に集中しろ。";
+                    case 2032: // 戦闘中、アイテム使用できないアイテムを選択したとき
+                        return this.name + "：このアイテムは戦闘中は使えねぇ。";
+                    case 2033: // 預けられない場合
+                        return this.name + "：おい、何で預けなきゃなんねぇんだよ。";
+                    case 2034: // アイテムいっぱいで預かり所から引き出せない場合
+                        return this.name + "：これ以上は面倒くせぇ。";
+                    case 2035: // Sacred Heal
+                        return this.name + "：全員回復したぞ。";
+
+                    case 3000: // 店に入った時の台詞
+                        return this.name + "：ジジィ・・・誰もいねえのはやべぇだろが・・・。";
+                    case 3001: // 支払い要求時
+                        return this.name + "： {0} を買う。 {1} Gold払うぞ？";
+                    case 3002: // 持ち物いっぱいで買えない時
+                        return this.name + "：持ち物がいっぱいじゃねぇか。アイテム整備ぐらいしとけ。";
+                    case 3003: // 購入完了時
+                        return this.name + "：ジジィ、売買成立だ。";
+                    case 3004: // Gold不足で購入できない場合
+                        return this.name + "：Goldが{0}足りねえな。";
+                    case 3005: // 購入せずキャンセルした場合
+                        return this.name + "：他のアイテムを見せろ。";
+                    case 3006: // 売れないアイテムを売ろうとした場合
+                        return this.name + "：これを売る気はねえ。";
+                    case 3007: // アイテム売却時
+                        return this.name + "：{0}で売るぜ。{1}Goldもらってくぞ、ジジィ。";
+                    case 3008: // 剣紋章ペンダント売却時
+                        return this.name + "：マジで売るのか、{0}Goldだが？";
+                    case 3009: // 武具店を出る時
+                        return this.name + "：ジジィ、さすがに見張り付けろ・・・";
+                    case 3010: // ガンツ不在時の売りきれフェルトゥーシュを見て一言
+                        return this.name + "：ッカ・・・ザコアインが気付くかどうかだな。";
+                    case 3011: // 装備可能なものが購入された時
+                        return this.name + "：装備するぞ？";
+                    case 3012: // 装備していた物を売却対象かどうか聞く時
+                        return this.name + "：今の装備は、{0}だ。あのジジィなら{1}Goldで買い取りってトコだ。";
+
+                    case 4001: // 通常攻撃を選択
+                        return this.name + "：攻めるぜ。\r\n";
+                    case 4002: // 防御を選択
+                        return this.name + "：防御させろ。\r\n";
+                    case 4003: // 待機を選択
+                        return this.name + "：何もしねぇぞ。\r\n";
+                    case 4004: // フレッシュヒールを選択
+                    case 4005: // プロテクションを選択
+                    case 4006: // ファイア・ボールを選択
+                    case 4007: // フレイム・オーラを選択
+                    case 4008: // ストレート・スマッシュを選択
+                    case 4009: // ダブル・スマッシュを選択
+                    case 4010: // スタンス・オブ・スタンディングを選択
+                    case 4011: // アイス・ニードルを選択
+                    case 4012:
+                    case 4013:
+                    case 4014:
+                    case 4015:
+                    case 4016:
+                    case 4017:
+                    case 4018:
+                    case 4019:
+                    case 4020:
+                    case 4021:
+                    case 4022:
+                    case 4023:
+                    case 4024:
+                    case 4025:
+                    case 4026:
+                    case 4027:
+                    case 4028:
+                    case 4029:
+                    case 4030:
+                    case 4031:
+                    case 4032:
+                    case 4033:
+                    case 4034:
+                    case 4035:
+                    case 4036:
+                    case 4037:
+                    case 4038:
+                    case 4039:
+                    case 4040:
+                    case 4041:
+                    case 4042:
+                    case 4043:
+                    case 4044:
+                    case 4045:
+                    case 4046:
+                    case 4047:
+                    case 4048:
+                    case 4049:
+                    case 4050:
+                    case 4051:
+                    case 4052:
+                    case 4053:
+                    case 4054:
+                    case 4055:
+                    case 4056:
+                    case 4057:
+                    case 4058:
+                    case 4059:
+                    case 4060:
+                    case 4061:
+                    case 4062:
+                    case 4063:
+                    case 4064:
+                    case 4065:
+                    case 4066:
+                    case 4067:
+                    case 4068:
+                    case 4069:
+                    case 4070:
+                    case 4071:
+                    case 4082: // FlashBlaze
+                        return this.name + "：" + this.ActionLabel.text + "だ。\r\n";
+
+                    case 4072:
+                        return this.name + "：敵にかけれねぇ。\r\n";
+                    case 4073:
+                        return this.name + "：敵にかけれねぇ。\r\n";
+                    case 4074:
+                        return this.name + "：味方にはかけれねぇ。\r\n";
+                    case 4075:
+                        return this.name + "：味方にはかけれねぇ。\r\n";
+                    case 4076:
+                        return this.name + "：味方に攻撃はできねぇ。\r\n";
+                    case 4077: // 「ためる」コマンド
+                        return this.name + "：ためるぞ。\r\n";
+                    case 4078: // 武器発動「メイン」
+                        return this.name + "：メイン発動させるぞ。\r\n";
+                    case 4079: // 武器発動「サブ」
+                        return this.name + "：サブ発動させるぞ。\r\n";
+                    case 4080: // アクセサリ１発動
+                        return this.name + "：アクセ１発動させるぞ。\r\n";
+                    case 4081: // アクセサリ２発動
+                        return this.name + "：アクセ２発動させるぞ。\r\n";
+
+                    // 武器攻撃
+                    case 5001:
+                        return this.name + "：エアロ！ {0} へ {1} のダメージ\r\n";
+                    case 5002:
+                        return this.name + "：{0} 回復しといたぞ。 \r\n";
+                    case 5003:
+                        return this.name + "：{0} マナ回復しといたぞ。\r\n";
+                    case 5004:
+                        return this.name + "：アイシクル！ {0} へ {1} のダメージ\r\n";
+                    case 5005:
+                        return this.name + "：エレクトロ！ {0} へ {1} のダメージ\r\n";
+                    case 5006:
+                        return this.name + "：ブルーライト！ {0} へ {1} のダメージ\r\n";
+                    case 5007:
+                        return this.name + "：バーニン！ {0} へ {1} のダメージ\r\n";
+                    case 5008:
+                        return this.name + "：ブルーファイア！ {0} へ {1} のダメージ\r\n";
+                    case 5009:
+                        return this.name + "：{0} スキルポイント回復しといたぞ。\r\n";
+                    case 5010:
+                        return this.name + "が装着している指輪が強烈に蒼い光を放った！ {0} へ {1} のダメージ\r\n";
+                }
+            }
+            #endregion
+            #region "カールハンツ"
+            if (this.name == Database.SINIKIA_KAHLHANZ)
+            {
+                switch (sentenceNumber)
+                {
+                    case 0: // スキル不足
+                        return this.name + "：ッフ・・・スキル不足か。\r\n";
+                    case 1: // Straight Smash
+                        return this.name + "：ストレート・スマッシュを食らえぃ！\r\n";
+                    case 2: // Double Slash 1
+                        return this.name + "：っむぅん！！\r\n";
+                    case 3: // Double Slash 2
+                        return this.name + "：っむおおぉ！\r\n";
+                    case 4: // Painful Insanity
+                        return this.name + "：【心眼奥義】ペインフル・インサニティを食らえぃ！\r\n";
+                    case 5: // empty skill
+                        return this.name + "：ッフ・・・スキルの選択を忘れておったわ。\r\n";
+                    case 6: // 絡みつくフランシスの必殺を食らった時
+                        return this.name + "：ッ・・・\r\n";
+                    case 7: // Lizenosの必殺を食らった時
+                        return this.name + ": ッ・・・\r\n";
+                    case 8: // Minfloreの必殺を食らった時
+                        return this.name + "：ッ！・・・\r\n";
+                    case 9: // Fresh Healによるライフ回復
+                        return this.name + "：{0} 回復させてもらったぞ。\r\n";
+                    case 10: // Fire Ball
+                        return this.name + "：食らえぃ！ファイヤー・ボール！ {0} へ {1} のダメージ\r\n";
+                    case 11: // Flame Strike
+                        return this.name + "：っむぅん！フレーム・ストライク！ {0} へ {1} のダメージ\r\n";
+                    case 12: // Volcanic Wave
+                        return this.name + "：ぬうおぉ！ボルカニック・ウェーブ！ {0} へ {1} のダメージ\r\n";
+                    case 13: // 通常攻撃クリティカルヒット
+                        return this.name + "：おおおぉ、クリティカルダメージ！ {0} へ {1}のダメージ\r\n";
+                    case 14: // FlameAuraによる追加攻撃
+                        return this.name + "：踊れ炎よ！ {0}の追加ダメージ\r\n";
+                    case 15: //遠見の青水晶を戦闘中に使ったとき
+                        return this.name + "：ッフ・・・戦闘中に使うはずがなかろう。\r\n";
+                    case 16: // 効果を発揮しないアイテムを戦闘中に使ったとき
+                        return this.name + "：ッフ・・・使えんアイテムだったな。\r\n";
+                    case 17: // 魔法でマナ不足
+                        return this.name + "：ッフ・・・マナ不足とは。\r\n";
+                    case 18: // Protection
+                        return this.name + "：聖の加護、プロテクション！物理防御力：ＵＰ\r\n";
+                    case 19: // Absorb Water
+                        return this.name + "：水の加護、アブソーブ・ウオーター！ 魔法防御力：ＵＰ。\r\n";
+                    case 20: // Saint Power
+                        return this.name + "：聖なる力、セイント・パワー！ 物理攻撃力：ＵＰ\r\n";
+                    case 21: // Shadow Pact
+                        return this.name + "：闇の契約、シャドー・パクト！ 魔法攻撃力：ＵＰ\r\n";
+                    case 22: // Bloody Vengeance
+                        return this.name + "：復讐の力、ブラッデー・ベンジアンス！ 力パラメタが {0} ＵＰ\r\n";
+                    case 23: // Holy Shock
+                        return this.name + "：聖なる衝撃、ホーリー・ショック！ {0} へ {1} のダメージ\r\n";
+                    case 24: // Glory
+                        return this.name + "：栄光、グローリー！ 直接攻撃＋FreshHeal連携のオーラ\r\n";
+                    case 25: // CelestialNova 1
+                        return this.name + "：生命の輝き、セレステアル・ノバ！ {0} 回復させてもらったぞ。\r\n";
+                    case 26: // CelestialNova 2
+                        return this.name + "：生命への裁き、セレステアル・ノバ！ {0} のダメージ\r\n";
+                    case 27: // Dark Blast
+                        return this.name + "：闇の衝撃、ダーク・ブラスト！ {0} へ {1} のダメージ\r\n";
+                    case 28: // Lava Annihilation
+                        return this.name + "：炎の天使よ！焼き払えぃ！ラバ・アニヒレーション！ {0} へ {1} のダメージ\r\n";
+                    case 10028: // Lava Annihilation後編
+                        return this.name + "：炎の天使よ！焼き払えぃ！ラバ・アニヒレーション！\r\n";
+                    case 29: // Devouring Plague
+                        return this.name + "：命を吸収せしめよ！デボーリング・プラグー！ {0} ライフを吸い取った\r\n";
+                    case 30: // Ice Needle
+                        return this.name + "：氷の刃、アイス・ニードル！ {0} へ {1} のダメージ\r\n";
+                    case 31: // Frozen Lance
+                        return this.name + "：氷結槍、フローズン・ランス！ {0} へ {1} のダメージ\r\n";
+                    case 32: // Tidal Wave
+                        return this.name + "：っむうおぉ！タイダル・ウェイブ！ {0} のダメージ\r\n";
+                    case 33: // Word of Power
+                        return this.name + "：力の衝波、ワード・オブ・パワー！ {0} へ {1} のダメージ\r\n";
+                    case 34: // White Out
+                        return this.name + "：無に帰せよ、ホワイト・アウト！ {0} へ {1} のダメージ\r\n";
+                    case 35: // Black Contract
+                        return this.name + "：契約の力を見よ、ブラック・コントラクト！ " + this.name + "のスキル、魔法コストは０になる。\r\n";
+                    case 36: // Flame Aura詠唱
+                        return this.name + "：おおぉ炎よ！フレイム・オーラ！ 直接攻撃に炎の追加効果が付与される。\r\n";
+                    case 37: // Damnation
+                        return this.name + "：滅びなり、ダムネーション！ 死淵より出でる黒が空間を歪ませる。\r\n";
+                    case 38: // Heat Boost
+                        return this.name + "：っむぅん！ヒート・ブースト！ 技パラメタが {0} ＵＰ。\r\n";
+                    case 39: // Immortal Rave
+                        return this.name + "：炎に宿りし力！イモータル・レイブ！ " + this.name + "の周りに３つの炎が宿った。\r\n";
+                    case 40: // Gale Wind
+                        return this.name + "：我が分身、現れよ！ゲール・ウインド！ もう一人の" + this.name + "が現れた。\r\n";
+
+
+
+                }
+            }
+            #endregion
             #region "ガンツ"
             else if (this.name == "ガンツ")
             {
@@ -2620,7 +5583,7 @@ namespace DungeonPlayer
                     case 3003: // 購入完了時
                         return this.name + "：はいよ、まいどあり。";
                     case 3004: // Gold不足で購入できない場合
-                        return this.name + "：すまない、こちらも商売でな。後{0}Gold必要だ。";
+                        return this.name + "：すまない、こちらも商売でな。後{0}必要だ。";
                     case 3005: // 購入せずキャンセルした場合
                         return this.name + "：他のも見ていくがいい。";
                     case 3006: // 売れないアイテムを売ろうとした場合
@@ -2639,6 +5602,750 @@ namespace DungeonPlayer
                         return this.name + "：現在の装備品を売却するかね？{0}は{1}Goldで買い取ろう。";
                     case 3013: // 両手持ち装備をした後、サブ武器を売却せず、手元に残そうとして、バックパックがいっぱいの時
                         return this.name + "：荷物がいっぱいのようだな。{0}はハンナの宿屋倉庫に後で送っておこう。";
+                }
+            }
+            #endregion
+            #region "三階の守護者：Minflore"
+            else if (this.name == "三階の守護者：Minflore")
+            {
+                switch (sentenceNumber)
+                {
+                    case 2: // Double Slash 1 Carnage Rush 1
+                        return this.name + "：ッハ！\r\n";
+                    case 3: // Double Slash 2 Carnage Rush 2
+                        return this.name + "：ッヤァ！\r\n";
+                    case 9: // Fresh Healによるライフ回復
+                        return this.name + "：ライフ回復させてもらうわ、FreshHeal。{0} 回復。\r\n";
+                    case 13: // 通常攻撃クリティカルヒット
+                        return this.name + "：あなたのが弱点、見切ったわ！クリティカル！！ {0} へ {1}のダメージ\r\n";
+                    case 18: // Protection
+                        return this.name + "：聖なる神よ、われに与えよ、Protection。 物理防御力：ＵＰ\r\n";
+                    case 19: // Absorb Water
+                        return this.name + "：水の女神よ、われに与えよ、AbsorbWater。 魔法防御力：ＵＰ。\r\n";
+                    case 20: // Saint Power
+                        return this.Name + "：力が全てを覆すわ、SaintPower。物理攻撃力：ＵＰ\r\n";
+                    case 24: // Glory
+                        return this.name + "：光を照らし、栄光を私に！Glory！　 直接攻撃＋FreshHeal連携のオーラ\r\n";
+                    case 70: // Crushing Blow
+                        return this.name + "：これでも食らいなさい、CrushingBlow。  {0} へ {1} のダメージ。\r\n";
+                    case 115: // 通常攻撃のヒット
+                        return this.name + "からの攻撃。 {0} へ {1} のダメージ\r\n";
+                    case 117: // StraightSmashなどのスキルクリティカル
+                        return this.name + "：ここでクリティカルヒットよ！\r\n";
+                }
+            }
+            #endregion
+            #region "四階の守護者：Altomo"
+            else if (this.name == "四階の守護者：Altomo")
+            {
+                switch (sentenceNumber)
+                {
+                    case 13: // 通常攻撃クリティカルヒット
+                        return this.name + "：当たれ！！クリティカル！！ {0} へ {1} のダメージ\r\n";
+                    case 42: // Word of Fortune
+                        return this.name + "：次は必殺だ、さあ死んでもらおうか！ 決死のオーラが湧き上がった。\r\n";
+                    case 63: // Truth Vision
+                        return this.name + "：パラメタＵＰなどとこざかしいな！　対象のパラメタＵＰを無視するようになった。\r\n";
+                    case 70: // Scatter Shot (Crushing Blow)
+                        return this.name + "：邪魔だ、寝てろ。　ScatterShot！ {0} へ {1}のダメージ。\r\n";
+                    case 75: // Silence Shot (Altomo専用)
+                        return "{0} は魔法詠唱ができなくなった！\r\n";
+                    case 76: // Silence Shot、AbsoluteZero沈黙による詠唱失敗
+                        return this.name + "：っこ・・・この程度の魔法で・・・\r\n";
+                    case 87: // AbsoluteZeroでスキル使用失敗
+                        return this.name + "：っこ・・・この程度の魔法で・・・\r\n";
+                    case 88: // AbsoluteZeroによる防御失敗
+                        return this.name + "：っこ・・・この程度の魔法で・・・\r\n";
+                    case 110: // CounterAttackを無視した時
+                        return this.Name + "：そんな構えぐらいお見通しだ！　効くわけがないだろう！！\r\n";
+                    case 115: // 通常攻撃のヒット
+                        return this.name + "からの攻撃。 {0} へ {1} のダメージ\r\n";
+                    case 116: // 防御を無視して攻撃する時
+                        return this.name + "：防御など無駄な行為だ！　甘いな！！\r\n";
+                    case 117: // StraightSmashなどのスキルクリティカル
+                        return this.name + "：っふん、クリティカルだ！\r\n";
+                    case 119: // Absolute Zeroによりライフ回復できない場合
+                        return this.name + "：っふん、もともとライフ回復などと、邪推するはずなかろう！！\r\n";
+                }
+            }
+            #endregion
+            #region "五階の守護者：Bystander"
+            else if (this.name == "五階の守護者：Bystander")
+            {
+                switch (sentenceNumber)
+                {
+                    case 18: // Protection
+                        return this.name + "：『聖魔法』  －　『Protection』　物理防御力：ＵＰ\r\n";
+                    case 19: // Absorb Water
+                        return this.name + "：『水魔法』  －　『AbsorbWater』　魔法防御力：ＵＰ。\r\n";
+                    case 20: // Saint Power
+                        return this.name + "：『聖魔法』  －　『SaintPower』　物理攻撃力：ＵＰ\r\n";
+                    case 21: // Shadow Pact
+                        return this.name + "：『闇魔法』  －　『ShadowPact』　魔法攻撃力：ＵＰ\r\n";
+                    case 22: // Bloody Vengeance
+                        return this.name + "：『闇魔法』  －　『BloodyVengeance』　力パラメタが {0} ＵＰ\r\n";
+                    case 38: // Heat Boost
+                        return this.name + "：『火魔法』  －　『HeatBoost』　技パラメタが {0} ＵＰ。\r\n";
+                    case 44: // Eternal Presence 1
+                        return this.name + "：『理魔法』  －　『EternalPresence』　" + this.name + "の周りに新しい法則が構築される。\r\n";
+                    case 45: // Eternal Presence 2
+                        return this.name + "の物理攻撃、物理防御、魔法攻撃、魔法防御がＵＰした！\r\n";
+                    case 49: // Rise of Image
+                        return this.name + "：『空魔法』  －　『RiseOfImage』　心パラメタが {0} ＵＰ\r\n";
+                    case 83: // Promised Knowledge
+                        return this.name + "：『水魔法』  －　『PromisedKnowledge』　知パラメタが {0} ＵＰ\r\n";
+
+                    case 48: // Dispel Magic
+                        return this.name + "：『空魔法』  －　『DispelMagic』\r\n";
+                    case 84: // Tranquility
+                        return this.name + "：『空魔法』  －　『Tranquility』\r\n";
+                    case 37: // Damnation
+                        return this.name + "：『闇魔法』　－　『Damnation』\r\n";
+                    case 35: // Black Contract
+                        return this.name + "：『闇魔法』　－　『BlackContract』\r\n";
+                    case 81: // Absolute Zero
+                        return this.name + "：『水魔法』　－　『AbsoluteZero』　対象はライフ回復不可、スペル詠唱不可、スキル使用不可、防御不可になる。\r\n";
+
+                    case 43: // Aether Drive
+                        return this.name + "：『AetherDrive』  周囲全体に空想物理力がみなぎる。\r\n";
+                    case 39: // Immortal Rave
+                        return this.name + "：『ImmortalRave』 " + this.name + "の周りに３つの炎が宿った。\r\n";
+                    case 40: // Gale Wind
+                        return this.name + "：『GaleWind』  もう一人のBystanderが現れた。\r\n";
+                    case 24: // Glory
+                        return this.name + "：『Glory』  直接攻撃＋FreshHeal連携のオーラ\r\n";
+                    case 14: // FlameAuraによる追加攻撃
+                        return "『FlameAura』が襲いかかる！ {0} ダメージ\r\n";
+                    case 65: // Carnage Rush 1
+                        return this.name + "：『CarnageRush』 『壱』 {0}ダメージ   \r\n";
+                    case 66: // Carnage Rush 2
+                        return this.name + "：『CarnageRush』 『弐』 {0}ダメージ   \r\n";
+                    case 67: // Carnage Rush 3
+                        return this.name + "：『CarnageRush』 『参』 {0}ダメージ   \r\n";
+                    case 68: // Carnage Rush 4
+                        return this.name + "：『CarnageRush』 『四』 {0}ダメージ   \r\n";
+                    case 69: // Carnage Rush 5
+                        return this.name + "：『CarnageRush』 『終』 {0}のダメージ\r\n";
+                    case 53: // 対象不適切
+                        return this.name + "：既に『対象』は『消滅』している。\r\n";
+                    case 9: // Fresh Healによるライフ回復
+                        return this.name + "：{0} 『回復』\r\n";
+
+                    case 57: // Mirror Image
+                        return this.name + "『水魔法』　－　『MirrorImage』 {0}の周囲に青い空間が発生した。\r\n";
+                    case 58: // Mirror Image 2
+                        return this.name + "は魔法をはじき返そうとした。 {0} ダメージを {1} に反射した！\r\n";
+                    case 59: // Mirror Image 3
+                        return this.name + "は魔法をはじき返そうとした。 【しかし、強力な威力ではね返せない！】\r\n";
+                    case 60: // Deflection
+                        return this.name + "『空魔法』　－　『AbsoluteZero』 {0}の周囲に白い空間が発生した。\r\n";
+                    case 61: // Deflection 2
+                        return this.name + "は物理ダメージをはじき返そうとした！ {0} ダメージを {1} に反射した！\r\n";
+                    case 62: // Deflection 3
+                        return this.name + "は物理ダメージをはじき返そうとした！ 【しかし、強力な威力ではね返せない！】\r\n";
+                    case 82: // BUFFUP効果が望めない場合
+                        return "しかし、既にそのパラメタは上昇しているため、効果がなかった。\r\n";
+
+                    case 27: // Dark Blast
+                        return "『DarkBlast』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 23: // Holy Shock
+                        return "『HolyShock』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 30: // Ice Needle
+                        return "『IceNeedle』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 10: // Fire Ball
+                        return "『FireBall』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 33: // Word of Power
+                        return "『WordOfPower』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 11: // Flame Strike
+                        return "『FlameStrike』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 31: // Frozen Lance
+                        return "『FrozenLance』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 12: // Volcanic Wave
+                        return "『VolcanicWave』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 34: // White Out
+                        return "『WhiteOut』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+                    case 28: // Lava Annihilation
+                        return "『LavaAnnihilation』が襲いかかる！ {0} へ {1} のダメージ\r\n";
+
+                    case 41: // Word of Life
+                        return this.name + "：『WordOfLife』　大自然からの強い息吹を感じ取れるようになった。\r\n";
+                    case 25: // CelestialNova 1
+                        return this.name + "：『CelestialNova』　{0} 『回復』\r\n";
+
+                    case 36: // Flame Aura詠唱
+                        return this.name + "：『火魔法』  －　『FlameAura』 直接攻撃に炎の追加効果が付与される。\r\n";
+
+                    case 106: // Nothing Of Nothingness 1
+                        return this.name + "：『無心スキル』  －　『NothingOfNothingness』　無色のオーラが宿り始める！ \r\n";
+                    case 107: // Nothing Of Nothingness 2
+                        return this.name + "は無効化魔法を無効化、　無効化するスキルを無効化するようになった！\r\n";
+
+                    case 115: // 通常攻撃のヒット
+                        return this.name + "からの攻撃。 {0} へ {1} のダメージ\r\n";
+                    case 117: // StraightSmashなどのスキルクリティカル
+                        return this.name + "：『クリティカルヒット』\r\n";
+                }
+            }
+            #endregion
+            #region "不特定多数"
+            else
+            {
+                switch (sentenceNumber)
+                {
+                    case 0: // スキル不足
+                        return this.name + "のスキルポイントが足りない！\r\n";
+                    case 1: // Straight Smash
+                        return this.name + "はストレート・スマッシュを繰り出した。\r\n";
+                    case 2: // Double Slash 1
+                        return this.name + "  １回目の攻撃！\r\n";
+                    case 3: // Double Slash 2
+                        return this.name + "  ２回目の攻撃！\r\n";
+                    case 4: // Painful Insanity
+                        return this.name + "は【心眼奥義】PainfulInsanityを繰り出した！\r\n";
+                    case 5: // empty skill
+                        return this.name + "はスキル選択し忘れていた！\r\n";
+                    case 6: // 絡みつくフランシスの必殺を食らった時
+                        return this.name + "は必死に堪えている・・・\r\n";
+                    case 7: // Lizenosの必殺を食らった時
+                        return this.name + "は必死に堪えている・・・\r\n";
+                    case 8: // Minfloreの必殺を食らった時
+                        return this.name + "は必死に堪えている・・・\r\n";
+                    case 9: // Fresh Healによるライフ回復
+                        return this.name + "は{0} 回復した。\r\n";
+                    case 10: // Fire Ball
+                        return this.name + "はFireBallを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 11: // Flame Strike
+                        return this.name + "はFlameStrikeを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 12: // Volcanic Wave
+                        return this.name + "はVolcanicWaveを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 13: // 通常攻撃クリティカルヒット
+                        return this.name + "からのクリティカルヒット！ {0} へ {1} のダメージ\r\n";
+                    case 14: // FlameAuraによる追加攻撃
+                        return this.name + "のFlameAuraによる {0} の追加ダメージ\r\n";
+                    case 15: // 遠見の青水晶を戦闘中に使ったとき
+                        return this.name + "はやみくもにアイテムを使った。\r\n";
+                    case 16: // 効果を発揮しないアイテムを戦闘中に使ったとき
+                        return this.name + "はやみくもにアイテムを使った。\r\n";
+                    case 17: // 魔法でマナ不足
+                        return this.name + "のマナが足りない！\r\n";
+                    case 18: // Protection
+                        return this.name + "はProtectionを唱えた！ 物理防御力：ＵＰ\r\n";
+                    case 19: // Absorb Water
+                        return this.name + "はAbsorbWaterを唱えた！ 魔法防御力：ＵＰ。\r\n";
+                    case 20: // Saint Power
+                        return this.name + "はSaintPowerを唱えた！ 物理攻撃力：ＵＰ\r\n";
+                    case 21: // Shadow Pact
+                        return this.name + "はShadowPactを唱えた！ 魔法攻撃力：ＵＰ\r\n";
+                    case 22: // Bloody Vengeance
+                        return this.name + "はBloodyVengeanceを唱えた！ 力パラメタが {0} ＵＰ\r\n";
+                    case 23: // Holy Shock
+                        return this.name + "はHolyShockを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 24: // Glory
+                        return this.name + "はGloryを唱えた！ 直接攻撃＋FreshHeal連携のオーラ\r\n";
+                    case 25: // CelestialNova 1
+                        return this.name + "はCelestialNovaを唱えた！ {0} 回復。\r\n";
+                    case 26: // CelestialNova 2
+                        return this.name + "はCelestialNovaを唱えた！ {0} のダメージ\r\n";
+                    case 27: // Dark Blast
+                        return this.name + "はDarkBlastを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 28: // Lava Annihilation
+                        return this.name + "はLavaAnnihilationを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 29: // Devouring Plague
+                        return this.name + "はDevouringPlagueを唱えた！ {0} ライフを吸い取った\r\n";
+                    case 30: // Ice Needle
+                        return this.name + "はIceNeedleを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 31: // Frozen Lance
+                        return this.name + "はFrozenLanceを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 32: // Tidal Wave
+                        return this.name + "はTidalWaveを唱えた！ {0} のダメージ\r\n";
+                    case 33: // Word of Power
+                        return this.name + "はWordOfPowerを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 34: // White Out
+                        return this.name + "はWhiteOutを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 35: // Black Contract
+                        return this.name + "はBlackContractを唱えた！ " + this.name + "のスキル、魔法コストは０になる。\r\n";
+                    case 36: // Flame Aura詠唱
+                        return this.name + "はFlameAuraを唱えた！ 直接攻撃に炎の追加効果が付与される。\r\n";
+                    case 37: // Damnation
+                        return this.name + "はDamnationを唱えた！ 死淵より出でる黒が空間を歪ませる。\r\n";
+                    case 38: // Heat Boost
+                        return this.name + "はHeatBoostを唱えた！ 技パラメタが {0} ＵＰ。\r\n";
+                    case 39: // Immortal Rave
+                        return this.name + "はImmortalRaveを唱えた！ " + this.name + "の周りに３つの炎が宿った。\r\n";
+                    case 40: // Gale Wind
+                        return this.name + "はGaleWindを唱えた！ もう一人の" + this.name + "が現れた。\r\n";
+                    case 41: // Word of Life
+                        return this.name + "はWordOfLifeを唱えた！ 大自然からの強い息吹を感じ取れるようになった。\r\n";
+                    case 42: // Word of Fortune
+                        return this.name + "はWordOfFortuneを唱えた！ 決死のオーラが湧き上がった。\r\n";
+                    case 43: // Aether Drive
+                        return this.name + "はAetherDriveを唱えた！ 周囲全体に空想物理力がみなぎる。\r\n";
+                    case 44: // Eternal Presence 1
+                        return this.name + "はEternalPresenceを唱えた！ " + this.name + "の周りに新しい法則が構築される。\r\n";
+                    case 45: // Eternal Presence 2
+                        return this.name + "の物理攻撃、物理防御、魔法攻撃、魔法防御がＵＰした！\r\n";
+                    case 46: // One Immunity
+                        return this.name + "はOneImmunityを唱えた！ " + this.name + "の周囲に目に見えない障壁が発生。\r\n";
+                    case 47: // Time Stop
+                        return this.name + "はTimeStopを唱えた！ 相手の時空を引き裂き時間停止させた。\r\n";
+                    case 48: // Dispel Magic
+                        return this.name + "はDispelMagicを唱えた！ \r\n";
+                    case 49: // Rise of Image
+                        return this.name + "はRiseOfImageを唱えた！ 心パラメタが {0} ＵＰ\r\n";
+                    case 50: // 空詠唱
+                        return this.name + "は詠唱に失敗した！\r\n";
+                    case 51: // Inner Inspiration
+                        return this.name + "はInnerInspirationを繰り出した！ {0} スキルポイント回復\r\n";
+                    case 52: // Resurrection 1
+                        return this.name + "はResurrectionを唱えた！！\r\n";
+                    case 53: // Resurrection 2
+                        return this.name + "は対象を間違えていた！！\r\n";
+                    case 54: // Resurrection 3
+                        return this.name + "は対象を間違えていた！！\r\n";
+                    case 55: // Resurrection 4
+                        return this.name + "は対象を間違えていた！！\r\n";
+                    case 56: // Stance Of Standing
+                        return this.name + "はStanceOfStandingを繰り出した！\r\n";
+                    case 57: // Mirror Image
+                        return this.name + "はMirrorImageを唱えた！ {0}の周囲に青い空間が発生した。\r\n";
+                    case 58: // Mirror Image 2
+                        return this.name + "は魔法をはじき返そうとした。 {0} ダメージを {1} に反射した！\r\n";
+                    case 59: // Mirror Image 3
+                        return this.name + "は魔法をはじき返そうとした。 【しかし、強力な威力ではね返せない！】\r\n";
+                    case 60: // Deflection
+                        return this.name + "はDeflectionを唱えた！ {0}の周囲に白い空間が発生した。\r\n";
+                    case 61: // Deflection 2
+                        return this.name + "は物理ダメージをはじき返そうとした！ {0} ダメージを {1} に反射した！\r\n";
+                    case 62: // Deflection 3
+                        return this.name + "は物理ダメージをはじき返そうとした！ 【しかし、強力な威力ではね返せない！】\r\n";
+                    case 63: // Truth Vision
+                        return this.name + "はTruthVisionを繰り出した！ " + this.name + "は対象のパラメタＵＰを無視するようになった。\r\n";
+                    case 64: // Stance Of Flow
+                        return this.name + "はStanceOfFlowを繰り出した！ " + this.name + "は次３ターン、必ず後攻を取るように構えた。\r\n";
+                    case 65: // Carnage Rush 1
+                        return this.name + "はCarnageRushを繰り出した！ １発目{0}ダメージ・・・   ";
+                    case 66: // Carnage Rush 2
+                        return " ２発目{0}ダメージ   ";
+                    case 67: // Carnage Rush 3
+                        return " ３発目{0}ダメージ   ";
+                    case 68: // Carnage Rush 4
+                        return " ４発目{0}ダメージ   ";
+                    case 69: // Carnage Rush 5
+                        return " ５発目{0}のダメージ\r\n";
+                    case 70: // Crushing Blow
+                        return this.name + "はCrushingBlowを繰り出した！  {0} へ {1} のダメージ。\r\n";
+                    case 71: // リーベストランクポーション戦闘使用時
+                        return this.name + "はアイテムを使用してきた！\r\n";
+                    case 72: // Enigma Sence
+                        return this.name + "はEnigmaSenceを繰り出した！\r\n";
+                    case 73: // Soul Infinity
+                        return this.name + "はSoulInfinityを繰り出した！\r\n";
+                    case 74: // Kinetic Smash
+                        return this.name + "はKineticSmashを繰り出した！\r\n";
+                    case 75: // Silence Shot (Altomo専用)
+                        return "";
+                    case 76: // Silence Shot、AbsoluteZero沈黙による詠唱失敗
+                        return this.name + "は魔法詠唱に失敗した！！\r\n";
+                    case 77: // Cleansing
+                        return this.name + "はCleansingを唱えた！\r\n";
+                    case 78: // Pure Purification
+                        return this.name + "はPurePurificationを繰り出した！\r\n";
+                    case 79: // Void Extraction
+                        return this.name + "はVoidExtractionを繰り出した！ " + this.name + "の {0} が {1}ＵＰ！\r\n";
+                    case 80: // アカシジアの実使用時
+                        return this.name + "はアイテムを使用してきた！\r\n";
+                    case 81: // Absolute Zero
+                        return this.name + "はAbsoluteZeroを唱えた！ 氷吹雪効果により、ライフ回復不可、スペル詠唱不可、スキル使用不可、防御不可となった。\r\n";
+                    case 82: // BUFFUP効果が望めない場合
+                        return "しかし、既にそのパラメタは上昇しているため、効果がなかった。\r\n";
+                    case 83: // Promised Knowledge
+                        return this.name + "はPromiesdKnowledgeを唱えた！ 知パラメタが {0} ＵＰ\r\n";
+                    case 84: // Tranquility
+                        return this.name + "はTranquilityを唱えた！\r\n";
+                    case 85: // High Emotionality 1
+                        return this.name + "はHighEmotionalityを繰り出した！\r\n";
+                    case 86: // High Emotionality 2
+                        return this.name + "の力、技、知、心パラメタがＵＰした！\r\n";
+                    case 87: // AbsoluteZeroでスキル使用失敗
+                        return this.name + "は絶対零度効果により、スキルの使用に失敗した！\r\n";
+                    case 88: // AbsoluteZeroによる防御失敗
+                        return this.name + "は絶対零度効果により、防御できないままでいる！ \r\n";
+                    case 89: // Silent Rush 1
+                        return this.name + "はSilentRushを繰り出した！ １発目 {0}ダメージ・・・　";
+                    case 90: // Silent Rush 2
+                        return "２発目 {0}ダメージ   ";
+                    case 91: // Silent Rush 3
+                        return "３発目 {0}のダメージ\r\n";
+                    case 92: // BUFFUP以外の永続効果が既についている場合
+                        return "しかし、既にその効果は付与されている。\r\n";
+                    case 93: // Anti Stun
+                        return this.name + "はAntiStunを繰り出した！ " + this.name + "はスタン効果への耐性が付いた\r\n";
+                    case 94: // Anti Stunによるスタン回避
+                        return this.name + "はAntiStun効果によりスタンを回避した。\r\n";
+                    case 95: // Stance Of Death
+                        return this.name + "はStanceOfDeathを繰り出した！ " + this.name + "は致死を１度回避できるようになった\r\n";
+                    case 96: // Oboro Impact 1
+                        return this.name + "は【究極奥義】OboroImpactを繰り出した！\r\n";
+                    case 97: // Oboro Impact 2
+                        return "{0}へ{1}のダメージ\r\n";
+                    case 98: // Catastrophe 1
+                        return this.name + "は【究極奥義】Catastropheを繰り出した！\r\n";
+                    case 99: // Catastrophe 2
+                        return this.name + " {0}のダメージ\r\n";
+                    case 100: // Stance Of Eyes
+                        return this.name + "はStanceOfEyesを繰り出した！ " + this.name + "は、相手の行動に備えている・・・\r\n";
+                    case 101: // Stance Of Eyesによるキャンセル時
+                        return this.name + "は相手のモーションを見切って、行動キャンセルした！\r\n";
+                    case 102: // Stance Of Eyesによるキャンセル失敗時
+                        return this.name + "は相手のモーションを見切ろうとしたが、相手のモーションを見切れなかった！\r\n";
+                    case 103: // Negate
+                        return this.name + "はNegateを繰り出した！ " + this.name + "は相手のスペル詠唱に備えている・・・\r\n";
+                    case 104: // Negateによるスペル詠唱キャンセル時
+                        return this.name + "は相手のスペル詠唱を弾いた！\r\n";
+                    case 105: // Negateによるスペル詠唱キャンセル失敗時
+                        return this.name + "は相手のスペル詠唱を弾こうとしたが、相手のスペル詠唱を見切れなかった！\r\n";
+                    case 106: // Nothing Of Nothingness 1
+                        return this.name + "は【究極奥義】NothingOfNothingnessを繰り出した！ " + this.name + "に無色のオーラが宿り始める！ \r\n";
+                    case 107: // Nothing Of Nothingness 2
+                        return this.name + "は無効化魔法を無効化、　無効化するスキルを無効化するようになった！\r\n";
+                    case 108: // Genesis
+                        return this.name + "はGenesisを唱えた！ " + this.name + "は前回の行動を自分へと投影させた！\r\n";
+                    case 109: // Cleansing詠唱失敗時
+                        return this.name + "は調子が悪いため、Cleansingの詠唱に失敗した。\r\n";
+                    case 110: // CounterAttackを無視した時
+                        return this.Name + "はCounterAttackの構えを無視した。\r\n";
+                    case 111: // 神聖水使用時
+                        return this.name + "はアイテムを使用してきた！\r\n";
+                    case 112: // 神聖水、既に使用済みの場合
+                        return this.name + "が使ったアイテムは効果がなかった！\r\n";
+                    case 113: // CounterAttackによる反撃メッセージ
+                        return this.name + "はカウンターアタックを繰り出した！\r\n";
+                    case 114: // CounterAttackに対する反撃がNothingOfNothingnessによって防がれた時
+                        return this.name + "はカウンターできなかった！\r\n";
+                    case 115: // 通常攻撃のヒット
+                        return this.name + "からの攻撃。 {0} へ {1} のダメージ\r\n";
+                    case 116: // 防御を無視して攻撃する時
+                        return this.name + "は防御を無視して攻撃してきた！\r\n";
+                    case 117: // StraightSmashなどのスキルクリティカル
+                        return this.name + "からのクリティカルヒット！\r\n";
+                    case 118: // 戦闘時、リヴァイヴポーションによる復活のかけ声
+                        return this.name + "はリヴァイヴポーションを使用した！";
+                    case 119: // Absolute Zeroによりライフ回復できない場合
+                        return this.name + "は絶対零度効果によりライフ回復できない！\r\n";
+                    case 120: // 魔法攻撃のヒット
+                        return "{0} へ {1} のダメージ\r\n";
+                    case 121: // Absolute Zeroによりマナ回復できない場合
+                        return this.name + "は凍てつく寒さによりマナ回復ができない。\r\n";
+                    case 122: // 「ためる」行動時
+                        return this.name + "は魔力を蓄えた。\r\n";
+                    case 123: // 「ためる」行動で溜まりきっている場合
+                        return this.name + "は魔力を蓄えようとしたが、これ以上蓄えられないでいる。\r\n";
+                    case 124: // StraightSmashのダメージ値
+                        return this.name + "のストレート・スマッシュがヒット。 {0} へ {1}のダメージ\r\n";
+                    case 125: // アイテム使用ゲージが溜まってないとき
+                        return this.name + "はアイテムゲージが溜まってない間、アイテムを使えないでいる。\r\n";
+                    case 126: // FlashBlase
+                        return this.name + "：はFlashBlazeを唱えた！ {0} へ {1} のダメージ\r\n";
+                    case 127: // 複合魔法でインスタント不足
+                        return this.name + "のインスタント値が足りない！\r\n";
+                    case 128: // 複合魔法はインスタントタイミングでうてない
+                        return this.name + "はインスタントタイミングで発動できないでいる。\r\n";
+                    case 129: // PsychicTrance
+                        return this.name + "はPsychicTranceを唱えた！\r\n";
+                    case 130: // BlindJustice
+                        return this.name + "はBlindJusticeを唱えた！\r\n";
+                    case 131: // TranscendentWish
+                        return this.name + "はTranscendentWishを唱えた！\r\n";
+                    case 132: // LightDetonator
+                        return this.name + "はLightDetonatorを唱えた！\r\n";
+                    case 133: // AscendantMeteor
+                        return this.name + "はAscendantMeteorを唱えた！\r\n";
+                    case 134: // SkyShield
+                        return this.name + "はSkyShieldを唱えた！\r\n";
+                    case 135: // SacredHeal
+                        return this.name + "はSacredHealを唱えた！\r\n";
+                    case 136: // EverDroplet
+                        return this.name + "はEverDropletを唱えた！\r\n";
+                    case 137: // FrozenAura
+                        return this.name + "はFrozenAuraを唱えた！\r\n";
+                    case 138: // ChillBurn
+                        return this.name + "はChillBurnを唱えた！\r\n";
+                    case 139: // ZetaExplosion
+                        return this.name + "はZetaExplosionを唱えた！\r\n";
+                    case 140: // FrozenAura追加効果ダメージで
+                        return this.name + "のFrozenAuraによる {0} の追加ダメージ\r\n";
+                    case 141: // StarLightning
+                        return this.name + "はStarLightningを唱えた！\r\n";
+                    case 142: // WordOfMalice
+                        return this.name + "はWordOfMaliceを唱えた！\r\n";
+                    case 143: // BlackFire
+                        return this.name + "はBlackFireを唱えた！\r\n";
+                    case 144: // EnrageBlast
+                        return this.name + "はEnrageBlastを唱えた！\r\n";
+                    case 145: // Immolate
+                        return this.name + "はImmolateを唱えた！\r\n";
+                    case 146: // VanishWave
+                        return this.name + "はVanishWaveを唱えた！\r\n";
+                    case 147: // WordOfAttitude
+                        return this.name + "はWordOfAttitudeを唱えた！\r\n";
+                    case 148: // HolyBreaker
+                        return this.name + "はHolyBreakerを唱えた！\r\n";
+                    case 149: // DarkenField
+                        return this.name + "はDarkenFieldを唱えた！\r\n";
+                    case 150: // SeventhMagic
+                        return this.name + "はSeventhMagicを唱えた！\r\n";
+                    case 151: // BlueBullet
+                        return this.name + "はBlueBulletを唱えた！\r\n";
+                    case 152: // NeutralSmash
+                        return this.name + "はNeutralSmashを繰り出した！\r\n";
+                    case 153: // SwiftStep
+                        return this.name + "はSwiftStepを繰り出した！\r\n";
+                    case 154: // CircleSlash
+                        return this.name + "はCircleSlashを繰り出した！\r\n";
+                    case 155: // RumbleShout
+                        return this.name + "はRumbleShoutを繰り出した！\r\n";
+                    case 156: // SmoothingMove
+                        return this.name + "はSmoothingMoveを繰り出した！\r\n";
+                    case 157: // FutureVision
+                        return this.name + "はFutureVisionを繰り出した！\r\n";
+                    case 158: // ReflexSpirit
+                        return this.name + "はReflexSpiritを繰り出した！\r\n";
+                    case 159: // SharpGlare
+                        return this.name + "はSharpGlareを繰り出した！\r\n";
+                    case 160: // TrustSilence
+                        return this.name + "はTrustSilenceを繰り出した！\r\n";
+                    case 161: // SurpriseAttack
+                        return this.name + "はSurpriseAttackを繰り出した！\r\n";
+                    case 162: // PsychicWave
+                        return this.name + "はPsychicWaveを繰り出した！\r\n";
+                    case 163: // Recover
+                        return this.name + "はRecoverを繰り出した！\r\n";
+                    case 164: // ViolentSlash
+                        return this.name + "はViolentSlashを繰り出した！\r\n";
+                    case 165: // OuterInspiration
+                        return this.name + "はOuterInspirationを繰り出した！\r\n";
+                    case 166: // StanceOfSuddenness
+                        return this.name + "はStanceOfSuddennessを繰り出した！\r\n";
+                    case 167: // インスタント対象で発動不可
+                        return this.name + "は対象のインスタントコマンドが無く戸惑っている。\r\n";
+                    case 168: // StanceOfMystic
+                        return this.name + "はStanceOfMysticを繰り出した！\r\n";
+                    case 169: // HardestParry
+                        return this.name + "はHardestParryを繰り出した！\r\n";
+                    case 170: // ConcussiveHit
+                        return this.name + "はConcussiveHitを繰り出した！\r\n";
+                    case 171: // Onslaught hit
+                        return this.name + "はOnslaughtHitを繰り出した！\r\n";
+                    case 172: // Impulse hit
+                        return this.name + "はImpulseHitを繰り出した！\r\n";
+                    case 173: // Fatal Blow
+                        return this.name + "はFatalBlowを繰り出した！\r\n";
+                    case 174: // Exalted Field
+                        return this.name + "はExaltedFieldを唱えた！\r\n";
+                    case 175: // Rising Aura
+                        return this.name + "はRisingAuraを繰り出した！\r\n";
+                    case 176: // Ascension Aura
+                        return this.name + "はAscensioAuraを繰り出した！\r\n";
+                    case 177: // Angel Breath
+                        return this.name + "はAngelBreathを唱えた！\r\n";
+                    case 178: // Blazing Field
+                        return this.name + "はBlazingFieldを唱えた！\r\n";
+                    case 179: // Deep Mirror
+                        return this.name + "はDeepMirrorを唱えた！\r\n";
+                    case 180: // Abyss Eye
+                        return this.name + "はAbyssEyeを唱えた！\r\n";
+                    case 181: // Doom Blade
+                        return this.name + "はDoomBladeを繰り出した！\r\n";
+                    case 182: // Piercing Flame
+                        return this.name + "はPiercingFlameを唱えた！\r\n";
+                    case 183: // Phantasmal Wind
+                        return this.name + "はPhantasmalWindを唱えた！\r\n";
+                    case 184: // Paradox Image
+                        return this.name + "はParadoxImageを唱えた！\r\n";
+                    case 185: // Vortex Field
+                        return this.name + "はVortexFieldを唱えた！\r\n";
+                    case 186: // Static Barrier
+                        return this.name + "はStaticBarrierを唱えた！\r\n";
+                    case 187: // Unknown Shock
+                        return this.name + "はUnknownShockを繰り出した！\r\n";
+                    case 188: // SoulExecution
+                        return this.name + "は【究極奥義】SoulExecutionを繰り出した！\r\n";
+                    case 189: // SoulExecution hit 01
+                        return this.name + "１発目！\r\n";
+                    case 190: // SoulExecution hit 02
+                        return this.name + "２発目！\r\n";
+                    case 191: // SoulExecution hit 03
+                        return this.name + "３発目！\r\n";
+                    case 192: // SoulExecution hit 04
+                        return this.name + "４発目！\r\n";
+                    case 193: // SoulExecution hit 05
+                        return this.name + "５発目！\r\n";
+                    case 194: // SoulExecution hit 06
+                        return this.name + "６発目！\r\n";
+                    case 195: // SoulExecution hit 07
+                        return this.name + "７発目！\r\n";
+                    case 196: // SoulExecution hit 08
+                        return this.name + "８発目！\r\n";
+                    case 197: // SoulExecution hit 09
+                        return this.name + "９発目！\r\n";
+                    case 198: // SoulExecution hit 10
+                        return this.name + "１０発目！\r\n";
+                    case 199: // Nourish Sense
+                        return this.name + "はNourishSenseを繰り出した！\r\n";
+                    case 200: // Mind Killing
+                        return this.name + "はMindKillingを繰り出した！\r\n";
+                    case 201: // Vigor Sense
+                        return this.name + "はVigorSenseを繰り出した！\r\n";
+                    case 202: // ONE Authority
+                        return this.name + "はOneAuthorityを繰り出した！\r\n";
+                    case 203: // 集中と断絶
+                        return this.name + "は【集中と断絶】を発動した！\r\n";
+                    case 204: // 【元核】発動済み
+                        return this.name + "は既に【元核】を使用しており、これ以上発動が行えなかった。\r\n";
+                    case 205: // 【元核】通常行動選択時
+                        return this.name + "の【元核】はインスタントタイミング限定であり、通常行動に選択できなかった。\r\n";
+                    case 206: // Sigil Of Homura
+                        return this.name + "はSigilOfHomuraを唱えた！\r\n";
+                    case 207: // Austerity Matrix
+                        return this.name + "はAusterityMatrixを唱えた！\r\n";
+                    case 208: // Red Dragon Will
+                        return this.name + "はRedDragonWillを唱えた！\r\n";
+                    case 209: // Blue Dragon Will
+                        return this.name + "はBlueDragonWillを唱えた！\r\n";
+                    case 210: // Eclipse End
+                        return this.name + "はEclipseEndを唱えた！\r\n";
+                    case 211: // Sin Fortune
+                        return this.name + "はSinFortuneを唱えた！\r\n";
+                    case 212: // AfterReviveHalf
+                        return this.name + "に死耐性（ハーフ）が付与された！\r\n";
+                    case 213: // DemonicIgnite
+                        return this.name + "はDemonicIgniteを唱えた！\r\n";
+                    case 214: // Death Deny
+                        return this.name + "はDeathDenyを唱えた！\r\n";
+                    case 215: // Stance of Double
+                        return this.name + "はStanceOfDoubleを放った！　" + this.name + "は前回行動を示す自分の分身を発生させた！\r\n";
+                    case 216: // 最終戦ライフカウント消費
+                        return this.name + "の生命が削りとられる代わりに、その場で生き残った！\r\n";
+                    case 217: // 最終戦ライフカウント消滅時
+                        return this.name + "の生命は完全に消滅させらた・・・\r\n";
+
+                    case 4001: // 通常攻撃を選択
+                    case 4002: // 防御を選択
+                    case 4003: // 待機を選択
+                    case 4004: // フレッシュヒールを選択
+                    case 4005: // プロテクションを選択
+                    case 4006: // ファイア・ボールを選択
+                    case 4007: // フレイム・オーラを選択
+                    case 4008: // ストレート・スマッシュを選択
+                    case 4009: // ダブル・スマッシュを選択
+                    case 4010: // スタンス・オブ・スタンディングを選択
+                    case 4011: // アイス・ニードルを選択
+                    case 4012:
+                    case 4013:
+                    case 4014:
+                    case 4015:
+                    case 4016:
+                    case 4017:
+                    case 4018:
+                    case 4019:
+                    case 4020:
+                    case 4021:
+                    case 4022:
+                    case 4023:
+                    case 4024:
+                    case 4025:
+                    case 4026:
+                    case 4027:
+                    case 4028:
+                    case 4029:
+                    case 4030:
+                    case 4031:
+                    case 4032:
+                    case 4033:
+                    case 4034:
+                    case 4035:
+                    case 4036:
+                    case 4037:
+                    case 4038:
+                    case 4039:
+                    case 4040:
+                    case 4041:
+                    case 4042:
+                    case 4043:
+                    case 4044:
+                    case 4045:
+                    case 4046:
+                    case 4047:
+                    case 4048:
+                    case 4049:
+                    case 4050:
+                    case 4051:
+                    case 4052:
+                    case 4053:
+                    case 4054:
+                    case 4055:
+                    case 4056:
+                    case 4057:
+                    case 4058:
+                    case 4059:
+                    case 4060:
+                    case 4061:
+                    case 4062:
+                    case 4063:
+                    case 4064:
+                    case 4065:
+                    case 4066:
+                    case 4067:
+                    case 4068:
+                    case 4069:
+                    case 4070:
+                    case 4071:
+                        return this.name + "は" + this.ActionLabel.text + "を選択した。\r\n";
+                    case 4072:
+                        return this.name + "は敵を対象にするのをためらっている。\r\n";
+                    case 4073:
+                        return this.name + "は敵を対象にするのをためらっている。\r\n";
+                    case 4074:
+                        return this.name + "は味方を対象にするのをためらっている。\r\n";
+                    case 4075:
+                        return this.name + "は味方を対象にするのをためらっている。\r\n";
+                    case 4076:
+                        return this.name + "は味方に攻撃するのをためらっている。\r\n";
+                    case 4077: // 「ためる」コマンド
+                        return this.name + "は魔力をため込み始めた。\r\n";
+                    case 4078: // 武器発動「メイン」
+                        return this.name + "はメイン武器の効果発動を選択した。\r\n";
+                    case 4079: // 武器発動「サブ」
+                        return this.name + "はサブ武器の効果発動を選択した。\r\n";
+                    case 4080: // アクセサリ１発動
+                        return this.name + "はアクセサリ１の効果発動を選択した。\r\n";
+                    case 4081: // アクセサリ２発動
+                        return this.name + "はアクセサリ２の効果発動を選択した。\r\n";
+
+                    case 4082: // FlashBlaze
+                        return this.name + "はフラッシュブレイズを選択した。\r\n";
+
+                    // 武器攻撃
+                    case 5001:
+                        return this.name + "はエアロ・スラッシュを放った。 {0} へ {1} のダメージ\r\n";
+                    case 5002:
+                        return this.name + "は{0}ライフ回復した。 \r\n";
+                    case 5003:
+                        return this.name + "は{0}マナ回復した \r\n";
+                    case 5004:
+                        return this.name + "はアイシクル・スラッシュを放った。 {0} へ {1} のダメージ\r\n";
+                    case 5005:
+                        return this.name + "はエレクトロ・ブローを放った。 {0} へ {1} のダメージ\r\n";
+                    case 5006:
+                        return this.name + "はブルー・ライトニングを放った。 {0} へ {1} のダメージ\r\n";
+                    case 5007:
+                        return this.name + "はバーニング・クレイモアを放った。 {0} へ {1} のダメージ\r\n";
+                    case 5008:
+                        return this.name + "は赤蒼授の杖から蒼の炎を放った。 {0} へ {1} のダメージ\r\n";
+                    case 5009:
+                        return this.name + "は{0}スキルポイント回復した。\r\n";
+                    case 5010:
+                        return this.name + "が装着している指輪が強烈に蒼い光を放った！ {0} へ {1} のダメージ\r\n";
                 }
             }
             #endregion

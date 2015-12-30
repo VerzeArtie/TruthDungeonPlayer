@@ -41,6 +41,8 @@ namespace DungeonPlayer {
         public static bool CallBattleSetting = false;
         public static bool CallBattleSettingAwake = false;
 
+        // TruthSelectEquipment
+        public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
         public static void InitializeGroundOne()
         {
             if (AlreadyInitialize == false) { AlreadyInitialize = true; }
@@ -71,7 +73,6 @@ namespace DungeonPlayer {
             MC.AddBackPack(new ItemBackPack(Database.COMMON_EXCELLENT_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_PENDANT));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BRONZE_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_PURPLE_PENDANT));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_GUST_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.RARE_DARKNESS_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_MASTER_SWORD));

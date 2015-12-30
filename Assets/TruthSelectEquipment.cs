@@ -11,8 +11,8 @@ namespace DungeonPlayer
         public Text[] equip;
         public GameObject[] back_equip;
         private MainCharacter targetPlayer;
-        int equipType = 0;
         public string SelectValue { get; set; }
+        public Text mainMessage;
         private int MAX_LEN = 10;
         int baseNumber = 0;
         // Use this for initialization
@@ -27,7 +27,7 @@ namespace DungeonPlayer
                 if (temp[ii] == null)
                     continue;
 
-                if (CheckEquipmentType(targetPlayer, temp[ii], equipType))
+                if (CheckEquipmentType(targetPlayer, temp[ii], GroundOne.EquipType))
                 {
                     currentList.Add(temp[ii]);
                 }
@@ -171,7 +171,7 @@ namespace DungeonPlayer
                 if (temp[ii] == null)
                     continue;
 
-                if (CheckEquipmentType(targetPlayer, temp[ii], equipType))
+                if (CheckEquipmentType(targetPlayer, temp[ii], GroundOne.EquipType))
                 {
                     currentList.Add(temp[ii]);
                 }
@@ -215,10 +215,125 @@ namespace DungeonPlayer
         }
         public void tapOK()
         {
-            ItemBackPack swap = GroundOne.MC.MainWeapon;
-            GroundOne.MC.DeleteBackPack(new ItemBackPack(this.SelectValue));
-            GroundOne.MC.MainWeapon = new ItemBackPack(this.SelectValue);
-            GroundOne.MC.AddBackPack(swap);
+            ItemBackPack exchangeItem = new ItemBackPack(SelectValue);
+            ItemBackPack tempItem = null;
+            if (GroundOne.EquipType == 0)
+            {
+                tempItem = targetPlayer.MainWeapon;
+                targetPlayer.MainWeapon = exchangeItem;
+                if ((exchangeItem.Type == ItemBackPack.ItemType.Weapon_Rod) ||
+                    (exchangeItem.Type == ItemBackPack.ItemType.Weapon_TwoHand))
+                {
+                    if (targetPlayer.SubWeapon != null)
+                    {
+                        if (targetPlayer.SubWeapon.Name != "")
+                        {
+                            targetPlayer.AddBackPack(targetPlayer.SubWeapon);
+                        }
+                        targetPlayer.SubWeapon = null;
+                    }
+                }
+            }
+            else if (GroundOne.EquipType == 1)
+            {
+                tempItem = targetPlayer.SubWeapon;
+                targetPlayer.SubWeapon = exchangeItem;
+                if (targetPlayer.MainWeapon != null)
+                {
+                    if (targetPlayer.MainWeapon.Name != "")
+                    {
+                        if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
+                            (targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand))
+                        {
+                            targetPlayer.AddBackPack(targetPlayer.MainWeapon);
+                            targetPlayer.MainWeapon = null;
+                        }
+                    }
+                }
+            }
+            else if (GroundOne.EquipType == 2)
+            {
+                tempItem = targetPlayer.MainArmor;
+                targetPlayer.MainArmor = exchangeItem;
+            }
+            else if (GroundOne.EquipType == 3)
+            {
+                tempItem = targetPlayer.Accessory;
+                targetPlayer.Accessory = exchangeItem;
+            }
+            else if (GroundOne.EquipType == 4)
+            {
+                tempItem = targetPlayer.Accessory2;
+                targetPlayer.Accessory2 = exchangeItem;
+            }
+            if (exchangeItem != null)
+            {
+                if (exchangeItem.Name != "")
+                {
+                    targetPlayer.DeleteBackPack(exchangeItem);
+                }
+            }
+            if (tempItem != null)
+            {
+                if (tempItem.Name != "" && tempItem.Name != Database.NO_EQUIPMENT)
+                {
+                    targetPlayer.AddBackPack(tempItem);
+                }
+            }
+            SceneDimension.Back();
+        }
+        public void tapCancel()
+        {
+            SceneDimension.Back();
+        }
+        public void tapDropEquip()
+        {
+            ItemBackPack[] tempBackPack = this.targetPlayer.GetBackPackInfo();
+            int count = 0;
+            if (tempBackPack != null)
+            {
+                for (int ii = 0; ii < tempBackPack.Length; ii++)
+                {
+                    if (tempBackPack[ii] != null)
+                    {
+                        if ((tempBackPack[ii].Name != String.Empty) && (tempBackPack[ii].Name != ""))
+                        {
+                            count++;
+                        }
+                    }
+                }
+                if (count >= Database.MAX_BACKPACK_SIZE)
+                {
+                    mainMessage.text = this.targetPlayer.GetCharacterSentence(2029);
+                    return;
+                }
+            }
+            if (GroundOne.EquipType == 0)
+            {
+                GroundOne.MC.AddBackPack(GroundOne.MC.MainWeapon);
+                GroundOne.MC.MainWeapon = null;
+            }
+            else if (GroundOne.EquipType == 1)
+            {
+                GroundOne.MC.AddBackPack(GroundOne.MC.SubWeapon);
+                GroundOne.MC.SubWeapon = null;
+            }
+            else if (GroundOne.EquipType == 2)
+            {
+                GroundOne.MC.AddBackPack(GroundOne.MC.MainArmor);
+                GroundOne.MC.MainArmor = null;
+            }
+            else if (GroundOne.EquipType == 3)
+            {
+                GroundOne.MC.AddBackPack(GroundOne.MC.Accessory);
+                GroundOne.MC.Accessory = null;
+            }
+            else if (GroundOne.EquipType == 4)
+            {
+                GroundOne.MC.AddBackPack(GroundOne.MC.Accessory2);
+                GroundOne.MC.Accessory2 = null;
+            }
+
             SceneDimension.Back();
         }
     }

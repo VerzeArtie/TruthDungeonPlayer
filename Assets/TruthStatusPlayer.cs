@@ -158,15 +158,14 @@ namespace DungeonPlayer
         void Start()
         {
             GroundOne.InitializeGroundOne();
-            GroundOne.InitializeNetworkConnection();
-            if (GroundOne.IsConnect)
-            {
-                GroundOne.CS.rcm += new ClientSocket.ReceiveClientMessage(ReceiveFromClientSocket);
-            }
+            //GroundOne.InitializeNetworkConnection();
+            //if (GroundOne.IsConnect)
+            //{
+            //    GroundOne.CS.rcm += new ClientSocket.ReceiveClientMessage(ReceiveFromClientSocket);
+            //}
 
             SettingCharacterData(GroundOne.MC);
             RefreshPartyMembersBattleStatus(GroundOne.MC);
-
             //SetupBackpackData(); [todo]
             backpackData = GroundOne.MC.GetBackPackInfo();
             if (this.backpackData != null)
@@ -571,24 +570,26 @@ namespace DungeonPlayer
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (GroundOne.IsConnect)
-                {
-                    GroundOne.CS.rcm -= new ClientSocket.ReceiveClientMessage(ReceiveFromClientSocket);
-                }
-                tapClose();
-            }
+            // after delete
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    if (GroundOne.IsConnect)
+            //    {
+            //        GroundOne.CS.rcm -= new ClientSocket.ReceiveClientMessage(ReceiveFromClientSocket);
+            //    }
+            //    tapClose();
+            //}
 
-            if (this.firstAction == false)
-            {
-                this.firstAction = true;
-                if (GroundOne.IsConnect)
-                {
-                    byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.LoadCharacter + GroundOne.guid);
-                    GroundOne.CS.SendMessage(bb);
-                }
-            }
+            // after delete
+            //if (this.firstAction == false)
+            //{
+            //    this.firstAction = true;
+            //    if (GroundOne.IsConnect)
+            //    {
+            //        byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.LoadCharacter + GroundOne.guid);
+            //        GroundOne.CS.SendMessage(bb);
+            //    }
+            //}
 
             // after delete
             //this.debug.text = this.workDebug;
@@ -2338,31 +2339,31 @@ namespace DungeonPlayer
 
             this.strength.text = chara.Strength.ToString();
             // todo
-            //this.addStrength.text = " + " + chara.BuffStrength_Accessory.ToString();
+            this.addStrength.text = " + " + chara.BuffStrength_Accessory.ToString();
             //if (chara.BuffStrength_Food == 0) this.addStrength2.text = "";
             //else this.addStrength2.text = " + " + chara.BuffStrength_Food.ToString();
 
             this.agility.text = chara.Agility.ToString();
             // todo
-            //this.addAgility.text = " + " + chara.BuffAgility_Accessory.ToString();
+            this.addAgility.text = " + " + chara.BuffAgility_Accessory.ToString();
             //if (chara.BuffAgility_Food == 0) this.addAgility2.text = "";
             //else this.addAgility2.text = " + " + chara.BuffAgility_Food.ToString();
 
             this.intelligence.text = chara.Intelligence.ToString();
             // todo
-            //this.addIntelligence.text = " + " + chara.BuffIntelligence_Accessory.ToString();
+            this.addIntelligence.text = " + " + chara.BuffIntelligence_Accessory.ToString();
             //if (chara.BuffIntelligence_Food == 0) this.addIntelligence2.text = "";
             //else this.addIntelligence2.text = " + " + chara.BuffIntelligence_Food.ToString();
 
             this.stamina.text = chara.Stamina.ToString();
             // todo
-            //this.addStamina.text = " + " + chara.BuffStamina_Accessory.ToString();
+            this.addStamina.text = " + " + chara.BuffStamina_Accessory.ToString();
             //if (chara.BuffStamina_Food == 0) this.addStamina2.text = "";
             //else this.addStamina2.text = " + " + chara.BuffStamina_Food.ToString();
 
             this.mind.text = chara.Mind.ToString();
             // todo
-            //this.addMind.text = " + " + chara.BuffMind_Accessory.ToString();
+            this.addMind.text = " + " + chara.BuffMind_Accessory.ToString();
             //if (chara.BuffMind_Food == 0) this.addMind2.text = "";
             //else this.addMind2.text = " + " + chara.BuffMind_Food.ToString();
 
@@ -2429,7 +2430,7 @@ namespace DungeonPlayer
             {
                 if (chara.MainWeapon.Name == "")
                 {
-                    this.weapon.text = "( No Equipment )";
+                    this.weapon.text = Database.NO_EQUIPMENT;
                     //                    this.weapon.BackColor = Color.Transparent; // todo
                 }
                 else
@@ -2440,7 +2441,7 @@ namespace DungeonPlayer
             }
             else
             {
-                this.weapon.text = "( No Equipment )";
+                this.weapon.text = Database.NO_EQUIPMENT;
                 //                this.weapon.BackColor = Color.Transparent; // todo
             }
 
@@ -2448,7 +2449,7 @@ namespace DungeonPlayer
             {
                 if (chara.SubWeapon.Name == "")
                 {
-                    this.subWeapon.text = "( No Equipment )";
+                    this.subWeapon.text = Database.NO_EQUIPMENT;
                 }
                 else
                 {
@@ -2458,14 +2459,14 @@ namespace DungeonPlayer
             }
             else
             {
-                this.subWeapon.text = "( No Equipment )";
+                this.subWeapon.text = Database.NO_EQUIPMENT;
             }
 
             if (chara.MainArmor != null)
             {
                 if (chara.MainArmor.Name == "")
                 {
-                    this.armor.text = "( No Equipment )";
+                    this.armor.text = Database.NO_EQUIPMENT;
                 }
                 else
                 {
@@ -2475,14 +2476,14 @@ namespace DungeonPlayer
             }
             else
             {
-                this.armor.text = "( No Equipment )";
+                this.armor.text = Database.NO_EQUIPMENT;
             }
 
             if (chara.Accessory != null)
             {
                 if (chara.Accessory.Name == "")
                 {
-                    this.accessory.text = "( No Equipment )";
+                    this.accessory.text = Database.NO_EQUIPMENT;
                 }
                 else
                 {
@@ -2492,14 +2493,14 @@ namespace DungeonPlayer
             }
             else
             {
-                this.accessory.text = "( No Equipment )";
+                this.accessory.text = Database.NO_EQUIPMENT;
             }
 
             if (chara.Accessory2 != null)
             {
                 if (chara.Accessory2.Name == "")
                 {
-                    this.accessory2.text = "( No Equipment )";
+                    this.accessory2.text = Database.NO_EQUIPMENT;
                 }
                 else
                 {
@@ -2509,7 +2510,7 @@ namespace DungeonPlayer
             }
             else
             {
-                this.accessory2.text = "( No Equipment )";
+                this.accessory2.text = Database.NO_EQUIPMENT;
             }
             txtGold.text = GroundOne.MC.Gold.ToString() + "[G]";
 
@@ -3499,54 +3500,55 @@ namespace DungeonPlayer
         {
             ChangeEquipment(0);
         }
-        //private void subWeapon_Click(object sender, System.EventArgs e)
-        //{
-        //    MainCharacter targetPlayer = null;
-        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = mc;
-        //    }
-        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = sc;
-        //    }
-        //    else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = tc;
-        //    }
-        //    if (targetPlayer.MainWeapon != null)
-        //    {
-        //        if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
-        //            (targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand))
-        //        {
-        //            mainMessage.Text = targetPlayer.GetCharacterSentence(2025);
-        //            return;
-        //        }
-        //        if (targetPlayer.MainWeapon.Name == "")
-        //        {
-        //            mainMessage.Text = targetPlayer.GetCharacterSentence(2026);
-        //            return;
-        //        }
-        //    }
-        //    if (targetPlayer.MainWeapon == null)
-        //    {
-        //        mainMessage.Text = targetPlayer.GetCharacterSentence(2026);
-        //        return;
-        //    }
-        //    ChangeEquipment(1);
-        //}
-        //private void armor_Click(object sender, EventArgs e)
-        //{
-        //    ChangeEquipment(2);
-        //}
-        //private void accessory_Click(object sender, EventArgs e)
-        //{
-        //    ChangeEquipment(3);
-        //}
-        //private void accessory2_Click(object sender, EventArgs e)
-        //{
-        //    ChangeEquipment(4);
-        //}
+        public void subWeapon_Click(Text sender)
+        {
+            // todo
+            //MainCharacter targetPlayer = null;
+            //if (mc != null && mc.PlayerStatusColor == this.BackColor)
+            //{
+            //    targetPlayer = mc;
+            //}
+            //else if (sc != null && sc.PlayerStatusColor == this.BackColor)
+            //{
+            //    targetPlayer = sc;
+            //}
+            //else if (tc != null && tc.PlayerStatusColor == this.BackColor)
+            //{
+            //    targetPlayer = tc;
+            //}
+            //if (targetPlayer.MainWeapon != null)
+            //{
+            //    if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
+            //        (targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand))
+            //    {
+            //        mainMessage.Text = targetPlayer.GetCharacterSentence(2025);
+            //        return;
+            //    }
+            //    if (targetPlayer.MainWeapon.Name == "")
+            //    {
+            //        mainMessage.Text = targetPlayer.GetCharacterSentence(2026);
+            //        return;
+            //    }
+            //}
+            //if (targetPlayer.MainWeapon == null)
+            //{
+            //    mainMessage.Text = targetPlayer.GetCharacterSentence(2026);
+            //    return;
+            //}
+            ChangeEquipment(1);
+        }
+        public void armor_Click(Text sender)
+        {
+            ChangeEquipment(2);
+        }
+        public void accessory_Click(Text sender)
+        {
+            ChangeEquipment(3);
+        }
+        public void accessory2_Click(Text sender)
+        {
+            ChangeEquipment(4);
+        }
 
         // equipType: 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
         private void ChangeEquipment(int equipType)
@@ -3581,6 +3583,7 @@ namespace DungeonPlayer
             //        counter++;
             //    }
             //}
+            GroundOne.EquipType = equipType;
             SceneDimension.Go(Database.TruthStatusPlayer, Database.TruthSelectEquipment);
             //tse.StartPosition = FormStartPosition.CenterParent;
             //tse.Player = targetPlayer;

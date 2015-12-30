@@ -1797,6 +1797,7 @@ namespace DungeonPlayer
         public const string POOR_BLACK_MATERIAL3 = @"ブラックマテリアル【密】";
         public const string POOR_BLACK_MATERIAL4 = @"ブラックマテリアル【試】";
         public const string POOR_BLACK_MATERIAL5 = @"ブラックマテリアル【還】";
+        public const string NO_EQUIPMENT = @"( No Equipment )";
         #endregion
 
         public const string RARE_SEAL_AQUA_FIRE = @"シールオブアクア＆ファイア";
