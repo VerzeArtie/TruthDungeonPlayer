@@ -21,7 +21,7 @@ namespace DungeonPlayer
         public static Color Orangered = new Color(255, 69, 0);
         public static Color Tomato = new Color(255, 99, 71);
         public static Color Coral = new Color(255, 127, 80);
-        public static Color Salmon = new Color(250, 128, 114);
+        public static Color Salmon = new Color((float)(250.0f/255.0f), (float)(128.0f/255.0f), (float)(114.0f/255.0f));
         public static Color Lightsalmon = new Color(255, 160, 122);
         public static Color Darksalmon = new Color(233, 150, 122);
         public static Color Peru = new Color(205, 133, 63);

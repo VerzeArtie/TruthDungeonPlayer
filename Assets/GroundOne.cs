@@ -1,13 +1,27 @@
-﻿//using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net.Sockets;
 using System.Net;
 using UnityEngine;
 
-namespace DungeonPlayer {
-    public static class GroundOne
+namespace DungeonPlayer
+{
+    public class GroundOne
     {
+        private static GroundOne instance;
+
+        public static GroundOne Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GroundOne();
+                }
+                return instance;
+            }
+        }
         public static string OwnerName = "YuasaTomonori"; // ゲーム接続オーナー名 [todo] ゲーム開始時点でオーナーに名前を入れてもらい、記憶する必要がある。
         public static string guid = "e9a30180-000e-4144-8130-c90c9f317c2f";
 		public static ClientSocket CS = null; // サーバー接続ソケット
@@ -15,6 +29,10 @@ namespace DungeonPlayer {
         public static List<string> playbackMessage = new List<string>(); // プレイバックメッセージテキスト
         public static List<Sprite> resourceList = null; // リソース画像データ
 
+        public static GameObject objMC = new GameObject("objMC");
+        public static GameObject objSC = new GameObject("objSC");
+        public static GameObject objTC = new GameObject("objTC");
+        public static GameObject objWE = new GameObject("objWE");
         public static MainCharacter MC = null;
         public static MainCharacter SC = null;
         public static MainCharacter TC = null;
@@ -43,6 +61,10 @@ namespace DungeonPlayer {
 
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
+
+        // SaveLoad
+        public static bool SaveMode = false; // false:Load true:Save
+
         public static void InitializeGroundOne()
         {
             if (AlreadyInitialize == false) { AlreadyInitialize = true; }
@@ -51,14 +73,11 @@ namespace DungeonPlayer {
             GroundOne.resourceList = new List<Sprite>();
             GroundOne.resourceList.AddRange(Resources.LoadAll<Sprite>(""));
             GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
-            GroundOne.WE = new WorldEnvironment();
-            GroundOne.WE.DungeonArea = 1;
+            WE = objWE.AddComponent<WorldEnvironment>();
+            WE.DungeonArea = 1;
             GroundOne.WE2 = new TruthWorldEnvironment();
 
-            GameObject obj = new GameObject("obj");
-            GameObject obj2 = new GameObject("obj2");
-            GameObject obj3 = new GameObject("obj3");
-            MC = obj.AddComponent<MainCharacter>();
+            MC = objMC.AddComponent<MainCharacter>();
             MC.Name = Database.EIN_WOLENCE;
             MC.FullName = Database.EIN_WOLENCE_FULL;
             MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
@@ -242,7 +261,7 @@ namespace DungeonPlayer {
             MC.BattleActionCommandList[7] = Database.GALE_WIND;
             MC.BattleActionCommandList[8] = Database.STAY_EN;
 
-            SC = obj2.AddComponent<MainCharacter>();
+            SC = objSC.AddComponent<MainCharacter>();
             SC.BattleActionCommandList[0] = Database.ATTACK_EN;
             SC.BattleActionCommandList[1] = Database.ICE_NEEDLE;
             SC.BattleActionCommandList[2] = Database.SHADOW_PACT;
@@ -253,7 +272,7 @@ namespace DungeonPlayer {
             SC.BattleActionCommandList[7] = Database.STAY_EN;
             SC.BattleActionCommandList[8] = Database.STAY_EN;
 
-            TC = obj3.AddComponent<MainCharacter>();
+            TC = objTC.AddComponent<MainCharacter>();
             TC.BattleActionCommandList[0] = Database.ATTACK_EN;
             TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
             TC.BattleActionCommandList[2] = Database.STAY_EN;

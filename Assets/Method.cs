@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Xml;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,9 +49,53 @@ namespace DungeonPlayer
         // 通常セーブ、現実世界の自動セーブ、タイトルSeekerモードの自動セーブを結合
         public static void AutoSaveTruthWorldEnvironment()
         {
-            // todo
-        }
+            XmlTextWriter xmlWriter2 = new XmlTextWriter(Database.WE2_FILE, Encoding.UTF8);
+            try
+            {
+                xmlWriter2.WriteStartDocument();
+                xmlWriter2.WriteWhitespace("\r\n");
 
+                xmlWriter2.WriteStartElement("Body");
+                xmlWriter2.WriteElementString("DateTime", DateTime.Now.ToString());
+                xmlWriter2.WriteWhitespace("\r\n");
+
+                // ワールド環境
+                xmlWriter2.WriteStartElement("TruthWorldEnvironment");
+                xmlWriter2.WriteWhitespace("\r\n");
+                if (GroundOne.WE2 != null)
+                {
+                    Type typeWE2 = GroundOne.WE2.GetType();
+                    foreach (PropertyInfo pi in typeWE2.GetProperties())
+                    {
+                        if (pi.PropertyType == typeof(System.Int32))
+                        {
+                            xmlWriter2.WriteElementString(pi.Name, ((System.Int32)(pi.GetValue(GroundOne.WE2, null))).ToString());
+                            xmlWriter2.WriteWhitespace("\r\n");
+                        }
+                        else if (pi.PropertyType == typeof(System.String))
+                        {
+                            xmlWriter2.WriteElementString(pi.Name, (string)(pi.GetValue(GroundOne.WE2, null)));
+                            xmlWriter2.WriteWhitespace("\r\n");
+                        }
+                        else if (pi.PropertyType == typeof(System.Boolean))
+                        {
+                            xmlWriter2.WriteElementString(pi.Name, ((System.Boolean)pi.GetValue(GroundOne.WE2, null)).ToString());
+                            xmlWriter2.WriteWhitespace("\r\n");
+                        }
+                    }
+                }
+                xmlWriter2.WriteEndElement();
+                xmlWriter2.WriteWhitespace("\r\n");
+
+                xmlWriter2.WriteEndElement();
+                xmlWriter2.WriteWhitespace("\r\n");
+                xmlWriter2.WriteEndDocument();
+            }
+            finally
+            {
+                xmlWriter2.Close();
+            }
+        }
         // 現実世界の自動セーブ
         public static void AutoSaveRealWorld(MainCharacter MC, MainCharacter SC, MainCharacter TC, WorldEnvironment WE, bool[] knownTileInfo, bool[] knownTileInfo2, bool[] knownTileInfo3, bool[] knownTileInfo4, bool[] knownTileInfo5, bool[] Truth_KnownTileInfo, bool[] Truth_KnownTileInfo2, bool[] Truth_KnownTileInfo3, bool[] Truth_KnownTileInfo4, bool[] Truth_KnownTileInfo5)
         {

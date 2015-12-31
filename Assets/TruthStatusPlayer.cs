@@ -12,8 +12,6 @@ namespace DungeonPlayer
 {
     public class TruthStatusPlayer : MonoBehaviour
     {
-        public Text debug;
-        string workDebug;
         public Text txtName;
         public Text txtLevel;
         public Text txtExperience;
@@ -398,12 +396,8 @@ namespace DungeonPlayer
             else if (msg.Contains(Protocol.GetItemData))
             {
                 string msgData = GetString(msg, Protocol.GetItemData);
-                workDebug += msgData + "\r\n";
-                workDebug += "call ok \r\n";
                 var dict = MiniJSON.Json.Deserialize(msgData) as Dictionary<string, object>;
-                workDebug += "call ok2 \r\n";
                 string type = (dict["type"]).ToString();
-                workDebug += "call ok3 " + type + "\r\n";
                 if (type == "メイン")
                 {
                     GroundOne.MC.MainWeapon.PhysicalAttackMinValue = System.Convert.ToInt32(dict["MinValue"]);
@@ -427,7 +421,6 @@ namespace DungeonPlayer
                     if (getAccessory1 == false)
                     {
                         getAccessory1 = true;
-                        workDebug += System.Convert.ToInt32(dict["strength"]).ToString() + "\r\n";
                         GroundOne.MC.Accessory.BuffUpStrength = System.Convert.ToInt32(dict["strength"]);
                         workStrengthUp += GroundOne.MC.Accessory.BuffUpStrength;
                         GroundOne.MC.Accessory.BuffUpAgility = System.Convert.ToInt32(dict["agility"]);
@@ -438,20 +431,16 @@ namespace DungeonPlayer
                         workStaminaUp += GroundOne.MC.Accessory.BuffUpStamina;
                         GroundOne.MC.Accessory.BuffUpMind = System.Convert.ToInt32(dict["mind"]);
                         workMindUp += GroundOne.MC.Accessory.BuffUpMind;
-                        workDebug += " update parameter call \r\n";
                         UpdateParameter(GroundOne.MC);
-                        workDebug += " update parameter call ok \r\n";
                         dict.Clear();
 
                         if (workAccessory2 != String.Empty)
                         {
-                            workDebug += "call workAccessory2 \r\n";
                             byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workAccessory2);
                             GroundOne.CS.SendMessage(bb);
                         }
                         else
                         {
-                            workDebug += "call loadbackpacklist \r\n";
                             byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.LoadBackpackList + GroundOne.guid);
                             GroundOne.CS.SendMessage(bb);
                         }                        
@@ -470,7 +459,6 @@ namespace DungeonPlayer
             }
             else if (msg.Contains(Protocol.LoadBackpackList))
             {
-                workDebug += msg;
                 string msgData = GetString(msg, Protocol.LoadBackpackList);
                 var dict = MiniJSON.Json.Deserialize(msgData) as Dictionary<string, object>;
                 for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
@@ -645,9 +633,7 @@ namespace DungeonPlayer
 
         public void tapClose()
         {
-            string backScene = SceneDimension.playbackScene[0];
-            SceneDimension.playbackScene.Clear();
-            Application.LoadLevel(backScene);
+            SceneDimension.Back();
         }
         //private void SetupBackpackData()
         //{

@@ -6,12 +6,14 @@ using System.Xml;
 using System;
 using System.Reflection;
 using DungeonPlayer;
-using System.Collections;
 
 namespace DungeonPlayer
 {
     public class TruthDungeon : MonoBehaviour
     {
+        int nowReading = 0;
+        List<string> nowMessage = new List<string>();
+        List<DungeonPlayer.MessagePack.ActionEvent> nowEvent = new List<DungeonPlayer.MessagePack.ActionEvent>();
 
         // initialize data list
         List<GameObject> objList = new List<GameObject>();
@@ -6877,9 +6879,6 @@ namespace DungeonPlayer
             //throw new NotImplementedException();
         }
 
-        int nowReading = 0;
-        List<string> nowMessage = new List<string>();
-        List<DungeonPlayer.MessagePack.ActionEvent> nowEvent = new List<DungeonPlayer.MessagePack.ActionEvent>();
         private void UpdateMainMessage(string message)
         {
             UpdateMainMessage(message, false);
@@ -6969,10 +6968,8 @@ namespace DungeonPlayer
             {
                 this.btnOK.enabled = true;
                 this.btnOK.gameObject.SetActive(true);
-                //this.ok.enabled = true;
-                //this.ok.gameObject.SetActive(true);
 
-                mainMessage.text = "\r\n   " + this.nowMessage[this.nowReading];
+                mainMessage.text = "   " + this.nowMessage[this.nowReading];
                 MessagePack.ActionEvent current = this.nowEvent[this.nowReading];
                 if (current == MessagePack.ActionEvent.UpdateLocationTop)
                 {

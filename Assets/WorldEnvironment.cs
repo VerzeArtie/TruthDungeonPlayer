@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace DungeonPlayer
 {
-    public class WorldEnvironment
+    public class WorldEnvironment : MonoBehaviour
     {
         // 640 x 480レイアウトから1024 x 768へ変更した際、プレイヤーのダンジョン位置情報の互換性が
         // 保てなくなってしまったため、今後バージョン管理を行うことで互換を保つ。

@@ -27,3 +27,5 @@ EditorBuildSettings:
     path: Assets/TruthBattleEnemy.unity
   - enabled: 1
     path: Assets/TruthSelectEquipment.unity
+  - enabled: 1
+    path: Assets/SaveLoad.unity

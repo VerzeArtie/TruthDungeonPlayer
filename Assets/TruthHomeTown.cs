@@ -15,18 +15,26 @@ namespace DungeonPlayer
             FromDuelGate,
             FromDungeonGate,
         }
+        int nowReading = 0;
+        List<string> nowMessage = new List<string>();
+        List<DungeonPlayer.MessagePack.ActionEvent> nowEvent = new List<DungeonPlayer.MessagePack.ActionEvent>();
 
         private int firstDay = 1;
-        public Button ok;
-        public Text okText;
+        public Button btnOK;
         bool waitMessage = false;
 
+        public Camera cam;
+        public GameObject groupMenu;
+        public Button buttonHanna;
+        public Button buttonDungeon;
+        public Button buttonRana;
+        public Button buttonGanz;
         public Button buttonShinikia;
         public Text dayLabel;
         public Image panelHide;
         public Image imgCharacter1;
         public Image imgCharacter2;
-	    public Text debug;
+        public Image imgBackground;
 	    public Button btnDungeon;
 	    public Button btnGo;
 	    public Button btnEquip;
@@ -36,792 +44,828 @@ namespace DungeonPlayer
 	    public Button btnInn;
 	    public InputField nameField;
 	    public Text inputName;
-	    public Text guideText;
         public Text mainMessage;
         public Image panelMessage;
 
 	    public static int serverPort = 8001;
 	    private bool firstAction = false;
 	    private string targetViewName = string.Empty;
+        private bool nowHideing = false;
 
-	// Use this for initialization
-	void Start () {
-        GroundOne.InitializeGroundOne();
-        GroundOne.CS = new ClientSocket();
-		GroundOne.InitializeNetworkConnection ();
-	}
-	
-	string GetString(string msg, string protocolStr)
-	{
-		return msg.Substring(protocolStr.Length, msg.Length - protocolStr.Length);
-	}
+	    // Use this for initialization
+        void Start()
+        {
+            GroundOne.InitializeGroundOne();
+            // todo
+            //GroundOne.CS = new ClientSocket();
+            //GroundOne.InitializeNetworkConnection ();
+        }
 
-	private void ReceiveFromClientSocket(string msg)
-	{
-		debug.text += msg + "\r\n";
-		if (msg.Contains(Protocol.ExistCharacter)) {
-			if (GetString(msg, Protocol.ExistCharacter) == "false")
-			{
-				SaveData.SetName (this.nameField.text);
-				byte[] bb = System.Text.Encoding.UTF8.GetBytes (Protocol.CreateCharacter + this.nameField.text);
-				GroundOne.CS.SendMessage(bb);
-				Application.LoadLevel(targetViewName);
-			}
-		}
-	}
+        string GetString(string msg, string protocolStr)
+        {
+            return msg.Substring(protocolStr.Length, msg.Length - protocolStr.Length);
+        }
 
-	// Update is called once per frame
-	void Update () {
-		if (this.firstAction == false) {
-            this.ok.enabled = false;
-            this.ok.gameObject.SetActive(false);
-            this.okText.enabled = false;
-			if (SaveData.GetName () != "") {
-				//debug.text += "getName not null.\r\n";
-				if (this.nameField != null && this.inputName != null) {
-					debug.text += "nameField not null.--> [" + SaveData.GetName() + "]\r\n";
-					this.guideText.text = "Character Name";
-					this.nameField.text = SaveData.GetName();
-					this.nameField.interactable = false;
-					this.firstAction = true;
-				}
-				else
-				{
-					debug.text += "namefield null...";
-				}
-			}
-			else {
-				this.firstAction = true;
-			}
-		}
-	}
+	    private void ReceiveFromClientSocket(string msg)
+	    {
+		    if (msg.Contains(Protocol.ExistCharacter)) {
+			    if (GetString(msg, Protocol.ExistCharacter) == "false")
+			    {
+				    SaveData.SetName (this.nameField.text);
+				    byte[] bb = System.Text.Encoding.UTF8.GetBytes (Protocol.CreateCharacter + this.nameField.text);
+				    GroundOne.CS.SendMessage(bb);
+				    Application.LoadLevel(targetViewName);
+			    }
+		    }
+	    }
 
-	private void CallNext() {
-		debug.text += "namefield: " + nameField.text + "\r\n";
-		if (GroundOne.IsConnect && SaveData.GetName () == "") {
-			byte[] bb = System.Text.Encoding.UTF8.GetBytes (Protocol.ExistCharacter + this.nameField.text);
-			GroundOne.CS.SendMessage (bb);
-		} else {
-			debug.text += "loadlevel call\r\n";
-			Application.LoadLevel (targetViewName);
-			debug.text += "loadlevel call ok\r\n";
-		}
-	}
+	    // Update is called once per frame
+	    void Update () {
+            if (this.firstAction == false)
+            {
+                this.firstAction = true;
+                ShownEvent();
+            }
 
-	public void tapDungeon() {
-        if (!GroundOne.WE2.RealWorld && GroundOne.WE.GameDay <= 1 && (!GroundOne.WE.AlreadyCommunicate || !GroundOne.WE.Truth_CommunicationGanz1 || !GroundOne.WE.Truth_CommunicationHanna1 || !GroundOne.WE.Truth_CommunicationLana1))
+            // after revive
+            //if (this.firstAction == false) {
+            //    this.btnOK.gameObject.SetActive(false);
+            //    if (SaveData.GetName () != "") {
+            //        //debug.text += "getName not null.\r\n";
+            //        if (this.nameField != null && this.inputName != null) {
+            //            this.nameField.text = SaveData.GetName();
+            //            this.nameField.interactable = false;
+            //            this.firstAction = true;
+            //        }
+            //        else
+            //        {
+            //            Debug.Log("namefield null...");
+            //        }
+            //    }
+            //    else {
+            //        this.firstAction = true;
+            //    }
+            //}
+	    }
+
+	    private void CallNext() {
+		    if (GroundOne.IsConnect && SaveData.GetName () == "") {
+			    byte[] bb = System.Text.Encoding.UTF8.GetBytes (Protocol.ExistCharacter + this.nameField.text);
+			    GroundOne.CS.SendMessage (bb);
+		    } else {
+			    Application.LoadLevel (targetViewName);
+		    }
+	    }
+
+        private void ShownEvent()
         {
-            mainMessage.text = "アイン：ダンジョンはもう少し待ってくれ。町の皆に挨拶をしなくちゃな。";
+            if (false)
+            {
+
+            }
+            #region "後編初日"
+            else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationFirstHomeTown)
+            {
+                MessagePack.Message20000(ref nowMessage, ref nowEvent);
+                tapOK();
+                return;
+            }
+            #endregion
         }
-        else if (!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea1 && (!GroundOne.WE.Truth_CommunicationLana21 || !GroundOne.WE.Truth_CommunicationGanz21 || !GroundOne.WE.Truth_CommunicationHanna21 || !GroundOne.WE.Truth_CommunicationOl21))
-        {
-            mainMessage.text = "アイン：ダンジョンはもう少し待ってくれ。町の皆に挨拶をしなくちゃな。";
-        }
-        else if (!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea2 && (!GroundOne.WE.Truth_CommunicationLana31 || !GroundOne.WE.Truth_CommunicationGanz31 || !GroundOne.WE.Truth_CommunicationHanna31 || !GroundOne.WE.Truth_CommunicationOl31 || !GroundOne.WE.Truth_CommunicationSinikia31))
-        {
-            mainMessage.text = "アイン：ダンジョンはもう少し待ってくれ。町の皆に挨拶をしなくちゃな。";
-        }
-        else if (!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea3 && (!GroundOne.WE.Truth_CommunicationLana41 || !GroundOne.WE.Truth_CommunicationGanz41 || !GroundOne.WE.Truth_CommunicationHanna41 || !GroundOne.WE.Truth_CommunicationOl41 || !GroundOne.WE.Truth_CommunicationSinikia41))
-        {
-            mainMessage.text = "アイン：ダンジョンはもう少し待ってくれ。町の皆に挨拶をしなくちゃな。";
-        }
-        else if (GroundOne.WE2.RealWorld && (!GroundOne.WE2.SeekerEvent602 || !GroundOne.WE2.SeekerEvent603 || !GroundOne.WE2.SeekerEvent604))
-        {
-            mainMessage.text = "アイン：ダンジョンはもう少し待ってくれ。町の皆に挨拶をしなくちゃな。";
-        }
-        else if (!GroundOne.WE.AlreadyRest)
-        {
-            mainMessage.text = "アイン：今出てきたばかりだぜ？一休憩させてくれ。";
-        }
-        else if (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent602 && GroundOne.WE2.SeekerEvent603 && GroundOne.WE2.SeekerEvent604 && !GroundOne.WE2.SeekerEvent605)
+	    public void tapDungeon() {
+            if (!GroundOne.WE2.RealWorld && GroundOne.WE.GameDay <= 1 && (!GroundOne.WE.AlreadyCommunicate || !GroundOne.WE.Truth_CommunicationGanz1 || !GroundOne.WE.Truth_CommunicationHanna1 || !GroundOne.WE.Truth_CommunicationLana1))
+            {
+                MessagePack.Message30000(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea1 && (!GroundOne.WE.Truth_CommunicationLana21 || !GroundOne.WE.Truth_CommunicationGanz21 || !GroundOne.WE.Truth_CommunicationHanna21 || !GroundOne.WE.Truth_CommunicationOl21))
+            {
+                MessagePack.Message30000(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea2 && (!GroundOne.WE.Truth_CommunicationLana31 || !GroundOne.WE.Truth_CommunicationGanz31 || !GroundOne.WE.Truth_CommunicationHanna31 || !GroundOne.WE.Truth_CommunicationOl31 || !GroundOne.WE.Truth_CommunicationSinikia31))
+            {
+                MessagePack.Message30000(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea3 && (!GroundOne.WE.Truth_CommunicationLana41 || !GroundOne.WE.Truth_CommunicationGanz41 || !GroundOne.WE.Truth_CommunicationHanna41 || !GroundOne.WE.Truth_CommunicationOl41 || !GroundOne.WE.Truth_CommunicationSinikia41))
+            {
+                MessagePack.Message30000(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (GroundOne.WE2.RealWorld && (!GroundOne.WE2.SeekerEvent602 || !GroundOne.WE2.SeekerEvent603 || !GroundOne.WE2.SeekerEvent604))
+            {
+                MessagePack.Message30000(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (!GroundOne.WE.AlreadyRest)
+            {
+                MessagePack.Message30001(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent602 && GroundOne.WE2.SeekerEvent603 && GroundOne.WE2.SeekerEvent604 && !GroundOne.WE2.SeekerEvent605)
             {
                 UpdateMainMessage("アイン：（・・・よし・・・行くか！）");
 
-                GroundOne.StopDungeonMusic();
+                    GroundOne.StopDungeonMusic();
 
-                UpdateMainMessage("ラナ：ちょっと、待ちなさいよ。");
+                    UpdateMainMessage("ラナ：ちょっと、待ちなさいよ。");
 
-                GroundOne.PlayDungeonMusic(Database.BGM19, Database.BGM19LoopBegin);
+                    GroundOne.PlayDungeonMusic(Database.BGM19, Database.BGM19LoopBegin);
 
-                UpdateMainMessage("アイン：・・・ラナか・・・");
+                    UpdateMainMessage("アイン：・・・ラナか・・・");
 
-                UpdateMainMessage("ラナ：今からダンジョンに向かう気よね？");
+                    UpdateMainMessage("ラナ：今からダンジョンに向かう気よね？");
 
-                UpdateMainMessage("アイン：ああ、そのつもりだ。");
+                    UpdateMainMessage("アイン：ああ、そのつもりだ。");
 
-                UpdateMainMessage("ラナ：・・・");
+                    UpdateMainMessage("ラナ：・・・");
 
-                UpdateMainMessage("アイン：・・・");
+                    UpdateMainMessage("アイン：・・・");
 
-                UpdateMainMessage("ラナ：【　真実の答え　】・・・見つかった？");
+                    UpdateMainMessage("ラナ：【　真実の答え　】・・・見つかった？");
 
-                UpdateMainMessage("アイン：・・・");
+                    UpdateMainMessage("アイン：・・・");
 
-                UpdateMainMessage("アイン：ああ、見つかってる。");
+                    UpdateMainMessage("アイン：ああ、見つかってる。");
 
-                UpdateMainMessage("ラナ：今言ってみて、聞いてあげるから。");
+                    UpdateMainMessage("ラナ：今言ってみて、聞いてあげるから。");
 
-                UpdateMainMessage("アイン：わかった。");
+                    UpdateMainMessage("アイン：わかった。");
 
-                UpdateMainMessage("アイン：【力は力にあらず、力は全てである。】");
+                    UpdateMainMessage("アイン：【力は力にあらず、力は全てである。】");
 
-                UpdateMainMessage("アイン：【負けられない勝負。　しかし心は満たず。】");
+                    UpdateMainMessage("アイン：【負けられない勝負。　しかし心は満たず。】");
 
-                UpdateMainMessage("アイン：【力のみに依存するな。心を対にせよ。】");
+                    UpdateMainMessage("アイン：【力のみに依存するな。心を対にせよ。】");
 
-                UpdateMainMessage("アイン：ラナの母ちゃんがやってた紫聡千律道場。あそこの十訓の一つだ。");
+                    UpdateMainMessage("アイン：ラナの母ちゃんがやってた紫聡千律道場。あそこの十訓の一つだ。");
 
-                UpdateMainMessage("ラナ：そっか・・・ちゃんと覚えてたのね。");
+                    UpdateMainMessage("ラナ：そっか・・・ちゃんと覚えてたのね。");
 
-                UpdateMainMessage("アイン：ああ。あの時は分からなかったが、今、ようやく分かり始めたんだ。");
+                    UpdateMainMessage("アイン：ああ。あの時は分からなかったが、今、ようやく分かり始めたんだ。");
 
-                UpdateMainMessage("アイン：力だけじゃ限界がある、それだけじゃダメなんだ。");
+                    UpdateMainMessage("アイン：力だけじゃ限界がある、それだけじゃダメなんだ。");
 
-                UpdateMainMessage("アイン：でもだからと言って、信念や想いだけを持ってても駄目だ。");
+                    UpdateMainMessage("アイン：でもだからと言って、信念や想いだけを持ってても駄目だ。");
 
-                UpdateMainMessage("アイン：両方とも併せもって初めて意味が出てくる。");
+                    UpdateMainMessage("アイン：両方とも併せもって初めて意味が出てくる。");
 
-                UpdateMainMessage("アイン：そんな感じだ。");
+                    UpdateMainMessage("アイン：そんな感じだ。");
 
-                UpdateMainMessage("ラナ：そう・・・私にはよく分からないけど");
+                    UpdateMainMessage("ラナ：そう・・・私にはよく分からないけど");
 
-                UpdateMainMessage("ラナ：アインが感じた今の答えが真実なのね、きっと。");
+                    UpdateMainMessage("ラナ：アインが感じた今の答えが真実なのね、きっと。");
 
-                UpdateMainMessage("アイン：それを教えてくれたのが、この剣だ。");
+                    UpdateMainMessage("アイン：それを教えてくれたのが、この剣だ。");
 
-                UpdateMainMessage("ラナ：その練習用の剣？　小さい頃母さんからもらったやつよね。");
+                    UpdateMainMessage("ラナ：その練習用の剣？　小さい頃母さんからもらったやつよね。");
 
-                UpdateMainMessage("アイン：ああ、そうだ。");
+                    UpdateMainMessage("アイン：ああ、そうだ。");
 
-                UpdateMainMessage("アイン：これが神剣フェルトゥーシュだと知るまでにはずいぶんと時間がかかった。");
+                    UpdateMainMessage("アイン：これが神剣フェルトゥーシュだと知るまでにはずいぶんと時間がかかった。");
 
-                UpdateMainMessage("アイン：あの頃は、どうみても単なるナマクラの剣にしか見えなかったからな。");
+                    UpdateMainMessage("アイン：あの頃は、どうみても単なるナマクラの剣にしか見えなかったからな。");
 
-                UpdateMainMessage("ラナ：・・・いつ頃から気づいてたのよ？");
+                    UpdateMainMessage("ラナ：・・・いつ頃から気づいてたのよ？");
 
-                UpdateMainMessage("アイン：ボケ師匠ランディスに出くわした時だ。");
+                    UpdateMainMessage("アイン：ボケ師匠ランディスに出くわした時だ。");
 
-                UpdateMainMessage("ラナ：そうだったの。それからは、気づかない振りしてたの？");
+                    UpdateMainMessage("ラナ：そうだったの。それからは、気づかない振りしてたの？");
 
-                UpdateMainMessage("アイン：いや、そういうわけじゃねえ。半信半疑だったってのが正直な所だ。");
+                    UpdateMainMessage("アイン：いや、そういうわけじゃねえ。半信半疑だったってのが正直な所だ。");
 
-                UpdateMainMessage("アイン：あの剣は、どうみても単なるナマクラだ。実際使ってみても全然威力が出ないしな。");
+                    UpdateMainMessage("アイン：あの剣は、どうみても単なるナマクラだ。実際使ってみても全然威力が出ないしな。");
 
-                UpdateMainMessage("ラナ：ふうん。それでお師匠さんに会ってからどう変わったのよ？");
+                    UpdateMainMessage("ラナ：ふうん。それでお師匠さんに会ってからどう変わったのよ？");
 
-                UpdateMainMessage("アイン：師匠はどうもあの剣の特性に関して、もう一つ何か知ってるみたいだったんだ。");
+                    UpdateMainMessage("アイン：師匠はどうもあの剣の特性に関して、もう一つ何か知ってるみたいだったんだ。");
 
-                UpdateMainMessage("アイン：いや、あの剣に関わらず、全般的な話みたいだった。それを教えてくれた。");
+                    UpdateMainMessage("アイン：いや、あの剣に関わらず、全般的な話みたいだった。それを教えてくれた。");
 
-                UpdateMainMessage("アイン：心を燈して放たないと、威力は発揮されない。何かそんな話だった。");
+                    UpdateMainMessage("アイン：心を燈して放たないと、威力は発揮されない。何かそんな話だった。");
 
-                UpdateMainMessage("ラナ：心を燈して・・・って事は。");
+                    UpdateMainMessage("ラナ：心を燈して・・・って事は。");
 
-                UpdateMainMessage("アイン：あの剣、最高攻撃力が異常に高い。そして、最低攻撃力も異常に低い。");
+                    UpdateMainMessage("アイン：あの剣、最高攻撃力が異常に高い。そして、最低攻撃力も異常に低い。");
 
-                UpdateMainMessage("アイン：心を燈さない限り、最高攻撃力は出ない。つまり、ナマクラなままってわけだ。");
+                    UpdateMainMessage("アイン：心を燈さない限り、最高攻撃力は出ない。つまり、ナマクラなままってわけだ。");
 
-                UpdateMainMessage("アイン：それが分かった時点で、俺の力に対する考えは変わった。");
+                    UpdateMainMessage("アイン：それが分かった時点で、俺の力に対する考えは変わった。");
 
-                UpdateMainMessage("アイン：あの十訓の７番目。あの言葉通り、力は必要だが、力だけじゃ駄目だって事さ。");
+                    UpdateMainMessage("アイン：あの十訓の７番目。あの言葉通り、力は必要だが、力だけじゃ駄目だって事さ。");
 
-                UpdateMainMessage("ラナ：うん・・・");
+                    UpdateMainMessage("ラナ：うん・・・");
 
-                UpdateMainMessage("ラナ：アインって・・・凄いわね。");
+                    UpdateMainMessage("ラナ：アインって・・・凄いわね。");
 
-                UpdateMainMessage("アイン：な、いやいや、凄くなんかねえって。");
+                    UpdateMainMessage("アイン：な、いやいや、凄くなんかねえって。");
 
-                UpdateMainMessage("ラナ：ううん、そういう風に考えが行き届くのは凄いわよ。私じゃ考えもつかないもの。");
+                    UpdateMainMessage("ラナ：ううん、そういう風に考えが行き届くのは凄いわよ。私じゃ考えもつかないもの。");
 
-                UpdateMainMessage("アイン：いや、俺の勝手な解釈だからな。間違ってる可能性の方が高いぞ。");
+                    UpdateMainMessage("アイン：いや、俺の勝手な解釈だからな。間違ってる可能性の方が高いぞ。");
 
-                UpdateMainMessage("ラナ：ううん、解釈が間違ってるとかそういう話じゃないの。");
+                    UpdateMainMessage("ラナ：ううん、解釈が間違ってるとかそういう話じゃないの。");
 
-                UpdateMainMessage("ラナ：アインの雰囲気そのものが、凄く変わるのよ。");
+                    UpdateMainMessage("ラナ：アインの雰囲気そのものが、凄く変わるのよ。");
 
-                UpdateMainMessage("ラナ：凄く冷静で・・・的を得ていて・・・");
+                    UpdateMainMessage("ラナ：凄く冷静で・・・的を得ていて・・・");
 
-                UpdateMainMessage("ラナ：いつものアインじゃないみたい。");
+                    UpdateMainMessage("ラナ：いつものアインじゃないみたい。");
 
-                UpdateMainMessage("アイン：ま・・・");
+                    UpdateMainMessage("アイン：ま・・・");
 
-                UpdateMainMessage("アイン：まあ、そういう側面もあるさ！　ッハッハッハ！");
+                    UpdateMainMessage("アイン：まあ、そういう側面もあるさ！　ッハッハッハ！");
 
-                UpdateMainMessage("ラナ：良いのよ、無理して雰囲気変えなくて、ッフフ♪");
+                    UpdateMainMessage("ラナ：良いのよ、無理して雰囲気変えなくて、ッフフ♪");
 
-                UpdateMainMessage("アイン：わ、悪いな・・・");
+                    UpdateMainMessage("アイン：わ、悪いな・・・");
 
-                UpdateMainMessage("ラナ：ッフフ、良いって言ってるじゃないの♪");
+                    UpdateMainMessage("ラナ：ッフフ、良いって言ってるじゃないの♪");
 
-                UpdateMainMessage("ラナ：でも、ついでに言わせてもらうわね。");
+                    UpdateMainMessage("ラナ：でも、ついでに言わせてもらうわね。");
 
-                UpdateMainMessage("アイン：な、なんだ？");
+                    UpdateMainMessage("アイン：な、なんだ？");
 
-                UpdateMainMessage("ラナ：アイン、あんた私に手加減してるでしょ？");
+                    UpdateMainMessage("ラナ：アイン、あんた私に手加減してるでしょ？");
 
-                UpdateMainMessage("アイン：手加減？？　一体何の話だ。");
+                    UpdateMainMessage("アイン：手加減？？　一体何の話だ。");
 
-                UpdateMainMessage("ラナ：戦闘スタイルの事よ。");
+                    UpdateMainMessage("ラナ：戦闘スタイルの事よ。");
 
-                UpdateMainMessage("アイン：戦闘・・・スタイル？");
+                    UpdateMainMessage("アイン：戦闘・・・スタイル？");
 
-                UpdateMainMessage("ラナ：そうよ。私レベルが相手ならバレないとでも思ってたのかしら。");
+                    UpdateMainMessage("ラナ：そうよ。私レベルが相手ならバレないとでも思ってたのかしら。");
 
-                UpdateMainMessage("アイン：いや、俺は手加減なんてしてないぞ。気のせいじゃないのか？");
+                    UpdateMainMessage("アイン：いや、俺は手加減なんてしてないぞ。気のせいじゃないのか？");
 
-                UpdateMainMessage("ラナ：見たわよ、アンタが傭兵訓練所を卒業した後、コッソリ独自で練習している所。");
+                    UpdateMainMessage("ラナ：見たわよ、アンタが傭兵訓練所を卒業した後、コッソリ独自で練習している所。");
 
-                UpdateMainMessage("ラナ：あんな動き・・・見た事もないスピードだったわ。");
+                    UpdateMainMessage("ラナ：あんな動き・・・見た事もないスピードだったわ。");
 
-                UpdateMainMessage("アイン：ま、待て。あれはだな・・・");
+                    UpdateMainMessage("アイン：ま、待て。あれはだな・・・");
 
-                UpdateMainMessage("ラナ：いいのよ。私じゃ正直、追いつけないレベルだった。");
+                    UpdateMainMessage("ラナ：いいのよ。私じゃ正直、追いつけないレベルだった。");
 
-                UpdateMainMessage("ラナ：動作切替タイミング、詠唱速度、剣を振るう速度。");
+                    UpdateMainMessage("ラナ：動作切替タイミング、詠唱速度、剣を振るう速度。");
 
-                UpdateMainMessage("ラナ：全てが別次元だったわ。");
+                    UpdateMainMessage("ラナ：全てが別次元だったわ。");
 
-                UpdateMainMessage("ラナ：どうして・・・私に見せてくれないのかしら？");
+                    UpdateMainMessage("ラナ：どうして・・・私に見せてくれないのかしら？");
 
-                UpdateMainMessage("アイン：・・・　・・・");
+                    UpdateMainMessage("アイン：・・・　・・・");
 
-                UpdateMainMessage("アイン：すまねえ。");
+                    UpdateMainMessage("アイン：すまねえ。");
 
-                UpdateMainMessage("ラナ：謝らないでよ・・・どうなの？本当の所を教えてちょうだいよ。");
+                    UpdateMainMessage("ラナ：謝らないでよ・・・どうなの？本当の所を教えてちょうだいよ。");
 
-                UpdateMainMessage("アイン：・・・　・・・　・・・");
+                    UpdateMainMessage("アイン：・・・　・・・　・・・");
 
-                UpdateMainMessage("ラナ：やっぱり・・・そういう事よね。");
+                    UpdateMainMessage("ラナ：やっぱり・・・そういう事よね。");
 
-                UpdateMainMessage("アイン：まて、そうじゃねえんだ！");
+                    UpdateMainMessage("アイン：まて、そうじゃねえんだ！");
 
-                UpdateMainMessage("アイン：俺が悪いのは本当だ。");
+                    UpdateMainMessage("アイン：俺が悪いのは本当だ。");
 
-                UpdateMainMessage("アイン：ラナ、お前にだけはそういうとこを見せたくなかったんだ。");
+                    UpdateMainMessage("アイン：ラナ、お前にだけはそういうとこを見せたくなかったんだ。");
 
-                UpdateMainMessage("アイン：知られたく・・・なかったんだ。");
+                    UpdateMainMessage("アイン：知られたく・・・なかったんだ。");
 
-                UpdateMainMessage("アイン：お前がもし、俺のそういう側面を知ってしまえば・・・");
+                    UpdateMainMessage("アイン：お前がもし、俺のそういう側面を知ってしまえば・・・");
 
-                UpdateMainMessage("アイン：俺の前から・・・居なくなるんじゃないかって・・・");
+                    UpdateMainMessage("アイン：俺の前から・・・居なくなるんじゃないかって・・・");
 
-                UpdateMainMessage("ラナ：力量に差が出てきたら、私がアインから離れていく。そう考えたって事？");
+                    UpdateMainMessage("ラナ：力量に差が出てきたら、私がアインから離れていく。そう考えたって事？");
 
-                UpdateMainMessage("アイン：・・・ああ・・・");
+                    UpdateMainMessage("アイン：・・・ああ・・・");
 
-                UpdateMainMessage("ラナ：・・・　・・・");
+                    UpdateMainMessage("ラナ：・・・　・・・");
 
-                UpdateMainMessage("ラナ：ッフ、ッフフ♪　なーに言ってんのかしら、バッカじゃないのアンタ！？");
+                    UpdateMainMessage("ラナ：ッフ、ッフフ♪　なーに言ってんのかしら、バッカじゃないのアンタ！？");
 
-                UpdateMainMessage("ラナ：力量なんて・・・そもそもアンタに私が追いつけるワケないでしょ！？");
+                    UpdateMainMessage("ラナ：力量なんて・・・そもそもアンタに私が追いつけるワケないでしょ！？");
 
-                UpdateMainMessage("アイン：ラ、ラナ・・・");
+                    UpdateMainMessage("アイン：ラ、ラナ・・・");
 
-                UpdateMainMessage("ラナ：何よそれ・・・失礼しちゃうわよホント。アンタの実力ってどんだけなのよ本当。");
+                    UpdateMainMessage("ラナ：何よそれ・・・失礼しちゃうわよホント。アンタの実力ってどんだけなのよ本当。");
 
-                UpdateMainMessage("ラナ：隠すとか隠さないとか・・・くだらない事ばっかり考えて・・・");
+                    UpdateMainMessage("ラナ：隠すとか隠さないとか・・・くだらない事ばっかり考えて・・・");
 
-                UpdateMainMessage("ラナ：隠さなきゃいけないレベルになっちゃってる、そう言いたいわけ！？");
+                    UpdateMainMessage("ラナ：隠さなきゃいけないレベルになっちゃってる、そう言いたいわけ！？");
 
-                UpdateMainMessage("アイン：うっ・・・");
+                    UpdateMainMessage("アイン：うっ・・・");
 
-                UpdateMainMessage("ラナ：あの練習内容の異次元みたいなスピードから察するに、そういう事よね！？");
+                    UpdateMainMessage("ラナ：あの練習内容の異次元みたいなスピードから察するに、そういう事よね！？");
 
-                UpdateMainMessage("ラナ：私なんかじゃ。。。絶対にあんなの出来っこないもん。。。");
+                    UpdateMainMessage("ラナ：私なんかじゃ。。。絶対にあんなの出来っこないもん。。。");
 
-                UpdateMainMessage("アイン：いや、今は出来なくとも・・・");
+                    UpdateMainMessage("アイン：いや、今は出来なくとも・・・");
 
-                UpdateMainMessage("ラナ：そんな風に気を使わないで。　私、自分の事は分かってるつもりだから。");
+                    UpdateMainMessage("ラナ：そんな風に気を使わないで。　私、自分の事は分かってるつもりだから。");
 
-                UpdateMainMessage("ラナ：・・・　・・・");
+                    UpdateMainMessage("ラナ：・・・　・・・");
 
-                UpdateMainMessage("アイン：・・・　・・・");
+                    UpdateMainMessage("アイン：・・・　・・・");
 
-                UpdateMainMessage("ラナ：ッフフ・・・おかしいわね。昔の小さい頃のアインってさ、すごく弱かったし。");
+                    UpdateMainMessage("ラナ：ッフフ・・・おかしいわね。昔の小さい頃のアインってさ、すごく弱かったし。");
 
-                UpdateMainMessage("ラナ：いっつも泣いてばっかり。で、私がいっつも守ってあげてたのに・・・");
+                    UpdateMainMessage("ラナ：いっつも泣いてばっかり。で、私がいっつも守ってあげてたのに・・・");
 
-                UpdateMainMessage("ラナ：いつの間にそんなに腕を上げちゃってたのかしら、信じられないわ本当。");
+                    UpdateMainMessage("ラナ：いつの間にそんなに腕を上げちゃってたのかしら、信じられないわ本当。");
 
-                UpdateMainMessage("アイン：ッハハ・・・あったな、そういやそんな事も・・・");
+                    UpdateMainMessage("アイン：ッハハ・・・あったな、そういやそんな事も・・・");
 
-                UpdateMainMessage("ラナ：・・・　・・・");
+                    UpdateMainMessage("ラナ：・・・　・・・");
 
-                UpdateMainMessage("アイン：・・・　・・・");
+                    UpdateMainMessage("アイン：・・・　・・・");
 
-                UpdateMainMessage("ラナ：いいわ、アイン。");
+                    UpdateMainMessage("ラナ：いいわ、アイン。");
 
-                UpdateMainMessage("ラナ：アインが私に対して、変に気を使ってた事は許してあげる。");
+                    UpdateMainMessage("ラナ：アインが私に対して、変に気を使ってた事は許してあげる。");
 
-                UpdateMainMessage("アイン：わ・・・悪かったな、マジで。");
+                    UpdateMainMessage("アイン：わ・・・悪かったな、マジで。");
 
-                UpdateMainMessage("アイン：これからは・・・そうだな、あまり気を使わずに・・・。");
+                    UpdateMainMessage("アイン：これからは・・・そうだな、あまり気を使わずに・・・。");
 
-                UpdateMainMessage("ラナ：あっ、そぉーーーだ！！！");
+                    UpdateMainMessage("ラナ：あっ、そぉーーーだ！！！");
 
-                UpdateMainMessage("アイン：うお！？なんだいきなり！？");
+                    UpdateMainMessage("アイン：うお！？なんだいきなり！？");
 
-                UpdateMainMessage("ラナ：今、良い事思いついちゃった♪");
+                    UpdateMainMessage("ラナ：今、良い事思いついちゃった♪");
 
-                UpdateMainMessage("ラナ：バカアイン、今から言うのは命令よ。ちゃんと聞きなさいよね。");
+                    UpdateMainMessage("ラナ：バカアイン、今から言うのは命令よ。ちゃんと聞きなさいよね。");
 
-                UpdateMainMessage("アイン：な、何だ？");
+                    UpdateMainMessage("アイン：な、何だ？");
 
-                UpdateMainMessage("ラナ：私、今ここでアインにDUEL決闘を申し込むわ。");
+                    UpdateMainMessage("ラナ：私、今ここでアインにDUEL決闘を申し込むわ。");
 
-                UpdateMainMessage("アイン：な！！！");
+                    UpdateMainMessage("アイン：な！！！");
 
-                UpdateMainMessage("ラナ：で、条件を一つ付け加えるわ。聞きなさい。");
+                    UpdateMainMessage("ラナ：で、条件を一つ付け加えるわ。聞きなさい。");
 
-                UpdateMainMessage("アイン：な、何だその条件ってのは？");
+                    UpdateMainMessage("アイン：な、何だその条件ってのは？");
 
-                UpdateMainMessage("ラナ：あんた今度こそ本当に、今この場で手加減せずに私に挑んでもらうわよ。");
+                    UpdateMainMessage("ラナ：あんた今度こそ本当に、今この場で手加減せずに私に挑んでもらうわよ。");
 
-                UpdateMainMessage("ラナ：それが絶対の条件よ。どう？");
+                    UpdateMainMessage("ラナ：それが絶対の条件よ。どう？");
 
-                UpdateMainMessage("アイン：っぐ・・・");
+                    UpdateMainMessage("アイン：っぐ・・・");
 
-                UpdateMainMessage("アイン：もし万が一手加減してたら・・・どうなる？");
+                    UpdateMainMessage("アイン：もし万が一手加減してたら・・・どうなる？");
 
-                UpdateMainMessage("ラナ：その時は、私はアンタともうコンビは組まないわ。");
+                    UpdateMainMessage("ラナ：その時は、私はアンタともうコンビは組まないわ。");
 
-                UpdateMainMessage("ラナ：手加減されてまで一緒に居たくないから。");
+                    UpdateMainMessage("ラナ：手加減されてまで一緒に居たくないから。");
 
-                UpdateMainMessage("アイン：・・・分かった。");
+                    UpdateMainMessage("アイン：・・・分かった。");
 
-                UpdateMainMessage("アイン：この一戦、絶対に手加減はしねえ。約束だ！");
+                    UpdateMainMessage("アイン：この一戦、絶対に手加減はしねえ。約束だ！");
 
-                UpdateMainMessage("アイン：・・・あっ！ま、まてよ！？");
+                    UpdateMainMessage("アイン：・・・あっ！ま、まてよ！？");
 
-                UpdateMainMessage("アイン：万が一それで、俺が勝ってしまったらどうなるんだ？");
+                    UpdateMainMessage("アイン：万が一それで、俺が勝ってしまったらどうなるんだ？");
 
-                UpdateMainMessage("アイン：やっぱり・・・その時も・・・");
+                    UpdateMainMessage("アイン：やっぱり・・・その時も・・・");
 
-                UpdateMainMessage("ラナ：・・・ップ");
+                    UpdateMainMessage("ラナ：・・・ップ");
 
-                UpdateMainMessage("ラナ：ッフフフ、アーッハハハハ♪");
+                    UpdateMainMessage("ラナ：ッフフフ、アーッハハハハ♪");
 
-                UpdateMainMessage("ラナ：何そんな心配してんのよ、大丈夫よ♪");
+                    UpdateMainMessage("ラナ：何そんな心配してんのよ、大丈夫よ♪");
 
-                UpdateMainMessage("ラナ：手加減してない本気のアンタを見たいだけよ。");
+                    UpdateMainMessage("ラナ：手加減してない本気のアンタを見たいだけよ。");
 
-                UpdateMainMessage("ラナ：アンタ基本的に勝って当然なんだから、またクダラナイ事考えないでよねホント♪");
+                    UpdateMainMessage("ラナ：アンタ基本的に勝って当然なんだから、またクダラナイ事考えないでよねホント♪");
 
-                UpdateMainMessage("ラナ：（　どっちにしろ・・・本当に離れたりするわけ・・・　）");
+                    UpdateMainMessage("ラナ：（　どっちにしろ・・・本当に離れたりするわけ・・・　）");
 
-                UpdateMainMessage("アイン：えっ・・・？");
+                    UpdateMainMessage("アイン：えっ・・・？");
 
-                UpdateMainMessage("ラナ：ホーラホラホラホラ、じゃあ行くわよ。ちゃんと構えなさいよね♪");
+                    UpdateMainMessage("ラナ：ホーラホラホラホラ、じゃあ行くわよ。ちゃんと構えなさいよね♪");
 
-                UpdateMainMessage("アイン：あ、ああ。ちょっと待ってくれな。");
+                    UpdateMainMessage("アイン：あ、ああ。ちょっと待ってくれな。");
 
-                UpdateMainMessage("アイン：・・・よし、ＯＫだ。");
+                    UpdateMainMessage("アイン：・・・よし、ＯＫだ。");
 
-                UpdateMainMessage("ラナ：私も良いわよ♪");
+                    UpdateMainMessage("ラナ：私も良いわよ♪");
 
-                UpdateMainMessage("アイン：じゃあ、正真正銘の本気だ。手加減抜きで行くぜ！");
+                    UpdateMainMessage("アイン：じゃあ、正真正銘の本気だ。手加減抜きで行くぜ！");
 
-                UpdateMainMessage("ラナ：始めるわよ、３");
+                    UpdateMainMessage("ラナ：始めるわよ、３");
 
-                UpdateMainMessage("アイン：２");
+                    UpdateMainMessage("アイン：２");
 
-                UpdateMainMessage("ラナ：１");
+                    UpdateMainMessage("ラナ：１");
 
-                UpdateMainMessage("アイン：０！！");
+                    UpdateMainMessage("アイン：０！！");
 
-                bool failCount1 = false;
-                bool failCount2 = false;
-                while (true)
-                {
-                    // todo
-                    bool result = true;
-                    //bool result = BattleStart(Database.ENEMY_LAST_RANA_AMILIA, true);
-
-                    //if (failCount1 && failCount2)
-                    //{
-                    //    using (YesNoReqWithMessage ynrw = new YesNoReqWithMessage())
-                    //    {
-                    //        ynrw.StartPosition = FormStartPosition.CenterParent;
-                    //        ynrw.MainMessage = "戦闘をスキップし、勝利した状態からストーリーを進めますか？\r\n戦闘スキップによるペナルティはありません。";
-                    //        ynrw.ShowDialog();
-                    //        if (ynrw.DialogResult == DialogResult.Yes)
-                    //        {
-                    //            result = true;
-                    //        }
-                    //    }
-                    //}
-
-                    if (result)
-                    {
-                        // 勝ち
-                        UpdateMainMessage("ラナ：ッキャ！！");
-
-                        UpdateMainMessage("アイン：しまっっ！！　大丈夫か、ラナ！？");
-
-                        UpdateMainMessage("ラナ：いっつつつ・・・大丈夫よ、少し打っただけだから。");
-
-                        UpdateMainMessage("アイン：け、怪我とかしてねえか？大丈夫なのか？痛い所はないか！？");
-
-                        UpdateMainMessage("ラナ：だーいじょーぶだって言ってるでしょーが。ホラホラ元気よ♪");
-
-                        UpdateMainMessage("アイン：よ・・・良かった。本当に大丈夫だな？");
-
-                        UpdateMainMessage("ラナ：しつこいわね。蹴りかえすわよ。");
-
-                        UpdateMainMessage("アイン：わわわ、わかった。");
-
-                        UpdateMainMessage("ラナ：で・・・手加減はしてないわよね？");
-
-                        UpdateMainMessage("アイン：もちろんさ！　俺の得意戦術をそのまま使ったからな！");
-
-                        UpdateMainMessage("ラナ：でも、まさかあんなタイミングから入れてくるとは思わなかったわ。");
-
-                        UpdateMainMessage("ラナ：アインってさ、どこでそういうの覚えてきてるの？");
-
-                        UpdateMainMessage("アイン：どこって言われてもな・・・師匠とやってるうちに自然と・・・かな。");
-
-                        UpdateMainMessage("ラナ：ふ～ん・・・やっぱりランディスのお師匠さんが影響してるわけね。");
-
-                        UpdateMainMessage("アイン：あとは・・・自分なりに、コソコソっとだな・・・");
-
-                        UpdateMainMessage("アイン：他にはDUEL闘技場を観察してて、自分にはないトコを観察かな。");
-
-                        UpdateMainMessage("アイン：傭兵訓練時代の基礎訓練項目もたまに読み返して反復練習はしてる。");
-
-                        UpdateMainMessage("アイン：モンスター狩りの時も、普段使わない新戦術を取り入れてみたり。");
-
-                        UpdateMainMessage("アイン：あとは・・・");
-
-                        UpdateMainMessage("ラナ：あ～あ、もうイイ！　私の負け！！");
-
-                        UpdateMainMessage("アイン：うわっ、すまねえ、悪かったって。");
-
-                        UpdateMainMessage("ラナ：ううん、良いの。本気を見せてくれたんだし、スッキリしたわ♪");
-
-                        UpdateMainMessage("アイン：ハッ・・・ハハハ・・・");
-
-                        UpdateMainMessage("ラナ：ダンジョン、私を誘わないで一人でいくつもりなんでしょ？");
-
-                        UpdateMainMessage("アイン：うっ・・・");
-
-                        UpdateMainMessage("ラナ：バカアインは嘘作りが下手くそすぎなのよ。そんなのお見通しよ。");
-
-                        UpdateMainMessage("アイン：ハハハ・・・まあ・・・");
-
-                        UpdateMainMessage("アイン：嘘というか、正直パーティに誘うつもりはあった。");
-
-                        UpdateMainMessage("アイン：これは本当だ。");
-
-                        UpdateMainMessage("ラナ：・・・　・・・");
-
-                        UpdateMainMessage("アイン：でも、それじゃ・・・駄目みたいなんだ。");
-
-                        UpdateMainMessage("アイン：俺は・・・");
-
-                        UpdateMainMessage("アイン：ここを抜けださなきゃならないんだ。");
-
-                        UpdateMainMessage("ラナ：何とか・・・辿りつけそうなの？");
-
-                        UpdateMainMessage("アイン：ああ、お前のイヤリングもホラ。");
-
-                        UpdateMainMessage("ラナ：あっ・・・");
-
-                        UpdateMainMessage("アイン：今は、俺が手にしたままの状態だ。");
-
-                        UpdateMainMessage("アイン：・・・分かったんだ、どうしなければいけないか。");
-
-                        UpdateMainMessage("ラナ：・・・");
-
-                        UpdateMainMessage("ラナ：ありがと。こんな所まで頑張ってくれて。");
-
-                        UpdateMainMessage("アイン：バカ言うな。俺自身の問題だ。");
-
-                        UpdateMainMessage("アイン：絶対に何とかしてやる。任せろ。");
-
-                        UpdateMainMessage("ラナ：うん、お願い。期待してるから♪");
-
-                        UpdateMainMessage("アイン：じゃあな、行ってくるぜ！！");
-
-                        break;
-                    }
-                    else
+                    bool failCount1 = false;
+                    bool failCount2 = false;
+                    while (true)
                     {
                         // todo
-                        //using (YesNoReqWithMessage yerw = new YesNoReqWithMessage())
+                        bool result = true;
+                        //bool result = BattleStart(Database.ENEMY_LAST_RANA_AMILIA, true);
+
+                        //if (failCount1 && failCount2)
+                        //{
+                        //    using (YesNoReqWithMessage ynrw = new YesNoReqWithMessage())
+                        //    {
+                        //        ynrw.StartPosition = FormStartPosition.CenterParent;
+                        //        ynrw.MainMessage = "戦闘をスキップし、勝利した状態からストーリーを進めますか？\r\n戦闘スキップによるペナルティはありません。";
+                        //        ynrw.ShowDialog();
+                        //        if (ynrw.DialogResult == DialogResult.Yes)
+                        //        {
+                        //            result = true;
+                        //        }
+                        //    }
+                        //}
+
+                        if (result)
                         {
-                            UpdateMainMessage("アイン：ッグ・・！！");
-                            if (!failCount1)
+                            // 勝ち
+                            UpdateMainMessage("ラナ：ッキャ！！");
+
+                            UpdateMainMessage("アイン：しまっっ！！　大丈夫か、ラナ！？");
+
+                            UpdateMainMessage("ラナ：いっつつつ・・・大丈夫よ、少し打っただけだから。");
+
+                            UpdateMainMessage("アイン：け、怪我とかしてねえか？大丈夫なのか？痛い所はないか！？");
+
+                            UpdateMainMessage("ラナ：だーいじょーぶだって言ってるでしょーが。ホラホラ元気よ♪");
+
+                            UpdateMainMessage("アイン：よ・・・良かった。本当に大丈夫だな？");
+
+                            UpdateMainMessage("ラナ：しつこいわね。蹴りかえすわよ。");
+
+                            UpdateMainMessage("アイン：わわわ、わかった。");
+
+                            UpdateMainMessage("ラナ：で・・・手加減はしてないわよね？");
+
+                            UpdateMainMessage("アイン：もちろんさ！　俺の得意戦術をそのまま使ったからな！");
+
+                            UpdateMainMessage("ラナ：でも、まさかあんなタイミングから入れてくるとは思わなかったわ。");
+
+                            UpdateMainMessage("ラナ：アインってさ、どこでそういうの覚えてきてるの？");
+
+                            UpdateMainMessage("アイン：どこって言われてもな・・・師匠とやってるうちに自然と・・・かな。");
+
+                            UpdateMainMessage("ラナ：ふ～ん・・・やっぱりランディスのお師匠さんが影響してるわけね。");
+
+                            UpdateMainMessage("アイン：あとは・・・自分なりに、コソコソっとだな・・・");
+
+                            UpdateMainMessage("アイン：他にはDUEL闘技場を観察してて、自分にはないトコを観察かな。");
+
+                            UpdateMainMessage("アイン：傭兵訓練時代の基礎訓練項目もたまに読み返して反復練習はしてる。");
+
+                            UpdateMainMessage("アイン：モンスター狩りの時も、普段使わない新戦術を取り入れてみたり。");
+
+                            UpdateMainMessage("アイン：あとは・・・");
+
+                            UpdateMainMessage("ラナ：あ～あ、もうイイ！　私の負け！！");
+
+                            UpdateMainMessage("アイン：うわっ、すまねえ、悪かったって。");
+
+                            UpdateMainMessage("ラナ：ううん、良いの。本気を見せてくれたんだし、スッキリしたわ♪");
+
+                            UpdateMainMessage("アイン：ハッ・・・ハハハ・・・");
+
+                            UpdateMainMessage("ラナ：ダンジョン、私を誘わないで一人でいくつもりなんでしょ？");
+
+                            UpdateMainMessage("アイン：うっ・・・");
+
+                            UpdateMainMessage("ラナ：バカアインは嘘作りが下手くそすぎなのよ。そんなのお見通しよ。");
+
+                            UpdateMainMessage("アイン：ハハハ・・・まあ・・・");
+
+                            UpdateMainMessage("アイン：嘘というか、正直パーティに誘うつもりはあった。");
+
+                            UpdateMainMessage("アイン：これは本当だ。");
+
+                            UpdateMainMessage("ラナ：・・・　・・・");
+
+                            UpdateMainMessage("アイン：でも、それじゃ・・・駄目みたいなんだ。");
+
+                            UpdateMainMessage("アイン：俺は・・・");
+
+                            UpdateMainMessage("アイン：ここを抜けださなきゃならないんだ。");
+
+                            UpdateMainMessage("ラナ：何とか・・・辿りつけそうなの？");
+
+                            UpdateMainMessage("アイン：ああ、お前のイヤリングもホラ。");
+
+                            UpdateMainMessage("ラナ：あっ・・・");
+
+                            UpdateMainMessage("アイン：今は、俺が手にしたままの状態だ。");
+
+                            UpdateMainMessage("アイン：・・・分かったんだ、どうしなければいけないか。");
+
+                            UpdateMainMessage("ラナ：・・・");
+
+                            UpdateMainMessage("ラナ：ありがと。こんな所まで頑張ってくれて。");
+
+                            UpdateMainMessage("アイン：バカ言うな。俺自身の問題だ。");
+
+                            UpdateMainMessage("アイン：絶対に何とかしてやる。任せろ。");
+
+                            UpdateMainMessage("ラナ：うん、お願い。期待してるから♪");
+
+                            UpdateMainMessage("アイン：じゃあな、行ってくるぜ！！");
+
+                            break;
+                        }
+                        else
+                        {
+                            // todo
+                            //using (YesNoReqWithMessage yerw = new YesNoReqWithMessage())
                             {
-                                failCount1 = true;
+                                UpdateMainMessage("アイン：ッグ・・！！");
+                                if (!failCount1)
+                                {
+                                    failCount1 = true;
 
-                                UpdateMainMessage("ラナ：今ので当たるなんて、アインらしくないわね。");
+                                    UpdateMainMessage("ラナ：今ので当たるなんて、アインらしくないわね。");
 
-                                UpdateMainMessage("アイン：ックソ・・・避けたつもりだったんだがな。");
+                                    UpdateMainMessage("アイン：ックソ・・・避けたつもりだったんだがな。");
 
-                                UpdateMainMessage("ラナ：今のアイン・・・やっぱり動きが鈍ってるわよ。");
+                                    UpdateMainMessage("ラナ：今のアイン・・・やっぱり動きが鈍ってるわよ。");
 
-                                UpdateMainMessage("ラナ：見せてちょうだいよ、本当の動きを。");
+                                    UpdateMainMessage("ラナ：見せてちょうだいよ、本当の動きを。");
 
-                                UpdateMainMessage("アイン：あ、ああ。今度こそ！");
-                            }
-                            else if (!failCount2)
-                            {
-                                failCount2 = true;
-                                UpdateMainMessage("ラナ：手加減が身体に染み込んでいるみたいね。動きが遅かったわよ。");
+                                    UpdateMainMessage("アイン：あ、ああ。今度こそ！");
+                                }
+                                else if (!failCount2)
+                                {
+                                    failCount2 = true;
+                                    UpdateMainMessage("ラナ：手加減が身体に染み込んでいるみたいね。動きが遅かったわよ。");
 
-                                UpdateMainMessage("アイン：ラナ相手だと・・・動きが縮こまってるのか・・・");
+                                    UpdateMainMessage("アイン：ラナ相手だと・・・動きが縮こまってるのか・・・");
 
-                                UpdateMainMessage("ラナ：今のじゃ納得いかないわ、アイン本気をだしてちょうだい。");
+                                    UpdateMainMessage("ラナ：今のじゃ納得いかないわ、アイン本気をだしてちょうだい。");
 
-                                UpdateMainMessage("アイン：ああ、今度こそ！");
-                            }
-                            else
-                            {
-                                UpdateMainMessage("ラナ：今のじゃ納得いかないわ、アイン本気をだしてちょうだい。");
+                                    UpdateMainMessage("アイン：ああ、今度こそ！");
+                                }
+                                else
+                                {
+                                    UpdateMainMessage("ラナ：今のじゃ納得いかないわ、アイン本気をだしてちょうだい。");
 
-                                UpdateMainMessage("アイン：っく、今度こそ！");
+                                    UpdateMainMessage("アイン：っく、今度こそ！");
+                                }
                             }
                         }
                     }
-                }
 
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "ダンジョンゲートの入り口にて";
-                //    md.ShowDialog();
-                //}
+                    // todo
+                    //using (MessageDisplay md = new MessageDisplay())
+                    //{
+                    //    md.StartPosition = FormStartPosition.CenterParent;
+                    //    md.Message = "ダンジョンゲートの入り口にて";
+                    //    md.ShowDialog();
+                    //}
 
-                GroundOne.StopDungeonMusic();
+                    GroundOne.StopDungeonMusic();
 
-                UpdateMainMessage("アイン：（・・・ダンジョンへ・・・俺は向かう・・・）");
+                    UpdateMainMessage("アイン：（・・・ダンジョンへ・・・俺は向かう・・・）");
 
-                UpdateMainMessage("アイン：（ラナのイヤリングは手にしたままだ）");
+                    UpdateMainMessage("アイン：（ラナのイヤリングは手にしたままだ）");
 
-                UpdateMainMessage("アイン：（俺はこれの意味を知っている）");
+                    UpdateMainMessage("アイン：（俺はこれの意味を知っている）");
 
-                UpdateMainMessage("アイン：（・・・　・・・　・・・）");
+                    UpdateMainMessage("アイン：（・・・　・・・　・・・）");
 
-                UpdateMainMessage("アイン：（行こう、ダンジョンへ）");
+                    UpdateMainMessage("アイン：（行こう、ダンジョンへ）");
 
-                // todo
-                //this.targetDungeon = 1;
-                //GroundOne.WE2.RealDungeonArea = 1;
-                //GroundOne.WE2.SeekerEvent605 = true;
-                //Method.AutoSaveTruthWorldEnvironment();
-                //Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, null, null, null, null, null, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
-                //this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        }
-        else
-        {
-            // todo
-            SceneDimension.Go(Database.TruthHomeTown, Database.TruthDungeon);
-        }
-	}
-    public void tapCommunicationRana()
-    {
-        #region "１日目"
-        if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationLana1)
-        {
-            // if (!we.AlreadyRest) // 1日目はアインが起きたばかりなので、本フラグを未使用とします。
-            if (!GroundOne.WE.AlreadyCommunicate)
-            {
-                this.imgCharacter2.enabled = true;
-                this.imgCharacter2.gameObject.SetActive(true);
-                UpdateMainMessage("ラナ：っあら、意外と早いじゃない。");
-
-                this.imgCharacter1.enabled = true;
-                this.imgCharacter1.gameObject.SetActive(true);
-                UpdateMainMessage("アイン：ああ、何だか寝覚めが良いんだ。今日も調子全快だぜ！");
-
-                UpdateMainMessage("ラナ：バカな事言ってないで、ホラホラ、朝ごはんでも食べましょ。");
-
-                UpdateMainMessage("アイン：ああ、そうだな！じゃあ、ハンナ叔母さんとこで食べようぜ。");
-
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "ハンナの宿屋（料理亭）にて・・・";
-                //    md.ShowDialog();
-                //}
-
-                UpdateMainMessage("アイン：っさっすが、叔母さん！今日の飯もすげえ旨いよな！");
-
-                UpdateMainMessage("ハンナ：アッハッハ、よく元気に食べるね。まだ沢山あるからね、どんどん食べな。");
-
-                UpdateMainMessage("ラナ：アイン、少しは控えなさいよね。恥ずかしいったら。");
-
-                UpdateMainMessage("アイン：ああ、控えるぜ。次からな！ッハッハッハ！！！");
-
-                UpdateMainMessage("　　　『ッドス！』（ラナのサイレントブローがアインの横腹に炸裂）　　");
-
-                UpdateMainMessage("アイン：うおおぉぉ・・・だから食ってる時にそれをやるなって・・・");
-
-                UpdateMainMessage("アイン：・・・ッムグ・・・ごっそうさん！っでだ、ラナ。");
-
-                UpdateMainMessage("ラナ：え？");
-
-                UpdateMainMessage("アイン：オレはダンジョンへ向かうぜ。");
-
-                UpdateMainMessage("アイン：そして、その最下層へオレは辿り付いてみせる！");
-
-                UpdateMainMessage("ラナ：っちょ、何よいきなり唐突に。");
-
-                UpdateMainMessage("ラナ：全然脈略が無いじゃない。何よ、本当にそんなトコ行きたいわけ？");
-
-                //if (GroundOne.WE2.TruthBadEnd1)
-                //{
-                //    UpdateMainMessage("アイン：まあ本当に行きたいとか言われてもなあ・・・");
-
-                //    UpdateMainMessage("アイン：金を稼いで収支を成り立たせるってのも当然なんだが、");
-
-                //    UpdateMainMessage("アイン：伝説のFiveSeekerに追いつきたい気持ちもあるが・・・");
-
-                //    UpdateMainMessage("アイン：それは別として、とにかく行かなくちゃならねえ。そんな気がするんだ。");
-
-                //    UpdateMainMessage("ラナ：ふーん、何か曖昧な答えね。");
-
-                //    UpdateMainMessage("ラナ：まあ、分かったわよ。っじゃあ、はいコレ♪");
-                //}
-                //else
-                {
-                    UpdateMainMessage("アイン：何言ってるんだ、ラナ。俺たちの稼ぎが何なのか忘れたのか？");
-
-                    UpdateMainMessage("アイン：俺達の収支はダンジョンで成り立ってるだろ。金を稼がないとな。");
-
-                    UpdateMainMessage("ラナ：うん、まあそれは分かってるつもりよ。でも何で最下層に行きたがるの？");
-
-                    UpdateMainMessage("アイン：何でかって？そりゃあ決まってるだろ！");
-
-                    UpdateMainMessage("アイン：伝説のFiveSeeker様達に追いつくためさ！！");
-
-                    UpdateMainMessage("ラナ：アインって昔っからFiveSeeker様の事、大好きよね。はしゃいじゃって、ッフフフ。");
-
-                    UpdateMainMessage("アイン：何がおかしい？FiveSeekerはすべての冒険者にとっての憧れの的だろう？目標にして当然だろ。");
-
-                    UpdateMainMessage("ラナ：分かったわよ。っじゃあ、はいコレ♪");
-                }
-
-
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.Message = "【遠見の青水晶】を手に入れました。";
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.ShowDialog();
-                //}
-
-                //GetItemFullCheck(mc, Database.RARE_TOOMI_BLUE_SUISYOU);
-
-                UpdateMainMessage("アイン：お、【遠見の青水晶】じゃねえか。助かるぜ！");
-
-                UpdateMainMessage("ラナ：無くさないでよ？それ結構レア物で値段張るものなんだから。");
-
-                UpdateMainMessage("アイン：ん？おう、任せておけって！ッハッハッハ！！");
-
-                //UpdateMainMessage("アイン：っと、そうだ。忘れないうちに・・・");
-
-                //UpdateMainMessage("アイン：・・・（ごそごそ）・・・");
-
-                //UpdateMainMessage("ラナ：何探してるのよ？");
-
-                //UpdateMainMessage("アイン：確かポケットに入れたはず・・・");
-
-                //using (TruthDecision td = new TruthDecision())
-                //{
-                //    td.MainMessage = "　【　ラナにイヤリングを渡しますか？　】";
-                //    td.FirstMessage = "ラナにイヤリングを渡す。";
-                //    td.SecondMessage = "ラナにイヤリングを渡さず、ポケットにしまっておく。";
-                //    td.StartPosition = FormStartPosition.CenterParent;
-                //    td.ShowDialog();
-                //    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-                //    {
-                //        UpdateMainMessage("アイン：あったあった。ラナ、こいつを渡しておくぜ。");
-
-                //        UpdateMainMessage("ラナ：これ、私のイヤリングじゃない。どこで拾ったのよ？");
-
-                //        UpdateMainMessage("アイン：どこって、俺の部屋に落ちてたぞ。ラナが落としていったんだろ？");
-
-                //        UpdateMainMessage("ラナ：・・・っええ！？そそそ、そんなワケ無いじゃない！！");
-
-                //        UpdateMainMessage("アイン：なんでそんな慌ててんだよ。まあ返しておくぜ。ッホラ！");
-
-                //        UpdateMainMessage("ラナ：っとと、・・・アリガト♪");
-
-                //        UpdateMainMessage("アイン：お前は変な所で抜けてるからな、しっかり持ってろよな。");
-
-                //        UpdateMainMessage("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！");
-
-                //        mc.DeleteBackPack(new ItemBackPack("ラナのイヤリング"));
-                //        we.Truth_GiveLanaEarring = true;
-                //    }
-                //    else
-                //    {
-                //        if (GroundOne.WE2.TruthBadEnd1)
-                //        {
-                //            UpdateMainMessage("アイン：（・・・このイヤリング・・・）");
-
-                //            UpdateMainMessage("アイン：（これをもってると、何か思い出せそうなんだが・・・）");
-
-                //            UpdateMainMessage("アイン：（ラナには悪いが、もう少し持っておこう・・・）");
-
-                //            UpdateMainMessage("アイン：いや、何でもねえんだ。");
-
-                //            UpdateMainMessage("ラナ：今、ポケットをゴソゴソしてたじゃないの？");
-
-                //            UpdateMainMessage("アイン：い、いやいや。何でもねえ、ッハッハッハ！");
-
-                //            UpdateMainMessage("ラナ：何よ、あからさまに怪しかったわよ？今のは・・・");
-
-                //            UpdateMainMessage("アイン：いざ、ダンジョン！ッハッハッハ！");
-                //        }
-                //        else
-                //        {
-                //            UpdateMainMessage("アイン：おっかしいな・・・確かにポケットに入れたはずだが・・・");
-
-                //            UpdateMainMessage("ラナ：何か探し物でもしてるの？");
-
-                //            UpdateMainMessage("アイン：い、いやいや。何でもねえ、ッハッハッハ！");
-
-                //            UpdateMainMessage("ラナ：何よ、怪しいわね・・・");
-
-                //            UpdateMainMessage("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！");
-                //        }
-                //    }
-                //}
-                GroundOne.WE.AlreadyCommunicate = true;
+                    // todo
+                    //this.targetDungeon = 1;
+                    //GroundOne.WE2.RealDungeonArea = 1;
+                    //GroundOne.WE2.SeekerEvent605 = true;
+                    //Method.AutoSaveTruthWorldEnvironment();
+                    //Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, null, null, null, null, null, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
+                    //this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
             else
             {
-                UpdateMainMessage(MessageFormatForLana(1002), true);
-            }
-            GroundOne.WE.Truth_CommunicationLana1 = true; // 初回一日目のみ、ラナ、ガンツ、ハンナの会話を聞いたかどうか判定するため、ここでTRUEとします。
-        }
-        #endregion
-    }
+                // todo
+                //string Opponent = WhoisDuelPlayer();
+                //if (Opponent != String.Empty)
+                //{
+                //    DuelSupportMessage(SupportType.FromDungeonGate, Opponent);
 
-	public void tapDuel() {
-        mainMessage.text = "アイン：DUEL闘技場は閉まってる。他の所へ行こう。";
-	}
+                //    CallDuel(Opponent, true);
+                //}
+                //else { }
+
+                #region "ダンジョン階層を選択"
+                int targetDungeon = 1;
+
+                // todo
+                //if (we.TruthCompleteArea1)
+                //{
+                //    mainMessage.Text = "アイン：さて、何階から始めるかな。";
+                //    mainMessage.Update();
+                //    using (SelectDungeon sd = new SelectDungeon())
+                //    {
+                //        sd.StartPosition = FormStartPosition.Manual;
+                //        sd.Location = new Point(this.Location.X + 50, this.Location.Y + 50);
+                //        //if (we.CompleteArea5) sd.MaxSelectable = 5;
+                //        if (we.TruthCompleteArea4) sd.MaxSelectable = 5;
+                //        else if (we.TruthCompleteArea3) sd.MaxSelectable = 4;
+                //        else if (we.TruthCompleteArea2) sd.MaxSelectable = 3;
+                //        else if (we.TruthCompleteArea1) sd.MaxSelectable = 2;
+                //        sd.ShowDialog();
+                //        this.targetDungeon = sd.TargetDungeon;
+                //    }
+                //}
+
+                if (targetDungeon == 1)
+                {
+                    if (!GroundOne.WE.TruthCompleteArea1)
+                    {
+                        mainMessage.text = "アイン：さて、１階を突破するぜ！";
+                    }
+                    else
+                    {
+                        mainMessage.text = "アイン：もう１度、１階でも探索するか。";
+                    }
+                }
+                else if (targetDungeon == 2)
+                {
+                    if (!GroundOne.WE.CompleteArea2)
+                    {
+                        mainMessage.text = "アイン：目指すは２階を制覇だな！";
+                    }
+                    else
+                    {
+                        mainMessage.text = "アイン：もう１度、２階でも探索するか。";
+                    }
+                }
+                else if (targetDungeon == 3)
+                {
+                    if (!GroundOne.WE.CompleteArea3)
+                    {
+                        mainMessage.text = "アイン：いよいよ３階、気を引き締めていくぜ！";
+                    }
+                    else
+                    {
+                        mainMessage.text = "アイン：もう１度、３階でも探索するか。";
+                    }
+                }
+                else if (targetDungeon == 4)
+                {
+                    if (!GroundOne.WE.CompleteArea4)
+                    {
+                        mainMessage.text = "アイン：４階制覇やってみせるぜ！";
+                    }
+                    else
+                    {
+                        mainMessage.text = "アイン：もう１度、４階でも探索するか。";
+                    }
+                }
+                else if (targetDungeon == 5)
+                {
+                    if (!GroundOne.WE.CompleteArea5)
+                    {
+                        mainMessage.text = "アイン：最下層制覇、やってみせる！";
+                    }
+                    else
+                    {
+                        mainMessage.text = "アイン：もう１度、５階でも探索するか。";
+                    }
+                }
+                #endregion
+
+                #region "ラナ、ガンツ、ハンナの一般会話完了はここで反映します。"
+                if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationLana1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana1 = true;
+                else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationLana2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana2 = true;
+                else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationLana3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana3 = true;
+                else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationLana4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana4 = true;
+                else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationLana5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana5 = true;
+                else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationLana6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana6 = true;
+                else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationLana7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana7 = true;
+                else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationLana8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana8 = true;
+                else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationLana9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana9 = true;
+                else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationLana10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana10 = true;
+
+                if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationHanna1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna1 = true;
+                else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationHanna2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna2 = true;
+                else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationHanna3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna3 = true;
+                else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationHanna4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna4 = true;
+                else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationHanna5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna5 = true;
+                else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationHanna6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna6 = true;
+                else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationHanna7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna7 = true;
+                else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationHanna8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna8 = true;
+                else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationHanna9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna9 = true;
+                else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationHanna10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna10 = true;
+
+                if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationGanz1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz1 = true;
+                else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationGanz2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz2 = true;
+                else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationGanz3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz3 = true;
+                else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationGanz4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz4 = true;
+                else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationGanz5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz5 = true;
+                else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationGanz6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz6 = true;
+                else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationGanz7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz7 = true;
+                else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationGanz8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz8 = true;
+                else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationGanz9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz9 = true;
+                else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationGanz10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz10 = true;
+                #endregion
+
+                GroundOne.WE.AlreadyShownEvent = false;
+                SceneDimension.Go(Database.TruthHomeTown, Database.TruthDungeon);
+            }
+	    }
+        public void tapCommunicationRana()
+        {
+            if (GroundOne.WE.AlreadyCommunicate)
+            {
+                UpdateMainMessage(MessageFormatForLana(1002), true); 
+                return; 
+            }
+            if (!GroundOne.WE.Truth_CommunicationLana1)
+            {
+                MessagePack.Message40000(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+                return;
+            }
+        }
+
+	    public void tapDuel() {
+            mainMessage.text = "アイン：DUEL闘技場は閉まってる。他の所へ行こう。";
+	    }
+
 	    public void tapCommand() {
 		    targetViewName = "BattleSetting";
 		    CallNext ();
 	    }
-        public void tapOK()
-        {
-            UpdateMainMessage("");
-            this.waitMessage = false;
-            if (GroundOne.playbackMessage.Count <= 0)
-            {
-                this.okText.enabled = false;
-                this.okText.gameObject.SetActive(false);
-                this.ok.enabled = false;
-                this.ok.gameObject.SetActive(false);
 
-                this.imgCharacter1.enabled = false;
-                this.imgCharacter1.gameObject.SetActive(false);
-                this.imgCharacter2.enabled = false;
-                this.imgCharacter2.gameObject.SetActive(false);
+        private void NormalTapOK()
+        {
+            this.nowHideing = true;
+            tapOK();
+        }
+        private void tapOK()
+        {
+            if (this.nowReading < this.nowMessage.Count)
+            {
+                if (this.panelHide.isActiveAndEnabled == false && this.nowHideing)
+                {
+                    this.panelHide.gameObject.SetActive(true);
+                }
+                this.btnOK.enabled = true;
+                this.btnOK.gameObject.SetActive(true);
+
+                mainMessage.text = "   " + this.nowMessage[this.nowReading];
+                MessagePack.ActionEvent current = this.nowEvent[this.nowReading];
+                if (current == MessagePack.ActionEvent.HomeTownBlackOut)
+                {
+                    GroundOne.StopDungeonMusic();
+
+                    cam.backgroundColor = Color.black;
+                    groupMenu.gameObject.SetActive(false);
+                    dayLabel.gameObject.SetActive(false);
+                    buttonHanna.gameObject.SetActive(false);
+                    buttonDungeon.gameObject.SetActive(false);
+                    buttonRana.gameObject.SetActive(false);
+                    buttonGanz.gameObject.SetActive(false);
+                    this.imgBackground.gameObject.SetActive(false);
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownTurnToNormal)
+                {
+                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                    cam.backgroundColor = Color.white;
+                    groupMenu.gameObject.SetActive(true);
+                    buttonHanna.gameObject.SetActive(true);
+                    buttonDungeon.gameObject.SetActive(true);
+                    buttonRana.gameObject.SetActive(true);
+                    buttonGanz.gameObject.SetActive(true);
+                    dayLabel.gameObject.SetActive(true);
+                    this.imgBackground.gameObject.SetActive(true);
+                }
+                else if(current == MessagePack.ActionEvent.HomeTownNight)
+                {
+                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT);
+                    this.imgBackground.sprite = Resources.Load<Sprite>(Database.BACKGROUND_NIGHT);
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownCallRestInn)
+                {
+                    CallRestInn();
+                }
+                this.nowReading++;
+                if (this.nowMessage[this.nowReading-1] == "")
+                {
+                    tapOK();
+                }
+            }
+
+            if (this.nowReading >= this.nowMessage.Count)
+            {
+                this.nowReading = 0;
+                this.nowMessage.Clear();
+                this.nowEvent.Clear();
+
+                this.nowHideing = false;
+                this.panelHide.gameObject.SetActive(false);
+                this.btnOK.enabled = false;
+                this.btnOK.gameObject.SetActive(false);
             }
         }
 	    public void tapShop() {
@@ -1850,69 +1894,8 @@ namespace DungeonPlayer
             #region "１日目"
             else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationGanz1)
             {
-                // if (!GroundOne.WE.AlreadyRest) //  1日目はアインが起きたばかりなので、本フラグを未使用とします。
-                if (!GroundOne.WE.AlreadyEquipShop)
-                {
-                    UpdateMainMessage("アイン：ガンツ叔父さん、いますかー？");
-
-                    UpdateMainMessage("ガンツ：アインか。よく来てくれた。");
-
-                    UpdateMainMessage("アイン：武具店、開いてますか？");
-
-                    UpdateMainMessage("ガンツ：ああ、今月はヴァスタ爺からの物資配給が良くてな。開店しておるので見ていくと良い。");
-
-                    UpdateMainMessage("アイン：っしゃ！やったぜ！じゃあ早速見せてもらうとするぜ！！");
-
-                    GroundOne.WE.AlreadyEquipShop = true;
-                    GroundOne.WE.AvailableEquipShop = true;
-                    GroundOne.WE.Truth_CommunicationGanz1 = true; // 初回一日目のみ、ラナ、ガンツ、ハンナの会話を聞いたかどうか判定するため、ここでTRUEとします。
-
-                    CallEquipmentShop();
-                    mainMessage.text = "";
-
-                    UpdateMainMessage("アイン：叔父さん、また来るぜ。");
-
-                    UpdateMainMessage("ガンツ：アインよ。これからダンジョンへ向かうのだな？");
-
-                    UpdateMainMessage("アイン：はい。");
-
-                    UpdateMainMessage("ガンツ：アインよ、では心構えを一つ教えて進ぜよう。");
-
-                    UpdateMainMessage("アイン：ッマジっすか！？ハハ、やったぜ！ありがとうございます！");
-
-                    UpdateMainMessage("ガンツ：ダンジョンで殺したモンスターからは、役に立つ材料がいくつも採れる。");
-
-                    UpdateMainMessage("アイン：ッハイ！");
-
-                    UpdateMainMessage("ガンツ：モンスターより得られる部材、素材をワシの所へ持ってくると良い。");
-
-                    UpdateMainMessage("アイン：ッハイ！！");
-
-                    UpdateMainMessage("ガンツ：それら部材、素材を組み合わせ、ワシが腕によりをかけて新しい武具を作ろう。");
-
-                    UpdateMainMessage("アイン：ッハイ！！！");
-
-                    UpdateMainMessage("ガンツ：アインよ、精進しなさい。");
-
-                    UpdateMainMessage("ガンツ：では頼んだぞ。");
-
-                    UpdateMainMessage("アイン：ッハイ！　ありがとうございました！！");
-
-                    UpdateMainMessage("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞");
-
-                    UpdateMainMessage("アイン：（待てよ・・・これはひょっとして・・・）");
-
-                    UpdateMainMessage("アイン：（最後結局「精進しなさい」しか言ってねえよな・・・）");
-
-                    UpdateMainMessage("アイン：（でもまあ、ガンツ叔父さんの新しい武具生成か。楽しみだな。）");
-
-                    UpdateMainMessage("アイン：（モンスターから得られた部材・素材はガンツ叔父さんのトコへ持っていくとするか。）");
-                }
-                else
-                {
-                    CallEquipmentShop();
-                    mainMessage.text = "";
-                }
+                MessagePack.Message50000(ref nowMessage, ref nowEvent);
+                NormalTapOK();
             }
             #endregion
             #region "その他"
@@ -1944,10 +1927,7 @@ namespace DungeonPlayer
                 if (!ignoreOK)
                 {
                     this.waitMessage = true;
-                    this.okText.enabled = true;
-                    this.okText.gameObject.SetActive(true);
-                    this.ok.enabled = true;
-                    this.ok.gameObject.SetActive(true);
+                    this.btnOK.gameObject.SetActive(true);
 //                    ok.ShowDialog();
                 }
             }
@@ -1955,7 +1935,8 @@ namespace DungeonPlayer
 
         private string MessageFormatForLana(int num)
         {
-            MainCharacter currentPlayer = new MainCharacter();
+            GameObject tempObj = new GameObject();
+            MainCharacter currentPlayer = tempObj.AddComponent<MainCharacter>();
             currentPlayer.Name = "ラナ";
             switch (num)
             {
@@ -2385,39 +2366,8 @@ namespace DungeonPlayer
         #region "一日目"
         else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationHanna1 && GroundOne.MC.Level >= 1)
         {
-            UpdateMainMessage("アイン：叔母さん、いますか？");
-
-            UpdateMainMessage("ハンナ：アインじゃないか。何の用だい？");
-
-            UpdateMainMessage("アイン：いや、特に用ってわけじゃないんだが・・・");
-
-            UpdateMainMessage("ハンナ：どうしたんだい、何か気になる事でもあるのかい。");
-
-            UpdateMainMessage("アイン：叔母さんの作る飯ってさ。もの凄く美味いじゃないですか？");
-
-            UpdateMainMessage("ハンナ：アッハハハ、ありがとうね。何か聞きたい事でもあるのかい？");
-
-            UpdateMainMessage("アイン：どうやって、そんな美味い飯を作れるようになったんですか。");
-
-            UpdateMainMessage("ハンナ：う～ん、どうと言われてもねえ。こればかりは経験を積むしかないよ。");
-
-            UpdateMainMessage("アイン：経験・・・か。");
-
-            UpdateMainMessage("ハンナ：アイン。ひとつ頼まれてくれないかい？");
-
-            UpdateMainMessage("ハンナ：アインは今からダンジョンへ向かうんだね？");
-
-            UpdateMainMessage("アイン：はい。");
-
-            UpdateMainMessage("ハンナ：ダンジョンで得たアイテムで、食材になる物をワタシの所へ持ってきてくれないかね？");
-
-            UpdateMainMessage("ハンナ：そうしたら、これまでよりもっと良い夕飯を出せるようになるからね。");
-
-            UpdateMainMessage("アイン：マジっすか！？なら、喜んで持ってきますよ！任せておいてください！");
-
-            UpdateMainMessage("ハンナ：アッハハハ、期待して待ってるよ。さあ、いってらっしゃいな。", true);
-
-            GroundOne.WE.Truth_CommunicationHanna1 = true; // 初回一日目のみ、ラナ、ガンツ、ハンナの会話を聞いたかどうか判定するため、ここでTRUEとします。
+            MessagePack.Message60000(ref nowMessage, ref nowEvent);
+            NormalTapOK();
             return;
         }
         #endregion
@@ -2426,73 +2376,8 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.AlreadyRest)
             {
-                UpdateMainMessage("アイン：おばちゃん。空いてる？");
-
-                UpdateMainMessage("ハンナ：空いてるよ。泊まってくかい？");
-
-                UpdateMainMessage("アイン：どうすっかな・・・泊まるか？");
-
-                // todo
-                //using (YesNoRequestMini yesno = new YesNoRequestMini())
-                {
-                    // todo
-                    //yesno.Location = new Point(this.Location.X + 784, this.Location.Y + 708);
-                    //yesno.Large = true;
-                    //yesno.ShowDialog();
-                    //if (yesno.DialogResult == DialogResult.Yes)
-                    if (true)
-                    {
-                        UpdateMainMessage("ハンナ：はいよ、部屋は空いてるよ。ゆっくりと休みな。");
-
-                        UpdateMainMessage("アイン：サンキュー、おばちゃん。");
-                        
-                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT);
-
-                        UpdateMainMessage("ハンナ：今日は何か食べていくかい？");
-
-                        // todo
-                        //using (TruthRequestFood trf = new TruthRequestFood())
-                        {
-                            // todo
-                            //trf.StartPosition = FormStartPosition.CenterParent;
-                            //trf.MC = this.mc;
-                            //trf.SC = this.sc;
-                            //trf.TC = this.tc;
-                            //trf.WE = this.we;
-                            //trf.ShowDialog();
-                            //this.mc = trf.MC;
-                            //this.sc = trf.SC;
-                            //this.tc = trf.TC;
-                            //this.we = trf.WE;
-                            //if (trf.DialogResult == System.Windows.Forms.DialogResult.OK)
-                            string tempSelect = "とんかつ定食";
-                            {
-                                UpdateMainMessage("アイン：おばちゃん、『" + tempSelect + "』を頼むぜ。"); // todo
-
-                                UpdateMainMessage("ハンナ：『" + tempSelect + "』だね。少し待ってな。"); // todo
-
-                                UpdateMainMessage("ハンナ：はいよ、お待たせ。たんと召し上がれ。");
-
-                                UpdateMainMessage("　　【アインは十分な食事を取りました。】");
-
-                                UpdateMainMessage("アイン：ふう～、食った食った・・・");
-
-                                UpdateMainMessage("アイン：おばちゃん、ごちそうさま！");
-
-                                UpdateMainMessage("ハンナ：あいよ、後は明日に備えてゆっくり休みな。");
-
-                            }
-                        }
-
-                        CallRestInn();
-                    }
-                    else
-                    {
-                        UpdateMainMessage("アイン：ごめん。まだ用があるんだ、後でくるよ。");
-
-                        UpdateMainMessage("ハンナ：いつでも寄ってらっしゃい。部屋は空けておくからね。");
-                    }
-                }
+                MessagePack.Message69999(ref nowMessage, ref nowEvent);
+                NormalTapOK();
             }
             else
             {
@@ -2527,7 +2412,8 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    UpdateMainMessage("ハンナ：もう朝だよ。今日も頑張ってらっしゃい。");
+                    MessagePack.Message69998(ref nowMessage, ref nowEvent);
+                    tapOK();
                 }
             }
         }
@@ -2600,9 +2486,19 @@ namespace DungeonPlayer
         }
     }
 
+    public void tapSave()
+    {
+        GroundOne.SaveMode = true;
+        SceneDimension.Go(Database.TruthHomeTown, Database.SaveLoad);
+    }
+    public void tapLoad()
+    {
+        GroundOne.SaveMode = false;
+        SceneDimension.Go(Database.TruthHomeTown, Database.SaveLoad);
+    }
     public void tapExit()
     {
-        Application.Quit();
+        SceneDimension.Back();
     }
 
     public void CallStatusPlayer()
