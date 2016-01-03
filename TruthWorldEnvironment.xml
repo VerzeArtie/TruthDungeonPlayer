@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Body><DateTime>1/1/2016 1:36:13 AM</DateTime>
+<Body><DateTime>1/1/2016 12:36:24 PM</DateTime>
 <TruthWorldEnvironment>
 <SeekerEnd>False</SeekerEnd>
 <SeekerEndingRoll>False</SeekerEndingRoll>
@@ -469,5 +469,10 @@
 <FoodAvailable_52>False</FoodAvailable_52>
 <FoodAvailable_53>False</FoodAvailable_53>
 <FoodAvailable_54>False</FoodAvailable_54>
+<useGUILayout>True</useGUILayout>
+<enabled>True</enabled>
+<isActiveAndEnabled>True</isActiveAndEnabled>
+<tag>Untagged</tag>
+<name>objWE2</name>
 </TruthWorldEnvironment>
 </Body>

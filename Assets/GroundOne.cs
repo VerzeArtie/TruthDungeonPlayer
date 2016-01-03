@@ -7,21 +7,8 @@ using UnityEngine;
 
 namespace DungeonPlayer
 {
-    public class GroundOne
+    public static class GroundOne
     {
-        private static GroundOne instance;
-
-        public static GroundOne Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new GroundOne();
-                }
-                return instance;
-            }
-        }
         public static string OwnerName = "YuasaTomonori"; // ゲーム接続オーナー名 [todo] ゲーム開始時点でオーナーに名前を入れてもらい、記憶する必要がある。
         public static string guid = "e9a30180-000e-4144-8130-c90c9f317c2f";
 		public static ClientSocket CS = null; // サーバー接続ソケット
@@ -33,22 +20,23 @@ namespace DungeonPlayer
         public static GameObject objSC = new GameObject("objSC");
         public static GameObject objTC = new GameObject("objTC");
         public static GameObject objWE = new GameObject("objWE");
+        public static GameObject objWE2 = new GameObject("objWE2");
         public static MainCharacter MC = null;
         public static MainCharacter SC = null;
         public static MainCharacter TC = null;
         public static WorldEnvironment WE = null;
+        public static TruthWorldEnvironment WE2 = null; // ゲームストーリー全体のワールド環境フラグ
 
-        public static bool[] Truth_KnownTileInfo = null;
-        public static bool[] Truth_KnownTileInfo2 = null;
-        public static bool[] Truth_KnownTileInfo3 = null;
-        public static bool[] Truth_KnownTileInfo4 = null;
-        public static bool[] Truth_KnownTileInfo5 = null;
+        public static bool[] Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
+        public static bool[] Truth_KnownTileInfo2 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
+        public static bool[] Truth_KnownTileInfo3 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
+        public static bool[] Truth_KnownTileInfo4 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
+        public static bool[] Truth_KnownTileInfo5 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
 
         public static bool NoFirstMusic = false;
         public static int BattleSpeed = 3;
         public static int Difficulty = 1; // ゲーム難易度 デフォルトは１：普通
 
-        public static TruthWorldEnvironment WE2 = null; // ゲームストーリー全体のワールド環境フラグ
 //        public static TruthInformation information = null; // ヘルプ情報 // todo
 //        public static XepherPlayer sound = null; // サウンド音源 // todo
         public static bool EnableBGM = true; // ミュージック、デフォルトはオン
@@ -75,7 +63,7 @@ namespace DungeonPlayer
             GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             WE = objWE.AddComponent<WorldEnvironment>();
             WE.DungeonArea = 1;
-            GroundOne.WE2 = new TruthWorldEnvironment();
+            WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
 
             MC = objMC.AddComponent<MainCharacter>();
             MC.Name = Database.EIN_WOLENCE;

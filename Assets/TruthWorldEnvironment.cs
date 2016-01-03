@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
 namespace DungeonPlayer
 {
     /// <summary>
     /// 後編から新規ゲーム、ロード、リロードに関わらず常に記憶されるクラス
     /// </summary>
-    public class TruthWorldEnvironment
+    public class TruthWorldEnvironment : MonoBehaviour
     {
         // エンディング
         public bool SeekerEnd { get; set; }
