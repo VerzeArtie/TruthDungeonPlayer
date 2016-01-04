@@ -42,6 +42,7 @@ namespace DungeonPlayer
             HomeTownCallRestInn,
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
+            ResurrectHalfLife,
         }
 
 
@@ -2361,6 +2362,16 @@ namespace DungeonPlayer
         #endregion
 
         #region "ホームタウン"
+        #region "帰還時の自動蘇生"
+        public static void HomeTownResurrect(ref List<string> messageList, ref List<ActionEvent> eventList, MainCharacter player)
+        {
+        	messageList.Add("ダンジョンゲートから不思議な光が" + player.Name + "へと流れ込む。"); eventList.Add(ActionEvent.None);
+        	
+        	messageList.Add(""); eventList.Add(ActionEvent.ResurrectHalfLife); // todo (MC,SC,TCをどうやって情報を渡せるか？)
+        	
+        	messageList.Add(player.Name + "は命を吹き返した。"); eventList.Add(ActionEvent.None);
+        }
+        #endregion
         #region "ホームタウン表示時"
         public static void Message20000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
