@@ -119,6 +119,15 @@ namespace DungeonPlayer
 
         private void ShownEvent()
         {
+        	if (GroundOne.WE.AlreadyShownEvent == false)
+        	{
+        		GroundOne.WE.AlreadyShownEvent = true;
+        	}
+        	else
+        	{
+        		return; // イベント発生は連続して発生させない
+        	}
+        	
             if (false)
             {
 
@@ -131,7 +140,62 @@ namespace DungeonPlayer
                 return;
             }
             #endregion
+            #region "看板「始まりの地」を見たとき"
+            else if (this.firstDay >= 1 &&
+                GroundOne.WE.BoardInfo10 &&
+                GroundOne.WE.Truth_CommunicationJoinPartyLana == false &&
+                GroundOne.WE.Truth_CommunicationNotJoinLana == false &&
+                GroundOne.WE.AvailableSecondCharacter == false)
+            {
+            	MessagePack.Message20001(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+                return;
+            }
+            #endregion
+            #region "看板３を見る前でも、大広間に到達した時"
+            if ((GroundOne.WE.dungeonEvent11KeyOpen || GroundOne.WE.dungeonEvent12KeyOpen || GroundOne.WE.dungeonEvent13KeyOpen || GroundOne.WE.dungeonEvent14KeyOpen) &&
+                GroundOne.WE.Truth_CommunicationJoinPartyLana == false && GroundOne.WE.AvailableSecondCharacter == false)
+            {
+            	MessagePack.Message20002(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+                return;
+            }
+            #endregion
+            #region "看板「メンバー構成で変化」を見たとき"
+            else if ((GroundOne.WE.BoardInfo13) && GroundOne.WE.Truth_CommunicationJoinPartyLana == false && GroundOne.WE.AvailableSecondCharacter == false)
+            {
+            	MessagePack.Message20003(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+                return;
+            }
+            #endregion
+            #region "看板「くまなく探せ」を見たとき"
+            else if (this.firstDay >= 1 && GroundOne.WE.BoardInfo14 &&
+                     GroundOne.WE.Truth_CommunicationJoinPartyLana == false && GroundOne.WE.AvailableSecondCharacter == false)
+            {
+                MessagePack.Message20004(ref nowMessage, ref nowEvent);
+                tapOK();
+                return;
+            }
+            #endregion
+            #region "１階看板最後の情報を入手したとき"
+            else if (this.firstDay >= 1 && !GroundOne.WE.Truth_Communication_Dungeon11 && GroundOne.WE.dungeonEvent27)
+            {
+            	MessagePack.Message20005(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+                return;
+            }
+            #endregion
+            #region "１階制覇"
+            else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1)
+            {
+            	MessagePack.Message20006(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+                return;
+            }
+            #endregion
         }
+            	
 	    public void tapDungeon() {
             if (!GroundOne.WE2.RealWorld && GroundOne.WE.GameDay <= 1 && (!GroundOne.WE.AlreadyCommunicate || !GroundOne.WE.Truth_CommunicationGanz1 || !GroundOne.WE.Truth_CommunicationHanna1 || !GroundOne.WE.Truth_CommunicationLana1))
             {
