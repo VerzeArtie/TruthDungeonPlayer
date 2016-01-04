@@ -119,6 +119,32 @@ namespace DungeonPlayer
 
         private void ShownEvent()
         {
+            // 死亡しているものは自動的に復活させます。
+            if (GroundOne.MC != null)
+            {
+                if (GroundOne.MC.Dead)
+                {
+                    MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.MC);
+                    NormalTapOK();
+                }
+            }
+            if (GroundOne.SC != null)
+            {
+                if (GroundOne.SC.Dead)
+                {
+                    MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.SC);
+                    NormalTapOK();
+                }
+            }
+            if (GroundOne.TC != null)
+            {
+                if (GroundOne.TC.Dead)
+                {
+                    MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.TC);
+                    NormalTapOK();
+                }
+            }       
+            
         	if (GroundOne.WE.AlreadyShownEvent == false)
         	{
         		GroundOne.WE.AlreadyShownEvent = true;
@@ -912,6 +938,12 @@ namespace DungeonPlayer
                 else if (current == MessagePack.ActionEvent.HomeTownCallRestInn)
                 {
                     CallRestInn();
+                }
+                else if (current == MessagePack.ActionEvent.ResurrectHalfLife)
+                {
+                	// todo (target is still unknown)
+                	GroundOne.MC.Dead = false;
+                	GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife / 2;
                 }
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading-1] == "")
