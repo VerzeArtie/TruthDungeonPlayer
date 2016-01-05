@@ -2470,6 +2470,62 @@ namespace DungeonPlayer
         public Text DamageLabel = null;
         public Text CriticalLabel = null;
 
+        public Color PlayerStatusColor
+        {
+            get
+            {
+                if (this.name == Database.EIN_WOLENCE) { return new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B); }
+                else if (this.name == Database.RANA_AMILIA) { return new Color(Database.COLOR_RANA_R, Database.COLOR_RANA_G, Database.COLOR_RANA_B); }
+                else if (this.name == Database.OL_LANDIS) { return new Color(Database.COLOR_OL_R, Database.COLOR_OL_G, Database.COLOR_OL_B); }
+                else if (this.name == Database.SINIKIA_KAHLHANZ) { return new Color(Database.COLOR_KAHL_R, Database.COLOR_KAHL_G, Database.COLOR_KAHL_B); }
+                else { return new Color(Database.COLOR_VERZE_R, Database.COLOR_VERZE_G, Database.COLOR_VERZE_B); }
+            }
+        }
+        public Color PlayerColor
+        {
+            get
+            {
+                if (this.name == Database.EIN_WOLENCE) { return new Color(Database.COLOR_BOX_EIN_R, Database.COLOR_BOX_EIN_G, Database.COLOR_BOX_EIN_B); }
+                else if (this.name == Database.RANA_AMILIA) { return new Color(Database.COLOR_RANA_R, Database.COLOR_RANA_G, Database.COLOR_RANA_B); }
+                else if (this.name == Database.OL_LANDIS) { return new Color(Database.COLOR_BOX_OL_R, Database.COLOR_BOX_OL_G, Database.COLOR_BOX_OL_B); }
+                else if (this.name == Database.SINIKIA_KAHLHANZ) { return new Color(Database.COLOR_BOX_KAHL_R, Database.COLOR_BOX_KAHL_G, Database.COLOR_BOX_KAHL_B); }
+                else { return new Color(Database.COLOR_BOX_VERZE_R, Database.COLOR_BOX_VERZE_G, Database.COLOR_BOX_VERZE_B); }
+            }
+        }
+
+        public Color PlayerBattleColor
+        {
+            get
+            {
+                if (this.name == Database.EIN_WOLENCE) { return new Color(Database.COLOR_BATTLE_EIN_R, Database.COLOR_BATTLE_EIN_G, Database.COLOR_BATTLE_EIN_B); }
+                else if (this.name == Database.RANA_AMILIA) { return new Color(Database.COLOR_BATTLE_RANA_R, Database.COLOR_BATTLE_RANA_G, Database.COLOR_BATTLE_RANA_B); }
+                else if (this.name == Database.OL_LANDIS) { return new Color(Database.COLOR_BATTLE_OL_R, Database.COLOR_BATTLE_OL_G, Database.COLOR_BATTLE_OL_B); }
+                else if (this.name == Database.SINIKIA_KAHLHANZ) { return new Color(Database.COLOR_BATTLE_KAHL_R, Database.COLOR_BATTLE_KAHL_G, Database.COLOR_BATTLE_KAHL_B); }
+                else { return new Color(Database.COLOR_BATTLE_VERZE_R, Database.COLOR_BATTLE_VERZE_G, Database.COLOR_BATTLE_VERZE_B); }
+            }
+        }
+        public Color PlayerBattleTargetColor1
+        {
+            get
+            {
+                if (this.name == Database.EIN_WOLENCE) { return new Color(Database.COLOR_BATTLE_TARGET1_EIN_R, Database.COLOR_BATTLE_TARGET1_EIN_G, Database.COLOR_BATTLE_TARGET1_EIN_B); }
+                else if (this.name == Database.RANA_AMILIA) { return new Color(Database.COLOR_BATTLE_TARGET1_RANA_R, Database.COLOR_BATTLE_TARGET1_RANA_G, Database.COLOR_BATTLE_TARGET1_RANA_B); }
+                else if (this.name == Database.OL_LANDIS) { return new Color(Database.COLOR_BATTLE_TARGET1_OL_R, Database.COLOR_BATTLE_TARGET1_OL_G, Database.COLOR_BATTLE_TARGET1_OL_B); }
+                else if (this.name == Database.SINIKIA_KAHLHANZ) { return new Color(Database.COLOR_BATTLE_TARGET1_KAHL_R, Database.COLOR_BATTLE_TARGET1_KAHL_G, Database.COLOR_BATTLE_TARGET1_KAHL_B); }
+                else { return new Color(Database.COLOR_BATTLE_TARGET1_VERZE_R, Database.COLOR_BATTLE_TARGET1_VERZE_G, Database.COLOR_BATTLE_TARGET1_VERZE_B); }
+            }
+        }
+        public Color PlayerBattleTargetColor2
+        {
+            get
+            {
+                if (this.name == Database.EIN_WOLENCE) { return new Color(Database.COLOR_BATTLE_TARGET2_EIN_R, Database.COLOR_BATTLE_TARGET2_EIN_G, Database.COLOR_BATTLE_TARGET2_EIN_B); }
+                else if (this.name == Database.RANA_AMILIA) { return new Color(Database.COLOR_BATTLE_TARGET2_RANA_R, Database.COLOR_BATTLE_TARGET2_RANA_G, Database.COLOR_BATTLE_TARGET2_RANA_B); }
+                else if (this.name == Database.OL_LANDIS) { return new Color(Database.COLOR_BATTLE_TARGET2_OL_R, Database.COLOR_BATTLE_TARGET2_OL_G, Database.COLOR_BATTLE_TARGET2_OL_B); }
+                else if (this.name == Database.SINIKIA_KAHLHANZ) { return new Color(Database.COLOR_BATTLE_TARGET2_KAHL_R, Database.COLOR_BATTLE_TARGET2_KAHL_G, Database.COLOR_BATTLE_TARGET2_KAHL_B); }
+                else { return new Color(Database.COLOR_BATTLE_TARGET2_VERZE_R, Database.COLOR_BATTLE_TARGET2_VERZE_G, Database.COLOR_BATTLE_TARGET2_VERZE_B); }
+            }
+        }
         // gui action button list
         public List<Button> ActionButtonList = new List<Button>();
         public Button ActionButton1 = null;

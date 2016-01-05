@@ -42,6 +42,7 @@ namespace DungeonPlayer
             HomeTownCallRestInn,
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
+            CallSomeMessageWithNotJoinLana,
             ResurrectHalfLife,
         }
 
@@ -49,7 +50,9 @@ namespace DungeonPlayer
         #region "ダンジョン内"
         public static void MessageBackToTown(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：ユングの町に戻るか？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.HomeTown); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ユングの町に戻るか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTown);
         }
 
         public static void MessageNotFound(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -2516,14 +2519,14 @@ namespace DungeonPlayer
 
                 messageList.Add("ラナ：なによ？"); eventList.Add(ActionEvent.None);
 
-                using (TruthDecision td = new TruthDecision())
+                //using (TruthDecision td = new TruthDecision())
                 {
-                    td.MainMessage = "　【　ラナをパーティに誘いますか？　】";
-                    td.FirstMessage = "ラナをパーティに誘う。";
-                    td.SecondMessage = "ラナをパーティに誘わない。";
-                    td.StartPosition = FormStartPosition.CenterParent;
-                    td.ShowDialog(); eventList.Add(ActionEvent.None);
-                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                    //td.MainMessage = "　【　ラナをパーティに誘いますか？　】";
+                    //td.FirstMessage = "ラナをパーティに誘う。";
+                    //td.SecondMessage = "ラナをパーティに誘わない。";
+                    //td.StartPosition = FormStartPosition.CenterParent;
+                    //td.ShowDialog(); eventList.Add(ActionEvent.None);
+                    //if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
                     {
                         messageList.Add("アイン：ダンジョン、一緒に来ないか？"); eventList.Add(ActionEvent.None);
 
@@ -2562,35 +2565,36 @@ namespace DungeonPlayer
 
                         messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-                        CallSomeMessageWithAnimation("【ラナがパーティに加わりました。】"); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
 
                         GroundOne.WE.AvailableSecondCharacter = true;
                         GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
                     }
-                    else
-                    {
-                        messageList.Add("アイン：い、いやいや、何でもねえ。"); eventList.Add(ActionEvent.None);
+                    // after revive
+                    //else
+                    //{
+                    //    messageList.Add("アイン：い、いやいや、何でもねえ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：アイン、らしくないわね。言いたい事は正直に言ってよね？"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add("ラナ：アイン、らしくないわね。言いたい事は正直に言ってよね？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：・・・ああ、正直言うとだな。"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add("アイン：・・・ああ、正直言うとだな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：ラナ、お前をパーティに誘おうと思ったんだが。"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add("アイン：ラナ、お前をパーティに誘おうと思ったんだが。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：やめた。俺一人で行ってみせるぜ。"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add("アイン：やめた。俺一人で行ってみせるぜ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：すまねえな。ラナ。"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add("アイン：すまねえな。ラナ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：う～ん、別に良いわよ。ちゃんとそう言ってくれれば。"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add("ラナ：う～ん、別に良いわよ。ちゃんとそう言ってくれれば。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：じゃあ、また明日からダンジョンいって来るぜ。"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add("アイン：じゃあ、また明日からダンジョンいって来るぜ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：ハイハイ、頑張ってきてよね♪"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add("ラナ：ハイハイ、頑張ってきてよね♪"); eventList.Add(ActionEvent.None);
 
-                        CallSomeMessageWithAnimation("【ラナをパーティに加えませんでした。】"); eventList.Add(ActionEvent.None);
+                    //    messageList.Add(""); eventList.Add(ActionEvent.CallSomeMessageWithNotJoinLana); // todo 【ラナをパーティに加えませんでした。】
 
-                        GroundOne.WE.Truth_CommunicationNotJoinLana = true;
-                    }
+                    //    GroundOne.WE.Truth_CommunicationNotJoinLana = true;
+                    //}
                 }
             }
             else
@@ -2883,7 +2887,7 @@ namespace DungeonPlayer
 
                     messageList.Add("ラナ：看板にも書いてある事だし、探索して損はしないはずよ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：オーケー、気になる所はまた探索するさ。サンキューな。", true); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：オーケー、気になる所はまた探索するさ。サンキューな。"); eventList.Add(ActionEvent.None);
 
                     // [真エンディング分岐]
 

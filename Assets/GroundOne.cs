@@ -65,6 +65,12 @@ namespace DungeonPlayer
             WE.DungeonArea = 1;
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
 
+            //WE.AvailableSecondCharacter = true;
+            //WE.AvailableThirdCharacter = true;
+
+            WE.AvailableMana = true;
+            WE.AvailableSkill = true;
+
             MC = objMC.AddComponent<MainCharacter>();
             MC.Name = Database.EIN_WOLENCE;
             MC.FullName = Database.EIN_WOLENCE_FULL;
@@ -250,6 +256,8 @@ namespace DungeonPlayer
             MC.BattleActionCommandList[8] = Database.STAY_EN;
 
             SC = objSC.AddComponent<MainCharacter>();
+            SC.Name = Database.RANA_AMILIA;
+            SC.FullName = Database.RANA_AMILIA_FULL;
             SC.BattleActionCommandList[0] = Database.ATTACK_EN;
             SC.BattleActionCommandList[1] = Database.ICE_NEEDLE;
             SC.BattleActionCommandList[2] = Database.SHADOW_PACT;
@@ -261,6 +269,8 @@ namespace DungeonPlayer
             SC.BattleActionCommandList[8] = Database.STAY_EN;
 
             TC = objTC.AddComponent<MainCharacter>();
+            TC.Name = Database.OL_LANDIS;
+            TC.FullName = Database.OL_LANDIS_FULL;
             TC.BattleActionCommandList[0] = Database.ATTACK_EN;
             TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
             TC.BattleActionCommandList[2] = Database.STAY_EN;

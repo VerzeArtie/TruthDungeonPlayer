@@ -275,7 +275,7 @@ namespace DungeonPlayer
             }
             if (tempItem != null)
             {
-                if (tempItem.Name != "" && tempItem.Name != Database.NO_EQUIPMENT)
+                if (tempItem.Name != "" && tempItem.Name != String.Empty)
                 {
                     targetPlayer.AddBackPack(tempItem);
                 }

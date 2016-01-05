@@ -61,105 +61,105 @@ namespace DungeonPlayer
         public const string SINIKIA_KAHLHANZ_FULL = @"シニキア・カールハンツ";
         #endregion
         #region "キャラクターカラー"
-        public static int COLOR_EIN_R = 135;
-        public static int COLOR_EIN_G = 205;
-        public static int COLOR_EIN_B = 250;
+        public static float COLOR_EIN_R = 135 / 255.0f;
+        public static float COLOR_EIN_G = 205 / 255.0f;
+        public static float COLOR_EIN_B = 250 / 255.0f;
 
-        public static int COLOR_RANA_R = 255;
-        public static int COLOR_RANA_G = 192;
-        public static int COLOR_RANA_B = 203;
+        public static float COLOR_RANA_R = 255 / 255.0f;
+        public static float COLOR_RANA_G = 192 / 255.0f;
+        public static float COLOR_RANA_B = 203 / 255.0f;
 
-        public static int COLOR_VERZE_R = 192;
-        public static int COLOR_VERZE_G = 192;
-        public static int COLOR_VERZE_B = 192;
+        public static float COLOR_VERZE_R = 192 / 255.0f;
+        public static float COLOR_VERZE_G = 192 / 255.0f;
+        public static float COLOR_VERZE_B = 192 / 255.0f;
 
-        public static int COLOR_OL_R = 255;
-        public static int COLOR_OL_G = 215;
-        public static int COLOR_OL_B = 0;
+        public static float COLOR_OL_R = 255 / 255.0f;
+        public static float COLOR_OL_G = 215 / 255.0f;
+        public static float COLOR_OL_B = 0 / 255.0f;
 
-        public static int COLOR_KAHL_R = 106;
-        public static int COLOR_KAHL_G = 90;
-        public static int COLOR_KAHL_B = 205;
+        public static float COLOR_KAHL_R = 106 / 255.0f;
+        public static float COLOR_KAHL_G = 90 / 255.0f;
+        public static float COLOR_KAHL_B = 205 / 255.0f;
 
-        public static int COLOR_BOX_EIN_R = 0;
-        public static int COLOR_BOX_EIN_G = 0;
-        public static int COLOR_BOX_EIN_B = 255;
+        public static float COLOR_BOX_EIN_R = 0 / 255.0f;
+        public static float COLOR_BOX_EIN_G = 255 / 255.0f;
+        public static float COLOR_BOX_EIN_B = 255 / 255.0f;
 
-        public static int COLOR_BOX_RANA_R = 255;
-        public static int COLOR_BOX_RANA_G = 0;
-        public static int COLOR_BOX_RANA_B = 0;
+        public static float COLOR_BOX_RANA_R = 255 / 255.0f;
+        public static float COLOR_BOX_RANA_G = 0 / 255.0f;
+        public static float COLOR_BOX_RANA_B = 0 / 255.0f;
 
-        public static int COLOR_BOX_VERZE_R = 128;
-        public static int COLOR_BOX_VERZE_G = 128;
-        public static int COLOR_BOX_VERZE_B = 128;
+        public static float COLOR_BOX_VERZE_R = 128 / 255.0f;
+        public static float COLOR_BOX_VERZE_G = 128 / 255.0f;
+        public static float COLOR_BOX_VERZE_B = 128 / 255.0f;
 
-        public static int COLOR_BOX_OL_R = 255;
-        public static int COLOR_BOX_OL_G = 255;
-        public static int COLOR_BOX_OL_B = 0;
+        public static float COLOR_BOX_OL_R = 255 / 255.0f;
+        public static float COLOR_BOX_OL_G = 255 / 255.0f;
+        public static float COLOR_BOX_OL_B = 0 / 255.0f;
 
-        public static int COLOR_BOX_KAHL_R = 128;
-        public static int COLOR_BOX_KAHL_G = 0;
-        public static int COLOR_BOX_KAHL_B = 128;
+        public static float COLOR_BOX_KAHL_R = 128 / 255.0f;
+        public static float COLOR_BOX_KAHL_G = 0 / 255.0f;
+        public static float COLOR_BOX_KAHL_B = 128 / 255.0f;
 
-        public static int COLOR_BATTLE_EIN_R = 0;
-        public static int COLOR_BATTLE_EIN_G = 191;
-        public static int COLOR_BATTLE_EIN_B = 255;
+        public static float COLOR_BATTLE_EIN_R = 0 / 255.0f;
+        public static float COLOR_BATTLE_EIN_G = 191 / 255.0f;
+        public static float COLOR_BATTLE_EIN_B = 255 / 255.0f;
 
-        public static int COLOR_BATTLE_RANA_R = 238;
-        public static int COLOR_BATTLE_RANA_G = 130;
-        public static int COLOR_BATTLE_RANA_B = 238;
+        public static float COLOR_BATTLE_RANA_R = 238 / 255.0f;
+        public static float COLOR_BATTLE_RANA_G = 130 / 255.0f;
+        public static float COLOR_BATTLE_RANA_B = 238 / 255.0f;
 
-        public static int COLOR_BATTLE_VERZE_R = 112;
-        public static int COLOR_BATTLE_VERZE_G = 128;
-        public static int COLOR_BATTLE_VERZE_B = 144;
+        public static float COLOR_BATTLE_VERZE_R = 112 / 255.0f;
+        public static float COLOR_BATTLE_VERZE_G = 128 / 255.0f;
+        public static float COLOR_BATTLE_VERZE_B = 144 / 255.0f;
 
-        public static int COLOR_BATTLE_OL_R = 255;
-        public static int COLOR_BATTLE_OL_G = 255;
-        public static int COLOR_BATTLE_OL_B = 0;
+        public static float COLOR_BATTLE_OL_R = 255 / 255.0f;
+        public static float COLOR_BATTLE_OL_G = 255 / 255.0f;
+        public static float COLOR_BATTLE_OL_B = 0 / 255.0f;
 
-        public static int COLOR_BATTLE_KAHL_R = 106;
-        public static int COLOR_BATTLE_KAHL_G = 90;
-        public static int COLOR_BATTLE_KAHL_B = 205;
+        public static float COLOR_BATTLE_KAHL_R = 106 / 255.0f;
+        public static float COLOR_BATTLE_KAHL_G = 90 / 255.0f;
+        public static float COLOR_BATTLE_KAHL_B = 205 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET1_EIN_R = 0;
-        public static int COLOR_BATTLE_TARGET1_EIN_G = 0;
-        public static int COLOR_BATTLE_TARGET1_EIN_B = 139;
+        public static float COLOR_BATTLE_TARGET1_EIN_R = 0 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_EIN_G = 0 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_EIN_B = 139 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET1_RANA_R = 255;
-        public static int COLOR_BATTLE_TARGET1_RANA_G = 105;
-        public static int COLOR_BATTLE_TARGET1_RANA_B = 180;
+        public static float COLOR_BATTLE_TARGET1_RANA_R = 255 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_RANA_G = 105 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_RANA_B = 180 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET1_VERZE_R = 112;
-        public static int COLOR_BATTLE_TARGET1_VERZE_G = 128;
-        public static int COLOR_BATTLE_TARGET1_VERZE_B = 144;
+        public static float COLOR_BATTLE_TARGET1_VERZE_R = 112 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_VERZE_G = 128 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_VERZE_B = 144 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET1_OL_R = 255;
-        public static int COLOR_BATTLE_TARGET1_OL_G = 215;
-        public static int COLOR_BATTLE_TARGET1_OL_B = 0;
+        public static float COLOR_BATTLE_TARGET1_OL_R = 255 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_OL_G = 215 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_OL_B = 0 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET1_KAHL_R = 72;
-        public static int COLOR_BATTLE_TARGET1_KAHL_G = 61;
-        public static int COLOR_BATTLE_TARGET1_KAHL_B = 139;
+        public static float COLOR_BATTLE_TARGET1_KAHL_R = 72 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_KAHL_G = 61 / 255.0f;
+        public static float COLOR_BATTLE_TARGET1_KAHL_B = 139 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET2_EIN_R = 0;
-        public static int COLOR_BATTLE_TARGET2_EIN_G = 0;
-        public static int COLOR_BATTLE_TARGET2_EIN_B = 255;
+        public static float COLOR_BATTLE_TARGET2_EIN_R = 0 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_EIN_G = 0 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_EIN_B = 255 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET2_RANA_R = 255;
-        public static int COLOR_BATTLE_TARGET2_RANA_G = 192;
-        public static int COLOR_BATTLE_TARGET2_RANA_B = 203;
+        public static float COLOR_BATTLE_TARGET2_RANA_R = 255 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_RANA_G = 192 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_RANA_B = 203 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET2_VERZE_R = 211;
-        public static int COLOR_BATTLE_TARGET2_VERZE_G = 211;
-        public static int COLOR_BATTLE_TARGET2_VERZE_B = 211;
+        public static float COLOR_BATTLE_TARGET2_VERZE_R = 211 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_VERZE_G = 211 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_VERZE_B = 211 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET2_OL_R = 255;
-        public static int COLOR_BATTLE_TARGET2_OL_G = 255;
-        public static int COLOR_BATTLE_TARGET2_OL_B = 0;
+        public static float COLOR_BATTLE_TARGET2_OL_R = 255 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_OL_G = 255 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_OL_B = 0 / 255.0f;
 
-        public static int COLOR_BATTLE_TARGET2_KAHL_R = 106;
-        public static int COLOR_BATTLE_TARGET2_KAHL_G = 90;
-        public static int COLOR_BATTLE_TARGET2_KAHL_B = 205;
+        public static float COLOR_BATTLE_TARGET2_KAHL_R = 106 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_KAHL_G = 90 / 255.0f;
+        public static float COLOR_BATTLE_TARGET2_KAHL_B = 205 / 255.0f;
         #endregion
         // e 後編追加
 
@@ -1797,7 +1797,6 @@ namespace DungeonPlayer
         public const string POOR_BLACK_MATERIAL3 = @"ブラックマテリアル【密】";
         public const string POOR_BLACK_MATERIAL4 = @"ブラックマテリアル【試】";
         public const string POOR_BLACK_MATERIAL5 = @"ブラックマテリアル【還】";
-        public const string NO_EQUIPMENT = @"( No Equipment )";
         #endregion
 
         public const string RARE_SEAL_AQUA_FIRE = @"シールオブアクア＆ファイア";

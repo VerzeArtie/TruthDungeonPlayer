@@ -6222,7 +6222,7 @@ namespace DungeonPlayer
 
                     //be.ShowDialog();
                     //SceneMove.TBE = be;
-                    Application.LoadLevel("TruthBattleEnemy");
+                    SceneDimension.Go(Database.TruthDungeon, Database.TruthBattleEnemy);
                     endFlag = true;
                     //if (be.DialogResult == DialogResult.Retry)
                     //{
@@ -6945,7 +6945,8 @@ namespace DungeonPlayer
             btnYes.enabled = false; btnYes.gameObject.SetActive(false);
             btnNo.enabled = false; btnNo.gameObject.SetActive(false);
             mainMessage.text = "";
-            if (currentEvent == MessagePack.ActionEvent.HomeTown)
+            if (currentEvent == MessagePack.ActionEvent.HomeTown ||
+                currentEvent == MessagePack.ActionEvent.GotoHomeTown)
             {
                 CallHomeTown();
             }
@@ -6970,28 +6971,28 @@ namespace DungeonPlayer
                 this.btnOK.gameObject.SetActive(true);
 
                 mainMessage.text = "   " + this.nowMessage[this.nowReading];
-                MessagePack.ActionEvent current = this.nowEvent[this.nowReading];
-                if (current == MessagePack.ActionEvent.UpdateLocationTop)
+                this.currentEvent = this.nowEvent[this.nowReading];
+                if (currentEvent == MessagePack.ActionEvent.UpdateLocationTop)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, false);
                 }
-                else if (current == MessagePack.ActionEvent.UpdateLocationBottom)
+                else if (currentEvent == MessagePack.ActionEvent.UpdateLocationBottom)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, false);
                 }
-                else if (current == MessagePack.ActionEvent.UpdateLocationLeft)
+                else if (currentEvent == MessagePack.ActionEvent.UpdateLocationLeft)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false);
                 }
-                else if (current == MessagePack.ActionEvent.UpdateLocationRight)
+                else if (currentEvent == MessagePack.ActionEvent.UpdateLocationRight)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false);
                 }
-                else if (current == MessagePack.ActionEvent.UpdateUnknownTile)
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTile)
                 {
                     UpdateUnknownTile();
                 }
-                else if (current == MessagePack.ActionEvent.HomeTown)
+                else if (currentEvent == MessagePack.ActionEvent.HomeTown)
                 {
                     btnYes.enabled = true; btnYes.gameObject.SetActive(true);
                     btnNo.enabled = true; btnNo.gameObject.SetActive(true);
@@ -7011,7 +7012,7 @@ namespace DungeonPlayer
                     //    }
                     //}            
                 }
-                else if (current == MessagePack.ActionEvent.BlueOpenTop)
+                else if (currentEvent == MessagePack.ActionEvent.BlueOpenTop)
                 {
                     blueWallTop[GetTileNumber(this.Player.transform.position)] = false;
                     for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
@@ -7036,7 +7037,7 @@ namespace DungeonPlayer
                     }
                     UpdateUnknownTile();
                 }
-                else if (current == MessagePack.ActionEvent.BlueOpenBottom)
+                else if (currentEvent == MessagePack.ActionEvent.BlueOpenBottom)
                 {
                     blueWallBottom[GetTileNumber(this.Player.transform.position)] = false;
                     for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
@@ -7061,7 +7062,7 @@ namespace DungeonPlayer
                     }
                     UpdateUnknownTile();
                 }
-                else if (current == MessagePack.ActionEvent.BlueOpenLeft)
+                else if (currentEvent == MessagePack.ActionEvent.BlueOpenLeft)
                 {
                     blueWallLeft[GetTileNumber(this.Player.transform.position)] = false;
                     for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
@@ -7086,7 +7087,7 @@ namespace DungeonPlayer
                     }
                     UpdateUnknownTile();
                 }
-                else if (current == MessagePack.ActionEvent.BlueOpenRight)
+                else if (currentEvent == MessagePack.ActionEvent.BlueOpenRight)
                 {
                     blueWallRight[GetTileNumber(this.Player.transform.position)] = false;
                     for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
@@ -7110,7 +7111,7 @@ namespace DungeonPlayer
                     }
                     UpdateUnknownTile();
                 }
-                else if (current == MessagePack.ActionEvent.BigEntranceOpen)
+                else if (currentEvent == MessagePack.ActionEvent.BigEntranceOpen)
                 {
                     blueWallBottom[26 * Database.TRUTH_DUNGEON_COLUMN + 14] = false;
                     blueWallTop[27 * Database.TRUTH_DUNGEON_COLUMN + 14] = false;
@@ -7129,7 +7130,7 @@ namespace DungeonPlayer
 
                     //dungeonField.Invalidate();
                 }
-                else if (current == MessagePack.ActionEvent.SmallEntranceOpen1)
+                else if (currentEvent == MessagePack.ActionEvent.SmallEntranceOpen1)
                 {
                     blueWallTop[GetTileNumber(this.Player.transform.position)] = false;
                     UpdateUnknownTileArea12();
@@ -7138,7 +7139,7 @@ namespace DungeonPlayer
                     //dungeonField.Invalidate();
 
                 }                     
-                else if (current == MessagePack.ActionEvent.SmallEntranceOpen2)
+                else if (currentEvent == MessagePack.ActionEvent.SmallEntranceOpen2)
                 {
                     blueWallLeft[GetTileNumber(this.Player.transform.position)] = false;
                     UpdateUnknownTileArea12();
@@ -7147,14 +7148,14 @@ namespace DungeonPlayer
                     //dungeonField.Invalidate();
 
                 }
-                else if (current == MessagePack.ActionEvent.CenterBlueOpen)
+                else if (currentEvent == MessagePack.ActionEvent.CenterBlueOpen)
                 {
                     blueWallLeft[16 * Database.TRUTH_DUNGEON_COLUMN + 13] = false;
                     blueWallRight[16 * Database.TRUTH_DUNGEON_COLUMN + 12] = false;
                     //dungeonField.Invalidate();
 
                 }
-                else if (current == MessagePack.ActionEvent.EncountFlansis)
+                else if (currentEvent == MessagePack.ActionEvent.EncountFlansis)
                 {
                     bool result = EncountBattle(Database.ENEMY_BOSS_KARAMITUKU_FLANSIS, String.Empty, String.Empty, false, false, false, false);
                     // todo loadlevelになり、画面が戻ってきた時、本画面のロードで以下の処理を行う。
@@ -7170,15 +7171,15 @@ namespace DungeonPlayer
                     }
                     UpdateMainMessage("", true);
                 }
-                else if (current == MessagePack.ActionEvent.StopMusic)
+                else if (currentEvent == MessagePack.ActionEvent.StopMusic)
                 {
                     GroundOne.StopDungeonMusic();
                 }
-                else if (current == MessagePack.ActionEvent.PlayMusic14)
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic14)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
                 }
-                else if (current == MessagePack.ActionEvent.PlayMusic15)
+                else if (currentEvent == MessagePack.ActionEvent.PlayMusic15)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin);
                 }
@@ -7186,16 +7187,17 @@ namespace DungeonPlayer
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM16, Database.BGM16LoopBegin);
                 }
-                else if (current == MessagePack.ActionEvent.YesNoGotoDungeon2)
+                else if (currentEvent == MessagePack.ActionEvent.YesNoGotoDungeon2)
                 {
                     btnYes.enabled = true; btnYes.gameObject.SetActive(true);
                     btnNo.enabled = true; btnNo.gameObject.SetActive(true);
                 }
-                else if (current == MessagePack.ActionEvent.GotoHomeTown)
+                else if (currentEvent == MessagePack.ActionEvent.GotoHomeTown)
                 {
-                    CallHomeTown();
+                    btnYes.enabled = true; btnYes.gameObject.SetActive(true);
+                    btnNo.enabled = true; btnNo.gameObject.SetActive(true);
                 }
-                else if (current == MessagePack.ActionEvent.GotoDungeon2)
+                else if (currentEvent == MessagePack.ActionEvent.GotoDungeon2)
                 {
                     UpdateViewPoint(-Database.DUNGEON_MOVE_LEN * 15, -Database.DUNGEON_MOVE_LEN * 10);
                     UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * (29 - 15), Database.DUNGEON_MOVE_LEN * (19 - 10));

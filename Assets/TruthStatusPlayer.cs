@@ -12,16 +12,31 @@ namespace DungeonPlayer
 {
     public class TruthStatusPlayer : MonoBehaviour
     {
+        public GameObject groupBtnChara;
+        public GameObject groupTxtChara;
+        public Button btnClose;
+        public Text txtClose;
+        public Button btnFirstChara;
+        public Button btnSecondChara;
+        public Button btnThirdChara;
+        public Text labelFirstPlayerLife;
+        public Text labelSecondPlayerLife;
+        public Text labelThirdPlayerLife;
+        public Camera cam;
+        public Text mainMessage;
         public Text txtName;
         public Text txtLevel;
         public Text txtExperience;
         public Text txtJobClass;
         public Text txtGold;
+        public GameObject groupBtnLifeManaSkill;
+        public GameObject groupTxtLifeManaSkill;
+        public GameObject btnLife;
+        public GameObject btnMana;
+        public GameObject btnSkill;
         public Text life;
         public Text mana;
         public Text skill;
-        public GameObject btnMana;
-        public GameObject btnSkill;
         public Button btnStrength;
         public Button btnAgility;
         public Button btnIntelligence;
@@ -97,7 +112,7 @@ namespace DungeonPlayer
         }
         public int CumultiveLvUpValue { get; set; }
 
-        private Color currentStatusView = new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B);
+        private Color currentStatusView;
         public Color CurrentStatusView
         {
             get { return currentStatusView; }
@@ -162,10 +177,22 @@ namespace DungeonPlayer
             //    GroundOne.CS.rcm += new ClientSocket.ReceiveClientMessage(ReceiveFromClientSocket);
             //}
 
-            SettingCharacterData(GroundOne.MC);
-            RefreshPartyMembersBattleStatus(GroundOne.MC);
+            this.txtGold.text = GroundOne.MC.Gold.ToString();
+
+            this.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
+            this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+            MainCharacter player = GetCurrentPlayer();
+            SettingCharacterData(player);
+            RefreshPartyMembersBattleStatus(player);
+
+            //    RefreshPartyMembersLife();
+
             //SetupBackpackData(); [todo]
-            backpackData = GroundOne.MC.GetBackPackInfo();
+            if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
+            if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
+            if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
+
+            backpackData = player.GetBackPackInfo();
             if (this.backpackData != null)
             {
                 for (int ii = 0; ii < this.backpackData.Length; ii++)
@@ -181,120 +208,127 @@ namespace DungeonPlayer
                     }
                 }
             }
+
+            if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
+            {
+                btnFirstChara.gameObject.SetActive(false);
+                labelFirstPlayerLife.gameObject.SetActive(false);
+            }
+            if (this.duelMode == true)
+            {
+                btnFirstChara.gameObject.SetActive(false);
+                labelFirstPlayerLife.gameObject.SetActive(false);
+            }
+
+            if (GroundOne.WE.AvailableSecondCharacter && this.duelMode == false)
+            {
+                btnSecondChara.gameObject.SetActive(true);
+                labelSecondPlayerLife.gameObject.SetActive(true);
+            }
+            else
+            {
+                btnSecondChara.gameObject.SetActive(false);
+                labelSecondPlayerLife.gameObject.SetActive(false);
+                GameObject emptyObj = new GameObject();
+                emptyObj.AddComponent<RectTransform>();
+                emptyObj.transform.SetParent(groupBtnChara.transform);
+                GameObject emptyObj2 = new GameObject();
+                emptyObj2.AddComponent<RectTransform>();
+                emptyObj2.transform.SetParent(groupTxtChara.transform);
+            }
+            if (GroundOne.WE.AvailableThirdCharacter && this.duelMode == false)
+            {
+                btnThirdChara.gameObject.SetActive(true);
+                labelThirdPlayerLife.gameObject.SetActive(true);
+            }
+            else
+            {
+                btnThirdChara.gameObject.SetActive(false);
+                labelThirdPlayerLife.gameObject.SetActive(false);
+                GameObject emptyObj = new GameObject();
+                emptyObj.AddComponent<RectTransform>();
+                emptyObj.transform.SetParent(groupBtnChara.transform);
+                GameObject emptyObj2 = new GameObject();
+                emptyObj2.AddComponent<RectTransform>();
+                emptyObj2.transform.SetParent(groupTxtChara.transform);
+            }
+
+            if (GroundOne.WE.AvailableSkill)
+            {
+                btnSkill.SetActive(true);
+                skill.gameObject.SetActive(true);
+            }
+            else
+            {
+                btnSkill.SetActive(false);
+                skill.gameObject.SetActive(false);
+                GameObject emptyObj = new GameObject();
+                emptyObj.AddComponent<RectTransform>();
+                emptyObj.transform.SetParent(groupBtnLifeManaSkill.transform);
+                GameObject emptyObj2 = new GameObject();
+                emptyObj2.AddComponent<RectTransform>();
+                emptyObj2.transform.SetParent(groupTxtLifeManaSkill.transform);
+            }
+
+            if (GroundOne.WE.AvailableMana)
+            {
+                btnMana.SetActive(true);
+                mana.gameObject.SetActive(true);
+            }
+            else
+            {
+                btnMana.SetActive(false);
+                mana.gameObject.SetActive(false);
+                GameObject emptyObj = new GameObject();
+                emptyObj.AddComponent<RectTransform>();
+                emptyObj.transform.SetParent(groupBtnLifeManaSkill.transform);
+                GameObject emptyObj2 = new GameObject();
+                emptyObj2.AddComponent<RectTransform>();
+                emptyObj2.transform.SetParent(groupTxtLifeManaSkill.transform);
+            }
+
+            if (!levelUp)
+            {
+                mainMessage.text = "";
+            }
+            else
+            {
+                btnClose.gameObject.SetActive(false);
+                if (CumultiveLvUpValue >= 2)
+                {
+                    mainMessage.text = CumultiveLvUpValue.ToString() + "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
+                }
+                else
+                {
+                    mainMessage.text = "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
+                }
+            }
+
+            if (this.OnlySelectTrash)
+            {
+                txtClose.text = "諦める";
+                mainMessage.text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
+                // todo
+                //FirstViewToSecondView = true;
+                //grpBattleStatus.Width = 0;
+                //grpEquipment.Width = 0;
+                //grpParameter.Width = 0;
+                //grpBackPack.Width = BACKPACK_WIDTH;
+                //grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
+            }
+
+            if (this.onlyUseItem)
+            {
+                // todo
+                //FirstViewToSecondView = true;
+                //grpBattleStatus.Width = 0;
+                //grpEquipment.Width = 0;
+                //grpParameter.Width = 0;
+                //grpBackPack.Width = BACKPACK_WIDTH;
+                //grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
+            }
+
         }
-
-        //private void TruthStatusPlayer_Load(object sender, EventArgs e)
-        //{
-        //    this.basePhysicalLocation = this.PhysicalAttck.Location;
-
-        //    this.buttonStrength.BackgroundImageLayout = ImageLayout.Stretch;
-        //    this.buttonStrength.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "StrengthMark.bmp");
-        //    this.buttonAgility.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "AgilityMark.bmp");
-        //    this.buttonIntelligence.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "IntelligenceMark.bmp");
-        //    this.buttonStamina.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "StaminaMark.bmp");
-        //    this.buttonMind.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "MindMark.bmp");
-
-        //    // this.gold.Text = mc.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
-
-        //    this.BackColor = currentStatusView;
-        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        SettingCharacterData(mc);
-        //        RefreshPartyMembersBattleStatus(mc);
-        //    }
-        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        SettingCharacterData(sc);
-        //        RefreshPartyMembersBattleStatus(sc);
-        //    }
-        //    else if (tc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        SettingCharacterData(tc);
-        //        RefreshPartyMembersBattleStatus(tc);
-        //    }
-        //    if (mc != null) { button2.BackColor = mc.PlayerColor; }
-        //    if (sc != null) { button3.BackColor = sc.PlayerColor; }
-        //    if (tc != null) { button4.BackColor = tc.PlayerColor; }
-
-        //    RefreshPartyMembersLife();
-
-        //    if (!we.AvailableSecondCharacter && !we.AvailableThirdCharacter)
-        //    {
-        //        button2.Visible = false;
-        //        labelFirstPlayerLife.Visible = false;
-        //    }
-        //    if (this.duelMode == true)
-        //    {
-        //        button2.Visible = false;
-        //        labelFirstPlayerLife.Visible = false;
-        //    }
-
-        //    if (we.AvailableSecondCharacter && this.duelMode == false)
-        //    {
-        //        button3.Visible = true;
-        //        labelSecondPlayerLife.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        button3.Visible = false;
-        //        labelSecondPlayerLife.Visible = false;
-        //    }
-        //    if (we.AvailableThirdCharacter && this.duelMode == false)
-        //    {
-        //        button4.Visible = true;
-        //        labelThirdPlayerLife.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        button4.Visible = false;
-        //        labelThirdPlayerLife.Visible = false;
-        //    }
-
-        //    if (!levelUp)
-        //    {
-        //        //buttonStrength.Enabled = false;
-        //        //buttonAgility.Enabled = false;
-        //        //buttonIntelligence.Enabled = false;
-        //        //buttonStamina.Enabled = false;
-        //        //buttonMind.Enabled = false;
-
-        //        mainMessage.Text = "";
-        //    }
-        //    else
-        //    {
-        //        button1.Visible = false;
-        //        if (CumultiveLvUpValue >= 2)
-        //        {
-        //            mainMessage.Text = CumultiveLvUpValue.ToString() + "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
-        //        }
-        //        else
-        //        {
-        //            mainMessage.Text = "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
-        //        }
-        //    }
-
-        //    if (this.OnlySelectTrash)
-        //    {
-        //        button1.Text = "諦める";
-        //        mainMessage.Text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
-        //        FirstViewToSecondView = true;
-        //        grpBattleStatus.Width = 0;
-        //        grpEquipment.Width = 0;
-        //        grpParameter.Width = 0;
-        //        grpBackPack.Width = BACKPACK_WIDTH;
-        //        grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
-        //    }
-
-        //    if (this.onlyUseItem)
-        //    {
-        //        FirstViewToSecondView = true;
-        //        grpBattleStatus.Width = 0;
-        //        grpEquipment.Width = 0;
-        //        grpParameter.Width = 0;
-        //        grpBackPack.Width = BACKPACK_WIDTH;
-        //        grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
-        //    }
-        //}
 
         string GetString(string msg, string protocolStr)
         {
@@ -732,23 +766,23 @@ namespace DungeonPlayer
         //    }
         //}
 
-        //MainCharacter GetCurrentPlayer()
-        //{
-        //    MainCharacter player = null;
-        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        player = this.mc;
-        //    }
-        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        player = this.sc;
-        //    }
-        //    else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        player = this.tc;
-        //    }
-        //    return player;
-        //}
+        MainCharacter GetCurrentPlayer()
+        {
+            MainCharacter player = null;
+            if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+            {
+                player = GroundOne.MC;
+            }
+            else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+            {
+                player = GroundOne.SC;
+            }
+            else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+            {
+                player = GroundOne.TC;
+            }
+            return player;
+        }
 
         //void StatusPlayer_Click(object sender, EventArgs e)
         //{
@@ -2381,30 +2415,16 @@ namespace DungeonPlayer
 
             if (chara.AvailableSkill)
             {
-                btnSkill.SetActive(true);
-                skill.gameObject.SetActive(true);
                 if (chara.CurrentSkillPoint > chara.MaxSkillPoint)
                 {
                     chara.CurrentSkillPoint = chara.MaxSkillPoint;
                 }
                 skill.text = chara.CurrentSkillPoint.ToString() + " / " + chara.MaxSkillPoint.ToString();
             }
-            else
-            {
-                btnSkill.SetActive(false);
-                skill.gameObject.SetActive(false);
-            }
 
             if (chara.AvailableMana)
             {
-                btnMana.SetActive(true);
-                mana.gameObject.SetActive(true);
                 mana.text = chara.CurrentMana.ToString() + " / " + chara.MaxMana.ToString();
-            }
-            else
-            {
-                btnMana.SetActive(false);
-                mana.gameObject.SetActive(false);
             }
 
             this.weapon.text = "";
@@ -2414,90 +2434,54 @@ namespace DungeonPlayer
             this.accessory2.text = "";
             if (chara.MainWeapon != null)
             {
-                if (chara.MainWeapon.Name == "")
-                {
-                    this.weapon.text = Database.NO_EQUIPMENT;
-                    //                    this.weapon.BackColor = Color.Transparent; // todo
-                }
-                else
-                {
-                    this.weapon.text = chara.MainWeapon.Name;
-                    Method.UpdateRareColor(chara.MainWeapon, weapon, back_weapon);
-                }
+                this.weapon.text = chara.MainWeapon.Name;
             }
             else
             {
-                this.weapon.text = Database.NO_EQUIPMENT;
-                //                this.weapon.BackColor = Color.Transparent; // todo
+                this.weapon.text = "";
             }
+            Method.UpdateRareColor(chara.MainWeapon, weapon, back_weapon);
 
             if (chara.SubWeapon != null)
             {
-                if (chara.SubWeapon.Name == "")
-                {
-                    this.subWeapon.text = Database.NO_EQUIPMENT;
-                }
-                else
-                {
-                    this.subWeapon.text = chara.SubWeapon.Name;
-                    Method.UpdateRareColor(chara.SubWeapon, subWeapon, back_subWeapon);
-                }
+                this.subWeapon.text = chara.SubWeapon.Name;
             }
             else
             {
-                this.subWeapon.text = Database.NO_EQUIPMENT;
+                this.subWeapon.text = "";
             }
+            Method.UpdateRareColor(chara.SubWeapon, subWeapon, back_subWeapon);
 
             if (chara.MainArmor != null)
             {
-                if (chara.MainArmor.Name == "")
-                {
-                    this.armor.text = Database.NO_EQUIPMENT;
-                }
-                else
-                {
-                    this.armor.text = chara.MainArmor.Name;
-                    Method.UpdateRareColor(chara.MainArmor, armor, back_armor);
-                }
+                this.armor.text = chara.MainArmor.Name;
             }
             else
             {
-                this.armor.text = Database.NO_EQUIPMENT;
+                this.armor.text = "";
             }
+            Method.UpdateRareColor(chara.MainArmor, armor, back_armor);
 
             if (chara.Accessory != null)
             {
-                if (chara.Accessory.Name == "")
-                {
-                    this.accessory.text = Database.NO_EQUIPMENT;
-                }
-                else
-                {
-                    this.accessory.text = chara.Accessory.Name;
-                    Method.UpdateRareColor(chara.Accessory, accessory, back_accessory);
-                }
+                this.accessory.text = chara.Accessory.Name;
             }
             else
             {
-                this.accessory.text = Database.NO_EQUIPMENT;
+                this.accessory.text = "";
             }
+            Method.UpdateRareColor(chara.Accessory, accessory, back_accessory);
 
             if (chara.Accessory2 != null)
             {
-                if (chara.Accessory2.Name == "")
-                {
-                    this.accessory2.text = Database.NO_EQUIPMENT;
-                }
-                else
-                {
-                    this.accessory2.text = chara.Accessory2.Name;
-                    Method.UpdateRareColor(chara.Accessory2, accessory2, back_accessory2);
-                }
+                this.accessory2.text = chara.Accessory2.Name;
             }
             else
             {
-                this.accessory2.text = Database.NO_EQUIPMENT;
+                this.accessory2.text = "";
             }
+            Method.UpdateRareColor(chara.Accessory2, accessory2, back_accessory2);
+
             txtGold.text = GroundOne.MC.Gold.ToString() + "[G]";
 
             // todo
@@ -3754,80 +3738,80 @@ namespace DungeonPlayer
         //    return false;
         //}
 
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //    if (this.levelUp)
-        //    {
-        //        mainMessage.Text = mc.GetCharacterSentence(2002);
-        //        return;
-        //    }
-        //    else if (this.useOverShifting)
-        //    {
-        //        mainMessage.Text = mc.GetCharacterSentence(2023);
-        //        return;
-        //    }
-        //    else if (this.onlySelectTrash)
-        //    {
-        //        mainMessage.Text = mc.GetCharacterSentence(2021);
-        //    }
-        //    else
-        //    {
-        //        this.BackColor = mc.PlayerStatusColor;
-        //        this.currentStatusView = mc.PlayerStatusColor;
-        //        SettingCharacterData(mc);
-        //        RefreshPartyMembersBattleStatus(mc);
-        //    }
-        //}
+        public void FirstChara_Click()
+        {
+            if (this.levelUp)
+            {
+                mainMessage.text = GroundOne.MC.GetCharacterSentence(2002);
+                return;
+            }
+            else if (this.useOverShifting)
+            {
+                mainMessage.text = GroundOne.MC.GetCharacterSentence(2023);
+                return;
+            }
+            else if (this.onlySelectTrash)
+            {
+                mainMessage.text = GroundOne.MC.GetCharacterSentence(2021);
+            }
+            else
+            {
+                this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+                this.currentStatusView = GroundOne.MC.PlayerStatusColor;
+                SettingCharacterData(GroundOne.MC);
+                RefreshPartyMembersBattleStatus(GroundOne.MC);
+            }
+        }
 
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-        //    if (this.levelUp)
-        //    {
-        //        mainMessage.Text = sc.GetCharacterSentence(2002);
-        //        return;
-        //    }
-        //    else if (this.useOverShifting)
-        //    {
-        //        mainMessage.Text = sc.GetCharacterSentence(2023);
-        //        return;
-        //    }
-        //    else if (this.onlySelectTrash)
-        //    {
-        //        mainMessage.Text = sc.GetCharacterSentence(2021);
-        //    }
-        //    else
-        //    {
-        //        this.BackColor = sc.PlayerStatusColor;
-        //        this.currentStatusView = sc.PlayerStatusColor;
-        //        SettingCharacterData(sc);
-        //        RefreshPartyMembersBattleStatus(sc);
-        //    }
-        //}
+        public void SecondChara_Click()
+        {
+            if (this.levelUp)
+            {
+                mainMessage.text = GroundOne.SC.GetCharacterSentence(2002);
+                return;
+            }
+            else if (this.useOverShifting)
+            {
+                mainMessage.text = GroundOne.SC.GetCharacterSentence(2023);
+                return;
+            }
+            else if (this.onlySelectTrash)
+            {
+                mainMessage.text = GroundOne.SC.GetCharacterSentence(2021);
+            }
+            else
+            {
+                this.cam.backgroundColor = GroundOne.SC.PlayerStatusColor;
+                this.currentStatusView = GroundOne.SC.PlayerStatusColor;
+                SettingCharacterData(GroundOne.SC);
+                RefreshPartyMembersBattleStatus(GroundOne.SC);
+            }
+        }
 
-        //private void button4_Click(object sender, EventArgs e)
-        //{
-        //    if (this.levelUp)
-        //    {
-        //        mainMessage.Text = tc.GetCharacterSentence(2002);
-        //        return;
-        //    }
-        //    else if (this.useOverShifting)
-        //    {
-        //        mainMessage.Text = tc.GetCharacterSentence(2023);
-        //        return;
-        //    }
-        //    else if (this.onlySelectTrash)
-        //    {
-        //        mainMessage.Text = tc.GetCharacterSentence(2021);
-        //    }
-        //    else
-        //    {
-        //        this.BackColor = tc.PlayerStatusColor;
-        //        this.currentStatusView = tc.PlayerStatusColor;
-        //        SettingCharacterData(tc);
-        //        RefreshPartyMembersBattleStatus(tc);
-        //    }
-        //}
+        public void ThirdChara_Click()
+        {
+            if (this.levelUp)
+            {
+                mainMessage.text = GroundOne.TC.GetCharacterSentence(2002);
+                return;
+            }
+            else if (this.useOverShifting)
+            {
+                mainMessage.text = GroundOne.TC.GetCharacterSentence(2023);
+                return;
+            }
+            else if (this.onlySelectTrash)
+            {
+                mainMessage.text = GroundOne.TC.GetCharacterSentence(2021);
+            }
+            else
+            {
+                this.cam.backgroundColor = GroundOne.TC.PlayerStatusColor;
+                this.currentStatusView = GroundOne.TC.PlayerStatusColor;
+                SettingCharacterData(GroundOne.TC);
+                RefreshPartyMembersBattleStatus(GroundOne.TC);
+            }
+        }
 
         //private void ChangeViewButton_Click(int viewNumber)
         //{

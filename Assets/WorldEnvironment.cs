@@ -4519,6 +4519,11 @@ namespace DungeonPlayer
         public string ItemBank100Stack { get; set; }
         #endregion
 
+        #region "ê^ï“"
+        public bool AvailableSkill = false;
+        public bool AvailableMana = false;
+        #endregion
+
         public void LoadItemBankData(ref string[] items, ref int[] stack)
         {
             items[0] = Convert.ToString(ItemBank1);
