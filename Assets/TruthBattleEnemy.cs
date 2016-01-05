@@ -5287,7 +5287,7 @@ namespace DungeonPlayer
             //    }
             //}
         }
-        private void RunAwayButton_Click()
+        public void RunAwayButton_Click()
         {
             if (this.cannotRunAway)
             {
@@ -5314,9 +5314,9 @@ namespace DungeonPlayer
 
             //    txtBattleMessage.Update();
             //    System.Threading.Thread.Sleep(1000);
-            string backScene = SceneDimension.playbackScene[0];
-            SceneDimension.playbackScene.Clear();
-            Application.LoadLevel(backScene);
+            Destroy(this.gameObject);
+            DontDestroyOnLoad(null);
+            SceneDimension.Back();
             //}
         }
 

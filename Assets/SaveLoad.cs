@@ -1365,6 +1365,39 @@ namespace DungeonPlayer
             // [必須] 最終的には全階層分のデータを一括取得するようになるので、このFor分割は不要となる。
             //string temp1 = DateTime.Now.ToString() + "  " + DateTime.Now.Millisecond.ToString();
 
+            XmlDocument xml2 = new XmlDocument();
+            xml2.Load(Database.WE2_FILE);
+            Type typeWE2 = GroundOne.WE2.GetType();
+            foreach (PropertyInfo pi in typeWE2.GetProperties())
+            {
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, Convert.ToInt32(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, (xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, Convert.ToBoolean(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                    }
+                    catch { }
+                }
+            }
+            Debug.Log("ExecLoad 9");
+
             XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
             XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");
             XmlNodeList list3 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonThreeInfo");
@@ -1413,39 +1446,6 @@ namespace DungeonPlayer
             Debug.Log(DateTime.Now.ToString());
             Debug.Log("ExecLoad 8-5"); 
             
-            XmlDocument xml2 = new XmlDocument();
-            xml2.Load(Database.WE2_FILE);
-            Type typeWE2 = GroundOne.WE2.GetType();
-            foreach (PropertyInfo pi in typeWE2.GetProperties())
-            {
-                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
-                if (pi.PropertyType == typeof(System.Int32))
-                {
-                    try
-                    {
-                        pi.SetValue(GroundOne.WE2, Convert.ToInt32(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                    }
-                    catch { }
-                }
-                else if (pi.PropertyType == typeof(System.String))
-                {
-                    try
-                    {
-                        pi.SetValue(GroundOne.WE2, (xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                    }
-                    catch { }
-                }
-                else if (pi.PropertyType == typeof(System.Boolean))
-                {
-                    try
-                    {
-                        pi.SetValue(GroundOne.WE2, Convert.ToBoolean(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                    }
-                    catch { }
-                }
-            }
-            Debug.Log("ExecLoad 9");
-
             if (forceLoad == false)
             {
                 // todo

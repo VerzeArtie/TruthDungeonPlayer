@@ -62,6 +62,7 @@ namespace DungeonPlayer
         /// </summary>
         public static double PhysicalAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool duelMode)
         {
+            Debug.Log("PhysicalAttackValue");
             return PhysicalAttackValue(player, type, pStr, pAgl, pInt, pMind, pWeapon, stance, spellSkill, duelMode, false);
         }
         /// <summary>
@@ -69,6 +70,7 @@ namespace DungeonPlayer
         /// </summary>
         public static double SubAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, bool duelMode)
         {
+            Debug.Log("SubAttackValue");
             return PhysicalAttackValue(player, type, pStr, pAgl, pInt, pMind, pWeapon, stance, SpellSkillType.Standard, duelMode, true);
         }
         /// <summary>
@@ -212,6 +214,7 @@ namespace DungeonPlayer
                 {
                     if (player.SubWeapon != null)
                     {
+                        Debug.Log("detect subweapon");
                         if ((player.SubWeapon.Type == ItemBackPack.ItemType.Weapon_Heavy) ||
                             (player.SubWeapon.Type == ItemBackPack.ItemType.Weapon_Light) ||
                             (player.SubWeapon.Type == ItemBackPack.ItemType.Weapon_Middle))
@@ -223,6 +226,10 @@ namespace DungeonPlayer
                         {
                             return 0; // サブ武器が武器でない場合は０とみなす。
                         }
+                    }
+                    else
+                    {
+                        return 0; // サブ武器がない場合は０とみなす。
                     }
                 }
             }
