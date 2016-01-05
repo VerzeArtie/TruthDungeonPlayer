@@ -57,46 +57,46 @@ namespace DungeonPlayer
 
         public static void MessageNotFound(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：ん？特に何もなかったと思うが。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ん？特に何もなかったと思うが。"); eventList.Add(ActionEvent.None);
         }
         public static void Message10000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (!GroundOne.WE.BoardInfo10)
             {
-                messageList.Add("アイン：看板があるな・・・なになに？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：看板があるな・・・なになに？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　　『始まりの地、見落とすべからず』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『始まりの地、見落とすべからず』"); eventList.Add(ActionEvent.None);
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    messageList.Add("アイン：始まりの地って、ここのダンジョン１階の事か？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：始まりの地って、ここのダンジョン１階の事か？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：そうなんじゃない？最初が肝心って意味じゃないかしら。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：そうなんじゃない？最初が肝心って意味じゃないかしら。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：見落とす・・・べからず？　べからずってどういう意味だよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：見落とす・・・べからず？　べからずってどういう意味だよ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：「見落としてはいけません」って意味でしょ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：「見落としてはいけません」って意味でしょ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：何だ、普通の看板だな。特にコレといった特徴もねえし。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何だ、普通の看板だな。特にコレといった特徴もねえし。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：くまなくダンジョンを探索してみましょ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：くまなくダンジョンを探索してみましょ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：了解了解！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：了解了解！"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                    messageList.Add("アイン：始まりの地って、ここのダンジョン１階の事か？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：始まりの地って、ここのダンジョン１階の事か？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っと、見落とすべからず？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っと、見落とすべからず？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：しまった・・・「べからず」ってどういう意味だよ。くそ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：しまった・・・「べからず」ってどういう意味だよ。くそ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：まあ、いいか。後でラナにでも聞いてみるか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、いいか。後でラナにでも聞いてみるか。"); eventList.Add(ActionEvent.None);
                 }
                 GroundOne.WE.BoardInfo10 = true;
             }
             else
             {
-                messageList.Add("　　　　『始まりの地、見落とすべからず。』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『始まりの地、見落とすべからず。』"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -104,43 +104,43 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.BoardInfo11)
             {
-                messageList.Add("アイン：こんなトコにも看板か。・・・ええっと？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：こんなトコにも看板か。・・・ええっと？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　　『近道にこそ、危険が潜む』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『近道にこそ、危険が潜む』"); eventList.Add(ActionEvent.None);
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    messageList.Add("ラナ：進むの止めといた方が良いんじゃない？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：進むの止めといた方が良いんじゃない？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：何でだよ？近道だろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何でだよ？近道だろ？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：危険って書いてあるじゃない。あからさまな罠でしょ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：危険って書いてあるじゃない。あからさまな罠でしょ。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.MC.Level < 10)
                     {
-                        messageList.Add("アイン：危険って書いてあるだけだろ？大丈夫だって。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：危険って書いてあるだけだろ？大丈夫だって。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：何で大丈夫なのよ！？引き返しなさいよ！！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：何で大丈夫なのよ！？引き返しなさいよ！！！"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：だあぁぁ、分かったって！引き返すって！っな？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：だあぁぁ、分かったって！引き返すって！っな？"); eventList.Add(ActionEvent.None);
 
-                        // UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        // UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None);
 
                         messageList.Add("アイン：（駄目だ・・・ラナが許してくれそうにもねえ・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationRight); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：（もう少し、レベルアップするか何かしないとな・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：（もう少し、レベルアップするか何かしないとな・・・）"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：でもな俺もLV" + GroundOne.MC.Level + "なワケだし、大丈夫だろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：でもな俺もLV" + GroundOne.MC.Level + "なワケだし、大丈夫だろ？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：そうかしら・・・そんな簡単に進めるとは思えないけど。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：そうかしら・・・そんな簡単に進めるとは思えないけど。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まあ明らかに危ないと感じたら引き返す。それで良いだろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まあ明らかに危ないと感じたら引き返す。それで良いだろ？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：ん～、まあ良いわ。分かったわよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：ん～、まあ良いわ。分かったわよ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：っしゃ、じゃあ進もうぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：っしゃ、じゃあ進もうぜ！"); eventList.Add(ActionEvent.None);
 
                         GroundOne.WE.dungeonEvent29 = true;
                     }
@@ -148,11 +148,11 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    messageList.Add("アイン：なるほどな。まあ確かに近道ってのは危険がつきものだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：なるほどな。まあ確かに近道ってのは危険がつきものだ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って事は、ひょっとしたら・・・すげえルートがあるかもしれねえな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：って事は、ひょっとしたら・・・すげえルートがあるかもしれねえな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ラナが居たら絶対ひき止められそうだが、行ってみるか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ラナが居たら絶対ひき止められそうだが、行ってみるか！"); eventList.Add(ActionEvent.None);
                 }
 
                 GroundOne.WE.BoardInfo11 = true;
@@ -163,41 +163,41 @@ namespace DungeonPlayer
                 {
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("　　　　『近道にこそ、危険が潜む。』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("　　　　『近道にこそ、危険が潜む。』"); eventList.Add(ActionEvent.None);
 
                         if (GroundOne.WE.dungeonEvent30 == false)
                         {
-                            messageList.Add("ラナ：進むの止めといた方が良いんじゃない？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：進むの止めといた方が良いんじゃない？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：何でだよ？近道だろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：何でだよ？近道だろ？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：危険って書いてあるじゃない。あからさまな罠でしょ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：危険って書いてあるじゃない。あからさまな罠でしょ。"); eventList.Add(ActionEvent.None);
 
                             if (GroundOne.MC.Level < 10)
                             {
-                                messageList.Add("アイン：危険って書いてあるだけだろ？大丈夫だって。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：危険って書いてあるだけだろ？大丈夫だって。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("ラナ：何で大丈夫なのよ！？引き返しなさいよ！！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：何で大丈夫なのよ！？引き返しなさいよ！！！"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：だあぁぁ、分かったって！引き返すって！っな？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：だあぁぁ、分かったって！引き返すって！っな？"); eventList.Add(ActionEvent.None);
 
-                                //UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                //UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None);
 
                                 messageList.Add("アイン：（駄目だ・・・ラナが許してくれそうにもねえ・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationRight); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：（もう少し、レベルアップするか何かしないとな・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：（もう少し、レベルアップするか何かしないとな・・・）"); eventList.Add(ActionEvent.None);
                             }
                             else
                             {
-                                messageList.Add("アイン：でもな俺もLV" + GroundOne.MC.Level + "なワケだし、大丈夫だろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：でもな俺もLV" + GroundOne.MC.Level + "なワケだし、大丈夫だろ？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("ラナ：そうかしら・・・そんな簡単に進めるとは思えないけど。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：そうかしら・・・そんな簡単に進めるとは思えないけど。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：まあ明らかに危ないと感じたら引き返す。それで良いだろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：まあ明らかに危ないと感じたら引き返す。それで良いだろ？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("ラナ：ん～、まあ良いわ。分かったわよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：ん～、まあ良いわ。分かったわよ。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：っしゃ、じゃあ進もうぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：っしゃ、じゃあ進もうぜ！"); eventList.Add(ActionEvent.None);
 
                                 GroundOne.WE.dungeonEvent29 = true;
                             }
@@ -207,25 +207,25 @@ namespace DungeonPlayer
                         {
                             if (GroundOne.MC.Level < 8)
                             {
-                                messageList.Add("ラナ：・・・ちょっと！？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：・・・ちょっと！？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：分かった、分かった・・・分かりました、ラナ様・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：分かった、分かった・・・分かりました、ラナ様・・・"); eventList.Add(ActionEvent.None);
 
-                                //UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                //UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None);
 
                                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationRight); eventList.Add(ActionEvent.None);
                             }
                             else
                             {
-                                messageList.Add("アイン：ラナ、俺もLV" + GroundOne.MC.Level + "に到達してる。もう、大丈夫だろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：ラナ、俺もLV" + GroundOne.MC.Level + "に到達してる。もう、大丈夫だろ？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("ラナ：そうかしら・・・そんな簡単に進めるとは思えないけど。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：そうかしら・・・そんな簡単に進めるとは思えないけど。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：まあ明らかに危ないと感じたら引き返す。それで良いだろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：まあ明らかに危ないと感じたら引き返す。それで良いだろ？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("ラナ：ん～、まあ良いわ。分かったわよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：ん～、まあ良いわ。分かったわよ。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：っしゃ、じゃあ進もうぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：っしゃ、じゃあ進もうぜ！"); eventList.Add(ActionEvent.None);
 
                                 GroundOne.WE.dungeonEvent29 = true;
                             }
@@ -233,12 +233,12 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        messageList.Add("　　　　『近道にこそ、危険が潜む。』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("　　　　『近道にこそ、危険が潜む。』"); eventList.Add(ActionEvent.None);
                     }
                 }
                 else
                 {
-                    messageList.Add("　　　　『近道にこそ、危険が潜む。』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("　　　　『近道にこそ、危険が潜む。』"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -247,41 +247,41 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.BoardInfo12)
             {
-                messageList.Add("アイン：おっ、看板発見っと！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：おっ、看板発見っと！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　　『入り口側の扉をすべて開けよ。さすれば、道は開けるであろう。』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『入り口側の扉をすべて開けよ。さすれば、道は開けるであろう。』"); eventList.Add(ActionEvent.None);
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    messageList.Add("ラナ：結構扉が並んでるわね、ズラリと。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：結構扉が並んでるわね、ズラリと。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：各角に２個ずつ扉があるわね。合計８箇所ってとこかしら。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：各角に２個ずつ扉があるわね。合計８箇所ってとこかしら。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：入り口側っていう切り口も少し気になるわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：入り口側っていう切り口も少し気になるわね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：このダンジョン。妙に迷路っぽいだろ。方向が掴み難くいんだよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：このダンジョン。妙に迷路っぽいだろ。方向が掴み難くいんだよ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：少しは自分でマッピングしていったらどうなのよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：少しは自分でマッピングしていったらどうなのよ？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：面倒くせえ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：面倒くせえ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：まったく、そういうとこ本当治らないわね・・・はあぁぁぁ・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：まったく、そういうとこ本当治らないわね・・・はあぁぁぁ・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：まあ良いわ。進む方向とマッピングは私がやるから。アインは戦闘の前衛をお願いね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：まあ良いわ。進む方向とマッピングは私がやるから。アインは戦闘の前衛をお願いね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：サンキュー。恩にきるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：サンキュー。恩にきるぜ！"); eventList.Add(ActionEvent.None);
 
                 }
                 else
                 {
 
-                    messageList.Add("アイン：へえ、結構な扉の数だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：へえ、結構な扉の数だな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：各角に２箇所ずつ、合計８箇所って事か。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：各角に２箇所ずつ、合計８箇所って事か。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：入り口側ってのが少し気にかかるが・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：入り口側ってのが少し気にかかるが・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：まあ考えててもしょうがねえ。探索するしかないな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ考えててもしょうがねえ。探索するしかないな。"); eventList.Add(ActionEvent.None);
                 }
 
                 GroundOne.WE.BoardInfo12 = true;
@@ -290,31 +290,31 @@ namespace DungeonPlayer
             {
                 if (GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.dungeonEvent15)
                 {
-                    messageList.Add("アイン：何かよくわかんねえよな。この看板。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何かよくわかんねえよな。この看板。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：入り口側・・・入り口側・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：入り口側・・・入り口側・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：入り口側って、ひょっとして、右側４つを指しているんじゃないかしら？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：入り口側って、ひょっとして、右側４つを指しているんじゃないかしら？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：マジかよ！？何でそうなるんだよ！？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：マジかよ！？何でそうなるんだよ！？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：単純な理屈よ。単にスタート地点がこの大広間より右側にある、それだけよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：単純な理屈よ。単にスタート地点がこの大広間より右側にある、それだけよ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ソレだ！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ソレだ！！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：ちょっと・・・違うかも知れないわよ？ひょっとしたら反対側の４つかも知れないし。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：ちょっと・・・違うかも知れないわよ？ひょっとしたら反対側の４つかも知れないし。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：良いってイイって！それでいこうぜ！右側４箇所だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：良いってイイって！それでいこうぜ！右側４箇所だな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：っちょ、本当に適当よ。間違ってても知らないわよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：っちょ、本当に適当よ。間違ってても知らないわよ？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：了解！了解！ッハッハッハ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：了解！了解！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent15 = true;
                 }
                 else
                 {
-                    messageList.Add("　　　　『入り口側の扉をすべて開けよ。さすれば、道は開けるであろう。』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("　　　　『入り口側の扉をすべて開けよ。さすれば、道は開けるであろう。』"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -323,42 +323,42 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.BoardInfo13)
             {
-                messageList.Add("アイン：看板が立ててあるな。なになに？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：看板が立ててあるな。なになに？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　　『ダンジョンはメンバー構成によって変化する。』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『ダンジョンはメンバー構成によって変化する。』"); eventList.Add(ActionEvent.None);
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    messageList.Add("アイン：しかしだな、ラナが加わって何か変わったんだろうか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：しかしだな、ラナが加わって何か変わったんだろうか。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：アインが入った時と比べて、何か変化してる？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：アインが入った時と比べて、何か変化してる？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：いいや、特に変わりは無いぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：いいや、特に変わりは無いぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：本当に変化してるのかどうか、分からないわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：本当に変化してるのかどうか、分からないわね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ダンジョンの全構図が見えてれば、分かるんだろうが・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ダンジョンの全構図が見えてれば、分かるんだろうが・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：さすがに今の時点じゃ分からねえな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：さすがに今の時点じゃ分からねえな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：まあ、もう少し他を探索してみましょ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：まあ、もう少し他を探索してみましょ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ああ、そうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ああ、そうだな。"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                    messageList.Add("アイン：ん？そうなのか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？そうなのか。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：まあ、今は俺一人だから変わりようがねえけどな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、今は俺一人だから変わりようがねえけどな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：でも、面白そうだな。今度ラナでも誘ってみるか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：でも、面白そうだな。今度ラナでも誘ってみるか。"); eventList.Add(ActionEvent.None);
                 }
 
                 GroundOne.WE.BoardInfo13 = true;
             }
             else
             {
-                messageList.Add("　　　　『ダンジョンはメンバー構成によって変化する。』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『ダンジョンはメンバー構成によって変化する。』"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -368,31 +368,31 @@ namespace DungeonPlayer
             {
                 messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.TurnToBlack); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　　『真実解１　　＜始まりの地にて＞　　地点【４７　２９】』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　　『真実解１　　＜始まりの地にて＞　　地点【４７　２９】』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：おいおい・・・なんだよ、これ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：おいおい・・・なんだよ、これ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：ちょっと待って、マップ見てみるわ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：ちょっと待って、マップ見てみるわ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：・・・４７　２９は多分座標ポイントね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：・・・４７　２９は多分座標ポイントね。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：その数字からすると・・・右下のホラ、この辺よきっと。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：その数字からすると・・・右下のホラ、この辺よきっと。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：やべ・・・頭が・・・ッグ・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：やべ・・・頭が・・・ッグ・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：っちょ、アイン大丈夫！？汗びっしょりじゃないの！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：っちょ、アイン大丈夫！？汗びっしょりじゃないの！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ッグ・・・だ・・・大丈夫だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ッグ・・・だ・・・大丈夫だ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：激しい頭痛がするだけだ。心配すんなって、大丈夫だから。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：激しい頭痛がするだけだ。心配すんなって、大丈夫だから。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：そんな汗びっしょりでどこが大丈夫なのよ！？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：そんな汗びっしょりでどこが大丈夫なのよ！？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・すまねえ。一旦戻ろう。遠見の青水晶だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・すまねえ。一旦戻ろう。遠見の青水晶だ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：最初からそう言いなさいよ。じゃあ戻るわよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：最初からそう言いなさいよ。じゃあ戻るわよ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：遠見の青水晶を使うわ。ッハイ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：遠見の青水晶を使うわ。ッハイ！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.ReturnToNormal); eventList.Add(ActionEvent.None);
 
@@ -406,35 +406,35 @@ namespace DungeonPlayer
                 {
                     if (!GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("アイン：こんなとこにも看板があるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：こんなとこにも看板があるな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("　　　　『くまなく、探したか？』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("　　　　『くまなく、探したか？』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：なんだこりゃ。くまなく・・・探したか？？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：なんだこりゃ。くまなく・・・探したか？？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：やべ、わかんねえ単語だな。。。「くまなく」って何だよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：やべ、わかんねえ単語だな。。。「くまなく」って何だよ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まあいい。ラナに聞いてみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まあいい。ラナに聞いてみるとするか。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：こんなとこにも看板があるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：こんなとこにも看板があるな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("　　　　『くまなく、探したか？』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("　　　　『くまなく、探したか？』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：くまなく・・・熊無く・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：くまなく・・・熊無く・・・"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：隅々まで余すことなく、って意味よ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：隅々まで余すことなく、って意味よ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：サンキュー。隅々まで探したかどうか・・・か。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：サンキュー。隅々まで探したかどうか・・・か。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：う～ん・・・いまいち分かり辛い内容だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：う～ん・・・いまいち分かり辛い内容だな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：「ダンジョン内をくまなく探せ。」って意味でしょ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：「ダンジョン内をくまなく探せ。」って意味でしょ？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：あんまり深く考えない方が得策よ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：あんまり深く考えない方が得策よ♪"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：ああ・・・まあそうだな・・・。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ああ・・・まあそうだな・・・。"); eventList.Add(ActionEvent.None);
                     }
 
                     GroundOne.WE.BoardInfo14 = true;
@@ -443,11 +443,11 @@ namespace DungeonPlayer
                 {
                     if (GroundOne.WE.dungeonEvent27)
                     {
-                        messageList.Add("　　　　『真実解１　　＜始まりの地にて＞　　地点【４７　２９】』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("　　　　『真実解１　　＜始まりの地にて＞　　地点【４７　２９】』"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("　　　　『くまなく、探したか？』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("　　　　『くまなく、探したか？』"); eventList.Add(ActionEvent.None);
                     }
                 }
             }
@@ -455,7 +455,7 @@ namespace DungeonPlayer
 
         public static void Message10005(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.EncountFlansis); eventList.Add(ActionEvent.None);
         }
@@ -469,23 +469,23 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent11NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
                     GroundOne.WE.dungeonEvent11NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -496,89 +496,89 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen)
                 {
-                    messageList.Add("アイン：っと、何だこりゃ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っと、何だこりゃ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：特に鍵もかかってないみたいね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：特に鍵もかかってないみたいね。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵はどうもかかってなさそうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵はどうもかかってなさそうだな。"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：っしゃ、さっそく開けてみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けてみるとするか！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenLeft); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：わぁ、大きい広間ね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：わぁ、大きい広間ね。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：なんとなく見とれてしまうわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：なんとなく見とれてしまうわね。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：ああ、そうだな・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ああ、そうだな・・・"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まあ探索を続けようぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まあ探索を続けようぜ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：へぇ・・・遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：へぇ・・・遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：おっと、見とれてる場合じゃねえ。探索探索っと！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おっと、見とれてる場合じゃねえ。探索探索っと！"); eventList.Add(ActionEvent.None);
                     }
 
                     GroundOne.WE.dungeonEvent11KeyOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenLeft); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen)
                     {
-                        messageList.Add("アイン：おし、これで４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
                         messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BigEntranceOpen); eventList.Add(ActionEvent.None);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：おお！見ろよラナ！　向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おお！見ろよラナ！　向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：これで先に進めるってわけね♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：これで先に進めるってわけね♪"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：いや、ホント。俺だけで進められなかったぜコレ。本当にサンキューな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：いや、ホント。俺だけで進められなかったぜコレ。本当にサンキューな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：何言ってるのよ。まだ終わったわけじゃないんだから。ホラホラ、先に進みましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：何言ってるのよ。まだ終わったわけじゃないんだから。ホラホラ、先に進みましょ♪"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：おお！向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おお！向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：っしゃ、さっそく向こう側の方へ行ってみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っしゃ、さっそく向こう側の方へ行ってみるとするか！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent16 = true;
@@ -587,17 +587,17 @@ namespace DungeonPlayer
                              (GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen))
                     {
-                        messageList.Add("アイン：おし、これで３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     else if ((GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen))
                     {
-                        messageList.Add("アイン：おし、これで２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     GroundOne.WE.dungeonEvent11KeyOpen = true;
                 }
@@ -614,23 +614,23 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent12NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
                     GroundOne.WE.dungeonEvent12NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -641,74 +641,74 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen)
                 {
-                    messageList.Add("アイン：っと、何だこりゃ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っと、何だこりゃ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：特に鍵もかかってないみたいね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：特に鍵もかかってないみたいね。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵はどうもかかってなさそうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵はどうもかかってなさそうだな。"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：っしゃ、さっそく開けてみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けてみるとするか！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenTop); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：へぇ・・・遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：へぇ・・・遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：おっと、見とれてる場合じゃねえ。探索探索っと！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：おっと、見とれてる場合じゃねえ。探索探索っと！"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent12KeyOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenTop); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen)
                     {
-                        messageList.Add("アイン：おし、これで４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
                         messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BigEntranceOpen); eventList.Add(ActionEvent.None);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：おお！見ろよラナ！　向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おお！見ろよラナ！　向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：これで先に進めるってわけね♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：これで先に進めるってわけね♪"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：いや、ホント。俺だけで進められなかったぜコレ。本当にサンキューな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：いや、ホント。俺だけで進められなかったぜコレ。本当にサンキューな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：何言ってるのよ。まだ終わったわけじゃないんだから。ホラホラ、先に進みましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：何言ってるのよ。まだ終わったわけじゃないんだから。ホラホラ、先に進みましょ♪"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：おお！向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おお！向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：っしゃ、さっそく向こう側の方へ行ってみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っしゃ、さっそく向こう側の方へ行ってみるとするか！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent16 = true;
@@ -717,17 +717,17 @@ namespace DungeonPlayer
                              (GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen))
                     {
-                        messageList.Add("アイン：おし、これで３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     else if ((GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen))
                     {
-                        messageList.Add("アイン：おし、これで２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     GroundOne.WE.dungeonEvent12KeyOpen = true;
                 }
@@ -744,23 +744,23 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent13NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
                     GroundOne.WE.dungeonEvent13NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -771,75 +771,75 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen)
                 {
-                    messageList.Add("アイン：っと、何だこりゃ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っと、何だこりゃ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：特に鍵もかかってないみたいね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：特に鍵もかかってないみたいね。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵はどうもかかってなさそうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵はどうもかかってなさそうだな。"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：っしゃ、さっそく開けてみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けてみるとするか！"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenLeft); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：へぇ・・・遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：へぇ・・・遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：おっと、見とれてる場合じゃねえ。探索探索っと！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：おっと、見とれてる場合じゃねえ。探索探索っと！"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent13KeyOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenLeft); eventList.Add(ActionEvent.None);
 
 
                     if (GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen)
                     {
-                        messageList.Add("アイン：おし、これで４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
                         messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BigEntranceOpen); eventList.Add(ActionEvent.None);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：おお！見ろよラナ！　向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おお！見ろよラナ！　向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：これで先に進めるってわけね♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：これで先に進めるってわけね♪"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：いや、ホント。俺だけで進められなかったぜコレ。本当にサンキューな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：いや、ホント。俺だけで進められなかったぜコレ。本当にサンキューな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：何言ってるのよ。まだ終わったわけじゃないんだから。ホラホラ、先に進みましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：何言ってるのよ。まだ終わったわけじゃないんだから。ホラホラ、先に進みましょ♪"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：おお！向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おお！向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：っしゃ、さっそく向こう側の方へ行ってみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っしゃ、さっそく向こう側の方へ行ってみるとするか！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent16 = true;
@@ -848,17 +848,17 @@ namespace DungeonPlayer
                              (GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen))
                     {
-                        messageList.Add("アイン：おし、これで３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     else if ((GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent14KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen))
                     {
-                        messageList.Add("アイン：おし、これで２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     GroundOne.WE.dungeonEvent13KeyOpen = true;
                 }
@@ -875,23 +875,23 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent14NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
                     GroundOne.WE.dungeonEvent14NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -903,74 +903,74 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen)
                 {
-                    messageList.Add("アイン：っと、何だこりゃ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っと、何だこりゃ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationBottom); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：特に鍵もかかってないみたいね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：特に鍵もかかってないみたいね。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵はどうもかかってなさそうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵はどうもかかってなさそうだな。"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：っしゃ、さっそく開けてみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けてみるとするか！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenBottom); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：へぇ・・・遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：へぇ・・・遠くまで見渡せる感じだな。良い造りしてんじゃねえか。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：おっと、見とれてる場合じゃねえ。探索探索っと！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：おっと、見とれてる場合じゃねえ。探索探索っと！"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent14KeyOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationBottom); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenBottom); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen)
                     {
-                        messageList.Add("アイン：おし、これで４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
                         messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BigEntranceOpen); eventList.Add(ActionEvent.None);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：おお！見ろよラナ！　向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おお！見ろよラナ！　向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：これで先に進めるってわけね♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：これで先に進めるってわけね♪"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：いや、ホント。俺だけで進められなかったぜコレ。本当にサンキューな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：いや、ホント。俺だけで進められなかったぜコレ。本当にサンキューな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：何言ってるのよ。まだ終わったわけじゃないんだから。ホラホラ、先に進みましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：何言ってるのよ。まだ終わったわけじゃないんだから。ホラホラ、先に進みましょ♪"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：おお！向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おお！向こう側の扉が一気に開いたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：っしゃ、さっそく向こう側の方へ行ってみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っしゃ、さっそく向こう側の方へ行ってみるとするか！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent16 = true;
@@ -979,17 +979,17 @@ namespace DungeonPlayer
                              (GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen))
                     {
-                        messageList.Add("アイン：おし、これで３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     else if ((GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent12KeyOpen && !GroundOne.WE.dungeonEvent13KeyOpen) ||
                              (!GroundOne.WE.dungeonEvent11KeyOpen && !GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen))
                     {
-                        messageList.Add("アイン：おし、これで２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：おし、これで２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ他のルートが残ってそうだな。引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     GroundOne.WE.dungeonEvent14KeyOpen = true;
                 }
@@ -1008,9 +1008,9 @@ namespace DungeonPlayer
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateUnknownTile); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：くそっ、開かねえな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：くそっ、開かねえな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：今のところ、通れないみたいだし、他のルートを探すとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：今のところ、通れないみたいだし、他のルートを探すとするか。"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent17 = true;
                 }
@@ -1023,33 +1023,33 @@ namespace DungeonPlayer
                     {
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：ん？何か妙に綺麗な造りをした通路だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：ん？何か妙に綺麗な造りをした通路だな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：まるで扉でもあったかのような場所に見えるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：まるで扉でもあったかのような場所に見えるな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：アイン、良く分かるわね。確かに、ここはもともと扉があったみたいよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：アイン、良く分かるわね。確かに、ここはもともと扉があったみたいよ。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：ラナこそ良く分かったな、そんな事？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：ラナこそ良く分かったな、そんな事？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：この壁の隙間よ。扉がぴったり収まってるわ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：この壁の隙間よ。扉がぴったり収まってるわ。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：なるほど、最初は閉じてたが、いつのまにか開いたって事か。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：なるほど、最初は閉じてたが、いつのまにか開いたって事か。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：まあいい。開いてるんだし、さっそく進もうぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：まあいい。開いてるんだし、さっそく進もうぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：まったく何の考えも無しに突っ込んで、知らないわよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：まったく何の考えも無しに突っ込んで、知らないわよ？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：大丈夫大丈夫！ッハッハッハ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：大丈夫大丈夫！ッハッハッハ！"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：ん？何か妙に綺麗な造りをした通路だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：ん？何か妙に綺麗な造りをした通路だな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：まるで扉でもあったかのような場所に見えるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：まるで扉でもあったかのような場所に見えるな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：・・・なるほど。両脇に扉が押し込まれてるな。そういうことだったのか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：・・・なるほど。両脇に扉が押し込まれてるな。そういうことだったのか。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：まあいい。幸い扉は開いてる。ガンガン進むとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：まあいい。幸い扉は開いてる。ガンガン進むとするか！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent18 = true;
@@ -1059,23 +1059,23 @@ namespace DungeonPlayer
                     {
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：おぉ、いつの間にか扉が開いてるじゃねえか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おぉ、いつの間にか扉が開いてるじゃねえか！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：でも気をつけてよね。こういう所って大概危ないんだから。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：でも気をつけてよね。こういう所って大概危ないんだから。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：そんな危ない所、あるわけねえだろ？さっさと行くぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：そんな危ない所、あるわけねえだろ？さっさと行くぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：まったく何の考えも無しに突っ込んで、知らないわよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：まったく何の考えも無しに突っ込んで、知らないわよ？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：大丈夫大丈夫！ッハッハッハ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：大丈夫大丈夫！ッハッハッハ！"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：おし、思ったとおり。この扉も開くってわけだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おし、思ったとおり。この扉も開くってわけだな。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：ラナが居たら『何の考えも無しに』とか言いそうだが・・・。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：ラナが居たら『何の考えも無しに』とか言いそうだが・・・。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：まあこの扉仕掛け自体が本命だろ。このまま突っ切るぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：まあこの扉仕掛け自体が本命だろ。このまま突っ切るぜ！"); eventList.Add(ActionEvent.None);
                         }
                         GroundOne.WE.dungeonEvent18 = true;
                     }
@@ -1087,7 +1087,7 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.dungeonEvent16)
             {
-                messageList.Add("アイン：扉は閉じたままだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：扉は閉じたままだな。"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -1098,15 +1098,15 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent19)
                 {
-                    messageList.Add("アイン：おっ、ここも扉ってワケか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：おっ、ここも扉ってワケか。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateUnknownTile); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：やっぱりココも開かないようだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：やっぱりココも開かないようだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：開く方法も見つからねえし、やはり他のルートを探すか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：開く方法も見つからねえし、やはり他のルートを探すか。"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent19 = true;
                 }
@@ -1119,80 +1119,80 @@ namespace DungeonPlayer
                     {
                         if (!GroundOne.WE.dungeonEvent17)
                         {
-                            messageList.Add("アイン：ここも、何か妙に綺麗な造りだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：ここも、何か妙に綺麗な造りだな。"); eventList.Add(ActionEvent.None);
 
                             if (GroundOne.WE.AvailableSecondCharacter)
                             {
-                                messageList.Add("ラナ：この壁の隙間にもホラ。扉が収まってるわ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：この壁の隙間にもホラ。扉が収まってるわ。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：本当だな。さっきの音はここのだったのかも知れないな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：本当だな。さっきの音はここのだったのかも知れないな。"); eventList.Add(ActionEvent.None);
                             }
                             else
                             {
-                                messageList.Add("アイン：まるで扉でもあったかのような場所だが・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：まるで扉でもあったかのような場所だが・・・"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：おっ、やっぱりな。両サイドにピッタリと扉がはまっているぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：おっ、やっぱりな。両サイドにピッタリと扉がはまっているぜ。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：きっとここも扉で閉まってたんだろうな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：きっとここも扉で閉まってたんだろうな。"); eventList.Add(ActionEvent.None);
                             }
 
-                            messageList.Add("アイン：さてと・・・このマップからして・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：さてと・・・このマップからして・・・"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：きっとお宝だ！！　マチガイない！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：きっとお宝だ！！　マチガイない！！"); eventList.Add(ActionEvent.None);
 
                             if (GroundOne.WE.AvailableSecondCharacter)
                             {
-                                messageList.Add("ラナ：何でそうなるのよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：何でそうなるのよ？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：俺の勘がそう言ってるんだ。まちがいねえぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：俺の勘がそう言ってるんだ。まちがいねえぜ！"); eventList.Add(ActionEvent.None);
                             }
 
-                            messageList.Add("アイン：さあ、進むぜ！ッハッハッハ！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：さあ、進むぜ！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
 
                             if (GroundOne.WE.AvailableSecondCharacter)
                             {
-                                messageList.Add("ラナ：大丈夫なのかしら、ホント・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：大丈夫なのかしら、ホント・・・"); eventList.Add(ActionEvent.None);
                             }
 
                             GroundOne.WE.dungeonEvent26 = true;
                         }
                         else
                         {
-                            messageList.Add("アイン：ん？何か妙に綺麗な造りをした通路だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：ん？何か妙に綺麗な造りをした通路だな。"); eventList.Add(ActionEvent.None);
 
                             if (GroundOne.WE.AvailableSecondCharacter)
                             {
-                                messageList.Add("アイン：まるで扉でもあったかのような場所に見えるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：まるで扉でもあったかのような場所に見えるな。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("ラナ：アイン、良く分かるわね。確かに、ここはもともと扉があったみたいよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：アイン、良く分かるわね。確かに、ここはもともと扉があったみたいよ。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：ってことは、さっきの音はここのだったのかも知れないな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：ってことは、さっきの音はここのだったのかも知れないな。"); eventList.Add(ActionEvent.None);
                             }
                             else
                             {
-                                messageList.Add("アイン：まるで扉でもあったかのような場所だが・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：まるで扉でもあったかのような場所だが・・・"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：おっ、やっぱりな。両サイドにピッタリと扉がはまっているぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：おっ、やっぱりな。両サイドにピッタリと扉がはまっているぜ。"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：きっとここも扉で閉まってたんだろうな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：きっとここも扉で閉まってたんだろうな。"); eventList.Add(ActionEvent.None);
                             }
 
-                            messageList.Add("アイン：さてと・・・このマップからして・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：さてと・・・このマップからして・・・"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：きっとお宝だ！！　マチガイない！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：きっとお宝だ！！　マチガイない！！"); eventList.Add(ActionEvent.None);
 
                             if (GroundOne.WE.AvailableSecondCharacter)
                             {
                                 messageList.Add("ラナ：何でそうなるのよ？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：俺の勘がそう言ってるんだ。まちがいねえぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：俺の勘がそう言ってるんだ。まちがいねえぜ！"); eventList.Add(ActionEvent.None);
                             }
 
-                            messageList.Add("アイン：さあ、進むぜ！ッハッハッハ！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：さあ、進むぜ！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
 
                             if (GroundOne.WE.AvailableSecondCharacter)
                             {
-                                messageList.Add("ラナ：大丈夫なのかしら、ホント・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                                messageList.Add("ラナ：大丈夫なのかしら、ホント・・・"); eventList.Add(ActionEvent.None);
                             }
 
                             GroundOne.WE.dungeonEvent26 = true;
@@ -1202,36 +1202,36 @@ namespace DungeonPlayer
                     {
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：っしゃ！予想通り、ここの扉が開いてるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っしゃ！予想通り、ここの扉が開いてるぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：よく気づいたわね。こんな所。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：よく気づいたわね。こんな所。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：ああ、大広間の仕掛けがヒントになっていたのさ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：ああ、大広間の仕掛けがヒントになっていたのさ。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：あの大広間、４箇所開くと次の扉が開いただろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：あの大広間、４箇所開くと次の扉が開いただろ？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：だから小広間も扉を開いて行けば、いずれどこか開くってワケさ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：だから小広間も扉を開いて行けば、いずれどこか開くってワケさ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：バカのくせにこういう所はホント勘が良いわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：バカのくせにこういう所はホント勘が良いわね。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：っさてと！これは絶対にお宝だ！！おっ宝お宝！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っさてと！これは絶対にお宝だ！！おっ宝お宝！！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：あんまりはしゃぎすぎて、変なトラップにはまらないでよね？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：あんまりはしゃぎすぎて、変なトラップにはまらないでよね？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：了解了解！　待ってろよ、お宝！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：了解了解！　待ってろよ、お宝！！"); eventList.Add(ActionEvent.None);
 
                         }
                         else
                         {
-                            messageList.Add("アイン：よしきた！ここの扉も開くと思ってたぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：よしきた！ここの扉も開くと思ってたぜ。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：大広間が例の仕掛けだからな。類似系パターンが適用されてたってワケだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：大広間が例の仕掛けだからな。類似系パターンが適用されてたってワケだ。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：よし・・・って事は・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：よし・・・って事は・・・"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：お宝に違いねえ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：お宝に違いねえ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：待ってろよ、お宝！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：待ってろよ、お宝！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent26 = true;
@@ -1244,7 +1244,7 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.dungeonEvent20)
             {
-                messageList.Add("アイン：扉は閉じたままだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：扉は閉じたままだな。"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -1258,17 +1258,17 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent21NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent21NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -1279,63 +1279,63 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent22KeyOpen && !GroundOne.WE.dungeonEvent23KeyOpen)
                 {
-                    messageList.Add("アイン：っお・・・扉だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っお・・・扉だな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：どうするの？調べてみる？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：どうするの？調べてみる？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None);
                     }
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：変なトラップとかも特に無さそうね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：変なトラップとかも特に無さそうね。"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen1); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・ん？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・ん？"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：どうかしたの？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：どうかしたの？"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：・・・気のせいか、少し強い気配を感じる。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・気のせいか、少し強い気配を感じる。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：バカアインもそういう気配察知は大したものよね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：バカアインもそういう気配察知は大したものよね。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：バカは余計だ。まあ、気をつけて探索を続けようぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：バカは余計だ。まあ、気をつけて探索を続けようぜ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：少し気をつけた方が良さそうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：少し気をつけた方が良さそうだな。"); eventList.Add(ActionEvent.None);
                     }
 
                     GroundOne.WE.dungeonEvent21KeyOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen1); eventList.Add(ActionEvent.None);
 
@@ -1343,32 +1343,32 @@ namespace DungeonPlayer
                     {
                         if (GroundOne.WE.dungeonEvent28KeyOpen)
                         {
-                            messageList.Add("アイン：小広間、４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：小広間、４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
                         }
 
-                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
                         messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.CenterBlueOpen); eventList.Add(ActionEvent.None);
                         
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：っお！何か遠くで音がしなかったか！？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っお！何か遠くで音がしなかったか！？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：うん、確かになんか聞こえたわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：うん、確かになんか聞こえたわね。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：どっかの扉が開いたんだろ。行ってみようぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：どっかの扉が開いたんだろ。行ってみようぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：ッフフ、はしゃいじゃって。じゃあ、行ってみましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：ッフフ、はしゃいじゃって。じゃあ、行ってみましょ♪"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：っしゃ！何かの音がしたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っしゃ！何かの音がしたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：おそらくどこかの扉が開いたんだろ。行ってみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おそらくどこかの扉が開いたんだろ。行ってみるとするか！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent20 = true;
@@ -1378,14 +1378,14 @@ namespace DungeonPlayer
                     {
                         if (GroundOne.WE.dungeonEvent28KeyOpen)
                         {
-                            messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：小広間、２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：小広間、２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
                         }
 
-                        messageList.Add("アイン：まだ特に何も起きてねえが・・・引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ特に何も起きてねえが・・・引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     GroundOne.WE.dungeonEvent21KeyOpen = true;
                 }
@@ -1402,17 +1402,17 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent22NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent22NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -1423,63 +1423,63 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent21KeyOpen && !GroundOne.WE.dungeonEvent23KeyOpen)
                 {
-                    messageList.Add("アイン：っお・・・扉だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っお・・・扉だな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：どうするの？調べてみる？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：どうするの？調べてみる？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None);
                     }
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：変なトラップとかも特に無さそうね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：変なトラップとかも特に無さそうね。"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen1); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・ん？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・ん？"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：どうかしたの？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：どうかしたの？"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：・・・気のせいか、少し強い気配を感じる。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・気のせいか、少し強い気配を感じる。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：バカアインもそういう気配察知は大したものよね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：バカアインもそういう気配察知は大したものよね。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：バカは余計だ。まあ、気をつけて探索を続けようぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：バカは余計だ。まあ、気をつけて探索を続けようぜ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：少し気をつけた方が良さそうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：少し気をつけた方が良さそうだな。"); eventList.Add(ActionEvent.None);
                     }
 
                     GroundOne.WE.dungeonEvent22KeyOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen1); eventList.Add(ActionEvent.None);
 
@@ -1487,32 +1487,32 @@ namespace DungeonPlayer
                     {
                         if (GroundOne.WE.dungeonEvent28KeyOpen)
                         {
-                            messageList.Add("アイン：小広間、４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：小広間、４つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
                         }
 
-                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
                         messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.CenterBlueOpen); eventList.Add(ActionEvent.None);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：っお！何か遠くで音がしなかったか！？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っお！何か遠くで音がしなかったか！？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：うん、確かになんか聞こえたわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：うん、確かになんか聞こえたわね。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：どっかの扉が開いたんだろ。行ってみようぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：どっかの扉が開いたんだろ。行ってみようぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：ッフフ、はしゃいじゃって。じゃあ、行ってみましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：ッフフ、はしゃいじゃって。じゃあ、行ってみましょ♪"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：っしゃ！何かの音がしたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っしゃ！何かの音がしたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：おそらくどこかの扉が開いたんだろ。行ってみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おそらくどこかの扉が開いたんだろ。行ってみるとするか！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent20 = true;
@@ -1522,14 +1522,14 @@ namespace DungeonPlayer
                     {
                         if (GroundOne.WE.dungeonEvent28KeyOpen)
                         {
-                            messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：小広間、２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：小広間、２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
                         }
 
-                        messageList.Add("アイン：まだ特に何も起きてねえが・・・引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ特に何も起きてねえが・・・引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     GroundOne.WE.dungeonEvent22KeyOpen = true;
                 }
@@ -1546,17 +1546,17 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent24NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent24NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -1567,35 +1567,35 @@ namespace DungeonPlayer
             {
                 if (GroundOne.WE.dungeonEvent28KeyOpen)
                 {
-                    messageList.Add("アイン：よし、いよいよこれで小広間の扉も５つ目だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：よし、いよいよこれで小広間の扉も５つ目だ。"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                    messageList.Add("アイン：よし、いよいよこれで小広間の扉も４つ目だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：よし、いよいよこれで小広間の扉も４つ目だ。"); eventList.Add(ActionEvent.None);
                 }
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    messageList.Add("ラナ：小広間って確か５つ扉があったわよね？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：小広間って確か５つ扉があったわよね？"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.dungeonEvent28KeyOpen)
                     {
-                        messageList.Add("アイン：ああ、ここが５つ目って事になるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ああ、ここが５つ目って事になるな。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：ああ、これが４つ目って事になるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ああ、これが４つ目って事になるな。"); eventList.Add(ActionEvent.None);
                     }
                 }
                 else
                 {
                     if (GroundOne.WE.dungeonEvent28KeyOpen)
                     {
-                        messageList.Add("アイン：（ココが最後の５つ目って考えるのは少し変だが・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：（ココが最後の５つ目って考えるのは少し変だが・・・）"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：（俺の読みが正しければ、・・・これが先に開くべき扉だ)"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：（俺の読みが正しければ、・・・これが先に開くべき扉だ)"); eventList.Add(ActionEvent.None);
                     }
                 }
 
@@ -1603,72 +1603,72 @@ namespace DungeonPlayer
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    messageList.Add("ラナ：トラップとかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：トラップとかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：何か期待してしまうな・・・それじゃ開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何か期待してしまうな・・・それじゃ開けるぜ！"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                    messageList.Add("アイン：っしゃ・・・開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ・・・開けるぜ！"); eventList.Add(ActionEvent.None);
                 }
 
-                messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen2); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
                     if (GroundOne.WE.dungeonEvent28KeyOpen)
                     {
-                        messageList.Add("アイン：特に何も無いみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：特に何も無いみたいだな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：・・・う～ん。宝箱が１個あったじゃない。そういう事じゃない？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：・・・う～ん。宝箱が１個あったじゃない。そういう事じゃない？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まあ、そうかも知れないな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まあ、そうかも知れないな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：まあ、あんまり深く考えずに進めましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：まあ、あんまり深く考えずに進めましょ♪"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：あぁ、了解だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：あぁ、了解だ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：特に何も無いみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：特に何も無いみたいだな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：・・・そうでも無いみたいよ。ホラ、あの看板。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：・・・そうでも無いみたいよ。ホラ、あの看板。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：看板？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：看板？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：ここからだと良く見えないけど、少し文章が変わってるように見えるわ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：ここからだと良く見えないけど、少し文章が変わってるように見えるわ。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：本当かよ！？早速見に行こうぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：本当かよ！？早速見に行こうぜ！"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：うん、行ってみましょ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：うん、行ってみましょ。"); eventList.Add(ActionEvent.None);
                     }
                 }
                 else
                 {
                     if (GroundOne.WE.dungeonEvent28KeyOpen)
                     {
-                        messageList.Add("アイン：そうそう、何も起きないか、さすがに。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：そうそう、何も起きないか、さすがに。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：（宝箱・・・だけか）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：（宝箱・・・だけか）"); eventList.Add(ActionEvent.None);
 
 
-                        messageList.Add("アイン：（まあ、あんまり深く考えててもしょうがねえよな）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：（まあ、あんまり深く考えててもしょうがねえよな）"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：さて、次へ進めるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：さて、次へ進めるとするか。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：そうそう、何も起きないか、さすがに。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：そうそう、何も起きないか、さすがに。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：ん？あの看板・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ん？あの看板・・・"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：ここからだと良く見えないが、何か文章が変わってるように見えるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ここからだと良く見えないが、何か文章が変わってるように見えるな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：早速見に行ってみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：早速見に行ってみるとするか！"); eventList.Add(ActionEvent.None);
                     }
                 }
 
@@ -1686,17 +1686,17 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent23NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent23NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -1707,89 +1707,89 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent21KeyOpen && !GroundOne.WE.dungeonEvent22KeyOpen)
                 {
-                    messageList.Add("アイン：っお・・・扉だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っお・・・扉だな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：どうするの？調べてみる？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：どうするの？調べてみる？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：変なトラップとかも特に無さそうね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：変なトラップとかも特に無さそうね。"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ、さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen2); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen2); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・ん？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・ん？"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：どうかしたの？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：どうかしたの？"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：・・・気のせいか、少し強い気配を感じる。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・気のせいか、少し強い気配を感じる。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：バカアインもそういう気配察知は大したものよね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：バカアインもそういう気配察知は大したものよね。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：バカは余計だ。まあ、気をつけて探索を続けようぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：バカは余計だ。まあ、気をつけて探索を続けようぜ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：少し気をつけた方が良さそうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：少し気をつけた方が良さそうだな。"); eventList.Add(ActionEvent.None);
                     }
 
                     GroundOne.WE.dungeonEvent23KeyOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen2); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen2); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.dungeonEvent21KeyOpen && GroundOne.WE.dungeonEvent22KeyOpen)
                     {
-                        messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：小広間、３つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.CenterBlueOpen); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.CenterBlueOpen); eventList.Add(ActionEvent.None);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
-                            messageList.Add("アイン：っお！何か遠くで音がしなかったか！？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っお！何か遠くで音がしなかったか！？"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：うん、確かになんか聞こえたわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：うん、確かになんか聞こえたわね。"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：どっかの扉が開いたんだろ。行ってみようぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：どっかの扉が開いたんだろ。行ってみようぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("ラナ：ッフフ、はしゃいじゃって。じゃあ、行ってみましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("ラナ：ッフフ、はしゃいじゃって。じゃあ、行ってみましょ♪"); eventList.Add(ActionEvent.None);
                         }
                         else
                         {
-                            messageList.Add("アイン：っしゃ！何かの音がしたぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：っしゃ！何かの音がしたぜ！"); eventList.Add(ActionEvent.None);
 
-                            messageList.Add("アイン：おそらくどこかの扉が開いたんだろ。行ってみるとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                            messageList.Add("アイン：おそらくどこかの扉が開いたんだろ。行ってみるとするか！"); eventList.Add(ActionEvent.None);
                         }
 
                         GroundOne.WE.dungeonEvent20 = true;
@@ -1797,9 +1797,9 @@ namespace DungeonPlayer
                     else if ((!GroundOne.WE.dungeonEvent21KeyOpen && GroundOne.WE.dungeonEvent22KeyOpen) ||
                              (GroundOne.WE.dungeonEvent21KeyOpen && !GroundOne.WE.dungeonEvent22KeyOpen))
                     {
-                        messageList.Add("アイン：小広間、２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：小広間、２つ目の扉が開いたな。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：まだ特に何も起きてねえが・・・引き続き探索と行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：まだ特に何も起きてねえが・・・引き続き探索と行くか！"); eventList.Add(ActionEvent.None);
                     }
                     GroundOne.WE.dungeonEvent23KeyOpen = true;
                 }
@@ -1810,17 +1810,17 @@ namespace DungeonPlayer
         {
             messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：よし、開けるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：よし、開けるぜ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenRight); eventList.Add(ActionEvent.None);
 
             if (GroundOne.WE.AvailableSecondCharacter == false)
             {
-                messageList.Add("アイン：（ピリピリと殺気を感じるな。コイツはやばいぜ）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（ピリピリと殺気を感じるな。コイツはやばいぜ）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：（１階ボスだな。この感触、間違いねえ。危ないと思ったらすぐ引き返すか）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（１階ボスだな。この感触、間違いねえ。危ないと思ったらすぐ引き返すか）"); eventList.Add(ActionEvent.None);
             }
             else
             {
@@ -1844,31 +1844,31 @@ namespace DungeonPlayer
         {
             if (GroundOne.WE.AvailableSecondCharacter == false)
             {
-                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：（やはりおかしい。進んでは行けない気がする。）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（やはりおかしい。進んでは行けない気がする。）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：（このダンジョンの構成、どうも引っかかる）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（このダンジョンの構成、どうも引っかかる）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：（もう少し他を探索するか）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（もう少し他を探索するか）"); eventList.Add(ActionEvent.None);
             }
             else
             {
-                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：ちょっと、本当にどうしたのよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：ちょっと、本当にどうしたのよ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ラナ、もう少し他を探索しようぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ラナ、もう少し他を探索しようぜ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：アインがそう言うんだったら、別に止めはしないわよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：アインがそう言うんだったら、別に止めはしないわよ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：このダンジョンの構成、どうも引っかかるんだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：このダンジョンの構成、どうも引っかかるんだ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ラナもう少しだけ探索させてくれ。悪ぃな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ラナもう少しだけ探索させてくれ。悪ぃな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：ううん、別に。他に何か無いか、探して見ましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：ううん、別に。他に何か無いか、探して見ましょ♪"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
             }
 
             GroundOne.WE.dungeonEvent25 = true;
@@ -1888,15 +1888,15 @@ namespace DungeonPlayer
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic16); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・扉があるな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・扉があるな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（どうもおかしい、ただならぬ殺気を感じるが）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうもおかしい、ただならぬ殺気を感じるが）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（ひょっとして１階のボスじゃねえか？この先・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（ひょっとして１階のボスじゃねえか？この先・・・）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（・・・どうする・・・開けるか・・・開けないべきか・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・どうする・・・開けるか・・・開けないべきか・・・）"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.DecisionOpenDoor1); eventList.Add(ActionEvent.None);
                 }
@@ -1906,45 +1906,45 @@ namespace DungeonPlayer
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic16); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：扉・・・か。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：扉・・・か。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：鍵はかかってねえみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：鍵はかかってねえみたいだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：どうしたのよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：どうしたのよ？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・いや。何でもねえが・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・いや。何でもねえが・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ラナ、お前どう思う？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ラナ、お前どう思う？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：何がよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：何がよ？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：この扉、トラップとか仕掛けてあると思うか？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉、トラップとか仕掛けてあると思うか？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：今調べてみてるけど、特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：今調べてみてるけど、特に無さそうよ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：そうか・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：そうか・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：一体どうしちゃったのよ。怖気づいたわけ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：一体どうしちゃったのよ。怖気づいたわけ？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：何かこう・・・ダンジョンの構成がわからねえんだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何かこう・・・ダンジョンの構成がわからねえんだ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：ダンジョンの構成？どこがわからないのよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：ダンジョンの構成？どこがわからないのよ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：いや・・・上手く表現できねえが・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：いや・・・上手く表現できねえが・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：納得がいかねえ。そんな感じだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：納得がいかねえ。そんな感じだ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：気にしすぎなんじゃないの？らしくないわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：気にしすぎなんじゃないの？らしくないわね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ああ、そうかもな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ああ、そうかもな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（駄目だ。ラナはこういう所、昔っから鈍感だからな。）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（駄目だ。ラナはこういう所、昔っから鈍感だからな。）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（・・・どうする・・・開けるか・・・開けないべきか・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・どうする・・・開けるか・・・開けないべきか・・・）"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.DecisionOpenDoor1); eventList.Add(ActionEvent.None);
                 }
@@ -1955,7 +1955,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic16); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.DecisionOpenDoor1); eventList.Add(ActionEvent.None);
             }
@@ -1971,7 +1971,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE.TruthCompleteArea1)
             {
-                messageList.Add("アイン：おし、１階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：おし、１階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.GotoHomeTown); eventList.Add(ActionEvent.None);
             }
@@ -1987,24 +1987,24 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent16_1NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent16_1NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -2020,24 +2020,24 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent16_2NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent16_2NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -2052,23 +2052,23 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent16_3NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
                     GroundOne.WE.dungeonEvent16_3NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -2083,23 +2083,23 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent16_4NotOpen)
                 {
-                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？この扉、鍵がかかってるみたいだな。"); eventList.Add(ActionEvent.None);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
-                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：鍵穴とかも特に無さそうよ。"); eventList.Add(ActionEvent.None);
                     }
                     else
                     {
-                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：鍵穴も無いみてえだし・・・"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ、しょうがねえ。他のルートを探してみるとするか。"); eventList.Add(ActionEvent.None);
                     GroundOne.WE.dungeonEvent16_4NotOpen = true;
                 }
                 else
                 {
-                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：この扉は開かないな。他のルートでも探そう。"); eventList.Add(ActionEvent.None);
                 }
             }
         }
@@ -2110,25 +2110,25 @@ namespace DungeonPlayer
             {
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    messageList.Add("アイン：着いたぜ。ここだろ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：着いたぜ。ここだろ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：アイン、相変わらず汗びっしょりね。大丈夫なの？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：アイン、相変わらず汗びっしょりね。大丈夫なの？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：大丈夫だ。変な頭痛は相変わらずだが、倒れるほどじゃねえ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：大丈夫だ。変な頭痛は相変わらずだが、倒れるほどじゃねえ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っさ、行くぞ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っさ、行くぞ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：っえ、えぇ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：っえ、えぇ。"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                    messageList.Add("アイン：着いた。ここだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：着いた。ここだな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（あれから、変な頭痛が取れねえな・・・イツツ・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（あれから、変な頭痛が取れねえな・・・イツツ・・）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（こんな所で立ち止まってたら駄目だ）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（こんな所で立ち止まってたら駄目だ）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っよし、行くぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っよし、行くぜ。"); eventList.Add(ActionEvent.None);
                 }
 
                 GroundOne.WE.dungeonEvent31 = true;
@@ -2146,217 +2146,217 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.TurnToBlack); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　＜＜＜　力こそが全てである ＞＞＞"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　＜＜＜　力こそが全てである ＞＞＞"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic15); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　？？？：これは小さい頃から何度も読んでるっての。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　？？？：これは小さい頃から何度も読んでるっての。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　？？？：そんなだから、てめぇはザコアインのままなんだろ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　？？？：そんなだから、てめぇはザコアインのままなんだろ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：俺はザコアインじゃねえ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：俺はザコアインじゃねえ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：師匠だって、いつも力押しばっかりじゃねえか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：師匠だって、いつも力押しばっかりじゃねえか。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：あぁ、そうだな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：あぁ、そうだな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：じゃあ、力で押す以外に無いって事じゃないか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：じゃあ、力で押す以外に無いって事じゃないか。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：次、読め。ボケアイン"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：次、読め。ボケアイン"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　＜＜＜　力は力にあらず、力は全てである　＞＞＞"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　＜＜＜　力は力にあらず、力は全てである　＞＞＞"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：ここも知ってるって。結局は力って事を言いたいんだろ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：ここも知ってるって。結局は力って事を言いたいんだろ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：っち・・・今のザコアインじゃ、まだ早過ぎか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：っち・・・今のザコアインじゃ、まだ早過ぎか。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：最後の文面も、一応読んどけ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：最後の文面も、一応読んどけ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　＜＜＜　負けられない勝負。　しかし心は満たず。　＞＞＞"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　＜＜＜　負けられない勝負。　しかし心は満たず。　＞＞＞"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　＜＜＜　力のみに依存するな。心を対にせよ。　＞＞＞"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　＜＜＜　力のみに依存するな。心を対にせよ。　＞＞＞"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：・・・読んだぜ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：・・・読んだぜ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：もう行くぞ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：もう行くぞ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：何だよ。教えてくれよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：何だよ。教えてくれよ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：ザコにはザコのままがお似合いだって事さ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：ザコにはザコのままがお似合いだって事さ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：俺はザコじゃねえ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：俺はザコじゃねえ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：とにかく、俺はダンジョンへ行く。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：とにかく、俺はダンジョンへ行く。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：止めとけ。てめぇには無理だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：止めとけ。てめぇには無理だ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：何でそう言い切れるんだよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：何でそう言い切れるんだよ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：俺もずいぶんと強くなった。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：俺もずいぶんと強くなった。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：今じゃ、DUELでもそれなりの戦歴が残せているし。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：今じゃ、DUELでもそれなりの戦歴が残せているし。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：魔物討伐や護衛なんかもかなりハイレベルな内容もやってのけるぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：魔物討伐や護衛なんかもかなりハイレベルな内容もやってのけるぜ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：そういう話してんじゃねえ。無理なもんは無理だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：そういう話してんじゃねえ。無理なもんは無理だ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ラナ：アイン・・・ダンジョン行くの、止めておいたら？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ラナ：アイン・・・ダンジョン行くの、止めておいたら？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：ラナ、お前は師匠がいるといっつも師匠の味方だな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：ラナ、お前は師匠がいるといっつも師匠の味方だな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ラナ：そういうわけじゃないけど・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ラナ：そういうわけじゃないけど・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：俺は行く。決めてたんだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：俺は行く。決めてたんだ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：っち・・・おい、ちょっと待て。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：っち・・・おい、ちょっと待て。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：何だよ。俺は行くぜ？とめても無駄だからな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：何だよ。俺は行くぜ？とめても無駄だからな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：行く前に一つやってけ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：行く前に一つやってけ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：何をやるんだよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：何をやるんだよ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：まさか師匠とDUELで腕試しってわけか。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：まさか師匠とDUELで腕試しってわけか。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：違ぇよ。俺様とじゃなくてだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：違ぇよ。俺様とじゃなくてだ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ランディス：そこの小娘と勝負してみろ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ランディス：そこの小娘と勝負してみろ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：っな！！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：っな！！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　ラナ：わ、わわわ私？？？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　ラナ：わ、わわわ私？？？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：勝敗はどうでもいい。いっぺんココでやってけ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：勝敗はどうでもいい。いっぺんココでやってけ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　アイン：っぐ・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　アイン：っぐ・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：どぉした。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：どぉした。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：ああ！やってやるさ！ラナ、準備は良いか？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：ああ！やってやるさ！ラナ、準備は良いか？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ラナ：うわ、っちょっとぐらい待ってよね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ラナ：うわ、っちょっとぐらい待ってよね。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ラナ：・・・えーっと・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ラナ：・・・えーっと・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ラナ：こんなもんかな。じゃ良いわよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ラナ：こんなもんかな。じゃ良いわよ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：よぉし、じゃあ始め！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：よぉし、じゃあ始め！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    【・・・　・・・　・・・】"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    【・・・　・・・　・・・】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    【・・・　・・・】"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    【・・・　・・・】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    【・・・】"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    【・・・】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：勝負あり！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：勝負あり！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：いっつつつ・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：いっつつつ・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：勝者！ラナ・アミリア！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：勝者！ラナ・アミリア！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ラナ：やったわ♪　私のエレメンタルブローが決まったみたいね♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ラナ：やったわ♪　私のエレメンタルブローが決まったみたいね♪"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：もうちょっとタイミングが合ってれば俺の勝ちだったんだけどな。。。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：もうちょっとタイミングが合ってれば俺の勝ちだったんだけどな。。。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：っち・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：っち・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：師匠すまねえ。ギリギリ負けちまったみたいだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：師匠すまねえ。ギリギリ負けちまったみたいだ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：てめぇ、治ってねえな。その性格。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：てめぇ、治ってねえな。その性格。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：え？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：え？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：自覚、してねえんだろ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：自覚、してねえんだろ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：自覚って何の話だよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：自覚って何の話だよ？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：分かんねぇなら、それまでだ。好きにしろ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：分かんねぇなら、それまでだ。好きにしろ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：・・・じゃ、もう良いか？俺は行くぜ、ダンジョンへ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：・・・じゃ、もう良いか？俺は行くぜ、ダンジョンへ！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ラナ：ちょっとアイン・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ラナ：ちょっとアイン・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：あぁ。行って来い。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：あぁ。行って来い。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ラナ：え、良いんですか？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ラナ：え、良いんですか？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：あぁ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：あぁ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：ラナ、お前も一緒にダンジョン来るか？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：ラナ、お前も一緒にダンジョン来るか？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ラナ：え・・・う～ん・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ラナ：え・・・う～ん・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ラナ：ちょっと、考えさせてよ。っね？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ラナ：ちょっと、考えさせてよ。っね？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：あ、ああ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：あ、ああ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　＜オル・ランディスは少し微笑むと・・・＞"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　＜オル・ランディスは少し微笑むと・・・＞"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：ッフ、まぁガンバレや。ザコアイン。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：ッフ、まぁガンバレや。ザコアイン。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：師匠すまねえ。頑張ってダンジョン制覇してくるぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：師匠すまねえ。頑張ってダンジョン制覇してくるぜ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    ランディス：厳しくなったら、引き返せよ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    ランディス：厳しくなったら、引き返せよ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("    アイン：あ、あぁ。了解了解！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("    アイン：あ、あぁ。了解了解！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.ReturnToNormal); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.ReturnToNormal); eventList.Add(ActionEvent.None);
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    messageList.Add("ラナ：アイン・・・大丈夫？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：アイン・・・大丈夫？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ん？おお・・・おぉ、大丈夫だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん？おお・・・おぉ、大丈夫だ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：随分と壁に向かって止まってたみたいだけど。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：随分と壁に向かって止まってたみたいだけど。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ああ、何て事はねえ。大丈夫だぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ああ、何て事はねえ。大丈夫だぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：汗・・・引いてるわね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：汗・・・引いてるわね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：そうか？そういや、変な頭痛も無くなったみたいだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：そうか？そういや、変な頭痛も無くなったみたいだ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：・・・見たのね？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：・・・見たのね？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：あれは、おそらく過去の記憶だ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：あれは、おそらく過去の記憶だ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：・・・っよし！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：・・・っよし！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：じゃあ、１階のボスを倒しにでも行くか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：じゃあ、１階のボスを倒しにでも行くか！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：っちょ、何でいきなりそうなるのよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：っちょ、何でいきなりそうなるのよ？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：まあ良いじゃねえか。詳しいことは後だ。ボスを倒してしまおうぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：まあ良いじゃねえか。詳しいことは後だ。ボスを倒してしまおうぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：アインって、たまに無理やりよね・・・まあ分かったわ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：アインって、たまに無理やりよね・・・まあ分かったわ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：すまねえな、いろいろと。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：すまねえな、いろいろと。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：別に良いわよ。納得が行ってなかったんでしょ？今まで。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：別に良いわよ。納得が行ってなかったんでしょ？今まで。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：いや、いやいや、そういうわけじゃねえが。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：いや、いやいや、そういうわけじゃねえが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：イイって言ってるじゃない。ホラ、とっとと倒しちゃいましょ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：イイって言ってるじゃない。ホラ、とっとと倒しちゃいましょ♪"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ああ！ボス戦、行こうぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ああ！ボス戦、行こうぜ！"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                    messageList.Add("アイン：（・・・頭の頭痛が消えている・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・頭の頭痛が消えている・・・）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（真実解ってのはおそらく・・・過去の記憶だ）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（真実解ってのはおそらく・・・過去の記憶だ）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：（だとすれば・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（だとすれば・・・）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っしゃ！１階ボス、目指すとするか！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っしゃ！１階ボス、目指すとするか！"); eventList.Add(ActionEvent.None);
                 }
 
                 messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic14); eventList.Add(ActionEvent.None);
@@ -2565,7 +2565,7 @@ namespace DungeonPlayer
 
                         messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+                        messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
 
                         GroundOne.WE.AvailableSecondCharacter = true;
                         GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -2640,7 +2640,7 @@ namespace DungeonPlayer
 
                 messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+                messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
 
                 GroundOne.WE.AvailableSecondCharacter = true;
                 GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -2760,7 +2760,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+            messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
 
             GroundOne.WE.AvailableSecondCharacter = true;
             GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -2829,7 +2829,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+            messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
 
             GroundOne.WE.AvailableSecondCharacter = true;
             GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -2938,7 +2938,7 @@ namespace DungeonPlayer
 
                     messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+                    messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
 
                     GroundOne.WE.AvailableSecondCharacter = true;
                     GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -3686,80 +3686,80 @@ namespace DungeonPlayer
 
             // todo
             //this.imgCharacter1.enabled = true;
-            //this.imgCharacter1.gameObject.SetActive(true); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //this.imgCharacter1.gameObject.SetActive(true); eventList.Add(ActionEvent.None);
             //this.imgCharacter2.enabled = true;
-            //this.imgCharacter2.gameObject.SetActive(true); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
-            messageList.Add("ラナ：っあら、意外と早いじゃない。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //this.imgCharacter2.gameObject.SetActive(true); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：っあら、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、何だか寝覚めが良いんだ。今日も調子全快だぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ああ、何だか寝覚めが良いんだ。今日も調子全快だぜ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：バカな事言ってないで、ホラホラ、朝ごはんでも食べましょ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：バカな事言ってないで、ホラホラ、朝ごはんでも食べましょ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、そうだな！じゃあ、ハンナ叔母さんとこで食べようぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ああ、そうだな！じゃあ、ハンナ叔母さんとこで食べようぜ。"); eventList.Add(ActionEvent.None);
 
             //using (MessageDisplay md = new MessageDisplay())
             //{
             //    md.StartPosition = FormStartPosition.CenterParent;
             //    md.Message = "ハンナの宿屋（料理亭）にて・・・";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
             //}
 
 
-            messageList.Add("アイン：っさっすが、叔母さん！今日の飯もすげえ旨いよな！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っさっすが、叔母さん！今日の飯もすげえ旨いよな！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ハンナ：アッハッハ、よく元気に食べるね。まだ沢山あるからね、どんどん食べな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ハンナ：アッハッハ、よく元気に食べるね。まだ沢山あるからね、どんどん食べな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：アイン、少しは控えなさいよね。恥ずかしいったら。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：アイン、少しは控えなさいよね。恥ずかしいったら。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、控えるぜ。次からな！ッハッハッハ！！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ああ、控えるぜ。次からな！ッハッハッハ！！！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　　『ッドス！』（ラナのサイレントブローがアインの横腹に炸裂）　　"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　『ッドス！』（ラナのサイレントブローがアインの横腹に炸裂）　　"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：うおおぉぉ・・・だから食ってる時にそれをやるなって・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：うおおぉぉ・・・だから食ってる時にそれをやるなって・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・ッムグ・・・ごっそうさん！っでだ、ラナ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・ッムグ・・・ごっそうさん！っでだ、ラナ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：え？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：え？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：オレはダンジョンへ向かうぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：オレはダンジョンへ向かうぜ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：そして、その最下層へオレは辿り付いてみせる！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：そして、その最下層へオレは辿り付いてみせる！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：っちょ、何よいきなり唐突に。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：っちょ、何よいきなり唐突に。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：全然脈略が無いじゃない。何よ、本当にそんなトコ行きたいわけ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：全然脈略が無いじゃない。何よ、本当にそんなトコ行きたいわけ？"); eventList.Add(ActionEvent.None);
 
             //if (GroundOne.WE2.TruthBadEnd1)
             //{
-            //    messageList.Add("アイン：まあ本当に行きたいとか言われてもなあ・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    messageList.Add("アイン：まあ本当に行きたいとか言われてもなあ・・・"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：金を稼いで収支を成り立たせるってのも当然なんだが、"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    messageList.Add("アイン：金を稼いで収支を成り立たせるってのも当然なんだが、"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：伝説のFiveSeekerに追いつきたい気持ちもあるが・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    messageList.Add("アイン：伝説のFiveSeekerに追いつきたい気持ちもあるが・・・"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：それは別として、とにかく行かなくちゃならねえ。そんな気がするんだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    messageList.Add("アイン：それは別として、とにかく行かなくちゃならねえ。そんな気がするんだ。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("ラナ：ふーん、何か曖昧な答えね。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    messageList.Add("ラナ：ふーん、何か曖昧な答えね。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("ラナ：まあ、分かったわよ。っじゃあ、はいコレ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    messageList.Add("ラナ：まあ、分かったわよ。っじゃあ、はいコレ♪"); eventList.Add(ActionEvent.None);
             //}
             //else
             {
-                messageList.Add("アイン：何言ってるんだ、ラナ。俺たちの稼ぎが何なのか忘れたのか？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：何言ってるんだ、ラナ。俺たちの稼ぎが何なのか忘れたのか？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：俺達の収支はダンジョンで成り立ってるだろ。金を稼がないとな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：俺達の収支はダンジョンで成り立ってるだろ。金を稼がないとな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：うん、まあそれは分かってるつもりよ。でも何で最下層に行きたがるの？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：うん、まあそれは分かってるつもりよ。でも何で最下層に行きたがるの？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：何でかって？そりゃあ決まってるだろ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：何でかって？そりゃあ決まってるだろ！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：伝説のFiveSeeker様達に追いつくためさ！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：伝説のFiveSeeker様達に追いつくためさ！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：アインって昔っからFiveSeeker様の事、大好きよね。はしゃいじゃって、ッフフフ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：アインって昔っからFiveSeeker様の事、大好きよね。はしゃいじゃって、ッフフフ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：何がおかしい？FiveSeekerはすべての冒険者にとっての憧れの的だろう？目標にして当然だろ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：何がおかしい？FiveSeekerはすべての冒険者にとっての憧れの的だろう？目標にして当然だろ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：分かったわよ。っじゃあ、はいコレ♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：分かったわよ。っじゃあ、はいコレ♪"); eventList.Add(ActionEvent.None);
             }
 
 
@@ -3767,24 +3767,24 @@ namespace DungeonPlayer
             //{
             //    md.Message = "【遠見の青水晶】を手に入れました。";
             //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
             //}
 
-            //GetItemFullCheck(mc, Database.RARE_TOOMI_BLUE_SUISYOU); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //GetItemFullCheck(mc, Database.RARE_TOOMI_BLUE_SUISYOU); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：お、【遠見の青水晶】じゃねえか。助かるぜ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：お、【遠見の青水晶】じゃねえか。助かるぜ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：無くさないでよ？それ結構レア物で値段張るものなんだから。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：無くさないでよ？それ結構レア物で値段張るものなんだから。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ん？おう、任せておけって！ッハッハッハ！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ん？おう、任せておけって！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
 
-            //messageList.Add("アイン：っと、そうだ。忘れないうちに・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //messageList.Add("アイン：っと、そうだ。忘れないうちに・・・"); eventList.Add(ActionEvent.None);
 
-            //messageList.Add("アイン：・・・（ごそごそ）・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //messageList.Add("アイン：・・・（ごそごそ）・・・"); eventList.Add(ActionEvent.None);
 
-            //messageList.Add("ラナ：何探してるのよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //messageList.Add("ラナ：何探してるのよ？"); eventList.Add(ActionEvent.None);
 
-            //messageList.Add("アイン：確かポケットに入れたはず・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //messageList.Add("アイン：確かポケットに入れたはず・・・"); eventList.Add(ActionEvent.None);
 
             //using (TruthDecision td = new TruthDecision())
             //{
@@ -3792,59 +3792,59 @@ namespace DungeonPlayer
             //    td.FirstMessage = "ラナにイヤリングを渡す。";
             //    td.SecondMessage = "ラナにイヤリングを渡さず、ポケットにしまっておく。";
             //    td.StartPosition = FormStartPosition.CenterParent;
-            //    td.ShowDialog(); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //    td.ShowDialog(); eventList.Add(ActionEvent.None);
             //    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
             //    {
-            //        messageList.Add("アイン：あったあった。ラナ、こいつを渡しておくぜ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        messageList.Add("アイン：あったあった。ラナ、こいつを渡しておくぜ。"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("ラナ：これ、私のイヤリングじゃない。どこで拾ったのよ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        messageList.Add("ラナ：これ、私のイヤリングじゃない。どこで拾ったのよ？"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：どこって、俺の部屋に落ちてたぞ。ラナが落としていったんだろ？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        messageList.Add("アイン：どこって、俺の部屋に落ちてたぞ。ラナが落としていったんだろ？"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("ラナ：・・・っええ！？そそそ、そんなワケ無いじゃない！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        messageList.Add("ラナ：・・・っええ！？そそそ、そんなワケ無いじゃない！！"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：なんでそんな慌ててんだよ。まあ返しておくぜ。ッホラ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        messageList.Add("アイン：なんでそんな慌ててんだよ。まあ返しておくぜ。ッホラ！"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("ラナ：っとと、・・・アリガト♪"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        messageList.Add("ラナ：っとと、・・・アリガト♪"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：お前は変な所で抜けてるからな、しっかり持ってろよな。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        messageList.Add("アイン：お前は変な所で抜けてるからな、しっかり持ってろよな。"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        messageList.Add("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            //        mc.DeleteBackPack(new ItemBackPack("ラナのイヤリング")); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //        mc.DeleteBackPack(new ItemBackPack("ラナのイヤリング")); eventList.Add(ActionEvent.None);
             //        we.Truth_GiveLanaEarring = true;
             //    }
             //    else
             //    {
             //        if (GroundOne.WE2.TruthBadEnd1)
             //        {
-            //            messageList.Add("アイン：（・・・このイヤリング・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：（・・・このイヤリング・・・）"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("アイン：（これをもってると、何か思い出せそうなんだが・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：（これをもってると、何か思い出せそうなんだが・・・）"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("アイン：（ラナには悪いが、もう少し持っておこう・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：（ラナには悪いが、もう少し持っておこう・・・）"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("アイン：いや、何でもねえんだ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：いや、何でもねえんだ。"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("ラナ：今、ポケットをゴソゴソしてたじゃないの？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("ラナ：今、ポケットをゴソゴソしてたじゃないの？"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("アイン：い、いやいや。何でもねえ、ッハッハッハ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：い、いやいや。何でもねえ、ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("ラナ：何よ、あからさまに怪しかったわよ？今のは・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("ラナ：何よ、あからさまに怪しかったわよ？今のは・・・"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("アイン：いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
             //        }
             //        else
             //        {
-            //            messageList.Add("アイン：おっかしいな・・・確かにポケットに入れたはずだが・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：おっかしいな・・・確かにポケットに入れたはずだが・・・"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("ラナ：何か探し物でもしてるの？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("ラナ：何か探し物でもしてるの？"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("アイン：い、いやいや。何でもねえ、ッハッハッハ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：い、いやいや。何でもねえ、ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("ラナ：何よ、怪しいわね・・・"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("ラナ：何よ、怪しいわね・・・"); eventList.Add(ActionEvent.None);
 
-            //            messageList.Add("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            //            messageList.Add("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
             //        }
             //    }
             //}
@@ -3855,55 +3855,55 @@ namespace DungeonPlayer
         #region "ガンツの武具店"
         public static void Message50000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：ガンツ叔父さん、いますかー？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ガンツ叔父さん、いますかー？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：アインか。よく来てくれた。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：アインか。よく来てくれた。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：武具店、開いてますか？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：武具店、開いてますか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：ああ、今月はヴァスタ爺からの物資配給が良くてな。開店しておるので、後で見ていくと良い。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：ああ、今月はヴァスタ爺からの物資配給が良くてな。開店しておるので、後で見ていくと良い。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：っしゃ！やったぜ！じゃあ開始する前に一回拝見させてもらうとするぜ！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っしゃ！やったぜ！じゃあ開始する前に一回拝見させてもらうとするぜ！！"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.AlreadyEquipShop = true;
             GroundOne.WE.AvailableEquipShop = true;
             GroundOne.WE.Truth_CommunicationGanz1 = true; // 初回一日目のみ、ラナ、ガンツ、ハンナの会話を聞いたかどうか判定するため、ここでTRUEとします。
 
-            messageList.Add("ガンツ：アインよ。その口ぶりからして、ダンジョンへ向かうのだな？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：アインよ。その口ぶりからして、ダンジョンへ向かうのだな？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：はい。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：はい。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：アインよ、では心構えを一つ教えて進ぜよう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：アインよ、では心構えを一つ教えて進ぜよう。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ッマジっすか！？ハハ、やったぜ！ありがとうございます！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ッマジっすか！？ハハ、やったぜ！ありがとうございます！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：ダンジョンで殺したモンスターからは、役に立つ材料がいくつも採れる。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：ダンジョンで殺したモンスターからは、役に立つ材料がいくつも採れる。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ッハイ！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ッハイ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：モンスターより得られる部材、素材をワシの所へ持ってくると良い。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：モンスターより得られる部材、素材をワシの所へ持ってくると良い。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ッハイ！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ッハイ！！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：それら部材、素材を組み合わせ、ワシが腕によりをかけて新しい武具を作ろう。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：それら部材、素材を組み合わせ、ワシが腕によりをかけて新しい武具を作ろう。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ッハイ！！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ッハイ！！！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ガンツ：では頼んだぞ。"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("ガンツ：では頼んだぞ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ッハイ！　ありがとうございました！！"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ッハイ！　ありがとうございました！！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（待てよ・・・これはひょっとして・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（待てよ・・・これはひょっとして・・・）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（最後結局「精進しなさい」しか言ってねえよな・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（最後結局「精進しなさい」しか言ってねえよな・・・）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（でもまあ、ガンツ叔父さんの新しい武具生成か。楽しみだな。）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（でもまあ、ガンツ叔父さんの新しい武具生成か。楽しみだな。）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（モンスターから得られた部材・素材はガンツ叔父さんのトコへ持っていくとするか。）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（モンスターから得られた部材・素材はガンツ叔父さんのトコへ持っていくとするか。）"); eventList.Add(ActionEvent.None);
 
         }
         #endregion

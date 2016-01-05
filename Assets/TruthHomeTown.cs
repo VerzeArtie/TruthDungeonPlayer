@@ -23,6 +23,8 @@ namespace DungeonPlayer
         public Button btnOK;
         bool waitMessage = false;
 
+        public GameObject systemMessagePanel;
+        public Text systemMessage;
         public Camera cam;
         public GameObject groupMenu;
         public Button buttonHanna;
@@ -930,7 +932,7 @@ namespace DungeonPlayer
                     dayLabel.gameObject.SetActive(true);
                     this.imgBackground.gameObject.SetActive(true);
                 }
-                else if(current == MessagePack.ActionEvent.HomeTownNight)
+                else if (current == MessagePack.ActionEvent.HomeTownNight)
                 {
                     ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT);
                     this.imgBackground.sprite = Resources.Load<Sprite>(Database.BACKGROUND_NIGHT);
@@ -941,9 +943,14 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.ResurrectHalfLife)
                 {
-                	// todo (target is still unknown)
-                	GroundOne.MC.Dead = false;
-                	GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife / 2;
+                    // todo (target is still unknown)
+                    GroundOne.MC.Dead = false;
+                    GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife / 2;
+                }
+                else if (current == MessagePack.ActionEvent.CallSomeMessageWithAnimation)
+                {
+                    systemMessagePanel.gameObject.SetActive(true);
+                    systemMessage.gameObject.SetActive(true);
                 }
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading-1] == "")
