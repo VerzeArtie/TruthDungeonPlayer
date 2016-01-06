@@ -9,6 +9,15 @@ namespace DungeonPlayer
 {
     public static class GroundOne
     {
+        public enum battleResult 
+        {
+            None, // 情報なし
+            OK, // 勝ち
+            Ignore, // 負け
+            Retry, // 再戦
+            Abort, // 逃げる
+        }
+
         public static string OwnerName = "YuasaTomonori"; // ゲーム接続オーナー名 [todo] ゲーム開始時点でオーナーに名前を入れてもらい、記憶する必要がある。
         public static string guid = "e9a30180-000e-4144-8130-c90c9f317c2f";
 		public static ClientSocket CS = null; // サーバー接続ソケット
@@ -45,8 +54,9 @@ namespace DungeonPlayer
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 
         public static bool CallBattleSetting = false;
-        public static bool CallBattleSettingAwake = false;
 
+        // TruthBattleEnemy
+        public static battleResult BattleResult = battleResult.None;
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
 
@@ -67,6 +77,7 @@ namespace DungeonPlayer
 
             //WE.AvailableSecondCharacter = true;
             //WE.AvailableThirdCharacter = true;
+            WE.AvailableInstantCommand = true;
 
             WE.AvailableMana = true;
             WE.AvailableSkill = true;

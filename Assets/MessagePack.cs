@@ -3680,7 +3680,62 @@ namespace DungeonPlayer
                  // SecondCommunicationStart(); eventList.Add(ActionEvent.None); // todo
 			}
         }
-        
+
+        public static void Message20200(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20201(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20202(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20203(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20300(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20301(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20302(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20303(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20304(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20305(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20306(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20307(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20600(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
+
+        public static void Message20601(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        {
+        }
         // DUEL闘技場開催
         public static void Message29000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -3884,7 +3939,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（ＤＵＥＬ・・・懐かしい感じがするな。。。）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（っしゃ、明日からも頑張って行くとするか！）", true); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（っしゃ、明日からも頑張って行くとするか！）"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -3929,7 +3984,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：逃げても・・・おそらく無駄だろうな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ここは闘技場へ行くしかないか。", true); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ここは闘技場へ行くしかないか。"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.AvailableDuelMatch = true;
         }
@@ -3987,7 +4042,7 @@ namespace DungeonPlayer
             //CallSomeMessageWithAnimation("【ESCメニューより「バトル設定」が選択できるようになりました。】"); eventList.Add(ActionEvent.None);
 
             // todo
-            CallSomeMessageWithAnimation("【習得した魔法・スキルをバトルコマンドに設定できるようになります。】"); eventList.Add(ActionEvent.None);
+            //CallSomeMessageWithAnimation("【習得した魔法・スキルをバトルコマンドに設定できるようになります。】"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.AvailableBattleSettingMenu = true;
         }
@@ -4417,8 +4472,6 @@ namespace DungeonPlayer
         }
         #endregion
 
-
         #endregion
-
     }
 }

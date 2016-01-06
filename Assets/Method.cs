@@ -11,6 +11,12 @@ namespace DungeonPlayer
 {
     public class Method
     {
+        public enum NewItemCategory
+        {
+            Battle,
+            Lottery,
+        }
+
         // panel(gameobject)の色をレアに応じて変更
         public static void UpdateRareColor(ItemBackPack item, Text target1, GameObject target2)
         {
@@ -100,6 +106,13 @@ namespace DungeonPlayer
         public static void AutoSaveRealWorld(MainCharacter MC, MainCharacter SC, MainCharacter TC, WorldEnvironment WE, bool[] knownTileInfo, bool[] knownTileInfo2, bool[] knownTileInfo3, bool[] knownTileInfo4, bool[] knownTileInfo5, bool[] Truth_KnownTileInfo, bool[] Truth_KnownTileInfo2, bool[] Truth_KnownTileInfo3, bool[] Truth_KnownTileInfo4, bool[] Truth_KnownTileInfo5)
         {
             // todo
+        }
+
+
+        // 戦闘終了後のアイテムゲット、ファージル宮殿お楽しみ抽選券のアイテムゲットを統合
+        public static string GetNewItem(NewItemCategory category, MainCharacter mc, TruthEnemyCharacter ec1 = null, int dungeonArea = 0)
+        {
+            return ""; // todo
         }
     }
 }

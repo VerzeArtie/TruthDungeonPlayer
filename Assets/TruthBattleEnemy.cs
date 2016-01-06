@@ -60,8 +60,6 @@ namespace DungeonPlayer
         public Sprite imgPoison;
 
         // GUI
-        public Image debugimage;
-
         public GameObject popupInfo;
         public Text CurrentInfo;
         public Text BattleStart;
@@ -191,6 +189,8 @@ namespace DungeonPlayer
         int BattleTurnCount = 0;
 
         bool gameStart = false;
+
+        bool endBattleForMatrixDragonEnd = false; // 支配竜会話終了時に戦闘終了させるフラグ
 
         TruthEnemyCharacter ec1;
         TruthEnemyCharacter ec2;
@@ -858,27 +858,11 @@ namespace DungeonPlayer
             pbBuff[ii].gameObject.SetActive(false);
             pbBuff[ii].transform.SetParent(buffPanel.transform, false);
         }
-        private static bool created = false;
-        void Awake()
-        {
-            Debug.Log("TruthBattleEnemy Awake");
-            if (!created)
-            {
-                DontDestroyOnLoad(this.gameObject);
-                created = true;
-            }
-            else
-            {
-                Destroy(this.gameObject);
-                GroundOne.CallBattleSettingAwake = true;
-            }
-
-            GroundOne.InitializeGroundOne();
-        }
 
         // Use this for initialization
         void Start()
         {
+            GroundOne.InitializeGroundOne();
             pbBuffPlayer1 = new TruthImage[Database.BUFF_NUM];
             pbBuffPlayer2 = new TruthImage[Database.BUFF_NUM];
             pbBuffPlayer3 = new TruthImage[Database.BUFF_NUM];
@@ -1084,26 +1068,27 @@ namespace DungeonPlayer
         void Update()
         {
             #region "SceneBack Refresh Logic"
-            if (GroundOne.CallBattleSetting && GroundOne.CallBattleSettingAwake)
-            {
-                Debug.Log("CallBattleSetting true, then reflesh");
-                GroundOne.CallBattleSetting = false;
-                GroundOne.CallBattleSettingAwake = false;
+            // todo
+            //if (GroundOne.CallBattleSetting && GroundOne.CallBattleSettingAwake)
+            //{
+            //    Debug.Log("CallBattleSetting true, then reflesh");
+            //    GroundOne.CallBattleSetting = false;
+            //    GroundOne.CallBattleSettingAwake = false;
 
-                UpdateBattleCommandSetting(GroundOne.MC, ActionButton1, IsSorcery1);
-                //UpdateBattleCommandSetting(mc, mc.ActionButton1, mc.ActionButton2, mc.ActionButton3, mc.ActionButton4, mc.ActionButton5, mc.ActionButton6, mc.ActionButton7, mc.ActionButton8, mc.ActionButton9,
-                //                               mc.IsSorceryMark1, mc.IsSorceryMark2, mc.IsSorceryMark3, mc.IsSorceryMark4, mc.IsSorceryMark5, mc.IsSorceryMark6, mc.IsSorceryMark7, mc.IsSorceryMark8, mc.IsSorceryMark9);
-                //if (we.AvailableSecondCharacter && this.DuelMode == false)
-                //{
-                //    UpdateBattleCommandSetting(sc, sc.ActionButton1, sc.ActionButton2, sc.ActionButton3, sc.ActionButton4, sc.ActionButton5, sc.ActionButton6, sc.ActionButton7, sc.ActionButton8, sc.ActionButton9,
-                //                                   sc.IsSorceryMark1, sc.IsSorceryMark2, sc.IsSorceryMark3, sc.IsSorceryMark4, sc.IsSorceryMark5, sc.IsSorceryMark6, sc.IsSorceryMark7, sc.IsSorceryMark8, sc.IsSorceryMark9);
-                //}
-                //if (we.AvailableThirdCharacter && this.DuelMode == false)
-                //{
-                //    UpdateBattleCommandSetting(tc, tc.ActionButton1, tc.ActionButton2, tc.ActionButton3, tc.ActionButton4, tc.ActionButton5, tc.ActionButton6, tc.ActionButton7, tc.ActionButton8, tc.ActionButton9,
-                //                                   tc.IsSorceryMark1, tc.IsSorceryMark2, tc.IsSorceryMark3, tc.IsSorceryMark4, tc.IsSorceryMark5, tc.IsSorceryMark6, tc.IsSorceryMark7, tc.IsSorceryMark8, tc.IsSorceryMark9);
-                //}
-            }
+            //    UpdateBattleCommandSetting(GroundOne.MC, ActionButton1, IsSorcery1);
+            //    //UpdateBattleCommandSetting(mc, mc.ActionButton1, mc.ActionButton2, mc.ActionButton3, mc.ActionButton4, mc.ActionButton5, mc.ActionButton6, mc.ActionButton7, mc.ActionButton8, mc.ActionButton9,
+            //    //                               mc.IsSorceryMark1, mc.IsSorceryMark2, mc.IsSorceryMark3, mc.IsSorceryMark4, mc.IsSorceryMark5, mc.IsSorceryMark6, mc.IsSorceryMark7, mc.IsSorceryMark8, mc.IsSorceryMark9);
+            //    //if (we.AvailableSecondCharacter && this.DuelMode == false)
+            //    //{
+            //    //    UpdateBattleCommandSetting(sc, sc.ActionButton1, sc.ActionButton2, sc.ActionButton3, sc.ActionButton4, sc.ActionButton5, sc.ActionButton6, sc.ActionButton7, sc.ActionButton8, sc.ActionButton9,
+            //    //                                   sc.IsSorceryMark1, sc.IsSorceryMark2, sc.IsSorceryMark3, sc.IsSorceryMark4, sc.IsSorceryMark5, sc.IsSorceryMark6, sc.IsSorceryMark7, sc.IsSorceryMark8, sc.IsSorceryMark9);
+            //    //}
+            //    //if (we.AvailableThirdCharacter && this.DuelMode == false)
+            //    //{
+            //    //    UpdateBattleCommandSetting(tc, tc.ActionButton1, tc.ActionButton2, tc.ActionButton3, tc.ActionButton4, tc.ActionButton5, tc.ActionButton6, tc.ActionButton7, tc.ActionButton8, tc.ActionButton9,
+            //    //                                   tc.IsSorceryMark1, tc.IsSorceryMark2, tc.IsSorceryMark3, tc.IsSorceryMark4, tc.IsSorceryMark5, tc.IsSorceryMark6, tc.IsSorceryMark7, tc.IsSorceryMark8, tc.IsSorceryMark9);
+            //    //}
+            //}
             #endregion
 
             #region "キー制御"
@@ -1159,6 +1144,33 @@ namespace DungeonPlayer
             }
             #endregion
 
+            #region "ゲームエンド判定"
+            if (GroundOne.MC.CurrentLife <= 0 && GroundOne.SC.CurrentLife <= 0 && GroundOne.TC.CurrentLife <= 0)
+            {
+                if (this.txtBattleMessage != null)
+                {
+                    this.txtBattleMessage.text = "You lose...";
+                    this.txtBattleMessage.enabled = true;
+                }
+                BattleEndPhase();
+            }
+            else if (this.ec1.CurrentLife <= 0 && this.ec2.CurrentLife <= 0 && this.ec3.CurrentLife <= 0)
+            {
+                if (this.txtBattleMessage != null)
+                {
+                    this.txtBattleMessage.text = "YOU WIN !!";
+                    this.txtBattleMessage.enabled = true;
+                }
+                BattleEndPhase();
+            }
+            #endregion
+
+            #region "進行停止"
+            if (this.endFlag) { return; } // 終了サインが出た場合、戦闘終了として待機する。
+            if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
+            if (this.endBattleForMatrixDragonEnd) { return; } // 戦闘終了サインにより、戦闘を抜ける。
+            #endregion
+
             #region "ゲージ位置"
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
@@ -1168,14 +1180,10 @@ namespace DungeonPlayer
             }
             #endregion
 
-            if (this.endFlag) { return; } // 終了サインが出た場合、戦闘終了として待機する。
-            if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
-
             CheckStackInTheCommand();
             if (UpdatePlayerDeadFlag())
             {
-                this.endFlag = true;
-                return;
+                return; // パーティ死亡確認で戦闘を抜ける。
             }
 
             // todo
@@ -1324,40 +1332,10 @@ namespace DungeonPlayer
             }
             #endregion
 
-            //CheckStackInTheCommand();
-            if (UpdatePlayerDeadFlag()) { this.endFlag = true; }// パーティ死亡確認で戦闘を抜ける。
-            //if (this.endBattleForMatrixDragonEnd) break; // 戦闘終了サインにより、戦闘を抜ける。
-
-            //pbPlayer1.Invalidate();
-
-            // BattleEndPhase // todo
-            if (GroundOne.MC.CurrentLife <= 0 && GroundOne.SC.CurrentLife <= 0 && GroundOne.TC.CurrentLife <= 0)
+            CheckStackInTheCommand();
+            if (UpdatePlayerDeadFlag())
             {
-                if (this.txtBattleMessage != null)
-                {
-                    this.txtBattleMessage.text = "You lose..." + this.endFlag.ToString();
-                    this.txtBattleMessage.enabled = true;
-                }
-                this.endFlag = true;
-            }
-            else if (this.ec1.CurrentLife <= 0 && this.ec2.CurrentLife <= 0 && this.ec3.CurrentLife <= 0)
-            {
-                if (this.txtBattleMessage != null)
-                {
-                    this.txtBattleMessage.text = "YOU WIN !!";
-                    this.txtBattleMessage.enabled = true;
-                }
-                this.endFlag = true;
-            }
-
-            // battle logic
-            for (int ii = 0; ii < this.playerList.Count; ii++)
-            {
-                if (this.playerList[ii].CurrentInstantPoint < this.playerList[ii].MaxInstantPoint)
-                {
-                    this.playerList[ii].CurrentInstantPoint++;
-                    UpdateInstantPoint(this.playerList[ii]);
-                }
+                return; // パーティ死亡確認で戦闘を抜ける。
             }
         }
 
@@ -1611,10 +1589,7 @@ namespace DungeonPlayer
             }
 
             player.CurrentInstantPoint = 0;
-            if (player.labelCurrentInstantPoint != null)
-            {
-                player.labelCurrentInstantPoint.text = player.CurrentInstantPoint.ToString();
-            }
+            UpdateInstantPoint(player);
             return true;
         }
 
@@ -1637,23 +1612,17 @@ namespace DungeonPlayer
                 return;
             }
 
-            if (player.labelCurrentInstantPoint != null)
+            if (player.CurrentInstantPoint < player.MaxInstantPoint)
             {
-                if (player.CurrentInstantPoint < player.MaxInstantPoint)
-                {
-                    player.CurrentInstantPoint += (int)PrimaryLogic.BattleResponseValue(player, this.DuelMode);
-                }
-                player.labelCurrentInstantPoint.text = ((int)player.CurrentInstantPoint).ToString();
+                player.CurrentInstantPoint += (int)PrimaryLogic.BattleResponseValue(player, this.DuelMode);
             }
+            UpdateInstantPoint(player);
 
-            if (player.labelCurrentSpecialInstant != null)
+            if (player.CurrentSpecialInstant < player.MaxSpecialInstant)
             {
-                if (player.CurrentSpecialInstant < player.MaxSpecialInstant)
-                {
-                    player.CurrentSpecialInstant += PrimaryLogic.BattleResponseValue(player, this.DuelMode);
-                }
-                player.labelCurrentSpecialInstant.text = ((int)player.CurrentSpecialInstant).ToString() + " / " + player.MaxSpecialInstant;
+                player.CurrentSpecialInstant += PrimaryLogic.BattleResponseValue(player, this.DuelMode);
             }
+            UpdateSpecialInstantPoint(player);
         }
 
         private void UpdatePlayerGaugePosition(MainCharacter player)
@@ -1931,6 +1900,181 @@ namespace DungeonPlayer
             //        mainCharacter.Target = group[0];
             //    }
             //}
+        }
+
+        private void BattleEndPhase()
+        {
+            Debug.Log("BattleEndPhase start");
+            for (int ii = 0; ii < ActiveList.Count; ii++)
+            {
+                string brokenName = String.Empty;
+                ActiveList[ii].CleanUpBattleEnd(ref brokenName);
+                if (brokenName != String.Empty)
+                {
+                    // todo
+                    // 破損したアイテム名を出しても良いが、名前が長すぎる場合、読めないので、アイテム名表示は不要と判断。
+                    //this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 200, Color.Red, false, false, Database.BROKEN_ITEM);
+                }
+            }
+
+            // 支配竜会話終了時、通常終了とみなす。
+            if (this.endBattleForMatrixDragonEnd)
+            {
+                Debug.Log("end phase 1");
+                GroundOne.BattleResult = GroundOne.battleResult.OK;
+            }
+            // [警告]万が一、相打ちの場合、プレイヤーの負けとみなす
+            else if (EnemyPartyDeathCheck())
+            {
+                Debug.Log("end phase 2");
+                if (this.DuelMode)
+                {
+                    txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインはDUELに敗れた！\r\n");
+                    System.Threading.Thread.Sleep(1000);
+                    GroundOne.BattleResult = GroundOne.battleResult.Ignore;
+                }
+                else
+                {
+                    txtBattleMessage.text = txtBattleMessage.text.Insert(0, "全滅しました・・・もう一度この戦闘をやり直しますか？\r\n");
+                    // todo
+                    //yesno.ShowDialog();
+                    //if (yesno.DialogResult == DialogResult.Yes)
+                    //{
+                    //    GroundOne.BattleResult = GroundOne.battleResult.Retry;
+                    //}
+                    //else
+                    //{
+                        GroundOne.BattleResult = GroundOne.battleResult.Ignore;
+                    //}
+                }
+            }
+            else if (endFlag)
+            {
+                Debug.Log("end phase 3");
+                if (!GroundOne.WE.AvailableSecondCharacter)
+                {
+                    if (this.DuelMode)
+                    {
+                        txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは降参を宣言した。\r\n");
+                    }
+                    else
+                    {
+                        txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは逃げ出した。\r\n");
+                    }
+                }
+                else
+                {
+                    if (this.DuelMode)
+                    {
+                        txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは降参を宣言した。\r\n");
+                    }
+                    else
+                    {
+                        txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アイン達は逃げ出した。\r\n");
+                    }
+                }
+                System.Threading.Thread.Sleep(1000);
+                GroundOne.BattleResult = GroundOne.battleResult.Abort;
+            }
+            else
+            {
+                Debug.Log("end phase 4");
+                txtBattleMessage.text = txtBattleMessage.text.Insert(0, "敵を倒した。\r\n");
+                System.Threading.Thread.Sleep(1000);
+
+                // 敵撃墜カウントを数える。
+                GroundOne.WE2.KillingEnemy++;
+
+                // 練習用の剣カウントを数える。
+                if (GroundOne.MC != null)
+                {
+                    if ((GroundOne.MC.MainWeapon != null) && (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO) ||
+                        (GroundOne.MC.SubWeapon != null) && (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO))
+                    {
+                        GroundOne.WE2.PracticeSwordCount++;
+                    }
+                }
+
+                if (this.DuelMode == false)
+                {
+                    string targetItemName = Method.GetNewItem(Method.NewItemCategory.Battle, GroundOne.MC, ec1, GroundOne.WE.DungeonArea);
+
+                    // todo
+                    //using (MessageDisplayWithIcon mdwi = new MessageDisplayWithIcon())
+                    //{
+                    //    if (targetItemName != string.Empty)
+                    //    {
+                    //        ItemBackPack item = new ItemBackPack(targetItemName);
+                    //        mdwi.Message = item.Name + "を入手した！";
+                    //        mdwi.Item = item;
+                    //        if (mdwi.Item.Rare == ItemBackPack.RareLevel.Epic)
+                    //        {
+                    //            GroundOne.PlaySoundEffect(Database.SOUND_GET_EPIC_ITEM);
+                    //        }
+                    //        else if (mdwi.Item.Rare == ItemBackPack.RareLevel.Rare)
+                    //        {
+                    //            GroundOne.PlaySoundEffect(Database.SOUND_GET_RARE_ITEM);
+                    //        }
+                    //        mdwi.StartPosition = FormStartPosition.CenterParent;
+                    //        mdwi.ShowDialog();
+
+                    //        if (GetNewItem(item))
+                    //        {
+                    //            // バックパックが空いてて入手可能な場合、ここでは何もしない。
+                    //        }
+                    //        else
+                    //        {
+                    //            // バックパックがいっぱいの場合ステータス画面で不要アイテムを捨てさせます。
+                    //            mdwi.Message = "バックパックがいっぱいのため、ステータス画面を開きます。";
+                    //            mdwi.Item = new ItemBackPack("");
+                    //            mdwi.ShowDialog();
+                    //            using (TruthStatusPlayer sp = new TruthStatusPlayer())
+                    //            {
+                    //                sp.MC = mc;
+                    //                if (we.AvailableSecondCharacter)
+                    //                {
+                    //                    sp.SC = sc;
+                    //                }
+                    //                if (we.AvailableThirdCharacter)
+                    //                {
+                    //                    sp.TC = tc;
+                    //                }
+                    //                sp.WE = we;
+                    //                sp.StartPosition = FormStartPosition.CenterParent;
+                    //                sp.OnlySelectTrash = true;
+                    //                sp.ShowDialog();
+                    //                mc = sp.MC;
+                    //                if (we.AvailableSecondCharacter)
+                    //                {
+                    //                    sc = sp.SC;
+                    //                }
+                    //                if (we.AvailableThirdCharacter)
+                    //                {
+                    //                    tc = sp.TC;
+                    //                }
+                    //                if (sp.DialogResult == DialogResult.Abort)
+                    //                {
+                    //                    GroundOne.BattleResult = GroundOne.battleResult.Abort;
+                    //                }
+                    //            }
+                    //            GetNewItem(item);
+                    //        }
+                    //    }
+                    //}
+                }
+                GroundOne.BattleResult = GroundOne.battleResult.OK;
+            }
+
+            Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
+            if (GroundOne.BattleResult == GroundOne.battleResult.OK)
+            {
+                Debug.Log("MC gold before: " + GroundOne.MC.Gold.ToString());
+                GroundOne.MC.Gold += ec1.Gold;
+                Debug.Log("MC gold after: " + GroundOne.MC.Gold.ToString());
+            }
+            Debug.Log("back");
+            SceneDimension.Back();
+            Debug.Log("end");
         }
 
         public enum MethodType
@@ -5119,6 +5263,10 @@ namespace DungeonPlayer
                 player.meterCurrentInstantPoint.rectTransform.localScale = new Vector2(dx, 1.0f);
             }
         }
+        private void UpdateSpecialInstantPoint(MainCharacter player)
+        {
+            // todo
+        }
 
         private void PlayerInstantCommand(MainCharacter player, MainCharacter target, string command)
         {
@@ -5314,8 +5462,6 @@ namespace DungeonPlayer
 
             //    txtBattleMessage.Update();
             //    System.Threading.Thread.Sleep(1000);
-            Destroy(this.gameObject);
-            DontDestroyOnLoad(null);
             SceneDimension.Back();
             //}
         }

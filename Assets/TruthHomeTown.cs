@@ -260,42 +260,42 @@ namespace DungeonPlayer
             #region "３階、鏡エリア２－１をクリアした時"
             else if (GroundOne.WE.dungeonEvent314 && !GroundOne.WE.dungeonEvent314_2)
             {
-                MessagePack.Message20301(ref nowMessage, ref nowEvent);
+                MessagePack.Message20302(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "３階、鏡エリア２－２をクリアした時"
             else if (GroundOne.WE.dungeonEvent315 && !GroundOne.WE.dungeonEvent315_2)
             {
-                MessagePack.Message20302(ref nowMessage, ref nowEvent);
+                MessagePack.Message20303(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }        
             #endregion
             #region "３階、鏡エリア２－３をクリアした時"
             else if (GroundOne.WE.dungeonEvent316 && !GroundOne.WE.dungeonEvent316_2)
             {
-                MessagePack.Message20303(ref nowMessage, ref nowEvent);
+                MessagePack.Message20304(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "３階、鏡エリア２－４をクリアした時"
             else if (GroundOne.WE.dungeonEvent317 && !GroundOne.WE.dungeonEvent317_2)
             {
-                MessagePack.Message20304(ref nowMessage, ref nowEvent);
-                NormalTapOK();
-            }
-            #endregion
-            #region "３階、鏡エリア２－５をクリアした時"
-            else if (GroundOne.WEGroundOne.WE.dungeonEvent312 && !GroundOne.WE.dungeonEvent312_2)
-            {
                 MessagePack.Message20305(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
-            #region "３階制覇"
-            else if (GroundOne.WEGroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.TruthCommunicationCompArea3)
+            #region "３階、鏡エリア２－５をクリアした時"
+            else if (GroundOne.WE.dungeonEvent312 && !GroundOne.WE.dungeonEvent312_2)
             {
                 MessagePack.Message20306(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階制覇"
+            else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.TruthCommunicationCompArea3)
+            {
+                MessagePack.Message20307(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
@@ -329,18 +329,19 @@ namespace DungeonPlayer
             }
             #endregion
             #region "ESCメニュー：バトル設定"
-            else if (!GroundOne.WE.AvailableBattleSettingMenu && this.mc.Level >= 4)
+            else if (!GroundOne.WE.AvailableBattleSettingMenu && GroundOne.MC.Level >= 4)
             {
             	MessagePack.Message29002(ref nowMessage, ref nowEvent);
             	NormalTapOK();
             }
             #endregion
             #region "戦闘：インスタントアクション"
-            else if (!GroundOne.WE.AvailableInstantCommand && this.mc.Level >= 6)
+            else if (!GroundOne.WE.AvailableInstantCommand && GroundOne.MC.Level >= 6)
             {
             	MessagePack.Message29003(ref nowMessage, ref nowEvent);
             	NormalTapOK();
             }
+            #endregion
         }
             	
 	    public void tapDungeon() {

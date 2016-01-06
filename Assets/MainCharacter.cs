@@ -8392,5 +8392,10 @@ namespace DungeonPlayer
                 ////amplifyPotential;
             }
         }
+
+        internal void CleanUpBattleEnd(ref string brokenName)
+        {
+            // todo
+        }
     }
 }
