@@ -163,7 +163,7 @@ namespace DungeonPlayer
             #region "後編初日"
             else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationFirstHomeTown)
             {
-                MessagePack.Message20000(ref nowMessage, ref nowEvent);
+                MessagePack.Message20100(ref nowMessage, ref nowEvent);
                 tapOK();
             }
             #endregion
@@ -174,7 +174,7 @@ namespace DungeonPlayer
                 GroundOne.WE.Truth_CommunicationNotJoinLana == false &&
                 GroundOne.WE.AvailableSecondCharacter == false)
             {
-            	MessagePack.Message20001(ref nowMessage, ref nowEvent);
+            	MessagePack.Message20101(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
@@ -182,14 +182,14 @@ namespace DungeonPlayer
             if ((GroundOne.WE.dungeonEvent11KeyOpen || GroundOne.WE.dungeonEvent12KeyOpen || GroundOne.WE.dungeonEvent13KeyOpen || GroundOne.WE.dungeonEvent14KeyOpen) &&
                 GroundOne.WE.Truth_CommunicationJoinPartyLana == false && GroundOne.WE.AvailableSecondCharacter == false)
             {
-            	MessagePack.Message20002(ref nowMessage, ref nowEvent);
+            	MessagePack.Message20102(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "看板「メンバー構成で変化」を見たとき"
             else if ((GroundOne.WE.BoardInfo13) && GroundOne.WE.Truth_CommunicationJoinPartyLana == false && GroundOne.WE.AvailableSecondCharacter == false)
             {
-            	MessagePack.Message20003(ref nowMessage, ref nowEvent);
+            	MessagePack.Message20103(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
@@ -197,21 +197,21 @@ namespace DungeonPlayer
             else if (this.firstDay >= 1 && GroundOne.WE.BoardInfo14 &&
                      GroundOne.WE.Truth_CommunicationJoinPartyLana == false && GroundOne.WE.AvailableSecondCharacter == false)
             {
-                MessagePack.Message20004(ref nowMessage, ref nowEvent);
+                MessagePack.Message20104(ref nowMessage, ref nowEvent);
                 tapOK();
             }
             #endregion
             #region "１階看板最後の情報を入手したとき"
             else if (this.firstDay >= 1 && !GroundOne.WE.Truth_Communication_Dungeon11 && GroundOne.WE.dungeonEvent27)
             {
-            	MessagePack.Message20005(ref nowMessage, ref nowEvent);
+            	MessagePack.Message20105(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "１階制覇"
             else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1)
             {
-            	MessagePack.Message20006(ref nowMessage, ref nowEvent);
+            	MessagePack.Message20106(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
