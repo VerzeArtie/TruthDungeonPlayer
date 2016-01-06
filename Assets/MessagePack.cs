@@ -29,6 +29,10 @@ namespace DungeonPlayer
             UpdateUnknownTile,
             EncountFlansis,
             StopMusic,
+            PlayMusic01,
+            PlayMusic02,
+            PlayMusic03,
+            PlayMusic11,
             PlayMusic14,
             PlayMusic15,
             PlayMusic16,
@@ -40,6 +44,7 @@ namespace DungeonPlayer
             HomeTownTurnToNormal,
             HomeTownNight,
             HomeTownCallRestInn,
+            HomeTownAvailableDuel,
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
@@ -2376,7 +2381,8 @@ namespace DungeonPlayer
         }
         #endregion
         #region "ホームタウン表示時"
-        public static void Message20000(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // 後編初日
+        public static void Message20100(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownBlackOut);
 
@@ -2469,7 +2475,8 @@ namespace DungeonPlayer
             GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
         }
         
-        public static void Message20001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // 看板「始まりの地」を見たとき
+        public static void Message20101(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：ラナ、お前｛べからず｝って意味知ってるか？"); eventList.Add(ActionEvent.None);
 
@@ -2647,7 +2654,8 @@ namespace DungeonPlayer
             }
         }
         
-        public static void Message20002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // 看板３を見る前でも、大広間に到達した時
+        public static void Message20102(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：ふう、戻ってきたのは良いが・・・"); eventList.Add(ActionEvent.None);
 
@@ -2766,7 +2774,8 @@ namespace DungeonPlayer
             GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
         }
 
-        public static void Message20003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // 看板「メンバー構成で変化」を見たとき
+        public static void Message20103(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：パーティによってメンバー構成は・・・変化する・・・"); eventList.Add(ActionEvent.None);
 
@@ -2835,7 +2844,8 @@ namespace DungeonPlayer
             GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
         }
 
-        public static void Message20004(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // 看板「くまなく探せ」を見たとき
+        public static void Message20104(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：ラナ、｛くまなく｝って意味を教えてくれ。"); eventList.Add(ActionEvent.None);
 
@@ -3193,7 +3203,8 @@ namespace DungeonPlayer
             GroundOne.WE.AlreadyCommunicate = true;
         }
 
-        public static void Message20005(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // １階看板最後の情報を入手したとき
+        public static void Message20105(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
              messageList.Add("アイン：いっつつつ・・・すまねえな。"); eventList.Add(ActionEvent.None);
 
@@ -3234,7 +3245,8 @@ namespace DungeonPlayer
              GroundOne.WE.Truth_Communication_Dungeon11 = true;
         }
 
-        public static void Message20006(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // １階制覇
+        public static void Message20106(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
              if (GroundOne.WE.AvailableSecondCharacter)
              {
@@ -3667,6 +3679,390 @@ namespace DungeonPlayer
 
                  // SecondCommunicationStart(); eventList.Add(ActionEvent.None); // todo
 			}
+        }
+        
+        // DUEL闘技場開催
+        public static void Message29000(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("ラナ：っあ、アイン。こんな所に居たのね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ようラナ、何のようだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アインはDUEL闘技場には参加しないの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：DUEL闘技か、あんま参加しようって思った事はねえな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ふ～ん、そうなの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：アレはなんっつうんだ。DUELだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：DUELっつったら、DUELだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッバグシ！』（ラナのエレメンタルキックが炸裂）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おぉぉぉぉ・・・ッグ、分かった分かった！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っで、俺に出ろとでも言いたいのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何で積極的に出たがらないのかを聞いてるのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうだな。DUELってのはいわゆる真剣勝負だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ダンジョン行ってる時は真剣勝負じゃないワケ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：別にそうは言ってねえ。だが、DUELとはまた少し別だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ダンジョンのモンスターは適当にぶっ潰せば良いだけだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だが、DUELは明らかに相手はモンスターじゃねえ。人間だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：適当にあしらうのもなんだし、マジでぶっ潰すのもなんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：真剣に面と向かってやってやんなきゃ申し訳が立たねえだろ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん・・・何だかよく分かんないわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：やっぱり、一度ちゃんと参加してみれば？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まいったな・・・どうすっかな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：一つ、条件がある。飲んでくれるか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っえ？ソレ、私に対して言ってるの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っそ、そんなの内容次第よ。じゃあ、言ってみなさいよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺が勝った直後とか、DUEL前後では出来る限り俺の周囲から離れてくれ。良いな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っえ？　何よそれ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：この条件、飲んでくれればDUELに参加してみるぜ。どうだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、アインってさ。たまに良く分からない事言うわね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ、でもそんな内容だったら。了解よ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ！決まりだ！！腕が鳴るぜ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：申し込みとかの登録申請、早速やってくるとするか！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //CallSomeMessageWithAnimation("アインはDUEL闘技場へと向かっていった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：（アイン・・・あんな嬉しそうに、はしゃいで・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownAvailableDuel);
+            // todo
+            // buttonDuel.Visible = true;
+            //CallSomeMessageWithAnimation("【DUEL闘技場へ行く事が出来るようになりました。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            // todo
+            //CallSomeMessageWithAnimation("－－－　DUEL闘技場にて　－－－"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うお！すげえ歓声だな！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょうど対戦が始まった所なんじゃない？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうみたいだな。ちょっと見ていくか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、私は良いわ、遠慮しとく。アイン登録申請に来たんじゃないの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うぉっと！そうだった、忘れてたぜ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、早速受け付けにでも行ってみるとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：ようこそ、DUEL闘技場へ。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っとだな、DUEL参加申し込みをしたいんだが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：DUEL申請でしたら、こちら登録シートに記入をお願いします。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『名前』っと。っよし・・・Ein・・・Wolence・・っと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『現在までのDUEL申し込み回数』・・・確か、３シーズンっと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『主戦術』？何だこりゃ。。。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：「アタック！！」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、アイン。「アタック」なんて戦術でも何でもないわよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：良いじゃねえか。テキトーで良いんだよ、こんなもんは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『魔法習得度』？・・・そうだな、「１００％」っと。。。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ジィ～～・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：わかった、分かったって。「３０％」っと。。。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『二刀流可否』？・・・あんまり得意じゃねえが、一応『可』っと。。。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『スタックキャンセル可否』？・・・まあ『可』っかな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何よそれ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？ああ、今度また教えてやるよ。次々っと・・・『ライバル』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・そうだな『オル・ランディス』っと・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ランディスお師匠さんの名前じゃない。書いてもいいわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：大丈夫だろ。単なるアンケートみたいなもんだろうし。っふう、最後か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『優勝したら？』。。。そうだなあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("「ッハッハッハ！！！」っとこんなもんか"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ホンット、あきれるぐらいテキトーよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあまあ、良いじゃねえか。よし、ホラよ。これで全部記入したぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：登録シートを受け付けました。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：データベースに照合・適用を実施します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：照合判定結果は明日となりますので、明日から対戦登録表に正式エントリーされます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：対戦相手は対象の腕や力量に応じて本闘技場より自動的にピックアップいたします。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：ピックアップされたリスト内の相手と対戦を行ってください。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：対戦は原則として、キャンセル・拒否は行えません。必ず本闘技場で競っていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それでも相手や俺が無理やり拒否ったらどうなるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：必ず対戦相手とＤＵＥＬされるよう手筈を整えます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それでも相手が断ったらどうなるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：必ず対戦相手とＤＵＥＬされるよう手筈を整えます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ・・・まあいいか。他に詳細ルールはあるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：詳しいＤＵＥＬルールに関しては、データベース適用が終わり次第お伝えいたします。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：以上となります。明日の連絡をお待ちください。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、いろいろとありがとな。サンキュー！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：今日は登録までか。まあ続きは明日って事で。そうだ、ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何よ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ、お前も参加してみないか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ！？私！？　イイわよそんなの。どうせすぐ負けちゃうし。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何言ってんだ。あの無慈悲なライトニングキックなら大概の相手はその場で果てるぞ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：い、いい、いきなり知らない人に対して、あんなキックかませられないわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：んまあ、いいか。っじゃ！明日からはDUELも頑張ってくるとするか！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：頑張って来てよね。期待してるわよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、あのクソ師匠にもいつか勝利してみせるぜ！任せておけって！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私、薬素材の集めとかあるから、じゃあまた後で♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、またな。"); eventList.Add(ActionEvent.None);
+
+            // todo
+            // CallSomeMessageWithAnimation("ラナは町の中へと歩いていった・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ダンジョンともう一つ、ＤＵＥＬか。。。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ＤＵＥＬ・・・懐かしい感じがするな。。。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（っしゃ、明日からも頑張って行くとするか！）", true); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            GroundOne.WE.AvailableDuelColosseum = true;
+        }
+        
+        // DUEL闘技場、DUEL開始
+        public static void Message29001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よお、あの時の受付さんじゃないか！登録申請はどうなった？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：アイン様の登録申請はデータベースへと照合され、正式に承諾されました。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっしゃ！わざわざ教えに来てくれてサンキュー！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：本日から、アイン様はＤＵＥＬ闘技場での対戦者リストに登録された事となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：近々予定されている対戦相手リストを確認したい場合は、ＤＵＥＬ闘技場までお越しください。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、後で行ってみるとするわ。ありがとな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：なお、アイン様が「ライバル」欄にオル・ランディスを記載されていたため】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ？あぁ・・・確かに書いたが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：本闘技場のトップランカー、オル様より一言お伝えしておきたい内容があるとの事です】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ！！！　マジかよ！？！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、本闘技場へとぜひともお越しください。私はこれにて。】"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //CallSomeMessageWithAnimation("受付係員は闘技場へと戻っていった・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ・・・ヤ、ヤベェ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ックソ、何だっていきなり来てんだよ。。。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：逃げても・・・おそらく無駄だろうな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ここは闘技場へ行くしかないか。", true); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.AvailableDuelMatch = true;
+        }
+        
+        // ESCメニュー：バトル設定
+        public static void Message29002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：ストレートスマッシュに・・・それから・・・フレッシュヒール・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何そんな所で練習してるのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、何となく思い出したのを体に慣れさせようと思ってだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しかし、どうすっかな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：やけに考え込んでるわね。相談ならいつでも乗るわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おお、悪いな。ちょっとこういう話なんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【アインの下手な説明が、ラナへ展開中・・・】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッダメ！っぜんっっっぜん分かんない！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインの話って全然脈略が無いし、どこがポイントなのよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だからさっきから言ってるじゃねえか、この連続性が大事なんだって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っちょ、もうそういう抽象的な話は結構よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アインの話、かいつまんで話すとこういうことよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：『１．ＥＳＣメニューを開く』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：『２．新しく追加されている【バトル設定】を選択する』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：『３．現在習得してる魔法・スキル構成をバトルコマンドに設定する』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っでしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、それはそうなんだが、そういう話をしてんじゃねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：コマンドの順序、そもそもバトルに関する根本的な理解がいまひとつだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：今は良いでしょ。そんな話は後でいくらでも出てくるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：とりあえず覚えた魔法・スキルをパパっと設定しちゃいなさいよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ホンット、どーでもいい部分でバカアインは凝り出すわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあいいじゃねえか。最初の内にやっておくに越した事はねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、さっそくやってみるぜ！"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //CallSomeMessageWithAnimation("【ESCメニューより「バトル設定」が選択できるようになりました。】"); eventList.Add(ActionEvent.None);
+
+            // todo
+            CallSomeMessageWithAnimation("【習得した魔法・スキルをバトルコマンドに設定できるようになります。】"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.AvailableBattleSettingMenu = true;
+        }
+        
+        // 戦闘：インスタントアクション
+        public static void Message29003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：この前は、確かこんな感じでやってた気がするんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何か難しそうな顔してるわね。何か思いついたわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん～いや、以前師匠に教わったヤツなんだけどな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ランディスのお師匠さん？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：インスタントアクションっていう行動らしいが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：簡単に言うと・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：インスタントアクションだ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：言い換えも出来てないじゃない・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあそれは良いとして、出来そうなの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、もうちょいのハズだ。まあ見ててくれよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　アインはストレート・スマッシュの体勢に入った　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッファイア！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っえ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　アインはダミー素振り君にファイア・ボールを放った！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よっしゃ！完璧だろ？ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っお・・・驚いたわ。良くこんなの出来るわね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：理屈は簡単だ。ラナ、お前にもたぶん出来る内容だぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：要は、最初っからファイア・ボールを放つようにしとけばいいのさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：見た目の素振りだけをストレート・スマッシュにしてたって事？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、ストレート・スマッシュの体勢からは、ストレート・スマッシュは可能だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・私にも出来るのかしら・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：大丈夫だって。やってみろって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　ラナは通常攻撃の体勢に入った　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん・・・っと、こうかしら。ッハイ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　ラナはアイスニードルをダミー素振り君に放った！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・そんな感じだな！出来たじゃねえか！　ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、アインのとは少し違う気がしたんだけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：このやり方さえ出来てれば、戦闘スタイルもかなり幅が拡がるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ確かに通常の戦闘コマンドに加えて、この行動が出来るのは嬉しいわね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：楽しみになってきたな！っしゃ、もういっちょ練習しておくぜ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //CallSomeMessageWithAnimation("【戦闘中にインスタントアクションが出来るようになりました。】"); eventList.Add(ActionEvent.None);
+            // todo
+            //CallSomeMessageWithAnimation("【戦闘中、アクションコマンドを右クリックする事で使用可能になります。】"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.AvailableInstantCommand = true;
         }
         #endregion
         #region "ダンジョンGO！"
