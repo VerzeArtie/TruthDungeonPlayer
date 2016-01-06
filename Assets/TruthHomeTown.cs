@@ -165,7 +165,6 @@ namespace DungeonPlayer
             {
                 MessagePack.Message20000(ref nowMessage, ref nowEvent);
                 tapOK();
-                return;
             }
             #endregion
             #region "看板「始まりの地」を見たとき"
@@ -177,7 +176,6 @@ namespace DungeonPlayer
             {
             	MessagePack.Message20001(ref nowMessage, ref nowEvent);
                 NormalTapOK();
-                return;
             }
             #endregion
             #region "看板３を見る前でも、大広間に到達した時"
@@ -186,7 +184,6 @@ namespace DungeonPlayer
             {
             	MessagePack.Message20002(ref nowMessage, ref nowEvent);
                 NormalTapOK();
-                return;
             }
             #endregion
             #region "看板「メンバー構成で変化」を見たとき"
@@ -194,7 +191,6 @@ namespace DungeonPlayer
             {
             	MessagePack.Message20003(ref nowMessage, ref nowEvent);
                 NormalTapOK();
-                return;
             }
             #endregion
             #region "看板「くまなく探せ」を見たとき"
@@ -203,7 +199,6 @@ namespace DungeonPlayer
             {
                 MessagePack.Message20004(ref nowMessage, ref nowEvent);
                 tapOK();
-                return;
             }
             #endregion
             #region "１階看板最後の情報を入手したとき"
@@ -211,7 +206,6 @@ namespace DungeonPlayer
             {
             	MessagePack.Message20005(ref nowMessage, ref nowEvent);
                 NormalTapOK();
-                return;
             }
             #endregion
             #region "１階制覇"
@@ -219,9 +213,134 @@ namespace DungeonPlayer
             {
             	MessagePack.Message20006(ref nowMessage, ref nowEvent);
                 NormalTapOK();
-                return;
             }
             #endregion
+            #region "２階初日"
+            else if (GroundOne.WE.TruthCompleteArea1 && GroundOne.WE.TruthCommunicationCompArea1 && !GroundOne.WE.Truth_CommunicationSecondHomeTown)
+            {
+                MessagePack.Message20200(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "２階、地の部屋、選択失敗"
+            if (GroundOne.WE.dungeonEvent206 && !GroundOne.WE.dungeonEvent207 && GroundOne.WE.dungeonEvent207FailEvent2)
+            {
+                MessagePack.Message20201(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "２階、神の試練クリア後"
+            else if (GroundOne.WE2.TruthAnswerSuccess && GroundOne.WE.dungeonEvent224 && !GroundOne.WE.dungeonEvent225)
+            {
+                MessagePack.Message20202(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "２階制覇"
+            else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.TruthCommunicationCompArea2)
+            {
+                MessagePack.Message20203(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階初日"
+            else if (false) // todo
+            {
+                MessagePack.Message20300(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階、エリア１の鏡をクリア時"
+            else if (GroundOne.WE.TruthCompleteArea1 && GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.TruthCompleteArea3 && GroundOne.WE.dungeonEvent305 && !GroundOne.WE.dungeonEvent306)
+            {
+                MessagePack.Message20301(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階、鏡エリア２－１をクリアした時"
+            else if (GroundOne.WE.dungeonEvent314 && !GroundOne.WE.dungeonEvent314_2)
+            {
+                MessagePack.Message20301(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階、鏡エリア２－２をクリアした時"
+            else if (GroundOne.WE.dungeonEvent315 && !GroundOne.WE.dungeonEvent315_2)
+            {
+                MessagePack.Message20302(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }        
+            #endregion
+            #region "３階、鏡エリア２－３をクリアした時"
+            else if (GroundOne.WE.dungeonEvent316 && !GroundOne.WE.dungeonEvent316_2)
+            {
+                MessagePack.Message20303(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階、鏡エリア２－４をクリアした時"
+            else if (GroundOne.WE.dungeonEvent317 && !GroundOne.WE.dungeonEvent317_2)
+            {
+                MessagePack.Message20304(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階、鏡エリア２－５をクリアした時"
+            else if (GroundOne.WEGroundOne.WE.dungeonEvent312 && !GroundOne.WE.dungeonEvent312_2)
+            {
+                MessagePack.Message20305(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階制覇"
+            else if (GroundOne.WEGroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.TruthCommunicationCompArea3)
+            {
+                MessagePack.Message20306(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "現実世界"
+            else if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent511 && !GroundOne.WE2.SeekerEvent601)
+            {
+                MessagePack.Message20600(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "エンディング"
+            else if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent1103)
+            {
+                MessagePack.Message20601(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            // ダンジョンから帰還後、必須イベントが無ければ、以下任意イベント            
+            #region "DUEL闘技場開催"
+            else if (this.firstDay >= 3 && !GroundOne.WE.AvailableDuelColosseum)
+            {
+            	MessagePack.Message29000(ref nowMessage, ref nowEvent);
+            	NormalTapOK();
+            }
+            #endregion
+            #region "DUEL闘技場、DUEL開始"
+            else if (this.firstDay >= 4 && !GroundOne.WE.AvailableDuelMatch)
+            {
+            	MessagePack.Message29001(ref nowMessage, ref nowEvent);
+            	NormalTapOK();
+            }
+            #endregion
+            #region "ESCメニュー：バトル設定"
+            else if (!GroundOne.WE.AvailableBattleSettingMenu && this.mc.Level >= 4)
+            {
+            	MessagePack.Message29002(ref nowMessage, ref nowEvent);
+            	NormalTapOK();
+            }
+            #endregion
+            #region "戦闘：インスタントアクション"
+            else if (!GroundOne.WE.AvailableInstantCommand && this.mc.Level >= 6)
+            {
+            	MessagePack.Message29003(ref nowMessage, ref nowEvent);
+            	NormalTapOK();
+            }
         }
             	
 	    public void tapDungeon() {
