@@ -2068,9 +2068,19 @@ namespace DungeonPlayer
             Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
             if (GroundOne.BattleResult == GroundOne.battleResult.OK)
             {
-                Debug.Log("MC gold before: " + GroundOne.MC.Gold.ToString());
                 GroundOne.MC.Gold += ec1.Gold;
-                Debug.Log("MC gold after: " + GroundOne.MC.Gold.ToString());
+                if (GroundOne.MC != null && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
+                {
+                    GroundOne.MC.Exp += ec1.Exp;
+                }
+                if (GroundOne.SC != null && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
+                {
+                    GroundOne.SC.Exp = ec1.Exp;
+                }
+                if (GroundOne.TC != null && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
+                {
+                    GroundOne.TC.Exp = ec1.Exp;
+                }
             }
             Debug.Log("back");
             SceneDimension.Back();

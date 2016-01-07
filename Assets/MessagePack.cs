@@ -3683,13 +3683,13 @@ namespace DungeonPlayer
         }
 
         // ２階初日
-        public static void Message20200(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20200(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             // todo
         }
 
         // ２階、地の部屋、選択失敗
-        public static void Message20201(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20201(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.dungeonEvent207FailEvent2 = false;
             if (!GroundOne.WE.dungeonEvent207FailEvent)
@@ -3723,56 +3723,56 @@ namespace DungeonPlayer
         }
 
         // ２階、神の試練クリア後
-        public static void Message20202(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20202(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.dungeonEvent225 = true;
 
-            UpdateMainMessage("アイン：っしゃ、戻ってきたな。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っしゃ、戻ってきたな。"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：なあラナ。少しそこら辺、寄っていかないか？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：なあラナ。少しそこら辺、寄っていかないか？"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：え？うん。でもどこに行くのよ？"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：え？うん。でもどこに行くのよ？"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：『味商売　天地』でどうだ？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：『味商売　天地』でどうだ？"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：あの店味が濃くないかしら？　まあいいけど。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あの店味が濃くないかしら？　まあいいけど。"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：じゃ、さっそく行くとするか！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：じゃ、さっそく行くとするか！"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：まったく、あんな味のどこが良いのかしら・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：まったく、あんな味のどこが良いのかしら・・・"); eventList.Add(ActionEvent.None);
 
             // todo
             //CallSomeMessageWithAnimation("    『味商売　天地』にて・・・"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：ふ～、やっぱここの味は最高だぜ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ふ～、やっぱここの味は最高だぜ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：私、あんまり好きじゃないんだけど・・・って、ちょっと聞いてる？"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：私、あんまり好きじゃないんだけど・・・って、ちょっと聞いてる？"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：ところで、あの詩だけどさ。ラナの母さんが作ったのか？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ところで、あの詩だけどさ。ラナの母さんが作ったのか？"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：違うわよ。母さんもその先代から伝承されてきた詩だそうよ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：違うわよ。母さんもその先代から伝承されてきた詩だそうよ。"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：先代？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：先代？"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：そうよ、紫聡千律道場に代々伝えられてきている詩よ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：そうよ、紫聡千律道場に代々伝えられてきている詩よ。"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：アインは小さい頃、たまたま私と一緒に稽古練習してたから。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：アインは小さい頃、たまたま私と一緒に稽古練習してたから。"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：それで偶然聞いてたのよね。小さい頃だから、覚えてないのが普通よ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：それで偶然聞いてたのよね。小さい頃だから、覚えてないのが普通よ。"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：なるほど・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：なるほど・・・"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：どおりで思い出せないわけだ。ッハハハ・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：どおりで思い出せないわけだ。ッハハハ・・・"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：でも、変だよな。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：でも、変だよな。"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：何が？"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：何が？"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：このダンジョンでさ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：このダンジョンでさ。"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("アイン：なんでそんな事が起こりうるんだ？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：なんでそんな事が起こりうるんだ？"); eventList.Add(ActionEvent.None);
 
-            UpdateMainMessage("ラナ：・・・っえ・・・っと・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：・・・っえ・・・っと・・・"); eventList.Add(ActionEvent.None);
 
             // todo (本当に分岐させたいのかどうか)
             //using (TruthDecision td = new TruthDecision())
@@ -3784,76 +3784,76 @@ namespace DungeonPlayer
             //    td.ShowDialog(); eventList.Add(ActionEvent.None);
             //    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
             //    {
-                    UpdateMainMessage("アイン：ラナはこのダンジョンのからくり、どこまで把握してる？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ラナはこのダンジョンのからくり、どこまで把握してる？"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：っか、からくりって何の事よ？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：っか、からくりって何の事よ？"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：知らないわよ、そんなの。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：知らないわよ、そんなの。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：何でも良い。知ってる事があれば教えてくれ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：何でも良い。知ってる事があれば教えてくれ。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：・・・"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：知らないわ。本当よ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：知らないわ。本当よ。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：っそっか。。。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：っそっか。。。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：悪いな。何か無理やり問い詰めちまって。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：悪いな。何か無理やり問い詰めちまって。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：・・・ねえ、アイン。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：・・・ねえ、アイン。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：ん、何だ？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ん、何だ？"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：う～ん、何でもないわ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：う～ん、何でもないわ。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：いや、良いんだ。悪かったな。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：いや、良いんだ。悪かったな。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：っあ、そうじゃないの。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：っあ、そうじゃないの。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：ランディスのお師匠さんに、聞きにいってみない？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：ランディスのお師匠さんに、聞きにいってみない？"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：あ？　あのボケ師匠にか？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：あ？　あのボケ師匠にか？"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：アインが本当に困ってる時、私あんまり力になれてないみたいだし。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：アインが本当に困ってる時、私あんまり力になれてないみたいだし。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：ランディスのお師匠さんなら、何か教えてくれそうじゃない？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：ランディスのお師匠さんなら、何か教えてくれそうじゃない？"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：どうだろうなあ・・・"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：どうだろうなあ・・・"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：ちょっとでも設問を間違えりゃ昇天だからな・・・ック・・・"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ちょっとでも設問を間違えりゃ昇天だからな・・・ック・・・"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：まあ、無理にとは言わないけど。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：まあ、無理にとは言わないけど。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：いいや、聞いてみるぜ。ビビってたってしょうがねえからな。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：いいや、聞いてみるぜ。ビビってたってしょうがねえからな。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：いろいろとサンキューな、ラナ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：いろいろとサンキューな、ラナ。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：っふふ、別に良いわよ。大した事はやってないわ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：っふふ、別に良いわよ。大した事はやってないわ。"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("ラナ：じゃあ、ちょっとランディスのお師匠さんの所に行ってみましょ♪"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：じゃあ、ちょっとランディスのお師匠さんの所に行ってみましょ♪"); eventList.Add(ActionEvent.None);
 
-                    UpdateMainMessage("アイン：ああ！"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：ああ！"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.dungeonEvent226 = true;
             //    }
             //    else
             //    {
-            //        UpdateMainMessage("アイン：詩自体は、ラナも知ってたんだよな？"); eventList.Add(ActionEvent.None);
+            //        messageList.Add("アイン：詩自体は、ラナも知ってたんだよな？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：ええ、そうね。私も何度も聞いてたし、よく覚えてるわよ。"); eventList.Add(ActionEvent.None);
+            //        messageList.Add("ラナ：ええ、そうね。私も何度も聞いてたし、よく覚えてるわよ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：あの詩、このダンジョンを解くためのヒントになるかも知れねえ。"); eventList.Add(ActionEvent.None);
+            //        messageList.Add("アイン：あの詩、このダンジョンを解くためのヒントになるかも知れねえ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：一応メモっといてくれるか？"); eventList.Add(ActionEvent.None);
+            //        messageList.Add("アイン：一応メモっといてくれるか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：うん、分かったわ♪"); eventList.Add(ActionEvent.None);
+            //        messageList.Add("ラナ：うん、分かったわ♪"); eventList.Add(ActionEvent.None);
 
             //    }
             //}
         }
 
         // ２階制覇
-        public static void Message20203(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20203(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：よおおぉぉし、到達到達！！"); eventList.Add(ActionEvent.None);
 
@@ -4235,13 +4235,13 @@ namespace DungeonPlayer
         }
 
         // ３階初日
-        public static void Message20300(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20300(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             // todo
         }
 
         // ３階、エリア１の鏡をクリア時
-        public static void Message20301(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20301(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.dungeonEvent306 = true;
 
@@ -4311,7 +4311,7 @@ namespace DungeonPlayer
         }
 
         // ３階、鏡エリア２－１をクリアした時
-        public static void Message20302(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20302(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.dungeonEvent314_2 = true;
 
@@ -4337,7 +4337,7 @@ namespace DungeonPlayer
         }
 
         // ３階、鏡エリア２－２をクリアした時
-        public static void Message20303(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20303(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.dungeonEvent315_2 = true;
 
@@ -4369,7 +4369,7 @@ namespace DungeonPlayer
         }
 
         // ３階、鏡エリア２－３をクリアした時
-        public static void Message20304(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20304(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.dungeonEvent316_2 = true;
 
@@ -4407,7 +4407,7 @@ namespace DungeonPlayer
         }
 
         // ３階、鏡エリア２－４をクリアした時
-        public static void Message20305(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20305(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.dungeonEvent317_2 = true;
 
@@ -4451,7 +4451,7 @@ namespace DungeonPlayer
         }
 
         // ３階、鏡エリア２－５をクリアした時
-        public static void Message20306(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20306(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.dungeonEvent312_2 = true;
 
@@ -4487,7 +4487,7 @@ namespace DungeonPlayer
         }
 
         // ３階制覇
-        public static void Message20307(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20307(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：よし、３階も無事クリアしたぜ！！"); eventList.Add(ActionEvent.None);
 
@@ -5276,11 +5276,11 @@ namespace DungeonPlayer
             //FourthCommunicationStart(); eventList.Add(ActionEvent.None);
         }
 
-        public static void Message20600(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20600(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
 
-        public static void Message20601(ref List<string> nowMessage, ref List<ActionEvent> nowEvent)
+        public static void Message20601(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         // DUEL闘技場開催

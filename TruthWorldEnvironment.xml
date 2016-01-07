@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Body><DateTime>1/6/2016 11:16:05 PM</DateTime>
+<Body><DateTime>1/6/2016 11:44:43 PM</DateTime>
 <TruthWorldEnvironment>
 <SeekerEnd>False</SeekerEnd>
 <SeekerEndingRoll>False</SeekerEndingRoll>
@@ -121,7 +121,7 @@
 <TruthRecollection3_1>False</TruthRecollection3_1>
 <TruthRecollection2>False</TruthRecollection2>
 <TruthRecollection1>False</TruthRecollection1>
-<KillingEnemy>0</KillingEnemy>
+<KillingEnemy>1</KillingEnemy>
 <DuelWin>0</DuelWin>
 <DuelLose>0</DuelLose>
 <TruthWay95>0</TruthWay95>
