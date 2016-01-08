@@ -5276,10 +5276,61 @@ namespace DungeonPlayer
             //FourthCommunicationStart(); eventList.Add(ActionEvent.None);
         }
 
+        // 現実世界
         public static void Message20600(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBlackOut);
+
+            messageList.Add("アイン：っ・・・いつつ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：今・・・何時だ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("        『アインは宿屋の寝床から起き上がった。』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：朝の６時か・・・起きるには少し早いぐらいだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ん？何か床に落ちてるな。"); eventList.Add(ActionEvent.None);
+            
+            // todo
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.Message = "【ラナのイヤリング】を手に入れました。";
+            //    GroundOne.playbackMessage.Insert(0, md.Message);
+            //    GroundOne.playbackInfoStyle.Insert(0, TruthPlaybackMessage.infoStyle.notify);
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.ShowDialog();
+            //}
+
+            // todo
+            //GetItemFullCheck(mc, Database.RARE_EARRING_OF_LANA); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナのイヤリングじゃねえか・・・何でこんな物が・・・"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("アイン：・・・　何であるんだっけ　・・・　ラナが落としたのか？"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("アイン：いいや、そんなワケ無えよな・・・じゃあ何でだ・・・"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("アイン：まあいいか。とりあえず、目覚めたわけだし、町にでも出てみるとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
+            
+            messageList.Add("アイン：さて、何すっかな。", true); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.AlreadyRest = true; // 朝起きたときからスタートとする。
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            GroundOne.WE2.SeekerEvent601 = true;
+            Method.AutoSaveTruthWorldEnvironment();
+            // todo
+            //Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, null, null, null, null, null, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
         }
 
+        // エンディング
         public static void Message20601(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
