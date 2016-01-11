@@ -2506,18 +2506,18 @@ namespace DungeonPlayer
         #endregion
 
         #region "朝・夕方・夜、ファージル宮殿裏"
-        public const string BACKGROUND_MORNING = @"hometown.jpg";
-        public const string BACKGROUND_EVENING = @"hometown_evening.jpg";
-        public const string BACKGROUND_NIGHT = @"hometown2.jpg";
-        public const string BACKGROUND_SECRETFIELD_OF_FAZIL = @"SecretFieldOfFazil.jpg";
-        public const string BACKGROUND_FIELD_OF_FIRSTPLACE = @"Field1.jpg";
-        public const string BACKGROUND_FAZIL_CASTLE = @"FazilCastle.jpg";
+        public const string BACKGROUND_MORNING = @"hometown"; // ".jpg"; // change unity
+        public const string BACKGROUND_EVENING = @"hometown_evening"; // ".jpg"; // change unity
+        public const string BACKGROUND_NIGHT = @"hometown2"; // ".jpg"; // change unity
+        public const string BACKGROUND_SECRETFIELD_OF_FAZIL = @"SecretFieldOfFazil"; // ".jpg"; // change unity
+        public const string BACKGROUND_FIELD_OF_FIRSTPLACE = @"Field1"; // ".jpg"; // change unity
+        public const string BACKGROUND_FAZIL_CASTLE = @"FazilCastle"; // ".jpg"; // change unity
         #endregion
 
-        public const string OK_BUTTON_IMAGE = @"OkButton.png";
-        public const string OK_BUTTON_IMAGE_BLACK = @"OkButton_Black.png";
+        public const string OK_BUTTON_IMAGE = @"OkButton";// ".jpg"; // change unity
+        public const string OK_BUTTON_IMAGE_BLACK = @"OkButton_Black";// ".jpg"; // change unity
 
-        public const string DUNGEON_BACKGROUND = @"background.png";
+        public const string DUNGEON_BACKGROUND = @"background";// ".jpg"; // change unity
 
         public const string WE2_FILE = @"TruthWorldEnvironment.xml";
         #endregion

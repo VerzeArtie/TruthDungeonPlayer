@@ -73,14 +73,19 @@ namespace DungeonPlayer
             GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             WE = objWE.AddComponent<WorldEnvironment>();
             WE.DungeonArea = 1;
-            WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
 
-            //WE.AvailableSecondCharacter = true;
+            WE.Truth_CommunicationFirstHomeTown = true;
+            WE.TruthCompleteArea1 = true;
+
+            WE.AvailableSecondCharacter = true;
             //WE.AvailableThirdCharacter = true;
             WE.AvailableInstantCommand = true;
 
             WE.AvailableMana = true;
             WE.AvailableSkill = true;
+
+            WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
+            WE2.TruthRecollection1 = true;
 
             MC = objMC.AddComponent<MainCharacter>();
             MC.Name = Database.EIN_WOLENCE;

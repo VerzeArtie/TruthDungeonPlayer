@@ -33,6 +33,7 @@ namespace DungeonPlayer
             PlayMusic02,
             PlayMusic03,
             PlayMusic11,
+            PlayMusic13,
             PlayMusic14,
             PlayMusic15,
             PlayMusic16,
@@ -44,8 +45,15 @@ namespace DungeonPlayer
             HomeTownTurnToNormal,
             HomeTownMorning,
             HomeTownNight,
+            HomeTownFazilCastle,
             HomeTownCallRestInn,
             HomeTownAvailableDuel,
+            HomeTownButtonHidden,
+            HomeTownMessageDisplay,
+            HomeTownSecondCommunicationStart,
+            HomeTownThirdCommunicationStart,
+            HomeTownFourthCommunicationStart,
+            HomeTownFifthCommunicationStart,
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
@@ -2418,15 +2426,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：・・・ん？何か床に落ちてるな。"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.Message = "【ラナのイヤリング】を手に入れました。";
-            //    GroundOne.playbackMessage.Insert(0, md.Message);
-            //    GroundOne.playbackInfoStyle.Insert(0, TruthPlaybackMessage.infoStyle.notify);
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.ShowDialog();
-            //}
+            messageList.Add("【ラナのイヤリング】を手に入れました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             // GetItemFullCheck(GroundOne.MC, Database.RARE_EARRING_OF_LANA); // todo
 
@@ -3261,15 +3261,9 @@ namespace DungeonPlayer
 
                  messageList.Add("アイン：あ、ああ、そうだな！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-                 // todo
-                 //using (MessageDisplay md = new MessageDisplay())
-                 //{
-                 //    md.StartPosition = FormStartPosition.CenterParent;
-                 //    md.Message = "アインは一通り、町の住人達に声をかけ、時間が刻々と過ぎていった。";
-                 //    md.ShowDialog();
-                 //    md.Message = "その日の夜、ハンナの宿屋亭にて";
-                 //    md.ShowDialog();
-                 //}
+                 messageList.Add("アインは一通り、町の住人達に声をかけ、時間が刻々と過ぎていった。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                 messageList.Add("その日の夜、ハンナの宿屋亭にて"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                  messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
                  messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
@@ -3305,13 +3299,7 @@ namespace DungeonPlayer
 
                      messageList.Add("ラナ：ハイ、それでは失礼します。"); eventList.Add(ActionEvent.None);
 
-                     // todo
-                     //using (MessageDisplay md = new MessageDisplay())
-                     //{
-                     //    md.StartPosition = FormStartPosition.CenterParent;
-                     //    md.Message = "ラナは自分が予約していた部屋へ歩いていった。";
-                     //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-                     //}
+                     messageList.Add("ラナは自分が予約していた部屋へ歩いていった。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                      messageList.Add("アイン：はあ～食った食った。満足だ。おばちゃん、ありがと！"); eventList.Add(ActionEvent.None);
 
@@ -3341,15 +3329,9 @@ namespace DungeonPlayer
 
                      messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                     //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None); // todo
+                     messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
 
-                     // todo
-                     //using (MessageDisplay md = new MessageDisplay())
-                     //{
-                     //    md.StartPosition = FormStartPosition.CenterParent;
-                     //    md.Message = "アインが予約していた部屋にて";
-                     //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-                     //}
+                     messageList.Add("アインが予約していた部屋にて"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                      messageList.Add("アイン：ふう・・・バックパック整理っと・・・"); eventList.Add(ActionEvent.None);
 
@@ -3418,13 +3400,9 @@ namespace DungeonPlayer
 
                          messageList.Add("アイン：実は、コレなんだが・・・"); eventList.Add(ActionEvent.None);
 
-                         //using (MessageDisplay md = new MessageDisplay())
-                         //{
-                         //    md.StartPosition = FormStartPosition.CenterParent;
-                         //    md.Message = "アインは『ラナのイヤリング』をポケットから取り出した。";
-                         //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-                         //}
-                         GroundOne.MC.DeleteBackPack(new ItemBackPack("ラナのイヤリング")); eventList.Add(ActionEvent.None);
+                         messageList.Add("アインは『ラナのイヤリング』をポケットから取り出した。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                         GroundOne.MC.DeleteBackPack(new ItemBackPack("ラナのイヤリング"));
 
                          messageList.Add("ラナ：っそ！ソレって！！"); eventList.Add(ActionEvent.None);
 
@@ -3436,14 +3414,9 @@ namespace DungeonPlayer
 
                          messageList.Add("アイン：悪かった悪かった悪かった！っな！？"); eventList.Add(ActionEvent.None);
 
-                         //using (MessageDisplay md = new MessageDisplay())
-                         //{
-                         //    md.StartPosition = FormStartPosition.CenterParent;
-                         //    md.Message = "ラナは驚きと戸惑いの表情を隠せないでいる・・・";
-                         //    md.ShowDialog();
-                         //    md.Message = "・・・　数秒後　・・・";
-                         //    md.ShowDialog();
-                         //}
+                         messageList.Add("ラナは驚きと戸惑いの表情を隠せないでいる・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                         messageList.Add("・・・　数秒後　・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                          messageList.Add("ラナ：・・・　・・・　・・・っど・・・"); eventList.Add(ActionEvent.None);
 
@@ -3481,7 +3454,7 @@ namespace DungeonPlayer
 
                          messageList.Add("アイン：うわわ、っ分かったって。そんなビビんなくて良いだろうが。"); eventList.Add(ActionEvent.None);
 
-                         messageList.Add("ラナ：っまったく・・・っあ、そうだ。もう一個聞いて良い？"); eventList.Add(ActionEvent.None);
+                         messageList.Add("ラナ：まったく・・・っあ、そうだ。もう一個聞いて良い？"); eventList.Add(ActionEvent.None);
 
                          messageList.Add("アイン：ん？ああ、何個でも聞いてくれ。"); eventList.Add(ActionEvent.None);
 
@@ -3536,14 +3509,9 @@ namespace DungeonPlayer
 
                      messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                     // todo
-                     //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None); // todo
-                     //using (MessageDisplay md = new MessageDisplay())
-                     //{
-                     //    md.StartPosition = FormStartPosition.CenterParent;
-                     //    md.Message = "アインが予約していた部屋にて";
-                     //    md.ShowDialog();
-                     //}
+                     messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
+
+                     messageList.Add("アインが予約していた部屋にて"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                      messageList.Add("アイン：ふう・・・バックパック整理っと・・・"); eventList.Add(ActionEvent.None);
 
@@ -3569,7 +3537,7 @@ namespace DungeonPlayer
 
                          messageList.Add("アイン：ユング街のダンジョン。"); eventList.Add(ActionEvent.None);
 
-                         messageList.Add("アイン：いわゆる「神の試練」ってのが待ち構えているらしい"); eventList.Add(ActionEvent.None);
+                         messageList.Add("アイン：いわゆる「神の試練」ってのが待ち構えているらしい。"); eventList.Add(ActionEvent.None);
 
                          messageList.Add("アイン：冗談じゃない。俺は「神」とかいう類が大嫌いだ。"); eventList.Add(ActionEvent.None);
 
@@ -3639,6 +3607,7 @@ namespace DungeonPlayer
                          }
                      }
 
+                     // todo メッセージが微妙におかしい。既に２階への階段は発見しているし、次の日、２階へ進める予定を示す文章に変えた方が良い。
                      messageList.Add("　　　【俺たちはその後、２階への階段を発見し】"); eventList.Add(ActionEvent.None);
 
                      messageList.Add("　　　【そのまま、２階へと足を運んだ】"); eventList.Add(ActionEvent.None);
@@ -3672,13 +3641,11 @@ namespace DungeonPlayer
                  //    esc.ShowDialog(); eventList.Add(ActionEvent.None);
                  //}
 
-                 //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING); eventList.Add(ActionEvent.None); // todo
+                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
 
                  messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
 
-                 messageList.Add(""); eventList.Add(ActionEvent.None);
-
-                 // SecondCommunicationStart(); eventList.Add(ActionEvent.None); // todo
+                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownSecondCommunicationStart);
 			}
         }
 
@@ -5318,7 +5285,7 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
             
-            messageList.Add("アイン：さて、何すっかな。", true); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：さて、何すっかな。"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.AlreadyRest = true; // 朝起きたときからスタートとする。
 
@@ -5333,6 +5300,903 @@ namespace DungeonPlayer
         // エンディング
         public static void Message20601(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownButtonHidden);
+
+            GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　号外！！！　＞＞＞　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【野蛮なオル・ランディス、DUEL闘技場にて、屈辱の敗北！！】　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【DUELタイムは史上最高】　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【１６分４２秒】　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【決め手は、ゼータ・エクスプロージョン】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【オル・ランディス、必死にワープゲートを駆使して反撃を繰り広げていたが】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【相手のニゲイト、スタンス・オブ・サッドネッスに幾度となく阻止され】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【オル・ランディスが、タイムストップを発動する瞬間】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【相手に先手のタイムストップを発動されたのが致命的となった】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジか・・・師匠負けちまったのかよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：珍しいわよね、あのランディスさんが普通に戦って負けるなんて。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、まだ続きがあるな。読んでみるか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【なお、本DUELに関して、記者は自分の生命を賭して、オル・ランディス選手へ突撃取材を行った。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　記者：「ランディス選手！あれは敗北だったんでしょうか！？」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ランディス：「うっせぇな！」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　記者：「戦略的には勝っていたかどうかだけでも、お聞かせください！」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ランディス：「うっせぇ、知るかボケ！」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　記者：「体調は万全だったんでしょうか？どこか痛めていたなどは！？」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ランディス：「うっせぇ、んなんあるか、ボケが！」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　記者：「最後に、ＤＵＥＬ闘技場の覇者として、今回の負けに関して一言お願いします！！！」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ランディス：「・・・　・・・　・・・」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ランディス：「小細工は一切無し、体調も互いに万全、試合前の不正取引一切無し」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ランディス：「俺の負けだ」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ランディス：「・・・　・・・　・・・」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　記者：「・・・　・・・　・・・」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ランディス：「ドケやクソボケ記者がぁ！！食い殺すぞッラァ！！」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　記者：「ッヒ、ヒエエェェ！！！わたたた、たりがとうございました！！！」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・こぇ・・・よく聞きにいったなこの記者・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：この映像、ものすごい勢いで逃げてるわね、記者さん・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ・・・多分捕まったらマジで病院送りだったろうな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あ、見てみて最後のコメント欄があるわよ、ホラ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ほんとだ、どれどれ・・・"); eventList.Add(ActionEvent.None);
+
+            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【なお、記者は猛ダッシュで逃げる際、オル・ランディス選手の最後に振り返る時の顔を目撃した】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【その時の、オル・ランディス選手の顔は】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【どことなく、優しく笑っているように見えた】"); eventList.Add(ActionEvent.None);
+
+            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：笑っているように・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：殺されかけた直後だろ？　悪意ある笑顔と勘違いしたんじゃないのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフ、そうなのかもね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っさてと、今年もファージル宮殿生誕祭への招待状が届いてたっけ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ウソ、ちゃんと覚えてたわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、もちろん覚えてるさ。ちゃんと招待状もココに・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：（ジィ～）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいやいや、宿屋のバックパック管理倉庫に入れたんだった、ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：へ～、じゃあ後でちゃんと見に行きましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うっ・・・ッハッハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ねえ、ところでアイン。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？　なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私達ってダンジョンの最後でどうなったのか、覚えてる？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ダンジョンの最後？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何言ってんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：制覇したに決まってるじゃないか！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、まともに答えなさいよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：少なくとも私は覚えてないわよ、最後の方は。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：最後はどんな感じだったの？教えてよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そりゃお前、最下層と言えば・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：デカイ竜がドカーンと構えててさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それを俺がズバズバっと撃破したのさ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・ふーん・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：全然答えになってないわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ッギク）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私の事助けてくれたのはどの辺りだったのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：黒いもやもやした煙に囲まれて、真っ暗になって気絶した瞬間は覚えてるんだけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私、その後どうなったのかが全然思い出せないのよ。スッポ抜けた感じで。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：気が付いたら、ダンジョンの外で介抱されてたのよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：こんなの納得が行かないわ。ちゃんと教えてちょうだい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ、それはだなあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：４階でお前が倒れてたんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でだ、それを発見した俺は慌ててお前を抱き起こして・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("『ッドスウウゥゥン！！！』（ラナのファイナリティ・キックがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：「抱き起こして」とかいう表現は止めてちょうだい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：グフォオォ・・・ど、どう言えば良いんだよ・・・ったく・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：慌ててお前をそっと起こしてだな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ハラハラ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：その次は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：で、後はそのままダンジョンから帰還したって所さ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そんな普通の内容だったら、私だって覚えてると思うんだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ねえ、その時に何かあったんじゃないの？どうだったのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ま・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ままま、良いじゃねえかそんな所は！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ダンジョン制覇！無事、完結！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハーッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：絶対何か隠してるわよね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、ラナ、あれだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：良かったよ、お前と一緒に無事にここまで戻れて・・・本当に。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっ・・・とっとと・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、何しんみりしちゃってるのよ、こんな所でもう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・悪い悪い、なんとなくな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、そういえばラナ、頼み事があるんだが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：なに？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：明日さ。ファージル宮殿の生誕祭２１年があるだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：その時に・・・必ず、寄っておきたい場所があるんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：一緒に、来てくれるか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：べつに良いけど、どこに行くつもりなのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：大丈夫、そんな遠い所へ行くわけじゃねえんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：頼む。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、良いわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：サンキュー。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、明日またね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おお、また明日な。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：寝坊してたら、叩き殺すからね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・いやいや、殺さないようにしてくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.Message = "次の日の朝・・・";
+            //}
+
+            messageList.Add("アイン：ゴフォオォォォ・・・ッゴホッゴホ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：１分遅れてたわよ。さ、起きなさい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：イッツツツ・・・容赦ねえな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ファージル宮殿前は朝一で行っても混雑するんだから、早めに行きましょうよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、分かってるって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、出発だ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic13);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastle);
+
+            // todo
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.Message = "---- ファージル宮殿にて ----";
+            //}
+
+            messageList.Add("アイン：っうおぉぉ！　すげえ人の数だな！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：生誕祭だもの、当たり前じゃない♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：エルミ国王もよくこれだけの人を毎年毎年、宮殿に招き入れるよな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：宮殿がそろそろパンクするんじゃねえのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：宮殿外のガーデン広場もあるんだし、大丈夫らしいわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハハ・・・その辺はさすがと行った所だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：さてと、じゃあ列に並んでエルミ国王とファラ王妃にご対面と行きますか！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん♪"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.Message = "---- ２時間半経過後 ----";
+            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
+            //}
+            messageList.Add("アイン：・・・　もう少しか　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、もうすぐのはずよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あっ、ホラ次が私達よ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：本当だ、もう少しだな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なあ、所でラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何よ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：宮殿内、どこら辺を見てみたいんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：行きたい所を言ってくれ。優先させるからさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・え・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええええええぇぇぇーーーー！！？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：わーー、いきなりうるっさい声出すなって、ったく。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何ひょっとして、気遣ったとでも言うわけ？今のは？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだよ。悪いかよ、まったく・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：信じられないわね、バカアインがそういう事言うの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：良いからほら、どこに行ってみるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：んーじゃあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ファラ王妃様の謁見が終わってから言うわね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、了解。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、ようやく前のヤツが終わったみたいだぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、進めましょ♪"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.Message = "---- 国王／王妃　謁見の間にて ----";
+            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
+            //}
+
+            messageList.Add("アイン：っとと・・・ここで整列だよな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：よく来たね。アイン君とラナさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：エルミ様、ファラ様、生誕祭おめでとうございます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：アインさんもラナさんも、リラックスしてくださいね（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あっ！ありがとうございます！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：（ちょっと、あんまり形式を崩さないでよね）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（いいじゃねえか・・・ああ言ってるんだしさ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：いいですよ、いつものアイン君らしく喋ってください。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハイ、どうもっす！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっと、そこのバカはちょっと置いといて・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：エルミ様、本日折り入っての頼みがあってこの謁見の間に参りました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：どうしたんだい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：最近ファージル領域へ武力による接触を計る" + Database.VINSGALDE + "王国ですが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：" + Database.VINSGALDE + "は元々私の母が育った国"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：母からは穀物が育ちにくいエリアが多い国だと聞かされておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そこでお願いがあります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：今から２年の間、私とそこのバカアインに対して"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：国外遠征許可証を発行していただけないでしょうか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：えっ、俺も！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：なるほど、" + Database.VINSGALDE + "に行って穀物以外の生産を教えてくるつもりなんだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：しかし国外遠征許可証を要請してくるとは・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：どうしようか？ファラ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：エルミったら、ひどい男（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：っつ・・・どうしてお前は・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：何よ臆病者、ちゃんと貴方が考えてきた事を言いなさいよね（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：わかってるって、ああやはりお前は少し引っ込んでなさい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：・・・（＾＾＃"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：ッゴホン、では。えー・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：ラナさん、国外遠征許可証は既に用意してあります（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっ！？　本当ですか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：アインさんの分もありますよ（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ！！いつのまにそんなモノが！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：はい、エルミ解説（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：ッ・・・ック・・・"); eventList.Add(ActionEvent.None);
+
+            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：実はね、２か月前あたりから考えてたんだよ、" + Database.VINSGALDE + "の件は。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：適任役は誰かなと考えた所"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：君達２人にこの生誕祭が終わった後、正式に依頼しに行こうと思ってたんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("（ラナ：えっ！？）　　（アイン：えっ！！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：あのダンジョンを突破してきた君達だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：きみ達なら、きっとこの件を解決してくれる。そう信じたんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：というわけで・・・ファラ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：はい、何でしょう？（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：順番が逆になってしまったが・・・例のモノをここへ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：フフフ、もう後ろの手に隠し持ってましたわ、ジャーン（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：だあぁ、お前はもっと王妃らしくしなさい。本当に・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：このぐらい良いじゃない、ッネ、アインさん（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：タ・・・タハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：相変わらず、先回りされてしまいますね。凄いですよ、国王も王妃も。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：本当、驚かされるわ。いくらなんでもここまで私の行動が読み切られるなんて・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ちょっと質問。ラナの生真面目さと正義行動は何となく読めるとしても"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何で俺の分まで？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファラ：・・・ッキャ、野暮だわ（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ハイ？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：こら、ファラ。話をややこしくしないように。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：アインくん、君に遠征してもらうのは、別の意図があるんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：は、はい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エルミ：アインくん・・・実はね・・・"); eventList.Add(ActionEvent.None);
+
+            GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin); eventList.Add(ActionEvent.None);
+
+            // todo
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.Message = "---- ファージル宮殿、園芸の広場にて ----";
+            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
+            //}
+
+            messageList.Add("ラナ：あっ、ホラホラ見てアイン。これアカシジアの木よ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：へえ・・・こんな形してんだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、こっちのも奇妙な形をしてるぞ。ラナわかるか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：それはヒメリギツユクサよ。成熟するまでは、渦巻き状に葉を広げるの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：へえ・・・へええぇぇ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アインって本当に知らないのね、こういう事は。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、まったく知らない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：こっちの、ゴリュウモクレンは？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：見たことも聞いた事もないな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：この、マラ・ハクジュは？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どっかの本でかろうじて・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっと、ファージル宮殿で今年新作の薬草よ・・・本にまだ載ってないわよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ、まじかよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：フ・・・ッフフフ♪　あーオカシイー♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：くそう、今に見てろ・・・全部暗記してやるからな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインには一生無理な課題じゃないかしら♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なあラナ。お前、やっぱり園芸とか好きなんだな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、そうね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうやって、薬草とか見て笑ってるお前って・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ！　あっちにも面白い形の木があるぞ、行ってみようぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えーーー、何よ今の。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：行ってみようぜ！　っな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・ハイハイ、分かりました♪"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.Message = "---- ファージル宮殿、食事の間にて ----";
+            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
+            //}
+
+            messageList.Add("アイン：マジかよ・・・この美味さ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺は幸せ者だ！　まだまだ食わせてもらうぜ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：すみません、カールハンツ爵。このバカが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：よい、気の済むまで食されよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：それよりも、貴女は数日後、" + Database.VINSGALDE + "へ向かうとの事。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：準備を怠るでないぞ、よいな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ、ありがとうございます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：それと貴君。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッモゴ・・・ハイ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ランディスとはここで会ったかね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いえ、まだですが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：えっ、やっぱりどこかに潜んでるんですか？生誕祭だし・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：当然の事。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：トホホ・・・殴られたくないんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッフ、さすがに生誕祭のど真ん中でバトルを仕掛ける事はなかろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ランディスは貴君に何か話があるようだったぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：この食事が終わったら、会ってみるがよい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：了解です。しかし、この宮殿広いしな・・・どこに行けば・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　その瞬間。　アインは遥か遠くから伝わってくる殺気を感じ取った。　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハッ！　まさかこの悪寒と恐怖！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：この喧騒の中で互いに感知出来るとは、貴君も相当腕が上がったようだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや・・・これは単にボケ師匠の殺気が威圧的すぎるだけです・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも、不思議よね。アインが自分から察知しようとしたら、感知できたんでしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、まあ・・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：話が一区切りするまでランディスさんは待っててくれた。って事じゃないかしら♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、絶対にありえないから。あの師匠に限ってないない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフ、そんな事言ってると・・・知らないわよー♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え？？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　ヴオオォォォン！！！　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っおわあぁぁぁ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ちょちょちょ、止めてくれよボケ師匠・・・いつの間に後方に忍び寄ったんだ、ったく・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：生誕祭のど真ん中でバトルを仕掛ける事がねぇと思ってんじゃねえぞ、ボケが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいやいや・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ダンジョン、どうだった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・まあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：予想を超えてた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：自分の身の程が分かった、そんな気がした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺、もうちょっといろいろ回ってみようと思うんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ほぉ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：知らない事が多すぎる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生にも教えてもらいたい事が山ほどあるんだが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：教えてもらう以前に、自分の手足を使って、まずいろいろ拾ってみたいんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃないといつまでたっても、師匠やカール先生には勝てる気がしない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ちったぁ、成長したって所か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：" + Database.VINSGALDE + "遠征、頑張ってこいや。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：げっ、なんでもう知ってるんだ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：俺様は国王直属だぞ、てめぇに話が行く前から聞かされてんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ・・・そういや直属だったっけ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なあ師匠"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺、" + Database.VINSGALDE + "に行って、今度こそ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：腕を磨いて磨いて、師匠に勝ってみせる！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・　ケッ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：せいぜい頑張れや、ッカッカッカ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：笑ってられんのも今のうちだ、絶対だからな。"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.Message = "---- ファージル宮殿、休息の間にて ----";
+            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
+            //}
+
+            messageList.Add("アイン：いやあ、しかし宮殿中を歩き回ったな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まだ一周出来てないわよね。本当凄いわね、エルミ様とファラ様は。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、こんだけの広さ。２人自らで設計したらしいからな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・ねえアイン"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アンタどこか一緒に来て欲しい所があるとか言ってなかったっけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああ、そうだそうだ。忘れる所だった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと・・・そんな忘れるような内容なの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：い、いやいや悪い・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：忘れてはいないさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ただ、ちょっとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ん～、ハッキリしないわね。結局そこには行くの？行かないの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　まあ　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：行ってやれ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：師匠、いつのまに・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：てめぇが今回宮殿に来た一番の目的はそれだろ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっ、そうなの？アイン"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ああ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、特に変な内容ってわけじゃないんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ただ俺がそこに行くってのは変かなって思ってる面も・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：変でもなんでもねえ、行ってやれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：何だったら俺も一緒に行ってやる。挨拶がまだだしな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ、そか。ハハハ・・・助かる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：どこに行くの？"); eventList.Add(ActionEvent.None);
+
+            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：エレマ・セフィーネさんの墓場だ。"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //using (MessageDisplay md = new MessageDisplay())
+            //{
+            //    md.StartPosition = FormStartPosition.CenterParent;
+            //    md.Message = "---- ファージル宮殿、墓地にて ----";
+            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
+            //}
+
+            messageList.Add("ラナ：こんな所があったのね・・・知らなかったわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：隠されるよう設計されてんだ。小娘には見つけられなくて当然だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうなんですか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：確かエレマさんの墓標は・・・あの辺りだったかな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・あっ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：誰か・・・いる・・・"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //mainMessage.Visible = false;
+
+            //for (int ii = 0; ii < 10; ii++)
+            //{
+            //    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FAZIL_CASTLE, (ii + 1) * 0.1f); eventList.Add(ActionEvent.None);
+            //    System.Threading.Thread.Sleep(400); eventList.Add(ActionEvent.None);
+            //    Application.DoEvents(); eventList.Add(ActionEvent.None);
+            //}
+
+            //labelEnding.Visible = false;
+            //labelEnding2.Visible = false;
+            //this.BackColor = Color.White;
+            //UpdateEndingMessage2(""); eventList.Add(ActionEvent.None);
+            //GroundOne.WE2.SeekerEndingRoll = true;
+
+            //GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("Dungeon Player\r\n ～ The Liberty Seeker ～"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("ストーリー　　【　湯淺　與範　】\r\n　　　　　　　【　辻谷　友紀　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("音楽　　【　湯淺　晋太郎　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("バトルシステム　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("マップ制作　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("モンスター制作　　【　辻谷　友紀　】\r\n　　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("魔法／スキル　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("サウンドエフェクト　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("アイテム制作　　【　石高　裕介　】\r\n　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("グラフィック　　　【　辻谷　友紀　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("プログラマー　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("スペシャルサンクス　　【　KANAKO　】"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage2("プロデューサー　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+
+            //UpdateEndingMessage("　ラナ：あれ・・・ヴェルゼさんじゃない？"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：ああ・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：なぜ、こんな所に・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　ダンジョンから出る最後　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　あの真っ白な空間の中で、支配竜が最後、俺に告げたこと　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　唯一の例外として　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　ヴェルゼ・アーティを現世に戻してくれると伝えてくれた　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　ラナが助かったと分かった直後　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　俺の勝手なわがままだったかもしれないが　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　俺はあの真っ白な空間に引き込まれる中で必至に願った　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　それを支配竜は例外的に聞き入れてくれたようだ　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　ただし、絶対の条件があった　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　生命としての活動を復活させるだけでしか原理的には行えない　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　復活したとしても、本人の今までの記憶は一切保持されない　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　記憶は完全に消去される　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　最低限の生命活動を行うコア部分のみが魂として吹き込まれる）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　この事象は支配竜を通じて俺にだけ伝えられている　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：師匠やっぱり・・・ヴェルゼは記憶喪失なのか？"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：通常の会話でも大体分かるんだが"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：エルミの事やファラ、カールの事、もちろん俺も含めて"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：アーティの野郎は、完全に覚えてねぇ。"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：曖昧な雑談の中では読み切れない面もあるが"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：あのDUEL闘技場で、俺が負けた時の試合"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：あの時の戦闘の動きで、きっちり実感させてもらった。"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：今のアーティは完全に記憶喪失だ。"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ラナ：エレマさんとの記憶も・・・全部残ってないのよね・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ランディス：だろうな。"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ラナ：そんな・・・じゃあ、どうして・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　記憶が一切消去された状態で　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　ヴェルゼは・・・無言で佇んでいる・・・　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　最愛の人が眠る墓所の前で・・・　）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：（　長い事・・・ずっと・・・）"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ラナ：ねえ、見てあれ。"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：ん？"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ラナ：ヴェルゼさんの足元、花が咲いてるわ。"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：・・・ホントだ・・・何ていう花なんだ？"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ラナ：アルヴィアナの花"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：アルヴィアナの・・・花？"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ラナ：この時期には、滅多に咲かない花よ。"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：そうなんだ・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　アイン：花言葉とか、あったりするのか？"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage("　ラナ：うん、花言葉はね・・・"); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage(""); eventList.Add(ActionEvent.None);
+
+            //UpdateEndingMessage(""); eventList.Add(ActionEvent.None);
+
+            //for (int ii = 0; ii < 3000; ii++)
+            //{
+            //    point = new PointF(point.X, point.Y - 1); eventList.Add(ActionEvent.None);
+            //    this.Invalidate(); eventList.Add(ActionEvent.None);
+
+            //    int sleep = 70;
+            //    if (ii > 2000) { sleep = 50; }
+            //    if (ii > 2500) { sleep = 30; }
+            //    if (ii > 2700) { sleep = 15; }
+            //    System.Threading.Thread.Sleep(sleep); eventList.Add(ActionEvent.None);
+            //    Application.DoEvents(); eventList.Add(ActionEvent.None);
+            //}
+
+            //this.endingText3.Add("＜　奇跡の再会　＞　って言うのよ。"); eventList.Add(ActionEvent.None);
+            //for (int ii = 0; ii < 800; ii++)
+            //{
+            //    this.Invalidate(); eventList.Add(ActionEvent.None);
+            //    System.Threading.Thread.Sleep(20); eventList.Add(ActionEvent.None);
+            //    Application.DoEvents(); eventList.Add(ActionEvent.None);
+            //}
+
+            //GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            //GroundOne.WE2.SeekerEnd = true;
+            //this.we.TruthCompleteArea5 = true;
+            //this.we.TruthCompleteArea5Day = this.we.GameDay;
+            //using (SaveLoad sl = new SaveLoad())
+            //{
+            //    sl.MC = this.MC;
+            //    sl.SC = this.SC;
+            //    sl.TC = this.TC;
+            //    sl.WE = this.WE;
+            //    sl.Truth_KnownTileInfo = this.Truth_KnownTileInfo; // 後編追加
+            //    sl.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2; // 後編追加
+            //    sl.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3; // 後編追加
+            //    sl.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4; // 後編追加
+            //    sl.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5; // 後編追加
+            //    sl.SaveMode = true;
+            //    sl.StartPosition = FormStartPosition.CenterParent;
+            //    sl.ShowDialog(); eventList.Add(ActionEvent.None);
+            //    sl.RealWorldSave(); eventList.Add(ActionEvent.None);
+            //}
+
+            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
         // DUEL闘技場開催
         public static void Message29000(ref List<string> messageList, ref List<ActionEvent> eventList)
