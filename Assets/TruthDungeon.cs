@@ -6222,6 +6222,9 @@ namespace DungeonPlayer
 
                     //be.ShowDialog();
                     //SceneMove.TBE = be;
+                    GroundOne.enemyName1 = enemyName;
+                    GroundOne.enemyName2 = enemyName2;
+                    GroundOne.enemyName3 = enemyName3;
                     SceneDimension.Go(Database.TruthDungeon, Database.TruthBattleEnemy);
                     endFlag = true;
                     //if (be.DialogResult == DialogResult.Retry)

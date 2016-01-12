@@ -12,6 +12,10 @@ namespace DungeonPlayer
 {
     public class TruthStatusPlayer : MonoBehaviour
     {
+        public GameObject groupParentStatus;
+        public GameObject groupParentBackpack;
+        public GameObject groupParentSpell;
+        public GameObject groupParentResist;
         public GameObject groupBtnChara;
         public GameObject groupTxtChara;
         public Button btnClose;
@@ -3813,110 +3817,111 @@ namespace DungeonPlayer
             }
         }
 
-        //private void ChangeViewButton_Click(int viewNumber)
-        //{
-        //    MainCharacter targetPlayer = null;
-        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = mc;
-        //    }
-        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = sc;
-        //    }
-        //    else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = tc;
-        //    }
+        public void ChangeViewButton_Click(int viewNumber)
+        {
+            MainCharacter targetPlayer = GetCurrentPlayer();
 
-        //    if (this.onlySelectTrash)
-        //    {
-        //        mainMessage.Text = targetPlayer.GetCharacterSentence(2021);
-        //        return;
-        //    }
-        //    if (this.onlyUseItem)
-        //    {
-        //        mainMessage.Text = targetPlayer.GetCharacterSentence(2031);
-        //        return;
-        //    }
+            if (this.onlySelectTrash)
+            {
+                mainMessage.text = targetPlayer.GetCharacterSentence(2021);
+                return;
+            }
+            if (this.onlyUseItem)
+            {
+                mainMessage.text = targetPlayer.GetCharacterSentence(2031);
+                return;
+            }
 
-        //    if (viewNumber == 0)
-        //    {
-        //        FirstViewToSecondView = false;
-        //        SecondViewToThirdView = false;
-        //        ThirdViewToFourthView = false;
-        //        grpBattleStatus.Width = BATTLEPARAMETER_WIDTH;
-        //        grpEquipment.Width = EQUIPMENT_WIDTH;
-        //        grpParameter.Width = PARAMETER_WIDTH;
-        //        grpBackPack.Width = 0;
-        //        grpSpellSkill.Width = 0;
-        //        grpResistStatus.Width = 0;
-        //        buttonViewChange.Text = ToRight;
+            if (viewNumber == 0)
+            {
+                groupParentStatus.gameObject.SetActive(true);
+                groupParentBackpack.gameObject.SetActive(false);
+                groupParentSpell.gameObject.SetActive(false);
+                groupParentResist.gameObject.SetActive(false);
+                //FirstViewToSecondView = false;
+                //SecondViewToThirdView = false;
+                //ThirdViewToFourthView = false;
+                //grpBattleStatus.Width = BATTLEPARAMETER_WIDTH;
+                //grpEquipment.Width = EQUIPMENT_WIDTH;
+                //grpParameter.Width = PARAMETER_WIDTH;
+                //grpBackPack.Width = 0;
+                //grpSpellSkill.Width = 0;
+                //grpResistStatus.Width = 0;
+                //buttonViewChange.Text = ToRight;
 
-        //    }
-        //    else if (viewNumber == 1)
-        //    {
-        //        FirstViewToSecondView = true;
-        //        SecondViewToThirdView = false;
-        //        ThirdViewToFourthView = false;
-        //        grpBattleStatus.Width = 0;
-        //        grpEquipment.Width = 0;
-        //        grpParameter.Width = 0;
-        //        grpBackPack.Width = BACKPACK_WIDTH;
-        //        grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
-        //        grpSpellSkill.Width = 0;
-        //        grpResistStatus.Width = 0;
-        //        //buttonViewChange.Text = ToLeft;
-        //    }
-        //    else if (viewNumber == 2)
-        //    {
-        //        FirstViewToSecondView = true;
-        //        SecondViewToThirdView = true;
-        //        ThirdViewToFourthView = false;
-        //        grpBattleStatus.Width = 0;
-        //        grpEquipment.Width = 0;
-        //        grpParameter.Width = 0;
-        //        grpBackPack.Width = 0;
-        //        grpSpellSkill.Width = BACKPACK_WIDTH;
-        //        grpSpellSkill.Location = new Point(SPELLSKILL_BASE_POSITION, grpSpellSkill.Location.Y);
-        //        grpResistStatus.Width = 0;
-        //        //buttonViewChange.Text = ToLeft;
-        //    }
-        //    else if (viewNumber == 3)
-        //    {
-        //        FirstViewToSecondView = true;
-        //        SecondViewToThirdView = true;
-        //        ThirdViewToFourthView = true;
-        //        grpBattleStatus.Width = 0;
-        //        grpEquipment.Width = 0;
-        //        grpParameter.Width = 0;
-        //        grpBackPack.Width = 0;
-        //        grpSpellSkill.Width = 0;
-        //        grpResistStatus.Width = BACKPACK_WIDTH;
-        //        grpResistStatus.Location = new Point(SPELLSKILL_BASE_POSITION, grpResistStatus.Location.Y);
-        //        buttonViewChange.Text = ToLeft;
-        //    }
-        //}
+            }
+            else if (viewNumber == 1)
+            {
+                groupParentStatus.gameObject.SetActive(false);
+                groupParentBackpack.gameObject.SetActive(true);
+                groupParentSpell.gameObject.SetActive(false);
+                groupParentResist.gameObject.SetActive(false);
+                //FirstViewToSecondView = true;
+                //SecondViewToThirdView = false;
+                //ThirdViewToFourthView = false;
+                //grpBattleStatus.Width = 0;
+                //grpEquipment.Width = 0;
+                //grpParameter.Width = 0;
+                //grpBackPack.Width = BACKPACK_WIDTH;
+                //grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
+                //grpSpellSkill.Width = 0;
+                //grpResistStatus.Width = 0;
+                ////buttonViewChange.Text = ToLeft;
+            }
+            else if (viewNumber == 2)
+            {
+                groupParentStatus.gameObject.SetActive(false);
+                groupParentBackpack.gameObject.SetActive(false);
+                groupParentSpell.gameObject.SetActive(true);
+                groupParentResist.gameObject.SetActive(false);
+                //FirstViewToSecondView = true;
+                //SecondViewToThirdView = true;
+                //ThirdViewToFourthView = false;
+                //grpBattleStatus.Width = 0;
+                //grpEquipment.Width = 0;
+                //grpParameter.Width = 0;
+                //grpBackPack.Width = 0;
+                //grpSpellSkill.Width = BACKPACK_WIDTH;
+                //grpSpellSkill.Location = new Point(SPELLSKILL_BASE_POSITION, grpSpellSkill.Location.Y);
+                //grpResistStatus.Width = 0;
+                ////buttonViewChange.Text = ToLeft;
+            }
+            else if (viewNumber == 3)
+            {
+                groupParentStatus.gameObject.SetActive(false);
+                groupParentBackpack.gameObject.SetActive(false);
+                groupParentSpell.gameObject.SetActive(false);
+                groupParentResist.gameObject.SetActive(true);
+                //FirstViewToSecondView = true;
+                //SecondViewToThirdView = true;
+                //ThirdViewToFourthView = true;
+                //grpBattleStatus.Width = 0;
+                //grpEquipment.Width = 0;
+                //grpParameter.Width = 0;
+                //grpBackPack.Width = 0;
+                //grpSpellSkill.Width = 0;
+                //grpResistStatus.Width = BACKPACK_WIDTH;
+                //grpResistStatus.Location = new Point(SPELLSKILL_BASE_POSITION, grpResistStatus.Location.Y);
+                //buttonViewChange.Text = ToLeft;
+            }
+        }
 
-        //private void StatusButton_Click(object sender, EventArgs e)
-        //{
-        //    if (sender.Equals(StatusButton))
-        //    {
-        //        ChangeViewButton_Click(0);
-        //    }
-        //    else if (sender.Equals(itemButton))
-        //    {
-        //        ChangeViewButton_Click(1);
-        //    }
-        //    else if (sender.Equals(spellButton))
-        //    {
-        //        ChangeViewButton_Click(2);
-        //    }
-        //    else if (sender.Equals(resistButton))
-        //    {
-        //        ChangeViewButton_Click(3);
-        //    }
-        //}
+        public void StatusButton1_Click()
+        {
+            ChangeViewButton_Click(0);
+        }
+        public void StatusButton2_Click()
+        {
+            ChangeViewButton_Click(1);
+        }
+        public void StatusButton3_Click()
+        {
+            ChangeViewButton_Click(2);
+        }
+        public void StatusButton4_Click()
+        {
+            ChangeViewButton_Click(3);
+        }
 
         //// [警告] 以下、TruthSelectCharacterと重複する記述です。統一化を行ってください。
         //private int addStrSC = 0;

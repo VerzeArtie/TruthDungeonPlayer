@@ -182,6 +182,9 @@ namespace DungeonPlayer
         public GameObject PanelBuffEnemy1;
         public GameObject PanelBuffEnemy2;
         public GameObject PanelBuffEnemy3;
+        public GameObject treasurePanel;
+        public Image treasureIcon;
+        public Text treasureText;
 
         // internal
         const int TIME_TURN = 320;
@@ -888,7 +891,6 @@ namespace DungeonPlayer
             GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife;
             GroundOne.MC.CurrentMana = GroundOne.MC.MaxMana;
             GroundOne.MC.CurrentSkillPoint = GroundOne.MC.MaxSkillPoint;
-            GroundOne.MC.MagicAttackValue = 20;
             GroundOne.MC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.MC.CurrentInstantPoint = 0;
             GroundOne.MC.MainFaceArrow = this.player1Arrow;
@@ -918,7 +920,6 @@ namespace DungeonPlayer
             GroundOne.SC.CurrentLife = GroundOne.SC.MaxLife;
             GroundOne.SC.CurrentMana = GroundOne.SC.MaxMana;
             GroundOne.SC.CurrentSkillPoint = GroundOne.SC.MaxSkillPoint;
-            GroundOne.SC.MagicAttackValue = 50;
             GroundOne.SC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.SC.CurrentInstantPoint = 0;
             GroundOne.SC.MainFaceArrow = this.player2Arrow;
@@ -948,7 +949,6 @@ namespace DungeonPlayer
             GroundOne.TC.CurrentLife = GroundOne.TC.MaxLife;
             GroundOne.TC.CurrentMana = GroundOne.TC.MaxMana;
             GroundOne.TC.CurrentSkillPoint = GroundOne.TC.MaxSkillPoint;
-            GroundOne.TC.MagicAttackValue = 30;
             GroundOne.TC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.TC.CurrentInstantPoint = 0;
             GroundOne.TC.MainFaceArrow = this.player3Arrow;
@@ -970,9 +970,7 @@ namespace DungeonPlayer
             this.playerList.Add(GroundOne.TC);
 
             this.ec1 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec1.Initialize(Database.ENEMY_KOUKAKU_WURM);
-            this.ec1.CurrentMana = this.ec1.MaxMana;
-            this.ec1.MagicAttackValue = 1;
+            this.ec1.Initialize(GroundOne.enemyName1);
             this.ec1.CurrentCommand = Database.ATTACK_EN;
             this.ec1.CurrentInstantPoint = 0;
             this.ec1.MainFaceArrow = this.enemy1Arrow;
@@ -992,9 +990,7 @@ namespace DungeonPlayer
             this.enemyList.Add(this.ec1);
 
             this.ec2 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec2.Initialize(Database.ENEMY_HIYOWA_BEATLE);
-            this.ec2.CurrentMana = this.ec2.MaxMana;
-            this.ec2.MagicAttackValue = 1;
+            this.ec2.Initialize(GroundOne.enemyName2);
             this.ec2.CurrentCommand = Database.ATTACK_EN;
             this.ec2.CurrentInstantPoint = 0;
             this.ec2.MainFaceArrow = this.enemy2Arrow;
@@ -1014,9 +1010,7 @@ namespace DungeonPlayer
             this.enemyList.Add(this.ec2);
 
             this.ec3 = baseObj.AddComponent<TruthEnemyCharacter>();
-            this.ec3.Initialize(Database.ENEMY_GREEN_CHILD);
-            this.ec3.CurrentMana = this.ec3.MaxMana;
-            this.ec3.MagicAttackValue = 1;
+            this.ec3.Initialize(GroundOne.enemyName3);
             this.ec3.CurrentCommand = Database.PROTECTION;
             this.ec3.CurrentInstantPoint = 0;
             this.ec3.MainFaceArrow = this.enemy3Arrow;
@@ -1902,6 +1896,87 @@ namespace DungeonPlayer
             //}
         }
 
+        private void MessageDisplayWithIcon(ItemBackPack item)
+        {
+            if (item != null)
+            {
+                treasureText.text = "【 " + item.Name + " 】を入手！";
+
+                switch (item.Rare)
+                {
+                    case ItemBackPack.RareLevel.Poor:
+                        treasurePanel.GetComponent<Image>().color = Color.gray;
+                        break;
+                    case ItemBackPack.RareLevel.Common:
+                        treasurePanel.GetComponent<Image>().color = Color.green;
+                        break;
+                    case ItemBackPack.RareLevel.Rare:
+                        treasurePanel.GetComponent<Image>().color = UnityColor.DarkBlue;
+                        break;
+                    case ItemBackPack.RareLevel.Epic:
+                        treasurePanel.GetComponent<Image>().color = UnityColor.Purple;
+                        break;
+                    case ItemBackPack.RareLevel.Legendary: // 後編追加
+                        treasurePanel.GetComponent<Image>().color = UnityColor.Orangered;
+                        break;
+                    default:
+                        treasurePanel.GetComponent<Image>().color = Color.gray;
+                        break;
+                }
+
+                switch (item.Type)
+                {
+                    case ItemBackPack.ItemType.Weapon_TwoHand:
+                        treasureIcon.sprite = Resources.Load<Sprite>("TwoHand");
+                        break;
+                    case ItemBackPack.ItemType.Weapon_Light:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Knuckle");
+                        break;
+                    case ItemBackPack.ItemType.Weapon_Heavy:
+                    case ItemBackPack.ItemType.Weapon_Middle:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Weapon");
+                        break;
+                    case ItemBackPack.ItemType.Weapon_Rod:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Rod");
+                        break;
+                    case ItemBackPack.ItemType.Accessory:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Accessory");
+                        break;
+                    case ItemBackPack.ItemType.Armor_Heavy:
+                    case ItemBackPack.ItemType.Armor_Middle:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Armor");
+                        break;
+                    case ItemBackPack.ItemType.Armor_Light:
+                        treasureIcon.sprite = Resources.Load<Sprite>("LightArmor");
+                        break;
+                    case ItemBackPack.ItemType.Material_Equip:
+                    case ItemBackPack.ItemType.Material_Food:
+                    case ItemBackPack.ItemType.Material_Potion:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Material1");
+                        break;
+                    case ItemBackPack.ItemType.Shield:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Shield");
+                        break;
+                    case ItemBackPack.ItemType.Use_Any:
+                        treasureIcon.sprite = Resources.Load<Sprite>("UseItem");
+                        break;
+                    case ItemBackPack.ItemType.Use_Potion:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Potion");
+                        break;
+                    case ItemBackPack.ItemType.Useless:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Useless");
+                        break;
+                    case ItemBackPack.ItemType.None:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Useless");
+                        //pictureBox1.Visible = false;
+                        break;
+                    default:
+                        treasureIcon.sprite = Resources.Load<Sprite>("Useless");
+                        break;
+                }
+            }
+        }
+
         private void BattleEndPhase()
         {
             Debug.Log("BattleEndPhase start");
@@ -1998,6 +2073,9 @@ namespace DungeonPlayer
                 if (this.DuelMode == false)
                 {
                     string targetItemName = Method.GetNewItem(Method.NewItemCategory.Battle, GroundOne.MC, ec1, GroundOne.WE.DungeonArea);
+                    Debug.Log("targetItemName: " + targetItemName);
+                    MessageDisplayWithIcon(new ItemBackPack(targetItemName));
+                    treasurePanel.SetActive(true);
 
                     // todo
                     //using (MessageDisplayWithIcon mdwi = new MessageDisplayWithIcon())
@@ -2083,7 +2161,7 @@ namespace DungeonPlayer
                 }
             }
             Debug.Log("back");
-            SceneDimension.Back();
+            //SceneDimension.Back();
             Debug.Log("end");
         }
 
@@ -4572,10 +4650,9 @@ namespace DungeonPlayer
         private void PlayerMagicAttack(MainCharacter player, MainCharacter target)
         {
             // todo
-            double value = player.MagicAttackValue;
+            double value = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
             AbstractMagicAttack(player, target, "Magical", value);
         }
-
 
         // フレイムオーラ
         private void PlayerSpellFlameAura(MainCharacter player, MainCharacter target)

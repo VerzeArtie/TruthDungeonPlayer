@@ -59,6 +59,10 @@ namespace DungeonPlayer
         public static battleResult BattleResult = battleResult.None;
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
+        // TruthBattleEnemy
+        public static string enemyName1 = string.Empty;
+        public static string enemyName2 = string.Empty;
+        public static string enemyName3 = string.Empty;
 
         // SaveLoad
         public static bool SaveMode = false; // false:Load true:Save

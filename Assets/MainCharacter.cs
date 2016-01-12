@@ -2394,8 +2394,6 @@ namespace DungeonPlayer
         // e 後編追加
         #endregion
 
-        public double MagicAttackValue { get; set; }
-
         public string CurrentCommand { get; set; }
 
         //	public int CurrentProtection { get; set; }

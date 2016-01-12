@@ -2428,7 +2428,7 @@ namespace DungeonPlayer
 
             messageList.Add("【ラナのイヤリング】を手に入れました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            // GetItemFullCheck(GroundOne.MC, Database.RARE_EARRING_OF_LANA); // todo
+            // GetItemFullCheck(GroundOne.MC, Database.RARE_EARRING_OF_LANA); // after delete
 
             if (GroundOne.WE2.TruthBadEnd1)
             {
