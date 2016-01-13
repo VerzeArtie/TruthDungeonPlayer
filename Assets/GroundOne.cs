@@ -100,6 +100,8 @@ namespace DungeonPlayer
             MC.Accessory = new ItemBackPack(Database.COMMON_RED_PENDANT);
             MC.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_PENDANT);
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_SISSO_ARMRING));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
@@ -117,6 +119,7 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.COMMON_GREEN_MASEKI));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_SMART_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
+            MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
             MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
             // debug
             MC.AvailableMana = true;

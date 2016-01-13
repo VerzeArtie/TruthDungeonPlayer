@@ -1533,7 +1533,7 @@ namespace DungeonPlayer
                     break;
                 case ItemBackPack.RareLevel.Common:
                     target1.color = Color.white;
-                    target2.gameObject.GetComponent<Image>().color = new Color(0, 0.7f, 0);
+                    target2.gameObject.GetComponent<Image>().color = UnityColor.CommonGreen;
                     break;
                 case ItemBackPack.RareLevel.Rare:
                     target1.color = Color.white;

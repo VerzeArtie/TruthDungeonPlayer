@@ -155,7 +155,7 @@ namespace DungeonPlayer
         public GameObject[] back_Backpack;
         public Text[] backpack;
         public Text[] backpackStack;
-        private GameObject[] backpackIcon; // pb
+        public Image[] backpackIcon; // pb
 
         private bool useOverShifting = false;
 
@@ -197,21 +197,7 @@ namespace DungeonPlayer
             if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
 
             backpackData = player.GetBackPackInfo();
-            if (this.backpackData != null)
-            {
-                for (int ii = 0; ii < this.backpackData.Length; ii++)
-                {
-                    if (this.backpackData[ii] != null)
-                    {
-                        this.backpack[ii].text = this.backpackData[ii].Name;
-                        Method.UpdateRareColor(backpackData[ii], backpack[ii], back_Backpack[ii]);
-                    }
-                    else
-                    {
-                        this.backpack[ii].text = "";
-                    }
-                }
-            }
+            UpdateBackPackLabel(player);
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
             {
@@ -2220,8 +2206,13 @@ namespace DungeonPlayer
         //    }
         //}
 
-        //void StatusPlayer_MouseEnter(object sender, EventArgs e)
-        //{
+        public void StatusPlayer_MouseLeave()
+        {
+            mainMessage.text = "";
+        }
+        public void StatusPlayer_MouseEnter(Text sender)
+        {
+
         //    if (((Label)sender).Name == "weapon")
         //    {
         //        ItemBackPack temp = new ItemBackPack(weapon.Text);
@@ -2276,20 +2267,12 @@ namespace DungeonPlayer
         //    }
         //    // e 後編追加
 
-        //    for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
-        //    {
-        //        if (((Label)sender).Name == "backpack" + ii.ToString())
-        //        {
-        //            ItemBackPack temp = new ItemBackPack(backpack[ii].Text);
-        //            if (temp.Description != "")
-        //            {
-        //                mainMessage.Text = temp.Description;
-        //            }
-        //            return;
-        //        }
-        //    }
-
-        //}
+            ItemBackPack temp = new ItemBackPack(sender.text);
+            if (temp.Description != "")
+            {
+                mainMessage.text = temp.Description;
+            }
+        }
 
         //private int mousePosX = 0;
         //private int mousePosY = 0;
@@ -2546,81 +2529,79 @@ namespace DungeonPlayer
         //    }
         //}
 
-        //private void UpdateBackPackLabel(MainCharacter target)
-        //{
-        //    ItemBackPack[] backpackData = target.GetBackPackInfo();
-        //    for (int ii = 0; ii < backpackData.Length; ii++)
-        //    {
-        //        if (backpackData[ii] == null)
-        //        {
-        //            backpack[ii].Text = "";
-        //            backpack[ii].Cursor = System.Windows.Forms.Cursors.Default;
-        //            backpackStack[ii].Text = "";
-        //            backpackIcon[ii].Image = null;
-        //            backpackIcon[ii].Update();
-        //        }
-        //        else
-        //        {
-        //            backpack[ii].Text = backpackData[ii].Name;
-        //            backpack[ii].Cursor = System.Windows.Forms.Cursors.Hand;
-        //            UpdateLabelColorForRare(ref backpack[ii], backpackData[ii].Rare);
-        //            backpackStack[ii].Text = "x" + backpackData[ii].StackValue.ToString();
-        //            if ((backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Heavy) ||
-        //                (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Middle))
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Weapon.bmp");
-        //            }
-        //            else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_TwoHand)
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "TwoHand.bmp");
-        //            }
-        //            else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Light)
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Knuckle.bmp");
-        //            }
-        //            else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Rod)
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Rod.bmp");
-        //            }
-        //            else if (backpackData[ii].Type == ItemBackPack.ItemType.Shield)
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Shield.bmp");
-        //            }
-        //            else if ((backpackData[ii].Type == ItemBackPack.ItemType.Armor_Heavy) ||
-        //                        (backpackData[ii].Type == ItemBackPack.ItemType.Armor_Middle))
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Armor.bmp");
-        //            }
-        //            else if ((backpackData[ii].Type == ItemBackPack.ItemType.Armor_Light))
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "LightArmor.bmp");
-        //            }
-        //            else if (backpackData[ii].Type == ItemBackPack.ItemType.Accessory)
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Accessory.bmp");
-        //            }
-        //            else if ((backpackData[ii].Type == ItemBackPack.ItemType.Material_Equip) ||
-        //                        (backpackData[ii].Type == ItemBackPack.ItemType.Material_Food) ||
-        //                        (backpackData[ii].Type == ItemBackPack.ItemType.Material_Potion))
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Material1.bmp");
-        //            }
-        //            else if (backpackData[ii].Type == ItemBackPack.ItemType.Use_Potion)
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Potion.bmp");
-        //            }
-        //            else if (backpackData[ii].Type == ItemBackPack.ItemType.Use_Any)
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "UseItem.bmp");
-        //            }
-        //            else
-        //            {
-        //                backpackIcon[ii].Image = Image.FromFile(Database.BaseResourceFolder + "Useless.bmp");
-        //            }
-        //            backpackIcon[ii].Update();
-        //        }
-        //    }
-        //}
+        private void UpdateBackPackLabel(MainCharacter target)
+        {
+            ItemBackPack[] backpackData = target.GetBackPackInfo();
+            for (int ii = 0; ii < backpackData.Length; ii++)
+            {
+                if (backpackData[ii] == null)
+                {
+                    backpack[ii].text = "";
+                    backpackStack[ii].text = "";
+                    backpackIcon[ii].sprite = null;
+                    back_Backpack[ii].SetActive(false);
+                }
+                else
+                {
+                    back_Backpack[ii].SetActive(true);
+                    backpack[ii].text = backpackData[ii].Name;
+                    Method.UpdateRareColor(backpackData[ii], backpack[ii], back_Backpack[ii]);
+                    backpackStack[ii].text = "x" + backpackData[ii].StackValue.ToString();
+                    if ((backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Heavy) ||
+                        (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Middle))
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Weapon");
+                    }
+                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_TwoHand)
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("TwoHand");
+                    }
+                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Light)
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Knuckle");
+                    }
+                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Rod)
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Rod");
+                    }
+                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Shield)
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Shield");
+                    }
+                    else if ((backpackData[ii].Type == ItemBackPack.ItemType.Armor_Heavy) ||
+                                (backpackData[ii].Type == ItemBackPack.ItemType.Armor_Middle))
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Armor");
+                    }
+                    else if ((backpackData[ii].Type == ItemBackPack.ItemType.Armor_Light))
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("LightArmor");
+                    }
+                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Accessory)
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Accessory");
+                    }
+                    else if ((backpackData[ii].Type == ItemBackPack.ItemType.Material_Equip) ||
+                                (backpackData[ii].Type == ItemBackPack.ItemType.Material_Food) ||
+                                (backpackData[ii].Type == ItemBackPack.ItemType.Material_Potion))
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Material1");
+                    }
+                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Use_Potion)
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Potion");
+                    }
+                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Use_Any)
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Useless");
+                    }
+                    else
+                    {
+                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Useless");
+                    }
+                }
+            }
+        }
 
         //private void UpdateResistStatus(MainCharacter player)
         //{

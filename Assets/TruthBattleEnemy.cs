@@ -1908,7 +1908,7 @@ namespace DungeonPlayer
                         treasurePanel.GetComponent<Image>().color = Color.gray;
                         break;
                     case ItemBackPack.RareLevel.Common:
-                        treasurePanel.GetComponent<Image>().color = Color.green;
+                        treasurePanel.GetComponent<Image>().color = UnityColor.CommonGreen;
                         break;
                     case ItemBackPack.RareLevel.Rare:
                         treasurePanel.GetComponent<Image>().color = UnityColor.DarkBlue;
