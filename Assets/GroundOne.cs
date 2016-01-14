@@ -63,6 +63,12 @@ namespace DungeonPlayer
         public static string enemyName1 = string.Empty;
         public static string enemyName2 = string.Empty;
         public static string enemyName3 = string.Empty;
+        // TruthStatusPlayer
+        public static bool LevelUp = false; // レベルアップモード画面
+        public static int UpPoint = 0; // パラメタアップポイント
+        public static int CumultiveLvUpValue = 0; // レベルアップカウント累積値
+        public static bool OnlySelectTrash = false; // 捨てる限定画面
+        public static string CannotSelectTrash = string.Empty; // 対象アイテムが重要品で捨てられない場合。
 
         // SaveLoad
         public static bool SaveMode = false; // false:Load true:Save
@@ -81,6 +87,7 @@ namespace DungeonPlayer
             WE.Truth_CommunicationFirstHomeTown = true;
             WE.TruthCompleteArea1 = true;
 
+            WE.AvailableFirstCharacter = true;
             WE.AvailableSecondCharacter = true;
             //WE.AvailableThirdCharacter = true;
             WE.AvailableInstantCommand = true;
@@ -267,6 +274,7 @@ namespace DungeonPlayer
             MC.SoulExecution = true;
             
             MC.Gold = 5000;
+            MC.Exp += 350;
 
             MC.BattleActionCommandList[0] = Database.ATTACK_EN;
             MC.BattleActionCommandList[1] = Database.DEFENSE_EN;

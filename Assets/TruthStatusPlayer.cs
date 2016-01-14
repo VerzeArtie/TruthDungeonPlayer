@@ -94,49 +94,13 @@ namespace DungeonPlayer
 
         ItemBackPack[] backpackData = null;
 
-        // s 後編追加
-        private bool initializeLevelUp;
-        public bool InitializeLevelUp
-        {
-            get { return initializeLevelUp; }
-            set { initializeLevelUp = value; }
-        }
-
-        private bool levelUp;
-        public bool LevelUp
-        {
-            get { return levelUp; }
-            set { levelUp = value; }
-        }
-        private int upPoint = 4;
-        public int UpPoint
-        {
-            get { return UpPoint; }
-            set { upPoint = value; }
-        }
-        public int CumultiveLvUpValue { get; set; }
-
         private Color currentStatusView;
         public Color CurrentStatusView
         {
             get { return currentStatusView; }
             set { currentStatusView = value; }
         }
-
-        private bool onlySelectTrash = false;
-        public bool OnlySelectTrash
-        {
-            get { return onlySelectTrash; }
-            set { onlySelectTrash = value; }
-        }
-
-        private string cannotSelectTrash = string.Empty; // 対象アイテムが重要品で捨てられない場合。
-        public string CannotSelectTrash
-        {
-            get { return cannotSelectTrash; }
-            set { cannotSelectTrash = value; }
-        }
-
+        
         private bool onlyUseItem = false;
         public bool OnlyUseItem
         {
@@ -189,7 +153,7 @@ namespace DungeonPlayer
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);
 
-            //    RefreshPartyMembersLife();
+            RefreshPartyMembersLife();
 
             //SetupBackpackData(); [todo]
             if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
@@ -277,47 +241,40 @@ namespace DungeonPlayer
                 emptyObj2.transform.SetParent(groupTxtLifeManaSkill.transform);
             }
 
-            if (!levelUp)
+            if (!GroundOne.LevelUp)
             {
                 mainMessage.text = "";
             }
             else
             {
                 btnClose.gameObject.SetActive(false);
-                if (CumultiveLvUpValue >= 2)
+                if (GroundOne.CumultiveLvUpValue >= 2)
                 {
-                    mainMessage.text = CumultiveLvUpValue.ToString() + "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
+                    mainMessage.text = GroundOne.CumultiveLvUpValue.ToString() + "レベルアップ！！" + GroundOne.UpPoint.ToString() + "ポイントを割り振ってください。";
                 }
                 else
                 {
-                    mainMessage.text = "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
+                    mainMessage.text = "レベルアップ！！" + GroundOne.UpPoint.ToString() + "ポイントを割り振ってください。";
                 }
             }
 
-            if (this.OnlySelectTrash)
+            if (GroundOne.OnlySelectTrash)
             {
                 txtClose.text = "諦める";
                 mainMessage.text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
-                // todo
-                //FirstViewToSecondView = true;
-                //grpBattleStatus.Width = 0;
-                //grpEquipment.Width = 0;
-                //grpParameter.Width = 0;
-                //grpBackPack.Width = BACKPACK_WIDTH;
-                //grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
+                groupParentStatus.gameObject.SetActive(false);
+                groupParentBackpack.gameObject.SetActive(true);
+                groupParentSpell.gameObject.SetActive(false);
+                groupParentResist.gameObject.SetActive(false);
             }
 
             if (this.onlyUseItem)
             {
-                // todo
-                //FirstViewToSecondView = true;
-                //grpBattleStatus.Width = 0;
-                //grpEquipment.Width = 0;
-                //grpParameter.Width = 0;
-                //grpBackPack.Width = BACKPACK_WIDTH;
-                //grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
+                groupParentStatus.gameObject.SetActive(false);
+                groupParentBackpack.gameObject.SetActive(true);
+                groupParentSpell.gameObject.SetActive(false);
+                groupParentResist.gameObject.SetActive(false);
             }
-
         }
 
         string GetString(string msg, string protocolStr)
@@ -657,8 +614,17 @@ namespace DungeonPlayer
 
         public void tapClose()
         {
+            if (GroundOne.OnlySelectTrash)
+            {
+                if (GroundOne.CannotSelectTrash != String.Empty)
+                {
+                    mainMessage.text = "アイン：いや【" + GroundOne.CannotSelectTrash + "】の入手を諦めるわけにはいかねえ。";
+                    return;
+                }
+            }
             SceneDimension.Back();
         }
+
         //private void SetupBackpackData()
         //{
         //    backpack = new Label[Database.MAX_BACKPACK_SIZE];
@@ -785,7 +751,7 @@ namespace DungeonPlayer
         //    {
         //        if (((Label)sender).Name == "backpack" + ii.ToString())
         //        {
-        //            if (this.levelUp)
+        //            if (GroundOne.LevelUp)
         //            {
         //                mainMessage.Text = player.GetCharacterSentence(2002);
         //                return;
@@ -799,7 +765,7 @@ namespace DungeonPlayer
 
         //            ItemBackPack backpackData = new ItemBackPack(((Label)sender).Text);
 
-        //            if (this.onlySelectTrash)
+        //            if (GroundOne.OnlySelectTrash)
         //            {
         //                mainMessage.Text = string.Format(player.GetCharacterSentence(2030), ((Label)sender).Text); // mc.Name + "：" + ((Label)sender).Text + "を捨てて新しいアイテムを入手するか？";
         //                using (YesNoRequest yesno = new YesNoRequest())
@@ -1694,7 +1660,7 @@ namespace DungeonPlayer
         //                            this.strength.Text = player.Strength.ToString();
         //                            this.strength.Update();
         //                        }
-        //                        this.upPoint++;
+        //                        GroundOne.UpPoint++;
         //                        System.Threading.Thread.Sleep(1);
         //                        Application.DoEvents();
         //                    }
@@ -2185,20 +2151,13 @@ namespace DungeonPlayer
 
         //void StatusPlayer_MouseLeave(object sender, EventArgs e)
         //{
-        //    if (levelUp)
+        //    if (GroundOne.LevelUp)
         //    {
-        //        if (initializeLevelUp)
-        //        {
-        //            mainMessage.Text = upPoint.ToString() + "ポイントを割り振ってください。";
-        //        }
-        //        else
-        //        {
-        //            mainMessage.Text = "レベルアップ！！" + upPoint.ToString() + "ポイントを割り振ってください。";
-        //        }
+        //        mainMessage.Text = "レベルアップ！！" + GroundOne.UpPoint.ToString() + "ポイントを割り振ってください。";
         //    }
         //    else if (this.useOverShifting)
         //    {
-        //        mainMessage.Text = "オーバーシフティング使用中、" + upPoint.ToString() + "ポイントを割り振ってください。";
+        //        mainMessage.Text = "オーバーシフティング使用中、" + GroundOne.UpPoint.ToString() + "ポイントを割り振ってください。";
         //    }
         //    else
         //    {
@@ -2282,55 +2241,6 @@ namespace DungeonPlayer
         //    this.mousePosY = this.Location.Y + ((Label)sender).Location.Y + e.Y;
         //}
 
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    if (this.OnlySelectTrash)
-        //    {
-        //        if (this.cannotSelectTrash != String.Empty)
-        //        {
-        //            mainMessage.Text = "アイン：いや【" + this.cannotSelectTrash + "】の入手を諦めるわけにはいかねえ。";
-        //            this.DialogResult = System.Windows.Forms.DialogResult.None;
-        //        }
-        //        else
-        //        {
-        //            this.DialogResult = DialogResult.Cancel;
-        //        }
-        //    }
-        //    else if (this.onlyUseItem)
-        //    {
-        //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        //    }
-        //    else
-        //    {
-        //        this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        //    }
-        //}
-
-
-        //private void CheckUpPoint()
-        //{
-        //    upPoint--;
-        //    if (upPoint <= 0)
-        //    {
-        //        mainMessage.Text = "ポイント割り振り完了！";
-        //        button1.Text = "完了";
-        //        button1.Visible = true;
-        //        buttonStrength.Enabled = false;
-        //        buttonAgility.Enabled = false;
-        //        buttonIntelligence.Enabled = false;
-        //        buttonStamina.Enabled = false;
-        //        buttonMind.Enabled = false;
-        //        this.useOverShifting = false;
-        //    }
-        //    else
-        //    {
-        //        mainMessage.Text = "あと" + upPoint.ToString() + "ポイントを割り振ってください。";
-        //    }
-        //}
-
-
-
         private void SettingCharacterData(MainCharacter chara)
         {
             this.txtName.text = chara.FullName;
@@ -2384,7 +2294,7 @@ namespace DungeonPlayer
         //        plus1000.Visible = true;
         //        btnUpReset.Visible = true;
         //        lblRemain.Visible = true;
-        //        lblRemain.Text = "残り　" + this.upPoint.ToString();
+            //        lblRemain.Text = "残り　" + GroundOne.UpPoint.ToString();
         //    }
         //    else
         //    {
@@ -2397,7 +2307,7 @@ namespace DungeonPlayer
         //    }
         //    //
 
-        //    RefreshPartyMembersLife(); // todo
+            RefreshPartyMembersLife();
             this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
 
             if (chara.AvailableSkill)
@@ -2699,21 +2609,21 @@ namespace DungeonPlayer
             txtPotential.text = temp1.ToString("F2");
         }
 
-        //private void RefreshPartyMembersLife()
-        //{
-        //    if (we.AvailableFirstCharacter)
-        //    {
-        //        labelFirstPlayerLife.Text = mc.CurrentLife.ToString() + "/" + mc.MaxLife.ToString();
-        //    }
-        //    if (we.AvailableSecondCharacter && this.duelMode == false)
-        //    {
-        //        labelSecondPlayerLife.Text = sc.CurrentLife.ToString() + "/" + sc.MaxLife.ToString();
-        //    }
-        //    if (we.AvailableThirdCharacter && this.duelMode == false)
-        //    {
-        //        labelThirdPlayerLife.Text = tc.CurrentLife.ToString() + "/" + tc.MaxLife.ToString();
-        //    }
-        //}
+        private void RefreshPartyMembersLife()
+        {
+            if (GroundOne.WE.AvailableFirstCharacter)
+            {
+                labelFirstPlayerLife.text = GroundOne.MC.CurrentLife.ToString() + "/" + GroundOne.MC.MaxLife.ToString();
+            }
+            if (GroundOne.WE.AvailableSecondCharacter && this.duelMode == false)
+            {
+                labelSecondPlayerLife.text = GroundOne.SC.CurrentLife.ToString() + "/" + GroundOne.SC.MaxLife.ToString();
+            }
+            if (GroundOne.WE.AvailableThirdCharacter && this.duelMode == false)
+            {
+                labelThirdPlayerLife.text = GroundOne.TC.CurrentLife.ToString() + "/" + GroundOne.TC.MaxLife.ToString();
+            }
+        }
 
         //const string ToRight = ">>";
         //const string ToLeft = "<<";
@@ -2733,7 +2643,7 @@ namespace DungeonPlayer
         //        targetPlayer = tc;
         //    }
 
-        //    if (this.onlySelectTrash)
+        //    if (GroundOne.OnlySelectTrash)
         //    {
         //        mainMessage.Text = targetPlayer.GetCharacterSentence(2021);
         //        return;
@@ -3003,213 +2913,202 @@ namespace DungeonPlayer
         //    }
         //}
 
+        public void btnSomeSpellSkill_Click(Text sender)
+        {
+            MainCharacter player = GetCurrentPlayer();
 
-        //private void btnSomeSpellSkill_Click(object sender, EventArgs e)
-        //{
-        //    MainCharacter player = null;
-        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        player = this.mc;
-        //    }
-        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        player = this.sc;
-        //    }
-        //    else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        player = this.tc;
-        //    }
+            if (player.Dead)
+            {
+                mainMessage.text = "【" + player.Name + "は死んでしまっているため、魔法詠唱ができない。】";
+                return;
+            }
 
-        //    if (player.Dead)
-        //    {
-        //        mainMessage.Text = "【" + player.Name + "は死んでしまっているため、魔法詠唱ができない。】";
-        //        return;
-        //    }
+            if (GroundOne.LevelUp)
+            {
+                mainMessage.text = player.GetCharacterSentence(2002);
+                return;
+            }
 
-        //    if (this.levelUp)
-        //    {
-        //        mainMessage.Text = player.GetCharacterSentence(2002);
-        //        return;
-        //    }
+            if (this.useOverShifting)
+            {
+                mainMessage.text = player.GetCharacterSentence(2023);
+                return;
+            }
 
-        //    if (this.useOverShifting)
-        //    {
-        //        mainMessage.Text = player.GetCharacterSentence(2023);
-        //        return;
-        //    }
+            if (GroundOne.OnlySelectTrash)
+            {
+                mainMessage.text = player.GetCharacterSentence(2021);
+                return;
+            }
 
-        //    if (this.onlySelectTrash)
-        //    {
-        //        mainMessage.Text = player.GetCharacterSentence(2021);
-        //        return;
-        //    }
+            if ((sender).text == Database.FRESH_HEAL_JP)
+            {
+                if (player.CurrentMana < Database.FRESH_HEAL_COST)
+                {
+                    mainMessage.text = player.GetCharacterSentence(2008);
+                    return;
+                }
+            }
+            else if ((sender).text == Database.LIFE_TAP_JP)
+            {
+                if (player.CurrentMana < Database.LIFE_TAP_COST)
+                {
+                    mainMessage.text = player.GetCharacterSentence(2008);
+                    return;
+                }
+            }
+            else if ((sender).text == Database.RESURRECTION_JP)
+            {
+                if (player.CurrentMana < Database.RESURRECTION_COST)
+                {
+                    mainMessage.text = player.GetCharacterSentence(2008);
+                    return;
+                }
+            }
+            else if ((sender).text == Database.SACRED_HEAL_JP)
+            {
+                if (player.CurrentMana < Database.SACRED_HEAL_COST)
+                {
+                    mainMessage.text = player.GetCharacterSentence(2008);
+                    return;
+                }
+            }
 
-        //    if (((Label)sender).Text == Database.FRESH_HEAL_JP)
-        //    {
-        //        if (player.CurrentMana < Database.FRESH_HEAL_COST)
-        //        {
-        //            mainMessage.Text = player.GetCharacterSentence(2008);
-        //            return;
-        //        }
-        //    }
-        //    else if (((Label)sender).Text == Database.LIFE_TAP_JP)
-        //    {
-        //        if (player.CurrentMana < Database.LIFE_TAP_COST)
-        //        {
-        //            mainMessage.Text = player.GetCharacterSentence(2008);
-        //            return;
-        //        }
-        //    }
-        //    else if (((Label)sender).Text == Database.RESURRECTION_JP)
-        //    {
-        //        if (player.CurrentMana < Database.RESURRECTION_COST)
-        //        {
-        //            mainMessage.Text = player.GetCharacterSentence(2008);
-        //            return;
-        //        }
-        //    }
-        //    else if (((Label)sender).Text == Database.SACRED_HEAL_JP)
-        //    {
-        //        if (player.CurrentMana < Database.SACRED_HEAL_COST)
-        //        {
-        //            mainMessage.Text = player.GetCharacterSentence(2008);
-        //            return;
-        //        }
-        //    }
+            // 単体対象の場合
+            if (((sender).text == Database.FRESH_HEAL_JP) ||
+                ((sender).text == Database.LIFE_TAP_JP) ||
+                ((sender).text == Database.RESURRECTION_JP))
+            {
+                MainCharacter target = null;
+                if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
+                {
+                    target = GroundOne.MC;
+                }
+                else if (GroundOne.WE.AvailableSecondCharacter || GroundOne.WE.AvailableThirdCharacter)
+                {
+                    // todo
+                    //using (SelectDungeon sa = new SelectDungeon())
+                    //{
+                    //    sa.StartPosition = FormStartPosition.Manual;
+                    //    if ((this.Location.X + this.Size.Width - this.mousePosX) <= sa.Width) this.mousePosX = this.Location.X + this.Size.Width - sa.Width;
+                    //    if ((this.Location.Y + this.Size.Height - this.mousePosY) <= sa.Height) this.mousePosY = this.Location.Y + this.Size.Height - sa.Height;
+                    //    sa.Location = new Point(this.mousePosX, this.mousePosY + this.grpSpellSkill.Location.Y);
+                    //    if (GroundOne.WE.AvailableSecondCharacter && GroundOne.WE.AvailableThirdCharacter)
+                    //    {
+                    //        sa.MaxSelectable = 3;
+                    //        sa.FirstName = GroundOne.MC.Name;
+                    //        sa.SecondName = GroundOne.SC.Name;
+                    //        sa.ThirdName = GroundOne.TC.Name;
+                    //    }
+                    //    else if (GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
+                    //    {
+                    //        sa.MaxSelectable = 2;
+                    //        sa.FirstName = GroundOne.MC.Name;
+                    //        sa.SecondName = GroundOne.SC.Name;
+                    //    }
+                    //    // after delete
+                    //    //else if (!GroundOne.WE.AvailableSecondCharacter && GroundOne.WE.AvailableThirdCharacter)
+                    //    //{
+                    //    //    sa.MaxSelectable = 2;
+                    //    //    sa.FirstName = mc.Name;
+                    //    //    sa.SecondName = tc.Name;
+                    //    //}
+                    //    sa.EnablePopUpInfo = true;
+                    //    sa.MC = GroundOne.MC;
+                    //    sa.SC = GroundOne.SC;
+                    //    sa.TC = GroundOne.TC;
+                    //    sa.ShowDialog();
+                    //    if (sa.TargetDungeon == 1)
+                    //    {
+                    //        target = GroundOne.MC;
+                    //    }
+                    //    else if (sa.TargetDungeon == 2)
+                    //    {
+                    //        target = GroundOne.SC;
+                    //    }
+                    //    else if (sa.TargetDungeon == 3)
+                    //    {
+                    //        target = GroundOne.TC;
+                    //    }
+                    //    else
+                    //    {
+                    //        // ESCキーキャンセルは何もしません。
+                    //        return;
+                    //    }
+                    //}
+                }
 
-        //    // 単体対象の場合
-        //    if ((((Label)sender).Text == Database.FRESH_HEAL_JP) ||
-        //        (((Label)sender).Text == Database.LIFE_TAP_JP) ||
-        //        (((Label)sender).Text == Database.RESURRECTION_JP))
-        //    {
-        //        MainCharacter target = null;
-        //        if (!we.AvailableSecondCharacter && !we.AvailableThirdCharacter)
-        //        {
-        //            target = this.mc;
-        //        }
-        //        else if (we.AvailableSecondCharacter || we.AvailableThirdCharacter)
-        //        {
-        //            using (SelectDungeon sa = new SelectDungeon())
-        //            {
-        //                sa.StartPosition = FormStartPosition.Manual;
-        //                if ((this.Location.X + this.Size.Width - this.mousePosX) <= sa.Width) this.mousePosX = this.Location.X + this.Size.Width - sa.Width;
-        //                if ((this.Location.Y + this.Size.Height - this.mousePosY) <= sa.Height) this.mousePosY = this.Location.Y + this.Size.Height - sa.Height;
-        //                sa.Location = new Point(this.mousePosX, this.mousePosY + this.grpSpellSkill.Location.Y);
-        //                if (we.AvailableSecondCharacter && we.AvailableThirdCharacter)
-        //                {
-        //                    sa.MaxSelectable = 3;
-        //                    sa.FirstName = mc.Name;
-        //                    sa.SecondName = sc.Name;
-        //                    sa.ThirdName = tc.Name;
-        //                }
-        //                else if (we.AvailableSecondCharacter && !we.AvailableThirdCharacter)
-        //                {
-        //                    sa.MaxSelectable = 2;
-        //                    sa.FirstName = mc.Name;
-        //                    sa.SecondName = sc.Name;
-        //                }
-        //                //else if (!we.AvailableSecondCharacter && we.AvailableThirdCharacter)
-        //                //{
-        //                //    sa.MaxSelectable = 2;
-        //                //    sa.FirstName = mc.Name;
-        //                //    sa.SecondName = tc.Name;
-        //                //}
-        //                sa.EnablePopUpInfo = true;
-        //                sa.MC = this.mc;
-        //                sa.SC = this.sc;
-        //                sa.TC = this.tc;
-        //                sa.ShowDialog();
-        //                if (sa.TargetDungeon == 1)
-        //                {
-        //                    target = this.mc;
-        //                }
-        //                else if (sa.TargetDungeon == 2)
-        //                {
-        //                    target = this.sc;
-        //                }
-        //                else if (sa.TargetDungeon == 3)
-        //                {
-        //                    target = this.tc;
-        //                }
-        //                else
-        //                {
-        //                    // ESCキーキャンセルは何もしません。
-        //                    return;
-        //                }
-        //            }
-        //        }
+                if (((sender).text == Database.FRESH_HEAL_JP) ||
+                    ((sender).text == Database.LIFE_TAP_JP))
+                {
+                    if (target.Dead)
+                    {
+                        mainMessage.text = "【" + target.Name + "は死んでしまっているため、効果がない。】";
+                        return;
+                    }
 
-        //        if ((((Label)sender).Text == Database.FRESH_HEAL_JP) ||
-        //            (((Label)sender).Text == Database.LIFE_TAP_JP))
-        //        {
-        //            if (target.Dead)
-        //            {
-        //                mainMessage.Text = "【" + target.Name + "は死んでしまっているため、効果がない。】";
-        //                return;
-        //            }
+                    int lifeGain = 0;
+                    if ((sender).text == Database.FRESH_HEAL_JP)
+                    {
+                        player.CurrentMana -= Database.FRESH_HEAL_COST;
+                        lifeGain = (int)PrimaryLogic.FreshHealValue(player, false);
+                    }
+                    else if ((sender).text == Database.LIFE_TAP_JP)
+                    {
+                        player.CurrentMana -= Database.LIFE_TAP_COST;
+                        lifeGain = (int)PrimaryLogic.LifeTapValue(player, false);
+                    }
 
-        //            int lifeGain = 0;
-        //            if (((Label)sender).Text == Database.FRESH_HEAL_JP)
-        //            {
-        //                player.CurrentMana -= Database.FRESH_HEAL_COST;
-        //                lifeGain = (int)PrimaryLogic.FreshHealValue(player, false);
-        //            }
-        //            else if (((Label)sender).Text == Database.LIFE_TAP_JP)
-        //            {
-        //                player.CurrentMana -= Database.LIFE_TAP_COST;
-        //                lifeGain = (int)PrimaryLogic.LifeTapValue(player, false);
-        //            }
+                    target.CurrentLife += lifeGain;
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2001), lifeGain.ToString());
+                }
+                else
+                {
+                    if (target.Dead)
+                    {
+                        player.CurrentMana -= Database.RESURRECTION_COST;
 
-        //            target.CurrentLife += lifeGain;
-        //            mainMessage.Text = String.Format(player.GetCharacterSentence(2001), lifeGain.ToString());
-        //        }
-        //        else
-        //        {
-        //            if (target.Dead)
-        //            {
-        //                player.CurrentMana -= Database.RESURRECTION_COST;
+                        target.Dead = false;
+                        target.CurrentLife = (int)PrimaryLogic.ResurrectionValue(target);
+                        mainMessage.text = String.Format(target.GetCharacterSentence(2016));
+                    }
+                    else if (target == player)
+                    {
+                        mainMessage.text = String.Format(player.GetCharacterSentence(2018));
+                    }
+                    else if (!target.Dead)
+                    {
+                        mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.Name);
+                    }
+                }
+                this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
+                this.mana.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
+            }
+            // 味方全体の場合
+            else
+            {
+                int lifeGain = 0;
+                if ((sender).text == Database.SACRED_HEAL_JP)
+                {
+                    player.CurrentMana -= Database.SACRED_HEAL_COST;
+                    lifeGain = (int)PrimaryLogic.SacredHealValue(player, false);
+                }
 
-        //                target.Dead = false;
-        //                target.CurrentLife = (int)PrimaryLogic.ResurrectionValue(target);
-        //                mainMessage.Text = String.Format(target.GetCharacterSentence(2016));
-        //            }
-        //            else if (target == player)
-        //            {
-        //                mainMessage.Text = String.Format(player.GetCharacterSentence(2018));
-        //            }
-        //            else if (!target.Dead)
-        //            {
-        //                mainMessage.Text = String.Format(player.GetCharacterSentence(2017), target.Name);
-        //            }
-        //        }
-        //        this.life.Text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
-        //        this.mana.Text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
-        //    }
-        //    // 味方全体の場合
-        //    else
-        //    {
-        //        int lifeGain = 0;
-        //        if (((Label)sender).Text == Database.SACRED_HEAL_JP)
-        //        {
-        //            player.CurrentMana -= Database.SACRED_HEAL_COST;
-        //            lifeGain = (int)PrimaryLogic.SacredHealValue(player, false);
-        //        }
+                List<MainCharacter> group = new List<MainCharacter>();
+                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                for (int ii = 0; ii < group.Count; ii++)
+                {
+                    group[ii].CurrentLife += lifeGain;
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2035), lifeGain.ToString());
+                }
+            }
 
-        //        List<MainCharacter> group = new List<MainCharacter>();
-        //        if (mc != null && !mc.Dead) { group.Add(mc); }
-        //        if (sc != null && !sc.Dead) { group.Add(sc); }
-        //        if (tc != null && !tc.Dead) { group.Add(tc); }
-        //        for (int ii = 0; ii < group.Count; ii++)
-        //        {
-        //            group[ii].CurrentLife += lifeGain;
-        //            mainMessage.Text = String.Format(player.GetCharacterSentence(2035), lifeGain.ToString());
-        //        }
-        //    }
-
-        //    this.life.Text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
-        //    this.mana.Text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
-        //    RefreshPartyMembersLife();
-        //}
+            this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
+            this.mana.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
+            RefreshPartyMembersLife();
+        }
 
         //private void btnResurrection_Click(object sender, EventArgs e)
         //{
@@ -3233,7 +3132,7 @@ namespace DungeonPlayer
         //        return;
         //    }
 
-        //    if (this.levelUp)
+        //    if (GroundOne.LevelUp)
         //    {
         //        mainMessage.Text = player.GetCharacterSentence(2002);
         //        return;
@@ -3245,7 +3144,7 @@ namespace DungeonPlayer
         //        return;
         //    }
 
-        //    if (this.onlySelectTrash)
+        //    if (GroundOne.OnlySelectTrash)
         //    {
         //        mainMessage.Text = player.GetCharacterSentence(2021);
         //        return;
@@ -3352,7 +3251,7 @@ namespace DungeonPlayer
         //        return;
         //    }
 
-        //    if (this.levelUp)
+        //    if (GroundOne.LevelUp)
         //    {
         //        mainMessage.Text = player.GetCharacterSentence(2002);
         //        return;
@@ -3364,7 +3263,7 @@ namespace DungeonPlayer
         //        return;
         //    }
 
-        //    if (this.onlySelectTrash)
+        //    if (GroundOne.OnlySelectTrash)
         //    {
         //        mainMessage.Text = player.GetCharacterSentence(2021);
         //        return;
@@ -3508,20 +3407,18 @@ namespace DungeonPlayer
         // equipType: 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
         private void ChangeEquipment(int equipType)
         {
-            MainCharacter targetPlayer = GroundOne.MC;
-            // todo
-            //if (mc != null && mc.PlayerStatusColor == this.BackColor)
-            //{
-            //    targetPlayer = mc;
-            //}
-            //else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-            //{
-            //    targetPlayer = sc;
-            //}
-            //else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-            //{
-            //    targetPlayer = tc;
-            //}
+            MainCharacter targetPlayer = GetCurrentPlayer();
+            if (GroundOne.LevelUp)
+            {
+                mainMessage.text = targetPlayer.GetCharacterSentence(2002);
+                return;
+            }
+
+            if (this.useOverShifting)
+            {
+                mainMessage.text = targetPlayer.GetCharacterSentence(2023);
+                return;
+            }
 
             // todo
             //TruthSelectEquipment tse = new TruthSelectEquipment();
@@ -3725,7 +3622,7 @@ namespace DungeonPlayer
 
         public void FirstChara_Click()
         {
-            if (this.levelUp)
+            if (GroundOne.LevelUp)
             {
                 mainMessage.text = GroundOne.MC.GetCharacterSentence(2002);
                 return;
@@ -3735,7 +3632,7 @@ namespace DungeonPlayer
                 mainMessage.text = GroundOne.MC.GetCharacterSentence(2023);
                 return;
             }
-            else if (this.onlySelectTrash)
+            else if (GroundOne.OnlySelectTrash)
             {
                 mainMessage.text = GroundOne.MC.GetCharacterSentence(2021);
             }
@@ -3750,7 +3647,7 @@ namespace DungeonPlayer
 
         public void SecondChara_Click()
         {
-            if (this.levelUp)
+            if (GroundOne.LevelUp)
             {
                 mainMessage.text = GroundOne.SC.GetCharacterSentence(2002);
                 return;
@@ -3760,7 +3657,7 @@ namespace DungeonPlayer
                 mainMessage.text = GroundOne.SC.GetCharacterSentence(2023);
                 return;
             }
-            else if (this.onlySelectTrash)
+            else if (GroundOne.OnlySelectTrash)
             {
                 mainMessage.text = GroundOne.SC.GetCharacterSentence(2021);
             }
@@ -3775,7 +3672,7 @@ namespace DungeonPlayer
 
         public void ThirdChara_Click()
         {
-            if (this.levelUp)
+            if (GroundOne.LevelUp)
             {
                 mainMessage.text = GroundOne.TC.GetCharacterSentence(2002);
                 return;
@@ -3785,7 +3682,7 @@ namespace DungeonPlayer
                 mainMessage.text = GroundOne.TC.GetCharacterSentence(2023);
                 return;
             }
-            else if (this.onlySelectTrash)
+            else if (GroundOne.OnlySelectTrash)
             {
                 mainMessage.text = GroundOne.TC.GetCharacterSentence(2021);
             }
@@ -3801,8 +3698,18 @@ namespace DungeonPlayer
         public void ChangeViewButton_Click(int viewNumber)
         {
             MainCharacter targetPlayer = GetCurrentPlayer();
+            if (GroundOne.LevelUp)
+            {
+                mainMessage.text = targetPlayer.GetCharacterSentence(2002);
+                return;
+            }
 
-            if (this.onlySelectTrash)
+            if (this.useOverShifting)
+            {
+                mainMessage.text = targetPlayer.GetCharacterSentence(2023);
+                return;
+            }
+            if (GroundOne.OnlySelectTrash)
             {
                 mainMessage.text = targetPlayer.GetCharacterSentence(2021);
                 return;
@@ -3904,23 +3811,28 @@ namespace DungeonPlayer
             ChangeViewButton_Click(3);
         }
 
-        //// [警告] 以下、TruthSelectCharacterと重複する記述です。統一化を行ってください。
-        //private int addStrSC = 0;
-        //private int addAglSC = 0;
-        //private int addIntSC = 0;
-        //private int addStmSC = 0;
-        //private int addMndSC = 0;
-        //upType number = upType.Strength;
+        // [警告] 以下、TruthSelectCharacterと重複する記述です。統一化を行ってください。
+        private int addStrSC = 0;
+        private int addAglSC = 0;
+        private int addIntSC = 0;
+        private int addStmSC = 0;
+        private int addMndSC = 0;
+        upType number = upType.Strength;
 
-        //enum upType
-        //{
-        //    Strength,
-        //    Agility,
-        //    Intelligence,
-        //    Stamina,
-        //    Mind
-        //}
+        enum upType
+        {
+            Strength,
+            Agility,
+            Intelligence,
+            Stamina,
+            Mind
+        }
 
+        // todo
+
+        private void grpParameter_Paint()
+        {
+        }
         //private void grpParameter_Paint(object sender, PaintEventArgs e)
         //{
         //    if (this.useOverShifting)
@@ -3950,188 +3862,217 @@ namespace DungeonPlayer
         //    }
         //}
 
-        //private void buttonStrength_Click(object sender, EventArgs e)
-        //{
-        //    // 通常レベルアップ＋１のロジック
-        //    if (this.levelUp)
-        //    {
-        //        if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            mc.Strength++;
-        //            strength.Text = mc.Strength.ToString();
-        //            RefreshPartyMembersBattleStatus(mc);
-        //        }
-        //        else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            sc.Strength++;
-        //            strength.Text = sc.Strength.ToString();
-        //            RefreshPartyMembersBattleStatus(sc);
-        //        }
-        //        else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            tc.Strength++;
-        //            strength.Text = tc.Strength.ToString();
-        //            RefreshPartyMembersBattleStatus(tc);
-        //        }
-        //        CheckUpPoint();
-        //    }
-        //    // オーバーシフティング
-        //    else if (this.useOverShifting)
-        //    {
-        //        this.number = upType.Strength;
-        //        grpParameter.Invalidate();
-        //    }
-        //}
+        private void CheckUpPoint()
+        {
+            GroundOne.UpPoint--;
+            if (GroundOne.UpPoint <= 0)
+            {
+                mainMessage.text = "ポイント割り振り完了！";
+                txtClose.text = "完了";
+                btnClose.gameObject.SetActive(true);
+                // delete unity
+                //buttonStrength.Enabled = false;
+                //buttonAgility.Enabled = false;
+                //buttonIntelligence.Enabled = false;
+                //buttonStamina.Enabled = false;
+                //buttonMind.Enabled = false;
+                this.useOverShifting = false;
+            }
+            else
+            {
+                mainMessage.text = "あと" + GroundOne.UpPoint.ToString() + "ポイントを割り振ってください。";
+            }
+        }
+        public void buttonStrength_Click()
+        {
+            // 通常レベルアップ＋１のロジック
+            if (GroundOne.LevelUp)
+            {
+                if (GroundOne.UpPoint <= 0) { return; } // add unity
 
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.MC.Strength++;
+                    strength.text = GroundOne.MC.Strength.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.MC);
+                }
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.SC.Strength++;
+                    strength.text = GroundOne.SC.Strength.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.SC);
+                }
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.TC.Strength++;
+                    strength.text = GroundOne.TC.Strength.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.TC);
+                }
+                CheckUpPoint();
+            }
+            // オーバーシフティング
+            else if (this.useOverShifting)
+            {
+                this.number = upType.Strength;
+                grpParameter_Paint();
+            }
+        }
 
-        //private void buttonAgility_Click(object sender, EventArgs e)
-        //{
-        //    // 通常レベルアップ＋１のロジック
-        //    if (this.levelUp)
-        //    {
-        //        if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            mc.Agility++;
-        //            agility.Text = mc.Agility.ToString();
-        //            RefreshPartyMembersBattleStatus(mc);
-        //        }
-        //        else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            sc.Agility++;
-        //            agility.Text = sc.Agility.ToString();
-        //            RefreshPartyMembersBattleStatus(sc);
-        //        }
-        //        else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            tc.Agility++;
-        //            agility.Text = tc.Agility.ToString();
-        //            RefreshPartyMembersBattleStatus(tc);
-        //        }
-        //        CheckUpPoint();
-        //    }
-        //    // オーバーシフティング
-        //    else if (this.useOverShifting)
-        //    {
-        //        this.number = upType.Agility;
-        //        grpParameter.Invalidate();
-        //    }
-        //}
+        public void buttonAgility_Click()
+        {
+            // 通常レベルアップ＋１のロジック
+            if (GroundOne.LevelUp)
+            {
+                if (GroundOne.UpPoint <= 0) { return; } // add unity
 
-        //private void buttonIntelligence_Click(object sender, EventArgs e)
-        //{
-        //    // 通常レベルアップ＋１のロジック
-        //    if (this.levelUp)
-        //    {
-        //        if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            mc.Intelligence++;
-        //            intelligence.Text = mc.Intelligence.ToString();
-        //            if (mc.AvailableMana)
-        //            {
-        //                this.mana.Text = mc.CurrentMana.ToString() + " / " + mc.MaxMana.ToString();
-        //            }
-        //            RefreshPartyMembersBattleStatus(mc);
-        //        }
-        //        else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            sc.Intelligence++;
-        //            intelligence.Text = sc.Intelligence.ToString();
-        //            if (sc.AvailableMana)
-        //            {
-        //                this.mana.Text = sc.CurrentMana.ToString() + " / " + sc.MaxMana.ToString();
-        //            }
-        //            RefreshPartyMembersBattleStatus(sc);
-        //        }
-        //        else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            tc.Intelligence++;
-        //            intelligence.Text = tc.Intelligence.ToString();
-        //            if (tc.AvailableMana)
-        //            {
-        //                this.mana.Text = tc.CurrentMana.ToString() + " / " + tc.MaxMana.ToString();
-        //            }
-        //            RefreshPartyMembersBattleStatus(tc);
-        //        }
-        //        CheckUpPoint();
-        //    }
-        //    // オーバーシフティング
-        //    else if (this.useOverShifting)
-        //    {
-        //        this.number = upType.Intelligence;
-        //        grpParameter.Invalidate();
-        //    }
-        //}
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.MC.Agility++;
+                    agility.text = GroundOne.MC.Agility.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.MC);
+                }
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.SC.Agility++;
+                    agility.text = GroundOne.SC.Agility.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.SC);
+                }
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.TC.Agility++;
+                    agility.text = GroundOne.TC.Agility.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.TC);
+                }
+                CheckUpPoint();
+            }
+            // オーバーシフティング
+            else if (this.useOverShifting)
+            {
+                this.number = upType.Agility;
+                grpParameter_Paint();
+            }
+        }
 
+        public void buttonIntelligence_Click()
+        {
+            // 通常レベルアップ＋１のロジック
+            if (GroundOne.LevelUp)
+            {
+                if (GroundOne.UpPoint <= 0) { return; } // add unity
 
-        //private void buttonStamina_Click(object sender, EventArgs e)
-        //{
-        //    // 通常レベルアップ＋１のロジック
-        //    if (this.levelUp)
-        //    {
-        //        if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            mc.Stamina++;
-        //            stamina.Text = mc.Stamina.ToString();
-        //            this.life.Text = mc.CurrentLife.ToString() + " / " + mc.MaxLife.ToString();
-        //            RefreshPartyMembersBattleStatus(mc);
-        //        }
-        //        else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            sc.Stamina++;
-        //            stamina.Text = sc.Stamina.ToString();
-        //            this.life.Text = sc.CurrentLife.ToString() + " / " + sc.MaxLife.ToString();
-        //            RefreshPartyMembersBattleStatus(sc);
-        //        }
-        //        else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            tc.Stamina++;
-        //            stamina.Text = tc.Stamina.ToString();
-        //            this.life.Text = tc.CurrentLife.ToString() + " / " + tc.MaxLife.ToString();
-        //            RefreshPartyMembersBattleStatus(tc);
-        //        }
-        //        RefreshPartyMembersLife();
-        //        CheckUpPoint();
-        //    }
-        //    // オーバーシフティング
-        //    else if (this.useOverShifting)
-        //    {
-        //        this.number = upType.Stamina;
-        //        grpParameter.Invalidate();
-        //    }
-        //}
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.MC.Intelligence++;
+                    intelligence.text = GroundOne.MC.Intelligence.ToString();
+                    if (GroundOne.MC.AvailableMana)
+                    {
+                        this.mana.text = GroundOne.MC.CurrentMana.ToString() + " / " + GroundOne.MC.MaxMana.ToString();
+                    }
+                    RefreshPartyMembersBattleStatus(GroundOne.MC);
+                }
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.SC.Intelligence++;
+                    intelligence.text = GroundOne.SC.Intelligence.ToString();
+                    if (GroundOne.SC.AvailableMana)
+                    {
+                        this.mana.text = GroundOne.SC.CurrentMana.ToString() + " / " + GroundOne.SC.MaxMana.ToString();
+                    }
+                    RefreshPartyMembersBattleStatus(GroundOne.SC);
+                }
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.TC.Intelligence++;
+                    intelligence.text = GroundOne.TC.Intelligence.ToString();
+                    if (GroundOne.TC.AvailableMana)
+                    {
+                        this.mana.text = GroundOne.TC.CurrentMana.ToString() + " / " + GroundOne.TC.MaxMana.ToString();
+                    }
+                    RefreshPartyMembersBattleStatus(GroundOne.TC);
+                }
+                CheckUpPoint();
+            }
+            // オーバーシフティング
+            else if (this.useOverShifting)
+            {
+                this.number = upType.Intelligence;
+                grpParameter_Paint();
+            }
+        }
+        
+        public void buttonStamina_Click()
+        {
+            // 通常レベルアップ＋１のロジック
+            if (GroundOne.LevelUp)
+            {
+                if (GroundOne.UpPoint <= 0) { return; } // add unity
 
-        //private void buttonMind_Click(object sender, EventArgs e)
-        //{
-        //    // 通常レベルアップ＋１のロジック
-        //    if (this.levelUp)
-        //    {
-        //        if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            mc.Mind++;
-        //            mindLabel.Text = mc.Mind.ToString();
-        //            RefreshPartyMembersBattleStatus(mc);
-        //        }
-        //        else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            sc.Mind++;
-        //            mindLabel.Text = sc.Mind.ToString();
-        //            RefreshPartyMembersBattleStatus(sc);
-        //        }
-        //        else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //        {
-        //            tc.Mind++;
-        //            mindLabel.Text = tc.Mind.ToString();
-        //            RefreshPartyMembersBattleStatus(tc);
-        //        }
-        //        CheckUpPoint();
-        //    }
-        //    // オーバーシフティング
-        //    else if (this.useOverShifting)
-        //    {
-        //        this.number = upType.Mind;
-        //        grpParameter.Invalidate();
-        //    }
-        //}
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.MC.Stamina++;
+                    stamina.text = GroundOne.MC.Stamina.ToString();
+                    this.life.text = GroundOne.MC.CurrentLife.ToString() + " / " + GroundOne.MC.MaxLife.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.MC);
+                }
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.SC.Stamina++;
+                    stamina.text = GroundOne.SC.Stamina.ToString();
+                    this.life.text = GroundOne.SC.CurrentLife.ToString() + " / " + GroundOne.SC.MaxLife.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.SC);
+                }
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.TC.Stamina++;
+                    stamina.text = GroundOne.TC.Stamina.ToString();
+                    this.life.text = GroundOne.TC.CurrentLife.ToString() + " / " + GroundOne.TC.MaxLife.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.TC);
+                }
+                RefreshPartyMembersLife();
+                CheckUpPoint();
+            }
+            // オーバーシフティング
+            else if (this.useOverShifting)
+            {
+                this.number = upType.Stamina;
+                grpParameter_Paint();
+            }
+        }
+
+        public void buttonMind_Click()
+        {
+            // 通常レベルアップ＋１のロジック
+            if (GroundOne.LevelUp)
+            {
+                if (GroundOne.UpPoint <= 0) { return; } // add unity
+
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.MC.Mind++;
+                    mind.text = GroundOne.MC.Mind.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.MC);
+                }
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.SC.Mind++;
+                    mind.text = GroundOne.SC.Mind.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.SC);
+                }
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                {
+                    GroundOne.TC.Mind++;
+                    mind.text = GroundOne.TC.Mind.ToString();
+                    RefreshPartyMembersBattleStatus(GroundOne.TC);
+                }
+                CheckUpPoint();
+            }
+            // オーバーシフティング
+            else if (this.useOverShifting)
+            {
+                this.number = upType.Mind;
+                grpParameter_Paint();
+            }
+        }
 
         //private void GoLevelUpPoint(upType type, int plus, ref MainCharacter player, ref int remain, ref int addStr, ref int addAgl, ref int addInt, ref int addStm, ref int addMnd)
         //{
@@ -4182,8 +4123,8 @@ namespace DungeonPlayer
         //    else if ((sender.Equals(plus100))) { plus = 100; }
         //    else if ((sender.Equals(plus1000))) { plus = 1000; }
 
-        //    GoLevelUpPoint(this.number, plus, ref player, ref this.upPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
-        //    if (this.upPoint <= 0)
+        //    GoLevelUpPoint(this.number, plus, ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
+        //    if (GroundOne.UpPoint <= 0)
         //    {
         //        this.plus1.Visible = false;
         //        this.plus10.Visible = false;
@@ -4221,7 +4162,7 @@ namespace DungeonPlayer
         //private void btnUpReset_Click(object sender, EventArgs e)
         //{
         //    MainCharacter player = GetCurrentPlayer();
-        //    ResetParameter(ref player, ref this.upPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
+        //    ResetParameter(ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
         //    SettingCharacterData(player);
         //    RefreshPartyMembersBattleStatus(player);
         //    RefreshPartyMembersLife();
