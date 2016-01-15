@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -56,6 +56,12 @@ namespace DungeonPlayer
         public Text addStamina;
         public Text mind;
         public Text addMind;
+        public Button plus1;
+        public Button plus10;
+        public Button plus100;
+        public Button plus1000;
+        public Button btnUpReset;
+        public Text lblRemain;
         public Text txtPhysicalAttack;
         public Text txtPhysicalDefense;
         public Text txtMagicAttack;
@@ -73,24 +79,16 @@ namespace DungeonPlayer
         public GameObject back_armor;
         public GameObject back_accessory;
         public GameObject back_accessory2;
-
-        private string workName;
-        private string workLevel;
-        private string workMainWeapon = string.Empty;
-        private string workSubWeapon = string.Empty;
-        private string workArmor = string.Empty;
-        private string workAccessory1 = string.Empty;
-        private string workAccessory2 = string.Empty;
-        private int workStrengthUp = 0;
-        private int workAgilityUp = 0;
-        private int workIntelligenceUp = 0;
-        private int workStaminaUp = 0;
-        private int workMindUp = 0;
-        private string workExperience;
-        private string workGold;
-        private string workJobclass;
-        private string[] workBackpack = new string[Database.MAX_BACKPACK_SIZE];
-        private bool firstAction = false;
+        public GameObject[] back_Backpack;
+        public Text[] backpack;
+        public Text[] backpackStack;
+        public Image[] backpackIcon;
+        public GameObject[] back_SpellSkill;
+        public Text[] SpellSkill;
+        public Text[] ResistLabel;
+        public Text[] ResistLabelValue;
+        public Text[] ResistAbnormalStatus;
+        public Text[] ResistAbnormalStatusValue;
 
         ItemBackPack[] backpackData = null;
 
@@ -108,42 +106,12 @@ namespace DungeonPlayer
             set { onlyUseItem = value; }
         }
 
-        private bool duelMode = false;
-        public bool DuelMode
-        {
-            get { return duelMode; }
-            set { duelMode = value; }
-        }
-
-
-        public GameObject[] back_Backpack;
-        public Text[] backpack;
-        public Text[] backpackStack;
-        public Image[] backpackIcon; // pb
-
         private bool useOverShifting = false;
-
-        public Text[] SpellSkill;
-
-        public Text[] ResistLabel;
-        public Text[] ResistLabelValue;
-        static int MAX_RESIST_NUM = 6; // レジスト値の最大数
-
-        public Text[] ResistAbnormalStatus;
-        public Text[] ResistAbnormalStatusValue;
-        static int MAX_ABNORMALSTATUS_NUM = 10; // 状態異常の最大数
-
-        static int FIXED_ROW_NUM = 10; // バックパックや魔法・スキルのリスト欄の最大列数
 
         // Use this for initialization
         void Start()
         {
             GroundOne.InitializeGroundOne();
-            //GroundOne.InitializeNetworkConnection();
-            //if (GroundOne.IsConnect)
-            //{
-            //    GroundOne.CS.rcm += new ClientSocket.ReceiveClientMessage(ReceiveFromClientSocket);
-            //}
 
             this.txtGold.text = GroundOne.MC.Gold.ToString();
 
@@ -168,13 +136,13 @@ namespace DungeonPlayer
                 btnFirstChara.gameObject.SetActive(false);
                 labelFirstPlayerLife.gameObject.SetActive(false);
             }
-            if (this.duelMode == true)
+            if (GroundOne.DuelMode == true)
             {
                 btnFirstChara.gameObject.SetActive(false);
                 labelFirstPlayerLife.gameObject.SetActive(false);
             }
 
-            if (GroundOne.WE.AvailableSecondCharacter && this.duelMode == false)
+            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.DuelMode == false)
             {
                 btnSecondChara.gameObject.SetActive(true);
                 labelSecondPlayerLife.gameObject.SetActive(true);
@@ -190,7 +158,7 @@ namespace DungeonPlayer
                 emptyObj2.AddComponent<RectTransform>();
                 emptyObj2.transform.SetParent(groupTxtChara.transform);
             }
-            if (GroundOne.WE.AvailableThirdCharacter && this.duelMode == false)
+            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.DuelMode == false)
             {
                 btnThirdChara.gameObject.SetActive(true);
                 labelThirdPlayerLife.gameObject.SetActive(true);
@@ -277,339 +245,9 @@ namespace DungeonPlayer
             }
         }
 
-        string GetString(string msg, string protocolStr)
-        {
-            return msg.Substring(protocolStr.Length, msg.Length - protocolStr.Length);
-        }
-
-        bool getAccessory1 = false;
-        private void ReceiveFromClientSocket(string msg)
-        {
-            if (msg.Contains(Protocol.CreateOwner))
-            {
-                byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.ExistCharacter + Database.EIN_WOLENCE);
-                GroundOne.CS.SendMessage(bb);
-            }
-            else if (msg.Contains(Protocol.ExistCharacter))
-            {
-                if (GetString(msg, Protocol.ExistCharacter) == "false")
-                {
-                    byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.CreateCharacter + Database.EIN_WOLENCE);
-                    GroundOne.CS.SendMessage(bb);
-                }
-                else
-                {
-                    byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.LoadCharacter + Database.EIN_WOLENCE);
-                    GroundOne.CS.SendMessage(bb);
-                }
-            }
-            else if (msg.Contains(Protocol.LoadCharacter))
-            {
-                string msgData = GetString(msg, Protocol.LoadCharacter);
-
-                var dict = MiniJSON.Json.Deserialize(msgData) as Dictionary<string, object>;
-                GroundOne.MC.Name = dict["name"].ToString();
-                GroundOne.MC.Level = System.Convert.ToInt32(dict["level"]);
-                GroundOne.MC.Strength = System.Convert.ToInt32(dict["strength"]);
-                GroundOne.MC.Agility = System.Convert.ToInt32(dict["agility"]);
-                GroundOne.MC.Intelligence = System.Convert.ToInt32(dict["intelligence"]);
-                GroundOne.MC.Stamina = System.Convert.ToInt32(dict["stamina"]);
-                GroundOne.MC.Mind = System.Convert.ToInt32(dict["mind"]);
-
-                this.workName = dict["name"].ToString();
-                this.workLevel = ((long)dict["level"]).ToString();
-
-                if (dict["mainweapon"] != null)
-                {
-                    this.workMainWeapon = dict["mainweapon"].ToString();
-                    GroundOne.MC.MainWeapon = new ItemBackPack(workMainWeapon);
-                }
-                if (dict["subweapon"] != null)
-                {
-                    this.workSubWeapon = dict["subweapon"].ToString();
-                    GroundOne.MC.SubWeapon = new ItemBackPack(workSubWeapon);
-                }
-                if (dict["mainarmor"] != null)
-                {
-                    this.workArmor = dict["mainarmor"].ToString();
-                    GroundOne.MC.MainArmor = new ItemBackPack(workArmor);
-                }
-                if (dict["accessory1"] != null)
-                {
-                    this.workAccessory1 = dict["accessory1"].ToString();
-                    GroundOne.MC.Accessory = new ItemBackPack(workAccessory1);
-                }
-                if (dict["accessory2"] != null)
-                {
-                    this.workAccessory2 = dict["accessory2"].ToString();
-                    GroundOne.MC.Accessory2 = new ItemBackPack(workAccessory2);
-                }
-                this.workExperience = (long)dict["experience"] + " / " + "200";
-                this.workGold = dict["gold"].ToString();
-                this.workJobclass = dict["jobclass"].ToString();
-
-                byte[] bb = null;
-                if (workMainWeapon != string.Empty)
-                {
-                    bb = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workMainWeapon);
-                }
-                else if (workSubWeapon != string.Empty)
-                {
-                    bb = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workSubWeapon);
-                }
-                else if (workArmor != string.Empty)
-                {
-                    bb = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workArmor);
-                }
-                else if (workAccessory1 != string.Empty)
-                {
-                    bb = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workAccessory1);
-                }
-                else if (workAccessory2 != string.Empty)
-                {
-                    bb = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workAccessory2);
-                }
-                if (bb != null)
-                {
-                    GroundOne.CS.SendMessage(bb);
-                }
-            }
-            else if (msg.Contains(Protocol.GetItemData))
-            {
-                string msgData = GetString(msg, Protocol.GetItemData);
-                var dict = MiniJSON.Json.Deserialize(msgData) as Dictionary<string, object>;
-                string type = (dict["type"]).ToString();
-                if (type == "メイン")
-                {
-                    GroundOne.MC.MainWeapon.PhysicalAttackMinValue = System.Convert.ToInt32(dict["MinValue"]);
-                    GroundOne.MC.MainWeapon.PhysicalAttackMaxValue = System.Convert.ToInt32(dict["MaxValue"]);
-                    UpdateParameter(GroundOne.MC);
-                    dict.Clear();
-                    byte[] bb2 = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workArmor);
-                    GroundOne.CS.SendMessage(bb2);
-                }
-                else if (type == "サブ")
-                {
-                    GroundOne.MC.MainArmor.PhysicalDefenseMinValue = System.Convert.ToInt32(dict["MinValue"]);
-                    GroundOne.MC.MainArmor.PhysicalDefenseMaxValue = System.Convert.ToInt32(dict["MaxValue"]);
-                    UpdateParameter(GroundOne.MC);
-                    dict.Clear();
-                    byte[] bb3 = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workAccessory1);
-                    GroundOne.CS.SendMessage(bb3);
-                }
-                else if (type == "アクセサリ")
-                {
-                    if (getAccessory1 == false)
-                    {
-                        getAccessory1 = true;
-                        GroundOne.MC.Accessory.BuffUpStrength = System.Convert.ToInt32(dict["strength"]);
-                        workStrengthUp += GroundOne.MC.Accessory.BuffUpStrength;
-                        GroundOne.MC.Accessory.BuffUpAgility = System.Convert.ToInt32(dict["agility"]);
-                        workAgilityUp += GroundOne.MC.Accessory.BuffUpAgility;
-                        GroundOne.MC.Accessory.BuffUpIntelligence = System.Convert.ToInt32(dict["intelligence"]);
-                        workIntelligenceUp += GroundOne.MC.Accessory.BuffUpIntelligence;
-                        GroundOne.MC.Accessory.BuffUpStamina = System.Convert.ToInt32(dict["stamina"]);
-                        workStaminaUp += GroundOne.MC.Accessory.BuffUpStamina;
-                        GroundOne.MC.Accessory.BuffUpMind = System.Convert.ToInt32(dict["mind"]);
-                        workMindUp += GroundOne.MC.Accessory.BuffUpMind;
-                        UpdateParameter(GroundOne.MC);
-                        dict.Clear();
-
-                        if (workAccessory2 != String.Empty)
-                        {
-                            byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.GetItemData + workAccessory2);
-                            GroundOne.CS.SendMessage(bb);
-                        }
-                        else
-                        {
-                            byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.LoadBackpackList + GroundOne.guid);
-                            GroundOne.CS.SendMessage(bb);
-                        }                        
-                    }
-                    else
-                    {
-                        GroundOne.MC.Accessory2.BuffUpStrength = System.Convert.ToInt32(dict["strength"]);
-                        GroundOne.MC.Accessory2.BuffUpAgility = System.Convert.ToInt32(dict["agility"]);
-                        GroundOne.MC.Accessory2.BuffUpIntelligence = System.Convert.ToInt32(dict["intelligence"]);
-                        GroundOne.MC.Accessory2.BuffUpStamina = System.Convert.ToInt32(dict["stamina"]);
-                        GroundOne.MC.Accessory2.BuffUpMind = System.Convert.ToInt32(dict["mind"]);
-                        UpdateParameter(GroundOne.MC);
-                        dict.Clear();
-                    }
-                }
-            }
-            else if (msg.Contains(Protocol.LoadBackpackList))
-            {
-                string msgData = GetString(msg, Protocol.LoadBackpackList);
-                var dict = MiniJSON.Json.Deserialize(msgData) as Dictionary<string, object>;
-                for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
-                {
-                    object current = dict["item" + (ii + 1).ToString("D4")];
-                    if (current != null) {
-                        workBackpack[ii] = current.ToString();
-                    }
-                }
-            }
-            else if (msg.Contains(Protocol.SaveCharacter))
-            {
-            }
-            else if (msg.Contains(Protocol.SendCommonMessage))
-            {
-                //string chatMessage = msg.Substring(Protocol.SendCommonMessage.Length, msg.Length - Protocol.SendCommonMessage.Length);
-            }
-        }
-
-        int GetItemBuffUpStrength(ItemBackPack item)
-        {
-            if (item != null) { return item.BuffUpStrength; }
-            return 0;
-        }
-        int GetItemBuffUpAgility(ItemBackPack item)
-        {
-            if (item != null) { return item.BuffUpAgility; }
-            return 0;
-        }
-        int GetItemBuffUpIntelligence(ItemBackPack item)
-        {
-            if (item != null) { return item.BuffUpIntelligence; }
-            return 0;
-        }
-        int GetItemBuffUpStamina(ItemBackPack item)
-        {
-            if (item != null) { return item.BuffUpStamina; }
-            return 0;
-        }
-        int GetItemBuffUpMind(ItemBackPack item)
-        {
-            if (item != null) { return item.BuffUpMind; }
-            return 0;
-        }
-
-        void UpdateParameter(MainCharacter _player)
-        {
-            int strength = 0;
-            int agility = 0;
-            int intelligence = 0;
-            int stamina = 0;
-            int mind = 0;
-
-            //this.txtStrength.text = _player.TotalStrength.ToString();
-
-            //this.txtAgility.text = _player.TotalAgility.ToString();
-            //agility += GetItemBuffUpAgility(_player.Accessory);
-            //agility += GetItemBuffUpAgility(_player.Accessory2);
-            //if (agility > 0)
-            //{
-            //    this.txtAgility.text += " + " + agility.ToString();
-            //}
-
-            //this.txtIntelligence.text = _player.TotalIntelligence.ToString();
-            //intelligence += GetItemBuffUpIntelligence(_player.Accessory);
-            //intelligence += GetItemBuffUpIntelligence(_player.Accessory2);
-            //if (intelligence > 0)
-            //{
-            //    this.txtIntelligence.text += " + " + intelligence.ToString();
-            //}
-
-            //this.txtStamina.text = _player.TotalStamina.ToString();
-            //stamina += GetItemBuffUpStamina(_player.Accessory);
-            //stamina += GetItemBuffUpStamina(_player.Accessory2);
-            //if (stamina > 0)
-            //{
-            //    this.txtStamina.text += " + " + stamina.ToString();
-            //}
-
-            //this.txtMind.text = _player.TotalMind.ToString();
-            //mind += GetItemBuffUpMind(_player.Accessory);
-            //mind += GetItemBuffUpMind(_player.Accessory2);
-            //if (mind > 0)
-            //{
-            //    this.txtMind.text += " + " + mind.ToString();
-            //}
-
-            //double attackValue = (_player.TotalStrength + strength) * 2;
-            //if (_player.MainWeapon != null) { attackValue += _player.MainWeapon.PhysicalAttackMaxValue; }
-            //this.txtPhysicalAttack.text = attackValue.ToString();
-
-            //double defenseValue = (_player.TotalStrength + strength) * 0.4;
-            //if (_player.MainArmor != null) { defenseValue += _player.MainArmor.PhysicalDefenseMaxValue; }
-            //this.txtPhysicalDefense.text = defenseValue.ToString();
-        }
-
         // Update is called once per frame
         void Update()
         {
-            // after delete
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    if (GroundOne.IsConnect)
-            //    {
-            //        GroundOne.CS.rcm -= new ClientSocket.ReceiveClientMessage(ReceiveFromClientSocket);
-            //    }
-            //    tapClose();
-            //}
-
-            // after delete
-            //if (this.firstAction == false)
-            //{
-            //    this.firstAction = true;
-            //    if (GroundOne.IsConnect)
-            //    {
-            //        byte[] bb = System.Text.Encoding.UTF8.GetBytes(Protocol.LoadCharacter + GroundOne.guid);
-            //        GroundOne.CS.SendMessage(bb);
-            //    }
-            //}
-
-            // after delete
-            //this.debug.text = this.workDebug;
-            //this.txtName.text = "Name:  " + this.workName;
-            //this.txtLevel.text = "Level  " + this.workLevel;
-            //this.txtStrength2.text = workStrengthUp.ToString();
-            //this.txtAgility2.text = workAgilityUp.ToString();
-            //this.txtIntelligence2.text = workIntelligenceUp.ToString();
-            //this.txtStamina2.text = workStaminaUp.ToString();
-            //this.txtMind2.text = workMindUp.ToString();
-
-            //this.weapon.text = this.workMainWeapon;
-            //if (this.workMainWeapon == string.Empty)
-            //{
-            //    this.weapon.text = "( No Equipment )";
-            //}
-
-            //this.subWeapon.text = this.workSubWeapon;
-            //if (this.workSubWeapon == string.Empty)
-            //{
-            //    this.subWeapon.text = "( No Equipment )";
-            //}
-
-            //this.armor.text = this.workArmor;
-            //if (this.workArmor == string.Empty)
-            //{
-            //    this.armor.text = "( No Equipment )";
-            //}
-
-            //this.accessory.text = this.workAccessory1;
-            //if (this.workAccessory1 == string.Empty)
-            //{
-            //    this.accessory.text = "( No Equipment )";
-            //}
-
-            //this.accessory2.text = this.workAccessory2;
-            //if (this.workAccessory2 == string.Empty)
-            //{
-            //    this.accessory2.text = "( No Equipment )";
-            //}
-
-            //this.txtExperience.text = "Experience:  " + this.workExperience;
-            //this.txtGold.text = "Gold:  " + this.workGold;
-            //this.txtJobClass.text = "JobClass:  " + this.workJobclass;
-
-            //this.txtMagicAttack.text = (GroundOne.MC.TotalIntelligence * 2).ToString();
-            //this.txtMagicDefense.text = (GroundOne.MC.TotalIntelligence * 0.4).ToString();
-            //this.txtBattleSpeed.text = (GroundOne.MC.TotalAgility * 2).ToString();
-            //this.txtBattleResponse.text = (GroundOne.MC.TotalAgility * 0.4).ToString();
-            //this.txtPotential.text = (GroundOne.MC.TotalMind * 2).ToString();
-
         }
 
         public void tapClose()
@@ -625,104 +263,7 @@ namespace DungeonPlayer
             SceneDimension.Back();
         }
 
-        //private void SetupBackpackData()
-        //{
-        //    backpack = new Label[Database.MAX_BACKPACK_SIZE];
-        //    backpackStack = new Label[Database.MAX_BACKPACK_SIZE];
-        //    backpackIcon = new PictureBox[Database.MAX_BACKPACK_SIZE];
-
-        //    for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
-        //    {
-        //        backpackIcon[ii] = new PictureBox();
-        //        backpackIcon[ii].SizeMode = PictureBoxSizeMode.StretchImage;
-        //        backpackIcon[ii].BackColor = System.Drawing.Color.Transparent;
-        //        backpackIcon[ii].Location = new System.Drawing.Point(5 + 320 * (ii / FIXED_ROW_NUM), 13 + 31 * (ii % FIXED_ROW_NUM));
-        //        backpackIcon[ii].Name = "backpackIcon" + ii.ToString();
-        //        backpackIcon[ii].Size = new System.Drawing.Size(20, 20);
-        //        backpackIcon[ii].TabStop = false;
-        //        this.grpBackPack.Controls.Add(backpackIcon[ii]);
-
-        //        backpackStack[ii] = new Label();
-        //        backpackStack[ii].Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        backpackStack[ii].Location = new System.Drawing.Point(24 + 320 * (ii / FIXED_ROW_NUM), 15 + 31 * (ii % FIXED_ROW_NUM));
-        //        backpackStack[ii].Name = "backpackStack" + ii.ToString();
-        //        backpackStack[ii].AutoSize = true;
-        //        backpackStack[ii].TabIndex = 0;
-        //        this.grpBackPack.Controls.Add(backpackStack[ii]);
-
-        //        backpack[ii] = new Label();
-        //        backpack[ii].Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Underline | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        backpack[ii].Location = new System.Drawing.Point(56 + 320 * (ii / FIXED_ROW_NUM), 15 + 31 * (ii % FIXED_ROW_NUM));
-        //        backpack[ii].Name = "backpack" + ii.ToString();
-        //        backpack[ii].AutoSize = true;
-        //        backpack[ii].TabIndex = 0;
-        //        backpack[ii].MouseEnter += new EventHandler(StatusPlayer_MouseEnter);
-        //        backpack[ii].MouseDown += new MouseEventHandler(StatusPlayer_MouseDown);
-        //        backpack[ii].MouseLeave += new EventHandler(StatusPlayer_MouseLeave);
-        //        backpack[ii].Click += new EventHandler(StatusPlayer_Click);
-        //        this.grpBackPack.Controls.Add(backpack[ii]);
-        //    }
-
-        //    SpellSkill = new Label[FIXED_ROW_NUM];
-        //    for (int ii = 0; ii < FIXED_ROW_NUM; ii++)
-        //    {
-        //        SpellSkill[ii] = new Label();
-        //        SpellSkill[ii].Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Underline | System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        SpellSkill[ii].Location = new System.Drawing.Point(50 + 320 * (ii / FIXED_ROW_NUM), 15 + 31 * (ii % FIXED_ROW_NUM));
-        //        SpellSkill[ii].Name = "SpellSkill" + ii.ToString();
-        //        SpellSkill[ii].AutoSize = true;
-        //        SpellSkill[ii].TabIndex = 0;
-        //        //SpellSkill[ii].MouseEnter += new EventHandler(StatusPlayer_MouseEnter);
-        //        SpellSkill[ii].MouseDown += new MouseEventHandler(StatusPlayer_MouseDown);
-        //        //SpellSkill[ii].MouseLeave += new EventHandler(StatusPlayer_MouseLeave);
-        //        SpellSkill[ii].Click += new EventHandler(btnSomeSpellSkill_Click);
-        //        this.grpSpellSkill.Controls.Add(SpellSkill[ii]);
-        //    }
-
-        //    ResistLabel = new Label[MAX_RESIST_NUM];
-        //    ResistLabelValue = new Label[MAX_RESIST_NUM];
-        //    for (int ii = 0; ii < MAX_RESIST_NUM; ii++)
-        //    {
-        //        ResistLabel[ii] = new Label();
-        //        ResistLabel[ii].Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        ResistLabel[ii].Location = new System.Drawing.Point(20, 30 + 50 * (ii % MAX_RESIST_NUM));
-        //        ResistLabel[ii].Name = "ResistLabel" + ii.ToString();
-        //        ResistLabel[ii].AutoSize = true;
-        //        ResistLabel[ii].TabIndex = 0;
-        //        this.grpResistStatus.Controls.Add(ResistLabel[ii]);
-
-        //        ResistLabelValue[ii] = new Label();
-        //        ResistLabelValue[ii].Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Bold | FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        ResistLabelValue[ii].Location = new System.Drawing.Point(130, 30 + 50 * (ii % MAX_RESIST_NUM));
-        //        ResistLabelValue[ii].Name = "ResistLabelValue" + ii.ToString();
-        //        ResistLabelValue[ii].AutoSize = true;
-        //        ResistLabelValue[ii].TabIndex = 0;
-        //        this.grpResistStatus.Controls.Add(ResistLabelValue[ii]);
-        //    }
-
-        //    ResistAbnormalStatus = new Label[MAX_ABNORMALSTATUS_NUM];
-        //    ResistAbnormalStatusValue = new Label[MAX_ABNORMALSTATUS_NUM];
-        //    for (int ii = 0; ii < MAX_ABNORMALSTATUS_NUM; ii++)
-        //    {
-        //        ResistAbnormalStatus[ii] = new Label();
-        //        ResistAbnormalStatus[ii].Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        ResistAbnormalStatus[ii].Location = new System.Drawing.Point(370, 20 + 33 * (ii % MAX_ABNORMALSTATUS_NUM));
-        //        ResistAbnormalStatus[ii].Name = "ResistAbnormalStatus" + ii.ToString();
-        //        ResistAbnormalStatus[ii].AutoSize = true;
-        //        ResistAbnormalStatus[ii].TabIndex = 0;
-        //        this.grpResistStatus.Controls.Add(ResistAbnormalStatus[ii]);
-
-        //        ResistAbnormalStatusValue[ii] = new Label();
-        //        ResistAbnormalStatusValue[ii].Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-        //        ResistAbnormalStatusValue[ii].Location = new System.Drawing.Point(470, 20 + 33 * (ii % MAX_ABNORMALSTATUS_NUM));
-        //        ResistAbnormalStatusValue[ii].Name = "ResistAbnormalStatusValue" + ii.ToString();
-        //        ResistAbnormalStatusValue[ii].AutoSize = true;
-        //        ResistAbnormalStatusValue[ii].TabIndex = 0;
-        //        this.grpResistStatus.Controls.Add(ResistAbnormalStatusValue[ii]);
-        //    }
-        //}
-
-        MainCharacter GetCurrentPlayer()
+        private MainCharacter GetCurrentPlayer()
         {
             MainCharacter player = null;
             if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
@@ -845,6 +386,7 @@ namespace DungeonPlayer
         //                        sa.ElementB = "わたす";
         //                        sa.ElementC = "すてる";
         //                    }
+        // if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { IsShift = true; }
         //                    sa.IsShift = this.IsShift;
         //                    sa.ShowDialog();
         //                    this.IsShift = sa.IsShift;
@@ -1964,7 +1506,7 @@ namespace DungeonPlayer
         //private int CallBackPackExchangeValue(MainCharacter player, ItemBackPack backpack, int ii)
         //{
         //    int exchangeValue = player.CheckBackPackExist(backpack, ii); // [警告] backpackData.StackValueでは無い事は分かりにくい。
-        //    if (IsShift)
+        //    if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         //    {
         //        using (SelectValue sv = new SelectValue())
         //        {
@@ -2102,33 +1644,6 @@ namespace DungeonPlayer
         //        {
         //            mainMessage.Text = "";
         //        }
-        //    }
-        //}
-
-        //private void UpdateLabelColorForRare(ref Label label, ItemBackPack.RareLevel rareLevel)
-        //{
-        //    switch (rareLevel)
-        //    {
-        //        case ItemBackPack.RareLevel.Poor:
-        //            label.BackColor = Color.Gray;
-        //            label.ForeColor = Color.White;
-        //            break;
-        //        case ItemBackPack.RareLevel.Common:
-        //            label.BackColor = Color.Green;
-        //            label.ForeColor = Color.White;
-        //            break;
-        //        case ItemBackPack.RareLevel.Rare:
-        //            label.BackColor = Color.DarkBlue;
-        //            label.ForeColor = Color.White;
-        //            break;
-        //        case ItemBackPack.RareLevel.Epic:
-        //            label.BackColor = Color.Purple;
-        //            label.ForeColor = Color.White;
-        //            break;
-        //        case ItemBackPack.RareLevel.Legendary:
-        //            label.BackColor = Color.OrangeRed;
-        //            label.ForeColor = Color.White;
-        //            break;
         //    }
         //}
 
@@ -2284,28 +1799,26 @@ namespace DungeonPlayer
             //if (chara.BuffMind_Food == 0) this.addMind2.text = "";
             //else this.addMind2.text = " + " + chara.BuffMind_Food.ToString();
 
-            // todo
-        //    // over shifting
-        //    if (this.useOverShifting)
-        //    {
-        //        plus1.Visible = true;
-        //        plus10.Visible = true;
-        //        plus100.Visible = true;
-        //        plus1000.Visible = true;
-        //        btnUpReset.Visible = true;
-        //        lblRemain.Visible = true;
-            //        lblRemain.Text = "残り　" + GroundOne.UpPoint.ToString();
-        //    }
-        //    else
-        //    {
-        //        plus1.Visible = false;
-        //        plus10.Visible = false;
-        //        plus100.Visible = false;
-        //        plus1000.Visible = false;
-        //        lblRemain.Visible = false;
-        //        btnUpReset.Visible = false;
-        //    }
-        //    //
+            // over shifting
+            if (this.useOverShifting)
+            {
+                plus1.gameObject.SetActive(true);
+                plus10.gameObject.SetActive(true);
+                plus100.gameObject.SetActive(true);
+                plus1000.gameObject.SetActive(true);
+                btnUpReset.gameObject.SetActive(true);
+                lblRemain.gameObject.SetActive(true);
+                lblRemain.text = "残り　" + GroundOne.UpPoint.ToString();
+            }
+            else
+            {
+                plus1.gameObject.SetActive(false);
+                plus10.gameObject.SetActive(false);
+                plus100.gameObject.SetActive(false);
+                plus1000.gameObject.SetActive(false);
+                btnUpReset.gameObject.SetActive(false);
+                lblRemain.gameObject.SetActive(false);
+            }
 
             RefreshPartyMembersLife();
             this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
@@ -2615,303 +2128,15 @@ namespace DungeonPlayer
             {
                 labelFirstPlayerLife.text = GroundOne.MC.CurrentLife.ToString() + "/" + GroundOne.MC.MaxLife.ToString();
             }
-            if (GroundOne.WE.AvailableSecondCharacter && this.duelMode == false)
+            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.DuelMode == false)
             {
                 labelSecondPlayerLife.text = GroundOne.SC.CurrentLife.ToString() + "/" + GroundOne.SC.MaxLife.ToString();
             }
-            if (GroundOne.WE.AvailableThirdCharacter && this.duelMode == false)
+            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.DuelMode == false)
             {
                 labelThirdPlayerLife.text = GroundOne.TC.CurrentLife.ToString() + "/" + GroundOne.TC.MaxLife.ToString();
             }
         }
-
-        //const string ToRight = ">>";
-        //const string ToLeft = "<<";
-        //private void buttonViewChange_Click(object sender, EventArgs e)
-        //{
-        //    MainCharacter targetPlayer = null;
-        //    if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = mc;
-        //    }
-        //    else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = sc;
-        //    }
-        //    else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //    {
-        //        targetPlayer = tc;
-        //    }
-
-        //    if (GroundOne.OnlySelectTrash)
-        //    {
-        //        mainMessage.Text = targetPlayer.GetCharacterSentence(2021);
-        //        return;
-        //    }
-        //    if (this.onlyUseItem)
-        //    {
-        //        mainMessage.Text = targetPlayer.GetCharacterSentence(2031);
-        //        return;
-        //    }
-
-        //    if (buttonViewChange.Text == ToRight)
-        //    {
-        //        if (!FirstViewToSecondView)
-        //        {
-        //            FirstViewToSecondView = true;
-        //        }
-        //        else if (!SecondViewToThirdView)
-        //        {
-        //            SecondViewToThirdView = true;
-        //        }
-        //        else
-        //        {
-        //            ThirdViewToFourthView = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (ThirdViewToFourthView)
-        //        {
-        //            ThirdViewToFourthView = false;
-        //        }
-        //        else if (SecondViewToThirdView)
-        //        {
-        //            SecondViewToThirdView = false;
-        //        }
-        //        else
-        //        {
-        //            FirstViewToSecondView = false;
-        //        }
-        //    }
-        //    timerGroupMoveAnimation.Start();
-        //}
-
-
-        ////const int BACKPACK_WIDTH = 616; // 12
-        ////const int SPELLSKILL_WIDTH = 616;
-        ////const int BACKPACK_BASE_POSITION = 12;
-        ////const int SPELLSKILL_BASE_POSITION = 12;
-        ////const int PARAMETER_WIDTH = 170;
-        ////const int EQUIPMENT_WIDTH = 167;
-        ////const int BATTLEPARAMETER_WIDTH = 268;
-        //const int BACKPACK_WIDTH = 1000; // 12
-        //const int SPELLSKILL_WIDTH = 1000;
-        //const int BACKPACK_BASE_POSITION = 12;
-        //const int SPELLSKILL_BASE_POSITION = 12;
-        //const int PARAMETER_WIDTH = 250;
-        //const int EQUIPMENT_WIDTH = 317;
-        //const int BATTLEPARAMETER_WIDTH = 421;
-
-        //const int ANIMATION_WIDTH = 3;
-        //bool FirstViewToSecondView = false;
-        //bool SecondViewToThirdView = false;
-        //bool ThirdViewToFourthView = false;
-
-        //private void timerGroupMoveAnimation_Tick(object sender, EventArgs e)
-        //{
-        //    timerGroupMoveAnimation.Stop();
-
-        //    if (FirstViewToSecondView && !SecondViewToThirdView && !ThirdViewToFourthView)
-        //    {
-        //        if (buttonViewChange.Text == ToRight)
-        //        {
-        //            // パラメタ・装備・戦闘値　⇒　バックパック
-        //            if ((grpBattleStatus.Width > ANIMATION_WIDTH) || (grpEquipment.Width > ANIMATION_WIDTH) || (grpParameter.Width > ANIMATION_WIDTH))
-        //            {
-        //                grpBattleStatus.Width -= grpBattleStatus.Width / ANIMATION_WIDTH;
-        //                grpEquipment.Width -= grpEquipment.Width / ANIMATION_WIDTH;
-        //                grpParameter.Width -= grpParameter.Width / ANIMATION_WIDTH;
-
-        //                int moveValue = (BACKPACK_WIDTH - grpBackPack.Width) / ANIMATION_WIDTH;
-        //                grpBackPack.Width += (BACKPACK_WIDTH - grpBackPack.Width) / ANIMATION_WIDTH;
-        //                grpBackPack.Location = new Point(grpBackPack.Location.X - moveValue, grpBackPack.Location.Y);
-        //                timerGroupMoveAnimation.Start();
-        //            }
-        //            else if ((grpBattleStatus.Width > 0) || (grpEquipment.Width > 0) || (grpParameter.Width > 0))
-        //            {
-        //                grpBattleStatus.Width -= 1;
-        //                grpEquipment.Width -= 1;
-        //                grpParameter.Width -= 1;
-        //                grpBackPack.Width += 1;
-        //                grpBackPack.Location = new Point(grpBackPack.Location.X - 1, grpBackPack.Location.Y);
-        //                timerGroupMoveAnimation.Start();
-        //            }
-        //            else
-        //            {
-        //                grpBattleStatus.Width = 0;
-        //                grpEquipment.Width = 0;
-        //                grpParameter.Width = 0;
-        //                grpBackPack.Width = BACKPACK_WIDTH;
-        //                grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
-        //                //buttonViewChange.Text = ToLeft;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            // 魔法・スキル　⇒　バックパック
-        //            grpResistStatus.Width = 0;
-        //            grpResistStatus.Location = new Point(SPELLSKILL_BASE_POSITION + SPELLSKILL_WIDTH, grpResistStatus.Location.Y);
-
-        //            if (grpSpellSkill.Width > ANIMATION_WIDTH)
-        //            {
-        //                int moveValue = grpSpellSkill.Width / ANIMATION_WIDTH;
-        //                grpSpellSkill.Width -= grpSpellSkill.Width / ANIMATION_WIDTH;
-        //                grpSpellSkill.Location = new Point(grpSpellSkill.Location.X + moveValue, grpSpellSkill.Location.Y);
-
-        //                timerGroupMoveAnimation.Start();
-        //            }
-        //            else if (grpSpellSkill.Width > 0)
-        //            {
-        //                grpSpellSkill.Width -= 1;
-        //                timerGroupMoveAnimation.Start();
-        //            }
-        //            else
-        //            {
-        //                grpSpellSkill.Width = 0;
-        //                //buttonViewChange.Text = ToRight;
-        //            }
-        //        }
-        //    }
-        //    else if (FirstViewToSecondView && SecondViewToThirdView && !ThirdViewToFourthView)
-        //    {
-        //        if (buttonViewChange.Text == ToRight)
-        //        {
-        //            // バックパック　⇒　魔法・スキル
-        //            grpBackPack.Width = BACKPACK_WIDTH;
-        //            grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
-
-        //            if ((this.grpSpellSkill.Width < SPELLSKILL_WIDTH - ANIMATION_WIDTH))
-        //            {
-        //                int moveValue = (SPELLSKILL_WIDTH - grpSpellSkill.Width) / ANIMATION_WIDTH;
-        //                grpSpellSkill.Width += (SPELLSKILL_WIDTH - grpSpellSkill.Width) / ANIMATION_WIDTH;
-        //                grpSpellSkill.Location = new Point(grpSpellSkill.Location.X - moveValue, grpSpellSkill.Location.Y);
-        //                timerGroupMoveAnimation.Start();
-        //            }
-        //            else if ((SPELLSKILL_WIDTH - ANIMATION_WIDTH) < this.grpSpellSkill.Width && this.grpSpellSkill.Width < (SPELLSKILL_WIDTH))
-        //            {
-        //                grpBackPack.Width -= 1;
-        //                grpSpellSkill.Width += 1;
-        //                grpSpellSkill.Location = new Point(grpSpellSkill.Location.X - 1, grpSpellSkill.Location.Y);
-        //                timerGroupMoveAnimation.Start();
-        //            }
-        //            else
-        //            {
-        //                grpBattleStatus.Width = 0;
-        //                grpEquipment.Width = 0;
-        //                grpParameter.Width = 0;
-
-        //                grpSpellSkill.Width = BACKPACK_WIDTH;
-        //                grpSpellSkill.Location = new Point(SPELLSKILL_BASE_POSITION, grpSpellSkill.Location.Y);
-        //                //buttonViewChange.Text = ToLeft;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            // レジスト・耐性　⇒　魔法・スキル
-        //            if (grpResistStatus.Width > ANIMATION_WIDTH)
-        //            {
-        //                int moveValue = grpResistStatus.Width / ANIMATION_WIDTH;
-        //                grpResistStatus.Width -= grpResistStatus.Width / ANIMATION_WIDTH;
-        //                grpResistStatus.Location = new Point(grpResistStatus.Location.X + moveValue, grpResistStatus.Location.Y);
-
-        //                timerGroupMoveAnimation.Start();
-        //            }
-        //            else if (grpResistStatus.Width > 0)
-        //            {
-        //                grpResistStatus.Width -= 1;
-        //                timerGroupMoveAnimation.Start();
-        //            }
-        //            else
-        //            {
-        //                grpResistStatus.Width = 0;
-        //                //buttonViewChange.Text = ToRight;
-        //            }
-        //        }
-        //    }
-        //    else if (FirstViewToSecondView && SecondViewToThirdView && ThirdViewToFourthView)
-        //    {
-        //        // 魔法・スキル  ⇒  レジスト・耐性
-        //        grpSpellSkill.Width = BACKPACK_WIDTH;
-        //        grpSpellSkill.Location = new Point(BACKPACK_BASE_POSITION, grpSpellSkill.Location.Y);
-
-        //        if ((this.grpResistStatus.Width < SPELLSKILL_WIDTH - ANIMATION_WIDTH))
-        //        {
-        //            int moveValue = (SPELLSKILL_WIDTH - grpResistStatus.Width) / ANIMATION_WIDTH;
-        //            grpResistStatus.Width += (SPELLSKILL_WIDTH - grpResistStatus.Width) / ANIMATION_WIDTH;
-        //            grpResistStatus.Location = new Point(grpResistStatus.Location.X - moveValue, grpResistStatus.Location.Y);
-        //            timerGroupMoveAnimation.Start();
-        //        }
-        //        else if ((SPELLSKILL_WIDTH - ANIMATION_WIDTH) < this.grpResistStatus.Width && this.grpResistStatus.Width < (SPELLSKILL_WIDTH))
-        //        {
-        //            grpSpellSkill.Width -= 1;
-        //            grpResistStatus.Width += 1;
-        //            grpResistStatus.Location = new Point(grpResistStatus.Location.X - 1, grpResistStatus.Location.Y);
-        //            timerGroupMoveAnimation.Start();
-        //        }
-        //        else
-        //        {
-        //            grpBattleStatus.Width = 0;
-        //            grpEquipment.Width = 0;
-        //            grpParameter.Width = 0;
-
-        //            grpResistStatus.Width = BACKPACK_WIDTH;
-        //            grpResistStatus.Location = new Point(SPELLSKILL_BASE_POSITION, grpResistStatus.Location.Y);
-        //            buttonViewChange.Text = ToLeft;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        // バックパック　⇒　パラメタ・装備・戦闘値
-        //        grpSpellSkill.Width = 0;
-        //        grpSpellSkill.Location = new Point(SPELLSKILL_BASE_POSITION + SPELLSKILL_WIDTH, grpSpellSkill.Location.Y);
-
-        //        if (grpBackPack.Width > ANIMATION_WIDTH)
-        //        {
-        //            int moveValue = grpBackPack.Width / ANIMATION_WIDTH;
-        //            grpBackPack.Width -= grpBackPack.Width / ANIMATION_WIDTH;
-        //            grpBackPack.Location = new Point(grpBackPack.Location.X + moveValue, grpBackPack.Location.Y);
-
-        //            grpParameter.Width += (PARAMETER_WIDTH - grpParameter.Width) / ANIMATION_WIDTH;
-        //            grpEquipment.Width += (EQUIPMENT_WIDTH - grpEquipment.Width) / ANIMATION_WIDTH;
-        //            grpBattleStatus.Width += (BATTLEPARAMETER_WIDTH - grpBattleStatus.Width) / ANIMATION_WIDTH;
-        //            timerGroupMoveAnimation.Start();
-        //        }
-        //        else if (grpBackPack.Width > 0)
-        //        {
-        //            grpBattleStatus.Width += 1;
-        //            grpEquipment.Width += 1;
-        //            grpParameter.Width += 1;
-        //            grpBackPack.Width -= 1;
-        //            timerGroupMoveAnimation.Start();
-        //        }
-        //        else
-        //        {
-        //            grpBattleStatus.Width = BATTLEPARAMETER_WIDTH;
-        //            grpEquipment.Width = EQUIPMENT_WIDTH;
-        //            grpParameter.Width = PARAMETER_WIDTH;
-        //            grpBackPack.Width = 0;
-        //            buttonViewChange.Text = ToRight;
-        //        }
-        //    }
-        //}
-
-        //bool IsShift = false;
-        //private void TruthStatusPlayer_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Shift || e.KeyCode == Keys.ShiftKey)
-        //    {
-        //        IsShift = true;
-        //    }
-        //}
-
-        //private void TruthStatusPlayer_KeyUp(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Shift || e.KeyCode == Keys.ShiftKey)
-        //    {
-        //        IsShift = false;
-        //    }
-        //}
 
         public void btnSomeSpellSkill_Click(Text sender)
         {
@@ -3356,39 +2581,26 @@ namespace DungeonPlayer
         }
         public void subWeapon_Click(Text sender)
         {
-            // todo
-            //MainCharacter targetPlayer = null;
-            //if (mc != null && mc.PlayerStatusColor == this.BackColor)
-            //{
-            //    targetPlayer = mc;
-            //}
-            //else if (sc != null && sc.PlayerStatusColor == this.BackColor)
-            //{
-            //    targetPlayer = sc;
-            //}
-            //else if (tc != null && tc.PlayerStatusColor == this.BackColor)
-            //{
-            //    targetPlayer = tc;
-            //}
-            //if (targetPlayer.MainWeapon != null)
-            //{
-            //    if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
-            //        (targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand))
-            //    {
-            //        mainMessage.Text = targetPlayer.GetCharacterSentence(2025);
-            //        return;
-            //    }
-            //    if (targetPlayer.MainWeapon.Name == "")
-            //    {
-            //        mainMessage.Text = targetPlayer.GetCharacterSentence(2026);
-            //        return;
-            //    }
-            //}
-            //if (targetPlayer.MainWeapon == null)
-            //{
-            //    mainMessage.Text = targetPlayer.GetCharacterSentence(2026);
-            //    return;
-            //}
+            MainCharacter targetPlayer = GetCurrentPlayer();
+            if (targetPlayer.MainWeapon != null)
+            {
+                if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
+                    (targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_TwoHand))
+                {
+                    mainMessage.text = targetPlayer.GetCharacterSentence(2025);
+                    return;
+                }
+                if (targetPlayer.MainWeapon.Name == "")
+                {
+                    mainMessage.text = targetPlayer.GetCharacterSentence(2026);
+                    return;
+                }
+            }
+            if (targetPlayer.MainWeapon == null)
+            {
+                mainMessage.text = targetPlayer.GetCharacterSentence(2026);
+                return;
+            }
             ChangeEquipment(1);
         }
         public void armor_Click(Text sender)
@@ -3726,17 +2938,6 @@ namespace DungeonPlayer
                 groupParentBackpack.gameObject.SetActive(false);
                 groupParentSpell.gameObject.SetActive(false);
                 groupParentResist.gameObject.SetActive(false);
-                //FirstViewToSecondView = false;
-                //SecondViewToThirdView = false;
-                //ThirdViewToFourthView = false;
-                //grpBattleStatus.Width = BATTLEPARAMETER_WIDTH;
-                //grpEquipment.Width = EQUIPMENT_WIDTH;
-                //grpParameter.Width = PARAMETER_WIDTH;
-                //grpBackPack.Width = 0;
-                //grpSpellSkill.Width = 0;
-                //grpResistStatus.Width = 0;
-                //buttonViewChange.Text = ToRight;
-
             }
             else if (viewNumber == 1)
             {
@@ -3744,17 +2945,6 @@ namespace DungeonPlayer
                 groupParentBackpack.gameObject.SetActive(true);
                 groupParentSpell.gameObject.SetActive(false);
                 groupParentResist.gameObject.SetActive(false);
-                //FirstViewToSecondView = true;
-                //SecondViewToThirdView = false;
-                //ThirdViewToFourthView = false;
-                //grpBattleStatus.Width = 0;
-                //grpEquipment.Width = 0;
-                //grpParameter.Width = 0;
-                //grpBackPack.Width = BACKPACK_WIDTH;
-                //grpBackPack.Location = new Point(BACKPACK_BASE_POSITION, grpBackPack.Location.Y);
-                //grpSpellSkill.Width = 0;
-                //grpResistStatus.Width = 0;
-                ////buttonViewChange.Text = ToLeft;
             }
             else if (viewNumber == 2)
             {
@@ -3762,17 +2952,6 @@ namespace DungeonPlayer
                 groupParentBackpack.gameObject.SetActive(false);
                 groupParentSpell.gameObject.SetActive(true);
                 groupParentResist.gameObject.SetActive(false);
-                //FirstViewToSecondView = true;
-                //SecondViewToThirdView = true;
-                //ThirdViewToFourthView = false;
-                //grpBattleStatus.Width = 0;
-                //grpEquipment.Width = 0;
-                //grpParameter.Width = 0;
-                //grpBackPack.Width = 0;
-                //grpSpellSkill.Width = BACKPACK_WIDTH;
-                //grpSpellSkill.Location = new Point(SPELLSKILL_BASE_POSITION, grpSpellSkill.Location.Y);
-                //grpResistStatus.Width = 0;
-                ////buttonViewChange.Text = ToLeft;
             }
             else if (viewNumber == 3)
             {
@@ -3780,17 +2959,6 @@ namespace DungeonPlayer
                 groupParentBackpack.gameObject.SetActive(false);
                 groupParentSpell.gameObject.SetActive(false);
                 groupParentResist.gameObject.SetActive(true);
-                //FirstViewToSecondView = true;
-                //SecondViewToThirdView = true;
-                //ThirdViewToFourthView = true;
-                //grpBattleStatus.Width = 0;
-                //grpEquipment.Width = 0;
-                //grpParameter.Width = 0;
-                //grpBackPack.Width = 0;
-                //grpSpellSkill.Width = 0;
-                //grpResistStatus.Width = BACKPACK_WIDTH;
-                //grpResistStatus.Location = new Point(SPELLSKILL_BASE_POSITION, grpResistStatus.Location.Y);
-                //buttonViewChange.Text = ToLeft;
             }
         }
 
@@ -4074,99 +3242,100 @@ namespace DungeonPlayer
             }
         }
 
-        //private void GoLevelUpPoint(upType type, int plus, ref MainCharacter player, ref int remain, ref int addStr, ref int addAgl, ref int addInt, ref int addStm, ref int addMnd)
-        //{
-        //    if (remain > 0 && remain >= plus)
-        //    {
-        //        remain -= plus;
-        //        if (type == upType.Strength)
-        //        {
-        //            addStr += plus;
-        //            player.Strength += plus;
-        //            strength.Text = player.Strength.ToString();
-        //        }
-        //        else if (type == upType.Agility)
-        //        {
-        //            addAgl += plus;
-        //            player.Agility += plus;
-        //            agility.Text = player.Agility.ToString();
-        //        }
-        //        else if (type == upType.Intelligence)
-        //        {
-        //            addInt += plus;
-        //            player.Intelligence += plus;
-        //            intelligence.Text = player.Intelligence.ToString();
-        //        }
-        //        else if (type == upType.Stamina)
-        //        {
-        //            addStm += plus;
-        //            player.Stamina += plus;
-        //            stamina.Text = player.Stamina.ToString();
-        //        }
-        //        else if (type == upType.Mind)
-        //        {
-        //            addMnd += plus;
-        //            player.Mind += plus;
-        //            mindLabel.Text = player.Mind.ToString();
-        //        }
-        //        RefreshPartyMembersBattleStatus(player);
-        //        RefreshPartyMembersLife();
-        //        lblRemain.Text = "残り " + remain.ToString();
-        //    }
-        //}
-        //private void plus1_Click(object sender, EventArgs e)
-        //{
-        //    MainCharacter player = GetCurrentPlayer();
-        //    int plus = 0;
-        //    if ((sender.Equals(plus1))) { plus = 1; }
-        //    else if ((sender.Equals(plus10))) { plus = 10; }
-        //    else if ((sender.Equals(plus100))) { plus = 100; }
-        //    else if ((sender.Equals(plus1000))) { plus = 1000; }
+        private void GoLevelUpPoint(upType type, int plus, ref MainCharacter player, ref int remain, ref int addStr, ref int addAgl, ref int addInt, ref int addStm, ref int addMnd)
+        {
+            if (remain > 0 && remain >= plus)
+            {
+                remain -= plus;
+                if (type == upType.Strength)
+                {
+                    addStr += plus;
+                    player.Strength += plus;
+                    strength.text = player.Strength.ToString();
+                }
+                else if (type == upType.Agility)
+                {
+                    addAgl += plus;
+                    player.Agility += plus;
+                    agility.text = player.Agility.ToString();
+                }
+                else if (type == upType.Intelligence)
+                {
+                    addInt += plus;
+                    player.Intelligence += plus;
+                    intelligence.text = player.Intelligence.ToString();
+                }
+                else if (type == upType.Stamina)
+                {
+                    addStm += plus;
+                    player.Stamina += plus;
+                    stamina.text = player.Stamina.ToString();
+                }
+                else if (type == upType.Mind)
+                {
+                    addMnd += plus;
+                    player.Mind += plus;
+                    mind.text = player.Mind.ToString();
+                }
+                RefreshPartyMembersBattleStatus(player);
+                RefreshPartyMembersLife();
+                lblRemain.text = "残り " + remain.ToString();
+            }
+        }
 
-        //    GoLevelUpPoint(this.number, plus, ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
-        //    if (GroundOne.UpPoint <= 0)
-        //    {
-        //        this.plus1.Visible = false;
-        //        this.plus10.Visible = false;
-        //        this.plus100.Visible = false;
-        //        this.plus1000.Visible = false;
-        //        this.btnUpReset.Visible = false;
-        //        this.lblRemain.Visible = false;
-        //        this.useOverShifting = false;
-        //        this.buttonStrength.Enabled = false;
-        //        this.buttonAgility.Enabled = false;
-        //        this.buttonIntelligence.Enabled = false;
-        //        this.buttonStamina.Enabled = false;
-        //        this.buttonMind.Enabled = false;
-        //        this.grpParameter.Invalidate();
-        //        button1.Visible = true;
-        //        this.mainMessage.Text = "アイン：っしゃ、再割り振り完了！";
-        //        player.CurrentLife = player.MaxLife;
-        //        player.CurrentSkillPoint = player.MaxSkillPoint;
-        //        player.CurrentMana = player.MaxMana;
-        //        SettingCharacterData(player);
-        //        this.Update();
-        //    }
-        //}
+        public void plus1_Click(Text sender)
+        {
+            MainCharacter player = GetCurrentPlayer();
+            int plus = 0;
+            if (sender.text == "+1") { plus = 1; }
+            else if (sender.text == "+10") { plus = 10; }
+            else if (sender.text == "+100") { plus = 100; }
+            else if (sender.text == "+1000") { plus = 1000; }
 
-        //private void ResetParameter(ref MainCharacter player, ref int remain, ref int addStr, ref int addAgl, ref int addInt, ref int addStm, ref int addMnd)
-        //{
-        //    remain += addStr; player.Strength -= addStr; addStr = 0;
-        //    remain += addAgl; player.Agility -= addAgl; addAgl = 0;
-        //    remain += addInt; player.Intelligence -= addInt; addInt = 0;
-        //    remain += addStm; player.Stamina -= addStm; addStm = 0;
-        //    remain += addMnd; player.Mind -= addMnd; addMnd = 0;
-        //    lblRemain.Text = "残り　" + remain.ToString();
-        //}
+            GoLevelUpPoint(this.number, plus, ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
+            if (GroundOne.UpPoint <= 0)
+            {
+                plus1.gameObject.SetActive(false);
+                plus10.gameObject.SetActive(false)
+                plus100.gameObject.SetActive(false)
+                plus1000.gameObject.SetActive(false)
+                btnUpReset.gameObject.SetActive(false)
+                lblRemain.gameObject.SetActive(false)
+                useOverShifting = false;
+                // todo (0point以下になった時、ボタン押下で継続してパラメタが割り振られないようにする事）
+                //buttonStrength.Enabled = false;
+                //buttonAgility.Enabled = false;
+                //buttonIntelligence.Enabled = false;
+                //buttonStamina.Enabled = false;
+                //buttonMind.Enabled = false;
+                grpParameter_Paint();
+                btnClose.gameObject.SetActive(true);
+                mainMessage.text = "アイン：っしゃ、再割り振り完了！";
+                player.CurrentLife = player.MaxLife;
+                player.CurrentSkillPoint = player.MaxSkillPoint;
+                player.CurrentMana = player.MaxMana;
+                SettingCharacterData(player);
+            }
+        }
 
-        //private void btnUpReset_Click(object sender, EventArgs e)
-        //{
-        //    MainCharacter player = GetCurrentPlayer();
-        //    ResetParameter(ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
-        //    SettingCharacterData(player);
-        //    RefreshPartyMembersBattleStatus(player);
-        //    RefreshPartyMembersLife();
-        //}
+        private void ResetParameter(ref MainCharacter player, ref int remain, ref int addStr, ref int addAgl, ref int addInt, ref int addStm, ref int addMnd)
+        {
+            remain += addStr; player.Strength -= addStr; addStr = 0;
+            remain += addAgl; player.Agility -= addAgl; addAgl = 0;
+            remain += addInt; player.Intelligence -= addInt; addInt = 0;
+            remain += addStm; player.Stamina -= addStm; addStm = 0;
+            remain += addMnd; player.Mind -= addMnd; addMnd = 0;
+            lblRemain.text = "残り　" + remain.ToString();
+        }
+
+        public void btnUpReset_Click()
+        {
+            MainCharacter player = GetCurrentPlayer();
+            ResetParameter(ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
+            SettingCharacterData(player);
+            RefreshPartyMembersBattleStatus(player);
+            RefreshPartyMembersLife();
+        }
 
         //PopUpMini popupInfo = null;
         //private void buttonStrength_MouseEnter(object sender, EventArgs e)
