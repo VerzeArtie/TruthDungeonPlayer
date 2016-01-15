@@ -281,8 +281,8 @@ namespace DungeonPlayer
             return player;
         }
 
-        //void StatusPlayer_Click(object sender, EventArgs e)
-        //{
+        public void StatusPlayer_Click(Text sender)
+        {
         //    string fileExt = ".bmp";
         //    if (((MouseEventArgs)e).Button == System.Windows.Forms.MouseButtons.Right) return;
 
@@ -1501,7 +1501,7 @@ namespace DungeonPlayer
 
         //        this.DialogResult = DialogResult.OK;
         //    }
-        //}
+        }
 
         //private int CallBackPackExchangeValue(MainCharacter player, ItemBackPack backpack, int ii)
         //{
@@ -3053,11 +3053,11 @@ namespace DungeonPlayer
         }
         public void buttonStrength_Click()
         {
+            if (GroundOne.UpPoint <= 0) { return; } // add unity
+
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.UpPoint <= 0) { return; } // add unity
-
                 if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
                 {
                     GroundOne.MC.Strength++;
@@ -3088,11 +3088,11 @@ namespace DungeonPlayer
 
         public void buttonAgility_Click()
         {
+            if (GroundOne.UpPoint <= 0) { return; } // add unity
+
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.UpPoint <= 0) { return; } // add unity
-
                 if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
                 {
                     GroundOne.MC.Agility++;
@@ -3123,11 +3123,11 @@ namespace DungeonPlayer
 
         public void buttonIntelligence_Click()
         {
+            if (GroundOne.UpPoint <= 0) { return; } // add unity
+
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.UpPoint <= 0) { return; } // add unity
-
                 if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
                 {
                     GroundOne.MC.Intelligence++;
@@ -3170,11 +3170,11 @@ namespace DungeonPlayer
         
         public void buttonStamina_Click()
         {
+            if (GroundOne.UpPoint <= 0) { return; } // add unity
+
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.UpPoint <= 0) { return; } // add unity
-
                 if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
                 {
                     GroundOne.MC.Stamina++;
@@ -3209,11 +3209,11 @@ namespace DungeonPlayer
 
         public void buttonMind_Click()
         {
+            if (GroundOne.UpPoint <= 0) { return; } // add unity
+
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.UpPoint <= 0) { return; } // add unity
-
                 if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
                 {
                     GroundOne.MC.Mind++;
