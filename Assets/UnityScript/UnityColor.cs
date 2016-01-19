@@ -8,6 +8,7 @@ namespace DungeonPlayer
 {
     class UnityColor
     {
+        public static Color EpicPurple = new Color(115.0f / 255.0f, 0.0f, 177.0f / 255.0f);
         public static Color CommonGreen = new Color(0.0f, 0.7f, 0.0f);
         public static Color White = new Color(255, 255, 255);
         public static Color Whitesmoke = new Color(245, 245, 245);

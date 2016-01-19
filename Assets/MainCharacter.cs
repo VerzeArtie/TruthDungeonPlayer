@@ -305,7 +305,98 @@ namespace DungeonPlayer
                 return baseSpecialInstant;
             }
         }        
-        public JobClass.Job Job { get; set; }
+        public JobClass.Job Job { get; set; } // add unity
+
+        public int TotalResistLight
+        {
+            get
+            {
+                int result = baseResistLight;
+                if (this.CurrentResistLightUp > 0) result += CurrentResistLightUpValue;
+                if (this.MainWeapon != null) result += this.MainWeapon.ResistLight;
+                if (this.SubWeapon != null) result += this.SubWeapon.ResistLight;
+                if (this.MainArmor != null) result += this.MainArmor.ResistLight;
+                if (this.Accessory != null) result += this.Accessory.ResistLight;
+                if (this.Accessory2 != null) result += this.Accessory2.ResistLight;
+                if (result <= 0) result = 0;
+                return result;
+            }
+        }
+        public int TotalResistShadow
+        {
+            get
+            {
+                int result = baseResistShadow;
+                if (this.CurrentResistShadowUp > 0) result += CurrentResistShadowUpValue;
+                if (this.MainWeapon != null) result += this.MainWeapon.ResistShadow;
+                if (this.SubWeapon != null) result += this.SubWeapon.ResistShadow;
+                if (this.MainArmor != null) result += this.MainArmor.ResistShadow;
+                if (this.Accessory != null) result += this.Accessory.ResistShadow;
+                if (this.Accessory2 != null) result += this.Accessory2.ResistShadow;
+                if (result <= 0) result = 0;
+                return result;
+            }
+        }
+        public int TotalResistFire
+        {
+            get
+            {
+                int result = baseResistFire;
+                if (this.CurrentResistFireUp > 0) result += CurrentResistFireUpValue;
+                if (this.MainWeapon != null) result += this.MainWeapon.ResistFire;
+                if (this.SubWeapon != null) result += this.SubWeapon.ResistFire;
+                if (this.MainArmor != null) result += this.MainArmor.ResistFire;
+                if (this.Accessory != null) result += this.Accessory.ResistFire;
+                if (this.Accessory2 != null) result += this.Accessory2.ResistFire;
+                if (result <= 0) result = 0;
+                return result;
+            }
+        }
+        public int TotalResistIce
+        {
+            get
+            {
+                int result = baseResistIce;
+                if (this.CurrentResistIceUp > 0) result += CurrentResistIceUpValue;
+                if (this.MainWeapon != null) result += this.MainWeapon.ResistIce;
+                if (this.SubWeapon != null) result += this.SubWeapon.ResistIce;
+                if (this.MainArmor != null) result += this.MainArmor.ResistIce;
+                if (this.Accessory != null) result += this.Accessory.ResistIce;
+                if (this.Accessory2 != null) result += this.Accessory2.ResistIce;
+                if (result <= 0) result = 0;
+                return result;
+            }
+        }
+        public int TotalResistForce
+        {
+            get
+            {
+                int result = baseResistForce;
+                if (this.CurrentResistForceUp > 0) result += CurrentResistForceUpValue;
+                if (this.MainWeapon != null) result += this.MainWeapon.ResistForce;
+                if (this.SubWeapon != null) result += this.SubWeapon.ResistForce;
+                if (this.MainArmor != null) result += this.MainArmor.ResistForce;
+                if (this.Accessory != null) result += this.Accessory.ResistForce;
+                if (this.Accessory2 != null) result += this.Accessory2.ResistForce;
+                if (result <= 0) result = 0;
+                return result;
+            }
+        }
+        public int TotalResistWill
+        {
+            get
+            {
+                int result = baseResistWill;
+                if (this.CurrentResistWillUp > 0) result += CurrentResistWillUpValue;
+                if (this.MainWeapon != null) result += this.MainWeapon.ResistWill;
+                if (this.SubWeapon != null) result += this.SubWeapon.ResistWill;
+                if (this.MainArmor != null) result += this.MainArmor.ResistWill;
+                if (this.Accessory != null) result += this.Accessory.ResistWill;
+                if (this.Accessory2 != null) result += this.Accessory2.ResistWill;
+                if (result <= 0) result = 0;
+                return result;
+            }
+        }
 
         // buff up(+)
         protected int buffStrength_Food = 0;
@@ -3341,6 +3432,8 @@ namespace DungeonPlayer
                         return this.name + "：おっと荷物がいっぱいだぜ。";
                     case 2035: // Sacred Heal
                         return this.name + "：おし、回復したぜ。";
+                    case 2036: // オーバーシフティング割り振り完了
+                        return this.name + "：っしゃ、再割り振り完了！";
 
                     case 3000: // 店に入った時の台詞
                         return this.name + "：本当に誰も見張り役が居ないんだな。";
@@ -4024,6 +4117,8 @@ namespace DungeonPlayer
                         return this.name + "：う～ん、荷物はもういっぱいみたいね。";
                     case 2035: // Sacred Heal
                         return this.name + "：うん、全員回復したわよ。";
+                    case 2036: // オーバーシフティング割り振り完了
+                        return this.name + "：再割り振り完了よ♪";
 
                     case 3000: // 店に入った時の台詞
                         return this.name + "：ホンット誰もいないわね。";
@@ -4716,6 +4811,8 @@ namespace DungeonPlayer
                         return this.name + "：いえ、これ以上は持って行く必要はありませんね。";
                     case 2035: // Sacred Heal
                         return this.name + "：全員回復しましたね。";
+                    case 2036: // オーバーシフティング割り振り完了
+                        return this.name + "：再割り振り、完了ですね。";
 
                     case 3000: // 店に入った時の台詞
                         return this.name + "：無防備な状態ですね・・・";
@@ -5378,6 +5475,8 @@ namespace DungeonPlayer
                         return this.name + "：これ以上は面倒くせぇ。";
                     case 2035: // Sacred Heal
                         return this.name + "：全員回復したぞ。";
+                    case 2036: // オーバーシフティング割り振り完了
+                        return this.name + "：面倒くせえ割り振りだったな。";
 
                     case 3000: // 店に入った時の台詞
                         return this.name + "：ジジィ・・・誰もいねえのはやべぇだろが・・・。";
@@ -6909,6 +7008,268 @@ namespace DungeonPlayer
             }
         }
 
+
+        /// <summary>
+        /// 正のスキル効果をリムーブ
+        /// </summary>
+        public void RemoveBuffSkill()
+        {
+            // 基本スキル
+            this.RemoveAntiStun();
+            this.RemoveStanceOfDeath();
+            this.RemoveTruthVision();
+            this.RemovePainfulInsanity(); // ダメージ系統だが対象は自分自身なのでUP扱い
+            this.RemoveVoidExtraction();
+            this.RemoveNothingOfNothingness();
+            // 複合スキル
+            this.RemoveRisingAura();
+            this.RemoveAscensionAura();
+            this.RemoveReflexSpirit();
+            this.RemoveTrustSilence();
+            this.RemoveStanceOfMystic();
+            this.RemoveNourishSense();
+        }
+
+        /// <summary>
+        /// 負のスキル効果をリムーブ
+        /// </summary>
+        public void RemoveDebuffSkill()
+        {
+            // 基本スキル
+            // 複合スキル
+            this.RemoveOnslaughtHit();
+            this.RemoveConcussiveHit();
+            this.RemoveImpulseHit();
+        }
+
+        /// <summary>
+        /// 正の魔法効果をリムーブ
+        /// </summary>
+        public void RemoveBuffSpell()
+        {
+            // 基本スペル
+            this.RemoveProtection();
+            this.RemoveSaintPower();
+            this.RemoveAbsorbWater();
+            this.RemoveShadowPact();
+            this.RemoveEternalPresence();
+            this.RemoveBloodyVengeance();
+            this.RemoveHeatBoost();
+            this.RemovePromisedKnowledge();
+            this.RemoveRiseOfImage();
+            this.RemoveWordOfLife();
+            this.RemoveFlameAura();
+            // 複合スペル
+            this.RemovePsychicTrance();
+            this.RemoveBlindJustice();
+            this.RemoveSkyShield();
+            this.RemoveEverDroplet();
+            this.RemoveHolyBreaker();
+            this.RemoveExaltedField();
+            this.RemoveFrozenAura();
+            this.RemovePhantasmalWind();
+            this.RemoveRedDragonWill();
+            this.RemoveStaticBarrier();
+            this.RemoveBlueDragonWill();
+            this.RemoveSeventhMagic();
+            this.RemoveParadoxImage();
+        }
+
+        /// <summary>
+        /// 負の魔法効果をリムーブ
+        /// </summary>
+        public void RemoveDebuffSpell()
+        {
+            // 基本スペル
+            this.RemoveDamnation();
+            this.RemoveAbsoluteZero();
+            // 複合スペル
+            this.RemoveFlashBlaze();
+            this.RemoveStarLightning();
+            this.RemoveBlackFire();
+            this.RemoveBlazingField();
+            this.RemoveDemonicIgnite();
+            this.RemoveWordOfMalice();
+            this.RemoveDarkenField();
+            this.RemoveChillBurn();
+            this.RemoveEnrageBlast();
+            //this.RemoveSigilOfHomura();
+            this.RemoveImmolate();
+            //this.RemoveAusterityMatrix();
+            this.RemoveVanishWave();
+            this.RemoveVortexField();
+        }
+
+        /// <summary>
+        /// 正のパラメタ効果をリムーブ
+        /// </summary>
+        public void RemoveBuffParam()
+        {
+            this.RemovePhysicalAttackUp();
+            this.RemovePhysicalDefenseUp();
+            this.RemoveMagicAttackUp();
+            this.RemoveMagicDefenseUp();
+            this.RemoveSpeedUp();
+            this.RemoveReactionUp();
+            this.RemovePotentialUp();
+        }
+
+
+        /// <summary>
+        /// 負のパラメタ効果をリムーブ
+        /// </summary>
+        public void RemoveDebuffParam()
+        {
+            this.RemovePhysicalAttackDown();
+            this.RemovePhysicalDefenseDown();
+            this.RemoveMagicAttackDown();
+            this.RemoveMagicDefenseDown();
+            this.RemoveSpeedDown();
+            this.RemoveReactionDown();
+            this.RemovePotentialDown();
+        }
+
+        /// <summary>
+        /// 正の影響効果をリムーブ
+        /// </summary>
+        public void RemoveBuffEffect()
+        {
+            this.RemoveBlinded();
+            this.RemoveSpeedBoost();
+            this.RemoveChargeCount();
+            this.RemovePhysicalChargeCount();
+        }
+
+        /// <summary>
+        /// 負の影響効果をリムーブ
+        /// </summary>
+        public void RemoveDebuffEffect()
+        {
+            this.RemovePreStunning();
+            this.RemoveStun();
+            this.RemoveSilence();
+            this.RemovePoison();
+            this.RemoveTemptation();
+            this.RemoveFrozen();
+            this.RemoveParalyze();
+            this.RemoveNoResurrection();
+            this.RemoveSlow();
+            this.RemoveBlind();
+            this.RemoveSlip();
+        }
+
+        private void UpdateBattleText(string text)
+        {
+            // todo
+            //this.TextBattleMessage.Text = this.TextBattleMessage.Text.Insert(0, text);
+            //this.TextBattleMessage.Update();
+        }
+        /// <summary>
+        /// 力パラメタ上昇BUFF
+        /// </summary>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        public void BuffUpStrength(double effectValue, int turn = 999)
+        {
+            UpdateBattleText(this.Name + "は【力】が" + ((int)effectValue).ToString() + "上昇\r\n");
+            this.CurrentStrengthUp = turn;
+            this.CurrentStrengthUpValue = (int)effectValue;
+            this.ActivateBuff(this.pbStrengthUp, Database.BaseResourceFolder + Database.BUFF_STRENGTH_UP, turn);
+        }
+
+        /// <summary>
+        /// 技パラメタ上昇BUFF
+        /// </summary>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        public void BuffUpAgility(double effectValue, int turn = 999)
+        {
+            UpdateBattleText(this.Name + "は【技】が" + ((int)effectValue).ToString() + "上昇\r\n");
+            this.CurrentAgilityUp = turn;
+            this.CurrentAgilityUpValue = (int)effectValue;
+            this.ActivateBuff(this.pbAgilityUp, Database.BaseResourceFolder + Database.BUFF_AGILITY_UP, turn);
+        }
+
+        /// <summary>
+        /// 知パラメタ上昇BUFF
+        /// </summary>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        public void BuffUpIntelligence(double effectValue, int turn = 999)
+        {
+            UpdateBattleText(this.Name + "は【知】が" + ((int)effectValue).ToString() + "上昇\r\n");
+            this.CurrentIntelligenceUp = turn;
+            this.CurrentIntelligenceUpValue = (int)effectValue;
+            this.ActivateBuff(this.pbIntelligenceUp, Database.BaseResourceFolder + Database.BUFF_INTELLIGENCE_UP, turn);
+        }
+
+        /// <summary>
+        /// 体パラメタ上昇BUFF
+        /// </summary>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        public void BuffUpStamina(double effectValue, int turn = 999)
+        {
+            UpdateBattleText(this.Name + "は【体】が" + ((int)effectValue).ToString() + "上昇\r\n");
+            this.CurrentStaminaUp = turn;
+            this.CurrentStaminaUpValue = (int)effectValue;
+            this.ActivateBuff(this.pbStaminaUp, Database.BaseResourceFolder + Database.BUFF_STAMINA_UP, turn);
+        }
+
+        /// <summary>
+        /// 心パラメタ上昇BUFF
+        /// </summary>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        public void BuffUpMind(double effectValue, int turn = 999)
+        {
+            UpdateBattleText(this.Name + "は【心】が" + ((int)effectValue).ToString() + "上昇\r\n");
+            this.CurrentMindUp = turn;
+            this.CurrentMindUpValue = (int)effectValue;
+            this.ActivateBuff(this.pbMindUp, Database.BaseResourceFolder + Database.BUFF_MIND_UP, turn);
+        }
+
+        public void BuffUpAmplifyPhysicalAttack(double effectValue, int turn = 999)
+        {
+            this.AmplifyPhysicalAttack = effectValue;
+            this.ActivateBuff(this.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, turn);
+        }
+
+        public void BuffUpAmplifyPhysicalDefence(double effectValue, int turn = 999)
+        {
+            this.AmplifyPhysicalDefense = effectValue;
+            this.ActivateBuff(this.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, turn);
+        }
+
+        public void BuffUpAmplifyMagicAttack(double effectValue, int turn = 999)
+        {
+            this.AmplifyMagicAttack = effectValue;
+            this.ActivateBuff(this.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, turn);
+        }
+
+        public void BuffUpAmplifyMagicDefense(double effectValue, int turn = 999)
+        {
+            this.AmplifyMagicDefense = effectValue;
+            this.ActivateBuff(this.pbMagicDefenseUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_UP, turn);
+        }
+
+        public void BuffUpAmplifyBattleSpeed(double effectValue, int turn = 999)
+        {
+            this.AmplifyBattleSpeed = effectValue;
+            this.ActivateBuff(this.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, turn);
+        }
+
+        public void BuffUpAmplifyBattleResponse(double effectValue, int turn = 999)
+        {
+            this.AmplifyBattleResponse = effectValue;
+            this.ActivateBuff(this.pbReactionUp, Database.BaseResourceFolder + Database.BUFF_REACTION_UP, turn);
+        }
+
+        public void BuffUpAmplifyPotential(double effectValue, int turn = 999)
+        {
+            this.AmplifyPotential = effectValue;
+            this.ActivateBuff(this.pbPotentialUp, Database.BaseResourceFolder + Database.BUFF_POTENTIAL_UP, turn);
+        }
         // s 後編追加（以下、前編とメソッドが、かぶらないようにしたい。もしかぶると、Debuffメソッドで例外エラーとなるためそれを避けたい）
         public void RemoveProtection()
         {

@@ -43,7 +43,7 @@ namespace DungeonPlayer
                     break;
                 case ItemBackPack.RareLevel.Epic:
                     target1.color = Color.white;
-                    target2.gameObject.GetComponent<Image>().color = UnityColor.Purple;
+                    target2.gameObject.GetComponent<Image>().color = UnityColor.EpicPurple;
                     break;
                 case ItemBackPack.RareLevel.Legendary: // 後編追加
                     target1.color = Color.white;

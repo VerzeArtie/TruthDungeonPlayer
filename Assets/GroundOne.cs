@@ -96,12 +96,20 @@ namespace DungeonPlayer
             WE.AvailableMana = true;
             WE.AvailableSkill = true;
 
+            //UpPoint = 2638;
+
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
             WE2.TruthRecollection1 = true;
 
             MC = objMC.AddComponent<MainCharacter>();
             MC.Name = Database.EIN_WOLENCE;
             MC.FullName = Database.EIN_WOLENCE_FULL;
+            MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
+            MC.Agility = Database.MAINPLAYER_FIRST_AGILITY;
+            MC.Intelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
+            MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
+            MC.Mind = Database.MAINPLAYER_FIRST_MIND;
+            MC.CurrentLife = 10;
             MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
             MC.SubWeapon = new ItemBackPack(Database.POOR_HINSO_SHIELD);
             MC.MainArmor = new ItemBackPack(Database.COMMON_FINE_ARMOR);
@@ -110,7 +118,7 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_SISSO_ARMRING));
+            MC.AddBackPack(new ItemBackPack(Database.RARE_TOOMI_BLUE_SUISYOU));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_EXCELLENT_SWORD));
@@ -125,10 +133,9 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.COMMON_PURPLE_MASEKI));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_VIKING_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_GREEN_MASEKI));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_SMART_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
-            MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
+            MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
             // debug
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
@@ -290,6 +297,7 @@ namespace DungeonPlayer
             SC = objSC.AddComponent<MainCharacter>();
             SC.Name = Database.RANA_AMILIA;
             SC.FullName = Database.RANA_AMILIA_FULL;
+            SC.AddBackPack(new ItemBackPack(Database.COMMON_ELECTRO_ROD));
             SC.BattleActionCommandList[0] = Database.ATTACK_EN;
             SC.BattleActionCommandList[1] = Database.ICE_NEEDLE;
             SC.BattleActionCommandList[2] = Database.SHADOW_PACT;

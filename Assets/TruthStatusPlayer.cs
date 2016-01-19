@@ -83,6 +83,15 @@ namespace DungeonPlayer
         public Text[] backpack;
         public Text[] backpackStack;
         public Image[] backpackIcon;
+        public GameObject groupChoice;
+        public GameObject groupTarget;
+        public GameObject backpackFilter;
+        public Button btnTargetName1;
+        public Button btnTargetName2;
+        public Button btnTargetName3;
+        public Text targetName1;
+        public Text targetName2;
+        public Text targetName3;
         public GameObject[] back_SpellSkill;
         public Text[] SpellSkill;
         public Text[] ResistLabel;
@@ -123,7 +132,6 @@ namespace DungeonPlayer
 
             RefreshPartyMembersLife();
 
-            //SetupBackpackData(); [todo]
             if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
             if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
             if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
@@ -245,9 +253,144 @@ namespace DungeonPlayer
             }
         }
 
+        bool usingOvershifting = false;
+        bool usingOvershiftingFirstSleep = false;
+        bool usingOvershiftingSecondSleep = false;
+        bool usingToomiBlueSuisyou = false;
         // Update is called once per frame
         void Update()
         {
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    groupChoice.SetActive(false);
+            //}
+
+            if (this.usingToomiBlueSuisyou)
+            {
+                SceneDimension.Back();
+                // todo
+                //using (YesNoRequest yesno = new YesNoRequest())
+                //{
+                //    yesno.StartPosition = FormStartPosition.CenterParent;
+                //    yesno.ShowDialog();
+                //    if (yesno.DialogResult == DialogResult.Yes)
+                //    {
+                //        if (GroundOne.WE.SaveByDungeon)
+                //        {
+                //            this.DialogResult = DialogResult.Abort;
+                //            return;
+                //        }
+                //        else
+                //        {
+                //            mainMessage.text = player.GetCharacterSentence(2012);
+                //            return;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        mainMessage.text = "";
+                //    }
+                //}
+
+            }
+            if (this.usingOvershifting)
+            {
+                MainCharacter player = GetCurrentPlayer();
+                if (this.usingOvershiftingFirstSleep == false)
+                {
+                    this.usingOvershiftingFirstSleep = true;
+                    return;
+                }
+                if (this.usingOvershiftingSecondSleep == false)
+                {
+                    this.usingOvershiftingSecondSleep = true;
+                    System.Threading.Thread.Sleep(1000);
+
+                }
+
+                int firstStrength = 1;
+                int firstAgility = 1;
+                int firstIntelligence = 1;
+                int firstStamina = 1;
+                int firstMind = 1;
+                if (player.Equals(GroundOne.MC))
+                {
+                    firstStrength = Database.MAINPLAYER_FIRST_STRENGTH;
+                    firstAgility = Database.MAINPLAYER_FIRST_AGILITY;
+                    firstIntelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
+                    firstStamina = Database.MAINPLAYER_FIRST_STAMINA;
+                    firstMind = Database.MAINPLAYER_FIRST_MIND;
+                }
+                else if (player.Equals(GroundOne.SC))
+                {
+                    firstStrength = Database.SECONDPLAYER_FIRST_STRENGTH;
+                    firstAgility = Database.SECONDPLAYER_FIRST_AGILITY;
+                    firstIntelligence = Database.SECONDPLAYER_FIRST_INTELLIGENCE;
+                    firstStamina = Database.SECONDPLAYER_FIRST_STAMINA;
+                    firstMind = Database.SECONDPLAYER_FIRST_MIND;
+                }
+                else if (player.Equals(GroundOne.TC))
+                {
+                    firstStrength = Database.THIRDPLAYER_FIRST_STRENGTH;
+                    firstAgility = Database.THIRDPLAYER_FIRST_AGILITY;
+                    firstIntelligence = Database.THIRDPLAYER_FIRST_INTELLIGENCE;
+                    firstStamina = Database.THIRDPLAYER_FIRST_STAMINA;
+                    firstMind = Database.THIRDPLAYER_FIRST_MIND;
+                }
+                if (player.Strength <= firstStrength)
+                {
+                    if (player.Agility <= firstAgility)
+                    {
+                        if (player.Intelligence <= firstIntelligence)
+                        {
+                            if (player.Stamina <= firstStamina)
+                            {
+                                if (player.Mind <= firstMind)
+                                {
+                                    this.usingOvershifting = false;
+                                    //buttonStrength.Enabled = true;
+                                    //buttonAgility.Enabled = true;
+                                    //buttonIntelligence.Enabled = true;
+                                    //buttonStamina.Enabled = true;
+                                    //buttonMind.Enabled = true;
+                                    ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
+                                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                                    UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
+                                    SettingCharacterData(player);
+                                    RefreshPartyMembersBattleStatus(player);
+                                }
+                                else
+                                {
+                                    player.Mind--;
+                                    this.mind.text = player.Mind.ToString();
+                                }
+                            }
+                            else
+                            {
+                                player.Stamina--;
+                                this.stamina.text = player.Stamina.ToString();
+                            }
+                        }
+                        else
+                        {
+                            player.Intelligence--;
+                            this.intelligence.text = player.Intelligence.ToString();
+                        }
+                    }
+                    else
+                    {
+                        player.Agility--;
+                        this.agility.text = player.Agility.ToString();
+                    }
+                }
+                else
+                {
+                    player.Strength--;
+                    this.strength.text = player.Strength.ToString();
+                }
+                GroundOne.UpPoint++;
+                System.Threading.Thread.Sleep(1);
+            }
         }
 
         public void tapClose()
@@ -281,28 +424,1024 @@ namespace DungeonPlayer
             return player;
         }
 
+        Text currentSelect = null;
+        int currentNumber = 0;
+        Vector3 currentPosition;
+
+        public void Use_Click()
+        {
+            groupChoice.SetActive(false);
+            backpackFilter.SetActive(false);
+
+            MainCharacter player = GetCurrentPlayer();
+            ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
+
+            if (player.Dead)
+            {
+                mainMessage.text = "【" + player.Name + "は死んでしまっているため、アイテムが使えない。】";
+                return;
+            }
+
+            switch (backpackData.Name)
+            {
+                case Database.POOR_SMALL_RED_POTION:
+                case Database.COMMON_NORMAL_RED_POTION:
+                case Database.COMMON_LARGE_RED_POTION:
+                case Database.COMMON_HUGE_RED_POTION:
+                case Database.COMMON_GORGEOUS_RED_POTION:
+                case Database.RARE_PERFECT_RED_POTION:
+                case "名前がとても長いわりにはまったく役に立たず、何の効果も発揮しない役立たずであるにもかかわらずデコレーションが長い超豪華なスーパーミラクルポーション":
+                    int effect = backpackData.UseIt();
+                    if (player.CurrentNourishSense > 0)
+                    {
+                        effect = (int)((double)effect * 1.3f);
+                    }
+                    player.CurrentLife += effect;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
+                    UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
+                    RefreshPartyMembersLife();
+                    break;
+
+                case Database.POOR_SMALL_BLUE_POTION:
+                case Database.COMMON_NORMAL_BLUE_POTION:
+                case Database.COMMON_LARGE_BLUE_POTION:
+                case Database.COMMON_HUGE_BLUE_POTION:
+                case Database.COMMON_GORGEOUS_BLUE_POTION:
+                case Database.RARE_PERFECT_BLUE_POTION:
+                    effect = backpackData.UseIt();
+                    player.CurrentMana += effect;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    this.mana.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
+                    UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
+                    RefreshPartyMembersLife();
+                    break;
+
+                case Database.POOR_SMALL_GREEN_POTION:
+                case Database.COMMON_NORMAL_GREEN_POTION:
+                case Database.COMMON_LARGE_GREEN_POTION:
+                case Database.COMMON_HUGE_GREEN_POTION:
+                case Database.COMMON_GORGEOUS_GREEN_POTION:
+                case Database.RARE_PERFECT_GREEN_POTION:
+                    effect = backpackData.UseIt();
+                    player.CurrentSkillPoint += effect;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    this.skill.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
+                    UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
+                    RefreshPartyMembersLife();
+                    break;
+
+                case Database.COMMON_REVIVE_POTION_MINI:
+                    // todo
+                    //MainCharacter target = null;
+                    //using (SelectTarget st = new SelectTarget())
+                    //{
+                    //    st.StartPosition = FormStartPosition.Manual;
+                    //    st.Location = new Point(this.mousePosX, this.mousePosY);
+                    //    if (GroundOne.WE.AvailableThirdCharacter)
+                    //    {
+                    //        st.MaxSelectable = 3;
+                    //        st.FirstName = GroundOne.MC.Name;
+                    //        st.SecondName = GroundOne.SC.Name;
+                    //        st.ThirdName = GroundOne.TC.Name;
+                    //        st.ShowDialog();
+                    //    }
+                    //    else if (GroundOne.WE.AvailableSecondCharacter)
+                    //    {
+                    //        st.MaxSelectable = 2;
+                    //        st.FirstName = GroundOne.MC.Name;
+                    //        st.SecondName = GroundOne.SC.Name;
+                    //        st.ShowDialog();
+                    //    }
+                    //    else
+                    //    {
+                    //        st.TargetNum = 1;
+                    //    }
+
+                    //    if (st.TargetNum == 1)
+                    //    {
+                    //        target = GroundOne.MC;
+                    //    }
+                    //    else if (st.TargetNum == 2)
+                    //    {
+                    //        target = GroundOne.SC;
+                    //    }
+                    //    else if (st.TargetNum == 3)
+                    //    {
+                    //        target = GroundOne.TC;
+                    //    }
+                    //}
+                    //if (target.Dead)
+                    //{
+                    //    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    //    target.ResurrectPlayer(1);
+                    //    this.life.text = target.CurrentLife.ToString() + " / " + target.MaxLife.ToString();
+                    //    mainMessage.text = target.GetCharacterSentence(2016);
+                    //}
+                    //else if (target == player)
+                    //{
+                    //    mainMessage.text = player.GetCharacterSentence(2018);
+                    //}
+                    //else
+                    //{
+                    //    mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.Name);
+                    //}
+                    break;
+
+                case Database.COMMON_POTION_MAGIC_SEAL:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.AmplifyMagicAttack = 1.05f;
+                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_POTION_ATTACK_SEAL:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.AmplifyPhysicalAttack = 1.05f;
+                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+
+                case Database.POOR_POTION_CURE_POISON:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentPoison = 0;
+                        player.CurrentPoisonValue = 0;
+                        player.DeBuff(player.pbPoison);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_POTION_NATURALIZE:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentPoison = 0;
+                        player.CurrentPoisonValue = 0;
+                        player.DeBuff(player.pbPoison);
+                        player.CurrentSlow = 0;
+                        player.DeBuff(player.pbSlow);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_POTION_CURE_BLIND:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentBlind = 0;
+                        player.DeBuff(player.pbBlind);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_POTION_MOSSGREEN_DREAM:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentSlow = 0;
+                        player.DeBuff(player.pbSlow);
+                        player.CurrentPoison = 0;
+                        player.CurrentPoisonValue = 0;
+                        player.DeBuff(player.pbPoison);
+                        player.CurrentBlind = 0;
+                        player.DeBuff(player.pbBlind);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_RESIST_POISON:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentPoison = 0;
+                        player.CurrentPoisonValue = 0;
+                        player.DeBuff(player.pbPoison);
+                        player.ResistPoison = true;
+                        player.ActivateBuff(player.pbResistPoison, Database.BaseResourceFolder + "ResistPoison.bmp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_POTION_OVER_GROWTH:
+                    if (this.onlyUseItem)
+                    {
+                        // todo
+                        //player.DeleteBackPack(backpackData, 1, currentNumber);
+                        //player.CurrentStaminaUp = Database.INFINITY;
+                        //player.CurrentStaminaUpValue = 100; // スタミナUPは内部処理で10倍されてるため、ここでは1000/10で100
+                        //player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp.bmp", Database.INFINITY);
+                        //player.labelLife.text = player.CurrentLife.ToString();
+                        //if (player.CurrentLife >= player.MaxLife)
+                        //{
+                        //    player.labelLife.ForeColor = Color.Green;
+                        //}
+                        //else
+                        //{
+                        //    player.labelLife.ForeColor = Color.Black;
+                        //}
+                        //player.labelLife.Update();
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_POTION_RAINBOW_IMPACT:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.RemovePhysicalAttackDown();
+                        player.RemoveMagicAttackDown();
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_POTION_BLACK_GAST:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.AmplifyMagicAttack = 1.07f;
+                        player.AmplifyPhysicalAttack = 1.07f;
+                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
+                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_FAIRY_BREATH:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.RemoveSilence();
+                        player.ResistSilence = true;
+                        player.ActivateBuff(player.pbResistSilence, Database.BaseResourceFolder + "ResistSilence.bmp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_HEART_ACCELERATION:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.RemoveParalyze();
+                        player.ResistParalyze = true;
+                        player.ActivateBuff(player.pbResistParalyze, Database.BaseResourceFolder + "ResistParalyze.bmp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_SAGE_POTION_MINI:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.RemoveDebuffEffect();
+                        player.RemoveDebuffParam();
+                        player.RemoveDebuffSpell();
+                        player.RemoveDebuffSkill();
+                        player.CurrentSagePotionMini = Database.INFINITY;
+                        player.CurrentNoResurrection = Database.INFINITY;
+                        player.ActivateBuff(player.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection.bmp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_POWER_SURGE:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.BuffUpStrength(600);
+                        player.BuffUpStamina(400);
+                        player.BuffUpAmplifyPhysicalAttack(1.20f);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_ZEPHER_BREATH:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.BuffUpAgility(600);
+                        player.BuffUpIntelligence(400);
+                        player.BuffUpAmplifyBattleSpeed(1.20f);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_GENSEI_MAGIC_BOTTLE:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.BuffUpIntelligence(600);
+                        player.BuffUpMind(400);
+                        player.BuffUpAmplifyMagicAttack(1.20f);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_ZETTAI_STAMINAUP:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.BuffUpStrength(200);
+                        player.BuffUpIntelligence(200);
+                        player.BuffUpStamina(600);
+                        player.BuffUpAmplifyPhysicalDefence(1.10f);
+                        player.BuffUpAmplifyMagicDefense(1.10f);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_MIND_ILLUSION:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.BuffUpStrength(100);
+                        player.BuffUpAgility(100);
+                        player.BuffUpIntelligence(100);
+                        player.BuffUpStamina(100);
+                        player.BuffUpMind(600);
+                        player.BuffUpAmplifyPotential(1.20f);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_GENSEI_TAIMA_KUSURI:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentGenseiTaima = Database.INFINITY;
+                        player.ActivateBuff(player.pbGenseiTaima, Database.BaseResourceFolder + Database.ITEMCOMMAND_GENSEI_TAIMA, Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_SHINING_AETHER:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentShiningAether = 2; // 次のターンまで有効
+                        player.ActivateBuff(player.pbShiningAether, Database.BaseResourceFolder + Database.ITEMCOMMAND_SHINING_AETHER, 2);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_BLACK_ELIXIR:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentBlackElixir = Database.INFINITY;
+                        player.CurrentBlackElixirValue = player.MaxLife / 2;
+                        player.CurrentLife += player.CurrentBlackElixirValue;
+                        player.ActivateBuff(player.pbBlackElixir, Database.BaseResourceFolder + Database.ITEMCOMMAND_BLACK_ELIXIR, Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_ELEMENTAL_SEAL:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.RemoveDebuffEffect();
+                        player.CurrentElementalSeal = Database.INFINITY;
+                        player.ActivateBuff(player.pbElementalSeal, Database.BaseResourceFolder + Database.ITEMCOMMAND_ELEMENTAL_SEAL, Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_COLORESS_ANTIDOTE:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.RemoveDebuffParam();
+                        player.CurrentColoressAntidote = Database.INFINITY;
+                        player.ActivateBuff(player.pbColoressAntidote, Database.BaseResourceFolder + Database.ITEMCOMMAND_COLORESS_ANTIDOTE, Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_TOTAL_HIYAKU_KASSEI:
+                    if (this.onlyUseItem)
+                    {
+                        int maxValue = Math.Max(player.Strength,
+                                        Math.Max(player.Agility,
+                                                player.Intelligence));
+                        if (maxValue == player.Strength)
+                        {
+                            player.BuffStrength_Hiyaku_Kassei = maxValue;
+                        }
+                        else if (maxValue == player.Agility)
+                        {
+                            player.BuffAgility_Hiyaku_Kassei = maxValue;
+                        }
+                        else if (maxValue == player.Intelligence)
+                        {
+                            player.BuffIntelligence_Hiyaku_Kassei = maxValue;
+                        }
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        this.skill.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
+                        UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
+                        RefreshPartyMembersLife();
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case "神聖水": // ２階アイテム
+                    if (!GroundOne.WE.AlreadyUseSyperSaintWater)
+                    {
+                        GroundOne.WE.AlreadyUseSyperSaintWater = true;
+                        player.CurrentLife += (int)((double)player.MaxLife * 0.3F);
+                        player.CurrentMana += (int)((double)player.MaxMana * 0.3F);
+                        player.CurrentSkillPoint += (int)((double)player.MaxSkillPoint * 0.3F);
+                        this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
+                        this.mana.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
+                        this.skill.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
+                        RefreshPartyMembersLife();
+                        mainMessage.text = player.GetCharacterSentence(2009);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2010);
+                    }
+                    break;
+
+                case Database.RARE_PURE_WATER:
+                    if (!GroundOne.WE.AlreadyUsePureWater)
+                    {
+                        GroundOne.WE.AlreadyUsePureWater = true;
+                        player.CurrentLife = (int)((double)player.MaxLife);
+                        this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
+                        mainMessage.text = player.GetCharacterSentence(2027);
+                        RefreshPartyMembersLife();
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2028);
+                    }
+                    break;
+
+                case "リヴァイヴポーション":
+                    if (!GroundOne.WE.AlreadyUseRevivePotion)
+                    {
+                        // todo
+                        //target = null;
+                        //using (SelectTarget st = new SelectTarget())
+                        //{
+                        //    st.StartPosition = FormStartPosition.Manual;
+                        //    st.Location = new Point(this.mousePosX, this.mousePosY);
+                        //    if (we.AvailableThirdCharacter)
+                        //    {
+                        //        st.MaxSelectable = 3;
+                        //        st.FirstName = mc.Name;
+                        //        st.SecondName = sc.Name;
+                        //        st.ThirdName = tc.Name;
+                        //        st.ShowDialog();
+                        //    }
+                        //    else if (we.AvailableSecondCharacter)
+                        //    {
+                        //        st.MaxSelectable = 2;
+                        //        st.FirstName = mc.Name;
+                        //        st.SecondName = sc.Name;
+                        //        st.ShowDialog();
+                        //    }
+                        //    else
+                        //    {
+                        //        st.TargetNum = 1;
+                        //    }
+
+                        //    if (st.TargetNum == 1)
+                        //    {
+                        //        target = mc;
+                        //    }
+                        //    else if (st.TargetNum == 2)
+                        //    {
+                        //        target = sc;
+                        //    }
+                        //    else if (st.TargetNum == 3)
+                        //    {
+                        //        target = tc;
+                        //    }
+                        //}
+                        //if (target.Dead)
+                        //{
+                        //    we.AlreadyUseRevivePotion = true;
+                        //    target.Dead = false;
+                        //    target.CurrentLife = target.MaxLife / 2;
+                        //    this.life.text = target.CurrentLife.ToString() + " / " + target.MaxLife.ToString();
+                        //    mainMessage.text = target.GetCharacterSentence(2016);
+                        //}
+                        //else if (target == player)
+                        //{
+                        //    mainMessage.text = player.GetCharacterSentence(2018);
+                        //}
+                        //else
+                        //{
+                        //    mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.Name);
+                        //}
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2010);
+                    }
+                    break;
+
+                case Database.EPIC_OVER_SHIFTING:
+                    StatusButton1_Click();
+                    btnClose.gameObject.SetActive(false);
+                    mainMessage.text = player.GetCharacterSentence(2022);
+                    this.useOverShifting = true;
+                    this.usingOvershifting = true;
+                    break;
+
+                case Database.GROWTH_LIQUID_STRENGTH:
+                case Database.GROWTH_LIQUID2_STRENGTH:
+                case Database.GROWTH_LIQUID3_STRENGTH:
+                case Database.GROWTH_LIQUID4_STRENGTH:
+                case Database.GROWTH_LIQUID5_STRENGTH:
+                    int effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
+                    player.Strength += effectValue;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    SettingCharacterData(player);
+                    RefreshPartyMembersBattleStatus(player);
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2024), "力", effectValue.ToString());
+                    break;
+                case Database.GROWTH_LIQUID_AGILITY:
+                case Database.GROWTH_LIQUID2_AGILITY:
+                case Database.GROWTH_LIQUID3_AGILITY:
+                case Database.GROWTH_LIQUID4_AGILITY:
+                case Database.GROWTH_LIQUID5_AGILITY:
+                    effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
+                    player.Agility += effectValue;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    SettingCharacterData(player);
+                    RefreshPartyMembersBattleStatus(player);
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2024), "技", effectValue.ToString());
+                    break;
+                case Database.GROWTH_LIQUID_INTELLIGENCE:
+                case Database.GROWTH_LIQUID2_INTELLIGENCE:
+                case Database.GROWTH_LIQUID3_INTELLIGENCE:
+                case Database.GROWTH_LIQUID4_INTELLIGENCE:
+                case Database.GROWTH_LIQUID5_INTELLIGENCE:
+                    effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
+                    player.Intelligence += effectValue;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    SettingCharacterData(player);
+                    RefreshPartyMembersBattleStatus(player);
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2024), "知", effectValue.ToString());
+                    break;
+                case Database.GROWTH_LIQUID_STAMINA:
+                case Database.GROWTH_LIQUID2_STAMINA:
+                case Database.GROWTH_LIQUID3_STAMINA:
+                case Database.GROWTH_LIQUID4_STAMINA:
+                case Database.GROWTH_LIQUID5_STAMINA:
+                    effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
+                    player.Stamina += effectValue;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    SettingCharacterData(player);
+                    RefreshPartyMembersBattleStatus(player);
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2024), "体", effectValue.ToString());
+                    break;
+                case Database.GROWTH_LIQUID_MIND:
+                case Database.GROWTH_LIQUID2_MIND:
+                case Database.GROWTH_LIQUID3_MIND:
+                case Database.GROWTH_LIQUID4_MIND:
+                case Database.GROWTH_LIQUID5_MIND:
+                    effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
+                    player.Mind += effectValue;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    SettingCharacterData(player);
+                    RefreshPartyMembersBattleStatus(player);
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2024), "心", effectValue.ToString());
+                    break;
+
+                // 装備品：武器
+                case "練習用の剣": // アイン初期装備
+                case "ナックル": // ラナ初期装備
+                case "白銀の剣（レプリカ）": // ヴェルゼ初期装備
+                case "ショートソード": // ガンツの武具屋販売（ダンジョン１階）
+                case "洗練されたロングソード": // ガンツの武具屋販売（ダンジョン１階）
+                case "青銅の剣": // ガンツの武具屋販売（ダンジョン２階）
+                case "メタルフィスト": // ガンツの武具屋販売（ダンジョン２階）
+                case "プラチナソード": // ガンツの武具屋販売（ダンジョン３階）
+                case "ファルシオン": // ガンツの武具屋販売（ダンジョン３階）
+                case "アイアンクロー": // ガンツの武具屋販売（ダンジョン３階）
+                case "シャムシール": // ３階アイテム
+                case "ライトプラズマブレード": // ガンツの武具屋販売（ダンジョン４階）
+                case "イスリアルフィスト": // ガンツの武具屋販売（ダンジョン４階）
+                case "エスパダス": // ダンジョン４階のアイテム
+                case "ソード・オブ・ブルールージュ": // ダンジョン４階のアイテム
+                case "ルナ・エグゼキュージョナー": // ダンジョン５階
+                case "蒼黒・氷大蛇の爪": // ダンジョン５階
+                case "ファージル・ジ・エスペランザ": // ダンジョン５階
+                case "神剣  フェルトゥーシュ":
+                case "双剣  ジュノセレステ":
+                case "極剣  ゼムルギアス":
+                case "クロノス・ロマティッド・ソード":
+                // 装備品：防具
+                case "黒真空の鎧（レプリカ）": // ヴェルゼ初期装備
+                case "コート・オブ・プレート": // アイン初期装備
+                case "ライト・クロス": // ラナ初期装備
+                case "冒険者用の鎖かたびら": // ガンツの武具屋販売（ダンジョン１階）
+                case "青銅の鎧": // ガンツの武具屋販売（ダンジョン１階）
+                case "真鍮の鎧": // ２階アイテム
+                case "光沢のある鉄のプレート": // ガンツの武具屋販売（ダンジョン２階）
+                case "シルクの武道衣": // ガンツの武具屋販売（ダンジョン２階）
+                case "シルバーアーマー": // ガンツの武具屋販売（ダンジョン３階）
+                case "獣皮製の舞踏衣": // ガンツの武具屋販売（ダンジョン３階）
+                case "フィスト・クロス": // ガンツの武具屋販売（ダンジョン３階）
+                case "プレート・アーマー": // ３階アイテム
+                case "ラメラ・アーマー": // ３階アイテム
+                case "プリズマティックアーマー": // ガンツの武具屋販売（ダンジョン４階）
+                case "極薄合金製の羽衣": // ガンツの武具屋販売（ダンジョン４階）
+                case "アヴォイド・クロス": // ダンジョン４階のアイテム
+                case "ブリガンダィン": // ダンジョン４階のアイテム
+                case "ロリカ・セグメンタータ": // ダンジョン４階のアイテム
+                case "ヘパイストス・パナッサロイニ":
+                // 装備品：アクセサリ
+                case "珊瑚のブレスレット": // ラナ初期装備
+                case "天空の翼（レプリカ）": // ヴェルゼ初期装備
+                case Database.COMMON_CHARM_OF_FIRE_ANGEL: // １階アイテム e 後編編集
+                case "チャクラオーブ": // １階アイテム
+                case "些細なパワーリング": // ガンツの武具屋販売（ダンジョン１階）
+                case "紺碧のスターエムブレム": // ガンツの武具屋販売（ダンジョン２階）
+                case "闘魂バンド": // ガンツの武具屋販売（ダンジョン２階）
+                case "鷹の刻印": // ２階アイテム
+                case "身かわしのマント": // ２階アイテム
+                case "ライオンハート": // ３階アイテム
+                case "オーガの腕章": // ３階アイテム
+                case "鋼鉄の石像": // ３階アイテム
+                case "ファラ様信仰のシール": // ３階アイテム
+                case "ウェルニッケの腕輪": // ガンツの武具屋販売（ダンジョン３階）
+                case "賢者の眼鏡": // ガンツの武具屋販売（ダンジョン３階）
+                case "七色プリズムバンド": // ガンツの武具屋販売（ダンジョン４階）
+                case "再生の紋章": // ガンツの武具屋販売（ダンジョン４階）
+                case "シールオブアクア＆ファイア": // ガンツの武具屋販売（ダンジョン４階）
+                case "ドラゴンのベルト": // ガンツの武具屋販売（ダンジョン４階）
+                case "剣紋章ペンダント": // ラナレベルアップ時でもらえるアイテム
+                case "夢見の印章": // ダンジョン４階のアイテム
+                case "天使の契約書": // ダンジョン４階のアイテム
+                case "ラナのイヤリング": // ダンジョン５階（ラナのイベント） // ラナ専用
+                case "レジェンド・レッドホース": // ダンジョン５階のアイテム
+                case "エルミ・ジョルジュ　ファージル王家の刻印":
+                case "ファラ・フローレ　天使のペンダント":
+                case "シニキア・カールハンツ　魔道デビルアイ":
+                case "オル・ランディス　炎神グローブ":
+                case "ヴェルゼ・アーティ　天空の翼":
+                // s 後編追加
+                case Database.POOR_PRACTICE_SHILED:
+
+                case Database.POOR_HINJAKU_ARMRING:
+                case Database.POOR_USUYOGORETA_FEATHER:
+                case Database.POOR_NON_BRIGHT_ORB:
+                case Database.POOR_KUKEI_BANGLE:
+                case Database.POOR_SUTERARESHI_EMBLEM:
+                case Database.POOR_ARIFURETA_STATUE:
+                case Database.POOR_NON_ADJUST_BELT:
+                case Database.POOR_SIMPLE_EARRING:
+                case Database.POOR_KATAKUZURESHITA_FINGERRING:
+                case Database.POOR_IROASETA_CHOKER:
+                case Database.POOR_YOREYORE_MANTLE:
+                case Database.POOR_NON_HINSEI_CROWN:
+                case Database.POOR_TUKAIFURUSARETA_SWORD:
+                case Database.POOR_TUKAINIKUI_LONGSWORD:
+                case Database.POOR_GATAGAKITERU_ARMOR:
+                case Database.POOR_FESTERING_ARMOR:
+                case Database.POOR_HINSO_SHIELD:
+                case Database.POOR_MUDANIOOKII_SHIELD:
+
+                case Database.COMMON_RED_PENDANT:
+                case Database.COMMON_BLUE_PENDANT:
+                case Database.COMMON_PURPLE_PENDANT:
+                case Database.COMMON_GREEN_PENDANT:
+                case Database.COMMON_YELLOW_PENDANT:
+                case Database.COMMON_SISSO_ARMRING:
+                case Database.COMMON_FINE_FEATHER:
+                case Database.COMMON_KIREINA_ORB:
+                case Database.COMMON_FIT_BANGLE:
+                case Database.COMMON_PRISM_EMBLEM:
+                case Database.COMMON_FINE_SWORD:
+                case Database.COMMON_TWEI_SWORD:
+                case Database.COMMON_FINE_ARMOR:
+                case Database.COMMON_GOTHIC_PLATE:
+                case Database.COMMON_FINE_SHIELD:
+                case Database.COMMON_GRIPPING_SHIELD:
+
+                case Database.RARE_JOUSITU_BLUE_POWERRING:
+                case Database.RARE_KOUJOUSINYADORU_RED_ORB:
+                case Database.RARE_MAGICIANS_MANTLE:
+                case Database.RARE_BEATRUSH_BANGLE:
+                case Database.RARE_AERO_BLADE:
+                case Database.RARE_SUN_BRAVE_ARMOR:
+                case Database.RARE_ESMERALDA_SHIELD:
+
+                case Database.EPIC_RING_OF_OSCURETE:
+                case Database.EPIC_MERGIZD_SOL_BLADE:
+
+                case Database.COMMON_SIMPLE_BRACELET:
+                case Database.POOR_HARD_SHOES:
+                case Database.COMMON_SEAL_OF_POSION:
+                    // e 後編追加
+                    if (((backpackData.Type == ItemBackPack.ItemType.Weapon_Heavy) && (player == GroundOne.SC || player == GroundOne.TC)) // アイン専用
+                        || ((backpackData.Type == ItemBackPack.ItemType.Weapon_Light) && (player == GroundOne.MC || player == GroundOne.TC)) // ラナ専用
+                        || ((backpackData.Type == ItemBackPack.ItemType.Weapon_Middle) && (player == GroundOne.MC || player == GroundOne.SC)) // ヴェルゼ専用
+                        || ((backpackData.Type == ItemBackPack.ItemType.Armor_Heavy) && (player == GroundOne.SC || player == GroundOne.TC)) // アイン専用
+                        || ((backpackData.Type == ItemBackPack.ItemType.Armor_Light) && (player == GroundOne.MC || player == GroundOne.TC)) // ラナ専用
+                        || ((backpackData.Type == ItemBackPack.ItemType.Armor_Middle) && (player == GroundOne.MC || player == GroundOne.SC)) // ヴェルゼ専用
+                        || ((backpackData.EquipablePerson == ItemBackPack.Equipable.Ein) && (player == GroundOne.SC || player == GroundOne.TC)) // アイン専用
+                        || ((backpackData.EquipablePerson == ItemBackPack.Equipable.Lana) && (player == GroundOne.MC || player == GroundOne.TC)) // ラナ専用
+                        || ((backpackData.EquipablePerson == ItemBackPack.Equipable.Verze) && (player == GroundOne.MC || player == GroundOne.SC))) // ヴェルゼ専用
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2019);
+                        return;
+                    }
+                    EquipDecision(player, backpackData, currentSelect, currentNumber);
+                    break;
+
+                // その他
+                case "ブラックマテリアル": // １階ドロップアイテム
+                case "ブルーマテリアル": // １階アイテム
+                case "レッドマテリアル": // ３階アイテム
+                case "グリーンマテリアル": // ダンジョン４階のアイテム
+                case "タイム・オブ・ルーセ": // ダンジョン５階の隠しアイテム
+                    mainMessage.text = player.GetCharacterSentence(2007);
+                    break;
+
+                case "リーベストランクポーション":
+                case "アカシジアの実":
+                    mainMessage.text = player.GetCharacterSentence(2011);
+                    break;
+
+                case Database.RARE_TOOMI_BLUE_SUISYOU: // 初期ラナ会話イベントで入手アイテム
+                    if (GroundOne.WE.dungeonEvent4_SlayBoss3)
+                    {
+                        mainMessage.text = "アイン：ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ。";
+                        return;
+                    }
+                    if (GroundOne.WE.CompleteSlayBoss5)
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2020);
+                        return;
+                    }
+                    if ((GroundOne.WE.dungeonEvent329 && !GroundOne.WE.dungeonEvent328) ||
+                        (GroundOne.WE.dungeonEvent318 && !GroundOne.WE.dungeonEvent312))
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2020);
+                        return;
+                    }
+
+                    mainMessage.text = player.GetCharacterSentence(2006);
+                    this.usingToomiBlueSuisyou = true;
+                    break;
+            }
+        }
+        
+        public void Handover_Click()
+        {
+            groupChoice.SetActive(false);
+            //backpackFilter.SetActive(false); // ExecHandOverの続きがある。
+
+            if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter) // 1人しかいない場合、「わたす」コマンドではなく、「すてる」である。
+            {
+                Trash_Click();
+            }
+            else // ここからが「わたす」コマンドである
+            {
+                targetName1.text = GroundOne.MC.Name;
+                targetName2.text = GroundOne.SC.Name;
+                targetName3.text = GroundOne.TC.Name;
+
+                if (GroundOne.WE.AvailableSecondCharacter)
+                {
+                    btnTargetName2.gameObject.SetActive(true);
+                    labelSecondPlayerLife.gameObject.SetActive(true);
+                }
+                else
+                {
+                    btnTargetName2.gameObject.SetActive(false);
+                    GameObject emptyObj = new GameObject();
+                    emptyObj.AddComponent<RectTransform>();
+                    emptyObj.transform.SetParent(groupTarget.transform);
+                }
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    btnTargetName3.gameObject.SetActive(true);
+                }
+                else
+                {
+                    btnTargetName3.gameObject.SetActive(false);
+                    GameObject emptyObj = new GameObject();
+                    emptyObj.AddComponent<RectTransform>();
+                    emptyObj.transform.SetParent(groupTarget.transform);
+                }
+
+                groupTarget.gameObject.transform.position = this.currentPosition;
+                groupTarget.SetActive(true);
+                return;
+            }
+        }
+
+        public void Trash_Click()
+        {
+            groupChoice.SetActive(false);
+            backpackFilter.SetActive(false);
+            MainCharacter player = GetCurrentPlayer();
+            ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
+            if (TruthItemAttribute.CheckImportantItem(backpackData.Name) == TruthItemAttribute.Transfer.Any)
+            {
+                int exchangeValue = CallBackPackExchangeValue(player, backpackData, this.currentNumber);
+                if (exchangeValue <= -1) return;
+
+                player.DeleteBackPack(backpackData, exchangeValue, this.currentNumber);
+                UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, this.currentNumber);
+                currentSelect = null;
+            }
+            else
+            {
+                mainMessage.text = player.GetCharacterSentence(2013);
+            }
+        }
+
+
+        public void ExecHandover_Click(Text sender)
+        {
+            groupTarget.SetActive(false);
+            backpackFilter.SetActive(false);
+            MainCharacter player = GetCurrentPlayer();
+            ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
+            int exchangeValue = CallBackPackExchangeValue(player, backpackData, this.currentNumber);
+            if (exchangeValue <= -1) return;
+
+            MainCharacter target = null;
+            if (sender.text == GroundOne.MC.Name)
+            {
+                target = GroundOne.MC;
+            }
+            else if (sender.text == GroundOne.SC.Name)
+            {
+                target = GroundOne.SC;
+            }
+            else if (sender.text == GroundOne.TC.Name)
+            {
+                target = GroundOne.TC;
+            }
+            if (player == target)
+            {
+                // todo (自分の荷物を自分に渡すメッセージ）
+                return;
+            }
+
+            if (backpackData.Name == Database.RARE_EARRING_OF_LANA && (target == GroundOne.SC || target == GroundOne.TC))
+            {
+                mainMessage.text = "アイン：（いや・・・これは渡さないでおこう。)";
+                return;
+            }
+            if ((backpackData.Name == Database.POOR_PRACTICE_SWORD_ZERO && (target == GroundOne.SC || target == GroundOne.TC)) ||
+                (backpackData.Name == Database.POOR_PRACTICE_SWORD_1 && (target == GroundOne.SC || target == GroundOne.TC)) ||
+                (backpackData.Name == Database.POOR_PRACTICE_SWORD_2 && (target == GroundOne.SC || target == GroundOne.TC)) ||
+                (backpackData.Name == Database.COMMON_PRACTICE_SWORD_3 && (target == GroundOne.SC || target == GroundOne.TC)) ||
+                (backpackData.Name == Database.COMMON_PRACTICE_SWORD_4 && (target == GroundOne.SC || target == GroundOne.TC)) ||
+                (backpackData.Name == Database.RARE_PRACTICE_SWORD_5 && (target == GroundOne.SC || target == GroundOne.TC)) ||
+                (backpackData.Name == Database.RARE_PRACTICE_SWORD_6 && (target == GroundOne.SC || target == GroundOne.TC)) ||
+                (backpackData.Name == Database.EPIC_PRACTICE_SWORD_7 && (target == GroundOne.SC || target == GroundOne.TC)) ||
+                (backpackData.Name == Database.LEGENDARY_FELTUS && (target == GroundOne.SC || target == GroundOne.TC)))
+            {
+                mainMessage.text = "アイン：（いや・・・これは渡さないでおこう。)";
+                return;
+            }
+
+            bool success = target.AddBackPack(backpackData, exchangeValue);
+            if (success)
+            {
+                player.DeleteBackPack(backpackData, exchangeValue, this.currentNumber);
+                UsingItemUpdateBackPackLabel(player, backpackData, sender, this.currentNumber);
+            }
+            else
+            {
+                mainMessage.text = String.Format(player.GetCharacterSentence(2003), target.Name);
+            }
+        }
+
         public void StatusPlayer_Click(Text sender)
         {
-        //    string fileExt = ".bmp";
-        //    if (((MouseEventArgs)e).Button == System.Windows.Forms.MouseButtons.Right) return;
+            MainCharacter player = GetCurrentPlayer();
 
-        //    MainCharacter player = GetCurrentPlayer();
+            if (sender.text == "")
+            {
+                return;
+            }
+            if (GroundOne.LevelUp)
+            {
+                mainMessage.text = player.GetCharacterSentence(2002);
+                return;
+            }
 
-        //    for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
+            if (this.useOverShifting)
+            {
+                mainMessage.text = player.GetCharacterSentence(2023);
+                return;
+            }
+
+            this.currentSelect = sender;
+            for (int currentNumber = 0; currentNumber < backpack.Length; currentNumber++ )
+            {
+                if (backpack[currentNumber].Equals(sender))
+                {
+                    this.currentNumber = currentNumber;
+                    Debug.Log("currentNumber is " + this.currentNumber.ToString());
+                    break;
+                }
+            }
+            groupChoice.gameObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+            this.currentPosition = Input.mousePosition;
+            groupChoice.SetActive(true);
+            backpackFilter.SetActive(true);
+
+        //    for (int currentNumber = 0; currentNumber < Database.MAX_BACKPACK_SIZE; currentNumber++)
         //    {
-        //        if (((Label)sender).Name == "backpack" + ii.ToString())
+        //        if (((Label)sender).Name == "backpack" + currentNumber.ToString())
         //        {
-        //            if (GroundOne.LevelUp)
-        //            {
-        //                mainMessage.Text = player.GetCharacterSentence(2002);
-        //                return;
-        //            }
-
-        //            if (this.useOverShifting)
-        //            {
-        //                mainMessage.Text = player.GetCharacterSentence(2023);
-        //                return;
-        //            }
 
         //            ItemBackPack backpackData = new ItemBackPack(((Label)sender).Text);
 
@@ -317,7 +1456,7 @@ namespace DungeonPlayer
         //                    {
         //                        if (TruthItemAttribute.CheckImportantItem(backpackData.Name) == TruthItemAttribute.Transfer.Any)
         //                        {
-        //                            player.DeleteBackPack(backpackData, player.CheckBackPackExist(backpackData, ii), ii);
+        //                            player.DeleteBackPack(backpackData, player.CheckBackPackExist(backpackData, currentNumber), currentNumber);
         //                            ((Label)sender).Text = "";
         //                            ((Label)sender).Cursor = System.Windows.Forms.Cursors.Default;
         //                            this.DialogResult = DialogResult.OK;
@@ -398,129 +1537,10 @@ namespace DungeonPlayer
         //                }
         //                else if (sa.TargetNum == 1) // わたす
         //                {
-        //                    if (!we.AvailableSecondCharacter && !we.AvailableThirdCharacter) // 1人しかいない場合、「わたす」コマンドではなく、「すてる」である。
-        //                    {
-        //                        if (TruthItemAttribute.CheckImportantItem(backpackData.Name) == TruthItemAttribute.Transfer.Any)
-        //                        {
-        //                            player.DeleteBackPack(backpackData, 1, ii);
-        //                            UsingItemUpdateBackPackLabel(player, backpackData, (Label)sender, ii);
-        //                        }
-        //                        else
-        //                        {
-        //                            mainMessage.Text = player.GetCharacterSentence(2013);
-        //                        }
-        //                        return;
-        //                    }
-        //                    else // ここからが「わたす」コマンドである
-        //                    {
-        //                        int exchangeValue = CallBackPackExchangeValue(player, backpackData, ii);
-        //                        if (exchangeValue <= -1) return;
 
-        //                        MainCharacter target = null;
-        //                        using (SelectTarget st = new SelectTarget())
-        //                        {
-        //                            st.StartPosition = FormStartPosition.Manual;
-        //                            st.Location = new Point(this.mousePosX, this.mousePosY);
-        //                            if (we.AvailableThirdCharacter)
-        //                            {
-        //                                st.MaxSelectable = 3;
-        //                                st.FirstName = mc.Name;
-        //                                st.SecondName = sc.Name;
-        //                                st.ThirdName = tc.Name;
-        //                            }
-        //                            else
-        //                            {
-        //                                st.MaxSelectable = 2;
-        //                                st.FirstName = mc.Name;
-        //                                st.SecondName = sc.Name;
-        //                            }
-        //                            st.ShowDialog();
-        //                            if (st.TargetNum == 1)
-        //                            {
-        //                                if (mc != null && mc.PlayerStatusColor == this.BackColor)
-        //                                {
-        //                                    return;
-        //                                }
-        //                                else
-        //                                {
-        //                                    target = mc;
-        //                                }
-        //                            }
-        //                            else if (st.TargetNum == 2)
-        //                            {
-        //                                if (sc != null && sc.PlayerStatusColor == this.BackColor)
-        //                                {
-        //                                    return;
-        //                                }
-        //                                else
-        //                                {
-        //                                    target = sc;
-        //                                }
-        //                            }
-        //                            else if (st.TargetNum == 3)
-        //                            {
-        //                                if (tc != null && tc.PlayerStatusColor == this.BackColor)
-        //                                {
-        //                                    return;
-        //                                }
-        //                                else
-        //                                {
-        //                                    target = tc;
-        //                                }
-        //                            }
-        //                            else
-        //                            {
-        //                                // ESCキーの場合、なにもしません。
-        //                                return;
-        //                            }
-        //                        }
-        //                        if (backpackData.Name == Database.RARE_EARRING_OF_LANA && (target == sc || target == tc))
-        //                        {
-        //                            mainMessage.Text = "アイン：（いや・・・これは渡さないでおこう。)";
-        //                            return;
-        //                        }
-        //                        if ((backpackData.Name == Database.POOR_PRACTICE_SWORD_ZERO && (target == sc || target == tc)) ||
-        //                            (backpackData.Name == Database.POOR_PRACTICE_SWORD_1 && (target == sc || target == tc)) ||
-        //                            (backpackData.Name == Database.POOR_PRACTICE_SWORD_2 && (target == sc || target == tc)) ||
-        //                            (backpackData.Name == Database.COMMON_PRACTICE_SWORD_3 && (target == sc || target == tc)) ||
-        //                            (backpackData.Name == Database.COMMON_PRACTICE_SWORD_4 && (target == sc || target == tc)) ||
-        //                            (backpackData.Name == Database.RARE_PRACTICE_SWORD_5 && (target == sc || target == tc)) ||
-        //                            (backpackData.Name == Database.RARE_PRACTICE_SWORD_6 && (target == sc || target == tc)) ||
-        //                            (backpackData.Name == Database.EPIC_PRACTICE_SWORD_7 && (target == sc || target == tc)) ||
-        //                            (backpackData.Name == Database.LEGENDARY_FELTUS && (target == sc || target == tc)))
-        //                        {
-        //                            mainMessage.Text = "アイン：（いや・・・これは渡さないでおこう。)";
-        //                            return;
-        //                        }
-
-        //                        bool success = target.AddBackPack(backpackData, exchangeValue);
-        //                        if (success)
-        //                        {
-        //                            player.DeleteBackPack(backpackData, exchangeValue, ii);
-        //                            UsingItemUpdateBackPackLabel(player, backpackData, (Label)sender, ii);
-        //                        }
-        //                        else
-        //                        {
-        //                            mainMessage.Text = String.Format(player.GetCharacterSentence(2003), target.Name);
-        //                        }
-        //                        return;
-        //                    }
         //                }
         //                else if (sa.TargetNum == 2) // すてる
         //                {
-        //                    if (TruthItemAttribute.CheckImportantItem(backpackData.Name) == TruthItemAttribute.Transfer.Any)
-        //                    {
-        //                        int exchangeValue = CallBackPackExchangeValue(player, backpackData, ii);
-        //                        if (exchangeValue <= -1) return;
-
-        //                        player.DeleteBackPack(backpackData, exchangeValue, ii);
-        //                        UsingItemUpdateBackPackLabel(player, backpackData, (Label)sender, ii);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2013);
-        //                    }
-        //                    return;
         //                }
         //                else
         //                {
@@ -529,958 +1549,6 @@ namespace DungeonPlayer
         //                }
         //            }
 
-        //            if (player.Dead)
-        //            {
-        //                mainMessage.Text = "【" + player.Name + "は死んでしまっているため、アイテムが使えない。】";
-        //                return;
-        //            }
-
-        //            switch (backpackData.Name)
-        //            {
-        //                case Database.POOR_SMALL_RED_POTION:
-        //                case Database.COMMON_NORMAL_RED_POTION:
-        //                case Database.COMMON_LARGE_RED_POTION:
-        //                case Database.COMMON_HUGE_RED_POTION:
-        //                case Database.COMMON_GORGEOUS_RED_POTION:
-        //                case Database.RARE_PERFECT_RED_POTION:
-        //                case "名前がとても長いわりにはまったく役に立たず、何の効果も発揮しない役立たずであるにもかかわらずデコレーションが長い超豪華なスーパーミラクルポーション":
-        //                    int effect = backpackData.UseIt();
-        //                    if (player.CurrentNourishSense > 0)
-        //                    {
-        //                        effect = (int)((double)effect * 1.3f);
-        //                    }
-        //                    player.CurrentLife += effect;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    this.life.Text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
-        //                    mainMessage.Text = String.Format(player.GetCharacterSentence(2001), effect);
-        //                    UsingItemUpdateBackPackLabel(player, backpackData, (Label)sender, ii);
-        //                    RefreshPartyMembersLife();
-        //                    break;
-
-        //                case Database.POOR_SMALL_BLUE_POTION:
-        //                case Database.COMMON_NORMAL_BLUE_POTION:
-        //                case Database.COMMON_LARGE_BLUE_POTION:
-        //                case Database.COMMON_HUGE_BLUE_POTION:
-        //                case Database.COMMON_GORGEOUS_BLUE_POTION:
-        //                case Database.RARE_PERFECT_BLUE_POTION:
-        //                    effect = backpackData.UseIt();
-        //                    player.CurrentMana += effect;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    this.mana.Text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
-        //                    mainMessage.Text = String.Format(player.GetCharacterSentence(2001), effect);
-        //                    UsingItemUpdateBackPackLabel(player, backpackData, (Label)sender, ii);
-        //                    RefreshPartyMembersLife();
-        //                    break;
-
-        //                case Database.POOR_SMALL_GREEN_POTION:
-        //                case Database.COMMON_NORMAL_GREEN_POTION:
-        //                case Database.COMMON_LARGE_GREEN_POTION:
-        //                case Database.COMMON_HUGE_GREEN_POTION:
-        //                case Database.COMMON_GORGEOUS_GREEN_POTION:
-        //                case Database.RARE_PERFECT_GREEN_POTION:
-        //                    effect = backpackData.UseIt();
-        //                    player.CurrentSkillPoint += effect;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    this.skill.Text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
-        //                    mainMessage.Text = String.Format(player.GetCharacterSentence(2001), effect);
-        //                    UsingItemUpdateBackPackLabel(player, backpackData, (Label)sender, ii);
-        //                    RefreshPartyMembersLife();
-        //                    break;
-
-        //                case Database.COMMON_REVIVE_POTION_MINI:
-        //                    MainCharacter target = null;
-        //                    using (SelectTarget st = new SelectTarget())
-        //                    {
-        //                        st.StartPosition = FormStartPosition.Manual;
-        //                        st.Location = new Point(this.mousePosX, this.mousePosY);
-        //                        if (we.AvailableThirdCharacter)
-        //                        {
-        //                            st.MaxSelectable = 3;
-        //                            st.FirstName = mc.Name;
-        //                            st.SecondName = sc.Name;
-        //                            st.ThirdName = tc.Name;
-        //                            st.ShowDialog();
-        //                        }
-        //                        else if (we.AvailableSecondCharacter)
-        //                        {
-        //                            st.MaxSelectable = 2;
-        //                            st.FirstName = mc.Name;
-        //                            st.SecondName = sc.Name;
-        //                            st.ShowDialog();
-        //                        }
-        //                        else
-        //                        {
-        //                            st.TargetNum = 1;
-        //                        }
-
-        //                        if (st.TargetNum == 1)
-        //                        {
-        //                            target = mc;
-        //                        }
-        //                        else if (st.TargetNum == 2)
-        //                        {
-        //                            target = sc;
-        //                        }
-        //                        else if (st.TargetNum == 3)
-        //                        {
-        //                            target = tc;
-        //                        }
-        //                    }
-        //                    if (target.Dead)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        target.ResurrectPlayer(1);
-        //                        this.life.Text = target.CurrentLife.ToString() + " / " + target.MaxLife.ToString();
-        //                        mainMessage.Text = target.GetCharacterSentence(2016);
-        //                    }
-        //                    else if (target == player)
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2018);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = String.Format(player.GetCharacterSentence(2017), target.Name);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_POTION_MAGIC_SEAL:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.AmplifyMagicAttack = 1.05f;
-        //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_POTION_ATTACK_SEAL:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.AmplifyPhysicalAttack = 1.05f;
-        //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-
-        //                case Database.POOR_POTION_CURE_POISON:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentPoison = 0;
-        //                        player.CurrentPoisonValue = 0;
-        //                        player.DeBuff(player.pbPoison);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_POTION_NATURALIZE:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentPoison = 0;
-        //                        player.CurrentPoisonValue = 0;
-        //                        player.DeBuff(player.pbPoison);
-        //                        player.CurrentSlow = 0;
-        //                        player.DeBuff(player.pbSlow);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_POTION_CURE_BLIND:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentBlind = 0;
-        //                        player.DeBuff(player.pbBlind);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_POTION_MOSSGREEN_DREAM:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentSlow = 0;
-        //                        player.DeBuff(player.pbSlow);
-        //                        player.CurrentPoison = 0;
-        //                        player.CurrentPoisonValue = 0;
-        //                        player.DeBuff(player.pbPoison);
-        //                        player.CurrentBlind = 0;
-        //                        player.DeBuff(player.pbBlind);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_RESIST_POISON:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentPoison = 0;
-        //                        player.CurrentPoisonValue = 0;
-        //                        player.DeBuff(player.pbPoison);
-        //                        player.ResistPoison = true;
-        //                        player.ActivateBuff(player.pbResistPoison, Database.BaseResourceFolder + "ResistPoison.bmp", Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_POTION_OVER_GROWTH:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentStaminaUp = Database.INFINITY;
-        //                        player.CurrentStaminaUpValue = 100; // スタミナUPは内部処理で10倍されてるため、ここでは1000/10で100
-        //                        player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp.bmp", Database.INFINITY);
-        //                        player.labelLife.Text = player.CurrentLife.ToString();
-        //                        if (player.CurrentLife >= player.MaxLife)
-        //                        {
-        //                            player.labelLife.ForeColor = Color.Green;
-        //                        }
-        //                        else
-        //                        {
-        //                            player.labelLife.ForeColor = Color.Black;
-        //                        }
-        //                        player.labelLife.Update();
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_POTION_RAINBOW_IMPACT:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.RemovePhysicalAttackDown();
-        //                        player.RemoveMagicAttackDown();
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_POTION_BLACK_GAST:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.AmplifyMagicAttack = 1.07f;
-        //                        player.AmplifyPhysicalAttack = 1.07f;
-        //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
-        //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_FAIRY_BREATH:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.RemoveSilence();
-        //                        player.ResistSilence = true;
-        //                        player.ActivateBuff(player.pbResistSilence, Database.BaseResourceFolder + "ResistSilence.bmp", Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.COMMON_HEART_ACCELERATION:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.RemoveParalyze();
-        //                        player.ResistParalyze = true;
-        //                        player.ActivateBuff(player.pbResistParalyze, Database.BaseResourceFolder + "ResistParalyze.bmp", Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_SAGE_POTION_MINI:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.RemoveDebuffEffect();
-        //                        player.RemoveDebuffParam();
-        //                        player.RemoveDebuffSpell();
-        //                        player.RemoveDebuffSkill();
-        //                        player.CurrentSagePotionMini = Database.INFINITY;
-        //                        player.CurrentNoResurrection = Database.INFINITY;
-        //                        player.ActivateBuff(player.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection.bmp", Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_POWER_SURGE:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.BuffUpStrength(600);
-        //                        player.BuffUpStamina(400);
-        //                        player.BuffUpAmplifyPhysicalAttack(1.20f);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_ZEPHER_BREATH:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.BuffUpAgility(600);
-        //                        player.BuffUpIntelligence(400);
-        //                        player.BuffUpAmplifyBattleSpeed(1.20f);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_GENSEI_MAGIC_BOTTLE:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.BuffUpIntelligence(600);
-        //                        player.BuffUpMind(400);
-        //                        player.BuffUpAmplifyMagicAttack(1.20f);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_ZETTAI_STAMINAUP:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.BuffUpStrength(200);
-        //                        player.BuffUpIntelligence(200);
-        //                        player.BuffUpStamina(600);
-        //                        player.BuffUpAmplifyPhysicalDefence(1.10f);
-        //                        player.BuffUpAmplifyMagicDefense(1.10f);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_MIND_ILLUSION:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.BuffUpStrength(100);
-        //                        player.BuffUpAgility(100);
-        //                        player.BuffUpIntelligence(100);
-        //                        player.BuffUpStamina(100);
-        //                        player.BuffUpMind(600);
-        //                        player.BuffUpAmplifyPotential(1.20f);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_GENSEI_TAIMA_KUSURI:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentGenseiTaima = Database.INFINITY;
-        //                        player.ActivateBuff(player.pbGenseiTaima, Database.BaseResourceFolder + Database.ITEMCOMMAND_GENSEI_TAIMA + fileExt, Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_SHINING_AETHER:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentShiningAether = 2; // 次のターンまで有効
-        //                        player.ActivateBuff(player.pbShiningAether, Database.BaseResourceFolder + Database.ITEMCOMMAND_SHINING_AETHER + fileExt, 2);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_BLACK_ELIXIR:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.CurrentBlackElixir = Database.INFINITY;
-        //                        player.CurrentBlackElixirValue = player.MaxLife / 2;
-        //                        player.CurrentLife += player.CurrentBlackElixirValue;
-        //                        player.ActivateBuff(player.pbBlackElixir, Database.BaseResourceFolder + Database.ITEMCOMMAND_BLACK_ELIXIR + fileExt, Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_ELEMENTAL_SEAL:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.RemoveDebuffEffect();
-        //                        player.CurrentElementalSeal = Database.INFINITY;
-        //                        player.ActivateBuff(player.pbElementalSeal, Database.BaseResourceFolder + Database.ITEMCOMMAND_ELEMENTAL_SEAL + fileExt, Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_COLORESS_ANTIDOTE:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        player.RemoveDebuffParam();
-        //                        player.CurrentColoressAntidote = Database.INFINITY;
-        //                        player.ActivateBuff(player.pbColoressAntidote, Database.BaseResourceFolder + Database.ITEMCOMMAND_COLORESS_ANTIDOTE + fileExt, Database.INFINITY);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_TOTAL_HIYAKU_KASSEI:
-        //                    if (this.onlyUseItem)
-        //                    {
-        //                        int maxValue = Math.Max(player.Strength,
-        //                                        Math.Max(player.Agility,
-        //                                                player.Intelligence));
-        //                        if (maxValue == player.Strength)
-        //                        {
-        //                            player.BuffStrength_Hiyaku_Kassei = maxValue;
-        //                        }
-        //                        else if (maxValue == player.Agility)
-        //                        {
-        //                            player.BuffAgility_Hiyaku_Kassei = maxValue;
-        //                        }
-        //                        else if (maxValue == player.Intelligence)
-        //                        {
-        //                            player.BuffIntelligence_Hiyaku_Kassei = maxValue;
-        //                        }
-        //                        player.DeleteBackPack(backpackData, 1, ii);
-        //                        this.skill.Text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
-        //                        UsingItemUpdateBackPackLabel(player, backpackData, (Label)sender, ii);
-        //                        RefreshPartyMembersLife();
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    }
-        //                    break;
-
-        //                case "神聖水": // ２階アイテム
-        //                    if (!we.AlreadyUseSyperSaintWater)
-        //                    {
-        //                        we.AlreadyUseSyperSaintWater = true;
-        //                        player.CurrentLife += (int)((double)player.MaxLife * 0.3F);
-        //                        player.CurrentMana += (int)((double)player.MaxMana * 0.3F);
-        //                        player.CurrentSkillPoint += (int)((double)player.MaxSkillPoint * 0.3F);
-        //                        this.life.Text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
-        //                        this.mana.Text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
-        //                        this.skill.Text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
-        //                        RefreshPartyMembersLife();
-        //                        mainMessage.Text = player.GetCharacterSentence(2009);
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2010);
-        //                    }
-        //                    break;
-
-        //                case Database.RARE_PURE_WATER:
-        //                    if (!we.AlreadyUsePureWater)
-        //                    {
-        //                        we.AlreadyUsePureWater = true;
-        //                        player.CurrentLife = (int)((double)player.MaxLife);
-        //                        this.life.Text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
-        //                        mainMessage.Text = player.GetCharacterSentence(2027);
-        //                        RefreshPartyMembersLife();
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2028);
-        //                    }
-        //                    break;
-
-        //                case "リヴァイヴポーション":
-        //                    if (!we.AlreadyUseRevivePotion)
-        //                    {
-        //                        target = null;
-        //                        using (SelectTarget st = new SelectTarget())
-        //                        {
-        //                            st.StartPosition = FormStartPosition.Manual;
-        //                            st.Location = new Point(this.mousePosX, this.mousePosY);
-        //                            if (we.AvailableThirdCharacter)
-        //                            {
-        //                                st.MaxSelectable = 3;
-        //                                st.FirstName = mc.Name;
-        //                                st.SecondName = sc.Name;
-        //                                st.ThirdName = tc.Name;
-        //                                st.ShowDialog();
-        //                            }
-        //                            else if (we.AvailableSecondCharacter)
-        //                            {
-        //                                st.MaxSelectable = 2;
-        //                                st.FirstName = mc.Name;
-        //                                st.SecondName = sc.Name;
-        //                                st.ShowDialog();
-        //                            }
-        //                            else
-        //                            {
-        //                                st.TargetNum = 1;
-        //                            }
-
-        //                            if (st.TargetNum == 1)
-        //                            {
-        //                                target = mc;
-        //                            }
-        //                            else if (st.TargetNum == 2)
-        //                            {
-        //                                target = sc;
-        //                            }
-        //                            else if (st.TargetNum == 3)
-        //                            {
-        //                                target = tc;
-        //                            }
-        //                        }
-        //                        if (target.Dead)
-        //                        {
-        //                            we.AlreadyUseRevivePotion = true;
-        //                            target.Dead = false;
-        //                            target.CurrentLife = target.MaxLife / 2;
-        //                            this.life.Text = target.CurrentLife.ToString() + " / " + target.MaxLife.ToString();
-        //                            mainMessage.Text = target.GetCharacterSentence(2016);
-        //                        }
-        //                        else if (target == player)
-        //                        {
-        //                            mainMessage.Text = player.GetCharacterSentence(2018);
-        //                        }
-        //                        else
-        //                        {
-        //                            mainMessage.Text = String.Format(player.GetCharacterSentence(2017), target.Name);
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2010);
-        //                    }
-        //                    break;
-
-        //                case Database.EPIC_OVER_SHIFTING:
-        //                    StatusButton_Click(StatusButton, null);
-        //                    this.Update();
-
-        //                    this.useOverShifting = true;
-        //                    button1.Visible = false;
-        //                    mainMessage.Text = player.GetCharacterSentence(2022);
-        //                    this.Update();
-        //                    System.Threading.Thread.Sleep(500);
-        //                    int firstStrength = 1;
-        //                    int firstAgility = 1;
-        //                    int firstIntelligence = 1;
-        //                    int firstStamina = 1;
-        //                    int firstMind = 1;
-        //                    if (player.Equals(mc))
-        //                    {
-        //                        firstStrength = Database.MAINPLAYER_FIRST_STRENGTH;
-        //                        firstAgility = Database.MAINPLAYER_FIRST_AGILITY;
-        //                        firstIntelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
-        //                        firstStamina = Database.MAINPLAYER_FIRST_STAMINA;
-        //                        firstMind = Database.MAINPLAYER_FIRST_MIND;
-        //                    }
-        //                    else if (player.Equals(sc))
-        //                    {
-        //                        firstStrength = Database.SECONDPLAYER_FIRST_STRENGTH;
-        //                        firstAgility = Database.SECONDPLAYER_FIRST_AGILITY;
-        //                        firstIntelligence = Database.SECONDPLAYER_FIRST_INTELLIGENCE;
-        //                        firstStamina = Database.SECONDPLAYER_FIRST_STAMINA;
-        //                        firstMind = Database.SECONDPLAYER_FIRST_MIND;
-        //                    }
-        //                    else if (player.Equals(tc))
-        //                    {
-        //                        firstStrength = Database.THIRDPLAYER_FIRST_STRENGTH;
-        //                        firstAgility = Database.THIRDPLAYER_FIRST_AGILITY;
-        //                        firstIntelligence = Database.THIRDPLAYER_FIRST_INTELLIGENCE;
-        //                        firstStamina = Database.THIRDPLAYER_FIRST_STAMINA;
-        //                        firstMind = Database.THIRDPLAYER_FIRST_MIND;
-        //                    }
-        //                    while (true)
-        //                    {
-        //                        if (player.Strength <= firstStrength)
-        //                        {
-        //                            if (player.Agility <= firstAgility)
-        //                            {
-        //                                if (player.Intelligence <= firstIntelligence)
-        //                                {
-        //                                    if (player.Stamina <= firstStamina)
-        //                                    {
-        //                                        if (player.Mind <= firstMind)
-        //                                        {
-        //                                            break;
-        //                                        }
-        //                                        else
-        //                                        {
-        //                                            player.Mind--;
-        //                                            this.mindLabel.Text = player.Mind.ToString();
-        //                                            this.mindLabel.Update();
-        //                                        }
-        //                                    }
-        //                                    else
-        //                                    {
-        //                                        player.Stamina--;
-        //                                        this.stamina.Text = player.Stamina.ToString();
-        //                                        this.stamina.Update();
-        //                                    }
-        //                                }
-        //                                else
-        //                                {
-        //                                    player.Intelligence--;
-        //                                    this.intelligence.Text = player.Intelligence.ToString();
-        //                                    this.intelligence.Update();
-        //                                }
-        //                            }
-        //                            else
-        //                            {
-        //                                player.Agility--;
-        //                                this.agility.Text = player.Agility.ToString();
-        //                                this.agility.Update();
-        //                            }
-        //                        }
-        //                        else
-        //                        {
-        //                            player.Strength--;
-        //                            this.strength.Text = player.Strength.ToString();
-        //                            this.strength.Update();
-        //                        }
-        //                        GroundOne.UpPoint++;
-        //                        System.Threading.Thread.Sleep(1);
-        //                        Application.DoEvents();
-        //                    }
-        //                    buttonStrength.Enabled = true;
-        //                    buttonAgility.Enabled = true;
-        //                    buttonIntelligence.Enabled = true;
-        //                    buttonStamina.Enabled = true;
-        //                    buttonMind.Enabled = true;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    UsingItemUpdateBackPackLabel(player, backpackData, (Label)sender, ii);
-        //                    SettingCharacterData(player);
-        //                    RefreshPartyMembersBattleStatus(player);
-        //                    break;
-
-        //                case Database.GROWTH_LIQUID_STRENGTH:
-        //                case Database.GROWTH_LIQUID2_STRENGTH:
-        //                case Database.GROWTH_LIQUID3_STRENGTH:
-        //                case Database.GROWTH_LIQUID4_STRENGTH:
-        //                case Database.GROWTH_LIQUID5_STRENGTH:
-        //                    int effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
-        //                    player.Strength += effectValue;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    SettingCharacterData(player);
-        //                    RefreshPartyMembersBattleStatus(player);
-        //                    mainMessage.Text = String.Format(player.GetCharacterSentence(2024), "力", effectValue.ToString());
-        //                    break;
-        //                case Database.GROWTH_LIQUID_AGILITY:
-        //                case Database.GROWTH_LIQUID2_AGILITY:
-        //                case Database.GROWTH_LIQUID3_AGILITY:
-        //                case Database.GROWTH_LIQUID4_AGILITY:
-        //                case Database.GROWTH_LIQUID5_AGILITY:
-        //                    effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
-        //                    player.Agility += effectValue;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    SettingCharacterData(player);
-        //                    RefreshPartyMembersBattleStatus(player);
-        //                    mainMessage.Text = String.Format(player.GetCharacterSentence(2024), "技", effectValue.ToString());
-        //                    break;
-        //                case Database.GROWTH_LIQUID_INTELLIGENCE:
-        //                case Database.GROWTH_LIQUID2_INTELLIGENCE:
-        //                case Database.GROWTH_LIQUID3_INTELLIGENCE:
-        //                case Database.GROWTH_LIQUID4_INTELLIGENCE:
-        //                case Database.GROWTH_LIQUID5_INTELLIGENCE:
-        //                    effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
-        //                    player.Intelligence += effectValue;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    SettingCharacterData(player);
-        //                    RefreshPartyMembersBattleStatus(player);
-        //                    mainMessage.Text = String.Format(player.GetCharacterSentence(2024), "知", effectValue.ToString());
-        //                    break;
-        //                case Database.GROWTH_LIQUID_STAMINA:
-        //                case Database.GROWTH_LIQUID2_STAMINA:
-        //                case Database.GROWTH_LIQUID3_STAMINA:
-        //                case Database.GROWTH_LIQUID4_STAMINA:
-        //                case Database.GROWTH_LIQUID5_STAMINA:
-        //                    effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
-        //                    player.Stamina += effectValue;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    SettingCharacterData(player);
-        //                    RefreshPartyMembersBattleStatus(player);
-        //                    mainMessage.Text = String.Format(player.GetCharacterSentence(2024), "体", effectValue.ToString());
-        //                    break;
-        //                case Database.GROWTH_LIQUID_MIND:
-        //                case Database.GROWTH_LIQUID2_MIND:
-        //                case Database.GROWTH_LIQUID3_MIND:
-        //                case Database.GROWTH_LIQUID4_MIND:
-        //                case Database.GROWTH_LIQUID5_MIND:
-        //                    effectValue = backpackData.MinValue + AP.Math.RandomInteger(backpackData.MaxValue - backpackData.MinValue + 1);
-        //                    player.Mind += effectValue;
-        //                    player.DeleteBackPack(backpackData, 1, ii);
-        //                    SettingCharacterData(player);
-        //                    RefreshPartyMembersBattleStatus(player);
-        //                    mainMessage.Text = String.Format(player.GetCharacterSentence(2024), "心", effectValue.ToString());
-        //                    break;
-
-        //                // 装備品：武器
-        //                case "練習用の剣": // アイン初期装備
-        //                case "ナックル": // ラナ初期装備
-        //                case "白銀の剣（レプリカ）": // ヴェルゼ初期装備
-        //                case "ショートソード": // ガンツの武具屋販売（ダンジョン１階）
-        //                case "洗練されたロングソード": // ガンツの武具屋販売（ダンジョン１階）
-        //                case "青銅の剣": // ガンツの武具屋販売（ダンジョン２階）
-        //                case "メタルフィスト": // ガンツの武具屋販売（ダンジョン２階）
-        //                case "プラチナソード": // ガンツの武具屋販売（ダンジョン３階）
-        //                case "ファルシオン": // ガンツの武具屋販売（ダンジョン３階）
-        //                case "アイアンクロー": // ガンツの武具屋販売（ダンジョン３階）
-        //                case "シャムシール": // ３階アイテム
-        //                case "ライトプラズマブレード": // ガンツの武具屋販売（ダンジョン４階）
-        //                case "イスリアルフィスト": // ガンツの武具屋販売（ダンジョン４階）
-        //                case "エスパダス": // ダンジョン４階のアイテム
-        //                case "ソード・オブ・ブルールージュ": // ダンジョン４階のアイテム
-        //                case "ルナ・エグゼキュージョナー": // ダンジョン５階
-        //                case "蒼黒・氷大蛇の爪": // ダンジョン５階
-        //                case "ファージル・ジ・エスペランザ": // ダンジョン５階
-        //                case "神剣  フェルトゥーシュ":
-        //                case "双剣  ジュノセレステ":
-        //                case "極剣  ゼムルギアス":
-        //                case "クロノス・ロマティッド・ソード":
-        //                // 装備品：防具
-        //                case "黒真空の鎧（レプリカ）": // ヴェルゼ初期装備
-        //                case "コート・オブ・プレート": // アイン初期装備
-        //                case "ライト・クロス": // ラナ初期装備
-        //                case "冒険者用の鎖かたびら": // ガンツの武具屋販売（ダンジョン１階）
-        //                case "青銅の鎧": // ガンツの武具屋販売（ダンジョン１階）
-        //                case "真鍮の鎧": // ２階アイテム
-        //                case "光沢のある鉄のプレート": // ガンツの武具屋販売（ダンジョン２階）
-        //                case "シルクの武道衣": // ガンツの武具屋販売（ダンジョン２階）
-        //                case "シルバーアーマー": // ガンツの武具屋販売（ダンジョン３階）
-        //                case "獣皮製の舞踏衣": // ガンツの武具屋販売（ダンジョン３階）
-        //                case "フィスト・クロス": // ガンツの武具屋販売（ダンジョン３階）
-        //                case "プレート・アーマー": // ３階アイテム
-        //                case "ラメラ・アーマー": // ３階アイテム
-        //                case "プリズマティックアーマー": // ガンツの武具屋販売（ダンジョン４階）
-        //                case "極薄合金製の羽衣": // ガンツの武具屋販売（ダンジョン４階）
-        //                case "アヴォイド・クロス": // ダンジョン４階のアイテム
-        //                case "ブリガンダィン": // ダンジョン４階のアイテム
-        //                case "ロリカ・セグメンタータ": // ダンジョン４階のアイテム
-        //                case "ヘパイストス・パナッサロイニ":
-        //                // 装備品：アクセサリ
-        //                case "珊瑚のブレスレット": // ラナ初期装備
-        //                case "天空の翼（レプリカ）": // ヴェルゼ初期装備
-        //                case Database.COMMON_CHARM_OF_FIRE_ANGEL: // １階アイテム e 後編編集
-        //                case "チャクラオーブ": // １階アイテム
-        //                case "些細なパワーリング": // ガンツの武具屋販売（ダンジョン１階）
-        //                case "紺碧のスターエムブレム": // ガンツの武具屋販売（ダンジョン２階）
-        //                case "闘魂バンド": // ガンツの武具屋販売（ダンジョン２階）
-        //                case "鷹の刻印": // ２階アイテム
-        //                case "身かわしのマント": // ２階アイテム
-        //                case "ライオンハート": // ３階アイテム
-        //                case "オーガの腕章": // ３階アイテム
-        //                case "鋼鉄の石像": // ３階アイテム
-        //                case "ファラ様信仰のシール": // ３階アイテム
-        //                case "ウェルニッケの腕輪": // ガンツの武具屋販売（ダンジョン３階）
-        //                case "賢者の眼鏡": // ガンツの武具屋販売（ダンジョン３階）
-        //                case "七色プリズムバンド": // ガンツの武具屋販売（ダンジョン４階）
-        //                case "再生の紋章": // ガンツの武具屋販売（ダンジョン４階）
-        //                case "シールオブアクア＆ファイア": // ガンツの武具屋販売（ダンジョン４階）
-        //                case "ドラゴンのベルト": // ガンツの武具屋販売（ダンジョン４階）
-        //                case "剣紋章ペンダント": // ラナレベルアップ時でもらえるアイテム
-        //                case "夢見の印章": // ダンジョン４階のアイテム
-        //                case "天使の契約書": // ダンジョン４階のアイテム
-        //                case "ラナのイヤリング": // ダンジョン５階（ラナのイベント） // ラナ専用
-        //                case "レジェンド・レッドホース": // ダンジョン５階のアイテム
-        //                case "エルミ・ジョルジュ　ファージル王家の刻印":
-        //                case "ファラ・フローレ　天使のペンダント":
-        //                case "シニキア・カールハンツ　魔道デビルアイ":
-        //                case "オル・ランディス　炎神グローブ":
-        //                case "ヴェルゼ・アーティ　天空の翼":
-        //                // s 後編追加
-        //                case Database.POOR_PRACTICE_SHILED:
-
-        //                case Database.POOR_HINJAKU_ARMRING:
-        //                case Database.POOR_USUYOGORETA_FEATHER:
-        //                case Database.POOR_NON_BRIGHT_ORB:
-        //                case Database.POOR_KUKEI_BANGLE:
-        //                case Database.POOR_SUTERARESHI_EMBLEM:
-        //                case Database.POOR_ARIFURETA_STATUE:
-        //                case Database.POOR_NON_ADJUST_BELT:
-        //                case Database.POOR_SIMPLE_EARRING:
-        //                case Database.POOR_KATAKUZURESHITA_FINGERRING:
-        //                case Database.POOR_IROASETA_CHOKER:
-        //                case Database.POOR_YOREYORE_MANTLE:
-        //                case Database.POOR_NON_HINSEI_CROWN:
-        //                case Database.POOR_TUKAIFURUSARETA_SWORD:
-        //                case Database.POOR_TUKAINIKUI_LONGSWORD:
-        //                case Database.POOR_GATAGAKITERU_ARMOR:
-        //                case Database.POOR_FESTERING_ARMOR:
-        //                case Database.POOR_HINSO_SHIELD:
-        //                case Database.POOR_MUDANIOOKII_SHIELD:
-
-        //                case Database.COMMON_RED_PENDANT:
-        //                case Database.COMMON_BLUE_PENDANT:
-        //                case Database.COMMON_PURPLE_PENDANT:
-        //                case Database.COMMON_GREEN_PENDANT:
-        //                case Database.COMMON_YELLOW_PENDANT:
-        //                case Database.COMMON_SISSO_ARMRING:
-        //                case Database.COMMON_FINE_FEATHER:
-        //                case Database.COMMON_KIREINA_ORB:
-        //                case Database.COMMON_FIT_BANGLE:
-        //                case Database.COMMON_PRISM_EMBLEM:
-        //                case Database.COMMON_FINE_SWORD:
-        //                case Database.COMMON_TWEI_SWORD:
-        //                case Database.COMMON_FINE_ARMOR:
-        //                case Database.COMMON_GOTHIC_PLATE:
-        //                case Database.COMMON_FINE_SHIELD:
-        //                case Database.COMMON_GRIPPING_SHIELD:
-
-        //                case Database.RARE_JOUSITU_BLUE_POWERRING:
-        //                case Database.RARE_KOUJOUSINYADORU_RED_ORB:
-        //                case Database.RARE_MAGICIANS_MANTLE:
-        //                case Database.RARE_BEATRUSH_BANGLE:
-        //                case Database.RARE_AERO_BLADE:
-        //                case Database.RARE_SUN_BRAVE_ARMOR:
-        //                case Database.RARE_ESMERALDA_SHIELD:
-
-        //                case Database.EPIC_RING_OF_OSCURETE:
-        //                case Database.EPIC_MERGIZD_SOL_BLADE:
-
-        //                case Database.COMMON_SIMPLE_BRACELET:
-        //                case Database.POOR_HARD_SHOES:
-        //                case Database.COMMON_SEAL_OF_POSION:
-        //                    // e 後編追加
-        //                    if (((backpackData.Type == ItemBackPack.ItemType.Weapon_Heavy) && (player == sc || player == tc)) // アイン専用
-        //                        || ((backpackData.Type == ItemBackPack.ItemType.Weapon_Light) && (player == mc || player == tc)) // ラナ専用
-        //                        || ((backpackData.Type == ItemBackPack.ItemType.Weapon_Middle) && (player == mc || player == sc)) // ヴェルゼ専用
-        //                        || ((backpackData.Type == ItemBackPack.ItemType.Armor_Heavy) && (player == sc || player == tc)) // アイン専用
-        //                        || ((backpackData.Type == ItemBackPack.ItemType.Armor_Light) && (player == mc || player == tc)) // ラナ専用
-        //                        || ((backpackData.Type == ItemBackPack.ItemType.Armor_Middle) && (player == mc || player == sc)) // ヴェルゼ専用
-        //                        || ((backpackData.EquipablePerson == ItemBackPack.Equipable.Ein) && (player == sc || player == tc)) // アイン専用
-        //                        || ((backpackData.EquipablePerson == ItemBackPack.Equipable.Lana) && (player == mc || player == tc)) // ラナ専用
-        //                        || ((backpackData.EquipablePerson == ItemBackPack.Equipable.Verze) && (player == mc || player == sc))) // ヴェルゼ専用
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2019);
-        //                        return;
-        //                    }
-        //                    EquipDecision(player, backpackData, sender, ii);
-        //                    break;
-
-        //                // その他
-        //                case "ブラックマテリアル": // １階ドロップアイテム
-        //                case "ブルーマテリアル": // １階アイテム
-        //                case "レッドマテリアル": // ３階アイテム
-        //                case "グリーンマテリアル": // ダンジョン４階のアイテム
-        //                case "タイム・オブ・ルーセ": // ダンジョン５階の隠しアイテム
-        //                    mainMessage.Text = player.GetCharacterSentence(2007);
-        //                    break;
-
-        //                case "リーベストランクポーション":
-        //                case "アカシジアの実":
-        //                    mainMessage.Text = player.GetCharacterSentence(2011);
-        //                    break;
-
-        //                case Database.RARE_TOOMI_BLUE_SUISYOU: // 初期ラナ会話イベントで入手アイテム
-        //                    if (we.dungeonEvent4_SlayBoss3)
-        //                    {
-        //                        mainMessage.Text = "アイン：ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ。";
-        //                        return;
-        //                    }
-        //                    if (we.CompleteSlayBoss5)
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2020);
-        //                        return;
-        //                    }
-        //                    if ((we.dungeonEvent329 && !we.dungeonEvent328) ||
-        //                        (we.dungeonEvent318 && !we.dungeonEvent312))
-        //                    {
-        //                        mainMessage.Text = player.GetCharacterSentence(2020);
-        //                        return;
-        //                    }
-
-        //                    mainMessage.Text = player.GetCharacterSentence(2006);
-        //                    using (YesNoRequest yesno = new YesNoRequest())
-        //                    {
-        //                        yesno.StartPosition = FormStartPosition.CenterParent;
-        //                        yesno.ShowDialog();
-        //                        if (yesno.DialogResult == DialogResult.Yes)
-        //                        {
-        //                            if (we.SaveByDungeon)
-        //                            {
-        //                                this.DialogResult = DialogResult.Abort;
-        //                                return;
-        //                            }
-        //                            else
-        //                            {
-        //                                mainMessage.Text = player.GetCharacterSentence(2012);
-        //                                return;
-        //                            }
-        //                        }
-        //                        else
-        //                        {
-        //                            mainMessage.Text = "";
-        //                        }
-        //                    }
-        //                    break;
-
-
-        //            }
-        //            break;
         //        }
         //    }
         //    if (this.onlyUseItem)
@@ -1503,27 +1571,28 @@ namespace DungeonPlayer
         //    }
         }
 
-        //private int CallBackPackExchangeValue(MainCharacter player, ItemBackPack backpack, int ii)
-        //{
-        //    int exchangeValue = player.CheckBackPackExist(backpack, ii); // [警告] backpackData.StackValueでは無い事は分かりにくい。
-        //    if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        //    {
-        //        using (SelectValue sv = new SelectValue())
-        //        {
-        //            sv.StartPosition = FormStartPosition.Manual;
-        //            sv.Location = new Point(this.mousePosX, this.mousePosY);
-        //            sv.MaxValue = exchangeValue;
-        //            sv.ShowDialog();
-        //            IsShift = false; // ShowDialog表示先で、Shiftキーは外された場合検知できないため、ココでリセット。
-        //            if (sv.DialogResult == DialogResult.Cancel) return -1; // ESCキャンセルは中断とみなす。
-        //            exchangeValue = sv.CurrentValue;
-        //        }
-        //    }
-        //    return exchangeValue;
-        //}
+        private int CallBackPackExchangeValue(MainCharacter player, ItemBackPack backpack, int currentNumber)
+        {
+            int exchangeValue = player.CheckBackPackExist(backpack, currentNumber); // [警告] backpackData.StackValueでは無い事は分かりにくい。
+            // todo
+            //if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            //{
+            //    using (SelectValue sv = new SelectValue())
+            //    {
+            //        sv.StartPosition = FormStartPosition.Manual;
+            //        sv.Location = new Point(this.mousePosX, this.mousePosY);
+            //        sv.MaxValue = exchangeValue;
+            //        sv.ShowDialog();
+            //        IsShift = false; // ShowDialog表示先で、Shiftキーは外された場合検知できないため、ココでリセット。
+            //        if (sv.DialogResult == DialogResult.Cancel) return -1; // ESCキャンセルは中断とみなす。
+            //        exchangeValue = sv.CurrentValue;
+            //    }
+            //}
+            return exchangeValue;
+        }
 
-        //private void EquipDecision(MainCharacter player, ItemBackPack backpackData, System.Object sender, int ii)
-        //{
+        private void EquipDecision(MainCharacter player, ItemBackPack backpackData, Text sender, int currentNumber)
+        {
         //    player.GetCharacterSentence(2004);
         //    using (YesNoRequest yesno = new YesNoRequest())
         //    {
@@ -1610,7 +1679,7 @@ namespace DungeonPlayer
         //                return;
         //            }
 
-        //            player.DeleteBackPack(backpackData, 1, ii);
+        //            player.DeleteBackPack(backpackData, 1, currentNumber);
         //            // [警告]：nullオブジェクトなのか、Name空文字なのかハッキリ修正してください。
         //            if (tempItem != null)
         //            {
@@ -1622,18 +1691,18 @@ namespace DungeonPlayer
         //                {
         //                    ((Label)sender).Text = "";
         //                    ((Label)sender).Cursor = System.Windows.Forms.Cursors.Default;
-        //                    backpackStack[ii].Text = "";
-        //                    backpackIcon[ii].Image = null;
-        //                    backpackIcon[ii].Update();
+        //                    backpackStack[currentNumber].Text = "";
+        //                    backpackIcon[currentNumber].Image = null;
+        //                    backpackIcon[currentNumber].Update();
         //                }
         //            }
         //            else
         //            {
         //                ((Label)sender).Text = "";
         //                ((Label)sender).Cursor = System.Windows.Forms.Cursors.Default;
-        //                backpackStack[ii].Text = "";
-        //                backpackIcon[ii].Image = null;
-        //                backpackIcon[ii].Update();
+        //                backpackStack[currentNumber].Text = "";
+        //                backpackIcon[currentNumber].Image = null;
+        //                backpackIcon[currentNumber].Update();
         //            }
         //            UpdateBackPackLabel(player);
         //            SettingCharacterData(player);
@@ -1645,24 +1714,24 @@ namespace DungeonPlayer
         //            mainMessage.Text = "";
         //        }
         //    }
-        //}
+        }
 
-        //private void UsingItemUpdateBackPackLabel(MainCharacter player, ItemBackPack backpackData, Label sender, int ii)
-        //{
-        //    int stackValue = player.CheckBackPackExist(backpackData, ii);
-        //    if (stackValue <= 0)
-        //    {
-        //        ((Label)sender).Text = "";
-        //        ((Label)sender).Cursor = System.Windows.Forms.Cursors.Default;
-        //        ((Label)backpackStack[ii]).Text = "";
-        //        backpackIcon[ii].Image = null;
-        //        backpackIcon[ii].Update();
-        //    }
-        //    else
-        //    {
-        //        ((Label)backpackStack[ii]).Text = "x" + stackValue.ToString();
-        //    }
-        //}
+        private void UsingItemUpdateBackPackLabel(MainCharacter player, ItemBackPack backpackData, Text sender, int currentNumber)
+        {
+            int stackValue = player.CheckBackPackExist(backpackData, currentNumber);
+            if (stackValue <= 0)
+            {
+                backpack[currentNumber].text = "";
+                backpackStack[currentNumber].text = "";
+                backpackIcon[currentNumber].sprite = null;
+                Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]);
+                //back_Backpack[currentNumber].SetActive(false);
+            }
+            else
+            {
+                backpackStack[currentNumber].text = "x" + stackValue.ToString();
+            }
+        }
 
         //void StatusPlayer_MouseLeave(object sender, EventArgs e)
         //{
@@ -1741,9 +1810,13 @@ namespace DungeonPlayer
         //    }
         //    // e 後編追加
 
-            ItemBackPack temp = new ItemBackPack(sender.text);
-            if (temp.Description != "")
+            if (sender.text == "")
             {
+                mainMessage.text = "";
+            }
+            else
+            {
+                ItemBackPack temp = new ItemBackPack(sender.text);
                 mainMessage.text = temp.Description;
             }
         }
@@ -1756,6 +1829,12 @@ namespace DungeonPlayer
         //    this.mousePosY = this.Location.Y + ((Label)sender).Location.Y + e.Y;
         //}
 
+        public void HideAllChild()
+        {
+            groupChoice.SetActive(false);
+            groupTarget.SetActive(false);
+            backpackFilter.SetActive(false);
+        }
         private void SettingCharacterData(MainCharacter chara)
         {
             this.txtName.text = chara.FullName;
@@ -1894,185 +1973,181 @@ namespace DungeonPlayer
 
             txtGold.text = GroundOne.MC.Gold.ToString() + "[G]";
 
-            // todo
-        //    UpdateBackPackLabel(chara);
-        //    UpdateSpellSkillLabel(chara);
-        //    UpdateResistStatus(chara);
-        //    //this.btnFreshHeal.Visible = chara.FreshHeal;
-        //    //this.btnLifeTap.Visible = chara.LifeTap;
-        //    //this.btnResurrection.Visible = chara.Resurrection;
-        //    //this.btnCelestialNova.Visible = chara.CelestialNova;
+            UpdateBackPackLabel(chara);
+            UpdateSpellSkillLabel(chara);
+            UpdateResistStatus(chara);
         }
 
-        //private void UpdateSpellSkillLabel(MainCharacter target)
-        //{
-        //    if (target.FreshHeal == false)
-        //    {
-        //        SpellSkill[0].Text = "";
-        //        SpellSkill[0].Cursor = System.Windows.Forms.Cursors.Default;
-        //    }
-        //    else
-        //    {
-        //        SpellSkill[0].Text = Database.FRESH_HEAL_JP;
-        //        SpellSkill[0].Cursor = System.Windows.Forms.Cursors.Hand;
-        //    }
+        private void UpdateSpellSkillLabel(MainCharacter target)
+        {
+            if (target.FreshHeal == false)
+            {
+                SpellSkill[0].text = "";
+            }
+            else
+            {
+                SpellSkill[0].text = Database.FRESH_HEAL;
+            }
 
-        //    if (target.LifeTap == false)
-        //    {
-        //        SpellSkill[1].Text = "";
-        //        SpellSkill[1].Cursor = System.Windows.Forms.Cursors.Default;
-        //    }
-        //    else
-        //    {
-        //        SpellSkill[1].Text = Database.LIFE_TAP_JP;
-        //        SpellSkill[1].Cursor = System.Windows.Forms.Cursors.Hand;
-        //    }
+            if (target.LifeTap == false)
+            {
+                SpellSkill[1].text = "";
+            }
+            else
+            {
+                SpellSkill[1].text = Database.LIFE_TAP;
+            }
 
+            if (target.Resurrection == false)
+            {
+                SpellSkill[2].text = "";
+            }
+            else
+            {
+                SpellSkill[2].text = Database.RESURRECTION;
+            }
 
-        //    if (target.Resurrection == false)
-        //    {
-        //        SpellSkill[2].Text = "";
-        //        SpellSkill[2].Cursor = System.Windows.Forms.Cursors.Default;
-        //    }
-        //    else
-        //    {
-        //        SpellSkill[2].Text = Database.RESURRECTION_JP;
-        //        SpellSkill[2].Cursor = System.Windows.Forms.Cursors.Hand;
-        //    }
+            if (target.CelestialNova == false)
+            {
+                SpellSkill[3].text = "";
+            }
+            else
+            {
+                SpellSkill[3].text = Database.CELESTIAL_NOVA;
+            }
 
-        //    if (target.SacredHeal == false)
-        //    {
-        //        SpellSkill[3].Text = "";
-        //        SpellSkill[3].Cursor = System.Windows.Forms.Cursors.Default;
-        //    }
-        //    else
-        //    {
-        //        SpellSkill[3].Text = Database.SACRED_HEAL_JP;
-        //        SpellSkill[3].Cursor = System.Windows.Forms.Cursors.Hand;
-        //    }
-        //}
+            if (target.SacredHeal == false)
+            {
+                SpellSkill[4].text = "";
+            }
+            else
+            {
+                SpellSkill[4].text = Database.SACRED_HEAL;
+            }
+        }
 
         private void UpdateBackPackLabel(MainCharacter target)
         {
             ItemBackPack[] backpackData = target.GetBackPackInfo();
-            for (int ii = 0; ii < backpackData.Length; ii++)
+            for (int currentNumber = 0; currentNumber < backpackData.Length; currentNumber++)
             {
-                if (backpackData[ii] == null)
+                if (backpackData[currentNumber] == null)
                 {
-                    backpack[ii].text = "";
-                    backpackStack[ii].text = "";
-                    backpackIcon[ii].sprite = null;
-                    back_Backpack[ii].SetActive(false);
+                    backpack[currentNumber].text = "";
+                    backpackStack[currentNumber].text = "";
+                    backpackIcon[currentNumber].sprite = null;
+                    Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]);
+                    //back_Backpack[currentNumber].SetActive(false);
                 }
                 else
                 {
-                    back_Backpack[ii].SetActive(true);
-                    backpack[ii].text = backpackData[ii].Name;
-                    Method.UpdateRareColor(backpackData[ii], backpack[ii], back_Backpack[ii]);
-                    backpackStack[ii].text = "x" + backpackData[ii].StackValue.ToString();
-                    if ((backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Heavy) ||
-                        (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Middle))
+                    back_Backpack[currentNumber].SetActive(true);
+                    backpack[currentNumber].text = backpackData[currentNumber].Name;
+                    Method.UpdateRareColor(backpackData[currentNumber], backpack[currentNumber], back_Backpack[currentNumber]);
+                    backpackStack[currentNumber].text = "x" + backpackData[currentNumber].StackValue.ToString();
+                    if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Heavy) ||
+                        (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Middle))
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Weapon");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Weapon");
                     }
-                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_TwoHand)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_TwoHand)
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("TwoHand");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("TwoHand");
                     }
-                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Light)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Light)
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Knuckle");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Knuckle");
                     }
-                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Weapon_Rod)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Rod)
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Rod");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Rod");
                     }
-                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Shield)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Shield)
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Shield");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Shield");
                     }
-                    else if ((backpackData[ii].Type == ItemBackPack.ItemType.Armor_Heavy) ||
-                                (backpackData[ii].Type == ItemBackPack.ItemType.Armor_Middle))
+                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Heavy) ||
+                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Middle))
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Armor");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Armor");
                     }
-                    else if ((backpackData[ii].Type == ItemBackPack.ItemType.Armor_Light))
+                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Light))
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("LightArmor");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("LightArmor");
                     }
-                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Accessory)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Accessory)
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Accessory");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Accessory");
                     }
-                    else if ((backpackData[ii].Type == ItemBackPack.ItemType.Material_Equip) ||
-                                (backpackData[ii].Type == ItemBackPack.ItemType.Material_Food) ||
-                                (backpackData[ii].Type == ItemBackPack.ItemType.Material_Potion))
+                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Equip) ||
+                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Food) ||
+                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Potion))
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Material1");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Material1");
                     }
-                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Use_Potion)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Potion)
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Potion");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Potion");
                     }
-                    else if (backpackData[ii].Type == ItemBackPack.ItemType.Use_Any)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Any)
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Useless");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
                     }
                     else
                     {
-                        backpackIcon[ii].sprite = Resources.Load<Sprite>("Useless");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
                     }
                 }
             }
         }
 
-        //private void UpdateResistStatus(MainCharacter player)
-        //{
-        //    // 【後編必須】％レジスト増強も実装してください。
-        //    ResistLabel[0].Text = Database.STRING_LIGHT;
-        //    ResistLabelValue[0].Text = "+" + player.TotalResistLight.ToString() + " (0%)";
-        //    ResistLabel[1].Text = Database.STRING_SHADOW;
-        //    ResistLabelValue[1].Text = "+" + player.TotalResistShadow.ToString() + " (0%)";
-        //    ResistLabel[2].Text = Database.STRING_FIRE;
-        //    ResistLabelValue[2].Text = "+" + player.TotalResistFire.ToString() + " (0%)";
-        //    ResistLabel[3].Text = Database.STRING_ICE;
-        //    ResistLabelValue[3].Text = "+" + player.TotalResistIce.ToString() + " (0%)";
-        //    ResistLabel[4].Text = Database.STRING_FORCE;
-        //    ResistLabelValue[4].Text = "+" + player.TotalResistForce.ToString() + " (0%)";
-        //    ResistLabel[5].Text = Database.STRING_WILL;
-        //    ResistLabelValue[5].Text = "+" + player.TotalResistWill.ToString() + " (0%)";
+        private void UpdateResistStatus(MainCharacter player)
+        {
+            // 【後編必須】％レジスト増強も実装してください。
+            ResistLabel[0].text = Database.STRING_LIGHT;
+            ResistLabelValue[0].text = "+" + player.TotalResistLight.ToString() + " (0%)";
+            ResistLabel[1].text = Database.STRING_SHADOW;
+            ResistLabelValue[1].text = "+" + player.TotalResistShadow.ToString() + " (0%)";
+            ResistLabel[2].text = Database.STRING_FIRE;
+            ResistLabelValue[2].text = "+" + player.TotalResistFire.ToString() + " (0%)";
+            ResistLabel[3].text = Database.STRING_ICE;
+            ResistLabelValue[3].text = "+" + player.TotalResistIce.ToString() + " (0%)";
+            ResistLabel[4].text = Database.STRING_FORCE;
+            ResistLabelValue[4].text = "+" + player.TotalResistForce.ToString() + " (0%)";
+            ResistLabel[5].text = Database.STRING_WILL;
+            ResistLabelValue[5].text = "+" + player.TotalResistWill.ToString() + " (0%)";
 
-        //    ResistAbnormalStatus[0].Text = Database.STRING_STUNNING;
-        //    if (player.CheckResistStun) ResistAbnormalStatusValue[0].Text = "○";
-        //    else ResistAbnormalStatusValue[0].Text = "";
-        //    ResistAbnormalStatus[1].Text = Database.STRING_SILENCE;
-        //    if (player.CheckResistSilence) ResistAbnormalStatusValue[1].Text = "○";
-        //    else ResistAbnormalStatusValue[1].Text = "";
-        //    ResistAbnormalStatus[2].Text = Database.STRING_POISON;
-        //    if (player.CheckResistPoison) ResistAbnormalStatusValue[2].Text = "○";
-        //    else ResistAbnormalStatusValue[2].Text = "";
-        //    ResistAbnormalStatus[3].Text = Database.STRING_TEMPTATION;
-        //    if (player.CheckResistTemptation) ResistAbnormalStatusValue[3].Text = "○";
-        //    else ResistAbnormalStatusValue[3].Text = "";
-        //    ResistAbnormalStatus[4].Text = Database.STRING_FROZEN;
-        //    if (player.CheckResistFrozen) ResistAbnormalStatusValue[4].Text = "○";
-        //    else ResistAbnormalStatusValue[4].Text = "";
-        //    ResistAbnormalStatus[5].Text = Database.STRING_PARALYZE;
-        //    if (player.CheckResistParalyze) ResistAbnormalStatusValue[5].Text = "○";
-        //    else ResistAbnormalStatusValue[5].Text = "";
-        //    ResistAbnormalStatus[6].Text = Database.STRING_SLOW;
-        //    if (player.CheckResistSlow) ResistAbnormalStatusValue[6].Text = "○";
-        //    else ResistAbnormalStatusValue[6].Text = "";
-        //    ResistAbnormalStatus[7].Text = Database.STRING_BLIND;
-        //    if (player.CheckResistBlind) ResistAbnormalStatusValue[7].Text = "○";
-        //    else ResistAbnormalStatusValue[7].Text = "";
-        //    ResistAbnormalStatus[8].Text = Database.STRING_SLIP;
-        //    if (player.CheckResistSlip) ResistAbnormalStatusValue[8].Text = "○";
-        //    else ResistAbnormalStatusValue[8].Text = "";
-        //    // [コメント] 復活不可は特殊なので、ステータスとして見せたくはない。
-        //    //ResistAbnormalStatus[9].Text = Database.STRING_NORESURRECTION;
-        //    //if (player.CheckResistNoResurrection) ResistAbnormalStatusValue[9].Text += "　○";
-        //}
+            ResistAbnormalStatus[0].text = Database.STRING_STUNNING;
+            if (player.CheckResistStun) ResistAbnormalStatusValue[0].text = "○";
+            else ResistAbnormalStatusValue[0].text = "--";
+            ResistAbnormalStatus[1].text = Database.STRING_SILENCE;
+            if (player.CheckResistSilence) ResistAbnormalStatusValue[1].text = "○";
+            else ResistAbnormalStatusValue[1].text = "--";
+            ResistAbnormalStatus[2].text = Database.STRING_POISON;
+            if (player.CheckResistPoison) ResistAbnormalStatusValue[2].text = "○";
+            else ResistAbnormalStatusValue[2].text = "--";
+            ResistAbnormalStatus[3].text = Database.STRING_TEMPTATION;
+            if (player.CheckResistTemptation) ResistAbnormalStatusValue[3].text = "○";
+            else ResistAbnormalStatusValue[3].text = "--";
+            ResistAbnormalStatus[4].text = Database.STRING_FROZEN;
+            if (player.CheckResistFrozen) ResistAbnormalStatusValue[4].text = "○";
+            else ResistAbnormalStatusValue[4].text = "--";
+            ResistAbnormalStatus[5].text = Database.STRING_PARALYZE;
+            if (player.CheckResistParalyze) ResistAbnormalStatusValue[5].text = "○";
+            else ResistAbnormalStatusValue[5].text = "--";
+            ResistAbnormalStatus[6].text = Database.STRING_SLOW;
+            if (player.CheckResistSlow) ResistAbnormalStatusValue[6].text = "○";
+            else ResistAbnormalStatusValue[6].text = "--";
+            ResistAbnormalStatus[7].text = Database.STRING_BLIND;
+            if (player.CheckResistBlind) ResistAbnormalStatusValue[7].text = "○";
+            else ResistAbnormalStatusValue[7].text = "--";
+            ResistAbnormalStatus[8].text = Database.STRING_SLIP;
+            if (player.CheckResistSlip) ResistAbnormalStatusValue[8].text = "○";
+            else ResistAbnormalStatusValue[8].text = "--";
+            // [コメント] 復活不可は特殊なので、ステータスとして見せたくはない。
+            //ResistAbnormalStatus[9].Text = Database.STRING_NORESURRECTION;
+            //if (player.CheckResistNoResurrection) ResistAbnormalStatusValue[9].Text += "　○";
+        }
 
         //Point basePhysicalLocation;
         private void RefreshPartyMembersBattleStatus(MainCharacter player)
@@ -2323,9 +2398,9 @@ namespace DungeonPlayer
                 if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
                 if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
                 if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-                for (int ii = 0; ii < group.Count; ii++)
+                for (int currentNumber = 0; currentNumber < group.Count; currentNumber++)
                 {
-                    group[ii].CurrentLife += lifeGain;
+                    group[currentNumber].CurrentLife += lifeGain;
                     mainMessage.text = String.Format(player.GetCharacterSentence(2035), lifeGain.ToString());
                 }
             }
@@ -2636,14 +2711,14 @@ namespace DungeonPlayer
             //TruthSelectEquipment tse = new TruthSelectEquipment();
             //ItemBackPack[] temp = targetPlayer.GetBackPackInfo();
             //int counter = 0;
-            //for (int ii = 0; ii < temp.Length; ii++)
+            //for (int currentNumber = 0; currentNumber < temp.Length; currentNumber++)
             //{
-            //    if (temp[ii] == null)
+            //    if (temp[currentNumber] == null)
             //        continue;
 
-            //    if (CheckEquipmentType(targetPlayer, temp[ii], equipType))
+            //    if (CheckEquipmentType(targetPlayer, temp[currentNumber], equipType))
             //    {
-            //        tse.btn[counter].Text = temp[ii].Name;
+            //        tse.btn[counter].Text = temp[currentNumber].Name;
             //        counter++;
             //    }
             //}
@@ -3296,11 +3371,11 @@ namespace DungeonPlayer
             if (GroundOne.UpPoint <= 0)
             {
                 plus1.gameObject.SetActive(false);
-                plus10.gameObject.SetActive(false)
-                plus100.gameObject.SetActive(false)
-                plus1000.gameObject.SetActive(false)
-                btnUpReset.gameObject.SetActive(false)
-                lblRemain.gameObject.SetActive(false)
+                plus10.gameObject.SetActive(false);
+                plus100.gameObject.SetActive(false);
+                plus1000.gameObject.SetActive(false);
+                btnUpReset.gameObject.SetActive(false);
+                lblRemain.gameObject.SetActive(false);
                 useOverShifting = false;
                 // todo (0point以下になった時、ボタン押下で継続してパラメタが割り振られないようにする事）
                 //buttonStrength.Enabled = false;
@@ -3310,7 +3385,7 @@ namespace DungeonPlayer
                 //buttonMind.Enabled = false;
                 grpParameter_Paint();
                 btnClose.gameObject.SetActive(true);
-                mainMessage.text = "アイン：っしゃ、再割り振り完了！";
+                mainMessage.text = player.GetCharacterSentence(2036);
                 player.CurrentLife = player.MaxLife;
                 player.CurrentSkillPoint = player.MaxSkillPoint;
                 player.CurrentMana = player.MaxMana;
