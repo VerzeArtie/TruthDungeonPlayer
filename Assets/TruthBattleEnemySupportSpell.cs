@@ -51,7 +51,7 @@ namespace DungeonPlayer
                     string spellNameWithoutExt = spellName.Substring(0, spellName.Length - 4);
                     if (TruthActionCommand.GetBuffType(spellNameWithoutExt) == TruthActionCommand.BuffType.Up)
                     {
-                        UpdateBattleText(target.Name + "はAusterityMatrixに支配されており、BUFFを付与できなかった！！\r\n");
+                        UpdateBattleText(target.FirstName + "はAusterityMatrixに支配されており、BUFFを付与できなかった！！\r\n");
                         //this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.EFFECT_CANNOT_BUFF); // todo
                         return;
                     }
@@ -212,31 +212,31 @@ namespace DungeonPlayer
                     case "MirrorImage":
                         target.CurrentMirrorImage = effectTime;
                         target.ActivateBuff(target.pbMirrorImage, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(57), player.Target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(57), player.Target.FirstName));
                         break;
 
                     case "Deflection":
                         target.CurrentDeflection = effectTime;
                         target.ActivateBuff(target.pbDeflection, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(60), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(60), target.FirstName));
                         break;
 
                     case "PsychicTrance":
                         target.CurrentPsychicTrance = effectTime;
                         target.ActivateBuff(target.pbPsychicTrance, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(129), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(129), target.FirstName));
                         break;
                     case "BlindJustice":
                         target.CurrentBlindJustice = effectTime;
                         target.ActivateBuff(target.pbBlindJustice, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(130), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(130), target.FirstName));
                         break;
                     case "TranscendentWish":
                         if (target.CurrentTranscendentWish <= 0)
                         {
                             target.CurrentTranscendentWish = effectTime;
                             target.ActivateBuff(target.pbTranscendentWish, Database.BaseResourceFolder + spellName, effectTime);
-                            UpdateBattleText(String.Format(player.GetCharacterSentence(131), target.Name));
+                            UpdateBattleText(String.Format(player.GetCharacterSentence(131), target.FirstName));
 
                             target.BuffStrength_TranscendentWish = (int)(PrimaryLogic.TranscendentWishValue(target, PrimaryLogic.ParameterType.Strength));
                             target.BuffAgility_TranscendentWish = (int)(PrimaryLogic.TranscendentWishValue(target, PrimaryLogic.ParameterType.Agility));
@@ -253,23 +253,23 @@ namespace DungeonPlayer
                         target.CurrentSkyShield = effectTime;
                         target.CurrentSkyShieldValue++;
                         target.ChangeSkyShieldStatus(target.CurrentSkyShieldValue);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(134), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(134), target.FirstName));
                         break;
                     case "StaticBarrier":
                         target.CurrentStaticBarrier = effectTime;
                         target.CurrentStaticBarrierValue++;
                         target.ChangeStaticBarrierStatus(target.CurrentStaticBarrierValue);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(186), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(186), target.FirstName));
                         break;
                     case "EverDroplet":
                         target.CurrentEverDroplet = effectTime;
                         target.ActivateBuff(target.pbEverDroplet, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(136), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(136), target.FirstName));
                         break;
                     case "FrozenAura":
                         target.CurrentFrozenAura = effectTime;
                         target.ActivateBuff(target.pbFrozenAura, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(137), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(137), target.FirstName));
                         break;
 
                     //case "Damnation":
@@ -295,7 +295,7 @@ namespace DungeonPlayer
                             target.CurrentStarLightning = effectTime;
                         }
                         target.ActivateBuff(target.pbStarLightning, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(target.Name + "は気絶した。\r\n");
+                        UpdateBattleText(target.FirstName + "は気絶した。\r\n");
                         break;
                     case "WordOfMalice":
                         target.CurrentWordOfMalice = effectTime;
@@ -304,7 +304,7 @@ namespace DungeonPlayer
                     case "SinFortune":
                         target.CurrentSinFortune = effectTime;
                         target.ActivateBuff(target.pbSinFortune, Database.BaseResourceFolder + spellName, effectTime);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(211), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(211), target.FirstName));
                         break;
                     case "BlackFire":
                         target.CurrentBlackFire = effectTime;
@@ -464,7 +464,7 @@ namespace DungeonPlayer
                         target.CurrentStanceOfMystic = effectTime;
                         target.CurrentStanceOfMysticValue++;
                         target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMysticValue);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(168), target.Name));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(168), target.FirstName));
                         break;
                     case "TruthVision":
                         player.CurrentTruthVision = effectTime;
@@ -592,73 +592,73 @@ namespace DungeonPlayer
                         player.CurrentFeltus = effectTime;
                         player.CurrentFeltusValue++;
                         player.ChangeFeltusStatus(player.CurrentFeltusValue);
-                        UpdateBattleText(target.Name + "に、【神】の蓄積カウンターが乗った！\r\n");
+                        UpdateBattleText(target.FirstName + "に、【神】の蓄積カウンターが乗った！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_JUZA_PHANTASMAL:
                         player.CurrentJuzaPhantasmal = effectTime;
                         player.CurrentJuzaPhantasmalValue++;
                         player.ChangeJuzaPhantasmalStatus(player.CurrentJuzaPhantasmalValue);
-                        UpdateBattleText(target.Name + "に、【颯】の蓄積カウンターが乗った！\r\n");
+                        UpdateBattleText(target.FirstName + "に、【颯】の蓄積カウンターが乗った！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_ETERNAL_FATE:
                         player.CurrentEternalFateRing = effectTime;
                         player.CurrentEternalFateRingValue++;
                         player.ChangeEternalFateRingStatus(player.CurrentEternalFateRingValue);
-                        UpdateBattleText(target.Name + "に、【轟】の蓄積カウンターが乗った！\r\n");
+                        UpdateBattleText(target.FirstName + "に、【轟】の蓄積カウンターが乗った！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_LIGHT_SERVANT:
                         player.CurrentLightServant = effectTime;
                         player.CurrentLightServantValue++;
                         player.ChangeLightServantStatus(player.CurrentLightServantValue);
-                        UpdateBattleText(player.Name + "に、【聖】の蓄積カウンターが乗った！\r\n");
+                        UpdateBattleText(player.FirstName + "に、【聖】の蓄積カウンターが乗った！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_SHADOW_SERVANT:
                         player.CurrentShadowServant = effectTime;
                         player.CurrentShadowServantValue++;
                         player.ChangeShadowServantStatus(player.CurrentShadowServantValue);
-                        UpdateBattleText(player.Name + "に、【闇】の蓄積カウンターが乗った！\r\n");
+                        UpdateBattleText(player.FirstName + "に、【闇】の蓄積カウンターが乗った！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN:
                         player.CurrentAdilBlueBurn = effectTime;
                         player.CurrentAdilBlueBurnValue++;
                         player.ChangeAdilBlueBurnStatus(player.CurrentAdilBlueBurnValue);
-                        UpdateBattleText(target.Name + "に、【蒼】の蓄積カウンターが乗った！\r\n");
+                        UpdateBattleText(target.FirstName + "に、【蒼】の蓄積カウンターが乗った！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_MAZE_CUBE:
                         player.CurrentMazeCube = effectTime;
                         player.CurrentMazeCubeValue++;
                         player.ChangeMazeCubeStatus(player.CurrentMazeCubeValue);
-                        UpdateBattleText(player.Name + "に、【迷】の蓄積カウンターが乗った！\r\n");
+                        UpdateBattleText(player.FirstName + "に、【迷】の蓄積カウンターが乗った！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_DETACHMENT_ORB:
                         player.CurrentDetachmentOrb = effectTime;
                         player.ActivateBuff(player.pbDetachmentOrb, Database.BaseResourceFolder + spellName + fileExt, effectTime);
-                        UpdateBattleText(player.Name + "に、全ダメージ無効の乖離フィールドが展開された！\r\n");
+                        UpdateBattleText(player.FirstName + "に、全ダメージ無効の乖離フィールドが展開された！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_DEVIL_SUMMONER_TOME:
                         player.CurrentDevilSummonerTome = effectTime;
                         player.ActivateBuff(player.pbDevilSummonerTome, Database.BaseResourceFolder + spellName + fileExt, effectTime);
-                        UpdateBattleText(player.Name + "はアークデーモンを召喚した！\r\n");
+                        UpdateBattleText(player.FirstName + "はアークデーモンを召喚した！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_VOID_HYMNSONIA:
                         player.CurrentVoidHymnsonia = effectTime;
                         player.ActivateBuff(player.pbVoidHymnsonia, Database.BaseResourceFolder + spellName + fileExt, effectTime);
-                        UpdateBattleText(player.Name + "は空虚な歌声に心を奪われた状態となった！\r\n");
+                        UpdateBattleText(player.FirstName + "は空虚な歌声に心を奪われた状態となった！\r\n");
                         break;
 
                     case Database.ITEMCOMMAND_GENSEI_TAIMA:
                         player.CurrentGenseiTaima = effectTime;
                         player.ActivateBuff(player.pbGenseiTaima, Database.BaseResourceFolder + spellName + fileExt, effectTime);
-                        UpdateBattleText(player.Name + "は退魔の薬を使用する事で、即死に対する恐怖感を振り払った！\r\n");
+                        UpdateBattleText(player.FirstName + "は退魔の薬を使用する事で、即死に対する恐怖感を振り払った！\r\n");
                         break;
 
                     case Database.LIFE_COUNT:
@@ -668,7 +668,7 @@ namespace DungeonPlayer
                         player.ActivateBuff(player.pbLifeCount, Database.BaseResourceFolder + spellName + fileExt, effectTime);
                         player.CurrentLifeCountValue = 3;
                         player.ChangeLifeCountStatus(player.CurrentLifeCountValue);
-                        UpdateBattleText(player.Name + "に生命力カウンターが３つ発生した！\r\n");
+                        UpdateBattleText(player.FirstName + "に生命力カウンターが３つ発生した！\r\n");
                         break;
 
                     case Database.CHAOTIC_SCHEMA:

@@ -126,6 +126,7 @@ namespace DungeonPlayer
 
             this.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
             this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+            Debug.Log("cam backcolor: " + this.cam.backgroundColor.ToString());
             MainCharacter player = GetCurrentPlayer();
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);
@@ -411,15 +412,23 @@ namespace DungeonPlayer
             MainCharacter player = null;
             if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
             {
+                Debug.Log("MC color");
                 player = GroundOne.MC;
             }
             else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
             {
                 player = GroundOne.SC;
+                Debug.Log("sc color");
             }
             else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
             {
                 player = GroundOne.TC;
+                Debug.Log("tc color");
+            }
+            else
+            {
+                Debug.Log("unknown...");
+                if (GroundOne.MC == null) { Debug.Log("fatal sequence..."); }
             }
             return player;
         }
@@ -438,7 +447,7 @@ namespace DungeonPlayer
 
             if (player.Dead)
             {
-                mainMessage.text = "【" + player.Name + "は死んでしまっているため、アイテムが使えない。】";
+                mainMessage.text = "【" + player.FirstName + "は死んでしまっているため、アイテムが使えない。】";
                 return;
             }
 
@@ -1287,9 +1296,9 @@ namespace DungeonPlayer
             }
             else // ここからが「わたす」コマンドである
             {
-                targetName1.text = GroundOne.MC.Name;
-                targetName2.text = GroundOne.SC.Name;
-                targetName3.text = GroundOne.TC.Name;
+                targetName1.text = GroundOne.MC.FirstName;
+                targetName2.text = GroundOne.SC.FirstName;
+                targetName3.text = GroundOne.TC.FirstName;
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
@@ -1354,15 +1363,15 @@ namespace DungeonPlayer
             if (exchangeValue <= -1) return;
 
             MainCharacter target = null;
-            if (sender.text == GroundOne.MC.Name)
+            if (sender.text == GroundOne.MC.FirstName)
             {
                 target = GroundOne.MC;
             }
-            else if (sender.text == GroundOne.SC.Name)
+            else if (sender.text == GroundOne.SC.FirstName)
             {
                 target = GroundOne.SC;
             }
-            else if (sender.text == GroundOne.TC.Name)
+            else if (sender.text == GroundOne.TC.FirstName)
             {
                 target = GroundOne.TC;
             }
@@ -1399,7 +1408,7 @@ namespace DungeonPlayer
             }
             else
             {
-                mainMessage.text = String.Format(player.GetCharacterSentence(2003), target.Name);
+                mainMessage.text = String.Format(player.GetCharacterSentence(2003), target.FirstName);
             }
         }
 
@@ -2219,7 +2228,7 @@ namespace DungeonPlayer
 
             if (player.Dead)
             {
-                mainMessage.text = "【" + player.Name + "は死んでしまっているため、魔法詠唱ができない。】";
+                mainMessage.text = "【" + player.FirstName + "は死んでしまっているため、魔法詠唱ができない。】";
                 return;
             }
 
@@ -2343,7 +2352,7 @@ namespace DungeonPlayer
                 {
                     if (target.Dead)
                     {
-                        mainMessage.text = "【" + target.Name + "は死んでしまっているため、効果がない。】";
+                        mainMessage.text = "【" + target.FirstName + "は死んでしまっているため、効果がない。】";
                         return;
                     }
 
@@ -2378,7 +2387,7 @@ namespace DungeonPlayer
                     }
                     else if (!target.Dead)
                     {
-                        mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.Name);
+                        mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.FirstName);
                     }
                 }
                 this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();

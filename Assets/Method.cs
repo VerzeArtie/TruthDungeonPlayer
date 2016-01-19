@@ -2111,10 +2111,10 @@ namespace DungeonPlayer
             //                debugCounter8.ToString() + "\r\n");
 
             #region "ボス撃破、固定ドロップアイテム"
-            if ((category == NewItemCategory.Battle && ec1 != null && ec1.Name == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
-                (category == NewItemCategory.Battle && ec1 != null && ec1.Name == Database.ENEMY_BOSS_LEVIATHAN) ||
-                (category == NewItemCategory.Battle && ec1 != null && ec1.Name == Database.ENEMY_BOSS_HOWLING_SEIZER) ||
-                (category == NewItemCategory.Battle && ec1 != null && ec1.Name == Database.ENEMY_BOSS_LEGIN_ARZE_1))
+            if ((category == NewItemCategory.Battle && ec1 != null && ec1.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
+                (category == NewItemCategory.Battle && ec1 != null && ec1.FirstName == Database.ENEMY_BOSS_LEVIATHAN) ||
+                (category == NewItemCategory.Battle && ec1 != null && ec1.FirstName == Database.ENEMY_BOSS_HOWLING_SEIZER) ||
+                (category == NewItemCategory.Battle && ec1 != null && ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1))
             {
                 targetItemName = ec1.DropItem[0];
             }

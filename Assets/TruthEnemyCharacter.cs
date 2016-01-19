@@ -4486,7 +4486,7 @@ namespace DungeonPlayer
             this.AvailableSkill = true;
 
             // todo
-            this.Name = createName;
+            this.FirstName = createName;
             switch (createName)
             {
                 #region "ダンジョン１階"

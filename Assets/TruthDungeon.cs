@@ -13,7 +13,7 @@ namespace DungeonPlayer
     {
         int nowReading = 0;
         List<string> nowMessage = new List<string>();
-        List<DungeonPlayer.MessagePack.ActionEvent> nowEvent = new List<DungeonPlayer.MessagePack.ActionEvent>();
+        List<MessagePack.ActionEvent> nowEvent = new List<MessagePack.ActionEvent>();
 
         // initialize data list
         List<GameObject> objList = new List<GameObject>();
@@ -5571,65 +5571,41 @@ namespace DungeonPlayer
         }
         private bool GetTreasure(string targetItemName, bool MustGetIt)
         {
-            CancelKeyDownMovement();
-            return true; // [todo] アイテム追加を実装してください。
-
-            //using (OKRequest ok = new OKRequest())
-            //{
-            //    ok.StartPosition = FormStartPosition.Manual;
-            //    ok.Location = new Point(this.transform.position.x + 904, this.transform.position.y + 708);
-            //    if (MustGetIt == false)
-            //    {
-            //        UpdateMainMessage("アイン:よっしゃ！お宝だぜ！");
-            //    }
-            //    ItemBackPack backpackData = new ItemBackPack(targetItemName);
-            //    // [警告]：芋プログラミングです。整備してください。
-            //    bool result1 = GroundOne.MC.AddBackPack(backpackData);
-            //    if (result1)
-            //    {
-            //        UpdateMainMessage("『" + backpackData.Name + "を手に入れました』");
-            //        return true;
-            //    }
-            //    else
-            //    {
-            //        if (GroundOne.WE.AvailableSecondCharacter)
-            //        {
-            //            bool result2 = sc.AddBackPack(backpackData);
-            //            if (result2)
-            //            {
-            //                UpdateMainMessage("『" + backpackData.Name + "を手に入れました』");
-            //                return true;
-            //            }
-            //            else
-            //            {
-            //                if (GroundOne.WE.AvailableThirdCharacter)
-            //                {
-            //                    bool result3 = tc.AddBackPack(backpackData);
-            //                    if (result3)
-            //                    {
-            //                        UpdateMainMessage("『" + backpackData.Name + "を手に入れました』");
-            //                        return true;
-            //                    }
-            //                    else
-            //                    {
-            //                        UpdateMainMessage("荷物がいっぱいです。" + backpackData.Name + "を入手できませんでした。");
-            //                        return false;
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    UpdateMainMessage("荷物がいっぱいです。" + backpackData.Name + "を入手できませんでした。");
-            //                    return false;
-            //                }
-            //            }
-            //        }
-            //        else
-            //        {
-            //            UpdateMainMessage("荷物がいっぱいです。" + backpackData.Name + "を入手できませんでした。");
-            //            return false;
-            //        }
-            //    }
-            //}
+            if (MustGetIt == false)
+            {
+                nowMessage.Add("アイン:よっしゃ！お宝だぜ！"); nowEvent.Add(MessagePack.ActionEvent.None);
+            }
+            ItemBackPack backpackData = new ItemBackPack(targetItemName);
+            bool result1 = GroundOne.MC.AddBackPack(backpackData);
+            if (result1)
+            {
+                nowMessage.Add("『" + backpackData.Name + "を手に入れました』"); nowEvent.Add(MessagePack.ActionEvent.None);
+                tapOK();
+                return true;
+            }
+            if (GroundOne.WE.AvailableSecondCharacter)
+            {
+                bool result2 = GroundOne.SC.AddBackPack(backpackData);
+                if (result2)
+                {
+                    nowMessage.Add("『" + backpackData.Name + "を手に入れました』"); nowEvent.Add(MessagePack.ActionEvent.None);
+                    tapOK();
+                    return true;
+                }
+            }
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                bool result3 = GroundOne.TC.AddBackPack(backpackData);
+                if (result3)
+                {
+                    nowMessage.Add("『" + backpackData.Name + "を手に入れました』"); nowEvent.Add(MessagePack.ActionEvent.None);
+                    tapOK();
+                    return true;
+                }
+            }
+            nowMessage.Add("荷物がいっぱいです。" + backpackData.Name + "を入手できませんでした。"); nowEvent.Add(MessagePack.ActionEvent.None);
+            tapOK();
+            return false;
         }
 
         private bool ExecSomeEvents(int area, int ii)
@@ -5677,18 +5653,24 @@ namespace DungeonPlayer
                     #endregion
                     #region "宝箱エリア１"
                     case 6:
+                        Debug.Log("treasure11");
                         GroundOne.WE.TruthTreasure11 = GetTreasure(Database.COMMON_SIMPLE_BRACELET);
+                        
                         break;
                     case 7:
+                        Debug.Log("treasure12");
                         GroundOne.WE.TruthTreasure12 = GetTreasure(Database.POOR_HARD_SHOES);
                         break;
                     case 8:
+                        Debug.Log("treasure13");
                         GroundOne.WE.TruthTreasure13 = GetTreasure(Database.COMMON_SEAL_OF_POSION);
                         break;
                     case 9:
+                        Debug.Log("treasure14");
                         GroundOne.WE.TruthTreasure14 = GetTreasure(Database.COMMON_GREEN_EGG_KAIGARA);
                         break;
                     case 10:
+                        Debug.Log("treasure15");
                         GroundOne.WE.TruthTreasure15 = GetTreasure(Database.COMMON_CHARM_OF_FIRE_ANGEL);
                         break;
                     #endregion

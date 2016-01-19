@@ -229,7 +229,7 @@ namespace DungeonPlayer
                 // 戦闘画面UIへの初期設定
                 // MainCharacterクラス内容と戦闘画面UIの割り当て
                 player.labelName = charaName;
-                player.labelName.text = player.Name;
+                player.labelName.text = player.FirstName;
 
                 player.labelCurrentLifePoint = life;
                 UpdateLife(player);
@@ -441,8 +441,8 @@ namespace DungeonPlayer
                 // 各プレイヤーのターゲット選定
                 player.Target = target;
                 player.Target2 = player; // 味方選択はデフォルトでは自分自身としておく。
-                if ((player.Name == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU) ||
-                    (player.Name == Database.ENEMY_SEA_STAR_KNIGHT_AMARA))
+                if ((player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU) ||
+                    (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA))
                 {
                     player.Target2 = ec1;
                 }
@@ -460,7 +460,7 @@ namespace DungeonPlayer
                 else
                 {
                     player.BattleBarPos = rand.Next(100, 400);
-                    if (player.Name == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
+                    if (player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
                     {
                         player.BattleBarPos = ec1.BattleBarPos + 250;
                         if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
@@ -469,7 +469,7 @@ namespace DungeonPlayer
                         }
                     }
 
-                    if (player.Name == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU)
+                    if (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU)
                     {
                         player.BattleBarPos = ec1.BattleBarPos + 150;
                         if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
@@ -477,7 +477,7 @@ namespace DungeonPlayer
                             player.BattleBarPos -= Database.BASE_TIMER_BAR_LENGTH;
                         }
                     }
-                    if (player.Name == Database.ENEMY_SEA_STAR_KNIGHT_AMARA)
+                    if (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA)
                     {
                         player.BattleBarPos = ec1.BattleBarPos + 300;
                         if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
@@ -523,8 +523,8 @@ namespace DungeonPlayer
                         player.labelCurrentInstantPoint.gameObject.SetActive(false);
                     }
                 }
-                if ((player.Name == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
-                    (player.Name == Database.ENEMY_BRILLIANT_SEA_PRINCE))
+                if ((player.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
+                    (player.FirstName == Database.ENEMY_BRILLIANT_SEA_PRINCE))
                 {
                     player.labelCurrentInstantPoint.gameObject.SetActive(true);
                 }
@@ -736,13 +736,13 @@ namespace DungeonPlayer
                 #endregion
 
                 // 敵側、初期BUFFをセットアップ
-                if (player == ec1 && player.Name == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                if (player == ec1 && player.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
                 {
                     player.CurrentResistFireUp = Database.INFINITY;
                     player.CurrentResistFireUpValue = 2000;
                     player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", Database.INFINITY);
                 }
-                if (player == ec2 && player.Name == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
+                if (player == ec2 && player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
                 {
                     player.CurrentResistIceUp = Database.INFINITY;
                     player.CurrentResistIceUpValue = 2000;
@@ -882,15 +882,6 @@ namespace DungeonPlayer
                 SetupBuff( pbBuffEnemy3, PanelBuffEnemy3, ii);                
             }
             GameObject baseObj = new GameObject("object");
-            GroundOne.MC.Name = Database.EIN_WOLENCE_FULL;
-            GroundOne.MC.Strength = 5;
-            GroundOne.MC.Agility = 3;
-            GroundOne.MC.Intelligence = 2;
-            GroundOne.MC.Stamina = 7;
-            GroundOne.MC.Mind = 3;
-            GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife;
-            GroundOne.MC.CurrentMana = GroundOne.MC.MaxMana;
-            GroundOne.MC.CurrentSkillPoint = GroundOne.MC.MaxSkillPoint;
             GroundOne.MC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.MC.CurrentInstantPoint = 0;
             GroundOne.MC.MainFaceArrow = this.player1Arrow;
@@ -911,15 +902,6 @@ namespace DungeonPlayer
             GroundOne.MC.ActionButtonList.AddRange(this.ActionButton1);
             this.playerList.Add(GroundOne.MC);
 
-            GroundOne.SC.Name = Database.RANA_AMILIA_FULL;
-            GroundOne.SC.Strength = 2;
-            GroundOne.SC.Agility = 4;
-            GroundOne.SC.Intelligence = 5;
-            GroundOne.SC.Stamina = 5;
-            GroundOne.SC.Mind = 3;
-            GroundOne.SC.CurrentLife = GroundOne.SC.MaxLife;
-            GroundOne.SC.CurrentMana = GroundOne.SC.MaxMana;
-            GroundOne.SC.CurrentSkillPoint = GroundOne.SC.MaxSkillPoint;
             GroundOne.SC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.SC.CurrentInstantPoint = 0;
             GroundOne.SC.MainFaceArrow = this.player2Arrow;
@@ -940,15 +922,6 @@ namespace DungeonPlayer
             GroundOne.SC.ActionButtonList.AddRange(this.ActionButton2);
             this.playerList.Add(GroundOne.SC);
 
-            GroundOne.TC.Name = Database.OL_LANDIS_FULL;
-            GroundOne.TC.Strength = 3;
-            GroundOne.TC.Agility = 5;
-            GroundOne.TC.Intelligence = 4;
-            GroundOne.TC.Stamina = 3;
-            GroundOne.TC.Mind = 5;
-            GroundOne.TC.CurrentLife = GroundOne.TC.MaxLife;
-            GroundOne.TC.CurrentMana = GroundOne.TC.MaxMana;
-            GroundOne.TC.CurrentSkillPoint = GroundOne.TC.MaxSkillPoint;
             GroundOne.TC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.TC.CurrentInstantPoint = 0;
             GroundOne.TC.MainFaceArrow = this.player3Arrow;
@@ -1281,7 +1254,7 @@ namespace DungeonPlayer
             #region "各プレイヤーの戦闘フェーズ"
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
-                if (this.NowTimeStop && ActiveList[ii].CurrentTimeStop <= 0 && ActiveList[ii].Name != Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                if (this.NowTimeStop && ActiveList[ii].CurrentTimeStop <= 0 && ActiveList[ii].FirstName != Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
                     // 時間は飛ばされる
                 }
@@ -1638,7 +1611,7 @@ namespace DungeonPlayer
                 return;
             }
             double movement = PrimaryLogic.BattleSpeedValue(player, this.DuelMode);
-            if (player.Name == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+            if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
             {
                 //TruthEnemyCharacter player2 = ((TruthEnemyCharacter)player); // todo 対象が無い？
                 movement = movement + Math.Log((double)(1 + this.BattleTurnCount)) / 3;
@@ -1718,28 +1691,28 @@ namespace DungeonPlayer
         {
             if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC) return; // コンピューター専用ルーチンのため、プレイヤー側は何もしない。
 
-            if (player.Name == Database.DUEL_OL_LANDIS) // オル・ランディスは常に戦術を変更可能とする。ヴェルゼなど主要人物は全て該当。
+            if (player.FirstName == Database.DUEL_OL_LANDIS) // オル・ランディスは常に戦術を変更可能とする。ヴェルゼなど主要人物は全て該当。
             {
                 ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
             }
-            else if (player.Name == Database.VERZE_ARTIE_FULL || player.Name == Database.VERZE_ARTIE
-                  || player.Name == Database.ENEMY_LAST_RANA_AMILIA
-                  || player.Name == Database.ENEMY_LAST_SINIKIA_KAHLHANZ
-                  || player.Name == Database.ENEMY_LAST_OL_LANDIS
-                  || player.Name == Database.ENEMY_LAST_VERZE_ARTIE
-                  || player.Name == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+            else if (player.FirstName == Database.VERZE_ARTIE_FULL || player.FirstName == Database.VERZE_ARTIE
+                  || player.FirstName == Database.ENEMY_LAST_RANA_AMILIA
+                  || player.FirstName == Database.ENEMY_LAST_SINIKIA_KAHLHANZ
+                  || player.FirstName == Database.ENEMY_LAST_OL_LANDIS
+                  || player.FirstName == Database.ENEMY_LAST_VERZE_ARTIE
+                  || player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
             {
                 ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
             }
-            else if ((player.Name == Database.DUEL_SHUVALTZ_FLORE) ||
-                     (player.Name == Database.DUEL_SIN_OSCURETE))
+            else if ((player.FirstName == Database.DUEL_SHUVALTZ_FLORE) ||
+                     (player.FirstName == Database.DUEL_SIN_OSCURETE))
             {
                 ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
             }
             else
             {
                 if ((!player.ActionDecision && player.BattleBarPos > player.DecisionTiming) ||
-                    ((TruthEnemyCharacter)player).Name == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                    ((TruthEnemyCharacter)player).FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
                     player.ActionDecision = true;
 
@@ -3586,19 +3559,19 @@ namespace DungeonPlayer
                     }
                     if (soundName == Database.SOUND_STRAIGHT_SMASH)
                     {
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(124), target.Name, (int)damage), interval);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(124), target.FirstName, (int)damage), interval);
                     }
                     else if (textNumber != -1)
                     {
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(textNumber), target.Name, (int)damage), interval);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(textNumber), target.FirstName, (int)damage), interval);
                     }
                     else
                     {
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(115), target.Name, (int)damage), interval);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(115), target.FirstName, (int)damage), interval);
                     }
 
                     // ライフを更新
-                    Debug.Log("damage: " + player.Name + " -> " + target.Name + " " + ((int)damage).ToString());
+                    Debug.Log("damage: " + player.FirstName + " -> " + target.FirstName + " " + ((int)damage).ToString());
                     LifeDamage(damage, target, interval, detectCritical);
 
                     // todo
@@ -4464,7 +4437,7 @@ namespace DungeonPlayer
 
                     damage = DamageIsZero(damage, player);
                     LifeDamage(damage, player);
-                    UpdateBattleText(String.Format(target.GetCharacterSentence(58), ((int)damage).ToString(), player.Name), 1000);
+                    UpdateBattleText(String.Format(target.GetCharacterSentence(58), ((int)damage).ToString(), player.FirstName), 1000);
 
                     target.CurrentMirrorImage = 0;
                     target.DeBuff(target.pbMirrorImage);
@@ -4538,7 +4511,7 @@ namespace DungeonPlayer
             }
             else
             {
-                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.Name, ((int)damage).ToString()), interval);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()), interval);
             }
 
             // アビス・ファイアによる効果
@@ -4546,7 +4519,7 @@ namespace DungeonPlayer
             {
                 double effectValue = PrimaryLogic.AbyssFireValue(ec1); // ダメージ発生源はレギィンアーゼ
                 LifeDamage(effectValue, player, interval);
-                UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.Name, ((int)effectValue).ToString()), interval);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.FirstName, ((int)effectValue).ToString()), interval);
             }
 
             // todo
@@ -4572,7 +4545,7 @@ namespace DungeonPlayer
             {
                 UpdateBattleText("焔の印が赤く輝く！\r\n");
                 LifeDamage(damage, target, interval, detectCritical);
-                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.Name, ((int)damage).ToString()), interval);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()), interval);
             }
 
             // アダーカー・フォルス・ロッドによる効果
@@ -4687,8 +4660,8 @@ namespace DungeonPlayer
             target.CurrentLife += (int)value;
             if (target.CurrentLife > target.MaxLife) { target.CurrentLife = target.MaxLife; }
             UpdateLife(target);
-            UpdateMessage(" target2 name " + player.Target2.Name); // = " + player.Target2.ToString()); }
-            UpdateMessage(player.labelName.text + " " + Database.FRESH_HEAL + " to " + player.Target2.Name + " " + value);
+            UpdateMessage(" target2 name " + player.Target2.FirstName); // = " + player.Target2.ToString()); }
+            UpdateMessage(player.labelName.text + " " + Database.FRESH_HEAL + " to " + player.Target2.FirstName + " " + value);
         }
         // ダークブラスト
         private void PlayerSpellDarkBlast(MainCharacter player, MainCharacter target)
@@ -5084,7 +5057,7 @@ namespace DungeonPlayer
             target.RemoveSpeedDown();
             target.RemoveReactionDown();
             target.RemovePotentialDown();
-            UpdateBattleText(target.Name + "の能力低下状態が解除された！");
+            UpdateBattleText(target.FirstName + "の能力低下状態が解除された！");
         }
 
         /// <summary>

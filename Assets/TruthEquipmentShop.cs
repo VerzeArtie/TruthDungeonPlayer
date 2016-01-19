@@ -57,7 +57,7 @@ namespace DungeonPlayer
             GroundOne.InitializeGroundOne();
             GameObject objGanz = new GameObject("objGanz");
             ganz = objGanz.AddComponent<MainCharacter>();
-            ganz.Name = "ガンツ";
+            ganz.FirstName = "ガンツ";
             this.currentPlayer = GroundOne.MC;
 
             // todo

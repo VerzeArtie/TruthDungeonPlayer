@@ -4,6 +4,11 @@ using System.Text;
 using System.Net.Sockets;
 using System.Net;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+using System.Xml;
+using System.Reflection;
+using DungeonPlayer;
 
 namespace DungeonPlayer
 {
@@ -74,6 +79,12 @@ namespace DungeonPlayer
         // SaveLoad
         public static bool SaveMode = false; // false:Load true:Save
 
+        // TruthHomeTown
+        public static bool TruthHomeTown_NowExit = false;
+
+        // Title
+        public static bool Title_LoadAndGo = false;
+
         public static void InitializeGroundOne()
         {
             if (AlreadyInitialize == false) { AlreadyInitialize = true; }
@@ -85,8 +96,8 @@ namespace DungeonPlayer
             WE = objWE.AddComponent<WorldEnvironment>();
             WE.DungeonArea = 1;
 
-            WE.Truth_CommunicationFirstHomeTown = true;
-            WE.TruthCompleteArea1 = true;
+            //WE.Truth_CommunicationFirstHomeTown = true;
+            //WE.TruthCompleteArea1 = true;
 
             WE.AvailableFirstCharacter = true;
             WE.AvailableSecondCharacter = true;
@@ -99,10 +110,10 @@ namespace DungeonPlayer
             //UpPoint = 2638;
 
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
-            WE2.TruthRecollection1 = true;
+            //WE2.TruthRecollection1 = true;
 
             MC = objMC.AddComponent<MainCharacter>();
-            MC.Name = Database.EIN_WOLENCE;
+            MC.FirstName = Database.EIN_WOLENCE;
             MC.FullName = Database.EIN_WOLENCE_FULL;
             MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
             MC.Agility = Database.MAINPLAYER_FIRST_AGILITY;
@@ -295,7 +306,7 @@ namespace DungeonPlayer
             MC.BattleActionCommandList[8] = Database.STAY_EN;
 
             SC = objSC.AddComponent<MainCharacter>();
-            SC.Name = Database.RANA_AMILIA;
+            SC.FirstName = Database.RANA_AMILIA;
             SC.FullName = Database.RANA_AMILIA_FULL;
             SC.AddBackPack(new ItemBackPack(Database.COMMON_ELECTRO_ROD));
             SC.BattleActionCommandList[0] = Database.ATTACK_EN;
@@ -309,7 +320,7 @@ namespace DungeonPlayer
             SC.BattleActionCommandList[8] = Database.STAY_EN;
 
             TC = objTC.AddComponent<MainCharacter>();
-            TC.Name = Database.OL_LANDIS;
+            TC.FirstName = Database.OL_LANDIS;
             TC.FullName = Database.OL_LANDIS_FULL;
             TC.BattleActionCommandList[0] = Database.ATTACK_EN;
             TC.BattleActionCommandList[1] = Database.DEFENSE_EN;

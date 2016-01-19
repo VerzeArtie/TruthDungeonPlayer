@@ -12,22 +12,57 @@ namespace DungeonPlayer
 {
     public class Title : MonoBehaviour
     {
+        bool ExecFirstGo = false;
         void Start()
         {
             GroundOne.InitializeGroundOne();
+            DontDestroyOnLoad(GroundOne.MC);
+            DontDestroyOnLoad(GroundOne.SC);
+            DontDestroyOnLoad(GroundOne.TC);
+            DontDestroyOnLoad(GroundOne.WE);
+            DontDestroyOnLoad(GroundOne.WE2);
+            if (GroundOne.Title_LoadAndGo)
+            {
+                GroundOne.Title_LoadAndGo = false;
+                this.ExecFirstGo = true;
+            }
         }
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (this.ExecFirstGo)
             {
-                DontDestroyOnLoad(GroundOne.MC);
-                DontDestroyOnLoad(GroundOne.SC);
-                DontDestroyOnLoad(GroundOne.TC);
-                DontDestroyOnLoad(GroundOne.WE);
-                DontDestroyOnLoad(GroundOne.WE2);
-                SceneDimension.Go(Database.Title, Database.TruthHomeTown);
+                this.ExecFirstGo = false;
+                SceneDimension.Go(Database.Title, Database.TruthHomeTown); // todo ÉçÅ[ÉhêÊÇÕà·Ç§
+
             }
+        }
+
+        public void GameStart_Click()
+        {
+            SceneDimension.Go(Database.Title, Database.TruthHomeTown);
+        }
+
+        public void Load_Click()
+        {
+            GroundOne.SaveMode = false;
+            GroundOne.Title_LoadAndGo = true;
+            SceneDimension.Go(Database.Title, Database.SaveLoad);
+        }
+
+        public void Config_Click()
+        {
+
+        }
+
+        public void Exit_Click()
+        {
+            Application.Quit();
+        }
+
+        public void Seeker_Click()
+        {
+
         }
     }
 }

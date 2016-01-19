@@ -159,12 +159,12 @@ namespace DungeonPlayer
                 // 「誘惑」敵にダメージを与える要因がある行動ができなくなる。
                 if (PA == MainCharacter.PlayerAction.UseSpell && TruthActionCommand.IsTemptationEffect(CurrentSpellName))
                 {
-                    UpdateBattleText(player.Name + "は誘惑にかられており、敵にダメージを与える気になれないでいる。\r\n");
+                    UpdateBattleText(player.FirstName + "は誘惑にかられており、敵にダメージを与える気になれないでいる。\r\n");
                     return;
                 }
                 if (PA == MainCharacter.PlayerAction.UseSkill && TruthActionCommand.IsTemptationEffect(CurrentSkillName))
                 {
-                    UpdateBattleText(player.Name + "は誘惑にかられており、敵にダメージを与える気になれないでいる。\r\n");
+                    UpdateBattleText(player.FirstName + "は誘惑にかられており、敵にダメージを与える気になれないでいる。\r\n");
                     return;
                 }
                 if (PA == MainCharacter.PlayerAction.Archetype && TruthActionCommand.IsTemptationEffect(CurrentArchetypeName))
@@ -173,7 +173,7 @@ namespace DungeonPlayer
                 }
                 if (PA == MainCharacter.PlayerAction.NormalAttack)
                 {
-                    UpdateBattleText(player.Name + "は誘惑にかられており、敵にダメージを与える気になれないでいる。\r\n");
+                    UpdateBattleText(player.FirstName + "は誘惑にかられており、敵にダメージを与える気になれないでいる。\r\n");
                     return;
                 }
             }
@@ -4364,8 +4364,8 @@ namespace DungeonPlayer
             {
                 // ライフを消費して、発動
                 double effectValue = PrimaryLogic.DarknessCoinValue(player);
-                UpdateBattleText(player.Name + "が装着している" + Database.RARE_DARKNESS_COIN + "が禍々しいオーラを放つ！\r\n");
-                UpdateBattleText(player.Name + "のライフが" + ((int)effectValue).ToString() + "削り取られ、スキル発動が強要された！\r\n");
+                UpdateBattleText(player.FirstName + "が装着している" + Database.RARE_DARKNESS_COIN + "が禍々しいオーラを放つ！\r\n");
+                UpdateBattleText(player.FirstName + "のライフが" + ((int)effectValue).ToString() + "削り取られ、スキル発動が強要された！\r\n");
                 LifeDamage(effectValue, player);
                 return true;
             }
@@ -5319,7 +5319,7 @@ namespace DungeonPlayer
                     target.CurrentStunning = effectTime;
                 }
                 target.ActivateBuff(target.pbStun, Database.BaseResourceFolder + "Stunning.bmp", target.CurrentStunning);
-                UpdateBattleText(target.Name + "は気絶した。\r\n");
+                UpdateBattleText(target.FirstName + "は気絶した。\r\n");
             }
         }
 
@@ -5349,7 +5349,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_SILENCE);
                 target.CurrentSilence = effectTime;
                 target.ActivateBuff(target.pbSilence, Database.BaseResourceFolder + "Silence.bmp", effectTime);
-                UpdateBattleText(target.Name + "は沈黙にかかった。\r\n");
+                UpdateBattleText(target.FirstName + "は沈黙にかかった。\r\n");
             }
         }
 
@@ -5382,7 +5382,7 @@ namespace DungeonPlayer
                     target.CurrentPoisonValue = 1;
                     target.ActivateBuff(target.pbPoison, Database.BaseResourceFolder + "Poison.bmp", effectValue);
                 }
-                UpdateBattleText(target.Name + "は猛毒におかされた。\r\n");
+                UpdateBattleText(target.FirstName + "は猛毒におかされた。\r\n");
             }
         }
 
@@ -5412,7 +5412,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_TEMPTATION);
                 target.CurrentTemptation = effectTime;
                 target.ActivateBuff(target.pbTemptation, Database.BaseResourceFolder + "Temptation.bmp", effectTime);
-                UpdateBattleText(target.Name + "は誘惑にかかった。\r\n");
+                UpdateBattleText(target.FirstName + "は誘惑にかかった。\r\n");
             }
         }
 
@@ -5447,7 +5447,7 @@ namespace DungeonPlayer
             }
             this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_FROZEN);
             target.ActivateBuff(target.pbFrozen, Database.BaseResourceFolder + "Frozen.bmp", effectTime);
-            UpdateBattleText(target.Name + "は凍結した。\r\n");
+            UpdateBattleText(target.FirstName + "は凍結した。\r\n");
             return true;
         }
 
@@ -5483,7 +5483,7 @@ namespace DungeonPlayer
                 }
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_PARALYZE);
                 target.ActivateBuff(target.pbParalyze, Database.BaseResourceFolder + "Paralyze.bmp", effectTime);
-                UpdateBattleText(target.Name + "は麻痺した。\r\n");
+                UpdateBattleText(target.FirstName + "は麻痺した。\r\n");
             }
             return true;
         }
@@ -5508,7 +5508,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_SLOW);
                 target.CurrentSlow = effectTime;
                 target.ActivateBuff(target.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectTime);
-                UpdateBattleText(target.Name + "は動きが鈍くなった。\r\n");
+                UpdateBattleText(target.FirstName + "は動きが鈍くなった。\r\n");
             }
         }
 
@@ -5538,7 +5538,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_BLIND);
                 target.CurrentBlind = effectTime;
                 target.ActivateBuff(target.pbBlind, Database.BaseResourceFolder + "Blind.bmp", effectTime);
-                UpdateBattleText(target.Name + "は暗闇にかかった。\r\n");
+                UpdateBattleText(target.FirstName + "は暗闇にかかった。\r\n");
             }
         }
 
@@ -5562,7 +5562,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_SLIP);
                 target.CurrentSlip = effectTime;
                 target.ActivateBuff(target.pbSlip, Database.BaseResourceFolder + "Slip.bmp", effectTime);
-                UpdateBattleText(target.Name + "はひどい傷を負った。\r\n");
+                UpdateBattleText(target.FirstName + "はひどい傷を負った。\r\n");
             }
         }
 
@@ -5586,7 +5586,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_NORESURRECTION);
                 target.CurrentNoResurrection = effectTime;
                 target.ActivateBuff(target.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection.bmp", effectTime);
-                UpdateBattleText(target.Name + "はリザレクションによる復活が不可能になった。\r\n");
+                UpdateBattleText(target.FirstName + "はリザレクションによる復活が不可能になった。\r\n");
             }
         }
 
@@ -5601,7 +5601,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_NOGAIN_LIFE);
                 target.CurrentNoGainLife = effectTime;
                 target.ActivateBuff(target.pbNoGainLife, Database.BaseResourceFolder + "NoGainLife.bmp", effectTime);
-                UpdateBattleText(target.Name + "はライフ回復が不可能になった。\r\n");
+                UpdateBattleText(target.FirstName + "はライフ回復が不可能になった。\r\n");
             }
         }
 
@@ -5648,7 +5648,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_BLINDED);
                 target.CurrentBlinded = effectTime;
                 target.ActivateBuff(target.pbBlinded, Database.BaseResourceFolder + "Blinded.bmp", effectTime);
-                UpdateBattleText(target.Name + "は退避状態に入った。\r\n");
+                UpdateBattleText(target.FirstName + "は退避状態に入った。\r\n");
             }
         }
 
@@ -5663,7 +5663,7 @@ namespace DungeonPlayer
                 this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.EFFECT_PRESTUNNING);
                 target.CurrentPreStunning = effectTime;
                 target.ActivateBuff(target.pbPreStunning, Database.BaseResourceFolder + "PreStunning.bmp", effectTime);
-                UpdateBattleText(target.Name + "は恐怖に駆られた。\r\n");
+                UpdateBattleText(target.FirstName + "は恐怖に駆られた。\r\n");
             }
         }
 

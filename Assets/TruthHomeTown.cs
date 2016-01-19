@@ -43,6 +43,8 @@ namespace DungeonPlayer
 	    public Text inputName;
         public Text mainMessage;
         public Image panelMessage;
+        public Text yesnoSystemMessage;
+        public GameObject groupYesnoSystemMessage;
 
 	    public static int serverPort = 8001;
 	    private bool firstAction = false;
@@ -56,6 +58,12 @@ namespace DungeonPlayer
             // todo
             //GroundOne.CS = new ClientSocket();
             //GroundOne.InitializeNetworkConnection ();
+
+            if (GroundOne.TruthHomeTown_NowExit)
+            {
+                yesnoSystemMessage.text = exitMessage2;
+                groupYesnoSystemMessage.SetActive(true);
+            }
         }
 
         string GetString(string msg, string protocolStr)
@@ -2207,7 +2215,7 @@ namespace DungeonPlayer
         {
             GameObject tempObj = new GameObject();
             MainCharacter currentPlayer = tempObj.AddComponent<MainCharacter>();
-            currentPlayer.Name = "ラナ";
+            currentPlayer.FirstName = "ラナ";
             switch (num)
             {
                 case 1001:
@@ -2802,9 +2810,104 @@ namespace DungeonPlayer
             GroundOne.SaveMode = false;
             SceneDimension.Go(Database.TruthHomeTown, Database.SaveLoad);
         }
+
+        private string exitMessage1 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
+        private string exitMessage2 = "タイトルへ戻りますか？";
+        public void ExitYes()
+        {
+            if (yesnoSystemMessage.text == exitMessage1)
+            {
+                GroundOne.TruthHomeTown_NowExit = true;
+                GroundOne.SaveMode = true;
+                SceneDimension.Go(Database.TruthHomeTown, Database.SaveLoad);
+            }
+            else if (yesnoSystemMessage.text == exitMessage2)
+            {
+                GroundOne.TruthHomeTown_NowExit = false;
+                SceneDimension.Back();
+            }
+        }
+        public void ExitNo()
+        {
+            if (yesnoSystemMessage.text == exitMessage1)
+            {
+                yesnoSystemMessage.text = exitMessage2;
+            }
+            else if (yesnoSystemMessage.text == exitMessage2)
+            {
+                yesnoSystemMessage.text = exitMessage1;
+                groupYesnoSystemMessage.SetActive(false);
+            }
+            GroundOne.TruthHomeTown_NowExit = false;
+        }
         public void tapExit()
         {
-            SceneDimension.Back();
+            groupYesnoSystemMessage.SetActive(true);
+            // todo
+            //if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            //{
+            //    if (!GroundOne.WE2.AutoSaveInfo)
+            //    {
+            //        using (TruthPlayerInformation TPI = new TruthPlayerInformation())
+            //        {
+            //            TPI.StartPosition = FormStartPosition.CenterParent;
+            //            TPI.SetupMessage = "ここまでの記録は自動セーブとなります。次回起動は、ここから再開となります。";
+            //            TPI.ShowDialog();
+            //        }
+            //        GroundOne.WE2.AutoSaveInfo = true;
+            //        Method.AutoSaveTruthWorldEnvironment();
+            //        Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, this.knownTileInfo, this.knownTileInfo2, this.knownTileInfo3, this.knownTileInfo4, this.knownTileInfo5, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
+            //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        Method.AutoSaveTruthWorldEnvironment();
+            //        Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, this.knownTileInfo, this.knownTileInfo2, this.knownTileInfo3, this.knownTileInfo4, this.knownTileInfo5, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
+            //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            //        return;
+            //    }
+            //}
+
+            // todo
+            //using (YesNoReqWithMessage ynrw = new YesNoReqWithMessage())
+            //{
+            //    ynrw.StartPosition = FormStartPosition.CenterParent;
+            //    ynrw.MainMessage = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
+            //    ynrw.ShowDialog();
+            //    if (ynrw.DialogResult == DialogResult.Yes)
+            //    {
+            //        using (ESCMenu esc = new ESCMenu())
+            //        {
+            //            esc.MC = this.MC;
+            //            esc.SC = this.SC;
+            //            esc.TC = this.TC;
+            //            esc.WE = this.WE;
+            //            esc.KnownTileInfo = this.knownTileInfo;
+            //            esc.KnownTileInfo2 = this.knownTileInfo2;
+            //            esc.KnownTileInfo3 = this.knownTileInfo3;
+            //            esc.KnownTileInfo4 = this.knownTileInfo4;
+            //            esc.KnownTileInfo5 = this.knownTileInfo5;
+            //            esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo; // 後編追加
+            //            esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2; // 後編追加
+            //            esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3; // 後編追加
+            //            esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4; // 後編追加
+            //            esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5; // 後編追加                        esc.StartPosition = FormStartPosition.CenterParent;
+            //            esc.StartPosition = FormStartPosition.CenterParent;
+            //            esc.OnlySave = true;
+            //            esc.ShowDialog();
+            //        }
+            //    }
+
+            //    ynrw.MainMessage = "タイトルへ戻りますか？";
+            //    ynrw.ShowDialog();
+            //    if (ynrw.DialogResult == DialogResult.Yes)
+            //    {
+            //        this.DialogResult = DialogResult.Cancel;
+            //    }
+            //}
+
+            //SceneDimension.Back();
         }
 
         public void CallStatusPlayer()
