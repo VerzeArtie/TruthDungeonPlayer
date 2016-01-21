@@ -5495,11 +5495,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab8254848a883443b84aedbb60ab987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnLevel1: {fileID: 0}
-  btnLevel2: {fileID: 0}
-  btnLevel3: {fileID: 0}
-  btnLevel4: {fileID: 0}
-  btnLevel5: {fileID: 0}
+  btnLevel1: {fileID: 1037698295}
+  btnLevel2: {fileID: 1759043838}
+  btnLevel3: {fileID: 1065768390}
+  btnLevel4: {fileID: 727383805}
+  btnLevel5: {fileID: 149807528}
   btnChara1: {fileID: 1777817389}
   btnChara2: {fileID: 2041759024}
   btnChara3: {fileID: 1778174253}
