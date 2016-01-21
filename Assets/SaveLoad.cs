@@ -817,7 +817,7 @@ namespace DungeonPlayer
 
         private void ExecLoad(Text sender, string targetFileName, bool forceLoad)
         {
-            Debug.Log("ExecLoad start");
+            Debug.Log("ExecLoad 0 " + DateTime.Now);
             // todo
             //mc = new MainCharacter();
             //sc = new MainCharacter();
@@ -846,7 +846,7 @@ namespace DungeonPlayer
             string gamedayData = String.Empty;
             string completeareaData = String.Empty;
 
-            Debug.Log("ExecLoad 1");
+            Debug.Log("ExecLoad 1 " + DateTime.Now);
             if (((Text)sender) != null)
             {
                 yearData = ((Text)sender).text.Substring(0, 4);
@@ -884,7 +884,7 @@ namespace DungeonPlayer
             }
             
             xml.Load(Database.BaseSaveFolder + targetFileName);
-            Debug.Log("ExecLoad 2");
+            Debug.Log("ExecLoad 2 " + DateTime.Now);
             try
             {
                 XmlNodeList currentList = xml.GetElementsByTagName("MainWeapon");
@@ -989,7 +989,7 @@ namespace DungeonPlayer
             }
             catch { }
             // e 後編追加
-            Debug.Log("ExecLoad 3");
+            Debug.Log("ExecLoad 3 " + DateTime.Now);
 
             //for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
             //{
@@ -1093,7 +1093,7 @@ namespace DungeonPlayer
                 }
             }
             // e 後編編集
-            Debug.Log("ExecLoad 4");
+            Debug.Log("ExecLoad 4 " + DateTime.Now);
 
             Type type = GroundOne.MC.GetType();
             foreach (PropertyInfo pi in type.GetProperties())
@@ -1242,7 +1242,7 @@ namespace DungeonPlayer
                 }
                 // e 後編追加
             }
-            Debug.Log("ExecLoad 5");
+            Debug.Log("ExecLoad 5 " + DateTime.Now);
 
             Type typeWE = GroundOne.WE.GetType();
             #region "Tresureプロパティ名が誤っていたのを、Treasureに修正してしまったため、旧XMLファイル互換が取れないので、以下の対応を取る。今後このような安易なプロパティ名称改版をしないでください。
@@ -1309,16 +1309,20 @@ namespace DungeonPlayer
             try { GroundOne.WE.Treasure57 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure57")[0].InnerText); }
             catch { }
             #endregion
-            Debug.Log("ExecLoad 6");
+            Debug.Log("ExecLoad 6 " + DateTime.Now);
 
-            foreach (PropertyInfo pi in typeWE.GetProperties())
+
+            PropertyInfo[] tempWE = typeWE.GetProperties();
+            Debug.Log(tempWE.Length.ToString());
+
+            foreach (PropertyInfo pi in tempWE)
             {
                 // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
                 if (pi.PropertyType == typeof(System.Int32))
                 {
                     try
                     {
-                        pi.SetValue(GroundOne.WE, Convert.ToInt32(xml.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                        pi.SetValue(GroundOne.WE, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/WorldEnvironment/" + (pi.Name)).InnerText), null);
                     }
                     catch { }
                 }
@@ -1326,14 +1330,7 @@ namespace DungeonPlayer
                 {
                     try
                     {
-                        XmlNodeList currentList = xml.GetElementsByTagName(pi.Name);
-                        foreach (XmlNode node in currentList) // change unity
-                        {
-                            if (node.ParentNode.Name == "ObjWE")
-                            {
-                                pi.SetValue(GroundOne.WE, (node.InnerText), null);
-                            }
-                        }
+                        pi.SetValue(GroundOne.WE, xml.DocumentElement.SelectSingleNode(@"/Body/WorldEnvironment/" + (pi.Name)).InnerText, null);
                     }
                     catch { }
                 }
@@ -1341,12 +1338,12 @@ namespace DungeonPlayer
                 {
                     try
                     {
-                        pi.SetValue(GroundOne.WE, Convert.ToBoolean(xml.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                        pi.SetValue(GroundOne.WE, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/WorldEnvironment/" + (pi.Name)).InnerText), null);
                     }
                     catch { }
                 }
             }
-            Debug.Log("ExecLoad 7");
+            Debug.Log("ExecLoad 7 " + DateTime.Now);
 
             // after revive
             //try // 後編追加 // [警告]：前編での読み込みバグが無く、かつ、後編では絶対に使わないことを前提とした記述。
@@ -1396,7 +1393,7 @@ namespace DungeonPlayer
                     catch { }
                 }
             }
-            Debug.Log("ExecLoad 9");
+            Debug.Log("ExecLoad 9 " + DateTime.Now); ;
 
             XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
             XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");
@@ -1406,45 +1403,47 @@ namespace DungeonPlayer
             Debug.Log("ExecLoad 75: " + list1.Count.ToString() + " " + GroundOne.Truth_KnownTileInfo.Length.ToString());
             Debug.Log(DateTime.Now.ToString());
 
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                string temp = xml.GetElementsByTagName("truthTileOne" + ii.ToString())[0].InnerText;
-                GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(temp);
-            }
+            // todo
+            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            //{
+            //    string temp = xml.GetElementsByTagName("truthTileOne" + ii.ToString())[0].InnerText;
+            //    GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(temp);
+            //}
             Debug.Log(DateTime.Now.ToString());
-            Debug.Log("ExecLoad 8-1");
+            Debug.Log("ExecLoad 8-1 " + DateTime.Now);
 
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                string temp = xml.GetElementsByTagName("truthTileTwo" + ii.ToString())[0].InnerText;
-                GroundOne.Truth_KnownTileInfo2[ii] = Convert.ToBoolean(temp);
-            }
-            Debug.Log(DateTime.Now.ToString());
-            Debug.Log("ExecLoad 8-2");
+            // todo
+            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            //{
+            //    string temp = xml.GetElementsByTagName("truthTileTwo" + ii.ToString())[0].InnerText;
+            //    GroundOne.Truth_KnownTileInfo2[ii] = Convert.ToBoolean(temp);
+            //}
+            //Debug.Log(DateTime.Now.ToString());
+            //Debug.Log("ExecLoad 8-2");
 
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                string temp = xml.GetElementsByTagName("truthTileThree" + ii.ToString())[0].InnerText;
-                GroundOne.Truth_KnownTileInfo3[ii] = Convert.ToBoolean(temp);
-            }
-            Debug.Log(DateTime.Now.ToString());
-            Debug.Log("ExecLoad 8-3");
+            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            //{
+            //    string temp = xml.GetElementsByTagName("truthTileThree" + ii.ToString())[0].InnerText;
+            //    GroundOne.Truth_KnownTileInfo3[ii] = Convert.ToBoolean(temp);
+            //}
+            //Debug.Log(DateTime.Now.ToString());
+            //Debug.Log("ExecLoad 8-3");
 
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                string temp = xml.GetElementsByTagName("truthTileFour" + ii.ToString())[0].InnerText;
-                GroundOne.Truth_KnownTileInfo4[ii] = Convert.ToBoolean(temp);
-            }
-            Debug.Log(DateTime.Now.ToString());
-            Debug.Log("ExecLoad 8-4");
+            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            //{
+            //    string temp = xml.GetElementsByTagName("truthTileFour" + ii.ToString())[0].InnerText;
+            //    GroundOne.Truth_KnownTileInfo4[ii] = Convert.ToBoolean(temp);
+            //}
+            //Debug.Log(DateTime.Now.ToString());
+            //Debug.Log("ExecLoad 8-4");
 
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                string temp = xml.GetElementsByTagName("truthTileFive" + ii.ToString())[0].InnerText;
-                GroundOne.Truth_KnownTileInfo5[ii] = Convert.ToBoolean(temp);
-            }
-            Debug.Log(DateTime.Now.ToString());
-            Debug.Log("ExecLoad 8-5"); 
+            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            //{
+            //    string temp = xml.GetElementsByTagName("truthTileFive" + ii.ToString())[0].InnerText;
+            //    GroundOne.Truth_KnownTileInfo5[ii] = Convert.ToBoolean(temp);
+            //}
+            //Debug.Log(DateTime.Now.ToString());
+            //Debug.Log("ExecLoad 8-5"); 
             
             if (forceLoad == false)
             {

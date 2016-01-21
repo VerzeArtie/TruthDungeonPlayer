@@ -60,6 +60,8 @@ namespace DungeonPlayer
 
         public static bool CallBattleSetting = false;
 
+        // TruthEquipmentShop
+        public static string titleName = "天下一品　ガンツの武具店";
         // TruthBattleEnemy
         public static battleResult BattleResult = battleResult.None;
         // TruthSelectEquipment

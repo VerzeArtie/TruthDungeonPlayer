@@ -12,6 +12,14 @@ namespace DungeonPlayer
 {
     public partial class TruthEquipmentShop : MonoBehaviour
     {
+        public Button btnLevel1;
+        public Button btnLevel2;
+        public Button btnLevel3;
+        public Button btnLevel4;
+        public Button btnLevel5;
+        public Button btnChara1;
+        public Button btnChara2;
+        public Button btnChara3;
         public Text mainMessage;
         public Text labelTitle;
         public Text[] equipList;
@@ -60,96 +68,123 @@ namespace DungeonPlayer
             ganz.FirstName = "ガンツ";
             this.currentPlayer = GroundOne.MC;
 
-            // todo
-            //if (!we.AvailableSecondCharacter && !we.AvailableThirdCharacter)
-            //{
-            //    btnBackpack1.Visible = false; // [コメント]：最初はキャラクター増加を見せない演出のため、VisibleはFalse
-            //    btnBackpack2.Visible = false;
-            //    btnBackpack3.Visible = false;
-            //}
-            //else if (we.AvailableSecondCharacter && !we.AvailableThirdCharacter)
-            //{
-            //    btnBackpack1.Visible = true;
-            //    btnBackpack2.Visible = true;
-            //    btnBackpack3.Visible = false;
-            //}
-            //else if (we.AvailableThirdCharacter)
-            //{
-            //    btnBackpack1.Visible = true;
-            //    btnBackpack2.Visible = true;
-            //    btnBackpack3.Visible = false; // [コメント]：ストーリーの演出上、ヴェルゼはガンツの武具屋へ訪れる事はないため。
-            //}
+            if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
+            {
+                btnChara1.gameObject.SetActive(false); // [コメント]：最初はキャラクター増加を見せない演出のため、VisibleはFalse
+                btnChara2.gameObject.SetActive(false);
+                btnChara3.gameObject.SetActive(false);
+            }
+            else if (GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
+            {
+                btnChara1.gameObject.SetActive(true);
+                btnChara2.gameObject.SetActive(true);
+                btnChara3.gameObject.SetActive(false);
+            }
+            else if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                btnChara1.gameObject.SetActive(true);
+                btnChara2.gameObject.SetActive(true);
+                btnChara3.gameObject.SetActive(false); // [コメント]：ストーリーの演出上、ヴェルゼはガンツの武具屋へ訪れる事はないため。
+            }
 
-            //UpdateBackPackLabel(this.currentPlayer);
+            UpdateBackPackLabel(this.currentPlayer);
 
-            //if (we.AvailableEquipShop && !we.AvailableEquipShop2)
-            //{
-            //    SetupAvailableList(1);
+            if (GroundOne.WE.AvailableEquipShop && !GroundOne.WE.AvailableEquipShop2)
+            {
+                SetupAvailableList(1);
 
-            //    btnLevel1.Visible = false; // [コメント]：最初は武具種類が増える傾向を見せない演出のため、VisibleはFalse
-            //    btnLevel2.Visible = false;
-            //    btnLevel3.Visible = false;
-            //    btnLevel4.Visible = false;
-            //    btnLevel5.Visible = false;
-            //}
-            //else if (we.AvailableEquipShop && we.AvailableEquipShop2 && !we.AvailableEquipShop3)
-            //{
-            //    SetupAvailableList(2);
-            //    btnLevel1.Visible = true;
-            //    btnLevel2.Visible = true;
-            //    btnLevel3.Visible = false;
-            //    btnLevel4.Visible = false;
-            //    btnLevel5.Visible = false;
-            //}
-            //else if (we.AvailableEquipShop && we.AvailableEquipShop2 && we.AvailableEquipShop3 && !we.AvailableEquipShop4)
-            //{
-            //    SetupAvailableList(3);
-            //    btnLevel1.Visible = true;
-            //    btnLevel2.Visible = true;
-            //    btnLevel3.Visible = true;
-            //    btnLevel4.Visible = false;
-            //    btnLevel5.Visible = false;
-            //}
-            //else if (we.AvailableEquipShop && we.AvailableEquipShop2 && we.AvailableEquipShop3 && we.AvailableEquipShop4 && !we.AvailableEquipShop5)
-            //{
-            //    SetupAvailableList(4);
-            //    btnLevel1.Visible = true;
-            //    btnLevel2.Visible = true;
-            //    btnLevel3.Visible = true;
-            //    btnLevel4.Visible = true;
-            //    btnLevel5.Visible = false;
-            //}
-            //else if (we.AvailableEquipShop && we.AvailableEquipShop2 && we.AvailableEquipShop3 && we.AvailableEquipShop4 && we.AvailableEquipShop5)
-            //{
-            //    //SetupAvailableList(5);
-            //    //btnLevel1.Visible = true;
-            //    //btnLevel2.Visible = true;
-            //    //btnLevel3.Visible = true;
-            //    //btnLevel4.Visible = true;
-            //    //btnLevel5.Visible = true;
-            //    SetupAvailableList(5);
-            //    btnLevel1.Visible = true;
-            //    btnLevel2.Visible = true;
-            //    btnLevel3.Visible = true;
-            //    btnLevel4.Visible = true;
-            //    btnLevel5.Visible = true;
-            //}
-            //else
-            //{
+                btnLevel1.gameObject.SetActive(false); // [コメント]：最初は武具種類が増える傾向を見せない演出のため、VisibleはFalse
+                btnLevel2.gameObject.SetActive(false);
+                btnLevel3.gameObject.SetActive(false);
+                btnLevel4.gameObject.SetActive(false);
+                btnLevel5.gameObject.SetActive(false);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && !GroundOne.WE.AvailableEquipShop3)
+            {
+                SetupAvailableList(2);
+                btnLevel1.gameObject.SetActive(true);
+                btnLevel2.gameObject.SetActive(true);
+                btnLevel3.gameObject.SetActive(false);
+                btnLevel4.gameObject.SetActive(false);
+                btnLevel5.gameObject.SetActive(false);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && !GroundOne.WE.AvailableEquipShop4)
+            {
+                SetupAvailableList(3);
+                btnLevel1.gameObject.SetActive(true);
+                btnLevel2.gameObject.SetActive(true);
+                btnLevel3.gameObject.SetActive(true);
+                btnLevel4.gameObject.SetActive(false);
+                btnLevel5.gameObject.SetActive(false);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && !GroundOne.WE.AvailableEquipShop5)
+            {
+                SetupAvailableList(4);
+                btnLevel1.gameObject.SetActive(true);
+                btnLevel2.gameObject.SetActive(true);
+                btnLevel3.gameObject.SetActive(true);
+                btnLevel4.gameObject.SetActive(true);
+                btnLevel5.gameObject.SetActive(false);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && GroundOne.WE.AvailableEquipShop5)
+            {
+                SetupAvailableList(5);
+                btnLevel1.gameObject.SetActive (true);
+                btnLevel2.gameObject.SetActive (true);
+                btnLevel3.gameObject.SetActive (true);
+                btnLevel4.gameObject.SetActive (true);
+                btnLevel5.gameObject.SetActive (true);
+            }
+            else
+            {
+            }
 
-            //}
-            //OnLoadSetupFloorButton();
-            //OnLoadMessage(); // 後編編集
+            OnLoadSetupFloorButton();
+            OnLoadMessage(); // 後編編集
             this.labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
 
             SetupAvailableList(1);
             UpdateBackPackLabelInterface(GroundOne.MC);
             UpdateEquipment(GroundOne.MC);
-            // this.labelTitle.text = titleName; // todo
+            this.labelTitle.text = GroundOne.titleName;
             // keydown(EquipmentShop_KeyDown) // todo
             // keyup(TruthEquipmentShop_KeyUp) // todo
         }
 
+        bool nowClose = false;
+        bool execClose = false;
+        void Update()
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                nowClose = true;
+            }
+            #region "close window"
+            if (nowClose)
+            {
+                nowClose = false;
+                Debug.Log("nowclose line");
+                SetupMessageText(3009);
+                execClose = true;
+            }
+            else if (execClose)
+            {
+                execClose = false;
+                System.Threading.Thread.Sleep(1000);
+                SceneDimension.Back();
+            }
+            #endregion
+        }
+
+        private void OnLoadSetupFloorButton()
+        {
+            // todo 派生先、TruthPotionShopで使われるメソッドである。
+        }
+
+        protected virtual void OnLoadMessage()
+        {
+            SetupMessageText(3000);
+        }
         //bool IsShift = false;
         //protected void TruthEquipmentShop_KeyUp(object sender, KeyEventArgs e)
         //{
@@ -2378,7 +2413,7 @@ namespace DungeonPlayer
         }
         public void tapExit()
         {
-            SceneDimension.Back();
+            nowClose = true;
         }
     }
 }
