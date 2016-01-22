@@ -885,6 +885,7 @@ namespace DungeonPlayer
             
             xml.Load(Database.BaseSaveFolder + targetFileName);
             Debug.Log("ExecLoad 2 " + DateTime.Now);
+            
             try
             {
                 XmlNodeList currentList = xml.GetElementsByTagName("MainWeapon");
@@ -1194,70 +1195,6 @@ namespace DungeonPlayer
             Debug.Log("ExecLoad 5 " + DateTime.Now);
 
             Type typeWE = GroundOne.WE.GetType();
-            #region "Tresureプロパティ名が誤っていたのを、Treasureに修正してしまったため、旧XMLファイル互換が取れないので、以下の対応を取る。今後このような安易なプロパティ名称改版をしないでください。
-            try { GroundOne.WE.Treasure1 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure1")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure2 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure2")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure3 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure3")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure4 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure4")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure5 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure5")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure6 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure6")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure7 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure7")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure8 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure8")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure9 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure9")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure10 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure10")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure11 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure11")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure12 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure12")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure121 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure121")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure122 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure122")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure123 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure123")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure41 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure41")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure42 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure42")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure43 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure43")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure44 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure44")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure45 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure45")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure46 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure46")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure47 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure47")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure48 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure48")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure49 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure49")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure51 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure51")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure52 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure52")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure53 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure53")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure54 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure54")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure55 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure55")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure56 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure56")[0].InnerText); }
-            catch { }
-            try { GroundOne.WE.Treasure57 = Convert.ToBoolean(xml.GetElementsByTagName("Tresure57")[0].InnerText); }
-            catch { }
-            #endregion
             Debug.Log("ExecLoad 6 " + DateTime.Now);
 
 
