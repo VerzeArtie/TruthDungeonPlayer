@@ -1101,72 +1101,21 @@ namespace DungeonPlayer
                 // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
                 if (pi.PropertyType == typeof(System.Int32))
                 {
-                    try
-                    {
-                        XmlNodeList currentList = xml.GetElementsByTagName(pi.Name);
-                        foreach (XmlNode node in currentList)
-                        {
-                            if (node.ParentNode.Name == Database.NODE_MAINPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.MC, Convert.ToInt32(node.InnerText), null);
-                            }
-                            else if (node.ParentNode.Name == Database.NODE_SECONDPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.SC, Convert.ToInt32(node.InnerText), null);
-                            }
-                            else if (node.ParentNode.Name == Database.NODE_THIRDPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.TC, Convert.ToInt32(node.InnerText), null);
-                            }
-                        }
-                    }
-                    catch { }
+                    try { pi.SetValue(GroundOne.MC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
+                    try { pi.SetValue(GroundOne.SC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
+                    try { pi.SetValue(GroundOne.TC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
                 }
                 else if (pi.PropertyType == typeof(System.String))
                 {
-                    try
-                    {
-                        XmlNodeList currentList = xml.GetElementsByTagName(pi.Name);
-                        foreach (XmlNode node in currentList)
-                        {
-                            if (node.ParentNode.Name == Database.NODE_MAINPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.MC, node.InnerText, null);
-                            }
-                            else if (node.ParentNode.Name == Database.NODE_SECONDPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.SC, node.InnerText, null);
-                            }
-                            else if (node.ParentNode.Name == Database.NODE_THIRDPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.TC, node.InnerText, null);
-                            }
-                        }
-                    }
-                    catch { }
+                    try { pi.SetValue(GroundOne.MC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText, null); } catch {}
+                    try { pi.SetValue(GroundOne.SC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText, null); } catch {}
+                    try { pi.SetValue(GroundOne.TC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText, null); } catch {}
                 }
                 else if (pi.PropertyType == typeof(System.Boolean))
                 {
-                    try
-                    {
-                        XmlNodeList currentList = xml.GetElementsByTagName(pi.Name);
-                        foreach (XmlNode node in currentList)
-                        {
-                            if (node.ParentNode.Name == Database.NODE_MAINPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.MC, Convert.ToBoolean(node.InnerText), null);
-                            }
-                            else if (node.ParentNode.Name == Database.NODE_SECONDPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.SC, Convert.ToBoolean(node.InnerText), null);
-                            }
-                            else if (node.ParentNode.Name == Database.NODE_THIRDPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.TC, Convert.ToBoolean(node.InnerText), null);
-                            }
-                        }
-                    }
-                    catch { }
+                    try { pi.SetValue(GroundOne.MC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
+                    try { pi.SetValue(GroundOne.SC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
+                    try { pi.SetValue(GroundOne.TC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
                 }
                 // s 後編追加
                 else if (pi.PropertyType == typeof(MainCharacter.PlayerStance))
