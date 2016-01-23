@@ -62,7 +62,6 @@ namespace DungeonPlayer
         /// </summary>
         public static double PhysicalAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool duelMode)
         {
-            Debug.Log("PhysicalAttackValue");
             return PhysicalAttackValue(player, type, pStr, pAgl, pInt, pMind, pWeapon, stance, spellSkill, duelMode, false);
         }
         /// <summary>
@@ -70,7 +69,6 @@ namespace DungeonPlayer
         /// </summary>
         public static double SubAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, bool duelMode)
         {
-            Debug.Log("SubAttackValue");
             return PhysicalAttackValue(player, type, pStr, pAgl, pInt, pMind, pWeapon, stance, SpellSkillType.Standard, duelMode, true);
         }
         /// <summary>
@@ -113,7 +111,6 @@ namespace DungeonPlayer
 
         public static double AttackValue(MainCharacter player, NeedType type, DmgAttr attr, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool ignoreChargeCount, bool duelMode, bool subWeapon)
         {
-            Debug.Log("AttackValue start: " + subWeapon.ToString());
             double min = 0;
             double max = 0;
             double minFactor = 0.0f;
@@ -190,10 +187,8 @@ namespace DungeonPlayer
                 // 武器による加算値（メイン）
                 if (subWeapon == false)
                 {
-                    if (player.MainWeapon == null) { Debug.Log("fail...mainwaeapon null."); }
                     if (player.MainWeapon != null)
                     {
-                        Debug.Log("MainWeapon plus! " + player.MainWeapon.Name + " " + player.MainWeapon.MinValue + " " + player.MainWeapon.MaxValue);
                         min += player.MainWeapon.PhysicalAttackMinValue * pWeapon;
                         max += player.MainWeapon.PhysicalAttackMaxValue * pWeapon;
                     }
@@ -214,7 +209,6 @@ namespace DungeonPlayer
                 {
                     if (player.SubWeapon != null)
                     {
-                        Debug.Log("detect subweapon");
                         if ((player.SubWeapon.Type == ItemBackPack.ItemType.Weapon_Heavy) ||
                             (player.SubWeapon.Type == ItemBackPack.ItemType.Weapon_Light) ||
                             (player.SubWeapon.Type == ItemBackPack.ItemType.Weapon_Middle))

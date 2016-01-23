@@ -12,6 +12,9 @@ namespace DungeonPlayer
 {
     public partial class TruthEquipmentShop : MonoBehaviour
     {
+        public GameObject filter;
+        public GameObject groupYesNoMessage;
+        public Text yesnoMessage;
         public Button btnLevel1;
         public Button btnLevel2;
         public Button btnLevel3;
@@ -47,9 +50,6 @@ namespace DungeonPlayer
         public Text txtArmor;
         public Text txtAccessory1;
         public Text txtAccessory2;
-        public GameObject selectPanel;
-        public GameObject selectPanel2;
-        public GameObject selectPanel3;
 
         private ItemBackPack currentSelectItem = null;
         private ItemBackPack currentSelectItem2 = null;
@@ -89,7 +89,7 @@ namespace DungeonPlayer
 
             UpdateBackPackLabel(this.currentPlayer);
 
-            if (GroundOne.WE.AvailableEquipShop && !GroundOne.WE.AvailableEquipShop2)
+            if (/*GroundOne.WE.AvailableEquipShop && */!GroundOne.WE.AvailableEquipShop2)
             {
                 SetupAvailableList(1);
 
@@ -2011,19 +2011,63 @@ namespace DungeonPlayer
         public void Equip_Click(Text sender)
         {
             this.currentSelectItem3 = new ItemBackPack(sender.text);
-            selectPanel3.transform.position = new Vector2(sender.transform.position.x - sender.rectTransform.rect.width / 2 - 150, sender.transform.position.y - sender.rectTransform.rect.height / 2); // todo? (-150は左側のサイズ)
             SelectSellItem(this.currentSelectItem3);
         }
+
+        bool nowSellItem = false;
         public void Backpack_Click(Text sender)
         {
+            this.nowSellItem = true;
             this.currentSelectItem2 = new ItemBackPack(sender.text);
-            selectPanel2.transform.position = new Vector2(sender.transform.position.x - sender.rectTransform.rect.width / 2, sender.transform.position.y - sender.rectTransform.rect.height / 2);
-            SelectSellItem(this.currentSelectItem2);
+
+            int stack = 1;
+            if (currentSelectItem2.Name == "")
+            {
+                return;
+            }
+            if (currentSelectItem2.Cost <= 0)
+            {
+                MessageExchange5(); // 後編編集
+                return;
+            }
+            // s 後編追加
+            else if ((currentSelectItem2.Name == Database.LEGENDARY_FELTUS) ||
+                        (currentSelectItem2.Name == Database.POOR_PRACTICE_SWORD_1) ||
+                        (currentSelectItem2.Name == Database.POOR_PRACTICE_SWORD_2) ||
+                        (currentSelectItem2.Name == Database.COMMON_PRACTICE_SWORD_3) ||
+                        (currentSelectItem2.Name == Database.COMMON_PRACTICE_SWORD_4) ||
+                        (currentSelectItem2.Name == Database.RARE_PRACTICE_SWORD_5) ||
+                        (currentSelectItem2.Name == Database.RARE_PRACTICE_SWORD_6) ||
+                        (currentSelectItem2.Name == Database.EPIC_PRACTICE_SWORD_7))
+            {
+                MessageExchange5();
+                return;
+            }
+            // e 後編追加
+            else
+            {
+                int number = 0;
+                for (int ii = 0; ii < backpackList.Length; ii++)
+                {
+                    if (sender.Equals(backpackList[ii]))
+                    {
+                        number = ii;
+                        break;
+                    }
+                }
+                // s 後編編集
+                stack = SelectSellStackValue(currentSelectItem2, number);
+                if (stack == -1) return; // 複数量指定の時、ESCキャンセルはｰ1で抜けてくるので、即時Return
+
+                MessageExchange6(currentSelectItem2, stack);
+            }
+
+            yesnoMessage.text = String.Format(ganz.GetCharacterSentence(3007), currentSelectItem2.Name, (currentSelectItem2.Cost / 2).ToString());
+            groupYesNoMessage.SetActive(true);
+            filter.SetActive(true);
         }
         public void EquipmentShop_Click(Text sender)
         {
-            Debug.Log(selectPanel.transform.position.ToString());
-            selectPanel.transform.position = new Vector2(sender.transform.position.x - sender.rectTransform.rect.width / 2, sender.transform.position.y - sender.rectTransform.rect.height / 2);
             ItemBackPack backpackData = new ItemBackPack(((Text)sender).text);
             if (!GroundOne.WE.AvailableEquipShop5)
             {
@@ -2207,23 +2251,7 @@ namespace DungeonPlayer
                 mainMessage.text = "ガンツ：ふむ・・・まずは購入するアイテムを選択しなさい。";
                 return;
             }
-            if (GroundOne.MC.Gold < this.currentSelectItem.Cost)
-            {
-                MessageExchange1(this.currentSelectItem, GroundOne.MC); // 後編編集
-                return;
-            }
 
-            if (!currentPlayer.AddBackPack(currentSelectItem))
-            {
-                MessageExchange2(); // 後編編集
-                return;
-            }
-            GroundOne.MC.Gold -= this.currentSelectItem.Cost;
-            labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
-            UpdateBackPackLabel(this.currentPlayer);
-            MessageExchange3(); // 後編編集
-            this.currentSelectItem = null;
-            selectPanel.transform.position = new Vector3(-10000, -10000, 0);
         }
 
         private void SelectSellItem(ItemBackPack currentItem)
@@ -2272,21 +2300,6 @@ namespace DungeonPlayer
         }
         public void Sell2_Click()
         {
-            if (this.currentSelectItem2 == null)
-            {
-                mainMessage.text = "ガンツ：ふむ・・・まずは売却するアイテムを選択しなさい。";
-                return;
-            }
-            if (this.currentSelectItem2.Name == "" || this.currentSelectItem2.Name == String.Empty)
-            {
-                mainMessage.text = "ガンツ：ふむ・・・まずは売却するアイテムを選択しなさい。";
-                return;
-            }
-            SellItem(this.currentSelectItem2, this.backpackList[0], 1, 0);
-            UpdateBackPackLabel(this.currentPlayer);
-
-            this.currentSelectItem2 = null;
-            selectPanel2.transform.position = new Vector3(-10000, -10000, 0);
         }
         public void Sell3_Click()
         {
@@ -2294,11 +2307,6 @@ namespace DungeonPlayer
         private void MessageExchange2()
         {
             SetupMessageText(3002);
-        }
-
-        private void MessageExchange1(ItemBackPack itemBackPack, MainCharacter mainCharacter)
-        {
-            SetupMessageText(3004, Convert.ToString((this.currentSelectItem.Cost - GroundOne.MC.Gold)));
         }
 
         // [コメント]：引数が無限に増える可能性がある場合、記述方法が何かありそうです。時間があれば探してください。
@@ -2312,6 +2320,7 @@ namespace DungeonPlayer
             {
                 mainMessage.text = this.currentPlayer.GetCharacterSentence(number);
             }
+            yesnoMessage.text = mainMessage.text;
         }
         protected void SetupMessageText(int number, string arg1)
         {
@@ -2323,6 +2332,7 @@ namespace DungeonPlayer
             {
                 mainMessage.text = String.Format(this.currentPlayer.GetCharacterSentence(number), arg1);
             }
+            yesnoMessage.text = mainMessage.text;
         }
         protected void SetupMessageText(int number, string arg1, string arg2)
         {
@@ -2334,6 +2344,7 @@ namespace DungeonPlayer
             {
                 mainMessage.text = String.Format(this.currentPlayer.GetCharacterSentence(number), arg1, arg2);
             }
+            yesnoMessage.text = mainMessage.text;
         }
         private void MessageExchange5()
         {
@@ -2360,11 +2371,88 @@ namespace DungeonPlayer
             // todo
         }
 
-        private void VendorBuyMessage(ItemBackPack backpackData)
+        protected int SelectSellStackValue(ItemBackPack backpackData, int ii)
         {
-            mainMessage.text = String.Format(ganz.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // 後編編集
+            int exchangeValue = Convert.ToInt32(backpackStack[ii].text.Remove(0, 1), 10);
+            //if (this.IsShift) // todo
+            //{
+            //    using (SelectValue sv = new SelectValue())
+            //    {
+            //        sv.StartPosition = FormStartPosition.Manual;
+            //        sv.Location = new Point(this.Location.X + backpackStack[ii].Location.X, this.Location.Y + backpackStack[ii].Location.Y + 15);
+            //        sv.MaxValue = exchangeValue;
+            //        sv.ShowDialog();
+            //        IsShift = false; // ShowDialog表示先で、Shiftキーは外された場合検知できないため、ココでリセット。
+            //        if (sv.DialogResult == DialogResult.Cancel) return -1; // ESCキャンセルは中断とみなす。
+            //        return sv.CurrentValue;
+            //    }
+            //}
+            //else
+            {
+                return exchangeValue;
+            }
         }
 
+        private void VendorComplete()
+        {
+            nowCannotBuy = false;
+            nowSellItem = false;
+            filter.SetActive(false);
+            groupYesNoMessage.SetActive(false);
+        }
+
+        bool nowCannotBuy = false;
+        public void Yes_Click()
+        {
+            if (nowCannotBuy)
+            {
+                // 何もしない
+                MessageExchange4();
+            }
+            else if (nowSellItem == false)
+            {
+                if (GroundOne.MC.Gold < this.currentSelectItem.Cost)
+                {
+                    SetupMessageText(3004, Convert.ToString((this.currentSelectItem.Cost - GroundOne.MC.Gold)));
+                    nowCannotBuy = true;
+                    return;
+                }
+
+                if (!currentPlayer.AddBackPack(currentSelectItem))
+                {
+                    MessageExchange2(); // 後編編集
+                    return;
+                }
+                GroundOne.MC.Gold -= this.currentSelectItem.Cost;
+                labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+                UpdateBackPackLabel(this.currentPlayer);
+                MessageExchange3(); // 後編編集
+                this.currentSelectItem = null;
+            }
+            else
+            {
+                SellItem(this.currentSelectItem2, this.backpackList[0], 1, 0);
+                UpdateBackPackLabel(this.currentPlayer);
+
+                this.currentSelectItem2 = null;
+            }
+
+            VendorComplete();
+        }
+
+        public void No_Click()
+        {
+            MessageExchange4();
+            VendorComplete();
+        }
+
+        private void VendorBuyMessage(ItemBackPack backpackData)
+        {
+            //mainMessage.text = String.Format(ganz.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // 後編編集
+            yesnoMessage.text = String.Format(ganz.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // change unity
+            groupYesNoMessage.SetActive(true);
+            filter.SetActive(true);
+        }
 
         public void tapChara1()
         {

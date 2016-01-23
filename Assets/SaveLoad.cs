@@ -24,6 +24,11 @@ namespace DungeonPlayer
         // Use this for initialization
         void Start()
         {
+            if (System.IO.Directory.Exists(Database.BaseSaveFolder) == false)
+            {
+                System.IO.Directory.CreateDirectory(Database.BaseSaveFolder);
+            }
+
             Text newDateTimeButton = null;
             DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
 

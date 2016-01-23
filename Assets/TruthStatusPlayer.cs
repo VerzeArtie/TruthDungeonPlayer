@@ -2102,6 +2102,10 @@ namespace DungeonPlayer
                     {
                         backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
                     }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_BlueOrb)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("BlueOrb");
+                    }
                     else
                     {
                         backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");

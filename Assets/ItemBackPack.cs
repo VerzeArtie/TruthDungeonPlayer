@@ -26,6 +26,7 @@ namespace DungeonPlayer
             Material_Food,
             Use_Potion,
             Use_Any,
+            Use_BlueOrb, // add unity
             Useless,
         }
 
@@ -523,7 +524,7 @@ namespace DungeonPlayer
                     PhysicalAttackMinValue = 0;
                     PhysicalAttackMaxValue = 0;
                     cost = 0;
-                    AdditionalDescription(ItemType.Use_Any);
+                    AdditionalDescription(ItemType.Use_BlueOrb);
                     rareLevel = RareLevel.Rare;
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;

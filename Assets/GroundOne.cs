@@ -128,12 +128,12 @@ namespace DungeonPlayer
             MC.MainArmor = new ItemBackPack(Database.COMMON_FINE_ARMOR);
             MC.Accessory = new ItemBackPack(Database.COMMON_RED_PENDANT);
             MC.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_PENDANT);
-            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
-            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
-            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.RARE_TOOMI_BLUE_SUISYOU));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
+            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_EXCELLENT_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_PENDANT));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BRONZE_SWORD));
