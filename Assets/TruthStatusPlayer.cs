@@ -10,7 +10,7 @@ using System.Reflection.Emit;
 
 namespace DungeonPlayer
 {
-    public class TruthStatusPlayer : MonoBehaviour
+    public class TruthStatusPlayer : MotherForm
     {
         public GameObject groupParentStatus;
         public GameObject groupParentBackpack;
@@ -118,9 +118,9 @@ namespace DungeonPlayer
         private bool useOverShifting = false;
 
         // Use this for initialization
-        void Start()
+        public override void Start()
         {
-            GroundOne.InitializeGroundOne();
+            base.Start();
 
             this.txtGold.text = GroundOne.MC.Gold.ToString();
 

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace DungeonPlayer
 {
-    public partial class TruthBattleEnemy : MonoBehaviour
+    public partial class TruthBattleEnemy : MotherForm
     {
         protected void CheckChaosDesperate(MainCharacter player)
         {

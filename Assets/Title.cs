@@ -10,17 +10,13 @@ using System.Collections;
 
 namespace DungeonPlayer
 {
-    public class Title : MonoBehaviour
+    public class Title : MotherForm
     {
         bool ExecFirstGo = false;
-        void Start()
+        public override void Start()
         {
-            GroundOne.InitializeGroundOne();
-            DontDestroyOnLoad(GroundOne.MC);
-            DontDestroyOnLoad(GroundOne.SC);
-            DontDestroyOnLoad(GroundOne.TC);
-            DontDestroyOnLoad(GroundOne.WE);
-            DontDestroyOnLoad(GroundOne.WE2);
+            base.Start();
+
             if (GroundOne.Title_LoadAndGo)
             {
                 GroundOne.Title_LoadAndGo = false;

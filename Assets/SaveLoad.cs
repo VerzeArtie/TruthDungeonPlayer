@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DungeonPlayer
 {
-    public class SaveLoad : MonoBehaviour
+    public class SaveLoad : MotherForm
     {
         public Camera cam;
         public Text titleLabel;
@@ -22,8 +22,10 @@ namespace DungeonPlayer
         private string archiveAreaString3 = @"制覇";
 
         // Use this for initialization
-        void Start()
+        public override void Start()
         {
+            base.Start();
+
             if (System.IO.Directory.Exists(Database.BaseSaveFolder) == false)
             {
                 System.IO.Directory.CreateDirectory(Database.BaseSaveFolder);

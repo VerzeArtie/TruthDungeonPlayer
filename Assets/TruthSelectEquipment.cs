@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace DungeonPlayer
 {
-    public class TruthSelectEquipment : MonoBehaviour
+    public class TruthSelectEquipment : MotherForm
     {
         public Text strength;
         public Text addStrength;
@@ -31,16 +31,16 @@ namespace DungeonPlayer
         public GameObject[] back_equip;
         public Text mainMessage;
         
-        public int EquipType { get; set; } // equipType: 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
         private MainCharacter targetPlayer;
         private MainCharacter shadow = new MainCharacter();
         public string SelectValue { get; set; }
         private int MAX_LEN = 10;
         int baseNumber = 0;
         // Use this for initialization
-        void Start()
+        public override void Start()
         {
-            GroundOne.InitializeGroundOne();
+            base.Start();
+
             targetPlayer = GroundOne.MC;
             ItemBackPack[] temp = GroundOne.MC.GetBackPackInfo();
             List<ItemBackPack> currentList = new List<ItemBackPack>();
@@ -257,50 +257,34 @@ namespace DungeonPlayer
         private void RefreshPartyMemberBaseParameter(MainCharacter player)
         {
             this.strength.text = player.Strength.ToString();
-            this.addStrength.text = " + " + player.BuffStrength_Accessory.ToString();
+            if (shadow.BuffStrength_Accessory > this.targetPlayer.BuffStrength_Accessory) { this.addStrength.text = "<color=blue> + " + player.BuffStrength_Accessory.ToString() + "</color>"; }
+            else if (shadow.BuffStrength_Accessory < this.targetPlayer.BuffStrength_Accessory) { this.addStrength.text = "<color=red> + " + player.BuffStrength_Accessory.ToString() + "</color>"; }
+            else { this.addStrength.text = "<color=black> + " + player.BuffStrength_Accessory.ToString() + "</color>"; }
+
 
             this.agility.text = player.Agility.ToString();
-            this.addAgility.text = " + " + player.BuffAgility_Accessory.ToString();
-
+            if (shadow.BuffAgility_Accessory > this.targetPlayer.BuffAgility_Accessory) { this.addAgility.text = "<color=blue> + " + player.BuffAgility_Accessory.ToString() + "</color>"; }
+            else if (shadow.BuffAgility_Accessory < this.targetPlayer.BuffAgility_Accessory) { this.addAgility.text = "<color=red> + " + player.BuffAgility_Accessory.ToString() + "</color>"; }
+            else { this.addAgility.text = "<color=black> + " + player.BuffAgility_Accessory.ToString() + "</color>"; }
+                
             this.intelligence.text = player.Intelligence.ToString();
-            this.addIntelligence.text = " + " + player.BuffIntelligence_Accessory.ToString();
+
+            if (shadow.BuffIntelligence_Accessory > this.targetPlayer.BuffIntelligence_Accessory) { this.addIntelligence.text = "<color=blue> + " + player.BuffIntelligence_Accessory.ToString() + "</color>"; }
+            else if (shadow.BuffIntelligence_Accessory < this.targetPlayer.BuffIntelligence_Accessory) { this.addIntelligence.text = "<color=red> + " + player.BuffIntelligence_Accessory.ToString() + "</color>"; }
+            else { this.addIntelligence.text = "<color=black> + " + player.BuffIntelligence_Accessory.ToString() + "</color>"; }
 
             this.stamina.text = player.Stamina.ToString();
-            this.addStamina.text = " + " + player.BuffStamina_Accessory.ToString();
+            if (shadow.BuffStamina_Accessory > this.targetPlayer.BuffStamina_Accessory) { this.addStamina.text = "<color=blue> + " + player.BuffStamina_Accessory.ToString() + "</color>"; }
+            else if (shadow.BuffStamina_Accessory < this.targetPlayer.BuffStamina_Accessory) { this.addStamina.text = "<color=red> + " + player.BuffStamina_Accessory.ToString() + "</color>"; }
+            else { this.addStamina.text = "<color=black> + " + player.BuffStamina_Accessory.ToString() + "</color>"; }
 
             this.mind.text = player.Mind.ToString();
-            this.addMind.text = " + " + player.BuffMind_Accessory.ToString();
 
-            Color downColor = Color.red;
-            Color upColor = Color.blue;
-            Color normalColor = Color.black;
-            if (shadow.BuffStrength_Accessory > this.targetPlayer.BuffStrength_Accessory) this.addStrength.color = upColor;
-            else if (shadow.BuffStrength_Accessory < this.targetPlayer.BuffStrength_Accessory) this.addStrength.color = downColor;
-            else this.addStrength.color = normalColor;
-
-            if (shadow.BuffAgility_Accessory > this.targetPlayer.BuffAgility_Accessory) this.addAgility.color = upColor;
-            else if (shadow.BuffAgility_Accessory < this.targetPlayer.BuffAgility_Accessory) this.addAgility.color = downColor;
-            else this.addAgility.color = normalColor;
-
-            if (shadow.BuffIntelligence_Accessory > this.targetPlayer.BuffIntelligence_Accessory) this.addIntelligence.color = upColor;
-            else if (shadow.BuffIntelligence_Accessory < this.targetPlayer.BuffIntelligence_Accessory) this.addIntelligence.color = downColor;
-            else this.addIntelligence.color = normalColor;
-
-            if (shadow.BuffStamina_Accessory > this.targetPlayer.BuffStamina_Accessory) this.addStamina.color = upColor;
-            else if (shadow.BuffStamina_Accessory < this.targetPlayer.BuffStamina_Accessory) this.addStamina.color = downColor;
-            else this.addStamina.color = normalColor;
-
-            if (shadow.BuffMind_Accessory > this.targetPlayer.BuffMind_Accessory) this.addMind.color = upColor;
-            else if (shadow.BuffMind_Accessory < this.targetPlayer.BuffMind_Accessory) this.addMind.color = downColor;
-            else this.addMind.color = normalColor;
+            if (shadow.BuffMind_Accessory > this.targetPlayer.BuffMind_Accessory) { this.addMind.text = "<color=blue> + " + player.BuffMind_Accessory.ToString() + "</color>"; }
+            else if (shadow.BuffMind_Accessory < this.targetPlayer.BuffMind_Accessory) { this.addMind.text = "<color=red> + " + player.BuffMind_Accessory.ToString() + "</color>"; }
+            else { this.addMind.text = "<color=black> + " + player.BuffMind_Accessory.ToString() + "</color>"; }
         }
 
-        //Point basePhysicalLocation;
-        //Point basePhysicalLocationBar;
-        //Point basePhysicalLocationMax;
-        //Point basePhysicalLocation2;
-        //Point basePhysicalLocation2Bar;
-        //Point basePhysicalLocation2Max;
         private void RefreshPartyMembersBattleStatus(MainCharacter player)
         {
             bool MainBlade = false;
@@ -353,154 +337,112 @@ namespace DungeonPlayer
                 }
             }
 
-            temp1 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
-            temp2 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
-            PhysicalAttack.text = temp1.ToString("F2");
-            PhysicalAttack.text += " - " + temp2.ToString("F2");
-
-            if (MainBlade == false && SubBlade == true)
-            {
-                temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
-                temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
-                PhysicalAttack.text = temp1.ToString("F2");
-                PhysicalAttack.text += " - " + temp2.ToString("F2");
-            }
-
-            if (DoubleBlade)
-            {
-                // ２刀流の場合
-                temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
-                temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
-                PhysicalAttack.text += "\r\n" + temp1.ToString("F2");
-                PhysicalAttack.text += " - " + temp2.ToString("F2");
-            }
-
-            temp1 = PrimaryLogic.PhysicalDefenseValue(player, PrimaryLogic.NeedType.Min, false);
-            temp2 = PrimaryLogic.PhysicalDefenseValue(player, PrimaryLogic.NeedType.Max, false);
-            PhysicalDefense.text = temp1.ToString("F2");
-            PhysicalDefense.text += " - " + temp2.ToString("F2");
-
-            temp1 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
-            temp2 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
-            MagicAttack.text = temp1.ToString("F2");
-            MagicAttack.text += " - " + temp2.ToString("F2");
-
-            temp1 = PrimaryLogic.MagicDefenseValue(player, PrimaryLogic.NeedType.Min, false);
-            temp2 = PrimaryLogic.MagicDefenseValue(player, PrimaryLogic.NeedType.Max, false);
-            MagicDefense.text = temp1.ToString("F2");
-            MagicDefense.text += " - " + temp2.ToString("F2");
-
-            temp1 = PrimaryLogic.BattleSpeedValue(player, false);
-            BattleSpeed.text = temp1.ToString("F2");
-
-            temp1 = PrimaryLogic.BattleResponseValue(player, false);
-            BattleResponse.text = temp1.ToString("F2");
-
-            temp1 = PrimaryLogic.PotentialValue(player, false);
-            Potential.text = temp1.ToString("F2");
-
-            Color downColor = Color.red;
-            Color upColor = Color.blue;
-            Color normalColor = Color.black;
-
+            // 物理攻撃 (最小) - (最大)
             if (MainBlade)
             {
-                //MessageBox.Show("mainblade only");
-                // 物理攻撃（最小）
+                temp1 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
+                temp2 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
                 if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false) >
-                    PrimaryLogic.PhysicalAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) this.PhysicalAttack.color = upColor;
+                    PrimaryLogic.PhysicalAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
                 else if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false) <
-                    PrimaryLogic.PhysicalAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) this.PhysicalAttack.color = downColor;
-                else this.PhysicalAttack.color = normalColor;
-                // todo unityでMaxとMinの区別をなくしたが本当にいいか？
-                // 物理攻撃（最大）
+                    PrimaryLogic.PhysicalAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+                else { PhysicalAttack.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
+                PhysicalAttack.text += " - ";
                 if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false) >
-                    PrimaryLogic.PhysicalAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) this.PhysicalAttack.color = upColor;
+                    PrimaryLogic.PhysicalAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
                 else if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false) <
-                    PrimaryLogic.PhysicalAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) this.PhysicalAttack.color = downColor;
-                else this.PhysicalAttack.color = normalColor;
+                    PrimaryLogic.PhysicalAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+                else { PhysicalAttack.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
             }
-
-            if (MainBlade == false && SubBlade == true)
+            else if (MainBlade == false && SubBlade == true)
             {
-                // 物理攻撃（最小）
+                temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
+                temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
                 if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) >
-                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) this.PhysicalAttack.color = upColor;
+                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
                 else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) <
-                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) this.PhysicalAttack.color = downColor;
-                else this.PhysicalAttack.color = normalColor;
-                // todo unityでMaxとMinの区別をなくしたが本当にいいか？
-                // 物理攻撃（最大）
+                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+                else { PhysicalAttack.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
+                PhysicalAttack.text += " - ";
                 if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) >
-                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) this.PhysicalAttack.color = upColor;
+                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
                 else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) <
-                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) this.PhysicalAttack.color = downColor;
-                else this.PhysicalAttack.color = normalColor;
+                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+                else { PhysicalAttack.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
             }
-
             if (DoubleBlade)
             {
-                // todo unityで片手両手の区別をなくしたが本当にいいか？
-                // 物理攻撃２（最小）
+                // ２刀流の場合、物理攻撃 (最小) - (最大)
+                temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
+                temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
+                PhysicalAttack.text += "\r\n";
                 if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) >
-                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) this.PhysicalAttack.color = upColor;
+                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=blue>" + temp1.ToString("F2") + "</color>"; }
                 else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) <
-                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) this.PhysicalAttack.color = downColor;
-                else this.PhysicalAttack.color = normalColor;
-                // todo unityでMaxとMinの区別をなくしたが本当にいいか？
-                // 物理攻撃２（最大）
+                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=red>" + temp1.ToString("F2") + "</color>"; }
+                else { PhysicalAttack.text += "<color=black>" + temp1.ToString("F2") + "</color>"; }
+                PhysicalAttack.text += " - ";
                 if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) >
-                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) this.PhysicalAttack.color = upColor;
+                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
                 else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) <
-                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) this.PhysicalAttack.color = downColor;
-                else this.PhysicalAttack.color = normalColor;
+                    PrimaryLogic.SubAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+                else { PhysicalAttack.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
             }
 
-            // 魔法攻撃（最小）
+            // 物理防御 (最小) - (最大)
+            temp1 = PrimaryLogic.PhysicalDefenseValue(player, PrimaryLogic.NeedType.Min, false);
+            temp2 = PrimaryLogic.PhysicalDefenseValue(player, PrimaryLogic.NeedType.Max, false);
+            if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) > PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) { PhysicalDefense.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) < PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) { PhysicalDefense.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+            else { PhysicalDefense.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
+            PhysicalDefense.text += " = ";
+            if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) > PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) { PhysicalDefense.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) < PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) { PhysicalDefense.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+            else { PhysicalDefense.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
+
+            // 魔法攻撃 (最小) - (最大)
+            temp1 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
+            temp2 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
             if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false) >
-                PrimaryLogic.MagicAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) this.MagicAttack.color = upColor;
+                PrimaryLogic.MagicAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
             else if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false) <
-                PrimaryLogic.MagicAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) this.MagicAttack.color = downColor;
-            else this.MagicAttack.color = normalColor;
-            // todo unityでMaxとMinの区別をなくしたが本当にいいか？
-            // 魔法攻撃（最大）
+                PrimaryLogic.MagicAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+            else { MagicAttack.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
+            MagicAttack.text += " - ";
             if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false) >
-                PrimaryLogic.MagicAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) this.MagicAttack.color = upColor;
+                PrimaryLogic.MagicAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
             else if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false) <
-                PrimaryLogic.MagicAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) this.MagicAttack.color = downColor;
-            else this.MagicAttack.color = normalColor;
+                PrimaryLogic.MagicAttackValue(this.targetPlayer, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+            else { MagicAttack.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
 
-            // 物理防御（最小）
-            if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) > PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) this.PhysicalDefense.color = upColor;
-            else if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) < PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) this.PhysicalDefense.color = downColor;
-            else this.PhysicalDefense.color = normalColor;
-            // todo unityでMaxとMinの区別をなくしたが本当にいいか？
-            // 物理防御（最大）
-            if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) > PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) this.PhysicalDefense.color = upColor;
-            else if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) < PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) this.PhysicalDefense.color = downColor;
-            else this.PhysicalDefense.color = normalColor;
+            // 魔法防御 (最小) - (最大)
+            temp1 = PrimaryLogic.MagicDefenseValue(player, PrimaryLogic.NeedType.Min, false);
+            temp2 = PrimaryLogic.MagicDefenseValue(player, PrimaryLogic.NeedType.Max, false);
+            if (PrimaryLogic.MagicDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) > PrimaryLogic.MagicDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) { MagicDefense.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.MagicDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) < PrimaryLogic.MagicDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) { MagicDefense.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+            else { MagicDefense.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
+            MagicDefense.text += " - ";
+            if (PrimaryLogic.MagicDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) > PrimaryLogic.MagicDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) { MagicDefense.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.MagicDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) < PrimaryLogic.MagicDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) { MagicDefense.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+            else { MagicDefense.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
 
-            // 魔法防御（最小）
-            if (PrimaryLogic.MagicDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) > PrimaryLogic.MagicDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) this.MagicDefense.color = upColor;
-            else if (PrimaryLogic.MagicDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) < PrimaryLogic.MagicDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) this.MagicDefense.color = downColor;
-            else this.MagicDefense.color = normalColor;
-            // todo unityでMaxとMinの区別をなくしたが本当にいいか？
-            // 魔法防御（最大）
-            if (PrimaryLogic.MagicDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) > PrimaryLogic.MagicDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) this.MagicDefense.color = upColor;
-            else if (PrimaryLogic.MagicDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) < PrimaryLogic.MagicDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) this.MagicDefense.color = downColor;
-            else this.MagicDefense.color = normalColor;
             // 戦闘速度
-            if (PrimaryLogic.BattleSpeedValue(shadow, false) > PrimaryLogic.BattleSpeedValue(this.targetPlayer, false)) this.BattleSpeed.color = upColor;
-            else if (PrimaryLogic.BattleSpeedValue(shadow, false) < PrimaryLogic.BattleSpeedValue(this.targetPlayer, false)) this.BattleSpeed.color = downColor;
-            else this.BattleSpeed.color = normalColor;
+            temp1 = PrimaryLogic.BattleSpeedValue(player, false);
+            if (PrimaryLogic.BattleSpeedValue(shadow, false) > PrimaryLogic.BattleSpeedValue(this.targetPlayer, false)) { BattleSpeed.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.BattleSpeedValue(shadow, false) < PrimaryLogic.BattleSpeedValue(this.targetPlayer, false)) { BattleSpeed.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+            else { BattleSpeed.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
+
             // 戦闘反応
-            if (PrimaryLogic.BattleResponseValue(shadow, false) > PrimaryLogic.BattleResponseValue(this.targetPlayer, false)) this.BattleResponse.color = upColor;
-            else if (PrimaryLogic.BattleResponseValue(shadow, false) < PrimaryLogic.BattleResponseValue(this.targetPlayer, false)) this.BattleResponse.color = downColor;
-            else this.BattleResponse.color = normalColor;
+            temp1 = PrimaryLogic.BattleResponseValue(player, false);
+            if (PrimaryLogic.BattleResponseValue(shadow, false) > PrimaryLogic.BattleResponseValue(this.targetPlayer, false)) { BattleResponse.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.BattleResponseValue(shadow, false) < PrimaryLogic.BattleResponseValue(this.targetPlayer, false)) { BattleResponse.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+            else { BattleResponse.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
+
             // 潜在能力
-            if (PrimaryLogic.PotentialValue(shadow, false) > PrimaryLogic.PotentialValue(this.targetPlayer, false)) this.Potential.color = upColor;
-            else if (PrimaryLogic.PotentialValue(shadow, false) < PrimaryLogic.PotentialValue(this.targetPlayer, false)) this.Potential.color = downColor;
-            else this.Potential.color = normalColor;
+            temp1 = PrimaryLogic.PotentialValue(player, false);
+            if (PrimaryLogic.PotentialValue(shadow, false) > PrimaryLogic.PotentialValue(this.targetPlayer, false)) { Potential.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.PotentialValue(shadow, false) < PrimaryLogic.PotentialValue(this.targetPlayer, false)) { Potential.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+            else { Potential.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
         }
 
         private void ViewBackPack(int number)
@@ -695,23 +637,23 @@ namespace DungeonPlayer
             ItemBackPack temp = new ItemBackPack(sender.text);
             mainMessage.text = temp.Description;
 
-            if (this.EquipType == 0)
+            if (GroundOne.EquipType == 0)
             {
                 shadow.MainWeapon = temp;
             }
-            else if (this.EquipType == 1)
+            else if (GroundOne.EquipType == 1)
             {
                 shadow.SubWeapon = temp;
             }
-            else if (this.EquipType == 2)
+            else if (GroundOne.EquipType == 2)
             {
                 shadow.MainArmor = temp;
             }
-            else if (this.EquipType == 3)
+            else if (GroundOne.EquipType == 3)
             {
                 shadow.Accessory = temp;
             }
-            else if (this.EquipType == 4)
+            else if (GroundOne.EquipType == 4)
             {
                 shadow.Accessory2 = temp;
             }
@@ -722,23 +664,23 @@ namespace DungeonPlayer
 
         public void target1_MouseLeave()
         {
-            if (this.EquipType == 0)
+            if (GroundOne.EquipType == 0)
             {
                 shadow.MainWeapon = this.targetPlayer.MainWeapon;
             }
-            else if (this.EquipType == 1)
+            else if (GroundOne.EquipType == 1)
             {
                 shadow.SubWeapon = this.targetPlayer.SubWeapon;
             }
-            else if (this.EquipType == 2)
+            else if (GroundOne.EquipType == 2)
             {
                 shadow.MainArmor = this.targetPlayer.MainArmor;
             }
-            else if (this.EquipType == 3)
+            else if (GroundOne.EquipType == 3)
             {
                 shadow.Accessory = this.targetPlayer.Accessory;
             }
-            else if (this.EquipType == 4)
+            else if (GroundOne.EquipType == 4)
             {
                 shadow.Accessory2 = this.targetPlayer.Accessory2;
             }

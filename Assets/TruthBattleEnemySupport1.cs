@@ -7,7 +7,7 @@ using DungeonPlayer;
 
 namespace DungeonPlayer
 {
-    public partial class TruthBattleEnemy
+    public partial class TruthBattleEnemy : MotherForm
     {
         // 特定のターゲットを指定していない場合、敵・味方・自分を区別して、自動的にターゲットを選ぶもの
         private bool PlayerAttackPhase(MainCharacter player, bool withoutCost, bool skipStanceDouble, bool mainPhase)

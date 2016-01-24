@@ -7,7 +7,7 @@ using System.Net.Sockets;
 
 namespace DungeonPlayer
 {
-    public class TruthHomeTown : MonoBehaviour
+    public class TruthHomeTown : MotherForm
     {
         enum SupportType
         {
@@ -52,9 +52,10 @@ namespace DungeonPlayer
         private bool nowHideing = false;
 
 	    // Use this for initialization
-        void Start()
+        public override void Start()
         {
-            GroundOne.InitializeGroundOne();
+            base.Start();
+
             // todo
             //GroundOne.CS = new ClientSocket();
             //GroundOne.InitializeNetworkConnection ();

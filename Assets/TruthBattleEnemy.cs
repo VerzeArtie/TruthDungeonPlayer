@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 namespace DungeonPlayer
 {
-    public partial class TruthBattleEnemy : MonoBehaviour
+    public partial class TruthBattleEnemy : MotherForm
     {
         public enum CriticalType
         {
@@ -863,9 +863,10 @@ namespace DungeonPlayer
         }
 
         // Use this for initialization
-        void Start()
+        public override void Start()
         {
-            GroundOne.InitializeGroundOne();
+            base.Start();
+
             pbBuffPlayer1 = new TruthImage[Database.BUFF_NUM];
             pbBuffPlayer2 = new TruthImage[Database.BUFF_NUM];
             pbBuffPlayer3 = new TruthImage[Database.BUFF_NUM];

@@ -10,7 +10,7 @@ using UnityEngine.Events;
 
 namespace DungeonPlayer
 {
-    public partial class TruthEquipmentShop : MonoBehaviour
+    public partial class TruthEquipmentShop : MotherForm
     {
         public GameObject filter;
         public GameObject groupYesNoMessage;
@@ -60,9 +60,10 @@ namespace DungeonPlayer
         protected MainCharacter ganz;
         protected MainCharacter currentPlayer;
 
-        void Start()
+        public override void Start()
         {
-            GroundOne.InitializeGroundOne();
+            base.Start();
+
             GameObject objGanz = new GameObject("objGanz");
             ganz = objGanz.AddComponent<MainCharacter>();
             ganz.FirstName = "ガンツ";

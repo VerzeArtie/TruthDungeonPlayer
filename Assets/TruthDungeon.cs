@@ -9,7 +9,7 @@ using DungeonPlayer;
 
 namespace DungeonPlayer
 {
-    public class TruthDungeon : MonoBehaviour
+    public class TruthDungeon : MotherForm
     {
         int nowReading = 0;
         List<string> nowMessage = new List<string>();
@@ -141,9 +141,9 @@ namespace DungeonPlayer
         bool[] blueWallBottom = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
 
         // Use this for initialization
-        void Start()
+        public override void Start()
         {
-            GroundOne.InitializeGroundOne();
+            base.Start();
 
             tileInfo = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             tileInfo2 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];

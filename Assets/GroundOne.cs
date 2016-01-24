@@ -87,10 +87,12 @@ namespace DungeonPlayer
         // Title
         public static bool Title_LoadAndGo = false;
 
-        public static void InitializeGroundOne()
+        public static bool InitializeGroundOne()
         {
+            Debug.Log("InitializeGroundOne start");
+
             if (AlreadyInitialize == false) { AlreadyInitialize = true; }
-            else { Debug.Log("already initialize"); return; }
+            else { Debug.Log("already initialize"); return false; }
 
             GroundOne.resourceList = new List<Sprite>();
             GroundOne.resourceList.AddRange(Resources.LoadAll<Sprite>(""));
@@ -134,7 +136,7 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_EXCELLENT_SWORD));
+            MC.AddBackPack(new ItemBackPack(Database.COMMON_TWEI_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_PENDANT));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BRONZE_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_GUST_SWORD));
@@ -333,6 +335,7 @@ namespace DungeonPlayer
             TC.BattleActionCommandList[6] = Database.STAY_EN;
             TC.BattleActionCommandList[7] = Database.STAY_EN;
             TC.BattleActionCommandList[8] = Database.STAY_EN;
+            return true;
         }
 		public static void InitializeNetworkConnection()
 		{

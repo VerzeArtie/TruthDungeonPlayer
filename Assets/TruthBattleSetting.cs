@@ -6,8 +6,12 @@ using System.IO;
 
 namespace DungeonPlayer
 {
-    public class TruthBattleSetting : MonoBehaviour
+    public class TruthBattleSetting : MotherForm
     {
+        public GameObject back_commandName;
+        public Text commandName;
+        public GameObject back_description;
+        public Text description;
         public Image[] pbAction;
         public Image[] pbSorcery;
         public Image[] pbCurrentAction;
@@ -35,8 +39,6 @@ namespace DungeonPlayer
         public Button command4;
         public Button command5;
         //public Panel commandList;
-        public Text commandName;
-        public Text commandDescription;
         public Button back;
         public TruthImage dragObj;
 
@@ -48,7 +50,6 @@ namespace DungeonPlayer
         const int MIX_ACTION_NUM = 45; // [警告] 暫定、本来Databaseに記載するべき
         const int MIX_ACTION_NUM_2 = 30; // [警告]暫定、本来Databaseに記載するべき
         const int ARCHETYPE_NUM = 1; // アーキタイプ
-
 
         public void TruthBattleSetting_MouseMove(Button sender)
         {
@@ -190,9 +191,9 @@ namespace DungeonPlayer
         }
 
         // Use this for initialization
-        void Start()
+        public override void Start()
         {
-            GroundOne.InitializeGroundOne();
+            base.Start();
 
             currentPlayer = GroundOne.MC;
 
@@ -228,11 +229,11 @@ namespace DungeonPlayer
             SceneDimension.Back();
         }
 
-        public void ViewCommandContent()
+        public void ViewCommandContent(Button sender)
         {
-            string command = "";
-            this.commandName.text = TruthActionCommand.ConvertToJapanese(command);
-            this.commandDescription.text = TruthActionCommand.GetDescription(command);
+            string command = sender.name;
+            this.commandName.text = @"<color=black>" + TruthActionCommand.ConvertToJapanese(command) + @"</color>";
+            this.description.text = TruthActionCommand.GetDescription(command);
         }
 
         private void SetupAllIcon()

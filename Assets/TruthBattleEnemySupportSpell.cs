@@ -4,7 +4,7 @@ using System;
 
 namespace DungeonPlayer
 {
-    public partial class TruthBattleEnemy : MonoBehaviour
+    public partial class TruthBattleEnemy : MotherForm
     {
         /// <summary>
         /// 魔法ダメージのロジック
