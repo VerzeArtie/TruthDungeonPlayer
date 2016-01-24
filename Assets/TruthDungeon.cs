@@ -78,7 +78,6 @@ namespace DungeonPlayer
         public GameObject prefabPlayer;
         public GameObject backgroundData;
         public Text mainMessage;
-        public Text debug;
         public Text labelVigilance;
         public Button btnOK;
         public Button btnYes;
@@ -181,7 +180,7 @@ namespace DungeonPlayer
 
             XmlNodeList currentList = xml.GetElementsByTagName("TileData");
             XmlNodeList childList = currentList[0].ChildNodes;
-            debug.text += "childlist count " + childList.Count.ToString() + "\r\n";
+            Debug.Log("childlist count " + childList.Count.ToString() + "\r\n");
 
             #region "変数初期化と未探索タイル設置"
             for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
@@ -1714,7 +1713,7 @@ namespace DungeonPlayer
 
             System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
             int resultValue = rd.Next(1, 101);
-            debug.text += "R:" + resultValue.ToString();
+            Debug.Log("R:" + resultValue.ToString());
             if (GroundOne.WE.CompleteSlayBoss5) resultValue = 100;
 
             if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
@@ -6949,7 +6948,6 @@ namespace DungeonPlayer
         }
         public void tapOK()
         {
-            debug.text += "tapOK ";
             if (this.nowReading < this.nowMessage.Count)
             {
                 this.btnOK.enabled = true;
