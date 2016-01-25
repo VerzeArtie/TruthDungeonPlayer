@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -14,6 +14,31 @@ namespace DungeonPlayer
         int nowReading = 0;
         List<string> nowMessage = new List<string>();
         List<MessagePack.ActionEvent> nowEvent = new List<MessagePack.ActionEvent>();
+
+        public GameObject FirstPlayerPanel;
+        public GameObject SecondPlayerPanel;
+        public GameObject ThirdPlayerPanel;
+        public Text FirstPlayerName;
+        public Text SecondPlayerName;
+        public Text ThirdPlayerName;
+        public Image currentLife1;
+        public Image currentLife2;
+        public Image currentLife3;
+        public Image currentSkillPoint1;
+        public Image currentSkillPoint2;
+        public Image currentSkillPoint3;
+        public Image currentManaPoint1;
+        public Image currentManaPoint2;
+        public Image currentManaPoint3;
+        public Text currentLifeValue1;
+        public Text currentLifeValue2;
+        public Text currentLifeValue3;
+        public Text currentSkillValue1;
+        public Text currentSkillValue2;
+        public Text currentSkillValue3;
+        public Text currentManaValue1;
+        public Text currentManaValue2;
+        public Text currentManaValue3;
 
         // initialize data list
         List<GameObject> objList = new List<GameObject>();
@@ -78,6 +103,7 @@ namespace DungeonPlayer
         public GameObject prefabPlayer;
         public GameObject backgroundData;
         public Text mainMessage;
+        public GameObject back_vigilance;
         public Text labelVigilance;
         public Button btnOK;
         public Button btnYes;
@@ -170,6 +196,8 @@ namespace DungeonPlayer
             UpdateUnknownTile();
 
             //SetupDungeonMapping(GroundOne.WE.DungeonArea);
+
+            SetupPlayerStatus(true);
         }
 
         private void ReadDungeonTileFromXmlFile(string xmlFileName)
@@ -6863,6 +6891,128 @@ namespace DungeonPlayer
             //throw new NotImplementedException();
         }
 
+        private void UpdateLife(MainCharacter player, Image gauge, Text txt)
+        {
+            float dx = (float)player.CurrentLife / (float)player.MaxLife;
+            txt.text = player.CurrentLife.ToString();
+            gauge.rectTransform.localScale = new Vector2(dx, 1.0f);
+        }
+
+        private void UpdateMana(MainCharacter player, Image gauge, Text txt)
+        {
+            float dx = (float)player.CurrentMana / (float)player.MaxMana;
+            txt.text = player.CurrentMana.ToString();
+            gauge.rectTransform.localScale = new Vector2(dx, 1.0f);
+        }
+
+        private void UpdateSkill(MainCharacter player, Image gauge, Text txt)
+        {
+            float dx = (float)player.CurrentSkillPoint / (float)player.MaxSkillPoint;
+            txt.text = player.CurrentSkillPoint.ToString();
+            gauge.rectTransform.localScale = new Vector2(dx, 1.0f);
+        }
+
+        private void PathfindingMode_Click()
+        {
+            back_vigilance.gameObject.GetComponent<Image>().color = UnityColor.DarkRed;
+            labelVigilance.color = Color.white;
+            labelVigilance.text = Database.TEXT_FINDENEMY_MODE;
+        }
+        private void VigilanceMode_Click()
+        {
+            back_vigilance.gameObject.GetComponent<Image>().color = UnityColor.DeepSkyBlue;
+            labelVigilance.color = Color.white;
+            labelVigilance.text = Database.TEXT_VIGILANCE_MODE;
+        }
+        
+        private void SetupPlayerStatus()
+        {
+            SetupPlayerStatus(false);
+        }
+        private void SetupPlayerStatus(bool initialize)
+        {
+            if (GroundOne.WE.AvailableFirstCharacter)
+            {
+                FirstPlayerPanel.gameObject.SetActive(true);
+                
+                FirstPlayerName.text = GroundOne.MC.FullName;
+                currentSkillPoint1.gameObject.SetActive(GroundOne.MC.AvailableSkill);
+                currentManaPoint1.gameObject.SetActive(GroundOne.MC.AvailableMana);
+
+                if (!GroundOne.MC.AvailableSkill && !GroundOne.MC.AvailableMana && initialize) // change unity
+                {
+                    Method.AddEmptyObj(ref FirstPlayerPanel);
+                    Method.AddEmptyObj(ref FirstPlayerPanel);
+                }
+                else if (GroundOne.MC.AvailableSkill && !GroundOne.MC.AvailableMana && initialize) // change unity
+                {
+                    Method.AddEmptyObj(ref FirstPlayerPanel);
+                }
+
+                UpdateLife(GroundOne.MC, currentLife1, currentLifeValue1);
+                UpdateSkill(GroundOne.MC, currentSkillPoint1, currentSkillValue1);
+                UpdateMana(GroundOne.MC, currentManaPoint1, currentManaValue1);
+            }
+            else
+            {
+                FirstPlayerPanel.gameObject.SetActive(false);
+            }
+
+            if (GroundOne.WE.AvailableSecondCharacter)
+            {
+                SecondPlayerPanel.gameObject.SetActive(true);
+                
+                SecondPlayerName.text = GroundOne.SC.FullName;
+                currentSkillPoint2.gameObject.SetActive(GroundOne.SC.AvailableSkill);
+                currentManaPoint2.gameObject.SetActive(GroundOne.SC.AvailableMana);
+
+                if (!GroundOne.SC.AvailableSkill && !GroundOne.SC.AvailableMana && initialize) // change unity
+                {
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                }
+                else if (GroundOne.SC.AvailableSkill && !GroundOne.SC.AvailableMana && initialize) // change unity
+                {
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                }
+
+                UpdateLife(GroundOne.SC, currentLife2, currentLifeValue2);
+                UpdateMana(GroundOne.SC, currentManaPoint2, currentManaValue2);
+                UpdateSkill(GroundOne.SC, currentSkillPoint2, currentSkillValue2);
+            }
+            else
+            {
+                SecondPlayerPanel.gameObject.SetActive(false);
+            }
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                ThirdPlayerPanel.gameObject.SetActive(true);
+
+                ThirdPlayerName.text = GroundOne.TC.FullName;
+                currentSkillPoint3.gameObject.SetActive(GroundOne.TC.AvailableSkill);
+                currentManaPoint3.gameObject.SetActive(GroundOne.TC.AvailableMana);
+
+                if (!GroundOne.TC.AvailableSkill && !GroundOne.TC.AvailableMana && initialize) // change unity
+                {
+                    Method.AddEmptyObj(ref ThirdPlayerPanel);
+                    Method.AddEmptyObj(ref ThirdPlayerPanel);
+                }
+                else if (GroundOne.TC.AvailableSkill && !GroundOne.TC.AvailableMana && initialize) // change unity
+                {
+                    Method.AddEmptyObj(ref ThirdPlayerPanel);
+                }
+
+                UpdateLife(GroundOne.TC, currentLife3, currentLifeValue3);
+                UpdateMana(GroundOne.TC, currentManaPoint3, currentManaValue3);
+                UpdateSkill(GroundOne.TC, currentSkillPoint3, currentSkillValue3);
+            }
+            else
+            {
+                ThirdPlayerPanel.gameObject.SetActive(false);
+            }
+        }
+
         private void UpdateMainMessage(string message)
         {
             UpdateMainMessage(message, false);
@@ -6908,14 +7058,91 @@ namespace DungeonPlayer
         }
         public void tapSave()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                if (!GroundOne.WE2.SeekerEvent506)
+                {
+                    mainMessage.Text = "アイン：・・・　・・・";
+                    return;
+                }
+                else
+                {
+                    // todo
+                    //using(TruthPlayerInformation TPI = new TruthPlayerInformation())
+                    //{
+                    //    TPI.StartPosition = FormStartPosition.CenterParent;
+                    //    TPI.SetupMessage = "ここまでの記録は自動セーブとなります。ゲームを終わりたい場合は、ゲーム終了を押してください。";
+                    //    TPI.ShowDialog();
+                    //}
+                    return;
+                }
+            }
+
+            GroundOne.SaveMode = true;
+            SceneDimension.Go(Database.TruthDungeon, Database.SaveLoad);
             //Camera camera = Camera.main;
             //camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 10);
             //debug.text += camera.transform.position.ToString() + "\r\n";
         }
         public void tapLoad()
         {
-            Camera camera = Camera.main;
-            camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 10);
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                if (!GroundOne.WE2.SeekerEvent506)
+                {
+                    mainMessage.Text = "アイン：・・・　・・・";
+                    return;
+                }
+                else
+                {
+                    // todo
+                    //using (TruthPlayerInformation TPI = new TruthPlayerInformation())
+                    //{
+                    //    TPI.StartPosition = FormStartPosition.CenterParent;
+                    //    TPI.SetupMessage = "ここまでの記録は自動セーブとなります。ゲームを終わりたい場合は、ゲーム終了を押してください。";
+                    //    TPI.ShowDialog();
+                    //}
+                    return;
+                }
+            }
+
+            // todo
+            //using (SaveLoad sl = new SaveLoad())
+            //{
+            //    sl.StartPosition = FormStartPosition.CenterParent;
+            //    sl.ShowDialog();
+            //    if (sl.DialogResult == DialogResult.Cancel)
+            //    {
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        this.MC = sl.MC;
+            //        this.SC = sl.SC;
+            //        this.TC = sl.TC;
+            //        this.WE = sl.WE;
+            //        this.knownTileInfo = sl.KnownTileInfo;
+            //        this.knownTileInfo2 = sl.KnownTileInfo2;
+            //        this.knownTileInfo3 = sl.KnownTileInfo3;
+            //        this.knownTileInfo4 = sl.KnownTileInfo4;
+            //        this.knownTileInfo5 = sl.KnownTileInfo5;
+            //        this.Truth_KnownTileInfo = sl.Truth_KnownTileInfo; // 後編追加
+            //        this.Truth_KnownTileInfo2 = sl.Truth_KnownTileInfo2; // 後編追加
+            //        this.Truth_KnownTileInfo3 = sl.Truth_KnownTileInfo3; // 後編追加
+            //        this.Truth_KnownTileInfo4 = sl.Truth_KnownTileInfo4; // 後編追加
+            //        this.Truth_KnownTileInfo5 = sl.Truth_KnownTileInfo5; // 後編追加
+
+            //        PreInitialize();
+            //    }
+            //}
+
+            GroundOne.SaveMode = false;
+            SceneDimension.Go(Database.TruthDungeon, Database.SaveLoad);
+            
+            // todo (この後、画面を再ロードするか、ロード先の画面へジャンプする必要がある）
+            
+            //Camera camera = Camera.main;
+            //camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 10);
         }
         public void tapExit()
         {
