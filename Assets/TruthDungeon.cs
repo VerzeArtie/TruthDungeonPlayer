@@ -7062,7 +7062,7 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE2.SeekerEvent506)
                 {
-                    mainMessage.Text = "アイン：・・・　・・・";
+                    mainMessage.text = "アイン：・・・　・・・";
                     return;
                 }
                 else
@@ -7090,7 +7090,7 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE2.SeekerEvent506)
                 {
-                    mainMessage.Text = "アイン：・・・　・・・";
+                    mainMessage.text = "アイン：・・・　・・・";
                     return;
                 }
                 else

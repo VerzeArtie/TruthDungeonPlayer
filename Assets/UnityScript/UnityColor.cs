@@ -31,7 +31,7 @@ namespace DungeonPlayer
         public static Color Sienna = new Color(160, 82, 45);
         public static Color Chocolate = new Color(210, 105, 30);
         public static Color Sandybrown = new Color(244, 164, 96);
-        public static Color Darkred = new Color(139.0f/255.0f, 0.0f, 0.0f);
+        public static Color DarkRed = new Color(139.0f/255.0f, 0.0f, 0.0f);
         public static Color Maroon = new Color(128, 0, 0);
         public static Color Brown = new Color(165, 42, 42);
         public static Color Firebrick = new Color(178, 34, 34);
