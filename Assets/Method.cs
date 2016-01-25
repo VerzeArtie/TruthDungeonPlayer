@@ -17,6 +17,14 @@ namespace DungeonPlayer
             Lottery,
         }
 
+        // 親グループに空のオブジェクトを追加する(レイアウト調整専用)
+        public static void AddEmptyObj(ref GameObject parentGroup)
+        {
+            GameObject emptyObj = new GameObject();
+            emptyObj.AddComponent<RectTransform>();
+            emptyObj.transform.SetParent(parentGroup.transform);
+        }
+        
         // panel(gameobject)の色をレアに応じて変更
         public static void UpdateRareColor(ItemBackPack item, Text target1, GameObject target2)
         {
