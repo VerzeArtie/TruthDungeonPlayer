@@ -31,7 +31,7 @@ namespace DungeonPlayer
         public static Color Sienna = new Color(160, 82, 45);
         public static Color Chocolate = new Color(210, 105, 30);
         public static Color Sandybrown = new Color(244, 164, 96);
-        public static Color Darkred = new Color(139, 0, 0);
+        public static Color Darkred = new Color(139.0f/255.0f, 0.0f, 0.0f);
         public static Color Maroon = new Color(128, 0, 0);
         public static Color Brown = new Color(165, 42, 42);
         public static Color Firebrick = new Color(178, 34, 34);
@@ -120,7 +120,7 @@ namespace DungeonPlayer
         public static Color Paleturquoise = new Color(175, 238, 238);
         public static Color Skyblue = new Color(135, 206, 235);
         public static Color LightSkyBlue = new Color(135, 206, 250);
-        public static Color DeepSkyBlue = new Color(0, 191, 255);
+        public static Color DeepSkyBlue = new Color(0.0f, 191.0f/255.0f, 1.0f);
         public static Color Dodgerblue = new Color(30, 144, 255);
         public static Color Ghostwhite = new Color(248, 248, 255);
         public static Color Lavender = new Color(230, 230, 250);
