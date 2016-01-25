@@ -774,15 +774,15 @@ namespace DungeonPlayer
                         actionButton[ii].name = player.BattleActionCommandList[ii];
                         if (TruthActionCommand.GetTimingType(player.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Sorcery)
                         {
-                            sorceryMark[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
+                            sorceryMark[ii].sprite = Resources.Load<Sprite>(Database.SorceryIcon);
                         }
                         else if (TruthActionCommand.GetTimingType(player.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Normal)
                         {
-                            sorceryMark[ii].sprite = Resources.Load<Sprite>("normal_mark");
+                            sorceryMark[ii].sprite = Resources.Load<Sprite>(Database.NormalIcon);
                         }
                         else
                         {
-                            sorceryMark[ii].sprite = Resources.Load<Sprite>("instant_mark");
+                            sorceryMark[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
                         }
                     }
                 }

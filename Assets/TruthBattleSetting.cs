@@ -139,18 +139,18 @@ namespace DungeonPlayer
                     pbCurrentAction[ii].name = sender.name;
                     if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Sorcery)
                     {
-                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
+                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.SorceryIcon);
                     }
                     else if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Normal)
                     {
-                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("normal_mark");
+                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.NormalIcon);
                     }
                     else
                     {
-                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("instant_mark");
+                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
                     }
 
-                    GroundOne.MC.BattleActionCommandList[ii] = sender.name;
+                    GroundOne.MC.BattleActionCommandList[ii] = sender.name; // todo
                     Debug.Log("MC.battlecommand : " + sender.name);
                     //this.currentCommand[this.currentPlayerNumber][ii] = Database.STAY_EN;
                     //for (int jj = 0; jj < BASIC_ACTION_NUM + Database.SPELL_MAX_NUM + Database.SKILL_MAX_NUM + MIX_ACTION_NUM + MIX_ACTION_NUM_2 + ARCHETYPE_NUM; jj++)
@@ -178,15 +178,15 @@ namespace DungeonPlayer
             //moveActionBox.sprite = Resources.Load<Sprite>(ssName[ii]);
             if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Sorcery)
             {
-                moveActionBoxSorcery.sprite = Resources.Load<Sprite>("sorcery_mark");
+                moveActionBoxSorcery.sprite = Resources.Load<Sprite>(Database.SorceryIcon);
             }
             else if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Normal)
             {
-                moveActionBoxSorcery.sprite = Resources.Load<Sprite>("normal_mark");
+                moveActionBoxSorcery.sprite = Resources.Load<Sprite>(Database.NormalIcon);
             }
             else
             {
-                moveActionBoxSorcery.sprite = Resources.Load<Sprite>("instant_mark");
+                moveActionBoxSorcery.sprite = Resources.Load<Sprite>(Database.InstantIcon);
             }
 
 
@@ -302,11 +302,11 @@ namespace DungeonPlayer
                     if (ssAvailable[ii]) {
                         pbAction[ii].sprite = Resources.Load<Sprite>(ssName[ii]);
                         if (TruthActionCommand.GetTimingType(ssName[ii]) == TruthActionCommand.TimingType.Sorcery) {
-                            pbSorcery[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
+                            pbSorcery[ii].sprite = Resources.Load<Sprite>(Database.SorceryIcon);
                         } else if (TruthActionCommand.GetTimingType(ssName[ii]) == TruthActionCommand.TimingType.Normal) {
-                            pbSorcery[ii].sprite = Resources.Load<Sprite>("normal_mark");
+                            pbSorcery[ii].sprite = Resources.Load<Sprite>(Database.NormalIcon);
                         } else {
-                            pbSorcery[ii].sprite = Resources.Load<Sprite>("instant_mark");
+                            pbSorcery[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
                         }
                     }
                 }
@@ -319,15 +319,15 @@ namespace DungeonPlayer
                 pbCurrentAction[ii].name = currentPlayer.BattleActionCommandList[ii];
                 if (TruthActionCommand.GetTimingType(currentPlayer.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Sorcery)
                 {
-                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
+                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.SorceryIcon);
                 }
                 else if (TruthActionCommand.GetTimingType(currentPlayer.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Normal)
                 {
-                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("normal_mark");
+                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.NormalIcon);
                 }
                 else
                 {
-                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("instant_mark");
+                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
                 }
             }
             // todo

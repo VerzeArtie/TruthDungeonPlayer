@@ -2598,6 +2598,11 @@ namespace DungeonPlayer
         public const string TruthStatusPlayer = @"TruthStatusPlayer";
         public const string TruthWill = @"TruthWill";
         public const string SaveLoad = @"SaveLoad";
+
+        // コマンドタイミングのアイコン(add unity)
+        public const string SorceryIcon = @"sorcery_mark";
+        public const string NormalIcon = @"normal_mark";
+        public const string InstantIcon = @"instant_mark";
     }
 }
 
