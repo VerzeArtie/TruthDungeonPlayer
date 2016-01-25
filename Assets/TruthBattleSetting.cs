@@ -8,6 +8,10 @@ namespace DungeonPlayer
 {
     public class TruthBattleSetting : MotherForm
     {
+        public Camera cam;
+        public Button btnFirstChara;
+        public Button btnSecondChara;
+        public Button btnThirdChara;
         public Text commandName;
         public Text commandNameEn;
         public Text commandCost;
@@ -20,8 +24,6 @@ namespace DungeonPlayer
         public Image[] pbCurrentActionSorcery;
         public Image moveActionBox;
         public Image moveActionBoxSorcery;
-        MainCharacter currentPlayer;
-
         public GameObject panelBasic;
         public Text txtBasic;
         public GameObject panelSpell;
@@ -43,6 +45,9 @@ namespace DungeonPlayer
         public Button back;
         public TruthImage dragObj;
 
+        MainCharacter currentPlayer;
+        int currentPlayerNumber = 0;
+
         private Vector3 screenPoint;
         private Vector3 offset;
 
@@ -51,6 +56,28 @@ namespace DungeonPlayer
         const int MIX_ACTION_NUM = 45; // [警告] 暫定、本来Databaseに記載するべき
         const int MIX_ACTION_NUM_2 = 30; // [警告]暫定、本来Databaseに記載するべき
         const int ARCHETYPE_NUM = 1; // アーキタイプ
+
+        // Use this for initialization
+        public override void Start()
+        {
+            base.Start();
+
+            currentPlayer = GroundOne.MC;
+            this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+
+            if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
+            if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
+            if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
+
+            // todo まだ持ってくるモノがある。
+
+            SetupAllIcon();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        }
 
         public void TruthBattleSetting_MouseMove(Button sender)
         {
@@ -199,23 +226,6 @@ namespace DungeonPlayer
             //moveActionBox.Location = new Point(((PictureBox)sender).Location.X + e.X, ((PictureBox)sender).Location.Y + e.Y);
         }
 
-        // Use this for initialization
-        public override void Start()
-        {
-            base.Start();
-
-            currentPlayer = GroundOne.MC;
-
-            // todo まだ持ってくるモノがある。
-
-            SetupAllIcon();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        }
-
         void OnMouseDown()
         {
             this.screenPoint = Camera.main.WorldToScreenPoint(transform.position);
@@ -354,6 +364,38 @@ namespace DungeonPlayer
             //        }
             //    }
             //}
+        }
+
+        private void SetupbattleCommand()
+        {
+            // todo
+        }
+
+        public void FirstChara_Click()
+        {
+            this.currentPlayer = GroundOne.MC;
+            this.currentPlayerNumber = 0;
+            this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+            SetupbattleCommand();
+            SetupAllIcon();
+        }
+
+        public void SecondChara_Click()
+        {
+            this.currentPlayer = GroundOne.SC;
+            this.currentPlayerNumber = 1;
+            this.cam.backgroundColor = GroundOne.SC.PlayerStatusColor;
+            SetupbattleCommand();
+            SetupAllIcon();
+        }
+
+        public void ThirdChara_Click()
+        {
+            this.currentPlayer = GroundOne.TC;
+            this.currentPlayerNumber = 2;
+            this.cam.backgroundColor = GroundOne.TC.PlayerStatusColor;
+            SetupbattleCommand();
+            SetupAllIcon();
         }
     }
 }
