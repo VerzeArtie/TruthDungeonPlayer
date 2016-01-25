@@ -8,9 +8,11 @@ namespace DungeonPlayer
 {
     public class TruthBattleSetting : MotherForm
     {
-        public GameObject back_commandName;
         public Text commandName;
-        public GameObject back_description;
+        public Text commandNameEn;
+        public Text commandCost;
+        public Text commandTarget;
+        public Text commandTiming;
         public Text description;
         public Image[] pbAction;
         public Image[] pbSorcery;
@@ -19,7 +21,6 @@ namespace DungeonPlayer
         public Image moveActionBox;
         public Image moveActionBoxSorcery;
         MainCharacter currentPlayer;
-
 
         public GameObject panelBasic;
         public Text txtBasic;
@@ -140,6 +141,10 @@ namespace DungeonPlayer
                     {
                         pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
                     }
+                    else if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Normal)
+                    {
+                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("normal_mark");
+                    }
                     else
                     {
                         pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("instant_mark");
@@ -174,6 +179,10 @@ namespace DungeonPlayer
             if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Sorcery)
             {
                 moveActionBoxSorcery.sprite = Resources.Load<Sprite>("sorcery_mark");
+            }
+            else if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Normal)
+            {
+                moveActionBoxSorcery.sprite = Resources.Load<Sprite>("normal_mark");
             }
             else
             {
@@ -232,7 +241,53 @@ namespace DungeonPlayer
         public void ViewCommandContent(Button sender)
         {
             string command = sender.name;
-            this.commandName.text = @"<color=black>" + TruthActionCommand.ConvertToJapanese(command) + @"</color>";
+            this.commandName.text = TruthActionCommand.ConvertToJapanese(command);
+            this.commandNameEn.text = sender.name;
+            this.commandCost.text = "消費コスト : " + TruthActionCommand.GetCost(sender.name).ToString();
+
+            switch (TruthActionCommand.GetTargetType(command))
+            {
+                case TruthActionCommand.TargetType.AllMember:
+                    commandTarget.text = "対象：場全体";
+                    break;
+                case TruthActionCommand.TargetType.Ally:
+                    commandTarget.text = "対象：味方単体";
+                    break;
+                case TruthActionCommand.TargetType.AllyGroup:
+                    commandTarget.text = "対象：味方全体";
+                    break;
+                case TruthActionCommand.TargetType.AllyOrEnemy:
+                    commandTarget.text = "対象：敵単体 / 味方単体";
+                    break;
+                case TruthActionCommand.TargetType.Enemy:
+                    commandTarget.text = "対象：敵単体";
+                    break;
+                case TruthActionCommand.TargetType.EnemyGroup:
+                    commandTarget.text = "対象：敵全体";
+                    break;
+                case TruthActionCommand.TargetType.InstantTarget:
+                    commandTarget.text = "対象：インスタント対象";
+                    break;
+                case TruthActionCommand.TargetType.NoTarget:
+                    commandTarget.text = "対象：なし";
+                    break;
+                case TruthActionCommand.TargetType.Own:
+                    commandTarget.text = "対象：自分";
+                    break;
+            }
+
+            switch (TruthActionCommand.GetTimingType(sender.name))
+            {
+                case TruthActionCommand.TimingType.Sorcery:
+                    commandTiming.text = "ソーサリー";
+                    break;
+                case TruthActionCommand.TimingType.Normal:
+                    commandTiming.text = "ノーマル";
+                    break;
+                case TruthActionCommand.TimingType.Instant:
+                    commandTiming.text = "インスタント";
+                    break;
+            }
             this.description.text = TruthActionCommand.GetDescription(command);
         }
 
@@ -248,6 +303,8 @@ namespace DungeonPlayer
                         pbAction[ii].sprite = Resources.Load<Sprite>(ssName[ii]);
                         if (TruthActionCommand.GetTimingType(ssName[ii]) == TruthActionCommand.TimingType.Sorcery) {
                             pbSorcery[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
+                        } else if (TruthActionCommand.GetTimingType(ssName[ii]) == TruthActionCommand.TimingType.Normal) {
+                            pbSorcery[ii].sprite = Resources.Load<Sprite>("normal_mark");
                         } else {
                             pbSorcery[ii].sprite = Resources.Load<Sprite>("instant_mark");
                         }
@@ -263,6 +320,10 @@ namespace DungeonPlayer
                 if (TruthActionCommand.GetTimingType(currentPlayer.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Sorcery)
                 {
                     pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
+                }
+                else if (TruthActionCommand.GetTimingType(currentPlayer.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Normal)
+                {
+                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>("normal_mark");
                 }
                 else
                 {

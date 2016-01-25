@@ -776,6 +776,10 @@ namespace DungeonPlayer
                         {
                             sorceryMark[ii].sprite = Resources.Load<Sprite>("sorcery_mark");
                         }
+                        else if (TruthActionCommand.GetTimingType(player.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Normal)
+                        {
+                            sorceryMark[ii].sprite = Resources.Load<Sprite>("normal_mark");
+                        }
                         else
                         {
                             sorceryMark[ii].sprite = Resources.Load<Sprite>("instant_mark");

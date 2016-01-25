@@ -105,7 +105,7 @@ namespace DungeonPlayer
 
             WE.AvailableFirstCharacter = true;
             WE.AvailableSecondCharacter = true;
-            //WE.AvailableThirdCharacter = true;
+            WE.AvailableThirdCharacter = true;
             WE.AvailableInstantCommand = true;
 
             WE.AvailableMana = true;
@@ -312,6 +312,8 @@ namespace DungeonPlayer
             SC = objSC.AddComponent<MainCharacter>();
             SC.FirstName = Database.RANA_AMILIA;
             SC.FullName = Database.RANA_AMILIA_FULL;
+            SC.AvailableMana = true;
+            SC.AvailableSkill = true;
             SC.AddBackPack(new ItemBackPack(Database.COMMON_ELECTRO_ROD));
             SC.BattleActionCommandList[0] = Database.ATTACK_EN;
             SC.BattleActionCommandList[1] = Database.ICE_NEEDLE;
@@ -326,6 +328,8 @@ namespace DungeonPlayer
             TC = objTC.AddComponent<MainCharacter>();
             TC.FirstName = Database.OL_LANDIS;
             TC.FullName = Database.OL_LANDIS_FULL;
+            TC.AvailableMana = true;
+            TC.AvailableSkill = true;
             TC.BattleActionCommandList[0] = Database.ATTACK_EN;
             TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
             TC.BattleActionCommandList[2] = Database.STAY_EN;

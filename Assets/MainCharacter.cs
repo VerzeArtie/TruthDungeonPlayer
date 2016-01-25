@@ -2554,6 +2554,18 @@ namespace DungeonPlayer
         public Text DamageLabel = null;
         public Text CriticalLabel = null;
 
+        public Color DungeonPanelColor
+        {
+            get
+            {
+                if (this.FirstName == Database.EIN_WOLENCE) { return new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B, 0.8f); }
+                else if (this.FirstName == Database.RANA_AMILIA) { return new Color(Database.COLOR_RANA_R, Database.COLOR_RANA_G, Database.COLOR_RANA_B, 0.8f); }
+                else if (this.FirstName == Database.OL_LANDIS) { return new Color(Database.COLOR_OL_R, Database.COLOR_OL_G, Database.COLOR_OL_B, 0.8f); }
+                else if (this.FirstName == Database.SINIKIA_KAHLHANZ) { return new Color(Database.COLOR_KAHL_R, Database.COLOR_KAHL_G, Database.COLOR_KAHL_B, 0.8f); }
+                else { return new Color(Database.COLOR_VERZE_R, Database.COLOR_VERZE_G, Database.COLOR_VERZE_B, 0.8f); }
+            }
+        }
+
         public Color PlayerStatusColor
         {
             get

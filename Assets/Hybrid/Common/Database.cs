@@ -208,7 +208,7 @@ namespace DungeonPlayer
         // [闇]
         public const string DARK_BLAST = @"DarkBlast";
         public const string SHADOW_PACT = @"ShadowPact";
-        public const string LIFE_TAP = @"Lifetap";
+        public const string LIFE_TAP = @"LifeTap"; // change unity
         public const string BLACK_CONTRACT = @"BlackContract";
         public const string DEVOURING_PLAGUE = @"DevouringPlague"; // e 後編編集（スペルミス）
         public const string BLOODY_VENGEANCE = @"BloodyVengeance";
@@ -384,7 +384,7 @@ namespace DungeonPlayer
         public const string PIERCING_FLAME = @"PiercingFlame";
         public const string PIERCING_FLAME_JP = @"ピアーシング・フレイム";
         public const string SIGIL_OF_HOMURA = @"SigilOfHomura";
-        public const string SIGIL_OF_HOMURA_JP = @"焔の傷印";
+        public const string SIGIL_OF_HOMURA_JP = @"焔の刻印";
 
         // [火　空]
         public const string IMMOLATE = @"Immolate";

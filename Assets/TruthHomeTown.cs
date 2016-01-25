@@ -532,10 +532,10 @@ namespace DungeonPlayer
             mainMessage.text = "アイン：DUEL闘技場は閉まってる。他の所へ行こう。";
 	    }
 
-	    public void tapCommand() {
-		    targetViewName = "BattleSetting";
-		    CallNext ();
-	    }
+        public void tapBattleSetting()
+        {
+            SceneDimension.Go(Database.TruthHomeTown, Database.TruthBattleSetting);
+        }
 
         private void NormalTapOK()
         {

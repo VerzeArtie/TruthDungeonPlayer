@@ -1484,68 +1484,68 @@ namespace DungeonPlayer
                     }
                 }
                 #endregion
-                //#region "２階"
-                //else if (GroundOne.WE.DungeonArea == 2 && GroundOne.WE2.StartSeeker == false)
-                //{
-                //    for (int ii = 0; ii < 200; ii++)
-                //    {
-                //        if (CheckTriggeredEvent(ii))
-                //        {
-                //            detectEvent = true;
-                //            ExecSomeEvents(2, ii);
-                //            return;
-                //        }
-                //    }
-                //}
-                //#endregion
-                //#region "３階"
-                //else if (GroundOne.WE.DungeonArea == 3 && GroundOne.WE2.StartSeeker == false)
-                //{
-                //    for (int ii = 0; ii < 500; ii++)
-                //    {
-                //        if (CheckTriggeredEvent(ii))
-                //        {
-                //            detectEvent = true;
-                //            ExecSomeEvents(3, ii);
-                //            return;
-                //        }
-                //    }
-                //}
-                //#endregion
-                //#region "４階"
-                //else if (GroundOne.WE.DungeonArea == 4)
-                //{
-                //    for (int ii = 0; ii < 500; ii++)
-                //    {
-                //        if (CheckTriggeredEvent(ii))
-                //        {
-                //            detectEvent = true;
-                //            ExecSomeEvents(4, ii);
-                //            return;
-                //        }
-                //    }
-                //}
-                //#endregion
-                //#region "５階"
-                //else if (GroundOne.WE.DungeonArea == 5)
-                //{
-                //    for (int ii = 0; ii < 500; ii++)
-                //    {
-                //        if (CheckTriggeredEvent(ii))
-                //        {
-                //            detectEvent = true;
-                //            ExecSomeEvents(5, ii);
-                //            return;
-                //        }
-                //    }
-                //}
-                //#endregion
-                //#region "現実世界"
-                //if (GroundOne.WE2.StartSeeker)
-                //{
-                //    ExecSomeEvent_ReadWorld();
-                //}
-                //#endregion
+                #region "２階"
+                else if (GroundOne.WE.DungeonArea == 2 && GroundOne.WE2.StartSeeker == false)
+                {
+                    for (int ii = 0; ii < 200; ii++)
+                    {
+                        if (CheckTriggeredEvent(ii))
+                        {
+                            detectEvent = true;
+                            ExecSomeEvents(2, ii);
+                            return;
+                        }
+                    }
+                }
+                #endregion
+                #region "３階"
+                else if (GroundOne.WE.DungeonArea == 3 && GroundOne.WE2.StartSeeker == false)
+                {
+                    for (int ii = 0; ii < 500; ii++)
+                    {
+                        if (CheckTriggeredEvent(ii))
+                        {
+                            detectEvent = true;
+                            ExecSomeEvents(3, ii);
+                            return;
+                        }
+                    }
+                }
+                #endregion
+                #region "４階"
+                else if (GroundOne.WE.DungeonArea == 4)
+                {
+                    for (int ii = 0; ii < 500; ii++)
+                    {
+                        if (CheckTriggeredEvent(ii))
+                        {
+                            detectEvent = true;
+                            ExecSomeEvents(4, ii);
+                            return;
+                        }
+                    }
+                }
+                #endregion
+                #region "５階"
+                else if (GroundOne.WE.DungeonArea == 5)
+                {
+                    for (int ii = 0; ii < 500; ii++)
+                    {
+                        if (CheckTriggeredEvent(ii))
+                        {
+                            detectEvent = true;
+                            ExecSomeEvents(5, ii);
+                            return;
+                        }
+                    }
+                }
+                #endregion
+                #region "現実世界"
+                if (GroundOne.WE2.StartSeeker)
+                {
+                    ExecSomeEvent_ReadWorld();
+                }
+                #endregion
 
 
                 if (!detectEvent)
@@ -6894,21 +6894,21 @@ namespace DungeonPlayer
         private void UpdateLife(MainCharacter player, Image gauge, Text txt)
         {
             float dx = (float)player.CurrentLife / (float)player.MaxLife;
-            txt.text = player.CurrentLife.ToString();
+            txt.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
             gauge.rectTransform.localScale = new Vector2(dx, 1.0f);
         }
 
         private void UpdateMana(MainCharacter player, Image gauge, Text txt)
         {
             float dx = (float)player.CurrentMana / (float)player.MaxMana;
-            txt.text = player.CurrentMana.ToString();
+            txt.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
             gauge.rectTransform.localScale = new Vector2(dx, 1.0f);
         }
 
         private void UpdateSkill(MainCharacter player, Image gauge, Text txt)
         {
             float dx = (float)player.CurrentSkillPoint / (float)player.MaxSkillPoint;
-            txt.text = player.CurrentSkillPoint.ToString();
+            txt.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
             gauge.rectTransform.localScale = new Vector2(dx, 1.0f);
         }
 
@@ -6934,10 +6934,13 @@ namespace DungeonPlayer
             if (GroundOne.WE.AvailableFirstCharacter)
             {
                 FirstPlayerPanel.gameObject.SetActive(true);
-                
+                FirstPlayerPanel.GetComponent<Image>().color = GroundOne.MC.DungeonPanelColor;
+
                 FirstPlayerName.text = GroundOne.MC.FullName;
                 currentSkillPoint1.gameObject.SetActive(GroundOne.MC.AvailableSkill);
+                currentSkillValue1.gameObject.SetActive(GroundOne.MC.AvailableSkill);
                 currentManaPoint1.gameObject.SetActive(GroundOne.MC.AvailableMana);
+                currentManaValue1.gameObject.SetActive(GroundOne.MC.AvailableMana);
 
                 if (!GroundOne.MC.AvailableSkill && !GroundOne.MC.AvailableMana && initialize) // change unity
                 {
@@ -6961,18 +6964,24 @@ namespace DungeonPlayer
             if (GroundOne.WE.AvailableSecondCharacter)
             {
                 SecondPlayerPanel.gameObject.SetActive(true);
-                
+                SecondPlayerPanel.GetComponent<Image>().color = GroundOne.SC.DungeonPanelColor;
+
                 SecondPlayerName.text = GroundOne.SC.FullName;
                 currentSkillPoint2.gameObject.SetActive(GroundOne.SC.AvailableSkill);
+                currentSkillValue2.gameObject.SetActive(GroundOne.SC.AvailableSkill);
                 currentManaPoint2.gameObject.SetActive(GroundOne.SC.AvailableMana);
+                currentManaValue2.gameObject.SetActive(GroundOne.SC.AvailableMana);
 
                 if (!GroundOne.SC.AvailableSkill && !GroundOne.SC.AvailableMana && initialize) // change unity
                 {
                     Method.AddEmptyObj(ref SecondPlayerPanel);
                     Method.AddEmptyObj(ref SecondPlayerPanel);
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
                 }
                 else if (GroundOne.SC.AvailableSkill && !GroundOne.SC.AvailableMana && initialize) // change unity
                 {
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
                     Method.AddEmptyObj(ref SecondPlayerPanel);
                 }
 
@@ -6988,19 +6997,25 @@ namespace DungeonPlayer
             if (GroundOne.WE.AvailableThirdCharacter)
             {
                 ThirdPlayerPanel.gameObject.SetActive(true);
+                ThirdPlayerPanel.GetComponent<Image>().color = GroundOne.TC.DungeonPanelColor;
 
                 ThirdPlayerName.text = GroundOne.TC.FullName;
                 currentSkillPoint3.gameObject.SetActive(GroundOne.TC.AvailableSkill);
+                currentSkillValue3.gameObject.SetActive(GroundOne.TC.AvailableSkill);
                 currentManaPoint3.gameObject.SetActive(GroundOne.TC.AvailableMana);
+                currentManaValue3.gameObject.SetActive(GroundOne.TC.AvailableMana);
 
                 if (!GroundOne.TC.AvailableSkill && !GroundOne.TC.AvailableMana && initialize) // change unity
                 {
                     Method.AddEmptyObj(ref ThirdPlayerPanel);
                     Method.AddEmptyObj(ref ThirdPlayerPanel);
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
                 }
                 else if (GroundOne.TC.AvailableSkill && !GroundOne.TC.AvailableMana && initialize) // change unity
                 {
                     Method.AddEmptyObj(ref ThirdPlayerPanel);
+                    Method.AddEmptyObj(ref SecondPlayerPanel);
                 }
 
                 UpdateLife(GroundOne.TC, currentLife3, currentLifeValue3);
@@ -7055,6 +7070,7 @@ namespace DungeonPlayer
         }
         public void tapBattleSetting()
         {
+            SceneDimension.Go(Database.TruthDungeon, Database.TruthBattleSetting);
         }
         public void tapSave()
         {
@@ -7544,6 +7560,12 @@ namespace DungeonPlayer
             Application.LoadLevel("TruthHomeTown");
 
             // [todo] CallbackHomeTownはUnityのMainMenuから呼び出された時、必ず実施しなければならないメソッドである。
+        }
+
+        private bool ExecSomeEvent_ReadWorld()
+        {
+            // todo
+            return true;
         }
     }
 }
