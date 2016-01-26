@@ -403,6 +403,9 @@ namespace DungeonPlayer
                 UpdateLife(this.ActiveList[ii]);
                 UpdateMana(this.ActiveList[ii]);
                 UpdateSkillPoint(this.ActiveList[ii]);
+                float widthScale = (float)Screen.width / (float)Database.BASE_TIMER_BAR_LENGTH;
+                Vector3 current = ActiveList[ii].MainFaceArrow.transform.position;
+                ActiveList[ii].MainFaceArrow.transform.position = new Vector3((float)ActiveList[ii].BattleBarPos * widthScale, current.y, current.z);
             }
 
             this.currentPlayer = GroundOne.MC;
