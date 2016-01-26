@@ -177,8 +177,7 @@ namespace DungeonPlayer
                         pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
                     }
 
-                    GroundOne.MC.BattleActionCommandList[ii] = sender.name; // todo
-                    Debug.Log("MC.battlecommand : " + sender.name);
+                    this.currentPlayer.BattleActionCommandList[ii] = sender.name;
                     //this.currentCommand[this.currentPlayerNumber][ii] = Database.STAY_EN;
                     //for (int jj = 0; jj < BASIC_ACTION_NUM + Database.SPELL_MAX_NUM + Database.SKILL_MAX_NUM + MIX_ACTION_NUM + MIX_ACTION_NUM_2 + ARCHETYPE_NUM; jj++)
                     //{
