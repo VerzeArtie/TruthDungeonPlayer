@@ -32,7 +32,7 @@ namespace DungeonPlayer
             target.CurrentLife -= (int)damage;
             if (target.CurrentLife < 0) { target.CurrentLife = 0; }
             UpdateLife(target);
-            UpdateMessage(player.labelName.text + " to " + target.labelName.text + " " + command + " " + ((int)damage).ToString() + " \n");
+            UpdateBattleText(player.labelName.text + " to " + target.labelName.text + " " + command + " " + ((int)damage).ToString() + " \n");
 
             return true;
         }

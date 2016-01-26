@@ -33,7 +33,7 @@ namespace DungeonPlayer
         protected bool availableEquipShop3; // ガンツ武具屋ダンジョン３階用を解禁
         protected bool availableEquipShop4; // ガンツ武具屋ダンジョン４階用を解禁
         protected bool availableEquipShop5; // ガンツ武具屋ダンジョン５階用を解禁
-        protected bool availableFirstCharacter; // １人目のパーティ追加
+        protected bool availableFirstCharacter = true; // １人目のパーティ追加
         protected bool availableSecondCharacter; // ２人目のパーティ追加
         protected bool availableThirdCharacter; // ３人目のパーティ追加
         protected bool communicationThirdChara1; // ヴェルゼイベント１

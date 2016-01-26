@@ -2534,6 +2534,7 @@ namespace DungeonPlayer
         public GameObject mainPanel = null;
         public Button MainObjectButton = null;
         public Text labelName = null;
+        public Text labelFullName = null;
         public Text ActionLabel = null;
 
         public Text labelCurrentLifePoint = null;

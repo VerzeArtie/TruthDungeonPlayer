@@ -104,9 +104,10 @@ namespace DungeonPlayer
             //WE.TruthCompleteArea1 = true;
 
             WE.AvailableFirstCharacter = true;
-            WE.AvailableSecondCharacter = true;
-            WE.AvailableThirdCharacter = true;
+            //WE.AvailableSecondCharacter = true;
+            //WE.AvailableThirdCharacter = true;
             WE.AvailableInstantCommand = true;
+            GroundOne.enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
 
             WE.AvailableMana = true;
             WE.AvailableSkill = true;
