@@ -78,6 +78,8 @@ namespace DungeonPlayer
         public Text player1Name;
         public Text player1FullName;
         public Text player1Life;
+        public Text player1Mana;
+        public Text player1Skill;
         public Image player1LifeMeter;
         public Image player1ManaMeter;
         public Image player1SkillMeter;
@@ -93,6 +95,8 @@ namespace DungeonPlayer
         public Text player2Name;
         public Text player2FullName;
         public Text player2Life;
+        public Text player2Mana;
+        public Text player2Skill;
         public Image player2LifeMeter;
         public Image player2ManaMeter;
         public Image player2SkillMeter;
@@ -108,6 +112,8 @@ namespace DungeonPlayer
         public Text player3Name;
         public Text player3FullName;
         public Text player3Life;
+        public Text player3Mana;
+        public Text player3Skill;
         public Image player3LifeMeter;
         public Image player3ManaMeter;
         public Image player3SkillMeter;
@@ -175,7 +181,7 @@ namespace DungeonPlayer
         int BattleTurnCount = 0;
 
         bool gameStart = false;
-
+        bool execBattleEndPhase = false; // BattleEndPhaseが２重コールされるのを防ぐ
         bool endBattleForMatrixDragonEnd = false; // 支配竜会話終了時に戦闘終了させるフラグ
 
         TruthEnemyCharacter ec1;
@@ -221,9 +227,9 @@ namespace DungeonPlayer
             GroundOne.MC.labelName = this.player1Name;
             GroundOne.MC.labelCurrentLifePoint = this.player1Life;
             GroundOne.MC.meterCurrentLifePoint = this.player1LifeMeter;
-            GroundOne.MC.labelCurrentManaPoint = null;
+            GroundOne.MC.labelCurrentManaPoint = this.player1Mana;
             GroundOne.MC.meterCurrentManaPoint = this.player1ManaMeter;
-            GroundOne.MC.labelCurrentSkillPoint = null;
+            GroundOne.MC.labelCurrentSkillPoint = this.player1Skill;
             GroundOne.MC.meterCurrentSkillPoint = this.player1SkillMeter;
             GroundOne.MC.labelCurrentInstantPoint = this.player1Instant;
             GroundOne.MC.meterCurrentInstantPoint = this.player1InstantMeter;
@@ -240,9 +246,9 @@ namespace DungeonPlayer
             GroundOne.SC.labelName = this.player2Name;
             GroundOne.SC.labelCurrentLifePoint = this.player2Life;
             GroundOne.SC.meterCurrentLifePoint = this.player2LifeMeter;
-            GroundOne.SC.labelCurrentManaPoint = null;
+            GroundOne.SC.labelCurrentManaPoint = this.player2Mana;
             GroundOne.SC.meterCurrentManaPoint = this.player2ManaMeter;
-            GroundOne.SC.labelCurrentSkillPoint = null;
+            GroundOne.SC.labelCurrentSkillPoint = this.player2Skill;
             GroundOne.SC.meterCurrentSkillPoint = this.player2SkillMeter;
             GroundOne.SC.labelCurrentInstantPoint = this.player2Instant;
             GroundOne.SC.meterCurrentInstantPoint = this.player2InstantMeter;
@@ -259,9 +265,9 @@ namespace DungeonPlayer
             GroundOne.TC.labelName = this.player3Name;
             GroundOne.TC.labelCurrentLifePoint = this.player3Life;
             GroundOne.TC.meterCurrentLifePoint = this.player3LifeMeter;
-            GroundOne.TC.labelCurrentManaPoint = null;
+            GroundOne.TC.labelCurrentManaPoint = this.player3Mana;
             GroundOne.TC.meterCurrentManaPoint = this.player3ManaMeter;
-            GroundOne.TC.labelCurrentSkillPoint = null;
+            GroundOne.TC.labelCurrentSkillPoint = this.player3Skill;
             GroundOne.TC.meterCurrentSkillPoint = this.player3SkillMeter;
             GroundOne.TC.labelCurrentInstantPoint = player3Instant;
             GroundOne.TC.meterCurrentInstantPoint = this.player3InstantMeter;
@@ -485,16 +491,7 @@ namespace DungeonPlayer
             #endregion
 
             #region "ゲームエンド判定"
-            if (GroundOne.MC.CurrentLife <= 0 && GroundOne.SC.CurrentLife <= 0 && GroundOne.TC.CurrentLife <= 0)
-            {
-                UpdateBattleText("全滅しました・・・\r\n");
-                BattleEndPhase();
-            }
-            else if (this.ec1.CurrentLife <= 0 && this.ec2.CurrentLife <= 0 && this.ec3.CurrentLife <= 0)
-            {
-                UpdateBattleText("敵を倒した！\r\n");
-                BattleEndPhase();
-            }
+            if (UpdatePlayerDeadFlag()) { BattleEndPhase(); return; }
             #endregion
 
             #region "進行停止"
@@ -1962,7 +1959,15 @@ namespace DungeonPlayer
 
         private void BattleEndPhase()
         {
-            Debug.Log("BattleEndPhase start");
+            if (this.execBattleEndPhase == false)
+            {
+                this.execBattleEndPhase = true;
+            }
+            else
+            {
+                return;
+            }
+
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
                 string brokenName = String.Empty;
@@ -1978,13 +1983,11 @@ namespace DungeonPlayer
             // 支配竜会話終了時、通常終了とみなす。
             if (this.endBattleForMatrixDragonEnd)
             {
-                Debug.Log("end phase 1");
                 GroundOne.BattleResult = GroundOne.battleResult.OK;
             }
             // [警告]万が一、相打ちの場合、プレイヤーの負けとみなす
             else if (EnemyPartyDeathCheck())
             {
-                Debug.Log("end phase 2");
                 if (this.DuelMode)
                 {
                     UpdateBattleText("アインはDUELに敗れた！\r\n");
@@ -2008,7 +2011,6 @@ namespace DungeonPlayer
             }
             else if (endFlag)
             {
-                Debug.Log("end phase 3");
                 if (!GroundOne.WE.AvailableSecondCharacter)
                 {
                     if (this.DuelMode)
@@ -2142,7 +2144,6 @@ namespace DungeonPlayer
                     GroundOne.TC.Exp = ec1.Exp;
                 }
             }
-            Debug.Log("back");
             //SceneDimension.Back();
             Debug.Log("end");
         }
@@ -5277,7 +5278,7 @@ namespace DungeonPlayer
             float dx = (float)player.CurrentMana / (float)player.MaxMana;
             if (player.labelCurrentManaPoint != null)
             {
-                player.labelCurrentManaPoint.text = player.CurrentMana.ToString();
+                player.labelCurrentManaPoint.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
             }
             if (player.meterCurrentManaPoint != null)
             {
@@ -5293,7 +5294,7 @@ namespace DungeonPlayer
             float dx = (float)player.CurrentSkillPoint / (float)player.MaxSkillPoint;
             if (player.labelCurrentSkillPoint != null)
             {
-                player.labelCurrentSkillPoint.text = player.CurrentSkillPoint.ToString();
+                player.labelCurrentSkillPoint.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
             }
             if (player.meterCurrentSkillPoint != null)
             {
