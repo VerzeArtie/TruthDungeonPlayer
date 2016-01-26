@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +24,7 @@ namespace DungeonPlayer
         MainCharacter tempTargetForTarget2 = null;
         MainCharacter tempTargetForTarget = null;
 
+        bool nowAnimation = false;
         bool NowSelectingTarget = false;
         MainCharacter currentTargetedPlayer = null;
         bool tempStopFlag = false; // [戦闘停止」ボタンやESCキーで、戦闘を一旦停止させたい時に使うフラグ
@@ -89,9 +90,6 @@ namespace DungeonPlayer
         public Image player1InstantMeter;
         public Text player1Damage;
         public Text player1Critical;
-        public Image imgShadowPact1;
-        public Image imgWordOfLife1;
-        public Image imgPoison1;
         public Image[] IsSorcery1;
 
         public Image player2Arrow;
@@ -106,9 +104,6 @@ namespace DungeonPlayer
         public Image player2InstantMeter;
         public Text player2Damage;
         public Text player2Critical;
-        public Image imgShadowPact2;
-        public Image imgWordOfLife2;
-        public Image imgPoison2;
         public Image[] IsSorcery2;
 
         public Image player3Arrow;
@@ -123,9 +118,6 @@ namespace DungeonPlayer
         public Image player3InstantMeter;
         public Text player3Damage;
         public Text player3Critical;
-        public Image imgShadowPact3;
-        public Image imgWordOfLife3;
-        public Image imgPoison3;
         public Image[] IsSorcery3;
 
         public Image enemy1Arrow;
@@ -140,9 +132,6 @@ namespace DungeonPlayer
         //	public Image enemy1InstantMeter;
         public Text enemy1Damage;
         public Text enemy1Critical;
-        public Image imgShadowPactE1;
-        public Image imgWordOfLifeE1;
-        public Image imgPoisonE1;
         //public Image[] IsSorceryE1;
 
         public Image enemy2Arrow;
@@ -157,9 +146,6 @@ namespace DungeonPlayer
         //	public Image enemy2InstantMeter;
         public Text enemy2Damage;
         public Text enemy2Critical;
-        public Image imgShadowPactE2;
-        public Image imgWordOfLifeE2;
-        public Image imgPoisonE2;
         //public Image[] IsSorceryE2;
 
         public Image enemy3Arrow;
@@ -241,7 +227,7 @@ namespace DungeonPlayer
                 // todo 元ソースから持ってくるモノがある。
 
 
-                // BUFFリストを登録                
+                #region "BUFFリストを登録"
                 int num = 0;
                 player.pbProtection = buffList[num]; buffList[num].ImageName = Database.PROTECTION; num++;
                 player.pbAbsorbWater = buffList[num]; buffList[num].ImageName = Database.ABSORB_WATER; num++;
@@ -434,6 +420,7 @@ namespace DungeonPlayer
 
                 player.pbLifeCount = buffList[num]; buffList[num].ImageName = Database.BUFF_LIFE_COUNT; num++;
                 player.pbChaoticSchema = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOTIC_SCHEMA; num++;
+                #endregion
 
                 // 登録を反映
                 player.BuffElement = buffList;
@@ -1138,6 +1125,7 @@ namespace DungeonPlayer
             #endregion
 
             #region "進行停止"
+            if (this.nowAnimation) { return; } // アニメーション表示中は停止させる。
             if (this.endFlag) { return; } // 終了サインが出た場合、戦闘終了として待機する。
             if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
             if (this.endBattleForMatrixDragonEnd) { return; } // 戦闘終了サインにより、戦闘を抜ける。
