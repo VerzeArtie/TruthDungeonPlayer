@@ -5600,20 +5600,25 @@ namespace DungeonPlayer
                 if (this.nowAnimationCritical)
                 {
                     targetLabel.fontSize = targetLabel.fontSize + 4;
-                    //targetCriticalLabel.gameObject.SetActive(true); // todo
+                    targetCriticalLabel.gameObject.SetActive(true);
+                    targetCriticalLabel.text = "Critical";
+                }
+                else
+                {
+                    targetCriticalLabel.text = "";
                 }
 
                 this.nowAnimationTarget.DamagePanel.gameObject.SetActive(true);
                 this.nowAnimationTarget.DamageLabel.gameObject.SetActive(true);
 
                 ExecAnimation_basePoint = targetLabel.transform.position;
-                //ExecAnimation_basePointCritical = targetCriticalLabel.transform.position; // todo
+                ExecAnimation_basePointCritical = targetCriticalLabel.transform.position;
             }
 
             int movement = 1;
             if (this.nowAnimationCounter > 10) { movement = 0; }
             targetLabel.transform.position = new Vector3(targetLabel.transform.position.x + movement, targetLabel.transform.position.y, targetLabel.transform.position.z);
-            //targetCriticalLabel.transform.position = new Vector3(targetCriticalLabel.transform.position.x + movement, targetCriticalLabel.transform.position.y, targetCriticalLabel.transform.position.z); // todo
+            targetCriticalLabel.transform.position = new Vector3(targetCriticalLabel.transform.position.x + movement, targetCriticalLabel.transform.position.y, targetCriticalLabel.transform.position.z);
             System.Threading.Thread.Sleep(10);
 
             this.nowAnimationCounter++;
@@ -5622,8 +5627,8 @@ namespace DungeonPlayer
                 targetLabel.gameObject.SetActive(false);
                 targetLabel.transform.position = ExecAnimation_basePoint;
 
-                //targetCriticalLabel.gameObject.SetActive(false); // todo
-                //targetCriticalLabel.transform.position = ExecAnimation_basePointCritical; // todo
+                targetCriticalLabel.gameObject.SetActive(false);
+                targetCriticalLabel.transform.position = ExecAnimation_basePointCritical;
 
                 if (this.nowAnimationCritical)
                 {
