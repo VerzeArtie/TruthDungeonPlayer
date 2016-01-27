@@ -2551,7 +2551,7 @@ namespace DungeonPlayer
 
         public Text labelCurrentSpecialInstant = null;
 
-
+        public GameObject DamagePanel = null;
         public Text DamageLabel = null;
         public Text CriticalLabel = null;
 
@@ -8763,6 +8763,61 @@ namespace DungeonPlayer
         internal void CleanUpBattleEnd(ref string brokenName)
         {
             // todo
+        }
+
+        internal double AmplifyMagicByEquipment(double damage, TruthActionCommand.MagicType type)
+        {
+            List<ItemBackPack> equipList = new List<ItemBackPack>();
+            if (this.MainWeapon != null) { equipList.Add(this.MainWeapon); }
+            if (this.SubWeapon != null) { equipList.Add(this.SubWeapon); }
+            if (this.MainArmor != null) { equipList.Add(this.MainArmor); }
+            if (this.Accessory != null) { equipList.Add(this.Accessory); }
+            if (this.Accessory2 != null) { equipList.Add(this.Accessory2); }
+
+            if (TruthActionCommand.IsLight(type))
+            {
+                for (int ii = 0; ii < equipList.Count; ii++)
+                {
+                    if (equipList[ii].AmplifyLight > 0) { damage = damage * equipList[ii].AmplifyLight; }
+                }
+            }
+            if (TruthActionCommand.IsShadow(type))
+            {
+                for (int ii = 0; ii < equipList.Count; ii++)
+                {
+                    if (equipList[ii].AmplifyShadow > 0) { damage = damage * equipList[ii].AmplifyShadow; }
+                }
+            }
+            if (TruthActionCommand.IsFire(type))
+            {
+                for (int ii = 0; ii < equipList.Count; ii++)
+                {
+                    if (equipList[ii].AmplifyFire > 0) { damage = damage * equipList[ii].AmplifyFire; }
+                }
+            }
+            if (TruthActionCommand.IsIce(type))
+            {
+                for (int ii = 0; ii < equipList.Count; ii++)
+                {
+                    if (equipList[ii].AmplifyIce > 0) { damage = damage * equipList[ii].AmplifyIce; }
+                }
+            }
+            if (TruthActionCommand.IsForce(type))
+            {
+                for (int ii = 0; ii < equipList.Count; ii++)
+                {
+                    if (equipList[ii].AmplifyForce > 0) { damage = damage * equipList[ii].AmplifyForce; }
+                }
+            }
+            if (TruthActionCommand.IsWill(type))
+            {
+                for (int ii = 0; ii < equipList.Count; ii++)
+                {
+                    if (equipList[ii].AmplifyWill > 0) { damage = damage * equipList[ii].AmplifyWill; }
+                }
+            }
+
+            return damage;
         }
     }
 }

@@ -25,6 +25,15 @@ namespace DungeonPlayer
         MainCharacter tempTargetForTarget = null;
 
         bool nowAnimation = false;
+        int nowAnimationCounter = 0;
+        MainCharacter nowAnimationTarget = null;
+        int nowAnimationDamage = 0;
+        Color nowAnimationColor = Color.black;
+        bool nowAnimationAvoid = false;
+        String nowAnimationCustomString = String.Empty;
+        int nowAnimationInterval = 0;
+        bool nowAnimationCritical = false;
+        Text nowAnimationText = null;
         bool NowSelectingTarget = false;
         MainCharacter currentTargetedPlayer = null;
         bool tempStopFlag = false; // [戦闘停止」ボタンやESCキーで、戦闘を一旦停止させたい時に使うフラグ
@@ -85,6 +94,7 @@ namespace DungeonPlayer
         public Image player1SkillMeter;
         public Text player1Instant;
         public Image player1InstantMeter;
+        public GameObject player1DamagePanel;
         public Text player1Damage;
         public Text player1Critical;
         public Image[] IsSorcery1;
@@ -102,6 +112,7 @@ namespace DungeonPlayer
         public Image player2SkillMeter;
         public Text player2Instant;
         public Image player2InstantMeter;
+        public GameObject player2DamagePanel;
         public Text player2Damage;
         public Text player2Critical;
         public Image[] IsSorcery2;
@@ -119,6 +130,7 @@ namespace DungeonPlayer
         public Image player3SkillMeter;
         public Text player3Instant;
         public Image player3InstantMeter;
+        public GameObject player3DamagePanel;
         public Text player3Damage;
         public Text player3Critical;
         public Image[] IsSorcery3;
@@ -133,6 +145,7 @@ namespace DungeonPlayer
         //	public Image enemy1SkillMeter;
         //	public Text enemy1Instant;
         //	public Image enemy1InstantMeter;
+        public GameObject enemy1DamagePanel;
         public Text enemy1Damage;
         public Text enemy1Critical;
         //public Image[] IsSorceryE1;
@@ -147,6 +160,7 @@ namespace DungeonPlayer
         //	public Image enemy2SkillMeter;
         //	public Text enemy2Instant;
         //	public Image enemy2InstantMeter;
+        public GameObject enemy2DamagePanel;
         public Text enemy2Damage;
         public Text enemy2Critical;
         //public Image[] IsSorceryE2;
@@ -161,6 +175,7 @@ namespace DungeonPlayer
         //	public Image enemy3SkillMeter;
         //	public Text enemy3Instant;
         //	public Image enemy3InstantMeter;
+        public GameObject enemy3DamagePanel;
         public Text enemy3Damage;
         public Text enemy3Critical;
         //public Image[] IsSorceryE3;
@@ -197,6 +212,7 @@ namespace DungeonPlayer
         List<MainCharacter> ActiveList = new List<MainCharacter>();
         private static System.Random rand = new System.Random(DateTime.Now.Millisecond * System.Environment.TickCount);
 
+        int TIMER_SPEED = 10;
 
         // Use this for initialization
         public override void Start()
@@ -233,6 +249,7 @@ namespace DungeonPlayer
             GroundOne.MC.meterCurrentSkillPoint = this.player1SkillMeter;
             GroundOne.MC.labelCurrentInstantPoint = this.player1Instant;
             GroundOne.MC.meterCurrentInstantPoint = this.player1InstantMeter;
+            GroundOne.MC.DamagePanel = this.player1DamagePanel;
             GroundOne.MC.DamageLabel = this.player1Damage;
             GroundOne.MC.CriticalLabel = this.player1Critical;
             GroundOne.MC.btnBaseCommand = this.buttonTargetPlayer1;
@@ -252,6 +269,7 @@ namespace DungeonPlayer
             GroundOne.SC.meterCurrentSkillPoint = this.player2SkillMeter;
             GroundOne.SC.labelCurrentInstantPoint = this.player2Instant;
             GroundOne.SC.meterCurrentInstantPoint = this.player2InstantMeter;
+            GroundOne.SC.DamagePanel = this.player2DamagePanel;
             GroundOne.SC.DamageLabel = this.player2Damage;
             GroundOne.SC.CriticalLabel = this.player2Critical;
             GroundOne.SC.btnBaseCommand = this.buttonTargetPlayer2;
@@ -271,7 +289,8 @@ namespace DungeonPlayer
             GroundOne.TC.meterCurrentSkillPoint = this.player3SkillMeter;
             GroundOne.TC.labelCurrentInstantPoint = player3Instant;
             GroundOne.TC.meterCurrentInstantPoint = this.player3InstantMeter;
-            GroundOne.TC.DamageLabel = player3Damage;
+            GroundOne.TC.DamagePanel = this.player3DamagePanel;
+            GroundOne.TC.DamageLabel = this.player3Damage;
             GroundOne.TC.CriticalLabel = player3Critical;
             GroundOne.TC.btnBaseCommand = this.buttonTargetPlayer3;
             GroundOne.TC.ActionButtonList.AddRange(this.ActionButton3);
@@ -292,8 +311,9 @@ namespace DungeonPlayer
             this.ec1.meterCurrentSkillPoint = null;
             this.ec1.labelCurrentInstantPoint = null;
             this.ec1.meterCurrentInstantPoint = null;
-            this.ec1.DamageLabel = enemy1Damage;
-            this.ec1.CriticalLabel = enemy1Critical;
+            this.ec1.DamagePanel = this.enemy1DamagePanel;
+            this.ec1.DamageLabel = this.enemy1Damage;
+            this.ec1.CriticalLabel = this.enemy1Critical;
 
             this.ec2 = baseObj.AddComponent<TruthEnemyCharacter>();
             this.ec2.Initialize(GroundOne.enemyName2);
@@ -311,8 +331,9 @@ namespace DungeonPlayer
             this.ec2.meterCurrentSkillPoint = null;
             this.ec2.labelCurrentInstantPoint = null;
             this.ec2.meterCurrentInstantPoint = null;
-            this.ec2.DamageLabel = enemy2Damage;
-            this.ec2.CriticalLabel = enemy2Critical;
+            this.ec2.DamagePanel = this.enemy2DamagePanel;
+            this.ec2.DamageLabel = this.enemy2Damage;
+            this.ec2.CriticalLabel = this.enemy2Critical;
 
             this.ec3 = baseObj.AddComponent<TruthEnemyCharacter>();
             this.ec3.Initialize(GroundOne.enemyName3);
@@ -330,8 +351,9 @@ namespace DungeonPlayer
             this.ec3.meterCurrentSkillPoint = null;
             this.ec3.labelCurrentInstantPoint = null;
             this.ec3.meterCurrentInstantPoint = null;
-            this.ec3.DamageLabel = enemy3Damage;
-            this.ec3.CriticalLabel = enemy3Critical;
+            this.ec3.DamagePanel = this.enemy3DamagePanel;
+            this.ec3.DamageLabel = this.enemy3Damage;
+            this.ec3.CriticalLabel = this.enemy3Critical;
 
             // todo 色々とまだコンポーネント登録しなければならない
             // example
@@ -498,7 +520,11 @@ namespace DungeonPlayer
             #endregion
 
             #region "進行停止"
-            if (this.nowAnimation) { return; } // アニメーション表示中は停止させる。
+            if (this.nowAnimation)
+            {
+                ExecAnimation();
+                return; // アニメーション表示中は停止させる。
+            }
             if (this.endFlag) { return; } // 終了サインが出た場合、戦闘終了として待機する。
             if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
             if (this.endBattleForMatrixDragonEnd) { return; } // 戦闘終了サインにより、戦闘を抜ける。
@@ -671,6 +697,7 @@ namespace DungeonPlayer
                 return; // パーティ死亡確認で戦闘を抜ける。
             }
         }
+
 
         void ActivateSomeCharacter(MainCharacter player, MainCharacter target,
             Text charaName, Text fullName, Text life, Text backSkillPoint, Text currentSkillPoint, Text backManaPoint, Text currentManaPoint, Text currentInstantPoint, Text currentSpecialInstant,
@@ -3236,14 +3263,6 @@ namespace DungeonPlayer
         }
 
         // 通常攻撃を抽象化したロジック。通常攻撃やストレートスマッシュは全てここに含まれる。
-        private void AbstractPhysicalAttack(MainCharacter player, MainCharacter target, string command, double value)
-        {
-            if (target.CurrentProtection > 0) { value = value * 0.7f; }
-            target.CurrentLife -= (int)value;
-            if (target.CurrentLife < 0) { target.CurrentLife = 0; }
-            UpdateLife(target);
-            UpdateBattleText(player.labelName.text + " " + command + " " + ((int)value).ToString() + " \n");
-        }
         private void AbstractMagicAttack(MainCharacter player, MainCharacter target, string command, double value)
         {
             if (player.CurrentShadowPact > 0) { value = value * 1.3f; }
@@ -3259,9 +3278,6 @@ namespace DungeonPlayer
         }
         private bool PlayerNormalAttack(MainCharacter player, MainCharacter target, double magnification, int crushingBlow, bool ignoreDefense, bool skipCounterPhase, double atkBase, int interval, string soundName, int textNumber, bool ignoreDoubleAttack, CriticalType critical)
         {
-            //double value = player.TotalStrength; 
-            //AbstractPhysicalAttack(player, target, Database.ATTACK_EN, value);
-
              // todo
             //if (skipCounterPhase == false)
             //{
@@ -3971,8 +3987,7 @@ namespace DungeonPlayer
                 damage = damage * PrimaryLogic.MazeCubeValue(player);
             }
 
-            // todo
-            //damage = player.AmplifyMagicByEquipment(damage, magicType);
+            damage = player.AmplifyMagicByEquipment(damage, magicType);
 
             if (player.CurrentRedDragonWill > 0)
             {
@@ -5236,9 +5251,9 @@ namespace DungeonPlayer
             //    }
             //    player.labelLife.Update();
             //}
-            //if (animationDamage)
-            //{
-            //    Color color = Color.Black;
+            if (animationDamage)
+            {
+                Color color = Color.black;
             //    if (plusValue)
             //    {
             //        color = Color.Green;
@@ -5251,8 +5266,9 @@ namespace DungeonPlayer
             //    {
             //        color = Color.White;
             //    }
-            //    this.Invoke(new _AnimationDamage(AnimationDamage), damage, player, interval, color, false, critical, String.Empty);
-            //}
+                Debug.Log("Call Invoke animation damage");
+                AnimationDamage(damage, player, interval, color, false, critical, String.Empty);
+            }
         }
         private void UpdateLife(MainCharacter player)
         {
@@ -5533,8 +5549,91 @@ namespace DungeonPlayer
 
         private void AnimationDamage(double damage, MainCharacter target, int interval, Color plusValue, bool avoid, bool critical, string customString)
         {
+            Debug.Log("AnimationDamage start");
+            target.DamageLabel.text = ((int)damage).ToString();
+            this.nowAnimationTarget = target;
+            this.nowAnimationDamage = (int)damage;
+            this.nowAnimationColor = plusValue;
+            this.nowAnimationAvoid = avoid;
+            this.nowAnimationCustomString = customString;
+            this.nowAnimationInterval = interval;
+            this.nowAnimationCritical = critical;
+            this.nowAnimationText = target.DamageLabel;
+            this.nowAnimation = true;
             // todo
         }
-            
+
+        Vector3 ExecAnimation_basePoint;
+        Vector3 ExecAnimation_basePointCritical;
+        private void ExecAnimation()
+        {
+            Text targetLabel = this.nowAnimationTarget.DamageLabel;
+            Text targetCriticalLabel = this.nowAnimationTarget.CriticalLabel;
+
+            targetLabel.color = this.nowAnimationColor;
+
+            if (this.nowAnimationAvoid)
+            {
+                targetLabel.text = "ミス";
+            }
+            else
+            {
+                targetLabel.text = Convert.ToString(this.nowAnimationDamage);
+            }
+
+            if (this.nowAnimationCustomString != String.Empty)
+            {
+                targetLabel.text = this.nowAnimationCustomString;
+            }
+
+            int waitTime = 60;
+            if (TIMER_SPEED == 40) waitTime = 150;
+            else if (TIMER_SPEED == 20) waitTime = 90;
+            else if (TIMER_SPEED == 10) waitTime = 60;
+            else if (TIMER_SPEED == 5) waitTime = 40;
+            else if (TIMER_SPEED == 2) waitTime = 20;
+            if (this.HiSpeedAnimation) { waitTime = waitTime / 2; }
+            if (this.nowAnimationInterval > 0) waitTime = this.nowAnimationInterval;
+
+            if (this.nowAnimationCounter <= 0)
+            {
+                if (this.nowAnimationCritical)
+                {
+                    targetLabel.fontSize = targetLabel.fontSize + 4;
+                    //targetCriticalLabel.gameObject.SetActive(true); // todo
+                }
+
+                this.nowAnimationTarget.DamagePanel.gameObject.SetActive(true);
+                this.nowAnimationTarget.DamageLabel.gameObject.SetActive(true);
+
+                ExecAnimation_basePoint = targetLabel.transform.position;
+                //ExecAnimation_basePointCritical = targetCriticalLabel.transform.position; // todo
+            }
+
+            int movement = 1;
+            if (this.nowAnimationCounter > 10) { movement = 0; }
+            targetLabel.transform.position = new Vector3(targetLabel.transform.position.x + movement, targetLabel.transform.position.y, targetLabel.transform.position.z);
+            //targetCriticalLabel.transform.position = new Vector3(targetCriticalLabel.transform.position.x + movement, targetCriticalLabel.transform.position.y, targetCriticalLabel.transform.position.z); // todo
+            System.Threading.Thread.Sleep(10);
+
+            this.nowAnimationCounter++;
+            if (this.nowAnimationCounter > waitTime)
+            {
+                targetLabel.gameObject.SetActive(false);
+                targetLabel.transform.position = ExecAnimation_basePoint;
+
+                //targetCriticalLabel.gameObject.SetActive(false); // todo
+                //targetCriticalLabel.transform.position = ExecAnimation_basePointCritical; // todo
+
+                if (this.nowAnimationCritical)
+                {
+                    targetLabel.fontSize = targetLabel.fontSize - 4;
+                }
+
+
+                this.nowAnimation = false;
+                this.nowAnimationCounter = 0;
+            }
+        }
     }
 }
