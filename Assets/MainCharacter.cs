@@ -6846,17 +6846,908 @@ namespace DungeonPlayer
         {
             get
             {
-                int nextValue = 300;
-                int recursion = 0;
-                for (int ii = 0; ii < this.Level; ii++)
+                int nextValue = 0;
+                switch (this.level)
                 {
-                    nextValue += recursion;
-                    recursion = 300 + (100 * ii);
+                    case 1:
+                        nextValue = 400;
+                        break;
+                    case 2:
+                        nextValue = 900;
+                        break;
+                    case 3:
+                        nextValue = 1400;
+                        break;
+                    case 4:
+                        nextValue = 2100;
+                        break;
+                    case 5:
+                        nextValue = 2800;
+                        break;
+                    case 6:
+                        nextValue = 3600;
+                        break;
+                    case 7:
+                        nextValue = 4500;
+                        break;
+                    case 8:
+                        nextValue = 5400;
+                        break;
+                    case 9:
+                        nextValue = 6500;
+                        break;
+                    case 10:
+                        nextValue = 7600;
+                        break;
+                    case 11:
+                        nextValue = 8700;
+                        break;
+                    case 12:
+                        nextValue = 9800;
+                        break;
+                    case 13:
+                        nextValue = 11000;
+                        break;
+                    case 14:
+                        nextValue = 12300;
+                        break;
+                    case 15:
+                        nextValue = 13600;
+                        break;
+                    case 16:
+                        nextValue = 15000;
+                        break;
+                    case 17:
+                        nextValue = 16400;
+                        break;
+                    case 18:
+                        nextValue = 17800;
+                        break;
+                    case 19:
+                        nextValue = 19300;
+                        break;
+                    case 20:
+                        nextValue = 20800;
+                        break;
+                    case 21:
+                        nextValue = 22400;
+                        break;
+                    case 22:
+                        nextValue = 24000;
+                        break;
+                    case 23:
+                        nextValue = 25500;
+                        break;
+                    case 24:
+                        nextValue = 27200;
+                        break;
+                    case 25:
+                        nextValue = 28900;
+                        break;
+                    case 26:
+                        nextValue = 30500;
+                        break;
+                    case 27:
+                        nextValue = 32200;
+                        break;
+                    case 28:
+                        nextValue = 33900;
+                        break;
+                    case 29:
+                        nextValue = 36300;
+                        break;
+                    case 30:
+                        nextValue = 38800;
+                        break;
+                    case 31:
+                        nextValue = 41600;
+                        break;
+                    case 32:
+                        nextValue = 44600;
+                        break;
+                    case 33:
+                        nextValue = 48000;
+                        break;
+                    case 34:
+                        nextValue = 51400;
+                        break;
+                    case 35:
+                        nextValue = 55000;
+                        break;
+                    case 36:
+                        nextValue = 58700;
+                        break;
+                    case 37:
+                        nextValue = 62400;
+                        break;
+                    case 38:
+                        nextValue = 66200;
+                        break;
+                    case 39:
+                        nextValue = 70200;
+                        break;
+                    case 40:
+                        nextValue = 74300;
+                        break;
+                    // s 後編追加
+                    case 41:
+                        nextValue = 78500;
+                        break;
+                    case 42:
+                        nextValue = 82800;
+                        break;
+                    case 43:
+                        nextValue = 87100;
+                        break;
+                    case 44:
+                        nextValue = 91600;
+                        break;
+                    case 45:
+                        nextValue = 96300;
+                        break;
+                    case 46:
+                        nextValue = 101000;
+                        break;
+                    case 47:
+                        nextValue = 105800;
+                        break;
+                    case 48:
+                        nextValue = 110700;
+                        break;
+                    case 49:
+                        nextValue = 115700;
+                        break;
+                    case 50:
+                        nextValue = 120900;
+                        break;
+                    case 51:
+                        nextValue = 126100;
+                        break;
+                    case 52:
+                        nextValue = 131500;
+                        break;
+                    case 53:
+                        nextValue = 137000;
+                        break;
+                    case 54:
+                        nextValue = 142500;
+                        break;
+                    case 55:
+                        nextValue = 148200;
+                        break;
+                    case 56:
+                        nextValue = 154000;
+                        break;
+                    case 57:
+                        nextValue = 159900;
+                        break;
+                    case 58:
+                        nextValue = 165800;
+                        break;
+                    case 59:
+                        nextValue = 172000;
+                        break;
+                    case 60:
+                        nextValue = 290000;
+                        break;
+                    case 61:
+                        nextValue = 317000;
+                        break;
+                    case 62:
+                        nextValue = 349000;
+                        break;
+                    case 63:
+                        nextValue = 386000;
+                        break;
+                    case 64:
+                        nextValue = 428000;
+                        break;
+                    case 65:
+                        nextValue = 475000;
+                        break;
+                    case 66:
+                        nextValue = 527000;
+                        break;
+                    case 67:
+                        nextValue = 585000;
+                        break;
+                    case 68:
+                        nextValue = 648000;
+                        break;
+                    case 69:
+                        nextValue = 717000;
+                        break;
+                    case 70:
+                        nextValue = 1523800;
+                        break;
+                    // e 後編追加
                 }
-                return nextValue;
+
+                if (this.level < 35)
+                {
+                    return nextValue / 4; // ハードモードの場合、２
+                }
+                else
+                {
+                    return nextValue / 2; // ハードモードの場合、１
+                }
+            }
+        }
+        
+        public int LevelUpPointTruth
+        {
+            get
+            {
+                int upPoint = 0;
+                switch (this.level)
+                {
+                    case 1:
+                        upPoint = 5;
+                        break;
+                    case 2:
+                        upPoint = 5;
+                        break;
+                    case 3:
+                        upPoint = 5;
+                        break;
+                    case 4:
+                        upPoint = 5;
+                        break;
+                    case 5:
+                        upPoint = 5;
+                        break;
+                    case 6:
+                        upPoint = 6;
+                        break;
+                    case 7:
+                        upPoint = 6;
+                        break;
+                    case 8:
+                        upPoint = 6;
+                        break;
+                    case 9:
+                        upPoint = 7;
+                        break;
+                    case 10:
+                        upPoint = 8;
+                        break;
+                    case 11:
+                        upPoint = 8;
+                        break;
+                    case 12:
+                        upPoint = 8;
+                        break;
+                    case 13:
+                        upPoint = 8;
+                        break;
+                    case 14:
+                        upPoint = 8;
+                        break;
+                    case 15:
+                        upPoint = 9;
+                        break;
+                    case 16:
+                        upPoint = 9;
+                        break;
+                    case 17:
+                        upPoint = 9;
+                        break;
+                    case 18:
+                        upPoint = 10;
+                        break;
+                    case 19:
+                        upPoint = 10;
+                        break;
+
+                    case 20:
+                        upPoint = 12;
+                        break;
+                    case 21:
+                        upPoint = 12;
+                        break;
+                    case 22:
+                        upPoint = 12;
+                        break;
+                    case 23:
+                        upPoint = 13;
+                        break;
+                    case 24:
+                        upPoint = 14;
+                        break;
+                    case 25:
+                        upPoint = 15;
+                        break;
+                    case 26:
+                        upPoint = 16;
+                        break;
+                    case 27:
+                        upPoint = 17;
+                        break;
+                    case 28:
+                        upPoint = 19;
+                        break;
+                    case 29:
+                        upPoint = 21;
+                        break;
+
+                    case 30:
+                        upPoint = 25;
+                        break;
+                    case 31:
+                        upPoint = 28;
+                        break;
+                    case 32:
+                        upPoint = 31;
+                        break;
+                    case 33:
+                        upPoint = 34;
+                        break;
+                    case 34:
+                        upPoint = 37;
+                        break;
+                    case 35:
+                        upPoint = 40;
+                        break;
+                    case 36:
+                        upPoint = 43;
+                        break;
+                    case 37:
+                        upPoint = 47;
+                        break;
+                    case 38:
+                        upPoint = 51;
+                        break;
+                    case 39:
+                        upPoint = 55;
+                        break;
+
+                    case 40:
+                        upPoint = 61;
+                        break;
+                    case 41:
+                        upPoint = 65;
+                        break;
+                    case 42:
+                        upPoint = 69;
+                        break;
+                    case 43:
+                        upPoint = 73;
+                        break;
+                    case 44:
+                        upPoint = 77;
+                        break;
+                    case 45:
+                        upPoint = 81;
+                        break;
+                    case 46:
+                        upPoint = 86;
+                        break;
+                    case 47:
+                        upPoint = 91;
+                        break;
+                    case 48:
+                        upPoint = 96;
+                        break;
+                    case 49:
+                        upPoint = 101;
+                        break;
+
+                    case 50:
+                        upPoint = 109;
+                        break;
+                    case 51:
+                        upPoint = 115;
+                        break;
+                    case 52:
+                        upPoint = 121;
+                        break;
+                    case 53:
+                        upPoint = 127;
+                        break;
+                    case 54:
+                        upPoint = 133;
+                        break;
+                    case 55:
+                        upPoint = 140;
+                        break;
+                    case 56:
+                        upPoint = 147;
+                        break;
+                    case 57:
+                        upPoint = 154;
+                        break;
+                    case 58:
+                        upPoint = 162;
+                        break;
+                    case 59:
+                        upPoint = 170;
+                        break;
+
+                    case 60:
+                        upPoint = 180;
+                        break;
+                    case 61:
+                        upPoint = 188;
+                        break;
+                    case 62:
+                        upPoint = 196;
+                        break;
+                    case 63:
+                        upPoint = 204;
+                        break;
+                    case 64:
+                        upPoint = 212;
+                        break;
+                    case 65:
+                        upPoint = 221;
+                        break;
+                    case 66:
+                        upPoint = 230;
+                        break;
+                    case 67:
+                        upPoint = 239;
+                        break;
+                    case 68:
+                        upPoint = 248;
+                        break;
+                    case 69:
+                        upPoint = 258;
+                        break;
+                }
+
+                return upPoint;
             }
         }
 
+        public int LevelUpLifeTruth
+        {
+            get
+            {
+                int upPoint = 0;
+                switch (this.level)
+                {
+                    case 1:
+                        upPoint = 20;
+                        break;
+                    case 2:
+                        upPoint = 20;
+                        break;
+                    case 3:
+                        upPoint = 20;
+                        break;
+                    case 4:
+                        upPoint = 20;
+                        break;
+                    case 5:
+                        upPoint = 20;
+                        break;
+                    case 6:
+                        upPoint = 20;
+                        break;
+                    case 7:
+                        upPoint = 20;
+                        break;
+                    case 8:
+                        upPoint = 20;
+                        break;
+                    case 9:
+                        upPoint = 20;
+                        break;
+                    case 10:
+                        upPoint = 20;
+                        break;
+                    case 11:
+                        upPoint = 20;
+                        break;
+                    case 12:
+                        upPoint = 20;
+                        break;
+                    case 13:
+                        upPoint = 20;
+                        break;
+                    case 14:
+                        upPoint = 20;
+                        break;
+                    case 15:
+                        upPoint = 20;
+                        break;
+                    case 16:
+                        upPoint = 20;
+                        break;
+                    case 17:
+                        upPoint = 20;
+                        break;
+                    case 18:
+                        upPoint = 20;
+                        break;
+                    case 19:
+                        upPoint = 20;
+                        break;
+
+                    case 20:
+                        upPoint = 30;
+                        break;
+                    case 21:
+                        upPoint = 40;
+                        break;
+                    case 22:
+                        upPoint = 50;
+                        break;
+                    case 23:
+                        upPoint = 60;
+                        break;
+                    case 24:
+                        upPoint = 70;
+                        break;
+                    case 25:
+                        upPoint = 80;
+                        break;
+                    case 26:
+                        upPoint = 90;
+                        break;
+                    case 27:
+                        upPoint = 100;
+                        break;
+                    case 28:
+                        upPoint = 110;
+                        break;
+                    case 29:
+                        upPoint = 120;
+                        break;
+
+                    case 30:
+                        upPoint = 140;
+                        break;
+                    case 31:
+                        upPoint = 160;
+                        break;
+                    case 32:
+                        upPoint = 180;
+                        break;
+                    case 33:
+                        upPoint = 200;
+                        break;
+                    case 34:
+                        upPoint = 220;
+                        break;
+                    case 35:
+                        upPoint = 240;
+                        break;
+                    case 36:
+                        upPoint = 260;
+                        break;
+                    case 37:
+                        upPoint = 280;
+                        break;
+                    case 38:
+                        upPoint = 300;
+                        break;
+                    case 39:
+                        upPoint = 320;
+                        break;
+
+                    case 40:
+                        upPoint = 360;
+                        break;
+                    case 41:
+                        upPoint = 400;
+                        break;
+                    case 42:
+                        upPoint = 440;
+                        break;
+                    case 43:
+                        upPoint = 480;
+                        break;
+                    case 44:
+                        upPoint = 520;
+                        break;
+                    case 45:
+                        upPoint = 560;
+                        break;
+                    case 46:
+                        upPoint = 600;
+                        break;
+                    case 47:
+                        upPoint = 640;
+                        break;
+                    case 48:
+                        upPoint = 680;
+                        break;
+                    case 49:
+                        upPoint = 720;
+                        break;
+
+                    case 50:
+                        upPoint = 800;
+                        break;
+                    case 51:
+                        upPoint = 880;
+                        break;
+                    case 52:
+                        upPoint = 960;
+                        break;
+                    case 53:
+                        upPoint = 1040;
+                        break;
+                    case 54:
+                        upPoint = 1120;
+                        break;
+                    case 55:
+                        upPoint = 1200;
+                        break;
+                    case 56:
+                        upPoint = 1280;
+                        break;
+                    case 57:
+                        upPoint = 1360;
+                        break;
+                    case 58:
+                        upPoint = 1440;
+                        break;
+                    case 59:
+                        upPoint = 1520;
+                        break;
+
+                    case 60:
+                        upPoint = 1670;
+                        break;
+                    case 61:
+                        upPoint = 1820;
+                        break;
+                    case 62:
+                        upPoint = 1980;
+                        break;
+                    case 63:
+                        upPoint = 2140;
+                        break;
+                    case 64:
+                        upPoint = 2320;
+                        break;
+                    case 65:
+                        upPoint = 2500;
+                        break;
+                    case 66:
+                        upPoint = 2700;
+                        break;
+                    case 67:
+                        upPoint = 2900;
+                        break;
+                    case 68:
+                        upPoint = 3130;
+                        break;
+                    case 69:
+                        upPoint = 3360;
+                        break;
+                }
+
+                return upPoint;
+            }
+        }
+
+        public int LevelUpManaTruth
+        {
+            get
+            {
+                int upPoint = 0;
+                switch (this.level)
+                {
+                    case 1:
+                        upPoint = 0;
+                        break;
+                    case 2:
+                        upPoint = 15;
+                        break;
+                    case 3:
+                        upPoint = 15;
+                        break;
+                    case 4:
+                        upPoint = 15;
+                        break;
+                    case 5:
+                        upPoint = 15;
+                        break;
+                    case 6:
+                        upPoint = 15;
+                        break;
+                    case 7:
+                        upPoint = 15;
+                        break;
+                    case 8:
+                        upPoint = 15;
+                        break;
+                    case 9:
+                        upPoint = 15;
+                        break;
+                    case 10:
+                        upPoint = 15;
+                        break;
+                    case 11:
+                        upPoint = 15;
+                        break;
+                    case 12:
+                        upPoint = 15;
+                        break;
+                    case 13:
+                        upPoint = 15;
+                        break;
+                    case 14:
+                        upPoint = 15;
+                        break;
+                    case 15:
+                        upPoint = 15;
+                        break;
+                    case 16:
+                        upPoint = 15;
+                        break;
+                    case 17:
+                        upPoint = 15;
+                        break;
+                    case 18:
+                        upPoint = 15;
+                        break;
+                    case 19:
+                        upPoint = 15;
+                        break;
+
+                    case 20:
+                        upPoint = 20;
+                        break;
+                    case 21:
+                        upPoint = 25;
+                        break;
+                    case 22:
+                        upPoint = 30;
+                        break;
+                    case 23:
+                        upPoint = 35;
+                        break;
+                    case 24:
+                        upPoint = 40;
+                        break;
+                    case 25:
+                        upPoint = 45;
+                        break;
+                    case 26:
+                        upPoint = 50;
+                        break;
+                    case 27:
+                        upPoint = 55;
+                        break;
+                    case 28:
+                        upPoint = 60;
+                        break;
+                    case 29:
+                        upPoint = 65;
+                        break;
+
+                    case 30:
+                        upPoint = 80;
+                        break;
+                    case 31:
+                        upPoint = 95;
+                        break;
+                    case 32:
+                        upPoint = 110;
+                        break;
+                    case 33:
+                        upPoint = 125;
+                        break;
+                    case 34:
+                        upPoint = 140;
+                        break;
+                    case 35:
+                        upPoint = 155;
+                        break;
+                    case 36:
+                        upPoint = 170;
+                        break;
+                    case 37:
+                        upPoint = 185;
+                        break;
+                    case 38:
+                        upPoint = 200;
+                        break;
+                    case 39:
+                        upPoint = 215;
+                        break;
+
+                    case 40:
+                        upPoint = 245;
+                        break;
+                    case 41:
+                        upPoint = 275;
+                        break;
+                    case 42:
+                        upPoint = 305;
+                        break;
+                    case 43:
+                        upPoint = 335;
+                        break;
+                    case 44:
+                        upPoint = 365;
+                        break;
+                    case 45:
+                        upPoint = 395;
+                        break;
+                    case 46:
+                        upPoint = 425;
+                        break;
+                    case 47:
+                        upPoint = 455;
+                        break;
+                    case 48:
+                        upPoint = 485;
+                        break;
+                    case 49:
+                        upPoint = 515;
+                        break;
+
+                    case 50:
+                        upPoint = 565;
+                        break;
+                    case 51:
+                        upPoint = 615;
+                        break;
+                    case 52:
+                        upPoint = 665;
+                        break;
+                    case 53:
+                        upPoint = 715;
+                        break;
+                    case 54:
+                        upPoint = 765;
+                        break;
+                    case 55:
+                        upPoint = 815;
+                        break;
+                    case 56:
+                        upPoint = 865;
+                        break;
+                    case 57:
+                        upPoint = 915;
+                        break;
+                    case 58:
+                        upPoint = 965;
+                        break;
+                    case 59:
+                        upPoint = 1015;
+                        break;
+
+                    case 60:
+                        upPoint = 1105;
+                        break;
+                    case 61:
+                        upPoint = 1195;
+                        break;
+                    case 62:
+                        upPoint = 1295;
+                        break;
+                    case 63:
+                        upPoint = 1395;
+                        break;
+                    case 64:
+                        upPoint = 1510;
+                        break;
+                    case 65:
+                        upPoint = 1625;
+                        break;
+                    case 66:
+                        upPoint = 1760;
+                        break;
+                    case 67:
+                        upPoint = 1895;
+                        break;
+                    case 68:
+                        upPoint = 2065;
+                        break;
+                    case 69:
+                        upPoint = 2240;
+                        break;
+                }
+
+                return upPoint;
+            }
+        }
 
         public int CurrentEternalFateRingValue
         {

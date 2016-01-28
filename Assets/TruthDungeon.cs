@@ -170,6 +170,11 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            if (GroundOne.CumultiveLvUpValue > 0)
+            {
+                SceneDimension.Go(Database.TruthDungeon, Database.TruthStatusPlayer);
+            }
+
             tileInfo = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             tileInfo2 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             tileInfo3 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
@@ -6901,11 +6906,7 @@ namespace DungeonPlayer
             //dungeonField.Invalidate();
             //this.Update();
         }
-        private void ShowActiveSkillSpell(MainCharacter mc, string p)
-        {
-            // todo
-            //throw new NotImplementedException();
-        }
+
 
         private void UpdateLife(MainCharacter player, Image gauge, Text txt)
         {

@@ -12,6 +12,13 @@ public static class SceneDimension
         Application.LoadLevel(dst);
     }
     
+    public static void Replace(string dst)
+    {
+        string backScene = playbackScene[playbackScene.Count - 1];
+        playbackScene.Remove(backScene);
+
+        Application.LoadLevel(dst);
+    }
     public static void Back()
     {
         if (playbackScene.Count <= 0)

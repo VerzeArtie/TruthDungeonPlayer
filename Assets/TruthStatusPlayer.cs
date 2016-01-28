@@ -404,9 +404,88 @@ namespace DungeonPlayer
                     return;
                 }
             }
-            SceneDimension.Back();
+
+            if (GroundOne.LevelUp)
+            {
+                #region "アイン・レベルアップ習得表"
+                if ((GroundOne.MC.Level >= 3) && (!GroundOne.MC.StraightSmash)) { GroundOne.MC.AvailableSkill = true; GroundOne.MC.StraightSmash = true; ShowActiveSkillSpell(GroundOne.MC, Database.STRAIGHT_SMASH); }
+                if ((GroundOne.MC.Level >= 4) && (!GroundOne.MC.FreshHeal)) { GroundOne.MC.AvailableMana = true; GroundOne.MC.FreshHeal = true; ShowActiveSkillSpell(GroundOne.MC, Database.FRESH_HEAL); }
+                if ((GroundOne.MC.Level >= 5) && (!GroundOne.MC.FireBall)) { GroundOne.MC.FireBall = true; ShowActiveSkillSpell(GroundOne.MC, Database.FIRE_BALL); }
+                if ((GroundOne.MC.Level >= 6) && (!GroundOne.MC.Protection)) { GroundOne.MC.Protection = true; ShowActiveSkillSpell(GroundOne.MC, Database.PROTECTION); }
+                if ((GroundOne.MC.Level >= 7) && (!GroundOne.MC.DoubleSlash)) { GroundOne.MC.DoubleSlash = true; ShowActiveSkillSpell(GroundOne.MC, Database.DOUBLE_SLASH); }
+                if ((GroundOne.MC.Level >= 8) && (!GroundOne.MC.FlameAura)) { GroundOne.MC.FlameAura = true; ShowActiveSkillSpell(GroundOne.MC, Database.FLAME_AURA); }
+                if ((GroundOne.MC.Level >= 9) && (!GroundOne.MC.StanceOfStanding)) { GroundOne.MC.StanceOfStanding = true; ShowActiveSkillSpell(GroundOne.MC, Database.STANCE_OF_STANDING); }
+                if ((GroundOne.MC.Level >= 10) && (!GroundOne.MC.WordOfPower)) { GroundOne.MC.WordOfPower = true; ShowActiveSkillSpell(GroundOne.MC, Database.WORD_OF_POWER); }
+                if ((GroundOne.MC.Level >= 11) && (!GroundOne.MC.HolyShock)) { GroundOne.MC.HolyShock = true; ShowActiveSkillSpell(GroundOne.MC, Database.HOLY_SHOCK); }
+                if ((GroundOne.MC.Level >= 12) && (!GroundOne.MC.TruthVision)) { GroundOne.MC.TruthVision = true; ShowActiveSkillSpell(GroundOne.MC, Database.TRUTH_VISION); }
+                if ((GroundOne.MC.Level >= 13) && (!GroundOne.MC.HeatBoost)) { GroundOne.MC.HeatBoost = true; ShowActiveSkillSpell(GroundOne.MC, Database.HEAT_BOOST); }
+                if ((GroundOne.MC.Level >= 14) && (!GroundOne.MC.SaintPower)) { GroundOne.MC.SaintPower = true; ShowActiveSkillSpell(GroundOne.MC, Database.SAINT_POWER); }
+                if ((GroundOne.MC.Level >= 15) && (!GroundOne.MC.GaleWind)) { GroundOne.MC.GaleWind = true; ShowActiveSkillSpell(GroundOne.MC, Database.GALE_WIND); }
+                if ((GroundOne.MC.Level >= 16) && (!GroundOne.MC.InnerInspiration)) { GroundOne.MC.InnerInspiration = true; ShowActiveSkillSpell(GroundOne.MC, Database.INNER_INSPIRATION); }
+                if ((GroundOne.MC.Level >= 17) && (!GroundOne.MC.WordOfLife)) { GroundOne.MC.WordOfLife = true; ShowActiveSkillSpell(GroundOne.MC, Database.WORD_OF_LIFE); }
+                if ((GroundOne.MC.Level >= 18) && (!GroundOne.MC.FlameStrike)) { GroundOne.MC.FlameStrike = true; ShowActiveSkillSpell(GroundOne.MC, Database.FLAME_STRIKE); }
+                if ((GroundOne.MC.Level >= 19) && (!GroundOne.MC.HighEmotionality)) { GroundOne.MC.HighEmotionality = true; ShowActiveSkillSpell(GroundOne.MC, Database.HIGH_EMOTIONALITY); }
+                if ((GroundOne.MC.Level >= 20) && (!GroundOne.MC.WordOfFortune)) { GroundOne.MC.WordOfFortune = true; ShowActiveSkillSpell(GroundOne.MC, Database.WORD_OF_FORTUNE); }
+                // [警告] ここで一気にレベルを挙げられると、複合魔法・スキルの習得に違和感が出てしまう。
+                // 複合魔法・スキルはガンツ武具屋のテレポート先、カール爵より習得するようにする。
+                if ((GroundOne.MC.Level >= 24) && (!GroundOne.MC.Glory)) { GroundOne.MC.Glory = true; ShowActiveSkillSpell(GroundOne.MC, Database.GLORY); }
+                if ((GroundOne.MC.Level >= 25) && (!GroundOne.MC.VolcanicWave)) { GroundOne.MC.VolcanicWave = true; ShowActiveSkillSpell(GroundOne.MC, Database.VOLCANIC_WAVE); }
+                if ((GroundOne.MC.Level >= 26) && (!GroundOne.MC.AetherDrive)) { GroundOne.MC.AetherDrive = true; ShowActiveSkillSpell(GroundOne.MC, Database.AETHER_DRIVE); }
+
+                if ((GroundOne.MC.Level >= 36) && (!GroundOne.MC.CrushingBlow)) { GroundOne.MC.CrushingBlow = true; ShowActiveSkillSpell(GroundOne.MC, Database.CRUSHING_BLOW); }
+                if ((GroundOne.MC.Level >= 37) && (!GroundOne.MC.KineticSmash)) { GroundOne.MC.KineticSmash = true; ShowActiveSkillSpell(GroundOne.MC, Database.KINETIC_SMASH); }
+                if ((GroundOne.MC.Level >= 38) && (!GroundOne.MC.StanceOfEyes)) { GroundOne.MC.StanceOfEyes = true; ShowActiveSkillSpell(GroundOne.MC, Database.STANCE_OF_EYES); }
+                if ((GroundOne.MC.Level >= 39) && (!GroundOne.MC.Resurrection)) { GroundOne.MC.Resurrection = true; ShowActiveSkillSpell(GroundOne.MC, Database.RESURRECTION); }
+                if ((GroundOne.MC.Level >= 41) && (!GroundOne.MC.StaticBarrier)) { GroundOne.MC.StaticBarrier = true; ShowActiveSkillSpell(GroundOne.MC, Database.STATIC_BARRIER); }
+                if ((GroundOne.MC.Level >= 42) && (!GroundOne.MC.Genesis)) { GroundOne.MC.Genesis = true; ShowActiveSkillSpell(GroundOne.MC, Database.GENESIS); }
+                if ((GroundOne.MC.Level >= 43) && (!GroundOne.MC.LightDetonator)) { GroundOne.MC.LightDetonator = true; ShowActiveSkillSpell(GroundOne.MC, Database.LIGHT_DETONATOR); }
+                if ((GroundOne.MC.Level >= 44) && (!GroundOne.MC.ImmortalRave)) { GroundOne.MC.ImmortalRave = true; ShowActiveSkillSpell(GroundOne.MC, Database.IMMORTAL_RAVE); }
+                if ((GroundOne.MC.Level >= 45) && (!GroundOne.MC.ExaltedField)) { GroundOne.MC.ExaltedField = true; ShowActiveSkillSpell(GroundOne.MC, Database.EXALTED_FIELD); }
+                if ((GroundOne.MC.Level >= 46) && (!GroundOne.MC.PiercingFlame)) { GroundOne.MC.PiercingFlame = true; ShowActiveSkillSpell(GroundOne.MC, Database.PIERCING_FLAME); }
+                if ((GroundOne.MC.Level >= 47) && (!GroundOne.MC.SacredHeal)) { GroundOne.MC.SacredHeal = true; ShowActiveSkillSpell(GroundOne.MC, Database.SACRED_HEAL); }
+                if ((GroundOne.MC.Level >= 48) && (!GroundOne.MC.RisingAura)) { GroundOne.MC.RisingAura = true; ShowActiveSkillSpell(GroundOne.MC, Database.RISING_AURA); }
+                if ((GroundOne.MC.Level >= 49) && (!GroundOne.MC.ChillBurn)) { GroundOne.MC.ChillBurn = true; ShowActiveSkillSpell(GroundOne.MC, Database.CHILL_BURN); }
+                if ((GroundOne.MC.Level >= 50) && (!GroundOne.MC.SoulInfinity)) { GroundOne.MC.SoulInfinity = true; ShowActiveSkillSpell(GroundOne.MC, Database.SOUL_INFINITY); }
+
+                if ((GroundOne.MC.Level >= 51) && (!GroundOne.MC.HymnContract)) { GroundOne.MC.HymnContract = true; ShowActiveSkillSpell(GroundOne.MC, Database.HYMN_CONTRACT); }
+                if ((GroundOne.MC.Level >= 52) && (!GroundOne.MC.Catastrophe)) { GroundOne.MC.Catastrophe = true; ShowActiveSkillSpell(GroundOne.MC, Database.CATASTROPHE); }
+                if ((GroundOne.MC.Level >= 53) && (!GroundOne.MC.CelestialNova)) { GroundOne.MC.CelestialNova = true; ShowActiveSkillSpell(GroundOne.MC, Database.CELESTIAL_NOVA); }
+                if ((GroundOne.MC.Level >= 54) && (!GroundOne.MC.OnslaughtHit)) { GroundOne.MC.OnslaughtHit = true; ShowActiveSkillSpell(GroundOne.MC, Database.ONSLAUGHT_HIT); }
+                if ((GroundOne.MC.Level >= 55) && (!GroundOne.MC.PainfulInsanity)) { GroundOne.MC.PainfulInsanity = true; ShowActiveSkillSpell(GroundOne.MC, Database.PAINFUL_INSANITY); }
+                if ((GroundOne.MC.Level >= 56) && (!GroundOne.MC.LavaAnnihilation)) { GroundOne.MC.LavaAnnihilation = true; ShowActiveSkillSpell(GroundOne.MC, Database.LAVA_ANNIHILATION); }
+                if ((GroundOne.MC.Level >= 57) && (!GroundOne.MC.ConcussiveHit)) { GroundOne.MC.ConcussiveHit = true; ShowActiveSkillSpell(GroundOne.MC, Database.CONCUSSIVE_HIT); }
+                if ((GroundOne.MC.Level >= 58) && (!GroundOne.MC.EternalPresence)) { GroundOne.MC.EternalPresence = true; ShowActiveSkillSpell(GroundOne.MC, Database.ETERNAL_PRESENCE); }
+                if ((GroundOne.MC.Level >= 59) && (!GroundOne.MC.AusterityMatrix)) { GroundOne.MC.AusterityMatrix = true; ShowActiveSkillSpell(GroundOne.MC, Database.AUSTERITY_MATRIX); }
+                if ((GroundOne.MC.Level >= 60) && (!GroundOne.MC.SigilOfHomura)) { GroundOne.MC.SigilOfHomura = true; ShowActiveSkillSpell(GroundOne.MC, Database.SIGIL_OF_HOMURA); }
+
+                if ((GroundOne.MC.Level >= 61) && (!GroundOne.MC.EverDroplet)) { GroundOne.MC.EverDroplet = true; ShowActiveSkillSpell(GroundOne.MC, Database.EVER_DROPLET); }
+                if ((GroundOne.MC.Level >= 62) && (!GroundOne.MC.ONEAuthority)) { GroundOne.MC.ONEAuthority = true; ShowActiveSkillSpell(GroundOne.MC, Database.ONE_AUTHORITY); }
+                if ((GroundOne.MC.Level >= 63) && (!GroundOne.MC.AscendantMeteor)) { GroundOne.MC.AscendantMeteor = true; ShowActiveSkillSpell(GroundOne.MC, Database.ASCENDANT_METEOR); }
+                if ((GroundOne.MC.Level >= 64) && (!GroundOne.MC.FatalBlow)) { GroundOne.MC.FatalBlow = true; ShowActiveSkillSpell(GroundOne.MC, Database.FATAL_BLOW); }
+                if ((GroundOne.MC.Level >= 65) && (!GroundOne.MC.StanceOfDouble)) { GroundOne.MC.StanceOfDouble = true; ShowActiveSkillSpell(GroundOne.MC, Database.STANCE_OF_DOUBLE); }
+                if ((GroundOne.MC.Level >= 66) && (!GroundOne.MC.ZetaExplosion)) { GroundOne.MC.ZetaExplosion = true; ShowActiveSkillSpell(GroundOne.MC, Database.ZETA_EXPLOSION); }
+                #endregion
+            }
+            else
+            {
+                SceneDimension.Back();
+            }
         }
 
+        private void ShowActiveSkillSpell(MainCharacter player, string skillSpellName)
+        {
+            for (int ii = 0; ii < player.BattleActionCommandList.Length; ii++)
+            {
+                if (player.BattleActionCommandList[ii] == "")
+                {
+                    player.BattleActionCommandList[ii] = skillSpellName;
+                    break;
+                }
+            }
+            GroundOne.playerName = player.FirstName;
+            GroundOne.SpellSkillName = skillSpellName;
+            SceneDimension.Replace(Database.TruthSkillSpellDesc);
+        }
         private MainCharacter GetCurrentPlayer()
         {
             MainCharacter player = null;

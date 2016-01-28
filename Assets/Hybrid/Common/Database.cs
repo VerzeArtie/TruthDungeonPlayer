@@ -2603,6 +2603,14 @@ namespace DungeonPlayer
         public const string SorceryIcon = @"sorcery_mark";
         public const string NormalIcon = @"normal_mark";
         public const string InstantIcon = @"instant_mark";
+
+        // コマンド影響因子向けアイコン
+        public const string WeaponIcon = @"WeaponMark";
+        public const string StrengthIcon = @"StrengthMark";
+        public const string AgilityhIcon = @"AgilityMark";
+        public const string IntelligenceIcon = @"IntelligenceMark";
+        public const string StaminaIcon = @"StaminaMark";
+        public const string MindIcon = @"MindMark";
     }
 }
 

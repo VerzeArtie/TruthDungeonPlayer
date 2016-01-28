@@ -62,14 +62,18 @@ namespace DungeonPlayer
 
         // TruthEquipmentShop
         public static string titleName = "天下一品　ガンツの武具店";
+
         // TruthBattleEnemy
         public static battleResult BattleResult = battleResult.None;
+
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
+
         // TruthBattleEnemy
         public static string enemyName1 = string.Empty;
         public static string enemyName2 = string.Empty;
         public static string enemyName3 = string.Empty;
+
         // TruthStatusPlayer
         public static bool LevelUp = false; // レベルアップモード画面
         public static int UpPoint = 0; // パラメタアップポイント
@@ -78,6 +82,10 @@ namespace DungeonPlayer
         public static string CannotSelectTrash = string.Empty; // 対象アイテムが重要品で捨てられない場合。
         public static bool DuelMode = false; // Duelモード
         
+        // TruthSkillSpellDesc
+        public static string SpellSkillName = String.Empty;
+        public static string playerName = String.Empty;
+
         // SaveLoad
         public static bool SaveMode = false; // false:Load true:Save
 
@@ -99,6 +107,9 @@ namespace DungeonPlayer
             GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             WE = objWE.AddComponent<WorldEnvironment>();
             WE.DungeonArea = 1;
+
+            SpellSkillName = Database.FRESH_HEAL;
+            playerName = Database.EIN_WOLENCE;
 
             //WE.Truth_CommunicationFirstHomeTown = true;
             //WE.TruthCompleteArea1 = true;

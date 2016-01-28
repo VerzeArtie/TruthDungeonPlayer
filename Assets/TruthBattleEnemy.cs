@@ -2160,18 +2160,54 @@ namespace DungeonPlayer
             Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
             if (GroundOne.BattleResult == GroundOne.battleResult.OK)
             {
-                GroundOne.MC.Gold += ec1.Gold;
-                if (GroundOne.MC != null && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
+                if (GroundOne.WE.AvailableFirstCharacter)
                 {
-                    GroundOne.MC.Exp += ec1.Exp;
+                    if (GroundOne.MC != null && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    {
+                        GroundOne.MC.Exp += ec1.Exp;
+                    }
+
+                    GroundOne.MC.Gold += ec1.Gold;
+
+                    int levelUpPoint = 0;
+                    int cumultiveLvUpValue = 0;
+                    while (true)
+                    {
+                        if (GroundOne.MC.Exp >= GroundOne.MC.NextLevelBorder && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
+                        {
+                            levelUpPoint += GroundOne.MC.LevelUpPointTruth;
+                            GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
+                            GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
+                            GroundOne.MC.Exp = GroundOne.MC.Exp - GroundOne.MC.NextLevelBorder;
+                            GroundOne.MC.Level += 1;
+                            cumultiveLvUpValue++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    if (cumultiveLvUpValue > 0)
+                    {
+                        GroundOne.CumultiveLvUpValue = cumultiveLvUpValue;
+                        GroundOne.UpPoint = levelUpPoint;
+                    }
                 }
-                if (GroundOne.SC != null && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
+                if (GroundOne.WE.AvailableSecondCharacter)
                 {
-                    GroundOne.SC.Exp = ec1.Exp;
+                    if (GroundOne.SC != null && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    {
+                        GroundOne.SC.Exp = ec1.Exp;
+                    }
                 }
-                if (GroundOne.TC != null && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
+
+                if (GroundOne.WE.AvailableThirdCharacter)
                 {
-                    GroundOne.TC.Exp = ec1.Exp;
+                    if (GroundOne.TC != null && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    {
+                        GroundOne.TC.Exp = ec1.Exp;
+                    }
                 }
             }
             //SceneDimension.Back();
