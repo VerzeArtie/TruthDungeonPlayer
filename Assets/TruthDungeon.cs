@@ -15,6 +15,7 @@ namespace DungeonPlayer
         List<string> nowMessage = new List<string>();
         List<MessagePack.ActionEvent> nowEvent = new List<MessagePack.ActionEvent>();
 
+        public GameObject groupPlayerList;
         public GameObject FirstPlayerPanel;
         public GameObject SecondPlayerPanel;
         public GameObject ThirdPlayerPanel;
@@ -169,11 +170,6 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
-
-            if (GroundOne.CumultiveLvUpValue > 0)
-            {
-                SceneDimension.Go(Database.TruthDungeon, Database.TruthStatusPlayer);
-            }
 
             tileInfo = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             tileInfo2 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
@@ -6961,12 +6957,11 @@ namespace DungeonPlayer
 
                 if (!GroundOne.MC.AvailableSkill && !GroundOne.MC.AvailableMana && initialize) // change unity
                 {
-                    Method.AddEmptyObj(ref FirstPlayerPanel);
-                    Method.AddEmptyObj(ref FirstPlayerPanel);
+                    Method.AddEmptyObj(ref FirstPlayerPanel, 2);
                 }
                 else if (GroundOne.MC.AvailableSkill && !GroundOne.MC.AvailableMana && initialize) // change unity
                 {
-                    Method.AddEmptyObj(ref FirstPlayerPanel);
+                    Method.AddEmptyObj(ref FirstPlayerPanel, 1);
                 }
 
                 UpdateLife(GroundOne.MC, currentLife1, currentLifeValue1);
@@ -6975,7 +6970,15 @@ namespace DungeonPlayer
             }
             else
             {
-                FirstPlayerPanel.gameObject.SetActive(false);
+                //FirstPlayerPanel.gameObject.SetActive(false); // そうすると、レイアウトが崩れる。
+                FirstPlayerPanel.GetComponent<Image>().color = Color.clear;
+                FirstPlayerName.text = "";
+                currentLife1.color = Color.clear;
+                currentLifeValue1.text = "";
+                currentManaPoint1.color = Color.clear;
+                currentManaValue1.text = "";
+                currentSkillPoint1.color = Color.clear;
+                currentSkillValue1.text = "";
             }
 
             if (GroundOne.WE.AvailableSecondCharacter)
@@ -6991,15 +6994,11 @@ namespace DungeonPlayer
 
                 if (!GroundOne.SC.AvailableSkill && !GroundOne.SC.AvailableMana && initialize) // change unity
                 {
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                    Method.AddEmptyObj(ref SecondPlayerPanel, 4);
                 }
                 else if (GroundOne.SC.AvailableSkill && !GroundOne.SC.AvailableMana && initialize) // change unity
                 {
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                    Method.AddEmptyObj(ref SecondPlayerPanel, 2);
                 }
 
                 UpdateLife(GroundOne.SC, currentLife2, currentLifeValue2);
@@ -7008,7 +7007,15 @@ namespace DungeonPlayer
             }
             else
             {
-                SecondPlayerPanel.gameObject.SetActive(false);
+                //SecondPlayerPanel.gameObject.SetActive(false); // そうすると、レイアウトが崩れる。
+                SecondPlayerPanel.GetComponent<Image>().color = Color.clear;
+                SecondPlayerName.text = "";
+                currentLife2.color = Color.clear;
+                currentLifeValue2.text = "";
+                currentManaPoint2.color = Color.clear;
+                currentManaValue2.text = "";
+                currentSkillPoint2.color = Color.clear;
+                currentSkillValue2.text = "";
             }
 
             if (GroundOne.WE.AvailableThirdCharacter)
@@ -7024,15 +7031,11 @@ namespace DungeonPlayer
 
                 if (!GroundOne.TC.AvailableSkill && !GroundOne.TC.AvailableMana && initialize) // change unity
                 {
-                    Method.AddEmptyObj(ref ThirdPlayerPanel);
-                    Method.AddEmptyObj(ref ThirdPlayerPanel);
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                    Method.AddEmptyObj(ref ThirdPlayerPanel, 4);
                 }
                 else if (GroundOne.TC.AvailableSkill && !GroundOne.TC.AvailableMana && initialize) // change unity
                 {
-                    Method.AddEmptyObj(ref ThirdPlayerPanel);
-                    Method.AddEmptyObj(ref SecondPlayerPanel);
+                    Method.AddEmptyObj(ref ThirdPlayerPanel, 2);
                 }
 
                 UpdateLife(GroundOne.TC, currentLife3, currentLifeValue3);
@@ -7041,7 +7044,15 @@ namespace DungeonPlayer
             }
             else
             {
-                ThirdPlayerPanel.gameObject.SetActive(false);
+                //ThirdPlayerPanel.gameObject.SetActive(false); // そうすると、レイアウトが崩れる。
+                ThirdPlayerPanel.GetComponent<Image>().color = Color.clear;
+                ThirdPlayerName.text = "";
+                currentLife3.color = Color.clear;
+                currentLifeValue3.text = "";
+                currentManaPoint3.color = Color.clear;
+                currentManaValue3.text = "";
+                currentSkillPoint3.color = Color.clear;
+                currentSkillValue3.text = "";
             }
         }
 

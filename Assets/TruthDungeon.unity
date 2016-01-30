@@ -452,7 +452,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 20
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
 --- !u!1 &157702173
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +715,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "100 / 100\x03"
+  m_Text: 
 --- !u!222 &189971957
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1049,7 +1049,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 120 / 120
+  m_Text: 
 --- !u!222 &277790834
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1177,7 +1177,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 120 / 120
+  m_Text: 
 --- !u!222 &300301373
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1454,7 +1454,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -80, y: 50}
-  m_SizeDelta: {x: 200, y: 60}
+  m_SizeDelta: {x: 250, y: 60}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &528219303
 MonoBehaviour:
@@ -1487,7 +1487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Dungeon Player\n ~ Liberty Seeker ~"
+  m_Text: "Dungeon Player\n        ~ Liberty Seeker ~"
 --- !u!222 &528219304
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2332,7 +2332,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Ein Wolence'
+  m_Text: 
 --- !u!222 &689580534
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2516,7 +2516,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "100 / 100\x03"
+  m_Text: 
 --- !u!222 &792955513
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2588,7 +2588,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "80 / 80\x03"
+  m_Text: 
 --- !u!222 &794660550
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3287,6 +3287,7 @@ MonoBehaviour:
   mainPanel: {fileID: 0}
   MainObjectButton: {fileID: 0}
   labelName: {fileID: 0}
+  labelFullName: {fileID: 0}
   ActionLabel: {fileID: 0}
   labelCurrentLifePoint: {fileID: 0}
   meterCurrentLifePoint: {fileID: 0}
@@ -3297,6 +3298,7 @@ MonoBehaviour:
   labelCurrentInstantPoint: {fileID: 0}
   meterCurrentInstantPoint: {fileID: 0}
   labelCurrentSpecialInstant: {fileID: 0}
+  DamagePanel: {fileID: 0}
   DamageLabel: {fileID: 0}
   CriticalLabel: {fileID: 0}
   ActionButtonList: []
@@ -3920,7 +3922,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Ein Wolence'
+  m_Text: 
 --- !u!222 &987105155
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4378,7 +4380,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "100 / 100\x03"
+  m_Text: 
 --- !u!222 &1225901407
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4810,6 +4812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50490536abc10c34c90b080f10d83129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groupPlayerList: {fileID: 154994785}
   FirstPlayerPanel: {fileID: 1814772390}
   SecondPlayerPanel: {fileID: 1849457396}
   ThirdPlayerPanel: {fileID: 2045572906}
@@ -6225,7 +6228,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "80 / 80\x03"
+  m_Text: 
 --- !u!222 &1724160191
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6353,7 +6356,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Ein Wolence'
+  m_Text: 
 --- !u!222 &1750723430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7261,7 +7264,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 120 / 120
+  m_Text: 
 --- !u!222 &1946867848
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7751,7 +7754,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "80 / 80\x03"
+  m_Text: 
 --- !u!222 &2119086147
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -135,76 +135,76 @@ namespace DungeonPlayer
             }
             commandDescription.text = TruthActionCommand.GetDescription(GroundOne.SpellSkillName);
 
-            if (TruthActionCommand.CheckPlayerActionFromString(GroundOne.SpellSkillName) == PlayerAction.UseSpell)
+            if (TruthActionCommand.CheckPlayerActionFromString(GroundOne.SpellSkillName) == MainCharacter.PlayerAction.UseSpell)
             {
                 commandAttribute1.text = SPELL_ATTRIBUTE_TEXT;
                 switch (TruthActionCommand.GetMagicType(GroundOne.SpellSkillName))
                 {
                     case TruthActionCommand.MagicType.Light:
-                        commandAttribute2.Text = ATTRIBUTE_LIGHT;
+                        commandAttribute2.text = ATTRIBUTE_LIGHT;
                         break;
                     case TruthActionCommand.MagicType.Shadow:
-                        commandAttribute2.Text = ATTRIBUTE_SHADOW;
+                        commandAttribute2.text = ATTRIBUTE_SHADOW;
                         break;
                     case TruthActionCommand.MagicType.Fire:
-                        commandAttribute2.Text = ATTRIBUTE_FIRE;
+                        commandAttribute2.text = ATTRIBUTE_FIRE;
                         break;
                     case TruthActionCommand.MagicType.Ice:
-                        commandAttribute2.Text = ATTRIBUTE_ICE;
+                        commandAttribute2.text = ATTRIBUTE_ICE;
                         break;
                     case TruthActionCommand.MagicType.Force:
-                        commandAttribute2.Text = ATTRIBUTE_FORCE;
+                        commandAttribute2.text = ATTRIBUTE_FORCE;
                         break;
                     case TruthActionCommand.MagicType.Will:
-                        commandAttribute2.Text = ATTRIBUTE_WILL;
+                        commandAttribute2.text = ATTRIBUTE_WILL;
                         break;
                     case TruthActionCommand.MagicType.Light_Shadow:
-                        commandAttribute2.Text = ATTRIBUTE_LIGHT_SHADOW;
+                        commandAttribute2.text = ATTRIBUTE_LIGHT_SHADOW;
                         break;
                     case TruthActionCommand.MagicType.Light_Fire:
-                        commandAttribute2.Text = ATTRIBUTE_LIGHT_FIRE;
+                        commandAttribute2.text = ATTRIBUTE_LIGHT_FIRE;
                         break;
                     case TruthActionCommand.MagicType.Light_Ice:
-                        commandAttribute2.Text = ATTRIBUTE_LIGHT_ICE;
+                        commandAttribute2.text = ATTRIBUTE_LIGHT_ICE;
                         break;
                     case TruthActionCommand.MagicType.Light_Force:
-                        commandAttribute2.Text = ATTRIBUTE_LIGHT_FORCE;
+                        commandAttribute2.text = ATTRIBUTE_LIGHT_FORCE;
                         break;
                     case TruthActionCommand.MagicType.Light_Will:
-                        commandAttribute2.Text = ATTRIBUTE_LIGHT_WILL;
+                        commandAttribute2.text = ATTRIBUTE_LIGHT_WILL;
                         break;
                     case TruthActionCommand.MagicType.Shadow_Fire:
-                        commandAttribute2.Text = ATTRIBUTE_SHADOW_FIRE;
+                        commandAttribute2.text = ATTRIBUTE_SHADOW_FIRE;
                         break;
                     case TruthActionCommand.MagicType.Shadow_Ice:
-                        commandAttribute2.Text = ATTRIBUTE_SHADOW_ICE;
+                        commandAttribute2.text = ATTRIBUTE_SHADOW_ICE;
                         break;
                     case TruthActionCommand.MagicType.Shadow_Force:
-                        commandAttribute2.Text = ATTRIBUTE_SHADOW_FORCE;
+                        commandAttribute2.text = ATTRIBUTE_SHADOW_FORCE;
                         break;
                     case TruthActionCommand.MagicType.Shadow_Will:
-                        commandAttribute2.Text = ATTRIBUTE_SHADOW_WILL;
+                        commandAttribute2.text = ATTRIBUTE_SHADOW_WILL;
                         break;
                     case TruthActionCommand.MagicType.Fire_Ice:
-                        commandAttribute2.Text = ATTRIBUTE_FIRE_ICE;
+                        commandAttribute2.text = ATTRIBUTE_FIRE_ICE;
                         break;
                     case TruthActionCommand.MagicType.Fire_Force:
-                        commandAttribute2.Text = ATTRIBUTE_FIRE_FORCE;
+                        commandAttribute2.text = ATTRIBUTE_FIRE_FORCE;
                         break;
                     case TruthActionCommand.MagicType.Fire_Will:
-                        commandAttribute2.Text = ATTRIBUTE_FIRE_WILL;
+                        commandAttribute2.text = ATTRIBUTE_FIRE_WILL;
                         break;
                     case TruthActionCommand.MagicType.Ice_Force:
-                        commandAttribute2.Text = ATTRIBUTE_ICE_FORCE;
+                        commandAttribute2.text = ATTRIBUTE_ICE_FORCE;
                         break;
                     case TruthActionCommand.MagicType.Ice_Will:
-                        commandAttribute2.Text = ATTRIBUTE_ICE_WILL;
+                        commandAttribute2.text = ATTRIBUTE_ICE_WILL;
                         break;
                     case TruthActionCommand.MagicType.Force_Will:
-                        commandAttribute2.Text = ATTRIBUTE_FORCE_WILL;
+                        commandAttribute2.text = ATTRIBUTE_FORCE_WILL;
                         break;
                     default:
-                        commandAttribute2.Text = ATTRIBUTE_NONE;
+                        commandAttribute2.text = ATTRIBUTE_NONE;
                         break;
                 }
             }
@@ -214,70 +214,70 @@ namespace DungeonPlayer
                 switch (TruthActionCommand.GetSkillType(GroundOne.SpellSkillName))
                 {
                     case TruthActionCommand.SkillType.Active:
-                        commandAttribute2.Text = ATTRIBUTE_ACTIVE;
+                        commandAttribute2.text = ATTRIBUTE_ACTIVE;
                         break;
                     case TruthActionCommand.SkillType.Passive:
-                        commandAttribute2.Text = ATTRIBUTE_PASSIVE;
+                        commandAttribute2.text = ATTRIBUTE_PASSIVE;
                         break;
                     case TruthActionCommand.SkillType.Soft:
-                        commandAttribute2.Text = ATTRIBUTE_SOFT;
+                        commandAttribute2.text = ATTRIBUTE_SOFT;
                         break;
                     case TruthActionCommand.SkillType.Hard:
-                        commandAttribute2.Text = ATTRIBUTE_HARD;
+                        commandAttribute2.text = ATTRIBUTE_HARD;
                         break;
                     case TruthActionCommand.SkillType.Truth:
-                        commandAttribute2.Text = ATTRIBUTE_TRUTH;
+                        commandAttribute2.text = ATTRIBUTE_TRUTH;
                         break;
                     case TruthActionCommand.SkillType.Void:
-                        commandAttribute2.Text = ATTRIBUTE_VOID;
+                        commandAttribute2.text = ATTRIBUTE_VOID;
                         break;
                     case TruthActionCommand.SkillType.Active_Passive:
-                        commandAttribute2.Text = ATTRIBUTE_ACTIVE_PASSIVE;
+                        commandAttribute2.text = ATTRIBUTE_ACTIVE_PASSIVE;
                         break;
                     case TruthActionCommand.SkillType.Active_Soft:
-                        commandAttribute2.Text = ATTRIBUTE_ACTIVE_SOFT;
+                        commandAttribute2.text = ATTRIBUTE_ACTIVE_SOFT;
                         break;
                     case TruthActionCommand.SkillType.Active_Hard:
-                        commandAttribute2.Text = ATTRIBUTE_ACTIVE_HARD;
+                        commandAttribute2.text = ATTRIBUTE_ACTIVE_HARD;
                         break;
                     case TruthActionCommand.SkillType.Active_Truth:
-                        commandAttribute2.Text = ATTRIBUTE_ACTIVE_TRUTH;
+                        commandAttribute2.text = ATTRIBUTE_ACTIVE_TRUTH;
                         break;
                     case TruthActionCommand.SkillType.Active_Void:
-                        commandAttribute2.Text = ATTRIBUTE_ACTIVE_VOID;
+                        commandAttribute2.text = ATTRIBUTE_ACTIVE_VOID;
                         break;
                     case TruthActionCommand.SkillType.Passive_Soft:
-                        commandAttribute2.Text = ATTRIBUTE_PASSIVE_SOFT;
+                        commandAttribute2.text = ATTRIBUTE_PASSIVE_SOFT;
                         break;
                     case TruthActionCommand.SkillType.Passive_Hard:
-                        commandAttribute2.Text = ATTRIBUTE_PASSIVE_HARD;
+                        commandAttribute2.text = ATTRIBUTE_PASSIVE_HARD;
                         break;
                     case TruthActionCommand.SkillType.Passive_Truth:
-                        commandAttribute2.Text = ATTRIBUTE_PASSIVE_TRUTH;
+                        commandAttribute2.text = ATTRIBUTE_PASSIVE_TRUTH;
                         break;
                     case TruthActionCommand.SkillType.Passive_Void:
-                        commandAttribute2.Text = ATTRIBUTE_PASSIVE_VOID;
+                        commandAttribute2.text = ATTRIBUTE_PASSIVE_VOID;
                         break;
                     case TruthActionCommand.SkillType.Soft_Hard:
-                        commandAttribute2.Text = ATTRIBUTE_SOFT_HARD;
+                        commandAttribute2.text = ATTRIBUTE_SOFT_HARD;
                         break;
                     case TruthActionCommand.SkillType.Soft_Truth:
-                        commandAttribute2.Text = ATTRIBUTE_SOFT_TRUTH;
+                        commandAttribute2.text = ATTRIBUTE_SOFT_TRUTH;
                         break;
                     case TruthActionCommand.SkillType.Soft_Void:
-                        commandAttribute2.Text = ATTRIBUTE_SOFT_VOID;
+                        commandAttribute2.text = ATTRIBUTE_SOFT_VOID;
                         break;
                     case TruthActionCommand.SkillType.Hard_Truth:
-                        commandAttribute2.Text = ATTRIBUTE_HARD_TRUTH;
+                        commandAttribute2.text = ATTRIBUTE_HARD_TRUTH;
                         break;
                     case TruthActionCommand.SkillType.Hard_Void:
-                        commandAttribute2.Text = ATTRIBUTE_HARD_VOID;
+                        commandAttribute2.text = ATTRIBUTE_HARD_VOID;
                         break;
                     case TruthActionCommand.SkillType.Truth_Void:
-                        commandAttribute2.Text = ATTRIBUTE_TRUTH_VOID;
+                        commandAttribute2.text = ATTRIBUTE_TRUTH_VOID;
                         break;
                     default:
-                        commandAttribute2.Text = ATTRIBUTE_NONE;
+                        commandAttribute2.text = ATTRIBUTE_NONE;
                         break;
                 }
             }
@@ -287,7 +287,7 @@ namespace DungeonPlayer
             // todo 影響因子の表示内容が全て網羅出来ているとは思えない。要見直し
             if (TruthActionCommand.IsDamage(GroundOne.SpellSkillName))
             {
-                if (TruthActionCommand.CheckPlayerActionFromString(GroundOne.SpellSkillName) == PlayerAction.UseSpell)
+                if (TruthActionCommand.CheckPlayerActionFromString(GroundOne.SpellSkillName) == MainCharacter.PlayerAction.UseSpell)
                 {
                     if (GroundOne.SpellSkillName == Database.WORD_OF_POWER)
                     {
@@ -317,21 +317,21 @@ namespace DungeonPlayer
                     SetupEffectFactor(false, true, true, false, false, false);
                     break;
                 case Database.INNER_INSPIRATION:
-                    SetupEffectFactor(false, false, false, false, false, mind);
+                    SetupEffectFactor(false, false, false, false, false, true);
                     break;
                 case Database.WORD_OF_LIFE:
-                    SetupEffectFactor(false, false, false, false, false, mind);
+                    SetupEffectFactor(false, false, false, false, false, true);
                     break;
                 case Database.ENIGMA_SENSE:
                     SetupEffectFactor(false, true, true, true, false, false);
                     break;
                 case Database.BLACK_CONTRACT:
-                    SetupEffectFactor(false, false, false, false, false, mind);
+                    SetupEffectFactor(false, false, false, false, false, true);
                     break;
             }
         }
 
-        private SetupEffectFactor(bool weapon, bool strength, bool agility, bool intelligence, bool stamina, bool mind)
+        private void SetupEffectFactor(bool weapon, bool strength, bool agility, bool intelligence, bool stamina, bool mind)
         {
             if (weapon) { pbWeapon.sprite = Resources.Load<Sprite>(Database.WeaponIcon); }
             if (strength) { pbStrength.sprite = Resources.Load<Sprite>(Database.StrengthIcon); }
@@ -343,6 +343,7 @@ namespace DungeonPlayer
 
         public void Close_Clock()
         {
+            Debug.Log("Close_Click start");
             SceneDimension.Back();
         }
     }

@@ -18,11 +18,14 @@ namespace DungeonPlayer
         }
 
         // 親グループに空のオブジェクトを追加する(レイアウト調整専用)
-        public static void AddEmptyObj(ref GameObject parentGroup)
+        public static void AddEmptyObj(ref GameObject parentGroup, int number)
         {
-            GameObject emptyObj = new GameObject();
-            emptyObj.AddComponent<RectTransform>();
-            emptyObj.transform.SetParent(parentGroup.transform);
+            for (int ii = 0; ii < number; ii++)
+            {
+                GameObject emptyObj = new GameObject();
+                emptyObj.AddComponent<RectTransform>();
+                emptyObj.transform.SetParent(parentGroup.transform);
+            }
         }
         
         // panel(gameobject)の色をレアに応じて変更

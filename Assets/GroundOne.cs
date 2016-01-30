@@ -107,28 +107,18 @@ namespace DungeonPlayer
             GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             WE = objWE.AddComponent<WorldEnvironment>();
             WE.DungeonArea = 1;
-
-            SpellSkillName = Database.FRESH_HEAL;
-            playerName = Database.EIN_WOLENCE;
-
-            //WE.Truth_CommunicationFirstHomeTown = true;
-            //WE.TruthCompleteArea1 = true;
-
+           
             WE.AvailableFirstCharacter = true;
             //WE.AvailableSecondCharacter = true;
             //WE.AvailableThirdCharacter = true;
             WE.AvailableInstantCommand = true;
             GroundOne.enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
 
-            WE.AvailableMana = true;
-            WE.AvailableSkill = true;
-
-            //UpPoint = 2638;
-
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
-            //WE2.TruthRecollection1 = true;
 
             MC = objMC.AddComponent<MainCharacter>();
+            MC.Level = 2;
+            MC.Exp = 200;
             MC.FirstName = Database.EIN_WOLENCE;
             MC.FullName = Database.EIN_WOLENCE_FULL;
             MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
@@ -136,6 +126,7 @@ namespace DungeonPlayer
             MC.Intelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
             MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
+            // debug
             MC.CurrentLife = 10;
             MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
             MC.SubWeapon = new ItemBackPack(Database.POOR_HINSO_SHIELD);
@@ -163,7 +154,6 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
             MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
-            // debug
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
             MC.FreshHeal = true;
@@ -208,7 +198,7 @@ namespace DungeonPlayer
             MC.OneImmunity = true;
             MC.WhiteOut = true;
             MC.TimeStop = true;
-            MC.StraightSmash = true;
+            MC.StraightSmash = false;
             MC.DoubleSlash = true;
             MC.CrushingBlow = true;
             MC.SoulInfinity = true;
@@ -308,8 +298,7 @@ namespace DungeonPlayer
             MC.StanceOfSuddenness = true;
             MC.SoulExecution = true;
             
-            MC.Gold = 5000;
-            MC.Exp += 350;
+            MC.Gold = 0;
 
             MC.BattleActionCommandList[0] = Database.ATTACK_EN;
             MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
