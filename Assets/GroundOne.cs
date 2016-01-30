@@ -74,7 +74,19 @@ namespace DungeonPlayer
         public static string enemyName2 = string.Empty;
         public static string enemyName3 = string.Empty;
 
+        // TruthDungeon
+        public static bool Player1Levelup = false;
+        public static int Player1UpPoint = 0;
+        public static int Player1CumultiveLvUpValue = 0;
+        public static bool Player2Levelup = false;
+        public static int Player2UpPoint = 0;
+        public static int Player2CumultiveLvUpValue = 0;
+        public static bool Player3Levelup = false;
+        public static int Player3UpPoint = 0;
+        public static int Player3CumultiveLvUpValue = 0;
+
         // TruthStatusPlayer
+        public static Color CurrentStatusView = new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B);
         public static bool LevelUp = false; // レベルアップモード画面
         public static int UpPoint = 0; // パラメタアップポイント
         public static int CumultiveLvUpValue = 0; // レベルアップカウント累積値
@@ -107,18 +119,11 @@ namespace DungeonPlayer
             GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             WE = objWE.AddComponent<WorldEnvironment>();
             WE.DungeonArea = 1;
-           
             WE.AvailableFirstCharacter = true;
-            //WE.AvailableSecondCharacter = true;
-            //WE.AvailableThirdCharacter = true;
-            WE.AvailableInstantCommand = true;
-            GroundOne.enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
-
+           
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
 
             MC = objMC.AddComponent<MainCharacter>();
-            MC.Level = 2;
-            MC.Exp = 200;
             MC.FirstName = Database.EIN_WOLENCE;
             MC.FullName = Database.EIN_WOLENCE_FULL;
             MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
@@ -156,7 +161,7 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
-            MC.FreshHeal = true;
+            MC.FreshHeal = false;
             MC.Protection = true;
             MC.HolyShock = true;
             MC.SaintPower = true;
@@ -313,6 +318,11 @@ namespace DungeonPlayer
             SC = objSC.AddComponent<MainCharacter>();
             SC.FirstName = Database.RANA_AMILIA;
             SC.FullName = Database.RANA_AMILIA_FULL;
+            SC.Strength = Database.SECONDPLAYER_FIRST_STRENGTH;
+            SC.Agility = Database.SECONDPLAYER_FIRST_AGILITY;
+            SC.Intelligence = Database.SECONDPLAYER_FIRST_INTELLIGENCE;
+            SC.Stamina = Database.SECONDPLAYER_FIRST_STAMINA;
+            SC.Mind = Database.SECONDPLAYER_FIRST_MIND;
             SC.AvailableMana = true;
             SC.AvailableSkill = true;
             SC.AddBackPack(new ItemBackPack(Database.COMMON_ELECTRO_ROD));
@@ -329,6 +339,10 @@ namespace DungeonPlayer
             TC = objTC.AddComponent<MainCharacter>();
             TC.FirstName = Database.OL_LANDIS;
             TC.FullName = Database.OL_LANDIS_FULL;
+            TC.Strength = Database.OL_LANDIS_FIRST_STRENGTH;
+            TC.Agility = Database.OL_LANDIS_FIRST_AGILITY;
+            TC.Intelligence = Database.OL_LANDIS_FIRST_INTELLIGENCE;
+            TC.Stamina = Database.OL_LANDIS_FIRST_STAMINA;
             TC.AvailableMana = true;
             TC.AvailableSkill = true;
             TC.BattleActionCommandList[0] = Database.ATTACK_EN;

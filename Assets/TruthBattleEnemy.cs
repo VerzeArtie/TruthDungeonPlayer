@@ -2190,8 +2190,9 @@ namespace DungeonPlayer
 
                     if (cumultiveLvUpValue > 0)
                     {
-                        GroundOne.CumultiveLvUpValue = cumultiveLvUpValue;
-                        GroundOne.UpPoint = levelUpPoint;
+                        GroundOne.Player1Levelup = true;
+                        GroundOne.Player1CumultiveLvUpValue = cumultiveLvUpValue;
+                        GroundOne.Player1UpPoint= levelUpPoint;
                     }
                 }
                 if (GroundOne.WE.AvailableSecondCharacter)
@@ -2199,6 +2200,32 @@ namespace DungeonPlayer
                     if (GroundOne.SC != null && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
                     {
                         GroundOne.SC.Exp = ec1.Exp;
+                    }
+
+                    int levelUpPoint = 0;
+                    int cumultiveLvUpValue = 0;
+                    while (true)
+                    {
+                        if (GroundOne.SC.Exp >= GroundOne.SC.NextLevelBorder && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
+                        {
+                            levelUpPoint += GroundOne.SC.LevelUpPointTruth;
+                            GroundOne.SC.BaseLife += GroundOne.SC.LevelUpLifeTruth;
+                            GroundOne.SC.BaseMana += GroundOne.SC.LevelUpManaTruth;
+                            GroundOne.SC.Exp = GroundOne.SC.Exp - GroundOne.SC.NextLevelBorder;
+                            GroundOne.SC.Level += 1;
+                            cumultiveLvUpValue++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    if (cumultiveLvUpValue > 0)
+                    {
+                        GroundOne.Player2Levelup = true;
+                        GroundOne.Player2CumultiveLvUpValue = cumultiveLvUpValue;
+                        GroundOne.Player2UpPoint = levelUpPoint;
                     }
                 }
 
@@ -2208,10 +2235,35 @@ namespace DungeonPlayer
                     {
                         GroundOne.TC.Exp = ec1.Exp;
                     }
+
+                    int levelUpPoint = 0;
+                    int cumultiveLvUpValue = 0;
+                    while (true)
+                    {
+                        if (GroundOne.TC.Exp >= GroundOne.TC.NextLevelBorder && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
+                        {
+                            levelUpPoint += GroundOne.TC.LevelUpPointTruth;
+                            GroundOne.TC.BaseLife += GroundOne.TC.LevelUpLifeTruth;
+                            GroundOne.TC.BaseMana += GroundOne.TC.LevelUpManaTruth;
+                            GroundOne.TC.Exp = GroundOne.TC.Exp - GroundOne.TC.NextLevelBorder;
+                            GroundOne.TC.Level += 1;
+                            cumultiveLvUpValue++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
+                    if (cumultiveLvUpValue > 0)
+                    {
+                        GroundOne.Player3Levelup = true;
+                        GroundOne.Player3CumultiveLvUpValue = cumultiveLvUpValue;
+                        GroundOne.Player3UpPoint = levelUpPoint;
+                    }
                 }
             }
-            //SceneDimension.Back();
-            Debug.Log("end");
+            SceneDimension.Back();
         }
 
         public enum MethodType

@@ -12,6 +12,9 @@ namespace DungeonPlayer
 {
     public class TruthStatusPlayer : MotherForm
     {
+        public GameObject btnSpellSkillDescClose;
+        public Text txtSpellSkillDescription;
+        public GameObject filter;
         public GameObject groupParentStatus;
         public GameObject groupParentBackpack;
         public GameObject groupParentSpell;
@@ -101,13 +104,7 @@ namespace DungeonPlayer
 
         ItemBackPack[] backpackData = null;
 
-        private Color currentStatusView;
-        public Color CurrentStatusView
-        {
-            get { return currentStatusView; }
-            set { currentStatusView = value; }
-        }
-        
+       
         private bool onlyUseItem = false;
         public bool OnlyUseItem
         {
@@ -124,8 +121,7 @@ namespace DungeonPlayer
 
             this.txtGold.text = GroundOne.MC.Gold.ToString();
 
-            this.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
-            this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+            this.cam.backgroundColor = GroundOne.CurrentStatusView;
             Debug.Log("cam backcolor: " + this.cam.backgroundColor.ToString());
             MainCharacter player = GetCurrentPlayer();
             SettingCharacterData(player);
@@ -405,11 +401,13 @@ namespace DungeonPlayer
                 }
             }
 
-            if (GroundOne.LevelUp)
+            SpellSkillDesc_Close_Click();
+        }
+
+        public void SpellSkillDesc_Close_Click()
+        {
+            if (GroundOne.LevelUp && GetCurrentPlayer() == GroundOne.MC)
             {
-                GroundOne.CumultiveLvUpValue = 0;
-                GroundOne.LevelUp = false;
-                GroundOne.UpPoint = 0;
                 #region "アイン・レベルアップ習得表"
                 if ((GroundOne.MC.Level >= 3) && (!GroundOne.MC.StraightSmash)) { GroundOne.MC.AvailableSkill = true; GroundOne.MC.StraightSmash = true; ShowActiveSkillSpell(GroundOne.MC, Database.STRAIGHT_SMASH); }
                 else if ((GroundOne.MC.Level >= 4) && (!GroundOne.MC.FreshHeal)) { GroundOne.MC.AvailableMana = true; GroundOne.MC.FreshHeal = true; ShowActiveSkillSpell(GroundOne.MC, Database.FRESH_HEAL); }
@@ -467,11 +465,130 @@ namespace DungeonPlayer
                 else if ((GroundOne.MC.Level >= 64) && (!GroundOne.MC.FatalBlow)) { GroundOne.MC.FatalBlow = true; ShowActiveSkillSpell(GroundOne.MC, Database.FATAL_BLOW); }
                 else if ((GroundOne.MC.Level >= 65) && (!GroundOne.MC.StanceOfDouble)) { GroundOne.MC.StanceOfDouble = true; ShowActiveSkillSpell(GroundOne.MC, Database.STANCE_OF_DOUBLE); }
                 else if ((GroundOne.MC.Level >= 66) && (!GroundOne.MC.ZetaExplosion)) { GroundOne.MC.ZetaExplosion = true; ShowActiveSkillSpell(GroundOne.MC, Database.ZETA_EXPLOSION); }
-                #endregion
                 else
                 {
+                    GroundOne.CumultiveLvUpValue = 0;
+                    GroundOne.LevelUp = false;
+                    GroundOne.UpPoint = 0;
                     SceneDimension.Back();
                 }
+                #endregion
+            }                
+            else if (GroundOne.LevelUp && GetCurrentPlayer() == GroundOne.SC)
+            {
+                #region "ラナ・レベルアップ習得表"
+                if ((GroundOne.SC.Level >= 3) && (!GroundOne.SC.IceNeedle)) { GroundOne.SC.AvailableMana = true; GroundOne.SC.IceNeedle = true; ShowActiveSkillSpell(GroundOne.SC, Database.ICE_NEEDLE); }
+                else if ((GroundOne.SC.Level >= 4) && (!GroundOne.SC.CounterAttack)) { GroundOne.SC.AvailableSkill = true; GroundOne.SC.CounterAttack = true; ShowActiveSkillSpell(GroundOne.SC, Database.COUNTER_ATTACK); }
+                else if ((GroundOne.SC.Level >= 5) && (!GroundOne.SC.DarkBlast)) { GroundOne.SC.DarkBlast = true; ShowActiveSkillSpell(GroundOne.SC, Database.DARK_BLAST); }
+                else if ((GroundOne.SC.Level >= 6) && (!GroundOne.SC.AbsorbWater)) { GroundOne.SC.AbsorbWater = true; ShowActiveSkillSpell(GroundOne.SC, Database.ABSORB_WATER); }
+                else if ((GroundOne.SC.Level >= 7) && (!GroundOne.SC.StanceOfFlow)) { GroundOne.SC.StanceOfFlow = true; ShowActiveSkillSpell(GroundOne.SC, Database.STANCE_OF_FLOW); }
+                else if ((GroundOne.SC.Level >= 8) && (!GroundOne.SC.ShadowPact)) { GroundOne.SC.ShadowPact = true; ShowActiveSkillSpell(GroundOne.SC, Database.SHADOW_PACT); }
+                else if ((GroundOne.SC.Level >= 9) && (!GroundOne.SC.DispelMagic)) { GroundOne.SC.DispelMagic = true; ShowActiveSkillSpell(GroundOne.SC, Database.DISPEL_MAGIC); }
+                else if ((GroundOne.SC.Level >= 10) && (!GroundOne.SC.LifeTap)) { GroundOne.SC.LifeTap = true; ShowActiveSkillSpell(GroundOne.SC, Database.LIFE_TAP); }
+                else if ((GroundOne.SC.Level >= 11) && (!GroundOne.SC.PurePurification)) { GroundOne.SC.PurePurification = true; ShowActiveSkillSpell(GroundOne.SC, Database.PURE_PURIFICATION); }
+                else if ((GroundOne.SC.Level >= 12) && (!GroundOne.SC.EnigmaSence)) { GroundOne.SC.EnigmaSence = true; ShowActiveSkillSpell(GroundOne.SC, Database.ENIGMA_SENSE); }
+                else if ((GroundOne.SC.Level >= 13) && (!GroundOne.SC.BlackContract)) { GroundOne.SC.BlackContract = true; ShowActiveSkillSpell(GroundOne.SC, Database.BLACK_CONTRACT); }
+                else if ((GroundOne.SC.Level >= 14) && (!GroundOne.SC.Cleansing)) { GroundOne.SC.Cleansing = true; ShowActiveSkillSpell(GroundOne.SC, Database.CLEANSING); }
+                else if ((GroundOne.SC.Level >= 15) && (!GroundOne.SC.Negate)) { GroundOne.SC.Negate = true; ShowActiveSkillSpell(GroundOne.SC, Database.NEGATE); }
+                else if ((GroundOne.SC.Level >= 16) && (!GroundOne.SC.FrozenLance)) { GroundOne.SC.FrozenLance = true; ShowActiveSkillSpell(GroundOne.SC, Database.FROZEN_LANCE); }
+                else if ((GroundOne.SC.Level >= 17) && (!GroundOne.SC.RiseOfImage)) { GroundOne.SC.RiseOfImage = true; ShowActiveSkillSpell(GroundOne.SC, Database.RISE_OF_IMAGE); }
+                else if ((GroundOne.SC.Level >= 18) && (!GroundOne.SC.Deflection)) { GroundOne.SC.Deflection = true; ShowActiveSkillSpell(GroundOne.SC, Database.DEFLECTION); }
+                else if ((GroundOne.SC.Level >= 19) && (!GroundOne.SC.Tranquility)) { GroundOne.SC.Tranquility = true; ShowActiveSkillSpell(GroundOne.SC, Database.TRANQUILITY); }
+                else if ((GroundOne.SC.Level >= 20) && (!GroundOne.SC.VoidExtraction)) { GroundOne.SC.VoidExtraction = true; ShowActiveSkillSpell(GroundOne.SC, Database.VOID_EXTRACTION); }
+                // [警告] ここで一気にレベルを挙げられると、複合魔法・スキルの習得に違和感が出てしまう。
+                else if ((GroundOne.SC.Level >= 24) && (!GroundOne.SC.DevouringPlague)) { GroundOne.SC.DevouringPlague = true; ShowActiveSkillSpell(GroundOne.SC, Database.DEVOURING_PLAGUE); }
+                else if ((GroundOne.SC.Level >= 25) && (!GroundOne.SC.MirrorImage)) { GroundOne.SC.MirrorImage = true; ShowActiveSkillSpell(GroundOne.SC, Database.MIRROR_IMAGE); }
+                else if ((GroundOne.SC.Level >= 26) && (!GroundOne.SC.OneImmunity)) { GroundOne.SC.OneImmunity = true; ShowActiveSkillSpell(GroundOne.SC, Database.ONE_IMMUNITY); }
+
+                else if ((GroundOne.SC.Level >= 36) && (!GroundOne.SC.AntiStun)) { GroundOne.SC.AntiStun = true; ShowActiveSkillSpell(GroundOne.SC, Database.ANTI_STUN); }
+                else if ((GroundOne.SC.Level >= 37) && (!GroundOne.SC.SilentRush)) { GroundOne.SC.SilentRush = true; ShowActiveSkillSpell(GroundOne.SC, Database.SILENT_RUSH); }
+                else if ((GroundOne.SC.Level >= 38) && (!GroundOne.SC.CarnageRush)) { GroundOne.SC.CarnageRush = true; ShowActiveSkillSpell(GroundOne.SC, Database.CARNAGE_RUSH); }
+                else if ((GroundOne.SC.Level >= 39) && (!GroundOne.SC.BloodyVengeance)) { GroundOne.SC.BloodyVengeance = true; ShowActiveSkillSpell(GroundOne.SC, Database.BLOODY_VENGEANCE); }
+                else if ((GroundOne.SC.Level >= 41) && (!GroundOne.SC.SacredHeal)) { GroundOne.SC.SacredHeal = true; ShowActiveSkillSpell(GroundOne.SC, Database.SACRED_HEAL); }
+                else if ((GroundOne.SC.Level >= 42) && (!GroundOne.SC.WhiteOut)) { GroundOne.SC.WhiteOut = true; ShowActiveSkillSpell(GroundOne.SC, Database.WHITE_OUT); }
+                else if ((GroundOne.SC.Level >= 43) && (!GroundOne.SC.DeepMirror)) { GroundOne.SC.DeepMirror = true; ShowActiveSkillSpell(GroundOne.SC, Database.DEEP_MIRROR); }
+                else if ((GroundOne.SC.Level >= 44) && (!GroundOne.SC.PromisedKnowledge)) { GroundOne.SC.PromisedKnowledge = true; ShowActiveSkillSpell(GroundOne.SC, Database.PROMISED_KNOWLEDGE); }
+                else if ((GroundOne.SC.Level >= 45) && (!GroundOne.SC.DoomBlade)) { GroundOne.SC.DoomBlade = true; ShowActiveSkillSpell(GroundOne.SC, Database.DOOM_BLADE); }
+                else if ((GroundOne.SC.Level >= 46) && (!GroundOne.SC.VortexField)) { GroundOne.SC.VortexField = true; ShowActiveSkillSpell(GroundOne.SC, Database.VORTEX_FIELD); }
+                else if ((GroundOne.SC.Level >= 47) && (!GroundOne.SC.AngelBreath)) { GroundOne.SC.AngelBreath = true; ShowActiveSkillSpell(GroundOne.SC, Database.ANGEL_BREATH); }
+                else if ((GroundOne.SC.Level >= 48) && (!GroundOne.SC.UnknownShock)) { GroundOne.SC.UnknownShock = true; ShowActiveSkillSpell(GroundOne.SC, Database.UNKNOWN_SHOCK); }
+                else if ((GroundOne.SC.Level >= 49) && (!GroundOne.SC.BlindJustice)) { GroundOne.SC.BlindJustice = true; ShowActiveSkillSpell(GroundOne.SC, Database.BLIND_JUSTICE); }
+                else if ((GroundOne.SC.Level >= 50) && (!GroundOne.SC.StanceOfDeath)) { GroundOne.SC.StanceOfDeath = true; ShowActiveSkillSpell(GroundOne.SC, Database.STANCE_OF_DEATH); }
+
+                else if ((GroundOne.SC.Level >= 51) && (!GroundOne.SC.EclipseEnd)) { GroundOne.SC.EclipseEnd = true; ShowActiveSkillSpell(GroundOne.SC, Database.ECLIPSE_END); }
+                else if ((GroundOne.SC.Level >= 52) && (!GroundOne.SC.OboroImpact)) { GroundOne.SC.OboroImpact = true; ShowActiveSkillSpell(GroundOne.SC, Database.OBORO_IMPACT); }
+                else if ((GroundOne.SC.Level >= 53) && (!GroundOne.SC.Damnation)) { GroundOne.SC.Damnation = true; ShowActiveSkillSpell(GroundOne.SC, Database.DAMNATION); }
+                else if ((GroundOne.SC.Level >= 54) && (!GroundOne.SC.MindKilling)) { GroundOne.SC.MindKilling = true; ShowActiveSkillSpell(GroundOne.SC, Database.MIND_KILLING); }
+                else if ((GroundOne.SC.Level >= 55) && (!GroundOne.SC.NothingOfNothingness)) { GroundOne.SC.NothingOfNothingness = true; ShowActiveSkillSpell(GroundOne.SC, Database.NOTHING_OF_NOTHINGNESS); }
+                else if ((GroundOne.SC.Level >= 56) && (!GroundOne.SC.AbsoluteZero)) { GroundOne.SC.AbsoluteZero = true; ShowActiveSkillSpell(GroundOne.SC, Database.ABSOLUTE_ZERO); }
+                else if ((GroundOne.SC.Level >= 57) && (!GroundOne.SC.NourishSense)) { GroundOne.SC.NourishSense = true; ShowActiveSkillSpell(GroundOne.SC, Database.NOURISH_SENSE); }
+                else if ((GroundOne.SC.Level >= 58) && (!GroundOne.SC.TimeStop)) { GroundOne.SC.TimeStop = true; ShowActiveSkillSpell(GroundOne.SC, Database.TIME_STOP); }
+                else if ((GroundOne.SC.Level >= 59) && (!GroundOne.SC.EverDroplet)) { GroundOne.SC.EverDroplet = true; ShowActiveSkillSpell(GroundOne.SC, Database.EVER_DROPLET); }
+                else if ((GroundOne.SC.Level >= 60) && (!GroundOne.SC.BlueDragonWill)) { GroundOne.SC.BlueDragonWill = true; ShowActiveSkillSpell(GroundOne.SC, Database.BLUE_DRAGON_WILL); }
+
+                else if ((GroundOne.SC.Level >= 61) && (!GroundOne.SC.EndlessAnthem)) { GroundOne.SC.EndlessAnthem = true; ShowActiveSkillSpell(GroundOne.SC, Database.ENDLESS_ANTHEM); }
+                else if ((GroundOne.SC.Level >= 62) && (!GroundOne.SC.ImpulseHit)) { GroundOne.SC.ImpulseHit = true; ShowActiveSkillSpell(GroundOne.SC, Database.IMPULSE_HIT); }
+                else if ((GroundOne.SC.Level >= 63) && (!GroundOne.SC.DeathDeny)) { GroundOne.SC.DeathDeny = true; ShowActiveSkillSpell(GroundOne.SC, Database.DEATH_DENY); }
+                else if ((GroundOne.SC.Level >= 64) && (!GroundOne.SC.ConcussiveHit)) { GroundOne.SC.ConcussiveHit = true; ShowActiveSkillSpell(GroundOne.SC, Database.CONCUSSIVE_HIT); }
+                else if ((GroundOne.SC.Level >= 65) && (!GroundOne.SC.SoulExecution)) { GroundOne.SC.SoulExecution = true; ShowActiveSkillSpell(GroundOne.SC, Database.SOUL_EXECUTION); }
+                else if ((GroundOne.SC.Level >= 66) && (!GroundOne.SC.TranscendentWish)) { GroundOne.SC.TranscendentWish = true; ShowActiveSkillSpell(GroundOne.SC, Database.TRANSCENDENT_WISH); }
+                else
+                {
+                    GroundOne.CumultiveLvUpValue = 0;
+                    GroundOne.LevelUp = false;
+                    GroundOne.UpPoint = 0;
+                    SceneDimension.Back();
+                }
+                #endregion
+            }
+            else if (GroundOne.LevelUp && GetCurrentPlayer() == GroundOne.TC)
+            {
+                // ランディスはレベル上限MAX35からスタートのため、習得はない。
+                #region "ヴェルゼ・レベルアップ習得表"
+                if ((GroundOne.TC.Level >= 36) && (!GroundOne.TC.StanceOfEyes)) { GroundOne.TC.StanceOfEyes = true; ShowActiveSkillSpell(GroundOne.TC, Database.STANCE_OF_EYES); }
+                else if ((GroundOne.TC.Level >= 37) && (!GroundOne.TC.SwiftStep)) { GroundOne.TC.SwiftStep = true; ShowActiveSkillSpell(GroundOne.TC, Database.SWIFT_STEP); }
+                else if ((GroundOne.TC.Level >= 38) && (!GroundOne.TC.Resurrection)) { GroundOne.TC.Resurrection = true; ShowActiveSkillSpell(GroundOne.TC, Database.RESURRECTION); }
+                else if ((GroundOne.TC.Level >= 39) && (!GroundOne.TC.BlindJustice)) { GroundOne.TC.BlindJustice = true; ShowActiveSkillSpell(GroundOne.TC, Database.BLIND_JUSTICE); }
+                else if ((GroundOne.TC.Level >= 41) && (!GroundOne.TC.Genesis)) { GroundOne.TC.Genesis = true; ShowActiveSkillSpell(GroundOne.TC, Database.GENESIS); }
+                else if ((GroundOne.TC.Level >= 42) && (!GroundOne.TC.DeepMirror)) { GroundOne.TC.DeepMirror = true; ShowActiveSkillSpell(GroundOne.TC, Database.DEEP_MIRROR); }
+                else if ((GroundOne.TC.Level >= 43) && (!GroundOne.TC.ImmortalRave)) { GroundOne.TC.ImmortalRave = true; ShowActiveSkillSpell(GroundOne.TC, Database.IMMORTAL_RAVE); }
+                else if ((GroundOne.TC.Level >= 44) && (!GroundOne.TC.DoomBlade)) { GroundOne.TC.DoomBlade = true; ShowActiveSkillSpell(GroundOne.TC, Database.DOOM_BLADE); }
+                else if ((GroundOne.TC.Level >= 45) && (!GroundOne.TC.CarnageRush)) { GroundOne.TC.CarnageRush = true; ShowActiveSkillSpell(GroundOne.TC, Database.CARNAGE_RUSH); }
+                else if ((GroundOne.TC.Level >= 46) && (!GroundOne.TC.ChillBurn)) { GroundOne.TC.ChillBurn = true; ShowActiveSkillSpell(GroundOne.TC, Database.CHILL_BURN); }
+                else if ((GroundOne.TC.Level >= 47) && (!GroundOne.TC.WhiteOut)) { GroundOne.TC.WhiteOut = true; ShowActiveSkillSpell(GroundOne.TC, Database.WHITE_OUT); }
+                else if ((GroundOne.TC.Level >= 48) && (!GroundOne.TC.PhantasmalWind)) { GroundOne.TC.PhantasmalWind = true; ShowActiveSkillSpell(GroundOne.TC, Database.PHANTASMAL_WIND); }
+                else if ((GroundOne.TC.Level >= 49) && (!GroundOne.TC.PainfulInsanity)) { GroundOne.TC.PainfulInsanity = true; ShowActiveSkillSpell(GroundOne.TC, Database.PAINFUL_INSANITY); }
+                else if ((GroundOne.TC.Level >= 50) && (!GroundOne.TC.FatalBlow)) { GroundOne.TC.FatalBlow = true; ShowActiveSkillSpell(GroundOne.TC, Database.FATAL_BLOW); }
+
+                else if ((GroundOne.TC.Level >= 51) && (!GroundOne.TC.StaticBarrier)) { GroundOne.TC.StaticBarrier = true; ShowActiveSkillSpell(GroundOne.TC, Database.STATIC_BARRIER); }
+                else if ((GroundOne.TC.Level >= 52) && (!GroundOne.TC.StanceOfDeath)) { GroundOne.TC.StanceOfDeath = true; ShowActiveSkillSpell(GroundOne.TC, Database.STANCE_OF_DEATH); }
+                else if ((GroundOne.TC.Level >= 53) && (!GroundOne.TC.EverDroplet)) { GroundOne.TC.EverDroplet = true; ShowActiveSkillSpell(GroundOne.TC, Database.EVER_DROPLET); }
+                else if ((GroundOne.TC.Level >= 54) && (!GroundOne.TC.Catastrophe)) { GroundOne.TC.Catastrophe = true; ShowActiveSkillSpell(GroundOne.TC, Database.CATASTROPHE); }
+                else if ((GroundOne.TC.Level >= 55) && (!GroundOne.TC.CelestialNova)) { GroundOne.TC.CelestialNova = true; ShowActiveSkillSpell(GroundOne.TC, Database.CELESTIAL_NOVA); }
+                else if ((GroundOne.TC.Level >= 56) && (!GroundOne.TC.MindKilling)) { GroundOne.TC.MindKilling = true; ShowActiveSkillSpell(GroundOne.TC, Database.MIND_KILLING); }
+                else if ((GroundOne.TC.Level >= 57) && (!GroundOne.TC.NothingOfNothingness)) { GroundOne.TC.NothingOfNothingness = true; ShowActiveSkillSpell(GroundOne.TC, Database.NOTHING_OF_NOTHINGNESS); }
+                else if ((GroundOne.TC.Level >= 58) && (!GroundOne.TC.AbsoluteZero)) { GroundOne.TC.AbsoluteZero = true; ShowActiveSkillSpell(GroundOne.TC, Database.ABSOLUTE_ZERO); }
+                else if ((GroundOne.TC.Level >= 59) && (!GroundOne.TC.AusterityMatrix)) { GroundOne.TC.AusterityMatrix = true; ShowActiveSkillSpell(GroundOne.TC, Database.AUSTERITY_MATRIX); }
+                else if ((GroundOne.TC.Level >= 60) && (!GroundOne.TC.VigorSense)) { GroundOne.TC.VigorSense = true; ShowActiveSkillSpell(GroundOne.TC, Database.VIGOR_SENSE); }
+
+                else if ((GroundOne.TC.Level >= 61) && (!GroundOne.TC.LavaAnnihilation)) { GroundOne.TC.LavaAnnihilation = true; ShowActiveSkillSpell(GroundOne.TC, Database.LAVA_ANNIHILATION); }
+                else if ((GroundOne.TC.Level >= 62) && (!GroundOne.TC.EclipseEnd)) { GroundOne.TC.EclipseEnd = true; ShowActiveSkillSpell(GroundOne.TC, Database.ECLIPSE_END); }
+                else if ((GroundOne.TC.Level >= 63) && (!GroundOne.TC.TimeStop)) { GroundOne.TC.TimeStop = true; ShowActiveSkillSpell(GroundOne.TC, Database.TIME_STOP); }
+                else if ((GroundOne.TC.Level >= 64) && (!GroundOne.TC.SinFortune)) { GroundOne.TC.SinFortune = true; ShowActiveSkillSpell(GroundOne.TC, Database.SIN_FORTUNE); }
+                else if ((GroundOne.TC.Level >= 65) && (!GroundOne.TC.DemonicIgnite)) { GroundOne.TC.DemonicIgnite = true; ShowActiveSkillSpell(GroundOne.TC, Database.DEMONIC_IGNITE); }
+                else if ((GroundOne.TC.Level >= 66) && (!GroundOne.TC.StanceOfDouble)) { GroundOne.TC.StanceOfDouble = true; ShowActiveSkillSpell(GroundOne.TC, Database.STANCE_OF_DOUBLE); }
+                else if ((GroundOne.TC.Level >= 67) && (!GroundOne.TC.WarpGate)) { GroundOne.TC.WarpGate = true; ShowActiveSkillSpell(GroundOne.TC, Database.WARP_GATE); }
+                else if ((GroundOne.TC.Level >= 68) && (!GroundOne.TC.StanceOfMystic)) { GroundOne.TC.StanceOfMystic = true; ShowActiveSkillSpell(GroundOne.TC, Database.STANCE_OF_MYSTIC); }
+                else if ((GroundOne.TC.Level >= 69) && (!GroundOne.TC.SoulExecution)) { GroundOne.TC.SoulExecution = true; ShowActiveSkillSpell(GroundOne.TC, Database.SOUL_EXECUTION); }
+                else if ((GroundOne.TC.Level >= 70) && (!GroundOne.TC.ZetaExplosion)) { GroundOne.TC.ZetaExplosion = true; ShowActiveSkillSpell(GroundOne.TC, Database.ZETA_EXPLOSION); }
+                else
+                {
+                    GroundOne.CumultiveLvUpValue = 0;
+                    GroundOne.LevelUp = false;
+                    GroundOne.UpPoint = 0;
+                    SceneDimension.Back();
+                }
+                #endregion
             }
             else
             {
@@ -489,9 +606,15 @@ namespace DungeonPlayer
                     break;
                 }
             }
+
+            this.filter.SetActive(true);
+            this.btnSpellSkillDescClose.SetActive(true);
+            Application.UnloadLevel(Database.TruthSkillSpellDesc);
             GroundOne.playerName = player.FirstName;
             GroundOne.SpellSkillName = skillSpellName;
-            SceneDimension.Replace(Database.TruthSkillSpellDesc);
+            this.txtSpellSkillDescription.text = GroundOne.playerName + "は" + TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName) + "を習得した";
+            Application.LoadLevelAdditive(Database.TruthSkillSpellDesc);
+//            SceneDimension.Replace(Database.TruthSkillSpellDesc);
         }
         private MainCharacter GetCurrentPlayer()
         {
@@ -3025,7 +3148,7 @@ namespace DungeonPlayer
             else
             {
                 this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
-                this.currentStatusView = GroundOne.MC.PlayerStatusColor;
+                GroundOne.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.MC);
                 RefreshPartyMembersBattleStatus(GroundOne.MC);
             }
@@ -3050,7 +3173,7 @@ namespace DungeonPlayer
             else
             {
                 this.cam.backgroundColor = GroundOne.SC.PlayerStatusColor;
-                this.currentStatusView = GroundOne.SC.PlayerStatusColor;
+                GroundOne.CurrentStatusView = GroundOne.SC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.SC);
                 RefreshPartyMembersBattleStatus(GroundOne.SC);
             }
@@ -3075,7 +3198,7 @@ namespace DungeonPlayer
             else
             {
                 this.cam.backgroundColor = GroundOne.TC.PlayerStatusColor;
-                this.currentStatusView = GroundOne.TC.PlayerStatusColor;
+                GroundOne.CurrentStatusView = GroundOne.TC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.TC);
                 RefreshPartyMembersBattleStatus(GroundOne.TC);
             }

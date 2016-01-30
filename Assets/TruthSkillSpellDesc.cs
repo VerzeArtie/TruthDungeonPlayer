@@ -24,7 +24,6 @@ namespace DungeonPlayer
         public Image pbIntelligence;
         public Image pbStamina;
         public Image pbMind;
-        public Text mainMessage;
         public override void Start()
         {
             base.Start();
@@ -282,8 +281,6 @@ namespace DungeonPlayer
                 }
             }
 
-            mainMessage.text = GroundOne.playerName + "は" + TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName) + "を習得した";
-
             // todo 影響因子の表示内容が全て網羅出来ているとは思えない。要見直し
             if (TruthActionCommand.IsDamage(GroundOne.SpellSkillName))
             {
@@ -344,7 +341,7 @@ namespace DungeonPlayer
         public void Close_Clock()
         {
             Debug.Log("Close_Click start");
-            SceneDimension.Back();
+            Application.UnloadLevel(Database.TruthSkillSpellDesc);
         }
     }
 }
