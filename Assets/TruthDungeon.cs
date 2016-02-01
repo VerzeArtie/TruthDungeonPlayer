@@ -6232,46 +6232,43 @@ namespace DungeonPlayer
                     //    }
                     //}
 
-                    //TruthEnemyCharacter ec1 = new TruthEnemyCharacter(enemyName);
-                    //be.EC1 = ec1;
-                    //// １階初期パーティが１人の場合を考慮して以下の形式
-                    //if (GroundOne.WE.AvailableSecondCharacter && enemyName2 != String.Empty)
-                    //{
-                    //    if ((ec1.Rare == TruthEnemyCharacter.RareString.Black) ||
-                    //        (ec1.Rare == TruthEnemyCharacter.RareString.Blue))
-                    //    {
-                    //        TruthEnemyCharacter ec2 = new TruthEnemyCharacter(enemyName2);
-                    //        be.EC2 = ec2;
-                    //    }
-                    //}
-                    //// ２階初期パーティが２人の場合を考慮して以下の形式
-                    //if (GroundOne.WE.AvailableThirdCharacter && enemyName3 != String.Empty)
-                    //{
-                    //    if ((ec1.Rare == TruthEnemyCharacter.RareString.Black) ||
-                    //        (ec1.Rare == TruthEnemyCharacter.RareString.Blue))
-                    //    {
-                    //        TruthEnemyCharacter ec3 = new TruthEnemyCharacter(enemyName3);
-                    //        be.EC3 = ec3;
-                    //    }
-                    //}
+                    // 敵１は必ずエントリー
+                    GroundOne.enemyName1 = enemyName;
 
-                    //// ２階、力の部屋以降、ボスが２人以上を考慮して以下の形式
-                    //if (enemyName2 != String.Empty)
-                    //{
-                    //    if (ec1.Rare == TruthEnemyCharacter.RareString.Gold)
-                    //    {
-                    //        TruthEnemyCharacter ec2 = new TruthEnemyCharacter(enemyName2);
-                    //        be.EC2 = ec2;
-                    //    }
-                    //}
-                    //if (enemyName3 != String.Empty)
-                    //{
-                    //    if (ec1.Rare == TruthEnemyCharacter.RareString.Gold)
-                    //    {
-                    //        TruthEnemyCharacter ec3 = new TruthEnemyCharacter(enemyName3);
-                    //        be.EC3 = ec3;
-                    //    }
-                    //}
+                    // １階初期パーティが１人の場合を考慮して以下の形式
+                    if (GroundOne.WE.AvailableSecondCharacter && enemyName2 != String.Empty)
+                    {
+                        if ((ec1.Rare == TruthEnemyCharacter.RareString.Black) ||
+                            (ec1.Rare == TruthEnemyCharacter.RareString.Blue))
+                        {
+                            GroundOne.enemyName2 = enemyName2;
+                        }
+                    }
+                    // ２階初期パーティが２人の場合を考慮して以下の形式
+                    if (GroundOne.WE.AvailableThirdCharacter && enemyName3 != String.Empty)
+                    {
+                        if ((ec1.Rare == TruthEnemyCharacter.RareString.Black) ||
+                            (ec1.Rare == TruthEnemyCharacter.RareString.Blue))
+                        {
+                            GroundOne.enemyName3 = enemyName3;
+                        }
+                    }
+
+                    // ２階、力の部屋以降、ボスが２人以上を考慮して以下の形式
+                    if (enemyName2 != String.Empty)
+                    {
+                        if (ec1.Rare == TruthEnemyCharacter.RareString.Gold)
+                        {
+                            GroundOne.enemyName2 = enemyName2;
+                        }
+                    }
+                    if (enemyName3 != String.Empty)
+                    {
+                        if (ec1.Rare == TruthEnemyCharacter.RareString.Gold)
+                        {
+                            GroundOne.enemyName3 = enemyName3;
+                        }
+                    }
 
                     //be.WE = tempWE;
                     //be.StartPosition = FormStartPosition.CenterParent;
@@ -6283,9 +6280,6 @@ namespace DungeonPlayer
 
                     //be.ShowDialog();
                     //SceneMove.TBE = be;
-                    GroundOne.enemyName1 = enemyName;
-                    GroundOne.enemyName2 = enemyName2;
-                    GroundOne.enemyName3 = enemyName3;
                     SceneDimension.Go(Database.TruthDungeon, Database.TruthBattleEnemy);
                     endFlag = true;
                     //if (be.DialogResult == DialogResult.Retry)
