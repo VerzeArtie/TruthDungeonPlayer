@@ -58,6 +58,9 @@ namespace DungeonPlayer
         public Sprite[] imageSandglass;
         
         // GUI
+        public Text yesnoSystemMessage;
+        public GameObject groupYesnoSystemMessage;
+
         public GameObject popupInfo;
         public Text CurrentInfo;
         public Text BattleStart;
@@ -2027,16 +2030,9 @@ namespace DungeonPlayer
                 else
                 {
                     UpdateBattleText("全滅しました・・・もう一度この戦闘をやり直しますか？\r\n");
-                    // todo
-                    //yesno.ShowDialog();
-                    //if (yesno.DialogResult == DialogResult.Yes)
-                    //{
-                    //    GroundOne.BattleResult = GroundOne.battleResult.Retry;
-                    //}
-                    //else
-                    //{
-                        GroundOne.BattleResult = GroundOne.battleResult.Ignore;
-                    //}
+                    yesnoSystemMessage.text = "全滅しました・・・もう一度この戦闘をやり直しますか？";
+                    groupYesnoSystemMessage.SetActive(true);
+                    return; // scenebackさせない
                 }
             }
             else if (endFlag)
@@ -2068,7 +2064,7 @@ namespace DungeonPlayer
             }
             else
             {
-                UpdateBattleText("敵を倒した。\r\n");
+                UpdateBattleText("敵を倒した！　" + ec1.Exp + "の経験値を得た。\r\n");
                 System.Threading.Thread.Sleep(1000);
 
                 // 敵撃墜カウントを数える。
@@ -5625,8 +5621,20 @@ namespace DungeonPlayer
 
             //    txtBattleMessage.Update();
             //    System.Threading.Thread.Sleep(1000);
+            GroundOne.BattleResult = GroundOne.battleResult.Abort;
             SceneDimension.Back();
             //}
+        }
+
+        public void GameOverYes_Click()
+        {
+            GroundOne.BattleResult = GroundOne.battleResult.Retry;
+            SceneDimension.Back();
+        }
+        public void GameOverNo_Click()
+        {
+            GroundOne.BattleResult = GroundOne.battleResult.Ignore;
+            SceneDimension.Back();
         }
 
         public void OnMouseEnterImage(Button sender)

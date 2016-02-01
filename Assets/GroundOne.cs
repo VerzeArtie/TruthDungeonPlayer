@@ -65,14 +65,12 @@ namespace DungeonPlayer
 
         // TruthBattleEnemy
         public static battleResult BattleResult = battleResult.None;
-
-        // TruthSelectEquipment
-        public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
-
-        // TruthBattleEnemy
         public static string enemyName1 = string.Empty;
         public static string enemyName2 = string.Empty;
         public static string enemyName3 = string.Empty;
+
+        // TruthSelectEquipment
+        public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
 
         // TruthDungeon
         public static bool Player1Levelup = false;
@@ -135,11 +133,11 @@ namespace DungeonPlayer
             MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             // debug
-            MC.CurrentLife = 10;
+            MC.CurrentLife = 1;
             MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
-            MC.SubWeapon = new ItemBackPack(Database.POOR_HINSO_SHIELD);
-            MC.MainArmor = new ItemBackPack(Database.COMMON_FINE_ARMOR);
-            MC.Accessory = new ItemBackPack(Database.COMMON_RED_PENDANT);
+            MC.SubWeapon = null;
+            MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);
+            MC.Accessory = new ItemBackPack(Database.COMMON_BLUE_PENDANT);
             MC.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_PENDANT);
             MC.AddBackPack(new ItemBackPack(Database.RARE_TOOMI_BLUE_SUISYOU));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));

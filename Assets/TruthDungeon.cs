@@ -171,6 +171,13 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            // 戦闘をもう一度行う場合、即座に戦闘開始へ入る。
+            if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
+            {
+                this.nowEncountEnemy = true;
+                return;
+            }
+
             // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
             if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
             {
@@ -797,9 +804,6 @@ namespace DungeonPlayer
         // Update is called once per frame
         bool nowEncountEnemy = false;
         bool execEncountEnemy = false;
-        string enemyName = string.Empty;
-        string enemyName2 = string.Empty;
-        string enemyName3 = string.Empty;
         void Update()
         {
             if (this.nowEncountEnemy)
@@ -812,7 +816,7 @@ namespace DungeonPlayer
             else if (this.execEncountEnemy)
             {
                 this.execEncountEnemy = false;
-                EncountBattle(enemyName, enemyName2, enemyName3, false, false, false, false);
+                EncountBattle(false, false, false, false);
             }
             else
             {
@@ -2298,9 +2302,57 @@ namespace DungeonPlayer
                 }
             }
 
-            this.enemyName = enemyName;
-            this.enemyName2 = enemyName2;
-            this.enemyName3 = enemyName3;
+            // 敵２、敵３を生成するかどうかの判定用オブジェクトを生成
+            GameObject enemyObj1 = new GameObject("enemy1");
+            TruthEnemyCharacter ec1 = enemyObj1.AddComponent<TruthEnemyCharacter>();
+            ec1.Initialize(enemyName);
+
+            // 敵１はエントリー確定
+            GroundOne.enemyName1 = enemyName;
+
+            // １階初期パーティが１人の場合を考慮して以下の形式
+            if ((GroundOne.WE.AvailableSecondCharacter && enemyName2 != String.Empty) &&
+                (ec1.Rare == TruthEnemyCharacter.RareString.Black || ec1.Rare == TruthEnemyCharacter.RareString.Blue))
+            {
+                GroundOne.enemyName2 = enemyName2;
+            }
+            else
+            {
+                GroundOne.enemyName2 = String.Empty;
+            }
+
+            // ２階初期パーティが２人の場合を考慮して以下の形式
+            if ((GroundOne.WE.AvailableThirdCharacter && enemyName3 != String.Empty) &&
+                (ec1.Rare == TruthEnemyCharacter.RareString.Black) || (ec1.Rare == TruthEnemyCharacter.RareString.Blue))
+            {
+                GroundOne.enemyName3 = enemyName3;
+            }
+            else
+            {
+                GroundOne.enemyName3 = String.Empty;
+            }
+
+            // ２階、力の部屋以降、ボスが２人以上を考慮して以下の形式
+            if (enemyName2 != String.Empty && ec1.Rare == TruthEnemyCharacter.RareString.Gold)
+            {
+                GroundOne.enemyName2 = enemyName2;
+            }
+            else
+            {
+                GroundOne.enemyName2 = String.Empty;
+            }
+
+            if (enemyName3 != String.Empty && ec1.Rare == TruthEnemyCharacter.RareString.Gold)
+            {
+                GroundOne.enemyName3 = enemyName3;
+            }
+            else
+            {
+                GroundOne.enemyName3 = String.Empty;
+            }
+
+            Destroy(ec1);
+            
             this.nowEncountEnemy = true;
         }
 
@@ -6005,7 +6057,7 @@ namespace DungeonPlayer
             //this.BackColor = Color.Black; // [todo] 背景を黒色に変更する。
         }
 
-        private bool EncountBattle(string enemyName, string enemyName2, string enemyName3, bool duel, bool hiSpeed, bool final, bool lifecount)
+        private bool EncountBattle(bool duel, bool hiSpeed, bool final, bool lifecount)
         {
             CancelKeyDownMovement();
 
@@ -6015,14 +6067,14 @@ namespace DungeonPlayer
             while (!endFlag)
             {
                 System.Threading.Thread.Sleep(500);
-                TruthBattleEnemy be = new TruthBattleEnemy();
+                //TruthBattleEnemy be = new TruthBattleEnemy();
                 {
 
-                    MainCharacter tempMC = new MainCharacter();
-                    MainCharacter tempSC = new MainCharacter();
-                    MainCharacter tempTC = new MainCharacter();
-                    WorldEnvironment tempWE = new WorldEnvironment();
-                    TruthWorldEnvironment tempWE2 = new TruthWorldEnvironment();
+                    //MainCharacter tempMC = new MainCharacter();
+                    //MainCharacter tempSC = new MainCharacter();
+                    //MainCharacter tempTC = new MainCharacter();
+                    //WorldEnvironment tempWE = new WorldEnvironment();
+                    //TruthWorldEnvironment tempWE2 = new TruthWorldEnvironment();
 
                     //tempGroundOne.MC.MainArmor = this.GroundOne.MC.MainArmor;
                     //tempGroundOne.MC.SubWeapon = this.GroundOne.MC.SubWeapon;
@@ -6232,44 +6284,6 @@ namespace DungeonPlayer
                     //    }
                     //}
 
-                    // 敵１は必ずエントリー
-                    GroundOne.enemyName1 = enemyName;
-
-                    // １階初期パーティが１人の場合を考慮して以下の形式
-                    if (GroundOne.WE.AvailableSecondCharacter && enemyName2 != String.Empty)
-                    {
-                        if ((ec1.Rare == TruthEnemyCharacter.RareString.Black) ||
-                            (ec1.Rare == TruthEnemyCharacter.RareString.Blue))
-                        {
-                            GroundOne.enemyName2 = enemyName2;
-                        }
-                    }
-                    // ２階初期パーティが２人の場合を考慮して以下の形式
-                    if (GroundOne.WE.AvailableThirdCharacter && enemyName3 != String.Empty)
-                    {
-                        if ((ec1.Rare == TruthEnemyCharacter.RareString.Black) ||
-                            (ec1.Rare == TruthEnemyCharacter.RareString.Blue))
-                        {
-                            GroundOne.enemyName3 = enemyName3;
-                        }
-                    }
-
-                    // ２階、力の部屋以降、ボスが２人以上を考慮して以下の形式
-                    if (enemyName2 != String.Empty)
-                    {
-                        if (ec1.Rare == TruthEnemyCharacter.RareString.Gold)
-                        {
-                            GroundOne.enemyName2 = enemyName2;
-                        }
-                    }
-                    if (enemyName3 != String.Empty)
-                    {
-                        if (ec1.Rare == TruthEnemyCharacter.RareString.Gold)
-                        {
-                            GroundOne.enemyName3 = enemyName3;
-                        }
-                    }
-
                     //be.WE = tempWE;
                     //be.StartPosition = FormStartPosition.CenterParent;
                     //be.IgnoreApplicationDoEvent = true;
@@ -6280,6 +6294,7 @@ namespace DungeonPlayer
 
                     //be.ShowDialog();
                     //SceneMove.TBE = be;
+                    GroundOne.BattleResult = GroundOne.battleResult.None;
                     SceneDimension.Go(Database.TruthDungeon, Database.TruthBattleEnemy);
                     endFlag = true;
                     //if (be.DialogResult == DialogResult.Retry)
@@ -7285,7 +7300,10 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.EncountFlansis)
                 {
-                    bool result = EncountBattle(Database.ENEMY_BOSS_KARAMITUKU_FLANSIS, String.Empty, String.Empty, false, false, false, false);
+                    GroundOne.enemyName1 = Database.ENEMY_BOSS_KARAMITUKU_FLANSIS;
+                    GroundOne.enemyName2 = String.Empty;
+                    GroundOne.enemyName3 = String.Empty;
+                    bool result = EncountBattle(false, false, false, false);
                     // todo loadlevelになり、画面が戻ってきた時、本画面のロードで以下の処理を行う。
                     if (!result)
                     {
