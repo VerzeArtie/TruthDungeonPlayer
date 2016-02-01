@@ -174,46 +174,49 @@ namespace DungeonPlayer
             // 戦闘をもう一度行う場合、即座に戦闘開始へ入る。
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
             {
-                mainMessage.text = "アイン：敵と遭遇だ！";
-
                 CopyShadowToMain();
-                EncountBattle(false, false, false, false);
-                return;
+                this.ignoreCreateShadow = true;
+                this.nowEncountEnemy = true;
             }
-
-            // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
-            if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
+            else
             {
-                GroundOne.LevelUp = true;
-                GroundOne.UpPoint = GroundOne.Player1UpPoint;
-                GroundOne.CumultiveLvUpValue = GroundOne.Player1CumultiveLvUpValue;
-                GroundOne.Player1Levelup = false;
-                GroundOne.Player1UpPoint = 0;
-                GroundOne.Player1CumultiveLvUpValue = 0;
-                GroundOne.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
-                SceneDimension.Go(Database.TruthDungeon, Database.TruthStatusPlayer);
-            }
-            else if (GroundOne.Player2Levelup && GroundOne.WE.AvailableSecondCharacter)
-            {
-                GroundOne.LevelUp = true;
-                GroundOne.UpPoint = GroundOne.Player2UpPoint;
-                GroundOne.CumultiveLvUpValue = GroundOne.Player2CumultiveLvUpValue;
-                GroundOne.Player2Levelup = false;
-                GroundOne.Player2UpPoint = 0;
-                GroundOne.Player2CumultiveLvUpValue = 0;
-                GroundOne.CurrentStatusView = GroundOne.SC.PlayerStatusColor;
-                SceneDimension.Go(Database.TruthDungeon, Database.TruthStatusPlayer);
-            }
-            else if (GroundOne.Player3Levelup && GroundOne.WE.AvailableThirdCharacter)
-            {
-                GroundOne.LevelUp = true;
-                GroundOne.UpPoint = GroundOne.Player3UpPoint;
-                GroundOne.CumultiveLvUpValue = GroundOne.Player3CumultiveLvUpValue;
-                GroundOne.Player3Levelup = false;
-                GroundOne.Player3UpPoint = 0;
-                GroundOne.Player3CumultiveLvUpValue = 0;
-                GroundOne.CurrentStatusView = GroundOne.TC.PlayerStatusColor;
-                SceneDimension.Go(Database.TruthDungeon, Database.TruthStatusPlayer);
+                // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
+                if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
+                {
+                    GroundOne.LevelUp = true;
+                    GroundOne.UpPoint = GroundOne.Player1UpPoint;
+                    GroundOne.CumultiveLvUpValue = GroundOne.Player1CumultiveLvUpValue;
+                    GroundOne.Player1Levelup = false;
+                    GroundOne.Player1UpPoint = 0;
+                    GroundOne.Player1CumultiveLvUpValue = 0;
+                    GroundOne.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
+                    SceneDimension.Go(Database.TruthDungeon, Database.TruthStatusPlayer);
+                    return;
+                }
+                else if (GroundOne.Player2Levelup && GroundOne.WE.AvailableSecondCharacter)
+                {
+                    GroundOne.LevelUp = true;
+                    GroundOne.UpPoint = GroundOne.Player2UpPoint;
+                    GroundOne.CumultiveLvUpValue = GroundOne.Player2CumultiveLvUpValue;
+                    GroundOne.Player2Levelup = false;
+                    GroundOne.Player2UpPoint = 0;
+                    GroundOne.Player2CumultiveLvUpValue = 0;
+                    GroundOne.CurrentStatusView = GroundOne.SC.PlayerStatusColor;
+                    SceneDimension.Go(Database.TruthDungeon, Database.TruthStatusPlayer);
+                    return;
+                }
+                else if (GroundOne.Player3Levelup && GroundOne.WE.AvailableThirdCharacter)
+                {
+                    GroundOne.LevelUp = true;
+                    GroundOne.UpPoint = GroundOne.Player3UpPoint;
+                    GroundOne.CumultiveLvUpValue = GroundOne.Player3CumultiveLvUpValue;
+                    GroundOne.Player3Levelup = false;
+                    GroundOne.Player3UpPoint = 0;
+                    GroundOne.Player3CumultiveLvUpValue = 0;
+                    GroundOne.CurrentStatusView = GroundOne.TC.PlayerStatusColor;
+                    SceneDimension.Go(Database.TruthDungeon, Database.TruthStatusPlayer);
+                    return;
+                }
             }
 
             tileInfo = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
@@ -807,6 +810,7 @@ namespace DungeonPlayer
         // Update is called once per frame
         bool nowEncountEnemy = false;
         bool execEncountEnemy = false;
+        bool ignoreCreateShadow = false;
         void Update()
         {
             if (this.nowEncountEnemy)
@@ -819,7 +823,10 @@ namespace DungeonPlayer
             else if (this.execEncountEnemy)
             {
                 this.execEncountEnemy = false;
-                CreateShadowData();
+                if (this.ignoreCreateShadow == false)
+                {
+                    CreateShadowData();
+                }
                 EncountBattle(false, false, false, false);
             }
             else
