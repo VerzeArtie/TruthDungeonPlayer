@@ -6732,6 +6732,11 @@ namespace DungeonPlayer
             return true;
         }
 
+        public void DeleteBackPackAll()
+        {
+            this.backpack = null;
+            this.backpack = new ItemBackPack[Database.MAX_BACKPACK_SIZE]; // 後編編集
+        }
         /// <summary>
         /// バックパックに対象のアイテムが含まれている数を示します。
         /// </summary>
@@ -6756,6 +6761,7 @@ namespace DungeonPlayer
         public void ReplaceBackPack(ItemBackPack[] item)
         {
             this.backpack = null;
+            this.backpack = new ItemBackPack[Database.MAX_BACKPACK_SIZE]; // 後編編集
             this.backpack = item;
         }
 

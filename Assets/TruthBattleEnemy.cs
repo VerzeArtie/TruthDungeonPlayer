@@ -238,6 +238,7 @@ namespace DungeonPlayer
                 SetupBuff(pbBuffEnemy3, PanelBuffEnemy3, ii);
             }
             GameObject baseObj = new GameObject("object");
+            Debug.Log("mc life: " + GroundOne.MC.CurrentLife);
             GroundOne.MC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.MC.CurrentInstantPoint = 0;
             GroundOne.MC.MainFaceArrow = this.player1Arrow;
