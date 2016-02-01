@@ -84,6 +84,9 @@ namespace DungeonPlayer
         public static bool Player3Levelup = false;
         public static int Player3UpPoint = 0;
         public static int Player3CumultiveLvUpValue = 0;
+        public static MainCharacter ShadowPlayer1 = null;
+        public static MainCharacter ShadowPlayer2 = null;
+        public static MainCharacter ShadowPlayer3 = null;
 
         // TruthStatusPlayer
         public static Color CurrentStatusView = new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B);
