@@ -135,7 +135,7 @@ namespace DungeonPlayer
             MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             // debug
-            MC.CurrentLife = 1;
+            MC.CurrentLife = 3;
             MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);
@@ -164,7 +164,7 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
-            MC.FreshHeal = false;
+            MC.FreshHeal = true;
             MC.Protection = true;
             MC.HolyShock = true;
             MC.SaintPower = true;

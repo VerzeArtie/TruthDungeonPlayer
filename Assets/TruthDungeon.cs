@@ -174,8 +174,10 @@ namespace DungeonPlayer
             // 戦闘をもう一度行う場合、即座に戦闘開始へ入る。
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
             {
+                mainMessage.text = "アイン：敵と遭遇だ！";
+
                 CopyShadowToMain();
-                this.nowEncountEnemy = true;
+                EncountBattle(false, false, false, false);
                 return;
             }
 
@@ -1800,16 +1802,15 @@ namespace DungeonPlayer
 
             System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
             int resultValue = rd.Next(1, 101);
-            Debug.Log("R:" + resultValue.ToString());
             if (GroundOne.WE.CompleteSlayBoss5) resultValue = 100;
 
             if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
             {
-                stepCounter += 1;
+                stepCounter += 3;
             }
             else
             {
-                stepCounter += 3;
+                stepCounter += 10;
             }
             int encountBorder = 0;
             if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
@@ -1828,6 +1829,7 @@ namespace DungeonPlayer
                 encountBorder = Database.ENCOUNT_ENEMY + (int)(stepCounter / 5);
             }
 
+            Debug.Log("stepcount: " + this.stepCounter + " encountBorder: " + encountBorder.ToString() + " R:" + resultValue.ToString());
             if (resultValue > encountBorder)
             {
                 return;
@@ -6063,10 +6065,6 @@ namespace DungeonPlayer
         {
             Debug.Log("CopyShadowToMain start");
 
-            GroundOne.MC = GroundOne.ShadowMC;
-            GroundOne.SC = GroundOne.ShadowSC;
-            GroundOne.TC = GroundOne.ShadowTC;
-
             GroundOne.MC.MainWeapon = GroundOne.ShadowMC.MainArmor;
             GroundOne.MC.SubWeapon = GroundOne.ShadowMC.SubWeapon;
             GroundOne.MC.MainArmor = GroundOne.ShadowMC.MainArmor;
@@ -6271,9 +6269,14 @@ namespace DungeonPlayer
         }
         private void CreateShadowData()
         {
-            GroundOne.ShadowMC = GroundOne.MC;
-            GroundOne.ShadowSC = GroundOne.SC;
-            GroundOne.ShadowTC = GroundOne.TC;
+            GameObject shadowObjMC = new GameObject();
+            GroundOne.ShadowMC = shadowObjMC.AddComponent<MainCharacter>();
+
+            GameObject shadowObjSC = new GameObject();
+            GroundOne.ShadowSC = shadowObjSC.AddComponent<MainCharacter>();
+
+            GameObject shadowObjTC = new GameObject();
+            GroundOne.ShadowTC = shadowObjTC.AddComponent<MainCharacter>();
 
             GroundOne.ShadowMC.MainWeapon = GroundOne.MC.MainArmor;
             GroundOne.ShadowMC.SubWeapon = GroundOne.MC.SubWeapon;
@@ -6305,6 +6308,7 @@ namespace DungeonPlayer
                     try
                     {
                         pi.SetValue(GroundOne.ShadowMC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.MC, null)), null);
+                        Debug.Log("shadowMC:Life: " + GroundOne.ShadowMC.CurrentLife.ToString());
                         pi.SetValue(GroundOne.ShadowSC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.SC, null)), null);
                         pi.SetValue(GroundOne.ShadowTC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.TC, null)), null);
                     }
@@ -6449,9 +6453,6 @@ namespace DungeonPlayer
                     //be.ShowDialog();
                     //SceneMove.TBE = be;
                     GroundOne.BattleResult = GroundOne.battleResult.None;
-                    GroundOne.ShadowMC = GroundOne.MC;
-                    GroundOne.ShadowSC = GroundOne.SC;
-                    GroundOne.ShadowTC = GroundOne.TC;
                     SceneDimension.Go(Database.TruthDungeon, Database.TruthBattleEnemy);
                     endFlag = true;
                     //if (be.DialogResult == DialogResult.Retry)
