@@ -212,7 +212,7 @@ namespace DungeonPlayer
                 //}
 
                 // DUELモードは現実世界でDUEL戦闘となった時に再戦を判断させたいため、一旦ここでfalse返しとする。
-                if (GroundOne.DuelMode)
+                if (GroundOne.Battle_DuelMode)
                 {
                     // todo 続きのメッセージを実装先へと繋いでください。
                 }
@@ -6854,7 +6854,7 @@ namespace DungeonPlayer
 
             System.Threading.Thread.Sleep(500);
 
-            GroundOne.DuelMode = duel;
+            GroundOne.Battle_DuelMode = duel;
             GroundOne.HiSpeedAnimation = hiSpeed;
             GroundOne.FinalBattle = final;
             GroundOne.LifeCountBattle = lifecount;

@@ -64,7 +64,7 @@ namespace DungeonPlayer
         public static string titleName = "天下一品　ガンツの武具店";
 
         // TruthBattleEnemy
-        public static bool DuelMode = false; // DUELかどうか
+        public static bool Battle_DuelMode = false; // DUELかどうか
         public static bool HiSpeedAnimation = false; // スタック合戦をハイスピードにするかどうか
         public static bool FinalBattle = false; // 最終戦かどうか
         public static bool LifeCountBattle = false; // 最終戦（ライフカウント方式）かどうか
