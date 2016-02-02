@@ -1357,7 +1357,14 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
-            SceneDimension.Back();
+            if (GroundOne.AfterBacktoTitle)
+            {
+                SceneDimension.JumpToTitle();
+            }
+            else
+            {
+                SceneDimension.Back();
+            }
         }
              
     }

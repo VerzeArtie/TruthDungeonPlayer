@@ -106,6 +106,7 @@ namespace DungeonPlayer
         public static string playerName = String.Empty;
 
         // SaveLoad
+        public static bool AfterBacktoTitle = false; // タイトル戻り直前のセーブモード
         public static bool SaveMode = false; // false:Load true:Save
 
         // TruthHomeTown

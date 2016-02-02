@@ -2,29 +2,38 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-public static class SceneDimension
+namespace DungeonPlayer
 {
-    public static List<string> playbackScene = new List<string>();
-    
-    public static void Go(string src, string dst)
+    public static class SceneDimension
     {
-        playbackScene.Add(src);
-        Application.LoadLevel(dst);
-    }
-    
-    public static void Replace(string dst)
-    {
-        Application.LoadLevel(dst);
-    }
-    public static void Back()
-    {
-        if (playbackScene.Count <= 0)
+        public static List<string> playbackScene = new List<string>();
+
+        public static void Go(string src, string dst)
         {
-            return;
+            playbackScene.Add(src);
+            Application.LoadLevel(dst);
         }
-        
-        string backScene = playbackScene[playbackScene.Count-1];
-        playbackScene.Remove(backScene);
-        Application.LoadLevel(backScene);        
+
+        public static void Replace(string dst)
+        {
+            Application.LoadLevel(dst);
+        }
+        public static void Back()
+        {
+            if (playbackScene.Count <= 0)
+            {
+                return;
+            }
+
+            string backScene = playbackScene[playbackScene.Count - 1];
+            playbackScene.Remove(backScene);
+            Application.LoadLevel(backScene);
+        }
+
+        public static void JumpToTitle()
+        {
+            playbackScene.Clear();
+            Application.LoadLevel(Database.Title);
+        }
     }
 }

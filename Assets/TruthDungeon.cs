@@ -40,6 +40,8 @@ namespace DungeonPlayer
         public Text currentManaValue1;
         public Text currentManaValue2;
         public Text currentManaValue3;
+        public Text yesnoSystemMessage;
+        public GameObject groupYesnoSystemMessage;
 
         // initialize data list
         List<GameObject> objList = new List<GameObject>();
@@ -166,6 +168,9 @@ namespace DungeonPlayer
         bool[] blueWallRight = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
         bool[] blueWallBottom = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
 
+        private string SAVE_REQUEST_1 = "タイトルへ戻ります。今までのデータをセーブしますか？";
+        private string SAVE_REQUEST_2 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
+
         // Use this for initialization
         public override void Start()
         {
@@ -205,8 +210,9 @@ namespace DungeonPlayer
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
                 }
-                //if (ec1.Name == Database.ENEMY_LAST_VERZE_ARTIE ||
-                //    ec1.Name == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                // after delete
+                //if (GroundOne.enemyName1.Name == Database.ENEMY_LAST_VERZE_ARTIE ||
+                //    GroundOne.enemyName1.Name == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
                 //{
                 //    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN);
                 //}
@@ -217,7 +223,9 @@ namespace DungeonPlayer
                     // todo 続きのメッセージを実装先へと繋いでください。
                 }
 
-                mainMessage.text = "タイトルへ戻ります。今までのデータをセーブしますか？";
+                yesnoSystemMessage.text = SAVE_REQUEST_1;
+                groupYesnoSystemMessage.SetActive(true);
+
                 // todo ( system message setactive true )
             }
             // 戦闘に勝利した場合（通常ルート）
@@ -7182,6 +7190,25 @@ namespace DungeonPlayer
         }
 
         private DungeonPlayer.MessagePack.ActionEvent currentEvent;
+
+        public void Yes_Click()
+        {
+            GroundOne.SaveMode = true;
+            GroundOne.AfterBacktoTitle = true;
+            SceneDimension.Go(Database.TruthDungeon, Database.SaveLoad);
+        }
+
+        public void No_Click()
+        {
+            if (yesnoSystemMessage.text == SAVE_REQUEST_1)
+            {
+                yesnoSystemMessage.text = SAVE_REQUEST_2;
+            }
+            else
+            {
+                SceneDimension.JumpToTitle();
+            }
+        }
 
         public void tapYes()
         {
