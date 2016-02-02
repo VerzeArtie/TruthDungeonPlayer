@@ -216,8 +216,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: GameOverNo_Click
+      - m_Target: {fileID: 1408778863}
+        m_MethodName: No_Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4181,8 +4181,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: GameOverYes_Click
+      - m_Target: {fileID: 1408778863}
+        m_MethodName: Yes_Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

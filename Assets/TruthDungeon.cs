@@ -222,9 +222,11 @@ namespace DungeonPlayer
                 {
                     // todo 続きのメッセージを実装先へと繋いでください。
                 }
-
-                yesnoSystemMessage.text = SAVE_REQUEST_1;
-                groupYesnoSystemMessage.SetActive(true);
+                else
+                {
+                    yesnoSystemMessage.text = SAVE_REQUEST_1;
+                    groupYesnoSystemMessage.SetActive(true);
+                }
 
                 // todo ( system message setactive true )
             }

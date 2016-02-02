@@ -11,6 +11,8 @@ namespace DungeonPlayer
     public class SaveLoad : MotherForm
     {
         public Camera cam;
+        public GameObject back_SystemMessage;
+        public Text systemMessage;
         public Text titleLabel;
         public Button[] back_button;
         public Text[] buttonText;
@@ -20,6 +22,9 @@ namespace DungeonPlayer
         private string archiveAreaString = @"到達階層：";
         private string archiveAreaString2 = @"階";
         private string archiveAreaString3 = @"制覇";
+
+        private bool nowAutoKill = false;
+        private int autoKillTimer = 0;
 
         // Use this for initialization
         public override void Start()
@@ -127,7 +132,18 @@ namespace DungeonPlayer
         // Update is called once per frame
         void Update()
         {
+            if (this.nowAutoKill)
+            {
+                //Debug.Log("autokilltimer: " + autoKillTimer.ToString());
 
+                this.autoKillTimer++;
+                if (this.autoKillTimer > 200)
+                {
+                    this.nowAutoKill = false;
+                    this.autoKillTimer = 0;
+                    SceneDimension.Back();
+                }
+            }
         }
 
         public void tapButton(Text sender)
@@ -1341,13 +1357,9 @@ namespace DungeonPlayer
             if (forceLoad == false)
             {
                 // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.Message = "ゲームデータの読み込みが完了しました。";
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.AutoKillTimer = 1500;
-                //    md.ShowDialog();
-                //}
+                this.systemMessage.text = "ゲームデータの読み込みが完了しました。";
+                this.back_SystemMessage.SetActive(true);
+                this.nowAutoKill = true;
             }
 
             //this.DialogResult = DialogResult.OK; // todo [ロード完了したら、画面再起動してホームタウン／ダンジョンなどのジャンプ先を決めなければならない] unity

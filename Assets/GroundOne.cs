@@ -30,11 +30,12 @@ namespace DungeonPlayer
         public static List<string> playbackMessage = new List<string>(); // プレイバックメッセージテキスト
         public static List<Sprite> resourceList = null; // リソース画像データ
 
-        public static GameObject objMC = new GameObject("objMC");
-        public static GameObject objSC = new GameObject("objSC");
-        public static GameObject objTC = new GameObject("objTC");
-        public static GameObject objWE = new GameObject("objWE");
-        public static GameObject objWE2 = new GameObject("objWE2");
+        private static GameObject objMC = new GameObject("objMC");
+        private static GameObject objSC = new GameObject("objSC");
+        private static GameObject objTC = new GameObject("objTC");
+        private static GameObject objWE = new GameObject("objWE");
+        private static GameObject objWE2 = new GameObject("objWE2");
+
         public static MainCharacter MC = null;
         public static MainCharacter SC = null;
         public static MainCharacter TC = null;
