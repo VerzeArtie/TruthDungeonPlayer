@@ -48,11 +48,11 @@ namespace DungeonPlayer
         // basic parameter
         public string FirstName = string.Empty;
         protected string fullName = string.Empty;
-        protected int baseStrength = 5;
-        protected int baseAgility = 3;
-        protected int baseIntelligence = 2;
-        protected int baseStamina = 4;
-        protected int baseMind = 3;
+        protected int baseStrength = 1;
+        protected int baseAgility = 1;
+        protected int baseIntelligence = 1;
+        protected int baseStamina = 1;
+        protected int baseMind = 1;
 
         protected int baseResistFire = 0; // 後編追加
         protected int baseResistIce = 0; // 後編追加
