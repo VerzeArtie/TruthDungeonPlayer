@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace DungeonPlayer
 {
@@ -698,12 +699,6 @@ namespace DungeonPlayer
         {
             get { return reserveBattleCommand; }
             set { reserveBattleCommand = value; }
-        }
-        protected bool alreadyPlayArchetype = false; // 後編追加
-        public bool AlreadyPlayArchetype
-        {
-            get { return alreadyPlayArchetype; }
-            set { alreadyPlayArchetype = value; }
         }
         // 動
         // 静
@@ -2639,6 +2634,59 @@ namespace DungeonPlayer
         public MainCharacter Target = null; // 敵ターゲット
         public MainCharacter Target2 = null; // 味方ターゲット
 
+        // Genesis / StanceOfDouble
+        protected PlayerAction beforePA = PlayerAction.None;
+        protected string beforeUsingItem = string.Empty;
+        protected string beforeSkillName = string.Empty;
+        protected string beforeSpellName = string.Empty;
+        protected string beforeArchetypeName = string.Empty; // 後編追加
+        protected MainCharacter beforeTarget = null;
+        protected MainCharacter beforeTarget2 = null; // 後編追加
+        protected bool alreadyPlayArchetype = false; // 後編追加
+
+        public PlayerAction BeforePA
+        {
+            get { return beforePA; }
+            set { beforePA = value; } // 後編追加
+        }
+        public string BeforeUsingItem
+        {
+            get { return beforeUsingItem; }
+            set { beforeUsingItem = value; } // 後編追加
+        }
+        public string BeforeSkillName
+        {
+            get { return beforeSkillName; }
+            set { beforeSkillName = value; } // 後編追加
+        }
+        public string BeforeSpellName
+        {
+            get { return beforeSpellName; }
+            set { beforeSpellName = value; } // 後編追加
+        }
+        // s 後編追加
+        public string BeforeArchetypeName
+        {
+            get { return beforeArchetypeName; }
+            set { beforeArchetypeName = value; }
+        }
+        // e 後編追加
+        public MainCharacter BeforeTarget
+        {
+            get { return beforeTarget; }
+            set { beforeTarget = value; }
+        }
+        // s 後編追加
+        public MainCharacter BeforeTarget2
+        {
+            get { return beforeTarget2; }
+            set { beforeTarget2 = value; }
+        }
+        public bool AlreadyPlayArchetype
+        {
+            get { return alreadyPlayArchetype; }
+            set { alreadyPlayArchetype = value; }
+        }
 
         public void EnableGUI()
         {
@@ -9326,6 +9374,42 @@ namespace DungeonPlayer
                 }
             }
         }
+
+        public void UpdateGenesisCommand(PlayerAction curPA, string spell, string skill, string item, string arche)
+        {
+            this.beforePA = curPA;
+            if (this.beforePA == PlayerAction.UseSpell)
+            {
+                this.beforeSpellName = spell;
+                this.beforeSkillName = string.Empty;
+                this.beforeUsingItem = string.Empty;
+                this.beforeArchetypeName = string.Empty;
+            }
+            if (this.beforePA == PlayerAction.UseSkill)
+            {
+                this.beforeSpellName = string.Empty;
+                this.beforeSkillName = skill;
+                this.beforeUsingItem = string.Empty;
+                this.beforeArchetypeName = string.Empty;
+            }
+            if (this.beforePA == PlayerAction.UseItem)
+            {
+                this.beforeSpellName = string.Empty;
+                this.beforeSkillName = string.Empty;
+                this.beforeUsingItem = item;
+                this.beforeArchetypeName = string.Empty;
+            }
+            if (this.beforePA == PlayerAction.Archetype)
+            {
+                this.beforeSpellName = string.Empty;
+                this.beforeSkillName = string.Empty;
+                this.beforeUsingItem = string.Empty;
+                this.beforeArchetypeName = arche;
+            }
+            this.beforeTarget = Target;
+            this.beforeTarget2 = Target2; // 後編追加
+            // this.alreadyPlayArchetype = false; [元核発動フラグは一日立たないと戻らない]
+        }
         // [警告]：BattleEnemy_Load、MainCharacter:CleanUpEffect, MainCharacter:CleanUpBattleEndの展開ミスが増え続けています。
         public void CleanUpEffect()
         {
@@ -9659,6 +9743,22 @@ namespace DungeonPlayer
 
         internal void CleanUpBattleEnd(ref string brokenName)
         {
+            this.beforePA = PlayerAction.None;
+            this.beforeUsingItem = String.Empty;
+            this.beforeSkillName = String.Empty;
+            this.beforeSpellName = String.Empty;
+            this.beforeArchetypeName = String.Empty; // 後編追加
+            this.beforeTarget = null;
+            this.beforeTarget2 = null; // 後編追加
+            // this.alreadyPlayArchetype = false; [元核発動フラグは一日立たないと戻らない]
+            PA = PlayerAction.None;
+            CurrentUsingItem = String.Empty;
+            CurrentSkillName = String.Empty;
+            CurrentSpellName = String.Empty;
+            CurrentArchetypeName = String.Empty; // 後編追加
+            Target = null;
+            Target2 = null; // 後編追加
+
             // todo
         }
 

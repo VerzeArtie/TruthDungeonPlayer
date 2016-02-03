@@ -6568,8 +6568,6 @@ namespace DungeonPlayer
                 {
                     try
                     {
-                        Debug.Log(pi.Name + " " + (type.GetProperty(pi.Name).GetValue(GroundOne.ShadowMC, null)));
-
                         pi.SetValue(GroundOne.MC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowMC, null)), null);
                         pi.SetValue(GroundOne.SC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowSC, null)), null);
                         pi.SetValue(GroundOne.TC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowTC, null)), null);
@@ -6733,7 +6731,6 @@ namespace DungeonPlayer
                     try
                     {
                         pi.SetValue(GroundOne.ShadowMC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.MC, null)), null);
-                        Debug.Log("shadowMC:Life: " + GroundOne.ShadowMC.CurrentLife.ToString());
                         pi.SetValue(GroundOne.ShadowSC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.SC, null)), null);
                         pi.SetValue(GroundOne.ShadowTC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.TC, null)), null);
                     }

@@ -141,6 +141,7 @@ namespace DungeonPlayer
         {
             Debug.Log(PA.ToString() + " " + CurrentSpellName + " " + CurrentSkillName + " " + CurrentUsingItem);
             string fileExt = ".bmp";
+            double effectValue = 1.0F;
             // todo
             // 行動の成功・失敗を問わず、アクションコマンド自体は記憶する。
             //if ((PA == MainCharacter.PlayerAction.UseSpell && CurrentSpellName == Database.GENESIS) ||
@@ -945,1196 +946,1153 @@ namespace DungeonPlayer
                 //#endregion
 
                     // todo
-            //    #region "敵専用スキル"
-            //    case MainCharacter.PlayerAction.SpecialSkill:
-            //        if (!player.Target.Dead)
-            //        {
-            //            switch (player.Name)
-            //            {
-            //                // 「警告」抽象化していくべきではないだろうか？
-            //                #region "１階の敵"
-            //                case Database.ENEMY_KOUKAKU_WURM:
-            //                    UpdateBattleText(player.Name + "は硬い甲殻部分を丸めて突進してきた！\r\n");
-            //                    PlayerNormalAttack(player, target, 2.0f, false, true);
-            //                    break;
-
-            //                case Database.ENEMY_HIYOWA_BEATLE:
-            //                    effectValue = 4.0F;
-            //                    UpdateBattleText(player.Name + "は尖った角を掲げ上げた！ 【力】" + effectValue.ToString() + "上昇\r\n");
-            //                    player.CurrentStrengthUp = Database.INFINITY;
-            //                    player.CurrentStrengthUpValue = (int)effectValue;
-            //                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
-            //                    break;
-
-            //                case Database.ENEMY_GREEN_CHILD:
-            //                    UpdateBattleText(player.Name + "はグリーン・スプラッシュを唱えた！\r\n");
-            //                    PlayerMagicAttack(player, target, 0, 2.0f);
-            //                    break;
-
-            //                case Database.ENEMY_MANDRAGORA:
-            //                    UpdateBattleText(player.Name + "は奇妙な悲鳴を上げてきた！\r\n");
-            //                    PlayerMagicAttack(player, target, 0, 3.0f);
-            //                    break;
-
-            //                case Database.ENEMY_RED_HOPPER:
-            //                    UpdateBattleText(player.Name + "の群れは一斉に攻撃を仕掛けてきた！\r\n");
-            //                    PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
-            //                    PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
-            //                    PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
-            //                    PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
-            //                    PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
-            //                    break;
-
-            //                case Database.ENEMY_EARTH_SPIDER:
-            //                    UpdateBattleText(player.Name + "は蜘蛛の糸を絡み付かせてきた！\r\n");
-            //                    NowSlow(player, target, 2);
-            //                    break;
-
-            //                case Database.ENEMY_ALRAUNE:
-            //                    if (player.ActionLabel.Text == "怪しげな花弁")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は怪しげな花弁をかざしてきた！\r\n");
-            //                        System.Threading.Thread.Sleep(500);
-            //                        NowTemptation(player, target, 3);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "猛毒の花粉")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は猛毒の花粉をまき散らしてきた！\r\n");
-            //                        System.Threading.Thread.Sleep(500);
-            //                        NowPoison(player, target, 4, false);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_POISON_MARY:
-            //                    if (player.ActionLabel.Text == "毒胞子")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は猛毒の花粉をまき散らしてきた！\r\n");
-            //                        System.Threading.Thread.Sleep(500);
-            //                        NowPoison(player, target, 4, false);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "幻覚胞子")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は幻覚胞子を飛ばしてきた！\r\n");
-            //                        System.Threading.Thread.Sleep(500);
-            //                        NowBlind(player, target, 4);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_SPEEDY_TAKA:
-            //                    UpdateBattleText(player.Name + "は２回連続で攻撃を繰り出してきた！\r\n");
-            //                    PlayerNormalAttack(player, target, 0, false, true);
-            //                    System.Threading.Thread.Sleep(100);
-            //                    PlayerNormalAttack(player, target, 0, false, true);
-            //                    System.Threading.Thread.Sleep(100);
-            //                    break;
-            //                case Database.ENEMY_ZASSYOKU_RABBIT:
-            //                    if (player.ActionLabel.Text == Database.BUFFUP_STRENGTH)
-            //                    {
-            //                        effectValue = 30.0F;
-            //                        UpdateBattleText(player.Name + "は体全体を奮い立たせた！ 【力】" + effectValue.ToString() + "上昇\r\n");
-            //                        player.CurrentStrengthUp = Database.INFINITY;
-            //                        player.CurrentStrengthUpValue = (int)effectValue;
-            //                        player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
-            //                    }
-            //                    else
-            //                    {
-            //                        UpdateBattleText(player.Name + "は勢い良く突進してきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 3.0f, false, true);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_WONDER_SEED:
-            //                    if (player.ActionLabel.Text == "棘殻ローリング")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は棘のある外殻を丸めて体当たりしてきた！\r\n");
-            //                        if (mc.Dead == false)
-            //                        {
-            //                            PlayerNormalAttack(player, mc, 0, false, true);
-            //                            System.Threading.Thread.Sleep(100);
-            //                        }
-            //                        if (sc != null)
-            //                        {
-            //                            if (sc.Dead == false)
-            //                            {
-            //                                PlayerNormalAttack(player, sc, 0, false, true);
-            //                                System.Threading.Thread.Sleep(100);
-            //                            }
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ニードル・スピア")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はニードル・スピアを放ってきた！\r\n");
-            //                        if (PlayerNormalAttack(player, target, 0, false, true))
-            //                        {
-            //                            NowSlow(player, target, 2);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "連続攻撃")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は２回連続で攻撃を繰り出してきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 0, false, true);
-            //                        System.Threading.Thread.Sleep(100);
-            //                        PlayerNormalAttack(player, target, 0, false, true);
-            //                        System.Threading.Thread.Sleep(100);
-            //                    }
-            //                    break;
-            //                case Database.ENEMY_FLANSIS_KNIGHT:
-            //                    if (player.ActionLabel.Text == "なぎ払い")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は細長い蔦槍を一気に横になぎ払ってきた！\r\n");
-            //                        if (mc.Dead == false)
-            //                        {
-            //                            PlayerNormalAttack(player, mc, 0, false, true);
-            //                            System.Threading.Thread.Sleep(100);
-            //                        }
-            //                        if (sc != null)
-            //                        {
-            //                            if (sc.Dead == false)
-            //                            {
-            //                                PlayerNormalAttack(player, sc, 0, false, true);
-            //                                System.Threading.Thread.Sleep(100);
-            //                            }
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ファイア・ランス")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は炎を燈した蔦槍を投げつけてきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 0, false, true);
-            //                        System.Threading.Thread.Sleep(100);
-            //                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
-            //                        AbstractMagicDamage(player, target, 0, ref damage, 0, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-            //                        System.Threading.Thread.Sleep(100);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_SHOTGUN_HYUI:
-            //                    if (player.ActionLabel.Text == "ヒューイ弾丸")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は高速の弾丸を撒き散らしてきた！\r\n");
-
-            //                        for (int ii = 0; ii < 5; ii++)
-            //                        {
-            //                            int tempRandom = AP.Math.RandomInteger(2);
-            //                            if (tempRandom == 0)
-            //                            {
-            //                                PlayerNormalAttack(player, mc, 0, false, true);
-            //                            }
-            //                            else
-            //                            {
-            //                                PlayerNormalAttack(player, sc, 0, false, true);
-            //                            }
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ホウセンの種")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はホウセンの種を周囲へ撒き散らした！\r\n");
-            //                        if (mc.Dead == false)
-            //                        {
-            //                            if (PlayerNormalAttack(player, mc, 0, false, true))
-            //                            {
-            //                                NowSlow(player, mc, 2);
-            //                            }
-            //                            System.Threading.Thread.Sleep(100);
-            //                        }
-            //                        if (sc != null)
-            //                        {
-            //                            if (sc.Dead == false)
-            //                            {
-            //                                if (PlayerNormalAttack(player, sc, 0, false, true))
-            //                                {
-            //                                    NowSlow(player, sc, 2);
-            //                                }
-            //                                System.Threading.Thread.Sleep(100);
-            //                            }
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == Database.BUFFUP_STRENGTH)
-            //                    {
-            //                        effectValue = 30.0F;
-            //                        UpdateBattleText(player.Name + "は自己発芽を活性させ始めた！ 【力】" + effectValue.ToString() + "上昇\r\n");
-            //                        player.CurrentStrengthUp = Database.INFINITY;
-            //                        player.CurrentStrengthUpValue = (int)effectValue;
-            //                        player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_BRILLIANT_BUTTERFLY:
-            //                    UpdateBattleText(player.Name + "はフラッシュ・ウィンドを唱えた！\r\n");
-            //                    PlayerMagicAttack(player, target, 0, 2.0f);
-            //                    break;
-            //                case Database.ENEMY_WAR_WOLF:
-            //                    UpdateBattleText(player.Name + "は鋭い勢いで突進してきた！\r\n");
-            //                    PlayerNormalAttack(player, target, 3.0f, false, true);
-            //                    break;
-
-            //                case Database.ENEMY_BLOOD_MOSS:
-            //                    UpdateBattleText(player.Name + "は赤い胞子をばら撒いてきた！\r\n");
-            //                    if (mc.Dead == false)
-            //                    {
-            //                        PlayerNormalAttack(player, mc, 0, false, true);
-            //                        System.Threading.Thread.Sleep(100);
-            //                    }
-            //                    if (sc != null)
-            //                    {
-            //                        if (sc.Dead == false)
-            //                        {
-            //                            PlayerNormalAttack(player, sc, 0, false, true);
-            //                            System.Threading.Thread.Sleep(100);
-            //                        }
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_MOSSGREEN_DADDY:
-            //                    UpdateBattleText(player.Name + "は根の蔦を地上から一気に仕掛けてきた！\r\n");
-            //                    if (mc.Dead == false)
-            //                    {
-            //                        if (PlayerNormalAttack(player, mc, 0, false, true))
-            //                        {
-            //                            NowSlow(player, mc, 2);
-            //                        }
-            //                        System.Threading.Thread.Sleep(100);
-            //                    }
-            //                    if (sc != null)
-            //                    {
-            //                        if (sc.Dead == false)
-            //                        {
-            //                            if (PlayerNormalAttack(player, sc, 0, false, true))
-            //                            {
-            //                                NowSlow(player, sc, 2);
-            //                            }
-            //                            System.Threading.Thread.Sleep(100);
-            //                        }
-            //                    }
-
-            //                    break;
-
-            //                case Database.ENEMY_BOSS_KARAMITUKU_FLANSIS:
-            //                    if (player.StackCommandString == "キル・スピニングランサー")
-            //                    {
-            //                        ((TruthEnemyCharacter)player).BossBeforeStay = false;
-            //                        UpdateBattleText(player.Name + "は巨大なイバラの槍を形成し始めた！\r\n");
-            //                        UpdateBattleText(player.Name + ":ッシャアアアァァァ！！！\r\n");
-            //                        System.Threading.Thread.Sleep(500);
-            //                        UpdateBattleText(ec1.Name + "「奥義　キル・スピニングランサー」発動！！\r\n");
-            //                        System.Threading.Thread.Sleep(500);
-            //                        double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
-            //                        PlayerNormalAttack(player, target, 8.0f, 0, false, true, 0, 0, string.Empty, -1, true, CriticalType.Random);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "絡み蔦")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は絡み蔦を忍ばせてきた！！\r\n");
-            //                        if (mc.Dead == false)
-            //                        {
-            //                            if (PlayerNormalAttack(player, mc, 0, false, true))
-            //                            {
-            //                                NowSlow(player, mc, 3);
-            //                            }
-            //                        }
-            //                        if (sc != null)
-            //                        {
-            //                            if (sc.Dead == false)
-            //                            {
-            //                                if (PlayerNormalAttack(player, sc, 0, false, true))
-            //                                {
-            //                                    NowSlow(player, sc, 3);
-            //                                }
-            //                            }
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "黒の毒胞子")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は黒色の毒胞子をばらまいてきた！！\r\n");
-            //                        if (mc.Dead == false)
-            //                        {
-            //                            NowPoison(player, mc, 999, true);
-            //                            NowBlind(player, mc, 4);
-            //                        }
-            //                        if (sc != null)
-            //                        {
-            //                            if (sc.Dead == false)
-            //                            {
-            //                                NowPoison(player, sc, 999, true);
-            //                                NowBlind(player, sc, 4);
-            //                            }
-            //                        }
-
-            //                    }
-            //                    else if (player.ActionLabel.Text == "レッドローズブラスト")
-            //                    {
-            //                        UpdateBattleText(player.Name + "の一輪の赤花より火炎が放たれる！！\r\n");
-            //                        double damage = PrimaryLogic.FireBallValue(player, false);
-            //                        AbstractMagicDamage(player, target, 0, ref damage, 1.5f, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-            //                    }
-            //                    else if ((player.StackCommandString == "ファイアビューネ") ||
-            //                             (player.ActionLabel.Text == "ファイアビューネ"))
-            //                    {
-            //                        UpdateBattleText(player.Name + "は複数の蔦の先に炎を宿らせて放ってきた！！\r\n");
-
-            //                        for (int ii = 0; ii < 10; ii++)
-            //                        {
-            //                            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 2;
-
-            //                            int tempRandom = AP.Math.RandomInteger(2);
-            //                            if (tempRandom == 0)
-            //                            {
-            //                                if (mc.Dead == false)
-            //                                {
-            //                                    AbstractMagicDamage(player, mc, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-            //                                }
-            //                                else
-            //                                {
-            //                                    AbstractMagicDamage(player, sc, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-            //                                }
-            //                            }
-            //                            else
-            //                            {
-            //                                if (we.AvailableSecondCharacter)
-            //                                {
-            //                                    if (sc.Dead == false)
-            //                                    {
-            //                                        AbstractMagicDamage(player, sc, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-            //                                    }
-            //                                    else
-            //                                    {
-            //                                        AbstractMagicDamage(player, mc, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-            //                                    }
-            //                                }
-            //                                else
-            //                                {
-            //                                    AbstractMagicDamage(player, mc, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-            //                                }
-            //                            }
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "連槍突進")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は複数の蔦槍を構えて突進してきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 0, false, true);
-            //                        System.Threading.Thread.Sleep(70);
-            //                        PlayerNormalAttack(player, target, 0, false, true);
-            //                        System.Threading.Thread.Sleep(70);
-            //                        PlayerNormalAttack(player, target, 0, false, true);
-            //                    }
-
-            //                    break;
-            //                #endregion
-            //                #region "２階の敵"
-            //                case Database.ENEMY_DAGGER_FISH:
-            //                    UpdateBattleText(player.Name + "は見境なく噛み付いてきた！\r\n");
-            //                    PlayerRandomTargetPhysicalDamage(player, 6, 20, 0);
-            //                    break;
-
-            //                case Database.ENEMY_SIPPU_FLYING_FISH:
-            //                    UpdateBattleText(player.Name + "は２回連続で攻撃を繰り出してきた！\r\n");
-            //                    PlayerNormalAttack(player, target, 0, false, true);
-            //                    System.Threading.Thread.Sleep(100);
-            //                    PlayerNormalAttack(player, target, 0, false, true);
-            //                    System.Threading.Thread.Sleep(100);
-            //                    break;
-
-            //                case Database.ENEMY_SPLASH_KURIONE:
-            //                    if (player.ActionLabel.Text == "透明な光")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は目に見えない光を発生させてきた！\r\n");
-            //                        if (AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Light, false, CriticalType.Random))
-            //                        {
-            //                            NowBlind(player, target, 5);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "共鳴波")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は耳に聞こえない音波を発してきた！\r\n");
-            //                        if (AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Will, false, CriticalType.Random))
-            //                        {
-            //                            NowSilence(player, target, 5);
-            //                        }
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_ROLLING_MAGURO:
-            //                    if (player.ActionLabel.Text == "捕獲選定")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はローリング突進するターゲットを選び始めた！\r\n");
-            //                        if (sc != null && !sc.Dead)
-            //                        {
-            //                            player.Target = sc;
-            //                        }
-            //                        else if (tc != null && !tc.Dead)
-            //                        {
-            //                            player.Target = tc;
-            //                        }
-            //                        else
-            //                        {
-            //                            player.Target = mc;
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ローリング突進")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は" + target.Name + "に猛回転しながら突進してきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 2.0F, true, false);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_RANBOU_SEA_ARTINE:
-            //                    if (player.ActionLabel.Text == "トゲの放射")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は大きなトゲを射出してきた！\r\n");
-            //                        PlayerRandomTargetPhysicalDamage(player, 6, 20, 0);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "表面膨張")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は鱗の表面を膨張させた！\r\n");
-            //                        // 物理攻撃UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
-            //                        effectValue = 250.0F;
-            //                        player.CurrentPhysicalAttackUp = 3;
-            //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", 3);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_BLUE_SEA_WASI:
-            //                    if (player.ActionLabel.Text == "金切り声")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はキリキリした声を全体へ発生させてきた！\r\n");
-            //                        // 全体ダメージ
-            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Will);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_GANGAME:
-            //                    if (player.ActionLabel.Text == "地響き")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は大きく地面を鳴らしてきた！\r\n");
-            //                        // 全体ダメージ
-            //                        PlayerPhysicalAttackAllEnemy(player, PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode) * 2.0F, Database.SOUND_ENEMY_ATTACK1);
-            //                        // 全体鈍化
-            //                        PlayerSlowAllEnemy(player, 3);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "タートル・シェル")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は首を引っ込めて、厚い甲羅を強化してきた！\r\n");
-            //                        // 物理防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
-            //                        effectValue = 300.0F;
-            //                        player.CurrentPhysicalDefenseUp = 3;
-            //                        player.CurrentPhysicalDefenseUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp.bmp", 3);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "がぶりつき")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は首を伸ばして、がぶりついてきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 3.0F, false, false);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_BIGMOUSE_JOE:
-            //                    if (player.ActionLabel.Text == "伸張する舌")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は舌をベロリと伸ばしてきた。\r\n");
-            //                        // 技UP
-            //                        effectValue = 300.0F;
-
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "技UP");
-            //                        player.CurrentAgilityUp = 3;
-            //                        player.CurrentAgilityUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp.bmp", 3);
-
-            //                        UpdateBattleText(player.Name + "は【技】が" + effectValue.ToString() + "上昇\r\n");
-            //                    }
-            //                    else if (player.ActionLabel.Text == "トリプル・パンチ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "のトリプル・パンチが炸裂！\r\n");
-            //                        // ３回攻撃
-            //                        PlayerNormalAttack(player, target, 1.5F, false, false);
-            //                        PlayerNormalAttack(player, target, 2.0F, false, false);
-            //                        PlayerNormalAttack(player, target, 3.0F, false, false);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "異常な奇声")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は異常なまでの奇声を発してきた！\r\n");
-
-            //                        if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
-            //                        {
-            //                            // 単体スタン
-            //                            NowStunning(player, target, 1);
-            //                        }
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_MOGURU_MANTA:
-            //                    if (player.ActionLabel.Text == "流水の渦巻き")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は水の渦巻きを発生させてきた！\r\n");
-            //                        AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 4.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "流水の突壁")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は水の障壁を発生させてきた！\r\n");
-            //                        PlayerMirrorImageAllAlly(player);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_FLOATING_GOLD_FISH:
-            //                    if (player.ActionLabel.Text == "鉄砲泡")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は口を鉄砲型にして高速の泡を吹いてきた！\r\n");
-            //                        if (PlayerNormalAttack(player, target, 0, false, false))
-            //                        {
-            //                            NowBlind(player, target, 3);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "水面跳躍")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は踊るような跳びはね方をしてきた！\r\n");
-            //                        // スピードUP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘速度UP");
-            //                        player.CurrentSpeedUp = 2;
-            //                        player.CurrentSpeedUpValue = (int)250;
-            //                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 2);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_GOEI_HERMIT_CLUB:
-            //                    if (player.ActionLabel.Text == "豪腕ハサミ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は" + target.Name + "に強引にハサミを向けてきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 2.0F, true, false);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "突進バサミ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は" + target.Name + "に突進しながらハサミで突いてきた！\r\n");
-            //                        if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
-            //                        {
-            //                            // 単体スタン
-            //                            NowStunning(player, target, 1);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ダブル・ハサミ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は" + target.Name + "に両方のハサミで攻撃してきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 1.5F, false, false);
-            //                        PlayerNormalAttack(player, target, 1.5F, false, false);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_VANISHING_CORAL:
-            //                    if (player.ActionLabel.Text == "コーラル・サウンド")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は独特のサウンドを発生させてきた！\r\n");
-            //                        AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 4.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "バニッシング・エフェクト")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は自分の姿を透明化させてきた！\r\n");
-            //                        // 物理防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
-            //                        effectValue = 9999.9F;
-            //                        player.CurrentPhysicalDefenseUp = 1;
-            //                        player.CurrentPhysicalDefenseUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, 1);
-            //                        // 魔法防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "魔法防御UP");
-            //                        player.Target2.CurrentMagicDefenseUp = 1;
-            //                        player.Target2.CurrentMagicDefenseUpValue = 9999;
-            //                        player.Target2.ActivateBuff(player.Target2.pbMagicDefenseUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_UP, 1);
-
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ラスト・バウンド")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は奇妙な体制から突然爆発してきた！\r\n");
-            //                        PlayerMagicAttack(player, target, 0, 20.0F);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_CASSY_CANCER:
-            //                    if (player.ActionLabel.Text == "ベタつく緑泡")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はベタつく緑色の泡を周囲に吐き出してきた。\r\n");
-            //                        PlayerAllBlind(player);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "甲殻増強")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は自らの甲殻を増強してきた！\r\n");
-            //                        // 物理防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
-            //                        effectValue = 9999.9F;
-            //                        player.CurrentPhysicalDefenseUp = 10;
-            //                        player.CurrentPhysicalDefenseUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, 10);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "キャンサー・ブロー")
-            //                    {
-            //                        UpdateBattleText(player.Name + "のキャンサー・ブローが炸裂！\r\n");
-            //                        PlayerNormalAttack(player, target, 5.0F, false, false);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_EDGED_HIGH_SHARK:
-            //                    if (player.ActionLabel.Text == "猛突撃")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は見境なく激しい突進をしてきた！\r\n");
-            //                        PlayerRandomTargetPhysicalDamage(player, 1, 0, 5.0F);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "貪欲な咬みつき")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はそこら中を対象にして噛み付いてきた！\r\n");
-            //                        PlayerRandomTargetPhysicalDamage(player, 10, 20, 1.2F);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ヴァイオレンス・テール")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はバカでかい尾を使って、周囲に当たり散らしてきた！\r\n");
-            //                        PlayerPhysicalAttackAllEnemy(player, 3.0F * PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode), Database.SOUND_ENEMY_ATTACK1);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_EIGHT_EIGHT:
-            //                    if (player.ActionLabel.Text == "【八】はがい絞め")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は８つの足をグルリと回し、絡ませてきた！\r\n");
-            //                        NowBlind(player, target, 2);
-            //                        NowSlow(player, target, 4);
-            //                        NowStunning(player, target, 2);
-
-            //                        PlayerNormalAttack(player, target, 0.0f, false, false);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ブチ巻く黒墨")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は真っ黒い墨を自分自身にブチ巻けた\r\n");
-            //                        effectValue = 250.0F;
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
-            //                        player.CurrentMagicAttackUp = Database.INFINITY;
-            //                        player.CurrentMagicAttackUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "黒墨ミサイル")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は墨をミサイル形状化させて放ってきた！\r\n");
-            //                        AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "大渦巻き")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は巨大な渦巻きを周囲に発生させてきた！\r\n");
-            //                        PlayerPhysicalAttackAllEnemy(player, 3.0F * PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode), Database.SOUND_ENEMY_ATTACK1);
-            //                    }
-            //                    break;
-
-
-            //                case Database.ENEMY_BRILLIANT_SEA_PRINCE:
-            //                    if (player.ActionLabel.Text == "シースライドウォータ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はシースライドウォータを発動した！\r\n");
-            //                        effectValue = 200.0f;
-
-            //                        // 魔法攻撃UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
-            //                        player.CurrentMagicAttackUp = 3;
-            //                        player.CurrentMagicAttackUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, 3);
-            //                        // スピードUP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘速度UP");
-            //                        player.CurrentSpeedUp = 3;
-            //                        player.CurrentSpeedUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 3);
-
-            //                        UpdateBattleText(player.Name + "は【魔法攻撃】【戦闘速度】が" + effectValue.ToString() + "上昇\r\n");
-            //                    }
-            //                    else if (player.ActionLabel.Text == "勇敢な雄叫び")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は勇敢な雄叫びを上げた！\r\n");
-
-            //                        effectValue = 160.0F;
-
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "力UP");
-            //                        player.CurrentStrengthUp = 3;
-            //                        player.CurrentStrengthUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", 3);
-
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "心UP");
-            //                        player.CurrentMindUp = 3;
-            //                        player.CurrentMindUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp.bmp", 3);
-
-            //                        UpdateBattleText(player.Name + "は【力】と【心】が" + effectValue.ToString() + "上昇\r\n");
-            //                    }
-            //                    else if ((player.StackCommandString == "アイソニック・ウェイヴ") ||
-            //                             (player.ActionLabel.Text == "アイソニック・ウェイヴ"))
-            //                    {
-            //                        UpdateBattleText(player.Name + "はアイソニック・ウェイヴを放ってきた！\r\n");
-            //                        // 全体ダメージ
-            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Ice);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "グングニル・スラッシュ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "：食らえ、グングニルの力！　ッヤアァァァ！！\r\n");
-            //                        // 物理攻撃
-            //                        double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
-            //                        PlayerNormalAttack(player, target, 10.0f, 0, false, true, 0, 0, string.Empty, -1, true, CriticalType.Random);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "グングニルの閃光")
-            //                    {
-            //                        UpdateBattleText(player.Name + "：光輝け、グングニル！　ッハアァァァ！！\r\n");
-
-            //                        // 魔法攻撃
-            //                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
-            //                        PlayerMagicAttack(player, target, 0, 10.0f);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN:
-            //                    if (player.StackCommandString == "エレメンタル・スプラッシュ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は宙にウォータエレメンタルを飛ばした！\r\n");
-            //                        // 全体ダメージ
-            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Ice);
-            //                    }
-            //                    else if ((player.ActionLabel.Text == "生命の龍水") ||
-            //                             (player.StackCommandString == "生命の龍水"))
-            //                    {
-            //                        UpdateBattleText(player.Name + "は生命の龍水を体中に浴びた！\r\n");
-            //                        // ライフ回復
-            //                        effectValue = player.Intelligence * 4;
-            //                        PlayerAbstractLifeGain(player, player, 0, effectValue, 0, "FreshHeal.mp3", 5002);
-            //                    }
-            //                    else if ((player.ActionLabel.Text == "サルマンの詠唱") ||
-            //                             (player.StackCommandString == "サルマンの詠唱"))
-            //                    {
-            //                        UpdateBattleText(player.Name + "はサルマン神に対する誓いの詠唱を謡った！\r\n");
-            //                        PlayerSpellAbsorbWater(player, player);
-            //                        PlayerSpellMirrorImage(player, player);
-            //                    }
-            //                    else if ((player.ActionLabel.Text == "アンダートの詠唱") ||
-            //                             (player.StackCommandString == "アンダートの詠唱"))
-            //                    {
-            //                        UpdateBattleText(player.Name + "はアンダート神に対する誓いの詠唱を謡った！\r\n");
-            //                        // 物理防御UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
-            //                        effectValue = 9999.9F;
-            //                        player.CurrentPhysicalDefenseUp = 3;
-            //                        player.CurrentPhysicalDefenseUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp.bmp", 3);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_SHELL_SWORD_KNIGHT:
-            //                    if (player.StackCommandString == "ジュエル・ブレイク")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はジュエル・ブレイクを放った！\r\n");
-
-            //                        if (PlayerNormalAttack(player, player.StackTarget, 2.0F, true, false))
-            //                        {
-            //                            PlayerSpellDispelMagic(player, player.StackTarget);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ブリンク・シェル")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はブリンク・シェルを発動した！\r\n");
-            //                        // 次のターン、100必殺
-            //                        PlayerSpellWordOfFortune(player, player);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "シー・ストライプ")
-            //                    {
-            //                        if (PlayerNormalAttack(player, target, 1.0F, false, false))
-            //                        {
-            //                            player.CurrentSpeedBoost = 75;
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "深海の渦")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は深海の渦を発生させた！\r\n");
-            //                        // 全体鈍化
-            //                        PlayerSlowAllEnemy(player, 10);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "海星源への忠誠")
-            //                    {
-            //                        UpdateBattleText(player.Name + "：海星源。永遠なる王のため！！\r\n");
-            //                        // 物理攻撃UP
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
-            //                        effectValue = 550.0F;
-            //                        player.CurrentPhysicalAttackUp = 3;
-            //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", 3);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
-            //                    if (player.StackCommandString == "溶岩の一撃")
-            //                    {
-            //                        AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 1.5F, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "燃え盛る炎弾丸")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は燃え盛る炎の弾丸を吐いてきた！\r\n");
-
-            //                        PlayerRandomTargetDamage(player, 5, "FireBall.mp3", TruthActionCommand.MagicType.Fire);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ブレイジング・ストーム")
-            //                    {
-            //                        UpdateBattleText(player.Name + "の眼が大きくなる！ブレイジング・ストームを放射してきた！\r\n");
-
-            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FlameStrike.mp3", TruthActionCommand.MagicType.Fire);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ファイア・ウォール")
-            //                    {
-            //                        // 蒼目の方に火炎耐性を付ける。
-            //                        UpdateBattleText(player.Name + "はファイア・ウォールを発生させた！\r\n");
-
-            //                        if (ec2 != null && !ec2.Dead)
-            //                        {
-            //                            ec2.CurrentResistFireUp = 10;
-            //                            ec2.CurrentResistFireUpValue = 2000;
-            //                            ec2.ActivateBuff(ec2.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", 10);
-            //                        }
-            //                        else if (ec1 != null && !ec1.Dead)
-            //                        {
-            //                            ec1.CurrentResistFireUp = 10;
-            //                            ec1.CurrentResistFireUpValue = 2000;
-            //                            ec1.ActivateBuff(ec1.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", 10);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "フラッシュ・バーン")
-            //                    {
-            //                        UpdateBattleText(player.Name + "の目が一瞬、白い閃光を放ってきた！\r\n");
-
-            //                        PlayerAllSilence(player);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
-            //                    if (player.StackCommandString == "凍雹の一撃")
-            //                    {
-            //                        AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 1.5F, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "凍てつく氷弾丸")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は凍てつく氷の弾丸を放ってきた！\r\n");
-
-            //                        PlayerRandomTargetDamage(player, 5, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ウォーター・スラッシュ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "の眼が大きくなる！ウォーター・スラッシュを発生させてきた！\r\n");
-
-            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ウォータ・バブル")
-            //                    {
-            //                        //　赤目の方に水耐性を付ける。
-            //                        UpdateBattleText(player.Name + "はウォータ・バブルを発生させた！\r\n");
-
-            //                        if (ec1 != null && !ec1.Dead)
-            //                        {
-            //                            ec1.CurrentResistIceUp = 10;
-            //                            ec1.CurrentResistIceUpValue = 2000;
-            //                            ec1.ActivateBuff(ec1.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", 10);
-            //                        }
-            //                        else if (ec2 != null && !ec2.Dead)
-            //                        {
-            //                            ec2.CurrentResistIceUp = 10;
-            //                            ec2.CurrentResistIceUpValue = 2000;
-            //                            ec2.ActivateBuff(ec2.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", 10);
-            //                        }
-
-            //                    }
-            //                    else if (player.ActionLabel.Text == "ハルシネイト・アイ")
-            //                    {
-            //                        UpdateBattleText(player.Name + "の目が鋭く凝視してきた！\r\n");
-
-            //                        PlayerAllStun(player);
-            //                    }
-
-            //                    break;
-
-
-            //                case Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU:
-            //                    if (player.StackCommandString == "スター・ダスト")
-            //                    {
-            //                        UpdateBattleText(player.Name + "のスターソードが" + player.StackTarget.Name + "へ無数の星屑を落とす！\r\n");
-
-            //                        if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
-            //                        {
-            //                            NowBlind(player, player.StackTarget, 7);
-            //                        }
-
-            //                        if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
-            //                        {
-            //                            NowStunning(player, player.StackTarget, 1);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "スターソード『煌』")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はスターソード『煌』を振りかざしてきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 3.0F, false, false);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "エーギル・フィールド")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はスターソード『煌』を地面に差し込んだ！\r\n");
-
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "物理防御UP");
-            //                        player.Target2.CurrentPhysicalDefenseUp = 4;
-            //                        player.Target2.CurrentPhysicalDefenseUpValue = 3000;
-            //                        player.Target2.ActivateBuff(player.Target2.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, 4);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_SEA_STAR_KNIGHT_AMARA:
-            //                    if (player.StackCommandString == "スター・フォール")
-            //                    {
-            //                        UpdateBattleText(player.Name + "のスターソードが" + player.StackTarget.Name + "へ無数の星屑を落とす！\r\n");
-            //                        if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
-            //                        {
-            //                            NowSilence(player, player.StackTarget, 5);
-            //                        }
-
-            //                        if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
-            //                        {
-            //                            NowStunning(player, player.StackTarget, 1);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "スターソード『艶』")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はスターソード『艶』を振りかざしてきた！\r\n");
-            //                        PlayerNormalAttack(player, target, 3.0F, false, false);
-            //                    }
-            //                    else if (player.ActionLabel.Text == "アマラ・フィールド")
-            //                    {
-            //                        UpdateBattleText(player.Name + "はスターソード『艶』を地面に差し込んだ！\r\n");
-
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "魔法防御UP");
-            //                        player.Target2.CurrentMagicDefenseUp = 4;
-            //                        player.Target2.CurrentMagicDefenseUpValue = 3000;
-            //                        player.Target2.ActivateBuff(player.Target2.pbMagicDefenseUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_UP, 4);
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_SEA_STAR_ORIGIN_KING:
-            //                    if (player.StackCommandString == "海星源の授印")
-            //                    {
-            //                        UpdateBattleText(player.Name + "は海星源の場全体へ大きな授印を展開しはじめた！\r\n");
-
-            //                        List<MainCharacter> group = new List<MainCharacter>();
-            //                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-            //                        if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-            //                        if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            //                        for (int ii = 0; ii < group.Count; ii++)
-            //                        {
-            //                            PlayerSpellProtection(player, group[ii]);
-            //                            PlayerSpellSaintPower(player, group[ii]);
-            //                            PlayerSpellDeflection(player, group[ii]);
-            //                            this.Invoke(new _AnimationDamage(AnimationDamage), 0, group[ii], 0, Color.black, false, false, "授印");
-            //                        }
-            //                    }
-            //                    break;
-
-            //                case Database.ENEMY_BOSS_LEVIATHAN:
-            //                    if (player.StackCommandString == "タイダル・ウェイブ")
-            //                    {
-            //                        // 全体ダメージ
-            //                        UpdateBattleText(player.Name + "は体全体を大きくうならせ、大きな津波を発生させてきた！\r\n");
-            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 3.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
-            //                        break;
-            //                    }
-            //                    else if (player.ActionLabel.Text == "バースト・クラウド")
-            //                    {
-            //                        // ランダムダメージ
-            //                        List<MainCharacter> group = new List<MainCharacter>();
-            //                        if (mc != null && !mc.Dead) { group.Add(mc); }
-            //                        if (sc != null && !sc.Dead) { group.Add(sc); }
-            //                        if (tc != null && !tc.Dead) { group.Add(tc); }
-
-            //                        for (int ii = 0; ii < 10; ii++)
-            //                        {
-            //                            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 2;
-
-            //                            int tempRandom = AP.Math.RandomInteger(group.Count);
-            //                            AbstractMagicDamage(player, group[tempRandom], 10, ref damage, 0, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "海王の咆哮")
-            //                    {
-            //                        // パワーアップ
-            //                        effectValue = 500.0F;
-            //                        UpdateBattleText(player.Name + "は【魔法攻撃】が" + effectValue.ToString() + "上昇\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
-            //                        player.CurrentMagicAttackUp = Database.INFINITY;
-            //                        player.CurrentMagicAttackUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
-
-            //                        effectValue = 500.0F;
-            //                        UpdateBattleText(player.Name + "は【物理攻撃】が" + effectValue.ToString() + "上昇\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
-            //                        player.CurrentPhysicalAttackUp = Database.INFINITY;
-            //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, Database.INFINITY);
-
-            //                        effectValue = 2500.0F;
-            //                        UpdateBattleText(player.Name + "は【戦闘反応】が" + effectValue.ToString() + "上昇\r\n");
-            //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘反応UP");
-            //                        player.CurrentReactionUp = Database.INFINITY;
-            //                        player.CurrentReactionUpValue = (int)effectValue;
-            //                        player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + Database.BUFF_REACTION_UP, Database.INFINITY);
-
-            //                    }
-            //                    else if (player.ActionLabel.Text == "サージェティック・バインド")
-            //                    {
-            //                        // 巻きつきによるスタン＋出血ダメージ攻撃を行う。
-            //                        List<MainCharacter> group = new List<MainCharacter>();
-            //                        if (mc != null && !mc.Dead) { group.Add(mc); }
-            //                        if (sc != null && !sc.Dead) { group.Add(sc); }
-            //                        if (tc != null && !tc.Dead) { group.Add(tc); }
-
-            //                        int tempRandom = AP.Math.RandomInteger(group.Count);
-
-            //                        if (PlayerNormalAttack(player, group[tempRandom], 0, false, false))
-            //                        {
-            //                            NowSlip(player, group[tempRandom], 10);
-            //                            NowStunning(player, group[tempRandom], 1);
-            //                        }
-            //                    }
-            //                    else if (player.ActionLabel.Text == "大激衝")
-            //                    {
-            //                        // 一体に大ダメージ
-            //                        PlayerNormalAttack(player, target, 5.0F, false, false);
-            //                    }
-            //                    break;
-
-            //                // ２階：支配竜
-            //                case Database.ENEMY_DRAGON_TINKOU_DEEPSEA:
-            //                    if (player.ActionLabel.Text == "形成消失" || player.StackCommandString == "形成消失")
-            //                    {
-            //                        txtBattleMessage.Text = txtBattleMessage.Text.Insert(0, "【沈降せし者】ディープシーは、その場より消えさった。\r\n");
-            //                        txtBattleMessage.Update();
-            //                        System.Threading.Thread.Sleep(2000);
-            //                        endBattleForMatrixDragonEnd = true;
-            //                    }
-            //                    else if (player.ActionLabel.Text == "無音の呼び声")
-            //                    {
-            //                        if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
-            //                        {
-            //                            string message = "    【ディープシーの声】\r\n\r\n    希望を、さすれば絶望の中にて生を得る。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
-            //                        {
-            //                            string message = "    【ディープシーの声】\r\n\r\n    希望を、さすれば虚無より、空間を生み出す。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 2)
-            //                        {
-            //                            string message = "    【ディープシーの声】\r\n\r\n    希望を、さすれば自己消失より、存在を見出す。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 3)
-            //                        {
-            //                            string message = "    【ディープシーの声】\r\n\r\n    希望とは、完全に沈降した世界より生まれるもの。\r\n    これを認識せよ、アイン・ウォーレンス。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 4)
-            //                        {
-            //                            string message = "    【ディープシーの声】\r\n\r\n    さすれば、完全なる希望が得られるであろう。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                    }
-            //                    break;
-            //                // ３階：支配流
-            //                case Database.ENEMY_DRAGON_DESOLATOR_AZOLD:
-            //                    //MessageBox.Show(player.StackCommandString);
-            //                    if (player.ActionLabel.Text == "形成消失" || player.StackCommandString == "形成消失")
-            //                    {
-            //                        txtBattleMessage.Text = txtBattleMessage.Text.Insert(0, "【凍てつく者】アゾルドは、その場より消えさった。\r\n");
-            //                        txtBattleMessage.Update();
-            //                        System.Threading.Thread.Sleep(2000);
-            //                        endBattleForMatrixDragonEnd = true;
-            //                    }
-            //                    else if (player.ActionLabel.Text == "無音の呼び声")
-            //                    {
-            //                        if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
-            //                        {
-            //                            string message = "    【アゾルドの声】\r\n\r\n    成長、それは歩を進めようとした者にのみ、認識されるもの。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
-            //                        {
-            //                            string message = "    【アゾルドの声】\r\n\r\n    成長、それは歩を進めている間の者には、認識できないもの。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 2)
-            //                        {
-            //                            string message = "    【アゾルドの声】\r\n\r\n    成長、それは歩を進めてきた者にのみ、認識されるもの。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 3)
-            //                        {
-            //                            string message = "    【アゾルドの声】\r\n\r\n    成長、それは最終的な生成形態として凍結されるため。\r\n    これを認識せよ、アイン・ウォーレンス。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 4)
-            //                        {
-            //                            string message = "    【アゾルドの声】\r\n\r\n    さすれば、完全なる成長が得られるであろう。";
-            //                            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
-            //                            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
-            //                        }
-            //                    }
-            //                    break;
-
-            //                // ２階：DUEL対戦相手
-            //                case Database.DUEL_SCOTY_ZALGE:
-            //                    if (player.ActionLabel.Text == "ザルゲ・スラッシュ")
-            //                    {
-            //                        if (PlayerNormalAttack(player, target, 0, false, false))
-            //                        {
-            //                            NowPoison(player, target, 999, true);
-            //                        }
-            //                    }
-            //                    break;
-            //                #endregion
+                #region "敵専用スキル"
+                case MainCharacter.PlayerAction.SpecialSkill:
+                    if (!player.Target.Dead)
+                    {
+                        switch (player.FirstName)
+                        {
+                            // 「警告」抽象化していくべきではないだろうか？
+                            #region "１階の敵"
+                            case Database.ENEMY_KOUKAKU_WURM:
+                                UpdateBattleText(player.FirstName + "は硬い甲殻部分を丸めて突進してきた！\r\n");
+                                PlayerNormalAttack(player, target, 2.0f, false, true);
+                                break;
+
+                            case Database.ENEMY_HIYOWA_BEATLE:
+                                effectValue = 4.0F;
+                                UpdateBattleText(player.FirstName + "は尖った角を掲げ上げた！ 【力】" + effectValue.ToString() + "上昇\r\n");
+                                player.CurrentStrengthUp = Database.INFINITY;
+                                player.CurrentStrengthUpValue = (int)effectValue;
+                                player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
+                                break;
+
+                            case Database.ENEMY_GREEN_CHILD:
+                                UpdateBattleText(player.FirstName + "はグリーン・スプラッシュを唱えた！\r\n");
+                                PlayerMagicAttack(player, target, 0, 2.0f);
+                                break;
+
+                            case Database.ENEMY_MANDRAGORA:
+                                UpdateBattleText(player.FirstName + "は奇妙な悲鳴を上げてきた！\r\n");
+                                PlayerMagicAttack(player, target, 0, 3.0f);
+                                break;
+
+                            case Database.ENEMY_RED_HOPPER:
+                                UpdateBattleText(player.FirstName + "の群れは一斉に攻撃を仕掛けてきた！\r\n");
+                                PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
+                                PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
+                                PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
+                                PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
+                                PlayerNormalAttack(player, target, 0, 0, false, false, 0, 20, string.Empty, -1, true, CriticalType.None);
+                                break;
+
+                            case Database.ENEMY_EARTH_SPIDER:
+                                UpdateBattleText(player.FirstName + "は蜘蛛の糸を絡み付かせてきた！\r\n");
+                                NowSlow(player, target, 2);
+                                break;
+
+                            case Database.ENEMY_ALRAUNE:
+                                if (player.ActionLabel.text == "怪しげな花弁")
+                                {
+                                    UpdateBattleText(player.FirstName + "は怪しげな花弁をかざしてきた！\r\n");
+                                    System.Threading.Thread.Sleep(500);
+                                    NowTemptation(player, target, 3);
+                                }
+                                else if (player.ActionLabel.text == "猛毒の花粉")
+                                {
+                                    UpdateBattleText(player.FirstName + "は猛毒の花粉をまき散らしてきた！\r\n");
+                                    System.Threading.Thread.Sleep(500);
+                                    NowPoison(player, target, 4, false);
+                                }
+                                break;
+
+                            case Database.ENEMY_POISON_MARY:
+                                if (player.ActionLabel.text == "毒胞子")
+                                {
+                                    UpdateBattleText(player.FirstName + "は猛毒の花粉をまき散らしてきた！\r\n");
+                                    System.Threading.Thread.Sleep(500);
+                                    NowPoison(player, target, 4, false);
+                                }
+                                else if (player.ActionLabel.text == "幻覚胞子")
+                                {
+                                    UpdateBattleText(player.FirstName + "は幻覚胞子を飛ばしてきた！\r\n");
+                                    System.Threading.Thread.Sleep(500);
+                                    NowBlind(player, target, 4);
+                                }
+                                break;
+
+                            case Database.ENEMY_SPEEDY_TAKA:
+                                UpdateBattleText(player.FirstName + "は２回連続で攻撃を繰り出してきた！\r\n");
+                                PlayerNormalAttack(player, target, 0, false, true);
+                                System.Threading.Thread.Sleep(100);
+                                PlayerNormalAttack(player, target, 0, false, true);
+                                System.Threading.Thread.Sleep(100);
+                                break;
+                            case Database.ENEMY_ZASSYOKU_RABBIT:
+                                if (player.ActionLabel.text == Database.BUFFUP_STRENGTH)
+                                {
+                                    effectValue = 30.0F;
+                                    UpdateBattleText(player.FirstName + "は体全体を奮い立たせた！ 【力】" + effectValue.ToString() + "上昇\r\n");
+                                    player.CurrentStrengthUp = Database.INFINITY;
+                                    player.CurrentStrengthUpValue = (int)effectValue;
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
+                                }
+                                else
+                                {
+                                    UpdateBattleText(player.FirstName + "は勢い良く突進してきた！\r\n");
+                                    PlayerNormalAttack(player, target, 3.0f, false, true);
+                                }
+                                break;
+
+                            case Database.ENEMY_WONDER_SEED:
+                                if (player.ActionLabel.text == "棘殻ローリング")
+                                {
+                                    UpdateBattleText(player.FirstName + "は棘のある外殻を丸めて体当たりしてきた！\r\n");
+                                    if (GroundOne.MC.Dead == false)
+                                    {
+                                        PlayerNormalAttack(player, GroundOne.MC, 0, false, true);
+                                        System.Threading.Thread.Sleep(100);
+                                    }
+                                    if (GroundOne.SC != null)
+                                    {
+                                        if (GroundOne.SC.Dead == false)
+                                        {
+                                            PlayerNormalAttack(player, GroundOne.SC, 0, false, true);
+                                            System.Threading.Thread.Sleep(100);
+                                        }
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ニードル・スピア")
+                                {
+                                    UpdateBattleText(player.FirstName + "はニードル・スピアを放ってきた！\r\n");
+                                    if (PlayerNormalAttack(player, target, 0, false, true))
+                                    {
+                                        NowSlow(player, target, 2);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "連続攻撃")
+                                {
+                                    UpdateBattleText(player.FirstName + "は２回連続で攻撃を繰り出してきた！\r\n");
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                    System.Threading.Thread.Sleep(100);
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                    System.Threading.Thread.Sleep(100);
+                                }
+                                break;
+                            case Database.ENEMY_FLANSIS_KNIGHT:
+                                if (player.ActionLabel.text == "なぎ払い")
+                                {
+                                    UpdateBattleText(player.FirstName + "は細長い蔦槍を一気に横になぎ払ってきた！\r\n");
+                                    if (GroundOne.MC.Dead == false)
+                                    {
+                                        PlayerNormalAttack(player, GroundOne.MC, 0, false, true);
+                                        System.Threading.Thread.Sleep(100);
+                                    }
+                                    if (GroundOne.SC != null)
+                                    {
+                                        if (GroundOne.SC.Dead == false)
+                                        {
+                                            PlayerNormalAttack(player, GroundOne.SC, 0, false, true);
+                                            System.Threading.Thread.Sleep(100);
+                                        }
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ファイア・ランス")
+                                {
+                                    UpdateBattleText(player.FirstName + "は炎を燈した蔦槍を投げつけてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                    System.Threading.Thread.Sleep(100);
+                                    double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
+                                    AbstractMagicDamage(player, target, 0, ref damage, 0, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                    System.Threading.Thread.Sleep(100);
+                                }
+                                break;
+
+                            case Database.ENEMY_SHOTGUN_HYUI:
+                                if (player.ActionLabel.text == "ヒューイ弾丸")
+                                {
+                                    UpdateBattleText(player.FirstName + "は高速の弾丸を撒き散らしてきた！\r\n");
+
+                                    for (int ii = 0; ii < 5; ii++)
+                                    {
+                                        int tempRandom = AP.Math.RandomInteger(2);
+                                        if (tempRandom == 0)
+                                        {
+                                            PlayerNormalAttack(player, GroundOne.MC, 0, false, true);
+                                        }
+                                        else
+                                        {
+                                            PlayerNormalAttack(player, GroundOne.SC, 0, false, true);
+                                        }
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ホウセンの種")
+                                {
+                                    UpdateBattleText(player.FirstName + "はホウセンの種を周囲へ撒き散らした！\r\n");
+                                    if (GroundOne.MC.Dead == false)
+                                    {
+                                        if (PlayerNormalAttack(player, GroundOne.MC, 0, false, true))
+                                        {
+                                            NowSlow(player, GroundOne.MC, 2);
+                                        }
+                                        System.Threading.Thread.Sleep(100);
+                                    }
+                                    if (GroundOne.SC != null)
+                                    {
+                                        if (GroundOne.SC.Dead == false)
+                                        {
+                                            if (PlayerNormalAttack(player, GroundOne.SC, 0, false, true))
+                                            {
+                                                NowSlow(player, GroundOne.SC, 2);
+                                            }
+                                            System.Threading.Thread.Sleep(100);
+                                        }
+                                    }
+                                }
+                                else if (player.ActionLabel.text == Database.BUFFUP_STRENGTH)
+                                {
+                                    effectValue = 30.0F;
+                                    UpdateBattleText(player.FirstName + "は自己発芽を活性させ始めた！ 【力】" + effectValue.ToString() + "上昇\r\n");
+                                    player.CurrentStrengthUp = Database.INFINITY;
+                                    player.CurrentStrengthUpValue = (int)effectValue;
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
+                                }
+                                break;
+
+                            case Database.ENEMY_BRILLIANT_BUTTERFLY:
+                                UpdateBattleText(player.FirstName + "はフラッシュ・ウィンドを唱えた！\r\n");
+                                PlayerMagicAttack(player, target, 0, 2.0f);
+                                break;
+                            case Database.ENEMY_WAR_WOLF:
+                                UpdateBattleText(player.FirstName + "は鋭い勢いで突進してきた！\r\n");
+                                PlayerNormalAttack(player, target, 3.0f, false, true);
+                                break;
+
+                            case Database.ENEMY_BLOOD_MOSS:
+                                UpdateBattleText(player.FirstName + "は赤い胞子をばら撒いてきた！\r\n");
+                                if (GroundOne.MC.Dead == false)
+                                {
+                                    PlayerNormalAttack(player, GroundOne.MC, 0, false, true);
+                                    System.Threading.Thread.Sleep(100);
+                                }
+                                if (GroundOne.SC != null)
+                                {
+                                    if (GroundOne.SC.Dead == false)
+                                    {
+                                        PlayerNormalAttack(player, GroundOne.SC, 0, false, true);
+                                        System.Threading.Thread.Sleep(100);
+                                    }
+                                }
+                                break;
+
+                            case Database.ENEMY_MOSSGREEN_DADDY:
+                                UpdateBattleText(player.FirstName + "は根の蔦を地上から一気に仕掛けてきた！\r\n");
+                                if (GroundOne.MC.Dead == false)
+                                {
+                                    if (PlayerNormalAttack(player, GroundOne.MC, 0, false, true))
+                                    {
+                                        NowSlow(player, GroundOne.MC, 2);
+                                    }
+                                    System.Threading.Thread.Sleep(100);
+                                }
+                                if (GroundOne.SC != null)
+                                {
+                                    if (GroundOne.SC.Dead == false)
+                                    {
+                                        if (PlayerNormalAttack(player, GroundOne.SC, 0, false, true))
+                                        {
+                                            NowSlow(player, GroundOne.SC, 2);
+                                        }
+                                        System.Threading.Thread.Sleep(100);
+                                    }
+                                }
+
+                                break;
+
+                            case Database.ENEMY_BOSS_KARAMITUKU_FLANSIS:
+                                if (player.StackCommandString == "キル・スピニングランサー")
+                                {
+                                    ((TruthEnemyCharacter)player).BossBeforeStay = false;
+                                    UpdateBattleText(player.FirstName + "は巨大なイバラの槍を形成し始めた！\r\n");
+                                    UpdateBattleText(player.FirstName + ":ッシャアアアァァァ！！！\r\n");
+                                    System.Threading.Thread.Sleep(500);
+                                    UpdateBattleText(ec1.FirstName + "「奥義　キル・スピニングランサー」発動！！\r\n");
+                                    System.Threading.Thread.Sleep(500);
+                                    double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
+                                    PlayerNormalAttack(player, target, 8.0f, 0, false, true, 0, 0, string.Empty, -1, true, CriticalType.Random);
+                                }
+                                else if (player.ActionLabel.text == "絡み蔦")
+                                {
+                                    UpdateBattleText(player.FirstName + "は絡み蔦を忍ばせてきた！！\r\n");
+                                    if (GroundOne.MC.Dead == false)
+                                    {
+                                        if (PlayerNormalAttack(player, GroundOne.MC, 0, false, true))
+                                        {
+                                            NowSlow(player, GroundOne.MC, 3);
+                                        }
+                                    }
+                                    if (GroundOne.SC != null)
+                                    {
+                                        if (GroundOne.SC.Dead == false)
+                                        {
+                                            if (PlayerNormalAttack(player, GroundOne.SC, 0, false, true))
+                                            {
+                                                NowSlow(player, GroundOne.SC, 3);
+                                            }
+                                        }
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "黒の毒胞子")
+                                {
+                                    UpdateBattleText(player.FirstName + "は黒色の毒胞子をばらまいてきた！！\r\n");
+                                    if (GroundOne.MC.Dead == false)
+                                    {
+                                        NowPoison(player, GroundOne.MC, 999, true);
+                                        NowBlind(player, GroundOne.MC, 4);
+                                    }
+                                    if (GroundOne.SC != null)
+                                    {
+                                        if (GroundOne.SC.Dead == false)
+                                        {
+                                            NowPoison(player, GroundOne.SC, 999, true);
+                                            NowBlind(player, GroundOne.SC, 4);
+                                        }
+                                    }
+
+                                }
+                                else if (player.ActionLabel.text == "レッドローズブラスト")
+                                {
+                                    UpdateBattleText(player.FirstName + "の一輪の赤花より火炎が放たれる！！\r\n");
+                                    double damage = PrimaryLogic.FireBallValue(player, false);
+                                    AbstractMagicDamage(player, target, 0, ref damage, 1.5f, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                }
+                                else if ((player.StackCommandString == "ファイアビューネ") ||
+                                         (player.ActionLabel.text == "ファイアビューネ"))
+                                {
+                                    UpdateBattleText(player.FirstName + "は複数の蔦の先に炎を宿らせて放ってきた！！\r\n");
+
+                                    for (int ii = 0; ii < 10; ii++)
+                                    {
+                                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 2;
+
+                                        int tempRandom = AP.Math.RandomInteger(2);
+                                        if (tempRandom == 0)
+                                        {
+                                            if (GroundOne.MC.Dead == false)
+                                            {
+                                                AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                            }
+                                            else
+                                            {
+                                                AbstractMagicDamage(player, GroundOne.SC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (GroundOne.WE.AvailableSecondCharacter)
+                                            {
+                                                if (GroundOne.SC.Dead == false)
+                                                {
+                                                    AbstractMagicDamage(player, GroundOne.SC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                                }
+                                                else
+                                                {
+                                                    AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                                }
+                                            }
+                                            else
+                                            {
+                                                AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                            }
+                                        }
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "連槍突進")
+                                {
+                                    UpdateBattleText(player.FirstName + "は複数の蔦槍を構えて突進してきた！\r\n");
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                    System.Threading.Thread.Sleep(70);
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                    System.Threading.Thread.Sleep(70);
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                }
+
+                                break;
+                            #endregion
+                            #region "２階の敵"
+                            case Database.ENEMY_DAGGER_FISH:
+                                UpdateBattleText(player.FirstName + "は見境なく噛み付いてきた！\r\n");
+                                PlayerRandomTargetPhysicalDamage(player, 6, 20, 0);
+                                break;
+
+                            case Database.ENEMY_SIPPU_FLYING_FISH:
+                                UpdateBattleText(player.FirstName + "は２回連続で攻撃を繰り出してきた！\r\n");
+                                PlayerNormalAttack(player, target, 0, false, true);
+                                System.Threading.Thread.Sleep(100);
+                                PlayerNormalAttack(player, target, 0, false, true);
+                                System.Threading.Thread.Sleep(100);
+                                break;
+
+                            case Database.ENEMY_SPLASH_KURIONE:
+                                if (player.ActionLabel.text == "透明な光")
+                                {
+                                    UpdateBattleText(player.FirstName + "は目に見えない光を発生させてきた！\r\n");
+                                    if (AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Light, false, CriticalType.Random))
+                                    {
+                                        NowBlind(player, target, 5);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "共鳴波")
+                                {
+                                    UpdateBattleText(player.FirstName + "は耳に聞こえない音波を発してきた！\r\n");
+                                    if (AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Will, false, CriticalType.Random))
+                                    {
+                                        NowSilence(player, target, 5);
+                                    }
+                                }
+                                break;
+
+                            case Database.ENEMY_ROLLING_MAGURO:
+                                if (player.ActionLabel.text == "捕獲選定")
+                                {
+                                    UpdateBattleText(player.FirstName + "はローリング突進するターゲットを選び始めた！\r\n");
+                                    if (GroundOne.SC != null && !GroundOne.SC.Dead)
+                                    {
+                                        player.Target = GroundOne.SC;
+                                    }
+                                    else if (GroundOne.TC != null && !GroundOne.TC.Dead)
+                                    {
+                                        player.Target = GroundOne.TC;
+                                    }
+                                    else
+                                    {
+                                        player.Target = GroundOne.MC;
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ローリング突進")
+                                {
+                                    UpdateBattleText(player.FirstName + "は" + target.FirstName + "に猛回転しながら突進してきた！\r\n");
+                                    PlayerNormalAttack(player, target, 2.0F, true, false);
+                                }
+                                break;
+
+                            case Database.ENEMY_RANBOU_SEA_ARTINE:
+                                if (player.ActionLabel.text == "トゲの放射")
+                                {
+                                    UpdateBattleText(player.FirstName + "は大きなトゲを射出してきた！\r\n");
+                                    PlayerRandomTargetPhysicalDamage(player, 6, 20, 0);
+                                }
+                                else if (player.ActionLabel.text == "表面膨張")
+                                {
+                                    UpdateBattleText(player.FirstName + "は鱗の表面を膨張させた！\r\n");
+                                    // 物理攻撃UP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
+                                    effectValue = 250.0F;
+                                    player.CurrentPhysicalAttackUp = 3;
+                                    player.CurrentPhysicalAttackUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", 3);
+                                }
+                                break;
+
+                            case Database.ENEMY_BLUE_SEA_WASI:
+                                if (player.ActionLabel.text == "金切り声")
+                                {
+                                    UpdateBattleText(player.FirstName + "はキリキリした声を全体へ発生させてきた！\r\n");
+                                    // 全体ダメージ
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Will);
+                                }
+                                break;
+
+                            case Database.ENEMY_GANGAME:
+                                if (player.ActionLabel.text == "地響き")
+                                {
+                                    UpdateBattleText(player.FirstName + "は大きく地面を鳴らしてきた！\r\n");
+                                    // 全体ダメージ
+                                    PlayerPhysicalAttackAllEnemy(player, PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode) * 2.0F, Database.SOUND_ENEMY_ATTACK1);
+                                    // 全体鈍化
+                                    PlayerSlowAllEnemy(player, 3);
+                                }
+                                else if (player.ActionLabel.text == "タートル・シェル")
+                                {
+                                    UpdateBattleText(player.FirstName + "は首を引っ込めて、厚い甲羅を強化してきた！\r\n");
+                                    // 物理防御UP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
+                                    effectValue = 300.0F;
+                                    player.CurrentPhysicalDefenseUp = 3;
+                                    player.CurrentPhysicalDefenseUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp.bmp", 3);
+                                }
+                                else if (player.ActionLabel.text == "がぶりつき")
+                                {
+                                    UpdateBattleText(player.FirstName + "は首を伸ばして、がぶりついてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 3.0F, false, false);
+                                }
+                                break;
+
+                            case Database.ENEMY_BIGMOUSE_JOE:
+                                if (player.ActionLabel.text == "伸張する舌")
+                                {
+                                    UpdateBattleText(player.FirstName + "は舌をベロリと伸ばしてきた。\r\n");
+                                    // 技UP
+                                    effectValue = 300.0F;
+
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "技UP");
+                                    player.CurrentAgilityUp = 3;
+                                    player.CurrentAgilityUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp.bmp", 3);
+
+                                    UpdateBattleText(player.FirstName + "は【技】が" + effectValue.ToString() + "上昇\r\n");
+                                }
+                                else if (player.ActionLabel.text == "トリプル・パンチ")
+                                {
+                                    UpdateBattleText(player.FirstName + "のトリプル・パンチが炸裂！\r\n");
+                                    // ３回攻撃
+                                    PlayerNormalAttack(player, target, 1.5F, false, false);
+                                    PlayerNormalAttack(player, target, 2.0F, false, false);
+                                    PlayerNormalAttack(player, target, 3.0F, false, false);
+                                }
+                                else if (player.ActionLabel.text == "異常な奇声")
+                                {
+                                    UpdateBattleText(player.FirstName + "は異常なまでの奇声を発してきた！\r\n");
+
+                                    if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
+                                    {
+                                        // 単体スタン
+                                        NowStunning(player, target, 1);
+                                    }
+                                }
+                                break;
+
+                            case Database.ENEMY_MOGURU_MANTA:
+                                if (player.ActionLabel.text == "流水の渦巻き")
+                                {
+                                    UpdateBattleText(player.FirstName + "は水の渦巻きを発生させてきた！\r\n");
+                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 4.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                }
+                                else if (player.ActionLabel.text == "流水の突壁")
+                                {
+                                    UpdateBattleText(player.FirstName + "は水の障壁を発生させてきた！\r\n");
+                                    PlayerMirrorImageAllAlly(player);
+                                }
+                                break;
+
+                            case Database.ENEMY_FLOATING_GOLD_FISH:
+                                if (player.ActionLabel.text == "鉄砲泡")
+                                {
+                                    UpdateBattleText(player.FirstName + "は口を鉄砲型にして高速の泡を吹いてきた！\r\n");
+                                    if (PlayerNormalAttack(player, target, 0, false, false))
+                                    {
+                                        NowBlind(player, target, 3);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "水面跳躍")
+                                {
+                                    UpdateBattleText(player.FirstName + "は踊るような跳びはね方をしてきた！\r\n");
+                                    // スピードUP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘速度UP");
+                                    player.CurrentSpeedUp = 2;
+                                    player.CurrentSpeedUpValue = (int)250;
+                                    player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 2);
+                                }
+                                break;
+
+                            case Database.ENEMY_GOEI_HERMIT_CLUB:
+                                if (player.ActionLabel.text == "豪腕ハサミ")
+                                {
+                                    UpdateBattleText(player.FirstName + "は" + target.FirstName + "に強引にハサミを向けてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 2.0F, true, false);
+                                }
+                                else if (player.ActionLabel.text == "突進バサミ")
+                                {
+                                    UpdateBattleText(player.FirstName + "は" + target.FirstName + "に突進しながらハサミで突いてきた！\r\n");
+                                    if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
+                                    {
+                                        // 単体スタン
+                                        NowStunning(player, target, 1);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ダブル・ハサミ")
+                                {
+                                    UpdateBattleText(player.FirstName + "は" + target.FirstName + "に両方のハサミで攻撃してきた！\r\n");
+                                    PlayerNormalAttack(player, target, 1.5F, false, false);
+                                    PlayerNormalAttack(player, target, 1.5F, false, false);
+                                }
+                                break;
+
+                            case Database.ENEMY_VANISHING_CORAL:
+                                if (player.ActionLabel.text == "コーラル・サウンド")
+                                {
+                                    UpdateBattleText(player.FirstName + "は独特のサウンドを発生させてきた！\r\n");
+                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 4.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                }
+                                else if (player.ActionLabel.text == "バニッシング・エフェクト")
+                                {
+                                    UpdateBattleText(player.FirstName + "は自分の姿を透明化させてきた！\r\n");
+                                    // 物理防御UP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
+                                    effectValue = 9999.9F;
+                                    player.CurrentPhysicalDefenseUp = 1;
+                                    player.CurrentPhysicalDefenseUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, 1);
+                                    // 魔法防御UP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "魔法防御UP");
+                                    player.Target2.CurrentMagicDefenseUp = 1;
+                                    player.Target2.CurrentMagicDefenseUpValue = 9999;
+                                    player.Target2.ActivateBuff(player.Target2.pbMagicDefenseUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_UP, 1);
+
+                                }
+                                else if (player.ActionLabel.text == "ラスト・バウンド")
+                                {
+                                    UpdateBattleText(player.FirstName + "は奇妙な体制から突然爆発してきた！\r\n");
+                                    PlayerMagicAttack(player, target, 0, 20.0F);
+                                }
+                                break;
+
+                            case Database.ENEMY_CASSY_CANCER:
+                                if (player.ActionLabel.text == "ベタつく緑泡")
+                                {
+                                    UpdateBattleText(player.FirstName + "はベタつく緑色の泡を周囲に吐き出してきた。\r\n");
+                                    PlayerAllBlind(player);
+                                }
+                                else if (player.ActionLabel.text == "甲殻増強")
+                                {
+                                    UpdateBattleText(player.FirstName + "は自らの甲殻を増強してきた！\r\n");
+                                    // 物理防御UP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
+                                    effectValue = 9999.9F;
+                                    player.CurrentPhysicalDefenseUp = 10;
+                                    player.CurrentPhysicalDefenseUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, 10);
+                                }
+                                else if (player.ActionLabel.text == "キャンサー・ブロー")
+                                {
+                                    UpdateBattleText(player.FirstName + "のキャンサー・ブローが炸裂！\r\n");
+                                    PlayerNormalAttack(player, target, 5.0F, false, false);
+                                }
+                                break;
+
+                            case Database.ENEMY_EDGED_HIGH_SHARK:
+                                if (player.ActionLabel.text == "猛突撃")
+                                {
+                                    UpdateBattleText(player.FirstName + "は見境なく激しい突進をしてきた！\r\n");
+                                    PlayerRandomTargetPhysicalDamage(player, 1, 0, 5.0F);
+                                }
+                                else if (player.ActionLabel.text == "貪欲な咬みつき")
+                                {
+                                    UpdateBattleText(player.FirstName + "はそこら中を対象にして噛み付いてきた！\r\n");
+                                    PlayerRandomTargetPhysicalDamage(player, 10, 20, 1.2F);
+                                }
+                                else if (player.ActionLabel.text == "ヴァイオレンス・テール")
+                                {
+                                    UpdateBattleText(player.FirstName + "はバカでかい尾を使って、周囲に当たり散らしてきた！\r\n");
+                                    PlayerPhysicalAttackAllEnemy(player, 3.0F * PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode), Database.SOUND_ENEMY_ATTACK1);
+                                }
+                                break;
+
+                            case Database.ENEMY_EIGHT_EIGHT:
+                                if (player.ActionLabel.text == "【八】はがい絞め")
+                                {
+                                    UpdateBattleText(player.FirstName + "は８つの足をグルリと回し、絡ませてきた！\r\n");
+                                    NowBlind(player, target, 2);
+                                    NowSlow(player, target, 4);
+                                    NowStunning(player, target, 2);
+
+                                    PlayerNormalAttack(player, target, 0.0f, false, false);
+                                }
+                                else if (player.ActionLabel.text == "ブチ巻く黒墨")
+                                {
+                                    UpdateBattleText(player.FirstName + "は真っ黒い墨を自分自身にブチ巻けた\r\n");
+                                    effectValue = 250.0F;
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
+                                    player.CurrentMagicAttackUp = Database.INFINITY;
+                                    player.CurrentMagicAttackUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
+                                }
+                                else if (player.ActionLabel.text == "黒墨ミサイル")
+                                {
+                                    UpdateBattleText(player.FirstName + "は墨をミサイル形状化させて放ってきた！\r\n");
+                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                }
+                                else if (player.ActionLabel.text == "大渦巻き")
+                                {
+                                    UpdateBattleText(player.FirstName + "は巨大な渦巻きを周囲に発生させてきた！\r\n");
+                                    PlayerPhysicalAttackAllEnemy(player, 3.0F * PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode), Database.SOUND_ENEMY_ATTACK1);
+                                }
+                                break;
+
+
+                            case Database.ENEMY_BRILLIANT_SEA_PRINCE:
+                                if (player.ActionLabel.text == "シースライドウォータ")
+                                {
+                                    UpdateBattleText(player.FirstName + "はシースライドウォータを発動した！\r\n");
+                                    effectValue = 200.0f;
+
+                                    // 魔法攻撃UP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
+                                    player.CurrentMagicAttackUp = 3;
+                                    player.CurrentMagicAttackUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, 3);
+                                    // スピードUP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘速度UP");
+                                    player.CurrentSpeedUp = 3;
+                                    player.CurrentSpeedUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 3);
+
+                                    UpdateBattleText(player.FirstName + "は【魔法攻撃】【戦闘速度】が" + effectValue.ToString() + "上昇\r\n");
+                                }
+                                else if (player.ActionLabel.text == "勇敢な雄叫び")
+                                {
+                                    UpdateBattleText(player.FirstName + "は勇敢な雄叫びを上げた！\r\n");
+
+                                    effectValue = 160.0F;
+
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "力UP");
+                                    player.CurrentStrengthUp = 3;
+                                    player.CurrentStrengthUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", 3);
+
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "心UP");
+                                    player.CurrentMindUp = 3;
+                                    player.CurrentMindUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp.bmp", 3);
+
+                                    UpdateBattleText(player.FirstName + "は【力】と【心】が" + effectValue.ToString() + "上昇\r\n");
+                                }
+                                else if ((player.StackCommandString == "アイソニック・ウェイヴ") ||
+                                         (player.ActionLabel.text == "アイソニック・ウェイヴ"))
+                                {
+                                    UpdateBattleText(player.FirstName + "はアイソニック・ウェイヴを放ってきた！\r\n");
+                                    // 全体ダメージ
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Ice);
+                                }
+                                else if (player.ActionLabel.text == "グングニル・スラッシュ")
+                                {
+                                    UpdateBattleText(player.FirstName + "：食らえ、グングニルの力！　ッヤアァァァ！！\r\n");
+                                    // 物理攻撃
+                                    double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
+                                    PlayerNormalAttack(player, target, 10.0f, 0, false, true, 0, 0, string.Empty, -1, true, CriticalType.Random);
+                                }
+                                else if (player.ActionLabel.text == "グングニルの閃光")
+                                {
+                                    UpdateBattleText(player.FirstName + "：光輝け、グングニル！　ッハアァァァ！！\r\n");
+
+                                    // 魔法攻撃
+                                    double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
+                                    PlayerMagicAttack(player, target, 0, 10.0f);
+                                }
+                                break;
+
+                            case Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN:
+                                if (player.StackCommandString == "エレメンタル・スプラッシュ")
+                                {
+                                    UpdateBattleText(player.FirstName + "は宙にウォータエレメンタルを飛ばした！\r\n");
+                                    // 全体ダメージ
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Ice);
+                                }
+                                else if ((player.ActionLabel.text == "生命の龍水") ||
+                                         (player.StackCommandString == "生命の龍水"))
+                                {
+                                    UpdateBattleText(player.FirstName + "は生命の龍水を体中に浴びた！\r\n");
+                                    // ライフ回復
+                                    effectValue = player.Intelligence * 4;
+                                    PlayerAbstractLifeGain(player, player, 0, effectValue, 0, "FreshHeal.mp3", 5002);
+                                }
+                                else if ((player.ActionLabel.text == "サルマンの詠唱") ||
+                                         (player.StackCommandString == "サルマンの詠唱"))
+                                {
+                                    UpdateBattleText(player.FirstName + "はサルマン神に対する誓いの詠唱を謡った！\r\n");
+                                    PlayerSpellAbsorbWater(player, player);
+                                    PlayerSpellMirrorImage(player, player);
+                                }
+                                else if ((player.ActionLabel.text == "アンダートの詠唱") ||
+                                         (player.StackCommandString == "アンダートの詠唱"))
+                                {
+                                    UpdateBattleText(player.FirstName + "はアンダート神に対する誓いの詠唱を謡った！\r\n");
+                                    // 物理防御UP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理防御UP");
+                                    effectValue = 9999.9F;
+                                    player.CurrentPhysicalDefenseUp = 3;
+                                    player.CurrentPhysicalDefenseUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp.bmp", 3);
+                                }
+                                break;
+
+                            case Database.ENEMY_SHELL_SWORD_KNIGHT:
+                                if (player.StackCommandString == "ジュエル・ブレイク")
+                                {
+                                    UpdateBattleText(player.FirstName + "はジュエル・ブレイクを放った！\r\n");
+
+                                    if (PlayerNormalAttack(player, player.StackTarget, 2.0F, true, false))
+                                    {
+                                        PlayerSpellDispelMagic(player, player.StackTarget);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ブリンク・シェル")
+                                {
+                                    UpdateBattleText(player.FirstName + "はブリンク・シェルを発動した！\r\n");
+                                    // 次のターン、100必殺
+                                    PlayerSpellWordOfFortune(player, player);
+                                }
+                                else if (player.ActionLabel.text == "シー・ストライプ")
+                                {
+                                    if (PlayerNormalAttack(player, target, 1.0F, false, false))
+                                    {
+                                        player.CurrentSpeedBoost = 75;
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "深海の渦")
+                                {
+                                    UpdateBattleText(player.FirstName + "は深海の渦を発生させた！\r\n");
+                                    // 全体鈍化
+                                    PlayerSlowAllEnemy(player, 10);
+                                }
+                                else if (player.ActionLabel.text == "海星源への忠誠")
+                                {
+                                    UpdateBattleText(player.FirstName + "：海星源。永遠なる王のため！！\r\n");
+                                    // 物理攻撃UP
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
+                                    effectValue = 550.0F;
+                                    player.CurrentPhysicalAttackUp = 3;
+                                    player.CurrentPhysicalAttackUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", 3);
+                                }
+                                break;
+
+                            case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
+                                if (player.StackCommandString == "溶岩の一撃")
+                                {
+                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 1.5F, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                }
+                                else if (player.ActionLabel.text == "燃え盛る炎弾丸")
+                                {
+                                    UpdateBattleText(player.FirstName + "は燃え盛る炎の弾丸を吐いてきた！\r\n");
+
+                                    PlayerRandomTargetDamage(player, 5, "FireBall.mp3", TruthActionCommand.MagicType.Fire);
+                                }
+                                else if (player.ActionLabel.text == "ブレイジング・ストーム")
+                                {
+                                    UpdateBattleText(player.FirstName + "の眼が大きくなる！ブレイジング・ストームを放射してきた！\r\n");
+
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FlameStrike.mp3", TruthActionCommand.MagicType.Fire);
+                                }
+                                else if (player.ActionLabel.text == "ファイア・ウォール")
+                                {
+                                    // 蒼目の方に火炎耐性を付ける。
+                                    UpdateBattleText(player.FirstName + "はファイア・ウォールを発生させた！\r\n");
+
+                                    if (ec2 != null && !ec2.Dead)
+                                    {
+                                        ec2.CurrentResistFireUp = 10;
+                                        ec2.CurrentResistFireUpValue = 2000;
+                                        ec2.ActivateBuff(ec2.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", 10);
+                                    }
+                                    else if (ec1 != null && !ec1.Dead)
+                                    {
+                                        ec1.CurrentResistFireUp = 10;
+                                        ec1.CurrentResistFireUpValue = 2000;
+                                        ec1.ActivateBuff(ec1.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", 10);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "フラッシュ・バーン")
+                                {
+                                    UpdateBattleText(player.FirstName + "の目が一瞬、白い閃光を放ってきた！\r\n");
+
+                                    PlayerAllSilence(player);
+                                }
+                                break;
+
+                            case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
+                                if (player.StackCommandString == "凍雹の一撃")
+                                {
+                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 1.5F, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                }
+                                else if (player.ActionLabel.text == "凍てつく氷弾丸")
+                                {
+                                    UpdateBattleText(player.FirstName + "は凍てつく氷の弾丸を放ってきた！\r\n");
+
+                                    PlayerRandomTargetDamage(player, 5, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+                                }
+                                else if (player.ActionLabel.text == "ウォーター・スラッシュ")
+                                {
+                                    UpdateBattleText(player.FirstName + "の眼が大きくなる！ウォーター・スラッシュを発生させてきた！\r\n");
+
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+                                }
+                                else if (player.ActionLabel.text == "ウォータ・バブル")
+                                {
+                                    //　赤目の方に水耐性を付ける。
+                                    UpdateBattleText(player.FirstName + "はウォータ・バブルを発生させた！\r\n");
+
+                                    if (ec1 != null && !ec1.Dead)
+                                    {
+                                        ec1.CurrentResistIceUp = 10;
+                                        ec1.CurrentResistIceUpValue = 2000;
+                                        ec1.ActivateBuff(ec1.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", 10);
+                                    }
+                                    else if (ec2 != null && !ec2.Dead)
+                                    {
+                                        ec2.CurrentResistIceUp = 10;
+                                        ec2.CurrentResistIceUpValue = 2000;
+                                        ec2.ActivateBuff(ec2.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", 10);
+                                    }
+
+                                }
+                                else if (player.ActionLabel.text == "ハルシネイト・アイ")
+                                {
+                                    UpdateBattleText(player.FirstName + "の目が鋭く凝視してきた！\r\n");
+
+                                    PlayerAllStun(player);
+                                }
+
+                                break;
+
+
+                            case Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU:
+                                if (player.StackCommandString == "スター・ダスト")
+                                {
+                                    UpdateBattleText(player.FirstName + "のスターソードが" + player.StackTarget.FirstName + "へ無数の星屑を落とす！\r\n");
+
+                                    if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
+                                    {
+                                        NowBlind(player, player.StackTarget, 7);
+                                    }
+
+                                    if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
+                                    {
+                                        NowStunning(player, player.StackTarget, 1);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "スターソード『煌』")
+                                {
+                                    UpdateBattleText(player.FirstName + "はスターソード『煌』を振りかざしてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 3.0F, false, false);
+                                }
+                                else if (player.ActionLabel.text == "エーギル・フィールド")
+                                {
+                                    UpdateBattleText(player.FirstName + "はスターソード『煌』を地面に差し込んだ！\r\n");
+
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "物理防御UP");
+                                    player.Target2.CurrentPhysicalDefenseUp = 4;
+                                    player.Target2.CurrentPhysicalDefenseUpValue = 3000;
+                                    player.Target2.ActivateBuff(player.Target2.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, 4);
+                                }
+                                break;
+
+                            case Database.ENEMY_SEA_STAR_KNIGHT_AMARA:
+                                if (player.StackCommandString == "スター・フォール")
+                                {
+                                    UpdateBattleText(player.FirstName + "のスターソードが" + player.StackTarget.FirstName + "へ無数の星屑を落とす！\r\n");
+                                    if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
+                                    {
+                                        NowSilence(player, player.StackTarget, 5);
+                                    }
+
+                                    if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
+                                    {
+                                        NowStunning(player, player.StackTarget, 1);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "スターソード『艶』")
+                                {
+                                    UpdateBattleText(player.FirstName + "はスターソード『艶』を振りかざしてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 3.0F, false, false);
+                                }
+                                else if (player.ActionLabel.text == "アマラ・フィールド")
+                                {
+                                    UpdateBattleText(player.FirstName + "はスターソード『艶』を地面に差し込んだ！\r\n");
+
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player.Target2, 0, Color.black, false, false, "魔法防御UP");
+                                    player.Target2.CurrentMagicDefenseUp = 4;
+                                    player.Target2.CurrentMagicDefenseUpValue = 3000;
+                                    player.Target2.ActivateBuff(player.Target2.pbMagicDefenseUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_UP, 4);
+                                }
+                                break;
+
+                            case Database.ENEMY_SEA_STAR_ORIGIN_KING:
+                                if (player.StackCommandString == "海星源の授印")
+                                {
+                                    UpdateBattleText(player.FirstName + "は海星源の場全体へ大きな授印を展開しはじめた！\r\n");
+
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
+                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
+                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerSpellProtection(player, group[ii]);
+                                        PlayerSpellSaintPower(player, group[ii]);
+                                        PlayerSpellDeflection(player, group[ii]);
+                                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, group[ii], 0, Color.black, false, false, "授印");
+                                    }
+                                }
+                                break;
+
+                            case Database.ENEMY_BOSS_LEVIATHAN:
+                                if (player.StackCommandString == "タイダル・ウェイブ")
+                                {
+                                    // 全体ダメージ
+                                    UpdateBattleText(player.FirstName + "は体全体を大きくうならせ、大きな津波を発生させてきた！\r\n");
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 3.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+                                    break;
+                                }
+                                else if (player.ActionLabel.text == "バースト・クラウド")
+                                {
+                                    // ランダムダメージ
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+
+                                    for (int ii = 0; ii < 10; ii++)
+                                    {
+                                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 2;
+
+                                        int tempRandom = AP.Math.RandomInteger(group.Count);
+                                        AbstractMagicDamage(player, group[tempRandom], 10, ref damage, 0, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "海王の咆哮")
+                                {
+                                    // パワーアップ
+                                    effectValue = 500.0F;
+                                    UpdateBattleText(player.FirstName + "は【魔法攻撃】が" + effectValue.ToString() + "上昇\r\n");
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
+                                    player.CurrentMagicAttackUp = Database.INFINITY;
+                                    player.CurrentMagicAttackUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
+
+                                    effectValue = 500.0F;
+                                    UpdateBattleText(player.FirstName + "は【物理攻撃】が" + effectValue.ToString() + "上昇\r\n");
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
+                                    player.CurrentPhysicalAttackUp = Database.INFINITY;
+                                    player.CurrentPhysicalAttackUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, Database.INFINITY);
+
+                                    effectValue = 2500.0F;
+                                    UpdateBattleText(player.FirstName + "は【戦闘反応】が" + effectValue.ToString() + "上昇\r\n");
+                                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘反応UP");
+                                    player.CurrentReactionUp = Database.INFINITY;
+                                    player.CurrentReactionUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + Database.BUFF_REACTION_UP, Database.INFINITY);
+
+                                }
+                                else if (player.ActionLabel.text == "サージェティック・バインド")
+                                {
+                                    // 巻きつきによるスタン＋出血ダメージ攻撃を行う。
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+
+                                    int tempRandom = AP.Math.RandomInteger(group.Count);
+
+                                    if (PlayerNormalAttack(player, group[tempRandom], 0, false, false))
+                                    {
+                                        NowSlip(player, group[tempRandom], 10);
+                                        NowStunning(player, group[tempRandom], 1);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "大激衝")
+                                {
+                                    // 一体に大ダメージ
+                                    PlayerNormalAttack(player, target, 5.0F, false, false);
+                                }
+                                break;
+
+                            // todo
+                            // ２階：支配竜
+                            //case Database.ENEMY_DRAGON_TINKOU_DEEPSEA:
+                            //    if (player.ActionLabel.text == "形成消失" || player.StackCommandString == "形成消失")
+                            //    {
+                            //        txtBattleMessage.text = txtBattleMessage.text.Insert(0, "【沈降せし者】ディープシーは、その場より消えさった。\r\n");
+                            //        txtBattleMessage.Update();
+                            //        System.Threading.Thread.Sleep(2000);
+                            //        endBattleForMatrixDragonEnd = true;
+                            //    }
+                            //    else if (player.ActionLabel.text == "無音の呼び声")
+                            //    {
+                            //        if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                            //        {
+                            //            string message = "    【ディープシーの声】\r\n\r\n    希望を、さすれば絶望の中にて生を得る。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                            //        {
+                            //            string message = "    【ディープシーの声】\r\n\r\n    希望を、さすれば虚無より、空間を生み出す。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 2)
+                            //        {
+                            //            string message = "    【ディープシーの声】\r\n\r\n    希望を、さすれば自己消失より、存在を見出す。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 3)
+                            //        {
+                            //            string message = "    【ディープシーの声】\r\n\r\n    希望とは、完全に沈降した世界より生まれるもの。\r\n    これを認識せよ、アイン・ウォーレンス。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 4)
+                            //        {
+                            //            string message = "    【ディープシーの声】\r\n\r\n    さすれば、完全なる希望が得られるであろう。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //    }
+                            //    break;
+
+                            // ２階：DUEL対戦相手
+                            case Database.DUEL_SCOTY_ZALGE:
+                                if (player.ActionLabel.text == "ザルゲ・スラッシュ")
+                                {
+                                    if (PlayerNormalAttack(player, target, 0, false, false))
+                                    {
+                                        NowPoison(player, target, 999, true);
+                                    }
+                                }
+                                break;
+                            #endregion
             //                #region "３階"
             //                // ３階雑魚
             //                case Database.ENEMY_TOSSIN_ORC:
-            //                    if (player.ActionLabel.Text == "突貫")
+            //                    if (player.ActionLabel.text == "突貫")
             //                    {
-            //                        UpdateBattleText(player.Name + "は" + target.Name + "に向けて突貫してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は" + target.FirstName + "に向けて突貫してきた！\r\n");
             //                        PlayerNormalAttack(player, target, 2.0F, true, false);
             //                    }
-            //                    else if (player.ActionLabel.Text == "暴走")
+            //                    else if (player.ActionLabel.text == "暴走")
             //                    {
-            //                        UpdateBattleText(player.Name + "の暴走！　見境なく攻撃をしてきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の暴走！　見境なく攻撃をしてきた！\r\n");
             //                        PlayerRandomTargetPhysicalDamage(player, 4, 0, 0.0F);
             //                    }
             //                    break;
             //                case Database.ENEMY_SNOW_CAT:
-            //                    if (player.ActionLabel.Text == "連続攻撃")
+            //                    if (player.ActionLabel.text == "連続攻撃")
             //                    {
-            //                        UpdateBattleText(player.Name + "の連続攻撃！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の連続攻撃！\r\n");
             //                        PlayerNormalAttack(player, target, 0, false, false);
             //                        PlayerNormalAttack(player, target, 0, false, false);
             //                    }
-            //                    else if (player.ActionLabel.Text == "凍りつく吹雪")
+            //                    else if (player.ActionLabel.text == "凍りつく吹雪")
             //                    {
-            //                        UpdateBattleText(player.Name + "は" + target.Name + "へ凍りつく吹雪を繰り出してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は" + target.FirstName + "へ凍りつく吹雪を繰り出してきた！\r\n");
             //                        PlayerMagicAttack(player, target, 0, 0.0F);
             //                        NowFrozen(player, target, 1);
             //                        NowSlow(player, target, 2);
             //                    }
             //                    break;
             //                case Database.ENEMY_WAR_MAMMOTH:
-            //                    if (player.ActionLabel.Text == "ためる") // ためるは魔法専用だが、ここではマンモス専用で物理攻撃２倍としたい。
+            //                    if (player.ActionLabel.text == "ためる") // ためるは魔法専用だが、ここではマンモス専用で物理攻撃２倍としたい。
             //                    {
-            //                        UpdateBattleText(player.Name + "はその場で足踏みをしている。\r\n");
+            //                        UpdateBattleText(player.FirstName + "はその場で足踏みをしている。\r\n");
             //                        player.CurrentPhysicalChargeCount++;
             //                    }
-            //                    else if (player.ActionLabel.Text == "蹂躙")
+            //                    else if (player.ActionLabel.text == "蹂躙")
             //                    {
-            //                        UpdateBattleText(player.Name + "は場全体を蹂躙してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は場全体を蹂躙してきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2147,9 +2105,9 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_WINGED_COLD_FAIRY:
-            //                    if (player.ActionLabel.Text == "プチ・ブリザード")
+            //                    if (player.ActionLabel.text == "プチ・ブリザード")
             //                    {
-            //                        UpdateBattleText(player.Name + "：凍えちゃえ、プチ・ブリザード！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：凍えちゃえ、プチ・ブリザード！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2160,15 +2118,15 @@ namespace DungeonPlayer
             //                            NowFrozen(player, group[ii], 1);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "凍結玉")
+            //                    else if (player.ActionLabel.text == "凍結玉")
             //                    {
-            //                        UpdateBattleText(player.Name + "：動けないようにしてアゲル。　凍結玉！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：動けないようにしてアゲル。　凍結玉！\r\n");
             //                        PlayerMagicAttack(player, target, 0, 0);
             //                        NowFrozen(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "ウィンター・ソング")
+            //                    else if (player.ActionLabel.text == "ウィンター・ソング")
             //                    {
-            //                        UpdateBattleText(player.Name + "：ステキでしょ・・・ウィンターソング。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：ステキでしょ・・・ウィンターソング。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2181,27 +2139,27 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_BRUTAL_OGRE:
-            //                    if (player.ActionLabel.Text == "ぶん投げる")
+            //                    if (player.ActionLabel.text == "ぶん投げる")
             //                    {
-            //                        UpdateBattleText(player.Name + "は棍棒をぶん投げてきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は棍棒をぶん投げてきた！\r\n");
             //                        PlayerNormalAttack(player, target, 0, false, false);
             //                    }
-            //                    else if (player.ActionLabel.Text == "氷の儀式")
+            //                    else if (player.ActionLabel.text == "氷の儀式")
             //                    {
-            //                        UpdateBattleText(player.Name + "は氷の儀式を行った。氷属性の攻撃が棍棒に追加付与された！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は氷の儀式を行った。氷属性の攻撃が棍棒に追加付与された！\r\n");
             //                        GroundOne.PlaySoundEffect("IceNeedle.mp3");
             //                        target.CurrentFrozenAura = Database.INFINITY;
             //                        target.ActivateBuff(target.pbFrozenAura, Database.BaseResourceFolder + "FrozenAura.bmp", Database.INFINITY);
             //                    }
             //                    break;
             //                case Database.ENEMY_HYDRO_LIZARD:
-            //                    if (player.ActionLabel.Text == "リザード・スラッシュ")
+            //                    if (player.ActionLabel.text == "リザード・スラッシュ")
             //                    {
             //                        PlayerNormalAttack(player, player.Target, 0, 1, false, false, 0, 0, Database.SOUND_CRUSHING_BLOW, -1, true, CriticalType.Random);
             //                    }
-            //                    else if (player.ActionLabel.Text == "アイシクル・ブレード")
+            //                    else if (player.ActionLabel.text == "アイシクル・ブレード")
             //                    {
-            //                        UpdateBattleText(player.Name + "はブレードを氷化させて太刀を放ってきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "はブレードを氷化させて太刀を放ってきた！\r\n");
             //                        if (PlayerNormalAttack(player, target, 0, false, false))
             //                        {
             //                            NowFrozen(player, target, 1);
@@ -2209,9 +2167,9 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_PENGUIN_STAR:
-            //                    if (player.ActionLabel.Text == "ペンギンの輝き！")
+            //                    if (player.ActionLabel.text == "ペンギンの輝き！")
             //                    {
-            //                        UpdateBattleText(player.Name + "は堂々の構えで凛としたオーラを放ち始めた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は堂々の構えで凛としたオーラを放ち始めた！\r\n");
             //                        player.CurrentStrengthUp = Database.INFINITY;
             //                        player.CurrentStrengthUpValue = 300;
             //                        player.CurrentAgilityUp = Database.INFINITY;
@@ -2228,30 +2186,30 @@ namespace DungeonPlayer
             //                        player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStaminaUp.bmp", Database.INFINITY);
             //                        player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffMindUp.bmp", Database.INFINITY);
             //                    }
-            //                    else if (player.ActionLabel.Text == "ペンギンアタック！")
+            //                    else if (player.ActionLabel.text == "ペンギンアタック！")
             //                    {
-            //                        UpdateBattleText(player.Name + "は勇猛果敢に正面から突っ込んできた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は勇猛果敢に正面から突っ込んできた！\r\n");
             //                        PlayerNormalAttack(player, target, 0, true, false);
             //                    }
             //                    break;
             //                case Database.ENEMY_SWORD_TOOTH_TIGER:
-            //                    if (player.ActionLabel.Text == "サーヴェルクロー")
+            //                    if (player.ActionLabel.text == "サーヴェルクロー")
             //                    {
-            //                        UpdateBattleText(player.Name + "の鋭い剣形状の爪が襲いかかってくる！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の鋭い剣形状の爪が襲いかかってくる！\r\n");
             //                        if (PlayerNormalAttack(player, target, 0, false, false))
             //                        {
             //                            NowStunning(player, target, 2);
             //                            NowSlip(player, target, 10);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "目くらまし")
+            //                    else if (player.ActionLabel.text == "目くらまし")
             //                    {
-            //                        UpdateBattleText(player.Name + "は目くらましを繰り出してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は目くらましを繰り出してきた！\r\n");
             //                        NowBlinded(player, 3);
             //                    }
-            //                    else if (player.ActionLabel.Text == "連速三段")
+            //                    else if (player.ActionLabel.text == "連速三段")
             //                    {
-            //                        UpdateBattleText(player.Name + "は目にも止まらぬ速さで連続攻撃を繰り出してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は目にも止まらぬ速さで連続攻撃を繰り出してきた！\r\n");
             //                        for (int ii = 0; ii < 3; ii++)
             //                        {
             //                            PlayerNormalAttack(player, target, 0, false, false);
@@ -2259,26 +2217,26 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_FEROCIOUS_RAGE_BEAR:
-            //                    if (player.ActionLabel.Text == "四歯戦速")
+            //                    if (player.ActionLabel.text == "四歯戦速")
             //                    {
-            //                        UpdateBattleText(player.Name + "は異常な速さで連続攻撃を繰り出してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は異常な速さで連続攻撃を繰り出してきた！\r\n");
             //                        for (int ii = 0; ii < 4; ii++)
             //                        {
             //                            PlayerNormalAttack(player, target, 0, false, false);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "自己増強")
+            //                    else if (player.ActionLabel.text == "自己増強")
             //                    {
-            //                        UpdateBattleText(player.Name + "は手足の先を地面に食い込ませ、力を入れ始めた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は手足の先を地面に食い込ませ、力を入れ始めた！\r\n");
             //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
             //                        effectValue = 750.0F;
             //                        player.CurrentPhysicalAttackUp = 4;
             //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", 4);
             //                    }
-            //                    else if (player.ActionLabel.Text == "漸波動")
+            //                    else if (player.ActionLabel.text == "漸波動")
             //                    {
-            //                        UpdateBattleText(player.Name + "は轟音のような衝撃を放ってきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は轟音のような衝撃を放ってきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2291,26 +2249,26 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "食いちぎり")
+            //                    else if (player.ActionLabel.text == "食いちぎり")
             //                    {
-            //                        UpdateBattleText(player.Name + "は" + target.Name + "に向け激しく噛み千切ってきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は" + target.FirstName + "に向け激しく噛み千切ってきた！\r\n");
             //                        PlayerLifeHalfMax(player, target);
             //                    }
             //                    break;
 
             //                case Database.ENEMY_WINTER_ORB:
-            //                    if (player.ActionLabel.Text == "氷の結晶術")
+            //                    if (player.ActionLabel.text == "氷の結晶術")
             //                    {
-            //                        UpdateBattleText(player.Name + "は氷を更に結晶化させ、高位魔法の序術を放った！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は氷を更に結晶化させ、高位魔法の序術を放った！\r\n");
             //                        double damage = PrimaryLogic.IceNeedleValue(player, false);
             //                        if (AbstractMagicDamage(player, target, 0, ref damage, 2.0f, "IceNeedle.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
             //                        {
             //                            NowFrozen(player, target, 1);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "冷気の射出")
+            //                    else if (player.ActionLabel.text == "冷気の射出")
             //                    {
-            //                        UpdateBattleText(player.Name + "は凍える冷気を周囲全体に射出した！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は凍える冷気を周囲全体に射出した！\r\n");
             //                        for (int ii = 0; ii < 5; ii++)
             //                        {
             //                            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 3;
@@ -2327,14 +2285,14 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI:
-            //                    if (player.ActionLabel.Text == "津波の呼び声")
+            //                    if (player.ActionLabel.text == "津波の呼び声")
             //                    {
-            //                        UpdateBattleText(player.Name + "は周囲全体の場へ津波が襲来するよう呼び声を放った！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は周囲全体の場へ津波が襲来するよう呼び声を放った！\r\n");
             //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
             //                    }
-            //                    else if (player.ActionLabel.Text == "平穏の呼び声")
+            //                    else if (player.ActionLabel.text == "平穏の呼び声")
             //                    {
-            //                        UpdateBattleText(player.Name + "は周囲全体の場が和むような呼び声を放った！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は周囲全体の場が和むような呼び声を放った！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2346,9 +2304,9 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_INTELLIGENCE_ARGONIAN:
-            //                    if (player.ActionLabel.Text == "打突")
+            //                    if (player.ActionLabel.text == "打突")
             //                    {
-            //                        UpdateBattleText(player.Name + "は剣の切っ先を鋭く" + target.Name + "へ向け、突いてきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は剣の切っ先を鋭く" + target.FirstName + "へ向け、突いてきた！\r\n");
             //                        if (PlayerNormalAttack(player, target, 0, true, false))
             //                        {
             //                            NowParalyze(player, target, 1);
@@ -2356,9 +2314,9 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_MAGIC_HYOU_RIFLE:
-            //                    if (player.ActionLabel.Text == "雹弾乱射")
+            //                    if (player.ActionLabel.text == "雹弾乱射")
             //                    {
-            //                        UpdateBattleText(player.Name + "は銃口を特定に定めず、乱射してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は銃口を特定に定めず、乱射してきた！\r\n");
             //                        for (int ii = 0; ii < 10; ii++)
             //                        {
             //                            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 3;
@@ -2370,9 +2328,9 @@ namespace DungeonPlayer
             //                            AbstractMagicDamage(player, group[tempdata], 10, ref damage, 0, "IceNeedle.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "ＳＰＬＡＳＨ！")
+            //                    else if (player.ActionLabel.text == "ＳＰＬＡＳＨ！")
             //                    {
-            //                        UpdateBattleText(player.Name + "：ＳＰＬＡａａａａａａａａａａＳＨ！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：ＳＰＬＡａａａａａａａａａａＳＨ！！\r\n");
             //                        for (int ii = 0; ii < 20; ii++)
             //                        {
             //                            string sound = String.Empty;
@@ -2382,9 +2340,9 @@ namespace DungeonPlayer
             //                            AbstractMagicDamage(player, target, 10, ref damage, 0, sound, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "マジックバリア")
+            //                    else if (player.ActionLabel.text == "マジックバリア")
             //                    {
-            //                        UpdateBattleText(player.Name + "は周囲全体に濃い青色のフィールドを展開した！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は周囲全体に濃い青色のフィールドを展開した！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
             //                        if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
@@ -2398,9 +2356,9 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_PURE_BLIZZARD_CRYSTAL:
-            //                    if (player.ActionLabel.Text == "ブリザード")
+            //                    if (player.ActionLabel.text == "ブリザード")
             //                    {
-            //                        UpdateBattleText(player.Name + "：【クダケチレ　オール　ブリザード】\r\n");
+            //                        UpdateBattleText(player.FirstName + "：【クダケチレ　オール　ブリザード】\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2415,9 +2373,9 @@ namespace DungeonPlayer
             //                            AbstractMagicDamage(player, group[randomValue], 2 * (ii + 1), ref damage, 0, sound, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "零式")
+            //                    else if (player.ActionLabel.text == "零式")
             //                    {
-            //                        UpdateBattleText(player.Name + "：【ハテテシマエ　クウゼツホウ　ゼロシキ】\r\n");
+            //                        UpdateBattleText(player.FirstName + "：【ハテテシマエ　クウゼツホウ　ゼロシキ】\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2429,14 +2387,14 @@ namespace DungeonPlayer
             //                            NowFrozen(player, group[randomValue], 3);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "蒼授の気配")
+            //                    else if (player.ActionLabel.text == "蒼授の気配")
             //                    {
-            //                        UpdateBattleText(player.Name + "：【ワレコソガ　テンシ　ソウジュ　ノ　シンノツカイテ】\r\n");
+            //                        UpdateBattleText(player.FirstName + "：【ワレコソガ　テンシ　ソウジュ　ノ　シンノツカイテ】\r\n");
             //                        PlayerSpellPromisedKnowledge(player, player);
             //                    }
-            //                    else if (player.ActionLabel.Text == "絶・スピニングランサー")
+            //                    else if (player.ActionLabel.text == "絶・スピニングランサー")
             //                    {
-            //                        UpdateBattleText(player.Name + "：【ケシトベ　ゼツ　スピニングランサー】\r\n");
+            //                        UpdateBattleText(player.FirstName + "：【ケシトベ　ゼツ　スピニングランサー】\r\n");
             //                        if (target.CurrentLife <= 1) // ライフが既に１の場合は即死させる。
             //                        {
             //                            PlayerDeath(player, target);
@@ -2449,7 +2407,7 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_PURPLE_EYE_WARE_WOLF:
-            //                    if (player.ActionLabel.Text == "バトルクライ")
+            //                    if (player.ActionLabel.text == "バトルクライ")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
@@ -2465,7 +2423,7 @@ namespace DungeonPlayer
             //                            group[ii].ActivateBuff(group[ii].pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", 3);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "キリング・スラッシュ")
+            //                    else if (player.ActionLabel.text == "キリング・スラッシュ")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -2479,18 +2437,18 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_FROST_HEART:
-            //                    if (player.ActionLabel.Text == "冷気圧縮")
+            //                    if (player.ActionLabel.text == "冷気圧縮")
             //                    {
-            //                        UpdateBattleText(player.Name + "の発光状態の青さが増していく！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の発光状態の青さが増していく！\r\n");
             //                        effectValue = 10000.0F;
             //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "魔法攻撃UP");
             //                        player.CurrentMagicAttackUp = Database.INFINITY;
             //                        player.CurrentMagicAttackUpValue += (int)effectValue;
             //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
             //                    }
-            //                    else if (player.ActionLabel.Text == "自爆")
+            //                    else if (player.ActionLabel.text == "自爆")
             //                    {
-            //                        UpdateBattleText(player.Name + "の発光状態が急激に青から白へと変わっていく！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の発光状態が急激に青から白へと変わっていく！！\r\n");
             //                        if (AbstractMagicDamage(player, target, 0, 0, 1.0f, "IceNeedle.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
             //                        {
             //                            double damage = player.CurrentLife;
@@ -2501,21 +2459,21 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_WIND_BREAKER:
-            //                    if (player.ActionLabel.Text == "ソード・オブ・ウィンド")
+            //                    if (player.ActionLabel.text == "ソード・オブ・ウィンド")
             //                    {
-            //                        UpdateBattleText(player.Name + "：コオオォォォォオォォォォォ.....\r\n");
+            //                        UpdateBattleText(player.FirstName + "：コオオォォォォオォォォォォ.....\r\n");
             //                        PlayerSpellFlameAura(player, player);
             //                        PlayerSpellFrozenAura(player, player);
             //                        PlayerSpellGaleWind(player);
             //                    }
-            //                    else if (player.ActionLabel.Text == "断空")
+            //                    else if (player.ActionLabel.text == "断空")
             //                    {
-            //                        UpdateBattleText(player.Name + "：フシュウウゥゥゥゥウウウゥゥ！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：フシュウウゥゥゥゥウウウゥゥ！！\r\n");
             //                        PlayerNormalAttack(player, target, 10.0f, 0, false, false, 0, 0, "KineticSmash.mp3", -1, false, CriticalType.None);
             //                    }
-            //                    else if (player.ActionLabel.Text == "アイス・トルネード")
+            //                    else if (player.ActionLabel.text == "アイス・トルネード")
             //                    {
-            //                        UpdateBattleText(player.Name + "：ッゴアアァァアァァァァアア！！！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：ッゴアアァァアァァァァアア！！！！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2528,31 +2486,31 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_TUNDRA_LONGHORN_DEER:
-            //                    if (player.ActionLabel.Text == "トキのコエ")
+            //                    if (player.ActionLabel.text == "トキのコエ")
             //                    {
-            //                        UpdateBattleText(player.Name + "は澄み切った発声を一定のリズムを刻む波長を発してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は澄み切った発声を一定のリズムを刻む波長を発してきた！\r\n");
             //                        NowSlow(player, target, 10);
             //                        NowTemptation(player, target, 2);
             //                        BuffDownBattleReaction(target, 10000);
             //                    }
-            //                    else if (player.ActionLabel.Text == "氷雪化現象")
+            //                    else if (player.ActionLabel.text == "氷雪化現象")
             //                    {
-            //                        UpdateBattleText(player.Name + "の目の奥が青白く輝いた！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の目の奥が青白く輝いた！！\r\n");
             //                        NowBlind(player, target, 10);
             //                        NowFrozen(player, target, 2);
             //                        effectValue = 3000.0F;
             //                        BuffDownPhysicalAttack(target, effectValue);
             //                    }
-            //                    else if (player.ActionLabel.Text == "無音音響の和")
+            //                    else if (player.ActionLabel.text == "無音音響の和")
             //                    {
-            //                        UpdateBattleText(player.Name + "は発声を行わず、口の形だけを言葉として表してきた。\r\n");
+            //                        UpdateBattleText(player.FirstName + "は発声を行わず、口の形だけを言葉として表してきた。\r\n");
             //                        NowSilence(player, target, 10);
             //                        NowParalyze(player, target, 2);
             //                        BuffDownMagicDefense(target, 10000);
             //                    }
-            //                    else if (player.ActionLabel.Text == "レッドスノーホーン")
+            //                    else if (player.ActionLabel.text == "レッドスノーホーン")
             //                    {
-            //                        UpdateBattleText(player.Name + "は真っ赤な角をこちらに向け、奇妙な呻き声を発しながら高熱の火の玉を吹き出してきた！！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は真っ赤な角をこちらに向け、奇妙な呻き声を発しながら高熱の火の玉を吹き出してきた！！！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2594,10 +2552,10 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "もぎとり")
+            //                    else if (player.ActionLabel.text == "もぎとり")
             //                    {
             //                        // ライフを０にして即死させるか、ライフ１にする。
-            //                        UpdateBattleText(player.Name + "は巨大な両手をこちらへ向け、胴体をもぎとりにきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は巨大な両手をこちらへ向け、胴体をもぎとりにきた！\r\n");
             //                        if (target.CurrentLife <= 1) // ライフが既に１の場合は即死させる。
             //                        {
             //                            PlayerDeath(player, target);
@@ -2616,9 +2574,9 @@ namespace DungeonPlayer
             //                        }
             //                        break;
             //                    }
-            //                    else if (player.ActionLabel.Text == "ブンまわし")
+            //                    else if (player.ActionLabel.text == "ブンまわし")
             //                    {
-            //                        UpdateBattleText(player.Name + "は大きい尻尾を部屋中全体に対して振り回してきた！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は大きい尻尾を部屋中全体に対して振り回してきた！！\r\n");
 
             //                        // 全員：麻痺＋物理ダメージ
             //                        List<MainCharacter> group = new List<MainCharacter>();
@@ -2645,7 +2603,7 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "異常音響")
+            //                    else if (player.ActionLabel.text == "異常音響")
             //                    {
             //                        // 沈黙＋魔法攻撃DOWN＋魔法防御DOWN
             //                        if (GroundOne.Difficulty <= 1)
@@ -2671,7 +2629,7 @@ namespace DungeonPlayer
             //                            BuffDownMagicDefense(target, 2000);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "凍らせる視線")
+            //                    else if (player.ActionLabel.text == "凍らせる視線")
             //                    {
             //                        // 凍結＋戦闘反応DOWN＋戦闘速度DOWN
             //                        if (GroundOne.Difficulty <= 1)
@@ -2697,7 +2655,7 @@ namespace DungeonPlayer
             //                            BuffDownBattleReaction(target, 1000);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "破裂する雄叫び")
+            //                    else if (player.ActionLabel.text == "破裂する雄叫び")
             //                    {
             //                        // 全体：次のターン、敵を対象とする行動は失敗する。その後、自分自身がスタンする。
             //                        List<MainCharacter> group = new List<MainCharacter>();
@@ -2711,34 +2669,78 @@ namespace DungeonPlayer
             //                        }
             //                    }
             //                    break;
+                            //// ３階：支配竜
+                            //case Database.ENEMY_DRAGON_DESOLATOR_AZOLD:
+                            //    //MessageBox.Show(player.StackCommandString);
+                            //    if (player.ActionLabel.text == "形成消失" || player.StackCommandString == "形成消失")
+                            //    {
+                            //        txtBattleMessage.text = txtBattleMessage.text.Insert(0, "【凍てつく者】アゾルドは、その場より消えさった。\r\n");
+                            //        txtBattleMessage.Update();
+                            //        System.Threading.Thread.Sleep(2000);
+                            //        endBattleForMatrixDragonEnd = true;
+                            //    }
+                            //    else if (player.ActionLabel.text == "無音の呼び声")
+                            //    {
+                            //        if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                            //        {
+                            //            string message = "    【アゾルドの声】\r\n\r\n    成長、それは歩を進めようとした者にのみ、認識されるもの。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                            //        {
+                            //            string message = "    【アゾルドの声】\r\n\r\n    成長、それは歩を進めている間の者には、認識できないもの。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 2)
+                            //        {
+                            //            string message = "    【アゾルドの声】\r\n\r\n    成長、それは歩を進めてきた者にのみ、認識されるもの。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 3)
+                            //        {
+                            //            string message = "    【アゾルドの声】\r\n\r\n    成長、それは最終的な生成形態として凍結されるため。\r\n    これを認識せよ、アイン・ウォーレンス。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 4)
+                            //        {
+                            //            string message = "    【アゾルドの声】\r\n\r\n    さすれば、完全なる成長が得られるであろう。";
+                            //            this.Invoke(new _AnimationMessageFadeOut(AnimationMessageFadeOut), message);
+                            //            ((TruthEnemyCharacter)player).AI_TacticsNumber++;
+                            //        }
+                            //    }
+                            //    break;
             //                #endregion
             //                #region "４階"
             //                case Database.ENEMY_GENAN_HUNTER:
-            //                    if (player.ActionLabel.Text == "バインド・ウィップ")
+            //                    if (player.ActionLabel.text == "バインド・ウィップ")
             //                    {
-            //                        UpdateBattleText(player.Name + "は茨のムチをサークル状にし、" + target.Name + "の足元に向けて放ってきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は茨のムチをサークル状にし、" + target.FirstName + "の足元に向けて放ってきた！\r\n");
             //                        if (PlayerNormalAttack(player, target, 0, true, false))
             //                        {
             //                            NowParalyze(player, target, 2);
             //                            NowPoison(player, target, 999, true);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "アジテイト・アロー")
+            //                    else if (player.ActionLabel.text == "アジテイト・アロー")
             //                    {
-            //                        UpdateBattleText(player.Name + "のアジテイト・アローが炸裂し、" + target.Name + "は扇動されてしまった！\r\n");
+            //                        UpdateBattleText(player.FirstName + "のアジテイト・アローが炸裂し、" + target.FirstName + "は扇動されてしまった！\r\n");
             //                        if (PlayerNormalAttack(player, target, 0, true, false))
             //                        {
-            //                            UpdateBattleText(target.Name + "の行動は、通常の攻撃に戻されてしまった。");
+            //                            UpdateBattleText(target.FirstName + "の行動は、通常の攻撃に戻されてしまった。");
             //                            target.PA = MainCharacter.PlayerAction.NormalAttack;
             //                            target.Target = player;
-            //                            target.ActionLabel.Text = Database.ATTACK_JP;
+            //                            target.ActionLabel.text = Database.ATTACK_JP;
             //                            target.MainObjectButton.Image = Image.FromFile(Database.BaseResourceFolder + Database.ATTACK_EN + fileExt);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "デッドリー・ショット")
+            //                    else if (player.ActionLabel.text == "デッドリー・ショット")
             //                    {
             //                        // ライフを０にして即死させるか、ライフ１か、半分に減らすか、にする。
-            //                        UpdateBattleText(player.Name + "は全神経を集中させ、身体を貫通する炎の矢を放ってきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は全神経を集中させ、身体を貫通する炎の矢を放ってきた！\r\n");
             //                        if (target.CurrentLife <= 1) // ライフが既に１の場合は即死させる。
             //                        {
             //                            PlayerDeath(player, target);
@@ -2766,9 +2768,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_BEAST_MASTER:
-            //                    if (player.ActionLabel.Text == "タイガー・ブロウ")
+            //                    if (player.ActionLabel.text == "タイガー・ブロウ")
             //                    {
-            //                        UpdateBattleText(player.Name + "のタイガー・ブロウが炸裂！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "のタイガー・ブロウが炸裂！！\r\n");
             //                        if (PlayerNormalAttack(player, target, 4, 0, false, false, 0, 0, string.Empty, -1, false, CriticalType.None))
             //                        {
             //                            NowStunning(player, target, 2);
@@ -2781,9 +2783,9 @@ namespace DungeonPlayer
             //                        player.CurrentSpeedUpValue = 0;
             //                        player.DeBuff(player.pbSpeedUp);
             //                    }
-            //                    else if (player.ActionLabel.Text == "圧死の咆哮")
+            //                    else if (player.ActionLabel.text == "圧死の咆哮")
             //                    {
-            //                        UpdateBattleText(player.Name + "は、エリア全体を圧迫するかのような雄叫びを上げた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は、エリア全体を圧迫するかのような雄叫びを上げた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2804,17 +2806,17 @@ namespace DungeonPlayer
             //                            else if (rand == 10) { NowTemptation(player, current, 2); }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "ピューマ・ライジング")
+            //                    else if (player.ActionLabel.text == "ピューマ・ライジング")
             //                    {
             //                        effectValue = 2000.0F;
-            //                        UpdateBattleText(player.Name + "は【物理攻撃】が" + effectValue.ToString() + "上昇\r\n");
+            //                        UpdateBattleText(player.FirstName + "は【物理攻撃】が" + effectValue.ToString() + "上昇\r\n");
             //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "物理攻撃UP");
             //                        player.CurrentPhysicalAttackUp = 2;
             //                        player.CurrentPhysicalAttackUpValue = (int)effectValue;
             //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, 2);
 
             //                        effectValue = 1200.0F;
-            //                        UpdateBattleText(player.Name + "は【戦闘速度】が" + effectValue.ToString() + "上昇\r\n");
+            //                        UpdateBattleText(player.FirstName + "は【戦闘速度】が" + effectValue.ToString() + "上昇\r\n");
             //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "戦闘速度UP");
             //                        player.CurrentSpeedUp = 2;
             //                        player.CurrentSpeedUpValue = (int)effectValue;
@@ -2823,20 +2825,20 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_ELDER_ASSASSIN:
-            //                    if (player.ActionLabel.Text == "フェイタル・ニードル")
+            //                    if (player.ActionLabel.text == "フェイタル・ニードル")
             //                    {
-            //                        UpdateBattleText(player.Name + "は目視で確認できないほどの極小の針を" + target.Name + "に向けて放った！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は目視で確認できないほどの極小の針を" + target.FirstName + "に向けて放った！\r\n");
             //                        NowPoison(player, target, 999, true);
             //                        PlayerLifeHalfCurrent(player, target);
             //                    }
-            //                    else if (player.ActionLabel.Text == "気配抹消")
+            //                    else if (player.ActionLabel.text == "気配抹消")
             //                    {
-            //                        UpdateBattleText(player.Name + "は気配を消滅させ、闇と同化した\r\n");
+            //                        UpdateBattleText(player.FirstName + "は気配を消滅させ、闇と同化した\r\n");
             //                        PlayerSkillStanceOfMystic(player, player);
             //                    }
-            //                    else if (player.ActionLabel.Text == "ウロボロスの一撃")
+            //                    else if (player.ActionLabel.text == "ウロボロスの一撃")
             //                    {
-            //                        UpdateBattleText(player.Name + "は奇妙な紋様を手で描いて" + target.Name + "に向かって一撃を放った！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は奇妙な紋様を手で描いて" + target.FirstName + "に向かって一撃を放った！\r\n");
             //                        if (PlayerNormalAttack(player, target, 0, false, false))
             //                        {
             //                            if (GroundOne.Difficulty > 1)
@@ -2847,9 +2849,9 @@ namespace DungeonPlayer
             //                            BuffDownPotential(target, 1500.0F, 3);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "神速の連撃")
+            //                    else if (player.ActionLabel.text == "神速の連撃")
             //                    {
-            //                        UpdateBattleText(player.Name + "はクナイを３本同時に手元にセットし、" + target.Name + "に向かってきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "はクナイを３本同時に手元にセットし、" + target.FirstName + "に向かってきた！\r\n");
             //                        for (int ii = 0; ii < 3; ii++)
             //                        {
             //                            PlayerSkillStraightSmash(player, target, 30, false);
@@ -2858,25 +2860,25 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_FALLEN_SEEKER:
-            //                    if (player.ActionLabel.Text == "汚れし悪魔契約")
+            //                    if (player.ActionLabel.text == "汚れし悪魔契約")
             //                    {
-            //                        UpdateBattleText(player.Name + "はアーク・デーモンを召喚し、【呪闇】の契約を刻み始めた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "はアーク・デーモンを召喚し、【呪闇】の契約を刻み始めた！\r\n");
             //                        player.CurrentShadowUp = Database.INFINITY;
             //                        player.CurrentShadowUpValue = 4500;
             //                        player.ActivateBuff(player.pbShadowUp, Database.BaseResourceFolder + Database.BUFF_SHADOW_UP + fileExt, Database.INFINITY);
             //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "闇属性UP");
             //                    }
-            //                    else if (player.ActionLabel.Text == "純潔の聖天使契約")
+            //                    else if (player.ActionLabel.text == "純潔の聖天使契約")
             //                    {
-            //                        UpdateBattleText(player.Name + "はアーク・エンジェルを召喚し、【呪聖】の契約を刻み始めた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "はアーク・エンジェルを召喚し、【呪聖】の契約を刻み始めた！\r\n");
             //                        player.CurrentLightUp = Database.INFINITY;
             //                        player.CurrentLightUpValue = 7500;
             //                        player.ActivateBuff(player.pbLightUp, Database.BaseResourceFolder + Database.BUFF_LIGHT_UP + fileExt, Database.INFINITY);
             //                        this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "聖属性UP");
             //                    }
-            //                    else if (player.ActionLabel.Text == "ホーリー・バレット")
+            //                    else if (player.ActionLabel.text == "ホーリー・バレット")
             //                    {
-            //                        UpdateBattleText(player.Name + "はホーリー・バレットを詠唱した！\r\n");
+            //                        UpdateBattleText(player.FirstName + "はホーリー・バレットを詠唱した！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2891,16 +2893,16 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "セイント・スラッシュ")
+            //                    else if (player.ActionLabel.text == "セイント・スラッシュ")
             //                    {
-            //                        UpdateBattleText(player.Name + "は聖なる輝きを秘めた剣で、突貫してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は聖なる輝きを秘めた剣で、突貫してきた！\r\n");
             //                        PlayerNormalAttack(player, target, 2.0f, 0, false, false, 0, 0, String.Empty, -1, false, CriticalType.Absolute);
             //                        AbstractMagicDamage(player, target, 0, 0, 2.0f, Database.SOUND_CELESTIAL_NOVA, 120, TruthActionCommand.MagicType.Light_Shadow, false, CriticalType.Absolute);
             //                    }
             //                    break;
 
             //                case Database.ENEMY_MASTER_LOAD:
-            //                    if (player.ActionLabel.Text == "スペリオル・フィールド")
+            //                    if (player.ActionLabel.text == "スペリオル・フィールド")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
@@ -2926,7 +2928,7 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "ダーク・エリミネイト")
+            //                    else if (player.ActionLabel.text == "ダーク・エリミネイト")
             //                    {
             //                        double damage = PrimaryLogic.DarkBlastValue(player, false);
             //                        if (AbstractMagicDamage(player, target, 0, ref damage, 2.0F, Database.SOUND_DARK_BLAST, 120, TruthActionCommand.MagicType.Shadow, false, CriticalType.Random))
@@ -2934,7 +2936,7 @@ namespace DungeonPlayer
             //                            BuffDownMagicDefense(target, 500);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "振動剣")
+            //                    else if (player.ActionLabel.text == "振動剣")
             //                    {
             //                        double damage = PrimaryLogic.DarkBlastValue(player, false);
             //                        if (AbstractMagicDamage(player, target, 0, ref damage, 2.0F, Database.SOUND_RISINGKNUCKLE, 120, TruthActionCommand.MagicType.Force, false, CriticalType.Random))
@@ -2945,33 +2947,33 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_EXECUTIONER:
-            //                    if (player.ActionLabel.Text == "断罪の加護")
+            //                    if (player.ActionLabel.text == "断罪の加護")
             //                    {
-            //                        UpdateBattleText(player.Name + "は剣を天へとすくい上げるモーションを取り、断罪を誓った！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は剣を天へとすくい上げるモーションを取り、断罪を誓った！\r\n");
             //                        GroundOne.PlaySoundEffect(Database.SOUND_GLORY);
             //                        PlayerBuffAbstract(player, player, 999, Database.AFTER_REVIVE_HALF + fileExt);
             //                    }
-            //                    else if (player.ActionLabel.Text == "魂への凍結")
+            //                    else if (player.ActionLabel.text == "魂への凍結")
             //                    {
-            //                        UpdateBattleText(player.Name + "は剣を" + target.Name + "の魂に突き立てるように切っ先を向けた！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は剣を" + target.FirstName + "の魂に突き立てるように切っ先を向けた！！\r\n");
             //                        GroundOne.PlaySoundEffect(Database.SOUND_ABSOLUTE_ZERO);
             //                        if (player.Target.CurrentAbsoluteZero <= 0) // 強力無比な魔法のため、継続ターンの連続更新は出来なくしている。
             //                        {
             //                            PlayerBuffAbstract(player, target, 2, Database.ABSOLUTE_ZERO + fileExt);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "死滅のひと振り")
+            //                    else if (player.ActionLabel.text == "死滅のひと振り")
             //                    {
-            //                        UpdateBattleText(player.Name + "は音もなく、剣を縦にゆるりと振り落とした。\r\n");
+            //                        UpdateBattleText(player.FirstName + "は音もなく、剣を縦にゆるりと振り落とした。\r\n");
             //                        if (PlayerNormalAttack(player, target, 2.0F, false, false))
             //                        {
             //                            GroundOne.PlaySoundEffect(Database.SOUND_DAMNATION);
             //                            PlayerBuffAbstract(player, target, 999, Database.DAMNATION + fileExt);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "デス・ストライク")
+            //                    else if (player.ActionLabel.text == "デス・ストライク")
             //                    {
-            //                        UpdateBattleText(player.Name + "の強烈無比な剣技が" + target.Name + "に炸裂した！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の強烈無比な剣技が" + target.FirstName + "に炸裂した！\r\n");
             //                        if (PlayerNormalAttack(player, target, 3.0F, false, false))
             //                        {
             //                            if (AP.Math.RandomInteger(3) == 0)
@@ -2984,9 +2986,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_DARK_MESSENGER:
-            //                    if (player.ActionLabel.Text == "黒龍のささやき")
+            //                    if (player.ActionLabel.text == "黒龍のささやき")
             //                    {
-            //                        UpdateBattleText(player.Name + "は黒龍より禁断の闇技を授かり、アイン達へ向けて呪術を放った。\r\n");
+            //                        UpdateBattleText(player.FirstName + "は黒龍より禁断の闇技を授かり、アイン達へ向けて呪術を放った。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -2997,7 +2999,7 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
             //                    }
-            //                    else if (player.ActionLabel.Text == "チューズン・サクリファイ")
+            //                    else if (player.ActionLabel.text == "チューズン・サクリファイ")
             //                    {
             //                        List<TruthEnemyCharacter> group = new List<TruthEnemyCharacter>();
             //                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
@@ -3007,7 +3009,7 @@ namespace DungeonPlayer
             //                        {
             //                            if (current != player)
             //                            {
-            //                                UpdateBattleText(player.Name + "は" + current.Name + "の魂を根こそぎエネルギーに変換し、それを放出してきた！\r\n");
+            //                                UpdateBattleText(player.FirstName + "は" + current.FirstName + "の魂を根こそぎエネルギーに変換し、それを放出してきた！\r\n");
             //                                int damage = current.CurrentLife;
             //                                PlayerDeath(player, current);
             //                                AbstractMagicDamage(player, target, 0, damage, 0, Database.SOUND_CHOSEN_SACRIFY, 120, TruthActionCommand.MagicType.Shadow, false, CriticalType.None);
@@ -3016,7 +3018,7 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
             //                    }
-            //                    else if (player.ActionLabel.Text == "死への背徳")
+            //                    else if (player.ActionLabel.text == "死への背徳")
             //                    {
             //                        List<TruthEnemyCharacter> group = new List<TruthEnemyCharacter>();
             //                        if (ec1 != null && ec1.Dead) { group.Add(ec1); }
@@ -3024,7 +3026,7 @@ namespace DungeonPlayer
             //                        if (ec3 != null && ec3.Dead) { group.Add(ec3); }
             //                        foreach (TruthEnemyCharacter current in group)
             //                        {
-            //                            UpdateBattleText(player.Name + "は" + current.Name + "の魂に黒龍の生命エネルギーを呪変換を行った！\r\n");
+            //                            UpdateBattleText(player.FirstName + "は" + current.FirstName + "の魂に黒龍の生命エネルギーを呪変換を行った！\r\n");
             //                            this.Invoke(new _AnimationDamage(AnimationDamage), 0, current, 0, Color.black, false, false, "復活");
             //                            current.ResurrectPlayer(current.MaxLife);
             //                            break;
@@ -3034,9 +3036,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_BLACKFIRE_MASTER_BLADE:
-            //                    if (player.ActionLabel.Text == "螺旋黒炎")
+            //                    if (player.ActionLabel.text == "螺旋黒炎")
             //                    {
-            //                        UpdateBattleText(player.Name + "は刀の切っ先を素早く螺旋状に描き、黒い炎を噴出してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は刀の切っ先を素早く螺旋状に描き、黒い炎を噴出してきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3051,9 +3053,9 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
             //                    }
-            //                    else if (player.ActionLabel.Text == "乱奏連撃")
+            //                    else if (player.ActionLabel.text == "乱奏連撃")
             //                    {
-            //                        UpdateBattleText(player.Name + "は狂気じみた旋律を奏でつつ、乱雑に刀を振り回してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は狂気じみた旋律を奏でつつ、乱雑に刀を振り回してきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3063,9 +3065,9 @@ namespace DungeonPlayer
             //                            PlayerNormalAttack(player, group[AP.Math.RandomInteger(group.Count - 1)], 3.0f, 0, false, false, 0, 2, "", -1, false, CriticalType.Random);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "ブルー・エクスプロード")
+            //                    else if (player.ActionLabel.text == "ブルー・エクスプロード")
             //                    {
-            //                        UpdateBattleText(player.Name + "の炎の色は、青白く輝き、" + target.Name + "に蒼く輝くファイア・ボールが放たれた！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の炎の色は、青白く輝き、" + target.FirstName + "に蒼く輝くファイア・ボールが放たれた！！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3075,16 +3077,16 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_SIN_THE_DARKELF:
-            //                    if (player.ActionLabel.Text == "ネイチャー・エンゼンブル")
+            //                    if (player.ActionLabel.text == "ネイチャー・エンゼンブル")
             //                    {
-            //                        UpdateBattleText(player.Name + "の辺りは淡い緑色に球体に包まれた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "の辺りは淡い緑色に球体に包まれた！\r\n");
             //                        PlayerBuffAbstract(player, player, 999, "NourishSense.bmp");
             //                        PlayerBuffAbstract(player, player, 999, "WordOfLife.bmp");
             //                        PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.SacredHealValue(player, false), 0, "CelestialNova.mp3", 0);
             //                    }
-            //                    else if (player.ActionLabel.Text == "シャープネル・ニードル")
+            //                    else if (player.ActionLabel.text == "シャープネル・ニードル")
             //                    {
-            //                        UpdateBattleText(player.Name + "は空間にずぶとい針形状の氷を創生してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は空間にずぶとい針形状の氷を創生してきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3094,9 +3096,9 @@ namespace DungeonPlayer
             //                            AbstractMagicDamage(player, group[ii], 0, 0, 5.0f, Database.SOUND_SHARPNEL_NEEDLE, 120, TruthActionCommand.MagicType.Fire, false, CriticalType.None);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "メギド・ブレイズ")
+            //                    else if (player.ActionLabel.text == "メギド・ブレイズ")
             //                    {
-            //                        UpdateBattleText(player.Name + "は見たことも無い紋様を描き、炎の渦を空間に自然発生させてきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は見たことも無い紋様を描き、炎の渦を空間に自然発生させてきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3106,9 +3108,9 @@ namespace DungeonPlayer
             //                            AbstractMagicDamage(player, group[ii], 0, 0, 5.0f, Database.SOUND_MEGID_BLAZE, 120, TruthActionCommand.MagicType.Fire, false, CriticalType.None);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "アーケン・デストラクション")
+            //                    else if (player.ActionLabel.text == "アーケン・デストラクション")
             //                    {
-            //                        UpdateBattleText(player.Name + "は青紫のエネルギー体を創り出し、一気にそれを放出してきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は青紫のエネルギー体を創り出し、一気にそれを放出してきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3122,9 +3124,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_SUN_STRIDER:
-            //                    if (player.ActionLabel.Text == "太陽の滅印")
+            //                    if (player.ActionLabel.text == "太陽の滅印")
             //                    {
-            //                        UpdateBattleText(player.Name + "：太陽を滅ぼすが如く！　太陽の滅印をくらえ！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：太陽を滅ぼすが如く！　太陽の滅印をくらえ！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3133,9 +3135,9 @@ namespace DungeonPlayer
             //                        PlayerLifeOne(player, current);
             //                        NowSlip(player, current, 999);
             //                    }
-            //                    else if (player.ActionLabel.Text == "ブラック・フレア")
+            //                    else if (player.ActionLabel.text == "ブラック・フレア")
             //                    {
-            //                        UpdateBattleText(player.Name + "：太陽の影より出てし熱き炎よ、焼き尽くせ！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：太陽の影より出てし熱き炎よ、焼き尽くせ！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3145,17 +3147,17 @@ namespace DungeonPlayer
             //                        PlayerBuffAbstract(player, current, 999, Database.DAMNATION + fileExt);
             //                        PlayerBuffAbstract(player, current, 999, Database.ENRAGE_BLAST + fileExt);
             //                    }
-            //                    else if (player.ActionLabel.Text == "サテライト・エナジー")
+            //                    else if (player.ActionLabel.text == "サテライト・エナジー")
             //                    {
-            //                        UpdateBattleText(player.Name + "：天より授かりし力よ、今ここに！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：天より授かりし力よ、今ここに！！\r\n");
             //                        GroundOne.PlaySoundEffect(Database.SOUND_GLORY);
             //                        PlayerBuffAbstract(player, player, 999, Database.HOLY_BREAKER + fileExt);
             //                        PlayerBuffAbstract(player, player, 999, Database.SAINT_POWER + fileExt);
             //                        PlayerBuffAbstract(player, player, 999, Database.PSYCHIC_TRANCE + fileExt);
             //                    }
-            //                    else if (player.ActionLabel.Text == "サテライト・ソード")
+            //                    else if (player.ActionLabel.text == "サテライト・ソード")
             //                    {
-            //                        UpdateBattleText(player.Name + "：我が剣、喰らうがよい！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：我が剣、喰らうがよい！！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3168,9 +3170,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_ARC_DEMON:
-            //                    if (player.ActionLabel.Text == "デビル・プロミス")
+            //                    if (player.ActionLabel.text == "デビル・プロミス")
             //                    {
-            //                        UpdateBattleText(player.Name + "：チカラをシラヌモノ、ゼツボウセヨ\r\n");
+            //                        UpdateBattleText(player.FirstName + "：チカラをシラヌモノ、ゼツボウセヨ\r\n");
             //                        BuffUpPhysicalAttack(player, 3000.0F);
             //                        BuffUpMagicAttack(player, 3000.0F);
             //                        BuffUpPhysicalDefense(player, 700.0F);
@@ -3179,9 +3181,9 @@ namespace DungeonPlayer
             //                        BuffUpBattleReaction(player, 500.0F);
             //                        BuffUpPotential(player, 100.0F);
             //                    }
-            //                    else if (player.ActionLabel.Text == "呪怨殺")
+            //                    else if (player.ActionLabel.text == "呪怨殺")
             //                    {
-            //                        UpdateBattleText(player.Name + "：シせよ、オロカなるモノ\r\n");
+            //                        UpdateBattleText(player.FirstName + "：シせよ、オロカなるモノ\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3189,9 +3191,9 @@ namespace DungeonPlayer
             //                        MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
             //                        PlayerDeath(player, current);
             //                    }
-            //                    else if (player.ActionLabel.Text == "深淵の理")
+            //                    else if (player.ActionLabel.text == "深淵の理")
             //                    {
-            //                        UpdateBattleText(player.Name + "：ヤミへのコトワリ、シンエンへシズメ\r\n");
+            //                        UpdateBattleText(player.FirstName + "：ヤミへのコトワリ、シンエンへシズメ\r\n");
             //                        BuffDownPhysicalAttack(target, 2500.0F);
             //                        BuffDownMagicAttack(target, 2500.0F);
             //                        BuffDownPhysicalDefense(target, 600.0F);
@@ -3200,17 +3202,17 @@ namespace DungeonPlayer
             //                        BuffDownBattleReaction(target, 350.0F);
             //                        BuffDownPotential(target, 2000.0F);
             //                    }
-            //                    else if (player.ActionLabel.Text == "ギガント・スレイヤー")
+            //                    else if (player.ActionLabel.text == "ギガント・スレイヤー")
             //                    {
-            //                        UpdateBattleText(player.Name + "：このイチゲキにて、クチハテよ\r\n");
+            //                        UpdateBattleText(player.FirstName + "：このイチゲキにて、クチハテよ\r\n");
             //                        PlayerNormalAttack(player, target, 10.0F, 2, false, false, 0, 0, Database.SOUND_LAVA_ANNIHILATION, -1, false, CriticalType.None);
             //                    }
             //                    break;
 
             //                case Database.ENEMY_BALANCE_IDLE:
-            //                    if (player.ActionLabel.Text == "全ては灰に")
+            //                    if (player.ActionLabel.text == "全ては灰に")
             //                    {
-            //                        UpdateBattleText(player.Name + "：衰え朽ちなさい。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：衰え朽ちなさい。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3223,9 +3225,9 @@ namespace DungeonPlayer
             //                            PlayerLifeDown(player, group[ii], group[ii].CurrentLife * AP.Math.RandomReal());
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "生命の輝き")
+            //                    else if (player.ActionLabel.text == "生命の輝き")
             //                    {
-            //                        UpdateBattleText(player.Name + "：この輝きを受け取りなさい。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：この輝きを受け取りなさい。\r\n");
             //                        double damage = player.CurrentLife / player.MaxLife;
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -3237,9 +3239,9 @@ namespace DungeonPlayer
             //                        }
             //                        PlayerAbstractLifeGain(player, player, 0, player.MaxLife * 0.1F, 0, Database.SOUND_FRESH_HEAL, 9);
             //                    }
-            //                    else if (player.ActionLabel.Text == "オーン・プリゼンス")
+            //                    else if (player.ActionLabel.text == "オーン・プリゼンス")
             //                    {
-            //                        UpdateBattleText(player.Name + "：永久に果てることなく、永らえなさい。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：永久に果てることなく、永らえなさい。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3257,9 +3259,9 @@ namespace DungeonPlayer
             //                            group[ii].ActivateBuff(group[ii].pbStanceOfDeath, Database.BaseResourceFolder + Database.STANCE_OF_DEATH + fileExt, Database.INFINITY);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "レヴェルの唄")
+            //                    else if (player.ActionLabel.text == "レヴェルの唄")
             //                    {
-            //                        UpdateBattleText(player.Name + "：苦しみを抱え込みなさい。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：苦しみを抱え込みなさい。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3278,9 +3280,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_GO_FLAME_SLASHER:
-            //                    if (player.ActionLabel.Text == "煉獄弾")
+            //                    if (player.ActionLabel.text == "煉獄弾")
             //                    {
-            //                        UpdateBattleText(player.Name + "：ダラララララアァ！！！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：ダラララララアァ！！！！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3294,9 +3296,9 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
             //                    }
-            //                    else if (player.ActionLabel.Text == "禍の炎")
+            //                    else if (player.ActionLabel.text == "禍の炎")
             //                    {
-            //                        UpdateBattleText(player.Name + "：シュゴオオオォォォ！！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：シュゴオオオォォォ！！！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead && mc.CurrentFireDamage2 <= 0) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead && sc.CurrentFireDamage2 <= 0) { group.Add(sc); }
@@ -3309,9 +3311,9 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 0;
             //                    }
-            //                    else if (player.ActionLabel.Text == "ジ・エンド")
+            //                    else if (player.ActionLabel.text == "ジ・エンド")
             //                    {
-            //                        UpdateBattleText(player.Name + "：フシャアアアアァァ！！！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：フシャアアアアァァ！！！！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3324,16 +3326,16 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_DEVIL_CHILDREN:
-            //                    if (player.ActionLabel.Text == "暗黒の詠唱術")
+            //                    if (player.ActionLabel.text == "暗黒の詠唱術")
             //                    {
-            //                        UpdateBattleText(player.Name + "：ックク、ブラックマジックだ。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：ックク、ブラックマジックだ。\r\n");
             //                        player.CurrentBlackMagic = Database.INFINITY;
             //                        player.ActivateBuff(player.pbBlackMagic, Database.BaseResourceFolder + Database.BLACK_MAGIC + fileExt, Database.INFINITY);
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
             //                    }
-            //                    else if (player.ActionLabel.Text == "無音の真空波")
+            //                    else if (player.ActionLabel.text == "無音の真空波")
             //                    {
-            //                        UpdateBattleText(player.Name + "：真空波だ。そのままジッとしてろ。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：真空波だ。そのままジッとしてろ。\r\n");
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -3346,15 +3348,15 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
             //                    }
-            //                    else if (player.ActionLabel.Text == "異常再生")
+            //                    else if (player.ActionLabel.text == "異常再生")
             //                    {
-            //                        UpdateBattleText(player.Name + "：この再生能力、ニンゲンは欲しがるだろうな。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：この再生能力、ニンゲンは欲しがるだろうな。\r\n");
             //                        PlayerAbstractLifeGain(player, player, 0, player.MaxLife, 0, Database.SOUND_CELESTIAL_NOVA, 9);
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 3;
             //                    }
-            //                    else if (player.ActionLabel.Text == "超高温熱波動")
+            //                    else if (player.ActionLabel.text == "超高温熱波動")
             //                    {
-            //                        UpdateBattleText(player.Name + "：灼け落ちろ、超高温熱波動だ。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：灼け落ちろ、超高温熱波動だ。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3367,9 +3369,9 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 3;
             //                    }
-            //                    else if (player.ActionLabel.Text == "クロマティック・バレット")
+            //                    else if (player.ActionLabel.text == "クロマティック・バレット")
             //                    {
-            //                        UpdateBattleText(player.Name + "：ッハッハハハ、喰らえ喰らえ。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：ッハッハハハ、喰らえ喰らえ。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3409,9 +3411,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_HOWLING_HORROR:
-            //                    if (player.ActionLabel.Text == "スペクター・ヴォイス")
+            //                    if (player.ActionLabel.text == "スペクター・ヴォイス")
             //                    {
-            //                        UpdateBattleText(player.Name + "のスペクター・ヴォイスが発動した！\r\n");
+            //                        UpdateBattleText(player.FirstName + "のスペクター・ヴォイスが発動した！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3426,15 +3428,15 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
             //                    }
-            //                    else if (player.ActionLabel.Text == "無慈悲な叫び声")
+            //                    else if (player.ActionLabel.text == "無慈悲な叫び声")
             //                    {
-            //                        UpdateBattleText(player.Name + "から無慈悲な叫び声が発せられた！" + target.Name + "の心に直接ダメージが発生される。\r\n");
+            //                        UpdateBattleText(player.FirstName + "から無慈悲な叫び声が発せられた！" + target.FirstName + "の心に直接ダメージが発生される。\r\n");
             //                        AbstractMagicDamage(player, target, 0, PrimaryLogic.VoiceOfNoMercy(target), 0, Database.SOUND_DAMNATION, 120, TruthActionCommand.MagicType.Shadow, false, CriticalType.None);
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
             //                    }
-            //                    else if (player.ActionLabel.Text == "ダーク・シミュラクラム")
+            //                    else if (player.ActionLabel.text == "ダーク・シミュラクラム")
             //                    {
-            //                        UpdateBattleText(player.Name + "不気味なドス黒い物体を排出し、それを放ってきた。\r\n");
+            //                        UpdateBattleText(player.FirstName + "不気味なドス黒い物体を排出し、それを放ってきた。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3449,9 +3451,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_PAIN_ANGEL:
-            //                    if (player.ActionLabel.Text == "フェイブリオル・ランス")
+            //                    if (player.ActionLabel.text == "フェイブリオル・ランス")
             //                    {
-            //                        UpdateBattleText(player.Name + "：苦しみを刻み込みなさい、フェイブリオル・ランス！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：苦しみを刻み込みなさい、フェイブリオル・ランス！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3462,9 +3464,9 @@ namespace DungeonPlayer
             //                            NowStunning(player, current, 3);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "安らかな死別")
+            //                    else if (player.ActionLabel.text == "安らかな死別")
             //                    {
-            //                        UpdateBattleText(player.Name + "：苦しむ事はないのよ、安らかなる死別を与えましょう。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：苦しむ事はないのよ、安らかなる死別を与えましょう。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3472,9 +3474,9 @@ namespace DungeonPlayer
             //                        MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
             //                        PlayerDeath(player, current);
             //                    }
-            //                    else if (player.ActionLabel.Text == "ダンシング・ソード")
+            //                    else if (player.ActionLabel.text == "ダンシング・ソード")
             //                    {
-            //                        UpdateBattleText(player.Name + "：この剣舞を受けてみなさい、ダンシング・ソード！\r\n");
+            //                        UpdateBattleText(player.FirstName + "：この剣舞を受けてみなさい、ダンシング・ソード！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3489,9 +3491,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_CHAOS_WARDEN:
-            //                    if (player.ActionLabel.Text == "カオス・デスペラート")
+            //                    if (player.ActionLabel.text == "カオス・デスペラート")
             //                    {
-            //                        UpdateBattleText(player.Name + "は終了のサインを示す演舞を踊ってみせた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は終了のサインを示す演舞を踊ってみせた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3504,9 +3506,9 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
             //                    }
-            //                    else if (player.ActionLabel.Text == "マリア・ダンセル")
+            //                    else if (player.ActionLabel.text == "マリア・ダンセル")
             //                    {
-            //                        UpdateBattleText(player.Name + "は不気味で美しい妖艶な演舞を踊ってみせた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は不気味で美しい妖艶な演舞を踊ってみせた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3518,9 +3520,9 @@ namespace DungeonPlayer
             //                        }
             //                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
             //                    }
-            //                    else if (player.ActionLabel.Text == "調律の破壊")
+            //                    else if (player.ActionLabel.text == "調律の破壊")
             //                    {
-            //                        UpdateBattleText(player.Name + "は何も無い空間に対して破壊を行う演舞を踊ってみせた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は何も無い空間に対して破壊を行う演舞を踊ってみせた！\r\n");
             //                        GroundOne.PlaySoundEffect(Database.SOUND_TIME_STOP);
             //                        CleanUpStep();
 
@@ -3536,9 +3538,9 @@ namespace DungeonPlayer
             //                    break;
 
             //                case Database.ENEMY_DOOM_BRINGER:
-            //                    if (player.ActionLabel.Text == "ディレンジド・アート")
+            //                    if (player.ActionLabel.text == "ディレンジド・アート")
             //                    {
-            //                        UpdateBattleText(player.Name + "はえも言われぬ不気味かつ狂気的なオーラをまとい降りかかってきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "はえも言われぬ不気味かつ狂気的なオーラをまとい降りかかってきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3551,9 +3553,9 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "ヘル・サークル")
+            //                    else if (player.ActionLabel.text == "ヘル・サークル")
             //                    {
-            //                        UpdateBattleText(player.Name + "は地獄の円を部屋全体に描いてきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は地獄の円を部屋全体に描いてきた！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3565,9 +3567,9 @@ namespace DungeonPlayer
             //                            NowBlind(player, group[ii], 999);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "無垢のひと振り")
+            //                    else if (player.ActionLabel.text == "無垢のひと振り")
             //                    {
-            //                        UpdateBattleText(player.Name + "はスっとどこへともなく振りかざしてきた。\r\n");
+            //                        UpdateBattleText(player.FirstName + "はスっとどこへともなく振りかざしてきた。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3576,9 +3578,9 @@ namespace DungeonPlayer
             //                        NowNoResurrection(player, target, 999);
             //                        PlayerDeath(player, current);
             //                    }
-            //                    else if (player.ActionLabel.Text == "ハーシュ・カッター")
+            //                    else if (player.ActionLabel.text == "ハーシュ・カッター")
             //                    {
-            //                        UpdateBattleText(player.Name + "は部屋中をかき乱すように剣をぶん回してきた！！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は部屋中をかき乱すように剣をぶん回してきた！！\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3597,7 +3599,7 @@ namespace DungeonPlayer
             //                case Database.ENEMY_BOSS_LEGIN_ARZE_3:
             //                    if (player.StackCommandString == "虚無の鼓動")
             //                    {
-            //                        UpdateBattleText(player.Name + "：全て実像は等しく虚構である。虚無の理を受け入れよ。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：全て実像は等しく虚構である。虚無の理を受け入れよ。\r\n");
             //                        if (player.CurrentMana < Database.COST_THE_ABYSS_WALL)
             //                        {
             //                            MissNotEnoughMana(player);
@@ -3619,9 +3621,9 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "アビスの意志")
+            //                    else if (player.ActionLabel.text == "アビスの意志")
             //                    {
-            //                        UpdateBattleText(player.Name + "：アビスは存在にあらず、意志そのもの。アビスとは理そのもの。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：アビスは存在にあらず、意志そのもの。アビスとは理そのもの。\r\n");
             //                        if (player.CurrentMana < Database.COST_ABYSS_WILL)
             //                        {
             //                            MissNotEnoughMana(player);
@@ -3645,9 +3647,9 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "壱なる焔")
+            //                    else if (player.ActionLabel.text == "壱なる焔")
             //                    {
-            //                        UpdateBattleText(player.Name + "：永久の浄化印、焔の理を知るがよい。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：永久の浄化印、焔の理を知るがよい。\r\n");
             //                        if (player.CurrentMana < Database.COST_ICHINARU_HOMURA)
             //                        {
             //                            MissNotEnoughMana(player);
@@ -3660,9 +3662,9 @@ namespace DungeonPlayer
             //                            target.ActivateBuff(target.pbIchinaruHomura, Database.BaseResourceFolder + Database.ICHINARU_HOMURA + fileExt, Database.INFINITY);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "アビス・ファイア")
+            //                    else if (player.ActionLabel.text == "アビス・ファイア")
             //                    {
-            //                        UpdateBattleText(player.Name + "：深淵の呪怨印、アビスの理を知るがよい。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：深淵の呪怨印、アビスの理を知るがよい。\r\n");
             //                        if (player.CurrentMana < Database.COST_ABYSS_FIRE)
             //                        {
             //                            MissNotEnoughMana(player);
@@ -3675,9 +3677,9 @@ namespace DungeonPlayer
             //                            target.ActivateBuff(target.pbAbyssFire, Database.BaseResourceFolder + Database.ABYSS_FIRE + fileExt, Database.INFINITY);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "ライト・アンド・シャドウ")
+            //                    else if (player.ActionLabel.text == "ライト・アンド・シャドウ")
             //                    {
-            //                        UpdateBattleText(player.Name + "：秩序と混沌によりて、聖と闇の本質融合を見るがよい。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：秩序と混沌によりて、聖と闇の本質融合を見るがよい。\r\n");
             //                        if (player.CurrentMana < Database.COST_LIGHT_AND_SHADOW)
             //                        {
             //                            MissNotEnoughMana(player);
@@ -3690,9 +3692,9 @@ namespace DungeonPlayer
             //                            player.ActivateBuff(player.pbLightAndShadow, Database.BaseResourceFolder + Database.LIGHT_AND_SHADOW + fileExt, 2);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "エターナル・ドロップレット")
+            //                    else if (player.ActionLabel.text == "エターナル・ドロップレット")
             //                    {
-            //                        UpdateBattleText(player.Name + "：理に制約など存在しない。理は永遠そのものである。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：理に制約など存在しない。理は永遠そのものである。\r\n");
             //                        if (player.CurrentMana < Database.COST_ETERNAL_DROPLET)
             //                        {
             //                            MissNotEnoughMana(player);
@@ -3705,9 +3707,9 @@ namespace DungeonPlayer
             //                            player.ActivateBuff(player.pbEternalDroplet, Database.BaseResourceFolder + Database.ETERNAL_DROPLET + fileExt, 4);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "アウステリティ・マトリクス・Ω")
+            //                    else if (player.ActionLabel.text == "アウステリティ・マトリクス・Ω")
             //                    {
-            //                        UpdateBattleText(player.Name + "：厳粛なる支配の理を受け止めるがよい。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：厳粛なる支配の理を受け止めるがよい。\r\n");
             //                        if (player.CurrentMana < Database.COST_AUSTERITY_MATRIX_OMEGA)
             //                        {
             //                            MissNotEnoughMana(player);
@@ -3731,9 +3733,9 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "ヴォイス・オブ・アビス")
+            //                    else if (player.ActionLabel.text == "ヴォイス・オブ・アビス")
             //                    {
-            //                        UpdateBattleText(player.Name + "：深淵からの呼び声は、真実の理、コレを受け止めよ。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：深淵からの呼び声は、真実の理、コレを受け止めよ。\r\n");
             //                        if (player.CurrentMana < Database.COST_VOICE_OF_ABYSS)
             //                        {
             //                            MissNotEnoughMana(player);
@@ -3761,7 +3763,7 @@ namespace DungeonPlayer
             //                #endregion
             //                #region "５階"
             //                case Database.ENEMY_PHOENIX:
-            //                    if (player.ActionLabel.Text == "戦慄の金切り声")
+            //                    if (player.ActionLabel.text == "戦慄の金切り声")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -3776,7 +3778,7 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "焼き尽くす煉獄炎")
+            //                    else if (player.ActionLabel.text == "焼き尽くす煉獄炎")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -3787,7 +3789,7 @@ namespace DungeonPlayer
             //                            AbstractMagicDamage(player, group[ii], 0, 0, 0, Database.LAVA_ANNIHILATION, 120, TruthActionCommand.MagicType.Fire, false, CriticalType.None);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "輝ける生命")
+            //                    else if (player.ActionLabel.text == "輝ける生命")
             //                    {
             //                        int current = player.CurrentMagicAttackUpValue;
             //                        current += 2000;
@@ -3795,7 +3797,7 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_JUDGEMENT:
-            //                    if (player.ActionLabel.Text == "聖者の裁き")
+            //                    if (player.ActionLabel.text == "聖者の裁き")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -3809,7 +3811,7 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "福音")
+            //                    else if (player.ActionLabel.text == "福音")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -3824,7 +3826,7 @@ namespace DungeonPlayer
             //                            NowNoGainLife(group[ii], Database.INFINITY);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "解放の賛歌")
+            //                    else if (player.ActionLabel.text == "解放の賛歌")
             //                    {
             //                        PlayerSpellSaintPower(player, player);
             //                        PlayerSpellShadowPact(player, player);
@@ -3833,7 +3835,7 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_NINE_TAIL:
-            //                    if (player.ActionLabel.Text == "ベジェ・テイル・アタック")
+            //                    if (player.ActionLabel.text == "ベジェ・テイル・アタック")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -3849,7 +3851,7 @@ namespace DungeonPlayer
             //                            }
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "喰らいつき")
+            //                    else if (player.ActionLabel.text == "喰らいつき")
             //                    {
             //                        for (int ii = 0; ii < 3; ii++)
             //                        {
@@ -3857,7 +3859,7 @@ namespace DungeonPlayer
             //                        }
             //                        NowSlip(player, target, 3);
             //                    }
-            //                    else if (player.ActionLabel.Text == "隕石を呼ぶ声")
+            //                    else if (player.ActionLabel.text == "隕石を呼ぶ声")
             //                    {
             //                        for (int ii = 0; ii < 10; ii++)
             //                        {
@@ -3866,12 +3868,12 @@ namespace DungeonPlayer
             //                    }
             //                    break;
             //                case Database.ENEMY_EMERALD_DRAGON:
-            //                    if (player.ActionLabel.Text == "圧死の視線")
+            //                    if (player.ActionLabel.text == "圧死の視線")
             //                    {
             //                        PlayerLifeOne(player, target);
             //                        NowNoResurrection(player, target, Database.INFINITY);
             //                    }
-            //                    else if (player.ActionLabel.Text == "イル・メギド・ブレス")
+            //                    else if (player.ActionLabel.text == "イル・メギド・ブレス")
             //                    {
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
@@ -3882,7 +3884,7 @@ namespace DungeonPlayer
             //                            PlayerLifeHalfMax(player, group[ii]);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == "炎と氷の爆発")
+            //                    else if (player.ActionLabel.text == "炎と氷の爆発")
             //                    {
             //                        AbstractMagicDamage(player, target, 0, PrimaryLogic.ZetaExplosionValue(player, this.DuelMode), 0, Database.SOUND_ZETA_EXPLOSION, 139, TruthActionCommand.MagicType.Fire_Ice, false, CriticalType.None);
             //                    }
@@ -3893,9 +3895,9 @@ namespace DungeonPlayer
             //                    if (player.StackCommandString == "キル・スピニングランサー")
             //                    {
             //                        ((TruthEnemyCharacter)player).BossBeforeStay = false;
-            //                        UpdateBattleText(player.Name + "は巨大な無双の槍を形成し始めた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は巨大な無双の槍を形成し始めた！\r\n");
             //                        System.Threading.Thread.Sleep(500);
-            //                        UpdateBattleText(ec1.Name + "「奥義　キル・スピニングランサー」発動！！\r\n");
+            //                        UpdateBattleText(ec1.FirstName + "「奥義　キル・スピニングランサー」発動！！\r\n");
             //                        System.Threading.Thread.Sleep(500);
             //                        double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
             //                        PlayerNormalAttack(player, target, 12.0f, 0, false, true, 0, 0, string.Empty, -1, true, CriticalType.Absolute);
@@ -3904,7 +3906,7 @@ namespace DungeonPlayer
             //                    else if (player.StackCommandString == "タイダル・ウェイブ")
             //                    {
             //                        // 全体ダメージ
-            //                        UpdateBattleText(player.Name + "は、大きな津波を発生させてきた！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は、大きな津波を発生させてきた！\r\n");
             //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 5.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 3.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
             //                        break;
             //                    }
@@ -3938,7 +3940,7 @@ namespace DungeonPlayer
             //                    }
             //                    else if (player.StackCommandString == "虚無の鼓動")
             //                    {
-            //                        UpdateBattleText(player.Name + "：全て実像は等しく虚構である。虚無の理を受け入れよ。\r\n");
+            //                        UpdateBattleText(player.FirstName + "：全て実像は等しく虚構である。虚無の理を受け入れよ。\r\n");
             //                        List<MainCharacter> group = new List<MainCharacter>();
             //                        if (mc != null && !mc.Dead) { group.Add(mc); }
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
@@ -3956,9 +3958,9 @@ namespace DungeonPlayer
             //                        player.ActionCommandStackList.Add(player.CurrentSpellName);
             //                        player.ActionCommandStackTarget.Add(target);
             //                    }
-            //                    else if (player.ActionLabel.Text == "時間律の支配")
+            //                    else if (player.ActionLabel.text == "時間律の支配")
             //                    {
-            //                        UpdateBattleText(player.Name + "は微動だにせず、玉座に存在し続けている。時の刻のみが急速に進み続ける！\r\n");
+            //                        UpdateBattleText(player.FirstName + "は微動だにせず、玉座に存在し続けている。時の刻のみが急速に進み続ける！\r\n");
             //                        this.Invoke(new _AnimationSandGlass(AnimationSandGlass));
             //                        CleanUpStep();
             //                        UpdateTurnEnd(true);
@@ -3968,11 +3970,11 @@ namespace DungeonPlayer
             //                #endregion
             //                #region "最終戦【原罪】ヴェルゼ・アーティ"
             //                case Database.ENEMY_LAST_SIN_VERZE_ARTIE:
-            //                    if (player.ActionLabel.Text == Database.FINAL_INVISIBLE_HUNDRED_CUTTER ||
+            //                    if (player.ActionLabel.text == Database.FINAL_INVISIBLE_HUNDRED_CUTTER ||
             //                        player.StackCommandString == Database.FINAL_INVISIBLE_HUNDRED_CUTTER)
             //                    {
             //                        // 連続攻撃
-            //                        UpdateBattleText(player.Name + ":アイン君、これが最後です　【瘴技】インヴィジヴル・ハンドレッド・カッター！！！\r\n");
+            //                        UpdateBattleText(player.FirstName + ":アイン君、これが最後です　【瘴技】インヴィジヴル・ハンドレッド・カッター！！！\r\n");
             //                        if (withoutCost == false)
             //                        {
             //                            this.Invoke(new _AnimationFinal1(AnimationFinal1), "瘴技：Invisible Hundred Cutter");
@@ -3993,11 +3995,11 @@ namespace DungeonPlayer
             //                            player.BattleBarPos = 0;
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA ||
+            //                    else if (player.ActionLabel.text == Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA ||
             //                             player.StackCommandString == Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA)
             //                    {
             //                        // 分身２体生成（生命カウンターが残り１つなら、３体生成)
-            //                        UpdateBattleText(player.Name + ":ックク、これは読み切れないでしょう 【叡技】ラダリュンテ・カオティック・スキーマ！！\r\n");
+            //                        UpdateBattleText(player.FirstName + ":ックク、これは読み切れないでしょう 【叡技】ラダリュンテ・カオティック・スキーマ！！\r\n");
             //                        if (withoutCost == false)
             //                        {
             //                            this.Invoke(new _AnimationFinal1(AnimationFinal1), "叡技：Ladarynte Chaotic Schema");
@@ -4015,20 +4017,20 @@ namespace DungeonPlayer
             //                        }
             //                    }
             //                    // 【妥協】８月以降で取り返したい
-            //                    //else if (player.ActionLabel.Text == Database.FINAL_ADEST_ESPELANTIE)
+            //                    //else if (player.ActionLabel.text == Database.FINAL_ADEST_ESPELANTIE)
             //                    //{
             //                    //    // 
-            //                    //    UpdateBattleText(player.Name + ":アイン君はなす術もない、ッハハハハ！　神技：Adest Espelantie！！\r\n");
+            //                    //    UpdateBattleText(player.FirstName + ":アイン君はなす術もない、ッハハハハ！　神技：Adest Espelantie！！\r\n");
             //                    //    if (withoutCost == false)
             //                    //    {
             //                    //        this.Invoke(new _AnimationFinal1(AnimationFinal1), "神技：Adest Espelantie");
             //                    //    }
             //                    //}
-            //                    else if (player.ActionLabel.Text == Database.FINAL_SEFINE_PAINFUL_HYMNUS ||
+            //                    else if (player.ActionLabel.text == Database.FINAL_SEFINE_PAINFUL_HYMNUS ||
             //                             player.StackCommandString == Database.FINAL_SEFINE_PAINFUL_HYMNUS)
             //                    {
             //                        // 全回復
-            //                        UpdateBattleText(player.Name + ":今ここでセフィにボクのすべてを捧げる【永技：Sefine・Painful・Hymnus】！！\r\n");
+            //                        UpdateBattleText(player.FirstName + ":今ここでセフィにボクのすべてを捧げる【永技：Sefine・Painful・Hymnus】！！\r\n");
             //                        if (withoutCost == false)
             //                        {
             //                            this.Invoke(new _AnimationFinal1(AnimationFinal1), "永技：Sefine Painful Hymnus");
@@ -4043,11 +4045,11 @@ namespace DungeonPlayer
             //                            UpdateSkillPoint(player, skillgain, true, true, 0);
             //                        }
             //                    }
-            //                    else if (player.ActionLabel.Text == Database.FINAL_ZERO_INNOCENT_SIN ||
+            //                    else if (player.ActionLabel.text == Database.FINAL_ZERO_INNOCENT_SIN ||
             //                             player.StackCommandString == Database.FINAL_ZERO_INNOCENT_SIN)
             //                    {
             //                        // ライフダウン１０回
-            //                        UpdateBattleText(player.Name + ":【絶技】ゼロ・イノセント・シン・・・これで終わりです。\r\n");
+            //                        UpdateBattleText(player.FirstName + ":【絶技】ゼロ・イノセント・シン・・・これで終わりです。\r\n");
             //                        if (withoutCost == false)
             //                        {
             //                            this.Invoke(new _AnimationFinal1(AnimationFinal1), "絶技：Zero Innocent Sin");
@@ -4068,7 +4070,7 @@ namespace DungeonPlayer
             //                #endregion
             //                #region "ダミー素振り君"
             //                case Database.DUEL_DUMMY_SUBURI:
-            //                    if (player.ActionLabel.Text == "BUFF!")
+            //                    if (player.ActionLabel.text == "BUFF!")
             //                    {
             //                        NowPreStunning(target, 999);
             //                        //NowStun(player, target, 999);
@@ -4149,88 +4151,88 @@ namespace DungeonPlayer
             //                        player.CurrentResistIceUpValue = 1000;
             //                        player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", Database.INFINITY);
             //                    }
-            //                    else if (player.ActionLabel.Text == "弱体化「潜在能力」")
+            //                    else if (player.ActionLabel.text == "弱体化「潜在能力」")
             //                    {
             //                        BuffDownPotential(target, 500, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "弱体化「戦闘反応」")
+            //                    else if (player.ActionLabel.text == "弱体化「戦闘反応」")
             //                    {
             //                        BuffDownBattleReaction(target, 500, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "弱体化「戦闘速度」")
+            //                    else if (player.ActionLabel.text == "弱体化「戦闘速度」")
             //                    {
             //                        BuffDownBattleSpeed(target, 500, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "弱体化「魔法防御」")
+            //                    else if (player.ActionLabel.text == "弱体化「魔法防御」")
             //                    {
             //                        BuffDownMagicDefense(target, 500, 10);
             //                    }
-            //                    else if (player.ActionLabel.Text == "弱体化「物理防御」")
+            //                    else if (player.ActionLabel.text == "弱体化「物理防御」")
             //                    {
             //                        BuffDownPhysicalDefense(target, 500, 10);
             //                    }
-            //                    else if (player.ActionLabel.Text == "弱体化「魔法攻撃」")
+            //                    else if (player.ActionLabel.text == "弱体化「魔法攻撃」")
             //                    {
             //                        BuffDownMagicAttack(target, 500, 10);
             //                    }
-            //                    else if (player.ActionLabel.Text == "弱体化「物理攻撃」")
+            //                    else if (player.ActionLabel.text == "弱体化「物理攻撃」")
             //                    {
             //                        BuffDownPhysicalAttack(target, 2000, 10);
             //                    }
-            //                    else if (player.ActionLabel.Text == "凍結")
+            //                    else if (player.ActionLabel.text == "凍結")
             //                    {
             //                        NowFrozen(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "麻痺")
+            //                    else if (player.ActionLabel.text == "麻痺")
             //                    {
             //                        NowParalyze(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "沈黙")
+            //                    else if (player.ActionLabel.text == "沈黙")
             //                    {
             //                        NowSilence(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "暗闇")
+            //                    else if (player.ActionLabel.text == "暗闇")
             //                    {
             //                        NowBlind(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "誘惑")
+            //                    else if (player.ActionLabel.text == "誘惑")
             //                    {
             //                        NowTemptation(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "鈍化")
+            //                    else if (player.ActionLabel.text == "鈍化")
             //                    {
             //                        NowSlow(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "スタン")
+            //                    else if (player.ActionLabel.text == "スタン")
             //                    {
             //                        NowStunning(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "猛毒")
+            //                    else if (player.ActionLabel.text == "猛毒")
             //                    {
             //                        NowPoison(player, target, 2, false);
             //                    }
-            //                    else if (player.ActionLabel.Text == "累積猛毒")
+            //                    else if (player.ActionLabel.text == "累積猛毒")
             //                    {
             //                        NowPoison(player, target, 999, true);
             //                    }
-            //                    else if (player.ActionLabel.Text == "スリップ")
+            //                    else if (player.ActionLabel.text == "スリップ")
             //                    {
             //                        NowSlip(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.Text == "復活不可")
+            //                    else if (player.ActionLabel.text == "復活不可")
             //                    {
             //                        NowNoResurrection(player, target, 2);
             //                    }
             //                    break;
             //                #endregion
-            //            }
-            //        }
-            //        else
-            //        {
-            //            UpdateBattleText(player.GetCharacterSentence(120));
-            //        }
-            //        break;
-            //    #endregion
+                        }
+                    }
+                    else
+                    {
+                        UpdateBattleText(player.GetCharacterSentence(120));
+                    }
+                    break;
+                #endregion
             }
         }
 
@@ -5289,6 +5291,21 @@ namespace DungeonPlayer
         {
             // todo
         }
+
+        private void PlayerMirrorImageAllAlly(MainCharacter player)
+        {
+            List<MainCharacter> group = new List<MainCharacter>();
+            if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
+            if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
+            if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+
+            for (int ii = 0; ii < group.Count; ii++)
+            {
+                GroundOne.PlaySoundEffect("MirrorImage.mp3");
+                PlayerBuffAbstract(player, group[ii], 999, "MirrorImage.bmp");
+            }
+        }
+
         private void NowStunning(MainCharacter player, MainCharacter target, int effectTime)
         {
             if (target.Dead)
@@ -5667,6 +5684,146 @@ namespace DungeonPlayer
             }
         }
 
+        private void PlayerAllBlind(MainCharacter player)
+        {
+            if (GroundOne.MC != null && !GroundOne.MC.Dead)
+            {
+                NowBlind(player, GroundOne.MC, 2);
+            }
 
+            if (GroundOne.SC != null && !GroundOne.SC.Dead)
+            {
+                NowBlind(player, GroundOne.SC, 2);
+            }
+
+            if (GroundOne.TC != null && !GroundOne.TC.Dead)
+            {
+                NowBlind(player, GroundOne.TC, 2);
+            }
+        }
+
+        private void PlayerAllSilence(MainCharacter player)
+        {
+            if (GroundOne.MC != null && !GroundOne.MC.Dead)
+            {
+                NowSilence(player, GroundOne.MC, 1);
+            }
+
+            if (GroundOne.SC != null && !GroundOne.SC.Dead)
+            {
+                NowSilence(player, GroundOne.SC, 1);
+            }
+
+            if (GroundOne.TC != null && !GroundOne.TC.Dead)
+            {
+                NowSilence(player, GroundOne.TC, 1);
+            }
+        }
+
+        private void PlayerAllStun(MainCharacter player)
+        {
+            if (GroundOne.MC != null && !GroundOne.MC.Dead)
+            {
+                NowStunning(player, GroundOne.MC, 1);
+            }
+            if (GroundOne.SC != null && !GroundOne.SC.Dead)
+            {
+                NowStunning(player, GroundOne.SC, 1);
+            }
+            if (GroundOne.TC != null && !GroundOne.TC.Dead)
+            {
+                NowStunning(player, GroundOne.TC, 1);
+            }
+        }
+
+        private void PlayerRandomTargetPhysicalDamage(MainCharacter player, int attackNum, int speed, double magnification)
+        {
+            for (int ii = 0; ii < attackNum; ii++)
+            {
+                double effectValue = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode) / 2;
+
+                List<MainCharacter> group = new List<MainCharacter>();
+                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+
+                int tempdata = AP.Math.RandomInteger(group.Count);
+                PlayerNormalAttack(player, group[tempdata], magnification, 0, false, false, 0, speed, String.Empty, -1, false, CriticalType.Random);
+            }
+        }
+
+        private void PlayerRandomTargetDamage(MainCharacter player, int attackNum, string soundName, TruthActionCommand.MagicType type)
+        {
+            for (int ii = 0; ii < attackNum; ii++)
+            {
+                double effectValue = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 3;
+
+                List<MainCharacter> group = new List<MainCharacter>();
+                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+
+                int tempdata = AP.Math.RandomInteger(group.Count);
+                AbstractMagicDamage(player, group[tempdata], 30, ref effectValue, 0, soundName, 120, type, false, CriticalType.Random);
+            }
+        }
+
+        private void PlayerSlowAllEnemy(MainCharacter player, int effectValue)
+        {
+            if (GroundOne.MC != null && !GroundOne.MC.Dead)
+            {
+                GroundOne.MC.CurrentSlow = effectValue;
+                GroundOne.MC.ActivateBuff(GroundOne.MC.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectValue);
+                UpdateBattleText(GroundOne.MC.FirstName + "は動きが鈍くなった。\r\n");
+            }
+            if (GroundOne.SC != null && !GroundOne.SC.Dead)
+            {
+                GroundOne.SC.CurrentSlow = effectValue;
+                GroundOne.SC.ActivateBuff(GroundOne.SC.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectValue);
+                UpdateBattleText(GroundOne.SC.FirstName + "は動きが鈍くなった。\r\n");
+            }
+            if (GroundOne.TC != null && !GroundOne.TC.Dead)
+            {
+                GroundOne.TC.CurrentSlow = effectValue;
+                GroundOne.TC.ActivateBuff(GroundOne.TC.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectValue);
+                UpdateBattleText(GroundOne.TC.FirstName + "は動きが鈍くなった。\r\n");
+            }
+        }
+
+        private void PlayerPhysicalAttackAllEnemy(MainCharacter player, double damage, string soundName)
+        {
+            if (GroundOne.MC != null && !GroundOne.MC.Dead)
+            {
+                PlayerNormalAttack(player, GroundOne.MC, 0.0f, 0, false, false, damage, 0, String.Empty, -1, false, CriticalType.Random);
+            }
+
+            if (GroundOne.SC != null && !GroundOne.SC.Dead)
+            {
+                PlayerNormalAttack(player, GroundOne.SC, 0.0f, 0, false, false, damage, 0, String.Empty, -1, false, CriticalType.Random);
+            }
+
+            if (GroundOne.TC != null && !GroundOne.TC.Dead)
+            {
+                PlayerNormalAttack(player, GroundOne.TC, 0.0f, 0, false, false, damage, 0, String.Empty, -1, false, CriticalType.Random);
+            }
+        }
+        
+        private void PlayerMagicAttackAllEnemy(MainCharacter player, double damage, string soundName, TruthActionCommand.MagicType type)
+        {
+            if (GroundOne.MC != null && !GroundOne.MC.Dead)
+            {
+                AbstractMagicDamage(player, GroundOne.MC, 0, damage, 0, soundName, 120, type, false, CriticalType.Random);
+            }
+
+            if (GroundOne.SC != null && !GroundOne.SC.Dead)
+            {
+                AbstractMagicDamage(player, GroundOne.SC, 0, damage, 0, soundName, 120, type, false, CriticalType.Random);
+            }
+
+            if (GroundOne.TC != null && !GroundOne.TC.Dead)
+            {
+                AbstractMagicDamage(player, GroundOne.TC, 0, damage, 0, soundName, 120, type, false, CriticalType.Random);
+            }
+        }
     }
 }

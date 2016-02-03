@@ -238,7 +238,6 @@ namespace DungeonPlayer
                 SetupBuff(pbBuffEnemy3, PanelBuffEnemy3, ii);
             }
             GameObject baseObj = new GameObject("object");
-            Debug.Log("mc life: " + GroundOne.MC.CurrentLife);
             GroundOne.MC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.MC.CurrentInstantPoint = 0;
             GroundOne.MC.MainFaceArrow = this.player1Arrow;
@@ -1748,6 +1747,7 @@ namespace DungeonPlayer
 
         private void UpdatePlayerNextDecision(MainCharacter player)
         {
+            Debug.Log("UPND: " + player.BattleBarPos.ToString());
             if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC) return; // コンピューター専用ルーチンのため、プレイヤー側は何もしない。
 
             if (player.FirstName == Database.DUEL_OL_LANDIS) // オル・ランディスは常に戦術を変更可能とする。ヴェルゼなど主要人物は全て該当。
@@ -1805,7 +1805,6 @@ namespace DungeonPlayer
                             ((TruthEnemyCharacter)player).NextAttackDecision(GroundOne.MC, GroundOne.MC, GroundOne.SC, GroundOne.TC, ec1, ec2, ec3);
                         }
                     }
-                    //player.ActionLabel.Update();
                 }
             }
         }
@@ -1831,9 +1830,7 @@ namespace DungeonPlayer
             Vector3 current = player.MainFaceArrow.transform.position;
             player.MainFaceArrow.transform.position = new Vector3((float)player.BattleBarPos, current.y, current.z);
 
-            // todo
-            //player.ActionDecision = false;
-
+            player.ActionDecision = false;
             // player.CurrentCounterAttack = false; // 次のコマンドを実行したらカウンターが消滅してしまうのはゲーム性質上、おもしろくない。
         }
 
@@ -4719,11 +4716,210 @@ namespace DungeonPlayer
             return true;
         }
         // 魔法攻撃
-        private void PlayerMagicAttack(MainCharacter player, MainCharacter target)
+        private void PlayerMagicAttack(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             // todo
-            double value = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
-            AbstractMagicAttack(player, target, "Magical", value);
+            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
+            AbstractMagicDamage(player, target, interval, ref damage, magnification, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+            //AbstractMagicAttack(player, target, "Magical", damage); // after delete
+        }
+
+
+        // 味方対象
+        /// <summary>
+        /// 回復コマンドの抽象化
+        /// </summary>
+        /// <param name="player">対象元</param>
+        /// <param name="target">対象相手</param>
+        /// <param name="interval">発動後のインターバル</param>
+        /// <param name="damage">ダメージ</param>
+        /// <param name="magnification">増減倍率、０の場合は増減しない</param>
+        /// <param name="soundName">効果音ファイル名</param>
+        /// <param name="messageNumber">魔法ダメージメッセージ</param>
+        private void PlayerAbstractLifeGain(MainCharacter player, MainCharacter target, int interval, double effectValue, double magnification, string soundName, int messageNumber)
+        {
+            if (target != null)
+            {
+                if ((target != ec1) ||
+                     (player == ec1 && target == ec1))
+                {
+                    if (target.Dead)
+                    {
+                        UpdateBattleText("しかし" + target.FirstName + "は死んでしまっているため効果が無かった！\r\n");
+                    }
+                    else if (target.CurrentAbsoluteZero > 0)
+                    {
+                        UpdateBattleText(target.GetCharacterSentence(119));
+                    }
+                    else
+                    {
+                        if (soundName != String.Empty)
+                        {
+                            GroundOne.PlaySoundEffect(soundName);
+                        }
+                        effectValue = GainIsZero(effectValue, target);
+                        target.CurrentLife += (int)effectValue;
+                        UpdateLife(target, effectValue, true, true, 0, false);
+                        if (messageNumber == 0)
+                        {
+                            UpdateBattleText(target.FirstName + "は" + ((int)effectValue).ToString() + "回復した。\r\n");
+                        }
+                        else
+                        {
+                            UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), ((int)effectValue).ToString()));
+                        }
+                    }
+                }
+                else
+                {
+                    UpdateBattleText(player.GetCharacterSentence(53));
+                }
+            }
+            else
+            {
+                if (player.CurrentAbsoluteZero > 0)
+                {
+                    UpdateBattleText(player.GetCharacterSentence(119));
+                }
+                else
+                {
+                    if (soundName != String.Empty)
+                    {
+                        GroundOne.PlaySoundEffect(soundName);
+                    }
+                    effectValue = GainIsZero(effectValue, player);
+                    player.CurrentLife += (int)effectValue;
+                    UpdateLife(player, effectValue, true, true, 0, false);
+                    if (messageNumber == 0)
+                    {
+                        UpdateBattleText(player.FirstName + "は" + ((int)effectValue).ToString() + "回復した。\r\n");
+                    }
+                    else
+                    {
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), effectValue.ToString()));
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// マナ回復コマンドの抽象化
+        /// </summary>
+        /// <param name="player">対象元</param>
+        /// <param name="target">対象相手</param>
+        /// <param name="interval">発動後のインターバル</param>
+        /// <param name="damage">ダメージ</param>
+        /// <param name="magnification">増減倍率、０の場合は増減しない</param>
+        /// <param name="soundName">効果音ファイル名</param>
+        /// <param name="messageNumber">魔法ダメージメッセージ</param>
+        private void PlayerAbstractManaGain(MainCharacter player, MainCharacter target, int interval, double effectValue, double magnification, string soundName, int messageNumber)
+        {
+            if (target != null)
+            {
+                if ((target != ec1) ||
+                     (player == ec1 && target == ec1))
+                {
+                    if (target.Dead)
+                    {
+                        UpdateBattleText("しかし" + target.FirstName + "は死んでしまっているため効果が無かった！\r\n");
+                    }
+                    else if (target.CurrentAbsoluteZero > 0)
+                    {
+                        UpdateBattleText(target.GetCharacterSentence(121));
+                    }
+                    else
+                    {
+                        if (soundName != String.Empty)
+                        {
+                            GroundOne.PlaySoundEffect(soundName);
+                        }
+                        target.CurrentMana += (int)effectValue;
+                        UpdateMana(target, effectValue, true, true, 0);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), ((int)effectValue).ToString()));
+                    }
+                }
+                else
+                {
+                    UpdateBattleText(player.GetCharacterSentence(53));
+                }
+            }
+            else
+            {
+                if (player.CurrentAbsoluteZero > 0)
+                {
+                    UpdateBattleText(player.GetCharacterSentence(121));
+                }
+                else
+                {
+                    if (soundName != String.Empty)
+                    {
+                        GroundOne.PlaySoundEffect(soundName);
+                    }
+                    player.CurrentMana += (int)effectValue;
+                    UpdateMana(player, effectValue, true, true, 0);
+                    UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), effectValue.ToString()));
+                }
+            }
+        }
+
+        /// <summary>
+        /// スキル回復コマンドの抽象化
+        /// </summary>
+        /// <param name="player">対象元</param>
+        /// <param name="target">対象相手</param>
+        /// <param name="interval">発動後のインターバル</param>
+        /// <param name="damage">ダメージ</param>
+        /// <param name="magnification">増減倍率、０の場合は増減しない</param>
+        /// <param name="soundName">効果音ファイル名</param>
+        /// <param name="messageNumber">魔法ダメージメッセージ</param>
+        private void PlayerAbstractSkillGain(MainCharacter player, MainCharacter target, int interval, double effectValue, double magnification, string soundName, int messageNumber)
+        {
+            if (target != null)
+            {
+                if ((target != ec1) ||
+                     (player == ec1 && target == ec1))
+                {
+                    if (target.Dead)
+                    {
+                        UpdateBattleText("しかし" + target.FirstName + "は死んでしまっているため効果が無かった！\r\n");
+                    }
+                    else if (target.CurrentAbsoluteZero > 0)
+                    {
+                        UpdateBattleText(target.GetCharacterSentence(121));
+                    }
+                    else
+                    {
+                        if (soundName != String.Empty)
+                        {
+                            GroundOne.PlaySoundEffect(soundName);
+                        }
+                        target.CurrentSkillPoint += (int)effectValue;
+                        UpdateSkillPoint(target, effectValue, true, true, 0);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), ((int)effectValue).ToString()));
+                    }
+                }
+                else
+                {
+                    UpdateBattleText(player.GetCharacterSentence(53));
+                }
+            }
+            else
+            {
+                if (player.CurrentAbsoluteZero > 0)
+                {
+                    UpdateBattleText(player.GetCharacterSentence(121));
+                }
+                else
+                {
+                    if (soundName != String.Empty)
+                    {
+                        GroundOne.PlaySoundEffect(soundName);
+                    }
+                    player.CurrentSkillPoint += (int)effectValue;
+                    UpdateSkillPoint(player, effectValue, true, true, 0);
+                    UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), effectValue.ToString()));
+                }
+            }
         }
 
         // フレイムオーラ
