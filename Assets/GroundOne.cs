@@ -59,8 +59,6 @@ namespace DungeonPlayer
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 
-        public static bool CallBattleSetting = false;
-
         // TruthEquipmentShop
         public static string titleName = "天下一品　ガンツの武具店";
 

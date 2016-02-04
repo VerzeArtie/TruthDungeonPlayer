@@ -3289,9 +3289,7 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
-            Debug.Log("tapBattleSetting");
-            GroundOne.CallBattleSetting = true;
-            SceneDimension.Go(Database.TruthBattleEnemy, Database.TruthBattleSetting);
+            SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy);
         }
         public void tapPanel1()
         {

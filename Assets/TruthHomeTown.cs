@@ -509,8 +509,7 @@ namespace DungeonPlayer
                 else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationGanz10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz10 = true;
                 #endregion
 
-                GroundOne.WE.AlreadyShownEvent = false;
-                SceneDimension.Go(Database.TruthHomeTown, Database.TruthDungeon);
+                SceneDimension.CallTruthDungeon(Database.TruthHomeTown);
             }
 	    }
         public void tapCommunicationRana()
@@ -534,7 +533,7 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
-            SceneDimension.Go(Database.TruthHomeTown, Database.TruthBattleSetting);
+            SceneDimension.CallTruthBattleSetting(Database.TruthHomeTown);
         }
 
         private void NormalTapOK()
@@ -1137,7 +1136,7 @@ namespace DungeonPlayer
 
         public void CallStatusPlayer()
         {
-            SceneDimension.Go(Database.TruthHomeTown, Database.TruthStatusPlayer);
+            SceneDimension.CallTruthStatusPlayer(Database.TruthHomeTown, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
         }
         // todo
         private string PracticeSwordLevel(MainCharacter mainCharacter)
