@@ -8,6 +8,13 @@ namespace DungeonPlayer
     {
         public static List<string> playbackScene = new List<string>();
 
+        public static void CallSaveLoad(string src, bool saveMode, bool afterBacktoTitle, bool title_LoadAndGo)
+        {
+            GroundOne.SaveMode = saveMode;
+            GroundOne.AfterBacktoTitle = afterBacktoTitle;
+            GroundOne.Title_LoadAndGo = title_LoadAndGo;
+            SceneDimension.Go(src, Database.SaveLoad);
+        }
         public static void CallTruthDungeon(string src)
         {
             GroundOne.WE.AlreadyShownEvent = false;
