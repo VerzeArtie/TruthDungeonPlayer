@@ -2944,8 +2944,7 @@ namespace DungeonPlayer
             //        counter++;
             //    }
             //}
-            GroundOne.EquipType = equipType;
-            SceneDimension.Go(Database.TruthStatusPlayer, Database.TruthSelectEquipment);
+            SceneDimension.CallTruthSelectEquipment(Database.TruthStatusPlayer, equipType);
             //tse.StartPosition = FormStartPosition.CenterParent;
             //tse.Player = targetPlayer;
             //tse.EquipType = equipType;

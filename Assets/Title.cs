@@ -29,21 +29,18 @@ namespace DungeonPlayer
             if (this.ExecFirstGo)
             {
                 this.ExecFirstGo = false;
-                SceneDimension.Go(Database.Title, Database.TruthHomeTown); // todo ロード先は違う
-
+                SceneDimension.CallTruthHomeTown(Database.Title); // todo ロード先は違う
             }
         }
 
         public void GameStart_Click()
         {
-            SceneDimension.Go(Database.Title, Database.TruthHomeTown);
+            SceneDimension.CallTruthHomeTown(Database.Title);
         }
 
         public void Load_Click()
         {
-            GroundOne.SaveMode = false;
-            GroundOne.Title_LoadAndGo = true;
-            SceneDimension.Go(Database.Title, Database.SaveLoad);
+            SceneDimension.CallSaveLoad(Database.Title, false, false, true);
         }
 
         public void Config_Click()

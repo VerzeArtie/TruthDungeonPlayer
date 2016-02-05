@@ -776,7 +776,7 @@ namespace DungeonPlayer
             #region "その他"
             else
             {
-                SceneDimension.Go(Database.TruthHomeTown, Database.TruthEquipmentShop);
+                SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
                 CallEquipmentShop();
                 mainMessage.text = "";
             }
@@ -1026,13 +1026,11 @@ namespace DungeonPlayer
 
         public void tapSave()
         {
-            GroundOne.SaveMode = true;
-            SceneDimension.Go(Database.TruthHomeTown, Database.SaveLoad);
+            SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, false);
         }
         public void tapLoad()
         {
-            GroundOne.SaveMode = false;
-            SceneDimension.Go(Database.TruthHomeTown, Database.SaveLoad);
+            SceneDimension.CallSaveLoad(Database.TruthHomeTown, false, false, false);
         }
 
         private string exitMessage1 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
@@ -1042,8 +1040,7 @@ namespace DungeonPlayer
             if (yesnoSystemMessage.text == exitMessage1)
             {
                 GroundOne.TruthHomeTown_NowExit = true;
-                GroundOne.SaveMode = true;
-                SceneDimension.Go(Database.TruthHomeTown, Database.SaveLoad);
+                SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, false);
             }
             else if (yesnoSystemMessage.text == exitMessage2)
             {

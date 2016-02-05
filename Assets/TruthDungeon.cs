@@ -7087,8 +7087,7 @@ namespace DungeonPlayer
                 }
             }
 
-            GroundOne.SaveMode = true;
-            SceneDimension.Go(Database.TruthDungeon, Database.SaveLoad);
+            SceneDimension.CallSaveLoad(Database.TruthDungeon, true, false, false);
             //Camera camera = Camera.main;
             //camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 10);
             //debug.text += camera.transform.position.ToString() + "\r\n";
@@ -7145,9 +7144,8 @@ namespace DungeonPlayer
             //    }
             //}
 
-            GroundOne.SaveMode = false;
-            SceneDimension.Go(Database.TruthDungeon, Database.SaveLoad);
-            
+            SceneDimension.CallSaveLoad(Database.TruthDungeon, false, false, false);
+           
             // todo (この後、画面を再ロードするか、ロード先の画面へジャンプする必要がある）
             
             //Camera camera = Camera.main;
@@ -7162,9 +7160,7 @@ namespace DungeonPlayer
 
         public void Yes_Click()
         {
-            GroundOne.SaveMode = true;
-            GroundOne.AfterBacktoTitle = true;
-            SceneDimension.Go(Database.TruthDungeon, Database.SaveLoad);
+            SceneDimension.CallSaveLoad(Database.TruthDungeon, true, true, false);
         }
 
         public void No_Click()

@@ -8,6 +8,17 @@ namespace DungeonPlayer
     {
         public static List<string> playbackScene = new List<string>();
 
+        public static void CallTruthSelectEquipment(string src, int equipType)
+        {
+            GroundOne.EquipType = equipType;
+            SceneDimension.Go(src, Database.TruthSelectEquipment);
+        }
+
+        public static void CallTruthHomeTown(string src)
+        {
+            SceneDimension.Go(src, Database.TruthHomeTown);
+        }
+
         public static void CallSaveLoad(string src, bool saveMode, bool afterBacktoTitle, bool title_LoadAndGo)
         {
             GroundOne.SaveMode = saveMode;
@@ -41,6 +52,11 @@ namespace DungeonPlayer
             upPoint = 0;
             cumultivaLvUpValue = 0;
             SceneDimension.Go(src, Database.TruthStatusPlayer);
+        }
+
+        public static void CallTruthEquipmentShop(string src)
+        {
+            SceneDimension.Go(src, Database.TruthEquipmentShop);
         }
 
         public static void CallTruthBattleSetting(string src)
