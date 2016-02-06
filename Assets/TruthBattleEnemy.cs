@@ -36,6 +36,7 @@ namespace DungeonPlayer
         Text nowAnimationText = null;
         bool NowSelectingTarget = false;
         MainCharacter currentTargetedPlayer = null;
+        bool BattleEndFlag = false; // 戦闘終了条件を満たし、バトル終了するためのフラグ
         bool tempStopFlag = false; // [戦闘停止」ボタンやESCキーで、戦闘を一旦停止させたい時に使うフラグ
         bool endFlag = false; // メイン戦闘のループを抜ける時に使うフラグ
         bool cannotRunAway = false; // 戦闘から逃げられるかどうかを示すフラグ
@@ -525,10 +526,10 @@ namespace DungeonPlayer
                 return; // アニメーション表示中は停止させる。
             }
 
-            #region "ゲームエンド判定"
-            if (UpdatePlayerDeadFlag()) { BattleEndPhase(); return; }
-            #endregion
+            // バトル終了条件が満たされている場合、バトル終了とする。
+            if (this.BattleEndFlag) { BattleEndPhase(); }
 
+            if (UpdatePlayerDeadFlag()) { return; }
             if (this.endFlag) { return; } // 終了サインが出た場合、戦闘終了として待機する。
             if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
             if (this.endBattleForMatrixDragonEnd) { return; } // 戦闘終了サインにより、戦闘を抜ける。
@@ -2860,6 +2861,7 @@ namespace DungeonPlayer
 
             if (PlayerPartyDeathCheck() || EnemyPartyDeathCheck())
             {
+                this.BattleEndFlag = true;
                 return true;
             }
             else
@@ -5716,7 +5718,7 @@ namespace DungeonPlayer
             //throw new System.NotImplementedException();// todo
         }
 
-        private void UseItemButton_Click()
+        public void UseItemButton_Click()
         {
             // todo バックパック画面を開いて、消耗品アイテムを使用する。
             //if (UseItemGauge.Width < 600)
@@ -5735,7 +5737,7 @@ namespace DungeonPlayer
             //    }
             //    return;
             //}
-
+            SceneDimension.CallTruthStatusPlayer(Database.TruthBattleEnemy); // todo
             //using (TruthStatusPlayer TSP = new TruthStatusPlayer())
             //{
             //    TSP.WE = we;

@@ -42,6 +42,13 @@ namespace DungeonPlayer
             SceneDimension.Go(src, Database.TruthBattleEnemy);
         }
 
+        public static void CallTruthStatusPlayer(string src)
+        {
+            GroundOne.LevelUp = false;
+            GroundOne.UpPoint = 0;
+            GroundOne.CumultiveLvUpValue = 0;
+            SceneDimension.Go(src, Database.TruthStatusPlayer);
+        }
         public static void CallTruthStatusPlayer(string src, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, Color color)
         {
             GroundOne.LevelUp = leveUp;
