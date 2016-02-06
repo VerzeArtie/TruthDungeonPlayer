@@ -518,16 +518,17 @@ namespace DungeonPlayer
             }
             #endregion
 
-            #region "ゲームエンド判定"
-            if (UpdatePlayerDeadFlag()) { BattleEndPhase(); return; }
-            #endregion
-
             #region "進行停止"
             if (this.nowAnimation)
             {
                 ExecAnimation();
                 return; // アニメーション表示中は停止させる。
             }
+
+            #region "ゲームエンド判定"
+            if (UpdatePlayerDeadFlag()) { BattleEndPhase(); return; }
+            #endregion
+
             if (this.endFlag) { return; } // 終了サインが出た場合、戦闘終了として待機する。
             if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
             if (this.endBattleForMatrixDragonEnd) { return; } // 戦闘終了サインにより、戦闘を抜ける。
@@ -2915,9 +2916,7 @@ namespace DungeonPlayer
                 return;
             }
 
-            if (//((e != null) && (e.Button == System.Windows.Forms.MouseButtons.Right)) || // todo もし画面UIで操作できる何かがあれば
-                 (detectShift) //(e2 != null) && (e2.Shift)) // todo 右クリックやShiftは今はないため、常にfalse
-                )
+            if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
                 if (CheckBattlePlaying()) return;
                 if ((player.CurrentInstantPoint < player.MaxInstantPoint) &&
@@ -2926,6 +2925,7 @@ namespace DungeonPlayer
                     (BattleActionCommand != Database.ARCHETYPE_OL) &&
                     (BattleActionCommand != Database.ARCHETYPE_VERZE))
                 {
+                    UpdateBattleText(player.GetCharacterSentence(218));
                     return;
                 }
                 if (GroundOne.WE.AvailableInstantCommand == false) return;
@@ -2992,9 +2992,7 @@ namespace DungeonPlayer
                 this.currentTargetedPlayer = player;
                 InstantAttackPhase(BattleActionCommand);
             }
-            else if (//((e != null) && (e.Button == System.Windows.Forms.MouseButtons.Left)) || // todo  もし画面UIで操作できる何かがあれば
-                      (!detectShift)/*(e2 != null) && (!e2.Shift))*/
-                    )
+            else if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift) == false || Input.GetKey(KeyCode.LeftShift) == false)
             {
                 Debug.Log("command normal select: " + BattleActionCommand);
                 if (CheckInstantTarget(BattleActionCommand)) // インスタント対象の場合、発動できない。

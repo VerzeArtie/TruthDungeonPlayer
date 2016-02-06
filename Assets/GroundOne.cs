@@ -127,7 +127,6 @@ namespace DungeonPlayer
             WE = objWE.AddComponent<WorldEnvironment>();
             WE.DungeonArea = 1;
             WE.AvailableFirstCharacter = true;
-           
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
 
             MC = objMC.AddComponent<MainCharacter>();
@@ -138,9 +137,11 @@ namespace DungeonPlayer
             MC.Intelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
             MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
+            
             // debug
-            MC.CurrentLife = 3;
-            MC.MainWeapon = new ItemBackPack(Database.COMMON_FINE_SWORD);
+            WE.AvailableInstantCommand = true;
+            MC.CurrentLife = 20;
+            MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);
             MC.Accessory = new ItemBackPack(Database.COMMON_BLUE_PENDANT);

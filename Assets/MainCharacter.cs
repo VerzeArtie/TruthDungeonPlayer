@@ -3417,6 +3417,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：まだだ・・・まだ、負けられねえんだ！！\r\n";
                     case 217: // 最終戦ライフカウント消滅時
                         return this.FirstName + "：・・・ッグ・・・っく・・・\r\n";
+                    case 218: // インスタント不足
+                        return this.FirstName + "：まだインスタントが足りねぇ・・・\r\n";
 
                     case 2001: // ポーションまたは魔法による回復時
                         return this.FirstName + "：よし、{0} 回復したぜ。";
@@ -4093,6 +4095,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：うっ・・・まだよ・・・まだ倒れるわけにはいかないわ！\r\n";
                     case 217: // 最終戦ライフカウント消滅時
                         return this.FirstName + "：・・・ご・・・ごめん・・・な・・さ・・・\r\n";
+                    case 218: // インスタント不足
+                        return this.FirstName + "：まだインスタント足りないわね・・・\r\n";
 
                     case 1001: // Home Town 1 コミュニケーション済で、休む前のアイン一人を対象
                         return this.FirstName + "：今日はもう休んで、明日に備えたら？";
@@ -4796,6 +4800,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：神具よ！我に永遠の生命を！！ッハアアアァァァ！！！\r\n";
                     case 217: // 最終戦ライフカウント消滅時
                         return this.FirstName + "：ッグ・・・セ・・・セフィ・・・ネ・・・\r\n";
+                    case 218: // インスタント不足
+                        return this.FirstName + "：インスタントが不足していますね。\r\n";
 
                     case 2001: // ポーション回復時
                         return this.FirstName + "：{0} 回復です。";
@@ -5460,6 +5466,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：ッハ、この程度でくたばると思うなよ。\r\n";
                     case 217: // 最終戦ライフカウント消滅時
                         return this.FirstName + "：・・・　ッ・・・\r\n";
+                    case 218: // インスタント不足
+                        return this.FirstName + "：っち・・・インスタントが足りねぇ\r\n";
 
                     case 2001: // ポーションまたは魔法による回復時
                         return this.FirstName + "：{0} 回復しといたぞ。";
@@ -6437,6 +6445,8 @@ namespace DungeonPlayer
                         return this.FirstName + "の生命が削りとられる代わりに、その場で生き残った！\r\n";
                     case 217: // 最終戦ライフカウント消滅時
                         return this.FirstName + "の生命は完全に消滅させらた・・・\r\n";
+                    case 218: // インスタント不足
+                        return this.FirstName + "はインスタント値が不足している。\r\n";
 
                     case 4001: // 通常攻撃を選択
                     case 4002: // 防御を選択
