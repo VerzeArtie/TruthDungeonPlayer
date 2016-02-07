@@ -72,6 +72,10 @@ namespace DungeonPlayer
         public static string enemyName2 = string.Empty;
         public static string enemyName3 = string.Empty;
 
+        // TruthBattleSetting
+        public static bool CallBattleSettingFromBattleEnemy;
+        public static GameObject BattleEnemyFilter = null;
+
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
 
@@ -99,7 +103,8 @@ namespace DungeonPlayer
         public static bool OnlySelectTrash = false; // 捨てる限定画面
         public static string CannotSelectTrash = string.Empty; // 対象アイテムが重要品で捨てられない場合。
         public static bool DuelMode = false; // Duelモード
-        
+        public static bool OnlyUseItem = false; // 戦闘画面からアイテムを使用する時
+
         // TruthSkillSpellDesc
         public static string SpellSkillName = String.Empty;
         public static string playerName = String.Empty;
@@ -149,7 +154,6 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.RARE_TOOMI_BLUE_SUISYOU));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
-            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_TWEI_SWORD));

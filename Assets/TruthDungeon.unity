@@ -549,11 +549,11 @@ RectTransform:
   - {fileID: 2045572907}
   m_Father: {fileID: 1408778859}
   m_RootOrder: 4
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -80, y: -100}
-  m_SizeDelta: {x: 250, y: 600}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 810, y: -60}
+  m_SizeDelta: {x: 180, y: 380}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &154994787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1572,11 +1572,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1408778859}
   m_RootOrder: 5
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 50}
-  m_SizeDelta: {x: 250, y: 60}
-  m_Pivot: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 830, y: -680}
+  m_SizeDelta: {x: 200, y: 60}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &528219303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,17 +1598,17 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_FontSize: 18
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Dungeon Player\n        ~ Liberty Seeker ~"
+  m_Text: "Dungeon Player\n      ~ Liberty Seeker ~"
 --- !u!222 &528219304
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2751,8 +2751,8 @@ RectTransform:
   m_RootOrder: 8
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -80, y: 120}
-  m_SizeDelta: {x: 200, y: 400}
+  m_AnchoredPosition: {x: -60, y: 90}
+  m_SizeDelta: {x: 200, y: 220}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &795887392
 MonoBehaviour:
@@ -2771,7 +2771,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 10
+  m_Spacing: 3
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
 --- !u!1 &829939610
@@ -4659,11 +4659,11 @@ RectTransform:
   - {fileID: 90746839}
   m_Father: {fileID: 1408778859}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -160, y: 170}
-  m_SizeDelta: {x: -520, y: 200}
-  m_Pivot: {x: .5, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70, y: -680}
+  m_SizeDelta: {x: 670, y: 180}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1229780067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5162,7 +5162,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1024, y: 1024}
+  m_ReferenceResolution: {x: 1024, y: 768}
   m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

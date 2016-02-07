@@ -62,6 +62,10 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            if (GroundOne.BattleEnemyFilter != null)
+            {
+                GroundOne.BattleEnemyFilter.SetActive(true);
+            }
             currentPlayer = GroundOne.MC;
             this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
 
@@ -244,7 +248,19 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
-            SceneDimension.Back();
+            if (GroundOne.CallBattleSettingFromBattleEnemy)
+            {
+                if (GroundOne.BattleEnemyFilter != null)
+                {
+                    GroundOne.BattleEnemyFilter.SetActive(false);
+                }
+                Application.UnloadLevel(Database.TruthBattleSetting);
+                // todo しかし、戦闘画面のアクションコマンドに、まだ反映はされない。
+            }
+            else
+            {
+                SceneDimension.Back();
+            }
         }
 
         public void ViewCommandContent(Button sender)

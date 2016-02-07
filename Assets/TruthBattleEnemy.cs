@@ -59,8 +59,16 @@ namespace DungeonPlayer
         public Sprite[] imageSandglass;
         
         // GUI
+        public GameObject Filter;
+
         public Text yesnoSystemMessage;
         public GameObject groupYesnoSystemMessage;
+
+        public GameObject groupParentBackpack;
+        public GameObject[] back_Backpack;
+        public Text[] backpack;
+        public Text[] backpackStack;
+        public Image[] backpackIcon;
 
         public GameObject popupInfo;
         public Text CurrentInfo;
@@ -78,6 +86,8 @@ namespace DungeonPlayer
         public Button UseItemButton;
         public Button RunAwayButton;
 
+        public Image UseItemGauge;
+        public Text UseItemText;
         public GameObject groupPlayer1;
         public GameObject groupPlayer2;
         public GameObject groupPlayer3;
@@ -218,6 +228,8 @@ namespace DungeonPlayer
 
         int TIMER_SPEED = 10;
 
+        int MAX_ITEM_GAUGE = 850;
+        int currentItemGauge = 0;
         // Use this for initialization
         public override void Start()
         {
@@ -435,6 +447,9 @@ namespace DungeonPlayer
             }
 
             this.currentPlayer = GroundOne.MC;
+            Method.UpdateBackPackLabel(this.currentPlayer, this.back_Backpack, this.backpack, this.backpackStack, this.backpackIcon);
+            this.currentItemGauge = 0;
+            UpdateUseItemGauge();
             //tapFirstChara ();
         }
 
@@ -2625,8 +2640,16 @@ namespace DungeonPlayer
 
         private void UpdateUseItemGauge()
         {
-            // todo
-            //throw new System.NotImplementedException();
+            // ゲージバー値を更新
+            if (currentItemGauge < MAX_ITEM_GAUGE)
+            {
+                currentItemGauge++;
+            }
+
+            // ゲージバー表示更新
+            float dx = (float)currentItemGauge / (float)MAX_ITEM_GAUGE;
+            UseItemText.text = currentItemGauge.ToString();
+            UseItemGauge.rectTransform.localScale = new Vector2(dx, 1.0f);
         }
         
         private void UpdateTurnEnd(bool cancelCounterClear = false)
@@ -3289,7 +3312,8 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
-            SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy);
+            GroundOne.BattleEnemyFilter = this.Filter;
+            SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy, true);
         }
         public void tapPanel1()
         {
@@ -3340,6 +3364,105 @@ namespace DungeonPlayer
         public void tapThirdCharaAction()
         {
             ChangeBaseAction(GroundOne.TC);
+        }
+
+        public void UseItem_Click(Text sender)
+        {
+            MainCharacter player = Method.GetCurrentPlayer(this.currentPlayer.PlayerStatusColor);
+            if (player.Dead)
+            {
+                txtBattleMessage.text = "【" + player.FirstName + "は死んでしまっているため、アイテムが使えない。】";
+                return;
+            }
+
+            // todo バックパック画面を開いて、消耗品アイテムを使用する。
+            Debug.Log("ItemGauge: " + UseItemGauge.rectTransform.localScale.x);
+            if (UseItemGauge.rectTransform.localScale.x < 1.0f)
+            {
+                if (GroundOne.MC.Dead == false)
+                {
+                    UpdateBattleText(GroundOne.MC.GetCharacterSentence(125));
+                }
+                else if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC.Dead == false)
+                {
+                    UpdateBattleText(GroundOne.SC.GetCharacterSentence(125));
+                }
+                else if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC.Dead == false)
+                {
+                    UpdateBattleText(GroundOne.TC.GetCharacterSentence(125));
+                }
+                return;
+            }
+
+            //using (TruthStatusPlayer TSP = new TruthStatusPlayer())
+            //{
+            //    TSP.WE = we;
+            //    TSP.MC = mc;
+            //    TSP.SC = sc;
+            //    TSP.TC = tc;
+            //    TSP.StartPosition = FormStartPosition.CenterParent;
+            //    TSP.OnlyUseItem = true;
+            //    TSP.DuelMode = this.DuelMode;
+            //    if (mc.Dead == false)
+            //    {
+            //        TSP.CurrentStatusView = Color.LightSkyBlue;
+            //    }
+            //    else if (we.AvailableSecondCharacter && sc.Dead == false)
+            //    {
+            //        TSP.CurrentStatusView = Color.Pink;
+            //    }
+            //    else if (we.AvailableThirdCharacter && tc.Dead == false)
+            //    {
+            //        TSP.CurrentStatusView = Color.Gold;
+            //    }
+            //    TSP.ShowDialog();
+
+            //    if (TSP.DialogResult == System.Windows.Forms.DialogResult.OK)
+            //    {
+            //        if (we.AvailableFirstCharacter)
+            //        {
+            //            mc = TSP.MC;
+            //            UpdateLife(mc, 0, false, false, 0, false);
+            //            UpdateSkillPoint(mc, 0, false, false, 0);
+            //            UpdateMana(mc, 0, false, false, 0);
+            //        }
+            //        if (we.AvailableSecondCharacter && this.DuelMode == false)
+            //        {
+            //            sc = TSP.SC;
+            //            UpdateLife(sc, 0, false, false, 0, false);
+            //            UpdateSkillPoint(sc, 0, false, false, 0);
+            //            UpdateMana(sc, 0, false, false, 0);
+            //        }
+            //        if (we.AvailableThirdCharacter && this.DuelMode == false)
+            //        {
+            //            tc = TSP.TC;
+            //            UpdateLife(tc, 0, false, false, 0, false);
+            //            UpdateSkillPoint(tc, 0, false, false, 0);
+            //            UpdateMana(tc, 0, false, false, 0);
+            //        }
+
+            //        UseItemGauge.Width = 0;
+            //    }
+            //}
+            int currentNumber = 0;
+            for (int ii = 0; ii < backpack.Length; ii++)
+            {
+                if (backpack[ii].Equals(sender))
+                {
+                    currentNumber = ii;
+                    Debug.Log("currentNumber is " + currentNumber.ToString());
+                    break;
+                }
+            }
+            Method.UseItem(player, sender.text, currentNumber, txtBattleMessage);
+            UpdateLife(player);
+            UpdateMana(player);
+            UpdateSkillPoint(player);
+            UpdateInstantPoint(player);
+            Method.UpdateBackPackLabel(player, back_Backpack, backpack, backpackStack, backpackIcon);
+
+            this.currentItemGauge = 0;
+            UpdateUseItemGauge();
         }
 
         // 通常攻撃を抽象化したロジック。通常攻撃やストレートスマッシュは全てここに含まれる。
@@ -4953,7 +5076,6 @@ namespace DungeonPlayer
             target.CurrentLife += (int)value;
             if (target.CurrentLife > target.MaxLife) { target.CurrentLife = target.MaxLife; }
             UpdateLife(target);
-            UpdateBattleText(" target2 name " + player.Target2.FirstName); // = " + player.Target2.ToString()); }
             UpdateBattleText(player.labelName.text + " " + Database.FRESH_HEAL + " to " + player.Target2.FirstName + " " + value);
         }
         // ダークブラスト
@@ -5720,74 +5842,7 @@ namespace DungeonPlayer
 
         public void UseItemButton_Click()
         {
-            // todo バックパック画面を開いて、消耗品アイテムを使用する。
-            //if (UseItemGauge.Width < 600)
-            //{
-            //    if (mc.Dead == false)
-            //    {
-            //        UpdateBattleText(mc.GetCharacterSentence(125));
-            //    }
-            //    else if (we.AvailableSecondCharacter && sc.Dead == false)
-            //    {
-            //        UpdateBattleText(sc.GetCharacterSentence(125));
-            //    }
-            //    else if (we.AvailableThirdCharacter && tc.Dead == false)
-            //    {
-            //        UpdateBattleText(tc.GetCharacterSentence(125));
-            //    }
-            //    return;
-            //}
-            SceneDimension.CallTruthStatusPlayer(Database.TruthBattleEnemy); // todo
-            //using (TruthStatusPlayer TSP = new TruthStatusPlayer())
-            //{
-            //    TSP.WE = we;
-            //    TSP.MC = mc;
-            //    TSP.SC = sc;
-            //    TSP.TC = tc;
-            //    TSP.StartPosition = FormStartPosition.CenterParent;
-            //    TSP.OnlyUseItem = true;
-            //    TSP.DuelMode = this.DuelMode;
-            //    if (mc.Dead == false)
-            //    {
-            //        TSP.CurrentStatusView = Color.LightSkyBlue;
-            //    }
-            //    else if (we.AvailableSecondCharacter && sc.Dead == false)
-            //    {
-            //        TSP.CurrentStatusView = Color.Pink;
-            //    }
-            //    else if (we.AvailableThirdCharacter && tc.Dead == false)
-            //    {
-            //        TSP.CurrentStatusView = Color.Gold;
-            //    }
-            //    TSP.ShowDialog();
-
-            //    if (TSP.DialogResult == System.Windows.Forms.DialogResult.OK)
-            //    {
-            //        if (we.AvailableFirstCharacter)
-            //        {
-            //            mc = TSP.MC;
-            //            UpdateLife(mc, 0, false, false, 0, false);
-            //            UpdateSkillPoint(mc, 0, false, false, 0);
-            //            UpdateMana(mc, 0, false, false, 0);
-            //        }
-            //        if (we.AvailableSecondCharacter && this.DuelMode == false)
-            //        {
-            //            sc = TSP.SC;
-            //            UpdateLife(sc, 0, false, false, 0, false);
-            //            UpdateSkillPoint(sc, 0, false, false, 0);
-            //            UpdateMana(sc, 0, false, false, 0);
-            //        }
-            //        if (we.AvailableThirdCharacter && this.DuelMode == false)
-            //        {
-            //            tc = TSP.TC;
-            //            UpdateLife(tc, 0, false, false, 0, false);
-            //            UpdateSkillPoint(tc, 0, false, false, 0);
-            //            UpdateMana(tc, 0, false, false, 0);
-            //        }
-
-            //        UseItemGauge.Width = 0;
-            //    }
-            //}
+            groupParentBackpack.SetActive(!groupParentBackpack.activeInHierarchy);
         }
         public void RunAwayButton_Click()
         {

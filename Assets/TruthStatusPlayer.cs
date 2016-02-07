@@ -123,18 +123,18 @@ namespace DungeonPlayer
 
             this.cam.backgroundColor = GroundOne.CurrentStatusView;
             Debug.Log("cam backcolor: " + this.cam.backgroundColor.ToString());
-            MainCharacter player = GetCurrentPlayer();
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);
 
-            RefreshPartyMembersLife();
+            RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
 
             if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
             if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
             if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
 
             backpackData = player.GetBackPackInfo();
-            UpdateBackPackLabel(player);
+            Method.UpdateBackPackLabel(player, this.back_Backpack, this.backpack, this.backpackStack, this.backpackIcon);
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
             {
@@ -292,7 +292,7 @@ namespace DungeonPlayer
             }
             if (this.usingOvershifting)
             {
-                MainCharacter player = GetCurrentPlayer();
+                MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
                 if (this.usingOvershiftingFirstSleep == false)
                 {
                     this.usingOvershiftingFirstSleep = true;
@@ -406,7 +406,7 @@ namespace DungeonPlayer
 
         public void SpellSkillDesc_Close_Click()
         {
-            if (GroundOne.LevelUp && GetCurrentPlayer() == GroundOne.MC)
+            if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.cam.backgroundColor) == GroundOne.MC)
             {
                 #region "アイン・レベルアップ習得表"
                 if ((GroundOne.MC.Level >= 3) && (!GroundOne.MC.StraightSmash)) { GroundOne.MC.AvailableSkill = true; GroundOne.MC.StraightSmash = true; ShowActiveSkillSpell(GroundOne.MC, Database.STRAIGHT_SMASH); }
@@ -473,8 +473,8 @@ namespace DungeonPlayer
                     SceneDimension.Back();
                 }
                 #endregion
-            }                
-            else if (GroundOne.LevelUp && GetCurrentPlayer() == GroundOne.SC)
+            }
+            else if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.cam.backgroundColor) == GroundOne.SC)
             {
                 #region "ラナ・レベルアップ習得表"
                 if ((GroundOne.SC.Level >= 3) && (!GroundOne.SC.IceNeedle)) { GroundOne.SC.AvailableMana = true; GroundOne.SC.IceNeedle = true; ShowActiveSkillSpell(GroundOne.SC, Database.ICE_NEEDLE); }
@@ -541,7 +541,7 @@ namespace DungeonPlayer
                 }
                 #endregion
             }
-            else if (GroundOne.LevelUp && GetCurrentPlayer() == GroundOne.TC)
+            else if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.cam.backgroundColor) == GroundOne.TC)
             {
                 // ランディスはレベル上限MAX35からスタートのため、習得はない。
                 #region "ヴェルゼ・レベルアップ習得表"
@@ -616,32 +616,41 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthSkillSpellDesc);
 //            SceneDimension.Replace(Database.TruthSkillSpellDesc);
         }
-        private MainCharacter GetCurrentPlayer()
+
+
+        private void RefreshPartyMembersLife(Text player1Life, Text player2Life, Text player3Life)
         {
-            MainCharacter player = null;
-            if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+            if (GroundOne.WE.AvailableFirstCharacter)
             {
-                Debug.Log("MC color");
-                player = GroundOne.MC;
+                player1Life.text = GroundOne.MC.CurrentLife.ToString() + "/" + GroundOne.MC.MaxLife.ToString();
             }
-            else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.DuelMode == false)
             {
-                player = GroundOne.SC;
-                Debug.Log("sc color");
+                player2Life.text = GroundOne.SC.CurrentLife.ToString() + "/" + GroundOne.SC.MaxLife.ToString();
             }
-            else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.DuelMode == false)
             {
-                player = GroundOne.TC;
-                Debug.Log("tc color");
+                player3Life.text = GroundOne.TC.CurrentLife.ToString() + "/" + GroundOne.TC.MaxLife.ToString();
+            }
+        }
+
+        private void UsingItemUpdateBackPackLabel(MainCharacter player, ItemBackPack backpackData, Text sender, int currentNumber)
+        {
+            int stackValue = player.CheckBackPackExist(backpackData, currentNumber);
+            if (stackValue <= 0)
+            {
+                backpack[currentNumber].text = "";
+                backpackStack[currentNumber].text = "";
+                backpackIcon[currentNumber].sprite = null;
+                Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]);
+                //back_Backpack[currentNumber].SetActive(false);
             }
             else
             {
-                Debug.Log("unknown...");
-                if (GroundOne.MC == null) { Debug.Log("fatal sequence..."); }
+                backpackStack[currentNumber].text = "x" + stackValue.ToString();
             }
-            return player;
         }
-
+        
         Text currentSelect = null;
         int currentNumber = 0;
         Vector3 currentPosition;
@@ -651,7 +660,7 @@ namespace DungeonPlayer
             groupChoice.SetActive(false);
             backpackFilter.SetActive(false);
 
-            MainCharacter player = GetCurrentPlayer();
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
 
             if (player.Dead)
@@ -679,7 +688,7 @@ namespace DungeonPlayer
                     this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
                     mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
                     UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
-                    RefreshPartyMembersLife();
+                    RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                     break;
 
                 case Database.POOR_SMALL_BLUE_POTION:
@@ -694,7 +703,7 @@ namespace DungeonPlayer
                     this.mana.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
                     mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
                     UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
-                    RefreshPartyMembersLife();
+                    RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                     break;
 
                 case Database.POOR_SMALL_GREEN_POTION:
@@ -709,7 +718,7 @@ namespace DungeonPlayer
                     this.skill.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
                     mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
                     UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
-                    RefreshPartyMembersLife();
+                    RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                     break;
 
                 case Database.COMMON_REVIVE_POTION_MINI:
@@ -1137,7 +1146,7 @@ namespace DungeonPlayer
                         player.DeleteBackPack(backpackData, 1, currentNumber);
                         this.skill.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
                         UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
-                        RefreshPartyMembersLife();
+                        RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                     }
                     else
                     {
@@ -1155,7 +1164,7 @@ namespace DungeonPlayer
                         this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
                         this.mana.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
                         this.skill.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
-                        RefreshPartyMembersLife();
+                        RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                         mainMessage.text = player.GetCharacterSentence(2009);
                     }
                     else
@@ -1171,7 +1180,7 @@ namespace DungeonPlayer
                         player.CurrentLife = (int)((double)player.MaxLife);
                         this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
                         mainMessage.text = player.GetCharacterSentence(2027);
-                        RefreshPartyMembersLife();
+                        RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                     }
                     else
                     {
@@ -1544,7 +1553,7 @@ namespace DungeonPlayer
         {
             groupChoice.SetActive(false);
             backpackFilter.SetActive(false);
-            MainCharacter player = GetCurrentPlayer();
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
             if (TruthItemAttribute.CheckImportantItem(backpackData.Name) == TruthItemAttribute.Transfer.Any)
             {
@@ -1566,7 +1575,7 @@ namespace DungeonPlayer
         {
             groupTarget.SetActive(false);
             backpackFilter.SetActive(false);
-            MainCharacter player = GetCurrentPlayer();
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
             int exchangeValue = CallBackPackExchangeValue(player, backpackData, this.currentNumber);
             if (exchangeValue <= -1) return;
@@ -1623,7 +1632,7 @@ namespace DungeonPlayer
 
         public void StatusPlayer_Click(Text sender)
         {
-            MainCharacter player = GetCurrentPlayer();
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
 
             if (sender.text == "")
             {
@@ -1642,11 +1651,11 @@ namespace DungeonPlayer
             }
 
             this.currentSelect = sender;
-            for (int currentNumber = 0; currentNumber < backpack.Length; currentNumber++ )
+            for (int ii = 0; ii < backpack.Length; ii++ )
             {
-                if (backpack[currentNumber].Equals(sender))
+                if (backpack[ii].Equals(sender))
                 {
-                    this.currentNumber = currentNumber;
+                    this.currentNumber = ii;
                     Debug.Log("currentNumber is " + this.currentNumber.ToString());
                     break;
                 }
@@ -1934,22 +1943,6 @@ namespace DungeonPlayer
         //    }
         }
 
-        private void UsingItemUpdateBackPackLabel(MainCharacter player, ItemBackPack backpackData, Text sender, int currentNumber)
-        {
-            int stackValue = player.CheckBackPackExist(backpackData, currentNumber);
-            if (stackValue <= 0)
-            {
-                backpack[currentNumber].text = "";
-                backpackStack[currentNumber].text = "";
-                backpackIcon[currentNumber].sprite = null;
-                Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]);
-                //back_Backpack[currentNumber].SetActive(false);
-            }
-            else
-            {
-                backpackStack[currentNumber].text = "x" + stackValue.ToString();
-            }
-        }
 
         //void StatusPlayer_MouseLeave(object sender, EventArgs e)
         //{
@@ -2117,7 +2110,7 @@ namespace DungeonPlayer
                 lblRemain.gameObject.SetActive(false);
             }
 
-            RefreshPartyMembersLife();
+            RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
             this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
 
             if (chara.AvailableSkill)
@@ -2191,7 +2184,7 @@ namespace DungeonPlayer
 
             txtGold.text = GroundOne.MC.Gold.ToString() + "[G]";
 
-            UpdateBackPackLabel(chara);
+            Method.UpdateBackPackLabel(chara, this.back_Backpack, this.backpack, this.backpackStack, this.backpackIcon);
             UpdateSpellSkillLabel(chara);
             UpdateResistStatus(chara);
         }
@@ -2241,85 +2234,6 @@ namespace DungeonPlayer
             else
             {
                 SpellSkill[4].text = Database.SACRED_HEAL;
-            }
-        }
-
-        private void UpdateBackPackLabel(MainCharacter target)
-        {
-            ItemBackPack[] backpackData = target.GetBackPackInfo();
-            for (int currentNumber = 0; currentNumber < backpackData.Length; currentNumber++)
-            {
-                if (backpackData[currentNumber] == null)
-                {
-                    backpack[currentNumber].text = "";
-                    backpackStack[currentNumber].text = "";
-                    backpackIcon[currentNumber].sprite = null;
-                    Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]);
-                    //back_Backpack[currentNumber].SetActive(false);
-                }
-                else
-                {
-                    back_Backpack[currentNumber].SetActive(true);
-                    backpack[currentNumber].text = backpackData[currentNumber].Name;
-                    Method.UpdateRareColor(backpackData[currentNumber], backpack[currentNumber], back_Backpack[currentNumber]);
-                    backpackStack[currentNumber].text = "x" + backpackData[currentNumber].StackValue.ToString();
-                    if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Heavy) ||
-                        (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Middle))
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Weapon");
-                    }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_TwoHand)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("TwoHand");
-                    }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Light)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Knuckle");
-                    }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Rod)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Rod");
-                    }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Shield)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Shield");
-                    }
-                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Heavy) ||
-                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Middle))
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Armor");
-                    }
-                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Light))
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("LightArmor");
-                    }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Accessory)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Accessory");
-                    }
-                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Equip) ||
-                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Food) ||
-                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Potion))
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Material1");
-                    }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Potion)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Potion");
-                    }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Any)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
-                    }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_BlueOrb)
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("BlueOrb");
-                    }
-                    else
-                    {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
-                    }
-                }
             }
         }
 
@@ -2418,26 +2332,10 @@ namespace DungeonPlayer
             temp1 = PrimaryLogic.PotentialValue(player, false);
             txtPotential.text = temp1.ToString("F2");
         }
-
-        private void RefreshPartyMembersLife()
-        {
-            if (GroundOne.WE.AvailableFirstCharacter)
-            {
-                labelFirstPlayerLife.text = GroundOne.MC.CurrentLife.ToString() + "/" + GroundOne.MC.MaxLife.ToString();
-            }
-            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.DuelMode == false)
-            {
-                labelSecondPlayerLife.text = GroundOne.SC.CurrentLife.ToString() + "/" + GroundOne.SC.MaxLife.ToString();
-            }
-            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.DuelMode == false)
-            {
-                labelThirdPlayerLife.text = GroundOne.TC.CurrentLife.ToString() + "/" + GroundOne.TC.MaxLife.ToString();
-            }
-        }
-
+        
         public void btnSomeSpellSkill_Click(Text sender)
         {
-            MainCharacter player = GetCurrentPlayer();
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
 
             if (player.Dead)
             {
@@ -2629,7 +2527,7 @@ namespace DungeonPlayer
 
             this.life.text = player.CurrentLife.ToString() + " / " + player.MaxLife.ToString();
             this.mana.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
-            RefreshPartyMembersLife();
+            RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
         }
 
         //private void btnResurrection_Click(object sender, EventArgs e)
@@ -2878,7 +2776,7 @@ namespace DungeonPlayer
         }
         public void subWeapon_Click(Text sender)
         {
-            MainCharacter targetPlayer = GetCurrentPlayer();
+            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.cam.backgroundColor);
             if (targetPlayer.MainWeapon != null)
             {
                 if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
@@ -2916,7 +2814,7 @@ namespace DungeonPlayer
         // equipType: 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
         private void ChangeEquipment(int equipType)
         {
-            MainCharacter targetPlayer = GetCurrentPlayer();
+            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.cam.backgroundColor);
             if (GroundOne.LevelUp)
             {
                 mainMessage.text = targetPlayer.GetCharacterSentence(2002);
@@ -3205,7 +3103,7 @@ namespace DungeonPlayer
 
         public void ChangeViewButton_Click(int viewNumber)
         {
-            MainCharacter targetPlayer = GetCurrentPlayer();
+            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.cam.backgroundColor);
             if (GroundOne.LevelUp)
             {
                 mainMessage.text = targetPlayer.GetCharacterSentence(2002);
@@ -3492,7 +3390,7 @@ namespace DungeonPlayer
                     this.life.text = GroundOne.TC.CurrentLife.ToString() + " / " + GroundOne.TC.MaxLife.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.TC);
                 }
-                RefreshPartyMembersLife();
+                RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                 CheckUpPoint();
             }
             // オーバーシフティング
@@ -3574,14 +3472,14 @@ namespace DungeonPlayer
                     mind.text = player.Mind.ToString();
                 }
                 RefreshPartyMembersBattleStatus(player);
-                RefreshPartyMembersLife();
+                RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                 lblRemain.text = "残り " + remain.ToString();
             }
         }
 
         public void plus1_Click(Text sender)
         {
-            MainCharacter player = GetCurrentPlayer();
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
             int plus = 0;
             if (sender.text == "+1") { plus = 1; }
             else if (sender.text == "+10") { plus = 10; }
@@ -3626,11 +3524,11 @@ namespace DungeonPlayer
 
         public void btnUpReset_Click()
         {
-            MainCharacter player = GetCurrentPlayer();
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
             ResetParameter(ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);
-            RefreshPartyMembersLife();
+            RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
         }
 
         //PopUpMini popupInfo = null;

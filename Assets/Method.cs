@@ -17,6 +17,132 @@ namespace DungeonPlayer
             Lottery,
         }
 
+        public static void UseItem(MainCharacter player, string itemName, int currentNumber, Text mainMessage)
+        {
+            ItemBackPack backpackData = new ItemBackPack(itemName);
+
+            switch (backpackData.Name)
+            {
+                case Database.POOR_SMALL_RED_POTION:
+                case Database.COMMON_NORMAL_RED_POTION:
+                case Database.COMMON_LARGE_RED_POTION:
+                case Database.COMMON_HUGE_RED_POTION:
+                case Database.COMMON_GORGEOUS_RED_POTION:
+                case Database.RARE_PERFECT_RED_POTION:
+                case "名前がとても長いわりにはまったく役に立たず、何の効果も発揮しない役立たずであるにもかかわらずデコレーションが長い超豪華なスーパーミラクルポーション":
+                    int effect = backpackData.UseIt();
+                    if (player.CurrentNourishSense > 0)
+                    {
+                        effect = (int)((double)effect * 1.3f);
+                    }
+                    player.CurrentLife += effect;
+                    player.DeleteBackPack(backpackData, 1, currentNumber);
+                    mainMessage.text = String.Format(player.GetCharacterSentence(2001), effect);
+                    break;
+            }
+        }
+
+        public static MainCharacter GetCurrentPlayer(Color baseColor)
+        {
+            MainCharacter player = null;
+            if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == baseColor)
+            {
+                player = GroundOne.MC;
+            }
+            else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == baseColor)
+            {
+                player = GroundOne.SC;
+            }
+            else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == baseColor)
+            {
+                player = GroundOne.TC;
+            }
+            else
+            {
+                if (GroundOne.MC == null) { Debug.Log("fatal sequence..."); }
+            }
+            return player;
+        }
+
+        public static void UpdateBackPackLabel(MainCharacter target, GameObject[] back_Backpack, Text[] backpack, Text[] backpackStack, Image[] backpackIcon)
+        {
+            ItemBackPack[] backpackData = target.GetBackPackInfo();
+            for (int currentNumber = 0; currentNumber < backpackData.Length; currentNumber++)
+            {
+                if (backpackData[currentNumber] == null)
+                {
+                    backpack[currentNumber].text = "";
+                    backpackStack[currentNumber].text = "";
+                    backpackIcon[currentNumber].sprite = null;
+                    Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]);
+                    //back_Backpack[currentNumber].SetActive(false);
+                }
+                else
+                {
+                    back_Backpack[currentNumber].SetActive(true);
+                    backpack[currentNumber].text = backpackData[currentNumber].Name;
+                    Method.UpdateRareColor(backpackData[currentNumber], backpack[currentNumber], back_Backpack[currentNumber]);
+                    backpackStack[currentNumber].text = "x" + backpackData[currentNumber].StackValue.ToString();
+                    if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Heavy) ||
+                        (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Middle))
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Weapon");
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_TwoHand)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("TwoHand");
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Light)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Knuckle");
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Weapon_Rod)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Rod");
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Shield)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Shield");
+                    }
+                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Heavy) ||
+                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Middle))
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Armor");
+                    }
+                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Armor_Light))
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("LightArmor");
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Accessory)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Accessory");
+                    }
+                    else if ((backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Equip) ||
+                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Food) ||
+                                (backpackData[currentNumber].Type == ItemBackPack.ItemType.Material_Potion))
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Material1");
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Potion)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Potion");
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Any)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
+                    }
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_BlueOrb)
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("BlueOrb");
+                    }
+                    else
+                    {
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
+                    }
+                }
+            }
+        }
+
         // 親グループに空のオブジェクトを追加する(レイアウト調整専用)
         public static void AddEmptyObj(ref GameObject parentGroup, int number)
         {

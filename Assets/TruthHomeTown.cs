@@ -533,7 +533,7 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
-            SceneDimension.CallTruthBattleSetting(Database.TruthHomeTown);
+            SceneDimension.CallTruthBattleSetting(Database.TruthHomeTown, false);
         }
 
         private void NormalTapOK()
