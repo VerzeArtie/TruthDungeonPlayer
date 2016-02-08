@@ -5052,23 +5052,6 @@ namespace DungeonPlayer
             // -BUFF除去
             target.RemovePoison();
         }
-        // フレッシュヒール
-        private void PlayerSpellFreshHeal(MainCharacter player, MainCharacter target)
-        {
-            if (player.CurrentMana < Database.FRESH_HEAL_COST)
-            {
-                MissNotEnoughMana(player);
-                return;
-            }
-            player.CurrentMana -= Database.FRESH_HEAL_COST;
-            UpdateMana(player);
-
-            double value = 30.0 + player.Intelligence * 2.0f;
-            target.CurrentLife += (int)value;
-            if (target.CurrentLife > target.MaxLife) { target.CurrentLife = target.MaxLife; }
-            UpdateLife(target);
-            UpdateBattleText(player.labelName.text + " " + Database.FRESH_HEAL + " to " + player.Target2.FirstName + " " + value);
-        }
         // ダークブラスト
         private void PlayerSpellDarkBlast(MainCharacter player, MainCharacter target)
         {
@@ -5646,18 +5629,18 @@ namespace DungeonPlayer
             if (animationDamage)
             {
                 Color color = Color.black;
-            //    if (plusValue)
-            //    {
-            //        color = Color.Green;
-            //        if (this.NowTimeStop)
-            //        {
-            //            color = Color.LightGreen;
-            //        }
-            //    }
-            //    else if (this.NowTimeStop)
-            //    {
-            //        color = Color.White;
-            //    }
+                if (plusValue)
+                {
+                    color = new Color(0, 0.7f, 0);
+                    if (this.NowTimeStop)
+                    {
+                        color = UnityColor.Lightgreen;
+                    }
+                }
+                else if (this.NowTimeStop)
+                {
+                    color = Color.white;
+                }
                 AnimationDamage(damage, player, interval, color, false, critical, String.Empty);
             }
         }

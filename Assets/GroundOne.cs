@@ -148,7 +148,7 @@ namespace DungeonPlayer
             WE.AvailableInstantCommand = true;
             enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
             MC.CurrentLife = 20;
-            MC.CurrentMana = 5;
+            MC.CurrentMana = 55;
             MC.CurrentSkillPoint = 3;
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
