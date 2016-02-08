@@ -75,6 +75,7 @@ namespace DungeonPlayer
         // TruthBattleSetting
         public static bool CallBattleSettingFromBattleEnemy;
         public static GameObject BattleEnemyFilter = null;
+        public static TruthBattleEnemy parent_TruthBattleEnemy;
 
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
@@ -145,7 +146,10 @@ namespace DungeonPlayer
             
             // debug
             WE.AvailableInstantCommand = true;
+            enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
             MC.CurrentLife = 20;
+            MC.CurrentMana = 5;
+            MC.CurrentSkillPoint = 3;
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);

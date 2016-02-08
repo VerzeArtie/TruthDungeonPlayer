@@ -5208,34 +5208,29 @@ namespace DungeonPlayer
 
         private void MissNotEnoughMana(MainCharacter player)
         {
-            // todo
-            //this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "マナ不足");
             UpdateBattleText(player.GetCharacterSentence(17));
+            AnimationDamage(0, player, 0, Color.black, false, false, "マナ不足");
         }
 
         private void MissNotEnoughSkill(MainCharacter player)
         {
-            // todo
-            //this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "スキル不足");
             UpdateBattleText(player.GetCharacterSentence(0));
+            AnimationDamage(0, player, 0, Color.black, false, false, "スキル不足");
         }
         private void MissNotEnoughInstant(MainCharacter player)
         {
-            // todo
-            //this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, "インスタント不足");
             UpdateBattleText(player.GetCharacterSentence(127));
+            AnimationDamage(0, player, 0, Color.black, false, false, "インスタント不足");
         }
         private void MissSpellAbsoluteZero(MainCharacter player)
         {
-            // todo
-            //this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, Database.MISS_SPELL);
             UpdateBattleText(player.GetCharacterSentence(76));
+            AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SPELL);
         }
         private void MissSkillAbsoluteZero(MainCharacter player)
         {
-            // todo
-            //this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, Database.MISS_SKILL);
             UpdateBattleText(player.GetCharacterSentence(87));
+            AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SKILL);
         }
 
         private void ExecBeforeAttackPhase(MainCharacter player, bool skipStanceDouble)

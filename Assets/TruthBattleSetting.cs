@@ -250,12 +250,8 @@ namespace DungeonPlayer
         {
             if (GroundOne.CallBattleSettingFromBattleEnemy)
             {
-                if (GroundOne.BattleEnemyFilter != null)
-                {
-                    GroundOne.BattleEnemyFilter.SetActive(false);
-                }
+                GroundOne.parent_TruthBattleEnemy.SceneBack();
                 Application.UnloadLevel(Database.TruthBattleSetting);
-                // todo しかし、戦闘画面のアクションコマンドに、まだ反映はされない。
             }
             else
             {

@@ -453,34 +453,24 @@ namespace DungeonPlayer
             //tapFirstChara ();
         }
 
+        public void SceneBack()
+        {
+            this.Filter.SetActive(false);
+            UpdateBattleCommandSetting(GroundOne.MC, ActionButton1, IsSorcery1);
+            if (GroundOne.WE.AvailableSecondCharacter)
+            {
+                UpdateBattleCommandSetting(GroundOne.SC, ActionButton2, IsSorcery2);
+            }
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                UpdateBattleCommandSetting(GroundOne.TC, ActionButton3, IsSorcery3);
+            }
+        }
+
         bool isEscDown = false;
         // Update is called once per frame
         void Update()
         {
-            #region "SceneBack Refresh Logic"
-            // todo
-            //if (GroundOne.CallBattleSetting && GroundOne.CallBattleSettingAwake)
-            //{
-            //    Debug.Log("CallBattleSetting true, then reflesh");
-            //    GroundOne.CallBattleSetting = false;
-            //    GroundOne.CallBattleSettingAwake = false;
-
-            //    UpdateBattleCommandSetting(GroundOne.MC, ActionButton1, IsSorcery1);
-            //    //UpdateBattleCommandSetting(mc, mc.ActionButton1, mc.ActionButton2, mc.ActionButton3, mc.ActionButton4, mc.ActionButton5, mc.ActionButton6, mc.ActionButton7, mc.ActionButton8, mc.ActionButton9,
-            //    //                               mc.IsSorceryMark1, mc.IsSorceryMark2, mc.IsSorceryMark3, mc.IsSorceryMark4, mc.IsSorceryMark5, mc.IsSorceryMark6, mc.IsSorceryMark7, mc.IsSorceryMark8, mc.IsSorceryMark9);
-            //    //if (we.AvailableSecondCharacter && this.DuelMode == false)
-            //    //{
-            //    //    UpdateBattleCommandSetting(sc, sc.ActionButton1, sc.ActionButton2, sc.ActionButton3, sc.ActionButton4, sc.ActionButton5, sc.ActionButton6, sc.ActionButton7, sc.ActionButton8, sc.ActionButton9,
-            //    //                                   sc.IsSorceryMark1, sc.IsSorceryMark2, sc.IsSorceryMark3, sc.IsSorceryMark4, sc.IsSorceryMark5, sc.IsSorceryMark6, sc.IsSorceryMark7, sc.IsSorceryMark8, sc.IsSorceryMark9);
-            //    //}
-            //    //if (we.AvailableThirdCharacter && this.DuelMode == false)
-            //    //{
-            //    //    UpdateBattleCommandSetting(tc, tc.ActionButton1, tc.ActionButton2, tc.ActionButton3, tc.ActionButton4, tc.ActionButton5, tc.ActionButton6, tc.ActionButton7, tc.ActionButton8, tc.ActionButton9,
-            //    //                                   tc.IsSorceryMark1, tc.IsSorceryMark2, tc.IsSorceryMark3, tc.IsSorceryMark4, tc.IsSorceryMark5, tc.IsSorceryMark6, tc.IsSorceryMark7, tc.IsSorceryMark8, tc.IsSorceryMark9);
-            //    //}
-            //}
-            #endregion
-
             #region "キー制御"
             bool detectShift = false;
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -1303,6 +1293,7 @@ namespace DungeonPlayer
                 }
             }
         }
+
         void PointerEnter(TruthImage currentImage)
         {
             Debug.Log("PointerEnter");
@@ -1764,7 +1755,6 @@ namespace DungeonPlayer
 
         private void UpdatePlayerNextDecision(MainCharacter player)
         {
-            Debug.Log("UPND: " + player.BattleBarPos.ToString());
             if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC) return; // コンピューター専用ルーチンのため、プレイヤー側は何もしない。
 
             if (player.FirstName == Database.DUEL_OL_LANDIS) // オル・ランディスは常に戦術を変更可能とする。ヴェルゼなど主要人物は全て該当。
@@ -3313,6 +3303,7 @@ namespace DungeonPlayer
         public void tapBattleSetting()
         {
             GroundOne.BattleEnemyFilter = this.Filter;
+            GroundOne.parent_TruthBattleEnemy = this;
             SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy, true);
         }
         public void tapPanel1()
@@ -5066,7 +5057,7 @@ namespace DungeonPlayer
         {
             if (player.CurrentMana < Database.FRESH_HEAL_COST)
             {
-                UpdateBattleText(player.labelName.text + " Not enough mana \n");
+                MissNotEnoughMana(player);
                 return;
             }
             player.CurrentMana -= Database.FRESH_HEAL_COST;
@@ -5667,7 +5658,6 @@ namespace DungeonPlayer
             //    {
             //        color = Color.White;
             //    }
-                Debug.Log("Call Invoke animation damage");
                 AnimationDamage(damage, player, interval, color, false, critical, String.Empty);
             }
         }
@@ -5895,7 +5885,7 @@ namespace DungeonPlayer
 
         private void AnimationDamage(double damage, MainCharacter target, int interval, Color plusValue, bool avoid, bool critical, string customString)
         {
-            Debug.Log("AnimationDamage start");
+            Debug.Log("AnimationDamage start: " + this.nowAnimationCounter);
             target.DamageLabel.text = ((int)damage).ToString();
             this.nowAnimationTarget = target;
             this.nowAnimationDamage = (int)damage;
@@ -5922,16 +5912,15 @@ namespace DungeonPlayer
             {
                 targetLabel.text = "ミス";
             }
+            else if (this.nowAnimationCustomString != string.Empty)
+            {
+                targetLabel.text = this.nowAnimationCustomString;
+            }
             else
             {
                 targetLabel.text = Convert.ToString(this.nowAnimationDamage);
             }
-
-            if (this.nowAnimationCustomString != String.Empty)
-            {
-                targetLabel.text = this.nowAnimationCustomString;
-            }
-
+            
             int waitTime = 60;
             if (TIMER_SPEED == 40) waitTime = 150;
             else if (TIMER_SPEED == 20) waitTime = 90;
@@ -5946,12 +5935,13 @@ namespace DungeonPlayer
                 if (this.nowAnimationCritical)
                 {
                     targetLabel.fontSize = targetLabel.fontSize + 4;
-                    targetCriticalLabel.gameObject.SetActive(true);
                     targetCriticalLabel.text = "Critical";
+                    targetCriticalLabel.gameObject.SetActive(true);
                 }
                 else
                 {
                     targetCriticalLabel.text = "";
+                    targetCriticalLabel.gameObject.SetActive(true);
                 }
 
                 this.nowAnimationTarget.DamagePanel.gameObject.SetActive(true);
