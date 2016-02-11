@@ -6711,7 +6711,7 @@ namespace DungeonPlayer
                     this.baseMind = 700;
                     this.experience = 0;
                     this.baseLife = 9990009;
-                    this.ResistFire = 99999999;
+                    this.ResistFire = 0;
                     this.Rare = RareString.Black;
                     this.level = 1;
                     this.gold = 0;

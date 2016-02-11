@@ -1939,12 +1939,26 @@ namespace DungeonPlayer
 
         internal static double EternalFateRingValue(MainCharacter player)
         {
-            throw new NotImplementedException();
+            // todo
+            return 0;
         }
 
         internal static double EternalLoyalRingValue(MainCharacter player)
         {
-            throw new NotImplementedException();
+            // todo
+            return 0;
+        }
+
+        internal static int JunkanSeiyakuValue(MainCharacter player)
+        {
+            // todo
+            return 0;
+        }
+
+        internal static int OraOraOraaaValue(MainCharacter player)
+        {
+            // todo
+            return 0;
         }
     }
 }

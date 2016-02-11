@@ -9826,5 +9826,11 @@ namespace DungeonPlayer
 
             return damage;
         }
+
+        internal void BuffCountUp()
+        {
+            // todo
+            //throw new NotImplementedException();
+        }
     }
 }

@@ -898,7 +898,7 @@ namespace DungeonPlayer
         public static int BGM23LoopBegin = 0;
         #endregion
 
-        public static string BaseSoundFolder = Environment.CurrentDirectory + @"\Sound\";
+        public static string BaseSoundFolder = @"Sounds/";
         public static string BaseSaveFolder = Environment.CurrentDirectory + @"\Save\";
         public static string BaseResourceFolder = @""; // Environment.CurrentDirectory + @"\Resource\"; change unity
 
@@ -1052,7 +1052,7 @@ namespace DungeonPlayer
         public static int BUFF_NUM = 200; // [警告] component数が200*6=1200, 1000だと6000でスローダウン現象につながる
         public static int BUFF_SIZE_X = 25;
         public static int BUFF_SIZE_Y = 40;
-        public static int INFINITY = 9999;
+        public static int INFINITY = 99999;
 
         public static int TILE_AREA_NUM = 4;
         public static string TREASURE_BOX = @"TreasureBox.bmp";

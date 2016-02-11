@@ -146,10 +146,12 @@ namespace DungeonPlayer
             
             // debug
             WE.AvailableInstantCommand = true;
-            enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
-            MC.CurrentLife = 20;
-            MC.CurrentMana = 55;
-            MC.CurrentSkillPoint = 3;
+            enemyName1 = Database.DUEL_DUMMY_SUBURI;
+            MC.Intelligence = 1000;
+            MC.CurrentMana = MC.MaxMana;
+            //MC.CurrentLife = 20;
+            //MC.CurrentMana = 55;
+            //MC.CurrentSkillPoint = 3;
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);
@@ -323,11 +325,11 @@ namespace DungeonPlayer
 
             MC.BattleActionCommandList[0] = Database.ATTACK_EN;
             MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
-            MC.BattleActionCommandList[2] = Database.HEAT_BOOST;
-            MC.BattleActionCommandList[3] = Database.FRESH_HEAL;
-            MC.BattleActionCommandList[4] = Database.STRAIGHT_SMASH;
-            MC.BattleActionCommandList[5] = Database.WORD_OF_LIFE;
-            MC.BattleActionCommandList[6] = Database.LAVA_ANNIHILATION;
+            MC.BattleActionCommandList[2] = Database.FIRE_BALL;
+            MC.BattleActionCommandList[3] = Database.FLAME_STRIKE;
+            MC.BattleActionCommandList[4] = Database.VOLCANIC_WAVE;
+            MC.BattleActionCommandList[5] = Database.LAVA_ANNIHILATION;
+            MC.BattleActionCommandList[6] = Database.FIRE_BALL;
             MC.BattleActionCommandList[7] = Database.GALE_WIND;
             MC.BattleActionCommandList[8] = Database.STAY_EN;
 
@@ -403,6 +405,13 @@ namespace DungeonPlayer
         }
         public static void PlaySoundEffect(string soundName)
         {
+            AudioClip clip = Resources.Load<AudioClip>(Database.BaseSoundFolder + soundName);
+
+            GameObject obj = new GameObject();
+            AudioSource source = obj.AddComponent<AudioSource>();
+            source.clip = clip;
+            source.Play();
+
 //            try
 //            {
 //                if (GroundOne.EnableSoundEffect)

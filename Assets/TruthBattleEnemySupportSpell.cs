@@ -42,6 +42,7 @@ namespace DungeonPlayer
         // [警告]：ここに集約されている情報は味方プレイヤーのみを対象としています。敵味方区別無くいけるようにしてください。
         private void PlayerBuffAbstract(MainCharacter player, MainCharacter target, int effectTime, string spellName)
         {
+            Debug.Log("playerbuffabstract start");
             string fileExt = "";
             // if (target != null) // todo [!= null problem]
             //{
@@ -155,6 +156,7 @@ namespace DungeonPlayer
                         break;
 
                     case "FlameAura":
+                        Debug.Log("call FlameAura");
                         target.CurrentFlameAura = effectTime;
                         target.ActivateBuff(target.pbFlameAura, Database.BaseResourceFolder + spellName, effectTime);
                         UpdateBattleText(player.GetCharacterSentence(36));
@@ -687,42 +689,6 @@ namespace DungeonPlayer
             //}
         }
 
-        /// <summary>
-        /// ファイア・ボールのメソッド
-        /// </summary>
-        private void PlayerSpellFireBall(MainCharacter player, MainCharacter target, int interval, double magnification)
-        {
-            double damage = PrimaryLogic.FireBallValue(player, this.DuelMode);
-            AbstractMagicDamage(player, target, Database.FIRE_BALL, interval, ref damage, magnification, "FireBall.mp3", 10, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-        }
 
-        /// <summary>
-        /// シャドウ・パクトのメソッド
-        /// </summary>
-        private void PlayerSpellShadowPact(MainCharacter player, MainCharacter target)
-        {
-            GroundOne.PlaySoundEffect("ShadowPact.mp3");
-            PlayerBuffAbstract(player, target, 999, "ShadowPact");
-        }
-
-        /// <summary>
-        /// プロテクションのメソッド
-        /// </summary>
-        private void PlayerSpellProtection(MainCharacter player, MainCharacter target)
-        {
-            Debug.Log("playerspellprotection start");
-            GroundOne.PlaySoundEffect("Protection.mp3");
-            PlayerBuffAbstract(player, target, 999, "Protection");
-            Debug.Log("playerspellprotection end");
-        }
-
-        /// <summary>
-        /// ヒート・ブースト
-        /// </summary>
-        private void PlayerSpellHeatBoost(MainCharacter player, MainCharacter target)
-        {
-            GroundOne.PlaySoundEffect("HeatBoost.mp3");
-            PlayerBuffAbstract(player, target, 999, "HeatBoost");
-        }
     }
 }

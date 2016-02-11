@@ -4566,8 +4566,7 @@ namespace DungeonPlayer
             }
             else if (CurrentSpellName == Database.GENESIS)
             {
-                // todo
-                // PlayerSpellGenesis(player, player.BeforeTarget);
+                PlayerSpellGenesis(player, player.BeforeTarget);
             }
             else if (CurrentSpellName == Database.ETERNAL_PRESENCE)
             {
@@ -5059,153 +5058,6 @@ namespace DungeonPlayer
             //if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); }
         }
 
-
-        private void PlayerSpellTimeStop(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellWhiteOut(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellOneImmunity(MainCharacter player)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellTranquility(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellRiseOfImage(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellEternalPresence(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellAetherDrive(MainCharacter player)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellWordOfFortune(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellWordOfPower(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellAbsoluteZero(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellPromisedKnowledge(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellMirrorImage(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellFrozenLance(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellAbsorbWater(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellLavaAnnihilation(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellImmortalRave(MainCharacter player)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellVolcanicWave(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellFlameStrike(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        private void PlayerSpellDamnation(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellBloodyVengeance(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellDevouringPlague(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellBlackContract(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellLifeTap(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellDarkBlast(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellCelestialNova(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellResurrection(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellGlory(MainCharacter player)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellSaintPower(MainCharacter player, MainCharacter target)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void PlayerSpellHolyShock(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            throw new NotImplementedException();
-        }
-
         private void MissNotEnoughMana(MainCharacter player)
         {
             UpdateBattleText(player.GetCharacterSentence(17));
@@ -5232,56 +5084,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(87));
             AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SKILL);
         }
-
-        private void ExecBeforeAttackPhase(MainCharacter player, bool skipStanceDouble)
-        {
-            // todo
-            //if (player.BeforePA == PlayerAction.None)
-            //{
-            //    PlayerNormalAttack(player, player.Target, 0.0f, false, false);
-            //    return;
-            //}
-
-            //PlayerAction shadowPA = player.PA;
-            //string shadowItem = player.CurrentUsingItem;
-            //string shadowSpell = player.CurrentSpellName;
-            //string shadowSkill = player.CurrentSkillName;
-            //string shadowArche = player.CurrentArchetypeName;
-            //MainCharacter shadowTarget = player.Target;
-            //MainCharacter shadowTarget2 = player.Target2;
-            //PlayerAction shadowBeforePA = player.BeforePA;
-            //string shadowBeforeItem = player.BeforeUsingItem;
-            //string shadowBeforeSpell = player.BeforeSpellName;
-            //string shadowBeforeskill = player.BeforeSkillName;
-            //string shadowBeforeArche = player.BeforeArchetypeName;
-            //MainCharacter shadowBeforeTarget = player.BeforeTarget;
-            //MainCharacter shadowBeforeTarget2 = player.BeforeTarget2;
-
-            //player.PA = player.BeforePA;
-            //player.CurrentUsingItem = player.BeforeUsingItem;
-            //player.CurrentSkillName = player.BeforeSkillName;
-            //player.CurrentSpellName = player.BeforeSpellName;
-            //player.CurrentArchetypeName = player.BeforeArchetypeName;
-            //player.Target = player.BeforeTarget;
-            //player.Target2 = player.BeforeTarget2;
-
-            //PlayerAttackPhase(player, true, skipStanceDouble, false);
-
-            //player.PA = shadowPA;
-            //player.CurrentUsingItem = shadowItem;
-            //player.CurrentSkillName = shadowSkill;
-            //player.CurrentSpellName = shadowSpell;
-            //player.CurrentArchetypeName = shadowArche;
-            //player.Target = shadowTarget;
-            //player.Target2 = shadowTarget2;
-            //player.BeforePA = shadowBeforePA;
-            //player.BeforeUsingItem = shadowBeforeItem;
-            //player.BeforeSkillName = shadowBeforeskill;
-            //player.BeforeSpellName = shadowBeforeSpell;
-            //player.BeforeTarget = shadowBeforeTarget;
-            //player.BeforeTarget2 = shadowBeforeTarget2;
-        }
-
+        
         private void Invoke(Delegate method, params object[] args)
         {
             // todo
@@ -5299,6 +5102,110 @@ namespace DungeonPlayer
                 GroundOne.PlaySoundEffect("MirrorImage.mp3");
                 PlayerBuffAbstract(player, group[ii], 999, "MirrorImage.bmp");
             }
+        }
+
+
+        /// <summary>
+        /// ライフダウン
+        /// </summary>
+        /// <param name="player">プレーヤー</param>
+        /// <param name="target">ターゲット</param>
+        /// <param name="effectValue">減少倍率（0.0から1.0で指定（1.0で即死）</param>
+        private void PlayerLifeDown(MainCharacter player, MainCharacter target, double effectValue)
+        {
+            if (target.CurrentBlackElixir > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_LIFE_DOWN);
+                return;
+            }
+
+            LifeDamage(effectValue, target);
+        }
+
+        private void PlayerLifeHalfMax(MainCharacter player, MainCharacter target)
+        {
+            if (target.CurrentBlackElixir > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_LIFE_DOWN);
+                return;
+            }
+
+            double damage = (double)target.MaxLife / 2.0F;
+            LifeDamage(damage, target);
+        }
+
+        private void PlayerLifeHalfCurrent(MainCharacter player, MainCharacter target, int interval = 0)
+        {
+            if (target.CurrentBlackElixir > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_LIFE_DOWN);
+                return;
+            }
+
+            double damage = 0;
+            if (target.CurrentLife <= 1)
+            {
+                damage = 1;
+            }
+            else
+            {
+                damage = (double)target.CurrentLife / 2.0F;
+            }
+            LifeDamage(damage, target, interval);
+        }
+
+        private void PlayerLifeOne(MainCharacter player, MainCharacter target)
+        {
+            if (target.CurrentBlackElixir > 0)
+            {
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.RESIST_LIFE_DOWN);
+                return;
+            }
+
+            double damage = target.CurrentLife - 1;
+            target.CurrentLife = 1;
+            UpdateLife(target, damage, false, true, 0, false);
+        }
+
+        private void PlayerDeath(MainCharacter player, MainCharacter target)
+        {
+            // 敵がボス系統の場合は発動しない事とする。
+            if (target.GetType() == typeof(TruthEnemyCharacter))
+            {
+                if (((TruthEnemyCharacter)target).Rare == TruthEnemyCharacter.RareString.Purple ||
+                    ((TruthEnemyCharacter)target).Rare == TruthEnemyCharacter.RareString.Gold ||
+                    ((TruthEnemyCharacter)target).Rare == TruthEnemyCharacter.RareString.Legendary)
+                {
+                    // ボスが自動耐性の場合、何も表示せずスルーする。
+                    return;
+                }
+            }
+            // 即死耐性のアクセサリ
+            if ((target.Accessory != null) && (target.Accessory.Name == Database.RARE_SEAL_OF_ASSASSINATION))
+            {
+                UpdateBattleText(target + "が装備している" + target.Accessory + "が輝きだし、即死を防いだ！\r\n");
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, "即死耐性");
+                return;
+            }
+            if ((target.Accessory2 != null) && (target.Accessory2.Name == Database.RARE_SEAL_OF_ASSASSINATION))
+            {
+                UpdateBattleText(target + "が装備している" + target.Accessory2 + "が輝きだし、即死を防いだ！\r\n");
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, "即死耐性");
+                return;
+            }
+            // 耐性効果
+            if (target.CurrentGenseiTaima > 0)
+            {
+                UpdateBattleText(target + "の退魔効果が発動し、即死を防いだ！\r\n");
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, "即死耐性");
+                target.RemoveGenseiTaima();
+                return;
+            }
+
+            double damage = target.CurrentLife;
+            target.CurrentLife = 0;
+            UpdateLife(target, damage, false, true, 0, false);
+            //target.DeadPlayer();
         }
 
         private void NowStunning(MainCharacter player, MainCharacter target, int effectTime)

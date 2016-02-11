@@ -409,6 +409,7 @@ namespace DungeonPlayer
             if (GroundOne.enemyName1 == String.Empty)
             {
                 groupEnemy1.SetActive(false);
+                ec1 = null;
             }
             else
             {
@@ -419,6 +420,7 @@ namespace DungeonPlayer
             if (GroundOne.enemyName2 == String.Empty)
             {
                 groupEnemy2.SetActive(false);
+                ec2 = null;
             }
             else
             {
@@ -429,6 +431,7 @@ namespace DungeonPlayer
             if (GroundOne.enemyName3 == String.Empty)
             {
                 groupEnemy3.SetActive(false);
+                ec3 = null;
             }
             else
             {
@@ -1296,7 +1299,6 @@ namespace DungeonPlayer
 
         void PointerEnter(TruthImage currentImage)
         {
-            Debug.Log("PointerEnter");
             // todo
             Vector3 current = Input.mousePosition;
             current.x -= 5;
@@ -1323,14 +1325,12 @@ namespace DungeonPlayer
         }
         void PointerExit()
         {
-            Debug.Log("PointerExit");
             popupInfo.SetActive(false);
             CurrentInfo.text = "";
         }
 
         public void PointerMove()
         {
-            Debug.Log("PointerMove");
         }
 
         /// <summary>
@@ -2727,6 +2727,27 @@ namespace DungeonPlayer
             }
             return false;
         }
+
+        /// <summary>
+        /// プレイヤーとターゲットはパーティメンバーか敵メンバーかを判別するメソッド
+        /// </summary>
+        /// <param name="player">対象元プレイヤー</param>
+        /// <param name="target">対象先ターゲット</param>
+        /// <returns>敵メンバーならTrue、味方メンバーならFalse</returns>
+        private bool DetectOpponentParty(MainCharacter player, MainCharacter target)
+        {
+            // 可読性より、演算論理集約を重視した記述
+            if (((player == ec1 || player == ec2 || player == ec3) &&
+                 (target == GroundOne.MC || target == GroundOne.SC || target == GroundOne.TC))
+                 ||
+                 ((player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC) &&
+                  (target == ec1 || target == ec2 || target == ec3)))
+            {
+                return true;
+            }
+            return false;
+        }
+
         private bool CheckBattlePlaying()
         {
             if (tempStopFlag)
@@ -5034,573 +5055,6 @@ namespace DungeonPlayer
             }
         }
 
-        // フレイムオーラ
-        private void PlayerSpellFlameAura(MainCharacter player, MainCharacter target)
-        {
-            target.ActivateFlameAura(Resources.Load<Sprite>(Database.FLAME_AURA), 99999);
-        }
-        // アイスニードル
-        private void PlayerSpellIceNeedle(MainCharacter player, MainCharacter target, int p1, int p2)
-        {
-            double value = 30.0 + player.Intelligence * 1.9f;
-            AbstractMagicAttack(player, target, Database.ICE_NEEDLE, value);
-            // 戦闘速度Down
-        }
-        // クリーンジング
-        private void PlayerSpellCleansing(MainCharacter player, MainCharacter target)
-        {
-            // -BUFF除去
-            target.RemovePoison();
-        }
-        // ダークブラスト
-        private void PlayerSpellDarkBlast(MainCharacter player, MainCharacter target)
-        {
-            double value = 30.0 + player.Intelligence * 1.7f;
-            AbstractMagicAttack(player, target, Database.DARK_BLAST, value);
-            // 魔法攻撃Down
-        }
-
-        // ワードオブパワー
-        private void PlayerSpellWordOfPower(MainCharacter player, MainCharacter target)
-        {
-            double value = 30.0 + player.Strength * 1.6f;
-            AbstractMagicAttack(player, target, Database.WORD_OF_POWER, value);
-        }
-        // ワードオブライフ
-        private void PlayerSpellWordOfLife(MainCharacter player, MainCharacter target)
-        {
-            target.ActivateWordOfLife(Resources.Load<Sprite>(Database.WORD_OF_LIFE), 99999);
-        }
-        // ディスペルマジック
-        private void PlayerSpellDispelMagic(MainCharacter player, MainCharacter target)
-        {
-            //target...
-        }
-        // デフレクション
-        private void PlayerSpellDeflection(MainCharacter player, MainCharacter target)
-        {
-            target.ActivateDeflection(Resources.Load<Sprite>(Database.DEFLECTION), 99999);
-        }
-
-        /// <summary>
-        /// ストレートスマッシュのメソッド
-        /// </summary>
-        private void PlayerSkillStraightSmash(MainCharacter player, MainCharacter target, int interval, bool ignoreDefense)
-        {
-            UpdateBattleText(player.GetCharacterSentence(1));
-            double damage = PrimaryLogic.StraightSmashValue(player, this.DuelMode);
-            PlayerNormalAttack(player, target, 0, 0, ignoreDefense, false, damage, interval, Database.SOUND_STRAIGHT_SMASH, -1, true, CriticalType.Random);
-        }
-
-
-        /// <summary>
-        /// サイレント・ラッシュのメソッド
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="target"></param>
-        /// <param name="p"></param>
-        /// <param name="p_2"></param>
-        private void PlayerSkillSilentRush(MainCharacter player, MainCharacter target)
-        {
-            for (int ii = 0; ii < 3; ii++)
-            {
-                string soundName = "Hit01.mp3";
-                int interval = 30;
-                int sentence = 89; if (ii == 1) sentence = 90; if (ii == 2) sentence = 91;
-
-                PlayerNormalAttack(player, target, 0, 0, false, false, 0, interval, soundName, sentence, false, CriticalType.Random);
-            }
-        }
-
-        /// <summary>
-        /// カルネージラッシュのメソッド
-        /// </summary>
-        private void PlayerSkillCarnageRush(MainCharacter player, MainCharacter target)
-        {
-            for (int ii = 0; ii < 5; ii++)
-            {
-                string soundName = "Hit01.mp3"; if (ii == 4) soundName = "KineticSmash.mp3";
-                int interval = 30; if (ii == 1 || ii == 2 || ii == 3) { interval = 8; } if (ii == 4) { interval = 30; }
-                int sentence = 65; if (ii == 1) sentence = 66; if (ii == 2) sentence = 67; if (ii == 3) sentence = 68; if (ii == 4) sentence = 69;
-
-                PlayerNormalAttack(player, target, 0, 0, false, false, 0, interval, soundName, sentence, false, CriticalType.Random);
-            }
-        }
-
-        /// <summary>
-        /// ソウル・エグゼキューション
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="target"></param>
-        private void PlayerSkillSoulExecution(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(188), 1000);
-            bool alreadyTruthVision = false;
-            if (player.CurrentTruthVision <= 0)
-            {
-                PlayerSkillTruthVision(player, player);
-            }
-            else
-            {
-                alreadyTruthVision = true;
-            }
-
-            for (int ii = 0; ii < 10; ii++)
-            {
-                string soundName = "Hit01.mp3"; if (ii == 9) soundName = "Catastrophe.mp3";
-                int[] interval = { 10, 9, 8, 7, 6, 5, 4, 3, 50, 0 };
-                int[] sentence = { 189, 190, 191, 192, 193, 194, 195, 196, 197, 198 };
-                double[] damageMag = { 1.0f, 1.1f, 1.2f, 1.3f, 1.5f, 1.7f, 1.9f, 2.2f, 2.5f, 3.0f }; // ; damageMag += ii * 0.2f; if (ii == 9) damageMag += 3.0f;
-                PlayerNormalAttack(player, target, damageMag[ii], 0, false, false, 0, interval[ii], soundName, sentence[ii], false, CriticalType.Random);
-            }
-
-            // todo
-            //if (alreadyTruthVision == false)
-            //{
-            //    player.CurrentTruthVision = 0;
-            //    player.DeBuff(player.pbTruthVision);
-            //}
-        }
-
-
-        /// <summary>
-        /// エニグマ・センスのメソッド
-        /// </summary>
-        private void PlayerSkillEnigmaSense(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(72));
-            double atkBase = PrimaryLogic.EnigmaSenseValue(player, this.DuelMode);
-            PlayerNormalAttack(player, target, 0, 0, false, false, atkBase, 0, string.Empty, -1, true, CriticalType.Random);
-        }
-
-        /// <summary>
-        /// クラッシング・ブローのメソッド
-        /// </summary>
-        private void PlayerSkillCrushingBlow(MainCharacter player)
-        {
-            PlayerNormalAttack(player, player.Target, 0, 2, false, false, 0, 0, Database.SOUND_CRUSHING_BLOW, -1, true, CriticalType.Random);
-        }
-
-        /// <summary>
-        /// キネティック・スマッシュのメソッド
-        /// </summary>
-        private void PlayerSkillKineticSmash(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(74));
-            double damage = PrimaryLogic.KineticSmashValue(player, this.DuelMode);
-            PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_KINETIC_SMASH, -1, true, CriticalType.Random);
-        }
-
-        /// <summary>
-        /// ソウル・インフィニティのメソッド
-        /// </summary>
-        private void PlayerSkillSoulInfinity(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(73));
-            double damage = PrimaryLogic.SoulInfinityValue(player, this.DuelMode);
-            PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_SOUL_INFINITY, -1, true, CriticalType.Random);
-        }
-
-        /// <summary>
-        /// カタストロフィのメソッド
-        /// </summary>
-        private void PlayerSkillCatastrophe(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(98), 1000);
-            double damage = PrimaryLogic.CatastropheValue(player, this.DuelMode);
-            PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_CATASTROPHE, 99, true, CriticalType.Random);
-        }
-
-        /// <summary>
-        /// 朧・インパクトのメソッド
-        /// </summary>
-        private void PlayerSkillOboroImpact(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(96), 1000);
-            double damage = PrimaryLogic.OboroImpactValue(player, this.DuelMode);
-            PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_OBORO_IMPACT, 97, true, CriticalType.Random);
-        }
-
-
-        /// <summary>
-        /// インナー・インスピレーションのメソッド
-        /// </summary>
-        private void PlayerSkillInnerInspiration(MainCharacter player)
-        {
-            GroundOne.PlaySoundEffect("InnerInspiration.mp3");
-            double effectValue = PrimaryLogic.InnerInspirationValue(player);
-            effectValue = GainIsZero(effectValue, player);
-            UpdateBattleText(String.Format(player.GetCharacterSentence(51), Convert.ToString((int)effectValue)));
-            player.CurrentSkillPoint += (int)effectValue;
-            UpdateSkillPoint(player, effectValue, true, true, 0);
-        }
-
-        /// <summary>
-        /// スタンス・オブ・スタンディングのメソッド
-        /// </summary>
-        private void PlayerSkillStanceOfStanding(MainCharacter player, MainCharacter target)
-        {
-            if (PlayerNormalAttack(player, target, 0, false, false))
-            {
-                PlayerBuffAbstract(player, player, 1, Database.STANCE_OF_STANDING + ".bmp");
-            }
-            UpdateBattleText(player.GetCharacterSentence(56));
-        }
-        /// <summary>
-        /// ニュートラル・スマッシュのメソッド
-        /// </summary>
-        private void PlayerSkillNeutralSmash(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(152));
-            PlayerNormalAttack(player, target, 0, false, false);
-        }
-        /// <summary>
-        /// スウィフト・ステップのメソッド
-        /// </summary>
-        private void PlayerSkillSwiftStep(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(153));
-            GroundOne.PlaySoundEffect("StanceOfFlow.mp3");
-            PlayerBuffAbstract(player, target, 3, "SwiftStep.bmp");
-        }
-        /// <summary>
-        /// ヴィゴー・センスのメソッド
-        /// </summary>
-        private void PlayerSkillVigorSense(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(201));
-            GroundOne.PlaySoundEffect("StanceOfFlow.mp3");
-            PlayerBuffAbstract(player, target, 3, "VigorSense.bmp");
-        }
-
-        /// <summary>
-        /// サークル・スラッシュのメソッド
-        /// </summary>
-        private void PlayerSkillCircleSlash(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(154));
-            List<MainCharacter> group = new List<MainCharacter>();
-            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else if (player == ec1 || player == ec2 || player == ec3)
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
-            for (int ii = 0; ii < group.Count; ii++)
-            {
-                PlayerNormalAttack(player, group[ii], 0, false, false);
-            }
-        }
-        /// <summary>
-        /// ランブル・シャウトのメソッド
-        /// </summary>
-        private void PlayerSkillRumbleShout(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(155));
-            target.Target = player;
-            target.StackTarget = player;
-        }
-        /// <summary>
-        /// スムージング・ムーヴのメソッド
-        /// </summary>
-        private void PlayerSkillSmoothingMove(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(156));
-            if (PlayerNormalAttack(player, target, 0, false, false))
-            {
-                GroundOne.PlaySoundEffect("AeroBlade.mp3");
-                PlayerBuffAbstract(player, player, 1, "SmoothingMove.bmp");
-            }
-        }
-        /// <summary>
-        /// フューチャー・ヴィジョンのメソッド
-        /// </summary>
-        private void PlayerSkillFutureVision(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(157));
-            GroundOne.PlaySoundEffect("Tranquility.mp3");
-            PlayerBuffAbstract(player, player, 2, "FutureVision.bmp");
-        }
-        /// <summary>
-        /// リフレックス・スピリットのメソッド
-        /// </summary>
-        private void PlayerSkillReflexSpirit(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(158));
-            GroundOne.PlaySoundEffect("Tranquility.mp3");
-            PlayerBuffAbstract(player, player, 999, "ReflexSpirit.bmp");
-        }
-        /// <summary>
-        /// シャープ・グレアのメソッド
-        /// </summary>
-        private void PlayerSkillSharpGlare(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(159));
-            if (PlayerNormalAttack(player, target, 0, false, false))
-            {
-                GroundOne.PlaySoundEffect("RisingKnuckle.mp3");
-                NowSilence(player, target, 3);
-            }
-        }
-        /// <summary>
-        /// アンノウン・ショックのメソッド
-        /// </summary>
-        private void PlayerSkillUnknownShock(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(187));
-
-            List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerAlly(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
-
-            for (int ii = 0; ii < group.Count; ii++)
-            {
-                if (PlayerNormalAttack(player, group[ii], 0, false, false))
-                {
-                    GroundOne.PlaySoundEffect("RisingKnuckle.mp3");
-                    NowBlind(player, group[ii], 3);
-                }
-            }
-        }
-
-        /// <summary>
-        /// トラスト・サイレンスのメソッド
-        /// </summary>
-        private void PlayerSkillTrustSilence(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(160));
-            GroundOne.PlaySoundEffect("Tranquility.mp3");
-            PlayerBuffAbstract(player, player, 999, "TrustSilence.bmp");
-        }
-        /// <summary>
-        /// サプライズ・アタックのメソッド
-        /// </summary>
-        private void PlayerSkillSurpriseAttack(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(161));
-            if (PlayerNormalAttack(player, target, 0, false, false))
-            {
-                bool result = NowParalyze(player, target, 1);
-                if (result == false)
-                {
-                    ((TruthEnemyCharacter)player).DetectCannotBeParalyze = true;
-                }
-            }
-        }
-        /// <summary>
-        /// サイキック・ウェイヴのメソッド
-        /// </summary>
-        private void PlayerSkillPsychicWave(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(162));
-
-            double damage = PrimaryLogic.PsychicWaveValue(player, this.DuelMode);
-            AbstractMagicDamage(player, target, 0, damage, 0, "WordOfPower.mp3", -1, TruthActionCommand.MagicType.None, true, CriticalType.Random);
-        }
-        /// <summary>
-        /// リカバーのメソッド
-        /// </summary>
-        private void PlayerSkillRecover(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(163));
-            target.RecoverStunning();
-            target.RecoverParalyze();
-            target.RecoverFrozen();
-        }
-        /// <summary>
-        /// バイオレント・スラッシュのメソッド
-        /// </summary>
-        private void PlayerSkillViolentSlash(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(164));
-            double damage = PrimaryLogic.ViolentSlashValue(player, this.DuelMode);
-            PlayerNormalAttack(player, target, 0, 0, true, false, damage, 0, Database.SOUND_KINETIC_SMASH, -1, false, CriticalType.Random);
-        }
-        /// <summary>
-        /// アウター・インスピレーションのメソッド
-        /// </summary>
-        private void PlayerSkillOuterInspiration(MainCharacter player, MainCharacter target)
-        {
-            GroundOne.PlaySoundEffect("WordOfLife.mp3");
-            UpdateBattleText(player.GetCharacterSentence(165));
-            target.RemovePhysicalAttackDown();
-            target.RemovePhysicalDefenseDown();
-            target.RemoveMagicAttackDown();
-            target.RemoveMagicDefenseDown();
-            target.RemoveSpeedDown();
-            target.RemoveReactionDown();
-            target.RemovePotentialDown();
-            UpdateBattleText(target.FirstName + "の能力低下状態が解除された！");
-        }
-
-        /// <summary>
-        /// ディープ・ミラーのメソッド
-        /// </summary>
-        private void PlayerSpellDeepMirror(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(179));
-            player.CurrentDeepMirror = true;
-        }
-
-        /// <summary>
-        /// スタンス・オブ・サッドネスのメソッド
-        /// </summary>
-        private void PlayerSkillStanceOfSuddenness(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(166));
-            player.CurrentStanceOfSuddenness = true;
-        }
-
-        /// <summary>
-        /// ハーデスト・パリィのメソッド
-        /// </summary>
-        private void PlayerSkillHardestParry(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(169));
-            player.CurrentHardestParry = true;
-        }
-
-        /// <summary>
-        /// コンカシッヴ・ヒットのメソッド
-        /// </summary>
-        private void PlayerSkillConcussiveHit(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(170));
-            if (PlayerNormalAttack(player, target, 0, false, false))
-            {
-                PlayerBuffAbstract(player, target, 999, "ConcussiveHit.bmp");
-            }
-        }
-
-        /// <summary>
-        /// オンスロート・ヒットのメソッド
-        /// </summary>
-        private void PlayerSkillOnslaughtHit(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(171));
-            if (PlayerNormalAttack(player, target, 0, false, false))
-            {
-                PlayerBuffAbstract(player, target, 999, "OnslaughtHit.bmp");
-            }
-        }
-
-        /// <summary>
-        /// インパルス・ヒットのメソッド
-        /// </summary>
-        private void PlayerSkillImpulseHit(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(172));
-            if (PlayerNormalAttack(player, target, 0, false, false))
-            {
-                PlayerBuffAbstract(player, target, 999, "ImpulseHit.bmp");
-            }
-        }
-
-        /// <summary>
-        /// ハイ・エモーショナリティのメソッド
-        /// </summary>
-        private void PlayerSkillHighEmotionality(MainCharacter player)
-        {
-            GroundOne.PlaySoundEffect("HighEmotionality.mp3");
-            player.Target = player;
-            PlayerBuffAbstract(player, player, 4, "HighEmotionality.bmp");
-        }
-
-        /// <summary>
-        /// スタンス・オブ・デスのメソッド
-        /// </summary>
-        private void PlayerSkillStanceOfDeath(MainCharacter player)
-        {
-            GroundOne.PlaySoundEffect("StanceOfDeath.mp3");
-            player.Target = player;
-            PlayerBuffAbstract(player, player, 999, "StanceOfDeath.bmp");
-        }
-
-        /// <summary>
-        /// アンチ・スタンのメソッド
-        /// </summary>
-        private void PlayerSkillAntiStun(MainCharacter player)
-        {
-            GroundOne.PlaySoundEffect("AntiStun.mp3");
-            player.Target = player;
-            PlayerBuffAbstract(player, player, 999, "AntiStun.bmp");
-        }
-
-        /// <summary>
-        /// ペインフル・インサニティ
-        /// </summary>
-        private void PlayerSkillPainfulInsanity(MainCharacter player)
-        {
-            GroundOne.PlaySoundEffect("PainfulInsanity.mp3");
-            player.Target = player;
-            PlayerBuffAbstract(player, player, 999, "PainfulInsanity.bmp");
-        }
-
-        /// <summary>
-        /// ナッシング・オブ・ナッシングネスのメソッド
-        /// </summary>
-        private void PlayerSkillNothingOfNothingness(MainCharacter player)
-        {
-            GroundOne.PlaySoundEffect("NothingOfNothingness.mp3");
-            player.Target = player;
-            PlayerBuffAbstract(player, player, 999, "NothingOfNothingness.bmp");
-        }
-
-        // スタンスオブフロー
-        private void PlayerSkillStanceOfFlow(MainCharacter player, MainCharacter target)
-        {
-            // 必ず後攻
-        }
-        // トゥルスビジョン
-        private void PlayerSkillTruthVision(MainCharacter player, MainCharacter target)
-        {
-            target.ActivateTruthVision(Resources.Load<Sprite>(Database.TRUTH_VISION), 99999);
-        }
-        // ニゲイト
-        private void PlayerSkillNegate(MainCharacter player, MainCharacter target)
-        {
-            // negate is stack-in-the-command only
-        }
-
-        // 前回対象を対象
-        private void PlayerSpellGenesis(MainCharacter player, MainCharacter target)
-        {
-            GroundOne.PlaySoundEffect(Database.SOUND_GENESIS);
-            UpdateBattleText(player.GetCharacterSentence(108));
-            ExecBeforeAttackPhase(player, false);
-        }
-
-        // ゲイル・ウィンドのメソッド
-        private void PlayerSpellGaleWind(MainCharacter player)
-        {
-            GroundOne.PlaySoundEffect("GaleWind.mp3");
-            if (player.CurrentGaleWind <= 0)
-            {
-                PlayerBuffAbstract(player, player, 2, "GaleWind");
-            }
-            // todo
-            //else
-            //{
-            //    // 後編、ヴェルゼがＸ回行動を取るための仕組み。
-            //    PlayerBuffAbstract(player, player, player.CurrentGaleWind + 1, "GaleWind");
-            //}
-        }
         private void UpdateLife(MainCharacter player, double damage, bool plusValue, bool animationDamage, int interval, bool critical)
         {
             UpdateLife(player);
@@ -5744,7 +5198,7 @@ namespace DungeonPlayer
             }
             else if (command == Database.DARK_BLAST)
             {
-                PlayerSpellDarkBlast(player, target);
+                PlayerSpellDarkBlast(player, target, 0, 0);
             }
             else if (command == Database.SHADOW_PACT)
             {
@@ -5768,7 +5222,7 @@ namespace DungeonPlayer
             }
             else if (command == Database.WORD_OF_POWER)
             {
-                PlayerSpellWordOfPower(player, target);
+                PlayerSpellWordOfPower(player, target, 0, 0);
             }
             else if (command == Database.WORD_OF_LIFE)
             {
@@ -5792,7 +5246,7 @@ namespace DungeonPlayer
             }
             else if (command == Database.STANCE_OF_FLOW)
             {
-                PlayerSkillStanceOfFlow(player, player);
+                PlayerSkillStanceOfFlow(player);
             }
             else if (command == Database.STANCE_OF_STANDING)
             {
@@ -5806,11 +5260,6 @@ namespace DungeonPlayer
             {
                 PlayerSkillNegate(player, target);
             }
-        }
-
-        private void PlayerSkillCounterAttack(MainCharacter player, MainCharacter target)
-        {
-            //throw new System.NotImplementedException();// todo
         }
 
         public void UseItemButton_Click()
