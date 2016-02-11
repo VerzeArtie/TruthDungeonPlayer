@@ -146,12 +146,8 @@ namespace DungeonPlayer
             
             // debug
             WE.AvailableInstantCommand = true;
-            enemyName1 = Database.DUEL_DUMMY_SUBURI;
-            MC.Intelligence = 1000;
-            MC.CurrentMana = MC.MaxMana;
-            //MC.CurrentLife = 20;
-            //MC.CurrentMana = 55;
-            //MC.CurrentSkillPoint = 3;
+            GroundOne.enemyName1 = Database.DUEL_EONE_FULNEA;
+            GroundOne.DuelMode = true;
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);

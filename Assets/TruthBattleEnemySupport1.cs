@@ -1102,7 +1102,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は炎を燈した蔦槍を投げつけてきた！\r\n");
                                     PlayerNormalAttack(player, target, 0, false, true);
                                     System.Threading.Thread.Sleep(100);
-                                    double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
+                                    double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
                                     AbstractMagicDamage(player, target, 0, ref damage, 0, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                     System.Threading.Thread.Sleep(100);
                                 }
@@ -1218,7 +1218,7 @@ namespace DungeonPlayer
                                     System.Threading.Thread.Sleep(500);
                                     UpdateBattleText(ec1.FirstName + "「奥義　キル・スピニングランサー」発動！！\r\n");
                                     System.Threading.Thread.Sleep(500);
-                                    double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
+                                    double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
                                     PlayerNormalAttack(player, target, 8.0f, 0, false, true, 0, 0, string.Empty, -1, true, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "絡み蔦")
@@ -1273,7 +1273,7 @@ namespace DungeonPlayer
 
                                     for (int ii = 0; ii < 10; ii++)
                                     {
-                                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 2;
+                                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 2;
 
                                         int tempRandom = AP.Math.RandomInteger(2);
                                         if (tempRandom == 0)
@@ -1337,7 +1337,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "透明な光")
                                 {
                                     UpdateBattleText(player.FirstName + "は目に見えない光を発生させてきた！\r\n");
-                                    if (AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Light, false, CriticalType.Random))
+                                    if (AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Light, false, CriticalType.Random))
                                     {
                                         NowBlind(player, target, 5);
                                     }
@@ -1345,7 +1345,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "共鳴波")
                                 {
                                     UpdateBattleText(player.FirstName + "は耳に聞こえない音波を発してきた！\r\n");
-                                    if (AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Will, false, CriticalType.Random))
+                                    if (AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Will, false, CriticalType.Random))
                                     {
                                         NowSilence(player, target, 5);
                                     }
@@ -1399,7 +1399,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "はキリキリした声を全体へ発生させてきた！\r\n");
                                     // 全体ダメージ
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Will);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Will);
                                 }
                                 break;
 
@@ -1408,7 +1408,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は大きく地面を鳴らしてきた！\r\n");
                                     // 全体ダメージ
-                                    PlayerPhysicalAttackAllEnemy(player, PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode) * 2.0F, Database.SOUND_ENEMY_ATTACK1);
+                                    PlayerPhysicalAttackAllEnemy(player, PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode) * 2.0F, Database.SOUND_ENEMY_ATTACK1);
                                     // 全体鈍化
                                     PlayerSlowAllEnemy(player, 3);
                                 }
@@ -1467,7 +1467,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "流水の渦巻き")
                                 {
                                     UpdateBattleText(player.FirstName + "は水の渦巻きを発生させてきた！\r\n");
-                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 4.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 4.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "流水の突壁")
                                 {
@@ -1523,7 +1523,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "コーラル・サウンド")
                                 {
                                     UpdateBattleText(player.FirstName + "は独特のサウンドを発生させてきた！\r\n");
-                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 4.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 4.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "バニッシング・エフェクト")
                                 {
@@ -1585,7 +1585,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "ヴァイオレンス・テール")
                                 {
                                     UpdateBattleText(player.FirstName + "はバカでかい尾を使って、周囲に当たり散らしてきた！\r\n");
-                                    PlayerPhysicalAttackAllEnemy(player, 3.0F * PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode), Database.SOUND_ENEMY_ATTACK1);
+                                    PlayerPhysicalAttackAllEnemy(player, 3.0F * PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode), Database.SOUND_ENEMY_ATTACK1);
                                 }
                                 break;
 
@@ -1611,12 +1611,12 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "黒墨ミサイル")
                                 {
                                     UpdateBattleText(player.FirstName + "は墨をミサイル形状化させて放ってきた！\r\n");
-                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 0.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, target, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 0.0F, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "大渦巻き")
                                 {
                                     UpdateBattleText(player.FirstName + "は巨大な渦巻きを周囲に発生させてきた！\r\n");
-                                    PlayerPhysicalAttackAllEnemy(player, 3.0F * PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode), Database.SOUND_ENEMY_ATTACK1);
+                                    PlayerPhysicalAttackAllEnemy(player, 3.0F * PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode), Database.SOUND_ENEMY_ATTACK1);
                                 }
                                 break;
 
@@ -1663,13 +1663,13 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "はアイソニック・ウェイヴを放ってきた！\r\n");
                                     // 全体ダメージ
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Ice);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Ice);
                                 }
                                 else if (player.ActionLabel.text == "グングニル・スラッシュ")
                                 {
                                     UpdateBattleText(player.FirstName + "：食らえ、グングニルの力！　ッヤアァァァ！！\r\n");
                                     // 物理攻撃
-                                    double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
+                                    double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
                                     PlayerNormalAttack(player, target, 10.0f, 0, false, true, 0, 0, string.Empty, -1, true, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "グングニルの閃光")
@@ -1677,7 +1677,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "：光輝け、グングニル！　ッハアァァァ！！\r\n");
 
                                     // 魔法攻撃
-                                    double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
+                                    double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
                                     PlayerMagicAttack(player, target, 0, 10.0f);
                                 }
                                 break;
@@ -1687,7 +1687,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は宙にウォータエレメンタルを飛ばした！\r\n");
                                     // 全体ダメージ
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Ice);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Ice);
                                 }
                                 else if ((player.ActionLabel.text == "生命の龍水") ||
                                          (player.StackCommandString == "生命の龍水"))
@@ -1761,7 +1761,7 @@ namespace DungeonPlayer
                             case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
                                 if (player.StackCommandString == "溶岩の一撃")
                                 {
-                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 1.5F, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 1.5F, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "燃え盛る炎弾丸")
                                 {
@@ -1773,7 +1773,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "の眼が大きくなる！ブレイジング・ストームを放射してきた！\r\n");
 
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FlameStrike.mp3", TruthActionCommand.MagicType.Fire);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, "FlameStrike.mp3", TruthActionCommand.MagicType.Fire);
                                 }
                                 else if (player.ActionLabel.text == "ファイア・ウォール")
                                 {
@@ -1804,7 +1804,7 @@ namespace DungeonPlayer
                             case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
                                 if (player.StackCommandString == "凍雹の一撃")
                                 {
-                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode), 1.5F, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 1.5F, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "凍てつく氷弾丸")
                                 {
@@ -1816,7 +1816,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "の眼が大きくなる！ウォーター・スラッシュを発生させてきた！\r\n");
 
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
                                 }
                                 else if (player.ActionLabel.text == "ウォータ・バブル")
                                 {
@@ -1932,7 +1932,7 @@ namespace DungeonPlayer
                                 {
                                     // 全体ダメージ
                                     UpdateBattleText(player.FirstName + "は体全体を大きくうならせ、大きな津波を発生させてきた！\r\n");
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 3.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 3.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
                                     break;
                                 }
                                 else if (player.ActionLabel.text == "バースト・クラウド")
@@ -1945,7 +1945,7 @@ namespace DungeonPlayer
 
                                     for (int ii = 0; ii < 10; ii++)
                                     {
-                                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 2;
+                                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 2;
 
                                         int tempRandom = AP.Math.RandomInteger(group.Count);
                                         AbstractMagicDamage(player, group[tempRandom], 10, ref damage, 0, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
@@ -5642,7 +5642,7 @@ namespace DungeonPlayer
         {
             for (int ii = 0; ii < attackNum; ii++)
             {
-                double effectValue = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, this.DuelMode) / 2;
+                double effectValue = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode) / 2;
 
                 List<MainCharacter> group = new List<MainCharacter>();
                 if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
@@ -5658,7 +5658,7 @@ namespace DungeonPlayer
         {
             for (int ii = 0; ii < attackNum; ii++)
             {
-                double effectValue = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 3;
+                double effectValue = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 3;
 
                 List<MainCharacter> group = new List<MainCharacter>();
                 if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }

@@ -40,7 +40,6 @@ namespace DungeonPlayer
         bool tempStopFlag = false; // [戦闘停止」ボタンやESCキーで、戦闘を一旦停止させたい時に使うフラグ
         bool endFlag = false; // メイン戦闘のループを抜ける時に使うフラグ
         bool cannotRunAway = false; // 戦闘から逃げられるかどうかを示すフラグ
-        public bool DuelMode { get; set; }
         bool NowStackInTheCommand = false; // スタックインザコマンドで一旦停止させたい時に使うフラグ
         bool NowTimeStop = false; // タイムストップ「全体」のフラグ
         public bool HiSpeedAnimation { get; set; } // 通常ダメージアニメーションを早めるために使用
@@ -500,7 +499,7 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        if (this.DuelMode == false)
+                        if (GroundOne.DuelMode == false)
                         {
                             if (BattleStart.text == "戦闘中・・・")
                             {
@@ -599,7 +598,7 @@ namespace DungeonPlayer
 
             #region "戦闘一旦停止フラグ"
             if (this.tempStopFlag) { return; } // 「戦闘停止」ボタンやESCキーで、一旦停止させる。
-            if (this.DuelMode == false) // DUELモードの時、選択肢の選択中は一旦停止しない。
+            if (GroundOne.DuelMode == false) // DUELモードの時、選択肢の選択中は一旦停止しない。
             {
                 if (this.NowSelectingTarget) { return; } // インスタント行動対象選択時、一旦停止させる。
             }
@@ -961,7 +960,7 @@ namespace DungeonPlayer
                 PlayerActionSet(player);
 
                 // 各プレイヤーの戦闘バーの位置
-                if (DuelMode)
+                if (GroundOne.DuelMode)
                 {
                     player.BattleBarPos = 0;
                 }
@@ -1437,7 +1436,7 @@ namespace DungeonPlayer
             {
                 // 味方１人の場合
                 if ((GroundOne.WE.AvailableSecondCharacter == false) && (GroundOne.WE.AvailableThirdCharacter == false) ||
-                    (this.DuelMode))
+                    (GroundOne.DuelMode))
                 {
                     // 敵が１人の場合
                     if ((ec2 == null) && (ec3 == null))
@@ -1582,7 +1581,7 @@ namespace DungeonPlayer
             }
             else
             {
-                if ((this.DuelMode) ||
+                if ((GroundOne.DuelMode) ||
                     (this.NowStackInTheCommand))
                 {
                     if (UseInstantPoint(player) == false) { return; }
@@ -1647,13 +1646,13 @@ namespace DungeonPlayer
 
             if (player.CurrentInstantPoint < player.MaxInstantPoint)
             {
-                player.CurrentInstantPoint += (int)PrimaryLogic.BattleResponseValue(player, this.DuelMode);
+                player.CurrentInstantPoint += (int)PrimaryLogic.BattleResponseValue(player, GroundOne.DuelMode);
             }
             UpdateInstantPoint(player);
 
             if (player.CurrentSpecialInstant < player.MaxSpecialInstant)
             {
-                player.CurrentSpecialInstant += PrimaryLogic.BattleResponseValue(player, this.DuelMode);
+                player.CurrentSpecialInstant += PrimaryLogic.BattleResponseValue(player, GroundOne.DuelMode);
             }
             UpdateSpecialInstantPoint(player);
         }
@@ -1676,7 +1675,7 @@ namespace DungeonPlayer
             {
                 return;
             }
-            double movement = PrimaryLogic.BattleSpeedValue(player, this.DuelMode);
+            double movement = PrimaryLogic.BattleSpeedValue(player, GroundOne.DuelMode);
             if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
             {
                 //TruthEnemyCharacter player2 = ((TruthEnemyCharacter)player); // todo 対象が無い？
@@ -1850,7 +1849,7 @@ namespace DungeonPlayer
         {
             if (mainCharacter == ec1 || mainCharacter == ec2 || mainCharacter == ec3)
             {
-                if (this.DuelMode)
+                if (GroundOne.DuelMode)
                 {
                     // Duelモードの場合、なにもしない。
                 }
@@ -2026,7 +2025,7 @@ namespace DungeonPlayer
             // [警告]万が一、相打ちの場合、プレイヤーの負けとみなす
             else if (EnemyPartyDeathCheck())
             {
-                if (this.DuelMode)
+                if (GroundOne.DuelMode)
                 {
                     UpdateBattleText("アインはDUELに敗れた！\r\n");
                     System.Threading.Thread.Sleep(1000);
@@ -2044,7 +2043,7 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.AvailableSecondCharacter)
                 {
-                    if (this.DuelMode)
+                    if (GroundOne.DuelMode)
                     {
                         UpdateBattleText("アインは降参を宣言した。\r\n");
                     }
@@ -2055,7 +2054,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    if (this.DuelMode)
+                    if (GroundOne.DuelMode)
                     {
                         UpdateBattleText("アインは降参を宣言した。\r\n");
                     }
@@ -2085,7 +2084,7 @@ namespace DungeonPlayer
                     }
                 }
 
-                if (this.DuelMode == false)
+                if (GroundOne.DuelMode == false)
                 {
                     string targetItemName = Method.GetNewItem(Method.NewItemCategory.Battle, GroundOne.MC, ec1, GroundOne.WE.DungeonArea);
                     Debug.Log("targetItemName: " + targetItemName);
@@ -3206,7 +3205,7 @@ namespace DungeonPlayer
             if (false) // th == null)
             {
                 // timerBattleStart.Stop(); // todo Ready...の表示に関連する
-                if (this.DuelMode)
+                if (GroundOne.DuelMode)
                 {
                     BattleStart.text = "DUEL中・・・";
                     //BattleStart.Enabled = false; // todo
@@ -3225,7 +3224,7 @@ namespace DungeonPlayer
                 if ((BattleStart.text == "戦闘中・・・") ||
                     (BattleStart.text == "DUEL中・・・"))
                 {
-                    if (this.DuelMode)
+                    if (GroundOne.DuelMode)
                     {
                         // DUELでは途中一旦停止は出来ない事とする。
                     }
@@ -3537,11 +3536,11 @@ namespace DungeonPlayer
                     {
                         if (ii == 0)
                         {
-                            damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, PrimaryLogic.SpellSkillType.Standard, this.DuelMode);
+                            damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
                         }
                         else
                         {
-                            damage = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0, 0, 0, 1.0F, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, this.DuelMode);
+                            damage = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0, 0, 0, 1.0F, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, GroundOne.DuelMode);
                         }
                     }
                     else
@@ -3582,7 +3581,7 @@ namespace DungeonPlayer
                     }
 
                     // ダメージ軽減
-                    damage -= PrimaryLogic.PhysicalDefenseValue(target, PrimaryLogic.NeedType.Random, this.DuelMode);
+                    damage -= PrimaryLogic.PhysicalDefenseValue(target, PrimaryLogic.NeedType.Random, GroundOne.DuelMode);
                     if (damage <= 0.0f) damage = 0.0f;
 
                     if (target.CurrentProtection > 0 && player.CurrentTruthVision <= 0)
@@ -3680,7 +3679,7 @@ namespace DungeonPlayer
                     }
                     if (detectCritical)
                     {
-                        damage = damage * PrimaryLogic.CriticalDamageValue(player, this.DuelMode);
+                        damage = damage * PrimaryLogic.CriticalDamageValue(player, GroundOne.DuelMode);
                         if (player.CurrentSinFortune > 0)
                         {
                             damage = damage * PrimaryLogic.SinFortuneValue(player);
@@ -4174,7 +4173,7 @@ namespace DungeonPlayer
             // ダメージ加算
             if (damage == 0)
             {
-                damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
+                damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
             }
             // ダメージ「×」増幅
             if (magnification > 0)
@@ -4298,7 +4297,7 @@ namespace DungeonPlayer
             }
             else
             {
-                damage -= PrimaryLogic.MagicDefenseValue(target, PrimaryLogic.NeedType.Random, this.DuelMode);
+                damage -= PrimaryLogic.MagicDefenseValue(target, PrimaryLogic.NeedType.Random, GroundOne.DuelMode);
                 if (damage <= 0.0f) damage = 0.0f;
 
                 if (target.CurrentAbsorbWater > 0 && player.CurrentTruthVision <= 0)
@@ -4639,7 +4638,7 @@ namespace DungeonPlayer
 
             if (detectCritical)
             {
-                damage = damage * PrimaryLogic.CriticalDamageValue(player, this.DuelMode);
+                damage = damage * PrimaryLogic.CriticalDamageValue(player, GroundOne.DuelMode);
                 if (player.CurrentSinFortune > 0)
                 {
                     damage = damage * PrimaryLogic.SinFortuneValue(player);
@@ -4852,7 +4851,7 @@ namespace DungeonPlayer
         private void PlayerMagicAttack(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
             // todo
-            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
+            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.None, false, CriticalType.Random);
             //AbstractMagicAttack(player, target, "Magical", damage); // after delete
         }

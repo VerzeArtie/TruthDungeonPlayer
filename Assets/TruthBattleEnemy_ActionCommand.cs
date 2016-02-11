@@ -17,7 +17,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellHolyShock(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.HolyShockValue(player, this.DuelMode);
+            double damage = PrimaryLogic.HolyShockValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "HolyShock", 23, TruthActionCommand.MagicType.Light, false, CriticalType.Random);
         }
         #endregion
@@ -27,7 +27,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellDarkBlast(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.DarkBlastValue(player, this.DuelMode);
+            double damage = PrimaryLogic.DarkBlastValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "DarkBlast", 27, TruthActionCommand.MagicType.Shadow, false, CriticalType.Random);
         }
 
@@ -40,7 +40,7 @@ namespace DungeonPlayer
         /// <param name="p_2"></param>
         private void PlayerSpellDevouringPlague(MainCharacter player, MainCharacter target, int interval, int magnification)
         {
-            double damage = PrimaryLogic.DevouringPlagueValue(player, this.DuelMode);
+            double damage = PrimaryLogic.DevouringPlagueValue(player, GroundOne.DuelMode);
             if (AbstractMagicDamage(player, target, interval, ref damage, magnification, "DevouringPlague", 29, TruthActionCommand.MagicType.Shadow, false, CriticalType.Random))
             {
                 if (player.CurrentNourishSense > 0)
@@ -59,7 +59,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellFireBall(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.FireBallValue(player, this.DuelMode);
+            double damage = PrimaryLogic.FireBallValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "FireBall", 10, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
         }
 
@@ -68,7 +68,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellFlameStrike(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.FlameStrikeValue(player, this.DuelMode);
+            double damage = PrimaryLogic.FlameStrikeValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "FlameStrike", 11, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
         }
 
@@ -77,7 +77,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellVolcanicWave(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.VolcanicWaveValue(player, this.DuelMode);
+            double damage = PrimaryLogic.VolcanicWaveValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "VolcanicWave", 12, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
         }
         /// <summary>
@@ -103,7 +103,7 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < group.Count; ii++)
             {
-                AbstractMagicDamage(player, group[ii], 0, PrimaryLogic.LavaAnnihilationValue(player, this.DuelMode), 0.0f, String.Empty, 0, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                AbstractMagicDamage(player, group[ii], 0, PrimaryLogic.LavaAnnihilationValue(player, GroundOne.DuelMode), 0.0f, String.Empty, 0, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
             }
         }
 
@@ -114,7 +114,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellIceNeedle(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.IceNeedleValue(player, this.DuelMode);
+            double damage = PrimaryLogic.IceNeedleValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "IceNeedle", 30, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
         }
 
@@ -123,7 +123,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellFrozenLance(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.FrozenLanceValue(player, this.DuelMode);
+            double damage = PrimaryLogic.FrozenLanceValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "FrozenLance", 31, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
         }
         #endregion
@@ -133,7 +133,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellWordOfPower(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.WordOfPowerValue(player, this.DuelMode);
+            double damage = PrimaryLogic.WordOfPowerValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "WordOfPower", 33, TruthActionCommand.MagicType.Force, true, CriticalType.Random);
         }
         #endregion
@@ -183,7 +183,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellWhiteOut(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.WhiteOutValue(player, this.DuelMode);
+            double damage = PrimaryLogic.WhiteOutValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, "WhiteOut", 34, TruthActionCommand.MagicType.Will, false, CriticalType.Random);
         }
 
@@ -192,7 +192,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellFlashBlaze(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.FlashBlazeValue(player, this.DuelMode);
+            double damage = PrimaryLogic.FlashBlazeValue(player, GroundOne.DuelMode);
             if (AbstractMagicDamage(player, target, interval, ref damage, magnification, "HolyShock", 120, TruthActionCommand.MagicType.Light, false, CriticalType.Random))
             {
                 PlayerBuffAbstract(player, target, 999, "FlashBlaze_Buff");
@@ -206,11 +206,11 @@ namespace DungeonPlayer
         {
             if (DetectOpponentParty(player, target))
             {
-                AbstractMagicDamage(player, target, 0, PrimaryLogic.CelestialNovaValue_A(player, this.DuelMode), 0, "CelestialNova", 26, TruthActionCommand.MagicType.Light, false, CriticalType.Random);
+                AbstractMagicDamage(player, target, 0, PrimaryLogic.CelestialNovaValue_A(player, GroundOne.DuelMode), 0, "CelestialNova", 26, TruthActionCommand.MagicType.Light, false, CriticalType.Random);
             }
             else
             {
-                double lifeGain = PrimaryLogic.CelestialNovaValue_B(player, this.DuelMode);
+                double lifeGain = PrimaryLogic.CelestialNovaValue_B(player, GroundOne.DuelMode);
                 if (player.CurrentNourishSense > 0)
                 {
                     lifeGain = lifeGain * 1.3f;
@@ -240,7 +240,7 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < group.Count; ii++)
             {
-                AbstractMagicDamage(player, group[ii], 0, PrimaryLogic.LightDetonatorValue(player, this.DuelMode), 0, "FlameStrike", 132, TruthActionCommand.MagicType.Light_Fire, false, CriticalType.Random);
+                AbstractMagicDamage(player, group[ii], 0, PrimaryLogic.LightDetonatorValue(player, GroundOne.DuelMode), 0, "FlameStrike", 132, TruthActionCommand.MagicType.Light_Fire, false, CriticalType.Random);
             }
         }
 
@@ -249,7 +249,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellZetaExplosion(MainCharacter player, MainCharacter target)
         {
-            AbstractMagicDamage(player, target, 0, PrimaryLogic.ZetaExplosionValue(player, this.DuelMode), 0, Database.SOUND_ZETA_EXPLOSION, 139, TruthActionCommand.MagicType.Fire_Ice, true, CriticalType.Random);
+            AbstractMagicDamage(player, target, 0, PrimaryLogic.ZetaExplosionValue(player, GroundOne.DuelMode), 0, Database.SOUND_ZETA_EXPLOSION, 139, TruthActionCommand.MagicType.Fire_Ice, true, CriticalType.Random);
         }
 
         /// <summary>
@@ -257,7 +257,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellChillBurn(MainCharacter player, MainCharacter target)
         {
-            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.ChillBurnValue(player, this.DuelMode), 0, "IceNeedle", 138, TruthActionCommand.MagicType.Fire_Ice, false, CriticalType.Random))
+            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.ChillBurnValue(player, GroundOne.DuelMode), 0, "IceNeedle", 138, TruthActionCommand.MagicType.Fire_Ice, false, CriticalType.Random))
             {
                 NowFrozen(player, target, 2);
             }
@@ -269,7 +269,7 @@ namespace DungeonPlayer
         private void PlayerSpellPiercingFlame(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(182));
-            AbstractMagicDamage(player, target, 0, PrimaryLogic.PiercingFlameValue(player, this.DuelMode), 0, Database.SOUND_PIERCING_FLAME, 138, TruthActionCommand.MagicType.Fire_Force, true, CriticalType.Random);
+            AbstractMagicDamage(player, target, 0, PrimaryLogic.PiercingFlameValue(player, GroundOne.DuelMode), 0, Database.SOUND_PIERCING_FLAME, 138, TruthActionCommand.MagicType.Fire_Force, true, CriticalType.Random);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(151));
             for (int ii = 0; ii < 3; ii++)
             {
-                AbstractMagicDamage(player, target, interval, PrimaryLogic.BlueBulletValue(player, this.DuelMode), magnification, "FrozenLance", 120, TruthActionCommand.MagicType.Shadow_Ice, false, CriticalType.Random);
+                AbstractMagicDamage(player, target, interval, PrimaryLogic.BlueBulletValue(player, GroundOne.DuelMode), magnification, "FrozenLance", 120, TruthActionCommand.MagicType.Shadow_Ice, false, CriticalType.Random);
             }
         }
 
@@ -292,7 +292,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(133));
             for (int ii = 0; ii < 10; ii++)
             {
-                AbstractMagicDamage(player, target, 15, PrimaryLogic.AscendantMeteorValue(player, this.DuelMode), 0, "FireBall", 120, TruthActionCommand.MagicType.Light_Fire, false, CriticalType.Random);
+                AbstractMagicDamage(player, target, 15, PrimaryLogic.AscendantMeteorValue(player, GroundOne.DuelMode), 0, "FireBall", 120, TruthActionCommand.MagicType.Light_Fire, false, CriticalType.Random);
             }
         }
 
@@ -302,7 +302,7 @@ namespace DungeonPlayer
         private void PlayerSpellStarLightning(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(141));
-            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.StarLightningValue(player, this.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Light_Will, false, CriticalType.Random))
+            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.StarLightningValue(player, GroundOne.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Light_Will, false, CriticalType.Random))
             {
                 PlayerBuffAbstract(player, target, 1, "StarLightning");
             }
@@ -314,7 +314,7 @@ namespace DungeonPlayer
         private void PlayerSpellBlackFire(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(143));
-            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.BlackFireValue(player, this.DuelMode), 0, "DarkBlast", 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
+            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.BlackFireValue(player, GroundOne.DuelMode), 0, "DarkBlast", 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
             {
                 PlayerBuffAbstract(player, target, 999, "BlackFire");
             }
@@ -326,7 +326,7 @@ namespace DungeonPlayer
         private void PlayerSpellWordOfMalice(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(142));
-            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.WordOfMaliceValue(player, this.DuelMode), 0, "WhiteOut", 120, TruthActionCommand.MagicType.Shadow_Force, false, CriticalType.Random))
+            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.WordOfMaliceValue(player, GroundOne.DuelMode), 0, "WhiteOut", 120, TruthActionCommand.MagicType.Shadow_Force, false, CriticalType.Random))
             {
                 PlayerBuffAbstract(player, target, 999, "WordOfMalice");
             }
@@ -354,7 +354,7 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < group.Count; ii++)
             {
-                if (AbstractMagicDamage(player, group[ii], 0, PrimaryLogic.EnrageBlastValue(player, this.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Fire_Force, false, CriticalType.Random))
+                if (AbstractMagicDamage(player, group[ii], 0, PrimaryLogic.EnrageBlastValue(player, GroundOne.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Fire_Force, false, CriticalType.Random))
                 {
                     PlayerBuffAbstract(player, group[ii], 999, "EnrageBlast");
                 }
@@ -367,7 +367,7 @@ namespace DungeonPlayer
         private void PlayerSpellImmolate(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(145));
-            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.ImmolateValue(player, this.DuelMode), 0, "FireBall", 120, TruthActionCommand.MagicType.Fire_Will, false, CriticalType.Random))
+            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.ImmolateValue(player, GroundOne.DuelMode), 0, "FireBall", 120, TruthActionCommand.MagicType.Fire_Will, false, CriticalType.Random))
             {
                 PlayerBuffAbstract(player, target, 999, "Immolate");
             }
@@ -379,7 +379,7 @@ namespace DungeonPlayer
         private void PlayerSpellVanishWave(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(146));
-            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.VanishWaveValue(player, this.DuelMode), 0, "WhiteOut", 120, TruthActionCommand.MagicType.Ice_Will, false, CriticalType.Random))
+            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.VanishWaveValue(player, GroundOne.DuelMode), 0, "WhiteOut", 120, TruthActionCommand.MagicType.Ice_Will, false, CriticalType.Random))
             {
                 //PlayerBuffAbstract(player, target, 999, "VanishWave");
                 NowSilence(player, target, 3);
@@ -409,12 +409,12 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    AbstractMagicDamage(player, target, 0, PrimaryLogic.AbyssEyeValue(player, this.DuelMode), 0, Database.SOUND_ABYSS_EYE, 120, TruthActionCommand.MagicType.Shadow_Force, false, CriticalType.Random);
+                    AbstractMagicDamage(player, target, 0, PrimaryLogic.AbyssEyeValue(player, GroundOne.DuelMode), 0, Database.SOUND_ABYSS_EYE, 120, TruthActionCommand.MagicType.Shadow_Force, false, CriticalType.Random);
                 }
             }
             else
             {
-                AbstractMagicDamage(player, target, 0, PrimaryLogic.AbyssEyeValue(player, this.DuelMode), 0, Database.SOUND_ABYSS_EYE, 120, TruthActionCommand.MagicType.Shadow_Force, false, CriticalType.Random);
+                AbstractMagicDamage(player, target, 0, PrimaryLogic.AbyssEyeValue(player, GroundOne.DuelMode), 0, Database.SOUND_ABYSS_EYE, 120, TruthActionCommand.MagicType.Shadow_Force, false, CriticalType.Random);
             }
         }
 
@@ -424,9 +424,9 @@ namespace DungeonPlayer
         private void PlayerSpellDoomBlade(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(181));
-            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.DoomBladeValue(player, this.DuelMode), 0, Database.SOUND_DOOM_BLADE, 120, TruthActionCommand.MagicType.Shadow_Will, false, CriticalType.Random))
+            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.DoomBladeValue(player, GroundOne.DuelMode), 0, Database.SOUND_DOOM_BLADE, 120, TruthActionCommand.MagicType.Shadow_Will, false, CriticalType.Random))
             {
-                double damage = PrimaryLogic.DoomBlade_A_Value(player, this.DuelMode);
+                double damage = PrimaryLogic.DoomBlade_A_Value(player, GroundOne.DuelMode);
                 target.CurrentMana -= (int)damage;
                 UpdateMana(target, damage, false, true, 0);
             }
@@ -438,7 +438,7 @@ namespace DungeonPlayer
         private void PlayerSkillMindKilling(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(200));
-            double effectValue = PrimaryLogic.MindKillingValue(player, this.DuelMode);
+            double effectValue = PrimaryLogic.MindKillingValue(player, GroundOne.DuelMode);
             target.CurrentMana -= (int)effectValue;
             UpdateMana(target, effectValue, false, true, 0);
         }
@@ -510,7 +510,7 @@ namespace DungeonPlayer
         private void PlayerSpellDemonicIgnite(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(213));
-            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.DemonicIgniteValue(player, this.DuelMode), 0, Database.SOUND_DEMONIC_IGNITE, 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
+            if (AbstractMagicDamage(player, target, 0, PrimaryLogic.DemonicIgniteValue(player, GroundOne.DuelMode), 0, Database.SOUND_DEMONIC_IGNITE, 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
             {
                 NowNoGainLife(target, 1);
             }
@@ -570,7 +570,7 @@ namespace DungeonPlayer
         /// <param name="player"></param>
         private void PlayerSpellFreshHeal(MainCharacter player, MainCharacter target)
         {
-            double lifeGain = PrimaryLogic.FreshHealValue(player, this.DuelMode);
+            double lifeGain = PrimaryLogic.FreshHealValue(player, GroundOne.DuelMode);
             if (player.CurrentNourishSense > 0)
             {
                 lifeGain = lifeGain * 1.3f;
@@ -584,7 +584,7 @@ namespace DungeonPlayer
         /// <param name="player"></param>
         private void PlayerSpellLifeTap(MainCharacter player, MainCharacter target)
         {
-            double lifeGain = PrimaryLogic.LifeTapValue(player, this.DuelMode);
+            double lifeGain = PrimaryLogic.LifeTapValue(player, GroundOne.DuelMode);
             if (player.CurrentNourishSense > 0)
             {
                 lifeGain = lifeGain * 1.3f;
@@ -613,7 +613,7 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < group.Count; ii++)
             {
-                PlayerAbstractLifeGain(player, group[ii], 0, PrimaryLogic.SacredHealValue(player, this.DuelMode), 0, "CelestialNova", 135);
+                PlayerAbstractLifeGain(player, group[ii], 0, PrimaryLogic.SacredHealValue(player, GroundOne.DuelMode), 0, "CelestialNova", 135);
             }
         }
 
@@ -1586,7 +1586,7 @@ namespace DungeonPlayer
         private void PlayerSkillStraightSmash(MainCharacter player, MainCharacter target, int interval, bool ignoreDefense)
         {
             UpdateBattleText(player.GetCharacterSentence(1));
-            double damage = PrimaryLogic.StraightSmashValue(player, this.DuelMode);
+            double damage = PrimaryLogic.StraightSmashValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, ignoreDefense, false, damage, interval, Database.SOUND_STRAIGHT_SMASH, -1, true, CriticalType.Random);
         }
 
@@ -1665,7 +1665,7 @@ namespace DungeonPlayer
         private void PlayerSkillEnigmaSense(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(72));
-            double atkBase = PrimaryLogic.EnigmaSenseValue(player, this.DuelMode);
+            double atkBase = PrimaryLogic.EnigmaSenseValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, false, false, atkBase, 0, string.Empty, -1, true, CriticalType.Random);
         }
 
@@ -1683,7 +1683,7 @@ namespace DungeonPlayer
         private void PlayerSkillKineticSmash(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(74));
-            double damage = PrimaryLogic.KineticSmashValue(player, this.DuelMode);
+            double damage = PrimaryLogic.KineticSmashValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_KINETIC_SMASH, -1, true, CriticalType.Random);
         }
 
@@ -1693,7 +1693,7 @@ namespace DungeonPlayer
         private void PlayerSkillSoulInfinity(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(73));
-            double damage = PrimaryLogic.SoulInfinityValue(player, this.DuelMode);
+            double damage = PrimaryLogic.SoulInfinityValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_SOUL_INFINITY, -1, true, CriticalType.Random);
         }
 
@@ -1703,7 +1703,7 @@ namespace DungeonPlayer
         private void PlayerSkillCatastrophe(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(98), 1000);
-            double damage = PrimaryLogic.CatastropheValue(player, this.DuelMode);
+            double damage = PrimaryLogic.CatastropheValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_CATASTROPHE, 99, true, CriticalType.Random);
         }
 
@@ -1713,7 +1713,7 @@ namespace DungeonPlayer
         private void PlayerSkillOboroImpact(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(96), 1000);
-            double damage = PrimaryLogic.OboroImpactValue(player, this.DuelMode);
+            double damage = PrimaryLogic.OboroImpactValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, false, false, damage, 0, Database.SOUND_OBORO_IMPACT, 97, true, CriticalType.Random);
         }
 
@@ -1906,7 +1906,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(162));
 
-            double damage = PrimaryLogic.PsychicWaveValue(player, this.DuelMode);
+            double damage = PrimaryLogic.PsychicWaveValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, 0, damage, 0, "WordOfPower", -1, TruthActionCommand.MagicType.None, true, CriticalType.Random);
         }
         /// <summary>
@@ -1925,7 +1925,7 @@ namespace DungeonPlayer
         private void PlayerSkillViolentSlash(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(164));
-            double damage = PrimaryLogic.ViolentSlashValue(player, this.DuelMode);
+            double damage = PrimaryLogic.ViolentSlashValue(player, GroundOne.DuelMode);
             PlayerNormalAttack(player, target, 0, 0, true, false, damage, 0, Database.SOUND_KINETIC_SMASH, -1, false, CriticalType.Random);
         }
         /// <summary>
