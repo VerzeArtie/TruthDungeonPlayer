@@ -2072,6 +2072,69 @@ namespace DungeonPlayer
         #region "心眼"
         #endregion
         #region "無心"
+
+        private void PlayerSkillVoidExtraction(MainCharacter player)
+        {
+            GroundOne.PlaySoundEffect("VoidExtraction");
+            int effectValue = Math.Max(player.Strength, Math.Max(player.Agility, Math.Max(player.Intelligence, player.Mind)));
+            string maxParameter = String.Empty;
+            if (effectValue == player.Strength)
+            {
+                if ((effectValue - player.BuffStrength_VoidExtraction) > 0)
+                {
+                    player.CurrentVoidExtraction = Database.INFINITY;
+                    player.ActivateBuff(player.pbVoidExtraction, Database.BaseResourceFolder + Database.VOID_EXTRACTION, Database.INFINITY);
+                    UpdateBattleText(String.Format(player.GetCharacterSentence(79), "力", (effectValue - player.BuffStrength_VoidExtraction)));
+                    player.BuffStrength_VoidExtraction += effectValue;
+                }
+                else
+                {
+                    UpdateBattleText(player.GetCharacterSentence(82));
+                }
+            }
+            else if (effectValue == player.Agility)
+            {
+                if ((effectValue - player.BuffAgility_VoidExtraction) > 0)
+                {
+                    player.CurrentVoidExtraction = Database.INFINITY;
+                    player.ActivateBuff(player.pbVoidExtraction, Database.BaseResourceFolder + Database.VOID_EXTRACTION, Database.INFINITY);
+                    UpdateBattleText(String.Format(player.GetCharacterSentence(79), "技", (effectValue - player.BuffAgility_VoidExtraction)));
+                    player.BuffAgility_VoidExtraction += effectValue;
+                }
+                else
+                {
+                    UpdateBattleText(player.GetCharacterSentence(82));
+                }
+            }
+            else if (effectValue == player.Intelligence)
+            {
+                if ((effectValue - player.BuffIntelligence_VoidExtraction) > 0)
+                {
+                    player.CurrentVoidExtraction = Database.INFINITY;
+                    player.ActivateBuff(player.pbVoidExtraction, Database.BaseResourceFolder + Database.VOID_EXTRACTION, Database.INFINITY);
+                    UpdateBattleText(String.Format(player.GetCharacterSentence(79), "知", (effectValue - player.BuffIntelligence_VoidExtraction)));
+                    player.BuffIntelligence_VoidExtraction += effectValue;
+                }
+                else
+                {
+                    UpdateBattleText(player.GetCharacterSentence(82));
+                }
+            }
+            else
+            {
+                if ((effectValue - player.Mind) > 0)
+                {
+                    player.CurrentVoidExtraction = Database.INFINITY;
+                    player.ActivateBuff(player.pbVoidExtraction, Database.BaseResourceFolder + Database.VOID_EXTRACTION, Database.INFINITY);
+                    UpdateBattleText(String.Format(player.GetCharacterSentence(79), "心", (effectValue - player.BuffMind_VoidExtraction)));
+                    player.BuffMind_VoidExtraction += effectValue;
+                }
+                else
+                {
+                    UpdateBattleText(player.GetCharacterSentence(82));
+                }
+            }
+        }
         #endregion
         #region "動　静"
         #endregion
@@ -2106,6 +2169,7 @@ namespace DungeonPlayer
 
         private void PlayerSkillDoubleSlash(MainCharacter player, MainCharacter target, double magnification, bool ignoreDefense)
         {
+            Debug.Log("playerskilldoubleslash start");
             // todo 全体的に作り直しでは？
             // 相手：カウンターアタックが入っている場合
             if (target.CurrentCounterAttack > 0)

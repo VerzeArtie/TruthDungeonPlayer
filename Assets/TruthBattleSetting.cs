@@ -9,6 +9,7 @@ namespace DungeonPlayer
     public class TruthBattleSetting : MotherForm
     {
         public Camera cam;
+        public GameObject btnCharacterGroup;
         public Button btnFirstChara;
         public Button btnSecondChara;
         public Button btnThirdChara;
@@ -62,10 +63,6 @@ namespace DungeonPlayer
         {
             base.Start();
 
-            if (GroundOne.BattleEnemyFilter != null)
-            {
-                GroundOne.BattleEnemyFilter.SetActive(true);
-            }
             currentPlayer = GroundOne.MC;
             this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
 
@@ -73,7 +70,39 @@ namespace DungeonPlayer
             if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
             if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
 
+            if (GroundOne.BattleEnemyFilter != null)
+            {
+                GroundOne.BattleEnemyFilter.SetActive(true);
+                GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+            }
+
             // todo まだ持ってくるモノがある。
+
+            if (GroundOne.DuelMode)
+            {
+                btnCharacterGroup.SetActive(false);
+            }
+            else
+            {
+                if (GroundOne.WE.AvailableSecondCharacter)
+                {
+                    btnCharacterGroup.SetActive(true);
+                    btnFirstChara.gameObject.SetActive(true);
+                    btnSecondChara.gameObject.SetActive(true);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        btnThirdChara.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        Method.AddEmptyObj(ref btnCharacterGroup, 1);
+                    }
+                }
+                else
+                {
+                    btnCharacterGroup.SetActive(false);
+                }
+            }
 
             SetupAllIcon();
         }
@@ -387,6 +416,10 @@ namespace DungeonPlayer
             this.currentPlayer = GroundOne.MC;
             this.currentPlayerNumber = 0;
             this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+            if (GroundOne.BattleEnemyFilter != null)
+            {
+                GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+            }
             SetupbattleCommand();
             SetupAllIcon();
         }
@@ -396,6 +429,10 @@ namespace DungeonPlayer
             this.currentPlayer = GroundOne.SC;
             this.currentPlayerNumber = 1;
             this.cam.backgroundColor = GroundOne.SC.PlayerStatusColor;
+            if (GroundOne.BattleEnemyFilter != null)
+            {
+                GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+            }
             SetupbattleCommand();
             SetupAllIcon();
         }
@@ -405,6 +442,10 @@ namespace DungeonPlayer
             this.currentPlayer = GroundOne.TC;
             this.currentPlayerNumber = 2;
             this.cam.backgroundColor = GroundOne.TC.PlayerStatusColor;
+            if (GroundOne.BattleEnemyFilter != null)
+            {
+                GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+            }
             SetupbattleCommand();
             SetupAllIcon();
         }

@@ -233,6 +233,11 @@ namespace DungeonPlayer
 
             if (GroundOne.OnlySelectTrash)
             {
+                if (GroundOne.parent_TruthBattleEnemy != null)
+                {
+                    GroundOne.parent_TruthBattleEnemy.Filter.SetActive(true);
+                    GroundOne.parent_TruthBattleEnemy.Filter.GetComponent<Image>().color = player.PlayerStatusColor;
+                }
                 txtClose.text = "諦める";
                 mainMessage.text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
                 groupParentStatus.gameObject.SetActive(false);
@@ -1563,6 +1568,11 @@ namespace DungeonPlayer
                 player.DeleteBackPack(backpackData, exchangeValue, this.currentNumber);
                 UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, this.currentNumber);
                 currentSelect = null;
+
+                if (GroundOne.OnlySelectTrash)
+                {
+                    GroundOne.parent_TruthBattleEnemy.GetNewItemAndBack();
+                }
             }
             else
             {

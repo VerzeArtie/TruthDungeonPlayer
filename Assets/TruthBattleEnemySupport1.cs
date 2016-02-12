@@ -4817,244 +4817,242 @@ namespace DungeonPlayer
             {
                 PlayerSkillStraightSmash(player, target, 0, false);
             }
-            // todo
-            //else if (CurrentSkillName == Database.DOUBLE_SLASH)
-            //{
-            //    PlayerSkillDoubleSlash(player, target, 0, false);
-            //}
-            //else if (CurrentSkillName == Database.CRUSHING_BLOW)
-            //{
-            //    PlayerSkillCrushingBlow(player);
-            //}
-            //else if (CurrentSkillName == Database.SOUL_INFINITY)
-            //{
-            //    PlayerSkillSoulInfinity(player, target);
-            //}
-            //// 静 //
-            //else if (CurrentSkillName == Database.COUNTER_ATTACK)
-            //{
-            //    PlayerSkillCounterAttack(player, target);
-            //}
-            //else if (CurrentSkillName == Database.PURE_PURIFICATION)
-            //{
-            //    PlayerSkillPurePurification(player);
-            //}
-            //else if (CurrentSkillName == Database.ANTI_STUN)
-            //{
-            //    PlayerSkillAntiStun(player);
-            //}
-            //else if (CurrentSkillName == Database.STANCE_OF_DEATH)
-            //{
-            //    PlayerSkillStanceOfDeath(player);
-            //}
-            //// 柔 //
-            //else if (CurrentSkillName == Database.STANCE_OF_FLOW)
-            //{
-            //    PlayerSkillStanceOfFlow(player);
-            //}
-            //else if (CurrentSkillName == Database.ENIGMA_SENSE)
-            //{
-            //    PlayerSkillEnigmaSense(player, target);
-            //}
-            //else if (CurrentSkillName == Database.SILENT_RUSH)
-            //{
-            //    PlayerSkillSilentRush(player, target);
-            //}
-            //else if (CurrentSkillName == Database.OBORO_IMPACT)
-            //{
-            //    PlayerSkillOboroImpact(player, target);
-            //}
-            //// 剛 //
-            //else if (CurrentSkillName == Database.STANCE_OF_STANDING)
-            //{
-            //    PlayerSkillStanceOfStanding(player, target);
-            //}
-            //else if (CurrentSkillName == Database.INNER_INSPIRATION)
-            //{
-            //    PlayerSkillInnerInspiration(player);
-            //}
-            //else if (CurrentSkillName == Database.KINETIC_SMASH)
-            //{
-            //    PlayerSkillKineticSmash(player, target);
-            //}
-            //else if (CurrentSkillName == Database.CATASTROPHE)
-            //{
-            //    PlayerSkillCatastrophe(player, target);
-            //    // こちらでスキル全消費
-            //    player.CurrentSkillPoint = 0;
-            //    UpdateSkillPoint(player);
-            //}
-            //// 心眼 //
-            //else if (CurrentSkillName == Database.TRUTH_VISION)
-            //{
-            //    PlayerSkillTruthVision(player, target);
-            //}
-            //else if (CurrentSkillName == Database.HIGH_EMOTIONALITY)
-            //{
-            //    PlayerSkillHighEmotionality(player);
-            //}
-            //else if (CurrentSkillName == Database.STANCE_OF_EYES)
-            //{
-            //    PlayerSkillStanceOfEyes(player);
-            //}
-            //else if (CurrentSkillName == Database.PAINFUL_INSANITY)
-            //{
-            //    PlayerSkillPainfulInsanity(player);
-            //}
-            //// 無心 //
-            //else if (CurrentSkillName == Database.NEGATE)
-            //{
-            //    PlayerSkillNegate(player);
-            //}
-            //else if (CurrentSkillName == Database.VOID_EXTRACTION)
-            //{
-            //    PlayerSkillVoidExtraction(player);
-            //}
-            //else if (CurrentSkillName == Database.CARNAGE_RUSH)
-            //{
-            //    PlayerSkillCarnageRush(player, target);
-            //}
-            //else if (CurrentSkillName == Database.NOTHING_OF_NOTHINGNESS)
-            //{
-            //    PlayerSkillNothingOfNothingness(player);
-            //}
-            // todo
-            //// 動＋静（完全逆）
-            //else if (CurrentSkillName == Database.NEUTRAL_SMASH)
-            //{
-            //    PlayerSkillNeutralSmash(player, target);
-            //}
-            //else if (CurrentSkillName == Database.STANCE_OF_DOUBLE)
-            //{
-            //    PlayerSkillStanceOfDouble(player, target);
-            //}
-            //// 動＋柔
-            //else if (CurrentSkillName == Database.SWIFT_STEP)
-            //{
-            //    PlayerSkillSwiftStep(player, target);
-            //}
-            //else if (CurrentSkillName == Database.VIGOR_SENSE)
-            //{
-            //    PlayerSkillVigorSense(player, target);
-            //}
-            //// 動＋剛
-            //else if (CurrentSkillName == Database.CIRCLE_SLASH)
-            //{
-            //    PlayerSkillCircleSlash(player, target);
-            //}
-            //else if (CurrentSkillName == Database.RISING_AURA)
-            //{
-            //    PlayerSkillRisingAura(player, target);
-            //}
-            //// 動＋心眼
-            //else if (CurrentSkillName == Database.RUMBLE_SHOUT)
-            //{
-            //    PlayerSkillRumbleShout(player, target);
-            //}
-            //else if (CurrentSkillName == Database.ONSLAUGHT_HIT)
-            //{
-            //    PlayerSkillOnslaughtHit(player, target);
-            //}
-            //// 動＋無心
-            //else if (CurrentSkillName == Database.SMOOTHING_MOVE)
-            //{
-            //    PlayerSkillSmoothingMove(player, target);
-            //}
-            //else if (CurrentSkillName == Database.ASCENSION_AURA)
-            //{
-            //    PlayerSkillAscensionAura(player, target);
-            //}
-            //// 静＋柔
-            //else if (CurrentSkillName == Database.FUTURE_VISION)
-            //{
-            //    PlayerSkillFutureVision(player, target);
-            //}
-            //else if (CurrentSkillName == Database.UNKNOWN_SHOCK)
-            //{
-            //    PlayerSkillUnknownShock(player, target);
-            //}
-            //// 静＋剛
-            //else if (CurrentSkillName == Database.REFLEX_SPIRIT)
-            //{
-            //    PlayerSkillReflexSpirit(player, target);
-            //}
-            //else if (CurrentSkillName == Database.FATAL_BLOW)
-            //{
-            //    PlayerSkillFatalBlow(player, target);
-            //}
-            //// 静＋心眼
-            //else if (CurrentSkillName == Database.SHARP_GLARE)
-            //{
-            //    PlayerSkillSharpGlare(player, target);
-            //}
-            //else if (CurrentSkillName == Database.CONCUSSIVE_HIT)
-            //{
-            //    PlayerSkillConcussiveHit(player, target);
-            //}
-            //// 静＋無心
-            //else if (CurrentSkillName == Database.TRUST_SILENCE)
-            //{
-            //    PlayerSkillTrustSilence(player, target);
-            //}
-            //else if (CurrentSkillName == Database.MIND_KILLING)
-            //{
-            //    PlayerSkillMindKilling(player, target);
-            //}
-            //// 柔＋剛（完全逆）
-            //else if (CurrentSkillName == Database.SURPRISE_ATTACK)
-            //{
-            //    PlayerSkillSurpriseAttack(player, target);
-            //}
-            //else if (CurrentSkillName == Database.STANCE_OF_MYSTIC)
-            //{
-            //    PlayerSkillStanceOfMystic(player, target);
-            //}
-            //// 柔＋心眼
-            //else if (CurrentSkillName == Database.PSYCHIC_WAVE)
-            //{
-            //    PlayerSkillPsychicWave(player, target);
-            //}
-            //else if (CurrentSkillName == Database.NOURISH_SENSE)
-            //{
-            //    PlayerSkillNourishSense(player, target);
-            //}
-            //// 柔＋無心
-            //else if (CurrentSkillName == Database.RECOVER)
-            //{
-            //    PlayerSkillRecover(player, target);
-            //}
-            //else if (CurrentSkillName == Database.IMPULSE_HIT)
-            //{
-            //    PlayerSkillImpulseHit(player, target);
-            //}
-            //// 剛＋心眼
-            //else if (CurrentSkillName == Database.VIOLENT_SLASH)
-            //{
-            //    PlayerSkillViolentSlash(player, target);
-            //}
-            //else if (CurrentSkillName == Database.ONE_AUTHORITY)
-            //{
-            //    PlayerSkillOneAuthority(player, target);
-            //}
-            //// 剛＋無心
-            //else if (CurrentSkillName == Database.OUTER_INSPIRATION)
-            //{
-            //    PlayerSkillOuterInspiration(player, target);
-            //}
-            //else if (CurrentSkillName == Database.HARDEST_PARRY)
-            //{
-            //    PlayerSkillHardestParry(player, target);
-            //}
-            //// 心眼＋無心（完全逆）
-            //else if (CurrentSkillName == Database.STANCE_OF_SUDDENNESS)
-            //{
-            //    PlayerSkillStanceOfSuddenness(player, target);
-            //}
-            //else if (CurrentSkillName == Database.SOUL_EXECUTION)
-            //{
-            //    PlayerSkillSoulExecution(player, target);
-            //}
-            //
+            else if (CurrentSkillName == Database.DOUBLE_SLASH)
+            {
+                PlayerSkillDoubleSlash(player, target, 0, false);
+            }
+            else if (CurrentSkillName == Database.CRUSHING_BLOW)
+            {
+                PlayerSkillCrushingBlow(player);
+            }
+            else if (CurrentSkillName == Database.SOUL_INFINITY)
+            {
+                PlayerSkillSoulInfinity(player, target);
+            }
+            // 静 //
+            else if (CurrentSkillName == Database.COUNTER_ATTACK)
+            {
+                PlayerSkillCounterAttack(player, target);
+            }
+            else if (CurrentSkillName == Database.PURE_PURIFICATION)
+            {
+                PlayerSkillPurePurification(player);
+            }
+            else if (CurrentSkillName == Database.ANTI_STUN)
+            {
+                PlayerSkillAntiStun(player);
+            }
+            else if (CurrentSkillName == Database.STANCE_OF_DEATH)
+            {
+                PlayerSkillStanceOfDeath(player);
+            }
+            // 柔 //
+            else if (CurrentSkillName == Database.STANCE_OF_FLOW)
+            {
+                PlayerSkillStanceOfFlow(player);
+            }
+            else if (CurrentSkillName == Database.ENIGMA_SENSE)
+            {
+                PlayerSkillEnigmaSense(player, target);
+            }
+            else if (CurrentSkillName == Database.SILENT_RUSH)
+            {
+                PlayerSkillSilentRush(player, target);
+            }
+            else if (CurrentSkillName == Database.OBORO_IMPACT)
+            {
+                PlayerSkillOboroImpact(player, target);
+            }
+            // 剛 //
+            else if (CurrentSkillName == Database.STANCE_OF_STANDING)
+            {
+                PlayerSkillStanceOfStanding(player, target);
+            }
+            else if (CurrentSkillName == Database.INNER_INSPIRATION)
+            {
+                PlayerSkillInnerInspiration(player);
+            }
+            else if (CurrentSkillName == Database.KINETIC_SMASH)
+            {
+                PlayerSkillKineticSmash(player, target);
+            }
+            else if (CurrentSkillName == Database.CATASTROPHE)
+            {
+                PlayerSkillCatastrophe(player, target);
+                // こちらでスキル全消費
+                player.CurrentSkillPoint = 0;
+                UpdateSkillPoint(player);
+            }
+            // 心眼 //
+            else if (CurrentSkillName == Database.TRUTH_VISION)
+            {
+                PlayerSkillTruthVision(player, target);
+            }
+            else if (CurrentSkillName == Database.HIGH_EMOTIONALITY)
+            {
+                PlayerSkillHighEmotionality(player);
+            }
+            else if (CurrentSkillName == Database.STANCE_OF_EYES)
+            {
+                PlayerSkillStanceOfEyes(player);
+            }
+            else if (CurrentSkillName == Database.PAINFUL_INSANITY)
+            {
+                PlayerSkillPainfulInsanity(player);
+            }
+            // 無心 //
+            else if (CurrentSkillName == Database.NEGATE)
+            {
+                PlayerSkillNegate(player, target);
+            }
+            else if (CurrentSkillName == Database.VOID_EXTRACTION)
+            {
+                PlayerSkillVoidExtraction(player);
+            }
+            else if (CurrentSkillName == Database.CARNAGE_RUSH)
+            {
+                PlayerSkillCarnageRush(player, target);
+            }
+            else if (CurrentSkillName == Database.NOTHING_OF_NOTHINGNESS)
+            {
+                PlayerSkillNothingOfNothingness(player);
+            }
+            // 動＋静（完全逆）
+            else if (CurrentSkillName == Database.NEUTRAL_SMASH)
+            {
+                PlayerSkillNeutralSmash(player, target);
+            }
+            else if (CurrentSkillName == Database.STANCE_OF_DOUBLE)
+            {
+                PlayerSkillStanceOfDouble(player, target);
+            }
+            // 動＋柔
+            else if (CurrentSkillName == Database.SWIFT_STEP)
+            {
+                PlayerSkillSwiftStep(player, target);
+            }
+            else if (CurrentSkillName == Database.VIGOR_SENSE)
+            {
+                PlayerSkillVigorSense(player, target);
+            }
+            // 動＋剛
+            else if (CurrentSkillName == Database.CIRCLE_SLASH)
+            {
+                PlayerSkillCircleSlash(player, target);
+            }
+            else if (CurrentSkillName == Database.RISING_AURA)
+            {
+                PlayerSkillRisingAura(player, target);
+            }
+            // 動＋心眼
+            else if (CurrentSkillName == Database.RUMBLE_SHOUT)
+            {
+                PlayerSkillRumbleShout(player, target);
+            }
+            else if (CurrentSkillName == Database.ONSLAUGHT_HIT)
+            {
+                PlayerSkillOnslaughtHit(player, target);
+            }
+            // 動＋無心
+            else if (CurrentSkillName == Database.SMOOTHING_MOVE)
+            {
+                PlayerSkillSmoothingMove(player, target);
+            }
+            else if (CurrentSkillName == Database.ASCENSION_AURA)
+            {
+                PlayerSkillAscensionAura(player, target);
+            }
+            // 静＋柔
+            else if (CurrentSkillName == Database.FUTURE_VISION)
+            {
+                PlayerSkillFutureVision(player, target);
+            }
+            else if (CurrentSkillName == Database.UNKNOWN_SHOCK)
+            {
+                PlayerSkillUnknownShock(player, target);
+            }
+            // 静＋剛
+            else if (CurrentSkillName == Database.REFLEX_SPIRIT)
+            {
+                PlayerSkillReflexSpirit(player, target);
+            }
+            else if (CurrentSkillName == Database.FATAL_BLOW)
+            {
+                PlayerSkillFatalBlow(player, target);
+            }
+            // 静＋心眼
+            else if (CurrentSkillName == Database.SHARP_GLARE)
+            {
+                PlayerSkillSharpGlare(player, target);
+            }
+            else if (CurrentSkillName == Database.CONCUSSIVE_HIT)
+            {
+                PlayerSkillConcussiveHit(player, target);
+            }
+            // 静＋無心
+            else if (CurrentSkillName == Database.TRUST_SILENCE)
+            {
+                PlayerSkillTrustSilence(player, target);
+            }
+            else if (CurrentSkillName == Database.MIND_KILLING)
+            {
+                PlayerSkillMindKilling(player, target);
+            }
+            // 柔＋剛（完全逆）
+            else if (CurrentSkillName == Database.SURPRISE_ATTACK)
+            {
+                PlayerSkillSurpriseAttack(player, target);
+            }
+            else if (CurrentSkillName == Database.STANCE_OF_MYSTIC)
+            {
+                PlayerSkillStanceOfMystic(player, target);
+            }
+            // 柔＋心眼
+            else if (CurrentSkillName == Database.PSYCHIC_WAVE)
+            {
+                PlayerSkillPsychicWave(player, target);
+            }
+            else if (CurrentSkillName == Database.NOURISH_SENSE)
+            {
+                PlayerSkillNourishSense(player, target);
+            }
+            // 柔＋無心
+            else if (CurrentSkillName == Database.RECOVER)
+            {
+                PlayerSkillRecover(player, target);
+            }
+            else if (CurrentSkillName == Database.IMPULSE_HIT)
+            {
+                PlayerSkillImpulseHit(player, target);
+            }
+            // 剛＋心眼
+            else if (CurrentSkillName == Database.VIOLENT_SLASH)
+            {
+                PlayerSkillViolentSlash(player, target);
+            }
+            else if (CurrentSkillName == Database.ONE_AUTHORITY)
+            {
+                PlayerSkillOneAuthority(player, target);
+            }
+            // 剛＋無心
+            else if (CurrentSkillName == Database.OUTER_INSPIRATION)
+            {
+                PlayerSkillOuterInspiration(player, target);
+            }
+            else if (CurrentSkillName == Database.HARDEST_PARRY)
+            {
+                PlayerSkillHardestParry(player, target);
+            }
+            // 心眼＋無心（完全逆）
+            else if (CurrentSkillName == Database.STANCE_OF_SUDDENNESS)
+            {
+                PlayerSkillStanceOfSuddenness(player, target);
+            }
+            else if (CurrentSkillName == Database.SOUL_EXECUTION)
+            {
+                PlayerSkillSoulExecution(player, target);
+            }
+            
             //if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); }
         }
 

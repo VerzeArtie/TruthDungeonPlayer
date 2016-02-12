@@ -42,19 +42,32 @@ namespace DungeonPlayer
             SceneDimension.Go(src, Database.TruthBattleEnemy);
         }
 
-        public static void CallTruthStatusPlayer(string src)
+        public static void CallTruthStatusPlayer(string src, TruthBattleEnemy scene, bool onlySelectTrash)
         {
+            GroundOne.OnlySelectTrash = onlySelectTrash;
             GroundOne.LevelUp = false;
             GroundOne.UpPoint = 0;
             GroundOne.CumultiveLvUpValue = 0;
+            GroundOne.parent_TruthBattleEnemy = scene;
+            Application.LoadLevelAdditive(Database.TruthStatusPlayer);
+        }
+        public static void CallTruthStatusPlayer(string src)
+        {
+            GroundOne.OnlySelectTrash = false;
+            GroundOne.LevelUp = false;
+            GroundOne.UpPoint = 0;
+            GroundOne.CumultiveLvUpValue = 0;
+            GroundOne.parent_TruthBattleEnemy = null;
             SceneDimension.Go(src, Database.TruthStatusPlayer);
         }
         public static void CallTruthStatusPlayer(string src, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, Color color)
         {
+            GroundOne.OnlySelectTrash = false;
             GroundOne.LevelUp = leveUp;
             GroundOne.UpPoint = upPoint;
             GroundOne.CumultiveLvUpValue = cumultivaLvUpValue;
             GroundOne.CurrentStatusView = color;
+            GroundOne.parent_TruthBattleEnemy = null;
             leveUp = false;
             upPoint = 0;
             cumultivaLvUpValue = 0;
@@ -68,7 +81,12 @@ namespace DungeonPlayer
 
         public static void CallTruthBattleSetting(string src, bool fromBattleEnemy)
         {
+            CallTruthBattleSetting(src, null, fromBattleEnemy);
+        }
+        public static void CallTruthBattleSetting(string src, TruthBattleEnemy scene, bool fromBattleEnemy)
+        {
             GroundOne.CallBattleSettingFromBattleEnemy = fromBattleEnemy;
+            GroundOne.parent_TruthBattleEnemy = scene;
             if (fromBattleEnemy)
             {
                 Application.LoadLevelAdditive(Database.TruthBattleSetting);

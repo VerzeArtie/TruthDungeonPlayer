@@ -147,7 +147,8 @@ namespace DungeonPlayer
             // debug
             WE.AvailableInstantCommand = true;
             GroundOne.enemyName1 = Database.DUEL_EONE_FULNEA;
-            GroundOne.DuelMode = true;
+            //GroundOne.WE.AvailableSecondCharacter = true;
+            //GroundOne.DuelMode = true;
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);
@@ -173,6 +174,7 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
             MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
+            MC.AddBackPack(new ItemBackPack(Database.COMMON_ANGEL_DUST));
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
             MC.FreshHeal = true;
