@@ -6704,11 +6704,11 @@ namespace DungeonPlayer
 
                 #region "ダミー素振り君"
                 case Database.DUEL_DUMMY_SUBURI:
-                    this.baseStrength = 1000;
-                    this.baseAgility = 500;
-                    this.baseIntelligence = 1000;
+                    this.baseStrength = 1;
+                    this.baseAgility = 1;
+                    this.baseIntelligence = 1;
                     this.baseStamina = 9999;
-                    this.baseMind = 700;
+                    this.baseMind = 1;
                     this.experience = 0;
                     this.baseLife = 9990009;
                     this.ResistFire = 0;

@@ -40,7 +40,10 @@ namespace DungeonPlayer
         bool tempStopFlag = false; // [戦闘停止」ボタンやESCキーで、戦闘を一旦停止させたい時に使うフラグ
         bool endFlag = false; // メイン戦闘のループを抜ける時に使うフラグ
         bool cannotRunAway = false; // 戦闘から逃げられるかどうかを示すフラグ
+        bool NowStackInTheCommandStart = false; // スタックインザコマンドが開始するときのフラグ
         bool NowStackInTheCommand = false; // スタックインザコマンドで一旦停止させたい時に使うフラグ
+        int cumulativeCounter = 0; // スタックインザコマンドゲージ進行値
+        MainCharacter stackActivePlayer = null; // スタックインザコマンドのアクティブプレイヤー
         bool NowTimeStop = false; // タイムストップ「全体」のフラグ
         public bool HiSpeedAnimation { get; set; } // 通常ダメージアニメーションを早めるために使用
         public bool FinalBattle { get; set; } // 最終戦闘、スタックコマンドの動作を早めるために使用
@@ -94,6 +97,10 @@ namespace DungeonPlayer
         public GameObject groupEnemy2;
         public GameObject groupEnemy3;
 
+        public GameObject back_StackInTheCommandName;
+        public Text StackInThecommandNameText;
+        public GameObject back_StackInTheCommandBar;
+        public Text StackInTheCommandBarText;
         public Image player1Arrow;
         public Text playerActionLabel1;
         public Button buttonTargetPlayer1;
@@ -1374,9 +1381,13 @@ namespace DungeonPlayer
 
         private void InstantAttackPhase(string BattleActionCommand)
         {
+            Debug.Log("InstantAttackPhase start");
+
             // 敵対象・味方対象・自分対象、単一敵、複数敵、単一味方、複数味方、状況によってＩＦ文を使い分ける。
             if (this.NowSelectingTarget == false)
             {
+                Debug.Log("this.NowSelectingTarget false");
+
                 // 魔法・スキルは呼び出し元の名称がそのまま使えるが、武器能力は武器名によって異なるため、以下の分岐。
                 if (BattleActionCommand == Database.WEAPON_SPECIAL_EN)
                 {
@@ -1401,6 +1412,8 @@ namespace DungeonPlayer
             }
             else
             {
+                Debug.Log("this.NowSelectingTarget else(true)");
+
                 MainCharacter memoTarget = null;
                 if (TruthActionCommand.GetTargetType(this.instantActionCommandString) == TruthActionCommand.TargetType.AllyOrEnemy)
                 {
@@ -1556,6 +1569,7 @@ namespace DungeonPlayer
 
         private void ExecActionMethod(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CommandName)
         {
+            Debug.Log("ExecActionMethod start");
             // 1. 元核の場合、インスタント消費はせず、スタック情報も用いずにスタックを載せる。
             if ((CommandName == Database.ARCHETYPE_EIN) ||
                 (CommandName == Database.ARCHETYPE_RANA) ||
@@ -1563,21 +1577,25 @@ namespace DungeonPlayer
                 (CommandName == Database.ARCHETYPE_VERZE)
                 )
             {
+                Debug.Log("ExecActionMethod 2");
                 player.StackActivePlayer = player;
                 player.StackTarget = target;
                 player.StackPlayerAction = PA;
                 player.StackCommandString = CommandName;
                 player.StackActivation = true;
+                Debug.Log("ExecActionMethod 2-2");
                 this.NowStackInTheCommand = true;
             }
             else if (IsPlayerEnemy(player) && (((TruthEnemyCharacter)player).UseStackCommand))
             {
+                Debug.Log("ExecActionMethod 3");
                 if (UseInstantPoint(player) == false) { return; }
                 player.StackActivePlayer = player;
                 player.StackTarget = target;
                 player.StackPlayerAction = PA;
                 player.StackCommandString = CommandName;
                 player.StackActivation = true;
+                Debug.Log("ExecActionMethod 3-2");
                 this.NowStackInTheCommand = true;
             }
             else
@@ -1585,16 +1603,19 @@ namespace DungeonPlayer
                 if ((GroundOne.DuelMode) ||
                     (this.NowStackInTheCommand))
                 {
+                    Debug.Log("ExecActionMethod 4");
                     if (UseInstantPoint(player) == false) { return; }
                     player.StackActivePlayer = player;
                     player.StackTarget = target;
                     player.StackPlayerAction = PA;
                     player.StackCommandString = CommandName;
                     player.StackActivation = true;
+                    Debug.Log("ExecActionMethod 4-2");
                     this.NowStackInTheCommand = true;
                 }
                 else
                 {
+                    Debug.Log("ExecActionMethod 5");
                     if (UseInstantPoint(player) == false) { return; }
                     PlayerAttackPhase(player, target, PA, CommandName, false, false, false);
                     CompleteInstantAction();
@@ -1625,7 +1646,14 @@ namespace DungeonPlayer
             UpdateInstantPoint(player);
             return true;
         }
-
+        private void UseSpecialInstant(MainCharacter player)
+        {
+            player.CurrentSpecialInstant = 0;
+            if (player.labelCurrentSpecialInstant != null)
+            {
+                player.labelCurrentSpecialInstant.text = player.CurrentSpecialInstant.ToString() + " / " + player.MaxSpecialInstant.ToString();
+            }
+        }
         private void UpdatePlayerInstantPoint(MainCharacter player)
         {
             if (player.CurrentFrozen > 0)
@@ -1816,10 +1844,1386 @@ namespace DungeonPlayer
             }
         }
 
-        private void UpdatePlayerDoStackInTheCommand(MainCharacter mainCharacter)
+        private void UpdatePlayerDoStackInTheCommand(MainCharacter player)
         {
-            // todo
-            //throw new System.NotImplementedException();
+            if (IsPlayerAlly(player)) { return; } // 味方プレイヤーは自動的に何らかの行動は行わない。
+            if (this.NowStackInTheCommand) { return; } // スタック・イン・ザ・コマンド中はスルー
+
+            #region "セルモイ・ロウ"
+            if (player.FirstName == Database.DUEL_SELMOI_RO)
+            {
+                bool existItem = false;
+                ItemBackPack[] tempItem = player.GetBackPackInfo();
+                foreach (ItemBackPack value in tempItem)
+                {
+                    if (value != null)
+                    {
+                        if (value.Name == Database.COMMON_FROZEN_BALL)
+                        {
+                            existItem = true;
+                        }
+                    }
+                }
+
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint && 50 < player.BattleBarPos && player.BattleBarPos < 100)
+                {
+                    if (existItem)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = player;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseItem;
+                        player.StackCommandString = Database.COMMON_FROZEN_BALL;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                    else if (player.CurrentAbsorbWater <= 0)
+                    {
+                        if (player.CurrentAbsorbWater <= 0)
+                        {
+                            UseInstantPoint(player);
+                            player.StackActivePlayer = player;
+                            player.StackTarget = player;
+                            player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                            player.StackCommandString = Database.ABSORB_WATER;
+                            player.StackActivation = true;
+                            this.NowStackInTheCommand = true;
+                        }
+                        else
+                        {
+                            UseInstantPoint(player);
+                            player.StackActivePlayer = player;
+                            player.StackTarget = GroundOne.MC;
+                            player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                            player.StackCommandString = Database.WORD_OF_POWER;
+                            player.StackActivation = true;
+                            this.NowStackInTheCommand = true;
+                        }
+                    }
+                    else
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = player;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.WORD_OF_POWER;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }
+            }
+            #endregion
+            #region "カーティン・マイ"
+            else if (player.FirstName == Database.DUEL_KARTIN_MAI)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (player.CurrentHeatBoost <= 0)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = player;
+                        player.StackTarget = player;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.HEAT_BOOST;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                    else if (player.CurrentShadowPact <= 0)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = player;
+                        player.StackTarget = player;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.SHADOW_PACT;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                    else
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = player;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.FIRE_BALL;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }
+            }
+            #endregion
+            #region "ジェダ・アルス"
+            else if (player.FirstName == Database.DUEL_JEDA_ARUS)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint && 150 < player.BattleBarPos && player.BattleBarPos < 200)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = player;
+                    player.StackTarget = GroundOne.MC;
+                    player.StackPlayerAction = MainCharacter.PlayerAction.UseItem;
+                    player.StackCommandString = Database.RARE_AERO_BLADE;
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "シニキア・ヴェイルハンツ"
+            else if (player.FirstName == Database.DUEL_SINIKIA_VEILHANTU)
+            {
+                if (player.CurrentLife < player.MaxLife / 3)
+                {
+                    if (player.CurrentInstantPoint >= player.MaxInstantPoint && 400 < player.BattleBarPos && player.BattleBarPos < 450)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.LIFE_TAP;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }
+            }
+            #endregion
+            #region "【１階】絡みつくフランシス"
+            else if (player.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint && 150 < player.BattleBarPos && player.BattleBarPos < 200)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    if (GroundOne.MC != null && !GroundOne.MC.Dead) player.StackTarget = GroundOne.MC;
+                    else if (GroundOne.SC != null && !GroundOne.SC.Dead) player.StackTarget = GroundOne.SC;
+                    //player.StackTarget = null; // 「警告」null指定がスタックインザコマンドで「全体」を表現しようとしているが、思いつきの新仕様である。全体仕様のどこに関わってくるか考察してください。
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "キル・スピニングランサー";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "オル・ランディス（初DUEL)
+            else if (player.FirstName == Database.DUEL_OL_LANDIS)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if ((GroundOne.MC.CurrentLife < 500) && (GroundOne.MC.CurrentParalyze <= 0) && (ec1.CurrentSkillPoint >= Database.SURPRISE_ATTACK_COST))
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                        player.StackCommandString = Database.SURPRISE_ATTACK;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                    else
+                    {
+                        if ((GroundOne.MC.CurrentBlackFire <= 0) && (ec1.CurrentMana >= Database.BLACK_FIRE_COST))
+                        {
+                            UseInstantPoint(player);
+                            player.StackActivePlayer = ec1;
+                            player.StackTarget = GroundOne.MC;
+                            player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                            player.StackCommandString = Database.BLACK_FIRE;
+                            player.StackActivation = true;
+                            this.NowStackInTheCommand = true;
+                        }
+                        else if ((GroundOne.MC.CurrentImmolate <= 0) && (ec1.CurrentMana >= Database.IMMOLATE_COST))
+                        {
+                            UseInstantPoint(player);
+                            player.StackActivePlayer = ec1;
+                            player.StackTarget = GroundOne.MC;
+                            player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                            player.StackCommandString = Database.IMMOLATE;
+                            player.StackActivation = true;
+                            this.NowStackInTheCommand = true;
+                        }
+                    }
+                }
+                // ちょっと強すぎるので、封印か。
+                //    if ((GroundOne.MC.CurrentLife < GroundOne.MC.MaxLife / 2) && (ec1.CurrentSkillPoint >= Database.CRUSHING_BLOW_COST))
+                //    {
+                //        UseInstantPoint(player);
+                //        player.StackActivePlayer = ec1;
+                //        player.StackTarget = GroundOne.MC;
+                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                //        player.StackCommandString = Database.CRUSHING_BLOW;
+                //        player.StackActivation = true;
+                //        this.NowStackInTheCommand = true;
+                //    }
+                //    else if (ec1.CurrentSkillPoint >= Database.STRAIGHT_SMASH_COST)
+                //    {
+                //        UseInstantPoint(player);
+                //        player.StackActivePlayer = ec1;
+                //        player.StackTarget = GroundOne.MC;
+                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                //        player.StackCommandString = Database.STRAIGHT_SMASH;
+                //        player.StackActivation = true;
+                //        this.NowStackInTheCommand = true;
+                //    }
+                //    else 
+                //    {
+                //        UseInstantPoint(player);
+                //        player.StackActivePlayer = ec1;
+                //        player.StackTarget = ec1;
+                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                //        player.StackCommandString = Database.INNER_INSPIRATION;
+                //        player.StackActivation = true;
+                //        this.NowStackInTheCommand = true;
+                //    }                    
+                //}
+            }
+            #endregion
+            #region "輝ける海の王子"
+            else if (player.FirstName == Database.ENEMY_BRILLIANT_SEA_PRINCE)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint && 150 < player.BattleBarPos && player.BattleBarPos < 200)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    player.StackTarget = null; // 「警告」null指定がスタックインザコマンドで「全体」を表現しようとしているが、思いつきの新仕様である。全体仕様のどこに関わってくるか考察してください。
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "アイソニック・ウェイヴ";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "源星・珊瑚の女王"
+            else if (player.FirstName == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    if (player.CurrentPhysicalDefenseUp <= 0)
+                    {
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                        player.StackCommandString = "アンダートの詠唱";
+                    }
+                    else if (player.CurrentMirrorImage <= 0)
+                    {
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                        player.StackCommandString = "サルマンの詠唱";
+                    }
+                    else
+                    {
+                        if (AP.Math.RandomInteger(2) == 0)
+                        {
+                            player.StackTarget = null;
+                            player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                            player.StackCommandString = "エレメンタル・スプラッシュ";
+
+                        }
+                        else
+                        {
+                            player.StackTarget = ec1;
+                            player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                            player.StackCommandString = "生命の龍水";
+                        }
+                    }
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "ジュエル・ナイト"
+            else if (player.FirstName == Database.ENEMY_SHELL_SWORD_KNIGHT)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { player.StackTarget = GroundOne.MC; }
+                    else if (GroundOne.SC != null && !GroundOne.SC.Dead) { player.StackTarget = GroundOne.SC; }
+                    else if (GroundOne.TC != null && !GroundOne.TC.Dead) { player.StackTarget = GroundOne.TC; }
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "ジュエル・ブレイク";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "ジェリーアイ・赤"
+            else if (player.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { player.StackTarget = GroundOne.MC; }
+                    else if (GroundOne.SC != null && !GroundOne.SC.Dead) { player.StackTarget = GroundOne.SC; }
+                    else if (GroundOne.TC != null && !GroundOne.TC.Dead) { player.StackTarget = GroundOne.TC; }
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "溶岩の一撃";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "ジェリーアイ・青"
+            else if (player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec2;
+                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { player.StackTarget = GroundOne.MC; }
+                    else if (GroundOne.SC != null && !GroundOne.SC.Dead) { player.StackTarget = GroundOne.SC; }
+                    else if (GroundOne.TC != null && !GroundOne.TC.Dead) { player.StackTarget = GroundOne.TC; }
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "凍雹の一撃";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "海星騎士エーギル"
+            else if (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec2;
+
+                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { player.StackTarget = GroundOne.SC; }
+                    else if (GroundOne.TC != null && !GroundOne.TC.Dead) { player.StackTarget = GroundOne.TC; }
+                    else if (GroundOne.MC != null && !GroundOne.MC.Dead) { player.StackTarget = GroundOne.MC; }
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "スター・ダスト";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "海星騎士アマラ"
+            else if (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec3;
+
+                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { player.StackTarget = GroundOne.TC; }
+                    else if (GroundOne.SC != null && !GroundOne.SC.Dead) { player.StackTarget = GroundOne.SC; }
+                    else if (GroundOne.MC != null && !GroundOne.MC.Dead) { player.StackTarget = GroundOne.MC; }
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "スター・フォール";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "海星源の王"
+            else if (player.FirstName == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    player.StackTarget = null;
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "海星源の授印";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "アデル・ブリガンディ"
+            else if (player.FirstName == Database.DUEL_ADEL_BRIGANDY)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    player.StackTarget = GroundOne.MC;
+                    player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                    player.StackCommandString = Database.WORD_OF_POWER;
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "レネ・コルトス"
+            else if (player.FirstName == Database.DUEL_LENE_COLTOS)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                    {
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.FRESH_HEAL;
+                    }
+                    else
+                    {
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseItem;
+                        player.StackCommandString = Database.RARE_BLUE_LIGHTNING;
+                    }
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "スコーティ・ザルゲ"
+            else if (player.FirstName == Database.DUEL_SCOTY_ZALGE)
+            {
+            }
+            #endregion
+            #region "ペルマ・ワラミィ"
+            else if (player.FirstName == Database.DUEL_PERMA_WARAMY)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint && player.BattleBarPos < 50)
+                {
+                    UseInstantPoint(player);
+                    if (player.CurrentLife <= player.MaxLife * 2 / 3)
+                    {
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.FRESH_HEAL;
+                    }
+                    else if (player.CurrentWordOfLife <= 0)
+                    {
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.WORD_OF_LIFE;
+                    }
+                    else if (GroundOne.MC.CurrentEnrageBlast <= 0)
+                    {
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.ENRAGE_BLAST;
+                    }
+                    else if (player.CurrentFlameAura <= 0)
+                    {
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.FLAME_AURA;
+                    }
+                    else if (player.CurrentStrengthUp <= 0)
+                    {
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseItem;
+                        player.StackCommandString = Database.RARE_BURNING_CLAYMORE;
+                    }
+                    else
+                    {
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.WORD_OF_POWER;
+                    }
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "キルト・ジョルジュ"
+            else if (player.FirstName == Database.DUEL_KILT_JORJU)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (GroundOne.MC.CurrentLife <= 1200)
+                    {
+                        if ((player.CurrentWordOfFortune <= 0))
+                        {
+                            if (player.BattleBarPos > Database.BASE_TIMER_BAR_LENGTH - 50)
+                            {
+                                UseInstantPoint(player);
+                                player.StackActivePlayer = player;
+                                player.StackTarget = player;
+                                player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                player.StackCommandString = Database.WORD_OF_FORTUNE;
+                                player.StackActivation = true;
+                                this.NowStackInTheCommand = true;
+                            }
+                        }
+                        else
+                        {
+                            if (player.CurrentSkillPoint > Database.STRAIGHT_SMASH_COST && ((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                            {
+                                UseInstantPoint(player);
+                                player.StackActivePlayer = ec1;
+                                player.StackTarget = GroundOne.MC;
+                                player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                                player.StackCommandString = Database.STRAIGHT_SMASH;
+                                player.StackActivation = true;
+                                this.NowStackInTheCommand = true;
+                            }
+                            else if (player.CurrentMana > Database.BLUE_BULLET_COST && ((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                            {
+                                UseInstantPoint(player);
+                                player.StackActivePlayer = ec1;
+                                player.StackTarget = GroundOne.MC;
+                                player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                player.StackCommandString = Database.BLUE_BULLET;
+                                player.StackActivation = true;
+                                this.NowStackInTheCommand = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (player.CurrentSkillPoint > Database.STRAIGHT_SMASH_COST && ((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                        {
+                            UseInstantPoint(player);
+                            player.StackActivePlayer = ec1;
+                            player.StackTarget = GroundOne.MC;
+                            player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                            player.StackCommandString = Database.STRAIGHT_SMASH;
+                            player.StackActivation = true;
+                            this.NowStackInTheCommand = true;
+                        }
+                        else if (player.CurrentMana > Database.BLUE_BULLET_COST && ((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                        {
+                            UseInstantPoint(player);
+                            player.StackActivePlayer = ec1;
+                            player.StackTarget = GroundOne.MC;
+                            player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                            player.StackCommandString = Database.BLUE_BULLET;
+                            player.StackActivation = true;
+                            this.NowStackInTheCommand = true;
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "【２階】大海蛇リヴィアサン"
+            else if (player.FirstName == Database.ENEMY_BOSS_LEVIATHAN)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    player.StackTarget = null;
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    player.StackCommandString = "タイダル・ウェイブ";
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "ヴェルゼ・アーティ(初DUEL）"
+            else if (player.FirstName == Database.VERZE_ARTIE)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if ((player.CurrentStanceOfMystic <= 0) && (player.CurrentSkillPoint >= Database.STANCE_OF_MYSTIC_COST))
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.STANCE_OF_MYSTIC);
+                    }
+                    else if (GroundOne.MC.CurrentHolyBreaker > 0)
+                    {
+                        if (player.CurrentSkillPoint > Database.PSYCHIC_WAVE_COST)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.PSYCHIC_WAVE);
+                        }
+                        else
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.INNER_INSPIRATION);
+                        }
+                    }
+                    else if (player.CurrentGaleWind > 0)
+                    {
+                        if (player.CurrentSkillPoint >= Database.STRAIGHT_SMASH_COST)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.STRAIGHT_SMASH);
+                        }
+                        else
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.NEUTRAL_SMASH);
+                        }
+                    }
+                    else if (player.CurrentCounterAttack <= 0 && player.CurrentDeflection <= 0)
+                    {
+                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.COUNTER_ATTACK);
+                    }
+                    else if (player.CurrentSkyShieldValue <= 0 && player.CurrentMirrorImage <= 0)
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.MIRROR_IMAGE);
+                    }
+                    else if (player.CurrentSkillPoint < player.MaxSkillPoint)
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.INNER_INSPIRATION);
+                    }
+                }
+            }
+            #endregion
+            #region "ビリー・ラキ"
+            else if (player.FirstName == Database.DUEL_BILLY_RAKI)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if ((player.CurrentSkillPoint > Database.DOUBLE_SLASH_COST) && (player.CurrentSkillPoint < Database.CARNAGE_RUSH_COST))
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                        player.StackCommandString = Database.DOUBLE_SLASH;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }                
+            }
+            #endregion
+            #region "アンナ・ハミルトン"
+            else if (player.FirstName == Database.DUEL_ANNA_HAMILTON)
+            {
+                // とくになし
+            }
+            #endregion
+            #region "カルマンズ・オーン"
+            else if (player.FirstName == Database.DUEL_CALMANS_OHN)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (player.CurrentWordOfLife <= 0)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.WORD_OF_LIFE;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                    else
+                    {
+                        if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                        {
+                            if (player.CurrentGaleWind > 0)
+                            {
+                                UseInstantPoint(player);
+                                player.StackActivePlayer = ec1;
+                                player.StackTarget = GroundOne.MC;
+                                player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                player.StackCommandString = Database.BLUE_BULLET;
+                                player.StackActivation = true;
+                                this.NowStackInTheCommand = true;
+                            }
+                            else
+                            {
+                                UseInstantPoint(player);
+                                player.StackActivePlayer = ec1;
+                                player.StackTarget = GroundOne.MC;
+                                player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                player.StackCommandString = Database.DEVOURING_PLAGUE;
+                                player.StackActivation = true;
+                                this.NowStackInTheCommand = true;
+                            }
+
+                            ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
+                        }
+                        else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                        {
+                            if (player.CurrentPromisedKnowledge <= 0)
+                            {
+                                UseInstantPoint(player);
+                                player.StackActivePlayer = ec1;
+                                player.StackTarget = ec1;
+                                player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                player.StackCommandString = Database.PROMISED_KNOWLEDGE;
+                                player.StackActivation = true;
+                                this.NowStackInTheCommand = true;
+                            }
+                            else
+                            {
+                                UseInstantPoint(player);
+                                player.StackActivePlayer = ec1;
+                                player.StackTarget = GroundOne.MC;
+                                player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                player.StackCommandString = Database.BLUE_BULLET;
+                                player.StackActivation = true;
+                                this.NowStackInTheCommand = true;
+                            }
+
+                            ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
+                        }
+                        else
+                        {
+                            if (GroundOne.MC.CurrentLife <= GroundOne.MC.MaxLife / 2)
+                            {
+                                UseInstantPoint(player);
+                                player.StackActivePlayer = ec1;
+                                player.StackTarget = ec1;
+                                player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                player.StackCommandString = Database.GALE_WIND;
+                                player.StackActivation = true;
+                                this.NowStackInTheCommand = true;
+                            }
+                            else
+                            {
+                                if (player.CurrentGaleWind > 0)
+                                {
+                                    UseInstantPoint(player);
+                                    player.StackActivePlayer = ec1;
+                                    player.StackTarget = GroundOne.MC;
+                                    player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                    player.StackCommandString = Database.BLUE_BULLET;
+                                    player.StackActivation = true;
+                                    this.NowStackInTheCommand = true;
+                                }
+                                else
+                                {
+                                    UseInstantPoint(player);
+                                    player.StackActivePlayer = ec1;
+                                    player.StackTarget = GroundOne.MC;
+                                    player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                    player.StackCommandString = Database.DEVOURING_PLAGUE;
+                                    player.StackActivation = true;
+                                    this.NowStackInTheCommand = true;
+                                }
+                            }
+                            ((TruthEnemyCharacter)player).AI_TacticsNumber = 0;
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "サン・ユウ"
+            else if (player.FirstName == Database.DUEL_SUN_YU)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (GroundOne.MC.CurrentAetherDrive > 0)
+                    {
+                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.TRANQUILITY);
+                    }
+                    else if (GroundOne.MC.CurrentSaintPower > 0)
+                    {
+                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.DISPEL_MAGIC);
+                    }
+                }
+            }
+            #endregion
+            #region "シュヴァルツェ・フローレ"
+            else if (player.FirstName == Database.DUEL_SHUVALTZ_FLORE)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                    {
+                        if (player.CurrentProtection <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.PROTECTION);
+                        }
+                        else if (player.CurrentAbsorbWater <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.ABSORB_WATER);
+                        }
+                        else if (player.CurrentSaintPower <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.SAINT_POWER);
+                        }
+                        else if (player.CurrentAbsorbWater <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.ABSORB_WATER);
+                        }
+                        else if (player.CurrentAetherDrive <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.AETHER_DRIVE);
+                        }
+                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
+                    }
+                    else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                    {
+                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.NEUTRAL_SMASH);
+                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
+                    }
+                    else
+                    {
+                        if (50 < GroundOne.MC.BattleBarPos && GroundOne.MC.BattleBarPos < 75)
+                        {
+                            ((TruthEnemyCharacter)player).AI_TacticsNumber = 0;
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "シニキア・カールハンツ(DUEL)"
+            else if (player.FirstName == Database.DUEL_SINIKIA_KAHLHANZ)
+            {
+                if ((player.CurrentInstantPoint >= player.MaxInstantPoint) &&
+                    (GroundOne.MC.CurrentInstantPoint < GroundOne.MC.MaxInstantPoint))
+                {
+                    if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                    {
+                        if ((GroundOne.MC.CurrentFrozen <= 0) &&
+                            (((TruthEnemyCharacter)player).DetectCannotBeFrozen == false))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.CHILL_BURN);
+                        }
+                        else if (player.CurrentHeatBoost <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.HEAT_BOOST);
+                        }
+                        else if (player.CurrentPsychicTrance <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.PSYCHIC_TRANCE);
+                        }
+                        else if (GroundOne.MC.CurrentWordOfMalice <= 0)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.WORD_OF_MALICE);
+                        }
+                        else if (GroundOne.MC.CurrentBlackFire <= 0)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.BLACK_FIRE);
+                        }
+                        else
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.PIERCING_FLAME);
+                        }
+                        //((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
+                    }
+                    //else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                    //{
+                    //    ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.NEUTRAL_SMASH);
+                    //    ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
+                    //}
+                    //else
+                    //{
+                    //    if (50 < GroundOne.MC.BattleBarPos && GroundOne.MC.BattleBarPos < 75)
+                    //    {
+                    //        ((TruthEnemyCharacter)player).AI_TacticsNumber = 0;
+                    //    }
+                    //}
+                }
+            }
+            #endregion
+            #region "【３階】ハウリング・シーザー"
+            else if (player.FirstName == Database.ENEMY_BOSS_HOWLING_SEIZER)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    ExecActionMethod(player, null, MainCharacter.PlayerAction.SpecialSkill, "アース・コールド・シェイク");
+                }
+            }
+            #endregion
+            #region "ルベル・ゼルキス"
+            else if (player.FirstName == Database.DUEL_RVEL_ZELKIS)
+            {
+                if ((player.CurrentInstantPoint >= player.MaxInstantPoint))
+                {
+                    if (GroundOne.MC.CurrentFrozen > 0)
+                    {
+                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
+                    }
+                    else if (player.CurrentPromisedKnowledge > 0)
+                    {
+                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
+                    }
+
+                    if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                    {
+                        if ((GroundOne.MC.CurrentFrozen <= 0) &&
+                            (player.CurrentMana >= Database.CHILL_BURN_COST) &&
+                            (((TruthEnemyCharacter)player).DetectCannotBeFrozen == false))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.CHILL_BURN);
+                        }
+                    }
+                    else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                    {
+                        if ((player.CurrentPromisedKnowledge <= 0) &&
+                                 (player.CurrentMana >= Database.PROMISED_KNOWLEDGE_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.PROMISED_KNOWLEDGE);
+                        }
+                    }
+                    else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 2)
+                    {
+                        if ((GroundOne.MC.CurrentFrozen <= 0) &&
+                            (player.CurrentMana >= Database.CHILL_BURN_COST) &&
+                            (((TruthEnemyCharacter)player).DetectCannotBeFrozen == false))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.CHILL_BURN);
+                        }
+                        else if (player.CurrentSkillPoint >= Database.CARNAGE_RUSH_COST)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.CARNAGE_RUSH);
+                        }
+                        else if (player.CurrentMana >= Database.BLUE_BULLET_COST)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.BLUE_BULLET);
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "ヴァン・ヘーグステル"
+            else if (player.FirstName == Database.DUEL_VAN_HEHGUSTEL)
+            {
+                if ((player.CurrentInstantPoint >= player.MaxInstantPoint))
+                {
+                    // 戦術の判断
+                    if (player.CurrentLightServant > 0 && player.CurrentLightServantValue >= 3)
+                    {
+                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
+                    }
+                    if (player.CurrentFlameAura > 0 && player.CurrentFrozenAura > 0)
+                    {
+                        ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
+                    }
+
+                    if (player.CurrentLightServant > 0 && player.CurrentLightServantValue >= 3 && player.CurrentLife < player.MaxLife / 2)
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseItem, Database.COMMON_LIGHT_SERVANT);
+                    }
+                    else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
+                    {
+                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.NEUTRAL_SMASH);
+                    }
+                    else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                    {
+                        if ((player.CurrentFlameAura <= 0) &&
+                            (player.CurrentMana >= Database.FLAME_AURA_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.FLAME_AURA);
+                        }
+                        else if ((player.CurrentFrozenAura <= 0) &&
+                                 (player.CurrentMana >= Database.FROZEN_AURA_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.FROZEN_AURA);
+                        }
+                    }
+                    else
+                    {
+                        if ((GroundOne.MC.CurrentLife < GroundOne.MC.MaxLife * 2 / 3) &&
+                            (player.CurrentSkillPoint >= Database.SURPRISE_ATTACK_COST) &&
+                            (GroundOne.MC.CurrentParalyze <= 0) &&
+                            (((TruthEnemyCharacter)player).DetectCannotBeParalyze == false))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.SURPRISE_ATTACK);
+                        }
+                        else
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.NEUTRAL_SMASH);
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "オウリュウ・ゲンマ"
+            else if (player.FirstName == Database.DUEL_OHRYU_GENMA)
+            {
+                if ((player.CurrentInstantPoint >= player.MaxInstantPoint))
+                {
+                    if (player.CurrentSkillPoint < Database.CARNAGE_RUSH_COST)
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.INNER_INSPIRATION);
+                    }
+                    else if ((player.CurrentSwiftStep <= 0) &&
+                        (player.CurrentSkillPoint >= Database.SWIFT_STEP_COST))
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.SWIFT_STEP);
+                    }
+                    else if ((player.CurrentVoidExtraction <= 0) &&
+                             (player.CurrentSkillPoint >= Database.VOID_EXTRACTION_COST))
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.VOID_EXTRACTION);
+                    }
+                    else if ((player.CurrentSkillPoint >= Database.WORD_OF_POWER_COST))
+                    {
+                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.WORD_OF_POWER);
+                    }
+                }
+            }
+            #endregion
+            #region "ラダ・ミストゥルス"
+            else if (player.FirstName == Database.DUEL_LADA_MYSTORUS)
+            {
+            }
+            #endregion
+            #region "シン・オスキュレーテ"
+            else if (player.FirstName == Database.DUEL_SIN_OSCURETE)
+            {
+                if ((player.CurrentInstantPoint >= player.MaxInstantPoint) &&
+                    (GroundOne.MC.CurrentInstantPoint < 500) &&
+                    (GroundOne.MC.CurrentMana > 0))
+                {
+                    if ((player.CurrentAntiStun <= 0) &&
+                        (player.CurrentSkillPoint >= Database.ANTI_STUN_COST))
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.ANTI_STUN);
+                    }
+                    else if ((player.CurrentOneImmunity <= 0) &&
+                             (player.CurrentMana >= Database.ONE_IMMUNITY_COST))
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.ONE_IMMUNITY);
+                    }
+                    else if (player.CurrentSkillPoint <= 30)
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.INNER_INSPIRATION);
+                    }
+                    // この時点では強すぎるため、コメントアウト
+                    //if ((player.CurrentTimeStop <= 0) &&
+                    //    (player.CurrentMana >= Database.TIME_STOP_COST) &&
+                    //    (player.CurrentWordOfLife <= 0))
+                    //{
+                    //    ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.TIME_STOP);
+                    //}
+                }
+            }
+            #endregion
+            #region "【４階】レギィンアーゼ"
+            else if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE ||
+                     player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1 ||
+                     player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2 ||
+                     player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    ExecActionMethod(player, null, MainCharacter.PlayerAction.SpecialSkill, "虚無の鼓動");
+                }
+            }
+            #endregion
+            #region "ラナ・アミリア(DUEL)"
+            else if (player.FirstName == Database.ENEMY_LAST_RANA_AMILIA)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (!((TruthEnemyCharacter)player).StillNotAction1 &&
+                        player.CurrentMana >= Database.TIME_STOP_COST)
+                    {
+                        ((TruthEnemyCharacter)player).StillNotAction1 = true;
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.TIME_STOP);
+                    }
+                    else
+                    {
+                        if ((player.CurrentOneImmunity <= 0) &&
+                            (player.CurrentMana >= Database.ONE_IMMUNITY_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.ONE_IMMUNITY);
+                        }
+                        else if ((player.CurrentVoidExtraction <= 0) && (player.CurrentSkillPoint >= Database.VOID_EXTRACTION_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.VOID_EXTRACTION);
+                        }
+                        else if ((player.CurrentPromisedKnowledge <= 0) && (player.CurrentMana >= Database.PROMISED_KNOWLEDGE_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.PROMISED_KNOWLEDGE);
+                        }
+                        else if ((GroundOne.MC.CurrentImpulseHitValue < 3) && (player.CurrentSkillPoint >= Database.IMPULSE_HIT_COST))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.IMPULSE_HIT);
+                        }
+                        else if ((GroundOne.MC.CurrentMana >= GroundOne.MC.MaxMana / 5) && (player.CurrentMana >= Database.DOOM_BLADE_COST))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.DOOM_BLADE);
+                        }
+                        else
+                        {
+                            switch (AP.Math.RandomInteger(2))
+                            {
+                                case 0:
+                                    if (player.CurrentMana >= Database.WHITE_OUT_COST)
+                                    {
+                                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.WHITE_OUT);
+                                    }
+                                    break;
+                                case 1:
+                                    if (player.CurrentSkillPoint >= Database.ENIGMA_SENSE_COST)
+                                    {
+                                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.ENIGMA_SENSE);
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "シニキア・カールハンツ(DUEL2)"
+            else if (player.FirstName == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (player.BattleBarPos <= 250)
+                    {
+                        if ((player.CurrentOneImmunity <= 0) &&
+                            (player.CurrentMana >= Database.ONE_IMMUNITY_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.ONE_IMMUNITY);
+                        }
+                        //else if ((player.CurrentLife <= player.MaxLife / 2) && (player.CurrentMana >= Database.LIFE_TAP_COST))
+                        //{
+                        //    ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.LIFE_TAP);
+                        //}
+                        //else if ((player.CurrentPhantasmalWind <= 0) && (player.CurrentMana >= Database.PHANTASMAL_WIND_COST))
+                        //{
+                        //    ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.PHANTASMAL_WIND);
+                        //}
+                        //else if ((player.CurrentMana >= Database.WARP_GATE_COST) && (player.BattleBarPos > Database.BASE_TIMER_BAR_LENGTH / 2))
+                        //{
+                        //    ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.WARP_GATE);
+                        //}   
+                        else if (player.MaxLife * 0.0f <= player.CurrentLife && player.CurrentLife < player.MaxLife * 0.8f && player.CurrentMana >= Database.LIFE_TAP_COST)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.LIFE_TAP);
+                        }
+                        else if ((GroundOne.MC.CurrentSigilOfHomura <= 0) && (player.CurrentMana >= Database.SIGIL_OF_HOMURA_COST))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.SIGIL_OF_HOMURA);
+                        }
+                        //else if ((player.CurrentRedDragonWill <= 0) && (player.CurrentMana >= Database.RED_DRAGON_WILL_COST))
+                        //{
+                        //    ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.RED_DRAGON_WILL);
+                        //}
+                        //else if ((GroundOne.MC.CurrentEnrageBlast <= 0) && (player.CurrentMana >= Database.ENRAGE_BLAST_COST))
+                        //{
+                        //    ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.ENRAGE_BLAST);
+                        //}
+
+                        //else if ((player.CurrentPromisedKnowledge <= 0) && (player.CurrentMana >= Database.PROMISED_KNOWLEDGE_COST))
+                        //{
+                        //    ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.PROMISED_KNOWLEDGE);
+                        //}
+                        //else if ((GroundOne.MC.CurrentImpulseHitValue < 3) && (player.CurrentSkillPoint >= Database.IMPULSE_HIT_COST))
+                        //{
+                        //    ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.IMPULSE_HIT);
+                        //}
+                        //else if ((GroundOne.MC.CurrentMana >= GroundOne.MC.MaxMana / 5) && (player.CurrentMana >= Database.DOOM_BLADE_COST))
+                        //{
+                        //    ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.DOOM_BLADE);
+                        //}
+                        //else
+                        //{
+                        //    switch (AP.Math.RandomInteger(2))
+                        //    {
+                        //        case 0:
+                        //            if (player.CurrentMana >= Database.WHITE_OUT_COST)
+                        //            {
+                        //                ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.WHITE_OUT);
+                        //            }
+                        //            break;
+                        //        case 1:
+                        //            if (player.CurrentSkillPoint >= Database.ENIGMA_SENSE_COST)
+                        //            {
+                        //                ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.ENIGMA_SENSE);
+                        //            }
+                        //            break;
+                        //    }
+                        //}
+                    }
+                }
+            }
+            #endregion
+            #region "オル・ランディス(DUEL2)"
+            else if (player.FirstName == Database.ENEMY_LAST_OL_LANDIS)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (!((TruthEnemyCharacter)player).OpponentUseInstantPoint)
+                    {
+                        // 対戦相手がインスタント消費してない場合、何もしない
+                    }
+                    else
+                    {
+                        if (player.BeforeSkillName == Database.SOUL_EXECUTION)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.GENESIS);
+                        }
+                        else if ((player.CurrentLife < player.MaxLife / 2) && (GroundOne.MC.CurrentParalyze <= 0) && ((TruthEnemyCharacter)player).DetectCannotBeParalyze == false && player.CurrentSkillPoint >= Database.SURPRISE_ATTACK_COST)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.SURPRISE_ATTACK);
+                        }
+                        else if ((player.CurrentLife < player.MaxLife / 2) && (player.CurrentMana >= Database.CELESTIAL_NOVA_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.CELESTIAL_NOVA);
+                        }
+                        else if ((player.CurrentMana >= Database.DISPEL_MAGIC_COST) &&
+                                 ((GroundOne.MC.CurrentSaintPower > 0) || (GroundOne.MC.CurrentHeatBoost > 0) || (GroundOne.MC.CurrentFlameAura > 0) || (GroundOne.MC.CurrentHolyBreaker > 0)))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.DISPEL_MAGIC);
+                        }
+                        else if ((player.CurrentMana >= Database.TRANQUILITY_COST) &&
+                                ((GroundOne.MC.CurrentGaleWind > 0) || (GroundOne.MC.CurrentWordOfFortune > 0)))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.TRANQUILITY);
+                        }
+                        else if ((player.CurrentBlackContract <= 0) && (player.CurrentMana >= Database.BLACK_CONTRACT_COST))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.BLACK_CONTRACT);
+                        }
+                        else if ((player.CurrentFlameAura <= 0) && ((player.CurrentBlackContract > 0) || (player.CurrentMana >= Database.FLAME_AURA_COST)))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.FLAME_AURA);
+                        }
+                        else if ((player.CurrentGaleWind <= 0) && ((player.CurrentBlackContract > 0) || (player.CurrentMana >= Database.GALE_WIND_COST)))
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.GALE_WIND);
+                        }
+                        else if ((GroundOne.MC.CurrentImpulseHitValue < 2) && ((player.CurrentBlackContract > 0) || (player.CurrentSkillPoint >= Database.IMPULSE_HIT_COST)))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.IMPULSE_HIT);
+                        }
+                        else if ((GroundOne.MC.CurrentOnslaughtHitValue < 2) && ((player.CurrentBlackContract > 0) || (player.CurrentSkillPoint >= Database.ONSLAUGHT_HIT_COST)))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.ONSLAUGHT_HIT);
+                        }
+                        else if ((GroundOne.MC.CurrentConcussiveHitValue < 2) && ((player.CurrentBlackContract > 0) || (player.CurrentSkillPoint >= Database.ONSLAUGHT_HIT_COST)))
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.CONCUSSIVE_HIT);
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "ヴェルゼ・アーティ最終戦(DUEL)"
+            else if (player.FirstName == Database.ENEMY_LAST_VERZE_ARTIE)
+            {
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (((TruthEnemyCharacter)player).AI_TacticsNumber == 1)
+                    {
+                        if (player.CurrentFlameAura > 0 && player.CurrentFrozenAura > 0 && player.CurrentGaleWind > 0)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.NEUTRAL_SMASH);
+                        }
+                    }
+                    else if (((TruthEnemyCharacter)player).AI_TacticsNumber == 9)
+                    {
+                        if (player.BeforeSpellName == Database.ZETA_EXPLOSION)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.GENESIS);
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "【原罪】ヴェルゼ・アーティ最終戦２(DUEL)"
+            else if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+            {
+                if (player.CurrentSpecialInstant >= player.MaxSpecialInstant)
+                {
+                    UseSpecialInstant(player);
+                    if (player.CurrentLifeCountValue == 3)
+                    {
+                        if (player.CurrentEclipseEnd > 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.SpecialSkill, Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA);
+                        }
+                        else
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.SpecialSkill, Database.FINAL_INVISIBLE_HUNDRED_CUTTER);
+                        }
+                    }
+                    else if (player.CurrentLifeCountValue == 2)
+                    {
+                        ExecActionMethod(player, player, MainCharacter.PlayerAction.SpecialSkill, Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA);
+                    }
+                    else if (player.CurrentLifeCountValue == 1)
+                    {
+                        ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.SpecialSkill, Database.FINAL_ZERO_INNOCENT_SIN);
+                    }
+                    else if (player.CurrentLifeCountValue <= 0)
+                    {
+                        if (player.CurrentLife <= player.MaxLife * 0.5f)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.SpecialSkill, Database.FINAL_SEFINE_PAINFUL_HYMNUS);
+                        }
+                        else
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.SpecialSkill, Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA);
+                            // Database.FINAL_ADEST_ESPELANTIE;
+                        }
+                    }
+                }
+                else if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    if (player.BattleBarPos <= 200)
+                    {
+                        if (player.CurrentGaleWind <= 0 && player.CurrentMana >= Database.GALE_WIND_COST)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.GALE_WIND);
+                        }
+                        else if (player.MaxLife * 0.4f <= player.CurrentLife && player.CurrentLife < player.MaxLife * 0.5f && player.CurrentMana >= Database.CELESTIAL_NOVA_COST)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.CELESTIAL_NOVA);
+                        }
+                        else
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.NEUTRAL_SMASH);
+                        }
+                    }
+                    else if (320 < player.BattleBarPos && player.BattleBarPos <= 350 && AP.Math.RandomInteger(40) == 0)
+                    {
+                        if (player.CurrentMana >= Database.WARP_GATE_COST)
+                        {
+                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.WARP_GATE);
+                        }
+                    }
+                }
+                else if (player.CurrentFrozen > 0 || player.CurrentParalyze > 0 || player.CurrentStunning > 0)
+                {
+                    ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.RECOVER);
+                }
+            }
+            #endregion
+            #region "支配竜"
+            else if (player.FirstName == Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD ||
+                     player.FirstName == Database.ENEMY_DRAGON_TINKOU_DEEPSEA ||
+                     player.FirstName == Database.ENEMY_DRAGON_DESOLATOR_AZOLD ||
+                     player.FirstName == Database.ENEMY_DRAGON_IDEA_CAGE_ZEED ||
+                     player.FirstName == Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA)
+            {
+                if (((TruthEnemyCharacter)player).AI_TacticsNumber == 5)
+                {
+                    ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.SpecialSkill, "形成消失");
+                }
+            }
+            #endregion
+            #region "Bystander Emptiness"
+            else if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+            {
+                TruthEnemyCharacter current = (TruthEnemyCharacter)player;
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    UseInstantPoint(player);
+                    player.StackActivePlayer = ec1;
+                    player.StackTarget = null;
+                    player.StackPlayerAction = MainCharacter.PlayerAction.SpecialSkill;
+                    int rand = AP.Math.RandomInteger(4);
+                    if (rand == 0) { player.StackTarget = current.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC); player.StackCommandString = "キル・スピニングランサー"; }
+                    else if (rand == 1) { player.StackCommandString = "アース・コールド・シェイク"; }
+                    else if (rand == 2) { player.StackCommandString = "タイダル・ウェイブ"; }
+                    else if (rand == 3) { player.StackCommandString = "虚無の鼓動"; }
+                    player.StackActivation = true;
+                    this.NowStackInTheCommand = true;
+                }
+            }
+            #endregion
+            #region "ダミー素振り君"
+            else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
+            {
+                Debug.Log("dummy update do stack " + player.CurrentInstantPoint);
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    //if (player.CurrentTimeStop > 0)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.FRESH_HEAL;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }
+            }
+            #endregion
         }
 
         private void UpdatePlayerPreCondition(MainCharacter player, int arrowType)
@@ -2648,8 +4052,108 @@ namespace DungeonPlayer
 
         private void CheckStackInTheCommand()
         {
-            // todo
-            //throw new System.NotImplementedException();
+            if (this.NowStackInTheCommand)
+            {
+                if (this.NowStackInTheCommandStart == false)
+                {
+                    this.NowStackInTheCommandStart = true;
+                    Debug.Log("CheckStackInTheCommand call set active");
+                    this.BattleMenuPanel.SetActive(false);
+
+                    for (int ii = 0; ii < this.ActiveList.Count; ii++)
+                    {
+                        if (this.ActiveList[ii].StackActivation)
+                        {
+                            this.ActiveList[ii].StackActivation = false;
+                            this.stackActivePlayer = this.ActiveList[ii];
+
+                            string actionCommand = this.ActiveList[ii].StackCommandString;
+                            StackInThecommandNameText.text = actionCommand;
+                            StackInThecommandNameText.text += "    " + this.ActiveList[ii].FirstName + " --> ";
+                            if (this.ActiveList[ii].StackTarget != null)
+                            {
+                                StackInThecommandNameText.text += "  " + this.ActiveList[ii].StackTarget.FirstName;
+                            }
+                            else
+                            {
+                                StackInThecommandNameText.text += "  " + "全体"; // 「警告」絡みつくフランシスのファイアビューネが発端となっている。全体考察してください。
+                            }
+
+                            if (actionCommand == Database.ARCHETYPE_EIN)
+                            {
+                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
+                            }
+                            else if (actionCommand == Database.RECOVER)
+                            {
+                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
+                            }
+                            else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
+                            {
+                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.blue;
+                            }
+                            else
+                            {
+                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.red;
+                            }
+
+                            StackInTheCommandBarText.text = Database.TIMEUP_FIRST_RESPONSE.ToString();
+                            if (TruthActionCommand.CheckPlayerActionFromString(actionCommand) == MainCharacter.PlayerAction.Archetype)
+                            {
+                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
+                            }
+                            else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
+                            {
+                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.blue;
+                            }
+                            else
+                            {
+                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.red;
+                            }
+
+                            this.back_StackInTheCommandName.transform.localScale = new Vector2(1.0f, 1.0f);
+                            this.back_StackInTheCommandBar.transform.localScale = new Vector2(1.0f, 1.0f);
+
+                        }
+                    }
+                }
+                else if (cumulativeCounter < Database.TIMEUP_FIRST_RESPONSE)
+                {
+                    this.cumulativeCounter++;
+                    float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter) / (float)(Database.TIMEUP_FIRST_RESPONSE);
+                    back_StackInTheCommandBar.transform.localScale = new Vector2(dx, 1.0f);
+                    StackInTheCommandBarText.text = (Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter).ToString();
+                }
+                else
+                {
+                    if (this.stackActivePlayer.Dead == false)
+                    {
+                        PlayerAttackPhase(this.stackActivePlayer, this.stackActivePlayer.StackTarget, this.stackActivePlayer.StackPlayerAction, this.stackActivePlayer.StackCommandString, false, false, false);
+                    }
+                    UpdatePlayerDeadFlag(); // 死亡判定・全滅判定更新
+
+                    back_StackInTheCommandBar.transform.localScale = new Vector2(0.0f, 1.0f);
+                    back_StackInTheCommandName.transform.localScale = new Vector2(0.0f, 1.0f);
+                    this.stackActivePlayer.StackCommandString = String.Empty;
+                    this.stackActivePlayer.StackPlayerAction = MainCharacter.PlayerAction.None;
+                    this.stackActivePlayer.StackTarget = null;
+                    this.stackActivePlayer.StackActivePlayer = null;
+                    this.stackActivePlayer.StackActivation = false;
+                    this.stackActivePlayer = null;
+                    this.NowStackInTheCommand = false;
+                    CompleteInstantAction();
+                }
+                //StackInTheCommand();
+                // todo
+                //StackThread = new Thread(new System.Threading.ThreadStart(StackInTheCommand));
+                //StackThread.Priority = ThreadPriority.Highest;
+                //StackThread.Start();
+                //StackThread.Join();
+                //StackThread = null;
+
+                //this.NowStackInTheCommand = false;
+
+                //CompleteInstantAction();
+            }
         }
 
 
@@ -2951,6 +4455,7 @@ namespace DungeonPlayer
 
             if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
+                Debug.Log("Right Click Action");
                 if (CheckBattlePlaying()) return;
                 if ((player.CurrentInstantPoint < player.MaxInstantPoint) &&
                     (BattleActionCommand != Database.ARCHETYPE_EIN) &&
@@ -2979,13 +4484,17 @@ namespace DungeonPlayer
                         return;
                     }
                 }
+
                 if (CheckNotInstant(BattleActionCommand)) // インスタントではない場合、発動できない。
                 {
+                    Debug.Log("CheckNotInstant");
                     UpdateBattleText(player.GetCharacterSentence(128));
                     return;
                 }
                 if (CheckInstantTarget(BattleActionCommand)) // インスタント対象の場合
                 {
+                    Debug.Log("CheckInstantTarget");
+
                     if (this.NowStackInTheCommand)
                     {
                         // スタック・イン・ザ・コマンド中はインスタント対象として発動するため、ここではスルー
@@ -3023,6 +4532,7 @@ namespace DungeonPlayer
                 }
 
                 this.currentTargetedPlayer = player;
+                Debug.Log("call InstantAttackPhase");
                 InstantAttackPhase(BattleActionCommand);
             }
             else if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.LeftShift) == false || Input.GetKey(KeyCode.LeftShift) == false)
