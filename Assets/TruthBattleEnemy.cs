@@ -4140,27 +4140,20 @@ namespace DungeonPlayer
                     }
                     UpdatePlayerDeadFlag(); // 死亡判定・全滅判定更新
 
+                    back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+                    back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+                    this.stackActivePlayer[this.StackNumber].StackCommandString = String.Empty;
+                    this.stackActivePlayer[this.StackNumber].StackPlayerAction = MainCharacter.PlayerAction.None;
+                    this.stackActivePlayer[this.StackNumber].StackTarget = null;
+                    this.stackActivePlayer[this.StackNumber].StackActivePlayer = null;
+                    this.stackActivePlayer[this.StackNumber].StackActivation = false;
                     if (this.StackNumber > 0)
                     {
-                        back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
-                        back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
-                        this.stackActivePlayer[this.StackNumber].StackCommandString = String.Empty;
-                        this.stackActivePlayer[this.StackNumber].StackPlayerAction = MainCharacter.PlayerAction.None;
-                        this.stackActivePlayer[this.StackNumber].StackTarget = null;
-                        this.stackActivePlayer[this.StackNumber].StackActivePlayer = null;
-                        this.stackActivePlayer[this.StackNumber].StackActivation = false;
                         this.stackActivePlayer.RemoveAt(this.stackActivePlayer.Count-1);
                         this.StackNumber--;
                     }
                     else
                     {
-                        back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
-                        back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
-                        this.stackActivePlayer[this.StackNumber].StackCommandString = String.Empty;
-                        this.stackActivePlayer[this.StackNumber].StackPlayerAction = MainCharacter.PlayerAction.None;
-                        this.stackActivePlayer[this.StackNumber].StackTarget = null;
-                        this.stackActivePlayer[this.StackNumber].StackActivePlayer = null;
-                        this.stackActivePlayer[this.StackNumber].StackActivation = false;
                         this.StackNumber = -1;
                         this.stackActivePlayer.Clear();
                         this.cumulativeCounter.Clear();
