@@ -42,8 +42,8 @@ namespace DungeonPlayer
         bool cannotRunAway = false; // 戦闘から逃げられるかどうかを示すフラグ
         bool NowStackInTheCommandStart = false; // スタックインザコマンドが開始するときのフラグ
         bool NowStackInTheCommand = false; // スタックインザコマンドで一旦停止させたい時に使うフラグ
+        MainCharacter stackActivePlayer = null;
         int cumulativeCounter = 0; // スタックインザコマンドゲージ進行値
-        MainCharacter stackActivePlayer = null; // スタックインザコマンドのアクティブプレイヤー
         bool NowTimeStop = false; // タイムストップ「全体」のフラグ
         public bool HiSpeedAnimation { get; set; } // 通常ダメージアニメーションを早めるために使用
         public bool FinalBattle { get; set; } // 最終戦闘、スタックコマンドの動作を早めるために使用
@@ -4082,32 +4082,39 @@ namespace DungeonPlayer
                             if (actionCommand == Database.ARCHETYPE_EIN)
                             {
                                 back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
+                                back_StackInTheCommandName.GetComponent<Image>().color = Color.black;
                             }
                             else if (actionCommand == Database.RECOVER)
                             {
                                 back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
+                                back_StackInTheCommandName.GetComponent<Image>().color = Color.black;
                             }
                             else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
                             {
                                 back_StackInTheCommandBar.GetComponent<Image>().color = Color.blue;
+                                back_StackInTheCommandName.GetComponent<Image>().color = Color.blue;
                             }
                             else
                             {
                                 back_StackInTheCommandBar.GetComponent<Image>().color = Color.red;
+                                back_StackInTheCommandName.GetComponent<Image>().color = Color.red;
                             }
 
                             StackInTheCommandBarText.text = Database.TIMEUP_FIRST_RESPONSE.ToString();
                             if (TruthActionCommand.CheckPlayerActionFromString(actionCommand) == MainCharacter.PlayerAction.Archetype)
                             {
                                 back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
+                                back_StackInTheCommandName.GetComponent<Image>().color = Color.black;
                             }
                             else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
                             {
                                 back_StackInTheCommandBar.GetComponent<Image>().color = Color.blue;
+                                back_StackInTheCommandName.GetComponent<Image>().color = Color.blue;
                             }
                             else
                             {
                                 back_StackInTheCommandBar.GetComponent<Image>().color = Color.red;
+                                back_StackInTheCommandName.GetComponent<Image>().color = Color.red;
                             }
 
                             this.back_StackInTheCommandName.transform.localScale = new Vector2(1.0f, 1.0f);
@@ -4116,7 +4123,7 @@ namespace DungeonPlayer
                         }
                     }
                 }
-                else if (cumulativeCounter < Database.TIMEUP_FIRST_RESPONSE)
+                else if (this.cumulativeCounter < Database.TIMEUP_FIRST_RESPONSE)
                 {
                     this.cumulativeCounter++;
                     float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter) / (float)(Database.TIMEUP_FIRST_RESPONSE);
@@ -4139,7 +4146,9 @@ namespace DungeonPlayer
                     this.stackActivePlayer.StackActivePlayer = null;
                     this.stackActivePlayer.StackActivation = false;
                     this.stackActivePlayer = null;
+                    this.cumulativeCounter = 0;
                     this.NowStackInTheCommand = false;
+                    this.NowStackInTheCommandStart = false;
                     CompleteInstantAction();
                 }
                 //StackInTheCommand();

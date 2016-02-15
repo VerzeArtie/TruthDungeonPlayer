@@ -330,7 +330,7 @@ namespace DungeonPlayer
             MC.BattleActionCommandList[5] = Database.LAVA_ANNIHILATION;
             MC.BattleActionCommandList[6] = Database.FIRE_BALL;
             MC.BattleActionCommandList[7] = Database.GALE_WIND;
-            MC.BattleActionCommandList[8] = Database.STAY_EN;
+            MC.BattleActionCommandList[8] = Database.NEGATE;
 
             SC = objSC.AddComponent<MainCharacter>();
             SC.FirstName = Database.RANA_AMILIA;

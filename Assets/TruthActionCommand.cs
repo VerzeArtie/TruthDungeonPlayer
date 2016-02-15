@@ -3698,7 +3698,7 @@ namespace DungeonPlayer
             if (command == Database.STANCE_OF_EYES) { return TargetType.Enemy; }
             if (command == Database.PAINFUL_INSANITY) { return TargetType.Own; }
 
-            if (command == Database.NEGATE) { return TargetType.Enemy; }
+            if (command == Database.NEGATE) { return TargetType.InstantTarget; } // change unity (Enemy -> InstantTarget)
             if (command == Database.VOID_EXTRACTION) { return TargetType.Own; }
             if (command == Database.CARNAGE_RUSH) { return TargetType.Enemy; }
             if (command == Database.NOTHING_OF_NOTHINGNESS) { return TargetType.Own; }
