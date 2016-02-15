@@ -149,7 +149,7 @@ namespace DungeonPlayer
             GroundOne.enemyName1 = Database.DUEL_DUMMY_SUBURI; // DUEL_EONE_FULNEA;
             //GroundOne.WE.AvailableSecondCharacter = true;
             GroundOne.DuelMode = true;
-            MC.Agility = 1000;
+            MC.Agility = 750;
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);

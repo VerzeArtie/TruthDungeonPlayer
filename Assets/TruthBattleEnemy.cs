@@ -42,8 +42,8 @@ namespace DungeonPlayer
         bool cannotRunAway = false; // 戦闘から逃げられるかどうかを示すフラグ
         bool NowStackInTheCommandStart = false; // スタックインザコマンドが開始するときのフラグ
         bool NowStackInTheCommand = false; // スタックインザコマンドで一旦停止させたい時に使うフラグ
-        MainCharacter stackActivePlayer = null;
-        int cumulativeCounter = 0; // スタックインザコマンドゲージ進行値
+        List<MainCharacter> stackActivePlayer = new List<MainCharacter>();
+        List<int> cumulativeCounter = new List<int>(); // スタックインザコマンドゲージ進行値
         bool NowTimeStop = false; // タイムストップ「全体」のフラグ
         public bool HiSpeedAnimation { get; set; } // 通常ダメージアニメーションを早めるために使用
         public bool FinalBattle { get; set; } // 最終戦闘、スタックコマンドの動作を早めるために使用
@@ -97,10 +97,11 @@ namespace DungeonPlayer
         public GameObject groupEnemy2;
         public GameObject groupEnemy3;
 
-        public GameObject back_StackInTheCommandName;
-        public Text StackInThecommandNameText;
-        public GameObject back_StackInTheCommandBar;
-        public Text StackInTheCommandBarText;
+        public GameObject[] back_StackInTheCommandName;
+        public Text[] StackInThecommandNameText;
+        public GameObject[] back_StackInTheCommandBar;
+        public Text[] StackInTheCommandBarText;
+        private int StackNumber = -1;
         public Image player1Arrow;
         public Text playerActionLabel1;
         public Button buttonTargetPlayer1;
@@ -4054,102 +4055,119 @@ namespace DungeonPlayer
         {
             if (this.NowStackInTheCommand)
             {
+                for (int ii = 0; ii < this.ActiveList.Count; ii++)
+                {
+                    if (this.ActiveList[ii].StackActivation)
+                    {
+                        this.ActiveList[ii].StackActivation = false;
+                        this.stackActivePlayer.Add(this.ActiveList[ii]);
+                        string actionCommand = this.ActiveList[ii].StackCommandString;
+                        this.StackNumber++;
+                        this.cumulativeCounter.Add(0);
+                        StackInThecommandNameText[this.StackNumber].text = actionCommand;
+                        StackInThecommandNameText[this.StackNumber].text += "    " + this.ActiveList[ii].FirstName + " --> ";
+                        if (this.ActiveList[ii].StackTarget != null)
+                        {
+                            StackInThecommandNameText[this.StackNumber].text += "  " + this.ActiveList[ii].StackTarget.FirstName;
+                        }
+                        else
+                        {
+                            StackInThecommandNameText[this.StackNumber].text += "  " + "全体"; // 「警告」絡みつくフランシスのファイアビューネが発端となっている。全体考察してください。
+                        }
+
+                        if (actionCommand == Database.ARCHETYPE_EIN)
+                        {
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.black;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.black;
+                        }
+                        else if (actionCommand == Database.RECOVER)
+                        {
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.black;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.black;
+                        }
+                        else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
+                        {
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.blue;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.blue;
+                        }
+                        else
+                        {
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.red;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.red;
+                        }
+
+                        StackInTheCommandBarText[this.StackNumber].text = Database.TIMEUP_FIRST_RESPONSE.ToString();
+                        if (TruthActionCommand.CheckPlayerActionFromString(actionCommand) == MainCharacter.PlayerAction.Archetype)
+                        {
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.black;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.black;
+                        }
+                        else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
+                        {
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.blue;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.blue;
+                        }
+                        else
+                        {
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.red;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.red;
+                        }
+
+                        this.back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(1.0f, 1.0f);
+                        this.back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(1.0f, 1.0f);
+
+                    }
+                }
+
                 if (this.NowStackInTheCommandStart == false)
                 {
                     this.NowStackInTheCommandStart = true;
                     Debug.Log("CheckStackInTheCommand call set active");
                     this.BattleMenuPanel.SetActive(false);
-
-                    for (int ii = 0; ii < this.ActiveList.Count; ii++)
-                    {
-                        if (this.ActiveList[ii].StackActivation)
-                        {
-                            this.ActiveList[ii].StackActivation = false;
-                            this.stackActivePlayer = this.ActiveList[ii];
-
-                            string actionCommand = this.ActiveList[ii].StackCommandString;
-                            StackInThecommandNameText.text = actionCommand;
-                            StackInThecommandNameText.text += "    " + this.ActiveList[ii].FirstName + " --> ";
-                            if (this.ActiveList[ii].StackTarget != null)
-                            {
-                                StackInThecommandNameText.text += "  " + this.ActiveList[ii].StackTarget.FirstName;
-                            }
-                            else
-                            {
-                                StackInThecommandNameText.text += "  " + "全体"; // 「警告」絡みつくフランシスのファイアビューネが発端となっている。全体考察してください。
-                            }
-
-                            if (actionCommand == Database.ARCHETYPE_EIN)
-                            {
-                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
-                                back_StackInTheCommandName.GetComponent<Image>().color = Color.black;
-                            }
-                            else if (actionCommand == Database.RECOVER)
-                            {
-                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
-                                back_StackInTheCommandName.GetComponent<Image>().color = Color.black;
-                            }
-                            else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
-                            {
-                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.blue;
-                                back_StackInTheCommandName.GetComponent<Image>().color = Color.blue;
-                            }
-                            else
-                            {
-                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.red;
-                                back_StackInTheCommandName.GetComponent<Image>().color = Color.red;
-                            }
-
-                            StackInTheCommandBarText.text = Database.TIMEUP_FIRST_RESPONSE.ToString();
-                            if (TruthActionCommand.CheckPlayerActionFromString(actionCommand) == MainCharacter.PlayerAction.Archetype)
-                            {
-                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.black;
-                                back_StackInTheCommandName.GetComponent<Image>().color = Color.black;
-                            }
-                            else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
-                            {
-                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.blue;
-                                back_StackInTheCommandName.GetComponent<Image>().color = Color.blue;
-                            }
-                            else
-                            {
-                                back_StackInTheCommandBar.GetComponent<Image>().color = Color.red;
-                                back_StackInTheCommandName.GetComponent<Image>().color = Color.red;
-                            }
-
-                            this.back_StackInTheCommandName.transform.localScale = new Vector2(1.0f, 1.0f);
-                            this.back_StackInTheCommandBar.transform.localScale = new Vector2(1.0f, 1.0f);
-
-                        }
-                    }
                 }
-                else if (this.cumulativeCounter < Database.TIMEUP_FIRST_RESPONSE)
+                else if (this.cumulativeCounter[this.StackNumber] < Database.TIMEUP_FIRST_RESPONSE)
                 {
-                    this.cumulativeCounter++;
-                    float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter) / (float)(Database.TIMEUP_FIRST_RESPONSE);
-                    back_StackInTheCommandBar.transform.localScale = new Vector2(dx, 1.0f);
-                    StackInTheCommandBarText.text = (Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter).ToString();
+                    this.cumulativeCounter[this.StackNumber] += 2;
+                    float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]) / (float)(Database.TIMEUP_FIRST_RESPONSE);
+                    back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(dx, 1.0f);
+                    StackInTheCommandBarText[this.StackNumber].text = (Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]).ToString();
                 }
                 else
                 {
-                    if (this.stackActivePlayer.Dead == false)
+                    if (this.stackActivePlayer[this.StackNumber].Dead == false)
                     {
-                        PlayerAttackPhase(this.stackActivePlayer, this.stackActivePlayer.StackTarget, this.stackActivePlayer.StackPlayerAction, this.stackActivePlayer.StackCommandString, false, false, false);
+                        PlayerAttackPhase(this.stackActivePlayer[this.StackNumber], this.stackActivePlayer[this.StackNumber].StackTarget, this.stackActivePlayer[this.StackNumber].StackPlayerAction, this.stackActivePlayer[this.StackNumber].StackCommandString, false, false, false);
                     }
                     UpdatePlayerDeadFlag(); // 死亡判定・全滅判定更新
 
-                    back_StackInTheCommandBar.transform.localScale = new Vector2(0.0f, 1.0f);
-                    back_StackInTheCommandName.transform.localScale = new Vector2(0.0f, 1.0f);
-                    this.stackActivePlayer.StackCommandString = String.Empty;
-                    this.stackActivePlayer.StackPlayerAction = MainCharacter.PlayerAction.None;
-                    this.stackActivePlayer.StackTarget = null;
-                    this.stackActivePlayer.StackActivePlayer = null;
-                    this.stackActivePlayer.StackActivation = false;
-                    this.stackActivePlayer = null;
-                    this.cumulativeCounter = 0;
-                    this.NowStackInTheCommand = false;
-                    this.NowStackInTheCommandStart = false;
-                    CompleteInstantAction();
+                    if (this.StackNumber > 0)
+                    {
+                        back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+                        back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+                        this.stackActivePlayer[this.StackNumber].StackCommandString = String.Empty;
+                        this.stackActivePlayer[this.StackNumber].StackPlayerAction = MainCharacter.PlayerAction.None;
+                        this.stackActivePlayer[this.StackNumber].StackTarget = null;
+                        this.stackActivePlayer[this.StackNumber].StackActivePlayer = null;
+                        this.stackActivePlayer[this.StackNumber].StackActivation = false;
+                        this.stackActivePlayer.RemoveAt(this.stackActivePlayer.Count-1);
+                        this.StackNumber--;
+                    }
+                    else
+                    {
+                        back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+                        back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+                        this.stackActivePlayer[this.StackNumber].StackCommandString = String.Empty;
+                        this.stackActivePlayer[this.StackNumber].StackPlayerAction = MainCharacter.PlayerAction.None;
+                        this.stackActivePlayer[this.StackNumber].StackTarget = null;
+                        this.stackActivePlayer[this.StackNumber].StackActivePlayer = null;
+                        this.stackActivePlayer[this.StackNumber].StackActivation = false;
+                        this.StackNumber = -1;
+                        this.stackActivePlayer.Clear();
+                        this.cumulativeCounter.Clear();
+                        this.NowStackInTheCommand = false;
+                        this.NowStackInTheCommandStart = false;
+                        CompleteInstantAction();
+                    }
                 }
                 //StackInTheCommand();
                 // todo

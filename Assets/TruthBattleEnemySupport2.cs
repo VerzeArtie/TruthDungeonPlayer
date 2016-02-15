@@ -1032,19 +1032,19 @@ namespace DungeonPlayer
                     {
                         if (actionCommand == Database.ARCHETYPE_EIN)
                         {
-                            StackInThecommandNameText.text = "【元核】　【集中と断絶】　【発動！】";
+                            StackInThecommandNameText[this.StackNumber].text = "【元核】　【集中と断絶】　【発動！】";
                         }
                         else if (actionCommand == Database.ARCHETYPE_RANA)
                         {
-                            StackInThecommandNameText.text = "【元核】　【循環の誓約】　【発動！】";
+                            StackInThecommandNameText[this.StackNumber].text = "【元核】　【循環の誓約】　【発動！】";
                         }
                         else if (actionCommand == Database.ARCHETYPE_OL)
                         {
-                            StackInThecommandNameText.text = "【元核】　【オラオラオラァ！】　【発動！】";
+                            StackInThecommandNameText[this.StackNumber].text = "【元核】　【オラオラオラァ！】　【発動！】";
                         }
                         else if (actionCommand == Database.ARCHETYPE_VERZE)
                         {
-                            StackInThecommandNameText.text = "【元核】　【真実の破壊】　【発動！】";
+                            StackInThecommandNameText[this.StackNumber].text = "【元核】　【真実の破壊】　【発動！】";
                         }
                         // todo
                         //UpdateLabelInfo(activePlayer, target, Database.TIMEUP_FIRST_RESPONSE, actionCommand);
@@ -1052,7 +1052,7 @@ namespace DungeonPlayer
                     }
                     else if ((TruthActionCommand.CheckPlayerActionFromString(actionCommand) == MainCharacter.PlayerAction.UseSkill) && (actionCommand == Database.RECOVER))
                     {
-                        StackInThecommandNameText.text = "【リカバー】発動！";
+                        StackInThecommandNameText[this.StackNumber].text = "【リカバー】発動！";
                         // todo
                         //UpdateLabelInfo(activePlayer, target, Database.TIMEUP_FIRST_RESPONSE, actionCommand);
                         System.Threading.Thread.Sleep(1000);
@@ -1108,8 +1108,8 @@ namespace DungeonPlayer
                 {
                     temp2 = (cumulativeCounter - TimeUpFirstResponse) / (TimeUp / Database.TIMEUP_FIRST_RESPONSE);
                 }
-                back_StackInTheCommandBar.transform.localScale = new Vector2(((Database.TIMEUP_FIRST_RESPONSE - temp2) / Database.TIMEUP_FIRST_RESPONSE), 1.0f);
-                StackInTheCommandBarText.text = Convert.ToString(Database.TIMEUP_FIRST_RESPONSE - temp2);
+                back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(((Database.TIMEUP_FIRST_RESPONSE - temp2) / Database.TIMEUP_FIRST_RESPONSE), 1.0f);
+                StackInTheCommandBarText[this.StackNumber].text = Convert.ToString(Database.TIMEUP_FIRST_RESPONSE - temp2);
             }
             activePlayer.StackCommandString = String.Empty;
             activePlayer.StackPlayerAction = MainCharacter.PlayerAction.None;
@@ -1117,8 +1117,8 @@ namespace DungeonPlayer
             activePlayer.StackActivePlayer = null;
             activePlayer.StackActivation = false;
 
-            StackInThecommandNameText.transform.localScale = new Vector2(0.0f, 1.0f);
-            StackInTheCommandBarText.transform.localScale = new Vector2(0.0f, 1.0f);
+            StackInThecommandNameText[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+            StackInTheCommandBarText[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
         }
 
     }
