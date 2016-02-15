@@ -3422,20 +3422,20 @@ namespace DungeonPlayer
             if (command == Database.LIGHT_DETONATOR) { return TimingType.Instant; }
             if (command == Database.ASCENDANT_METEOR) { return TimingType.Sorcery; }
 
-            if (command == Database.SKY_SHIELD) { return TimingType.Sorcery; }
-            if (command == Database.SACRED_HEAL) { return TimingType.Sorcery; }
+            if (command == Database.SKY_SHIELD) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
+            if (command == Database.SACRED_HEAL) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.EVER_DROPLET) { return TimingType.Instant; }
 
             if (command == Database.HOLY_BREAKER) { return TimingType.Sorcery; }
-            if (command == Database.EXALTED_FIELD) { return TimingType.Sorcery; }
-            if (command == Database.HYMN_CONTRACT) { return TimingType.Sorcery; }
+            if (command == Database.EXALTED_FIELD) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
+            if (command == Database.HYMN_CONTRACT) { return TimingType.Instant; } // change unity (Sorcery -> Instant)
 
             if (command == Database.STAR_LIGHTNING) { return TimingType.Sorcery; }
-            if (command == Database.ANGEL_BREATH) { return TimingType.Sorcery; }
-            if (command == Database.ENDLESS_ANTHEM) { return TimingType.Sorcery; }
+            if (command == Database.ANGEL_BREATH) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
+            if (command == Database.ENDLESS_ANTHEM) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
             if (command == Database.BLACK_FIRE) { return TimingType.Instant; }
-            if (command == Database.BLAZING_FIELD) { return TimingType.Sorcery; }
+            if (command == Database.BLAZING_FIELD) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.DEMONIC_IGNITE) { return TimingType.Instant; }
 
             if (command == Database.BLUE_BULLET) { return TimingType.Instant; }
@@ -3446,7 +3446,7 @@ namespace DungeonPlayer
             if (command == Database.ABYSS_EYE) { return TimingType.Sorcery; }
             if (command == Database.SIN_FORTUNE) { return TimingType.Instant; }
 
-            if (command == Database.DARKEN_FIELD) { return TimingType.Sorcery; }
+            if (command == Database.DARKEN_FIELD) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.DOOM_BLADE) { return TimingType.Instant; }
             if (command == Database.ECLIPSE_END) { return TimingType.Sorcery; }
 
@@ -3463,11 +3463,11 @@ namespace DungeonPlayer
             if (command == Database.RED_DRAGON_WILL) { return TimingType.Instant; }
 
             if (command == Database.WORD_OF_ATTITUDE) { return TimingType.Instant; }
-            if (command == Database.STATIC_BARRIER) { return TimingType.Sorcery; }
+            if (command == Database.STATIC_BARRIER) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.AUSTERITY_MATRIX) { return TimingType.Sorcery; }
 
             if (command == Database.VANISH_WAVE) { return TimingType.Instant; }
-            if (command == Database.VORTEX_FIELD) { return TimingType.Sorcery; }
+            if (command == Database.VORTEX_FIELD) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.BLUE_DRAGON_WILL) { return TimingType.Instant; }
 
             if (command == Database.SEVENTH_MAGIC) { return TimingType.Instant; }
@@ -3505,25 +3505,25 @@ namespace DungeonPlayer
             if (command == Database.NOTHING_OF_NOTHINGNESS) { return TimingType.Sorcery; }
 
             if (command == Database.NEUTRAL_SMASH) { return TimingType.Instant; }
-            if (command == Database.STANCE_OF_DOUBLE) { return TimingType.Sorcery; }
+            if (command == Database.STANCE_OF_DOUBLE) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
             if (command == Database.SWIFT_STEP) { return TimingType.Instant; }
             if (command == Database.VIGOR_SENSE) { return TimingType.Instant; }
 
-            if (command == Database.CIRCLE_SLASH) { return TimingType.Sorcery; }
-            if (command == Database.RISING_AURA) { return TimingType.Sorcery; }
+            if (command == Database.CIRCLE_SLASH) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
+            if (command == Database.RISING_AURA) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
             if (command == Database.RUMBLE_SHOUT) { return TimingType.Instant; }
             if (command == Database.ONSLAUGHT_HIT) { return TimingType.Instant; }
 
-            if (command == Database.SMOOTHING_MOVE) { return TimingType.Sorcery; }
-            if (command == Database.ASCENSION_AURA) { return TimingType.Sorcery; }
+            if (command == Database.SMOOTHING_MOVE) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
+            if (command == Database.ASCENSION_AURA) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
             if (command == Database.FUTURE_VISION) { return TimingType.Sorcery; }
-            if (command == Database.UNKNOWN_SHOCK) { return TimingType.Sorcery; }
+            if (command == Database.UNKNOWN_SHOCK) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
             if (command == Database.REFLEX_SPIRIT) { return TimingType.Instant; }
-            if (command == Database.FATAL_BLOW) { return TimingType.Sorcery; }
+            if (command == Database.FATAL_BLOW) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
             if (command == Database.SHARP_GLARE) { return TimingType.Instant; }
             if (command == Database.CONCUSSIVE_HIT) { return TimingType.Instant; }
@@ -3541,7 +3541,7 @@ namespace DungeonPlayer
             if (command == Database.IMPULSE_HIT) { return TimingType.Instant; }
 
             if (command == Database.VIOLENT_SLASH) { return TimingType.Instant; }
-            if (command == Database.ONE_AUTHORITY) { return TimingType.Sorcery; }
+            if (command == Database.ONE_AUTHORITY) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
             if (command == Database.OUTER_INSPIRATION) { return TimingType.Instant; }
             if (command == Database.HARDEST_PARRY) { return TimingType.Instant; }
