@@ -40,7 +40,6 @@ namespace DungeonPlayer
         bool tempStopFlag = false; // [戦闘停止」ボタンやESCキーで、戦闘を一旦停止させたい時に使うフラグ
         bool endFlag = false; // メイン戦闘のループを抜ける時に使うフラグ
         bool cannotRunAway = false; // 戦闘から逃げられるかどうかを示すフラグ
-        bool NowStackInTheCommandStart = false; // スタックインザコマンドが開始するときのフラグ
         bool NowStackInTheCommand = false; // スタックインザコマンドで一旦停止させたい時に使うフラグ
         List<MainCharacter> stackActivePlayer = new List<MainCharacter>();
         List<int> cumulativeCounter = new List<int>(); // スタックインザコマンドゲージ進行値
@@ -4126,13 +4125,7 @@ namespace DungeonPlayer
                     }
                 }
 
-                if (this.NowStackInTheCommandStart == false)
-                {
-                    this.NowStackInTheCommandStart = true;
-                    Debug.Log("CheckStackInTheCommand call set active");
-                    this.BattleMenuPanel.SetActive(false);
-                }
-                else if (this.cumulativeCounter[this.StackNumber] < Database.TIMEUP_FIRST_RESPONSE)
+                if (this.cumulativeCounter[this.StackNumber] < Database.TIMEUP_FIRST_RESPONSE)
                 {
                     this.cumulativeCounter[this.StackNumber] += 2;
                     float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]) / (float)(Database.TIMEUP_FIRST_RESPONSE);
@@ -4156,17 +4149,16 @@ namespace DungeonPlayer
                     this.stackActivePlayer[this.StackNumber].StackActivation = false;
                     if (this.StackNumber > 0)
                     {
-                        this.stackActivePlayer.RemoveAt(this.stackActivePlayer.Count-1);
+                        this.stackActivePlayer.RemoveAt(this.stackActivePlayer.Count - 1);
+                        this.cumulativeCounter.RemoveAt(this.cumulativeCounter.Count - 1);
                         this.StackNumber--;
                     }
                     else
                     {
-                        this.BattleMenuPanel.SetActive(true);
                         this.StackNumber = -1;
                         this.stackActivePlayer.Clear();
                         this.cumulativeCounter.Clear();
                         this.NowStackInTheCommand = false;
-                        this.NowStackInTheCommandStart = false;
                         CompleteInstantAction();
                     }
                 }
