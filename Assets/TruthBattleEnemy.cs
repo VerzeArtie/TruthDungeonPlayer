@@ -24,6 +24,8 @@ namespace DungeonPlayer
         MainCharacter tempTargetForTarget2 = null;
         MainCharacter tempTargetForTarget = null;
 
+        bool nowStackAnimation = false;
+        int nowStackAnimationCounter = 0;
         bool nowAnimation = false;
         int nowAnimationCounter = 0;
         MainCharacter nowAnimationTarget = null;
@@ -96,6 +98,10 @@ namespace DungeonPlayer
         public GameObject groupEnemy2;
         public GameObject groupEnemy3;
 
+        public GameObject back_nowStackAnimationName;
+        public Text nowStackAnimationNameText;
+        public GameObject back_nowStackAnimationBar;
+        public Text nowStackAnimationBarText;
         public GameObject[] back_StackInTheCommandName;
         public Text[] StackInTheCommandNameText;
         public GameObject[] back_StackInTheCommandBar;
@@ -538,6 +544,11 @@ namespace DungeonPlayer
             if (this.nowAnimation)
             {
                 ExecAnimation();
+                return; // アニメーション表示中は停止させる。
+            }
+            if (this.nowStackAnimation)
+            {
+                ExecStackAnimation();
                 return; // アニメーション表示中は停止させる。
             }
 
@@ -4127,6 +4138,34 @@ namespace DungeonPlayer
 
                 if (this.cumulativeCounter[this.StackNumber] < Database.TIMEUP_FIRST_RESPONSE)
                 {
+                    // カウンターが入り込んでいるかどうかをチェック
+                    for (int ii = 0; ii < ActiveList.Count; ii++)
+                    {
+                        if (ActiveList[ii].CurrentNegate > 0)
+                        {
+                            ActiveList[ii].RemoveNegate(); // カウンター成功／失敗に限らず、一度チェックが入ったら解消されるものとする（１ターンで何度も発動するのは強すぎたため）
+                            if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 104))
+                            {
+                                back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
+                                back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
+                                nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
+                                nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "のNegate)";
+                                back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+                                back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+                                this.stackActivePlayer[this.StackNumber].StackCommandString = String.Empty;
+                                this.stackActivePlayer[this.StackNumber].StackPlayerAction = MainCharacter.PlayerAction.None;
+                                this.stackActivePlayer[this.StackNumber].StackTarget = null;
+                                this.stackActivePlayer[this.StackNumber].StackActivePlayer = null;
+                                this.stackActivePlayer[this.StackNumber].StackActivation = false;
+                                this.cumulativeCounter[this.StackNumber] = Database.TIMEUP_FIRST_RESPONSE;
+                                this.nowStackAnimation = true;
+                                return;
+                            }
+
+                        }
+                    }
+
+                    // タイムウェイト更新
                     this.cumulativeCounter[this.StackNumber] += 2;
                     float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]) / (float)(Database.TIMEUP_FIRST_RESPONSE);
                     back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(dx, 1.0f);
@@ -4147,20 +4186,7 @@ namespace DungeonPlayer
                     this.stackActivePlayer[this.StackNumber].StackTarget = null;
                     this.stackActivePlayer[this.StackNumber].StackActivePlayer = null;
                     this.stackActivePlayer[this.StackNumber].StackActivation = false;
-                    if (this.StackNumber > 0)
-                    {
-                        this.stackActivePlayer.RemoveAt(this.stackActivePlayer.Count - 1);
-                        this.cumulativeCounter.RemoveAt(this.cumulativeCounter.Count - 1);
-                        this.StackNumber--;
-                    }
-                    else
-                    {
-                        this.StackNumber = -1;
-                        this.stackActivePlayer.Clear();
-                        this.cumulativeCounter.Clear();
-                        this.NowStackInTheCommand = false;
-                        CompleteInstantAction();
-                    }
+                    StackInTheCommandEnd();
                 }
                 //StackInTheCommand();
                 // todo
@@ -4174,6 +4200,25 @@ namespace DungeonPlayer
 
                 //CompleteInstantAction();
             }
+        }
+
+        private void StackInTheCommandEnd()
+        {
+            if (this.StackNumber > 0)
+            {
+                this.stackActivePlayer.RemoveAt(this.stackActivePlayer.Count - 1);
+                this.cumulativeCounter.RemoveAt(this.cumulativeCounter.Count - 1);
+                this.StackNumber--;
+            }
+            else
+            {
+                this.StackNumber = -1;
+                this.stackActivePlayer.Clear();
+                this.cumulativeCounter.Clear();
+                this.NowStackInTheCommand = false;
+                CompleteInstantAction();
+            }
+
         }
 
 
@@ -4227,6 +4272,57 @@ namespace DungeonPlayer
             }
 
             return true;
+        }
+
+
+        /// <summary>
+        /// カウンター行為が発動成功するかどうかを判定するメソッド
+        /// </summary>
+        /// <param name="player">対象元プレイヤー</param>
+        /// <param name="target">対象先ターゲット</param>
+        /// <param name="messageNumber">キャラクターセリフ番号</param>
+        /// <returns>カウンター成功ならTrue、失敗ならFalse</returns>
+        private bool JudgeSuccessOfCounter(MainCharacter player, MainCharacter target, int messageNumber)
+        {
+            if (target.CurrentNothingOfNothingness > 0)
+            {
+                UpdateBattleText("しかし、" + player.FirstName + "は無効化を無効にするオーラによって護られている！\r\n");
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                return false;
+            }
+            else if (player.CurrentHymnContract > 0)
+            {
+                UpdateBattleText(player.FirstName + "は天使の契約により保護されており、カウンターを無視した！\r\n");
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                return false;
+            }
+            else if (player.PA == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CantBeCountered(player.CurrentSpellName)) ||
+                     player.StackPlayerAction == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
+            {
+                UpdateBattleText(player.CurrentSpellName + "はカウンター出来ない！！！\r\n");
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                return false;
+            }
+            else if (player.PA == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CantBeCountered(player.CurrentSkillName)) ||
+                     player.StackPlayerAction == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
+            {
+                UpdateBattleText(player.CurrentSkillName + "はカウンター出来ない！！！\r\n");
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                return false;
+            }
+            else if (player.PA == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CantBeCountered(player.CurrentArchetypeName)) ||
+                player.StackPlayerAction == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
+            {
+                UpdateBattleText(player.CurrentArchetypeName + "はカウンター出来ない！！！\r\n");
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                return false;
+            }
+            else
+            {
+                UpdateBattleText(target.GetCharacterSentence(messageNumber));
+                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.SUCCESS_COUNTER);
+                return true;
+            }
         }
 
         private bool IsPlayerEnemy(MainCharacter player)
@@ -6934,6 +7030,21 @@ namespace DungeonPlayer
                 this.nowAnimation = false;
                 this.nowAnimationCounter = 0;
             }
+        }
+
+        private void ExecStackAnimation()
+        {
+            int waitTime = 150;
+            this.nowStackAnimationCounter++;
+            if (this.nowStackAnimationCounter > waitTime)
+            {
+                this.back_nowStackAnimationBar.transform.localScale = new Vector2(0.0f, 1.0f);
+                this.back_nowStackAnimationName.transform.localScale = new Vector2(0.0f, 1.0f);
+                this.nowStackAnimation = false;
+                this.nowStackAnimationCounter = 0;
+                StackInTheCommandEnd();
+            }
+
         }
     }
 }
