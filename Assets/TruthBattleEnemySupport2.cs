@@ -1032,19 +1032,19 @@ namespace DungeonPlayer
                     {
                         if (actionCommand == Database.ARCHETYPE_EIN)
                         {
-                            StackInThecommandNameText[this.StackNumber].text = "【元核】　【集中と断絶】　【発動！】";
+                            StackInTheCommandNameText[this.StackNumber].text = "【元核】　【集中と断絶】　【発動！】";
                         }
                         else if (actionCommand == Database.ARCHETYPE_RANA)
                         {
-                            StackInThecommandNameText[this.StackNumber].text = "【元核】　【循環の誓約】　【発動！】";
+                            StackInTheCommandNameText[this.StackNumber].text = "【元核】　【循環の誓約】　【発動！】";
                         }
                         else if (actionCommand == Database.ARCHETYPE_OL)
                         {
-                            StackInThecommandNameText[this.StackNumber].text = "【元核】　【オラオラオラァ！】　【発動！】";
+                            StackInTheCommandNameText[this.StackNumber].text = "【元核】　【オラオラオラァ！】　【発動！】";
                         }
                         else if (actionCommand == Database.ARCHETYPE_VERZE)
                         {
-                            StackInThecommandNameText[this.StackNumber].text = "【元核】　【真実の破壊】　【発動！】";
+                            StackInTheCommandNameText[this.StackNumber].text = "【元核】　【真実の破壊】　【発動！】";
                         }
                         // todo
                         //UpdateLabelInfo(activePlayer, target, Database.TIMEUP_FIRST_RESPONSE, actionCommand);
@@ -1052,7 +1052,7 @@ namespace DungeonPlayer
                     }
                     else if ((TruthActionCommand.CheckPlayerActionFromString(actionCommand) == MainCharacter.PlayerAction.UseSkill) && (actionCommand == Database.RECOVER))
                     {
-                        StackInThecommandNameText[this.StackNumber].text = "【リカバー】発動！";
+                        StackInTheCommandNameText[this.StackNumber].text = "【リカバー】発動！";
                         // todo
                         //UpdateLabelInfo(activePlayer, target, Database.TIMEUP_FIRST_RESPONSE, actionCommand);
                         System.Threading.Thread.Sleep(1000);
@@ -1117,7 +1117,7 @@ namespace DungeonPlayer
             activePlayer.StackActivePlayer = null;
             activePlayer.StackActivation = false;
 
-            StackInThecommandNameText[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
+            StackInTheCommandNameText[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
             StackInTheCommandBarText[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
         }
 

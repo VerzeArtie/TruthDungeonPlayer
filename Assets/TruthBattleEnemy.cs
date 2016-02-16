@@ -98,7 +98,7 @@ namespace DungeonPlayer
         public GameObject groupEnemy3;
 
         public GameObject[] back_StackInTheCommandName;
-        public Text[] StackInThecommandNameText;
+        public Text[] StackInTheCommandNameText;
         public GameObject[] back_StackInTheCommandBar;
         public Text[] StackInTheCommandBarText;
         private int StackNumber = -1;
@@ -164,8 +164,8 @@ namespace DungeonPlayer
         public Image enemy1LifeMeter;
         //	public Image enemy1ManaMeter;
         //	public Image enemy1SkillMeter;
-        //	public Text enemy1Instant;
-        //	public Image enemy1InstantMeter;
+        public Text enemy1Instant;
+        public Image enemy1InstantMeter;
         public GameObject enemy1DamagePanel;
         public Text enemy1Damage;
         public Text enemy1Critical;
@@ -179,8 +179,8 @@ namespace DungeonPlayer
         public Image enemy2LifeMeter;
         //	public Image enemy2ManaMeter;
         //	public Image enemy2SkillMeter;
-        //	public Text enemy2Instant;
-        //	public Image enemy2InstantMeter;
+        public Text enemy2Instant;
+        public Image enemy2InstantMeter;
         public GameObject enemy2DamagePanel;
         public Text enemy2Damage;
         public Text enemy2Critical;
@@ -194,8 +194,8 @@ namespace DungeonPlayer
         public Image enemy3LifeMeter;
         //	public Image enemy3ManaMeter;
         //	public Image enemy3SkillMeter;
-        //	public Text enemy3Instant;
-        //	public Image enemy3InstantMeter;
+        public Text enemy3Instant;
+        public Image enemy3InstantMeter;
         public GameObject enemy3DamagePanel;
         public Text enemy3Damage;
         public Text enemy3Critical;
@@ -311,7 +311,7 @@ namespace DungeonPlayer
             GroundOne.TC.meterCurrentManaPoint = this.player3ManaMeter;
             GroundOne.TC.labelCurrentSkillPoint = this.player3Skill;
             GroundOne.TC.meterCurrentSkillPoint = this.player3SkillMeter;
-            GroundOne.TC.labelCurrentInstantPoint = player3Instant;
+            GroundOne.TC.labelCurrentInstantPoint = this.player3Instant;
             GroundOne.TC.meterCurrentInstantPoint = this.player3InstantMeter;
             GroundOne.TC.DamagePanel = this.player3DamagePanel;
             GroundOne.TC.DamageLabel = this.player3Damage;
@@ -333,8 +333,8 @@ namespace DungeonPlayer
             this.ec1.meterCurrentManaPoint = null;
             this.ec1.labelCurrentSkillPoint = null;
             this.ec1.meterCurrentSkillPoint = null;
-            this.ec1.labelCurrentInstantPoint = null;
-            this.ec1.meterCurrentInstantPoint = null;
+            this.ec1.labelCurrentInstantPoint = this.enemy1Instant;
+            this.ec1.meterCurrentInstantPoint = this.enemy1InstantMeter;
             this.ec1.DamagePanel = this.enemy1DamagePanel;
             this.ec1.DamageLabel = this.enemy1Damage;
             this.ec1.CriticalLabel = this.enemy1Critical;
@@ -353,8 +353,8 @@ namespace DungeonPlayer
             this.ec2.meterCurrentManaPoint = null;
             this.ec2.labelCurrentSkillPoint = null;
             this.ec2.meterCurrentSkillPoint = null;
-            this.ec2.labelCurrentInstantPoint = null;
-            this.ec2.meterCurrentInstantPoint = null;
+            this.ec2.labelCurrentInstantPoint = this.enemy2Instant;
+            this.ec2.meterCurrentInstantPoint = this.enemy2InstantMeter;
             this.ec2.DamagePanel = this.enemy2DamagePanel;
             this.ec2.DamageLabel = this.enemy2Damage;
             this.ec2.CriticalLabel = this.enemy2Critical;
@@ -373,8 +373,8 @@ namespace DungeonPlayer
             this.ec3.meterCurrentManaPoint = null;
             this.ec3.labelCurrentSkillPoint = null;
             this.ec3.meterCurrentSkillPoint = null;
-            this.ec3.labelCurrentInstantPoint = null;
-            this.ec3.meterCurrentInstantPoint = null;
+            this.ec3.labelCurrentInstantPoint = this.enemy3Instant;
+            this.ec3.meterCurrentInstantPoint = this.enemy3InstantMeter;
             this.ec3.DamagePanel = this.enemy3DamagePanel;
             this.ec3.DamageLabel = this.enemy3Damage;
             this.ec3.CriticalLabel = this.enemy3Critical;
@@ -3209,7 +3209,6 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                Debug.Log("dummy update do stack " + player.CurrentInstantPoint);
                 if (player.CurrentInstantPoint >= player.MaxInstantPoint)
                 {
                     //if (player.CurrentTimeStop > 0)
@@ -4064,53 +4063,61 @@ namespace DungeonPlayer
                         string actionCommand = this.ActiveList[ii].StackCommandString;
                         this.StackNumber++;
                         this.cumulativeCounter.Add(0);
-                        StackInThecommandNameText[this.StackNumber].text = actionCommand;
-                        StackInThecommandNameText[this.StackNumber].text += "    " + this.ActiveList[ii].FirstName + " --> ";
+                        StackInTheCommandNameText[this.StackNumber].text = actionCommand;
+                        StackInTheCommandNameText[this.StackNumber].text += "    " + this.ActiveList[ii].FirstName + " --> ";
                         if (this.ActiveList[ii].StackTarget != null)
                         {
-                            StackInThecommandNameText[this.StackNumber].text += "  " + this.ActiveList[ii].StackTarget.FirstName;
+                            StackInTheCommandNameText[this.StackNumber].text += "  " + this.ActiveList[ii].StackTarget.FirstName;
                         }
                         else
                         {
-                            StackInThecommandNameText[this.StackNumber].text += "  " + "全体"; // 「警告」絡みつくフランシスのファイアビューネが発端となっている。全体考察してください。
+                            StackInTheCommandNameText[this.StackNumber].text += "  " + "全体"; // 「警告」絡みつくフランシスのファイアビューネが発端となっている。全体考察してください。
                         }
 
-                        if (actionCommand == Database.ARCHETYPE_EIN)
+                        if (actionCommand == Database.ARCHETYPE_EIN ||
+                            actionCommand == Database.RECOVER)
                         {
-                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.black;
                             back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.black;
-                        }
-                        else if (actionCommand == Database.RECOVER)
-                        {
                             back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.black;
-                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.black;
+                            StackInTheCommandNameText[this.StackNumber].color = Color.white;
+                            StackInTheCommandBarText[this.StackNumber].color = Color.white;
                         }
                         else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
                         {
-                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.blue;
-                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.blue;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = this.ActiveList[ii].PlayerBattleColor;
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = this.ActiveList[ii].PlayerBattleColor;
+                            StackInTheCommandNameText[this.StackNumber].color = Color.black;
+                            StackInTheCommandBarText[this.StackNumber].color = Color.black;
                         }
                         else
                         {
-                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.red;
                             back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.red;
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.red;
+                            StackInTheCommandNameText[this.StackNumber].color = Color.white;
+                            StackInTheCommandBarText[this.StackNumber].color = Color.white;
                         }
 
                         StackInTheCommandBarText[this.StackNumber].text = Database.TIMEUP_FIRST_RESPONSE.ToString();
                         if (TruthActionCommand.CheckPlayerActionFromString(actionCommand) == MainCharacter.PlayerAction.Archetype)
                         {
-                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.black;
                             back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.black;
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.black;
+                            StackInTheCommandNameText[this.StackNumber].color = Color.white;
+                            StackInTheCommandBarText[this.StackNumber].color = Color.white;
                         }
                         else if (this.ActiveList[ii] == GroundOne.MC || this.ActiveList[ii] == GroundOne.SC || this.ActiveList[ii] == GroundOne.TC)
                         {
-                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.blue;
-                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.blue;
+                            back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = this.ActiveList[ii].PlayerBattleColor;
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = this.ActiveList[ii].PlayerBattleColor;
+                            StackInTheCommandNameText[this.StackNumber].color = Color.black;
+                            StackInTheCommandBarText[this.StackNumber].color = Color.black;
                         }
                         else
                         {
-                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.red;
                             back_StackInTheCommandName[this.StackNumber].GetComponent<Image>().color = Color.red;
+                            back_StackInTheCommandBar[this.StackNumber].GetComponent<Image>().color = Color.red;
+                            StackInTheCommandNameText[this.StackNumber].color = Color.white;
+                            StackInTheCommandBarText[this.StackNumber].color = Color.white;
                         }
 
                         this.back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(1.0f, 1.0f);
@@ -4154,6 +4161,7 @@ namespace DungeonPlayer
                     }
                     else
                     {
+                        this.BattleMenuPanel.SetActive(true);
                         this.StackNumber = -1;
                         this.stackActivePlayer.Clear();
                         this.cumulativeCounter.Clear();
@@ -4852,7 +4860,7 @@ namespace DungeonPlayer
         {
             GroundOne.BattleEnemyFilter = this.Filter;
             GroundOne.parent_TruthBattleEnemy = this;
-            SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy, true);
+            SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy, this);
         }
         public void tapPanel1()
         {

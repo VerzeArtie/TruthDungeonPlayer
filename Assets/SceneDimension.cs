@@ -79,22 +79,17 @@ namespace DungeonPlayer
             SceneDimension.Go(src, Database.TruthEquipmentShop);
         }
 
-        public static void CallTruthBattleSetting(string src, bool fromBattleEnemy)
+        public static void CallTruthBattleSetting(string src)
         {
-            CallTruthBattleSetting(src, null, fromBattleEnemy);
+            GroundOne.CallBattleSettingFromBattleEnemy = false;
+            GroundOne.parent_TruthBattleEnemy = null;
+            SceneDimension.Go(src, Database.TruthBattleSetting);
         }
-        public static void CallTruthBattleSetting(string src, TruthBattleEnemy scene, bool fromBattleEnemy)
+        public static void CallTruthBattleSetting(string src, TruthBattleEnemy scene)
         {
-            GroundOne.CallBattleSettingFromBattleEnemy = fromBattleEnemy;
+            GroundOne.CallBattleSettingFromBattleEnemy = true;
             GroundOne.parent_TruthBattleEnemy = scene;
-            if (fromBattleEnemy)
-            {
-                Application.LoadLevelAdditive(Database.TruthBattleSetting);
-            }
-            else
-            {
-                SceneDimension.Go(src, Database.TruthBattleSetting);
-            }
+            Application.LoadLevelAdditive(Database.TruthBattleSetting);
         }
 
         private static void Go(string src, string dst)

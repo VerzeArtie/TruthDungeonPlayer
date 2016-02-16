@@ -7063,7 +7063,7 @@ namespace DungeonPlayer
         }
         public void tapBattleSetting()
         {
-            SceneDimension.CallTruthBattleSetting(Database.TruthDungeon, false);
+            SceneDimension.CallTruthBattleSetting(Database.TruthDungeon);
         }
         public void tapSave()
         {

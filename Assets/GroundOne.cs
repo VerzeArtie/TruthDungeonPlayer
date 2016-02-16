@@ -147,7 +147,8 @@ namespace DungeonPlayer
             // debug
             WE.AvailableInstantCommand = true;
             GroundOne.enemyName1 = Database.DUEL_DUMMY_SUBURI; // DUEL_EONE_FULNEA;
-            //GroundOne.WE.AvailableSecondCharacter = true;
+            GroundOne.WE.AvailableSecondCharacter = true;
+            GroundOne.WE.AvailableThirdCharacter = true;
             GroundOne.DuelMode = true;
             MC.Agility = 750;
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
@@ -340,6 +341,8 @@ namespace DungeonPlayer
             SC.Intelligence = Database.SECONDPLAYER_FIRST_INTELLIGENCE;
             SC.Stamina = Database.SECONDPLAYER_FIRST_STAMINA;
             SC.Mind = Database.SECONDPLAYER_FIRST_MIND;
+            SC.Strength = 90;
+            SC.Agility = 750;
             SC.AvailableMana = true;
             SC.AvailableSkill = true;
             SC.AddBackPack(new ItemBackPack(Database.COMMON_ELECTRO_ROD));
@@ -360,11 +363,13 @@ namespace DungeonPlayer
             TC.Agility = Database.OL_LANDIS_FIRST_AGILITY;
             TC.Intelligence = Database.OL_LANDIS_FIRST_INTELLIGENCE;
             TC.Stamina = Database.OL_LANDIS_FIRST_STAMINA;
+            TC.Mind = Database.OL_LANDIS_FIRST_MIND;
+            TC.Agility = 750;
             TC.AvailableMana = true;
             TC.AvailableSkill = true;
             TC.BattleActionCommandList[0] = Database.ATTACK_EN;
             TC.BattleActionCommandList[1] = Database.DEFENSE_EN;
-            TC.BattleActionCommandList[2] = Database.STAY_EN;
+            TC.BattleActionCommandList[2] = Database.STRAIGHT_SMASH;
             TC.BattleActionCommandList[3] = Database.STAY_EN;
             TC.BattleActionCommandList[4] = Database.STAY_EN;
             TC.BattleActionCommandList[5] = Database.STAY_EN;
