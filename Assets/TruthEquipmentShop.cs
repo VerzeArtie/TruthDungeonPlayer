@@ -247,15 +247,54 @@ namespace DungeonPlayer
 
         protected void UpdateEquipment(MainCharacter player)
         {
-            txtMainWeapon.text = player.MainWeapon.Name;
+            if (player.MainWeapon != null)
+            {
+                txtMainWeapon.text = player.MainWeapon.Name;
+            }
+            else
+            {
+                txtMainWeapon.text = "";
+            }
             Method.UpdateRareColor(player.MainWeapon, txtMainWeapon, backMainWeapon);
-            txtSubWeapon.text = player.SubWeapon.Name;
+
+            if (player.SubWeapon != null)
+            {
+                txtSubWeapon.text = player.SubWeapon.Name;
+            }
+            else
+            {
+                txtSubWeapon.text = "";
+            }
             Method.UpdateRareColor(player.SubWeapon, txtSubWeapon, backSubWeapon);
-            txtArmor.text = player.MainArmor.Name;
+
+            if (player.MainArmor != null)
+            {
+                txtArmor.text = player.MainArmor.Name;
+            }
+            else
+            {
+                txtArmor.text = "";
+            }
             Method.UpdateRareColor(player.MainArmor, txtArmor, backArmor);
-            txtAccessory1.text = player.Accessory.Name;
+
+            if (player.Accessory != null)
+            {
+                txtAccessory1.text = player.Accessory.Name;
+            }
+            else
+            {
+                txtAccessory1.text = "";
+            }
             Method.UpdateRareColor(player.Accessory, txtAccessory1, backAccessory1);
-            txtAccessory2.text = player.Accessory2.Name;
+
+            if (player.Accessory2 != null)
+            {
+                txtAccessory2.text = player.Accessory2.Name;
+            }
+            else
+            {
+                txtAccessory2.text = "";
+            }
             Method.UpdateRareColor(player.Accessory2, txtAccessory2, backAccessory2);
         }
 

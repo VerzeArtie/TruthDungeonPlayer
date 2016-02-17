@@ -28,14 +28,14 @@ namespace DungeonPlayer
         int nowStackAnimationCounter = 0;
         bool nowAnimation = false;
         int nowAnimationCounter = 0;
-        MainCharacter nowAnimationTarget = null;
-        int nowAnimationDamage = 0;
-        Color nowAnimationColor = Color.black;
-        bool nowAnimationAvoid = false;
-        String nowAnimationCustomString = String.Empty;
-        int nowAnimationInterval = 0;
-        bool nowAnimationCritical = false;
-        Text nowAnimationText = null;
+        List<MainCharacter> nowAnimationTarget = new List<MainCharacter>();
+        List<int> nowAnimationDamage = new List<int>();
+        List<Color> nowAnimationColor = new List<Color>();
+        List<bool> nowAnimationAvoid = new List<bool>();
+        List<String> nowAnimationCustomString = new List<string>();
+        List<int> nowAnimationInterval = new List<int>();
+        List<bool> nowAnimationCritical = new List<bool>();
+        List<Text> nowAnimationText = new List<Text>();
         bool NowSelectingTarget = false;
         MainCharacter currentTargetedPlayer = null;
         bool BattleEndFlag = false; // 戦闘終了条件を満たし、バトル終了するためのフラグ
@@ -6942,14 +6942,14 @@ namespace DungeonPlayer
         {
             Debug.Log("AnimationDamage start: " + this.nowAnimationCounter);
             target.DamageLabel.text = ((int)damage).ToString();
-            this.nowAnimationTarget = target;
-            this.nowAnimationDamage = (int)damage;
-            this.nowAnimationColor = plusValue;
-            this.nowAnimationAvoid = avoid;
-            this.nowAnimationCustomString = customString;
-            this.nowAnimationInterval = interval;
-            this.nowAnimationCritical = critical;
-            this.nowAnimationText = target.DamageLabel;
+            this.nowAnimationTarget.Add(target);
+            this.nowAnimationDamage.Add((int)damage);
+            this.nowAnimationColor.Add(plusValue);
+            this.nowAnimationAvoid.Add(avoid);
+            this.nowAnimationCustomString.Add(customString);
+            this.nowAnimationInterval.Add(interval);
+            this.nowAnimationCritical.Add(critical);
+            this.nowAnimationText.Add(target.DamageLabel);
             this.nowAnimation = true;
             // todo
         }
@@ -6958,22 +6958,22 @@ namespace DungeonPlayer
         Vector3 ExecAnimation_basePointCritical;
         private void ExecAnimation()
         {
-            Text targetLabel = this.nowAnimationTarget.DamageLabel;
-            Text targetCriticalLabel = this.nowAnimationTarget.CriticalLabel;
+            Text targetLabel = this.nowAnimationTarget[0].DamageLabel;
+            Text targetCriticalLabel = this.nowAnimationTarget[0].CriticalLabel;
 
-            targetLabel.color = this.nowAnimationColor;
+            targetLabel.color = this.nowAnimationColor[0];
 
-            if (this.nowAnimationAvoid)
+            if (this.nowAnimationAvoid[0])
             {
                 targetLabel.text = "ミス";
             }
-            else if (this.nowAnimationCustomString != string.Empty)
+            else if (this.nowAnimationCustomString[0] != string.Empty)
             {
-                targetLabel.text = this.nowAnimationCustomString;
+                targetLabel.text = this.nowAnimationCustomString[0];
             }
             else
             {
-                targetLabel.text = Convert.ToString(this.nowAnimationDamage);
+                targetLabel.text = Convert.ToString(this.nowAnimationDamage[0]);
             }
             
             int waitTime = 60;
@@ -6983,11 +6983,11 @@ namespace DungeonPlayer
             else if (TIMER_SPEED == 5) waitTime = 40;
             else if (TIMER_SPEED == 2) waitTime = 20;
             if (this.HiSpeedAnimation) { waitTime = waitTime / 2; }
-            if (this.nowAnimationInterval > 0) waitTime = this.nowAnimationInterval;
+            if (this.nowAnimationInterval[0] > 0) waitTime = this.nowAnimationInterval[0];
 
             if (this.nowAnimationCounter <= 0)
             {
-                if (this.nowAnimationCritical)
+                if (this.nowAnimationCritical[0])
                 {
                     targetLabel.fontSize = targetLabel.fontSize + 4;
                     targetCriticalLabel.text = "Critical";
@@ -6999,8 +6999,8 @@ namespace DungeonPlayer
                     targetCriticalLabel.gameObject.SetActive(true);
                 }
 
-                this.nowAnimationTarget.DamagePanel.gameObject.SetActive(true);
-                this.nowAnimationTarget.DamageLabel.gameObject.SetActive(true);
+                this.nowAnimationTarget[0].DamagePanel.gameObject.SetActive(true);
+                this.nowAnimationTarget[0].DamageLabel.gameObject.SetActive(true);
 
                 ExecAnimation_basePoint = targetLabel.transform.position;
                 ExecAnimation_basePointCritical = targetCriticalLabel.transform.position;
@@ -7021,14 +7021,37 @@ namespace DungeonPlayer
                 targetCriticalLabel.gameObject.SetActive(false);
                 targetCriticalLabel.transform.position = ExecAnimation_basePointCritical;
 
-                if (this.nowAnimationCritical)
+                if (this.nowAnimationCritical[0])
                 {
                     targetLabel.fontSize = targetLabel.fontSize - 4;
                 }
 
+                if (this.nowAnimationTarget.Count > 0)
+                {
+                    this.nowAnimationTarget.RemoveAt(0);
+                    this.nowAnimationDamage.RemoveAt(0);
+                    this.nowAnimationColor.RemoveAt(0);
+                    this.nowAnimationAvoid.RemoveAt(0);
+                    this.nowAnimationCustomString.RemoveAt(0);
+                    this.nowAnimationInterval.RemoveAt(0);
+                    this.nowAnimationCritical.RemoveAt(0);
+                    this.nowAnimationText.RemoveAt(0);
+                    this.nowAnimationCounter = 0;
+                }
 
-                this.nowAnimation = false;
-                this.nowAnimationCounter = 0;
+                if (this.nowAnimationTarget.Count <= 0)
+                {
+                    this.nowAnimationTarget.Clear();
+                    this.nowAnimationDamage.Clear();
+                    this.nowAnimationColor.Clear();
+                    this.nowAnimationAvoid.Clear();
+                    this.nowAnimationCustomString.Clear();
+                    this.nowAnimationInterval.Clear();
+                    this.nowAnimationCritical.Clear();
+                    this.nowAnimationText.Clear();
+                    this.nowAnimationCounter = 0;
+                    this.nowAnimation = false;
+                }
             }
         }
 
