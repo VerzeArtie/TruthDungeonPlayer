@@ -630,11 +630,13 @@ namespace DungeonPlayer
             //    (GroundOne.WE.DungeonPosX == 1 + Database.DUNGEON_BASE_X + (Database.FIRST_POS % Database.TRUTH_DUNGEON_COLUMN) * Database.DUNGEON_MOVE_LEN) &&
             //    (GroundOne.WE.DungeonPosY == 1 + Database.DUNGEON_BASE_Y + (Database.FIRST_POS / Database.TRUTH_DUNGEON_COLUMN) * Database.DUNGEON_MOVE_LEN))
             {
+                Debug.Log("posX posY 0");
                 UpdatePlayerLocationInfo(39, -14, false);
                 UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
             }
             else
             {
+                Debug.Log("posX: " + GroundOne.WE.DungeonPosX + "posY: " + GroundOne.WE.DungeonPosY);
 //              if (GroundOne.WE.Version <= 0)
                 UpdatePlayerLocationInfo(GroundOne.WE.DungeonPosX, GroundOne.WE.DungeonPosY, false);
                 UpdateViewPoint(GroundOne.WE.dungeonViewPointX, GroundOne.WE.dungeonViewPointY);
@@ -1300,7 +1302,7 @@ namespace DungeonPlayer
         {
             GroundOne.WE.dungeonViewPointX = (int)x;
             GroundOne.WE.dungeonViewPointY = (int)y;
-            this.viewPoint = new Vector3(x, y, Camera.main.transform.position.z);
+            this.viewPoint = new Vector3(x+4, y-3, Camera.main.transform.position.z);
             Camera.main.transform.position = this.viewPoint;
         }
 

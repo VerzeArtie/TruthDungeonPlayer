@@ -1088,6 +1088,7 @@ namespace DungeonPlayer
         public const string MAGIC_ATTACK = @"魔法攻撃";
 
         // 戦闘中のアニメーション文字
+        public const string MISS = @"ミス！";
         public const string MISS_ACTION = @"行動ミス！";
         public const string MISS_SPELL = @"詠唱ミス！";
         public const string MISS_SKILL = @"スキル失敗！";

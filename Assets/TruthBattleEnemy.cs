@@ -6965,7 +6965,7 @@ namespace DungeonPlayer
 
             if (this.nowAnimationAvoid[0])
             {
-                targetLabel.text = "ミス";
+                targetLabel.text = Database.MISS;
             }
             else if (this.nowAnimationCustomString[0] != string.Empty)
             {
