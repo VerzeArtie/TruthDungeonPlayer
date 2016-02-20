@@ -233,10 +233,10 @@ namespace DungeonPlayer
 
             if (GroundOne.OnlySelectTrash)
             {
-                if (GroundOne.parent_TruthBattleEnemy != null)
+                if (GroundOne.Parent_TruthBattleEnemy != null)
                 {
-                    GroundOne.parent_TruthBattleEnemy.Filter.SetActive(true);
-                    GroundOne.parent_TruthBattleEnemy.Filter.GetComponent<Image>().color = player.PlayerStatusColor;
+                    GroundOne.Parent_TruthBattleEnemy.Filter.SetActive(true);
+                    GroundOne.Parent_TruthBattleEnemy.Filter.GetComponent<Image>().color = player.PlayerStatusColor;
                 }
                 txtClose.text = "諦める";
                 mainMessage.text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
@@ -1571,7 +1571,7 @@ namespace DungeonPlayer
 
                 if (GroundOne.OnlySelectTrash)
                 {
-                    GroundOne.parent_TruthBattleEnemy.GetNewItemAndBack();
+                    GroundOne.Parent_TruthBattleEnemy.GetNewItemAndBack();
                 }
             }
             else

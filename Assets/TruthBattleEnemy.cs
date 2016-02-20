@@ -62,11 +62,6 @@ namespace DungeonPlayer
         public Sprite[] imageSandglass;
         
         // GUI
-        public GameObject Filter;
-
-        public Text yesnoSystemMessage;
-        public GameObject groupYesnoSystemMessage;
-
         public GameObject groupParentBackpack;
         public GameObject[] back_Backpack;
         public Text[] backpack;
@@ -469,7 +464,7 @@ namespace DungeonPlayer
             //tapFirstChara ();
         }
 
-        public void SceneBack()
+        public new void SceneBack()
         {
             this.Filter.SetActive(false);
             UpdateBattleCommandSetting(GroundOne.MC, ActionButton1, IsSorcery1);
@@ -4947,7 +4942,7 @@ namespace DungeonPlayer
         public void tapBattleSetting()
         {
             GroundOne.BattleEnemyFilter = this.Filter;
-            GroundOne.parent_TruthBattleEnemy = this;
+            GroundOne.Parent_TruthBattleEnemy = this;
             SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy, this);
         }
         public void tapPanel1()

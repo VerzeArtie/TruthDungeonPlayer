@@ -19,13 +19,14 @@ namespace DungeonPlayer
             SceneDimension.Go(src, Database.TruthHomeTown);
         }
 
-        public static void CallSaveLoad(string src, bool saveMode, bool afterBacktoTitle, bool title_LoadAndGo)
+        public static void CallSaveLoad(string src, bool SaveMode, bool AfterBacktoTitle, MotherForm scene)
         {
-            GroundOne.SaveMode = saveMode;
-            GroundOne.AfterBacktoTitle = afterBacktoTitle;
-            GroundOne.Title_LoadAndGo = title_LoadAndGo;
-            SceneDimension.Go(src, Database.SaveLoad);
+            GroundOne.SaveMode = SaveMode;
+            GroundOne.AfterBacktoTitle = AfterBacktoTitle;
+            GroundOne.ParentScene = scene;
+            Application.LoadLevelAdditive(Database.SaveLoad);
         }
+
         public static void CallTruthDungeon(string src)
         {
             GroundOne.WE.AlreadyShownEvent = false;
@@ -48,7 +49,7 @@ namespace DungeonPlayer
             GroundOne.LevelUp = false;
             GroundOne.UpPoint = 0;
             GroundOne.CumultiveLvUpValue = 0;
-            GroundOne.parent_TruthBattleEnemy = scene;
+            GroundOne.Parent_TruthBattleEnemy = scene;
             Application.LoadLevelAdditive(Database.TruthStatusPlayer);
         }
         public static void CallTruthStatusPlayer(string src)
@@ -57,7 +58,7 @@ namespace DungeonPlayer
             GroundOne.LevelUp = false;
             GroundOne.UpPoint = 0;
             GroundOne.CumultiveLvUpValue = 0;
-            GroundOne.parent_TruthBattleEnemy = null;
+            GroundOne.Parent_TruthBattleEnemy = null;
             SceneDimension.Go(src, Database.TruthStatusPlayer);
         }
         public static void CallTruthStatusPlayer(string src, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, Color color)
@@ -67,7 +68,7 @@ namespace DungeonPlayer
             GroundOne.UpPoint = upPoint;
             GroundOne.CumultiveLvUpValue = cumultivaLvUpValue;
             GroundOne.CurrentStatusView = color;
-            GroundOne.parent_TruthBattleEnemy = null;
+            GroundOne.Parent_TruthBattleEnemy = null;
             leveUp = false;
             upPoint = 0;
             cumultivaLvUpValue = 0;
@@ -82,13 +83,13 @@ namespace DungeonPlayer
         public static void CallTruthBattleSetting(string src)
         {
             GroundOne.CallBattleSettingFromBattleEnemy = false;
-            GroundOne.parent_TruthBattleEnemy = null;
+            GroundOne.Parent_TruthBattleEnemy = null;
             SceneDimension.Go(src, Database.TruthBattleSetting);
         }
         public static void CallTruthBattleSetting(string src, TruthBattleEnemy scene)
         {
             GroundOne.CallBattleSettingFromBattleEnemy = true;
-            GroundOne.parent_TruthBattleEnemy = scene;
+            GroundOne.Parent_TruthBattleEnemy = scene;
             Application.LoadLevelAdditive(Database.TruthBattleSetting);
         }
 
@@ -114,6 +115,11 @@ namespace DungeonPlayer
             Application.LoadLevel(backScene);
         }
 
+        public static void LoadGame()
+        {
+            playbackScene.Clear();
+            playbackScene.Add(Database.Title);
+        }
         public static void JumpToTitle()
         {
             playbackScene.Clear();

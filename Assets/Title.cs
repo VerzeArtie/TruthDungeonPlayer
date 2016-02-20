@@ -6,32 +6,22 @@ using System.Xml;
 using System;
 using System.Reflection;
 using DungeonPlayer;
-using System.Collections;
 
 namespace DungeonPlayer
 {
     public class Title : MotherForm
     {
-        bool ExecFirstGo = false;
+        public Camera cam;
         public override void Start()
         {
             base.Start();
 
-            if (GroundOne.Title_LoadAndGo)
-            {
-                GroundOne.Title_LoadAndGo = false;
-                this.ExecFirstGo = true;
-            }
         }
         // Update is called once per frame
         void Update()
         {
-            if (this.ExecFirstGo)
-            {
-                this.ExecFirstGo = false;
-                SceneDimension.CallTruthHomeTown(Database.Title); // todo ÉçÅ[ÉhêÊÇÕà·Ç§
-            }
         }
+
 
         public void GameStart_Click()
         {
@@ -40,7 +30,8 @@ namespace DungeonPlayer
 
         public void Load_Click()
         {
-            SceneDimension.CallSaveLoad(Database.Title, false, false, true);
+            this.Filter.SetActive(true);
+            SceneDimension.CallSaveLoad(Database.Title, false, false, this);
         }
 
         public void Config_Click()

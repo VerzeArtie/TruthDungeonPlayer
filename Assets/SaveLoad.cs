@@ -122,10 +122,20 @@ namespace DungeonPlayer
                 //newDateTimeButton.Focus();
             }
 
+
+            this.cam.backgroundColor = UnityColor.Aqua;
+            if (GroundOne.ParentScene != null)
+            {
+                GroundOne.ParentScene.Filter.GetComponent<Image>().color = UnityColor.Aqua;
+            }
             if (GroundOne.SaveMode)
             {
                 titleLabel.text = "SAVE";
                 this.cam.backgroundColor = UnityColor.Salmon;
+                if (GroundOne.ParentScene != null)
+                {
+                    GroundOne.ParentScene.Filter.GetComponent<Image>().color = UnityColor.Salmon;
+                }
             }
         }
 
@@ -137,11 +147,9 @@ namespace DungeonPlayer
                 //Debug.Log("autokilltimer: " + autoKillTimer.ToString());
 
                 this.autoKillTimer++;
-                if (this.autoKillTimer > 200)
+                if (this.autoKillTimer == 200)
                 {
-                    this.nowAutoKill = false;
-                    this.autoKillTimer = 0;
-                    SceneDimension.Back();
+                    tapExit();
                 }
             }
         }
@@ -840,6 +848,7 @@ namespace DungeonPlayer
 
         private void ExecLoad(Text sender, string targetFileName, bool forceLoad)
         {
+            if (this.nowAutoKill) { return; }
             Debug.Log("ExecLoad 0 " + DateTime.Now);
             // todo
             //mc = new MainCharacter();
@@ -1313,11 +1322,12 @@ namespace DungeonPlayer
             Debug.Log(DateTime.Now.ToString());
 
             // todo
-            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            //{
-            //    string temp = xml.GetElementsByTagName("truthTileOne" + ii.ToString())[0].InnerText;
+            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            {
+                GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
+                //    string temp = xml.GetElementsByTagName("truthTileOne" + ii.ToString())[0].InnerText;
             //    GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(temp);
-            //}
+            }
             Debug.Log(DateTime.Now.ToString());
             Debug.Log("ExecLoad 8-1 " + DateTime.Now);
 
@@ -1369,13 +1379,27 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
-            if (GroundOne.AfterBacktoTitle)
+            if (this.nowAutoKill)
             {
-                SceneDimension.JumpToTitle();
+                if (GroundOne.ParentScene != null)
+                {
+                    GroundOne.ParentScene.NextScene();
+                }
             }
             else
             {
-                SceneDimension.Back();
+                if (GroundOne.AfterBacktoTitle)
+                {
+                    SceneDimension.JumpToTitle();
+                }
+                else
+                {
+                    if (GroundOne.ParentScene != null)
+                    {
+                        GroundOne.ParentScene.SceneBack();
+                    }
+                    Application.UnloadLevel(Database.SaveLoad);
+                }
             }
         }
              

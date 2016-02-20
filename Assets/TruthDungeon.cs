@@ -40,8 +40,6 @@ namespace DungeonPlayer
         public Text currentManaValue1;
         public Text currentManaValue2;
         public Text currentManaValue3;
-        public Text yesnoSystemMessage;
-        public GameObject groupYesnoSystemMessage;
 
         // initialize data list
         List<GameObject> objList = new List<GameObject>();
@@ -175,6 +173,8 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            GroundOne.WE.SaveByDungeon = true;
 
             // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
@@ -7089,7 +7089,7 @@ namespace DungeonPlayer
                 }
             }
 
-            SceneDimension.CallSaveLoad(Database.TruthDungeon, true, false, false);
+            SceneDimension.CallSaveLoad(Database.TruthDungeon, true, false, this);
             //Camera camera = Camera.main;
             //camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 10);
             //debug.text += camera.transform.position.ToString() + "\r\n";
@@ -7146,35 +7146,11 @@ namespace DungeonPlayer
             //    }
             //}
 
-            SceneDimension.CallSaveLoad(Database.TruthDungeon, false, false, false);
+            this.Filter.SetActive(true);
+            SceneDimension.CallSaveLoad(Database.TruthDungeon, false, false, this);
            
             // todo (この後、画面を再ロードするか、ロード先の画面へジャンプする必要がある）
             
-            //Camera camera = Camera.main;
-            //camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 10);
-        }
-        public void tapExit()
-        {
-            Application.LoadLevel("TruthHomeTown");
-        }
-
-        private DungeonPlayer.MessagePack.ActionEvent currentEvent;
-
-        public void Yes_Click()
-        {
-            SceneDimension.CallSaveLoad(Database.TruthDungeon, true, true, false);
-        }
-
-        public void No_Click()
-        {
-            if (yesnoSystemMessage.text == SAVE_REQUEST_1)
-            {
-                yesnoSystemMessage.text = SAVE_REQUEST_2;
-            }
-            else
-            {
-                SceneDimension.JumpToTitle();
-            }
         }
 
         public void tapYes()
@@ -7199,6 +7175,32 @@ namespace DungeonPlayer
             btnNo.enabled = false; btnNo.gameObject.SetActive(false);
             mainMessage.text = "";
         }
+
+        public void tapExit()
+        {
+            yesnoSystemMessage.text = exitMessage1;
+            groupYesnoSystemMessage.SetActive(true);
+        }
+
+        private DungeonPlayer.MessagePack.ActionEvent currentEvent;
+
+        public void Yes_Click()
+        {
+            SceneDimension.CallSaveLoad(Database.TruthDungeon, true, true, this);
+        }
+
+        public void No_Click()
+        {
+            if (yesnoSystemMessage.text == SAVE_REQUEST_1)
+            {
+                yesnoSystemMessage.text = SAVE_REQUEST_2;
+            }
+            else
+            {
+                SceneDimension.JumpToTitle();
+            }
+        }
+
         public void tapOK()
         {
             if (this.nowReading < this.nowMessage.Count)

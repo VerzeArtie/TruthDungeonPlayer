@@ -59,6 +59,9 @@ namespace DungeonPlayer
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 
+        // MotherForm
+        public static MotherForm ParentScene;
+
         // TruthEquipmentShop
         public static string titleName = "天下一品　ガンツの武具店";
 
@@ -75,7 +78,7 @@ namespace DungeonPlayer
         // TruthBattleSetting
         public static bool CallBattleSettingFromBattleEnemy;
         public static GameObject BattleEnemyFilter = null;
-        public static TruthBattleEnemy parent_TruthBattleEnemy;
+        public static TruthBattleEnemy Parent_TruthBattleEnemy;
 
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
@@ -116,9 +119,6 @@ namespace DungeonPlayer
 
         // TruthHomeTown
         public static bool TruthHomeTown_NowExit = false;
-
-        // Title
-        public static bool Title_LoadAndGo = false;
 
         public static bool InitializeGroundOne()
         {

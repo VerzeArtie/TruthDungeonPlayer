@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 4
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -1276,7 +1276,6 @@ GameObject:
   - 20: {fileID: 1163341185}
   - 92: {fileID: 1163341184}
   - 124: {fileID: 1163341183}
-  - 81: {fileID: 1163341182}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1284,13 +1283,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1163341182
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1163341181}
-  m_Enabled: 1
 --- !u!124 &1163341183
 Behaviour:
   m_ObjectHideFlags: 0

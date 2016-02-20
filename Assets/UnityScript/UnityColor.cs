@@ -113,8 +113,8 @@ namespace DungeonPlayer
         public static Color Teal = new Color(0, 128, 128);
         public static Color Cadetblue = new Color(95, 158, 160);
         public static Color Darkturquoise = new Color(0, 206, 209);
-        public static Color Aqua = new Color(0, 255, 255);
-        public static Color Cyan = new Color(0, 255, 255);
+        public static Color Aqua = new Color(0, 1, 1);
+        public static Color Cyan = new Color(0, 1, 1);
         public static Color Lightblue = new Color(173, 216, 230);
         public static Color Powderblue = new Color(176, 224, 230);
         public static Color Paleturquoise = new Color(175, 238, 238);

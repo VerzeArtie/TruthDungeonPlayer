@@ -43,8 +43,6 @@ namespace DungeonPlayer
 	    public Text inputName;
         public Text mainMessage;
         public Image panelMessage;
-        public Text yesnoSystemMessage;
-        public GameObject groupYesnoSystemMessage;
 
 	    public static int serverPort = 8001;
 	    private bool firstAction = false;
@@ -56,13 +54,15 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            GroundOne.WE.SaveByDungeon = false;
+
             // todo
             //GroundOne.CS = new ClientSocket();
             //GroundOne.InitializeNetworkConnection ();
 
             if (GroundOne.TruthHomeTown_NowExit)
             {
-                yesnoSystemMessage.text = exitMessage2;
+                base.yesnoSystemMessage.text = exitMessage2;
                 groupYesnoSystemMessage.SetActive(true);
             }
 
@@ -345,6 +345,10 @@ namespace DungeonPlayer
             	NormalTapOK();
             }
             #endregion
+            else
+            {
+                mainMessage.text = "アイン：さて、何すっかな";
+            }
         }
             	
 	    public void tapDungeon() {
@@ -1026,41 +1030,14 @@ namespace DungeonPlayer
 
         public void tapSave()
         {
-            SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, false);
+            SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, this);
         }
         public void tapLoad()
         {
-            SceneDimension.CallSaveLoad(Database.TruthHomeTown, false, false, false);
+            this.Filter.SetActive(true);
+            SceneDimension.CallSaveLoad(Database.TruthHomeTown, false, false, this);
         }
 
-        private string exitMessage1 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
-        private string exitMessage2 = "タイトルへ戻りますか？";
-        public void ExitYes()
-        {
-            if (yesnoSystemMessage.text == exitMessage1)
-            {
-                GroundOne.TruthHomeTown_NowExit = true;
-                SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, false);
-            }
-            else if (yesnoSystemMessage.text == exitMessage2)
-            {
-                GroundOne.TruthHomeTown_NowExit = false;
-                SceneDimension.Back();
-            }
-        }
-        public void ExitNo()
-        {
-            if (yesnoSystemMessage.text == exitMessage1)
-            {
-                yesnoSystemMessage.text = exitMessage2;
-            }
-            else if (yesnoSystemMessage.text == exitMessage2)
-            {
-                yesnoSystemMessage.text = exitMessage1;
-                groupYesnoSystemMessage.SetActive(false);
-            }
-            GroundOne.TruthHomeTown_NowExit = false;
-        }
         public void tapExit()
         {
             groupYesnoSystemMessage.SetActive(true);
