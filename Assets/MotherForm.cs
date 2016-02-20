@@ -23,6 +23,7 @@ namespace DungeonPlayer
 
         protected string exitMessage1 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
         protected string exitMessage2 = "タイトルへ戻りますか？";
+        protected string exitMessage3 = "ユングの町に戻りますか？";
 
         public Text yesnoSystemMessage;
         public GameObject groupYesnoSystemMessage;
@@ -61,6 +62,11 @@ namespace DungeonPlayer
                 GroundOne.TruthHomeTown_NowExit = false;
                 SceneDimension.JumpToTitle();
             }
+            else if (yesnoSystemMessage.text == exitMessage3)
+            {
+                GroundOne.TruthHomeTown_NowExit = false;
+                SceneDimension.CallTruthHomeTown(this.GetType().ToString());
+            }
         }
 
         public void ExitNo()
@@ -74,8 +80,11 @@ namespace DungeonPlayer
                 this.yesnoSystemMessage.text = exitMessage1;
                 this.groupYesnoSystemMessage.SetActive(false);
             }
+            else if (this.yesnoSystemMessage.text == exitMessage3)
+            {
+                this.groupYesnoSystemMessage.SetActive(false);
+            }
             GroundOne.TruthHomeTown_NowExit = false;
         }
-
     }
 }

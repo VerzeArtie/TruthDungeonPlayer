@@ -182,7 +182,7 @@ namespace DungeonPlayer
             }
             #endregion
             #region "看板３を見る前でも、大広間に到達した時"
-            if ((GroundOne.WE.dungeonEvent11KeyOpen || GroundOne.WE.dungeonEvent12KeyOpen || GroundOne.WE.dungeonEvent13KeyOpen || GroundOne.WE.dungeonEvent14KeyOpen) &&
+            else if ((GroundOne.WE.dungeonEvent11KeyOpen || GroundOne.WE.dungeonEvent12KeyOpen || GroundOne.WE.dungeonEvent13KeyOpen || GroundOne.WE.dungeonEvent14KeyOpen) &&
                 GroundOne.WE.Truth_CommunicationJoinPartyLana == false && GroundOne.WE.AvailableSecondCharacter == false)
             {
             	MessagePack.Message20102(ref nowMessage, ref nowEvent);
@@ -226,7 +226,7 @@ namespace DungeonPlayer
             }
             #endregion
             #region "２階、地の部屋、選択失敗"
-            if (GroundOne.WE.dungeonEvent206 && !GroundOne.WE.dungeonEvent207 && GroundOne.WE.dungeonEvent207FailEvent2)
+            else if (GroundOne.WE.dungeonEvent206 && !GroundOne.WE.dungeonEvent207 && GroundOne.WE.dungeonEvent207FailEvent2)
             {
                 MessagePack.Message20201(ref nowMessage, ref nowEvent);
                 NormalTapOK();
@@ -347,6 +347,7 @@ namespace DungeonPlayer
             #endregion
             else
             {
+                Debug.Log("shown else");
                 mainMessage.text = "アイン：さて、何すっかな";
             }
         }
@@ -1034,7 +1035,6 @@ namespace DungeonPlayer
         }
         public void tapLoad()
         {
-            this.Filter.SetActive(true);
             SceneDimension.CallSaveLoad(Database.TruthHomeTown, false, false, this);
         }
 

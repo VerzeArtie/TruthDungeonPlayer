@@ -5198,6 +5198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50490536abc10c34c90b080f10d83129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yesnoSystemMessage: {fileID: 2032365743}
+  groupYesnoSystemMessage: {fileID: 1370020383}
   Filter: {fileID: 1983497975}
   groupPlayerList: {fileID: 154994785}
   FirstPlayerPanel: {fileID: 1814772390}
@@ -5224,8 +5226,6 @@ MonoBehaviour:
   currentManaValue1: {fileID: 794660549}
   currentManaValue2: {fileID: 1724160190}
   currentManaValue3: {fileID: 2119086146}
-  yesnoSystemMessage: {fileID: 2032365743}
-  groupYesnoSystemMessage: {fileID: 1370020383}
   prefab_BlueWall_T: {fileID: 2025930976}
   prefab_BlueWall_B: {fileID: 1515855725}
   prefab_BlueWall_L: {fileID: 593935303}

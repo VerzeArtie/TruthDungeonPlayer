@@ -7089,6 +7089,8 @@ namespace DungeonPlayer
                 }
             }
 
+            this.Filter.GetComponent<Image>().color = Color.white;
+            this.Filter.SetActive(true);
             SceneDimension.CallSaveLoad(Database.TruthDungeon, true, false, this);
             //Camera camera = Camera.main;
             //camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 10);
@@ -7146,7 +7148,6 @@ namespace DungeonPlayer
             //    }
             //}
 
-            this.Filter.SetActive(true);
             SceneDimension.CallSaveLoad(Database.TruthDungeon, false, false, this);
            
             // todo (この後、画面を再ロードするか、ロード先の画面へジャンプする必要がある）
@@ -7435,8 +7436,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.GotoHomeTown)
                 {
-                    btnYes.enabled = true; btnYes.gameObject.SetActive(true);
-                    btnNo.enabled = true; btnNo.gameObject.SetActive(true);
+                    yesnoSystemMessage.text = exitMessage3;
+                    groupYesnoSystemMessage.SetActive(true);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.GotoDungeon2)
                 {

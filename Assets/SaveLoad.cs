@@ -1325,8 +1325,6 @@ namespace DungeonPlayer
             for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
             {
                 GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
-                //    string temp = xml.GetElementsByTagName("truthTileOne" + ii.ToString())[0].InnerText;
-            //    GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(temp);
             }
             Debug.Log(DateTime.Now.ToString());
             Debug.Log("ExecLoad 8-1 " + DateTime.Now);

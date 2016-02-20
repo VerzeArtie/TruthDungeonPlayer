@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace DungeonPlayer
 {
@@ -24,6 +25,15 @@ namespace DungeonPlayer
             GroundOne.SaveMode = SaveMode;
             GroundOne.AfterBacktoTitle = AfterBacktoTitle;
             GroundOne.ParentScene = scene;
+            if (SaveMode)
+            {
+                scene.Filter.GetComponent<Image>().color = UnityColor.Salmon;
+            }
+            else
+            {
+                scene.Filter.GetComponent<Image>().color = UnityColor.Aqua;
+            }
+            scene.Filter.SetActive(true);
             Application.LoadLevelAdditive(Database.SaveLoad);
         }
 

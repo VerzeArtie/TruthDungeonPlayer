@@ -65,9 +65,7 @@ namespace DungeonPlayer
         #region "ダンジョン内"
         public static void MessageBackToTown(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：ユングの町に戻るか？"); eventList.Add(ActionEvent.None);
-
-            messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTown);
+            messageList.Add("アイン：ユングの町に戻るか？"); eventList.Add(ActionEvent.GotoHomeTown);
         }
 
         public static void MessageNotFound(ref List<string> messageList, ref List<ActionEvent> eventList)
