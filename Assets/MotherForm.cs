@@ -21,9 +21,9 @@ namespace DungeonPlayer
             }
         }
 
-        protected string exitMessage1 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
-        protected string exitMessage2 = "タイトルへ戻りますか？";
-        protected string exitMessage3 = "ユングの町に戻りますか？";
+        protected string exitMessage1 = @"セーブしていない場合、現在データは破棄されます。セーブしますか？";
+        protected string exitMessage2 = @"タイトルへ戻りますか？";
+        protected string exitMessage3 = @"ユングの町に戻りますか？";
 
         public Text yesnoSystemMessage;
         public GameObject groupYesnoSystemMessage;

@@ -176,7 +176,6 @@ namespace DungeonPlayer
             MC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
             MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_ANGEL_DUST));
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
             MC.FreshHeal = true;

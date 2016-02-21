@@ -1020,6 +1020,8 @@ namespace DungeonPlayer
 
         public static string TEXT_VIGILANCE_MODE = @"警戒モード";
         public static string TEXT_FINDENEMY_MODE = @"索敵モード";
+        public static string VIGILANCE_MODE_RESOURCE = @"VigilanceMode";
+        public static string FINDENEMY_MODE_RESOURCE = @"PathfindingMode";
 
         public static string InstallComponentError = @"ご迷惑おかけしております。SlimDXコンポーネント、または、DirectXコンポーネントの初期化に失敗しました。\r\nBGMと効果音をオフにします。\r\n大変お手数ですが、お使いのＰＣ環境を確認してください。";
         public static string BattleRoutineError = @"戦闘中にエラーが発生しました。大変ご迷惑おかけしております。お手数ですが、再起動してやり直してください。";
@@ -1055,8 +1057,8 @@ namespace DungeonPlayer
         public static int INFINITY = 99999;
 
         public static int TILE_AREA_NUM = 4;
-        public static string TREASURE_BOX = @"TreasureBox.bmp";
-        public static string TREASURE_BOX_OPEN = @"TreasureBoxOpen.bmp";
+        public static string TREASURE_BOX = @"TreasureBox";
+        public static string TREASURE_BOX_OPEN = @"TreasureBoxOpen";
         public static string BOARD = @"Board.bmp";
         public static string UPSTAIR = @"Upstair.bmp";
         public static string DOWNSTAIR = @"Downstair.bmp";
