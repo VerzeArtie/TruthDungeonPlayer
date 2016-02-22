@@ -1233,16 +1233,16 @@ namespace DungeonPlayer
                 }
                 EncountBattle(false, false, false, false);
             }
-            else
-            {
-                if (Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.UpArrow) ||
+            else if (Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.UpArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha4) || Input.GetKeyUp(KeyCode.LeftArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha6) || Input.GetKeyUp(KeyCode.RightArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.DownArrow))
-                {
-                    CancelKeyDownMovement();
-                }
-                else if (Input.GetKey(KeyCode.Alpha8) || Input.GetKey(KeyCode.UpArrow))
+            {
+                CancelKeyDownMovement();
+            }
+            else if (this.Filter.activeInHierarchy == false)
+            {
+                if (Input.GetKey(KeyCode.Alpha8) || Input.GetKey(KeyCode.UpArrow))
                 {
                     this.keyUp = true;
                     this.keyDown = false;
@@ -7421,6 +7421,8 @@ namespace DungeonPlayer
         {
             if (this.nowReading < this.nowMessage.Count)
             {
+                this.Filter.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+                this.Filter.SetActive(true);
                 this.btnOK.enabled = true;
                 this.btnOK.gameObject.SetActive(true);
 
@@ -7679,6 +7681,8 @@ namespace DungeonPlayer
 
                 this.btnOK.enabled = false;
                 this.btnOK.gameObject.SetActive(false);
+                this.Filter.GetComponent<Image>().color = Color.white;
+                this.Filter.SetActive(false);
             }
         }
 

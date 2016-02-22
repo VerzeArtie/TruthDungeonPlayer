@@ -196,7 +196,7 @@ namespace DungeonPlayer
 
                                 //UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：（駄目だ・・・ラナが許してくれそうにもねえ・・・）"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationRight); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：（駄目だ・・・ラナが許してくれそうにもねえ・・・）"); eventList.Add(ActionEvent.UpdateLocationRight);
 
                                 messageList.Add("アイン：（もう少し、レベルアップするか何かしないとな・・・）"); eventList.Add(ActionEvent.None);
                             }
@@ -222,11 +222,11 @@ namespace DungeonPlayer
                             {
                                 messageList.Add("ラナ：・・・ちょっと！？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：分かった、分かった・・・分かりました、ラナ様・・・"); eventList.Add(ActionEvent.None);
+                                messageList.Add("アイン：分かった、分かった・・・分かりました、ラナ様・・・"); eventList.Add(ActionEvent.UpdateLocationRight);
 
                                 //UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None);
 
-                                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationRight); eventList.Add(ActionEvent.None);
+                                messageList.Add(""); eventList.Add(ActionEvent.None);
                             }
                             else
                             {

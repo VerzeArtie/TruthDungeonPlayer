@@ -5556,7 +5556,6 @@ MonoBehaviour:
   prefab_TILEINFO_7: {fileID: 322881747}
   prefab_TILEINFO_8: {fileID: 905203015}
   prefab_TILEINFO_9: {fileID: 157702173}
-  prefab_TREASURE_BOX_OPEN: {fileID: 1673008700}
   prefab_TILEINFO_10: {fileID: 1830772827}
   prefab_TILEINFO_10_2: {fileID: 1957815192}
   prefab_TILEINFO_11: {fileID: 1186893499}
@@ -6298,11 +6297,11 @@ RectTransform:
   - {fileID: 627230558}
   m_Father: {fileID: 1408778859}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -438, y: 93}
-  m_SizeDelta: {x: -1493, y: 63}
-  m_Pivot: {x: 1, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 634.000549, y: -689.599976}
+  m_SizeDelta: {x: 121, y: 40.7999992}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629672097
 MonoBehaviour:
   m_ObjectHideFlags: 0
