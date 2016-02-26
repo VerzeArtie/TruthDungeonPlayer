@@ -147,8 +147,8 @@ namespace DungeonPlayer
             // debug
             WE.AvailableInstantCommand = true;
             GroundOne.enemyName1 = Database.DUEL_DUMMY_SUBURI; // DUEL_EONE_FULNEA;
-            GroundOne.WE.AvailableSecondCharacter = true;
-            GroundOne.WE.AvailableThirdCharacter = true;
+            //GroundOne.WE.AvailableSecondCharacter = true;
+            //GroundOne.WE.AvailableThirdCharacter = true;
             GroundOne.DuelMode = true;
             MC.Agility = 750;
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
