@@ -705,7 +705,13 @@ namespace DungeonPlayer
                     if (childList2[ii].Name.Contains(OTHER1))
                     {
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER1.Length, childList2[ii].Name.Length - OTHER1.Length));
+                        int row = targetNumber / Database.TRUTH_DUNGEON_COLUMN;
+                        int column = targetNumber % Database.TRUTH_DUNGEON_COLUMN;
                         GameObject current = Instantiate(this.prefab_TILEINFO_9, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject;
+                        if (DetectOpenTreasure(new Vector3(column, -row, 0)))
+                        {
+                            current.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.TREASURE_BOX_OPEN);
+                        }
                         this.objList.Add(current);
                         this.objTreasureList.Add(current);
                         this.objTreasureNum.Add(targetNumber);
@@ -6508,6 +6514,174 @@ namespace DungeonPlayer
             return false;
         }
 
+        bool DetectOpenTreasure(Vector3 pos)
+        {
+            if ((((GroundOne.WE.TruthTreasure11 && pos.y == -13 && pos.x == 34) ||
+                    (GroundOne.WE.TruthTreasure12 && pos.y == -21 && pos.x == 53) ||
+                    (GroundOne.WE.TruthTreasure13 && (pos.y == -29 && pos.x == 29)) ||
+                    (GroundOne.WE.TruthTreasure14 && (pos.y == -8 && pos.x == 33)) ||
+                    (GroundOne.WE.TruthTreasure15 && (pos.y == -1 && pos.x == 22)) ||
+                    (GroundOne.WE.TruthTreasure121 && (pos.y == -1 && pos.x == 40)) ||
+                    (GroundOne.WE.TruthTreasure122 && (pos.y == -1 && pos.x == 53)) ||
+                    (GroundOne.WE.TruthTreasure123 && (pos.y == -8 && pos.x == 49)) ||
+                    (GroundOne.WE.TruthTreasure124 && (pos.y == -12 && pos.x == 24)) ||
+                    (GroundOne.WE.TruthTreasure125 && (pos.y == -18 && pos.x == 9)) ||
+                    (GroundOne.WE.TruthTreasure126 && (pos.y == -20 && pos.x == 45)) ||
+                    (GroundOne.WE.TruthTreasure127 && (pos.y == -24 && pos.x == 52)) ||
+                    (GroundOne.WE.TruthTreasure128 && (pos.y == -26 && pos.x == 52)) ||
+                    (GroundOne.WE.TruthTreasure129 && (pos.y == -28 && pos.x == 43)) ||
+                    (GroundOne.WE.TruthTreasure1210 && (pos.y == -35 && pos.x == 26)) ||
+                    (GroundOne.WE.TruthTreasure1211 && (pos.y == -35 && pos.x == 34)) ||
+                    (GroundOne.WE.TruthTreasure1212 && (pos.y == -38 && pos.x == 48)) ||
+                    (GroundOne.WE.TruthTreasure131 && (pos.y == -9 && pos.x == 7)) ||
+                    (GroundOne.WE.TruthTreasure132 && (pos.y == -18 && pos.x == 1)) ||
+                    (GroundOne.WE.TruthTreasure133 && (pos.y == -22 && pos.x == 8)) ||
+                    (GroundOne.WE.TruthTreasure134 && (pos.y == -36 && pos.x == 12)) ||
+                    (GroundOne.WE.TruthTreasure141 && (pos.y == -8 && pos.x == 19)) ||
+                    (GroundOne.WE.TruthTreasure142 && (pos.y == -16 && pos.x == 8))) && GroundOne.WE.DungeonArea == 1) ||
+                (((GroundOne.WE.TruthTreasure21 && (pos.y == -16 && pos.x == 59)) ||
+                    (GroundOne.WE.TruthTreasure22 && (pos.y == -12 && pos.x == 35)) ||
+                    (GroundOne.WE.TruthTreasure23 && (pos.y == -5 && pos.x == 55)) ||
+                    (GroundOne.WE.TruthTreasure24 && (pos.y == -25 && pos.x == 59)) ||
+                    (GroundOne.WE.TruthTreasure25 && (pos.y == -27 && pos.x == 46)) ||
+                    (GroundOne.WE.TruthTreasure26 && (pos.y == -27 && pos.x == 34)) ||
+                    (GroundOne.WE.TruthTreasure27 && (pos.y == -34 && pos.x == 34)) ||
+                    (GroundOne.WE.TruthTreasure28 && (pos.y == -34 && pos.x == 46)) ||
+                    (GroundOne.WE.TruthTreasure29 && (pos.y == -34 && pos.x == 58)) ||
+                    (GroundOne.WE.TruthTreasure210 && (pos.y == -39 && pos.x == 31)) ||
+                    (GroundOne.WE.TruthTreasure211 && (pos.y == -15 && pos.x == 13)) ||
+                    (GroundOne.WE.TruthTreasure212 && (pos.y == -6 && pos.x == 29)) ||
+                    (GroundOne.WE.TruthTreasure213 && (pos.y == -39 && pos.x == 23)) ||
+                    (GroundOne.WE.TruthTreasure214 && (pos.y == -31 && pos.x == 22)) ||
+                    (GroundOne.WE.TruthTreasure215 && (pos.y == -19 && pos.x == 22)) ||
+                    (GroundOne.WE.TruthTreasure216 && (pos.y == -19 && pos.x == 4)) ||
+                    (GroundOne.WE.TruthTreasure217 && (pos.y == -28 && pos.x == 6)) ||
+                    (GroundOne.WE.TruthTreasure218 && (pos.y == -39 && pos.x == 10))) && GroundOne.WE.DungeonArea == 2) ||
+                (((GroundOne.WE.TruthTreasure301 && (pos.y == -0 && pos.x == 3)) ||
+                    (GroundOne.WE.TruthTreasure302 && (pos.y == -39 && pos.x == 3)) ||
+                    (GroundOne.WE.TruthTreasure303 && (pos.y == -4 && pos.x == 19)) ||
+                    (GroundOne.WE.TruthTreasure304 && (pos.y == -24 && pos.x == 19)) ||
+                    (GroundOne.WE.TruthTreasure305 && (pos.y == -9 && pos.x == 1)) ||
+                    (GroundOne.WE.TruthTreasure306 && (pos.y == -24 && pos.x == 2)) ||
+                    (GroundOne.WE.TruthTreasure307 && (pos.y == -33 && pos.x == 47)) ||
+                    (GroundOne.WE.TruthTreasure308 && (pos.y == -7 && pos.x == 20)) ||
+                    (GroundOne.WE.TruthTreasure309 && (pos.y == -17 && pos.x == 45)) ||
+                    (GroundOne.WE.TruthTreasure310 && (pos.y == -38 && pos.x == 31)) ||
+                    (GroundOne.WE.TruthTreasure311 && (pos.y == -27 && pos.x == 48)) ||
+                    (GroundOne.WE.TruthTreasure312 && (pos.y == -34 && pos.x == 40))) && GroundOne.WE.DungeonArea == 3) ||
+                (((GroundOne.WE.TruthTreasure401 && (pos.y == -15 && pos.x == 43)) ||
+                    (GroundOne.WE.TruthTreasure402 && (pos.y == -12 && pos.x == 42)) ||
+                    (GroundOne.WE.TruthTreasure403 && (pos.y == -0 && pos.x == 44)) ||
+                    (GroundOne.WE.TruthTreasure404 && (pos.y == -7 && pos.x == 29)) ||
+                    (GroundOne.WE.TruthTreasure405 && (pos.y == -12 && pos.x == 29)) ||
+                    (GroundOne.WE.TruthTreasure406 && (pos.y == -3 && pos.x == 46)) ||
+                    (GroundOne.WE.TruthTreasure407 && (pos.y == -10 && pos.x == 59)) ||
+                    (GroundOne.WE.TruthTreasure408 && (pos.y == -9 && pos.x == 52)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_1 && (pos.y == -16 && pos.x == 46)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_2 && (pos.y == -11 && pos.x == 47)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_3 && (pos.y == -8 && pos.x == 37)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_4 && (pos.y == -4 && pos.x == 32)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_5 && (pos.y == -10 && pos.x == 30)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_6 && (pos.y == -13 && pos.x == 40)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_7 && (pos.y == -1 && pos.x == 51)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_8 && (pos.y == -4 && pos.x == 56)) ||
+                    (GroundOne.WE.dungeonEvent4_key1_9 && (pos.y == -16 && pos.x == 54)) ||
+                    (GroundOne.WE.TruthTreasure409 && (pos.y == -7 && pos.x == 0)) ||
+                    (GroundOne.WE.TruthTreasure410 && (pos.y == -9 && pos.x == 3)) ||
+                    (GroundOne.WE.TruthTreasure411 && (pos.y == -11 && pos.x == 1)) ||
+                    (GroundOne.WE.TruthTreasure412 && (pos.y == -12 && pos.x == 5)) ||
+                    (GroundOne.WE.TruthTreasure413 && (pos.y == -13 && pos.x == 8)) ||
+                    (GroundOne.WE.TruthTreasure414 && (pos.y == -15 && pos.x == 7)) ||
+                    (GroundOne.WE.TruthTreasure415 && (pos.y == -20 && pos.x == 4)) ||
+                    (GroundOne.WE.TruthTreasure416 && (pos.y == -21 && pos.x == 13)) ||
+                    (GroundOne.WE.TruthTreasure417 && (pos.y == -24 && pos.x == 2)) ||
+                    (GroundOne.WE.TruthTreasure418 && (pos.y == -23 && pos.x == 3)) ||
+                    (GroundOne.WE.TruthTreasure419 && (pos.y == -23 && pos.x == 7)) ||
+                    (GroundOne.WE.TruthTreasure420 && (pos.y == -24 && pos.x == 10)) ||
+                    (GroundOne.WE.TruthTreasure421 && (pos.y == -23 && pos.x == 13)) ||
+                    (GroundOne.WE.TruthTreasure422 && (pos.y == -20 && pos.x == 14)) ||
+                    (GroundOne.WE.dungeonEvent4_key2_1 && (pos.y == -6 && pos.x == 1)) ||
+                    (GroundOne.WE.dungeonEvent4_key2_2 && (pos.y == -10 && pos.x == 10)) ||
+                    (GroundOne.WE.dungeonEvent4_key2_3 && (pos.y == -15 && pos.x == 1)) ||
+                    (GroundOne.WE.dungeonEvent4_key2_4 && (pos.y == -18 && pos.x == 8)) ||
+                    (GroundOne.WE.dungeonEvent4_key2_5 && (pos.y == -23 && pos.x == 18)) ||
+                    (GroundOne.WE.dungeonEvent4_key22_1 && (pos.y == -0 && pos.x == 0)) ||
+                    (GroundOne.WE.dungeonEvent4_key22_2 && (pos.y == -7 && pos.x == 13)) ||
+                    (GroundOne.WE.dungeonEvent4_key22_3 && (pos.y == -0 && pos.x == 18)) ||
+                    (GroundOne.WE.dungeonEvent4_key22_4 && (pos.y == -7 && pos.x == 28)) ||
+                    (GroundOne.WE.dungeonEvent4_key22_5 && (pos.y == -13 && pos.x == 22)) ||
+                    (GroundOne.WE.dungeonEvent4_key23_1 && (pos.y == -9 && pos.x == 13)) ||
+                    (GroundOne.WE.dungeonEvent4_key23_2 && (pos.y == -9 && pos.x == 18)) ||
+                    (GroundOne.WE.dungeonEvent4_key23_3 && (pos.y == -14 && pos.x == 22)) ||
+                    (GroundOne.WE.dungeonEvent4_key23_4 && (pos.y == -17 && pos.x == 23)) ||
+                    (GroundOne.WE.dungeonEvent4_key23_5 && (pos.y == -15 && pos.x == 27)) ||
+                    (GroundOne.WE.TruthTreasure423 && (pos.y == -6 && pos.x == 8)) ||
+                    (GroundOne.WE.TruthTreasure424 && (pos.y == -3 && pos.x == 10)) ||
+                    (GroundOne.WE.TruthTreasure425 && (pos.y == -0 && pos.x == 5)) ||
+                    (GroundOne.WE.TruthTreasure426 && (pos.y == -0 && pos.x == 12)) ||
+                    (GroundOne.WE.TruthTreasure427 && (pos.y == -0 && pos.x == 27)) ||
+                    (GroundOne.WE.TruthTreasure428 && (pos.y == -2 && pos.x == 27)) ||
+                    (GroundOne.WE.TruthTreasure429 && (pos.y == -11 && pos.x == 27)) ||
+                    (GroundOne.WE.TruthTreasure430 && (pos.y == -13 && pos.x == 25)) ||
+                    (GroundOne.WE.TruthTreasure431 && (pos.y == -4 && pos.x == 18)) ||
+                    (GroundOne.WE.TruthTreasure432 && (pos.y == -2 && pos.x == 23)) ||
+                    (GroundOne.WE.TruthTreasure433 && (pos.y == -6 && pos.x == 24)) ||
+                    (GroundOne.WE.TruthTreasure434 && (pos.y == -6 && pos.x == 18)) ||
+                    (GroundOne.WE.TruthTreasure435 && (pos.y == -9 && pos.x == 15)) ||
+                    (GroundOne.WE.TruthTreasure436 && (pos.y == -10 && pos.x == 17)) ||
+                    (GroundOne.WE.TruthTreasure437 && (pos.y == -10 && pos.x == 21)) ||
+                    (GroundOne.WE.TruthTreasure438 && (pos.y == -14 && pos.x == 17)) ||
+                    (GroundOne.WE.TruthTreasure439 && (pos.y == -12 && pos.x == 20)) ||
+                    (GroundOne.WE.TruthTreasure440 && (pos.y == -14 && pos.x == 20)) ||
+                    (GroundOne.WE.TruthTreasure441 && (pos.y == -15 && pos.x == 23)) ||
+                    (GroundOne.WE.TruthTreasure442 && (pos.y == -17 && pos.x == 27)) ||
+                    (GroundOne.WE.TruthTreasure443 && (pos.y == -29 && pos.x == 7)) ||
+                    (GroundOne.WE.TruthTreasure444 && (pos.y == -35 && pos.x == 10)) ||
+                    (GroundOne.WE.TruthTreasure445 && (pos.y == -33 && pos.x == 14)) ||
+                    (GroundOne.WE.TruthTreasure446 && (pos.y == -36 && pos.x == 3)) ||
+                    (GroundOne.WE.TruthTreasure447 && (pos.y == -34 && pos.x == 5)) ||
+                    (GroundOne.WE.TruthTreasure448 && (pos.y == -39 && pos.x == 10)) ||
+                    (GroundOne.WE.TruthTreasure449 && (pos.y == -36 && pos.x == 12)) ||
+                    (GroundOne.WE.TruthTreasure450 && (pos.y == -39 && pos.x == 14)) ||
+                    (GroundOne.WE.dungeonEvent4_key41_1 && (pos.y == -35 && pos.x == 40)) ||
+                    (GroundOne.WE.dungeonEvent4_key41_2 && (pos.y == -36 && pos.x == 33)) ||
+                    (GroundOne.WE.dungeonEvent4_key41_3 && (pos.y == -37 && pos.x == 31)) ||
+                    (GroundOne.WE.dungeonEvent4_key41_4 && (pos.y == -37 && pos.x == 39)) ||
+                    (GroundOne.WE.dungeonEvent4_key41_5 && (pos.y == -37 && pos.x == 35)) ||
+                    (GroundOne.WE.TruthTreasure451 && (pos.y == -36 && pos.x == 37)) ||
+                    (GroundOne.WE.TruthTreasure452 && (pos.y == -36 && pos.x == 29)) ||
+                    (GroundOne.WE.TruthTreasure453 && (pos.y == -39 && pos.x == 39)) ||
+                    (GroundOne.WE.TruthTreasure454 && (pos.y == -39 && pos.x == 41)) ||
+                    (GroundOne.WE.dungeonEvent4_key42_1 && (pos.y == -31 && pos.x == 50)) ||
+                    (GroundOne.WE.dungeonEvent4_key42_2 && (pos.y == -33 && pos.x == 53)) ||
+                    (GroundOne.WE.dungeonEvent4_key42_3 && (pos.y == -34 && pos.x == 58)) ||
+                    (GroundOne.WE.dungeonEvent4_key42_4 && (pos.y == -30 && pos.x == 56)) ||
+                    (GroundOne.WE.dungeonEvent4_key42_5 && (pos.y == -31 && pos.x == 58)) ||
+                    (GroundOne.WE.dungeonEvent4_key42_6 && (pos.y == -27 && pos.x == 55)) ||
+                    (GroundOne.WE.dungeonEvent4_key42_7 && (pos.y == -24 && pos.x == 55)) ||
+                    (GroundOne.WE.dungeonEvent4_key42_8 && (pos.y == -24 && pos.x == 58)) ||
+                    (GroundOne.WE.TruthTreasure455 && (pos.y == -32 && pos.x == 55)) ||
+                    (GroundOne.WE.TruthTreasure456 && (pos.y == -31 && pos.x == 56)) ||
+                    (GroundOne.WE.TruthTreasure457 && (pos.y == -28 && pos.x == 59)) ||
+                    (GroundOne.WE.TruthTreasure458 && (pos.y == -22 && pos.x == 59)) ||
+                    (GroundOne.WE.TruthTreasure459 && (pos.y == -21 && pos.x == 50)))&& GroundOne.WE.DungeonArea == 4) ||
+                (((GroundOne.WE2.SeekerEvent1002 && (pos.y == -25 && pos.x == 27)) ||
+                    (GroundOne.WE2.SeekerEvent1003 && (pos.y == -24 && pos.x == 27)) ||
+                    (GroundOne.WE2.SeekerEvent1004 && (pos.y == -31 && pos.x == 26)) ||
+                    (GroundOne.WE2.SeekerEvent1005 && (pos.y == -30 && pos.x == 43)) ||
+                    (GroundOne.WE2.SeekerEvent1006 && (pos.y == -32 && pos.x == 27)) ||
+                    (GroundOne.WE2.SeekerEvent1007 && (pos.y == -28 && pos.x == 44)) ||
+                    (GroundOne.WE2.SeekerEvent1008 && (pos.y == -27 && pos.x == 31)) ||
+                    (GroundOne.WE2.SeekerEvent1009 && (pos.y == -28 && pos.x == 38))) && GroundOne.WE.DungeonArea == 4)
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         private void UpdateFieldElement(Vector3 pos)
         {
             int number = GetTileNumber(pos);
@@ -6515,164 +6689,7 @@ namespace DungeonPlayer
             {
                 if (this.objTreasureNum[ii] == number)
                 {
-                    if ((((GroundOne.WE.TruthTreasure11 && pos.y == -13 && pos.x == 34) ||
-                          (GroundOne.WE.TruthTreasure12 && pos.y == -21 && pos.x == 53) ||
-                          (GroundOne.WE.TruthTreasure13 && (pos.y == -29 && pos.x == 29)) ||
-                          (GroundOne.WE.TruthTreasure14 && (pos.y == -8 && pos.x == 33)) ||
-                          (GroundOne.WE.TruthTreasure15 && (pos.y == -1 && pos.x == 22)) ||
-                          (GroundOne.WE.TruthTreasure121 && (pos.y == -1 && pos.x == 40)) ||
-                          (GroundOne.WE.TruthTreasure122 && (pos.y == -1 && pos.x == 53)) ||
-                          (GroundOne.WE.TruthTreasure123 && (pos.y == -8 && pos.x == 49)) ||
-                          (GroundOne.WE.TruthTreasure124 && (pos.y == -12 && pos.x == 24)) ||
-                          (GroundOne.WE.TruthTreasure125 && (pos.y == -18 && pos.x == 9)) ||
-                          (GroundOne.WE.TruthTreasure126 && (pos.y == -20 && pos.x == 45)) ||
-                          (GroundOne.WE.TruthTreasure127 && (pos.y == -24 && pos.x == 52)) ||
-                          (GroundOne.WE.TruthTreasure128 && (pos.y == -26 && pos.x == 52)) ||
-                          (GroundOne.WE.TruthTreasure129 && (pos.y == -28 && pos.x == 43)) ||
-                          (GroundOne.WE.TruthTreasure1210 && (pos.y == -35 && pos.x == 26)) ||
-                          (GroundOne.WE.TruthTreasure1211 && (pos.y == -35 && pos.x == 34)) ||
-                          (GroundOne.WE.TruthTreasure1212 && (pos.y == -38 && pos.x == 48)) ||
-                          (GroundOne.WE.TruthTreasure131 && (pos.y == -9 && pos.x == 7)) ||
-                          (GroundOne.WE.TruthTreasure132 && (pos.y == -18 && pos.x == 1)) ||
-                          (GroundOne.WE.TruthTreasure133 && (pos.y == -22 && pos.x == 8)) ||
-                          (GroundOne.WE.TruthTreasure134 && (pos.y == -36 && pos.x == 12)) ||
-                          (GroundOne.WE.TruthTreasure141 && (pos.y == -8 && pos.x == 19)) ||
-                          (GroundOne.WE.TruthTreasure142 && (pos.y == -16 && pos.x == 8))) && GroundOne.WE.DungeonArea == 1) ||
-                        (((GroundOne.WE.TruthTreasure21 && (pos.y == -16 && pos.x == 59)) ||
-                          (GroundOne.WE.TruthTreasure22 && (pos.y == -12 && pos.x == 35)) ||
-                          (GroundOne.WE.TruthTreasure23 && (pos.y == -5 && pos.x == 55)) ||
-                          (GroundOne.WE.TruthTreasure24 && (pos.y == -25 && pos.x == 59)) ||
-                          (GroundOne.WE.TruthTreasure25 && (pos.y == -27 && pos.x == 46)) ||
-                          (GroundOne.WE.TruthTreasure26 && (pos.y == -27 && pos.x == 34)) ||
-                          (GroundOne.WE.TruthTreasure27 && (pos.y == -34 && pos.x == 34)) ||
-                          (GroundOne.WE.TruthTreasure28 && (pos.y == -34 && pos.x == 46)) ||
-                          (GroundOne.WE.TruthTreasure29 && (pos.y == -34 && pos.x == 58)) ||
-                          (GroundOne.WE.TruthTreasure210 && (pos.y == -39 && pos.x == 31)) ||
-                          (GroundOne.WE.TruthTreasure211 && (pos.y == -15 && pos.x == 13)) ||
-                          (GroundOne.WE.TruthTreasure212 && (pos.y == -6 && pos.x == 29)) ||
-                          (GroundOne.WE.TruthTreasure213 && (pos.y == -39 && pos.x == 23)) ||
-                          (GroundOne.WE.TruthTreasure214 && (pos.y == -31 && pos.x == 22)) ||
-                          (GroundOne.WE.TruthTreasure215 && (pos.y == -19 && pos.x == 22)) ||
-                          (GroundOne.WE.TruthTreasure216 && (pos.y == -19 && pos.x == 4)) ||
-                          (GroundOne.WE.TruthTreasure217 && (pos.y == -28 && pos.x == 6)) ||
-                          (GroundOne.WE.TruthTreasure218 && (pos.y == -39 && pos.x == 10))) && GroundOne.WE.DungeonArea == 2) ||
-                        (((GroundOne.WE.TruthTreasure301 && (pos.y == -0 && pos.x == 3)) ||
-                          (GroundOne.WE.TruthTreasure302 && (pos.y == -39 && pos.x == 3)) ||
-                          (GroundOne.WE.TruthTreasure303 && (pos.y == -4 && pos.x == 19)) ||
-                          (GroundOne.WE.TruthTreasure304 && (pos.y == -24 && pos.x == 19)) ||
-                          (GroundOne.WE.TruthTreasure305 && (pos.y == -9 && pos.x == 1)) ||
-                          (GroundOne.WE.TruthTreasure306 && (pos.y == -24 && pos.x == 2)) ||
-                          (GroundOne.WE.TruthTreasure307 && (pos.y == -33 && pos.x == 47)) ||
-                          (GroundOne.WE.TruthTreasure308 && (pos.y == -7 && pos.x == 20)) ||
-                          (GroundOne.WE.TruthTreasure309 && (pos.y == -17 && pos.x == 45)) ||
-                          (GroundOne.WE.TruthTreasure310 && (pos.y == -38 && pos.x == 31)) ||
-                          (GroundOne.WE.TruthTreasure311 && (pos.y == -27 && pos.x == 48)) ||
-                          (GroundOne.WE.TruthTreasure312 && (pos.y == -34 && pos.x == 40))) && GroundOne.WE.DungeonArea == 3) ||
-                        (((GroundOne.WE.TruthTreasure401 && (pos.y == -15 && pos.x == 43)) ||
-                          (GroundOne.WE.TruthTreasure402 && (pos.y == -12 && pos.x == 42)) ||
-                          (GroundOne.WE.TruthTreasure403 && (pos.y == -0 && pos.x == 44)) ||
-                          (GroundOne.WE.TruthTreasure404 && (pos.y == -7 && pos.x == 29)) ||
-                          (GroundOne.WE.TruthTreasure405 && (pos.y == -12 && pos.x == 29)) ||
-                          (GroundOne.WE.TruthTreasure406 && (pos.y == -3 && pos.x == 46)) ||
-                          (GroundOne.WE.TruthTreasure407 && (pos.y == -10 && pos.x == 59)) ||
-                          (GroundOne.WE.TruthTreasure408 && (pos.y == -9 && pos.x == 52)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_1 && (pos.y == -16 && pos.x == 46)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_2 && (pos.y == -11 && pos.x == 47)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_3 && (pos.y == -8 && pos.x == 37)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_4 && (pos.y == -4 && pos.x == 32)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_5 && (pos.y == -10 && pos.x == 30)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_6 && (pos.y == -13 && pos.x == 40)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_7 && (pos.y == -1 && pos.x == 51)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_8 && (pos.y == -4 && pos.x == 56)) ||
-                          (GroundOne.WE.dungeonEvent4_key1_9 && (pos.y == -16 && pos.x == 54)) ||
-                          (GroundOne.WE.TruthTreasure409 && (pos.y == -7 && pos.x == 0)) ||
-                          (GroundOne.WE.TruthTreasure410 && (pos.y == -9 && pos.x == 3)) ||
-                          (GroundOne.WE.TruthTreasure411 && (pos.y == -11 && pos.x == 1)) ||
-                          (GroundOne.WE.TruthTreasure412 && (pos.y == -12 && pos.x == 5)) ||
-                          (GroundOne.WE.TruthTreasure413 && (pos.y == -13 && pos.x == 8)) ||
-                          (GroundOne.WE.TruthTreasure414 && (pos.y == -15 && pos.x == 7)) ||
-                          (GroundOne.WE.TruthTreasure415 && (pos.y == -20 && pos.x == 4)) ||
-                          (GroundOne.WE.TruthTreasure416 && (pos.y == -21 && pos.x == 13)) ||
-                          (GroundOne.WE.TruthTreasure417 && (pos.y == -24 && pos.x == 2)) ||
-                          (GroundOne.WE.TruthTreasure418 && (pos.y == -23 && pos.x == 3)) ||
-                          (GroundOne.WE.TruthTreasure419 && (pos.y == -23 && pos.x == 7)) ||
-                          (GroundOne.WE.TruthTreasure420 && (pos.y == -24 && pos.x == 10)) ||
-                          (GroundOne.WE.TruthTreasure421 && (pos.y == -23 && pos.x == 13)) ||
-                          (GroundOne.WE.TruthTreasure422 && (pos.y == -20 && pos.x == 14)) ||
-                          (GroundOne.WE.dungeonEvent4_key2_1 && (pos.y == -6 && pos.x == 1)) ||
-                          (GroundOne.WE.dungeonEvent4_key2_2 && (pos.y == -10 && pos.x == 10)) ||
-                          (GroundOne.WE.dungeonEvent4_key2_3 && (pos.y == -15 && pos.x == 1)) ||
-                          (GroundOne.WE.dungeonEvent4_key2_4 && (pos.y == -18 && pos.x == 8)) ||
-                          (GroundOne.WE.dungeonEvent4_key2_5 && (pos.y == -23 && pos.x == 18)) ||
-                          (GroundOne.WE.dungeonEvent4_key22_1 && (pos.y == -0 && pos.x == 0)) ||
-                          (GroundOne.WE.dungeonEvent4_key22_2 && (pos.y == -7 && pos.x == 13)) ||
-                          (GroundOne.WE.dungeonEvent4_key22_3 && (pos.y == -0 && pos.x == 18)) ||
-                          (GroundOne.WE.dungeonEvent4_key22_4 && (pos.y == -7 && pos.x == 28)) ||
-                          (GroundOne.WE.dungeonEvent4_key22_5 && (pos.y == -13 && pos.x == 22)) ||
-                          (GroundOne.WE.dungeonEvent4_key23_1 && (pos.y == -9 && pos.x == 13)) ||
-                          (GroundOne.WE.dungeonEvent4_key23_2 && (pos.y == -9 && pos.x == 18)) ||
-                          (GroundOne.WE.dungeonEvent4_key23_3 && (pos.y == -14 && pos.x == 22)) ||
-                          (GroundOne.WE.dungeonEvent4_key23_4 && (pos.y == -17 && pos.x == 23)) ||
-                          (GroundOne.WE.dungeonEvent4_key23_5 && (pos.y == -15 && pos.x == 27)) ||
-                          (GroundOne.WE.TruthTreasure423 && (pos.y == -6 && pos.x == 8)) ||
-                          (GroundOne.WE.TruthTreasure424 && (pos.y == -3 && pos.x == 10)) ||
-                          (GroundOne.WE.TruthTreasure425 && (pos.y == -0 && pos.x == 5)) ||
-                          (GroundOne.WE.TruthTreasure426 && (pos.y == -0 && pos.x == 12)) ||
-                          (GroundOne.WE.TruthTreasure427 && (pos.y == -0 && pos.x == 27)) ||
-                          (GroundOne.WE.TruthTreasure428 && (pos.y == -2 && pos.x == 27)) ||
-                          (GroundOne.WE.TruthTreasure429 && (pos.y == -11 && pos.x == 27)) ||
-                          (GroundOne.WE.TruthTreasure430 && (pos.y == -13 && pos.x == 25)) ||
-                          (GroundOne.WE.TruthTreasure431 && (pos.y == -4 && pos.x == 18)) ||
-                          (GroundOne.WE.TruthTreasure432 && (pos.y == -2 && pos.x == 23)) ||
-                          (GroundOne.WE.TruthTreasure433 && (pos.y == -6 && pos.x == 24)) ||
-                          (GroundOne.WE.TruthTreasure434 && (pos.y == -6 && pos.x == 18)) ||
-                          (GroundOne.WE.TruthTreasure435 && (pos.y == -9 && pos.x == 15)) ||
-                          (GroundOne.WE.TruthTreasure436 && (pos.y == -10 && pos.x == 17)) ||
-                          (GroundOne.WE.TruthTreasure437 && (pos.y == -10 && pos.x == 21)) ||
-                          (GroundOne.WE.TruthTreasure438 && (pos.y == -14 && pos.x == 17)) ||
-                          (GroundOne.WE.TruthTreasure439 && (pos.y == -12 && pos.x == 20)) ||
-                          (GroundOne.WE.TruthTreasure440 && (pos.y == -14 && pos.x == 20)) ||
-                          (GroundOne.WE.TruthTreasure441 && (pos.y == -15 && pos.x == 23)) ||
-                          (GroundOne.WE.TruthTreasure442 && (pos.y == -17 && pos.x == 27)) ||
-                          (GroundOne.WE.TruthTreasure443 && (pos.y == -29 && pos.x == 7)) ||
-                          (GroundOne.WE.TruthTreasure444 && (pos.y == -35 && pos.x == 10)) ||
-                          (GroundOne.WE.TruthTreasure445 && (pos.y == -33 && pos.x == 14)) ||
-                          (GroundOne.WE.TruthTreasure446 && (pos.y == -36 && pos.x == 3)) ||
-                          (GroundOne.WE.TruthTreasure447 && (pos.y == -34 && pos.x == 5)) ||
-                          (GroundOne.WE.TruthTreasure448 && (pos.y == -39 && pos.x == 10)) ||
-                          (GroundOne.WE.TruthTreasure449 && (pos.y == -36 && pos.x == 12)) ||
-                          (GroundOne.WE.TruthTreasure450 && (pos.y == -39 && pos.x == 14)) ||
-                          (GroundOne.WE.dungeonEvent4_key41_1 && (pos.y == -35 && pos.x == 40)) ||
-                          (GroundOne.WE.dungeonEvent4_key41_2 && (pos.y == -36 && pos.x == 33)) ||
-                          (GroundOne.WE.dungeonEvent4_key41_3 && (pos.y == -37 && pos.x == 31)) ||
-                          (GroundOne.WE.dungeonEvent4_key41_4 && (pos.y == -37 && pos.x == 39)) ||
-                          (GroundOne.WE.dungeonEvent4_key41_5 && (pos.y == -37 && pos.x == 35)) ||
-                          (GroundOne.WE.TruthTreasure451 && (pos.y == -36 && pos.x == 37)) ||
-                          (GroundOne.WE.TruthTreasure452 && (pos.y == -36 && pos.x == 29)) ||
-                          (GroundOne.WE.TruthTreasure453 && (pos.y == -39 && pos.x == 39)) ||
-                          (GroundOne.WE.TruthTreasure454 && (pos.y == -39 && pos.x == 41)) ||
-                          (GroundOne.WE.dungeonEvent4_key42_1 && (pos.y == -31 && pos.x == 50)) ||
-                          (GroundOne.WE.dungeonEvent4_key42_2 && (pos.y == -33 && pos.x == 53)) ||
-                          (GroundOne.WE.dungeonEvent4_key42_3 && (pos.y == -34 && pos.x == 58)) ||
-                          (GroundOne.WE.dungeonEvent4_key42_4 && (pos.y == -30 && pos.x == 56)) ||
-                          (GroundOne.WE.dungeonEvent4_key42_5 && (pos.y == -31 && pos.x == 58)) ||
-                          (GroundOne.WE.dungeonEvent4_key42_6 && (pos.y == -27 && pos.x == 55)) ||
-                          (GroundOne.WE.dungeonEvent4_key42_7 && (pos.y == -24 && pos.x == 55)) ||
-                          (GroundOne.WE.dungeonEvent4_key42_8 && (pos.y == -24 && pos.x == 58)) ||
-                          (GroundOne.WE.TruthTreasure455 && (pos.y == -32 && pos.x == 55)) ||
-                          (GroundOne.WE.TruthTreasure456 && (pos.y == -31 && pos.x == 56)) ||
-                          (GroundOne.WE.TruthTreasure457 && (pos.y == -28 && pos.x == 59)) ||
-                          (GroundOne.WE.TruthTreasure458 && (pos.y == -22 && pos.x == 59)) ||
-                          (GroundOne.WE.TruthTreasure459 && (pos.y == -21 && pos.x == 50)))&& GroundOne.WE.DungeonArea == 4) ||
-                        (((GroundOne.WE2.SeekerEvent1002 && (pos.y == -25 && pos.x == 27)) ||
-                          (GroundOne.WE2.SeekerEvent1003 && (pos.y == -24 && pos.x == 27)) ||
-                          (GroundOne.WE2.SeekerEvent1004 && (pos.y == -31 && pos.x == 26)) ||
-                          (GroundOne.WE2.SeekerEvent1005 && (pos.y == -30 && pos.x == 43)) ||
-                          (GroundOne.WE2.SeekerEvent1006 && (pos.y == -32 && pos.x == 27)) ||
-                          (GroundOne.WE2.SeekerEvent1007 && (pos.y == -28 && pos.x == 44)) ||
-                          (GroundOne.WE2.SeekerEvent1008 && (pos.y == -27 && pos.x == 31)) ||
-                          (GroundOne.WE2.SeekerEvent1009 && (pos.y == -28 && pos.x == 38))) && GroundOne.WE.DungeonArea == 4)
-                        )
+                    if (DetectOpenTreasure(pos))
                     {
                         this.objTreasureList[ii].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.TREASURE_BOX_OPEN);
                     }

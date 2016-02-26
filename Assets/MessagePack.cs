@@ -379,7 +379,7 @@ namespace DungeonPlayer
         {
             if (GroundOne.WE.dungeonEvent21KeyOpen && GroundOne.WE.dungeonEvent22KeyOpen && GroundOne.WE.dungeonEvent23KeyOpen && GroundOne.WE.dungeonEvent24KeyOpen && !GroundOne.WE.dungeonEvent27 && !GroundOne.WE.dungeonEvent28KeyOpen)
             {
-                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.TurnToBlack); eventList.Add(ActionEvent.None);
+                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.TurnToBlack);
 
                 messageList.Add("　　　　『真実解１　　＜始まりの地にて＞　　地点【４７　２９】』"); eventList.Add(ActionEvent.None);
 
@@ -407,11 +407,11 @@ namespace DungeonPlayer
 
                 messageList.Add("ラナ：遠見の青水晶を使うわ。ッハイ！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.ReturnToNormal); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
 
                 GroundOne.WE.dungeonEvent27 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.HomeTown); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTown);
             }
             else
             {
@@ -470,7 +470,7 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.EncountFlansis); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.EncountFlansis);
         }
         public static void Message10012(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -513,7 +513,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
@@ -528,7 +528,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenLeft);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
@@ -557,7 +557,7 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
                     messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None);
 
@@ -565,7 +565,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenLeft);
 
                     if (GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen)
                     {
@@ -573,7 +573,7 @@ namespace DungeonPlayer
 
                         messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BigEntranceOpen); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.BigEntranceOpen);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
@@ -658,7 +658,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
@@ -673,7 +673,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenTop); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenTop);
 
                     messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None);
 
@@ -687,7 +687,7 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
 
                     messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None);
 
@@ -695,7 +695,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenTop); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenTop);
 
                     if (GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen)
                     {
@@ -703,7 +703,7 @@ namespace DungeonPlayer
 
                         messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BigEntranceOpen); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.BigEntranceOpen);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
@@ -788,7 +788,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
@@ -803,7 +803,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenLeft);
 
                     messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None);
 
@@ -817,7 +817,7 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
                     messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None);
 
@@ -825,7 +825,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenLeft);
 
 
                     if (GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent14KeyOpen)
@@ -834,7 +834,7 @@ namespace DungeonPlayer
 
                         messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BigEntranceOpen); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.BigEntranceOpen);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
@@ -920,7 +920,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：何かの扉みたいが見えるな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationBottom); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationBottom);
 
                     if (GroundOne.WE.AvailableSecondCharacter)
                     {
@@ -935,7 +935,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenBottom); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenBottom);
 
                     messageList.Add("アイン：どうやら、でかい広間に出たみたいだな。"); eventList.Add(ActionEvent.None);
 
@@ -949,7 +949,7 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：おし、扉が見えてきたぜ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationBottom); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationBottom);
 
                     messageList.Add("アイン：ここを開ければ、大広間に繋がってるはずだ。"); eventList.Add(ActionEvent.None);
 
@@ -957,7 +957,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenBottom); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenBottom);
 
                     if (GroundOne.WE.dungeonEvent11KeyOpen && GroundOne.WE.dungeonEvent12KeyOpen && GroundOne.WE.dungeonEvent13KeyOpen)
                     {
@@ -965,7 +965,7 @@ namespace DungeonPlayer
 
                         messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BigEntranceOpen); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.BigEntranceOpen);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
@@ -1017,9 +1017,9 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：おっと、何だこりゃ。扉か？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateUnknownTile); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTile);
 
                     messageList.Add("アイン：くそっ、開かねえな。"); eventList.Add(ActionEvent.None);
 
@@ -1113,9 +1113,9 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：おっ、ここも扉ってワケか。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateUnknownTile); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTile);
 
                     messageList.Add("アイン：やっぱりココも開かないようだな。"); eventList.Add(ActionEvent.None);
 
@@ -1301,7 +1301,7 @@ namespace DungeonPlayer
                         messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
 
                     messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None);
 
@@ -1314,7 +1314,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen1); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.SmallEntranceOpen1);
 
                     messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None);
 
@@ -1344,13 +1344,13 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
 
                     messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen1); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.SmallEntranceOpen1);
 
                     if (GroundOne.WE.dungeonEvent22KeyOpen && GroundOne.WE.dungeonEvent23KeyOpen)
                     {
@@ -1365,7 +1365,7 @@ namespace DungeonPlayer
 
                         messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.CenterBlueOpen); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.CenterBlueOpen);
                         
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
@@ -1445,7 +1445,7 @@ namespace DungeonPlayer
                         messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
 
                     messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None);
 
@@ -1458,7 +1458,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen1); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.SmallEntranceOpen1);
 
                     messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None);
 
@@ -1488,13 +1488,13 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationTop); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
 
                     messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen1); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.SmallEntranceOpen1);
 
                     if (GroundOne.WE.dungeonEvent21KeyOpen && GroundOne.WE.dungeonEvent23KeyOpen)
                     {
@@ -1509,7 +1509,7 @@ namespace DungeonPlayer
 
                         messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.CenterBlueOpen); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.CenterBlueOpen);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
@@ -1612,7 +1612,7 @@ namespace DungeonPlayer
                     }
                 }
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
@@ -1627,7 +1627,7 @@ namespace DungeonPlayer
 
                 messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen2); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.SmallEntranceOpen2);
 
                 messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
@@ -1729,7 +1729,7 @@ namespace DungeonPlayer
                         messageList.Add("アイン：ああ、少しだけ調べてみるとするか！"); eventList.Add(ActionEvent.None);
                     }
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
                     messageList.Add("アイン：オーケーオーケー。鍵はかかってねえな。"); eventList.Add(ActionEvent.None);
 
@@ -1742,7 +1742,7 @@ namespace DungeonPlayer
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen2); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.SmallEntranceOpen2);
 
                     messageList.Add("アイン：へえ、少し狭めの広間に出たな。"); eventList.Add(ActionEvent.None);
 
@@ -1772,13 +1772,13 @@ namespace DungeonPlayer
                 {
                     messageList.Add("アイン：オッケー。小広間に繋がる扉発見！"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.UpdateLocationLeft); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationLeft);
 
                     messageList.Add("アイン：さっそく開けるぜ！"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.SmallEntranceOpen2); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.SmallEntranceOpen2);
 
                     if (GroundOne.WE.dungeonEvent21KeyOpen && GroundOne.WE.dungeonEvent22KeyOpen)
                     {
@@ -1786,7 +1786,7 @@ namespace DungeonPlayer
 
                         messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.CenterBlueOpen); eventList.Add(ActionEvent.None);
+                        messageList.Add(""); eventList.Add(ActionEvent.CenterBlueOpen);
 
                         if (GroundOne.WE.AvailableSecondCharacter)
                         {
@@ -1821,13 +1821,13 @@ namespace DungeonPlayer
 
         public static void Message10050_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：よし、開けるぜ！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.BlueOpenRight); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.BlueOpenRight);
 
             if (GroundOne.WE.AvailableSecondCharacter == false)
             {
@@ -1848,9 +1848,9 @@ namespace DungeonPlayer
 
             GroundOne.WE.dungeonEvent28KeyOpen = true;
 
-            messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-            messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic14); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
         }
 
         public static void Message10050_3(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -1886,9 +1886,9 @@ namespace DungeonPlayer
 
             GroundOne.WE.dungeonEvent25 = true;
 
-            messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-            messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic14); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
         }
 
         public static void Message10050(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -1897,9 +1897,9 @@ namespace DungeonPlayer
             {
                 if (GroundOne.WE.AvailableSecondCharacter == false)
                 {
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic16); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.PlayMusic16);
 
                     messageList.Add("アイン：・・・扉があるな。"); eventList.Add(ActionEvent.None);
 
@@ -1911,13 +1911,13 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：（・・・どうする・・・開けるか・・・開けないべきか・・・）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.DecisionOpenDoor1); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.DecisionOpenDoor1);
                 }
                 else
                 {
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic16); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.PlayMusic16);
 
                     messageList.Add("アイン：扉・・・か。"); eventList.Add(ActionEvent.None);
 
@@ -1959,34 +1959,34 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：（・・・どうする・・・開けるか・・・開けないべきか・・・）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.DecisionOpenDoor1); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.DecisionOpenDoor1);
                 }
             }
             else if (!GroundOne.WE.dungeonEvent28KeyOpen)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic16); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic16);
 
                 messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.DecisionOpenDoor1); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.DecisionOpenDoor1);
             }
         }
         public static void Message10051(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：下り階段発見！さっそく降りるとするか？"); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.YesNoGotoDungeon2); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：下り階段発見！さっそく降りるとするか？"); eventList.Add(ActionEvent.YesNoGotoDungeon2);
         }
 
         public static void Message10051_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.GotoDungeon2); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.GotoDungeon2);
 
             if (!GroundOne.WE.TruthCompleteArea1)
             {
                 messageList.Add("アイン：おし、１階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.GotoHomeTown); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTown); 
             }
         }
 
@@ -2155,15 +2155,15 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.TruthRecollection1 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.TurnToBlack); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
 
                 messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　＜＜＜　力こそが全てである ＞＞＞"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic15); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
 
                 messageList.Add("　　？？？：これは小さい頃から何度も読んでるっての。"); eventList.Add(ActionEvent.None);
 
@@ -2315,11 +2315,11 @@ namespace DungeonPlayer
 
                 messageList.Add("    アイン：あ、あぁ。了解了解！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.StopMusic); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
                 messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.ReturnToNormal); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
 
                 if (GroundOne.WE.AvailableSecondCharacter)
                 {
@@ -2372,7 +2372,7 @@ namespace DungeonPlayer
                     messageList.Add("アイン：っしゃ！１階ボス、目指すとするか！"); eventList.Add(ActionEvent.None);
                 }
 
-                messageList.Add(""); eventList.Add(ActionEvent.None); eventList.Add(ActionEvent.PlayMusic14); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
             }
         }
         #endregion
