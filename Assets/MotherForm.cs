@@ -79,10 +79,12 @@ namespace DungeonPlayer
             {
                 this.yesnoSystemMessage.text = exitMessage1;
                 this.groupYesnoSystemMessage.SetActive(false);
+                this.Filter.SetActive(false);
             }
             else if (this.yesnoSystemMessage.text == exitMessage3)
             {
                 this.groupYesnoSystemMessage.SetActive(false);
+                this.Filter.SetActive(false);
             }
             GroundOne.TruthHomeTown_NowExit = false;
         }

@@ -12,16 +12,16 @@ namespace DungeonPlayer
     public class Title : MotherForm
     {
         public Camera cam;
+        public Text titleText;
         public override void Start()
         {
             base.Start();
-
         }
+
         // Update is called once per frame
         void Update()
         {
         }
-
 
         public void GameStart_Click()
         {
@@ -36,7 +36,6 @@ namespace DungeonPlayer
 
         public void Config_Click()
         {
-
         }
 
         public void Exit_Click()
@@ -46,7 +45,6 @@ namespace DungeonPlayer
 
         public void Seeker_Click()
         {
-
         }
     }
 }

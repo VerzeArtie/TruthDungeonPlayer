@@ -21,6 +21,16 @@ namespace DungeonPlayer
         private int MovementInterval = MOVE_INTERVAL; // ダンジョンマップ全体を見ている時のインターバル
 
         // GUI
+        public GameObject back_playback;
+        public Text[] playbackText;
+        public GameObject GroupsubMenu;
+        public GameObject HelpManual;
+        public GameObject DungeonView;
+        public GameObject PlayBack;
+        public GameObject GroupMenu;
+        public GameObject BlueOrbImage;
+        public GameObject BlueOrbText;
+        public GameObject PathfindingModeImage;
         public GameObject groupPlayerList;
         public GameObject FirstPlayerPanel;
         public GameObject SecondPlayerPanel;
@@ -1256,41 +1266,7 @@ namespace DungeonPlayer
             {
                 if (Input.GetKeyDown(KeyCode.F2))
                 {
-                    this.DungeonViewMode = !this.DungeonViewMode;
-                    if (this.DungeonViewMode)
-                    {
-                        this.DungeonViewModeMasterLocation = new Vector2(this.viewPoint.x, this.viewPoint.y);
-                        this.DungeonViewModeMasterPlayerLocation = new Vector2(this.Player.transform.position.x, this.Player.transform.position.y);
-
-                        this.FirstPlayerPanel.SetActive(false);
-                        this.SecondPlayerPanel.SetActive(false);
-                        this.ThirdPlayerPanel.SetActive(false);
-                        this.labelVigilance.gameObject.SetActive(false);
-
-                        this.MovementInterval = 0;
-                    }
-                    else
-                    {
-                        this.MovementInterval = MOVE_INTERVAL;
-
-                        this.viewPoint = new Vector2(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
-                        this.Player.transform.position = new Vector2(this.DungeonViewModeMasterPlayerLocation.x, this.DungeonViewModeMasterPlayerLocation.y);
-
-                        if (GroundOne.WE.AvailableFirstCharacter)
-                        {
-                            this.FirstPlayerPanel.SetActive(true);
-                        }
-                        if (GroundOne.WE.AvailableSecondCharacter)
-                        {
-                            this.SecondPlayerPanel.SetActive(true);
-                        }
-                        if (GroundOne.WE.AvailableThirdCharacter)
-                        {
-                            this.ThirdPlayerPanel.SetActive(true);
-                        }
-                        this.labelVigilance.gameObject.SetActive(true);
-                        UpdateViewPoint(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
-                    }
+                    DungeonView_Click();
                 }
                 else if (Input.GetKey(KeyCode.Alpha8) || Input.GetKey(KeyCode.UpArrow))
                 {
@@ -7151,6 +7127,50 @@ namespace DungeonPlayer
             }
         }
 
+        public void BookManual_Click()
+        {
+            this.back_playback.SetActive(false);
+        }
+
+        public void DungeonView_Click()
+        {
+            this.back_playback.SetActive(false);
+            this.DungeonViewMode = !this.DungeonViewMode;
+            if (this.DungeonViewMode)
+            {
+                this.DungeonViewModeMasterLocation = new Vector2(this.viewPoint.x, this.viewPoint.y);
+                this.DungeonViewModeMasterPlayerLocation = new Vector2(this.Player.transform.position.x, this.Player.transform.position.y);
+
+                this.GroupMenu.SetActive(false);
+                this.groupPlayerList.SetActive(false);
+                this.labelVigilance.gameObject.SetActive(false);
+                this.PathfindingModeImage.SetActive(false);
+                this.BlueOrbImage.SetActive(false);
+                this.BlueOrbText.SetActive(false);
+                this.MovementInterval = 0;
+            }
+            else
+            {
+                this.MovementInterval = MOVE_INTERVAL;
+
+                this.viewPoint = new Vector2(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
+                this.Player.transform.position = new Vector2(this.DungeonViewModeMasterPlayerLocation.x, this.DungeonViewModeMasterPlayerLocation.y);
+
+                this.GroupMenu.SetActive(true);
+                this.groupPlayerList.SetActive(true);
+                this.labelVigilance.gameObject.SetActive(true);
+                this.PathfindingModeImage.SetActive(true);
+                this.BlueOrbImage.SetActive(true);
+                this.BlueOrbText.SetActive(true);
+                UpdateViewPoint(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
+            }
+        }
+
+        public void PlayBack_Click()
+        {
+            this.back_playback.SetActive(!this.back_playback.activeInHierarchy);
+        }
+
         public void BlueOrb_Click()
         {
             MessagePack.MessageBackToTown(ref this.nowMessage, ref this.nowEvent);
@@ -7456,6 +7476,7 @@ namespace DungeonPlayer
 
         public void tapOK()
         {
+            bool HideFilterComplete = true;
             if (this.nowReading < this.nowMessage.Count)
             {
                 this.Filter.GetComponent<Image>().color = new Color(0, 0, 0, 0);
@@ -7692,6 +7713,7 @@ namespace DungeonPlayer
                 {
                     yesnoSystemMessage.text = exitMessage3;
                     groupYesnoSystemMessage.SetActive(true);
+                    HideFilterComplete = false; // フィルタを消さない。
                 }
                 else if (currentEvent == MessagePack.ActionEvent.GotoDungeon2)
                 {
@@ -7718,8 +7740,11 @@ namespace DungeonPlayer
 
                 this.btnOK.enabled = false;
                 this.btnOK.gameObject.SetActive(false);
-                this.Filter.GetComponent<Image>().color = Color.white;
-                this.Filter.SetActive(false);
+                if (HideFilterComplete)
+                {
+                    this.Filter.GetComponent<Image>().color = Color.white;
+                    this.Filter.SetActive(false);
+                }
             }
         }
 
