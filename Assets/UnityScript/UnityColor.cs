@@ -15,7 +15,7 @@ namespace DungeonPlayer
         public static Color Gainsboro = new Color(220, 220, 220);
         public static Color LightGray = new Color(211, 211, 211);
         public static Color Silver = new Color(192, 192, 192);
-        public static Color Darkgray = new Color(169, 169, 169);
+        public static Color Darkgray = new Color(169.0f/255.0f, 169.0f/255.0f, 169.0f/255.0f);
         public static Color Gray = new Color(128, 128, 128);
         public static Color Dimgray = new Color(105, 105, 105);
         public static Color Black = new Color(0, 0, 0);

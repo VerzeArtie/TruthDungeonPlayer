@@ -641,7 +641,7 @@ namespace DungeonPlayer
             tileInfo5 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
 
             this.Player = Instantiate(this.prefabPlayer, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            ReadDungeonTileFromXmlFile(Application.dataPath + @"/DungeonMapping_T_1.xml");
+            ReadDungeonTileFromXmlFile(@"DungeonMapping_T_1"); // todo
 
             // 始めて開始する場合、あらかじめスタート地点を設定。
             if ((GroundOne.WE.DungeonPosX == 0) && (GroundOne.WE.DungeonPosY == 0))
@@ -670,7 +670,8 @@ namespace DungeonPlayer
         {
             #region "ダンジョンマップをXMLから読み込み"
             XmlDocument xml = new XmlDocument();
-            xml.Load(xmlFileName);
+            TextAsset filename = (TextAsset)Resources.Load(xmlFileName);
+            xml.LoadXml(filename.text);
 
             XmlNodeList currentList = xml.GetElementsByTagName("TileData");
             XmlNodeList childList = currentList[0].ChildNodes;
@@ -7760,6 +7761,50 @@ namespace DungeonPlayer
             MessagePack.Message10050_3(ref this.nowMessage, ref this.nowEvent);
             tapOK();
         }
+        public void tapMovePanel()
+        {
+        }
+
+        public void tapGoTop()
+        {
+            this.keyUp = true;
+            this.keyDown = false;
+            this.keyLeft = false;
+            this.keyRight = false;
+            this.interval = this.MovementInterval;
+            movementTimer_Tick();
+        }
+
+        public void tapGoLeft()
+        {
+            this.keyLeft = true;
+            this.keyRight = false;
+            this.keyDown = false;
+            this.keyUp = false;
+            this.interval = this.MovementInterval;
+            movementTimer_Tick();
+        }
+
+        public void tapGoRight()
+        {
+            this.keyRight = true;
+            this.keyLeft = false;
+            this.keyDown = false;
+            this.keyUp = false;
+            this.interval = this.MovementInterval;
+            movementTimer_Tick();
+        }
+
+        public void tapGoBottom()
+        {
+            this.keyDown = true;
+            this.keyUp = false;
+            this.keyLeft = false;
+            this.keyRight = false;
+            this.interval = this.MovementInterval;
+            movementTimer_Tick();
+        }
+
         public void CallbackHomeTown()
         {
             //this.mc = ht.MC;
