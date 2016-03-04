@@ -676,8 +676,13 @@ namespace DungeonPlayer
             }
             else if (sender.text == "元核")
             {
-                // todo
-                return;
+                // 不要なボタンは非表示（上）にして・・・
+                groupElement.SetActive(false);
+                groupMixElement.SetActive(false);
+                // 必要なボタンは表示（下）させて・・・
+                groupCommand.SetActive(true); // todo [空欄３つは非表示にするべき]
+                // 上ボタン、テキスト更新
+                // （とくになし）
             }
             // 最初の下項目のボタンを選択しておく！
             tapElement(ElementButtonText[0]);
