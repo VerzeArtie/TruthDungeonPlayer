@@ -83,11 +83,6 @@ namespace DungeonPlayer
             }
         }
 
-        //private void SpellButton_Click(object sender)
-        //{
-
-        //}
-
         //private void SkillButton_Click(object sender)
         //{
         //    // まずボタンのサイズを決定
@@ -131,13 +126,13 @@ namespace DungeonPlayer
         //    AttributeButton5.gameObject.SetActive(true);
         //    AttributeButton6.gameObject.SetActive(true);
         //    // 必要なボタンは表示（下）させて・・・
-        //    CommandButton1.gameObject.SetActive(true);
-        //    CommandButton2.gameObject.SetActive(true);
-        //    CommandButton3.gameObject.SetActive(true);
-        //    CommandButton4.gameObject.SetActive(true);
-        //    CommandButton5.gameObject.SetActive(false);
-        //    CommandButton6.gameObject.SetActive(false);
-        //    CommandButton7.gameObject.SetActive(false);
+        //    CommandButtonText[0].gameObject.SetActive(true);
+        //    CommandButtonText[1].gameObject.SetActive(true);
+        //    CommandButtonText[2].gameObject.SetActive(true);
+        //    CommandButtonText[3].gameObject.SetActive(true);
+        //    CommandButtonText[4].gameObject.SetActive(false);
+        //    CommandButtonText[5].gameObject.SetActive(false);
+        //    CommandButtonText[6].gameObject.SetActive(false);
         //    // 上ボタン、色更新
         //    AttributeButton1.BackColor = Color.Gold;
         //    AttributeButton2.BackColor = Color.DarkGray;
@@ -160,7 +155,7 @@ namespace DungeonPlayer
         //    AttributeButton6.Font = new Font(AttributeButton6.Font.FontFamily, baseFontSize, FontStyle.Bold);
         //    // 最初の下項目のボタンを選択しておく！
         //    button1_Click(null, null);
-        //    button7_Click(CommandButton1, null);
+        //    button7_Click(CommandButtonText[0], null);
         //}
 
         //private void button15_Click(object sender)
@@ -206,13 +201,13 @@ namespace DungeonPlayer
         //    MixAttribute14.gameObject.SetActive(true);
         //    MixAttribute15.gameObject.SetActive(true);
         //    // 必要なボタンは表示（下）させて・・・
-        //    CommandButton1.gameObject.SetActive(true);
-        //    CommandButton2.gameObject.SetActive(true);
-        //    CommandButton3.gameObject.SetActive(true);
-        //    CommandButton4.gameObject.SetActive(false);
-        //    CommandButton5.gameObject.SetActive(false);
-        //    CommandButton6.gameObject.SetActive(false);
-        //    CommandButton7.gameObject.SetActive(false);
+        //    CommandButtonText[0].gameObject.SetActive(true);
+        //    CommandButtonText[1].gameObject.SetActive(true);
+        //    CommandButtonText[2].gameObject.SetActive(true);
+        //    CommandButtonText[3].gameObject.SetActive(false);
+        //    CommandButtonText[4].gameObject.SetActive(false);
+        //    CommandButtonText[5].gameObject.SetActive(false);
+        //    CommandButtonText[6].gameObject.SetActive(false);
         //    // 上ボタン、テキスト更新
         //    AttributeButton1.text = "聖/火";
         //    AttributeButton1.Font = new Font(AttributeButton1.Font.FontFamily, extFontSize, FontStyle.Bold);
@@ -262,7 +257,7 @@ namespace DungeonPlayer
         //    MixAttribute15.BackColor = Color.Magenta;
         //    // 最初の下項目のボタンを選択しておく！
         //    button1_Click(null, null);
-        //    button7_Click(CommandButton1, null);
+        //    button7_Click(CommandButtonText[0], null);
         //}
 
         //private void button16_Click(object sender)
@@ -308,13 +303,13 @@ namespace DungeonPlayer
         //    MixAttribute14.gameObject.SetActive(true);
         //    MixAttribute15.gameObject.SetActive(true);
         //    // 必要なボタンは表示（下）させて・・・
-        //    CommandButton1.gameObject.SetActive(true);
-        //    CommandButton2.gameObject.SetActive(true);
-        //    CommandButton3.gameObject.SetActive(false);
-        //    CommandButton4.gameObject.SetActive(false);
-        //    CommandButton5.gameObject.SetActive(false);
-        //    CommandButton6.gameObject.SetActive(false);
-        //    CommandButton7.gameObject.SetActive(false);
+        //    CommandButtonText[0].gameObject.SetActive(true);
+        //    CommandButtonText[1].gameObject.SetActive(true);
+        //    CommandButtonText[2].gameObject.SetActive(false);
+        //    CommandButtonText[3].gameObject.SetActive(false);
+        //    CommandButtonText[4].gameObject.SetActive(false);
+        //    CommandButtonText[5].gameObject.SetActive(false);
+        //    CommandButtonText[6].gameObject.SetActive(false);
         //    // 上ボタン、テキスト更新
         //    AttributeButton1.text = "動/柔";
         //    AttributeButton1.Font = new Font(AttributeButton1.Font.FontFamily, extFontSize, FontStyle.Bold);
@@ -364,7 +359,7 @@ namespace DungeonPlayer
         //    MixAttribute15.BackColor = Color.Magenta;
         //    // 最初の下項目のボタンを選択しておく！
         //    button1_Click(null, null);
-        //    button7_Click(CommandButton1, null);
+        //    button7_Click(CommandButtonText[0], null);
         //}
 
         //private void Archetype_Click(object sender)
@@ -404,13 +399,13 @@ namespace DungeonPlayer
         //    MixAttribute15.gameObject.SetActive(false);
         //    // 必要なボタンは表示（上）
         //    // 必要なボタンは表示（下）させて・・・
-        //    CommandButton1.gameObject.SetActive(true);
-        //    CommandButton2.gameObject.SetActive(false);
-        //    CommandButton3.gameObject.SetActive(false);
-        //    CommandButton4.gameObject.SetActive(false);
-        //    CommandButton5.gameObject.SetActive(false);
-        //    CommandButton6.gameObject.SetActive(false);
-        //    CommandButton7.gameObject.SetActive(false);
+        //    CommandButtonText[0].gameObject.SetActive(true);
+        //    CommandButtonText[1].gameObject.SetActive(false);
+        //    CommandButtonText[2].gameObject.SetActive(false);
+        //    CommandButtonText[3].gameObject.SetActive(false);
+        //    CommandButtonText[4].gameObject.SetActive(false);
+        //    CommandButtonText[5].gameObject.SetActive(false);
+        //    CommandButtonText[6].gameObject.SetActive(false);
         //    // 上ボタン、テキスト更新
         //    AttributeButton1.text = "元核";
         //    AttributeButton1.Font = new Font(AttributeButton1.Font.FontFamily, baseFontSize, FontStyle.Bold);
@@ -418,7 +413,7 @@ namespace DungeonPlayer
         //    AttributeButton1.BackColor = Color.SlateBlue;
         //    // 最初の下項目のボタンを選択しておく！
         //    button1_Click(null, null);
-        //    button7_Click(CommandButton1, null);
+        //    button7_Click(CommandButtonText[0], null);
         //}
 
         private void button1_Click(Text sender)
@@ -446,6 +441,50 @@ namespace DungeonPlayer
                 CommandButtonText[6].text = Database.DAMNATION;
                 targetColor = UnityColor.Darkgray;
             }
+            else if (sender.text == "火")
+            {
+                CommandButtonText[0].text = Database.FIRE_BALL;
+                CommandButtonText[1].text = Database.FLAME_AURA;
+                CommandButtonText[2].text = Database.HEAT_BOOST;
+                CommandButtonText[3].text = Database.FLAME_STRIKE;
+                CommandButtonText[4].text = Database.VOLCANIC_WAVE;
+                CommandButtonText[5].text = Database.IMMORTAL_RAVE;
+                CommandButtonText[6].text = Database.LAVA_ANNIHILATION;
+                targetColor = UnityColor.OrangeRed;
+            }
+            else if (sender.text == "水")
+            {
+                CommandButtonText[0].text = Database.ICE_NEEDLE;
+                CommandButtonText[1].text = Database.ABSORB_WATER;
+                CommandButtonText[2].text = Database.CLEANSING;
+                CommandButtonText[3].text = Database.FROZEN_LANCE;
+                CommandButtonText[4].text = Database.MIRROR_IMAGE;
+                CommandButtonText[5].text = Database.PROMISED_KNOWLEDGE;
+                CommandButtonText[6].text = Database.ABSOLUTE_ZERO;
+                targetColor = UnityColor.CornflowerBlue;
+            }
+            else if (sender.text == "理")
+            {
+                CommandButtonText[0].text = Database.WORD_OF_POWER;
+                CommandButtonText[1].text = Database.GALE_WIND;
+                CommandButtonText[2].text = Database.WORD_OF_LIFE;
+                CommandButtonText[3].text = Database.WORD_OF_FORTUNE;
+                CommandButtonText[4].text = Database.AETHER_DRIVE;
+                CommandButtonText[5].text = Database.GENESIS;
+                CommandButtonText[6].text = Database.ETERNAL_PRESENCE;
+                targetColor = UnityColor.LimeGreen;
+            }
+            else if (sender.text == "空")
+            {
+                CommandButtonText[0].text = Database.DISPEL_MAGIC;
+                CommandButtonText[1].text = Database.RISE_OF_IMAGE;
+                CommandButtonText[2].text = Database.DEFLECTION;
+                CommandButtonText[3].text = Database.TRANQUILITY;
+                CommandButtonText[4].text = Database.ONE_IMMUNITY;
+                CommandButtonText[5].text = Database.WHITE_OUT;
+                CommandButtonText[6].text = Database.TIME_STOP;
+                targetColor = UnityColor.White;
+            }
             else if (sender.text == "動")
             {
                 CommandButtonText[0].text = Database.STRAIGHT_SMASH;
@@ -455,6 +494,62 @@ namespace DungeonPlayer
                 CommandButtonText[4].text = "";
                 CommandButtonText[5].text = "";
                 CommandButtonText[6].text = "";
+                targetColor = UnityColor.Gold;
+            }
+            else if (sender.text == "静")
+            {
+                CommandButtonText[0].text = Database.COUNTER_ATTACK;
+                CommandButtonText[1].text = Database.PURE_PURIFICATION;
+                CommandButtonText[2].text = Database.ANTI_STUN;
+                CommandButtonText[3].text = Database.STANCE_OF_DEATH;
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+                targetColor = UnityColor.Darkgray;
+            }
+            else if (sender.text == "柔")
+            {
+                CommandButtonText[0].text = Database.STANCE_OF_FLOW;
+                CommandButtonText[1].text = Database.ENIGMA_SENSE;
+                CommandButtonText[2].text = Database.SILENT_RUSH;
+                CommandButtonText[3].text = Database.OBORO_IMPACT;
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+                targetColor = UnityColor.OrangeRed;
+            }
+            else if (sender.text == "剛")
+            {
+                CommandButtonText[0].text = Database.STANCE_OF_STANDING;
+                CommandButtonText[1].text = Database.INNER_INSPIRATION;
+                CommandButtonText[2].text = Database.KINETIC_SMASH;
+                CommandButtonText[3].text = Database.CATASTROPHE;
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+                targetColor = UnityColor.OrangeRed;
+            }
+            else if (sender.text == "心眼")
+            {
+                CommandButtonText[0].text = Database.TRUTH_VISION;
+                CommandButtonText[1].text = Database.HIGH_EMOTIONALITY;
+                CommandButtonText[2].text = Database.STANCE_OF_EYES;
+                CommandButtonText[3].text = Database.PAINFUL_INSANITY;
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+                targetColor = UnityColor.LimeGreen;
+            }
+            else if (sender.text == "無心")
+            {
+                CommandButtonText[0].text = Database.NEGATE;
+                CommandButtonText[1].text = Database.VOID_EXTRACTION;
+                CommandButtonText[2].text = Database.CARNAGE_RUSH;
+                CommandButtonText[3].text = Database.NOTHING_OF_NOTHINGNESS;
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+                targetColor = UnityColor.White;
             }
             else if (sender.text == "聖/火")
             {
@@ -466,10 +561,290 @@ namespace DungeonPlayer
                 CommandButtonText[5].text = "";
                 CommandButtonText[6].text = "";
             }
+            else if (sender.text == "聖/理")
+            {
+                CommandButtonText[0].text = Database.HOLY_BREAKER;
+                CommandButtonText[1].text = Database.EXALTED_FIELD;
+                CommandButtonText[2].text = Database.HYMN_CONTRACT;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "火/理")
+            {
+                CommandButtonText[0].text = Database.ENRAGE_BLAST;
+                CommandButtonText[1].text = Database.PIERCING_FLAME;
+                CommandButtonText[2].text = Database.SIGIL_OF_HOMURA;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "闇/水")
+            {
+                CommandButtonText[0].text = Database.BLUE_BULLET;
+                CommandButtonText[1].text = Database.DEEP_MIRROR;
+                CommandButtonText[2].text = Database.DEATH_DENY;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "闇/空")
+            {
+                CommandButtonText[0].text = Database.DARKEN_FIELD;
+                CommandButtonText[1].text = Database.DOOM_BLADE;
+                CommandButtonText[2].text = Database.ECLIPSE_END;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "水/空")
+            {
+                CommandButtonText[0].text = Database.VANISH_WAVE;
+                CommandButtonText[1].text = Database.VORTEX_FIELD;
+                CommandButtonText[2].text = Database.BLUE_DRAGON_WILL;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "聖/水")
+            {
+                CommandButtonText[0].text = Database.SKY_SHIELD;
+                CommandButtonText[1].text = Database.SACRED_HEAL;
+                CommandButtonText[2].text = Database.EVER_DROPLET;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "聖/空")
+            {
+                CommandButtonText[0].text = Database.STAR_LIGHTNING;
+                CommandButtonText[1].text = Database.ANGEL_BREATH;
+                CommandButtonText[2].text = Database.ENDLESS_ANTHEM;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "火/空")
+            {
+                CommandButtonText[0].text = Database.IMMOLATE;
+                CommandButtonText[1].text = Database.PHANTASMAL_WIND;
+                CommandButtonText[2].text = Database.RED_DRAGON_WILL;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "闇/火")
+            {
+                CommandButtonText[0].text = Database.BLACK_FIRE;
+                CommandButtonText[1].text = Database.BLAZING_FIELD;
+                CommandButtonText[2].text = Database.DEMONIC_IGNITE;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "闇/理")
+            {
+                CommandButtonText[0].text = Database.WORD_OF_MALICE;
+                CommandButtonText[1].text = Database.ABYSS_EYE;
+                CommandButtonText[2].text = Database.SIN_FORTUNE;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "水/理")
+            {
+                CommandButtonText[0].text = Database.WORD_OF_ATTITUDE;
+                CommandButtonText[1].text = Database.STATIC_BARRIER;
+                CommandButtonText[2].text = Database.AUSTERITY_MATRIX;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "聖/闇")
+            {
+                CommandButtonText[0].text = Database.PSYCHIC_TRANCE;
+                CommandButtonText[1].text = Database.BLIND_JUSTICE;
+                CommandButtonText[2].text = Database.TRANSCENDENT_WISH;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "火/水")
+            {
+                CommandButtonText[0].text = Database.FROZEN_AURA;
+                CommandButtonText[1].text = Database.CHILL_BURN;
+                CommandButtonText[2].text = Database.ZETA_EXPLOSION;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "理/空")
+            {
+                CommandButtonText[0].text = Database.SEVENTH_MAGIC;
+                CommandButtonText[1].text = Database.PARADOX_IMAGE;
+                CommandButtonText[2].text = Database.WARP_GATE;
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
             else if (sender.text == "動/柔")
             {
                 CommandButtonText[0].text = Database.SWIFT_STEP;
                 CommandButtonText[1].text = Database.VIGOR_SENSE;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "動/心眼")
+            {
+                CommandButtonText[0].text = Database.RUMBLE_SHOUT;
+                CommandButtonText[1].text = Database.ONSLAUGHT_HIT;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "柔/心眼")
+            {
+                CommandButtonText[0].text = Database.PSYCHIC_WAVE;
+                CommandButtonText[1].text = Database.NOURISH_SENSE;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "静/剛")
+            {
+                CommandButtonText[0].text = Database.REFLEX_SPIRIT;
+                CommandButtonText[1].text = Database.FATAL_BLOW;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "静/無心")
+            {
+                CommandButtonText[0].text = Database.TRUST_SILENCE;
+                CommandButtonText[1].text = Database.MIND_KILLING;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "剛/無心")
+            {
+                CommandButtonText[0].text = Database.OUTER_INSPIRATION;
+                CommandButtonText[1].text = Database.HARDEST_PARRY;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "動/剛")
+            {
+                CommandButtonText[0].text = Database.CIRCLE_SLASH;
+                CommandButtonText[1].text = Database.RISING_AURA;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "動/無心")
+            {
+                CommandButtonText[0].text = Database.SMOOTHING_MOVE;
+                CommandButtonText[1].text = Database.ASCENSION_AURA;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "柔/無心")
+            {
+                CommandButtonText[0].text = Database.RECOVER;
+                CommandButtonText[1].text = Database.IMPULSE_HIT;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "静/柔")
+            {
+                CommandButtonText[0].text = Database.FUTURE_VISION;
+                CommandButtonText[1].text = Database.UNKNOWN_SHOCK;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "静/心眼")
+            {
+                CommandButtonText[0].text = Database.SHARP_GLARE;
+                CommandButtonText[1].text = Database.CONCUSSIVE_HIT;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "剛/心眼")
+            {
+                CommandButtonText[0].text = Database.VIOLENT_SLASH;
+                CommandButtonText[1].text = Database.ONE_AUTHORITY;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "動/静")
+            {
+                CommandButtonText[0].text = Database.NEUTRAL_SMASH;
+                CommandButtonText[1].text = Database.STANCE_OF_DOUBLE;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "柔/剛")
+            {
+                CommandButtonText[0].text = Database.SURPRISE_ATTACK;
+                CommandButtonText[1].text = Database.STANCE_OF_MYSTIC;
+                CommandButtonText[2].text = "";
+                CommandButtonText[3].text = "";
+                CommandButtonText[4].text = "";
+                CommandButtonText[5].text = "";
+                CommandButtonText[6].text = "";
+            }
+            else if (sender.text == "心眼/無心")
+            {
+                CommandButtonText[0].text = Database.STANCE_OF_SUDDENNESS;
+                CommandButtonText[1].text = Database.SOUL_EXECUTION;
                 CommandButtonText[2].text = "";
                 CommandButtonText[3].text = "";
                 CommandButtonText[4].text = "";
@@ -490,583 +865,6 @@ namespace DungeonPlayer
             this.backPanel.GetComponent<Image>().color = targetColor;
             button7_Click(CommandButtonText[0]);
         }
-
-        //private void button2_Click(object sender)
-        //{
-        //    Color targetColor = Color.DarkGray;
-        //    if (AttributeButton2.text == "闇")
-        //    {
-        //        CommandButton1.text = Database.DARK_BLAST;
-        //        CommandButton2.text = Database.SHADOW_PACT;
-        //        CommandButton3.text = Database.LIFE_TAP;
-        //        CommandButton4.text = Database.BLACK_CONTRACT;
-        //        CommandButton5.text = Database.DEVOURING_PLAGUE;
-        //        CommandButton6.text = Database.BLOODY_VENGEANCE;
-        //        CommandButton7.text = Database.DAMNATION;
-        //    }
-        //    else if (AttributeButton2.text == "静")
-        //    {
-        //        CommandButton1.text = Database.COUNTER_ATTACK;
-        //        CommandButton2.text = Database.PURE_PURIFICATION;
-        //        CommandButton3.text = Database.ANTI_STUN;
-        //        CommandButton4.text = Database.STANCE_OF_DEATH;
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (AttributeButton2.text == "聖/理")
-        //    {
-        //        CommandButton1.text = Database.HOLY_BREAKER;
-        //        CommandButton2.text = Database.EXALTED_FIELD;
-        //        CommandButton3.text = Database.HYMN_CONTRACT;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    else if (AttributeButton2.text == "動/心眼")
-        //    {
-        //        CommandButton1.text = Database.RUMBLE_SHOUT;
-        //        CommandButton2.text = Database.ONSLAUGHT_HIT;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    CommandButton1.BackColor = targetColor;
-        //    CommandButton2.BackColor = targetColor;
-        //    CommandButton3.BackColor = targetColor;
-        //    CommandButton4.BackColor = targetColor;
-        //    CommandButton5.BackColor = targetColor;
-        //    CommandButton6.BackColor = targetColor;
-        //    CommandButton7.BackColor = targetColor;
-        //    Description.BackColor = targetColor;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button3_Click(object sender)
-        //{
-        //    Color targetColor = Color.OrangeRed;
-        //    if (AttributeButton3.text == "火")
-        //    {
-        //        CommandButton1.text = Database.FIRE_BALL;
-        //        CommandButton2.text = Database.FLAME_AURA;
-        //        CommandButton3.text = Database.HEAT_BOOST;
-        //        CommandButton4.text = Database.FLAME_STRIKE;
-        //        CommandButton5.text = Database.VOLCANIC_WAVE;
-        //        CommandButton6.text = Database.IMMORTAL_RAVE;
-        //        CommandButton7.text = Database.LAVA_ANNIHILATION;
-        //    }
-        //    else if (AttributeButton3.text == "柔")
-        //    {
-        //        CommandButton1.text = Database.STANCE_OF_FLOW;
-        //        CommandButton2.text = Database.ENIGMA_SENSE;
-        //        CommandButton3.text = Database.SILENT_RUSH;
-        //        CommandButton4.text = Database.OBORO_IMPACT;
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (AttributeButton3.text == "火/理")
-        //    {
-        //        CommandButton1.text = Database.ENRAGE_BLAST;
-        //        CommandButton2.text = Database.PIERCING_FLAME;
-        //        CommandButton3.text = Database.SIGIL_OF_HOMURA;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    else if (AttributeButton3.text == "柔/心眼")
-        //    {
-        //        CommandButton1.text = Database.PSYCHIC_WAVE;
-        //        CommandButton2.text = Database.NOURISH_SENSE;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    CommandButton1.BackColor = targetColor;
-        //    CommandButton2.BackColor = targetColor;
-        //    CommandButton3.BackColor = targetColor;
-        //    CommandButton4.BackColor = targetColor;
-        //    CommandButton5.BackColor = targetColor;
-        //    CommandButton6.BackColor = targetColor;
-        //    CommandButton7.BackColor = targetColor;
-        //    Description.BackColor = targetColor;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button4_Click(object sender)
-        //{
-        //    Color targetColor = Color.CornflowerBlue;
-        //    if (AttributeButton4.text == "水")
-        //    {
-        //        CommandButton1.text = Database.ICE_NEEDLE;
-        //        CommandButton2.text = Database.ABSORB_WATER;
-        //        CommandButton3.text = Database.CLEANSING;
-        //        CommandButton4.text = Database.FROZEN_LANCE;
-        //        CommandButton5.text = Database.MIRROR_IMAGE;
-        //        CommandButton6.text = Database.PROMISED_KNOWLEDGE;
-        //        CommandButton7.text = Database.ABSOLUTE_ZERO;
-        //    }
-        //    else if (AttributeButton4.text == "剛")
-        //    {
-        //        CommandButton1.text = Database.STANCE_OF_STANDING;
-        //        CommandButton2.text = Database.INNER_INSPIRATION;
-        //        CommandButton3.text = Database.KINETIC_SMASH;
-        //        CommandButton4.text = Database.CATASTROPHE;
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (AttributeButton4.text == "闇/水")
-        //    {
-        //        CommandButton1.text = Database.BLUE_BULLET;
-        //        CommandButton2.text = Database.DEEP_MIRROR;
-        //        CommandButton3.text = Database.DEATH_DENY;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    else if (AttributeButton4.text == "静/剛")
-        //    {
-        //        CommandButton1.text = Database.REFLEX_SPIRIT;
-        //        CommandButton2.text = Database.FATAL_BLOW;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    CommandButton1.BackColor = targetColor;
-        //    CommandButton2.BackColor = targetColor;
-        //    CommandButton3.BackColor = targetColor;
-        //    CommandButton4.BackColor = targetColor;
-        //    CommandButton5.BackColor = targetColor;
-        //    CommandButton6.BackColor = targetColor;
-        //    CommandButton7.BackColor = targetColor;
-        //    Description.BackColor = targetColor;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button5_Click(object sender)
-        //{
-        //    Color targetColor = Color.LimeGreen;
-        //    if (AttributeButton5.text == "理")
-        //    {
-        //        CommandButton1.text = Database.WORD_OF_POWER;
-        //        CommandButton2.text = Database.GALE_WIND;
-        //        CommandButton3.text = Database.WORD_OF_LIFE;
-        //        CommandButton4.text = Database.WORD_OF_FORTUNE;
-        //        CommandButton5.text = Database.AETHER_DRIVE;
-        //        CommandButton6.text = Database.GENESIS;
-        //        CommandButton7.text = Database.ETERNAL_PRESENCE;
-        //    }
-        //    else if (AttributeButton5.text == "心眼")
-        //    {
-        //        CommandButton1.text = Database.TRUTH_VISION;
-        //        CommandButton2.text = Database.HIGH_EMOTIONALITY;
-        //        CommandButton3.text = Database.STANCE_OF_EYES;
-        //        CommandButton4.text = Database.PAINFUL_INSANITY;
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (AttributeButton5.text == "闇/空")
-        //    {
-        //        CommandButton1.text = Database.DARKEN_FIELD;
-        //        CommandButton2.text = Database.DOOM_BLADE;
-        //        CommandButton3.text = Database.ECLIPSE_END;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    else if (AttributeButton5.text == "静/無心")
-        //    {
-        //        CommandButton1.text = Database.TRUST_SILENCE;
-        //        CommandButton2.text = Database.MIND_KILLING;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    CommandButton1.BackColor = targetColor;
-        //    CommandButton2.BackColor = targetColor;
-        //    CommandButton3.BackColor = targetColor;
-        //    CommandButton4.BackColor = targetColor;
-        //    CommandButton5.BackColor = targetColor;
-        //    CommandButton6.BackColor = targetColor;
-        //    CommandButton7.BackColor = targetColor;
-        //    Description.BackColor = targetColor;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button6_Click(object sender)
-        //{
-        //    Color targetColor = Color.White;
-        //    if (AttributeButton6.text == "空")
-        //    {
-        //        CommandButton1.text = Database.DISPEL_MAGIC;
-        //        CommandButton2.text = Database.RISE_OF_IMAGE;
-        //        CommandButton3.text = Database.DEFLECTION;
-        //        CommandButton4.text = Database.TRANQUILITY;
-        //        CommandButton5.text = Database.ONE_IMMUNITY;
-        //        CommandButton6.text = Database.WHITE_OUT;
-        //        CommandButton7.text = Database.TIME_STOP;
-        //    }
-        //    else if (AttributeButton6.text == "無心")
-        //    {
-        //        CommandButton1.text = Database.NEGATE;
-        //        CommandButton2.text = Database.VOID_EXTRACTION;
-        //        CommandButton3.text = Database.CARNAGE_RUSH;
-        //        CommandButton4.text = Database.NOTHING_OF_NOTHINGNESS;
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (AttributeButton6.text == "水/空")
-        //    {
-        //        CommandButton1.text = Database.VANISH_WAVE;
-        //        CommandButton2.text = Database.VORTEX_FIELD;
-        //        CommandButton3.text = Database.BLUE_DRAGON_WILL;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    else if (AttributeButton6.text == "剛/無心")
-        //    {
-        //        CommandButton1.text = Database.OUTER_INSPIRATION;
-        //        CommandButton2.text = Database.HARDEST_PARRY;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //        targetColor = Color.Cyan;
-        //    }
-        //    CommandButton1.BackColor = targetColor;
-        //    CommandButton2.BackColor = targetColor;
-        //    CommandButton3.BackColor = targetColor;
-        //    CommandButton4.BackColor = targetColor;
-        //    CommandButton5.BackColor = targetColor;
-        //    CommandButton6.BackColor = targetColor;
-        //    CommandButton7.BackColor = targetColor;
-        //    Description.BackColor = targetColor;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-
-        //private void button17_Click(object sender)
-        //{
-        //    if (MixAttribute7.text == "聖/水")
-        //    {
-        //        CommandButton1.text = Database.SKY_SHIELD;
-        //        CommandButton2.text = Database.SACRED_HEAL;
-        //        CommandButton3.text = Database.EVER_DROPLET;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute7.text == "動/剛")
-        //    {
-        //        CommandButton1.text = Database.CIRCLE_SLASH;
-        //        CommandButton2.text = Database.RISING_AURA;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Yellow;
-        //    CommandButton2.BackColor = Color.Yellow;
-        //    CommandButton3.BackColor = Color.Yellow;
-        //    CommandButton4.BackColor = Color.Yellow;
-        //    CommandButton5.BackColor = Color.Yellow;
-        //    CommandButton6.BackColor = Color.Yellow;
-        //    CommandButton7.BackColor = Color.Yellow;
-        //    Description.BackColor = Color.Yellow;
-        //    button7_Click(CommandButton1, null);
-        //}
-        //private void button18_Click(object sender)
-        //{
-        //    if (MixAttribute8.text == "聖/空")
-        //    {
-        //        CommandButton1.text = Database.STAR_LIGHTNING;
-        //        CommandButton2.text = Database.ANGEL_BREATH;
-        //        CommandButton3.text = Database.ENDLESS_ANTHEM;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute8.text == "動/無心")
-        //    {
-        //        CommandButton1.text = Database.SMOOTHING_MOVE;
-        //        CommandButton2.text = Database.ASCENSION_AURA;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Yellow;
-        //    CommandButton2.BackColor = Color.Yellow;
-        //    CommandButton3.BackColor = Color.Yellow;
-        //    CommandButton4.BackColor = Color.Yellow;
-        //    CommandButton5.BackColor = Color.Yellow;
-        //    CommandButton6.BackColor = Color.Yellow;
-        //    CommandButton7.BackColor = Color.Yellow;
-        //    Description.BackColor = Color.Yellow;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button19_Click(object sender)
-        //{
-        //    if (MixAttribute9.text == "火/空")
-        //    {
-        //        CommandButton1.text = Database.IMMOLATE;
-        //        CommandButton2.text = Database.PHANTASMAL_WIND;
-        //        CommandButton3.text = Database.RED_DRAGON_WILL;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute9.text == "柔/無心")
-        //    {
-        //        CommandButton1.text = Database.RECOVER;
-        //        CommandButton2.text = Database.IMPULSE_HIT;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Yellow;
-        //    CommandButton2.BackColor = Color.Yellow;
-        //    CommandButton3.BackColor = Color.Yellow;
-        //    CommandButton4.BackColor = Color.Yellow;
-        //    CommandButton5.BackColor = Color.Yellow;
-        //    CommandButton6.BackColor = Color.Yellow;
-        //    CommandButton7.BackColor = Color.Yellow;
-        //    Description.BackColor = Color.Yellow;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button20_Click(object sender)
-        //{
-        //    if (MixAttribute10.text == "闇/火")
-        //    {
-        //        CommandButton1.text = Database.BLACK_FIRE;
-        //        CommandButton2.text = Database.BLAZING_FIELD;
-        //        CommandButton3.text = Database.DEMONIC_IGNITE;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute10.text == "静/柔")
-        //    {
-        //        CommandButton1.text = Database.FUTURE_VISION;
-        //        CommandButton2.text = Database.UNKNOWN_SHOCK;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Yellow;
-        //    CommandButton2.BackColor = Color.Yellow;
-        //    CommandButton3.BackColor = Color.Yellow;
-        //    CommandButton4.BackColor = Color.Yellow;
-        //    CommandButton5.BackColor = Color.Yellow;
-        //    CommandButton6.BackColor = Color.Yellow;
-        //    CommandButton7.BackColor = Color.Yellow;
-        //    Description.BackColor = Color.Yellow;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button21_Click(object sender)
-        //{
-        //    if (MixAttribute11.text == "闇/理")
-        //    {
-        //        CommandButton1.text = Database.WORD_OF_MALICE;
-        //        CommandButton2.text = Database.ABYSS_EYE;
-        //        CommandButton3.text = Database.SIN_FORTUNE;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute11.text == "静/心眼")
-        //    {
-        //        CommandButton1.text = Database.SHARP_GLARE;
-        //        CommandButton2.text = Database.CONCUSSIVE_HIT;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Yellow;
-        //    CommandButton2.BackColor = Color.Yellow;
-        //    CommandButton3.BackColor = Color.Yellow;
-        //    CommandButton4.BackColor = Color.Yellow;
-        //    CommandButton5.BackColor = Color.Yellow;
-        //    CommandButton6.BackColor = Color.Yellow;
-        //    CommandButton7.BackColor = Color.Yellow;
-        //    Description.BackColor = Color.Yellow;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button22_Click(object sender)
-        //{
-        //    if (MixAttribute12.text == "水/理")
-        //    {
-        //        CommandButton1.text = Database.WORD_OF_ATTITUDE;
-        //        CommandButton2.text = Database.STATIC_BARRIER;
-        //        CommandButton3.text = Database.AUSTERITY_MATRIX;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute12.text == "剛/心眼")
-        //    {
-        //        CommandButton1.text = Database.VIOLENT_SLASH;
-        //        CommandButton2.text = Database.ONE_AUTHORITY;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Yellow;
-        //    CommandButton2.BackColor = Color.Yellow;
-        //    CommandButton3.BackColor = Color.Yellow;
-        //    CommandButton4.BackColor = Color.Yellow;
-        //    CommandButton5.BackColor = Color.Yellow;
-        //    CommandButton6.BackColor = Color.Yellow;
-        //    CommandButton7.BackColor = Color.Yellow;
-        //    Description.BackColor = Color.Yellow;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button23_Click(object sender)
-        //{
-        //    if (MixAttribute13.text == "聖/闇")
-        //    {
-        //        CommandButton1.text = Database.PSYCHIC_TRANCE;
-        //        CommandButton2.text = Database.BLIND_JUSTICE;
-        //        CommandButton3.text = Database.TRANSCENDENT_WISH;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute13.text == "動/静")
-        //    {
-        //        CommandButton1.text = Database.NEUTRAL_SMASH;
-        //        CommandButton2.text = Database.STANCE_OF_DOUBLE;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Magenta;
-        //    CommandButton2.BackColor = Color.Magenta;
-        //    CommandButton3.BackColor = Color.Magenta;
-        //    CommandButton4.BackColor = Color.Magenta;
-        //    CommandButton5.BackColor = Color.Magenta;
-        //    CommandButton6.BackColor = Color.Magenta;
-        //    CommandButton7.BackColor = Color.Magenta;
-        //    Description.BackColor = Color.Magenta;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button24_Click(object sender)
-        //{
-        //    if (MixAttribute14.text == "火/水")
-        //    {
-        //        CommandButton1.text = Database.FROZEN_AURA;
-        //        CommandButton2.text = Database.CHILL_BURN;
-        //        CommandButton3.text = Database.ZETA_EXPLOSION;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute14.text == "柔/剛")
-        //    {
-        //        CommandButton1.text = Database.SURPRISE_ATTACK;
-        //        CommandButton2.text = Database.STANCE_OF_MYSTIC;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Magenta;
-        //    CommandButton2.BackColor = Color.Magenta;
-        //    CommandButton3.BackColor = Color.Magenta;
-        //    CommandButton4.BackColor = Color.Magenta;
-        //    CommandButton5.BackColor = Color.Magenta;
-        //    CommandButton6.BackColor = Color.Magenta;
-        //    CommandButton7.BackColor = Color.Magenta;
-        //    Description.BackColor = Color.Magenta;
-        //    button7_Click(CommandButton1, null);
-        //}
-
-        //private void button25_Click(object sender)
-        //{
-        //    if (MixAttribute15.text == "理/空")
-        //    {
-        //        CommandButton1.text = Database.SEVENTH_MAGIC;
-        //        CommandButton2.text = Database.PARADOX_IMAGE;
-        //        CommandButton3.text = Database.WARP_GATE;
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    else if (MixAttribute15.text == "心眼/無心")
-        //    {
-        //        CommandButton1.text = Database.STANCE_OF_SUDDENNESS;
-        //        CommandButton2.text = Database.SOUL_EXECUTION;
-        //        CommandButton3.text = "";
-        //        CommandButton4.text = "";
-        //        CommandButton5.text = "";
-        //        CommandButton6.text = "";
-        //        CommandButton7.text = "";
-        //    }
-        //    CommandButton1.BackColor = Color.Magenta;
-        //    CommandButton2.BackColor = Color.Magenta;
-        //    CommandButton3.BackColor = Color.Magenta;
-        //    CommandButton4.BackColor = Color.Magenta;
-        //    CommandButton5.BackColor = Color.Magenta;
-        //    CommandButton6.BackColor = Color.Magenta;
-        //    CommandButton7.BackColor = Color.Magenta;
-        //    Description.BackColor = Color.Magenta;
-        //    button7_Click(CommandButton1, null);
-        //}
 
         private void button7_Click(object sender)
         {
@@ -1131,29 +929,6 @@ namespace DungeonPlayer
         }
         public void tapElement(Text sender)
         {
-            // まずボタンのサイズを決定
-            //AttributeButton1.Size = new System.Drawing.Size(baseWidth, baseHeight);
-            //AttributeButton2.Size = new System.Drawing.Size(baseWidth, baseHeight);
-            //AttributeButton3.Size = new System.Drawing.Size(baseWidth, baseHeight);
-            //AttributeButton4.Size = new System.Drawing.Size(baseWidth, baseHeight);
-            //AttributeButton5.Size = new System.Drawing.Size(baseWidth, baseHeight);
-            //AttributeButton6.Size = new System.Drawing.Size(baseWidth, baseHeight);
-            // 次はレイアウト。つまり位置
-            //AttributeButton1.Location = new Point(TL_LocX, TL_LocY);
-            //AttributeButton2.Location = new Point(TL_LocX, TL_LocY + TL_Margin);
-            //AttributeButton3.Location = new Point(TL_LocX + TL_Margin, TL_LocY);
-            //AttributeButton4.Location = new Point(TL_LocX + TL_Margin, TL_LocY + TL_Margin);
-            //AttributeButton5.Location = new Point(TL_LocX + TL_Margin * 2, TL_LocY);
-            //AttributeButton6.Location = new Point(TL_LocX + TL_Margin * 2, TL_LocY + TL_Margin);
-            //MixAttribute7.Location = new Point(-100, -100);
-            //MixAttribute8.Location = new Point(-100, -100);
-            //MixAttribute9.Location = new Point(-100, -100);
-            //MixAttribute10.Location = new Point(-100, -100);
-            //MixAttribute11.Location = new Point(-100, -100);
-            //MixAttribute12.Location = new Point(-100, -100);
-            //MixAttribute13.Location = new Point(-100, -100);
-            //MixAttribute14.Location = new Point(-100, -100);
-            //MixAttribute15.Location = new Point(-100, -100);
             // 不要なボタンは非表示（上）にして・・・
             groupMixElement.SetActive(false);
             // 必要なボタンは表示（上）
@@ -1176,7 +951,7 @@ namespace DungeonPlayer
             ElementButtonText[5].text = "空";
             // 最初の下項目のボタンを選択しておく！
             button1_Click(sender);
-            //button7_Click(CommandButton1, null);
+            //button7_Click(CommandButtonText[0], null);
         }
         public void tapActionCommand(Text sender)
         {
