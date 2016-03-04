@@ -184,7 +184,7 @@ namespace DungeonPlayer
                     break;
                 case ItemBackPack.RareLevel.Legendary: // 後編追加
                     target1.color = Color.white;
-                    target2.gameObject.GetComponent<Image>().color = UnityColor.Orangered;
+                    target2.gameObject.GetComponent<Image>().color = UnityColor.OrangeRed;
                     break;
             }
         }

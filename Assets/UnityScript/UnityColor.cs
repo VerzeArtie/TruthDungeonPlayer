@@ -20,7 +20,7 @@ namespace DungeonPlayer
         public static Color Dimgray = new Color(105, 105, 105);
         public static Color Black = new Color(0, 0, 0);
         public static Color Red = new Color(255, 0, 0);
-        public static Color Orangered = new Color(255, 69, 0);
+        public static Color OrangeRed = new Color(1.0f, 69.0f / 255.0f, 0.0f);
         public static Color Tomato = new Color(255, 99, 71);
         public static Color Coral = new Color(255, 127, 80);
         public static Color Salmon = new Color((float)(250.0f/255.0f), (float)(128.0f/255.0f), (float)(114.0f/255.0f));
@@ -84,7 +84,7 @@ namespace DungeonPlayer
         public static Color Chartreuse = new Color(127, 255, 0);
         public static Color Lawngreen = new Color(124, 252, 0);
         public static Color Lime = new Color(0, 255, 0);
-        public static Color Limegreen = new Color(50, 205, 50);
+        public static Color LimeGreen = new Color(50.0f / 255.0f, 205.0f / 255.0f, 50.0f / 255.0f);
         public static Color Forestgreen = new Color(34, 139, 34);
         public static Color Green = new Color(0, 128, 0);
         public static Color Darkgreen = new Color(0, 100, 0);
@@ -134,7 +134,7 @@ namespace DungeonPlayer
         public static Color DarkBlue = new Color(0, 0, 139);
         public static Color SlateBlue = new Color(106, 90, 205);
         public static Color Mediumslateblue = new Color(123, 104, 238);
-        public static Color Cornflowerblue = new Color(100, 149, 237);
+        public static Color CornFlowerBlue = new Color(100.0f / 255.0f, 149.0f / 255.0f, 237.0f / 255.0f);
         public static Color Royalblue = new Color(65, 105, 225);
         public static Color Mediumblue = new Color(0, 0, 205);
         public static Color Blue = new Color(0, 0, 255);

@@ -3344,7 +3344,7 @@ namespace DungeonPlayer
                         treasurePanel.GetComponent<Image>().color = UnityColor.Purple;
                         break;
                     case ItemBackPack.RareLevel.Legendary: // 後編追加
-                        treasurePanel.GetComponent<Image>().color = UnityColor.Orangered;
+                        treasurePanel.GetComponent<Image>().color = UnityColor.OrangeRed;
                         break;
                     default:
                         treasurePanel.GetComponent<Image>().color = Color.gray;

@@ -134,6 +134,8 @@ namespace DungeonPlayer
             WE.DungeonArea = 1;
             WE.AvailableFirstCharacter = true;
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
+            GroundOne.WE2.AvailableMixSpellSkill = true;
+            GroundOne.WE2.AvailableArcheTypeCommand = true;
 
             MC = objMC.AddComponent<MainCharacter>();
             MC.FirstName = Database.EIN_WOLENCE;
