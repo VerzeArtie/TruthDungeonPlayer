@@ -83,285 +83,6 @@ namespace DungeonPlayer
             }
         }
 
-        //private void SkillButton_Click(object sender)
-        //{
-        //    // まずボタンのサイズを決定
-        //    AttributeButton1.Size = new System.Drawing.Size(baseWidth, baseHeight);
-        //    AttributeButton2.Size = new System.Drawing.Size(baseWidth, baseHeight);
-        //    AttributeButton3.Size = new System.Drawing.Size(baseWidth, baseHeight);
-        //    AttributeButton4.Size = new System.Drawing.Size(baseWidth, baseHeight);
-        //    AttributeButton5.Size = new System.Drawing.Size(baseWidth, baseHeight);
-        //    AttributeButton6.Size = new System.Drawing.Size(baseWidth, baseHeight);
-        //    // 次はレイアウト。つまり位置
-        //    AttributeButton1.Location = new Point(TL_LocX, TL_LocY);
-        //    AttributeButton2.Location = new Point(TL_LocX, TL_LocY + TL_Margin);
-        //    AttributeButton3.Location = new Point(TL_LocX + TL_Margin, TL_LocY);
-        //    AttributeButton4.Location = new Point(TL_LocX + TL_Margin, TL_LocY + TL_Margin);
-        //    AttributeButton5.Location = new Point(TL_LocX + TL_Margin * 2, TL_LocY);
-        //    AttributeButton6.Location = new Point(TL_LocX + TL_Margin * 2, TL_LocY + TL_Margin);
-        //    MixAttribute7.Location = new Point(-100, -100);
-        //    MixAttribute8.Location = new Point(-100, -100);
-        //    MixAttribute9.Location = new Point(-100, -100);
-        //    MixAttribute10.Location = new Point(-100, -100);
-        //    MixAttribute11.Location = new Point(-100, -100);
-        //    MixAttribute12.Location = new Point(-100, -100);
-        //    MixAttribute13.Location = new Point(-100, -100);
-        //    MixAttribute14.Location = new Point(-100, -100);
-        //    MixAttribute15.Location = new Point(-100, -100);
-        //    // 不要なボタンは非表示（上）にして・・・
-        //    MixAttribute7.gameObject.SetActive(false);
-        //    MixAttribute8.gameObject.SetActive(false);
-        //    MixAttribute9.gameObject.SetActive(false);
-        //    MixAttribute10.gameObject.SetActive(false);
-        //    MixAttribute11.gameObject.SetActive(false);
-        //    MixAttribute12.gameObject.SetActive(false);
-        //    MixAttribute13.gameObject.SetActive(false);
-        //    MixAttribute14.gameObject.SetActive(false);
-        //    MixAttribute15.gameObject.SetActive(false);
-        //    // 必要なボタンは表示（上）
-        //    AttributeButton1.gameObject.SetActive(true);
-        //    AttributeButton2.gameObject.SetActive(true);
-        //    AttributeButton3.gameObject.SetActive(true);
-        //    AttributeButton4.gameObject.SetActive(true);
-        //    AttributeButton5.gameObject.SetActive(true);
-        //    AttributeButton6.gameObject.SetActive(true);
-        //    // 必要なボタンは表示（下）させて・・・
-        //    CommandButtonText[0].gameObject.SetActive(true);
-        //    CommandButtonText[1].gameObject.SetActive(true);
-        //    CommandButtonText[2].gameObject.SetActive(true);
-        //    CommandButtonText[3].gameObject.SetActive(true);
-        //    CommandButtonText[4].gameObject.SetActive(false);
-        //    CommandButtonText[5].gameObject.SetActive(false);
-        //    CommandButtonText[6].gameObject.SetActive(false);
-        //    // 上ボタン、色更新
-        //    AttributeButton1.BackColor = Color.Gold;
-        //    AttributeButton2.BackColor = Color.DarkGray;
-        //    AttributeButton3.BackColor = Color.OrangeRed;
-        //    AttributeButton4.BackColor = Color.CornflowerBlue;
-        //    AttributeButton5.BackColor = Color.LimeGreen;
-        //    AttributeButton6.BackColor = Color.White;
-        //    // 上ボタン、テキスト更新
-        //    AttributeButton1.text = "動";
-        //    AttributeButton1.Font = new Font(AttributeButton2.Font.FontFamily, baseFontSize, FontStyle.Bold);
-        //    AttributeButton2.text = "静";
-        //    AttributeButton2.Font = new Font(AttributeButton2.Font.FontFamily, baseFontSize, FontStyle.Bold);
-        //    AttributeButton3.text = "柔";
-        //    AttributeButton3.Font = new Font(AttributeButton3.Font.FontFamily, baseFontSize, FontStyle.Bold);
-        //    AttributeButton4.text = "剛";
-        //    AttributeButton4.Font = new Font(AttributeButton2.Font.FontFamily, baseFontSize, FontStyle.Bold);
-        //    AttributeButton5.text = "心眼";
-        //    AttributeButton5.Font = new Font(AttributeButton5.Font.FontFamily, baseFontSize, FontStyle.Bold);
-        //    AttributeButton6.text = "無心";
-        //    AttributeButton6.Font = new Font(AttributeButton6.Font.FontFamily, baseFontSize, FontStyle.Bold);
-        //    // 最初の下項目のボタンを選択しておく！
-        //    button1_Click(null, null);
-        //    button7_Click(CommandButtonText[0], null);
-        //}
-
-        //private void button15_Click(object sender)
-        //{
-        //    // まずボタンのサイズを決定
-        //    AttributeButton1.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton2.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton3.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton4.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton5.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton6.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    // 次はレイアウト。つまり位置
-        //    AttributeButton1.Location = new Point(TL_LocX, TL_LocY);
-        //    AttributeButton2.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY);
-        //    AttributeButton3.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY);
-        //    AttributeButton4.Location = new Point(TL_LocX, TL_LocY + TLE_Margin_Y);
-        //    AttributeButton5.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY + TLE_Margin_Y);
-        //    AttributeButton6.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY + TLE_Margin_Y);
-        //    MixAttribute7.Location = new Point(TL_LocX, TL_LocY + TLE_Margin_Y * 2);
-        //    MixAttribute8.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY + TLE_Margin_Y * 2);
-        //    MixAttribute9.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY + TLE_Margin_Y * 2);
-        //    MixAttribute10.Location = new Point(TL_LocX, TL_LocY + TLE_Margin_Y * 3);
-        //    MixAttribute11.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY + TLE_Margin_Y * 3);
-        //    MixAttribute12.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY + TLE_Margin_Y * 3);
-        //    MixAttribute13.Location = new Point(TL_LocX, TL_LocY + TLE_Margin_Y * 4);
-        //    MixAttribute14.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY + TLE_Margin_Y * 4);
-        //    MixAttribute15.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY + TLE_Margin_Y * 4);
-        //    // 不要なボタンは非表示（上）にして・・・
-        //    // 必要なボタンは表示（上）
-        //    AttributeButton1.gameObject.SetActive(true);
-        //    AttributeButton2.gameObject.SetActive(true);
-        //    AttributeButton3.gameObject.SetActive(true);
-        //    AttributeButton4.gameObject.SetActive(true);
-        //    AttributeButton5.gameObject.SetActive(true);
-        //    AttributeButton6.gameObject.SetActive(true);
-        //    MixAttribute7.gameObject.SetActive(true);
-        //    MixAttribute8.gameObject.SetActive(true);
-        //    MixAttribute9.gameObject.SetActive(true);
-        //    MixAttribute10.gameObject.SetActive(true);
-        //    MixAttribute11.gameObject.SetActive(true);
-        //    MixAttribute12.gameObject.SetActive(true);
-        //    MixAttribute13.gameObject.SetActive(true);
-        //    MixAttribute14.gameObject.SetActive(true);
-        //    MixAttribute15.gameObject.SetActive(true);
-        //    // 必要なボタンは表示（下）させて・・・
-        //    CommandButtonText[0].gameObject.SetActive(true);
-        //    CommandButtonText[1].gameObject.SetActive(true);
-        //    CommandButtonText[2].gameObject.SetActive(true);
-        //    CommandButtonText[3].gameObject.SetActive(false);
-        //    CommandButtonText[4].gameObject.SetActive(false);
-        //    CommandButtonText[5].gameObject.SetActive(false);
-        //    CommandButtonText[6].gameObject.SetActive(false);
-        //    // 上ボタン、テキスト更新
-        //    AttributeButton1.text = "聖/火";
-        //    AttributeButton1.Font = new Font(AttributeButton1.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton2.text = "聖/理";
-        //    AttributeButton2.Font = new Font(AttributeButton2.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton3.text = "火/理";
-        //    AttributeButton3.Font = new Font(AttributeButton3.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton4.text = "闇/水";
-        //    AttributeButton4.Font = new Font(AttributeButton4.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton5.text = "闇/空";
-        //    AttributeButton5.Font = new Font(AttributeButton5.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton6.text = "水/空";
-        //    AttributeButton6.Font = new Font(AttributeButton6.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute7.text = "聖/水";
-        //    MixAttribute7.Font = new Font(MixAttribute7.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute8.text = "聖/空";
-        //    MixAttribute8.Font = new Font(MixAttribute8.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute9.text = "火/空";
-        //    MixAttribute9.Font = new Font(MixAttribute9.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute10.text = "闇/火";
-        //    MixAttribute10.Font = new Font(MixAttribute10.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute11.text = "闇/理";
-        //    MixAttribute11.Font = new Font(MixAttribute11.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute12.text = "水/理";
-        //    MixAttribute12.Font = new Font(MixAttribute12.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute13.text = "聖/闇";
-        //    MixAttribute13.Font = new Font(MixAttribute13.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute14.text = "火/水";
-        //    MixAttribute14.Font = new Font(MixAttribute14.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute15.text = "理/空";
-        //    MixAttribute15.Font = new Font(MixAttribute15.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    // ボタン配色を変更！
-        //    AttributeButton1.BackColor = Color.Cyan;
-        //    AttributeButton2.BackColor = Color.Cyan;
-        //    AttributeButton3.BackColor = Color.Cyan;
-        //    AttributeButton4.BackColor = Color.Cyan;
-        //    AttributeButton5.BackColor = Color.Cyan;
-        //    AttributeButton6.BackColor = Color.Cyan;
-        //    MixAttribute7.BackColor = Color.Yellow;
-        //    MixAttribute8.BackColor = Color.Yellow;
-        //    MixAttribute9.BackColor = Color.Yellow;
-        //    MixAttribute10.BackColor = Color.Yellow;
-        //    MixAttribute11.BackColor = Color.Yellow;
-        //    MixAttribute12.BackColor = Color.Yellow;
-        //    MixAttribute13.BackColor = Color.Magenta;
-        //    MixAttribute14.BackColor = Color.Magenta;
-        //    MixAttribute15.BackColor = Color.Magenta;
-        //    // 最初の下項目のボタンを選択しておく！
-        //    button1_Click(null, null);
-        //    button7_Click(CommandButtonText[0], null);
-        //}
-
-        //private void button16_Click(object sender)
-        //{
-        //    // まずボタンのサイズを決定
-        //    AttributeButton1.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton2.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton3.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton4.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton5.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    AttributeButton6.Size = new System.Drawing.Size(extWidth, extHeight);
-        //    // 次はレイアウト。つまり位置
-        //    AttributeButton1.Location = new Point(TL_LocX, TL_LocY);
-        //    AttributeButton2.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY);
-        //    AttributeButton3.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY);
-        //    AttributeButton4.Location = new Point(TL_LocX, TL_LocY + TLE_Margin_Y);
-        //    AttributeButton5.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY + TLE_Margin_Y);
-        //    AttributeButton6.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY + TLE_Margin_Y);
-        //    MixAttribute7.Location = new Point(TL_LocX, TL_LocY + TLE_Margin_Y * 2);
-        //    MixAttribute8.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY + TLE_Margin_Y * 2);
-        //    MixAttribute9.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY + TLE_Margin_Y * 2);
-        //    MixAttribute10.Location = new Point(TL_LocX, TL_LocY + TLE_Margin_Y * 3);
-        //    MixAttribute11.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY + TLE_Margin_Y * 3);
-        //    MixAttribute12.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY + TLE_Margin_Y * 3);
-        //    MixAttribute13.Location = new Point(TL_LocX, TL_LocY + TLE_Margin_Y * 4);
-        //    MixAttribute14.Location = new Point(TL_LocX + TLE_Margin_X, TL_LocY + TLE_Margin_Y * 4);
-        //    MixAttribute15.Location = new Point(TL_LocX + TLE_Margin_X * 2, TL_LocY + TLE_Margin_Y * 4);
-        //    // 不要なボタンは非表示（上）にして・・・
-        //    // 必要なボタンは表示（上）
-        //    AttributeButton1.gameObject.SetActive(true);
-        //    AttributeButton2.gameObject.SetActive(true);
-        //    AttributeButton3.gameObject.SetActive(true);
-        //    AttributeButton4.gameObject.SetActive(true);
-        //    AttributeButton5.gameObject.SetActive(true);
-        //    AttributeButton6.gameObject.SetActive(true);
-        //    MixAttribute7.gameObject.SetActive(true);
-        //    MixAttribute8.gameObject.SetActive(true);
-        //    MixAttribute9.gameObject.SetActive(true);
-        //    MixAttribute10.gameObject.SetActive(true);
-        //    MixAttribute11.gameObject.SetActive(true);
-        //    MixAttribute12.gameObject.SetActive(true);
-        //    MixAttribute13.gameObject.SetActive(true);
-        //    MixAttribute14.gameObject.SetActive(true);
-        //    MixAttribute15.gameObject.SetActive(true);
-        //    // 必要なボタンは表示（下）させて・・・
-        //    CommandButtonText[0].gameObject.SetActive(true);
-        //    CommandButtonText[1].gameObject.SetActive(true);
-        //    CommandButtonText[2].gameObject.SetActive(false);
-        //    CommandButtonText[3].gameObject.SetActive(false);
-        //    CommandButtonText[4].gameObject.SetActive(false);
-        //    CommandButtonText[5].gameObject.SetActive(false);
-        //    CommandButtonText[6].gameObject.SetActive(false);
-        //    // 上ボタン、テキスト更新
-        //    AttributeButton1.text = "動/柔";
-        //    AttributeButton1.Font = new Font(AttributeButton1.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton2.text = "動/心眼";
-        //    AttributeButton2.Font = new Font(AttributeButton2.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton3.text = "柔/心眼";
-        //    AttributeButton3.Font = new Font(AttributeButton3.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton4.text = "静/剛";
-        //    AttributeButton4.Font = new Font(AttributeButton4.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton5.text = "静/無心";
-        //    AttributeButton5.Font = new Font(AttributeButton5.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    AttributeButton6.text = "剛/無心";
-        //    AttributeButton6.Font = new Font(AttributeButton6.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute7.text = "動/剛";
-        //    MixAttribute7.Font = new Font(MixAttribute7.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute8.text = "動/無心";
-        //    MixAttribute8.Font = new Font(MixAttribute8.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute9.text = "柔/無心";
-        //    MixAttribute9.Font = new Font(MixAttribute9.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute10.text = "静/柔";
-        //    MixAttribute10.Font = new Font(MixAttribute10.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute11.text = "静/心眼";
-        //    MixAttribute11.Font = new Font(MixAttribute11.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute12.text = "剛/心眼";
-        //    MixAttribute12.Font = new Font(MixAttribute12.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute13.text = "動/静";
-        //    MixAttribute13.Font = new Font(MixAttribute13.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute14.text = "柔/剛";
-        //    MixAttribute14.Font = new Font(MixAttribute14.Font.FontFamily, extFontSize, FontStyle.Bold);
-        //    MixAttribute15.text = "心眼/無心";
-        //    MixAttribute15.Font = new Font(MixAttribute15.Font.FontFamily, extFontSize - 2, FontStyle.Bold);
-        //    // ボタン配色を変更！
-        //    AttributeButton1.BackColor = Color.Cyan;
-        //    AttributeButton2.BackColor = Color.Cyan;
-        //    AttributeButton3.BackColor = Color.Cyan;
-        //    AttributeButton4.BackColor = Color.Cyan;
-        //    AttributeButton5.BackColor = Color.Cyan;
-        //    AttributeButton6.BackColor = Color.Cyan;
-        //    MixAttribute7.BackColor = Color.Yellow;
-        //    MixAttribute8.BackColor = Color.Yellow;
-        //    MixAttribute9.BackColor = Color.Yellow;
-        //    MixAttribute10.BackColor = Color.Yellow;
-        //    MixAttribute11.BackColor = Color.Yellow;
-        //    MixAttribute12.BackColor = Color.Yellow;
-        //    MixAttribute13.BackColor = Color.Magenta;
-        //    MixAttribute14.BackColor = Color.Magenta;
-        //    MixAttribute15.BackColor = Color.Magenta;
-        //    // 最初の下項目のボタンを選択しておく！
-        //    button1_Click(null, null);
-        //    button7_Click(CommandButtonText[0], null);
-        //}
-
         //private void Archetype_Click(object sender)
         //{
         //    // まずボタンのサイズを決定
@@ -925,34 +646,117 @@ namespace DungeonPlayer
         // spell, skill, mixspell, mixskill, architect
         public void tapAttribute(Text sender)
         {
-
+            if (sender.text == "魔法")
+            {
+                // 不要なボタンは非表示（上）にして・・・
+                groupMixElement.SetActive(false);
+                // 必要なボタンは表示（上）
+                groupElement.SetActive(true);
+                // 必要なボタンは表示（下）させて・・・
+                groupCommand.SetActive(true);
+                // 上ボタン、テキスト更新
+                ElementButtonText[0].text = "聖";
+                ElementButtonText[1].text = "火";
+                ElementButtonText[2].text = "理";
+                ElementButtonText[3].text = "闇";
+                ElementButtonText[4].text = "水";
+                ElementButtonText[5].text = "空";
+            }
+            else if (sender.text == "スキル")
+            {
+                // 不要なボタンは非表示（上）にして・・・
+                groupMixElement.SetActive(false);
+                // 必要なボタンは表示（上）
+                groupElement.SetActive(true);
+                // 必要なボタンは表示（下）させて・・・
+                groupCommand.SetActive(true); // todo [空欄３つは非表示にするべき]
+                // 上ボタン、テキスト更新
+                ElementButtonText[0].text = "動";
+                ElementButtonText[1].text = "静";
+                ElementButtonText[2].text = "柔";
+                ElementButtonText[3].text = "剛";
+                ElementButtonText[4].text = "心眼";
+                ElementButtonText[5].text = "無心";
+            }
+            else if (sender.text == "複合魔法")
+            {
+                // 不要なボタンは非表示（上）にして・・・
+                groupElement.SetActive(false);
+                // 必要なボタンは表示（上）
+                groupMixElement.SetActive(true);
+                // 必要なボタンは表示（下）させて・・・
+                groupCommand.SetActive(true); // todo [空欄４つは非表示にするべき]
+                // 上ボタン、テキスト更新
+                MixElementButtonText[0].text = "聖/火";
+                MixElementButtonText[1].text = "聖/理";
+                MixElementButtonText[2].text = "火/理";
+                MixElementButtonText[3].text = "闇/水";
+                MixElementButtonText[4].text = "闇/空";
+                MixElementButtonText[5].text = "水/空";
+                MixElementButtonText[6].text = "聖/水";
+                MixElementButtonText[7].text = "聖/空";
+                MixElementButtonText[8].text = "火/空";
+                MixElementButtonText[9].text = "闇/火";
+                MixElementButtonText[10].text = "闇/理";
+                MixElementButtonText[11].text = "水/理";
+                MixElementButtonText[12].text = "聖/闇";
+                MixElementButtonText[13].text = "火/水";
+                MixElementButtonText[14].text = "理/空";
+            }
+            else if (sender.text == "複合スキル")
+            {
+                // 不要なボタンは非表示（上）にして・・・
+                // 必要なボタンは表示（上）
+                AttributeButton1.gameObject.SetActive(true);
+                AttributeButton2.gameObject.SetActive(true);
+                AttributeButton3.gameObject.SetActive(true);
+                AttributeButton4.gameObject.SetActive(true);
+                AttributeButton5.gameObject.SetActive(true);
+                AttributeButton6.gameObject.SetActive(true);
+                MixAttribute7.gameObject.SetActive(true);
+                MixAttribute8.gameObject.SetActive(true);
+                MixAttribute9.gameObject.SetActive(true);
+                MixAttribute10.gameObject.SetActive(true);
+                MixAttribute11.gameObject.SetActive(true);
+                MixAttribute12.gameObject.SetActive(true);
+                MixAttribute13.gameObject.SetActive(true);
+                MixAttribute14.gameObject.SetActive(true);
+                MixAttribute15.gameObject.SetActive(true);
+                // 必要なボタンは表示（下）させて・・・
+                CommandButtonText[0].gameObject.SetActive(true);
+                CommandButtonText[1].gameObject.SetActive(true);
+                CommandButtonText[2].gameObject.SetActive(false);
+                CommandButtonText[3].gameObject.SetActive(false);
+                CommandButtonText[4].gameObject.SetActive(false);
+                CommandButtonText[5].gameObject.SetActive(false);
+                CommandButtonText[6].gameObject.SetActive(false);
+                // 上ボタン、テキスト更新
+                AttributeButton1.text = "動/柔";
+                AttributeButton2.text = "動/心眼";
+                AttributeButton3.text = "柔/心眼";
+                AttributeButton4.text = "静/剛";
+                AttributeButton5.text = "静/無心";
+                AttributeButton6.text = "剛/無心";
+                MixAttribute7.text = "動/剛";
+                MixAttribute8.text = "動/無心";
+                MixAttribute9.text = "柔/無心";
+                MixAttribute10.text = "静/柔";
+                MixAttribute11.text = "静/心眼";
+                MixAttribute12.text = "剛/心眼";
+                MixAttribute13.text = "動/静";
+                MixAttribute14.text = "柔/剛";
+                MixAttribute15.text = "心眼/無心";
+            }
+            // 最初の下項目のボタンを選択しておく！
+            tapElement(ElementButtonText[0]);
         }
+
         public void tapElement(Text sender)
         {
-            // 不要なボタンは非表示（上）にして・・・
-            groupMixElement.SetActive(false);
-            // 必要なボタンは表示（上）
-            groupElement.SetActive(true);
-            // 必要なボタンは表示（下）させて・・・
-            groupCommand.SetActive(true);
-            //// 上ボタン、色更新
-            //AttributeButton1.BackColor = Color.Gold;
-            //AttributeButton2.BackColor = Color.DarkGray;
-            //AttributeButton3.BackColor = Color.OrangeRed;
-            //AttributeButton4.BackColor = Color.CornflowerBlue;
-            //AttributeButton5.BackColor = Color.LimeGreen;
-            //AttributeButton6.BackColor = Color.White;
-            // 上ボタン、テキスト更新
-            ElementButtonText[0].text = "聖";
-            ElementButtonText[1].text = "火";
-            ElementButtonText[2].text = "理";
-            ElementButtonText[3].text = "闇";
-            ElementButtonText[4].text = "水";
-            ElementButtonText[5].text = "空";
-            // 最初の下項目のボタンを選択しておく！
             button1_Click(sender);
-            //button7_Click(CommandButtonText[0], null);
+            tapActionCommand(CommandButtonText[0]);
         }
+
         public void tapActionCommand(Text sender)
         {
             button7_Click(sender);
