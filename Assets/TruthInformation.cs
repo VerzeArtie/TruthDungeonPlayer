@@ -83,60 +83,6 @@ namespace DungeonPlayer
             }
         }
 
-        //private void Archetype_Click(object sender)
-        //{
-        //    // まずボタンのサイズを決定
-        //    AttributeButton1.Size = new System.Drawing.Size(ARCHETYPE_SIZE_X, ARCHETYPE_SIZE_Y);
-        //    // 次はレイアウト。つまり位置
-        //    AttributeButton1.Location = new Point(ARCHETYPE_LocX, ARCHETYPE_LocY);
-        //    // 不要なボタンは非表示（上）にして・・・
-        //    AttributeButton2.Location = new Point(-100, -100);
-        //    AttributeButton3.Location = new Point(-100, -100);
-        //    AttributeButton4.Location = new Point(-100, -100);
-        //    AttributeButton5.Location = new Point(-100, -100);
-        //    AttributeButton6.Location = new Point(-100, -100);
-        //    MixAttribute7.Location = new Point(-100, -100);
-        //    MixAttribute8.Location = new Point(-100, -100);
-        //    MixAttribute9.Location = new Point(-100, -100);
-        //    MixAttribute10.Location = new Point(-100, -100);
-        //    MixAttribute11.Location = new Point(-100, -100);
-        //    MixAttribute12.Location = new Point(-100, -100);
-        //    MixAttribute13.Location = new Point(-100, -100);
-        //    MixAttribute14.Location = new Point(-100, -100);
-        //    MixAttribute15.Location = new Point(-100, -100);
-        //    AttributeButton2.gameObject.SetActive(false);
-        //    AttributeButton3.gameObject.SetActive(false);
-        //    AttributeButton4.gameObject.SetActive(false);
-        //    AttributeButton5.gameObject.SetActive(false);
-        //    AttributeButton6.gameObject.SetActive(false);
-        //    MixAttribute7.gameObject.SetActive(false);
-        //    MixAttribute8.gameObject.SetActive(false);
-        //    MixAttribute9.gameObject.SetActive(false);
-        //    MixAttribute10.gameObject.SetActive(false);
-        //    MixAttribute11.gameObject.SetActive(false);
-        //    MixAttribute12.gameObject.SetActive(false);
-        //    MixAttribute13.gameObject.SetActive(false);
-        //    MixAttribute14.gameObject.SetActive(false);
-        //    MixAttribute15.gameObject.SetActive(false);
-        //    // 必要なボタンは表示（上）
-        //    // 必要なボタンは表示（下）させて・・・
-        //    CommandButtonText[0].gameObject.SetActive(true);
-        //    CommandButtonText[1].gameObject.SetActive(false);
-        //    CommandButtonText[2].gameObject.SetActive(false);
-        //    CommandButtonText[3].gameObject.SetActive(false);
-        //    CommandButtonText[4].gameObject.SetActive(false);
-        //    CommandButtonText[5].gameObject.SetActive(false);
-        //    CommandButtonText[6].gameObject.SetActive(false);
-        //    // 上ボタン、テキスト更新
-        //    AttributeButton1.text = "元核";
-        //    AttributeButton1.Font = new Font(AttributeButton1.Font.FontFamily, baseFontSize, FontStyle.Bold);
-        //    // ボタン配色を変更！
-        //    AttributeButton1.BackColor = Color.SlateBlue;
-        //    // 最初の下項目のボタンを選択しておく！
-        //    button1_Click(null, null);
-        //    button7_Click(CommandButtonText[0], null);
-        //}
-
         private void button1_Click(Text sender)
         {
             Color targetColor = Color.white;
@@ -706,46 +652,32 @@ namespace DungeonPlayer
             else if (sender.text == "複合スキル")
             {
                 // 不要なボタンは非表示（上）にして・・・
+                groupElement.SetActive(false);
                 // 必要なボタンは表示（上）
-                AttributeButton1.gameObject.SetActive(true);
-                AttributeButton2.gameObject.SetActive(true);
-                AttributeButton3.gameObject.SetActive(true);
-                AttributeButton4.gameObject.SetActive(true);
-                AttributeButton5.gameObject.SetActive(true);
-                AttributeButton6.gameObject.SetActive(true);
-                MixAttribute7.gameObject.SetActive(true);
-                MixAttribute8.gameObject.SetActive(true);
-                MixAttribute9.gameObject.SetActive(true);
-                MixAttribute10.gameObject.SetActive(true);
-                MixAttribute11.gameObject.SetActive(true);
-                MixAttribute12.gameObject.SetActive(true);
-                MixAttribute13.gameObject.SetActive(true);
-                MixAttribute14.gameObject.SetActive(true);
-                MixAttribute15.gameObject.SetActive(true);
+                groupMixElement.SetActive(true);
                 // 必要なボタンは表示（下）させて・・・
-                CommandButtonText[0].gameObject.SetActive(true);
-                CommandButtonText[1].gameObject.SetActive(true);
-                CommandButtonText[2].gameObject.SetActive(false);
-                CommandButtonText[3].gameObject.SetActive(false);
-                CommandButtonText[4].gameObject.SetActive(false);
-                CommandButtonText[5].gameObject.SetActive(false);
-                CommandButtonText[6].gameObject.SetActive(false);
+                groupCommand.SetActive(true); // todo [空欄５つは非表示にするべき]
                 // 上ボタン、テキスト更新
-                AttributeButton1.text = "動/柔";
-                AttributeButton2.text = "動/心眼";
-                AttributeButton3.text = "柔/心眼";
-                AttributeButton4.text = "静/剛";
-                AttributeButton5.text = "静/無心";
-                AttributeButton6.text = "剛/無心";
-                MixAttribute7.text = "動/剛";
-                MixAttribute8.text = "動/無心";
-                MixAttribute9.text = "柔/無心";
-                MixAttribute10.text = "静/柔";
-                MixAttribute11.text = "静/心眼";
-                MixAttribute12.text = "剛/心眼";
-                MixAttribute13.text = "動/静";
-                MixAttribute14.text = "柔/剛";
-                MixAttribute15.text = "心眼/無心";
+                MixElementButtonText[0].text = "動/柔";
+                MixElementButtonText[1].text = "動/心眼";
+                MixElementButtonText[2].text = "柔/心眼";
+                MixElementButtonText[3].text = "静/剛";
+                MixElementButtonText[4].text = "静/無心";
+                MixElementButtonText[5].text = "剛/無心";
+                MixElementButtonText[6].text = "動/剛";
+                MixElementButtonText[7].text = "動/無心";
+                MixElementButtonText[9].text = "柔/無心";
+                MixElementButtonText[10].text = "静/柔";
+                MixElementButtonText[11].text = "静/心眼";
+                MixElementButtonText[12].text = "剛/心眼";
+                MixElementButtonText[13].text = "動/静";
+                MixElementButtonText[14].text = "柔/剛";
+                MixElementButtonText[15].text = "心眼/無心";
+            }
+            else if (sender.text == "元核")
+            {
+                // todo
+                return;
             }
             // 最初の下項目のボタンを選択しておく！
             tapElement(ElementButtonText[0]);
