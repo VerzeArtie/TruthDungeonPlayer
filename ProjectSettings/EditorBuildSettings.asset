@@ -31,3 +31,5 @@ EditorBuildSettings:
     path: Assets/SaveLoad.unity
   - enabled: 1
     path: Assets/TruthSkillSpellDesc.unity
+  - enabled: 1
+    path: Assets/TruthInformation.unity

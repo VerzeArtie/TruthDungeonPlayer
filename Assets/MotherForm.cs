@@ -21,6 +21,14 @@ namespace DungeonPlayer
             }
         }
 
+        public virtual void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                BookManual_Click();
+            }
+        }
+
         protected string exitMessage1 = @"セーブしていない場合、現在データは破棄されます。セーブしますか？";
         protected string exitMessage2 = @"タイトルへ戻りますか？";
         protected string exitMessage3 = @"ユングの町に戻りますか？";
@@ -87,6 +95,11 @@ namespace DungeonPlayer
                 this.Filter.SetActive(false);
             }
             GroundOne.TruthHomeTown_NowExit = false;
+        }
+
+        public virtual void BookManual_Click()
+        {
+            Application.LoadLevelAdditive(Database.TruthInformation);
         }
     }
 }

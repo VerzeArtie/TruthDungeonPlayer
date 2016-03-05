@@ -1238,8 +1238,10 @@ namespace DungeonPlayer
         bool nowEncountEnemy = false;
         bool execEncountEnemy = false;
         bool ignoreCreateShadow = false;
-        void Update()
+        public override void Update()
         {
+            base.Update();
+
             if (this.nowEncountEnemy)
             {
                 this.nowEncountEnemy = false;
@@ -7128,9 +7130,10 @@ namespace DungeonPlayer
             }
         }
 
-        public void BookManual_Click()
+        public override void BookManual_Click()
         {
             this.back_playback.SetActive(false);
+            base.BookManual_Click();
         }
 
         public void DungeonView_Click()

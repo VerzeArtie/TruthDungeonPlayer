@@ -5,6 +5,7 @@ using System;
 using System.Xml;
 using System.Reflection;
 using System.Text;
+using System.IO;
 
 namespace DungeonPlayer
 {
@@ -31,15 +32,12 @@ namespace DungeonPlayer
         {
             base.Start();
 
-            if (System.IO.Directory.Exists(Database.BaseSaveFolder) == false)
-            {
-                System.IO.Directory.CreateDirectory(Database.BaseSaveFolder);
-            }
+            MakeDirectory();
 
             Text newDateTimeButton = null;
             DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
 
-            foreach (string filename in System.IO.Directory.GetFiles(Database.BaseSaveFolder, "*.xml"))
+            foreach (string filename in System.IO.Directory.GetFiles(Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')), "*.xml"))
             {
                 Text targetButton = null;
                 string targetString = System.IO.Path.GetFileName(filename);
@@ -154,6 +152,49 @@ namespace DungeonPlayer
             }
         }
 
+        private void MakeDirectory()
+        {
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                // なし
+            }
+            else if (Application.platform == RuntimePlatform.Android)
+            {
+                // なし
+            }
+            else
+            {
+                if (System.IO.Directory.Exists(Database.BaseSaveFolder) == false)
+                {
+                    System.IO.Directory.CreateDirectory(Database.BaseSaveFolder);
+                }
+            }
+        }
+
+        private string pathForDocumentsFile(string filename)
+        {
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
+                path = path.Substring(0, path.LastIndexOf('/'));
+                return Path.Combine(Path.Combine(path, "Documents"), filename);
+            }
+
+            else if (Application.platform == RuntimePlatform.Android)
+            {
+                string path = Application.persistentDataPath;
+                path = path.Substring(0, path.LastIndexOf('/'));
+                return Path.Combine(path, filename);
+            }
+
+            else
+            {
+                string path = Application.dataPath;
+                path = path.Substring(0, path.LastIndexOf('/'));
+                return Path.Combine(path, filename);
+            }
+        }
+
         public void tapButton(Text sender)
         {
             Debug.Log(sender.text);
@@ -262,7 +303,7 @@ namespace DungeonPlayer
         {
             DateTime now = DateTime.Now;
 
-            foreach (string overwriteData in System.IO.Directory.GetFiles(Database.BaseSaveFolder, "*.xml"))
+            foreach (string overwriteData in System.IO.Directory.GetFiles(Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')), "*.xml"))
             {
                 if (overwriteData.Contains(targetFileName))
                 {
@@ -318,7 +359,7 @@ namespace DungeonPlayer
             }
             targetFileName += ".xml";
 
-            XmlTextWriter xmlWriter = new XmlTextWriter(Database.BaseSaveFolder + targetFileName, Encoding.UTF8);
+            XmlTextWriter xmlWriter = new XmlTextWriter(pathForDocumentsFile(targetFileName), Encoding.UTF8);
             try
             {
                 xmlWriter.WriteStartDocument();
@@ -905,7 +946,7 @@ namespace DungeonPlayer
             }
             else
             {
-                foreach (string currentFile in System.IO.Directory.GetFiles(Database.BaseSaveFolder, "*.xml"))
+                foreach (string currentFile in System.IO.Directory.GetFiles(Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')), "*.xml"))
                 {
                     if (currentFile.Contains("11_"))
                     {
@@ -914,8 +955,8 @@ namespace DungeonPlayer
                     }
                 }
             }
-            
-            xml.Load(Database.BaseSaveFolder + targetFileName);
+
+            xml.Load(pathForDocumentsFile(targetFileName));
             Debug.Log("ExecLoad 2 " + DateTime.Now);
             
             try
@@ -1281,45 +1322,49 @@ namespace DungeonPlayer
             //string temp1 = DateTime.Now.ToString() + "  " + DateTime.Now.Millisecond.ToString();
 
             XmlDocument xml2 = new XmlDocument();
-            xml2.Load(Database.WE2_FILE);
-            Type typeWE2 = GroundOne.WE2.GetType();
-            foreach (PropertyInfo pi in typeWE2.GetProperties())
+            try
             {
-                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
-                if (pi.PropertyType == typeof(System.Int32))
+                xml2.Load(pathForDocumentsFile(Database.WE2_FILE));
+                Type typeWE2 = GroundOne.WE2.GetType();
+                foreach (PropertyInfo pi in typeWE2.GetProperties())
                 {
-                    try
+                    // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                    if (pi.PropertyType == typeof(System.Int32))
                     {
-                        pi.SetValue(GroundOne.WE2, Convert.ToInt32(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                        try
+                        {
+                            pi.SetValue(GroundOne.WE2, Convert.ToInt32(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                        }
+                        catch { }
                     }
-                    catch { }
-                }
-                else if (pi.PropertyType == typeof(System.String))
-                {
-                    try
+                    else if (pi.PropertyType == typeof(System.String))
                     {
-                        pi.SetValue(GroundOne.WE2, (xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                        try
+                        {
+                            pi.SetValue(GroundOne.WE2, (xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                        }
+                        catch { }
                     }
-                    catch { }
-                }
-                else if (pi.PropertyType == typeof(System.Boolean))
-                {
-                    try
+                    else if (pi.PropertyType == typeof(System.Boolean))
                     {
-                        pi.SetValue(GroundOne.WE2, Convert.ToBoolean(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                        try
+                        {
+                            pi.SetValue(GroundOne.WE2, Convert.ToBoolean(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                        }
+                        catch { }
                     }
-                    catch { }
                 }
-            }
-            Debug.Log("ExecLoad 9 " + DateTime.Now); ;
+                Debug.Log("ExecLoad 9 " + DateTime.Now); ;
 
-            XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
-            XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");
-            XmlNodeList list3 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonThreeInfo");
-            XmlNodeList list4 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFourInfo");
-            XmlNodeList list5 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFiveInfo");
-            Debug.Log("ExecLoad 75: " + list1.Count.ToString() + " " + GroundOne.Truth_KnownTileInfo.Length.ToString());
-            Debug.Log(DateTime.Now.ToString());
+                XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
+                XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");
+                XmlNodeList list3 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonThreeInfo");
+                XmlNodeList list4 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFourInfo");
+                XmlNodeList list5 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFiveInfo");
+                Debug.Log("ExecLoad 75: " + list1.Count.ToString() + " " + GroundOne.Truth_KnownTileInfo.Length.ToString());
+                Debug.Log(DateTime.Now.ToString());
+            }
+            catch {}
 
             // todo
             for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
