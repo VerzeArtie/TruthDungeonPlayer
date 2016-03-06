@@ -974,7 +974,7 @@ namespace DungeonPlayer
 
             if (noAction == false)
             {
-                GroundOne.PlaySoundEffect("RestInn.mp3");
+                GroundOne.PlaySoundEffect(Database.SOUND_REST_INN);
                 // todo
                 //using (MessageDisplay md = new MessageDisplay())
                 //{

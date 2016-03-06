@@ -6352,7 +6352,7 @@ namespace DungeonPlayer
 
             // ライフを更新
             LifeDamage(damage, target, interval, detectCritical);
-            if (soundName == "DevouringPlague.mp3")
+            if (soundName == Database.SOUND_DEVOURING_PLAGUE)
             {
                 UpdateBattleText(String.Format(player.GetCharacterSentence(messageNumber), ((int)damage).ToString()), interval);
             }

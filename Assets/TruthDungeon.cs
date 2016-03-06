@@ -18,7 +18,7 @@ namespace DungeonPlayer
         private bool DungeonViewMode = false; // ダンジョンマップの全体を見たいときに使うフラグ
         private Vector2 DungeonViewModeMasterLocation = new Vector2(); // ダンジョン全体マップView表示時の元のViewの位置
         private Vector2 DungeonViewModeMasterPlayerLocation = new Vector2(); //  ダンジョン全体マップView表示時のプレイヤーの元のViewの位置
-        private int MovementInterval = MOVE_INTERVAL; // ダンジョンマップ全体を見ている時のインターバル
+        private int MovementInterval = 0; // ダンジョンマップ全体を見ている時のインターバル
 
         // GUI
         public GameObject back_playback;
@@ -187,10 +187,32 @@ namespace DungeonPlayer
         private string SAVE_REQUEST_1 = "タイトルへ戻ります。今までのデータをセーブしますか？";
         private string SAVE_REQUEST_2 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
 
+        bool arrowDown = false; // add unity
+        bool arrowUp = false; // add unity
+        bool arrowLeft = false; // add unity
+        bool arrowRight = false; // add unity
+        bool keyDown = false;
+        bool keyUp = false;
+        bool keyLeft = false;
+        bool keyRight = false;
+        int MOVE_INTERVAL = 14;
+        int interval = 0;
+        // Update is called once per frame
+        bool nowEncountEnemy = false;
+        bool execEncountEnemy = false;
+        bool ignoreCreateShadow = false;
+
         // Use this for initialization
         public override void Start()
         {
             base.Start();
+
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                MOVE_INTERVAL = 2;
+            }
+            this.interval = MOVE_INTERVAL;
+            this.MovementInterval = MOVE_INTERVAL;
 
             GroundOne.WE.SaveByDungeon = true;
 
@@ -300,7 +322,7 @@ namespace DungeonPlayer
 
                 //      if (cumultiveLvUpValue > 0)
                 //      {
-                //          GroundOne.PlaySoundEffect("LvUp.mp3");
+                //          GroundOne.PlaySoundEffect("LvUp");
                 //          if (!alreadyPlayBackMusic)
                 //          {
                 //              alreadyPlayBackMusic = true;
@@ -537,7 +559,7 @@ namespace DungeonPlayer
 
                 //      if (cumultiveLvUpValue > 0)
                 //      {
-                //          GroundOne.PlaySoundEffect("LvUp.mp3");
+                //          GroundOne.PlaySoundEffect("LvUp");
                 //          if (!alreadyPlayBackMusic)
                 //          {
                 //              alreadyPlayBackMusic = true;
@@ -601,7 +623,7 @@ namespace DungeonPlayer
 
                 //      if (cumultiveLvUpValue > 0)
                 //      {
-                //          GroundOne.PlaySoundEffect("LvUp.mp3");
+                //          GroundOne.PlaySoundEffect("LvUp");
                 //          if (!alreadyPlayBackMusic)
                 //          {
                 //              alreadyPlayBackMusic = true;
@@ -1228,16 +1250,6 @@ namespace DungeonPlayer
 
         }
 
-        bool keyDown = false;
-        bool keyUp = false;
-        bool keyLeft = false;
-        bool keyRight = false;
-        const int MOVE_INTERVAL = 14;
-        int interval = MOVE_INTERVAL;
-        // Update is called once per frame
-        bool nowEncountEnemy = false;
-        bool execEncountEnemy = false;
-        bool ignoreCreateShadow = false;
         public override void Update()
         {
             base.Update();
@@ -1261,7 +1273,8 @@ namespace DungeonPlayer
             else if (Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.UpArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha4) || Input.GetKeyUp(KeyCode.LeftArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha6) || Input.GetKeyUp(KeyCode.RightArrow) ||
-                    Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.DownArrow))
+                    Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.DownArrow) ||
+                    (Application.platform == RuntimePlatform.Android && !this.arrowDown && !this.arrowUp && !this.arrowLeft && !this.arrowRight))
             {
                 CancelKeyDownMovement();
             }
@@ -1271,25 +1284,25 @@ namespace DungeonPlayer
                 {
                     DungeonView_Click();
                 }
-                else if (Input.GetKey(KeyCode.Alpha8) || Input.GetKey(KeyCode.UpArrow))
+                else if (Input.GetKey(KeyCode.Alpha8) || Input.GetKey(KeyCode.UpArrow) || this.arrowUp)
                 {
                     this.keyUp = true;
                     this.keyDown = false;
                     movementTimer_Tick();
                 }
-                else if (Input.GetKey(KeyCode.Alpha4) || Input.GetKey(KeyCode.LeftArrow))
+                else if (Input.GetKey(KeyCode.Alpha4) || Input.GetKey(KeyCode.LeftArrow) || this.arrowLeft)
                 {
                     this.keyLeft = true;
                     this.keyRight = false;
                     movementTimer_Tick();
                 }
-                else if (Input.GetKey(KeyCode.Alpha6) || Input.GetKey(KeyCode.RightArrow))
+                else if (Input.GetKey(KeyCode.Alpha6) || Input.GetKey(KeyCode.RightArrow) || this.arrowRight)
                 {
                     this.keyRight = true;
                     this.keyLeft = false;
                     movementTimer_Tick();
                 }
-                else if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.DownArrow))
+                else if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.DownArrow) || this.arrowDown)
                 {
                     this.keyDown = true;
                     this.keyUp = false;
@@ -1319,15 +1332,17 @@ namespace DungeonPlayer
                 UpdatePlayersKeyEvents(1);
             }
         }
-        private void CancelKeyDownMovement()
+        public void CancelKeyDownMovement()
         {
+            this.arrowUp = false;
+            this.arrowDown = false;
+            this.arrowLeft = false;
+            this.arrowRight = false;
             this.keyUp = false;
             this.keyDown = false;
             this.keyLeft = false;
             this.keyRight = false;
             this.interval = MOVE_INTERVAL;
-            //movementTimer.Enabled = false;
-            //movementTimer.Stop();
         }
 
         private void UpdateViewPoint(float x, float y)
@@ -1350,12 +1365,11 @@ namespace DungeonPlayer
             this.Player.transform.position = new Vector3(x, y, this.Player.transform.position.z);
             Debug.Log("PlayerPoint: " + this.Player.transform.position.ToString());
 
-            // todo
-            //if (!noSound)
-            //{
-            //    //GroundOne.PlaySoundEffect("footstep.mp3");
-            //}
-            ////dungeonField.Invalidate();
+            if (!noSound)
+            {
+                GroundOne.PlaySoundEffect(Database.SOUND_FOOT_STEP);
+            }
+            //dungeonField.Invalidate(); // todo
         }
 
         private int GetTileNumber(Vector3 pos)
@@ -1415,7 +1429,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1425,7 +1439,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1435,7 +1449,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1445,7 +1459,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1455,7 +1469,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1465,7 +1479,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1487,7 +1501,7 @@ namespace DungeonPlayer
                         {
                             this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                             tapOK();
-                            GroundOne.PlaySoundEffect("WallHit.mp3");
+                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                             CancelKeyDownMovement();
                             return true;
                         }
@@ -1505,7 +1519,7 @@ namespace DungeonPlayer
                         {
                             this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                             tapOK();
-                            GroundOne.PlaySoundEffect("WallHit.mp3");
+                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                             CancelKeyDownMovement();
                             return true;
                         }
@@ -1528,7 +1542,7 @@ namespace DungeonPlayer
                         {
                             this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                             tapOK();
-                            GroundOne.PlaySoundEffect("WallHit.mp3");
+                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                             CancelKeyDownMovement();
                             return true;
                         }
@@ -1561,7 +1575,7 @@ namespace DungeonPlayer
                         {
                             this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                             tapOK();
-                            GroundOne.PlaySoundEffect("WallHit.mp3");
+                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                             CancelKeyDownMovement();
                             return true;
                         }
@@ -1594,7 +1608,7 @@ namespace DungeonPlayer
                         {
                             this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                             tapOK();
-                            GroundOne.PlaySoundEffect("WallHit.mp3");
+                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                             CancelKeyDownMovement();
                             return true;
                         }
@@ -1605,7 +1619,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1615,7 +1629,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1625,7 +1639,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1635,7 +1649,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1645,7 +1659,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1655,7 +1669,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1665,7 +1679,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1675,7 +1689,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1685,7 +1699,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1695,7 +1709,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1705,7 +1719,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1715,7 +1729,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1725,7 +1739,7 @@ namespace DungeonPlayer
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
                         tapOK();
-                        GroundOne.PlaySoundEffect("WallHit.mp3");
+                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                         CancelKeyDownMovement();
                         return true;
                     }
@@ -1746,7 +1760,7 @@ namespace DungeonPlayer
                 {
                     this.nowMessage.Add("アイン：開かねぇ・・・"); this.nowEvent.Add(MessagePack.ActionEvent.None);
                     this.tapOK();
-                    GroundOne.PlaySoundEffect("WallHit.mp3");
+                    GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                     CancelKeyDownMovement();
                     return true;
                 }
@@ -1758,7 +1772,7 @@ namespace DungeonPlayer
                 {
                     this.nowMessage.Add("アイン：開かねぇ・・・"); this.nowEvent.Add(MessagePack.ActionEvent.None);
                     this.tapOK();
-                    GroundOne.PlaySoundEffect("WallHit.mp3");
+                    GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                     CancelKeyDownMovement();
                     return true;
                 }
@@ -1770,7 +1784,7 @@ namespace DungeonPlayer
                 {
                     this.nowMessage.Add("アイン：開かねぇ・・・"); this.nowEvent.Add(MessagePack.ActionEvent.None);
                     this.tapOK();
-                    GroundOne.PlaySoundEffect("WallHit.mp3");
+                    GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                     CancelKeyDownMovement();
                     return true;
                 }
@@ -1782,7 +1796,7 @@ namespace DungeonPlayer
                 {
                     this.nowMessage.Add("アイン：開かねぇ・・・"); this.nowEvent.Add(MessagePack.ActionEvent.None);
                     this.tapOK();
-                    GroundOne.PlaySoundEffect("WallHit.mp3");
+                    GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
                     CancelKeyDownMovement();
                     return true;
                 }
@@ -7764,50 +7778,28 @@ namespace DungeonPlayer
             MessagePack.Message10050_3(ref this.nowMessage, ref this.nowEvent);
             tapOK();
         }
-        public void tapMovePanel()
-        {
-        }
 
-        public void tapGoTop()
+        public void PointerDownArrowTop()
         {
-            this.keyUp = true;
-            this.keyDown = false;
-            this.keyLeft = false;
-            this.keyRight = false;
-            this.interval = this.MovementInterval;
-            movementTimer_Tick();
+            this.arrowUp = true;
+            this.arrowDown = false;
         }
-
-        public void tapGoLeft()
+        public void PointerDownArrowBottom()
         {
-            this.keyLeft = true;
-            this.keyRight = false;
-            this.keyDown = false;
-            this.keyUp = false;
-            this.interval = this.MovementInterval;
-            movementTimer_Tick();
+            this.arrowUp = false;
+            this.arrowDown = true;
         }
-
-        public void tapGoRight()
+        public void PointerDownArrowLeft()
         {
-            this.keyRight = true;
-            this.keyLeft = false;
-            this.keyDown = false;
-            this.keyUp = false;
-            this.interval = this.MovementInterval;
-            movementTimer_Tick();
+            this.arrowLeft = true;
+            this.arrowRight = false;
         }
-
-        public void tapGoBottom()
+        public void PointerDownArrowRight()
         {
-            this.keyDown = true;
-            this.keyUp = false;
-            this.keyLeft = false;
-            this.keyRight = false;
-            this.interval = this.MovementInterval;
-            movementTimer_Tick();
+            this.arrowLeft = false;
+            this.arrowRight = true;
         }
-
+        
         public void CallbackHomeTown()
         {
             //this.mc = ht.MC;

@@ -511,38 +511,38 @@ namespace DungeonPlayer
 
                 //        case Database.RARE_AERO_BLADE:
                 //            effectValue = PrimaryLogic.AeroBladeValue(player, this.DuelMode);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "AeroBlade.mp3", 5001, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "AeroBlade", 5001, TruthActionCommand.MagicType.None, false, CriticalType.Random);
                 //            break;
                 //        case Database.RARE_LIFE_SWORD:
                 //            effectValue = PrimaryLogic.LifeSwordValue(player, this.DuelMode);
-                //            PlayerAbstractLifeGain(player, target, 0, effectValue, 0, "FreshHeal.mp3", 5002);
+                //            PlayerAbstractLifeGain(player, target, 0, effectValue, 0, "FreshHeal", 5002);
                 //            break;
                 //        case Database.RARE_AUTUMN_ROD:
                 //            effectValue = PrimaryLogic.AutumnRodValue(player);
-                //            PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal.mp3", 5003);
+                //            PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
                 //            break;
                 //        case Database.RARE_FLOWER_WAND:
                 //            effectValue = PrimaryLogic.FlowerWandValue(player);
-                //            PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal.mp3", 5003);
+                //            PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
                 //            break;
                 //        case Database.COMMON_HAYATE_ORB:
-                //            GroundOne.PlaySoundEffect("HeatBoost.mp3");
+                //            GroundOne.PlaySoundEffect("HeatBoost");
                 //            player.CurrentSpeedBoost = (int)PrimaryLogic.HayateOrbValue(player);
                 //            break;
                 //        case Database.RARE_ICE_SWORD:
-                //            GroundOne.PlaySoundEffect("IceNeedle.mp3");
+                //            GroundOne.PlaySoundEffect("IceNeedle");
                 //            effectValue = PrimaryLogic.IceSwordValue(player, this.DuelMode);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "IceNeedle.mp3", 5004, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "IceNeedle", 5004, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                 //            break;
                 //        case Database.RARE_RISING_KNUCKLE:
-                //            GroundOne.PlaySoundEffect("RisingKnuckle.mp3");
+                //            GroundOne.PlaySoundEffect("RisingKnuckle");
                 //            effectValue = PrimaryLogic.RisingKnuckleValue(player, this.DuelMode);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "RisingKnuckle.mp3", 5005, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "RisingKnuckle", 5005, TruthActionCommand.MagicType.None, false, CriticalType.Random);
                 //            break;
                 //        case Database.COMMON_FROZEN_BALL:
                 //            UpdateBattleText(player.Name + "は" + Database.COMMON_FROZEN_BALL + "を放ってきた！\r\n");
                 //            System.Threading.Thread.Sleep(1000);
-                //            GroundOne.PlaySoundEffect("IceNeedle.mp3");
+                //            GroundOne.PlaySoundEffect("IceNeedle");
                 //            NowFrozen(player, target, 3);
                 //            item = new ItemBackPack(CurrentUsingItem);
                 //            player.DeleteBackPack(item);
@@ -551,7 +551,7 @@ namespace DungeonPlayer
                 //            for (int ii = 0; ii < 2; ii++)
                 //            {
                 //                effectValue = PrimaryLogic.BlueLightningValue(player, this.DuelMode);
-                //                AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning.mp3", 5006, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                //                AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5006, TruthActionCommand.MagicType.None, false, CriticalType.Random);
                 //            }
                 //            break;
                 //        case Database.RARE_BURNING_CLAYMORE:
@@ -568,7 +568,7 @@ namespace DungeonPlayer
                 //            player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", Database.INFINITY);
                 //            break;
                 //        case Database.COMMON_ROCKET_DASH:
-                //            GroundOne.PlaySoundEffect("HeatBoost.mp3");
+                //            GroundOne.PlaySoundEffect("HeatBoost");
                 //            for (int ii = 0; ii < (int)PrimaryLogic.RocketDashValue(player); ii++)
                 //            {
                 //                player.BattleBarPos--;
@@ -597,14 +597,14 @@ namespace DungeonPlayer
                 //            break;
                 //        case Database.RARE_WRATH_SERVEL_CLAW:
                 //            effectValue = PrimaryLogic.WrathServelClawValue(player, this.DuelMode);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning.mp3", 5006, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5006, TruthActionCommand.MagicType.None, false, CriticalType.Random);
                 //            break;
                 //        case Database.RARE_BLUE_RED_ROD:
                 //            effectValue = PrimaryLogic.BlueRedRodValue(player, this.DuelMode);
-                //            if (AbstractMagicDamage(player, target, 0, ref effectValue, 0, "FireBall.mp3", 5008, TruthActionCommand.MagicType.Fire, false, CriticalType.Random))
+                //            if (AbstractMagicDamage(player, target, 0, ref effectValue, 0, "FireBall", 5008, TruthActionCommand.MagicType.Fire, false, CriticalType.Random))
                 //            {
                 //                effectValue = PrimaryLogic.BlueRedRodValue_A(player);
-                //                PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal.mp3", 5003);
+                //                PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
                 //            }
                 //            break;
                 //        case Database.RARE_MEIUN_BOX:
@@ -612,15 +612,15 @@ namespace DungeonPlayer
                 //            int randomValue = rand.Next(1, 4);
                 //            if (randomValue == 1)
                 //            {
-                //                PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.MeiunBoxValue_A(player), 0, "FreshHeal.mp3", 5002);
+                //                PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.MeiunBoxValue_A(player), 0, "FreshHeal", 5002);
                 //            }
                 //            else if (randomValue == 2)
                 //            {
-                //                PlayerAbstractManaGain(player, player, 0, PrimaryLogic.MeiunBoxValue_B(player), 0, "FreshHeal.mp3", 5003);
+                //                PlayerAbstractManaGain(player, player, 0, PrimaryLogic.MeiunBoxValue_B(player), 0, "FreshHeal", 5003);
                 //            }
                 //            else if (randomValue == 3)
                 //            {
-                //                PlayerAbstractSkillGain(player, player, 0, PrimaryLogic.MeiunBoxValue_C(player), 0, "FreshHeal.mp3", 5009);
+                //                PlayerAbstractSkillGain(player, player, 0, PrimaryLogic.MeiunBoxValue_C(player), 0, "FreshHeal", 5009);
                 //            }
                 //            break;
                 //        case Database.RARE_SYUURENSYA_KUROOBI:
@@ -743,7 +743,7 @@ namespace DungeonPlayer
                 //            break;
                 //        case Database.EPIC_ADILRING_OF_BLUE_BURN:
                 //            effectValue = PrimaryLogic.AdilBlueBurnValue(player);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning.mp3", 5010, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5010, TruthActionCommand.MagicType.None, false, CriticalType.Random);
                 //            break;
                 //        case Database.RARE_SOUSUI_HIDENSYO:
                 //            PreExecPlaySkill(player, target, false, false, Database.VIOLENT_SLASH);
@@ -809,9 +809,9 @@ namespace DungeonPlayer
                 //            break;
                 //        case Database.RARE_CORE_ESSENCE_CHANNEL:
                 //            UpdateBattleText("活性の脈動が" + player.Name + "に響き渡る\r\n");
-                //            PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_A(player), 0, "FreshHeal.mp3", 5002);
-                //            PlayerAbstractManaGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_B(player), 0, "FreshHeal.mp3", 5003);
-                //            PlayerAbstractSkillGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_C(player), 0, "FreshHeal.mp3", 5009);
+                //            PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_A(player), 0, "FreshHeal", 5002);
+                //            PlayerAbstractManaGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_B(player), 0, "FreshHeal", 5003);
+                //            PlayerAbstractSkillGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_C(player), 0, "FreshHeal", 5009);
                 //            break;
 
                 //        case Database.RARE_HUNTERS_EYE:
@@ -1103,7 +1103,7 @@ namespace DungeonPlayer
                                     PlayerNormalAttack(player, target, 0, false, true);
                                     System.Threading.Thread.Sleep(100);
                                     double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
-                                    AbstractMagicDamage(player, target, 0, ref damage, 0, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, target, 0, ref damage, 0, "FlameStrike", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                     System.Threading.Thread.Sleep(100);
                                 }
                                 break;
@@ -1264,7 +1264,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "の一輪の赤花より火炎が放たれる！！\r\n");
                                     double damage = PrimaryLogic.FireBallValue(player, false);
-                                    AbstractMagicDamage(player, target, 0, ref damage, 1.5f, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, target, 0, ref damage, 1.5f, "FireBall", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                 }
                                 else if ((player.StackCommandString == "ファイアビューネ") ||
                                          (player.ActionLabel.text == "ファイアビューネ"))
@@ -1280,11 +1280,11 @@ namespace DungeonPlayer
                                         {
                                             if (GroundOne.MC.Dead == false)
                                             {
-                                                AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                                AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                             }
                                             else
                                             {
-                                                AbstractMagicDamage(player, GroundOne.SC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                                AbstractMagicDamage(player, GroundOne.SC, 10, ref damage, 0, "FireBall", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                             }
                                         }
                                         else
@@ -1293,16 +1293,16 @@ namespace DungeonPlayer
                                             {
                                                 if (GroundOne.SC.Dead == false)
                                                 {
-                                                    AbstractMagicDamage(player, GroundOne.SC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                                    AbstractMagicDamage(player, GroundOne.SC, 10, ref damage, 0, "FireBall", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                                 }
                                                 else
                                                 {
-                                                    AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                                    AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                                 }
                                             }
                                             else
                                             {
-                                                AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                                AbstractMagicDamage(player, GroundOne.MC, 10, ref damage, 0, "FireBall", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                             }
                                         }
                                     }
@@ -1695,7 +1695,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は生命の龍水を体中に浴びた！\r\n");
                                     // ライフ回復
                                     effectValue = player.Intelligence * 4;
-                                    PlayerAbstractLifeGain(player, player, 0, effectValue, 0, "FreshHeal.mp3", 5002);
+                                    PlayerAbstractLifeGain(player, player, 0, effectValue, 0, "FreshHeal", 5002);
                                 }
                                 else if ((player.ActionLabel.text == "サルマンの詠唱") ||
                                          (player.StackCommandString == "サルマンの詠唱"))
@@ -1761,19 +1761,19 @@ namespace DungeonPlayer
                             case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
                                 if (player.StackCommandString == "溶岩の一撃")
                                 {
-                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 1.5F, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 1.5F, "FlameStrike", 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "燃え盛る炎弾丸")
                                 {
                                     UpdateBattleText(player.FirstName + "は燃え盛る炎の弾丸を吐いてきた！\r\n");
 
-                                    PlayerRandomTargetDamage(player, 5, "FireBall.mp3", TruthActionCommand.MagicType.Fire);
+                                    PlayerRandomTargetDamage(player, 5, "FireBall", TruthActionCommand.MagicType.Fire);
                                 }
                                 else if (player.ActionLabel.text == "ブレイジング・ストーム")
                                 {
                                     UpdateBattleText(player.FirstName + "の眼が大きくなる！ブレイジング・ストームを放射してきた！\r\n");
 
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, "FlameStrike.mp3", TruthActionCommand.MagicType.Fire);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, "FlameStrike", TruthActionCommand.MagicType.Fire);
                                 }
                                 else if (player.ActionLabel.text == "ファイア・ウォール")
                                 {
@@ -1804,19 +1804,19 @@ namespace DungeonPlayer
                             case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
                                 if (player.StackCommandString == "凍雹の一撃")
                                 {
-                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 1.5F, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                    AbstractMagicDamage(player, player.StackTarget, 0, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode), 1.5F, "FrozenLance", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                                 }
                                 else if (player.ActionLabel.text == "凍てつく氷弾丸")
                                 {
                                     UpdateBattleText(player.FirstName + "は凍てつく氷の弾丸を放ってきた！\r\n");
 
-                                    PlayerRandomTargetDamage(player, 5, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+                                    PlayerRandomTargetDamage(player, 5, "FrozenLance", TruthActionCommand.MagicType.Ice);
                                 }
                                 else if (player.ActionLabel.text == "ウォーター・スラッシュ")
                                 {
                                     UpdateBattleText(player.FirstName + "の眼が大きくなる！ウォーター・スラッシュを発生させてきた！\r\n");
 
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, "FrozenLance", TruthActionCommand.MagicType.Ice);
                                 }
                                 else if (player.ActionLabel.text == "ウォータ・バブル")
                                 {
@@ -1932,7 +1932,7 @@ namespace DungeonPlayer
                                 {
                                     // 全体ダメージ
                                     UpdateBattleText(player.FirstName + "は体全体を大きくうならせ、大きな津波を発生させてきた！\r\n");
-                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 3.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+                                    PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 3.0F, "FrozenLance", TruthActionCommand.MagicType.Ice);
                                     break;
                                 }
                                 else if (player.ActionLabel.text == "バースト・クラウド")
@@ -1948,7 +1948,7 @@ namespace DungeonPlayer
                                         double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 2;
 
                                         int tempRandom = AP.Math.RandomInteger(group.Count);
-                                        AbstractMagicDamage(player, group[tempRandom], 10, ref damage, 0, "FrozenLance.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                                        AbstractMagicDamage(player, group[tempRandom], 10, ref damage, 0, "FrozenLance", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "海王の咆哮")
@@ -2147,7 +2147,7 @@ namespace DungeonPlayer
             //                    else if (player.ActionLabel.text == "氷の儀式")
             //                    {
             //                        UpdateBattleText(player.FirstName + "は氷の儀式を行った。氷属性の攻撃が棍棒に追加付与された！\r\n");
-            //                        GroundOne.PlaySoundEffect("IceNeedle.mp3");
+            //                        GroundOne.PlaySoundEffect("IceNeedle");
             //                        target.CurrentFrozenAura = Database.INFINITY;
             //                        target.ActivateBuff(target.pbFrozenAura, Database.BaseResourceFolder + "FrozenAura.bmp", Database.INFINITY);
             //                    }
@@ -2261,7 +2261,7 @@ namespace DungeonPlayer
             //                    {
             //                        UpdateBattleText(player.FirstName + "は氷を更に結晶化させ、高位魔法の序術を放った！\r\n");
             //                        double damage = PrimaryLogic.IceNeedleValue(player, false);
-            //                        if (AbstractMagicDamage(player, target, 0, ref damage, 2.0f, "IceNeedle.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
+            //                        if (AbstractMagicDamage(player, target, 0, ref damage, 2.0f, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
             //                        {
             //                            NowFrozen(player, target, 1);
             //                        }
@@ -2277,7 +2277,7 @@ namespace DungeonPlayer
             //                            if (sc != null && !sc.Dead) { group.Add(sc); }
             //                            if (tc != null && !tc.Dead) { group.Add(tc); }
             //                            int tempdata = AP.Math.RandomInteger(group.Count);
-            //                            if (AbstractMagicDamage(player, group[tempdata], 30, ref damage, 0, "IceNeedle.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
+            //                            if (AbstractMagicDamage(player, group[tempdata], 30, ref damage, 0, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
             //                            {
             //                                NowFrozen(player, group[tempdata], 1);
             //                            }
@@ -2288,7 +2288,7 @@ namespace DungeonPlayer
             //                    if (player.ActionLabel.text == "津波の呼び声")
             //                    {
             //                        UpdateBattleText(player.FirstName + "は周囲全体の場へ津波が襲来するよう呼び声を放った！\r\n");
-            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 2.0F, "FrozenLance", TruthActionCommand.MagicType.Ice);
             //                    }
             //                    else if (player.ActionLabel.text == "平穏の呼び声")
             //                    {
@@ -2325,7 +2325,7 @@ namespace DungeonPlayer
             //                            if (sc != null && !sc.Dead) { group.Add(sc); }
             //                            if (tc != null && !tc.Dead) { group.Add(tc); }
             //                            int tempdata = AP.Math.RandomInteger(group.Count);
-            //                            AbstractMagicDamage(player, group[tempdata], 10, ref damage, 0, "IceNeedle.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+            //                            AbstractMagicDamage(player, group[tempdata], 10, ref damage, 0, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
             //                        }
             //                    }
             //                    else if (player.ActionLabel.text == "ＳＰＬＡＳＨ！")
@@ -2334,7 +2334,7 @@ namespace DungeonPlayer
             //                        for (int ii = 0; ii < 20; ii++)
             //                        {
             //                            string sound = String.Empty;
-            //                            if (ii == 0) { sound = "IceNeedle.mp3"; }
+            //                            if (ii == 0) { sound = "IceNeedle"; }
 
             //                            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 0.5f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) / 3;
             //                            AbstractMagicDamage(player, target, 10, ref damage, 0, sound, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
@@ -2367,7 +2367,7 @@ namespace DungeonPlayer
             //                        {
             //                            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 0.8f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
             //                            string sound = String.Empty;
-            //                            if (ii == 0) { sound = "FrozenLance.mp3"; }
+            //                            if (ii == 0) { sound = "FrozenLance"; }
 
             //                            int randomValue = AP.Math.RandomInteger(group.Count);
             //                            AbstractMagicDamage(player, group[randomValue], 2 * (ii + 1), ref damage, 0, sound, 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
@@ -2382,7 +2382,7 @@ namespace DungeonPlayer
             //                        if (tc != null && !tc.Dead) { group.Add(tc); }
             //                        double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 3.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode);
             //                        int randomValue = AP.Math.RandomInteger(group.Count);
-            //                        if (AbstractMagicDamage(player, group[randomValue], 0, ref damage, 1.0f, "IceNeedle.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
+            //                        if (AbstractMagicDamage(player, group[randomValue], 0, ref damage, 1.0f, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
             //                        {
             //                            NowFrozen(player, group[randomValue], 3);
             //                        }
@@ -2449,7 +2449,7 @@ namespace DungeonPlayer
             //                    else if (player.ActionLabel.text == "自爆")
             //                    {
             //                        UpdateBattleText(player.FirstName + "の発光状態が急激に青から白へと変わっていく！！\r\n");
-            //                        if (AbstractMagicDamage(player, target, 0, 0, 1.0f, "IceNeedle.mp3", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
+            //                        if (AbstractMagicDamage(player, target, 0, 0, 1.0f, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
             //                        {
             //                            double damage = player.CurrentLife;
             //                            player.CurrentLife = 0;
@@ -2469,7 +2469,7 @@ namespace DungeonPlayer
             //                    else if (player.ActionLabel.text == "断空")
             //                    {
             //                        UpdateBattleText(player.FirstName + "：フシュウウゥゥゥゥウウウゥゥ！！\r\n");
-            //                        PlayerNormalAttack(player, target, 10.0f, 0, false, false, 0, 0, "KineticSmash.mp3", -1, false, CriticalType.None);
+            //                        PlayerNormalAttack(player, target, 10.0f, 0, false, false, 0, 0, "KineticSmash", -1, false, CriticalType.None);
             //                    }
             //                    else if (player.ActionLabel.text == "アイス・トルネード")
             //                    {
@@ -2517,7 +2517,7 @@ namespace DungeonPlayer
             //                        if (tc != null && !tc.Dead) { group.Add(tc); }
             //                        for (int ii = 0; ii < group.Count; ii++)
             //                        {
-            //                            AbstractMagicDamage(player, group[ii], 0, 0, 2.0f, "LavaAnnihilation.mp3", 0, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+            //                            AbstractMagicDamage(player, group[ii], 0, 0, 2.0f, "LavaAnnihilation", 0, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
             //                        }
             //                    }
             //                    break;
@@ -3045,7 +3045,7 @@ namespace DungeonPlayer
             //                        if (tc != null && !tc.Dead) { group.Add(tc); }
             //                        foreach (MainCharacter current in group)
             //                        {
-            //                            if (AbstractMagicDamage(player, current, 0, PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 4.0f, 0.0f, 0.0f, 0.0f, 0.0f, PlayerStance.AllRounder, PrimaryLogic.SpellSkillType.Standard, this.DuelMode), 0, "FlameStrike.mp3", 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
+            //                            if (AbstractMagicDamage(player, current, 0, PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 4.0f, 0.0f, 0.0f, 0.0f, 0.0f, PlayerStance.AllRounder, PrimaryLogic.SpellSkillType.Standard, this.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
             //                            {
             //                                current.CurrentBlackFire = Database.INFINITY;
             //                                current.ActivateBuff(current.pbBlackFire, Database.BaseResourceFolder + Database.BLACK_FIRE + fileExt, Database.INFINITY);
@@ -3082,7 +3082,7 @@ namespace DungeonPlayer
             //                        UpdateBattleText(player.FirstName + "の辺りは淡い緑色に球体に包まれた！\r\n");
             //                        PlayerBuffAbstract(player, player, 999, "NourishSense.bmp");
             //                        PlayerBuffAbstract(player, player, 999, "WordOfLife.bmp");
-            //                        PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.SacredHealValue(player, false), 0, "CelestialNova.mp3", 0);
+            //                        PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.SacredHealValue(player, false), 0, "CelestialNova", 0);
             //                    }
             //                    else if (player.ActionLabel.text == "シャープネル・ニードル")
             //                    {
@@ -3818,7 +3818,7 @@ namespace DungeonPlayer
             //                        if (sc != null && !sc.Dead) { group.Add(sc); }
             //                        if (tc != null && !tc.Dead) { group.Add(tc); }
 
-            //                        GroundOne.PlaySoundEffect("RiseOfImage.mp3");
+            //                        GroundOne.PlaySoundEffect("RiseOfImage");
             //                        for (int ii = 0; ii < group.Count; ii++)
             //                        {
             //                            double damage = AP.Math.RandomInteger(100) / 100.0f;
@@ -3863,7 +3863,7 @@ namespace DungeonPlayer
             //                    {
             //                        for (int ii = 0; ii < 10; ii++)
             //                        {
-            //                            AbstractMagicDamage(player, target, 15, PrimaryLogic.AscendantMeteorValue(player, this.DuelMode), 0.3f, "FireBall.mp3", 120, TruthActionCommand.MagicType.Light_Fire, false, CriticalType.Random);
+            //                            AbstractMagicDamage(player, target, 15, PrimaryLogic.AscendantMeteorValue(player, this.DuelMode), 0.3f, "FireBall", 120, TruthActionCommand.MagicType.Light_Fire, false, CriticalType.Random);
             //                        }
             //                    }
             //                    break;
@@ -3907,7 +3907,7 @@ namespace DungeonPlayer
             //                    {
             //                        // 全体ダメージ
             //                        UpdateBattleText(player.FirstName + "は、大きな津波を発生させてきた！\r\n");
-            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 5.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 3.0F, "FrozenLance.mp3", TruthActionCommand.MagicType.Ice);
+            //                        PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 5.0f, 0.0f, PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, this.DuelMode) * 3.0F, "FrozenLance", TruthActionCommand.MagicType.Ice);
             //                        break;
             //                    }
             //                    else if (player.StackCommandString == "アース・コールド・シェイク")
@@ -5097,7 +5097,7 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < group.Count; ii++)
             {
-                GroundOne.PlaySoundEffect("MirrorImage.mp3");
+                GroundOne.PlaySoundEffect("MirrorImage");
                 PlayerBuffAbstract(player, group[ii], 999, "MirrorImage.bmp");
             }
         }
