@@ -236,7 +236,7 @@ namespace DungeonPlayer
 
         int TIMER_SPEED = 10;
 
-        int MAX_ITEM_GAUGE = 850;
+        int MAX_ITEM_GAUGE = 1000;
         int currentItemGauge = 0;
         // Use this for initialization
         public override void Start()

@@ -149,15 +149,18 @@ namespace DungeonPlayer
             // debug
             WE.AvailableInstantCommand = true;
             GroundOne.enemyName1 = Database.DUEL_DUMMY_SUBURI; // DUEL_EONE_FULNEA;
-            //GroundOne.WE.AvailableSecondCharacter = true;
-            //GroundOne.WE.AvailableThirdCharacter = true;
+            GroundOne.enemyName2 = Database.ENEMY_SUN_FLOWER;
+            GroundOne.enemyName3 = Database.ENEMY_SPEEDY_TAKA;
+            GroundOne.WE.AvailableSecondCharacter = true;
+            GroundOne.WE.AvailableThirdCharacter = true;
             GroundOne.DuelMode = true;
-            MC.Agility = 750;
+           
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);
             MC.Accessory = new ItemBackPack(Database.COMMON_BLUE_PENDANT);
             MC.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_PENDANT);
+            MC.CurrentLife = MC.MaxLife;
             MC.AddBackPack(new ItemBackPack(Database.RARE_TOOMI_BLUE_SUISYOU));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
             MC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
