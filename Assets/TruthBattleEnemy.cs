@@ -4850,9 +4850,9 @@ namespace DungeonPlayer
                     else
                     {
                         BattleStart.text = "戦闘停止";
+                        tempStopFlag = true;
                         //this.BattleMenuPanel.Visible = true; // todo ただし本当にチェンジする必要があるか？
                     }
-                    tempStopFlag = true;
                 }
                 else
                 {
