@@ -21,6 +21,8 @@ namespace DungeonPlayer
         private int MovementInterval = 0; // ダンジョンマップ全体を見ている時のインターバル
 
         // GUI
+        public Text dayLabel;
+        public Text dungeonAreaLabel;
         public GameObject groupArrow;
         public GameObject back_playback;
         public Text[] playbackText;
@@ -222,6 +224,12 @@ namespace DungeonPlayer
             this.MovementInterval = MOVE_INTERVAL;
 
             GroundOne.WE.SaveByDungeon = true;
+            GroundOne.WE.AlreadyCommunicate = false;
+            GroundOne.WE.AlreadyEquipShop = false;
+            GroundOne.WE.alreadyCommunicateCahlhanz = false;
+            GroundOne.WE.AlreadyRest = false;
+            this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
+            this.dungeonAreaLabel.text = GroundOne.WE.DungeonArea.ToString() + "　階";
 
             // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
@@ -688,12 +696,42 @@ namespace DungeonPlayer
                 UpdatePlayerLocationInfo(GroundOne.WE.DungeonPosX, GroundOne.WE.DungeonPosY, false);
                 UpdateViewPoint(GroundOne.WE.dungeonViewPointX, GroundOne.WE.dungeonViewPointY);
             }
-            UpdateUnknownTile();
 
-            //SetupDungeonMapping(GroundOne.WE.DungeonArea);
+            // todo 要確認
+            switch (GroundOne.WE.DungeonArea)
+            {
+                case 0:
+                case 1:
+                    UpdatePlayerLocationInfo(39, -14, false);
+                    UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
+                    break;
+                case 2:
+                    UpdatePlayerLocationInfo(29, -19, false);
+                    UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
+                    break;
+                case 3:
+                    UpdatePlayerLocationInfo(0, -19, false);
+                    UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
+                    break;
+                case 4:
+                    UpdatePlayerLocationInfo(18, -52, false);
+                    //JumpByNormal(18, 52); // todo (要確認)
+                    break;
+                case 5:
+                    UpdatePlayerLocationInfo(20, 0, false);
+                    UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
+                    break;
+            }
+            SetupDungeonMapping(GroundOne.WE.DungeonArea);
+
+            UpdateMainMessage("", true);
+            GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+
+            UpdateUnknownTile();
 
             SetupPlayerStatus(true);
         }
+
 
         private void ReadDungeonTileFromXmlFile(string xmlFileName)
         {
@@ -7744,7 +7782,7 @@ namespace DungeonPlayer
                 {
                     UpdateViewPoint(-Database.DUNGEON_MOVE_LEN * 15, -Database.DUNGEON_MOVE_LEN * 10);
                     UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * (29 - 15), Database.DUNGEON_MOVE_LEN * (19 - 10));
-                    //SetupDungeonMapping(2); // todo
+                    SetupDungeonMapping(2);
                     //dungeonField.Invalidate();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor1)
@@ -7891,7 +7929,7 @@ namespace DungeonPlayer
 
             // ホームタウンに入る前は、遠見の青水晶を使ってくる場合もあるため、スタート地点へ移動しておく事とする。
             //    UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * 39, Database.DUNGEON_MOVE_LEN * 14); // [todo] Unityの新しい画面では、この操作は不要になる。
-            //SetupDungeonMapping(1);
+            SetupDungeonMapping(1);
 
             GroundOne.Truth_KnownTileInfo2 = this.knownTileInfo2;
             GroundOne.Truth_KnownTileInfo3 = this.knownTileInfo3;
@@ -7901,7 +7939,7 @@ namespace DungeonPlayer
             GroundOne.BattleSpeed = this.battleSpeed;
             GroundOne.Difficulty = this.difficulty;
 
-            Application.LoadLevel("TruthHomeTown");
+            SceneDimension.JumpToTruthHomeTown(Database.TruthDungeon);
 
             // [todo] CallbackHomeTownはUnityのMainMenuから呼び出された時、必ず実施しなければならないメソッドである。
         }
@@ -7911,5 +7949,12 @@ namespace DungeonPlayer
             // todo
             return true;
         }
+
+        // todo
+        private void SetupDungeonMapping(int p)
+        {
+            //throw new NotImplementedException();
+        }
+
     }
 }

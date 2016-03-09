@@ -3827,13 +3827,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ああ、そうだな！"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "アインは一通り、町の住人達に声をかけ、時間が刻々と過ぎていった。";
-            //    md.Message = "その日の夜、ハンナの宿屋亭にて";
-            //}
+            messageList.Add("アインは一通り、町の住人達に声をかけ、時間が刻々と過ぎていった。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("---- その日の夜、ハンナの宿屋亭にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -3876,12 +3872,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：おぉぉ！これはスゲェ！いただきます！！"); eventList.Add(ActionEvent.None);
 
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "アインとラナが夕飯を食べた後・・・";
-                //}
+                messageList.Add("アインとラナが夕飯を食べた後 ・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 messageList.Add("アイン：ふう、もう食えないぜ。おばちゃん、ありがと！"); eventList.Add(ActionEvent.None);
 
@@ -3914,12 +3905,7 @@ namespace DungeonPlayer
                 // todo
                 //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None);
 
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "アインが予約していた部屋にて";
-                //}
+                messageList.Add("アインとラナが夕飯を食べた後 ・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 messageList.Add("アイン：ふう・・・バックパック整理っと・・・"); eventList.Add(ActionEvent.None);
 
@@ -3979,12 +3965,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：おぉぉ！これはスゲェ！いただきます！！"); eventList.Add(ActionEvent.None);
 
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "アインとラナが夕飯を食べた後・・・";
-                //}
+                messageList.Add("アインとラナが夕飯を食べた後・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 messageList.Add("アイン：ふう、もう食えないぜ。おばちゃん、ありがと！"); eventList.Add(ActionEvent.None);
 
@@ -4091,12 +4072,7 @@ namespace DungeonPlayer
                 // todo
                 // ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None);
 
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "アインが予約していた部屋にて";
-                //}
+                messageList.Add("---- アインが予約していた部屋にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 messageList.Add("アイン：ふう・・・バックパック整理っと・・・"); eventList.Add(ActionEvent.None);
 
@@ -4461,13 +4437,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ああ、そうだな！"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "アインは一通り、町の住人達に声をかけ、時間が刻々と過ぎていった。";
-            //    md.Message = "その日の夜、ハンナの宿屋亭にて";
-            //}
+            messageList.Add("アインは一通り、町の住人達に声をかけ、時間が刻々と過ぎていった。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("---- その日の夜、ハンナの宿屋亭にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -4536,12 +4508,7 @@ namespace DungeonPlayer
                 // todo
                 //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None);
 
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "アインが予約していた部屋にて";
-                //}
+                messageList.Add("---- アインが予約していた部屋にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 messageList.Add("アイン：ふう・・・バックパック整理っと・・・"); eventList.Add(ActionEvent.None);
 
@@ -4664,12 +4631,7 @@ namespace DungeonPlayer
                 // todo
                 //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None);
 
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "アインが予約していた部屋にて";
-                //}
+                messageList.Add("---- アインが予約していた部屋にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 messageList.Add("アイン：ふう・・・バックパック整理っと・・・"); eventList.Add(ActionEvent.None);
 
@@ -4957,12 +4919,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
 
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.Message = "アインが予約していた部屋にて";
-                //}
+                messageList.Add("---- アインが予約していた部屋にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 messageList.Add("アイン：ふう・・・バックパック整理っと・・・"); eventList.Add(ActionEvent.None);
 
@@ -5258,16 +5215,10 @@ namespace DungeonPlayer
             messageList.Add("アイン：朝の６時か・・・起きるには少し早いぐらいだな。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：・・・ん？何か床に落ちてるな。"); eventList.Add(ActionEvent.None);
-            
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.Message = "【ラナのイヤリング】を手に入れました。";
-            //    GroundOne.playbackMessage.Insert(0, md.Message);
-            //    GroundOne.playbackInfoStyle.Insert(0, TruthPlaybackMessage.infoStyle.notify);
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.ShowDialog();
-            //}
+
+            messageList.Add("【ラナのイヤリング】を手に入れました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_EARRING_OF_LANA));
 
             // todo
             //GetItemFullCheck(mc, Database.RARE_EARRING_OF_LANA); eventList.Add(ActionEvent.None);
@@ -5530,11 +5481,8 @@ namespace DungeonPlayer
             messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "次の日の朝・・・";
-            //}
+
+            messageList.Add("次の日の朝・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：ゴフォオォォォ・・・ッゴホッゴホ・・・"); eventList.Add(ActionEvent.None);
 
@@ -5554,12 +5502,7 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastle);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "---- ファージル宮殿にて ----";
-            //}
+            messageList.Add("---- ファージル宮殿にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：っうおぉぉ！　すげえ人の数だな！！"); eventList.Add(ActionEvent.None);
 
@@ -5577,13 +5520,8 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：うん♪"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "---- ２時間半経過後 ----";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add("---- ２時間半経過後 ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
             messageList.Add("アイン：・・・　もう少しか　・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：うん、もうすぐのはずよ。"); eventList.Add(ActionEvent.None);
@@ -5628,13 +5566,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：じゃあ、進めましょ♪"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "---- 国王／王妃　謁見の間にて ----";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add("---- 国王／王妃　謁見の間にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：っとと・・・ここで整列だよな・・・"); eventList.Add(ActionEvent.None);
 
@@ -5754,13 +5686,7 @@ namespace DungeonPlayer
 
             GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "---- ファージル宮殿、園芸の広場にて ----";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add("---- ファージル宮殿、園芸の広場にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("ラナ：あっ、ホラホラ見てアイン。これアカシジアの木よ♪"); eventList.Add(ActionEvent.None);
 
@@ -5812,13 +5738,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：・・・ハイハイ、分かりました♪"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "---- ファージル宮殿、食事の間にて ----";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add("---- ファージル宮殿、食事の間にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：マジかよ・・・この美味さ・・・"); eventList.Add(ActionEvent.None);
 
@@ -5930,13 +5850,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：笑ってられんのも今のうちだ、絶対だからな。"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "---- ファージル宮殿、休息の間にて ----";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add("---- ファージル宮殿、休息の間にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：いやあ、しかし宮殿中を歩き回ったな。"); eventList.Add(ActionEvent.None);
 
@@ -5992,13 +5906,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：エレマ・セフィーネさんの墓場だ。"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "---- ファージル宮殿、墓地にて ----";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add("---- ファージル宮殿、墓地にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("ラナ：こんな所があったのね・・・知らなかったわ。"); eventList.Add(ActionEvent.None);
 
@@ -7043,13 +6951,7 @@ namespace DungeonPlayer
             //    }
             //}
 
-            //// todo
-            ////using (MessageDisplay md = new MessageDisplay())
-            ////{
-            ////    md.StartPosition = FormStartPosition.CenterParent;
-            ////    md.Message = "ダンジョンゲートの入り口にて";
-            ////    md.ShowDialog();
-            ////}
+            messageList.Add("---- ダンジョンゲートの入り口にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             //GroundOne.StopDungeonMusic();
 
@@ -7398,13 +7300,7 @@ namespace DungeonPlayer
 
             //UpdateMainMessage("アイン：（あれ、この道って、ダンジョンゲートへ行くつもりか？）");
 
-            //// todo
-            ////using (MessageDisplay md = new MessageDisplay())
-            ////{
-            ////    md.StartPosition = FormStartPosition.CenterParent;
-            ////    md.Message = "ダンジョンゲート裏の広場にて";
-            ////    md.ShowDialog();
-            ////}
+            messageList.Add("---- ダンジョンゲート裏の広場にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             //UpdateMainMessage("ガンツ：着いたな。");
 
@@ -7432,13 +7328,7 @@ namespace DungeonPlayer
 
             //UpdateMainMessage("　　ッバシュウウゥゥゥゥン");
 
-            //// todo
-            ////using (MessageDisplay md = new MessageDisplay())
-            ////{
-            ////    md.StartPosition = FormStartPosition.CenterParent;
-            ////    md.Message = "アインは別の場所へと飛ばされてしまった。";
-            ////    md.ShowDialog();
-            ////}
+            messageList.Add("アインは別の場所へと飛ばされてしまった"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             //// todo
             ////this.buttonHanna.Visible = false;
@@ -7582,13 +7472,7 @@ namespace DungeonPlayer
 
             //UpdateMainMessage("　　　ッバタ・・・（アインはその場で静かに落ちた）");
 
-            //// todo
-            ////using (MessageDisplay md = new MessageDisplay())
-            ////{
-            ////    md.StartPosition = FormStartPosition.CenterParent;
-            ////    md.Message = "アインは複合魔法・スキルの基礎を習得した！";
-            ////    md.ShowDialog();
-            ////}
+            messageList.Add("アインは複合魔法・スキルの基礎を習得した！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
             //GroundOne.WE.AvailableMixSpellSkill = true;
             //GroundOne.WE2.AvailableMixSpellSkill = true;
 
@@ -7646,13 +7530,7 @@ namespace DungeonPlayer
 
             //UpdateMainMessage("　　ッバシュウウゥゥゥゥン");
 
-            //// todo
-            ////using (MessageDisplay md = new MessageDisplay())
-            ////{
-            ////    md.StartPosition = FormStartPosition.CenterParent;
-            ////    md.Message = "アインはダンジョンゲートの裏広場に戻ってきた";
-            ////    md.ShowDialog();
-            ////}
+            messageList.Add("アインはダンジョンゲートの裏広場に戻ってきた"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             //if (!GroundOne.WE.AlreadyRest)
             //{
@@ -7681,13 +7559,7 @@ namespace DungeonPlayer
 
             //UpdateMainMessage("アイン：（ガンツ叔父さんもこう見えて、強引だよな・・・）");
 
-            //// todo
-            ////using (MessageDisplay md = new MessageDisplay())
-            ////{
-            ////    md.StartPosition = FormStartPosition.CenterParent;
-            ////    md.Message = "アイン達はガンツの武具屋まで戻ってきた";
-            ////    md.ShowDialog();
-            ////}
+            messageList.Add("アインはガンツの武具屋まで戻ってきた"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             //UpdateMainMessage("ガンツ：では、ワシはこれで。");
 
@@ -7743,13 +7615,7 @@ namespace DungeonPlayer
 
                 //UpdateMainMessage("アイン：ハイ・・・");
 
-                //// todo
-                ////using (MessageDisplay md = new MessageDisplay())
-                ////{
-                ////    md.StartPosition = FormStartPosition.CenterParent;
-                ////    md.Message = "ダンジョンゲート裏の広場にて";
-                ////    md.ShowDialog();
-                ////}
+                messageList.Add("---- ダンジョンゲート裏の広場にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 //UpdateMainMessage("アイン：えっと、確かこの辺だったな・・・");
 
@@ -7759,13 +7625,7 @@ namespace DungeonPlayer
 
                 //UpdateMainMessage("　　ッバシュウウゥゥゥゥン");
 
-                //// todo
-                ////using (MessageDisplay md = new MessageDisplay())
-                ////{
-                ////    md.StartPosition = FormStartPosition.CenterParent;
-                ////    md.Message = "アインは別の場所へと飛ばされてしまった。";
-                ////    md.ShowDialog();
-                ////}
+                messageList.Add("アインは別の場所へと飛ばされてしまった"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 ////this.buttonHanna.Visible = false;
                 ////this.buttonDungeon.Visible = false;
@@ -7895,13 +7755,8 @@ namespace DungeonPlayer
 
                 //UpdateMainMessage("ガンツ：うむ、精進せいよ。");
 
-                //// todo
-                ////using (MessageDisplay md = new MessageDisplay())
-                ////{
-                ////    md.StartPosition = FormStartPosition.CenterParent;
-                ////    md.Message = "アインは「ゲート裏　転送装置」へ行けるようになりました。";
-                ////    md.ShowDialog();
-                ////}
+                messageList.Add("アインは「ゲート裏　転送装置」へ行けるようになりました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
                 //buttonShinikia.gameObject.SetActive(true);
                 //GroundOne.WE.AvailableBackGate = true;
                 //GroundOne.WE.alreadyCommunicateCahlhanz = true; // カール爵に教えてもらったばかりのため、Trueを指定しておく。
@@ -8224,13 +8079,7 @@ namespace DungeonPlayer
 
             //UpdateMainMessage("ガンツ：アインよ、では心構えを一つ教えて進ぜよう。");
 
-            //// todo
-            ////using (MessageDisplay md = new MessageDisplay())
-            ////{
-            ////    md.StartPosition = FormStartPosition.CenterParent;
-            ////    md.Message = "ガンツは両眼を閉じた状態で、誰へともなく、空中へ語り始めた。";
-            ////    md.ShowDialog();
-            ////}
+            messageList.Add("ガンツは両眼を閉じた状態で、誰へともなく、空中へ語り始めた。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             //UpdateMainMessage("ガンツ：精進しなさい。");
 
@@ -8456,13 +8305,8 @@ namespace DungeonPlayer
             messageList.Add("アイン：いやあ、ホンット助かるぜ、サンキュー！"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.AvailableItemBank = true;
-            // todo
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "ハンナの宿屋で「荷物の預け・受け取り」が可能になりました！";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+
+            messageList.Add("ハンナの宿屋で「荷物の預け・受け取り」が可能になりました！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("ハンナ：ただ、無限には受け取れないよ。こちらも倉庫は限られてるからね。"); eventList.Add(ActionEvent.None);
 

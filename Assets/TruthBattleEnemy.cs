@@ -3750,6 +3750,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
                 ActiveList[ii].CleanUpEffect(false, false);
+                // todo
                 //if (ActiveList[ii].Name == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 //{
                 //    // 憎業「攻撃１」
