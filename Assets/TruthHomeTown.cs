@@ -514,7 +514,7 @@ namespace DungeonPlayer
                 else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationGanz10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz10 = true;
                 #endregion
 
-                SceneDimension.CallTruthDungeon(Database.TruthHomeTown);
+                SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown);
             }
 	    }
         public void tapCommunicationRana()

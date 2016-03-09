@@ -112,7 +112,8 @@ namespace DungeonPlayer
             set { onlyUseItem = value; }
         }
 
-        private bool useOverShifting = false;
+        private bool useOverShifting = false; // オーバーシフティング使用時
+        private bool ItemChoiced = false; // アイテム「つかう」で、使用できなかった時のメッセージ表示用
 
         // Use this for initialization
         public override void Start()
@@ -664,6 +665,8 @@ namespace DungeonPlayer
         {
             groupChoice.SetActive(false);
             backpackFilter.SetActive(false);
+
+            this.ItemChoiced = true;
 
             MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
@@ -1501,6 +1504,11 @@ namespace DungeonPlayer
                         mainMessage.text = player.GetCharacterSentence(2020);
                         return;
                     }
+                    if (GroundOne.WE.SaveByDungeon == false)
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2012);
+                        return;
+                    }
 
                     mainMessage.text = player.GetCharacterSentence(2006);
                     this.usingToomiBlueSuisyou = true;
@@ -1556,6 +1564,8 @@ namespace DungeonPlayer
 
         public void Trash_Click()
         {
+            this.ItemChoiced = true;
+
             groupChoice.SetActive(false);
             backpackFilter.SetActive(false);
             MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
@@ -1583,6 +1593,8 @@ namespace DungeonPlayer
 
         public void ExecHandover_Click(Text sender)
         {
+            this.ItemChoiced = true;
+
             groupTarget.SetActive(false);
             backpackFilter.SetActive(false);
             MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
@@ -1605,7 +1617,6 @@ namespace DungeonPlayer
             }
             if (player == target)
             {
-                // todo (自分の荷物を自分に渡すメッセージ）
                 return;
             }
 
@@ -1972,7 +1983,10 @@ namespace DungeonPlayer
 
         public void StatusPlayer_MouseLeave()
         {
-            mainMessage.text = "";
+            if (this.ItemChoiced == false)
+            {
+                mainMessage.text = "";
+            }
         }
         public void StatusPlayer_MouseEnter(Text sender)
         {
@@ -2031,14 +2045,21 @@ namespace DungeonPlayer
         //    }
         //    // e 後編追加
 
-            if (sender.text == "")
+            if (this.ItemChoiced)
             {
-                mainMessage.text = "";
+                this.ItemChoiced = false;
             }
             else
             {
-                ItemBackPack temp = new ItemBackPack(sender.text);
-                mainMessage.text = temp.Description;
+                if (sender.text == "")
+                {
+                    mainMessage.text = "";
+                }
+                else
+                {
+                    ItemBackPack temp = new ItemBackPack(sender.text);
+                    mainMessage.text = temp.Description;
+                }
             }
         }
 

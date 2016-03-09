@@ -21,6 +21,7 @@ namespace DungeonPlayer
         private int MovementInterval = 0; // ダンジョンマップ全体を見ている時のインターバル
 
         // GUI
+        public GameObject groupArrow;
         public GameObject back_playback;
         public Text[] playbackText;
         public GameObject GroupsubMenu;
@@ -195,7 +196,7 @@ namespace DungeonPlayer
         bool keyUp = false;
         bool keyLeft = false;
         bool keyRight = false;
-        int MOVE_INTERVAL = 14;
+        int MOVE_INTERVAL = 50;
         int interval = 0;
         // Update is called once per frame
         bool nowEncountEnemy = false;
@@ -210,6 +211,12 @@ namespace DungeonPlayer
             if (Application.platform == RuntimePlatform.Android)
             {
                 MOVE_INTERVAL = 2;
+                this.groupArrow.SetActive(true);
+            }
+            else
+            {
+                MOVE_INTERVAL = 50;
+                this.groupArrow.SetActive(false);
             }
             this.interval = MOVE_INTERVAL;
             this.MovementInterval = MOVE_INTERVAL;

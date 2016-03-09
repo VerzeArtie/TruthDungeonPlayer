@@ -2427,7 +2427,7 @@ namespace DungeonPlayer
 
             messageList.Add("【ラナのイヤリング】を手に入れました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            // GetItemFullCheck(GroundOne.MC, Database.RARE_EARRING_OF_LANA); // after delete
+            GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_EARRING_OF_LANA));
 
             if (GroundOne.WE2.TruthBadEnd1)
             {
@@ -7082,6 +7082,7 @@ namespace DungeonPlayer
             //this.imgCharacter1.gameObject.SetActive(true); eventList.Add(ActionEvent.None);
             //this.imgCharacter2.enabled = true;
             //this.imgCharacter2.gameObject.SetActive(true); eventList.Add(ActionEvent.None);
+
             messageList.Add("ラナ：っあら、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ああ、何だか寝覚めが良いんだ。今日も調子全快だぜ！"); eventList.Add(ActionEvent.None);
@@ -7090,13 +7091,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ああ、そうだな！じゃあ、ハンナ叔母さんとこで食べようぜ。"); eventList.Add(ActionEvent.None);
 
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.Message = "ハンナの宿屋（料理亭）にて・・・";
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
-
+            messageList.Add("ハンナの宿屋（料理亭）にて・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：っさっすが、叔母さん！今日の飯もすげえ旨いよな！"); eventList.Add(ActionEvent.None);
 
@@ -7122,6 +7117,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：全然脈略が無いじゃない。何よ、本当にそんなトコ行きたいわけ？"); eventList.Add(ActionEvent.None);
 
+            // todo after
             //if (GroundOne.WE2.TruthBadEnd1)
             //{
             //    messageList.Add("アイン：まあ本当に行きたいとか言われてもなあ・・・"); eventList.Add(ActionEvent.None);
@@ -7156,14 +7152,9 @@ namespace DungeonPlayer
             }
 
 
-            //using (MessageDisplay md = new MessageDisplay())
-            //{
-            //    md.Message = "【遠見の青水晶】を手に入れました。";
-            //    md.StartPosition = FormStartPosition.CenterParent;
-            //    md.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add("【遠見の青水晶】を手に入れました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            //GetItemFullCheck(mc, Database.RARE_TOOMI_BLUE_SUISYOU); eventList.Add(ActionEvent.None);
+            GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_TOOMI_BLUE_SUISYOU));
 
             messageList.Add("アイン：お、【遠見の青水晶】じゃねえか。助かるぜ！"); eventList.Add(ActionEvent.None);
 
@@ -7171,14 +7162,15 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ん？おう、任せておけって！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
 
-            //messageList.Add("アイン：っと、そうだ。忘れないうちに・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っと、そうだ。忘れないうちに・・・"); eventList.Add(ActionEvent.None);
 
-            //messageList.Add("アイン：・・・（ごそごそ）・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・（ごそごそ）・・・"); eventList.Add(ActionEvent.None);
 
-            //messageList.Add("ラナ：何探してるのよ？"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：何探してるのよ？"); eventList.Add(ActionEvent.None);
 
-            //messageList.Add("アイン：確かポケットに入れたはず・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：確かポケットに入れたはず・・・"); eventList.Add(ActionEvent.None);
 
+            // todo after
             //using (TruthDecision td = new TruthDecision())
             //{
             //    td.MainMessage = "　【　ラナにイヤリングを渡しますか？　】";
@@ -7187,26 +7179,28 @@ namespace DungeonPlayer
             //    td.StartPosition = FormStartPosition.CenterParent;
             //    td.ShowDialog(); eventList.Add(ActionEvent.None);
             //    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //    {
-            //        messageList.Add("アイン：あったあった。ラナ、こいつを渡しておくぜ。"); eventList.Add(ActionEvent.None);
+            {
+                messageList.Add("アイン：あったあった。ラナ、こいつを渡しておくぜ。"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("ラナ：これ、私のイヤリングじゃない。どこで拾ったのよ？"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：これ、私のイヤリングじゃない。どこで拾ったのよ？"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：どこって、俺の部屋に落ちてたぞ。ラナが落としていったんだろ？"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：どこって、俺の部屋に落ちてたぞ。ラナが落としていったんだろ？"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("ラナ：・・・っええ！？そそそ、そんなワケ無いじゃない！！"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：・・・っええ！？そそそ、そんなワケ無いじゃない！！"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：なんでそんな慌ててんだよ。まあ返しておくぜ。ッホラ！"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：なんでそんな慌ててんだよ。まあ返しておくぜ。ッホラ！"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("ラナ：っとと、・・・アリガト♪"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：っとと、・・・アリガト♪"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：お前は変な所で抜けてるからな、しっかり持ってろよな。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：お前は変な所で抜けてるからな、しっかり持ってろよな。"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：じゃ、行ってくるかな！いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            //        mc.DeleteBackPack(new ItemBackPack("ラナのイヤリング")); eventList.Add(ActionEvent.None);
-            //        we.Truth_GiveLanaEarring = true;
-            //    }
+                GroundOne.MC.DeleteBackPack(new ItemBackPack(Database.RARE_EARRING_OF_LANA)); eventList.Add(ActionEvent.None);
+                GroundOne.MC.SortByName();
+                GroundOne.WE.Truth_GiveLanaEarring = true;
+            }
+            // todo after
             //    else
             //    {
             //        if (GroundOne.WE2.TruthBadEnd1)

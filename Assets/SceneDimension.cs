@@ -9,16 +9,6 @@ namespace DungeonPlayer
     {
         public static List<string> playbackScene = new List<string>();
 
-        public static void CallTruthSelectEquipment(string src, int equipType)
-        {
-            GroundOne.EquipType = equipType;
-            SceneDimension.Go(src, Database.TruthSelectEquipment);
-        }
-
-        public static void CallTruthHomeTown(string src)
-        {
-            SceneDimension.Go(src, Database.TruthHomeTown);
-        }
 
         public static void CallSaveLoad(string src, bool SaveMode, bool AfterBacktoTitle, MotherForm scene)
         {
@@ -37,10 +27,29 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.SaveLoad);
         }
 
-        public static void CallTruthDungeon(string src)
+        public static void JumpToTruthHomeTown(string src)
+        {
+            playbackScene.Clear();
+            SceneDimension.Go(src, Database.TruthHomeTown);
+        }
+
+        public static void JumpToTruthDungeon(string src)
         {
             GroundOne.WE.AlreadyShownEvent = false;
+            playbackScene.Clear();
             SceneDimension.Go(src, Database.TruthDungeon);
+        }
+
+        public static void JumpToTitle()
+        {
+            playbackScene.Clear();
+            Application.LoadLevel(Database.Title);
+        }
+
+        public static void CallTruthSelectEquipment(string src, int equipType)
+        {
+            GroundOne.EquipType = equipType;
+            SceneDimension.Go(src, Database.TruthSelectEquipment);
         }
 
         public static void CallTruthBattleEnemy(string src, bool duel, bool hiSpeed, bool final, bool lifecount)
@@ -129,11 +138,6 @@ namespace DungeonPlayer
         {
             playbackScene.Clear();
             playbackScene.Add(Database.Title);
-        }
-        public static void JumpToTitle()
-        {
-            playbackScene.Clear();
-            Application.LoadLevel(Database.Title);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace DungeonPlayer
             Text newDateTimeButton = null;
             DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
 
-            foreach (string filename in System.IO.Directory.GetFiles(Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')), "*.xml"))
+            foreach (string filename in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
             {
                 Text targetButton = null;
                 string targetString = System.IO.Path.GetFileName(filename);
@@ -152,6 +152,22 @@ namespace DungeonPlayer
             }
         }
 
+        private string GetDirectoryName()
+        {
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')); // todo
+            }
+            else if (Application.platform == RuntimePlatform.Android)
+            {
+                return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/'));
+            }
+            else
+            {
+                return Database.BaseSaveFolder;
+            }
+
+        }
         private void MakeDirectory()
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
@@ -189,9 +205,7 @@ namespace DungeonPlayer
 
             else
             {
-                string path = Application.dataPath;
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(path, filename);
+                return Database.BaseSaveFolder + filename;
             }
         }
 
@@ -303,7 +317,7 @@ namespace DungeonPlayer
         {
             DateTime now = DateTime.Now;
 
-            foreach (string overwriteData in System.IO.Directory.GetFiles(Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')), "*.xml"))
+            foreach (string overwriteData in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
             {
                 if (overwriteData.Contains(targetFileName))
                 {
@@ -946,7 +960,7 @@ namespace DungeonPlayer
             }
             else
             {
-                foreach (string currentFile in System.IO.Directory.GetFiles(Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')), "*.xml"))
+                foreach (string currentFile in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
                 {
                     if (currentFile.Contains("11_"))
                     {
@@ -1093,6 +1107,9 @@ namespace DungeonPlayer
 
             // s 後編編集
 
+            GroundOne.MC.DeleteBackPackAll();
+            GroundOne.SC.DeleteBackPackAll();
+            GroundOne.TC.DeleteBackPackAll();
             for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
             {
                 XmlNodeList temp = xml.GetElementsByTagName("BackPack" + ii.ToString());

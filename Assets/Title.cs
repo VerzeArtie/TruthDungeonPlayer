@@ -25,7 +25,7 @@ namespace DungeonPlayer
 
         public void GameStart_Click()
         {
-            SceneDimension.CallTruthHomeTown(Database.Title);
+            SceneDimension.JumpToTruthHomeTown(Database.Title);
         }
 
         public void Load_Click()
