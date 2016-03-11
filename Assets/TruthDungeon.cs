@@ -729,7 +729,7 @@ namespace DungeonPlayer
             }
             else
             {
-                JumpToLocation(GroundOne.WE.DungeonPosX, GroundOne.WE.DungeonPosY, GroundOne.WE.dungeonViewPointX, GroundOne.WE.dungeonViewPointY, true);
+                JumpToLocation(GroundOne.WE.DungeonPosX, GroundOne.WE.DungeonPosY, true);
             }
             
             SetupPlayerStatus(true);
@@ -1432,7 +1432,7 @@ namespace DungeonPlayer
         private void JumpToLocation(int X, int Y, int viewX, int viewY, bool noSound)
         {
             UpdatePlayerLocationInfo(X, Y, noSound);
-            this.viewPoint = new Vector3(viewX, viewY, Camera.main.transform.position.z);
+            this.viewPoint = new Vector3(viewX + Database.CAMERA_WORLD_POINT_X, viewY + Database.CAMERA_WORLD_POINT_Y, Camera.main.transform.position.z);
             UpdateViewPoint(this.viewPoint.x, this.viewPoint.y);
             UpdateUnknownTile();
         }
@@ -1905,11 +1905,6 @@ namespace DungeonPlayer
                 else if (direction == 2) moveX = Database.DUNGEON_MOVE_LEN;
                 else if (direction == 3) moveY = -Database.DUNGEON_MOVE_LEN; // change unity
 
-                //    int tilenum = GetTileNumber(Player.transform.position);
-                //    int row = tilenum / Database.TRUTH_DUNGEON_COLUMN;
-                //    int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
-
-                //debug.text += "UpdatePlayersKeyEvent " + direction.ToString() + " " + this.viewPoint.ToString()+" " + this.Player.transform.position.ToString() + "\r\n";
                 JumpToLocation((int)this.Player.transform.position.x + moveX, (int)this.Player.transform.position.y + moveY, false);
 
                 // todo

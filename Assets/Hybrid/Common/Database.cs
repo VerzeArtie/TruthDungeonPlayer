@@ -1048,10 +1048,12 @@ namespace DungeonPlayer
         public static int TRUTH_FIRST_POS = DUNGEON_MOVE_LEN * 13 + 39; // 後編ダンジョン開始位置
         public static int TRUTH_DUNGEON_COLUMN = 60; // 後編ダンジョンの列数
         public static int TRUTH_DUNGEON_ROW = 40; // 後編ダンジョンの行数
-        public static int CAMERA_BORDER_X_LEFT = 17;
-        public static int CAMERA_BORDER_X_RIGHT = 52;
-        public static int CAMERA_BORDER_Y_TOP = -9;
-        public static int CAMERA_BORDER_Y_BOTTOM = -37;
+        public static int CAMERA_BORDER_X_LEFT = 12;
+        public static int CAMERA_BORDER_X_RIGHT = 47;
+        public static int CAMERA_BORDER_Y_TOP = -6;
+        public static int CAMERA_BORDER_Y_BOTTOM = -34;
+        public static int CAMERA_WORLD_POINT_X = 5;
+        public static int CAMERA_WORLD_POINT_Y = -3;
 
         public static int BUFFPANEL_OFFSET_X = 5; // add unity
         public static int BUFFPANEL_BUFF_WIDTH = 40; // -25; change unity
