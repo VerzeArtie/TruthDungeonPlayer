@@ -151,10 +151,14 @@ namespace DungeonPlayer
             GroundOne.enemyName1 = Database.DUEL_DUMMY_SUBURI; // DUEL_EONE_FULNEA;
             GroundOne.enemyName2 = Database.ENEMY_SUN_FLOWER;
             GroundOne.enemyName3 = Database.ENEMY_SPEEDY_TAKA;
-            GroundOne.WE.AvailableSecondCharacter = true;
-            GroundOne.WE.AvailableThirdCharacter = true;
+            //GroundOne.WE.AvailableSecondCharacter = true;
+            //GroundOne.WE.AvailableThirdCharacter = true;
             //GroundOne.DuelMode = true;
-           
+
+            GroundOne.WE2.RealWorld = true;
+            GroundOne.WE2.SeekerEvent506 = true;
+            GroundOne.WE.DungeonArea = 1;
+
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
             MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);

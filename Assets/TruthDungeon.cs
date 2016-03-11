@@ -23,6 +23,8 @@ namespace DungeonPlayer
         // GUI
         public Text dayLabel;
         public Text dungeonAreaLabel;
+        public GameObject groupSystemMessage;
+        public Text systemMessageText;
         public GameObject groupArrow;
         public GameObject back_playback;
         public Text[] playbackText;
@@ -282,8 +284,6 @@ namespace DungeonPlayer
                     yesnoSystemMessage.text = SAVE_REQUEST_1;
                     groupYesnoSystemMessage.SetActive(true);
                 }
-
-                // todo ( system message setactive true )
             }
             // 戦闘に勝利した場合（通常ルート）
             else
@@ -678,58 +678,64 @@ namespace DungeonPlayer
             tileInfo5 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
 
             this.Player = Instantiate(this.prefabPlayer, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            ReadDungeonTileFromXmlFile(@"DungeonMapping_T_1"); // todo
+
+            if (GroundOne.WE.DungeonArea == 0 || GroundOne.WE.DungeonArea == 1)
+            {
+                ReadDungeonTileFromXmlFile(@"DungeonMapping_T_1");
+            }
+            else if (GroundOne.WE.DungeonArea == 2)
+            {
+                ReadDungeonTileFromXmlFile(@"DungeonMapping_T_2");
+            }
+            else if (GroundOne.WE.DungeonArea == 3)
+            {
+                ReadDungeonTileFromXmlFile(@"DungeonMapping_T_3");
+            }
+            else if (GroundOne.WE.DungeonArea == 4)
+            {
+                ReadDungeonTileFromXmlFile(@"DungeonMapping_T_4");
+            }
+            else if (GroundOne.WE.DungeonArea == 5)
+            {
+                ReadDungeonTileFromXmlFile(@"DungeonMapping_T_5");
+            }
+
+            SetupDungeonMapping(GroundOne.WE.DungeonArea);
 
             // 始めて開始する場合、あらかじめスタート地点を設定。
             if ((GroundOne.WE.DungeonPosX == 0) && (GroundOne.WE.DungeonPosY == 0))
             //    (GroundOne.WE.DungeonPosX == 1 + Database.DUNGEON_BASE_X + (Database.FIRST_POS % Database.TRUTH_DUNGEON_COLUMN) * Database.DUNGEON_MOVE_LEN) &&
             //    (GroundOne.WE.DungeonPosY == 1 + Database.DUNGEON_BASE_Y + (Database.FIRST_POS / Database.TRUTH_DUNGEON_COLUMN) * Database.DUNGEON_MOVE_LEN))
             {
-                Debug.Log("posX posY 0");
-                UpdatePlayerLocationInfo(39, -14, false);
-                UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
+                switch (GroundOne.WE.DungeonArea)
+                {
+                    case 0:
+                    case 1:
+                        JumpToLocation(39, -14, true);
+                        break;
+                    case 2:
+                        JumpToLocation(29, -19, true);
+                        break;
+                    case 3:
+                        JumpToLocation(0, -19, true);
+                        break;
+                    case 4:
+                        JumpToLocation(52, -18, true);
+                        break;
+                    case 5:
+                        JumpToLocation(57, -2, true);
+                        break;
+                }
             }
             else
             {
-                Debug.Log("posX: " + GroundOne.WE.DungeonPosX + "posY: " + GroundOne.WE.DungeonPosY);
-//              if (GroundOne.WE.Version <= 0)
-                UpdatePlayerLocationInfo(GroundOne.WE.DungeonPosX, GroundOne.WE.DungeonPosY, false);
-                UpdateViewPoint(GroundOne.WE.dungeonViewPointX, GroundOne.WE.dungeonViewPointY);
+                JumpToLocation(GroundOne.WE.DungeonPosX, GroundOne.WE.DungeonPosY, GroundOne.WE.dungeonViewPointX, GroundOne.WE.dungeonViewPointY, true);
             }
-
-            // todo 要確認
-            switch (GroundOne.WE.DungeonArea)
-            {
-                case 0:
-                case 1:
-                    UpdatePlayerLocationInfo(39, -14, false);
-                    UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
-                    break;
-                case 2:
-                    UpdatePlayerLocationInfo(29, -19, false);
-                    UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
-                    break;
-                case 3:
-                    UpdatePlayerLocationInfo(0, -19, false);
-                    UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
-                    break;
-                case 4:
-                    UpdatePlayerLocationInfo(18, -52, false);
-                    //JumpByNormal(18, 52); // todo (要確認)
-                    break;
-                case 5:
-                    UpdatePlayerLocationInfo(20, 0, false);
-                    UpdateViewPoint(this.Player.transform.position.x, this.Player.transform.position.y);
-                    break;
-            }
-            SetupDungeonMapping(GroundOne.WE.DungeonArea);
-
-            UpdateMainMessage("", true);
-            GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-
-            UpdateUnknownTile();
-
+            
             SetupPlayerStatus(true);
+            UpdateMainMessage("", true);
+
+            GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
         }
 
 
@@ -1396,7 +1402,7 @@ namespace DungeonPlayer
             GroundOne.WE.dungeonViewPointY = (int)y;
             this.viewPoint = new Vector3(x, y, Camera.main.transform.position.z);
             Camera.main.transform.position = this.viewPoint;
-            Debug.Log("viewPoint: " + this.viewPoint.ToString());
+            Debug.Log("p:" + this.Player.transform.position.ToString() + " v:" + this.viewPoint.ToString());
         }
 
         private void UpdatePlayerLocationInfo(float x, float y)
@@ -1408,13 +1414,27 @@ namespace DungeonPlayer
             GroundOne.WE.DungeonPosX = (int)x;
             GroundOne.WE.DungeonPosY = (int)y;
             this.Player.transform.position = new Vector3(x, y, this.Player.transform.position.z);
-            Debug.Log("PlayerPoint: " + this.Player.transform.position.ToString());
+            Debug.Log("p:" + this.Player.transform.position.ToString() + " v:" + this.viewPoint.ToString());
 
             if (!noSound)
             {
                 GroundOne.PlaySoundEffect(Database.SOUND_FOOT_STEP);
             }
             //dungeonField.Invalidate(); // todo
+        }
+
+        private void JumpToLocation(int X, int Y, bool noSound)
+        {
+            int viewX = X; if (viewX < Database.CAMERA_BORDER_X_LEFT) viewX = Database.CAMERA_BORDER_X_LEFT; if (viewX > Database.CAMERA_BORDER_X_RIGHT) viewX = Database.CAMERA_BORDER_X_RIGHT;
+            int viewY = Y; if (viewY > Database.CAMERA_BORDER_Y_TOP) viewY = Database.CAMERA_BORDER_Y_TOP; if (viewY < Database.CAMERA_BORDER_Y_BOTTOM) viewY = Database.CAMERA_BORDER_Y_BOTTOM;
+            JumpToLocation(X, Y, viewX, viewY, noSound);
+        }
+        private void JumpToLocation(int X, int Y, int viewX, int viewY, bool noSound)
+        {
+            UpdatePlayerLocationInfo(X, Y, noSound);
+            this.viewPoint = new Vector3(viewX, viewY, Camera.main.transform.position.z);
+            UpdateViewPoint(this.viewPoint.x, this.viewPoint.y);
+            UpdateUnknownTile();
         }
 
         private int GetTileNumber(Vector3 pos)
@@ -1853,13 +1873,12 @@ namespace DungeonPlayer
         Vector3 viewPoint = new Vector3();
         private void UpdatePlayersKeyEvents(int direction)
         {
-            //debug.text += "UpdatePlayersKeyEvents(S) ";
             mainMessage.text = "";
             // 通常動作モード
             if (!this.DungeonViewMode)
             {
-                float moveX = 0;
-                float moveY = 0;
+                int moveX = 0;
+                int moveY = 0;
 
                 //    // [警告]：開発途中で戦闘終了後、イベント発生後などでキーダウンで効かない場合があった。押下しっぱなしだと進められるように仕様変更となるので、別の不具合が出た場合はまた再検討してください。
                 //    // [警告]：後編でキーダウン動作仕様を変更した。戦闘エンカウントやメッセージ表示、ホームタウン戻り、壁当たりなど随所にCancelKeyDownMovementを導入して検討中。
@@ -1891,32 +1910,7 @@ namespace DungeonPlayer
                 //    int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
 
                 //debug.text += "UpdatePlayersKeyEvent " + direction.ToString() + " " + this.viewPoint.ToString()+" " + this.Player.transform.position.ToString() + "\r\n";
-                // 上端近辺での↑移動はプレイヤー移動
-                // 左端近辺での→移動はプレイヤー移動
-                // 右端近辺での←移動はプレイヤー移動
-                // 下端近辺での↓移動はプレイヤー移動
-                // 上端ダンジョン外を見せないようにする
-                // 左端ダンジョン外を見せないようにする
-                // 右端ダンジョン外を見せないようにする
-                // 下端ダンジョン外を見せないようにする
-                if ((direction == 0 && this.Player.transform.position.y < this.viewPoint.y) ||
-                    (direction == 1 && this.Player.transform.position.x > this.viewPoint.x) ||
-                    (direction == 2 && this.Player.transform.position.x < this.viewPoint.x) ||
-                    (direction == 3 && this.Player.transform.position.y > this.viewPoint.y) ||
-                    (direction == 0 && this.viewPoint.y >= -9) ||
-                    (direction == 1 && this.viewPoint.x <= 13) ||
-                    (direction == 2 && this.viewPoint.x >= Database.TRUTH_DUNGEON_COLUMN - 6) ||
-                    (direction == 3 && this.viewPoint.y <= -(Database.TRUTH_DUNGEON_ROW - 3)) ||
-                    (direction == 1 && this.Player.transform.position.x > this.viewPoint.x)
-                    )
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x + moveX, this.Player.transform.position.y + moveY, false);
-                }
-                else
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x + moveX, this.Player.transform.position.y + moveY, false);
-                    UpdateViewPoint(this.viewPoint.x + moveX, this.viewPoint.y + moveY);
-                }
+                JumpToLocation((int)this.Player.transform.position.x + moveX, (int)this.Player.transform.position.y + moveY, false);
 
                 // todo
                 //    // EPICアイテムEPIC_ORB_GROW_GREENの効果
@@ -1985,10 +1979,10 @@ namespace DungeonPlayer
                 // 左端ダンジョン外を見せないようにする
                 // 右端ダンジョン外を見せないようにする
                 // 下端ダンジョン外を見せないようにする
-                if ((direction == 0 && this.viewPoint.y >= -9) ||
-                     (direction == 1 && this.viewPoint.x <= 13) ||
-                     (direction == 2 && this.viewPoint.x >= Database.TRUTH_DUNGEON_COLUMN - 6) ||
-                     (direction == 3 && this.viewPoint.y <= -(Database.TRUTH_DUNGEON_ROW - 3))
+                if ((direction == 0 && this.viewPoint.y >= Database.CAMERA_BORDER_Y_TOP) ||
+                    (direction == 1 && this.viewPoint.x <= Database.CAMERA_BORDER_X_LEFT) ||
+                    (direction == 2 && this.viewPoint.x >= Database.CAMERA_BORDER_X_RIGHT) ||
+                    (direction == 3 && this.viewPoint.y <= Database.CAMERA_BORDER_Y_BOTTOM)
                     )
                 {
                     return;
@@ -2304,7 +2298,7 @@ namespace DungeonPlayer
                 encountBorder = Database.ENCOUNT_ENEMY + (int)(stepCounter / 5);
             }
 
-            Debug.Log("stepcount: " + this.stepCounter + " encountBorder: " + encountBorder.ToString() + " R:" + resultValue.ToString());
+            //Debug.Log("stepcount: " + this.stepCounter + " encountBorder: " + encountBorder.ToString() + " R:" + resultValue.ToString());
             if (resultValue > encountBorder)
             {
                 return;
@@ -7413,13 +7407,10 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    // todo
-                    //using(TruthPlayerInformation TPI = new TruthPlayerInformation())
-                    //{
-                    //    TPI.StartPosition = FormStartPosition.CenterParent;
-                    //    TPI.SetupMessage = "ここまでの記録は自動セーブとなります。ゲームを終わりたい場合は、ゲーム終了を押してください。";
-                    //    TPI.ShowDialog();
-                    //}
+                    this.Filter.GetComponent<Image>().color = Color.clear;
+                    this.Filter.SetActive(true);
+                    systemMessageText.text = "ここまでの記録は自動セーブされており、新しいセーブはできません。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
+                    groupSystemMessage.SetActive(true);
                     return;
                 }
             }
@@ -7427,9 +7418,6 @@ namespace DungeonPlayer
             this.Filter.GetComponent<Image>().color = Color.white;
             this.Filter.SetActive(true);
             SceneDimension.CallSaveLoad(Database.TruthDungeon, true, false, this);
-            //Camera camera = Camera.main;
-            //camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 10);
-            //debug.text += camera.transform.position.ToString() + "\r\n";
         }
         public void tapLoad()
         {
@@ -7442,51 +7430,14 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    // todo
-                    //using (TruthPlayerInformation TPI = new TruthPlayerInformation())
-                    //{
-                    //    TPI.StartPosition = FormStartPosition.CenterParent;
-                    //    TPI.SetupMessage = "ここまでの記録は自動セーブとなります。ゲームを終わりたい場合は、ゲーム終了を押してください。";
-                    //    TPI.ShowDialog();
-                    //}
+                    this.Filter.GetComponent<Image>().color = Color.clear;
+                    this.Filter.SetActive(true);
+                    systemMessageText.text = "現在ロードはできません。ここまでの記録は自動セーブされています。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
+                    groupSystemMessage.SetActive(true);
                     return;
                 }
             }
-
-            // todo
-            //using (SaveLoad sl = new SaveLoad())
-            //{
-            //    sl.StartPosition = FormStartPosition.CenterParent;
-            //    sl.ShowDialog();
-            //    if (sl.DialogResult == DialogResult.Cancel)
-            //    {
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        this.MC = sl.MC;
-            //        this.SC = sl.SC;
-            //        this.TC = sl.TC;
-            //        this.WE = sl.WE;
-            //        this.knownTileInfo = sl.KnownTileInfo;
-            //        this.knownTileInfo2 = sl.KnownTileInfo2;
-            //        this.knownTileInfo3 = sl.KnownTileInfo3;
-            //        this.knownTileInfo4 = sl.KnownTileInfo4;
-            //        this.knownTileInfo5 = sl.KnownTileInfo5;
-            //        this.Truth_KnownTileInfo = sl.Truth_KnownTileInfo; // 後編追加
-            //        this.Truth_KnownTileInfo2 = sl.Truth_KnownTileInfo2; // 後編追加
-            //        this.Truth_KnownTileInfo3 = sl.Truth_KnownTileInfo3; // 後編追加
-            //        this.Truth_KnownTileInfo4 = sl.Truth_KnownTileInfo4; // 後編追加
-            //        this.Truth_KnownTileInfo5 = sl.Truth_KnownTileInfo5; // 後編追加
-
-            //        PreInitialize();
-            //    }
-            //}
-
             SceneDimension.CallSaveLoad(Database.TruthDungeon, false, false, this);
-           
-            // todo (この後、画面を再ロードするか、ロード先の画面へジャンプする必要がある）
-            
         }
 
         public void tapYes()
@@ -7824,6 +7775,11 @@ namespace DungeonPlayer
             tapOK();
         }
 
+        public void tapSystemMessageOK()
+        {
+            this.Filter.SetActive(false);
+            groupSystemMessage.SetActive(false);
+        }
         public void PointerDownArrowTop()
         {
             this.arrowUp = true;
