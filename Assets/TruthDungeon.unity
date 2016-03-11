@@ -5783,7 +5783,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -10}
-  m_SizeDelta: {x: 300, y: 40}
+  m_SizeDelta: {x: 300, y: 35}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1159125711
 MonoBehaviour:
@@ -7064,7 +7064,7 @@ MonoBehaviour:
   dayLabel: {fileID: 52440679}
   dungeonAreaLabel: {fileID: 642382572}
   groupSystemMessage: {fileID: 585119006}
-  systemMessageText: {fileID: 930819031}
+  systemMessageText: {fileID: 930819033}
   groupArrow: {fileID: 1819239701}
   back_playback: {fileID: 466119832}
   playbackText:

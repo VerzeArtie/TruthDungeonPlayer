@@ -133,6 +133,8 @@ namespace DungeonPlayer
             {
                 if (GroundOne.MC.Dead)
                 {
+                    GroundOne.MC.Dead = false;
+                    GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife / 2;
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.MC);
                     NormalTapOK();
                 }
@@ -141,6 +143,8 @@ namespace DungeonPlayer
             {
                 if (GroundOne.SC.Dead)
                 {
+                    GroundOne.SC.Dead = false;
+                    GroundOne.SC.CurrentLife = GroundOne.SC.MaxLife / 2;
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.SC);
                     NormalTapOK();
                 }
@@ -149,6 +153,8 @@ namespace DungeonPlayer
             {
                 if (GroundOne.TC.Dead)
                 {
+                    GroundOne.TC.Dead = false;
+                    GroundOne.TC.CurrentLife = GroundOne.TC.MaxLife / 2;
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.TC);
                     NormalTapOK();
                 }

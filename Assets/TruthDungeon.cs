@@ -704,8 +704,6 @@ namespace DungeonPlayer
 
             // 始めて開始する場合、あらかじめスタート地点を設定。
             if ((GroundOne.WE.DungeonPosX == 0) && (GroundOne.WE.DungeonPosY == 0))
-            //    (GroundOne.WE.DungeonPosX == 1 + Database.DUNGEON_BASE_X + (Database.FIRST_POS % Database.TRUTH_DUNGEON_COLUMN) * Database.DUNGEON_MOVE_LEN) &&
-            //    (GroundOne.WE.DungeonPosY == 1 + Database.DUNGEON_BASE_Y + (Database.FIRST_POS / Database.TRUTH_DUNGEON_COLUMN) * Database.DUNGEON_MOVE_LEN))
             {
                 switch (GroundOne.WE.DungeonArea)
                 {
@@ -731,7 +729,8 @@ namespace DungeonPlayer
             {
                 JumpToLocation(GroundOne.WE.DungeonPosX, GroundOne.WE.DungeonPosY, true);
             }
-            
+            UpdateUnknownTile();
+
             SetupPlayerStatus(true);
             UpdateMainMessage("", true);
 
@@ -1272,26 +1271,30 @@ namespace DungeonPlayer
                 else if (current == Database.TILEINFO_43) { this.objList.Add(Instantiate(this.prefab_TILEINFO_43, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject); }
                 else if (current == Database.TILEINFO_44) { this.objList.Add(Instantiate(this.prefab_TILEINFO_44, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject); }
 
-                unknownTile[ii].SetActive(!GroundOne.Truth_KnownTileInfo[ii]); // 反対ですが意味付けは同じ本質です。
-
+                // unknownTileとTruth_KnownTileInfoはネームが反対ですが、意味付けは同じ本質です。
                 if ((GroundOne.WE.DungeonArea == 1) || (GroundOne.WE.DungeonArea == 0))
                 {
+                    unknownTile[ii].SetActive(!GroundOne.Truth_KnownTileInfo[ii]); 
                     tileInfo[ii] = current;
                 }
                 else if (GroundOne.WE.DungeonArea == 2)
                 {
+                    unknownTile[ii].SetActive(!GroundOne.Truth_KnownTileInfo2[ii]);
                     tileInfo2[ii] = current;
                 }
                 else if (GroundOne.WE.DungeonArea == 3)
                 {
+                    unknownTile[ii].SetActive(!GroundOne.Truth_KnownTileInfo3[ii]);
                     tileInfo3[ii] = current;
                 }
                 else if (GroundOne.WE.DungeonArea == 4)
                 {
+                    unknownTile[ii].SetActive(!GroundOne.Truth_KnownTileInfo4[ii]);
                     tileInfo4[ii] = current;
                 }
                 else if (GroundOne.WE.DungeonArea == 5)
                 {
+                    unknownTile[ii].SetActive(!GroundOne.Truth_KnownTileInfo5[ii]);
                     tileInfo5[ii] = current;
                 }
 
@@ -1402,7 +1405,6 @@ namespace DungeonPlayer
             GroundOne.WE.dungeonViewPointY = (int)y;
             this.viewPoint = new Vector3(x, y, Camera.main.transform.position.z);
             Camera.main.transform.position = this.viewPoint;
-            Debug.Log("p:" + this.Player.transform.position.ToString() + " v:" + this.viewPoint.ToString());
         }
 
         private void UpdatePlayerLocationInfo(float x, float y)
@@ -1414,13 +1416,11 @@ namespace DungeonPlayer
             GroundOne.WE.DungeonPosX = (int)x;
             GroundOne.WE.DungeonPosY = (int)y;
             this.Player.transform.position = new Vector3(x, y, this.Player.transform.position.z);
-            Debug.Log("p:" + this.Player.transform.position.ToString() + " v:" + this.viewPoint.ToString());
 
             if (!noSound)
             {
                 GroundOne.PlaySoundEffect(Database.SOUND_FOOT_STEP);
             }
-            //dungeonField.Invalidate(); // todo
         }
 
         private void JumpToLocation(int X, int Y, bool noSound)
@@ -1434,7 +1434,7 @@ namespace DungeonPlayer
             UpdatePlayerLocationInfo(X, Y, noSound);
             this.viewPoint = new Vector3(viewX + Database.CAMERA_WORLD_POINT_X, viewY + Database.CAMERA_WORLD_POINT_Y, Camera.main.transform.position.z);
             UpdateViewPoint(this.viewPoint.x, this.viewPoint.y);
-            UpdateUnknownTile();
+            //Debug.Log("p:" + this.Player.transform.position.ToString() + " v:" + this.viewPoint.ToString());
         }
 
         private int GetTileNumber(Vector3 pos)
@@ -1947,10 +1947,12 @@ namespace DungeonPlayer
 
                 if (lowSpeed)
                 {
+                    Debug.Log("lowspeed");
                     this.MovementInterval = MOVE_INTERVAL;
                 }
                 else
                 {
+                    Debug.Log("high-speed");
                     this.MovementInterval = MOVE_INTERVAL / 2;
                 }
                 GetTileNumber(Player.transform.position);
@@ -1965,10 +1967,6 @@ namespace DungeonPlayer
                 else if (direction == 1) moveX = -Database.DUNGEON_MOVE_LEN;
                 else if (direction == 2) moveX = Database.DUNGEON_MOVE_LEN;
                 else if (direction == 3) moveY = -Database.DUNGEON_MOVE_LEN;
-
-                int tilenum = GetTileNumber(Player.transform.position);
-                int row = tilenum / Database.TRUTH_DUNGEON_COLUMN;
-                int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
 
                 // 上端ダンジョン外を見せないようにする
                 // 左端ダンジョン外を見せないようにする

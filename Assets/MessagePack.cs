@@ -2383,8 +2383,6 @@ namespace DungeonPlayer
         {
             messageList.Add("ダンジョンゲートから不思議な光が" + player.FirstName + "へと流れ込む。"); eventList.Add(ActionEvent.None);
         	
-        	messageList.Add(""); eventList.Add(ActionEvent.ResurrectHalfLife); // todo (MC,SC,TCをどうやって情報を渡せるか？)
-
             messageList.Add(player.FirstName + "は命を吹き返した。"); eventList.Add(ActionEvent.None);
         }
         #endregion
@@ -2572,7 +2570,7 @@ namespace DungeonPlayer
 
                         messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+                        messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                         GroundOne.WE.AvailableSecondCharacter = true;
                         GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -2598,7 +2596,7 @@ namespace DungeonPlayer
 
                     //    messageList.Add("ラナ：ハイハイ、頑張ってきてよね♪"); eventList.Add(ActionEvent.None);
 
-                    //    messageList.Add(""); eventList.Add(ActionEvent.CallSomeMessageWithNotJoinLana); // todo 【ラナをパーティに加えませんでした。】
+                        messageList.Add("【  ラナがパーティに加えまんせでした  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                     //    GroundOne.WE.Truth_CommunicationNotJoinLana = true;
                     //}
@@ -2647,7 +2645,7 @@ namespace DungeonPlayer
 
                 messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+                messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                 GroundOne.WE.AvailableSecondCharacter = true;
                 GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -2768,7 +2766,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+            messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             GroundOne.WE.AvailableSecondCharacter = true;
             GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -2838,7 +2836,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+            messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             GroundOne.WE.AvailableSecondCharacter = true;
             GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -2948,7 +2946,7 @@ namespace DungeonPlayer
 
                     messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(" "); eventList.Add(ActionEvent.CallSomeMessageWithAnimation); // todo 【ラナがパーティに加わりました。】
+                    messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                     GroundOne.WE.AvailableSecondCharacter = true;
                     GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -3606,8 +3604,7 @@ namespace DungeonPlayer
                          }
                      }
 
-                     // todo メッセージが微妙におかしい。既に２階への階段は発見しているし、次の日、２階へ進める予定を示す文章に変えた方が良い。
-                     messageList.Add("　　　【俺たちはその後、２階への階段を発見し】"); eventList.Add(ActionEvent.None);
+                     messageList.Add("　　　【得体のしれない不安を抱えつつ・・・】"); eventList.Add(ActionEvent.None);
 
                      messageList.Add("　　　【そのまま、２階へと足を運んだ】"); eventList.Add(ActionEvent.None);
 
