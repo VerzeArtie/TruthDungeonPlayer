@@ -47,9 +47,11 @@ namespace DungeonPlayer
             HomeTownNight,
             HomeTownFazilCastle,
             HomeTownCallRestInn,
+            HomeTownCallRequestFood,
             HomeTownAvailableDuel,
             HomeTownButtonHidden,
             HomeTownMessageDisplay,
+            HomeTownYesNoMessageDisplay,
             HomeTownSecondCommunicationStart,
             HomeTownThirdCommunicationStart,
             HomeTownFourthCommunicationStart,
@@ -8537,11 +8539,58 @@ namespace DungeonPlayer
             Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5); eventList.Add(ActionEvent.None);
         }
 
-        public static void Message69998(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message69994(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("ハンナ：もう朝だよ。今日も頑張ってらっしゃい。"); eventList.Add(ActionEvent.None);
-
         }
+
+        public static void Message69995(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("休息を取りました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message69996(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：ごめん。まだ用があるんだ、後でくるよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：いつでも寄ってらっしゃい。部屋は空けておくからね。"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message69997(ref List<string> messageList, ref List<ActionEvent> eventList, string tempSelect)
+        {
+            messageList.Add("アイン：おばちゃん、『" + tempSelect + "』を頼むぜ。"); eventList.Add(ActionEvent.None); // todo
+
+            messageList.Add("ハンナ：『" + tempSelect + "』だね。少し待ってな。"); eventList.Add(ActionEvent.None); // todo
+
+            messageList.Add("ハンナ：はいよ、お待たせ。たんと召し上がれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【アインは十分な食事を取りました。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ふう～、食った食った・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おばちゃん、ごちそうさま！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：あいよ、後は明日に備えてゆっくり休みな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallRestInn);
+        }
+
+        public static void Message69998(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            // todo
+            messageList.Add("ハンナ：はいよ、部屋は空いてるよ。ゆっくりと休みな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：サンキュー、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
+
+            messageList.Add("ハンナ：今日は何か食べていくかい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallRequestFood);
+        }
+
         public static void Message69999(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：おばちゃん。空いてる？"); eventList.Add(ActionEvent.None);
@@ -8550,67 +8599,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：どうすっかな・・・泊まるか？"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (YesNoRequestMini yesno = new YesNoRequestMini())
-            {
-                // todo
-                //yesno.Location = new Point(this.Location.X + 784, this.Location.Y + 708); eventList.Add(ActionEvent.None);
-                //yesno.Large = true;
-                //yesno.ShowDialog(); eventList.Add(ActionEvent.None);
-                //if (yesno.DialogResult == DialogResult.Yes)
-                if (true)
-                {
-                    messageList.Add("ハンナ：はいよ、部屋は空いてるよ。ゆっくりと休みな。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("アイン：サンキュー、おばちゃん。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
-
-                    messageList.Add("ハンナ：今日は何か食べていくかい？"); eventList.Add(ActionEvent.None);
-
-                    // todo
-                    //using (TruthRequestFood trf = new TruthRequestFood())
-                    {
-                        // todo
-                        //trf.StartPosition = FormStartPosition.CenterParent;
-                        //trf.MC = this.mc;
-                        //trf.SC = this.sc;
-                        //trf.TC = this.tc;
-                        //trf.WE = this.we;
-                        //trf.ShowDialog(); eventList.Add(ActionEvent.None);
-                        //this.mc = trf.MC;
-                        //this.sc = trf.SC;
-                        //this.tc = trf.TC;
-                        //this.we = trf.WE;
-                        //if (trf.DialogResult == System.Windows.Forms.DialogResult.OK)
-                        string tempSelect = "とんかつ定食";
-                        {
-                            messageList.Add("アイン：おばちゃん、『" + tempSelect + "』を頼むぜ。"); eventList.Add(ActionEvent.None); // todo
-
-                            messageList.Add("ハンナ：『" + tempSelect + "』だね。少し待ってな。"); eventList.Add(ActionEvent.None); // todo
-
-                            messageList.Add("ハンナ：はいよ、お待たせ。たんと召し上がれ。"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("　　【アインは十分な食事を取りました。】"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("アイン：ふう～、食った食った・・・"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("アイン：おばちゃん、ごちそうさま！"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("ハンナ：あいよ、後は明日に備えてゆっくり休みな。"); eventList.Add(ActionEvent.None);
-
-                        }
-                    }
-
-                    messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallRestInn);
-                }
-                else
-                {
-                    messageList.Add("アイン：ごめん。まだ用があるんだ、後でくるよ。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ハンナ：いつでも寄ってらっしゃい。部屋は空けておくからね。"); eventList.Add(ActionEvent.None);
-                }
-            }
+            messageList.Add(Database.exitMessage4); eventList.Add(ActionEvent.HomeTownYesNoMessageDisplay);
         }
         #endregion
 

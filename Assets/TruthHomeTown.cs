@@ -43,11 +43,13 @@ namespace DungeonPlayer
 	    public Text inputName;
         public Text mainMessage;
         public Image panelMessage;
+        public Image backgroundData;
 
 	    public static int serverPort = 8001;
 	    private bool firstAction = false;
 	    private string targetViewName = string.Empty;
         private bool nowHideing = false;
+        public string currentRequestFood = string.Empty;
 
 	    // Use this for initialization
         public override void Start()
@@ -56,13 +58,33 @@ namespace DungeonPlayer
 
             GroundOne.WE.SaveByDungeon = false;
 
-            // todo
+            // todo after
             //GroundOne.CS = new ClientSocket();
             //GroundOne.InitializeNetworkConnection ();
 
+            bool potionVisible = (GroundOne.WE.AvailablePotionshop && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
+            this.buttonPotion.gameObject.SetActive(potionVisible);
+
+            bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
+            this.buttonShinikia.gameObject.SetActive(shinikiaVisible);
+
+            bool duelVisible = (GroundOne.WE.AvailableDuelColosseum && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
+            this.buttonDuel.gameObject.SetActive(duelVisible);
+
+            if (!GroundOne.WE.AlreadyRest)
+            {
+                Debug.Log("evening");
+                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+            }
+            else
+            {
+                Debug.Log("moring");
+                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+            }
+
             if (GroundOne.TruthHomeTown_NowExit)
             {
-                base.yesnoSystemMessage.text = exitMessage2;
+                base.yesnoSystemMessage.text = Database.exitMessage2;
                 groupYesnoSystemMessage.SetActive(true);
             }
 
@@ -569,6 +591,11 @@ namespace DungeonPlayer
                     systemMessage.text = this.nowMessage[this.nowReading];
                     systemMessagePanel.SetActive(true);
                 }
+                else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
+                {
+                    yesnoSystemMessage.text = this.nowMessage[this.nowReading];
+                    groupYesnoSystemMessage.SetActive(true);
+                }
                 else
                 {
                     systemMessagePanel.SetActive(false);
@@ -657,6 +684,11 @@ namespace DungeonPlayer
                 else if (current == MessagePack.ActionEvent.HomeTownFifthCommunicationStart)
                 {
                     FifthCommunicationStart();
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
+                {
+                    this.yesnoSystemMessage.text = this.nowMessage[this.nowReading];
+                    this.groupYesnoSystemMessage.SetActive(true);
                 }
                 else if (current == MessagePack.ActionEvent.PlayMusic13)
                 {
@@ -961,7 +993,7 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        MessagePack.Message69998(ref nowMessage, ref nowEvent);
+                        MessagePack.Message69994(ref nowMessage, ref nowEvent);
                         tapOK();
                     }
                 }
@@ -977,19 +1009,6 @@ namespace DungeonPlayer
         private void CallRestInn(bool noAction)
         {
             ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-
-            if (noAction == false)
-            {
-                GroundOne.PlaySoundEffect(Database.SOUND_REST_INN);
-                // todo
-                //using (MessageDisplay md = new MessageDisplay())
-                //{
-                //    md.Message = "休息をとりました";
-                //    md.StartPosition = FormStartPosition.CenterParent;
-                //    md.ShowDialog();
-                //}
-                mainMessage.text = "休息をとりました";
-            }
 
             GroundOne.WE.AlreadyRest = true;
             // [警告]：オブジェクトの参照が全ての場合、クラスにメソッドを用意してそれをコールした方がいい。
@@ -1028,6 +1047,12 @@ namespace DungeonPlayer
 
             if (noAction == false)
             {
+                GroundOne.PlaySoundEffect(Database.SOUND_REST_INN);
+
+                MessagePack.Message69995(ref nowMessage, ref nowEvent);
+            }
+            if (noAction == false)
+            {
                 if (WhoisDuelPlayer() != string.Empty)
                 {
                     DuelSupportMessage(SupportType.Begin, WhoisDuelPlayer());
@@ -1044,6 +1069,25 @@ namespace DungeonPlayer
             SceneDimension.CallSaveLoad(Database.TruthHomeTown, false, false, this);
         }
 
+        public override void ExitYes()
+        {
+            base.ExitYes();
+            SceneDimension.CallRequestFood(Database.TruthHomeTown, this);
+        }
+        
+        public override void ExitNo()
+        {
+            base.ExitNo();
+            MessagePack.Message69996(ref nowMessage, ref nowEvent);
+            NormalTapOK();
+        }
+
+        public override void SceneBack()
+        {
+            MessagePack.Message69997(ref nowMessage, ref nowEvent, this.currentRequestFood);
+            NormalTapOK();
+
+        }
         public void tapExit()
         {
             groupYesnoSystemMessage.SetActive(true);
@@ -1149,11 +1193,67 @@ namespace DungeonPlayer
         {
             return "";
         }
-        // todo
-        private void ChangeBackgroundData(string p)
-        {
-        }
 
+        private void ChangeBackgroundData(string filename, float darkValue = 0)
+        {
+            Debug.Log("ChangeBackgroundData (S): " + filename);
+            if (filename == null || filename == string.Empty || filename == "")
+            {
+                Debug.Log("filename == null || filename == string.Empty");
+                this.backgroundData = null;
+            }
+            else
+            {
+                Sprite current = Resources.Load<Sprite>(filename);
+                if (darkValue > 0)
+                {
+                    // todo
+                    //System.Drawing.Imaging.ImageAttributes imageAttributes = new System.Drawing.Imaging.ImageAttributes();
+                    //Image newImg = AdjustBrightness(current, darkValue);
+                    //this.backgroundData = newImg;
+                }
+                else
+                {
+                    Debug.Log("update backgrounddata Sprite current");
+                    this.backgroundData.sprite = current;
+                }
+            }
+        }
+        public static Image AdjustBrightness(Image img, float b)
+        {
+            // todo
+            Image newImg = null;
+            ////明るさを変更した画像の描画先となるImageオブジェクトを作成
+            //Bitmap newImg = new Bitmap(img.Width, img.Height);
+            ////newImgのGraphicsオブジェクトを取得
+            //Graphics g = Graphics.FromImage(newImg);
+
+            //float[][] colorMatrixElements = { 
+            //    new float[] {1,    0,    0,    0, 0},
+            //    new float[] {0,    1,    0,    0, 0},
+            //    new float[] {0,    0,    1,    0, 0},
+            //    new float[] {0,    0,    0,    1, 0},
+            //    new float[] {b,    b,    b,    0, 1}};
+
+            ////ColorMatrixオブジェクトの作成
+            //System.Drawing.Imaging.ColorMatrix cm = new System.Drawing.Imaging.ColorMatrix(colorMatrixElements);
+
+            ////ImageAttributesオブジェクトの作成
+            //System.Drawing.Imaging.ImageAttributes ia =
+            //    new System.Drawing.Imaging.ImageAttributes();
+            ////ColorMatrixを設定する
+            //ia.SetColorMatrix(cm);
+
+            ////ImageAttributesを使用して描画
+            //g.DrawImage(img,
+            //    new Rectangle(0, 0, img.Width, img.Height),
+            //    0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
+
+            ////リソースを解放する
+            //g.Dispose();
+
+            return newImg;
+        }
         // todo
         private void CallSomeMessageWithAnimation(string p)
         {

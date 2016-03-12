@@ -2616,6 +2616,12 @@ namespace DungeonPlayer
         public const string NormalIcon = @"normal_mark";
         public const string InstantIcon = @"instant_mark";
 
+        // 定形メッセージ(add unity)
+        public const string exitMessage1 = @"セーブしていない場合、現在データは破棄されます。セーブしますか？";
+        public const string exitMessage2 = @"タイトルへ戻りますか？";
+        public const string exitMessage3 = @"ユングの町に戻りますか？";
+        public const string exitMessage4 = @"宿屋に泊まりますか？";
+
         // コマンド影響因子向けアイコン
         public const string WeaponIcon = @"WeaponMark";
         public const string StrengthIcon = @"StrengthMark";

@@ -29,15 +29,12 @@ namespace DungeonPlayer
             }
         }
 
-        protected string exitMessage1 = @"セーブしていない場合、現在データは破棄されます。セーブしますか？";
-        protected string exitMessage2 = @"タイトルへ戻りますか？";
-        protected string exitMessage3 = @"ユングの町に戻りますか？";
 
         public Text yesnoSystemMessage;
         public GameObject groupYesnoSystemMessage;
         public GameObject Filter;
 
-        public void SceneBack()
+        public virtual void SceneBack()
         {
             this.Filter.SetActive(false);
         }
@@ -58,45 +55,54 @@ namespace DungeonPlayer
             }
         }
 
-        public void ExitYes()
+        public virtual void ExitYes()
         {
-            if (yesnoSystemMessage.text == exitMessage1)
+            if (yesnoSystemMessage.text == Database.exitMessage1)
             {
                 GroundOne.TruthHomeTown_NowExit = true;
                 SceneDimension.CallSaveLoad(this.GetType().ToString(), true, false, this);
             }
-            else if (yesnoSystemMessage.text == exitMessage2)
+            else if (yesnoSystemMessage.text == Database.exitMessage2)
             {
                 GroundOne.TruthHomeTown_NowExit = false;
                 SceneDimension.JumpToTitle();
             }
-            else if (yesnoSystemMessage.text == exitMessage3)
+            else if (yesnoSystemMessage.text == Database.exitMessage3)
             {
                 GroundOne.TruthHomeTown_NowExit = false;
                 SceneDimension.JumpToTruthHomeTown(this.GetType().ToString());
             }
+            else if (yesnoSystemMessage.text == Database.exitMessage4)
+            {
+                groupYesnoSystemMessage.SetActive(false);
+            }
         }
 
-        public void ExitNo()
+        public virtual void ExitNo()
         {
-            if (this.yesnoSystemMessage.text == exitMessage1)
+            if (this.yesnoSystemMessage.text == Database.exitMessage1)
             {
-                this.yesnoSystemMessage.text = exitMessage2;
+                this.yesnoSystemMessage.text = Database.exitMessage2;
             }
-            else if (this.yesnoSystemMessage.text == exitMessage2)
+            else if (this.yesnoSystemMessage.text == Database.exitMessage2)
             {
-                this.yesnoSystemMessage.text = exitMessage1;
+                this.yesnoSystemMessage.text = Database.exitMessage1;
                 this.groupYesnoSystemMessage.SetActive(false);
                 this.Filter.SetActive(false);
             }
-            else if (this.yesnoSystemMessage.text == exitMessage3)
+            else if (this.yesnoSystemMessage.text == Database.exitMessage3)
             {
                 this.groupYesnoSystemMessage.SetActive(false);
                 this.Filter.SetActive(false);
             }
+            else if (yesnoSystemMessage.text == Database.exitMessage4)
+            {
+                this.groupYesnoSystemMessage.SetActive(false);
+                this.Filter.SetActive(false);
+            } 
             GroundOne.TruthHomeTown_NowExit = false;
         }
-
+        
         public virtual void BookManual_Click()
         {
             Application.LoadLevelAdditive(Database.TruthInformation);

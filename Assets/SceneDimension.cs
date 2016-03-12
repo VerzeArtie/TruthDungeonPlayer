@@ -9,7 +9,12 @@ namespace DungeonPlayer
     {
         public static List<string> playbackScene = new List<string>();
 
-
+        public static void CallRequestFood(string src, MotherForm scene)
+        {
+            GroundOne.ParentScene = scene;
+            //scene.Filter.SetActive(true);
+            Application.LoadLevelAdditive(Database.TruthRequestFood);
+        }
         public static void CallSaveLoad(string src, bool SaveMode, bool AfterBacktoTitle, MotherForm scene)
         {
             GroundOne.SaveMode = SaveMode;

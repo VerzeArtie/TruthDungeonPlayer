@@ -33,3 +33,5 @@ EditorBuildSettings:
     path: Assets/TruthSkillSpellDesc.unity
   - enabled: 1
     path: Assets/TruthInformation.unity
+  - enabled: 1
+    path: Assets/TruthRequestFood.unity

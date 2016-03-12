@@ -7458,7 +7458,7 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
-            yesnoSystemMessage.text = exitMessage1;
+            yesnoSystemMessage.text = Database.exitMessage1;
             groupYesnoSystemMessage.SetActive(true);
         }
 
@@ -7718,7 +7718,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.GotoHomeTown)
                 {
-                    yesnoSystemMessage.text = exitMessage3;
+                    yesnoSystemMessage.text = Database.exitMessage3;
                     groupYesnoSystemMessage.SetActive(true);
                     HideFilterComplete = false; // フィルタを消さない。
                 }

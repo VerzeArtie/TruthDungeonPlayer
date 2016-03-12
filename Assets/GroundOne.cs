@@ -147,6 +147,9 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
+            WE.Truth_CommunicationFirstHomeTown = true;
+            WE.Truth_CommunicationHanna1 = true;
+            WE.AlreadyRest = false;
             WE.AvailableInstantCommand = true;
             GroundOne.enemyName1 = Database.DUEL_DUMMY_SUBURI; // DUEL_EONE_FULNEA;
             GroundOne.enemyName2 = Database.ENEMY_SUN_FLOWER;
