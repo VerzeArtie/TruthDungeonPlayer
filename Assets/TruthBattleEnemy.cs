@@ -3430,249 +3430,6 @@ namespace DungeonPlayer
             return getOK;
         }
 
-        private void BattleEndPhase()
-        {
-            if (this.execBattleEndPhase == false)
-            {
-                this.execBattleEndPhase = true;
-            }
-            else
-            {
-                return;
-            }
-
-            for (int ii = 0; ii < ActiveList.Count; ii++)
-            {
-                string brokenName = String.Empty;
-                ActiveList[ii].CleanUpBattleEnd(ref brokenName);
-                if (brokenName != String.Empty)
-                {
-                    // todo
-                    // 破損したアイテム名を出しても良いが、名前が長すぎる場合、読めないので、アイテム名表示は不要と判断。
-                    //this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 200, Color.Red, false, false, Database.BROKEN_ITEM);
-                }
-            }
-
-            // 支配竜会話終了時、通常終了とみなす。
-            if (this.endBattleForMatrixDragonEnd)
-            {
-                GroundOne.BattleResult = GroundOne.battleResult.OK;
-            }
-            // [警告]万が一、相打ちの場合、プレイヤーの負けとみなす
-            else if (EnemyPartyDeathCheck())
-            {
-                if (GroundOne.DuelMode)
-                {
-                    UpdateBattleText("アインはDUELに敗れた！\r\n");
-                    System.Threading.Thread.Sleep(1000);
-                    GroundOne.BattleResult = GroundOne.battleResult.Ignore;
-                }
-                else
-                {
-                    UpdateBattleText("全滅しました・・・もう一度この戦闘をやり直しますか？\r\n");
-                    yesnoSystemMessage.text = "全滅しました・・・もう一度この戦闘をやり直しますか？";
-                    groupYesnoSystemMessage.SetActive(true);
-                    return; // scenebackさせない
-                }
-            }
-            else if (endFlag)
-            {
-                if (!GroundOne.WE.AvailableSecondCharacter)
-                {
-                    if (GroundOne.DuelMode)
-                    {
-                        UpdateBattleText("アインは降参を宣言した。\r\n");
-                    }
-                    else
-                    {
-                        UpdateBattleText("アインは逃げ出した。\r\n");
-                    }
-                }
-                else
-                {
-                    if (GroundOne.DuelMode)
-                    {
-                        UpdateBattleText("アインは降参を宣言した。\r\n");
-                    }
-                    else
-                    {
-                        UpdateBattleText("アイン達は逃げ出した。\r\n");
-                    }
-                }
-                System.Threading.Thread.Sleep(1000);
-                GroundOne.BattleResult = GroundOne.battleResult.Abort;
-            }
-            else
-            {
-                UpdateBattleText("敵を倒した！　" + ec1.Exp + "の経験値を得た。\r\n");
-                System.Threading.Thread.Sleep(1000);
-
-                // 敵撃墜カウントを数える。
-                GroundOne.WE2.KillingEnemy++;
-
-                // 練習用の剣カウントを数える。
-                if (GroundOne.MC != null)
-                {
-                    if ((GroundOne.MC.MainWeapon != null) && (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO) ||
-                        (GroundOne.MC.SubWeapon != null) && (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO))
-                    {
-                        GroundOne.WE2.PracticeSwordCount++;
-                    }
-                }
-
-                if (GroundOne.DuelMode == false)
-                {
-                    GetExpAndGold();
-
-                    string targetItemName = Method.GetNewItem(Method.NewItemCategory.Battle, GroundOne.MC, ec1, GroundOne.WE.DungeonArea);
-                    Debug.Log("targetItemName: " + targetItemName);
-                    if (targetItemName != string.Empty)
-                    {
-                        this.GettingNewItem = new ItemBackPack(targetItemName);
-                        if (this.GettingNewItem.Rare == ItemBackPack.RareLevel.Epic)
-                        {
-                            GroundOne.PlaySoundEffect(Database.SOUND_GET_EPIC_ITEM);
-                        }
-                        else if (this.GettingNewItem.Rare == ItemBackPack.RareLevel.Rare)
-                        {
-                            GroundOne.PlaySoundEffect(Database.SOUND_GET_RARE_ITEM);
-                        }
-                        MessageDisplayWithIcon(new ItemBackPack(targetItemName));
-                        treasurePanel.SetActive(true);
-
-                        if (GetNewItem(this.GettingNewItem))
-                        {
-                            // バックパックが空いてて入手可能な場合、ここでは何もしない。
-                        }
-                        else
-                        {
-                            //mdwi.Message = "バックパックがいっぱいのため、ステータス画面を開きます。"; // todo ?
-                            // バックパックがいっぱいの場合ステータス画面で不要アイテムを捨てさせます。
-                            SceneDimension.CallTruthStatusPlayer(Database.TruthBattleEnemy, this, true);
-                            return; // scenebackさせない
-
-                        }
-                    }
-                }
-                GroundOne.BattleResult = GroundOne.battleResult.OK;
-            }
-
-            Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
-            SceneDimension.Back();
-        }
-
-        public void GetNewItemAndBack()
-        {
-            GetNewItem(this.GettingNewItem);
-            SceneDimension.Back();
-        }
-
-        private void GetExpAndGold()
-        {
-            if (GroundOne.WE.AvailableFirstCharacter)
-            {
-                if (GroundOne.MC != null && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
-                {
-                    GroundOne.MC.Exp += ec1.Exp;
-                }
-
-                GroundOne.MC.Gold += ec1.Gold;
-
-                int levelUpPoint = 0;
-                int cumultiveLvUpValue = 0;
-                while (true)
-                {
-                    if (GroundOne.MC.Exp >= GroundOne.MC.NextLevelBorder && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
-                    {
-                        levelUpPoint += GroundOne.MC.LevelUpPointTruth;
-                        GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
-                        GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
-                        GroundOne.MC.Exp = GroundOne.MC.Exp - GroundOne.MC.NextLevelBorder;
-                        GroundOne.MC.Level += 1;
-                        cumultiveLvUpValue++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                if (cumultiveLvUpValue > 0)
-                {
-                    GroundOne.Player1Levelup = true;
-                    GroundOne.Player1CumultiveLvUpValue = cumultiveLvUpValue;
-                    GroundOne.Player1UpPoint = levelUpPoint;
-                }
-            }
-            if (GroundOne.WE.AvailableSecondCharacter)
-            {
-                if (GroundOne.SC != null && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
-                {
-                    GroundOne.SC.Exp = ec1.Exp;
-                }
-
-                int levelUpPoint = 0;
-                int cumultiveLvUpValue = 0;
-                while (true)
-                {
-                    if (GroundOne.SC.Exp >= GroundOne.SC.NextLevelBorder && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
-                    {
-                        levelUpPoint += GroundOne.SC.LevelUpPointTruth;
-                        GroundOne.SC.BaseLife += GroundOne.SC.LevelUpLifeTruth;
-                        GroundOne.SC.BaseMana += GroundOne.SC.LevelUpManaTruth;
-                        GroundOne.SC.Exp = GroundOne.SC.Exp - GroundOne.SC.NextLevelBorder;
-                        GroundOne.SC.Level += 1;
-                        cumultiveLvUpValue++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                if (cumultiveLvUpValue > 0)
-                {
-                    GroundOne.Player2Levelup = true;
-                    GroundOne.Player2CumultiveLvUpValue = cumultiveLvUpValue;
-                    GroundOne.Player2UpPoint = levelUpPoint;
-                }
-            }
-
-            if (GroundOne.WE.AvailableThirdCharacter)
-            {
-                if (GroundOne.TC != null && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
-                {
-                    GroundOne.TC.Exp = ec1.Exp;
-                }
-
-                int levelUpPoint = 0;
-                int cumultiveLvUpValue = 0;
-                while (true)
-                {
-                    if (GroundOne.TC.Exp >= GroundOne.TC.NextLevelBorder && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
-                    {
-                        levelUpPoint += GroundOne.TC.LevelUpPointTruth;
-                        GroundOne.TC.BaseLife += GroundOne.TC.LevelUpLifeTruth;
-                        GroundOne.TC.BaseMana += GroundOne.TC.LevelUpManaTruth;
-                        GroundOne.TC.Exp = GroundOne.TC.Exp - GroundOne.TC.NextLevelBorder;
-                        GroundOne.TC.Level += 1;
-                        cumultiveLvUpValue++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                if (cumultiveLvUpValue > 0)
-                {
-                    GroundOne.Player3Levelup = true;
-                    GroundOne.Player3CumultiveLvUpValue = cumultiveLvUpValue;
-                    GroundOne.Player3UpPoint = levelUpPoint;
-                }
-            }
-        }
-
         public enum MethodType
         {
             Beginning,
@@ -7063,7 +6820,249 @@ namespace DungeonPlayer
                 this.nowStackAnimationCounter = 0;
                 StackInTheCommandEnd();
             }
+        }
 
+        private void BattleEndPhase()
+        {
+            if (this.execBattleEndPhase == false)
+            {
+                this.execBattleEndPhase = true;
+            }
+            else
+            {
+                return;
+            }
+
+            for (int ii = 0; ii < ActiveList.Count; ii++)
+            {
+                string brokenName = String.Empty;
+                ActiveList[ii].CleanUpBattleEnd(ref brokenName);
+                if (brokenName != String.Empty)
+                {
+                    // todo
+                    // 破損したアイテム名を出しても良いが、名前が長すぎる場合、読めないので、アイテム名表示は不要と判断。
+                    //this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 200, Color.Red, false, false, Database.BROKEN_ITEM);
+                }
+            }
+
+            // 支配竜会話終了時、通常終了とみなす。
+            if (this.endBattleForMatrixDragonEnd)
+            {
+                GroundOne.BattleResult = GroundOne.battleResult.OK;
+            }
+            // [警告]万が一、相打ちの場合、プレイヤーの負けとみなす
+            else if (EnemyPartyDeathCheck())
+            {
+                if (GroundOne.DuelMode)
+                {
+                    UpdateBattleText("アインはDUELに敗れた！\r\n");
+                    System.Threading.Thread.Sleep(1000);
+                    GroundOne.BattleResult = GroundOne.battleResult.Ignore;
+                }
+                else
+                {
+                    UpdateBattleText("全滅しました・・・もう一度この戦闘をやり直しますか？\r\n");
+                    yesnoSystemMessage.text = "全滅しました・・・もう一度この戦闘をやり直しますか？";
+                    groupYesnoSystemMessage.SetActive(true);
+                    return; // scenebackさせない
+                }
+            }
+            else if (endFlag)
+            {
+                if (!GroundOne.WE.AvailableSecondCharacter)
+                {
+                    if (GroundOne.DuelMode)
+                    {
+                        UpdateBattleText("アインは降参を宣言した。\r\n");
+                    }
+                    else
+                    {
+                        UpdateBattleText("アインは逃げ出した。\r\n");
+                    }
+                }
+                else
+                {
+                    if (GroundOne.DuelMode)
+                    {
+                        UpdateBattleText("アインは降参を宣言した。\r\n");
+                    }
+                    else
+                    {
+                        UpdateBattleText("アイン達は逃げ出した。\r\n");
+                    }
+                }
+                System.Threading.Thread.Sleep(1000);
+                GroundOne.BattleResult = GroundOne.battleResult.Abort;
+            }
+            else
+            {
+                UpdateBattleText("敵を倒した！　" + ec1.Exp + "の経験値を得た。\r\n");
+                System.Threading.Thread.Sleep(1000);
+
+                // 敵撃墜カウントを数える。
+                GroundOne.WE2.KillingEnemy++;
+
+                // 練習用の剣カウントを数える。
+                if (GroundOne.MC != null)
+                {
+                    if ((GroundOne.MC.MainWeapon != null) && (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO) ||
+                        (GroundOne.MC.SubWeapon != null) && (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO))
+                    {
+                        GroundOne.WE2.PracticeSwordCount++;
+                    }
+                }
+
+                if (GroundOne.DuelMode == false)
+                {
+                    GetExpAndGold();
+
+                    string targetItemName = Method.GetNewItem(Method.NewItemCategory.Battle, GroundOne.MC, ec1, GroundOne.WE.DungeonArea);
+                    Debug.Log("targetItemName: " + targetItemName);
+                    if (targetItemName != string.Empty)
+                    {
+                        this.GettingNewItem = new ItemBackPack(targetItemName);
+                        if (this.GettingNewItem.Rare == ItemBackPack.RareLevel.Epic)
+                        {
+                            GroundOne.PlaySoundEffect(Database.SOUND_GET_EPIC_ITEM);
+                        }
+                        else if (this.GettingNewItem.Rare == ItemBackPack.RareLevel.Rare)
+                        {
+                            GroundOne.PlaySoundEffect(Database.SOUND_GET_RARE_ITEM);
+                        }
+                        MessageDisplayWithIcon(new ItemBackPack(targetItemName));
+                        treasurePanel.SetActive(true);
+
+                        if (GetNewItem(this.GettingNewItem))
+                        {
+                            // バックパックが空いてて入手可能な場合、ここでは何もしない。
+                        }
+                        else
+                        {
+                            //mdwi.Message = "バックパックがいっぱいのため、ステータス画面を開きます。"; // todo ?
+                            // バックパックがいっぱいの場合ステータス画面で不要アイテムを捨てさせます。
+                            SceneDimension.CallTruthStatusPlayer(Database.TruthBattleEnemy, this, true);
+                            return; // scenebackさせない
+
+                        }
+                    }
+                }
+                GroundOne.BattleResult = GroundOne.battleResult.OK;
+            }
+
+            Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
+            SceneDimension.Back();
+        }
+
+        public void GetNewItemAndBack()
+        {
+            GetNewItem(this.GettingNewItem);
+            SceneDimension.Back();
+        }
+
+        private void GetExpAndGold()
+        {
+            if (GroundOne.WE.AvailableFirstCharacter)
+            {
+                if (GroundOne.MC != null && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
+                {
+                    GroundOne.MC.Exp += ec1.Exp;
+                }
+
+                GroundOne.MC.Gold += ec1.Gold;
+
+                int levelUpPoint = 0;
+                int cumultiveLvUpValue = 0;
+                while (true)
+                {
+                    if (GroundOne.MC.Exp >= GroundOne.MC.NextLevelBorder && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    {
+                        levelUpPoint += GroundOne.MC.LevelUpPointTruth;
+                        GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
+                        GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
+                        GroundOne.MC.Exp = GroundOne.MC.Exp - GroundOne.MC.NextLevelBorder;
+                        GroundOne.MC.Level += 1;
+                        cumultiveLvUpValue++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (cumultiveLvUpValue > 0)
+                {
+                    GroundOne.Player1Levelup = true;
+                    GroundOne.Player1CumultiveLvUpValue = cumultiveLvUpValue;
+                    GroundOne.Player1UpPoint = levelUpPoint;
+                }
+            }
+            if (GroundOne.WE.AvailableSecondCharacter)
+            {
+                if (GroundOne.SC != null && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
+                {
+                    GroundOne.SC.Exp = ec1.Exp;
+                }
+
+                int levelUpPoint = 0;
+                int cumultiveLvUpValue = 0;
+                while (true)
+                {
+                    if (GroundOne.SC.Exp >= GroundOne.SC.NextLevelBorder && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    {
+                        levelUpPoint += GroundOne.SC.LevelUpPointTruth;
+                        GroundOne.SC.BaseLife += GroundOne.SC.LevelUpLifeTruth;
+                        GroundOne.SC.BaseMana += GroundOne.SC.LevelUpManaTruth;
+                        GroundOne.SC.Exp = GroundOne.SC.Exp - GroundOne.SC.NextLevelBorder;
+                        GroundOne.SC.Level += 1;
+                        cumultiveLvUpValue++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (cumultiveLvUpValue > 0)
+                {
+                    GroundOne.Player2Levelup = true;
+                    GroundOne.Player2CumultiveLvUpValue = cumultiveLvUpValue;
+                    GroundOne.Player2UpPoint = levelUpPoint;
+                }
+            }
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                if (GroundOne.TC != null && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
+                {
+                    GroundOne.TC.Exp = ec1.Exp;
+                }
+
+                int levelUpPoint = 0;
+                int cumultiveLvUpValue = 0;
+                while (true)
+                {
+                    if (GroundOne.TC.Exp >= GroundOne.TC.NextLevelBorder && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    {
+                        levelUpPoint += GroundOne.TC.LevelUpPointTruth;
+                        GroundOne.TC.BaseLife += GroundOne.TC.LevelUpLifeTruth;
+                        GroundOne.TC.BaseMana += GroundOne.TC.LevelUpManaTruth;
+                        GroundOne.TC.Exp = GroundOne.TC.Exp - GroundOne.TC.NextLevelBorder;
+                        GroundOne.TC.Level += 1;
+                        cumultiveLvUpValue++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (cumultiveLvUpValue > 0)
+                {
+                    GroundOne.Player3Levelup = true;
+                    GroundOne.Player3CumultiveLvUpValue = cumultiveLvUpValue;
+                    GroundOne.Player3UpPoint = levelUpPoint;
+                }
+            }
         }
     }
 }

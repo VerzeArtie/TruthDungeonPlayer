@@ -6702,27 +6702,7 @@ namespace DungeonPlayer
             messageList.Add("アイン：０！！");
 
             messageList.Add(Database.ENEMY_LAST_RANA_AMILIA); eventList.Add(ActionEvent.HomeTownCallDuel);
-            //bool failCount1 = false;
-            //bool failCount2 = false;
-            //while (true)
-            //{
-            //    // todo
-            //    bool result = true;
-            //    //bool result = BattleStart(Database.ENEMY_LAST_RANA_AMILIA, true);
 
-            //    //if (failCount1 && failCount2)
-            //    //{
-            //    //    using (YesNoReqWithMessage ynrw = new YesNoReqWithMessage())
-            //    //    {
-            //    //        ynrw.StartPosition = FormStartPosition.CenterParent;
-            //    //        ynrw.MainMessage = "戦闘をスキップし、勝利した状態からストーリーを進めますか？\r\n戦闘スキップによるペナルティはありません。";
-            //    //        ynrw.ShowDialog();
-            //    //        if (ynrw.DialogResult == DialogResult.Yes)
-            //    //        {
-            //    //            result = true;
-            //    //        }
-            //    //    }
-            //    //}
 
             //    if (result)
             //    {

@@ -738,7 +738,29 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownCallDuel)
                 {
+                    // todo
+                    BattleStart(nowMessage[this.nowReading], true);
+                    //bool failCount1 = false;
+                    //bool failCount2 = false;
+                    //while (true)
+                    //{
+                    //    // todo
+                    //    bool result = true;
+                    //    //bool result = BattleStart(Database.ENEMY_LAST_RANA_AMILIA, true);
 
+                    //    //if (failCount1 && failCount2)
+                    //    //{
+                    //    //    using (YesNoReqWithMessage ynrw = new YesNoReqWithMessage())
+                    //    //    {
+                    //    //        ynrw.StartPosition = FormStartPosition.CenterParent;
+                    //    //        ynrw.MainMessage = "戦闘をスキップし、勝利した状態からストーリーを進めますか？\r\n戦闘スキップによるペナルティはありません。";
+                    //    //        ynrw.ShowDialog();
+                    //    //        if (ynrw.DialogResult == DialogResult.Yes)
+                    //    //        {
+                    //    //            result = true;
+                    //    //        }
+                    //    //    }
+                    //    //}
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
                 {
@@ -772,6 +794,13 @@ namespace DungeonPlayer
                 this.btnOK.enabled = false;
                 this.btnOK.gameObject.SetActive(false);
             }
+        }
+
+        private void BattleStart(string p1, bool p2)
+        {
+            GroundOne.StopDungeonMusic();
+            System.Threading.Thread.Sleep(500);
+            SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, true, false, false, false);
         }
 
         private void BlackOut()

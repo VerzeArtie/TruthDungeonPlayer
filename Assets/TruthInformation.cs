@@ -692,7 +692,6 @@ namespace DungeonPlayer
         }
         public void tapClose()
         {
-            // todo
             Application.UnloadLevel(Database.TruthInformation);
         }
     }

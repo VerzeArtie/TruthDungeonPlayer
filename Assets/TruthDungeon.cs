@@ -236,6 +236,7 @@ namespace DungeonPlayer
             // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
             {
+                GroundOne.BattleResult = GroundOne.battleResult.None;
                 CopyShadowToMain();
                 this.ignoreCreateShadow = true;
                 this.nowEncountEnemy = true;
@@ -243,10 +244,13 @@ namespace DungeonPlayer
             // 逃げた時、経験値とゴールドは入らない。(つまり、何もしない）
             else if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
             {
+                GroundOne.BattleResult = GroundOne.battleResult.None;
                 GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
             }
+            // 敗北して、ゲーム終了を選択した時
             else if (GroundOne.BattleResult == GroundOne.battleResult.Ignore)
             {
+                GroundOne.BattleResult = GroundOne.battleResult.None;
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
@@ -288,6 +292,8 @@ namespace DungeonPlayer
             // 戦闘に勝利した場合（通常ルート）
             else
             {
+                GroundOne.BattleResult = GroundOne.battleResult.None;
+
                 // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
                 if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
                 {
