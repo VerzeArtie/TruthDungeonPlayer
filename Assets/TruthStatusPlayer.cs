@@ -51,14 +51,19 @@ namespace DungeonPlayer
         public Button btnMind;
         public Text strength;
         public Text addStrength;
+        public Text addStrengthFood;
         public Text agility;
         public Text addAgility;
+        public Text addAgilityFood;
         public Text intelligence;
         public Text addIntelligence;
+        public Text addIntelligenceFood;
         public Text stamina;
         public Text addStamina;
+        public Text addStaminaFood;
         public Text mind;
         public Text addMind;
+        public Text addMindFood;
         public Button plus1;
         public Button plus10;
         public Button plus100;
@@ -2091,34 +2096,34 @@ namespace DungeonPlayer
             }
 
             this.strength.text = chara.Strength.ToString();
-            // todo
-            this.addStrength.text = " + " + chara.BuffStrength_Accessory.ToString();
-            //if (chara.BuffStrength_Food == 0) this.addStrength2.text = "";
-            //else this.addStrength2.text = " + " + chara.BuffStrength_Food.ToString();
+            if (chara.BuffStrength_Accessory == 0) this.addStrength.text = "";
+            else this.addStrength.text = " + " + chara.BuffStrength_Accessory.ToString();
+            if (chara.BuffStrength_Food == 0) this.addStrengthFood.text = "";
+            else this.addStrengthFood.text = " + " + chara.BuffStrength_Food.ToString();
 
             this.agility.text = chara.Agility.ToString();
-            // todo
-            this.addAgility.text = " + " + chara.BuffAgility_Accessory.ToString();
-            //if (chara.BuffAgility_Food == 0) this.addAgility2.text = "";
-            //else this.addAgility2.text = " + " + chara.BuffAgility_Food.ToString();
+            if (chara.BuffAgility_Accessory == 0) this.addAgility.text = "";
+            else this.addAgility.text = " + " + chara.BuffAgility_Accessory.ToString();
+            if (chara.BuffAgility_Food == 0) this.addAgilityFood.text = "";
+            else this.addAgilityFood.text = " + " + chara.BuffAgility_Food.ToString();
 
             this.intelligence.text = chara.Intelligence.ToString();
-            // todo
-            this.addIntelligence.text = " + " + chara.BuffIntelligence_Accessory.ToString();
-            //if (chara.BuffIntelligence_Food == 0) this.addIntelligence2.text = "";
-            //else this.addIntelligence2.text = " + " + chara.BuffIntelligence_Food.ToString();
+            if (chara.BuffIntelligence_Accessory == 0) this.addIntelligence.text = "";
+            else this.addIntelligence.text = " + " + chara.BuffIntelligence_Accessory.ToString();
+            if (chara.BuffIntelligence_Food == 0) this.addIntelligenceFood.text = "";
+            else this.addIntelligenceFood.text = " + " + chara.BuffIntelligence_Food.ToString();
 
             this.stamina.text = chara.Stamina.ToString();
-            // todo
-            this.addStamina.text = " + " + chara.BuffStamina_Accessory.ToString();
-            //if (chara.BuffStamina_Food == 0) this.addStamina2.text = "";
-            //else this.addStamina2.text = " + " + chara.BuffStamina_Food.ToString();
+            if (chara.BuffStamina_Accessory == 0) this.addStamina.text = "";
+            else this.addStamina.text = " + " + chara.BuffStamina_Accessory.ToString();
+            if (chara.BuffStamina_Food == 0) this.addStaminaFood.text = "";
+            else this.addStaminaFood.text = " + " + chara.BuffStamina_Food.ToString();
 
             this.mind.text = chara.Mind.ToString();
-            // todo
-            this.addMind.text = " + " + chara.BuffMind_Accessory.ToString();
-            //if (chara.BuffMind_Food == 0) this.addMind2.text = "";
-            //else this.addMind2.text = " + " + chara.BuffMind_Food.ToString();
+            if (chara.BuffMind_Accessory == 0) this.addMind.text = "";
+            else this.addMind.text = " + " + chara.BuffMind_Accessory.ToString();
+            if (chara.BuffMind_Food == 0) this.addMindFood.text = "";
+            else this.addMindFood.text = " + " + chara.BuffMind_Food.ToString();
 
             // over shifting
             if (this.useOverShifting)

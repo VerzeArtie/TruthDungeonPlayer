@@ -32,11 +32,22 @@ namespace DungeonPlayer
             PlayMusic01,
             PlayMusic02,
             PlayMusic03,
+            PlayMusic04,
+            PlayMusic05,
+            PlayMusic06,
+            PlayMusic07,
+            PlayMusic08,
+            PlayMusic09,
+            PlayMusic10,
             PlayMusic11,
+            PlayMusic12,
             PlayMusic13,
             PlayMusic14,
             PlayMusic15,
             PlayMusic16,
+            PlayMusic17,
+            PlayMusic18,
+            PlayMusic19,
             YesNoGotoDungeon2,
             GotoHomeTown,
             GotoDungeon2,
@@ -52,10 +63,8 @@ namespace DungeonPlayer
             HomeTownButtonHidden,
             HomeTownMessageDisplay,
             HomeTownYesNoMessageDisplay,
-            HomeTownSecondCommunicationStart,
-            HomeTownThirdCommunicationStart,
-            HomeTownFourthCommunicationStart,
-            HomeTownFifthCommunicationStart,
+            HomeTownCallSaveLoad,
+            HomeTownCallDuel,
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
@@ -3522,7 +3531,9 @@ namespace DungeonPlayer
 
                      messageList.Add(""); eventList.Add(ActionEvent.HomeTownBlackOut);
 
-                     if (GroundOne.WE2.TruthRecollection1)
+                     // after
+                     if (false)
+                     //if (GroundOne.WE2.TruthRecollection1)
                      {
                          messageList.Add("アイン：俺はダンジョンへ行こうとしていた。"); eventList.Add(ActionEvent.None);
 
@@ -3570,8 +3581,9 @@ namespace DungeonPlayer
 
                          messageList.Add("アイン：ボスの威勢の良さが無くなるまではそんなに時間はかからなかった。"); eventList.Add(ActionEvent.None);
 
-                         if (GroundOne.WE.Truth_GiveLanaEarring)
-                         {
+                         // after
+                         //if (GroundOne.WE.Truth_GiveLanaEarring)
+                         //{
                              messageList.Add("アイン：・・・　確かそうだ。　思い出した。"); eventList.Add(ActionEvent.None);
 
                              messageList.Add("アイン：ラナと一緒にダンジョンへ進んで・・・それから・・・"); eventList.Add(ActionEvent.None);
@@ -3599,58 +3611,32 @@ namespace DungeonPlayer
                              messageList.Add("アイン：それも、取り返しのつかない事だ・・・"); eventList.Add(ActionEvent.None);
 
                              messageList.Add("アイン：ッグ・・・駄目だ。ここがどうしても思い出せねえ・・・"); eventList.Add(ActionEvent.None);
-                         }
-                         else
-                         {
+
+                         //}
+                         //else
+                         //{
                              GroundOne.WE2.TruthKey1 = true; // これを真実世界へのキーその１とする。
-                         }
+                         //}
+
+                         messageList.Add("　　　【得体のしれない不安を抱えつつ・・・】"); eventList.Add(ActionEvent.None);
+
+                         messageList.Add("　　　【そのまま、２階へと足を運んだ】"); eventList.Add(ActionEvent.None);
                      }
-
-                     messageList.Add("　　　【得体のしれない不安を抱えつつ・・・】"); eventList.Add(ActionEvent.None);
-
-                     messageList.Add("　　　【そのまま、２階へと足を運んだ】"); eventList.Add(ActionEvent.None);
-
                      GroundOne.WE.TruthCommunicationCompArea1 = true;
                  }
 
                  GroundOne.WE.TruthCommunicationCompArea1 = true;
+                 GroundOne.WE.Truth_CommunicationSecondHomeTown = true;
                  GroundOne.WE.AlreadyRest = true;
 
-                 // todo
-                 //using (ESCMenu esc = new ESCMenu())
-                 //{
-                 //    esc.MC = this.MC;
-                 //    esc.SC = this.SC;
-                 //    esc.TC = this.TC;
-                 //    esc.WE = this.we;
-                 //    esc.KnownTileInfo = null;
-                 //    esc.KnownTileInfo2 = null;
-                 //    esc.KnownTileInfo3 = null;
-                 //    esc.KnownTileInfo4 = null;
-                 //    esc.KnownTileInfo5 = null;
-                 //    esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
-                 //    esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
-                 //    esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
-                 //    esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
-                 //    esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
-                 //    esc.StartPosition = FormStartPosition.CenterParent;
-                 //    esc.TruthStory = true;
-                 //    esc.OnlySave = true;
-                 //    esc.ShowDialog(); eventList.Add(ActionEvent.None);
-                 //}
-
-                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
-
-                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
-
-                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownSecondCommunicationStart);
+                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallSaveLoad);
 			}
         }
 
         // ２階初日
         public static void Message20200(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
+            // 初日で何か喋らせたい場合、セリフ入れてください。
         }
 
         // ２階、地の部屋、選択失敗
@@ -3706,8 +3692,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：まったく、あんな味のどこが良いのかしら・・・"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //CallSomeMessageWithAnimation("    『味商売　天地』にて・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("---- 『味商売　天地』にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：ふ～、やっぱここの味は最高だぜ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
@@ -3739,7 +3724,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：・・・っえ・・・っと・・・"); eventList.Add(ActionEvent.None);
 
-            // todo (本当に分岐させたいのかどうか)
+            // after (本当に分岐させたいのかどうか)
             //using (TruthDecision td = new TruthDecision())
             //{
             //    td.MainMessage = "　【　ラナにこのまま問い詰めてみますか？　】";
@@ -3901,8 +3886,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                // todo
-                //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
 
                 messageList.Add("アインとラナが夕飯を食べた後 ・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
@@ -4068,8 +4052,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                // todo
-                // ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
 
                 messageList.Add("---- アインが予約していた部屋にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
@@ -4138,47 +4121,16 @@ namespace DungeonPlayer
             }
 
             GroundOne.WE.TruthCommunicationCompArea2 = true;
-            
-            // todo
-            //CallRestInn(true); eventList.Add(ActionEvent.None);
-            
-            // todo
-            //using (ESCMenu esc = new ESCMenu())
-            //{
-            //    esc.MC = this.MC;
-            //    esc.SC = this.SC;
-            //    esc.TC = this.TC;
-            //    esc.WE = this.we;
-            //    esc.KnownTileInfo = null;
-            //    esc.KnownTileInfo2 = null;
-            //    esc.KnownTileInfo3 = null;
-            //    esc.KnownTileInfo4 = null;
-            //    esc.KnownTileInfo5 = null;
-            //    esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
-            //    esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
-            //    esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
-            //    esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
-            //    esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
-            //    esc.StartPosition = FormStartPosition.CenterParent;
-            //    esc.TruthStory = true;
-            //    esc.OnlySave = true;
-            //    esc.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
+            GroundOne.WE.AlreadyRest = true;
 
-            // todo
-            //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING); eventList.Add(ActionEvent.None);
-            messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
-
-            messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
-
-            // todo
-            //ThirdCommunicationStart(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallSaveLoad);
         }
 
         // ３階初日
         public static void Message20300(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
+            // 初日で何か喋らせたい場合、セリフ入れてください。
         }
 
         // ３階、エリア１の鏡をクリア時
@@ -4504,8 +4456,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                // todo
-                //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
 
                 messageList.Add("---- アインが予約していた部屋にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
@@ -4627,8 +4578,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                // todo
-                //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_NIGHT); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTownNight);
 
                 messageList.Add("---- アインが予約していた部屋にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
@@ -5162,40 +5112,10 @@ namespace DungeonPlayer
             }
 
             GroundOne.WE.TruthCommunicationCompArea3 = true;
+            GroundOne.WE.Truth_CommunicationFourthHomeTown = true;
+            GroundOne.WE.AlreadyRest = true;
 
-            // todo
-            //CallRestInn(true); eventList.Add(ActionEvent.None);
-
-            //using (ESCMenu esc = new ESCMenu())
-            //{
-            //    esc.MC = this.MC;
-            //    esc.SC = this.SC;
-            //    esc.TC = this.TC;
-            //    esc.WE = this.we;
-            //    esc.KnownTileInfo = null;
-            //    esc.KnownTileInfo2 = null;
-            //    esc.KnownTileInfo3 = null;
-            //    esc.KnownTileInfo4 = null;
-            //    esc.KnownTileInfo5 = null;
-            //    esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
-            //    esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
-            //    esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
-            //    esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
-            //    esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
-            //    esc.StartPosition = FormStartPosition.CenterParent;
-            //    esc.TruthStory = true;
-            //    esc.OnlySave = true;
-            //    esc.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
-
-            // todo
-            //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING); eventList.Add(ActionEvent.None);
-            //this.BackColor = Color.WhiteSmoke;
-
-            messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
-
-            // todo
-            //FourthCommunicationStart(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallSaveLoad);
         }
 
         // 現実世界
@@ -5219,9 +5139,6 @@ namespace DungeonPlayer
 
             GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_EARRING_OF_LANA));
 
-            // todo
-            //GetItemFullCheck(mc, Database.RARE_EARRING_OF_LANA); eventList.Add(ActionEvent.None);
-
             messageList.Add("アイン：ラナのイヤリングじゃねえか・・・何でこんな物が・・・"); eventList.Add(ActionEvent.None);
             
             messageList.Add("アイン：・・・　何であるんだっけ　・・・　ラナが落としたのか？"); eventList.Add(ActionEvent.None);
@@ -5242,8 +5159,7 @@ namespace DungeonPlayer
 
             GroundOne.WE2.SeekerEvent601 = true;
             Method.AutoSaveTruthWorldEnvironment();
-            // todo
-            //Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, null, null, null, null, null, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
+            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
         }
 
         // エンディング
@@ -5319,7 +5235,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ほんとだ、どれどれ・・・"); eventList.Add(ActionEvent.None);
 
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("　　　【なお、記者は猛ダッシュで逃げる際、オル・ランディス選手の最後に振り返る時の顔を目撃した】"); eventList.Add(ActionEvent.None);
 
@@ -5635,7 +5551,7 @@ namespace DungeonPlayer
 
             messageList.Add("エルミ：ッ・・・ック・・・"); eventList.Add(ActionEvent.None);
 
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("エルミ：実はね、２か月前あたりから考えてたんだよ、" + Database.VINSGALDE + "の件は。"); eventList.Add(ActionEvent.None);
 
@@ -5899,7 +5815,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：どこに行くの？"); eventList.Add(ActionEvent.None);
 
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
@@ -6081,7 +5997,7 @@ namespace DungeonPlayer
             //    Application.DoEvents(); eventList.Add(ActionEvent.None);
             //}
 
-            //GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
             //GroundOne.WE2.SeekerEnd = true;
             //this.we.TruthCompleteArea5 = true;
             //this.we.TruthCompleteArea5Day = this.we.GameDay;
@@ -6173,24 +6089,21 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：申し込みとかの登録申請、早速やってくるとするか！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //CallSomeMessageWithAnimation("アインはDUEL闘技場へと向かっていった。"); eventList.Add(ActionEvent.None);
+            messageList.Add("---- アインはDUEL闘技場へと走っていった ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("ラナ：（アイン・・・あんな嬉しそうに、はしゃいで・・・）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownAvailableDuel);
-            // todo
-            // buttonDuel.Visible = true;
-            //CallSomeMessageWithAnimation("【DUEL闘技場へ行く事が出来るようになりました。】"); eventList.Add(ActionEvent.None);
 
+            messageList.Add(Database.Message_DuelAvailable); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
 
-            // todo
-            //CallSomeMessageWithAnimation("－－－　DUEL闘技場にて　－－－"); eventList.Add(ActionEvent.None);
+            messageList.Add("---- DUEL闘技場にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：うお！すげえ歓声だな！！"); eventList.Add(ActionEvent.None);
 
@@ -6300,8 +6213,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ああ、またな。"); eventList.Add(ActionEvent.None);
 
-            // todo
-            // CallSomeMessageWithAnimation("ラナは町の中へと歩いていった・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナは町の中へと歩いていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：（ダンジョンともう一つ、ＤＵＥＬか。。。）"); eventList.Add(ActionEvent.None);
 
@@ -6343,8 +6255,7 @@ namespace DungeonPlayer
 
             messageList.Add("　　【受付嬢：それでは、本闘技場へとぜひともお越しください。私はこれにて。】"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //CallSomeMessageWithAnimation("受付係員は闘技場へと戻っていった・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("受付係員は闘技場へと戻っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add("アイン：ッグ・・・ヤ、ヤベェ・・・"); eventList.Add(ActionEvent.None);
 
@@ -6384,7 +6295,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：アインの話、かいつまんで話すとこういうことよね？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：『１．ＥＳＣメニューを開く』"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：『１．メニューを開く』"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：『２．新しく追加されている【バトル設定】を選択する』"); eventList.Add(ActionEvent.None);
 
@@ -6406,11 +6317,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：っしゃ、さっそくやってみるぜ！"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //CallSomeMessageWithAnimation("【ESCメニューより「バトル設定」が選択できるようになりました。】"); eventList.Add(ActionEvent.None);
+            messageList.Add(Database.Message_BattleSettingAvailable); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            // todo
-            //CallSomeMessageWithAnimation("【習得した魔法・スキルをバトルコマンドに設定できるようになります。】"); eventList.Add(ActionEvent.None);
+            messageList.Add("【習得した魔法・スキルをバトルコマンドに設定できるようになります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             GroundOne.WE.AvailableBattleSettingMenu = true;
         }
@@ -6480,10 +6389,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：楽しみになってきたな！っしゃ、もういっちょ練習しておくぜ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //CallSomeMessageWithAnimation("【戦闘中にインスタントアクションが出来るようになりました。】"); eventList.Add(ActionEvent.None);
-            // todo
-            //CallSomeMessageWithAnimation("【戦闘中、アクションコマンドを右クリックする事で使用可能になります。】"); eventList.Add(ActionEvent.None);
+            messageList.Add("【戦闘中にインスタントアクションが出来るようになりました】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("【戦闘中、アクションコマンドを右クリックする事で使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             GroundOne.WE.AvailableInstantCommand = true;
         }
@@ -6499,301 +6407,301 @@ namespace DungeonPlayer
         }
         public static void Message30002(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
-            //UpdateMainMessage("アイン：（・・・よし・・・行くか！）");
+            messageList.Add("アイン：（・・・よし・・・行くか！）"); eventList.Add(ActionEvent.None);
 
-            //GroundOne.StopDungeonMusic();
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-            //UpdateMainMessage("ラナ：ちょっと、待ちなさいよ。");
+            messageList.Add("ラナ：ちょっと、待ちなさいよ。"); eventList.Add(ActionEvent.None);
 
-            //GroundOne.PlayDungeonMusic(Database.BGM19, Database.BGM19LoopBegin);
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
 
-            //UpdateMainMessage("アイン：・・・ラナか・・・");
+            messageList.Add("アイン：・・・ラナか・・・");
 
-            //UpdateMainMessage("ラナ：今からダンジョンに向かう気よね？");
+            messageList.Add("ラナ：今からダンジョンに向かう気よね？");
 
-            //UpdateMainMessage("アイン：ああ、そのつもりだ。");
+            messageList.Add("アイン：ああ、そのつもりだ。");
 
-            //UpdateMainMessage("ラナ：・・・");
+            messageList.Add("ラナ：・・・");
 
-            //UpdateMainMessage("アイン：・・・");
+            messageList.Add("アイン：・・・");
 
-            //UpdateMainMessage("ラナ：【　真実の答え　】・・・見つかった？");
+            messageList.Add("ラナ：【　真実の答え　】・・・見つかった？");
 
-            //UpdateMainMessage("アイン：・・・");
+            messageList.Add("アイン：・・・");
 
-            //UpdateMainMessage("アイン：ああ、見つかってる。");
+            messageList.Add("アイン：ああ、見つかってる。");
 
-            //UpdateMainMessage("ラナ：今言ってみて、聞いてあげるから。");
+            messageList.Add("ラナ：今言ってみて、聞いてあげるから。");
 
-            //UpdateMainMessage("アイン：わかった。");
+            messageList.Add("アイン：わかった。");
 
-            //UpdateMainMessage("アイン：【力は力にあらず、力は全てである。】");
+            messageList.Add("アイン：【力は力にあらず、力は全てである。】");
 
-            //UpdateMainMessage("アイン：【負けられない勝負。　しかし心は満たず。】");
+            messageList.Add("アイン：【負けられない勝負。　しかし心は満たず。】");
 
-            //UpdateMainMessage("アイン：【力のみに依存するな。心を対にせよ。】");
+            messageList.Add("アイン：【力のみに依存するな。心を対にせよ。】");
 
-            //UpdateMainMessage("アイン：ラナの母ちゃんがやってた紫聡千律道場。あそこの十訓の一つだ。");
+            messageList.Add("アイン：ラナの母ちゃんがやってた紫聡千律道場。あそこの十訓の一つだ。");
 
-            //UpdateMainMessage("ラナ：そっか・・・ちゃんと覚えてたのね。");
+            messageList.Add("ラナ：そっか・・・ちゃんと覚えてたのね。");
 
-            //UpdateMainMessage("アイン：ああ。あの時は分からなかったが、今、ようやく分かり始めたんだ。");
+            messageList.Add("アイン：ああ。あの時は分からなかったが、今、ようやく分かり始めたんだ。");
 
-            //UpdateMainMessage("アイン：力だけじゃ限界がある、それだけじゃダメなんだ。");
+            messageList.Add("アイン：力だけじゃ限界がある、それだけじゃダメなんだ。");
 
-            //UpdateMainMessage("アイン：でもだからと言って、信念や想いだけを持ってても駄目だ。");
+            messageList.Add("アイン：でもだからと言って、信念や想いだけを持ってても駄目だ。");
 
-            //UpdateMainMessage("アイン：両方とも併せもって初めて意味が出てくる。");
+            messageList.Add("アイン：両方とも併せもって初めて意味が出てくる。");
 
-            //UpdateMainMessage("アイン：そんな感じだ。");
+            messageList.Add("アイン：そんな感じだ。");
 
-            //UpdateMainMessage("ラナ：そう・・・私にはよく分からないけど");
+            messageList.Add("ラナ：そう・・・私にはよく分からないけど");
 
-            //UpdateMainMessage("ラナ：アインが感じた今の答えが真実なのね、きっと。");
+            messageList.Add("ラナ：アインが感じた今の答えが真実なのね、きっと。");
 
-            //UpdateMainMessage("アイン：それを教えてくれたのが、この剣だ。");
+            messageList.Add("アイン：それを教えてくれたのが、この剣だ。");
 
-            //UpdateMainMessage("ラナ：その練習用の剣？　小さい頃母さんからもらったやつよね。");
+            messageList.Add("ラナ：その練習用の剣？　小さい頃母さんからもらったやつよね。");
 
-            //UpdateMainMessage("アイン：ああ、そうだ。");
+            messageList.Add("アイン：ああ、そうだ。");
 
-            //UpdateMainMessage("アイン：これが神剣フェルトゥーシュだと知るまでにはずいぶんと時間がかかった。");
+            messageList.Add("アイン：これが神剣フェルトゥーシュだと知るまでにはずいぶんと時間がかかった。");
 
-            //UpdateMainMessage("アイン：あの頃は、どうみても単なるナマクラの剣にしか見えなかったからな。");
+            messageList.Add("アイン：あの頃は、どうみても単なるナマクラの剣にしか見えなかったからな。");
 
-            //UpdateMainMessage("ラナ：・・・いつ頃から気づいてたのよ？");
+            messageList.Add("ラナ：・・・いつ頃から気づいてたのよ？");
 
-            //UpdateMainMessage("アイン：ボケ師匠ランディスに出くわした時だ。");
+            messageList.Add("アイン：ボケ師匠ランディスに出くわした時だ。");
 
-            //UpdateMainMessage("ラナ：そうだったの。それからは、気づかない振りしてたの？");
+            messageList.Add("ラナ：そうだったの。それからは、気づかない振りしてたの？");
 
-            //UpdateMainMessage("アイン：いや、そういうわけじゃねえ。半信半疑だったってのが正直な所だ。");
+            messageList.Add("アイン：いや、そういうわけじゃねえ。半信半疑だったってのが正直な所だ。");
 
-            //UpdateMainMessage("アイン：あの剣は、どうみても単なるナマクラだ。実際使ってみても全然威力が出ないしな。");
+            messageList.Add("アイン：あの剣は、どうみても単なるナマクラだ。実際使ってみても全然威力が出ないしな。");
 
-            //UpdateMainMessage("ラナ：ふうん。それでお師匠さんに会ってからどう変わったのよ？");
+            messageList.Add("ラナ：ふうん。それでお師匠さんに会ってからどう変わったのよ？");
 
-            //UpdateMainMessage("アイン：師匠はどうもあの剣の特性に関して、もう一つ何か知ってるみたいだったんだ。");
+            messageList.Add("アイン：師匠はどうもあの剣の特性に関して、もう一つ何か知ってるみたいだったんだ。");
 
-            //UpdateMainMessage("アイン：いや、あの剣に関わらず、全般的な話みたいだった。それを教えてくれた。");
+            messageList.Add("アイン：いや、あの剣に関わらず、全般的な話みたいだった。それを教えてくれた。");
 
-            //UpdateMainMessage("アイン：心を燈して放たないと、威力は発揮されない。何かそんな話だった。");
+            messageList.Add("アイン：心を燈して放たないと、威力は発揮されない。何かそんな話だった。");
 
-            //UpdateMainMessage("ラナ：心を燈して・・・って事は。");
+            messageList.Add("ラナ：心を燈して・・・って事は。");
 
-            //UpdateMainMessage("アイン：あの剣、最高攻撃力が異常に高い。そして、最低攻撃力も異常に低い。");
+            messageList.Add("アイン：あの剣、最高攻撃力が異常に高い。そして、最低攻撃力も異常に低い。");
 
-            //UpdateMainMessage("アイン：心を燈さない限り、最高攻撃力は出ない。つまり、ナマクラなままってわけだ。");
+            messageList.Add("アイン：心を燈さない限り、最高攻撃力は出ない。つまり、ナマクラなままってわけだ。");
 
-            //UpdateMainMessage("アイン：それが分かった時点で、俺の力に対する考えは変わった。");
+            messageList.Add("アイン：それが分かった時点で、俺の力に対する考えは変わった。");
 
-            //UpdateMainMessage("アイン：あの十訓の７番目。あの言葉通り、力は必要だが、力だけじゃ駄目だって事さ。");
+            messageList.Add("アイン：あの十訓の７番目。あの言葉通り、力は必要だが、力だけじゃ駄目だって事さ。");
 
-            //UpdateMainMessage("ラナ：うん・・・");
+            messageList.Add("ラナ：うん・・・");
 
-            //UpdateMainMessage("ラナ：アインって・・・凄いわね。");
+            messageList.Add("ラナ：アインって・・・凄いわね。");
 
-            //UpdateMainMessage("アイン：な、いやいや、凄くなんかねえって。");
+            messageList.Add("アイン：な、いやいや、凄くなんかねえって。");
 
-            //UpdateMainMessage("ラナ：ううん、そういう風に考えが行き届くのは凄いわよ。私じゃ考えもつかないもの。");
+            messageList.Add("ラナ：ううん、そういう風に考えが行き届くのは凄いわよ。私じゃ考えもつかないもの。");
 
-            //UpdateMainMessage("アイン：いや、俺の勝手な解釈だからな。間違ってる可能性の方が高いぞ。");
+            messageList.Add("アイン：いや、俺の勝手な解釈だからな。間違ってる可能性の方が高いぞ。");
 
-            //UpdateMainMessage("ラナ：ううん、解釈が間違ってるとかそういう話じゃないの。");
+            messageList.Add("ラナ：ううん、解釈が間違ってるとかそういう話じゃないの。");
 
-            //UpdateMainMessage("ラナ：アインの雰囲気そのものが、凄く変わるのよ。");
+            messageList.Add("ラナ：アインの雰囲気そのものが、凄く変わるのよ。");
 
-            //UpdateMainMessage("ラナ：凄く冷静で・・・的を得ていて・・・");
+            messageList.Add("ラナ：凄く冷静で・・・的を得ていて・・・");
 
-            //UpdateMainMessage("ラナ：いつものアインじゃないみたい。");
+            messageList.Add("ラナ：いつものアインじゃないみたい。");
 
-            //UpdateMainMessage("アイン：ま・・・");
+            messageList.Add("アイン：ま・・・");
 
-            //UpdateMainMessage("アイン：まあ、そういう側面もあるさ！　ッハッハッハ！");
+            messageList.Add("アイン：まあ、そういう側面もあるさ！　ッハッハッハ！");
 
-            //UpdateMainMessage("ラナ：良いのよ、無理して雰囲気変えなくて、ッフフ♪");
+            messageList.Add("ラナ：良いのよ、無理して雰囲気変えなくて、ッフフ♪");
 
-            //UpdateMainMessage("アイン：わ、悪いな・・・");
+            messageList.Add("アイン：わ、悪いな・・・");
 
-            //UpdateMainMessage("ラナ：ッフフ、良いって言ってるじゃないの♪");
+            messageList.Add("ラナ：ッフフ、良いって言ってるじゃないの♪");
 
-            //UpdateMainMessage("ラナ：でも、ついでに言わせてもらうわね。");
+            messageList.Add("ラナ：でも、ついでに言わせてもらうわね。");
 
-            //UpdateMainMessage("アイン：な、なんだ？");
+            messageList.Add("アイン：な、なんだ？");
 
-            //UpdateMainMessage("ラナ：アイン、あんた私に手加減してるでしょ？");
+            messageList.Add("ラナ：アイン、あんた私に手加減してるでしょ？");
 
-            //UpdateMainMessage("アイン：手加減？？　一体何の話だ。");
+            messageList.Add("アイン：手加減？？　一体何の話だ。");
 
-            //UpdateMainMessage("ラナ：戦闘スタイルの事よ。");
+            messageList.Add("ラナ：戦闘スタイルの事よ。");
 
-            //UpdateMainMessage("アイン：戦闘・・・スタイル？");
+            messageList.Add("アイン：戦闘・・・スタイル？");
 
-            //UpdateMainMessage("ラナ：そうよ。私レベルが相手ならバレないとでも思ってたのかしら。");
+            messageList.Add("ラナ：そうよ。私レベルが相手ならバレないとでも思ってたのかしら。");
 
-            //UpdateMainMessage("アイン：いや、俺は手加減なんてしてないぞ。気のせいじゃないのか？");
+            messageList.Add("アイン：いや、俺は手加減なんてしてないぞ。気のせいじゃないのか？");
 
-            //UpdateMainMessage("ラナ：見たわよ、アンタが傭兵訓練所を卒業した後、コッソリ独自で練習している所。");
+            messageList.Add("ラナ：見たわよ、アンタが傭兵訓練所を卒業した後、コッソリ独自で練習している所。");
 
-            //UpdateMainMessage("ラナ：あんな動き・・・見た事もないスピードだったわ。");
+            messageList.Add("ラナ：あんな動き・・・見た事もないスピードだったわ。");
 
-            //UpdateMainMessage("アイン：ま、待て。あれはだな・・・");
+            messageList.Add("アイン：ま、待て。あれはだな・・・");
 
-            //UpdateMainMessage("ラナ：いいのよ。私じゃ正直、追いつけないレベルだった。");
+            messageList.Add("ラナ：いいのよ。私じゃ正直、追いつけないレベルだった。");
 
-            //UpdateMainMessage("ラナ：動作切替タイミング、詠唱速度、剣を振るう速度。");
+            messageList.Add("ラナ：動作切替タイミング、詠唱速度、剣を振るう速度。");
 
-            //UpdateMainMessage("ラナ：全てが別次元だったわ。");
+            messageList.Add("ラナ：全てが別次元だったわ。");
 
-            //UpdateMainMessage("ラナ：どうして・・・私に見せてくれないのかしら？");
+            messageList.Add("ラナ：どうして・・・私に見せてくれないのかしら？");
 
-            //UpdateMainMessage("アイン：・・・　・・・");
+            messageList.Add("アイン：・・・　・・・");
 
-            //UpdateMainMessage("アイン：すまねえ。");
+            messageList.Add("アイン：すまねえ。");
 
-            //UpdateMainMessage("ラナ：謝らないでよ・・・どうなの？本当の所を教えてちょうだいよ。");
+            messageList.Add("ラナ：謝らないでよ・・・どうなの？本当の所を教えてちょうだいよ。");
 
-            //UpdateMainMessage("アイン：・・・　・・・　・・・");
+            messageList.Add("アイン：・・・　・・・　・・・");
 
-            //UpdateMainMessage("ラナ：やっぱり・・・そういう事よね。");
+            messageList.Add("ラナ：やっぱり・・・そういう事よね。");
 
-            //UpdateMainMessage("アイン：まて、そうじゃねえんだ！");
+            messageList.Add("アイン：まて、そうじゃねえんだ！");
 
-            //UpdateMainMessage("アイン：俺が悪いのは本当だ。");
+            messageList.Add("アイン：俺が悪いのは本当だ。");
 
-            //UpdateMainMessage("アイン：ラナ、お前にだけはそういうとこを見せたくなかったんだ。");
+            messageList.Add("アイン：ラナ、お前にだけはそういうとこを見せたくなかったんだ。");
 
-            //UpdateMainMessage("アイン：知られたく・・・なかったんだ。");
+            messageList.Add("アイン：知られたく・・・なかったんだ。");
 
-            //UpdateMainMessage("アイン：お前がもし、俺のそういう側面を知ってしまえば・・・");
+            messageList.Add("アイン：お前がもし、俺のそういう側面を知ってしまえば・・・");
 
-            //UpdateMainMessage("アイン：俺の前から・・・居なくなるんじゃないかって・・・");
+            messageList.Add("アイン：俺の前から・・・居なくなるんじゃないかって・・・");
 
-            //UpdateMainMessage("ラナ：力量に差が出てきたら、私がアインから離れていく。そう考えたって事？");
+            messageList.Add("ラナ：力量に差が出てきたら、私がアインから離れていく。そう考えたって事？");
 
-            //UpdateMainMessage("アイン：・・・ああ・・・");
+            messageList.Add("アイン：・・・ああ・・・");
 
-            //UpdateMainMessage("ラナ：・・・　・・・");
+            messageList.Add("ラナ：・・・　・・・");
 
-            //UpdateMainMessage("ラナ：ッフ、ッフフ♪　なーに言ってんのかしら、バッカじゃないのアンタ！？");
+            messageList.Add("ラナ：ッフ、ッフフ♪　なーに言ってんのかしら、バッカじゃないのアンタ！？");
 
-            //UpdateMainMessage("ラナ：力量なんて・・・そもそもアンタに私が追いつけるワケないでしょ！？");
+            messageList.Add("ラナ：力量なんて・・・そもそもアンタに私が追いつけるワケないでしょ！？");
 
-            //UpdateMainMessage("アイン：ラ、ラナ・・・");
+            messageList.Add("アイン：ラ、ラナ・・・");
 
-            //UpdateMainMessage("ラナ：何よそれ・・・失礼しちゃうわよホント。アンタの実力ってどんだけなのよ本当。");
+            messageList.Add("ラナ：何よそれ・・・失礼しちゃうわよホント。アンタの実力ってどんだけなのよ本当。");
 
-            //UpdateMainMessage("ラナ：隠すとか隠さないとか・・・くだらない事ばっかり考えて・・・");
+            messageList.Add("ラナ：隠すとか隠さないとか・・・くだらない事ばっかり考えて・・・");
 
-            //UpdateMainMessage("ラナ：隠さなきゃいけないレベルになっちゃってる、そう言いたいわけ！？");
+            messageList.Add("ラナ：隠さなきゃいけないレベルになっちゃってる、そう言いたいわけ！？");
 
-            //UpdateMainMessage("アイン：うっ・・・");
+            messageList.Add("アイン：うっ・・・");
 
-            //UpdateMainMessage("ラナ：あの練習内容の異次元みたいなスピードから察するに、そういう事よね！？");
+            messageList.Add("ラナ：あの練習内容の異次元みたいなスピードから察するに、そういう事よね！？");
 
-            //UpdateMainMessage("ラナ：私なんかじゃ。。。絶対にあんなの出来っこないもん。。。");
+            messageList.Add("ラナ：私なんかじゃ。。。絶対にあんなの出来っこないもん。。。");
 
-            //UpdateMainMessage("アイン：いや、今は出来なくとも・・・");
+            messageList.Add("アイン：いや、今は出来なくとも・・・");
 
-            //UpdateMainMessage("ラナ：そんな風に気を使わないで。　私、自分の事は分かってるつもりだから。");
+            messageList.Add("ラナ：そんな風に気を使わないで。　私、自分の事は分かってるつもりだから。");
 
-            //UpdateMainMessage("ラナ：・・・　・・・");
+            messageList.Add("ラナ：・・・　・・・");
 
-            //UpdateMainMessage("アイン：・・・　・・・");
+            messageList.Add("アイン：・・・　・・・");
 
-            //UpdateMainMessage("ラナ：ッフフ・・・おかしいわね。昔の小さい頃のアインってさ、すごく弱かったし。");
+            messageList.Add("ラナ：ッフフ・・・おかしいわね。昔の小さい頃のアインってさ、すごく弱かったし。");
 
-            //UpdateMainMessage("ラナ：いっつも泣いてばっかり。で、私がいっつも守ってあげてたのに・・・");
+            messageList.Add("ラナ：いっつも泣いてばっかり。で、私がいっつも守ってあげてたのに・・・");
 
-            //UpdateMainMessage("ラナ：いつの間にそんなに腕を上げちゃってたのかしら、信じられないわ本当。");
+            messageList.Add("ラナ：いつの間にそんなに腕を上げちゃってたのかしら、信じられないわ本当。");
 
-            //UpdateMainMessage("アイン：ッハハ・・・あったな、そういやそんな事も・・・");
+            messageList.Add("アイン：ッハハ・・・あったな、そういやそんな事も・・・");
 
-            //UpdateMainMessage("ラナ：・・・　・・・");
+            messageList.Add("ラナ：・・・　・・・");
 
-            //UpdateMainMessage("アイン：・・・　・・・");
+            messageList.Add("アイン：・・・　・・・");
 
-            //UpdateMainMessage("ラナ：いいわ、アイン。");
+            messageList.Add("ラナ：いいわ、アイン。");
 
-            //UpdateMainMessage("ラナ：アインが私に対して、変に気を使ってた事は許してあげる。");
+            messageList.Add("ラナ：アインが私に対して、変に気を使ってた事は許してあげる。");
 
-            //UpdateMainMessage("アイン：わ・・・悪かったな、マジで。");
+            messageList.Add("アイン：わ・・・悪かったな、マジで。");
 
-            //UpdateMainMessage("アイン：これからは・・・そうだな、あまり気を使わずに・・・。");
+            messageList.Add("アイン：これからは・・・そうだな、あまり気を使わずに・・・。");
 
-            //UpdateMainMessage("ラナ：あっ、そぉーーーだ！！！");
+            messageList.Add("ラナ：あっ、そぉーーーだ！！！");
 
-            //UpdateMainMessage("アイン：うお！？なんだいきなり！？");
+            messageList.Add("アイン：うお！？なんだいきなり！？");
 
-            //UpdateMainMessage("ラナ：今、良い事思いついちゃった♪");
+            messageList.Add("ラナ：今、良い事思いついちゃった♪");
 
-            //UpdateMainMessage("ラナ：バカアイン、今から言うのは命令よ。ちゃんと聞きなさいよね。");
+            messageList.Add("ラナ：バカアイン、今から言うのは命令よ。ちゃんと聞きなさいよね。");
 
-            //UpdateMainMessage("アイン：な、何だ？");
+            messageList.Add("アイン：な、何だ？");
 
-            //UpdateMainMessage("ラナ：私、今ここでアインにDUEL決闘を申し込むわ。");
+            messageList.Add("ラナ：私、今ここでアインにDUEL決闘を申し込むわ。");
 
-            //UpdateMainMessage("アイン：な！！！");
+            messageList.Add("アイン：な！！！");
 
-            //UpdateMainMessage("ラナ：で、条件を一つ付け加えるわ。聞きなさい。");
+            messageList.Add("ラナ：で、条件を一つ付け加えるわ。聞きなさい。");
 
-            //UpdateMainMessage("アイン：な、何だその条件ってのは？");
+            messageList.Add("アイン：な、何だその条件ってのは？");
 
-            //UpdateMainMessage("ラナ：あんた今度こそ本当に、今この場で手加減せずに私に挑んでもらうわよ。");
+            messageList.Add("ラナ：あんた今度こそ本当に、今この場で手加減せずに私に挑んでもらうわよ。");
 
-            //UpdateMainMessage("ラナ：それが絶対の条件よ。どう？");
+            messageList.Add("ラナ：それが絶対の条件よ。どう？");
 
-            //UpdateMainMessage("アイン：っぐ・・・");
+            messageList.Add("アイン：っぐ・・・");
 
-            //UpdateMainMessage("アイン：もし万が一手加減してたら・・・どうなる？");
+            messageList.Add("アイン：もし万が一手加減してたら・・・どうなる？");
 
-            //UpdateMainMessage("ラナ：その時は、私はアンタともうコンビは組まないわ。");
+            messageList.Add("ラナ：その時は、私はアンタともうコンビは組まないわ。");
 
-            //UpdateMainMessage("ラナ：手加減されてまで一緒に居たくないから。");
+            messageList.Add("ラナ：手加減されてまで一緒に居たくないから。");
 
-            //UpdateMainMessage("アイン：・・・分かった。");
+            messageList.Add("アイン：・・・分かった。");
 
-            //UpdateMainMessage("アイン：この一戦、絶対に手加減はしねえ。約束だ！");
+            messageList.Add("アイン：この一戦、絶対に手加減はしねえ。約束だ！");
 
-            //UpdateMainMessage("アイン：・・・あっ！ま、まてよ！？");
+            messageList.Add("アイン：・・・あっ！ま、まてよ！？");
 
-            //UpdateMainMessage("アイン：万が一それで、俺が勝ってしまったらどうなるんだ？");
+            messageList.Add("アイン：万が一それで、俺が勝ってしまったらどうなるんだ？");
 
-            //UpdateMainMessage("アイン：やっぱり・・・その時も・・・");
+            messageList.Add("アイン：やっぱり・・・その時も・・・");
 
-            //UpdateMainMessage("ラナ：・・・ップ");
+            messageList.Add("ラナ：・・・ップ");
 
-            //UpdateMainMessage("ラナ：ッフフフ、アーッハハハハ♪");
+            messageList.Add("ラナ：ッフフフ、アーッハハハハ♪");
 
-            //UpdateMainMessage("ラナ：何そんな心配してんのよ、大丈夫よ♪");
+            messageList.Add("ラナ：何そんな心配してんのよ、大丈夫よ♪");
 
-            //UpdateMainMessage("ラナ：手加減してない本気のアンタを見たいだけよ。");
+            messageList.Add("ラナ：手加減してない本気のアンタを見たいだけよ。");
 
-            //UpdateMainMessage("ラナ：アンタ基本的に勝って当然なんだから、またクダラナイ事考えないでよねホント♪");
+            messageList.Add("ラナ：アンタ基本的に勝って当然なんだから、またクダラナイ事考えないでよねホント♪");
 
-            //UpdateMainMessage("ラナ：（　どっちにしろ・・・本当に離れたりするわけ・・・　）");
+            messageList.Add("ラナ：（　どっちにしろ・・・本当に離れたりするわけ・・・　）");
 
-            //UpdateMainMessage("アイン：えっ・・・？");
+            messageList.Add("アイン：えっ・・・？");
 
-            //UpdateMainMessage("ラナ：ホーラホラホラホラ、じゃあ行くわよ。ちゃんと構えなさいよね♪");
+            messageList.Add("ラナ：ホーラホラホラホラ、じゃあ行くわよ。ちゃんと構えなさいよね♪");
 
-            //UpdateMainMessage("アイン：あ、ああ。ちょっと待ってくれな。");
+            messageList.Add("アイン：あ、ああ。ちょっと待ってくれな。");
 
-            //UpdateMainMessage("アイン：・・・よし、ＯＫだ。");
+            messageList.Add("アイン：・・・よし、ＯＫだ。");
 
-            //UpdateMainMessage("ラナ：私も良いわよ♪");
+            messageList.Add("ラナ：私も良いわよ♪");
 
-            //UpdateMainMessage("アイン：じゃあ、正真正銘の本気だ。手加減抜きで行くぜ！");
+            messageList.Add("アイン：じゃあ、正真正銘の本気だ。手加減抜きで行くぜ！");
 
-            //UpdateMainMessage("ラナ：始めるわよ、３");
+            messageList.Add("ラナ：始めるわよ、３");
 
-            //UpdateMainMessage("アイン：２");
+            messageList.Add("アイン：２");
 
-            //UpdateMainMessage("ラナ：１");
+            messageList.Add("ラナ：１");
 
-            //UpdateMainMessage("アイン：０！！");
+            messageList.Add("アイン：０！！");
 
+            messageList.Add(Database.ENEMY_LAST_RANA_AMILIA); eventList.Add(ActionEvent.HomeTownCallDuel);
             //bool failCount1 = false;
             //bool failCount2 = false;
             //while (true)
@@ -6964,25 +6872,19 @@ namespace DungeonPlayer
 
             //UpdateMainMessage("アイン：（行こう、ダンジョンへ）");
 
-            //// todo
-            ////this.targetDungeon = 1;
-            ////GroundOne.WE2.RealDungeonArea = 1;
-            ////GroundOne.WE2.SeekerEvent605 = true;
-            ////Method.AutoSaveTruthWorldEnvironment();
-            ////Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, null, null, null, null, null, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
-            ////this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            // todo
+            //this.targetDungeon = 1;
+            //GroundOne.WE2.RealDungeonArea = 1;
+            //GroundOne.WE2.SeekerEvent605 = true;
+            //Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+            //this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
         #endregion
         #region "ラナと会話"
         public static void Message40000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             // if (!we.AlreadyRest) // 1日目はアインが起きたばかりなので、本フラグを未使用とします。
-
-            // todo
-            //this.imgCharacter1.enabled = true;
-            //this.imgCharacter1.gameObject.SetActive(true); eventList.Add(ActionEvent.None);
-            //this.imgCharacter2.enabled = true;
-            //this.imgCharacter2.gameObject.SetActive(true); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：っあら、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
 
@@ -7018,7 +6920,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：全然脈略が無いじゃない。何よ、本当にそんなトコ行きたいわけ？"); eventList.Add(ActionEvent.None);
 
-            // todo after
+            // after
             //if (GroundOne.WE2.TruthBadEnd1)
             //{
             //    messageList.Add("アイン：まあ本当に行きたいとか言われてもなあ・・・"); eventList.Add(ActionEvent.None);
@@ -7071,7 +6973,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：確かポケットに入れたはず・・・"); eventList.Add(ActionEvent.None);
 
-            // todo after
+            // after
             //using (TruthDecision td = new TruthDecision())
             //{
             //    td.MainMessage = "　【　ラナにイヤリングを渡しますか？　】";
@@ -7101,7 +7003,7 @@ namespace DungeonPlayer
                 GroundOne.MC.SortByName();
                 GroundOne.WE.Truth_GiveLanaEarring = true;
             }
-            // todo after
+            // after
             //    else
             //    {
             //        if (GroundOne.WE2.TruthBadEnd1)
@@ -7192,935 +7094,918 @@ namespace DungeonPlayer
             messageList.Add("アイン：（でもまあ、ガンツ叔父さんの新しい武具生成か。楽しみだな。）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（モンスターから得られた部材・素材はガンツ叔父さんのトコへ持っていくとするか。）"); eventList.Add(ActionEvent.None);
-
         }
         
         public static void Message50001(ref List<string> messageList, ref List<ActionEvent> eventList)
-        { 
-            // todo
-            //if (!GroundOne.WE.MeetOlLandisBeforeGanz)
-            //{
-            //    UpdateMainMessage("アイン：こんちわー。");
+        {
+            if (!GroundOne.WE.MeetOlLandisBeforeGanz)
+            {
+                messageList.Add("アイン：こんちわー。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ。");
+                messageList.Add("ガンツ：アインよ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：は、はい。なんでしょう？");
+                messageList.Add("アイン：は、はい。なんでしょう？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：オルが挨拶に来ておったぞ。");
+                messageList.Add("ガンツ：オルが挨拶に来ておったぞ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：は、ハハハ・・・そうでしたか。そいつは良かったですね。");
+                messageList.Add("アイン：は、ハハハ・・・そうでしたか。そいつは良かったですね。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ。");
+                messageList.Add("ガンツ：アインよ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：は、はいハイ！");
+                messageList.Add("アイン：は、はいハイ！"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：精進しなさい。");
+                messageList.Add("ガンツ：精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハイ！！！じゃあ、これで失礼いたします。");
+                messageList.Add("アイン：ハイ！！！じゃあ、これで失礼いたします。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("　　（ッバタン・・・）");
+                messageList.Add("　　（ッバタン・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（はあ・・・先回りされてるじゃねえか・・・）");
+                messageList.Add("アイン：（はあ・・・先回りされてるじゃねえか・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（しょうがねえ、もう闘技場へ行くしかねえみてえだな。）", true);
-            //    GroundOne.WE.MeetOlLandisBeforeGanz = true;
-            //}
-            //else
-            //{
-            //    UpdateMainMessage("アイン：（しょうがねえ、もう闘技場へ行くしかねえみてえだな。）", true);
-            //}
+                messageList.Add("アイン：（しょうがねえ、もう闘技場へ行くしかねえみてえだな。）"); eventList.Add(ActionEvent.None);
+                GroundOne.WE.MeetOlLandisBeforeGanz = true;
+            }
+            else
+            {
+                messageList.Add("アイン：（しょうがねえ、もう闘技場へ行くしかねえみてえだな。）"); eventList.Add(ActionEvent.None);
+            }
         }
 
         public static void Message50002(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
-            //if (!GroundOne.WE.AlreadyEquipShop)
-            //{
-            //    UpdateMainMessage("アイン：こんちわー。");
+            messageList.Add("アイン：こんちわー。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アイン。２階へ向かうようだな。");
+            messageList.Add("ガンツ：アイン。２階へ向かうようだな。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：あ、ええ。今日からそのつもりです。");
+            messageList.Add("アイン：あ、ええ。今日からそのつもりです。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：ならば、これでも持って行くと良いだろう。");
+            messageList.Add("ガンツ：ならば、これでも持って行くと良いだろう。"); eventList.Add(ActionEvent.None);
 
-            //    CallSomeMessageWithAnimation("アインは" + Database.POOR_PRACTICE_SWORD_ZERO + "を手に入れた。");
+            messageList.Add("アインは" + Database.POOR_PRACTICE_SWORD_ZERO + "を手に入れた。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            //    UpdateMainMessage("アイン：これは・・・練習用の剣？");
+            messageList.Add("アイン：これは・・・練習用の剣？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：その武器には特殊な効果が封じ込められておる。");
+            messageList.Add("ガンツ：その武器には特殊な効果が封じ込められておる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：そうなんですか？");
+            messageList.Add("アイン：そうなんですか？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：ワシなりに考えてみたが、アインよ。");
+            messageList.Add("ガンツ：ワシなりに考えてみたが、アインよ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハイ。");
+            messageList.Add("アイン：ハイ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：・・・いや、お前なりに使ってみると良い。");
+            messageList.Add("ガンツ：・・・いや、お前なりに使ってみると良い。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：えっと、どういう事でしょうか？");
+            messageList.Add("アイン：えっと、どういう事でしょうか？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ、精進しなさい。");
+            messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：あっと、ハイ！ありがとうございました！！");
+            messageList.Add("アイン：あっと、ハイ！ありがとうございました！！"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞");
+            messageList.Add("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（どうみてもこれは単なる練習用の剣だが・・・）");
+            messageList.Add("アイン：（どうみてもこれは単なる練習用の剣だが・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（・・・いや、そんなわけがねえよな）");
+            messageList.Add("アイン：（・・・いや、そんなわけがねえよな）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（っしゃ、せっかくなんだし、使ってみるとするか！）");
+            messageList.Add("アイン：（っしゃ、せっかくなんだし、使ってみるとするか！）"); eventList.Add(ActionEvent.None);
 
-            //    GetItemFullCheck(GroundOne.MC, Database.POOR_PRACTICE_SWORD_ZERO);
+            GroundOne.MC.AddBackPack(new ItemBackPack(Database.POOR_PRACTICE_SWORD_ZERO));
 
-            //    GroundOne.WE.Truth_CommunicationGanz21 = true;
-            //    GroundOne.WE.AlreadyEquipShop = true;
-            //}
-            //else
-            //{
-            //    CallEquipmentShop();
-            //    mainMessage.text = "";
-            //}
+            GroundOne.WE.Truth_CommunicationGanz21 = true;
+            GroundOne.WE.AlreadyEquipShop = true;
         }
 
         public static void Message50003(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
-            //UpdateMainMessage("アイン：どうも、こんちわー");
+            messageList.Add("アイン：どうも、こんちわー"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ、ちょっとこちらへ来なさい。");
+            messageList.Add("ガンツ：アインよ、ちょっとこちらへ来なさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ッゲ、何でしょう？");
+            messageList.Add("アイン：ッゲ、何でしょう？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：心配はいらん。少しの間だけだ。");
+            messageList.Add("ガンツ：心配はいらん。少しの間だけだ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：はい。それじゃ・・・");
+            messageList.Add("アイン：はい。それじゃ・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（あれ、この道って、ダンジョンゲートへ行くつもりか？）");
+            messageList.Add("アイン：（あれ、この道って、ダンジョンゲートへ行くつもりか？）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("---- ダンジョンゲート裏の広場にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            //UpdateMainMessage("ガンツ：着いたな。");
+            messageList.Add("ガンツ：着いたな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：えっと、すいません質問なんですけど？");
+            messageList.Add("アイン：えっと、すいません質問なんですけど？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：なんだね。");
+            messageList.Add("ガンツ：なんだね。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：こんな裏広場まで来て一体何を？");
+            messageList.Add("アイン：こんな裏広場まで来て一体何を？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：・・・アインよ、こちらへ来てみなさい。");
+            messageList.Add("ガンツ：・・・アインよ、こちらへ来てみなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ん？これは・・・変な円紋が・・・");
+            messageList.Add("アイン：ん？これは・・・変な円紋が・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：空間転移装置、聞いた事ぐらいはあるだろう。");
+            messageList.Add("ガンツ：空間転移装置、聞いた事ぐらいはあるだろう。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：マジっすか！？これが・・・へえええぇぇぇ！！");
+            messageList.Add("アイン：マジっすか！？これが・・・へえええぇぇぇ！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：え？　ってかどこかに行くつもりなんですか？");
+            messageList.Add("アイン：え？　ってかどこかに行くつもりなんですか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　ドン！！ （アインは突然突き飛ばされた）");
+            messageList.Add("　　ドン！！ （アインは突然突き飛ばされた）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：あ！っちょ！！　っちょちょ！！");
+            messageList.Add("アイン：あ！っちょ！！　っちょちょ！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ、精進なさい。");
+            messageList.Add("ガンツ：アインよ、精進なさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　ッバシュウウゥゥゥゥン");
+            messageList.Add("　　ッバシュウウゥゥゥゥン"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アインは別の場所へと飛ばされてしまった"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            messageList.Add(Database.Message_GoToAnotherField); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            //// todo
-            ////this.buttonHanna.Visible = false;
-            ////this.buttonDungeon.Visible = false;
-            ////this.buttonRana.Visible = false;
-            ////this.buttonGanz.Visible = false;
-            ////this.buttonPotion.Visible = false;
-            ////this.buttonDuel.Visible = false;
-            //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
-            ////this.Invalidate();
+            messageList.Add("アイン：っいで！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：っいで！");
+            messageList.Add("アイン：ッテテテ・・・体勢が悪かったせいか、放り出されちまった。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ッテテテ・・・体勢が悪かったせいか、放り出されちまった。");
+            messageList.Add("アイン：ったく・・・行き先ぐらい教えてくれてもいいのに。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ったく・・・行き先ぐらい教えてくれてもいいのに。");
+            messageList.Add("？？？：貴君が、アイン・ウォーレンスか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：貴君が、アイン・ウォーレンスか？");
+            messageList.Add("アイン：え？あ、あぁそうだが・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：え？あ、あぁそうだが・・・");
+            messageList.Add("アイン：って、おわぁぁ！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：って、おわぁぁ！！");
+            messageList.Add("　　　『相手の顔の右目がギョロっと動いている』"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　　『相手の顔の右目がギョロっと動いている』");
+            messageList.Add("アイン：ビックリしたなあ・・・擬眼かよ"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ビックリしたなあ・・・擬眼かよ");
+            messageList.Add("アイン：えっと・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：えっと・・・");
+            messageList.Add("？？？：どれ、少し見せてもらうぞ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：どれ、少し見せてもらうぞ。");
+            messageList.Add("　　　『擬眼がギョロリと動きはじめた！』"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　　『擬眼がギョロリと動きはじめた！』");
+            messageList.Add("アイン：何かこええなあ・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：何かこええなあ・・・");
+            messageList.Add("？？？：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：・・・　・・・　・・・");
+            messageList.Add("？？？：スペル属性『聖  火  理』　それに"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：スペル属性『聖  火  理』　それに");
+            messageList.Add("？？？：スキル属性『動  剛  心眼』か。　なるほど。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：スキル属性『動  剛  心眼』か。　なるほど。");
+            messageList.Add("アイン：なっ！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：なっ！！");
+            messageList.Add("？？？：大胆な攻撃スタイル、それに繊細な戦術をいくつか。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：大胆な攻撃スタイル、それに繊細な戦術をいくつか。");
+            messageList.Add("？？？：挑発には意図的に挑む方だが、肝心な面はいつも冷静"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：挑発には意図的に挑む方だが、肝心な面はいつも冷静");
+            messageList.Add("？？？：物理攻撃だけでなく、魔法にも長ける。全体的なオールラウンダー"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：物理攻撃だけでなく、魔法にも長ける。全体的なオールラウンダー");
+            messageList.Add("？？？：直感で『決まり』と判断すれば、一気に仕掛けるタイプ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：直感で『決まり』と判断すれば、一気に仕掛けるタイプ。");
+            messageList.Add("？？？：ッフハハ、面白い。　ランディスもああ見えて教え好きだ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：ッフハハ、面白い。　ランディスもああ見えて教え好きだ。");
+            messageList.Add("アイン：し、師匠を知ってるのか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：し、師匠を知ってるのか？");
+            messageList.Add("　　　『擬眼が更にギョロリと動いた！』"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　　『擬眼が更にギョロリと動いた！』");
+            messageList.Add("？？？：しかし、敵を全力で潰しにいかず、様子見の面が強い。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：しかし、敵を全力で潰しにいかず、様子見の面が強い。");
+            messageList.Add("？？？：一人で次々と倒そうとするより、チーム連携を考慮して動くタイプ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：一人で次々と倒そうとするより、チーム連携を考慮して動くタイプ。");
+            messageList.Add("？？？：本来なら一人で出来る素質もあるが、表には決して見せない。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：本来なら一人で出来る素質もあるが、表には決して見せない。");
+            messageList.Add("？？？：なるほど、何か特定の事柄を意識しているな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：なるほど、何か特定の事柄を意識しているな。");
+            messageList.Add("？？？：この手抜き加減・・・驕りではなく、無意識的にかあるいは。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：この手抜き加減・・・驕りではなく、無意識的にかあるいは。");
+            messageList.Add("？？？：たしかに、このままでは致命的な敗北は間逃れんな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：たしかに、このままでは致命的な敗北は間逃れんな。");
+            messageList.Add("アイン：い、いやいやいや・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：い、いやいやいや・・・");
+            messageList.Add("アイン：（ってか、さっきから妙にこの感覚・・・）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（ってか、さっきから妙にこの感覚・・・）");
+            messageList.Add("　　【【【　アインは背筋に異常な恐怖感を覚えている。　】】】"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　【【【　アインは背筋に異常な恐怖感を覚えている。　】】】");
+            messageList.Add("アイン：（あのボケ師匠じゃねえけど、ちょっと違った怖さがある・・・）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（あのボケ師匠じゃねえけど、ちょっと違った怖さがある・・・）");
+            messageList.Add("アイン：（支配、制圧・・・そんな感じか）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（支配、制圧・・・そんな感じか）");
+            messageList.Add("アイン：あんた、一体誰なんだよ？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：あんた、一体誰なんだよ？");
+            messageList.Add("？？？：この距離感を一定に保つあたり、警戒心は貴君なりに最大というわけだな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：この距離感を一定に保つあたり、警戒心は貴君なりに最大というわけだな。");
+            messageList.Add("？？？：だが我の射程、貴君の想像を遥かに超えている。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：だが我の射程、貴君の想像を遥かに超えている。");
+            messageList.Add("アイン：っな！！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：っな！！！");
+            messageList.Add("　　【【【　アインは膨大な汗を体中に感じた。　】】】"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　【【【　アインは膨大な汗を体中に感じた。　】】】");
+            messageList.Add("アイン：（ッヤ、ヤベェ・・・何かヤベェ・・・！！！）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（ッヤ、ヤベェ・・・何かヤベェ・・・！！！）");
+            messageList.Add("アイン：って、ってか、そろそろ正体を教えろよ！？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：って、ってか、そろそろ正体を教えろよ！？");
+            messageList.Add("アイン：アンタ、敵じゃないんだろ！？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：アンタ、敵じゃないんだろ！？");
+            messageList.Add("？？？：この辺が頃合いか。逃げられても困る。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：この辺が頃合いか。逃げられても困る。");
+            messageList.Add("？？？：我の名は『シニキア・カールハンツ』である。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("？？？：我の名は『シニキア・カールハンツ』である。");
+            messageList.Add("　　『アインは汗がスゥっと引いていくのを感じた。』"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　『アインは汗がスゥっと引いていくのを感じた。』");
+            messageList.Add("アイン：（ッホ・・・なんだったんだ今のは・・・）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（ッホ・・・なんだったんだ今のは・・・）");
+            messageList.Add("アイン：・・・はじめまして、アインと言います。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：・・・はじめまして、アインと言います。");
+            messageList.Add("アイン：って、シニキアってまさか、伝説のFiveSeeker！！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：って、シニキアってまさか、伝説のFiveSeeker！！！");
+            messageList.Add("カール：伝説のFiveSeekerなどという恥ずかしい通り名は止めてもらおう。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：伝説のFiveSeekerなどという恥ずかしい通り名は止めてもらおう。");
+            messageList.Add("カール：我はカールとでも呼べばよい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：我はカールとでも呼べばよい。");
+            messageList.Add("アイン：はい・・・えっと、じゃあのカールさん。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：はい・・・えっと、じゃあのカールさん。");
+            messageList.Add("アイン：ガンツ叔父さんは何でここへ俺を？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ガンツ叔父さんは何でここへ俺を？");
+            messageList.Add("カール：貴君を鍛えるよう言われている。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：貴君を鍛えるよう言われている。");
+            messageList.Add("アイン：俺をですか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：俺をですか？");
+            messageList.Add("カール：そうだ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：そうだ。");
+            messageList.Add("カール：我の場合、鍛える方法は戦闘訓練ではない。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：我の場合、鍛える方法は戦闘訓練ではない。");
+            messageList.Add("カール：行動よりもまず理論。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：行動よりもまず理論。");
+            messageList.Add("カール：貴君にはそれが欠けている。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：貴君にはそれが欠けている。");
+            messageList.Add("アイン：えっと・・・具体的には何を？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：えっと・・・具体的には何を？");
+            messageList.Add("カール：我の言う事、すべてを記憶せよ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：我の言う事、すべてを記憶せよ。");
+            messageList.Add("アイン：記憶！？　暗記しろって事ですか！？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：記憶！？　暗記しろって事ですか！？");
+            messageList.Add("カール：そうだ。では行くぞ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：そうだ。では行くぞ。");
+            messageList.Add("　　　『カールの講義が延々と小一時間続いたのち・・・』"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　　『カールの講義が延々と小一時間続いたのち・・・』");
+            messageList.Add("カール：複合魔法の基礎に関しては、以上だ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：複合魔法の基礎に関しては、以上だ。");
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：・・・");
-
-            //UpdateMainMessage("　　　ッバタ・・・（アインはその場で静かに落ちた）");
+            messageList.Add("　　　ッバタ・・・（アインはその場で静かに落ちた）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アインは複合魔法・スキルの基礎を習得した！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-            //GroundOne.WE.AvailableMixSpellSkill = true;
-            //GroundOne.WE2.AvailableMixSpellSkill = true;
 
-            //UpdateMainMessage("カール：どうした。まだまだ先は長いぞ。");
+            GroundOne.WE.AvailableMixSpellSkill = true;
+            GroundOne.WE2.AvailableMixSpellSkill = true;
 
-            //UpdateMainMessage("アイン：無理・・・こういうのは駄目だ・・・");
+            messageList.Add("カール：どうした。まだまだ先は長いぞ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：なあ、ちょっとでも良いからよ。実践で教えてくれよ？");
+            messageList.Add("アイン：無理・・・こういうのは駄目だ・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：駄目だ。");
+            messageList.Add("アイン：なあ、ちょっとでも良いからよ。実践で教えてくれよ？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：要は、聖と火を組み合わせるって事なんだろ？");
+            messageList.Add("カール：駄目だ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：違うな。");
+            messageList.Add("アイン：要は、聖と火を組み合わせるって事なんだろ？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：具体的に一回だけ見せてくれよ・・・");
+            messageList.Add("カール：違うな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：駄目だ。");
+            messageList.Add("アイン：具体的に一回だけ見せてくれよ・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：火と聖って相性が良いって事なんだろ？");
+            messageList.Add("カール：駄目だ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：違うな。");
+            messageList.Add("アイン：火と聖って相性が良いって事なんだろ？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：聖と闇は反対・・・みたいな？");
+            messageList.Add("カール：違うな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：違うな。");
+            messageList.Add("アイン：聖と闇は反対・・・みたいな？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：カール先生、一回だけ頼むぜ！");
+            messageList.Add("カール：違うな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：駄目だ。");
+            messageList.Add("アイン：カール先生、一回だけ頼むぜ！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：トホホ・・・");
+            messageList.Add("カール：駄目だ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：心配か？");
+            messageList.Add("アイン：トホホ・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：え？そりゃまあ、やってみた方が覚えるのも早いし");
+            messageList.Add("カール：心配か？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：イメージの基本は、習得した知識から来る。");
+            messageList.Add("アイン：え？そりゃまあ、やってみた方が覚えるのも早いし"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：具現化の展開は、それぞれの知恵から派生して成る。");
+            messageList.Add("カール：イメージの基本は、習得した知識から来る。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ん、ま、まあなんとなくその辺は・・・");
+            messageList.Add("カール：具現化の展開は、それぞれの知恵から派生して成る。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：心配するな。貴君はすでに習得したも同然だ。");
+            messageList.Add("アイン：ん、ま、まあなんとなくその辺は・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：え！？　そんな、１回も確認してないですけど？");
+            messageList.Add("カール：心配するな。貴君はすでに習得したも同然だ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：誰に教えを乞うたと思っておる。我を愚弄するか？");
+            messageList.Add("アイン：え！？　そんな、１回も確認してないですけど？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：い、いやいや！そんなつもりじゃございません！！");
+            messageList.Add("カール：誰に教えを乞うたと思っておる。我を愚弄するか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("カール：まあよい。空間転移装置を復活させておいた。帰るが良い。");
+            messageList.Add("アイン：い、いやいや！そんなつもりじゃございません！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ハイ・・・どうもありがとうございました。");
+            messageList.Add("カール：まあよい。空間転移装置を復活させておいた。帰るが良い。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　ッバシュウウゥゥゥゥン");
+            messageList.Add("アイン：ハイ・・・どうもありがとうございました。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アインはダンジョンゲートの裏広場に戻ってきた"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            messageList.Add("　　ッバシュウウゥゥゥゥン"); eventList.Add(ActionEvent.None);
 
-            //if (!GroundOne.WE.AlreadyRest)
-            //{
-            //    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
-            //}
-            //else
-            //{
-            //    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-            //}
-            //// todo
-            ////this.buttonHanna.Visible = true;
-            ////this.buttonDungeon.Visible = true;
-            ////this.buttonRana.Visible = true;
-            ////this.buttonGanz.Visible = true;
-            ////this.buttonPotion.Visible = true;
-            ////this.buttonDuel.Visible = true;
+            messageList.Add(Database.Message_GoToAnotherField_Back); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
+            messageList.Add("ガンツ：どうだったかね。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：どうだったかね。");
+            messageList.Add("アイン：どうも何も・・・すげえ疲れました。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：どうも何も・・・すげえ疲れました。");
+            messageList.Add("ガンツ：そうかね。では戻るとしよう。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：そうかね。では戻るとしよう。");
+            messageList.Add("アイン：はい・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：はい・・・");
-
-            //UpdateMainMessage("アイン：（ガンツ叔父さんもこう見えて、強引だよな・・・）");
+            messageList.Add("アイン：（ガンツ叔父さんもこう見えて、強引だよな・・・）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アインはガンツの武具屋まで戻ってきた"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            //UpdateMainMessage("ガンツ：では、ワシはこれで。");
+            messageList.Add("ガンツ：では、ワシはこれで。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：おじさん、ちょっと質問が");
+            messageList.Add("アイン：おじさん、ちょっと質問が"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：何だね。");
+            messageList.Add("ガンツ：何だね。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：あの転移された場所ってどこら辺なんですか？");
+            messageList.Add("アイン：あの転移された場所ってどこら辺なんですか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：それはカール爵の希望により答えられん。");
+            messageList.Add("ガンツ：それはカール爵の希望により答えられん。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：そうなのか・・・いや、何か見たことある場所な気もしたんで");
+            messageList.Add("アイン：そうなのか・・・いや、何か見たことある場所な気もしたんで"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：なに、お主も良く知っておる場所よ。");
+            messageList.Add("ガンツ：なに、お主も良く知っておる場所よ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：そうなんですか？　う～ん・・・");
+            messageList.Add("アイン：そうなんですか？　う～ん・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：まあ、良いや。おじさん、ありがとうございました！");
+            messageList.Add("アイン：まあ、良いや。おじさん、ありがとうございました！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：うむ、精進せいよ。");
+            messageList.Add("ガンツ：うむ、精進せいよ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　　『ガンツは店の中へと戻っていった・・・』");
+            messageList.Add("　　　『ガンツは店の中へと戻っていった・・・』"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：何かグダグダに疲れた気もするが・・・");
+            messageList.Add("アイン：何かグダグダに疲れた気もするが・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：複合か・・・俺にも出来るようになるといいな");
+            messageList.Add("アイン：複合か・・・俺にも出来るようになるといいな"); eventList.Add(ActionEvent.None);
         }
 
         public static void Message50004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if ((GroundOne.MC.Level >= 21) && (!GroundOne.MC.FlashBlaze))
             {
-                // todo
-                //UpdateMainMessage("アイン：どうも、こんちわー");
+                messageList.Add("アイン：どうも、こんちわー"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：アインよ、ちょっとこちらへ。");
+                messageList.Add("ガンツ：アインよ、ちょっとこちらへ。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：あ、はい何でしょう？");
+                messageList.Add("アイン：あ、はい何でしょう？"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：以前から見て、また少し強くなったと見えるな。");
+                messageList.Add("ガンツ：以前から見て、また少し強くなったと見えるな。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：いやいや、それほどでもありませんが・・・");
+                messageList.Add("アイン：いやいや、それほどでもありませんが・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：カール爵の所へ行って来なさい。");
+                messageList.Add("ガンツ：カール爵の所へ行って来なさい。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：ッゲ、またですか！？");
+                messageList.Add("アイン：ッゲ、またですか！？"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：何を言っておるアイン、お主なら複合系など容易いだろう。");
+                messageList.Add("ガンツ：何を言っておるアイン、お主なら複合系など容易いだろう。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：う～ん・・・あの人苦手なんだよなあ・・・");
+                messageList.Add("アイン：う～ん・・・あの人苦手なんだよなあ・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：アインよ、精進しに行ってきなさい。");
+                messageList.Add("ガンツ：アインよ、精進しに行ってきなさい。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：ハイ・・・");
+                messageList.Add("アイン：ハイ・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("---- ダンジョンゲート裏の広場にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-                //UpdateMainMessage("アイン：えっと、確かこの辺だったな・・・");
+                messageList.Add("アイン：えっと、確かこの辺だったな・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：オッケー、発見発見っと！");
+                messageList.Add("アイン：オッケー、発見発見っと！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：っしゃ、早速転送してもらおうか！");
+                messageList.Add("アイン：っしゃ、早速転送してもらおうか！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("　　ッバシュウウゥゥゥゥン");
+                messageList.Add("　　ッバシュウウゥゥゥゥン"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アインは別の場所へと飛ばされてしまった"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+                messageList.Add(Database.Message_GoToAnotherField); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-                ////this.buttonHanna.Visible = false;
-                ////this.buttonDungeon.Visible = false;
-                ////this.buttonRana.Visible = false;
-                ////this.buttonGanz.Visible = false;
-                ////this.buttonPotion.Visible = false;
-                ////this.buttonDuel.Visible = false;
-                //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
+                messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：っとと・・・着いたみたいだな");
+                messageList.Add("アイン：えっと・・・カールハンツ爵はどこに・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：えっと・・・カールハンツ爵はどこに・・・");
+                messageList.Add("カール：ココだ。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：ココだ。");
+                messageList.Add("アイン：って、おわぁぁ！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：って、おわぁぁ！！");
+                messageList.Add("　　　『カール爵は突然見たこともないファイアボールを放ってきた！』"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("　　　『カール爵は突然見たこともないファイアボールを放ってきた！』");
+                messageList.Add("アイン：ッゲ！！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：ッゲ！！！");
+                messageList.Add("　　　『アインはとっさの判断で身をかわした』"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("　　　『アインはとっさの判断で身をかわした』");
+                messageList.Add("カール：ホラホラホラ！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：ホラホラホラ！");
+                messageList.Add("　　　『カール爵は次々と魔法の弾丸を撃ち込んできている！！』"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("　　　『カール爵は次々と魔法の弾丸を撃ち込んできている！！』");
+                messageList.Add("アイン：っおわ！！っちょっちょ！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：っおわ！！っちょっちょ！！");
+                messageList.Add("　　　『アインは５発のファイアボールらしき弾丸を何とか回避しきった』"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("　　　『アインは５発のファイアボールらしき弾丸を何とか回避しきった』");
+                messageList.Add("アイン：ッタタ、タンマタンマ！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：ッタタ、タンマタンマ！！");
+                messageList.Add("アイン：あのボケ師匠も大概だけど、あんたも無茶苦茶だないきなり・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：あのボケ師匠も大概だけど、あんたも無茶苦茶だないきなり・・・");
+                messageList.Add("カール：ッフハハ、そうとは言えしっかりと回避してるようだが。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：ッフハハ、そうとは言えしっかりと回避してるようだが。");
+                messageList.Add("アイン：そりゃ、こんなもん一回一回食らってたらキリが無いだろ。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：そりゃ、こんなもん一回一回食らってたらキリが無いだろ。");
+                messageList.Add("カール：転送装置先では、敵が待ち構えてる場合も多い。気を付けるのだな。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：転送装置先では、敵が待ち構えてる場合も多い。気を付けるのだな。");
+                messageList.Add("アイン：（ググ・・・この人やっぱり敵なんじゃ・・・）"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：（ググ・・・この人やっぱり敵なんじゃ・・・）");
+                messageList.Add("アイン：というか、見たこと無い魔法だったが・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：というか、見たこと無い魔法だったが・・・");
+                messageList.Add("アイン：ひょっとして今のが！？"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：ひょっとして今のが！？");
+                messageList.Add("カール：聖と火の複合魔法「フラッシュ・ブレイズ」だ。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：聖と火の複合魔法「フラッシュ・ブレイズ」だ。");
+                messageList.Add("カール：やってみるが良い。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：やってみるが良い。");
+                messageList.Add("アイン：い、いきなりですか！？"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：い、いきなりですか！？");
+                messageList.Add("カール：先の教え、覚えておるだろう。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：先の教え、覚えておるだろう。");
+                messageList.Add("カール：教えの通りにやると良い、貴君は習得済みであると言ったハズだ。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：教えの通りにやると良い、貴君は習得済みであると言ったハズだ。");
+                messageList.Add("アイン：そ・・・そうかなあ・・・じゃあ・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：そ・・・そうかなあ・・・じゃあ・・・");
+                messageList.Add("　　　『アインは魔法詠唱の構えを始めた』"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("　　　『アインは魔法詠唱の構えを始めた』");
+                messageList.Add("アイン：（こう・・・火に明かりを添えるようにして・・・）"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：（こう・・・火に明かりを添えるようにして・・・）");
+                messageList.Add("　　　ッバシュ！！　　　"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("　　　ッバシュ！！　　　");
+                messageList.Add("アイン：ッゲ！！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：ッゲ！！！");
+                messageList.Add("カール：まだまだだが、ひとまず出せたようだな。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：まだまだだが、ひとまず出せたようだな。");
+                messageList.Add("アイン：っそ、そんな本当に１回目で・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：っそ、そんな本当に１回目で・・・");
+                messageList.Add("カール：驚いたか。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：驚いたか。");
+                messageList.Add("アイン：す・・・スゲェぜ！！　これ！！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：す・・・スゲェぜ！！　これ！！！");
+                messageList.Add("カール：直感と感性で習得してきた貴君にとっては、新鮮な感覚であろう。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：直感と感性で習得してきた貴君にとっては、新鮮な感覚であろう。");
+                messageList.Add("アイン：・・・あの講義のおかげですかね？"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：・・・あの講義のおかげですかね？");
+                messageList.Add("カール：当然だ。ずいぶんと無礼な質問だな。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：当然だ。ずいぶんと無礼な質問だな。");
+                messageList.Add("アイン：いやいやいや！スンマセンでした！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：いやいやいや！スンマセンでした！！");
+                messageList.Add("カール：今回はここまでだな、また来ると良い。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("カール：今回はここまでだな、また来ると良い。");
+                messageList.Add("アイン：ホントどうもありがとうございました！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：ホントどうもありがとうございました！");
+                GroundOne.MC.FlashBlaze = true;
 
-                //GroundOne.MC.FlashBlaze = true;
-                //ShowActiveSkillSpell(GroundOne.MC, Database.FLASH_BLAZE);
+                messageList.Add("アインはフラッシュ・ブレイズを習得しました！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-                //if (!GroundOne.WE.AlreadyRest)
-                //{
-                //    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
-                //}
-                //else
-                //{
-                //    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-                //}
-                //// todo
-                ////this.buttonHanna.Visible = true;
-                ////this.buttonDungeon.Visible = true;
-                ////this.buttonRana.Visible = true;
-                ////this.buttonGanz.Visible = true;
-                ////this.buttonPotion.Visible = true;
-                ////this.buttonDuel.Visible = true;
+                messageList.Add(Database.Message_GoToAnotherField_Back); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
+                messageList.Add("ガンツ：どうだったかね。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：どうだったかね。");
+                messageList.Add("アイン：・・・驚きました！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：・・・驚きました！！");
+                messageList.Add("ガンツ：その様子、どうやら身に付けたようだね。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：その様子、どうやら身に付けたようだね。");
+                messageList.Add("アイン：これが驚きなんですよ！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：これが驚きなんですよ！！");
+                messageList.Add("アイン：始めから、クリーンに詠唱成功したんですよ！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：始めから、クリーンに詠唱成功したんですよ！！");
+                messageList.Add("ガンツ：よほど嬉しかったと見える。それほどかね？"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：よほど嬉しかったと見える。それほどかね？");
+                messageList.Add("アイン：あんな体験は初めてでしたよ！！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：あんな体験は初めてでしたよ！！");
+                messageList.Add("アイン：何せ、はじめっからですよ・・・はじめっから・・・"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：何せ、はじめっからですよ・・・はじめっから・・・");
+                messageList.Add("ガンツ：アインよ、次からは好きなタイミングで彼の元へ訪れるがよい。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：アインよ、次からは好きなタイミングで彼の元へ訪れるがよい。");
+                messageList.Add("アイン：あ、はい。また行ってみます！"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("アイン：あ、はい。また行ってみます！");
+                messageList.Add("ガンツ：うむ、精進せいよ。"); eventList.Add(ActionEvent.None);
 
-                //UpdateMainMessage("ガンツ：うむ、精進せいよ。");
-
-                messageList.Add("アインは「ゲート裏　転送装置」へ行けるようになりました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-                //buttonShinikia.gameObject.SetActive(true);
-                //GroundOne.WE.AvailableBackGate = true;
-                //GroundOne.WE.alreadyCommunicateCahlhanz = true; // カール爵に教えてもらったばかりのため、Trueを指定しておく。
+                messageList.Add(Database.Message_GateAvailable); eventList.Add(ActionEvent.HomeTownMessageDisplay);
             }
         }
 
         public static void Message50005(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
-            //UpdateMainMessage("アイン：こんちわー。");
+            messageList.Add("アイン：こんちわー。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ。いよいよ３階へと進むつもりか。");
+            messageList.Add("ガンツ：アインよ。いよいよ３階へと進むつもりか。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：はい、今日からスタートさせるつもりです。");
+            messageList.Add("アイン：はい、今日からスタートさせるつもりです。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：ふむ、ワシから言う事は特にない。");
+            messageList.Add("ガンツ：ふむ、ワシから言う事は特にない。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ、精進しなさい。");
+            messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：あっと、ハイ！ありがとうございました！！");
+            messageList.Add("アイン：あっと、ハイ！ありがとうございました！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：だが、一つ言っておかねばならん事がある。");
+            messageList.Add("ガンツ：だが、一つ言っておかねばならん事がある。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（ッゲ、特に無いと言ったのに・・・この展開は・・・）");
+            messageList.Add("アイン：（ッゲ、特に無いと言ったのに・・・この展開は・・・）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ、どこへ向かう？");
+            messageList.Add("ガンツ：アインよ、どこへ向かう？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：どこって、ダンジョン３階です。");
+            messageList.Add("アイン：どこって、ダンジョン３階です。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：バカの振りは不要。しっかりと答えなさい。");
+            messageList.Add("ガンツ：バカの振りは不要。しっかりと答えなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：う～ん、そう言われても・・・");
+            messageList.Add("アイン：う～ん、そう言われても・・・"); eventList.Add(ActionEvent.None);
 
-            //if (GroundOne.WE2.TruthRecollection1 && GroundOne.WE2.TruthRecollection2)
-            //{
-            //    UpdateMainMessage("アイン：始まりの地へ。");
+            if (GroundOne.WE2.TruthRecollection1 && GroundOne.WE2.TruthRecollection2)
+            {
+                messageList.Add("アイン：始まりの地へ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：広大な草原と無限に拡がる大空。");
+                messageList.Add("アイン：広大な草原と無限に拡がる大空。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：そこで俺は、ケリをつける。");
+                messageList.Add("アイン：そこで俺は、ケリをつける。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：・・・・・・ふむ・・・・・・");
+                messageList.Add("ガンツ：・・・・・・ふむ・・・・・・"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：精進しなさい、アインよ。");
+                messageList.Add("ガンツ：精進しなさい、アインよ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：決して負けてはならん。よいな？");
+                messageList.Add("ガンツ：決して負けてはならん。よいな？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ああ、任せてくれ。");
+                messageList.Add("アイン：ああ、任せてくれ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：絶対に今度こそ。");
+                messageList.Add("アイン：絶対に今度こそ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：うむ、行ってきなさい。気をつけてな。");
+                messageList.Add("ガンツ：うむ、行ってきなさい。気をつけてな。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ああ、了解！");
-            //}
-            //else
-            //{
-            //    UpdateMainMessage("アイン：ダンジョン最下層だ。");
+                messageList.Add("アイン：ああ、了解！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：ダンジョン最下層だ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：俺は絶対にこのダンジョンを制覇してみせる！");
+                messageList.Add("アイン：俺は絶対にこのダンジョンを制覇してみせる！"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：ふむ、その勢い、忘れぬようにな。");
+                messageList.Add("ガンツ：ふむ、その勢い、忘れぬようにな。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ガンツ叔父さんと話していると元気が出るよ、サンキュー。");
+                messageList.Add("アイン：ガンツ叔父さんと話していると元気が出るよ、サンキュー。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：無理だけはせぬようにな、毎日をしっかり生きなさい。");
+                messageList.Add("ガンツ：無理だけはせぬようにな、毎日をしっかり生きなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ああ、じゃあ行ってくるぜ！");
-            //}
+                messageList.Add("アイン：ああ、じゃあ行ってくるぜ！"); eventList.Add(ActionEvent.None);
+            }
         }
 
         public static void Message50006(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
-            //UpdateMainMessage("アイン：こんちわー。");
+            messageList.Add("アイン：こんちわー。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ、相変わらず元気そうじゃの。");
+            messageList.Add("ガンツ：アインよ、相変わらず元気そうじゃの。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ッハハ・・・");
+            messageList.Add("アイン：ッハハ・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：４階へは、やはり進むつもりか。");
+            messageList.Add("ガンツ：４階へは、やはり進むつもりか。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：・・・　・・・");
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：はい。");
+            messageList.Add("アイン：はい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：止めるつもりはなさそうだな。");
+            messageList.Add("ガンツ：止めるつもりはなさそうだな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ええ、なんとか制覇してみるつもりです。");
+            messageList.Add("アイン：ええ、なんとか制覇してみるつもりです。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：ふむ、精進しなさい。");
+            messageList.Add("ガンツ：ふむ、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ハイ、それでは・・・");
+            messageList.Add("アイン：ハイ、それでは・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：待ちなさい。");
+            messageList.Add("ガンツ：待ちなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ、剣を見せてくれんかね。");
+            messageList.Add("ガンツ：アインよ、剣を見せてくれんかね。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：剣・・・？");
+            messageList.Add("アイン：剣・・・？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：練習用の剣を以前渡したであろう。");
+            messageList.Add("ガンツ：練習用の剣を以前渡したであろう。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：あ、ああ！　ちょっと待ってください。");
+            messageList.Add("アイン：あ、ああ！　ちょっと待ってください。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ええと・・・これだ。ハイ、どうぞ");
+            messageList.Add("アイン：ええと・・・これだ。ハイ、どうぞ"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：ふむ");
+            messageList.Add("ガンツ：ふむ"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：・・・");
+            messageList.Add("ガンツ：・・・"); eventList.Add(ActionEvent.None);
 
-            //string detectName = PracticeSwordLevel(GroundOne.MC);
+            string detectName = PracticeSwordLevel(GroundOne.MC); eventList.Add(ActionEvent.None);
 
-            //if (detectName == Database.POOR_PRACTICE_SWORD_ZERO)
-            //{
-            //    UpdateMainMessage("ガンツ：＜　" + detectName + "　＞か。");
+            if (detectName == Database.POOR_PRACTICE_SWORD_ZERO)
+            {
+                messageList.Add("ガンツ：＜　" + detectName + "　＞か。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：剣が成長しておらんようだな。");
+                messageList.Add("ガンツ：剣が成長しておらんようだな。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：え・・・？");
+                messageList.Add("アイン：え・・・？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：今、成長って言いました？");
+                messageList.Add("アイン：今、成長って言いました？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：この剣は使い手の心の在り方を読み解き、そして共に成長してゆく。");
+                messageList.Add("ガンツ：この剣は使い手の心の在り方を読み解き、そして共に成長してゆく。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：剣の主は、己の心を成長させれば、剣と共に飛躍的な進化が遂げられる。");
+                messageList.Add("ガンツ：剣の主は、己の心を成長させれば、剣と共に飛躍的な進化が遂げられる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：そう伝えられておる。");
+                messageList.Add("ガンツ：そう伝えられておる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：そ、そうだったんですか・・・");
+                messageList.Add("アイン：そ、そうだったんですか・・・"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：焦る事はない。興味があれば、また使ってみなさい。");
+                messageList.Add("ガンツ：焦る事はない。興味があれば、また使ってみなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハ、ハイ！どうもすみませんでした！");
+                messageList.Add("アイン：ハ、ハイ！どうもすみませんでした！"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：謝る必要はない。");
+                messageList.Add("ガンツ：謝る必要はない。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ、精進しなさい。");
+                messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハイ、それでは失礼します。");
+                messageList.Add("アイン：ハイ、それでは失礼します。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞");
+                messageList.Add("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（この剣・・・そうだったのか・・・）");
+                messageList.Add("アイン：（この剣・・・そうだったのか・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（４階層の敵相手にこの状態じゃ使いもんにならねえが・・・）");
+                messageList.Add("アイン：（４階層の敵相手にこの状態じゃ使いもんにならねえが・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（まあ、気が向いたら使ってみるか）");
-            //}
-            //else if ((detectName == Database.POOR_PRACTICE_SWORD_1) ||
-            //         (detectName == Database.POOR_PRACTICE_SWORD_2) ||
-            //         (detectName == Database.COMMON_PRACTICE_SWORD_3))
-            //{
-            //    UpdateMainMessage("ガンツ：＜　" + detectName + "　＞か。");
+                messageList.Add("アイン：（まあ、気が向いたら使ってみるか）"); eventList.Add(ActionEvent.None);
+            }
+            else if ((detectName == Database.POOR_PRACTICE_SWORD_1) ||
+                     (detectName == Database.POOR_PRACTICE_SWORD_2) ||
+                     (detectName == Database.COMMON_PRACTICE_SWORD_3))
+            {
+                messageList.Add("ガンツ：＜　" + detectName + "　＞か。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：ほんの少しだけ、成長しておるようだな。");
+                messageList.Add("ガンツ：ほんの少しだけ、成長しておるようだな。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ええ・・・何となくだけど、少しだけマシに振る舞えるようにはなりました。");
+                messageList.Add("アイン：ええ・・・何となくだけど、少しだけマシに振る舞えるようにはなりました。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：それより今、成長って言いました？");
+                messageList.Add("アイン：それより今、成長って言いました？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：この剣は使い手の心の在り方を読み解き、そして共に成長してゆく。");
+                messageList.Add("ガンツ：この剣は使い手の心の在り方を読み解き、そして共に成長してゆく。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：剣の主は、己の心を成長させれば、剣と共に飛躍的な進化が遂げられる。");
+                messageList.Add("ガンツ：剣の主は、己の心を成長させれば、剣と共に飛躍的な進化が遂げられる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：そう伝えられておる。");
+                messageList.Add("ガンツ：そう伝えられておる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：そ、そうだったんですか・・・");
+                messageList.Add("アイン：そ、そうだったんですか・・・"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：焦る事はない。興味があれば、また使ってみなさい。");
+                messageList.Add("ガンツ：焦る事はない。興味があれば、また使ってみなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハ、ハイ！どうもすみませんでした！");
+                messageList.Add("アイン：ハ、ハイ！どうもすみませんでした！"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：謝る必要はない。");
+                messageList.Add("ガンツ：謝る必要はない。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ、精進しなさい。");
+                messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハイ、それでは失礼します。");
+                messageList.Add("アイン：ハイ、それでは失礼します。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞");
+                messageList.Add("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（この剣・・・そうだったのか・・・）");
+                messageList.Add("アイン：（この剣・・・そうだったのか・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（４階層の敵相手にこの状態じゃ使いもんにならねえが・・・）");
+                messageList.Add("アイン：（４階層の敵相手にこの状態じゃ使いもんにならねえが・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（まあ、気が向いたら使ってみるか）");
-            //}
-            //else if ((detectName == Database.COMMON_PRACTICE_SWORD_4) ||
-            //         (detectName == Database.RARE_PRACTICE_SWORD_5) ||
-            //         (detectName == Database.RARE_PRACTICE_SWORD_6))
-            //{
-            //    UpdateMainMessage("ガンツ：＜　" + detectName + "　＞か。");
+                messageList.Add("アイン：（まあ、気が向いたら使ってみるか）"); eventList.Add(ActionEvent.None);
+            }
+            else if ((detectName == Database.COMMON_PRACTICE_SWORD_4) ||
+                     (detectName == Database.RARE_PRACTICE_SWORD_5) ||
+                     (detectName == Database.RARE_PRACTICE_SWORD_6))
+            {
+                messageList.Add("ガンツ：＜　" + detectName + "　＞か。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：なかなか、成長してきておるようだな。");
+                messageList.Add("ガンツ：なかなか、成長してきておるようだな。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ええ・・・しかし、この剣、不思議ですよね。");
+                messageList.Add("アイン：ええ・・・しかし、この剣、不思議ですよね。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：使えば使うほど熟練度が上がるっていうか・・・");
+                messageList.Add("アイン：使えば使うほど熟練度が上がるっていうか・・・"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：使いようによって、どんどん攻撃ダメージが上がってきてる感じがするんですよ。");
+                messageList.Add("アイン：使いようによって、どんどん攻撃ダメージが上がってきてる感じがするんですよ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：お主の言うとおり。");
+                messageList.Add("ガンツ：お主の言うとおり。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：え？");
+                messageList.Add("アイン：え？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：この剣は使い手の心の在り方を読み解き、そして共に成長してゆく。");
+                messageList.Add("ガンツ：この剣は使い手の心の在り方を読み解き、そして共に成長してゆく。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：剣の主は、己の心を成長させれば、剣と共に飛躍的な進化が遂げられる。");
+                messageList.Add("ガンツ：剣の主は、己の心を成長させれば、剣と共に飛躍的な進化が遂げられる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：そう伝えられておる。");
+                messageList.Add("ガンツ：そう伝えられておる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：そ、そうか。どうりで・・・");
+                messageList.Add("アイン：そ、そうか。どうりで・・・"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：この調子で、その剣を使いこなしてみなさい。");
+                messageList.Add("ガンツ：この調子で、その剣を使いこなしてみなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アイン、お主はきっと強くなれる。");
+                messageList.Add("ガンツ：アイン、お主はきっと強くなれる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハ、ハイ！どうもありがとうございます！");
+                messageList.Add("アイン：ハ、ハイ！どうもありがとうございます！"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：謝る必要はない、精進しなさい。");
+                messageList.Add("ガンツ：謝る必要はない、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハイ、それでは失礼します。");
+                messageList.Add("アイン：ハイ、それでは失礼します。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞");
+                messageList.Add("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（この剣・・・確かに威力がどんどん上がってきている・・・）");
+                messageList.Add("アイン：（この剣・・・確かに威力がどんどん上がってきている・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（４階層、一気に使いこなせるように振舞ってみるか）");
-            //}
-            //else if (detectName == Database.EPIC_PRACTICE_SWORD_7)
-            //{
-            //    UpdateMainMessage("ガンツ：＜　" + detectName + "　＞か。");
+                messageList.Add("アイン：（４階層、一気に使いこなせるように振舞ってみるか）"); eventList.Add(ActionEvent.None);
+            }
+            else if (detectName == Database.EPIC_PRACTICE_SWORD_7)
+            {
+                messageList.Add("ガンツ：＜　" + detectName + "　＞か。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ。お主はこの剣が、何であるかは理解しているか？");
+                messageList.Add("ガンツ：アインよ。お主はこの剣が、何であるかは理解しているか？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：理解・・・ですか？");
+                messageList.Add("アイン：理解・・・ですか？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：・・・　・・・");
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：いえ、多分理解までは・・・");
+                messageList.Add("アイン：いえ、多分理解までは・・・"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：ふむ、良い心構えだ。");
+                messageList.Add("ガンツ：ふむ、良い心構えだ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ、答えはもう目の前である感覚はあるかね？");
+                messageList.Add("ガンツ：アインよ、答えはもう目の前である感覚はあるかね？"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ええ・・・正直な所、もう何となくは・・・");
+                messageList.Add("アイン：ええ・・・正直な所、もう何となくは・・・"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ、お主はもう十分に強くなった。");
+                messageList.Add("ガンツ：アインよ、お主はもう十分に強くなった。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：アインよ、常々、精進しなさい。");
+                messageList.Add("ガンツ：アインよ、常々、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ハイ、どうもありがとうございます。");
+                messageList.Add("アイン：ハイ、どうもありがとうございます。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞");
+                messageList.Add("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（この剣への・・・理解・・・）");
+                messageList.Add("アイン：（この剣への・・・理解・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（あと一息な感じはしている・・・）");
+                messageList.Add("アイン：（あと一息な感じはしている・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（もう一超え頑張るとするか！）");
-            //}
-            //else if (detectName == Database.LEGENDARY_FELTUS)
-            //{
-            //    UpdateMainMessage("ガンツ：＜　" + detectName + "　＞か。");
+                messageList.Add("アイン：（もう一超え頑張るとするか！）"); eventList.Add(ActionEvent.None);
+            }
+            else if (detectName == Database.LEGENDARY_FELTUS)
+            {
+                messageList.Add("ガンツ：＜　" + detectName + "　＞か。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：よくぞここまで。見事だ。");
+                messageList.Add("ガンツ：よくぞここまで。見事だ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：いえ、これは俺が単に逃げ続けていただけですから。");
+                messageList.Add("アイン：いえ、これは俺が単に逃げ続けていただけですから。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：そうではない。向かい続けてきた結果だ。卑下をする事はない。");
+                messageList.Add("ガンツ：そうではない。向かい続けてきた結果だ。卑下をする事はない。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：はい。");
+                messageList.Add("アイン：はい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：フェルトゥーシュ、今お主は、その手に所持しておる。");
+                messageList.Add("ガンツ：フェルトゥーシュ、今お主は、その手に所持しておる。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：ええ、確かにこの手に。");
+                messageList.Add("アイン：ええ、確かにこの手に。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：恐る事なく、進めるが良い。");
+                messageList.Add("ガンツ：恐る事なく、進めるが良い。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：はい。");
+                messageList.Add("アイン：はい。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：決して");
+                messageList.Add("ガンツ：決して"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：決して、負けるな、アインよ。");
+                messageList.Add("ガンツ：決して、負けるな、アインよ。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("ガンツ：精進を怠らず、進めよ。アイン・ウォーレンス。");
+                messageList.Add("ガンツ：精進を怠らず、進めよ。アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：分かりました！");
+                messageList.Add("アイン：分かりました！"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞");
+                messageList.Add("   ＜＜＜　ッバタン　（アインは武具屋の外へと出た）  ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（フェルトゥーシュにより俺は・・・）");
+                messageList.Add("アイン：（フェルトゥーシュにより俺は・・・）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（分かってる、進むんだ）");
+                messageList.Add("アイン：（分かってる、進むんだ）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（俺は必ず、この手で）");
+                messageList.Add("アイン：（俺は必ず、この手で）"); eventList.Add(ActionEvent.None);
 
-            //    UpdateMainMessage("アイン：（決着を付けてみせる。）");
-            //}
+                messageList.Add("アイン：（決着を付けてみせる。）"); eventList.Add(ActionEvent.None);
+            }
+        }
+
+        private static string PracticeSwordLevel(MainCharacter player)
+        {
+            string[] targetName = { Database.POOR_PRACTICE_SWORD_ZERO, Database.POOR_PRACTICE_SWORD_1, Database.POOR_PRACTICE_SWORD_2, Database.COMMON_PRACTICE_SWORD_3, Database.COMMON_PRACTICE_SWORD_4, Database.RARE_PRACTICE_SWORD_5, Database.RARE_PRACTICE_SWORD_6, Database.EPIC_PRACTICE_SWORD_7, Database.LEGENDARY_FELTUS };
+            string detectName = String.Empty;
+
+            for (int ii = 0; ii < targetName.Length; ii++)
+            {
+                if ((player != null) && (player.MainWeapon != null) && (player.MainWeapon.Name == targetName[ii]))
+                {
+                    detectName = targetName[ii];
+                    break;
+                }
+                if ((player != null) && (player.SubWeapon != null) && (player.SubWeapon.Name == targetName[ii]))
+                {
+                    detectName = targetName[ii];
+                    break;
+                }
+                if ((player != null) && (player.MainArmor != null) && (player.MainArmor.Name == targetName[ii]))
+                {
+                    detectName = targetName[ii];
+                    break;
+                }
+                if ((player != null) && (player.Accessory != null) && (player.Accessory.Name == targetName[ii]))
+                {
+                    detectName = targetName[ii];
+                    break;
+                }
+                if ((player != null) && (player.Accessory2 != null) && (player.Accessory2.Name == targetName[ii]))
+                {
+                    detectName = targetName[ii];
+                    break;
+                }
+                ItemBackPack[] backpack = player.GetBackPackInfo();
+                for (int kk = 0; kk < backpack.Length; kk++)
+                {
+                    if ((backpack[kk] != null) && (backpack[kk].Name == targetName[ii]))
+                    {
+                        detectName = targetName[ii];
+                        break;
+                    }
+                }
+
+                if (detectName != string.Empty)
+                {
+                    // 検知したため、検索不要
+                    break;
+                }
+            }
+            return detectName;
         }
 
         public static void Message50007(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            //UpdateMainMessage("アイン：ガンツ叔父さん、いますかー？");
+            messageList.Add("アイン：ガンツ叔父さん、いますかー？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインか。よく来てくれた。");
+            messageList.Add("ガンツ：アインか。よく来てくれた。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：武具店、開いてますか？");
+            messageList.Add("アイン：武具店、開いてますか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：ああ、開店しておるので見ていくと良い。");
+            messageList.Add("ガンツ：ああ、開店しておるので見ていくと良い。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：っしゃ！やったぜ！じゃあ早速見せてもらうとするぜ！！");
+            messageList.Add("アイン：っしゃ！やったぜ！じゃあ早速見せてもらうとするぜ！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：好きなだけ見ていくと良い。");
+            messageList.Add("ガンツ：好きなだけ見ていくと良い。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：・・・　・・・　・・・");
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ。これからダンジョンへ向かうのだな？");
+            messageList.Add("ガンツ：アインよ。これからダンジョンへ向かうのだな？"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：はい。");
+            messageList.Add("アイン：はい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ、では心構えを一つ教えて進ぜよう。");
+            messageList.Add("ガンツ：アインよ、では心構えを一つ教えて進ぜよう。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ガンツは両眼を閉じた状態で、誰へともなく、空中へ語り始めた。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            //UpdateMainMessage("ガンツ：精進しなさい。");
+            messageList.Add("ガンツ：精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：お前はものすごいモノを秘めている。");
+            messageList.Add("ガンツ：お前はものすごいモノを秘めている。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：精進しなさい。");
+            messageList.Add("ガンツ：精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：お前は間違いなく打ちのめされる。");
+            messageList.Add("ガンツ：お前は間違いなく打ちのめされる。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：精進しなさい。");
+            messageList.Add("ガンツ：精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：途中、決してくじけてはならん。");
+            messageList.Add("ガンツ：途中、決してくじけてはならん。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：精進しなさい。");
+            messageList.Add("ガンツ：精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：どうしてもしんどい時は一旦休みなさい。");
+            messageList.Add("ガンツ：どうしてもしんどい時は一旦休みなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：精進しなさい。");
+            messageList.Add("ガンツ：精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：お前ならきっと叶えられるはずだ。");
+            messageList.Add("ガンツ：お前ならきっと叶えられるはずだ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：精進しなさい。アイン。");
+            messageList.Add("ガンツ：精進しなさい。アイン。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("　　　　『ガンツは両目を開き、テーブルへ眼を戻した』");
+            messageList.Add("　　　　『ガンツは両目を開き、テーブルへ眼を戻した』"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ッハイ！！");
+            messageList.Add("アイン：ッハイ！！"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：心を決めたようだな。良い雰囲気だ。");
+            messageList.Add("ガンツ：心を決めたようだな。良い雰囲気だ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("ガンツ：アインよ、精進しなさい。");
+            messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：ッハイ！！！");
+            messageList.Add("アイン：ッハイ！！！"); eventList.Add(ActionEvent.None);
 
-            //GroundOne.WE2.SeekerEvent604 = true;
-            //Method.AutoSaveTruthWorldEnvironment();
-            //Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+            GroundOne.WE2.SeekerEvent604 = true;
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
         }
 
         public static void Message50008(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
-            //UpdateMainMessage("ガンツ：アインよ、精進しなさい。", true);
+            messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
         }
         #endregion
         #region "ハンナの宿屋店"
@@ -8536,7 +8421,7 @@ namespace DungeonPlayer
 
             GroundOne.WE2.SeekerEvent603 = true;
             Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5); eventList.Add(ActionEvent.None);
+            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
         }
 
         public static void Message69994(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -8579,7 +8464,6 @@ namespace DungeonPlayer
 
         public static void Message69998(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
             messageList.Add("ハンナ：はいよ、部屋は空いてるよ。ゆっくりと休みな。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：サンキュー、おばちゃん。"); eventList.Add(ActionEvent.None);

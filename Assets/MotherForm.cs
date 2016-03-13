@@ -72,10 +72,6 @@ namespace DungeonPlayer
                 GroundOne.TruthHomeTown_NowExit = false;
                 SceneDimension.JumpToTruthHomeTown(this.GetType().ToString());
             }
-            else if (yesnoSystemMessage.text == Database.exitMessage4)
-            {
-                groupYesnoSystemMessage.SetActive(false);
-            }
         }
 
         public virtual void ExitNo()
@@ -83,24 +79,21 @@ namespace DungeonPlayer
             if (this.yesnoSystemMessage.text == Database.exitMessage1)
             {
                 this.yesnoSystemMessage.text = Database.exitMessage2;
+                GroundOne.TruthHomeTown_NowExit = false;
             }
             else if (this.yesnoSystemMessage.text == Database.exitMessage2)
             {
                 this.yesnoSystemMessage.text = Database.exitMessage1;
                 this.groupYesnoSystemMessage.SetActive(false);
                 this.Filter.SetActive(false);
+                GroundOne.TruthHomeTown_NowExit = false;
             }
             else if (this.yesnoSystemMessage.text == Database.exitMessage3)
             {
                 this.groupYesnoSystemMessage.SetActive(false);
                 this.Filter.SetActive(false);
+                GroundOne.TruthHomeTown_NowExit = false;
             }
-            else if (yesnoSystemMessage.text == Database.exitMessage4)
-            {
-                this.groupYesnoSystemMessage.SetActive(false);
-                this.Filter.SetActive(false);
-            } 
-            GroundOne.TruthHomeTown_NowExit = false;
         }
         
         public virtual void BookManual_Click()

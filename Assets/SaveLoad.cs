@@ -39,6 +39,7 @@ namespace DungeonPlayer
 
             foreach (string filename in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
             {
+                Debug.Log("filename: " + filename);
                 Text targetButton = null;
                 string targetString = System.IO.Path.GetFileName(filename);
                 if (targetString.Contains("01_"))
@@ -138,12 +139,11 @@ namespace DungeonPlayer
         }
 
         // Update is called once per frame
-        void Update()
+        public override void Update()
         {
+            base.Update();
             if (this.nowAutoKill)
             {
-                //Debug.Log("autokilltimer: " + autoKillTimer.ToString());
-
                 this.autoKillTimer++;
                 if (this.autoKillTimer == 200)
                 {
@@ -1462,6 +1462,5 @@ namespace DungeonPlayer
                 }
             }
         }
-             
     }
 }

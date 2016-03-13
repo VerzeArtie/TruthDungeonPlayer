@@ -34,6 +34,11 @@ namespace DungeonPlayer
         public Button buttonShinikia;
         public Button buttonPotion;
         public Button buttonDuel;
+        public Button buttonStatus;
+        public Button buttonBattleSetting;
+        public Button buttonSave;
+        public Button buttonLoad;
+        public Button buttonExit;
         public Text dayLabel;
         public Image panelHide;
         public Image imgCharacter1;
@@ -51,6 +56,10 @@ namespace DungeonPlayer
         private bool nowHideing = false;
         public string currentRequestFood = string.Empty;
 
+        bool forceSaveCall = false; // シナリオ進行上、強制セーブした後、”休息しました”を表示したいためのフラグ
+        bool duelFailCount1 = false; // 現実世界、ラナDUEL戦で敗北した時１
+        bool duelFailCount2 = false; // 現実世界、ラナDUEL戦で敗北した時２
+ 
 	    // Use this for initialization
         public override void Start()
         {
@@ -58,7 +67,7 @@ namespace DungeonPlayer
 
             GroundOne.WE.SaveByDungeon = false;
 
-            // todo after
+            // after
             //GroundOne.CS = new ClientSocket();
             //GroundOne.InitializeNetworkConnection ();
 
@@ -88,8 +97,18 @@ namespace DungeonPlayer
                 groupYesnoSystemMessage.SetActive(true);
             }
 
-            this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
+            buttonBattleSetting.gameObject.SetActive(GroundOne.WE.AvailableBattleSettingMenu);
 
+            this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
+            if (GroundOne.WE.AlreadyRest)
+            {
+                this.firstDay = GroundOne.WE.GameDay - 1; // 休息したかどうかのフラグに関わらず町に訪れた最初の日を記憶します。
+                if (this.firstDay <= 0) this.firstDay = 1; // [警告] 後編初日のロジック崩れによる回避手段。あまり良い直し方ではありません。
+            }
+            else
+            {
+                this.firstDay = GroundOne.WE.GameDay; // 休息したかどうかのフラグに関わらず町に訪れた最初の日を記憶します。
+            }
         }
 
         string GetString(string msg, string protocolStr)
@@ -111,13 +130,21 @@ namespace DungeonPlayer
 	    }
 
 	    // Update is called once per frame
-	    void Update () {
+	    public override void Update () {
+            base.Update();
+
             if (this.firstAction == false)
             {
                 this.firstAction = true;
                 ShownEvent();
             }
-
+            if (this.panelMessage.gameObject.activeInHierarchy && btnOK.gameObject.activeInHierarchy)
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    tapOK();
+                }
+            }
             // after revive
             //if (this.firstAction == false) {
             //    this.btnOK.gameObject.SetActive(false);
@@ -249,8 +276,8 @@ namespace DungeonPlayer
             #region "２階初日"
             else if (GroundOne.WE.TruthCompleteArea1 && GroundOne.WE.TruthCommunicationCompArea1 && !GroundOne.WE.Truth_CommunicationSecondHomeTown)
             {
-                MessagePack.Message20200(ref nowMessage, ref nowEvent);
-                NormalTapOK();
+                GroundOne.WE.Truth_CommunicationSecondHomeTown = true;                
+                HometownCommunicationStart();
             }
             #endregion
             #region "２階、地の部屋、選択失敗"
@@ -275,10 +302,10 @@ namespace DungeonPlayer
             }
             #endregion
             #region "３階初日"
-            else if (false) // todo
+            else if (GroundOne.WE.TruthCompleteArea2 && GroundOne.WE.TruthCommunicationCompArea2 && !GroundOne.WE.Truth_CommunicationThirdHomeTown)
             {
-                MessagePack.Message20300(ref nowMessage, ref nowEvent);
-                NormalTapOK();
+                GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
+                HometownCommunicationStart();
             }
             #endregion
             #region "３階、エリア１の鏡をクリア時"
@@ -328,6 +355,13 @@ namespace DungeonPlayer
             {
                 MessagePack.Message20307(ref nowMessage, ref nowEvent);
                 NormalTapOK();
+            }
+            #endregion
+            #region "４階初日"
+            else if (GroundOne.WE.TruthCompleteArea3 && GroundOne.WE.TruthCommunicationCompArea3 && !GroundOne.WE.Truth_CommunicationFourthHomeTown)
+            {
+                GroundOne.WE.Truth_CommunicationFourthHomeTown = true;
+                HometownCommunicationStart();
             }
             #endregion
             #region "現実世界"
@@ -574,7 +608,7 @@ namespace DungeonPlayer
             this.nowHideing = true;
             tapOK();
         }
-        private void tapOK()
+        public void tapOK()
         {
             if (this.nowReading < this.nowMessage.Count)
             {
@@ -590,6 +624,47 @@ namespace DungeonPlayer
                 {
                     systemMessage.text = this.nowMessage[this.nowReading];
                     systemMessagePanel.SetActive(true);
+                    if (this.nowMessage[this.nowReading] == Database.Message_DuelAvailable)
+                    {
+                        buttonDuel.gameObject.SetActive(true);
+                    }
+                    else if (this.nowMessage[this.nowReading] == Database.Message_BattleSettingAvailable)
+                    {
+                        buttonBattleSetting.gameObject.SetActive(true);
+                    }
+                    else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField)
+                    {
+                        buttonHanna.gameObject.SetActive(false);
+                        buttonDungeon.gameObject.SetActive(false);
+                        buttonRana.gameObject.SetActive(false);
+                        buttonGanz.gameObject.SetActive(false);
+                        buttonPotion.gameObject.SetActive(false);
+                        buttonDuel.gameObject.SetActive(false);
+                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
+                    }
+                    else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField_Back)
+                    {
+                        if (!GroundOne.WE.AlreadyRest)
+                        {
+                            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+                        }
+                        else
+                        {
+                            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                        }
+                        buttonHanna.gameObject.SetActive(true);
+                        buttonDungeon.gameObject.SetActive(true);
+                        buttonRana.gameObject.SetActive(true);
+                        buttonGanz.gameObject.SetActive(true);
+                        buttonPotion.gameObject.SetActive(true);
+                        buttonDuel.gameObject.SetActive(true);
+                    }
+                    else if (this.nowMessage[this.nowReading] == Database.Message_GateAvailable)
+                    {
+                        buttonShinikia.gameObject.SetActive(true);
+                        GroundOne.WE.AvailableBackGate = true;
+                        GroundOne.WE.alreadyCommunicateCahlhanz = true; // カール爵に教えてもらったばかりのため、Trueを指定しておく。
+                    }
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
                 {
@@ -605,28 +680,15 @@ namespace DungeonPlayer
 
                 if (current == MessagePack.ActionEvent.HomeTownBlackOut)
                 {
-                    GroundOne.StopDungeonMusic();
-
-                    cam.backgroundColor = Color.black;
-                    groupMenu.gameObject.SetActive(false);
-                    dayLabel.gameObject.SetActive(false);
-                    buttonHanna.gameObject.SetActive(false);
-                    buttonDungeon.gameObject.SetActive(false);
-                    buttonRana.gameObject.SetActive(false);
-                    buttonGanz.gameObject.SetActive(false);
-                    this.imgBackground.gameObject.SetActive(false);
+                    BlackOut();
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownTurnToNormal)
                 {
-                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-                    cam.backgroundColor = Color.white;
-                    groupMenu.gameObject.SetActive(true);
-                    buttonHanna.gameObject.SetActive(true);
-                    buttonDungeon.gameObject.SetActive(true);
-                    buttonRana.gameObject.SetActive(true);
-                    buttonGanz.gameObject.SetActive(true);
-                    dayLabel.gameObject.SetActive(true);
-                    this.imgBackground.gameObject.SetActive(true);
+                    TurnToNormal();
+                }
+                else if (current == MessagePack.ActionEvent.StopMusic)
+                {
+                    GroundOne.StopDungeonMusic();
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownMorning)
                 {
@@ -669,21 +731,14 @@ namespace DungeonPlayer
                     buttonDuel.gameObject.SetActive(false);
                     dayLabel.gameObject.SetActive(false);
                 }
-                else if (current == MessagePack.ActionEvent.HomeTownSecondCommunicationStart)
+                else if (current == MessagePack.ActionEvent.HomeTownCallSaveLoad)
                 {
-                    SecondCommunicationStart();
+                    this.forceSaveCall = true;
+                    SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, this);
                 }
-                else if (current == MessagePack.ActionEvent.HomeTownThirdCommunicationStart)
+                else if (current == MessagePack.ActionEvent.HomeTownCallDuel)
                 {
-                    ThirdCommunicationStart();
-                }
-                else if (current == MessagePack.ActionEvent.HomeTownFourthCommunicationStart)
-                {
-                    FourthCommunicationStart();
-                }
-                else if (current == MessagePack.ActionEvent.HomeTownFifthCommunicationStart)
-                {
-                    FifthCommunicationStart();
+
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
                 {
@@ -693,6 +748,11 @@ namespace DungeonPlayer
                 else if (current == MessagePack.ActionEvent.PlayMusic13)
                 {
                     // todo 他の画面、他の音楽も全て横展開が必要。Methodクラスで統一すべきである。
+                    GroundOne.PlayDungeonMusic(Database.BGM13, Database.BGM13LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic19)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM19, Database.BGM19LoopBegin);
                 }
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading-1] == "")
@@ -713,6 +773,34 @@ namespace DungeonPlayer
                 this.btnOK.gameObject.SetActive(false);
             }
         }
+
+        private void BlackOut()
+        {
+            GroundOne.StopDungeonMusic();
+
+            cam.backgroundColor = Color.black;
+            groupMenu.gameObject.SetActive(false);
+            dayLabel.gameObject.SetActive(false);
+            buttonHanna.gameObject.SetActive(false);
+            buttonDungeon.gameObject.SetActive(false);
+            buttonRana.gameObject.SetActive(false);
+            buttonGanz.gameObject.SetActive(false);
+            this.imgBackground.gameObject.SetActive(false);
+        }
+
+        private void TurnToNormal()
+        {
+            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+            cam.backgroundColor = Color.white;
+            groupMenu.gameObject.SetActive(true);
+            buttonHanna.gameObject.SetActive(true);
+            buttonDungeon.gameObject.SetActive(true);
+            buttonRana.gameObject.SetActive(true);
+            buttonGanz.gameObject.SetActive(true);
+            dayLabel.gameObject.SetActive(true);
+            this.imgBackground.gameObject.SetActive(true);
+        }
+
 	    public void tapShop() {
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailableEquipShop2 = true; // 前編で既に周知のため、解説は不要。
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailableEquipShop3 = true; // 前編で既に周知のため、解説は不要。
@@ -857,42 +945,16 @@ namespace DungeonPlayer
             }
         }
 
-        private void SecondCommunicationStart()
+        private void HometownCommunicationStart()
         {
+            TurnToNormal();
             GroundOne.WE.Truth_CommunicationSecondHomeTown = true;
             GroundOne.WE.AlreadyRest = true;
             ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
             cam.backgroundColor = Color.white;
             CallRestInn();
         }
-
-        private void ThirdCommunicationStart()
-        {
-            GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
-            GroundOne.WE.AlreadyRest = true;
-            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-            cam.backgroundColor = Color.white;
-            CallRestInn();
-        }
-
-        private void FourthCommunicationStart()
-        {
-            GroundOne.WE.Truth_CommunicationFourthHomeTown = true;
-            GroundOne.WE.AlreadyRest = true;
-            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-            cam.backgroundColor = Color.white;
-            CallRestInn();
-        }
-
-        private void FifthCommunicationStart()
-        {
-            GroundOne.WE.Truth_CommunicationFifthHomeTown = true;
-            GroundOne.WE.AlreadyRest = true;
-            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-            cam.backgroundColor = Color.white;
-            CallRestInn();
-        }
-
+        
         public void tapShop2()
         {
             mainMessage.text = "ラナ：ごめんなさい、まだ準備中なのよ。";
@@ -1001,7 +1063,6 @@ namespace DungeonPlayer
             #endregion
         }
 
-        // todo
         private void CallRestInn()
         {
             CallRestInn(false);
@@ -1049,7 +1110,15 @@ namespace DungeonPlayer
             {
                 GroundOne.PlaySoundEffect(Database.SOUND_REST_INN);
 
-                MessagePack.Message69995(ref nowMessage, ref nowEvent);
+                if (nowMessage.Count > 0)
+                {
+                    MessagePack.Message69995(ref nowMessage, ref nowEvent);
+                }
+                else
+                {
+                    MessagePack.Message69995(ref nowMessage, ref nowEvent);
+                    NormalTapOK();
+                }
             }
             if (noAction == false)
             {
@@ -1072,21 +1141,38 @@ namespace DungeonPlayer
         public override void ExitYes()
         {
             base.ExitYes();
-            SceneDimension.CallRequestFood(Database.TruthHomeTown, this);
+            if (yesnoSystemMessage.text == Database.exitMessage4)
+            {
+                groupYesnoSystemMessage.SetActive(false);
+                SceneDimension.CallRequestFood(Database.TruthHomeTown, this);
+            }
         }
         
         public override void ExitNo()
         {
             base.ExitNo();
-            MessagePack.Message69996(ref nowMessage, ref nowEvent);
-            NormalTapOK();
+            if (yesnoSystemMessage.text == Database.exitMessage4)
+            {
+                this.groupYesnoSystemMessage.SetActive(false);
+                this.Filter.SetActive(false);
+                MessagePack.Message69996(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            } 
         }
 
         public override void SceneBack()
         {
-            MessagePack.Message69997(ref nowMessage, ref nowEvent, this.currentRequestFood);
-            NormalTapOK();
-
+            base.SceneBack();
+            if (yesnoSystemMessage.text == Database.exitMessage4)
+            {
+                MessagePack.Message69997(ref nowMessage, ref nowEvent, this.currentRequestFood);
+                NormalTapOK();
+            }
+            else if (this.forceSaveCall)
+            {
+                this.forceSaveCall = false;
+                HometownCommunicationStart();
+            }
         }
         public void tapExit()
         {

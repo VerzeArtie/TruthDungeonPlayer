@@ -52,7 +52,6 @@ namespace DungeonPlayer
         public static int BattleSpeed = 3;
         public static int Difficulty = 1; // ゲーム難易度 デフォルトは１：普通
 
-//        public static TruthInformation information = null; // ヘルプ情報 // todo
 //        public static XepherPlayer sound = null; // サウンド音源 // todo
         public static bool EnableBGM = true; // ミュージック、デフォルトはオン
         public static bool EnableSoundEffect = true; // 効果音、デフォルトはオン
@@ -147,20 +146,40 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
+            //GroundOne.WE.TruthCompleteArea2 && GroundOne.WE.TruthCommunicationCompArea2 && !GroundOne.WE.Truth_CommunicationThirdHomeTown
+            //WE.TruthCompleteArea2 = true;
+            //WE.TruthCommunicationCompArea2 = true;
+
+            //GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1
+            WE.TruthCompleteArea1 = true;
+            //WE.GameDay = 6;
             WE.Truth_CommunicationFirstHomeTown = true;
             WE.Truth_CommunicationHanna1 = true;
-            WE.AlreadyRest = false;
+            WE.AlreadyRest = true;
+            //GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
+            WE.TruthCompleteArea1 = true;
+            WE.AvailableMixSpellSkill = false;
+            MC.Level = 22;
+
             WE.AvailableInstantCommand = true;
+            GroundOne.WE.TruthCommunicationCompArea1 = true;
+            GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
+
             GroundOne.enemyName1 = Database.DUEL_DUMMY_SUBURI; // DUEL_EONE_FULNEA;
             GroundOne.enemyName2 = Database.ENEMY_SUN_FLOWER;
             GroundOne.enemyName3 = Database.ENEMY_SPEEDY_TAKA;
-            //GroundOne.WE.AvailableSecondCharacter = true;
+            GroundOne.WE.AvailableSecondCharacter = true;
             //GroundOne.WE.AvailableThirdCharacter = true;
             //GroundOne.DuelMode = true;
-
-            GroundOne.WE2.RealWorld = true;
-            GroundOne.WE2.SeekerEvent506 = true;
+            //GroundOne.WE2.RealWorld = true;
+            //GroundOne.WE2.SeekerEvent506 = true;
             GroundOne.WE.DungeonArea = 1;
+            //else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationGanz1)
+            //else if (GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
+            //else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.Truth_CommunicationGanz21)
+            //else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
+            WE.Truth_CommunicationGanz1 = true;
+            WE.Truth_CommunicationGanz21 = true;
 
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;
