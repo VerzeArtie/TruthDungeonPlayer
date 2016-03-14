@@ -712,12 +712,6 @@ namespace DungeonPlayer
                 {
                     CallRestInn();
                 }
-                else if (current == MessagePack.ActionEvent.ResurrectHalfLife)
-                {
-                    // todo (target is still unknown)
-                    GroundOne.MC.Dead = false;
-                    GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife / 2;
-                }
                 else if (current == MessagePack.ActionEvent.CallSomeMessageWithAnimation)
                 {
                     systemMessagePanel.gameObject.SetActive(true);

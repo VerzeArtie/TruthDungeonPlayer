@@ -69,7 +69,6 @@ namespace DungeonPlayer
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
-            ResurrectHalfLife,
             GetTreasure,
         }
 
@@ -8417,9 +8416,9 @@ namespace DungeonPlayer
 
         public static void Message69997(ref List<string> messageList, ref List<ActionEvent> eventList, string tempSelect)
         {
-            messageList.Add("アイン：おばちゃん、『" + tempSelect + "』を頼むぜ。"); eventList.Add(ActionEvent.None); // todo
+            messageList.Add("アイン：おばちゃん、『" + tempSelect + "』を頼むぜ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ハンナ：『" + tempSelect + "』だね。少し待ってな。"); eventList.Add(ActionEvent.None); // todo
+            messageList.Add("ハンナ：『" + tempSelect + "』だね。少し待ってな。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ハンナ：はいよ、お待たせ。たんと召し上がれ。"); eventList.Add(ActionEvent.None);
 
