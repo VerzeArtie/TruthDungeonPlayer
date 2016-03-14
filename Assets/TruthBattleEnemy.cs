@@ -4040,40 +4040,40 @@ namespace DungeonPlayer
             if (target.CurrentNothingOfNothingness > 0)
             {
                 UpdateBattleText("しかし、" + player.FirstName + "は無効化を無効にするオーラによって護られている！\r\n");
-                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
                 return false;
             }
             else if (player.CurrentHymnContract > 0)
             {
                 UpdateBattleText(player.FirstName + "は天使の契約により保護されており、カウンターを無視した！\r\n");
-                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
                 return false;
             }
             else if (player.PA == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CantBeCountered(player.CurrentSpellName)) ||
                      player.StackPlayerAction == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
             {
                 UpdateBattleText(player.CurrentSpellName + "はカウンター出来ない！！！\r\n");
-                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
                 return false;
             }
             else if (player.PA == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CantBeCountered(player.CurrentSkillName)) ||
                      player.StackPlayerAction == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
             {
                 UpdateBattleText(player.CurrentSkillName + "はカウンター出来ない！！！\r\n");
-                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
                 return false;
             }
             else if (player.PA == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CantBeCountered(player.CurrentArchetypeName)) ||
                 player.StackPlayerAction == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
             {
                 UpdateBattleText(player.CurrentArchetypeName + "はカウンター出来ない！！！\r\n");
-                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
                 return false;
             }
             else
             {
                 UpdateBattleText(target.GetCharacterSentence(messageNumber));
-                this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.SUCCESS_COUNTER);
+                AnimationDamage(0, target, 0, Color.black, true, false, Database.SUCCESS_COUNTER);
                 return true;
             }
         }
@@ -4161,106 +4161,104 @@ namespace DungeonPlayer
             {
                 if (ActiveList[ii].CurrentLife <= 0)
                 {
-                    // todo
-                    //if ((ActiveList[ii].Name == Database.ENEMY_BOSS_LEGIN_ARZE_3) &&
-                    //    (!((TruthEnemyCharacter)ActiveList[ii]).DetectDeath))
-                    //{
-                    //    ((TruthEnemyCharacter)ActiveList[ii]).DetectDeath = true;
-                    //    UpdateBattleText(ActiveList[ii].Name + "は死の至る刹那、深淵の防壁を作りだした！！\r\n");
-                    //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 0, Color.Black, true, false, "深淵の防壁");
-                    //    ActiveList[ii].CurrentLife = 1;
-                    //    UpdateLife(ActiveList[ii]);
-                    //    ActiveList[ii].CurrentTheAbyssWall = Database.INFINITY;
-                    //    ActiveList[ii].ActivateBuff(ActiveList[ii].pbTheAbyssWall, Database.BaseResourceFolder + Database.THE_ABYSS_WALL + ".bmp", Database.INFINITY);
-                    //}
-                    //else if (ActiveList[ii].CurrentGenseiTaima > 0)
-                    //{
-                    //    ActiveList[ii].RemoveGenseiTaima();
-                    //    UpdateBattleText(ActiveList[ii].Name + "に対して退魔の効果が発動し、致死の狭間で生き残った！！\r\n");
-                    //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 0, Color.Black, true, false, "復活");
-                    //    ActiveList[ii].CurrentLife = ActiveList[ii].MaxLife / 2;
-                    //    UpdateLife(ActiveList[ii]);
-                    //}
-                    //else if (ActiveList[ii].CurrentStanceOfDeath > 0)
-                    //{
-                    //    ActiveList[ii].RemoveStanceOfDeath();
-                    //    UpdateBattleText(ActiveList[ii].Name + "は致死の狭間で生き残った！！\r\n");
-                    //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 0, Color.Black, true, false, "復活");
-                    //    ActiveList[ii].CurrentLife = 1;
-                    //    UpdateLife(ActiveList[ii]);
-                    //}
-                    //else if (ActiveList[ii].CurrentShadowBible > 0)
-                    //{
-                    //    ActiveList[ii].RemoveShadowBible();
-                    //    UpdateBattleText(ActiveList[ii].Name + "は致死の狭間でみなぎる生命力を感じ取った！！\r\n");
-                    //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 0, Color.Black, true, false, "復活");
-                    //    ActiveList[ii].CurrentLife = ActiveList[ii].MaxLife;
-                    //    UpdateLife(ActiveList[ii]);
-                    //    NowNoResurrection(ActiveList[ii], ActiveList[ii], 999);
-                    //}
-                    //else if (ActiveList[ii].CurrentAfterReviveHalf > 0)
-                    //{
-                    //    ActiveList[ii].RemoveAfterReviveHalf();
-                    //    UpdateBattleText(ActiveList[ii].Name + "は致死の狭間で生き残った！！\r\n");
-                    //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 0, Color.Black, true, false, "復活");
-                    //    ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife / 2.0f);
-                    //    UpdateLife(ActiveList[ii]);
-                    //}
-                    //else if (ActiveList[ii].CurrentLifeCount > 0)
-                    //{
-                    //    ActiveList[ii].CurrentLifeCountValue--;
-                    //    UpdateBattleText(ActiveList[ii].Name + "の生命力が１つ削られた！！\r\n");
-                    //    if (ActiveList[ii].CurrentLifeCountValue <= 0)
-                    //    {
-                    //        UpdateBattleText(ActiveList[ii].GetCharacterSentence(217));
-                    //        ActiveList[ii].RemoveLifeCount();
-                    //        ActiveList[ii].DeadPlayer();
-                    //    }
-                    //    else
-                    //    {
-                    //        UpdateBattleText(ActiveList[ii].GetCharacterSentence(216));
-                    //        System.Threading.Thread.Sleep(1000);
-                    //        this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 0, Color.Black, true, false, "生命復活");
-                    //        ActiveList[ii].RemoveDebuffEffect();
-                    //        ActiveList[ii].RemoveDebuffParam();
-                    //        ActiveList[ii].RemoveDebuffSkill();
-                    //        ActiveList[ii].RemoveDebuffSpell();
-                    //        ActiveList[ii].ChangeLifeCountStatus(ActiveList[ii].CurrentLifeCountValue);
-                    //        ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife);
-                    //        UpdateLife(ActiveList[ii]);
-                    //        ActiveList[ii].labelLife.Update();
-                    //        System.Threading.Thread.Sleep(1000);
-                    //    }
-                    //}
-                    //else if (CheckResurrectWithItem(ActiveList[ii], Database.RARE_TAMATEBAKO_AKIDAMA))
-                    //{
-                    //    UpdateBattleText(Database.RARE_TAMATEBAKO_AKIDAMA + "が淡く光り始めた！\r\n", 500);
-                    //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, ActiveList[ii], 0, Color.Black, true, false, "復活");
+                    if ((ActiveList[ii].FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3) &&
+                        (!((TruthEnemyCharacter)ActiveList[ii]).DetectDeath))
+                    {
+                        ((TruthEnemyCharacter)ActiveList[ii]).DetectDeath = true;
+                        UpdateBattleText(ActiveList[ii].FirstName + "は死の至る刹那、深淵の防壁を作りだした！！\r\n");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "深淵の防壁");
+                        ActiveList[ii].CurrentLife = 1;
+                        UpdateLife(ActiveList[ii]);
+                        ActiveList[ii].CurrentTheAbyssWall = Database.INFINITY;
+                        ActiveList[ii].ActivateBuff(ActiveList[ii].pbTheAbyssWall, Database.BaseResourceFolder + Database.THE_ABYSS_WALL, Database.INFINITY);
+                    }
+                    else if (ActiveList[ii].CurrentGenseiTaima > 0)
+                    {
+                        ActiveList[ii].RemoveGenseiTaima();
+                        UpdateBattleText(ActiveList[ii].FirstName + "に対して退魔の効果が発動し、致死の狭間で生き残った！！\r\n");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        ActiveList[ii].CurrentLife = ActiveList[ii].MaxLife / 2;
+                        UpdateLife(ActiveList[ii]);
+                    }
+                    else if (ActiveList[ii].CurrentStanceOfDeath > 0)
+                    {
+                        ActiveList[ii].RemoveStanceOfDeath();
+                        UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間で生き残った！！\r\n");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        ActiveList[ii].CurrentLife = 1;
+                        UpdateLife(ActiveList[ii]);
+                    }
+                    else if (ActiveList[ii].CurrentShadowBible > 0)
+                    {
+                        ActiveList[ii].RemoveShadowBible();
+                        UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間でみなぎる生命力を感じ取った！！\r\n");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        ActiveList[ii].CurrentLife = ActiveList[ii].MaxLife;
+                        UpdateLife(ActiveList[ii]);
+                        NowNoResurrection(ActiveList[ii], ActiveList[ii], 999);
+                    }
+                    else if (ActiveList[ii].CurrentAfterReviveHalf > 0)
+                    {
+                        ActiveList[ii].RemoveAfterReviveHalf();
+                        UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間で生き残った！！\r\n");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife / 2.0f);
+                        UpdateLife(ActiveList[ii]);
+                    }
+                    else if (ActiveList[ii].CurrentLifeCount > 0)
+                    {
+                        ActiveList[ii].CurrentLifeCountValue--;
+                        UpdateBattleText(ActiveList[ii].FirstName + "の生命力が１つ削られた！！\r\n");
+                        if (ActiveList[ii].CurrentLifeCountValue <= 0)
+                        {
+                            UpdateBattleText(ActiveList[ii].GetCharacterSentence(217));
+                            ActiveList[ii].RemoveLifeCount();
+                            ActiveList[ii].DeadPlayer();
+                        }
+                        else
+                        {
+                            // todo sleep1000で瞬間的停止を演出するためのロジックが必要
+                            UpdateBattleText(ActiveList[ii].GetCharacterSentence(216));
+                            System.Threading.Thread.Sleep(1000);
+                            AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "生命復活");
+                            ActiveList[ii].RemoveDebuffEffect();
+                            ActiveList[ii].RemoveDebuffParam();
+                            ActiveList[ii].RemoveDebuffSkill();
+                            ActiveList[ii].RemoveDebuffSpell();
+                            ActiveList[ii].ChangeLifeCountStatus(ActiveList[ii].CurrentLifeCountValue);
+                            ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife);
+                            UpdateLife(ActiveList[ii]);
+                            //ActiveList[ii].labelLife.Update();
+                            System.Threading.Thread.Sleep(1000);
+                        }
+                    }
+                    else if (CheckResurrectWithItem(ActiveList[ii], Database.RARE_TAMATEBAKO_AKIDAMA))
+                    {
+                        UpdateBattleText(Database.RARE_TAMATEBAKO_AKIDAMA + "が淡く光り始めた！\r\n", 500);
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
 
-                    //    UpdateBattleText(ActiveList[ii].Name + "は致死の狭間で生き残った！！\r\n");
-                    //    ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife * 0.1f);
-                    //    UpdateLife(ActiveList[ii]);
-                    //}
-                    //else
-                    //{
+                        UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間で生き残った！！\r\n");
+                        ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife * 0.1f);
+                        UpdateLife(ActiveList[ii]);
+                    }
+                    else
+                    {
                         ActiveList[ii].DeadPlayer();
-                    //}
+                    }
                 }
 
-                // todo
                 // TranscendentWishの効果が解除された時即死する条件を追加。
-                //if (ActiveList[ii].DeadSignForTranscendentWish)
-                //{
-                //    UpdateBattleText(ActiveList[ii].Name + "のTranscendentWishの効果が切れた！生命の源が失われていく・・・\r\n");
-                //    UpdateLife(ActiveList[ii], ActiveList[ii].CurrentLife, false, true, 0, false);
-                //    ActiveList[ii].CurrentLife = 0;
-                //    UpdateLife(ActiveList[ii], 0, false, false, 0, false);
-                //    ActiveList[ii].DeadPlayer();
-                //    System.Threading.Thread.Sleep(1000);
-                //}
+                if (ActiveList[ii].DeadSignForTranscendentWish)
+                {
+                    UpdateBattleText(ActiveList[ii].FirstName + "のTranscendentWishの効果が切れた！生命の源が失われていく・・・\r\n");
+                    UpdateLife(ActiveList[ii], ActiveList[ii].CurrentLife, false, true, 0, false);
+                    ActiveList[ii].CurrentLife = 0;
+                    UpdateLife(ActiveList[ii], 0, false, false, 0, false);
+                    ActiveList[ii].DeadPlayer();
+                    System.Threading.Thread.Sleep(1000);
+                }
 
-                // todo
-                //CheckChaosDesperate(ActiveList[ii]);
+                CheckChaosDesperate(ActiveList[ii]);
             }
 
             if (PlayerPartyDeathCheck() || EnemyPartyDeathCheck())
@@ -4891,21 +4889,20 @@ namespace DungeonPlayer
                     player.Target = memoTarget;
                 }
 
-                // todo
                 // ミス判定
-                //if (CheckDodge(player, target, false))
-                //{
-                //    // 回避された場合、ダメージは発生しない。デフレクション判定なども同様。
-                //    // 一番下にサブウェポンによる二回攻撃判定があるので、それは別とする。
-                //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.Black, true, false, String.Empty);
-                //}
-                //else if (CheckBlindMiss(player, target))
-                //{
-                //    // 暗闇により攻撃を外した場合ダメージは発生しない。デフレクション判定なども同様。
-                //    // 一番下にサブウェポンによる二回攻撃判定があるので、それは別とする。
-                //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.Black, true, false, String.Empty);
-                //}
-                //else
+                if (CheckDodge(player, target, false))
+                {
+                    // 回避された場合、ダメージは発生しない。デフレクション判定なども同様。
+                    // 一番下にサブウェポンによる二回攻撃判定があるので、それは別とする。
+                    AnimationDamage(0, target, 0, Color.black, true, false, String.Empty);
+                }
+                else if (CheckBlindMiss(player, target))
+                {
+                    // 暗闇により攻撃を外した場合ダメージは発生しない。デフレクション判定なども同様。
+                    // 一番下にサブウェポンによる二回攻撃判定があるので、それは別とする。
+                    AnimationDamage(0, target, 0, Color.black, true, false, String.Empty);
+                }
+                else
                 {
                     double damage = 0;
                     // ダメージ加算
@@ -5135,28 +5132,27 @@ namespace DungeonPlayer
                     //    return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
                     //}
 
-                    // todo
                     // ダメージ０変換
-                    //damage = DamageIsZero(damage, target);
+                    damage = DamageIsZero(damage, target);
 
-                    //// スケール・オブ・ブルーレイジによる効果
-                    //if ((target.MainArmor != null) && (target.MainArmor.Name == Database.RARE_SCALE_BLUERAGE))
-                    //{
-                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.ScaleOfBlueRageValue(player))
-                    //    {
-                    //        this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
-                    //        damage = 0;
-                    //    }
-                    //}
-                    //// スライド・スルー・シールドによる効果
-                    //if ((target.SubWeapon != null) && (target.SubWeapon.Name == Database.RARE_SLIDE_THROUGH_SHIELD))
-                    //{
-                    //    if (AP.Math.RandomInteger(100) < PrimaryLogic.SlideThroughShieldValue(player))
-                    //    {
-                    //        this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
-                    //        damage = 0;
-                    //    }
-                    //}
+                    // スケール・オブ・ブルーレイジによる効果
+                    if ((target.MainArmor != null) && (target.MainArmor.Name == Database.RARE_SCALE_BLUERAGE))
+                    {
+                        if (AP.Math.RandomInteger(100) < PrimaryLogic.ScaleOfBlueRageValue(player))
+                        {
+                            AnimationDamage(0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
+                            damage = 0;
+                        }
+                    }
+                    // スライド・スルー・シールドによる効果
+                    if ((target.SubWeapon != null) && (target.SubWeapon.Name == Database.RARE_SLIDE_THROUGH_SHIELD))
+                    {
+                        if (AP.Math.RandomInteger(100) < PrimaryLogic.SlideThroughShieldValue(player))
+                        {
+                            AnimationDamage(0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
+                            damage = 0;
+                        }
+                    }
 
                     // メッセージ更新
                     if (detectCritical)
@@ -5528,23 +5524,22 @@ namespace DungeonPlayer
         private bool AbstractMagicDamage(MainCharacter player, MainCharacter target,
             int interval, ref double damage, double magnification, string soundName, int messageNumber, TruthActionCommand.MagicType magicType, bool ignoreTargetDefense, CriticalType critical)
         {
-            // todo
-            //if (CheckDodge(player, target))
-            //{
-            //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, String.Empty);
-            //    return false;
-            //}
-            //if (CheckBlindMiss(player, target))
-            //{
-            //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, String.Empty);
-            //    return false;
-            //}
+            if (CheckDodge(player, target))
+            {
+                AnimationDamage(0, target, 0, Color.black, true, false, String.Empty);
+                return false;
+            }
+            if (CheckBlindMiss(player, target))
+            {
+                AnimationDamage(0, target, 0, Color.black, true, false, String.Empty);
+                return false;
+            }
 
-            //if (CheckSilence(player))
-            //{
-            //    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, Database.MISS_SPELL);
-            //    return false;
-            //}
+            if (CheckSilence(player))
+            {
+                AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SPELL);
+                return false;
+            }
 
 
             // ダメージ加算
@@ -6038,7 +6033,7 @@ namespace DungeonPlayer
             {
                 if (target.CurrentMirrorImage > 0)
                 {
-                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, "反射");
+                    AnimationDamage(0, target, 0, Color.black, false, false, "反射");
 
                     damage = DamageIsZero(damage, player);
                     LifeDamage(damage, player);
@@ -6088,7 +6083,7 @@ namespace DungeonPlayer
             {
                 if (AP.Math.RandomInteger(100) < PrimaryLogic.BlueReflectRobeValue(player))
                 {
-                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
+                    AnimationDamage(0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
                     damage = 0;
                 }
             }
@@ -6097,7 +6092,7 @@ namespace DungeonPlayer
             {
                 if (AP.Math.RandomInteger(100) < PrimaryLogic.SlideThroughShieldValue(player))
                 {
-                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
+                    AnimationDamage(0, target, 0, Color.black, false, false, Database.IMMUNE_DAMAGE);
                     damage = 0;
                 }
             }
@@ -6490,11 +6485,10 @@ namespace DungeonPlayer
         private void UpdateMana(MainCharacter player, double effectValue, bool plusValue, bool animationDamage, int interval)
         {
             UpdateMana(player);
-            // todo
-            //if (animationDamage)
-            //{
-            //    this.Invoke(new _AnimationDamage(AnimationDamage), effectValue, player, interval, Color.Blue, false, false, String.Empty);
-            //}
+            if (animationDamage)
+            {
+                AnimationDamage(effectValue, player, interval, Color.blue, false, false, String.Empty);
+            }
         }
         private void UpdateMana(MainCharacter player)
         {
@@ -6524,11 +6518,10 @@ namespace DungeonPlayer
                 player.meterCurrentSkillPoint.rectTransform.localScale = new Vector2(dx, 1.0f);
             }
 
-            // todo
-            //if (animationDamage)
-            //{
-            //    this.Invoke(new _AnimationDamage(AnimationDamage), effectValue, player, interval, Color.DarkGreen, false, false, String.Empty);
-            //}
+            if (animationDamage)
+            {
+                AnimationDamage(effectValue, player, interval, UnityColor.DarkGreen, false, false, String.Empty);
+            }
         }
         private void UpdateInstantPoint(MainCharacter player)
         {
@@ -6820,6 +6813,121 @@ namespace DungeonPlayer
                 this.nowStackAnimationCounter = 0;
                 StackInTheCommandEnd();
             }
+        }
+
+
+        private bool CheckDodge(MainCharacter player, MainCharacter target)
+        {
+            return CheckDodge(player, target, false);
+        }
+
+        private bool CheckDodge(MainCharacter player, MainCharacter target, bool ignoreDodge)
+        {
+            if ((target.MainArmor != null) && (target.MainArmor.Name == Database.RARE_ONEHUNDRED_BUTOUGI) &&
+                (target.CurrentStunning <= 0) &&
+                (target.CurrentFrozen <= 0) &&
+                (target.CurrentParalyze <= 0) &&
+                (target.CurrentTemptation <= 0))
+            {
+                if (AP.Math.RandomInteger(100) <= PrimaryLogic.OneHundredButougiValue(target))
+                {
+                    UpdateBattleText(target.FirstName + "は" + target.MainArmor.Name + "の効果で素早く身をかわした！\r\n");
+                    return true;
+                }
+            }
+
+            if ((target.Accessory != null) && (target.Accessory.Name == "身かわしのマント") &&
+                (target.CurrentStunning <= 0) &&
+                (target.CurrentFrozen <= 0) &&
+                (target.CurrentParalyze <= 0) &&
+                (target.CurrentTemptation <= 0))
+            {
+                if (AP.Math.RandomInteger(100) <= target.Accessory.MinValue)
+                {
+                    UpdateBattleText(target.FirstName + "は" + target.Accessory.Name + "の効果で素早く身をかわした！\r\n");
+                    return true;
+                }
+            }
+
+            if ((target.Accessory2 != null) && (target.Accessory2.Name == "身かわしのマント") &&
+                    (target.CurrentStunning <= 0) &&
+                    (target.CurrentFrozen <= 0) &&
+                    (target.CurrentParalyze <= 0) &&
+                    (target.CurrentTemptation <= 0))
+            {
+                if (AP.Math.RandomInteger(100) <= target.Accessory2.MinValue)
+                {
+                    UpdateBattleText(target.FirstName + "は" + target.Accessory2.Name + "の効果で素早く身をかわした！\r\n");
+                    return true;
+                }
+            }
+
+            if (target.CurrentBlinded > 0)
+            {
+                UpdateBattleText(target.FirstName + "は退避状態により、難なく身をかわした！\r\n");
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool CheckBlindMiss(MainCharacter player, MainCharacter target)
+        {
+            if (player.CurrentBlind > 0)
+            {
+                int randomValue = AP.Math.RandomInteger(1000);
+                if (randomValue <= 500)
+                {
+                    UpdateBattleText(player.FirstName + "は攻撃を外してしまった！\r\n");
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        /// <summary>
+        /// 沈黙状態で詠唱不可能かどうかを判定するチェックメソッド
+        /// </summary>
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckSilence(MainCharacter player)
+        {
+            if (player.CurrentSilence > 0)
+            {
+                AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SPELL);
+                return true;
+            }
+            return false;
+        }
+        
+        private bool CheckResurrectWithItem(MainCharacter target, string itemName)
+        {
+            if ((target.MainWeapon != null) && (target.MainWeapon.Name == itemName) && (target.MainWeapon.EffectStatus == false))
+            {
+                target.MainWeapon.EffectStatus = true;
+                return true;
+            }
+            else if ((target.SubWeapon != null) && (target.SubWeapon.Name == itemName) && (target.SubWeapon.EffectStatus == false))
+            {
+                target.SubWeapon.EffectStatus = true;
+                return true;
+            }
+            else if ((target.MainArmor != null) && (target.MainArmor.Name == itemName) && (target.MainArmor.EffectStatus == false))
+            {
+                target.MainArmor.EffectStatus = true;
+                return true;
+            }
+            else if ((target.Accessory != null) && (target.Accessory.Name == itemName) && (target.Accessory.EffectStatus == false))
+            {
+                target.Accessory.EffectStatus = true;
+                return true;
+            }
+            else if ((target.Accessory2 != null) && (target.Accessory2.Name == itemName) && (target.Accessory2.EffectStatus == false))
+            {
+                target.Accessory2.EffectStatus = true;
+                return true;
+            }
+
+            return false;
         }
 
         private void BattleEndPhase()

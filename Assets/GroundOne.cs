@@ -135,8 +135,6 @@ namespace DungeonPlayer
             WE.DungeonArea = 1;
             WE.AvailableFirstCharacter = true;
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
-            GroundOne.WE2.AvailableMixSpellSkill = true;
-            GroundOne.WE2.AvailableArcheTypeCommand = true;
 
             MC = objMC.AddComponent<MainCharacter>();
             MC.FirstName = Database.EIN_WOLENCE;
@@ -148,6 +146,8 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
+            GroundOne.WE2.AvailableMixSpellSkill = true;
+            GroundOne.WE2.AvailableArcheTypeCommand = true;
             //GroundOne.WE.TruthCompleteArea2 && GroundOne.WE.TruthCommunicationCompArea2 && !GroundOne.WE.Truth_CommunicationThirdHomeTown
             //WE.TruthCompleteArea2 = true;
             //WE.TruthCommunicationCompArea2 = true;
@@ -161,16 +161,16 @@ namespace DungeonPlayer
             //GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
             WE.TruthCompleteArea1 = true;
             WE.AvailableMixSpellSkill = false;
-            MC.Level = 22;
+            MC.Level = 1;
 
             WE.AvailableInstantCommand = true;
             GroundOne.WE.TruthCommunicationCompArea1 = true;
             GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
 
-            GroundOne.enemyName1 = Database.DUEL_DUMMY_SUBURI; // DUEL_EONE_FULNEA;
-            GroundOne.enemyName2 = Database.ENEMY_SUN_FLOWER;
-            GroundOne.enemyName3 = Database.ENEMY_SPEEDY_TAKA;
-            GroundOne.WE.AvailableSecondCharacter = true;
+            GroundOne.enemyName1 = Database.ENEMY_KOUKAKU_WURM; // DUEL_EONE_FULNEA;
+            GroundOne.enemyName2 = string.Empty;// Database.ENEMY_SUN_FLOWER;
+            GroundOne.enemyName3 = string.Empty;// Database.ENEMY_SPEEDY_TAKA;
+            //GroundOne.WE.AvailableSecondCharacter = true;
             //GroundOne.WE.AvailableThirdCharacter = true;
             //GroundOne.DuelMode = true;
             //GroundOne.WE2.RealWorld = true;

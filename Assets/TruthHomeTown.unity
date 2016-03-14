@@ -2012,6 +2012,11 @@ MonoBehaviour:
   buttonShinikia: {fileID: 1432666728}
   buttonPotion: {fileID: 1700978302}
   buttonDuel: {fileID: 1940800038}
+  buttonStatus: {fileID: 1204577498}
+  buttonBattleSetting: {fileID: 421342534}
+  buttonSave: {fileID: 1828840658}
+  buttonLoad: {fileID: 1805750741}
+  buttonExit: {fileID: 92670611}
   dayLabel: {fileID: 227483734}
   panelHide: {fileID: 528730067}
   imgCharacter1: {fileID: 538929667}

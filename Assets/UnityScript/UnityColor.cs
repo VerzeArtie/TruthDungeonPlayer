@@ -87,7 +87,7 @@ namespace DungeonPlayer
         public static Color LimeGreen = new Color(50.0f / 255.0f, 205.0f / 255.0f, 50.0f / 255.0f);
         public static Color Forestgreen = new Color(34, 139, 34);
         public static Color Green = new Color(0, 128, 0);
-        public static Color Darkgreen = new Color(0, 100, 0);
+        public static Color DarkGreen = new Color(0.0f, 100.0f / 255.0f, 0.0f);
         public static Color Seagreen = new Color(46, 139, 87);
         public static Color Mediumseagreen = new Color(60, 179, 113);
         public static Color Darkseagreen = new Color(143, 188, 143);
