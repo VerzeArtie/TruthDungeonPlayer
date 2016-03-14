@@ -118,6 +118,8 @@ namespace DungeonPlayer
 
         // TruthHomeTown
         public static bool TruthHomeTown_NowExit = false;
+        public static bool TruthHomeTown_DuelFailCount1 = false; // 現実世界、ラナDUEL戦で敗北した時１
+        public static bool TruthHomeTown_DuelFailCount2 = false; // 現実世界、ラナDUEL戦で敗北した時２
 
         public static bool InitializeGroundOne()
         {
@@ -180,6 +182,12 @@ namespace DungeonPlayer
             //else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
             WE.Truth_CommunicationGanz1 = true;
             WE.Truth_CommunicationGanz21 = true;
+
+            // (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent602 && GroundOne.WE2.SeekerEvent603 && GroundOne.WE2.SeekerEvent604 && !GroundOne.WE2.SeekerEvent605)
+            WE2.RealWorld = true;
+            WE2.SeekerEvent602 = true;
+            WE2.SeekerEvent603 = true;
+            WE2.SeekerEvent604 = true;
 
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;

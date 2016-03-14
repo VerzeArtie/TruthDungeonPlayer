@@ -57,9 +57,6 @@ namespace DungeonPlayer
         public string currentRequestFood = string.Empty;
 
         bool forceSaveCall = false; // シナリオ進行上、強制セーブした後、”休息しました”を表示したいためのフラグ
-        bool duelFailCount1 = false; // 現実世界、ラナDUEL戦で敗北した時１
-        bool duelFailCount2 = false; // 現実世界、ラナDUEL戦で敗北した時２
-        bool duelWinCount = false; // 現実世界、ラナDUEL戦で勝利した時
 
 	    // Use this for initialization
         public override void Start()
@@ -110,43 +107,8 @@ namespace DungeonPlayer
             {
                 this.firstDay = GroundOne.WE.GameDay; // 休息したかどうかのフラグに関わらず町に訪れた最初の日を記憶します。
             }
-
-            // DUEL結果に応じた処理
-            // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
-            //if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
-            //{
-            // ホームタウンではDUEL限定のため、再挑戦のロジックは通過しないため、コメントアウト
-            //}
-            // 逃げた時、経験値とゴールドは入らない。(つまり、降参した時）
-            if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
-            {
-                // 降参は敗北と同等であるため、敗北時と同じ処理を行う。
-                DuelLoseEvent();
-            }
-            // 敗北して、ゲーム終了を選択した時
-            else if (GroundOne.BattleResult == GroundOne.battleResult.Ignore)
-            {
-                DuelLoseEvent();
-            }
-            // 勝利した時
-            else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
-            {
-                DuelWinEvent();
-            }
-            // todo (続きのイベントを実装してください)
         }
-
-        private void DuelLoseEvent()
-        {
-            if (this.duelFailCount1 == false) { this.duelFailCount1 = true; }
-            else if (this.duelFailCount2 == false) { this.duelFailCount2 = true; }
-        }
-
-        private void DuelWinEvent()
-        {
-            this.duelWinCount = true;
-        }
-
+        
         string GetString(string msg, string protocolStr)
         {
             return msg.Substring(protocolStr.Length, msg.Length - protocolStr.Length);
@@ -172,8 +134,26 @@ namespace DungeonPlayer
             if (this.firstAction == false)
             {
                 this.firstAction = true;
-                if (this.duelFailCount1)
-                ShownEvent();
+
+                // DUEL結果に応じた処理
+                // 再挑戦時、逃げた時、敗北した時
+                if ((GroundOne.BattleResult == GroundOne.battleResult.Retry) ||
+                    (GroundOne.BattleResult == GroundOne.battleResult.Abort) ||
+                    (GroundOne.BattleResult == GroundOne.battleResult.Ignore))
+                {
+                    MessagePack.Message30003(ref nowMessage, ref nowEvent);
+                    NormalTapOK();
+                }
+                // 勝利した時
+                else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
+                {
+                    MessagePack.Message30004(ref nowMessage, ref nowEvent);
+                    NormalTapOK();
+                }
+                else
+                {
+                    ShownEvent();
+                }
             }
             if (this.panelMessage.gameObject.activeInHierarchy && btnOK.gameObject.activeInHierarchy)
             {
@@ -689,6 +669,11 @@ namespace DungeonPlayer
                     yesnoSystemMessage.text = this.nowMessage[this.nowReading];
                     groupYesnoSystemMessage.SetActive(true);
                 }
+                else if (current == MessagePack.ActionEvent.HomeTownCallDuel)
+                {
+                    systemMessagePanel.SetActive(false);
+                    systemMessage.text = "";
+                }
                 else
                 {
                     systemMessagePanel.SetActive(false);
@@ -756,29 +741,16 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownCallDuel)
                 {
-                    // todo
-                    BattleStart(nowMessage[this.nowReading], true);
-                    //bool failCount1 = false;
-                    //bool failCount2 = false;
-                    //while (true)
-                    //{
-                    //    // todo
-                    //    bool result = true;
-                    //    //bool result = BattleStart(Database.ENEMY_LAST_RANA_AMILIA, true);
-
-                    //    //if (failCount1 && failCount2)
-                    //    //{
-                    //    //    using (YesNoReqWithMessage ynrw = new YesNoReqWithMessage())
-                    //    //    {
-                    //    //        ynrw.StartPosition = FormStartPosition.CenterParent;
-                    //    //        ynrw.MainMessage = "戦闘をスキップし、勝利した状態からストーリーを進めますか？\r\n戦闘スキップによるペナルティはありません。";
-                    //    //        ynrw.ShowDialog();
-                    //    //        if (ynrw.DialogResult == DialogResult.Yes)
-                    //    //        {
-                    //    //            result = true;
-                    //    //        }
-                    //    //    }
-                    //    //}
+                    BattleStart(nowMessage[this.nowReading]);
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownGotoRealDungeon)
+                {
+                    //this.targetDungeon = 1;
+                    GroundOne.WE2.RealDungeonArea = 1;
+                    GroundOne.WE2.SeekerEvent605 = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                    SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
                 {
@@ -814,8 +786,11 @@ namespace DungeonPlayer
             }
         }
 
-        private void BattleStart(string p1, bool p2)
+        private void BattleStart(string playerName)
         {
+            GroundOne.enemyName1 = playerName;
+            GroundOne.enemyName2 = string.Empty;
+            GroundOne.enemyName3 = string.Empty;
             GroundOne.StopDungeonMusic();
             System.Threading.Thread.Sleep(500);
             SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, true, false, false, false);

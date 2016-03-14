@@ -65,6 +65,7 @@ namespace DungeonPlayer
             HomeTownYesNoMessageDisplay,
             HomeTownCallSaveLoad,
             HomeTownCallDuel,
+            HomeTownGotoRealDungeon,
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
@@ -6415,450 +6416,441 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
 
-            messageList.Add("アイン：・・・ラナか・・・");
+            messageList.Add("アイン：・・・ラナか・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：今からダンジョンに向かう気よね？");
+            messageList.Add("ラナ：今からダンジョンに向かう気よね？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、そのつもりだ。");
+            messageList.Add("アイン：ああ、そのつもりだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：・・・");
+            messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・");
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：【　真実の答え　】・・・見つかった？");
+            messageList.Add("ラナ：【　真実の答え　】・・・見つかった？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・");
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、見つかってる。");
+            messageList.Add("アイン：ああ、見つかってる。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：今言ってみて、聞いてあげるから。");
+            messageList.Add("ラナ：今言ってみて、聞いてあげるから。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：わかった。");
+            messageList.Add("アイン：わかった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：【力は力にあらず、力は全てである。】");
+            messageList.Add("アイン：【力は力にあらず、力は全てである。】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：【負けられない勝負。　しかし心は満たず。】");
+            messageList.Add("アイン：【負けられない勝負。　しかし心は満たず。】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：【力のみに依存するな。心を対にせよ。】");
+            messageList.Add("アイン：【力のみに依存するな。心を対にせよ。】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ラナの母ちゃんがやってた紫聡千律道場。あそこの十訓の一つだ。");
+            messageList.Add("アイン：ラナの母ちゃんがやってた紫聡千律道場。あそこの十訓の一つだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：そっか・・・ちゃんと覚えてたのね。");
+            messageList.Add("ラナ：そっか・・・ちゃんと覚えてたのね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ。あの時は分からなかったが、今、ようやく分かり始めたんだ。");
+            messageList.Add("アイン：ああ。あの時は分からなかったが、今、ようやく分かり始めたんだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：力だけじゃ限界がある、それだけじゃダメなんだ。");
+            messageList.Add("アイン：力だけじゃ限界がある、それだけじゃダメなんだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：でもだからと言って、信念や想いだけを持ってても駄目だ。");
+            messageList.Add("アイン：でもだからと言って、信念や想いだけを持ってても駄目だ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：両方とも併せもって初めて意味が出てくる。");
+            messageList.Add("アイン：両方とも併せもって初めて意味が出てくる。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：そんな感じだ。");
+            messageList.Add("アイン：そんな感じだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：そう・・・私にはよく分からないけど");
+            messageList.Add("ラナ：そう・・・私にはよく分からないけど"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：アインが感じた今の答えが真実なのね、きっと。");
+            messageList.Add("ラナ：アインが感じた今の答えが真実なのね、きっと。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：それを教えてくれたのが、この剣だ。");
+            messageList.Add("アイン：それを教えてくれたのが、この剣だ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：その練習用の剣？　小さい頃母さんからもらったやつよね。");
+            messageList.Add("ラナ：その練習用の剣？　小さい頃母さんからもらったやつよね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、そうだ。");
+            messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：これが神剣フェルトゥーシュだと知るまでにはずいぶんと時間がかかった。");
+            messageList.Add("アイン：これが神剣フェルトゥーシュだと知るまでにはずいぶんと時間がかかった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：あの頃は、どうみても単なるナマクラの剣にしか見えなかったからな。");
+            messageList.Add("アイン：あの頃は、どうみても単なるナマクラの剣にしか見えなかったからな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：・・・いつ頃から気づいてたのよ？");
+            messageList.Add("ラナ：・・・いつ頃から気づいてたのよ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ボケ師匠ランディスに出くわした時だ。");
+            messageList.Add("アイン：ボケ師匠ランディスに出くわした時だ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：そうだったの。それからは、気づかない振りしてたの？");
+            messageList.Add("ラナ：そうだったの。それからは、気づかない振りしてたの？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：いや、そういうわけじゃねえ。半信半疑だったってのが正直な所だ。");
+            messageList.Add("アイン：いや、そういうわけじゃねえ。半信半疑だったってのが正直な所だ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：あの剣は、どうみても単なるナマクラだ。実際使ってみても全然威力が出ないしな。");
+            messageList.Add("アイン：あの剣は、どうみても単なるナマクラだ。実際使ってみても全然威力が出ないしな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ふうん。それでお師匠さんに会ってからどう変わったのよ？");
+            messageList.Add("ラナ：ふうん。それでお師匠さんに会ってからどう変わったのよ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：師匠はどうもあの剣の特性に関して、もう一つ何か知ってるみたいだったんだ。");
+            messageList.Add("アイン：師匠はどうもあの剣の特性に関して、もう一つ何か知ってるみたいだったんだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：いや、あの剣に関わらず、全般的な話みたいだった。それを教えてくれた。");
+            messageList.Add("アイン：いや、あの剣に関わらず、全般的な話みたいだった。それを教えてくれた。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：心を燈して放たないと、威力は発揮されない。何かそんな話だった。");
+            messageList.Add("アイン：心を燈して放たないと、威力は発揮されない。何かそんな話だった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：心を燈して・・・って事は。");
+            messageList.Add("ラナ：心を燈して・・・って事は。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：あの剣、最高攻撃力が異常に高い。そして、最低攻撃力も異常に低い。");
+            messageList.Add("アイン：あの剣、最高攻撃力が異常に高い。そして、最低攻撃力も異常に低い。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：心を燈さない限り、最高攻撃力は出ない。つまり、ナマクラなままってわけだ。");
+            messageList.Add("アイン：心を燈さない限り、最高攻撃力は出ない。つまり、ナマクラなままってわけだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：それが分かった時点で、俺の力に対する考えは変わった。");
+            messageList.Add("アイン：それが分かった時点で、俺の力に対する考えは変わった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：あの十訓の７番目。あの言葉通り、力は必要だが、力だけじゃ駄目だって事さ。");
+            messageList.Add("アイン：あの十訓の７番目。あの言葉通り、力は必要だが、力だけじゃ駄目だって事さ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：うん・・・");
+            messageList.Add("ラナ：うん・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：アインって・・・凄いわね。");
+            messageList.Add("ラナ：アインって・・・凄いわね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：な、いやいや、凄くなんかねえって。");
+            messageList.Add("アイン：な、いやいや、凄くなんかねえって。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ううん、そういう風に考えが行き届くのは凄いわよ。私じゃ考えもつかないもの。");
+            messageList.Add("ラナ：ううん、そういう風に考えが行き届くのは凄いわよ。私じゃ考えもつかないもの。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：いや、俺の勝手な解釈だからな。間違ってる可能性の方が高いぞ。");
+            messageList.Add("アイン：いや、俺の勝手な解釈だからな。間違ってる可能性の方が高いぞ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ううん、解釈が間違ってるとかそういう話じゃないの。");
+            messageList.Add("ラナ：ううん、解釈が間違ってるとかそういう話じゃないの。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：アインの雰囲気そのものが、凄く変わるのよ。");
+            messageList.Add("ラナ：アインの雰囲気そのものが、凄く変わるのよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：凄く冷静で・・・的を得ていて・・・");
+            messageList.Add("ラナ：凄く冷静で・・・的を得ていて・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：いつものアインじゃないみたい。");
+            messageList.Add("ラナ：いつものアインじゃないみたい。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ま・・・");
+            messageList.Add("アイン：ま・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：まあ、そういう側面もあるさ！　ッハッハッハ！");
+            messageList.Add("アイン：まあ、そういう側面もあるさ！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：良いのよ、無理して雰囲気変えなくて、ッフフ♪");
+            messageList.Add("ラナ：良いのよ、無理して雰囲気変えなくて、ッフフ♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：わ、悪いな・・・");
+            messageList.Add("アイン：わ、悪いな・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ッフフ、良いって言ってるじゃないの♪");
+            messageList.Add("ラナ：ッフフ、良いって言ってるじゃないの♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：でも、ついでに言わせてもらうわね。");
+            messageList.Add("ラナ：でも、ついでに言わせてもらうわね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：な、なんだ？");
+            messageList.Add("アイン：な、なんだ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：アイン、あんた私に手加減してるでしょ？");
+            messageList.Add("ラナ：アイン、あんた私に手加減してるでしょ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：手加減？？　一体何の話だ。");
+            messageList.Add("アイン：手加減？？　一体何の話だ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：戦闘スタイルの事よ。");
+            messageList.Add("ラナ：戦闘スタイルの事よ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：戦闘・・・スタイル？");
+            messageList.Add("アイン：戦闘・・・スタイル？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：そうよ。私レベルが相手ならバレないとでも思ってたのかしら。");
+            messageList.Add("ラナ：そうよ。私レベルが相手ならバレないとでも思ってたのかしら。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：いや、俺は手加減なんてしてないぞ。気のせいじゃないのか？");
+            messageList.Add("アイン：いや、俺は手加減なんてしてないぞ。気のせいじゃないのか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：見たわよ、アンタが傭兵訓練所を卒業した後、コッソリ独自で練習している所。");
+            messageList.Add("ラナ：見たわよ、アンタが傭兵訓練所を卒業した後、コッソリ独自で練習している所。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：あんな動き・・・見た事もないスピードだったわ。");
+            messageList.Add("ラナ：あんな動き・・・見た事もないスピードだったわ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ま、待て。あれはだな・・・");
+            messageList.Add("アイン：ま、待て。あれはだな・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：いいのよ。私じゃ正直、追いつけないレベルだった。");
+            messageList.Add("ラナ：いいのよ。私じゃ正直、追いつけないレベルだった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：動作切替タイミング、詠唱速度、剣を振るう速度。");
+            messageList.Add("ラナ：動作切替タイミング、詠唱速度、剣を振るう速度。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：全てが別次元だったわ。");
+            messageList.Add("ラナ：全てが別次元だったわ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：どうして・・・私に見せてくれないのかしら？");
+            messageList.Add("ラナ：どうして・・・私に見せてくれないのかしら？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・　・・・");
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：すまねえ。");
+            messageList.Add("アイン：すまねえ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：謝らないでよ・・・どうなの？本当の所を教えてちょうだいよ。");
+            messageList.Add("ラナ：謝らないでよ・・・どうなの？本当の所を教えてちょうだいよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・　・・・　・・・");
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：やっぱり・・・そういう事よね。");
+            messageList.Add("ラナ：やっぱり・・・そういう事よね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：まて、そうじゃねえんだ！");
+            messageList.Add("アイン：まて、そうじゃねえんだ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：俺が悪いのは本当だ。");
+            messageList.Add("アイン：俺が悪いのは本当だ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ラナ、お前にだけはそういうとこを見せたくなかったんだ。");
+            messageList.Add("アイン：ラナ、お前にだけはそういうとこを見せたくなかったんだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：知られたく・・・なかったんだ。");
+            messageList.Add("アイン：知られたく・・・なかったんだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：お前がもし、俺のそういう側面を知ってしまえば・・・");
+            messageList.Add("アイン：お前がもし、俺のそういう側面を知ってしまえば・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：俺の前から・・・居なくなるんじゃないかって・・・");
+            messageList.Add("アイン：俺の前から・・・居なくなるんじゃないかって・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：力量に差が出てきたら、私がアインから離れていく。そう考えたって事？");
+            messageList.Add("ラナ：力量に差が出てきたら、私がアインから離れていく。そう考えたって事？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・ああ・・・");
+            messageList.Add("アイン：・・・ああ・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：・・・　・・・");
+            messageList.Add("ラナ：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ッフ、ッフフ♪　なーに言ってんのかしら、バッカじゃないのアンタ！？");
+            messageList.Add("ラナ：ッフ、ッフフ♪　なーに言ってんのかしら、バッカじゃないのアンタ！？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：力量なんて・・・そもそもアンタに私が追いつけるワケないでしょ！？");
+            messageList.Add("ラナ：力量なんて・・・そもそもアンタに私が追いつけるワケないでしょ！？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ラ、ラナ・・・");
+            messageList.Add("アイン：ラ、ラナ・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：何よそれ・・・失礼しちゃうわよホント。アンタの実力ってどんだけなのよ本当。");
+            messageList.Add("ラナ：何よそれ・・・失礼しちゃうわよホント。アンタの実力ってどんだけなのよ本当。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：隠すとか隠さないとか・・・くだらない事ばっかり考えて・・・");
+            messageList.Add("ラナ：隠すとか隠さないとか・・・くだらない事ばっかり考えて・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：隠さなきゃいけないレベルになっちゃってる、そう言いたいわけ！？");
+            messageList.Add("ラナ：隠さなきゃいけないレベルになっちゃってる、そう言いたいわけ！？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：うっ・・・");
+            messageList.Add("アイン：うっ・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：あの練習内容の異次元みたいなスピードから察するに、そういう事よね！？");
+            messageList.Add("ラナ：あの練習内容の異次元みたいなスピードから察するに、そういう事よね！？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：私なんかじゃ。。。絶対にあんなの出来っこないもん。。。");
+            messageList.Add("ラナ：私なんかじゃ。。。絶対にあんなの出来っこないもん。。。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：いや、今は出来なくとも・・・");
+            messageList.Add("アイン：いや、今は出来なくとも・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：そんな風に気を使わないで。　私、自分の事は分かってるつもりだから。");
+            messageList.Add("ラナ：そんな風に気を使わないで。　私、自分の事は分かってるつもりだから。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：・・・　・・・");
+            messageList.Add("ラナ：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・　・・・");
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ッフフ・・・おかしいわね。昔の小さい頃のアインってさ、すごく弱かったし。");
+            messageList.Add("ラナ：ッフフ・・・おかしいわね。昔の小さい頃のアインってさ、すごく弱かったし。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：いっつも泣いてばっかり。で、私がいっつも守ってあげてたのに・・・");
+            messageList.Add("ラナ：いっつも泣いてばっかり。で、私がいっつも守ってあげてたのに・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：いつの間にそんなに腕を上げちゃってたのかしら、信じられないわ本当。");
+            messageList.Add("ラナ：いつの間にそんなに腕を上げちゃってたのかしら、信じられないわ本当。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ッハハ・・・あったな、そういやそんな事も・・・");
+            messageList.Add("アイン：ッハハ・・・あったな、そういやそんな事も・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：・・・　・・・");
+            messageList.Add("ラナ：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・　・・・");
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：いいわ、アイン。");
+            messageList.Add("ラナ：いいわ、アイン。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：アインが私に対して、変に気を使ってた事は許してあげる。");
+            messageList.Add("ラナ：アインが私に対して、変に気を使ってた事は許してあげる。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：わ・・・悪かったな、マジで。");
+            messageList.Add("アイン：わ・・・悪かったな、マジで。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：これからは・・・そうだな、あまり気を使わずに・・・。");
+            messageList.Add("アイン：これからは・・・そうだな、あまり気を使わずに・・・。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：あっ、そぉーーーだ！！！");
+            messageList.Add("ラナ：あっ、そぉーーーだ！！！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：うお！？なんだいきなり！？");
+            messageList.Add("アイン：うお！？なんだいきなり！？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：今、良い事思いついちゃった♪");
+            messageList.Add("ラナ：今、良い事思いついちゃった♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：バカアイン、今から言うのは命令よ。ちゃんと聞きなさいよね。");
+            messageList.Add("ラナ：バカアイン、今から言うのは命令よ。ちゃんと聞きなさいよね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：な、何だ？");
+            messageList.Add("アイン：な、何だ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：私、今ここでアインにDUEL決闘を申し込むわ。");
+            messageList.Add("ラナ：私、今ここでアインにDUEL決闘を申し込むわ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：な！！！");
+            messageList.Add("アイン：な！！！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：で、条件を一つ付け加えるわ。聞きなさい。");
+            messageList.Add("ラナ：で、条件を一つ付け加えるわ。聞きなさい。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：な、何だその条件ってのは？");
+            messageList.Add("アイン：な、何だその条件ってのは？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：あんた今度こそ本当に、今この場で手加減せずに私に挑んでもらうわよ。");
+            messageList.Add("ラナ：あんた今度こそ本当に、今この場で手加減せずに私に挑んでもらうわよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：それが絶対の条件よ。どう？");
+            messageList.Add("ラナ：それが絶対の条件よ。どう？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：っぐ・・・");
+            messageList.Add("アイン：っぐ・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：もし万が一手加減してたら・・・どうなる？");
+            messageList.Add("アイン：もし万が一手加減してたら・・・どうなる？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：その時は、私はアンタともうコンビは組まないわ。");
+            messageList.Add("ラナ：その時は、私はアンタともうコンビは組まないわ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：手加減されてまで一緒に居たくないから。");
+            messageList.Add("ラナ：手加減されてまで一緒に居たくないから。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・分かった。");
+            messageList.Add("アイン：・・・分かった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：この一戦、絶対に手加減はしねえ。約束だ！");
+            messageList.Add("アイン：この一戦、絶対に手加減はしねえ。約束だ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・あっ！ま、まてよ！？");
+            messageList.Add("アイン：・・・あっ！ま、まてよ！？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：万が一それで、俺が勝ってしまったらどうなるんだ？");
+            messageList.Add("アイン：万が一それで、俺が勝ってしまったらどうなるんだ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：やっぱり・・・その時も・・・");
+            messageList.Add("アイン：やっぱり・・・その時も・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：・・・ップ");
+            messageList.Add("ラナ：・・・ップ"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ッフフフ、アーッハハハハ♪");
+            messageList.Add("ラナ：ッフフフ、アーッハハハハ♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：何そんな心配してんのよ、大丈夫よ♪");
+            messageList.Add("ラナ：何そんな心配してんのよ、大丈夫よ♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：手加減してない本気のアンタを見たいだけよ。");
+            messageList.Add("ラナ：手加減してない本気のアンタを見たいだけよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：アンタ基本的に勝って当然なんだから、またクダラナイ事考えないでよねホント♪");
+            messageList.Add("ラナ：アンタ基本的に勝って当然なんだから、またクダラナイ事考えないでよねホント♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：（　どっちにしろ・・・本当に離れたりするわけ・・・　）");
+            messageList.Add("ラナ：（　どっちにしろ・・・本当に離れたりするわけ・・・　）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：えっ・・・？");
+            messageList.Add("アイン：えっ・・・？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ホーラホラホラホラ、じゃあ行くわよ。ちゃんと構えなさいよね♪");
+            messageList.Add("ラナ：ホーラホラホラホラ、じゃあ行くわよ。ちゃんと構えなさいよね♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：あ、ああ。ちょっと待ってくれな。");
+            messageList.Add("アイン：あ、ああ。ちょっと待ってくれな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：・・・よし、ＯＫだ。");
+            messageList.Add("アイン：・・・よし、ＯＫだ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：私も良いわよ♪");
+            messageList.Add("ラナ：私も良いわよ♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：じゃあ、正真正銘の本気だ。手加減抜きで行くぜ！");
+            messageList.Add("アイン：じゃあ、正真正銘の本気だ。手加減抜きで行くぜ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：始めるわよ、３");
+            messageList.Add("ラナ：始めるわよ、３"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：２");
+            messageList.Add("アイン：２"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：１");
+            messageList.Add("ラナ：１"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：０！！");
+            messageList.Add("アイン：０！！"); eventList.Add(ActionEvent.None);
 
             messageList.Add(Database.ENEMY_LAST_RANA_AMILIA); eventList.Add(ActionEvent.HomeTownCallDuel);
+        }
 
+        public static void Message30003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            // 「DUEL最終戦闘：ラナ」で負けた場合
+            messageList.Add("アイン：ッグ・・！！"); eventList.Add(ActionEvent.None);
 
-            //    if (result)
-            //    {
-            //        // 勝ち
-            //        UpdateMainMessage("ラナ：ッキャ！！");
+            if (GroundOne.TruthHomeTown_DuelFailCount1 == false)
+            {
+                GroundOne.TruthHomeTown_DuelFailCount1 = true;
 
-            //        UpdateMainMessage("アイン：しまっっ！！　大丈夫か、ラナ！？");
+                messageList.Add("ラナ：今ので当たるなんて、アインらしくないわね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：いっつつつ・・・大丈夫よ、少し打っただけだから。");
+                messageList.Add("アイン：ックソ・・・避けたつもりだったんだがな。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：け、怪我とかしてねえか？大丈夫なのか？痛い所はないか！？");
+                messageList.Add("ラナ：今のアイン・・・やっぱり動きが鈍ってるわよ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：だーいじょーぶだって言ってるでしょーが。ホラホラ元気よ♪");
+                messageList.Add("ラナ：見せてちょうだいよ、本当の動きを。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：よ・・・良かった。本当に大丈夫だな？");
+                messageList.Add("アイン：あ、ああ。今度こそ！"); eventList.Add(ActionEvent.None);
+            }
+            else if (GroundOne.TruthHomeTown_DuelFailCount2 == false)
+            {
+                GroundOne.TruthHomeTown_DuelFailCount2 = true;
+                messageList.Add("ラナ：手加減が身体に染み込んでいるみたいね。動きが遅かったわよ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：しつこいわね。蹴りかえすわよ。");
+                messageList.Add("アイン：ラナ相手だと・・・動きが縮こまってるのか・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：わわわ、わかった。");
+                messageList.Add("ラナ：今のじゃ納得いかないわ、アイン本気をだしてちょうだい。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：で・・・手加減はしてないわよね？");
+                messageList.Add("アイン：ああ、今度こそ！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：今のじゃ納得いかないわ、アイン本気をだしてちょうだい。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：もちろんさ！　俺の得意戦術をそのまま使ったからな！");
+                messageList.Add("アイン：っく、今度こそ！"); eventList.Add(ActionEvent.None);
+            }
 
-            //        UpdateMainMessage("ラナ：でも、まさかあんなタイミングから入れてくるとは思わなかったわ。");
+            messageList.Add(Database.ENEMY_LAST_RANA_AMILIA); eventList.Add(ActionEvent.HomeTownCallDuel);
+        }
 
-            //        UpdateMainMessage("ラナ：アインってさ、どこでそういうの覚えてきてるの？");
+        public static void Message30004(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            // 「DUEL最終戦闘：ラナ」で勝った場合
+            messageList.Add("ラナ：ッキャ！！"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：どこって言われてもな・・・師匠とやってるうちに自然と・・・かな。");
+            messageList.Add("アイン：しまっっ！！　大丈夫か、ラナ！？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：ふ～ん・・・やっぱりランディスのお師匠さんが影響してるわけね。");
+            messageList.Add("ラナ：いっつつつ・・・大丈夫よ、少し打っただけだから。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：あとは・・・自分なりに、コソコソっとだな・・・");
+            messageList.Add("アイン：け、怪我とかしてねえか？大丈夫なのか？痛い所はないか！？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：他にはDUEL闘技場を観察してて、自分にはないトコを観察かな。");
+            messageList.Add("ラナ：だーいじょーぶだって言ってるでしょーが。ホラホラ元気よ♪"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：傭兵訓練時代の基礎訓練項目もたまに読み返して反復練習はしてる。");
+            messageList.Add("アイン：よ・・・良かった。本当に大丈夫だな？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：モンスター狩りの時も、普段使わない新戦術を取り入れてみたり。");
+            messageList.Add("ラナ：しつこいわね。蹴りかえすわよ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：あとは・・・");
+            messageList.Add("アイン：わわわ、わかった。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：あ～あ、もうイイ！　私の負け！！");
+            messageList.Add("ラナ：で・・・手加減はしてないわよね？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：うわっ、すまねえ、悪かったって。");
+            messageList.Add("アイン：もちろんさ！　俺の得意戦術をそのまま使ったからな！"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：ううん、良いの。本気を見せてくれたんだし、スッキリしたわ♪");
+            messageList.Add("ラナ：でも、まさかあんなタイミングから入れてくるとは思わなかったわ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ハッ・・・ハハハ・・・");
+            messageList.Add("ラナ：アインってさ、どこでそういうの覚えてきてるの？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：ダンジョン、私を誘わないで一人でいくつもりなんでしょ？");
+            messageList.Add("アイン：どこって言われてもな・・・師匠とやってるうちに自然と・・・かな。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：うっ・・・");
+            messageList.Add("ラナ：ふ～ん・・・やっぱりランディスのお師匠さんが影響してるわけね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：バカアインは嘘作りが下手くそすぎなのよ。そんなのお見通しよ。");
+            messageList.Add("アイン：あとは・・・自分なりに、コソコソっとだな・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ハハハ・・・まあ・・・");
+            messageList.Add("アイン：他にはDUEL闘技場を観察してて、自分にはないトコを観察かな。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：嘘というか、正直パーティに誘うつもりはあった。");
+            messageList.Add("アイン：傭兵訓練時代の基礎訓練項目もたまに読み返して反復練習はしてる。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：これは本当だ。");
+            messageList.Add("アイン：モンスター狩りの時も、普段使わない新戦術を取り入れてみたり。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：・・・　・・・");
+            messageList.Add("アイン：あとは・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：でも、それじゃ・・・駄目みたいなんだ。");
+            messageList.Add("ラナ：あ～あ、もうイイ！　私の負け！！"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：俺は・・・");
+            messageList.Add("アイン：うわっ、すまねえ、悪かったって。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ここを抜けださなきゃならないんだ。");
+            messageList.Add("ラナ：ううん、良いの。本気を見せてくれたんだし、スッキリしたわ♪"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：何とか・・・辿りつけそうなの？");
+            messageList.Add("アイン：ハッ・・・ハハハ・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ああ、お前のイヤリングもホラ。");
+            messageList.Add("ラナ：ダンジョン、私を誘わないで一人でいくつもりなんでしょ？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：あっ・・・");
+            messageList.Add("アイン：うっ・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：今は、俺が手にしたままの状態だ。");
+            messageList.Add("ラナ：バカアインは嘘作りが下手くそすぎなのよ。そんなのお見通しよ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：・・・分かったんだ、どうしなければいけないか。");
+            messageList.Add("アイン：ハハハ・・・まあ・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：・・・");
+            messageList.Add("アイン：嘘というか、正直パーティに誘うつもりはあった。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：ありがと。こんな所まで頑張ってくれて。");
+            messageList.Add("アイン：これは本当だ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：バカ言うな。俺自身の問題だ。");
+            messageList.Add("ラナ：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：絶対に何とかしてやる。任せろ。");
+            messageList.Add("アイン：でも、それじゃ・・・駄目みたいなんだ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：うん、お願い。期待してるから♪");
+            messageList.Add("アイン：俺は・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：じゃあな、行ってくるぜ！！");
+            messageList.Add("アイン：ここを抜けださなきゃならないんだ。"); eventList.Add(ActionEvent.None);
 
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        // todo
-            //        //using (YesNoReqWithMessage yerw = new YesNoReqWithMessage())
-            //        {
-            //            UpdateMainMessage("アイン：ッグ・・！！");
-            //            if (!failCount1)
-            //            {
-            //                failCount1 = true;
+            messageList.Add("ラナ：何とか・・・辿りつけそうなの？"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("ラナ：今ので当たるなんて、アインらしくないわね。");
+            messageList.Add("アイン：ああ、お前のイヤリングもホラ。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("アイン：ックソ・・・避けたつもりだったんだがな。");
+            messageList.Add("ラナ：あっ・・・"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("ラナ：今のアイン・・・やっぱり動きが鈍ってるわよ。");
+            messageList.Add("アイン：今は、俺が手にしたままの状態だ。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("ラナ：見せてちょうだいよ、本当の動きを。");
+            messageList.Add("アイン：・・・分かったんだ、どうしなければいけないか。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("アイン：あ、ああ。今度こそ！");
-            //            }
-            //            else if (!failCount2)
-            //            {
-            //                failCount2 = true;
-            //                UpdateMainMessage("ラナ：手加減が身体に染み込んでいるみたいね。動きが遅かったわよ。");
+            messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("アイン：ラナ相手だと・・・動きが縮こまってるのか・・・");
+            messageList.Add("ラナ：ありがと。こんな所まで頑張ってくれて。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("ラナ：今のじゃ納得いかないわ、アイン本気をだしてちょうだい。");
+            messageList.Add("アイン：バカ言うな。俺自身の問題だ。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("アイン：ああ、今度こそ！");
-            //            }
-            //            else
-            //            {
-            //                UpdateMainMessage("ラナ：今のじゃ納得いかないわ、アイン本気をだしてちょうだい。");
+            messageList.Add("アイン：絶対に何とかしてやる。任せろ。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("アイン：っく、今度こそ！");
-            //            }
-            //        }
-            //    }
-            //}
+            messageList.Add("ラナ：うん、お願い。期待してるから♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあな、行ってくるぜ！！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("---- ダンジョンゲートの入り口にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            //GroundOne.StopDungeonMusic();
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-            //UpdateMainMessage("アイン：（・・・ダンジョンへ・・・俺は向かう・・・）");
+            messageList.Add("アイン：（・・・ダンジョンへ・・・俺は向かう・・・）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（ラナのイヤリングは手にしたままだ）");
+            messageList.Add("アイン：（ラナのイヤリングは手にしたままだ）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（俺はこれの意味を知っている）");
+            messageList.Add("アイン：（俺はこれの意味を知っている）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（・・・　・・・　・・・）");
+            messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //UpdateMainMessage("アイン：（行こう、ダンジョンへ）");
+            messageList.Add("アイン：（行こう、ダンジョンへ）"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //this.targetDungeon = 1;
-            //GroundOne.WE2.RealDungeonArea = 1;
-            //GroundOne.WE2.SeekerEvent605 = true;
-            //Method.AutoSaveTruthWorldEnvironment();
-            Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
-            //this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGotoRealDungeon);
         }
         #endregion
         #region "ラナと会話"
