@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -59,7 +59,8 @@ namespace DungeonPlayer
         bool forceSaveCall = false; // シナリオ進行上、強制セーブした後、”休息しました”を表示したいためのフラグ
         bool duelFailCount1 = false; // 現実世界、ラナDUEL戦で敗北した時１
         bool duelFailCount2 = false; // 現実世界、ラナDUEL戦で敗北した時２
- 
+        bool duelWinCount = false; // 現実世界、ラナDUEL戦で勝利した時
+
 	    // Use this for initialization
         public override void Start()
         {
@@ -109,6 +110,41 @@ namespace DungeonPlayer
             {
                 this.firstDay = GroundOne.WE.GameDay; // 休息したかどうかのフラグに関わらず町に訪れた最初の日を記憶します。
             }
+
+            // DUEL結果に応じた処理
+            // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
+            //if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
+            //{
+            // ホームタウンではDUEL限定のため、再挑戦のロジックは通過しないため、コメントアウト
+            //}
+            // 逃げた時、経験値とゴールドは入らない。(つまり、降参した時）
+            if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
+            {
+                // 降参は敗北と同等であるため、敗北時と同じ処理を行う。
+                DuelLoseEvent();
+            }
+            // 敗北して、ゲーム終了を選択した時
+            else if (GroundOne.BattleResult == GroundOne.battleResult.Ignore)
+            {
+                DuelLoseEvent();
+            }
+            // 勝利した時
+            else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
+            {
+                DuelWinEvent();
+            }
+            // todo (続きのイベントを実装してください)
+        }
+
+        private void DuelLoseEvent()
+        {
+            if (this.duelFailCount1 == false) { this.duelFailCount1 = true; }
+            else if (this.duelFailCount2 == false) { this.duelFailCount2 = true; }
+        }
+
+        private void DuelWinEvent()
+        {
+            this.duelWinCount = true;
         }
 
         string GetString(string msg, string protocolStr)
@@ -136,6 +172,7 @@ namespace DungeonPlayer
             if (this.firstAction == false)
             {
                 this.firstAction = true;
+                if (this.duelFailCount1)
                 ShownEvent();
             }
             if (this.panelMessage.gameObject.activeInHierarchy && btnOK.gameObject.activeInHierarchy)
@@ -145,25 +182,6 @@ namespace DungeonPlayer
                     tapOK();
                 }
             }
-            // after revive
-            //if (this.firstAction == false) {
-            //    this.btnOK.gameObject.SetActive(false);
-            //    if (SaveData.GetName () != "") {
-            //        //debug.text += "getName not null.\r\n";
-            //        if (this.nameField != null && this.inputName != null) {
-            //            this.nameField.text = SaveData.GetName();
-            //            this.nameField.interactable = false;
-            //            this.firstAction = true;
-            //        }
-            //        else
-            //        {
-            //            Debug.Log("namefield null...");
-            //        }
-            //    }
-            //    else {
-            //        this.firstAction = true;
-            //    }
-            //}
 	    }
 
 	    private void CallNext() {
