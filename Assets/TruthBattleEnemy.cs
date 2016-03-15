@@ -62,6 +62,7 @@ namespace DungeonPlayer
         public Sprite[] imageSandglass;
         
         // GUI
+        public TruthImage[] FieldBuff;
         public GameObject groupParentBackpack;
         public GameObject[] back_Backpack;
         public Text[] backpack;
@@ -496,7 +497,7 @@ namespace DungeonPlayer
             KeyCode[] keyCodeData1 = { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9 };
             for (int ii = 0; ii < keyCodeData1.Length; ii++)
             {
-                if ((Input.KeyDown(keyCodeData1[ii]) &&
+                if (Input.GetKeyDown(keyCodeData1[ii]) &&
                     (this.ActionButton1[ii].gameObject.activeInHierarchy))
                 {
                     ActionCommand(detectShift, GroundOne.MC, GroundOne.MC.BattleActionCommandList[ii]);
@@ -506,7 +507,7 @@ namespace DungeonPlayer
             KeyCode[] keyCodeData2 = { KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R, KeyCode.T, KeyCode.Y, KeyCode.U, KeyCode.I, KeyCode.O };
             for (int ii = 0; ii < keyCodeData2.Length; ii++)
             {
-                if ((Input.KeyDown(keyCodeData2[ii]) &&
+                if (Input.GetKeyDown(keyCodeData2[ii]) &&
                     (this.ActionButton2[ii].gameObject.activeInHierarchy))
                 {
                     ActionCommand(detectShift, GroundOne.SC, GroundOne.SC.BattleActionCommandList[ii]);
@@ -516,7 +517,7 @@ namespace DungeonPlayer
             KeyCode[] keyCodeData3 = { KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.F, KeyCode.G, KeyCode.H, KeyCode.J, KeyCode.K, KeyCode.L };
             for (int ii = 0; ii < keyCodeData3.Length; ii++)
             {
-                if ((Input.KeyDown(keyCodeData3[ii]) &&
+                if (Input.GetKeyDown(keyCodeData3[ii]) &&
                     (this.ActionButton3[ii].gameObject.activeInHierarchy))
                 {
                     ActionCommand(detectShift, GroundOne.TC, GroundOne.TC.BattleActionCommandList[ii]);
@@ -3539,7 +3540,7 @@ namespace DungeonPlayer
                 {
                     if (ActiveList[ii].CurrentOneAuthority > 0)
                     {
-                        ActiveList[ii].CurrentSkillPoint += (int)PrimaryLogic.OneAuthorityValue(ActiveList[ii], this.DuelMode);
+                        ActiveList[ii].CurrentSkillPoint += (int)PrimaryLogic.OneAuthorityValue(ActiveList[ii], GroundOne.DuelMode);
                     }
                     // 各プレイヤーのスキル値を回復
                     ActiveList[ii].CurrentSkillPoint++;
@@ -3558,16 +3559,16 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        if (mc != null && !mc.Dead) { group.Add(mc); }
-                        if (sc != null && !sc.Dead) { group.Add(sc); }
-                        if (tc != null && !tc.Dead) { group.Add(tc); }
+                        if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+                        if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+                        if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
                     }
 
                     for (int jj = 0; jj < group.Count; jj++)
                     {
-                        double effectValue = PrimaryLogic.PainfulInsanityValue(ActiveList[ii], this.DuelMode);
+                        double effectValue = PrimaryLogic.PainfulInsanityValue(ActiveList[ii], GroundOne.DuelMode);
                         effectValue = DamageIsZero(effectValue, group[jj]);
-                        UpdateBattleText(ActiveList[ii].Name + "は" + group[jj].Name + "の心へ直接的なダメージを発生させている。" +((int)effectValue).ToString() + "のダメージ\r\n");
+                        UpdateBattleText(ActiveList[ii].FirstName + "は" + group[jj].FirstName + "の心へ直接的なダメージを発生させている。" + ((int)effectValue).ToString() + "のダメージ\r\n");
                         LifeDamage(effectValue, group[jj]);
                     }
                 }
@@ -3577,120 +3578,118 @@ namespace DungeonPlayer
                 {
                     double effectValue = PrimaryLogic.PoisonValue(ActiveList[ii]);
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "は猛毒の効果により、ライフを削られていく。\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "は猛毒の効果により、ライフを削られていく。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
                 }
                 // スリップ効果
                 if (ActiveList[ii].CurrentSlip > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = PrimaryLogic.SlipValue(ActiveList[ii]);
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "の傷口はひどく、ライフが削られていく。\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "の傷口はひどく、ライフが削られていく。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
                 }
                 // フラッシュ・ブレイズ効果
                 if (ActiveList[ii].CurrentFlashBlazeCount > 0 && ActiveList[ii].Dead == false)
                 {
-                    double effectValue = PrimaryLogic.FlashBlaze_A_Value(ActiveList[ii], this.DuelMode);
+                    double effectValue = PrimaryLogic.FlashBlaze_A_Value(ActiveList[ii], GroundOne.DuelMode);
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "に閃光の炎が降り注ぐ。\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "に閃光の炎が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
                     ActiveList[ii].RemoveFlashBlaze();
                 }
                 // エンレイジ・ブラスト効果
                 if (ActiveList[ii].CurrentEnrageBlast > 0 && ActiveList[ii].Dead == false)
                 {
-                    double effectValue = PrimaryLogic.EnrageBlast_A_Value(ActiveList[ii], this.DuelMode);
+                    double effectValue = PrimaryLogic.EnrageBlast_A_Value(ActiveList[ii], GroundOne.DuelMode);
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ火の粉が降り注ぐ。\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ火の粉が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
                 }
                 // ブレイジング・フィールド効果
                 if (ActiveList[ii].CurrentBlazingField > 0 && ActiveList[ii].Dead == false)
                 {
-                    double effectValue = PrimaryLogic.BlazingField_A_Value(ActiveList[ii], this.DuelMode);
+                    double effectValue = PrimaryLogic.BlazingField_A_Value(ActiveList[ii], GroundOne.DuelMode);
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ猛火が降り注ぐ。\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ猛火が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
                 }
                 // 炎ダメージ２効果
                 if (ActiveList[ii].CurrentFireDamage2 > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = PrimaryLogic.FireDamage2Value(ActiveList[ii]);
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ猛火が降り注ぐ。\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ猛火が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
                 }
                 // 壱なる焔効果
                 if (ActiveList[ii].CurrentIchinaruHomura > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = PrimaryLogic.IchinaruHomuraValue(ec1); // ダメージ発生源はレギィンアーゼ
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "に焔火が降り注ぐ。\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "に焔火が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
-                    UpdateBattleText(ActiveList[ii].Name + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
+                    UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
                 }
             }
 
             // Bystanderはアップキープをメイン行動の主軸とする。
-            if ((ec1 != null) && (ec1.Name == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS))
+            if ((ec1 != null) && (ec1.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS))
             {
                 int totalNum = 0;
-                if (FieldBuff1.Count <= 0) totalNum++;
-                if (FieldBuff2.Count <= 0) totalNum++;
-                if (FieldBuff3.Count <= 0) totalNum++;
-                if (FieldBuff4.Count <= 0) totalNum++;
-                if (FieldBuff5.Count <= 0) totalNum++;
-                //if (FieldBuff6.Count <= 0) totalNum++;
+                if (FieldBuff[0].Count <= 0) totalNum++;
+                if (FieldBuff[1].Count <= 0) totalNum++;
+                if (FieldBuff[2].Count <= 0) totalNum++;
+                if (FieldBuff[3].Count <= 0) totalNum++;
+                if (FieldBuff[4].Count <= 0) totalNum++;
+                //if (FieldBuff[5].Count <= 0) totalNum++;
                 int choice = AP.Math.RandomInteger(totalNum);
-                if (FieldBuff1.Count > 0 && choice >= 0) { choice++; }
-                if (FieldBuff2.Count > 0 && choice >= 1) { choice++; }
-                if (FieldBuff3.Count > 0 && choice >= 2) { choice++; }
-                if (FieldBuff4.Count > 0 && choice >= 3) { choice++; }
-                if (FieldBuff5.Count > 0 && choice >= 4) { choice++; }
-                if (FieldBuff6.Count > 0 && choice >= 5) { choice++; }
+                if (FieldBuff[0].Count > 0 && choice >= 0) { choice++; }
+                if (FieldBuff[1].Count > 0 && choice >= 1) { choice++; }
+                if (FieldBuff[2].Count > 0 && choice >= 2) { choice++; }
+                if (FieldBuff[3].Count > 0 && choice >= 3) { choice++; }
+                if (FieldBuff[4].Count > 0 && choice >= 4) { choice++; }
+                if (FieldBuff[5].Count > 0 && choice >= 5) { choice++; }
 
-                TruthImage[] list = { FieldBuff1, FieldBuff2, FieldBuff3, FieldBuff4, FieldBuff5, FieldBuff6 };
                 switch (choice)
                 {
                     case 0:
-                        ec1.ChoiceTimeSequenceBuff(0, list, this.BattleTurnCount);
-                        FieldBuff1.ImageName = Database.BUFF_TIME_SEQUENCE_1;
-                        FieldBuff1.Image = Image.FromFile(Database.BaseResourceFolder + "bys_zougou.bmp");
+                        ec1.ChoiceTimeSequenceBuff(0, FieldBuff, this.BattleTurnCount);
+                        FieldBuff[0].ImageName = Database.BUFF_TIME_SEQUENCE_1;
+                        FieldBuff[0].sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "bys_zougou");
                         break;
                     case 1:
-                        ec1.ChoiceTimeSequenceBuff(1, list, this.BattleTurnCount);
-                        FieldBuff2.ImageName = Database.BUFF_TIME_SEQUENCE_2;
-                        FieldBuff2.Image = Image.FromFile(Database.BaseResourceFolder + "bys_reikuu.bmp");
+                        ec1.ChoiceTimeSequenceBuff(1, FieldBuff, this.BattleTurnCount);
+                        FieldBuff[1].ImageName = Database.BUFF_TIME_SEQUENCE_2;
+                        FieldBuff[1].sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "bys_reikuu");
                         break;
                     case 2:
-                        ec1.ChoiceTimeSequenceBuff(2, list, this.BattleTurnCount);
-                        FieldBuff3.ImageName = Database.BUFF_TIME_SEQUENCE_3;
-                        FieldBuff3.Image = Image.FromFile(Database.BaseResourceFolder + "bys_seiei.bmp");
+                        ec1.ChoiceTimeSequenceBuff(2, FieldBuff, this.BattleTurnCount);
+                        FieldBuff[2].ImageName = Database.BUFF_TIME_SEQUENCE_3;
+                        FieldBuff[2].sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "bys_seiei");
                         break;
                     case 3:
-                        ec1.ChoiceTimeSequenceBuff(3, list, this.BattleTurnCount);
-                        FieldBuff4.ImageName = Database.BUFF_TIME_SEQUENCE_4;
-                        FieldBuff4.Image = Image.FromFile(Database.BaseResourceFolder + "bys_zekken.bmp");
+                        ec1.ChoiceTimeSequenceBuff(3, FieldBuff, this.BattleTurnCount);
+                        FieldBuff[3].ImageName = Database.BUFF_TIME_SEQUENCE_4;
+                        FieldBuff[3].sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "bys_zekken");
                         break;
                     case 4:
-                        ec1.ChoiceTimeSequenceBuff(4, list, this.BattleTurnCount);
-                        FieldBuff5.ImageName = Database.BUFF_TIME_SEQUENCE_5;
-                        FieldBuff5.Image = Image.FromFile(Database.BaseResourceFolder + "bys_ryokuei.bmp");
+                        ec1.ChoiceTimeSequenceBuff(4, FieldBuff, this.BattleTurnCount);
+                        FieldBuff[4].ImageName = Database.BUFF_TIME_SEQUENCE_5;
+                        FieldBuff[4].sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "bys_ryokuei");
                         break;
                     case 5:
-                        FieldBuff6.Count = 10;
-                        FieldBuff6.ImageName = Database.BUFF_TIME_SEQUENCE_6;
-                        FieldBuff6.Image = Image.FromFile(Database.BaseResourceFolder + "bys_syuen.bmp");
+                        FieldBuff[5].Count = 10;
+                        FieldBuff[5].ImageName = Database.BUFF_TIME_SEQUENCE_6;
+                        FieldBuff[5].sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "bys_syuen");
                         break;
-                    case 6:
-                        //FieldBuff1.AbstractCountDownBuff();
+                    default:
                         break;
                 }
             }
@@ -3912,7 +3911,7 @@ namespace DungeonPlayer
 
                     if (ActiveList[ii].CurrentWordOfLife > 0)
                     {
-                        double effectValue = PrimaryLogic.WordOfLifeValue(ActiveList[ii], this.DuelMode);
+                        double effectValue = PrimaryLogic.WordOfLifeValue(ActiveList[ii], GroundOne.DuelMode);
                         if (ActiveList[ii].CurrentNourishSense > 0)
                         {
                             effectValue = effectValue * 1.3f;
@@ -4009,7 +4008,7 @@ namespace DungeonPlayer
                         {
                             PlayerSpellGaleWind(ActiveList[ii]);
                         }
-                        ActiveList[ii].BeforePA = PlayerAction.UseSpell;
+                        ActiveList[ii].BeforePA = MainCharacter.PlayerAction.UseSpell;
                         ActiveList[ii].BeforeUsingItem = String.Empty;
                         ActiveList[ii].BeforeSkillName = String.Empty;
                         ActiveList[ii].BeforeSpellName = Database.GALE_WIND;
@@ -4161,7 +4160,7 @@ namespace DungeonPlayer
                         player.CurrentPoison > 0 || player.CurrentTemptation > 0 || player.CurrentFrozen > 0 ||
                         player.CurrentParalyze > 0 || player.CurrentSlow > 0 || player.CurrentBlind > 0)
                     {
-                        UpdateBattleText(player.Name + "が装備している天使の契約書が光り輝いた！\r\n", 1000);
+                        UpdateBattleText(player.FirstName + "が装備している天使の契約書が光り輝いた！\r\n", 1000);
                         player.RemovePreStunning();
                         player.RemoveStun();
                         player.RemoveSilence();
@@ -4171,7 +4170,7 @@ namespace DungeonPlayer
                         player.RemoveParalyze();
                         player.RemoveSlow();
                         player.RemoveBlind();
-                        UpdateBattleText(player.Name + "にかかっている負の影響が全て解除された。\r\n");
+                        UpdateBattleText(player.FirstName + "にかかっている負の影響が全て解除された。\r\n");
                     }
                 }
                 if (item.Name == Database.RARE_ARCHANGEL_CONTRACT)
@@ -4180,7 +4179,7 @@ namespace DungeonPlayer
                         player.CurrentMagicAttackDown > 0 || player.CurrentMagicDefenseDown > 0 ||
                         player.CurrentSpeedDown > 0 || player.CurrentReactionDown > 0 || player.CurrentPotentialDown > 0)
                     {
-                        UpdateBattleText(player.Name + "が装備している大天使の契約書が光り輝いた！\r\n", 1000);
+                        UpdateBattleText(player.FirstName + "が装備している大天使の契約書が光り輝いた！\r\n", 1000);
                         player.RemovePhysicalAttackDown();
                         player.RemovePhysicalDefenseDown();
                         player.RemoveMagicAttackDown();
@@ -4188,7 +4187,7 @@ namespace DungeonPlayer
                         player.RemoveSpeedDown();
                         player.RemoveReactionDown();
                         player.RemovePotentialDown();
-                        UpdateBattleText(player.Name + "の能力低下状態が解除された！");
+                        UpdateBattleText(player.FirstName + "の能力低下状態が解除された！");
                     }
                 }
 
@@ -4205,7 +4204,7 @@ namespace DungeonPlayer
                 {
                     if (player.Target != null)
                     {
-                        double effectValue = PrimaryLogic.DevilSummonerTomeValue(player, this.DuelMode);
+                        double effectValue = PrimaryLogic.DevilSummonerTomeValue(player, GroundOne.DuelMode);
                         AbstractMagicDamage(player, player.Target, 0, effectValue, 0, Database.SOUND_FIREBALL, 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random);
                     }
                 }
@@ -5201,15 +5200,6 @@ namespace DungeonPlayer
         }
         private bool PlayerNormalAttack(MainCharacter player, MainCharacter target, double magnification, int crushingBlow, bool ignoreDefense, bool skipCounterPhase, double atkBase, int interval, string soundName, int textNumber, bool ignoreDoubleAttack, CriticalType critical)
         {
-            if (skipCounterPhase == false)
-            {
-                if (CheckCounterAttack(player))
-                {
-                    PlayerNormalAttack(target, player, 0, false, false);
-                    return;
-                }
-            }
-
             for (int ii = 0; ii < 2; ii++) // サブウェポンによる2回攻撃を考慮
             {
                 // 攻撃ミス判定する前にGlory効果（Gloryは自身対象なので、適用対象ＯＫ仕様は前編時代と同じ）
@@ -5418,8 +5408,8 @@ namespace DungeonPlayer
                         if (target.CurrentDeflection > 0)
                         {
                             UpdateBattleText(target.GetCharacterSentence(62));
-                            AnimationDamage(0, target, 0, Color.Black, true, false, Database.FAIL_DEFLECTION);
-                            target.RemoveDelection();
+                            AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_DEFLECTION);
+                            target.RemoveDeflection();
                         }
                     }
                     else
@@ -5428,7 +5418,7 @@ namespace DungeonPlayer
                         {
                             damage = DamageIsZero(damage, player);
                             LifeDamage(damage, player);
-                            target.RemoveDelection();
+                            target.RemoveDeflection();
                             return true;
                         }
                     }
@@ -5508,7 +5498,7 @@ namespace DungeonPlayer
                     {
                         double effectValue = PrimaryLogic.AbyssFireValue(target); // ダメージ発生源はレギィンアーゼ
                         LifeDamage(effectValue, player, interval, detectCritical);
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.Name, ((int)effectValue).ToString()), interval);
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(120), player.FirstName, ((int)effectValue).ToString()), interval);
                     }
 
                     // シェズル・ミラージュ・ランサーの場合、ダブルヒット扱いとする。
@@ -5698,7 +5688,7 @@ namespace DungeonPlayer
                     // CrushingBlowによる気絶
                     if (crushingBlow > 0)
                     {
-                        UpdateBattleText(String.Format(player.GetCharacterSentence(70), target.Name, (int)damage));
+                        UpdateBattleText(String.Format(player.GetCharacterSentence(70), target.FirstName, (int)damage));
                         if (target.CurrentAntiStun > 0)
                         {
                             target.RemoveAntiStun();
@@ -5729,7 +5719,7 @@ namespace DungeonPlayer
                     // FlameAuraによる追加攻撃
                     if (player.CurrentFlameAura > 0)
                     {
-                        double additional = PrimaryLogic.FlameAuraValue(player, this.DuelMode);
+                        double additional = PrimaryLogic.FlameAuraValue(player, GroundOne.DuelMode);
                         if (ignoreDefense == false)
                         {
                             if (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0)
@@ -5763,7 +5753,7 @@ namespace DungeonPlayer
                     // FrozenAuraによる追加攻撃
                     if (player.CurrentFrozenAura > 0)
                     {
-                        double additional = PrimaryLogic.FrozenAuraValue(player, this.DuelMode);
+                        double additional = PrimaryLogic.FrozenAuraValue(player, GroundOne.DuelMode);
                         if (ignoreDefense == false)
                         {
                             if (target.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense || target.CurrentStanceOfStanding > 0)
@@ -6454,11 +6444,11 @@ namespace DungeonPlayer
             // 対象者のシール・オブ・バランスによる効果
             if ((target.Accessory != null) && (target.Accessory.Name == Database.RARE_SEAL_OF_BALANCE))
             {
-                PlayerAbstractSkillGain(target, target, 0, PrimaryLogic.RainbowTubeValue_B(target, this.DuelMode), 0, Database.SOUND_FRESH_HEAL, 5009);
+                PlayerAbstractSkillGain(target, target, 0, PrimaryLogic.RainbowTubeValue_B(target, GroundOne.DuelMode), 0, Database.SOUND_FRESH_HEAL, 5009);
             }
             if ((target.Accessory2 != null) && (target.Accessory2.Name == Database.RARE_SEAL_OF_BALANCE))
             {
-                PlayerAbstractSkillGain(target, target, 0, PrimaryLogic.RainbowTubeValue_B(target, this.DuelMode), 0, Database.SOUND_FRESH_HEAL, 5009);
+                PlayerAbstractSkillGain(target, target, 0, PrimaryLogic.RainbowTubeValue_B(target, GroundOne.DuelMode), 0, Database.SOUND_FRESH_HEAL, 5009);
             }
 
             // 集中と断絶効果がある場合、途切れさす
@@ -7301,7 +7291,7 @@ namespace DungeonPlayer
                 if (brokenName != String.Empty)
                 {
                     // 破損したアイテム名を出しても良いが、名前が長すぎる場合、読めないので、アイテム名表示は不要と判断。
-                    AnimationDamage(0, ActiveList[ii], 200, Color.Red, false, false, Database.BROKEN_ITEM);
+                    AnimationDamage(0, ActiveList[ii], 200, Color.red, false, false, Database.BROKEN_ITEM);
                 }
             }
 
@@ -7523,6 +7513,294 @@ namespace DungeonPlayer
                     GroundOne.Player3UpPoint = levelUpPoint;
                 }
             }
+        }
+
+
+        /// <summary>
+        /// 物理攻撃上昇BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffUpPhysicalAttack(MainCharacter player, double effectValue, int turn = 999)
+        {
+            UpdateBattleText(player.FirstName + "は【物理攻撃】が" + effectValue.ToString() + "上昇\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "物理攻撃UP");
+            player.CurrentPhysicalAttackUp = turn;
+            player.CurrentPhysicalAttackUpValue = (int)effectValue;
+            player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, turn);
+        }
+
+        /// <summary>
+        /// 物理攻撃減少BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffDownPhysicalAttack(MainCharacter player, double effectValue, int turn = 999)
+        {
+            if (player.CheckResistPhysicalAttackDown)
+            {
+                UpdateBattleText(player.FirstName + "は、物理攻撃DOWN効果を受けなかった！\r\n");
+                return;
+            }
+            if (((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_ROYAL_GUARD_RING)) ||
+                ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_ROYAL_GUARD_RING)))
+            {
+                UpdateBattleText(player.FirstName + "にかけられた物理攻撃DOWN効果は無効化された！\r\n");
+                return;
+            }
+
+            UpdateBattleText(player.FirstName + "は【物理攻撃】が" + effectValue.ToString() + "減少\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "物理攻撃DOWN");
+            player.CurrentPhysicalAttackDown = turn;
+            player.CurrentPhysicalAttackDownValue = (int)effectValue;
+            player.ActivateBuff(player.pbPhysicalAttackDown, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_DOWN, turn);
+        }
+
+        /// <summary>
+        /// 魔法攻撃上昇BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffUpMagicAttack(MainCharacter player, double effectValue, int turn = 999)
+        {
+            UpdateBattleText(player.FirstName + "は【魔法攻撃】が" + effectValue.ToString() + "上昇\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "魔法攻撃UP");
+            player.CurrentMagicAttackUp = turn;
+            player.CurrentMagicAttackUpValue = (int)effectValue;
+            player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, turn);
+        }
+
+        /// <summary>
+        /// 魔法攻撃減少BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffDownMagicAttack(MainCharacter player, double effectValue, int turn = 999)
+        {
+            if (player.CheckResistMagicAttackDown)
+            {
+                UpdateBattleText(player.FirstName + "は、魔法攻撃DOWN効果を受けなかった！\r\n");
+                return;
+            }
+            if (((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_ELEMENTAL_GUARD_RING)) ||
+                ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_ELEMENTAL_GUARD_RING)))
+            {
+                UpdateBattleText(player.FirstName + "にかけられた魔法攻撃DOWN効果は無効化された！\r\n");
+                return;
+            }
+
+            UpdateBattleText(player.FirstName + "は【魔法攻撃】が" + effectValue.ToString() + "減少\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "魔法攻撃DOWN");
+            player.CurrentMagicAttackDown = turn;
+            player.CurrentMagicAttackDownValue = (int)effectValue;
+            player.ActivateBuff(player.pbMagicAttackDown, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_DOWN, turn);
+        }
+
+        /// <summary>
+        /// 物理防御上昇BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffUpPhysicalDefense(MainCharacter player, double effectValue, int turn = 999)
+        {
+            UpdateBattleText(player.FirstName + "は【物理防御】が" + effectValue.ToString() + "上昇\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "物理防御UP");
+            player.CurrentPhysicalDefenseUp = turn;
+            player.CurrentPhysicalDefenseUpValue = (int)effectValue;
+            player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_UP, turn);
+        }
+
+        /// <summary>
+        /// 物理防御減少BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffDownPhysicalDefense(MainCharacter player, double effectValue, int turn = 999)
+        {
+            if (player.CheckResistPhysicalDefenseDown)
+            {
+                UpdateBattleText(player.FirstName + "は、物理防御DOWN効果を受けなかった！\r\n");
+                return;
+            }
+            if (((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_ROYAL_GUARD_RING)) ||
+                ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_ROYAL_GUARD_RING)))
+            {
+                UpdateBattleText(player.FirstName + "にかけられた物理防御DOWN効果は無効化された！\r\n");
+                return;
+            }
+
+            UpdateBattleText(player.FirstName + "は【物理防御】が" + effectValue.ToString() + "減少\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "物理防御DOWN");
+            player.CurrentPhysicalDefenseDown = turn;
+            player.CurrentPhysicalDefenseDownValue = (int)effectValue;
+            player.ActivateBuff(player.pbPhysicalDefenseDown, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_DEFENSE_DOWN, turn);
+        }
+
+        /// <summary>
+        /// 魔法防御上昇BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffUpMagicDefense(MainCharacter player, double effectValue, int turn = 999)
+        {
+            UpdateBattleText(player.FirstName + "は【魔法防御】が" + effectValue.ToString() + "上昇\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "魔法防御UP");
+            player.CurrentMagicDefenseUp = turn;
+            player.CurrentMagicDefenseUpValue = (int)effectValue;
+            player.ActivateBuff(player.pbMagicDefenseUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_UP, turn);
+        }
+
+        /// <summary>
+        /// 魔法防御減少BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffDownMagicDefense(MainCharacter player, double effectValue, int turn = 999)
+        {
+            if (player.CheckResistMagicDefenseDown)
+            {
+                UpdateBattleText(player.FirstName + "は、魔法防御DOWN効果を受けなかった！\r\n");
+                return;
+            }
+            if (((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_ELEMENTAL_GUARD_RING)) ||
+                ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_ELEMENTAL_GUARD_RING)))
+            {
+                UpdateBattleText(player.FirstName + "にかけられた魔法防御DOWN効果は無効化された！\r\n");
+                return;
+            }
+
+            UpdateBattleText(player.FirstName + "は【魔法防御】が" + effectValue.ToString() + "減少\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "魔法防御DOWN");
+            player.CurrentMagicDefenseDown = turn;
+            player.CurrentMagicDefenseDownValue = (int)effectValue;
+            player.ActivateBuff(player.pbMagicDefenseDown, Database.BaseResourceFolder + Database.BUFF_MAGIC_DEFENSE_DOWN, turn);
+        }
+
+        /// <summary>
+        /// 戦闘速度上昇BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffUpBattleSpeed(MainCharacter player, double effectValue, int turn = 999)
+        {
+            UpdateBattleText(player.FirstName + "は【戦闘速度】が" + effectValue.ToString() + "上昇\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "戦闘速度UP");
+            player.CurrentSpeedUp = turn;
+            player.CurrentSpeedUpValue = (int)effectValue;
+            player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, turn);
+        }
+
+        /// <summary>
+        /// 戦闘速度減少BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffDownBattleSpeed(MainCharacter player, double effectValue, int turn = 999)
+        {
+            if (player.CheckResistBattleSpeedDown)
+            {
+                UpdateBattleText(player.FirstName + "は、戦闘防御DOWN効果を受けなかった！\r\n");
+                return;
+            }
+            if (((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_HAYATE_GUARD_RING)) ||
+                ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_HAYATE_GUARD_RING)))
+            {
+                UpdateBattleText(player.FirstName + "にかけられた戦闘速度DOWN効果は無効化された！\r\n");
+                return;
+            }
+
+            UpdateBattleText(player.FirstName + "は【戦闘速度】が" + effectValue.ToString() + "減少\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "戦闘速度DOWN");
+            player.CurrentSpeedDown = turn;
+            player.CurrentSpeedDownValue = (int)effectValue;
+            player.ActivateBuff(player.pbSpeedDown, Database.BaseResourceFolder + Database.BUFF_SPEED_DOWN, turn);
+        }
+
+        /// <summary>
+        /// 戦闘反応上昇BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffUpBattleReaction(MainCharacter player, double effectValue, int turn = 999)
+        {
+            UpdateBattleText(player.FirstName + "は【戦闘反応】が" + effectValue.ToString() + "上昇\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "戦闘反応UP");
+            player.CurrentReactionUp = turn;
+            player.CurrentReactionUpValue = (int)effectValue;
+            player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + Database.BUFF_REACTION_UP, turn);
+        }
+
+        /// <summary>
+        /// 戦闘反応減少BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffDownBattleReaction(MainCharacter player, double effectValue, int turn = 999)
+        {
+            if (player.CheckResistBattleResponseDown)
+            {
+                UpdateBattleText(player.FirstName + "は、戦闘反応DOWN効果を受けなかった！\r\n");
+                return;
+            }
+            if (((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_HAYATE_GUARD_RING)) ||
+                ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_HAYATE_GUARD_RING)))
+            {
+                UpdateBattleText(player.FirstName + "にかけられた戦闘反応DOWN効果は無効化された！\r\n");
+                return;
+            }
+
+            UpdateBattleText(player.FirstName + "は【戦闘反応】が" + effectValue.ToString() + "減少\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "戦闘反応DOWN");
+            player.CurrentReactionDown = turn;
+            player.CurrentReactionDownValue = (int)effectValue;
+            player.ActivateBuff(player.pbReactionDown, Database.BaseResourceFolder + Database.BUFF_REACTION_DOWN, turn);
+        }
+
+        /// <summary>
+        /// 潜在能力上昇BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffUpPotential(MainCharacter player, double effectValue, int turn = 999)
+        {
+            UpdateBattleText(player.FirstName + "は【潜在能力】が" + effectValue.ToString() + "上昇\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "潜在能力UP");
+            player.CurrentPotentialUp = turn;
+            player.CurrentPotentialUpValue = (int)effectValue;
+            player.ActivateBuff(player.pbPotentialUp, Database.BaseResourceFolder + Database.BUFF_POTENTIAL_UP, turn);
+        }
+
+        /// <summary>
+        /// 潜在能力減少BUFF
+        /// </summary>
+        /// <param name="player">プレイヤー</param>
+        /// <param name="effectValue">効果の値</param>
+        /// <param name="turn">ターン数（指定しない場合は999ターン）</param>
+        void BuffDownPotential(MainCharacter player, double effectValue, int turn = 999)
+        {
+            if (player.CheckResistPotentialDown)
+            {
+                UpdateBattleText(player.FirstName + "は、潜在能力DOWN効果を受けなかった！\r\n");
+                return;
+            }
+            UpdateBattleText(player.FirstName + "は【潜在能力】が" + effectValue.ToString() + "減少\r\n");
+            AnimationDamage(0, player, 0, Color.black, false, false, "潜在能力DOWN");
+            player.CurrentPotentialDown = turn;
+            player.CurrentPotentialDownValue = (int)effectValue;
+            player.ActivateBuff(player.pbPotentialDown, Database.BaseResourceFolder + Database.BUFF_POTENTIAL_DOWN, turn);
         }
     }
 }

@@ -511,6 +511,63 @@ namespace DungeonPlayer
         protected bool battleResistSlip = false; // 後編追加
         protected bool battleResistNoResurrection = false; // 後編追加
 
+        public bool CheckResistPhysicalAttackDown
+        {
+            get
+            {
+                if (this.CurrentColoressAntidote > 0) return true;
+                return false;
+            }
+        }
+        public bool CheckResistPhysicalDefenseDown
+        {
+            get
+            {
+                if (this.CurrentColoressAntidote > 0) return true;
+                return false;
+            }
+        }
+        public bool CheckResistMagicAttackDown
+        {
+            get
+            {
+                if (this.CurrentColoressAntidote > 0) return true;
+                return false;
+            }
+        }
+        public bool CheckResistMagicDefenseDown
+        {
+            get
+            {
+                if (this.CurrentColoressAntidote > 0) return true;
+                return false;
+            }
+        }
+        public bool CheckResistBattleSpeedDown
+        {
+            get
+            {
+                if (this.CurrentColoressAntidote > 0) return true;
+                return false;
+            }
+        }
+        public bool CheckResistBattleResponseDown
+        {
+            get
+            {
+                if (this.CurrentColoressAntidote > 0) return true;
+                return false;
+            }
+        }
+        public bool CheckResistPotentialDown
+        {
+            get
+            {
+                if (this.CurrentColoressAntidote > 0) return true;
+                return false;
+            }
+        }
+
         public bool ResistStun
         {
             get { return battleResistStun; }
