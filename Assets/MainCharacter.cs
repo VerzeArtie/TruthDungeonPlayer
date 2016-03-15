@@ -2602,6 +2602,7 @@ namespace DungeonPlayer
         public Image meterCurrentInstantPoint = null;
 
         public Text labelCurrentSpecialInstant = null;
+        public Image meterCurrentSpecialInstant = null;
 
         public GameObject DamagePanel = null;
         public Text DamageLabel = null;

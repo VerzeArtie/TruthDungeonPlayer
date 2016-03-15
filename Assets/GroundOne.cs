@@ -184,10 +184,17 @@ namespace DungeonPlayer
             WE.Truth_CommunicationGanz21 = true;
 
             // (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent602 && GroundOne.WE2.SeekerEvent603 && GroundOne.WE2.SeekerEvent604 && !GroundOne.WE2.SeekerEvent605)
-            WE2.RealWorld = true;
-            WE2.SeekerEvent602 = true;
-            WE2.SeekerEvent603 = true;
-            WE2.SeekerEvent604 = true;
+            //WE2.RealWorld = true;
+            //WE2.SeekerEvent602 = true;
+            //WE2.SeekerEvent603 = true;
+            //WE2.SeekerEvent604 = true;
+
+            //!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea1 && (!GroundOne.WE.Truth_CommunicationLana21 || !GroundOne.WE.Truth_CommunicationGanz21 || !GroundOne.WE.Truth_CommunicationHanna21 || !GroundOne.WE.Truth_CommunicationOl21))
+            GroundOne.WE.TruthCompleteArea1 = true;
+            GroundOne.WE.Truth_CommunicationLana21 = true;
+            GroundOne.WE.Truth_CommunicationGanz21 = true;
+            GroundOne.WE.Truth_CommunicationHanna21 = true;
+            GroundOne.WE.Truth_CommunicationOl21 = true;
 
             MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
             MC.SubWeapon = null;

@@ -4416,16 +4416,15 @@ namespace DungeonPlayer
 
         private void ExecPlaySpell(MainCharacter player, MainCharacter target, string CurrentSpellName)
         {
-            // todo
-            //if (CheckStanceOfEyes(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
-            //if (CheckNegateCounter(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
-            //if (CheckDeepMirror(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
-            //if (CheckHymnContract(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
-            //if (CheckFutureVision(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
-            //if (CheckStanceOfMystic(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
-            //if (CheckStanceOfSuddenness(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
-            //if (CheckSilence(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
-            //if (CheckCancelSpell(player, CurrentSpellName)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckStanceOfEyes(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckNegateCounter(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckDeepMirror(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckHymnContract(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckFutureVision(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckStanceOfMystic(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckStanceOfSuddenness(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckSilence(player)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
+            if (CheckCancelSpell(player, CurrentSpellName)) { if (TruthActionCommand.IsDamage(CurrentSpellName)) { UpdateCurrentChargeCount(player); } return; }
 
             // 聖 //
             if (CurrentSpellName == Database.FRESH_HEAL)
@@ -4803,14 +4802,13 @@ namespace DungeonPlayer
 
         private void ExecPlaySkill(MainCharacter player, MainCharacter target, string CurrentSkillName)
         {
-            // todo
-            //if (CheckStanceOfEyes(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
-            //if (CheckCounterAttack(player, CurrentSkillName)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
-            //if (CheckDeepMirror(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
-            //if (CheckHymnContract(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
-            //if (CheckFutureVision(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
-            //if (CheckStanceOfMystic(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
-            //if (CheckStanceOfSuddenness(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            if (CheckStanceOfEyes(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            if (CheckCounterAttack(player, CurrentSkillName)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            if (CheckDeepMirror(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            if (CheckHymnContract(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            if (CheckFutureVision(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            if (CheckStanceOfMystic(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
+            if (CheckStanceOfSuddenness(player)) { if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); } return; }
 
             // 動 //
             if (CurrentSkillName == Database.STRAIGHT_SMASH)
@@ -5054,6 +5052,22 @@ namespace DungeonPlayer
             }
             
             //if (TruthActionCommand.IsDamage(CurrentSkillName)) { UpdateCurrentPhysicalChargeCount(player); }
+        }
+
+        private void UpdateCurrentChargeCount(MainCharacter player)
+        {
+            if (player.CurrentChargeCount > 0)
+            {
+                player.CurrentChargeCount--;
+            }
+        }
+
+        private void UpdateCurrentPhysicalChargeCount(MainCharacter player)
+        {
+            if (player.CurrentPhysicalChargeCount > 0)
+            {
+                player.CurrentPhysicalChargeCount--;
+            }
         }
 
         private void MissNotEnoughMana(MainCharacter player)

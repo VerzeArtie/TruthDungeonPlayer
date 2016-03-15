@@ -266,8 +266,9 @@ namespace DungeonPlayer
         bool usingOvershiftingSecondSleep = false;
         bool usingToomiBlueSuisyou = false;
         // Update is called once per frame
-        void Update()
+        public override void Update()
         {
+            base.Update();
             //if (Input.GetMouseButtonDown(0))
             //{
             //    groupChoice.SetActive(false);

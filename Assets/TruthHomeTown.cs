@@ -20,12 +20,15 @@ namespace DungeonPlayer
         List<DungeonPlayer.MessagePack.ActionEvent> nowEvent = new List<DungeonPlayer.MessagePack.ActionEvent>();
 
         private int firstDay = 1;
-        public Button btnOK;
         bool waitMessage = false;
 
+        // GUI
+        public Button btnOK;
         public GameObject systemMessagePanel;
         public Text systemMessage;
         public Camera cam;
+        public GameObject groupSelectDungeon;
+        public Button[] selectDungeon;
         public GameObject groupMenu;
         public Button buttonHanna;
         public Button buttonDungeon;
@@ -460,123 +463,132 @@ namespace DungeonPlayer
                 //}
                 //else { }
 
-                #region "ダンジョン階層を選択"
-                int targetDungeon = 1;
-
-                // todo
-                //if (we.TruthCompleteArea1)
-                //{
-                //    mainMessage.Text = "アイン：さて、何階から始めるかな。";
-                //    mainMessage.Update();
-                //    using (SelectDungeon sd = new SelectDungeon())
-                //    {
-                //        sd.StartPosition = FormStartPosition.Manual;
-                //        sd.Location = new Point(this.Location.X + 50, this.Location.Y + 50);
-                //        //if (we.CompleteArea5) sd.MaxSelectable = 5;
-                //        if (we.TruthCompleteArea4) sd.MaxSelectable = 5;
-                //        else if (we.TruthCompleteArea3) sd.MaxSelectable = 4;
-                //        else if (we.TruthCompleteArea2) sd.MaxSelectable = 3;
-                //        else if (we.TruthCompleteArea1) sd.MaxSelectable = 2;
-                //        sd.ShowDialog();
-                //        this.targetDungeon = sd.TargetDungeon;
-                //    }
-                //}
-
-                if (targetDungeon == 1)
+                if (GroundOne.WE.TruthCompleteArea1 == false)
                 {
-                    if (!GroundOne.WE.TruthCompleteArea1)
-                    {
-                        mainMessage.text = "アイン：さて、１階を突破するぜ！";
-                    }
-                    else
-                    {
-                        mainMessage.text = "アイン：もう１度、１階でも探索するか。";
-                    }
+                    CallDungeon(1);
                 }
-                else if (targetDungeon == 2)
+                else
                 {
-                    if (!GroundOne.WE.CompleteArea2)
-                    {
-                        mainMessage.text = "アイン：目指すは２階を制覇だな！";
-                    }
-                    else
-                    {
-                        mainMessage.text = "アイン：もう１度、２階でも探索するか。";
-                    }
-                }
-                else if (targetDungeon == 3)
-                {
-                    if (!GroundOne.WE.CompleteArea3)
-                    {
-                        mainMessage.text = "アイン：いよいよ３階、気を引き締めていくぜ！";
-                    }
-                    else
-                    {
-                        mainMessage.text = "アイン：もう１度、３階でも探索するか。";
-                    }
-                }
-                else if (targetDungeon == 4)
-                {
-                    if (!GroundOne.WE.CompleteArea4)
-                    {
-                        mainMessage.text = "アイン：４階制覇やってみせるぜ！";
-                    }
-                    else
-                    {
-                        mainMessage.text = "アイン：もう１度、４階でも探索するか。";
-                    }
-                }
-                else if (targetDungeon == 5)
-                {
-                    if (!GroundOne.WE.CompleteArea5)
-                    {
-                        mainMessage.text = "アイン：最下層制覇、やってみせる！";
-                    }
-                    else
-                    {
-                        mainMessage.text = "アイン：もう１度、５階でも探索するか。";
-                    }
-                }
-                #endregion
+                    mainMessage.text = "アイン：さて、何階から始めるかな。";
+                    selectDungeon[0].gameObject.SetActive(true);
+                    selectDungeon[1].gameObject.SetActive(GroundOne.WE.TruthCompleteArea1);
+                    selectDungeon[2].gameObject.SetActive(GroundOne.WE.TruthCompleteArea2);
+                    selectDungeon[3].gameObject.SetActive(GroundOne.WE.TruthCompleteArea3);
+                    selectDungeon[4].gameObject.SetActive(GroundOne.WE.TruthCompleteArea4);
 
-                #region "ラナ、ガンツ、ハンナの一般会話完了はここで反映します。"
-                if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationLana1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana1 = true;
-                else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationLana2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana2 = true;
-                else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationLana3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana3 = true;
-                else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationLana4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana4 = true;
-                else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationLana5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana5 = true;
-                else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationLana6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana6 = true;
-                else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationLana7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana7 = true;
-                else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationLana8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana8 = true;
-                else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationLana9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana9 = true;
-                else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationLana10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana10 = true;
-
-                if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationHanna1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna1 = true;
-                else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationHanna2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna2 = true;
-                else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationHanna3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna3 = true;
-                else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationHanna4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna4 = true;
-                else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationHanna5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna5 = true;
-                else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationHanna6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna6 = true;
-                else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationHanna7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna7 = true;
-                else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationHanna8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna8 = true;
-                else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationHanna9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna9 = true;
-                else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationHanna10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna10 = true;
-
-                if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationGanz1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz1 = true;
-                else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationGanz2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz2 = true;
-                else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationGanz3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz3 = true;
-                else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationGanz4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz4 = true;
-                else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationGanz5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz5 = true;
-                else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationGanz6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz6 = true;
-                else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationGanz7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz7 = true;
-                else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationGanz8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz8 = true;
-                else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationGanz9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz9 = true;
-                else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationGanz10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz10 = true;
-                #endregion
-
-                SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown);
+                    groupSelectDungeon.SetActive(true);
+                    panelHide.gameObject.SetActive(true);
+                }
             }
 	    }
+
+        public void HideAllChild()
+        {
+            panelHide.gameObject.SetActive(false);
+            groupSelectDungeon.SetActive(false);
+        }
+
+        public void CallDungeon(int targetDungeon)
+        {
+            if (targetDungeon == 1)
+            {
+                GroundOne.WE.DungeonArea = 1;
+                if (!GroundOne.WE.TruthCompleteArea1)
+                {
+                    mainMessage.text = "アイン：さて、１階を突破するぜ！";
+                }
+                else
+                {
+                    mainMessage.text = "アイン：もう１度、１階でも探索するか。";
+                }
+            }
+            else if (targetDungeon == 2)
+            {
+                GroundOne.WE.DungeonArea = 2;
+                if (!GroundOne.WE.CompleteArea2)
+                {
+                    mainMessage.text = "アイン：目指すは２階を制覇だな！";
+                }
+                else
+                {
+                    mainMessage.text = "アイン：もう１度、２階でも探索するか。";
+                }
+            }
+            else if (targetDungeon == 3)
+            {
+                GroundOne.WE.DungeonArea = 3;
+                if (!GroundOne.WE.CompleteArea3)
+                {
+                    mainMessage.text = "アイン：いよいよ３階、気を引き締めていくぜ！";
+                }
+                else
+                {
+                    mainMessage.text = "アイン：もう１度、３階でも探索するか。";
+                }
+            }
+            else if (targetDungeon == 4)
+            {
+                GroundOne.WE.DungeonArea = 4;
+                if (!GroundOne.WE.CompleteArea4)
+                {
+                    mainMessage.text = "アイン：４階制覇やってみせるぜ！";
+                }
+                else
+                {
+                    mainMessage.text = "アイン：もう１度、４階でも探索するか。";
+                }
+            }
+            else if (targetDungeon == 5)
+            {
+                GroundOne.WE.DungeonArea = 5;
+                if (!GroundOne.WE.CompleteArea5)
+                {
+                    mainMessage.text = "アイン：最下層制覇、やってみせる！";
+                }
+                else
+                {
+                    mainMessage.text = "アイン：もう１度、５階でも探索するか。";
+                }
+            }
+
+            #region "ラナ、ガンツ、ハンナの一般会話完了はここで反映します。"
+            if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationLana1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana1 = true;
+            else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationLana2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana2 = true;
+            else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationLana3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana3 = true;
+            else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationLana4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana4 = true;
+            else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationLana5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana5 = true;
+            else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationLana6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana6 = true;
+            else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationLana7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana7 = true;
+            else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationLana8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana8 = true;
+            else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationLana9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana9 = true;
+            else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationLana10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationLana10 = true;
+
+            if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationHanna1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna1 = true;
+            else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationHanna2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna2 = true;
+            else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationHanna3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna3 = true;
+            else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationHanna4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna4 = true;
+            else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationHanna5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna5 = true;
+            else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationHanna6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna6 = true;
+            else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationHanna7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna7 = true;
+            else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationHanna8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna8 = true;
+            else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationHanna9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna9 = true;
+            else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationHanna10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationHanna10 = true;
+
+            if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationGanz1 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz1 = true;
+            else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationGanz2 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz2 = true;
+            else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationGanz3 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz3 = true;
+            else if (this.firstDay >= 4 && !GroundOne.WE.Truth_CommunicationGanz4 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz4 = true;
+            else if (this.firstDay >= 5 && !GroundOne.WE.Truth_CommunicationGanz5 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz5 = true;
+            else if (this.firstDay >= 6 && !GroundOne.WE.Truth_CommunicationGanz6 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz6 = true;
+            else if (this.firstDay >= 7 && !GroundOne.WE.Truth_CommunicationGanz7 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz7 = true;
+            else if (this.firstDay >= 8 && !GroundOne.WE.Truth_CommunicationGanz8 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz8 = true;
+            else if (this.firstDay >= 9 && !GroundOne.WE.Truth_CommunicationGanz9 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz9 = true;
+            else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationGanz10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz10 = true;
+            #endregion
+
+            SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown);
+        }
+
         public void tapCommunicationRana()
         {
             if (GroundOne.WE.AlreadyCommunicate)

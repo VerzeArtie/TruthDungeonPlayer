@@ -167,6 +167,8 @@ namespace DungeonPlayer
         //	public Image enemy1SkillMeter;
         public Text enemy1Instant;
         public Image enemy1InstantMeter;
+        public Text enemy1SpecialInstant;
+        public Image enemy1SpecialInstantMeter;
         public GameObject enemy1DamagePanel;
         public Text enemy1Damage;
         public Text enemy1Critical;
@@ -340,6 +342,8 @@ namespace DungeonPlayer
             this.ec1.meterCurrentSkillPoint = null;
             this.ec1.labelCurrentInstantPoint = this.enemy1Instant;
             this.ec1.meterCurrentInstantPoint = this.enemy1InstantMeter;
+            this.ec1.labelCurrentSpecialInstant = this.enemy1SpecialInstant;
+            this.ec1.meterCurrentSpecialInstant = this.enemy1SpecialInstantMeter;
             this.ec1.DamagePanel = this.enemy1DamagePanel;
             this.ec1.DamageLabel = this.enemy1Damage;
             this.ec1.CriticalLabel = this.enemy1Critical;
@@ -485,8 +489,10 @@ namespace DungeonPlayer
 
         bool isEscDown = false;
         // Update is called once per frame
-        void Update()
+        public override void Update()
         {
+            base.Update();
+
             #region "キー制御"
             bool detectShift = false;
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -6539,7 +6545,6 @@ namespace DungeonPlayer
         // 魔法攻撃
         private void PlayerMagicAttack(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            // todo
             double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.None, false, CriticalType.Random);
         }
@@ -6853,7 +6858,15 @@ namespace DungeonPlayer
         }
         private void UpdateSpecialInstantPoint(MainCharacter player)
         {
-            // todo
+            float dx = (float)player.CurrentSpecialInstant / (float)player.MaxSpecialInstant;
+            if (player.labelCurrentSpecialInstant != null)
+            {
+                player.labelCurrentSpecialInstant.text = player.CurrentSpecialInstant.ToString();
+            }
+            if (player.meterCurrentSpecialInstant != null)
+            {
+                player.meterCurrentSpecialInstant.rectTransform.localScale = new Vector2(dx, 1.0f);
+            }
         }
 
         private void PlayerInstantCommand(MainCharacter player, MainCharacter target, string command)
@@ -6959,28 +6972,17 @@ namespace DungeonPlayer
                 return;
             }
 
-            // todo
-            //if (th != null)
-            //{
-            //    tempStopFlag = true;
-            //    endFlag = true;
-            //}
-            //else
-            //{
-            //    if (this.DuelMode)
-            //    {
-            //        txtBattleMessage.Text = txtBattleMessage.Text.Insert(0, "アインは降参を宣言した。\r\n");
-            //    }
-            //    else
-            //    {
-            //        txtBattleMessage.Text = txtBattleMessage.Text.Insert(0, "アインは逃げ出した。\r\n");
-            //    }
-
-            //    txtBattleMessage.Update();
-            //    System.Threading.Thread.Sleep(1000);
+            if (GroundOne.DuelMode)
+            {
+                txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは降参を宣言した。\r\n");
+            }
+            else
+            {
+                txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは逃げ出した。\r\n");
+            }
+            // System.Threading.Thread.Sleep(1000);
             GroundOne.BattleResult = GroundOne.battleResult.Abort;
             SceneDimension.Back();
-            //}
         }
 
         public void GameOverYes_Click()
@@ -7241,7 +7243,110 @@ namespace DungeonPlayer
             }
             return false;
         }
-        
+
+        private bool CheckCancelSpell(MainCharacter player, string currentSpellName)
+        {
+            List<MainCharacter> group = new List<MainCharacter>();
+            if ((GroundOne.MC != null) && (!GroundOne.MC.Dead)) { group.Add(GroundOne.MC); }
+            if ((GroundOne.SC != null) && (!GroundOne.SC.Dead)) { group.Add(GroundOne.SC); }
+            if ((GroundOne.TC != null) && (!GroundOne.TC.Dead)) { group.Add(GroundOne.TC); }
+            if ((ec1 != null) && (!ec1.Dead)) { group.Add(ec1); }
+            if ((ec2 != null) && (!ec2.Dead)) { group.Add(ec2); }
+            if ((ec3 != null) && (!ec3.Dead)) { group.Add(ec3); }
+
+            for (int ii = 0; ii < group.Count; ii++)
+            {
+                if ((group[ii].Accessory != null) && (group[ii].Accessory.Name == Database.COMMON_DEVIL_SEALED_VASE) && (group[ii].Accessory.ImprintCommand == currentSpellName) ||
+                    (group[ii].Accessory2 != null) && (group[ii].Accessory2.Name == Database.COMMON_DEVIL_SEALED_VASE) && (group[ii].Accessory2.ImprintCommand == currentSpellName))
+                {
+                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, Database.MISS_SPELL);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        /// <summary>インスタント行動カウンターFutureVisionのチェックメソッド</summary> 
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckFutureVision(MainCharacter player)
+        {
+            return false;
+        }
+        /// <summary>
+        /// インスタント行動カウンターStanceOfSuddennessのチェックメソッド</summary>
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckStanceOfSuddenness(MainCharacter player)
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// 非ダメージ系インスタント行動カウンターDeepMirrorのチェックメソッド</summary>
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckDeepMirror(MainCharacter player)
+        {
+            return false;
+        }
+
+        /// <summary>ダメージ系インスタントカウンターStanceOfMysticのチェックメソッド</summary>
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckStanceOfMystic(MainCharacter player)
+        {
+            return false;
+        }
+
+        /// <summary>魔法・スキルカウンターHymnContractのチェックメソッド</summary>
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckHymnContract(MainCharacter player)
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// 魔法・スキルカウンターStanceOfEyesのチェックメソッド</summary>
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckStanceOfEyes(MainCharacter player)
+        {
+            for (int ii = 0; ii < ActiveList.Count; ii++)
+            {
+                if (DetectOpponentParty(player, ActiveList[ii]))
+                {
+                    if (ActiveList[ii].CurrentStanceOfEyes > 0)
+                    {
+                        ActiveList[ii].RemoveStanceOfEyes(); // カウンター成功／失敗に限らず、一度チェックが入ったら解消されるものとする（１ターンで何度も発動するのは強すぎたため）
+                        if (JudgeSuccessOfCounter(player, ActiveList[ii], 101))
+                        {
+                            return true; // カウンター成功
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// スペルカウンターNegateのチェックメソッド</summary>
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckNegateCounter(MainCharacter player)
+        {
+            for (int ii = 0; ii < ActiveList.Count; ii++)
+            {
+                if (DetectOpponentParty(player, ActiveList[ii]))
+                {
+                    if (ActiveList[ii].CurrentNegate > 0)
+                    {
+                        ActiveList[ii].RemoveNegate(); // カウンター成功／失敗に限らず、一度チェックが入ったら解消されるものとする（１ターンで何度も発動するのは強すぎたため）
+                        if (JudgeSuccessOfCounter(player, ActiveList[ii], 104))
+                        {
+                            return true; // カウンター成功
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
         private bool CheckResurrectWithItem(MainCharacter target, string itemName)
         {
             if ((target.MainWeapon != null) && (target.MainWeapon.Name == itemName) && (target.MainWeapon.EffectStatus == false))
