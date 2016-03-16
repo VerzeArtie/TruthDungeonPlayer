@@ -371,7 +371,7 @@ namespace DungeonPlayer
             MC.BattleActionCommandList[0] = Database.ATTACK_EN;
             MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
             MC.BattleActionCommandList[2] = Database.FIRE_BALL;
-            MC.BattleActionCommandList[3] = Database.FLAME_STRIKE;
+            MC.BattleActionCommandList[3] = Database.STRAIGHT_SMASH;
             MC.BattleActionCommandList[4] = Database.VOLCANIC_WAVE;
             MC.BattleActionCommandList[5] = Database.LAVA_ANNIHILATION;
             MC.BattleActionCommandList[6] = Database.FIRE_BALL;

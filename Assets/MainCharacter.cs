@@ -1194,6 +1194,20 @@ namespace DungeonPlayer
         protected MainCharacter stackTarget = null; // スタックインザコマンド用の対象プレイヤー格納庫
         protected PlayerAction stackPlayerAction = PlayerAction.None; // スタックインザコマンド用のプレイヤーアクション格納庫
         protected string stackCommandString = string.Empty; // スタックインザコマンド用のコマンド文字列格納庫
+
+        protected List<string> actionCommandStackList = new List<string>(); // Bystanderがタイムストップ時、詠唱を累積させるために用いるアクションコマンドリスト
+        public List<string> ActionCommandStackList
+        {
+            get { return actionCommandStackList; }
+            set { actionCommandStackList = value; }
+        }
+        protected List<MainCharacter> actionCommandStackTarget = new List<MainCharacter>();
+        public List<MainCharacter> ActionCommandStackTarget
+        {
+            get { return actionCommandStackTarget; }
+            set { actionCommandStackTarget = value; }
+        }
+
         public GameObject BuffPanel = null;
         public int BuffNumber = 0;
         public TruthImage[] BuffElement = null; // 「警告」：後編ではこれでBUFF並びを整列する。最終的には個別BUFFのTruthImageは全て不要になる。
@@ -2541,9 +2555,6 @@ namespace DungeonPlayer
         //	public int CurrentDeflection { get; set; }
         //	public int CurrentTruthVision { get; set; }
 
-        // base command (automatic)
-        public Button btnBaseCommand = null;
-
         // battle command list (manual)
        	public string[] BattleActionCommandList = new string[Database.BATTLE_COMMAND_MAX];
 
@@ -2584,7 +2595,10 @@ namespace DungeonPlayer
 
         // gui
         public GameObject mainPanel = null;
+        public GameObject MainObjectBack = null;
         public Button MainObjectButton = null;
+        public Color MainColor = new Color();
+
         public Text labelName = null;
         public Text labelFullName = null;
         public Text ActionLabel = null;
@@ -2678,15 +2692,8 @@ namespace DungeonPlayer
         }
         // gui action button list
         public List<Button> ActionButtonList = new List<Button>();
-        public Button ActionButton1 = null;
-        public Button ActionButton2 = null;
-        public Button ActionButton3 = null;
-        public Button ActionButton4 = null;
-        public Button ActionButton5 = null;
-        public Button ActionButton6 = null;
-        public Button ActionButton7 = null;
-        public Button ActionButton8 = null;
-        public Button ActionButton9 = null;
+        public List<Text> ActionKeyNum = new List<Text>();
+        public List<Image> IsSorceryMark = new List<Image>();
 
         // battle target
         public MainCharacter Target = null; // 敵ターゲット
@@ -2940,15 +2947,10 @@ namespace DungeonPlayer
             if (this.labelCurrentManaPoint != null) { this.labelCurrentManaPoint.gameObject.SetActive(true); }
             if (this.labelCurrentInstantPoint != null) { this.labelCurrentInstantPoint.gameObject.SetActive(true); }
             if (this.labelCurrentSpecialInstant != null) { this.labelCurrentSpecialInstant.gameObject.SetActive(true); }
-            if (this.ActionButton1 != null) this.ActionButton1.gameObject.SetActive(true);
-            if (this.ActionButton2 != null) this.ActionButton2.gameObject.SetActive(true);
-            if (this.ActionButton3 != null) this.ActionButton3.gameObject.SetActive(true);
-            if (this.ActionButton4 != null) this.ActionButton4.gameObject.SetActive(true);
-            if (this.ActionButton5 != null) this.ActionButton5.gameObject.SetActive(true);
-            if (this.ActionButton6 != null) this.ActionButton6.gameObject.SetActive(true);
-            if (this.ActionButton7 != null) this.ActionButton7.gameObject.SetActive(true);
-            if (this.ActionButton8 != null) this.ActionButton8.gameObject.SetActive(true);
-            if (this.ActionButton9 != null) this.ActionButton9.gameObject.SetActive(true);
+            for (int ii = 0; ii < this.ActionButtonList.Count; ii++)
+            {
+                if (this.ActionButtonList[ii] != null) this.ActionButtonList[ii].gameObject.SetActive(true);
+            }
             if (this.ActionLabel != null) this.ActionLabel.gameObject.SetActive(true);
             if (this.MainObjectButton != null) this.MainObjectButton.gameObject.SetActive(true);
             if (this.pbTargetTarget != null) this.pbTargetTarget.gameObject.SetActive(true);
@@ -2964,15 +2966,10 @@ namespace DungeonPlayer
             if (this.labelCurrentManaPoint != null) this.labelCurrentManaPoint.gameObject.SetActive(false);
             if (this.labelCurrentInstantPoint != null) this.labelCurrentInstantPoint.gameObject.SetActive(false);
             if (this.labelCurrentSpecialInstant != null) this.labelCurrentSpecialInstant.gameObject.SetActive(false);
-            if (this.ActionButton1 != null) this.ActionButton1.gameObject.SetActive(false);
-            if (this.ActionButton2 != null) this.ActionButton2.gameObject.SetActive(false);
-            if (this.ActionButton3 != null) this.ActionButton3.gameObject.SetActive(false);
-            if (this.ActionButton4 != null) this.ActionButton4.gameObject.SetActive(false);
-            if (this.ActionButton5 != null) this.ActionButton5.gameObject.SetActive(false);
-            if (this.ActionButton6 != null) this.ActionButton6.gameObject.SetActive(false);
-            if (this.ActionButton7 != null) this.ActionButton7.gameObject.SetActive(false);
-            if (this.ActionButton8 != null) this.ActionButton8.gameObject.SetActive(false);
-            if (this.ActionButton9 != null) this.ActionButton9.gameObject.SetActive(false);
+            for (int ii = 0; ii < this.ActionButtonList.Count; ii++)
+            {
+                if (this.ActionButtonList[ii] != null) this.ActionButtonList[ii].gameObject.SetActive(false);
+            }
             if (this.ActionLabel != null) this.ActionLabel.gameObject.SetActive(false);
             if (this.MainObjectButton != null) this.MainObjectButton.gameObject.SetActive(false);
             if (this.pbTargetTarget != null) this.pbTargetTarget.gameObject.SetActive(false);
@@ -2990,14 +2987,13 @@ namespace DungeonPlayer
             {
                 // 【要検討】リザレクション対象にするため、生死に関わらず、対象とする事を許可
                 //this.MainObjectButton.Enabled = false; // delete
-                // todo
-                //			this.MainObjectButton.BackColor = Color.DarkSlateGray;
+                this.MainObjectButton.GetComponent<Image>().color = UnityColor.DarkSlateGray;
             }
-            // todo
-            //		if (this.pbTargetTarget != null)
-            //		{
-            //			this.pbTargetTarget.BackColor = Color.DarkSlateGray;
-            //		}
+
+            if (this.pbTargetTarget != null)
+            {
+                this.pbTargetTarget.color = UnityColor.DarkSlateGray;
+            }
             if (this.labelName != null) this.labelName.color = Color.red;
             if (this.labelCurrentLifePoint != null) this.labelCurrentLifePoint.color = Color.red;
         }
@@ -3008,16 +3004,15 @@ namespace DungeonPlayer
             {
                 this.CurrentLife = life;
                 this.Dead = false;
-                // todo
-                //			if (this.MainObjectButton != null)
-                //			{
-                //				this.MainObjectButton.Enabled = true;
-                //				this.MainObjectButton.BackColor = this.MainColor;
-                //			}
-                //			if (this.pbTargetTarget != null)
-                //			{
-                //				this.pbTargetTarget.BackColor = this.MainColor;
-                //			}
+                if (this.MainObjectButton != null)
+                {
+                    this.MainObjectButton.gameObject.SetActive(true);
+                    this.MainObjectButton.GetComponent<Image>().color = this.MainColor;
+                }
+                if (this.pbTargetTarget != null)
+                {
+                    this.pbTargetTarget.color = this.MainColor;
+                }
                 if (this.labelName != null) { this.labelName.color = Color.black; }
                 if (this.labelCurrentLifePoint != null) { this.labelCurrentLifePoint.color = Color.black; this.labelCurrentLifePoint.text = CurrentLife.ToString(); }
             }

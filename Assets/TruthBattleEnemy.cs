@@ -62,6 +62,7 @@ namespace DungeonPlayer
         public Sprite[] imageSandglass;
         
         // GUI
+        public Text TimeSpeedLabel;
         public GameObject groupChooseCommand;
         public Camera cam;
         public TruthImage[] FieldBuff;
@@ -108,7 +109,8 @@ namespace DungeonPlayer
         private int StackNumber = -1;
         public Image player1Arrow;
         public Text playerActionLabel1;
-        public Button buttonTargetPlayer1;
+        public GameObject player1MainObjectBack;
+        public Button player1MainObject;
         public Text player1Name;
         public Text player1FullName;
         public Text player1Life;
@@ -122,11 +124,13 @@ namespace DungeonPlayer
         public GameObject player1DamagePanel;
         public Text player1Damage;
         public Text player1Critical;
+        public Text[] KeyNum1;
         public Image[] IsSorcery1;
 
         public Image player2Arrow;
         public Text playerActionLabel2;
-        public Button buttonTargetPlayer2;
+        public GameObject player2MainObjectBack;
+        public Button player2MainObject;
         public Text player2Name;
         public Text player2FullName;
         public Text player2Life;
@@ -140,11 +144,13 @@ namespace DungeonPlayer
         public GameObject player2DamagePanel;
         public Text player2Damage;
         public Text player2Critical;
+        public Text[] KeyNum2;
         public Image[] IsSorcery2;
 
         public Image player3Arrow;
         public Text playerActionLabel3;
-        public Button buttonTargetPlayer3;
+        public GameObject player3MainObjectBack;
+        public Button player3MainObject;
         public Text player3Name;
         public Text player3FullName;
         public Text player3Life;
@@ -158,11 +164,13 @@ namespace DungeonPlayer
         public GameObject player3DamagePanel;
         public Text player3Damage;
         public Text player3Critical;
+        public Text[] KeyNum3;
         public Image[] IsSorcery3;
 
         public Image enemy1Arrow;
         public Text enemyActionLabel1;
-        public Button buttonTargetEnemy1;
+        public GameObject enemy1MainObjectBack;
+        public Button enemy1MainObject;
         public Text enemy1Name;
         public Text enemy1Life;
         public Image enemy1LifeMeter;
@@ -175,11 +183,13 @@ namespace DungeonPlayer
         public GameObject enemy1DamagePanel;
         public Text enemy1Damage;
         public Text enemy1Critical;
+        //public Text[] KeyNumE1;
         //public Image[] IsSorceryE1;
 
         public Image enemy2Arrow;
         public Text enemyActionLabel2;
-        public Button buttonTargetEnemy2;
+        public GameObject enemy2MainObjectBack;
+        public Button enemy2MainObject;
         public Text enemy2Name;
         public Text enemy2Life;
         public Image enemy2LifeMeter;
@@ -190,11 +200,13 @@ namespace DungeonPlayer
         public GameObject enemy2DamagePanel;
         public Text enemy2Damage;
         public Text enemy2Critical;
+        //public Text[] KeyNumE2;
         //public Image[] IsSorceryE2;
 
         public Image enemy3Arrow;
         public Text enemyActionLabel3;
-        public Button buttonTargetEnemy3;
+        public GameObject enemy3MainObjectBack;
+        public Button enemy3MainObject;
         public Text enemy3Name;
         public Text enemy3Life;
         public Image enemy3LifeMeter;
@@ -205,6 +217,7 @@ namespace DungeonPlayer
         public GameObject enemy3DamagePanel;
         public Text enemy3Damage;
         public Text enemy3Critical;
+        //public Text[] KeyNumE3;
         //public Image[] IsSorceryE3;
 
         public GameObject BuffPanel1;
@@ -248,7 +261,7 @@ namespace DungeonPlayer
         bool StayOn_StanceOfFlow = false;
         bool BreakOn_StanceOfFlow = false;
 
-        string ChooseCommand = string.empty;
+        string ChooseCommand = string.Empty;
 
         // Use this for initialization
         public override void Start()
@@ -274,7 +287,7 @@ namespace DungeonPlayer
             GroundOne.MC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.MC.CurrentInstantPoint = 0;
             GroundOne.MC.MainFaceArrow = this.player1Arrow;
-            GroundOne.MC.MainObjectButton = this.buttonTargetPlayer1;
+            GroundOne.MC.MainObjectButton = this.player1MainObject;
             GroundOne.MC.ActionLabel = this.playerActionLabel1;
             GroundOne.MC.labelName = this.player1Name;
             GroundOne.MC.labelCurrentLifePoint = this.player1Life;
@@ -288,13 +301,12 @@ namespace DungeonPlayer
             GroundOne.MC.DamagePanel = this.player1DamagePanel;
             GroundOne.MC.DamageLabel = this.player1Damage;
             GroundOne.MC.CriticalLabel = this.player1Critical;
-            GroundOne.MC.btnBaseCommand = this.buttonTargetPlayer1;
             GroundOne.MC.ActionButtonList.AddRange(this.ActionButton1);
 
             GroundOne.SC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.SC.CurrentInstantPoint = 0;
             GroundOne.SC.MainFaceArrow = this.player2Arrow;
-            GroundOne.SC.MainObjectButton = this.buttonTargetPlayer2;
+            GroundOne.SC.MainObjectButton = this.player2MainObject;
             GroundOne.SC.ActionLabel = this.playerActionLabel2;
             GroundOne.SC.labelName = this.player2Name;
             GroundOne.SC.labelCurrentLifePoint = this.player2Life;
@@ -308,13 +320,12 @@ namespace DungeonPlayer
             GroundOne.SC.DamagePanel = this.player2DamagePanel;
             GroundOne.SC.DamageLabel = this.player2Damage;
             GroundOne.SC.CriticalLabel = this.player2Critical;
-            GroundOne.SC.btnBaseCommand = this.buttonTargetPlayer2;
             GroundOne.SC.ActionButtonList.AddRange(this.ActionButton2);
 
             GroundOne.TC.CurrentCommand = Database.ATTACK_EN;
             GroundOne.TC.CurrentInstantPoint = 0;
             GroundOne.TC.MainFaceArrow = this.player3Arrow;
-            GroundOne.TC.MainObjectButton = this.buttonTargetPlayer3;
+            GroundOne.TC.MainObjectButton = this.player3MainObject;
             GroundOne.TC.ActionLabel = this.playerActionLabel3;
             GroundOne.TC.labelName = this.player3Name;
             GroundOne.TC.labelCurrentLifePoint = this.player3Life;
@@ -328,7 +339,6 @@ namespace DungeonPlayer
             GroundOne.TC.DamagePanel = this.player3DamagePanel;
             GroundOne.TC.DamageLabel = this.player3Damage;
             GroundOne.TC.CriticalLabel = player3Critical;
-            GroundOne.TC.btnBaseCommand = this.buttonTargetPlayer3;
             GroundOne.TC.ActionButtonList.AddRange(this.ActionButton3);
 
             this.ec1 = baseObj.AddComponent<TruthEnemyCharacter>();
@@ -336,7 +346,7 @@ namespace DungeonPlayer
             this.ec1.CurrentCommand = Database.ATTACK_EN;
             this.ec1.CurrentInstantPoint = 0;
             this.ec1.MainFaceArrow = this.enemy1Arrow;
-            this.ec1.MainObjectButton = this.buttonTargetEnemy1;
+            this.ec1.MainObjectButton = this.enemy1MainObject;
             this.ec1.ActionLabel = this.enemyActionLabel1;
             this.ec1.labelName = this.enemy1Name;
             this.ec1.labelCurrentLifePoint = this.enemy1Life;
@@ -358,7 +368,7 @@ namespace DungeonPlayer
             this.ec2.CurrentCommand = Database.ATTACK_EN;
             this.ec2.CurrentInstantPoint = 0;
             this.ec2.MainFaceArrow = this.enemy2Arrow;
-            this.ec2.MainObjectButton = this.buttonTargetEnemy2;
+            this.ec2.MainObjectButton = this.enemy2MainObject;
             this.ec2.ActionLabel = this.enemyActionLabel2;
             this.ec2.labelName = this.enemy2Name;
             this.ec2.labelCurrentLifePoint = this.enemy2Life;
@@ -378,7 +388,7 @@ namespace DungeonPlayer
             this.ec3.CurrentCommand = Database.PROTECTION;
             this.ec3.CurrentInstantPoint = 0;
             this.ec3.MainFaceArrow = this.enemy3Arrow;
-            this.ec3.MainObjectButton = this.buttonTargetEnemy3;
+            this.ec3.MainObjectButton = this.enemy3MainObject;
             this.ec3.ActionLabel = this.enemyActionLabel3;
             this.ec3.labelName = this.enemy3Name;
             this.ec3.labelCurrentLifePoint = this.enemy3Life;
@@ -406,7 +416,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer1.SetActive(true);
-                ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1FullName, player1Life, null, null, null, null, player1Instant, null, ActionButton1, playerActionLabel1, BuffPanel1, buttonTargetPlayer1, new Color(Database.COLOR_BATTLE_TARGET1_EIN_R, Database.COLOR_BATTLE_TARGET1_EIN_G, Database.COLOR_BATTLE_TARGET1_EIN_B), null, null, null, null, null, null, pbBuffPlayer1, null, null, null, null, null, null, null, null, null, IsSorcery1);
+                ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1FullName, player1Life, null, null, null, null, player1Instant, null, ActionButton1, playerActionLabel1, BuffPanel1, player1MainObjectBack, player1MainObject, new Color(Database.COLOR_BATTLE_TARGET1_EIN_R, Database.COLOR_BATTLE_TARGET1_EIN_G, Database.COLOR_BATTLE_TARGET1_EIN_B), null, player1Arrow, null, null, player1Damage, player1Critical, pbBuffPlayer1, KeyNum1, IsSorcery1);
             }
             if (GroundOne.WE.AvailableSecondCharacter == false)
             {
@@ -415,7 +425,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer2.SetActive(true);
-                ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2FullName, player2Life, null, null, null, null, player2Instant, null, ActionButton2, playerActionLabel2, BuffPanel2, buttonTargetPlayer2, new Color(Database.COLOR_BATTLE_TARGET1_RANA_R, Database.COLOR_BATTLE_TARGET1_RANA_G, Database.COLOR_BATTLE_TARGET1_RANA_B), null, null, null, null, null, null, pbBuffPlayer2, null, null, null, null, null, null, null, null, null, IsSorcery2);
+                ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2FullName, player2Life, null, null, null, null, player2Instant, null, ActionButton2, playerActionLabel2, BuffPanel2, player2MainObjectBack, player2MainObject, new Color(Database.COLOR_BATTLE_TARGET1_RANA_R, Database.COLOR_BATTLE_TARGET1_RANA_G, Database.COLOR_BATTLE_TARGET1_RANA_B), null, player2Arrow, null, null, player2Damage, player2Critical, pbBuffPlayer2, KeyNum2, IsSorcery2);
             }
 
             if (GroundOne.WE.AvailableThirdCharacter == false)
@@ -425,7 +435,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer3.SetActive(true);
-                ActivateSomeCharacter(GroundOne.TC, ec1, player3Name, player3FullName, player3Life, null, null, null, null, player3Instant, null, ActionButton3, playerActionLabel3, BuffPanel3, buttonTargetPlayer3, new Color(Database.COLOR_BATTLE_TARGET1_OL_R, Database.COLOR_BATTLE_TARGET1_OL_G, Database.COLOR_BATTLE_TARGET1_OL_B), null, null, null, null, null, null, pbBuffPlayer3, null, null, null, null, null, null, null, null, null, IsSorcery3);
+                ActivateSomeCharacter(GroundOne.TC, ec1, player3Name, player3FullName, player3Life, null, null, null, null, player3Instant, null, ActionButton3, playerActionLabel3, BuffPanel3, player3MainObjectBack, player3MainObject, new Color(Database.COLOR_BATTLE_TARGET1_OL_R, Database.COLOR_BATTLE_TARGET1_OL_G, Database.COLOR_BATTLE_TARGET1_OL_B), null, player3Arrow, null, null, player3Damage, player3Critical, pbBuffPlayer3, KeyNum3, IsSorcery3);
             }
 
             if (GroundOne.enemyName1 == String.Empty)
@@ -436,7 +446,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy1.SetActive(true);
-                ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, null, enemy1Life, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, null, new Color(50, 100, 150), null, null, null, null, null, null, pbBuffEnemy1, null, null, null, null, null, null, null, null, null, null);
+                ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, null, enemy1Life, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), null, enemy1Arrow, null, null, enemy1Damage, enemy1Critical, pbBuffEnemy1, null, null);
             }
 
             if (GroundOne.enemyName2 == String.Empty)
@@ -447,7 +457,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy2.SetActive(true);
-                ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, null, enemy2Life, null, null, null, null, null, null, null, enemyActionLabel2, PanelBuffEnemy2, null, new Color(150, 50, 100), null, null, null, null, null, null, pbBuffEnemy2, null, null, null, null, null, null, null, null, null, null);
+                ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, null, enemy2Life, null, null, null, null, null, null, null, enemyActionLabel2, PanelBuffEnemy2, enemy2MainObjectBack, enemy2MainObject, new Color(150, 50, 100), null, enemy2Arrow, null, null, enemy2Damage, enemy2Critical, pbBuffEnemy2, null, null);
             }
 
             if (GroundOne.enemyName3 == String.Empty)
@@ -458,7 +468,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy3.SetActive(true);
-                ActivateSomeCharacter(ec3, GroundOne.MC, enemy3Name, null, enemy3Life, null, null, null, null, null, null, null, enemyActionLabel3, PanelBuffEnemy3, null, new Color(100, 150, 50), null, null, null, null, null, null, pbBuffEnemy3, null, null, null, null, null, null, null, null, null, null);
+                ActivateSomeCharacter(ec3, GroundOne.MC, enemy3Name, null, enemy3Life, null, null, null, null, null, null, null, enemyActionLabel3, PanelBuffEnemy3, enemy3MainObjectBack, enemy3MainObject, new Color(100, 150, 50), null, enemy3Arrow, null, null, enemy3Damage, enemy3Critical, pbBuffEnemy3, null, null);
             }
 
             for (int ii = 0; ii < this.ActiveList.Count; ii++)
@@ -507,6 +517,7 @@ namespace DungeonPlayer
         {
             base.Update();
 
+            System.Threading.Thread.Sleep(TIMER_SPEED);
             #region "キー制御"
             bool detectShift = false;
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -634,7 +645,7 @@ namespace DungeonPlayer
             {
                 this.NowTimeStop = false;
             }
-            if ((this.NowTimeStop == true) && (cam.backgroundColor == Color.GhostWhite))
+            if ((this.NowTimeStop == true) && (cam.backgroundColor == UnityColor.GhostWhite))
             {
                 cam.backgroundColor = Color.black;
                 this.labelBattleTurn.color = Color.white;
@@ -776,547 +787,610 @@ namespace DungeonPlayer
             Button[] actionButton,
             Text actionLabel,
             GameObject buffPanel, // Panel
-            Button mainObject, Color mainColor, Image targetTarget, Image mainFaceArrow, Image shadowFaceArrow2, Image shadowFaceArrow3,
+            GameObject mainObjectBack, Button mainObject, Color mainColor, Image targetTarget, Image mainFaceArrow, Image shadowFaceArrow2, Image shadowFaceArrow3,
             Text damageLabel, Text criticalLabel,
             TruthImage[] buffList,
-            Text keyNum1, Text keyNum2, Text keyNum3, Text keyNum4, Text keyNum5, Text keyNum6, Text keyNum7, Text keyNum8, Text keyNum9,
+            Text[] keyNum,
             Image[] sorceryMark
             )
         {
-            if (true) // player != null) // todo null指定はできない
+            player.RealTimeBattle = true;
+
+            // 戦闘画面UIへの初期設定
+            // MainCharacterクラス内容と戦闘画面UIの割り当て
+            player.labelName = charaName;
+            player.labelName.text = player.FirstName;
+            if (fullName != null)
             {
-                player.RealTimeBattle = true;
+                player.labelFullName = fullName;
+                player.labelFullName.text = player.FullName;
+            }
 
-                // 戦闘画面UIへの初期設定
-                // MainCharacterクラス内容と戦闘画面UIの割り当て
-                player.labelName = charaName;
-                player.labelName.text = player.FirstName;
-                if (fullName != null)
+            player.labelCurrentLifePoint = life;
+            UpdateLife(player);
+
+            player.labelCurrentSkillPoint = currentSkillPoint;
+            if (player.labelCurrentSkillPoint != null)
+            {
+                player.labelCurrentSkillPoint.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
+            }
+
+            player.labelCurrentManaPoint = currentManaPoint;
+            if (player.labelCurrentManaPoint != null)
+            {
+                player.labelCurrentManaPoint.text = player.CurrentMana.ToString() + " / " + player.MaxMana.ToString();
+            }
+
+            player.CurrentInstantPoint = 0; // 後編追加 // 「コメント」初期直感ではMAX値に戻しておくほうがいいと思ったが、プレイしてみてはじめは０のほうが、ゲーム性は面白く感じられると思った。
+            player.labelCurrentInstantPoint = currentInstantPoint;
+            if (player.labelCurrentInstantPoint != null)
+            {
+                player.labelCurrentInstantPoint.text = player.CurrentInstantPoint.ToString() + " / " + player.MaxInstantPoint.ToString();
+            }
+            player.labelCurrentSpecialInstant = currentSpecialInstant;
+            if (player.labelCurrentSpecialInstant != null)
+            {
+                player.labelCurrentSpecialInstant.text = player.CurrentSpecialInstant.ToString() + " / " + player.MaxSpecialInstant.ToString();
+            }
+
+            if (actionButton != null)
+            {
+                player.ActionButtonList.Clear();
+                for (int ii = 0; ii < actionButton.Length; ii++)
                 {
-                    player.labelFullName = fullName;
-                    player.labelFullName.text = player.FullName;
+                    player.ActionButtonList.Add(actionButton[ii]);
                 }
+            }
 
-                player.labelCurrentLifePoint = life;
-                UpdateLife(player);
-
-                // todo 元ソースから持ってくるモノがある。
-
-                player.ActionLabel = actionLabel;
-
-                // todo 元ソースから持ってくるモノがある。
-
-
-                #region "BUFFリストを登録"
-                int num = 0;
-                player.pbProtection = buffList[num]; buffList[num].ImageName = Database.PROTECTION; num++;
-                player.pbAbsorbWater = buffList[num]; buffList[num].ImageName = Database.ABSORB_WATER; num++;
-                player.pbShadowPact = buffList[num]; buffList[num].ImageName = Database.SHADOW_PACT; num++;
-                player.pbFlameAura = buffList[num]; buffList[num].ImageName = Database.FLAME_AURA; num++;
-                player.pbHeatBoost = buffList[num]; buffList[num].ImageName = Database.HEAT_BOOST; num++;
-                player.pbSaintPower = buffList[num]; buffList[num].ImageName = Database.SAINT_POWER; num++;
-                player.pbWordOfLife = buffList[num]; buffList[num].ImageName = Database.WORD_OF_LIFE; num++;
-                player.pbGlory = buffList[num]; buffList[num].ImageName = Database.GLORY; num++;
-                player.pbVoidExtraction = buffList[num]; buffList[num].ImageName = Database.VOID_EXTRACTION; num++;
-                player.pbOneImmunity = buffList[num]; buffList[num].ImageName = Database.ONE_IMMUNITY; num++;
-                player.pbGaleWind = buffList[num]; buffList[num].ImageName = Database.GALE_WIND; num++;
-                player.pbWordOfFortune = buffList[num]; buffList[num].ImageName = Database.WORD_OF_FORTUNE; num++;
-                player.pbBloodyVengeance = buffList[num]; buffList[num].ImageName = Database.BLOODY_VENGEANCE; num++;
-                player.pbRiseOfImage = buffList[num]; buffList[num].ImageName = Database.RISE_OF_IMAGE; num++;
-                player.pbImmortalRave = buffList[num]; buffList[num].ImageName = Database.IMMORTAL_RAVE; num++;
-                player.pbHighEmotionality = buffList[num]; buffList[num].ImageName = Database.HIGH_EMOTIONALITY; num++;
-                player.pbBlackContract = buffList[num]; buffList[num].ImageName = Database.BLACK_CONTRACT; num++;
-                player.pbAetherDrive = buffList[num]; buffList[num].ImageName = Database.AETHER_DRIVE; num++;
-                player.pbEternalPresence = buffList[num]; buffList[num].ImageName = Database.ETERNAL_PRESENCE; num++;
-                player.pbMirrorImage = buffList[num]; buffList[num].ImageName = Database.MIRROR_IMAGE; num++;
-                player.pbDeflection = buffList[num]; buffList[num].ImageName = Database.DEFLECTION; num++;
-                player.pbTruthVision = buffList[num]; buffList[num].ImageName = Database.TRUTH_VISION; num++;
-                player.pbStanceOfFlow = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_FLOW; num++;
-                player.pbPromisedKnowledge = buffList[num]; buffList[num].ImageName = Database.PROMISED_KNOWLEDGE; num++;
-                player.pbStanceOfDeath = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DEATH; num++;
-                player.pbAntiStun = buffList[num]; buffList[num].ImageName = Database.ANTI_STUN; num++;
-
-                player.pbStanceOfEyes = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_EYES; num++;
-                player.pbNegate = buffList[num]; buffList[num].ImageName = Database.NEGATE; num++;
-                player.pbCounterAttack = buffList[num]; buffList[num].ImageName = Database.COUNTER_ATTACK; num++;
-                player.pbStanceOfStanding = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_STANDING; num++;
-
-                player.pbPainfulInsanity = buffList[num]; buffList[num].ImageName = Database.PAINFUL_INSANITY; num++;
-                player.pbDamnation = buffList[num]; buffList[num].ImageName = Database.DAMNATION; num++;
-                player.pbAbsoluteZero = buffList[num]; buffList[num].ImageName = Database.ABSOLUTE_ZERO; num++;
-                player.pbNothingOfNothingness = buffList[num]; buffList[num].ImageName = Database.NOTHING_OF_NOTHINGNESS; num++;
-
-                player.pbPoison = buffList[num]; buffList[num].ImageName = Database.EFFECT_POISON; num++;
-                player.pbStun = buffList[num]; buffList[num].ImageName = Database.EFFECT_STUN; num++;
-                player.pbSilence = buffList[num]; buffList[num].ImageName = Database.EFFECT_SILENCE; num++;
-                player.pbParalyze = buffList[num]; buffList[num].ImageName = Database.EFFECT_PARALYZE; num++;
-                player.pbFrozen = buffList[num]; buffList[num].ImageName = Database.EFFECT_FROZEN; num++;
-                player.pbTemptation = buffList[num]; buffList[num].ImageName = Database.EFFECT_TEMPTATION; num++;
-                player.pbNoResurrection = buffList[num]; buffList[num].ImageName = Database.EFFECT_NORESURRECTION; num++;
-                player.pbSlow = buffList[num]; buffList[num].ImageName = Database.EFFECT_SLOW; num++;
-                player.pbBlind = buffList[num]; buffList[num].ImageName = Database.EFFECT_BLIND; num++;
-                player.pbSlip = buffList[num]; buffList[num].ImageName = Database.EFFECT_SLIP; num++;
-                player.pbNoGainLife = buffList[num]; buffList[num].ImageName = Database.EFFECT_NOGAIN_LIFE; num++;
-
-                player.pbPhysicalAttackUp = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_ATTACK_UP; num++;
-                player.pbPhysicalAttackDown = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_ATTACK_DOWN; num++;
-                player.pbPhysicalDefenseUp = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_DEFENSE_UP; num++;
-                player.pbPhysicalDefenseDown = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_DEFENSE_DOWN; num++;
-                player.pbMagicAttackUp = buffList[num]; buffList[num].ImageName = Database.MAGIC_ATTACK_UP; num++;
-                player.pbMagicAttackDown = buffList[num]; buffList[num].ImageName = Database.MAGIC_ATTACK_DOWN; num++;
-                player.pbMagicDefenseUp = buffList[num]; buffList[num].ImageName = Database.MAGIC_DEFENSE_UP; num++;
-                player.pbMagicDefenseDown = buffList[num]; buffList[num].ImageName = Database.MAGIC_DEFENSE_DOWN; num++;
-                player.pbSpeedUp = buffList[num]; buffList[num].ImageName = Database.BATTLE_SPEED_UP; num++;
-                player.pbSpeedDown = buffList[num]; buffList[num].ImageName = Database.BATTLE_SPEED_DOWN; num++;
-                player.pbReactionUp = buffList[num]; buffList[num].ImageName = Database.BATTLE_REACTION_UP; num++;
-                player.pbReactionDown = buffList[num]; buffList[num].ImageName = Database.BATTLE_REACTION_DOWN; num++;
-                player.pbPotentialUp = buffList[num]; buffList[num].ImageName = Database.POTENTIAL_UP; num++;
-                player.pbPotentialDown = buffList[num]; buffList[num].ImageName = Database.POTENTIAL_DOWN; num++;
-
-                player.pbStrengthUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_STRENGTH_UP; num++;
-                player.pbAgilityUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_AGILITY_UP; num++;
-                player.pbIntelligenceUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_INTELLIGENCE_UP; num++;
-                player.pbStaminaUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_STAMINA_UP; num++;
-                player.pbMindUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_MIND_UP; num++;
-
-                player.pbResistLightUp = buffList[num]; buffList[num].ImageName = Database.RESIST_LIGHT_UP; num++;
-                player.pbResistShadowUp = buffList[num]; buffList[num].ImageName = Database.RESIST_SHADOW_UP; num++;
-                player.pbResistFireUp = buffList[num]; buffList[num].ImageName = Database.RESIST_FIRE_UP; num++;
-                player.pbResistIceUp = buffList[num]; buffList[num].ImageName = Database.RESIST_ICE_UP; num++;
-                player.pbResistForceUp = buffList[num]; buffList[num].ImageName = Database.RESIST_FORCE_UP; num++;
-                player.pbResistWillUp = buffList[num]; buffList[num].ImageName = Database.RESIST_WILL_UP; num++;
-
-                player.pbResistStun = buffList[num]; buffList[num].ImageName = Database.RESIST_STUN; num++;
-                player.pbResistSilence = buffList[num]; buffList[num].ImageName = Database.RESIST_SILENCE; num++;
-                player.pbResistPoison = buffList[num]; buffList[num].ImageName = Database.RESIST_POISON; num++;
-                player.pbResistTemptation = buffList[num]; buffList[num].ImageName = Database.RESIST_TEMPTATION; num++;
-                player.pbResistFrozen = buffList[num]; buffList[num].ImageName = Database.RESIST_FROZEN; num++;
-                player.pbResistParalyze = buffList[num]; buffList[num].ImageName = Database.RESIST_PARALYZE; num++;
-                player.pbResistNoResurrection = buffList[num]; buffList[num].ImageName = Database.RESIST_NORESURRECTION; num++;
-                player.pbResistSlow = buffList[num]; buffList[num].ImageName = Database.RESIST_SLOW; num++;
-                player.pbResistBlind = buffList[num]; buffList[num].ImageName = Database.RESIST_BLIND; num++;
-                player.pbResistSlip = buffList[num]; buffList[num].ImageName = Database.RESIST_SLIP; num++;
-
-                player.pbPsychicTrance = buffList[num]; buffList[num].ImageName = Database.PSYCHIC_TRANCE; num++;
-                player.pbBlindJustice = buffList[num]; buffList[num].ImageName = Database.BLIND_JUSTICE; num++;
-                player.pbTranscendentWish = buffList[num]; buffList[num].ImageName = Database.TRANSCENDENT_WISH; num++;
-                player.pbFlashBlaze = buffList[num]; buffList[num].ImageName = Database.FLASH_BLAZE; num++;
-                player.pbSkyShield = buffList[num]; buffList[num].ImageName = Database.SKY_SHIELD; num++;
-                player.pbEverDroplet = buffList[num]; buffList[num].ImageName = Database.EVER_DROPLET; num++;
-                player.pbHolyBreaker = buffList[num]; buffList[num].ImageName = Database.HOLY_BREAKER; num++;
-                player.pbStarLightning = buffList[num]; buffList[num].ImageName = Database.STAR_LIGHTNING; num++;
-                player.pbBlackFire = buffList[num]; buffList[num].ImageName = Database.BLACK_FIRE; num++;
-                player.pbWordOfMalice = buffList[num]; buffList[num].ImageName = Database.WORD_OF_MALICE; num++;
-                player.pbDarkenField = buffList[num]; buffList[num].ImageName = Database.DARKEN_FIELD; num++;
-                player.pbFrozenAura = buffList[num]; buffList[num].ImageName = Database.FROZEN_AURA; num++;
-                player.pbEnrageBlast = buffList[num]; buffList[num].ImageName = Database.ENRAGE_BLAST; num++;
-                player.pbImmolate = buffList[num]; buffList[num].ImageName = Database.IMMOLATE; num++;
-                player.pbVanishWave = buffList[num]; buffList[num].ImageName = Database.VANISH_WAVE; num++;
-                player.pbSeventhMagic = buffList[num]; buffList[num].ImageName = Database.SEVENTH_MAGIC; num++;
-                player.pbStanceOfDouble = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DOUBLE; num++;
-                player.pbSwiftStep = buffList[num]; buffList[num].ImageName = Database.SWIFT_STEP; num++;
-                player.pbSmoothingMove = buffList[num]; buffList[num].ImageName = Database.SMOOTHING_MOVE; num++;
-                player.pbFutureVision = buffList[num]; buffList[num].ImageName = Database.FUTURE_VISION; num++;
-                player.pbReflexSpirit = buffList[num]; buffList[num].ImageName = Database.REFLEX_SPIRIT; num++;
-                player.pbTrustSilence = buffList[num]; buffList[num].ImageName = Database.TRUST_SILENCE; num++;
-                player.pbStanceOfMystic = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_MYSTIC; num++;
-                player.pbPreStunning = buffList[num]; buffList[num].ImageName = Database.EFFECT_PRESTUNNING; num++;
-                player.pbBlinded = buffList[num]; buffList[num].ImageName = Database.EFFECT_BLINDED; num++;
-                player.pbConcussiveHit = buffList[num]; buffList[num].ImageName = Database.CONCUSSIVE_HIT; num++;
-                player.pbOnslaughtHit = buffList[num]; buffList[num].ImageName = Database.ONSLAUGHT_HIT; num++;
-                player.pbImpulseHit = buffList[num]; buffList[num].ImageName = Database.IMPULSE_HIT; num++;
-                player.pbExaltedField = buffList[num]; buffList[num].ImageName = Database.EXALTED_FIELD; num++;
-                player.pbRisingAura = buffList[num]; buffList[num].ImageName = Database.RISING_AURA; num++;
-                player.pbBlazingField = buffList[num]; buffList[num].ImageName = Database.BLAZING_FIELD; num++;
-                player.pbPhantasmalWind = buffList[num]; buffList[num].ImageName = Database.PHANTASMAL_WIND; num++;
-                player.pbParadoxImage = buffList[num]; buffList[num].ImageName = Database.PARADOX_IMAGE; num++;
-                player.pbStaticBarrier = buffList[num]; buffList[num].ImageName = Database.STATIC_BARRIER; num++;
-                player.pbAscensionAura = buffList[num]; buffList[num].ImageName = Database.ASCENSION_AURA; num++;
-                player.pbNourishSense = buffList[num]; buffList[num].ImageName = Database.NOURISH_SENSE; num++;
-                player.pbVigorSense = buffList[num]; buffList[num].ImageName = Database.VIGOR_SENSE; num++;
-                player.pbOneAuthority = buffList[num]; buffList[num].ImageName = Database.ONE_AUTHORITY; num++;
-
-                player.pbSyutyuDanzetsu = buffList[num]; buffList[num].ImageName = Database.ARCHETYPE_EIN; num++;
-                player.pbJunkanSeiyaku = buffList[num]; buffList[num].ImageName = Database.ARCHETYPE_RANA; num++;
-
-                player.pbHymnContract = buffList[num]; buffList[num].ImageName = Database.HYMN_CONTRACT; num++;
-                player.pbSigilOfHomura = buffList[num]; buffList[num].ImageName = Database.SIGIL_OF_HOMURA; num++;
-                player.pbAusterityMatrix = buffList[num]; buffList[num].ImageName = Database.AUSTERITY_MATRIX; num++;
-                player.pbRedDragonWill = buffList[num]; buffList[num].ImageName = Database.RED_DRAGON_WILL; num++;
-                player.pbBlueDragonWill = buffList[num]; buffList[num].ImageName = Database.BLUE_DRAGON_WILL; num++;
-                player.pbEclipseEnd = buffList[num]; buffList[num].ImageName = Database.ECLIPSE_END; num++;
-                player.pbTimeStop = buffList[num]; buffList[num].ImageName = Database.TIME_STOP; num++;
-                player.pbSinFortune = buffList[num]; buffList[num].ImageName = Database.SIN_FORTUNE; num++;
-
-                player.pbLightUp = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_UP; num++;
-                player.pbLightDown = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_DOWN; num++;
-                player.pbShadowUp = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_UP; num++;
-                player.pbShadowDown = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_DOWN; num++;
-                player.pbFireUp = buffList[num]; buffList[num].ImageName = Database.BUFF_FIRE_UP; num++;
-                player.pbFireDown = buffList[num]; buffList[num].ImageName = Database.BUFF_FIRE_DOWN; num++;
-                player.pbIceUp = buffList[num]; buffList[num].ImageName = Database.BUFF_ICE_UP; num++;
-                player.pbIceDown = buffList[num]; buffList[num].ImageName = Database.BUFF_ICE_DOWN; num++;
-                player.pbForceUp = buffList[num]; buffList[num].ImageName = Database.BUFF_FORCE_UP; num++;
-                player.pbForceDown = buffList[num]; buffList[num].ImageName = Database.BUFF_FORCE_DOWN; num++;
-                player.pbWillUp = buffList[num]; buffList[num].ImageName = Database.BUFF_WILL_UP; num++;
-                player.pbWillDown = buffList[num]; buffList[num].ImageName = Database.BUFF_WILL_DOWN; num++;
-
-                player.pbAfterReviveHalf = buffList[num]; buffList[num].ImageName = Database.BUFF_DANZAI_KAGO; num++;
-                player.pbFireDamage2 = buffList[num]; buffList[num].ImageName = Database.BUFF_FIREDAMAGE2; num++;
-                player.pbBlackMagic = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_MAGIC; num++;
-                player.pbChaosDesperate = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOS_DESPERATE; num++;
-
-                player.pbFeltus = buffList[num]; buffList[num].ImageName = Database.BUFF_FELTUS; num++;
-                player.pbJuzaPhantasmal = buffList[num]; buffList[num].ImageName = Database.BUFF_JUZA_PHANTASMAL; num++;
-                player.pbEternalFateRing = buffList[num]; buffList[num].ImageName = Database.BUFF_ETERNAL_FATE_RING; num++;
-                player.pbLightServant = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_SERVANT; num++;
-                player.pbShadowServant = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_SERVANT; num++;
-                player.pbAdilBlueBurn = buffList[num]; buffList[num].ImageName = Database.BUFF_ADIL_BLUE_BURN; num++;
-                player.pbMazeCube = buffList[num]; buffList[num].ImageName = Database.BUFF_MAZE_CUBE; num++;
-                player.pbShadowBible = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_BIBLE; num++;
-                player.pbDetachmentOrb = buffList[num]; buffList[num].ImageName = Database.BUFF_DETACHMENT_ORB; num++;
-                player.pbDevilSummonerTome = buffList[num]; buffList[num].ImageName = Database.BUFF_DEVIL_SUMMONER_TOME; num++;
-                player.pbVoidHymnsonia = buffList[num]; buffList[num].ImageName = Database.BUFF_VOID_HYMNSONIA; num++;
-
-                player.pbIchinaruHomura = buffList[num]; buffList[num].ImageName = Database.BUFF_ICHINARU_HOMURA; num++;
-                player.pbAbyssFire = buffList[num]; buffList[num].ImageName = Database.BUFF_ABYSS_FIRE; num++;
-                player.pbLightAndShadow = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_AND_SHADOW; num++;
-                player.pbEternalDroplet = buffList[num]; buffList[num].ImageName = Database.BUFF_ETERNAL_DROPLET; num++;
-                player.pbAusterityMatrixOmega = buffList[num]; buffList[num].ImageName = Database.BUFF_AUSTERITY_MATRIX_OMEGA; num++;
-                player.pbVoiceOfAbyss = buffList[num]; buffList[num].ImageName = Database.BUFF_VOICE_OF_ABYSS; num++;
-                player.pbAbyssWill = buffList[num]; buffList[num].ImageName = Database.BUFF_ABYSS_WILL; num++;
-                player.pbTheAbyssWall = buffList[num]; buffList[num].ImageName = Database.BUFF_THE_ABYSS_WALL; num++;
-
-                player.pbSagePotionMini = buffList[num]; buffList[num].ImageName = Database.BUFF_SAGE_POTION_MINI; num++;
-                player.pbGenseiTaima = buffList[num]; buffList[num].ImageName = Database.BUFF_GENSEI_TAIMA; num++;
-                player.pbShiningAether = buffList[num]; buffList[num].ImageName = Database.BUFF_SHINING_AETHER; num++;
-                player.pbBlackElixir = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_ELIXIR; num++;
-                player.pbElementalSeal = buffList[num]; buffList[num].ImageName = Database.BUFF_ELEMENTAL_SEAL; num++;
-                player.pbColoressAntidote = buffList[num]; buffList[num].ImageName = Database.BUFF_COLORESS_ANTIDOTE; num++;
-
-                player.pbLifeCount = buffList[num]; buffList[num].ImageName = Database.BUFF_LIFE_COUNT; num++;
-                player.pbChaoticSchema = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOTIC_SCHEMA; num++;
-                #endregion
-
-                // 登録を反映
-                player.BuffElement = buffList;
-
-                // 各プレイヤーのターゲット選定
-                player.Target = target;
-                player.Target2 = player; // 味方選択はデフォルトでは自分自身としておく。
-                if ((player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU) ||
-                    (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA))
+            if (keyNum != null)
+            {
+                player.ActionKeyNum.Clear();
+                for (int ii = 0; ii < keyNum.Length; ii++)
                 {
-                    player.Target2 = ec1;
+                    player.ActionKeyNum.Add(keyNum[ii]);
+                }              
+            }
+
+            if (sorceryMark != null)
+            {
+                player.IsSorceryMark.Clear();
+                for (int ii = 0; ii < sorceryMark.Length; ii++)
+                {
+                    player.IsSorceryMark.Add(sorceryMark[ii]);
                 }
+            }
 
-                // 各プレイヤーの初期行動を選定
-                player.PA = MainCharacter.PlayerAction.NormalAttack;
-                player.ReserveBattleCommand = Database.ATTACK_EN;
-                PlayerActionSet(player);
+            player.ActionLabel = actionLabel;
 
-                // 各プレイヤーの戦闘バーの位置
-                if (GroundOne.DuelMode)
+            player.BuffPanel = buffPanel;
+            player.BuffPanel.SetActive(true);
+
+            player.MainColor = mainColor;
+            player.MainObjectBack = mainObjectBack;
+            player.MainObjectButton = mainObject;
+            if (mainObjectBack != null)
+            {
+                player.MainObjectBack.GetComponent<Image>().color = mainColor;
+            }
+            if (mainFaceArrow != null)
+            {
+                player.MainFaceArrow = mainFaceArrow;
+            }
+            player.pbTargetTarget = targetTarget;
+            player.MainFaceArrow = mainFaceArrow;
+            if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE) { player.ShadowFaceArrow2 = shadowFaceArrow2; player.ShadowFaceArrow3 = shadowFaceArrow3; } // 最終戦ヴェルゼのみ、分身の技を使う。
+            player.DamageLabel = damageLabel;
+            player.CriticalLabel = criticalLabel;
+
+            #region "BUFFリストを登録"
+            int num = 0;
+            player.pbProtection = buffList[num]; buffList[num].ImageName = Database.PROTECTION; num++;
+            player.pbAbsorbWater = buffList[num]; buffList[num].ImageName = Database.ABSORB_WATER; num++;
+            player.pbShadowPact = buffList[num]; buffList[num].ImageName = Database.SHADOW_PACT; num++;
+            player.pbFlameAura = buffList[num]; buffList[num].ImageName = Database.FLAME_AURA; num++;
+            player.pbHeatBoost = buffList[num]; buffList[num].ImageName = Database.HEAT_BOOST; num++;
+            player.pbSaintPower = buffList[num]; buffList[num].ImageName = Database.SAINT_POWER; num++;
+            player.pbWordOfLife = buffList[num]; buffList[num].ImageName = Database.WORD_OF_LIFE; num++;
+            player.pbGlory = buffList[num]; buffList[num].ImageName = Database.GLORY; num++;
+            player.pbVoidExtraction = buffList[num]; buffList[num].ImageName = Database.VOID_EXTRACTION; num++;
+            player.pbOneImmunity = buffList[num]; buffList[num].ImageName = Database.ONE_IMMUNITY; num++;
+            player.pbGaleWind = buffList[num]; buffList[num].ImageName = Database.GALE_WIND; num++;
+            player.pbWordOfFortune = buffList[num]; buffList[num].ImageName = Database.WORD_OF_FORTUNE; num++;
+            player.pbBloodyVengeance = buffList[num]; buffList[num].ImageName = Database.BLOODY_VENGEANCE; num++;
+            player.pbRiseOfImage = buffList[num]; buffList[num].ImageName = Database.RISE_OF_IMAGE; num++;
+            player.pbImmortalRave = buffList[num]; buffList[num].ImageName = Database.IMMORTAL_RAVE; num++;
+            player.pbHighEmotionality = buffList[num]; buffList[num].ImageName = Database.HIGH_EMOTIONALITY; num++;
+            player.pbBlackContract = buffList[num]; buffList[num].ImageName = Database.BLACK_CONTRACT; num++;
+            player.pbAetherDrive = buffList[num]; buffList[num].ImageName = Database.AETHER_DRIVE; num++;
+            player.pbEternalPresence = buffList[num]; buffList[num].ImageName = Database.ETERNAL_PRESENCE; num++;
+            player.pbMirrorImage = buffList[num]; buffList[num].ImageName = Database.MIRROR_IMAGE; num++;
+            player.pbDeflection = buffList[num]; buffList[num].ImageName = Database.DEFLECTION; num++;
+            player.pbTruthVision = buffList[num]; buffList[num].ImageName = Database.TRUTH_VISION; num++;
+            player.pbStanceOfFlow = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_FLOW; num++;
+            player.pbPromisedKnowledge = buffList[num]; buffList[num].ImageName = Database.PROMISED_KNOWLEDGE; num++;
+            player.pbStanceOfDeath = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DEATH; num++;
+            player.pbAntiStun = buffList[num]; buffList[num].ImageName = Database.ANTI_STUN; num++;
+
+            player.pbStanceOfEyes = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_EYES; num++;
+            player.pbNegate = buffList[num]; buffList[num].ImageName = Database.NEGATE; num++;
+            player.pbCounterAttack = buffList[num]; buffList[num].ImageName = Database.COUNTER_ATTACK; num++;
+            player.pbStanceOfStanding = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_STANDING; num++;
+
+            player.pbPainfulInsanity = buffList[num]; buffList[num].ImageName = Database.PAINFUL_INSANITY; num++;
+            player.pbDamnation = buffList[num]; buffList[num].ImageName = Database.DAMNATION; num++;
+            player.pbAbsoluteZero = buffList[num]; buffList[num].ImageName = Database.ABSOLUTE_ZERO; num++;
+            player.pbNothingOfNothingness = buffList[num]; buffList[num].ImageName = Database.NOTHING_OF_NOTHINGNESS; num++;
+
+            player.pbPoison = buffList[num]; buffList[num].ImageName = Database.EFFECT_POISON; num++;
+            player.pbStun = buffList[num]; buffList[num].ImageName = Database.EFFECT_STUN; num++;
+            player.pbSilence = buffList[num]; buffList[num].ImageName = Database.EFFECT_SILENCE; num++;
+            player.pbParalyze = buffList[num]; buffList[num].ImageName = Database.EFFECT_PARALYZE; num++;
+            player.pbFrozen = buffList[num]; buffList[num].ImageName = Database.EFFECT_FROZEN; num++;
+            player.pbTemptation = buffList[num]; buffList[num].ImageName = Database.EFFECT_TEMPTATION; num++;
+            player.pbNoResurrection = buffList[num]; buffList[num].ImageName = Database.EFFECT_NORESURRECTION; num++;
+            player.pbSlow = buffList[num]; buffList[num].ImageName = Database.EFFECT_SLOW; num++;
+            player.pbBlind = buffList[num]; buffList[num].ImageName = Database.EFFECT_BLIND; num++;
+            player.pbSlip = buffList[num]; buffList[num].ImageName = Database.EFFECT_SLIP; num++;
+            player.pbNoGainLife = buffList[num]; buffList[num].ImageName = Database.EFFECT_NOGAIN_LIFE; num++;
+
+            player.pbPhysicalAttackUp = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_ATTACK_UP; num++;
+            player.pbPhysicalAttackDown = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_ATTACK_DOWN; num++;
+            player.pbPhysicalDefenseUp = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_DEFENSE_UP; num++;
+            player.pbPhysicalDefenseDown = buffList[num]; buffList[num].ImageName = Database.PHYSICAL_DEFENSE_DOWN; num++;
+            player.pbMagicAttackUp = buffList[num]; buffList[num].ImageName = Database.MAGIC_ATTACK_UP; num++;
+            player.pbMagicAttackDown = buffList[num]; buffList[num].ImageName = Database.MAGIC_ATTACK_DOWN; num++;
+            player.pbMagicDefenseUp = buffList[num]; buffList[num].ImageName = Database.MAGIC_DEFENSE_UP; num++;
+            player.pbMagicDefenseDown = buffList[num]; buffList[num].ImageName = Database.MAGIC_DEFENSE_DOWN; num++;
+            player.pbSpeedUp = buffList[num]; buffList[num].ImageName = Database.BATTLE_SPEED_UP; num++;
+            player.pbSpeedDown = buffList[num]; buffList[num].ImageName = Database.BATTLE_SPEED_DOWN; num++;
+            player.pbReactionUp = buffList[num]; buffList[num].ImageName = Database.BATTLE_REACTION_UP; num++;
+            player.pbReactionDown = buffList[num]; buffList[num].ImageName = Database.BATTLE_REACTION_DOWN; num++;
+            player.pbPotentialUp = buffList[num]; buffList[num].ImageName = Database.POTENTIAL_UP; num++;
+            player.pbPotentialDown = buffList[num]; buffList[num].ImageName = Database.POTENTIAL_DOWN; num++;
+
+            player.pbStrengthUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_STRENGTH_UP; num++;
+            player.pbAgilityUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_AGILITY_UP; num++;
+            player.pbIntelligenceUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_INTELLIGENCE_UP; num++;
+            player.pbStaminaUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_STAMINA_UP; num++;
+            player.pbMindUp = buffList[num]; buffList[num].ImageName = Database.EFFECT_MIND_UP; num++;
+
+            player.pbResistLightUp = buffList[num]; buffList[num].ImageName = Database.RESIST_LIGHT_UP; num++;
+            player.pbResistShadowUp = buffList[num]; buffList[num].ImageName = Database.RESIST_SHADOW_UP; num++;
+            player.pbResistFireUp = buffList[num]; buffList[num].ImageName = Database.RESIST_FIRE_UP; num++;
+            player.pbResistIceUp = buffList[num]; buffList[num].ImageName = Database.RESIST_ICE_UP; num++;
+            player.pbResistForceUp = buffList[num]; buffList[num].ImageName = Database.RESIST_FORCE_UP; num++;
+            player.pbResistWillUp = buffList[num]; buffList[num].ImageName = Database.RESIST_WILL_UP; num++;
+
+            player.pbResistStun = buffList[num]; buffList[num].ImageName = Database.RESIST_STUN; num++;
+            player.pbResistSilence = buffList[num]; buffList[num].ImageName = Database.RESIST_SILENCE; num++;
+            player.pbResistPoison = buffList[num]; buffList[num].ImageName = Database.RESIST_POISON; num++;
+            player.pbResistTemptation = buffList[num]; buffList[num].ImageName = Database.RESIST_TEMPTATION; num++;
+            player.pbResistFrozen = buffList[num]; buffList[num].ImageName = Database.RESIST_FROZEN; num++;
+            player.pbResistParalyze = buffList[num]; buffList[num].ImageName = Database.RESIST_PARALYZE; num++;
+            player.pbResistNoResurrection = buffList[num]; buffList[num].ImageName = Database.RESIST_NORESURRECTION; num++;
+            player.pbResistSlow = buffList[num]; buffList[num].ImageName = Database.RESIST_SLOW; num++;
+            player.pbResistBlind = buffList[num]; buffList[num].ImageName = Database.RESIST_BLIND; num++;
+            player.pbResistSlip = buffList[num]; buffList[num].ImageName = Database.RESIST_SLIP; num++;
+
+            player.pbPsychicTrance = buffList[num]; buffList[num].ImageName = Database.PSYCHIC_TRANCE; num++;
+            player.pbBlindJustice = buffList[num]; buffList[num].ImageName = Database.BLIND_JUSTICE; num++;
+            player.pbTranscendentWish = buffList[num]; buffList[num].ImageName = Database.TRANSCENDENT_WISH; num++;
+            player.pbFlashBlaze = buffList[num]; buffList[num].ImageName = Database.FLASH_BLAZE; num++;
+            player.pbSkyShield = buffList[num]; buffList[num].ImageName = Database.SKY_SHIELD; num++;
+            player.pbEverDroplet = buffList[num]; buffList[num].ImageName = Database.EVER_DROPLET; num++;
+            player.pbHolyBreaker = buffList[num]; buffList[num].ImageName = Database.HOLY_BREAKER; num++;
+            player.pbStarLightning = buffList[num]; buffList[num].ImageName = Database.STAR_LIGHTNING; num++;
+            player.pbBlackFire = buffList[num]; buffList[num].ImageName = Database.BLACK_FIRE; num++;
+            player.pbWordOfMalice = buffList[num]; buffList[num].ImageName = Database.WORD_OF_MALICE; num++;
+            player.pbDarkenField = buffList[num]; buffList[num].ImageName = Database.DARKEN_FIELD; num++;
+            player.pbFrozenAura = buffList[num]; buffList[num].ImageName = Database.FROZEN_AURA; num++;
+            player.pbEnrageBlast = buffList[num]; buffList[num].ImageName = Database.ENRAGE_BLAST; num++;
+            player.pbImmolate = buffList[num]; buffList[num].ImageName = Database.IMMOLATE; num++;
+            player.pbVanishWave = buffList[num]; buffList[num].ImageName = Database.VANISH_WAVE; num++;
+            player.pbSeventhMagic = buffList[num]; buffList[num].ImageName = Database.SEVENTH_MAGIC; num++;
+            player.pbStanceOfDouble = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DOUBLE; num++;
+            player.pbSwiftStep = buffList[num]; buffList[num].ImageName = Database.SWIFT_STEP; num++;
+            player.pbSmoothingMove = buffList[num]; buffList[num].ImageName = Database.SMOOTHING_MOVE; num++;
+            player.pbFutureVision = buffList[num]; buffList[num].ImageName = Database.FUTURE_VISION; num++;
+            player.pbReflexSpirit = buffList[num]; buffList[num].ImageName = Database.REFLEX_SPIRIT; num++;
+            player.pbTrustSilence = buffList[num]; buffList[num].ImageName = Database.TRUST_SILENCE; num++;
+            player.pbStanceOfMystic = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_MYSTIC; num++;
+            player.pbPreStunning = buffList[num]; buffList[num].ImageName = Database.EFFECT_PRESTUNNING; num++;
+            player.pbBlinded = buffList[num]; buffList[num].ImageName = Database.EFFECT_BLINDED; num++;
+            player.pbConcussiveHit = buffList[num]; buffList[num].ImageName = Database.CONCUSSIVE_HIT; num++;
+            player.pbOnslaughtHit = buffList[num]; buffList[num].ImageName = Database.ONSLAUGHT_HIT; num++;
+            player.pbImpulseHit = buffList[num]; buffList[num].ImageName = Database.IMPULSE_HIT; num++;
+            player.pbExaltedField = buffList[num]; buffList[num].ImageName = Database.EXALTED_FIELD; num++;
+            player.pbRisingAura = buffList[num]; buffList[num].ImageName = Database.RISING_AURA; num++;
+            player.pbBlazingField = buffList[num]; buffList[num].ImageName = Database.BLAZING_FIELD; num++;
+            player.pbPhantasmalWind = buffList[num]; buffList[num].ImageName = Database.PHANTASMAL_WIND; num++;
+            player.pbParadoxImage = buffList[num]; buffList[num].ImageName = Database.PARADOX_IMAGE; num++;
+            player.pbStaticBarrier = buffList[num]; buffList[num].ImageName = Database.STATIC_BARRIER; num++;
+            player.pbAscensionAura = buffList[num]; buffList[num].ImageName = Database.ASCENSION_AURA; num++;
+            player.pbNourishSense = buffList[num]; buffList[num].ImageName = Database.NOURISH_SENSE; num++;
+            player.pbVigorSense = buffList[num]; buffList[num].ImageName = Database.VIGOR_SENSE; num++;
+            player.pbOneAuthority = buffList[num]; buffList[num].ImageName = Database.ONE_AUTHORITY; num++;
+
+            player.pbSyutyuDanzetsu = buffList[num]; buffList[num].ImageName = Database.ARCHETYPE_EIN; num++;
+            player.pbJunkanSeiyaku = buffList[num]; buffList[num].ImageName = Database.ARCHETYPE_RANA; num++;
+
+            player.pbHymnContract = buffList[num]; buffList[num].ImageName = Database.HYMN_CONTRACT; num++;
+            player.pbSigilOfHomura = buffList[num]; buffList[num].ImageName = Database.SIGIL_OF_HOMURA; num++;
+            player.pbAusterityMatrix = buffList[num]; buffList[num].ImageName = Database.AUSTERITY_MATRIX; num++;
+            player.pbRedDragonWill = buffList[num]; buffList[num].ImageName = Database.RED_DRAGON_WILL; num++;
+            player.pbBlueDragonWill = buffList[num]; buffList[num].ImageName = Database.BLUE_DRAGON_WILL; num++;
+            player.pbEclipseEnd = buffList[num]; buffList[num].ImageName = Database.ECLIPSE_END; num++;
+            player.pbTimeStop = buffList[num]; buffList[num].ImageName = Database.TIME_STOP; num++;
+            player.pbSinFortune = buffList[num]; buffList[num].ImageName = Database.SIN_FORTUNE; num++;
+
+            player.pbLightUp = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_UP; num++;
+            player.pbLightDown = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_DOWN; num++;
+            player.pbShadowUp = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_UP; num++;
+            player.pbShadowDown = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_DOWN; num++;
+            player.pbFireUp = buffList[num]; buffList[num].ImageName = Database.BUFF_FIRE_UP; num++;
+            player.pbFireDown = buffList[num]; buffList[num].ImageName = Database.BUFF_FIRE_DOWN; num++;
+            player.pbIceUp = buffList[num]; buffList[num].ImageName = Database.BUFF_ICE_UP; num++;
+            player.pbIceDown = buffList[num]; buffList[num].ImageName = Database.BUFF_ICE_DOWN; num++;
+            player.pbForceUp = buffList[num]; buffList[num].ImageName = Database.BUFF_FORCE_UP; num++;
+            player.pbForceDown = buffList[num]; buffList[num].ImageName = Database.BUFF_FORCE_DOWN; num++;
+            player.pbWillUp = buffList[num]; buffList[num].ImageName = Database.BUFF_WILL_UP; num++;
+            player.pbWillDown = buffList[num]; buffList[num].ImageName = Database.BUFF_WILL_DOWN; num++;
+
+            player.pbAfterReviveHalf = buffList[num]; buffList[num].ImageName = Database.BUFF_DANZAI_KAGO; num++;
+            player.pbFireDamage2 = buffList[num]; buffList[num].ImageName = Database.BUFF_FIREDAMAGE2; num++;
+            player.pbBlackMagic = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_MAGIC; num++;
+            player.pbChaosDesperate = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOS_DESPERATE; num++;
+
+            player.pbFeltus = buffList[num]; buffList[num].ImageName = Database.BUFF_FELTUS; num++;
+            player.pbJuzaPhantasmal = buffList[num]; buffList[num].ImageName = Database.BUFF_JUZA_PHANTASMAL; num++;
+            player.pbEternalFateRing = buffList[num]; buffList[num].ImageName = Database.BUFF_ETERNAL_FATE_RING; num++;
+            player.pbLightServant = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_SERVANT; num++;
+            player.pbShadowServant = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_SERVANT; num++;
+            player.pbAdilBlueBurn = buffList[num]; buffList[num].ImageName = Database.BUFF_ADIL_BLUE_BURN; num++;
+            player.pbMazeCube = buffList[num]; buffList[num].ImageName = Database.BUFF_MAZE_CUBE; num++;
+            player.pbShadowBible = buffList[num]; buffList[num].ImageName = Database.BUFF_SHADOW_BIBLE; num++;
+            player.pbDetachmentOrb = buffList[num]; buffList[num].ImageName = Database.BUFF_DETACHMENT_ORB; num++;
+            player.pbDevilSummonerTome = buffList[num]; buffList[num].ImageName = Database.BUFF_DEVIL_SUMMONER_TOME; num++;
+            player.pbVoidHymnsonia = buffList[num]; buffList[num].ImageName = Database.BUFF_VOID_HYMNSONIA; num++;
+
+            player.pbIchinaruHomura = buffList[num]; buffList[num].ImageName = Database.BUFF_ICHINARU_HOMURA; num++;
+            player.pbAbyssFire = buffList[num]; buffList[num].ImageName = Database.BUFF_ABYSS_FIRE; num++;
+            player.pbLightAndShadow = buffList[num]; buffList[num].ImageName = Database.BUFF_LIGHT_AND_SHADOW; num++;
+            player.pbEternalDroplet = buffList[num]; buffList[num].ImageName = Database.BUFF_ETERNAL_DROPLET; num++;
+            player.pbAusterityMatrixOmega = buffList[num]; buffList[num].ImageName = Database.BUFF_AUSTERITY_MATRIX_OMEGA; num++;
+            player.pbVoiceOfAbyss = buffList[num]; buffList[num].ImageName = Database.BUFF_VOICE_OF_ABYSS; num++;
+            player.pbAbyssWill = buffList[num]; buffList[num].ImageName = Database.BUFF_ABYSS_WILL; num++;
+            player.pbTheAbyssWall = buffList[num]; buffList[num].ImageName = Database.BUFF_THE_ABYSS_WALL; num++;
+
+            player.pbSagePotionMini = buffList[num]; buffList[num].ImageName = Database.BUFF_SAGE_POTION_MINI; num++;
+            player.pbGenseiTaima = buffList[num]; buffList[num].ImageName = Database.BUFF_GENSEI_TAIMA; num++;
+            player.pbShiningAether = buffList[num]; buffList[num].ImageName = Database.BUFF_SHINING_AETHER; num++;
+            player.pbBlackElixir = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_ELIXIR; num++;
+            player.pbElementalSeal = buffList[num]; buffList[num].ImageName = Database.BUFF_ELEMENTAL_SEAL; num++;
+            player.pbColoressAntidote = buffList[num]; buffList[num].ImageName = Database.BUFF_COLORESS_ANTIDOTE; num++;
+
+            player.pbLifeCount = buffList[num]; buffList[num].ImageName = Database.BUFF_LIFE_COUNT; num++;
+            player.pbChaoticSchema = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOTIC_SCHEMA; num++;
+            #endregion
+
+            // 登録を反映
+            player.BuffElement = buffList;
+
+            // 各プレイヤーのターゲット選定
+            player.Target = target;
+            player.Target2 = player; // 味方選択はデフォルトでは自分自身としておく。
+            if ((player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU) ||
+                (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA))
+            {
+                player.Target2 = ec1;
+            }
+
+            // 各プレイヤーの初期行動を選定
+            player.PA = MainCharacter.PlayerAction.NormalAttack;
+            player.ReserveBattleCommand = Database.ATTACK_EN;
+            PlayerActionSet(player);
+
+            // 各プレイヤーの戦闘バーの位置
+            if (GroundOne.DuelMode)
+            {
+                player.BattleBarPos = 0;
+            }
+            else
+            {
+                player.BattleBarPos = rand.Next(100, 400);
+                if (player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
                 {
-                    player.BattleBarPos = 0;
-                }
-                else
-                {
-                    player.BattleBarPos = rand.Next(100, 400);
-                    if (player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
+                    player.BattleBarPos = ec1.BattleBarPos + 250;
+                    if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
                     {
-                        player.BattleBarPos = ec1.BattleBarPos + 250;
-                        if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
-                        {
-                            player.BattleBarPos -= Database.BASE_TIMER_BAR_LENGTH;
-                        }
+                        player.BattleBarPos -= Database.BASE_TIMER_BAR_LENGTH;
                     }
+                }
 
-                    if (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU)
+                if (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU)
+                {
+                    player.BattleBarPos = ec1.BattleBarPos + 150;
+                    if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
                     {
-                        player.BattleBarPos = ec1.BattleBarPos + 150;
-                        if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
-                        {
-                            player.BattleBarPos -= Database.BASE_TIMER_BAR_LENGTH;
-                        }
+                        player.BattleBarPos -= Database.BASE_TIMER_BAR_LENGTH;
                     }
-                    if (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA)
+                }
+                if (player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA)
+                {
+                    player.BattleBarPos = ec1.BattleBarPos + 300;
+                    if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
                     {
-                        player.BattleBarPos = ec1.BattleBarPos + 300;
-                        if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
-                        {
-                            player.BattleBarPos -= Database.BASE_TIMER_BAR_LENGTH;
-                        }
+                        player.BattleBarPos -= Database.BASE_TIMER_BAR_LENGTH;
                     }
                 }
+            }
 
-                // 各プレイヤーの戦闘行動決定タイミングの設定（敵専用）
-                player.DecisionTiming = 250;
+            // 各プレイヤーの戦闘行動決定タイミングの設定（敵専用）
+            player.DecisionTiming = 250;
 
-                // 各プレイヤーを表示可能にする
-                player.ActivateCharacter();
+            // 各プレイヤーを表示可能にする
+            player.ActivateCharacter();
 
-                // 各プレイヤーの戦闘への参加
-                ActiveList.Add(player); // this.activatePlayerNumber, player); // change unity
-                this.activatePlayerNumber++;
+            // 各プレイヤーの戦闘への参加
+            ActiveList.Add(player); // this.activatePlayerNumber, player); // change unity
+            this.activatePlayerNumber++;
 
-                // 各プレイヤーのスキル開放制限
-                if (!player.AvailableSkill)
+            // 各プレイヤーのスキル開放制限
+            if (!player.AvailableSkill)
+            {
+                if (player.labelCurrentSkillPoint != null)
                 {
-                    if (player.labelCurrentSkillPoint != null)
-                    {
-                        player.labelCurrentSkillPoint.gameObject.SetActive(false);
-                    }
+                    player.labelCurrentSkillPoint.gameObject.SetActive(false);
                 }
+            }
 
-                // 各プレイヤーの魔法開放制限
-                if (!player.AvailableMana)
+            // 各プレイヤーの魔法開放制限
+            if (!player.AvailableMana)
+            {
+                if (player.labelCurrentManaPoint != null)
                 {
-                    if (player.labelCurrentManaPoint != null)
-                    {
-                        player.labelCurrentManaPoint.gameObject.SetActive(false);
-                    }
+                    player.labelCurrentManaPoint.gameObject.SetActive(false);
                 }
+            }
 
-                // 各プレイヤーのインスタントコマンドの開放制限
-                if (!GroundOne.WE.AvailableInstantCommand)
+            // 各プレイヤーのインスタントコマンドの開放制限
+            if (!GroundOne.WE.AvailableInstantCommand)
+            {
+                if (player.labelCurrentInstantPoint != null)
                 {
-                    if (player.labelCurrentInstantPoint != null)
-                    {
-                        player.labelCurrentInstantPoint.gameObject.SetActive(false);
-                    }
+                    player.labelCurrentInstantPoint.gameObject.SetActive(false);
                 }
-                if ((player.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
-                    (player.FirstName == Database.ENEMY_BRILLIANT_SEA_PRINCE))
-                {
-                    player.labelCurrentInstantPoint.gameObject.SetActive(true);
-                }
+            }
+            if ((player.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
+                (player.FirstName == Database.ENEMY_BRILLIANT_SEA_PRINCE))
+            {
+                player.labelCurrentInstantPoint.gameObject.SetActive(true);
+            }
 
-                // 味方側、魔法・スキルをセットアップ
-                // プレイヤースキル・魔法習得に応じて、アクションボタンを登録
-                UpdateBattleCommandSetting(player, actionButton, sorceryMark);
+            // 味方側、魔法・スキルをセットアップ
+            // プレイヤースキル・魔法習得に応じて、アクションボタンを登録
+            UpdateBattleCommandSetting(player, actionButton, sorceryMark);
 
-                #region "敵側、名前の色と各ＵＩポジションを再配置"
-                //if (player == ec1 || player == ec2 || player == ec3)
-                //{
-                //    if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Blue)
-                //    {
-                //        player.labelName.ForeColor = Color.Blue;
-                //    }
-                //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Red)
-                //    {
-                //        player.labelName.ForeColor = Color.Red;
+            #region "敵側、名前の色と各ＵＩポジションを再配置"
+            //if (player == ec1 || player == ec2 || player == ec3)
+            //{
+            //    if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Blue)
+            //    {
+            //        player.labelName.ForeColor = Color.Blue;
+            //    }
+            //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Red)
+            //    {
+            //        player.labelName.ForeColor = Color.Red;
 
-                //        if (player.Name == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU)
-                //        {
-                //            player.labelName.Location = new Point(496, 175);
-                //            player.ActionLabel.Location = new Point(503, 212);
-                //            player.labelCurrentInstantPoint.Size = new System.Drawing.Size(150, 15);
-                //            player.labelCurrentInstantPoint.Location = new Point(460, 235);
-                //        }
-                //        if (player.Name == Database.ENEMY_SEA_STAR_KNIGHT_AMARA)
-                //        {
-                //            player.labelName.Location = new Point(496, 260);
-                //            player.ActionLabel.Location = new Point(503, 300);
-                //            player.labelCurrentInstantPoint.Size = new System.Drawing.Size(150, 15);
-                //            player.labelCurrentInstantPoint.Location = new Point(460, 320);
-                //        }
+            //        if (player.Name == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU)
+            //        {
+            //            player.labelName.Location = new Point(496, 175);
+            //            player.ActionLabel.Location = new Point(503, 212);
+            //            player.labelCurrentInstantPoint.Size = new System.Drawing.Size(150, 15);
+            //            player.labelCurrentInstantPoint.Location = new Point(460, 235);
+            //        }
+            //        if (player.Name == Database.ENEMY_SEA_STAR_KNIGHT_AMARA)
+            //        {
+            //            player.labelName.Location = new Point(496, 260);
+            //            player.ActionLabel.Location = new Point(503, 300);
+            //            player.labelCurrentInstantPoint.Size = new System.Drawing.Size(150, 15);
+            //            player.labelCurrentInstantPoint.Location = new Point(460, 320);
+            //        }
 
-                //    }
-                //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Gold)
-                //    {
-                //        player.labelName.ForeColor = Color.DarkOrange;
-                //        player.labelCurrentInstantPoint.BackColor = Color.Gold;
+            //    }
+            //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Gold)
+            //    {
+            //        player.labelName.ForeColor = Color.DarkOrange;
+            //        player.labelCurrentInstantPoint.BackColor = Color.Gold;
 
-                //        // 640x480時代
-                //        // ボス戦の場合、ネームラベルやBUFFの表示場所を変更します。
+            //        // 640x480時代
+            //        // ボス戦の場合、ネームラベルやBUFFの表示場所を変更します。
 
-                //        //player.labelName.ForeColor = Color.DarkOrange;
-                //        //player.labelCurrentInstantPoint.BackColor = Color.Gold;
+            //        //player.labelName.ForeColor = Color.DarkOrange;
+            //        //player.labelCurrentInstantPoint.BackColor = Color.Gold;
 
-                //        //if (player.Name == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
-                //        //{
-                //        //    player.labelName.Text = "【１階の守護者】\r\n\r\n絡みつくフランシス";
-                //        //}
-                //        //if (player.Name == Database.ENEMY_BOSS_LEVIATHAN)
-                //        //{
-                //        //    player.labelName.Text = "【２階の守護者】\r\n\r\n大海蛇リヴィアサン";
-                //        //}
+            //        //if (player.Name == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
+            //        //{
+            //        //    player.labelName.Text = "【１階の守護者】\r\n\r\n絡みつくフランシス";
+            //        //}
+            //        //if (player.Name == Database.ENEMY_BOSS_LEVIATHAN)
+            //        //{
+            //        //    player.labelName.Text = "【２階の守護者】\r\n\r\n大海蛇リヴィアサン";
+            //        //}
 
-                //        //player.MainObjectButton.Location = new Point(400, 182);
-                //        //player.labelLife.Location = new Point(510, 186);
-                //        //player.CriticalLabel.Location = new Point(393, 190);
-                //        //player.DamageLabel.Location = new Point(393, 213);
-                //        //player.ActionLabel.Location = new Point(503, 223);
-                //        //player.labelName.Location = new Point(430, 115);
-                //        //player.labelName.Size = new System.Drawing.Size(200, 100);
-                //        //player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 14, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
-                //        //player.labelCurrentInstantPoint.Location = new Point(400, 250);
-                //        //player.labelCurrentInstantPoint.Size = new System.Drawing.Size(200, 30);
-                //        //player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
-                //        //player.BuffPanel.Location = new Point(381, 300);
+            //        //player.MainObjectButton.Location = new Point(400, 182);
+            //        //player.labelLife.Location = new Point(510, 186);
+            //        //player.CriticalLabel.Location = new Point(393, 190);
+            //        //player.DamageLabel.Location = new Point(393, 213);
+            //        //player.ActionLabel.Location = new Point(503, 223);
+            //        //player.labelName.Location = new Point(430, 115);
+            //        //player.labelName.Size = new System.Drawing.Size(200, 100);
+            //        //player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 14, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
+            //        //player.labelCurrentInstantPoint.Location = new Point(400, 250);
+            //        //player.labelCurrentInstantPoint.Size = new System.Drawing.Size(200, 30);
+            //        //player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
+            //        //player.BuffPanel.Location = new Point(381, 300);
 
-                //        //if (player.Name == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
-                //        //{
-                //        //    player.labelName.Location = new Point(430, 70);
-                //        //    player.labelLife.Location = new Point(514, 87);
-                //        //    player.MainObjectButton.Location = new Point(400, 89);
-                //        //    player.CriticalLabel.Location = new Point(393, 99);
-                //        //    player.DamageLabel.Location = new Point(393, 109);
-                //        //    player.ActionLabel.Location = new Point(503, 116);
-                //        //    player.labelCurrentInstantPoint.Location = new Point(400, 139);
-                //        //    player.BuffPanel.Location = new Point(390, 172); 
-                //        //}
-                //        //if (player.Name == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
-                //        //{
-                //        //    player.labelName.Location = new Point(430, 207);
-                //        //    player.labelLife.Location = new Point(514, 228);
-                //        //    player.MainObjectButton.Location = new Point(400, 230);
-                //        //    player.CriticalLabel.Location = new Point(393, 240);
-                //        //    player.DamageLabel.Location = new Point(393, 250);
-                //        //    player.ActionLabel.Location = new Point(503, 257);
-                //        //    player.labelCurrentInstantPoint.Location = new Point(400, 280);
-                //        //    player.BuffPanel.Location = new Point(390, 310); 
-                //        //}
+            //        //if (player.Name == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+            //        //{
+            //        //    player.labelName.Location = new Point(430, 70);
+            //        //    player.labelLife.Location = new Point(514, 87);
+            //        //    player.MainObjectButton.Location = new Point(400, 89);
+            //        //    player.CriticalLabel.Location = new Point(393, 99);
+            //        //    player.DamageLabel.Location = new Point(393, 109);
+            //        //    player.ActionLabel.Location = new Point(503, 116);
+            //        //    player.labelCurrentInstantPoint.Location = new Point(400, 139);
+            //        //    player.BuffPanel.Location = new Point(390, 172); 
+            //        //}
+            //        //if (player.Name == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
+            //        //{
+            //        //    player.labelName.Location = new Point(430, 207);
+            //        //    player.labelLife.Location = new Point(514, 228);
+            //        //    player.MainObjectButton.Location = new Point(400, 230);
+            //        //    player.CriticalLabel.Location = new Point(393, 240);
+            //        //    player.DamageLabel.Location = new Point(393, 250);
+            //        //    player.ActionLabel.Location = new Point(503, 257);
+            //        //    player.labelCurrentInstantPoint.Location = new Point(400, 280);
+            //        //    player.BuffPanel.Location = new Point(390, 310); 
+            //        //}
 
-                //        //if (player.Name == Database.ENEMY_SEA_STAR_ORIGIN_KING)
-                //        //{
-                //        //    player.labelName.Location = new Point(496, 80);
-                //        //    player.ActionLabel.Location = new Point(503, 128);
-                //        //    player.MainObjectButton.Location = new Point(400, 97);
-                //        //    player.CriticalLabel.Location = new Point(393, 102);
-                //        //    player.DamageLabel.Location = new Point(393, 125);
-                //        //    player.labelLife.Location = new Point(514, 102);
-                //        //    player.labelName.Size = new System.Drawing.Size(200, 100);
-                //        //    player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 14, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
-                //        //    player.labelCurrentInstantPoint.Location = new Point(460, 145);
-                //        //    player.labelCurrentInstantPoint.Size = new System.Drawing.Size(150, 20);
-                //        //    player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
-                //        //    player.BuffPanel.Location = new Point(377, 66);
-                //        //}
+            //        //if (player.Name == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+            //        //{
+            //        //    player.labelName.Location = new Point(496, 80);
+            //        //    player.ActionLabel.Location = new Point(503, 128);
+            //        //    player.MainObjectButton.Location = new Point(400, 97);
+            //        //    player.CriticalLabel.Location = new Point(393, 102);
+            //        //    player.DamageLabel.Location = new Point(393, 125);
+            //        //    player.labelLife.Location = new Point(514, 102);
+            //        //    player.labelName.Size = new System.Drawing.Size(200, 100);
+            //        //    player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 14, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
+            //        //    player.labelCurrentInstantPoint.Location = new Point(460, 145);
+            //        //    player.labelCurrentInstantPoint.Size = new System.Drawing.Size(150, 20);
+            //        //    player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
+            //        //    player.BuffPanel.Location = new Point(377, 66);
+            //        //}
 
-                //        // 1024 x 768
-                //        player.MainObjectButton.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_MAIN_OBJ_LOC_Y);
-                //        player.labelLife.Location = new Point(TruthLayout.BOSS_STATUS_LOC_X, TruthLayout.BOSS_LIFE_LABEL_LOC_Y);
-                //        player.labelName.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_NAME_LABEL_LOC_Y);
-                //        player.ActionLabel.Location = new Point(TruthLayout.BOSS_STATUS_LOC_X, TruthLayout.BOSS_ACTION_LABEL_LOC_Y);
-                //        player.CriticalLabel.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_CRITICAL_LABEL_LOC_Y);
-                //        player.DamageLabel.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_DAMAGE_LABEL_LOC_Y);
-                //        player.labelCurrentInstantPoint.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_INSTANT_LABEL_LOC_Y);
-                //        player.BuffPanel.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_BUFF_LOC_Y);
-                //        player.labelCurrentInstantPoint.Size = new System.Drawing.Size(TruthLayout.BOSS_INSTANT_LABEL_WIDTH, TruthLayout.BOSS_INSTANT_LABEL_HEIGHT);
-                //        player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
-                //        player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 18, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
+            //        // 1024 x 768
+            //        player.MainObjectButton.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_MAIN_OBJ_LOC_Y);
+            //        player.labelLife.Location = new Point(TruthLayout.BOSS_STATUS_LOC_X, TruthLayout.BOSS_LIFE_LABEL_LOC_Y);
+            //        player.labelName.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_NAME_LABEL_LOC_Y);
+            //        player.ActionLabel.Location = new Point(TruthLayout.BOSS_STATUS_LOC_X, TruthLayout.BOSS_ACTION_LABEL_LOC_Y);
+            //        player.CriticalLabel.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_CRITICAL_LABEL_LOC_Y);
+            //        player.DamageLabel.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_DAMAGE_LABEL_LOC_Y);
+            //        player.labelCurrentInstantPoint.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_INSTANT_LABEL_LOC_Y);
+            //        player.BuffPanel.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_BUFF_LOC_Y);
+            //        player.labelCurrentInstantPoint.Size = new System.Drawing.Size(TruthLayout.BOSS_INSTANT_LABEL_WIDTH, TruthLayout.BOSS_INSTANT_LABEL_HEIGHT);
+            //        player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
+            //        player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 18, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
 
-                //        if (player.Name == Database.ENEMY_BOSS_HOWLING_SEIZER)
-                //        {
-                //            player.labelName.Text = "【三階の守護者】\r\n\r\n恐鳴主ハウリング・シーザー";
-                //        }
-                //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_3)
-                //        {
-                //            player.labelCurrentManaPoint.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_MANA_LABEL_LOC_Y);
-                //            player.labelCurrentManaPoint.Size = new Size(TruthLayout.BOSS_MANA_LABEL_WIDTH, TruthLayout.BOSS_MANA_LABEL_HEIGHT);
-                //            player.labelCurrentManaPoint.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
-                //        }
-                //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_1)
-                //        {
-                //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【瘴気】";
-                //        }
-                //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_2)
-                //        {
-                //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【無音】";
-                //        }
-                //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_3)
-                //        {
-                //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【深淵】";
-                //        }
-                //        else if (player.Name == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
-                //        {
-                //            player.labelName.Text = "【五階の守護者】\r\n\r\n支　配　竜";
-                //            //player.labelCurrentSkillPoint.Visible = false;
-                //            //player.labelCurrentManaPoint.Visible = false;
-                //        }
-                //    }
-                //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Purple)
-                //    {
-                //        player.labelName.ForeColor = Color.Purple;
-                //        player.labelName.Visible = false;
-                //        pbMatrixDragon.Visible = true;
-                //        pbMatrixDragon.Size = new System.Drawing.Size(250, 100);
-                //        pbMatrixDragon.SizeMode = PictureBoxSizeMode.StretchImage;
-                //        if (player.Name == Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD)
-                //        {
-                //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_BRIYARD);
-                //        }
-                //        else if (player.Name == Database.ENEMY_DRAGON_TINKOU_DEEPSEA)
-                //        {
-                //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_DEEPSEA);
-                //        }
-                //        else if (player.Name == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
-                //        {
-                //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_AZOLD);
-                //        }
-                //        else if (player.Name == Database.ENEMY_DRAGON_IDEA_CAGE_ZEED)
-                //        {
-                //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_ZEED);
-                //        }
-                //        else if (player.Name == Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA)
-                //        {
-                //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_ETULA);
-                //        }
-                //        pbMatrixDragon.Location = new Point(700, 150);
-                //        player.labelName.ForeColor = Color.DarkOrange;
-                //        this.cannotRunAway = true;
-                //    }
-                //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Legendary)
-                //    {
-                //        player.BuffPanel.Location = new Point(663, 80);
+            //        if (player.Name == Database.ENEMY_BOSS_HOWLING_SEIZER)
+            //        {
+            //            player.labelName.Text = "【三階の守護者】\r\n\r\n恐鳴主ハウリング・シーザー";
+            //        }
+            //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+            //        {
+            //            player.labelCurrentManaPoint.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_MANA_LABEL_LOC_Y);
+            //            player.labelCurrentManaPoint.Size = new Size(TruthLayout.BOSS_MANA_LABEL_WIDTH, TruthLayout.BOSS_MANA_LABEL_HEIGHT);
+            //            player.labelCurrentManaPoint.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
+            //        }
+            //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_1)
+            //        {
+            //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【瘴気】";
+            //        }
+            //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_2)
+            //        {
+            //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【無音】";
+            //        }
+            //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+            //        {
+            //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【深淵】";
+            //        }
+            //        else if (player.Name == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+            //        {
+            //            player.labelName.Text = "【五階の守護者】\r\n\r\n支　配　竜";
+            //            //player.labelCurrentSkillPoint.Visible = false;
+            //            //player.labelCurrentManaPoint.Visible = false;
+            //        }
+            //    }
+            //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Purple)
+            //    {
+            //        player.labelName.ForeColor = Color.Purple;
+            //        player.labelName.Visible = false;
+            //        pbMatrixDragon.Visible = true;
+            //        pbMatrixDragon.Size = new System.Drawing.Size(250, 100);
+            //        pbMatrixDragon.SizeMode = PictureBoxSizeMode.StretchImage;
+            //        if (player.Name == Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD)
+            //        {
+            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_BRIYARD);
+            //        }
+            //        else if (player.Name == Database.ENEMY_DRAGON_TINKOU_DEEPSEA)
+            //        {
+            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_DEEPSEA);
+            //        }
+            //        else if (player.Name == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
+            //        {
+            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_AZOLD);
+            //        }
+            //        else if (player.Name == Database.ENEMY_DRAGON_IDEA_CAGE_ZEED)
+            //        {
+            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_ZEED);
+            //        }
+            //        else if (player.Name == Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA)
+            //        {
+            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_ETULA);
+            //        }
+            //        pbMatrixDragon.Location = new Point(700, 150);
+            //        player.labelName.ForeColor = Color.DarkOrange;
+            //        this.cannotRunAway = true;
+            //    }
+            //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Legendary)
+            //    {
+            //        player.BuffPanel.Location = new Point(663, 80);
 
-                //        player.labelCurrentSkillPoint.Location = new Point(700, 270);
-                //        player.labelCurrentSkillPoint.Size = new Size(300, 30);
-                //        player.labelCurrentSkillPoint.Font = new Font(player.labelCurrentSkillPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
+            //        player.labelCurrentSkillPoint.Location = new Point(700, 270);
+            //        player.labelCurrentSkillPoint.Size = new Size(300, 30);
+            //        player.labelCurrentSkillPoint.Font = new Font(player.labelCurrentSkillPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
 
-                //        player.labelCurrentManaPoint.Location = new Point(700, 300);
-                //        player.labelCurrentManaPoint.Size = new Size(300, 30);
-                //        player.labelCurrentManaPoint.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
+            //        player.labelCurrentManaPoint.Location = new Point(700, 300);
+            //        player.labelCurrentManaPoint.Size = new Size(300, 30);
+            //        player.labelCurrentManaPoint.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
 
-                //        player.labelCurrentInstantPoint.Location = new Point(700, 330);
-                //        player.labelCurrentInstantPoint.Size = new Size(300, 30);
-                //        player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
+            //        player.labelCurrentInstantPoint.Location = new Point(700, 330);
+            //        player.labelCurrentInstantPoint.Size = new Size(300, 30);
+            //        player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
 
-                //        player.labelName.ForeColor = Color.OrangeRed;
-                //        player.labelName.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.LAST_BOSS_NAME_LABEL_LOC_Y);
-                //        player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
+            //        player.labelName.ForeColor = Color.OrangeRed;
+            //        player.labelName.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.LAST_BOSS_NAME_LABEL_LOC_Y);
+            //        player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
 
-                //        if (player.labelCurrentSpecialInstant != null)
-                //        {
-                //            player.labelCurrentSpecialInstant.Location = new Point(700, 460); // 【警告】なぜ３６０ではレイアウトずれてしまうのか？
-                //            player.labelCurrentSpecialInstant.Size = new Size(300, 30);
-                //            player.labelCurrentSpecialInstant.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
-                //        }
-                //    }
-                //}
-                #endregion
+            //        if (player.labelCurrentSpecialInstant != null)
+            //        {
+            //            player.labelCurrentSpecialInstant.Location = new Point(700, 460); // 【警告】なぜ３６０ではレイアウトずれてしまうのか？
+            //            player.labelCurrentSpecialInstant.Size = new Size(300, 30);
+            //            player.labelCurrentSpecialInstant.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
+            //        }
+            //    }
+            //}
+            #endregion
 
-                // 敵側、初期BUFFをセットアップ
-                if (player == ec1 && player.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
-                {
-                    player.CurrentResistFireUp = Database.INFINITY;
-                    player.CurrentResistFireUpValue = 2000;
-                    player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", Database.INFINITY);
-                }
-                if (player == ec2 && player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
-                {
-                    player.CurrentResistIceUp = Database.INFINITY;
-                    player.CurrentResistIceUpValue = 2000;
-                    player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", Database.INFINITY);
-                }
+            // 敵側、初期BUFFをセットアップ
+            if (player == ec1 && player.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+            {
+                player.CurrentResistFireUp = Database.INFINITY;
+                player.CurrentResistFireUpValue = 2000;
+                player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", Database.INFINITY);
+            }
+            if (player == ec2 && player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
+            {
+                player.CurrentResistIceUp = Database.INFINITY;
+                player.CurrentResistIceUpValue = 2000;
+                player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", Database.INFINITY);
+            }
 
-                // 死んでいる場合、グレー化する
-                if (player.Dead)
-                {
-                    player.DeadPlayer();
-                }
+            // 死んでいる場合、グレー化する
+            if (player.Dead)
+            {
+                player.DeadPlayer();
             }
         }
 
@@ -3536,8 +3610,8 @@ namespace DungeonPlayer
 
             this.cam.backgroundColor = UnityColor.GhostWhite;
             this.labelBattleTurn.color = Color.black;
-            this.TimeSpeedLabel.ForeColor = Color.Black;
-            this.lblTimerCount.ForeColor = Color.Black;
+            this.TimeSpeedLabel.color = Color.black;
+            this.lblTimerCount.color = Color.black;
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
                 BackToNormalColor(ActiveList[ii]);
@@ -3548,11 +3622,11 @@ namespace DungeonPlayer
         {
             if (player.CurrentLife >= player.MaxLife)
             {
-                player.labelLife.color = UnityColor.Lightgreen;
+                player.labelCurrentLifePoint.color = UnityColor.Lightgreen;
             }
             else
             {
-                player.labelLife.color = Color.white;
+                player.labelCurrentLifePoint.color = Color.white;
             }
         }
         private void BackToNormalColor(MainCharacter player)
@@ -3581,11 +3655,11 @@ namespace DungeonPlayer
 
             if (player.CurrentLife >= player.MaxLife)
             {
-                player.labelLife.color = Color.green;
+                player.labelCurrentLifePoint.color = Color.green;
             }
             else
             {
-                player.labelLife.color = Color.black;
+                player.labelCurrentLifePoint.color = Color.black;
             }
         }
 
@@ -5129,7 +5203,7 @@ namespace DungeonPlayer
         public void tapActionButton2(Button obj)
         {
             string command = obj.name;
-            buttonTargetPlayer2.image.sprite = obj.image.sprite;
+            player2MainObject.image.sprite = obj.image.sprite;
             UpdateBattleText(command + "\r\n");
 
             ActionCommand(false, GroundOne.SC, obj.name);
@@ -5139,7 +5213,7 @@ namespace DungeonPlayer
         public void tapActionButton3(Button obj)
         {
             string command = obj.name;
-            buttonTargetPlayer3.image.sprite = obj.image.sprite;
+            player3MainObject.image.sprite = obj.image.sprite;
             UpdateBattleText(command + "\r\n");
 
             ActionCommand(false, GroundOne.TC, obj.name);
@@ -7683,6 +7757,52 @@ namespace DungeonPlayer
         }
 
 
+        public void battleSpeedBar_Scroll(Slider sender)
+        {
+            switch ((int)(sender.value))
+            {
+                case 1:
+                    TIMER_SPEED = 40;
+                    TimeSpeedLabel.text = "時間速度 x0.25";
+                    break;
+                case 2:
+                    TIMER_SPEED = 30;
+                    TimeSpeedLabel.text = "時間速度 x0.37";
+                    break;
+                case 3:
+                    TIMER_SPEED = 20;
+                    TimeSpeedLabel.text = "時間速度 x0.50";
+                    break;
+                case 4:
+                    TIMER_SPEED = 15;
+                    TimeSpeedLabel.text = "時間速度 x0.75";
+                    break;
+                case 5:
+                    TIMER_SPEED = 10;
+                    TimeSpeedLabel.text = "時間速度 x1.00";
+                    break;
+                case 6:
+                    TIMER_SPEED = 8;
+                    TimeSpeedLabel.text = "時間速度 x1.50";
+                    break;
+                case 7:
+                    TIMER_SPEED = 5;
+                    TimeSpeedLabel.text = "時間速度 x2.00";
+                    break;
+                case 8:
+                    TIMER_SPEED = 3;
+                    TimeSpeedLabel.text = "時間速度 x3.00";
+                    break;
+                case 9:
+                    TIMER_SPEED = 2;
+                    TimeSpeedLabel.text = "時間速度 x4.00";
+                    break;
+                default:
+                    TIMER_SPEED = 10;
+                    TimeSpeedLabel.text = "時間速度 x1.00";
+                    break;
+            }
+        }
         /// <summary>
         /// 物理攻撃上昇BUFF
         /// </summary>

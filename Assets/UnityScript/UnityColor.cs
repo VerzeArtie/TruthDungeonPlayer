@@ -52,7 +52,7 @@ namespace DungeonPlayer
         public static Color Yellow = new Color(255, 255, 0);
         public static Color Gold = new Color(255, 215, 0);
         public static Color Orange = new Color(255, 165, 0);
-        public static Color Darkorange = new Color(255, 140, 0);
+        public static Color DarkOrange = new Color(1.0f, 140.0f / 255.0f, 0.0f);
         public static Color Goldenrod = new Color(218, 165, 32);
         public static Color Darkgoldenrod = new Color(184, 134, 11);
         public static Color Darkkhaki = new Color(189, 183, 107);
@@ -100,7 +100,7 @@ namespace DungeonPlayer
         public static Color Azure = new Color(240, 255, 255);
         public static Color Lightcyan = new Color(224, 255, 255);
         public static Color Aliceblue = new Color(240, 248, 255);
-        public static Color DarkslateGray = new Color(47, 79, 79);
+        public static Color DarkSlateGray = new Color(47.0f / 255.0f, 79.0f / 255.0f, 79.0f / 255.0f);
         public static Color DarkslateNavy = new Color(47, 47, 79);
         public static Color DarkslateRed = new Color(147, 47, 47);
         public static Color Steelblue = new Color(70, 130, 180);
