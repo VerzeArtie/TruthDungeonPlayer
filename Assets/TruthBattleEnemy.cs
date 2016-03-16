@@ -62,6 +62,8 @@ namespace DungeonPlayer
         public Sprite[] imageSandglass;
         
         // GUI
+        public GameObject groupChooseCommand;
+        public Camera cam;
         public TruthImage[] FieldBuff;
         public GameObject groupParentBackpack;
         public GameObject[] back_Backpack;
@@ -77,6 +79,7 @@ namespace DungeonPlayer
         public Button[] ActionButton2;
         public Button[] ActionButton3;
         public Text txtBattleMessage;
+        public GameObject back_labelBattleTurn;
         public Text labelBattleTurn;
         public Image pbSandglass;
         public Text lblTimerCount;
@@ -244,6 +247,8 @@ namespace DungeonPlayer
 
         bool StayOn_StanceOfFlow = false;
         bool BreakOn_StanceOfFlow = false;
+
+        string ChooseCommand = string.empty;
 
         // Use this for initialization
         public override void Start()
@@ -487,6 +492,15 @@ namespace DungeonPlayer
             }
         }
 
+        public void ExecChooseCommand(Text sender)
+        {
+            // todo
+            //string chooseCommand = String.Empty;
+            //    chooseCommand = tcc.ChooseCommand;
+            //}
+            //ActiveList[ii].Accessory.ImprintCommand = chooseCommand;
+        }
+
         bool isEscDown = false;
         // Update is called once per frame
         public override void Update()
@@ -604,43 +618,42 @@ namespace DungeonPlayer
                 return; // パーティ死亡確認で戦闘を抜ける。
             }
 
-            // todo
             #region "タイムストップチェック"
-            //bool tempTimeStop = false;
-            //for (int ii = 0; ii < ActiveList.Count; ii++)
-            //{
-            //    if ((ActiveList[ii].CurrentTimeStop > 0))
-            //    {
-            //        this.NowTimeStop = true;
-            //        tempTimeStop = true;
-            //        break;
-            //    }
-            //}
+            bool tempTimeStop = false;
+            for (int ii = 0; ii < ActiveList.Count; ii++)
+            {
+                if ((ActiveList[ii].CurrentTimeStop > 0))
+                {
+                    this.NowTimeStop = true;
+                    tempTimeStop = true;
+                    break;
+                }
+            }
 
-            //if (tempTimeStop == false)
-            //{
-            //    this.NowTimeStop = false;
-            //}
-            //if ((this.NowTimeStop == true) && (this.BackColor == Color.GhostWhite))
-            //{
-            //    this.BackColor = Color.Black;
-            //    this.labelBattleTurn.ForeColor = Color.White;
-            //    this.TimeSpeedLabel.ForeColor = Color.White;
-            //    this.lblTimerCount.ForeColor = Color.White;
-            //    for (int ii = 0; ii < ActiveList.Count; ii++)
-            //    {
-            //        ActiveList[ii].labelName.ForeColor = Color.White;
-            //        ActiveList[ii].ActionLabel.ForeColor = Color.White;
-            //        ActiveList[ii].CriticalLabel.ForeColor = Color.White;
-            //        ActiveList[ii].DamageLabel.ForeColor = Color.White;
-            //        GoToTimeStopColor(ActiveList[ii]);
-            //        ActiveList[ii].BuffPanel.BackColor = Color.Black;
-            //    }
-            //}
-            //if ((this.NowTimeStop == false) && (this.BackColor == Color.Black))
-            //{
-            //    ExecPhaseElement(MethodType.TimeStopEnd, null);
-            //}
+            if (tempTimeStop == false)
+            {
+                this.NowTimeStop = false;
+            }
+            if ((this.NowTimeStop == true) && (cam.backgroundColor == Color.GhostWhite))
+            {
+                cam.backgroundColor = Color.black;
+                this.labelBattleTurn.color = Color.white;
+                this.TimeSpeedLabel.color = Color.white;
+                this.lblTimerCount.color = Color.white;
+                for (int ii = 0; ii < ActiveList.Count; ii++)
+                {
+                    ActiveList[ii].labelName.color = Color.white;
+                    ActiveList[ii].ActionLabel.color = Color.white;
+                    ActiveList[ii].CriticalLabel.color = Color.white;
+                    ActiveList[ii].DamageLabel.color = Color.white;
+                    GoToTimeStopColor(ActiveList[ii]);
+                    ActiveList[ii].BuffPanel.GetComponent<Image>().color = Color.black;
+                }
+            }
+            if ((this.NowTimeStop == false) && (cam.backgroundColor == Color.black))
+            {
+                ExecPhaseElement(MethodType.TimeStopEnd, null);
+            }
             #endregion
 
             #region "戦闘一旦停止フラグ"
@@ -763,7 +776,7 @@ namespace DungeonPlayer
             Button[] actionButton,
             Text actionLabel,
             GameObject buffPanel, // Panel
-            Button mainObject, Color mainColor, Image targetTarget, Image mainFaceArrow, Image shadowFaceArrow2, Image shadowFaceArrow3, // todo Bitmap -> Image ?mainFaceArrow,shadowFaceArrow2,shadowFaceArrow3
+            Button mainObject, Color mainColor, Image targetTarget, Image mainFaceArrow, Image shadowFaceArrow2, Image shadowFaceArrow3,
             Text damageLabel, Text criticalLabel,
             TruthImage[] buffList,
             Text keyNum1, Text keyNum2, Text keyNum3, Text keyNum4, Text keyNum5, Text keyNum6, Text keyNum7, Text keyNum8, Text keyNum9,
@@ -3494,8 +3507,86 @@ namespace DungeonPlayer
 
         private void TimeStopEnd()
         {
-            // todo
-            // throw new System.NotImplementedException();
+            bool tempStop = false;
+            for (int ii = 0; ii < ActiveList.Count; ii++)
+            {
+                for (int jj = 0; jj < ActiveList[ii].ActionCommandStackList.Count; jj++)
+                {
+                    if (ActiveList[ii].FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                    {
+                        if (tempStop == false)
+                        {
+                            tempStop = true;
+                            this.back_labelBattleTurn.GetComponent<Image>().color = Color.white;
+                            this.labelBattleTurn.color = Color.black;
+                            System.Threading.Thread.Sleep(1000);
+                            this.back_labelBattleTurn.GetComponent<Image>().color = UnityColor.GhostWhite;
+                            this.labelBattleTurn.color = Color.black;
+                        }
+                        PlayerAttackPhase(ActiveList[ii], ActiveList[ii].ActionCommandStackTarget[jj], TruthActionCommand.CheckPlayerActionFromString(ActiveList[ii].ActionCommandStackList[jj]), ActiveList[ii].ActionCommandStackList[jj], true, false, false);
+                    }
+                    else
+                    {
+                        ExecActionMethod(ActiveList[ii], ActiveList[ii].ActionCommandStackTarget[jj], TruthActionCommand.CheckPlayerActionFromString(ActiveList[ii].ActionCommandStackList[jj]), ActiveList[ii].ActionCommandStackList[jj]);
+                    }
+                }
+                ActiveList[ii].ActionCommandStackList.Clear();
+                ActiveList[ii].ActionCommandStackTarget.Clear();
+            }
+
+            this.cam.backgroundColor = UnityColor.GhostWhite;
+            this.labelBattleTurn.color = Color.black;
+            this.TimeSpeedLabel.ForeColor = Color.Black;
+            this.lblTimerCount.ForeColor = Color.Black;
+            for (int ii = 0; ii < ActiveList.Count; ii++)
+            {
+                BackToNormalColor(ActiveList[ii]);
+            }
+        }
+
+        private void GoToTimeStopColor(MainCharacter player)
+        {
+            if (player.CurrentLife >= player.MaxLife)
+            {
+                player.labelLife.color = UnityColor.Lightgreen;
+            }
+            else
+            {
+                player.labelLife.color = Color.white;
+            }
+        }
+        private void BackToNormalColor(MainCharacter player)
+        {
+            if (IsPlayerEnemy(player))
+            {
+                if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Gold)
+                {
+                    player.labelName.color = UnityColor.DarkOrange;
+                    player.labelCurrentInstantPoint.color = UnityColor.Gold;
+                }
+                else
+                {
+                    player.labelName.color = Color.black;
+                }
+            }
+            else
+            {
+                player.labelName.color = Color.black;
+            }
+
+            player.ActionLabel.color = Color.black;
+            player.CriticalLabel.color = Color.black;
+            player.DamageLabel.color = Color.black;
+            player.BuffPanel.GetComponent<Image>().color = UnityColor.GhostWhite;
+
+            if (player.CurrentLife >= player.MaxLife)
+            {
+                player.labelLife.color = Color.green;
+            }
+            else
+            {
+                player.labelLife.color = Color.black;
+            }
         }
 
         private void CleanUpForBoss()
@@ -4052,16 +4143,8 @@ namespace DungeonPlayer
                     }
                     if (ActiveList[ii].Accessory.Name == Database.COMMON_DEVIL_SEALED_VASE)
                     {
-                        // todo
-                        //string chooseCommand = String.Empty;
-                        //using (TruthChooseCommand tcc = new TruthChooseCommand())
-                        //{
-                        //    tcc.StartPosition = FormStartPosition.CenterParent;
-                        //    tcc.Owner = this;
-                        //    tcc.ShowDialog();
-                        //    chooseCommand = tcc.ChooseCommand;
-                        //}
-                        //ActiveList[ii].Accessory.ImprintCommand = chooseCommand;
+                        this.groupChooseCommand.SetActive(true);
+                        this.Filter.SetActive(true);
                     }
                     if (ActiveList[ii].Accessory.Name == Database.RARE_VOID_HYMNSONIA)
                     {
@@ -4097,16 +4180,8 @@ namespace DungeonPlayer
                     }
                     if (ActiveList[ii].Accessory2.Name == Database.COMMON_DEVIL_SEALED_VASE)
                     {
-                        // todo
-                        //string chooseCommand = String.Empty;
-                        //using (TruthChooseCommand tcc = new TruthChooseCommand())
-                        //{
-                        //    tcc.StartPosition = FormStartPosition.CenterParent;
-                        //    tcc.Owner = this;
-                        //    tcc.ShowDialog();
-                        //    chooseCommand = tcc.ChooseCommand;
-                        //}
-                        //ActiveList[ii].Accessory2.ImprintCommand = chooseCommand;
+                        this.groupChooseCommand.SetActive(true);
+                        this.Filter.SetActive(true);
                     }
                     if (ActiveList[ii].Accessory2.Name == Database.RARE_VOID_HYMNSONIA)
                     {
@@ -4371,17 +4446,6 @@ namespace DungeonPlayer
                     this.stackActivePlayer[this.StackNumber].StackActivation = false;
                     StackInTheCommandEnd();
                 }
-                //StackInTheCommand();
-                // todo
-                //StackThread = new Thread(new System.Threading.ThreadStart(StackInTheCommand));
-                //StackThread.Priority = ThreadPriority.Highest;
-                //StackThread.Start();
-                //StackThread.Join();
-                //StackThread = null;
-
-                //this.NowStackInTheCommand = false;
-
-                //CompleteInstantAction();
             }
         }
 
@@ -4631,7 +4695,6 @@ namespace DungeonPlayer
                         }
                         else
                         {
-                            // todo sleep1000で瞬間的停止を演出するためのロジックが必要
                             UpdateBattleText(ActiveList[ii].GetCharacterSentence(216));
                             System.Threading.Thread.Sleep(1000);
                             AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "生命復活");
@@ -5143,14 +5206,14 @@ namespace DungeonPlayer
 
         public void UseItem_Click(Text sender)
         {
-            MainCharacter player = Method.GetCurrentPlayer(this.currentPlayer.PlayerStatusColor);
+            MainCharacter player = this.currentPlayer;
             if (player.Dead)
             {
                 txtBattleMessage.text = "【" + player.FirstName + "は死んでしまっているため、アイテムが使えない。】";
                 return;
             }
 
-            // todo バックパック画面を開いて、消耗品アイテムを使用する。
+            // バックパック画面を開いて、消耗品アイテムを使用する。
             Debug.Log("ItemGauge: " + UseItemGauge.rectTransform.localScale.x);
             if (UseItemGauge.rectTransform.localScale.x < 1.0f)
             {
@@ -5179,6 +5242,7 @@ namespace DungeonPlayer
                     break;
                 }
             }
+
             Method.UseItem(player, sender.text, currentNumber, txtBattleMessage);
             UpdateLife(player);
             UpdateMana(player);
@@ -7015,7 +7079,6 @@ namespace DungeonPlayer
             this.nowAnimationCritical.Add(critical);
             this.nowAnimationText.Add(target.DamageLabel);
             this.nowAnimation = true;
-            // todo
         }
 
         Vector3 ExecAnimation_basePoint;
@@ -7493,7 +7556,6 @@ namespace DungeonPlayer
                         }
                         else
                         {
-                            //mdwi.Message = "バックパックがいっぱいのため、ステータス画面を開きます。"; // todo ?
                             // バックパックがいっぱいの場合ステータス画面で不要アイテムを捨てさせます。
                             SceneDimension.CallTruthStatusPlayer(Database.TruthBattleEnemy, this, true);
                             return; // scenebackさせない
