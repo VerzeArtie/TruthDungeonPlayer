@@ -153,13 +153,13 @@ namespace DungeonPlayer
             //WE.TruthCommunicationCompArea2 = true;
 
             //GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1
-            WE.TruthCompleteArea1 = true;
+            //WE.TruthCompleteArea1 = true;
             //WE.GameDay = 6;
             WE.Truth_CommunicationFirstHomeTown = true;
             WE.Truth_CommunicationHanna1 = true;
             WE.AlreadyRest = true;
             //GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
-            WE.TruthCompleteArea1 = true;
+            //WE.TruthCompleteArea1 = true;
             WE.AvailableMixSpellSkill = false;
             MC.Level = 1;
 
@@ -167,7 +167,7 @@ namespace DungeonPlayer
             GroundOne.WE.TruthCommunicationCompArea1 = true;
             GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
 
-            GroundOne.enemyName1 = Database.ENEMY_KOUKAKU_WURM; // DUEL_EONE_FULNEA;
+            GroundOne.enemyName1 = Database.ENEMY_DRAGON_TINKOU_DEEPSEA; // DUEL_EONE_FULNEA;
             GroundOne.enemyName2 = string.Empty;// Database.ENEMY_SUN_FLOWER;
             GroundOne.enemyName3 = string.Empty;// Database.ENEMY_SPEEDY_TAKA;
             //GroundOne.WE.AvailableSecondCharacter = true;
@@ -190,7 +190,7 @@ namespace DungeonPlayer
             //WE2.SeekerEvent604 = true;
 
             //!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea1 && (!GroundOne.WE.Truth_CommunicationLana21 || !GroundOne.WE.Truth_CommunicationGanz21 || !GroundOne.WE.Truth_CommunicationHanna21 || !GroundOne.WE.Truth_CommunicationOl21))
-            GroundOne.WE.TruthCompleteArea1 = true;
+            //GroundOne.WE.TruthCompleteArea1 = true;
             GroundOne.WE.Truth_CommunicationLana21 = true;
             GroundOne.WE.Truth_CommunicationGanz21 = true;
             GroundOne.WE.Truth_CommunicationHanna21 = true;

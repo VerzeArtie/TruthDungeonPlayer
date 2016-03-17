@@ -26,6 +26,10 @@ namespace DungeonPlayer
 
         bool nowStackAnimation = false;
         int nowStackAnimationCounter = 0;
+
+        bool nowAnimationMatrixTalk = false;
+        int nowAnimationMatrixTalkCounter = 0;
+
         bool nowAnimation = false;
         int nowAnimationCounter = 0;
         List<MainCharacter> nowAnimationTarget = new List<MainCharacter>();
@@ -62,6 +66,9 @@ namespace DungeonPlayer
         public Sprite[] imageSandglass;
         
         // GUI
+        public GameObject groupMatrixDragonTalk;
+        public Image back_MatrixDragonTalk;
+        public Text MatrixDragonTalkText;
         public Text TimeSpeedLabel;
         public GameObject groupChooseCommand;
         public Camera cam;
@@ -75,10 +82,12 @@ namespace DungeonPlayer
         public GameObject popupInfo;
         public Text CurrentInfo;
         public Text BattleStart;
-        public Button debugButton;
         public Button[] ActionButton1;
         public Button[] ActionButton2;
         public Button[] ActionButton3;
+        public Button[] ActionButtonE1;
+        public Button[] ActionButtonE2;
+        public Button[] ActionButtonE3;
         public Text txtBattleMessage;
         public GameObject back_labelBattleTurn;
         public Text labelBattleTurn;
@@ -423,12 +432,6 @@ namespace DungeonPlayer
             this.ec3.DamageLabel = this.enemy3Damage;
             this.ec3.CriticalLabel = this.enemy3Critical;
 
-            // todo 色々とまだコンポーネント登録しなければならない
-            // example
-            //            ActivateSomeCharacter(mc, ec1, nameLabel1, lifeLabel1, null, currentSkillPoint1, null, currentManaPoint1, currentInstantPoint1, null, ActionButton11, ActionButton12, ActionButton13, ActionButton14, ActionButton15, ActionButton16, ActionButton17, ActionButton18, ActionButton19, playerActionLabel1, BuffPanel1, buttonTargetPlayer1, mc.PlayerBattleColor, pbPlayerTargetTarget1, SelectPlayerArrow(mc), null, null, labelDamage1, labelCritical1, pbBuffPlayer1, keyNum1, IsSorcery1);
-            //            ActivateSomeCharacter(ec1, mc, enemyNameLabel1, lblLifeEnemy1, null, currentEnemySkillPoint1, null, currentEnemyManaPoint1, currentEnemyInstantPoint1, specialInstant, null, null, null, null, null, null, null, null, null, enemyActionLabel1, PanelBuffEnemy1, buttonTargetEnemy1, Color.DarkRed, pbEnemyTargetTarget1, bmpEnemy1, bmpShadowEnemy1_2, bmpShadowEnemy1_3, labelEnemyDamage1, labelEnemyCritical1, pbBuffEnemy1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-            //ActivateSomeCharacter(ec1, mc, enemy1Name, enemy1Life, enemyActionLabel1, pbBuffEnemy1);
-
             if (GroundOne.WE.AvailableFirstCharacter == false)
             {
                 groupPlayer1.SetActive(false);
@@ -436,7 +439,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer1.SetActive(true);
-                ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1FullName, player1Life, player1LifeMeter, player1Mana, player1ManaMeter, player1Skill, player1SkillMeter, player1Instant, player1InstantMeter, player1SpecialInstant, player1SpecialInstantMeter, ActionButton1, playerActionLabel1, BuffPanel1, player1MainObjectBack, player1MainObject, new Color(Database.COLOR_BATTLE_TARGET1_EIN_R, Database.COLOR_BATTLE_TARGET1_EIN_G, Database.COLOR_BATTLE_TARGET1_EIN_B), null, player1Arrow, null, null, player1Damage, player1Critical, pbBuffPlayer1, KeyNum1, IsSorcery1);
+                ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1FullName, player1Life, player1LifeMeter, player1Mana, player1ManaMeter, player1Skill, player1SkillMeter, player1Instant, player1InstantMeter, player1SpecialInstant, player1SpecialInstantMeter, ActionButton1, playerActionLabel1, BuffPanel1, player1MainObjectBack, player1MainObject, GroundOne.MC.PlayerBattleTargetColor1, null, player1Arrow, null, null, player1Damage, player1Critical, pbBuffPlayer1, KeyNum1, IsSorcery1);
             }
             if (GroundOne.WE.AvailableSecondCharacter == false)
             {
@@ -445,7 +448,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer2.SetActive(true);
-                ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2FullName, player2Life, player2LifeMeter, player2Mana, player2ManaMeter, player2Skill, player2SkillMeter, player2Instant, player2InstantMeter, player2SpecialInstant, player2SpecialInstantMeter, ActionButton2, playerActionLabel2, BuffPanel2, player2MainObjectBack, player2MainObject, new Color(Database.COLOR_BATTLE_TARGET1_RANA_R, Database.COLOR_BATTLE_TARGET1_RANA_G, Database.COLOR_BATTLE_TARGET1_RANA_B), null, player2Arrow, null, null, player2Damage, player2Critical, pbBuffPlayer2, KeyNum2, IsSorcery2);
+                ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2FullName, player2Life, player2LifeMeter, player2Mana, player2ManaMeter, player2Skill, player2SkillMeter, player2Instant, player2InstantMeter, player2SpecialInstant, player2SpecialInstantMeter, ActionButton2, playerActionLabel2, BuffPanel2, player2MainObjectBack, player2MainObject, GroundOne.SC.PlayerBattleTargetColor1, null, player2Arrow, null, null, player2Damage, player2Critical, pbBuffPlayer2, KeyNum2, IsSorcery2);
             }
 
             if (GroundOne.WE.AvailableThirdCharacter == false)
@@ -455,7 +458,7 @@ namespace DungeonPlayer
             else
             {
                 groupPlayer3.SetActive(true);
-                ActivateSomeCharacter(GroundOne.TC, ec1, player3Name, player3FullName, player3Life, player3LifeMeter, player3Mana, player3ManaMeter, player3Skill, player3SkillMeter, player3Instant, player3InstantMeter, player3SpecialInstant, player3SpecialInstantMeter, ActionButton3, playerActionLabel3, BuffPanel3, player3MainObjectBack, player3MainObject, new Color(Database.COLOR_BATTLE_TARGET1_OL_R, Database.COLOR_BATTLE_TARGET1_OL_G, Database.COLOR_BATTLE_TARGET1_OL_B), null, player3Arrow, null, null, player3Damage, player3Critical, pbBuffPlayer3, KeyNum3, IsSorcery3);
+                ActivateSomeCharacter(GroundOne.TC, ec1, player3Name, player3FullName, player3Life, player3LifeMeter, player3Mana, player3ManaMeter, player3Skill, player3SkillMeter, player3Instant, player3InstantMeter, player3SpecialInstant, player3SpecialInstantMeter, ActionButton3, playerActionLabel3, BuffPanel3, player3MainObjectBack, player3MainObject, GroundOne.TC.PlayerBattleTargetColor1, null, player3Arrow, null, null, player3Damage, player3Critical, pbBuffPlayer3, KeyNum3, IsSorcery3);
             }
 
             if (GroundOne.enemyName1 == String.Empty)
@@ -466,7 +469,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy1.SetActive(true);
-                ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1FullName, enemy1Life, enemy1LifeMeter, enemy1Mana, enemy1ManaMeter, enemy1Skill, enemy1SkillMeter, enemy1Instant, enemy1InstantMeter, enemy1SpecialInstant, enemy1SpecialInstantMeter, null, enemyActionLabel1, PanelBuffEnemy1, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), null, enemy1Arrow, null, null, enemy1Damage, enemy1Critical, pbBuffEnemy1, KeyNumE1, IsSorceryE1);
+                ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1FullName, enemy1Life, enemy1LifeMeter, enemy1Mana, enemy1ManaMeter, enemy1Skill, enemy1SkillMeter, enemy1Instant, enemy1InstantMeter, enemy1SpecialInstant, enemy1SpecialInstantMeter, ActionButtonE1, enemyActionLabel1, PanelBuffEnemy1, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), null, enemy1Arrow, null, null, enemy1Damage, enemy1Critical, pbBuffEnemy1, KeyNumE1, IsSorceryE1);
             }
 
             if (GroundOne.enemyName2 == String.Empty)
@@ -477,7 +480,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy2.SetActive(true);
-                ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, enemy2FullName, enemy2Life, enemy2LifeMeter, enemy2Mana, enemy2ManaMeter, enemy2Skill, enemy2SkillMeter, enemy2Instant, enemy2InstantMeter, enemy2SpecialInstant, enemy2SpecialInstantMeter, null, enemyActionLabel2, PanelBuffEnemy2, enemy2MainObjectBack, enemy2MainObject, new Color(150, 50, 100), null, enemy2Arrow, null, null, enemy2Damage, enemy2Critical, pbBuffEnemy2, KeyNumE2, IsSorceryE2);
+                ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, enemy2FullName, enemy2Life, enemy2LifeMeter, enemy2Mana, enemy2ManaMeter, enemy2Skill, enemy2SkillMeter, enemy2Instant, enemy2InstantMeter, enemy2SpecialInstant, enemy2SpecialInstantMeter, ActionButtonE2, enemyActionLabel2, PanelBuffEnemy2, enemy2MainObjectBack, enemy2MainObject, new Color(108.0f / 255.0f, 118.0f / 255.0f, 0.0f), null, enemy2Arrow, null, null, enemy2Damage, enemy2Critical, pbBuffEnemy2, KeyNumE2, IsSorceryE2);
             }
 
             if (GroundOne.enemyName3 == String.Empty)
@@ -488,7 +491,7 @@ namespace DungeonPlayer
             else
             {
                 groupEnemy3.SetActive(true);
-                ActivateSomeCharacter(ec3, GroundOne.MC, enemy3Name, enemy3FullName, enemy3Life, enemy3LifeMeter, enemy3Mana, enemy3ManaMeter, enemy3Skill, enemy3SkillMeter, enemy3Instant, enemy3InstantMeter, enemy2SpecialInstant, enemy3SpecialInstantMeter, null, enemyActionLabel3, PanelBuffEnemy3, enemy3MainObjectBack, enemy3MainObject, new Color(100, 150, 50), null, enemy3Arrow, null, null, enemy3Damage, enemy3Critical, pbBuffEnemy3, KeyNumE3, IsSorceryE3);
+                ActivateSomeCharacter(ec3, GroundOne.MC, enemy3Name, enemy3FullName, enemy3Life, enemy3LifeMeter, enemy3Mana, enemy3ManaMeter, enemy3Skill, enemy3SkillMeter, enemy3Instant, enemy3InstantMeter, enemy2SpecialInstant, enemy3SpecialInstantMeter, ActionButtonE3, enemyActionLabel3, PanelBuffEnemy3, enemy3MainObjectBack, enemy3MainObject, new Color(69.0f / 255.0f, 99.0f / 255.0f, 129.0f / 255.0f), null, enemy3Arrow, null, null, enemy3Damage, enemy3Critical, pbBuffEnemy3, KeyNumE3, IsSorceryE3);
             }
 
             for (int ii = 0; ii < this.ActiveList.Count; ii++)
@@ -622,6 +625,11 @@ namespace DungeonPlayer
             if (this.nowStackAnimation)
             {
                 ExecStackAnimation();
+                return; // アニメーション表示中は停止させる。
+            }
+            if (this.nowAnimationMatrixTalk)
+            {
+                ExecAnimationMessageFadeOut();
                 return; // アニメーション表示中は停止させる。
             }
 
@@ -889,6 +897,8 @@ namespace DungeonPlayer
                     player.IsSorceryMark.Add(sorceryMark[ii]);
                 }
             }
+
+            player.TextBattleMessage = this.txtBattleMessage;
 
             player.ActionLabel = actionLabel;
 
@@ -1493,7 +1503,7 @@ namespace DungeonPlayer
             trigger.triggers.Add(entry2);
 
             EventTrigger.Entry entry3 = new EventTrigger.Entry();
-            entry3.eventID = EventTriggerType.Move; // todo MoveではMouseMoveにならない。
+            entry3.eventID = EventTriggerType.Move;
             entry3.callback.AddListener((x) => PointerMove());
             trigger.triggers.Add(entry3);
 
@@ -7167,8 +7177,6 @@ namespace DungeonPlayer
         {
         }
 
-        delegate void _AnimationDamage(double damage, MainCharacter target, int interval, Color plusValue, bool avoid, bool critical, string customString);
-
         private void AnimationDamage(double damage, MainCharacter target, int interval, Color plusValue, bool avoid, bool critical, string customString)
         {
             Debug.Log("AnimationDamage start: " + this.nowAnimationCounter);
@@ -7299,6 +7307,38 @@ namespace DungeonPlayer
             }
         }
 
+        private void AnimationMessageFadeOut(string message)
+        {
+            MatrixDragonTalkText.color = Color.white;
+            MatrixDragonTalkText.text = message;
+
+            this.nowAnimationMatrixTalkCounter = 0;
+            this.nowAnimationMatrixTalk = true;
+        }
+        private void ExecAnimationMessageFadeOut()
+        {
+            if (this.nowAnimationMatrixTalkCounter <= 0)
+            {
+                back_MatrixDragonTalk.gameObject.SetActive(true);
+            }
+
+            int waitTime = 258; 
+            System.Threading.Thread.Sleep(10);
+            if (this.nowAnimationMatrixTalkCounter > 130)
+            {
+                this.MatrixDragonTalkText.color = new Color(this.MatrixDragonTalkText.color.r, this.MatrixDragonTalkText.color.g, this.MatrixDragonTalkText.color.b, this.MatrixDragonTalkText.color.a-(2.0f/255.0f));
+            }
+
+            this.nowAnimationMatrixTalkCounter++;
+
+            if (this.nowAnimationMatrixTalkCounter > waitTime)
+            {
+                back_MatrixDragonTalk.gameObject.SetActive(false);
+                this.nowAnimationMatrixTalkCounter = 0;
+                this.nowAnimationMatrixTalk = false;
+            }
+        }
+
         /// <summary>
         /// 物理攻撃カウンターCounterAttackのチェックメソッド</summary>
         /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
@@ -7425,7 +7465,7 @@ namespace DungeonPlayer
                 if ((group[ii].Accessory != null) && (group[ii].Accessory.Name == Database.COMMON_DEVIL_SEALED_VASE) && (group[ii].Accessory.ImprintCommand == currentSpellName) ||
                     (group[ii].Accessory2 != null) && (group[ii].Accessory2.Name == Database.COMMON_DEVIL_SEALED_VASE) && (group[ii].Accessory2.ImprintCommand == currentSpellName))
                 {
-                    this.Invoke(new _AnimationDamage(AnimationDamage), 0, player, 0, Color.black, false, false, Database.MISS_SPELL);
+                    AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SPELL);
                     return true;
                 }
             }

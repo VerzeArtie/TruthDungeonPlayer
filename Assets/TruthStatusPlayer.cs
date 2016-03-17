@@ -269,39 +269,12 @@ namespace DungeonPlayer
         public override void Update()
         {
             base.Update();
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    groupChoice.SetActive(false);
-            //}
 
             if (this.usingToomiBlueSuisyou)
             {
                 SceneDimension.Back();
-                // todo
-                //using (YesNoRequest yesno = new YesNoRequest())
-                //{
-                //    yesno.StartPosition = FormStartPosition.CenterParent;
-                //    yesno.ShowDialog();
-                //    if (yesno.DialogResult == DialogResult.Yes)
-                //    {
-                //        if (GroundOne.WE.SaveByDungeon)
-                //        {
-                //            this.DialogResult = DialogResult.Abort;
-                //            return;
-                //        }
-                //        else
-                //        {
-                //            mainMessage.text = player.GetCharacterSentence(2012);
-                //            return;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        mainMessage.text = "";
-                //    }
-                //}
-
             }
+            #region "Overshifting"
             if (this.usingOvershifting)
             {
                 MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
@@ -400,6 +373,7 @@ namespace DungeonPlayer
                 GroundOne.UpPoint++;
                 System.Threading.Thread.Sleep(1);
             }
+            #endregion
         }
 
         public void tapClose()
@@ -899,21 +873,19 @@ namespace DungeonPlayer
                 case Database.COMMON_POTION_OVER_GROWTH:
                     if (this.onlyUseItem)
                     {
-                        // todo
-                        //player.DeleteBackPack(backpackData, 1, currentNumber);
-                        //player.CurrentStaminaUp = Database.INFINITY;
-                        //player.CurrentStaminaUpValue = 100; // スタミナUPは内部処理で10倍されてるため、ここでは1000/10で100
-                        //player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp.bmp", Database.INFINITY);
-                        //player.labelLife.text = player.CurrentLife.ToString();
-                        //if (player.CurrentLife >= player.MaxLife)
-                        //{
-                        //    player.labelLife.ForeColor = Color.Green;
-                        //}
-                        //else
-                        //{
-                        //    player.labelLife.ForeColor = Color.Black;
-                        //}
-                        //player.labelLife.Update();
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentStaminaUp = Database.INFINITY;
+                        player.CurrentStaminaUpValue = 100; // スタミナUPは内部処理で10倍されてるため、ここでは1000/10で100
+                        player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp", Database.INFINITY);
+                        player.labelCurrentLifePoint.text = player.CurrentLife.ToString();
+                        if (player.CurrentLife >= player.MaxLife)
+                        {
+                            player.labelCurrentLifePoint.color = Color.green;
+                        }
+                        else
+                        {
+                            player.labelCurrentLifePoint.color = Color.black;
+                        }
                     }
                     else
                     {

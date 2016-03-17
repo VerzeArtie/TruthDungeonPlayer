@@ -1212,6 +1212,7 @@ namespace DungeonPlayer
         public int BuffNumber = 0;
         public TruthImage[] BuffElement = null; // 「警告」：後編ではこれでBUFF並びを整列する。最終的には個別BUFFのTruthImageは全て不要になる。
         //public List<Image> BuffElement;
+        public Text TextBattleMessage = null;
 
 
         public bool RealTimeBattle
@@ -8176,9 +8177,7 @@ namespace DungeonPlayer
 
         private void UpdateBattleText(string text)
         {
-            // todo
-            //this.TextBattleMessage.Text = this.TextBattleMessage.Text.Insert(0, text);
-            //this.TextBattleMessage.Update();
+            this.TextBattleMessage.text = this.TextBattleMessage.text.Insert(0, text);
         }
         /// <summary>
         /// 力パラメタ上昇BUFF
@@ -9296,11 +9295,6 @@ namespace DungeonPlayer
             {
                 this.ActivateBuff(pbData, Database.BaseResourceFolder + bmpName + ".bmp", count);
             }
-            // todo
-            //else
-            //{
-            //    pbData.Invalidate();
-            //}
         }
         public void ChangePoisonStatus(int count)
         {
