@@ -1419,10 +1419,8 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    btnTargetName2.gameObject.SetActive(false);
-                    GameObject emptyObj = new GameObject();
-                    emptyObj.AddComponent<RectTransform>();
-                    emptyObj.transform.SetParent(groupTarget.transform);
+                    btnTargetName2.GetComponent<Mask>().showMaskGraphic = false;
+                    targetName2.GetComponent<Mask>().showMaskGraphic = false;
                 }
 
                 if (GroundOne.WE.AvailableThirdCharacter)
@@ -1431,10 +1429,8 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    btnTargetName3.gameObject.SetActive(false);
-                    GameObject emptyObj = new GameObject();
-                    emptyObj.AddComponent<RectTransform>();
-                    emptyObj.transform.SetParent(groupTarget.transform);
+                    btnTargetName3.GetComponent<Mask>().showMaskGraphic = false;
+                    targetName3.GetComponent<Mask>().showMaskGraphic = false;
                 }
 
                 groupTarget.gameObject.transform.position = this.currentPosition;
@@ -1486,10 +1482,8 @@ namespace DungeonPlayer
             }
             else
             {
-                btnWhoTarget2.gameObject.SetActive(false);
-                GameObject emptyObj = new GameObject();
-                emptyObj.AddComponent<RectTransform>();
-                emptyObj.transform.SetParent(groupWhoTarget.transform);
+                btnWhoTarget2.GetComponent<Mask>().showMaskGraphic = false;
+                whoTarget2.GetComponent<Mask>().showMaskGraphic = false;
             }
 
             if (GroundOne.WE.AvailableThirdCharacter)
@@ -1498,10 +1492,8 @@ namespace DungeonPlayer
             }
             else
             {
-                btnWhoTarget3.gameObject.SetActive(false);
-                GameObject emptyObj = new GameObject();
-                emptyObj.AddComponent<RectTransform>();
-                emptyObj.transform.SetParent(groupWhoTarget.transform);
+                btnWhoTarget3.GetComponent<Mask>().showMaskGraphic = false;
+                whoTarget3.GetComponent<Mask>().showMaskGraphic = false;
             }
 
             groupWhoTarget.gameObject.transform.position = this.currentPosition;
@@ -1511,6 +1503,8 @@ namespace DungeonPlayer
 
         public void ExecWhoTarget(Text sender)
         {
+            if (sender.GetComponent<Mask>().showMaskGraphic == false) { HideAllChild(); return; }
+
             this.ItemChoiced = true;
 
             groupWhoTarget.SetActive(false);
@@ -1541,6 +1535,7 @@ namespace DungeonPlayer
                     {
                         player.DeleteBackPack(backpackData, 1, currentNumber);
                         target.ResurrectPlayer(1);
+                        UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
                         RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                         mainMessage.text = target.GetCharacterSentence(2016);
                     }
@@ -1550,7 +1545,7 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.Name);
+                        mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.FirstName);
                     }
                     break;
 
@@ -1559,6 +1554,7 @@ namespace DungeonPlayer
                     {
                         GroundOne.WE.AlreadyUseRevivePotion = true;
                         target.ResurrectPlayer(target.MaxLife / 2);
+                        UsingItemUpdateBackPackLabel(player, backpackData, currentSelect, currentNumber);
                         RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                         mainMessage.text = target.GetCharacterSentence(2016);
                     }
@@ -1568,7 +1564,7 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.Name);
+                        mainMessage.text = String.Format(player.GetCharacterSentence(2017), target.FirstName);
                     }
                     break;
             }
@@ -1576,6 +1572,7 @@ namespace DungeonPlayer
 
         public void ExecHandover_Click(Text sender)
         {
+            if (sender.GetComponent<Mask>().showMaskGraphic == false) { HideAllChild(); return; }
             this.ItemChoiced = true;
 
             groupTarget.SetActive(false);
@@ -1596,14 +1593,7 @@ namespace DungeonPlayer
             {
                 target = GroundOne.TC;
             }
-
-            if (this.useTargetedItem) // 「つかう」「だれに」のルートではアイテムを使用する。
-            {
-                UseItem(backpackData);
-                return;
-            }
-
-            // 以下、「わたす」を実行するルート
+            
             int exchangeValue = CallBackPackExchangeValue(player, backpackData, this.currentNumber);
             if (exchangeValue <= -1) return;
 
@@ -2416,7 +2406,7 @@ namespace DungeonPlayer
             #endregion
 
             // 味方全体の場合(SACRED_HEALのみなら以下を直接処理、将来他のコマンドが増えるなら、ロジック変更が必要）
-            if ((sender).text == SACRED_HEAL_JP)
+            if ((sender).text == Database.SACRED_HEAL_JP)
             {
                 int lifeGain = 0;
                 if ((sender).text == Database.SACRED_HEAL_JP)
@@ -2445,7 +2435,7 @@ namespace DungeonPlayer
                 if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
                 {
                     target = GroundOne.MC;
-                    ExecSomeSpellSkill(target);
+                    ExecSomeSpellSkill(sender, target);
                 }
                 else if (GroundOne.WE.AvailableSecondCharacter || GroundOne.WE.AvailableThirdCharacter)
                 {
@@ -2461,7 +2451,6 @@ namespace DungeonPlayer
         {
             groupWhoTarget.SetActive(false);
             backpackFilter.SetActive(false);
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
 
             MainCharacter target = null;
             if (sender.text == GroundOne.MC.FirstName)
@@ -2476,11 +2465,13 @@ namespace DungeonPlayer
             {
                 target = GroundOne.TC;
             }
-            ExecSomeSpellSkill(target);
+            ExecSomeSpellSkill(sender, target);
         }
 
-        private void ExecSomeSpellSkill(MainCharacter target)
+        private void ExecSomeSpellSkill(Text sender, MainCharacter target)
         {
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+
             if (((sender).text == Database.FRESH_HEAL_JP) ||
                 ((sender).text == Database.LIFE_TAP_JP) ||
                 ((sender).text == Database.CELESTIAL_NOVA_JP))
@@ -2804,7 +2795,6 @@ namespace DungeonPlayer
             else if (this.useOverShifting)
             {
                 this.number = upType.Strength;
-                grpParameter_Paint();
             }
         }
 
@@ -2839,7 +2829,6 @@ namespace DungeonPlayer
             else if (this.useOverShifting)
             {
                 this.number = upType.Agility;
-                grpParameter_Paint();
             }
         }
 
@@ -2886,7 +2875,6 @@ namespace DungeonPlayer
             else if (this.useOverShifting)
             {
                 this.number = upType.Intelligence;
-                grpParameter_Paint();
             }
         }
 
@@ -2925,7 +2913,6 @@ namespace DungeonPlayer
             else if (this.useOverShifting)
             {
                 this.number = upType.Stamina;
-                grpParameter_Paint();
             }
         }
 
@@ -2960,7 +2947,6 @@ namespace DungeonPlayer
             else if (this.useOverShifting)
             {
                 this.number = upType.Mind;
-                grpParameter_Paint();
             }
         }
 
@@ -3024,7 +3010,6 @@ namespace DungeonPlayer
                 btnUpReset.gameObject.SetActive(false);
                 lblRemain.gameObject.SetActive(false);
                 useOverShifting = false;
-                grpParameter_Paint();
                 btnClose.gameObject.SetActive(true);
                 mainMessage.text = player.GetCharacterSentence(2036);
                 player.CurrentLife = player.MaxLife;

@@ -170,7 +170,7 @@ namespace DungeonPlayer
             GroundOne.enemyName1 = Database.ENEMY_DRAGON_TINKOU_DEEPSEA; // DUEL_EONE_FULNEA;
             GroundOne.enemyName2 = string.Empty;// Database.ENEMY_SUN_FLOWER;
             GroundOne.enemyName3 = string.Empty;// Database.ENEMY_SPEEDY_TAKA;
-            //GroundOne.WE.AvailableSecondCharacter = true;
+            GroundOne.WE.AvailableSecondCharacter = true;
             //GroundOne.WE.AvailableThirdCharacter = true;
             //GroundOne.DuelMode = true;
             //GroundOne.WE2.RealWorld = true;
@@ -202,7 +202,7 @@ namespace DungeonPlayer
             MC.Accessory = new ItemBackPack(Database.COMMON_BLUE_PENDANT);
             MC.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_PENDANT);
             MC.CurrentLife = MC.MaxLife;
-            //MC.AddBackPack(new ItemBackPack(Database.RARE_TOOMI_BLUE_SUISYOU));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_REVIVE_POTION_MINI));
             //MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
             //MC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
             //MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
@@ -222,6 +222,7 @@ namespace DungeonPlayer
             //MC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
             //MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
             //MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
+            MC.DeadPlayer();
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
             MC.FreshHeal = true;
@@ -400,6 +401,26 @@ namespace DungeonPlayer
             SC.BattleActionCommandList[6] = Database.STAY_EN;
             SC.BattleActionCommandList[7] = Database.STAY_EN;
             SC.BattleActionCommandList[8] = Database.STAY_EN;
+            //SC.AddBackPack(new ItemBackPack(Database.RARE_SKY_COLD_BOOTS));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
+            //SC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+            //SC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_TWEI_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_PENDANT));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_BRONZE_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_GUST_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.RARE_DARKNESS_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_MASTER_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.RARE_SWORD_OF_DIVIDE));
+            //SC.AddBackPack(new ItemBackPack(Database.RARE_TYOU_KOU_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_MASEKI));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_PURPLE_MASEKI));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_VIKING_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_GREEN_MASEKI));
+            //SC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
+            //SC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
+            //SC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
 
             TC = objTC.AddComponent<MainCharacter>();
             TC.FirstName = Database.OL_LANDIS;
