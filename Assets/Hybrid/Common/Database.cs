@@ -2025,6 +2025,8 @@ namespace DungeonPlayer
         public const string POOR_SMALL_GREEN_POTION = @"小さい緑ポーション";
         public const string POOR_POTION_CURE_POISON = @"解毒薬";
         public const string COMMON_REVIVE_POTION_MINI = @"リヴァイヴポーション・ミニ";
+        public const string RARE_REVIVE_POTION = @"リヴァイヴポーション";
+        
         // 合成
         public const string COMMON_POTION_NATURALIZE = @"ナチュラライズ・ポーション";
         public const string COMMON_POTION_MAGIC_SEAL = @"マジック・シール薬";
