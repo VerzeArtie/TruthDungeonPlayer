@@ -13,6 +13,7 @@ namespace DungeonPlayer
     public partial class TruthEquipmentShop : MotherForm
     {
         public GameObject filter;
+        public Text DescriptionText;
         public GameObject groupYesNoMessage;
         public Text yesnoMessage;
         public Button btnLevel1;
@@ -29,17 +30,16 @@ namespace DungeonPlayer
         public Text[] costList;
         public Text[] backpackList;
         public Text[] backpackStack;
+        public GameObject groupVendorItem;
         public GameObject[] backEquip;
         public GameObject[] backCost;
+        public GameObject groupBackPack;
         public GameObject[] back_backpackList;
         public GameObject[] back_backpackStack;
         public Text labelGold;
-        public Button buttonBuy;
-        public Button buttonSell;
         public Button buttonYes;
         public Button buttonNo;
-        public Button buttonYes2;
-        public Button buttonNo2;
+        public GameObject groupCurrentEquip;
         public GameObject backMainWeapon;
         public GameObject backSubWeapon;
         public GameObject backArmor;
@@ -2050,12 +2050,15 @@ namespace DungeonPlayer
 
         public void Equip_Click(Text sender)
         {
-            this.currentSelectItem3 = new ItemBackPack(sender.text);
-            SelectSellItem(this.currentSelectItem3);
+            SelectSellItem(sender);
         }
 
         bool nowSellItem = false;
         public void Backpack_Click(Text sender)
+        {
+            SelectSellItem(sender);
+        }
+        private void SelectSellItem(Text sender)
         {
             this.nowSellItem = true;
             this.currentSelectItem2 = new ItemBackPack(sender.text);
@@ -2103,9 +2106,11 @@ namespace DungeonPlayer
             }
 
             yesnoMessage.text = String.Format(ganz.GetCharacterSentence(3007), currentSelectItem2.Name, (currentSelectItem2.Cost / 2).ToString());
-            groupYesNoMessage.SetActive(true);
+            buttonYes.gameObject.SetActive(true);
+            buttonNo.gameObject.SetActive(true);
             filter.SetActive(true);
         }
+
         public void EquipmentShop_Click(Text sender)
         {
             ItemBackPack backpackData = new ItemBackPack(((Text)sender).text);
@@ -2294,42 +2299,6 @@ namespace DungeonPlayer
 
         }
 
-        private void SelectSellItem(ItemBackPack currentItem)
-        {
-            if (currentItem.Name == "" || currentItem.Name == String.Empty)
-            {
-                return;
-            }
-
-            if (currentItem.Cost <= 0)
-            {
-                MessageExchange5(); // 後編編集
-                return;
-            }
-            // s 後編追加
-            else if ((currentItem.Name == Database.LEGENDARY_FELTUS) ||
-                     (currentItem.Name == Database.POOR_PRACTICE_SWORD_1) ||
-                     (currentItem.Name == Database.POOR_PRACTICE_SWORD_2) ||
-                     (currentItem.Name == Database.COMMON_PRACTICE_SWORD_3) ||
-                     (currentItem.Name == Database.COMMON_PRACTICE_SWORD_4) ||
-                     (currentItem.Name == Database.RARE_PRACTICE_SWORD_5) ||
-                     (currentItem.Name == Database.RARE_PRACTICE_SWORD_6) ||
-                     (currentItem.Name == Database.EPIC_PRACTICE_SWORD_7))
-            {
-                MessageExchange5();
-                return;
-            }
-            // e 後編追加
-            else
-            {
-                int stack = 1;
-                // s 後編編集
-                //stack = SelectSellStackValue(sender, e, currentItem, ii);
-                //if (stack == -1) return; // 複数量指定の時、ESCキャンセルはｰ1で抜けてくるので、即時Return
-
-                MessageExchange6(currentItem, stack);
-            }
-        }
 
         private void SellItem(ItemBackPack currentItem, Text sender, int stack, int ii)
         {
@@ -2337,12 +2306,6 @@ namespace DungeonPlayer
             labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
             SellBackPackItem(currentItem, sender, stack, ii);
             MessageExchange3(); // 後編編集
-        }
-        public void Sell2_Click()
-        {
-        }
-        public void Sell3_Click()
-        {
         }
         private void MessageExchange2()
         {
@@ -2438,7 +2401,8 @@ namespace DungeonPlayer
             nowCannotBuy = false;
             nowSellItem = false;
             filter.SetActive(false);
-            groupYesNoMessage.SetActive(false);
+            buttonYes.gameObject.SetActive(false);
+            buttonNo.gameObject.SetActive(false);
         }
 
         bool nowCannotBuy = false;
@@ -2490,10 +2454,16 @@ namespace DungeonPlayer
         {
             //mainMessage.text = String.Format(ganz.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // 後編編集
             yesnoMessage.text = String.Format(ganz.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // change unity
-            groupYesNoMessage.SetActive(true);
+            buttonYes.gameObject.SetActive(true);
+            buttonNo.gameObject.SetActive(true);
             filter.SetActive(true);
         }
 
+        public void tapExchange()
+        {
+            groupCurrentEquip.SetActive(!groupCurrentEquip.activeInHierarchy);
+            groupBackPack.SetActive(!groupCurrentEquip.activeInHierarchy);
+        }
         public void tapChara1()
         {
             this.currentPlayer = GroundOne.MC;
@@ -2508,6 +2478,10 @@ namespace DungeonPlayer
         {
             this.currentPlayer = GroundOne.TC;
             UpdateBackPackLabel(this.currentPlayer);
+        }
+        public void PointerEnter(Text sender)
+        {
+            DescriptionText.text = (new ItemBackPack(sender.text)).Description;
         }
         public void tapExit()
         {
