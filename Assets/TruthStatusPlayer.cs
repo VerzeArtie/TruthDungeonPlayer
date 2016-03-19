@@ -247,10 +247,10 @@ namespace DungeonPlayer
 
             if (GroundOne.OnlySelectTrash)
             {
-                if (GroundOne.Parent_TruthBattleEnemy != null)
+                if (GroundOne.ParentScene != null)
                 {
-                    GroundOne.Parent_TruthBattleEnemy.Filter.SetActive(true);
-                    GroundOne.Parent_TruthBattleEnemy.Filter.GetComponent<Image>().color = player.PlayerStatusColor;
+                    GroundOne.ParentScene.Filter.SetActive(true);
+                    GroundOne.ParentScene.Filter.GetComponent<Image>().color = player.PlayerStatusColor;
                 }
                 txtClose.text = "諦める";
                 mainMessage.text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
@@ -602,13 +602,7 @@ namespace DungeonPlayer
             }
 
             this.filter.SetActive(true);
-            this.btnSpellSkillDescClose.SetActive(true);
-            Application.UnloadLevel(Database.TruthSkillSpellDesc);
-            GroundOne.playerName = player.FirstName;
-            GroundOne.SpellSkillName = skillSpellName;
-            this.txtSpellSkillDescription.text = GroundOne.playerName + "は" + TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName) + "を習得した";
-            Application.LoadLevelAdditive(Database.TruthSkillSpellDesc);
-            //            SceneDimension.Replace(Database.TruthSkillSpellDesc);
+            SceneDimension.CallTruthSkillSpellDesc(this, player.FirstName, skillSpellName);
         }
 
 
@@ -1402,9 +1396,11 @@ namespace DungeonPlayer
             groupChoice.SetActive(false);
             //backpackFilter.SetActive(false); // ExecHandOverの続きがある。
 
-            if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter) // 1人しかいない場合、「わたす」コマンドではなく、「すてる」である。
+            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter) // 1人しかいない場合、「わたす」コマンドは対象外。
             {
-                Trash_Click();
+                mainMessage.text = player.GetCharacterSentence(2037);
+                return;
             }
             else // ここからが「わたす」コマンドである
             {
@@ -1458,7 +1454,7 @@ namespace DungeonPlayer
 
                 if (GroundOne.OnlySelectTrash)
                 {
-                    GroundOne.Parent_TruthBattleEnemy.GetNewItemAndBack();
+                    GroundOne.ParentScene.GetNewItemAndBack();
                 }
             }
             else

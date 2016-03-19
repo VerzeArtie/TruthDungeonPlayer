@@ -52,6 +52,7 @@ namespace DungeonPlayer
             GotoHomeTown,
             GotoDungeon2,
             DecisionOpenDoor1,
+            HomeTownGetItemFullCheck,
             HomeTownBlackOut,
             HomeTownTurnToNormal,
             HomeTownMorning,
@@ -2436,7 +2437,7 @@ namespace DungeonPlayer
 
             messageList.Add("【ラナのイヤリング】を手に入れました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_EARRING_OF_LANA));
+            messageList.Add(Database.RARE_EARRING_OF_LANA); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
 
             if (GroundOne.WE2.TruthBadEnd1)
             {
@@ -5137,7 +5138,7 @@ namespace DungeonPlayer
 
             messageList.Add("【ラナのイヤリング】を手に入れました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_EARRING_OF_LANA));
+            messageList.Add(Database.RARE_EARRING_OF_LANA); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
 
             messageList.Add("アイン：ラナのイヤリングじゃねえか・・・何でこんな物が・・・"); eventList.Add(ActionEvent.None);
             
@@ -6928,7 +6929,7 @@ namespace DungeonPlayer
 
             messageList.Add("【遠見の青水晶】を手に入れました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            GroundOne.MC.AddBackPack(new ItemBackPack(Database.RARE_TOOMI_BLUE_SUISYOU));
+            messageList.Add(Database.RARE_TOOMI_BLUE_SUISYOU); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
 
             messageList.Add("アイン：お、【遠見の青水晶】じゃねえか。助かるぜ！"); eventList.Add(ActionEvent.None);
 
@@ -7140,7 +7141,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（っしゃ、せっかくなんだし、使ってみるとするか！）"); eventList.Add(ActionEvent.None);
 
-            GroundOne.MC.AddBackPack(new ItemBackPack(Database.POOR_PRACTICE_SWORD_ZERO));
+            messageList.Add(Database.POOR_PRACTICE_SWORD_ZERO); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
 
             GroundOne.WE.Truth_CommunicationGanz21 = true;
             GroundOne.WE.AlreadyEquipShop = true;

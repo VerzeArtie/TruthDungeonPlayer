@@ -9,6 +9,7 @@ namespace DungeonPlayer
 {
     public class TruthSkillSpellDesc : MotherForm
     {
+        public Text txtSpellSkillDescription;
         public Image commandImage;
         public Text commandName;
         public Text commandName_En;
@@ -27,6 +28,8 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            this.txtSpellSkillDescription.text = GroundOne.playerName + "は" + TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName) + "を習得した";
 
             this.commandName.text = TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName);
             this.commandName_En.text = GroundOne.SpellSkillName;
@@ -340,7 +343,7 @@ namespace DungeonPlayer
 
         public void Close_Clock()
         {
-            Debug.Log("Close_Click start");
+            GroundOne.ParentScene.SceneBack();
             Application.UnloadLevel(Database.TruthSkillSpellDesc);
         }
     }

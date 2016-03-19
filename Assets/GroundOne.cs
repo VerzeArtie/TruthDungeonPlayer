@@ -77,7 +77,6 @@ namespace DungeonPlayer
         // TruthBattleSetting
         public static bool CallBattleSettingFromBattleEnemy;
         public static GameObject BattleEnemyFilter = null;
-        public static TruthBattleEnemy Parent_TruthBattleEnemy;
 
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
@@ -146,87 +145,89 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
-            GroundOne.WE2.AvailableMixSpellSkill = true;
-            GroundOne.WE2.AvailableArcheTypeCommand = true;
-            //GroundOne.WE.TruthCompleteArea2 && GroundOne.WE.TruthCommunicationCompArea2 && !GroundOne.WE.Truth_CommunicationThirdHomeTown
-            //WE.TruthCompleteArea2 = true;
-            //WE.TruthCommunicationCompArea2 = true;
+            //GroundOne.WE2.AvailableMixSpellSkill = true;
+            //GroundOne.WE2.AvailableArcheTypeCommand = true;
+            ////GroundOne.WE.TruthCompleteArea2 && GroundOne.WE.TruthCommunicationCompArea2 && !GroundOne.WE.Truth_CommunicationThirdHomeTown
+            ////WE.TruthCompleteArea2 = true;
+            ////WE.TruthCommunicationCompArea2 = true;
 
-            //GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1
-            //WE.TruthCompleteArea1 = true;
-            //WE.GameDay = 6;
-            WE.Truth_CommunicationFirstHomeTown = true;
-            WE.Truth_CommunicationHanna1 = true;
-            WE.AlreadyRest = true;
-            //GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
-            //WE.TruthCompleteArea1 = true;
-            WE.AvailableMixSpellSkill = false;
-            MC.Level = 1;
+            ////GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1
+            ////WE.TruthCompleteArea1 = true;
+            ////WE.GameDay = 6;
+            //WE.Truth_CommunicationFirstHomeTown = true;
+            //WE.Truth_CommunicationHanna1 = true;
+            //WE.AlreadyRest = true;
+            ////GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
+            ////WE.TruthCompleteArea1 = true;
+            //WE.AvailableMixSpellSkill = false;
+            //MC.Level = 1;
 
-            WE.AvailableInstantCommand = true;
-            GroundOne.WE.TruthCommunicationCompArea1 = true;
-            GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
+            //WE.AvailableInstantCommand = true;
+            //GroundOne.WE.TruthCommunicationCompArea1 = true;
+            //GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
 
-            GroundOne.enemyName1 = Database.ENEMY_DRAGON_TINKOU_DEEPSEA; // DUEL_EONE_FULNEA;
-            GroundOne.enemyName2 = string.Empty;// Database.ENEMY_SUN_FLOWER;
-            GroundOne.enemyName3 = string.Empty;// Database.ENEMY_SPEEDY_TAKA;
-            GroundOne.WE.AvailableSecondCharacter = true;
-            //GroundOne.WE.AvailableThirdCharacter = true;
-            //GroundOne.DuelMode = true;
-            //GroundOne.WE2.RealWorld = true;
-            //GroundOne.WE2.SeekerEvent506 = true;
-            GroundOne.WE.DungeonArea = 1;
-            //else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationGanz1)
-            //else if (GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
-            //else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.Truth_CommunicationGanz21)
-            //else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
-            WE.Truth_CommunicationGanz1 = true;
-            WE.Truth_CommunicationGanz21 = true;
+            //GroundOne.enemyName1 = Database.ENEMY_DRAGON_TINKOU_DEEPSEA; // DUEL_EONE_FULNEA;
+            //GroundOne.enemyName2 = string.Empty;// Database.ENEMY_SUN_FLOWER;
+            //GroundOne.enemyName3 = string.Empty;// Database.ENEMY_SPEEDY_TAKA;
+            //GroundOne.WE.AvailableSecondCharacter = true;
+            ////GroundOne.WE.AvailableThirdCharacter = true;
+            ////GroundOne.DuelMode = true;
+            ////GroundOne.WE2.RealWorld = true;
+            ////GroundOne.WE2.SeekerEvent506 = true;
+            //GroundOne.WE.DungeonArea = 1;
+            ////else if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationGanz1)
+            ////else if (GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
+            ////else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.Truth_CommunicationGanz21)
+            ////else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.AvailableMixSpellSkill && GroundOne.MC.Level >= 21)
+            //WE.Truth_CommunicationGanz1 = true;
+            //WE.Truth_CommunicationGanz21 = true;
 
-            // (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent602 && GroundOne.WE2.SeekerEvent603 && GroundOne.WE2.SeekerEvent604 && !GroundOne.WE2.SeekerEvent605)
-            //WE2.RealWorld = true;
-            //WE2.SeekerEvent602 = true;
-            //WE2.SeekerEvent603 = true;
-            //WE2.SeekerEvent604 = true;
+            //// (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent602 && GroundOne.WE2.SeekerEvent603 && GroundOne.WE2.SeekerEvent604 && !GroundOne.WE2.SeekerEvent605)
+            ////WE2.RealWorld = true;
+            ////WE2.SeekerEvent602 = true;
+            ////WE2.SeekerEvent603 = true;
+            ////WE2.SeekerEvent604 = true;
 
-            //!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea1 && (!GroundOne.WE.Truth_CommunicationLana21 || !GroundOne.WE.Truth_CommunicationGanz21 || !GroundOne.WE.Truth_CommunicationHanna21 || !GroundOne.WE.Truth_CommunicationOl21))
-            //GroundOne.WE.TruthCompleteArea1 = true;
-            GroundOne.WE.Truth_CommunicationLana21 = true;
-            GroundOne.WE.Truth_CommunicationGanz21 = true;
-            GroundOne.WE.Truth_CommunicationHanna21 = true;
-            GroundOne.WE.Truth_CommunicationOl21 = true;
+            ////!GroundOne.WE2.RealWorld && GroundOne.WE.TruthCompleteArea1 && (!GroundOne.WE.Truth_CommunicationLana21 || !GroundOne.WE.Truth_CommunicationGanz21 || !GroundOne.WE.Truth_CommunicationHanna21 || !GroundOne.WE.Truth_CommunicationOl21))
+            ////GroundOne.WE.TruthCompleteArea1 = true;
+            //GroundOne.WE.Truth_CommunicationLana21 = true;
+            //GroundOne.WE.Truth_CommunicationGanz21 = true;
+            //GroundOne.WE.Truth_CommunicationHanna21 = true;
+            //GroundOne.WE.Truth_CommunicationOl21 = true;
 
-            GroundOne.WE.AvailableEquipShop2 = true;
-            GroundOne.WE.AvailableEquipShop3 = true;
-            GroundOne.WE.AvailableEquipShop4 = true;
+            //GroundOne.WE.AvailableEquipShop2 = true;
+            //GroundOne.WE.AvailableEquipShop3 = true;
+            //GroundOne.WE.AvailableEquipShop4 = true;
 
-            MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
-            MC.SubWeapon = null;
-            MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);
-            MC.Accessory = new ItemBackPack(Database.COMMON_BLUE_PENDANT);
-            MC.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_PENDANT);
-            MC.CurrentLife = MC.MaxLife;
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_REVIVE_POTION_MINI));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
-            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
-            MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_TWEI_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_PENDANT));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_BRONZE_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_GUST_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.RARE_DARKNESS_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_MASTER_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.RARE_SWORD_OF_DIVIDE));
-            MC.AddBackPack(new ItemBackPack(Database.RARE_TYOU_KOU_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_MASEKI));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_PURPLE_MASEKI));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_VIKING_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_GREEN_MASEKI));
-            MC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
-            MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
-            MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
-            MC.DeadPlayer();
+            //MC.MainWeapon = new ItemBackPack(Database.POOR_TUKAIFURUSARETA_SWORD);
+            //MC.SubWeapon = null;
+            //MC.MainArmor = new ItemBackPack(Database.POOR_FESTERING_ARMOR);
+            //MC.Accessory = new ItemBackPack(Database.COMMON_BLUE_PENDANT);
+            //MC.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_PENDANT);
+            //MC.CurrentLife = MC.MaxLife;
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_REVIVE_POTION_MINI));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_BASTARD_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_RED_PENDANT));
+            //MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+            //MC.AddBackPack(new ItemBackPack(Database.POOR_SMALL_RED_POTION));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_TWEI_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_PENDANT));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_BRONZE_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_GUST_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.RARE_DARKNESS_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_MASTER_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.RARE_SWORD_OF_DIVIDE));
+            //MC.AddBackPack(new ItemBackPack(Database.RARE_TYOU_KOU_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_BLUE_MASEKI));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_PURPLE_MASEKI));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_VIKING_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_GREEN_MASEKI));
+            //MC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
+            //MC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
+            //MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
+
+            //MC.DeadPlayer();
+
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
             MC.FreshHeal = true;

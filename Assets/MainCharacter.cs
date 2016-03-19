@@ -3473,7 +3473,7 @@ namespace DungeonPlayer
                         return this.FirstName + "：・・・ッグ・・・っく・・・\r\n";
                     case 218: // インスタント不足
                         return this.FirstName + "：まだインスタントが足りねぇ・・・\r\n";
-
+                        
                     case 2001: // ポーションまたは魔法による回復時
                         return this.FirstName + "：よし、{0} 回復したぜ。";
                     case 2002: // レベルアップ終了催促
@@ -3546,6 +3546,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：おし、回復したぜ。";
                     case 2036: // オーバーシフティング割り振り完了
                         return this.FirstName + "：っしゃ、再割り振り完了！";
+                    case 2037: // １人のため、アイテムをわたす相手が居ない場合
+                        return this.FirstName + "：今は俺一人だ、わたす相手はいないぜ。";
 
                     case 3000: // 店に入った時の台詞
                         return this.FirstName + "：本当に誰も見張り役が居ないんだな。";
@@ -4233,6 +4235,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：うん、全員回復したわよ。";
                     case 2036: // オーバーシフティング割り振り完了
                         return this.FirstName + "：再割り振り完了よ♪";
+                    case 2037: // １人のため、アイテムをわたす相手が居ない場合
+                        return this.FirstName + "：私一人だから、わたす事はできないわね。";
 
                     case 3000: // 店に入った時の台詞
                         return this.FirstName + "：ホンット誰もいないわね。";
@@ -4929,6 +4933,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：全員回復しましたね。";
                     case 2036: // オーバーシフティング割り振り完了
                         return this.FirstName + "：再割り振り、完了ですね。";
+                    case 2037: // １人のため、アイテムをわたす相手が居ない場合
+                        return this.FirstName + "：ボク自身から、ボクにわたす・・・面白いジョークですね。";
 
                     case 3000: // 店に入った時の台詞
                         return this.FirstName + "：無防備な状態ですね・・・";
@@ -5595,6 +5601,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：全員回復したぞ。";
                     case 2036: // オーバーシフティング割り振り完了
                         return this.FirstName + "：面倒くせえ割り振りだったな。";
+                    case 2037: // １人のため、アイテムをわたす相手が居ない場合
+                        return this.FirstName + "：相手いねぇだろうが、ボケが。";
 
                     case 3000: // 店に入った時の台詞
                         return this.FirstName + "：ジジィ・・・誰もいねえのはやべぇだろが・・・。";
@@ -9798,6 +9806,218 @@ namespace DungeonPlayer
             }
         }
 
+        // s 後編追加
+        // ボス負の影響自動リカバー
+        protected int autoRecoverStunning = 0;
+        protected int autoRecoverSilence = 0;
+        protected int autoRecoverPoison = 0;
+        protected int autoRecoverTemptation = 0;
+        protected int autoRecoverFrozen = 0;
+        protected int autoRecoverParalyze = 0;
+        protected int autoRecoverNoResurrection = 0;
+        protected int autoRecoverSlow = 0;
+        protected int autoRecoverBlind = 0;
+        protected int autoRecoverSlip = 0;
+        protected int autoRecoverNoGainLife = 0;
+        // e 後編追加
+
+        public void CleanUpEffectForBoss()
+        {
+            if (CurrentStunning > 0)
+            {
+                autoRecoverStunning++;
+            }
+            if (CurrentSilence > 0)
+            {
+                autoRecoverSilence++;
+            }
+            if (CurrentPoison > 0)
+            {
+                autoRecoverPoison++;
+            }
+            if (CurrentTemptation > 0)
+            {
+                autoRecoverTemptation++;
+            }
+            if (CurrentFrozen > 0)
+            {
+                autoRecoverFrozen++;
+            }
+            if (CurrentParalyze > 0)
+            {
+                autoRecoverParalyze++;
+            }
+            if (CurrentNoResurrection > 0)
+            {
+                autoRecoverNoResurrection++;
+            }
+            if (CurrentSlow > 0)
+            {
+                autoRecoverSlow++;
+            }
+            if (CurrentBlind > 0)
+            {
+                autoRecoverBlind++;
+            }
+            if (CurrentSlip > 0)
+            {
+                autoRecoverSlip++;
+            }
+            if (CurrentNoGainLife > 0)
+            {
+                autoRecoverNoGainLife++;
+            }
+
+            if (autoRecoverStunning >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverStunning = 0;
+                CurrentStunning--;
+                if (CurrentStunning <= 0)
+                {
+                    if (pbStun != null)
+                    {
+                        RemoveOneBuff(pbStun);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverSilence >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverSilence = 0;
+                CurrentSilence--;
+                if (CurrentSilence <= 0)
+                {
+                    if (pbSilence != null)
+                    {
+                        RemoveOneBuff(pbSilence);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverPoison >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverPoison = 0;
+                CurrentPoison--;
+                if (CurrentPoison <= 0)
+                {
+                    if (pbPoison != null)
+                    {
+                        RemoveOneBuff(pbPoison);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverTemptation >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverTemptation = 0;
+                CurrentTemptation--;
+                if (CurrentTemptation <= 0)
+                {
+                    if (pbTemptation != null)
+                    {
+                        RemoveOneBuff(pbTemptation);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverFrozen >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverFrozen = 0;
+                CurrentFrozen--;
+                if (CurrentFrozen <= 0)
+                {
+                    if (pbFrozen != null)
+                    {
+                        RemoveOneBuff(pbFrozen);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverParalyze >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverParalyze = 0;
+                CurrentParalyze--;
+                if (CurrentParalyze <= 0)
+                {
+                    if (pbParalyze != null)
+                    {
+                        RemoveOneBuff(pbParalyze);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverNoResurrection >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverNoResurrection = 0;
+                CurrentNoResurrection--;
+                if (CurrentNoResurrection <= 0)
+                {
+                    if (pbNoResurrection != null)
+                    {
+                        RemoveOneBuff(pbNoResurrection);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverSlow >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverSlow = 0;
+                CurrentSlow--;
+                if (CurrentSlow <= 0)
+                {
+                    if (pbSlow != null)
+                    {
+                        RemoveOneBuff(pbSlow);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverBlind >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverBlind = 0;
+                CurrentBlind--;
+                if (CurrentBlind <= 0)
+                {
+                    if (pbBlind != null)
+                    {
+                        RemoveOneBuff(pbBlind);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverSlip >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverSlip = 0;
+                CurrentSlip--;
+                if (CurrentSlip <= 0)
+                {
+                    if (pbSlip != null)
+                    {
+                        RemoveOneBuff(pbSlip);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+            if (autoRecoverNoGainLife >= Database.BASE_TIMER_BAR_LENGTH / 3)
+            {
+                autoRecoverNoGainLife = 0;
+                CurrentNoGainLife--;
+                if (CurrentNoGainLife <= 0)
+                {
+                    if (pbNoGainLife != null)
+                    {
+                        RemoveOneBuff(pbNoGainLife);
+                        this.BuffNumber--;
+                    }
+                }
+            }
+
+            if (this.CurrentTimeStopImmediate)
+            {
+                AbstractCountDownBuff(this.pbTimeStop, ref this.CurrentTimeStop);
+            }
+
+        }
         internal void CleanUpBattleEnd(ref string brokenName)
         {
             this.beforePA = PlayerAction.None;
@@ -9816,7 +10036,671 @@ namespace DungeonPlayer
             Target = null;
             Target2 = null; // 後編追加
 
-            // todo
+            // ボス負の影響自動リカバー
+            autoRecoverStunning = 0;
+            autoRecoverSilence = 0;
+            autoRecoverPoison = 0;
+            autoRecoverTemptation = 0;
+            autoRecoverFrozen = 0;
+            autoRecoverParalyze = 0;
+            autoRecoverNoResurrection = 0;
+            autoRecoverSlow = 0;
+            autoRecoverBlind = 0;
+            autoRecoverSlip = 0;
+
+            // 動
+            // 静
+            CurrentCounterAttack = 0; // 後編編集
+            CurrentAntiStun = 0;
+            CurrentStanceOfDeath = 0;
+            // 柔
+            CurrentStanceOfFlow = 0;
+            // 剛
+            CurrentStanceOfStanding = 0; // 後編編集
+            // 心眼
+            CurrentTruthVision = 0;
+            CurrentHighEmotionality = 0;
+            CurrentStanceOfEyes = 0; // 後編編集
+            CurrentPainfulInsanity = 0;
+            // 無心
+            CurrentNegate = 0; // 後編編集
+            CurrentVoidExtraction = 0;
+            CurrentNothingOfNothingness = 0;
+
+            // 聖
+            CurrentProtection = 0;
+            CurrentSaintPower = 0;
+            CurrentGlory = 0;
+            // 闇
+            CurrentShadowPact = 0;
+            CurrentBlackContract = 0;
+            CurrentBloodyVengeance = 0;
+            CurrentDamnation = 0;
+            // 火
+            CurrentFlameAura = 0;
+            CurrentHeatBoost = 0;
+            CurrentImmortalRave = 0;
+            // 水
+            CurrentAbsorbWater = 0;
+            CurrentMirrorImage = 0;
+            CurrentAbsoluteZero = 0;
+            CurrentPromisedKnowledge = 0;
+            // 理
+            CurrentGaleWind = 0;
+            CurrentWordOfLife = 0;
+            CurrentWordOfFortune = 0;
+            CurrentAetherDrive = 0;
+            CurrentEternalPresence = 0;
+            // 空
+            CurrentRiseOfImage = 0;
+            CurrentOneImmunity = 0;
+            CurrentDeflection = 0;
+            CurrentTimeStop = 0;
+            CurrentTimeStopImmediate = false;
+
+            // s 後編追加
+            // 聖＋闇
+            CurrentPsychicTrance = 0;
+            CurrentBlindJustice = 0;
+            CurrentTranscendentWish = 0;
+            // 聖＋火
+            CurrentFlashBlazeCount = 0;
+            // 聖＋水
+            CurrentSkyShield = 0;
+            CurrentSkyShieldValue = 0;
+            CurrentEverDroplet = 0;
+            // 聖＋理
+            CurrentHolyBreaker = 0;
+            CurrentExaltedField = 0;
+            CurrentHymnContract = 0;
+            // 聖＋空
+            CurrentStarLightning = 0;
+            // 闇＋火
+            CurrentBlackFire = 0;
+            CurrentBlazingField = 0;
+            CurrentBlazingFieldFactor = 0;
+            // 闇＋水
+            CurrentDeepMirror = false;
+            // 闇＋理
+            CurrentWordOfMalice = 0;
+            CurrentSinFortune = 0;
+            // 闇＋空
+            CurrentDarkenField = 0;
+            CurrentEclipseEnd = 0;
+            // 火＋水
+            CurrentFrozenAura = 0;
+            // 火＋理
+            CurrentEnrageBlast = 0;
+            CurrentSigilOfHomura = 0;
+            // 火＋空
+            CurrentImmolate = 0;
+            CurrentPhantasmalWind = 0;
+            CurrentRedDragonWill = 0;
+            // 水＋理
+            CurrentStaticBarrier = 0;
+            CurrentStaticBarrierValue = 0;
+            CurrentAusterityMatrix = 0;
+            // 水＋空
+            CurrentBlueDragonWill = 0;
+            // 理＋空
+            CurrentSeventhMagic = 0;
+            CurrentParadoxImage = 0;
+
+            // 動＋静
+            CurrentStanceOfDouble = 0;
+            // 動＋柔
+            CurrentSwiftStep = 0;
+            CurrentVigorSense = 0;
+            // 動＋剛
+            CurrentRisingAura = 0;
+            // 動＋心眼
+            CurrentOnslaughtHit = 0;
+            CurrentOnslaughtHitValue = 0;
+            // 動＋無心
+            CurrentSmoothingMove = 0;
+            CurrentAscensionAura = 0;
+            // 静＋柔
+            CurrentFutureVision = 0;
+            // 静＋剛
+            CurrentReflexSpirit = 0;
+            // 静＋心眼
+            CurrentConcussiveHit = 0;
+            CurrentConcussiveHitValue = 0;
+            // 静＋無心
+            CurrentTrustSilence = 0;
+            // 柔＋剛
+            CurrentStanceOfMystic = 0;
+            CurrentStanceOfMysticValue = 0;
+            // 柔＋心眼
+            CurrentNourishSense = 0;
+            // 柔＋無心
+            CurrentImpulseHit = 0;
+            CurrentImpulseHitValue = 0;
+            // 剛＋心眼
+            CurrentOneAuthority = 0;
+            // 剛＋無心
+            CurrentHardestParry = false;
+            // 心眼＋無心
+            CurrentStanceOfSuddenness = false;
+
+            // 武器特有
+            CurrentFeltus = 0;
+            CurrentFeltusValue = 0;
+            CurrentJuzaPhantasmal = 0;
+            CurrentJuzaPhantasmalValue = 0;
+            CurrentEternalFateRing = 0;
+            CurrentEternalFateRingValue = 0;
+            CurrentLightServant = 0;
+            CurrentLightServantValue = 0;
+            CurrentShadowServant = 0;
+            CurrentShadowServantValue = 0;
+            CurrentAdilBlueBurn = 0;
+            CurrentAdilBlueBurnValue = 0;
+            CurrentMazeCube = 0;
+            CurrentMazeCubeValue = 0;
+            CurrentShadowBible = 0;
+            CurrentDetachmentOrb = 0;
+            CurrentDevilSummonerTome = 0;
+            CurrentVoidHymnsonia = 0;
+
+            // 消耗品特有
+            CurrentSagePotionMini = 0;
+            CurrentGenseiTaima = 0;
+            CurrentShiningAether = 0;
+            CurrentBlackElixir = 0;
+            CurrentBlackElixirValue = 0;
+            CurrentElementalSeal = 0;
+            CurrentColoressAntidote = 0;
+            
+            // 最終戦ライフカウント
+            CurrentLifeCount = 0;
+            CurrentLifeCountValue = 0;
+
+            // ヴェルゼ最終戦カオティックスキーマ
+            CurrentChaoticSchema = 0;
+
+            // 集中と断絶
+            CurrentSyutyu_Danzetsu = 0;
+            CurrentJunkan_Seiyaku = 0;
+            // e 後編追加
+
+            // 動
+            // 静
+            if (pbCounterAttack != null) { pbCounterAttack.sprite = null; pbCounterAttack.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+            if (pbAntiStun != null) { pbAntiStun.sprite = null; pbAntiStun.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbStanceOfDeath != null) { pbStanceOfDeath.sprite = null; pbStanceOfDeath.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 柔
+            if (pbStanceOfFlow != null) { pbStanceOfFlow.sprite = null; pbStanceOfFlow.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 剛
+            if (pbStanceOfStanding != null) { pbStanceOfStanding.sprite = null; pbStanceOfStanding.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+            // 心眼
+            if (pbTruthVision != null) { pbTruthVision.sprite = null; pbTruthVision.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbHighEmotionality != null) { pbHighEmotionality.sprite = null; pbHighEmotionality.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbStanceOfEyes != null) { pbStanceOfEyes.sprite = null; pbStanceOfEyes.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+            if (pbPainfulInsanity != null) { pbPainfulInsanity.sprite = null; pbPainfulInsanity.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 無心
+            if (pbNegate != null) { pbNegate.sprite = null; pbNegate.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+            if (pbVoidExtraction != null) { pbVoidExtraction.sprite = null; pbVoidExtraction.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbNothingOfNothingness != null) { pbNothingOfNothingness.sprite = null; pbNothingOfNothingness.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            // 聖
+            if (pbProtection != null) { pbProtection.sprite = null; pbProtection.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbSaintPower != null) { pbSaintPower.sprite = null; pbSaintPower.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbGlory != null) { pbGlory.sprite = null; pbGlory.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 闇
+            if (pbShadowPact != null) { pbShadowPact.sprite = null; pbShadowPact.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbBlackContract != null) { pbBlackContract.sprite = null; pbBlackContract.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbBloodyVengeance != null) { pbBloodyVengeance.sprite = null; pbBloodyVengeance.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbDamnation != null) { pbDamnation.sprite = null; pbDamnation.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 火
+            if (pbFlameAura != null) { pbFlameAura.sprite = null; pbFlameAura.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbHeatBoost != null) { pbHeatBoost.sprite = null; pbHeatBoost.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbImmortalRave != null) { pbImmortalRave.sprite = null; pbImmortalRave.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 水
+            if (pbAbsorbWater != null) { pbAbsorbWater.sprite = null; pbAbsorbWater.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbMirrorImage != null) { pbMirrorImage.sprite = null; pbMirrorImage.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAbsoluteZero != null) { pbAbsoluteZero.sprite = null; pbAbsoluteZero.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbPromisedKnowledge != null) { pbPromisedKnowledge.sprite = null; pbPromisedKnowledge.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 理
+            if (pbGaleWind != null) { pbGaleWind.sprite = null; pbGaleWind.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbWordOfLife != null) { pbWordOfLife.sprite = null; pbWordOfLife.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbWordOfFortune != null) { pbWordOfFortune.sprite = null; pbWordOfFortune.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAetherDrive != null) { pbAetherDrive.sprite = null; pbAetherDrive.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbEternalPresence != null) { pbEternalPresence.sprite = null; pbEternalPresence.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 空
+            if (pbRiseOfImage != null) { pbRiseOfImage.sprite = null; pbRiseOfImage.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbOneImmunity != null) { pbOneImmunity.sprite = null; pbOneImmunity.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbDeflection != null) { pbDeflection.sprite = null; pbDeflection.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbTimeStop != null) { pbTimeStop.sprite = null; pbTimeStop.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // s 後編追加
+            // 聖＋闇
+            if (pbPsychicTrance != null) { pbPsychicTrance.sprite = null; pbPsychicTrance.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbBlindJustice != null) { pbBlindJustice.sprite = null; pbBlindJustice.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbTranscendentWish != null) { pbTranscendentWish.sprite = null; pbTranscendentWish.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 聖＋火
+            if (pbFlashBlaze != null) { pbFlashBlaze.sprite = null; pbFlashBlaze.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+            // 聖＋水
+            if (pbSkyShield != null) { pbSkyShield.sprite = null; pbSkyShield.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbEverDroplet != null) { pbEverDroplet.sprite = null; pbEverDroplet.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 聖＋理
+            if (pbHolyBreaker != null) { pbHolyBreaker.sprite = null; pbHolyBreaker.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbExaltedField != null) { pbExaltedField.sprite = null; pbExaltedField.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbHymnContract != null) { pbHymnContract.sprite = null; pbHymnContract.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 聖＋空
+            if (pbStarLightning != null) { pbStarLightning.sprite = null; pbStarLightning.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 闇＋火
+            if (pbBlackFire != null) { pbBlackFire.sprite = null; pbBlackFire.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbBlazingField != null) { pbBlazingField.sprite = null; pbBlazingField.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 闇＋水
+            // 闇＋理
+            if (pbWordOfMalice != null) { pbWordOfMalice.sprite = null; pbWordOfMalice.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbSinFortune != null) { pbSinFortune.sprite = null; pbSinFortune.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 闇＋空
+            if (pbDarkenField != null) { pbDarkenField.sprite = null; pbDarkenField.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbEclipseEnd != null) { pbEclipseEnd.sprite = null; pbEclipseEnd.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 火＋水
+            if (pbFrozenAura != null) { pbFrozenAura.sprite = null; pbFrozenAura.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 火＋理
+            if (pbEnrageBlast != null) { pbEnrageBlast.sprite = null; pbEnrageBlast.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbSigilOfHomura != null) { pbSigilOfHomura.sprite = null; pbSigilOfHomura.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 火＋空
+            if (pbImmolate != null) { pbImmolate.sprite = null; pbImmolate.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbPhantasmalWind != null) { pbPhantasmalWind.sprite = null; pbPhantasmalWind.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbRedDragonWill != null) { pbRedDragonWill.sprite = null; pbRedDragonWill.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 水＋理
+            if (pbStaticBarrier != null) { pbStaticBarrier.sprite = null; pbStaticBarrier.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAusterityMatrix != null) { pbAusterityMatrix.sprite = null; pbAusterityMatrix.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 水＋空
+            if (pbVanishWave != null) { pbVanishWave.sprite = null; pbVanishWave.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbBlueDragonWill != null) { pbBlueDragonWill.sprite = null; pbBlueDragonWill.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 理＋空
+            if (pbSeventhMagic != null) { pbSeventhMagic.sprite = null; pbSeventhMagic.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbParadoxImage != null) { pbParadoxImage.sprite = null; pbParadoxImage.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            // 動＋静
+            if (pbStanceOfDouble != null) { pbStanceOfDouble.sprite = null; pbStanceOfDouble.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 動＋柔
+            if (pbSwiftStep != null) { pbSwiftStep.sprite = null; pbSwiftStep.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbVigorSense != null) { pbVigorSense.sprite = null; pbVigorSense.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 動＋剛
+            if (pbRisingAura != null) { pbRisingAura.sprite = null; pbRisingAura.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 動＋心眼
+            if (pbOnslaughtHit != null) { pbOnslaughtHit.sprite = null; pbOnslaughtHit.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 動＋無心
+            if (pbSmoothingMove != null) { pbSmoothingMove.sprite = null; pbSmoothingMove.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAscensionAura != null) { pbAscensionAura.sprite = null; pbAscensionAura.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 静＋柔
+            if (pbFutureVision != null) { pbFutureVision.sprite = null; pbFutureVision.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 静＋剛
+            if (pbReflexSpirit != null) { pbReflexSpirit.sprite = null; pbReflexSpirit.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 静＋心眼
+            if (pbConcussiveHit != null) { pbConcussiveHit.sprite = null; pbConcussiveHit.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 静＋無心
+            if (pbTrustSilence != null) { pbTrustSilence.sprite = null; pbTrustSilence.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 柔＋剛
+            if (pbStanceOfMystic != null) { pbStanceOfMystic.sprite = null; pbStanceOfMystic.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 柔＋心眼
+            if (pbNourishSense != null) { pbNourishSense.sprite = null; pbNourishSense.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 柔＋無心
+            if (pbImpulseHit != null) { pbImpulseHit.sprite = null; pbImpulseHit.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 剛＋心眼
+            if (pbOneAuthority != null) { pbOneAuthority.sprite = null; pbOneAuthority.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 剛＋無心
+            // 心眼＋無心
+
+            // 武器特有BUFF
+            if (pbFeltus != null) { pbFeltus.sprite = null; pbFeltus.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbJuzaPhantasmal != null) { pbJuzaPhantasmal.sprite = null; pbJuzaPhantasmal.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbEternalFateRing != null) { pbEternalFateRing.sprite = null; pbEternalFateRing.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbLightServant != null) { pbLightServant.sprite = null; pbLightServant.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbShadowServant != null) { pbShadowServant.sprite = null; pbShadowServant.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAdilBlueBurn != null) { pbAdilBlueBurn.sprite = null; pbAdilBlueBurn.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbMazeCube != null) { pbMazeCube.sprite = null; pbMazeCube.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbShadowBible != null) { pbShadowBible.sprite = null; pbShadowBible.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbDetachmentOrb != null) { pbDetachmentOrb.sprite = null; pbDetachmentOrb.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbDevilSummonerTome != null) { pbDevilSummonerTome.sprite = null; pbDevilSummonerTome.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbVoidHymnsonia != null) { pbVoidHymnsonia.sprite = null; pbVoidHymnsonia.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            // 消耗品特有
+            if (pbSagePotionMini != null) { pbSagePotionMini.sprite = null; pbSagePotionMini.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbGenseiTaima != null) { pbGenseiTaima.sprite = null; pbGenseiTaima.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbShiningAether != null) { pbShiningAether.sprite = null; pbShiningAether.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbBlackElixir != null) { pbBlackElixir.sprite = null; pbBlackElixir.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbElementalSeal != null) { pbElementalSeal.sprite = null; pbElementalSeal.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbColoressAntidote != null) { pbColoressAntidote.sprite = null; pbColoressAntidote.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            // 集中と断絶
+            if (pbSyutyuDanzetsu != null) { pbSyutyuDanzetsu.sprite = null; pbSyutyuDanzetsu.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // 循環と誓約
+            if (pbJunkanSeiyaku != null) { pbJunkanSeiyaku.sprite = null; pbJunkanSeiyaku.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            // 最終戦ライフカウント
+            if (pbLifeCount != null) { pbLifeCount.sprite = null; pbLifeCount.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            // ヴェルゼ最終戦カオティックスキーマ
+            if (pbChaoticSchema != null) { pbChaoticSchema.sprite = null; pbChaoticSchema.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // e 後編追加
+
+            // 負の影響効果
+            CurrentPreStunning = 0;
+            CurrentStunning = 0;
+            CurrentSilence = 0;
+            CurrentPoison = 0;
+            CurrentTemptation = 0;
+            CurrentFrozen = 0;
+            CurrentParalyze = 0;
+            CurrentNoResurrection = 0;
+            CurrentSlow = 0; // 後編追加
+            CurrentBlind = 0; // 後編追加
+            CurrentSlip = 0; // 後編追加
+            CurrentNoGainLife = 0; // 後編追加
+            CurrentBlinded = 0; // 後編追加
+
+            // s 後編追加
+            battleResistStun = false;
+            battleResistSilence = false;
+            battleResistPoison = false;
+            battleResistTemptation = false;
+            battleResistFrozen = false;
+            battleResistParalyze = false;
+            battleResistNoResurrection = false;
+            battleResistSlow = false;
+            battleResistBlind = false;
+            battleResistSlip = false;
+            // e 後編追加
+
+            CurrentPoisonValue = 0; // 後編追加
+
+            DeadSignForTranscendentWish = false; // 後編追加
+
+            // 正の影響効果
+            CurrentSpeedBoost = 0; // 後編追加
+            CurrentBlinded = 0; // 後編追加
+            CurrentChargeCount = 0; // 後編追加
+            CurrentPhysicalChargeCount = 0; // 後編追加
+
+            // s 後編追加
+            CurrentPhysicalAttackUp = 0;
+            CurrentPhysicalAttackUpValue = 0;
+            CurrentPhysicalAttackDown = 0;
+            CurrentPhysicalAttackDownValue = 0;
+
+            CurrentPhysicalDefenseUp = 0;
+            CurrentPhysicalDefenseUpValue = 0;
+            CurrentPhysicalDefenseDown = 0;
+            CurrentPhysicalDefenseDownValue = 0;
+
+            CurrentMagicDefenseUp = 0;
+            CurrentMagicDefenseUpValue = 0;
+            CurrentMagicDefenseDown = 0;
+            CurrentMagicDefenseDownValue = 0;
+
+            CurrentMagicAttackUp = 0;
+            CurrentMagicAttackUpValue = 0;
+            CurrentMagicAttackDown = 0;
+            CurrentMagicAttackDownValue = 0;
+
+            CurrentSpeedUp = 0;
+            CurrentSpeedUpValue = 0;
+            CurrentSpeedDown = 0;
+            CurrentSpeedDownValue = 0;
+
+            CurrentReactionUp = 0;
+            CurrentReactionUpValue = 0;
+            CurrentReactionDown = 0;
+            CurrentReactionDownValue = 0;
+
+            CurrentPotentialUp = 0;
+            CurrentPotentialUpValue = 0;
+            CurrentPotentialDown = 0;
+            CurrentPotentialDownValue = 0;
+
+            CurrentStrengthUp = 0; // 後編追加
+            CurrentStrengthUpValue = 0; // 後編追加
+
+            CurrentAgilityUp = 0; // 後編追加
+            CurrentAgilityUpValue = 0; // 後編追加
+
+            CurrentIntelligenceUp = 0; // 後編追加
+            CurrentIntelligenceUpValue = 0; // 後編追加
+
+            CurrentStaminaUp = 0; // 後編追加
+            CurrentStaminaUpValue = 0; // 後編追加
+
+            CurrentMindUp = 0; // 後編追加
+            CurrentMindUpValue = 0; // 後編追加
+
+            CurrentLightUp = 0;
+            CurrentLightUpValue = 0;
+            CurrentLightDown = 0;
+            CurrentLightDownValue = 0;
+
+            CurrentShadowUp = 0;
+            CurrentShadowUpValue = 0;
+            CurrentShadowDown = 0;
+            CurrentShadowDownValue = 0;
+
+            CurrentFireUp = 0;
+            CurrentFireUpValue = 0;
+            CurrentFireDown = 0;
+            CurrentFireDownValue = 0;
+
+            CurrentIceUp = 0;
+            CurrentIceUpValue = 0;
+            CurrentIceDown = 0;
+            CurrentIceDownValue = 0;
+
+            CurrentForceUp = 0;
+            CurrentForceUpValue = 0;
+            CurrentForceDown = 0;
+            CurrentForceDownValue = 0;
+
+            CurrentWillUp = 0;
+            CurrentWillUpValue = 0;
+            CurrentWillDown = 0;
+            CurrentWillDownValue = 0;
+            // e 後編追加
+
+            // s 後編追加
+            CurrentResistLightUp = 0;
+            CurrentResistLightUpValue = 0;
+
+            CurrentResistShadowUp = 0;
+            CurrentResistShadowUpValue = 0;
+
+            CurrentResistFireUp = 0;
+            CurrentResistFireUpValue = 0;
+
+            CurrentResistIceUp = 0;
+            CurrentResistIceUpValue = 0;
+
+            CurrentResistForceUp = 0;
+            CurrentResistForceUpValue = 0;
+
+            CurrentResistWillUp = 0;
+            CurrentResistWillUpValue = 0;
+
+            CurrentAfterReviveHalf = 0;
+            CurrentFireDamage2 = 0;
+            CurrentBlackMagic = 0;
+
+            CurrentChaosDesperate = 0;
+            CurrentChaosDesperateValue = 0;
+
+            CurrentIchinaruHomura = 0;
+            CurrentAbyssFire = 0;
+            CurrentLightAndShadow = 0;
+            CurrentEternalDroplet = 0;
+            CurrentAusterityMatrixOmega = 0;
+            CurrentVoiceOfAbyss = 0;
+            CurrentAbyssWill = 0;
+            CurrentAbyssWillValue = 0;
+            CurrentTheAbyssWall = 0;
+
+            PoolLifeConsumption = 0;
+            PoolManaConsumption = 0;
+            PoolSkillConsumption = 0;
+            // e 後編追加
+
+            if (pbPreStunning != null) { pbPreStunning.sprite = null; pbPreStunning.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbStun != null) { pbStun.sprite = null; pbStun.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbSilence != null) { pbSilence.sprite = null; pbSilence.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbPoison != null) { pbPoison.sprite = null; pbPoison.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbTemptation != null) { pbTemptation.sprite = null; pbTemptation.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbFrozen != null) { pbFrozen.sprite = null; pbFrozen.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbParalyze != null) { pbParalyze.sprite = null; pbParalyze.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbNoResurrection != null) { pbNoResurrection.sprite = null; pbNoResurrection.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbSlow != null) { pbSlow.sprite = null; pbSlow.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+            if (pbBlind != null) { pbBlind.sprite = null; pbBlind.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+            if (pbSlip != null) { pbSlip.sprite = null; pbSlip.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+            if (pbNoGainLife != null) { pbNoGainLife.sprite = null; pbNoGainLife.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); } // 後編追加
+
+            // s 後編追加
+            if (pbPhysicalAttackUp != null) { pbPhysicalAttackUp.sprite = null; pbPhysicalAttackUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbPhysicalAttackDown != null) { pbPhysicalAttackDown.sprite = null; pbPhysicalAttackDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbPhysicalDefenseUp != null) { pbPhysicalDefenseUp.sprite = null; pbPhysicalDefenseUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbPhysicalDefenseDown != null) { pbPhysicalDefenseDown.sprite = null; pbPhysicalDefenseDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbMagicAttackUp != null) { pbMagicAttackUp.sprite = null; pbMagicAttackUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbMagicAttackDown != null) { pbMagicAttackDown.sprite = null; pbMagicAttackDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbMagicDefenseUp != null) { pbMagicDefenseUp.sprite = null; pbMagicDefenseUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbMagicDefenseDown != null) { pbMagicDefenseDown.sprite = null; pbMagicDefenseDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbSpeedUp != null) { pbSpeedUp.sprite = null; pbSpeedUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbSpeedDown != null) { pbSpeedDown.sprite = null; pbSpeedDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbReactionUp != null) { pbReactionUp.sprite = null; pbReactionUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbReactionDown != null) { pbReactionDown.sprite = null; pbReactionDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbPotentialUp != null) { pbPotentialUp.sprite = null; pbPotentialUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbPotentialDown != null) { pbPotentialDown.sprite = null; pbPotentialDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            if (pbStrengthUp != null) { pbStrengthUp.sprite = null; pbStrengthUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAgilityUp != null) { pbAgilityUp.sprite = null; pbAgilityUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbIntelligenceUp != null) { pbIntelligenceUp.sprite = null; pbIntelligenceUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbStaminaUp != null) { pbStaminaUp.sprite = null; pbStaminaUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbMindUp != null) { pbMindUp.sprite = null; pbMindUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            if (pbLightUp != null) { pbLightUp.sprite = null; pbLightUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbLightDown != null) { pbLightDown.sprite = null; pbLightDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbShadowUp != null) { pbShadowUp.sprite = null; pbShadowUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbShadowDown != null) { pbShadowDown.sprite = null; pbShadowDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbFireUp != null) { pbFireUp.sprite = null; pbFireUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbFireDown != null) { pbFireDown.sprite = null; pbFireDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbIceUp != null) { pbIceUp.sprite = null; pbIceUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbIceDown != null) { pbIceDown.sprite = null; pbIceDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbForceUp != null) { pbForceUp.sprite = null; pbForceUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbForceDown != null) { pbForceDown.sprite = null; pbForceDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbWillUp != null) { pbWillUp.sprite = null; pbWillUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbWillDown != null) { pbWillDown.sprite = null; pbWillDown.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            if (pbResistLightUp != null) { pbResistLightUp.sprite = null; pbResistLightUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistShadowUp != null) { pbResistShadowUp.sprite = null; pbResistShadowUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistFireUp != null) { pbResistFireUp.sprite = null; pbResistFireUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistIceUp != null) { pbResistIceUp.sprite = null; pbResistIceUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistForceUp != null) { pbResistForceUp.sprite = null; pbResistForceUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistWillUp != null) { pbResistWillUp.sprite = null; pbResistWillUp.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            if (pbAfterReviveHalf != null) { pbAfterReviveHalf.sprite = null; pbAfterReviveHalf.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbFireDamage2 != null) { pbFireDamage2.sprite = null; pbFireDamage2.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbBlackMagic != null) { pbBlackMagic.sprite = null; pbBlackMagic.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbChaosDesperate != null) { pbChaosDesperate.sprite = null; pbChaosDesperate.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbIchinaruHomura != null) { pbIchinaruHomura.sprite = null; pbIchinaruHomura.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAbyssFire != null) { pbAbyssFire.sprite = null; pbAbyssFire.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbLightAndShadow != null) { pbLightAndShadow.sprite = null; pbLightAndShadow.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbEternalDroplet != null) { pbEternalDroplet.sprite = null; pbEternalDroplet.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAusterityMatrixOmega != null) { pbAusterityMatrixOmega.sprite = null; pbAusterityMatrixOmega.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbVoiceOfAbyss != null) { pbVoiceOfAbyss.sprite = null; pbVoiceOfAbyss.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbAbyssWill != null) { pbAbyssWill.sprite = null; pbAbyssWill.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbTheAbyssWall != null) { pbTheAbyssWall.sprite = null; pbTheAbyssWall.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+
+            if (pbResistStun != null) { pbResistStun.sprite = null; pbResistStun.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistSilence != null) { pbResistSilence.sprite = null; pbResistSilence.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistPoison != null) { pbResistPoison.sprite = null; pbResistPoison.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistTemptation != null) { pbResistTemptation.sprite = null; pbResistTemptation.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistFrozen != null) { pbResistFrozen.sprite = null; pbResistFrozen.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistParalyze != null) { pbResistParalyze.sprite = null; pbResistParalyze.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistNoResurrection != null) { pbResistNoResurrection.sprite = null; pbResistNoResurrection.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistSlow != null) { pbResistSlow.sprite = null; pbResistSlow.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistBlind != null) { pbResistBlind.sprite = null; pbResistBlind.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbResistSlip != null) { pbResistSlip.sprite = null; pbResistSlip.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            // e 後編追加
+
+            // BUFFUP効果を解除
+            BuffStrength_BloodyVengeance = 0;
+            BuffAgility_HeatBoost = 0;
+            BuffIntelligence_PromisedKnowledge = 0;
+            BuffStamina_Unknown = 0;
+            BuffMind_RiseOfImage = 0;
+
+            BuffStrength_HighEmotionality = 0;
+            BuffAgility_HighEmotionality = 0;
+            BuffIntelligence_HighEmotionality = 0;
+            BuffStamina_HighEmotionality = 0;
+            BuffMind_HighEmotionality = 0;
+
+            BuffStrength_VoidExtraction = 0;
+            BuffAgility_VoidExtraction = 0;
+            BuffIntelligence_VoidExtraction = 0;
+            BuffStamina_VoidExtraction = 0;
+            BuffMind_VoidExtraction = 0;
+
+            // s 後編追加
+            BuffStrength_TranscendentWish = 0;
+            BuffAgility_TranscendentWish = 0;
+            BuffIntelligence_TranscendentWish = 0;
+            BuffStamina_TranscendentWish = 0;
+            BuffMind_TranscendentWish = 0;
+
+            BuffStrength_Hiyaku_Kassei = 0;
+            BuffAgility_Hiyaku_Kassei = 0;
+            BuffIntelligence_Hiyaku_Kassei = 0;
+            BuffStamina_Hiyaku_Kassei = 0;
+            BuffMind_Hiyaku_Kassei = 0;
+            // e 後編追加
+
+            // [食事効果は戦闘終了後も継続される] 後編追加
+            // buffStrength_Food = 0;
+            // buffAgility_Food = 0;
+            // buffIntelligence_Food = 0;
+            // buffStamina_Food = 0;
+            // buffMind_Food = 0;
+
+            actionDecision = false; // 後編追加
+            decisionTiming = 0; // 後編追加
+            currentInstantPoint = 0; // 後編追加 // 「コメント」初期直感ではMAX値に戻しておくほうがいいと思ったが、プレイしてみてはじめは０のほうが、ゲーム性は面白く感じられると思った。
+            realTimeBattle = false; // 後編追加
+            stackActivation = false; // 後編追加
+            stackActivePlayer = null; // 後編追加
+            stackTarget = null; // 後編追加
+            stackPlayerAction = PlayerAction.None; // 後編追加
+            stackCommandString = string.Empty; // 後編追加
+            //shadowStackActivePlayer = null; // 後編追加
+            //shadowStackTarget = null; // 後編追加
+            //shadowStackPlayerAction = PlayerAction.None; // 後編追加
+            //shadowStackCommandString = String.Empty; // 後編追加
+            BuffNumber = 0; // 後編追加
+
+            AmplifyPhysicalAttack = 0.0f; // 後編追加
+            AmplifyPhysicalDefense = 0.0f; // 後編追加
+            AmplifyMagicAttack = 0.0f; // 後編追加
+            AmplifyMagicDefense = 0.0f; // 後編追加
+            AmplifyBattleSpeed = 0.0f; // 後編追加
+            AmplifyBattleResponse = 0.0f; // 後編追加
+            AmplifyPotential = 0.0f; // 後編追加
+
+            currentLifeCountValue = 0; // 後編追加
+
+            reserveBattleCommand = String.Empty; // 後編追加
+            nowExecActionFlag = false; // 後編追加
+
+            if ((this.MainWeapon != null) && (this.MainWeapon.AfterBroken)) { brokenName = this.MainWeapon.Name; this.MainWeapon = null; }
+            if ((this.SubWeapon != null) && (this.SubWeapon.AfterBroken)) { brokenName = this.SubWeapon.Name; this.SubWeapon = null; }
+            if ((this.MainArmor != null) && (this.MainArmor.AfterBroken)) { brokenName = this.MainArmor.Name; this.MainArmor = null; }
+            if ((this.Accessory != null) && (this.Accessory.AfterBroken)) { brokenName = this.Accessory.Name; this.Accessory = null; }
+            if ((this.Accessory2 != null) && (this.Accessory2.AfterBroken)) { brokenName = this.Accessory2.Name; this.Accessory2 = null; }
+
+            if (this.MainWeapon != null) { this.MainWeapon.CleanUpStatus(); }
+            if (this.SubWeapon != null) { this.SubWeapon.CleanUpStatus(); }
+            if (this.MainArmor != null) { this.MainArmor.CleanUpStatus(); }
+            if (this.Accessory != null) { this.Accessory.CleanUpStatus(); }
+            if (this.Accessory2 != null) { this.Accessory2.CleanUpStatus(); }
         }
 
         internal double AmplifyMagicByEquipment(double damage, TruthActionCommand.MagicType type)

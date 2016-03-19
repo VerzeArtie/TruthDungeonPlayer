@@ -67,13 +67,14 @@ namespace DungeonPlayer
             SceneDimension.Go(src, Database.TruthBattleEnemy);
         }
 
-        public static void CallTruthStatusPlayer(string src, TruthBattleEnemy scene, bool onlySelectTrash)
+        public static void CallTruthStatusPlayer(string src, MotherForm scene, bool onlySelectTrash, string itemName)
         {
             GroundOne.OnlySelectTrash = onlySelectTrash;
+            GroundOne.CannotSelectTrash = itemName;
             GroundOne.LevelUp = false;
             GroundOne.UpPoint = 0;
             GroundOne.CumultiveLvUpValue = 0;
-            GroundOne.Parent_TruthBattleEnemy = scene;
+            GroundOne.ParentScene = scene;
             Application.LoadLevelAdditive(Database.TruthStatusPlayer);
         }
         public static void CallTruthStatusPlayer(string src)
@@ -82,7 +83,7 @@ namespace DungeonPlayer
             GroundOne.LevelUp = false;
             GroundOne.UpPoint = 0;
             GroundOne.CumultiveLvUpValue = 0;
-            GroundOne.Parent_TruthBattleEnemy = null;
+            GroundOne.ParentScene = null;
             SceneDimension.Go(src, Database.TruthStatusPlayer);
         }
         public static void CallTruthStatusPlayer(string src, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, Color color)
@@ -92,11 +93,19 @@ namespace DungeonPlayer
             GroundOne.UpPoint = upPoint;
             GroundOne.CumultiveLvUpValue = cumultivaLvUpValue;
             GroundOne.CurrentStatusView = color;
-            GroundOne.Parent_TruthBattleEnemy = null;
+            GroundOne.ParentScene = null;
             leveUp = false;
             upPoint = 0;
             cumultivaLvUpValue = 0;
             SceneDimension.Go(src, Database.TruthStatusPlayer);
+        }
+
+        public static void CallTruthSkillSpellDesc(MotherForm parent, string playerName, string commandName)
+        {
+            GroundOne.ParentScene = parent;
+            GroundOne.playerName = playerName;
+            GroundOne.SpellSkillName = commandName;
+            Application.LoadLevelAdditive(Database.TruthSkillSpellDesc);
         }
 
         public static void CallTruthEquipmentShop(string src)
@@ -107,13 +116,13 @@ namespace DungeonPlayer
         public static void CallTruthBattleSetting(string src)
         {
             GroundOne.CallBattleSettingFromBattleEnemy = false;
-            GroundOne.Parent_TruthBattleEnemy = null;
+            GroundOne.ParentScene = null;
             SceneDimension.Go(src, Database.TruthBattleSetting);
         }
         public static void CallTruthBattleSetting(string src, TruthBattleEnemy scene)
         {
             GroundOne.CallBattleSettingFromBattleEnemy = true;
-            GroundOne.Parent_TruthBattleEnemy = scene;
+            GroundOne.ParentScene = scene;
             Application.LoadLevelAdditive(Database.TruthBattleSetting);
         }
 
@@ -123,10 +132,6 @@ namespace DungeonPlayer
             Application.LoadLevel(dst);
         }
 
-        public static void Replace(string dst)
-        {
-            Application.LoadLevel(dst);
-        }
         public static void Back()
         {
             if (playbackScene.Count <= 0)

@@ -18361,7 +18361,7 @@ MonoBehaviour:
   groupYesnoSystemMessage: {fileID: 0}
   Filter: {fileID: 0}
   btnSpellSkillDescClose: {fileID: 470113196}
-  txtSpellSkillDescription: {fileID: 570826729}
+  txtSpellSkillDescription: {fileID: 0}
   filter: {fileID: 817938784}
   groupParentStatus: {fileID: 1422413442}
   groupParentBackpack: {fileID: 1827700284}

@@ -28,15 +28,18 @@ namespace DungeonPlayer
                 BookManual_Click();
             }
         }
-
-
+        
         public Text yesnoSystemMessage;
         public GameObject groupYesnoSystemMessage;
         public GameObject Filter;
+        public ItemBackPack GettingNewItem;
 
         public virtual void SceneBack()
         {
-            this.Filter.SetActive(false);
+            if (this.Filter != null)
+            {
+                this.Filter.SetActive(false);
+            }
         }
 
         public void NextScene()
@@ -99,6 +102,37 @@ namespace DungeonPlayer
         public virtual void BookManual_Click()
         {
             Application.LoadLevelAdditive(Database.TruthInformation);
+        }
+
+        public void GetNewItemAndBack()
+        {
+            GetNewItem(this.GettingNewItem);
+            SceneDimension.Back();
+        }
+
+        public bool GetNewItem(ItemBackPack newItem)
+        {
+            bool getOK = false;
+            if (GroundOne.MC.AddBackPack(newItem) && getOK == false)
+            {
+                getOK = true;
+            }
+            if (GroundOne.WE.AvailableSecondCharacter && getOK == false)
+            {
+                if (GroundOne.SC.AddBackPack(newItem))
+                {
+                    getOK = true;
+                }
+            }
+            if (GroundOne.WE.AvailableThirdCharacter && getOK == false)
+            {
+                if (GroundOne.TC.AddBackPack(newItem))
+                {
+                    getOK = true;
+                }
+            }
+
+            return getOK;
         }
     }
 }

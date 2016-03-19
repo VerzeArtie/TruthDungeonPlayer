@@ -306,7 +306,7 @@ namespace DungeonPlayer
 
             if (player.CurrentSyutyu_Danzetsu > 0)
             {
-                //result = result * PrimaryLogic.SyutyuDanzetsuValue(player);
+                result = result * PrimaryLogic.SyutyuDanzetsuValue(player);
             }
             if (player.CurrentOnslaughtHit > 0)
             {
@@ -1627,6 +1627,11 @@ namespace DungeonPlayer
         {
             return 3; // スキル回復
         }
+        // エターナル・ロイヤルリング値の算出
+        public static double EternalLoyalRingValue(MainCharacter player)
+        {
+            return 3; // スキル回復
+        }
         // クレイモア・オブ・ザックス値の算出
         public static double ClaymoreZuksValue(MainCharacter player)
         {
@@ -1715,8 +1720,14 @@ namespace DungeonPlayer
         // ジュザ・ファンタズマル・クロー値の算出
         public static double JuzaPhantasmalValue(MainCharacter player)
         {
-            return 1.00f + player.CurrentJuzaPhantasmalValue * 0.02f; // 蓄積カウンター１つに付き、上昇パーセンテージ率（1.00 + X)
+            return 1.00f + player.CurrentJuzaPhantasmalValue * 0.02f; // 蓄積カウンター１つに付き、上昇パーセンテージ（1.00 + X)
         }
+        // エターナル・フェイトリング値の算出
+        public static double EternalFateRingValue(MainCharacter player)
+        {
+            return 1.00f + player.CurrentEternalFateRingValue * 0.02f; // 蓄積カウンター１つに付き、上昇パーセンテージ（1.00 + X)
+        }
+
         // ライト・サーヴァント値の算出
         public static double LightServantValue(MainCharacter player)
         {
@@ -1937,28 +1948,104 @@ namespace DungeonPlayer
             return player.MaxLife / 20.0F;
         }
 
-        internal static double EternalFateRingValue(MainCharacter player)
+        //   元核！！！  //////////////////////////////////////////////////////////////////////////////////////////////////////
+        public static double SyutyuDanzetsuValue(MainCharacter player)
         {
-            // todo
-            return 0;
+            double result = 0;
+
+            // 心      [ 1 -   100 ] --> 1.0 ～  1.6 --> 1.0 + 0.6 * 心 /  100
+            //       [ 101 -   400 ] --> 1.6 ～  2.8 --> 1.6 + 1.2 * 心 /  300
+            //       [ 401 -  1000 ] --> 2.8 ～  4.6 --> 2.8 + 1.8 * 心 /  600
+            //       [1001 -  3500 ] --> 4.6 ～  7.0 --> 4.6 + 2.4 * 心 / 2500
+            //      [ 1001 - 10000 ] --> 7.0 ～ 10.0 --> 7.0 + 3.0 * 心 / 6500
+            if (0 <= player.TotalMind && player.TotalMind <= 100)
+            {
+                result = 1.0F + 0.6F * (double)(player.TotalMind - 0.0F) / 100.0F;
+            }
+            else if (101 <= player.TotalMind && player.TotalMind <= 400)
+            {
+                result = 1.6F + 1.2F * (double)(player.TotalMind - 100.0F) / 300.0F;
+            }
+            else if (401 <= player.TotalMind && player.TotalMind <= 1000)
+            {
+                result = 2.8F + 1.8F * (double)(player.TotalMind - 400.0F) / 600.0F;
+            }
+            else if (1001 <= player.TotalMind && player.TotalMind <= 3500)
+            {
+                result = 4.6F + 2.4F * (double)(player.TotalMind - 1000.0F) / 2500.0F;
+            }
+            else if (3501 <= player.TotalMind && player.TotalMind <= 9999)
+            {
+                result = 7.0F + 3.0F * (double)(player.TotalMind - 3500.0F) / 6500.0F;
+            }
+
+            return result;
         }
 
-        internal static double EternalLoyalRingValue(MainCharacter player)
+        public static double JunkanSeiyakuValue(MainCharacter player)
         {
-            // todo
-            return 0;
+            double result = 0;
+
+            // 心      [ 1 -   100 ] -->  1.0 ～  3.0 -->  1.0 +  2.0 * 心 /  100
+            //       [ 101 -   400 ] -->  3.0 ～  7.0 -->  3.0 +  4.0 * 心 /  300
+            //       [ 401 -  1000 ] -->  7.0 ～ 13.0 -->  7.0 +  6.0 * 心 /  600
+            //       [1001 -  3500 ] --> 13.0 ～ 21.0 --> 13.0 +  8.0 * 心 / 2500
+            //      [ 1001 - 10000 ] --> 21.0 ～ 31.0 --> 21.0 + 10.0 * 心 / 6500
+            if (0 <= player.TotalMind && player.TotalMind <= 100)
+            {
+                result = 1.0F + 2.0F * (double)(player.TotalMind - 0.0F) / 100.0F;
+            }
+            else if (101 <= player.TotalMind && player.TotalMind <= 400)
+            {
+                result = 3.0F + 4.0F * (double)(player.TotalMind - 100.0F) / 300.0F;
+            }
+            else if (401 <= player.TotalMind && player.TotalMind <= 1000)
+            {
+                result = 7.0F + 6.0F * (double)(player.TotalMind - 400.0F) / 600.0F;
+            }
+            else if (1001 <= player.TotalMind && player.TotalMind <= 3500)
+            {
+                result = 13.0F + 8.0F * (double)(player.TotalMind - 1000.0F) / 2500.0F;
+            }
+            else if (3501 <= player.TotalMind && player.TotalMind <= 9999)
+            {
+                result = 21.0F + 10.0F * (double)(player.TotalMind - 3500.0F) / 6500.0F;
+            }
+
+            return result;
         }
 
-        internal static int JunkanSeiyakuValue(MainCharacter player)
+        public static double OraOraOraaaValue(MainCharacter player)
         {
-            // todo
-            return 0;
-        }
+            double result = 0;
 
-        internal static int OraOraOraaaValue(MainCharacter player)
-        {
-            // todo
-            return 0;
+            // 心      [ 1 -   100 ] -->   1.0 ～  12.0 -->  1.0 + 11.0 * 心 /  100
+            //       [ 101 -   400 ] -->  12.0 ～  34.0 --> 12.0 + 22.0 * 心 /  300
+            //       [ 401 -  1000 ] -->  34.0 ～  67.0 --> 34.0 + 33.0 * 心 /  600
+            //       [1001 -  3500 ] -->  67.0 ～ 111.0 -->  67.0 + 44.0 * 心 / 2500
+            //      [ 1001 - 10000 ] --> 111.0 ～ 166.0 --> 111.0 + 55.0 * 心 / 6500
+            if (0 <= player.TotalMind && player.TotalMind <= 100)
+            {
+                result = 1.0F + 11.0F * (double)(player.TotalMind - 0.0F) / 100.0F;
+            }
+            else if (101 <= player.TotalMind && player.TotalMind <= 400)
+            {
+                result = 12.0F + 22.0F * (double)(player.TotalMind - 100.0F) / 300.0F;
+            }
+            else if (401 <= player.TotalMind && player.TotalMind <= 1000)
+            {
+                result = 34.0F + 33.0F * (double)(player.TotalMind - 400.0F) / 600.0F;
+            }
+            else if (1001 <= player.TotalMind && player.TotalMind <= 3500)
+            {
+                result = 67.0F + 44.0F * (double)(player.TotalMind - 1000.0F) / 2500.0F;
+            }
+            else if (3501 <= player.TotalMind && player.TotalMind <= 9999)
+            {
+                result = 111.0F + 55.0F * (double)(player.TotalMind - 3500.0F) / 6500.0F;
+            }
+
+            return result;
         }
     }
 }

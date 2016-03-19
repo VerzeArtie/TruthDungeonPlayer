@@ -273,7 +273,6 @@ namespace DungeonPlayer
         TruthEnemyCharacter ec3;
 
         MainCharacter currentPlayer;
-        ItemBackPack GettingNewItem;
 
         ClientSocket CS;
         public bool firstAction = false;
@@ -3542,30 +3541,6 @@ namespace DungeonPlayer
         }
 
 
-        public bool GetNewItem(ItemBackPack newItem)
-        {
-            bool getOK = false;
-            if (GroundOne.MC.AddBackPack(newItem) && getOK == false)
-            {
-                getOK = true;
-            }
-            if (GroundOne.WE.AvailableSecondCharacter && getOK == false)
-            {
-                if (GroundOne.SC.AddBackPack(newItem))
-                {
-                    getOK = true;
-                }
-            }
-            if (GroundOne.WE.AvailableThirdCharacter && getOK == false)
-            {
-                if (GroundOne.TC.AddBackPack(newItem))
-                {
-                    getOK = true;
-                }
-            }
-
-            return getOK;
-        }
 
         public enum MethodType
         {
@@ -5263,7 +5238,7 @@ namespace DungeonPlayer
         public void tapBattleSetting()
         {
             GroundOne.BattleEnemyFilter = this.Filter;
-            GroundOne.Parent_TruthBattleEnemy = this;
+            GroundOne.ParentScene = this;
             SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy, this);
         }
         public void tapPanel1()
@@ -7700,7 +7675,7 @@ namespace DungeonPlayer
                         else
                         {
                             // バックパックがいっぱいの場合ステータス画面で不要アイテムを捨てさせます。
-                            SceneDimension.CallTruthStatusPlayer(Database.TruthBattleEnemy, this, true);
+                            SceneDimension.CallTruthStatusPlayer(Database.TruthBattleEnemy, this, true, string.Empty);
                             return; // scenebackさせない
 
                         }
@@ -7710,12 +7685,6 @@ namespace DungeonPlayer
             }
 
             Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
-            SceneDimension.Back();
-        }
-
-        public void GetNewItemAndBack()
-        {
-            GetNewItem(this.GettingNewItem);
             SceneDimension.Back();
         }
 

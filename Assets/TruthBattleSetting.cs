@@ -279,7 +279,7 @@ namespace DungeonPlayer
         {
             if (GroundOne.CallBattleSettingFromBattleEnemy)
             {
-                GroundOne.Parent_TruthBattleEnemy.SceneBack();
+                GroundOne.ParentScene.SceneBack();
                 Application.UnloadLevel(Database.TruthBattleSetting);
             }
             else

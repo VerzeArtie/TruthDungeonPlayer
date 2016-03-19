@@ -693,7 +693,11 @@ namespace DungeonPlayer
                     mainMessage.text = "   " + this.nowMessage[this.nowReading];
                 }
 
-                if (current == MessagePack.ActionEvent.HomeTownBlackOut)
+                if (current == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
+                {
+                    GetItemFullCheck(GroundOne.MC, this.nowMessage[this.nowReading]);
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownBlackOut)
                 {
                     BlackOut();
                 }
@@ -872,7 +876,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    CallEquipmentShop();
+                    SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
                     mainMessage.text = "";
                 }
             }
@@ -887,7 +891,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    CallEquipmentShop();
+                    SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
                     mainMessage.text = "";
                 }
             }
@@ -906,7 +910,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    CallEquipmentShop();
+                    SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
                     mainMessage.text = "";
                 }
             }
@@ -936,7 +940,6 @@ namespace DungeonPlayer
             else
             {
                 SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
-                CallEquipmentShop();
                 mainMessage.text = "";
             }
             #endregion
@@ -985,11 +988,13 @@ namespace DungeonPlayer
         
         public void tapShop2()
         {
+            // todo
             mainMessage.text = "ラナ：ごめんなさい、まだ準備中なのよ。";
 
         }
         public void tapGate()
         {
+            // todo
             mainMessage.text = "アイン：まだゲートは開いてないみたいだな。";
         }
 	    public void tapInn() {
@@ -1276,25 +1281,26 @@ namespace DungeonPlayer
         {
             SceneDimension.CallTruthStatusPlayer(Database.TruthHomeTown, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
         }
-        // todo
-        private string PracticeSwordLevel(MainCharacter mainCharacter)
+
+        private void ShowActiveSkillSpell(MainCharacter player, string commandName)
         {
-            return "";
+            this.Filter.SetActive(true);
+            SceneDimension.CallTruthSkillSpellDesc(this, player.FirstName, commandName);
         }
 
-        // todo
-        private void ShowActiveSkillSpell(MainCharacter mainCharacter, string p)
+        private void GetItemFullCheck(MainCharacter player, string itemName)
         {
-        }
+            bool result = player.AddBackPack(new ItemBackPack(itemName));
+            if (result) return;
 
-        // todo
-        private void GetItemFullCheck(MainCharacter mainCharacter, string p)
-        {
-        }
-
-        // todo
-        private void CallEquipmentShop()
-        {
+            string cannotTrash = string.Empty;
+            if (itemName == Database.RARE_EARRING_OF_LANA ||
+                itemName == Database.RARE_TOOMI_BLUE_SUISYOU)
+            {
+                cannotTrash = itemName;
+            }
+            SceneDimension.CallTruthStatusPlayer(Database.TruthHomeTown, this, true, cannotTrash);
+            mainMessage.text = "";
         }
 
         // todo
