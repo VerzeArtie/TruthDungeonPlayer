@@ -55,18 +55,24 @@ namespace DungeonPlayer
             HomeTownGetItemFullCheck,
             HomeTownBlackOut,
             HomeTownTurnToNormal,
+            HomeTownBackToTown,
+            HomeTownButtonVisibleControl,
             HomeTownMorning,
             HomeTownNight,
             HomeTownFazilCastle,
+            HomeTownGoToKahlhanz,
+            HomeTownGotoFirstPlace,
             HomeTownCallRestInn,
             HomeTownCallRequestFood,
             HomeTownAvailableDuel,
             HomeTownButtonHidden,
             HomeTownMessageDisplay,
             HomeTownYesNoMessageDisplay,
+            HomeTownShowActiveSkillSpell,
             HomeTownCallSaveLoad,
             HomeTownCallDuel,
             HomeTownGotoRealDungeon,
+            HomeTownAddNewCharacter,
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
@@ -7980,6 +7986,7 @@ namespace DungeonPlayer
             messageList.Add("ガンツ：アインよ、精進しなさい。"); eventList.Add(ActionEvent.None);
         }
         #endregion
+
         #region "ハンナの宿屋店"
         public static void Message60000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -8457,6 +8464,2225 @@ namespace DungeonPlayer
 
             messageList.Add(Database.exitMessage4); eventList.Add(ActionEvent.HomeTownYesNoMessageDisplay);
         }
+        #endregion
+
+        #region "カールハンツ爵の訓練場"
+        public static void Message70001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、お願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：先生、質問。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：言ってみるが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　アインは背筋に異常な威圧感を感じている。　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（何だこの異常な威圧感は・・・ぐぬぬ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：どうした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああっとですね。火と理を融合させる所はなんとなく分かるんですが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：何となくという理解そのものが危うい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あっと、ハイ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：理とは、この世の【自然】、【原理】、【原則】そのものを指す。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：そして火とは、【浄化】、【エネルギー】、【進行】そのものを指す。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：原則を発展させるイメージを伴わせるには、その普遍的な概念を構築するが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ハイ。そうなんですけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：言ってみるが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　アインは背筋に異常な威圧感を感じている。　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（この威圧感を何とかしてくれ・・・ッグググ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：先と同じ展開。どうした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『火』って何かこう・・・まとまりが無くて、危なっかしいイメージじゃないですか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でも『理』ってのは何だろ・・・全てが一貫してビシーっと筋が通ってると言うか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それを融合させるって所が何となく・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『火』の動作は決してランダムではない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『火』の移りゆく現象、それは予め定められた軌跡を辿る現象である。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『理』とて同義。全ては決定づけられた事象を指す場合もあるが、"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：始まりの条件付けで結果は千差万別。それは『火』の動作そのものでもあるのだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その始まりとなるのは己自身、つまり貴君のイメージが始まりだと考えれば良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　す・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：すげぇ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生、やっぱアンタ天才ですよ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺は講義でこんなにもイメージが行き届くのは今まで味わったことが無いもんで・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、いやいやいや、ホンットどうもです！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：転送装置の時間だ、そろそろ帰るが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：（一度でここまで習得してくるとは。ランディスもさぞ楽しい事だろうな）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.EnrageBlast = true;
+
+            messageList.Add(Database.ENRAGE_BLAST); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message70002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、お願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：詠唱スタイルなんですけど、どうもしっくり来ないんですよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：違和感を感じるのは、『聖』『理』の相性が良く、厳格さのイメージが強すぎるが故。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君は本来、その気質を有しているはず、しかし普段は出していない。違うかな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・いや"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、いやいや。そんなんじゃないです、結構俺って適当派なんで"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ランディスの言ってた貴君の病気。無意識にまで入り込んでるようだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、あのボケ師匠にも言われた事はあるけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、そもそも今回のホーリー・ブレイカーは攻撃を攻撃として跳ね返すって事ですよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それだけの事だと思うし、俺自身がしっくり来てないだけです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『擬眼がギョロリと動きはじめた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我の前でそのような態度、取らぬ方が得策と心得よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　アインは背筋に更に尋常ではない威圧感を感じた。　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しっくり来ないってんじゃなくて・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：これは俺自身の問題。そう考えます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：己自身が一番把握しているのだろう。己自身に対して向きあうと良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ホーリー・ブレイカーは攻撃ダメージの分をそのまま相手に跳ね返す。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その分、自分自身もライフを消費する事には代わりはない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：もし、貴君が真の連携を求めているのであれば、今のスタイルは一旦捨てる事まで考え抜く事だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ・・・それは・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、はい。ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.HolyBreaker = true;
+
+            messageList.Add(Database.HOLY_BREAKER); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message70003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あの・・・最初いつも姿が見えないんですけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　アインは背筋に異常な威圧感を感じている。　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（何だこの威圧感は・・・ッグ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：どうした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うお！！　おぉぉっと！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ほんっと驚かせないでくださいよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：敵の気配ぐらい、事前に察知せよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でも、今みたいな雰囲気だと、どうしようもないですよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君は『動』と『剛』を兼ね備えておる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：周囲一体をひとまず切り払ってみたらどうだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：急にそんな事、できるわけが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その辺の素質、ランディスが買うだけの事はあるようだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインはいつものストレートスマッシュの構えを始めた』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（こっから・・・体の軸をブレさせず、意図的に力をこめれば・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おらよっと！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ヴオオォォン！！　　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『サークル・スラッシュ』とでも名づけておくがいい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（何だこれ・・・次々と・・・バカな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール師匠"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我は師匠ではない。　なんだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：今の俺のサークル・スラッシュって、まだまだですよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：当然だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：スンマセン、良かったらもっと講義をお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ずいぶんと殊勝な心がけ、よほど気に入ったようだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：知識の集約だけでここまで来るとは思ってませんでした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識の無い側からすれば、そう感じられる。当然の反応だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：これって知らない人は一生気付けないんじゃないですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：個人の態度次第だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・そうか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：・・・転送装置の時間切れが近い、今日は戻ると良いだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ！どうもありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.CircleSlash = true;
+
+            messageList.Add(Database.CIRCLE_SLASH); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message70004(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、お願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：聞きたい事はあるか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、じゃあ１個だけ。ええとですね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そもそもどう考えれば良いんですかね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その言い方からして、カウンターの概念を聞きたいのだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あっとそうです、スイマセン・・・そうそう、カウンターの概念です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：このバイオレント・スラッシュはカウンターされないスキルである。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ただ貴君は既に察したようだが、それは相手にヒントも与える。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうなんですよ。カウンターされないからそうする場合はケースが特定される。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：致死ダメージに至るか、またはどうしても物理ダメージに付随する何かを通したい時。でも・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その通り、それこそカウンターの格好の的。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：カウンターはされないが、ヒール魔法のスタックを積む事ぐらい容易であろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：また致死ダメージに至らないのであれば、相手は別の大事な手をそこで発動するだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：で、あるとすればカウンターされない事自体に大した効果は望めない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：カウンターとはどう考えれば良いか、と言うことになる。これで良いかね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ、そうそうそう！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジそうなんですよ！　ソコを教えてください！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君なりの解釈は持っているかね、あれば言ってみるが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そう・・・ですねえ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どうせこういった場合、相手もインスタント値を蓄えている。だとすれば"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ヒントらしいヒントを与えない行動。そのタイミングで放てばいい・・・かな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：筋は良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：やった！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：だが、及第点ではない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ッガク・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：圧力をかける行為、それがこのバイオレント・スラッシュの一番の使い道。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：圧力？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：致死に至らない状態から、このスキルを食らう側だとする。だとすれば"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、食らうしか無いって思うぐらいか・・・ダメージは食らわざるをえないとして・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そおおぉぉかあぁぁ、そうか！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：言ってみるが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：威力倍増！クリティカル！ゲイル・ウィンド！なんとでもやり方はあるじゃねぇか！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：つまりライフ満タンでも、それが激減すりゃそれ自体が脅威そのものって事だ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：致死に至るケースじゃなくて、むしろ始めっから窮地に追い込む事をすり込ませる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：要は、相手に圧力を事前に仕込める最大の手法ってワケだ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：及第点だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：本来、講義でこういった内容までは踏み込まないが、貴君のみ特別である。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、そうなんすね・・・ホントありがとうございます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：まだまだ奥は深い。自分なりのスキル使用構築のスタイルを築くと良いだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：そろそろ転送装置の時間だ、帰るが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.ViolentSlash = true;
+
+            messageList.Add(Database.VIOLENT_SLASH); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message70005(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、お願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：敵の注意を引くのには、個が全体を意識して初めて可能である。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：本スキル使用時、必ず自分にダメージもしくは負のＢＵＦＦ効果がかかるため、失敗は許されぬ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：確かに、こういうスキルは使い所を間違えたくは無いな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：どうした、言ってみるが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：敵が敵パーティにライフ回復させようとしてた場合はどうなる？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：対象外だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：自分対象の時、これを使うとどうなる？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：対象は変わらぬ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：対象を取らない全体系は自分だけを対象に変更することは？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：不可能だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：対象をこちらに向けた直後、敵が対象を選びなおす事は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：よほどの特例が無い限り、不可能だ。そのためのスキルでもある。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：サンキュー。すげぇ助かるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その抜け目の無さ。若い頃の我と類似する点がある。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マ、マジっすか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：しかし、発想の原点がまだまだ稚拙。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：とほほ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.RumbleShout = true;
+
+            messageList.Add(Database.RUMBLE_SHOUT); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message70006(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、お願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ただし、今回の講義は少々特殊なものとなる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どういう意味ですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君に逆属性に関する原論を今から徹底的に叩きこむ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：逆属性？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：では、その全てを今から教える。心して記憶せよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：本来、インスタント値の回復は生物の自然回復をベースとしている。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『ワード・オブ・アティチュード』この『水』と『理』による複合魔法はそれを可能とするもの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君の場合、『火』ベースであるため、『水』『理』は論理矛盾をきたす。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：しかし、『火』の逆となる『水』をもイメージの源泉とすれば可能となる。後に実行してみるが良かろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：論理矛盾・・・か・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：どうした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：論理ってのはイマイチ掴めない、そんな感じがしてさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どこまでが論理で、どこからが論理じゃないのか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生の言ってる事は受け入れられない内容じゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：むしろ、話自体は筋が根幹から通っていて、聞いててスっと入ってくるし、スゲェ分かる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だからこそ、論理矛盾って言われると、聞きたくなるんですよ。良いですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：言ってみるが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：矛盾したらソコで終わりじゃないのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：間違いなく終わりだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だったら逆属性そのものに無理があるんじゃ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：無理が生じる、至極当然。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ、マジかよ・・・じゃあ無理でしょう？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：人間は論理的矛盾に陥ったと実感した時、心的ダメージは非常に大きい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：誰にでも出来るモノではない。そういう事だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君は我の今までの講義を聞き、そして今もここにいる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え、まあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：であれば、貴君に資質はある。それを踏まえるがよい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインはいつもの表情を崩し、今までにない真剣な表情でこう告げた』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：正直、出来ないヤツも居るって事ですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：そういう事だ。不服か？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：不服とかじゃなくて、出来ないヤツはどうすればいいんですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：出来ない者は、そもそも我の前に現れる事なく、自然と流れ行く。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：・・・ふむ、なるほど。その動揺、自分以外の誰かを察しての事と見える。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君がココに初めて来た時もそうであったな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ちょうど良い、我の前にその者をココに連れて来ると良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っえ、良いんですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君のその異常なまでの心の気配り、それを直さねばなるまい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、気配りなんてしてないですよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：よい、今日はここまでだ。　知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、はい。いろいろ突っ込んだ所までスンマセン、ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.WordOfAttitude = true;
+
+            messageList.Add(Database.WORD_OF_ATTITUDE); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message70007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あら？・・・居ない・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや・・・また変な所から仕掛けてくる可能性も・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君にとっての第一逆属性『水』。では早速実践にうつるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うおおぉぉ！！　ビビびっくりするじゃないですか！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っと・・・実践？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：素質は十分に感じられる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：実践って実践ですよね！？　っしゃ、待ってました！　じゃあ早速！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：少し距離を取るとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッバシュ！！』（カールは一瞬で向こう側へ姿を移動させた！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（何だ今の・・・テレポートみたいな現象だったぞ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：今から貴君にフレイム・ストライクを乱射するとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：実践の中で、我の攻撃を受け止める魔法、新しく発見してみせよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っはい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：行くぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッボシュ！ッボボボシュ！！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ！？　っちょっちょちょッタンマ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドシュ！』（アインに一撃が入った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグハァ！！　ッグ、くそ・・・シャレになってねぇダメージだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：どうした。実践では誰も貴君のペース配分など待ってくれはせんぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッボシュ！ッボシュ！ッボボボシュ！！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ックソ・・・回避しきれねぇ、早すぎる！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドシュ！』（アインにもう一撃が入った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ！！　ッグ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ホラホラホラ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドシュ！』（アインにもう一撃が入った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ、ゲホ・・・ボケ師匠と同じノリじゃねぇか、クソ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：こんな中で・・・イメージなんか出来るかっつうの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：言っておくが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッボシュ！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君が死ぬまでこれは続く。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッボボボシュ！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドドドシュ！』（アインに追加で３撃が入った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ！！ッグアアァァァ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（駄目だ・・・避けようなんてのは無理がある・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ホーリー・ブレイカー！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドシュ！』（アインにもう一撃が入った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：残念だが、それでは魔法ダメージは防げぬ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドシュ！』（アインにもう一撃が入った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：イメージを飛躍させよ。貴君なら出来るはず。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドシュ！』（アインにもう一撃が入った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ！！・・・たく、ボケ師匠もそうだが、どうしてこう無茶苦茶な・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・イメージの飛躍ってどういう事だよ、逆属性の水で・・・？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドドドドシュ！』（アインにもう４撃入り、致命的なダメージとなった！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグアアァァァ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは意識を失う寸前で、あるイメージが浮かばせた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッム！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：では、トドメだ。　ラヴァ・アニヒレーション！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッズゴゴオォォォン・・・』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『・・・　・・・　・・・』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハァ・・・・ッハァ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：それでこそランディスの弟子と言えよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：魔法ダメージを０にする・・・スカイ・シールド・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ってか・・・もうダメ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君はこれで、火の逆属性となる『水』との複合をまた一つ習得した事となる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：また、本魔法は３回まで蓄積可能な魔法である。後で知識習得の時間を与えよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っちょ・・・倒れさせてください・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・ッバタ）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.SkyShield = true;
+
+            messageList.Add(Database.SKY_SHIELD); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message70008(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あの、ちょっとタンマ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：どうした。言ってみるが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：今日はちょっと実践は良いんで講義でお願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：よほど前回のが堪えたと見える。何ならいつでも実践相手になろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいやいや、ちょっホント勘弁・・・！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッフハハハ、楽しみにしているぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハハハ・・・（やっぱこの人敵なんじゃ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・つまりこれって、『火』と『水』って事ですよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その通りだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：完全なる逆属性同士の複合魔法となるため、詠唱形態は極めて特殊。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：加えて、イメージの源泉も始めから相反するモノをイメージする必要がある。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：本当にこんなのが可能なのかよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：魔法効果自体は、剣に氷を付与するのみ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：逆属性の基礎を習得した貴君なら造作も無きこと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そりゃ、そうかも知れませんけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：フレイム・オーラで剣に火属性を付与しておくじゃないですか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：で、後付けでこのフローズン・オーラも付与可能だって言ってるんですよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：可能かどうかは貴君次第。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：とほほ・・・ボケ師匠とノリが一緒だよなこういうトコ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あれ、まてよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：どうした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ボケ師匠もこういうの出来るって事ですよね？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：当然。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・待てよ待てよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッフハハハハ、ランディスに対する戦術構築か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そりゃ、そうですよ！　あのボケ師匠は何か反則っぽい事してる気がしてたんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、フローズン・オーラ絶対に使いこなしてやるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：で、フレイム・オーラも付けて、今度こそボコボコにしてやる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：一つ、忠告しておこう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：完全なる逆属性の融合のため、他の複合と比べて、詠唱コストは極めて高い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：マナの枯渇には気をつける事だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なるほど・・・了解！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.FrozenAura = true;
+
+            messageList.Add(Database.FROZEN_AURA); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message70009(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：本日からは、体術の方に専念する。心せよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、お願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：体術に関しては、ランディスから何度も訓練は受けているだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：嫌というほど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『静』と『心眼』による複合スキル『シャープ・グレア』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君の場合、『動』が基本性質であるため、『静』は逆の性質となる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：しかし、ランディスの実践訓練を積んでいる故、貴君にその懸念は不要。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そんなものなのか・・・嬉んでいいんだろうか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：この『シャープ・グレア』は身体への打撃に際し、魔法詠唱を失敗させる効果を持つ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：相手のインスタント行動時に魔法詠唱だった場合も、これでカウンターは可能？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：そういう事だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：加えて、沈黙効果が一定期間続く。魔法詠唱メインの者にとっては警戒すべきスキルとなろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：沈黙効果がある程度続くって事は・・・アンチ系のスキルって事になるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その通りだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ただし、ニゲイトに比べ消費コストは多い。スキルポイントのペース配分にも気を配るが良かろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.SharpGlare = true;
+
+            messageList.Add(Database.SHARP_GLARE); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message70010(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、お願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『静』の要素ってほんとこういうのが多いですよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：効果が見えないつうかなんつうか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：スタン、麻痺、凍結への耐性を持つのは戦術理論上では、極めて重要。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあそうですよね。こんなのが発動出来るとすれば・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：今から攻撃に転じるぜ、って言ってるようなモンだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：・・・フム。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君のその基本センス、高い先天性を有しているようだが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：それがランディスにとっては、格好の的とも言える。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君は考え方が非常に一貫しており、かつ、洗練されている故"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君の行動には乱れや揺らぎが発生しにくいため、我にとっては非常に掴みやすい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：本スキルは完全なる防御に徹するための戦術。そう捉えても良いだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：守ってても勝てなくないですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ガードスキルが何か別の主戦術を補うものであるとすれば。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：あるいは、多段戦術の一角を匂わせるためのダミー行動。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：更にあるとすれば、２ラインの戦術を交互に行うための布石であるとも考えられる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：確かにボケ師匠はいつも最初同じ格好のクセに、大概やり方が無茶苦茶だよな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうか・・・一つの行動に付き、より多くの選択肢を考慮しろって事ですよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その通りだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『静』か・・・防衛的戦闘スタイルとかもありそうだな・・・確かに・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.ReflexSpirit = true;
+
+            messageList.Add(Database.REFLEX_SPIRIT); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message70011(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、お願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：完全逆性質となる『動』と『静』、この複合においても極めて特殊。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：動作の一貫として、動へと転じる体型に加え、静の体型も乱してはならない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：体型のイメージは総じて動と静が相殺され、通常行動スタイルと何ら変わりは無くなる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：スキル消費を完全になくし、完全なる通常攻撃。インスタント行動も可能。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『ニュートラル・スマッシュ』、使いこなしてみると良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：完全なる・・・通常攻撃・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・しかし、これはどうなってるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え・・・っと・・・いや、待てよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインはいつもの表情を崩し、今までにない真剣な表情となった。』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・おいおい、っちょ、待ってくれよコレって・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：スキルポイントはペース配分が肝だ。それなのに、このスキルにはそれが無い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そういやFiveSeekerには、技の達人が居ましたよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：気づきが良いな。そう、彼「ヴェルゼ・アーティ」は好んでそれを多用していた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：技が上がれば、インスタント値の回復は早いって事は・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アインは異常なまでに冷や汗をかき始めた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オイオイ・・・おいおいおい！　冗談じゃねえぞコレ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：気づいた様だな。その通りだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：１ターンにおける直接攻撃回数が膨れ上がるじゃねえか！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ、そりゃ確かにインスタント行動中に、隙を見て何か入れられたら嫌だけどさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ってか、スキル消費ねえし、ほとんど任意のタイミングじゃねえか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その使用方法はほぼ無限。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君も今、それを身につけた事となる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：思う存分に使用すると良いだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カ、カール先生！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そのなんて言って良いか・・・ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君のポテンシャルは非常に高い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我の教えを必ず活かせるようになる事を期待する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：後は、ランディスとの実践訓練でもすると良いだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハ、ハイ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.MC.NeutralSmash = true;
+
+            messageList.Add(Database.NEUTRAL_SMASH); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpell);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message70012(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.Truth_CommunicationSinikia30DuelFail == false)
+            {
+                messageList.Add("アイン：っとと・・・着いたみたいだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：カール先生、居るか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・いねえかな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（しかし、何となくだが・・・)"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（気配はねえが、妙な威圧感が空気に漂ってやがる）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【【【　アインは威圧感の源泉を探り始めた。　】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：カール先生、居るんだろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（絶対にどこかにいる。この感覚、間違いねえ。）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『その瞬間、アインの目の前に３本のツララが突如発生した！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っげぇ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『アインはとっさに避けようとし・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ブルーバレットに続けて、ワード・オブ・アティチュード発動。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：続けて即座に、ブラック・ファイアだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『ッボゥ！！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッグハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『アインの魔法防御力が下げられた！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：食らった所、大変貴君には申し訳ないが、今から実践講義を行う。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：え、えええ！？　マジかよ！？　今既に戦闘中なんじゃねぇのかよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：貴君に"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：え？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：奥義『元核』の基礎を授けよう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：奥義？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッフ、ダーケン・フィールド！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッゲ！シマッた！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッフハハ、集中が切れておるようだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：オイオイオイ、どっちなんだよ、ックソ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：奥義『元核』は一朝一夕でどうにかなるものではない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：アウステリティ・マトリクス、発動。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っとぉ、そいつはスタンス・オブ・アイズでカウンターだ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：インスタントで、レッド・ドラゴン・ウィル。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『カール爵の【火】属性の魔法攻撃力が格段に上昇した！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っげぇ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッフハハ、このまま蹴散らさせてもらおう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っくそ、奥義の話はどうなったんだよ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：では、このままDUELを執り行う。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おいおいおい、こんな所からかよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッフハハハ、冗談だ。BUFF効果やライフ、マナなどは全て全快が基本ルールであるからな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッホ・・・（でもやっぱ、この人ムチャクチャだ・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ところで、ランディスは貴君に対し、かなり指導的な行動を取っているようだが、"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッゲェ・・・あれのどこが指導的なんだよ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ヤツは貴君に対して、甘すぎる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：そのような事では、到底、奥義【元核】は習得できないものと思え。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：実際、どうすりゃいいんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ふむ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：奥義【元核】とはその個々の本質そのものを指す。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：その個々の本質とは、本人にのみ知りうるものであって、他者が貴君に教えたり授けたりするものではない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ってことは・・・カール先生から教えてもらうってわけには行かないのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：そのとおりだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：うーん・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：だが、引き出すための指南、ある程度であれば可能である。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：やってみるかね、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おお！もちろんですよ、是非！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：で、どうすれば良いんですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：この我自ら、真剣勝負のDUELを貴君に申し込む。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っな！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【【【　アインは突如、背筋に異常な威圧感を感じ始めた　】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：DUELっつっても、さっき冗談って"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：貴君に今一度、問おう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：本気で示す戦闘術とは何かを。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：それってどういう意味だ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ランディスに聞く限り、貴君はあらゆる局面において"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：手加減、いわゆる手抜きを行っておる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いやいや、してねえって。DUELでは特にそのつもりだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：その心構え、我には筒抜けであることを知れ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：我の問いの意図は、理解はしておるだろう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：奥義を会得するかどうかは、あくまで貴君次第。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【【【　異常な威圧感は殺気へと変わり始める　】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：我は貴君を殺すつもりで行く。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：貴君も我を殺すつもりで挑むと良いだろう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：さもなくば、貴君はこの場で果てる。死あるのみだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（やっべぇ・・・マジで勝てそうにねえ・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（でも・・・やるしか・・・ねえ！！）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：すうぅぅぅ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・ふうぅぅぅ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：DUELで、手加減はしねえ。相手に対して失礼だからな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『アインはカールハンツに対して、無表情の顔付きでッスっと剣を構え始めた』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・行くぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：来るがいい。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：っとと・・・着いたみたいだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：カール先生。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：どうした。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：挑戦させてくれ、奥義『元核』の習得。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：挑む姿勢は認めよう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：だが、貴君が我を殺すつもりで来なければ、奥義習得の道は無いと思え。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、分かった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『アインはカールハンツに対して、無表情の顔付きでッスっと剣を構え始めた』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：DUEL・・・勝負だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：来るがいい"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(Database.DUEL_SINIKIA_KAHLHANZ); eventList.Add(ActionEvent.HomeTownCallDuel);
+        }
+ 
+        public static void Message70012_2(ref List<string> messageList, ref List<ActionEvent> eventList, bool result)
+        {
+            if ((result) ||
+                ((result == false) && (GroundOne.WE.Truth_CommunicationSinikia30DuelFailCount >= 3)))
+            {
+                // 勝った場合、次の会話へ
+                GroundOne.WE2.WinOnceSinikiaKahlHanz = true;
+                GroundOne.WE2.AvailableArcheTypeCommand = true;
+                GroundOne.MC.Syutyu_Danzetsu = true;
+                GroundOne.WE.availableArchetypeCommand = true;
+
+                if ((result == false) && (GroundOne.WE.Truth_CommunicationSinikia30DuelFailCount >= 3))
+                {
+                    messageList.Add("アイン：ッグアァ！！　・・・ッ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【【【　アインは壊滅的なダメージを喰らい、大量の血を吐きだした　】】】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ここまでのようだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ッゥ・・・ック！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：コ・・・ココだ！！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ッ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　それは　　　　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　一瞬の出来事　　　　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ッム！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　カールハンツ爵の瞬速の詠唱開始タイミング　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ワン・イムー・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　アイン・ウォーレンスは　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（見つけた・・・詠唱タイミング！！！）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　極限の状況の中　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ッ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　瞬間的なる時間停止にも等しい刹那　　』　　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ッラアアアァ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　ッドシュ・・・！！！　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ッグ・・・ム・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（だ、だめか・・・意識が・・・）"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("カール：ッ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　それは　　　　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っちぃ！！次がヤベェ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　一瞬の出来事　　　　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ッム！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　カールハンツ爵の瞬速の詠唱開始タイミング　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ワン・イムー・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　アイン・ウォーレンスは　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（スタティック・バリアからワン・イムーニティに見せかけ・・・ココ！！！）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　　極限の状況の中　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ッ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　瞬間的なる時間停止にも等しい刹那　　』　　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ッラアアアァ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『　　ッドシュ・・・！！！　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ッグ・・・ム・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ックソ、ハズれたか！　しまった！！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ヤベェ！！イムーニティからヴォルカニック・ウェイヴ連発が！！！"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("　　『　　・・・（ドサッ・・・）　　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『　　カールハンツの胴体はわずかな音と共に、その場に伏せた。　　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っえ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：カ、カール先生大丈夫ですか！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッフ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッフハハ、ッフハハハハハハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：え、えーと・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：我の負けだ。"); eventList.Add(ActionEvent.None);
+
+                if ((result == false) && (GroundOne.WE.Truth_CommunicationSinikia30DuelFailCount >= 3))
+                {
+                    messageList.Add("カール：DUELは終了だ、ひとまず回復呪文をかけておいてやろう。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("カール：ゲイルウィンド、そしてサークレッドヒール。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　『アインはほんのり回復した気がした』"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("カール：今の一撃、見事なり。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：今の一撃？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『　　カールハンツの胴体がそのまま浮き上がる様にしてもとの立ち姿勢に戻った。　　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：その様子では、自分自身で掴みきれておらぬ感じだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺、カール先生にそんな致命的な一撃を与えていましたか？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：紛れもなく。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いつ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：我が伏する直前に。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どんな風に？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：剣による斬り込み。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・俺自身が？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：その通りだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：お主が名付けると良い。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：え？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：奥義『元核』は人により千差万別。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：貴君自身が納得の行く名称をつけると良いだろう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：えーと・・・名称・・・名称・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何だろう・・・つっても、全然どうやったか思い出せないんだが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：集中・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　集中と　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：断絶"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：フム"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：『集中と断絶』で、どうかな？カール先生。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：貴君の気のゆくままで良かろう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アインは奥義【元核】『集中と断絶』を習得した！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                messageList.Add("アイン：なんかさ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：どうした。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：もっとこう、「やったぜ！！」とか「ついにきた！！！」って感触があると思ったんだが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：今は、全然と言っていいほど実感が無い・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・そんな実感だな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：本人にのみ、知覚可能な領域であり、本人にとっての唯一無二。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：本人にとって、五感では認識し得ない領域であり、本人の深淵に眠る心にのみ認識しうる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：その本人の心にのみコンタクトが取れた瞬間から発動が可能となる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：探り、導き出すのではなく、元から存在している心。それを貴君自身が体現させる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：奥義『元核』は、そういうものである。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・ああ・・・確かに。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何か、すげえ自然だ。理論としても、感情面からも自然だった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：しかし、カール先生を倒したってのがありえないぜ・・・当たった気がしなかったもんな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：カール先生さ、結構オーバーアクションで倒れてくれたんだろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：その通りだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：げ、マジかよ！　やっぱり、かすってた程度だったんだろ。っくそぉ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：もう教える事はない。そのまま帰ると良い。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そっか・・・何か名残惜しいけど・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：今日は本当、ありがとうございました！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：もうよい、行くがよい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：はい、どうもでした！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『アインは転送装置により町へと戻っていった。　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッグ・・・ッグホォ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『カールハンツはその場で大量の吐血をし、胴体から赤い線を大量に流し始めた！！　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッグ・・・ッムゥ・・・グ、ッグホ！ッゴホ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("？？？：大丈夫ですか？カールハンツ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッグ・・・貴様"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：フ・・・ファラか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッグ・・・ッゲホ、ッゴホ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：ウフフ、どうやら、かなり食い込まれたみたいですね（＾＾"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：セレスティアル・ノヴァ・エグゼ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『カールハンツの致命傷がみるみる回復し始めた』　"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッグ・・・ッフゥ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：はい、もう大丈夫だと思いますよ（＾＾"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：世話をかけた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：ひょっとして、私の回復呪文以外だったら、【死】だったのではありませんか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：笑止"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：どうやら当たりのようですね（＾＾"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：私も見ていましたけど、彼の斬り込み、相当なものでしたわ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ランディスが目を付ける理由。分からなくもない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：今の時点で【元核】によるダメージがあの威力となれば、おそらく。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：そうね、内容は直接攻撃を一撃だけだから。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：ウフフ、将来はきっと限りなく無限に近いダメージなりそうね（＾＾"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：よかったわね、本当に死ななくて（＾＾"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ッフハハハ、冗談が過ぎるのではないか、ファラ王妃。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ファラ：ウフフ、無理しないでくださいね、こちらも回復作業が大変ですから（＾＾"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：フム、肝に命じる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+
+                messageList.Add("　　『　アインは転送装置から町へと戻ってきて・・・　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っふうぅ・・・戻りっと・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っと、うわっとと！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『　アインは突如、足を崩してしまった。　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っと、クソ・・・なんでもねえ所で、変に足にきたな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・心なしか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（足に妙に力が入らねえ。）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（さっき発動した奥義は思ったより身体に負担が大きいみたいだな・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（こりゃあ、一日に出来て１回だな。連発はできそうもねえ。）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（使いどころは難しそうだ、気を付けないとな。）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：それはそうと・・・後でラナにも、奥義の話を伝えてやるとするか！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：ッグアァ！！　・・・ッ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【【【　アインは壊滅的なダメージを喰らい、大量の血を吐きだした　】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ここまでのようだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッゥ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：今の攻撃で、なお生き存えているのは、賞賛に値する。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・ッ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：このまま殺すのは惜しい、回復呪文をかけておいてやろう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：ゲイルウィンド、そしてサークレッドヒール。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　『アインはほんのり回復した気がした』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッグ・・・ッツ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("カール：貴君には素質が無かったと見える。そのまま帰るがよい。"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE.Truth_CommunicationSinikia30DuelFail = true;
+                GroundOne.WE.Truth_CommunicationSinikia30DuelFailCount++;
+
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+            }
+        }
+        public static void Message70013(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.Truth_CommunicationSinikia31 = true;
+            GroundOne.WE.alreadyCommunicateCahlhanz = true;
+            GroundOne.WE.AlreadyCommunicateFazilCastle = true;
+
+            messageList.Add("アイン：よし、転送装置ゲートに着いたぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：確か、この辺りの木の枝よ・・・えっとね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っあ、あったわ、コレね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どうみても普通の枝だけどな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：単なる枝だったら少し曲がるぐらいでしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、そうだけどな。無理にヘシ折るなよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、失礼ね。植物系はバカアインみたいに頑丈じゃないんだから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（俺だったらヘシ折るつもりなのか・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っよっと♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【転送装置ゲートが青白く光り始めた！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【・・・ゥゥゥブゥヴウウゥゥゥン・・・】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッホラ、見て見て！　あたりでしょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：へえ、何か紋様が少しだけ変わってるな。すげぇじゃねえか！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：これで多分ファージル宮殿へ通じるゲートになった筈よ、行ってみましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっしゃ、それじゃ早速行くか！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【アインとラナは転送装置ゲートへと足を運んだ・・・】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【その瞬間だった】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBlackOut);
+
+            messageList.Add("　　　【・・・ッパキイィィィンン・・・】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ッゲ、なんだ今の音！！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【イィィィンン・・・】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（な！？　何だ大丈夫なのかよ、この転送！？）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【アインは突如、転送ゲートから放り出された！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGotoFirstPlace);
+
+            messageList.Add("アイン：ッイデ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッツツツ・・・何かムチャクチャな転送だったな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：って、どこなんだよ、ココは・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　その時、一つの風がアインの全体へ触れた。そんな気がした。　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：気のせいか"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『アイン君。　　始めまして。　　だね。』　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　その時、アインは自分が死体となるのを直感で感じた。　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッな！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　アインは【直感】し、即座に後ろへ振り向き、剣を突っ立てた。　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("？？？：ようこそ、ファージル宮殿周辺のエスリミア草原区域へ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　しかし、後ろには既に人の気配のみが存在するだけだった。　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ッバ・・・馬鹿な！！！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　アインは冷え切った汗を拭えないまま、死に対する激しい葛藤を続けている。　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・追従しきれねえ・・・ウソだろ！？）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("？？？：アイン君、すみません、そんなに警戒しなくても良いですよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　一つの優しい風がまた、アインの全体へ触れた。　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("？？？：ボクの名はVerze Artie。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　声が先に届き ＞＞＞    "); eventList.Add(ActionEvent.None);
+
+            messageList.Add("？？？：よろしくね、アイン君。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　そしてようやく、アインに彼を目視する権利が与えられた。　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：で・・・伝説のFiveSeeker、ヴェルゼ・アーティ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：その呼び名は止めてください。単純にヴェルゼで構いませんよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ど、どこなんだココは！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：先ほども述べましたが、ファージル宮殿周辺のエスリミア草原区域です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　アインは少しずつ、死の直感が無くなっていくのを感じた。　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：エスリミア草原区域・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ファージル南街道の少し右に行ったあの辺りか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・あれ！？　ラナはどこに行ったんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：彼女でしたら、あちらで休息の寝息を立てていますよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：転送装置からの脱出時、少し強い圧力が加わったみたいですね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だ、大丈夫なのかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ええ、命に問題はありません。軽い気絶をしただけの様です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハアアァァァ・・・・まいったぜ、ホント。焦らせるなよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まったく、ラナの奴はたまに変な所に首を突っ込もうとするから・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ところで、どうしてココへ来ようと考えたのですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、師匠が転送装置の前で、奇妙な枝を触ってるのをラナが目撃してだな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それでココに来ちまったってわけだ。。。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っと、あ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っす、スミマセン！　何か軽い口調で喋ってしまって！　申し訳ないです！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：いや、気にしないでください。アイン君の事はオル・ランディスから聞いていますから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ッハハハ・・・そうなんだ。いやいや、でも本当にすみません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ところで、アイン君。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、なんでしょう？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　その時、アインは　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　再び、得たいの知れない死の直感を全体で感じ始めた！　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ックソ・・・何だこの感触は！？）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（この人から敵意は全くと言っていいほど感じ取る事ができない。これは確かだ。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（なのに、何故か死の感触が強く迫ってくる・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（いつ俺の後ろを取ってくるか分からねえ・・・そんな恐怖だ。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：実は、オル・ランディスから依頼されている事があります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ・・・あの師匠からですか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まさか、地獄のトレーニングとか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：はい、その通りです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ゲゲェ！　マジかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っとと、言葉がつい・・・すいません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：本当に気にしなくて良いですよ、いつも通りの感覚で喋ってください。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：そうでないと、本当のアイン君を確認出来ませんからね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああぁ・・・了解了解。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、お言葉に甘えて。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：で、トレーニングってのはどういうのをやるつもりなんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：簡単ですよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ボクとDUEL勝負と行きませんか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え！いきなりDUELですか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：はい、よろしくお願いしたいと思います。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ウ・・・ヴ～ン・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：い、いやいや。了解です！よろしくお願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ありがとうございます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：それでは早速。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、っちょっとタンマ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：はい、なんでしょう？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ッホ・・・ヴェルゼさんはちゃんと待ってくれるんだな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：この勝負、勝ち負けに応じて何か発生するのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：いいえ、特に何もありませんよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：純粋な腕試し、それだけです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうか、まあDUELは元々そういうもんだしな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、オーケーオーケー！　いつでも良いぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：では、始めるとしましょう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：３"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：２"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：１"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.VERZE_ARTIE); eventList.Add(ActionEvent.HomeTownCallDuel);
+        }
+
+        public static void Message70013_2(ref List<string> messageList, ref List<ActionEvent> eventList, bool result)
+        {
+            if (result)
+            {
+                messageList.Add("アイン：っしゃ！このタイミングだ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：さて、どうでしょう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　アインが止めの一撃を繰り出したその瞬間！　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　ッバシュ！！　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っき！　消えただと！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【【【　アインは、異常なまでの死の直感と旋律を感じた！！　】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ヤッ、ヤベェ！！！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：全ては一つとなりて"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　・・・声のみが響き渡り・・・　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：その一つは全てへと拡散する。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　彼の存在がアインの視界に入った瞬間　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：【叡技】Ladarynte・Caotic・Schema！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　ファシュゥン・・・　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　刹那の静寂　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　一瞬だった　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：！！　ッしまっ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　声を発する間もなく　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　ッドシュッ　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッグ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　ッドシュ、ッドシュ！　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッグハ！　よ、避け！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　ッドッドドドシュ！　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッグ、ッゲホ！！ウグッ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　その攻撃数、方角、タイミング　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　無限連鎖　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　ッドシュドシュドシュッドシュドシュドシュドドドシュ！　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッグァ！！・・・ァ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：とどめです、ハアァァァァ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　ガシュッッ！　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッガハ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【【【アインの死がより確実なものとなっていく】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：この辺で十分でしょうか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：セレスティアル・ノヴァ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜アインの傷が癒えてゆく・・・＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッハァ・・ッハァ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：すみません、どうやら勝負ありのようですね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：くそ・・・勝ったと思ったんだけどな・・・ッハァ・・・ッハァ・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：ッグハ・・・ック・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：すみません、どうやら勝負ありのようですね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：くそ・・・負けちまったか・・・"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：て言うか、早すぎる・・・全く追いつける気がしねえ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：いえ、すみませんが、それには理由があります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ボクのアクセサリをお見せしましょう。コレです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：この光り方・・・ひょっとして！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：【天空の翼】　神々の遺産の一つです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ボケ師匠の極悪グローブと同じ類のヤツだよな！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：残念ながらそういう事になります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：この翼を付けている場合、【技】のパラメタが異常なまでに増幅されます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：そういう事ですから、公平さは欠けている事になります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・いや"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そういうのは関係ねえ、俺の負けだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：良い心構えです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、次までには絶対少しぐらいは追いつけるようになってやるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ハハハ、アイン君はきっと強くなりますよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：さて・・・それはさておき。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：少し以前から起きているのではないでしょうか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：？　なんの話だ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ラナさんは、すでに起きていますよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ウソ！？　なんでバレちゃってるのよ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おぉ、ラナ！　無事だったんだな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやあよかった良かった！　ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：一体いつ頃から起きていたんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインが空中散歩してる所からよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハイハイ、俺が倒された瞬間は見られたって事ね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でもアインも結構何ていうか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？なんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ん～、何でも無い。気のせいね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんだ、またソレかよ？　ハッキリ教えてくれよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：大した事じゃないわよ、何でも無いわ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ラナさんは、アイン君と同じ転送装置で来たんですよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：え！？え、えぇ・・・でもどうしてですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：アイン君とは少し離れた所で倒れていたので、少々気になっただけです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：アイン君と行き先が同じのため、同時に入ったのではありませんか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えぇ・・・アインとは同じタイミングで転送装置に入ったのは確かです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：同時に入るのは、あまり良くないのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：一般的には良いとはされていませんね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：転送装置は１人専用のため、２人同時の場合、到達地点予測は不可能です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ヤベ・・・次から１人ずつ入るか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ゴメンなさい、私もちょっと浮かれてたかも知れないわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：しかし、今回のようなケース自体、非常に稀だと思います。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：誰かが妙なトラップでも仕込まない限り、滅多なアクシデントはありません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ほんの少しタイミングをズラす程度で大丈夫だと思いますよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：分かりました、気をつけます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：さてと・・・この草原区域からファージル宮殿って・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：少し距離がありますね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：転送装置は私が少しメンテナンスをしておきますので"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：今回は一旦戻ってはいかがでしょうか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん・・・まあ、そうか。　どうする、ラナ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、一旦戻りましょ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうか、じゃあ戻るとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ヴェルゼさん、いろいろありがとうな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：いえ、こちらこそ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：それと気兼ねなく話すためにも、ヴェルゼと呼び捨てで構いませんよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何かFiveSeeker様相手に呼び捨ても気が引けるが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：始めに説明したはずです。オル・ランディスに報告しましょうか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやあ、今後ともよろしくな！ヴェルゼ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ハハハ、アイン君は本当に面白いですね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、本当に危ない所をありがとな、またどこかで会おう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私から先に行ってるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　ラナは転送装置で元の場所へと戻っていった　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っそれじゃ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：はい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownButtonVisibleControl);
+
+            messageList.Add("　　＜＜＜　アインは転送装置で元の場所へと帰ってきた　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っふぅ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【・・・ゥゥゥブゥヴウウゥゥゥン・・・】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　転送装置が再び光り出した　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・マジかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：たびたび驚かせてすみません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：そういえば、言い忘れていた事があります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、おお。えっと、なんでしょう？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：いや、これはお願いなのですが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：この私を、アイン君のパーティに加えてもらえませんか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なっ！！　マジで！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：はい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、どうするのよ。アイン？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何、ボケっとしてんのよ。答えなさいよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：や・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：やった！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：こちらこそ、お願いします！！！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：どうやらOKのようですね、ありがとうございます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ・アーティがパーティに加わりました。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：いやあ、でも本当に良いんですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：どういう意味でしょう？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺達とダンジョンに向かってもなんの得にもならないですよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ハハハハ、これはまた面白い事を言いますね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：アハハ・・・（面白いのか？）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：得するために、ダンジョンへ向かっているワケではありませんよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインみたいに皆そーいう事考えてると思ったら大間違いよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハイハイ・・・どうせ俺は生活資金源が目的ですよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ハハハ、そういう意味ではボクも似たようなものですよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ホラ見ろ。ヴェルゼだって同じようなもんだって言ってるじゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ホンット筋金入りバカね、アンタに合わせてるだけでしょうが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：目的は人によって違います。機会があればお話しますよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：さて、それではダンジョンへ向いましょう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっしゃ、よろしく頼むぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.VERZE_ARTIE_FULL); eventList.Add(ActionEvent.HomeTownAddNewCharacter);
+
+            GroundOne.WE.AvailableFazilCastle = true;
+        }   
+    
+        public static void Message70014(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.Truth_CommunicationSinikia41 = true;
+            GroundOne.WE.alreadyCommunicateCahlhanz = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あのすいません？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・カール先生？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・居るのはわかるんだが・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生、出てくてきれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ちょっと話があるんだ、頼む。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッバシュ！！』（カールは一瞬でその場に姿を現した！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：頼む、一生のお願いだ。教えてくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：言ってみるが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：FiveSeekerに【強さ】についてだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：【強さ】への問いかけか。申してみよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：FiveSeeker達はどうしてそこまでの強さを手に入れたんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：頼む、教えてくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：明確な解は無い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：全ては日々の積み重ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それは俺もラナもやってるつもりだ。どこが違う？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：練習量はおそらく同程度。その質もおそらく同じであろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：論点を変えさせてくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生は魔導部門の専門職だよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：いかにも。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあどうして、そこまでのスピードが出せるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：技に長けているヴェルゼとほぼ同クラスのスピードな気がするんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：アーティの事か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我自身が、奴ほどのスピードを引き出す事はない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、ヴェルゼほどじゃないにしてもですよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それにしたって、早すぎだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何か強さの秘密があるって事なんじゃないですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：基礎的な鍛練は怠る事は決してない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：スピードを上げる魔法も多種多様。それに加え基本的な速度を引きだす訓練は日々の積み重ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：そのことは貴君とて重々承知のはず。違うかね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ま、まあそりゃそうだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君の言う【強さ】という定義は、何を問おうとしておる？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：う～ん・・・そう言われるとな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：完全無欠な強さなど、この世には存在しない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：日々の鍛練、そして、幅広い知識の習得、加え・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：い、いやいやいや。ちょっとタイム！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そういう話は嫌と言うほど聞いてるんだ。そういう話じゃねえんだ。頼む！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：では、今一度申してみよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君の知りたい【強さ】とは何か？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生、ファイア・ボール２連発を一度見せてくれないか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：容易きこと、では行くぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　＜＜　カールは、その場で体位をほんの少しだけ変化させ・・・　＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッファイア・ボール"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　＜＜　ッボ、ッボシュウゥゥン・・・　＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：頼む！　もう一回だけ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッフ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッフハハハハ、貴君は本当に面白い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：良いだろう、では行くぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　＜＜　カールは、左肩の部分をほんの少しだけ揺らし始め・・・　＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッタ、タイム！そこのそれ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：っむ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：その時点で、詠唱は始まっているのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：まだだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っす、すまねえ・・・止めちまって。今度は止めねえから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：良い、ではもう一度行くぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　＜＜　カールは、右上の裾を微かに動作させ・・・　＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・毎回モーションが微妙に違う・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッファイア・ボール"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（やっぱり・・・詠唱タイミングで既に炎の塊が2つ出ている。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　＜＜　ッボ　＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（その瞬間に２つ同時ってワケでもねえから・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　＜＜　ッボシュウウウゥゥゥン・・・　＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ゲイル・ウィンドでもねえよな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ってことは、変なカラクリや小細工はねえな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（どうなってんだ・・・魔道士のくせに、このスピード・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：以上"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやぁ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：やっぱ、スゲェよ・・・信じられねえぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生、やっぱ強すぎだぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君の問いに対する解答は見つけられたか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやっ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ぜんっぜん分かんねぇ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：アーッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッフハハ、おかしな奴だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何かほんの少しでも掴めるかと思ったんですが、俺もまだまだです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いつか絶対に、ボケ師匠やカール先生に追いついて見せます！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識は全ての源、忘れるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい、どうもありがとうございました！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+        }
+
+        public static void Message70015(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("ラナ：あっ♪　ファージル宮殿に行ってみるの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そのつもりだ。なんだヤケに楽しそうだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：だって、憧れのエルミ様に会える可能性があるんだもの、楽しくなるわよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なに・・・そんなものなのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そりゃそうよ。女性なら誰でも憧れるわ。バカアインが知らなすぎなだけよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやまあ・・・そういう事は俺には確かに分からん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ、イイわよ分からなくても。っささ、行きましょ♪　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ったく、めずらしく機嫌が良いな。まあ行くとするか！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：”めずらしく”ないからね、いつも機嫌良いでしょ♪　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：わ、分かった分かった。ッハハハ・・・行こうぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastle);
+
+            messageList.Add("ラナ：じゃあ、明日の朝だからね。忘れないでよねホント。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、了解了解！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message70016(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("ラナ：じゃあ、ファージル宮殿に行きましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、国王様、王妃様とご対面だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、転送するぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastle);
+
+            messageList.Add("アイン：ふう、戻りっと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うーん・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんだ、どうかしたか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あれのどこが礼儀に当たるワケなのか、ちょっと教えてもらえないかしら？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、その件か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんて言うんだろうな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：要件だけを言ったとする。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：その要件に相手が応えてくれたとする。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うんうん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っで、要件は満たされるワケだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうよね、それが目的なんだから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それじゃつまんねえだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だから一旦要件は置いといて、次の機会にするのさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：なんで、そーなるのよ？　意味がわからないわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんでって言われてもな・・・何となくとしか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ダメ、全っ然わからないわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハハハ・・・悪い悪い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ、良いわ。あのサンディって人も堅苦しい感じだったし、これでちょうど良いのかも知れないわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあまあ、やり方なんて人それぞれさ。楽しく行こうぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：はああぁ・・・別にいいけど、次からは頼むわねホント。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：了解了解！　任せておけ！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message79999(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あのすいません？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：どうした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：すいません、ちょっと講義でもお願いしたいのですが、"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：今、教える事はない。　帰るがよい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハイ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+        }
+
         #endregion
 
         #endregion

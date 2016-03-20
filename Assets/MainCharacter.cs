@@ -2547,6 +2547,36 @@ namespace DungeonPlayer
         // e 後編追加
         #endregion
 
+        #region "元核"
+        protected bool syutyu_danzetsu = false;
+        public bool Syutyu_Danzetsu
+        {
+            get { return syutyu_danzetsu; }
+            set { syutyu_danzetsu = value; }
+        }
+
+        protected bool junkan_seiyaku = false;
+        public bool Junkan_Seiyaku
+        {
+            get { return junkan_seiyaku; }
+            set { junkan_seiyaku = value; }
+        }
+
+        protected bool ora_ora_oraaa = false;
+        public bool Ora_Ora_Oraaa
+        {
+            get { return ora_ora_oraaa; }
+            set { ora_ora_oraaa = value; }
+        }
+
+        protected bool shinzitsu_hakai = false;
+        public bool Shinzitsu_Hakai
+        {
+            get { return shinzitsu_hakai; }
+            set { shinzitsu_hakai = value; }
+        }
+        #endregion
+
         public string CurrentCommand { get; set; }
 
         //	public int CurrentProtection { get; set; }

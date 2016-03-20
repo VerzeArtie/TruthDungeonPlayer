@@ -297,10 +297,10 @@ namespace DungeonPlayer
             ssAvailable[147] = currentPlayer.StanceOfSuddenness;
             ssAvailable[148] = currentPlayer.SoulExecution;
 
-            //            if (currentPlayer.Name == Database.EIN_WOLENCE) ssAvailable[149] = currentPlayer.Syutyu_Danzetsu;
-            //            if (currentPlayer.Name == Database.RANA_AMILIA) ssAvailable[149] = currentPlayer.Junkan_Seiyaku;
-            //            if (currentPlayer.Name == Database.OL_LANDIS) ssAvailable[149] = currentPlayer.Ora_Ora_Oraaa;
-            //            if (currentPlayer.Name == Database.VERZE_ARTIE) ssAvailable[149] = currentPlayer.Shinzitsu_Hakai;
+            if (currentPlayer.FirstName == Database.EIN_WOLENCE) ssAvailable[149] = currentPlayer.Syutyu_Danzetsu;
+            if (currentPlayer.FirstName == Database.RANA_AMILIA) ssAvailable[149] = currentPlayer.Junkan_Seiyaku;
+            if (currentPlayer.FirstName == Database.OL_LANDIS) ssAvailable[149] = currentPlayer.Ora_Ora_Oraaa;
+            if (currentPlayer.FirstName == Database.VERZE_ARTIE) ssAvailable[149] = currentPlayer.Shinzitsu_Hakai;
 
             return ssAvailable;
         }

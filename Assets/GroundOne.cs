@@ -145,6 +145,7 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
+            MC.Level = 23;
             //GroundOne.WE2.AvailableMixSpellSkill = true;
             //GroundOne.WE2.AvailableArcheTypeCommand = true;
             ////GroundOne.WE.TruthCompleteArea2 && GroundOne.WE.TruthCommunicationCompArea2 && !GroundOne.WE.Truth_CommunicationThirdHomeTown
@@ -326,7 +327,7 @@ namespace DungeonPlayer
             MC.FrozenAura = true;
             MC.ChillBurn = true;
             MC.ZetaExplosion = true;
-            MC.EnrageBlast = true;
+            MC.EnrageBlast = false;
             MC.PiercingFlame = true;
             MC.SigilOfHomura = true;
             MC.Immolate = true;

@@ -11,7 +11,7 @@ namespace DungeonPlayer
         public static Color EpicPurple = new Color(115.0f / 255.0f, 0.0f, 177.0f / 255.0f);
         public static Color CommonGreen = new Color(0.0f, 0.7f, 0.0f);
         public static Color White = new Color(255, 255, 255);
-        public static Color Whitesmoke = new Color(245, 245, 245);
+        public static Color WhiteSmoke = new Color(245.0f / 255.0f, 245.0f / 255.0f, 245.0f / 255.0f);
         public static Color Gainsboro = new Color(220, 220, 220);
         public static Color LightGray = new Color(211, 211, 211);
         public static Color Silver = new Color(192, 192, 192);
