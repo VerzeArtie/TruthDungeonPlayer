@@ -60,6 +60,7 @@ namespace DungeonPlayer
             HomeTownButtonVisibleControl,
             HomeTownMorning,
             HomeTownNight,
+            HomeTownDuelSelect,
             HomeTownFazilCastle,
             HomeTownFazilCastleMenu,
             HomeTownTicketChoice,
@@ -9922,6 +9923,7 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
             }
         }
+ 
         public static void Message70013(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.Truth_CommunicationSinikia31 = true;
@@ -11294,7 +11296,24 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
         }
+        #endregion
 
+        #region "DUEL闘技場"
+        public static void Message80001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+
+        }
+             
+        public static void Message89999(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownDuelSelect);
+
+            messageList.Add("アイン：っしゃ、対戦相手でも確認しておこうか。"); eventList.Add(ActionEvent.None);
+        }
         #endregion
 
         #endregion

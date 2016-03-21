@@ -145,11 +145,7 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
-            //if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
-            //{
-            //    // 現実世界
-            //    if (!GroundOne.WE2.AutoSaveInfo)
-            WE2.RealWorld = true;
+            WE.AvailableDuelColosseum = true;
 
             //MC.Level = 23;
             ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
