@@ -24,8 +24,15 @@ namespace DungeonPlayer
         private string archiveAreaString2 = @"階";
         private string archiveAreaString3 = @"制覇";
 
+        private string MESSAGE_1 = @"DungeonPlayerクリアデータです。本編ではロードできません。";
+        private string MESSAGE_2 = @"保存が完了しました。";
+        private string MESSAGE_OVERWRITE = @"既にデータが存在します。上書きしてセーブしますか？";
+
         private bool nowAutoKill = false;
         private int autoKillTimer = 0;
+
+        private Text currentSaveText = null;
+        private string currentTargetFileName = string.Empty;
 
         // Use this for initialization
         public override void Start()
@@ -35,10 +42,14 @@ namespace DungeonPlayer
             MakeDirectory();
 
             Text newDateTimeButton = null;
+            Button newDateBackButton = null;
             DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
 
-            foreach (string filename in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
+            string[] filenameList = System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml");
+
+            for (int ii = 0; ii < filenameList.Length; ii++)
             {
+                string filename = filenameList[ii];
                 Debug.Log("filename: " + filename);
                 Text targetButton = null;
                 string targetString = System.IO.Path.GetFileName(filename);
@@ -87,13 +98,13 @@ namespace DungeonPlayer
                     continue; // 後編追加（11番のオートセーブを拡張したため）
                 }
 
-                // todo
                 string DateTimeString = targetString.Substring(3, 4) + "/" + targetString.Substring(7, 2) + "/" + targetString.Substring(9, 2) + " " + targetString.Substring(11, 2) + ":" + targetString.Substring(13, 2) + ":" + targetString.Substring(15, 2);
                 DateTime targetDateTime = DateTime.Parse(DateTimeString);
                 if (targetDateTime > newDateTime)
                 {
                     newDateTime = targetDateTime;
                     newDateTimeButton = targetButton;
+                    newDateBackButton = back_button[ii];
                 }
 
                 targetButton.text = targetString.Substring(3, 4) + "/" + targetString.Substring(7, 2) + "/" + targetString.Substring(9, 2) + " " + targetString.Substring(11, 2) + ":" + targetString.Substring(13, 2) + ":" + targetString.Substring(15, 2) + this.gameDayString + targetString.Substring(17, 3) + this.gameDayString2 + archiveAreaString;
@@ -115,12 +126,8 @@ namespace DungeonPlayer
 
             if (newDateTimeButton != null)// && GroundOne.WE2.RealWorld == false)
             {
-                // todo
-                //newDateTimeButton.BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "SaveLoadNew2.png");
-                //newDateTimeButton.Select();
-                //newDateTimeButton.Focus();
+                newDateBackButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNew2");
             }
-
 
             this.cam.backgroundColor = UnityColor.Aqua;
             if (GroundOne.ParentScene != null)
@@ -313,6 +320,27 @@ namespace DungeonPlayer
             }
         }
 
+        public override void ExitYes()
+        {
+            base.ExitYes();
+            if (this.yesnoSystemMessage.text == this.MESSAGE_OVERWRITE)
+            {
+                HideAllChild();
+                ExecSave(this.currentSaveText, this.currentTargetFileName, true);
+            }
+        }
+
+        public override void ExitNo()
+        {
+            base.ExitNo();
+            if (this.yesnoSystemMessage.text == this.MESSAGE_OVERWRITE)
+            {
+                HideAllChild();
+                this.currentSaveText = null;
+                this.currentTargetFileName = string.Empty;
+            }
+        }
+
         private void ExecSave(Text sender, string targetFileName, bool forceSave)
         {
             DateTime now = DateTime.Now;
@@ -323,21 +351,12 @@ namespace DungeonPlayer
                 {
                     if (forceSave == false) // if 後編追加
                     {
-                        // todo
-                        //using (YesNoReqWithMessage yerw = new YesNoReqWithMessage())
-                        //{
-                        //    yerw.StartPosition = FormStartPosition.CenterParent;
-                        //    yerw.MainMessage = "既にデータが存在します。\r\n上書きしてセーブしますか？";
-                        //    yerw.ShowDialog();
-                        //    if (yerw.DialogResult == DialogResult.No)
-                        //    {
-                        //        return;
-                        //    }
-                        //    else
-                            {
-                                System.IO.File.Delete(overwriteData);
-                            }
-                        //}
+                        this.currentSaveText = sender;
+                        this.currentTargetFileName = targetFileName;
+                        this.yesnoSystemMessage.text = this.MESSAGE_OVERWRITE;
+                        this.groupYesnoSystemMessage.SetActive(true);
+                        this.Filter.SetActive(true);
+                        return;
                     }
                     else
                     {
@@ -880,7 +899,13 @@ namespace DungeonPlayer
                     if (!((Text)sender).Equals(buttonText[7])) back_button[7].GetComponent<Image>().sprite = null;
                     if (!((Text)sender).Equals(buttonText[8])) back_button[8].GetComponent<Image>().sprite = null;
                     if (!((Text)sender).Equals(buttonText[9])) back_button[9].GetComponent<Image>().sprite = null;
-                    //((Text)sender).BackgroundImage = Image.FromFile(Database.BaseResourceFolder + "SaveLoadNew2.png"); // todo
+                    for (int ii = 0; ii < buttonText.Length; ii++)
+                    {
+                        if (sender.Equals(buttonText[ii]))
+                        {
+                            back_button[ii].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNew2");
+                        }
+                    }
                 }
 
                 // s 後編追加
@@ -889,14 +914,11 @@ namespace DungeonPlayer
 
                 if (!forceSave) // if 後編追加
                 {
-                    // todo
-                    //using (MessageDisplay md = new MessageDisplay())
-                    //{
-                    //    md.StartPosition = FormStartPosition.CenterParent;
-                    //    md.Message = "保存が完了しました。";
-                    //    md.AutoKillTimer = 1500;
-                    //    md.ShowDialog();
-                    //}
+                    this.systemMessage.text = this.MESSAGE_2;
+                    this.back_SystemMessage.SetActive(true);
+                    this.Filter.SetActive(true);
+                    this.autoKillTimer = 0;
+                    this.nowAutoKill = true;
                 }
             }
         }
@@ -905,22 +927,6 @@ namespace DungeonPlayer
         {
             if (this.nowAutoKill) { return; }
             Debug.Log("ExecLoad 0 " + DateTime.Now);
-            // todo
-            //mc = new MainCharacter();
-            //sc = new MainCharacter();
-            //tc = new MainCharacter();
-            //we = new WorldEnvironment();
-            //knownTileInfo = new bool[Database.DUNGEON_ROW * Database.DUNGEON_COLUMN];
-            //knownTileInfo2 = new bool[Database.DUNGEON_ROW * Database.DUNGEON_COLUMN];
-            //knownTileInfo3 = new bool[Database.DUNGEON_ROW * Database.DUNGEON_COLUMN];
-            //knownTileInfo4 = new bool[Database.DUNGEON_ROW * Database.DUNGEON_COLUMN];
-            //knownTileInfo5 = new bool[Database.DUNGEON_ROW * Database.DUNGEON_COLUMN];
-            //Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN]; // 後編追加
-            //Truth_KnownTileInfo2 = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN]; // 後編追加
-            //Truth_KnownTileInfo3 = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN]; // 後編追加
-            //Truth_KnownTileInfo4 = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN]; // 後編追加
-            //Truth_KnownTileInfo5 = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN]; // 後編追加
-
 
             XmlDocument xml = new XmlDocument();
             DateTime now = DateTime.Now;
@@ -947,13 +953,9 @@ namespace DungeonPlayer
 
                 if (completeareaData == "制")
                 {
-                    // todo
-                    //using (MessageDisplay md = new MessageDisplay())
-                    //{
-                    //    md.StartPosition = FormStartPosition.CenterParent;
-                    //    md.Message = "ダンジョンシーカー（後編）用クリアデータです。本編ではロードできません。";
-                    //    md.ShowDialog();
-                    //}
+                    this.systemMessage.text = MESSAGE_1;
+                    this.back_SystemMessage.SetActive(true);
+                    this.Filter.SetActive(true);
                     return;
                 }
                 targetFileName += yearData + monthData + dayData + hourData + minuteData + secondData + gamedayData + completeareaData + ".xml";
@@ -1383,7 +1385,6 @@ namespace DungeonPlayer
             }
             catch {}
 
-            // todo
             for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
             {
                 GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
@@ -1426,20 +1427,31 @@ namespace DungeonPlayer
             
             if (forceLoad == false)
             {
-                // todo
                 this.systemMessage.text = "ゲームデータの読み込みが完了しました。";
                 this.back_SystemMessage.SetActive(true);
+                this.autoKillTimer = 0;
                 this.nowAutoKill = true;
             }
 
-            //this.DialogResult = DialogResult.OK; // todo [ロード完了したら、画面再起動してホームタウン／ダンジョンなどのジャンプ先を決めなければならない] unity
             Debug.Log("ExecLoad end");
         }
         // move-out(e) 後編追加
 
+        public void HideAllChild()
+        {
+            this.groupYesnoSystemMessage.SetActive(false);
+            this.back_SystemMessage.SetActive(false);
+            this.Filter.SetActive(false);
+            this.systemMessage.text = "";
+        }
+
         public void tapExit()
         {
-            if (this.nowAutoKill)
+            if (this.systemMessage.text == this.MESSAGE_1 || this.systemMessage.text == this.MESSAGE_2)
+            {
+                HideAllChild();
+            }
+            else if (this.nowAutoKill)
             {
                 if (GroundOne.ParentScene != null)
                 {

@@ -4326,6 +4326,7 @@ MonoBehaviour:
   BuffPanel: {fileID: 0}
   BuffNumber: 0
   BuffElement: []
+  TextBattleMessage: {fileID: 0}
   BattleBarPos: 0
   BattleBarPos2: 0
   BattleBarPos3: 0
@@ -4645,10 +4646,11 @@ MonoBehaviour:
   hardestParry: 0
   stanceofSuddenness: 0
   soulExecution: 0
-  btnBaseCommand: {fileID: 0}
   BattleActionCommandList: []
   mainPanel: {fileID: 0}
+  MainObjectBack: {fileID: 0}
   MainObjectButton: {fileID: 0}
+  MainColor: {r: 0, g: 0, b: 0, a: 0}
   labelName: {fileID: 0}
   labelFullName: {fileID: 0}
   ActionLabel: {fileID: 0}
@@ -4661,19 +4663,13 @@ MonoBehaviour:
   labelCurrentInstantPoint: {fileID: 0}
   meterCurrentInstantPoint: {fileID: 0}
   labelCurrentSpecialInstant: {fileID: 0}
+  meterCurrentSpecialInstant: {fileID: 0}
   DamagePanel: {fileID: 0}
   DamageLabel: {fileID: 0}
   CriticalLabel: {fileID: 0}
   ActionButtonList: []
-  ActionButton1: {fileID: 0}
-  ActionButton2: {fileID: 0}
-  ActionButton3: {fileID: 0}
-  ActionButton4: {fileID: 0}
-  ActionButton5: {fileID: 0}
-  ActionButton6: {fileID: 0}
-  ActionButton7: {fileID: 0}
-  ActionButton8: {fileID: 0}
-  ActionButton9: {fileID: 0}
+  ActionKeyNum: []
+  IsSorceryMark: []
   Target: {fileID: 0}
   Target2: {fileID: 0}
 --- !u!1 &839302438

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Body><DateTime>3/13/2016 6:09:07 PM</DateTime>
+<Body><DateTime>3/21/2016 10:11:47 PM</DateTime>
 <TruthWorldEnvironment>
 <SeekerEnd>False</SeekerEnd>
 <SeekerEndingRoll>False</SeekerEndingRoll>
@@ -105,8 +105,8 @@
 <SelectFalseStatue>False</SelectFalseStatue>
 <DungeonEvent1>False</DungeonEvent1>
 <RealWorld>False</RealWorld>
-<AvailableArcheTypeCommand>True</AvailableArcheTypeCommand>
-<AvailableMixSpellSkill>True</AvailableMixSpellSkill>
+<AvailableArcheTypeCommand>False</AvailableArcheTypeCommand>
+<AvailableMixSpellSkill>False</AvailableMixSpellSkill>
 <PracticeSwordCount>0</PracticeSwordCount>
 <TruthKey5>False</TruthKey5>
 <TruthKey4>False</TruthKey4>
