@@ -145,7 +145,11 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
-            MC.Level = 23;
+            //MC.Level = 23;
+            ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
+            //WE.AvailableBackGate = true;
+            //WE.AvailableFazilCastle = true;
+
             //GroundOne.WE2.AvailableMixSpellSkill = true;
             //GroundOne.WE2.AvailableArcheTypeCommand = true;
             ////GroundOne.WE.TruthCompleteArea2 && GroundOne.WE.TruthCommunicationCompArea2 && !GroundOne.WE.Truth_CommunicationThirdHomeTown

@@ -27,6 +27,10 @@ namespace DungeonPlayer
         public GameObject systemMessagePanel;
         public Text systemMessage;
         public Camera cam;
+        public GameObject groupTicketChoice;
+        public Button[] selectTicketChoice;
+        public GameObject groupSelectCastleMenu;
+        public Button[] selectCastleMenu;
         public GameObject groupSelectGate;
         public Button[] selectGate;
         public GameObject groupSelectDungeon;
@@ -491,12 +495,6 @@ namespace DungeonPlayer
             }
 	    }
 
-        public void HideAllChild()
-        {
-            panelHide.gameObject.SetActive(false);
-            groupSelectDungeon.SetActive(false);
-        }
-
         public void CallDungeon(int targetDungeon)
         {
             if (targetDungeon == 1)
@@ -721,6 +719,8 @@ namespace DungeonPlayer
                 else if (current == MessagePack.ActionEvent.HomeTownBackToTown)
                 {
                     BackToTown();
+                    GroundOne.StopDungeonMusic();
+                    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownButtonVisibleControl)
                 {
@@ -742,8 +742,17 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownFazilCastle)
                 {
-                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FAZIL_CASTLE);
-                    this.imgBackground.sprite = Resources.Load<Sprite>(Database.BACKGROUND_FAZIL_CASTLE);
+                    GoToFazilCastle();
+                    GroundOne.StopDungeonMusic();
+                    GroundOne.PlayDungeonMusic(Database.BGM13, Database.BGM13LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownFazilCastleMenu)
+                {
+                    this.groupSelectCastleMenu.SetActive(true);
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownTicketChoice)
+                {
+                    this.groupTicketChoice.SetActive(true);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownGoToKahlhanz)
                 {
@@ -1102,7 +1111,6 @@ namespace DungeonPlayer
             #region "ファージル宮殿 or カールハンツ爵の訓練場を選択"
             if (GroundOne.WE.AvailableFazilCastle)
             {
-                // todo
                 this.Filter.SetActive(true);
                 this.groupSelectGate.SetActive(true);
             }
@@ -1113,8 +1121,24 @@ namespace DungeonPlayer
             }
         }
 
+        public void HideAllChild()
+        {
+            if (this.nowMessage.Count <= 0)
+            {
+                this.Filter.SetActive(false);
+                this.panelHide.gameObject.SetActive(false);
+                this.groupSelectCastleMenu.SetActive(false);
+                this.groupSelectDungeon.SetActive(false);
+                this.groupSelectGate.SetActive(false);
+                this.groupTicketChoice.SetActive(false);
+                this.groupYesnoSystemMessage.SetActive(false);
+            }
+        }
+
         public void CallFazilCastle()
         {
+            this.Filter.SetActive(false);
+            this.panelHide.gameObject.SetActive(false);
             groupSelectGate.SetActive(false);
             if (!GroundOne.WE.AvailableOneDayItem && GroundOne.WE.AlreadyCommunicateFazilCastle)
             {
@@ -1133,652 +1157,85 @@ namespace DungeonPlayer
                 MessagePack.Message70015(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
+            #endregion
+            #region "謁見開始"
             else if (!GroundOne.WE.Truth_Communication_FC32)
             {
                 MessagePack.Message70016(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
+            #region "お楽しみ抽選券"
+            else if (!GroundOne.WE.AvailableOneDayItem)
+            {
+                MessagePack.Message70017(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "２度目以降の通常入城"
             else
             {
-                mainMessage.text = "アイン：おし、ファージル宮殿にでも行ってみるか。";
-                System.Threading.Thread.Sleep(1000);
-                CallFazilCastle();
+                MessagePack.Message70018(ref nowMessage, ref nowEvent);
+                NormalTapOK();
             }
             #endregion
-            return;
-
-            // todo
-            //we.AlreadyCommunicateFazilCastle = true;
-
-            //this.buttonHanna.Visible = false;
-            //this.buttonDungeon.Visible = false;
-            //this.buttonRana.Visible = false;
-            //this.buttonGanz.Visible = false;
-            //this.buttonPotion.Visible = false;
-            //this.buttonDuel.Visible = false;
-            //this.buttonShinikia.Visible = false;
-            //ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FAZIL_CASTLE);
-
-            //GroundOne.StopDungeonMusic();
-            //GroundOne.PlayDungeonMusic(Database.BGM13, Database.BGM13LoopBegin);
-
-            //#region "初めての訪問"
-            //if (!we.Truth_Communication_FC31)
-            //{
-            //    we.Truth_Communication_FC31 = true;
-            //    UpdateMainMessage("アイン：っとぉ、ファージル宮殿到着っと。");
-
-            //    UpdateMainMessage("ラナ：アイン、あれを見て！　凄いわ♪");
-
-            //    UpdateMainMessage("アイン：ん？どれどれ？");
-
-            //    UpdateMainMessage("アイン：お、おおぉわ！　んだありゃ！！");
-
-            //    UpdateMainMessage("『　　宮殿前の城門ゲートには、一般市民が行列を生成している　　　』");
-
-            //    UpdateMainMessage("アイン：おいおい、こんな並んで、一体なにがあるんだよ！？");
-
-            //    UpdateMainMessage("ラナ：ファージル宮殿名物のリアル相談行列じゃない、知らないの？");
-
-            //    UpdateMainMessage("アイン：なんだそれ、知るわけが無いだろう。");
-
-            //    UpdateMainMessage("アイン：で、結局何で並んでるんだ？　教えてくれよ。");
-
-            //    UpdateMainMessage("ラナ：え、ちょっとホント知らないわけ？ハアァァァ・・・まあ良いけど");
-
-            //    UpdateMainMessage("ラナ：ファージル宮殿ではエルミ国王およびファラ王妃が民の声に直接耳を傾けるようにしているのよ。");
-
-            //    UpdateMainMessage("アイン：それで、この行列だってのか！？　一体どんだけ聞いてんだよ！？");
-
-            //    UpdateMainMessage("ラナ：朝方の7:00～12:00。そして12:30～18:00、最後に18:30～22:00までの三部構成ね。");
-
-            //    UpdateMainMessage("アイン：オイオイオイ、ちょっと待てよ！！　ほとんど休みねえじゃねえか！！");
-
-            //    UpdateMainMessage("ラナ：それだけ、民の事を念頭に置いているって事よね。正直コレは真似できないわ。");
-
-            //    UpdateMainMessage("アイン：はあぁ・・・マジかよ・・・ただただ感心するばかりだな。");
-
-            //    UpdateMainMessage("アイン：ってどうすんだよ？こんなの並んでいたらキリが無いぜ。");
-
-            //    UpdateMainMessage("ラナ：大丈夫よ。順番に関しては完全に予約制なの。ホラそこに記入リストがあるでしょ♪");
-
-            //    UpdateMainMessage("アイン：ん？何だそういうのがあるのか。早く言ってくれよ。");
-
-            //    UpdateMainMessage("アイン：おしっと・・・記入したぜ。");
-
-            //    UpdateMainMessage("ラナ：この量だとそうね・・・明日の朝方に行くといいわね。");
-
-            //    UpdateMainMessage("アイン：へぇ、よくそんな正確に分かるな？");
-
-            //    UpdateMainMessage("ラナ：当たり前じゃない。私結構昔の頃、ここに通うぐらい行ってたんだから♪");
-
-            //    UpdateMainMessage("アイン：ッゲ、マジかよ！？");
-
-            //    UpdateMainMessage("アイン：ったく、相当気に入ってんだな、エルミ王の事・・・");
-
-            //    UpdateMainMessage("ラナ：ップ・・・ッププ");
-
-            //    UpdateMainMessage("ラナ：あ～オカシイ、フフフ♪");
-
-            //    UpdateMainMessage("アイン：っな、何がおかしい？");
-
-            //    UpdateMainMessage("ラナ：フフフ、なんでも無いわよ♪　っさ、今回はここまでね、一旦帰りましょ♪");
-
-            //    UpdateMainMessage("アイン：そんなオカシい内容だったか・・・");
-
-            //    UpdateMainMessage("アイン：まあいい、確かにこれ以上やることもねえ。戻るとするか。");
-            //}
-            //#endregion
-            //#region "謁見開始"
-            //else if (!we.Truth_Communication_FC32)
-            //{
-            //    we.Truth_Communication_FC32 = true;
-
-            //    UpdateMainMessage("アイン：さて、着いたぜ。");
-
-            //    UpdateMainMessage("アイン：ええと予約順はどれどれ・・・");
-
-            //    UpdateMainMessage("アイン：っお、本当だ。後少しで俺達の番だな。");
-
-            //    UpdateMainMessage("ラナ：っでしょ♪");
-
-            //    UpdateMainMessage("アイン：でも、完全予約制ならここまでして並ぶ必要はねえんじゃねえのか？");
-
-            //    UpdateMainMessage("ラナ：予約順序で自分の順番が来た時、該当の人が居なかった場合は、今並んでる人が割り込みで謁見する事が許可されてるのよ。");
-
-            //    UpdateMainMessage("アイン：なるほど、じゃあ重要な要件を抱え込んでる人は、並んでいる方が謁見までの時間が短縮される場合があるって事か。");
-
-            //    UpdateMainMessage("ラナ：そうね。あと、割り込みが１グループ入るから、その分だけ予約時間帯が大幅にズレる事もなくなるわけよ。");
-
-            //    UpdateMainMessage("アイン：そこまで計算してのルールってわけか・・・ホントスゴすぎだな・・・");
-
-            //    UpdateMainMessage("　　【近衛兵：アイン・ウォーレンス！　アイン・ウォーレンスはこの場に居るか！！】");
-
-            //    UpdateMainMessage("アイン：おっと、呼ばれたみたいだ。行かなくちゃな！");
-
-            //    UpdateMainMessage("アイン：衛兵のオッサン！俺だオレ！　今そっちに行くぜ！");
-
-            //    UpdateMainMessage("　　【近衛兵：国王、王妃に対し、失礼の無きよう最善の心得を持って謁見に望まれたし！！】");
-
-            //    UpdateMainMessage("アイン：っしゃ、了解了解！！");
-
-            //    UpdateMainMessage("アイン：じゃあ行こうぜ、ラナ。");
-
-            //    UpdateMainMessage("ラナ：ええ、楽しみよね♪");
-
-            //    UpdateMainMessage("　　　『　謁見の間にて・・・　』");
-
-            //    UpdateMainMessage("アイン：へえ・・・意外と普通の部屋だな。もっと豪華絢爛なトコかと思ったが。");
-
-            //    UpdateMainMessage("ラナ：民との親近感を得るため、意図的にこの部屋の雰囲気を作ってるのよ。");
-
-            //    UpdateMainMessage("アイン：マジかよ・・・そこまでするのか。");
-
-            //    UpdateMainMessage("ラナ：っあ、ホラ来たわ！　っ静かに！");
-
-            //    UpdateMainMessage("アイン：・・・（ドキドキ・・・）");
-
-            //    UpdateMainMessage("国王エルミ：アイン・ウォーレンスとラナさんだね。よろしく。");
-
-            //    UpdateMainMessage("王妃ファラ：エルモアの紅茶を煎じておいたわ。良ければどうぞ。");
-
-            //    UpdateMainMessage("ラナ：あ、ありがとうございます♪　遠慮なく♪");
-
-            //    UpdateMainMessage("ラナ：エルミ様は、今日も一段とカッコイイですね♪　元気でやってますか？");
-
-            //    UpdateMainMessage("国王エルミ：ハハハ、ラナさんはいつもそんな調子だな、このとおり元気でやってるよ。");
-
-            //    UpdateMainMessage("ラナ：ファラ様も、もーホント可愛すぎです。私いつもファラ様を参考にしてるんですよ♪");
-
-            //    UpdateMainMessage("王妃ファラ：ウフフ、ありがとう。");
-
-            //    UpdateMainMessage("ラナ：あっ、要件はですね。ソコにボーっと突っ立っているバカアインが言いますので聞いてください♪");
-
-            //    UpdateMainMessage("アイン：・・・っな・・・");
-
-            //    UpdateMainMessage("アイン：なんでそんな日常会話っぽいんだよ！？");
-
-            //    UpdateMainMessage("国王エルミ：民と会話する時は、この調子で喋る方が一番意見を引き出しやすいからね。");
-
-            //    UpdateMainMessage("ラナ：エルミ様は、一般日常会話に関しては上級クラスの資格を習得してるのよ。ホント凄いわよね。");
-
-            //    UpdateMainMessage("アイン：そっ・・・そんなのがあるのか・・・");
-
-            //    UpdateMainMessage("アイン：ってか、やっぱりあれか。お硬いセリフも喋れる上であえて日常会話っぽくしてると・・・？");
-
-            //    UpdateMainMessage("国王エルミ：まあ、そんな所だね。気にしないで良いよ本当に。");
-
-            //    UpdateMainMessage("王妃ファラ：ウフフ、では要件をどうぞ、アインさん（＾＾）");
-
-            //    UpdateMainMessage("アイン：あ、あぁ・・・じ、じゃあええと・・・");
-
-            //    UpdateMainMessage("ラナ：ッコラ、ちょっと！？　何どぎまぎしてるのよ、もう。");
-
-            //    UpdateMainMessage("ラナ：ッビシっと要件を言いなさいよね。スパスパっと。");
-
-            //    UpdateMainMessage("アイン：お、おう。じゃあ、改めて。");
-
-            //    UpdateMainMessage("アイン：要件は簡単だ。");
-
-            //    UpdateMainMessage("アイン：討伐の依頼は入ってないか？");
-
-            //    UpdateMainMessage("国王エルミ：あるよ。それがどうしたんだい？");
-
-            //    UpdateMainMessage("アイン：出来ればそれを俺達に任せて欲しい。詳細を教えてくれないか？");
-
-            //    UpdateMainMessage("国王エルミ：構わないよ。やってくれるんなら、大歓迎だ。");
-
-            //    UpdateMainMessage("国王エルミ：報酬は何にしようか。直接的な収入でいいかい？");
-
-            //    UpdateMainMessage("アイン：ああ、それが一番助かる。");
-
-            //    UpdateMainMessage("国王エルミ：それでは、近衛兵に対して、アイン・ウォーレンスの討伐依頼申請受諾権利を認める事を伝えておこう。");
-
-            //    UpdateMainMessage("王妃ファラ：エルミ。この件なら既に、謁見前に近衛兵サンディに伝えておきましたよ。");
-
-            //    UpdateMainMessage("国王エルミ：おっと、そういえばそうだったな。助かるよファラ。");
-
-            //    UpdateMainMessage("アイン：っな！！？　なんで分かってたんだよ！？");
-
-            //    UpdateMainMessage("ラナ：ッフフ、さすがよね。　だからエルミ様はカッコイイんじゃない♪");
-
-            //    UpdateMainMessage("アイン：っいやいやいや！　そういう意味で言うトコかよ！？");
-
-            //    UpdateMainMessage("国王エルミ：謁見の間まで来るという事で、答えはほぼ限られてくる。");
-
-            //    UpdateMainMessage("国王エルミ：予約キャンセル待ちの列にも並んでないようだし切羽詰まった内容ではないとすると");
-
-            //    UpdateMainMessage("国王エルミ：雑談か、生活資金源か、または雑多関連という事だし、だいたい目安は付くものなんだよ。");
-
-            //    UpdateMainMessage("国王エルミ：アイン君は勇猛果敢な性質。　これ自体は前々から耳に届いているよ。");
-
-            //    UpdateMainMessage("国王エルミ：となると。　答えは分かるよね。");
-
-            //    UpdateMainMessage("アイン：・・・いやいやいや・・・恐れ入ります・・・");
-
-            //    UpdateMainMessage("王妃ファラ：でもね。アインさんとラナさんに来ていただいて純粋に嬉しいんですよ、私もエルミも（＾＾）");
-
-            //    UpdateMainMessage("アイン：いやあ・・・いやいやいや、もったいない言葉だ。ありがとうございます。");
-
-            //    UpdateMainMessage("ラナ：エルミ様、また遊びに来てもいいですか♪");
-
-            //    UpdateMainMessage("国王エルミ：もちろんだよ。こんなところで良ければ、何度でも来てくれて構わないよ。");
-
-            //    UpdateMainMessage("王妃ファラ：お待ちしてますね（＾＾/）");
-
-            //    UpdateMainMessage("アイン：あぁ・・・また来ます！！！");
-
-            //    UpdateMainMessage("ラナ：ホーラ、そこで浮かれないの！　ホンットにもう・・・");
-
-            //    UpdateMainMessage("アイン：じゃあ、本当にありがとうございました。失礼します。");
-
-            //    UpdateMainMessage("国王エルミ：ああ、またね。");
-
-            //    UpdateMainMessage("　　　『　城門ゲート前にて・・・　』");
-
-            //    UpdateMainMessage("アイン：ええと、近衛兵サンディさんは・・・と・・・");
-
-            //    UpdateMainMessage("　　【近衛兵：アイン・ウォーレンス！　アイン・ウォーレンスはこの場に居るか！！】");
-
-            //    UpdateMainMessage("アイン：おわっ！！ああっと、ハイハイ。今そっちに行くぜ。");
-
-            //    UpdateMainMessage("　　【近衛兵：アイン・ウォーレンスに通達する！】");
-
-            //    UpdateMainMessage("　　【近衛兵：今この時より、アイン・ウォーレンスに討伐依頼申請の受理を行う権利を与える事とする！】");
-
-            //    UpdateMainMessage("　　【近衛兵：討伐依頼のリストは、この私エガルト・サンディが所持している！！】");
-
-            //    UpdateMainMessage("　　【近衛兵：リスト内容を見たければ、この私エガルト・サンディを尋ねるとよい！！】");
-
-            //    UpdateMainMessage("アイン：あっ、あ、ああぁ・・・了解了解！");
-
-            //    UpdateMainMessage("　　【近衛兵：アイン・ウォーレンスよ！　申したい事があれば何なりと聞くがよい！！】");
-
-            //    UpdateMainMessage("アイン：あぁ・・・じゃあとりあえず、一つだけ。");
-
-            //    UpdateMainMessage("アイン：えっと、次からはサンディって呼んでも良いか？");
-
-            //    UpdateMainMessage("アイン：おーい近衛兵って呼ぶのも何となく変だしな。構わないか？");
-
-            //    UpdateMainMessage("　　【近衛兵：承知いたした！】");
-
-            //    UpdateMainMessage("　　【近衛兵：それでは以降、私の事はサンディと呼ぶが良い！！】");
-
-            //    UpdateMainMessage("アイン：おーし、サンキューサンキュー。じゃあよろしくな！");
-
-            //    UpdateMainMessage("ラナ：ちょっと、良い感じのトコ悪いんだけど、肝心の討伐依頼リストは見ておかないの？");
-
-            //    UpdateMainMessage("アイン：ん？ああ、それも大事なんだけどな。今回はひとまずココまでって事にさせてくれ。悪いな。");
-
-            //    UpdateMainMessage("ラナ：ふうん、そうなんだ。何か、バカアインって本当に変な時があるわね。");
-
-            //    UpdateMainMessage("アイン：まあまあ、いいじゃねえか。これもちょっとした礼儀の一つさ。");
-
-            //    UpdateMainMessage("ラナ：・・・それって礼儀になってるわけ？");
-
-            //    UpdateMainMessage("アイン：じゃあ、ありがとな、サンディ。次また会いに来るから、そん時に討伐リスト見せてくれ！");
-
-            //    UpdateMainMessage("サンディ：【承知いたした！】");
-            //}
-            //#endregion
-            //else if (!we.AvailableOneDayItem)
-            //{
-            //    we.AvailableOneDayItem = true;
-
-            //    UpdateMainMessage("アイン：さて、着いたぜ。");
-
-            //    UpdateMainMessage("ラナ：あっ、アイン見て見てあっちの方で何か人だかりが出来てるわよ。");
-
-            //    UpdateMainMessage("アイン：おっ、本当だ。なんかあったのかな？");
-
-            //    UpdateMainMessage("ラナ：ちょっと行ってみましょ♪");
-
-            //    UpdateMainMessage("サンディ：【皆の者に伝令事項がある！】");
-
-            //    UpdateMainMessage("アイン：おっ、サンディだ。今日も元気にやってるな。");
-
-            //    UpdateMainMessage("ラナ：ッフフ、声が大きいわよね、サンディさん。");
-
-            //    UpdateMainMessage("アイン：ああ、遠くからでもすげえ耳に残る感じだよな。");
-
-            //    UpdateMainMessage("サンディ：【本日より！】");
-
-            //    UpdateMainMessage("サンディ：【ファージル宮殿に赴いた際！】");
-
-            //    UpdateMainMessage("サンディ：【宮殿正面ゲート前の横通りにて！】");
-
-            //    UpdateMainMessage("サンディ：【ファージル国王から、全ての民に対して！】");
-
-            //    UpdateMainMessage("サンディ：【感謝と敬意の念を込め！】");
-
-            //    UpdateMainMessage("サンディ：【毎日１回ずつ、お楽しみ抽選券を発行する！！！】");
-
-            //    UpdateMainMessage("アイン：おっ、お楽しみ抽選券！？");
-
-            //    UpdateMainMessage("ラナ：なんだか、面白そうね♪");
-
-            //    UpdateMainMessage("サンディ：【抽選で当たるアイテムは粗品から豪華賞品まで様々！】");
-
-            //    UpdateMainMessage("サンディ：【是非ともご利用されよ！！】");
-
-            //    UpdateMainMessage("アイン：マジかよ。そいつは嬉しい内容だな。");
-
-            //    UpdateMainMessage("アイン：実際にはどんな商品が当たるんだ？一覧リストとかあるのかな？");
-
-            //    UpdateMainMessage("サンディ：【なお、全ての民に応じて、対象賞品は逐一更新され、かつ、その数は膨大！】");
-
-            //    UpdateMainMessage("サンディ：【ゆえに、賞品リストを公開することは出来ない！】");
-
-            //    UpdateMainMessage("サンディ：【なにとぞ、ご理解をいただきたい！】");
-
-            //    UpdateMainMessage("アイン：全ての民に応じて、逐一って・・・すげえな・・・");
-
-            //    UpdateMainMessage("ラナ：どういう仕組みなのかしら、想像もつかないわね。");
-
-            //    UpdateMainMessage("アイン：まあ、やってみてからのお楽しみって所か。");
-
-            //    UpdateMainMessage("ラナ：アイン、超豪華賞品が当たったら、ちゃんと私に頂戴よね♪");
-
-            //    UpdateMainMessage("アイン：ゲッ・・・そ、それだけは・・・");
-
-            //    UpdateMainMessage("ラナ：当たるまで、毎日バシバシやって頂戴♪");
-
-            //    UpdateMainMessage("アイン：いやいやいや・・・");
-
-            //    UpdateMainMessage("ラナ：決まり♪");
-
-            //    UpdateMainMessage("アイン：ハ、ハハハ・・・");
-
-            //    using (MessageDisplay md = new MessageDisplay())
-            //    {
-            //        md.StartPosition = FormStartPosition.CenterParent;
-            //        md.Message = "ファージル宮殿で「お楽しみ抽選券」を受け取る事が可能になりました！";
-            //        md.ShowDialog();
-            //    }
-            //    UpdateMainMessage("", true);
-            //}
-            //#region "何もイベントが無い場合"
-            //else
-            //{
-            //    UpdateMainMessage("サンディ：【よくぞ参られた！】", true);
-
-            //    using (SelectDungeon sd = new SelectDungeon())
-            //    {
-            //        sd.StartPosition = FormStartPosition.Manual;
-            //        sd.Location = new Point(this.Location.X + 50, this.Location.Y + 550);
-            //        sd.MaxSelectable = 3;
-            //        sd.FirstName = "抽選券";
-            //        sd.SecondName = "討伐";
-            //        sd.ThirdName = "あいさつ";
-            //        if (we.AvailableOneDayItem)
-            //        {
-            //            sd.ShowDialog();
-            //        }
-            //        else
-            //        {
-            //            sd.TargetDungeon = 2;
-            //        }
-            //        if (sd.TargetDungeon == 1)
-            //        {
-            //            if (!we.AlreadyGetOneDayItem)
-            //            {
-            //                UpdateMainMessage("サンディ：【お楽しみ抽選券は正面ゲート向かって右側である！】");
-
-            //                UpdateMainMessage("アイン：サンキュー。じゃ行ってくるぜ。");
-
-            //                UpdateMainMessage("　・・・　しばらく歩いた後　・・・");
-
-            //                if (!we.Truth_FirstOneDayItem)
-            //                {
-            //                    UpdateMainMessage("アイン：あった、この箱みたいなやつか。");
-
-            //                    UpdateMainMessage("ラナ：あ、あれじゃないの？");
-
-            //                    UpdateMainMessage("アイン：お、本当だ！　どれどれ・・・");
-            //                }
-            //                else
-            //                {
-            //                    UpdateMainMessage("アイン：よし、確かこの箱だったな。");
-            //                }
-
-            //                UpdateMainMessage("　【　お楽しみ抽選券をお求めの方は、『発行』ボタンを押してください　】");
-
-            //                UpdateMainMessage("アイン：じゃあピっと・・・");
-
-            //                UpdateMainMessage("　【　ッガガガガ・・・　】");
-
-            //                UpdateMainMessage("　【　ありがとうございます。無事に発行されました　】");
-
-            //                if (!we.Truth_FirstOneDayItem)
-            //                {
-            //                    UpdateMainMessage("アイン：お、おぉ！やったぜ！");
-            //                }
-
-            //                UpdateMainMessage("　【　抽選券を持って、そのまま右へお進みください　】");
-
-            //                if (!we.Truth_FirstOneDayItem)
-            //                {
-            //                    UpdateMainMessage("アイン：っしゃ、次だな！");
-
-            //                    UpdateMainMessage("ラナ：きっとあれよ。何人か並んでるわ。");
-
-            //                    UpdateMainMessage("アイン：よし、さっそく並んでみようぜ。");
-
-            //                    UpdateMainMessage("アイン：・・・なげえな・・・");
-
-            //                    UpdateMainMessage("ラナ：少し待つしかないわね。");
-
-            //                    UpdateMainMessage("アイン：ふう・・・");
-
-            //                    UpdateMainMessage("ラナ：ところで、どっちが券を使うの？");
-
-            //                    UpdateMainMessage("アイン：いや、それはどっちでも良いだろう。");
-
-            //                    UpdateMainMessage("ラナ：えー、何言ってんのよバカアイン？　大事なトコじゃないの。");
-
-            //                    UpdateMainMessage("アイン：いやいやいや、抽選なんだから、誰がやっても同じだろ？");
-
-            //                    UpdateMainMessage("ラナ：でも、強運の人がやると、立て続けに引き当てる人っているじゃない？");
-
-            //                    UpdateMainMessage("アイン：確かにたまに居るような、そういう奴は。");
-
-            //                    UpdateMainMessage("ラナ：でしょ？だから、私かアインのどっちかで、結果が変わるわけよ♪");
-
-            //                    UpdateMainMessage("アイン：マジか・・・関係ねえ気もするけどなあ・・・");
-
-            //                    UpdateMainMessage("ラナ：そういうワケだから、どっちが券を使うか決めてちょうだい♪");
-
-            //                    UpdateMainMessage("アイン：いやいやいや・・・そうだなあ・・・");
-
-            //                    UpdateMainMessage("アイン：・・・");
-
-            //                    UpdateMainMessage("アイン：ダメだ、わかんねえ！");
-
-            //                    UpdateMainMessage("アイン：券を使用する直前で決めよう！！！");
-
-            //                    UpdateMainMessage("ラナ：えっ、何よそれ。　ちゃんと決めてよね。");
-
-            //                    UpdateMainMessage("アイン：いやいや、何て言うんだ。決めようが無いぜ。");
-
-            //                    UpdateMainMessage("アイン：その時その時の直観に頼ろう。っな！？");
-
-            //                    UpdateMainMessage("ラナ：うーん、何か釈然としないけど・・・");
-
-            //                    UpdateMainMessage("アイン：おっ、前が開いたぜ！俺たちの番じゃないか？");
-
-            //                    UpdateMainMessage("ラナ：あ、本当ね。じゃあさっそくやってみましょ♪");
-
-            //                    UpdateMainMessage("　【　抽選券をシート挿入口に差し込んでください　】");
-
-            //                    UpdateMainMessage("アイン：よし、じゃあさっそくだが・・・");
-
-            //                    UpdateMainMessage("ラナ：どっちがやってみる？");
-            //                }
-            //                else
-            //                {
-            //                    UpdateMainMessage("ラナ：ねえ、どっちがやってみる？");
-            //                }
-
-            //                UpdateMainMessage("アイン：そうだなあ、ここは・・・");
-
-            //                string newItem = String.Empty;
-            //                using (TruthDecision td = new TruthDecision())
-            //                {
-            //                    td.MainMessage = "どちらが抽選券を使いますか？";
-            //                    td.FirstMessage = "アイン";
-            //                    td.SecondMessage = "ラナ";
-            //                    td.StartPosition = FormStartPosition.CenterParent;
-            //                    td.ShowDialog();
-            //                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                    {
-            //                        UpdateMainMessage("アイン：おし、俺がやろう");
-
-            //                        UpdateMainMessage("ラナ：頑張ってね♪");
-
-            //                        UpdateMainMessage("アイン：任せておけ！");
-
-            //                        UpdateMainMessage("　【　抽選券を認識いたしました。　しばらくお待ちください。　】");
-
-            //                        UpdateMainMessage("アイン：おし・・・来い！！");
-            //                    }
-            //                    else
-            //                    {
-            //                        UpdateMainMessage("アイン：ラナ、任せた。");
-
-            //                        UpdateMainMessage("ラナ：じゃあ、入れてみるわね。");
-
-            //                        UpdateMainMessage("　【　抽選券を認識いたしました。　しばらくお待ちください。　】");
-
-            //                        UpdateMainMessage("ラナ：まあ、そんなに期待はしないけど・・・");
-            //                    }
-            //                }
-
-            //                GroundOne.StopDungeonMusic();
-
-            //                UpdateMainMessage("　【　結果を発表します　】");
-
-            //                UpdateMainMessage("　【　賞品は・・・　】");
-
-            //                UpdateMainMessage("　【　・・・　】");
-
-            //                UpdateMainMessage("　【　・・・　】");
-
-            //                UpdateMainMessage("　【　・・・　】");
-
-            //                newItem = Method.GetNewItem(Method.NewItemCategory.Lottery, mc, null, 4);
-
-            //                GroundOne.PlaySoundEffect("LvUp.mp3");
-            //                UpdateMainMessage("　【　＜" + newItem + "＞が当たりました！】");
-
-            //                GroundOne.PlayDungeonMusic(Database.BGM13, Database.BGM13LoopBegin);
-
-            //                UpdateMainMessage("　【　賞品を転送いたしますので、ボックスから受け取ってください　】");
-
-            //                UpdateMainMessage("　【　ッガコン！！！　】");
-
-            //                UpdateMainMessage("　【　またご利用ください　】");
-
-            //                if (!we.Truth_FirstOneDayItem)
-            //                {
-            //                    UpdateMainMessage("アイン：すげえ・・・このデッパリ穴から即出てくるのかよ。");
-
-            //                    UpdateMainMessage("ラナ：どういう仕掛けなのかしら。全アイテムが入ってるようにも思えないし・・・");
-
-            //                    UpdateMainMessage("アイン：まあ、細かい仕掛けは気にしないでおこう。とにかく貰っておこうぜ！");
-            //                }
-            //                else
-            //                {
-            //                    UpdateMainMessage("アイン：っしゃ、貰っておくぜ！");
-            //                }
-
-            //                CallSomeMessageWithAnimation(newItem + "を手に入れた。");
-
-            //                GetItemFullCheck(mc, newItem);
-
-            //                if (!we.Truth_FirstOneDayItem)
-            //                {
-            //                    we.Truth_FirstOneDayItem = true;
-            //                    UpdateMainMessage("アイン：また今度やってみようぜ。");
-
-            //                    UpdateMainMessage("ラナ：ええ、そうね。");
-            //                }
-            //                we.AlreadyGetOneDayItem = true;
-            //            }
-            //            else
-            //            {
-            //                UpdateMainMessage("サンディ：【お楽しみ抽選券は本日既に発行済となった！】");
-
-            //                UpdateMainMessage("アイン：そっか、じゃあまた今度だな。");
-
-            //                UpdateMainMessage("サンディ：【また、参られよ！】");
-            //            }
-            //        }
-            //        else if (sd.TargetDungeon == 2)
-            //        {
-            //            UpdateMainMessage("アイン：よお、サンディ。良かったら討伐リストを見せてくれないか？");
-
-            //            UpdateMainMessage("サンディ：【すまぬが、討伐リストは未だ作られておらぬ！】");
-
-            //            UpdateMainMessage("サンディ：【今しばらく待たれよ！】");
-
-            //            UpdateMainMessage("アイン：ウゲ・・・じゃあ、しょうがねえ、戻るか・・・");
-            //            we.AlreadyGetMonsterHunt = true;
-            //        }
-            //        else
-            //        {
-            //            UpdateMainMessage("サンディ：【また、参られよ！】", true);
-            //            System.Threading.Thread.Sleep(1000);
-            //        }
-            //    }
-            //}
-            //#endregion
-
-            //if (!we.AlreadyRest)
-            //{
-            //    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
-            //}
-            //else
-            //{
-            //    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-            //}
-            //this.buttonHanna.Visible = true;
-            //this.buttonDungeon.Visible = true;
-            //this.buttonRana.Visible = true;
-            //this.buttonGanz.Visible = true;
-            //this.buttonPotion.Visible = true;
-            //this.buttonDuel.Visible = true;
-            //this.buttonShinikia.Visible = true;
-
-            //GroundOne.StopDungeonMusic();
-            //GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+        }
+
+        public void CallTicket()
+        {
+            this.Filter.SetActive(false);
+            this.panelHide.gameObject.SetActive(false);
+            this.groupSelectCastleMenu.SetActive(false);
+            MessagePack.Message70019(ref nowMessage, ref nowEvent);
+            NormalTapOK();
+        }
+
+        public void CallMonsterBattle()
+        {
+            this.Filter.SetActive(false);
+            this.panelHide.gameObject.SetActive(false);
+            this.groupSelectCastleMenu.SetActive(false);
+            MessagePack.Message70020(ref nowMessage, ref nowEvent);
+            NormalTapOK();
+        }
+
+        public void CallCommunicationSandy()
+        {
+            this.Filter.SetActive(false);
+            this.panelHide.gameObject.SetActive(false);
+            this.groupSelectCastleMenu.SetActive(false);
+            MessagePack.Message70021(ref nowMessage, ref nowEvent);
+            NormalTapOK();
+        }
+
+        public void CallTicketEin()
+        {
+            MessagePack.Message70019_2(ref nowMessage, ref nowEvent, 1);
+            NormalTapOK();
+        }
+
+        public void CallTicketLana()
+        {
+            MessagePack.Message70019_2(ref nowMessage, ref nowEvent, 2);
+            NormalTapOK();
         }
 
         public void CallKahlhanz()
         {
+            this.Filter.SetActive(false);
+            this.panelHide.gameObject.SetActive(false);
             groupSelectGate.SetActive(false);
 
             if (GroundOne.WE.alreadyCommunicateCahlhanz)
             {
-                Debug.Log("GroundOne.WE.alreadyCommunicateCahlhanz");
                 mainMessage.text = "アイン：カールハンツ爵にはまた今度教えてもらうとしよう。";
                 return;
-            }
-            else
-            {
-                Debug.Log("sleep 1000");
-                mainMessage.text = "アイン：カール爵の訓練場へ赴くとするか。";
-                System.Threading.Thread.Sleep(1000);
             }
 
             #region "カールハンツ爵の訓練場"
             if (!GroundOne.WE.alreadyCommunicateCahlhanz)
             {
-                Debug.Log("GroundOne.WE.alreadyCommunicateCahlhanz start");
                 GroundOne.WE.alreadyCommunicateCahlhanz = true;
-
-                GoToKahlhanz();
 
                 #region "エンレイジ・ブラスト"
                 if ((GroundOne.MC.Level >= 22) && (!GroundOne.MC.EnrageBlast))
@@ -1902,6 +1359,18 @@ namespace DungeonPlayer
                 mainMessage.text = "アイン：カールハンツ爵にはまた今度教えてもらうとしよう。";
             }
             #endregion
+        }
+
+        private void GoToFazilCastle()
+        {
+            this.buttonHanna.gameObject.SetActive(false);
+            this.buttonDungeon.gameObject.SetActive(false);
+            this.buttonRana.gameObject.SetActive(false);
+            this.buttonGanz.gameObject.SetActive(false);
+            this.buttonPotion.gameObject.SetActive(false);
+            this.buttonDuel.gameObject.SetActive(false);
+            this.buttonShinikia.gameObject.SetActive(false);
+            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FAZIL_CASTLE);
         }
 
         private void GoToKahlhanz()

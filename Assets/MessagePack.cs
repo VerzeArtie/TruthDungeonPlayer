@@ -48,6 +48,7 @@ namespace DungeonPlayer
             PlayMusic17,
             PlayMusic18,
             PlayMusic19,
+            PlaySound,
             YesNoGotoDungeon2,
             GotoHomeTown,
             GotoDungeon2,
@@ -60,6 +61,8 @@ namespace DungeonPlayer
             HomeTownMorning,
             HomeTownNight,
             HomeTownFazilCastle,
+            HomeTownFazilCastleMenu,
+            HomeTownTicketChoice,
             HomeTownGoToKahlhanz,
             HomeTownGotoFirstPlace,
             HomeTownCallRestInn,
@@ -8469,6 +8472,10 @@ namespace DungeonPlayer
         #region "カールハンツ爵の訓練場"
         public static void Message70001(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
@@ -8556,6 +8563,10 @@ namespace DungeonPlayer
 
         public static void Message70002(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
@@ -8617,6 +8628,10 @@ namespace DungeonPlayer
 
         public static void Message70003(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：あの・・・最初いつも姿が見えないんですけど・・・"); eventList.Add(ActionEvent.None);
@@ -8694,6 +8709,10 @@ namespace DungeonPlayer
 
         public static void Message70004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
@@ -8793,6 +8812,10 @@ namespace DungeonPlayer
 
         public static void Message70005(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
@@ -8852,6 +8875,10 @@ namespace DungeonPlayer
         
         public static void Message70006(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
@@ -8953,6 +8980,10 @@ namespace DungeonPlayer
         
         public static void Message70007(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：あら？・・・居ない・・・"); eventList.Add(ActionEvent.None);
@@ -9082,6 +9113,10 @@ namespace DungeonPlayer
         
         public static void Message70008(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか。"); eventList.Add(ActionEvent.None);
@@ -9167,6 +9202,10 @@ namespace DungeonPlayer
         
         public static void Message70009(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+            
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
@@ -9218,6 +9257,10 @@ namespace DungeonPlayer
         
         public static void Message70010(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
@@ -9283,6 +9326,10 @@ namespace DungeonPlayer
         
         public static void Message70011(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：来たか、それでは講義を始めるとしよう。"); eventList.Add(ActionEvent.None);
@@ -9366,6 +9413,10 @@ namespace DungeonPlayer
         
         public static void Message70012(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
             if (GroundOne.WE.Truth_CommunicationSinikia30DuelFail == false)
             {
                 messageList.Add("アイン：っとと・・・着いたみたいだな。"); eventList.Add(ActionEvent.None);
@@ -10401,6 +10452,8 @@ namespace DungeonPlayer
             GroundOne.WE.Truth_CommunicationSinikia41 = true;
             GroundOne.WE.alreadyCommunicateCahlhanz = true;
 
+            messageList.Add("アイン：カール爵の訓練場へ赴くとするか。"); eventList.Add(ActionEvent.None);
+
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
 
             messageList.Add("アイン：っとと・・・着いたみたいだな"); eventList.Add(ActionEvent.None);
@@ -10582,6 +10635,9 @@ namespace DungeonPlayer
 
         public static void Message70015(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.WE.Truth_Communication_FC31 = true;
+            GroundOne.WE.AlreadyCommunicateFazilCastle = true;
+
             messageList.Add("ラナ：あっ♪　ファージル宮殿に行ってみるの？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ああ、そのつもりだ。なんだヤケに楽しそうだな。"); eventList.Add(ActionEvent.None);
@@ -10600,9 +10656,73 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：”めずらしく”ないからね、いつも機嫌良いでしょ♪　"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：わ、分かった分かった。ッハハハ・・・行こうぜ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：わ、分かった分かった。じゃ、行くとするか。"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastle);
+
+            messageList.Add("アイン：っとぉ、ファージル宮殿到着っと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイン、あれを見て！　凄いわ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？どれどれ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、おおぉわ！　んだありゃ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("『　　宮殿前の城門ゲートには、一般市民が行列を生成している　　　』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おいおい、こんな並んで、一体なにがあるんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ファージル宮殿名物のリアル相談行列じゃない、知らないの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんだそれ、知るわけが無いだろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：で、結局何で並んでるんだ？　教えてくれよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：え、ちょっとホント知らないわけ？ハアァァァ・・・まあ良いけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ファージル宮殿ではエルミ国王およびファラ王妃が民の声に直接耳を傾けるようにしているのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それで、この行列だってのか！？　一体どんだけ聞いてんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：朝方の7:00～12:00。そして12:30～18:00、最後に18:30～22:00までの三部構成ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オイオイオイ、ちょっと待てよ！！　ほとんど休みねえじゃねえか！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：それだけ、民の事を念頭に置いているって事よね。正直コレは真似できないわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はあぁ・・・マジかよ・・・ただただ感心するばかりだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ってどうすんだよ？こんなの並んでいたらキリが無いぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：大丈夫よ。順番に関しては完全に予約制なの。ホラそこに記入リストがあるでしょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？何だそういうのがあるのか。早く言ってくれよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おしっと・・・記入したぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：この量だとそうね・・・明日の朝方に行くといいわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：へぇ、よくそんな正確に分かるな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：当たり前じゃない。私結構昔の頃、ここに通うぐらい行ってたんだから♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ、マジかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ったく、相当気に入ってんだな、エルミ王の事・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ップ・・・ッププ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あ～オカシイ、フフフ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな、何がおかしい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：フフフ、なんでも無いわよ♪　っさ、今回はここまでね、一旦帰りましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そんなオカシい内容だったか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあいい、確かにこれ以上やることもねえ。戻るとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
 
             messageList.Add("ラナ：じゃあ、明日の朝だからね。忘れないでよねホント。"); eventList.Add(ActionEvent.None);
 
@@ -10611,6 +10731,9 @@ namespace DungeonPlayer
 
         public static void Message70016(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.WE.Truth_Communication_FC32 = true;
+            GroundOne.WE.AlreadyCommunicateFazilCastle = true;
+
             messageList.Add("ラナ：じゃあ、ファージル宮殿に行きましょ♪"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：っしゃ、国王様、王妃様とご対面だな。"); eventList.Add(ActionEvent.None);
@@ -10618,6 +10741,194 @@ namespace DungeonPlayer
             messageList.Add("アイン：じゃあ、転送するぜ！"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastle);
+
+            messageList.Add("アイン：さて、着いたぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ええと予約順はどれどれ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っお、本当だ。後少しで俺達の番だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っでしょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でも、完全予約制ならここまでして並ぶ必要はねえんじゃねえのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：予約順序で自分の順番が来た時、該当の人が居なかった場合は、今並んでる人が割り込みで謁見する事が許可されてるのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なるほど、じゃあ重要な要件を抱え込んでる人は、並んでいる方が謁見までの時間が短縮される場合があるって事か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうね。あと、割り込みが１グループ入るから、その分だけ予約時間帯が大幅にズレる事もなくなるわけよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そこまで計算してのルールってわけか・・・ホントスゴすぎだな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：アイン・ウォーレンス！　アイン・ウォーレンスはこの場に居るか！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっと、呼ばれたみたいだ。行かなくちゃな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：衛兵のオッサン！俺だオレ！　今そっちに行くぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：国王、王妃に対し、失礼の無きよう最善の心得を持って謁見に望まれたし！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、了解了解！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ行こうぜ、ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、楽しみよね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『　謁見の間にて・・・　』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：へえ・・・意外と普通の部屋だな。もっと豪華絢爛なトコかと思ったが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：民との親近感を得るため、意図的にこの部屋の雰囲気を作ってるのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ・・・そこまでするのか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っあ、ホラ来たわ！　っ静かに！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・（ドキドキ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：アイン・ウォーレンスとラナさんだね。よろしく。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("王妃ファラ：エルモアの紅茶を煎じておいたわ。良ければどうぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あ、ありがとうございます♪　遠慮なく♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：エルミ様は、今日も一段とカッコイイですね♪　元気でやってますか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：ハハハ、ラナさんはいつもそんな調子だな、このとおり元気でやってるよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ファラ様も、もーホント可愛すぎです。私いつもファラ様を参考にしてるんですよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("王妃ファラ：ウフフ、ありがとう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あっ、要件はですね。ソコにボーっと突っ立っているバカアインが言いますので聞いてください♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・っな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんでそんな日常会話っぽいんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：民と会話する時は、この調子で喋る方が一番意見を引き出しやすいからね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：エルミ様は、一般日常会話に関しては上級クラスの資格を習得してるのよ。ホント凄いわよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そっ・・・そんなのがあるのか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ってか、やっぱりあれか。お硬いセリフも喋れる上であえて日常会話っぽくしてると・・・？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：まあ、そんな所だね。気にしないで良いよ本当に。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("王妃ファラ：ウフフ、では要件をどうぞ、アインさん（＾＾）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、あぁ・・・じ、じゃあええと・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッコラ、ちょっと！？　何どぎまぎしてるのよ、もう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッビシっと要件を言いなさいよね。スパスパっと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、おう。じゃあ、改めて。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：要件は簡単だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：討伐の依頼は入ってないか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：あるよ。それがどうしたんだい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：出来ればそれを俺達に任せて欲しい。詳細を教えてくれないか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：構わないよ。やってくれるんなら、大歓迎だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：報酬は何にしようか。直接的な収入でいいかい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、それが一番助かる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：それでは、近衛兵に対して、アイン・ウォーレンスの討伐依頼申請受諾権利を認める事を伝えておこう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("王妃ファラ：エルミ。この件なら既に、謁見前に近衛兵サンディに伝えておきましたよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：おっと、そういえばそうだったな。助かるよファラ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな！！？　なんで分かってたんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフ、さすがよね。　だからエルミ様はカッコイイんじゃない♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っいやいやいや！　そういう意味で言うトコかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：謁見の間まで来るという事で、答えはほぼ限られてくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：予約キャンセル待ちの列にも並んでないようだし切羽詰まった内容ではないとすると"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：雑談か、生活資金源か、または雑多関連という事だし、だいたい目安は付くものなんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：アイン君は勇猛果敢な性質。　これ自体は前々から耳に届いているよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：となると。　答えは分かるよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・いやいやいや・・・恐れ入ります・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("王妃ファラ：でもね。アインさんとラナさんに来ていただいて純粋に嬉しいんですよ、私もエルミも（＾＾）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやあ・・・いやいやいや、もったいない言葉だ。ありがとうございます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：エルミ様、また遊びに来てもいいですか♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：もちろんだよ。こんなところで良ければ、何度でも来てくれて構わないよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("王妃ファラ：お待ちしてますね（＾＾/）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あぁ・・・また来ます！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ホーラ、そこで浮かれないの！　ホンットにもう・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、本当にありがとうございました。失礼します。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("国王エルミ：ああ、またね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『　城門ゲート前にて・・・　』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ええと、近衛兵サンディさんは・・・と・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：アイン・ウォーレンス！　アイン・ウォーレンスはこの場に居るか！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おわっ！！ああっと、ハイハイ。今そっちに行くぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：アイン・ウォーレンスに通達する！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：今この時より、アイン・ウォーレンスに討伐依頼申請の受理を行う権利を与える事とする！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：討伐依頼のリストは、この私エガルト・サンディが所持している！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：リスト内容を見たければ、この私エガルト・サンディを尋ねるとよい！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あっ、あ、ああぁ・・・了解了解！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：アイン・ウォーレンスよ！　申したい事があれば何なりと聞くがよい！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あぁ・・・じゃあとりあえず、一つだけ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：えっと、次からはサンディって呼んでも良いか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おーい近衛兵って呼ぶのも何となく変だしな。構わないか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：承知いたした！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【近衛兵：それでは以降、私の事はサンディと呼ぶが良い！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おーし、サンキューサンキュー。じゃあよろしくな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、良い感じのトコ悪いんだけど、肝心の討伐依頼リストは見ておかないの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？ああ、それも大事なんだけどな。今回はひとまずココまでって事にさせてくれ。悪いな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ふうん、そうなんだ。何か、バカアインって本当に変な時があるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあまあ、いいじゃねえか。これもちょっとした礼儀の一つさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・それって礼儀になってるわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、ありがとな、サンディ。次また会いに来るから、そん時に討伐リスト見せてくれ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【承知いたした！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
 
             messageList.Add("アイン：ふう、戻りっと。"); eventList.Add(ActionEvent.None);
 
@@ -10664,6 +10975,307 @@ namespace DungeonPlayer
             messageList.Add("ラナ：はああぁ・・・別にいいけど、次からは頼むわねホント。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：了解了解！　任せておけ！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message70017(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.AvailableOneDayItem = true;
+            GroundOne.WE.AlreadyCommunicateFazilCastle = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastle);
+
+            messageList.Add("アイン：さて、着いたぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あっ、アイン見て見てあっちの方で何か人だかりが出来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、本当だ。なんかあったのかな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと行ってみましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【皆の者に伝令事項がある！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、サンディだ。今日も元気にやってるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフ、声が大きいわよね、サンディさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、遠くからでもすげえ耳に残る感じだよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【本日より！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【ファージル宮殿に赴いた際！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【宮殿正面ゲート前の横通りにて！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【ファージル国王から、全ての民に対して！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【感謝と敬意の念を込め！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【毎日１回ずつ、お楽しみ抽選券を発行する！！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、お楽しみ抽選券！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：なんだか、面白そうね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【抽選で当たるアイテムは粗品から豪華賞品まで様々！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【是非ともご利用されよ！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ。そいつは嬉しい内容だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：実際にはどんな商品が当たるんだ？一覧リストとかあるのかな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【なお、全ての民に応じて、対象賞品は逐一更新され、かつ、その数は膨大！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【ゆえに、賞品リストを公開することは出来ない！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【なにとぞ、ご理解をいただきたい！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：全ての民に応じて、逐一って・・・すげえな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：どういう仕組みなのかしら、想像もつかないわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、やってみてからのお楽しみって所か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイン、超豪華賞品が当たったら、ちゃんと私に頂戴よね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ゲッ・・・そ、それだけは・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：当たるまで、毎日バシバシやって頂戴♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいやいや・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：決まり♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハ、ハハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ファージル宮殿で「お楽しみ抽選券」を受け取る事が可能になりました！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownBackToTown);
+        }
+
+        public static void Message70018(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：おし、ファージル宮殿にでも行ってみるか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastle);
+
+            messageList.Add("サンディ：【よくぞ参られた！要件を申すがよい！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownFazilCastleMenu);
+        }
+
+        public static void Message70019(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE.AlreadyGetOneDayItem)
+            {
+                messageList.Add("サンディ：【お楽しみ抽選券は正面ゲート向かって右側である！】");
+
+                messageList.Add("アイン：サンキュー。じゃ行ってくるぜ。");
+
+                messageList.Add("　・・・　しばらく歩いた後　・・・");
+
+                if (!GroundOne.WE.Truth_FirstOneDayItem)
+                {
+                    messageList.Add("ラナ：あ、あれじゃないの？");
+
+                    messageList.Add("アイン：お、本当だ！　どれどれ・・・");
+                }
+                else
+                {
+                    messageList.Add("アイン：よし、確かこの箱だったな。");
+                }
+
+                messageList.Add("　【　お楽しみ抽選券をお求めの方は、『発行』ボタンを押してください　】");
+
+                messageList.Add("アイン：じゃあピっと・・・");
+
+                messageList.Add("　【　ッガガガガ・・・　】");
+
+                messageList.Add("　【　ありがとうございます。無事に発行されました　】");
+
+                if (!GroundOne.WE.Truth_FirstOneDayItem)
+                {
+                    messageList.Add("アイン：お、おぉ！やったぜ！");
+                }
+
+                messageList.Add("　【　抽選券を持って、そのまま右へお進みください　】");
+
+                if (!GroundOne.WE.Truth_FirstOneDayItem)
+                {
+                    messageList.Add("アイン：っしゃ、次だな！");
+
+                    messageList.Add("ラナ：きっとあれよ。何人か並んでるわ。");
+
+                    messageList.Add("アイン：よし、さっそく並んでみようぜ。");
+
+                    messageList.Add("アイン：・・・なげえな・・・");
+
+                    messageList.Add("ラナ：少し待つしかないわね。");
+
+                    messageList.Add("アイン：ふう・・・");
+
+                    messageList.Add("ラナ：ところで、どっちが券を使うの？");
+
+                    messageList.Add("アイン：いや、それはどっちでも良いだろう。");
+
+                    messageList.Add("ラナ：えー、何言ってんのよバカアイン？　大事なトコじゃないの。");
+
+                    messageList.Add("アイン：いやいやいや、抽選なんだから、誰がやっても同じだろ？");
+
+                    messageList.Add("ラナ：でも、強運の人がやると、立て続けに引き当てる人っているじゃない？");
+
+                    messageList.Add("アイン：確かにたまに居るような、そういう奴は。");
+
+                    messageList.Add("ラナ：でしょ？だから、私かアインのどっちかで、結果が変わるわけよ♪");
+
+                    messageList.Add("アイン：マジか・・・関係ねえ気もするけどなあ・・・");
+
+                    messageList.Add("ラナ：そういうワケだから、どっちが券を使うか決めてちょうだい♪");
+
+                    messageList.Add("アイン：いやいやいや・・・そうだなあ・・・");
+
+                    messageList.Add("アイン：・・・");
+
+                    messageList.Add("アイン：ダメだ、わかんねえ！");
+
+                    messageList.Add("アイン：券を使用する直前で決めよう！！！");
+
+                    messageList.Add("ラナ：えっ、何よそれ。　ちゃんと決めてよね。");
+
+                    messageList.Add("アイン：いやいや、何て言うんだ。決めようが無いぜ。");
+
+                    messageList.Add("アイン：その時その時の直観に頼ろう。っな！？");
+
+                    messageList.Add("ラナ：うーん、何か釈然としないけど・・・");
+
+                    messageList.Add("アイン：おっ、前が開いたぜ！俺たちの番じゃないか？");
+
+                    messageList.Add("ラナ：あ、本当ね。じゃあさっそくやってみましょ♪");
+
+                    messageList.Add("　【　抽選券をシート挿入口に差し込んでください　】");
+
+                    messageList.Add("アイン：よし、じゃあさっそくだが・・・");
+
+                    messageList.Add("ラナ：どっちがやってみる？");
+                }
+                else
+                {
+                    messageList.Add("ラナ：ねえ、どっちがやってみる？");
+                }
+
+                messageList.Add("アイン：そうだなあ、ここは・・・");
+
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTownTicketChoice);
+            }
+            else
+            {
+                messageList.Add("サンディ：【お楽しみ抽選券は本日既に発行済となった！】");
+
+                messageList.Add("アイン：そっか、じゃあまた今度だな。");
+
+                messageList.Add("サンディ：【また、参られよ！】");
+            }
+        }
+
+        public static void Message70019_2(ref List<string> messageList, ref List<ActionEvent> eventList, int ticketNumber)
+        {
+
+            if (ticketNumber == 1)
+            {
+                messageList.Add("アイン：おし、俺がやろう"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：頑張ってね♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：任せておけ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　【　抽選券を認識いたしました。　しばらくお待ちください。　】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おし・・・来い！！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：ラナ、任せた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：じゃあ、入れてみるわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　【　抽選券を認識いたしました。　しばらくお待ちください。　】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：まあ、そんなに期待はしないけど・・・"); eventList.Add(ActionEvent.None);
+            }
+
+            GroundOne.StopDungeonMusic();
+
+            messageList.Add("　【　結果を発表します　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　賞品は・・・　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　・・・　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　・・・　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　・・・　】"); eventList.Add(ActionEvent.None);
+
+            string newItem = String.Empty;
+            newItem = Method.GetNewItem(Method.NewItemCategory.Lottery, GroundOne.MC, null, 4);
+
+            messageList.Add(Database.SOUND_LEVEL_UP); eventList.Add(ActionEvent.PlaySound);
+
+            messageList.Add("＜ " + newItem + " ＞が当たりました！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic13);
+
+            messageList.Add("　【　賞品を転送いたしますので、ボックスから受け取ってください　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　ッガコン！！！　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　またご利用ください　】"); eventList.Add(ActionEvent.None);
+
+            if (!GroundOne.WE.Truth_FirstOneDayItem)
+            {
+                messageList.Add("アイン：すげえ・・・このデッパリ穴から即出てくるのかよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：どういう仕掛けなのかしら。全アイテムが入ってるようにも思えないし・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、細かい仕掛けは気にしないでおこう。とにかく貰っておこうぜ！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：っしゃ、貰っておくぜ！"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(newItem + "を手に入れた。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            if (!GroundOne.WE.Truth_FirstOneDayItem)
+            {
+                GroundOne.WE.Truth_FirstOneDayItem = true;
+                messageList.Add("アイン：また今度やってみようぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、そうね。"); eventList.Add(ActionEvent.None);
+            }
+
+            GroundOne.WE.AlreadyGetOneDayItem = true;
+            GroundOne.WE.AlreadyCommunicateFazilCastle = true;
+
+            messageList.Add(newItem); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
+        }
+
+        public static void Message70020(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            // after (モンスター討伐システムを作ってください)
+            messageList.Add("アイン：よお、サンディ。良かったら討伐リストを見せてくれないか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【すまぬが、討伐リストは未だ作られておらぬ！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サンディ：【今しばらく待たれよ！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そっか・・・じゃあ、しょうがねえ、戻るとするか。"); eventList.Add(ActionEvent.None);
+            GroundOne.WE.AlreadyGetMonsterHunt = true;
+        }
+
+        public static void Message70021(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            // after (「あいさつ」でサンディとの会話を増やすか？)
+            // messageList.Add("サンディ：【また、参られよ！】"); eventList.Add(ActionEvent.None);
         }
 
         public static void Message79999(ref List<string> messageList, ref List<ActionEvent> eventList)

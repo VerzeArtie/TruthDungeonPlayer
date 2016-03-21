@@ -2198,6 +2198,8 @@ namespace DungeonPlayer
         public const string SOUND_REST_INN = @"RestInn";
         public const string SOUND_DEVOURING_PLAGUE = @"DevouringPlague";
 
+        public const string SOUND_LEVEL_UP = @"LvUp";
+
         // ここから下はサウンドファイル名称を直接記述したものをナンバリング
         public const string SOUND_1 = @"AbsoluteZero";
         public const string SOUND_2 = @"AbsorbWater";
