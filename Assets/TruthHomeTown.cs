@@ -67,6 +67,8 @@ namespace DungeonPlayer
 
         bool forceSaveCall = false; // シナリオ進行上、強制セーブした後、”休息しました”を表示したいためのフラグ
 
+        private string MESSAGE_AUTOSAVE_EXIT = @"ここまでの記録は自動セーブとなります。次回起動は、ここから再開となります";
+
 	    // Use this for initialization
         public override void Start()
         {
@@ -627,6 +629,14 @@ namespace DungeonPlayer
         }
         public void tapOK()
         {
+            Debug.Log("tapOK (S)");
+            // autosave->exit専用
+            if (this.systemMessage.text == this.MESSAGE_AUTOSAVE_EXIT)
+            {
+                SceneDimension.JumpToTitle();
+                return;
+            }
+
             if (this.nowReading < this.nowMessage.Count)
             {
                 if (this.panelHide.isActiveAndEnabled == false && this.nowHideing)
@@ -1123,6 +1133,12 @@ namespace DungeonPlayer
 
         public void HideAllChild()
         {
+            if (this.systemMessage.text == this.MESSAGE_AUTOSAVE_EXIT)
+            {
+                SceneDimension.JumpToTitle();
+                return;
+            }
+
             if (this.nowMessage.Count <= 0)
             {
                 this.Filter.SetActive(false);
@@ -1638,74 +1654,40 @@ namespace DungeonPlayer
                 tapOK();
             }
         }
+
         public void tapExit()
         {
-            groupYesnoSystemMessage.SetActive(true);
-            // todo
-            //if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
-            //{
-            //    if (!GroundOne.WE2.AutoSaveInfo)
-            //    {
-            //        using (TruthPlayerInformation TPI = new TruthPlayerInformation())
-            //        {
-            //            TPI.StartPosition = FormStartPosition.CenterParent;
-            //            TPI.SetupMessage = "ここまでの記録は自動セーブとなります。次回起動は、ここから再開となります。";
-            //            TPI.ShowDialog();
-            //        }
-            //        GroundOne.WE2.AutoSaveInfo = true;
-            //        Method.AutoSaveTruthWorldEnvironment();
-            //        Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, this.knownTileInfo, this.knownTileInfo2, this.knownTileInfo3, this.knownTileInfo4, this.knownTileInfo5, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
-            //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            //        return;
-            //    }
-            //    else
-            //    {
-            //        Method.AutoSaveTruthWorldEnvironment();
-            //        Method.AutoSaveRealWorld(this.MC, this.SC, this.TC, this.WE, this.knownTileInfo, this.knownTileInfo2, this.knownTileInfo3, this.knownTileInfo4, this.knownTileInfo5, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
-            //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            //        return;
-            //    }
-            //}
+            Debug.Log("tapExit (S)");
 
-            // todo
-            //using (YesNoReqWithMessage ynrw = new YesNoReqWithMessage())
-            //{
-            //    ynrw.StartPosition = FormStartPosition.CenterParent;
-            //    ynrw.MainMessage = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
-            //    ynrw.ShowDialog();
-            //    if (ynrw.DialogResult == DialogResult.Yes)
-            //    {
-            //        using (ESCMenu esc = new ESCMenu())
-            //        {
-            //            esc.MC = this.MC;
-            //            esc.SC = this.SC;
-            //            esc.TC = this.TC;
-            //            esc.WE = this.WE;
-            //            esc.KnownTileInfo = this.knownTileInfo;
-            //            esc.KnownTileInfo2 = this.knownTileInfo2;
-            //            esc.KnownTileInfo3 = this.knownTileInfo3;
-            //            esc.KnownTileInfo4 = this.knownTileInfo4;
-            //            esc.KnownTileInfo5 = this.knownTileInfo5;
-            //            esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo; // 後編追加
-            //            esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2; // 後編追加
-            //            esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3; // 後編追加
-            //            esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4; // 後編追加
-            //            esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5; // 後編追加                        esc.StartPosition = FormStartPosition.CenterParent;
-            //            esc.StartPosition = FormStartPosition.CenterParent;
-            //            esc.OnlySave = true;
-            //            esc.ShowDialog();
-            //        }
-            //    }
-
-            //    ynrw.MainMessage = "タイトルへ戻りますか？";
-            //    ynrw.ShowDialog();
-            //    if (ynrw.DialogResult == DialogResult.Yes)
-            //    {
-            //        this.DialogResult = DialogResult.Cancel;
-            //    }
-            //}
-
-            //SceneDimension.Back();
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                // 現実世界
+                if (!GroundOne.WE2.AutoSaveInfo)
+                {
+                    Debug.Log("tapExit: 1");
+                    this.systemMessage.text = this.MESSAGE_AUTOSAVE_EXIT;
+                    this.systemMessagePanel.SetActive(true);
+                    this.Filter.SetActive(true);
+                    GroundOne.WE2.AutoSaveInfo = true;
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                    return;
+                }
+                else
+                {
+                    Debug.Log("tapExit: 2");
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                    SceneDimension.JumpToTitle();
+                    return;
+                }
+            }
+            else
+            {
+                // 通常セーブ
+                this.Filter.SetActive(true);
+                this.groupYesnoSystemMessage.SetActive(true);
+            }
         }
 
         public void CallStatusPlayer()

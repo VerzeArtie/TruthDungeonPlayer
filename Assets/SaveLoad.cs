@@ -163,7 +163,7 @@ namespace DungeonPlayer
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')); // todo
+                return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')); // after (ios)
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
@@ -1392,7 +1392,7 @@ namespace DungeonPlayer
             Debug.Log(DateTime.Now.ToString());
             Debug.Log("ExecLoad 8-1 " + DateTime.Now);
 
-            // todo
+            // after (もう少し早くならないか？
             //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
             //{
             //    string temp = xml.GetElementsByTagName("truthTileTwo" + ii.ToString())[0].InnerText;

@@ -526,7 +526,7 @@ namespace DungeonPlayer
 
         public void ExecChooseCommand(Text sender)
         {
-            // todo
+            // after (command listを戦闘画面開始に表示し、特定のコマンドを選択させる）
             //string chooseCommand = String.Empty;
             //    chooseCommand = tcc.ChooseCommand;
             //}
