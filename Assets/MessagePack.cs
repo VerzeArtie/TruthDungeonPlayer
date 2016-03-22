@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -67,6 +67,7 @@ namespace DungeonPlayer
             HomeTownGoToKahlhanz,
             HomeTownGotoFirstPlace,
             HomeTownExecRestInn,
+            HomeTownExecItemBank,
             HomeTownCallRequestFood,
             HomeTownAvailableDuel,
             HomeTownButtonHidden,
@@ -8405,6 +8406,15 @@ namespace DungeonPlayer
             GroundOne.WE2.SeekerEvent603 = true;
             Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
             Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+        }
+
+        public static void Message69993(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("ハンナ：荷物倉庫かい？ホラ、コッチだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownExecItemBank);
+
+            messageList.Add("ハンナ：また用があったら寄るんだね。"); eventList.Add(ActionEvent.None);
         }
 
         public static void Message69994(ref List<string> messageList, ref List<ActionEvent> eventList)
