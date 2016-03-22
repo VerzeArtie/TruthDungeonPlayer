@@ -27,6 +27,9 @@ namespace DungeonPlayer
         public GameObject systemMessagePanel;
         public Text systemMessage;
         public Camera cam;
+        public GameObject groupRestInnMenu;
+        public Button btnRestInn;
+        public Button btnItemBank;
         public GameObject groupDuelSelect;
         public Button btnOpponentInfo;
         public Button btnCheckDuelRule;
@@ -69,8 +72,8 @@ namespace DungeonPlayer
         private bool nowHideing = false;
         public string currentRequestFood = string.Empty;
 
-        bool forceSaveCall = false; // シナリオ進行上、強制セーブした後、”休息しました”を表示したいためのフラグ
-
+        bool forceSaveCall = false; // シナリオ進行上、強制セーブした後、”休息しました”を表示しするためのフラグ
+        bool nowRequestFood = false; // 宿屋で休息の後、”休息しました”を表示するためのフラグ
         private string MESSAGE_AUTOSAVE_EXIT = @"ここまでの記録は自動セーブとなります。次回起動は、ここから再開となります";
 
 	    // Use this for initialization
@@ -2279,9 +2282,13 @@ namespace DungeonPlayer
                     ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FIELD_OF_FIRSTPLACE);
                     this.cam.backgroundColor = UnityColor.WhiteSmoke;
                 }
-                else if (current == MessagePack.ActionEvent.HomeTownCallRestInn)
+                else if (current == MessagePack.ActionEvent.HomeTownExecRestInn)
                 {
-                    CallRestInn();
+                    ExecRestInn();
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownExecItemBank)
+                {
+                    ExecItemBank();
                 }
                 else if (current == MessagePack.ActionEvent.CallSomeMessageWithAnimation)
                 {
@@ -2399,7 +2406,6 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.PlayMusic13)
                 {
-                    // todo 他の画面、他の音楽も全て横展開が必要。Methodクラスで統一すべきである。
                     GroundOne.PlayDungeonMusic(Database.BGM13, Database.BGM13LoopBegin);
                 }
                 else if (current == MessagePack.ActionEvent.PlayMusic19)
@@ -2613,7 +2619,7 @@ namespace DungeonPlayer
             GroundOne.WE.AlreadyRest = true;
             ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
             cam.backgroundColor = Color.white;
-            CallRestInn();
+            ExecRestInn();
         }
         
         public void tapShop2()
@@ -2649,6 +2655,7 @@ namespace DungeonPlayer
             {
                 this.Filter.SetActive(false);
                 this.panelHide.gameObject.SetActive(false);
+                this.groupRestInnMenu.SetActive(false);
                 this.groupSelectCastleMenu.SetActive(false);
                 this.groupSelectDungeon.SetActive(false);
                 this.groupSelectGate.SetActive(false);
@@ -3000,57 +3007,50 @@ namespace DungeonPlayer
             #region "その他"
             else
             {
-                if (!GroundOne.WE.AlreadyRest)
+                if (GroundOne.WE.AvailableItemBank)
                 {
-                    MessagePack.Message69999(ref nowMessage, ref nowEvent);
-                    NormalTapOK();
+                    this.groupRestInnMenu.SetActive(true);
+                    this.Filter.SetActive(true);
                 }
                 else
                 {
-                    if (GroundOne.WE.AvailableItemBank)
-                    {
-                        // todo
-                        //using (SelectDungeon sd = new SelectDungeon())
-                        //{
-                        //    sd.StartPosition = FormStartPosition.Manual;
-                        //    sd.Location = new Point(this.Location.X + 350, this.Location.Y + 550);
-                        //    sd.MaxSelectable = 2;
-                        //    sd.FirstName = "会話";
-                        //    sd.SecondName = "倉庫";
-                        //    sd.ShowDialog();
-                        //    if (sd.TargetDungeon == -1)
-                        //    {
-                        //        return;
-                        //    }
-                        //    else if (sd.TargetDungeon == 1)
-                        //    {
-                        //        mainMessage.Text = "ハンナ：もう朝だよ。今日も頑張ってらっしゃい。";
-                        //    }
-                        //    else
-                        //    {
-                        //        UpdateMainMessage("ハンナ：荷物倉庫かい？ホラ、コッチだよ。", true);
-                        //        mainMessage.Update();
-                        //        System.Threading.Thread.Sleep(1000);
-                        //        CallItemBank();
-                        //        UpdateMainMessage("ハンナ：また用があったら寄るんだね。", true);
-                        //    }
-                        //}
-                    }
-                    else
-                    {
-                        MessagePack.Message69994(ref nowMessage, ref nowEvent);
-                        tapOK();
-                    }
+                    CallRestInn();
                 }
             }
             #endregion
         }
 
-        private void CallRestInn()
+        public void CallRestInn()
         {
-            CallRestInn(false);
+            if (!GrouneOne.WE.AlreadyRest)
+            {
+                MessagePack.Message69999(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else
+            {
+                MessagePack.Message69994(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
         }
-        private void CallRestInn(bool noAction)
+
+        public void CallItemBank()
+        {
+            MessagePack.Message69993(ref nowMessage, ref nowEvent);
+            NormalTapOK();
+        }
+
+        private void ExecItemBank()
+        {
+            this.Filter.SetActive();
+            SceneDimension.CallItemBank(this);
+        }
+
+        private void ExecRestInn()
+        {
+            ExecRestInn(false);
+        }
+        private void ExecRestInn(bool noAction)
         {
             ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
 
@@ -3093,18 +3093,12 @@ namespace DungeonPlayer
             {
                 GroundOne.PlaySoundEffect(Database.SOUND_REST_INN);
 
-                if (nowMessage.Count > 0)
+                MessagePack.Message69995(ref nowMessage, ref nowEvent);
+                if (nowMessage.Count <= 0)
                 {
-                    MessagePack.Message69995(ref nowMessage, ref nowEvent);
-                }
-                else
-                {
-                    MessagePack.Message69995(ref nowMessage, ref nowEvent);
                     NormalTapOK();
                 }
-            }
-            if (noAction == false)
-            {
+
                 if (WhoisDuelPlayer() != string.Empty)
                 {
                     DuelSupportMessage(SupportType.Begin, WhoisDuelPlayer());
@@ -3155,6 +3149,11 @@ namespace DungeonPlayer
             {
                 this.forceSaveCall = false;
                 HometownCommunicationStart();
+            }
+            else if (this.nowRequestFood)
+            {
+                this.nowRequestFood = false;
+                ExecRestInn();
             }
             else
             {
@@ -3224,10 +3223,133 @@ namespace DungeonPlayer
         {
         }
 
-        // todo
         private string WhoisDuelPlayer()
         {
-            return "";
+            string OpponentDuelist = string.Empty;
+
+            if (GroundOne.WE.AlreadyDuelComplete) return string.Empty;
+
+            int[] levelBorder = new int[22];
+            levelBorder[0] = 4;
+            levelBorder[1] = 7;
+            levelBorder[2] = 10;
+            levelBorder[3] = 13;
+            levelBorder[4] = 16;
+            levelBorder[5] = 20;
+            levelBorder[6] = 23;
+            levelBorder[7] = 26;
+            levelBorder[8] = 29;
+            levelBorder[9] = 32;
+            levelBorder[10] = 35;
+            levelBorder[11] = 38;
+            levelBorder[12] = 41;
+            levelBorder[13] = 44;
+            levelBorder[14] = 47;
+            levelBorder[15] = 50;
+            levelBorder[16] = 52;
+            levelBorder[17] = 54;
+            levelBorder[18] = 56;
+            levelBorder[19] = 58;
+            levelBorder[20] = 60;
+            levelBorder[21] = 999;
+
+            if (GroundOne.WE.AvailableDuelMatch && GroundOne.WE.MeetOlLandis)
+            {
+                // レベル上限に応じて対戦相手をスキップ移行するのを撤廃した。
+                // GroundOne.MC.Level <= levelBorder[x] - 1
+                // 階層毎にDUEL相手を制御する処理も撤廃した。
+                // !GroundOne.WE.TruthCompleteAreaX
+                if (levelBorder[0] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch1)
+                {
+                    OpponentDuelist = Database.DUEL_EONE_FULNEA;
+                }
+                else if (levelBorder[1] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch2)
+                {
+                    OpponentDuelist = Database.DUEL_MAGI_ZELKIS;
+                }
+                else if (levelBorder[2] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch3)
+                {
+                    OpponentDuelist = Database.DUEL_SELMOI_RO;
+                }
+                else if (levelBorder[3] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch4)
+                {
+                    OpponentDuelist = Database.DUEL_KARTIN_MAI;
+                }
+                else if (levelBorder[4] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch5)
+                {
+                    OpponentDuelist = Database.DUEL_JEDA_ARUS;
+                }
+                else if (levelBorder[5] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch6)
+                {
+                    OpponentDuelist = Database.DUEL_SINIKIA_VEILHANTU;
+                }
+                else if (levelBorder[6] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch7)
+                {
+                    OpponentDuelist = Database.DUEL_ADEL_BRIGANDY;
+                }
+                else if (levelBorder[7] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch8)
+                {
+                    OpponentDuelist = Database.DUEL_LENE_COLTOS;
+                }
+                else if (levelBorder[8] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch9)
+                {
+                    OpponentDuelist = Database.DUEL_SCOTY_ZALGE;
+                }
+                else if (levelBorder[9] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch10)
+                {
+                    OpponentDuelist = Database.DUEL_PERMA_WARAMY;
+                }
+                else if (levelBorder[10] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch11)
+                {
+                    OpponentDuelist = Database.DUEL_KILT_JORJU;
+                }
+                else if (levelBorder[11] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch12)
+                {
+                    OpponentDuelist = Database.DUEL_BILLY_RAKI;
+                }
+                else if (levelBorder[12] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch13)
+                {
+                    OpponentDuelist = Database.DUEL_ANNA_HAMILTON;
+                }
+                else if (levelBorder[13] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch14)
+                {
+                    OpponentDuelist = Database.DUEL_CALMANS_OHN;
+                }
+                else if (levelBorder[14] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch15)
+                {
+                    OpponentDuelist = Database.DUEL_SUN_YU;
+                }
+                else if (levelBorder[15] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch16)
+                {
+                    OpponentDuelist = Database.DUEL_SHUVALTZ_FLORE;
+                }
+                else if (levelBorder[16] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch17)
+                {
+                    OpponentDuelist = Database.DUEL_RVEL_ZELKIS;
+                }
+                else if (levelBorder[17] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch18)
+                {
+                    OpponentDuelist = Database.DUEL_VAN_HEHGUSTEL;
+                }
+                else if (levelBorder[18] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch19)
+                {
+                    OpponentDuelist = Database.DUEL_OHRYU_GENMA;
+                }
+                else if (levelBorder[19] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch20)
+                {
+                    OpponentDuelist = Database.DUEL_LADA_MYSTORUS;
+                }
+                else if (levelBorder[20] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch21)
+                {
+                    OpponentDuelist = Database.DUEL_SIN_OSCURETE;
+                }
+            }
+            else
+            {
+                OpponentDuelist = string.Empty;
+            }
+
+            return OpponentDuelist;
         }
 
         private void ChangeBackgroundData(string filename, float darkValue = 0)
@@ -3289,10 +3411,6 @@ namespace DungeonPlayer
             //g.Dispose();
 
             return newImg;
-        }
-        // todo
-        private void CallSomeMessageWithAnimation(string p)
-        {
         }
     }
 }
