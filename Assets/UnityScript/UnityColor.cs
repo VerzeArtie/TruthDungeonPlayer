@@ -50,7 +50,7 @@ namespace DungeonPlayer
         public static Color Lavenderblush = new Color(255, 240, 245);
         public static Color Snow = new Color(255, 250, 250);
         public static Color Yellow = new Color(255, 255, 0);
-        public static Color Gold = new Color(255, 215, 0);
+        public static Color Gold = new Color(255.0f / 255.0f, 215.0f / 255.0f, 0.0f / 255.0f);
         public static Color Orange = new Color(255, 165, 0);
         public static Color DarkOrange = new Color(1.0f, 140.0f / 255.0f, 0.0f);
         public static Color Goldenrod = new Color(218, 165, 32);
@@ -68,7 +68,7 @@ namespace DungeonPlayer
         public static Color Blanchedalmond = new Color(255, 235, 205);
         public static Color Papayawhip = new Color(255, 239, 213);
         public static Color Cornsilk = new Color(255, 248, 220);
-        public static Color Lightyellow = new Color(255, 255, 224);
+        public static Color LightYellow = new Color(1.0f, 1.0f, 224.0f / 255.0f);
         public static Color Lightgoldenrodyellow = new Color(250, 250, 210);
         public static Color Lemonchiffon = new Color(255, 250, 205);
         public static Color Antiquewhite = new Color(250, 235, 215);

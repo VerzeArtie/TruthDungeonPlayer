@@ -146,6 +146,7 @@ namespace DungeonPlayer
             
             // debug
             WE.AvailableDuelColosseum = true;
+            WE.AvailableItemBank = true;
 
             //MC.Level = 23;
             ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);

@@ -3022,7 +3022,8 @@ namespace DungeonPlayer
 
         public void CallRestInn()
         {
-            if (!GrouneOne.WE.AlreadyRest)
+            HideAllChild();
+            if (!GroundOne.WE.AlreadyRest)
             {
                 MessagePack.Message69999(ref nowMessage, ref nowEvent);
                 NormalTapOK();
@@ -3036,13 +3037,14 @@ namespace DungeonPlayer
 
         public void CallItemBank()
         {
+            HideAllChild();
             MessagePack.Message69993(ref nowMessage, ref nowEvent);
             NormalTapOK();
         }
 
         private void ExecItemBank()
         {
-            this.Filter.SetActive();
+            this.Filter.SetActive(true);
             SceneDimension.CallItemBank(this);
         }
 
