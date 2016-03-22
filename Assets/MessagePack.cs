@@ -66,7 +66,7 @@ namespace DungeonPlayer
             HomeTownTicketChoice,
             HomeTownGoToKahlhanz,
             HomeTownGotoFirstPlace,
-            HomeTownCallRestInn,
+            HomeTownExecRestInn,
             HomeTownCallRequestFood,
             HomeTownAvailableDuel,
             HomeTownButtonHidden,
@@ -8442,7 +8442,7 @@ namespace DungeonPlayer
 
             messageList.Add("ハンナ：あいよ、後は明日に備えてゆっくり休みな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallRestInn);
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownExecRestInn);
         }
 
         public static void Message69998(ref List<string> messageList, ref List<ActionEvent> eventList)
