@@ -15,6 +15,13 @@ namespace DungeonPlayer
             //scene.Filter.SetActive(true);
             Application.LoadLevelAdditive(Database.TruthRequestFood);
         }
+        
+        public static void CallItemBank(MotherForm scene)
+        {
+            GroundOne.ParentScene = scene;
+            Application.LoadLevelAdditive(Database.TruthItemBank);
+        }
+        
         public static void CallSaveLoad(string src, bool SaveMode, bool AfterBacktoTitle, MotherForm scene)
         {
             GroundOne.SaveMode = SaveMode;
