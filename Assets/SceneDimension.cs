@@ -21,6 +21,12 @@ namespace DungeonPlayer
             GroundOne.ParentScene = scene;
             Application.LoadLevelAdditive(Database.TruthItemBank);
         }
+
+        public static void CallPotionShop(MotherForm scene)
+        {
+            GroundOne.ParentScene = scene;
+            Application.LoadLevelAdditive(Database.TruthPotionShop);
+        }
         
         public static void CallSaveLoad(string src, bool SaveMode, bool AfterBacktoTitle, MotherForm scene)
         {
