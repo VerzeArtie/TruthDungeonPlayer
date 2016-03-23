@@ -9,7 +9,7 @@ namespace DungeonPlayer
 {
     public class TruthHomeTown : MotherForm
     {
-        enum SupportType
+        public enum SupportType
         {
             Begin,
             FromDuelGate,
@@ -75,6 +75,10 @@ namespace DungeonPlayer
         bool forceSaveCall = false; // シナリオ進行上、強制セーブした後、”休息しました”を表示しするためのフラグ
         bool nowRequestFood = false; // 宿屋で休息の後、”休息しました”を表示するためのフラグ
         private string MESSAGE_AUTOSAVE_EXIT = @"ここまでの記録は自動セーブとなります。次回起動は、ここから再開となります";
+
+        bool nowDuel = false;
+        string OpponentDuelist = string.Empty;
+        bool fromGoDungeon = false;
 
 	    // Use this for initialization
         public override void Start()
@@ -432,7 +436,6 @@ namespace DungeonPlayer
             #endregion
             else
             {
-                Debug.Log("shown else");
                 mainMessage.text = "アイン：さて、何すっかな";
             }
         }
@@ -475,17 +478,14 @@ namespace DungeonPlayer
             }
             else
             {
-                // todo
-                //string Opponent = WhoisDuelPlayer();
-                //if (Opponent != String.Empty)
-                //{
-                //    DuelSupportMessage(SupportType.FromDungeonGate, Opponent);
+                this.OpponentDuelist = WhoisDuelPlayer();
+                if (this.OpponentDuelist != string.Empty)
+                {
+                    DuelSupportMessage(SupportType.FromDungeonGate, this.OpponentDuelist);
 
-                //    CallDuel(Opponent, true);
-                //}
-                //else { }
-
-                if (GroundOne.WE.TruthCompleteArea1 == false)
+                    CallDuel(true);
+                }
+                else if (GroundOne.WE.TruthCompleteArea1 == false)
                 {
                     CallDungeon(1);
                 }
@@ -621,31 +621,35 @@ namespace DungeonPlayer
         }
 
 	    public void tapDuel() {
-            string Opponent = string.Empty;
-            #region "オル・ランディスを仲間にするところ"
-            if (GroundOne.WE.dungeonEvent226 && !GroundOne.WE.Truth_CommunicationOl22)
+            this.OpponentDuelist = WhoisDuelPlayer();
+            #region "Duel申請中"
+            if (!GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
             {
+                Debug.Log("4");
                 MessagePack.Message80001(ref nowMessage, ref nowEvent);
-                NormalTapOK();
-            }
-            #endregion
-            #region "２階開始時"
-            else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.Truth_CommunicationOl21)
-            {
-                MessagePack.Message80002(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "オル・ランディス遭遇"
             else if (GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
             {
+                Debug.Log("3");
+                MessagePack.Message80002(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "２階開始時"
+            else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.Truth_CommunicationOl21)
+            {
+                Debug.Log("2");
                 MessagePack.Message80003(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
-            #region "Duel申請中"
-            else if (!GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
+            #region "オル・ランディスを仲間にするところ"
+            else if (GroundOne.WE.dungeonEvent226 && !GroundOne.WE.Truth_CommunicationOl22)
             {
+                Debug.Log("1");
                 MessagePack.Message80004(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -653,6 +657,7 @@ namespace DungeonPlayer
             #region "３階開始時"
             else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.Truth_CommunicationOl31)
             {
+                Debug.Log("5");
                 MessagePack.Message80005(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -660,22 +665,24 @@ namespace DungeonPlayer
             #region "４階開始時"
             else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.Truth_CommunicationOl41)
             {
+                Debug.Log("6");
                 MessagePack.Message80006(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "条件に応じて、Duelを実施します。"
-            else if (WhoisDuelPlayer() != string.Empty && GroundOne.WE.AlreadyRest)
+            else if (this.OpponentDuelist != string.Empty && GroundOne.WE.AlreadyRest)
             {
-                string Opponent = WhoisDuelPlayer();
+                Debug.Log("7");
                 GroundOne.WE.AlreadyDuelComplete = true;
-                DuelSupportMessage(SupportType.FromDuelGate, Opponent);
-                CallDuel(Opponent, false);
+                DuelSupportMessage(SupportType.FromDuelGate, this.OpponentDuelist);
+                CallDuel(false);
             }
             #endregion
             #region "その他"
             else
             {
+                Debug.Log("8");
                 MessagePack.Message89999(ref nowMessage, ref nowEvent);
                 NormalTapOK();
                 // todo
@@ -768,6 +775,7 @@ namespace DungeonPlayer
                 {
                     systemMessagePanel.SetActive(false);
                     systemMessage.text = "";
+                    BattleStart(this.nowMessage[this.nowReading]);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownShowActiveSkillSpell)
                 {
@@ -872,10 +880,6 @@ namespace DungeonPlayer
                 {
                     this.forceSaveCall = true;
                     SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, this);
-                }
-                else if (current == MessagePack.ActionEvent.HomeTownCallDuel)
-                {
-                    BattleStart(nowMessage[this.nowReading]);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownGotoRealDungeon)
                 {
@@ -994,14 +998,28 @@ namespace DungeonPlayer
             }
         }
 
+
+        private void CallDuel(bool fromGoDungeon)
+        {
+            this.fromGoDungeon = fromGoDungeon;
+            MessagePack.Message89998(ref nowMessage, ref nowEvent, this.OpponentDuelist);
+            //NormalTapOK(); // ここでは不要
+        }
+
         private void BattleStart(string playerName)
         {
+            this.nowDuel = true;
             GroundOne.enemyName1 = playerName;
             GroundOne.enemyName2 = string.Empty;
             GroundOne.enemyName3 = string.Empty;
             GroundOne.StopDungeonMusic();
-            System.Threading.Thread.Sleep(500);
-            SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, true, false, false, false);
+            SceneDimension.CallTruthBattleEnemy(this, true, false, false, false);
+        }
+
+        private void BattleResult(bool duelWin)
+        {
+            MessagePack.Message89998_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, duelWin, this.fromGoDungeon);
+            NormalTapOK();
         }
 
         private void BlackOut()
@@ -1186,13 +1204,8 @@ namespace DungeonPlayer
         
         public void tapPotionShop()
         {
-            this.Filter(true);
+            this.Filter.SetActive(true);
             SceneDimension.CallPotionShop(this);
-            // todo potionshopの画面の先頭で以下を実施する事。
-            if (we.TruthCompleteArea1) we.AvailablePotion2 = true;
-            if (we.TruthCompleteArea2) we.AvailablePotion3 = true;
-            if (we.TruthCompleteArea3) we.AvailablePotion4 = true;
-            if (we.TruthCompleteArea4) we.AvailablePotion5 = true;
         }
 
         public void tapGate()
@@ -1668,9 +1681,10 @@ namespace DungeonPlayer
                     NormalTapOK();
                 }
 
-                if (WhoisDuelPlayer() != string.Empty)
+                this.OpponentDuelist = WhoisDuelPlayer();
+                if (this.OpponentDuelist != string.Empty)
                 {
-                    DuelSupportMessage(SupportType.Begin, WhoisDuelPlayer());
+                    DuelSupportMessage(SupportType.Begin, this.OpponentDuelist);
                 }
             }
         }
@@ -1708,6 +1722,7 @@ namespace DungeonPlayer
 
         public override void SceneBack()
         {
+            Debug.Log("SceneBack (S)");
             base.SceneBack();
             if (yesnoSystemMessage.text == Database.exitMessage4)
             {
@@ -1723,6 +1738,23 @@ namespace DungeonPlayer
             {
                 this.nowRequestFood = false;
                 ExecRestInn();
+            }
+            else if (this.nowDuel)
+            {
+                Debug.Log("SceneBack (nowDuel)");
+
+                this.nowDuel = false;
+                bool duelWin = false;
+                if (GroundOne.BattleResult == GroundOne.battleResult.OK)
+                {
+                    Debug.Log("duelWin is true");
+                    duelWin = true;
+                }
+                else
+                {
+                    Debug.Log("duelWin is still false...");
+                }
+                BattleResult(duelWin);
             }
             else
             {
@@ -1788,8 +1820,50 @@ namespace DungeonPlayer
         }
 
         // todo
-        private void DuelSupportMessage(SupportType supportType, string p)
+        private void DuelSupportMessage(SupportType type, string OpponentDuelist)
         {
+            string KIINA = "受付嬢";
+            if (GroundOne.WE.DuelWinZalge) KIINA = "キーナ";
+            else KIINA = "受付嬢";
+
+            int[] levelBorder = new int[22];
+            levelBorder[0] = 4;
+            levelBorder[1] = 7;
+            levelBorder[2] = 10;
+            levelBorder[3] = 13;
+            levelBorder[4] = 16;
+            levelBorder[5] = 20;
+            levelBorder[6] = 23;
+            levelBorder[7] = 26;
+            levelBorder[8] = 29;
+            levelBorder[9] = 32;
+            levelBorder[10] = 35;
+            levelBorder[11] = 38;
+            levelBorder[12] = 41;
+            levelBorder[13] = 44;
+            levelBorder[14] = 47;
+            levelBorder[15] = 50;
+            levelBorder[16] = 52;
+            levelBorder[17] = 54;
+            levelBorder[18] = 56;
+            levelBorder[19] = 58;
+            levelBorder[20] = 60;
+            levelBorder[21] = 999;
+
+            if (levelBorder[0] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch1 && !GroundOne.WE.TruthCompleteArea1)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90001(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90001_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
         }
 
         private string WhoisDuelPlayer()

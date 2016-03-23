@@ -65,7 +65,6 @@ namespace DungeonPlayer
         public static string titleName = "天下一品　ガンツの武具店";
 
         // TruthBattleEnemy
-        public static bool Battle_DuelMode = false; // DUELかどうか
         public static bool HiSpeedAnimation = false; // スタック合戦をハイスピードにするかどうか
         public static bool FinalBattle = false; // 最終戦かどうか
         public static bool LifeCountBattle = false; // 最終戦（ライフカウント方式）かどうか
@@ -147,6 +146,10 @@ namespace DungeonPlayer
             // debug
             WE.AvailableDuelColosseum = true;
             WE.AvailableItemBank = true;
+            WE.AvailableDuelMatch = true;
+            WE.MeetOlLandis = true;
+            WE.AlreadyRest = false;
+            WE.Truth_CommunicationFirstHomeTown = true;
 
             //MC.Level = 23;
             ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
@@ -235,6 +238,9 @@ namespace DungeonPlayer
             //MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
 
             //MC.DeadPlayer();
+            MC.Level = 4;
+            MC.Strength = 100;
+            MC.Agility = 100;
 
             MC.AvailableMana = true;
             MC.AvailableSkill = true;

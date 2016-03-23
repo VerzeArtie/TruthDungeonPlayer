@@ -7025,6 +7025,7 @@ namespace DungeonPlayer
             GroundOne.WE.Truth_CommunicationLana1 = true; // 初回一日目のみ、ラナ、ガンツ、ハンナの会話を聞いたかどうか判定するため、ここでTRUEとします。
         }
         #endregion
+
         #region "ガンツの武具店"
         public static void Message50000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -11309,7 +11310,319 @@ namespace DungeonPlayer
         #endregion
 
         #region "DUEL闘技場"
+        
         public static void Message80001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE.AlreadyRest)
+            {
+                messageList.Add("アイン：まだ、登録申請中みたいだ。明日まで待つとするか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：受付さんよ。俺の登録申請はまだか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【受付嬢：もうしばらくお待ちください。】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そっか、じゃあまたな。"); eventList.Add(ActionEvent.None);
+            }
+        }
+
+        public static void Message80002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            //    GroundOne.StopDungeonMusic();
+            //    GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin);
+
+            //    UpdateMainMessage("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】");
+
+            //    UpdateMainMessage("アイン：よお受付さん。今日はちょっと顔を出しただけなんだ。");
+
+            //    UpdateMainMessage("アイン：いやいや、ッホント。特に用事はねえんだ。");
+
+            //    UpdateMainMessage("アイン：邪魔したな、ッハッハッハ！");
+
+            //    UpdateMainMessage("アイン：っじゃ、また今度な！");
+
+            //    UpdateMainMessage("　　【【【　その瞬間。　アインは背筋の感触が無くなるほど凍りついた。　】】】");
+
+            //    UpdateMainMessage("ランディス：よぉ、ザコアイン。");
+
+            //    UpdateMainMessage("アイン：・・・人違いだ。俺はザコアインじゃねえ。");
+
+            //    UpdateMainMessage("ランディス：ほぉ、じゃあ誰なんだ？");
+
+            //    UpdateMainMessage("アイン：いや・・・");
+
+            //    UpdateMainMessage("ランディス：『いや、いやいやいや。』　か。");
+
+            //    UpdateMainMessage("ランディス：てめぇ。全っっっっっっ然成長してねえようだな。");
+
+            //    UpdateMainMessage("アイン：いや・・・っちょ、待っ、っちょ、ッタンマ！");
+
+            //    UpdateMainMessage("ランディス：はぁ？どうタンマなんだ？");
+
+            //    UpdateMainMessage("アイン：え？え、いや、っか、かかってくるんじゃ");
+
+            //    UpdateMainMessage("ランディス：前祝したいってワケか。よおおおおぉぉぉぉぉし！良い心構えだ。");
+
+            //    UpdateMainMessage("アイン：いや、違っ、っちょっちょちょ！タンマタンマタンマ！！");
+
+            //    GroundOne.StopDungeonMusic();
+
+            //    UpdateMainMessage("ランディス：死んでこいやああぁぁぁぁぁ！！！");
+
+            //    UpdateMainMessage("　　【　ドドドスドスドスドスドドドドドスドスドスドスドス　】");
+
+            //    UpdateMainMessage("　　【　ドガガガガガガドガガガガドドガガガガガガガガ　】");
+
+            //    UpdateMainMessage("　　【　ボボボボボボグッシャアアァァァァ・・・　】");
+
+            //    CallSomeMessageWithAnimation("－－－　アイン気絶から、１時間が経過して　－－－");
+
+            //    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+
+            //    UpdateMainMessage("アイン：ったく、ムチャクチャだぜ、ホント。。。いっつつつ・・・");
+
+            //    UpdateMainMessage("ランディス：てめぇ、ほんっとに成長してねえな。");
+
+            //    UpdateMainMessage("アイン：いきなり突っかかってくるのが悪いんだろうが。");
+
+            //    UpdateMainMessage("ランディス：いきなり突っかかってねえだろぉが。");
+
+            //    UpdateMainMessage("アイン：いや、何かそのこう・・・グォワアアアアって来るなっつうの。");
+
+            //    UpdateMainMessage("ランディス：シラネエな、んなの。");
+
+            //    UpdateMainMessage("ランディス：てめぇが弱すぎる。それだけだ。");
+
+            //    UpdateMainMessage("アイン：いや、まだＤＵＥＬする場所でも無い所で突っかかってくるなつうの。");
+
+            //    UpdateMainMessage("ランディス：いつだったら良いんだ？");
+
+            //    UpdateMainMessage("アイン：いや・・・いやいや、そうじゃなくて。");
+
+            //    UpdateMainMessage("ランディス：またか。その　『いや、いやいやいや。』");
+
+            //    UpdateMainMessage("アイン：いや、違う。そうじゃな・・");
+
+            //    UpdateMainMessage("ランディス：てめぇ、ＤＵＥＬに参戦するそうだな。");
+
+            //    UpdateMainMessage("アイン：え？ああ、参戦するさ。");
+
+            //    UpdateMainMessage("ランディス：俺様からザコアインへ、一言送ってやろうと思ってな。");
+
+            //    UpdateMainMessage("アイン：っな、何だよ？");
+
+            //    UpdateMainMessage("　　＜オル・ランディスは自分の足元へ指先を向け・・・＞");
+
+            //    UpdateMainMessage("ランディス：　　俺んトコまで、来てみせろ。　");
+
+            //    UpdateMainMessage("アイン：・・・ああ・・・当然さ！");
+
+            //    UpdateMainMessage("アイン：当然行ってやるさ！見てろよな！！");
+
+            //    UpdateMainMessage("　　＜オル・ランディスは少し微笑むと・・・＞");
+
+            //    UpdateMainMessage("ランディス：ッフ、まぁガンバレや。ザコアイン。");
+
+            //    CallSomeMessageWithAnimation("オル・ランディスはその場から立ち去っていった・・・");
+
+            //    UpdateMainMessage("アイン：っくそう。結局、殴られ損かよ・・・");
+
+            //    UpdateMainMessage("ラナ：っあ、アイン。いたいた♪");
+
+            //    UpdateMainMessage("アイン：ラナ。いつのまに来てたんだ？");
+
+            //    UpdateMainMessage("ラナ：アインが気絶してた場面ぐらいからよ♪");
+
+            //    UpdateMainMessage("アイン：俺が気絶してるトコ見られてたって事かよ。");
+
+            //    UpdateMainMessage("ラナ：でも本当、あんなに食らってるのに、意外とアイン元気よね。");
+
+            //    UpdateMainMessage("アイン：師匠は生命に危険を及ぼす急所攻撃はしねえタイプなんだ。");
+
+            //    UpdateMainMessage("アイン：だから、大概が気絶、もしくは病院送りが関の山ってワケさ。");
+
+            //    UpdateMainMessage("ラナ：病院送りになっちゃう人もいるのね。まあＤＵＥＬって言う以上しょうがないんだろうけど。");
+
+            //    UpdateMainMessage("ラナ：あ、そうそう。今日から参戦可能になったんでしょ？");
+
+            //    UpdateMainMessage("アイン：まあ、そうだな。せっかくだし、今日から対戦してみる所なんだが");
+
+            //    UpdateMainMessage("ラナ：ＤＵＥＬにおける詳細ルールは、見てみた？");
+
+            //    UpdateMainMessage("アイン：いや、まだだな。ラナは知ってるのか？");
+
+            //    UpdateMainMessage("ラナ：ううん、知らないわよ。");
+
+            //    UpdateMainMessage("ラナ：ＤＵＥＬ参戦者のみに通達されるみたいだし。私は登録してないからね。");
+
+            //    UpdateMainMessage("アイン：まあ、受付に聞いてみるとするか。おーい、受付さん。");
+
+            //    UpdateMainMessage("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】");
+
+            //    UpdateMainMessage("アイン：すまねえ、さっきは用事ねえって言ったんだが、ＤＵＥＬ詳細ルールっての見せてもらえるか？");
+
+            //    UpdateMainMessage("　　【受付嬢：アイン様ですね、了解いたしました。】");
+
+            //    UpdateMainMessage("　　＜受付係員は何か書かれている紙切れを１枚持ってきた。＞");
+
+            //    UpdateMainMessage("　　【受付嬢：アイン様に関するＤＵＥＬ詳細ルールはこの通りです。ご参照ください。】");
+
+            //    UpdateMainMessage("アイン：サンキュー！　この紙は、他の奴にも見せていいのか？");
+
+            //    UpdateMainMessage("　　【受付嬢：構いません。】");
+
+            //    UpdateMainMessage("アイン：そっか、わざわざありがとな。");
+
+            //    UpdateMainMessage("アイン：ラナ、もらってきたぞ。じゃあ、見てみるか。");
+
+            //    UpdateMainMessage("ラナ：うん、何て書いてある？");
+
+            //    UpdateMainMessage("アイン：どれどれ・・・");
+
+            //    using (TruthDuelRule tdr = new TruthDuelRule())
+            //    {
+            //        tdr.StartPosition = FormStartPosition.CenterParent;
+            //        tdr.ShowDialog();
+            //    }
+
+            //    UpdateMainMessage("アイン：なるほどな。大体分かったぜ。");
+
+            //    UpdateMainMessage("ラナ：一応装備やステータス値なんかは見せてもらえるわけね。");
+
+            //    UpdateMainMessage("アイン：そうみたいだな。");
+
+            //    UpdateMainMessage("ラナ：そのかわり、こっちも一緒だから、お互い手の内が少し分かっちゃうわね。");
+
+            //    UpdateMainMessage("アイン：そうみたいだな。");
+
+            //    UpdateMainMessage("ラナ：ライフ０になった時点で勝敗が決まる。ってことは単純に相手を倒せば良いのよね。");
+
+            //    UpdateMainMessage("アイン：そうみたいだな。");
+
+            //    UpdateMainMessage("ラナ：今日は何か一緒に食べてく？");
+
+            //    UpdateMainMessage("アイン：そうみたいだな。");
+
+            //    UpdateMainMessage("　　　『シャゴオォォン！！』（ラナのドラスティックキックがアインのミゾオチに炸裂）　　");
+
+            //    UpdateMainMessage("アイン：っつうう・・・分かった、分かったって。");
+
+            //    UpdateMainMessage("アイン：っまあ、ちょっと１回だけ対戦させてくれ。その後で、飯食べにいこうぜ。");
+
+            //    UpdateMainMessage("ラナ：ん、じゃあ待ってるわね。やるからには、ちゃんと勝ってよね♪");
+
+            //    UpdateMainMessage("アイン：ああ、任せとけって！ッハッハッハ！！");
+
+            //    we.MeetOlLandis = true;
+            //    return;
+            //}
+        }
+        
+        public static void Message80003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よお受付さん。今日もちょっと顔を出しただけだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っじゃな！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　その瞬間。　アインは背筋の感触が無くなるほど凍りついた。　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：よぉ。わざわざご苦労なこった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：きょ、今日は用事があって来た。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ほぉ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：解いたぜ、１階。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：やるじゃねえか。大したもんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：このまま、進むぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：２階制覇も楽勝さ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ッフ、まあがんばれや。ザコアイン。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：待て、今日はそういう話をしに来たんじゃねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：師匠、お願いがあるんだ。聞いてくれるか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：言ってみろ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：師匠もダンジョンへ一緒に来てくれないか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：駄目だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・そうか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：少しは成長してるみてえじゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・え？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：何でもねえ。オラ！！とっとと２階制覇してきやがれ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え、っちょっオワワワワ！っちょちょちょ！！タンマタンマタンマ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　ズドッドドドドドッドドォォドドドド　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　メキボグッシャアァァァ・・・　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("---- アイン気絶から、１時間が経過して ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("ラナ：っで、断られちゃったわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうみたいだな。イッツツツ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも良く誘う気になれたわね？自殺行為じゃない？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でもさ。師匠が入れば、神がかり的にパワーアップするだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うーん、まあランディスのお師匠さんが居てくれたら心強いわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でもこんな理由じゃ仲間に入ってくれないよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうよね・・・う～ん・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、良いんだ。行こうぜ２階。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：良いの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、今はこのまま進むしかねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いずれ入ってくれるキッカケのようなモノを作ってみせるさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っそうね。じゃ、２階制覇に向けて頑張りましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.Truth_CommunicationOl21 = true;
+        }
+
+        public static void Message80004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             //    //we.Truth_CommunicationOl22 = true;
             //    if (!we.Truth_CommunicationOl22Fail)
@@ -12223,317 +12536,6 @@ namespace DungeonPlayer
             //}
         }
 
-        public static void Message80002(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-            //    GroundOne.StopDungeonMusic();
-            //    GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin);
-
-            //    UpdateMainMessage("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】");
-
-            //    UpdateMainMessage("アイン：よお受付さん。今日もちょっと顔を出しただけだ。");
-
-            //    UpdateMainMessage("アイン：っじゃな！ッハッハッハ！");
-
-            //    UpdateMainMessage("　　【【【　その瞬間。　アインは背筋の感触が無くなるほど凍りついた。　】】】");
-
-            //    UpdateMainMessage("ランディス：よぉ。わざわざご苦労なこった。");
-
-            //    UpdateMainMessage("アイン：きょ、今日は用事があって来た。");
-
-            //    UpdateMainMessage("ランディス：ほぉ？");
-
-            //    UpdateMainMessage("アイン：解いたぜ、１階。");
-
-            //    UpdateMainMessage("ランディス：やるじゃねえか。大したもんだ。");
-
-            //    UpdateMainMessage("アイン：このまま、進むぜ。");
-
-            //    UpdateMainMessage("アイン：２階制覇も楽勝さ！ッハッハッハ！");
-
-            //    UpdateMainMessage("ランディス：ッフ、まあがんばれや。ザコアイン。");
-
-            //    UpdateMainMessage("アイン：待て、今日はそういう話をしに来たんじゃねえ。");
-
-            //    UpdateMainMessage("アイン：師匠、お願いがあるんだ。聞いてくれるか？");
-
-            //    UpdateMainMessage("ランディス：言ってみろ。");
-
-            //    UpdateMainMessage("アイン：師匠もダンジョンへ一緒に来てくれないか？");
-
-            //    UpdateMainMessage("ランディス：・・・");
-
-            //    UpdateMainMessage("ランディス：・・・");
-
-            //    UpdateMainMessage("アイン：・・・");
-
-            //    UpdateMainMessage("ランディス：・・・");
-
-            //    UpdateMainMessage("ランディス：・・・");
-
-            //    UpdateMainMessage("ランディス：・・・");
-
-            //    UpdateMainMessage("アイン：・・・");
-
-            //    UpdateMainMessage("ランディス：駄目だな。");
-
-            //    UpdateMainMessage("アイン：・・・そうか。");
-
-            //    UpdateMainMessage("ランディス：少しは成長してるみてえじゃねえか。");
-
-            //    UpdateMainMessage("アイン：・・・え？");
-
-            //    UpdateMainMessage("ランディス：何でもねえ。オラ！！とっとと２階制覇してきやがれ！！！");
-
-            //    UpdateMainMessage("アイン：え、っちょっオワワワワ！っちょちょちょ！！タンマタンマタンマ！！！");
-
-            //    UpdateMainMessage("　　【　ズドッドドドドドッドドォォドドドド　】");
-
-            //    UpdateMainMessage("　　【　メキボグッシャアァァァ・・・　】");
-
-            //    CallSomeMessageWithAnimation("－－－　アイン気絶から、１時間が経過して　－－－");
-
-            //    GroundOne.StopDungeonMusic();
-            //    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
-
-            //    UpdateMainMessage("ラナ：っで、断られちゃったわけ？");
-
-            //    UpdateMainMessage("アイン：そうみたいだな。イッツツツ・・・");
-
-            //    UpdateMainMessage("ラナ：でも良く誘う気になれたわね？自殺行為じゃない？？");
-
-            //    UpdateMainMessage("アイン：でもさ。師匠が入れば、神がかり的にパワーアップするだろ？");
-
-            //    UpdateMainMessage("ラナ：うーん、まあランディスのお師匠さんが居てくれたら心強いわね。");
-
-            //    UpdateMainMessage("アイン：でもこんな理由じゃ仲間に入ってくれないよな。");
-
-            //    UpdateMainMessage("ラナ：そうよね・・・う～ん・・・");
-
-            //    UpdateMainMessage("アイン：いやいや、良いんだ。行こうぜ２階。");
-
-            //    UpdateMainMessage("ラナ：良いの？");
-
-            //    UpdateMainMessage("アイン：ああ、今はこのまま進むしかねえ。");
-
-            //    UpdateMainMessage("アイン：いずれ入ってくれるキッカケのようなモノを作ってみせるさ。");
-
-            //    UpdateMainMessage("ラナ：っそうね。じゃ、２階制覇に向けて頑張りましょ♪");
-
-            //    UpdateMainMessage("アイン：ああ！", true);
-
-            //    we.Truth_CommunicationOl21 = true;
-            //    return;
-        }
-
-        public static void Message80003(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-            //    GroundOne.StopDungeonMusic();
-            //    GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin);
-
-            //    UpdateMainMessage("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】");
-
-            //    UpdateMainMessage("アイン：よお受付さん。今日はちょっと顔を出しただけなんだ。");
-
-            //    UpdateMainMessage("アイン：いやいや、ッホント。特に用事はねえんだ。");
-
-            //    UpdateMainMessage("アイン：邪魔したな、ッハッハッハ！");
-
-            //    UpdateMainMessage("アイン：っじゃ、また今度な！");
-
-            //    UpdateMainMessage("　　【【【　その瞬間。　アインは背筋の感触が無くなるほど凍りついた。　】】】");
-
-            //    UpdateMainMessage("ランディス：よぉ、ザコアイン。");
-
-            //    UpdateMainMessage("アイン：・・・人違いだ。俺はザコアインじゃねえ。");
-
-            //    UpdateMainMessage("ランディス：ほぉ、じゃあ誰なんだ？");
-
-            //    UpdateMainMessage("アイン：いや・・・");
-
-            //    UpdateMainMessage("ランディス：『いや、いやいやいや。』　か。");
-
-            //    UpdateMainMessage("ランディス：てめぇ。全っっっっっっ然成長してねえようだな。");
-
-            //    UpdateMainMessage("アイン：いや・・・っちょ、待っ、っちょ、ッタンマ！");
-
-            //    UpdateMainMessage("ランディス：はぁ？どうタンマなんだ？");
-
-            //    UpdateMainMessage("アイン：え？え、いや、っか、かかってくるんじゃ");
-
-            //    UpdateMainMessage("ランディス：前祝したいってワケか。よおおおおぉぉぉぉぉし！良い心構えだ。");
-
-            //    UpdateMainMessage("アイン：いや、違っ、っちょっちょちょ！タンマタンマタンマ！！");
-
-            //    GroundOne.StopDungeonMusic();
-
-            //    UpdateMainMessage("ランディス：死んでこいやああぁぁぁぁぁ！！！");
-
-            //    UpdateMainMessage("　　【　ドドドスドスドスドスドドドドドスドスドスドスドス　】");
-
-            //    UpdateMainMessage("　　【　ドガガガガガガドガガガガドドガガガガガガガガ　】");
-
-            //    UpdateMainMessage("　　【　ボボボボボボグッシャアアァァァァ・・・　】");
-
-            //    CallSomeMessageWithAnimation("－－－　アイン気絶から、１時間が経過して　－－－");
-
-            //    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
-
-            //    UpdateMainMessage("アイン：ったく、ムチャクチャだぜ、ホント。。。いっつつつ・・・");
-
-            //    UpdateMainMessage("ランディス：てめぇ、ほんっとに成長してねえな。");
-
-            //    UpdateMainMessage("アイン：いきなり突っかかってくるのが悪いんだろうが。");
-
-            //    UpdateMainMessage("ランディス：いきなり突っかかってねえだろぉが。");
-
-            //    UpdateMainMessage("アイン：いや、何かそのこう・・・グォワアアアアって来るなっつうの。");
-
-            //    UpdateMainMessage("ランディス：シラネエな、んなの。");
-
-            //    UpdateMainMessage("ランディス：てめぇが弱すぎる。それだけだ。");
-
-            //    UpdateMainMessage("アイン：いや、まだＤＵＥＬする場所でも無い所で突っかかってくるなつうの。");
-
-            //    UpdateMainMessage("ランディス：いつだったら良いんだ？");
-
-            //    UpdateMainMessage("アイン：いや・・・いやいや、そうじゃなくて。");
-
-            //    UpdateMainMessage("ランディス：またか。その　『いや、いやいやいや。』");
-
-            //    UpdateMainMessage("アイン：いや、違う。そうじゃな・・");
-
-            //    UpdateMainMessage("ランディス：てめぇ、ＤＵＥＬに参戦するそうだな。");
-
-            //    UpdateMainMessage("アイン：え？ああ、参戦するさ。");
-
-            //    UpdateMainMessage("ランディス：俺様からザコアインへ、一言送ってやろうと思ってな。");
-
-            //    UpdateMainMessage("アイン：っな、何だよ？");
-
-            //    UpdateMainMessage("　　＜オル・ランディスは自分の足元へ指先を向け・・・＞");
-
-            //    UpdateMainMessage("ランディス：　　俺んトコまで、来てみせろ。　");
-
-            //    UpdateMainMessage("アイン：・・・ああ・・・当然さ！");
-
-            //    UpdateMainMessage("アイン：当然行ってやるさ！見てろよな！！");
-
-            //    UpdateMainMessage("　　＜オル・ランディスは少し微笑むと・・・＞");
-
-            //    UpdateMainMessage("ランディス：ッフ、まぁガンバレや。ザコアイン。");
-
-            //    CallSomeMessageWithAnimation("オル・ランディスはその場から立ち去っていった・・・");
-
-            //    UpdateMainMessage("アイン：っくそう。結局、殴られ損かよ・・・");
-
-            //    UpdateMainMessage("ラナ：っあ、アイン。いたいた♪");
-
-            //    UpdateMainMessage("アイン：ラナ。いつのまに来てたんだ？");
-
-            //    UpdateMainMessage("ラナ：アインが気絶してた場面ぐらいからよ♪");
-
-            //    UpdateMainMessage("アイン：俺が気絶してるトコ見られてたって事かよ。");
-
-            //    UpdateMainMessage("ラナ：でも本当、あんなに食らってるのに、意外とアイン元気よね。");
-
-            //    UpdateMainMessage("アイン：師匠は生命に危険を及ぼす急所攻撃はしねえタイプなんだ。");
-
-            //    UpdateMainMessage("アイン：だから、大概が気絶、もしくは病院送りが関の山ってワケさ。");
-
-            //    UpdateMainMessage("ラナ：病院送りになっちゃう人もいるのね。まあＤＵＥＬって言う以上しょうがないんだろうけど。");
-
-            //    UpdateMainMessage("ラナ：あ、そうそう。今日から参戦可能になったんでしょ？");
-
-            //    UpdateMainMessage("アイン：まあ、そうだな。せっかくだし、今日から対戦してみる所なんだが");
-
-            //    UpdateMainMessage("ラナ：ＤＵＥＬにおける詳細ルールは、見てみた？");
-
-            //    UpdateMainMessage("アイン：いや、まだだな。ラナは知ってるのか？");
-
-            //    UpdateMainMessage("ラナ：ううん、知らないわよ。");
-
-            //    UpdateMainMessage("ラナ：ＤＵＥＬ参戦者のみに通達されるみたいだし。私は登録してないからね。");
-
-            //    UpdateMainMessage("アイン：まあ、受付に聞いてみるとするか。おーい、受付さん。");
-
-            //    UpdateMainMessage("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】");
-
-            //    UpdateMainMessage("アイン：すまねえ、さっきは用事ねえって言ったんだが、ＤＵＥＬ詳細ルールっての見せてもらえるか？");
-
-            //    UpdateMainMessage("　　【受付嬢：アイン様ですね、了解いたしました。】");
-
-            //    UpdateMainMessage("　　＜受付係員は何か書かれている紙切れを１枚持ってきた。＞");
-
-            //    UpdateMainMessage("　　【受付嬢：アイン様に関するＤＵＥＬ詳細ルールはこの通りです。ご参照ください。】");
-
-            //    UpdateMainMessage("アイン：サンキュー！　この紙は、他の奴にも見せていいのか？");
-
-            //    UpdateMainMessage("　　【受付嬢：構いません。】");
-
-            //    UpdateMainMessage("アイン：そっか、わざわざありがとな。");
-
-            //    UpdateMainMessage("アイン：ラナ、もらってきたぞ。じゃあ、見てみるか。");
-
-            //    UpdateMainMessage("ラナ：うん、何て書いてある？");
-
-            //    UpdateMainMessage("アイン：どれどれ・・・");
-
-            //    using (TruthDuelRule tdr = new TruthDuelRule())
-            //    {
-            //        tdr.StartPosition = FormStartPosition.CenterParent;
-            //        tdr.ShowDialog();
-            //    }
-
-            //    UpdateMainMessage("アイン：なるほどな。大体分かったぜ。");
-
-            //    UpdateMainMessage("ラナ：一応装備やステータス値なんかは見せてもらえるわけね。");
-
-            //    UpdateMainMessage("アイン：そうみたいだな。");
-
-            //    UpdateMainMessage("ラナ：そのかわり、こっちも一緒だから、お互い手の内が少し分かっちゃうわね。");
-
-            //    UpdateMainMessage("アイン：そうみたいだな。");
-
-            //    UpdateMainMessage("ラナ：ライフ０になった時点で勝敗が決まる。ってことは単純に相手を倒せば良いのよね。");
-
-            //    UpdateMainMessage("アイン：そうみたいだな。");
-
-            //    UpdateMainMessage("ラナ：今日は何か一緒に食べてく？");
-
-            //    UpdateMainMessage("アイン：そうみたいだな。");
-
-            //    UpdateMainMessage("　　　『シャゴオォォン！！』（ラナのドラスティックキックがアインのミゾオチに炸裂）　　");
-
-            //    UpdateMainMessage("アイン：っつうう・・・分かった、分かったって。");
-
-            //    UpdateMainMessage("アイン：っまあ、ちょっと１回だけ対戦させてくれ。その後で、飯食べにいこうぜ。");
-
-            //    UpdateMainMessage("ラナ：ん、じゃあ待ってるわね。やるからには、ちゃんと勝ってよね♪");
-
-            //    UpdateMainMessage("アイン：ああ、任せとけって！ッハッハッハ！！");
-
-            //    we.MeetOlLandis = true;
-            //    return;
-            //}
-        }
-
-        public static void Message80004(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-            //    if (!GroundOne.WE.AlreadyRest)
-            //    {
-            //        UpdateMainMessage("アイン：まだ、登録申請中みたいだ。明日まで待つとするか。", true);
-            //    }
-            //    else
-            //    {
-            //        UpdateMainMessage("アイン：受付さんよ。俺の登録申請はまだか？");
-
-            //        UpdateMainMessage("　　【受付嬢：もうしばらくお待ちください。】");
-
-            //        UpdateMainMessage("アイン：そっか、じゃあまたな。", true);
-            //    }
-            //    return;
-        }
-
         public static void Message80005(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             //{
@@ -12786,7 +12788,205 @@ namespace DungeonPlayer
             //}
 
         }
-             
+
+        public static void Message89998(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist)
+        {
+            messageList.Add("　　【受付嬢：３】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：２】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：１】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：０】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(OpponentDuelist); eventList.Add(ActionEvent.HomeTownCallDuel);
+        }
+     
+        public static void Message89998_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, bool win, bool fromGoDungeon)
+        {
+            if (win)
+            {
+                GroundOne.WE2.DuelWin += 1;
+
+                messageList.Add("　　【受付嬢：勝者 アイン・ウォーレンス！】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ！俺の勝ちだぜ！！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                GroundOne.WE2.DuelLose += 1;
+                messageList.Add("　　【受付嬢：勝者 " + OpponentDuelist + "！】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ックソ・・・負けちまったか・・・"); eventList.Add(ActionEvent.None);
+            }
+
+            #region "ザルゲのDUEL戦闘後のセリフ"
+            if (OpponentDuelist == Database.DUEL_SCOTY_ZALGE)
+            {
+                if (win)
+                {
+                    GroundOne.WE.DuelWinZalge = true;
+
+                    messageList.Add("ザルゲ：ッゲホオオォ・・・ッグ・・・こんな雑魚に俺様が・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：雑魚で悪かったな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：ックソォォォ・・・っおい、キーナ嬢！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：今から言う話をよぉぉぉく聞いておけよ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：３０連勝がストップしたからと言って・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（アインは突然大声で・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ＤＵＥＬ大会運営の会長さんよ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：なあ、どっかに居るんだろ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（・・・観客が少しだけ、どよめき始めた・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：受付嬢って確か、ＤＵＥＬ運営サポートが役割なんだろ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：このままじゃ、ＤＵＥＬの運営全体に支障をきたすんじゃないのか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そうなる前にさ。サポートに徹する事が出来る環境にしてやってくれ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：頼んだぜ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（・・・ざわ・・・ザワザワザワ・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：お、おい、何くだらねえこと提言してんだよ！？あぁぁ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：んな会長なんてココら辺にいるわけねえだろうが！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：俺たちが認識できないほど気配を隠してるだけだ。必ずどこかで見てるはずさ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：って事は何か？俺に鉄槌でも下るってかぁ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：・・・・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：って何も起きねぇじゃねえか！！　ゲハハハハハハ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：さぁて、先程の続きだ、良いかぁキーナ嬢ちゃん！？実はなあ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（突然、ザルゲに閃光が放たれた！！！）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（ッピッッシイイイイイィィィィィ！！！）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：き、消えた・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ッサ・・・サンキューサンキュー！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（しばらくの間、闘技場では、アインへ賞賛の拍手が送られた）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（キーナ嬢さん、これから上手く行くと良いな・・・)"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【受付嬢：・・・（ッゴホン）】"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ザルゲ：アイン・ウォーレンス様、本日はありがっとォございました。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：これを持ちましてぇ・・・ええ僭越ながらキーナ嬢との婚約を行うが我が運命。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：その時はどうか婚儀の場へ・・・ック、ックククハハハ"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：お越しくださいませってかぁ！？　ゲハハハハハハ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っく・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：おい、キーナ嬢！　分かってんだろうなぁ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：逃げんじゃねぇぞ！？　逃げたらご両親様がどうなるか分かってんだろうなぁ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：おい、もうＤＵＥＬは終了してるんだ。関係の無い話はするな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：はあぁぁ！？負けた奴が何をほざいんてんだぁ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：負け犬はとっとと退場するんだな！ホレ、そこの受付嬢さん、転送を早く。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（・・・受付嬢は少し小刻みに震えている・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：おっとっと、ここの受付嬢はルール通りに動けずに立ち往生ってかぁ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ザルゲ：ゲハハハハハハ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ッチ・・・早く転送させて終わるんだ、キーナさん。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【受付嬢：それではＤＵＥＬは終了となります。両者とも転送させていただきます。】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　（ッバシュウウン・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（ここは・・・そうか、終わったのか）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【受付嬢：アイン様、現時点で" + GroundOne.WE2.DuelWin.ToString() + " 勝 " + GroundOne.WE2.DuelLose.ToString() + " 敗となります。】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：す、すまねえな・・・その・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【受付嬢：今後のご活躍、期待しております。それでは。】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、あぁ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（後味の悪い内容だな・・・ックソ・・・）"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.MC != null)
+                    {
+                        GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife;
+                        GroundOne.MC.CurrentSkillPoint = GroundOne.MC.MaxSkillPoint;
+                        GroundOne.MC.CurrentMana = GroundOne.MC.MaxMana;
+                    }
+                    return;
+                }
+            }
+            #endregion
+
+            messageList.Add("　　【受付嬢：アイン様、現時点で" + GroundOne.WE2.DuelWin.ToString() + " 勝 " + GroundOne.WE2.DuelLose.ToString() + " 敗となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：今後のご活躍、期待しております。それでは。】"); eventList.Add(ActionEvent.None);
+
+            if (fromGoDungeon)
+            {
+                messageList.Add("ダンジョンゲートの入り口へと強制送還されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            }
+            else
+            {
+                messageList.Add("DUEL闘技場の入り口ゲートへと送還されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            }
+
+            if (OpponentDuelist == Database.DUEL_EONE_FULNEA)
+            {
+                if (fromGoDungeon)
+                {
+                    messageList.Add("アイン：っと、終わったら即送還かよ。本当に有無を言わさずだな。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：っと、終わったら闘技場入り口へと送還されるのか。便利なシステムだな。"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (fromGoDungeon)
+            {
+                messageList.Add("アイン：さて、ダンジョン行くとするか！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：さて、DUELも終えた事だし、ダンジョンにでも行くとするか！"); eventList.Add(ActionEvent.None);
+            }
+
+            // [警告]：オブジェクトの参照が全ての場合、クラスにメソッドを用意してそれをコールした方がいい。
+            if (GroundOne.MC != null)
+            {
+                GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife;
+                GroundOne.MC.CurrentSkillPoint = GroundOne.MC.MaxSkillPoint;
+                GroundOne.MC.CurrentMana = GroundOne.MC.MaxMana;
+            }
+        }
+
         public static void Message89999(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
@@ -12797,6 +12997,123 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：っしゃ、対戦相手でも確認しておこうか。"); eventList.Add(ActionEvent.None);
         }
+        #endregion
+
+        #region "Duelist達の会話"
+        public static void Message90001(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist)
+        {
+            GroundOne.StopDungeonMusic();
+
+            messageList.Add("アイン：ん・・・もう６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おばちゃん、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、アインかい。ようやく起きたね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：そういえば、表に闘技場の受付が来てるよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ、マジかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：連絡事項があるそうだよ。早く行ってやんな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：わ、わかったぜ。サンキュー、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よう、闘技場の受付さんじゃねえか！　おはようっす！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：おはようございます、アイン様。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：DUEL対戦シード登録・・・つまり、今日が対戦日って事か？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：はい"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ・・・って、対戦相手は誰なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なお、本対戦はダンジョンへ赴く前に開催とさせていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日は、必ずDUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：えっと、ダンジョンへ直接向かったら駄目なのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日は、必ずDUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っとぉ・・・分かった・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、DUEL闘技場へと向かうぜ。了解了解！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：連絡事項は以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：ふう、今日がDUEL日ってワケか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、DUEL向けに準備でも整えるとするか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90001_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：よお、Duelの受付さんじゃねえか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：ッゲ！いきなりかよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っちょ、待ってくれよ。今からダンジョンなんだが。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    【受付嬢：DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：マジかよ。少し戦いの準備支度をしたいんだが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    【受付嬢：DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：本当有無を言わさずだな・・・次からは気をつけねえと。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：ああ、じゃあ転送してくれ。頼んだぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っと・・・ここは、突然闘技場の中央に飛ばされたのか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エオネ：よろしくお願いしますね。アインさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っあ、あぁ。　こちらこそ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("エオネ：はい"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch1 = true;
+        }
+
         #endregion
 
         #endregion

@@ -7134,18 +7134,21 @@ namespace DungeonPlayer
             }
             // System.Threading.Thread.Sleep(1000);
             GroundOne.BattleResult = GroundOne.battleResult.Abort;
-            SceneDimension.Back();
+            GroundOne.ParentScene.SceneBack();
+            Application.UnloadLevel(Database.TruthBattleEnemy);
         }
 
         public void GameOverYes_Click()
         {
             GroundOne.BattleResult = GroundOne.battleResult.Retry;
-            SceneDimension.Back();
+            GroundOne.ParentScene.SceneBack();
+            Application.UnloadLevel(Database.TruthBattleEnemy);
         }
         public void GameOverNo_Click()
         {
             GroundOne.BattleResult = GroundOne.battleResult.Ignore;
-            SceneDimension.Back();
+            GroundOne.ParentScene.SceneBack();
+            Application.UnloadLevel(Database.TruthBattleEnemy);
         }
 
         public void OnMouseEnterImage(Button sender)
@@ -7685,7 +7688,8 @@ namespace DungeonPlayer
             }
 
             Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
-            SceneDimension.Back();
+            GroundOne.ParentScene.SceneBack();
+            Application.UnloadLevel(Database.TruthBattleEnemy);
         }
 
         private void GetExpAndGold()

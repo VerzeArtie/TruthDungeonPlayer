@@ -70,14 +70,15 @@ namespace DungeonPlayer
             SceneDimension.Go(src, Database.TruthSelectEquipment);
         }
 
-        public static void CallTruthBattleEnemy(string src, bool duel, bool hiSpeed, bool final, bool lifecount)
+        public static void CallTruthBattleEnemy(MotherForm scene, bool duel, bool hiSpeed, bool final, bool lifecount)
         {
-            GroundOne.Battle_DuelMode = duel;
+            GroundOne.DuelMode = duel;
             GroundOne.HiSpeedAnimation = hiSpeed;
             GroundOne.FinalBattle = final;
             GroundOne.LifeCountBattle = lifecount;
             GroundOne.BattleResult = GroundOne.battleResult.None;
-            SceneDimension.Go(src, Database.TruthBattleEnemy);
+            GroundOne.ParentScene = scene;
+            Application.LoadLevelAdditive(Database.TruthBattleEnemy);
         }
 
         public static void CallTruthStatusPlayer(string src, MotherForm scene, bool onlySelectTrash, string itemName)

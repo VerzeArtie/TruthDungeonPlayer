@@ -279,7 +279,7 @@ namespace DungeonPlayer
                 //}
 
                 // DUELモードは現実世界でDUEL戦闘となった時に再戦を判断させたいため、一旦ここでfalse返しとする。
-                if (GroundOne.Battle_DuelMode)
+                if (GroundOne.DuelMode)
                 {
                     // todo 続きのメッセージを実装先へと繋いでください。
                 }
@@ -7115,7 +7115,7 @@ namespace DungeonPlayer
             CancelKeyDownMovement();
             GroundOne.StopDungeonMusic();
             System.Threading.Thread.Sleep(500);
-            SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, duel, hiSpeed, final, lifecount);
+            SceneDimension.CallTruthBattleEnemy(this, duel, hiSpeed, final, lifecount);
             return false;
         }
 
