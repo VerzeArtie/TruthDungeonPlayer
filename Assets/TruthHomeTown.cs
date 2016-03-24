@@ -1819,7 +1819,6 @@ namespace DungeonPlayer
             mainMessage.text = "";
         }
 
-        // todo
         private void DuelSupportMessage(SupportType type, string OpponentDuelist)
         {
             string KIINA = "受付嬢";
@@ -1850,7 +1849,8 @@ namespace DungeonPlayer
             levelBorder[20] = 60;
             levelBorder[21] = 999;
 
-            if (levelBorder[0] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch1 && !GroundOne.WE.TruthCompleteArea1)
+            #region "芋プログラミングだが、実効性重視で良しとする。"
+            if (levelBorder[0] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch1)
             {
                 if (type == SupportType.Begin)
                 {
@@ -1864,6 +1864,301 @@ namespace DungeonPlayer
                     NormalTapOK();
                 }
             }
+            else if (levelBorder[1] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch2)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90002(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90002_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[2] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch3)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90003(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90003_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[3] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch4)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90004(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90004_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[4] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch5)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90005(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90005_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[5] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch6)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90006(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90006_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[6] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch7)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90007(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90007_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[7] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch8)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90008(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90008_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[8] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch9)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90009(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90009_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[9] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch10)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90010(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90010_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[9] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch10)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90010(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90010_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[10] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch11)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90011(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90011_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[11] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch12)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90012(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90012_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[12] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch13)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90013(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90013_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[13] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch14)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90014(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90014_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[14] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch15)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90015(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90015_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[15] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch16)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90016(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90016_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[16] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch17)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90017(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90017_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[17] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch18)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90018(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90018_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[18] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch19)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90019(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90019_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[19] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch20)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90020(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90020_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            else if (levelBorder[20] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch21)
+            {
+                if (type == SupportType.Begin)
+                {
+                    MessagePack.Message90021(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    // NormalTapOK(); // ここでは不要
+                }
+                else if ((type == SupportType.FromDungeonGate) ||
+                            (type == SupportType.FromDuelGate))
+                {
+                    MessagePack.Message90021_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    NormalTapOK();
+                }
+            }
+            #endregion
         }
 
         private string WhoisDuelPlayer()
