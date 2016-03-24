@@ -245,6 +245,117 @@ namespace DungeonPlayer
             // todo
         }
 
+        // 街でオル・ランディスが外れる、４階最初でヴェルゼが外れる、４階エリア３でラナが外れるのを統合
+        public static void RemoveParty(MainCharacter player)
+        {
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                GroundOne.WE.AvailableThirdCharacter = false;
+            }
+            else if (GroundOne.WE.AvailableSecondCharacter)
+            {
+                GroundOne.WE.AvailableSecondCharacter = false;
+            }
+
+            string[] itemBank = new string[Database.MAX_ITEM_BANK];
+            int[] itemBankStack = new int[Database.MAX_ITEM_BANK];
+            int current = 0;
+
+            string[] beforeItem = new string[Database.MAX_ITEM_BANK];
+            int[] beforeStack = new int[Database.MAX_ITEM_BANK];
+            GroundOne.WE.LoadItemBankData(ref beforeItem, ref beforeStack);
+            for (int ii = 0; ii < beforeItem.Length; ii++)
+            {
+                if (beforeItem[ii] == String.Empty || beforeItem[ii] == "" || beforeItem[ii] == null)
+                {
+                    // 空っぽの場合、何も追加しない。
+                }
+                else
+                {
+                    itemBank[current] = beforeItem[ii];
+                    itemBankStack[current] = beforeStack[ii];
+                    current++;
+                }
+            }
+
+            if (player.MainWeapon != null)
+            {
+                if ((player.MainWeapon.Name != Database.POOR_GOD_FIRE_GLOVE_REPLICA) &&
+                    (player.MainWeapon.Name != Database.RARE_WHITE_SILVER_SWORD_REPLICA) &&
+                    (player.MainWeapon.Name != String.Empty))
+                {
+                    itemBank[current] = player.MainWeapon.Name;
+                    itemBankStack[current] = 1;
+                    current++;
+                }
+            }
+            if (player.SubWeapon != null)
+            {
+                if ((player.SubWeapon.Name != Database.POOR_GOD_FIRE_GLOVE_REPLICA) &&
+                    (player.SubWeapon.Name != Database.RARE_WHITE_SILVER_SWORD_REPLICA) &&
+                    (player.SubWeapon.Name != String.Empty))
+                {
+                    itemBank[current] = player.SubWeapon.Name;
+                    itemBankStack[current] = 1;
+                    current++;
+                }
+            }
+            if (player.MainArmor != null)
+            {
+                if ((player.MainArmor.Name != Database.COMMON_AURA_ARMOR) &&
+                    (player.MainArmor.Name != Database.RARE_BLACK_AERIAL_ARMOR_REPLICA) &&
+                    (player.MainWeapon.Name != String.Empty))
+                {
+                    itemBank[current] = player.MainArmor.Name;
+                    itemBankStack[current] = 1;
+                    current++;
+                }
+            }
+            if (player.Accessory != null)
+            {
+                if ((player.Accessory.Name != Database.COMMON_FATE_RING) &&
+                    (player.Accessory.Name != Database.COMMON_LOYAL_RING) &&
+                    (player.Accessory.Name != Database.RARE_HEAVENLY_SKY_WING_REPLICA) &&
+                    (player.MainWeapon.Name != String.Empty))
+                {
+                    itemBank[current] = player.Accessory.Name;
+                    itemBankStack[current] = 1;
+                    current++;
+                }
+            }
+            if (player.Accessory2 != null)
+            {
+                if ((player.Accessory2.Name != Database.COMMON_FATE_RING) &&
+                    (player.Accessory2.Name != Database.COMMON_LOYAL_RING) &&
+                    (player.Accessory2.Name != Database.RARE_HEAVENLY_SKY_WING_REPLICA) &&
+                    (player.MainWeapon.Name != String.Empty))
+                {
+                    itemBank[current] = player.Accessory2.Name;
+                    itemBankStack[current] = 1;
+                    current++;
+                }
+            }
+            ItemBackPack[] backpackInfo = player.GetBackPackInfo();
+            for (int ii = 0; ii < backpackInfo.Length; ii++)
+            {
+                if (backpackInfo[ii] != null)
+                {
+                    if ((backpackInfo[ii].Name != Database.POOR_GOD_FIRE_GLOVE_REPLICA) &&
+                        (backpackInfo[ii].Name != Database.COMMON_AURA_ARMOR) &&
+                        (backpackInfo[ii].Name != Database.COMMON_FATE_RING) &&
+                        (backpackInfo[ii].Name != Database.COMMON_LOYAL_RING) &&
+                        (backpackInfo[ii].Name != Database.RARE_WHITE_SILVER_SWORD_REPLICA) &&
+                        (backpackInfo[ii].Name != Database.RARE_BLACK_AERIAL_ARMOR_REPLICA) &&
+                        (backpackInfo[ii].Name != Database.RARE_HEAVENLY_SKY_WING_REPLICA))
+                    {
+                        itemBank[current] = backpackInfo[ii].Name;
+                        itemBankStack[current] = backpackInfo[ii].StackValue;
+                        current++;
+                    }
+                }
+            }
+            GroundOne.WE.UpdateItemBankData(itemBank, itemBankStack);
+        }
 
         // 戦闘終了後のアイテムゲット、ファージル宮殿お楽しみ抽選券のアイテムゲットを統合
         public static string GetNewItem(NewItemCategory category, MainCharacter mc, TruthEnemyCharacter ec1 = null, int dungeonArea = 0)
