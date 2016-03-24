@@ -2413,6 +2413,8 @@ namespace DungeonPlayer
         // 後編初日
         public static void Message20100(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownBlackOut);
 
             if (GroundOne.WE2.TruthBadEnd1)
@@ -2493,7 +2495,7 @@ namespace DungeonPlayer
             GroundOne.WE.Truth_CommunicationFirstHomeTown = true;
             GroundOne.WE.AlreadyRest = true; // 朝起きたときからスタートとする。
 
-            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
         }
         
         // 看板「始まりの地」を見たとき
@@ -5181,7 +5183,9 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownButtonHidden);
 
-            GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
 
             messageList.Add("　　　＜＜＜　号外！！！　＞＞＞　"); eventList.Add(ActionEvent.None);
 
@@ -5255,7 +5259,9 @@ namespace DungeonPlayer
 
             messageList.Add("　　　【どことなく、優しく笑っているように見えた】"); eventList.Add(ActionEvent.None);
 
-            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
 
             messageList.Add("ラナ：笑っているように・・・"); eventList.Add(ActionEvent.None);
 
@@ -11329,8 +11335,9 @@ namespace DungeonPlayer
 
         public static void Message80002(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            //    GroundOne.StopDungeonMusic();
-            //    GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
 
             //    UpdateMainMessage("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】");
 
@@ -11378,7 +11385,9 @@ namespace DungeonPlayer
 
             //    CallSomeMessageWithAnimation("－－－　アイン気絶から、１時間が経過して　－－－");
 
-            //    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
 
             //    UpdateMainMessage("アイン：ったく、ムチャクチャだぜ、ホント。。。いっつつつ・・・");
 
@@ -11627,8 +11636,9 @@ namespace DungeonPlayer
             //    //we.Truth_CommunicationOl22 = true;
             //    if (!we.Truth_CommunicationOl22Fail)
             //    {
-            //        GroundOne.StopDungeonMusic();
-            //        GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin);
+                        messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                        messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
 
             //        UpdateMainMessage("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】");
 
@@ -12306,8 +12316,9 @@ namespace DungeonPlayer
             //            return;
             //        } // 正解してない場合、この時点で一旦設問終了
 
-            //        GroundOne.StopDungeonMusic();
-            //        GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin);
+                        messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                        messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
 
             //        if (!we.Truth_CommunicationOl22DuelFail)
             //        {
@@ -13000,9 +13011,10 @@ namespace DungeonPlayer
         #endregion
 
         #region "Duelist達の会話"
-        public static void Message90001(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist)
+        #region "エオネ・フルネア"
+        public static void Message90001(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
         {
-            GroundOne.StopDungeonMusic();
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：ん・・・もう６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
 
@@ -13017,8 +13029,6 @@ namespace DungeonPlayer
             messageList.Add("ハンナ：連絡事項があるそうだよ。早く行ってやんな。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：わ、わかったぜ。サンキュー、おばちゃん。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
 
@@ -13113,7 +13123,2872 @@ namespace DungeonPlayer
 
             GroundOne.WE.TruthDuelMatch1 = true;
         }
+        #endregion
 
+        #region "マーギ・ゼルキス"
+        public static void Message90002(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・もう６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：そうそう、また来てるわよ、闘技場の受付。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：グア・・・DUEL通達か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：待たせちゃ悪いからね、早く行ってやんな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、じゃちょっくら挨拶してくるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よう、受付さん、今日もいい天気だな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そっか、じゃあ今日がDUEL開始日ってワケだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ところで、対戦相手は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なお、本対戦はダンジョンへ赴く前に開催とさせていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日、DUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、分かったぜ。連絡サンキューな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：連絡は以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：ふう・・・さてと"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オーケー、DUEL準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90002_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ゼルキス：貴様がアインとか言うヤツか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゼルキス：潰してやるぜ。アイン。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、やれるもんならやってみろ。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch2 = true;
+        }
+        #endregion
+
+        #region "セルモイ・ロウ"
+        public static void Message90003(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・もう６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、闘技場の受付だよ、行ってやんな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：DUEL通達か、了解了解。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いつも悪いな、朝早くから"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：いえ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：連絡サンキュー。　対戦相手の名前は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なお、本対戦はダンジョンへ赴く前に開催とさせていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日、DUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それはそうと、何でダンジョンへ赴く前じゃないと駄目なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：それは・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：ともかく、DUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああ。　オーケー。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：受付だから、余計な事までは喋れないって感じなのか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあいいや、DUELの準備するか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90003_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("セルモイ：よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、よろしくな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("セルモイ：本気で行きます！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、かかってこい！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch3 = true;
+        }
+        #endregion
+
+        #region "カーティン・マイ"
+        public static void Message90004(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・もう６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、闘技場の受付だよ、行ってやんな"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オーケー"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いつも俺より早く起きてるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：はい"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：対戦相手の名前は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なお、本対戦はダンジョンへ赴く前に開催とさせていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：前にも聞いたけどさ。　何でダンジョン行くのが禁止なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：禁止ではありません。ルールです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日、DUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、ダンジョンで少し強くなってからと思うんだが、どうだろう？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：認められておりません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っちょ、待ってくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なんでしょうか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：対戦相手は男性なのか？　それとも女性なのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：お答えいたしかねます。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：まあ、名前からして女性って気もするが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：女性相手だとやりにくいんだよなぁ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でもまあ、DUELだしな、万全の体制でいくか！"); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message90004_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("カーティン：私、最近調子が良いのよ。さあ、私の糧になってちょうだい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どうかな。そう簡単に糧になりはしないぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カーティン：容赦しないわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：こっちも本気で行くぜ！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch4 = true;
+        }
+        #endregion
+
+        #region "ジェダ・アルス"
+        public static void Message90005(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・５時４５分か。ちょっと早いけど起きるかな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、また来てるわよ、受付のお嬢ちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：もう来てるんだな。　いつも何時ぐらいに起きてるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：お答えいたしかねます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ぐぁ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ジェダ！？あの、大金持ち暮らしのボンボンかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：はい"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なお、本対戦はダンジョンへ赴く前に開催とさせていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：不慮の事故で、開催されなかった事って今まであるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：ありません"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日、DUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：もう１つ聞きたい事があるんだが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なんでしょうか。　手短にお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：DUELで勝ち続けると、何か褒美みたいなのはあるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：ありません"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：それでは"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：しかし、スパっと言い放って帰っていくな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：さてと、じゃあDUELの準備でもするかな！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90005_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ジェダ：また弱そうなヤツが来た（笑）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なら、倒してみろよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ジェダ：クスクス・・・じゃ、やろっか（笑）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：行くぜ！"); eventList.Add(ActionEvent.None);
+
+        }
+        #endregion
+
+        #region "シニキア・ヴェイルハンツ"
+        public static void Message90006(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUEL受付の嬢ちゃんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、顔を出してくる。　了解。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よお、受付さん。おはよう！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：おはようございます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：さて、アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：シニキア・・・マジかよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なお、本対戦はダンジョンへ赴く前に開催とさせていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：DUEL闘技場もダンジョンも行かない場合は、どうなるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：必ずDUEL闘技場へお越しください。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、いやいやちょっと立て込んでて行けない場合は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：私のほうが、そちらへ赴きます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それで強制転送を使うのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：はい"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺が逃げたらどうなるんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：お答えいたしかねます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ひょっとして、絶対逃げ切れないって言ってる？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：お答えいたしかねます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日、DUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：・・・逃げないでおくか。逃げるだけ無駄って感じもするし。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：さてと、じゃあDUELの準備でもするかな！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90006_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ヴェイルハンツ：ランディスの弟子か。ちょうど良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：その名前！まさか、カール爵の！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェイルハンツ：父の魔道こそ一番だと、ここで証明してみせよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハッハッハ！あぁ、見せてみろよ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェイルハンツ：では、勝負！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しゃ、来い！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch6 = true;
+        }
+        #endregion
+
+        #region "アデル・ブリガンディ"
+        public static void Message90007(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、また来てるわよ、受付のお嬢ちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう！　受付さん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：おはようございます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：相手は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：聞いた事がねえな・・・誰なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：・・・お答え"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、いやいやひとり言だ、悪い悪ぃ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：そうですか"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そういえば、聞いておきたかったんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：なお、本対戦はダンジョンへ赴く前に開催とさせていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：受付さん、って毎回呼びにくいんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日、DUEL闘技場へとお越しくださいますよう、よろしくお願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：受付さん、名前は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：連絡は以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：流れるような定型文と立ち去り方・・・ある意味すげぇ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90007_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ブリガンディ：ッハン、こんな奴かよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：悪かったな、こんな奴で。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ブリガンディ：言っておくが、お前みたいなタイプは何人も倒してきてる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ブリガンディ：今回も同じように勝たせてもらうぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だったら、同じパターンで倒してみろよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ブリガンディ：一瞬で終わらせてやるぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：負けてたまるか！！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch7 = true;
+        }
+        #endregion
+
+        #region "レネ・コルトス"
+        public static void Message90008(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやあ、おはようおはよう！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：・・・（ゴホン）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：相手は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どんな奴なんだ？って聞いても駄目か・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：・・・気弱で、引っ込むタイプのようです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：聞いた俺が悪かった、じゃな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：・・・（ッゴホン）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え！？いや、聞いてなかった、もう１回頼む！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手の特徴はお教えする事は出来ません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：し、しまったあぁぁぁ・・・もう１回後生だぜ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：気弱で引っ込むタイプです。そのせいか、一度劣勢になると防御に戦術を切り替えます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なるほど・・・気弱で引っ込むタイプ・・・劣勢時は防御・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あれ？何でそんな気弱な奴がＤＵＥＬに参戦してるんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：それぞれの想いがあるのでしょう。我々はそこまで関与しておりません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：連絡は以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：特徴を教えたら駄目だったんじゃねえのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・まあいいや、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message90008_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("レネ：スミマセン・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？何がだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レネ：あの・・・わ、わたし、剣装備なんですけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、おぉ、そうみたいだな。（何か調子狂うな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レネ：あ・・・あの、卑怯だと思ったら許してください、スミマセン！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：わ、わかったわかった。卑怯もクソもねえから、心配するなって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レネ：ス、スミマセン！　い、い、いきますね！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、かかってこい！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch8 = true;
+        }
+        #endregion
+
+        #region "スコーティ・ザルゲ"
+        public static void Message90009(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add("受付嬢：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おお、いつも早いな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ザルゲ・・・聞いた事があるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：残虐非道な行為、狡猾な戦術。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、巷じゃ結構有名だしな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：って受付嬢さんは、俺に情報提供しちゃ駄目なんじゃないのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：というか、受付嬢さんって言い難いんだが・・・名前を教えてくれないか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：ミシェル・キーナと言います。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ミシェル・キーナさんっと・・・了解了解。じゃあ、キーナさんで良いか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：お答えいたしかねます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ・・・そこでお答えできねえってか。まあ良いけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン・ウォーレンス様。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、おお何だ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：本日の対戦、勝っていただけますか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おお、いつもそのつもりだぜ。それがどうした？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：私、あのような非道な人間にいつまでも勝って欲しくはありません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：アイン様、どうか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：任せておけって、どんな奴でもＤＵＥＬでは公平だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：必ずぶちのめしてやるさ、ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：・・・お願いいたします、アイン様には期待しておりますので。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢：それでは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("受付嬢は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：キーナさん、ああやってしゃべると、案外普通の人なんだよな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90009_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ザルゲ：ヒュゥ！　アイン・ウォーレンス様のご登場ってワケか！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、悪かったか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：とんっでもゴザイマセン、アイン様。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：誠心誠意持って、戦わせていただきたく存じます・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：ってかぁ！？　ゲハハハハハハハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：その手には乗らねえぜ。準備は万端だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：っおうおうおう、キッチリしてやがんなぁ。ツマンねえ野郎だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：おう、待て待てって、キーナ嬢ちゃん！！　そう焦るなよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：次に俺が勝つと、てめぇが俺の嫁さん決定って約束だったかなぁ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：！！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：ッヒャヒャヒャ、てめぇのご両親の借金チャラって事にしてやんだぞ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：悪いがこの婚約。ご両親からは快く承諾してもらってるって話だぁ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：しょうがねえから、勝ってやるんだぜ、ありがたく思えよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：ゲハハハハハハハハハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：デュ・・・DUEL開始となります！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（そういう事か・・・どうりで、朝のあの言い方・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：アイン・ウォーレンス様、お手柔らかに、ックッックククハハハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：悪いが、俺には関係ない話だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：・・・あぁ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：好きにするが良いさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だが、ＤＵＥＬは真剣勝負。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：私情は関係ねえ、とにかく勝たせてもらう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ザルゲ：ッッッソッタレ、アイン・ウォーレンスよぉ！　ムカツくぜえぇぇ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：サッサと始めるぜ！　勝負だ！！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch9 = true;
+        }
+        #endregion
+
+        #region "ペルマ・ワラミィ"
+        public static void Message90010(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、キーナさん。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：・・・おはようございます。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ワラミィさんって、クヴェルタ街の魔法武具専門ショップのオーナーだよな？"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：はい。魔法武器を駆使した戦術を編み出したそうで最近は非常に好調のようです。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：魔法武具のオーナー・・・どんなのが飛び出してくるやら・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なあ、キーナさん。その辺の戦術をコッソリと・・・"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：ア、アイン様！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：前回はありがとうございました！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：うお！？何だいきなり、どうしたんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：っその・・・アイン様が負けていたら、わたしは今頃・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：っう・・・うう・・・ありがとう・・・ございました・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　（" + KIINA + "はその場で泣き崩れてしまった！）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っちょ！っちょちょちょ、タンマ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：分かった、気持ちは分かった！　だから泣き止んでくれ、っな！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：でも、もしザルゲが勝っていたらと思うと・・・うう・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あの非道なる男を前に、次々と対戦相手は倒れ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：相手を騙す戦術が得意で、生真面目タイプの対戦相手は大概が・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、確かにそれなりの戦術だったよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：口は悪いけど、単なる３流だと思って挑んだヤツは負けて当然だろう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：３０連戦、連勝したら・・・という約束でした。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あんな非道な男、勝てるはずが無い。そう思って約束して・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：バカ、気を付けろよ。ああいうヤツに限って、戦術に長けてるんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：っう・・・うう・・・すいません・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：連戦３０戦目・・・アイン様で・・・わたし、本当によかった！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：っう・・・うう・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：い、いやいやいや、タンマ！！頼むから泣かないでくれ、っな！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：す、すいません・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ふう・・・とにかく、くだらない約束はするなって事だ、気を付けろよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：え、ええ・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：お答えいたしかねます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハハ・・・まあ、そりゃそうだよな。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：さて、じゃあ魔法対策でもやっておくかな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：アイン様、このまま勝ち続けてくださる事を祈ってます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：嬉しい事言ってくれるじゃねえか、任せておけ！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ありがとうございました。　今後もがんばってください、それでは。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：連絡は以上です。　それでは。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90010_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ワラミィ：お主がアイン・ウォーレンスじゃな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ワラミィ：ふむ、ガンツめ、良いヤツを近くに置いとるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハハ、ガンツ伯父さんと知り合いなんですね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ワラミィ：当たり前じゃ。ワシとガンツは互いにライバルのようなもの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よろしくお願いします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ワラミィ：良き心構えじゃな。　それでは、始めさせてもらおうかの。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch10 = true;
+        }
+        #endregion
+
+        #region "キルト・ジョルジュ"
+        public static void Message90011(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いつもわざわざ連絡ありがとうな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：・・・いえ、お構いなく。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っげげ！！　何で現国王の息子と戦わなくちゃならないんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：って、何でエントリーされてんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：って、何で俺が対戦相手になってんだよ！？"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：・・・弱りました。お答えいたしかねます。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：お答えいたしかねます。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：い、いやいやビックリしただけだって。　別に答えなくていいけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しかし、参ったなあぁ・・・国王の家訓ってアレだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：聡明！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：雄大！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：高潔！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：とか何とか、そういう家訓が山のようにあるって話じゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：その家訓は日々増え続けており、今では２５０種にも及ぶようです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うげ・・・あり得ねえ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そんなふうに鍛えられたヤツが相手かよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そんなのに限って、結構チャランポランなヤツだったりして・・・"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：次期国王の筆頭であるキルト様は、毎晩３時まで武術稽古を欠かさないとの噂です。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：早朝の起床５時。学を習得し、努めてから朝食に入るとの噂もあります。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：その後も、実践経験を積むため、全方位的転送装置で各地方を巡回し、一日を終始されるそうです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハハ・・・笑えねえ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：でも・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：アイン様も日々ダンジョンで鍛錬されているそうですね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ。鍛錬って言うのとは、少し違うけどな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：わたしはアイン様を応援してます。　がんばってくださいね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おお、任せておけ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：国王の息子だろうが関係ねえ、ぶち当たるまでさ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：クスクス、国王が今のを聞いたらきっと笑うでしょうね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハハ・・・ちょっと言い過ぎたかもな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あっ、すみません。少し長くなったみたいですので・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：連絡は以上です。　それでは。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、またな。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：それでは、連絡も済ませたので、私はこれで。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ。"); eventList.Add(ActionEvent.None);
+
+            }
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90011_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：（・・・出たあぁ・・・王家のオーラがプンプンするぜ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("キルト：アイン・ウォーレンス、ようやく会う事ができたか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、初顔合わせだよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("キルト：オル・ランディスの弟子と聞いているが？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、おお、一応それで合ってるはずだ。それがどうかしたか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（対戦相手キルトは剣の切っ先を丁寧にアインへ向け・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("キルト：相手に不足は無い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("キルト：全身全霊を持って挑ませていただく。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（キルトは凛とした態度で剣を真っ直ぐに構えた！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（この年でこの雰囲気・・・やるじゃねえか）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：こちらも準備オッケー。　いつでも行けるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("キルト：では、勝負！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch11 = true;
+        }
+        #endregion
+
+        #region "ビリー・ラキ"
+        public static void Message90012(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ビリー・ラキ？？・・・誰だ？"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：ビリー・ラキ様は、アイン様の事を良くご存知でおられるようです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうなのか？アレ、誰だったっけ・・・やべ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：アイン様は確か、オルガウェイン傭兵訓練施設の卒業者でしたよね？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そうだな。よく知ってるじゃねえか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ははーん、そういう事か。そういや、あの頃はライバルがゴロゴロいたっけな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ライバルはよく記憶している者も中には居ます。アイン様は知らない間に倒していたのかもしれませんね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？ああ・・・そうなのかもしれん・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ビリーは私の幼馴馴染みなのですが、どうぞ心ゆくまで戦ってやってください。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おお、そうなのか！？そりゃ奇遇だな、ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ビリーときたら、私じゃなくてラナさんの方にばかり・・・だから私だって・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：え？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：っな、何でもありません！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：うわっと、怒るな怒るな・・・ハハッ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：・・・ッコホん"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：お答えいたしかねます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そ、そうか・・・ハハハ・・・"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "：ビリーの戦術について少し解説いたします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：彼の戦術は基本殴って殴って、殴りまくる。それだけがモットーです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それだけなのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：そのようです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ほかには？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：後はご自分でお確かめください。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90012_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ビリー：来たか、アイン・ウォーレンス！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お前は確か・・・っと・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ビリーであってるよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ビリー：・・・・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラキ！　そうそう！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ビリー・ラキ！　久しぶりだな、ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ビリー：うおおおぉぉ、まさか忘れたとは言わせねえぞおおぉぉぉ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：悪ぃ、すまねえが後で教えてくれよホント。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ビリー：くそ・・・完全に忘れてんのかよ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ビリー：そんな忘れグセの激しい貴様なんかに・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ビリー：何でラナちゃんがああぁぁぁぁ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ、なんでそこでラナが出てくるんだよ？　関係ねえだろ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ビリー：うっせぇ、うっせぇ！　コッチの話だ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ビリー：構えろ！　絶対に貴様は潰す！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああ・・・じゃあ行くぜ！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch12 = true;
+        }
+        #endregion
+
+        #region "アンナ・ハミルトン"
+        public static void Message90013(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハミルトンってどっかで聞いた事あるんだけどな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：ハミルトン家は代々ファージル宮殿の遊撃騎士団長を務めていますね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おおぉぉ、ソレだ！何か聞いた事あるなと思ってたけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でも、アンナって名前は聞いた事がねえけどな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：ハミルトン家の現当主クメル・ハミルトンの長女ですね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何でそんなトコまで分かるんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：って、そうか。DUEL対戦の経歴とかは受付さんには全部丸わかりだって噂だしな・・・"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：ご存じ無いのも無理はありません。世間一般には知られていませんからね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何かワケありって事なのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ファージル宮殿の騎士団長である以上・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、分かった。そういう事か。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：余計な面倒事、危険な事柄に巻き込ませないためか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：はい、その通りです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っで、その長女さんがこんな大舞台に出てきても大丈夫なのかよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：DUEL闘技場に出てきた以上、それはもう世間一般に知られるって事だろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ハミルトン家は元来より『武』に長けた家系なので、それを示す意味で参戦されてるのだと思われます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：なるほど、DUEL闘技場で戦績を上げていれば、そう簡単に拉致出来る相手じゃねえって事になるな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：しかし・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺は負けられねえ。勝たせてもらうぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：アンナ・ハミルトンは杖を装備したマジシャンタイプでありながら"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：折々にスキを見て、スタン効果の攻撃も繰り出してくるため"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：単純なコンボではありますが、強敵なのは間違いありません。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：え、えっと・・・頑張ってください！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？あ、ああ頑張ってくるぜ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+        
+        public static void Message90013_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っよっと、到着到着っと・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、アンナ・ハミルトンさんだな。よろしく頼むぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アンナ：っゆ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アンナ：っ許せないわ！！　アイン・ウォーレンス！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どわぁ！　な、なんだよ一体いきなり！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アンナ：あなたさえ、出場しなければ・・・っく・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ま、まあ・・・落ち着け。何の言いがかりか全く分からねえが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アンナ：キーナは・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アンナ：キーナは私だけのものよ！！　アンタなんかに絶対渡さない！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな、どういう話の展開だよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アンナ：ここであなたは負けるの！そしてキーナには一切近づかないでちょうだい！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：い、いやいや・・・まいったな・・・ハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：悪いが、負けるつもりはねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：勝たせてもらうぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アンナ：キーナをさらうつもりね。そうはさせないわ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：い、いや・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アンナ：勝負よ！　アイン・ウォーレンス！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、勝負だ！（妙なノリだな・・・）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch13 = true;
+        }
+        #endregion
+
+        #region "カルマンズ・オーン"
+        public static void Message90014(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オーン先生！！　出ているのかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：傭兵訓練施設の誇示が目的で、毎年必ず施設内で選別されて出場をされていますね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジであの先生かよ。。。結構骨が折れそうだな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：あの、アイン様。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：・・・カルマンズ・オーンの裏戦術。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ご存知ですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おっと、待ってくれよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そいつはさすがに受付嬢としては、規則違反に当たるんじゃねえのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、この会話が誰にも聞かれてなければ通るだろうが。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そんな事言ってたんじゃ、試合前の暗殺と同じ類になっちまうな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：す、すみません！　すみませんでした！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：い、いやいやいや。そんな謝らなくて良いって。ッハハハ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺なら大丈夫だって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：裏戦術、表戦術、あるいはそれ以外の要素。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：それら全部ひっくるめてDUELだ。正々堂々行くぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：私の考え方が卑小だったんです。ご、ごめんなさい・・・っう・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：だだだ、だから良いって言ってんじゃねえか、っな！？その泣くな、泣くなって！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そそ、そうだ。アレだ、いつもの基本戦術を解説してくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：・・・すみません。。そうですね、公となっている戦術を今から説明いたしましょう。"); eventList.Add(ActionEvent.None);
+
+            }
+
+            messageList.Add(KIINA + "：カルマンズ・オーンの戦術は大きく分けて、２種類あります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：１つ。　ライフ・コントロール。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "相手を倒しに行くのではなく、自分の方がライフアドバテンテージが高くする方法です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、それは知ってる。あれは嫌でも嫌になるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：２つ。　五月雨系の連撃。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：タイミングはケースに応じてですが、突如連撃を繰り返し行なってきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あれも冗談キツイぜ。うっかり気が緩んでるヤツなら瞬殺だろうな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ってか、やっぱりそうなんだな。。。ッハハ、あの人とやるとはな。厄介だぜホント。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：それでは、アイン様のご武運を祈っています。私はこれで"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：それ以外にもカルマンズ・オーンは秘策を持っているとの噂もあります。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90014_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("オーン：来たか、ガキアイン。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺はガキじゃねえ。久しぶりだな、オーン先生。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("オーン：悪いが喋る時間は不要だ、とっとと始めよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：即開始かよ。ッハハハ、オーン先生らしいぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("オーン：構えろ、アイン。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、いつでもいいぜ！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch14 = true;
+        }
+        #endregion
+
+        #region "サン・ユウ"
+        public static void Message90015(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：う～ん、聞いたことのねえ名前だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：戦績とかは聞けるんだったよな。どうだ、強いのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：サン・ユウの戦績は・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：26勝1敗です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ！！！　マジか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハッキリ言ってFiveSeekerレベルの勝率じゃねえか。冗談きついな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：必要に応じて、ライフを回復する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：BUFF構築を適度に行う。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：コンスタントにダメージを与える。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：サン・ユウの戦術は極めて明確です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まいったな・・・そういうのが強いって言うのはある意味相場だよな・・・"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add("アイン：でも26勝1敗って、1敗の相手は誰だったんだよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：オル・ランディスです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・最悪だな・・・あのボケ師匠、新参モノにも容赦ねえしな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：師匠はその時さ、勝ちセリフで何て言ってた？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：勝ちセリフ・・・ですか？　何か意味があるんでしょうか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そっけねえがタメになる一言を伝えて終わるのが師匠のクセだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ええと、待って下さいね・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：・・・　・・・　・・・　あ！　思い出しました。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：（声マネ）『ランディス：前提ミエミエなんだよ、ザコが。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：前提ミエミエか・・・なるほどな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あの、今のセリフが重要なんでしょうか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そうだな。かなり重要だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：師匠はガサツで乱暴に見えるが、基本的な戦術論はかなり緻密だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：だから大概普通の戦術論はフツウに見抜いちまう。多分それを伝えたんだと思うぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ええと・・・私には分かりませんが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：アイン様の役にたったのであれば・・・私嬉しく思います！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・ん？あ、ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：サンキュー、サンキュー、キーナさんの解説はいつも助かるぜ！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：・・・それでは、私はこれで。ご活躍期待しています。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90015_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("サン：来たきた、アインさんだ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、サン・ユウだな。お手柔らかに頼むぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：・・・へえぇ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『サン・ユウの目はスゥっと細くなった』　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：ホントだ。。。確かにアインさんは、アインさんだね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？どういう意味だ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『サン・ユウの顔全体が少しホワっとした笑顔になり・・・』　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：ボクの知る限り"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインさんはオル・ランディスの愛弟子。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『サン・ユウの目は突如カっと目を見開いた！』　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：この天才のボクに泥を付けるなんてなぁ！ランディスめ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：しかも説教付きだ！　絶対に許せない！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：ランディスの弟子、アイン・ウォーレンス！！貴様だけは絶対に潰すぜ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・悪いが俺には関係ねえ話だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だが、これだけは言える。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：サン。そんなんじゃお前は、あのボケ師匠に一生勝てねえな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：ッグ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：っく、くそおおおぉぉぉ！！！！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サン：ボクが２敗なんてあり得ないんだ！！　貴様だけは絶対に絶対に絶対に絶対に絶対に絶対に潰す！！！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、かかって来い。受けて立つぜ！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch15 = true;
+        }
+        #endregion
+
+        #region "シュヴァルツェ・フローレ"
+        public static void Message90016(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・フローレ！！？　まさか！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：そうですね。彼は王妃様にとってのたった一人だけの従弟。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：家族を全て亡くした王妃ファラ様・・・。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そんなファラ様に残されたのは、たった一人の執事役シュヴァルツェ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ファラ様の笑顔を、長年の歳月をかけて戻してくださったのが、"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そのシュヴァルツェってワケか。すげえよなコイツも・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ファラ様の笑顔は、この上なく綺麗だからな。見てるコッチが恥ずかしくなるぐらいだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：今でもファラ様を守るために、ほぼ寝ずの状態で鍛錬の日々を過ごされているそうです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：戦術は既にご存知でしょうが、お聞きになりますか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、頼むぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：基本的には守りの戦術。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：BUFF構築と要所のカウンターでアドバンテージを確立させ、"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そのアドバンテージを拡げていき、敵に降伏させるのが基本戦術です。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何か戦術一つとっても、その人の人柄みたいなのが出るんだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：守りの戦術か・・・実際手強そうだぜ。気を引き締めないと勝てそうにないな。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "：ファラ王妃に対する忠誠心はおそらく彼が一番抱いている事でしょう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ふう、気合勝負になりそうだな。。。戦術は練りに練っておくとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90016_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：・・・よろしく頼むぜ、シュヴァルツェさんとやら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シュヴァルツェ：アイン君だね。ようやく会えた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな、待ってたのかよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シュヴァルツェ：どうしても一つ、聞いておきたい事があってね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シュヴァルツェ：君はどうしてこの闘技場へ参加しようと思ったんだい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？DUEL前にそんな話か・・・そうだなあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：参加理由は、師匠に勝つためだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：DUELは一戦一戦が勝負そのもの。師匠はそれにほぼ勝ち続けている。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そのセンスは俺も同じように持っている。そのセンスを腐らせたくはねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあこんな所だ！　満足のいく内容だったか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シュヴァルツェ：ああ、満足だよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シュヴァルツェ：君のような人がいて本当に良かった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っへ？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シュヴァルツェ：なんでも無い。こちらの話だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シュヴァルツェ：さて、はじめるとしよう。DUEL戦では本気で戦ってもらおうか！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、当然だ。DUELじゃいつも本気だぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シュヴァルツェ：では！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、来い！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch16 = true;
+        }
+        #endregion
+
+        #region "ルベル・ゼルキス"
+        public static void Message90017(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ゼルキス・・・どっかで聞いた気もするんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：ファージル宮殿にて、ここ最近仕え始めたゼルキス家の長男です。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add("アイン：ああ、そういやそうだった。すっかり忘れてた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そういや最初の方で、マーギ・ゼルキスってヤツと戦った気がするが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：マーギ・ゼルキスは次男にあたります。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あっ、やっぱりそうなんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：って事はアイツと戦術は大体一緒なのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そうですね、ほとんど同じだと言われています。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：次男マーギは、回復ポーションと直接攻撃、火魔法の基本的なスタイルに対し"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：長男ルベルは、回復ポーションと直接攻撃、それと水魔法を駆使してきます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・そうなのか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：どうかされましたか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、なんて言うのかな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：全然違う気がするな、それ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：水魔法と言っても、基本的には攻撃魔法を主体とした戦術の様です。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。だが、そこの話じゃないんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：キーナさん、ひょっとしてその、ルベル・ゼルキスの公の戦術ってのは"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：プレッシャー・パーミッション戦術だろ、違うか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：え、えっと・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ、悪い。こっちの話なんだ。気にしないでくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：すみません・・・せっかく話をして下さったのに・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：い、いいっていいって。　気にするなって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：・・・あの！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：な、なんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ももも、もしよかったらまた今度そのプレッス・パーミット戦術を教えてください！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いいぜ、もちろんだ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あ、ありがとうございます！！！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：長男ルベルは、回復ポーションと直接攻撃、それと水魔法を駆使してきます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：水魔法と言っても、基本的には攻撃魔法を主体とした戦術の様です。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうか、分かった。ありがとな。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90017_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ルベル：アイン・・・ウォーレンスか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ルベル：強いな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ルベル：直接見てる今、それがハッキリわかる。私の戦術では勝てそうにないな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺は、強くなんかねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ルベル：そなたに問いたい、そなたの強さの根源はなんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そんなもんは持ってねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ルベル：この勝負、万が一にでも私が勝てたら、その時に教えてもらおう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・いや、悪いがごめんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ここで負けるわけにはいかないんだ、勝たせてもらう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ルベル：ック・・・ックハハハ！　面白い！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ルベル：勝負だ！　アイン・ウォーレンスよ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：こい！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch17 = true;
+        }
+        #endregion
+
+        #region "ヴァン・ヘーグステル"
+        public static void Message90018(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：聞いたことの無い名前だな・・・誰なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：戦歴は非常に浅く、戦術もそれほど公にはなってない、無名の新人です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：勝敗は１６勝０敗。今の所全勝です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ・・・一番やりづらいタイプだな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：でも私・・・彼の訓練する所を見ました！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っちょ、待ってくれ。ひょっとして非公式な情報じゃ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：良いんです、大丈夫ですから。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おいおい、よせって・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：彼の基本戦術は、ベースは物理と魔法の両方からの攻撃です。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：タイミングに隙があれば、ニュートラル・スラッシュをインスタントで発動。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：魔法は火がベース、ピアッシング・フレイムをメインとしてました。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ダメージ軽減でハーデスト・パリィも練習していましたし、カウンターも揃ってます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：攻めて良し、守って良し、特に隙が無い感じの鍛錬をされてるようです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いいのかよ、そんなに言っちゃって・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・あれ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：どうかされましたか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ニュートラル・スラッシュとピアッシング・フレイムって言ったよな？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ええ、はい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おかしいな、それ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：え、えっ、どうしてですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、別に戦術にケチをつけるわけじゃねえんだけどな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺の考えうる限り、魔法なら魔法、物理なら物理で固めてくるはずなんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そ、そうなんですよね！やっぱり私もそう思ってました！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：【多彩さ】をウリにする素人的発想で長生きはしないはずなんだが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：勝率データからして、弱いとも到底思えない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あのっ、参考にしてもらえたでしょうか！！？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？あ、ああ、かなり参考になったぜ、サンキュー！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あっ、喜んでもらえて・・・うれしいです！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：頑張ってください！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、ありがとな！　（ハハハ、やたらと元気だな。。。）"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90018_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ヴァン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴァン：戦術は、火と物理。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴァン：ニュートラル・スラッシュとピアッシング・フレイム。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なっ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・惑わされないぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴァン：惑わしてなどいない、今から繰り出す技を教えているだけの事。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：自信があるって事か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴァン：自信ではない、予め敵に伝えておき、対策の手筋と思考形成を縛らせるのが目的。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・この辺は師匠から嫌と言うほど教えられている。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴァン：ほう・・・彼、オル・ランディスはなんと？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：『行為が思考を上回るレベルで戦え』って言われている。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴァン：なるほど、通用せぬという事だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴァン：では、そろそろ行為に入るとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よし、こっちは準備いいぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴァン：では、参る。"); eventList.Add(ActionEvent.None);
+            GroundOne.WE.TruthDuelMatch18 = true;
+        }
+        #endregion
+
+        #region "オウリュウ・ゲンマ"
+        public static void Message90019(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あっ、聞いたことあるぜ！　その名前！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：闘技場において、最も長く戦歴を残している者です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：勝率は５６４２勝３９８７敗。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あのオッサン、どれだけの数をこなしてんだよって感じだしな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：オウリュウ・ゲンマの戦術は固定枠にとらわれていません。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：勝敗結果よりも、プロセスの最中で、常に新しい技を編み出そうとする事で有名です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、確かに。何か毎回やらかしてるって感じだもんな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：でもわたし、昔から見てきていて思うんですけど。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：彼はそれでもやっぱり、勝ちに対する意識は残ってるように思えるんですよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうだろうな。あれは何ていうか一種のメンタル・トレーニングなんだと思う。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：自分の戦術型が極地にハマりすぎてないか、常にチェックしてるんだと思うぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あの点は、師匠にホントよく似てる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あっ、そういえば、彼はよくオル・ランディスと実践訓練をされてるそうです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：やっぱり、そうなのか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：しかし、何ていうのかな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ランク上位ってのは、似たような強さを持ってるよな、本当。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あっ、それわたしにも何となく分かります！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：トップランクの皆さんって優しいですよね！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あと、とっても話が面白いです！！トゲが無いっていうか・・・その・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あとあと！　考え方もとっても柔らかい感じがします！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうそう、何か捉えどころが無いんだよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：でもまあ、それに気圧されてちゃダメだからな。頑張って俺も追いつくぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：アインさんも優しくてとっても強い方ですから、きっと大丈夫です！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハハ、そう言ってもらえると気休めとしては有り難いな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：い、いいえいえいえ！！　本心に誓って、本当にそう思います！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、頑張ってくるさ。　じゃあ、少しアップに行くから。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あっ・・・ハイ！！頑張ってきてください！！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90019_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ゲンマ：おぬしが、ヴァインか！　ようきた！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ヴァインじゃない、アイン・ウォーレンスだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：あああ、そりゃ失礼！！　ダーーッハッハッハ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：でだ。　おぬし、得意技は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、特にそういうのはねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：そうかそうか、特になしかと！！　ヴァーーッハッハッハ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：で、恋人は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・いや、関係ねえ話だ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：ヴゥワーーッハッハッハッハ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：あーりゃりゃりゃ、もう始まっちまうのかよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：のお、ヴォーレンスよ。おぬし、もっと人生を、満喫せよ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ウォーレンスだ。今はDUELに集中するぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：カアァァ！つれないねえぇ～！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：ま、気持ちは分かる。今は、どんっどん、勝つ事！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：ええか、だが、よ～く聞け。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：いずれ、勝っても勝っても、つまらなくなる、そんな時が・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：くる！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：そしたらなぁ、勝つか負けるかより！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：技を、極める事！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：技を、楽しむ事！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：技を、あみ出す事！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：これを、おぬしも、やってみることだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ああ、わかった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：技を進化させる際、負ける事も、よくよくある事。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：勝ってばかりじゃあ、技は進化せん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：勝ちは停滞。勝ちは思考の収縮。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：負けそうな時こそ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：自由に、楽しく！　ヴァーッハッハッハッハ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：あっ、それとだ。技うんぬんよりも前にだ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：人生の広がり！！　男と女！　酒と旅！！　栄光と挫折！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：DUEL開始となります。両者構えてください。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：あぁ～、嬢ちゃん、そりゃないぜえぇ！！良いとこなのによおぉ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：両者構えてください。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：けっ・・・じゃ、しょうがねえな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ゲンマ：おぅ、かかってこぉい！　ヴァイン・ヴォーレンス！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おし、行くぜ！！"); eventList.Add(ActionEvent.None);
+            GroundOne.WE.TruthDuelMatch19 = true;
+        }
+        #endregion
+
+        #region "ラダ・ミストゥルス"
+        public static void Message90020(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何か微妙に雑誌で名前を見たような・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：月刊ファージルハンターによく記載される方です。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add("アイン：あっ、思い出した！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：大型モンスター討伐を全部一人でやってのけるアイツだろ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：はい、まさにその彼です。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：周囲の人達とは折り合いが付かず、行動は荒唐無稽で命知らず"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：彼はよく「相場を知らない者」として罵られる日々を送っていたようです・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：でも彼は徐々に討伐範囲を広げ、今ではダブルＳランクのモンスターまで一人でこなします。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・すげえな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：もう、彼を罵る人は居ないでしょう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：で、今度はDUEL闘技場でも・・・というワケか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：はい、そう考えて間違いはないと思います。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何でもかんでも全部一人でか・・・まあ、DUELはもともと一人が前提だけどな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あの・・・わたし・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あの人・・・何となくですが、見ていて怖いです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：殺気立ってるというか・・・人自体を嫌ってる感触が伝わってきます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：下手に近づくと平気で殺人でもしそうな雰囲気です・・・怖くて・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・まあ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：周りのヤツが罵り続けたんだ。そうなるのが、当然じゃないかな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：え！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：悪いのは、そのラダ・ミストゥルスってヤツじゃない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：根本的に悪いのは、周囲の奴らだろ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そ、そうなんですか！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：罵れば人は普通に傷つく。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：表に見えるかどうかだけの違いだ。例外なんていやしないさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうやって憎悪の根底が生み出されてきたんだ、殺気の一つや二つ持っててもおかしくないさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そ、そんな・・・じゃあまさか、一人で大型モンスター討伐をしてきたのも・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、周囲の人達に対する正当な見せしめ・復讐と言った所だろうな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：抱え込んでるものが深そうだ。かなり手強いな・・・おそらく。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あ・・・あのっ・・・死なないでください！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッハハハ、大丈夫だって、闘技場だろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：でも、あるんです！！　ごくまれに！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：おねがいっ・・・おねがいだから・・・うっ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あっ、っちょっタンマ！分かった！！　わかったからここで泣くなって、ホラ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：分かった分かった、どうしてもヤバイと思ったら降伏宣言すらから・・・なっ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：うっ・・・うっ・・・お願いします。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：約束、絶対ですからね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ！任せておけ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：良かった・・・それでは、失礼します。私はこれで。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：またな。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90020_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("ラダ：・・・来たか、待ちわびた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：噂には聞いてる。だが、一つだけ確認させてもらおう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：強くなった今の自分だからこそ分かる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：弱き者は、口を使い、自分のプライドを保持する事にのみ固執する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：弱者は弱者。抜けられない。そこまでは良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：だが何故！！　そんな彼らが我を嘲笑い、罵り、侮辱し続けたのか！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（殺気が・・・ビリビリと伝わってくる・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：答えてもらおう、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：弱き者に価値はない。　死すべき存在だ、そうは思わないか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・悪いが、強いとか弱いとかって話は、俺には興味がねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：死する者は自然と死ぬ、生き残る者は自然と生き残る。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そして、そんな中でお前は生き残った。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お前は十分過ぎるほど強くなった。もうファージル全域の人々がそれを認めてる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：弱き者は、もうお前の事を嘲笑せず賞賛を送っている。別に死すべき存在ではないんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ここからは真剣勝負だ。　言っておくが、俺は負けねえからな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：ッフフフ・・・くだらん戯言だったな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラダ：勝負は我が勝つ！！来い、アイン・ウォーレンス！！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch20 = true;
+        }
+        #endregion
+
+        #region "シン・オスキュレーテ"
+        public static void Message90021(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, string KIINA)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ん・・・６時か。そろそろ起きないとな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おはよう、おばちゃん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：ああ、おはよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アイン、DUELの受付嬢ちゃんが来てるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、ちょっと顔を出してくる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
+
+            messageList.Add(KIINA + "：アイン様、お待ちしておりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おう、おはようさん。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：アイン様は本日、DUEL対戦シードに登録されましたのでご連絡させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：対戦相手は『" + OpponentDuelist + "』様となっております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・何者なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：古代賢者オスキュレーテの名を継ぐ者として知られております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：古代・・・賢者？　何の話だ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：ファージル全土の黎明紀において、ヒトとしての文明を一から創られた最初の人類。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(KIINA + "：そう言い伝えられております。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それが・・・古代賢者・・・"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.DuelWinZalge)
+            {
+                messageList.Add(KIINA + "：はい、そして本闘技場でのトップランカー内において、唯一の女性となります。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：マジかよ。まあ、いてもおかしくはないけどな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ってか、古代賢者っていうのがイマイチ分からないが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何か新しい秘術とかを持ってたりするのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：いえ、そういった特別な能力を持ち合わせてはいないそうです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：ただ、公の戦術として、誰でもよく使うあの有名なスキルを駆使してきます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まさか・・・ストレート・スマッシュじゃないだろうな？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：すごい！！　当たりです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：で、ゲイル・ウィンドだろ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：はい！それも当たりです！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ワード・オブ・フォーチュンも絡む・・・っと・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：何でそんなにお見通しなんですか！？出会った事は無いんですよね？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、そうだけどさ。トップランカーって時点で何となくわかるもんさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：似通ってくるというか、そうならざるをえない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：でも、似てるだけじゃ生き残れない。ソイツなりのオリジナリティがどこかにあるものさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そこら辺になると、実際にＤＵＥＬをしてみない限りは分からないけどな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：アインさんは、今までよくＤＵＥＬをされてるのですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、特に率先してやったりはしてないな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ボケ師匠がたまに構ってくれる程度だ。不特定多数を相手してるワケじゃねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ＤＵＥＬ数は多分少ない方だと自分では正直思う。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：でも、さっきみたいな話は、歴戦の方々からよくお話を伺います。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：アインさんって・・・ひょっとして天才なんじゃないですか！！？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、それは無いな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そ、そうでしょうか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：自分は何かに優れているという気はしない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：成績もそれほど良くは無かったし、可もなく不可もなくって所だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あと、肝心の師匠にはほとんど勝てないでいる。今も連敗中さ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺は、キーナさんが考えてるような天才なんかじゃない、何処にでもいる普通の傭兵さ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そ、そんな事ありません！　アインさんは絶対に凄い人なんです！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：わ、わたし、闘技場でアインさんみたいな優しい人に、今まで出会った事ありませんし！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：わ、分かった。分かったから、お、落ち着けって・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：お願いです。わたしと・・・約束してください！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：な、なんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：アインさん、ゼッタイに闘技場でトップレベルにランクインしてください！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：お願いです！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：確約はできねえが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：出来る限りやってみるぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：あ・・・ありがとうございます！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：キーナさんのためだ、頑張ってみるぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：約束だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：は・・・はい！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(KIINA + "：そ、それでは連絡は以上です！　失礼します！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、またな！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add(KIINA + "：それでは、連絡は以上です。私はこれで。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(KIINA + "は立ち去っていった・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさてと、DUELの準備と行くか！"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message90021_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, TruthHomeTown.SupportType type)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+            messageList.Add("　　【受付嬢：アイン様、お待ちしておりました。】"); eventList.Add(ActionEvent.None);
+
+            if (type == TruthHomeTown.SupportType.FromDungeonGate)
+            {
+                messageList.Add("アイン：Duelタイムってわけか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：よお、受付さん。約束どおり来たぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("　　【受付嬢：ただいまより、『アイン・ウォーレンス』 vs 『" + OpponentDuelist + "』のDUELを開催します。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    【受付嬢：アイン様、DUEL闘技場中央部へトランスポートさせていただきます。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、準備は万端だ。転送してくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインはDUEL闘技場へ転送されました"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("シン：アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：知恵を超越するもの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なに？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：柔軟なスタイルと、異常とも思える潜在性を有する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：ただし、周囲とのバランス／兼ね合いまでを最適化の対象としてしまう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：環境さえ揃えば、その能力は計り知れない。だが、今は開花に至らず・・・か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：なるほど・・・確かに面白い逸材だね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なっ、何の話をしている！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：君は、このプロフェシー・サーガに描かれている通りの人物だ。実に興味深い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：君自身は気にしなくてもいい話です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【受付嬢：それでは、アイン・ウォーレンス様。" + OpponentDuelist + "様。DUEL開始となります。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：では、試させてもらいましょう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：君がこのファージル全域を導く覇者に成り得るかどうか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ックソ、なんだこのオーラは・・・シャレになってねえな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（いや、気圧されちゃ駄目だ。ココは・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：言ってる意味が分からねえな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ファージル国はエルミ国王が治めてくれている。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あの人がやってくれてんなら、将来は当分安定だ。俺がどうのこうのと出る幕じゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だが、今そんな事は関係ない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：『そんな事は関係ない』・・・か"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：ッフフフ、なかなか良い考え方ですね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・つかめないやつだな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：とにかく、今ここで負けるわけにはいかねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：勝負だ！　行くぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("シン：はい、いつでも。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.TruthDuelMatch21 = true;
+        }
+        #endregion
         #endregion
 
         #endregion

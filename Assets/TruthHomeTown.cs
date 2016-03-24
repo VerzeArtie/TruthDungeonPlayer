@@ -1854,7 +1854,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90001(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90001(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1868,7 +1868,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90002(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90002(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1882,7 +1882,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90003(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90003(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1896,7 +1896,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90004(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90004(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1910,7 +1910,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90005(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90005(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1924,7 +1924,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90006(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90006(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1938,7 +1938,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90007(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90007(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1952,7 +1952,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90008(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90008(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1966,7 +1966,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90009(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90009(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1980,7 +1980,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90010(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90010(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -1994,7 +1994,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90010(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90010(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2008,7 +2008,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90011(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90011(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2022,7 +2022,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90012(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90012(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2036,7 +2036,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90013(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90013(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2050,7 +2050,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90014(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90014(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2064,7 +2064,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90015(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90015(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2078,7 +2078,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90016(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90016(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2092,7 +2092,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90017(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90017(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2106,7 +2106,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90018(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90018(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2120,7 +2120,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90019(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90019(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2134,7 +2134,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90020(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90020(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
@@ -2148,7 +2148,7 @@ namespace DungeonPlayer
             {
                 if (type == SupportType.Begin)
                 {
-                    MessagePack.Message90021(ref nowMessage, ref nowEvent, OpponentDuelist);
+                    MessagePack.Message90021(ref nowMessage, ref nowEvent, OpponentDuelist, KIINA);
                     // NormalTapOK(); // ここでは不要
                 }
                 else if ((type == SupportType.FromDungeonGate) ||
