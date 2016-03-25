@@ -829,6 +829,11 @@ namespace DungeonPlayer
                     this.groupDuelSelect.SetActive(true);
                     this.Filter.SetActive(true);
                 }
+                else if (current == MessagePack.ActionEvent.HomeTownShowDuelDule)
+                {
+                    SceneDimension.CallDuelRule(this);
+                    this.Filter.SetActive(true);
+                }
                 else if (current == MessagePack.ActionEvent.HomeTownFazilCastle)
                 {
                     GoToFazilCastle();
