@@ -61,6 +61,7 @@ namespace DungeonPlayer
             HomeTownMorning,
             HomeTownNight,
             HomeTownDuelSelect,
+            HomeTownShowDuelRule,
             HomeTownFazilCastle,
             HomeTownFazilCastleMenu,
             HomeTownTicketChoice,
@@ -76,6 +77,7 @@ namespace DungeonPlayer
             HomeTownShowActiveSkillSpell,
             HomeTownCallSaveLoad,
             HomeTownCallDuel,
+            HomeTownCallDecision,
             HomeTownGotoRealDungeon,
             HomeTownAddNewCharacter,
             GetGreenPotionForLana,
@@ -11487,12 +11489,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：どれどれ・・・"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (TruthDuelRule tdr = new TruthDuelRule())
-            //{
-            //    tdr.StartPosition = FormStartPosition.CenterParent;
-            //    tdr.ShowDialog(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownShowDuelRule);
 
             messageList.Add("アイン：なるほどな。大体分かったぜ。"); eventList.Add(ActionEvent.None);
 
@@ -11630,918 +11627,962 @@ namespace DungeonPlayer
 
         public static void Message80004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            //    //we.Truth_CommunicationOl22 = true;
-            //    if (!we.Truth_CommunicationOl22Fail)
-            //    {
-                        messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+            if (!GroundOne.WE.Truth_CommunicationOl22Fail)
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                        messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
 
-            //        UpdateMainMessage("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】");
+                messageList.Add("　　【受付嬢：ＤＵＥＬ闘技場へようこそ。】"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：よお受付さん！");
+                messageList.Add("アイン：よお受付さん！"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：いや～～、いやいやいや！ッハッハッハ！");
+                messageList.Add("アイン：いや～～、いやいやいや！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("　　【【【　その瞬間。　アインは背筋の感触が無くなるほど凍りついた。　】】】");
+                messageList.Add("　　【【【　その瞬間。　アインは背筋の感触が無くなるほど凍りついた。　】】】"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ランディス：おい、受付相手に何いきなり笑ってやがる。");
+                messageList.Add("ランディス：おい、受付相手に何いきなり笑ってやがる。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：師匠、教えてくれ。");
+                messageList.Add("アイン：師匠、教えてくれ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("　　『ランディスは一瞬ラナへ視線を移し・・・』");
+                messageList.Add("　　『ランディスは一瞬ラナへ視線を移し・・・』"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ランディス：何が聞きたい？");
+                messageList.Add("ランディス：何が聞きたい？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：このダンジョン。どうなってる？");
+                messageList.Add("アイン：このダンジョン。どうなってる？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ランディス：どうもこうもねえ。単なるダンジョンだ。");
+                messageList.Add("ランディス：どうもこうもねえ。単なるダンジョンだ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：台座の試練、クリアしたぜ。");
+                messageList.Add("アイン：台座の試練、クリアしたぜ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ランディス：やるじゃねえか。ザコアインにしちゃ大したもんだ。");
+                messageList.Add("ランディス：やるじゃねえか。ザコアインにしちゃ大したもんだ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：知の部屋もクリアまであと一歩だ。");
+                messageList.Add("アイン：知の部屋もクリアまであと一歩だ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ランディス：てめぇ、何の話をしにきた？");
+                messageList.Add("ランディス：てめぇ、何の話をしにきた？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("　　【【【　アインはさらに背筋に戦慄を感じた。　】】】");
+                messageList.Add("　　【【【　アインはさらに背筋に戦慄を感じた。　】】】"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：た！　ッタイム！！");
+                messageList.Add("アイン：た！　ッタイム！！"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：教えてくれ。師匠。");
+                messageList.Add("アイン：教えてくれ。師匠。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ランディス：何を知りてぇんだ？");
-            //    }
-            //    else
-            //    {
-            //        if (!we.Truth_CommunicationOl22Progress1)
-            //        {
-            //            UpdateMainMessage("アイン：師匠、教えてくれ！　頼むぜ！");
+                messageList.Add("ランディス：何を知りてぇんだ？"); eventList.Add(ActionEvent.None);
 
-            //            UpdateMainMessage("ランディス：何を知りてぇんだ？");
-            //        }
-            //        else if (!we.Truth_CommunicationOl22Progress2)
-            //        {
-            //            UpdateMainMessage("アイン：師匠・・・頼む、もう１回だけチャンスを！");
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-            //            UpdateMainMessage("ランディス：っち・・・しょうがねえ。");
-            //        }
-            //        else
-            //        {
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic16);
 
-            //            UpdateMainMessage("ランディス：どぉした。");
+                GroundOne.DecisionMainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
+                GroundOne.DecisionFirstMessage = "このダンジョン、どう解いていけば良い？";
+                GroundOne.DecisionSecondMessage = "このダンジョン、どうすれば解けるんだ？";
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTwonCallDecision);
+            }
+            else if (!GroundOne.WE.Truth_CommunicationOl22Progress1)
+            {
+                messageList.Add("アイン：師匠、教えてくれ！　頼むぜ！"); eventList.Add(ActionEvent.None);
 
-            //            UpdateMainMessage("アイン：っまだまだ！　もう一回DUELだ！！");
+                messageList.Add("ランディス：何を知りてぇんだ？"); eventList.Add(ActionEvent.None);
 
-            //            UpdateMainMessage("ランディス：何度でもかかってこいや、ザコアイン。");
-            //        }
-            //    }
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-            //    using (TruthDecision td = new TruthDecision())
-            //    {
-            //        td.StartPosition = FormStartPosition.CenterParent;
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic16);
 
-            //        bool firstQuestion = we.Truth_CommunicationOl22Progress1;
-            //        if (!firstQuestion)
-            //        {
-            //            GroundOne.StopDungeonMusic();
-            //            GroundOne.PlayDungeonMusic(Database.BGM16, Database.BGM16LoopBegin);
+                GroundOne.DecisionMainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
+                GroundOne.DecisionFirstMessage = "このダンジョン、どう解いていけば良い？";
+                GroundOne.DecisionSecondMessage = "このダンジョン、どうすれば解けるんだ？";
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTwonCallDecision);
+            }
+            else if (!GroundOne.WE.Truth_CommunicationOl22Progress2)
+            {
+                messageList.Add("アイン：師匠・・・頼む、もう１回だけチャンスを！"); eventList.Add(ActionEvent.None);
 
-            //            td.MainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
-            //            td.FirstMessage = "このダンジョン、どう解いていけば良い？";
-            //            td.SecondMessage = "このダンジョン、どうすれば解けるんだ？";
-            //            td.ShowDialog();
-            //            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //            {
-            //                UpdateMainMessage("アイン：このダンジョン、どう解いていけば良い？");
+                messageList.Add("ランディス：っち・・・しょうがねえ。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("ランディス：どうもこうもねえ。自分なりに解いてみろ。");
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-            //                UpdateMainMessage("アイン：台座の試練ってのがあったんだ。");
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic16);
 
-            //                UpdateMainMessage("ランディス：ほぉ。");
+                GroundOne.DecisionMainMessage = "　【　てめぇ、何で俺様の所に来る気になった？　】";
+                GroundOne.DecisionFirstMessage = "ラナと相談した結果、師匠に聞こうって事で。";
+                GroundOne.DecisionSecondMessage = "台座の回答をした後、不思議とそう感じたからだ。";
+                messageList.Add(""); eventList.Add(ActionEvent.HomeTwonCallDecision);
+            }
+            else
+            {
+                messageList.Add("ランディス：どぉした。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("アイン：そこでは、『神々の詩』を回答することになっていた。");
+                messageList.Add("アイン：っまだまだ！　もう一回DUELだ！！"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("ランディス：回答は？");
+                messageList.Add("ランディス：何度でもかかってこいや、ザコアイン。"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("アイン：出来たさ。");
+                messageList.Add(Database.DUEL_OL_LANDIS); eventList.Add(ActionEvent.HomeTownCallDuel);
+            }
+        }
 
-            //                UpdateMainMessage("ランディス：で、それがどうした？");
+        public static void Message80004_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：このダンジョン、どう解いていけば良い？"); eventList.Add(ActionEvent.None);
 
-            //                UpdateMainMessage("アイン：あれをどう捉えて良いのかが、わからねえ。");
+            messageList.Add("ランディス：どうもこうもねえ。自分なりに解いてみろ。"); eventList.Add(ActionEvent.None);
 
-            //                td.MainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
-            //                td.FirstMessage = "師匠は『神々の詩』に関して、何か知らないか？";
-            //                td.SecondMessage = "師匠の時も、ダンジョン攻略時、あんな台座が？";
-            //                td.StartPosition = FormStartPosition.CenterParent;
-            //                td.ShowDialog();
-            //                if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                {
-            //                    UpdateMainMessage("アイン：師匠は『神々の詩』に関して、何か知らないか？");
+            messageList.Add("アイン：台座の試練ってのがあったんだ。"); eventList.Add(ActionEvent.None);
 
-            //                    UpdateMainMessage("ランディス：知らねぇな。");
+            messageList.Add("ランディス：ほぉ。"); eventList.Add(ActionEvent.None);
 
-            //                    UpdateMainMessage("アイン：頼む。何でも良いから知ってる事を");
+            messageList.Add("アイン：そこでは、『神々の詩』を回答することになっていた。"); eventList.Add(ActionEvent.None);
 
-            //                    UpdateMainMessage("ランディス：ゴチャゴチャとうるせぇ。帰れ。");
-            //                    we.Truth_CommunicationOl22Fail = true;
-            //                }
-            //                else
-            //                {
-            //                    UpdateMainMessage("アイン：師匠の時も、ダンジョン攻略時、あんな台座が？");
+            messageList.Add("ランディス：回答は？"); eventList.Add(ActionEvent.None);
 
-            //                    UpdateMainMessage("ランディス：ああ。");
+            messageList.Add("アイン：出来たさ。"); eventList.Add(ActionEvent.None);
 
-            //                    UpdateMainMessage("アイン：どんな内容だったんだ？");
+            messageList.Add("ランディス：で、それがどうした？"); eventList.Add(ActionEvent.None);
 
-            //                    UpdateMainMessage("ランディス：てめぇには関係ねえ。");
+            messageList.Add("アイン：あれをどう捉えて良いのかが、わからねえ。"); eventList.Add(ActionEvent.None);
 
-            //                    UpdateMainMessage("アイン：教えてくれても良いだろ？");
+            GroundOne.DecisionMainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
+            GroundOne.DecisionFirstMessage = "師匠は『神々の詩』に関して、何か知らないか？";
+            GroundOne.DecisionSecondMessage = "師匠の時も、ダンジョン攻略時、あんな台座が？";
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallDecision);
+        }
 
-            //                    UpdateMainMessage("ランディス：言っても意味がねえ。");
+        public static void Message80004_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：師匠は『神々の詩』に関して、何か知らないか？"); eventList.Add(ActionEvent.None);
 
-            //                    td.MainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
-            //                    td.FirstMessage = "意味がねえって・・・どういう意味だ？";
-            //                    td.SecondMessage = "意味がねえかどうかは、聞かなきゃ分からないだろ？";
-            //                    td.StartPosition = FormStartPosition.CenterParent;
-            //                    td.ShowDialog();
-            //                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                    {
-            //                        UpdateMainMessage("アイン：意味がねえって・・・どういう意味だ？");
+            messageList.Add("ランディス：知らねぇな。"); eventList.Add(ActionEvent.None);
 
-            //                        UpdateMainMessage("ランディス：言葉通りだ。言った所で意味はねえ。");
+            messageList.Add("アイン：頼む。何でも良いから知ってる事を"); eventList.Add(ActionEvent.None);
 
-            //                        UpdateMainMessage("アイン：俺には当てはまらない・・・って事か？");
+            messageList.Add("ランディス：ゴチャゴチャとうるせぇ。帰れ。"); eventList.Add(ActionEvent.None);
 
-            //                        UpdateMainMessage("ランディス：良く分かってるじゃねえか。");
+            GroundOne.WE.Truth_CommunicationOl22Fail = true;
+        }
 
-            //                        td.MainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
-            //                        td.FirstMessage = "つまり、台座は俺の【未来】に関係してるって事か？";
-            //                        td.SecondMessage = "つまり、台座は俺の【過去】に関係してるって事か？";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            UpdateMainMessage("アイン：つまり、台座は俺の【未来】に関係してるって事か？");
+        public static void Message80004_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：師匠の時も、ダンジョン攻略時、あんな台座が？"); eventList.Add(ActionEvent.None);
 
-            //                            UpdateMainMessage("ランディス：だからてめぇはザコアインだって言ってんだ。");
+            messageList.Add("ランディス：ああ。"); eventList.Add(ActionEvent.None);
 
-            //                            UpdateMainMessage("アイン：違うのかよ？頼むから、教えてくれよ？");
+            messageList.Add("アイン：どんな内容だったんだ？"); eventList.Add(ActionEvent.None);
 
-            //                            UpdateMainMessage("ランディス：ゴチャゴチャとうるせぇ。帰れ。");
-            //                            we.Truth_CommunicationOl22Fail = true;
-            //                        }
-            //                        else
-            //                        {
-            //                            UpdateMainMessage("アイン：つまり、台座は俺の【過去】に関係してるって事か？");
+            messageList.Add("ランディス：てめぇには関係ねえ。"); eventList.Add(ActionEvent.None);
 
-            //                            UpdateMainMessage("ランディス：だとしたら、どうする。");
+            messageList.Add("アイン：教えてくれても良いだろ？"); eventList.Add(ActionEvent.None);
 
-            //                            td.MainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
-            //                            td.FirstMessage = "過去を基として、解を導き出せって事か？";
-            //                            td.SecondMessage = "過去を紐解いて、正解を見つけろって事か？";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                GroundOne.StopDungeonMusic();
+            messageList.Add("ランディス：言っても意味がねえ。"); eventList.Add(ActionEvent.None);
 
-            //                                UpdateMainMessage("アイン：過去を基として、解を導き出せって事か？");
+            GroundOne.DecisionMainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
+            GroundOne.DecisionFirstMessage = "意味がねえって・・・どういう意味だ？";
+            GroundOne.DecisionSecondMessage = "意味がねえかどうかは、聞かなきゃ分からないだろ？";
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallDecision);
+        }
 
-            //                                UpdateMainMessage("ランディス：さあな。");
+        public static void Message80004_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：意味がねえって・・・どういう意味だ？"); eventList.Add(ActionEvent.None);
 
-            //                                UpdateMainMessage("アイン：どうなんだよ？");
+            messageList.Add("ランディス：言葉通りだ。言った所で意味はねえ。"); eventList.Add(ActionEvent.None);
 
-            //                                UpdateMainMessage("ランディス：自分で考えろ。");
+            messageList.Add("アイン：俺には当てはまらない・・・って事か？"); eventList.Add(ActionEvent.None);
 
-            //                                UpdateMainMessage("アイン：ああ・・・");
+            messageList.Add("ランディス：良く分かってるじゃねえか。"); eventList.Add(ActionEvent.None);
 
-            //                                UpdateMainMessage("ランディス：ちったぁ、まともになってきたじゃねえか。");
+            td.MainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
+            td.FirstMessage = "つまり、台座は俺の【未来】に関係してるって事か？";
+            td.SecondMessage = "つまり、台座は俺の【過去】に関係してるって事か？";
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallDecision);
+        }
 
-            //                                UpdateMainMessage("アイン：・・・え？");
+        public static void Message80004_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：つまり、台座は俺の【未来】に関係してるって事か？"); eventList.Add(ActionEvent.None);
 
-            //                                UpdateMainMessage("ランディス：今度は、俺から幾つか問う。");
+            messageList.Add("ランディス：だからてめぇはザコアインだって言ってんだ。"); eventList.Add(ActionEvent.None);
 
-            //                                UpdateMainMessage("ランディス：答えろ。");
-
-            //                                UpdateMainMessage("アイン：あ、ああ！");
-
-            //                                UpdateMainMessage("", true);
-
-            //                                we.Truth_CommunicationOl22Progress1 = true;
-            //                                firstQuestion = true;
-            //                                // 正解
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("アイン：過去を紐解いて、正解を見つけろって事か？");
-
-            //                                UpdateMainMessage("ランディス：正解なんてもんはねえ。");
-
-            //                                UpdateMainMessage("アイン：じゃあ、過去が今回の台座の件とどう関係してるんだよ？");
-
-            //                                UpdateMainMessage("ランディス：てめぇ、何を聞きにきた？");
-
-            //                                UpdateMainMessage("アイン：っぐ・・・");
-
-            //                                UpdateMainMessage("ランディス：話にならねえな。");
-
-            //                                UpdateMainMessage("ランディス：帰れ、てめぇに教えることはねえ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        UpdateMainMessage("アイン：意味がねえかどうかは、聞かなきゃ分からないだろ？");
-
-            //                        UpdateMainMessage("ランディス：ッチ・・・話にならねぇ。");
-
-            //                        UpdateMainMessage("アイン：っま、待ってくれ！！");
-
-            //                        UpdateMainMessage("ランディス：意味がねぇもの、無理に聞いてどうなる？");
-
-            //                        UpdateMainMessage("アイン：っぐ・・・");
-
-            //                        UpdateMainMessage("ランディス：帰れ、てめぇに教えることはねえ。");
-            //                        we.Truth_CommunicationOl22Fail = true;
-            //                    }
-            //                }
-            //            }
-            //            else
-            //            {
-            //                UpdateMainMessage("アイン：このダンジョン、どうすれば解けるんだ？");
-
-            //                UpdateMainMessage("ランディス：知らねぇな。自分で探せ。");
-            //                we.Truth_CommunicationOl22Fail = true;
-            //            }
-            //        }
-
-            //        if (!we.Truth_CommunicationOl22Progress1)
-            //        {
-            //            GroundOne.StopDungeonMusic();
-            //            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
-            //            return;
-            //        } // 正解してない場合、この時点で一旦設問終了
-
-
-            //        bool secondQuestion = we.Truth_CommunicationOl22Progress2;
-
-            //        if (!secondQuestion)
-            //        {
-            //            GroundOne.StopDungeonMusic();
-            //            GroundOne.PlayDungeonMusic(Database.BGM16, Database.BGM16LoopBegin);
-
-            //            td.MainMessage = "　【　てめぇ、何で俺様の所に来る気になった？　】";
-            //            td.FirstMessage = "ラナと相談した結果、師匠に聞こうって事で。";
-            //            td.SecondMessage = "台座の回答をした後、不思議とそう感じたからだ。";
-            //            td.ShowDialog();
-            //            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //            {
-            //                // Fail
-            //                td.MainMessage = "　【　事実を聞いてんじゃねえ。てめぇはどうなんだ？　】";
-            //                td.FirstMessage = "台座はクリアした。だが、妙なひっかかりを覚えた。";
-            //                td.SecondMessage = "どうって・・・特にどうってわけじゃないが・・・";
-            //                td.ShowDialog();
-            //                if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                {
-            //                    // Fail
-            //                    td.MainMessage = "　【　何が引っかかったのか、把握はしてんのか？　】";
-            //                    td.FirstMessage = "把握はできてねえが、それなりの違和感は・・・";
-            //                    td.SecondMessage = "いや・・・それが何なのかはわからねえ・・・";
-            //                    td.ShowDialog();
-            //                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                    {
-            //                        // Fail
-            //                        td.MainMessage = "　【　はっきりしねえな。ドッチなんだ？　】";
-            //                        td.FirstMessage = "す、すまねえ・・・";
-            //                        td.SecondMessage = "台座は解けた。でもまだ奥底が見えないんだ。";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　最後だ。何で、ダンジョン挑んでる？　】";
-            //                            td.FirstMessage = "っそ、それは・・・";
-            //                            td.SecondMessage = "ダンジョンで稼がなくちゃならねえ。それだけさ";
-            //                            td.ShowDialog();
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                        else
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　奥底ってのは何を指して言ってる？　】";
-            //                            td.FirstMessage = "奥底ってのは、つまり・・・";
-            //                            td.SecondMessage = "そんなの、俺にだってわからねえよ。";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        // Fail
-            //                        td.MainMessage = "　【　過去と台座の関係ぐらいは分かってんだろうな？　】";
-            //                        td.FirstMessage = "もちろん、わかってるさ！";
-            //                        td.SecondMessage = "ッグ・・・";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　じゃあ、言ってみろ。　】";
-            //                            td.FirstMessage = "そ、それは・・・";
-            //                            td.SecondMessage = "過去の出来事が台座での設問になる。そうだろ？";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                        else
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　ダンジョンの攻略方法、把握度合いはどぉなんだ？　】";
-            //                            td.FirstMessage = "それなりに、探索してるし分かってるつもりだぜ。";
-            //                            td.SecondMessage = "す・・・少しぐらいなら・・・";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    // Fail
-            //                    td.MainMessage = "　【　ダンジョンの攻略具合はどぉなんだ？　】";
-            //                    td.FirstMessage = "順調だ。滞りなく進んでる。";
-            //                    td.SecondMessage = "順調ってワケじゃねえ・・・";
-            //                    td.ShowDialog();
-            //                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                    {
-            //                        // Fail
-            //                        td.MainMessage = "　【　攻略の意味は分かってんだろうな？　】";
-            //                        td.FirstMessage = "攻略の・・・意味？";
-            //                        td.SecondMessage = "最下層へ進めるための謎を解く。そうだろ？";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　ダンジョンの攻略度合いさ。決まってるだろ？　】";
-            //                            td.FirstMessage = "ああ、これなら楽勝だぜ。";
-            //                            td.SecondMessage = "台座をクリアした所だが・・・";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                        else
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　最下層？　謎？　何言ってんだテメェは。　】";
-            //                            td.FirstMessage = "えっ？ち、違うのかよ？";
-            //                            td.SecondMessage = "え？　っと・・・";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        // Fail
-            //                        td.MainMessage = "　【　台座のどこが気になった？言ってみろ。　】";
-            //                        td.FirstMessage = "詩の内容は過去に聞いた事がある。しかし・・・";
-            //                        td.SecondMessage = "看板の前に、突然出てきたって事ぐらいかな。";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　ハッキリしねえな。わからねぇのか？　】";
-            //                            td.FirstMessage = "あ、ああ・・・";
-            //                            td.SecondMessage = "過去との決別をするために！って事だろ？";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                        else
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　それがどぉした？　】";
-            //                            td.FirstMessage = "あ、っいや・・・";
-            //                            td.SecondMessage = "・・・　・・・";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            else
-            //            {
-            //                //Sucess
-            //                td.MainMessage = "　【　台座をクリアした意味はわかってるか？　】";
-            //                td.FirstMessage = "いや、まだ断片的な事しか、わからねえ。";
-            //                td.SecondMessage = "ああ、当然分かっているさ！";
-            //                td.ShowDialog();
-            //                if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                {
-            //                    // Success
-            //                    td.MainMessage = "　【　今後どうやって進めてくつもりだ？　】";
-            //                    td.FirstMessage = "次への階段を探し出し、最下層を目指すまでさ。";
-            //                    td.SecondMessage = "ダンジョン内をくまなく探索しながら進めるさ。";
-            //                    td.ShowDialog();
-            //                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                    {
-            //                        // Fail
-            //                        td.MainMessage = "　【　最下層まで行けたとして、どうするつもりだ？　】";
-            //                        td.FirstMessage = "どうって・・・もっと強くなってやるさ。";
-            //                        td.SecondMessage = "どうって・・・";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　強くなった後はどうするかを聞いてんだ。　】";
-            //                            td.FirstMessage = "その後は・・・その・・・";
-            //                            td.SecondMessage = "強ければ良いんだろ？それが師匠の教えじゃねえか。";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                        else
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　最後だ。何で、ダンジョン挑んでる？　】";
-            //                            td.FirstMessage = "っそ、それは・・・";
-            //                            td.SecondMessage = "ダンジョン制覇そのものが目的さ、それ以上の意味は無い。";
-            //                            td.ShowDialog();
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        // Success
-            //                        td.MainMessage = "　【　探索して、ダンジョンの仕掛けは把握したのか？　】";
-            //                        td.FirstMessage = "台座なら、ちゃんと見つけたぜ。クリアもした。";
-            //                        td.SecondMessage = "台座の一部ぐらいしか・・・全体像はまだ何とも・・・";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　てめぇのお望みってのは、台座だったのかよ？　】";
-            //                            td.FirstMessage = "メインの仕掛けを解いた。探索としては成功だろ？";
-            //                            td.SecondMessage = "いや・・・そういうわけじゃ・・・";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-
-            //                        }
-            //                        else
-            //                        {
-            //                            // Success
-            //                            td.MainMessage = "　【　最後だ。どうしてダンジョンへ挑む気になった？　】";
-            //                            td.FirstMessage = "腕を試したかった。それだけだ。";
-            //                            td.SecondMessage = "・・・　・・・　";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                // Fail
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                GroundOne.StopDungeonMusic();
-
-            //                                // Success
-            //                                UpdateMainMessage("ランディス：・・・ほぉ。");
-            //                                we.Truth_CommunicationOl22Progress2 = true;
-            //                                secondQuestion = true;
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    // Fail
-            //                    td.MainMessage = "　【　じゃあ、言ってみろ。　】";
-            //                    td.FirstMessage = "台座は過去に関連してる。過去を基に解を導き出せばいい。";
-            //                    td.SecondMessage = "あの詩がこのダンジョンにおける最大の鍵だ。";
-            //                    td.ShowDialog();
-            //                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                    {
-            //                        // Fail
-            //                        td.MainMessage = "　【　どぉ導き出されるってんだ？言ってみろ。　】";
-            //                        td.FirstMessage = "過去の出来事を思い出しつつ、ダンジョン正解ルートを導き出す。";
-            //                        td.SecondMessage = "ど、どうって・・・";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　正解だと？　てめぇ、俺から一体何を学んだ？　】";
-            //                            td.FirstMessage = "っあ！い、いやいやいや！！";
-            //                            td.SecondMessage = "隠さないでくれよ。正解ルートあるんだろ？";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                        else
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　答えるか、答えないか。ハッキリしろ。　】";
-            //                            td.FirstMessage = "す、すまねぇ・・・";
-            //                            td.SecondMessage = "未来へとつながるキーワードを探せば良いんだ！";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        // Fail
-            //                        td.MainMessage = "　【　最大の鍵。どこで使うんだ？　】";
-            //                        td.FirstMessage = "ど、どこって・・・";
-            //                        td.SecondMessage = "最下層だ。最後で使うんだろ、こういうのは。";
-            //                        td.ShowDialog();
-            //                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　ハッキリしねえな。わからねぇのか？　】";
-            //                            td.FirstMessage = "最下層だ！";
-            //                            td.SecondMessage = "一番最初だ！";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：駄目だ。話にならねぇ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                        else
-            //                        {
-            //                            // Fail
-            //                            td.MainMessage = "　【　最後だ。どうしてダンジョンへ挑む気になった？　】";
-            //                            td.FirstMessage = "師匠の【炎神グローブ】みたいなヤツを俺も欲しいからさ。";
-            //                            td.SecondMessage = "もちろん、最下層到達で師匠に並ぶためさ。";
-            //                            td.ShowDialog();
-            //                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                            else
-            //                            {
-            //                                UpdateMainMessage("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
-            //                                we.Truth_CommunicationOl22Fail = true;
-            //                            }
-            //                        }
-            //                    }
-
-            //                }
-            //            }
-            //        }
-            //        if (!we.Truth_CommunicationOl22Progress2)
-            //        {
-            //            GroundOne.StopDungeonMusic();
-            //            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
-            //            return;
-            //        } // 正解してない場合、この時点で一旦設問終了
-
-                        messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-                        messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
-
-            //        if (!we.Truth_CommunicationOl22DuelFail)
-            //        {
-            //            UpdateMainMessage("アイン：師匠、おりいって頼みがある。");
-
-            //            UpdateMainMessage("ランディス：何だ、言ってみろ。");
-
-            //            UpdateMainMessage("アイン：師匠、このダンジョン一緒に来てくれ。頼むぜ！");
-
-            //            UpdateMainMessage("ランディス：・・・");
-
-            //            UpdateMainMessage("ランディス：ちっと腕見せてみろ。");
-
-            //            UpdateMainMessage("アイン：え？");
-
-            //            UpdateMainMessage("ランディス：３");
-
-            //            UpdateMainMessage("ランディス：２");
-
-            //            UpdateMainMessage("アイン：おわっ！マジかよ！？");
-
-            //            UpdateMainMessage("ランディス：１");
-
-            //            UpdateMainMessage("アイン：ック・・・来い！！");
-            //        }
-
-            //        bool result = BattleStart(Database.DUEL_OL_LANDIS, true);
-            //        if (result)
-            //        {
-            //            // 勝った場合、次の会話へ
-            //            GroundOne.WE2.WinOnceOlLandis = true;
-            //        }
-            //        else
-            //        {
-            //            if (we.Truth_CommunicationOl22DuelFailCount >= 3)
-            //            {
-            //                // 負けすぎなので、そのまま通す。ただし、WinOnceOlLandisはつけない。
-            //            }
-            //            else
-            //            {
-            //                // 負けた場合、強制リトライ
-            //                UpdateMainMessage("ランディス：帰れ、てめぇに教えることはねえ。");
-
-            //                UpdateMainMessage("アイン：ッグ・・・");
-
-            //                we.Truth_CommunicationOl22Fail = true;
-            //                we.Truth_CommunicationOl22DuelFail = true;
-            //                we.Truth_CommunicationOl22DuelFailCount++;
-            //                return;
-            //            }
-            //        }
-
-            //        GroundOne.StopDungeonMusic();
-            //        GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
-
-            //        UpdateMainMessage("　　【受付嬢：そちらの方々！！今すぐ対戦を中止してください！！　】");
-
-            //        UpdateMainMessage("アイン：ッウワ・・・ヤベ・・・");
-
-            //        UpdateMainMessage("　　【受付嬢：闘技場内での勝手な対戦は、ルール厳禁となっております。　】");
-
-            //        UpdateMainMessage("ランディス：ッチ、分かった分かったって、嬢ちゃん。");
-
-            //        UpdateMainMessage("　　【受付嬢：今から、名前を読み上げます。　】");
-
-            //        UpdateMainMessage("　　【受付嬢：オル・ランディス様　】");
-
-            //        UpdateMainMessage("　　【受付嬢：アイン・ウォーレンス様　】");
-
-            //        UpdateMainMessage("　　【受付嬢：読み上げられた者は、罰としてDUEL戦歴に１敗が加えられます。】");
-
-            //        UpdateMainMessage("アイン：ッゲ！！マジかよ！？");
-
-            //        UpdateMainMessage("ランディス：くだらんルールだな。");
-
-            //        UpdateMainMessage("　　【受付嬢：ただし、アイン・ウォーレンス様はDUEL参加より" + we.GameDay.ToString() + "日以内のため、特例除外とします。】");
-
-            //        UpdateMainMessage("アイン：助かったぜ・・・ッホ・・・");
-
-            //        UpdateMainMessage("　　【受付嬢：合わせて、オル・ランディス様には累積罰として更に２敗が加えられます。】");
-
-            //        UpdateMainMessage("ランディス：勝手に付けとけ。");
-
-            //        UpdateMainMessage("　　【受付嬢：なお、今後も続けて行った場合、DUEL戦歴に累積的な敗北数が加算されます。】");
-
-            //        UpdateMainMessage("　　【受付嬢：くれぐれも闘技場内での勝手なDUELはしないよう、お願いいたします。】");
-
-            //        UpdateMainMessage("アイン：ああ、悪かったな、受付さん。次からは気をつけるよ。");
-
-            //        UpdateMainMessage("ランディス：こいつらに気を使う必要はねぇ。ザコアイン。");
-
-            //        UpdateMainMessage("アイン：何でだよ。運営側の受付さんだろ？別に良いじゃねえか。");
-
-            //        UpdateMainMessage("ランディス：てめぇのそういうトコ・・・");
-
-            //        UpdateMainMessage("アイン：受付さんだって人間だ。良いだろ？");
-
-            //        UpdateMainMessage("ランディス：つくづく甘ちゃんだなテメェは・・・好きにしろ。");
-
-            //        UpdateMainMessage("アイン：っふぅ・・・マジで疲れたぜ。");
-
-            //        UpdateMainMessage("アイン：師匠とやるといつも全力だ・・・もう動けねえ・・・");
-
-            //        UpdateMainMessage("ランディス：ダンジョン。");
-
-            //        UpdateMainMessage("アイン：っえ？");
-
-            //        UpdateMainMessage("ランディス：行ってやっても良い。");
-
-            //        UpdateMainMessage("アイン：おおおお！！！　マジで！？　やった！！！");
-
-            //        UpdateMainMessage("ランディス：条件がある。");
-
-            //        UpdateMainMessage("アイン：あ、あぁ。教えてくれ。");
-
-            //        UpdateMainMessage("ランディス：ラナを外せ。");
-
-            //        UpdateMainMessage("アイン：・・・　えっ　・・・");
-
-            //        UpdateMainMessage("ランディス：冗談だ。真に受けんなボケ。");
-
-            //        UpdateMainMessage("アイン：っな・・・何だよ。つい考えちまったじゃねえか・・・");
-
-            //        UpdateMainMessage("ランディス：ラナと少し距離を置け。");
-
-            //        UpdateMainMessage("アイン：い、いやいや、何言ってるんだよ。");
-
-            //        UpdateMainMessage("アイン：距離感とかいう話にならない程度の距離でしか・・・");
-
-            //        UpdateMainMessage("ランディス：聞けっつってんだ、ボケ。");
-
-            //        UpdateMainMessage("ランディス：このダンジョン、解きてぇんだろ？");
-
-            //        UpdateMainMessage("アイン：あ、あぁ当然！　目指すは最下層到達だ！！");
-
-            //        UpdateMainMessage("ランディス：だったら距離を置け。");
-
-            //        UpdateMainMessage("アイン：それのどこがダンジョン攻略に・・・");
-
-            //        UpdateMainMessage("ランディス：以上だ。");
-
-            //        UpdateMainMessage("ランディス：パーティに入った以上、死ぬまで鍛えてやる。");
-
-            //        UpdateMainMessage("ランディス：覚悟しとけや、ザコアイン。");
-
-            //        UpdateMainMessage("アイン：あ、ああ！！");
-
-            //        UpdateMainMessage("アイン：サンキューな！　師匠！！　");
-            //        CallSomeMessageWithAnimation("【オル・ランディスがパーティに加わりました。】");
-
-            //        we.AvailableThirdCharacter = true;
-            //        we.Truth_CommunicationOl22 = true;
-
-            //        // 「コメント」初回設計で後編３人目をヴェルゼアーティでセーブしてしまっているため、
-            //        // ここで再設定しなければならなくなった。
-            //        tc.FullName = "オル・ランディス";
-            //        tc.Name = "ランディス";
-            //        tc.Strength = Database.OL_LANDIS_FIRST_STRENGTH;
-            //        tc.Agility = Database.OL_LANDIS_FIRST_AGILITY;
-            //        tc.Intelligence = Database.OL_LANDIS_FIRST_INTELLIGENCE;
-            //        tc.Stamina = Database.OL_LANDIS_FIRST_STAMINA;
-            //        tc.Mind = Database.OL_LANDIS_FIRST_MIND;
-            //        tc.Level = 35;
-            //        tc.Exp = 0;
-            //        tc.BaseLife = 2080;
-            //        tc.CurrentLife = tc.MaxLife;
-            //        tc.BaseSkillPoint = 100;
-            //        tc.CurrentSkillPoint = 100;
-            //        //td.TC.Gold = 10; // [警告]：ゴールドの所持は別クラスにするべきです。
-            //        tc.BaseMana = 1290;
-            //        tc.CurrentMana = tc.MaxMana;
-            //        tc.MainWeapon = new ItemBackPack(Database.POOR_GOD_FIRE_GLOVE_REPLICA);
-            //        tc.MainArmor = new ItemBackPack(Database.COMMON_AURA_ARMOR);
-            //        tc.Accessory = new ItemBackPack(Database.COMMON_FATE_RING);
-            //        tc.Accessory2 = new ItemBackPack(Database.COMMON_LOYAL_RING);
-            //        tc.BattleActionCommand1 = Database.ATTACK_EN;
-            //        tc.BattleActionCommand2 = Database.DEFENSE_EN;
-            //        tc.BattleActionCommand3 = Database.STRAIGHT_SMASH;
-            //        tc.BattleActionCommand4 = Database.VOLCANIC_WAVE;
-            //        tc.BattleActionCommand5 = Database.LIFE_TAP;
-            //        tc.BattleActionCommand6 = Database.SEVENTH_MAGIC;
-            //        tc.BattleActionCommand7 = Database.ONE_IMMUNITY;
-
-            //        tc.AvailableMana = true;
-            //        tc.AvailableSkill = true;
-            //        tc.StraightSmash = true;
-            //        tc.FireBall = true;
-            //        tc.DarkBlast = true;
-            //        tc.DoubleSlash = true;
-            //        tc.ShadowPact = true;
-            //        tc.FlameAura = true;
-            //        tc.StanceOfStanding = true;
-            //        tc.DispelMagic = true;
-            //        tc.LifeTap = true;
-            //        tc.HeatBoost = true;
-            //        tc.Negate = true;
-            //        tc.BlackContract = true;
-            //        tc.InnerInspiration = true;
-            //        tc.RiseOfImage = true;
-            //        tc.Deflection = true;
-            //        tc.FlameStrike = true;
-            //        tc.Tranquility = true;
-            //        tc.VoidExtraction = true;
-            //        tc.BlackFire = true;
-            //        tc.Immolate = true;
-            //        tc.DarkenField = true;
-            //        tc.DevouringPlague = true;
-            //        tc.VolcanicWave = true;
-            //        tc.OneImmunity = true;
-            //        tc.CircleSlash = true;
-            //        tc.OuterInspiration = true;
-            //        tc.SmoothingMove = true;
-            //        tc.WordOfMalice = true;
-            //        tc.EnrageBlast = true;
-            //        tc.SwiftStep = true;
-            //        tc.Recover = true;
-            //        tc.SurpriseAttack = true;
-            //        tc.SeventhMagic = true;
-            //    }
-
-            //    GroundOne.StopDungeonMusic();
-            //    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
-
-            //    return;
-
-            //}
+            messageList.Add("アイン：違うのかよ？頼むから、教えてくれよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ゴチャゴチャとうるせぇ。帰れ。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.Truth_CommunicationOl22Fail = true;
+        }
+
+        public static void Message80004_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+                using (TruthDecision td = new TruthDecision())
+                {
+                    td.StartPosition = FormStartPosition.CenterParent;
+
+                    bool firstQuestion = we.Truth_CommunicationOl22Progress1;
+                    if (!firstQuestion)
+                    {
+                        GroundOne.StopDungeonMusic();
+                        GroundOne.PlayDungeonMusic(Database.BGM16, Database.BGM16LoopBegin);
+
+                        td.ShowDialog();
+                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            td.StartPosition = FormStartPosition.CenterParent;
+                            td.ShowDialog();
+                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                            {
+                            }
+                            else
+                            {
+                                td.StartPosition = FormStartPosition.CenterParent;
+                                td.ShowDialog();
+                                if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                {
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        messageList.Add("アイン：つまり、台座は俺の【過去】に関係してるって事か？");
+
+                                        messageList.Add("ランディス：だとしたら、どうする。");
+
+                                        td.MainMessage = "　【　オル・ランディスへの質問を選択してください。　】";
+                                        td.FirstMessage = "過去を基として、解を導き出せって事か？";
+                                        td.SecondMessage = "過去を紐解いて、正解を見つけろって事か？";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            GroundOne.StopDungeonMusic();
+
+                                            messageList.Add("アイン：過去を基として、解を導き出せって事か？");
+
+                                            messageList.Add("ランディス：さあな。");
+
+                                            messageList.Add("アイン：どうなんだよ？");
+
+                                            messageList.Add("ランディス：自分で考えろ。");
+
+                                            messageList.Add("アイン：ああ・・・");
+
+                                            messageList.Add("ランディス：ちったぁ、まともになってきたじゃねえか。");
+
+                                            messageList.Add("アイン：・・・え？");
+
+                                            messageList.Add("ランディス：今度は、俺から幾つか問う。");
+
+                                            messageList.Add("ランディス：答えろ。");
+
+                                            messageList.Add("アイン：あ、ああ！");
+
+                                            messageList.Add("", true);
+
+                                            we.Truth_CommunicationOl22Progress1 = true;
+                                            firstQuestion = true;
+                                            // 正解
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("アイン：過去を紐解いて、正解を見つけろって事か？");
+
+                                            messageList.Add("ランディス：正解なんてもんはねえ。");
+
+                                            messageList.Add("アイン：じゃあ、過去が今回の台座の件とどう関係してるんだよ？");
+
+                                            messageList.Add("ランディス：てめぇ、何を聞きにきた？");
+
+                                            messageList.Add("アイン：っぐ・・・");
+
+                                            messageList.Add("ランディス：話にならねえな。");
+
+                                            messageList.Add("ランディス：帰れ、てめぇに教えることはねえ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    messageList.Add("アイン：意味がねえかどうかは、聞かなきゃ分からないだろ？");
+
+                                    messageList.Add("ランディス：ッチ・・・話にならねぇ。");
+
+                                    messageList.Add("アイン：っま、待ってくれ！！");
+
+                                    messageList.Add("ランディス：意味がねぇもの、無理に聞いてどうなる？");
+
+                                    messageList.Add("アイン：っぐ・・・");
+
+                                    messageList.Add("ランディス：帰れ、てめぇに教えることはねえ。");
+                                    we.Truth_CommunicationOl22Fail = true;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            messageList.Add("アイン：このダンジョン、どうすれば解けるんだ？");
+
+                            messageList.Add("ランディス：知らねぇな。自分で探せ。");
+                            we.Truth_CommunicationOl22Fail = true;
+                        }
+                    }
+
+                    if (!we.Truth_CommunicationOl22Progress1)
+                    {
+                        GroundOne.StopDungeonMusic();
+                        GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                        return;
+                    } // 正解してない場合、この時点で一旦設問終了
+
+
+                    bool secondQuestion = we.Truth_CommunicationOl22Progress2;
+
+                    if (!secondQuestion)
+                    {
+                        GroundOne.StopDungeonMusic();
+                        GroundOne.PlayDungeonMusic(Database.BGM16, Database.BGM16LoopBegin);
+
+                        td.ShowDialog();
+                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            // Fail
+                            td.MainMessage = "　【　事実を聞いてんじゃねえ。てめぇはどうなんだ？　】";
+                            td.FirstMessage = "台座はクリアした。だが、妙なひっかかりを覚えた。";
+                            td.SecondMessage = "どうって・・・特にどうってわけじゃないが・・・";
+                            td.ShowDialog();
+                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                // Fail
+                                td.MainMessage = "　【　何が引っかかったのか、把握はしてんのか？　】";
+                                td.FirstMessage = "把握はできてねえが、それなりの違和感は・・・";
+                                td.SecondMessage = "いや・・・それが何なのかはわからねえ・・・";
+                                td.ShowDialog();
+                                if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                {
+                                    // Fail
+                                    td.MainMessage = "　【　はっきりしねえな。ドッチなんだ？　】";
+                                    td.FirstMessage = "す、すまねえ・・・";
+                                    td.SecondMessage = "台座は解けた。でもまだ奥底が見えないんだ。";
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　最後だ。何で、ダンジョン挑んでる？　】";
+                                        td.FirstMessage = "っそ、それは・・・";
+                                        td.SecondMessage = "ダンジョンで稼がなくちゃならねえ。それだけさ";
+                                        td.ShowDialog();
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　奥底ってのは何を指して言ってる？　】";
+                                        td.FirstMessage = "奥底ってのは、つまり・・・";
+                                        td.SecondMessage = "そんなの、俺にだってわからねえよ。";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // Fail
+                                    td.MainMessage = "　【　過去と台座の関係ぐらいは分かってんだろうな？　】";
+                                    td.FirstMessage = "もちろん、わかってるさ！";
+                                    td.SecondMessage = "ッグ・・・";
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　じゃあ、言ってみろ。　】";
+                                        td.FirstMessage = "そ、それは・・・";
+                                        td.SecondMessage = "過去の出来事が台座での設問になる。そうだろ？";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　ダンジョンの攻略方法、把握度合いはどぉなんだ？　】";
+                                        td.FirstMessage = "それなりに、探索してるし分かってるつもりだぜ。";
+                                        td.SecondMessage = "す・・・少しぐらいなら・・・";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // Fail
+                                td.MainMessage = "　【　ダンジョンの攻略具合はどぉなんだ？　】";
+                                td.FirstMessage = "順調だ。滞りなく進んでる。";
+                                td.SecondMessage = "順調ってワケじゃねえ・・・";
+                                td.ShowDialog();
+                                if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                {
+                                    // Fail
+                                    td.MainMessage = "　【　攻略の意味は分かってんだろうな？　】";
+                                    td.FirstMessage = "攻略の・・・意味？";
+                                    td.SecondMessage = "最下層へ進めるための謎を解く。そうだろ？";
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　ダンジョンの攻略度合いさ。決まってるだろ？　】";
+                                        td.FirstMessage = "ああ、これなら楽勝だぜ。";
+                                        td.SecondMessage = "台座をクリアした所だが・・・";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　最下層？　謎？　何言ってんだテメェは。　】";
+                                        td.FirstMessage = "えっ？ち、違うのかよ？";
+                                        td.SecondMessage = "え？　っと・・・";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // Fail
+                                    td.MainMessage = "　【　台座のどこが気になった？言ってみろ。　】";
+                                    td.FirstMessage = "詩の内容は過去に聞いた事がある。しかし・・・";
+                                    td.SecondMessage = "看板の前に、突然出てきたって事ぐらいかな。";
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　ハッキリしねえな。わからねぇのか？　】";
+                                        td.FirstMessage = "あ、ああ・・・";
+                                        td.SecondMessage = "過去との決別をするために！って事だろ？";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　それがどぉした？　】";
+                                        td.FirstMessage = "あ、っいや・・・";
+                                        td.SecondMessage = "・・・　・・・";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //Sucess
+                            td.MainMessage = "　【　台座をクリアした意味はわかってるか？　】";
+                            td.FirstMessage = "いや、まだ断片的な事しか、わからねえ。";
+                            td.SecondMessage = "ああ、当然分かっているさ！";
+                            td.ShowDialog();
+                            if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                // Success
+                                td.MainMessage = "　【　今後どうやって進めてくつもりだ？　】";
+                                td.FirstMessage = "次への階段を探し出し、最下層を目指すまでさ。";
+                                td.SecondMessage = "ダンジョン内をくまなく探索しながら進めるさ。";
+                                td.ShowDialog();
+                                if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                {
+                                    // Fail
+                                    td.MainMessage = "　【　最下層まで行けたとして、どうするつもりだ？　】";
+                                    td.FirstMessage = "どうって・・・もっと強くなってやるさ。";
+                                    td.SecondMessage = "どうって・・・";
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　強くなった後はどうするかを聞いてんだ。　】";
+                                        td.FirstMessage = "その後は・・・その・・・";
+                                        td.SecondMessage = "強ければ良いんだろ？それが師匠の教えじゃねえか。";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　最後だ。何で、ダンジョン挑んでる？　】";
+                                        td.FirstMessage = "っそ、それは・・・";
+                                        td.SecondMessage = "ダンジョン制覇そのものが目的さ、それ以上の意味は無い。";
+                                        td.ShowDialog();
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // Success
+                                    td.MainMessage = "　【　探索して、ダンジョンの仕掛けは把握したのか？　】";
+                                    td.FirstMessage = "台座なら、ちゃんと見つけたぜ。クリアもした。";
+                                    td.SecondMessage = "台座の一部ぐらいしか・・・全体像はまだ何とも・・・";
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　てめぇのお望みってのは、台座だったのかよ？　】";
+                                        td.FirstMessage = "メインの仕掛けを解いた。探索としては成功だろ？";
+                                        td.SecondMessage = "いや・・・そういうわけじゃ・・・";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        // Success
+                                        td.MainMessage = "　【　最後だ。どうしてダンジョンへ挑む気になった？　】";
+                                        td.FirstMessage = "腕を試したかった。それだけだ。";
+                                        td.SecondMessage = "・・・　・・・　";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            // Fail
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            GroundOne.StopDungeonMusic();
+
+                                            // Success
+                                            messageList.Add("ランディス：・・・ほぉ。");
+                                            we.Truth_CommunicationOl22Progress2 = true;
+                                            secondQuestion = true;
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // Fail
+                                td.MainMessage = "　【　じゃあ、言ってみろ。　】";
+                                td.FirstMessage = "台座は過去に関連してる。過去を基に解を導き出せばいい。";
+                                td.SecondMessage = "あの詩がこのダンジョンにおける最大の鍵だ。";
+                                td.ShowDialog();
+                                if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                {
+                                    // Fail
+                                    td.MainMessage = "　【　どぉ導き出されるってんだ？言ってみろ。　】";
+                                    td.FirstMessage = "過去の出来事を思い出しつつ、ダンジョン正解ルートを導き出す。";
+                                    td.SecondMessage = "ど、どうって・・・";
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　正解だと？　てめぇ、俺から一体何を学んだ？　】";
+                                        td.FirstMessage = "っあ！い、いやいやいや！！";
+                                        td.SecondMessage = "隠さないでくれよ。正解ルートあるんだろ？";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　答えるか、答えないか。ハッキリしろ。　】";
+                                        td.FirstMessage = "す、すまねぇ・・・";
+                                        td.SecondMessage = "未来へとつながるキーワードを探せば良いんだ！";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // Fail
+                                    td.MainMessage = "　【　最大の鍵。どこで使うんだ？　】";
+                                    td.FirstMessage = "ど、どこって・・・";
+                                    td.SecondMessage = "最下層だ。最後で使うんだろ、こういうのは。";
+                                    td.ShowDialog();
+                                    if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　ハッキリしねえな。わからねぇのか？　】";
+                                        td.FirstMessage = "最下層だ！";
+                                        td.SecondMessage = "一番最初だ！";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：駄目だ。話にならねぇ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        // Fail
+                                        td.MainMessage = "　【　最後だ。どうしてダンジョンへ挑む気になった？　】";
+                                        td.FirstMessage = "師匠の【炎神グローブ】みたいなヤツを俺も欲しいからさ。";
+                                        td.SecondMessage = "もちろん、最下層到達で師匠に並ぶためさ。";
+                                        td.ShowDialog();
+                                        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                        else
+                                        {
+                                            messageList.Add("ランディス：ッチ、だからテメェは駄目だっつってんだ、帰れ。");
+                                            we.Truth_CommunicationOl22Fail = true;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    if (!GroundOne.WE.Truth_CommunicationOl22Progress2)
+                    {
+                        GroundOne.StopDungeonMusic();
+                        GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                        return;
+                    } // 正解してない場合、この時点で一旦設問終了
+
+                    messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.PlayMusic11);
+
+                    if (!GroundOne.WE.Truth_CommunicationOl22DuelFail)
+                    {
+                        messageList.Add("アイン：師匠、おりいって頼みがある。");
+
+                        messageList.Add("ランディス：何だ、言ってみろ。");
+
+                        messageList.Add("アイン：師匠、このダンジョン一緒に来てくれ。頼むぜ！");
+
+                        messageList.Add("ランディス：・・・");
+
+                        messageList.Add("ランディス：ちっと腕見せてみろ。");
+
+                        messageList.Add("アイン：え？");
+
+                        messageList.Add("ランディス：３");
+
+                        messageList.Add("ランディス：２");
+
+                        messageList.Add("アイン：おわっ！マジかよ！？");
+
+                        messageList.Add("ランディス：１");
+
+                        messageList.Add("アイン：ック・・・来い！！");
+                    }
+
+                    bool result = BattleStart(Database.DUEL_OL_LANDIS, true);
+                    if (result)
+                    {
+                        // 勝った場合、次の会話へ
+                        GroundOne.WE2.WinOnceOlLandis = true;
+                    }
+                    else
+                    {
+                        if (GroundOne.WE.Truth_CommunicationOl22DuelFailCount >= 3)
+                        {
+                            // 負けすぎなので、そのまま通す。ただし、WinOnceOlLandisはつけない。
+                        }
+                        else
+                        {
+                            // 負けた場合、強制リトライ
+                            messageList.Add("ランディス：帰れ、てめぇに教えることはねえ。");
+
+                            messageList.Add("アイン：ッグ・・・");
+
+                            GroundOne.WE.Truth_CommunicationOl22Fail = true;
+                            GroundOne.WE.Truth_CommunicationOl22DuelFail = true;
+                            GroundOne.WE.Truth_CommunicationOl22DuelFailCount++;
+                            return;
+                        }
+                    }
+
+                    GroundOne.StopDungeonMusic();
+                    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+
+                    messageList.Add("　　【受付嬢：そちらの方々！！今すぐ対戦を中止してください！！　】");
+
+                    messageList.Add("アイン：ッウワ・・・ヤベ・・・");
+
+                    messageList.Add("　　【受付嬢：闘技場内での勝手な対戦は、ルール厳禁となっております。　】");
+
+                    messageList.Add("ランディス：ッチ、分かった分かったって、嬢ちゃん。");
+
+                    messageList.Add("　　【受付嬢：今から、名前を読み上げます。　】");
+
+                    messageList.Add("　　【受付嬢：オル・ランディス様　】");
+
+                    messageList.Add("　　【受付嬢：アイン・ウォーレンス様　】");
+
+                    messageList.Add("　　【受付嬢：読み上げられた者は、罰としてDUEL戦歴に１敗が加えられます。】");
+
+                    messageList.Add("アイン：ッゲ！！マジかよ！？");
+
+                    messageList.Add("ランディス：くだらんルールだな。");
+
+                    messageList.Add("　　【受付嬢：ただし、アイン・ウォーレンス様はDUEL参加より" + we.GameDay.ToString() + "日以内のため、特例除外とします。】");
+
+                    messageList.Add("アイン：助かったぜ・・・ッホ・・・");
+
+                    messageList.Add("　　【受付嬢：合わせて、オル・ランディス様には累積罰として更に２敗が加えられます。】");
+
+                    messageList.Add("ランディス：勝手に付けとけ。");
+
+                    messageList.Add("　　【受付嬢：なお、今後も続けて行った場合、DUEL戦歴に累積的な敗北数が加算されます。】");
+
+                    messageList.Add("　　【受付嬢：くれぐれも闘技場内での勝手なDUELはしないよう、お願いいたします。】");
+
+                    messageList.Add("アイン：ああ、悪かったな、受付さん。次からは気をつけるよ。");
+
+                    messageList.Add("ランディス：こいつらに気を使う必要はねぇ。ザコアイン。");
+
+                    messageList.Add("アイン：何でだよ。運営側の受付さんだろ？別に良いじゃねえか。");
+
+                    messageList.Add("ランディス：てめぇのそういうトコ・・・");
+
+                    messageList.Add("アイン：受付さんだって人間だ。良いだろ？");
+
+                    messageList.Add("ランディス：つくづく甘ちゃんだなテメェは・・・好きにしろ。");
+
+                    messageList.Add("アイン：っふぅ・・・マジで疲れたぜ。");
+
+                    messageList.Add("アイン：師匠とやるといつも全力だ・・・もう動けねえ・・・");
+
+                    messageList.Add("ランディス：ダンジョン。");
+
+                    messageList.Add("アイン：っえ？");
+
+                    messageList.Add("ランディス：行ってやっても良い。");
+
+                    messageList.Add("アイン：おおおお！！！　マジで！？　やった！！！");
+
+                    messageList.Add("ランディス：条件がある。");
+
+                    messageList.Add("アイン：あ、あぁ。教えてくれ。");
+
+                    messageList.Add("ランディス：ラナを外せ。");
+
+                    messageList.Add("アイン：・・・　えっ　・・・");
+
+                    messageList.Add("ランディス：冗談だ。真に受けんなボケ。");
+
+                    messageList.Add("アイン：っな・・・何だよ。つい考えちまったじゃねえか・・・");
+
+                    messageList.Add("ランディス：ラナと少し距離を置け。");
+
+                    messageList.Add("アイン：い、いやいや、何言ってるんだよ。");
+
+                    messageList.Add("アイン：距離感とかいう話にならない程度の距離でしか・・・");
+
+                    messageList.Add("ランディス：聞けっつってんだ、ボケ。");
+
+                    messageList.Add("ランディス：このダンジョン、解きてぇんだろ？");
+
+                    messageList.Add("アイン：あ、あぁ当然！　目指すは最下層到達だ！！");
+
+                    messageList.Add("ランディス：だったら距離を置け。");
+
+                    messageList.Add("アイン：それのどこがダンジョン攻略に・・・");
+
+                    messageList.Add("ランディス：以上だ。");
+
+                    messageList.Add("ランディス：パーティに入った以上、死ぬまで鍛えてやる。");
+
+                    messageList.Add("ランディス：覚悟しとけや、ザコアイン。");
+
+                    messageList.Add("アイン：あ、ああ！！");
+
+                    messageList.Add("アイン：サンキューな！　師匠！！　");
+
+                    messageList.Add("【オル・ランディスがパーティに加わりました！】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                    GroundOne.WE.AvailableThirdCharacter = true;
+                    GroundOne.WE.Truth_CommunicationOl22 = true;
+
+                    // 「コメント」初回設計で後編３人目をヴェルゼアーティでセーブしてしまっているため、
+                    // ここで再設定しなければならなくなった。
+                    tc.FullName = "オル・ランディス";
+                    tc.Name = "ランディス";
+                    tc.Strength = Database.OL_LANDIS_FIRST_STRENGTH;
+                    tc.Agility = Database.OL_LANDIS_FIRST_AGILITY;
+                    tc.Intelligence = Database.OL_LANDIS_FIRST_INTELLIGENCE;
+                    tc.Stamina = Database.OL_LANDIS_FIRST_STAMINA;
+                    tc.Mind = Database.OL_LANDIS_FIRST_MIND;
+                    tc.Level = 35;
+                    tc.Exp = 0;
+                    tc.BaseLife = 2080;
+                    tc.CurrentLife = tc.MaxLife;
+                    tc.BaseSkillPoint = 100;
+                    tc.CurrentSkillPoint = 100;
+                    //td.TC.Gold = 10; // [警告]：ゴールドの所持は別クラスにするべきです。
+                    tc.BaseMana = 1290;
+                    tc.CurrentMana = tc.MaxMana;
+                    tc.MainWeapon = new ItemBackPack(Database.POOR_GOD_FIRE_GLOVE_REPLICA);
+                    tc.MainArmor = new ItemBackPack(Database.COMMON_AURA_ARMOR);
+                    tc.Accessory = new ItemBackPack(Database.COMMON_FATE_RING);
+                    tc.Accessory2 = new ItemBackPack(Database.COMMON_LOYAL_RING);
+                    tc.BattleActionCommand1 = Database.ATTACK_EN;
+                    tc.BattleActionCommand2 = Database.DEFENSE_EN;
+                    tc.BattleActionCommand3 = Database.STRAIGHT_SMASH;
+                    tc.BattleActionCommand4 = Database.VOLCANIC_WAVE;
+                    tc.BattleActionCommand5 = Database.LIFE_TAP;
+                    tc.BattleActionCommand6 = Database.SEVENTH_MAGIC;
+                    tc.BattleActionCommand7 = Database.ONE_IMMUNITY;
+
+                    tc.AvailableMana = true;
+                    tc.AvailableSkill = true;
+                    tc.StraightSmash = true;
+                    tc.FireBall = true;
+                    tc.DarkBlast = true;
+                    tc.DoubleSlash = true;
+                    tc.ShadowPact = true;
+                    tc.FlameAura = true;
+                    tc.StanceOfStanding = true;
+                    tc.DispelMagic = true;
+                    tc.LifeTap = true;
+                    tc.HeatBoost = true;
+                    tc.Negate = true;
+                    tc.BlackContract = true;
+                    tc.InnerInspiration = true;
+                    tc.RiseOfImage = true;
+                    tc.Deflection = true;
+                    tc.FlameStrike = true;
+                    tc.Tranquility = true;
+                    tc.VoidExtraction = true;
+                    tc.BlackFire = true;
+                    tc.Immolate = true;
+                    tc.DarkenField = true;
+                    tc.DevouringPlague = true;
+                    tc.VolcanicWave = true;
+                    tc.OneImmunity = true;
+                    tc.CircleSlash = true;
+                    tc.OuterInspiration = true;
+                    tc.SmoothingMove = true;
+                    tc.WordOfMalice = true;
+                    tc.EnrageBlast = true;
+                    tc.SwiftStep = true;
+                    tc.Recover = true;
+                    tc.SurpriseAttack = true;
+                    tc.SeventhMagic = true;
+                }
+
+                GroundOne.StopDungeonMusic();
+                GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+            }
         }
 
         public static void Message80005(ref List<string> messageList, ref List<ActionEvent> eventList)
