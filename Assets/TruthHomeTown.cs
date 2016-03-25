@@ -79,6 +79,7 @@ namespace DungeonPlayer
         bool nowDuel = false;
         string OpponentDuelist = string.Empty;
         bool fromGoDungeon = false;
+        bool nowTalkingOlRandis = false;
 
 	    // Use this for initialization
         public override void Start()
@@ -650,6 +651,7 @@ namespace DungeonPlayer
             else if (GroundOne.WE.dungeonEvent226 && !GroundOne.WE.Truth_CommunicationOl22)
             {
                 Debug.Log("1");
+                this.nowTalkingOlRandis = true;
                 MessagePack.Message80004(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -781,6 +783,10 @@ namespace DungeonPlayer
                 {
                     mainMessage.text = "";
                 }
+                else if (current == MessagePack.ActionEvent.HomeTownCallDecision)
+                {
+                    mainMessage.text = "";
+                }
                 else
                 {
                     systemMessagePanel.SetActive(false);
@@ -829,11 +835,16 @@ namespace DungeonPlayer
                     this.groupDuelSelect.SetActive(true);
                     this.Filter.SetActive(true);
                 }
-                else if (current == MessagePack.ActionEvent.HomeTownShowDuelDule)
+                else if (current == MessagePack.ActionEvent.HomeTownShowDuelRule)
                 {
                     SceneDimension.CallDuelRule(this);
                     this.Filter.SetActive(true);
                 }
+                else if (current == MessagePack.ActionEvent.HomeTownCallDecision)
+                {
+                    this.Filter.SetActive(true);
+                    SceneDimension.CallTruthDecision(this);
+                }                     
                 else if (current == MessagePack.ActionEvent.HomeTownFazilCastle)
                 {
                     GoToFazilCastle();
@@ -1760,6 +1771,102 @@ namespace DungeonPlayer
                     Debug.Log("duelWin is still false...");
                 }
                 BattleResult(duelWin);
+            }
+            else if (this.nowTalkingOlRandis)
+            {
+                Debug.Log("nowtalkingolrandis: " + GroundOne.DecisionSequence.ToString());
+                if (GroundOne.DecisionSequence == 0)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_2(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_11(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 2)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_3(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_4(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 4)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_5(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_10(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 5)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_6(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_7(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 7)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_8(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_9(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else
+                {
+                    Debug.Log("else...");
+                    GroundOne.DecisionFirstMessage = "";
+                    GroundOne.DecisionMainMessage = "";
+                    GroundOne.DecisionSecondMessage = "";
+                    GroundOne.DecisionSequence = 0;
+                    GroundOne.DecisionChoice = 0;
+                    this.nowTalkingOlRandis = false;
+                }
+                //if (!we.Truth_CommunicationOl22Progress1)
+                //{
+                //    GroundOne.StopDungeonMusic();
+                //    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                //    return;
+                //} // 正解してない場合、この時点で一旦設問終了
+
+                //  bool secondQuestion = we.Truth_CommunicationOl22Progress2;
+
+
+                //if (!GroundOne.WE.Truth_CommunicationOl22Progress2)
+                //{
+                //    GroundOne.StopDungeonMusic();
+                //    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                //    return;
+                //} // 正解してない場合、この時点で一旦設問終了
+
             }
             else
             {

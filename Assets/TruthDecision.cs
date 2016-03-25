@@ -19,7 +19,7 @@ namespace DungeonPlayer
         }
         
         // 1
-        private void button1_Click()
+        public void button1_Click()
         {
             GroundOne.DecisionChoice = 1;
             GroundOne.ParentScene.SceneBack();
@@ -27,7 +27,7 @@ namespace DungeonPlayer
         }
 
         // 2
-        private void button2_Click()
+        public void button2_Click()
         {
             GroundOne.DecisionChoice = 2;
             GroundOne.ParentScene.SceneBack();

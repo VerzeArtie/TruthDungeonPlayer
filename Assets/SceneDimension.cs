@@ -9,6 +9,12 @@ namespace DungeonPlayer
     {
         public static List<string> playbackScene = new List<string>();
 
+        public static void CallTruthDecision(MotherForm scene)
+        {
+            GroundOne.ParentScene = scene;
+            Application.LoadLevelAdditive(Database.TruthDecision);
+        }
+
         public static void CallDuelRule(MotherForm scene)
         {
             GroundOne.ParentScene = scene;

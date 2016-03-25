@@ -36,4 +36,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TruthRequestFood.unity
   - enabled: 1
+    path: Assets/TruthDecision.unity
+  - enabled: 1
     path: Assets/TruthItemBank.unity

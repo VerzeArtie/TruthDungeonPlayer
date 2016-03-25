@@ -119,6 +119,15 @@ namespace DungeonPlayer
         public static bool TruthHomeTown_DuelFailCount1 = false; // 現実世界、ラナDUEL戦で敗北した時１
         public static bool TruthHomeTown_DuelFailCount2 = false; // 現実世界、ラナDUEL戦で敗北した時２
 
+        public static int DecisionSequence = 0;
+        public static string DecisionMainMessage = string.Empty;
+        public static string DecisionFirstMessage = string.Empty;
+        public static string DecisionSecondMessage = string.Empty;
+             
+        // TruthDecision
+        public static int DecisionChoice = 0;
+
+
         public static bool InitializeGroundOne()
         {
             Debug.Log("InitializeGroundOne start");
@@ -151,6 +160,8 @@ namespace DungeonPlayer
             WE.AlreadyRest = false;
             WE.Truth_CommunicationFirstHomeTown = true;
 
+            WE.dungeonEvent226 = true;
+            
             //MC.Level = 23;
             ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
             //WE.AvailableBackGate = true;
@@ -238,7 +249,7 @@ namespace DungeonPlayer
             //MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
 
             //MC.DeadPlayer();
-            MC.Level = 4;
+            MC.Level = 1;
             MC.Strength = 100;
             MC.Agility = 100;
 
@@ -286,7 +297,7 @@ namespace DungeonPlayer
             MC.OneImmunity = true;
             MC.WhiteOut = true;
             MC.TimeStop = true;
-            MC.StraightSmash = false;
+            MC.StraightSmash = true;
             MC.DoubleSlash = true;
             MC.CrushingBlow = true;
             MC.SoulInfinity = true;
@@ -340,7 +351,7 @@ namespace DungeonPlayer
             MC.FrozenAura = true;
             MC.ChillBurn = true;
             MC.ZetaExplosion = true;
-            MC.EnrageBlast = false;
+            MC.EnrageBlast = true;
             MC.PiercingFlame = true;
             MC.SigilOfHomura = true;
             MC.Immolate = true;
