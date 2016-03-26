@@ -488,10 +488,10 @@ namespace DungeonPlayer
             ssName[148] = Database.SOUL_EXECUTION;
 
             // 元核
-            //            if (player.Name == Database.EIN_WOLENCE) ssName[149] = Database.ARCHETYPE_EIN;
-            //            if (player.Name == Database.RANA_AMILIA) ssName[149] = Database.ARCHETYPE_RANA;
-            //            if (player.Name == Database.VERZE_ARTIE) ssName[149] = Database.ARCHETYPE_VERZE;
-            //            if (player.Name == Database.OL_LANDIS) ssName[149] = Database.ARCHETYPE_OL;
+            if (player.FirstName == Database.EIN_WOLENCE) ssName[149] = Database.ARCHETYPE_EIN;
+            if (player.FirstName == Database.RANA_AMILIA) ssName[149] = Database.ARCHETYPE_RANA;
+            if (player.FirstName == Database.VERZE_ARTIE) ssName[149] = Database.ARCHETYPE_VERZE;
+            if (player.FirstName == Database.OL_LANDIS) ssName[149] = Database.ARCHETYPE_OL;
 
             return ssName;
         }

@@ -1441,7 +1441,7 @@ namespace DungeonPlayer
                 }
                 #endregion
                 #region "【元核】習得"
-                else if ((GroundOne.MC.Level >= 40) && (!GroundOne.WE.availableArchetypeCommand))
+                else if ((GroundOne.MC.Level >= 40) && (!GroundOne.WE.AvailableArchetypeCommand))
                 {
                     MessagePack.Message70012(ref nowMessage, ref nowEvent);
                     NormalTapOK();

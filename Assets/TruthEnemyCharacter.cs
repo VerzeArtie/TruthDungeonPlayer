@@ -6731,7 +6731,6 @@ namespace DungeonPlayer
                 this.baseMana = 80 + (this.level - 1) * 15;
             }
 
-            // todo
             float powerValue = 1.0f;
             if (GroundOne.Difficulty == 1)
             {
@@ -6770,14 +6769,12 @@ namespace DungeonPlayer
             // c 後編編集
 
             this.currentLife = this.MaxLife; // c 後編編集
-            Debug.Log("currentLife: " + this.currentLife.ToString());
             this.currentMana = this.MaxMana; // c 後編編集
         }
 
         public new void CleanUpEffectForBoss()
         {
-            // todo
-            //base.CleanUpEffectForBoss();
+            base.CleanUpEffectForBoss();
         }
 
         public void ChoiceTimeSequenceBuff(int number, TruthImage[] list, int currentTurn)

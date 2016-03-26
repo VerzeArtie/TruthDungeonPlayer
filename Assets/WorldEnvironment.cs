@@ -1339,7 +1339,7 @@ namespace DungeonPlayer
         public bool AvailableBattleSettingMenu { get; set; }
         public bool AvailableInstantCommand { get; set; }
         public bool AvailableMixSpellSkill { get; set; }
-        public bool availableArchetypeCommand { get; set; } // 潜在奥義の発動可能
+        public bool AvailableArchetypeCommand { get; set; } // 潜在奥義の発動可能
         public bool AvailableBackGate { get; set; }
 
         public bool AlreadyCommunicateFazilCastle { get; set; } // ファージル宮殿でイベント済

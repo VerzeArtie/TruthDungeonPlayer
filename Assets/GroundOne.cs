@@ -153,6 +153,12 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
+            MC.Syutyu_Danzetsu = true;
+
+            WE.AvailableSecondCharacter = true;
+            WE.AvailableThirdCharacter = true;
+            WE.AvailableArchetypeCommand = true;
+
             WE.AvailableDuelColosseum = true;
             WE.AvailableItemBank = true;
             WE.AvailableDuelMatch = true;
@@ -161,7 +167,8 @@ namespace DungeonPlayer
             WE.Truth_CommunicationFirstHomeTown = true;
 
             WE.dungeonEvent226 = true;
-            
+            WE.AvailableMixSpellSkill = false;
+
             //MC.Level = 23;
             ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
             //WE.AvailableBackGate = true;
@@ -451,6 +458,7 @@ namespace DungeonPlayer
             //SC.AddBackPack(new ItemBackPack(Database.COMMON_INITIATE_SWORD));
             //SC.AddBackPack(new ItemBackPack(Database.RARE_AERO_BLADE));
             //SC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
+            SC.DarkBlast = true;
 
             TC = objTC.AddComponent<MainCharacter>();
             TC.FirstName = Database.OL_LANDIS;
@@ -472,6 +480,16 @@ namespace DungeonPlayer
             TC.BattleActionCommandList[6] = Database.STAY_EN;
             TC.BattleActionCommandList[7] = Database.STAY_EN;
             TC.BattleActionCommandList[8] = Database.STAY_EN;
+            TC.FireBall = true;
+            TC.LavaAnnihilation = true;
+            TC.DemonicIgnite = true;
+            TC.AusterityMatrix = true;
+            TC.StraightSmash = true;
+            TC.DoubleSlash = true;
+            TC.Negate = true;
+            TC.NothingOfNothingness = true;
+            TC.ZetaExplosion = true;
+            TC.ChillBurn = true;
             return true;
         }
 		public static void InitializeNetworkConnection()

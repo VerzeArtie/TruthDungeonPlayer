@@ -148,8 +148,6 @@ namespace DungeonPlayer
             UpdateBackPackLabelInterface(GroundOne.MC);
             UpdateEquipment(GroundOne.MC);
             this.labelTitle.text = GroundOne.titleName;
-            // keydown(EquipmentShop_KeyDown) // todo
-            // keyup(TruthEquipmentShop_KeyUp) // todo
         }
 
         bool nowClose = false;
@@ -226,19 +224,12 @@ namespace DungeonPlayer
                 {
                     backpackList[ii].text = temp[ii + baseNumber].Name;
                     Method.UpdateRareColor(temp[ii + baseNumber], backpackList[ii], back_backpackList[ii]);
-                    //backpackList[ii].Cursor = System.Windows.Forms.Cursors.Hand; // todo
-
                     backpackStack[ii].text = "x" + temp[ii + baseNumber].StackValue.ToString();
-
                 }
                 else
                 {
                     backpackList[ii].text = "";
-                    //backpackList[ii].Cursor = System.Windows.Forms.Cursors.Default; // todo
-
                     backpackStack[ii].text = "";
-                    //backpackStack[ii].Cursor = System.Windows.Forms.Cursors.Default; // todo
-
                     back_backpackList[ii].gameObject.GetComponent<Image>().color = new Color(1, 1, 1);
 
                 }
@@ -330,7 +321,6 @@ namespace DungeonPlayer
             {
                 this.currentPlayer.DeleteBackPack(backpackData);
                 sender.text = "";
-                //sender.Cursor = System.Windows.Forms.Cursors.Default; // todo
                 backpackStack[ii].text = "";
                 updateWE2Value = MaxStack;
             }

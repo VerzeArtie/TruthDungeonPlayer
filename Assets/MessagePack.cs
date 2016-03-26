@@ -9634,7 +9634,7 @@ namespace DungeonPlayer
                 GroundOne.WE2.WinOnceSinikiaKahlHanz = true;
                 GroundOne.WE2.AvailableArcheTypeCommand = true;
                 GroundOne.MC.Syutyu_Danzetsu = true;
-                GroundOne.WE.availableArchetypeCommand = true;
+                GroundOne.WE.AvailableArchetypeCommand = true;
 
                 if ((result == false) && (GroundOne.WE.Truth_CommunicationSinikia30DuelFailCount >= 3))
                 {

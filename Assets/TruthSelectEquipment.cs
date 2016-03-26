@@ -493,7 +493,6 @@ namespace DungeonPlayer
                 (sender.text != ""))
             {
                 this.SelectValue = sender.text;
-                //this.DialogResult = System.Windows.Forms.DialogResult.OK; // todo
             }
         }
         public void tapOK()
