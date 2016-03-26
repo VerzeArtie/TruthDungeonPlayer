@@ -12486,9 +12486,9 @@ namespace DungeonPlayer
                 else
                 {
                     // 負けた場合、強制リトライ
-                    messageList.Add("ランディス：帰れ、てめぇに教えることはねえ。"); eventList.Add(ActionEvent.HomeTownCallDuel);
+                    messageList.Add("ランディス：帰れ、てめぇに教えることはねえ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.HomeTownCallDuel);
+                    messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.Truth_CommunicationOl22Fail = true;
                     GroundOne.WE.Truth_CommunicationOl22DuelFail = true;
@@ -12501,15 +12501,15 @@ namespace DungeonPlayer
             GroundOne.StopDungeonMusic();
             GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
 
-            messageList.Add("　　【受付嬢：そちらの方々！！今すぐ対戦を中止してください！！　】"); eventList.Add(ActionEvent.HomeTownCallDuel);
+            messageList.Add("　　【受付嬢：そちらの方々！！今すぐ対戦を中止してください！！　】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ッウワ・・・ヤベ・・・"); eventList.Add(ActionEvent.HomeTownCallDuel);
+            messageList.Add("アイン：ッウワ・・・ヤベ・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　【受付嬢：闘技場内での勝手な対戦は、ルール厳禁となっております。　】"); eventList.Add(ActionEvent.HomeTownCallDuel);
+            messageList.Add("　　【受付嬢：闘技場内での勝手な対戦は、ルール厳禁となっております。　】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ランディス：ッチ、分かった分かったって、嬢ちゃん。"); eventList.Add(ActionEvent.HomeTownCallDuel);
+            messageList.Add("ランディス：ッチ、分かった分かったって、嬢ちゃん。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　【受付嬢：今から、名前を読み上げます。　】"); eventList.Add(ActionEvent.HomeTownCallDuel);
+            messageList.Add("　　【受付嬢：今から、名前を読み上げます。　】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　【受付嬢：オル・ランディス様　】"); eventList.Add(ActionEvent.None);
 

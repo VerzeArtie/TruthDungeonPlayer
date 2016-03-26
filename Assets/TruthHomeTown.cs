@@ -1755,7 +1755,7 @@ namespace DungeonPlayer
                 this.nowRequestFood = false;
                 ExecRestInn();
             }
-            else if (this.nowDuel)
+            else if (this.nowDuel && !this.nowTalkingOlRandis)
             {
                 Debug.Log("SceneBack (nowDuel)");
 
@@ -2242,6 +2242,16 @@ namespace DungeonPlayer
                         MessagePack.Message80004_73(ref nowMessage, ref nowEvent);
                         NormalTapOK();
                     }
+                }
+                else if (GroundOne.DecisionSequence == 58)
+                {
+                    bool duelWin = false;
+                    if (GroundOne.BattleResult == GroundOne.battleResult.OK)
+                    {
+                        duelWin = true;
+                    }
+                    MessagePack.Message80004_74(ref nowMessage, ref nowEvent, duelWin);
+                    NormalTapOK();
                 }
                 else
                 {
