@@ -11917,7 +11917,7 @@ namespace DungeonPlayer
         {
             // Fail
             GroundOne.DecisionSequence = 12;
-            GroundOne.DecisionMainMessage = "　【　事実を聞いてんじゃねえ。てめぇはどうなんだ？　】";
+            GroundOne.DecisionMainMessage = "　【　経緯を聞いてんじゃねえ。てめぇはどうなんだ？　】";
             GroundOne.DecisionFirstMessage = "台座はクリアした。だが、妙なひっかかりを覚えた。";
             GroundOne.DecisionSecondMessage = "どうって・・・特にどうってわけじゃないが・・・";
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallDecision);
@@ -12418,7 +12418,7 @@ namespace DungeonPlayer
             GroundOne.DecisionSequence = 67;
             GroundOne.DecisionMainMessage = "　【　最大の鍵。どこで使うんだ？　】";
             GroundOne.DecisionFirstMessage = "ど、どこって・・・";
-            GroundOne.DecisionSecondMessage = "最下層だ。最後で使うんだろ、こういうのは。";
+            GroundOne.DecisionSecondMessage = "最下層で使うんだろ、こういうのは。";
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallDecision);
         }
 

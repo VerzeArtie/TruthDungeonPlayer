@@ -1840,6 +1840,409 @@ namespace DungeonPlayer
                         NormalTapOK();
                     }
                 }
+                else if (GroundOne.DecisionSequence == 1)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_12(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_43(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 12)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_13(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_28(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 13)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_14(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_21(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 14)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_15(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_18(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 15)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_16(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_17(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 18)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_19(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_20(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 21)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_22(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_25(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 22)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_23(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_24(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 25)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_26(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_27(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 28)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_29(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_36(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 29)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_30(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_33(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 30)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_31(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_32(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 33)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_34(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_35(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 36)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_37(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_40(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 37)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_38(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_39(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 40)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_41(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_42(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 43)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_44(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_59(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 44)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_45(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_52(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 45)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_46(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_49(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 46)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_47(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_48(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 49)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_50(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_51(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 52)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_53(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_56(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 53)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_54(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_55(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 56)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_57(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_58(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 59)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_60(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_67(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 60)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_61(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_64(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 61)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_62(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_63(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 64)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_65(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_66(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 67)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_68(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_71(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 68)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_69(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_70(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else if (GroundOne.DecisionSequence == 71)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message80004_72(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message80004_73(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
                 else
                 {
                     Debug.Log("else...");
