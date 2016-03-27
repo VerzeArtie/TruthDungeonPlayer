@@ -341,603 +341,596 @@ namespace DungeonPlayer
                     break;
                 #endregion
 
-                // todo
                 #region "元核"
                 case MainCharacter.PlayerAction.Archetype:
                     PreExecPlayArchetype(player, target, withoutCost, CurrentArchetypeName);
                     break;
                 #endregion
 
-                // todo
-                //#region "アイテム使用"
-                //case MainCharacter.PlayerAction.UseItem:
-                //    double effectValue = 0;
-                //    List<MainCharacter> groupAlly = new List<MainCharacter>();
-                //    List<MainCharacter> groupEnemy = new List<MainCharacter>();
-                //    if (mc != null && !mc.Dead) { groupAlly.Add(mc); }
-                //    if (sc != null && !sc.Dead) { groupAlly.Add(sc); }
-                //    if (tc != null && !tc.Dead) { groupAlly.Add(tc); }
-                //    if (ec1 != null && !ec1.Dead) { groupEnemy.Add(ec1); }
-                //    if (ec2 != null && !ec2.Dead) { groupEnemy.Add(ec2); }
-                //    if (ec3 != null && !ec3.Dead) { groupEnemy.Add(ec3); }
-                //    //MessageBox.Show("CurrentUsingItem" + CurrentUsingItem);
-                //    //MessageBox.Show("player.CurrentUsingItem" + player.CurrentUsingItem);
-                //    //MessageBox.Show("player.StackCommandString" + player.StackCommandString);
+                #region "アイテム使用"
+                case MainCharacter.PlayerAction.UseItem:
+                    effectValue = 0.0f;
+                    List<MainCharacter> groupAlly = new List<MainCharacter>();
+                    List<MainCharacter> groupEnemy = new List<MainCharacter>();
+                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { groupAlly.Add(GroundOne.MC); }
+                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { groupAlly.Add(GroundOne.SC); }
+                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { groupAlly.Add(GroundOne.TC); }
+                    if (ec1 != null && !ec1.Dead) { groupEnemy.Add(ec1); }
+                    if (ec2 != null && !ec2.Dead) { groupEnemy.Add(ec2); }
+                    if (ec3 != null && !ec3.Dead) { groupEnemy.Add(ec3); }
 
-                //    switch (CurrentUsingItem)
-                //    {
-                //        case Database.POOR_SMALL_RED_POTION:
-                //        case Database.COMMON_NORMAL_RED_POTION:
-                //        case Database.COMMON_LARGE_RED_POTION:
-                //        case Database.COMMON_HUGE_RED_POTION:
-                //        case Database.COMMON_GORGEOUS_RED_POTION:
-                //            ItemBackPack item;
-                //            if (CurrentUsingItem != string.Empty)
-                //            {
-                //                item = new ItemBackPack(CurrentUsingItem);
-                //            }
-                //            else
-                //            {
-                //                item = new ItemBackPack(player.CurrentUsingItem);
-                //            }
+                    switch (CurrentUsingItem)
+                    {
+                        case Database.POOR_SMALL_RED_POTION:
+                        case Database.COMMON_NORMAL_RED_POTION:
+                        case Database.COMMON_LARGE_RED_POTION:
+                        case Database.COMMON_HUGE_RED_POTION:
+                        case Database.COMMON_GORGEOUS_RED_POTION:
+                            ItemBackPack item;
+                            if (CurrentUsingItem != string.Empty)
+                            {
+                                item = new ItemBackPack(CurrentUsingItem);
+                            }
+                            else
+                            {
+                                item = new ItemBackPack(player.CurrentUsingItem);
+                            }
 
-                //            int effect = item.UseIt(); // [警告]：汎用性の高いメソッド名だが、実質ポーション専用になっています。
-                //            if (player.CurrentAbsoluteZero > 0)
-                //            {
-                //                UpdateBattleText(player.GetCharacterSentence(119));
-                //            }
-                //            else
-                //            {
-                //                UpdateBattleText(player.Name + "は" + item.Name + "を使った。" + effect.ToString() + " ライフ回復\r\n");
-                //                if (player.CurrentNourishSense > 0)
-                //                {
-                //                    effect = (int)((double)effect * 1.3f);
-                //                }
-                //                effect = (int)GainIsZero(effect, player);
-                //                player.CurrentLife += effect;
-                //                UpdateLife(player, effect, true, true, 0, false);
-                //            }
-                //            player.DeleteBackPack(item);
-                //            break;
+                            int effect = item.UseIt(); // [警告]：汎用性の高いメソッド名だが、実質ポーション専用になっています。
+                            if (player.CurrentAbsoluteZero > 0)
+                            {
+                                UpdateBattleText(player.GetCharacterSentence(119));
+                            }
+                            else
+                            {
+                                UpdateBattleText(player.FirstName + "は" + item.Name + "を使った。" + effect.ToString() + " ライフ回復\r\n");
+                                if (player.CurrentNourishSense > 0)
+                                {
+                                    effect = (int)((double)effect * 1.3f);
+                                }
+                                effect = (int)GainIsZero(effect, player);
+                                player.CurrentLife += effect;
+                                UpdateLife(player, effect, true, true, 0, false);
+                            }
+                            player.DeleteBackPack(item);
+                            break;
 
-                //        case Database.POOR_SMALL_BLUE_POTION:
-                //        case Database.COMMON_NORMAL_BLUE_POTION:
-                //        case Database.COMMON_LARGE_BLUE_POTION:
-                //        case Database.COMMON_HUGE_BLUE_POTION:
-                //        case Database.COMMON_GORGEOUS_BLUE_POTION:
-                //            if (CurrentUsingItem != string.Empty)
-                //            {
-                //                item = new ItemBackPack(CurrentUsingItem);
-                //            }
-                //            else
-                //            {
-                //                item = new ItemBackPack(player.CurrentUsingItem);
-                //            }
+                        case Database.POOR_SMALL_BLUE_POTION:
+                        case Database.COMMON_NORMAL_BLUE_POTION:
+                        case Database.COMMON_LARGE_BLUE_POTION:
+                        case Database.COMMON_HUGE_BLUE_POTION:
+                        case Database.COMMON_GORGEOUS_BLUE_POTION:
+                            if (CurrentUsingItem != string.Empty)
+                            {
+                                item = new ItemBackPack(CurrentUsingItem);
+                            }
+                            else
+                            {
+                                item = new ItemBackPack(player.CurrentUsingItem);
+                            }
 
-                //            effect = item.UseIt(); // [警告]：汎用性の高いメソッド名だが、実質ポーション専用になっています。
-                //            if (player.CurrentAbsoluteZero > 0)
-                //            {
-                //                UpdateBattleText(player.GetCharacterSentence(119));
-                //            }
-                //            else
-                //            {
-                //                UpdateBattleText(player.Name + "は" + item.Name + "を使った。" + effect.ToString() + " マナ回復\r\n");
-                //                player.CurrentMana += effect;
-                //                UpdateMana(player);
-                //            }
-                //            player.DeleteBackPack(item);
-                //            break;
+                            effect = item.UseIt(); // [警告]：汎用性の高いメソッド名だが、実質ポーション専用になっています。
+                            if (player.CurrentAbsoluteZero > 0)
+                            {
+                                UpdateBattleText(player.GetCharacterSentence(119));
+                            }
+                            else
+                            {
+                                UpdateBattleText(player.FirstName + "は" + item.Name + "を使った。" + effect.ToString() + " マナ回復\r\n");
+                                player.CurrentMana += effect;
+                                UpdateMana(player);
+                            }
+                            player.DeleteBackPack(item);
+                            break;
 
-                //        case Database.POOR_SMALL_GREEN_POTION:
-                //        case Database.COMMON_NORMAL_GREEN_POTION:
-                //        case Database.COMMON_LARGE_GREEN_POTION:
-                //        case Database.COMMON_HUGE_GREEN_POTION:
-                //        case Database.COMMON_GORGEOUS_GREEN_POTION:
-                //            if (CurrentUsingItem != string.Empty)
-                //            {
-                //                item = new ItemBackPack(CurrentUsingItem);
-                //            }
-                //            else
-                //            {
-                //                item = new ItemBackPack(player.CurrentUsingItem);
-                //            }
+                        case Database.POOR_SMALL_GREEN_POTION:
+                        case Database.COMMON_NORMAL_GREEN_POTION:
+                        case Database.COMMON_LARGE_GREEN_POTION:
+                        case Database.COMMON_HUGE_GREEN_POTION:
+                        case Database.COMMON_GORGEOUS_GREEN_POTION:
+                            if (CurrentUsingItem != string.Empty)
+                            {
+                                item = new ItemBackPack(CurrentUsingItem);
+                            }
+                            else
+                            {
+                                item = new ItemBackPack(player.CurrentUsingItem);
+                            }
 
-                //            effect = item.UseIt(); // [警告]：汎用性の高いメソッド名だが、実質ポーション専用になっています。
-                //            if (player.CurrentAbsoluteZero > 0)
-                //            {
-                //                UpdateBattleText(player.GetCharacterSentence(119));
-                //            }
-                //            else
-                //            {
-                //                UpdateBattleText(player.Name + "は" + item.Name + "を使った。" + effect.ToString() + " スキルポイント回復\r\n");
-                //                player.CurrentSkillPoint += effect;
-                //                UpdateSkillPoint(player);
-                //            }
-                //            player.DeleteBackPack(item);
-                //            break;
+                            effect = item.UseIt(); // [警告]：汎用性の高いメソッド名だが、実質ポーション専用になっています。
+                            if (player.CurrentAbsoluteZero > 0)
+                            {
+                                UpdateBattleText(player.GetCharacterSentence(119));
+                            }
+                            else
+                            {
+                                UpdateBattleText(player.FirstName + "は" + item.Name + "を使った。" + effect.ToString() + " スキルポイント回復\r\n");
+                                player.CurrentSkillPoint += effect;
+                                UpdateSkillPoint(player);
+                            }
+                            player.DeleteBackPack(item);
+                            break;
 
-                //        case Database.RARE_PURE_WATER:
-                //            item = new ItemBackPack(player.CurrentUsingItem);
-                //            if (player.CurrentAbsoluteZero > 0)
-                //            {
-                //                UpdateBattleText(player.GetCharacterSentence(119));
-                //            }
-                //            else
-                //            {
-                //                UpdateBattleText(player.Name + "は" + item.Name + "を使った。" + player.MaxLife.ToString() + " ライフ回復\r\n");
-                //                player.CurrentLife = player.MaxLife;
-                //                UpdateLife(player, Convert.ToDouble(player.MaxLife), true, true, 0, false);
-                //            }
-                //            player.DeleteBackPack(item);
-                //            break;
-                //        case Database.RARE_PURE_GREEN_WATER:
-                //            item = new ItemBackPack(player.CurrentUsingItem);
-                //            if (player.CurrentAbsoluteZero > 0)
-                //            {
-                //                UpdateBattleText(player.GetCharacterSentence(119));
-                //            }
-                //            else
-                //            {
-                //                UpdateBattleText(player.Name + "は" + item.Name + "を使った。" + player.MaxSkillPoint.ToString() + " スキルポイント回復\r\n");
-                //                player.CurrentSkillPoint = player.MaxSkillPoint;
-                //                UpdateSkillPoint(player, Convert.ToDouble(player.MaxSkillPoint), true, true, 0);
-                //            }
-                //            player.DeleteBackPack(item);
-                //            break;
-                //        case Database.EPIC_GOLD_POTION:
-                //            item = new ItemBackPack(player.CurrentUsingItem);
-                //            if (player.CurrentAbsoluteZero > 0)
-                //            {
-                //                UpdateBattleText(player.GetCharacterSentence(119));
-                //            }
-                //            else
-                //            {
-                //                UpdateBattleText(player.Name + "は" + item.Name + "を使った。ライフ／マナ／スキルポイントが全回復した！\r\n");
-                //                player.CurrentLife = player.MaxLife;
-                //                UpdateLife(player, Convert.ToDouble(player.MaxLife), true, true, 0, false);
-                //                player.CurrentMana = player.MaxMana;
-                //                UpdateMana(player, Convert.ToDouble(player.MaxMana), true, true, 0);
-                //                player.CurrentSkillPoint = player.MaxSkillPoint;
-                //                UpdateSkillPoint(player, Convert.ToDouble(player.MaxSkillPoint), true, true, 0);
-                //            }
-                //            player.DeleteBackPack(item);
-                //            break;
+                        case Database.RARE_PURE_WATER:
+                            item = new ItemBackPack(player.CurrentUsingItem);
+                            if (player.CurrentAbsoluteZero > 0)
+                            {
+                                UpdateBattleText(player.GetCharacterSentence(119));
+                            }
+                            else
+                            {
+                                UpdateBattleText(player.FirstName + "は" + item.Name + "を使った。" + player.MaxLife.ToString() + " ライフ回復\r\n");
+                                player.CurrentLife = player.MaxLife;
+                                UpdateLife(player, Convert.ToDouble(player.MaxLife), true, true, 0, false);
+                            }
+                            player.DeleteBackPack(item);
+                            break;
+                        case Database.RARE_PURE_GREEN_WATER:
+                            item = new ItemBackPack(player.CurrentUsingItem);
+                            if (player.CurrentAbsoluteZero > 0)
+                            {
+                                UpdateBattleText(player.GetCharacterSentence(119));
+                            }
+                            else
+                            {
+                                UpdateBattleText(player.FirstName + "は" + item.Name + "を使った。" + player.MaxSkillPoint.ToString() + " スキルポイント回復\r\n");
+                                player.CurrentSkillPoint = player.MaxSkillPoint;
+                                UpdateSkillPoint(player, Convert.ToDouble(player.MaxSkillPoint), true, true, 0);
+                            }
+                            player.DeleteBackPack(item);
+                            break;
+                        case Database.EPIC_GOLD_POTION:
+                            item = new ItemBackPack(player.CurrentUsingItem);
+                            if (player.CurrentAbsoluteZero > 0)
+                            {
+                                UpdateBattleText(player.GetCharacterSentence(119));
+                            }
+                            else
+                            {
+                                UpdateBattleText(player.FirstName + "は" + item.Name + "を使った。ライフ／マナ／スキルポイントが全回復した！\r\n");
+                                player.CurrentLife = player.MaxLife;
+                                UpdateLife(player, Convert.ToDouble(player.MaxLife), true, true, 0, false);
+                                player.CurrentMana = player.MaxMana;
+                                UpdateMana(player, Convert.ToDouble(player.MaxMana), true, true, 0);
+                                player.CurrentSkillPoint = player.MaxSkillPoint;
+                                UpdateSkillPoint(player, Convert.ToDouble(player.MaxSkillPoint), true, true, 0);
+                            }
+                            player.DeleteBackPack(item);
+                            break;
 
-                //        case Database.RARE_AERO_BLADE:
-                //            effectValue = PrimaryLogic.AeroBladeValue(player, this.DuelMode);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "AeroBlade", 5001, TruthActionCommand.MagicType.None, false, CriticalType.Random);
-                //            break;
-                //        case Database.RARE_LIFE_SWORD:
-                //            effectValue = PrimaryLogic.LifeSwordValue(player, this.DuelMode);
-                //            PlayerAbstractLifeGain(player, target, 0, effectValue, 0, "FreshHeal", 5002);
-                //            break;
-                //        case Database.RARE_AUTUMN_ROD:
-                //            effectValue = PrimaryLogic.AutumnRodValue(player);
-                //            PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
-                //            break;
-                //        case Database.RARE_FLOWER_WAND:
-                //            effectValue = PrimaryLogic.FlowerWandValue(player);
-                //            PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
-                //            break;
-                //        case Database.COMMON_HAYATE_ORB:
-                //            GroundOne.PlaySoundEffect("HeatBoost");
-                //            player.CurrentSpeedBoost = (int)PrimaryLogic.HayateOrbValue(player);
-                //            break;
-                //        case Database.RARE_ICE_SWORD:
-                //            GroundOne.PlaySoundEffect("IceNeedle");
-                //            effectValue = PrimaryLogic.IceSwordValue(player, this.DuelMode);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "IceNeedle", 5004, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
-                //            break;
-                //        case Database.RARE_RISING_KNUCKLE:
-                //            GroundOne.PlaySoundEffect("RisingKnuckle");
-                //            effectValue = PrimaryLogic.RisingKnuckleValue(player, this.DuelMode);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "RisingKnuckle", 5005, TruthActionCommand.MagicType.None, false, CriticalType.Random);
-                //            break;
-                //        case Database.COMMON_FROZEN_BALL:
-                //            UpdateBattleText(player.Name + "は" + Database.COMMON_FROZEN_BALL + "を放ってきた！\r\n");
-                //            System.Threading.Thread.Sleep(1000);
-                //            GroundOne.PlaySoundEffect("IceNeedle");
-                //            NowFrozen(player, target, 3);
-                //            item = new ItemBackPack(CurrentUsingItem);
-                //            player.DeleteBackPack(item);
-                //            break;
-                //        case Database.RARE_BLUE_LIGHTNING:
-                //            for (int ii = 0; ii < 2; ii++)
-                //            {
-                //                effectValue = PrimaryLogic.BlueLightningValue(player, this.DuelMode);
-                //                AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5006, TruthActionCommand.MagicType.None, false, CriticalType.Random);
-                //            }
-                //            break;
-                //        case Database.RARE_BURNING_CLAYMORE:
-                //            effectValue = PrimaryLogic.BurningClaymoreValue(player);
-                //            player.CurrentStrengthUp = Database.INFINITY;
-                //            player.CurrentStrengthUpValue = (int)PrimaryLogic.BurningClaymoreValue(player);
-                //            player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
-                //            break;
-                //        case Database.COMMON_CHIENOWA_RING:
-                //            effectValue = PrimaryLogic.ChienowaRingValue(player);
-                //            AnimationDamage(0, target, 0, Color.Blue, false, false, Database.RESIST_ICE_UP);
-                //            player.CurrentResistIceUp = Database.INFINITY;
-                //            player.CurrentResistIceUpValue = (int)effectValue;
-                //            player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", Database.INFINITY);
-                //            break;
-                //        case Database.COMMON_ROCKET_DASH:
-                //            GroundOne.PlaySoundEffect("HeatBoost");
-                //            for (int ii = 0; ii < (int)PrimaryLogic.RocketDashValue(player); ii++)
-                //            {
-                //                player.BattleBarPos--;
-                //                if (player.BattleBarPos <= 0)
-                //                {
-                //                    player.BattleBarPos = Database.BASE_TIMER_BAR_LENGTH;
-                //                }
-                //                pbPlayer1.Invalidate();
-                //                this.Update();
-                //                System.Threading.Thread.Sleep(1);
-                //            }
-                //            break;
-                //        case Database.COMMON_WAR_DRUM:
-                //            for (int ii = 0; ii < groupAlly.Count; ii++)
-                //            {
-                //                AnimationDamage(0, groupAlly[ii], 0, Color.black, false, false, Database.PHYSICAL_ATTACK_UP);
-                //                groupAlly[ii].CurrentStrengthUp = Database.INFINITY;
-                //                groupAlly[ii].CurrentStrengthUpValue = (int)PrimaryLogic.WarDrumValue(player);
-                //                groupAlly[ii].ActivateBuff(groupAlly[ii].pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
-                //            }
-                //            break;
-                //        case Database.RARE_ROD_OF_STRENGTH:
-                //            player.CurrentStrengthUp = Database.INFINITY;
-                //            player.CurrentStrengthUpValue = (int)PrimaryLogic.RodOfStrengthValue(player);
-                //            player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
-                //            break;
-                //        case Database.RARE_WRATH_SERVEL_CLAW:
-                //            effectValue = PrimaryLogic.WrathServelClawValue(player, this.DuelMode);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5006, TruthActionCommand.MagicType.None, false, CriticalType.Random);
-                //            break;
-                //        case Database.RARE_BLUE_RED_ROD:
-                //            effectValue = PrimaryLogic.BlueRedRodValue(player, this.DuelMode);
-                //            if (AbstractMagicDamage(player, target, 0, ref effectValue, 0, "FireBall", 5008, TruthActionCommand.MagicType.Fire, false, CriticalType.Random))
-                //            {
-                //                effectValue = PrimaryLogic.BlueRedRodValue_A(player);
-                //                PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
-                //            }
-                //            break;
-                //        case Database.RARE_MEIUN_BOX:
-                //            Random rand = new Random();
-                //            int randomValue = rand.Next(1, 4);
-                //            if (randomValue == 1)
-                //            {
-                //                PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.MeiunBoxValue_A(player), 0, "FreshHeal", 5002);
-                //            }
-                //            else if (randomValue == 2)
-                //            {
-                //                PlayerAbstractManaGain(player, player, 0, PrimaryLogic.MeiunBoxValue_B(player), 0, "FreshHeal", 5003);
-                //            }
-                //            else if (randomValue == 3)
-                //            {
-                //                PlayerAbstractSkillGain(player, player, 0, PrimaryLogic.MeiunBoxValue_C(player), 0, "FreshHeal", 5009);
-                //            }
-                //            break;
-                //        case Database.RARE_SYUURENSYA_KUROOBI:
-                //            PreExecPlaySkill(player, target, false, false, Database.INNER_INSPIRATION);
-                //            break;
-                //        case Database.RARE_SHIHANDAI_KUROOBI:
-                //            PreExecPlaySkill(player, target, false, false, Database.STANCE_OF_EYES);
-                //            break;
-                //        case Database.RARE_SYUUDOUSOU_KUROOBI:
-                //            PreExecPlaySkill(player, target, false, false, Database.PURE_PURIFICATION);
-                //            break;
-                //        case Database.RARE_KUGYOUSYA_KUROOBI:
-                //            PreExecPlaySkill(player, target, false, false, Database.NEGATE);
-                //            break;
-                //        case Database.COMMON_STAR_DUST_RING:
-                //            PreExecPlaySpell(player, target, false, false, Database.WORD_OF_POWER);
-                //            break;
-                //        case Database.RARE_FROZEN_LAVA:
-                //            if (AP.Math.RandomInteger(2) <= 0)
-                //            {
-                //                PreExecPlaySpell(player, target, false, false, Database.FLAME_STRIKE);
-                //            }
-                //            else
-                //            {
-                //                PreExecPlaySpell(player, target, false, false, Database.FROZEN_LANCE);
-                //            }
-                //            break;
-                //        case Database.RARE_SHARPNEL_SPIN_BLADE:
-                //            player.AmplifyBattleSpeed = 1.1f;
-                //            player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, Database.INFINITY);
-                //            break;
-                //        case Database.RARE_BLUE_LIGHT_MOON_CLAW:
-                //            player.AmplifyPhysicalAttack = 1.1f;
-                //            player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, Database.INFINITY);
-                //            break;
-                //        case Database.RARE_SHAERING_BONE_CRUSHER:
-                //            player.AmplifyPotential = 1.1f;
-                //            player.ActivateBuff(player.pbPotentialUp, Database.BaseResourceFolder + Database.BUFF_POTENTIAL_UP, Database.INFINITY);
-                //            break;
-                //        case Database.RARE_BLIZZARD_SNOW_ROD:
-                //            player.AmplifyMagicAttack = 1.1f;
-                //            player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
-                //            break;
-                //        case Database.COMMON_WINTERS_HORN:
-                //            for (int ii = 0; ii < groupAlly.Count; ii++)
-                //            {
-                //                AnimationDamage(0, groupAlly[ii], 0, Color.black, false, false, Database.MAGIC_ATTACK_UP);
-                //                groupAlly[ii].CurrentIntelligenceUp = Database.INFINITY;
-                //                groupAlly[ii].CurrentIntelligenceUpValue = (int)PrimaryLogic.WintersHornValue(player);
-                //                groupAlly[ii].ActivateBuff(groupAlly[ii].pbIntelligenceUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
-                //            }
-                //            break;
-                //        case Database.RARE_TEARS_END:
-                //            PreExecPlaySpell(player, target, false, false, Database.RISE_OF_IMAGE);
-                //            break;
-                //        case Database.RARE_SKY_COLD_BOOTS:
-                //            PreExecPlaySpell(player, target, false, false, Database.HEAT_BOOST);
-                //            break;
-                //        case Database.RARE_EARTH_BREAKERS_SIGIL:
-                //            PreExecPlaySpell(player, target, false, false, Database.BLOODY_VENGEANCE);
-                //            break;
-                //        case Database.RARE_AERIAL_VORTEX:
-                //            PreExecPlaySpell(player, target, false, false, Database.PROMISED_KNOWLEDGE);
-                //            break;
-                //        case Database.RARE_LIVING_GROWTH_SEED:
-                //            PreExecPlaySpell(player, target, false, false, Database.WORD_OF_LIFE);
-                //            break;
-                //        case Database.COMMON_LIGHT_SERVANT:
-                //            effectValue = PrimaryLogic.LightServantValue(player);
-                //            if (IsPlayerEnemy(player))
-                //            {
-                //                for (int ii = 0; ii < groupEnemy.Count; ii++)
-                //                {
-                //                    PlayerAbstractLifeGain(player, groupEnemy[ii], 0, effectValue, 0, Database.SOUND_FRESH_HEAL, 5002);
-                //                }
-                //            }
-                //            else
-                //            {
-                //                for (int ii = 0; ii < groupAlly.Count; ii++)
-                //                {
-                //                    PlayerAbstractLifeGain(player, groupAlly[ii], 0, effectValue, 0, Database.SOUND_FRESH_HEAL, 5002);
-                //                }
-                //            }
-                //            player.RemoveLightServant();
-                //            break;
-                //        case Database.COMMON_SHADOW_SERVANT:
-                //            for (int ii = 0; ii < groupAlly.Count; ii++)
-                //            {
-                //                UpdateBattleText(groupAlly[ii].Name + "のデバフ効果が解除された。\r\n");
-                //                groupAlly[ii].RemovePhysicalAttackDown();
-                //                groupAlly[ii].RemovePhysicalDefenseDown();
-                //                groupAlly[ii].RemoveMagicAttackDown();
-                //                groupAlly[ii].RemoveMagicDefenseDown();
-                //                groupAlly[ii].RemoveSpeedDown();
-                //                groupAlly[ii].RemoveReactionDown();
-                //                groupAlly[ii].RemovePotentialDown();
-                //                groupAlly[ii].RemoveLightDown();
-                //                groupAlly[ii].RemoveShadowDown();
-                //                groupAlly[ii].RemoveFireDown();
-                //                groupAlly[ii].RemoveIceDown();
-                //                groupAlly[ii].RemoveForceDown();
-                //                groupAlly[ii].RemoveWillDown();
+                        case Database.RARE_AERO_BLADE:
+                            effectValue = PrimaryLogic.AeroBladeValue(player, GroundOne.DuelMode);
+                            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "AeroBlade", 5001, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                            break;
+                        case Database.RARE_LIFE_SWORD:
+                            effectValue = PrimaryLogic.LifeSwordValue(player, GroundOne.DuelMode);
+                            PlayerAbstractLifeGain(player, target, 0, effectValue, 0, "FreshHeal", 5002);
+                            break;
+                        case Database.RARE_AUTUMN_ROD:
+                            effectValue = PrimaryLogic.AutumnRodValue(player);
+                            PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
+                            break;
+                        case Database.RARE_FLOWER_WAND:
+                            effectValue = PrimaryLogic.FlowerWandValue(player);
+                            PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
+                            break;
+                        case Database.COMMON_HAYATE_ORB:
+                            GroundOne.PlaySoundEffect("HeatBoost");
+                            player.CurrentSpeedBoost = (int)PrimaryLogic.HayateOrbValue(player);
+                            break;
+                        case Database.RARE_ICE_SWORD:
+                            GroundOne.PlaySoundEffect("IceNeedle");
+                            effectValue = PrimaryLogic.IceSwordValue(player, GroundOne.DuelMode);
+                            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "IceNeedle", 5004, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
+                            break;
+                        case Database.RARE_RISING_KNUCKLE:
+                            GroundOne.PlaySoundEffect("RisingKnuckle");
+                            effectValue = PrimaryLogic.RisingKnuckleValue(player, GroundOne.DuelMode);
+                            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "RisingKnuckle", 5005, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                            break;
+                        case Database.COMMON_FROZEN_BALL:
+                            UpdateBattleText(player.FirstName + "は" + Database.COMMON_FROZEN_BALL + "を放ってきた！\r\n");
+                            System.Threading.Thread.Sleep(1000);
+                            GroundOne.PlaySoundEffect("IceNeedle");
+                            NowFrozen(player, target, 3);
+                            item = new ItemBackPack(CurrentUsingItem);
+                            player.DeleteBackPack(item);
+                            break;
+                        case Database.RARE_BLUE_LIGHTNING:
+                            for (int ii = 0; ii < 2; ii++)
+                            {
+                                effectValue = PrimaryLogic.BlueLightningValue(player, GroundOne.DuelMode);
+                                AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5006, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                            }
+                            break;
+                        case Database.RARE_BURNING_CLAYMORE:
+                            effectValue = PrimaryLogic.BurningClaymoreValue(player);
+                            player.CurrentStrengthUp = Database.INFINITY;
+                            player.CurrentStrengthUpValue = (int)PrimaryLogic.BurningClaymoreValue(player);
+                            player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
+                            break;
+                        case Database.COMMON_CHIENOWA_RING:
+                            effectValue = PrimaryLogic.ChienowaRingValue(player);
+                            AnimationDamage(0, target, 0, Color.blue, false, false, Database.RESIST_ICE_UP);
+                            player.CurrentResistIceUp = Database.INFINITY;
+                            player.CurrentResistIceUpValue = (int)effectValue;
+                            player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp", Database.INFINITY);
+                            break;
+                        case Database.COMMON_ROCKET_DASH:
+                            GroundOne.PlaySoundEffect("HeatBoost");
+                            for (int ii = 0; ii < (int)PrimaryLogic.RocketDashValue(player); ii++)
+                            {
+                                player.BattleBarPos--;
+                                if (player.BattleBarPos <= 0)
+                                {
+                                    player.BattleBarPos = Database.BASE_TIMER_BAR_LENGTH;
+                                }
+                                this.Update();
+                                System.Threading.Thread.Sleep(1);
+                            }
+                            break;
+                        case Database.COMMON_WAR_DRUM:
+                            for (int ii = 0; ii < groupAlly.Count; ii++)
+                            {
+                                AnimationDamage(0, groupAlly[ii], 0, Color.black, false, false, Database.PHYSICAL_ATTACK_UP);
+                                groupAlly[ii].CurrentStrengthUp = Database.INFINITY;
+                                groupAlly[ii].CurrentStrengthUpValue = (int)PrimaryLogic.WarDrumValue(player);
+                                groupAlly[ii].ActivateBuff(groupAlly[ii].pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
+                            }
+                            break;
+                        case Database.RARE_ROD_OF_STRENGTH:
+                            player.CurrentStrengthUp = Database.INFINITY;
+                            player.CurrentStrengthUpValue = (int)PrimaryLogic.RodOfStrengthValue(player);
+                            player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
+                            break;
+                        case Database.RARE_WRATH_SERVEL_CLAW:
+                            effectValue = PrimaryLogic.WrathServelClawValue(player, GroundOne.DuelMode);
+                            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5006, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                            break;
+                        case Database.RARE_BLUE_RED_ROD:
+                            effectValue = PrimaryLogic.BlueRedRodValue(player, GroundOne.DuelMode);
+                            if (AbstractMagicDamage(player, target, 0, ref effectValue, 0, "FireBall", 5008, TruthActionCommand.MagicType.Fire, false, CriticalType.Random))
+                            {
+                                effectValue = PrimaryLogic.BlueRedRodValue_A(player);
+                                PlayerAbstractManaGain(player, player, 0, effectValue, 0, "FreshHeal", 5003);
+                            }
+                            break;
+                        case Database.RARE_MEIUN_BOX:
+                            int randomValue = AP.Math.RandomInteger(3);
+                            if (randomValue == 0)
+                            {
+                                PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.MeiunBoxValue_A(player), 0, "FreshHeal", 5002);
+                            }
+                            else if (randomValue == 1)
+                            {
+                                PlayerAbstractManaGain(player, player, 0, PrimaryLogic.MeiunBoxValue_B(player), 0, "FreshHeal", 5003);
+                            }
+                            else if (randomValue == 2)
+                            {
+                                PlayerAbstractSkillGain(player, player, 0, PrimaryLogic.MeiunBoxValue_C(player), 0, "FreshHeal", 5009);
+                            }
+                            break;
+                        case Database.RARE_SYUURENSYA_KUROOBI:
+                            PreExecPlaySkill(player, target, false, false, Database.INNER_INSPIRATION);
+                            break;
+                        case Database.RARE_SHIHANDAI_KUROOBI:
+                            PreExecPlaySkill(player, target, false, false, Database.STANCE_OF_EYES);
+                            break;
+                        case Database.RARE_SYUUDOUSOU_KUROOBI:
+                            PreExecPlaySkill(player, target, false, false, Database.PURE_PURIFICATION);
+                            break;
+                        case Database.RARE_KUGYOUSYA_KUROOBI:
+                            PreExecPlaySkill(player, target, false, false, Database.NEGATE);
+                            break;
+                        case Database.COMMON_STAR_DUST_RING:
+                            PreExecPlaySpell(player, target, false, false, Database.WORD_OF_POWER);
+                            break;
+                        case Database.RARE_FROZEN_LAVA:
+                            if (AP.Math.RandomInteger(2) <= 0)
+                            {
+                                PreExecPlaySpell(player, target, false, false, Database.FLAME_STRIKE);
+                            }
+                            else
+                            {
+                                PreExecPlaySpell(player, target, false, false, Database.FROZEN_LANCE);
+                            }
+                            break;
+                        case Database.RARE_SHARPNEL_SPIN_BLADE:
+                            player.AmplifyBattleSpeed = 1.1f;
+                            player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, Database.INFINITY);
+                            break;
+                        case Database.RARE_BLUE_LIGHT_MOON_CLAW:
+                            player.AmplifyPhysicalAttack = 1.1f;
+                            player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, Database.INFINITY);
+                            break;
+                        case Database.RARE_SHAERING_BONE_CRUSHER:
+                            player.AmplifyPotential = 1.1f;
+                            player.ActivateBuff(player.pbPotentialUp, Database.BaseResourceFolder + Database.BUFF_POTENTIAL_UP, Database.INFINITY);
+                            break;
+                        case Database.RARE_BLIZZARD_SNOW_ROD:
+                            player.AmplifyMagicAttack = 1.1f;
+                            player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
+                            break;
+                        case Database.COMMON_WINTERS_HORN:
+                            for (int ii = 0; ii < groupAlly.Count; ii++)
+                            {
+                                AnimationDamage(0, groupAlly[ii], 0, Color.black, false, false, Database.MAGIC_ATTACK_UP);
+                                groupAlly[ii].CurrentIntelligenceUp = Database.INFINITY;
+                                groupAlly[ii].CurrentIntelligenceUpValue = (int)PrimaryLogic.WintersHornValue(player);
+                                groupAlly[ii].ActivateBuff(groupAlly[ii].pbIntelligenceUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
+                            }
+                            break;
+                        case Database.RARE_TEARS_END:
+                            PreExecPlaySpell(player, target, false, false, Database.RISE_OF_IMAGE);
+                            break;
+                        case Database.RARE_SKY_COLD_BOOTS:
+                            PreExecPlaySpell(player, target, false, false, Database.HEAT_BOOST);
+                            break;
+                        case Database.RARE_EARTH_BREAKERS_SIGIL:
+                            PreExecPlaySpell(player, target, false, false, Database.BLOODY_VENGEANCE);
+                            break;
+                        case Database.RARE_AERIAL_VORTEX:
+                            PreExecPlaySpell(player, target, false, false, Database.PROMISED_KNOWLEDGE);
+                            break;
+                        case Database.RARE_LIVING_GROWTH_SEED:
+                            PreExecPlaySpell(player, target, false, false, Database.WORD_OF_LIFE);
+                            break;
+                        case Database.COMMON_LIGHT_SERVANT:
+                            effectValue = PrimaryLogic.LightServantValue(player);
+                            if (IsPlayerEnemy(player))
+                            {
+                                for (int ii = 0; ii < groupEnemy.Count; ii++)
+                                {
+                                    PlayerAbstractLifeGain(player, groupEnemy[ii], 0, effectValue, 0, Database.SOUND_FRESH_HEAL, 5002);
+                                }
+                            }
+                            else
+                            {
+                                for (int ii = 0; ii < groupAlly.Count; ii++)
+                                {
+                                    PlayerAbstractLifeGain(player, groupAlly[ii], 0, effectValue, 0, Database.SOUND_FRESH_HEAL, 5002);
+                                }
+                            }
+                            player.RemoveLightServant();
+                            break;
+                        case Database.COMMON_SHADOW_SERVANT:
+                            for (int ii = 0; ii < groupAlly.Count; ii++)
+                            {
+                                UpdateBattleText(groupAlly[ii].FirstName + "のデバフ効果が解除された。\r\n");
+                                groupAlly[ii].RemovePhysicalAttackDown();
+                                groupAlly[ii].RemovePhysicalDefenseDown();
+                                groupAlly[ii].RemoveMagicAttackDown();
+                                groupAlly[ii].RemoveMagicDefenseDown();
+                                groupAlly[ii].RemoveSpeedDown();
+                                groupAlly[ii].RemoveReactionDown();
+                                groupAlly[ii].RemovePotentialDown();
+                                groupAlly[ii].RemoveLightDown();
+                                groupAlly[ii].RemoveShadowDown();
+                                groupAlly[ii].RemoveFireDown();
+                                groupAlly[ii].RemoveIceDown();
+                                groupAlly[ii].RemoveForceDown();
+                                groupAlly[ii].RemoveWillDown();
 
-                //                // DEBUFF効果というカテゴリに負の影響効果も含まれるのかどうかがハッキリしない。仕様再検討必要だが
-                //                // これが含まれていないと、「ユーザー観点として使えないアイテム」の烙印が押されるので、
-                //                // 使えるアイテムとして含めることとしたい
-                //                groupAlly[ii].RemovePreStunning();
-                //                groupAlly[ii].RemoveStun();
-                //                groupAlly[ii].RemoveSilence();
-                //                groupAlly[ii].RemovePoison();
-                //                groupAlly[ii].RemoveTemptation();
-                //                groupAlly[ii].RemoveFrozen();
-                //                groupAlly[ii].RemoveParalyze();
-                //                groupAlly[ii].RemoveNoResurrection();
-                //                groupAlly[ii].RemoveSlow();
-                //                groupAlly[ii].RemoveBlind();
-                //                groupAlly[ii].RemoveSlip();
-                //            }
-                //            player.RemoveShadowServant();
-                //            break;
-                //        case Database.EPIC_ADILRING_OF_BLUE_BURN:
-                //            effectValue = PrimaryLogic.AdilBlueBurnValue(player);
-                //            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5010, TruthActionCommand.MagicType.None, false, CriticalType.Random);
-                //            break;
-                //        case Database.RARE_SOUSUI_HIDENSYO:
-                //            PreExecPlaySkill(player, target, false, false, Database.VIOLENT_SLASH);
-                //            break;
-                //        case Database.RARE_MEEK_HIDENSYO:
-                //            PreExecPlaySkill(player, target, false, false, Database.RECOVER);
-                //            break;
-                //        case Database.RARE_JUKUTATUSYA_HIDENSYO:
-                //            PreExecPlaySkill(player, target, false, false, Database.SWIFT_STEP);
-                //            break;
-                //        case Database.RARE_KYUUDOUSYA_HIDENSYO:
-                //            PreExecPlaySkill(player, player, false, false, Database.FUTURE_VISION);
-                //            break;
-                //        case Database.COMMON_SOCIETY_SYMBOL:
-                //            for (int ii = 0; ii < groupAlly.Count; ii++)
-                //            {
-                //                effectValue = PrimaryLogic.SocietySymbolValue(player);
-                //                BuffUpPhysicalAttack(groupAlly[ii], effectValue);
-                //                BuffUpPhysicalDefense(groupAlly[ii], effectValue);
-                //            }
-                //            break;
-                //        case Database.COMMON_SILVER_FEATHER_BRACELET:
-                //            for (int ii = 0; ii < groupAlly.Count; ii++)
-                //            {
-                //                effectValue = PrimaryLogic.SilverFeatherBraceletValue(player);
-                //                BuffUpMagicAttack(groupAlly[ii], effectValue);
-                //                BuffUpMagicDefense(groupAlly[ii], effectValue);
-                //            }
-                //            break;
-                //        case Database.COMMON_BIRD_SONG_LUTE:
-                //            for (int ii = 0; ii < groupAlly.Count; ii++)
-                //            {
-                //                effectValue = PrimaryLogic.BirdSongLuteValue(player);
-                //                groupAlly[ii].BuffUpMind(effectValue);
-                //            }
-                //            break;
-                //        case Database.RARE_SPELL_COMPASS:
-                //            if (player.CurrentShadowPact <= 0)
-                //            {
-                //                PreExecPlaySpell(player, player, false, false, Database.SHADOW_PACT);
-                //            }
-                //            else if (player.CurrentPromisedKnowledge <= 0)
-                //            {
-                //                PreExecPlaySpell(player, player, false, false, Database.PROMISED_KNOWLEDGE);
-                //            }
-                //            else if (player.CurrentPsychicTrance <= 0)
-                //            {
-                //                PreExecPlaySpell(player, player, false, false, Database.PSYCHIC_TRANCE);
-                //            }
-                //            break;
-                //        case Database.RARE_BLIND_NEEDLE:
-                //            target.RemovePreStunning();
-                //            target.RemoveStun();
-                //            target.RemoveSilence();
-                //            target.RemovePoison();
-                //            target.RemoveTemptation();
-                //            target.RemoveFrozen();
-                //            target.RemoveParalyze();
-                //            target.RemoveNoResurrection();
-                //            target.RemoveSlow();
-                //            target.RemoveBlind();
-                //            target.RemoveSlip();
-                //            break;
-                //        case Database.RARE_CORE_ESSENCE_CHANNEL:
-                //            UpdateBattleText("活性の脈動が" + player.Name + "に響き渡る\r\n");
-                //            PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_A(player), 0, "FreshHeal", 5002);
-                //            PlayerAbstractManaGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_B(player), 0, "FreshHeal", 5003);
-                //            PlayerAbstractSkillGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_C(player), 0, "FreshHeal", 5009);
-                //            break;
+                                // DEBUFF効果というカテゴリに負の影響効果も含まれるのかどうかがハッキリしない。仕様再検討必要だが
+                                // これが含まれていないと、「ユーザー観点として使えないアイテム」の烙印が押されるので、
+                                // 使えるアイテムとして含めることとしたい
+                                groupAlly[ii].RemovePreStunning();
+                                groupAlly[ii].RemoveStun();
+                                groupAlly[ii].RemoveSilence();
+                                groupAlly[ii].RemovePoison();
+                                groupAlly[ii].RemoveTemptation();
+                                groupAlly[ii].RemoveFrozen();
+                                groupAlly[ii].RemoveParalyze();
+                                groupAlly[ii].RemoveNoResurrection();
+                                groupAlly[ii].RemoveSlow();
+                                groupAlly[ii].RemoveBlind();
+                                groupAlly[ii].RemoveSlip();
+                            }
+                            player.RemoveShadowServant();
+                            break;
+                        case Database.EPIC_ADILRING_OF_BLUE_BURN:
+                            effectValue = PrimaryLogic.AdilBlueBurnValue(player);
+                            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5010, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                            break;
+                        case Database.RARE_SOUSUI_HIDENSYO:
+                            PreExecPlaySkill(player, target, false, false, Database.VIOLENT_SLASH);
+                            break;
+                        case Database.RARE_MEEK_HIDENSYO:
+                            PreExecPlaySkill(player, target, false, false, Database.RECOVER);
+                            break;
+                        case Database.RARE_JUKUTATUSYA_HIDENSYO:
+                            PreExecPlaySkill(player, target, false, false, Database.SWIFT_STEP);
+                            break;
+                        case Database.RARE_KYUUDOUSYA_HIDENSYO:
+                            PreExecPlaySkill(player, player, false, false, Database.FUTURE_VISION);
+                            break;
+                        case Database.COMMON_SOCIETY_SYMBOL:
+                            for (int ii = 0; ii < groupAlly.Count; ii++)
+                            {
+                                effectValue = PrimaryLogic.SocietySymbolValue(player);
+                                BuffUpPhysicalAttack(groupAlly[ii], effectValue);
+                                BuffUpPhysicalDefense(groupAlly[ii], effectValue);
+                            }
+                            break;
+                        case Database.COMMON_SILVER_FEATHER_BRACELET:
+                            for (int ii = 0; ii < groupAlly.Count; ii++)
+                            {
+                                effectValue = PrimaryLogic.SilverFeatherBraceletValue(player);
+                                BuffUpMagicAttack(groupAlly[ii], effectValue);
+                                BuffUpMagicDefense(groupAlly[ii], effectValue);
+                            }
+                            break;
+                        case Database.COMMON_BIRD_SONG_LUTE:
+                            for (int ii = 0; ii < groupAlly.Count; ii++)
+                            {
+                                effectValue = PrimaryLogic.BirdSongLuteValue(player);
+                                groupAlly[ii].BuffUpMind(effectValue);
+                            }
+                            break;
+                        case Database.RARE_SPELL_COMPASS:
+                            if (player.CurrentShadowPact <= 0)
+                            {
+                                PreExecPlaySpell(player, player, false, false, Database.SHADOW_PACT);
+                            }
+                            else if (player.CurrentPromisedKnowledge <= 0)
+                            {
+                                PreExecPlaySpell(player, player, false, false, Database.PROMISED_KNOWLEDGE);
+                            }
+                            else if (player.CurrentPsychicTrance <= 0)
+                            {
+                                PreExecPlaySpell(player, player, false, false, Database.PSYCHIC_TRANCE);
+                            }
+                            break;
+                        case Database.RARE_BLIND_NEEDLE:
+                            target.RemovePreStunning();
+                            target.RemoveStun();
+                            target.RemoveSilence();
+                            target.RemovePoison();
+                            target.RemoveTemptation();
+                            target.RemoveFrozen();
+                            target.RemoveParalyze();
+                            target.RemoveNoResurrection();
+                            target.RemoveSlow();
+                            target.RemoveBlind();
+                            target.RemoveSlip();
+                            break;
+                        case Database.RARE_CORE_ESSENCE_CHANNEL:
+                            UpdateBattleText("活性の脈動が" + player.FirstName + "に響き渡る\r\n");
+                            PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_A(player), 0, "FreshHeal", 5002);
+                            PlayerAbstractManaGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_B(player), 0, "FreshHeal", 5003);
+                            PlayerAbstractSkillGain(player, player, 0, PrimaryLogic.CoreEssenceChannelValue_C(player), 0, "FreshHeal", 5009);
+                            break;
 
-                //        case Database.RARE_HUNTERS_EYE:
-                //            switch (AP.Math.RandomInteger(4))
-                //            {
-                //                case 0:
-                //                    for (int ii = 0; ii < groupEnemy.Count; ii++)
-                //                    {
-                //                        NowSlow(player, groupEnemy[ii], 4);
-                //                    }
-                //                    break;
-                //                case 1:
-                //                    for (int ii = 0; ii < groupAlly.Count; ii++)
-                //                    {
-                //                        if (groupAlly[ii].CurrentTruthVision <= 0)
-                //                        {
-                //                            PreExecPlaySpell(player, groupAlly[ii], true, false, Database.TRUTH_VISION);
-                //                        }
-                //                    }
-                //                    break;
-                //                case 2:
-                //                    BuffUpPhysicalAttack(player, PrimaryLogic.HuntersEyeValue_A(player));
-                //                    BuffUpBattleSpeed(player, PrimaryLogic.HuntersEyeValue_B(player));
-                //                    break;
-                //                case 3:
-                //                    BuffDownPhysicalAttack(target, PrimaryLogic.HuntersEyeValue_C(player));
-                //                    BuffDownBattleSpeed(target, PrimaryLogic.HuntersEyeValue_D(player));
-                //                    break;
-                //            }
-                //            break;
+                        case Database.RARE_HUNTERS_EYE:
+                            switch (AP.Math.RandomInteger(4))
+                            {
+                                case 0:
+                                    for (int ii = 0; ii < groupEnemy.Count; ii++)
+                                    {
+                                        NowSlow(player, groupEnemy[ii], 4);
+                                    }
+                                    break;
+                                case 1:
+                                    for (int ii = 0; ii < groupAlly.Count; ii++)
+                                    {
+                                        if (groupAlly[ii].CurrentTruthVision <= 0)
+                                        {
+                                            PreExecPlaySpell(player, groupAlly[ii], true, false, Database.TRUTH_VISION);
+                                        }
+                                    }
+                                    break;
+                                case 2:
+                                    BuffUpPhysicalAttack(player, PrimaryLogic.HuntersEyeValue_A(player));
+                                    BuffUpBattleSpeed(player, PrimaryLogic.HuntersEyeValue_B(player));
+                                    break;
+                                case 3:
+                                    BuffDownPhysicalAttack(target, PrimaryLogic.HuntersEyeValue_C(player));
+                                    BuffDownBattleSpeed(target, PrimaryLogic.HuntersEyeValue_D(player));
+                                    break;
+                            }
+                            break;
 
-                //        case Database.COMMON_RAINBOW_TUBE:
-                //            switch (AP.Math.RandomInteger(4))
-                //            {
-                //                case 0:
-                //                    for (int ii = 0; ii < groupEnemy.Count; ii++)
-                //                    {
-                //                        effectValue = PrimaryLogic.RainbowTubeValue_A(player, this.DuelMode);
-                //                        AbstractMagicDamage(player, groupEnemy[ii], 0, effectValue, 0, Database.SOUND_VOLCANICWAVE, 12, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
-                //                    }
-                //                    break;
-                //                case 1:
-                //                    for (int ii = 0; ii < groupAlly.Count; ii++)
-                //                    {
-                //                        effectValue = PrimaryLogic.RainbowTubeValue_B(player, this.DuelMode);
-                //                        PlayerAbstractLifeGain(player, groupAlly[ii], 0, PrimaryLogic.SacredHealValue(player, this.DuelMode), 0, Database.SOUND_CELESTIAL_NOVA, 135);
-                //                    }
-                //                    break;
-                //                case 2:
-                //                    for (int ii = 0; ii < groupEnemy.Count; ii++)
-                //                    {
-                //                        NowStunning(player, groupEnemy[ii], 2);
-                //                    }
-                //                    break;
-                //                case 3:
-                //                    for (int ii = 0; ii < groupAlly.Count; ii++)
-                //                    {
-                //                        groupAlly[ii].RemovePhysicalAttackDown();
-                //                        groupAlly[ii].RemovePhysicalDefenseDown();
-                //                        groupAlly[ii].RemoveMagicAttackDown();
-                //                        groupAlly[ii].RemoveMagicDefenseDown();
-                //                        groupAlly[ii].RemoveSpeedDown();
-                //                        groupAlly[ii].RemoveReactionDown();
-                //                        groupAlly[ii].RemovePotentialDown();
-                //                        groupAlly[ii].RemoveLightDown();
-                //                        groupAlly[ii].RemoveShadowDown();
-                //                        groupAlly[ii].RemoveFireDown();
-                //                        groupAlly[ii].RemoveIceDown();
-                //                        groupAlly[ii].RemoveForceDown();
-                //                        groupAlly[ii].RemoveWillDown();
+                        case Database.COMMON_RAINBOW_TUBE:
+                            switch (AP.Math.RandomInteger(4))
+                            {
+                                case 0:
+                                    for (int ii = 0; ii < groupEnemy.Count; ii++)
+                                    {
+                                        effectValue = PrimaryLogic.RainbowTubeValue_A(player, GroundOne.DuelMode);
+                                        AbstractMagicDamage(player, groupEnemy[ii], 0, effectValue, 0, Database.SOUND_VOLCANICWAVE, 12, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+                                    }
+                                    break;
+                                case 1:
+                                    for (int ii = 0; ii < groupAlly.Count; ii++)
+                                    {
+                                        effectValue = PrimaryLogic.RainbowTubeValue_B(player, GroundOne.DuelMode);
+                                        PlayerAbstractLifeGain(player, groupAlly[ii], 0, PrimaryLogic.SacredHealValue(player, GroundOne.DuelMode), 0, Database.SOUND_CELESTIAL_NOVA, 135);
+                                    }
+                                    break;
+                                case 2:
+                                    for (int ii = 0; ii < groupEnemy.Count; ii++)
+                                    {
+                                        NowStunning(player, groupEnemy[ii], 2);
+                                    }
+                                    break;
+                                case 3:
+                                    for (int ii = 0; ii < groupAlly.Count; ii++)
+                                    {
+                                        groupAlly[ii].RemovePhysicalAttackDown();
+                                        groupAlly[ii].RemovePhysicalDefenseDown();
+                                        groupAlly[ii].RemoveMagicAttackDown();
+                                        groupAlly[ii].RemoveMagicDefenseDown();
+                                        groupAlly[ii].RemoveSpeedDown();
+                                        groupAlly[ii].RemoveReactionDown();
+                                        groupAlly[ii].RemovePotentialDown();
+                                        groupAlly[ii].RemoveLightDown();
+                                        groupAlly[ii].RemoveShadowDown();
+                                        groupAlly[ii].RemoveFireDown();
+                                        groupAlly[ii].RemoveIceDown();
+                                        groupAlly[ii].RemoveForceDown();
+                                        groupAlly[ii].RemoveWillDown();
 
-                //                        // DEBUFF効果というカテゴリに負の影響効果も含まれるのかどうかがハッキリしない。仕様再検討必要だが
-                //                        // これが含まれていないと、「ユーザー観点として使えないアイテム」の烙印が押されるので、
-                //                        // 使えるアイテムとして含めることとしたい
-                //                        groupAlly[ii].RemovePreStunning();
-                //                        groupAlly[ii].RemoveStun();
-                //                        groupAlly[ii].RemoveSilence();
-                //                        groupAlly[ii].RemovePoison();
-                //                        groupAlly[ii].RemoveTemptation();
-                //                        groupAlly[ii].RemoveFrozen();
-                //                        groupAlly[ii].RemoveParalyze();
-                //                        groupAlly[ii].RemoveNoResurrection();
-                //                        groupAlly[ii].RemoveSlow();
-                //                        groupAlly[ii].RemoveBlind();
-                //                        groupAlly[ii].RemoveSlip();
-                //                    }
-                //                    break;
-                //            }
-                //            break;
+                                        // DEBUFF効果というカテゴリに負の影響効果も含まれるのかどうかがハッキリしない。仕様再検討必要だが
+                                        // これが含まれていないと、「ユーザー観点として使えないアイテム」の烙印が押されるので、
+                                        // 使えるアイテムとして含めることとしたい
+                                        groupAlly[ii].RemovePreStunning();
+                                        groupAlly[ii].RemoveStun();
+                                        groupAlly[ii].RemoveSilence();
+                                        groupAlly[ii].RemovePoison();
+                                        groupAlly[ii].RemoveTemptation();
+                                        groupAlly[ii].RemoveFrozen();
+                                        groupAlly[ii].RemoveParalyze();
+                                        groupAlly[ii].RemoveNoResurrection();
+                                        groupAlly[ii].RemoveSlow();
+                                        groupAlly[ii].RemoveBlind();
+                                        groupAlly[ii].RemoveSlip();
+                                    }
+                                    break;
+                            }
+                            break;
 
-                //        case Database.RARE_DETACHMENT_ORB:
-                //            if ((player.Accessory != null) && (player.Accessory.Name == Database.RARE_DETACHMENT_ORB) && (player.Accessory.OnlyOnce == false))
-                //            {
-                //                player.Accessory.OnlyOnce = true;
-                //                for (int ii = 0; ii < groupAlly.Count; ii++)
-                //                {
-                //                    PlayerBuffAbstract(player, groupAlly[ii], 2, Database.ITEMCOMMAND_DETACHMENT_ORB);
-                //                }
-                //            }
-                //            else if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.RARE_DETACHMENT_ORB) && (player.Accessory2.OnlyOnce == false))
-                //            {
-                //                player.Accessory2.OnlyOnce = true;
-                //                for (int ii = 0; ii < groupAlly.Count; ii++)
-                //                {
-                //                    PlayerBuffAbstract(player, groupAlly[ii], 2, Database.ITEMCOMMAND_DETACHMENT_ORB);
-                //                }
-                //            }
-                //            else
-                //            {
-                //                UpdateBattleText(Database.RARE_DETACHMENT_ORB + "は既に使用されており、効力が発揮されなかった！\r\n");
-                //            }
-                //            break;
+                        case Database.RARE_DETACHMENT_ORB:
+                            if ((player.Accessory != null) && (player.Accessory.Name == Database.RARE_DETACHMENT_ORB) && (player.Accessory.OnlyOnce == false))
+                            {
+                                player.Accessory.OnlyOnce = true;
+                                for (int ii = 0; ii < groupAlly.Count; ii++)
+                                {
+                                    PlayerBuffAbstract(player, groupAlly[ii], 2, Database.ITEMCOMMAND_DETACHMENT_ORB);
+                                }
+                            }
+                            else if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.RARE_DETACHMENT_ORB) && (player.Accessory2.OnlyOnce == false))
+                            {
+                                player.Accessory2.OnlyOnce = true;
+                                for (int ii = 0; ii < groupAlly.Count; ii++)
+                                {
+                                    PlayerBuffAbstract(player, groupAlly[ii], 2, Database.ITEMCOMMAND_DETACHMENT_ORB);
+                                }
+                            }
+                            else
+                            {
+                                UpdateBattleText(Database.RARE_DETACHMENT_ORB + "は既に使用されており、効力が発揮されなかった！\r\n");
+                            }
+                            break;
 
-                //        case Database.RARE_DEVIL_SUMMONER_TOME:
-                //            PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_DEVIL_SUMMONER_TOME);
-                //            break;
+                        case Database.RARE_DEVIL_SUMMONER_TOME:
+                            PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_DEVIL_SUMMONER_TOME);
+                            break;
 
-                //        case Database.RARE_VOID_HYMNSONIA:
-                //            UpdateBattleText(player.Name + "は、空虚な歌声を必死に取り払い、戦闘に集中した！\r\n");
-                //            player.RemoveVoidHymnsonia();
-                //            break;
+                        case Database.RARE_VOID_HYMNSONIA:
+                            UpdateBattleText(player.FirstName + "は、空虚な歌声を必死に取り払い、戦闘に集中した！\r\n");
+                            player.RemoveVoidHymnsonia();
+                            break;
 
-                //        case Database.EPIC_ETERNAL_HOMURA_RING:
-                //            UpdateBattleText(player.Name + "が装着している" + Database.EPIC_ETERNAL_HOMURA_RING + "が強烈な蒼白い閃光を放った！\r\n");
-                //            effectValue = player.CurrentMana;
-                //            player.CurrentMana = 0;
-                //            UpdateMana(player, (int)effectValue, false, false, 0);
-                //            AbstractMagicDamage(player, target, 0, PrimaryLogic.EternalHomuraRingValue(player, this.DuelMode), 0, Database.SOUND_LAVA_ANNIHILATION, 0, TruthActionCommand.MagicType.None, false, CriticalType.Random);
-                //            break;
-                //    }
-                //    break;
-                //#endregion
+                        case Database.EPIC_ETERNAL_HOMURA_RING:
+                            UpdateBattleText(player.FirstName + "が装着している" + Database.EPIC_ETERNAL_HOMURA_RING + "が強烈な蒼白い閃光を放った！\r\n");
+                            effectValue = player.CurrentMana;
+                            player.CurrentMana = 0;
+                            UpdateMana(player, (int)effectValue, false, false, 0);
+                            AbstractMagicDamage(player, target, 0, PrimaryLogic.EternalHomuraRingValue(player, GroundOne.DuelMode), 0, Database.SOUND_LAVA_ANNIHILATION, 0, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                            break;
+                    }
+                    break;
+                #endregion
 
                 #region "敵専用スキル"
                 case MainCharacter.PlayerAction.SpecialSkill:
@@ -957,7 +950,7 @@ namespace DungeonPlayer
                                 UpdateBattleText(player.FirstName + "は尖った角を掲げ上げた！ 【力】" + effectValue.ToString() + "上昇\r\n");
                                 player.CurrentStrengthUp = Database.INFINITY;
                                 player.CurrentStrengthUpValue = (int)effectValue;
-                                player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
+                                player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
                                 break;
 
                             case Database.ENEMY_GREEN_CHILD:
@@ -1028,7 +1021,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は体全体を奮い立たせた！ 【力】" + effectValue.ToString() + "上昇\r\n");
                                     player.CurrentStrengthUp = Database.INFINITY;
                                     player.CurrentStrengthUpValue = (int)effectValue;
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
                                 }
                                 else
                                 {
@@ -1148,7 +1141,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は自己発芽を活性させ始めた！ 【力】" + effectValue.ToString() + "上昇\r\n");
                                     player.CurrentStrengthUp = Database.INFINITY;
                                     player.CurrentStrengthUpValue = (int)effectValue;
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
                                 }
                                 break;
 
@@ -1383,7 +1376,7 @@ namespace DungeonPlayer
                                     effectValue = 250.0F;
                                     player.CurrentPhysicalAttackUp = 3;
                                     player.CurrentPhysicalAttackUpValue = (int)effectValue;
-                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", 3);
+                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", 3);
                                 }
                                 break;
 
@@ -1413,7 +1406,7 @@ namespace DungeonPlayer
                                     effectValue = 300.0F;
                                     player.CurrentPhysicalDefenseUp = 3;
                                     player.CurrentPhysicalDefenseUpValue = (int)effectValue;
-                                    player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp.bmp", 3);
+                                    player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp", 3);
                                 }
                                 else if (player.ActionLabel.text == "がぶりつき")
                                 {
@@ -1432,7 +1425,7 @@ namespace DungeonPlayer
                                     AnimationDamage(0, player, 0, Color.black, false, false, "技UP");
                                     player.CurrentAgilityUp = 3;
                                     player.CurrentAgilityUpValue = (int)effectValue;
-                                    player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp.bmp", 3);
+                                    player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp", 3);
 
                                     UpdateBattleText(player.FirstName + "は【技】が" + effectValue.ToString() + "上昇\r\n");
                                 }
@@ -1642,12 +1635,12 @@ namespace DungeonPlayer
                                     AnimationDamage(0, player, 0, Color.black, false, false, "力UP");
                                     player.CurrentStrengthUp = 3;
                                     player.CurrentStrengthUpValue = (int)effectValue;
-                                    player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", 3);
+                                    player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", 3);
 
                                     AnimationDamage(0, player, 0, Color.black, false, false, "心UP");
                                     player.CurrentMindUp = 3;
                                     player.CurrentMindUpValue = (int)effectValue;
-                                    player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp.bmp", 3);
+                                    player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp", 3);
 
                                     UpdateBattleText(player.FirstName + "は【力】と【心】が" + effectValue.ToString() + "上昇\r\n");
                                 }
@@ -1706,7 +1699,7 @@ namespace DungeonPlayer
                                     effectValue = 9999.9F;
                                     player.CurrentPhysicalDefenseUp = 3;
                                     player.CurrentPhysicalDefenseUpValue = (int)effectValue;
-                                    player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp.bmp", 3);
+                                    player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp", 3);
                                 }
                                 break;
 
@@ -1747,7 +1740,7 @@ namespace DungeonPlayer
                                     effectValue = 550.0F;
                                     player.CurrentPhysicalAttackUp = 3;
                                     player.CurrentPhysicalAttackUpValue = (int)effectValue;
-                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", 3);
+                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", 3);
                                 }
                                 break;
 
@@ -1777,13 +1770,13 @@ namespace DungeonPlayer
                                     {
                                         ec2.CurrentResistFireUp = 10;
                                         ec2.CurrentResistFireUpValue = 2000;
-                                        ec2.ActivateBuff(ec2.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", 10);
+                                        ec2.ActivateBuff(ec2.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp", 10);
                                     }
                                     else if (ec1 != null && !ec1.Dead)
                                     {
                                         ec1.CurrentResistFireUp = 10;
                                         ec1.CurrentResistFireUpValue = 2000;
-                                        ec1.ActivateBuff(ec1.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", 10);
+                                        ec1.ActivateBuff(ec1.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp", 10);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "フラッシュ・バーン")
@@ -1820,13 +1813,13 @@ namespace DungeonPlayer
                                     {
                                         ec1.CurrentResistIceUp = 10;
                                         ec1.CurrentResistIceUpValue = 2000;
-                                        ec1.ActivateBuff(ec1.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", 10);
+                                        ec1.ActivateBuff(ec1.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp", 10);
                                     }
                                     else if (ec2 != null && !ec2.Dead)
                                     {
                                         ec2.CurrentResistIceUp = 10;
                                         ec2.CurrentResistIceUpValue = 2000;
-                                        ec2.ActivateBuff(ec2.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", 10);
+                                        ec2.ActivateBuff(ec2.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp", 10);
                                     }
 
                                 }
@@ -2140,7 +2133,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は氷の儀式を行った。氷属性の攻撃が棍棒に追加付与された！\r\n");
                                     GroundOne.PlaySoundEffect("IceNeedle");
                                     target.CurrentFrozenAura = Database.INFINITY;
-                                    target.ActivateBuff(target.pbFrozenAura, Database.BaseResourceFolder + "FrozenAura.bmp", Database.INFINITY);
+                                    target.ActivateBuff(target.pbFrozenAura, Database.BaseResourceFolder + "FrozenAura", Database.INFINITY);
                                 }
                                 break;
                             case Database.ENEMY_HYDRO_LIZARD:
@@ -2171,11 +2164,11 @@ namespace DungeonPlayer
                                     player.CurrentStaminaUpValue = 300;
                                     player.CurrentMindUp = Database.INFINITY;
                                     player.CurrentMindUpValue = 300;
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffAgilityUp.bmp", Database.INFINITY);
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffIntelligenceUp.bmp", Database.INFINITY);
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStaminaUp.bmp", Database.INFINITY);
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffMindUp.bmp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffAgilityUp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffIntelligenceUp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStaminaUp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffMindUp", Database.INFINITY);
                                 }
                                 else if (player.ActionLabel.text == "ペンギンアタック！")
                                 {
@@ -2223,7 +2216,7 @@ namespace DungeonPlayer
                                     effectValue = 750.0F;
                                     player.CurrentPhysicalAttackUp = 4;
                                     player.CurrentPhysicalAttackUpValue = (int)effectValue;
-                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", 4);
+                                    player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", 4);
                                 }
                                 else if (player.ActionLabel.text == "漸波動")
                                 {
@@ -2411,7 +2404,7 @@ namespace DungeonPlayer
                                         AnimationDamage(0, group[ii], 0, Color.black, false, false, "力UP");
                                         group[ii].CurrentStrengthUp = 3;
                                         group[ii].CurrentStrengthUpValue = (int)effectValue;
-                                        group[ii].ActivateBuff(group[ii].pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", 3);
+                                        group[ii].ActivateBuff(group[ii].pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", 3);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "キリング・スラッシュ")
@@ -3070,8 +3063,8 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "ネイチャー・エンゼンブル")
                                 {
                                     UpdateBattleText(player.FirstName + "の辺りは淡い緑色に球体に包まれた！\r\n");
-                                    PlayerBuffAbstract(player, player, 999, "NourishSense.bmp");
-                                    PlayerBuffAbstract(player, player, 999, "WordOfLife.bmp");
+                                    PlayerBuffAbstract(player, player, 999, "NourishSense");
+                                    PlayerBuffAbstract(player, player, 999, "WordOfLife");
                                     PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.SacredHealValue(player, false), 0, "CelestialNova", 0);
                                 }
                                 else if (player.ActionLabel.text == "シャープネル・ニードル")
@@ -4079,31 +4072,31 @@ namespace DungeonPlayer
 
             //                        player.CurrentPhysicalAttackUp = Database.INFINITY;
             //                        player.CurrentPhysicalAttackUpValue = 1000;
-            //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
 
             //                        player.CurrentPhysicalDefenseUp = Database.INFINITY;
             //                        player.CurrentPhysicalDefenseUpValue = 1000;
-            //                        player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp", Database.INFINITY);
 
             //                        player.CurrentMagicAttackUp = Database.INFINITY;
             //                        player.CurrentMagicAttackUpValue = 1000;
-            //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
 
             //                        player.CurrentMagicDefenseUp = Database.INFINITY;
             //                        player.CurrentMagicDefenseUpValue = 1000;
-            //                        player.ActivateBuff(player.pbMagicDefenseUp, Database.BaseResourceFolder + "BuffMagicDefenseUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbMagicDefenseUp, Database.BaseResourceFolder + "BuffMagicDefenseUp", Database.INFINITY);
 
             //                        player.CurrentSpeedUp = Database.INFINITY;
             //                        player.CurrentSpeedUpValue = 1000;
-            //                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
 
             //                        player.CurrentReactionUp = Database.INFINITY;
             //                        player.CurrentReactionUpValue = 1000;
-            //                        player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + "BuffReactionUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + "BuffReactionUp", Database.INFINITY);
 
             //                        player.CurrentPotentialUp = Database.INFINITY;
             //                        player.CurrentPotentialUpValue = 1000;
-            //                        player.ActivateBuff(player.pbPotentialUp, Database.BaseResourceFolder + "BuffPotentialUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbPotentialUp, Database.BaseResourceFolder + "BuffPotentialUp", Database.INFINITY);
 
             //                        BuffUpPotential(target, 1000);
 
@@ -4129,19 +4122,19 @@ namespace DungeonPlayer
             //                        player.CurrentStaminaUpValue = 1000;
             //                        player.CurrentMindUp = Database.INFINITY;
             //                        player.CurrentMindUpValue = 1000;
-            //                        player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp.bmp", Database.INFINITY);
-            //                        player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp.bmp", Database.INFINITY);
-            //                        player.ActivateBuff(player.pbIntelligenceUp, Database.BaseResourceFolder + "BuffIntelligenceUp.bmp", Database.INFINITY);
-            //                        player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp.bmp", Database.INFINITY);
-            //                        player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbIntelligenceUp, Database.BaseResourceFolder + "BuffIntelligenceUp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp", Database.INFINITY);
 
             //                        player.CurrentResistFireUp = Database.INFINITY;
             //                        player.CurrentResistFireUpValue = 1000;
-            //                        player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp", Database.INFINITY);
 
             //                        player.CurrentResistIceUp = Database.INFINITY;
             //                        player.CurrentResistIceUpValue = 1000;
-            //                        player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", Database.INFINITY);
+            //                        player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp", Database.INFINITY);
             //                    }
             //                    else if (player.ActionLabel.text == "弱体化「潜在能力」")
             //                    {
@@ -5126,7 +5119,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("MirrorImage");
-                PlayerBuffAbstract(player, group[ii], 999, "MirrorImage.bmp");
+                PlayerBuffAbstract(player, group[ii], 999, "MirrorImage");
             }
         }
 
@@ -5263,7 +5256,7 @@ namespace DungeonPlayer
                 {
                     target.CurrentStunning = effectTime;
                 }
-                target.ActivateBuff(target.pbStun, Database.BaseResourceFolder + "Stunning.bmp", target.CurrentStunning);
+                target.ActivateBuff(target.pbStun, Database.BaseResourceFolder + "Stunning", target.CurrentStunning);
                 UpdateBattleText(target.FirstName + "は気絶した。\r\n");
             }
         }
@@ -5293,7 +5286,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_SILENCE);
                 target.CurrentSilence = effectTime;
-                target.ActivateBuff(target.pbSilence, Database.BaseResourceFolder + "Silence.bmp", effectTime);
+                target.ActivateBuff(target.pbSilence, Database.BaseResourceFolder + "Silence", effectTime);
                 UpdateBattleText(target.FirstName + "は沈黙にかかった。\r\n");
             }
         }
@@ -5325,7 +5318,7 @@ namespace DungeonPlayer
                 else
                 {
                     target.CurrentPoisonValue = 1;
-                    target.ActivateBuff(target.pbPoison, Database.BaseResourceFolder + "Poison.bmp", effectValue);
+                    target.ActivateBuff(target.pbPoison, Database.BaseResourceFolder + "Poison", effectValue);
                 }
                 UpdateBattleText(target.FirstName + "は猛毒におかされた。\r\n");
             }
@@ -5356,7 +5349,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_TEMPTATION);
                 target.CurrentTemptation = effectTime;
-                target.ActivateBuff(target.pbTemptation, Database.BaseResourceFolder + "Temptation.bmp", effectTime);
+                target.ActivateBuff(target.pbTemptation, Database.BaseResourceFolder + "Temptation", effectTime);
                 UpdateBattleText(target.FirstName + "は誘惑にかかった。\r\n");
             }
         }
@@ -5391,7 +5384,7 @@ namespace DungeonPlayer
                 target.CurrentFrozen = effectTime;
             }
             AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_FROZEN);
-            target.ActivateBuff(target.pbFrozen, Database.BaseResourceFolder + "Frozen.bmp", effectTime);
+            target.ActivateBuff(target.pbFrozen, Database.BaseResourceFolder + "Frozen", effectTime);
             UpdateBattleText(target.FirstName + "は凍結した。\r\n");
             return true;
         }
@@ -5427,7 +5420,7 @@ namespace DungeonPlayer
                     target.CurrentParalyze = effectTime;
                 }
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_PARALYZE);
-                target.ActivateBuff(target.pbParalyze, Database.BaseResourceFolder + "Paralyze.bmp", effectTime);
+                target.ActivateBuff(target.pbParalyze, Database.BaseResourceFolder + "Paralyze", effectTime);
                 UpdateBattleText(target.FirstName + "は麻痺した。\r\n");
             }
             return true;
@@ -5452,7 +5445,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_SLOW);
                 target.CurrentSlow = effectTime;
-                target.ActivateBuff(target.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectTime);
+                target.ActivateBuff(target.pbSlow, Database.BaseResourceFolder + "Slow", effectTime);
                 UpdateBattleText(target.FirstName + "は動きが鈍くなった。\r\n");
             }
         }
@@ -5482,7 +5475,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_BLIND);
                 target.CurrentBlind = effectTime;
-                target.ActivateBuff(target.pbBlind, Database.BaseResourceFolder + "Blind.bmp", effectTime);
+                target.ActivateBuff(target.pbBlind, Database.BaseResourceFolder + "Blind", effectTime);
                 UpdateBattleText(target.FirstName + "は暗闇にかかった。\r\n");
             }
         }
@@ -5506,7 +5499,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_SLIP);
                 target.CurrentSlip = effectTime;
-                target.ActivateBuff(target.pbSlip, Database.BaseResourceFolder + "Slip.bmp", effectTime);
+                target.ActivateBuff(target.pbSlip, Database.BaseResourceFolder + "Slip", effectTime);
                 UpdateBattleText(target.FirstName + "はひどい傷を負った。\r\n");
             }
         }
@@ -5530,7 +5523,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_NORESURRECTION);
                 target.CurrentNoResurrection = effectTime;
-                target.ActivateBuff(target.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection.bmp", effectTime);
+                target.ActivateBuff(target.pbNoResurrection, Database.BaseResourceFolder + "NoResurrection", effectTime);
                 UpdateBattleText(target.FirstName + "はリザレクションによる復活が不可能になった。\r\n");
             }
         }
@@ -5545,7 +5538,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_NOGAIN_LIFE);
                 target.CurrentNoGainLife = effectTime;
-                target.ActivateBuff(target.pbNoGainLife, Database.BaseResourceFolder + "NoGainLife.bmp", effectTime);
+                target.ActivateBuff(target.pbNoGainLife, Database.BaseResourceFolder + "NoGainLife", effectTime);
                 UpdateBattleText(target.FirstName + "はライフ回復が不可能になった。\r\n");
             }
         }
@@ -5592,7 +5585,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_BLINDED);
                 target.CurrentBlinded = effectTime;
-                target.ActivateBuff(target.pbBlinded, Database.BaseResourceFolder + "Blinded.bmp", effectTime);
+                target.ActivateBuff(target.pbBlinded, Database.BaseResourceFolder + "Blinded", effectTime);
                 UpdateBattleText(target.FirstName + "は退避状態に入った。\r\n");
             }
         }
@@ -5607,7 +5600,7 @@ namespace DungeonPlayer
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_PRESTUNNING);
                 target.CurrentPreStunning = effectTime;
-                target.ActivateBuff(target.pbPreStunning, Database.BaseResourceFolder + "PreStunning.bmp", effectTime);
+                target.ActivateBuff(target.pbPreStunning, Database.BaseResourceFolder + "PreStunning", effectTime);
                 UpdateBattleText(target.FirstName + "は恐怖に駆られた。\r\n");
             }
         }
@@ -5701,19 +5694,19 @@ namespace DungeonPlayer
             if (GroundOne.MC != null && !GroundOne.MC.Dead)
             {
                 GroundOne.MC.CurrentSlow = effectValue;
-                GroundOne.MC.ActivateBuff(GroundOne.MC.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectValue);
+                GroundOne.MC.ActivateBuff(GroundOne.MC.pbSlow, Database.BaseResourceFolder + "Slow", effectValue);
                 UpdateBattleText(GroundOne.MC.FirstName + "は動きが鈍くなった。\r\n");
             }
             if (GroundOne.SC != null && !GroundOne.SC.Dead)
             {
                 GroundOne.SC.CurrentSlow = effectValue;
-                GroundOne.SC.ActivateBuff(GroundOne.SC.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectValue);
+                GroundOne.SC.ActivateBuff(GroundOne.SC.pbSlow, Database.BaseResourceFolder + "Slow", effectValue);
                 UpdateBattleText(GroundOne.SC.FirstName + "は動きが鈍くなった。\r\n");
             }
             if (GroundOne.TC != null && !GroundOne.TC.Dead)
             {
                 GroundOne.TC.CurrentSlow = effectValue;
-                GroundOne.TC.ActivateBuff(GroundOne.TC.pbSlow, Database.BaseResourceFolder + "Slow.bmp", effectValue);
+                GroundOne.TC.ActivateBuff(GroundOne.TC.pbSlow, Database.BaseResourceFolder + "Slow", effectValue);
                 UpdateBattleText(GroundOne.TC.FirstName + "は動きが鈍くなった。\r\n");
             }
         }
