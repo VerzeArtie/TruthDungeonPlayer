@@ -127,6 +127,9 @@ namespace DungeonPlayer
         // TruthDecision
         public static int DecisionChoice = 0;
 
+        // TruthItemDesc
+        public static string ItemNameTitle = string.Empty;
+
 
         public static bool InitializeGroundOne()
         {
@@ -153,6 +156,15 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
+            WE.AvailableEquipShop = true;
+            //if (!GroundOne.WE2.EquipAvailable_11 && (GroundOne.WE2.EquipMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_11))
+            GroundOne.WE2.EquipMixtureDay_11 = 1;
+            GroundOne.WE.GameDay = 3;
+            // if (!GroundOne.WE2.EquipAvailable_12 && (GroundOne.WE2.EquipMixtureDay_12 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_12))
+            GroundOne.WE2.EquipMixtureDay_12 = 1;
+            GroundOne.WE2.EquipMixtureDay_35 = 1;
+            GroundOne.WE2.EquipMixtureDay_46 = 1;
+
             MC.Syutyu_Danzetsu = true;
 
             WE.AvailableSecondCharacter = true;

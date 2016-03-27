@@ -342,11 +342,11 @@ namespace DungeonPlayer
                 #endregion
 
                 // todo
-                //#region "元核"
-                //case MainCharacter.PlayerAction.Archetype:
-                //    PreExecPlayArchetype(player, target, withoutCost, CurrentArchetypeName);
-                //    break;
-                //#endregion
+                #region "元核"
+                case MainCharacter.PlayerAction.Archetype:
+                    PreExecPlayArchetype(player, target, withoutCost, CurrentArchetypeName);
+                    break;
+                #endregion
 
                 // todo
                 //#region "アイテム使用"
@@ -4298,6 +4298,30 @@ namespace DungeonPlayer
                 }
                 UpdateBattleText(player.GetCharacterSentence(4071));
             }
+        }
+
+        private void PreExecPlayArchetype(MainCharacter player, MainCharacter target, bool withoutCost, string CurrentArchetypeName)
+        {
+            // ところで、Archetypeに消費コストは存在しないため、そのまま元核を発動する。
+            ExecPlayArchetype(player, target, CurrentArchetypeName);
+        }
+
+        private void ExecPlayArchetype(MainCharacter player, MainCharacter target, string CurrentArchetypeName)
+        {
+            // 元核は無条件で、カウンター対象外とする。
+            if (CurrentArchetypeName == Database.ARCHETYPE_EIN)
+            {
+                PlayerArchetypeSyutyuDanzetsu(player, target);
+            }
+            else if (CurrentArchetypeName == Database.ARCHETYPE_RANA)
+            {
+                PlayerArchetypeJunkanSeiyaku(player, target);
+            }
+            else if (CurrentArchetypeName == Database.ARCHETYPE_OL)
+            {
+                PlayerArchetypeOraOraOraaa(player, target);
+            }
+            player.RemoveShiningAether();
         }
 
         private void PreExecPlaySpell(MainCharacter player, MainCharacter target, bool withoutCost, bool mainPhase, string CurrentSpellName)

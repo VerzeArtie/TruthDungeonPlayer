@@ -60,6 +60,8 @@ namespace DungeonPlayer
         protected MainCharacter ganz;
         protected MainCharacter currentPlayer;
 
+        private bool firstAction = false;
+
         public override void Start()
         {
             base.Start();
@@ -136,24 +138,60 @@ namespace DungeonPlayer
                 btnLevel4.gameObject.SetActive (true);
                 btnLevel5.gameObject.SetActive (true);
             }
-            else
-            {
-            }
+            SetupAvailableListWithCurrentCase();
 
             OnLoadSetupFloorButton();
             OnLoadMessage(); // 後編編集
             this.labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
 
-            SetupAvailableList(1);
             UpdateBackPackLabelInterface(GroundOne.MC);
             UpdateEquipment(GroundOne.MC);
             this.labelTitle.text = GroundOne.titleName;
         }
 
+        private void SetupAvailableListWithCurrentCase()
+        {
+            if (GroundOne.WE.AvailableEquipShop && !GroundOne.WE.AvailableEquipShop2)
+            {
+                Debug.Log("floor 1");
+                SetupAvailableList(1);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && !GroundOne.WE.AvailableEquipShop3)
+            {
+                Debug.Log("floor 2");
+                SetupAvailableList(2);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && !GroundOne.WE.AvailableEquipShop4)
+            {
+                Debug.Log("floor 3");
+                SetupAvailableList(3);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && !GroundOne.WE.AvailableEquipShop5)
+            {
+                Debug.Log("floor 4");
+                SetupAvailableList(4);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && GroundOne.WE.AvailableEquipShop5)
+            {
+                Debug.Log("floor 5");
+                SetupAvailableList(5);
+            }
+            else
+            {
+                Debug.Log("floor unknown...");
+            }
+        }
+
         bool nowClose = false;
         bool execClose = false;
-        void Update()
+        public override void Update()
         {
+            if (this.firstAction == false)
+            {
+                this.firstAction = true;
+                CheckAndCallTruthItemDesc();
+            }
+
             if (Input.GetKey(KeyCode.Escape))
             {
                 nowClose = true;
@@ -175,6 +213,171 @@ namespace DungeonPlayer
             #endregion
         }
 
+        private void CheckAndCallTruthItemDesc()
+        {
+            #region "１階"
+            if (!GroundOne.WE2.EquipAvailable_11 && (GroundOne.WE2.EquipMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_11))
+            {
+                GroundOne.WE2.EquipAvailable_11 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_KOUKAKU_ARMOR);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_12 && (GroundOne.WE2.EquipMixtureDay_12 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_12))
+            {
+                GroundOne.WE2.EquipAvailable_12 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_SISSO_TUKEHANE);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_13 && (GroundOne.WE2.EquipMixtureDay_13 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_13))
+            {
+                GroundOne.WE2.EquipAvailable_13 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_WAR_WOLF_BLADE);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_14 && (GroundOne.WE2.EquipMixtureDay_14 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_14))
+            {
+                GroundOne.WE2.EquipAvailable_14 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_BLUE_COPPER_ARMOR_KAI);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_15 && (GroundOne.WE2.EquipMixtureDay_15 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_15))
+            {
+                GroundOne.WE2.EquipAvailable_15 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_RABBIT_SHOES);
+            }
+            #endregion
+            #region "２階"
+            else if (!GroundOne.WE2.EquipAvailable_21 && (GroundOne.WE2.EquipMixtureDay_21 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_21))
+            {
+                GroundOne.WE2.EquipAvailable_21 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_WHITE_WAVE_RING);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_22 && (GroundOne.WE2.EquipMixtureDay_22 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_22))
+            {
+                GroundOne.WE2.EquipAvailable_22 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_NEEDLE_FEATHER);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_23 && (GroundOne.WE2.EquipMixtureDay_23 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_23))
+            {
+                GroundOne.WE2.EquipAvailable_23 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_KOUSHITU_ORB);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_24 && (GroundOne.WE2.EquipMixtureDay_24 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_24))
+            {
+                GroundOne.WE2.EquipAvailable_24 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_RED_ARM_BLADE);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_25 && (GroundOne.WE2.EquipMixtureDay_25 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_25))
+            {
+                GroundOne.WE2.EquipAvailable_25 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_STRONG_SERPENT_CLAW);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_26 && (GroundOne.WE2.EquipMixtureDay_26 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_26))
+            {
+                GroundOne.WE2.EquipAvailable_26 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_STRONG_SERPENT_SHIELD);
+            }
+            #endregion
+            #region "３階"
+            else if (!GroundOne.WE2.EquipAvailable_31 && (GroundOne.WE2.EquipMixtureDay_31 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_31))
+            {
+                GroundOne.WE2.EquipAvailable_31 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_SNOW_GUARD);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_32 && (GroundOne.WE2.EquipMixtureDay_32 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_32))
+            {
+                GroundOne.WE2.EquipAvailable_32 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_LIZARDSCALE_ARMOR);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_33 && (GroundOne.WE2.EquipMixtureDay_33 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_33))
+            {
+                GroundOne.WE2.EquipAvailable_33 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_STEEL_BLADE);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_34 && (GroundOne.WE2.EquipMixtureDay_34 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_34))
+            {
+                GroundOne.WE2.EquipAvailable_34 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_PENGUIN_OF_PENGUIN);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_35 && (GroundOne.WE2.EquipMixtureDay_35 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_35))
+            {
+                GroundOne.WE2.EquipAvailable_35 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_ARGNIAN_TUNIC);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_36 && (GroundOne.WE2.EquipMixtureDay_36 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_36))
+            {
+                GroundOne.WE2.EquipAvailable_36 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_SPLASH_BARE_CLAW);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_37 && (GroundOne.WE2.EquipMixtureDay_37 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_37))
+            {
+                GroundOne.WE2.EquipAvailable_37 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_WOLF_BATTLE_CLOTH);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_38 && (GroundOne.WE2.EquipMixtureDay_38 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_38))
+            {
+                GroundOne.WE2.EquipAvailable_38 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.EPIC_GATO_HAWL_OF_GREAT);
+            }
+            #endregion
+            #region "４階"
+            else if (!GroundOne.WE2.EquipAvailable_41 && (GroundOne.WE2.EquipMixtureDay_41 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_41))
+            {
+                GroundOne.WE2.EquipAvailable_41 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_HUNTERS_EYE);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_42 && (GroundOne.WE2.EquipMixtureDay_42 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_42))
+            {
+                GroundOne.WE2.EquipAvailable_42 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_ONEHUNDRED_BUTOUGI);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_43 && (GroundOne.WE2.EquipMixtureDay_43 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_43))
+            {
+                GroundOne.WE2.EquipAvailable_43 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_DARKANGEL_CROSS);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_44 && (GroundOne.WE2.EquipMixtureDay_44 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_44))
+            {
+                GroundOne.WE2.EquipAvailable_44 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_DEVIL_KILLER);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_45 && (GroundOne.WE2.EquipMixtureDay_45 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_45))
+            {
+                GroundOne.WE2.EquipAvailable_45 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_TRUERED_MASTER_BLADE);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_46 && (GroundOne.WE2.EquipMixtureDay_46 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_46))
+            {
+                GroundOne.WE2.EquipAvailable_46 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_VOID_HYMNSONIA);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_47 && (GroundOne.WE2.EquipMixtureDay_47 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_47))
+            {
+                GroundOne.WE2.EquipAvailable_47 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_VOID_HYMNSONIA);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_48 && (GroundOne.WE2.EquipMixtureDay_48 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_48))
+            {
+                GroundOne.WE2.EquipAvailable_48 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_DOOMBRINGER);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_49 && (GroundOne.WE2.EquipMixtureDay_49 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_49))
+            {
+                GroundOne.WE2.EquipAvailable_49 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.EPIC_MEIKOU_DOOMBRINGER);
+            }
+            else if (!GroundOne.WE2.EquipAvailable_410 && (GroundOne.WE2.EquipMixtureDay_410 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_410))
+            {
+                GroundOne.WE2.EquipAvailable_410 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.EPIC_ETERNAL_HOMURA_RING);
+            }
+            #endregion
+        }
+
+        public override void SceneBack()
+        {
+            Debug.Log("sceneback start");
+            base.SceneBack();
+            SetupAvailableListWithCurrentCase();
+            CheckAndCallTruthItemDesc();
+        }
+
         private void OnLoadSetupFloorButton()
         {
             // todo 派生先、TruthPotionShopで使われるメソッドである。
@@ -184,31 +387,9 @@ namespace DungeonPlayer
         {
             SetupMessageText(3000);
         }
-        //bool IsShift = false;
-        //protected void TruthEquipmentShop_KeyUp(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.ShiftKey)
-        //    {
-        //        this.IsShift = false;
-        //    }
-        //}
-        //protected override void EquipmentShop_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Escape)
-        //    {
-        //        button1_Click(null, null);
-        //    }
-        //    else if (e.KeyCode == Keys.ShiftKey)
-        //    {
-        //        this.IsShift = true;
-        //    }
-        //}
-
 
         protected virtual void UpdateBackPackLabel(MainCharacter target) // 後編編集
         {
-            //label11.Text = "バックパック（" + target.Name + ")"; // todo?
-
             UpdateBackPackLabelInterface(target);
         }
         protected void UpdateBackPackLabelInterface(MainCharacter target)
@@ -1188,8 +1369,6 @@ namespace DungeonPlayer
                     {
                         item = new ItemBackPack(Database.COMMON_KOUKAKU_ARMOR);
                         equipList[ii].text = item.Name;
-                        //equipList[5].Font = new Font("MS UI Gothic", 10F, FontStyle.Strikeout);
-                        //costList[5].Font = new Font("MS UI Gothic", 10F, FontStyle.Strikeout);
                         Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
                     }
                     ii++;
@@ -1571,6 +1750,8 @@ namespace DungeonPlayer
                 {
                     ItemBackPack temp4 = new ItemBackPack(equipList[ii].text);
                     costList[ii].text = temp4.Cost.ToString();
+                    backEquip[ii].SetActive(true);
+                    backCost[ii].SetActive(true);
                 }
                 else
                 {
@@ -1580,464 +1761,7 @@ namespace DungeonPlayer
                 }
             }
         }
-
-        // todo
-        //protected virtual void OnEquipmentShop_Shown()
-        //{
-        //    #region "１階"
-        //    if (!GroundOne.WE2.EquipAvailable_11 && (GroundOne.WE2.EquipMixtureDay_11 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_11))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_11 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_KOUKAKU_ARMOR;
-        //            TID.ItemNameTitle = Database.COMMON_KOUKAKU_ARMOR;
-        //            TID.Description = "甲殻部を繋ぎ合わせた鎧に、魔法耐性を若干付与させた一品。防御力１１～１５。火耐性＋３０";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_12 && (GroundOne.WE2.EquipMixtureDay_12 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_12))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_12 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_SISSO_TUKEHANE;
-        //            TID.ItemNameTitle = Database.COMMON_SISSO_TUKEHANE;
-        //            TID.Description = "毛皮に幾つかの白羽を埋め込んだアクセサリ。力＋３、技＋３、心＋３"; ;
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_13 && (GroundOne.WE2.EquipMixtureDay_13 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_13))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_13 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_WAR_WOLF_BLADE;
-        //            TID.ItemNameTitle = Database.RARE_WAR_WOLF_BLADE;
-        //            TID.Description = "狼の牙を基素材とし、刺付き触手を加工した武器。攻撃力３２～４４"; ;
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_14 && (GroundOne.WE2.EquipMixtureDay_14 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_14))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_14 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_BLUE_COPPER_ARMOR_KAI;
-        //            TID.ItemNameTitle = Database.COMMON_BLUE_COPPER_ARMOR_KAI;
-        //            TID.Description = "青銅の材質強度を落とさずに仕上げられた鎧。防御力１８～２５。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_15 && (GroundOne.WE2.EquipMixtureDay_15 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_15))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_15 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_RABBIT_SHOES;
-        //            TID.ItemNameTitle = Database.COMMON_RABBIT_SHOES;
-        //            TID.Description = "ウサギの毛皮と質の良いスパイダーシルクを合成した出来たシューズ。技＋１２、体力＋１０";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    #endregion
-        //    #region "２階"
-        //    if (!GroundOne.WE2.EquipAvailable_21 && (GroundOne.WE2.EquipMixtureDay_21 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_21))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_21 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_WHITE_WAVE_RING;
-        //            TID.ItemNameTitle = Database.COMMON_WHITE_WAVE_RING;
-        //            TID.Description = "勾玉からエッセンスを引き出し、リング化に成功。知＋８、体力＋７、心＋１０";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_22 && (GroundOne.WE2.EquipMixtureDay_22 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_22))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_22 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_NEEDLE_FEATHER;
-        //            TID.ItemNameTitle = Database.COMMON_NEEDLE_FEATHER;
-        //            TID.Description = "鋭いトゲと幸運を呼ぶ青羽をうまく融合させたアクセサリ。力＋１０、技＋８、心＋９";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_23 && (GroundOne.WE2.EquipMixtureDay_23 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_23))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_23 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_KOUSHITU_ORB;
-        //            TID.ItemNameTitle = Database.COMMON_KOUSHITU_ORB;
-        //            TID.Description = "幾つもの殻を溶解し、一つの胸当ての形状にした。防御力８～２５";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_24 && (GroundOne.WE2.EquipMixtureDay_24 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_24))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_24 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_RED_ARM_BLADE;
-        //            TID.ItemNameTitle = Database.RARE_RED_ARM_BLADE;
-        //            TID.Description = "豪腕なジョーの腕を加工し、赤褐色でコーティングを施してある。攻撃力２７～９５";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_25 && (GroundOne.WE2.EquipMixtureDay_25 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_25))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_25 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_STRONG_SERPENT_CLAW;
-        //            TID.ItemNameTitle = Database.RARE_STRONG_SERPENT_CLAW;
-        //            TID.Description = "強固な青鮫の剣歯を更に高質化させ、高熱で磨いだ爪。攻撃力１５～４６";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_26 && (GroundOne.WE2.EquipMixtureDay_26 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_26))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_26 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_STRONG_SERPENT_SHIELD;
-        //            TID.ItemNameTitle = Database.RARE_STRONG_SERPENT_SHIELD;
-        //            TID.Description = "強固な青鮫の鱗を更に高質化させ、低温度化で固めた防具。防御力６～３５";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    #endregion
-        //    #region "３階"
-        //    if (!GroundOne.WE2.EquipAvailable_31 && (GroundOne.WE2.EquipMixtureDay_31 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_31))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_31 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_SNOW_GUARD;
-        //            TID.ItemNameTitle = Database.COMMON_SNOW_GUARD;
-        //            TID.Description = "吹雪対策用に見えるが、アクセサリとしての上質さは装着した者のみが知る。体＋５０、心＋５０、水耐性１０００";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_32 && (GroundOne.WE2.EquipMixtureDay_32 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_32))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_32 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_LIZARDSCALE_ARMOR;
-        //            TID.ItemNameTitle = Database.COMMON_LIZARDSCALE_ARMOR;
-        //            TID.Description = "リザードの鱗を細かく細分化し、鎧形状に仕立てなおしたもの。防御力１０５～１３０";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_33 && (GroundOne.WE2.EquipMixtureDay_33 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_33))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_33 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_STEEL_BLADE;
-        //            TID.ItemNameTitle = Database.COMMON_STEEL_BLADE;
-        //            TID.Description = "強靭な素材のみ使用した鋼にガンツ直々の技が宿った剣！攻撃力２２５(+25）～２５５(+25)";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_34 && (GroundOne.WE2.EquipMixtureDay_34 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_34))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_34 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_PENGUIN_OF_PENGUIN;
-        //            TID.ItemNameTitle = Database.COMMON_PENGUIN_OF_PENGUIN;
-        //            TID.Description = "ペンギンの気持ちが心なしか伝わってくる。力＋３０、技＋３０、知＋３０、体＋３０、心＋３０";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_35 && (GroundOne.WE2.EquipMixtureDay_35 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_35))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_35 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_ARGNIAN_TUNIC;
-        //            TID.ItemNameTitle = Database.COMMON_ARGNIAN_TUNIC;
-        //            TID.Description = "アルゴニアンの素材は紫色のコーティングがあり安定した防御性が出やすい。防御力５５～６７";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_36 && (GroundOne.WE2.EquipMixtureDay_36 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_36))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_36 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_SPLASH_BARE_CLAW;
-        //            TID.ItemNameTitle = Database.RARE_SPLASH_BARE_CLAW;
-        //            TID.Description = "ゴツゴツし砕け散ったクマの手素材をガンツが見事に武器化に成功！　攻撃力２６２～２７７";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_37 && (GroundOne.WE2.EquipMixtureDay_37 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_37))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_37 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.COMMON_WOLF_BATTLE_CLOTH;
-        //            TID.ItemNameTitle = Database.COMMON_WOLF_BATTLE_CLOTH;
-        //            TID.Description = "野生ウルフのごわごわした質感を落とすことなく衣に仕立ててある。防御力７２～７９";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_38 && (GroundOne.WE2.EquipMixtureDay_38 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_38))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_38 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.EPIC_GATO_HAWL_OF_GREAT;
-        //            TID.ItemNameTitle = Database.EPIC_GATO_HAWL_OF_GREAT;
-        //            TID.Description = "古代賢者ガトゥに仕えていた神鹿の紋章。沈黙・スタン・麻痺耐性。技＋８５、知＋３２５、魔力６６６～７７７、魔攻率＋２０％、潜力率＋２０％、闇耐性1500、火耐性1500";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    #endregion
-        //    #region "４階"
-        //    if (!GroundOne.WE2.EquipAvailable_41 && (GroundOne.WE2.EquipMixtureDay_41 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_41))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_41 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_HUNTERS_EYE;
-        //            TID.ItemNameTitle = Database.RARE_HUNTERS_EYE;
-        //            TID.Description = "ハンター七つ道具を組み合わせて作成された擬眼。眼の動向の開き方に応じて様々なギミックが発動する。技＋３００、体＋３００、沈黙耐性、麻痺耐性、鈍化耐性、暗闇耐性";
-        //            TID.Description += "\r\n【特殊能力】　以下のいずれかがランダムに発動する。敵全体に対して【鈍化】効果を与える / 味方全体のいずれかがトゥルス・ヴィジョンがかかっていない場合、トゥルス・ヴィジョンを発動する / 自分自身の物理攻撃力と戦闘速度をUPする / 敵単体の物理攻撃力と戦闘速度をDOWNさせる";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_42 && (GroundOne.WE2.EquipMixtureDay_42 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_42))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_42 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_ONEHUNDRED_BUTOUGI;
-        //            TID.ItemNameTitle = Database.RARE_ONEHUNDRED_BUTOUGI;
-        //            TID.Description = "選りすぐりの獣皮を集約し、動きやすさ・重量感を重視したもの。防御力１６４～１７８、聖耐性15000、闇耐性15000、火耐性15000、水耐性15000";
-        //            TID.Description += "\r\n【常備能力】　まれに物理/魔法による攻撃を回避する。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_43 && (GroundOne.WE2.EquipMixtureDay_43 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_43))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_43 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_DARKANGEL_CROSS;
-        //            TID.ItemNameTitle = Database.RARE_DARKANGEL_CROSS;
-        //            TID.Description = "執行人のローブから高級なシルク素材を摘出し、天使のシルクと融合させて新たに創生した衣。防御力１９０～２３４、魔法防御４９２～６５２、聖耐性22000、闇耐性22000、毒耐性、誘惑耐性、鈍化耐性、暗闇耐性";
-        //            TID.Description += "\r\n【常備能力】　聖魔法１０％強化、闇魔法１０％強化";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_44 && (GroundOne.WE2.EquipMixtureDay_44 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_44))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_44 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_DEVIL_KILLER;
-        //            TID.ItemNameTitle = Database.RARE_DEVIL_KILLER;
-        //            TID.Description = "悪しき者を断つ剣。ガラクタから生成したとは思えないガンツ渾身の力作。攻撃力３６０～１８８５";
-        //            TID.Description += "\r\n【常備能力】　稀に即死させる。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_45 && (GroundOne.WE2.EquipMixtureDay_45 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_45))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_45 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_TRUERED_MASTER_BLADE;
-        //            TID.ItemNameTitle = Database.RARE_TRUERED_MASTER_BLADE;
-        //            TID.Description = "頭蓋骨を破砕した素材を柄に付け、剣の切っ先は常に火が宿る。攻撃力８００～８５０、魔力６５０～７００";
-        //            TID.Description += "\r\n【常備能力】　物理攻撃がヒットする度に、稀にワード・オブ・パワーが追加効果で発動する。魔法攻撃がヒットする度に、稀にサイキック・ウェイブが追加効果で発動する。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_46 && (GroundOne.WE2.EquipMixtureDay_46 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_46))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_46 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_VOID_HYMNSONIA;
-        //            TID.ItemNameTitle = Database.RARE_VOID_HYMNSONIA;
-        //            TID.Description = "豪華な財宝を与える事で怨霊を全て除去した箱。力＋５００、技＋５００、知＋５００、心－１０００、毒耐性、沈黙耐性、スタン耐性、麻痺耐性、凍結耐性、誘惑耐性、鈍化耐性、暗闇耐性、スリップ耐性";
-        //            TID.Description += "\r\n【特殊能力】　本装備品：ヴォイド・ヒムソニアの【心】パラメタ-1000の特性を無効にする。戦闘終了までこの効果は継続する。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_47 && (GroundOne.WE2.EquipMixtureDay_47 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_47))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_47 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_VOID_HYMNSONIA;
-        //            TID.ItemNameTitle = Database.RARE_VOID_HYMNSONIA;
-        //            TID.Description = "天秤の形状を再構築し、紋章の形状に変換することに成功。体＋５００、心＋５００、水耐性5000、空耐性5000";
-        //            TID.Description += "\r\n【常備能力】　物理攻撃を受けた場合、マナが回復する。魔法攻撃を受けた場合、スキルポイントが回復する。DEBUFF属性が付与された場合、次のターンそのBUFFを解除する。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_48 && (GroundOne.WE2.EquipMixtureDay_48 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_48))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_48 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.RARE_DOOMBRINGER;
-        //            TID.ItemNameTitle = Database.RARE_DOOMBRINGER;
-        //            TID.Description = "破滅した者へ永遠の安らぎをもたらすために作られた剣。攻撃力４７３～１４６９";
-        //            TID.Description += "\r\n【常備能力】　理魔法＋１０％強化。戦闘開始時、ゲイル・ウィンドが自分自身にかかる。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_49 && (GroundOne.WE2.EquipMixtureDay_49 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_49))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_49 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.EPIC_MEIKOU_DOOMBRINGER;
-        //            TID.ItemNameTitle = Database.EPIC_MEIKOU_DOOMBRINGER;
-        //            TID.Description = "穢れを取り払われた闇の剣。持ち主の意図に関わらず、剣が宿主を選ぶ。攻撃力１２００～２４００、魔力１２００～２４００、物攻率＋２５％、魔攻率＋２０％、戦速率＋１５％";
-        //            TID.Description += "\r\n【常備能力】　理魔法＋１６％強化、聖魔法１６％強化。戦闘開始時、ゲイル・ウィンドが自分自身にかかる。戦闘開始時、ジェネシスの行動記憶に【ゲイル・ウィンド】がセットされる。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-        //    if (!GroundOne.WE2.EquipAvailable_410 && (GroundOne.WE2.EquipMixtureDay_410 != 0) && (we.GameDay > GroundOne.WE2.EquipMixtureDay_410))
-        //    {
-        //        GroundOne.WE2.EquipAvailable_410 = true;
-        //        using (TruthItemDesc TID = new TruthItemDesc())
-        //        {
-        //            TID.StartPosition = FormStartPosition.CenterParent;
-        //            TID.ItemNameButton = Database.EPIC_ETERNAL_HOMURA_RING;
-        //            TID.ItemNameTitle = Database.EPIC_ETERNAL_HOMURA_RING;
-        //            TID.Description = "その焔火が潰える事は未だかつて起きた事がない。魔法攻撃１８５０～２０５０、知＋１２５０、スタン耐性、麻痺耐性、凍結耐性";
-        //            TID.Description += "\r\n魔攻率＋３５％、魔防率３０％、聖耐性10000、闇耐性10000、火耐性75000、水耐性75000、理耐性10000、空耐性10000";
-        //            TID.Description += "\r\n【常備能力】毎ターン、MPを回復する。";
-        //            TID.Description += "\r\n【特殊能力】全MPを消費して、消費したMPの分だけ、無属性魔法ダメージを与える。";
-        //            TID.ShowDialog();
-        //        }
-        //    }
-
-        //    #endregion
-        //}
-
-        //protected override void EquipmentShop_Shown(object sender, System.EventArgs e)
-        //{
-        //    OnEquipmentShop_Shown();
-
-        //    // ２重記述だが、ベストコードは後で良しとする。
-        //    if (we.AvailableEquipShop && !we.AvailableEquipShop2)
-        //    {
-        //        SetupAvailableList(1);
-        //    }
-        //    else if (we.AvailableEquipShop && we.AvailableEquipShop2 && !we.AvailableEquipShop3)
-        //    {
-        //        SetupAvailableList(2);
-        //    }
-        //    else if (we.AvailableEquipShop && we.AvailableEquipShop2 && we.AvailableEquipShop3 && !we.AvailableEquipShop4)
-        //    {
-        //        SetupAvailableList(3);
-        //    }
-        //    else if (we.AvailableEquipShop && we.AvailableEquipShop2 && we.AvailableEquipShop3 && we.AvailableEquipShop4 && !we.AvailableEquipShop5)
-        //    {
-        //        SetupAvailableList(4);
-        //    }
-        //    else if (we.AvailableEquipShop && we.AvailableEquipShop2 && we.AvailableEquipShop3 && we.AvailableEquipShop4 && we.AvailableEquipShop5)
-        //    {
-        //        SetupAvailableList(5);
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
-
-        //protected override void MessageExchange6(ItemBackPack backpackData, int stack, int ii)
-        //{
-        //    SetupMessageText(3007, backpackData.Name, ((backpackData.Cost / 2) * stack).ToString());
-        //}
-
-        //protected override void ConstructPopupInfo(PopUpMini popupInfo)
-        //{
-        //    popupInfo.CurrentInfo = currentPlayer.FullName + "\r\n";
-
-        //    if (currentPlayer.MainWeapon == null)
-        //    {
-        //        popupInfo.CurrentInfo += "武器(メイン) " + "（なし）" + "\r\n";
-        //    }
-        //    else
-        //    {
-        //        popupInfo.CurrentInfo += "武器(メイン) " + currentPlayer.MainWeapon.Name + "\r\n";
-        //    }
-        //    if (currentPlayer.SubWeapon == null)
-        //    {
-        //        popupInfo.CurrentInfo += "武器(サブ) 　" + "（なし）" + "\r\n";
-        //    }
-        //    else
-        //    {
-        //        popupInfo.CurrentInfo += "武器(サブ)　 " + currentPlayer.SubWeapon.Name + "\r\n";
-        //    }
-        //    if (currentPlayer.MainArmor == null)
-        //    {
-        //        popupInfo.CurrentInfo += "防具　　　　 " + "（なし）" + "\r\n";
-        //    }
-        //    else
-        //    {
-        //        popupInfo.CurrentInfo += "防具　　　　 " + currentPlayer.MainArmor.Name + "\r\n";
-        //    }
-        //    if (currentPlayer.Accessory == null)
-        //    {
-        //        popupInfo.CurrentInfo += "装飾品１　　 " + "（なし）" + "\r\n";
-        //    }
-        //    else
-        //    {
-        //        popupInfo.CurrentInfo += "装飾品１　　 " + currentPlayer.Accessory.Name + "\r\n";
-        //    }
-        //    if (currentPlayer.Accessory2 == null)
-        //    {
-        //        popupInfo.CurrentInfo += "装飾品２　　 " + "（なし）" + "\r\n";
-        //    }
-        //    else
-        //    {
-        //        popupInfo.CurrentInfo += "装飾品２ 　　" + currentPlayer.Accessory2.Name + "\r\n";
-        //    }
-        //    popupInfo.CurrentInfo += "\r\n";
-        //}
-
+        
         public void Equip_Click(Text sender)
         {
             SelectSellItem(sender);
@@ -2361,13 +2085,13 @@ namespace DungeonPlayer
 
         private void UpdateMainMessage(string p)
         {
-            // todo
+            // after (Shop5が始まった時、ガンツおじさんが居ないのを想定してるが、それは前編仕様であり、後編ではこのケースが無い）
         }
 
         protected int SelectSellStackValue(ItemBackPack backpackData, int ii)
         {
             int exchangeValue = Convert.ToInt32(backpackStack[ii].text.Remove(0, 1), 10);
-            //if (this.IsShift) // todo
+            //if (this.IsShift) // after (個数指定売却が本当にいるかどうか、ユーザー次第）
             //{
             //    using (SelectValue sv = new SelectValue())
             //    {
