@@ -10,16 +10,16 @@ namespace DungeonPlayer
     {
         public static Color EpicPurple = new Color(115.0f / 255.0f, 0.0f, 177.0f / 255.0f);
         public static Color CommonGreen = new Color(0.0f, 0.7f, 0.0f);
-        public static Color White = new Color(255, 255, 255);
+        public static Color White = new Color(1.0f, 1.0f, 1.0f);
         public static Color WhiteSmoke = new Color(245.0f / 255.0f, 245.0f / 255.0f, 245.0f / 255.0f);
-        public static Color Gainsboro = new Color(220, 220, 220);
+        public static Color Gainsboro = new Color(220.0f / 255.0f, 220.0f / 255.0f, 220.0f / 255.0f);
         public static Color LightGray = new Color(211, 211, 211);
-        public static Color Silver = new Color(192, 192, 192);
-        public static Color Darkgray = new Color(169.0f/255.0f, 169.0f/255.0f, 169.0f/255.0f);
-        public static Color Gray = new Color(128, 128, 128);
+        public static Color Silver = new Color(192.0f / 255.0f, 192.0f / 255.0f, 192.0f / 255.0f);
+        public static Color Darkgray = new Color(169.0f / 255.0f, 169.0f / 255.0f, 169.0f / 255.0f);
+        public static Color Gray = new Color(128.0f / 255.0f, 128.0f / 255.0f, 128.0f / 255.0f);
         public static Color Dimgray = new Color(105, 105, 105);
         public static Color Black = new Color(0, 0, 0);
-        public static Color Red = new Color(255, 0, 0);
+        public static Color Red = new Color(1.0f, 0.0f, 0.0f);
         public static Color OrangeRed = new Color(1.0f, 69.0f / 255.0f, 0.0f);
         public static Color Tomato = new Color(255, 99, 71);
         public static Color Coral = new Color(255, 127, 80);
@@ -27,15 +27,15 @@ namespace DungeonPlayer
         public static Color Lightsalmon = new Color(255, 160, 122);
         public static Color Darksalmon = new Color(233, 150, 122);
         public static Color Peru = new Color(205, 133, 63);
-        public static Color Saddlebrown = new Color(139, 69, 19);
+        public static Color SaddleBrown = new Color(139.0f / 255.0f, 69.0f / 255.0f, 19.0f / 255.0f);
         public static Color Sienna = new Color(160, 82, 45);
         public static Color Chocolate = new Color(210, 105, 30);
         public static Color Sandybrown = new Color(244, 164, 96);
-        public static Color DarkRed = new Color(139.0f/255.0f, 0.0f, 0.0f);
+        public static Color DarkRed = new Color(139.0f / 255.0f, 0.0f, 0.0f);
         public static Color Maroon = new Color(128, 0, 0);
         public static Color Brown = new Color(165, 42, 42);
-        public static Color Firebrick = new Color(178, 34, 34);
-        public static Color Crimson = new Color(188, 6, 12);
+        public static Color Firebrick = new Color(178.0f / 255.0f, 34.0f / 255.0f, 34.0f / 255.0f);
+        public static Color Crimson = new Color(188.0f / 255.0f, 6.0f / 255.0f, 12.0f / 255.0f);
         public static Color Indianred = new Color(205, 92, 92);
         public static Color Lightcoral = new Color(240, 128, 128);
         public static Color Rosybrown = new Color(188, 143, 143);
@@ -151,7 +151,7 @@ namespace DungeonPlayer
         public static Color Darkviolet = new Color(148, 0, 211);
         public static Color Purple = new Color(128, 0, 128);
         public static Color Darkmagenta = new Color(139, 0, 139);
-        public static Color Mediumvioletred = new Color(199, 21, 133);
+        public static Color MediumVioletRed = new Color(199.0f / 255.0f, 21.0f / 255.0f, 133.0f / 255.0f);
         public static Color Midnightblack = new Color(50, 50, 50);
         public static Color Midnightgray = new Color(75, 75, 75);
     }
