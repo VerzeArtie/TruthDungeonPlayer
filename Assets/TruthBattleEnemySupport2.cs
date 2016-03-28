@@ -51,9 +51,6 @@ namespace DungeonPlayer
                 TimeUp = 600; TimeUpFirstResponse = 0;
             }
 
-            // todo
-            //UpdateLabelInfo(activePlayer, target, Database.TIMEUP_FIRST_RESPONSE, actionCommand);
-
             while (true)
             {
                 System.Threading.Thread.Sleep(1);

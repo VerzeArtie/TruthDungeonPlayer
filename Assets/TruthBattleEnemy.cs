@@ -30,6 +30,12 @@ namespace DungeonPlayer
         bool nowAnimationMatrixTalk = false;
         int nowAnimationMatrixTalkCounter = 0;
 
+        bool nowAnimationSandGlass = false;
+        int nowAnimationSandGlassCounter = 0;
+
+        bool nowAnimationFinal = false;
+        int nowAnimationFinalCounter = 0;
+
         bool nowAnimation = false;
         int nowAnimationCounter = 0;
         List<MainCharacter> nowAnimationTarget = new List<MainCharacter>();
@@ -69,6 +75,11 @@ namespace DungeonPlayer
         public GameObject groupMatrixDragonTalk;
         public Image back_MatrixDragonTalk;
         public Text MatrixDragonTalkText;
+        public Image back_Sandglass;
+        public Text SandGlassText;
+        public Image SandGlassImage;
+        public Image back_FinalBattle;
+        public Text FinalBattleText;
         public Text TimeSpeedLabel;
         public GameObject groupChooseCommand;
         public Camera cam;
@@ -629,6 +640,16 @@ namespace DungeonPlayer
             if (this.nowAnimationMatrixTalk)
             {
                 ExecAnimationMessageFadeOut();
+                return; // アニメーション表示中は停止させる。
+            }
+            if (this.nowAnimationSandGlass)
+            {
+                ExecAnimationSandGlass();
+                return; // アニメーション表示中は停止させる。
+            }
+            if (this.nowAnimationFinal)
+            {
+                ExecAnimationFinalBattle();
                 return; // アニメーション表示中は停止させる。
             }
 
@@ -3280,7 +3301,6 @@ namespace DungeonPlayer
                         else
                         {
                             ExecActionMethod(player, player, MainCharacter.PlayerAction.SpecialSkill, Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA);
-                            // Database.FINAL_ADEST_ESPELANTIE;
                         }
                     }
                 }
@@ -7226,7 +7246,7 @@ namespace DungeonPlayer
             if (this.nowAnimationCounter > 10) { movement = 0; }
             targetLabel.transform.position = new Vector3(targetLabel.transform.position.x + movement, targetLabel.transform.position.y, targetLabel.transform.position.z);
             targetCriticalLabel.transform.position = new Vector3(targetCriticalLabel.transform.position.x + movement, targetCriticalLabel.transform.position.y, targetCriticalLabel.transform.position.z);
-            System.Threading.Thread.Sleep(10);
+            System.Threading.Thread.Sleep(5);
 
             this.nowAnimationCounter++;
             if (this.nowAnimationCounter > waitTime)
@@ -7319,96 +7339,106 @@ namespace DungeonPlayer
         
         private void AnimationSandGlass()
         {
-            Label targetLabel = MatrixDragonTalk;
-            targetLabel.Location = new Point(0, 400);
-            targetLabel.Size = new System.Drawing.Size(1024, 100);
-            targetLabel.Text = String.Empty;
-            targetLabel.Visible = true;
-            targetLabel.BringToFront();
-            PictureBox sandGlass = pbAnimeSandGlass;
-            sandGlass.Location = new Point(25, 405);
-            sandGlass.Visible = true;
-            sandGlass.BringToFront();
+            this.nowAnimationSandGlassCounter = 0;
+            this.nowAnimationSandGlass = true;
+        }
 
+        private void ExecAnimationSandGlass()
+        {
+            Text targetLabel = this.SandGlassText;
 
-            targetLabel.TextAlign = ContentAlignment.MiddleCenter;
-            targetLabel.Font = new System.Drawing.Font("HG正楷書体-PRO", 44F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            targetLabel.Text = this.BattleTurnCount.ToString();                
-            targetLabel.Visible = true;
-            targetLabel.Update();
-            sandGlass.Update();
-            int waitTime = 52;
-
-            for (int ii = 0; ii < waitTime; ii++)
+            if (this.nowAnimationSandGlassCounter <= 0)
             {
-                System.Threading.Thread.Sleep(10);
-                if (ii > 26)
-                {
-                    System.Threading.Thread.Sleep(5);
-                    sandGlass.Image = this.imageAnimeSandGlass[ii - 27];
-                    sandGlass.Location = new Point(sandGlass.Location.X + (ii-27)*3, 405);
-                    sandGlass.Update();
+                back_Sandglass.gameObject.SetActive(true);
+                targetLabel.text = this.BattleTurnCount.ToString();
+                targetLabel.gameObject.SetActive(true);
+                SandGlassImage.sprite = Resources.Load<Sprite>("AnimeSandGlass0");
+                SandGlassImage.gameObject.SetActive(true);
+            }
 
-                    if (ii == 42)
-                    {
-                        targetLabel.Text = (this.BattleTurnCount + 1).ToString();
-                        targetLabel.Update();
-                    }
-                    this.Update();
+            int waitTime = 52;
+            int startTime = 26;
+            int moveLen = (Screen.width - 150) / 26;
+
+            if (this.nowAnimationSandGlassCounter > startTime)
+            {
+                System.Threading.Thread.Sleep(0);
+                SandGlassImage.sprite = Resources.Load<Sprite>("AnimeSandGlass" + (this.nowAnimationSandGlassCounter-(startTime+1)).ToString());
+                SandGlassImage.transform.position = new Vector3(SandGlassImage.transform.position.x + moveLen, SandGlassImage.transform.position.y, SandGlassImage.transform.position.z);
+
+                if (this.nowAnimationSandGlassCounter == 42)
+                {
+                    targetLabel.text = (this.BattleTurnCount + 1).ToString();
                 }
             }
-            System.Threading.Thread.Sleep(500);
-            targetLabel.Visible = false;
-            targetLabel.TextAlign = ContentAlignment.MiddleLeft;
-            targetLabel.Font = new System.Drawing.Font("HG正楷書体-PRO", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            targetLabel.Update();
-            sandGlass.Visible = false;
-            sandGlass.Image = this.imageAnimeSandGlass[0];
-            sandGlass.Update();
+
+            this.nowAnimationSandGlassCounter++;
+
+            if (this.nowAnimationSandGlassCounter > waitTime)
+            {
+                System.Threading.Thread.Sleep(500);
+                SandGlassImage.transform.position = new Vector3(SandGlassImage.transform.position.x - moveLen * (waitTime - startTime), SandGlassImage.transform.position.y, SandGlassImage.transform.position.z);
+                back_Sandglass.gameObject.SetActive(false);
+                targetLabel.gameObject.SetActive(false);
+                SandGlassImage.gameObject.SetActive(false);
+                this.nowAnimationSandGlass = false;
+                this.nowAnimationSandGlassCounter = 0;
+            }
         }
 
         private void AnimationFinal(string message)
         {
-            Label targetLabel = MatrixDragonTalk;
-            targetLabel.Size = new System.Drawing.Size(1024, 100);
-            targetLabel.Text = message;
-            targetLabel.Width = 2048;
-            targetLabel.Location = new Point(-1024, 400);
-            targetLabel.Visible = true;
-            targetLabel.BringToFront();
+            this.FinalBattleText.text = message;
+            this.nowAnimationFinalCounter = 0;
+            this.nowAnimationFinal = true;
+        }
 
-            targetLabel.TextAlign = ContentAlignment.MiddleCenter;
-            targetLabel.Font = new System.Drawing.Font("HG正楷書体-PRO", 44F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            targetLabel.Visible = true;
-            targetLabel.Update();
-            int waitTime = 400;
+        public int debugcounter = 0;
+        private void ExecAnimationFinalBattle()
+        {
+            Debug.Log("this.counter: " + this.nowAnimationFinalCounter.ToString());
+            Text targetLabel = this.FinalBattleText;
 
-            for (int ii = 0; ii < waitTime; ii++)
+            if (this.nowAnimationFinalCounter <= 0)
             {
-                System.Threading.Thread.Sleep(1);
-                if (ii < 25)
-                {
-                    targetLabel.Width -= 30;
-                    targetLabel.Location = new Point(targetLabel.Location.X + 30, targetLabel.Location.Y);
-                }
-                else if (ii < 1024 - (25 * 30))
-                {
-                    targetLabel.Width -= 1;
-                    targetLabel.Location = new Point(targetLabel.Location.X + 1, targetLabel.Location.Y);
-                }
-                else
-                {
-                    targetLabel.Width += 25;
-                    targetLabel.Height -= 2;
-                    targetLabel.Location = new Point(targetLabel.Location.X, targetLabel.Location.Y + 1);
-                }
-                this.Update();
+                Debug.Log("screen width: " + Screen.width.ToString());
+                targetLabel.transform.position = new Vector3(targetLabel.transform.position.x + Screen.width, targetLabel.transform.position.y, targetLabel.transform.position.z);
+                back_FinalBattle.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
+                targetLabel.gameObject.SetActive(true);
+                back_FinalBattle.gameObject.SetActive(true);
             }
-            System.Threading.Thread.Sleep(500);
-            targetLabel.Visible = false;
-            targetLabel.TextAlign = ContentAlignment.MiddleLeft;
-            targetLabel.Font = new System.Drawing.Font("HG正楷書体-PRO", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            targetLabel.Update();
+
+            int waitTime = 181;
+
+            if (this.nowAnimationFinalCounter < 33)
+            {
+                this.debugcounter += 50;
+                targetLabel.transform.position = new Vector3(targetLabel.transform.position.x - 50, targetLabel.transform.position.y, targetLabel.transform.position.z);
+            }
+            else if (this.nowAnimationFinalCounter < 150)
+            {
+                this.debugcounter += 1;
+                targetLabel.transform.position = new Vector3(targetLabel.transform.position.x - 1, targetLabel.transform.position.y, targetLabel.transform.position.z);
+            }
+            else
+            {
+                this.debugcounter += 40;
+                targetLabel.transform.position = new Vector3(targetLabel.transform.position.x - 40, targetLabel.transform.position.y, targetLabel.transform.position.z);
+                this.back_FinalBattle.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f - (((float)this.nowAnimationFinalCounter - 150) / 30.0f), 1.0f);
+            }
+
+            this.nowAnimationFinalCounter++;
+
+            if (this.nowAnimationFinalCounter > waitTime)
+            {
+                Debug.Log("debugcounter: " + this.debugcounter.ToString());
+                System.Threading.Thread.Sleep(500);
+                targetLabel.transform.position = new Vector3(targetLabel.transform.position.x + 3047 - Screen.width, targetLabel.transform.position.y, targetLabel.transform.position.z);
+                targetLabel.gameObject.SetActive(false);
+                back_FinalBattle.gameObject.SetActive(false);
+                this.nowAnimationFinal = false;
+                this.nowAnimationFinalCounter = 0;
+            }
         }
         
         /// <summary>

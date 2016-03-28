@@ -3969,9 +3969,6 @@ namespace DungeonPlayer
                                             {
                                                 System.Threading.Thread.Sleep(30 / (ii + 1));
                                                 player.BattleBarPos = (Database.BASE_TIMER_BAR_LENGTH / 10) * (jj + 1);
-                                                pbPlayer1.Invalidate();
-                                                pbPlayer1.Update();
-                                                //this.Update();
                                             }
                                         }
                                         PlayerNormalAttack(player, target, 2.0f, 0, false, true, 0, 100, String.Empty, -1, false, CriticalType.Random);
@@ -4036,7 +4033,7 @@ namespace DungeonPlayer
                                     if (withoutCost == false)
                                     {
                                         AnimationFinal("絶技：Zero Innocent Sin");
-                                        UnityColor[] colors = { UnityColor.WhiteSmoke, UnityColor.Gainsboro, UnityColor.Silver, UnityColor.Gray, UnityColor.SaddleBrown, UnityColor.DarkRed, UnityColor.Firebrick, UnityColor.Crimson, UnityColor.MediumVioletRed, UnityColor.Red };
+                                        Color[] colors = { UnityColor.WhiteSmoke, UnityColor.Gainsboro, UnityColor.Silver, UnityColor.Gray, UnityColor.SaddleBrown, UnityColor.DarkRed, UnityColor.Firebrick, UnityColor.Crimson, UnityColor.MediumVioletRed, UnityColor.Red };
                                         for (int ii = 0; ii < 10; ii++)
                                         {
                                             int sleepCount = 301 - (ii * 30);

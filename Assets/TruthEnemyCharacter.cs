@@ -153,7 +153,6 @@ namespace DungeonPlayer
                                         TruthEnemyCharacter ec2,
                                         TruthEnemyCharacter ec3)
         {
-            Debug.Log("nextdecision firstname: " + this.FirstName);
             System.Random rd = new System.Random(Environment.TickCount * DateTime.Now.Millisecond);
             switch (this.FirstName)
             {
@@ -6080,6 +6079,7 @@ namespace DungeonPlayer
 
                 case Database.ENEMY_LAST_SIN_VERZE_ARTIE:
                     this.fullName = Database.ENEMY_LAST_SIN_VERZE_ARTIE;
+                    this.FirstName = Database.ENEMY_LAST_SIN_VERZE_ARTIE;
                     this.baseStrength = 3500;
                     this.baseAgility = 500;
                     this.baseIntelligence = 1900;

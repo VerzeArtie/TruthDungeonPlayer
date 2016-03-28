@@ -207,7 +207,7 @@ namespace DungeonPlayer
             //GroundOne.WE.TruthCommunicationCompArea1 = true;
             //GroundOne.WE.Truth_CommunicationThirdHomeTown = true;
 
-            //GroundOne.enemyName1 = Database.ENEMY_DRAGON_TINKOU_DEEPSEA; // DUEL_EONE_FULNEA;
+            //GroundOne.enemyName1 = Database.ENEMY_BOSS_BYSTANDER_EMPTINESS; // DUEL_EONE_FULNEA;
             //GroundOne.enemyName2 = string.Empty;// Database.ENEMY_SUN_FLOWER;
             //GroundOne.enemyName3 = string.Empty;// Database.ENEMY_SPEEDY_TAKA;
             //GroundOne.WE.AvailableSecondCharacter = true;

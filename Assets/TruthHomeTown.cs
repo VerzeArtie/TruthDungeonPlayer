@@ -2287,6 +2287,11 @@ namespace DungeonPlayer
             }
         }
 
+        public void tapDebug1()
+        {
+            BattleStart(Database.ENEMY_LAST_SIN_VERZE_ARTIE);
+        }
+
         public void tapExit()
         {
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
