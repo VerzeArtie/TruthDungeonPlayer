@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -142,17 +142,17 @@ namespace DungeonPlayer
             Debug.Log(PA.ToString() + " " + CurrentSpellName + " " + CurrentSkillName + " " + CurrentUsingItem);
             string fileExt = ".bmp";
             double effectValue = 1.0F;
-            // todo
+
             // 行動の成功・失敗を問わず、アクションコマンド自体は記憶する。
-            //if ((PA == MainCharacter.PlayerAction.UseSpell && CurrentSpellName == Database.GENESIS) ||
-            //    (PA == MainCharacter.PlayerAction.UseSkill && CurrentSkillName == Database.STANCE_OF_DOUBLE))
-            //{
-            //    // Genesis、StanceOfDouble自体が行動の場合、それは記憶しない
-            //}
-            //else
-            //{
-            //    player.UpdateGenesisCommand(PA, CurrentSpellName, CurrentSkillName, CurrentUsingItem, CurrentArchetypeName);
-            //}
+            if ((PA == MainCharacter.PlayerAction.UseSpell && CurrentSpellName == Database.GENESIS) ||
+                (PA == MainCharacter.PlayerAction.UseSkill && CurrentSkillName == Database.STANCE_OF_DOUBLE))
+            {
+                // Genesis、StanceOfDouble自体が行動の場合、それは記憶しない
+            }
+            else
+            {
+                player.UpdateGenesisCommand(PA, CurrentSpellName, CurrentSkillName, CurrentUsingItem, CurrentArchetypeName);
+            }
 
             // 行動実行直前にトリガードイベントで発動されるアクション
             if (player.CurrentTemptation > 0)
@@ -272,7 +272,7 @@ namespace DungeonPlayer
                 case MainCharacter.PlayerAction.NormalAttack:
                     if (!target.Dead)
                     {
-                        //if (CheckCounterAttack(player, Database.ATTACK_EN)) { return; } // todo
+                        if (CheckCounterAttack(player, Database.ATTACK_EN)) { return; }
                         PlayerNormalAttack(player, target, 0.0f, false, false);
                         player.CurrentPhysicalChargeCount = 0;
                     }
@@ -3941,118 +3941,116 @@ namespace DungeonPlayer
                                     player.ActionCommandStackList.Add(player.CurrentSpellName);
                                     player.ActionCommandStackTarget.Add(target);
                                 }
-                                // todo
-                                //else if (player.ActionLabel.text == "時間律の支配")
-                                //{
-                                //    UpdateBattleText(player.FirstName + "は微動だにせず、玉座に存在し続けている。時の刻のみが急速に進み続ける！\r\n");
-                                //    this.Invoke(new _AnimationSandGlass(AnimationSandGlass));
-                                //    CleanUpStep();
-                                //    UpdateTurnEnd(true);
-                                //    UpkeepStep();
-                                //}
+                                else if (player.ActionLabel.text == "時間律の支配")
+                                {
+                                    UpdateBattleText(player.FirstName + "は微動だにせず、玉座に存在し続けている。時の刻のみが急速に進み続ける！\r\n");
+                                    AnimationSandGlass();
+                                    CleanUpStep();
+                                    UpdateTurnEnd(true);
+                                    UpkeepStep();
+                                }
                                 break;
                             #endregion
-                            // todo
-                            //#region "最終戦【原罪】ヴェルゼ・アーティ"
-                            //case Database.ENEMY_LAST_SIN_VERZE_ARTIE:
-                            //    if (player.ActionLabel.text == Database.FINAL_INVISIBLE_HUNDRED_CUTTER ||
-                            //        player.StackCommandString == Database.FINAL_INVISIBLE_HUNDRED_CUTTER)
-                            //    {
-                            //        // 連続攻撃
-                            //        UpdateBattleText(player.FirstName + ":アイン君、これが最後です　【瘴技】インヴィジヴル・ハンドレッド・カッター！！！\r\n");
-                            //        if (withoutCost == false)
-                            //        {
-                            //            this.Invoke(new _AnimationFinal1(AnimationFinal1), "瘴技：Invisible Hundred Cutter");
-                            //            for (int ii = 0; ii < 15; ii++)
-                            //            {
-                            //                System.Threading.Thread.Sleep(1);
-                            //                PlayerNormalAttack(player, target, 0, 0, false, true, 0, 3, String.Empty, -1, false, CriticalType.Random);
-                            //                for (int jj = 0; jj < 10; jj++)
-                            //                {
-                            //                    System.Threading.Thread.Sleep(30 / (ii + 1));
-                            //                    player.BattleBarPos = (Database.BASE_TIMER_BAR_LENGTH / 10) * (jj + 1);
-                            //                    pbPlayer1.Invalidate();
-                            //                    pbPlayer1.Update();
-                            //                    //this.Update();
-                            //                }
-                            //            }
-                            //            PlayerNormalAttack(player, target, 2.0f, 0, false, true, 0, 100, String.Empty, -1, false, CriticalType.Random);
-                            //            player.BattleBarPos = 0;
-                            //        }
-                            //    }
-                            //    else if (player.ActionLabel.text == Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA ||
-                            //             player.StackCommandString == Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA)
-                            //    {
-                            //        // 分身２体生成（生命カウンターが残り１つなら、３体生成)
-                            //        UpdateBattleText(player.FirstName + ":ックク、これは読み切れないでしょう 【叡技】ラダリュンテ・カオティック・スキーマ！！\r\n");
-                            //        if (withoutCost == false)
-                            //        {
-                            //            this.Invoke(new _AnimationFinal1(AnimationFinal1), "叡技：Ladarynte Chaotic Schema");
-                            //            PlayerBuffAbstract(player, player, 1, Database.CHAOTIC_SCHEMA);
-                            //            player.BattleBarPos = 0;
-                            //            if (player.CurrentLifeCountValue <= 1)
-                            //            {
-                            //                player.BattleBarPos2 = 167;
-                            //                player.BattleBarPos3 = 334;
-                            //            }
-                            //            else
-                            //            {
-                            //                player.BattleBarPos2 = 250;
-                            //            }
-                            //        }
-                            //    }
-                            //    // 【妥協】８月以降で取り返したい
-                            //    //else if (player.ActionLabel.text == Database.FINAL_ADEST_ESPELANTIE)
-                            //    //{
-                            //    //    // 
-                            //    //    UpdateBattleText(player.FirstName + ":アイン君はなす術もない、ッハハハハ！　神技：Adest Espelantie！！\r\n");
-                            //    //    if (withoutCost == false)
-                            //    //    {
-                            //    //        this.Invoke(new _AnimationFinal1(AnimationFinal1), "神技：Adest Espelantie");
-                            //    //    }
-                            //    //}
-                            //    else if (player.ActionLabel.text == Database.FINAL_SEFINE_PAINFUL_HYMNUS ||
-                            //             player.StackCommandString == Database.FINAL_SEFINE_PAINFUL_HYMNUS)
-                            //    {
-                            //        // 全回復
-                            //        UpdateBattleText(player.FirstName + ":今ここでセフィにボクのすべてを捧げる【永技：Sefine・Painful・Hymnus】！！\r\n");
-                            //        if (withoutCost == false)
-                            //        {
-                            //            this.Invoke(new _AnimationFinal1(AnimationFinal1), "永技：Sefine Painful Hymnus");
-                            //            double lifegain = player.MaxLife - player.CurrentLife;
-                            //            player.CurrentLife = player.MaxLife;
-                            //            UpdateLife(player, lifegain, true, true, 0, false);
-                            //            double managain = player.MaxMana - player.CurrentMana;
-                            //            player.CurrentMana = player.MaxMana;
-                            //            UpdateMana(player, managain, true, true, 0);
-                            //            double skillgain = player.MaxSkillPoint - player.CurrentSkillPoint;
-                            //            player.CurrentSkillPoint = player.MaxSkillPoint;
-                            //            UpdateSkillPoint(player, skillgain, true, true, 0);
-                            //        }
-                            //    }
-                            //    else if (player.ActionLabel.text == Database.FINAL_ZERO_INNOCENT_SIN ||
-                            //             player.StackCommandString == Database.FINAL_ZERO_INNOCENT_SIN)
-                            //    {
-                            //        // ライフダウン１０回
-                            //        UpdateBattleText(player.FirstName + ":【絶技】ゼロ・イノセント・シン・・・これで終わりです。\r\n");
-                            //        if (withoutCost == false)
-                            //        {
-                            //            this.Invoke(new _AnimationFinal1(AnimationFinal1), "絶技：Zero Innocent Sin");
-                            //            Color[] colors = { Color.WhiteSmoke, Color.Gainsboro, Color.Silver, Color.Gray, Color.SaddleBrown, Color.DarkRed, Color.Firebrick, Color.Crimson, Color.MediumVioletRed, Color.Red };
-                            //            for (int ii = 0; ii < 10; ii++)
-                            //            {
-                            //                int sleepCount = 301 - (ii * 30);
-                            //                this.BackColor = colors[ii];
-                            //                System.Threading.Thread.Sleep(sleepCount);
-                            //                PlayerLifeHalfCurrent(player, target, 10);
-                            //            }
-                            //            PlayerLifeHalfCurrent(player, target, 100);
-                            //            this.BackColor = Color.GhostWhite;
-                            //        }
-                            //    }
+                            #region "最終戦【原罪】ヴェルゼ・アーティ"
+                            case Database.ENEMY_LAST_SIN_VERZE_ARTIE:
+                                if (player.ActionLabel.text == Database.FINAL_INVISIBLE_HUNDRED_CUTTER ||
+                                    player.StackCommandString == Database.FINAL_INVISIBLE_HUNDRED_CUTTER)
+                                {
+                                    // 連続攻撃
+                                    UpdateBattleText(player.FirstName + ":アイン君、これが最後です　【瘴技】インヴィジヴル・ハンドレッド・カッター！！！\r\n");
+                                    if (withoutCost == false)
+                                    {
+                                        AnimationFinal("瘴技：Invisible Hundred Cutter");
+                                        for (int ii = 0; ii < 15; ii++)
+                                        {
+                                            System.Threading.Thread.Sleep(1);
+                                            PlayerNormalAttack(player, target, 0, 0, false, true, 0, 3, String.Empty, -1, false, CriticalType.Random);
+                                            for (int jj = 0; jj < 10; jj++)
+                                            {
+                                                System.Threading.Thread.Sleep(30 / (ii + 1));
+                                                player.BattleBarPos = (Database.BASE_TIMER_BAR_LENGTH / 10) * (jj + 1);
+                                                pbPlayer1.Invalidate();
+                                                pbPlayer1.Update();
+                                                //this.Update();
+                                            }
+                                        }
+                                        PlayerNormalAttack(player, target, 2.0f, 0, false, true, 0, 100, String.Empty, -1, false, CriticalType.Random);
+                                        player.BattleBarPos = 0;
+                                    }
+                                }
+                                else if (player.ActionLabel.text == Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA ||
+                                         player.StackCommandString == Database.FINAL_LADARYNTE_CHAOTIC_SCHEMA)
+                                {
+                                    // 分身２体生成（生命カウンターが残り１つなら、３体生成)
+                                    UpdateBattleText(player.FirstName + ":ックク、これは読み切れないでしょう 【叡技】ラダリュンテ・カオティック・スキーマ！！\r\n");
+                                    if (withoutCost == false)
+                                    {
+                                        AnimationFinal("叡技：Ladarynte Chaotic Schema");
+                                        PlayerBuffAbstract(player, player, 1, Database.CHAOTIC_SCHEMA);
+                                        player.BattleBarPos = 0;
+                                        if (player.CurrentLifeCountValue <= 1)
+                                        {
+                                            player.BattleBarPos2 = 167;
+                                            player.BattleBarPos3 = 334;
+                                        }
+                                        else
+                                        {
+                                            player.BattleBarPos2 = 250;
+                                        }
+                                    }
+                                }
+                                // after Espelantieの内容を決定する事
+                                //else if (player.ActionLabel.text == Database.FINAL_ADEST_ESPELANTIE)
+                                //{
+                                //    // 
+                                //    UpdateBattleText(player.FirstName + ":アイン君はなす術もない、ッハハハハ！　神技：Adest Espelantie！！\r\n");
+                                //    if (withoutCost == false)
+                                //    {
+                                //        this.Invoke(new _AnimationFinal1(AnimationFinal1), "神技：Adest Espelantie");
+                                //    }
+                                //}
+                                else if (player.ActionLabel.text == Database.FINAL_SEFINE_PAINFUL_HYMNUS ||
+                                         player.StackCommandString == Database.FINAL_SEFINE_PAINFUL_HYMNUS)
+                                {
+                                    // 全回復
+                                    UpdateBattleText(player.FirstName + ":今ここでセフィにボクのすべてを捧げる【永技：Sefine・Painful・Hymnus】！！\r\n");
+                                    if (withoutCost == false)
+                                    {
+                                        AnimationFinal("永技：Sefine Painful Hymnus");
+                                        double lifegain = player.MaxLife - player.CurrentLife;
+                                        player.CurrentLife = player.MaxLife;
+                                        UpdateLife(player, lifegain, true, true, 0, false);
+                                        double managain = player.MaxMana - player.CurrentMana;
+                                        player.CurrentMana = player.MaxMana;
+                                        UpdateMana(player, managain, true, true, 0);
+                                        double skillgain = player.MaxSkillPoint - player.CurrentSkillPoint;
+                                        player.CurrentSkillPoint = player.MaxSkillPoint;
+                                        UpdateSkillPoint(player, skillgain, true, true, 0);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == Database.FINAL_ZERO_INNOCENT_SIN ||
+                                         player.StackCommandString == Database.FINAL_ZERO_INNOCENT_SIN)
+                                {
+                                    // ライフダウン１０回
+                                    UpdateBattleText(player.FirstName + ":【絶技】ゼロ・イノセント・シン・・・これで終わりです。\r\n");
+                                    if (withoutCost == false)
+                                    {
+                                        AnimationFinal("絶技：Zero Innocent Sin");
+                                        UnityColor[] colors = { UnityColor.WhiteSmoke, UnityColor.Gainsboro, UnityColor.Silver, UnityColor.Gray, UnityColor.SaddleBrown, UnityColor.DarkRed, UnityColor.Firebrick, UnityColor.Crimson, UnityColor.MediumVioletRed, UnityColor.Red };
+                                        for (int ii = 0; ii < 10; ii++)
+                                        {
+                                            int sleepCount = 301 - (ii * 30);
+                                            this.cam.backgroundColor = colors[ii];
+                                            System.Threading.Thread.Sleep(sleepCount);
+                                            PlayerLifeHalfCurrent(player, target, 10);
+                                        }
+                                        PlayerLifeHalfCurrent(player, target, 100);
+                                        this.cam.backgroundColor = UnityColor.GhostWhite;
+                                    }
+                                }
 
-                            //    break;
-                            //#endregion
+                                break;
+                            #endregion
             //                #region "ダミー素振り君"
             //                case Database.DUEL_DUMMY_SUBURI:
             //                    if (player.ActionLabel.text == "BUFF!")
@@ -5104,11 +5102,6 @@ namespace DungeonPlayer
             AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_SKILL);
         }
         
-        private void Invoke(Delegate method, params object[] args)
-        {
-            // todo
-        }
-
         private void PlayerMirrorImageAllAlly(MainCharacter player)
         {
             List<MainCharacter> group = new List<MainCharacter>();
