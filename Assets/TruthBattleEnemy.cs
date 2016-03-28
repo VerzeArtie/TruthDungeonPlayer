@@ -7316,7 +7316,101 @@ namespace DungeonPlayer
                 this.nowAnimationMatrixTalk = false;
             }
         }
+        
+        private void AnimationSandGlass()
+        {
+            Label targetLabel = MatrixDragonTalk;
+            targetLabel.Location = new Point(0, 400);
+            targetLabel.Size = new System.Drawing.Size(1024, 100);
+            targetLabel.Text = String.Empty;
+            targetLabel.Visible = true;
+            targetLabel.BringToFront();
+            PictureBox sandGlass = pbAnimeSandGlass;
+            sandGlass.Location = new Point(25, 405);
+            sandGlass.Visible = true;
+            sandGlass.BringToFront();
 
+
+            targetLabel.TextAlign = ContentAlignment.MiddleCenter;
+            targetLabel.Font = new System.Drawing.Font("HG正楷書体-PRO", 44F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            targetLabel.Text = this.BattleTurnCount.ToString();                
+            targetLabel.Visible = true;
+            targetLabel.Update();
+            sandGlass.Update();
+            int waitTime = 52;
+
+            for (int ii = 0; ii < waitTime; ii++)
+            {
+                System.Threading.Thread.Sleep(10);
+                if (ii > 26)
+                {
+                    System.Threading.Thread.Sleep(5);
+                    sandGlass.Image = this.imageAnimeSandGlass[ii - 27];
+                    sandGlass.Location = new Point(sandGlass.Location.X + (ii-27)*3, 405);
+                    sandGlass.Update();
+
+                    if (ii == 42)
+                    {
+                        targetLabel.Text = (this.BattleTurnCount + 1).ToString();
+                        targetLabel.Update();
+                    }
+                    this.Update();
+                }
+            }
+            System.Threading.Thread.Sleep(500);
+            targetLabel.Visible = false;
+            targetLabel.TextAlign = ContentAlignment.MiddleLeft;
+            targetLabel.Font = new System.Drawing.Font("HG正楷書体-PRO", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            targetLabel.Update();
+            sandGlass.Visible = false;
+            sandGlass.Image = this.imageAnimeSandGlass[0];
+            sandGlass.Update();
+        }
+
+        private void AnimationFinal(string message)
+        {
+            Label targetLabel = MatrixDragonTalk;
+            targetLabel.Size = new System.Drawing.Size(1024, 100);
+            targetLabel.Text = message;
+            targetLabel.Width = 2048;
+            targetLabel.Location = new Point(-1024, 400);
+            targetLabel.Visible = true;
+            targetLabel.BringToFront();
+
+            targetLabel.TextAlign = ContentAlignment.MiddleCenter;
+            targetLabel.Font = new System.Drawing.Font("HG正楷書体-PRO", 44F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            targetLabel.Visible = true;
+            targetLabel.Update();
+            int waitTime = 400;
+
+            for (int ii = 0; ii < waitTime; ii++)
+            {
+                System.Threading.Thread.Sleep(1);
+                if (ii < 25)
+                {
+                    targetLabel.Width -= 30;
+                    targetLabel.Location = new Point(targetLabel.Location.X + 30, targetLabel.Location.Y);
+                }
+                else if (ii < 1024 - (25 * 30))
+                {
+                    targetLabel.Width -= 1;
+                    targetLabel.Location = new Point(targetLabel.Location.X + 1, targetLabel.Location.Y);
+                }
+                else
+                {
+                    targetLabel.Width += 25;
+                    targetLabel.Height -= 2;
+                    targetLabel.Location = new Point(targetLabel.Location.X, targetLabel.Location.Y + 1);
+                }
+                this.Update();
+            }
+            System.Threading.Thread.Sleep(500);
+            targetLabel.Visible = false;
+            targetLabel.TextAlign = ContentAlignment.MiddleLeft;
+            targetLabel.Font = new System.Drawing.Font("HG正楷書体-PRO", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            targetLabel.Update();
+        }
+        
         /// <summary>
         /// 物理攻撃カウンターCounterAttackのチェックメソッド</summary>
         /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
