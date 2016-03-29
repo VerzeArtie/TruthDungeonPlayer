@@ -4531,6 +4531,25 @@ namespace DungeonPlayer
                         }
                     }
 
+                    #region "ダミー素振り君"
+                    if (ActiveList[ii].FirstName == Database.DUEL_DUMMY_SUBURI)
+                    {
+                        if (this.cumulativeCounter[this.StackNumber] > Database.TIMEUP_FIRST_RESPONSE - 200)
+                        {
+                            if (ActiveList[ii].CurrentInstantPoint >= ActiveList[ii].MaxInstantPoint)
+                            {
+                                UpdateBattleText(ActiveList[ii].FirstName + "：フレッシュヒール。\r\n");
+                                ActiveList[ii].CurrentInstantPoint = 0;
+                                ActiveList[ii].StackActivePlayer = ActiveList[ii];
+                                ActiveList[ii].StackTarget = ActiveList[ii];
+                                ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                ActiveList[ii].StackCommandString = Database.FRESH_HEAL;
+                                ActiveList[ii].StackActivation = true;
+                            }
+                        }
+                    }
+                    #endregion
+
                     // タイムウェイト更新
                     this.cumulativeCounter[this.StackNumber] += 2;
                     float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]) / (float)(Database.TIMEUP_FIRST_RESPONSE);
