@@ -2169,8 +2169,6 @@ namespace DungeonPlayer
 
         private void PlayerSkillDoubleSlash(MainCharacter player, MainCharacter target, double magnification, bool ignoreDefense)
         {
-            Debug.Log("playerskilldoubleslash start");
-            // todo 全体的に作り直しでは？
             // 相手：カウンターアタックが入っている場合
             if (target.CurrentCounterAttack > 0)
             {

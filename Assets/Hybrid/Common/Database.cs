@@ -42,6 +42,7 @@ namespace DungeonPlayer
         public static int BASE_TIMER_BAR_LENGTH = 500;
 
         public static int TIMEUP_FIRST_RESPONSE = 600; // 後編追加
+        public static int TIMEUP_COMPUTER_INTERRUPT = 400; // add unity
 
         // s 後編追加
         #region "キャラクター名称"

@@ -4214,8 +4214,7 @@ namespace DungeonPlayer
                 #endregion
 
                 case Database.DUEL_DUMMY_SUBURI:
-                    SetupActionWisely(this, this, Database.FRESH_HEAL);
-                    //                    SetupActionWisely(this, this, Database.STANCE_OF_MYSTIC);
+                    SetupActionCommand(this, this, PlayerAction.UseSkill, Database.FUTURE_VISION);
                     return;
 
                     this.PA = PlayerAction.UseSkill;

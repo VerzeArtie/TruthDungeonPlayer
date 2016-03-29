@@ -2289,7 +2289,7 @@ namespace DungeonPlayer
 
         public void tapDebug1()
         {
-            BattleStart(Database.ENEMY_LAST_SIN_VERZE_ARTIE);
+            BattleStart(Database.DUEL_DUMMY_SUBURI);
         }
 
         public void tapExit()

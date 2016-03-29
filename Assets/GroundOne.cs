@@ -180,6 +180,7 @@ namespace DungeonPlayer
 
             WE.dungeonEvent226 = true;
             WE.AvailableMixSpellSkill = false;
+            WE.AvailableInstantCommand = true;
 
             //MC.Level = 23;
             ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
