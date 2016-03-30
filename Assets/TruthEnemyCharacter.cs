@@ -4214,7 +4214,7 @@ namespace DungeonPlayer
                 #endregion
 
                 case Database.DUEL_DUMMY_SUBURI:
-                    SetupActionCommand(this, this, PlayerAction.UseSkill, Database.FUTURE_VISION);
+                    SetupActionCommand(this, GroundOne.MC, PlayerAction.UseSkill, Database.FIRE_BALL);
                     return;
 
                     this.PA = PlayerAction.UseSkill;

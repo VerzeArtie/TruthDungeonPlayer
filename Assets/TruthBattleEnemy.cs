@@ -4440,6 +4440,30 @@ namespace DungeonPlayer
                     if (this.ActiveList[ii].StackActivation)
                     {
                         this.ActiveList[ii].StackActivation = false;
+
+                        #region "スタックに乗らず即座に発動するカウンターコマンド"
+                        if (this.ActiveList[ii].StackCommandString == Database.STANCE_OF_SUDDENNESS)
+                        {
+                            ActiveList[ii].CurrentStanceOfSuddenness = false;
+                            back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
+                            back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
+                            back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
+                            nowStackAnimationBarText.color = Color.white;
+                            back_nowStackAnimationName.GetComponent<Image>().color = Color.black;
+                            nowStackAnimationNameText.color = Color.white;
+                            nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
+                            nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "のStanceOfSuddenness)";
+                            ExecStackOut(true);
+                            return;
+                        }
+                        #endregion
+
+                        // インスタント対象の場合、ここでターゲットを記載する（メインメソッドのターゲット指定では指定できない）
+                        if (this.ActiveList[ii].StackCommandString == Database.DEEP_MIRROR)
+                        {
+                            this.ActiveList[ii].StackTarget = this.stackActivePlayer[this.StackNumber];
+                        }
+
                         this.stackActivePlayer.Add(this.ActiveList[ii]);
                         string actionCommand = this.ActiveList[ii].StackCommandString;
                         this.StackNumber++;
@@ -4511,9 +4535,9 @@ namespace DungeonPlayer
 
                 if (this.cumulativeCounter[this.StackNumber] < Database.TIMEUP_FIRST_RESPONSE)
                 {
+                        MainCharacter activePlayer = this.stackActivePlayer[this.StackNumber];
                     for (int ii = 0; ii < ActiveList.Count; ii++)
                     {
-                        MainCharacter activePlayer = this.stackActivePlayer[this.StackNumber];
                         string actionCommand = this.stackActivePlayer[this.StackNumber].StackCommandString;
                         MainCharacter.PlayerAction pa = this.stackActivePlayer[this.StackNumber].StackPlayerAction;
 
@@ -4523,7 +4547,6 @@ namespace DungeonPlayer
                             continue;
                         }
 
-                        // todo
                         #region "対戦相手が特定のカウンター系をいれこんでいる場合、打ち消しが実施される。"
                         if (DetectOpponentParty(activePlayer, ActiveList[ii]))
                         {
@@ -4557,7 +4580,6 @@ namespace DungeonPlayer
                                 ExecStackOut(true);
                                 return;
                             }
-
                             if (ActiveList[ii].CurrentDeepMirror == true)
                             {
                                 ActiveList[ii].CurrentDeepMirror = false;
@@ -5357,7 +5379,40 @@ namespace DungeonPlayer
                     }
                     
                     // タイムウェイト更新
-                    this.cumulativeCounter[this.StackNumber] += 3;
+                    int cumulativeCounter = 0;
+                    if (activePlayer.FirstName == Database.VERZE_ARTIE ||
+                        activePlayer.FirstName == Database.ENEMY_LAST_VERZE_ARTIE ||
+                        activePlayer.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                    {
+                        if (activePlayer.StackCommandString == Database.NEUTRAL_SMASH)
+                        {
+                            cumulativeCounter = 9;
+                        }
+                        else
+                        {
+                            cumulativeCounter = 7;
+                        }
+                    }
+                    else if (activePlayer.FirstName == Database.ENEMY_LAST_RANA_AMILIA ||
+                                activePlayer.FirstName == Database.ENEMY_LAST_SINIKIA_KAHLHANZ ||
+                                activePlayer.FirstName == Database.ENEMY_LAST_OL_LANDIS
+                        )
+                    {
+                        cumulativeCounter = 5;
+                    }
+                    else if (this.FinalBattle)
+                    {
+                        cumulativeCounter = 7;
+                    }
+                    else if (this.HiSpeedAnimation)
+                    {
+                        cumulativeCounter = 5;
+                    }
+                    else
+                    {
+                        cumulativeCounter = 3;
+                    }
+                    this.cumulativeCounter[this.StackNumber] += cumulativeCounter;
                     float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]) / (float)(Database.TIMEUP_FIRST_RESPONSE);
                     back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(dx, 1.0f);
                     StackInTheCommandBarText[this.StackNumber].text = (Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]).ToString();
