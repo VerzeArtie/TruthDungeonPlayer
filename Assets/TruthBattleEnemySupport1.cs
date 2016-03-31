@@ -4303,11 +4303,15 @@ namespace DungeonPlayer
             }
             else if (CurrentArchetypeName == Database.ARCHETYPE_RANA)
             {
-                PlayerArchetypeJunkanSeiyaku(player, target);
+                PlayerArchetypeJunkanSeiyaku(player);
             }
             else if (CurrentArchetypeName == Database.ARCHETYPE_OL)
             {
-                PlayerArchetypeOraOraOraaa(player, target);
+                PlayerArchetypeOraOraOraaa(player);
+            }
+            else if (CurrentArchetypeName == Database.ARCHETYPE_VERZE)
+            {
+                PlayerArchetypeShinzitsuHakai(player);
             }
             player.RemoveShiningAether();
         }

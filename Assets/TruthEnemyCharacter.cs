@@ -4214,7 +4214,7 @@ namespace DungeonPlayer
                 #endregion
 
                 case Database.DUEL_DUMMY_SUBURI:
-                    SetupActionCommand(this, GroundOne.MC, PlayerAction.UseSkill, Database.FIRE_BALL);
+                    SetupActionCommand(this, GroundOne.MC, PlayerAction.UseSpell, Database.CHILL_BURN);
                     return;
 
                     this.PA = PlayerAction.UseSkill;
@@ -6704,12 +6704,13 @@ namespace DungeonPlayer
                 #region "ダミー素振り君"
                 case Database.DUEL_DUMMY_SUBURI:
                     this.baseStrength = 1;
-                    this.baseAgility = 1000;
+                    this.baseAgility = 100;
                     this.baseIntelligence = 100;
                     this.baseStamina = 9999;
                     this.baseMind = 1;
                     this.experience = 0;
                     this.baseLife = 9990009;
+                    this.baseMana = 999999;
                     this.ResistFire = 0;
                     this.Rare = RareString.Black;
                     this.level = 1;

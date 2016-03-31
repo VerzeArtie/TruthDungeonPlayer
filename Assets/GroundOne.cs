@@ -167,8 +167,8 @@ namespace DungeonPlayer
 
             MC.Syutyu_Danzetsu = true;
 
-            WE.AvailableSecondCharacter = true;
-            WE.AvailableThirdCharacter = true;
+            //WE.AvailableSecondCharacter = true;
+            //WE.AvailableThirdCharacter = true;
             WE.AvailableArchetypeCommand = true;
 
             WE.AvailableDuelColosseum = true;
@@ -271,7 +271,7 @@ namespace DungeonPlayer
             //MC.DeadPlayer();
             MC.Level = 1;
             MC.Strength = 100;
-            MC.Agility = 100;
+            MC.Agility = 500;
 
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
@@ -425,8 +425,8 @@ namespace DungeonPlayer
             MC.BattleActionCommandList[3] = Database.STRAIGHT_SMASH;
             MC.BattleActionCommandList[4] = Database.VOLCANIC_WAVE;
             MC.BattleActionCommandList[5] = Database.LAVA_ANNIHILATION;
-            MC.BattleActionCommandList[6] = Database.FIRE_BALL;
-            MC.BattleActionCommandList[7] = Database.GALE_WIND;
+            MC.BattleActionCommandList[6] = Database.ARCHETYPE_EIN;
+            MC.BattleActionCommandList[7] = Database.RECOVER;
             MC.BattleActionCommandList[8] = Database.STANCE_OF_SUDDENNESS;
 
             SC = objSC.AddComponent<MainCharacter>();

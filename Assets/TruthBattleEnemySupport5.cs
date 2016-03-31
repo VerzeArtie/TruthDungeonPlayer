@@ -26,6 +26,16 @@ namespace DungeonPlayer
             return true;
         }
 
+        public void ExecStackIn()
+        {
+            back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
+            back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
+            back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
+            nowStackAnimationBarText.color = Color.white;
+            back_nowStackAnimationName.GetComponent<Image>().color = Color.black;
+            nowStackAnimationNameText.color = Color.white;
+        }
+
         public void ExecStackOut(bool nowStackAnimation)
         {
             back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);

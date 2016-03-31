@@ -2239,7 +2239,7 @@ namespace DungeonPlayer
         /// <summary>
         /// 元核：循環と誓約のメソッド
         /// </summary>
-        private void PlayerArchetypeJunkanSeiyaku(MainCharacter player, MainCharacter target)
+        private void PlayerArchetypeJunkanSeiyaku(MainCharacter player)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_JUNKAN_SEIYAKU);
             List<MainCharacter> group = new List<MainCharacter>();
@@ -2263,7 +2263,10 @@ namespace DungeonPlayer
             player.AlreadyPlayArchetype = true;
         }
 
-        private void PlayerArchetypeOraOraOraaa(MainCharacter player, MainCharacter target)
+        /// <summary>
+        /// 元核：オラオラオラァ！
+        /// </summary>
+        private void PlayerArchetypeOraOraOraaa(MainCharacter player)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_ORA_ORA_ORAAA);
             int num = (int)PrimaryLogic.OraOraOraaaValue(player);
@@ -2287,6 +2290,13 @@ namespace DungeonPlayer
 
                 PlayerNormalAttack(player, group[AP.Math.RandomInteger(group.Count)], 0, 0, false, false, 0, interval, soundName, 115, false, CriticalType.Random);
             }
+        }
+
+        /// <summary>
+        /// 元核：真実の破壊
+        /// </summary>
+        private void PlayerArchetypeShinzitsuHakai(MainCharacter player)
+        {
         }
         #endregion
 

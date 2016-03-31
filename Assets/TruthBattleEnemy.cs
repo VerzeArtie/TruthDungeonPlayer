@@ -3375,19 +3375,19 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                //if (player.CurrentInstantPoint >= player.MaxInstantPoint)
-                //{
-                //    //if (player.CurrentTimeStop > 0)
-                //    {
-                //        UseInstantPoint(player);
-                //        player.StackActivePlayer = ec1;
-                //        player.StackTarget = ec1;
-                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
-                //        player.StackCommandString = Database.FRESH_HEAL;
-                //        player.StackActivation = true;
-                //        this.NowStackInTheCommand = true;
-                //    }
-                //}
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    //if (player.CurrentTimeStop > 0)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.FRESH_HEAL;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }
             }
             #endregion
         }
@@ -4440,30 +4440,14 @@ namespace DungeonPlayer
                     if (this.ActiveList[ii].StackActivation)
                     {
                         this.ActiveList[ii].StackActivation = false;
-
-                        #region "スタックに乗らず即座に発動するカウンターコマンド"
-                        if (this.ActiveList[ii].StackCommandString == Database.STANCE_OF_SUDDENNESS)
-                        {
-                            ActiveList[ii].CurrentStanceOfSuddenness = false;
-                            back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
-                            back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
-                            back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
-                            nowStackAnimationBarText.color = Color.white;
-                            back_nowStackAnimationName.GetComponent<Image>().color = Color.black;
-                            nowStackAnimationNameText.color = Color.white;
-                            nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
-                            nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "のStanceOfSuddenness)";
-                            ExecStackOut(true);
-                            return;
-                        }
-                        #endregion
-
+                        
                         // インスタント対象の場合、ここでターゲットを記載する（メインメソッドのターゲット指定では指定できない）
                         if (this.ActiveList[ii].StackCommandString == Database.DEEP_MIRROR)
                         {
                             this.ActiveList[ii].StackTarget = this.stackActivePlayer[this.StackNumber];
                         }
 
+                        // スタック行動を追加登録する。
                         this.stackActivePlayer.Add(this.ActiveList[ii]);
                         string actionCommand = this.ActiveList[ii].StackCommandString;
                         this.StackNumber++;
@@ -4530,6 +4514,62 @@ namespace DungeonPlayer
                         this.back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(1.0f, 1.0f);
                         this.back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(1.0f, 1.0f);
 
+
+                        #region "スタックが即座に発動するコマンド"
+                        // スタンス・オブ・サッドネス
+                        if (this.ActiveList[ii].StackCommandString == Database.STANCE_OF_SUDDENNESS)
+                        {
+                            ActiveList[ii].CurrentStanceOfSuddenness = false;
+                            ExecStackIn();
+                            nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber - 1].FirstName + "の" + this.stackActivePlayer[this.StackNumber - 1].StackCommandString;
+                            nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "のStanceOfSuddenness)";
+                            ExecStackOut(true);
+                            StackInTheCommandEnd();
+                            ExecStackOut(true);
+                            return;
+                        }
+                        // リカバー
+                        if (this.ActiveList[ii].StackCommandString == Database.RECOVER)
+                        {
+                            ExecStackIn();
+                            nowStackAnimationNameText.text = this.ActiveList[ii].FirstName + "の" + this.ActiveList[ii].StackCommandString;
+                            nowStackAnimationBarText.text = "【リカバー】発動！　スタン／麻痺／凍結を解除　";
+                            PlayerSkillRecover(this.ActiveList[ii], this.ActiveList[ii]);
+                            ExecStackOut(true);
+                            return;
+                        }
+                        // 元核
+                        if (TruthActionCommand.CheckPlayerActionFromString(this.ActiveList[ii].StackCommandString) == MainCharacter.PlayerAction.Archetype)
+                        {
+                            ExecStackIn();
+                            if (this.ActiveList[ii].StackCommandString == Database.ARCHETYPE_EIN)
+                            {
+                                nowStackAnimationNameText.text = this.ActiveList[ii].FullName;
+                                nowStackAnimationBarText.text = "【元核】　【集中と断絶】　【発動！】";
+                                PlayerArchetypeSyutyuDanzetsu(this.ActiveList[ii], this.ActiveList[ii]);
+                            }
+                            else if (this.ActiveList[ii].StackCommandString == Database.ARCHETYPE_RANA)
+                            {
+                                nowStackAnimationNameText.text = this.ActiveList[ii].FullName;
+                                nowStackAnimationBarText.text = "【元核】　【循環の誓約】　【発動！】";
+                                PlayerArchetypeJunkanSeiyaku(this.ActiveList[ii]);
+                            }
+                            else if (this.ActiveList[ii].StackCommandString == Database.ARCHETYPE_OL)
+                            {
+                                nowStackAnimationNameText.text = this.ActiveList[ii].FullName;
+                                nowStackAnimationBarText.text = "【元核】　【オラオラオラァ！】　【発動！】";
+                                PlayerArchetypeOraOraOraaa(this.ActiveList[ii]);
+                            }
+                            else if (this.ActiveList[ii].StackCommandString == Database.ARCHETYPE_VERZE)
+                            {
+                                nowStackAnimationNameText.text = this.ActiveList[ii].FullName;
+                                nowStackAnimationBarText.text = "【元核】　【真実の破壊】　【発動！】";
+                                PlayerArchetypeSyutyuDanzetsu(this.ActiveList[ii], this.ActiveList[ii]);
+                            }
+                            ExecStackOut(true);
+                            return;
+                        }
+                        #endregion
                     }
                 }
 
