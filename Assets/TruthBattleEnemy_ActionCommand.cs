@@ -1211,7 +1211,7 @@ namespace DungeonPlayer
         private void PlayerSpellAbsoluteZero(MainCharacter player, MainCharacter target)
         {
             int effectTurn = 4;
-            if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE) { effectTurn = 1; } // todo FirstNameか？
+            if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE) { effectTurn = 1; }
             GroundOne.PlaySoundEffect("AbsoluteZero");
             if (player.Target.CurrentAbsoluteZero <= 0) // 強力無比な魔法のため、継続ターンの連続更新は出来なくしている。
             {

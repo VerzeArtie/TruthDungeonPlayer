@@ -15,6 +15,7 @@ namespace DungeonPlayer
                 {
                     if (this.ActiveList[ii].StackActivation)
                     {
+                        Debug.Log("StackActivation start: " + this.ActiveList[ii].StackCommandString);
                         this.ActiveList[ii].StackActivation = false;
 
                         // インスタント対象の場合、ここでターゲットを記載する（メインメソッドのターゲット指定では指定できない）
@@ -111,6 +112,16 @@ namespace DungeonPlayer
                             nowStackAnimationNameText.text = this.ActiveList[ii].FirstName + "の" + this.ActiveList[ii].StackCommandString;
                             nowStackAnimationBarText.text = "【リカバー】発動！　スタン／麻痺／凍結を解除　";
                             PlayerSkillRecover(this.ActiveList[ii], this.ActiveList[ii]);
+                            ExecStackOut(true);
+                            return;
+                        }
+                        // 防御姿勢
+                        if (this.ActiveList[ii].StackCommandString == Database.DEFENSE_EN)
+                        {
+                            ExecStackIn();
+                            nowStackAnimationNameText.text = this.ActiveList[ii].FullName;
+                            nowStackAnimationBarText.text = "【防御】の姿勢";
+                            ActiveList[ii].PA = MainCharacter.PlayerAction.Defense;
                             ExecStackOut(true);
                             return;
                         }
@@ -429,8 +440,7 @@ namespace DungeonPlayer
                                 {
                                     ExecDefense(ActiveList, ec1.FirstName + "：いやあああぁぁぁ！！　インスタント攻撃なんてしないでよ！！！\r\n", ii);
                                 }
-
-                                if (TruthActionCommand.IsDamage(actionCommand))
+                                else if (TruthActionCommand.IsDamage(actionCommand))
                                 {
                                     if (ActiveList[ii].CurrentInstantPoint >= ActiveList[ii].MaxInstantPoint)
                                     {
