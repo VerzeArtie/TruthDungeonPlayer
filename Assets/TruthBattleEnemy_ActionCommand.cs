@@ -546,23 +546,34 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellWarpGate(MainCharacter player, MainCharacter target)
         {
-            // todo
             // ゲージを進める。進めた結果、行動フェーズを超えた場合、コスト無しで行動を行い、超えた分だけさらにゲージを進める。
-            //GroundOne.PlaySoundEffect(Database.SOUND_WARP_GATE);
-            //for (int ii = 0; ii < (int)PrimaryLogic.WarpGateValue(player); ii++)
-            //{
-            //    player.BattleBarPos++;
-            //    if (player.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
-            //    {
-            //        PlayerAttackPhase(player, true, false, false);
-            //        player.BattleBarPos = 0;
-            //    }
-            //    pbPlayer1.Invalidate();
-            //    this.Update();
-            //    System.Threading.Thread.Sleep(1);
-            //}
+            GroundOne.PlaySoundEffect(Database.SOUND_WARP_GATE);
+            this.nowExecutionWarpGatePlayer = player;
+            this.nowExecutionWarpGateTarget = target;
+            this.nowExecutionWarpGateCounter = 0;
+            this.nowExecutionWarpGate = true;
         }
+        private void ExecPlayWarpGate()
+        {
+            UpdatePlayerMainFaceArrow(this.nowExecutionWarpGatePlayer);
+            this.nowExecutionWarpGatePlayer.BattleBarPos++;
+            if (this.nowExecutionWarpGatePlayer.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
+            {
+                PlayerAttackPhase(this.nowExecutionWarpGatePlayer, true, false, false);
+                this.nowExecutionWarpGatePlayer.BattleBarPos = 0;
+            }
+            System.Threading.Thread.Sleep(0);
 
+            this.nowExecutionWarpGateCounter++;
+
+            if (this.nowExecutionWarpGateCounter >= (int)PrimaryLogic.WarpGateValue())
+            {
+                this.nowExecutionWarpGate = false;
+                this.nowExecutionWarpGateCounter = 0;
+                this.nowExecutionWarpGatePlayer = null;
+                this.nowExecutionWarpGateTarget = null;
+            }
+        }
 
         /// <summary>
         /// フレッシュ・ヒールのメソッド

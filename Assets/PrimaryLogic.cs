@@ -1124,7 +1124,7 @@ namespace DungeonPlayer
         /// <summary>
         /// ワープ・ゲート値の算出
         /// </summary>
-        public static double WarpGateValue(MainCharacter player)
+        public static double WarpGateValue()
         {
             return 250; // ゲージバーを進める値
         }

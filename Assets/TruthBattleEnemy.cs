@@ -36,6 +36,11 @@ namespace DungeonPlayer
         bool nowAnimationFinal = false;
         int nowAnimationFinalCounter = 0;
 
+        bool nowExecutionWarpGate = false;
+        int nowExecutionWarpGateCounter = 0;
+        MainCharacter nowExecutionWarpGatePlayer = null;
+        MainCharacter nowExecutionWarpGateTarget = null;
+
         bool nowAnimation = false;
         int nowAnimationCounter = 0;
         List<MainCharacter> nowAnimationTarget = new List<MainCharacter>();
@@ -653,6 +658,12 @@ namespace DungeonPlayer
                 return; // アニメーション表示中は停止させる。
             }
 
+            if (this.nowExecutionWarpGate)
+            {
+                ExecPlayWarpGate();
+                return; // ワープゲート実行中は停止させる。
+            }
+
             // バトル終了条件が満たされている場合、バトル終了とする。
             if (this.BattleEndFlag) { BattleEndPhase(); }
 
@@ -665,9 +676,7 @@ namespace DungeonPlayer
             #region "ゲージ位置"
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
-                float widthScale = (float)(Screen.width) / (float)(Database.BASE_TIMER_BAR_LENGTH);
-                Vector3 current = ActiveList[ii].MainFaceArrow.transform.position;
-                ActiveList[ii].MainFaceArrow.transform.position = new Vector3((float)ActiveList[ii].BattleBarPos * widthScale, current.y, current.z);
+                UpdatePlayerMainFaceArrow(ActiveList[ii]);
             }
             #endregion
 
@@ -829,6 +838,12 @@ namespace DungeonPlayer
             }
         }
 
+        private void UpdatePlayerMainFaceArrow(MainCharacter player)
+        {
+            float widthScale = (float)(Screen.width) / (float)(Database.BASE_TIMER_BAR_LENGTH);
+            Vector3 current = player.MainFaceArrow.transform.position;
+            player.MainFaceArrow.transform.position = new Vector3((float)player.BattleBarPos * widthScale, current.y, current.z);
+        }
 
         void ActivateSomeCharacter(MainCharacter player, MainCharacter target,
             Text charaName, Text fullName, 
