@@ -179,7 +179,8 @@ namespace DungeonPlayer
             WE.Truth_CommunicationFirstHomeTown = true;
 
             WE.dungeonEvent226 = true;
-            WE.AvailableMixSpellSkill = false;
+            WE.AvailableMixSpellSkill = true;
+            WE2.AvailableMixSpellSkill = true;
             WE.AvailableInstantCommand = true;
 
             //MC.Level = 23;
@@ -272,6 +273,9 @@ namespace DungeonPlayer
             MC.Level = 1;
             MC.Strength = 100;
             MC.Agility = 500;
+            MC.Intelligence = 1000;
+            MC.CurrentMana = MC.MaxMana;
+            MC.CurrentSkillPoint = MC.CurrentSkillPoint;
 
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
@@ -424,7 +428,7 @@ namespace DungeonPlayer
             MC.BattleActionCommandList[2] = Database.FIRE_BALL;
             MC.BattleActionCommandList[3] = Database.STRAIGHT_SMASH;
             MC.BattleActionCommandList[4] = Database.VOLCANIC_WAVE;
-            MC.BattleActionCommandList[5] = Database.LAVA_ANNIHILATION;
+            MC.BattleActionCommandList[5] = Database.WARP_GATE;
             MC.BattleActionCommandList[6] = Database.ARCHETYPE_EIN;
             MC.BattleActionCommandList[7] = Database.RECOVER;
             MC.BattleActionCommandList[8] = Database.STANCE_OF_SUDDENNESS;
