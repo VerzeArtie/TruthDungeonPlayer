@@ -43,3 +43,5 @@ EditorBuildSettings:
     path: Assets/TruthItemDesc.unity
   - enabled: 1
     path: Assets/TruthDuelRule.unity
+  - enabled: 1
+    path: Assets/TruthDuelPlayerStatus.unity

@@ -685,7 +685,8 @@ namespace DungeonPlayer
 
         public void tapOpponentInfo()
         {
-
+            this.Filter.SetActive(true);
+            SceneDimension.CallTruthDuelPlayerStatus(this);
         }
 
         public void tapCheckDuelRule()
