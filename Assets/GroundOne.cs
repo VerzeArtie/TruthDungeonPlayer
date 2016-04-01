@@ -178,7 +178,7 @@ namespace DungeonPlayer
             WE.AlreadyRest = false;
             WE.Truth_CommunicationFirstHomeTown = true;
 
-            WE.dungeonEvent226 = true;
+            //WE.dungeonEvent226 = true;
             WE.AvailableMixSpellSkill = true;
             WE2.AvailableMixSpellSkill = true;
             WE.AvailableInstantCommand = true;

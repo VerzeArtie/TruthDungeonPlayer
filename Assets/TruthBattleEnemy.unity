@@ -461,7 +461,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446421538}
-  m_RootOrder: 26
+  m_RootOrder: 28
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -4069,7 +4069,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446421538}
-  m_RootOrder: 22
+  m_RootOrder: 24
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -6596,6 +6596,8 @@ RectTransform:
   - {fileID: 1918013038}
   - {fileID: 2130509667}
   - {fileID: 477460960}
+  - {fileID: 1199727381}
+  - {fileID: 1811042460}
   - {fileID: 659585813}
   - {fileID: 1076080541}
   - {fileID: 1212388389}
@@ -6604,8 +6606,6 @@ RectTransform:
   - {fileID: 775391831}
   - {fileID: 723398305}
   - {fileID: 18206361}
-  - {fileID: 1199727381}
-  - {fileID: 1811042460}
   - {fileID: 1483088397}
   - {fileID: 1398514894}
   - {fileID: 126003493}
@@ -7071,6 +7071,7 @@ MonoBehaviour:
   treasureIcon: {fileID: 1362715121}
   treasureText: {fileID: 460502877}
   firstAction: 0
+  debugcounter: 0
 --- !u!1 &455045904
 GameObject:
   m_ObjectHideFlags: 0
@@ -10171,7 +10172,7 @@ RectTransform:
   m_LocalScale: {x: 0.89903426, y: 0.89903426, z: 0.89903426}
   m_Children: []
   m_Father: {fileID: 446421538}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -11082,7 +11083,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446421538}
-  m_RootOrder: 25
+  m_RootOrder: 27
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -12152,7 +12153,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446421538}
-  m_RootOrder: 24
+  m_RootOrder: 26
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -15847,7 +15848,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446421538}
-  m_RootOrder: 23
+  m_RootOrder: 25
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -16263,7 +16264,7 @@ RectTransform:
   - {fileID: 1150849465}
   - {fileID: 1279831446}
   m_Father: {fileID: 446421538}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -18819,7 +18820,7 @@ RectTransform:
   - {fileID: 1637938489}
   - {fileID: 1271092701}
   m_Father: {fileID: 446421538}
-  m_RootOrder: 27
+  m_RootOrder: 19
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 920, y: -600}
@@ -19349,7 +19350,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446421538}
-  m_RootOrder: 21
+  m_RootOrder: 23
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -28490,7 +28491,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 446421538}
-  m_RootOrder: 28
+  m_RootOrder: 20
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1095.5, y: -580}

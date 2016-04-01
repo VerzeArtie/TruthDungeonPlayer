@@ -626,7 +626,6 @@ namespace DungeonPlayer
             #region "Duel申請中"
             if (!GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
             {
-                Debug.Log("4");
                 MessagePack.Message80001(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -634,7 +633,6 @@ namespace DungeonPlayer
             #region "オル・ランディス遭遇"
             else if (GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
             {
-                Debug.Log("3");
                 MessagePack.Message80002(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -642,7 +640,6 @@ namespace DungeonPlayer
             #region "２階開始時"
             else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.Truth_CommunicationOl21)
             {
-                Debug.Log("2");
                 MessagePack.Message80003(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -650,7 +647,6 @@ namespace DungeonPlayer
             #region "オル・ランディスを仲間にするところ"
             else if (GroundOne.WE.dungeonEvent226 && !GroundOne.WE.Truth_CommunicationOl22)
             {
-                Debug.Log("1");
                 this.nowTalkingOlRandis = true;
                 MessagePack.Message80004(ref nowMessage, ref nowEvent);
                 NormalTapOK();
@@ -659,7 +655,6 @@ namespace DungeonPlayer
             #region "３階開始時"
             else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.Truth_CommunicationOl31)
             {
-                Debug.Log("5");
                 MessagePack.Message80005(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -667,7 +662,6 @@ namespace DungeonPlayer
             #region "４階開始時"
             else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.Truth_CommunicationOl41)
             {
-                Debug.Log("6");
                 MessagePack.Message80006(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -675,7 +669,6 @@ namespace DungeonPlayer
             #region "条件に応じて、Duelを実施します。"
             else if (this.OpponentDuelist != string.Empty && GroundOne.WE.AlreadyRest)
             {
-                Debug.Log("7");
                 GroundOne.WE.AlreadyDuelComplete = true;
                 DuelSupportMessage(SupportType.FromDuelGate, this.OpponentDuelist);
                 CallDuel(false);
@@ -684,13 +677,27 @@ namespace DungeonPlayer
             #region "その他"
             else
             {
-                Debug.Log("8");
                 MessagePack.Message89999(ref nowMessage, ref nowEvent);
                 NormalTapOK();
-                // todo
-                // GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
             }
             #endregion
+        }
+
+        public void tapOpponentInfo()
+        {
+
+        }
+
+        public void tapCheckDuelRule()
+        {
+            this.Filter.SetActive(true);
+            SceneDimension.CallTruthDuelRule(this);
+        }
+
+        public void tapDuelClose()
+        {
+            HideAllChild();
+            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
         }
 
         public void tapBattleSetting()
