@@ -113,6 +113,7 @@ namespace DungeonPlayer
         // SaveLoad
         public static bool AfterBacktoTitle = false; // タイトル戻り直前のセーブモード
         public static bool SaveMode = false; // false:Load true:Save
+        public static bool SaveAndExit = false; // true:RealWorldSave and exit
 
         // TruthHomeTown
         public static bool TruthHomeTown_NowExit = false;
@@ -130,6 +131,8 @@ namespace DungeonPlayer
         // TruthItemDesc
         public static string ItemNameTitle = string.Empty;
 
+        // TruthDuelPlayerStatus
+        public static string DuelPlayerName;
 
         public static bool InitializeGroundOne()
         {
@@ -270,7 +273,7 @@ namespace DungeonPlayer
             //MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
 
             //MC.DeadPlayer();
-            MC.Level = 1;
+            MC.Level = 4;
             MC.Strength = 100;
             MC.Agility = 500;
             MC.Intelligence = 1000;

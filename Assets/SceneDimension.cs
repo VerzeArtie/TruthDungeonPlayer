@@ -9,9 +9,10 @@ namespace DungeonPlayer
     {
         public static List<string> playbackScene = new List<string>();
 
-        public static void CallTruthDuelPlayerStatus(MotherForm scene)
+        public static void CallTruthDuelPlayerStatus(MotherForm scene, string duelPlayerName)
         {
             GroundOne.ParentScene = scene;
+            GroundOne.DuelPlayerName = duelPlayerName;
             Application.LoadLevelAdditive(Database.TruthDuelPlayerStatus);
         }
 
@@ -57,7 +58,14 @@ namespace DungeonPlayer
             GroundOne.ParentScene = scene;
             Application.LoadLevelAdditive(Database.TruthPotionShop);
         }
-        
+
+        public static void CallSaveLoadWithSaveOnly()
+        {
+            GroundOne.SaveMode = true;
+            GroundOne.SaveAndExit = true;
+            Application.LoadLevelAdditive(Database.SaveLoad);
+        }
+
         public static void CallSaveLoad(string src, bool SaveMode, bool AfterBacktoTitle, MotherForm scene)
         {
             GroundOne.SaveMode = SaveMode;
@@ -71,6 +79,7 @@ namespace DungeonPlayer
             {
                 scene.Filter.GetComponent<Image>().color = UnityColor.Aqua;
             }
+            GroundOne.SaveAndExit = false;
             scene.Filter.SetActive(true);
             Application.LoadLevelAdditive(Database.SaveLoad);
         }

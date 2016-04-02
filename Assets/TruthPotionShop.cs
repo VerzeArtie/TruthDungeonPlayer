@@ -8,6 +8,7 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+            // todo
 
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailablePotion2 = true;
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailablePotion3 = true;

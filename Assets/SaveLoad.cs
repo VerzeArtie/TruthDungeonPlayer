@@ -39,6 +39,13 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            if (GroundOne.SaveAndExit)
+            {
+                RealWorldSave();
+                Application.UnloadLevel(Database.SaveLoad);
+                return;
+            }
+
             MakeDirectory();
 
             Text newDateTimeButton = null;
@@ -339,6 +346,15 @@ namespace DungeonPlayer
                 this.currentSaveText = null;
                 this.currentTargetFileName = string.Empty;
             }
+        }
+
+        public void RealWorldSave()
+        {
+            ExecSave(null, "11_", true);
+        }
+        public void RealWorldLoad()
+        {
+            ExecLoad(null, "11_", true);
         }
 
         private void ExecSave(Text sender, string targetFileName, bool forceSave)

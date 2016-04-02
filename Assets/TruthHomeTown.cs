@@ -686,7 +686,9 @@ namespace DungeonPlayer
         public void tapOpponentInfo()
         {
             this.Filter.SetActive(true);
-            SceneDimension.CallTruthDuelPlayerStatus(this);
+            string duelPlayerName = WhoisDuelPlayer();
+            duelPlayerName = Database.DUEL_SCOTY_ZALGE;
+            SceneDimension.CallTruthDuelPlayerStatus(this, duelPlayerName);
         }
 
         public void tapCheckDuelRule()

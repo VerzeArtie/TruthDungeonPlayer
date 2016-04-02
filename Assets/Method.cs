@@ -71,10 +71,10 @@ namespace DungeonPlayer
             {
                 if (backpackData[currentNumber] == null)
                 {
-                    backpack[currentNumber].text = "";
-                    backpackStack[currentNumber].text = "";
-                    backpackIcon[currentNumber].sprite = null;
-                    Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]);
+                    if (currentNumber < backpack.Length ) { backpack[currentNumber].text = ""; }
+                    if (currentNumber < backpackStack.Length) { backpackStack[currentNumber].text = ""; }
+                    if (currentNumber < backpackIcon.Length) { backpackIcon[currentNumber].sprite = null; }
+                    if (currentNumber < backpack.Length) { Method.UpdateRareColor(null, backpack[currentNumber], back_Backpack[currentNumber]); }
                     //back_Backpack[currentNumber].SetActive(false);
                 }
                 else
@@ -242,7 +242,7 @@ namespace DungeonPlayer
         // 現実世界の自動セーブ
         public static void AutoSaveRealWorld(MainCharacter MC, MainCharacter SC, MainCharacter TC, WorldEnvironment WE, bool[] knownTileInfo, bool[] knownTileInfo2, bool[] knownTileInfo3, bool[] knownTileInfo4, bool[] knownTileInfo5, bool[] Truth_KnownTileInfo, bool[] Truth_KnownTileInfo2, bool[] Truth_KnownTileInfo3, bool[] Truth_KnownTileInfo4, bool[] Truth_KnownTileInfo5)
         {
-            // todo
+            SceneDimension.CallSaveLoadWithSaveOnly();
         }
 
         // 街でオル・ランディスが外れる、４階最初でヴェルゼが外れる、４階エリア３でラナが外れるのを統合

@@ -53,7 +53,7 @@ namespace DungeonPlayer
                     if (TruthActionCommand.GetBuffType(spellNameWithoutExt) == TruthActionCommand.BuffType.Up)
                     {
                         UpdateBattleText(target.FirstName + "はAusterityMatrixに支配されており、BUFFを付与できなかった！！\r\n");
-                        //this.Invoke(new _AnimationDamage(AnimationDamage), 0, target, 0, Color.black, true, false, Database.EFFECT_CANNOT_BUFF); // todo
+                        AnimationDamage(0, target, 0, Color.black, true, false, Database.EFFECT_CANNOT_BUFF);
                         return;
                     }
                 }
