@@ -2006,8 +2006,6 @@ namespace DungeonPlayer
 
         public static void Message10051_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add(""); eventList.Add(ActionEvent.GotoDungeon2);
-
             if (!GroundOne.WE.TruthCompleteArea1)
             {
                 messageList.Add("アイン：おし、１階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);

@@ -145,11 +145,6 @@ namespace DungeonPlayer
         string[] tileInfo3 = null;
         string[] tileInfo4 = null;
         string[] tileInfo5 = null;
-        //bool[] knownTileInfo = null;
-        bool[] knownTileInfo2 = null;
-        bool[] knownTileInfo3 = null;
-        bool[] knownTileInfo4 = null;
-        bool[] knownTileInfo5 = null;
 
         private int battleSpeed;
         public int BattleSpeed
@@ -203,6 +198,8 @@ namespace DungeonPlayer
         bool nowEncountEnemy = false;
         bool execEncountEnemy = false;
         bool ignoreCreateShadow = false;
+
+        bool firstAction = false;
 
         // Use this for initialization
         public override void Start()
@@ -702,8 +699,6 @@ namespace DungeonPlayer
             {
                 ReadDungeonTileFromXmlFile(@"DungeonMapping_T_5");
             }
-
-            SetupDungeonMapping(GroundOne.WE.DungeonArea);
 
             // 始めて開始する場合、あらかじめスタート地点を設定。
             if ((GroundOne.WE.DungeonPosX == 0) && (GroundOne.WE.DungeonPosY == 0))
@@ -1312,6 +1307,12 @@ namespace DungeonPlayer
         {
             base.Update();
 
+            if (!this.firstAction)
+            {
+                this.firstAction = true;
+                ShownEvent();
+                return;
+            }
             if (this.nowEncountEnemy)
             {
                 this.nowEncountEnemy = false;
@@ -1368,6 +1369,16 @@ namespace DungeonPlayer
                 }
             }
         }
+
+        private void ShownEvent()
+        {
+            // todo
+            if (true)//!GroundOne.WE.TruthCompleteArea1)
+            {
+
+            }
+        }
+
         private void movementTimer_Tick()
         {
             if (this.interval < this.MovementInterval) { this.interval++; return; }
@@ -7893,10 +7904,6 @@ namespace DungeonPlayer
             //    UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * 39, Database.DUNGEON_MOVE_LEN * 14); // [todo] Unityの新しい画面では、この操作は不要になる。
             SetupDungeonMapping(1);
 
-            GroundOne.Truth_KnownTileInfo2 = this.knownTileInfo2;
-            GroundOne.Truth_KnownTileInfo3 = this.knownTileInfo3;
-            GroundOne.Truth_KnownTileInfo4 = this.knownTileInfo4;
-            GroundOne.Truth_KnownTileInfo5 = this.knownTileInfo5;
             GroundOne.NoFirstMusic = noFirstMusic;
             GroundOne.BattleSpeed = this.battleSpeed;
             GroundOne.Difficulty = this.difficulty;
@@ -7913,9 +7920,13 @@ namespace DungeonPlayer
         }
 
         // todo
-        private void SetupDungeonMapping(int p)
+        private void SetupDungeonMapping(int area)
         {
-            //throw new NotImplementedException();
+            GroundOne.WE.DungeonArea = area;
+            this.dungeonAreaLabel.text = GroundOne.WE.DungeonArea.ToString() + "　階";
+            this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
+            Application.UnloadLevel(Database.TruthDungeon);
+            SceneDimension.JumpToTruthDungeon(Database.Title);
         }
 
     }
