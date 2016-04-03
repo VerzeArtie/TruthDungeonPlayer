@@ -14,7 +14,7 @@ namespace DungeonPlayer
         {
             base.Update();
         }
-
+       
         public void tapExit()
         {
             GroundOne.ParentScene.SceneBack();

@@ -189,9 +189,6 @@ namespace DungeonPlayer
         bool[] blueWallRight = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
         bool[] blueWallBottom = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
 
-        private string SAVE_REQUEST_1 = "タイトルへ戻ります。今までのデータをセーブしますか？";
-        private string SAVE_REQUEST_2 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
-
         bool arrowDown = false; // add unity
         bool arrowUp = false; // add unity
         bool arrowLeft = false; // add unity
@@ -285,7 +282,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    yesnoSystemMessage.text = SAVE_REQUEST_1;
+                    yesnoSystemMessage.text = Database.Message_SaveRequest1;
                     groupYesnoSystemMessage.SetActive(true);
                 }
             }
@@ -715,7 +712,8 @@ namespace DungeonPlayer
                 {
                     case 0:
                     case 1:
-                        JumpToLocation(39, -14, true);
+                        //JumpToLocation(39, -14, true); // debug
+                        JumpToLocation(16, -5, true);
                         break;
                     case 2:
                         JumpToLocation(29, -19, true);
@@ -7439,29 +7437,6 @@ namespace DungeonPlayer
             SceneDimension.CallSaveLoad(Database.TruthDungeon, false, false, this);
         }
 
-        public void tapYes()
-        {
-            btnYes.enabled = false; btnYes.gameObject.SetActive(false);
-            btnNo.enabled = false; btnNo.gameObject.SetActive(false);
-            mainMessage.text = "";
-            if (currentEvent == MessagePack.ActionEvent.HomeTown ||
-                currentEvent == MessagePack.ActionEvent.GotoHomeTown)
-            {
-                CallHomeTown();
-            }
-            else if (currentEvent == MessagePack.ActionEvent.YesNoGotoDungeon2)
-            {
-                MessagePack.Message10051_2(ref this.nowMessage, ref this.nowEvent);
-                tapOK();
-            }
-        }
-        public void tapNo()
-        {
-            btnYes.enabled = false; btnYes.gameObject.SetActive(false);
-            btnNo.enabled = false; btnNo.gameObject.SetActive(false);
-            mainMessage.text = "";
-        }
-
         public void tapExit()
         {
             yesnoSystemMessage.text = Database.exitMessage1;
@@ -7470,20 +7445,51 @@ namespace DungeonPlayer
 
         private DungeonPlayer.MessagePack.ActionEvent currentEvent;
 
-        public void Yes_Click()
+
+        public override void ExitYes()
         {
-            SceneDimension.CallSaveLoad(Database.TruthDungeon, true, true, this);
+            base.ExitYes();
+
+            if (yesnoSystemMessage.text == Database.Message_SaveRequest1)
+            {
+                SceneDimension.CallSaveLoad(Database.TruthDungeon, true, true, this);
+            }
+            else if (yesnoSystemMessage.text == Database.Message_SaveRequest2)
+            {
+                SceneDimension.CallSaveLoad(Database.TruthDungeon, true, true, this);
+            }
+            else if (yesnoSystemMessage.text == Database.Message_GotoDownstair)
+            {
+                JumpToLocation(29, -19, true);
+                SetupDungeonMapping(2);
+                UpdateMainMessage("", true);
+
+                // todo
+                //if (!GroundOne.WE.TruthCompleteArea1)
+                //{
+                //    GroundOne.WE.TruthCompleteArea1 = true;
+                //    UpdateMainMessage("アイン：おし、１階制覇した事だし、一度ユングの町へ戻るとするか。");
+                //    CallHomeTown();
+                //}
+            }
         }
 
-        public void No_Click()
+        public override void ExitNo()
         {
-            if (yesnoSystemMessage.text == SAVE_REQUEST_1)
+            base.ExitNo();
+
+            if (yesnoSystemMessage.text == Database.Message_SaveRequest1)
             {
-                yesnoSystemMessage.text = SAVE_REQUEST_2;
+                yesnoSystemMessage.text = Database.Message_SaveRequest2;
             }
-            else
+            else if (yesnoSystemMessage.text == Database.Message_SaveRequest2)
             {
                 SceneDimension.JumpToTitle();
+            }
+            else if (yesnoSystemMessage.text == Database.Message_GotoDownstair)
+            {
+                groupYesnoSystemMessage.SetActive(false);
+                mainMessage.text = "";
             }
         }
 
@@ -7719,8 +7725,9 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.YesNoGotoDungeon2)
                 {
-                    btnYes.enabled = true; btnYes.gameObject.SetActive(true);
-                    btnNo.enabled = true; btnNo.gameObject.SetActive(true);
+                    Debug.Log("yesnogotoDungeon2");
+                    yesnoSystemMessage.text = Database.Message_GotoDownstair;
+                    groupYesnoSystemMessage.SetActive(true);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.GotoHomeTown)
                 {
@@ -7901,7 +7908,7 @@ namespace DungeonPlayer
 
         private bool ExecSomeEvent_ReadWorld()
         {
-            // todo
+            // after
             return true;
         }
 

@@ -84,6 +84,7 @@ namespace DungeonPlayer
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
             GetTreasure,
+            Ending,
         }
 
 
@@ -5855,7 +5856,12 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：誰か・・・いる・・・"); eventList.Add(ActionEvent.None);
 
-            // todo
+            messageList.Add(""); eventList.Add(ActionEvent.Ending);
+        }
+
+        public static void Message20601_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            // after
             //mainMessage.Visible = false;
 
             //for (int ii = 0; ii < 10; ii++)

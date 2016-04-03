@@ -470,7 +470,7 @@ namespace DungeonPlayer
             Method.UpdateRareColor(player.Accessory2, txtAccessory2, backAccessory2);
         }
 
-        // todo
+        // after
         //protected override int SelectSellStackValue(object sender, EventArgs e, ItemBackPack backpackData, int ii)
         //{
         //    int exchangeValue = Convert.ToInt32(backpackStack[ii].Text.Remove(0, 1), 10);

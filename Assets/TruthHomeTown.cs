@@ -31,6 +31,11 @@ namespace DungeonPlayer
         public Button btnRestInn;
         public Button btnItemBank;
         public GameObject groupDuelSelect;
+        public Text DuelMessageText;
+        public Text honorText;
+        public Text opponentDuelText_EN;
+        public Text opponentDuelText_JP;
+        public Text DuelResultText;
         public Button btnOpponentInfo;
         public Button btnCheckDuelRule;
         public Button btnDuelSelectClose;
@@ -80,6 +85,8 @@ namespace DungeonPlayer
         string OpponentDuelist = string.Empty;
         bool fromGoDungeon = false;
         bool nowTalkingOlRandis = false;
+
+        bool nowAnimationEnding = false;
 
 	    // Use this for initialization
         public override void Start()
@@ -160,6 +167,12 @@ namespace DungeonPlayer
 	    // Update is called once per frame
 	    public override void Update () {
             base.Update();
+
+            if (this.nowAnimationEnding)
+            {
+                // after <== Message20601_2
+                return;
+            }
 
             if (this.firstAction == false)
             {
@@ -683,11 +696,149 @@ namespace DungeonPlayer
             #endregion
         }
 
+        private void LoadDuelColosseum()
+        {
+            DuelResultText.text = "戦歴　" + GroundOne.WE2.DuelWin.ToString() + " 勝" + GroundOne.WE2.DuelLose.ToString() + " 敗";
+
+            if (GroundOne.WE2.DuelWin >= 21)
+            {
+                honorText.text = Database.TITLE_HONOR_7;
+            }
+            else if (GroundOne.WE2.DuelWin >= 20)
+            {
+                honorText.text = Database.TITLE_HONOR_6;
+            }
+            else if (GroundOne.WE2.DuelWin >= 16)
+            {
+                honorText.text = Database.TITLE_HONOR_5;
+            }
+            else if (GroundOne.WE2.DuelWin >= 12)
+            {
+                honorText.text = Database.TITLE_HONOR_4;
+            }
+            else if (GroundOne.WE2.DuelWin >= 8)
+            {
+                honorText.text = Database.TITLE_HONOR_3;
+            }
+            else if (GroundOne.WE2.DuelWin >= 4)
+            {
+                honorText.text = Database.TITLE_HONOR_2;
+            }
+            else
+            {
+                honorText.text = Database.TITLE_HONOR_1;
+            }
+
+            DuelMessageText.text = "DUEL闘技場へようこそ。\n";
+            DuelMessageText.text += "アイン様の次の対戦相手は" + WhoisDuelPlayer() + "を予定しております。";
+        }
+
+        // 対戦相手のステータスを確認
         public void tapOpponentInfo()
         {
             this.Filter.SetActive(true);
+
             string duelPlayerName = WhoisDuelPlayer();
             duelPlayerName = Database.DUEL_SCOTY_ZALGE;
+            // mc.Level < XX を撤廃して、レベル超えていても戦えるようにした。
+            // 7, 10, 13, 16, 19, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 52, 54, 56, 58, 60
+            // 階層毎にDUEL相手を制御する処理も撤廃した。
+            // && !we.TruthCompleteArea1
+            if (!GroundOne.WE.TruthDuelMatch1)
+            {
+                duelPlayerName = Database.DUEL_EONE_FULNEA;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch2)
+            {
+                duelPlayerName = Database.DUEL_MAGI_ZELKIS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch3)
+            {
+                duelPlayerName = Database.DUEL_SELMOI_RO;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch4)
+            {
+                duelPlayerName = Database.DUEL_KARTIN_MAI;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch5)
+            {
+                duelPlayerName = Database.DUEL_JEDA_ARUS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch6)
+            {
+                duelPlayerName = Database.DUEL_SINIKIA_VEILHANTU;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch7)
+            {
+                duelPlayerName = Database.DUEL_ADEL_BRIGANDY;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch8)
+            {
+                duelPlayerName = Database.DUEL_LENE_COLTOS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch9)
+            {
+                duelPlayerName = Database.DUEL_SCOTY_ZALGE;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch10)
+            {
+                duelPlayerName = Database.DUEL_PERMA_WARAMY;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch11)
+            {
+                duelPlayerName = Database.DUEL_KILT_JORJU;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch12)
+            {
+                duelPlayerName = Database.DUEL_BILLY_RAKI;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch13)
+            {
+                duelPlayerName = Database.DUEL_ANNA_HAMILTON;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch14)
+            {
+                duelPlayerName = Database.DUEL_CALMANS_OHN;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch15)
+            {
+                duelPlayerName = Database.DUEL_SUN_YU;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch16)
+            {
+                duelPlayerName = Database.DUEL_SHUVALTZ_FLORE;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch17)
+            {
+                duelPlayerName = Database.DUEL_RVEL_ZELKIS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch18)
+            {
+                duelPlayerName = Database.DUEL_VAN_HEHGUSTEL;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch19)
+            {
+                duelPlayerName = Database.DUEL_OHRYU_GENMA;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch20)
+            {
+                duelPlayerName = Database.DUEL_LADA_MYSTORUS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch21)
+            {
+                duelPlayerName = Database.DUEL_SIN_OSCURETE;
+            }
+            //else
+            //{
+            //    using (MessageDisplay md = new MessageDisplay())
+            //    {
+            //        md.Message = "現在、対戦相手の候補は設定されていません。";
+            //        md.StartPosition = FormStartPosition.CenterScreen;
+            //        md.ShowDialog();
+            //    }
+            //    return;
+            //}
+            
             SceneDimension.CallTruthDuelPlayerStatus(this, duelPlayerName);
         }
 
@@ -842,6 +993,7 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownDuelSelect)
                 {
+                    LoadDuelColosseum();
                     this.groupDuelSelect.SetActive(true);
                     this.Filter.SetActive(true);
                 }
@@ -1004,6 +1156,11 @@ namespace DungeonPlayer
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM19, Database.BGM19LoopBegin);
                 }
+                else if (current == MessagePack.ActionEvent.Ending)
+                {
+                    this.nowAnimationEnding = true;
+                }
+
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading-1] == "")
                 {
@@ -1023,8 +1180,7 @@ namespace DungeonPlayer
                 this.btnOK.gameObject.SetActive(false);
             }
         }
-
-
+        
         private void CallDuel(bool fromGoDungeon)
         {
             this.fromGoDungeon = fromGoDungeon;
@@ -2843,7 +2999,7 @@ namespace DungeonPlayer
                 Sprite current = Resources.Load<Sprite>(filename);
                 if (darkValue > 0)
                 {
-                    // todo
+                    // after
                     //System.Drawing.Imaging.ImageAttributes imageAttributes = new System.Drawing.Imaging.ImageAttributes();
                     //Image newImg = AdjustBrightness(current, darkValue);
                     //this.backgroundData = newImg;
@@ -2857,7 +3013,7 @@ namespace DungeonPlayer
         }
         public static Image AdjustBrightness(Image img, float b)
         {
-            // todo
+            // after
             Image newImg = null;
             ////明るさを変更した画像の描画先となるImageオブジェクトを作成
             //Bitmap newImg = new Bitmap(img.Width, img.Height);

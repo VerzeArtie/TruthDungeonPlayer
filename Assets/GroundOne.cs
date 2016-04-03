@@ -182,6 +182,7 @@ namespace DungeonPlayer
             WE.Truth_CommunicationFirstHomeTown = true;
 
             //WE.dungeonEvent226 = true;
+            WE.AvailableBattleSettingMenu = true;
             WE.AvailableMixSpellSkill = true;
             WE2.AvailableMixSpellSkill = true;
             WE.AvailableInstantCommand = true;
@@ -273,7 +274,7 @@ namespace DungeonPlayer
             //MC.AddBackPack(new ItemBackPack(Database.EPIC_OVER_SHIFTING));
 
             //MC.DeadPlayer();
-            MC.Level = 4;
+            MC.Level = 5;
             MC.Strength = 100;
             MC.Agility = 500;
             MC.Intelligence = 1000;

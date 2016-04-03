@@ -2631,6 +2631,9 @@ namespace DungeonPlayer
         public const string Message_GoToAnotherField = @"アインは別の場所へと飛ばされてしまった";
         public const string Message_GoToAnotherField_Back = @"アインはダンジョンゲートの裏広場に戻ってきた";
         public const string Message_GateAvailable = @"【ゲート裏の転送装置へ行けるようになりました】";
+        public const string Message_SaveRequest1 = "タイトルへ戻ります。今までのデータをセーブしますか？";
+        public const string Message_SaveRequest2 = "セーブしていない場合、現在データは破棄されます。セーブしますか？";
+        public const string Message_GotoDownstair = "アイン：下り階段発見！さっそく降りるとするか？";
 
         // コマンド影響因子向けアイコン
         public const string WeaponIcon = @"WeaponMark";
@@ -2639,6 +2642,15 @@ namespace DungeonPlayer
         public const string IntelligenceIcon = @"IntelligenceMark";
         public const string StaminaIcon = @"StaminaMark";
         public const string MindIcon = @"MindMark";
+
+        // Duel称号
+        public const string TITLE_HONOR_1 = @"無名の新参者";
+        public const string TITLE_HONOR_2 = @"オル・ランディスの弟子";
+        public const string TITLE_HONOR_3 = @"ベテラン・キラー";
+        public const string TITLE_HONOR_4 = @"DUELマスター";
+        public const string TITLE_HONOR_5 = @"TOP Duelist 8";
+        public const string TITLE_HONOR_6 = @"伝説を継ぐもの";
+        public const string TITLE_HONOR_7 = @"DUEL闘技場の覇者";
     }
 }
 
