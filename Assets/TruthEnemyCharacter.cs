@@ -4466,7 +4466,6 @@ namespace DungeonPlayer
             this.AvailableMana = true;
             this.AvailableSkill = true;
 
-            // todo
             this.FirstName = createName;
             switch (createName)
             {

@@ -9444,7 +9444,6 @@ namespace DungeonPlayer
                 if (picture != null)
                 {
                     picture.Count--;
-                    //picture.Invalidate();
                 }
                 if (countBase <= 0)
                 {
@@ -9460,6 +9459,18 @@ namespace DungeonPlayer
                         RemoveOneBuff(picture);
                         this.BuffNumber--;
                     }
+                }
+            }
+        }
+
+        protected void AbstractCountUpBuff(TruthImage picture, ref int countBase)
+        {
+            if (countBase > 0)
+            {
+                countBase++;
+                if (picture != null)
+                {
+                    picture.Count++;
                 }
             }
         }
@@ -10779,8 +10790,238 @@ namespace DungeonPlayer
 
         internal void BuffCountUp()
         {
-            // todo
-            //throw new NotImplementedException();
+            // 静
+            AbstractCountUpBuff(pbCounterAttack, ref CurrentCounterAttack); // 後編追加
+            AbstractCountUpBuff(pbAntiStun, ref CurrentAntiStun);
+            AbstractCountUpBuff(pbStanceOfDeath, ref CurrentStanceOfDeath);
+            // 柔
+            AbstractCountUpBuff(pbStanceOfFlow, ref CurrentStanceOfFlow);
+            // 剛
+            AbstractCountUpBuff(pbStanceOfStanding, ref CurrentStanceOfStanding); // 後編追加
+            // 心眼
+            AbstractCountUpBuff(pbTruthVision, ref CurrentTruthVision);
+            AbstractCountUpBuff(pbHighEmotionality, ref CurrentHighEmotionality);
+            AbstractCountUpBuff(pbStanceOfEyes, ref CurrentStanceOfEyes); // 後編編集
+            AbstractCountUpBuff(pbPainfulInsanity, ref CurrentPainfulInsanity);
+            // 無心
+            AbstractCountUpBuff(pbNegate, ref CurrentNegate); // 後編追加
+            AbstractCountUpBuff(pbVoidExtraction, ref CurrentVoidExtraction);
+            AbstractCountUpBuff(pbNothingOfNothingness, ref CurrentNothingOfNothingness);
+
+            // 聖
+            AbstractCountUpBuff(pbProtection, ref CurrentProtection);
+            AbstractCountUpBuff(pbSaintPower, ref CurrentSaintPower);
+            AbstractCountUpBuff(pbGlory, ref CurrentGlory);
+            // 闇
+            AbstractCountUpBuff(pbShadowPact, ref CurrentShadowPact);
+            AbstractCountUpBuff(pbBlackContract, ref CurrentBlackContract);
+            AbstractCountUpBuff(pbBloodyVengeance, ref CurrentBloodyVengeance);
+            //AbstractCountUpBuff(pbDamnation, ref CurrentDamnation); // 負の影響
+            // 火
+            AbstractCountUpBuff(pbFlameAura, ref CurrentFlameAura);
+            AbstractCountUpBuff(pbHeatBoost, ref CurrentHeatBoost);
+            AbstractCountUpBuff(pbImmortalRave, ref CurrentImmortalRave);
+            // 水
+            AbstractCountUpBuff(pbAbsorbWater, ref CurrentAbsorbWater);
+            AbstractCountUpBuff(pbMirrorImage, ref CurrentMirrorImage);
+            AbstractCountUpBuff(pbPromisedKnowledge, ref CurrentPromisedKnowledge);
+            //AbstractCountUpBuff(pbAbsoluteZero, ref CurrentAbsoluteZero); // 負の影響
+            // 理
+            AbstractCountUpBuff(pbGaleWind, ref CurrentGaleWind);
+            AbstractCountUpBuff(pbWordOfLife, ref CurrentWordOfLife);
+            AbstractCountUpBuff(pbWordOfFortune, ref CurrentWordOfFortune);
+            AbstractCountUpBuff(pbAetherDrive, ref CurrentAetherDrive);
+            AbstractCountUpBuff(pbEternalPresence, ref CurrentEternalPresence);
+            // 空
+            AbstractCountUpBuff(pbRiseOfImage, ref CurrentRiseOfImage);
+            AbstractCountUpBuff(pbDeflection, ref CurrentDeflection);
+            AbstractCountUpBuff(pbOneImmunity, ref CurrentOneImmunity);
+            AbstractCountUpBuff(pbTimeStop, ref CurrentTimeStop);
+
+            // 聖＋闇
+            AbstractCountUpBuff(pbPsychicTrance, ref CurrentPsychicTrance);
+            AbstractCountUpBuff(pbBlindJustice, ref CurrentBlindJustice);
+            AbstractCountUpBuff(pbTranscendentWish, ref CurrentTranscendentWish);
+            // 聖＋火
+            //AbstractCountUpBuff(pbFlashBlaze, ref CurrentFlashBlazeCount); // 負の影響
+            // 聖＋水
+            AbstractCountUpBuff(pbSkyShield, ref CurrentSkyShield);
+            AbstractCountUpBuff(pbEverDroplet, ref CurrentEverDroplet);
+            // 聖＋理
+            AbstractCountUpBuff(pbHolyBreaker, ref CurrentHolyBreaker);
+            AbstractCountUpBuff(pbExaltedField, ref CurrentExaltedField);
+            AbstractCountUpBuff(pbHymnContract, ref CurrentHymnContract);
+            // 聖＋空
+            //AbstractCountUpBuff(pbStarLightning, ref CurrentStarLightning); // 負の影響
+            // 闇＋火
+            //AbstractCountUpBuff(pbBlackFire, ref CurrentBlackFire); // 負の影響
+            //AbstractCountUpBuff(pbBlazingField, ref CurrentBlazingField); // 負の影響
+            // 闇＋水
+            // 闇＋理
+            //AbstractCountUpBuff(pbWordOfMalice, ref CurrentWordOfMalice); // 負の影響
+            AbstractCountUpBuff(pbSinFortune, ref CurrentSinFortune);
+            // 闇＋空
+            //AbstractCountUpBuff(pbDarkenField, ref CurrentDarkenField); // 負の影響
+            AbstractCountUpBuff(pbEclipseEnd, ref CurrentEclipseEnd);
+            // 火＋水
+            AbstractCountUpBuff(pbFrozenAura, ref CurrentFrozenAura);
+            // 火＋理
+            //AbstractCountUpBuff(pbEnrageBlast, ref CurrentEnrageBlast); // 負の影響
+            //AbstractCountUpBuff(pbSigilOfHomura, ref CurrentSigilOfHomura); // 負の影響
+            // 火＋空
+            //AbstractCountUpBuff(pbImmolate, ref CurrentImmolate); // 負の影響
+            AbstractCountUpBuff(pbPhantasmalWind, ref CurrentPhantasmalWind);
+            AbstractCountUpBuff(pbRedDragonWill, ref CurrentRedDragonWill);
+            // 水＋理
+            AbstractCountUpBuff(pbStaticBarrier, ref CurrentStaticBarrier);
+            //AbstractCountUpBuff(pbAusterityMatrix, ref CurrentAusterityMatrix); // 負の影響
+            // 水＋空
+            AbstractCountUpBuff(pbBlueDragonWill, ref CurrentBlueDragonWill);
+            // 理＋空
+            AbstractCountUpBuff(pbSeventhMagic, ref CurrentSeventhMagic);
+            AbstractCountUpBuff(pbParadoxImage, ref CurrentParadoxImage);
+            // 動＋静
+            AbstractCountUpBuff(pbStanceOfDouble, ref CurrentStanceOfDouble);
+            // 動＋柔
+            AbstractCountUpBuff(pbSwiftStep, ref CurrentSwiftStep);
+            AbstractCountUpBuff(pbVigorSense, ref CurrentVigorSense);
+            // 動＋剛
+            AbstractCountUpBuff(pbRisingAura, ref CurrentRisingAura);
+            // 動＋心眼
+            //AbstractCountUpBuff(pbOnslaughtHit, ref CurrentOnslaughtHit); // 負の影響
+            // 動＋無心
+            AbstractCountUpBuff(pbSmoothingMove, ref CurrentSmoothingMove);
+            AbstractCountUpBuff(pbAscensionAura, ref CurrentAscensionAura);
+            // 静＋柔
+            AbstractCountUpBuff(pbFutureVision, ref CurrentFutureVision);
+            // 静＋剛
+            AbstractCountUpBuff(pbReflexSpirit, ref CurrentReflexSpirit);
+            // 静＋心眼
+            //AbstractCountUpBuff(pbConcussiveHit, ref CurrentConcussiveHit); // 負の影響
+            // 静＋無心
+            AbstractCountUpBuff(pbTrustSilence, ref CurrentTrustSilence);
+            // 柔＋剛
+            AbstractCountUpBuff(pbStanceOfMystic, ref CurrentStanceOfMystic);
+            // 柔＋心眼
+            AbstractCountUpBuff(pbNourishSense, ref CurrentNourishSense);
+            // 柔＋無心
+            //AbstractCountUpBuff(pbImpulseHit, ref CurrentImpulseHit); // 負の影響
+            // 剛＋心眼
+            AbstractCountUpBuff(pbOneAuthority, ref CurrentOneAuthority);
+            // 剛＋無心
+            // 心眼＋無心
+
+            // 武器特有 // 武器まで影響を及ぼさない
+            //AbstractCountUpBuff(pbFeltus, ref CurrentFeltus);
+            //AbstractCountUpBuff(pbJuzaPhantasmal, ref CurrentJuzaPhantasmal);
+            //AbstractCountUpBuff(pbEternalFateRing, ref CurrentEternalFateRing);
+            //AbstractCountUpBuff(pbLightServant, ref CurrentLightServant);
+            //AbstractCountUpBuff(pbShadowServant, ref CurrentShadowServant);
+            //AbstractCountUpBuff(pbAdilBlueBurn, ref CurrentAdilBlueBurn);
+            //AbstractCountUpBuff(pbMazeCube, ref CurrentMazeCube);
+            //AbstractCountUpBuff(pbShadowBible, ref CurrentShadowBible);
+            //AbstractCountUpBuff(pbDetachmentOrb, ref CurrentDetachmentOrb);
+            //AbstractCountUpBuff(pbDevilSummonerTome, ref CurrentDevilSummonerTome);
+            //AbstractCountUpBuff(pbVoidHymnsonia, ref CurrentVoidHymnsonia);
+            //AbstractCountUpBuff(pbSagePotionMini, ref CurrentSagePotionMini);
+            //AbstractCountUpBuff(pbGenseiTaima, ref CurrentGenseiTaima);
+            //AbstractCountUpBuff(pbShiningAether, ref CurrentShiningAether);
+            //AbstractCountUpBuff(pbBlackElixir, ref CurrentBlackElixir);
+            //AbstractCountUpBuff(pbElementalSeal, ref CurrentElementalSeal);
+            //AbstractCountUpBuff(pbColoressAntidote, ref CurrentColoressAntidote);
+
+            // 最終戦ライフカウント
+            //AbstractCountUpBuff(pbLifeCount, ref CurrentLifeCountValue); カウントアップする対象ではないため、コメントアウト
+            //AbstractCountUpBuff(pbChaoticSchema, ref CurrentChaoticSchema);  カウントアップする対象ではないため、コメントアウト
+            
+            // 正の影響効果
+            AbstractCountUpBuff(pbBlinded, ref CurrentBlinded);
+            // SpeedBoostはBattleEnemyフォーム側でマイナスさせます。
+            // CurrentChargeCountは「ためる」コマンドのため、CleanUpEffectでは減算しません。
+            // CurrentPhysicalChargeCountは「ためる」コマンドのため、CleanUpEffectでは減算しません。
+            AbstractCountUpBuff(pbPhysicalAttackUp, ref CurrentPhysicalAttackUp);
+            AbstractCountUpBuff(pbPhysicalDefenseUp, ref CurrentPhysicalDefenseUp);
+            AbstractCountUpBuff(pbMagicAttackUp, ref CurrentMagicAttackUp);
+            AbstractCountUpBuff(pbMagicDefenseUp, ref CurrentMagicDefenseUp);
+            AbstractCountUpBuff(pbSpeedUp, ref CurrentSpeedUp);
+            AbstractCountUpBuff(pbReactionUp, ref CurrentReactionUp);
+            AbstractCountUpBuff(pbPotentialUp, ref CurrentPotentialUp);
+
+            AbstractCountUpBuff(pbStrengthUp, ref CurrentStrengthUp);
+            AbstractCountUpBuff(pbAgilityUp, ref CurrentAgilityUp);
+            AbstractCountUpBuff(pbIntelligenceUp, ref CurrentIntelligenceUp);
+            AbstractCountUpBuff(pbStaminaUp, ref CurrentStaminaUp);
+            AbstractCountUpBuff(pbMindUp, ref CurrentMindUp);
+
+            AbstractCountUpBuff(pbLightUp, ref CurrentLightUp);
+            AbstractCountUpBuff(pbShadowUp, ref CurrentShadowUp);
+            AbstractCountUpBuff(pbFireUp, ref CurrentFireUp);
+            AbstractCountUpBuff(pbIceUp, ref CurrentIceUp);
+            AbstractCountUpBuff(pbForceUp, ref CurrentForceUp);
+            AbstractCountUpBuff(pbWillUp, ref CurrentWillUp);
+
+            AbstractCountUpBuff(pbResistLightUp, ref CurrentResistLightUp);
+            AbstractCountUpBuff(pbResistShadowUp, ref CurrentResistShadowUp);
+            AbstractCountUpBuff(pbResistFireUp, ref CurrentResistFireUp);
+            AbstractCountUpBuff(pbResistIceUp, ref CurrentResistIceUp);
+            AbstractCountUpBuff(pbResistForceUp, ref CurrentResistForceUp);
+            AbstractCountUpBuff(pbResistWillUp, ref CurrentResistWillUp);
+
+            // 集中と断絶
+            AbstractCountUpBuff(pbSyutyuDanzetsu, ref CurrentSyutyu_Danzetsu);
+
+            // 循環と誓約(コレ自身は、【循環と誓約】効果対象外）
+            AbstractCountUpBuff(pbJunkanSeiyaku, ref CurrentJunkan_Seiyaku);
+
+            // 負の影響効果(【循環と誓約】効果対象外）
+            //AbstractCountUpBuff(pbPreStunning, ref CurrentPreStunning);
+            //AbstractCountUpBuff(pbStun, ref CurrentStunning);
+            //AbstractCountUpBuff(pbSilence, ref CurrentSilence);
+            //AbstractCountUpBuff(pbPoison, ref CurrentPoison);
+            //AbstractCountUpBuff(pbTemptation, ref CurrentTemptation);
+            //AbstractCountUpBuff(pbFrozen, ref CurrentFrozen);
+            //AbstractCountUpBuff(pbParalyze, ref CurrentParalyze);
+            //AbstractCountUpBuff(pbNoResurrection, ref CurrentNoResurrection);
+            //AbstractCountUpBuff(pbSlip, ref CurrentSlip);
+            //AbstractCountUpBuff(pbSlow, ref CurrentSlow);
+            //AbstractCountUpBuff(pbNoGainLife, ref CurrentNoGainLife);
+            //AbstractCountUpBuff(pbBlind, ref CurrentBlind);
+
+            //AbstractCountUpBuff(pbPhysicalAttackDown, ref CurrentPhysicalAttackDown);
+            //AbstractCountUpBuff(pbPhysicalDefenseDown, ref CurrentPhysicalDefenseDown);
+            //AbstractCountUpBuff(pbMagicAttackDown, ref CurrentMagicAttackDown);
+            //AbstractCountUpBuff(pbMagicDefenseDown, ref CurrentMagicDefenseDown);
+            //AbstractCountUpBuff(pbSpeedDown, ref CurrentSpeedDown);
+            //AbstractCountUpBuff(pbReactionDown, ref CurrentReactionDown);
+            //AbstractCountUpBuff(pbPotentialDown, ref CurrentPotentialDown);
+
+            // pbStrengthDown系が存在しない
+
+            //AbstractCountUpBuff(pbLightDown, ref CurrentLightDown);
+            //AbstractCountUpBuff(pbShadowDown, ref CurrentShadowDown);
+            //AbstractCountUpBuff(pbFireDown, ref CurrentFireDown);
+            //AbstractCountUpBuff(pbIceDown, ref CurrentIceDown);
+            //AbstractCountUpBuff(pbForceDown, ref CurrentForceDown);
+            //AbstractCountUpBuff(pbWillDown, ref CurrentWillDown);
+
+            // pbResistLightDown系が存在しない
+
+            //AbstractCountUpBuff(pbAfterReviveHalf, ref CurrentAfterReviveHalf);
+
+            //AbstractCountUpBuff(pbFireDamage2, ref CurrentFireDamage2);
+
+            //AbstractCountUpBuff(pbBlackMagic, ref CurrentBlackMagic);
+
+            //AbstractCountUpBuff(pbChaosDesperate, ref CurrentChaosDesperate);
+
+            //AbstractCountUpBuff(pbIchinaruHomura, ref CurrentIchinaruHomura);
+            //AbstractCountUpBuff(pbAbyssFire, ref CurrentAbyssFire);
+            //AbstractCountUpBuff(pbLightAndShadow, ref CurrentLightAndShadow);
+            //AbstractCountUpBuff(pbEternalDroplet, ref CurrentEternalDroplet);
+            //AbstractCountUpBuff(pbAusterityMatrixOmega, ref CurrentAusterityMatrixOmega);
+            //AbstractCountUpBuff(pbVoiceOfAbyss, ref CurrentVoiceOfAbyss);
+            //AbstractCountUpBuff(pbAbyssWill, ref CurrentAbyssWill);
+            //AbstractCountUpBuff(pbTheAbyssWall, ref CurrentTheAbyssWall);
         }
     }
 }

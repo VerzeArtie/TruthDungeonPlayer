@@ -263,8 +263,7 @@ namespace DungeonPlayer
                 {
                     case 0:
                     case 1:
-                        //JumpToLocation(39, -14, true); // debug
-                        JumpToLocation(16, -5, true);
+                        JumpToLocation(39, -14, true);
                         break;
                     case 2:
                         JumpToLocation(29, -19, true);
@@ -6824,7 +6823,7 @@ namespace DungeonPlayer
             GroundOne.TC.Accessory = GroundOne.ShadowTC.Accessory;
             GroundOne.TC.Accessory2 = GroundOne.ShadowTC.Accessory2;
 
-            // todo 再戦時、ポーションのスタック数などを実際に減らしてみて、数が減ったままにならないかどうか確認。
+            // after 再戦時、ポーションのスタック数などを実際に減らしてみて、数が減ったままにならないかどうか確認。
             if (GroundOne.WE.AvailableFirstCharacter)
             {
                 GroundOne.MC.DeleteBackPackAll();
@@ -7786,18 +7785,6 @@ namespace DungeonPlayer
                     GroundOne.enemyName2 = String.Empty;
                     GroundOne.enemyName3 = String.Empty;
                     bool result = EncountBattle(false, false, false, false);
-                    // todo loadlevelになり、画面が戻ってきた時、本画面のロードで以下の処理を行う。
-                    if (!result)
-                    {
-                        UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false);
-                        //this.//dungeonField.Invalidate();
-                        UpdateMainMessage("", true);
-                    }
-                    else
-                    {
-                        GroundOne.WE.TruthCompleteSlayBoss1 = true;
-                    }
-                    UpdateMainMessage("", true);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.StopMusic)
                 {

@@ -57,18 +57,18 @@ namespace DungeonPlayer
 
         protected int MAX_EQUIPLIST = 25; // 後編編集
 
-        protected MainCharacter ganz;
+        protected MainCharacter vendor;
         protected MainCharacter currentPlayer;
 
         private bool firstAction = false;
 
-        public override void Start()
+        public virtual void OnInitialize()
         {
-            base.Start();
+            Debug.Log("equipment Initialize");
 
             GameObject objGanz = new GameObject("objGanz");
-            ganz = objGanz.AddComponent<MainCharacter>();
-            ganz.FirstName = "ガンツ";
+            vendor = objGanz.AddComponent<MainCharacter>();
+            vendor.FirstName = "ガンツ";
             this.currentPlayer = GroundOne.MC;
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
@@ -132,11 +132,11 @@ namespace DungeonPlayer
             else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && GroundOne.WE.AvailableEquipShop5)
             {
                 SetupAvailableList(5);
-                btnLevel1.gameObject.SetActive (true);
-                btnLevel2.gameObject.SetActive (true);
-                btnLevel3.gameObject.SetActive (true);
-                btnLevel4.gameObject.SetActive (true);
-                btnLevel5.gameObject.SetActive (true);
+                btnLevel1.gameObject.SetActive(true);
+                btnLevel2.gameObject.SetActive(true);
+                btnLevel3.gameObject.SetActive(true);
+                btnLevel4.gameObject.SetActive(true);
+                btnLevel5.gameObject.SetActive(true);
             }
             SetupAvailableListWithCurrentCase();
 
@@ -147,6 +147,13 @@ namespace DungeonPlayer
             UpdateBackPackLabelInterface(GroundOne.MC);
             UpdateEquipment(GroundOne.MC);
             this.labelTitle.text = GroundOne.titleName;
+        }
+
+        public override void Start()
+        {
+            Debug.Log("Equipmentshop (S)");
+            base.Start();
+            OnInitialize();
         }
 
         private void SetupAvailableListWithCurrentCase()
@@ -213,7 +220,7 @@ namespace DungeonPlayer
             #endregion
         }
 
-        private void CheckAndCallTruthItemDesc()
+        protected virtual void CheckAndCallTruthItemDesc()
         {
             #region "１階"
             if (!GroundOne.WE2.EquipAvailable_11 && (GroundOne.WE2.EquipMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_11))
@@ -1267,7 +1274,7 @@ namespace DungeonPlayer
             #endregion
             #endregion
         }
-        protected void SetupAvailableList(int level)
+        protected virtual void SetupAvailableList(int level)
         {
             for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
             {
@@ -1819,7 +1826,7 @@ namespace DungeonPlayer
                 MessageExchange6(currentSelectItem2, stack);
             }
 
-            yesnoMessage.text = String.Format(ganz.GetCharacterSentence(3007), currentSelectItem2.Name, (currentSelectItem2.Cost / 2).ToString());
+            yesnoMessage.text = String.Format(vendor.GetCharacterSentence(3007), currentSelectItem2.Name, (currentSelectItem2.Cost / 2).ToString());
             buttonYes.gameObject.SetActive(true);
             buttonNo.gameObject.SetActive(true);
             filter.SetActive(true);
@@ -2031,7 +2038,7 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.AvailableEquipShop5)
             {
-                mainMessage.text = ganz.GetCharacterSentence(number);
+                mainMessage.text = vendor.GetCharacterSentence(number);
             }
             else
             {
@@ -2043,7 +2050,7 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.AvailableEquipShop5)
             {
-                mainMessage.text = String.Format(ganz.GetCharacterSentence(number), arg1);
+                mainMessage.text = String.Format(vendor.GetCharacterSentence(number), arg1);
             }
             else
             {
@@ -2055,7 +2062,7 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.AvailableEquipShop5)
             {
-                mainMessage.text = String.Format(ganz.GetCharacterSentence(number), arg1, arg2);
+                mainMessage.text = String.Format(vendor.GetCharacterSentence(number), arg1, arg2);
             }
             else
             {
@@ -2167,7 +2174,7 @@ namespace DungeonPlayer
         private void VendorBuyMessage(ItemBackPack backpackData)
         {
             //mainMessage.text = String.Format(ganz.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // 後編編集
-            yesnoMessage.text = String.Format(ganz.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // change unity
+            yesnoMessage.text = String.Format(vendor.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // change unity
             buttonYes.gameObject.SetActive(true);
             buttonNo.gameObject.SetActive(true);
             filter.SetActive(true);

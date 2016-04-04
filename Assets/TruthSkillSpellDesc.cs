@@ -284,7 +284,7 @@ namespace DungeonPlayer
                 }
             }
 
-            // todo 影響因子の表示内容が全て網羅出来ているとは思えない。要見直し
+            // after 影響因子を要見直し
             if (TruthActionCommand.IsDamage(GroundOne.SpellSkillName))
             {
                 if (TruthActionCommand.CheckPlayerActionFromString(GroundOne.SpellSkillName) == MainCharacter.PlayerAction.UseSpell)

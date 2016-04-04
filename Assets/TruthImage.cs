@@ -101,6 +101,7 @@ namespace DungeonPlayer
 
             if (cumulative > 0)
             {
+                // after
                 //                if (this.align == CumulativeTextAlign.TopRight)
                 //                {
                 //
@@ -121,55 +122,6 @@ namespace DungeonPlayer
             }
 
         }
-        // todo
-        //    Rectangle fixedRect = new Rectangle(0, 0, 25, 25);
-        //    PointF fixedPointCount = new PointF(4, 22);
-        //    PointF fixedPointCumulative = new PointF(12, -3);
-        //    PointF fixedPointCumulative_2 = new PointF(4, -3);
-        //    PointF fixedPointCumulativeCenter = new PointF(6, 4);
-        //    Font fixedFontCount = new Font("Arial", 11, FontStyle.Bold, GraphicsUnit.Point, (byte)(128));
-        //    Font fixedFontCumulative = new Font("Times New Roman", 14, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, (byte)(128));
-        //    protected override void OnPaint(System.Windows.Forms.PaintEventArgs pe)
-        //    {
-        //        if (buffMode == buffType.None)
-        //        {
-        //            base.OnPaint(pe);
-        //        }
-        //        else
-        //        {
-        //            System.Drawing.Graphics e = pe.Graphics;
-        //            if (this.Image != null)
-        //            {
-        //                e.DrawImage(this.Image, this.fixedRect);
-        //            }
-        //
-        //            if (0 < count && count <= 99)
-        //            {
-        //                e.DrawString(count.ToString(), fixedFontCount, Brushes.DarkGreen, fixedPointCount);
-        //            }
-        //
-        //            if (cumulative > 0)
-        //            {
-        //                if (this.align == CumulativeTextAlign.TopRight)
-        //                {
-        //
-        //                    if (cumulative >= 10)
-        //                    {
-        //                        e.DrawString(cumulative.ToString(), fixedFontCumulative, Brushes.Black, fixedPointCumulative_2);
-        //                    }
-        //                    else
-        //                    {
-        //                        e.DrawString(cumulative.ToString(), fixedFontCumulative, Brushes.Black, fixedPointCumulative);
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    e.DrawString(cumulative.ToString(), fixedFontCumulative, Brushes.Black, fixedPointCumulativeCenter);
-        //                }
-        //
-        //            }
-        //        }
-        //    }
 
         public bool AbstractCountDownBuff()
         {
