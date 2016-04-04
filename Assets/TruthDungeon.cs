@@ -947,58 +947,28 @@ namespace DungeonPlayer
 
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
                 {
-                    if (!result)
-                    {
-                        UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false);
-                    }
-                    else
-                    {
-                        GroundOne.WE.TruthCompleteSlayBoss1 = true;
-                    }
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
                 {
-                    if (!result)
-                    {
-                        UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, false);
-                    }
-                    else
-                    {
-                        GroundOne.WE.TruthCompleteSlayBoss2 = true;
-                    }
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
                 {
-                    if (!result)
-                    {
-                        UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false);
-                    }
-                    else
-                    {
-                        GroundOne.WE.TruthCompleteSlayBoss3 = true;
-                    }
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
                 {
-                    if (!result)
-                    {
-                        UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false);
-                    }
-                    else
-                    {
-                        GroundOne.WE.TruthCompleteSlayBoss4 = true;
-                    }
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
-                    if (!result)
-                    {
-                        UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false);
-                    }
-                    else
-                    {
-                        GroundOne.WE.TruthCompleteSlayBoss5 = true;
-                    }
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
+                    GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
                 UpdateMainMessage("", true);
             }
@@ -1008,30 +978,29 @@ namespace DungeonPlayer
                 GroundOne.BattleResult = GroundOne.battleResult.None;
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
                 {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
                 {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
                 }
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
                 {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
                 {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
-                // after delete
-                //if (GroundOne.enemyName1.Name == Database.ENEMY_LAST_VERZE_ARTIE ||
-                //    GroundOne.enemyName1.Name == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
-                //{
-                //    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN);
-                //}
+                if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
+                    GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
 
                 // DUELモードは現実世界でDUEL戦闘となった時に再戦を判断させたいため、一旦ここでfalse返しとする。
                 if (GroundOne.DuelMode)
@@ -1048,6 +1017,28 @@ namespace DungeonPlayer
             else
             {
                 GroundOne.BattleResult = GroundOne.battleResult.None;
+
+                // ボスに勝利した時、フラグ更新を行う。
+                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss1 = true;
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss2 = true;
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss3 = true;
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss4 = true;
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss5 = true;
+                }
 
                 // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
                 if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
@@ -1436,8 +1427,10 @@ namespace DungeonPlayer
 
         private void ShownEvent()
         {
-            if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1)
+            Debug.Log("ShownEvent (S): ");
+            if (GroundOne.GotoDownstair && GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1)
             {
+                GroundOne.GotoDownstair = false;
                 MessagePack.Message10051_2(ref this.nowMessage, ref this.nowEvent);
                 tapOK();
             }
@@ -7834,6 +7827,10 @@ namespace DungeonPlayer
                     groupYesnoSystemMessage.SetActive(true);
                     HideFilterComplete = false; // フィルタを消さない。
                 }
+                else if (currentEvent == MessagePack.ActionEvent.GotoHomeTownForce)
+                {
+                    CallHomeTown();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.GotoDungeon2)
                 {
                     UpdateViewPoint(-Database.DUNGEON_MOVE_LEN * 15, -Database.DUNGEON_MOVE_LEN * 10);
@@ -8012,7 +8009,7 @@ namespace DungeonPlayer
             this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
             Application.UnloadLevel(Database.TruthDungeon);
             // 全情報クリア、全情報再読み込みを行わず、Sceneの再ロードで実行したい。
-            SceneDimension.JumpToTruthDungeon(Database.Title);
+            SceneDimension.JumpToTruthDungeon(Database.Title, true);
         }
 
     }

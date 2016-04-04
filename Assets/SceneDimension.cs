@@ -71,14 +71,6 @@ namespace DungeonPlayer
             GroundOne.SaveMode = SaveMode;
             GroundOne.AfterBacktoTitle = AfterBacktoTitle;
             GroundOne.ParentScene = scene;
-            if (SaveMode)
-            {
-                scene.Filter.GetComponent<Image>().color = UnityColor.Salmon;
-            }
-            else
-            {
-                scene.Filter.GetComponent<Image>().color = UnityColor.Aqua;
-            }
             GroundOne.SaveAndExit = false;
             scene.Filter.SetActive(true);
             Application.LoadLevelAdditive(Database.SaveLoad);
@@ -90,9 +82,10 @@ namespace DungeonPlayer
             SceneDimension.Go(src, Database.TruthHomeTown);
         }
 
-        public static void JumpToTruthDungeon(string src)
+        public static void JumpToTruthDungeon(string src, bool gotoDownstair)
         {
             GroundOne.WE.AlreadyShownEvent = false;
+            GroundOne.GotoDownstair = gotoDownstair;
             playbackScene.Clear();
             SceneDimension.Go(src, Database.TruthDungeon);
         }

@@ -11,7 +11,7 @@ namespace DungeonPlayer
 {
     public class SaveLoad : MotherForm
     {
-        public Camera cam;
+        public GameObject Background;
         public GameObject back_SystemMessage;
         public Text systemMessage;
         public Text titleLabel;
@@ -136,19 +136,11 @@ namespace DungeonPlayer
                 newDateBackButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNew2");
             }
 
-            this.cam.backgroundColor = UnityColor.Aqua;
-            if (GroundOne.ParentScene != null)
-            {
-                GroundOne.ParentScene.Filter.GetComponent<Image>().color = UnityColor.Aqua;
-            }
+            this.Background.GetComponent<Image>().color = UnityColor.Aqua;
             if (GroundOne.SaveMode)
             {
                 titleLabel.text = "SAVE";
-                this.cam.backgroundColor = UnityColor.Salmon;
-                if (GroundOne.ParentScene != null)
-                {
-                    GroundOne.ParentScene.Filter.GetComponent<Image>().color = UnityColor.Salmon;
-                }
+                this.Background.GetComponent<Image>().color = UnityColor.Salmon;
             }
         }
 

@@ -95,6 +95,7 @@ namespace DungeonPlayer
         public static MainCharacter ShadowTC = null;
         public static WorldEnvironment shadowWE = null;
         public static TruthWorldEnvironment shadowWE2 = null;
+        public static bool GotoDownstair = false;
 
         // TruthStatusPlayer
         public static Color CurrentStatusView = new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B);
@@ -186,6 +187,7 @@ namespace DungeonPlayer
             WE.AvailableMixSpellSkill = true;
             WE2.AvailableMixSpellSkill = true;
             WE.AvailableInstantCommand = true;
+            WE.TruthCompleteArea1 = true;
 
             //MC.Level = 23;
             ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);

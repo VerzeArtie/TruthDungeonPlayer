@@ -258,7 +258,7 @@ namespace DungeonPlayer
         	{
         		return; // イベント発生は連続して発生させない
         	}
-        	
+
             #region "後編初日"
             if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationFirstHomeTown)
             {
@@ -616,7 +616,7 @@ namespace DungeonPlayer
             else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationGanz10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz10 = true;
             #endregion
 
-            SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown);
+            SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown, false);
         }
 
         public void tapCommunicationRana()
@@ -1066,7 +1066,7 @@ namespace DungeonPlayer
                     GroundOne.WE2.SeekerEvent605 = true;
                     Method.AutoSaveTruthWorldEnvironment();
                     Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
-                    SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown);
+                    SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown, false);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownAddNewCharacter)
                 {

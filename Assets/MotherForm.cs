@@ -50,7 +50,7 @@ namespace DungeonPlayer
             Application.UnloadLevel(Database.SaveLoad);
             if (GroundOne.WE.SaveByDungeon)
             {
-                SceneDimension.JumpToTruthDungeon(this.GetType().ToString());
+                SceneDimension.JumpToTruthDungeon(this.GetType().ToString(), false);
             }
             else
             {
