@@ -146,7 +146,6 @@ namespace DungeonPlayer
 
             UpdateBackPackLabelInterface(GroundOne.MC);
             UpdateEquipment(GroundOne.MC);
-            this.labelTitle.text = GroundOne.titleName;
         }
 
         public override void Start()
@@ -156,36 +155,27 @@ namespace DungeonPlayer
             OnInitialize();
         }
 
-        private void SetupAvailableListWithCurrentCase()
+        protected void SetupAvailableListWithCurrentCase()
         {
             if (GroundOne.WE.AvailableEquipShop && !GroundOne.WE.AvailableEquipShop2)
             {
-                Debug.Log("floor 1");
                 SetupAvailableList(1);
             }
             else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && !GroundOne.WE.AvailableEquipShop3)
             {
-                Debug.Log("floor 2");
                 SetupAvailableList(2);
             }
             else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && !GroundOne.WE.AvailableEquipShop4)
             {
-                Debug.Log("floor 3");
                 SetupAvailableList(3);
             }
             else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && !GroundOne.WE.AvailableEquipShop5)
             {
-                Debug.Log("floor 4");
                 SetupAvailableList(4);
             }
             else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && GroundOne.WE.AvailableEquipShop5)
             {
-                Debug.Log("floor 5");
                 SetupAvailableList(5);
-            }
-            else
-            {
-                Debug.Log("floor unknown...");
             }
         }
 
@@ -385,7 +375,7 @@ namespace DungeonPlayer
             CheckAndCallTruthItemDesc();
         }
 
-        private void OnLoadSetupFloorButton()
+        protected void OnLoadSetupFloorButton()
         {
             // todo 派生先、TruthPotionShopで使われるメソッドである。
         }

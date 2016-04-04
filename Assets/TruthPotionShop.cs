@@ -75,7 +75,14 @@ namespace DungeonPlayer
                 btnLevel4.gameObject.SetActive(true);
                 btnLevel5.gameObject.SetActive(true);
             }
-            OnLoadMessage();
+            SetupAvailableListWithCurrentCase();
+
+            OnLoadSetupFloorButton();
+            OnLoadMessage(); // 後編編集
+            this.labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
+
+            UpdateBackPackLabelInterface(GroundOne.MC);
+            UpdateEquipment(GroundOne.MC);
         }
 
         protected override void CheckAndCallTruthItemDesc()
@@ -84,6 +91,7 @@ namespace DungeonPlayer
 
         protected override void SetupAvailableList(int level)
         {
+            Debug.Log("potion setupavailablelist");
             for (int ii = 0; ii < MAX_EQUIPLIST; ii++)
             {
                 equipList[ii].text = "";

@@ -61,9 +61,6 @@ namespace DungeonPlayer
         // MotherForm
         public static MotherForm ParentScene;
 
-        // TruthEquipmentShop
-        public static string titleName = "天下一品　ガンツの武具店";
-
         // TruthBattleEnemy
         public static bool HiSpeedAnimation = false; // スタック合戦をハイスピードにするかどうか
         public static bool FinalBattle = false; // 最終戦かどうか
@@ -160,6 +157,7 @@ namespace DungeonPlayer
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             
             // debug
+            WE.AvailablePotionshop = true;
             WE.AvailableEquipShop = true;
             //if (!GroundOne.WE2.EquipAvailable_11 && (GroundOne.WE2.EquipMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_11))
             GroundOne.WE2.EquipMixtureDay_11 = 1;
@@ -187,7 +185,7 @@ namespace DungeonPlayer
             WE.AvailableMixSpellSkill = true;
             WE2.AvailableMixSpellSkill = true;
             WE.AvailableInstantCommand = true;
-            WE.TruthCompleteArea1 = true;
+            //WE.TruthCompleteArea1 = true;
 
             //MC.Level = 23;
             ////bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
