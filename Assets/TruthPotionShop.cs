@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 namespace DungeonPlayer
@@ -87,6 +87,142 @@ namespace DungeonPlayer
 
         protected override void CheckAndCallTruthItemDesc()
         {
+            #region "１階"
+            if (!GroundOne.WE2.PotionAvailable_11 && (GroundOne.WE2.PotionMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_11))
+            {
+                GroundOne.WE2.PotionAvailable_11 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_NATURALIZE);
+            }
+            if (!GroundOne.WE2.PotionAvailable_12 && (GroundOne.WE2.PotionMixtureDay_12 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_12))
+            {
+                GroundOne.WE2.PotionAvailable_12 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_MAGIC_SEAL);
+            }
+            if (!GroundOne.WE2.PotionAvailable_13 && (GroundOne.WE2.PotionMixtureDay_13 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_13))
+            {
+                GroundOne.WE2.PotionAvailable_13 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_ATTACK_SEAL);
+            }
+            if (!GroundOne.WE2.PotionAvailable_14 && (GroundOne.WE2.PotionMixtureDay_14 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_14))
+            {
+                GroundOne.WE2.PotionAvailable_14 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_CURE_BLIND);
+            }
+            if (!GroundOne.WE2.PotionAvailable_15 && (GroundOne.WE2.PotionMixtureDay_15 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_15))
+            {
+                GroundOne.WE2.PotionAvailable_15 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_POTION_MOSSGREEN_DREAM);
+            }
+            #endregion
+            #region "２階"
+            if (!GroundOne.WE2.PotionAvailable_21 && (GroundOne.WE2.PotionMixtureDay_21 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_21))
+            {
+                GroundOne.WE2.PotionAvailable_21 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_OVER_GROWTH);
+            }
+            if (!GroundOne.WE2.PotionAvailable_22 && (GroundOne.WE2.PotionMixtureDay_22 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_22))
+            {
+                GroundOne.WE2.PotionAvailable_22 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_RAINBOW_IMPACT);
+            }
+            if (!GroundOne.WE2.PotionAvailable_23 && (GroundOne.WE2.PotionMixtureDay_23 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_23))
+            {
+                GroundOne.WE2.PotionAvailable_23 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_BLACK_GAST);
+            }
+            #endregion
+            #region "３階"
+            if (!GroundOne.WE2.PotionAvailable_31 && (GroundOne.WE2.PotionMixtureDay_31 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_31))
+            {
+                GroundOne.WE2.PotionAvailable_31 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_FAIRY_BREATH);
+            }
+
+            if (!GroundOne.WE2.PotionAvailable_32 && (GroundOne.WE2.PotionMixtureDay_32 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_32))
+            {
+                GroundOne.WE2.PotionAvailable_32 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_HEART_ACCELERATION);
+            }
+            if (!GroundOne.WE2.PotionAvailable_33 && (GroundOne.WE2.PotionMixtureDay_33 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_33))
+            {
+                GroundOne.WE2.PotionAvailable_33 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_SAGE_POTION_MINI);
+            }
+            #endregion
+            #region "４階"
+            if (!GroundOne.WE2.PotionAvailable_41 && (GroundOne.WE2.PotionMixtureDay_41 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_41))
+            {
+                GroundOne.WE2.PotionAvailable_41 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_POWER_SURGE);
+            }
+            if (!GroundOne.WE2.PotionAvailable_42 && (GroundOne.WE2.PotionMixtureDay_42 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_42))
+            {
+                GroundOne.WE2.PotionAvailable_42 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_ELEMENTAL_SEAL);
+            }
+            if (!GroundOne.WE2.PotionAvailable_43 && (GroundOne.WE2.PotionMixtureDay_43 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_43))
+            {
+                GroundOne.WE2.PotionAvailable_43 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_GENSEI_MAGIC_BOTTLE);
+            }
+            if (!GroundOne.WE2.PotionAvailable_44 && (GroundOne.WE2.PotionMixtureDay_44 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_44))
+            {
+                GroundOne.WE2.PotionAvailable_44 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_GENSEI_TAIMA_KUSURI);
+            }
+            if (!GroundOne.WE2.PotionAvailable_45 && (GroundOne.WE2.PotionMixtureDay_45 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_45))
+            {
+                GroundOne.WE2.PotionAvailable_45 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_MIND_ILLUSION);
+            }
+            if (!GroundOne.WE2.PotionAvailable_46 && (GroundOne.WE2.PotionMixtureDay_46 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_46))
+            {
+                GroundOne.WE2.PotionAvailable_46 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_SHINING_AETHER);
+            }
+            if (!GroundOne.WE2.PotionAvailable_47 && (GroundOne.WE2.PotionMixtureDay_47 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_47))
+            {
+                GroundOne.WE2.PotionAvailable_47 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_ZETTAI_STAMINAUP);
+            }
+            if (!GroundOne.WE2.PotionAvailable_48 && (GroundOne.WE2.PotionMixtureDay_48 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_48))
+            {
+                GroundOne.WE2.PotionAvailable_48 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_BLACK_ELIXIR);
+            }
+            if (!GroundOne.WE2.PotionAvailable_49 && (GroundOne.WE2.PotionMixtureDay_49 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_49))
+            {
+                GroundOne.WE2.PotionAvailable_49 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_ZEPHER_BREATH);
+            }
+            if (!GroundOne.WE2.PotionAvailable_410 && (GroundOne.WE2.PotionMixtureDay_410 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_410))
+            {
+                GroundOne.WE2.PotionAvailable_410 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_COLORESS_ANTIDOTE);
+            }
+            #endregion
+
+            // ２重記述だが、ベストコードは後で良しとする。
+            if (GroundOne.WE.AvailablePotionshop && !GroundOne.WE.AvailablePotion2)
+            {
+                SetupAvailableList(1);
+            }
+            else if (GroundOne.WE.AvailablePotionshop && GroundOne.WE.AvailablePotion2 && !GroundOne.WE.AvailablePotion3)
+            {
+                SetupAvailableList(2);
+            }
+            else if (GroundOne.WE.AvailablePotionshop && GroundOne.WE.AvailablePotion2 && GroundOne.WE.AvailablePotion3 && !GroundOne.WE.AvailablePotion4)
+            {
+                SetupAvailableList(3);
+            }
+            else if (GroundOne.WE.AvailablePotionshop && GroundOne.WE.AvailablePotion2 && GroundOne.WE.AvailablePotion3 && GroundOne.WE.AvailablePotion4 && !GroundOne.WE.AvailablePotion5)
+            {
+                SetupAvailableList(4);
+            }
+            else if (GroundOne.WE.AvailablePotionshop && GroundOne.WE.AvailablePotion2 && GroundOne.WE.AvailablePotion3 && GroundOne.WE.AvailablePotion4 && GroundOne.WE.AvailablePotion5)
+            {
+                SetupAvailableList(5);
+            }
         }
 
         protected override void SetupAvailableList(int level)
