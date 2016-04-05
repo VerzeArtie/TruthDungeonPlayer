@@ -266,7 +266,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -716,7 +716,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 97819260}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: tapLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &97819260
@@ -1165,7 +1176,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -1218,7 +1229,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -1275,6 +1286,7 @@ GameObject:
   - 222: {fileID: 141332413}
   - 114: {fileID: 141332412}
   - 114: {fileID: 141332411}
+  - 114: {fileID: 141332414}
   m_Layer: 5
   m_Name: panelAccessory2
   m_TagString: Untagged
@@ -1339,8 +1351,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Equip_Click
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 806242333}
@@ -1385,6 +1397,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 141332409}
+--- !u!114 &141332414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 141332409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 806242333}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &151503098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,6 +1584,7 @@ GameObject:
   - 222: {fileID: 160230000}
   - 114: {fileID: 160229999}
   - 114: {fileID: 160229998}
+  - 114: {fileID: 160230001}
   m_Layer: 5
   m_Name: panelBackpack11
   m_TagString: Untagged
@@ -1606,7 +1649,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -1652,6 +1695,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 160229996}
+--- !u!114 &160230001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160229996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1326566692}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &172938590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,6 +1955,7 @@ GameObject:
   - 222: {fileID: 188219236}
   - 114: {fileID: 188219235}
   - 114: {fileID: 188219234}
+  - 114: {fileID: 188219237}
   m_Layer: 5
   m_Name: panelMainWeapon
   m_TagString: Untagged
@@ -1946,8 +2020,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Equip_Click
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2133323602}
@@ -1992,6 +2066,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 188219232}
+--- !u!114 &188219237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 188219232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2133323602}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &188870670
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,7 +2149,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -2098,7 +2202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -2330,6 +2434,7 @@ GameObject:
   - 222: {fileID: 219113319}
   - 114: {fileID: 219113318}
   - 114: {fileID: 219113317}
+  - 114: {fileID: 219113320}
   m_Layer: 5
   m_Name: panelSubWeapon
   m_TagString: Untagged
@@ -2394,8 +2499,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Equip_Click
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1540170716}
@@ -2440,6 +2545,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 219113315}
+--- !u!114 &219113320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 219113315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1540170716}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &260684228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,6 +2800,7 @@ GameObject:
   - 222: {fileID: 282241482}
   - 114: {fileID: 282241481}
   - 114: {fileID: 282241480}
+  - 114: {fileID: 282241483}
   m_Layer: 5
   m_Name: panelBackpack2
   m_TagString: Untagged
@@ -2729,7 +2865,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -2775,6 +2911,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 282241478}
+--- !u!114 &282241483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282241478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 509358996}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &284185285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3138,7 +3304,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: No_Click
         m_Mode: 1
         m_Arguments:
@@ -3237,7 +3403,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -3290,7 +3456,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -3462,7 +3628,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -3515,7 +3681,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -3708,6 +3874,7 @@ GameObject:
   - 222: {fileID: 419267379}
   - 114: {fileID: 419267378}
   - 114: {fileID: 419267377}
+  - 114: {fileID: 419267380}
   m_Layer: 5
   m_Name: panelArmor
   m_TagString: Untagged
@@ -3772,8 +3939,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Equip_Click
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1954601795}
@@ -3818,6 +3985,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419267375}
+--- !u!114 &419267380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419267375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1954601795}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &425349630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3965,7 +4162,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: tapChara3
         m_Mode: 1
         m_Arguments:
@@ -6169,7 +6366,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -6222,7 +6419,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -6389,7 +6586,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -6442,7 +6639,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -7141,7 +7338,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -7194,7 +7391,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -7538,6 +7735,7 @@ GameObject:
   - 222: {fileID: 808150886}
   - 114: {fileID: 808150885}
   - 114: {fileID: 808150884}
+  - 114: {fileID: 808150887}
   m_Layer: 5
   m_Name: panelBackpack1
   m_TagString: Untagged
@@ -7602,7 +7800,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -7648,6 +7846,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 808150882}
+--- !u!114 &808150887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 808150882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1416041216}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &824030264
 GameObject:
   m_ObjectHideFlags: 0
@@ -7837,7 +8065,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -7890,7 +8118,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -8062,7 +8290,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -8115,7 +8343,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -8673,6 +8901,7 @@ GameObject:
   - 222: {fileID: 915145503}
   - 114: {fileID: 915145502}
   - 114: {fileID: 915145501}
+  - 114: {fileID: 915145504}
   m_Layer: 5
   m_Name: panelAccessory1
   m_TagString: Untagged
@@ -8737,8 +8966,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Equip_Click
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1399980092}
@@ -8783,6 +9012,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 915145499}
+--- !u!114 &915145504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 915145499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1399980092}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &938822605
 GameObject:
   m_ObjectHideFlags: 0
@@ -8957,7 +9216,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -9010,7 +9269,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -9354,6 +9613,7 @@ GameObject:
   - 222: {fileID: 1005815449}
   - 114: {fileID: 1005815448}
   - 114: {fileID: 1005815447}
+  - 114: {fileID: 1005815450}
   m_Layer: 5
   m_Name: panelBackpack5
   m_TagString: Untagged
@@ -9418,7 +9678,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -9464,6 +9724,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1005815445}
+--- !u!114 &1005815450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1005815445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1326324206}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1011259228
 GameObject:
   m_ObjectHideFlags: 0
@@ -9663,7 +9953,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -9716,7 +10006,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -9773,6 +10063,7 @@ GameObject:
   - 222: {fileID: 1029719777}
   - 114: {fileID: 1029719776}
   - 114: {fileID: 1029719775}
+  - 114: {fileID: 1029719778}
   m_Layer: 5
   m_Name: panelBackpack8
   m_TagString: Untagged
@@ -9837,7 +10128,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -9883,6 +10174,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1029719773}
+--- !u!114 &1029719778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029719773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1905864979}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1035321746
 GameObject:
   m_ObjectHideFlags: 0
@@ -10470,6 +10791,7 @@ GameObject:
   - 222: {fileID: 1100786705}
   - 114: {fileID: 1100786704}
   - 114: {fileID: 1100786703}
+  - 114: {fileID: 1100786706}
   m_Layer: 5
   m_Name: panelBackpack9
   m_TagString: Untagged
@@ -10534,7 +10856,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -10580,6 +10902,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1100786701}
+--- !u!114 &1100786706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1100786701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 791538704}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1122280247
 GameObject:
   m_ObjectHideFlags: 0
@@ -11432,7 +11784,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -11485,7 +11837,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -11657,7 +12009,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -11710,7 +12062,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -11981,6 +12333,7 @@ GameObject:
   - 222: {fileID: 1263053066}
   - 114: {fileID: 1263053065}
   - 114: {fileID: 1263053064}
+  - 114: {fileID: 1263053067}
   m_Layer: 5
   m_Name: panelBackpack4
   m_TagString: Untagged
@@ -12045,7 +12398,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -12091,6 +12444,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1263053062}
+--- !u!114 &1263053067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1263053062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 986636608}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1264471780
 GameObject:
   m_ObjectHideFlags: 0
@@ -12144,7 +12527,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -12197,7 +12580,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -12505,7 +12888,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -12558,7 +12941,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -13260,7 +13643,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -13313,7 +13696,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -13574,7 +13957,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Yes_Click
         m_Mode: 1
         m_Arguments:
@@ -13839,6 +14222,7 @@ GameObject:
   - 222: {fileID: 1406595019}
   - 114: {fileID: 1406595018}
   - 114: {fileID: 1406595017}
+  - 114: {fileID: 1406595020}
   m_Layer: 5
   m_Name: panelBackpack3
   m_TagString: Untagged
@@ -13903,7 +14287,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -13949,6 +14333,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1406595015}
+--- !u!114 &1406595020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1406595015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1949698300}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1414415579
 GameObject:
   m_ObjectHideFlags: 0
@@ -14148,7 +14562,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -14201,7 +14615,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -14619,6 +15033,7 @@ GameObject:
   - 222: {fileID: 1477053897}
   - 114: {fileID: 1477053896}
   - 114: {fileID: 1477053895}
+  - 114: {fileID: 1477053898}
   m_Layer: 5
   m_Name: panelBackpack15
   m_TagString: Untagged
@@ -14683,7 +15098,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -14729,6 +15144,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1477053893}
+--- !u!114 &1477053898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1477053893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1489684758}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1478386894
 GameObject:
   m_ObjectHideFlags: 0
@@ -15229,6 +15674,7 @@ GameObject:
   - 222: {fileID: 1496692635}
   - 114: {fileID: 1496692634}
   - 114: {fileID: 1496692633}
+  - 114: {fileID: 1496692636}
   m_Layer: 5
   m_Name: panelBackpack7
   m_TagString: Untagged
@@ -15293,7 +15739,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -15339,6 +15785,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1496692631}
+--- !u!114 &1496692636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1496692631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2112721125}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1497139718
 GameObject:
   m_ObjectHideFlags: 0
@@ -15538,7 +16014,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -15591,7 +16067,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -16293,6 +16769,7 @@ GameObject:
   - 222: {fileID: 1593176157}
   - 114: {fileID: 1593176156}
   - 114: {fileID: 1593176155}
+  - 114: {fileID: 1593176158}
   m_Layer: 5
   m_Name: panelBackpack6
   m_TagString: Untagged
@@ -16357,7 +16834,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -16403,6 +16880,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1593176153}
+--- !u!114 &1593176158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1593176153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1637614619}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1605784853
 GameObject:
   m_ObjectHideFlags: 0
@@ -16545,7 +17052,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1610859195}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: tapLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1610859195
@@ -16879,6 +17397,7 @@ GameObject:
   - 222: {fileID: 1667395200}
   - 114: {fileID: 1667395199}
   - 114: {fileID: 1667395198}
+  - 114: {fileID: 1667395201}
   m_Layer: 5
   m_Name: panelBackpack12
   m_TagString: Untagged
@@ -16943,7 +17462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -16989,6 +17508,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1667395196}
+--- !u!114 &1667395201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1667395196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 650523921}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1682411732
 GameObject:
   m_ObjectHideFlags: 0
@@ -17136,7 +17685,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1684097240}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: tapLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1684097240
@@ -17402,6 +17962,7 @@ GameObject:
   - 222: {fileID: 1725825909}
   - 114: {fileID: 1725825908}
   - 114: {fileID: 1725825907}
+  - 114: {fileID: 1725825910}
   m_Layer: 5
   m_Name: panelBackpack16
   m_TagString: Untagged
@@ -17466,7 +18027,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -17512,6 +18073,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1725825905}
+--- !u!114 &1725825910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1725825905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1958371875}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1727184018
 GameObject:
   m_ObjectHideFlags: 0
@@ -18082,6 +18673,7 @@ GameObject:
   - 222: {fileID: 1775605401}
   - 114: {fileID: 1775605400}
   - 114: {fileID: 1775605399}
+  - 114: {fileID: 1775605402}
   m_Layer: 5
   m_Name: panelBackpack14
   m_TagString: Untagged
@@ -18146,7 +18738,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -18192,6 +18784,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1775605397}
+--- !u!114 &1775605402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1775605397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2131154833}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1780263650
 GameObject:
   m_ObjectHideFlags: 0
@@ -18631,6 +19253,7 @@ GameObject:
   - 222: {fileID: 1832126045}
   - 114: {fileID: 1832126044}
   - 114: {fileID: 1832126043}
+  - 114: {fileID: 1832126046}
   m_Layer: 5
   m_Name: panelBackpack20
   m_TagString: Untagged
@@ -18695,7 +19318,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -18741,6 +19364,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1832126041}
+--- !u!114 &1832126046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1832126041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1724298691}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1846826035
 GameObject:
   m_ObjectHideFlags: 0
@@ -18752,6 +19405,7 @@ GameObject:
   - 222: {fileID: 1846826039}
   - 114: {fileID: 1846826038}
   - 114: {fileID: 1846826037}
+  - 114: {fileID: 1846826040}
   m_Layer: 5
   m_Name: panelBackpack10
   m_TagString: Untagged
@@ -18816,7 +19470,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -18862,6 +19516,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1846826035}
+--- !u!114 &1846826040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1846826035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 519424033}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1863454593
 GameObject:
   m_ObjectHideFlags: 0
@@ -18936,7 +19620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: tapExchange
         m_Mode: 1
         m_Arguments:
@@ -19066,6 +19750,7 @@ GameObject:
   - 222: {fileID: 1865756109}
   - 114: {fileID: 1865756108}
   - 114: {fileID: 1865756107}
+  - 114: {fileID: 1865756110}
   m_Layer: 5
   m_Name: panelBackpack13
   m_TagString: Untagged
@@ -19130,7 +19815,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -19176,6 +19861,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865756105}
+--- !u!114 &1865756110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1865756105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1742303444}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1867280066
 GameObject:
   m_ObjectHideFlags: 0
@@ -19187,6 +19902,7 @@ GameObject:
   - 222: {fileID: 1867280070}
   - 114: {fileID: 1867280069}
   - 114: {fileID: 1867280068}
+  - 114: {fileID: 1867280071}
   m_Layer: 5
   m_Name: panelBackpack19
   m_TagString: Untagged
@@ -19251,7 +19967,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -19297,6 +20013,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1867280066}
+--- !u!114 &1867280071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1867280066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1011259230}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1887774898
 GameObject:
   m_ObjectHideFlags: 0
@@ -19560,7 +20306,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: tapChara1
         m_Mode: 1
         m_Arguments:
@@ -19690,6 +20436,7 @@ GameObject:
   - 222: {fileID: 1908173154}
   - 114: {fileID: 1908173153}
   - 114: {fileID: 1908173152}
+  - 114: {fileID: 1908173155}
   m_Layer: 5
   m_Name: panelBackpack18
   m_TagString: Untagged
@@ -19754,7 +20501,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -19800,6 +20547,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1908173150}
+--- !u!114 &1908173155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1908173150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1022862937}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1910249573
 GameObject:
   m_ObjectHideFlags: 0
@@ -20273,7 +21050,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -20326,7 +21103,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -20425,7 +21202,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -20478,7 +21255,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -20827,6 +21604,7 @@ GameObject:
   - 222: {fileID: 1979623387}
   - 114: {fileID: 1979623386}
   - 114: {fileID: 1979623385}
+  - 114: {fileID: 1979623388}
   m_Layer: 5
   m_Name: panelBackpack17
   m_TagString: Untagged
@@ -20891,7 +21669,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: Backpack_Click
         m_Mode: 2
         m_Arguments:
@@ -20937,6 +21715,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1979623383}
+--- !u!114 &1979623388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1979623383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1486110469}
+          m_MethodName: PointerEnter
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2034822212}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &2004453274
 GameObject:
   m_ObjectHideFlags: 0
@@ -20990,7 +21798,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -21043,7 +21851,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -21163,7 +21971,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2007307412}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: tapLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2007307412
@@ -21273,7 +22092,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: tapChara2
         m_Mode: 1
         m_Arguments:
@@ -21372,7 +22191,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -21425,7 +22244,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -21670,7 +22489,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -21723,7 +22542,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:
@@ -21843,7 +22662,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2042116841}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1486110469}
+        m_MethodName: tapLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2042116841
@@ -22005,7 +22835,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1486110469}
           m_MethodName: PointerEnter
           m_Mode: 2
           m_Arguments:
@@ -22058,7 +22888,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1486110469}
         m_MethodName: EquipmentShop_Click
         m_Mode: 2
         m_Arguments:

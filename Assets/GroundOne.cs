@@ -159,6 +159,13 @@ namespace DungeonPlayer
             // debug
             WE.AvailablePotionshop = true;
             WE.AvailableEquipShop = true;
+            //WE.AvailableEquipShop2 = true;
+            //WE.AvailableEquipShop3 = true;
+            //WE.AvailableEquipShop4 = true;
+            //if (!GroundOne.WE2.PotionAvailable_12 && (GroundOne.WE2.PotionMixtureDay_12 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_12))
+            GroundOne.WE2.PotionAvailable_12 = false;
+            GroundOne.WE2.PotionMixtureDay_12 = 1;
+
             //if (!GroundOne.WE2.EquipAvailable_11 && (GroundOne.WE2.EquipMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_11))
             GroundOne.WE2.EquipMixtureDay_11 = 1;
             GroundOne.WE.GameDay = 3;

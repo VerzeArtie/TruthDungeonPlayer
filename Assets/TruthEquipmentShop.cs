@@ -69,7 +69,6 @@ namespace DungeonPlayer
             GameObject objGanz = new GameObject("objGanz");
             vendor = objGanz.AddComponent<MainCharacter>();
             vendor.FirstName = "ガンツ";
-            this.currentPlayer = GroundOne.MC;
 
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
             {
@@ -89,8 +88,6 @@ namespace DungeonPlayer
                 btnChara2.gameObject.SetActive(true);
                 btnChara3.gameObject.SetActive(false); // [コメント]：ストーリーの演出上、ヴェルゼはガンツの武具屋へ訪れる事はないため。
             }
-
-            UpdateBackPackLabel(this.currentPlayer);
 
             if (/*GroundOne.WE.AvailableEquipShop && */!GroundOne.WE.AvailableEquipShop2)
             {
@@ -152,31 +149,9 @@ namespace DungeonPlayer
         {
             Debug.Log("Equipmentshop (S)");
             base.Start();
+            this.currentPlayer = GroundOne.MC;
+            UpdateBackPackLabel(this.currentPlayer);
             OnInitialize();
-        }
-
-        protected void SetupAvailableListWithCurrentCase()
-        {
-            if (GroundOne.WE.AvailableEquipShop && !GroundOne.WE.AvailableEquipShop2)
-            {
-                SetupAvailableList(1);
-            }
-            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && !GroundOne.WE.AvailableEquipShop3)
-            {
-                SetupAvailableList(2);
-            }
-            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && !GroundOne.WE.AvailableEquipShop4)
-            {
-                SetupAvailableList(3);
-            }
-            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && !GroundOne.WE.AvailableEquipShop5)
-            {
-                SetupAvailableList(4);
-            }
-            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && GroundOne.WE.AvailableEquipShop5)
-            {
-                SetupAvailableList(5);
-            }
         }
 
         bool nowClose = false;
@@ -365,6 +340,30 @@ namespace DungeonPlayer
                 SceneDimension.CallTruthItemDesc(this, Database.EPIC_ETERNAL_HOMURA_RING);
             }
             #endregion
+        }
+
+        protected virtual void SetupAvailableListWithCurrentCase()
+        {
+            if (GroundOne.WE.AvailableEquipShop && !GroundOne.WE.AvailableEquipShop2)
+            {
+                SetupAvailableList(1);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && !GroundOne.WE.AvailableEquipShop3)
+            {
+                SetupAvailableList(2);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && !GroundOne.WE.AvailableEquipShop4)
+            {
+                SetupAvailableList(3);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && !GroundOne.WE.AvailableEquipShop5)
+            {
+                SetupAvailableList(4);
+            }
+            else if (GroundOne.WE.AvailableEquipShop && GroundOne.WE.AvailableEquipShop2 && GroundOne.WE.AvailableEquipShop3 && GroundOne.WE.AvailableEquipShop4 && GroundOne.WE.AvailableEquipShop5)
+            {
+                SetupAvailableList(5);
+            }
         }
 
         public override void SceneBack()
@@ -2000,17 +1999,6 @@ namespace DungeonPlayer
             this.currentSelectItem = backpackData;
         }
 
-        public void Buy_Click()
-        {
-            if (this.currentSelectItem == null)
-            {
-                mainMessage.text = "ガンツ：ふむ・・・まずは購入するアイテムを選択しなさい。";
-                return;
-            }
-
-        }
-
-
         private void SellItem(ItemBackPack currentItem, Text sender, int stack, int ii)
         {
             GroundOne.MC.Gold += stack * currentItem.Cost / 2; // 後編編集
@@ -2175,6 +2163,12 @@ namespace DungeonPlayer
             groupCurrentEquip.SetActive(!groupCurrentEquip.activeInHierarchy);
             groupBackPack.SetActive(!groupCurrentEquip.activeInHierarchy);
         }
+
+        public void tapLevel(int level)
+        {
+            SetupAvailableList(level);
+        }
+
         public void tapChara1()
         {
             this.currentPlayer = GroundOne.MC;

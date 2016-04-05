@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 namespace DungeonPlayer
@@ -87,6 +87,7 @@ namespace DungeonPlayer
 
         protected override void CheckAndCallTruthItemDesc()
         {
+            Debug.Log("PotionShop CheckAndCallTruthItemDesc");
             #region "１階"
             if (!GroundOne.WE2.PotionAvailable_11 && (GroundOne.WE2.PotionMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_11))
             {
@@ -201,8 +202,10 @@ namespace DungeonPlayer
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_COLORESS_ANTIDOTE);
             }
             #endregion
+        }
 
-            // ２重記述だが、ベストコードは後で良しとする。
+        protected override void SetupAvailableListWithCurrentCase()
+        {
             if (GroundOne.WE.AvailablePotionshop && !GroundOne.WE.AvailablePotion2)
             {
                 SetupAvailableList(1);
