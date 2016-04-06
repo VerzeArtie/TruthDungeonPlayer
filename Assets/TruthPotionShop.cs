@@ -17,7 +17,6 @@ namespace DungeonPlayer
 
         public override void OnInitialize()
         {
-            Debug.Log("Potion Initialize");
             base.labelTitle.text = "ラナのランラン薬品店♪";
             GameObject objLana = new GameObject("objLana");
             vendor = objLana.AddComponent<MainCharacter>();
@@ -77,7 +76,6 @@ namespace DungeonPlayer
             }
             SetupAvailableListWithCurrentCase();
 
-            OnLoadSetupFloorButton();
             OnLoadMessage(); // 後編編集
             this.labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
 

@@ -850,7 +850,7 @@ namespace DungeonPlayer
         #endregion
 
         #region "音楽データ名"
-        public static string BaseMusicFolder = Environment.CurrentDirectory + @"\BGM\";
+        public static string BaseMusicFolder = @"BGM\"; //Environment.CurrentDirectory + @"BGM\";
         public static string BGM01 = @"01_town_silently";
         public static int BGM01LoopBegin = 0;
         public static string BGM02 = @"02_dungeon_seeking";

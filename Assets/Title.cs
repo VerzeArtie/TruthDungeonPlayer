@@ -16,6 +16,18 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+            if (GroundOne.EnableBGM)
+            {
+                GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin); // Œã•Ò’Ç‰Á    
+            }
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
+            {
+                SettingRealWorldButtonLayout();
+            }
+        }
+
+        private void SettingRealWorldButtonLayout()
+        {
         }
 
         // Update is called once per frame
@@ -45,6 +57,11 @@ namespace DungeonPlayer
 
         public void Seeker_Click()
         {
+        }
+
+        public void PointerEnter()
+        {
+            GroundOne.PlaySoundEffect(Database.SOUND_LIFE_TAP);
         }
     }
 }

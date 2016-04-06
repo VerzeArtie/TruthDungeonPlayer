@@ -1004,7 +1004,7 @@ namespace DungeonPlayer
                 // DUELモードは現実世界でDUEL戦闘となった時に再戦を判断させたいため、一旦ここでfalse返しとする。
                 if (GroundOne.DuelMode)
                 {
-                    // todo 続きのメッセージを実装先へと繋いでください。
+                    // after 続きのメッセージを実装先へと繋いでください。
                 }
                 else
                 {

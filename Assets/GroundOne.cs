@@ -52,7 +52,9 @@ namespace DungeonPlayer
         public static int BattleSpeed = 3;
         public static int Difficulty = 1; // ゲーム難易度 デフォルトは１：普通
 
-//        public static XepherPlayer sound = null; // サウンド音源 // todo
+        public static GameObject sound = new GameObject(); // サウンド音源
+        public static AudioSource source = null; // サウンドソース
+
         public static bool EnableBGM = true; // ミュージック、デフォルトはオン
         public static bool EnableSoundEffect = true; // 効果音、デフォルトはオン
 
@@ -139,6 +141,8 @@ namespace DungeonPlayer
             if (AlreadyInitialize == false) { AlreadyInitialize = true; }
             else { Debug.Log("already initialize"); return false; }
 
+            GroundOne.source = GroundOne.sound.AddComponent<AudioSource>();
+
             GroundOne.resourceList = new List<Sprite>();
             GroundOne.resourceList.AddRange(Resources.LoadAll<Sprite>(""));
             GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
@@ -159,9 +163,11 @@ namespace DungeonPlayer
             // debug
             WE.AvailablePotionshop = true;
             WE.AvailableEquipShop = true;
-            //WE.AvailableEquipShop2 = true;
+            WE.AvailableEquipShop2 = true;
             //WE.AvailableEquipShop3 = true;
             //WE.AvailableEquipShop4 = true;
+            WE.AvailablePotion2 = true;
+            //WE.AvailablePotion3 = true;
             //if (!GroundOne.WE2.PotionAvailable_12 && (GroundOne.WE2.PotionMixtureDay_12 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_12))
             GroundOne.WE2.PotionAvailable_12 = false;
             GroundOne.WE2.PotionMixtureDay_12 = 1;
@@ -555,36 +561,25 @@ namespace DungeonPlayer
         {
             AudioClip clip = Resources.Load<AudioClip>(Database.BaseSoundFolder + soundName);
 
-            GameObject obj = new GameObject();
-            AudioSource source = obj.AddComponent<AudioSource>();
             source.clip = clip;
             source.Play();
-
-//            try
-//            {
-//                if (GroundOne.EnableSoundEffect)
-//                {
-//                    if (GroundOne.sound == null)
-//                    {
-//                        GroundOne.sound = new XepherPlayer();
-//                    }
-//                    GroundOne.sound.PlayMP3(soundName);
-//                }
-//            }
-//            catch
-//            {
-//                GroundOne.EnableSoundEffect = false;
-//                GroundOne.EnableBGM = false;
-//                System.Windows.Forms.MessageBox.Show(Database.InstallComponentError);
-//            }
         }
 
         public static void PlayDungeonMusic(string targetMusicName, int loopBegin)
         {
-//            PlayDungeonMusic(targetMusicName, string.Empty, loopBegin);
+            PlayDungeonMusic(targetMusicName, string.Empty, loopBegin);
         }
         public static void PlayDungeonMusic(string targetMusicName, string targetMusicName2, int loopBegin)
         {
+            Debug.Log(DateTime.Now + " " + DateTime.Now.Millisecond + " playdungeonmusic: " + targetMusicName);
+            AudioClip clip = Resources.Load<AudioClip>(Database.BaseMusicFolder + targetMusicName);
+
+            GameObject obj = new GameObject();
+            AudioSource source = obj.AddComponent<AudioSource>();
+            source.clip = clip;
+            source.Play();
+            Debug.Log(DateTime.Now + " " + DateTime.Now.Millisecond + " playdungeonmusic ok");
+
 //            try
 //            {
 //                if (GroundOne.EnableBGM)

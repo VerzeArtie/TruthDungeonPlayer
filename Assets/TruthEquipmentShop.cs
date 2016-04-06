@@ -64,8 +64,7 @@ namespace DungeonPlayer
 
         public virtual void OnInitialize()
         {
-            Debug.Log("equipment Initialize");
-
+            this.labelTitle.text = "天下一品　ガンツの武具店";
             GameObject objGanz = new GameObject("objGanz");
             vendor = objGanz.AddComponent<MainCharacter>();
             vendor.FirstName = "ガンツ";
@@ -137,7 +136,6 @@ namespace DungeonPlayer
             }
             SetupAvailableListWithCurrentCase();
 
-            OnLoadSetupFloorButton();
             OnLoadMessage(); // 後編編集
             this.labelGold.text = GroundOne.MC.Gold.ToString() + "[G]"; // [警告]：ゴールドの所持は別クラスにするべきです。
 
@@ -368,17 +366,11 @@ namespace DungeonPlayer
 
         public override void SceneBack()
         {
-            Debug.Log("sceneback start");
             base.SceneBack();
             SetupAvailableListWithCurrentCase();
             CheckAndCallTruthItemDesc();
         }
-
-        protected void OnLoadSetupFloorButton()
-        {
-            // todo 派生先、TruthPotionShopで使われるメソッドである。
-        }
-
+        
         protected virtual void OnLoadMessage()
         {
             SetupMessageText(3000);

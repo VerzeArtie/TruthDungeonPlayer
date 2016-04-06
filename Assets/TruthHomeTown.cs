@@ -140,7 +140,7 @@ namespace DungeonPlayer
 
             if (GroundOne.BattleResult != GroundOne.battleResult.None)
             {
-                // todo
+                // after
                 //MessagePack.Message70012_2(ref nowMessage, ref nowEvent, result);
                 //MessagePack.Message70013_2(ref nowMessage, ref nowEvent, result);
             }
