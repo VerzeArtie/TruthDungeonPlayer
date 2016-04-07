@@ -99,6 +99,7 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：ん？特に何もなかったと思うが。"); eventList.Add(ActionEvent.None);
         }
+        #region "１階"
         public static void Message10000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (!GroundOne.WE.BoardInfo10)
@@ -2397,6 +2398,720 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
             }
         }
+        #endregion
+        #region "２階"
+        // todo
+        // １階へ戻る階段
+        public static void Message12000(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            //#region "１階へ戻る階段"
+            //case 0:
+            //    UpdateMainMessage("アイン：１階へ戻る階段だな。ここは一旦戻るか？", true);
+            //    using (YesNoRequest ynr = new YesNoRequest())
+            //    {
+            //        ynr.StartPosition = FormStartPosition.CenterParent;
+            //        ynr.ShowDialog();
+            //        if (ynr.DialogResult == DialogResult.Yes)
+            //        {
+            //            UpdateViewPoint(-Database.DUNGEON_MOVE_LEN * 0, -Database.DUNGEON_MOVE_LEN * 0);
+            //            UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * (17 - 0), Database.DUNGEON_MOVE_LEN * (6 - 0));
+            //            SetupDungeonMapping(1);
+            //            dungeonField.Invalidate();
+            //            UpdateMainMessage("", true);
+            //        }
+            //        else
+            //        {
+            //            UpdateMainMessage("", true);
+            //        }
+            //    }
+            //    break;
+        }
+
+        // 中央４看板
+        public static void Message12001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!we.dungeonEvent201)
+            {
+                we.dungeonEvent201 = true;
+
+                UpdateMainMessage("アイン：おっ、看板があるぜ。");
+
+                UpdateMainMessage("　　　　『知を示す者、隠されし通路、秘められた選択』");
+
+                UpdateMainMessage("ラナ：ふうん、なんだか意味深な内容ね。");
+
+                UpdateMainMessage("アイン：知力を示せって言ってるんだろ？");
+
+                UpdateMainMessage("ラナ：そんなの誰だってわかるわよ、ほんっと適当なんだから・・・");
+
+                UpdateMainMessage("ラナ：隠されし通路、秘められた選択・・・どういう意味なのかしら。");
+
+                UpdateMainMessage("アイン：隠し通路見つけて秘密に質問に答えるってトコだろ。");
+
+                UpdateMainMessage("ラナ：何かものすごく淡々としてるわね・・・バカに磨きがかかったワケ？");
+
+                UpdateMainMessage("アイン：何を言うか。順当読みだ。ありのまま読んでるだけだって。");
+
+                if (we.dungeonEvent201 && we.dungeonEvent202 && we.dungeonEvent203 && we.dungeonEvent204)
+                {
+                    UpdateMainMessage("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』");
+
+                    we.dungeonEvent205 = true;
+                    blueWallBottom[17 * Database.TRUTH_DUNGEON_COLUMN + 33] = false;
+                    blueWallTop[18 * Database.TRUTH_DUNGEON_COLUMN + 33] = false;
+                    blueWallBottom[20 * Database.TRUTH_DUNGEON_COLUMN + 25] = false;
+                    blueWallTop[21 * Database.TRUTH_DUNGEON_COLUMN + 25] = false;
+                    blueWallRight[23 * Database.TRUTH_DUNGEON_COLUMN + 30] = false;
+                    blueWallLeft[23 * Database.TRUTH_DUNGEON_COLUMN + 31] = false;
+                    blueWallRight[15 * Database.TRUTH_DUNGEON_COLUMN + 27] = false;
+                    blueWallLeft[15 * Database.TRUTH_DUNGEON_COLUMN + 28] = false;
+                    dungeonField.Invalidate();
+
+                    UpdateMainMessage("アイン：おっ！開いたんじゃねえか！？");
+
+                    UpdateMainMessage("ラナ：４つとも調べると、開く仕組みだったワケね♪");
+
+                    UpdateMainMessage("ラナ：でも本当気をつけてよね。この先、何が待ち構えてるか分からないし。");
+
+                    UpdateMainMessage("アイン：ああ、分かってるって。危ないと感じたら戻れるようにしておくさ。");
+                }
+                else
+                {
+                    UpdateMainMessage("ラナ：まあ、良いわ。特に行き道も無さそうだし、他も探索してみましょ。");
+
+                    UpdateMainMessage("アイン：ああ、そうだな。", true);
+                }
+            }
+            else
+            {
+                UpdateMainMessage("　　　　『知を示す者、隠されし通路、秘められた選択』", true);
+            }
+        }
+
+        public static void Message12001_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!we.dungeonEvent202)
+            {
+                we.dungeonEvent202 = true;
+                UpdateMainMessage("アイン：おっ、看板があるぜ。");
+
+                UpdateMainMessage("　　　　『技を示す者、順序ある通路、閉ざされた選択』");
+
+                UpdateMainMessage("アイン：技か・・・なるほどな。");
+
+                UpdateMainMessage("ラナ：何が「なるほど」なのよ？");
+
+                UpdateMainMessage("アイン：順序ある通路だな・・・なるほど・・・。");
+
+                UpdateMainMessage("ラナ：分からないで適当に言ってるでしょ？");
+
+                UpdateMainMessage("アイン：いや、理解して言ってるぜ。");
+
+                UpdateMainMessage("ラナ：じゃあ言ってごらんなさいよ。ッホラ。");
+
+                UpdateMainMessage("アイン：・・・");
+
+                UpdateMainMessage("アイン：ッハッハッハッハ！");
+
+                UpdateMainMessage("　　　『ズゴゴオオォォン！！！』（ラナのアルタネイティブブローがアインに炸裂）　　");
+
+                UpdateMainMessage("アイン：イッツツツ・・・わかったって。正直分かってません、ハイハイ・・・");
+
+                if (we.dungeonEvent201 && we.dungeonEvent202 && we.dungeonEvent203 && we.dungeonEvent204)
+                {
+                    UpdateMainMessage("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』");
+
+                    we.dungeonEvent205 = true;
+                    blueWallBottom[17 * Database.TRUTH_DUNGEON_COLUMN + 33] = false;
+                    blueWallTop[18 * Database.TRUTH_DUNGEON_COLUMN + 33] = false;
+                    blueWallBottom[20 * Database.TRUTH_DUNGEON_COLUMN + 25] = false;
+                    blueWallTop[21 * Database.TRUTH_DUNGEON_COLUMN + 25] = false;
+                    blueWallRight[23 * Database.TRUTH_DUNGEON_COLUMN + 30] = false;
+                    blueWallLeft[23 * Database.TRUTH_DUNGEON_COLUMN + 31] = false;
+                    blueWallRight[15 * Database.TRUTH_DUNGEON_COLUMN + 27] = false;
+                    blueWallLeft[15 * Database.TRUTH_DUNGEON_COLUMN + 28] = false;
+                    dungeonField.Invalidate();
+
+                    UpdateMainMessage("アイン：っお！？ホラ見ろ、開いたんじゃねえか！？");
+
+                    UpdateMainMessage("ラナ：４つとも調べると、開く仕組みだったワケね。バカアインは関係ないから");
+
+                    UpdateMainMessage("アイン：マジかよ！蹴られ損かよ！？");
+
+                    UpdateMainMessage("ラナ：でも本当気をつけてよね。この先、何が待ち構えてるか分からないし。");
+
+                    UpdateMainMessage("アイン：あ、あぁ・・・分かってるって。危ないと感じたら迷わず戻るようにするさ。");
+                }
+                else
+                {
+                    UpdateMainMessage("ラナ：まあ、いいわ。特に行き道も無さそうだし、他も探索してみましょ。");
+
+                    UpdateMainMessage("アイン：ああ、そうだな。", true);
+                }
+
+            }
+            else
+            {
+                UpdateMainMessage("　　　　『技を示す者、順序ある通路、閉ざされた選択』", true);
+            }
+        }
+
+        public static void Message12001_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!we.dungeonEvent203)
+            {
+                we.dungeonEvent203 = true;
+                UpdateMainMessage("アイン：おっ、看板があるぜ。");
+
+                UpdateMainMessage("　　　　『心を示す者、無間の部屋、存在しない解への選択』");
+
+                UpdateMainMessage("ラナ：無間って・・・何か嫌な感じね。");
+
+                UpdateMainMessage("アイン：存在しない解とか書いてあるな。");
+
+                UpdateMainMessage("ラナ：バカアインは意味分かる？");
+
+                UpdateMainMessage("アイン：バカだからわかんねえ。");
+
+                UpdateMainMessage("　　　『ッドグシ！！！』（ラナのサドンキックがアインに炸裂）　　");
+
+                UpdateMainMessage("アイン：ッヴ・・・いやいやいや。");
+
+                UpdateMainMessage("アイン：本当に無間ってのがあるワケが無いだろう？");
+
+                UpdateMainMessage("ラナ：ん～、まあそうよね。");
+
+                UpdateMainMessage("アイン：答えはひとつって感じもするよな・・・どうだろう。");
+
+                UpdateMainMessage("ラナ：ん～、今ひとつピンと来ないわね。");
+
+                if (we.dungeonEvent201 && we.dungeonEvent202 && we.dungeonEvent203 && we.dungeonEvent204)
+                {
+                    UpdateMainMessage("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』");
+
+                    we.dungeonEvent205 = true;
+                    blueWallBottom[17 * Database.TRUTH_DUNGEON_COLUMN + 33] = false;
+                    blueWallTop[18 * Database.TRUTH_DUNGEON_COLUMN + 33] = false;
+                    blueWallBottom[20 * Database.TRUTH_DUNGEON_COLUMN + 25] = false;
+                    blueWallTop[21 * Database.TRUTH_DUNGEON_COLUMN + 25] = false;
+                    blueWallRight[23 * Database.TRUTH_DUNGEON_COLUMN + 30] = false;
+                    blueWallLeft[23 * Database.TRUTH_DUNGEON_COLUMN + 31] = false;
+                    blueWallRight[15 * Database.TRUTH_DUNGEON_COLUMN + 27] = false;
+                    blueWallLeft[15 * Database.TRUTH_DUNGEON_COLUMN + 28] = false;
+                    dungeonField.Invalidate();
+
+                    UpdateMainMessage("アイン：おっ！開いたんじゃねえか！？");
+
+                    UpdateMainMessage("ラナ：４つとも調べると、開く仕組みだったワケね♪");
+
+                    UpdateMainMessage("ラナ：でも本当気をつけてよね。この先、何が待ち構えてるか分からないし。");
+
+                    UpdateMainMessage("アイン：ああ、分かってるって。危ないと感じたら戻れるようにしておくさ。");
+                }
+                else
+                {
+                    UpdateMainMessage("ラナ：まあ、いいわ。特に行き道も無さそうだし、他も探索してみましょ。");
+
+                    UpdateMainMessage("アイン：ああ、そうだな。", true);
+                }
+
+            }
+            else
+            {
+                UpdateMainMessage("　　　　『心を示す者、無間の部屋、存在しない解への選択』", true);
+            }
+        }
+
+        public static void Message12001_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!we.dungeonEvent204)
+            {
+                we.dungeonEvent204 = true;
+
+                UpdateMainMessage("アイン：おっ、看板があるぜ。");
+
+                UpdateMainMessage("　　　　『力を示す者、戻り無き通路、真実への選択』");
+
+                UpdateMainMessage("アイン：っしゃ！こういうのは分かりやすいよな！");
+
+                UpdateMainMessage("ラナ：ちょっと、戻り無き通路とか書いてあるじゃない。気をつけてよね？");
+
+                UpdateMainMessage("アイン：ッハッハッハ！力任せは決してバカではない。");
+
+                UpdateMainMessage("ラナ：また、テキトーな理論で突っ込まないでよね、ホント・・・");
+
+                if (we.dungeonEvent201 && we.dungeonEvent202 && we.dungeonEvent203 && we.dungeonEvent204)
+                {
+                    UpdateMainMessage("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』");
+
+                    we.dungeonEvent205 = true;
+                    blueWallBottom[17 * Database.TRUTH_DUNGEON_COLUMN + 33] = false;
+                    blueWallTop[18 * Database.TRUTH_DUNGEON_COLUMN + 33] = false;
+                    blueWallBottom[20 * Database.TRUTH_DUNGEON_COLUMN + 25] = false;
+                    blueWallTop[21 * Database.TRUTH_DUNGEON_COLUMN + 25] = false;
+                    blueWallRight[23 * Database.TRUTH_DUNGEON_COLUMN + 30] = false;
+                    blueWallLeft[23 * Database.TRUTH_DUNGEON_COLUMN + 31] = false;
+                    blueWallRight[15 * Database.TRUTH_DUNGEON_COLUMN + 27] = false;
+                    blueWallLeft[15 * Database.TRUTH_DUNGEON_COLUMN + 28] = false;
+                    dungeonField.Invalidate();
+
+                    UpdateMainMessage("アイン：おっ！開いたんじゃねえか！？");
+
+                    UpdateMainMessage("ラナ：４つとも調べると、開く仕組みだったワケね♪");
+
+                    UpdateMainMessage("ラナ：でも本当気をつけてよね。この先、何が待ち構えてるか分からないし。");
+
+                    UpdateMainMessage("アイン：ああ、分かってるって。危ないと感じたら戻れるようにしておくさ。");
+                }
+                else
+                {
+                    UpdateMainMessage("ラナ：まあ、いいわ。特に行き道も無さそうだし、他も探索してみましょ。");
+
+                    UpdateMainMessage("アイン：ああ、そうだな。", true);
+                }
+            }
+            else
+            {
+                UpdateMainMessage("　　　　『力を示す者、戻り無き通路、真実への選択』", true);
+            }
+        }
+
+        // 知の部屋、メイン看板、ファースト：３回
+        public static void Message12002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!we.dungeonEvent211)
+            {
+                if (!we.dungeonEvent206)
+                {
+                    we.dungeonEvent206 = true;
+
+                    UpdateMainMessage("アイン：おっ、何か書いてあるぜ。なになに？");
+
+                    UpdateMainMessage("　　　　『  上  』");
+
+                    UpdateMainMessage("ラナ：何このテキトーな看板・・・");
+
+                    UpdateMainMessage("アイン：よっしゃ、じゃあさっそく上へ行くとするか！");
+
+                    UpdateMainMessage("ラナ：ちょっと待ってよ。アイン。");
+
+                    UpdateMainMessage("アイン：ん？何だ？");
+
+                    UpdateMainMessage("ラナ：上ってどっちの事を指してるのよ？");
+
+                    UpdateMainMessage("アイン：どっち？どっちって言われると困るが・・・");
+
+                    UpdatePlayerLocationInfo(this.Player.Location.X, this.Player.Location.Y - Database.DUNGEON_MOVE_LEN);
+                    UpdateUnknownTile();
+                    dungeonField.Invalidate();
+
+                    UpdateMainMessage("アイン：こっちじゃねえのか？");
+
+                    UpdateMainMessage("ラナ：今来た道から見て右よね。どうして、そっちが上なのよ？");
+
+                    UpdatePlayerLocationInfo(this.Player.Location.X, this.Player.Location.Y + Database.DUNGEON_MOVE_LEN);
+
+                    UpdateMainMessage("アイン：最初の看板から進んで来て・・・");
+
+                    UpdateMainMessage("アイン：右３だから、もう１回曲がれば右４つまり元の方向だ。");
+
+                    UpdateMainMessage("アイン：最初向いていた方向を上と仮定すれば、コッチが上で決まりってわけさ。");
+
+                    UpdateMainMessage("ラナ：・・・え？");
+
+                    UpdateMainMessage("アイン：っあ！　いやいや！　当てずっぽだからな！ッハッハッハッハ！");
+
+                    UpdateMainMessage("ラナ：ふうん、あながち間違いってワケでも無さそうね。");
+
+                    UpdateMainMessage("ラナ：じゃあ、そっちに進んでみましょ♪");
+
+                    UpdateMainMessage("アイン：オーケー！", true);
+
+                }
+                else
+                {
+                    if (!we.dungeonEvent207)
+                    {
+                        UpdateMainMessage("　　　　『  上  』", true);
+                    }
+                    else
+                    {
+                        if (!we.dungeonEvent208)
+                        {
+                            we.dungeonEvent208 = true;
+
+                            UpdateMainMessage("　　　　『  下  』");
+
+                            UpdateMainMessage("アイン：おっ、見ろよ？看板が変わってるじゃねえか！！");
+
+                            UpdateMainMessage("ラナ：上から下って事は、さすがにこれは楽勝ね♪");
+
+                            UpdateMainMessage("アイン：っしゃ、下へ行ってみようぜ！", true);
+                        }
+                        else
+                        {
+                            if (!we.dungeonEvent209)
+                            {
+                                UpdateMainMessage("　　　　『  下  』", true);
+                            }
+                            else
+                            {
+                                if (!we.dungeonEvent210)
+                                {
+                                    we.dungeonEvent210 = true;
+
+                                    UpdateMainMessage("　　　　『  左  』");
+
+                                    UpdateMainMessage("アイン：よし、左だな！");
+
+                                    UpdateMainMessage("ラナ：コレといった引っ掛け問題でも無さそうね、進みましょ♪");
+
+                                    UpdateMainMessage("アイン：了解了解！", true);
+
+                                }
+                                else
+                                {
+                                    UpdateMainMessage("　　　　『  左  』", true);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 知の部屋、メイン看板、セカンド：下３上１２左８
+        public static void Message12003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            else if (!we.dungeonEvent215)
+            {
+                if (we.dungeonEvent212 && we.dungeonEvent213 && we.dungeonEvent214)
+                {
+                    we.dungeonEvent215 = true;
+
+                    UpdateMainMessage("　　　　『  下３　上１２　左８  』");
+
+                    UpdateMainMessage("アイン：おっしゃ！見ろよラナ、看板に何か書いてあるぜ！");
+
+                    UpdateMainMessage("アイン：これ、レバーに関する法則か何かのヒントだろ？ッハッハッハ！");
+
+                    UpdateMainMessage("ラナ：・・・　・・・　・・・");
+
+                    UpdateMainMessage("アイン：っど、どうしたラナ？？");
+
+                    UpdateMainMessage("ラナ：えっと・・・");
+
+                    UpdateMainMessage("ラナ：凄いじゃない、オメデト。　驚いたわホント。");
+
+                    UpdateMainMessage("ラナ：何で看板の文字が復活するのが分かったのよ？");
+
+                    UpdateMainMessage("アイン：何でって言われても困るが・・・");
+
+                    UpdateMainMessage("アイン：なんとなく引っかかるだろ？");
+
+                    UpdateMainMessage("ラナ：答えになってないじゃない。ちゃんと説明しなさいよ。");
+
+                    UpdateMainMessage("アイン：こういうのは、どう説明していいか・・・");
+
+                    UpdateMainMessage("アイン：師匠に習ったんだよ。いろいろとな。");
+
+                    UpdateMainMessage("ラナ：ランディスお師匠さん？");
+
+                    UpdateMainMessage("アイン：ああ、そうだ。");
+
+                    UpdateMainMessage("ラナ：何て習ったの？");
+
+                    UpdateMainMessage("アイン：（声マネ）『ランディス：てめぇは少し考えすぎだ。』");
+
+                    UpdateMainMessage("アイン：（声マネ）『ランディス：思考を捨てろ、ザコアイン。』");
+
+                    UpdateMainMessage("アイン：（声マネ）『ランディス：そんなんじゃ、見えるもんも見えねぇぞ。』");
+
+                    UpdateMainMessage("ラナ：考えすぎ！？ジョーダンでしょ！？");
+
+                    UpdateMainMessage("アイン：いや、俺なりにだな・・・");
+
+                    UpdateMainMessage("ラナ：アンタから思考捨てちゃったら、バカの領域を超えたスーパーバカになるでしょ！？");
+
+                    UpdateMainMessage("アイン：いやいや・・・そこは、俺なりにだな・・・");
+
+                    UpdateMainMessage("ラナ：見えるもんも見えないって・・・いつも見えてないでしょ！？");
+
+                    UpdateMainMessage("アイン：いやいやいや・・・そこも、俺なりにいろいろとだな・・・");
+
+                    UpdateMainMessage("ラナ：結局それが、今回の件にどう結びついてるわけよ！？");
+
+                    UpdateMainMessage("ラナ：あーーーーーーっ！！！！！！");
+
+                    UpdateMainMessage("アイン：うぉおおぉ！？うるせえな、いきなり大声出すなっつうの。");
+
+                    UpdateMainMessage("ラナ：確かに今回、当たったわね。");
+
+                    UpdateMainMessage("アイン：ああ、まあな。看板ヒントを引き当てたぜ。");
+
+                    UpdateMainMessage("ラナ：でも・・・でも・・・");
+
+                    UpdateMainMessage("ラナ：もう良いわよ！！　バカアインなんか知らない！！");
+
+                    UpdateMainMessage("　　　『バグシイイイィィィ！！』（ラナのジェノサイドキックがアインの脇腹に炸裂）　　");
+
+                    UpdateMainMessage("アイン：ッボグゥ・・・なぜ・・・");
+
+                    UpdateMainMessage("ラナ：ええっと　「下３　上１２　左８」　だから・・・");
+
+                    UpdateMainMessage("ラナ：下側通路で３回レバー、上側で１２回レバー、左側で８回レバーやれって事ね♪");
+
+                    UpdateMainMessage("ラナ：簡単じゃない♪　とっとと行くわよ。ッホラホラ♪");
+
+                    UpdateMainMessage("アイン：神よ・・・このラナ・アミリアという人間に慈しみの心を・・・", true);
+                }
+            }
+            else if (we.dungeonEvent215 && !we.dungeonEvent219)
+            {
+                UpdateMainMessage("　　　　『  下３　上１２　左８  』", true);
+            }
+        }
+
+        // 知の部屋、メイン看板、サード：( >10 _6 <7 )  ( <11 ~3 )  ( _3 >7 )
+        public static void Message12003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            else if (we.dungeonEvent215 && we.dungeonEvent219 && !we.dungeonEvent220)
+            {
+                we.dungeonEvent220 = true;
+
+                UpdateMainMessage("ラナ：っあ、見てみてアイン。看板の内容が変わってるわよ♪");
+
+                UpdateMainMessage("　　　　『  ( >10 _6 <7 )  ( <11 ~3 )  ( _3 >7 )  』");
+
+                UpdateMainMessage("ラナ：っちょ・・・何よこれ？？？");
+
+                UpdateMainMessage("アイン：やっかいな内容だな・・・良く見せてくれ。");
+
+                UpdateMainMessage("アイン：・・・  ・・・");
+
+                UpdateMainMessage("ラナ：えっと・・・わかりそう？");
+
+                UpdateMainMessage("アイン：・・・  ・・・　いや。");
+
+                UpdateMainMessage("アイン：なんとなくだが。");
+
+                UpdateMainMessage("ラナ：そう？私はお手上げみたい。");
+
+                UpdateMainMessage("ラナ：頼んだわよ、アンタのバカ感性だけが頼りなんだから。");
+
+                UpdateMainMessage("アイン：それって褒めて無いよな？");
+
+                UpdateMainMessage("ラナ：ううん、褒めてるわよ♪");
+
+                UpdateMainMessage("アイン：サンキュー！任せておけって！　ッハッハッハ！");
+            }
+            else
+            {
+                if (we.dungeonEvent225)
+                {
+                    if (!we.dungeonEvent227)
+                    {
+                        if (we.AvailableThirdCharacter)
+                        {
+                            UpdateMainMessage("ランディス：よぉ、ザコアイン。ここか？");
+
+                            UpdateMainMessage("アイン：ああ、確かここで台座が突然出てきたんだ。");
+
+                            UpdateMainMessage("ラナ：突然の出来事でビックリしたわよ、ホント。");
+
+                            UpdateMainMessage("ランディス：やるじゃねぇか。たいしたもんだ。");
+
+                            UpdateMainMessage("ランディス：そっちの娘。直接関与は？");
+
+                            UpdateMainMessage("ラナ：っえ！？　私ですか！？");
+
+                            UpdateMainMessage("ラナ：い、いえ。私は外から見てただけでした。");
+
+                            UpdateMainMessage("ランディス：なら良い。");
+
+                            UpdateMainMessage("ランディス：おい、ザコアイン。");
+
+                            UpdateMainMessage("アイン：な、何だよ？");
+
+                            UpdateMainMessage("ランディス：この場所、終わってねえだろ。とっとと進めろ。");
+
+                            UpdateMainMessage("アイン：わ、分かってるって！今すぐ進めるさ！！");
+
+                            we.dungeonEvent227 = true;
+                        }
+                        else
+                        {
+                            UpdateMainMessage("台座はもうなくなってる", true);
+                        }
+                    }
+                    else
+                    {
+                        UpdateMainMessage("台座はもうなくなってる", true);
+                    }
+                }
+                else
+                {
+                    if (!we.dungeonEvent221 || !we.dungeonEvent222 || !we.dungeonEvent223)
+                    {
+                        UpdateMainMessage("　　　　『  ( >10 _6 <7 )  ( <11 ~3 )  ( _3 >7 )  』", true);
+                    }
+                    else
+                    {
+                        UpdateMainMessage("　　　　『  ( >10 _6 <7 )  ( <11 ~3 )  ( _3 >7 )  』");
+
+                        UpdateMainMessage("アイン：これ、分かったぜ。");
+
+                        UpdateMainMessage("ラナ：ホント？");
+
+                        UpdateMainMessage("アイン：今見てきた、部屋への通路ポイントだ。");
+
+                        UpdateMainMessage("アイン：まあ、見てろ。");
+
+                        GroundOne.StopDungeonMusic();
+
+                        UpdateMainMessage("　　　　『突如台座がアインの前に浮き上がった。直後、薄黄色い空間にアインが包まれた。』");
+
+                        UpdateMainMessage("　　　　『絶対試練：汝、答えを示せ。』");
+
+                        UpdateMainMessage("ラナ：っちょっと何これ？？アイン！？");
+
+                        UpdateMainMessage("アイン：大丈夫だ。任せとけ。");
+
+                        UpdateMainMessage("ラナ：アイン・・・頑張って・・・");
+
+                        GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin);
+                        using (TruthAnswer TA = new TruthAnswer())
+                        {
+                            TA.StartPosition = FormStartPosition.CenterScreen;
+                            TA.ShowDialog();
+                            GroundOne.StopDungeonMusic();
+
+                            if (TA.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                GroundOne.WE2.TruthAnswerSuccess = true;
+                                we.dungeonEvent224 = true;
+
+                                UpdateMainMessage("　　　　『空間が激しくフラッシュし、凝縮された空間へと連続的に小さくなる！！！』");
+
+                                UpdateMainMessage("　　　　『パパパパパパパ！！！！ッバシュウウウゥゥゥン！！！！！！！』");
+
+                                UpdateMainMessage("　　　　『空間は弾け飛んだ後、台座の前にアインの倒れた姿があった』");
+
+                                UpdateMainMessage("ラナ：アイン！！大丈夫！？");
+
+                                UpdateMainMessage("アイン：あ、ああ。大丈夫だ。イッツツツ・・・");
+
+                                UpdateMainMessage("ラナ：何・・・心配させちゃってんのよ！！");
+
+                                UpdateMainMessage("ラナ：アンタって本当にバカよ！！何やってんのよホントに！！！");
+
+                                UpdateMainMessage("アイン：わ、悪かったって。大丈夫だって言ってるじゃないか・・・");
+
+                                UpdateMainMessage("アイン：叩くなっつうの、いってぇって・・・");
+
+                                using (MessageDisplay md = new MessageDisplay())
+                                {
+                                    md.StartPosition = FormStartPosition.CenterParent;
+                                    md.Message = "アインとラナはしばらくその場で休息を取った。";
+                                    md.ShowDialog();
+                                }
+
+                                UpdateMainMessage("アイン：あの詩、全然聞いた事無いけどな。不思議と昔から知ってるような感じだったぜ。すげえ綺麗だった。");
+
+                                UpdateMainMessage("ラナ：でも、アインが選んでいた選択肢だけど");
+
+                                UpdateMainMessage("アイン：何だ、外から見えていたのか？");
+
+                                UpdateMainMessage("ラナ：ええ、見えるってもんじゃなかったわよ。");
+
+                                UpdateMainMessage("ラナ：文字そのものが空中に浮いててビックリしたんだけど・・・");
+
+                                UpdateMainMessage("アイン：っげ、そうだったのかよ？俺は全然周囲を把握できない状況だったしな。");
+
+                                UpdateMainMessage("ラナ：そんな事より、さっき順番に選択していた詩だけど。");
+
+                                UpdateMainMessage("アイン：なんだ？");
+
+                                UpdateMainMessage("ラナ：う～ん・・・多分私もその詩、知ってるわよ。");
+
+                                UpdateMainMessage("アイン：マジかよ！？");
+
+                                UpdateMainMessage("ラナ：私の母さんからよく聞かされていたわ。確かタイトルが・・・");
+
+                                UpdateMainMessage("ラナ：『神々の詩』よ。サブタイトルもあったと思うんだけど忘れちゃったわ。");
+
+                                UpdateMainMessage("アイン：神々の詩？へえ、そんなタイトルなんだ・・・");
+
+                                UpdateMainMessage("アイン：って、あれ？？　ラナ、お前知ってたのかよ！？");
+
+                                UpdateMainMessage("ラナ：文字を見てたら偶然思い出したわ。思い出に近いって感じかしら。");
+
+                                UpdateMainMessage("ラナ：私とアインが小さい頃、私の母さんに歌ってもらったヤツよ。覚えてない？");
+
+                                UpdateMainMessage("アイン：そうだったっけ・・・全然覚えに無いが・・・");
+
+                                UpdateMainMessage("アイン：そうだな、昔から知ってるって感覚は、そういう事か。");
+
+                                UpdateMainMessage("アイン：なあ、一辺戻るか？　町へ。");
+
+                                UpdateMainMessage("ラナ：別に良いけど、どうかしたわけ？");
+
+                                UpdateMainMessage("アイン：何かちょっと気になる事があってな。途中で悪いけど。");
+
+                                UpdateMainMessage("ラナ：ん、良いわよ。じゃ戻りましょ♪");
+
+                                UpdateMainMessage("アイン：じゃ、使うぜ！　遠見の青水晶。");
+
+                                CallHomeTown();
+                            }
+                            else
+                            {
+                                GroundOne.WE2.TruthAnswerFail = true;
+
+                                UpdateMainMessage("アイン：駄目だ・・・何かが違う・・・");
+
+                                UpdateMainMessage("アイン：ひょっとして・・・今のは・・・確か・・・");
+
+                                UpdateMainMessage("アイン：やべ・・・何か頭が・・・ッグ・・・");
+
+                                UpdateMainMessage("アイン：・・・　・・・　・・・");
+
+                                UpdateMainMessage("アイン：・・・　・・・");
+
+                                UpdateMainMessage("アイン：・・・");
+
+                                UpdateMainMessage(" ～　THE　END　～　（記憶の断片）");
+
+                                using (ESCMenu esc = new ESCMenu())
+                                {
+                                    esc.MC = this.MC;
+                                    esc.SC = this.SC;
+                                    esc.TC = this.TC;
+                                    esc.WE = this.we;
+                                    esc.KnownTileInfo = null;
+                                    esc.KnownTileInfo2 = null;
+                                    esc.KnownTileInfo3 = null;
+                                    esc.KnownTileInfo4 = null;
+                                    esc.KnownTileInfo5 = null;
+                                    esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
+                                    esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
+                                    esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
+                                    esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
+                                    esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
+                                    esc.StartPosition = FormStartPosition.CenterParent;
+                                    esc.TruthStory = true;
+                                    esc.OnlySave = true;
+                                    esc.ShowDialog();
+                                }
+
+                                this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
         #endregion
 
         #region "ホームタウン"
