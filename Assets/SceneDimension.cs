@@ -132,6 +132,7 @@ namespace DungeonPlayer
             leveUp = false;
             upPoint = 0;
             cumultivaLvUpValue = 0;
+
             Application.LoadLevelAdditive(Database.TruthStatusPlayer);
         }
 
