@@ -138,24 +138,42 @@ namespace DungeonPlayer
 
         public static void ReInitializeGroundOne()
         {
-            UnityEngine.Object.DestroyObject(GroundOne.MC);
+            GameObject.DestroyObject(MC);
             MC = null;
+            GameObject.DestroyObject(SC);
             SC = null;
+            GameObject.DestroyObject(TC);
             TC = null;
+            GameObject.DestroyObject(WE);
             WE = null;
+            GameObject.DestroyObject(WE2);
             WE2 = null;
+            GameObject.DestroyObject(objMC);
             objMC = null;
+            GameObject.DestroyObject(objSC);
             objSC = null;
+            GameObject.DestroyObject(objTC);
             objTC = null;
+            GameObject.DestroyObject(objWE);
             objWE = null;
+            GameObject.DestroyObject(objWE2);
             objWE2 = null;
+            GameObject.DestroyObject(ShadowMC);
             ShadowMC = null;
+            GameObject.DestroyObject(ShadowSC);
             ShadowSC = null;
+            GameObject.DestroyObject(ShadowTC);
             ShadowTC = null;
+            GameObject.DestroyObject(shadowWE);
             shadowWE = null;
+            GameObject.DestroyObject(shadowWE2);
             shadowWE2 = null;
+            GameObject.DestroyObject(sound);
+            GameObject.DestroyObject(soundSource);
             sound = null;
             soundSource = null;
+            GameObject.DestroyObject(bgm);
+            GameObject.DestroyObject(bgmSource);
             bgm = null;
             bgmSource = null;
             Truth_KnownTileInfo = null;

@@ -89,6 +89,7 @@ namespace DungeonPlayer
         public static void JumpToTitle()
         {
             GroundOne.ReInitializeGroundOne();
+            GroundOne.StopDungeonMusic();
             Application.LoadLevel(Database.Title);
         }
 
@@ -168,7 +169,6 @@ namespace DungeonPlayer
         public static void Back(MotherForm scene)
         {
             string sceneName = scene.GetType().Name;
-            Debug.Log("sceneName: " + sceneName);
             if (GroundOne.ParentScene != null)
             {
                 GroundOne.ParentScene.SceneBack();
