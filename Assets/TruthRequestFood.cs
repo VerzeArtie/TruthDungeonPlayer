@@ -351,9 +351,8 @@ namespace DungeonPlayer
                 EatFood(250, 250, 0, 0, 250);
             }
 
-            Application.UnloadLevel(Database.TruthRequestFood);
             ((TruthHomeTown)GroundOne.ParentScene).currentRequestFood = this.CurrentSelect;
-            GroundOne.ParentScene.SceneBack();
+            SceneDimension.Back(this);
         }
 
         private void EatFood(int strUp, int aglUp, int intUp, int stmUp, int mindUp)

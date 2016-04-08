@@ -7039,21 +7039,18 @@ namespace DungeonPlayer
             }
             // System.Threading.Thread.Sleep(1000);
             GroundOne.BattleResult = GroundOne.battleResult.Abort;
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthBattleEnemy);
+            SceneDimension.Back(this);
         }
 
         public void GameOverYes_Click()
         {
             GroundOne.BattleResult = GroundOne.battleResult.Retry;
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthBattleEnemy);
+            SceneDimension.Back(this);
         }
         public void GameOverNo_Click()
         {
             GroundOne.BattleResult = GroundOne.battleResult.Ignore;
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthBattleEnemy);
+            SceneDimension.Back(this);
         }
 
         public void OnMouseEnterImage(Button sender)
@@ -7687,7 +7684,7 @@ namespace DungeonPlayer
                         else
                         {
                             // バックパックがいっぱいの場合ステータス画面で不要アイテムを捨てさせます。
-                            SceneDimension.CallTruthStatusPlayer(Database.TruthBattleEnemy, this, true, string.Empty);
+                            SceneDimension.CallTruthStatusPlayer(this, true, string.Empty);
                             return; // scenebackさせない
 
                         }
@@ -7697,8 +7694,7 @@ namespace DungeonPlayer
             }
 
             Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthBattleEnemy);
+            SceneDimension.Back(this);
         }
 
         private void GetExpAndGold()

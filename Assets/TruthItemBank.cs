@@ -343,8 +343,7 @@ namespace DungeonPlayer
         public void tapClose()
         {
             GroundOne.WE.UpdateItemBankData(items, stacks);
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthItemBank);
+            SceneDimension.Back(this);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Body><DateTime>4/2/2016 8:46:44 PM</DateTime>
+<Body><DateTime>4/8/2016 10:49:55 AM</DateTime>
 <TruthWorldEnvironment>
 <SeekerEnd>False</SeekerEnd>
 <SeekerEndingRoll>False</SeekerEndingRoll>
@@ -84,9 +84,9 @@
 <SeekerEvent604>False</SeekerEvent604>
 <SeekerEvent603>False</SeekerEvent603>
 <SeekerEvent602>False</SeekerEvent602>
-<SeekerEvent601>True</SeekerEvent601>
+<SeekerEvent601>False</SeekerEvent601>
 <AutoSaveInfo>False</AutoSaveInfo>
-<SeekerEvent511>True</SeekerEvent511>
+<SeekerEvent511>False</SeekerEvent511>
 <SeekerEvent510>False</SeekerEvent510>
 <SeekerEvent509>False</SeekerEvent509>
 <SeekerEvent508_fail>False</SeekerEvent508_fail>
@@ -104,9 +104,9 @@
 <StartSeeker>False</StartSeeker>
 <SelectFalseStatue>False</SelectFalseStatue>
 <DungeonEvent1>False</DungeonEvent1>
-<RealWorld>True</RealWorld>
+<RealWorld>False</RealWorld>
 <AvailableArcheTypeCommand>False</AvailableArcheTypeCommand>
-<AvailableMixSpellSkill>True</AvailableMixSpellSkill>
+<AvailableMixSpellSkill>False</AvailableMixSpellSkill>
 <PracticeSwordCount>0</PracticeSwordCount>
 <TruthKey5>False</TruthKey5>
 <TruthKey4>False</TruthKey4>
@@ -310,8 +310,8 @@
 <FoodMaterial_46>0</FoodMaterial_46>
 <FoodMaterial_47>0</FoodMaterial_47>
 <FoodMaterial_48>0</FoodMaterial_48>
-<EquipMixtureDay_11>1</EquipMixtureDay_11>
-<EquipMixtureDay_12>1</EquipMixtureDay_12>
+<EquipMixtureDay_11>0</EquipMixtureDay_11>
+<EquipMixtureDay_12>0</EquipMixtureDay_12>
 <EquipMixtureDay_13>0</EquipMixtureDay_13>
 <EquipMixtureDay_14>0</EquipMixtureDay_14>
 <EquipMixtureDay_15>0</EquipMixtureDay_15>
@@ -325,7 +325,7 @@
 <EquipMixtureDay_32>0</EquipMixtureDay_32>
 <EquipMixtureDay_33>0</EquipMixtureDay_33>
 <EquipMixtureDay_34>0</EquipMixtureDay_34>
-<EquipMixtureDay_35>1</EquipMixtureDay_35>
+<EquipMixtureDay_35>0</EquipMixtureDay_35>
 <EquipMixtureDay_36>0</EquipMixtureDay_36>
 <EquipMixtureDay_37>0</EquipMixtureDay_37>
 <EquipMixtureDay_38>0</EquipMixtureDay_38>
@@ -334,7 +334,7 @@
 <EquipMixtureDay_43>0</EquipMixtureDay_43>
 <EquipMixtureDay_44>0</EquipMixtureDay_44>
 <EquipMixtureDay_45>0</EquipMixtureDay_45>
-<EquipMixtureDay_46>1</EquipMixtureDay_46>
+<EquipMixtureDay_46>0</EquipMixtureDay_46>
 <EquipMixtureDay_47>0</EquipMixtureDay_47>
 <EquipMixtureDay_48>0</EquipMixtureDay_48>
 <EquipMixtureDay_49>0</EquipMixtureDay_49>

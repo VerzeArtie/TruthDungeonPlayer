@@ -197,15 +197,7 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
-            if (GroundOne.CallBattleSettingFromBattleEnemy)
-            {
-                GroundOne.ParentScene.SceneBack();
-                Application.UnloadLevel(Database.TruthBattleSetting);
-            }
-            else
-            {
-                SceneDimension.Back();
-            }
+            SceneDimension.Back(this);
         }
 
         public void ViewCommandContent(Button sender)

@@ -27,8 +27,7 @@ namespace DungeonPlayer
 
         public void tapClose()
         {
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthItemDesc);
+            SceneDimension.Back(this);
         }
     }
 }

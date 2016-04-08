@@ -3168,50 +3168,20 @@ namespace DungeonPlayer
 
             messageList.Add(Database.RARE_EARRING_OF_LANA); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
 
-            if (GroundOne.WE2.TruthBadEnd1)
-            {
-                messageList.Add("アイン：ラナのイヤリングじゃねえか・・・何でこんな物が・・・"); eventList.Add(ActionEvent.None);
-            }
-            else
-            {
-                messageList.Add("アイン：何だ、ラナのやつ。何でまたこんな所に落としてるんだ。"); eventList.Add(ActionEvent.None);
-            }
+            messageList.Add("アイン：何だ、ラナのやつ。何でまたこんな所に落としてるんだ。"); eventList.Add(ActionEvent.None);
 
-            if (GroundOne.WE2.TruthBadEnd1)
-            {
-                messageList.Add("アイン：・・・　何であるんだっけ　・・・　ラナが落としたのか？"); eventList.Add(ActionEvent.None);
-            }
-            else
-            {
-                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
-            }
+            messageList.Add("アイン：しょうがねえ。後で渡しに行ってやるか。"); eventList.Add(ActionEvent.None);
 
-            if (GroundOne.WE2.TruthBadEnd1)
-            {
-                messageList.Add("アイン：いいや、そんなワケ無えよな・・・じゃあ何でだ・・・"); eventList.Add(ActionEvent.None);
-            }
-            else
-            {
-                messageList.Add("アイン：しょうがねえ。後で渡しに行ってやるか。"); eventList.Add(ActionEvent.None);
-            }
-
-            if (GroundOne.WE2.TruthBadEnd1)
-            {
-                messageList.Add("アイン：まあいいか。とりあえず、目覚めたわけだし、町にでも出てみるか！"); eventList.Add(ActionEvent.None);
-            }
-            else
-            {
-                messageList.Add("アイン：おっしゃ、せっかく目覚めたわけだし、町にでも出てみるか。"); eventList.Add(ActionEvent.None);
-            }
+            messageList.Add("アイン：おっしゃ、せっかく目覚めたわけだし、町にでも出てみるか。"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
 
             messageList.Add("アイン：さて、何すっかな。"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.Truth_CommunicationFirstHomeTown = true;
             GroundOne.WE.AlreadyRest = true; // 朝起きたときからスタートとする。
-
-            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
         }
         
         // 看板「始まりの地」を見たとき

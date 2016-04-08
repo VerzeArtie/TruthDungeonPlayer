@@ -11,7 +11,6 @@ namespace DungeonPlayer
 {
     public class SaveLoad : MotherForm
     {
-        public GameObject Background;
         public GameObject back_SystemMessage;
         public Text systemMessage;
         public Text titleLabel;
@@ -42,7 +41,7 @@ namespace DungeonPlayer
             if (GroundOne.SaveAndExit)
             {
                 RealWorldSave();
-                Application.UnloadLevel(Database.SaveLoad);
+                SceneDimension.Back(this);
                 return;
             }
 
@@ -1117,9 +1116,10 @@ namespace DungeonPlayer
 
             // s 後編編集
 
-            GroundOne.MC.DeleteBackPackAll();
-            GroundOne.SC.DeleteBackPackAll();
-            GroundOne.TC.DeleteBackPackAll();
+            if (GroundOne.MC != null) { GroundOne.MC.DeleteBackPackAll(); }
+            if (GroundOne.SC != null) { GroundOne.SC.DeleteBackPackAll(); }
+            if (GroundOne.TC != null) { GroundOne.TC.DeleteBackPackAll(); }
+
             for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
             {
                 XmlNodeList temp = xml.GetElementsByTagName("BackPack" + ii.ToString());
@@ -1474,11 +1474,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    if (GroundOne.ParentScene != null)
-                    {
-                        GroundOne.ParentScene.SceneBack();
-                    }
-                    Application.UnloadLevel(Database.SaveLoad);
+                    SceneDimension.Back(this);
                 }
             }
         }

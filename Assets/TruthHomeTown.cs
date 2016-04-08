@@ -887,47 +887,47 @@ namespace DungeonPlayer
                 {
                     systemMessage.text = this.nowMessage[this.nowReading];
                     systemMessagePanel.SetActive(true);
-                    if (this.nowMessage[this.nowReading] == Database.Message_DuelAvailable)
+                }
+                else if (this.nowMessage[this.nowReading] == Database.Message_DuelAvailable)
+                {
+                    buttonDuel.gameObject.SetActive(true);
+                }
+                else if (this.nowMessage[this.nowReading] == Database.Message_BattleSettingAvailable)
+                {
+                    buttonBattleSetting.gameObject.SetActive(true);
+                }
+                else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField)
+                {
+                    buttonHanna.gameObject.SetActive(false);
+                    buttonDungeon.gameObject.SetActive(false);
+                    buttonRana.gameObject.SetActive(false);
+                    buttonGanz.gameObject.SetActive(false);
+                    buttonPotion.gameObject.SetActive(false);
+                    buttonDuel.gameObject.SetActive(false);
+                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
+                }
+                else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField_Back)
+                {
+                    if (!GroundOne.WE.AlreadyRest)
                     {
-                        buttonDuel.gameObject.SetActive(true);
+                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
                     }
-                    else if (this.nowMessage[this.nowReading] == Database.Message_BattleSettingAvailable)
+                    else
                     {
-                        buttonBattleSetting.gameObject.SetActive(true);
+                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
                     }
-                    else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField)
-                    {
-                        buttonHanna.gameObject.SetActive(false);
-                        buttonDungeon.gameObject.SetActive(false);
-                        buttonRana.gameObject.SetActive(false);
-                        buttonGanz.gameObject.SetActive(false);
-                        buttonPotion.gameObject.SetActive(false);
-                        buttonDuel.gameObject.SetActive(false);
-                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
-                    }
-                    else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField_Back)
-                    {
-                        if (!GroundOne.WE.AlreadyRest)
-                        {
-                            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
-                        }
-                        else
-                        {
-                            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
-                        }
-                        buttonHanna.gameObject.SetActive(true);
-                        buttonDungeon.gameObject.SetActive(true);
-                        buttonRana.gameObject.SetActive(true);
-                        buttonGanz.gameObject.SetActive(true);
-                        buttonPotion.gameObject.SetActive(true);
-                        buttonDuel.gameObject.SetActive(true);
-                    }
-                    else if (this.nowMessage[this.nowReading] == Database.Message_GateAvailable)
-                    {
-                        buttonShinikia.gameObject.SetActive(true);
-                        GroundOne.WE.AvailableBackGate = true;
-                        GroundOne.WE.alreadyCommunicateCahlhanz = true; // カール爵に教えてもらったばかりのため、Trueを指定しておく。
-                    }
+                    buttonHanna.gameObject.SetActive(true);
+                    buttonDungeon.gameObject.SetActive(true);
+                    buttonRana.gameObject.SetActive(true);
+                    buttonGanz.gameObject.SetActive(true);
+                    buttonPotion.gameObject.SetActive(true);
+                    buttonDuel.gameObject.SetActive(true);
+                }
+                else if (this.nowMessage[this.nowReading] == Database.Message_GateAvailable)
+                {
+                    buttonShinikia.gameObject.SetActive(true);
+                    GroundOne.WE.AvailableBackGate = true;
+                    GroundOne.WE.alreadyCommunicateCahlhanz = true; // カール爵に教えてもらったばかりのため、Trueを指定しておく。
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
                 {
@@ -948,6 +948,10 @@ namespace DungeonPlayer
                 {
                     mainMessage.text = "";
                 }
+                else if (current == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
+                {
+                    mainMessage.text = "";
+                }
                 else
                 {
                     systemMessagePanel.SetActive(false);
@@ -958,6 +962,7 @@ namespace DungeonPlayer
                 if (current == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
                 {
                     GetItemFullCheck(GroundOne.MC, this.nowMessage[this.nowReading]);
+                    this.nowMessage[this.nowReading] = "";
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownBlackOut)
                 {
@@ -1147,6 +1152,10 @@ namespace DungeonPlayer
                 else if (current == MessagePack.ActionEvent.HomeTownShowActiveSkillSpell)
                 {
                     ShowActiveSkillSpell(GroundOne.MC, this.nowMessage[this.nowReading]);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic01)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
                 }
                 else if (current == MessagePack.ActionEvent.PlayMusic13)
                 {
@@ -2491,7 +2500,7 @@ namespace DungeonPlayer
 
         public void CallStatusPlayer()
         {
-            SceneDimension.CallTruthStatusPlayer(Database.TruthHomeTown, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
+            SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
         }
 
         private void ShowActiveSkillSpell(MainCharacter player, string commandName)
@@ -2511,7 +2520,7 @@ namespace DungeonPlayer
             {
                 cannotTrash = itemName;
             }
-            SceneDimension.CallTruthStatusPlayer(Database.TruthHomeTown, this, true, cannotTrash);
+            SceneDimension.CallTruthStatusPlayer(this, true, cannotTrash);
             mainMessage.text = "";
         }
 

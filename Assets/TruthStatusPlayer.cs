@@ -29,7 +29,6 @@ namespace DungeonPlayer
         public Text labelFirstPlayerLife;
         public Text labelSecondPlayerLife;
         public Text labelThirdPlayerLife;
-        public Camera cam;
         public Text mainMessage;
         public Text txtName;
         public Text txtLevel;
@@ -135,9 +134,8 @@ namespace DungeonPlayer
 
             this.txtGold.text = GroundOne.MC.Gold.ToString();
 
-            this.cam.backgroundColor = GroundOne.CurrentStatusView;
-            Debug.Log("cam backcolor: " + this.cam.backgroundColor.ToString());
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            this.Background.GetComponent<Image>().color = GroundOne.CurrentStatusView;
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);
 
@@ -280,12 +278,12 @@ namespace DungeonPlayer
 
             if (this.usingToomiBlueSuisyou)
             {
-                SceneDimension.Back();
+                SceneDimension.Back(this);
             }
             #region "Overshifting"
             if (this.usingOvershifting)
             {
-                MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+                MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
                 if (this.usingOvershiftingFirstSleep == false)
                 {
                     this.usingOvershiftingFirstSleep = true;
@@ -384,6 +382,16 @@ namespace DungeonPlayer
             #endregion
         }
 
+        public override void SceneBack()
+        {
+            base.SceneBack();
+
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
+            SettingCharacterData(player);
+            RefreshPartyMembersBattleStatus(player);
+            RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
+        }
+
         public void tapClose()
         {
             if (GroundOne.OnlySelectTrash)
@@ -400,7 +408,7 @@ namespace DungeonPlayer
 
         public void SpellSkillDesc_Close_Click()
         {
-            if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.cam.backgroundColor) == GroundOne.MC)
+            if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color) == GroundOne.MC)
             {
                 #region "アイン・レベルアップ習得表"
                 if ((GroundOne.MC.Level >= 3) && (!GroundOne.MC.StraightSmash)) { GroundOne.MC.AvailableSkill = true; GroundOne.MC.StraightSmash = true; ShowActiveSkillSpell(GroundOne.MC, Database.STRAIGHT_SMASH); }
@@ -464,11 +472,11 @@ namespace DungeonPlayer
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
                     GroundOne.UpPoint = 0;
-                    SceneDimension.Back();
+                    SceneDimension.Back(this);
                 }
                 #endregion
             }
-            else if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.cam.backgroundColor) == GroundOne.SC)
+            else if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color) == GroundOne.SC)
             {
                 #region "ラナ・レベルアップ習得表"
                 if ((GroundOne.SC.Level >= 3) && (!GroundOne.SC.IceNeedle)) { GroundOne.SC.AvailableMana = true; GroundOne.SC.IceNeedle = true; ShowActiveSkillSpell(GroundOne.SC, Database.ICE_NEEDLE); }
@@ -531,11 +539,11 @@ namespace DungeonPlayer
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
                     GroundOne.UpPoint = 0;
-                    SceneDimension.Back();
+                    SceneDimension.Back(this);
                 }
                 #endregion
             }
-            else if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.cam.backgroundColor) == GroundOne.TC)
+            else if (GroundOne.LevelUp && Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color) == GroundOne.TC)
             {
                 // ランディスはレベル上限MAX35からスタートのため、習得はない。
                 #region "ヴェルゼ・レベルアップ習得表"
@@ -580,13 +588,13 @@ namespace DungeonPlayer
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
                     GroundOne.UpPoint = 0;
-                    SceneDimension.Back();
+                    SceneDimension.Back(this);
                 }
                 #endregion
             }
             else
             {
-                SceneDimension.Back();
+                SceneDimension.Back(this);
             }
         }
 
@@ -650,7 +658,7 @@ namespace DungeonPlayer
 
             this.ItemChoiced = true;
 
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
 
             if (player.Dead)
@@ -1396,7 +1404,7 @@ namespace DungeonPlayer
             groupChoice.SetActive(false);
             //backpackFilter.SetActive(false); // ExecHandOverの続きがある。
 
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter) // 1人しかいない場合、「わたす」コマンドは対象外。
             {
                 mainMessage.text = player.GetCharacterSentence(2037);
@@ -1441,7 +1449,7 @@ namespace DungeonPlayer
 
             groupChoice.SetActive(false);
             backpackFilter.SetActive(false);
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
             if (TruthItemAttribute.CheckImportantItem(backpackData.Name) == TruthItemAttribute.Transfer.Any)
             {
@@ -1505,7 +1513,7 @@ namespace DungeonPlayer
 
             groupWhoTarget.SetActive(false);
             backpackFilter.SetActive(false);
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
 
             MainCharacter target = null;
@@ -1573,7 +1581,7 @@ namespace DungeonPlayer
 
             groupTarget.SetActive(false);
             backpackFilter.SetActive(false);
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             ItemBackPack backpackData = new ItemBackPack(currentSelect.text);
 
             MainCharacter target = null;
@@ -1631,7 +1639,7 @@ namespace DungeonPlayer
 
         public void StatusPlayer_Click(Text sender)
         {
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
 
             if (sender.text == "")
             {
@@ -2332,7 +2340,7 @@ namespace DungeonPlayer
 
         public void btnSomeSpellSkill_Click(Text sender)
         {
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
 
             #region "使用不可のブロック"
             if (player.Dead)
@@ -2466,7 +2474,7 @@ namespace DungeonPlayer
 
         private void ExecSomeSpellSkill(Text sender, MainCharacter target)
         {
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
 
             if (((sender).text == Database.FRESH_HEAL_JP) ||
                 ((sender).text == Database.LIFE_TAP_JP) ||
@@ -2527,7 +2535,7 @@ namespace DungeonPlayer
         }
         public void subWeapon_Click(Text sender)
         {
-            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             if (targetPlayer.MainWeapon != null)
             {
                 if ((targetPlayer.MainWeapon.Type == ItemBackPack.ItemType.Weapon_Rod) ||
@@ -2565,7 +2573,7 @@ namespace DungeonPlayer
         // equipType: 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
         private void ChangeEquipment(int equipType)
         {
-            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             if (GroundOne.LevelUp)
             {
                 mainMessage.text = targetPlayer.GetCharacterSentence(2002);
@@ -2578,7 +2586,7 @@ namespace DungeonPlayer
                 return;
             }
 
-            SceneDimension.CallTruthSelectEquipment(Database.TruthStatusPlayer, equipType);
+            SceneDimension.CallTruthSelectEquipment(this, equipType);
         }
         
         public void FirstChara_Click()
@@ -2599,7 +2607,7 @@ namespace DungeonPlayer
             }
             else
             {
-                this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+                this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
                 GroundOne.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.MC);
                 RefreshPartyMembersBattleStatus(GroundOne.MC);
@@ -2624,7 +2632,7 @@ namespace DungeonPlayer
             }
             else
             {
-                this.cam.backgroundColor = GroundOne.SC.PlayerStatusColor;
+                this.Background.GetComponent<Image>().color = GroundOne.SC.PlayerStatusColor;
                 GroundOne.CurrentStatusView = GroundOne.SC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.SC);
                 RefreshPartyMembersBattleStatus(GroundOne.SC);
@@ -2649,7 +2657,7 @@ namespace DungeonPlayer
             }
             else
             {
-                this.cam.backgroundColor = GroundOne.TC.PlayerStatusColor;
+                this.Background.GetComponent<Image>().color = GroundOne.TC.PlayerStatusColor;
                 GroundOne.CurrentStatusView = GroundOne.TC.PlayerStatusColor;
                 SettingCharacterData(GroundOne.TC);
                 RefreshPartyMembersBattleStatus(GroundOne.TC);
@@ -2658,7 +2666,7 @@ namespace DungeonPlayer
 
         public void ChangeViewButton_Click(int viewNumber)
         {
-            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter targetPlayer = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             if (GroundOne.LevelUp)
             {
                 mainMessage.text = targetPlayer.GetCharacterSentence(2002);
@@ -2767,19 +2775,19 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.MC.Strength++;
                     strength.text = GroundOne.MC.Strength.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.MC);
                 }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.SC.Strength++;
                     strength.text = GroundOne.SC.Strength.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.SC);
                 }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.TC.Strength++;
                     strength.text = GroundOne.TC.Strength.ToString();
@@ -2801,19 +2809,19 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.MC.Agility++;
                     agility.text = GroundOne.MC.Agility.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.MC);
                 }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.SC.Agility++;
                     agility.text = GroundOne.SC.Agility.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.SC);
                 }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.TC.Agility++;
                     agility.text = GroundOne.TC.Agility.ToString();
@@ -2835,7 +2843,7 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.MC.Intelligence++;
                     intelligence.text = GroundOne.MC.Intelligence.ToString();
@@ -2845,7 +2853,7 @@ namespace DungeonPlayer
                     }
                     RefreshPartyMembersBattleStatus(GroundOne.MC);
                 }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.SC.Intelligence++;
                     intelligence.text = GroundOne.SC.Intelligence.ToString();
@@ -2855,7 +2863,7 @@ namespace DungeonPlayer
                     }
                     RefreshPartyMembersBattleStatus(GroundOne.SC);
                 }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.TC.Intelligence++;
                     intelligence.text = GroundOne.TC.Intelligence.ToString();
@@ -2881,21 +2889,21 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.MC.Stamina++;
                     stamina.text = GroundOne.MC.Stamina.ToString();
                     this.life.text = GroundOne.MC.CurrentLife.ToString() + " / " + GroundOne.MC.MaxLife.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.MC);
                 }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.SC.Stamina++;
                     stamina.text = GroundOne.SC.Stamina.ToString();
                     this.life.text = GroundOne.SC.CurrentLife.ToString() + " / " + GroundOne.SC.MaxLife.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.SC);
                 }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.TC.Stamina++;
                     stamina.text = GroundOne.TC.Stamina.ToString();
@@ -2919,19 +2927,19 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.cam.backgroundColor)
+                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.MC.Mind++;
                     mind.text = GroundOne.MC.Mind.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.MC);
                 }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.SC.Mind++;
                     mind.text = GroundOne.SC.Mind.ToString();
                     RefreshPartyMembersBattleStatus(GroundOne.SC);
                 }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.cam.backgroundColor)
+                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
                 {
                     GroundOne.TC.Mind++;
                     mind.text = GroundOne.TC.Mind.ToString();
@@ -2989,7 +2997,7 @@ namespace DungeonPlayer
 
         public void plus1_Click(Text sender)
         {
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             int plus = 0;
             if (sender.text == "+1") { plus = 1; }
             else if (sender.text == "+10") { plus = 10; }
@@ -3027,7 +3035,7 @@ namespace DungeonPlayer
 
         public void btnUpReset_Click()
         {
-            MainCharacter player = Method.GetCurrentPlayer(this.cam.backgroundColor);
+            MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             ResetParameter(ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);

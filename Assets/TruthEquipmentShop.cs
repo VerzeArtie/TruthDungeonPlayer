@@ -178,7 +178,7 @@ namespace DungeonPlayer
             {
                 execClose = false;
                 System.Threading.Thread.Sleep(1000);
-                SceneDimension.Back();
+                SceneDimension.Back(this);
             }
             #endregion
         }

@@ -9,16 +9,15 @@ namespace DungeonPlayer
 {
     public class MotherForm : MonoBehaviour
     {
+        public GameObject Background;
+        public Text yesnoSystemMessage;
+        public GameObject groupYesnoSystemMessage;
+        public GameObject Filter;
+        public ItemBackPack GettingNewItem;
+
         public virtual void Start()
         {
-            if (GroundOne.InitializeGroundOne())
-            {
-                DontDestroyOnLoad(GroundOne.MC);
-                DontDestroyOnLoad(GroundOne.SC);
-                DontDestroyOnLoad(GroundOne.TC);
-                DontDestroyOnLoad(GroundOne.WE);
-                DontDestroyOnLoad(GroundOne.WE2);
-            }
+            GroundOne.InitializeGroundOne();
         }
 
         public virtual void Update()
@@ -29,11 +28,6 @@ namespace DungeonPlayer
             }
         }
         
-        public Text yesnoSystemMessage;
-        public GameObject groupYesnoSystemMessage;
-        public GameObject Filter;
-        public ItemBackPack GettingNewItem;
-
         public virtual void SceneBack()
         {
             if (this.Filter != null)
@@ -107,7 +101,7 @@ namespace DungeonPlayer
         public void GetNewItemAndBack()
         {
             GetNewItem(this.GettingNewItem);
-            SceneDimension.Back();
+            SceneDimension.Back(this);
         }
 
         public bool GetNewItem(ItemBackPack newItem)

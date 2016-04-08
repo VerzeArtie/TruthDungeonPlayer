@@ -343,8 +343,7 @@ namespace DungeonPlayer
 
         public void Close_Clock()
         {
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthSkillSpellDesc);
+            SceneDimension.Back(this);
         }
     }
 }

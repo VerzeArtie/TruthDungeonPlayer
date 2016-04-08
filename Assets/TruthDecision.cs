@@ -22,16 +22,14 @@ namespace DungeonPlayer
         public void button1_Click()
         {
             GroundOne.DecisionChoice = 1;
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthDecision);
+            SceneDimension.Back(this);
         }
 
         // 2
         public void button2_Click()
         {
             GroundOne.DecisionChoice = 2;
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthDecision);
+            SceneDimension.Back(this);
         }
     }
 }

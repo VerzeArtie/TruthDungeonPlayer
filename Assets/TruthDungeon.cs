@@ -1042,17 +1042,17 @@ namespace DungeonPlayer
                 // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
                 if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
                 {
-                    SceneDimension.CallTruthStatusPlayer(Database.TruthDungeon, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
+                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
                     return;
                 }
                 else if (GroundOne.Player2Levelup && GroundOne.WE.AvailableSecondCharacter)
                 {
-                    SceneDimension.CallTruthStatusPlayer(Database.TruthDungeon, ref GroundOne.Player2Levelup, ref GroundOne.Player2UpPoint, ref GroundOne.Player2CumultiveLvUpValue, GroundOne.SC.PlayerStatusColor);
+                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player2Levelup, ref GroundOne.Player2UpPoint, ref GroundOne.Player2CumultiveLvUpValue, GroundOne.SC.PlayerStatusColor);
                     return;
                 }
                 else if (GroundOne.Player3Levelup && GroundOne.WE.AvailableThirdCharacter)
                 {
-                    SceneDimension.CallTruthStatusPlayer(Database.TruthDungeon, ref GroundOne.Player3Levelup, ref GroundOne.Player3UpPoint, ref GroundOne.Player3CumultiveLvUpValue, GroundOne.TC.PlayerStatusColor);
+                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player3Levelup, ref GroundOne.Player3UpPoint, ref GroundOne.Player3CumultiveLvUpValue, GroundOne.TC.PlayerStatusColor);
                     return;
                 }
 
@@ -7446,8 +7446,7 @@ namespace DungeonPlayer
 
         public void tapStatus()
         {
-            SceneDimension.playbackScene.Add("TruthDungeon");
-            Application.LoadLevel("TruthStatusPlayer");
+            SceneDimension.CallTruthStatusPlayer(this, false, "");
         }
         public void tapBattleSetting()
         {

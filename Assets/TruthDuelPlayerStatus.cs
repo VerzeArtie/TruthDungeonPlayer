@@ -158,8 +158,7 @@ namespace DungeonPlayer
         
         public void tapExit()
         {
-            GroundOne.ParentScene.SceneBack();
-            Application.UnloadLevel(Database.TruthDuelPlayerStatus);
+            SceneDimension.Back(this);
         }
 
         public void StatusPlayer_MouseEnter(Text sender)

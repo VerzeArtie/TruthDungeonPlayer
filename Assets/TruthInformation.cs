@@ -692,7 +692,7 @@ namespace DungeonPlayer
         }
         public void tapClose()
         {
-            Application.UnloadLevel(Database.TruthInformation);
+            SceneDimension.Back(this);
         }
     }
 }

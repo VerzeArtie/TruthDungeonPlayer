@@ -7,8 +7,6 @@ namespace DungeonPlayer
 {
     public static class SceneDimension
     {
-        public static List<string> playbackScene = new List<string>();
-
         public static void CallTruthDuelPlayerStatus(MotherForm scene, string duelPlayerName)
         {
             GroundOne.ParentScene = scene;
@@ -78,7 +76,6 @@ namespace DungeonPlayer
 
         public static void JumpToTruthHomeTown(string src)
         {
-            playbackScene.Clear();
             SceneDimension.Go(src, Database.TruthHomeTown);
         }
 
@@ -86,20 +83,20 @@ namespace DungeonPlayer
         {
             GroundOne.WE.AlreadyShownEvent = false;
             GroundOne.GotoDownstair = gotoDownstair;
-            playbackScene.Clear();
             SceneDimension.Go(src, Database.TruthDungeon);
         }
 
         public static void JumpToTitle()
         {
-            playbackScene.Clear();
+            GroundOne.ReInitializeGroundOne();
             Application.LoadLevel(Database.Title);
         }
 
-        public static void CallTruthSelectEquipment(string src, int equipType)
+        public static void CallTruthSelectEquipment(MotherForm scene, int equipType)
         {
             GroundOne.EquipType = equipType;
-            SceneDimension.Go(src, Database.TruthSelectEquipment);
+            GroundOne.ParentScene = scene;
+            Application.LoadLevelAdditive(Database.TruthSelectEquipment);
         }
 
         public static void CallTruthBattleEnemy(MotherForm scene, bool duel, bool hiSpeed, bool final, bool lifecount)
@@ -113,7 +110,7 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthBattleEnemy);
         }
 
-        public static void CallTruthStatusPlayer(string src, MotherForm scene, bool onlySelectTrash, string itemName)
+        public static void CallTruthStatusPlayer(MotherForm scene, bool onlySelectTrash, string itemName)
         {
             GroundOne.OnlySelectTrash = onlySelectTrash;
             GroundOne.CannotSelectTrash = itemName;
@@ -123,27 +120,18 @@ namespace DungeonPlayer
             GroundOne.ParentScene = scene;
             Application.LoadLevelAdditive(Database.TruthStatusPlayer);
         }
-        public static void CallTruthStatusPlayer(string src)
-        {
-            GroundOne.OnlySelectTrash = false;
-            GroundOne.LevelUp = false;
-            GroundOne.UpPoint = 0;
-            GroundOne.CumultiveLvUpValue = 0;
-            GroundOne.ParentScene = null;
-            SceneDimension.Go(src, Database.TruthStatusPlayer);
-        }
-        public static void CallTruthStatusPlayer(string src, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, Color color)
+        public static void CallTruthStatusPlayer(MotherForm scene, ref bool leveUp, ref int upPoint, ref int cumultivaLvUpValue, Color color)
         {
             GroundOne.OnlySelectTrash = false;
             GroundOne.LevelUp = leveUp;
             GroundOne.UpPoint = upPoint;
             GroundOne.CumultiveLvUpValue = cumultivaLvUpValue;
             GroundOne.CurrentStatusView = color;
-            GroundOne.ParentScene = null;
+            GroundOne.ParentScene = scene;
             leveUp = false;
             upPoint = 0;
             cumultivaLvUpValue = 0;
-            SceneDimension.Go(src, Database.TruthStatusPlayer);
+            Application.LoadLevelAdditive(Database.TruthStatusPlayer);
         }
 
         public static void CallTruthSkillSpellDesc(MotherForm parent, string playerName, string commandName)
@@ -174,26 +162,18 @@ namespace DungeonPlayer
 
         private static void Go(string src, string dst)
         {
-            playbackScene.Add(src);
             Application.LoadLevel(dst);
         }
 
-        public static void Back()
+        public static void Back(MotherForm scene)
         {
-            if (playbackScene.Count <= 0)
+            string sceneName = scene.GetType().Name;
+            Debug.Log("sceneName: " + sceneName);
+            if (GroundOne.ParentScene != null)
             {
-                return;
+                GroundOne.ParentScene.SceneBack();
             }
-
-            string backScene = playbackScene[playbackScene.Count - 1];
-            playbackScene.Remove(backScene);
-            Application.LoadLevel(backScene);
-        }
-
-        public static void LoadGame()
-        {
-            playbackScene.Clear();
-            playbackScene.Add(Database.Title);
+            Application.UnloadLevel(sceneName);
         }
     }
 }

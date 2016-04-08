@@ -338,7 +338,7 @@ namespace DungeonPlayer
             }
 
             // 物理攻撃 (最小) - (最大)
-            if (MainBlade)
+            if (true)
             {
                 temp1 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
                 temp2 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
@@ -395,7 +395,7 @@ namespace DungeonPlayer
             if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) > PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) { PhysicalDefense.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
             else if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Min, false) < PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Min, false)) { PhysicalDefense.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
             else { PhysicalDefense.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
-            PhysicalDefense.text += " = ";
+            PhysicalDefense.text += " - ";
             if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) > PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) { PhysicalDefense.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
             else if (PrimaryLogic.PhysicalDefenseValue(shadow, PrimaryLogic.NeedType.Max, false) < PrimaryLogic.PhysicalDefenseValue(this.targetPlayer, PrimaryLogic.NeedType.Max, false)) { PhysicalDefense.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
             else { PhysicalDefense.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
@@ -562,11 +562,11 @@ namespace DungeonPlayer
                     targetPlayer.AddBackPack(tempItem);
                 }
             }
-            SceneDimension.Back();
+            SceneDimension.Back(this);
         }
         public void tapCancel()
         {
-            SceneDimension.Back();
+            SceneDimension.Back(this);
         }
         public void tapDropEquip()
         {
@@ -616,7 +616,7 @@ namespace DungeonPlayer
                 GroundOne.MC.Accessory2 = null;
             }
 
-            SceneDimension.Back();
+            SceneDimension.Back(this);
         }
 
 
