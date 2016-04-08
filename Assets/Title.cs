@@ -43,7 +43,7 @@ namespace DungeonPlayer
         public void Load_Click()
         {
             this.Filter.SetActive(true);
-            SceneDimension.CallSaveLoad(Database.Title, false, false, this);
+            SceneDimension.CallSaveLoad(this, false, false);
         }
 
         public void Config_Click()

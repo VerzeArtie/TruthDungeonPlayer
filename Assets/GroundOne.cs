@@ -212,6 +212,11 @@ namespace DungeonPlayer
             MC.Intelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
             MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
+            MC.CurrentLife = MC.MaxLife;
+            MC.CurrentMana = MC.MaxMana;
+            MC.CurrentSkillPoint = MC.MaxSkillPoint;
+            MC.BattleActionCommandList[0] = Database.ATTACK_EN;
+            MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
 
             SC = objSC.AddComponent<MainCharacter>();
             TC = objTC.AddComponent<MainCharacter>();

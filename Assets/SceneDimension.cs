@@ -64,7 +64,7 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.SaveLoad);
         }
 
-        public static void CallSaveLoad(string src, bool SaveMode, bool AfterBacktoTitle, MotherForm scene)
+        public static void CallSaveLoad(MotherForm scene, bool SaveMode, bool AfterBacktoTitle)
         {
             GroundOne.SaveMode = SaveMode;
             GroundOne.AfterBacktoTitle = AfterBacktoTitle;
@@ -76,6 +76,7 @@ namespace DungeonPlayer
 
         public static void JumpToTruthHomeTown(string src)
         {
+            GroundOne.StopDungeonMusic();
             SceneDimension.Go(src, Database.TruthHomeTown);
         }
 
@@ -83,6 +84,7 @@ namespace DungeonPlayer
         {
             GroundOne.WE.AlreadyShownEvent = false;
             GroundOne.GotoDownstair = gotoDownstair;
+            GroundOne.StopDungeonMusic();
             SceneDimension.Go(src, Database.TruthDungeon);
         }
 
@@ -144,9 +146,10 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthSkillSpellDesc);
         }
 
-        public static void CallTruthEquipmentShop(string src)
+        public static void CallTruthEquipmentShop(MotherForm scene)
         {
-            SceneDimension.Go(src, Database.TruthEquipmentShop);
+            GroundOne.ParentScene = scene;
+            Application.LoadLevelAdditive(Database.TruthEquipmentShop);
         }
 
         public static void CallTruthBattleSetting(string src)
@@ -169,6 +172,7 @@ namespace DungeonPlayer
 
         public static void Back(MotherForm scene)
         {
+            Debug.Log("back name: " + scene.GetType().Name);
             string sceneName = scene.GetType().Name;
             if (GroundOne.ParentScene != null)
             {
