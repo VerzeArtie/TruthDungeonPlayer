@@ -524,6 +524,69 @@ namespace DungeonPlayer
             this.currentItemGauge = 0;
             UpdateUseItemGauge();
             //tapFirstChara ();
+
+            if (this.ec1 != null)
+            {
+                // ヴェルゼ最終戦闘２
+                if (this.ec1.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM22, Database.BGM23, Database.BGM23LoopBegin);
+                }
+                // ヴェルゼ最終戦闘
+                else if (this.ec1.FirstName == Database.ENEMY_LAST_VERZE_ARTIE)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM22, Database.BGM23, Database.BGM23LoopBegin);
+                }
+                // DUEL最終戦
+                else if (this.ec1.FirstName == Database.ENEMY_LAST_RANA_AMILIA ||
+                         this.ec1.FirstName == Database.ENEMY_LAST_SINIKIA_KAHLHANZ ||
+                         this.ec1.FirstName == Database.ENEMY_LAST_OL_LANDIS)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM21, Database.BGM21LoopBegin);
+                }
+                // ボス
+                else if ((this.ec1.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS) ||
+                    (this.ec1.FirstName == Database.ENEMY_BRILLIANT_SEA_PRINCE) ||
+                    (this.ec1.FirstName == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN) ||
+                    (this.ec1.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED) ||
+                    (this.ec1.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE) ||
+                    (this.ec1.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU) ||
+                    (this.ec1.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA) ||
+                    (this.ec1.FirstName == Database.ENEMY_SEA_STAR_ORIGIN_KING) ||
+                    (this.ec1.FirstName == Database.ENEMY_BOSS_HOWLING_SEIZER) ||
+                    (this.ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1) ||
+                    (this.ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2) ||
+                    (this.ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                    )
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM04, Database.BGM04LoopBegin);
+                }
+                // 初期DUELオル・ランディス
+                else if (this.ec1.FirstName == Database.DUEL_OL_LANDIS)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM17, Database.BGM17LoopBegin);
+                }
+                // 支配竜達の呼び声
+                else if (this.ec1.Rare == TruthEnemyCharacter.RareString.Purple)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM18, Database.BGM18LoopBegin);
+                }
+                // 最終ボス：支配竜
+                else if (this.ec1.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM05, Database.BGM05LoopBegin);
+                }
+                // 通常バトル
+                else
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM03, Database.BGM03LoopBegin);
+                }
+            }
+            // 万が一、敵の情報が取得できない場合、通常バトル
+            else
+            {
+                GroundOne.PlayDungeonMusic(Database.BGM03, Database.BGM03LoopBegin);
+            }
         }
 
         public new void SceneBack()

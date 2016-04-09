@@ -57,7 +57,7 @@ namespace DungeonPlayer
             if (yesnoSystemMessage.text == Database.exitMessage1)
             {
                 GroundOne.TruthHomeTown_NowExit = true;
-                SceneDimension.CallSaveLoad(this.GetType().ToString(), true, false, this);
+                SceneDimension.CallSaveLoad(this, true, false);
             }
             else if (yesnoSystemMessage.text == Database.exitMessage2)
             {

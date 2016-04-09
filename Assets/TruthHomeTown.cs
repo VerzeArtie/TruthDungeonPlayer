@@ -256,7 +256,9 @@ namespace DungeonPlayer
         	}
         	else
         	{
-        		return; // イベント発生は連続して発生させない
+                mainMessage.text = "アイン：さて、何すっかな";
+                GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                return; // イベント発生は連続して発生させない
         	}
 
             #region "後編初日"
@@ -451,6 +453,7 @@ namespace DungeonPlayer
             else
             {
                 mainMessage.text = "アイン：さて、何すっかな";
+                GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
             }
         }
             	
@@ -1062,7 +1065,7 @@ namespace DungeonPlayer
                 else if (current == MessagePack.ActionEvent.HomeTownCallSaveLoad)
                 {
                     this.forceSaveCall = true;
-                    SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, this);
+                    SceneDimension.CallSaveLoad(this, true, false);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownGotoRealDungeon)
                 {
@@ -1283,7 +1286,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
+                    SceneDimension.CallTruthEquipmentShop(this);
                     mainMessage.text = "";
                 }
             }
@@ -1298,7 +1301,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
+                    SceneDimension.CallTruthEquipmentShop(this);
                     mainMessage.text = "";
                 }
             }
@@ -1317,7 +1320,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
+                    SceneDimension.CallTruthEquipmentShop(this);
                     mainMessage.text = "";
                 }
             }
@@ -1346,7 +1349,7 @@ namespace DungeonPlayer
             #region "その他"
             else
             {
-                SceneDimension.CallTruthEquipmentShop(Database.TruthHomeTown);
+                SceneDimension.CallTruthEquipmentShop(this);
                 mainMessage.text = "";
             }
             #endregion
@@ -1882,11 +1885,11 @@ namespace DungeonPlayer
 
         public void tapSave()
         {
-            SceneDimension.CallSaveLoad(Database.TruthHomeTown, true, false, this);
+            SceneDimension.CallSaveLoad(this, true, false);
         }
         public void tapLoad()
         {
-            SceneDimension.CallSaveLoad(Database.TruthHomeTown, false, false, this);
+            SceneDimension.CallSaveLoad(this, false, false);
         }
 
         public override void ExitYes()

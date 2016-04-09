@@ -7473,7 +7473,7 @@ namespace DungeonPlayer
 
             this.Filter.GetComponent<Image>().color = Color.white;
             this.Filter.SetActive(true);
-            SceneDimension.CallSaveLoad(Database.TruthDungeon, true, false, this);
+            SceneDimension.CallSaveLoad(this, true, false);
         }
         public void tapLoad()
         {
@@ -7493,7 +7493,7 @@ namespace DungeonPlayer
                     return;
                 }
             }
-            SceneDimension.CallSaveLoad(Database.TruthDungeon, false, false, this);
+            SceneDimension.CallSaveLoad(this, false, false);
         }
 
         public void tapExit()
@@ -7511,11 +7511,11 @@ namespace DungeonPlayer
 
             if (yesnoSystemMessage.text == Database.Message_SaveRequest1)
             {
-                SceneDimension.CallSaveLoad(Database.TruthDungeon, true, true, this);
+                SceneDimension.CallSaveLoad(this, true, true);
             }
             else if (yesnoSystemMessage.text == Database.Message_SaveRequest2)
             {
-                SceneDimension.CallSaveLoad(Database.TruthDungeon, true, true, this);
+                SceneDimension.CallSaveLoad(this, true, true);
             }
             else if (yesnoSystemMessage.text == Database.Message_GotoUpstair)
             {
