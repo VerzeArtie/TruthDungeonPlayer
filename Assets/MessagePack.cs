@@ -49,10 +49,10 @@ namespace DungeonPlayer
             PlayMusic18,
             PlayMusic19,
             PlaySound,
-            YesNoGotoDungeon2,
+            YesNoGotoDungeon,
+			YesNoBacktoDungeon,
             GotoHomeTown,
             GotoHomeTownForce,
-            GotoDungeon2,
             DecisionOpenDoor1,
             HomeTownGetItemFullCheck,
             HomeTownBlackOut,
@@ -2003,7 +2003,7 @@ namespace DungeonPlayer
         }
         public static void Message10051(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：下り階段発見！さっそく降りるとするか？"); eventList.Add(ActionEvent.YesNoGotoDungeon2);
+			messageList.Add(Database.Message_GotoDownstair); eventList.Add(ActionEvent.YesNoGotoDungeon);
         }
 
         public static void Message10051_2(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -2403,8 +2403,7 @@ namespace DungeonPlayer
         // １階へ戻る階段
         public static void Message12000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-			// todo
-			messageList.Add(Database.Message_GotoUpstair); eventList.Add (ActionEvent.YesNoGotoDungeon2);
+			messageList.Add(Database.Message_GotoUpstair); eventList.Add (ActionEvent.YesNoBacktoDungeon);
         }
 
         // 中央４看板

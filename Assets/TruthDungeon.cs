@@ -7576,8 +7576,8 @@ namespace DungeonPlayer
             {
                 SceneDimension.JumpToTitle();
             }
-            else if (yesnoSystemMessage.text == Database.Message_GotoDownstair)
-            {
+            else if (yesnoSystemMessage.text == Database.Message_GotoDownstair ||
+			           yesnoSystemMessage.text == Database.Message_GotoUpstair) {
                 groupYesnoSystemMessage.SetActive(false);
                 mainMessage.text = "";
             }
@@ -7783,8 +7783,8 @@ namespace DungeonPlayer
                     GroundOne.enemyName1 = Database.ENEMY_BOSS_KARAMITUKU_FLANSIS;
                     GroundOne.enemyName2 = String.Empty;
                     GroundOne.enemyName3 = String.Empty;
-                    bool result = EncountBattle(false, false, false, false);
-                }
+                    EncountBattle(false, false, false, false);
+                } 
                 else if (currentEvent == MessagePack.ActionEvent.StopMusic)
                 {
                     GroundOne.StopDungeonMusic();
@@ -7801,10 +7801,14 @@ namespace DungeonPlayer
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM16, Database.BGM16LoopBegin);
                 }
-                else if (currentEvent == MessagePack.ActionEvent.YesNoGotoDungeon2)
+                else if (currentEvent == MessagePack.ActionEvent.YesNoGotoDungeon)
                 {
-                    Debug.Log("yesnogotoDungeon2");
                     yesnoSystemMessage.text = Database.Message_GotoDownstair;
+                    groupYesnoSystemMessage.SetActive(true);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.YesNoBacktoDungeon)
+                {
+                    yesnoSystemMessage.text = Database.Message_GotoUpstair;
                     groupYesnoSystemMessage.SetActive(true);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.GotoHomeTown)
@@ -7816,13 +7820,6 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.GotoHomeTownForce)
                 {
                     CallHomeTown();
-                }
-                else if (currentEvent == MessagePack.ActionEvent.GotoDungeon2)
-                {
-                    UpdateViewPoint(-Database.DUNGEON_MOVE_LEN * 15, -Database.DUNGEON_MOVE_LEN * 10);
-                    UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * (29 - 15), Database.DUNGEON_MOVE_LEN * (19 - 10));
-                    SetupDungeonMapping(2);
-                    //dungeonField.Invalidate();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor1)
                 {
