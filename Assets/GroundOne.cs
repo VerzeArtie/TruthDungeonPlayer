@@ -47,7 +47,6 @@ namespace DungeonPlayer
         public static bool[] Truth_KnownTileInfo4 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
         public static bool[] Truth_KnownTileInfo5 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
 
-        public static bool NoFirstMusic = false;
         public static int BattleSpeed = 3;
         public static int Difficulty = 1; // ゲーム難易度 デフォルトは１：普通
 
@@ -75,7 +74,6 @@ namespace DungeonPlayer
         public static string enemyName3 = string.Empty;
 
         // TruthBattleSetting
-        public static bool CallBattleSettingFromBattleEnemy;
         public static GameObject BattleEnemyFilter = null;
 
         // TruthSelectEquipment

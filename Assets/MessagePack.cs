@@ -27,7 +27,7 @@ namespace DungeonPlayer
             SmallEntranceOpen2,
             CenterBlueOpen,
             UpdateUnknownTile,
-            EncountFlansis,
+            EncountBoss,
             StopMusic,
             PlayMusic01,
             PlayMusic02,
@@ -84,7 +84,9 @@ namespace DungeonPlayer
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
-            GetTreasure,
+            DungeonGetTreasure,
+            DungeonAgilityRoomStart,
+            DungeonAgilityRoomStop,
             Ending,
         }
 
@@ -498,7 +500,7 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.EncountFlansis);
+            messageList.Add(Database.ENEMY_BOSS_KARAMITUKU_FLANSIS); eventList.Add(ActionEvent.EncountBoss);
         }
         public static void Message10012(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -4576,6 +4578,1625 @@ namespace DungeonPlayer
 			}
 		}
 		#endregion
+        #region "知の部屋、正しき順序看板"
+        public static void Message12010(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            // after 番号割り振りを再設定する
+            if ((GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 39]) &&
+                (GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 41]) &&
+                (GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 43]) &&
+                (GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 45]) &&
+                (GroundOne.Truth_KnownTileInfo2[11 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+
+                (GroundOne.Truth_KnownTileInfo2[12 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[12 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[12 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[12 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[12 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 39]) &&
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 41]) &&
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 43]) &&
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 45]) &&
+                (GroundOne.Truth_KnownTileInfo2[13 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+
+                (GroundOne.Truth_KnownTileInfo2[14 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[14 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[14 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[14 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[14 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 39]) &&
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 41]) &&
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 43]) &&
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 45]) &&
+                (GroundOne.Truth_KnownTileInfo2[15 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+
+                (GroundOne.Truth_KnownTileInfo2[16 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[16 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[16 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[16 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[16 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 39]) &&
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 41]) &&
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 43]) &&
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 45]) &&
+                (GroundOne.Truth_KnownTileInfo2[17 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+
+                (GroundOne.Truth_KnownTileInfo2[18 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[18 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[18 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[18 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[18 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 38]) &&
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 39]) &&
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 40]) &&
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 41]) &&
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 42]) &&
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 43]) &&
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 44]) &&
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 45]) &&
+                (GroundOne.Truth_KnownTileInfo2[19 * Database.TRUTH_DUNGEON_COLUMN + 46]) &&
+                !GroundOne.WE.dungeonEvent229)
+            {
+                GroundOne.WE.dungeonEvent229 = true;
+                if (!GroundOne.WE.dungeonEvent228)
+                {
+                    GroundOne.WE.dungeonEvent228 = true;
+                    messageList.Add("アイン：ん、看板があるな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　　『  正しき順序、正しき道筋を示せ。  』"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("ラナ：数字が床に刻まれていたわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おっ、ラナ。ひょっとして何か分かったのか？"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add ("ランディス：（ッオイ、てめぇ）");
+                    eventList.Add (ActionEvent.None);
+
+                    messageList.Add ("アイン：（んだよ、良いじゃねえか）");
+                    eventList.Add (ActionEvent.None);
+                }
+
+                messageList.Add("ラナ：床にある数字があるじゃない？　あれを順序良く踏んで行けば良いのよ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺はこういう「正しき」って表現はぜんっぜん駄目だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ここはお前に任せたぜ、ラナ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：失敗しても文句言わないでよね？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：良いって良いって。じゃあ、頼んだぜ！"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE.dungeonEvent230_0 = true;
+                GroundOne.WE.dungeonEvent230_01 = false;
+                GroundOne.WE.dungeonEvent230_1 = false;
+                GroundOne.WE.dungeonEvent230_11 = false;
+                GroundOne.WE.dungeonEvent230_12 = false;
+                GroundOne.WE.dungeonEvent230_2 = false;
+                GroundOne.WE.dungeonEvent230_21 = false;
+                GroundOne.WE.dungeonEvent230_3 = false;
+                GroundOne.WE.dungeonEvent230_31 = false;
+                GroundOne.WE.dungeonEvent230_32 = false;
+                GroundOne.WE.dungeonEvent230_4 = false;
+                GroundOne.WE.dungeonEvent230_41 = false;
+                GroundOne.WE.dungeonEvent230_42 = false;
+                GroundOne.WE.dungeonEvent230_5 = false;
+                GroundOne.WE.dungeonEvent230_51 = false;
+                GroundOne.WE.dungeonEvent230_52 = false;
+                GroundOne.WE.dungeonEvent230_6 = false;
+                GroundOne.WE.dungeonEvent230_61 = false;
+                GroundOne.WE.dungeonEvent230_62 = false;
+                GroundOne.WE.dungeonEvent230_63 = false;
+                GroundOne.WE.dungeonEvent230_64 = false;
+                GroundOne.WE.dungeonEvent230_7 = false;
+                GroundOne.WE.dungeonEvent230_71 = false;
+                GroundOne.WE.dungeonEvent230_72 = false;
+                GroundOne.WE.dungeonEvent230_8 = false;
+            }
+            else
+            {
+                if (!GroundOne.WE.dungeonEvent228)
+                {
+                    GroundOne.WE.dungeonEvent228 = true;
+                    messageList.Add("アイン：ん、看板があるな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　　『  正しき順序、正しき道筋を示せ。  』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：正しき順序・・・か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ねえ、周りを探索してみない？このままじゃ分からないわよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、そうだな。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("　　　　『  正しき順序、正しき道筋を示せ。  』"); eventList.Add(ActionEvent.None);
+                }
+
+                GroundOne.WE.dungeonEvent230_0 = true;
+                GroundOne.WE.dungeonEvent230_01 = false;
+                GroundOne.WE.dungeonEvent230_1 = false;
+                GroundOne.WE.dungeonEvent230_11 = false;
+                GroundOne.WE.dungeonEvent230_12 = false;
+                GroundOne.WE.dungeonEvent230_2 = false;
+                GroundOne.WE.dungeonEvent230_21 = false;
+                GroundOne.WE.dungeonEvent230_3 = false;
+                GroundOne.WE.dungeonEvent230_31 = false;
+                GroundOne.WE.dungeonEvent230_32 = false;
+                GroundOne.WE.dungeonEvent230_4 = false;
+                GroundOne.WE.dungeonEvent230_41 = false;
+                GroundOne.WE.dungeonEvent230_42 = false;
+                GroundOne.WE.dungeonEvent230_5 = false;
+                GroundOne.WE.dungeonEvent230_51 = false;
+                GroundOne.WE.dungeonEvent230_52 = false;
+                GroundOne.WE.dungeonEvent230_6 = false;
+                GroundOne.WE.dungeonEvent230_61 = false;
+                GroundOne.WE.dungeonEvent230_62 = false;
+                GroundOne.WE.dungeonEvent230_63 = false;
+                GroundOne.WE.dungeonEvent230_64 = false;
+                GroundOne.WE.dungeonEvent230_7 = false;
+                GroundOne.WE.dungeonEvent230_71 = false;
+                GroundOne.WE.dungeonEvent230_72 = false;
+                GroundOne.WE.dungeonEvent230_8 = false;
+            }            
+        }
+        #endregion
+        #region "知の部屋、正しき順序フラグ"
+        public static void Message12011(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && !GroundOne.WE.dungeonEvent230_01)
+                {
+                    GroundOne.WE.dungeonEvent230_01 = true;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    !GroundOne.WE.dungeonEvent230_1)
+                {
+                    GroundOne.WE.dungeonEvent230_1 = true;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && !GroundOne.WE.dungeonEvent230_11)
+                {
+                    GroundOne.WE.dungeonEvent230_11 = true;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && !GroundOne.WE.dungeonEvent230_12)
+                {
+                    GroundOne.WE.dungeonEvent230_12 = true;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_5(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    !GroundOne.WE.dungeonEvent230_2)
+                {
+                    GroundOne.WE.dungeonEvent230_2 = true;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_6(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && !GroundOne.WE.dungeonEvent230_21)
+                {
+                    GroundOne.WE.dungeonEvent230_21 = true;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_7(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    !GroundOne.WE.dungeonEvent230_3)
+                {
+                    GroundOne.WE.dungeonEvent230_3 = true;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_8(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && !GroundOne.WE.dungeonEvent230_31)
+                {
+                    GroundOne.WE.dungeonEvent230_31 = true;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_9(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && !GroundOne.WE.dungeonEvent230_32)
+                {
+                    GroundOne.WE.dungeonEvent230_32 = true;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_10(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    !GroundOne.WE.dungeonEvent230_4)
+                {
+                    GroundOne.WE.dungeonEvent230_4 = true;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_11(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && !GroundOne.WE.dungeonEvent230_41)
+                {
+                    GroundOne.WE.dungeonEvent230_41 = true;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_12(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && !GroundOne.WE.dungeonEvent230_42)
+                {
+                    GroundOne.WE.dungeonEvent230_42 = true;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_13(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    !GroundOne.WE.dungeonEvent230_5)
+                {
+                    GroundOne.WE.dungeonEvent230_5 = true;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_14(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && !GroundOne.WE.dungeonEvent230_51)
+                {
+                    GroundOne.WE.dungeonEvent230_51 = true;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_15(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && !GroundOne.WE.dungeonEvent230_52)
+                {
+                    GroundOne.WE.dungeonEvent230_52 = true;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_16(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    !GroundOne.WE.dungeonEvent230_6)
+                {
+                    GroundOne.WE.dungeonEvent230_6 = true;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_17(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    GroundOne.WE.dungeonEvent230_6 && !GroundOne.WE.dungeonEvent230_61)
+                {
+                    GroundOne.WE.dungeonEvent230_61 = true;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+
+        public static void Message12011_18(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    GroundOne.WE.dungeonEvent230_6 && GroundOne.WE.dungeonEvent230_61 && !GroundOne.WE.dungeonEvent230_62)
+                {
+                    GroundOne.WE.dungeonEvent230_62 = true;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_19(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    GroundOne.WE.dungeonEvent230_6 && GroundOne.WE.dungeonEvent230_61 && GroundOne.WE.dungeonEvent230_62 && !GroundOne.WE.dungeonEvent230_63)
+                {
+                    GroundOne.WE.dungeonEvent230_63 = true;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_20(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    GroundOne.WE.dungeonEvent230_6 && GroundOne.WE.dungeonEvent230_61 && GroundOne.WE.dungeonEvent230_62 && GroundOne.WE.dungeonEvent230_63 && !GroundOne.WE.dungeonEvent230_64)
+                {
+                    GroundOne.WE.dungeonEvent230_64 = true;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_21(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    GroundOne.WE.dungeonEvent230_6 && GroundOne.WE.dungeonEvent230_61 && GroundOne.WE.dungeonEvent230_62 && GroundOne.WE.dungeonEvent230_63 && GroundOne.WE.dungeonEvent230_64 &&
+                    !GroundOne.WE.dungeonEvent230_7)
+                {
+                    GroundOne.WE.dungeonEvent230_7 = true;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_22(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    GroundOne.WE.dungeonEvent230_6 && GroundOne.WE.dungeonEvent230_61 && GroundOne.WE.dungeonEvent230_62 && GroundOne.WE.dungeonEvent230_63 && GroundOne.WE.dungeonEvent230_64 &&
+                    GroundOne.WE.dungeonEvent230_7 && !GroundOne.WE.dungeonEvent230_71)
+                {
+                    GroundOne.WE.dungeonEvent230_71 = true;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+
+        public static void Message12011_23(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    GroundOne.WE.dungeonEvent230_6 && GroundOne.WE.dungeonEvent230_61 && GroundOne.WE.dungeonEvent230_62 && GroundOne.WE.dungeonEvent230_63 && GroundOne.WE.dungeonEvent230_64 &&
+                    GroundOne.WE.dungeonEvent230_7 && GroundOne.WE.dungeonEvent230_71 && !GroundOne.WE.dungeonEvent230_72)
+                {
+                    GroundOne.WE.dungeonEvent230_72 = true;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }            
+        }
+        #endregion
+        #region "知の部屋、正しき順序解答"
+        public static void Message12012(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent229 && !GroundOne.WE.dungeonEvent230)
+            {
+                if (GroundOne.WE.dungeonEvent230_0 && GroundOne.WE.dungeonEvent230_01 &&
+                    GroundOne.WE.dungeonEvent230_1 && GroundOne.WE.dungeonEvent230_11 && GroundOne.WE.dungeonEvent230_12 &&
+                    GroundOne.WE.dungeonEvent230_2 && GroundOne.WE.dungeonEvent230_21 &&
+                    GroundOne.WE.dungeonEvent230_3 && GroundOne.WE.dungeonEvent230_31 && GroundOne.WE.dungeonEvent230_32 &&
+                    GroundOne.WE.dungeonEvent230_4 && GroundOne.WE.dungeonEvent230_41 && GroundOne.WE.dungeonEvent230_42 &&
+                    GroundOne.WE.dungeonEvent230_5 && GroundOne.WE.dungeonEvent230_51 && GroundOne.WE.dungeonEvent230_52 &&
+                    GroundOne.WE.dungeonEvent230_6 && GroundOne.WE.dungeonEvent230_61 && GroundOne.WE.dungeonEvent230_62 && GroundOne.WE.dungeonEvent230_63 && GroundOne.WE.dungeonEvent230_64 &&
+                    GroundOne.WE.dungeonEvent230_7 && GroundOne.WE.dungeonEvent230_71 && GroundOne.WE.dungeonEvent230_72 &&
+                    !GroundOne.WE.dungeonEvent230_8)
+                {
+                    GroundOne.WE.dungeonEvent230_8 = true;
+                    GroundOne.WE.dungeonEvent230 = true;
+
+                    messageList.Add("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.BlueOpenRight);
+
+                    messageList.Add("ラナ：やったわ！　正解だったみたいね♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：やるじゃねえか！　今のどういう仕組みだったんだよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：簡単よ、１～８までの数字タイルを順序良く踏めば良かったのよ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：へえ、なるほどな・・・確かにそういやそうだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：あっ、ホラホラ。こっちに何かあるわよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：本当だな。どれどれ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationRight);
+
+                    messageList.Add("アイン：ん？　これは・・・？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(Database.RARE_SOUJUTENSHI_NO_GOFU); eventList.Add(ActionEvent.DungeonGetTreasure);
+
+                    messageList.Add("アイン：何だこれ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：あっ♪　蒼授天使の護符じゃない、やったわねアイン♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：何だ知ってるのかよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：って、知らないアンタの方がどーかしてるわよ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ウェクスラー大陸では、このシリーズ物は有名でしょ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いや、俺そういうの全然知らないんだって、教えてくれよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ホンット疎いわねそういうの・・・ハアアアァァァ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：この大陸には、神の使い手として４種の天使が遣わされた"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：炎授天使、蒼授天使、断罪天使、珀流天使"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：今回見つけたのは、その中の蒼授天使。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：蒼授天使さまは我々に大気・生命・水の恩恵を与えてくれてるわけよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：へえそうなんだ。　全然知らなかったぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：バカアインは勉強もそうだけど、もう少し世の中の事を知った方が良いわよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、ああ。分かったわかった。"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：ッカッカッカ、小娘。その雰囲気じゃ、今の話も右から左になってるぞ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：っえ！？そうなんですか！？　ちょっとアイン！？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：い、いやいや！　聞いてます、聞いてますって。"); eventList.Add(ActionEvent.None);
+                    }
+
+                    messageList.Add("アイン：ま、まあ何かしらの防衛的効果が高いって話だよな？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ハアアァァ・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent230_0 = false;
+                    GroundOne.WE.dungeonEvent230_01 = false;
+                    GroundOne.WE.dungeonEvent230_1 = false;
+                    GroundOne.WE.dungeonEvent230_11 = false;
+                    GroundOne.WE.dungeonEvent230_12 = false;
+                    GroundOne.WE.dungeonEvent230_2 = false;
+                    GroundOne.WE.dungeonEvent230_21 = false;
+                    GroundOne.WE.dungeonEvent230_3 = false;
+                    GroundOne.WE.dungeonEvent230_31 = false;
+                    GroundOne.WE.dungeonEvent230_32 = false;
+                    GroundOne.WE.dungeonEvent230_4 = false;
+                    GroundOne.WE.dungeonEvent230_41 = false;
+                    GroundOne.WE.dungeonEvent230_42 = false;
+                    GroundOne.WE.dungeonEvent230_5 = false;
+                    GroundOne.WE.dungeonEvent230_51 = false;
+                    GroundOne.WE.dungeonEvent230_52 = false;
+                    GroundOne.WE.dungeonEvent230_6 = false;
+                    GroundOne.WE.dungeonEvent230_61 = false;
+                    GroundOne.WE.dungeonEvent230_62 = false;
+                    GroundOne.WE.dungeonEvent230_63 = false;
+                    GroundOne.WE.dungeonEvent230_64 = false;
+                    GroundOne.WE.dungeonEvent230_7 = false;
+                    GroundOne.WE.dungeonEvent230_71 = false;
+                    GroundOne.WE.dungeonEvent230_72 = false;
+                    GroundOne.WE.dungeonEvent230_8 = false;
+                }
+            }
+        }
+        #endregion
+        #region "技の部屋、エリアＡ"
+        public static void Message12013(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE.dungeonEvent233)
+            {
+                GroundOne.WE.dungeonEvent233 = true;
+
+                messageList.Add("アイン：看板があるぜ。なになに？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『  財宝を求める挑戦者、俊足を持って挑め。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おっしゃ、来たぜ！　お宝だ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：なんだか、ありきたりな内容ね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：挑戦者って事は・・・誰か一人選ぶって事かしら？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：じゃ、頼んだぜ、ラナ！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：っちょ、何で私なわけ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：こういうのは、バカアインが適役じゃないかしら♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：マジかよ？　俺は絶対ラナの方が良いと思うんだが。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ラナ：ランディスさんは、どちらが行くのが適任だと思いますか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っあ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：ザコが先頭切っていく。　当然だろ。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：私はこういう挑戦とかそういった類は苦手なのよ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：ッグ・・・はいはい、分かりましたよ。　俺が行きますよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：っよし、決まりね♪　応援してるわ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：要は、サクサクと進めって事だろ？　やってやるさ！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『  挑戦者、俊足を持って挑め。』"); eventList.Add(ActionEvent.None);
+            }
+            if (!GroundOne.WE.dungeonEvent233_Complete)
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+            }            
+        }
+        #endregion
         #endregion
         #endregion
 

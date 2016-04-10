@@ -201,6 +201,8 @@ namespace DungeonPlayer
 
         bool firstAction = false;
 
+        int nowAgilityRoomCounter = 0;
+
         // Use this for initialization
         public override void Start()
         {
@@ -868,6 +870,15 @@ namespace DungeonPlayer
                 ShownEvent();
                 return;
             }
+            if (this.nowAgilityRoomCounter > 0)
+            {
+                this.nowAgilityRoomCounter--;
+                if (this.nowAgilityRoomCounter <= 0)
+                {
+                    agilityRoomTimer_Tick();
+                }
+            }
+
             if (this.nowEncountEnemy)
             {
                 this.nowEncountEnemy = false;
@@ -882,7 +893,8 @@ namespace DungeonPlayer
                 {
                     CreateShadowData();
                 }
-                EncountBattle(false, false, false, false);
+                CancelKeyDownMovement();
+                SceneDimension.CallTruthBattleEnemy(this, false, false, false, false);
             }
             else if (Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.UpArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha4) || Input.GetKeyUp(KeyCode.LeftArrow) ||
@@ -7168,15 +7180,6 @@ namespace DungeonPlayer
             }
         }
 
-        private bool EncountBattle(bool duel, bool hiSpeed, bool final, bool lifecount)
-        {
-            CancelKeyDownMovement();
-            GroundOne.StopDungeonMusic();
-            System.Threading.Thread.Sleep(500);
-            SceneDimension.CallTruthBattleEnemy(this, duel, hiSpeed, final, lifecount);
-            return false;
-        }
-
         private void UpdateUnknownTileArea11()
         {
             for (int ii = 13; ii <= 22; ii++)
@@ -7450,7 +7453,7 @@ namespace DungeonPlayer
         }
         public void tapBattleSetting()
         {
-            SceneDimension.CallTruthBattleSetting(Database.TruthDungeon);
+            SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapSave()
         {
@@ -7593,8 +7596,14 @@ namespace DungeonPlayer
                 this.btnOK.enabled = true;
                 this.btnOK.gameObject.SetActive(true);
 
-                mainMessage.text = "   " + this.nowMessage[this.nowReading];
                 this.currentEvent = this.nowEvent[this.nowReading];
+                // メッセージ反映
+                if (currentEvent == MessagePack.ActionEvent.None)
+                {
+                    mainMessage.text = "   " + this.nowMessage[this.nowReading];
+                }
+
+                // 各イベント固有の処理
                 if (currentEvent == MessagePack.ActionEvent.UpdateLocationTop)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, false);
@@ -7778,12 +7787,13 @@ namespace DungeonPlayer
                     //dungeonField.Invalidate();
 
                 }
-                else if (currentEvent == MessagePack.ActionEvent.EncountFlansis)
+                else if (currentEvent == MessagePack.ActionEvent.EncountBoss)
                 {
-                    GroundOne.enemyName1 = Database.ENEMY_BOSS_KARAMITUKU_FLANSIS;
+                    GroundOne.enemyName1 = this.nowMessage[this.nowReading];
                     GroundOne.enemyName2 = String.Empty;
                     GroundOne.enemyName3 = String.Empty;
-                    EncountBattle(false, false, false, false);
+                    CancelKeyDownMovement();
+                    SceneDimension.CallTruthBattleEnemy(this, false, false, false, false);
                 } 
                 else if (currentEvent == MessagePack.ActionEvent.StopMusic)
                 {
@@ -7826,6 +7836,18 @@ namespace DungeonPlayer
                     this.NoticeMessage.text = "　【　扉を開けますか？　】";
                     this.FirstMessage.text = "扉を開ける。";
                     this.SecondMessage.text = "扉を開けず、他を探す。";
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonGetTreasure)
+                {
+                    // todo メッセージ進行中の宝箱ゲットはどう実装するか？
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart)
+                {
+                    this.nowAgilityRoomCounter = 100; // after
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStop)
+                {
+                    this.nowAgilityRoomCounter = 0;
                 }
                    
                 this.nowReading++;
@@ -7886,97 +7908,18 @@ namespace DungeonPlayer
             this.arrowRight = true;
         }
         
-        public void CallbackHomeTown()
-        {
-            //this.mc = ht.MC;
-            //this.sc = ht.SC;
-            //this.tc = ht.TC;
-            //this.we = ht.WE;
-
-            //if (ht.DialogResult == DialogResult.Retry)
-            //{
-            //    this.Show();
-            //    this.mc = ht.MC;
-            //    this.sc = ht.SC;
-            //    this.tc = ht.TC;
-            //    this.we = ht.WE;
-            //    this.knownTileInfo = ht.Truth_KnownTileInfo;
-            //    this.knownTileInfo2 = ht.Truth_KnownTileInfo2;
-            //    this.knownTileInfo3 = ht.Truth_KnownTileInfo3;
-            //    this.knownTileInfo4 = ht.Truth_KnownTileInfo4;
-            //    this.knownTileInfo5 = ht.Truth_KnownTileInfo5;
-            //    SetupPlayerStatus();
-            //    PreInitialize();
-            //}
-            //else if (ht.DialogResult == DialogResult.Cancel)
-            //{
-            //    this.Show();
-            //    this.DialogResult = DialogResult.Cancel;
-            //}
-            //else
-            //{
-            //    // ダンジョンに戻ってきたため、フラグを立てる
-            //    this.GroundOne.WE.SaveByDungeon = true;
-            //    // ホームタウンから出てきたら、その日のコミュニケーションフラグを落とす
-            //    this.GroundOne.WE.AlreadyCommunicate = false;
-            //    this.GroundOne.WE.AlreadyEquipShop = false;
-            //    this.GroundOne.WE.alreadyCommunicateCahlhanz = false;
-            //    this.GroundOne.WE.AlreadyRest = false;
-            //    this.dayLabel.Text = GroundOne.WE.GameDay.ToString() + "日目";
-            //    this.dungeonAreaLabel.Text = GroundOne.WE.DungeonArea.ToString() + "　階";
-
-            //    switch (ht.TargetDungeon)
-            //    {
-            //        case 1:
-            //            UpdateViewPoint(-Database.DUNGEON_MOVE_LEN * 25, -Database.DUNGEON_MOVE_LEN * 5);
-            //            UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * (39 - 25), Database.DUNGEON_MOVE_LEN * (14 - 5));
-            //            break;
-            //        case 2:
-            //            UpdateViewPoint(-Database.DUNGEON_MOVE_LEN * 25, -Database.DUNGEON_MOVE_LEN * 5);
-            //            UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * (29 - 25), Database.DUNGEON_MOVE_LEN * (19 - 5));
-            //            break;
-            //        case 3:
-            //            UpdateViewPoint(-Database.DUNGEON_MOVE_LEN * 0, -Database.DUNGEON_MOVE_LEN * 10);
-            //            UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * (0 - 0), Database.DUNGEON_MOVE_LEN * (19 - 10));
-            //            break;
-            //        case 4:
-            //            JumpByNormal(18, 52);
-            //            //UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * 6, Database.DUNGEON_MOVE_LEN * 19);
-            //            break;
-            //        case 5:
-            //            UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * 20, Database.DUNGEON_MOVE_LEN * 0);
-            //            break;
-            //    }
-            //    SetupDungeonMapping(ht.TargetDungeon);
-
-            //    UpdateMainMessage("", true);
-            //    this.Show();
-            //    GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-            //    SetupPlayerStatus();
-            //}
-
-            //UpdateUnknownTile();
-            ////dungeonField.Invalidate();
-        }
-        public void CallHomeTown() { CallHomeTown(false); }
-        public void CallHomeTown(bool noFirstMusic)
+        public void CallHomeTown()
         {
             CancelKeyDownMovement();
 
-            stepCounter = 0;
-            GroundOne.StopDungeonMusic();
-
-            TruthHomeTown ht = new TruthHomeTown();
-
-            // ホームタウンに入る前は、遠見の青水晶を使ってくる場合もあるため、スタート地点へ移動しておく事とする。
-            //    UpdatePlayerLocationInfo(Database.DUNGEON_MOVE_LEN * 39, Database.DUNGEON_MOVE_LEN * 14); // [todo] Unityの新しい画面では、この操作は不要になる。
-            SetupDungeonMapping(1);
-
-            GroundOne.NoFirstMusic = noFirstMusic;
             GroundOne.BattleSpeed = this.battleSpeed;
             GroundOne.Difficulty = this.difficulty;
+            SceneDimension.JumpToTruthHomeTown();
+        }
 
-            SceneDimension.JumpToTruthHomeTown(Database.TruthDungeon);
+        private void agilityRoomTimer_Tick()
+        {
+            // after
         }
 
         private bool ExecSomeEvent_ReadWorld()
@@ -7992,7 +7935,7 @@ namespace DungeonPlayer
             this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
             Application.UnloadLevel(Database.TruthDungeon);
             // 全情報クリア、全情報再読み込みを行わず、Sceneの再ロードで実行したい。
-            SceneDimension.JumpToTruthDungeon(Database.Title, true);
+            SceneDimension.JumpToTruthDungeon(true);
         }
 
     }

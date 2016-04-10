@@ -619,7 +619,7 @@ namespace DungeonPlayer
             else if (this.firstDay >= 10 && !GroundOne.WE.Truth_CommunicationGanz10 && GroundOne.MC.Level >= 1 && GroundOne.WE.AlreadyCommunicate) GroundOne.WE.Truth_CommunicationGanz10 = true;
             #endregion
 
-            SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown, false);
+            SceneDimension.JumpToTruthDungeon(false);
         }
 
         public void tapCommunicationRana()
@@ -859,7 +859,7 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
-            SceneDimension.CallTruthBattleSetting(Database.TruthHomeTown);
+            SceneDimension.CallTruthBattleSetting(this);
         }
 
         private void NormalTapOK()
@@ -886,6 +886,7 @@ namespace DungeonPlayer
                 this.btnOK.gameObject.SetActive(true);
 
                 MessagePack.ActionEvent current = this.nowEvent[this.nowReading];
+                // メッセージ反映
                 if (current == MessagePack.ActionEvent.HomeTownMessageDisplay)
                 {
                     systemMessage.text = this.nowMessage[this.nowReading];
@@ -962,6 +963,7 @@ namespace DungeonPlayer
                     mainMessage.text = "   " + this.nowMessage[this.nowReading];
                 }
 
+                // 各イベント固有の処理
                 if (current == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
                 {
                     GetItemFullCheck(GroundOne.MC, this.nowMessage[this.nowReading]);
@@ -1074,7 +1076,7 @@ namespace DungeonPlayer
                     GroundOne.WE2.SeekerEvent605 = true;
                     Method.AutoSaveTruthWorldEnvironment();
                     Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
-                    SceneDimension.JumpToTruthDungeon(Database.TruthHomeTown, false);
+                    SceneDimension.JumpToTruthDungeon(false);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownAddNewCharacter)
                 {
@@ -1206,7 +1208,6 @@ namespace DungeonPlayer
             GroundOne.enemyName1 = playerName;
             GroundOne.enemyName2 = string.Empty;
             GroundOne.enemyName3 = string.Empty;
-            GroundOne.StopDungeonMusic();
             SceneDimension.CallTruthBattleEnemy(this, true, false, false, false);
         }
 

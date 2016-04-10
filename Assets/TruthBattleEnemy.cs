@@ -5206,8 +5206,7 @@ namespace DungeonPlayer
         public void tapBattleSetting()
         {
             GroundOne.BattleEnemyFilter = this.Filter;
-            GroundOne.ParentScene = this;
-            SceneDimension.CallTruthBattleSetting(Database.TruthBattleEnemy, this);
+            SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapPanel1()
         {

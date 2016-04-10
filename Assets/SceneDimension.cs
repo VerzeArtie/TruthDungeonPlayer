@@ -7,6 +7,27 @@ namespace DungeonPlayer
 {
     public static class SceneDimension
     {
+        public static void JumpToTruthHomeTown()
+        {
+            GroundOne.StopDungeonMusic();
+            Application.LoadLevel(Database.TruthHomeTown);
+        }
+
+        public static void JumpToTruthDungeon(bool gotoDownstair)
+        {
+            GroundOne.WE.AlreadyShownEvent = false;
+            GroundOne.GotoDownstair = gotoDownstair;
+            GroundOne.StopDungeonMusic();
+            Application.LoadLevel(Database.TruthDungeon);
+        }
+
+        public static void JumpToTitle()
+        {
+            GroundOne.ReInitializeGroundOne();
+            GroundOne.StopDungeonMusic();
+            Application.LoadLevel(Database.Title);
+        }
+
         public static void CallTruthDuelPlayerStatus(MotherForm scene, string duelPlayerName)
         {
             GroundOne.ParentScene = scene;
@@ -74,27 +95,6 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.SaveLoad);
         }
 
-        public static void JumpToTruthHomeTown(string src)
-        {
-            GroundOne.StopDungeonMusic();
-            SceneDimension.Go(src, Database.TruthHomeTown);
-        }
-
-        public static void JumpToTruthDungeon(string src, bool gotoDownstair)
-        {
-            GroundOne.WE.AlreadyShownEvent = false;
-            GroundOne.GotoDownstair = gotoDownstair;
-            GroundOne.StopDungeonMusic();
-            SceneDimension.Go(src, Database.TruthDungeon);
-        }
-
-        public static void JumpToTitle()
-        {
-            GroundOne.ReInitializeGroundOne();
-            GroundOne.StopDungeonMusic();
-            Application.LoadLevel(Database.Title);
-        }
-
         public static void CallTruthSelectEquipment(MotherForm scene, int equipType)
         {
             GroundOne.EquipType = equipType;
@@ -110,6 +110,8 @@ namespace DungeonPlayer
             GroundOne.LifeCountBattle = lifecount;
             GroundOne.BattleResult = GroundOne.battleResult.None;
             GroundOne.ParentScene = scene;
+            GroundOne.StopDungeonMusic();
+            System.Threading.Thread.Sleep(500);
             Application.LoadLevelAdditive(Database.TruthBattleEnemy);
         }
 
@@ -152,22 +154,10 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthEquipmentShop);
         }
 
-        public static void CallTruthBattleSetting(string src)
+        public static void CallTruthBattleSetting(MotherForm scene)
         {
-            GroundOne.CallBattleSettingFromBattleEnemy = false;
-            GroundOne.ParentScene = null;
-            SceneDimension.Go(src, Database.TruthBattleSetting);
-        }
-        public static void CallTruthBattleSetting(string src, TruthBattleEnemy scene)
-        {
-            GroundOne.CallBattleSettingFromBattleEnemy = true;
             GroundOne.ParentScene = scene;
             Application.LoadLevelAdditive(Database.TruthBattleSetting);
-        }
-
-        private static void Go(string src, string dst)
-        {
-            Application.LoadLevel(dst);
         }
 
         public static void Back(MotherForm scene)

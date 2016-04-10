@@ -44,11 +44,11 @@ namespace DungeonPlayer
             Application.UnloadLevel(Database.SaveLoad);
             if (GroundOne.WE.SaveByDungeon)
             {
-                SceneDimension.JumpToTruthDungeon(this.GetType().ToString(), false);
+                SceneDimension.JumpToTruthDungeon(false);
             }
             else
             {
-                SceneDimension.JumpToTruthHomeTown(this.GetType().ToString());
+                SceneDimension.JumpToTruthHomeTown();
             }
         }
 
@@ -67,7 +67,7 @@ namespace DungeonPlayer
             else if (yesnoSystemMessage.text == Database.exitMessage3)
             {
                 GroundOne.TruthHomeTown_NowExit = false;
-                SceneDimension.JumpToTruthHomeTown(this.GetType().ToString());
+                SceneDimension.JumpToTruthHomeTown();
             }
         }
 
