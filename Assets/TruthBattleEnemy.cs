@@ -589,9 +589,10 @@ namespace DungeonPlayer
             }
         }
 
-        public new void SceneBack()
+        public override void SceneBack()
         {
-            this.Filter.SetActive(false);
+            base.SceneBack();
+
             UpdateBattleCommandSetting(GroundOne.MC, ActionButton1, IsSorcery1);
             if (GroundOne.WE.AvailableSecondCharacter)
             {
