@@ -28,11 +28,16 @@ namespace DungeonPlayer
         public GameObject groupArrow;
         public GameObject back_playback;
         public Text[] playbackText;
+        public GameObject GroupMenu;
+        public GameObject btnStatus;
+        public GameObject btnBattleSetting;
+        public GameObject btnSave;
+        public GameObject btnLoad;
+        public GameObject btnExit;
         public GameObject GroupsubMenu;
         public GameObject HelpManual;
         public GameObject DungeonView;
         public GameObject PlayBack;
-        public GameObject GroupMenu;
         public GameObject BlueOrbImage;
         public GameObject BlueOrbText;
         public GameObject PathfindingModeImage;
@@ -228,6 +233,8 @@ namespace DungeonPlayer
             GroundOne.WE.AlreadyRest = false;
             this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
             this.dungeonAreaLabel.text = GroundOne.WE.DungeonArea.ToString() + "　階";
+
+            btnBattleSetting.SetActive(GroundOne.WE.AvailableBattleSettingMenu);
 
             tileInfo = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             tileInfo2 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
@@ -7229,20 +7236,6 @@ namespace DungeonPlayer
             gauge.rectTransform.localScale = new Vector2(dx, 1.0f);
         }
 
-        public void PathfindingMode_Click()
-        {
-            if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
-            {
-                back_vigilance.sprite = Resources.Load<Sprite>(Database.FINDENEMY_MODE_RESOURCE);
-                labelVigilance.text = Database.TEXT_FINDENEMY_MODE;
-            }
-            else
-            {
-                back_vigilance.sprite = Resources.Load<Sprite>(Database.VIGILANCE_MODE_RESOURCE);
-                labelVigilance.text = Database.TEXT_VIGILANCE_MODE;
-            }
-        }
-
         public override void BookManual_Click()
         {
             this.back_playback.SetActive(false);
@@ -7260,10 +7253,10 @@ namespace DungeonPlayer
 
                 this.GroupMenu.SetActive(false);
                 this.groupPlayerList.SetActive(false);
-                this.labelVigilance.gameObject.SetActive(false);
-                this.PathfindingModeImage.SetActive(false);
+                this.HelpManual.SetActive(false);
+                this.PlayBack.SetActive(false);
                 this.BlueOrbImage.SetActive(false);
-                this.BlueOrbText.SetActive(false);
+                this.PathfindingModeImage.SetActive(false);
                 this.MovementInterval = 0;
             }
             else
@@ -7275,23 +7268,56 @@ namespace DungeonPlayer
 
                 this.GroupMenu.SetActive(true);
                 this.groupPlayerList.SetActive(true);
-                this.labelVigilance.gameObject.SetActive(true);
-                this.PathfindingModeImage.SetActive(true);
+                this.HelpManual.SetActive(true);
+                this.PlayBack.SetActive(true);
                 this.BlueOrbImage.SetActive(true);
-                this.BlueOrbText.SetActive(true);
+                this.PathfindingModeImage.SetActive(true);
                 UpdateViewPoint(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
             }
         }
 
         public void PlayBack_Click()
         {
-            this.back_playback.SetActive(!this.back_playback.activeInHierarchy);
+            if (!this.back_playback.activeInHierarchy)
+            {
+                this.back_playback.SetActive(true);
+                this.GroupMenu.SetActive(false);
+                this.HelpManual.SetActive(false);
+                this.DungeonView.SetActive(false);
+                this.BlueOrbImage.SetActive(false);
+                this.BlueOrbText.SetActive(false);
+                this.PathfindingModeImage.SetActive(false);
+                this.labelVigilance.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.back_playback.SetActive(false);
+                this.GroupMenu.SetActive(true);
+                this.HelpManual.SetActive(true);
+                this.DungeonView.SetActive(true);
+                this.BlueOrbImage.SetActive(true);
+                this.PathfindingModeImage.SetActive(true);
+            }
         }
 
         public void BlueOrb_Click()
         {
             MessagePack.MessageBackToTown(ref this.nowMessage, ref this.nowEvent);
             tapOK();
+        }
+
+        public void PathfindingMode_Click()
+        {
+            if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
+            {
+                back_vigilance.sprite = Resources.Load<Sprite>(Database.FINDENEMY_MODE_RESOURCE);
+                labelVigilance.text = Database.TEXT_FINDENEMY_MODE;
+            }
+            else
+            {
+                back_vigilance.sprite = Resources.Load<Sprite>(Database.VIGILANCE_MODE_RESOURCE);
+                labelVigilance.text = Database.TEXT_VIGILANCE_MODE;
+            }
         }
         
         private void SetupPlayerStatus()

@@ -1544,25 +1544,10 @@ namespace DungeonPlayer
         {
             if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
             {
+                Debug.Log("commandsetting: " + player.BattleActionCommandList.Length);
                 for (int ii = 0; ii < player.BattleActionCommandList.Length; ii++)
                 {
-                    if (player.BattleActionCommandList[ii] != "")
-                    {
-                        actionButton[ii].image.sprite = Resources.Load<Sprite>(player.BattleActionCommandList[ii]);
-                        actionButton[ii].name = player.BattleActionCommandList[ii];
-                        if (TruthActionCommand.GetTimingType(player.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Sorcery)
-                        {
-                            sorceryMark[ii].sprite = Resources.Load<Sprite>(Database.SorceryIcon);
-                        }
-                        else if (TruthActionCommand.GetTimingType(player.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Normal)
-                        {
-                            sorceryMark[ii].sprite = Resources.Load<Sprite>(Database.NormalIcon);
-                        }
-                        else
-                        {
-                            sorceryMark[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
-                        }
-                    }
+                    Method.SetupActionButton(actionButton[ii].gameObject, sorceryMark[ii], player.BattleActionCommandList[ii]);
                 }
             }
         }

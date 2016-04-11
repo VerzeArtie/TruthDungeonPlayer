@@ -189,6 +189,43 @@ namespace DungeonPlayer
             }
         }
 
+        // ソーサリー／ノーマル／インスタントのミニアイコンをセットする
+        public static void SetupActionButton(GameObject actionButton, Image sorceryMark, string actionCommand)
+        {
+            if (actionCommand != null && actionCommand != "" && actionCommand != string.Empty)
+            {
+                Debug.Log("not equal empty : " + actionCommand);
+
+                actionButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(actionCommand);
+                actionButton.name = actionCommand;
+                if (TruthActionCommand.GetTimingType(actionCommand) == TruthActionCommand.TimingType.Sorcery)
+                {
+                    sorceryMark.sprite = Resources.Load<Sprite>(Database.SorceryIcon);
+                }
+                else if (TruthActionCommand.GetTimingType(actionCommand) == TruthActionCommand.TimingType.Normal)
+                {
+                    sorceryMark.sprite = Resources.Load<Sprite>(Database.NormalIcon);
+                }
+                else if (TruthActionCommand.GetTimingType(actionCommand) == TruthActionCommand.TimingType.Instant)
+                {
+                    sorceryMark.sprite = Resources.Load<Sprite>(Database.InstantIcon);
+                }
+                else
+                {
+                    actionButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.STAY_EN);
+                    actionButton.name = Database.STAY_EN;
+                    sorceryMark.sprite = Resources.Load<Sprite>(Database.NormalIcon);
+                }
+            }
+            else
+            {
+                Debug.Log("empty then sprite null");
+                actionButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.STAY_EN);
+                actionButton.name = Database.STAY_EN;
+                sorceryMark.sprite = Resources.Load<Sprite>(Database.NormalIcon);
+            }
+        }
+
         // 通常セーブ、現実世界の自動セーブ、タイトルSeekerモードの自動セーブを結合
         public static void AutoSaveTruthWorldEnvironment()
         {

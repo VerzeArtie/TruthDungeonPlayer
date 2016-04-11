@@ -9,7 +9,6 @@ namespace DungeonPlayer
 {
     public class TruthBattleSetting : MotherForm
     {
-        public Camera cam;
         public GameObject groupArcheType;
         public GameObject btnCharacterGroup;
         public GameObject groupMixCommand;            
@@ -68,7 +67,7 @@ namespace DungeonPlayer
 
             this.currentPlayer = GroundOne.MC;
             this.currentPlayerNumber = 0;
-            this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+            this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
 
             if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
             if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
@@ -131,21 +130,7 @@ namespace DungeonPlayer
                 if (pbCurrentAction[ii].gameObject.transform.position.x <= positionX && positionX <= pbCurrentAction[ii].gameObject.transform.position.x + (pbCurrentAction[ii].GetComponent<RectTransform>()).rect.width &&
                     pbCurrentAction[ii].gameObject.transform.position.y <= positionY && positionY <= pbCurrentAction[ii].gameObject.transform.position.y + (pbCurrentAction[ii].GetComponent<RectTransform>()).rect.height)
                 {
-                    pbCurrentAction[ii].sprite = sender.image.sprite;
-                    pbCurrentAction[ii].name = sender.name;
-                    if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Sorcery)
-                    {
-                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.SorceryIcon);
-                    }
-                    else if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Normal)
-                    {
-                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.NormalIcon);
-                    }
-                    else
-                    {
-                        pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
-                    }
-
+                    Method.SetupActionButton(pbCurrentAction[ii].gameObject, pbCurrentActionSorcery[ii], sender.name);
                     this.currentPlayer.BattleActionCommandList[ii] = sender.name;
                     break;
                 }
@@ -157,24 +142,7 @@ namespace DungeonPlayer
         public void TruthBattleSetting_MouseDown(Button sender)
         {
             moveActionBox.gameObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
-            moveActionBox.sprite = sender.image.sprite;
-            moveActionBox.name = sender.name;
-
-            //moveActionBox.sprite = Resources.Load<Sprite>(ssName[ii]);
-            if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Sorcery)
-            {
-                moveActionBoxSorcery.sprite = Resources.Load<Sprite>(Database.SorceryIcon);
-            }
-            else if (TruthActionCommand.GetTimingType(sender.name) == TruthActionCommand.TimingType.Normal)
-            {
-                moveActionBoxSorcery.sprite = Resources.Load<Sprite>(Database.NormalIcon);
-            }
-            else
-            {
-                moveActionBoxSorcery.sprite = Resources.Load<Sprite>(Database.InstantIcon);
-            }
-
-
+            Method.SetupActionButton(moveActionBox.gameObject, moveActionBoxSorcery, sender.name);
             moveActionBox.gameObject.SetActive(true);
         }
 
@@ -263,14 +231,7 @@ namespace DungeonPlayer
                 try { 
                     if (ssAvailable[ii]) {
                         pbAction[ii].gameObject.SetActive(true);
-                        pbAction[ii].sprite = Resources.Load<Sprite>(ssName[ii]);
-                        if (TruthActionCommand.GetTimingType(ssName[ii]) == TruthActionCommand.TimingType.Sorcery) {
-                            pbSorcery[ii].sprite = Resources.Load<Sprite>(Database.SorceryIcon);
-                        } else if (TruthActionCommand.GetTimingType(ssName[ii]) == TruthActionCommand.TimingType.Normal) {
-                            pbSorcery[ii].sprite = Resources.Load<Sprite>(Database.NormalIcon);
-                        } else {
-                            pbSorcery[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
-                        }
+                        Method.SetupActionButton(pbAction[ii].gameObject, pbSorcery[ii], ssName[ii]);
                     }
                     else
                     {
@@ -285,20 +246,7 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < currentPlayer.BattleActionCommandList.Length; ii++)
             {
-                pbCurrentAction[ii].sprite = Resources.Load<Sprite>(currentPlayer.BattleActionCommandList[ii]);
-                pbCurrentAction[ii].name = currentPlayer.BattleActionCommandList[ii];
-                if (TruthActionCommand.GetTimingType(currentPlayer.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Sorcery)
-                {
-                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.SorceryIcon);
-                }
-                else if (TruthActionCommand.GetTimingType(currentPlayer.BattleActionCommandList[ii]) == TruthActionCommand.TimingType.Normal)
-                {
-                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.NormalIcon);
-                }
-                else
-                {
-                    pbCurrentActionSorcery[ii].sprite = Resources.Load<Sprite>(Database.InstantIcon);
-                }
+                Method.SetupActionButton(pbCurrentAction[ii].gameObject, pbCurrentActionSorcery[ii], currentPlayer.BattleActionCommandList[ii]);
             }
         }
         
@@ -306,7 +254,7 @@ namespace DungeonPlayer
         {
             this.currentPlayer = GroundOne.MC;
             this.currentPlayerNumber = 0;
-            this.cam.backgroundColor = GroundOne.MC.PlayerStatusColor;
+            this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
             if (GroundOne.BattleEnemyFilter != null)
             {
                 GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
@@ -318,7 +266,7 @@ namespace DungeonPlayer
         {
             this.currentPlayer = GroundOne.SC;
             this.currentPlayerNumber = 1;
-            this.cam.backgroundColor = GroundOne.SC.PlayerStatusColor;
+            this.Background.GetComponent<Image>().color = GroundOne.SC.PlayerStatusColor;
             if (GroundOne.BattleEnemyFilter != null)
             {
                 GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
@@ -330,7 +278,7 @@ namespace DungeonPlayer
         {
             this.currentPlayer = GroundOne.TC;
             this.currentPlayerNumber = 2;
-            this.cam.backgroundColor = GroundOne.TC.PlayerStatusColor;
+            this.Background.GetComponent<Image>().color = GroundOne.TC.PlayerStatusColor;
             if (GroundOne.BattleEnemyFilter != null)
             {
                 GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
