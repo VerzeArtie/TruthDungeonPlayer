@@ -3363,8 +3363,8 @@ namespace DungeonPlayer
         // 発動タイミングを判別
         public static TimingType GetTimingType(string command)
         {
-
             if (command == Database.ATTACK_EN) { return TimingType.Normal; }
+            if (command == Database.DEFENSE_EN) { return TimingType.Normal; }
 
             if (command == Database.FRESH_HEAL) { return TimingType.Instant; }
             if (command == Database.PROTECTION) { return TimingType.Instant; }
