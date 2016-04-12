@@ -989,6 +989,7 @@ namespace DungeonPlayer
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
                 UpdateMainMessage("", true);
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
             }
             // 敗北して、ゲーム終了を選択した時
             else if (GroundOne.BattleResult == GroundOne.battleResult.Ignore)
@@ -1032,9 +1033,11 @@ namespace DungeonPlayer
                 }
             }
             // 戦闘に勝利した場合（通常ルート）
-            else
+            else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
             {
                 GroundOne.BattleResult = GroundOne.battleResult.None;
+
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
 
                 // ボスに勝利した時、フラグ更新を行う。
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
