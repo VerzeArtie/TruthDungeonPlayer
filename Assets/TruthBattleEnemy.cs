@@ -7087,17 +7087,20 @@ namespace DungeonPlayer
             }
             // System.Threading.Thread.Sleep(1000);
             GroundOne.BattleResult = GroundOne.battleResult.Abort;
+            GroundOne.StopDungeonMusic();
             SceneDimension.Back(this);
         }
 
         public void GameOverYes_Click()
         {
             GroundOne.BattleResult = GroundOne.battleResult.Retry;
+            GroundOne.StopDungeonMusic();
             SceneDimension.Back(this);
         }
         public void GameOverNo_Click()
         {
             GroundOne.BattleResult = GroundOne.battleResult.Ignore;
+            GroundOne.StopDungeonMusic();
             SceneDimension.Back(this);
         }
 
@@ -7742,6 +7745,7 @@ namespace DungeonPlayer
             }
 
             Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
+            GroundOne.StopDungeonMusic();
             SceneDimension.Back(this);
         }
 
