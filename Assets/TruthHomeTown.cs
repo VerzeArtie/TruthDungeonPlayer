@@ -200,7 +200,7 @@ namespace DungeonPlayer
             }
             if (this.panelMessage.gameObject.activeInHierarchy && btnOK.gameObject.activeInHierarchy)
             {
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
                 {
                     tapOK();
                 }
@@ -862,6 +862,18 @@ namespace DungeonPlayer
             SceneDimension.CallTruthBattleSetting(this);
         }
 
+        public void tapSystemMessage()
+        {
+            if (this.nowReading <= 0 && this.nowMessage.Count <= 0)
+            {
+                HideAllChild();
+            }
+            else
+            {
+                tapOK();
+            }
+        }
+
         private void NormalTapOK()
         {
             this.nowHideing = true;
@@ -1437,6 +1449,7 @@ namespace DungeonPlayer
                 this.groupDuelSelect.SetActive(false);
                 this.groupTicketChoice.SetActive(false);
                 this.groupYesnoSystemMessage.SetActive(false);
+                this.systemMessagePanel.SetActive(false);
             }
         }
 
