@@ -6367,6 +6367,8 @@ namespace DungeonPlayer
 
                         messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
+                        messageList.Add(""); eventList.Add(ActionEvent.None);
+
                         GroundOne.WE.AvailableSecondCharacter = true;
                         GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
                     }
@@ -6391,7 +6393,7 @@ namespace DungeonPlayer
 
                     //    messageList.Add("ラナ：ハイハイ、頑張ってきてよね♪"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("【  ラナがパーティに加えまんせでした  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+                        messageList.Add("【  ラナがパーティに加えませんでした  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
                     //    GroundOne.WE.Truth_CommunicationNotJoinLana = true;
                     //}
@@ -6441,6 +6443,8 @@ namespace DungeonPlayer
                 messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                messageList.Add(""); eventList.Add(ActionEvent.None);
 
                 GroundOne.WE.AvailableSecondCharacter = true;
                 GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -6563,6 +6567,8 @@ namespace DungeonPlayer
 
             messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
+            messageList.Add(""); eventList.Add(ActionEvent.None);
+
             GroundOne.WE.AvailableSecondCharacter = true;
             GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
         }
@@ -6632,6 +6638,8 @@ namespace DungeonPlayer
             messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(""); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.AvailableSecondCharacter = true;
             GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
@@ -6742,6 +6750,8 @@ namespace DungeonPlayer
                     messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.None);
 
                     GroundOne.WE.AvailableSecondCharacter = true;
                     GroundOne.WE.Truth_CommunicationJoinPartyLana = true;

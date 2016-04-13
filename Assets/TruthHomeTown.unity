@@ -2151,7 +2151,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 759049465}
-        m_MethodName: tapOK
+        m_MethodName: tapSystemMessage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3071,6 +3071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f677032286b4d34bc3623f49817369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Background: {fileID: 0}
   yesnoSystemMessage: {fileID: 433427203}
   groupYesnoSystemMessage: {fileID: 960126935}
   Filter: {fileID: 1665266828}

@@ -917,29 +917,36 @@ namespace DungeonPlayer
                 {
                     DungeonView_Click();
                 }
-                else if (Input.GetKey(KeyCode.Alpha8) || Input.GetKey(KeyCode.UpArrow) || this.arrowUp)
+                else if (Input.GetKey(KeyCode.Keypad8) || Input.GetKey(KeyCode.UpArrow) || this.arrowUp)
                 {
                     this.keyUp = true;
                     this.keyDown = false;
                     movementTimer_Tick();
                 }
-                else if (Input.GetKey(KeyCode.Alpha4) || Input.GetKey(KeyCode.LeftArrow) || this.arrowLeft)
+                else if (Input.GetKey(KeyCode.Keypad4) || Input.GetKey(KeyCode.LeftArrow) || this.arrowLeft)
                 {
                     this.keyLeft = true;
                     this.keyRight = false;
                     movementTimer_Tick();
                 }
-                else if (Input.GetKey(KeyCode.Alpha6) || Input.GetKey(KeyCode.RightArrow) || this.arrowRight)
+                else if (Input.GetKey(KeyCode.Keypad6) || Input.GetKey(KeyCode.RightArrow) || this.arrowRight)
                 {
                     this.keyRight = true;
                     this.keyLeft = false;
                     movementTimer_Tick();
                 }
-                else if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.DownArrow) || this.arrowDown)
+                else if (Input.GetKey(KeyCode.Keypad2) || Input.GetKey(KeyCode.DownArrow) || this.arrowDown)
                 {
                     this.keyDown = true;
                     this.keyUp = false;
                     movementTimer_Tick();
+                }
+            }
+            else if (this.btnOK.gameObject.activeInHierarchy)
+            {
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    tapOK();
                 }
             }
         }
@@ -948,6 +955,7 @@ namespace DungeonPlayer
         {
             base.SceneBack();
 
+            SetupPlayerStatus(false);
             #region "戦闘終了判定"
             // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
@@ -2365,20 +2373,28 @@ namespace DungeonPlayer
             {
                 if (GroundOne.WE.DungeonArea == 4)
                 {
-                    encountBorder = Database.ENCOUNT_ENEMY + (int)(stepCounter / 20);
+                    encountBorder = (int)(stepCounter / 20);
                 }
                 else
                 {
-                    encountBorder = Database.ENCOUNT_ENEMY + (int)(stepCounter / 10);
+                    encountBorder = (int)(stepCounter / 10);
                 }
             }
             else
             {
-                encountBorder = Database.ENCOUNT_ENEMY + (int)(stepCounter / 5);
+                encountBorder = (int)(stepCounter / 5);
             }
-
-            //Debug.Log("stepcount: " + this.stepCounter + " encountBorder: " + encountBorder.ToString() + " R:" + resultValue.ToString());
-            if (resultValue > encountBorder)
+            int lowLevelBorder = 0;
+            if (GroundOne.WE2.RealWorld == false)
+            {
+                int[] factor = { Database.CHARACTER_MAX_LEVEL1, Database.CHARACTER_MAX_LEVEL2, Database.CHARACTER_MAX_LEVEL3, Database.CHARACTER_MAX_LEVEL4, Database.CHARACTER_MAX_LEVEL5 };
+                lowLevelBorder = (Database.CHARACTER_MAX_LEVEL1 - GroundOne.MC.Level) / 5;
+            }
+            else
+            {
+                lowLevelBorder = (Database.CHARACTER_MAX_LEVEL6 - GroundOne.MC.Level) / 5;
+            }
+            if (resultValue > encountBorder * lowLevelBorder)
             {
                 return;
             }

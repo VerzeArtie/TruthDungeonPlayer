@@ -232,6 +232,7 @@ namespace DungeonPlayer
             }
             else
             {
+                GroundOne.PlaySoundEffect(Database.SOUND_LEVEL_UP);
                 btnClose.gameObject.SetActive(false);
                 if (GroundOne.CumultiveLvUpValue >= 2)
                 {

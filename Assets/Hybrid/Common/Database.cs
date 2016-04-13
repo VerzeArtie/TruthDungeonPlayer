@@ -21,7 +21,6 @@ namespace DungeonPlayer
         public static int DUNGEON_BASE_X = 0;
         public static int DUNGEON_BASE_Y = 0;
 
-        public static int ENCOUNT_ENEMY = 0;// 敵への遭遇率
         public static int FIRST_POS = 2; // 町へ戻る手前は2 絡みつくフランシス手前は325 ２階階段手前は598　Lizenos手前は82, ３階階段手前は22
 
         public static int MAX_BACKPACK_SIZE = 20; // 10->20 後編編集

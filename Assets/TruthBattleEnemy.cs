@@ -276,8 +276,7 @@ namespace DungeonPlayer
         public Text treasureText;
 
         // internal
-        const int TIME_TURN = 320;
-        int BattleTimeCounter = Database.BASE_TIMER_BAR_LENGTH / 2;
+        int BattleTimeCounter = Database.BASE_TIMER_BAR_LENGTH;
         int BattleTurnCount = 0;
 
         bool gameStart = false;
@@ -297,7 +296,7 @@ namespace DungeonPlayer
         List<MainCharacter> ActiveList = new List<MainCharacter>();
         private static System.Random rand = new System.Random(DateTime.Now.Millisecond * System.Environment.TickCount);
 
-        int TIMER_SPEED = 10;
+        int TIMER_SPEED = 3;
 
         int MAX_ITEM_GAUGE = 1000;
         int currentItemGauge = 0;
@@ -802,7 +801,7 @@ namespace DungeonPlayer
             int currentTimerCount = this.BattleTimeCounter;
             if (BattleTurnCount != 0)
             {
-                double currentTime = (Database.BASE_TIMER_BAR_LENGTH / 2.0f - (double)currentTimerCount) / (Database.BASE_TIMER_BAR_LENGTH / 2.0f) * 300.0f / 100.0f;
+                double currentTime = (Database.BASE_TIMER_BAR_LENGTH - (double)currentTimerCount) / (Database.BASE_TIMER_BAR_LENGTH) * 5.0f;
                 lblTimerCount.text = currentTime.ToString("0.00");
             }
             const int DivNum = 32;
@@ -816,7 +815,7 @@ namespace DungeonPlayer
             }
             #endregion
 
-            if (BattleTimeCounter >= Database.BASE_TIMER_BAR_LENGTH / 2)
+            if (BattleTimeCounter >= Database.BASE_TIMER_BAR_LENGTH)
             {
                 if (BattleTurnCount == 0)
                 {
@@ -1280,6 +1279,10 @@ namespace DungeonPlayer
                 {
                     player.labelCurrentSkillPoint.gameObject.SetActive(false);
                 }
+                if (player.meterCurrentSkillPoint != null)
+                {
+                    player.meterCurrentSkillPoint.gameObject.SetActive(false);
+                }
             }
 
             // 各プレイヤーの魔法開放制限
@@ -1288,6 +1291,10 @@ namespace DungeonPlayer
                 if (player.labelCurrentManaPoint != null)
                 {
                     player.labelCurrentManaPoint.gameObject.SetActive(false);
+                }
+                if (player.meterCurrentManaPoint != null)
+                {
+                    player.meterCurrentManaPoint.gameObject.SetActive(false);
                 }
             }
 
