@@ -2624,7 +2624,7 @@ namespace DungeonPlayer
         public const string exitMessage1 = @"セーブしていない場合、現在データは破棄されます。セーブしますか？";
         public const string exitMessage2 = @"タイトルへ戻りますか？";
         public const string exitMessage3 = @"ユングの町に戻りますか？";
-        public const string exitMessage4 = @"宿屋に泊まりますか？";
+        public const string Request_Inn = @"宿屋に泊まりますか？";
         public const string Message_DuelAvailable = @"【DUEL闘技場へ行く事が出来るようになりました】";
         public const string Message_BattleSettingAvailable = @"【ESCメニューより「バトル設定」が選択できるようになりました】";
         public const string Message_GoToAnotherField = @"アインは別の場所へと飛ばされてしまった";

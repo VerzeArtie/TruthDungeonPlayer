@@ -78,7 +78,7 @@ namespace DungeonPlayer
         public string currentRequestFood = string.Empty;
 
         bool forceSaveCall = false; // シナリオ進行上、強制セーブした後、”休息しました”を表示しするためのフラグ
-        bool nowRequestFood = false; // 宿屋で休息の後、”休息しました”を表示するためのフラグ
+        bool nowAfterRestMessage = false; // 宿屋で休息の後、”休息しました”を表示するためのフラグ
         private string MESSAGE_AUTOSAVE_EXIT = @"ここまでの記録は自動セーブとなります。次回起動は、ここから再開となります";
 
         bool nowDuel = false;
@@ -1909,7 +1909,7 @@ namespace DungeonPlayer
         public override void ExitYes()
         {
             base.ExitYes();
-            if (yesnoSystemMessage.text == Database.exitMessage4)
+            if (yesnoSystemMessage.text == Database.Request_Inn)
             {
                 groupYesnoSystemMessage.SetActive(false);
                 SceneDimension.CallRequestFood(Database.TruthHomeTown, this);
@@ -1919,8 +1919,9 @@ namespace DungeonPlayer
         public override void ExitNo()
         {
             base.ExitNo();
-            if (yesnoSystemMessage.text == Database.exitMessage4)
+            if (yesnoSystemMessage.text == Database.Request_Inn)
             {
+                yesnoSystemMessage.text = "";
                 this.groupYesnoSystemMessage.SetActive(false);
                 this.Filter.SetActive(false);
                 MessagePack.Message69996(ref nowMessage, ref nowEvent);
@@ -1932,8 +1933,9 @@ namespace DungeonPlayer
         {
             Debug.Log("SceneBack (S)");
             base.SceneBack();
-            if (yesnoSystemMessage.text == Database.exitMessage4)
+            if (yesnoSystemMessage.text == Database.Request_Inn)
             {
+                yesnoSystemMessage.text = "";
                 MessagePack.Message69997(ref nowMessage, ref nowEvent, this.currentRequestFood);
                 NormalTapOK();
             }
@@ -1942,9 +1944,9 @@ namespace DungeonPlayer
                 this.forceSaveCall = false;
                 HometownCommunicationStart();
             }
-            else if (this.nowRequestFood)
+            else if (this.nowAfterRestMessage)
             {
-                this.nowRequestFood = false;
+                this.nowAfterRestMessage = false;
                 ExecRestInn();
             }
             else if (this.nowDuel && !this.nowTalkingOlRandis)

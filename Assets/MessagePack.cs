@@ -12267,7 +12267,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：どうすっかな・・・泊まるか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(Database.exitMessage4); eventList.Add(ActionEvent.HomeTownYesNoMessageDisplay);
+            messageList.Add(Database.Request_Inn); eventList.Add(ActionEvent.HomeTownYesNoMessageDisplay);
         }
         #endregion
 
