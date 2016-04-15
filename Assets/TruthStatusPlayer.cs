@@ -14,7 +14,6 @@ namespace DungeonPlayer
     {
         public GameObject btnSpellSkillDescClose;
         public Text txtSpellSkillDescription;
-        public GameObject filter;
         public GameObject groupParentStatus;
         public GameObject groupParentBackpack;
         public GameObject groupParentSpell;
@@ -610,7 +609,6 @@ namespace DungeonPlayer
                 }
             }
 
-            this.filter.SetActive(true);
             SceneDimension.CallTruthSkillSpellDesc(this, player.FirstName, skillSpellName);
         }
 
