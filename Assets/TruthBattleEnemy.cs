@@ -1552,7 +1552,6 @@ namespace DungeonPlayer
         {
             if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
             {
-                Debug.Log("commandsetting: " + player.BattleActionCommandList.Length);
                 for (int ii = 0; ii < player.BattleActionCommandList.Length; ii++)
                 {
                     Method.SetupActionButton(actionButton[ii].gameObject, sorceryMark[ii], player.BattleActionCommandList[ii]);
@@ -5133,7 +5132,6 @@ namespace DungeonPlayer
             }
         }
 
-
         private void UpdateBattleText(string text)
         {
             if (txtBattleMessage != null)
@@ -5176,6 +5174,13 @@ namespace DungeonPlayer
             }
             return target;
         }
+
+        public void tapBattleClose()
+        {
+            GroundOne.StopDungeonMusic();
+            SceneDimension.Back(this);
+        }
+
         public void tapActionButton(Button obj)
         {
             string command = obj.name;
@@ -5198,7 +5203,6 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
-            GroundOne.BattleEnemyFilter = this.Filter;
             SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapPanel1()
@@ -7699,6 +7703,7 @@ namespace DungeonPlayer
             }
             else
             {
+                GroundOne.BattleResult = GroundOne.battleResult.OK;
                 UpdateBattleText("敵を倒した！　" + ec1.Exp + "の経験値を得た。\r\n");
                 System.Threading.Thread.Sleep(1000);
 
@@ -7733,11 +7738,13 @@ namespace DungeonPlayer
                             GroundOne.PlaySoundEffect(Database.SOUND_GET_RARE_ITEM);
                         }
                         MessageDisplayWithIcon(new ItemBackPack(targetItemName));
+                        this.Filter.SetActive(true);
                         treasurePanel.SetActive(true);
 
                         if (GetNewItem(this.GettingNewItem))
                         {
                             // バックパックが空いてて入手可能な場合、ここでは何もしない。
+                            return; // scenebackさせない
                         }
                         else
                         {
@@ -7748,7 +7755,6 @@ namespace DungeonPlayer
                         }
                     }
                 }
-                GroundOne.BattleResult = GroundOne.battleResult.OK;
             }
 
             Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
@@ -7797,7 +7803,7 @@ namespace DungeonPlayer
             {
                 if (GroundOne.SC != null && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
                 {
-                    GroundOne.SC.Exp = ec1.Exp;
+                    GroundOne.SC.Exp += ec1.Exp;
                 }
 
                 int levelUpPoint = 0;

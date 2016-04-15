@@ -245,10 +245,10 @@ namespace DungeonPlayer
 
             if (GroundOne.OnlySelectTrash)
             {
-                if (GroundOne.ParentScene != null)
+                if (GroundOne.Parent.Count > 0)
                 {
-                    GroundOne.ParentScene.Filter.SetActive(true);
-                    GroundOne.ParentScene.Filter.GetComponent<Image>().color = player.PlayerStatusColor;
+                    GroundOne.Parent[GroundOne.Parent.Count - 1].Filter.SetActive(true);
+                    GroundOne.Parent[GroundOne.Parent.Count - 1].Filter.GetComponent<Image>().color = player.PlayerStatusColor;
                 }
                 txtClose.text = "諦める";
                 mainMessage.text = "アイン：バックパックがいっぱいみたいだ。何か捨てないとな・・・";
@@ -390,6 +390,11 @@ namespace DungeonPlayer
             SettingCharacterData(player);
             RefreshPartyMembersBattleStatus(player);
             RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
+
+            if (GroundOne.LevelUp)
+            {
+                SpellSkillDesc_Close_Click();
+            }
         }
 
         public void tapClose()
@@ -1461,7 +1466,7 @@ namespace DungeonPlayer
 
                 if (GroundOne.OnlySelectTrash)
                 {
-                    GroundOne.ParentScene.GetNewItemAndBack();
+                    GroundOne.Parent[GroundOne.Parent.Count - 1].GetNewItemAndBack();
                 }
             }
             else

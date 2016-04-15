@@ -62,7 +62,7 @@ namespace DungeonPlayer
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 
         // MotherForm
-        public static MotherForm ParentScene;
+        public static List<MotherForm> Parent;
 
         // TruthBattleEnemy
         public static bool HiSpeedAnimation = false; // スタック合戦をハイスピードにするかどうか
@@ -72,9 +72,6 @@ namespace DungeonPlayer
         public static string enemyName1 = string.Empty;
         public static string enemyName2 = string.Empty;
         public static string enemyName3 = string.Empty;
-
-        // TruthBattleSetting
-        public static GameObject BattleEnemyFilter = null;
 
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
@@ -186,6 +183,7 @@ namespace DungeonPlayer
             if (AlreadyInitialize == false) { AlreadyInitialize = true; }
             else { Debug.Log("already initialize"); return false; }
 
+            Parent = new List<MotherForm>();
             objMC = new GameObject("objMC");
             objSC = new GameObject("objSC");
             objTC = new GameObject("objTC");

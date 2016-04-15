@@ -934,7 +934,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2114746048}
-        m_MethodName: Close_Clock
+        m_MethodName: Close_Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1203,7 +1203,7 @@ GameObject:
   - 222: {fileID: 1355600089}
   - 114: {fileID: 1355600088}
   m_Layer: 0
-  m_Name: BackPanel (1)
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1974,6 +1974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d1d0a8e33512e44a6438c052b29406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Background: {fileID: 1355600086}
   yesnoSystemMessage: {fileID: 0}
   groupYesnoSystemMessage: {fileID: 0}
   Filter: {fileID: 0}

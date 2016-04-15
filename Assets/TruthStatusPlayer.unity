@@ -18353,10 +18353,9 @@ MonoBehaviour:
   Background: {fileID: 1817700652}
   yesnoSystemMessage: {fileID: 0}
   groupYesnoSystemMessage: {fileID: 0}
-  Filter: {fileID: 0}
+  Filter: {fileID: 817938784}
   btnSpellSkillDescClose: {fileID: 470113196}
   txtSpellSkillDescription: {fileID: 0}
-  filter: {fileID: 817938784}
   groupParentStatus: {fileID: 1422413442}
   groupParentBackpack: {fileID: 1827700284}
   groupParentSpell: {fileID: 704268548}
@@ -18371,7 +18370,6 @@ MonoBehaviour:
   labelFirstPlayerLife: {fileID: 410375149}
   labelSecondPlayerLife: {fileID: 1237022215}
   labelThirdPlayerLife: {fileID: 1514794960}
-  cam: {fileID: 1352392619}
   mainMessage: {fileID: 520290601}
   txtName: {fileID: 1767877316}
   txtLevel: {fileID: 1707455046}

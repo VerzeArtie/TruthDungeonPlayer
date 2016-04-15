@@ -351,7 +351,7 @@ namespace DungeonPlayer
                 EatFood(250, 250, 0, 0, 250);
             }
 
-            ((TruthHomeTown)GroundOne.ParentScene).currentRequestFood = this.CurrentSelect;
+            ((TruthHomeTown)GroundOne.Parent[GroundOne.Parent.Count - 1]).currentRequestFood = this.CurrentSelect;
             SceneDimension.Back(this);
         }
 

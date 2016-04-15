@@ -341,7 +341,7 @@ namespace DungeonPlayer
             if (mind) { pbMind.sprite = Resources.Load<Sprite>(Database.MindIcon); }
         }
 
-        public void Close_Clock()
+        public void Close_Click()
         {
             SceneDimension.Back(this);
         }

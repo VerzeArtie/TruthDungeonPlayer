@@ -1461,9 +1461,9 @@ namespace DungeonPlayer
             }
             else if (this.nowAutoKill)
             {
-                if (GroundOne.ParentScene != null)
+                if (GroundOne.Parent.Count > 0)
                 {
-                    GroundOne.ParentScene.NextScene();
+                    GroundOne.Parent[GroundOne.Parent.Count - 1].NextScene();
                 }
             }
             else

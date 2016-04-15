@@ -73,12 +73,6 @@ namespace DungeonPlayer
             if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
             if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
 
-            if (GroundOne.BattleEnemyFilter != null)
-            {
-                GroundOne.BattleEnemyFilter.SetActive(true);
-                GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
-            }
-
             this.groupMixCommand.SetActive(GroundOne.WE.AvailableMixSpellSkill);
 
             this.groupArcheType.SetActive(GroundOne.WE.AvailableArchetypeCommand);
@@ -255,10 +249,6 @@ namespace DungeonPlayer
             this.currentPlayer = GroundOne.MC;
             this.currentPlayerNumber = 0;
             this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
-            if (GroundOne.BattleEnemyFilter != null)
-            {
-                GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
-            }
             SetupAllIcon();
         }
 
@@ -267,10 +257,6 @@ namespace DungeonPlayer
             this.currentPlayer = GroundOne.SC;
             this.currentPlayerNumber = 1;
             this.Background.GetComponent<Image>().color = GroundOne.SC.PlayerStatusColor;
-            if (GroundOne.BattleEnemyFilter != null)
-            {
-                GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
-            }
             SetupAllIcon();
         }
 
@@ -279,10 +265,6 @@ namespace DungeonPlayer
             this.currentPlayer = GroundOne.TC;
             this.currentPlayerNumber = 2;
             this.Background.GetComponent<Image>().color = GroundOne.TC.PlayerStatusColor;
-            if (GroundOne.BattleEnemyFilter != null)
-            {
-                GroundOne.BattleEnemyFilter.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
-            }
             SetupAllIcon();
         }
     }
