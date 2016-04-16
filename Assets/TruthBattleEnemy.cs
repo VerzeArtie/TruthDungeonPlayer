@@ -618,7 +618,14 @@ namespace DungeonPlayer
         {
             base.Update();
 
-            System.Threading.Thread.Sleep(TIMER_SPEED);
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                // スリープさせない
+            }
+            else
+            {
+                System.Threading.Thread.Sleep(TIMER_SPEED);
+            }
             #region "キー制御"
             bool detectShift = false;
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))

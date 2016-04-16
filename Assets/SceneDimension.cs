@@ -9,6 +9,8 @@ namespace DungeonPlayer
     {
         public static void JumpToTruthHomeTown()
         {
+            GroundOne.WE.DungeonPosX = 0;
+            GroundOne.WE.DungeonPosY = 0;
             GroundOne.StopDungeonMusic();
             Application.LoadLevel(Database.TruthHomeTown);
             GroundOne.Parent.Clear();

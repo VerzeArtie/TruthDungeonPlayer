@@ -226,7 +226,6 @@ namespace DungeonPlayer
                     GroundOne.MC.Dead = false;
                     GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife / 2;
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.MC);
-                    NormalTapOK();
                 }
             }
             if (GroundOne.SC != null)
@@ -236,7 +235,6 @@ namespace DungeonPlayer
                     GroundOne.SC.Dead = false;
                     GroundOne.SC.CurrentLife = GroundOne.SC.MaxLife / 2;
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.SC);
-                    NormalTapOK();
                 }
             }
             if (GroundOne.TC != null)
@@ -246,7 +244,6 @@ namespace DungeonPlayer
                     GroundOne.TC.Dead = false;
                     GroundOne.TC.CurrentLife = GroundOne.TC.MaxLife / 2;
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.TC);
-                    NormalTapOK();
                 }
             }       
             
@@ -256,8 +253,9 @@ namespace DungeonPlayer
         	}
         	else
         	{
-                mainMessage.text = "アイン：さて、何すっかな";
-                GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                nowMessage.Add("アイン：さて、何すっかな"); nowEvent.Add(MessagePack.ActionEvent.None);
+
+                nowMessage.Add(""); nowEvent.Add(MessagePack.ActionEvent.PlayMusic01);
                 return; // イベント発生は連続して発生させない
         	}
 
@@ -903,47 +901,50 @@ namespace DungeonPlayer
                 {
                     systemMessage.text = this.nowMessage[this.nowReading];
                     systemMessagePanel.SetActive(true);
-                }
-                else if (this.nowMessage[this.nowReading] == Database.Message_DuelAvailable)
-                {
-                    buttonDuel.gameObject.SetActive(true);
-                }
-                else if (this.nowMessage[this.nowReading] == Database.Message_BattleSettingAvailable)
-                {
-                    buttonBattleSetting.gameObject.SetActive(true);
-                }
-                else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField)
-                {
-                    buttonHanna.gameObject.SetActive(false);
-                    buttonDungeon.gameObject.SetActive(false);
-                    buttonRana.gameObject.SetActive(false);
-                    buttonGanz.gameObject.SetActive(false);
-                    buttonPotion.gameObject.SetActive(false);
-                    buttonDuel.gameObject.SetActive(false);
-                    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
-                }
-                else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField_Back)
-                {
-                    if (!GroundOne.WE.AlreadyRest)
+
+                    // メッセージの内容に応じてイベントを適宜こなす
+                    if (this.nowMessage[this.nowReading] == Database.Message_DuelAvailable)
                     {
-                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+                        buttonDuel.gameObject.SetActive(true);
                     }
-                    else
+                    else if (this.nowMessage[this.nowReading] == Database.Message_BattleSettingAvailable)
                     {
-                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                        GroundOne.WE.AvailableBattleSettingMenu = true;
+                        buttonBattleSetting.gameObject.SetActive(true);
                     }
-                    buttonHanna.gameObject.SetActive(true);
-                    buttonDungeon.gameObject.SetActive(true);
-                    buttonRana.gameObject.SetActive(true);
-                    buttonGanz.gameObject.SetActive(true);
-                    buttonPotion.gameObject.SetActive(true);
-                    buttonDuel.gameObject.SetActive(true);
-                }
-                else if (this.nowMessage[this.nowReading] == Database.Message_GateAvailable)
-                {
-                    buttonShinikia.gameObject.SetActive(true);
-                    GroundOne.WE.AvailableBackGate = true;
-                    GroundOne.WE.alreadyCommunicateCahlhanz = true; // カール爵に教えてもらったばかりのため、Trueを指定しておく。
+                    else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField)
+                    {
+                        buttonHanna.gameObject.SetActive(false);
+                        buttonDungeon.gameObject.SetActive(false);
+                        buttonRana.gameObject.SetActive(false);
+                        buttonGanz.gameObject.SetActive(false);
+                        buttonPotion.gameObject.SetActive(false);
+                        buttonDuel.gameObject.SetActive(false);
+                        ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_SECRETFIELD_OF_FAZIL);
+                    }
+                    else if (this.nowMessage[this.nowReading] == Database.Message_GoToAnotherField_Back)
+                    {
+                        if (!GroundOne.WE.AlreadyRest)
+                        {
+                            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+                        }
+                        else
+                        {
+                            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+                        }
+                        buttonHanna.gameObject.SetActive(true);
+                        buttonDungeon.gameObject.SetActive(true);
+                        buttonRana.gameObject.SetActive(true);
+                        buttonGanz.gameObject.SetActive(true);
+                        buttonPotion.gameObject.SetActive(true);
+                        buttonDuel.gameObject.SetActive(true);
+                    }
+                    else if (this.nowMessage[this.nowReading] == Database.Message_GateAvailable)
+                    {
+                        buttonShinikia.gameObject.SetActive(true);
+                        GroundOne.WE.AvailableBackGate = true;
+                        GroundOne.WE.alreadyCommunicateCahlhanz = true; // カール爵に教えてもらったばかりのため、Trueを指定しておく。
+                    }
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
                 {

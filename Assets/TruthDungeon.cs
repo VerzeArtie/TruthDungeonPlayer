@@ -215,7 +215,7 @@ namespace DungeonPlayer
 
             if (Application.platform == RuntimePlatform.Android)
             {
-                MOVE_INTERVAL = 2;
+                MOVE_INTERVAL = 1;
                 this.groupArrow.SetActive(true);
             }
             else
@@ -955,6 +955,7 @@ namespace DungeonPlayer
         {
             base.SceneBack();
 
+            UpdateMainMessage("", true);
             SetupPlayerStatus(false);
             #region "戦闘終了判定"
             // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
@@ -996,7 +997,6 @@ namespace DungeonPlayer
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
-                UpdateMainMessage("", true);
                 GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
             }
             // 敗北して、ゲーム終了を選択した時

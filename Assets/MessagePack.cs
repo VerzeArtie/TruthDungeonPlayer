@@ -6204,9 +6204,9 @@ namespace DungeonPlayer
         #region "帰還時の自動蘇生"
         public static void HomeTownResurrect(ref List<string> messageList, ref List<ActionEvent> eventList, MainCharacter player)
         {
-            messageList.Add("ダンジョンゲートから不思議な光が" + player.FirstName + "へと流れ込む。"); eventList.Add(ActionEvent.None);
-        	
-            messageList.Add(player.FirstName + "は命を吹き返した。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ダンジョンゲートから不思議な光が" + player.FirstName + "へと流れ込む。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(player.FirstName + "は命を吹き返した。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
         }
         #endregion
         #region "ホームタウン表示時"
@@ -10122,8 +10122,6 @@ namespace DungeonPlayer
             messageList.Add("【習得した魔法・スキルをバトルコマンドに設定できるようになります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
             messageList.Add(""); eventList.Add(ActionEvent.None);
-
-            GroundOne.WE.AvailableBattleSettingMenu = true;
         }
         
         // 戦闘：インスタントアクション
