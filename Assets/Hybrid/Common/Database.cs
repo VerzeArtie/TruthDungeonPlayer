@@ -2627,6 +2627,7 @@ namespace DungeonPlayer
         public const string Request_Inn = @"宿屋に泊まりますか？";
         public const string Message_DuelAvailable = @"【DUEL闘技場へ行く事が出来るようになりました】";
         public const string Message_BattleSettingAvailable = @"【ESCメニューより「バトル設定」が選択できるようになりました】";
+        public const string Message_PotionShopAvailable = @"『ラナのランラン薬品店♪』という看板がアインの目に入った。";
         public const string Message_GoToAnotherField = @"アインは別の場所へと飛ばされてしまった";
         public const string Message_GoToAnotherField_Back = @"アインはダンジョンゲートの裏広場に戻ってきた";
         public const string Message_GateAvailable = @"【ゲート裏の転送装置へ行けるようになりました】";

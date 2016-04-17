@@ -455,7 +455,7 @@ namespace DungeonPlayer
                 groupPlayer1.SetActive(true);
                 ActivateSomeCharacter(GroundOne.MC, ec1, player1Name, player1FullName, player1Life, player1LifeMeter, player1Mana, player1ManaMeter, player1Skill, player1SkillMeter, player1Instant, player1InstantMeter, player1SpecialInstant, player1SpecialInstantMeter, ActionButton1, playerActionLabel1, BuffPanel1, player1MainObjectBack, player1MainObject, GroundOne.MC.PlayerBattleTargetColor1, player1Arrow, null, null, player1Damage, player1Critical, pbBuffPlayer1, KeyNum1, IsSorcery1);
             }
-            if (GroundOne.WE.AvailableSecondCharacter == false)
+            if (GroundOne.WE.AvailableSecondCharacter == false || GroundOne.DuelMode)
             {
                 groupPlayer2.SetActive(false);
             }
@@ -465,7 +465,7 @@ namespace DungeonPlayer
                 ActivateSomeCharacter(GroundOne.SC, ec1, player2Name, player2FullName, player2Life, player2LifeMeter, player2Mana, player2ManaMeter, player2Skill, player2SkillMeter, player2Instant, player2InstantMeter, player2SpecialInstant, player2SpecialInstantMeter, ActionButton2, playerActionLabel2, BuffPanel2, player2MainObjectBack, player2MainObject, GroundOne.SC.PlayerBattleTargetColor1, player2Arrow, null, null, player2Damage, player2Critical, pbBuffPlayer2, KeyNum2, IsSorcery2);
             }
 
-            if (GroundOne.WE.AvailableThirdCharacter == false)
+            if (GroundOne.WE.AvailableThirdCharacter == false || GroundOne.DuelMode)
             {
                 groupPlayer3.SetActive(false);
             }
@@ -486,7 +486,7 @@ namespace DungeonPlayer
                 ActivateSomeCharacter(ec1, GroundOne.MC, enemy1Name, enemy1FullName, enemy1Life, enemy1LifeMeter, enemy1Mana, enemy1ManaMeter, enemy1Skill, enemy1SkillMeter, enemy1Instant, enemy1InstantMeter, enemy1SpecialInstant, enemy1SpecialInstantMeter, ActionButtonE1, enemyActionLabel1, PanelBuffEnemy1, enemy1MainObjectBack, enemy1MainObject, new Color(87.0f / 255.0f, 0.0f, 16.0f / 255.0f), enemy1Arrow, null, null, enemy1Damage, enemy1Critical, pbBuffEnemy1, KeyNumE1, IsSorceryE1);
             }
 
-            if (GroundOne.enemyName2 == String.Empty)
+            if (GroundOne.enemyName2 == String.Empty || GroundOne.DuelMode)
             {
                 groupEnemy2.SetActive(false);
                 ec2 = null;
@@ -497,7 +497,7 @@ namespace DungeonPlayer
                 ActivateSomeCharacter(ec2, GroundOne.MC, enemy2Name, enemy2FullName, enemy2Life, enemy2LifeMeter, enemy2Mana, enemy2ManaMeter, enemy2Skill, enemy2SkillMeter, enemy2Instant, enemy2InstantMeter, enemy2SpecialInstant, enemy2SpecialInstantMeter, ActionButtonE2, enemyActionLabel2, PanelBuffEnemy2, enemy2MainObjectBack, enemy2MainObject, new Color(108.0f / 255.0f, 118.0f / 255.0f, 0.0f), enemy2Arrow, null, null, enemy2Damage, enemy2Critical, pbBuffEnemy2, KeyNumE2, IsSorceryE2);
             }
 
-            if (GroundOne.enemyName3 == String.Empty)
+            if (GroundOne.enemyName3 == String.Empty || GroundOne.DuelMode)
             {
                 groupEnemy3.SetActive(false);
                 ec3 = null;

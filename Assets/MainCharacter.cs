@@ -2587,6 +2587,51 @@ namespace DungeonPlayer
 
         // battle command list (manual)
        	public string[] BattleActionCommandList = new string[Database.BATTLE_COMMAND_MAX];
+        public string BattleActionCommand1
+        {
+            get { return BattleActionCommandList[0]; }
+            set { BattleActionCommandList[0] = value; }
+        }
+        public string BattleActionCommand2
+        {
+            get { return BattleActionCommandList[1]; }
+            set { BattleActionCommandList[1] = value; }
+        }
+        public string BattleActionCommand3
+        {
+            get { return BattleActionCommandList[2]; }
+            set { BattleActionCommandList[2] = value; }
+        }
+        public string BattleActionCommand4
+        {
+            get { return BattleActionCommandList[3]; }
+            set { BattleActionCommandList[3] = value; }
+        }
+        public string BattleActionCommand5
+        {
+            get { return BattleActionCommandList[4]; }
+            set { BattleActionCommandList[4] = value; }
+        }
+        public string BattleActionCommand6
+        {
+            get { return BattleActionCommandList[5]; }
+            set { BattleActionCommandList[5] = value; }
+        }
+        public string BattleActionCommand7
+        {
+            get { return BattleActionCommandList[6]; }
+            set { BattleActionCommandList[6] = value; }
+        }
+        public string BattleActionCommand8
+        {
+            get { return BattleActionCommandList[7]; }
+            set { BattleActionCommandList[7] = value; }
+        }
+        public string BattleActionCommand9
+        {
+            get { return BattleActionCommandList[8]; }
+            set { BattleActionCommandList[8] = value; }
+        }
 
         protected bool nowExecActionFlag = false; // 後編追加　現在自分が行動実行中であることを示すフラグ
         public bool NowExecActionFlag

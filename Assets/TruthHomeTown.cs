@@ -85,6 +85,7 @@ namespace DungeonPlayer
         string OpponentDuelist = string.Empty;
         bool fromGoDungeon = false;
         bool nowTalkingOlRandis = false;
+        bool nowTalkingLanaAmiria = false;
 
         bool nowAnimationEnding = false;
 
@@ -253,9 +254,9 @@ namespace DungeonPlayer
         	}
         	else
         	{
-                nowMessage.Add("アイン：さて、何すっかな"); nowEvent.Add(MessagePack.ActionEvent.None);
+                mainMessage.text = "アイン：さて、何すっかな";
 
-                nowMessage.Add(""); nowEvent.Add(MessagePack.ActionEvent.PlayMusic01);
+                GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
                 return; // イベント発生は連続して発生させない
         	}
 
@@ -620,19 +621,64 @@ namespace DungeonPlayer
             SceneDimension.JumpToTruthDungeon(false);
         }
 
-        public void tapCommunicationRana()
+        public void tapCommunicationLana()
         {
             if (GroundOne.WE.AlreadyCommunicate)
             {
-                mainMessage.text = MessageFormatForLana(1002);
-                return; 
+                if (!GroundOne.WE.AlreadyRest)
+                {
+                    mainMessage.text = MessageFormatForLana(1001);
+                }
+                else
+                {
+                    mainMessage.text = MessageFormatForLana(1002);
+                }
+                return;
             }
+
+            #region "１日目"
             if (!GroundOne.WE.Truth_CommunicationLana1)
             {
                 MessagePack.Message40000(ref nowMessage, ref nowEvent);
                 NormalTapOK();
-                return;
             }
+            #endregion
+            #region "２日目"
+            else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationLana2)
+            {
+                MessagePack.Message40001(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３日目"
+            else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationLana3)
+            {
+                MessagePack.Message40002(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "Ｌｖ４以降、スタンスの習得会話"
+            else if (this.firstDay >= 4 && GroundOne.MC.Level >= 4 && GroundOne.WE.Truth_CommunicationLana1_1 == false && GroundOne.WE.AvailableSecondCharacter)
+            {
+                this.nowTalkingLanaAmiria = true;
+                MessagePack.Message40003(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "オル・ランディス遭遇前後"
+            else if (GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
+            {
+                MessagePack.Message40004(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "イベントが特に無い場合"
+            else
+            {
+                MessagePack.Message49999(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
         }
 
 	    public void tapDuel() {
@@ -731,7 +777,14 @@ namespace DungeonPlayer
             }
 
             DuelMessageText.text = "DUEL闘技場へようこそ。\n";
-            DuelMessageText.text += "アイン様の次の対戦相手は" + WhoisDuelPlayer() + "を予定しております。";
+            if (WhoisDuelPlayerCheck() != string.Empty)
+            {
+                DuelMessageText.text += "アイン様の次の対戦相手は" + WhoisDuelPlayerCheck() + "を予定しております。";
+            }
+            else
+            {
+                DuelMessageText.text += "アイン様の次の対戦相手は現在設定されていません。";
+            }
         }
 
         // 対戦相手のステータスを確認
@@ -739,107 +792,12 @@ namespace DungeonPlayer
         {
             this.Filter.SetActive(true);
 
-            string duelPlayerName = WhoisDuelPlayer();
-            duelPlayerName = Database.DUEL_SCOTY_ZALGE;
+            string duelPlayerName = WhoisDuelPlayerCheck();
             // mc.Level < XX を撤廃して、レベル超えていても戦えるようにした。
             // 7, 10, 13, 16, 19, 20, 23, 26, 29, 32, 35, 38, 41, 44, 47, 50, 52, 54, 56, 58, 60
             // 階層毎にDUEL相手を制御する処理も撤廃した。
             // && !we.TruthCompleteArea1
-            if (!GroundOne.WE.TruthDuelMatch1)
-            {
-                duelPlayerName = Database.DUEL_EONE_FULNEA;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch2)
-            {
-                duelPlayerName = Database.DUEL_MAGI_ZELKIS;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch3)
-            {
-                duelPlayerName = Database.DUEL_SELMOI_RO;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch4)
-            {
-                duelPlayerName = Database.DUEL_KARTIN_MAI;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch5)
-            {
-                duelPlayerName = Database.DUEL_JEDA_ARUS;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch6)
-            {
-                duelPlayerName = Database.DUEL_SINIKIA_VEILHANTU;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch7)
-            {
-                duelPlayerName = Database.DUEL_ADEL_BRIGANDY;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch8)
-            {
-                duelPlayerName = Database.DUEL_LENE_COLTOS;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch9)
-            {
-                duelPlayerName = Database.DUEL_SCOTY_ZALGE;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch10)
-            {
-                duelPlayerName = Database.DUEL_PERMA_WARAMY;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch11)
-            {
-                duelPlayerName = Database.DUEL_KILT_JORJU;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch12)
-            {
-                duelPlayerName = Database.DUEL_BILLY_RAKI;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch13)
-            {
-                duelPlayerName = Database.DUEL_ANNA_HAMILTON;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch14)
-            {
-                duelPlayerName = Database.DUEL_CALMANS_OHN;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch15)
-            {
-                duelPlayerName = Database.DUEL_SUN_YU;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch16)
-            {
-                duelPlayerName = Database.DUEL_SHUVALTZ_FLORE;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch17)
-            {
-                duelPlayerName = Database.DUEL_RVEL_ZELKIS;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch18)
-            {
-                duelPlayerName = Database.DUEL_VAN_HEHGUSTEL;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch19)
-            {
-                duelPlayerName = Database.DUEL_OHRYU_GENMA;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch20)
-            {
-                duelPlayerName = Database.DUEL_LADA_MYSTORUS;
-            }
-            else if (!GroundOne.WE.TruthDuelMatch21)
-            {
-                duelPlayerName = Database.DUEL_SIN_OSCURETE;
-            }
-            //else
-            //{
-            //    using (MessageDisplay md = new MessageDisplay())
-            //    {
-            //        md.Message = "現在、対戦相手の候補は設定されていません。";
-            //        md.StartPosition = FormStartPosition.CenterScreen;
-            //        md.ShowDialog();
-            //    }
-            //    return;
-            //}
-            
+            Debug.Log("duelPlayerName: " + duelPlayerName);
             SceneDimension.CallTruthDuelPlayerStatus(this, duelPlayerName);
         }
 
@@ -945,6 +903,11 @@ namespace DungeonPlayer
                         GroundOne.WE.AvailableBackGate = true;
                         GroundOne.WE.alreadyCommunicateCahlhanz = true; // カール爵に教えてもらったばかりのため、Trueを指定しておく。
                     }
+                    else if (this.nowMessage[this.nowReading] == Database.Message_PotionShopAvailable)
+                    {
+                        GroundOne.WE.AvailablePotionshop = true;
+                        buttonPotion.gameObject.SetActive(true);
+                    }
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownYesNoMessageDisplay)
                 {
@@ -1029,7 +992,11 @@ namespace DungeonPlayer
                 {
                     this.Filter.SetActive(true);
                     SceneDimension.CallTruthDecision(this);
-                }                     
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownCallPotionShop)
+                {
+                    SceneDimension.CallPotionShop(this);
+                }
                 else if (current == MessagePack.ActionEvent.HomeTownFazilCastle)
                 {
                     GoToFazilCastle();
@@ -1970,6 +1937,7 @@ namespace DungeonPlayer
             else if (this.nowTalkingOlRandis)
             {
                 Debug.Log("nowtalkingolrandis: " + GroundOne.DecisionSequence.ToString());
+                #region "オル・ランディス会話中"
                 if (GroundOne.DecisionSequence == 0)
                 {
                     if (GroundOne.DecisionChoice == 1)
@@ -2474,7 +2442,24 @@ namespace DungeonPlayer
                 //    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
                 //    return;
                 //} // 正解してない場合、この時点で一旦設問終了
-
+                #endregion
+            }
+            else if (this.nowTalkingLanaAmiria)
+            {
+                this.nowTalkingLanaAmiria = false;
+                if (GroundOne.DecisionSequence == 0)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message40003_2(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message40003_3(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
             }
             else
             {
@@ -2886,6 +2871,97 @@ namespace DungeonPlayer
             #endregion
         }
 
+        private string WhoisDuelPlayerCheck()
+        {
+            string duelPlayerName = string.Empty;
+            if (!GroundOne.WE.TruthDuelMatch1)
+            {
+                duelPlayerName = Database.DUEL_EONE_FULNEA;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch2)
+            {
+                Debug.Log("duelplayer2: " + duelPlayerName);
+
+                duelPlayerName = Database.DUEL_MAGI_ZELKIS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch3)
+            {
+                duelPlayerName = Database.DUEL_SELMOI_RO;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch4)
+            {
+                duelPlayerName = Database.DUEL_KARTIN_MAI;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch5)
+            {
+                duelPlayerName = Database.DUEL_JEDA_ARUS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch6)
+            {
+                duelPlayerName = Database.DUEL_SINIKIA_VEILHANTU;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch7)
+            {
+                duelPlayerName = Database.DUEL_ADEL_BRIGANDY;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch8)
+            {
+                duelPlayerName = Database.DUEL_LENE_COLTOS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch9)
+            {
+                duelPlayerName = Database.DUEL_SCOTY_ZALGE;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch10)
+            {
+                duelPlayerName = Database.DUEL_PERMA_WARAMY;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch11)
+            {
+                duelPlayerName = Database.DUEL_KILT_JORJU;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch12)
+            {
+                duelPlayerName = Database.DUEL_BILLY_RAKI;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch13)
+            {
+                duelPlayerName = Database.DUEL_ANNA_HAMILTON;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch14)
+            {
+                duelPlayerName = Database.DUEL_CALMANS_OHN;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch15)
+            {
+                duelPlayerName = Database.DUEL_SUN_YU;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch16)
+            {
+                duelPlayerName = Database.DUEL_SHUVALTZ_FLORE;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch17)
+            {
+                duelPlayerName = Database.DUEL_RVEL_ZELKIS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch18)
+            {
+                duelPlayerName = Database.DUEL_VAN_HEHGUSTEL;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch19)
+            {
+                duelPlayerName = Database.DUEL_OHRYU_GENMA;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch20)
+            {
+                duelPlayerName = Database.DUEL_LADA_MYSTORUS;
+            }
+            else if (!GroundOne.WE.TruthDuelMatch21)
+            {
+                duelPlayerName = Database.DUEL_SIN_OSCURETE;
+            }
+            return duelPlayerName;
+        }
         private string WhoisDuelPlayer()
         {
             string OpponentDuelist = string.Empty;

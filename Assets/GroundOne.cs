@@ -208,6 +208,8 @@ namespace DungeonPlayer
             MC.Intelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
             MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
             MC.Mind = Database.MAINPLAYER_FIRST_MIND;
+            MC.AvailableMana = true;
+            MC.AvailableSkill = true;
             MC.CurrentLife = MC.MaxLife;
             MC.CurrentMana = MC.MaxMana;
             MC.CurrentSkillPoint = MC.MaxSkillPoint;
@@ -517,6 +519,8 @@ namespace DungeonPlayer
             SC.Intelligence = Database.SECONDPLAYER_FIRST_INTELLIGENCE;
             SC.Stamina = Database.SECONDPLAYER_FIRST_STAMINA;
             SC.Mind = Database.SECONDPLAYER_FIRST_MIND;
+            SC.AvailableMana = true;
+            SC.AvailableSkill = true;
             SC.Level = 1;
             SC.Exp = 0;
             SC.BaseLife = 50;
