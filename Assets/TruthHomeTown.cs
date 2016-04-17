@@ -2880,8 +2880,6 @@ namespace DungeonPlayer
             }
             else if (!GroundOne.WE.TruthDuelMatch2)
             {
-                Debug.Log("duelplayer2: " + duelPlayerName);
-
                 duelPlayerName = Database.DUEL_MAGI_ZELKIS;
             }
             else if (!GroundOne.WE.TruthDuelMatch3)
