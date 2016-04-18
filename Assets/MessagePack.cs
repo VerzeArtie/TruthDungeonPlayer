@@ -1848,83 +1848,12 @@ namespace DungeonPlayer
                 }
             }
         }
-
-        public static void Message10050_2(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-            messageList.Add("アイン：よし、開けるぜ！"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
-
-            messageList.Add(""); eventList.Add(ActionEvent.BlueOpenRight);
-
-            if (GroundOne.WE.AvailableSecondCharacter == false)
-            {
-                messageList.Add("アイン：（ピリピリと殺気を感じるな。コイツはやばいぜ）"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：（１階ボスだな。この感触、間違いねえ。危ないと思ったらすぐ引き返すか）"); eventList.Add(ActionEvent.None);
-            }
-            else
-            {
-                messageList.Add("ラナ：特に、変な所は無さそうね。普通の通路と同じね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：待て、ラナ。下手に進むな。強い殺気を感じる！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：そう？そろそろボスって所かしら。気をつけて進みましょ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：ああ、気を引き締めていこうぜ。"); eventList.Add(ActionEvent.None);
-            }
-
-            GroundOne.WE.dungeonEvent28KeyOpen = true;
-
-            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
-        }
-
-        public static void Message10050_3(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-            if (GroundOne.WE.AvailableSecondCharacter == false)
-            {
-                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：（やはりおかしい。進んでは行けない気がする。）"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：（このダンジョンの構成、どうも引っかかる）"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：（もう少し他を探索するか）"); eventList.Add(ActionEvent.None);
-            }
-            else
-            {
-                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：ちょっと、本当にどうしたのよ？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：ラナ、もう少し他を探索しようぜ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：アインがそう言うんだったら、別に止めはしないわよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：このダンジョンの構成、どうも引っかかるんだ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：ラナもう少しだけ探索させてくれ。悪ぃな。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：ううん、別に。他に何か無いか、探して見ましょ♪"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
-            }
-
-            GroundOne.WE.dungeonEvent25 = true;
-
-            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
-        }
-
+        
         public static void Message10050(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (!GroundOne.WE.dungeonEvent25)
             {
+                GroundOne.WE.dungeonEvent25 = true;
                 if (GroundOne.WE.AvailableSecondCharacter == false)
                 {
                     messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
@@ -2003,6 +1932,79 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.DecisionOpenDoor1);
             }
         }
+
+        public static void Message10050_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：よし、開けるぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.BlueOpenRight);
+
+            if (GroundOne.WE.AvailableSecondCharacter == false)
+            {
+                messageList.Add("アイン：（ピリピリと殺気を感じるな。コイツはやばいぜ）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（１階ボスだな。この感触、間違いねえ。危ないと思ったらすぐ引き返すか）"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：特に、変な所は無さそうね。普通の通路と同じね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：待て、ラナ。下手に進むな。強い殺気を感じる！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：そう？そろそろボスって所かしら。気をつけて進みましょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、気を引き締めていこうぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            GroundOne.WE.dungeonEvent28KeyOpen = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+        }
+
+        public static void Message10050_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.AvailableSecondCharacter == false)
+            {
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（やはりおかしい。進んでは行けない気がする。）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（このダンジョンの構成、どうも引っかかる）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（もう少し他を探索するか）"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ちょっと、本当にどうしたのよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナ、もう少し他を探索しようぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アインがそう言うんだったら、別に止めはしないわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：このダンジョンの構成、どうも引っかかるんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナもう少しだけ探索させてくれ。悪ぃな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ううん、別に。他に何か無いか、探して見ましょ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+            }
+
+            GroundOne.WE.dungeonEvent25 = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+        }
+
         public static void Message10051(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
 			messageList.Add(Database.Message_GotoDownstair); eventList.Add(ActionEvent.YesNoGotoDungeon);

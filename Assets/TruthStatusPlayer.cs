@@ -1430,26 +1430,8 @@ namespace DungeonPlayer
                 targetName2.text = GroundOne.SC.FirstName;
                 targetName3.text = GroundOne.TC.FirstName;
 
-                if (GroundOne.WE.AvailableSecondCharacter)
-                {
-                    btnTargetName2.gameObject.SetActive(true);
-                    labelSecondPlayerLife.gameObject.SetActive(true);
-                }
-                else
-                {
-                    btnTargetName2.GetComponent<Mask>().showMaskGraphic = false;
-                    targetName2.GetComponent<Mask>().showMaskGraphic = false;
-                }
-
-                if (GroundOne.WE.AvailableThirdCharacter)
-                {
-                    btnTargetName3.gameObject.SetActive(true);
-                }
-                else
-                {
-                    btnTargetName3.GetComponent<Mask>().showMaskGraphic = false;
-                    targetName3.GetComponent<Mask>().showMaskGraphic = false;
-                }
+                btnTargetName2.gameObject.SetActive(GroundOne.WE.AvailableSecondCharacter);
+                btnTargetName3.gameObject.SetActive(GroundOne.WE.AvailableThirdCharacter);
 
                 groupTarget.gameObject.transform.position = this.currentPosition;
                 groupTarget.SetActive(true);
@@ -1493,26 +1475,8 @@ namespace DungeonPlayer
             whoTarget2.text = GroundOne.SC.FirstName;
             whoTarget3.text = GroundOne.TC.FirstName;
 
-            if (GroundOne.WE.AvailableSecondCharacter)
-            {
-                btnWhoTarget2.gameObject.SetActive(true);
-                labelSecondPlayerLife.gameObject.SetActive(true);
-            }
-            else
-            {
-                btnWhoTarget2.GetComponent<Mask>().showMaskGraphic = false;
-                whoTarget2.GetComponent<Mask>().showMaskGraphic = false;
-            }
-
-            if (GroundOne.WE.AvailableThirdCharacter)
-            {
-                btnWhoTarget3.gameObject.SetActive(true);
-            }
-            else
-            {
-                btnWhoTarget3.GetComponent<Mask>().showMaskGraphic = false;
-                whoTarget3.GetComponent<Mask>().showMaskGraphic = false;
-            }
+            btnWhoTarget2.gameObject.SetActive(GroundOne.WE.AvailableSecondCharacter);
+            btnWhoTarget3.gameObject.SetActive(GroundOne.WE.AvailableThirdCharacter);
 
             groupWhoTarget.gameObject.transform.position = this.currentPosition;
             groupWhoTarget.SetActive(true);

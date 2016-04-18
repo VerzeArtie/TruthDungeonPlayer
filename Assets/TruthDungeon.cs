@@ -208,6 +208,8 @@ namespace DungeonPlayer
 
         int nowAgilityRoomCounter = 0;
 
+        bool nowDecisionOpenDoor1 = false;
+
         // Use this for initialization
         public override void Start()
         {
@@ -957,6 +959,22 @@ namespace DungeonPlayer
 
             UpdateMainMessage("", true);
             SetupPlayerStatus(false);
+
+            if (this.nowDecisionOpenDoor1)
+            {
+                this.nowDecisionOpenDoor1 = false;
+                if (GroundOne.DecisionChoice == 1)
+                {
+                    MessagePack.Message10050_2(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else
+                {
+                    MessagePack.Message10050_3(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                return;
+            }
             #region "戦闘終了判定"
             // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
@@ -7810,20 +7828,48 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.SmallEntranceOpen1)
                 {
                     blueWallTop[GetTileNumber(this.Player.transform.position)] = false;
+                    for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
+                    {
+                        if (this.objBlueWallTop[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
+                        {
+                            this.objBlueWallTop[ii].SetActive(false);
+                            break;
+                        }
+                    }
                     UpdateUnknownTileArea12();
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN);
                     blueWallBottom[GetTileNumber(this.Player.transform.position)] = false;
-                    //dungeonField.Invalidate();
-
+                    for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
+                    {
+                        if (this.objBlueWallBottom[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
+                        {
+                            this.objBlueWallBottom[ii].SetActive(false);
+                            break;
+                        }
+                    }
                 }                     
                 else if (currentEvent == MessagePack.ActionEvent.SmallEntranceOpen2)
                 {
                     blueWallLeft[GetTileNumber(this.Player.transform.position)] = false;
+                    for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
+                    {
+                        if (this.objBlueWallLeft[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
+                        {
+                            this.objBlueWallLeft[ii].SetActive(false);
+                            break;
+                        }
+                    }
                     UpdateUnknownTileArea12();
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
                     blueWallRight[GetTileNumber(this.Player.transform.position)] = false;
-                    //dungeonField.Invalidate();
-
+                    for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
+                    {
+                        if (this.objBlueWallRight[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
+                        {
+                            this.objBlueWallRight[ii].SetActive(false);
+                            break;
+                        }
+                    }
                 }
                 else if (currentEvent == MessagePack.ActionEvent.CenterBlueOpen)
                 {
@@ -7878,9 +7924,13 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor1)
                 {
-                    this.NoticeMessage.text = "　【　扉を開けますか？　】";
-                    this.FirstMessage.text = "扉を開ける。";
-                    this.SecondMessage.text = "扉を開けず、他を探す。";
+                    this.nowDecisionOpenDoor1 = true;
+                    GroundOne.DecisionSequence = 0;
+                    GroundOne.DecisionMainMessage = "【　扉を開けますか？　】";
+                    GroundOne.DecisionFirstMessage = "扉を開ける。";
+                    GroundOne.DecisionSecondMessage = "扉を開けず、他を探す。";
+                    this.Filter.SetActive(true);
+                    SceneDimension.CallTruthDecision(this);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonGetTreasure)
                 {
@@ -7896,6 +7946,10 @@ namespace DungeonPlayer
                 }
                    
                 this.nowReading++;
+                if (this.nowMessage[this.nowReading - 1] == "")
+                {
+                    tapOK();
+                }
             }
 
             if (this.nowReading >= this.nowMessage.Count)
@@ -7982,6 +8036,5 @@ namespace DungeonPlayer
             // 全情報クリア、全情報再読み込みを行わず、Sceneの再ロードで実行したい。
             SceneDimension.JumpToTruthDungeon(true);
         }
-
     }
 }
