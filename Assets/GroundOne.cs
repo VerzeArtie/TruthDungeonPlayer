@@ -75,6 +75,7 @@ namespace DungeonPlayer
 
         // TruthSelectEquipment
         public static int EquipType = 0; // 0:Weapon  1:SubWeapon  2:Armor  3:Accessory  4:Accessory2
+        public static MainCharacter TargetPlayer = null;
 
         // TruthDungeon
         public static bool Player1Levelup = false;

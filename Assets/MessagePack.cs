@@ -226,7 +226,9 @@ namespace DungeonPlayer
 
                                 //UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：（駄目だ・・・ラナが許してくれそうにもねえ・・・）"); eventList.Add(ActionEvent.UpdateLocationRight);
+                                messageList.Add("アイン：（駄目だ・・・ラナが許してくれそうにもねえ・・・）"); eventList.Add(ActionEvent.None);
+
+                                messageList.Add("");  eventList.Add(ActionEvent.UpdateLocationRight);
 
                                 messageList.Add("アイン：（もう少し、レベルアップするか何かしないとな・・・）"); eventList.Add(ActionEvent.None);
                             }
@@ -252,11 +254,9 @@ namespace DungeonPlayer
                             {
                                 messageList.Add("ラナ：・・・ちょっと！？"); eventList.Add(ActionEvent.None);
 
-                                messageList.Add("アイン：分かった、分かった・・・分かりました、ラナ様・・・"); eventList.Add(ActionEvent.UpdateLocationRight);
+                                messageList.Add("アイン：分かった、分かった・・・分かりました、ラナ様・・・"); eventList.Add(ActionEvent.None);
 
-                                //UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, false); eventList.Add(ActionEvent.None);
-
-                                messageList.Add(""); eventList.Add(ActionEvent.None);
+                                messageList.Add("");  eventList.Add(ActionEvent.UpdateLocationRight);
                             }
                             else
                             {
@@ -10149,7 +10149,7 @@ namespace DungeonPlayer
 
             messageList.Add("　【　アインはストレート・スマッシュの体勢に入った　】"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ッファイア！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ファイア・ボール！！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：っえ！？"); eventList.Add(ActionEvent.None);
 

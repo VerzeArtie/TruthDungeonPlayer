@@ -105,6 +105,14 @@ namespace DungeonPlayer
         public Text whoTarget1;
         public Text whoTarget2;
         public Text whoTarget3;
+        public GameObject CommandFilter;
+        public GameObject groupTargetCommand;
+        public GameObject btnTargetNameCommand1;
+        public GameObject btnTargetNameCommand2;
+        public GameObject btnTargetNameCommand3;
+        public Text txtTargetNameCommand1;
+        public Text txtTargetNameCommand2;
+        public Text txtTargetNameCommand3;
         public GameObject[] back_SpellSkill;
         public Text[] SpellSkill;
         public Text[] ResistLabel;
@@ -126,6 +134,8 @@ namespace DungeonPlayer
         private bool ItemChoiced = false; // アイテム「つかう」で、使用できなかった時のメッセージ表示用
         private bool useTargetedItem = false; // アイテム「つかう」で、ターゲットを選定して使う場合を示すフラグ
 
+        private string currentCommand = string.Empty; // スペルで現在使用しようとしているスペル名称を記憶するための値
+ 
         // Use this for initialization
         public override void Start()
         {
@@ -2059,6 +2069,8 @@ namespace DungeonPlayer
             groupTarget.SetActive(false);
             groupWhoTarget.SetActive(false);
             backpackFilter.SetActive(false);
+            groupTargetCommand.SetActive(false);
+            CommandFilter.SetActive(false);
         }
         private void SettingCharacterData(MainCharacter chara)
         {
@@ -2205,50 +2217,12 @@ namespace DungeonPlayer
 
         private void UpdateSpellSkillLabel(MainCharacter target)
         {
-            if (target.FreshHeal == false)
-            {
-                SpellSkill[0].text = "";
-            }
-            else
-            {
-                SpellSkill[0].text = Database.FRESH_HEAL;
-            }
-
-            if (target.LifeTap == false)
-            {
-                SpellSkill[1].text = "";
-            }
-            else
-            {
-                SpellSkill[1].text = Database.LIFE_TAP;
-            }
-
-            if (target.Resurrection == false)
-            {
-                SpellSkill[2].text = "";
-            }
-            else
-            {
-                SpellSkill[2].text = Database.RESURRECTION;
-            }
-
-            if (target.CelestialNova == false)
-            {
-                SpellSkill[3].text = "";
-            }
-            else
-            {
-                SpellSkill[3].text = Database.CELESTIAL_NOVA;
-            }
-
-            if (target.SacredHeal == false)
-            {
-                SpellSkill[4].text = "";
-            }
-            else
-            {
-                SpellSkill[4].text = Database.SACRED_HEAL;
-            }
+            // コマンド習得に応じて、ボタンを見せる。
+            back_SpellSkill[0].SetActive(target.FreshHeal);
+            back_SpellSkill[1].SetActive(target.LifeTap);
+            back_SpellSkill[2].SetActive(target.Resurrection);
+            back_SpellSkill[3].SetActive(target.CelestialNova);
+            back_SpellSkill[4].SetActive(target.SacredHeal);
         }
 
         private void UpdateResistStatus(MainCharacter player)
@@ -2370,58 +2344,19 @@ namespace DungeonPlayer
                 mainMessage.text = player.GetCharacterSentence(2021);
                 return;
             }
+            #endregion
 
-            if ((sender).text == Database.FRESH_HEAL_JP)
+            // 味方全体の場合(SACRED_HEALのみなら以下を直接処理、将来他のコマンドが増えるなら、ロジック変更が必要）
+            if (sender.text == Database.SACRED_HEAL_JP || sender.text == Database.SACRED_HEAL)
             {
-                if (player.CurrentMana < Database.FRESH_HEAL_COST)
-                {
-                    mainMessage.text = player.GetCharacterSentence(2008);
-                    return;
-                }
-            }
-            else if ((sender).text == Database.LIFE_TAP_JP)
-            {
-                if (player.CurrentMana < Database.LIFE_TAP_COST)
-                {
-                    mainMessage.text = player.GetCharacterSentence(2008);
-                    return;
-                }
-            }
-            else if ((sender).text == Database.RESURRECTION_JP)
-            {
-                if (player.CurrentMana < Database.RESURRECTION_COST)
-                {
-                    mainMessage.text = player.GetCharacterSentence(2008);
-                    return;
-                }
-            }
-            else if ((sender).text == Database.SACRED_HEAL_JP)
-            {
+                int lifeGain = 0;
                 if (player.CurrentMana < Database.SACRED_HEAL_COST)
                 {
                     mainMessage.text = player.GetCharacterSentence(2008);
                     return;
                 }
-            }
-            else if ((sender).text == Database.CELESTIAL_NOVA_JP)
-            {
-                if (player.CurrentMana < Database.CELESTIAL_NOVA_COST)
-                {
-                    mainMessage.text = player.GetCharacterSentence(2008);
-                    return;
-                }
-            }
-            #endregion
-
-            // 味方全体の場合(SACRED_HEALのみなら以下を直接処理、将来他のコマンドが増えるなら、ロジック変更が必要）
-            if ((sender).text == Database.SACRED_HEAL_JP)
-            {
-                int lifeGain = 0;
-                if ((sender).text == Database.SACRED_HEAL_JP)
-                {
-                    player.CurrentMana -= Database.SACRED_HEAL_COST;
-                    lifeGain = (int)PrimaryLogic.SacredHealValue(player, false);
-                }
+                player.CurrentMana -= Database.SACRED_HEAL_COST;
+                lifeGain = (int)PrimaryLogic.SacredHealValue(player, false);
 
                 List<MainCharacter> group = new List<MainCharacter>();
                 if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
@@ -2436,29 +2371,32 @@ namespace DungeonPlayer
             // 単体対象の場合
             else
             {
-                groupWhoTarget.SetActive(true);
-                backpackFilter.SetActive(true);
-
                 MainCharacter target = null;
                 if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
                 {
                     target = GroundOne.MC;
-                    ExecSomeSpellSkill(sender, target);
+                    ExecSomeSpellSkill(sender, target, sender.text);
                 }
                 else if (GroundOne.WE.AvailableSecondCharacter || GroundOne.WE.AvailableThirdCharacter)
                 {
-                    this.groupWhoTarget.gameObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
+                    this.groupTargetCommand.gameObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
                     this.currentPosition = Input.mousePosition;
-                    this.groupWhoTarget.SetActive(true);
-                    this.backpackFilter.SetActive(true);
+                    this.txtTargetNameCommand1.text = GroundOne.MC.FirstName;
+                    this.txtTargetNameCommand2.text = GroundOne.SC.FirstName;
+                    this.txtTargetNameCommand3.text = GroundOne.TC.FirstName;
+                    btnTargetNameCommand2.gameObject.SetActive(GroundOne.WE.AvailableSecondCharacter);
+                    btnTargetNameCommand3.gameObject.SetActive(GroundOne.WE.AvailableThirdCharacter);
+                    this.currentCommand = sender.text;
+                    this.groupTargetCommand.SetActive(true);
+                    this.CommandFilter.SetActive(true);
                 }
             }
         }
 
         public void ExecSomeSpellSkill(Text sender)
         {
-            groupWhoTarget.SetActive(false);
-            backpackFilter.SetActive(false);
+            groupTargetCommand.SetActive(false);
+            CommandFilter.SetActive(false);
 
             MainCharacter target = null;
             if (sender.text == GroundOne.MC.FirstName)
@@ -2473,16 +2411,16 @@ namespace DungeonPlayer
             {
                 target = GroundOne.TC;
             }
-            ExecSomeSpellSkill(sender, target);
+            ExecSomeSpellSkill(sender, target, this.currentCommand);
         }
 
-        private void ExecSomeSpellSkill(Text sender, MainCharacter target)
+        private void ExecSomeSpellSkill(Text sender, MainCharacter target, string commandName)
         {
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
 
-            if (((sender).text == Database.FRESH_HEAL_JP) ||
-                ((sender).text == Database.LIFE_TAP_JP) ||
-                ((sender).text == Database.CELESTIAL_NOVA_JP))
+            if ((commandName == Database.FRESH_HEAL_JP) || (commandName == Database.FRESH_HEAL) ||
+                (commandName == Database.LIFE_TAP_JP) || (commandName == Database.LIFE_TAP) ||
+                (commandName == Database.CELESTIAL_NOVA_JP) || (commandName == Database.CELESTIAL_NOVA))
             {
                 if (target.Dead)
                 {
@@ -2491,18 +2429,33 @@ namespace DungeonPlayer
                 }
 
                 int lifeGain = 0;
-                if ((sender).text == Database.FRESH_HEAL_JP)
+                if (commandName == Database.FRESH_HEAL_JP || commandName == Database.FRESH_HEAL)
                 {
+                    if (player.CurrentMana < Database.FRESH_HEAL_COST)
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2008);
+                        return;
+                    }
                     player.CurrentMana -= Database.FRESH_HEAL_COST;
                     lifeGain = (int)PrimaryLogic.FreshHealValue(player, false);
                 }
-                else if ((sender).text == Database.LIFE_TAP_JP)
+                else if (commandName == Database.LIFE_TAP_JP || commandName == Database.LIFE_TAP)
                 {
+                    if (player.CurrentMana < Database.LIFE_TAP_COST)
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2008);
+                        return;
+                    }
                     player.CurrentMana -= Database.LIFE_TAP_COST;
                     lifeGain = (int)PrimaryLogic.LifeTapValue(player, false);
                 }
-                else if ((sender).text == Database.CELESTIAL_NOVA_JP)
+                else if (commandName == Database.CELESTIAL_NOVA_JP || commandName == Database.CELESTIAL_NOVA)
                 {
+                    if (player.CurrentMana < Database.CELESTIAL_NOVA_COST)
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2008);
+                        return;
+                    }
                     player.CurrentMana -= Database.CELESTIAL_NOVA_COST;
                     lifeGain = (int)(PrimaryLogic.CelestialNovaValue_B(player, false));
                 }
@@ -2510,8 +2463,14 @@ namespace DungeonPlayer
                 target.CurrentLife += lifeGain;
                 mainMessage.text = String.Format(player.GetCharacterSentence(2001), lifeGain.ToString());
             }
-            else
+            else // resurrection
             {
+                if (player.CurrentMana < Database.RESURRECTION_COST)
+                {
+                    mainMessage.text = player.GetCharacterSentence(2008);
+                    return;
+                }
+
                 if (target.Dead)
                 {
                     player.CurrentMana -= Database.RESURRECTION_COST;
@@ -2590,7 +2549,7 @@ namespace DungeonPlayer
                 return;
             }
 
-            SceneDimension.CallTruthSelectEquipment(this, equipType);
+            SceneDimension.CallTruthSelectEquipment(this, equipType, targetPlayer);
         }
         
         public void FirstChara_Click()

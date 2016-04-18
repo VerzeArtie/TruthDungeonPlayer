@@ -100,9 +100,10 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.SaveLoad);
         }
 
-        public static void CallTruthSelectEquipment(MotherForm scene, int equipType)
+        public static void CallTruthSelectEquipment(MotherForm scene, int equipType, MainCharacter targetPlayer)
         {
             GroundOne.EquipType = equipType;
+            GroundOne.TargetPlayer = targetPlayer;
             GroundOne.Parent.Add(scene);
             Application.LoadLevelAdditive(Database.TruthSelectEquipment);
         }
