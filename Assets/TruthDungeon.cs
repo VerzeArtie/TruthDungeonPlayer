@@ -7709,174 +7709,82 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.BlueOpenTop)
                 {
-                    blueWallTop[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
-                    {
-                        if (this.objBlueWallTop[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallTop[ii].SetActive(false);
-                            break;
-                        }
-                    }
+                    OpenTheDoor(0, this.Player.transform.position);
 
                     UpdateUnknownTileArea11();
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN);
-                    blueWallBottom[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
-                    {
-                        if (this.objBlueWallBottom[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallBottom[ii].SetActive(false);
-                            break;
-                        }
-                    }
+
+                    OpenTheDoor(3, this.Player.transform.position);
                     UpdateUnknownTile();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.BlueOpenBottom)
                 {
-                    blueWallBottom[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
-                    {
-                        if (this.objBlueWallBottom[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallBottom[ii].SetActive(false);
-                            break;
-                        }
-                    }
+                    OpenTheDoor(3, this.Player.transform.position);
 
                     UpdateUnknownTileArea11();
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN);
-                    blueWallTop[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
-                    {
-                        if (this.objBlueWallTop[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallTop[ii].SetActive(false);
-                            break;
-                        }
-                    }
+
+                    OpenTheDoor(0, this.Player.transform.position);
                     UpdateUnknownTile();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.BlueOpenLeft)
                 {
-                    blueWallLeft[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
-                    {
-                        if (this.objBlueWallLeft[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallLeft[ii].SetActive(false);
-                            break;
-                        }
-                    }
+                    OpenTheDoor(1, this.Player.transform.position);
 
                     UpdateUnknownTileArea11();
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
-                    blueWallRight[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
-                    {
-                        if (this.objBlueWallRight[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallRight[ii].SetActive(false);
-                            break;
-                        }
-                    }
+
+                    OpenTheDoor(2, this.Player.transform.position);
                     UpdateUnknownTile();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.BlueOpenRight)
                 {
-                    blueWallRight[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
-                    {
-                        if (this.objBlueWallRight[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallRight[ii].SetActive(false);
-                            break;
-                        }
-                    } 
+                    OpenTheDoor(2, this.Player.transform.position);
                     
                     UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
-                    blueWallLeft[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
-                    {
-                        if (this.objBlueWallLeft[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallLeft[ii].SetActive(false);
-                            break;
-                        }
-                    }
+
+                    OpenTheDoor(1, this.Player.transform.position);
                     UpdateUnknownTile();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.BigEntranceOpen)
                 {
-                    blueWallBottom[26 * Database.TRUTH_DUNGEON_COLUMN + 14] = false;
-                    blueWallTop[27 * Database.TRUTH_DUNGEON_COLUMN + 14] = false;
+                    OpenTheDoor(3, new Vector3(14, -26, 0));
+                    OpenTheDoor(0, new Vector3(14, -27, 0));
 
-                    blueWallTop[35 * Database.TRUTH_DUNGEON_COLUMN + 14] = false;
-                    blueWallBottom[34 * Database.TRUTH_DUNGEON_COLUMN + 14] = false;
+                    OpenTheDoor(0, new Vector3(14, -35, 0));
+                    OpenTheDoor(3, new Vector3(14, -34, 0));
 
-                    blueWallLeft[28 * Database.TRUTH_DUNGEON_COLUMN + 13] = false;
-                    blueWallRight[28 * Database.TRUTH_DUNGEON_COLUMN + 12] = false;
+                    OpenTheDoor(1, new Vector3(13, -28, 0));
+                    OpenTheDoor(2, new Vector3(12, -28, 0));
 
-                    blueWallLeft[33 * Database.TRUTH_DUNGEON_COLUMN + 13] = false;
-                    blueWallRight[33 * Database.TRUTH_DUNGEON_COLUMN + 12] = false;
+                    OpenTheDoor(1, new Vector3(13, -33, 0));
+                    OpenTheDoor(2, new Vector3(12, -33, 0));
 
-                    blueWallLeft[10 * Database.TRUTH_DUNGEON_COLUMN + 16] = false;
-                    blueWallRight[10 * Database.TRUTH_DUNGEON_COLUMN + 15] = false;
-
-                    //dungeonField.Invalidate();
+                    OpenTheDoor(1, new Vector3(16, -10, 0));
+                    OpenTheDoor(2, new Vector3(15, -10, 0));
                 }
                 else if (currentEvent == MessagePack.ActionEvent.SmallEntranceOpen1)
                 {
-                    blueWallTop[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
-                    {
-                        if (this.objBlueWallTop[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallTop[ii].SetActive(false);
-                            break;
-                        }
-                    }
+                    OpenTheDoor(0, this.Player.transform.position);
+
                     UpdateUnknownTileArea12();
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN);
-                    blueWallBottom[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
-                    {
-                        if (this.objBlueWallBottom[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallBottom[ii].SetActive(false);
-                            break;
-                        }
-                    }
-                }                     
+
+                    OpenTheDoor(3, this.Player.transform.position);
+                }
                 else if (currentEvent == MessagePack.ActionEvent.SmallEntranceOpen2)
                 {
-                    blueWallLeft[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
-                    {
-                        if (this.objBlueWallLeft[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallLeft[ii].SetActive(false);
-                            break;
-                        }
-                    }
+                    OpenTheDoor(1, this.Player.transform.position);
+
                     UpdateUnknownTileArea12();
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
-                    blueWallRight[GetTileNumber(this.Player.transform.position)] = false;
-                    for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
-                    {
-                        if (this.objBlueWallRight[ii].name == "bluewall_" + GetTileNumber(this.Player.transform.position).ToString())
-                        {
-                            this.objBlueWallRight[ii].SetActive(false);
-                            break;
-                        }
-                    }
+
+                    OpenTheDoor(2, this.Player.transform.position);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.CenterBlueOpen)
                 {
-                    blueWallLeft[16 * Database.TRUTH_DUNGEON_COLUMN + 13] = false;
-                    blueWallRight[16 * Database.TRUTH_DUNGEON_COLUMN + 12] = false;
-                    //dungeonField.Invalidate();
-
+                    OpenTheDoor(1, new Vector3(13, -16, 0));
+                    OpenTheDoor(2, new Vector3(12, -16, 0));
                 }
                 else if (currentEvent == MessagePack.ActionEvent.EncountBoss)
                 {
@@ -7964,6 +7872,59 @@ namespace DungeonPlayer
                 {
                     this.Filter.GetComponent<Image>().color = Color.white;
                     this.Filter.SetActive(false);
+                }
+            }
+        }
+
+        private void OpenTheDoor(int direction, Vector3 pos)
+        {
+            int TileNumber = GetTileNumber(pos);
+            if (direction == 0)
+            {
+                this.blueWallTop[TileNumber] = false;
+                for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
+                {
+                    if (this.objBlueWallTop[ii].name == "bluewall_" + TileNumber.ToString())
+                    {
+                        this.objBlueWallTop[ii].SetActive(false);
+                        break;
+                    }
+                }
+            }
+            else if (direction == 1)
+            {
+                this.blueWallLeft[TileNumber] = false;
+                for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
+                {
+                    if (this.objBlueWallLeft[ii].name == "bluewall_" + TileNumber.ToString())
+                    {
+                        this.objBlueWallLeft[ii].SetActive(false);
+                        break;
+                    }
+                }
+            }
+            else if (direction == 2)
+            {
+                this.blueWallRight[TileNumber] = false;
+                for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
+                {
+                    if (this.objBlueWallRight[ii].name == "bluewall_" + TileNumber.ToString())
+                    {
+                        this.objBlueWallRight[ii].SetActive(false);
+                        break;
+                    }
+                }
+            }
+            else if (direction == 3)
+            {
+                this.blueWallBottom[TileNumber] = false;
+                for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
+                {
+                    if (this.objBlueWallBottom[ii].name == "bluewall_" + TileNumber.ToString())
+                    {
+                        this.objBlueWallBottom[ii].SetActive(false);
+                        break;
+                    }
                 }
             }
         }
