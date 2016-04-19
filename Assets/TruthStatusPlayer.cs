@@ -18,13 +18,13 @@ namespace DungeonPlayer
         public GameObject groupParentBackpack;
         public GameObject groupParentSpell;
         public GameObject groupParentResist;
-        public GameObject groupBtnChara;
-        public GameObject groupTxtChara;
         public Button btnClose;
         public Text txtClose;
+        public GameObject groupBtnChara;
         public Button btnFirstChara;
         public Button btnSecondChara;
         public Button btnThirdChara;
+        public GameObject groupTxtChara;
         public Text labelFirstPlayerLife;
         public Text labelSecondPlayerLife;
         public Text labelThirdPlayerLife;
@@ -157,15 +157,17 @@ namespace DungeonPlayer
             backpackData = player.GetBackPackInfo();
             Method.UpdateBackPackLabel(player, this.back_Backpack, this.backpack, this.backpackStack, this.backpackIcon);
 
-            if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
+            // ケースに応じて、キャラクター選択ボタン／ライフの表示を切り替えます。
+            if ((!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter) ||
+                (GroundOne.DuelMode == true))
             {
-                btnFirstChara.gameObject.SetActive(false);
-                labelFirstPlayerLife.gameObject.SetActive(false);
+                this.groupBtnChara.SetActive(false);
+                this.groupTxtChara.SetActive(false);
             }
-            if (GroundOne.DuelMode == true)
+            else
             {
-                btnFirstChara.gameObject.SetActive(false);
-                labelFirstPlayerLife.gameObject.SetActive(false);
+                this.groupBtnChara.SetActive(true);
+                this.groupTxtChara.SetActive(true);
             }
 
             if (GroundOne.WE.AvailableSecondCharacter && GroundOne.DuelMode == false)
@@ -177,12 +179,6 @@ namespace DungeonPlayer
             {
                 btnSecondChara.gameObject.SetActive(false);
                 labelSecondPlayerLife.gameObject.SetActive(false);
-                GameObject emptyObj = new GameObject();
-                emptyObj.AddComponent<RectTransform>();
-                emptyObj.transform.SetParent(groupBtnChara.transform);
-                GameObject emptyObj2 = new GameObject();
-                emptyObj2.AddComponent<RectTransform>();
-                emptyObj2.transform.SetParent(groupTxtChara.transform);
             }
             if (GroundOne.WE.AvailableThirdCharacter && GroundOne.DuelMode == false)
             {
@@ -193,47 +189,13 @@ namespace DungeonPlayer
             {
                 btnThirdChara.gameObject.SetActive(false);
                 labelThirdPlayerLife.gameObject.SetActive(false);
-                GameObject emptyObj = new GameObject();
-                emptyObj.AddComponent<RectTransform>();
-                emptyObj.transform.SetParent(groupBtnChara.transform);
-                GameObject emptyObj2 = new GameObject();
-                emptyObj2.AddComponent<RectTransform>();
-                emptyObj2.transform.SetParent(groupTxtChara.transform);
             }
 
-            if (GroundOne.MC.AvailableSkill)
-            {
-                btnSkill.SetActive(true);
-                skill.gameObject.SetActive(true);
-            }
-            else
-            {
-                btnSkill.SetActive(false);
-                skill.gameObject.SetActive(false);
-                GameObject emptyObj = new GameObject();
-                emptyObj.AddComponent<RectTransform>();
-                emptyObj.transform.SetParent(groupBtnLifeManaSkill.transform);
-                GameObject emptyObj2 = new GameObject();
-                emptyObj2.AddComponent<RectTransform>();
-                emptyObj2.transform.SetParent(groupTxtLifeManaSkill.transform);
-            }
+            btnMana.SetActive(GroundOne.MC.AvailableMana);
+            mana.gameObject.SetActive(GroundOne.MC.AvailableMana);
 
-            if (GroundOne.MC.AvailableMana)
-            {
-                btnMana.SetActive(true);
-                mana.gameObject.SetActive(true);
-            }
-            else
-            {
-                btnMana.SetActive(false);
-                mana.gameObject.SetActive(false);
-                GameObject emptyObj = new GameObject();
-                emptyObj.AddComponent<RectTransform>();
-                emptyObj.transform.SetParent(groupBtnLifeManaSkill.transform);
-                GameObject emptyObj2 = new GameObject();
-                emptyObj2.AddComponent<RectTransform>();
-                emptyObj2.transform.SetParent(groupTxtLifeManaSkill.transform);
-            }
+            btnSkill.SetActive(GroundOne.MC.AvailableSkill);
+            skill.gameObject.SetActive(GroundOne.MC.AvailableSkill);
 
             if (!GroundOne.LevelUp)
             {
