@@ -18,6 +18,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TruthEquipmentShop.unity
   - enabled: 1
+    path: Assets/TruthPotionShop.unity
+  - enabled: 1
     path: Assets/TruthStatusPlayer.unity
   - enabled: 1
     path: Assets/RestInn.unity

@@ -10849,9 +10849,8 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：じゃ、またね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
-
             GroundOne.WE.AlreadyCommunicate = true;
+            GroundOne.WE.Truth_CommunicationLana2 = true;
         }
 
         private static string GetPotionForLana()
@@ -10961,8 +10960,6 @@ namespace DungeonPlayer
                 messageList.Add("ラナ：うん。値段はおさえめにしといたから。どうぞ見て行ってね。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallPotionShop);
-
-                GroundOne.WE.AlreadyCommunicate = true;
             }
             else
             {
@@ -11038,8 +11035,9 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallPotionShop);
 
-                GroundOne.WE.AlreadyCommunicate = true;
             }
+            GroundOne.WE.AlreadyCommunicate = true;
+            GroundOne.WE.Truth_CommunicationLana3 = true;
         }
         // Level4以降、スタンスの習得会話
         public static void Message40003(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -11095,6 +11093,9 @@ namespace DungeonPlayer
             //CallSomeMessageWithAnimation("【アインは前衛攻撃型になりました！】"); eventList.Add(ActionEvent.None);
 
             //CallSomeMessageWithAnimation("【物理攻撃５％ＵＰ、魔法攻撃５％ＵＰ】"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.AlreadyCommunicate = true;
+            GroundOne.WE.Truth_CommunicationLana1_1 = true;
         }
 
         public static void Message40003_3(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -11148,6 +11149,9 @@ namespace DungeonPlayer
             //CallSomeMessageWithAnimation("【アインは前衛防衛型になりました！】"); eventList.Add(ActionEvent.None);
 
             //CallSomeMessageWithAnimation("【物理防御５％ＵＰ、魔法防御５％ＵＰ】"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.AlreadyCommunicate = true;
+            GroundOne.WE.Truth_CommunicationLana1_1 = true;
         }
         // オル・ランディス遭遇前後
         public static void Message40004(ref List<string> messageList, ref List<ActionEvent> eventList)

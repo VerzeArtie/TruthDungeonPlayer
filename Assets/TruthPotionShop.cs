@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 namespace DungeonPlayer
 {
@@ -512,5 +513,45 @@ namespace DungeonPlayer
             mainMessage.text = this.vendor.GetCharacterSentence(3013);
             yesnoMessage.text = this.vendor.GetCharacterSentence(3013);
         }
+
+        protected override void MessageExchange1(ItemBackPack backpackData, MainCharacter player)
+        {
+            SetupMessageText(3016, Convert.ToString((backpackData.Cost - player.Gold)));
+        }
+
+        protected override void MessageExchange2()
+        {
+            SetupMessageText(3018);
+        }
+
+        protected override void MessageExchange3()
+        {
+            SetupMessageText(3017);
+        }
+
+        protected override void MessageExchange4()
+        {
+            SetupMessageText(3019);
+        }
+
+        protected override void MessageExchange5()
+        {
+            SetupMessageText(3020);
+        }
+
+        protected override void MessageExchange6(ItemBackPack backpackData, int stack)
+        {
+            SetupMessageText(3021, backpackData.Name, ((backpackData.Cost / 2) * stack).ToString());
+        }
+
+        protected override void MessageExchange7()
+        {
+            SetupMessageText(3014);
+        }
+
+        protected override void MessageExchange8(ItemBackPack backpackData)
+        {
+            yesnoMessage.text = String.Format(vendor.GetCharacterSentence(3015), backpackData.Name, backpackData.Cost.ToString());
+        }            
     }
 }

@@ -7199,7 +7199,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 759049465}
-        m_MethodName: tapShop2
+        m_MethodName: tapPotionShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

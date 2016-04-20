@@ -658,7 +658,7 @@ namespace DungeonPlayer
             }
             #endregion
             #region "Ｌｖ４以降、スタンスの習得会話"
-            else if (this.firstDay >= 4 && GroundOne.MC.Level >= 4 && GroundOne.WE.Truth_CommunicationLana1_1 == false && GroundOne.WE.AvailableSecondCharacter)
+            else if (this.firstDay >= 4 && GroundOne.MC.Level >= 4 && !GroundOne.WE.Truth_CommunicationLana1_1 && GroundOne.WE.AvailableSecondCharacter)
             {
                 this.nowTalkingLanaAmiria = true;
                 MessagePack.Message40003(ref nowMessage, ref nowEvent);

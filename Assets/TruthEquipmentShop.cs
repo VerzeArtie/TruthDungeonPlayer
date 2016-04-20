@@ -171,7 +171,7 @@ namespace DungeonPlayer
             {
                 nowClose = false;
                 Debug.Log("nowclose line");
-                SetupMessageText(3009);
+                MessageExchange7();
                 execClose = true;
             }
             else if (execClose)
@@ -1806,8 +1806,6 @@ namespace DungeonPlayer
 
                 MessageExchange6(currentSelectItem2, stack);
             }
-
-            yesnoMessage.text = String.Format(vendor.GetCharacterSentence(3007), currentSelectItem2.Name, (currentSelectItem2.Cost / 2).ToString());
             buttonYes.gameObject.SetActive(true);
             buttonNo.gameObject.SetActive(true);
             filter.SetActive(true);
@@ -1998,10 +1996,6 @@ namespace DungeonPlayer
             SellBackPackItem(currentItem, sender, stack, ii);
             MessageExchange3(); // 後編編集
         }
-        private void MessageExchange2()
-        {
-            SetupMessageText(3002);
-        }
 
         // [コメント]：引数が無限に増える可能性がある場合、記述方法が何かありそうです。時間があれば探してください。
         protected void SetupMessageText(int number)
@@ -2040,26 +2034,47 @@ namespace DungeonPlayer
             }
             yesnoMessage.text = mainMessage.text;
         }
-        private void MessageExchange5()
+
+        protected virtual void MessageExchange1(ItemBackPack backpackData, MainCharacter player)
         {
-            SetupMessageText(3006);
+            SetupMessageText(3004, Convert.ToString((backpackData.Cost - player.Gold)));
         }
 
-        private void MessageExchange6(ItemBackPack backpackData, int stack)
+        protected virtual void MessageExchange2()
         {
-            SetupMessageText(3007, backpackData.Name, (backpackData.Cost / 2).ToString());
+            SetupMessageText(3002);
         }
 
-        private void MessageExchange3()
+        protected virtual void MessageExchange3()
         {
             SetupMessageText(3003);
         }
 
-        private void MessageExchange4()
+        protected virtual void MessageExchange4()
         {
             SetupMessageText(3005);
         }
 
+        protected virtual void MessageExchange5()
+        {
+            SetupMessageText(3006);
+        }
+
+        protected virtual void MessageExchange6(ItemBackPack backpackData, int stack)
+        {
+            SetupMessageText(3007, backpackData.Name, (backpackData.Cost / 2).ToString());
+        }
+
+        protected virtual void MessageExchange7()
+        {
+            SetupMessageText(3009);
+        }
+
+        protected virtual void MessageExchange8(ItemBackPack backpackData)
+        {
+            yesnoMessage.text = String.Format(vendor.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString());
+        }
+        
         private void UpdateMainMessage(string p)
         {
             // after (Shop5が始まった時、ガンツおじさんが居ないのを想定してるが、それは前編仕様であり、後編ではこのケースが無い）
@@ -2108,7 +2123,7 @@ namespace DungeonPlayer
             {
                 if (GroundOne.MC.Gold < this.currentSelectItem.Cost)
                 {
-                    SetupMessageText(3004, Convert.ToString((this.currentSelectItem.Cost - GroundOne.MC.Gold)));
+                    MessageExchange1(this.currentSelectItem, GroundOne.MC);
                     nowCannotBuy = true;
                     return;
                 }
@@ -2143,8 +2158,7 @@ namespace DungeonPlayer
 
         private void VendorBuyMessage(ItemBackPack backpackData)
         {
-            //mainMessage.text = String.Format(ganz.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // 後編編集
-            yesnoMessage.text = String.Format(vendor.GetCharacterSentence(3001), backpackData.Name, backpackData.Cost.ToString()); // change unity
+            MessageExchange8(backpackData);
             buttonYes.gameObject.SetActive(true);
             buttonNo.gameObject.SetActive(true);
             filter.SetActive(true);
