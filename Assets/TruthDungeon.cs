@@ -7781,6 +7781,10 @@ namespace DungeonPlayer
 
                     OpenTheDoor(2, this.Player.transform.position);
                 }
+                else if (currentEvent == MessagePack.ActionEvent.TurnToBlack)
+                {
+                    TurnToBlack();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.CenterBlueOpen)
                 {
                     OpenTheDoor(1, new Vector3(13, -16, 0));
@@ -7793,7 +7797,7 @@ namespace DungeonPlayer
                     GroundOne.enemyName3 = String.Empty;
                     CancelKeyDownMovement();
                     SceneDimension.CallTruthBattleEnemy(this, false, false, false, false);
-                } 
+                }
                 else if (currentEvent == MessagePack.ActionEvent.StopMusic)
                 {
                     GroundOne.StopDungeonMusic();

@@ -409,7 +409,11 @@ namespace DungeonPlayer
         {
             if (GroundOne.WE.dungeonEvent21KeyOpen && GroundOne.WE.dungeonEvent22KeyOpen && GroundOne.WE.dungeonEvent23KeyOpen && GroundOne.WE.dungeonEvent24KeyOpen && !GroundOne.WE.dungeonEvent27 && !GroundOne.WE.dungeonEvent28KeyOpen)
             {
-                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.TurnToBlack);
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　　　『真実解１　　＜始まりの地にて＞　　地点【４７　２９】』"); eventList.Add(ActionEvent.None);
 
@@ -441,7 +445,7 @@ namespace DungeonPlayer
 
                 GroundOne.WE.dungeonEvent27 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.HomeTown);
+                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
             }
             else
             {
