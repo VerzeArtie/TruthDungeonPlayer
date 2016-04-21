@@ -145,6 +145,8 @@ namespace DungeonPlayer
                 //MessagePack.Message70012_2(ref nowMessage, ref nowEvent, result);
                 //MessagePack.Message70013_2(ref nowMessage, ref nowEvent, result);
             }
+
+            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
         }
         
         string GetString(string msg, string protocolStr)
@@ -1142,9 +1144,73 @@ namespace DungeonPlayer
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
                 }
+                else if (current == MessagePack.ActionEvent.PlayMusic02)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM02, Database.BGM02LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic03)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM03, Database.BGM03LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic04)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM04, Database.BGM04LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic05)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM05, Database.BGM05LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic06)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM06, Database.BGM06LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic07)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM07, Database.BGM07LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic08)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM08, Database.BGM08LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic09)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic10)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM10, Database.BGM10LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic11)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM11, Database.BGM11LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic12)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin);
+                }
                 else if (current == MessagePack.ActionEvent.PlayMusic13)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM13, Database.BGM13LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic14)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic15)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic16)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM16, Database.BGM16LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic17)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM17, Database.BGM17LoopBegin);
+                }
+                else if (current == MessagePack.ActionEvent.PlayMusic03)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM18, Database.BGM18LoopBegin);
                 }
                 else if (current == MessagePack.ActionEvent.PlayMusic19)
                 {
@@ -1203,11 +1269,14 @@ namespace DungeonPlayer
 
             cam.backgroundColor = Color.black;
             groupMenu.gameObject.SetActive(false);
-            dayLabel.gameObject.SetActive(false);
             buttonHanna.gameObject.SetActive(false);
             buttonDungeon.gameObject.SetActive(false);
             buttonRana.gameObject.SetActive(false);
             buttonGanz.gameObject.SetActive(false);
+            buttonPotion.gameObject.SetActive(false);
+            buttonShinikia.gameObject.SetActive(false);
+            buttonDuel.gameObject.SetActive(false);
+            dayLabel.gameObject.SetActive(false);
             this.imgBackground.gameObject.SetActive(false);
         }
 
@@ -1220,6 +1289,15 @@ namespace DungeonPlayer
             buttonDungeon.gameObject.SetActive(true);
             buttonRana.gameObject.SetActive(true);
             buttonGanz.gameObject.SetActive(true);
+            bool potionVisible = (GroundOne.WE.AvailablePotionshop && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
+            this.buttonPotion.gameObject.SetActive(potionVisible);
+
+            bool shinikiaVisible = (GroundOne.WE.AvailableBackGate && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
+            this.buttonShinikia.gameObject.SetActive(shinikiaVisible);
+
+            bool duelVisible = (GroundOne.WE.AvailableDuelColosseum && !GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEvent511);
+            this.buttonDuel.gameObject.SetActive(duelVisible);
+
             dayLabel.gameObject.SetActive(true);
             this.imgBackground.gameObject.SetActive(true);
         }

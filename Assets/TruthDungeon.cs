@@ -7609,21 +7609,25 @@ namespace DungeonPlayer
             {
                 if (GroundOne.WE.DungeonArea == 1)
                 {
+                    GroundOne.WE.TruthCompleteArea1 = true;
                     JumpToLocation(29, -19, true);
                     SetupDungeonMapping(2);
                 }
                 else if (GroundOne.WE.DungeonArea == 2)
                 {
+                    GroundOne.WE.TruthCompleteArea2 = true;
                     JumpToLocation(0, -19, true);
                     SetupDungeonMapping(3);
                 }
                 else if (GroundOne.WE.DungeonArea == 3)
                 {
+                    GroundOne.WE.TruthCompleteArea3 = true;
                     JumpToLocation(52, -18, true);
                     SetupDungeonMapping(4);
                 }
                 else if (GroundOne.WE.DungeonArea == 4)
                 {
+                    GroundOne.WE.TruthCompleteArea4 = true;
                     JumpToLocation(57, -2, true);
                     SetupDungeonMapping(5);
                 }

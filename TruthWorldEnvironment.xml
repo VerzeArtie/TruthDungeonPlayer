@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Body><DateTime>4/14/2016 1:36:19 AM</DateTime>
+<Body><DateTime>4/21/2016 9:16:09 PM</DateTime>
 <TruthWorldEnvironment>
 <SeekerEnd>False</SeekerEnd>
 <SeekerEndingRoll>False</SeekerEndingRoll>
@@ -204,7 +204,7 @@
 <TruthBadEnd4>False</TruthBadEnd4>
 <TruthBadEnd3>False</TruthBadEnd3>
 <TruthBadEnd2>False</TruthBadEnd2>
-<TruthBadEnd1>False</TruthBadEnd1>
+<TruthBadEnd1>True</TruthBadEnd1>
 <EquipMaterial_11>0</EquipMaterial_11>
 <EquipMaterial_12>0</EquipMaterial_12>
 <EquipMaterial_13>0</EquipMaterial_13>
