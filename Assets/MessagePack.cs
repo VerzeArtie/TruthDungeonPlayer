@@ -6203,6 +6203,400 @@ namespace DungeonPlayer
             }            
         }
         #endregion
+        #region "知の部屋、正しき順序看板"
+        public static void Message12014(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "知の部屋、正しき順序フラグ"
+        public static void Message12015(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_2(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_3(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_4(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_5(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_6(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_7(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_8(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_9(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_10(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_11(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_12(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_13(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_14(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_15(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_16(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_17(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_18(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_19(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_20(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_21(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_22(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12015_23(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "知の部屋、正しき順序解答"
+        public static void Message12016(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "知の部屋、複合レバーの看板１"
+        public static void Message12017(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "知の部屋、複合レバー１－１"
+        public static void Message12018(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "知の部屋、複合レバー１－２"
+        public static void Message12019(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、エリアＡ"
+        public static void Message12020(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12021(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12022(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、エリアＢ"
+        public static void Message12023(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12024(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12025(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、エリアＣ"
+        public static void Message12026(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12027(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12028(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、エリアＤ"
+        public static void Message12029(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12030(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12031(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、エリアＥ"
+        public static void Message12032(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12033(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+
+        public static void Message12034(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、エリアＦ（最後一個前）"
+        public static void Message12035(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、ヒント１"
+        public static void Message12036(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材１"
+        public static void Message12037(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材２"
+        public static void Message12038(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材３"
+        public static void Message12039(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材４"
+        public static void Message12040(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材５"
+        public static void Message12041(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材６"
+        public static void Message12042(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材７"
+        public static void Message12043(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材８"
+        public static void Message12044(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材９"
+        public static void Message12045(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、題材１０"
+        public static void Message12046(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、ボス１"
+        public static void Message12047(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、ボス２"
+        public static void Message12048(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、ボス３"
+        public static void Message12049(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、ボス４"
+        public static void Message12050(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、ボス５"
+        public static void Message12051(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、ボス６"
+        public static void Message12052(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "宝箱"
+        public static void Message12053(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_2(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_3(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_4(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_5(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_6(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_7(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_8(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_9(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_10(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_11(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_12(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_13(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_14(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_15(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_16(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_17(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        public static void Message12053_18(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、複合レバーの看板１"
+        public static void Message12054(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、複合レバー２－１"
+        public static void Message12055(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、複合レバー２－２"
+        public static void Message12056(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、複合レバーの看板１"
+        public static void Message12057(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、複合レバー３－１"
+        public static void Message12058(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "力の部屋、複合レバー３－２"
+        public static void Message12059(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、複合レバーの看板１"
+        public static void Message12060(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、複合レバー４－１"
+        public static void Message12061(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "心の部屋、複合レバー４－２"
+        public static void Message12062(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "技の部屋、隠し通路発見"
+        public static void Message12063(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "３階階段直前"
+        public static void Message12064(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "下り階段"
+        public static void Message12065(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
+        #region "記憶の回想"
+        public static void Message12066(ref List<string> list1, ref List<ActionEvent> list2)
+        {
+        }
+        #endregion
         #endregion
         #endregion
 
@@ -20367,6 +20761,5 @@ namespace DungeonPlayer
         }
         #endregion
         #endregion
-
     }
 }
