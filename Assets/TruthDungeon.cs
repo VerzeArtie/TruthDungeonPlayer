@@ -984,42 +984,10 @@ namespace DungeonPlayer
                 this.ignoreCreateShadow = true;
                 this.nowEncountEnemy = true;
             }
-            // 逃げた時、経験値とゴールドは入らない。(つまり、何もしない）
-            else if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
-            {
-                GroundOne.BattleResult = GroundOne.battleResult.None;
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-
-                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
-                    GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-            }
             // 敗北して、ゲーム終了を選択した時
             else if (GroundOne.BattleResult == GroundOne.battleResult.Ignore)
             {
+                CopyShadowToMain();
                 GroundOne.BattleResult = GroundOne.battleResult.None;
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
                 {
@@ -1057,6 +1025,39 @@ namespace DungeonPlayer
                     yesnoSystemMessage.text = Database.Message_SaveRequest1;
                     groupYesnoSystemMessage.SetActive(true);
                 }
+            }
+            // 逃げた時、経験値とゴールドは入らない。(つまり、何もしない）
+            else if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
+            {
+                GroundOne.BattleResult = GroundOne.battleResult.None;
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+
+                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
+                    GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
             }
             // 戦闘に勝利した場合（通常ルート）
             else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
@@ -6656,6 +6657,322 @@ namespace DungeonPlayer
                 }
             }
             #endregion
+            #region "２階"
+            else if (area == 2)
+            {
+                switch (ii)
+                {
+                    #region "１階へ戻る階段"
+                    case 0:
+                        MessagePack.Message10200(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "中央４看板"
+                    case 1:
+                        MessagePack.Message10201(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 2:
+                        MessagePack.Message10201_2(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 3:
+                        MessagePack.Message10201_3(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 4:
+                        MessagePack.Message10201_4(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、メイン看板、ファースト：３回"
+                    case 5:
+                        MessagePack.Message10202(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、メイン看板、セカンド：下３上１２左８"
+                    case 6:
+                        MessagePack.Message10203(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、メイン看板、サード：( >10 _6 <7 )  ( <11 ~3 )  ( _3 >7 )"
+                    case 7:
+                        MessagePack.Message10204(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、フェーズ１"
+                    case 8:
+                        MessagePack.Message10205(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 9:
+                        MessagePack.Message10206(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 10:
+                        MessagePack.Message10207(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、フェーズ２"
+                    case 11:
+                        MessagePack.Message10208(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 12:
+                        MessagePack.Message10209(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 13:
+                        MessagePack.Message10210(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、フェーズ３"
+                    case 14:
+                        MessagePack.Message10211(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 15:
+                        MessagePack.Message10212(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 16:
+                        MessagePack.Message10213(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、正しき順序看板"
+                    case 17:
+                        MessagePack.Message10214(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、正しき順序フラグ"
+                    case 18:
+                        MessagePack.Message10215(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 19:
+                        MessagePack.Message10215_2(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 20:
+                        MessagePack.Message10215_3(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 21:
+                        MessagePack.Message10215_4(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 22:
+                        MessagePack.Message10215_5(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 23:
+                        MessagePack.Message10215_6(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 24:
+                        MessagePack.Message10215_7(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 25:
+                        MessagePack.Message10215_8(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 26:
+                        MessagePack.Message10215_9(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 27:
+                        MessagePack.Message10215_10(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 28:
+                        MessagePack.Message10215_11(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 29:
+                        MessagePack.Message10215_12(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 30:
+                        MessagePack.Message10215_13(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 31:
+                        MessagePack.Message10215_14(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 32:
+                        MessagePack.Message10215_15(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 33:
+                        MessagePack.Message10215_16(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 34:
+                        MessagePack.Message10215_17(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 35:
+                        MessagePack.Message10215_18(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 36:
+                        MessagePack.Message10215_19(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 37:
+                        MessagePack.Message10215_20(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 38:
+                        MessagePack.Message10215_21(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 39:
+                        MessagePack.Message10215_22(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 40:
+                        MessagePack.Message10215_23(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、正しき順序解答"
+                    case 41:
+                        MessagePack.Message10216(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、複合レバーの看板１"
+                    case 42:
+                        MessagePack.Message10217(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、複合レバー１－１"
+                    case 43:
+                        MessagePack.Message10218(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、複合レバー１－２"
+                    case 44:
+                        MessagePack.Message10219(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "技の部屋、エリアＡ"
+                    case 45:
+                        MessagePack.Message10220(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 46:
+                        MessagePack.Message10221(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 47:
+                        MessagePack.Message10222(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "技の部屋、エリアＢ"
+                    case 48:
+                        MessagePack.Message10223(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 49:
+                        MessagePack.Message10224(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 50:
+                        MessagePack.Message10225(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "技の部屋、エリアＣ"
+                    case 51:
+                        MessagePack.Message10226(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 52:
+                        MessagePack.Message10227(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 53:
+                        MessagePack.Message10228(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "技の部屋、エリアＤ"
+                    case 54:
+                        MessagePack.Message10229(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 55:
+                        MessagePack.Message10230(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 56:
+                        MessagePack.Message10231(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "技の部屋、エリアＥ"
+                    case 57:
+                        MessagePack.Message10232(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 58:
+                        MessagePack.Message10233(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 59:
+                        MessagePack.Message10234(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 109:
+                        // 何も記載してないが、これで戦闘発生を回避する
+                        return true;
+                    #endregion
+                    #region "技の部屋、エリアＦ（最後一個前）"
+                    case 60:
+                        MessagePack.Message10235(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "技の部屋、複合レバーの看板１"
+                    case 96:
+                        MessagePack.Message10263(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                }
+            }
+            #endregion
+            #region "３階"
+            else if (area == 3)
+            { // after
+            }
+            #endregion
+            #region "４階"
+            else if (area == 4)
+            { // after
+            }
+            #endregion
+            #region "５階"
+            else if (area == 5)
+            { // after
+            }
+            #endregion
             return false;
         }
 
@@ -6859,8 +7176,6 @@ namespace DungeonPlayer
 
         private void CopyShadowToMain()
         {
-            Debug.Log("CopyShadowToMain start");
-
             GroundOne.MC.MainWeapon = GroundOne.ShadowMC.MainArmor;
             GroundOne.MC.SubWeapon = GroundOne.ShadowMC.SubWeapon;
             GroundOne.MC.MainArmor = GroundOne.ShadowMC.MainArmor;
