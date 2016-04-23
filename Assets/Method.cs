@@ -64,6 +64,20 @@ namespace DungeonPlayer
             return player;
         }
 
+        public static void GetItemFullCheck(MotherForm scene, MainCharacter player, string itemName)
+        {
+            bool result = player.AddBackPack(new ItemBackPack(itemName));
+            if (result) return;
+
+            string cannotTrash = string.Empty;
+            if (itemName == Database.RARE_EARRING_OF_LANA ||
+                itemName == Database.RARE_TOOMI_BLUE_SUISYOU)
+            {
+                cannotTrash = itemName;
+            }
+            SceneDimension.CallTruthStatusPlayer(scene, true, cannotTrash);
+        }
+
         public static void UpdateBackPackLabel(MainCharacter target, GameObject[] back_Backpack, Text[] backpack, Text[] backpackStack, Image[] backpackIcon)
         {
             ItemBackPack[] backpackData = target.GetBackPackInfo();

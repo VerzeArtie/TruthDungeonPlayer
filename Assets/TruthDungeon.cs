@@ -3448,489 +3448,489 @@ namespace DungeonPlayer
                     {
                         return true;
                     }
-                    // 知の部屋、複合レバーの看板１
-                    else if (row == 5 && column == 51 && eventNum == 42)
-                    {
-                        return true;
-                    }
-                    // 知の部屋、複合レバー１－１
-                    else if (row == 4 && column == 51 && eventNum == 43)
-                    {
-                        return true;
-                    }
-                    // 知の部屋、複合レバー１－２
-                    else if (row == 6 && column == 51 && eventNum == 44)
-                    {
-                        return true;
-                    }
                     // 技の部屋、看板１
-                    else if (row == 27 && column == 57 && eventNum == 45)
+                    else if (row == 27 && column == 57 && eventNum == 42)
                     {
                         return true;
                     }
                     // 技の部屋、ルームＡ
-                    else if ((row == 26 && column == 56 && eventNum == 46) ||
-                             (row == 26 && column == 55 && eventNum == 46) ||
-                             (row == 26 && column == 54 && eventNum == 46) ||
-                             (row == 26 && column == 53 && eventNum == 46) ||
-                             (row == 26 && column == 52 && eventNum == 46) ||
-                             (row == 26 && column == 51 && eventNum == 46) ||
-                             (row == 26 && column == 50 && eventNum == 46) ||
-                             (row == 26 && column == 49 && eventNum == 46) ||
-                             (row == 26 && column == 48 && eventNum == 46) ||
+                    else if ((row == 26 && column == 56 && eventNum == 43) ||
+                             (row == 26 && column == 55 && eventNum == 43) ||
+                             (row == 26 && column == 54 && eventNum == 43) ||
+                             (row == 26 && column == 53 && eventNum == 43) ||
+                             (row == 26 && column == 52 && eventNum == 43) ||
+                             (row == 26 && column == 51 && eventNum == 43) ||
+                             (row == 26 && column == 50 && eventNum == 43) ||
+                             (row == 26 && column == 49 && eventNum == 43) ||
+                             (row == 26 && column == 48 && eventNum == 43) ||
 
-                             (row == 27 && column == 56 && eventNum == 46) ||
-                             (row == 27 && column == 55 && eventNum == 46) ||
-                             (row == 27 && column == 54 && eventNum == 46) ||
-                             (row == 27 && column == 53 && eventNum == 46) ||
-                             (row == 27 && column == 52 && eventNum == 46) ||
-                             (row == 27 && column == 51 && eventNum == 46) ||
-                             (row == 27 && column == 50 && eventNum == 46) ||
-                             (row == 27 && column == 49 && eventNum == 46) ||
-                             (row == 27 && column == 48 && eventNum == 46) ||
+                             (row == 27 && column == 56 && eventNum == 43) ||
+                             (row == 27 && column == 55 && eventNum == 43) ||
+                             (row == 27 && column == 54 && eventNum == 43) ||
+                             (row == 27 && column == 53 && eventNum == 43) ||
+                             (row == 27 && column == 52 && eventNum == 43) ||
+                             (row == 27 && column == 51 && eventNum == 43) ||
+                             (row == 27 && column == 50 && eventNum == 43) ||
+                             (row == 27 && column == 49 && eventNum == 43) ||
+                             (row == 27 && column == 48 && eventNum == 43) ||
 
-                             (row == 28 && column == 56 && eventNum == 46) ||
-                             (row == 28 && column == 55 && eventNum == 46) ||
-                             (row == 28 && column == 54 && eventNum == 46) ||
-                             (row == 28 && column == 53 && eventNum == 46) ||
-                             (row == 28 && column == 52 && eventNum == 46) ||
-                             (row == 28 && column == 51 && eventNum == 46) ||
-                             (row == 28 && column == 50 && eventNum == 46) ||
-                             (row == 28 && column == 49 && eventNum == 46) ||
-                             (row == 28 && column == 48 && eventNum == 46))
+                             (row == 28 && column == 56 && eventNum == 43) ||
+                             (row == 28 && column == 55 && eventNum == 43) ||
+                             (row == 28 && column == 54 && eventNum == 43) ||
+                             (row == 28 && column == 53 && eventNum == 43) ||
+                             (row == 28 && column == 52 && eventNum == 43) ||
+                             (row == 28 && column == 51 && eventNum == 43) ||
+                             (row == 28 && column == 50 && eventNum == 43) ||
+                             (row == 28 && column == 49 && eventNum == 43) ||
+                             (row == 28 && column == 48 && eventNum == 43))
                     {
                         return true;
                     }
                     // 技の部屋、ルームＡクリア
-                    else if ((row == 26 && column == 47 && eventNum == 47) ||
-                             (row == 27 && column == 47 && eventNum == 47) ||
-                             (row == 28 && column == 47 && eventNum == 47))
+                    else if ((row == 26 && column == 47 && eventNum == 44) ||
+                             (row == 27 && column == 47 && eventNum == 44) ||
+                             (row == 28 && column == 47 && eventNum == 44))
                     {
                         return true;
                     }
                     // 技の部屋、看板２
-                    else if (row == 27 && column == 45 && eventNum == 48)
+                    else if (row == 27 && column == 45 && eventNum == 45)
                     {
                         return true;
                     }
                     // 技の部屋、ルームＢ
-                    else if ((row == 26 && column == 44 && eventNum == 49) ||
-                             (row == 26 && column == 43 && eventNum == 49) ||
-                             (row == 26 && column == 42 && eventNum == 49) ||
-                             (row == 26 && column == 41 && eventNum == 49) ||
-                             (row == 26 && column == 40 && eventNum == 49) ||
-                             (row == 26 && column == 39 && eventNum == 49) ||
-                             (row == 26 && column == 38 && eventNum == 49) ||
-                             (row == 26 && column == 37 && eventNum == 49) ||
-                             (row == 26 && column == 36 && eventNum == 49) ||
+                    else if ((row == 26 && column == 44 && eventNum == 46) ||
+                             (row == 26 && column == 43 && eventNum == 46) ||
+                             (row == 26 && column == 42 && eventNum == 46) ||
+                             (row == 26 && column == 41 && eventNum == 46) ||
+                             (row == 26 && column == 40 && eventNum == 46) ||
+                             (row == 26 && column == 39 && eventNum == 46) ||
+                             (row == 26 && column == 38 && eventNum == 46) ||
+                             (row == 26 && column == 37 && eventNum == 46) ||
+                             (row == 26 && column == 36 && eventNum == 46) ||
 
-                             (row == 27 && column == 44 && eventNum == 49) ||
-                             (row == 27 && column == 43 && eventNum == 49) ||
-                             (row == 27 && column == 42 && eventNum == 49) ||
-                             (row == 27 && column == 41 && eventNum == 49) ||
-                             (row == 27 && column == 40 && eventNum == 49) ||
-                             (row == 27 && column == 39 && eventNum == 49) ||
-                             (row == 27 && column == 38 && eventNum == 49) ||
-                             (row == 27 && column == 37 && eventNum == 49) ||
-                             (row == 27 && column == 36 && eventNum == 49) ||
+                             (row == 27 && column == 44 && eventNum == 46) ||
+                             (row == 27 && column == 43 && eventNum == 46) ||
+                             (row == 27 && column == 42 && eventNum == 46) ||
+                             (row == 27 && column == 41 && eventNum == 46) ||
+                             (row == 27 && column == 40 && eventNum == 46) ||
+                             (row == 27 && column == 39 && eventNum == 46) ||
+                             (row == 27 && column == 38 && eventNum == 46) ||
+                             (row == 27 && column == 37 && eventNum == 46) ||
+                             (row == 27 && column == 36 && eventNum == 46) ||
 
-                             (row == 28 && column == 44 && eventNum == 49) ||
-                             (row == 28 && column == 43 && eventNum == 49) ||
-                             (row == 28 && column == 42 && eventNum == 49) ||
-                             (row == 28 && column == 41 && eventNum == 49) ||
-                             (row == 28 && column == 40 && eventNum == 49) ||
-                             (row == 28 && column == 39 && eventNum == 49) ||
-                             (row == 28 && column == 38 && eventNum == 49) ||
-                             (row == 28 && column == 37 && eventNum == 49) ||
-                             (row == 28 && column == 36 && eventNum == 49))
+                             (row == 28 && column == 44 && eventNum == 46) ||
+                             (row == 28 && column == 43 && eventNum == 46) ||
+                             (row == 28 && column == 42 && eventNum == 46) ||
+                             (row == 28 && column == 41 && eventNum == 46) ||
+                             (row == 28 && column == 40 && eventNum == 46) ||
+                             (row == 28 && column == 39 && eventNum == 46) ||
+                             (row == 28 && column == 38 && eventNum == 46) ||
+                             (row == 28 && column == 37 && eventNum == 46) ||
+                             (row == 28 && column == 36 && eventNum == 46))
                     {
                         return true;
                     }
                     // 技の部屋、ルームＢクリア
-                    else if ((row == 26 && column == 35 && eventNum == 50) ||
-                             (row == 27 && column == 35 && eventNum == 50) ||
-                             (row == 28 && column == 35 && eventNum == 50))
+                    else if ((row == 26 && column == 35 && eventNum == 47) ||
+                             (row == 27 && column == 35 && eventNum == 47) ||
+                             (row == 28 && column == 35 && eventNum == 47))
                     {
                         return true;
                     }
                     // 技の部屋、看板３
-                    else if (row == 27 && column == 33 && eventNum == 51)
+                    else if (row == 27 && column == 33 && eventNum == 48)
                     {
                         return true;
                     }
                     // 技の部屋、ルームＣ
-                    else if ((row == 26 && column == 32 && eventNum == 52) ||
-                             (row == 26 && column == 31 && eventNum == 52) ||
-                             (row == 26 && column == 30 && eventNum == 52) ||
-                             (row == 26 && column == 29 && eventNum == 52) ||
-                             (row == 26 && column == 28 && eventNum == 52) ||
+                    else if ((row == 26 && column == 32 && eventNum == 49) ||
+                             (row == 26 && column == 31 && eventNum == 49) ||
+                             (row == 26 && column == 30 && eventNum == 49) ||
+                             (row == 26 && column == 29 && eventNum == 49) ||
+                             (row == 26 && column == 28 && eventNum == 49) ||
 
-                             (row == 27 && column == 32 && eventNum == 52) ||
-                             (row == 27 && column == 31 && eventNum == 52) ||
-                             (row == 27 && column == 30 && eventNum == 52) ||
-                             (row == 27 && column == 29 && eventNum == 52) ||
-                             (row == 27 && column == 28 && eventNum == 52) ||
+                             (row == 27 && column == 32 && eventNum == 49) ||
+                             (row == 27 && column == 31 && eventNum == 49) ||
+                             (row == 27 && column == 30 && eventNum == 49) ||
+                             (row == 27 && column == 29 && eventNum == 49) ||
+                             (row == 27 && column == 28 && eventNum == 49) ||
 
-                             (row == 28 && column == 32 && eventNum == 52) ||
-                             (row == 28 && column == 31 && eventNum == 52) ||
-                             (row == 28 && column == 30 && eventNum == 52) ||
-                             (row == 28 && column == 29 && eventNum == 52) ||
-                             (row == 28 && column == 28 && eventNum == 52) ||
+                             (row == 28 && column == 32 && eventNum == 49) ||
+                             (row == 28 && column == 31 && eventNum == 49) ||
+                             (row == 28 && column == 30 && eventNum == 49) ||
+                             (row == 28 && column == 29 && eventNum == 49) ||
+                             (row == 28 && column == 28 && eventNum == 49) ||
 
-                             (row == 29 && column == 30 && eventNum == 52) ||
-                             (row == 29 && column == 29 && eventNum == 52) ||
-                             (row == 29 && column == 28 && eventNum == 52) ||
+                             (row == 29 && column == 30 && eventNum == 49) ||
+                             (row == 29 && column == 29 && eventNum == 49) ||
+                             (row == 29 && column == 28 && eventNum == 49) ||
 
-                             (row == 30 && column == 30 && eventNum == 52) ||
-                             (row == 30 && column == 29 && eventNum == 52) ||
-                             (row == 30 && column == 28 && eventNum == 52) ||
+                             (row == 30 && column == 30 && eventNum == 49) ||
+                             (row == 30 && column == 29 && eventNum == 49) ||
+                             (row == 30 && column == 28 && eventNum == 49) ||
 
-                             (row == 31 && column == 30 && eventNum == 52) ||
-                             (row == 31 && column == 29 && eventNum == 52) ||
-                             (row == 31 && column == 28 && eventNum == 52) ||
+                             (row == 31 && column == 30 && eventNum == 49) ||
+                             (row == 31 && column == 29 && eventNum == 49) ||
+                             (row == 31 && column == 28 && eventNum == 49) ||
 
-                             (row == 32 && column == 30 && eventNum == 52) ||
-                             (row == 32 && column == 29 && eventNum == 52) ||
-                             (row == 32 && column == 28 && eventNum == 52) ||
+                             (row == 32 && column == 30 && eventNum == 49) ||
+                             (row == 32 && column == 29 && eventNum == 49) ||
+                             (row == 32 && column == 28 && eventNum == 49) ||
 
-                             (row == 33 && column == 32 && eventNum == 52) ||
-                             (row == 33 && column == 31 && eventNum == 52) ||
-                             (row == 33 && column == 30 && eventNum == 52) ||
-                             (row == 33 && column == 29 && eventNum == 52) ||
-                             (row == 33 && column == 28 && eventNum == 52) ||
+                             (row == 33 && column == 32 && eventNum == 49) ||
+                             (row == 33 && column == 31 && eventNum == 49) ||
+                             (row == 33 && column == 30 && eventNum == 49) ||
+                             (row == 33 && column == 29 && eventNum == 49) ||
+                             (row == 33 && column == 28 && eventNum == 49) ||
 
-                             (row == 34 && column == 32 && eventNum == 52) ||
-                             (row == 34 && column == 31 && eventNum == 52) ||
-                             (row == 34 && column == 30 && eventNum == 52) ||
-                             (row == 34 && column == 29 && eventNum == 52) ||
-                             (row == 34 && column == 28 && eventNum == 52) ||
+                             (row == 34 && column == 32 && eventNum == 49) ||
+                             (row == 34 && column == 31 && eventNum == 49) ||
+                             (row == 34 && column == 30 && eventNum == 49) ||
+                             (row == 34 && column == 29 && eventNum == 49) ||
+                             (row == 34 && column == 28 && eventNum == 49) ||
 
-                             (row == 35 && column == 32 && eventNum == 52) ||
-                             (row == 35 && column == 31 && eventNum == 52) ||
-                             (row == 35 && column == 30 && eventNum == 52) ||
-                             (row == 35 && column == 29 && eventNum == 52) ||
-                             (row == 35 && column == 28 && eventNum == 52))
+                             (row == 35 && column == 32 && eventNum == 49) ||
+                             (row == 35 && column == 31 && eventNum == 49) ||
+                             (row == 35 && column == 30 && eventNum == 49) ||
+                             (row == 35 && column == 29 && eventNum == 49) ||
+                             (row == 35 && column == 28 && eventNum == 49))
                     {
                         return true;
                     }
                     // 技の部屋、ルームＣクリア
-                    else if ((row == 33 && column == 33 && eventNum == 53) ||
-                             (row == 34 && column == 33 && eventNum == 53) ||
-                             (row == 35 && column == 33 && eventNum == 53))
+                    else if ((row == 33 && column == 33 && eventNum == 50) ||
+                             (row == 34 && column == 33 && eventNum == 50) ||
+                             (row == 35 && column == 33 && eventNum == 50))
                     {
                         return true;
                     }
                     // 技の部屋、看板４
-                    else if (row == 34 && column == 35 && eventNum == 54)
+                    else if (row == 34 && column == 35 && eventNum == 51)
                     {
                         return true;
                     }
                     // 技の部屋、ルームＤ
-                    else if ((row == 33 && column == 36 && eventNum == 55) ||
-                             (row == 33 && column == 37 && eventNum == 55) ||
-                             (row == 33 && column == 38 && eventNum == 55) ||
-                             (row == 33 && column == 39 && eventNum == 55) ||
-                             (row == 33 && column == 40 && eventNum == 55) ||
-                             (row == 33 && column == 41 && eventNum == 55) ||
-                             (row == 33 && column == 42 && eventNum == 55) ||
-                             (row == 33 && column == 43 && eventNum == 55) ||
-                             (row == 33 && column == 44 && eventNum == 55) ||
+                    else if ((row == 33 && column == 36 && eventNum == 52) ||
+                             (row == 33 && column == 37 && eventNum == 52) ||
+                             (row == 33 && column == 38 && eventNum == 52) ||
+                             (row == 33 && column == 39 && eventNum == 52) ||
+                             (row == 33 && column == 40 && eventNum == 52) ||
+                             (row == 33 && column == 41 && eventNum == 52) ||
+                             (row == 33 && column == 42 && eventNum == 52) ||
+                             (row == 33 && column == 43 && eventNum == 52) ||
+                             (row == 33 && column == 44 && eventNum == 52) ||
 
-                             (row == 34 && column == 36 && eventNum == 55) ||
-                             (row == 34 && column == 37 && eventNum == 55) ||
-                             (row == 34 && column == 38 && eventNum == 55) ||
-                             (row == 34 && column == 39 && eventNum == 55) ||
-                             (row == 34 && column == 40 && eventNum == 55) ||
-                             (row == 34 && column == 41 && eventNum == 55) ||
-                             (row == 34 && column == 42 && eventNum == 55) ||
-                             (row == 34 && column == 43 && eventNum == 55) ||
-                             (row == 34 && column == 44 && eventNum == 55) ||
+                             (row == 34 && column == 36 && eventNum == 52) ||
+                             (row == 34 && column == 37 && eventNum == 52) ||
+                             (row == 34 && column == 38 && eventNum == 52) ||
+                             (row == 34 && column == 39 && eventNum == 52) ||
+                             (row == 34 && column == 40 && eventNum == 52) ||
+                             (row == 34 && column == 41 && eventNum == 52) ||
+                             (row == 34 && column == 42 && eventNum == 52) ||
+                             (row == 34 && column == 43 && eventNum == 52) ||
+                             (row == 34 && column == 44 && eventNum == 52) ||
 
-                             (row == 35 && column == 36 && eventNum == 55) ||
-                             (row == 35 && column == 37 && eventNum == 55) ||
-                             (row == 35 && column == 38 && eventNum == 55) ||
-                             (row == 35 && column == 39 && eventNum == 55) ||
-                             (row == 35 && column == 40 && eventNum == 55) ||
-                             (row == 35 && column == 41 && eventNum == 55) ||
-                             (row == 35 && column == 42 && eventNum == 55) ||
-                             (row == 35 && column == 43 && eventNum == 55) ||
-                             (row == 35 && column == 44 && eventNum == 55))
+                             (row == 35 && column == 36 && eventNum == 52) ||
+                             (row == 35 && column == 37 && eventNum == 52) ||
+                             (row == 35 && column == 38 && eventNum == 52) ||
+                             (row == 35 && column == 39 && eventNum == 52) ||
+                             (row == 35 && column == 40 && eventNum == 52) ||
+                             (row == 35 && column == 41 && eventNum == 52) ||
+                             (row == 35 && column == 42 && eventNum == 52) ||
+                             (row == 35 && column == 43 && eventNum == 52) ||
+                             (row == 35 && column == 44 && eventNum == 52))
                     {
                         return true;
                     }
                     // 技の部屋、ルームＤクリア
-                    else if ((row == 33 && column == 45 && eventNum == 56) ||
-                             (row == 34 && column == 45 && eventNum == 56) ||
-                             (row == 35 && column == 45 && eventNum == 56))
+                    else if ((row == 33 && column == 45 && eventNum == 53) ||
+                             (row == 34 && column == 45 && eventNum == 53) ||
+                             (row == 35 && column == 45 && eventNum == 53))
                     {
                         return true;
                     }
                     // 技の部屋、看板５
-                    else if (row == 34 && column == 47 && eventNum == 57)
+                    else if (row == 34 && column == 47 && eventNum == 54)
                     {
                         return true;
                     }
                     // 技の部屋、ルームＥ
-                    else if ((row == 34 && column == 48 && eventNum == 58))
+                    else if ((row == 34 && column == 48 && eventNum == 55))
                     {
                         return true;
                     }
                     // 技の部屋、ルームＥクリア
-                    else if ((row == 33 && column == 57 && eventNum == 59) ||
-                             (row == 34 && column == 57 && eventNum == 59) ||
-                             (row == 35 && column == 57 && eventNum == 59))
+                    else if ((row == 33 && column == 57 && eventNum == 56) ||
+                             (row == 34 && column == 57 && eventNum == 56) ||
+                             (row == 35 && column == 57 && eventNum == 56))
                     {
                         return true;
                     }
                     // 技の部屋、看板６
-                    else if (row == 34 && column == 59 && eventNum == 60)
+                    else if (row == 34 && column == 59 && eventNum == 57)
                     {
                         return true;
                     }
                     // 心の部屋、ヒント１
-                    else if (row == 12 && column == 0 && eventNum == 61)
+                    else if (row == 12 && column == 0 && eventNum == 58)
                     {
                         return true;
                     }
                     // 心の部屋、題材１
-                    else if ((row == 0 && column == 0 && eventNum == 62) ||
-                             (row == 1 && column == 0 && eventNum == 62) ||
-                             (row == 2 && column == 0 && eventNum == 62) ||
-                             (row == 3 && column == 0 && eventNum == 62) ||
-                             (row == 4 && column == 0 && eventNum == 62))
+                    else if ((row == 0 && column == 0 && eventNum == 59) ||
+                             (row == 1 && column == 0 && eventNum == 59) ||
+                             (row == 2 && column == 0 && eventNum == 59) ||
+                             (row == 3 && column == 0 && eventNum == 59) ||
+                             (row == 4 && column == 0 && eventNum == 59))
                     {
                         return true;
                     }
                     // 心の部屋、題材２
-                    else if ((row == 0 && column == 9 && eventNum == 63) ||
-                             (row == 0 && column == 10 && eventNum == 63) ||
-                             (row == 0 && column == 11 && eventNum == 63) ||
-                             (row == 0 && column == 12 && eventNum == 63) ||
-                             (row == 0 && column == 13 && eventNum == 63) ||
-                             (row == 0 && column == 14 && eventNum == 63))
+                    else if ((row == 0 && column == 9 && eventNum == 60) ||
+                             (row == 0 && column == 10 && eventNum == 60) ||
+                             (row == 0 && column == 11 && eventNum == 60) ||
+                             (row == 0 && column == 12 && eventNum == 60) ||
+                             (row == 0 && column == 13 && eventNum == 60) ||
+                             (row == 0 && column == 14 && eventNum == 60))
                     {
                         return true;
                     }
                     // 心の部屋、題材３
-                    else if ((row == 0 && column == 28 && eventNum == 64))
+                    else if ((row == 0 && column == 28 && eventNum == 61))
                     {
                         return true;
                     }
                     // 心の部屋、題材４
-                    else if ((row == 4 && column == 3 && eventNum == 65) ||
-                             (row == 4 && column == 4 && eventNum == 65) ||
-                             (row == 4 && column == 5 && eventNum == 65) ||
-                             (row == 5 && column == 3 && eventNum == 65) ||
-                             (row == 5 && column == 4 && eventNum == 65) ||
-                             (row == 5 && column == 5 && eventNum == 65) ||
-                             (row == 6 && column == 3 && eventNum == 65) ||
-                             (row == 6 && column == 4 && eventNum == 65) ||
-                             (row == 6 && column == 5 && eventNum == 65)
+                    else if ((row == 4 && column == 3 && eventNum == 62) ||
+                             (row == 4 && column == 4 && eventNum == 62) ||
+                             (row == 4 && column == 5 && eventNum == 62) ||
+                             (row == 5 && column == 3 && eventNum == 62) ||
+                             (row == 5 && column == 4 && eventNum == 62) ||
+                             (row == 5 && column == 5 && eventNum == 62) ||
+                             (row == 6 && column == 3 && eventNum == 62) ||
+                             (row == 6 && column == 4 && eventNum == 62) ||
+                             (row == 6 && column == 5 && eventNum == 62)
                         )
                     {
                         return true;
                     }
                     // 心の部屋、題材５
-                    else if ((row == 2 && column == 9 && eventNum == 66) ||
-                             (row == 2 && column == 10 && eventNum == 66) ||
-                             (row == 2 && column == 11 && eventNum == 66) ||
-                             (row == 3 && column == 9 && eventNum == 66) ||
-                             (row == 3 && column == 10 && eventNum == 66) ||
-                             (row == 3 && column == 11 && eventNum == 66) ||
-                             (row == 4 && column == 9 && eventNum == 66) ||
-                             (row == 4 && column == 10 && eventNum == 66) ||
-                             (row == 4 && column == 11 && eventNum == 66)
+                    else if ((row == 2 && column == 9 && eventNum == 63) ||
+                             (row == 2 && column == 10 && eventNum == 63) ||
+                             (row == 2 && column == 11 && eventNum == 63) ||
+                             (row == 3 && column == 9 && eventNum == 63) ||
+                             (row == 3 && column == 10 && eventNum == 63) ||
+                             (row == 3 && column == 11 && eventNum == 63) ||
+                             (row == 4 && column == 9 && eventNum == 63) ||
+                             (row == 4 && column == 10 && eventNum == 63) ||
+                             (row == 4 && column == 11 && eventNum == 63)
                         )
                     {
                         return true;
                     }
                     // 心の部屋、題材６
-                    else if ((row == 2 && column == 22 && eventNum == 67) ||
-                             (row == 2 && column == 23 && eventNum == 67) ||
-                             (row == 2 && column == 24 && eventNum == 67) ||
-                             (row == 3 && column == 22 && eventNum == 67) ||
-                             (row == 3 && column == 23 && eventNum == 67) ||
-                             (row == 3 && column == 24 && eventNum == 67) ||
-                             (row == 4 && column == 22 && eventNum == 67) ||
-                             (row == 4 && column == 23 && eventNum == 67) ||
-                             (row == 4 && column == 24 && eventNum == 67)
+                    else if ((row == 2 && column == 22 && eventNum == 64) ||
+                             (row == 2 && column == 23 && eventNum == 64) ||
+                             (row == 2 && column == 24 && eventNum == 64) ||
+                             (row == 3 && column == 22 && eventNum == 64) ||
+                             (row == 3 && column == 23 && eventNum == 64) ||
+                             (row == 3 && column == 24 && eventNum == 64) ||
+                             (row == 4 && column == 22 && eventNum == 64) ||
+                             (row == 4 && column == 23 && eventNum == 64) ||
+                             (row == 4 && column == 24 && eventNum == 64)
                         )
                     {
                         return true;
                     }
                     // 心の部屋、題材７
-                    else if ((row == 6 && column == 14 && eventNum == 68) ||
-                             (row == 6 && column == 15 && eventNum == 68) ||
-                             (row == 6 && column == 16 && eventNum == 68) ||
-                             (row == 7 && column == 14 && eventNum == 68) ||
-                             (row == 7 && column == 15 && eventNum == 68) ||
-                             (row == 7 && column == 16 && eventNum == 68) ||
-                             (row == 8 && column == 14 && eventNum == 68) ||
-                             (row == 8 && column == 15 && eventNum == 68) ||
-                             (row == 8 && column == 16 && eventNum == 68)
+                    else if ((row == 6 && column == 14 && eventNum == 65) ||
+                             (row == 6 && column == 15 && eventNum == 65) ||
+                             (row == 6 && column == 16 && eventNum == 65) ||
+                             (row == 7 && column == 14 && eventNum == 65) ||
+                             (row == 7 && column == 15 && eventNum == 65) ||
+                             (row == 7 && column == 16 && eventNum == 65) ||
+                             (row == 8 && column == 14 && eventNum == 65) ||
+                             (row == 8 && column == 15 && eventNum == 65) ||
+                             (row == 8 && column == 16 && eventNum == 65)
                         )
                     {
                         return true;
                     }
                     // 心の部屋、題材８
-                    else if ((row == 5 && column == 28 && eventNum == 69) ||
-                             (row == 6 && column == 28 && eventNum == 69) ||
-                             (row == 7 && column == 28 && eventNum == 69)
+                    else if ((row == 5 && column == 28 && eventNum == 66) ||
+                             (row == 6 && column == 28 && eventNum == 66) ||
+                             (row == 7 && column == 28 && eventNum == 66)
                              )
                     {
                         return true;
                     }
                     // 心の部屋、題材９
-                    else if ((row == 8 && column == 20 && eventNum == 70) ||
-                             (row == 8 && column == 21 && eventNum == 70) ||
-                             (row == 8 && column == 22 && eventNum == 70) ||
-                             (row == 8 && column == 23 && eventNum == 70) ||
-                             (row == 8 && column == 24 && eventNum == 70) ||
-                             (row == 8 && column == 25 && eventNum == 70) ||
-                             (row == 9 && column == 20 && eventNum == 70) ||
-                             (row == 9 && column == 21 && eventNum == 70) ||
-                             (row == 9 && column == 22 && eventNum == 70) ||
-                             (row == 9 && column == 23 && eventNum == 70) ||
-                             (row == 9 && column == 24 && eventNum == 70) ||
-                             (row == 9 && column == 25 && eventNum == 70) ||
-                             (row == 10 && column == 20 && eventNum == 70) ||
-                             (row == 10 && column == 21 && eventNum == 70) ||
-                             (row == 10 && column == 22 && eventNum == 70) ||
-                             (row == 10 && column == 23 && eventNum == 70) ||
-                             (row == 10 && column == 24 && eventNum == 70) ||
-                             (row == 10 && column == 25 && eventNum == 70)
+                    else if ((row == 8 && column == 20 && eventNum == 67) ||
+                             (row == 8 && column == 21 && eventNum == 67) ||
+                             (row == 8 && column == 22 && eventNum == 67) ||
+                             (row == 8 && column == 23 && eventNum == 67) ||
+                             (row == 8 && column == 24 && eventNum == 67) ||
+                             (row == 8 && column == 25 && eventNum == 67) ||
+                             (row == 9 && column == 20 && eventNum == 67) ||
+                             (row == 9 && column == 21 && eventNum == 67) ||
+                             (row == 9 && column == 22 && eventNum == 67) ||
+                             (row == 9 && column == 23 && eventNum == 67) ||
+                             (row == 9 && column == 24 && eventNum == 67) ||
+                             (row == 9 && column == 25 && eventNum == 67) ||
+                             (row == 10 && column == 20 && eventNum == 67) ||
+                             (row == 10 && column == 21 && eventNum == 67) ||
+                             (row == 10 && column == 22 && eventNum == 67) ||
+                             (row == 10 && column == 23 && eventNum == 67) ||
+                             (row == 10 && column == 24 && eventNum == 67) ||
+                             (row == 10 && column == 25 && eventNum == 67)
                         )
                     {
                         return true;
                     }
                     // 心の部屋、題材１０
-                    else if ((row == 12 && column == 9 && eventNum == 71) ||
-                             (row == 12 && column == 10 && eventNum == 71) ||
-                             (row == 12 && column == 11 && eventNum == 71) ||
-                             (row == 12 && column == 12 && eventNum == 71) ||
-                             (row == 12 && column == 13 && eventNum == 71) ||
-                             (row == 12 && column == 14 && eventNum == 71)
+                    else if ((row == 12 && column == 9 && eventNum == 68) ||
+                             (row == 12 && column == 10 && eventNum == 68) ||
+                             (row == 12 && column == 11 && eventNum == 68) ||
+                             (row == 12 && column == 12 && eventNum == 68) ||
+                             (row == 12 && column == 13 && eventNum == 68) ||
+                             (row == 12 && column == 14 && eventNum == 68)
                         )
                     {
                         return true;
                     }
                     // 力の部屋、ボス１
-                    else if (row == 37 && column == 22 && eventNum == 72)
+                    else if (row == 37 && column == 22 && eventNum == 69)
                     {
                         return true;
                     }
                     // 力の部屋、ボス２
-                    else if (row == 27 && column == 22 && eventNum == 73)
+                    else if (row == 27 && column == 22 && eventNum == 70)
                     {
                         return true;
                     }
                     // 力の部屋、ボス３
-                    else if (row == 19 && column == 16 && eventNum == 74)
+                    else if (row == 19 && column == 16 && eventNum == 71)
                     {
                         return true;
                     }
                     // 力の部屋、ボス４
-                    else if (row == 22 && column == 2 && eventNum == 75)
+                    else if (row == 22 && column == 2 && eventNum == 72)
                     {
                         return true;
                     }
                     // 力の部屋、ボス５
-                    else if (row == 31 && column == 3 && eventNum == 76)
+                    else if (row == 31 && column == 3 && eventNum == 73)
                     {
                         return true;
                     }
                     // 力の部屋、ボス６
-                    else if (row == 36 && column == 14 && eventNum == 77)
+                    else if (row == 36 && column == 14 && eventNum == 74)
                     {
                         return true;
                     }
                     // 宝箱１
-                    else if (row == 16 && column == 59 && !GroundOne.WE.TruthTreasure21 && eventNum == 78)
+                    else if (row == 16 && column == 59 && !GroundOne.WE.TruthTreasure21 && eventNum == 75)
                     {
                         return true;
                     }
                     // 宝箱２
-                    else if (row == 12 && column == 35 && !GroundOne.WE.TruthTreasure22 && eventNum == 79)
+                    else if (row == 12 && column == 35 && !GroundOne.WE.TruthTreasure22 && eventNum == 76)
                     {
                         return true;
                     }
                     // 宝箱３
-                    else if (row == 5 && column == 55 && !GroundOne.WE.TruthTreasure23 && eventNum == 80)
+                    else if (row == 5 && column == 55 && !GroundOne.WE.TruthTreasure23 && eventNum == 77)
                     {
                         return true;
                     }
                     // 宝箱４
-                    else if (row == 25 && column == 59 && !GroundOne.WE.TruthTreasure24 && eventNum == 81)
+                    else if (row == 25 && column == 59 && !GroundOne.WE.TruthTreasure24 && eventNum == 78)
                     {
                         return true;
                     }
                     // 宝箱５
-                    else if (row == 27 && column == 46 && !GroundOne.WE.TruthTreasure25 && eventNum == 82)
+                    else if (row == 27 && column == 46 && !GroundOne.WE.TruthTreasure25 && eventNum == 79)
                     {
                         return true;
                     }
                     // 宝箱６
-                    else if (row == 27 && column == 34 && !GroundOne.WE.TruthTreasure26 && eventNum == 83)
+                    else if (row == 27 && column == 34 && !GroundOne.WE.TruthTreasure26 && eventNum == 80)
                     {
                         return true;
                     }
                     // 宝箱７
-                    else if (row == 34 && column == 34 && !GroundOne.WE.TruthTreasure27 && eventNum == 84)
+                    else if (row == 34 && column == 34 && !GroundOne.WE.TruthTreasure27 && eventNum == 81)
                     {
                         return true;
                     }
                     // 宝箱８
-                    else if (row == 34 && column == 46 && !GroundOne.WE.TruthTreasure28 && eventNum == 85)
+                    else if (row == 34 && column == 46 && !GroundOne.WE.TruthTreasure28 && eventNum == 82)
                     {
                         return true;
                     }
                     // 宝箱９
-                    else if (row == 34 && column == 58 && !GroundOne.WE.TruthTreasure29 && eventNum == 86)
+                    else if (row == 34 && column == 58 && !GroundOne.WE.TruthTreasure29 && eventNum == 83)
                     {
                         return true;
                     }
                     // 宝箱１０
-                    else if (row == 39 && column == 31 && !GroundOne.WE.TruthTreasure210 && eventNum == 87)
+                    else if (row == 39 && column == 31 && !GroundOne.WE.TruthTreasure210 && eventNum == 84)
                     {
                         return true;
                     }
                     // 宝箱１１
-                    else if (row == 15 && column == 13 && !GroundOne.WE.TruthTreasure211 && eventNum == 88)
+                    else if (row == 15 && column == 13 && !GroundOne.WE.TruthTreasure211 && eventNum == 85)
                     {
                         return true;
                     }
                     // 宝箱１２
-                    else if (row == 6 && column == 29 && !GroundOne.WE.TruthTreasure212 && eventNum == 89)
+                    else if (row == 6 && column == 29 && !GroundOne.WE.TruthTreasure212 && eventNum == 86)
                     {
                         return true;
                     }
                     // 宝箱１３
-                    else if (row == 39 && column == 23 && !GroundOne.WE.TruthTreasure213 && eventNum == 90)
+                    else if (row == 39 && column == 23 && !GroundOne.WE.TruthTreasure213 && eventNum == 87)
                     {
                         return true;
                     }
                     // 宝箱１４
-                    else if (row == 31 && column == 22 && !GroundOne.WE.TruthTreasure214 && eventNum == 91)
+                    else if (row == 31 && column == 22 && !GroundOne.WE.TruthTreasure214 && eventNum == 88)
                     {
                         return true;
                     }
                     // 宝箱１５
-                    else if (row == 19 && column == 22 && !GroundOne.WE.TruthTreasure215 && eventNum == 92)
+                    else if (row == 19 && column == 22 && !GroundOne.WE.TruthTreasure215 && eventNum == 89)
                     {
                         return true;
                     }
                     // 宝箱１６
-                    else if (row == 19 && column == 4 && !GroundOne.WE.TruthTreasure216 && eventNum == 93)
+                    else if (row == 19 && column == 4 && !GroundOne.WE.TruthTreasure216 && eventNum == 90)
                     {
                         return true;
                     }
                     // 宝箱１７
-                    else if (row == 28 && column == 6 && !GroundOne.WE.TruthTreasure217 && eventNum == 94)
+                    else if (row == 28 && column == 6 && !GroundOne.WE.TruthTreasure217 && eventNum == 91)
                     {
                         return true;
                     }
                     // 宝箱１８
-                    else if (row == 39 && column == 10 && !GroundOne.WE.TruthTreasure218 && eventNum == 95)
+                    else if (row == 39 && column == 10 && !GroundOne.WE.TruthTreasure218 && eventNum == 92)
+                    {
+                        return true;
+                    }
+                    // 知の部屋、複合レバーの看板１
+                    else if (row == 5 && column == 51 && eventNum == 93)
+                    {
+                        return true;
+                    }
+                    // 知の部屋、複合レバー１－１
+                    else if (row == 4 && column == 51 && eventNum == 94)
+                    {
+                        return true;
+                    }
+                    // 知の部屋、複合レバー１－２
+                    else if (row == 6 && column == 51 && eventNum == 95)
                     {
                         return true;
                     }
@@ -6852,31 +6852,27 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
-                    #region "知の部屋、複合レバーの看板１"
+                    #region "技の部屋、エリアＡ"
                     case 42:
                         MessagePack.Message12017(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
-                    #endregion
-                    #region "知の部屋、複合レバー１－１"
                     case 43:
                         MessagePack.Message12018(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
-                    #endregion
-                    #region "知の部屋、複合レバー１－２"
                     case 44:
                         MessagePack.Message12019(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "技の部屋、エリアＡ"
+                    #region "技の部屋、エリアＢ"
                     case 45:
-                        MessagePack.Message12020(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12020(ref this.nowMessage, ref this.nowEvent, ref ShadowTileNumber, ref BeforeDirectionNumber);
                         tapOK();
                         return true;
                     case 46:
-                        MessagePack.Message12021(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12021(ref this.nowMessage, ref this.nowEvent, ref ShadowTileNumber, ref BeforeDirectionNumber);
                         tapOK();
                         return true;
                     case 47:
@@ -6884,7 +6880,7 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
-                    #region "技の部屋、エリアＢ"
+                    #region "技の部屋、エリアＣ"
                     case 48:
                         MessagePack.Message12023(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
@@ -6898,7 +6894,7 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
-                    #region "技の部屋、エリアＣ"
+                    #region "技の部屋、エリアＤ"
                     case 51:
                         MessagePack.Message12026(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
@@ -6912,7 +6908,7 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
-                    #region "技の部屋、エリアＤ"
+                    #region "技の部屋、エリアＥ"
                     case 54:
                         MessagePack.Message12029(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
@@ -6926,199 +6922,203 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
-                    #region "技の部屋、エリアＥ"
+                    #region "技の部屋、エリアＦ（最後一個前）"
                     case 57:
                         MessagePack.Message12032(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
+                    #endregion
+                    #region "心の部屋、ヒント１"
                     case 58:
                         MessagePack.Message12033(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
+                    #endregion
+                    #region "心の部屋、題材１"
                     case 59:
                         MessagePack.Message12034(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "技の部屋、エリアＦ（最後一個前）"
+                    #region "心の部屋、題材２"
                     case 60:
                         MessagePack.Message12035(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、ヒント１"
+                    #region "心の部屋、題材３"
                     case 61:
                         MessagePack.Message12036(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材１"
+                    #region "心の部屋、題材４"
                     case 62:
                         MessagePack.Message12037(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材２"
+                    #region "心の部屋、題材５"
                     case 63:
                         MessagePack.Message12038(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材３"
+                    #region "心の部屋、題材６"
                     case 64:
                         MessagePack.Message12039(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材４"
+                    #region "心の部屋、題材７"
                     case 65:
                         MessagePack.Message12040(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材５"
+                    #region "心の部屋、題材８"
                     case 66:
                         MessagePack.Message12041(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材６"
+                    #region "心の部屋、題材９"
                     case 67:
                         MessagePack.Message12042(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材７"
+                    #region "心の部屋、題材１０"
                     case 68:
                         MessagePack.Message12043(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材８"
+                    #region "力の部屋、ボス１"
                     case 69:
                         MessagePack.Message12044(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材９"
+                    #region "力の部屋、ボス２"
                     case 70:
                         MessagePack.Message12045(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "心の部屋、題材１０"
+                    #region "力の部屋、ボス３"
                     case 71:
                         MessagePack.Message12046(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "力の部屋、ボス１"
+                    #region "力の部屋、ボス４"
                     case 72:
                         MessagePack.Message12047(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "力の部屋、ボス２"
+                    #region "力の部屋、ボス５"
                     case 73:
                         MessagePack.Message12048(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "力の部屋、ボス３"
+                    #region "力の部屋、ボス６"
                     case 74:
                         MessagePack.Message12049(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "力の部屋、ボス４"
+                    #region "宝箱"
                     case 75:
                         MessagePack.Message12050(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
-                    #endregion
-                    #region "力の部屋、ボス５"
                     case 76:
+                        MessagePack.Message12050_2(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 77:
+                        MessagePack.Message12050_3(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 78:
+                        MessagePack.Message12050_4(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 79:
+                        MessagePack.Message12050_5(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 80:
+                        MessagePack.Message12050_6(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 81:
+                        MessagePack.Message12050_7(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 82:
+                        MessagePack.Message12050_8(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 83:
+                        MessagePack.Message12050_9(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 84:
+                        MessagePack.Message12050_10(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 85:
+                        MessagePack.Message12050_11(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 86:
+                        MessagePack.Message12050_12(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 87:
+                        MessagePack.Message12050_13(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 88:
+                        MessagePack.Message12050_14(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 89:
+                        MessagePack.Message12050_15(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 90:
+                        MessagePack.Message12050_16(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 91:
+                        MessagePack.Message12050_17(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 92:
+                        MessagePack.Message12050_18(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "知の部屋、複合レバーの看板１"
+                    case 93:
                         MessagePack.Message12051(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "力の部屋、ボス６"
-                    case 77:
+                    #region "知の部屋、複合レバー１－１"
+                    case 94:
                         MessagePack.Message12052(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
-                    #region "宝箱"
-                    case 78:
-                        MessagePack.Message12053(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 79:
-                        MessagePack.Message12053_2(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 80:
-                        MessagePack.Message12053_3(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 81:
-                        MessagePack.Message12053_4(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 82:
-                        MessagePack.Message12053_5(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 83:
-                        MessagePack.Message12053_6(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 84:
-                        MessagePack.Message12053_7(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 85:
-                        MessagePack.Message12053_8(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 86:
-                        MessagePack.Message12053_9(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 87:
-                        MessagePack.Message12053_10(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 88:
-                        MessagePack.Message12053_11(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 89:
-                        MessagePack.Message12053_12(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 90:
-                        MessagePack.Message12053_13(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 91:
-                        MessagePack.Message12053_14(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 92:
-                        MessagePack.Message12053_15(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 93:
-                        MessagePack.Message12053_16(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    case 94:
-                        MessagePack.Message12053_17(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
+                    #region "知の部屋、複合レバー１－２"
                     case 95:
-                        MessagePack.Message12053_18(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12053(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -7414,14 +7414,52 @@ namespace DungeonPlayer
             }
         }
 
+        // ダンジョン２階の技の部屋、エリア２に関する記述
+        int ShadowTileNumber = -1;
+        int BeforeDirectionNumber = 0; // 1:左 2:上 3:下
+        private bool JudgeCorrectDirection()
+        {
+            // 特に何も設定されていない場合はTrueで返す
+            if ((this.ShadowTileNumber == -1) && (this.BeforeDirectionNumber == 0))
+            {
+                return true;
+            }
+
+            // 左指示に対して、前回の位置から１歩左ならTrueで返す
+            if (this.BeforeDirectionNumber == 1)
+            {
+                if ((GetTileNumber(this.Player.transform.position) + 1) == this.ShadowTileNumber)
+                {
+                    return true;
+                }
+            }
+            // 上指示に対して、前回の位置から１歩上ならTrueで返す
+            else if (this.BeforeDirectionNumber == 2)
+            {
+                if ((GetTileNumber(this.Player.transform.position) - 1 * Database.TRUTH_DUNGEON_COLUMN) == this.ShadowTileNumber)
+                {
+                    return true;
+                }
+            }
+            // 下指示に対して、前回の位置から１歩下ならTrueで返す
+            else if (this.BeforeDirectionNumber == 3)
+            {
+                if ((GetTileNumber(this.Player.transform.position) + 1 * Database.TRUTH_DUNGEON_COLUMN) == this.ShadowTileNumber)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void ReturnToNormal()
         {
-            //this.BackColor = Color.RoyalBlue; // [todo] 背景を標準色に戻す
+            //this.BackColor = Color.RoyalBlue; // todo 背景を標準色に戻す
         }
 
         private void TurnToBlack()
         {
-            //this.BackColor = Color.Black; // [todo] 背景を黒色に変更する。
+            //this.BackColor = Color.Black; // todo 背景を黒色に変更する。
         }
 
         private void CopyShadowToMain()
@@ -8276,6 +8314,11 @@ namespace DungeonPlayer
                     //    }
                     //}            
                 }
+                else if (currentEvent == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
+                {
+                    Method.GetItemFullCheck(this, GroundOne.MC, this.nowMessage[this.nowReading]);
+                    this.nowMessage[this.nowReading] = "";
+                }
                 else if (currentEvent == MessagePack.ActionEvent.BlueOpenTop)
                 {
                     OpenTheDoor(0, this.Player.transform.position);
@@ -8349,6 +8392,50 @@ namespace DungeonPlayer
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
 
                     OpenTheDoor(2, this.Player.transform.position);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2CenterOpen)
+                {
+                    OpenTheDoor(3, new Vector3(33, -17, 0));
+                    OpenTheDoor(0, new Vector3(33, -18, 0));
+
+                    OpenTheDoor(3, new Vector3(25, -20, 0));
+                    OpenTheDoor(0, new Vector3(25, -21, 0));
+
+                    OpenTheDoor(2, new Vector3(30, -23, 0));
+                    OpenTheDoor(1, new Vector3(31, -23, 0));
+
+                    OpenTheDoor(2, new Vector3(27, -15, 0));
+                    OpenTheDoor(1, new Vector3(28, -15, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomOpen1)
+                {
+                    OpenTheDoor(1, new Vector3(50, -17, 0));
+                    OpenTheDoor(2, new Vector3(49, -17, 0));
+
+                    OpenTheDoor(3, new Vector3(42, -2, 0));
+                    OpenTheDoor(0, new Vector3(42, -3, 0));
+
+                    OpenTheDoor(3, new Vector3(46, -7, 0));
+                    OpenTheDoor(0, new Vector3(46, -8, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomOpen2)
+                {
+                    OpenTheDoor(3, new Vector3(38, -7, 0));
+                    OpenTheDoor(0, new Vector3(38, -8, 0));
+
+                    OpenTheDoor(1, new Vector3(50, -11, 0));
+                    OpenTheDoor(2, new Vector3(49, -11, 0));
+
+                    OpenTheDoor(1, new Vector3(59, -14, 0));
+                    OpenTheDoor(2, new Vector3(58, -14, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomOpen3)
+                {
+                    OpenTheDoor(1, new Vector3(47, -15, 0));
+                    OpenTheDoor(2, new Vector3(46, -15, 0));
+
+                    OpenTheDoor(1, new Vector3(50, -2, 0));
+                    OpenTheDoor(2, new Vector3(49, -2, 0));
                 }
                 else if (currentEvent == MessagePack.ActionEvent.TurnToBlack)
                 {

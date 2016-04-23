@@ -944,7 +944,7 @@ namespace DungeonPlayer
                 // 各イベント固有の処理
                 if (current == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
                 {
-                    GetItemFullCheck(GroundOne.MC, this.nowMessage[this.nowReading]);
+                    Method.GetItemFullCheck(this, GroundOne.MC, this.nowMessage[this.nowReading]);
                     this.nowMessage[this.nowReading] = "";
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownBlackOut)
@@ -2591,22 +2591,7 @@ namespace DungeonPlayer
             this.Filter.SetActive(true);
             SceneDimension.CallTruthSkillSpellDesc(this, player.FirstName, commandName);
         }
-
-        private void GetItemFullCheck(MainCharacter player, string itemName)
-        {
-            bool result = player.AddBackPack(new ItemBackPack(itemName));
-            if (result) return;
-
-            string cannotTrash = string.Empty;
-            if (itemName == Database.RARE_EARRING_OF_LANA ||
-                itemName == Database.RARE_TOOMI_BLUE_SUISYOU)
-            {
-                cannotTrash = itemName;
-            }
-            SceneDimension.CallTruthStatusPlayer(this, true, cannotTrash);
-            mainMessage.text = "";
-        }
-
+        
         private void DuelSupportMessage(SupportType type, string OpponentDuelist)
         {
             string KIINA = "受付嬢";
