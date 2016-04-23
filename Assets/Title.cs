@@ -37,6 +37,10 @@ namespace DungeonPlayer
 
         public void GameStart_Click()
         {
+            GroundOne.MC.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
+            GroundOne.MC.SubWeapon = new ItemBackPack(Database.POOR_PRACTICE_SHILED);
+            GroundOne.MC.MainArmor = new ItemBackPack(Database.POOR_COTE_OF_PLATE);
+
             SceneDimension.JumpToTruthHomeTown();
         }
 

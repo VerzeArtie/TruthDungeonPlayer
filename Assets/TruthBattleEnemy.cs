@@ -296,7 +296,6 @@ namespace DungeonPlayer
         List<MainCharacter> ActiveList = new List<MainCharacter>();
         private static System.Random rand = new System.Random(DateTime.Now.Millisecond * System.Environment.TickCount);
 
-        int TIMER_SPEED = 3;
 
         int MAX_ITEM_GAUGE = 1000;
         int currentItemGauge = 0;
@@ -624,7 +623,7 @@ namespace DungeonPlayer
             }
             else
             {
-                System.Threading.Thread.Sleep(TIMER_SPEED);
+                System.Threading.Thread.Sleep(Database.BATTLE_CORE_SLEEP);
             }
             #region "キー制御"
             bool detectShift = false;
@@ -7098,12 +7097,46 @@ namespace DungeonPlayer
             if (GroundOne.DuelMode)
             {
                 txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは降参を宣言した。\r\n");
+                System.Threading.Thread.Sleep(1000);
+                GroundOne.BattleResult = GroundOne.battleResult.Abort;
+                GroundOne.StopDungeonMusic();
+                SceneDimension.Back(this);
+                return;
             }
-            else
+
+            if (GroundOne.MC.CurrentStunning > 0 || GroundOne.MC.CurrentFrozen > 0 || GroundOne.MC.CurrentParalyze > 0)
             {
-                txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは逃げ出した。\r\n");
+                UpdateBattleText("アインは今逃げられない状態に居る。\r\n");
+                return;
             }
-            // System.Threading.Thread.Sleep(1000);
+
+            if (((GroundOne.MC.Level - this.ec1.Level <= -5) && AP.Math.RandomInteger(100) < 95) ||
+                ((GroundOne.MC.Level - this.ec1.Level == -4) && AP.Math.RandomInteger(100) < 90) ||
+                ((GroundOne.MC.Level - this.ec1.Level == -3) && AP.Math.RandomInteger(100) < 80) ||
+                ((GroundOne.MC.Level - this.ec1.Level == -2) && AP.Math.RandomInteger(100) < 70) ||
+                ((GroundOne.MC.Level - this.ec1.Level == -1) && AP.Math.RandomInteger(100) < 70) ||
+                ((GroundOne.MC.Level - this.ec1.Level == 0) && AP.Math.RandomInteger(100) < 50) ||
+                ((GroundOne.MC.Level - this.ec1.Level == 1) && AP.Math.RandomInteger(100) < 40) ||
+                ((GroundOne.MC.Level - this.ec1.Level == 2) && AP.Math.RandomInteger(100) < 30) ||
+                ((GroundOne.MC.Level - this.ec1.Level == 3) && AP.Math.RandomInteger(100) < 20) ||
+                ((GroundOne.MC.Level - this.ec1.Level == 4) && AP.Math.RandomInteger(100) < 10) ||
+                ((GroundOne.MC.Level - this.ec1.Level >= 5) && AP.Math.RandomInteger(100) < 5)
+                )
+            {
+                UpdateBattleText("逃げようとして、敵に追いつかれた！　パーティ全員にスタン効果が発生！\r\n");
+                List<MainCharacter> group = new List<MainCharacter>();
+                if ((GroundOne.MC != null) && (!GroundOne.MC.Dead)) { group.Add(GroundOne.MC); }
+                if ((GroundOne.SC != null) && (!GroundOne.SC.Dead)) { group.Add(GroundOne.SC); }
+                if ((GroundOne.TC != null) && (!GroundOne.TC.Dead)) { group.Add(GroundOne.TC); }
+                for (int ii = 0; ii < group.Count; ii++)
+                {
+                    NowStunning(group[ii], group[ii], 2);
+                }
+                return;
+            }
+
+            txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは逃げ出した。\r\n");
+            System.Threading.Thread.Sleep(1000);
             GroundOne.BattleResult = GroundOne.battleResult.Abort;
             GroundOne.StopDungeonMusic();
             SceneDimension.Back(this);
@@ -7164,11 +7197,11 @@ namespace DungeonPlayer
             }
             
             int waitTime = 60;
-            if (TIMER_SPEED == 40) waitTime = 150;
-            else if (TIMER_SPEED == 20) waitTime = 90;
-            else if (TIMER_SPEED == 10) waitTime = 60;
-            else if (TIMER_SPEED == 5) waitTime = 40;
-            else if (TIMER_SPEED == 2) waitTime = 20;
+            if (Database.BATTLE_CORE_SLEEP == 40) waitTime = 150;
+            else if (Database.BATTLE_CORE_SLEEP == 20) waitTime = 90;
+            else if (Database.BATTLE_CORE_SLEEP == 10) waitTime = 60;
+            else if (Database.BATTLE_CORE_SLEEP == 5) waitTime = 40;
+            else if (Database.BATTLE_CORE_SLEEP == 2) waitTime = 20;
             if (this.HiSpeedAnimation) { waitTime = waitTime / 2; }
             if (this.nowAnimationInterval[0] > 0) waitTime = this.nowAnimationInterval[0];
 
@@ -7881,43 +7914,43 @@ namespace DungeonPlayer
             switch ((int)(sender.value))
             {
                 case 1:
-                    TIMER_SPEED = 40;
+                    Database.BATTLE_CORE_SLEEP = 40;
                     TimeSpeedLabel.text = "時間速度 x0.25";
                     break;
                 case 2:
-                    TIMER_SPEED = 30;
+                    Database.BATTLE_CORE_SLEEP = 30;
                     TimeSpeedLabel.text = "時間速度 x0.37";
                     break;
                 case 3:
-                    TIMER_SPEED = 20;
+                    Database.BATTLE_CORE_SLEEP = 20;
                     TimeSpeedLabel.text = "時間速度 x0.50";
                     break;
                 case 4:
-                    TIMER_SPEED = 15;
+                    Database.BATTLE_CORE_SLEEP = 15;
                     TimeSpeedLabel.text = "時間速度 x0.75";
                     break;
                 case 5:
-                    TIMER_SPEED = 10;
+                    Database.BATTLE_CORE_SLEEP = 10;
                     TimeSpeedLabel.text = "時間速度 x1.00";
                     break;
                 case 6:
-                    TIMER_SPEED = 8;
+                    Database.BATTLE_CORE_SLEEP = 8;
                     TimeSpeedLabel.text = "時間速度 x1.50";
                     break;
                 case 7:
-                    TIMER_SPEED = 5;
+                    Database.BATTLE_CORE_SLEEP = 5;
                     TimeSpeedLabel.text = "時間速度 x2.00";
                     break;
                 case 8:
-                    TIMER_SPEED = 3;
+                    Database.BATTLE_CORE_SLEEP = 3;
                     TimeSpeedLabel.text = "時間速度 x3.00";
                     break;
                 case 9:
-                    TIMER_SPEED = 2;
+                    Database.BATTLE_CORE_SLEEP = 2;
                     TimeSpeedLabel.text = "時間速度 x4.00";
                     break;
                 default:
-                    TIMER_SPEED = 10;
+                    Database.BATTLE_CORE_SLEEP = 10;
                     TimeSpeedLabel.text = "時間速度 x1.00";
                     break;
             }

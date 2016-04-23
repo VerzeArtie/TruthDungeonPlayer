@@ -131,9 +131,11 @@ namespace DungeonPlayer
 
         // TruthDuelPlayerStatus
         public static string DuelPlayerName;
-
-        public static void ReInitializeGroundOne()
+        
+        public static void ReInitializeGroundOne(bool FromGameLoad)
         {
+            Debug.Log("ReInitializeGroundOne (S)");
+
             GameObject.DestroyObject(MC);
             MC = null;
             GameObject.DestroyObject(SC);
@@ -164,38 +166,46 @@ namespace DungeonPlayer
             shadowWE = null;
             GameObject.DestroyObject(shadowWE2);
             shadowWE2 = null;
-            GameObject.DestroyObject(sound);
-            GameObject.DestroyObject(soundSource);
-            sound = null;
-            soundSource = null;
-            GameObject.DestroyObject(bgm);
-            GameObject.DestroyObject(bgmSource);
-            bgm = null;
-            bgmSource = null;
+            if (FromGameLoad == false)
+            {
+                Parent.Clear();
+                GameObject.DestroyObject(sound);
+                GameObject.DestroyObject(soundSource);
+                sound = null;
+                soundSource = null;
+                GameObject.DestroyObject(bgm);
+                GameObject.DestroyObject(bgmSource);
+                bgm = null;
+                bgmSource = null;
+            }
             Truth_KnownTileInfo = null;
             AlreadyInitialize = false;
-            InitializeGroundOne();
+            InitializeGroundOne(FromGameLoad);
         }
 
-        public static bool InitializeGroundOne()
+        public static bool InitializeGroundOne(bool FromGameLoad)
         {
             Debug.Log("InitializeGroundOne start");
 
             if (AlreadyInitialize == false) { AlreadyInitialize = true; }
             else { Debug.Log("already initialize"); return false; }
 
-            Parent = new List<MotherForm>();
             objMC = new GameObject("objMC");
             objSC = new GameObject("objSC");
             objTC = new GameObject("objTC");
             objWE = new GameObject("objWE");
             objWE2 = new GameObject("objWE2");
-            sound = new GameObject("sound");
-            soundSource = sound.AddComponent<AudioSource>();
-            bgm = new GameObject("bgm");
-            bgmSource = bgm.AddComponent<AudioSource>();
 
-            GroundOne.Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
+            if (FromGameLoad == false)
+            {
+                Parent = new List<MotherForm>();
+                sound = new GameObject("sound");
+                soundSource = sound.AddComponent<AudioSource>();
+                bgm = new GameObject("bgm");
+                bgmSource = bgm.AddComponent<AudioSource>();
+            }
+
+            Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
             WE = objWE.AddComponent<WorldEnvironment>();
             WE.DungeonArea = 1;
             WE.AvailableFirstCharacter = true;

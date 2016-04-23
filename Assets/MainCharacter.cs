@@ -7253,14 +7253,16 @@ namespace DungeonPlayer
                     // e 後編追加
                 }
 
-                if (this.level < 35)
-                {
-                    return nextValue / 4; // ハードモードの場合、２
-                }
-                else
-                {
-                    return nextValue / 2; // ハードモードの場合、１
-                }
+                // omega
+                //if (this.level < 35)
+                //{
+                //    return nextValue / 4; // ハードモードの場合、２
+                //}
+                //else
+                //{
+                //    return nextValue / 2; // ハードモードの場合、１
+                //}
+                return nextValue;
             }
         }
         

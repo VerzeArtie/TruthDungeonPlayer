@@ -27,7 +27,7 @@ namespace DungeonPlayer
 
         public static void JumpToTitle()
         {
-            GroundOne.ReInitializeGroundOne();
+            GroundOne.ReInitializeGroundOne(false);
             GroundOne.StopDungeonMusic();
             Application.LoadLevel(Database.Title);
             GroundOne.Parent.Clear();

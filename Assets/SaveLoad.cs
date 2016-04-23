@@ -935,6 +935,8 @@ namespace DungeonPlayer
             if (this.nowAutoKill) { return; }
             Debug.Log("ExecLoad 0 " + DateTime.Now);
 
+            GroundOne.ReInitializeGroundOne(true);
+
             XmlDocument xml = new XmlDocument();
             DateTime now = DateTime.Now;
             string yearData = String.Empty;
@@ -1115,10 +1117,6 @@ namespace DungeonPlayer
             //}
 
             // s 後編編集
-
-            if (GroundOne.MC != null) { GroundOne.MC.DeleteBackPackAll(); }
-            if (GroundOne.SC != null) { GroundOne.SC.DeleteBackPackAll(); }
-            if (GroundOne.TC != null) { GroundOne.TC.DeleteBackPackAll(); }
 
             for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
             {
@@ -1455,12 +1453,15 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            Debug.Log("tapExit (S)");
+
             if (this.systemMessage.text == this.MESSAGE_1 || this.systemMessage.text == this.MESSAGE_2)
             {
                 HideAllChild();
             }
             else if (this.nowAutoKill)
             {
+                Debug.Log("tapExit auto kill: " + GroundOne.Parent.Count);
                 if (GroundOne.Parent.Count > 0)
                 {
                     GroundOne.Parent[GroundOne.Parent.Count - 1].NextScene();

@@ -4477,14 +4477,14 @@ namespace DungeonPlayer
                     this.baseIntelligence = 1;
                     this.baseStamina = 1;
                     this.baseMind = 1;
-                    this.baseLife = 45;
+                    this.baseLife = 8;
                     this.experience = 102;
-                    this.level = 1;
+                    this.level = 3;
                     this.gold = 44;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
-                    this.DropItem[0] = "ワームの甲殻";
+                    this.DropItem[0] = Database.COMMON_WARM_NO_KOUKAKU;
                     break;
                 case Database.ENEMY_HIYOWA_BEATLE:
                     this.baseStrength = 6;
@@ -4492,14 +4492,14 @@ namespace DungeonPlayer
                     this.baseIntelligence = 1;
                     this.baseStamina = 1;
                     this.baseMind = 1;
-                    this.baseLife = 40;
+                    this.baseLife = 5;
                     this.experience = 109;
-                    this.level = 1;
+                    this.level = 3;
                     this.gold = 47;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
-                    this.DropItem[0] = "ビートルの尖った角";
+                    this.DropItem[0] = Database.COMMON_BEATLE_TOGATTA_TUNO;
                     break;
                 case Database.ENEMY_GREEN_CHILD:
                     this.baseStrength = 5;
@@ -4507,14 +4507,14 @@ namespace DungeonPlayer
                     this.baseIntelligence = 12;
                     this.baseStamina = 1;
                     this.baseMind = 1;
-                    this.baseLife = 30;
+                    this.baseLife = 2;
                     this.experience = 126;
-                    this.level = 1;
+                    this.level = 3;
                     this.gold = 54;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
-                    this.DropItem[0] = "緑化色素";
+                    this.DropItem[0] = Database.COMMON_GREEN_SIKISO;
                     break;
                 case Database.ENEMY_MANDRAGORA:
                     this.baseStrength = 16;
@@ -4523,12 +4523,12 @@ namespace DungeonPlayer
                     this.baseStamina = 14;
                     this.baseLife = 0;
                     this.experience = 215;
-                    this.level = 4;
+                    this.level = 7;
                     this.gold = 92;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
-                    this.DropItem[0] = "マンドラゴラの根";
+                    this.DropItem[0] = Database.COMMON_MANDORAGORA_ROOT;
                     break;
                 #endregion
 
@@ -4541,7 +4541,7 @@ namespace DungeonPlayer
                     this.baseStamina = 12;
                     this.baseMind = 14;
                     this.experience = 172;
-                    this.level = 6;
+                    this.level = 9;
                     this.gold = 64;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
@@ -4555,7 +4555,7 @@ namespace DungeonPlayer
                     this.baseStamina = 8;
                     this.baseMind = 3;
                     this.experience = 186;
-                    this.level = 6;
+                    this.level = 9;
                     this.gold = 70;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Regist_Physical;
@@ -4568,7 +4568,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 11;
                     this.baseStamina = 15;
                     this.experience = 198;
-                    this.level = 6;
+                    this.level = 9;
                     this.gold = 75;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
@@ -4581,7 +4581,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 38;
                     this.baseStamina = 25;
                     this.experience = 337;
-                    this.level = 9;
+                    this.level = 12;
                     this.gold = 116;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -4595,7 +4595,7 @@ namespace DungeonPlayer
                     this.baseStamina = 39;
                     this.baseMind = 40;
                     this.experience = 506;
-                    this.level = 13;
+                    this.level = 16;
                     this.gold = 209;
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
@@ -6730,18 +6730,19 @@ namespace DungeonPlayer
                 this.baseMana = 80 + (this.level - 1) * 15;
             }
 
-            float powerValue = 1.0f;
-            if (GroundOne.Difficulty == 1)
-            {
-                powerValue = 0.75f;
-            }
-            this.baseStrength = ((int)((float)this.baseStrength * powerValue)); if (this.baseStrength <= 1) this.baseStrength = 1;
-            this.baseAgility = ((int)((float)this.baseAgility * powerValue)); if (this.baseAgility <= 1) this.baseAgility = 1;
-            this.baseIntelligence = ((int)((float)this.baseIntelligence * powerValue)); if (this.baseIntelligence <= 1) this.baseIntelligence = 1;
-            this.baseStamina = ((int)((float)this.baseStamina * powerValue)); if (this.baseStamina <= 1) this.baseStamina = 1;
-            this.baseMind = ((int)((float)this.baseMind * powerValue)); if (this.baseMind <= 1) this.baseMind = 1;
-            this.baseLife = ((int)((float)this.baseLife * powerValue)); if (this.baseLife <= 1) this.baseLife = 1;
-            this.baseMana = ((int)((float)this.baseMana * powerValue)); if (this.baseMana <= 1) this.baseMana = 1;
+            // omega
+            //float powerValue = 1.0f;
+            //if (GroundOne.Difficulty == 1)
+            //{
+            //    powerValue = 0.75f;
+            //}
+            //this.baseStrength = ((int)((float)this.baseStrength * powerValue)); if (this.baseStrength <= 1) this.baseStrength = 1;
+            //this.baseAgility = ((int)((float)this.baseAgility * powerValue)); if (this.baseAgility <= 1) this.baseAgility = 1;
+            //this.baseIntelligence = ((int)((float)this.baseIntelligence * powerValue)); if (this.baseIntelligence <= 1) this.baseIntelligence = 1;
+            //this.baseStamina = ((int)((float)this.baseStamina * powerValue)); if (this.baseStamina <= 1) this.baseStamina = 1;
+            //this.baseMind = ((int)((float)this.baseMind * powerValue)); if (this.baseMind <= 1) this.baseMind = 1;
+            //this.baseLife = ((int)((float)this.baseLife * powerValue)); if (this.baseLife <= 1) this.baseLife = 1;
+            //this.baseMana = ((int)((float)this.baseMana * powerValue)); if (this.baseMana <= 1) this.baseMana = 1;
 
             // c 後編編集
             // 後編からは敵もDUELで装備を持つようになります。

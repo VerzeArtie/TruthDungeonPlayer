@@ -38,6 +38,7 @@ namespace DungeonPlayer
         public static int TOTAL_SPELL_NUM = 87; // 後編追加（42 + 45)
         public static int TOTAL_SKILL_NUM = 54; // 後編追加（24 + 30）
 
+        public static int BATTLE_CORE_SLEEP = 10;
         public static int BASE_TIMER_BAR_LENGTH = 500;
 
         public static int TIMEUP_FIRST_RESPONSE = 600; // 後編追加
@@ -2577,10 +2578,10 @@ namespace DungeonPlayer
         public const string BUFF_CHAOTIC_SCHEMA = @"カオス分身";
 
         // 素材判別文字
-        public const string DESCRIPTION_SELL_ONLY = @"【売却専用品】\r\n";
-        public const string DESCRIPTION_EQUIP_MATERIAL = @"【武具素材】\r\n";
-        public const string DESCRIPTION_POTION_MATERIAL = @"【ポーション素材】\r\n";
-        public const string DESCRIPTION_FOOD_MATERIAL = @"【食材】\r\n";
+        public const string DESCRIPTION_SELL_ONLY = @"【売却専用品】" + "\r\n";
+        public const string DESCRIPTION_EQUIP_MATERIAL = @"【武具素材】" + "\r\n";
+        public const string DESCRIPTION_POTION_MATERIAL = @"【ポーション素材】" + "\r\n";
+        public const string DESCRIPTION_FOOD_MATERIAL = @"【食材】" + "\r\n";
 
         public const string MUGEN_LOOP = @"９８３２６";
 

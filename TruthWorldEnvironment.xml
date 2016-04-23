@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Body><DateTime>4/21/2016 9:16:09 PM</DateTime>
+<Body><DateTime>4/24/2016 12:50:36 AM</DateTime>
 <TruthWorldEnvironment>
 <SeekerEnd>False</SeekerEnd>
 <SeekerEndingRoll>False</SeekerEndingRoll>
@@ -204,9 +204,9 @@
 <TruthBadEnd4>False</TruthBadEnd4>
 <TruthBadEnd3>False</TruthBadEnd3>
 <TruthBadEnd2>False</TruthBadEnd2>
-<TruthBadEnd1>True</TruthBadEnd1>
+<TruthBadEnd1>False</TruthBadEnd1>
 <EquipMaterial_11>0</EquipMaterial_11>
-<EquipMaterial_12>0</EquipMaterial_12>
+<EquipMaterial_12>1</EquipMaterial_12>
 <EquipMaterial_13>0</EquipMaterial_13>
 <EquipMaterial_14>0</EquipMaterial_14>
 <EquipMaterial_15>0</EquipMaterial_15>
@@ -256,7 +256,7 @@
 <EquipMaterial_417>0</EquipMaterial_417>
 <EquipMaterial_418>0</EquipMaterial_418>
 <EquipMaterial_419>0</EquipMaterial_419>
-<PotionMaterial_11>0</PotionMaterial_11>
+<PotionMaterial_11>1</PotionMaterial_11>
 <PotionMaterial_12>0</PotionMaterial_12>
 <PotionMaterial_13>0</PotionMaterial_13>
 <PotionMaterial_14>0</PotionMaterial_14>

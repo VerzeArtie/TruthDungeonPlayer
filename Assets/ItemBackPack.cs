@@ -603,7 +603,7 @@ namespace DungeonPlayer
                 // e 後編編集
 
                 case "練習用の剣": // アイン初期装備
-                    description = "初めてダンジョンに訪れる者のために作られた剣。攻撃力１～３";
+                    description = "初心者向けの剣。威力はほとんどなく、剣を振る練習に向いている。攻撃力１～３";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 3;
                     cost = 100;
@@ -1005,8 +1005,8 @@ namespace DungeonPlayer
                 // s 後編追加
                 case Database.POOR_PRACTICE_SHILED: // アイン初期装備（後編）
                     description = "初心者向けの盾。軽くて持ちやすいが耐久性は無い。防御力１～１";
-                    PhysicalAttackMinValue = 1;
-                    PhysicalAttackMaxValue = 1;
+                    PhysicalDefenseMinValue = 1;
+                    PhysicalDefenseMaxValue = 1;
                     cost = 100;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Poor;

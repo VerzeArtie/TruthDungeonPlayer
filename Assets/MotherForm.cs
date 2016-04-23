@@ -17,7 +17,7 @@ namespace DungeonPlayer
 
         public virtual void Start()
         {
-            GroundOne.InitializeGroundOne();
+            GroundOne.InitializeGroundOne(false);
         }
 
         public virtual void Update()

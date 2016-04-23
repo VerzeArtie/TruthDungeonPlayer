@@ -491,6 +491,7 @@ namespace DungeonPlayer
                 (sender.text != ""))
             {
                 this.SelectValue = sender.text;
+                tapOK();
             }
         }
         public void tapOK()

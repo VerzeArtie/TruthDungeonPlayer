@@ -2435,7 +2435,7 @@ namespace DungeonPlayer
                     monsterName[1] = Database.ENEMY_HIYOWA_BEATLE;
                     monsterName[2] = Database.ENEMY_GREEN_CHILD;
 
-                    if (GroundOne.MC.Level <= 2)
+                    if (GroundOne.MC.Level <= 3)
                     {
                         monsterName[3] = monsterName[2];
                     }
