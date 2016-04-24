@@ -224,7 +224,7 @@ namespace DungeonPlayer
                         AnimationDamage(0, player, 0, Color.black, false, false, Database.MISS_ACTION);
                         player.CurrentPreStunning = 0;
                         player.DeBuff(player.pbPreStunning);
-                        NowStunning(player, player, 2);
+                        NowStunning(player, player, 2, false);
                         return;
                     }
                 }
@@ -850,7 +850,7 @@ namespace DungeonPlayer
                                 case 2:
                                     for (int ii = 0; ii < groupEnemy.Count; ii++)
                                     {
-                                        NowStunning(player, groupEnemy[ii], 2);
+                                        NowStunning(player, groupEnemy[ii], 2, false);
                                     }
                                     break;
                                 case 3:
@@ -1444,7 +1444,7 @@ namespace DungeonPlayer
                                     if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
                                     {
                                         // 単体スタン
-                                        NowStunning(player, target, 1);
+                                        NowStunning(player, target, 1, false);
                                     }
                                 }
                                 break;
@@ -1494,7 +1494,7 @@ namespace DungeonPlayer
                                     if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
                                     {
                                         // 単体スタン
-                                        NowStunning(player, target, 1);
+                                        NowStunning(player, target, 1, false);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "ダブル・ハサミ")
@@ -1581,7 +1581,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は８つの足をグルリと回し、絡ませてきた！\r\n");
                                     NowBlind(player, target, 2);
                                     NowSlow(player, target, 4);
-                                    NowStunning(player, target, 2);
+                                    NowStunning(player, target, 2, false);
 
                                     PlayerNormalAttack(player, target, 0.0f, false, false);
                                 }
@@ -1845,7 +1845,7 @@ namespace DungeonPlayer
 
                                     if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
                                     {
-                                        NowStunning(player, player.StackTarget, 1);
+                                        NowStunning(player, player.StackTarget, 1, false);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "スターソード『煌』")
@@ -1875,7 +1875,7 @@ namespace DungeonPlayer
 
                                     if (PlayerNormalAttack(player, player.StackTarget, 0, false, false))
                                     {
-                                        NowStunning(player, player.StackTarget, 1);
+                                        NowStunning(player, player.StackTarget, 1, false);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "スターソード『艶』")
@@ -1975,7 +1975,7 @@ namespace DungeonPlayer
                                     if (PlayerNormalAttack(player, group[tempRandom], 0, false, false))
                                     {
                                         NowSlip(player, group[tempRandom], 10);
-                                        NowStunning(player, group[tempRandom], 1);
+                                        NowStunning(player, group[tempRandom], 1, false);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "大激衝")
@@ -2182,7 +2182,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "の鋭い剣形状の爪が襲いかかってくる！\r\n");
                                     if (PlayerNormalAttack(player, target, 0, false, false))
                                     {
-                                        NowStunning(player, target, 2);
+                                        NowStunning(player, target, 2, false);
                                         NowSlip(player, target, 10);
                                     }
                                 }
@@ -2229,7 +2229,7 @@ namespace DungeonPlayer
                                     {
                                         if (PlayerNormalAttack(player, group[ii], 0, false, false))
                                         {
-                                            NowStunning(player, group[ii], 2);
+                                            NowStunning(player, group[ii], 2, false);
                                         }
                                     }
                                 }
@@ -2527,7 +2527,7 @@ namespace DungeonPlayer
                                                     NowParalyze(player, current, 2);
                                                     break;
                                                 case 1:
-                                                    NowStunning(player, current, 2);
+                                                    NowStunning(player, current, 2, false);
                                                     break;
                                                 case 2:
                                                     NowFrozen(player, current, 2);
@@ -2757,7 +2757,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "のタイガー・ブロウが炸裂！！\r\n");
                                     if (PlayerNormalAttack(player, target, 4, 0, false, false, 0, 0, string.Empty, -1, false, CriticalType.None))
                                     {
-                                        NowStunning(player, target, 2);
+                                        NowStunning(player, target, 2, false);
                                     }
 
                                     player.CurrentPhysicalAttackUp = 0;
@@ -2786,7 +2786,7 @@ namespace DungeonPlayer
                                         else if (rand == 6) { NowSilence(player, current, 999); }
                                         else if (rand == 7) { NowSlip(player, current, 999); }
                                         else if (rand == 8) { NowSlow(player, current, 2); }
-                                        else if (rand == 9) { NowStunning(player, current, 2); }
+                                        else if (rand == 9) { NowStunning(player, current, 2, false); }
                                         else if (rand == 10) { NowTemptation(player, current, 2); }
                                     }
                                 }
@@ -3444,7 +3444,7 @@ namespace DungeonPlayer
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     if (PlayerNormalAttack(player, current, 4.0F, 0, false, false, 0, 0, Database.SOUND_KINETIC_SMASH, -1, false, CriticalType.Absolute))
                                     {
-                                        NowStunning(player, current, 3);
+                                        NowStunning(player, current, 3, false);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "安らかな死別")
@@ -3757,7 +3757,7 @@ namespace DungeonPlayer
                                         if (AbstractMagicDamage(player, group[ii], 0, 0, 0, Database.SOUND_FLAME_STRIKE, 120, TruthActionCommand.MagicType.Fire_Ice, false, CriticalType.None))
                                         {
                                             NowPreStunning(group[ii], 1);
-                                            NowStunning(player, group[ii], 1);
+                                            NowStunning(player, group[ii], 1, false);
                                         }
                                     }
                                 }
@@ -3912,7 +3912,7 @@ namespace DungeonPlayer
                                                     NowParalyze(player, current, 2);
                                                     break;
                                                 case 1:
-                                                    NowStunning(player, current, 2);
+                                                    NowStunning(player, current, 2, false);
                                                     break;
                                                 case 2:
                                                     NowFrozen(player, current, 2);
@@ -5221,21 +5221,19 @@ namespace DungeonPlayer
             //target.DeadPlayer();
         }
 
-        private void NowStunning(MainCharacter player, MainCharacter target, int effectTime)
+        private void NowStunning(MainCharacter player, MainCharacter target, int effectTime, bool forceStun)
         {
             if (target.Dead)
             {
                 // 何もしない
             }
-            else if (target.CurrentReflexSpirit > 0)
+            else if (target.CurrentReflexSpirit > 0 && !forceStun)
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_STUN);
                 target.RemoveReflexSpirit();
                 // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeStunはtrueにしない。
             }
-            else if ((target.CheckResistStun) ||
-                     (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)) ||
-                     (CheckResistWithItem(target, Database.POOR_JUNK_TARISMAN_STUN)))
+            else if ((target.CheckResistStun ||CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT) || CheckResistWithItem(target, Database.POOR_JUNK_TARISMAN_STUN)) && !forceStun)
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_STUN);
                 if (player.GetType() == typeof(TruthEnemyCharacter))
@@ -5639,15 +5637,15 @@ namespace DungeonPlayer
         {
             if (GroundOne.MC != null && !GroundOne.MC.Dead)
             {
-                NowStunning(player, GroundOne.MC, 1);
+                NowStunning(player, GroundOne.MC, 1, false);
             }
             if (GroundOne.SC != null && !GroundOne.SC.Dead)
             {
-                NowStunning(player, GroundOne.SC, 1);
+                NowStunning(player, GroundOne.SC, 1, false);
             }
             if (GroundOne.TC != null && !GroundOne.TC.Dead)
             {
-                NowStunning(player, GroundOne.TC, 1);
+                NowStunning(player, GroundOne.TC, 1, false);
             }
         }
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Body><DateTime>4/24/2016 12:50:36 AM</DateTime>
+<Body><DateTime>4/24/2016 5:27:16 PM</DateTime>
 <TruthWorldEnvironment>
 <SeekerEnd>False</SeekerEnd>
 <SeekerEndingRoll>False</SeekerEndingRoll>
@@ -280,10 +280,10 @@
 <PotionMaterial_43>0</PotionMaterial_43>
 <PotionMaterial_44>0</PotionMaterial_44>
 <PotionMaterial_45>0</PotionMaterial_45>
-<FoodMaterial_11>0</FoodMaterial_11>
+<FoodMaterial_11>1</FoodMaterial_11>
 <FoodMaterial_12>0</FoodMaterial_12>
 <FoodMaterial_13>0</FoodMaterial_13>
-<FoodMaterial_14>0</FoodMaterial_14>
+<FoodMaterial_14>1</FoodMaterial_14>
 <FoodMaterial_21>0</FoodMaterial_21>
 <FoodMaterial_22>0</FoodMaterial_22>
 <FoodMaterial_23>0</FoodMaterial_23>
@@ -370,7 +370,7 @@
 <PotionMixtureDay_52>0</PotionMixtureDay_52>
 <PotionMixtureDay_53>0</PotionMixtureDay_53>
 <PotionMixtureDay_54>0</PotionMixtureDay_54>
-<FoodMixtureDay_11>0</FoodMixtureDay_11>
+<FoodMixtureDay_11>3</FoodMixtureDay_11>
 <FoodMixtureDay_12>0</FoodMixtureDay_12>
 <FoodMixtureDay_13>0</FoodMixtureDay_13>
 <FoodMixtureDay_21>0</FoodMixtureDay_21>

@@ -1272,6 +1272,9 @@ namespace DungeonPlayer
         public const string POOR_PRACTICE_SWORD = @"練習用の剣";
         public const string POOR_PRACTICE_SHILED = @"練習用の盾";
         public const string POOR_COTE_OF_PLATE = @"コート・オブ・プレート";
+        public const string POOR_PRACTICE_KNUCKLE = @"練習用のナックル";
+        public const string POOR_LIGHT_CROSS = @"軽めの舞踏衣";
+        public const string COMMON_SANGO_BRESLET = @"珊瑚のブレスレット";
         #endregion
 
         #region "１階"

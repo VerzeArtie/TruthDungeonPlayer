@@ -47,7 +47,7 @@ namespace DungeonPlayer
         }
 
         // basic parameter
-        public string FirstName = string.Empty;
+        protected string firstName = string.Empty;
         protected string fullName = string.Empty;
         protected int baseStrength = 1;
         protected int baseAgility = 1;
@@ -84,6 +84,11 @@ namespace DungeonPlayer
         protected bool availableArchitect = false;
 
         // core parameter
+        public string FirstName
+        {
+            get { return firstName; }
+            set { firstName = value; }
+        }
         public string FullName
         {
             get { return fullName; }
@@ -2724,6 +2729,7 @@ namespace DungeonPlayer
         {
             get
             {
+                Debug.Log("PlayerColor name: " + this.FirstName);
                 if (this.FirstName == Database.EIN_WOLENCE) { return new Color(Database.COLOR_BOX_EIN_R, Database.COLOR_BOX_EIN_G, Database.COLOR_BOX_EIN_B); }
                 else if (this.FirstName == Database.RANA_AMILIA) { return new Color(Database.COLOR_RANA_R, Database.COLOR_RANA_G, Database.COLOR_RANA_B); }
                 else if (this.FirstName == Database.OL_LANDIS) { return new Color(Database.COLOR_BOX_OL_R, Database.COLOR_BOX_OL_G, Database.COLOR_BOX_OL_B); }
@@ -3049,6 +3055,13 @@ namespace DungeonPlayer
             //if (this.pbBuff1 != null) this.pbBuff1.Visible = false;
             //if (this.pbBuff2 != null) this.pbBuff2.Visible = false;
             //if (this.pbBuff3 != null) this.pbBuff3.Visible = false;
+        }
+
+        public void MaxGain()
+        {
+            this.currentLife = this.MaxLife;
+            this.currentMana = this.MaxMana;
+            this.currentSkillPoint = this.MaxSkillPoint;
         }
 
         public void DeadPlayer()

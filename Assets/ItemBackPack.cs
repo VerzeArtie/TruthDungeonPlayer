@@ -179,8 +179,6 @@ namespace DungeonPlayer
 
                 case Database.EPIC_GOLD_POTION:
                     description = "ライフ／マナ／スキルをすべて、全回復する。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Epic;
@@ -190,48 +188,41 @@ namespace DungeonPlayer
                 #region "前編：ダンジョン宝・ガンツ武具屋アイテム"
                 case "ブルーマテリアル": // １階アイテム
                     description = "純青色の立方体。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1000;
                     AdditionalDescription(ItemType.None);
                     rareLevel = RareLevel.Common;
                     limitValue = OTHER_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_CHARM_OF_FIRE_ANGEL: // １階アイテム
-                    description = "炎を司る業を背負った天使の護符。火耐性５";
-                    PhysicalAttackMinValue = 5;
-                    PhysicalAttackMaxValue = 5;
+                    description = "炎を司る業を背負った天使の護符。力＋３、体＋６、火耐性１５";
+                    ResistFire = 15;
+                    buffUpStrength = 3;
+                    BuffUpStamina = 6;
                     cost = 350;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Common;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "チャクラオーブ": // １階アイテム
-                    description = "精神チャクラを映し出すオーブ。知性＋５";
-                    PhysicalAttackMinValue = 5;
-                    PhysicalAttackMaxValue = 5;
-                    buffUpIntelligence = 5;
+                    description = "精神チャクラを映し出すオーブ。知＋５";
+                    BuffUpIntelligence = 5;
                     cost = 400;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Common;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "些細なパワーリング": // ガンツの武具屋販売（ダンジョン１階）
-                    description = "装着者のやる気を引き立たせるリング。腕力＋５";
-                    PhysicalAttackMinValue = 5;
-                    PhysicalAttackMaxValue = 5;
-                    buffUpStrength = 5;
+                    description = "装着者のやる気を引き立たせるリング。力＋５";
+                    BuffUpStrength = 5;
                     cost = 500;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Common;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "鷹の刻印": // ２階アイテム
-                    description = "鷹の姿が描かれている刻印。腕力＋１０　知性＋１０";
-                    PhysicalAttackMinValue = 10;
-                    PhysicalAttackMaxValue = 10;
-                    buffUpStrength = 10;
-                    buffUpIntelligence = 10;
+                    description = "鷹の姿が描かれている刻印。力＋１０　知＋１０";
+                    BuffUpStrength = 10;
+                    BuffUpIntelligence = 10;
                     cost = 2900;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Common;
@@ -239,8 +230,6 @@ namespace DungeonPlayer
                     break;
                 case "神聖水": // ２階アイテム
                     description = "約束された回復薬。毎日１度だけライフ、スキル、マナをそれぞれ30%回復。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 5200;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -256,9 +245,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "紺碧のスターエムブレム": // ガンツの武具屋販売（ダンジョン２階）
-                    description = "星型に紺碧のイメージを乗せたエムブレム。知性＋１０、心＋１０";
-                    PhysicalAttackMinValue = 10;
-                    PhysicalAttackMaxValue = 10;
+                    description = "星型に紺碧のイメージを乗せたエムブレム。知＋１０、心＋１０";
                     buffUpIntelligence = 10;
                     buffUpMind = 10;
                     cost = 2800;
@@ -267,10 +254,8 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "闘魂バンド": // ガンツの武具屋販売（ダンジョン２階）
-                    description = "装着者のやる気を引き立たせるバンド。腕力＋１８";
-                    PhysicalAttackMinValue = 18;
-                    PhysicalAttackMaxValue = 18;
-                    buffUpStrength = 18;
+                    description = "装着者のやる気を引き立たせるバンド。力＋１８";
+                    BuffUpStrength = 18;
                     cost = 4200;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Common;
@@ -278,17 +263,13 @@ namespace DungeonPlayer
                     break;
                 case "レッドマテリアル": // ３階アイテム
                     description = "純赤色の立方体。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 10000;
                     AdditionalDescription(ItemType.None);
                     rareLevel = RareLevel.Common;
                     limitValue = OTHER_ITEM_STACK_SIZE;
                     break;
                 case "ライオンハート": // ３階アイテム
-                    description = "百獣の王の力が宿されているペンダント。腕力＋２５、技術＋２５";
-                    PhysicalAttackMinValue = 25;
-                    PhysicalAttackMaxValue = 25;
+                    description = "百獣の王の力が宿されているペンダント。腕＋２５、技＋２５";
                     buffUpStrength = 25;
                     BuffUpAgility = 25;
                     cost = 5600;
@@ -297,9 +278,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "オーガの腕章": // ３階アイテム
-                    description = "オーガの体力が湧き出る腕章。腕力＋２０、体力＋１２";
-                    PhysicalAttackMinValue = 20;
-                    PhysicalAttackMaxValue = 12;
+                    description = "オーガの体力が湧き出る腕章。腕＋２０、体＋１２";
                     buffUpStrength = 20;
                     buffUpStamina = 12;
                     cost = 6600;
@@ -318,8 +297,6 @@ namespace DungeonPlayer
                     break;
                 case "ファラ様信仰のシール": // ３階アイテム
                     description = "王妃ファラ様への信仰（妄信）の証を示すシール。心＋５０";
-                    PhysicalAttackMinValue = 50;
-                    PhysicalAttackMaxValue = 50;
                     buffUpMind = 50;
                     cost = 7600;
                     AdditionalDescription(ItemType.Accessory);
@@ -328,8 +305,8 @@ namespace DungeonPlayer
                     break;
                 case "プレート・アーマー": // ３階アイテム
                     description = "強い鋼素材を元にして、折り目を無くすように作られた鎧。防御力２４～３１";
-                    PhysicalAttackMinValue = 24;
-                    PhysicalAttackMaxValue = 31;
+                    PhysicalDefenseMinValue = 24;
+                    PhysicalDefenseMaxValue = 31;
                     cost = 9600;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -337,8 +314,8 @@ namespace DungeonPlayer
                     break;
                 case "ラメラ・アーマー": // ３階アイテム
                     description = "薄めの鋼板を繋ぎ合わせ、着こなしの良さと貫通系に対する防御を両立させた鎧。防御力２１～２７";
-                    PhysicalAttackMinValue = 21;
-                    PhysicalAttackMaxValue = 27;
+                    PhysicalDefenseMinValue = 21;
+                    PhysicalDefenseMaxValue = 27;
                     cost = 8100;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -354,9 +331,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ウェルニッケの腕輪": // ガンツの武具屋販売（ダンジョン３階）
-                    description = "昆虫ウェルニッケの素材を使って生成された腕輪。体力＋２０";
-                    PhysicalAttackMinValue = 20;
-                    PhysicalAttackMaxValue = 20;
+                    description = "昆虫ウェルニッケの素材を使って生成された腕輪。体＋２０";
                     buffUpStamina = 20;
                     cost = 7200;
                     AdditionalDescription(ItemType.Accessory);
@@ -364,9 +339,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "賢者の眼鏡": // ガンツの武具屋販売（ダンジョン３階）
-                    description = "ヴァスタ爺から送られてきた貴重な一品。技＋３０、知力＋２５";
-                    PhysicalAttackMinValue = 30;
-                    PhysicalAttackMaxValue = 25;
+                    description = "ヴァスタ爺から送られてきた貴重な一品。技＋３０、知＋２５";
                     buffUpAgility = 30;
                     buffUpIntelligence = 25;
                     cost = 9500;
@@ -375,9 +348,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "七色プリズムバンド": // ガンツの武具屋販売（ダンジョン４階）
-                    description = "装着者の全体的な能力を引き出すために生成されたアクセサリ。全能力＋２０";
-                    PhysicalAttackMinValue = 20;
-                    PhysicalAttackMaxValue = 20;
+                    description = "装着者の全体的な能力を引き出すために生成されたアクセサリ。力＋２０、知＋２０、技＋２０、体＋２０、心＋２０";
                     buffUpStrength = 20;
                     buffUpAgility = 20;
                     buffUpIntelligence = 20;
@@ -390,8 +361,7 @@ namespace DungeonPlayer
                     break;
                 case "再生の紋章": // ガンツの武具屋販売（ダンジョン４階）
                     description = "装着者の生命線を引き出すアクセサリ。体＋４０、ターン終了時、ライフを幾ばくか回復する。";
-                    PhysicalAttackMinValue = 40; // 体力＋４０
-                    PhysicalAttackMaxValue = 7; // 自然回復７％
+                    // after 自然回復７％
                     buffUpStamina = 40;
                     information = "自然回復＋７％";
                     cost = 52000;
@@ -401,8 +371,7 @@ namespace DungeonPlayer
                     break;
                 case "シールオブアクア＆ファイア": // ガンツの武具屋販売（ダンジョン４階）
                     description = "【爽快！アクア＆ファイア】ジュースが発案の元となっているアクセサリ。　火耐性３０％、水耐性３０％";
-                    PhysicalAttackMinValue = 30;
-                    PhysicalAttackMaxValue = 30;
+                    // after
                     cost = 48000;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Common;
@@ -410,8 +379,6 @@ namespace DungeonPlayer
                     break;
                 case "ドラゴンのベルト": // ガンツの武具屋販売（ダンジョン４階）
                     description = "ドラゴンの鱗で生成されたベルト。　力＋３５、知＋４０";
-                    PhysicalAttackMinValue = 35;
-                    PhysicalAttackMaxValue = 40;
                     buffUpStrength = 35;
                     buffUpIntelligence = 40;
                     cost = 65000;
@@ -430,8 +397,6 @@ namespace DungeonPlayer
                     break;
                 case "グリーンマテリアル": // ダンジョン４階のアイテム
                     description = "純緑色の立方体。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 22000;
                     AdditionalDescription(ItemType.None);
                     rareLevel = RareLevel.Common;
@@ -439,8 +404,8 @@ namespace DungeonPlayer
                     break;
                 case "アヴォイド・クロス": // ダンジョン４階のアイテム
                     description = "戦闘中の回避を主眼において作成された舞踏衣。防御力２４～２９";
-                    PhysicalAttackMinValue = 24;
-                    PhysicalAttackMaxValue = 29;
+                    PhysicalDefenseMinValue = 24;
+                    PhysicalDefenseMaxValue = 29;
                     cost = 14000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -448,8 +413,8 @@ namespace DungeonPlayer
                     break;
                 case "ブリガンダィン": // ダンジョン４階のアイテム
                     description = "薄型軽装でかつ耐久性を高める金属片で縫われた鎧。防御力２６～３１";
-                    PhysicalAttackMinValue = 26;
-                    PhysicalAttackMaxValue = 31;
+                    PhysicalDefenseMinValue = 26;
+                    PhysicalDefenseMaxValue = 31;
                     cost = 11000;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Rare;
@@ -465,9 +430,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "夢見の印章": // ダンジョン４階のアイテム
-                    description = "空想力を養うために付けられるシール。 知力＋３５、心＋３０";
-                    PhysicalAttackMinValue = 35;
-                    PhysicalAttackMaxValue = 30;
+                    description = "空想力を養うために付けられるシール。 知＋３５、心＋３０";
                     buffUpIntelligence = 35;
                     buffUpMind = 30;
                     cost = 9400;
@@ -478,8 +441,7 @@ namespace DungeonPlayer
                 case "天使の契約書": // ダンジョン４階のアイテム
                     description = "天使の加護を得るための契約書。体＋５００";
                     description += "\r\n【常備能力】　ターン終了時、スタン/沈黙/猛毒/誘惑/凍結/麻痺/恐怖/鈍化/暗闇から即時復帰できる。"; // 後編編集（状態解除と体＋５００を追記）
-                    PhysicalAttackMinValue = 100;
-                    PhysicalAttackMaxValue = 100;
+                    // after
                     buffUpStamina = 500;
                     cost = 61000;
                     AdditionalDescription(ItemType.Accessory);
@@ -488,29 +450,27 @@ namespace DungeonPlayer
                     break;
                 case "ロリカ・セグメンタータ": // ダンジョン４階のアイテム
                     description = "強烈な打撃・殴打系に耐えられる鎧。防御力３５～３９";
-                    PhysicalAttackMinValue = 35;
-                    PhysicalAttackMaxValue = 39;
+                    PhysicalDefenseMinValue = 35;
+                    PhysicalDefenseMaxValue = 39;
                     cost = 13000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Rare;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
 
-                case "珊瑚のブレスレット": // ラナ初期装備
-                    description = "珊瑚の材質で作られたブレスレット。心＋２";
-                    PhysicalAttackMinValue = 2;
-                    PhysicalAttackMaxValue = 2;
+                case Database.COMMON_SANGO_BRESLET: // ラナ初期装備
+                    description = "珊瑚の材質で作られたブレスレット。知＋２、体＋２、心＋２";
+                    buffUpIntelligence = 2;
+                    buffUpStamina = 2;
                     buffUpMind = 2;
                     cost = 100;
                     AdditionalDescription(ItemType.Accessory);
                     equipablePerson = Equipable.Lana;
-                    rareLevel = RareLevel.Poor;
+                    rareLevel = RareLevel.Common;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "天空の翼（レプリカ）": // ヴェルゼ初期装備
-                    description = "ヴェルゼが疾風の動きを得るために自前で作成したレプリカ。技術＋５０";
-                    PhysicalAttackMinValue = 50;
-                    PhysicalAttackMaxValue = 50;
+                    description = "ヴェルゼが疾風の動きを得るために自前で作成したレプリカ。技＋５０";
                     BuffUpAgility = 50;
                     cost = 0;
                     AdditionalDescription(ItemType.Accessory);
@@ -521,8 +481,6 @@ namespace DungeonPlayer
 
                 case "遠見の青水晶": // 初期ラナ会話イベントで入手アイテム
                     description = "ダンジョン離脱する事ができる青水晶。何度使っても無くならない。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     AdditionalDescription(ItemType.Use_BlueOrb);
                     rareLevel = RareLevel.Rare;
@@ -531,8 +489,6 @@ namespace DungeonPlayer
 
                 case "剣紋章ペンダント": // ラナレベルアップ時でもらえるアイテム
                     description = "ラナが徹夜で製作した剣の紋章が入ったペンダント。力＋１５、心＋１５";
-                    PhysicalAttackMinValue = 15;
-                    PhysicalAttackMaxValue = 15;
                     buffUpStrength = 15;
                     buffUpMind = 15;
                     cost = 8500;
@@ -544,11 +500,7 @@ namespace DungeonPlayer
 
                 // s 後編編集
                 case "エルミ・ジョルジュ　ファージル王家の刻印":
-                    description = "FiveSeekerの一人エルミ・ジョルジュ専用刻印が彫られているリング。全パラメタ＋１０５２";
-                    PhysicalAttackMinValue = 1052;
-                    PhysicalAttackMaxValue = 1052;
-                    MagicMinValue = 1052;
-                    MagicMaxValue = 1052;
+                    description = "FiveSeekerの一人エルミ・ジョルジュ専用刻印が彫られているリング。力＋１０５２、知＋１０５２、技＋１０５２、体＋１０５２、心＋１０５２";
                     buffUpStrength = 1052;
                     buffUpAgility = 1052;
                     buffUpIntelligence = 1052;
@@ -561,8 +513,6 @@ namespace DungeonPlayer
                     break;
                 case "ファラ・フローレ　天使のペンダント":
                     description = "FiveSeekerの一人ファラ・フローレが身に着けている半透明のペンダント。心＋５８９２";
-                    PhysicalAttackMinValue = 5892;
-                    PhysicalAttackMaxValue = 5892;
                     buffUpMind = 5892;
                     cost = 0;
                     AdditionalDescription(ItemType.Accessory);
@@ -571,8 +521,6 @@ namespace DungeonPlayer
                     break;
                 case "シニキア・カールハンツ　魔道デビルアイ":
                     description = "FiveSeekerの一人シニキア・カールハンツが直接眼に装着している闇の擬眼。知＋５４６８";
-                    PhysicalAttackMinValue = 5468;
-                    PhysicalAttackMaxValue = 5468;
                     buffUpIntelligence = 5468;
                     cost = 0;
                     AdditionalDescription(ItemType.Accessory);
@@ -591,8 +539,6 @@ namespace DungeonPlayer
                     break;
                 case "ヴェルゼ・アーティ　天空の翼":
                     description = "FiveSeekerの一人ヴェルゼ・アーティが空中を走るために用いているブーツ。技＋５６９１";
-                    PhysicalAttackMinValue = 5691;
-                    PhysicalAttackMaxValue = 5691;
                     BuffUpAgility = 5691;
                     cost = 0;
                     AdditionalDescription(ItemType.Accessory);
@@ -602,7 +548,7 @@ namespace DungeonPlayer
                     break;
                 // e 後編編集
 
-                case "練習用の剣": // アイン初期装備
+                case Database.POOR_PRACTICE_SWORD: // アイン初期装備
                     description = "初心者向けの剣。威力はほとんどなく、剣を振る練習に向いている。攻撃力１～３";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 3;
@@ -611,9 +557,8 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Poor;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
-                case "練習用のグローブ":
-                case "ナックル": // ラナ初期装備
-                    description = "初めてダンジョンに訪れる者のために作られたグローブ。攻撃力１～２";
+                case Database.POOR_PRACTICE_KNUCKLE: // ラナ初期装備
+                    description = "初心者向けのナックル。殺傷力は極めて低い。攻撃力１～２";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 2;
                     cost = 100;
@@ -759,8 +704,8 @@ namespace DungeonPlayer
                 case "ヘパイストス・パナッサロイニ":
                     description = "鍛冶屋ガンツの最高傑作の一つ。時間軸に関する魔法とスキルを無効化する鎧。【特殊能力：有】防御力１２４１～１３０９";
                     UseSpecialAbility = true;
-                    PhysicalAttackMinValue = 1241;
-                    PhysicalAttackMaxValue = 1309;
+                    PhysicalDefenseMinValue = 1241;
+                    PhysicalDefenseMaxValue = 1309;
                     cost = 1516190;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Epic;
@@ -770,29 +715,25 @@ namespace DungeonPlayer
 
                 case "タイム・オブ・ルーセ": // ダンジョン５階の隠しアイテム
                     description = "鍛冶屋ガンツの最高傑作を生み出すための素材。　売却専用品";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Epic;
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
 
-                case "薄めのチュニック":
-                case "コート・オブ・プレート": // アイン初期装備
-                    description = "初めてダンジョンに訪れる者のために作られたチュニック。防御力１～２";
-                    PhysicalAttackMinValue = 1;
-                    PhysicalAttackMaxValue = 2;
+                case Database.POOR_COTE_OF_PLATE: // アイン初期装備
+                    description = "初心者がまず初めに装備するチュニック。防御力２～４";
+                    PhysicalDefenseMinValue = 2;
+                    PhysicalDefenseMaxValue = 4;
                     cost = 100;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Poor;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
-                case "軽めの舞踏衣":
-                case "ライト・クロス": // ラナ初期装備
-                    description = "初めてダンジョンに訪れる者のために作られた戦闘用の衣。防御力０～１";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 1;
+                case Database.POOR_LIGHT_CROSS: // ラナ初期装備
+                    description = "身軽に動け、かつ、戦闘向けに作成される衣類は舞踏衣と呼ばれている。防御力１～２";
+                    PhysicalDefenseMinValue = 1;
+                    PhysicalDefenseMaxValue = 2;
                     cost = 100;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Poor;
@@ -800,8 +741,8 @@ namespace DungeonPlayer
                     break;
                 case "黒真空の鎧（レプリカ）": // ヴェルゼ初期装備
                     description = "ヴェルゼが以前装備していた鎧を自前で作成したレプリカ。防御力１５～１８";
-                    PhysicalAttackMinValue = 15;
-                    PhysicalAttackMaxValue = 18;
+                    PhysicalDefenseMinValue = 15;
+                    PhysicalDefenseMaxValue = 18;
                     cost = 0;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -809,8 +750,8 @@ namespace DungeonPlayer
                     break;
                 case "冒険者用の鎖かたびら": // ガンツの武具屋販売（ダンジョン１階）
                     description = "冒険者がよく好んで使う鎖かたびら。防御力１～３";
-                    PhysicalAttackMinValue = 1;
-                    PhysicalAttackMaxValue = 3;
+                    PhysicalDefenseMinValue = 1;
+                    PhysicalDefenseMaxValue = 3;
                     cost = 400;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -818,8 +759,8 @@ namespace DungeonPlayer
                     break;
                 case "青銅の鎧": // ガンツの武具屋販売（ダンジョン１階）
                     description = "手頃な重さであり、モンスターの攻撃をよく受け止められる鎧。防御力３～５";
-                    PhysicalAttackMinValue = 3;
-                    PhysicalAttackMaxValue = 5;
+                    PhysicalDefenseMinValue = 3;
+                    PhysicalDefenseMaxValue = 5;
                     cost = 1500;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -827,8 +768,8 @@ namespace DungeonPlayer
                     break;
                 case "真鍮の鎧": // ２階アイテム
                     description = "真鍮製で出来た鎧。防御力４～８";
-                    PhysicalAttackMinValue = 4;
-                    PhysicalAttackMaxValue = 8;
+                    PhysicalDefenseMinValue = 4;
+                    PhysicalDefenseMaxValue = 8;
                     cost = 1900;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -836,8 +777,8 @@ namespace DungeonPlayer
                     break;
                 case "光沢のある鉄のプレート": // ガンツの武具屋販売（ダンジョン２階）
                     description = "若干の光沢が採用されており、着ているものを安心させる鎧プレート。防御力１１～１５";
-                    PhysicalAttackMinValue = 11;
-                    PhysicalAttackMaxValue = 15;
+                    PhysicalDefenseMinValue = 11;
+                    PhysicalDefenseMaxValue = 15;
                     cost = 3700;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -846,8 +787,8 @@ namespace DungeonPlayer
                 case "シルクの武道衣": // ガンツの武具屋販売（ダンジョン２階）
                 case "シルクローブ": // スパイダーシルク、１階で入手した素材が２階ラナ参加以降でガンツ武具販売になる。
                     description = "シルク製で生成された頑丈な武道衣。防御力５～９";
-                    PhysicalAttackMinValue = 5;
-                    PhysicalAttackMaxValue = 9;
+                    PhysicalDefenseMinValue = 5;
+                    PhysicalDefenseMaxValue = 9;
                     cost = 3100;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -855,8 +796,8 @@ namespace DungeonPlayer
                     break;
                 case "シルバーアーマー": // ガンツの武具屋販売（ダンジョン３階）
                     description = "純銀へのこだわりで生成された鎧。防御力２２～３０";
-                    PhysicalAttackMinValue = 22;
-                    PhysicalAttackMaxValue = 30;
+                    PhysicalDefenseMinValue = 22;
+                    PhysicalDefenseMaxValue = 30;
                     cost = 7600;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -864,8 +805,8 @@ namespace DungeonPlayer
                     break;
                 case "獣皮製の舞踏衣": // ガンツの武具屋販売（ダンジョン３階）
                     description = "獣の皮を縫って作成された舞踏衣。防御力１８～２５";
-                    PhysicalAttackMinValue = 18;
-                    PhysicalAttackMaxValue = 25;
+                    PhysicalDefenseMinValue = 18;
+                    PhysicalDefenseMaxValue = 25;
                     cost = 7100;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -873,8 +814,8 @@ namespace DungeonPlayer
                     break;
                 case "フィスト・クロス": // ガンツの武具屋販売（ダンジョン３階）
                     description = "主に打撃系に対して強化されている衣。防御力２２～２７";
-                    PhysicalAttackMinValue = 22;
-                    PhysicalAttackMaxValue = 27;
+                    PhysicalDefenseMinValue = 22;
+                    PhysicalDefenseMaxValue = 27;
                     cost = 10000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -882,8 +823,8 @@ namespace DungeonPlayer
                     break;
                 case "プリズマティックアーマー": // ガンツの武具屋販売（ダンジョン４階）
                     description = "プリズムの仕組みを純水晶に組み合わせて作成された自慢の一品。防御力３６～４１";
-                    PhysicalAttackMinValue = 36;
-                    PhysicalAttackMaxValue = 41;
+                    PhysicalDefenseMinValue = 36;
+                    PhysicalDefenseMaxValue = 41;
                     cost = 36000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -891,8 +832,8 @@ namespace DungeonPlayer
                     break;
                 case "極薄合金製の羽衣": // ガンツの武具屋販売（ダンジョン４階）
                     description = "合金材質を極力薄くして羽衣にした自慢の一品。防御力３２～３７";
-                    PhysicalAttackMinValue = 32;
-                    PhysicalAttackMaxValue = 37;
+                    PhysicalDefenseMinValue = 32;
+                    PhysicalDefenseMaxValue = 37;
                     cost = 40000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Rare;
@@ -901,8 +842,6 @@ namespace DungeonPlayer
 
                 case Database.EPIC_OVER_SHIFTING: //"オーバーシフティング": // ダンジョン５階
                     description = "対象の人が本来持ちうる能力を変更する。ＬＶ時のパラメタ割り振りを再セットする。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Epic;
@@ -911,8 +850,6 @@ namespace DungeonPlayer
 
                 case "ラナのイヤリング": // ダンジョン５階（ラナのイベント）
                     description = "ラナがいつも付けていたお気に入りのイヤリング。用途不明。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     AdditionalDescription(ItemType.Accessory);
                     equipablePerson = Equipable.Lana;
@@ -922,8 +859,7 @@ namespace DungeonPlayer
 
                 case "レジェンド・レッドホース": // ダンジョン５階
                     description = "赤の闘馬の意志が宿っている伝説の紋章。戦闘中絶対先攻となる。";
-                    PhysicalAttackMinValue = 100;
-                    PhysicalAttackMaxValue = 100;
+                    // after
                     cost = 120000;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Epic;
@@ -962,8 +898,6 @@ namespace DungeonPlayer
 
                 case "プライド・オブ・シーカー": // ガンツの武具屋販売（ダンジョン５階）
                     description = "ダンジョン求道者が求める容を結晶化した物。心＋９９";
-                    PhysicalAttackMinValue = 99;
-                    PhysicalAttackMaxValue = 99;
                     buffUpMind = 99;
                     cost = 98000;
                     AdditionalDescription(ItemType.Accessory);
@@ -972,8 +906,6 @@ namespace DungeonPlayer
                     break;
                 case "詩聖水宝の勾玉": // ガンツの武具屋販売（ダンジョン５階）
                     description = "ダンジョン探求者が求める容を結晶化した物。知＋９９";
-                    PhysicalAttackMinValue = 99;
-                    PhysicalAttackMaxValue = 99;
                     buffUpIntelligence = 99;
                     cost = 98000;
                     AdditionalDescription(ItemType.Accessory);
@@ -982,8 +914,6 @@ namespace DungeonPlayer
                     break;
                 case "ディセンションブーツ": // ガンツの武具屋販売（ダンジョン５階）
                     description = "ダンジョン探求者が求める容を結晶化した物。技＋９９";
-                    PhysicalAttackMinValue = 99;
-                    PhysicalAttackMaxValue = 99;
                     buffUpAgility = 99;
                     cost = 98000;
                     AdditionalDescription(ItemType.Accessory);
@@ -992,8 +922,6 @@ namespace DungeonPlayer
                     break;
                 case "ハートブレーカー": // ガンツの武具屋販売（ダンジョン５階）
                     description = "ダンジョン探求者が求める容を結晶化した物。力＋９９";
-                    PhysicalAttackMinValue = 99;
-                    PhysicalAttackMaxValue = 99;
                     buffUpStrength = 99;
                     cost = 98000;
                     AdditionalDescription(ItemType.Accessory);
@@ -1241,8 +1169,8 @@ namespace DungeonPlayer
                 case Database.RARE_MAGICIANS_MANTLE:
                     description = "基本魔法に熟達した者が装着するマント。知＋１２、魔力５～１０";
                     BuffUpIntelligence = 12;
-                    MagicMinValue = 5;
-                    MagicMaxValue = 10;
+                    MagicAttackMinValue = 5;
+                    MagicAttackMaxValue = 10;
                     cost = 980;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Rare;
@@ -1314,8 +1242,8 @@ namespace DungeonPlayer
                 // 防具(Poor)
                 case Database.POOR_GATAGAKITERU_ARMOR:
                     description = "本来の性能を出せていない鎧。防御力２～３";
-                    PhysicalAttackMinValue = 2;
-                    PhysicalAttackMaxValue = 3;
+                    PhysicalDefenseMinValue = 2;
+                    PhysicalDefenseMaxValue = 3;
                     cost = 300;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Poor;
@@ -1323,8 +1251,8 @@ namespace DungeonPlayer
                     break;
                 case Database.POOR_FESTERING_ARMOR:
                     description = "胴の一部が破損している、ただれた鎧。防御力０～４";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 4;
+                    PhysicalDefenseMinValue = 0;
+                    PhysicalDefenseMaxValue = 4;
                     cost = 300;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Poor;
@@ -1334,8 +1262,8 @@ namespace DungeonPlayer
                 // 防具(Common)
                 case Database.COMMON_FINE_ARMOR: // １階：エリア１：ランダムドロップ
                     description = "そつなく使える鎧。防御力３～６";
-                    PhysicalAttackMinValue = 3;
-                    PhysicalAttackMaxValue = 6;
+                    PhysicalDefenseMinValue = 3;
+                    PhysicalDefenseMaxValue = 6;
                     cost = 590;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -1343,8 +1271,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_GOTHIC_PLATE: // １階：エリア１：ランダムドロップ
                     description = "格式を重んじる飾り用の鎧。防御力４～７";
-                    PhysicalAttackMinValue = 4;
-                    PhysicalAttackMaxValue = 7;
+                    PhysicalDefenseMinValue = 4;
+                    PhysicalDefenseMaxValue = 7;
                     cost = 800;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -1354,8 +1282,8 @@ namespace DungeonPlayer
                 // 盾(Poor)
                 case Database.POOR_HINSO_SHIELD: // １階：エリア１：ランダムドロップ
                     description = "突進されると、すぐに壊れそうな盾。防御力１～２";
-                    PhysicalAttackMinValue = 1;
-                    PhysicalAttackMaxValue = 2;
+                    PhysicalDefenseMinValue = 1;
+                    PhysicalDefenseMaxValue = 2;
                     cost = 150;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Poor;
@@ -1363,8 +1291,8 @@ namespace DungeonPlayer
                     break;
                 case Database.POOR_MUDANIOOKII_SHIELD: // １階：エリア１：ランダムドロップ
                     description = "大きくしてはあるが、薄っぺらい盾。防御力０～３";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 3;
+                    PhysicalDefenseMinValue = 0;
+                    PhysicalDefenseMaxValue = 3;
                     cost = 140;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Poor;
@@ -1374,8 +1302,8 @@ namespace DungeonPlayer
                 // 盾(Common)
                 case Database.COMMON_FINE_SHIELD: // １階：エリア１：ランダムドロップ
                     description = "そつなく使える盾。防御力３～４";
-                    PhysicalAttackMinValue = 3;
-                    PhysicalAttackMaxValue = 4;
+                    PhysicalDefenseMinValue = 3;
+                    PhysicalDefenseMaxValue = 4;
                     cost = 550;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -1383,8 +1311,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_GRIPPING_SHIELD: // １階：エリア１：ランダムドロップ
                     description = "攻撃に備えた体制で持たないと、使いにくさが残る盾。防御力２～６";
-                    PhysicalAttackMinValue = 2;
-                    PhysicalAttackMaxValue = 6;
+                    PhysicalDefenseMinValue = 2;
+                    PhysicalDefenseMaxValue = 6;
                     cost = 550;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -1595,8 +1523,8 @@ namespace DungeonPlayer
                 // 武器：Poor
                 case Database.POOR_OLD_USELESS_ROD:
                     description = "本来の魔力を失っている状態の古ぼけた杖。魔力１～３";
-                    MagicMinValue = 1;
-                    MagicMaxValue = 3;
+                    MagicAttackMinValue = 1;
+                    MagicAttackMaxValue = 3;
                     cost = 160;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Poor;
@@ -1615,8 +1543,8 @@ namespace DungeonPlayer
                 // 防具(Poor)
                 case Database.POOR_BATTLE_HUMUKI_BUTOUGI:
                     description = "戦闘ではなく、踊り子向けの舞踏衣。防御力１～２";
-                    PhysicalAttackMinValue = 1;
-                    PhysicalAttackMaxValue = 2;
+                    PhysicalDefenseMinValue = 1;
+                    PhysicalDefenseMaxValue = 2;
                     cost = 600;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Poor;
@@ -1624,8 +1552,8 @@ namespace DungeonPlayer
                     break;
                 case Database.POOR_SIZE_AWANAI_ROBE:
                     description = "適当なサイズで作成されたローブ。防御力０～２。闇耐性１０";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 2;
+                    PhysicalDefenseMinValue = 0;
+                    PhysicalDefenseMaxValue = 2;
                     this.ResistShadow = 10;
                     cost = 650;
                     AdditionalDescription(ItemType.Armor_Light);
@@ -1672,8 +1600,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_WOOD_ROD:
                     description = "樹木の一部を切り取って作成された杖。魔力５～１０";
-                    MagicMinValue = 12;
-                    MagicMaxValue = 15;
+                    MagicAttackMinValue = 12;
+                    MagicAttackMaxValue = 15;
                     cost = 1400;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -1683,8 +1611,8 @@ namespace DungeonPlayer
                 // 防具(Common)
                 case Database.COMMON_LETHER_CLOTHING:
                     description = "標準的なサイズで作成されたレザー製の衣。防御力４～７";
-                    PhysicalAttackMinValue = 4;
-                    PhysicalAttackMaxValue = 7;
+                    PhysicalDefenseMinValue = 4;
+                    PhysicalDefenseMaxValue = 7;
                     cost = 500;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -1692,8 +1620,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_COTTON_ROBE:
                     description = "木綿を編み合わせたローブ。防御力３～７。火耐性５。水耐性５";
-                    PhysicalAttackMinValue = 3;
-                    PhysicalAttackMaxValue = 7;
+                    PhysicalDefenseMinValue = 3;
+                    PhysicalDefenseMaxValue = 7;
                     ResistFire = 5;
                     ResistIce = 5;
                     cost = 950;
@@ -1703,8 +1631,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_COPPER_ARMOR:
                     description = "銅の素材をふんだんに使った鎧。防御力６～１０。";
-                    PhysicalAttackMinValue = 6;
-                    PhysicalAttackMaxValue = 10;
+                    PhysicalDefenseMinValue = 6;
+                    PhysicalDefenseMaxValue = 10;
                     cost = 1000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -1712,8 +1640,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_HEAVY_ARMOR:
                     description = "重量感を意識して作られた鎧。防御力８～１２。";
-                    PhysicalAttackMinValue = 8;
-                    PhysicalAttackMaxValue = 12;
+                    PhysicalDefenseMinValue = 8;
+                    PhysicalDefenseMaxValue = 12;
                     cost = 1400;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -1723,8 +1651,8 @@ namespace DungeonPlayer
                 // 盾(Common)
                 case Database.COMMON_IRON_SHIELD:
                     description = "鉄製の盾。それなりにガッチリしている。防御力５～８";
-                    PhysicalAttackMinValue = 5;
-                    PhysicalAttackMaxValue = 8;
+                    PhysicalDefenseMinValue = 5;
+                    PhysicalDefenseMaxValue = 8;
                     cost = 1020;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -1788,8 +1716,8 @@ namespace DungeonPlayer
                     description = "秋に生い茂った樹木の枝を採用した杖。【特殊能力：有】魔力１８～２２";
                     description += "\r\n【特殊能力】　MPを回復する。";
                     UseSpecialAbility = true;
-                    MagicMinValue = 18;
-                    MagicMaxValue = 22;
+                    MagicAttackMinValue = 18;
+                    MagicAttackMaxValue = 22;
                     cost = 2800;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Rare;
@@ -1799,10 +1727,10 @@ namespace DungeonPlayer
                 // 防具（Rare)
                 case Database.RARE_SUN_BRAVE_ARMOR:
                     description = "太陽の光が注入されている鎧。防御力１４～１８。魔法防御力１０～１２。火耐性２０、聖耐性２０";
-                    PhysicalAttackMinValue = 14;
-                    PhysicalAttackMaxValue = 18;
-                    MagicMinValue = 10;
-                    MagicMaxValue = 12;
+                    PhysicalDefenseMinValue = 14;
+                    PhysicalDefenseMaxValue = 18;
+                    MagicDefenseMinValue = 10;
+                    MagicDefenseMaxValue = 12;
                     ResistFire = 20;
                     ResistLight = 20;
                     cost = 3000;
@@ -1814,8 +1742,8 @@ namespace DungeonPlayer
                 // 盾(Rare)
                 case Database.RARE_ESMERALDA_SHIELD:
                     description = "赤いコーティングと重量感のある盾。防御力８～１２、火耐性２０";
-                    PhysicalAttackMinValue = 8;
-                    PhysicalAttackMaxValue = 12;
+                    PhysicalDefenseMinValue = 8;
+                    PhysicalDefenseMaxValue = 12;
                     ResistFire = 20;
                     cost = 2200;
                     AdditionalDescription(ItemType.Shield);
@@ -2432,8 +2360,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_BREEZE_CROSS:
                     description = "そよ風をほのかに感じられ、身を軽やかに動かせる舞踏衣。防御力２０～２２、技＋２０";
-                    PhysicalAttackMinValue = 20;
-                    PhysicalAttackMaxValue = 22;
+                    PhysicalDefenseMinValue = 20;
+                    PhysicalDefenseMaxValue = 22;
                     buffUpAgility = 20;
                     cost = 17500;
                     AdditionalDescription(ItemType.Armor_Light);
@@ -2503,8 +2431,8 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_ROD_OF_STRENGTH:
                     description = "【力】そのものを宿らせている魔法の杖。【特殊能力：有】魔力９２～１０１、力＋３０";
-                    MagicMinValue = 92;
-                    MagicMaxValue = 101;
+                    MagicAttackMinValue = 92;
+                    MagicAttackMaxValue = 101;
                     buffUpStrength = 30;
                     cost = 41000;
                     AdditionalDescription(ItemType.Weapon_Rod);
@@ -2599,8 +2527,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SMART_ROD:
                     description = "重量も軽く、ヒョイヒョイと振ることが出来る杖。魔力３５～４５";
-                    MagicMinValue = 35;
-                    MagicMaxValue = 45;
+                    MagicAttackMinValue = 35;
+                    MagicAttackMaxValue = 45;
                     cost = 4500;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -2685,8 +2613,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_DENDOU_ROD:
                     description = "持つと少しだけ電気が走る杖。魔力４６～６２";
-                    MagicMinValue = 46;
-                    MagicMaxValue = 62;
+                    MagicAttackMinValue = 46;
+                    MagicAttackMaxValue = 62;
                     cost = 6000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -2697,8 +2625,8 @@ namespace DungeonPlayer
                     description = "闇を取り込み魔力を有している剣。攻撃力６０～８０、魔力６０～８０";
                     PhysicalAttackMinValue = 60;
                     PhysicalAttackMaxValue = 80;
-                    MagicMinValue = 60;
-                    MagicMaxValue = 80;
+                    MagicAttackMinValue = 60;
+                    MagicAttackMaxValue = 80;
                     cost = 15000;
                     AdditionalDescription(ItemType.Weapon_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -2707,8 +2635,8 @@ namespace DungeonPlayer
                 case Database.RARE_BLUE_RED_ROD:
                     description = "相反する赤と蒼の魔力を宿した杖。【特殊能力：有】魔力７０～８５";
                     useSpecialAbility = true;
-                    MagicMinValue = 70;
-                    MagicMaxValue = 85;
+                    MagicAttackMinValue = 70;
+                    MagicAttackMaxValue = 85;
                     cost = 11500;
                     AdditionalDescription(ItemType.Weapon_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -2735,8 +2663,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SMART_ROD_2:
                     description = "重量も軽く、ヒョイヒョイと振ることが出来る杖をガンツが強化した。魔力３５(+6)～４５(+6)";
-                    MagicMinValue = 41;
-                    MagicMaxValue = 51;
+                    MagicAttackMinValue = 41;
+                    MagicAttackMaxValue = 51;
                     cost = 5200;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -2744,8 +2672,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SMART_PLATE_2:
                     description = "ガッチリした鎧をさらにガンツが強化した鎧。防御力３０(+5)～３５(+5)";
-                    PhysicalAttackMinValue = 35;
-                    PhysicalAttackMaxValue = 40;
+                    PhysicalDefenseMinValue = 35;
+                    PhysicalDefenseMaxValue = 40;
                     cost = 6000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -2753,8 +2681,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SMART_CLOTHING_2:
                     description = "着心地も良く、動きやすさも抜群の舞踏衣。防御力２５(+4)～２８(+4)";
-                    PhysicalAttackMinValue = 29;
-                    PhysicalAttackMaxValue = 32;
+                    PhysicalDefenseMinValue = 29;
+                    PhysicalDefenseMaxValue = 32;
                     cost = 5300;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -2762,10 +2690,10 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SMART_ROBE_2:
                     description = "スラリとしたデザインを追求した戦闘向けローブ。防御力１０(+4)～１２(+4)。魔法防御２０(+5)～２２(+5)";
-                    PhysicalAttackMinValue = 14;
-                    PhysicalAttackMaxValue = 16;
-                    MagicMinValue = 25;
-                    MagicMaxValue = 27;
+                    PhysicalDefenseMinValue = 14;
+                    PhysicalDefenseMaxValue = 16;
+                    MagicDefenseMinValue = 25;
+                    MagicDefenseMaxValue = 27;
                     cost = 6400;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -2782,8 +2710,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SMART_SHIELD_2:
                     description = "持ちやすく、向きもスッと変えられる盾をガンツが強化した。防御力１２(+3)～１５(+3)";
-                    PhysicalAttackMinValue = 15;
-                    PhysicalAttackMaxValue = 18;
+                    PhysicalDefenseMinValue = 15;
+                    PhysicalDefenseMaxValue = 18;
                     cost = 4100;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -2809,8 +2737,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_MIX_HINOKI_ROD:
                     description = "檜素材に金属製素材を合成させた杖。魔力８２～９６";
-                    MagicMinValue = 82;
-                    MagicMaxValue = 96;
+                    MagicAttackMinValue = 82;
+                    MagicAttackMaxValue = 96;
                     cost = 13000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -3436,8 +3364,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_ROD:
                     description = "質素ながら上質、加えて、持っただけで魔力が伝わってくる杖。魔力１０５～１２２";
-                    MagicMinValue = 105;
-                    MagicMaxValue = 122;
+                    MagicAttackMinValue = 105;
+                    MagicAttackMaxValue = 122;
                     cost = 30000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -3491,8 +3419,8 @@ namespace DungeonPlayer
                     description += "\r\n【常備能力】　魔法ダメージを当てるたび、インスタントポイントが回復する。";
                     buffUpIntelligence = 60;
                     buffUpStamina = 60;
-                    MagicMinValue = 155;
-                    MagicMaxValue = 190;
+                    MagicAttackMinValue = 155;
+                    MagicAttackMaxValue = 190;
                     cost = 72000;
                     useSpecialAbility = true;
                     AdditionalDescription(ItemType.Weapon_Rod);
@@ -3520,8 +3448,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SEKIGAN_ROD:
                     description = "片目を失ったとある者が魔力を失わないように作成した杖。魔力１３５～１５５";
-                    MagicMinValue = 135;
-                    MagicMaxValue = 155;
+                    MagicAttackMinValue = 135;
+                    MagicAttackMaxValue = 155;
                     cost = 40000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -3529,8 +3457,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_ROCK_BUSTER:
                     description = "『岩をも砕く！』と名付けた者がそう発した両手剣。攻撃力８５～３１０";
-                    MagicMinValue = 85;
-                    MagicMaxValue = 310;
+                    PhysicalAttackMinValue = 85;
+                    PhysicalAttackMaxValue = 310;
                     cost = 40000;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
                     rareLevel = RareLevel.Common;
@@ -3579,8 +3507,8 @@ namespace DungeonPlayer
                 case Database.RARE_BLIZZARD_SNOW_ROD:
                     description = "骨まで結晶化させてしまうほどの威力をもつ杖。【特殊能力：有】魔攻率＋１０％、魔力１８５～２２０";
                     description += "\r\n【特殊能力】　戦闘中使用すると、魔攻率を1.1倍上昇させる。";
-                    MagicMinValue = 185;
-                    MagicMaxValue = 220;
+                    MagicAttackMinValue = 185;
+                    MagicAttackMaxValue = 220;
                     amplifyMagicAttack = 1.1f;
                     cost = 78000;
                     useSpecialAbility = true;
@@ -3591,8 +3519,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_ARMOR:
                     description = "文句なし、最高品仕立ての鎧。防御力６０～７０";
-                    PhysicalAttackMinValue = 60;
-                    PhysicalAttackMaxValue = 70;
+                    PhysicalDefenseMinValue = 60;
+                    PhysicalDefenseMaxValue = 70;
                     cost = 23000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -3601,8 +3529,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_CROSS:
                     description = "軽さも最高で、防御力も上質の舞踏衣。防御力５２～５８";
-                    PhysicalAttackMinValue = 52;
-                    PhysicalAttackMaxValue = 58;
+                    PhysicalDefenseMinValue = 52;
+                    PhysicalDefenseMaxValue = 58;
                     cost = 21000;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -3611,10 +3539,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_ROBE:
                     description = "最高のローブ用素材使用。あみ目の弱点補強も施されている。防御力２９～３３、魔法防御４５～６０";
-                    PhysicalAttackMinValue = 29;
-                    PhysicalAttackMaxValue = 33;
-                    MagicMinValue = 45;
-                    MagicMaxValue = 60;
+                    PhysicalDefenseMinValue = 29;
+                    PhysicalDefenseMaxValue = 33;
+                    MagicDefenseMinValue = 45;
+                    MagicDefenseMaxValue = 60;
                     cost = 30000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -3623,8 +3551,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_DRAGONSCALE_ARMOR:
                     description = "貴重なドラゴン鱗素材を駆使した鎧はほのかな光を放っている。防御力９０～１０５、麻痺耐性、闇耐性７５０";
-                    PhysicalAttackMinValue = 90;
-                    PhysicalAttackMaxValue = 105;
+                    PhysicalDefenseMinValue = 90;
+                    PhysicalDefenseMaxValue = 105;
                     ResistParalyze = true;
                     ResistShadow = 750;
                     cost = 55000;
@@ -3635,10 +3563,10 @@ namespace DungeonPlayer
 
                 case Database.RARE_LIGHT_BLIZZARD_ROBE:
                     description = "氷吹雪が結晶化した衣形状ローブ、淡い青光りが目に映る。防御力５４～６７、魔法防御１０５～１２０、スタン耐性、光耐性７５０";
-                    PhysicalAttackMinValue = 54;
-                    PhysicalAttackMaxValue = 67;
-                    MagicMinValue = 105;
-                    MagicMaxValue = 120;
+                    PhysicalDefenseMinValue = 54;
+                    PhysicalDefenseMaxValue = 67;
+                    MagicDefenseMinValue = 105;
+                    MagicDefenseMaxValue = 120;
                     ResistStun = true;
                     ResistLight = 750;
                     cost = 56000;
@@ -3649,8 +3577,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_COLD_STEEL_PLATE:
                     description = "寒さは当然遮断しており、かつ、ダメージに対する遮断も強固な鎧。防御力７５～８８";
-                    PhysicalAttackMinValue = 75;
-                    PhysicalAttackMaxValue = 88;
+                    PhysicalDefenseMinValue = 75;
+                    PhysicalDefenseMaxValue = 88;
                     cost = 31000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -3659,8 +3587,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_AIR_HARE_CROSS:
                     description = "この舞踏衣を装備している者は、快晴の空を稀に見るという。防御力６９～７９";
-                    PhysicalAttackMinValue = 69;
-                    PhysicalAttackMaxValue = 79;
+                    PhysicalDefenseMinValue = 69;
+                    PhysicalDefenseMaxValue = 79;
                     cost = 29000;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -3669,10 +3597,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_FLOATING_ROBE:
                     description = "このローブを装備している者は、実際には浮かないが、浮遊感を感じるという。防御力３４～４０、魔法防御６５～８９";
-                    PhysicalAttackMinValue = 34;
-                    PhysicalAttackMaxValue = 40;
-                    MagicMinValue = 65;
-                    MagicMaxValue = 89;
+                    PhysicalDefenseMinValue = 34;
+                    PhysicalDefenseMaxValue = 40;
+                    MagicDefenseMinValue = 65;
+                    MagicDefenseMaxValue = 89;
                     cost = 38000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -3682,8 +3610,8 @@ namespace DungeonPlayer
                 case Database.RARE_SCALE_BLUERAGE:
                     description = "蒼炎の魂が込められた鎧。分厚いわりに装備者に重さを感じさせない。【常備能力：有】防御力１１０～１３２";
                     description += "\r\n【常備能力】　まれに物理による被ダメージを０にする";
-                    PhysicalAttackMinValue = 110;
-                    PhysicalAttackMaxValue = 132;
+                    PhysicalDefenseMinValue = 110;
+                    PhysicalDefenseMaxValue = 132;
                     cost = 60000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -3693,10 +3621,10 @@ namespace DungeonPlayer
                 case Database.RARE_BLUE_REFLECT_ROBE:
                     description = "蒼炎の魂が込められた衣。その薄さとは裏腹にダメージ反射が起こりうる。【常備能力：有】防御力５８～７０、魔法防御１３０～１４５";
                     description += "\r\n【常備能力】　まれに魔法による被ダメージを０にする";
-                    PhysicalAttackMinValue = 58;
-                    PhysicalAttackMaxValue = 70;
-                    MagicMinValue = 130;
-                    MagicMaxValue = 145;
+                    PhysicalDefenseMinValue = 58;
+                    PhysicalDefenseMaxValue = 70;
+                    MagicDefenseMinValue = 130;
+                    MagicDefenseMaxValue = 145;
                     cost = 64000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -3705,8 +3633,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_SHIELD:
                     description = "身体全体を守れるサイズで、かつ、耐久性にも優れている盾。防御力３７～４２";
-                    PhysicalAttackMinValue = 37;
-                    PhysicalAttackMaxValue = 42;
+                    PhysicalDefenseMinValue = 37;
+                    PhysicalDefenseMaxValue = 42;
                     cost = 22000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -3715,10 +3643,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SNOW_CRYSTAL_SHIELD:
                     description = "高位の結晶体が盾形状になったモノ。その硬さは一級品である。防御力４７～５０、魔法防御５０～５５";
-                    PhysicalAttackMinValue = 47;
-                    PhysicalAttackMaxValue = 50;
-                    MagicMinValue = 50;
-                    MagicMaxValue = 55;
+                    PhysicalDefenseMinValue = 47;
+                    PhysicalDefenseMaxValue = 50;
+                    MagicDefenseMinValue = 50;
+                    MagicDefenseMaxValue = 55;
                     cost = 30000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -3728,8 +3656,8 @@ namespace DungeonPlayer
                 case Database.RARE_SLIDE_THROUGH_SHIELD:
                     description = "形状が非常に楕円系の形をしており、単純な攻撃ならさばくことが可能。【常備能力：有】防御力５２～５４";
                     description += "\r\n【常備能力】　まれに物理による被ダメージを０にする";
-                    PhysicalAttackMinValue = 52;
-                    PhysicalAttackMaxValue = 54;
+                    PhysicalDefenseMinValue = 52;
+                    PhysicalDefenseMaxValue = 54;
                     cost = 50000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Rare;
@@ -3738,10 +3666,10 @@ namespace DungeonPlayer
 
                 case Database.RARE_ELEMENTAL_STAR_SHIELD:
                     description = "各属性の紋様が星型で刻まれている盾。防御力５０～５２、魔法防御４８～５０、光/闇/火/水/理/空耐性５００";
-                    PhysicalAttackMinValue = 53;
-                    PhysicalAttackMaxValue = 55;
-                    MagicMinValue = 48;
-                    MagicMaxValue = 50;
+                    PhysicalDefenseMinValue = 53;
+                    PhysicalDefenseMaxValue = 55;
+                    MagicDefenseMinValue = 48;
+                    MagicDefenseMaxValue = 50;
                     ResistLight = 500;
                     ResistShadow = 500;
                     ResistIce = 500;
@@ -3787,8 +3715,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_ROD_3:
                     description = "質素ながら上質、加えて、持っただけで魔力が伝わってくる杖をガンツが強化した。魔力１０５(+20)～１２２(+20)";
-                    MagicMinValue = 125;
-                    MagicMaxValue = 142;
+                    MagicAttackMinValue = 125;
+                    MagicAttackMaxValue = 142;
                     cost = 35000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -3797,8 +3725,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_ARMOR_3:
                     description = "文句なし、最高品仕立ての鎧をガンツが強化した。防御力６０(+8)～７０(+8)";
-                    PhysicalAttackMinValue = 68;
-                    PhysicalAttackMaxValue = 78;
+                    PhysicalDefenseMinValue = 68;
+                    PhysicalDefenseMaxValue = 78;
                     cost = 27000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -3807,8 +3735,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_CROSS_3:
                     description = "軽さも最高で、防御力も上質の舞踏衣をガンツが強化した。防御力５２(+6)～５８(+6)";
-                    PhysicalAttackMinValue = 58;
-                    PhysicalAttackMaxValue = 64;
+                    PhysicalDefenseMinValue = 58;
+                    PhysicalDefenseMaxValue = 64;
                     cost = 25000;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -3817,10 +3745,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_ROBE_3:
                     description = "最高のローブ用素材使用。あみ目の弱点補強も施されており、さらにガンツが強化した。防御力２９(+3)～３３(+3)、魔法防御４５(+10)～６０(+10)";
-                    PhysicalAttackMinValue = 32;
-                    PhysicalAttackMaxValue = 36;
-                    MagicMinValue = 55;
-                    MagicMaxValue = 70;
+                    PhysicalDefenseMinValue = 32;
+                    PhysicalDefenseMaxValue = 36;
+                    MagicDefenseMinValue = 55;
+                    MagicDefenseMaxValue = 70;
                     cost = 34000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -3829,8 +3757,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_EXCELLENT_SHIELD_3:
                     description = "身体全体を守れるサイズで、かつ、耐久性にも優れている盾をガンツが強化した。防御力３７(+5)～４２(+5)";
-                    PhysicalAttackMinValue = 42;
-                    PhysicalAttackMaxValue = 47;
+                    PhysicalDefenseMinValue = 42;
+                    PhysicalDefenseMaxValue = 47;
                     cost = 26000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -3864,8 +3792,8 @@ namespace DungeonPlayer
                     ResistParalyze = true;
                     buffUpAgility = 85;
                     buffUpIntelligence = 325;
-                    MagicMinValue = 666;
-                    MagicMaxValue = 777;
+                    MagicAttackMinValue = 666;
+                    MagicAttackMaxValue = 777;
                     amplifyMagicAttack = 1.2f;
                     amplifyPotential = 1.2f;
                     ResistShadow = 1500;
@@ -3878,8 +3806,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_LIZARDSCALE_ARMOR: // リザードの鱗
                     description = "リザードの鱗を細かく細分化し、鎧形状に仕立てなおしたもの。防御力８０(+25)～１０５(+25)";
-                    PhysicalAttackMinValue = 105;
-                    PhysicalAttackMaxValue = 130;
+                    PhysicalDefenseMinValue = 105;
+                    PhysicalDefenseMaxValue = 130;
                     cost = 62000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -3888,8 +3816,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_ARGNIAN_TUNIC: // アルゴニアンの紫鱗
                     description = "アルゴニアンの素材は紫色のコーティングがあり安定した防御性が出やすい。防御力７７～９０";
-                    PhysicalAttackMinValue = 77;
-                    PhysicalAttackMaxValue = 90;
+                    PhysicalDefenseMinValue = 77;
+                    PhysicalDefenseMaxValue = 90;
                     cost = 33000;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -3898,8 +3826,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_WOLF_BATTLE_CLOTH: // ウルフの毛皮
                     description = "野生ウルフのごわごわした質感を落とすことなく衣に仕立ててある。体＋７０、防御力７２～７９";
-                    PhysicalAttackMinValue = 72;
-                    PhysicalAttackMaxValue = 79;
+                    PhysicalDefenseMinValue = 72;
+                    PhysicalDefenseMaxValue = 79;
                     buffUpStamina = 70;
                     cost = 58000;
                     AdditionalDescription(ItemType.Armor_Middle);
@@ -3909,8 +3837,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_CHILL_BONE_SHIELD:
                     description = "氷点下を遙かに下回る温度で凍結させた骨の盾。防御力６５～７０、火耐性７５０、水耐性７５０";
-                    PhysicalAttackMinValue = 65;
-                    PhysicalAttackMaxValue = 70;
+                    PhysicalDefenseMinValue = 65;
+                    PhysicalDefenseMaxValue = 70;
                     ResistIce = 750;
                     ResistFire = 750;
                     cost = 58000;
@@ -3944,8 +3872,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_PENGUIN_OF_PENGUIN: // エンブレム・オブ・ペンギン
                     description = "ペンギンの気持ちが心なしか伝わってくる。力＋３０、技＋３０、知＋３０、体＋３０、心＋３０";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     buffUpStrength = 30;
                     buffUpAgility = 30;
                     buffUpIntelligence = 30;
@@ -3960,8 +3886,6 @@ namespace DungeonPlayer
                 // 宝箱
                 case Database.COMMON_ESSENCE_OF_EARTH:
                     description = "大地のマテリアル合成素材。武具職人の力量が問われる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 200000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -3970,8 +3894,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_KESSYOU_SEA_WATER_SALT:
                     description = "固形化した海水の塩がたまたま結晶に似た形をした状態を保っている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 210000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -3991,8 +3913,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_RED_ONION:
                     description = "真っ赤なタマネギだ・・・これは食用素材として大丈夫なのか？？";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 215000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -4015,8 +3935,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_WHITE_POWDER:
                     description = "白い粉。とくに理由は無いが危険な感じがするのは気のせいか。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 260000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -4036,8 +3954,6 @@ namespace DungeonPlayer
 
                 case Database.EPIC_OLD_TREE_MIKI_DANPEN:
                     description = "古代栄樹の幹素材は絶える事のない永遠を示す。古代栄樹に仕えしガトゥの言葉がかすかに聞こえてくるようだ。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Epic;
@@ -4296,8 +4212,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_MASTER_ROD:
                     description = "史上最高の魔力源を引き出す事に長けた杖。魔力３４３～４１８";
-                    MagicMinValue = 343;
-                    MagicMaxValue = 418;
+                    MagicAttackMinValue = 343;
+                    MagicAttackMaxValue = 418;
                     cost = 620000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -4316,8 +4232,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_MASTER_ARMOR:
                     description = "史上最高の耐久性、そして、鉄壁の防御力を誇る鎧。防御力１２０～１４５";
-                    PhysicalAttackMinValue = 120;
-                    PhysicalAttackMaxValue = 145;
+                    PhysicalDefenseMinValue = 120;
+                    PhysicalDefenseMaxValue = 145;
                     cost = 580000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -4326,8 +4242,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_MASTER_CROSS:
                     description = "史上最高の柔軟性と耐突撃性を両立させたクロス。防御力８８～１１２";
-                    PhysicalAttackMinValue = 88;
-                    PhysicalAttackMaxValue = 112;
+                    PhysicalDefenseMinValue = 88;
+                    PhysicalDefenseMaxValue = 112;
                     cost = 580000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -4336,10 +4252,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_MASTER_ROBE:
                     description = "史上最高の光沢と魔防を兼ね備えるローブ。防御力７６～８５、魔法防御１０８～１３２";
-                    PhysicalAttackMinValue = 76;
-                    PhysicalAttackMaxValue = 85;
-                    MagicMinValue = 108;
-                    MagicMaxValue = 132;
+                    PhysicalDefenseMinValue = 76;
+                    PhysicalDefenseMaxValue = 85;
+                    MagicDefenseMinValue = 108;
+                    MagicDefenseMaxValue = 132;
                     cost = 580000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -4348,8 +4264,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_MASTER_SHIELD:
                     description = "史上最高の強靭さと堅牢さを実現させた盾。防御力６２～８５";
-                    PhysicalAttackMinValue = 62;
-                    PhysicalAttackMaxValue = 85;
+                    PhysicalDefenseMinValue = 62;
+                    PhysicalDefenseMaxValue = 85;
                     cost = 300000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -4388,8 +4304,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_INVISIBLE_STATE_ROD:
                     description = "ターゲットにされているものから、そのロッドの姿は見えない。魔力４８６～６７７";
-                    MagicMinValue = 486;
-                    MagicMaxValue = 677;
+                    MagicAttackMinValue = 486;
+                    MagicAttackMaxValue = 677;
                     cost = 1520000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Rare;
@@ -4398,8 +4314,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_DOMINATION_BRAVE_ARMOR:
                     description = "勇敢なる闘士を秘めたものが、防御の威力を支配する。防御力１８６～１９８";
-                    PhysicalAttackMinValue = 186;
-                    PhysicalAttackMaxValue = 198;
+                    PhysicalDefenseMinValue = 186;
+                    PhysicalDefenseMaxValue = 198;
                     cost = 1120000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -4819,8 +4735,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_ELECTRO_ROD:
                     description = "電磁力と魔法は似て非なるものだが、魔法と同等の物質量を生み出せる技術が蓄積されている杖。魔力４２５～５６０";
-                    MagicMinValue = 425;
-                    MagicMaxValue = 560;
+                    MagicAttackMinValue = 425;
+                    MagicAttackMaxValue = 560;
                     cost = 890000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -4829,8 +4745,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_FORTIFY_SCALE:
                     description = "装備者の体格の原型がわからなくなるほどのゴツい鎧。防御力１６２～１８８";
-                    PhysicalAttackMinValue = 162;
-                    PhysicalAttackMaxValue = 188;
+                    PhysicalDefenseMinValue = 162;
+                    PhysicalDefenseMaxValue = 188;
                     cost = 860000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -4839,8 +4755,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_MURYOU_CROSS:
                     description = "装備している感触をまったく感じさせない舞踏衣。防御力１４８～１５６";
-                    PhysicalAttackMinValue = 148;
-                    PhysicalAttackMaxValue = 156;
+                    PhysicalDefenseMinValue = 148;
+                    PhysicalDefenseMaxValue = 156;
                     cost = 860000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -4849,10 +4765,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_COLORLESS_ROBE:
                     description = "装着者のイメージを連想させる色がローブ。防御力１０６～１２２、魔法防御力１８９～２１２";
-                    PhysicalAttackMinValue = 106;
-                    PhysicalAttackMaxValue = 122;
-                    MagicMinValue = 189;
-                    MagicMaxValue = 212;
+                    PhysicalDefenseMinValue = 106;
+                    PhysicalDefenseMaxValue = 122;
+                    MagicDefenseMinValue = 189;
+                    MagicDefenseMaxValue = 212;
                     cost = 860000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -4861,10 +4777,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_LOGISTIC_SHIELD:
                     description = "魔法によるダメージをあたかも物理と見立てて防御可能とした盾。防御力７５～９５、魔法防御力７０～７２";
-                    PhysicalAttackMinValue = 75;
-                    PhysicalAttackMaxValue = 95;
-                    MagicMinValue = 70;
-                    MagicMaxValue = 72;
+                    PhysicalDefenseMinValue = 75;
+                    PhysicalDefenseMaxValue = 95;
+                    MagicDefenseMinValue = 70;
+                    MagicDefenseMaxValue = 72;
                     cost = 340000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -4903,8 +4819,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_ALL_ELEMENTAL_ROD:
                     description = "全属性の魔力が均等に込められている大杖。魔力７０５～８３９";
-                    MagicMinValue = 705;
-                    MagicMaxValue = 839;
+                    MagicAttackMinValue = 705;
+                    MagicAttackMaxValue = 839;
                     cost = 2260000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Rare;
@@ -4913,8 +4829,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_BLOOD_BLAZER_CROSS:
                     description = "赤い絹糸にイスリアル製の素材が編み込まれている舞踏衣。全体の模様が血管の様に見える。防御力３２５～３４５";
-                    PhysicalAttackMinValue = 325;
-                    PhysicalAttackMaxValue = 345;
+                    PhysicalDefenseMinValue = 325;
+                    PhysicalDefenseMaxValue = 345;
                     cost = 1450000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Rare;
@@ -4924,10 +4840,10 @@ namespace DungeonPlayer
                 case Database.RARE_DARK_ANGEL_ROBE:
                     description = "真っ黒なローブをまとった姿は黒衣の天使を連想させる。物理防御力１９０～２３４、魔法防御力４９２～６５２";
                     description += "\r\n【常備能力】　聖魔法１０％強化、闇属性１０％強化";
-                    PhysicalAttackMinValue = 190;
-                    PhysicalAttackMaxValue = 234;
-                    MagicMinValue = 492;
-                    MagicMaxValue = 652;
+                    PhysicalDefenseMinValue = 190;
+                    PhysicalDefenseMaxValue = 234;
+                    MagicDefenseMinValue = 492;
+                    MagicDefenseMaxValue = 652;
                     amplifyLight = 1.1f;
                     amplifyShadow = 1.1f;
                     cost = 1600000;
@@ -4938,10 +4854,10 @@ namespace DungeonPlayer
 
                 case Database.RARE_MAJEST_HAZZARD_SHIELD:
                     description = "権威のオーラを放つかの如く、分厚い装甲の盾。物理防御力１０５～１３０、魔法防御力１４０～１５０";
-                    PhysicalAttackMinValue = 105;
-                    PhysicalAttackMaxValue = 130;
-                    MagicMinValue = 140;
-                    MagicMaxValue = 150;
+                    PhysicalDefenseMinValue = 105;
+                    PhysicalDefenseMaxValue = 130;
+                    MagicDefenseMinValue = 140;
+                    MagicDefenseMaxValue = 150;
                     cost = 720000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Rare;
@@ -4950,8 +4866,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_WHITE_DIAMOND_SHIELD:
                     description = "白く透明な輝きを持つダイヤモンド成分を含んだ大きな盾。防御力１２０～１４５";
-                    PhysicalAttackMinValue = 120;
-                    PhysicalAttackMaxValue = 145;
+                    PhysicalDefenseMinValue = 120;
+                    PhysicalDefenseMaxValue = 145;
                     cost = 725000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Rare;
@@ -4960,8 +4876,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_VAPOR_SOLID_SHIELD:
                     description = "蒸気型の粒子を完結合させ、固体化に成功した盾。重量が軽さと反比例して重厚な作り。防御力１６３～１７５";
-                    PhysicalAttackMinValue = 163;
-                    PhysicalAttackMaxValue = 175;
+                    PhysicalDefenseMinValue = 163;
+                    PhysicalDefenseMaxValue = 175;
                     cost = 730000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Rare;
@@ -4980,8 +4896,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_TYOU_KOU_ARMOR:
                     description = "合金製の素材をフルに駆使し、超絶に硬い鎧が完成した。防御力４４０～５５０";
-                    PhysicalAttackMinValue = 440;
-                    PhysicalAttackMaxValue = 550;
+                    PhysicalDefenseMinValue = 440;
+                    PhysicalDefenseMaxValue = 550;
                     cost = 2200000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -4989,8 +4905,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_TYOU_KOU_SHIELD:
                     description = "合金製の素材を盾全体に行き渡らせ、超絶に硬い盾が完成した。防御力１９０～２００";
-                    PhysicalAttackMinValue = 190;
-                    PhysicalAttackMaxValue = 200;
+                    PhysicalDefenseMinValue = 190;
+                    PhysicalDefenseMaxValue = 200;
                     cost = 1600000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Rare;
@@ -4998,8 +4914,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_SUPERIOR_CHOSEN_ROD:
                     description = "厳選された合金製の素材を杖の先端部に丸型にして溶接したロッド。魔力７６８～８９３";
-                    MagicMinValue = 768;
-                    MagicMaxValue = 893;
+                    MagicAttackMinValue = 768;
+                    MagicAttackMaxValue = 893;
                     cost = 3000000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Rare;
@@ -5007,10 +4923,10 @@ namespace DungeonPlayer
 
                 case Database.RARE_WHITE_GOLD_CROSS:
                     description = "合金製の素材をマイクロ単位の薄い形状に変化させ、衣状の形に仕立て上げた。防御力３４７～３７０、魔法防御３４０～３７０";
-                    PhysicalAttackMinValue = 340;
-                    PhysicalAttackMaxValue = 370;
-                    MagicMinValue = 340;
-                    MagicMaxValue = 370;
+                    PhysicalDefenseMinValue = 340;
+                    PhysicalDefenseMaxValue = 370;
+                    MagicDefenseMinValue = 340;
+                    MagicDefenseMaxValue = 370;
                     cost = 2150000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Rare;
@@ -5033,8 +4949,8 @@ namespace DungeonPlayer
                 case Database.RARE_ONEHUNDRED_BUTOUGI: // 猛獣の毛皮
                     description = "選りすぐりの獣皮を集約し、動きやすさ・重量感を重視したもの。防御力１６４～１７８、聖耐性15000、闇耐性15000、火耐性15000、水耐性15000";
                     description += "\r\n【常備能力】　まれに物理/魔法による攻撃を回避する。";
-                    PhysicalAttackMinValue = 164;
-                    PhysicalAttackMaxValue = 178;
+                    PhysicalDefenseMinValue = 164;
+                    PhysicalDefenseMaxValue = 178;
                     ResistLight = 15000;
                     ResistShadow = 15000;
                     ResistFire = 15000;
@@ -5048,10 +4964,10 @@ namespace DungeonPlayer
                     description = "執行人のローブから高級なシルク素材を摘出し、天使のシルクと融合させて新たに創生した衣。";
                     description += "\r\n防御力１９０～２３４、魔法防御４９２～６５２、聖耐性22000、闇耐性22000、毒耐性、誘惑耐性、鈍化耐性、暗闇耐性";
                     description += "\r\n【常備能力】　聖魔法１０％強化、闇魔法１０％強化";
-                    PhysicalAttackMinValue = 190;
-                    PhysicalAttackMaxValue = 234;
-                    MagicMinValue = 492;
-                    MagicMaxValue = 652;
+                    PhysicalDefenseMinValue = 190;
+                    PhysicalDefenseMaxValue = 234;
+                    MagicDefenseMinValue = 492;
+                    MagicDefenseMaxValue = 652;
                     ResistLight = 22000;
                     ResistShadow = 22000;
                     ResistPoison = true;
@@ -5081,8 +4997,8 @@ namespace DungeonPlayer
                     description += "\r\n    魔法攻撃がヒットする度に、稀にサイキック・ウェイブが追加効果で発動する。";
                     PhysicalAttackMinValue = 800;
                     PhysicalAttackMaxValue = 850;
-                    MagicMinValue = 650;
-                    MagicMaxValue = 700;
+                    MagicAttackMinValue = 650;
+                    MagicAttackMaxValue = 700;
                     cost = 2400000;
                     AdditionalDescription(ItemType.Weapon_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -5092,8 +5008,6 @@ namespace DungeonPlayer
                     description = "豪華な財宝を与える事で怨霊を全て除去した箱。力＋５００、技＋５００、知＋５００、闇耐性10000毒耐性、沈黙耐性、スタン耐性、麻痺耐性、凍結耐性、誘惑耐性、鈍化耐性、暗闇耐性、スリップ耐性";
                     description += "\r\n【常備能力】　戦闘開始時、心パラメタが１になる。";
                     description += "\r\n【特殊能力】　本装備品により【心】パラメタが１になった特性を解除する。戦闘終了までこの効果は継続する。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     buffUpStrength = 500;
                     buffUpAgility = 500;
                     buffUpIntelligence = 500;
@@ -5115,8 +5029,6 @@ namespace DungeonPlayer
                 case Database.RARE_SEAL_OF_BALANCE: // 組み立て素材　天秤、組み立て素材　天分銅、組み立て素材　天秤棒
                     description = "天秤の形状を再構築し、紋章の形状に変換することに成功。体＋５００、心＋５００、水耐性5000、空耐性5000";
                     description += "\r\n【常備能力】　物理攻撃を受けた場合、マナが回復する。魔法攻撃を受けた場合、スキルポイントが回復する。DEBUFF属性が付与された場合、次のターンそのBUFFを解除する。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     buffUpStamina = 500;
                     buffUpMind = 500;
                     ResistIce = 5000;
@@ -5146,8 +5058,8 @@ namespace DungeonPlayer
                     description += "\r\n              戦闘開始時、ジェネシスの行動記憶に【ゲイル・ウィンド】がセットされる。";
                     PhysicalAttackMinValue = 1200;
                     PhysicalAttackMaxValue = 2400;
-                    MagicMinValue = 1200;
-                    MagicMaxValue = 2400;
+                    MagicAttackMinValue = 1200;
+                    MagicAttackMaxValue = 2400;
                     buffUpStrength = 777;
                     buffUpAgility = 555;
                     buffUpIntelligence = 666;
@@ -5171,10 +5083,10 @@ namespace DungeonPlayer
                     description += "\r\n毒耐性、沈黙耐性、スタン耐性、麻痺耐性、凍結耐性、誘惑耐性、鈍化耐性、暗闇耐性、スリップ耐性";
                     description += "\r\n【常備能力】毎ターン、ライフとマナとスキルポイントが回復する。";
                     description += "\r\n魔法消費１０％軽減。  スキルポイント消費１０％軽減。";
-                    PhysicalAttackMinValue = 1126;
-                    PhysicalAttackMaxValue = 1397;
-                    MagicMinValue = 672;
-                    MagicMaxValue = 830;
+                    PhysicalDefenseMinValue = 1126;
+                    PhysicalDefenseMaxValue = 1397;
+                    MagicDefenseMinValue = 672;
+                    MagicDefenseMaxValue = 830;
                     buffUpStrength = 850;
                     buffUpAgility = 620;
                     buffUpIntelligence = 530;
@@ -5207,8 +5119,8 @@ namespace DungeonPlayer
                     description += "\r\n【常備能力】この剣から物理攻撃がヒットした際、ダブルヒットとして扱われる。";
                     PhysicalAttackMinValue = 1680;
                     PhysicalAttackMaxValue = 1855;
-                    MagicMinValue = 1522;
-                    MagicMaxValue = 1728;
+                    MagicAttackMinValue = 1522;
+                    MagicAttackMaxValue = 1728;
                     buffUpAgility = 750;
                     buffUpIntelligence = 950;
                     buffUpMind = 550;
@@ -5244,8 +5156,8 @@ namespace DungeonPlayer
                     description += "\r\n【特殊能力】MPを消費して、無属性のダメージを与える。ダメージ量は蒼の蓄積カウンターに依存する。";
                     PhysicalAttackMinValue = 1050;
                     PhysicalAttackMaxValue = 1150;
-                    MagicMinValue = 1250;
-                    MagicMaxValue = 1350;
+                    MagicAttackMinValue = 1250;
+                    MagicAttackMaxValue = 1350;
                     buffUpStrength = 550;
                     buffUpIntelligence = 1050;
                     buffUpMind = 550;
@@ -5272,8 +5184,8 @@ namespace DungeonPlayer
                     description += "\r\n【常備能力】毎ターン、MPを回復する。";
                     description += "\r\n【特殊能力】全MPを消費して、消費したMPの分だけ、無属性魔法ダメージを与える。";
                     useSpecialAbility = true;
-                    MagicMinValue = 1850;
-                    MagicMaxValue = 2050;
+                    MagicAttackMinValue = 1850;
+                    MagicAttackMaxValue = 2050;
                     buffUpIntelligence = 1250;
                     amplifyMagicAttack = 1.35;
                     amplifyMagicDefense = 1.30;
@@ -5295,8 +5207,6 @@ namespace DungeonPlayer
                 // 素材
                 case Database.COMMON_BLACK_SALT:
                     description = "得たいの知れない黒く変色した物体・・・微妙に何かツンとした匂いがする。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1200000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -5305,8 +5215,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_FEBL_ANIS:
                     description = "フェブルの大地に稀に映える植物。果物のような香りがほんのりする。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1200000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -5315,8 +5223,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SMORKY_HUNNY:
                     description = "煙状のように拡がり、甘い香りを発する植物から、その名が付けられた。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1200000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -5325,8 +5231,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_ANGEL_DUST:
                     description = "天使の衣の一部から食用の繊維が入手出来ると言われている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1200000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -5335,8 +5239,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SUN_TARAGON:
                     description = "濃い光沢のある先の尖った植物。サクサクっとした食感が期待できる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1200000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -5345,8 +5247,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_ECHO_BEAST_MEAT:
                     description = "共鳴音を奏でるのが得意な生物エコービーストのもも肉。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1200000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -5355,8 +5255,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_CHAOS_TONGUE:
                     description = "カオス・ワーデンが最後の断末魔をあげた直後に舌を切り取ると、非常に美味とされている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1200000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -5517,8 +5415,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_REVIVE_POTION_MINI:
                     description = "死亡したパーティメンバーを復活させる薬。ライフ１で復活する。一度使うと無くなる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 2000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
@@ -5700,8 +5596,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_POWER_SURGE:
                     description = "生命の源からパワーの根源を引き出す薬。力＋６００、体＋４００、物攻率＋２０％を付与する。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 500000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5709,8 +5603,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_GENSEI_MAGIC_BOTTLE:
                     description = "精神の源から知恵の源流を引き出す薬。知＋６００、心＋４００、魔攻率＋２０％を付与する。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 500000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5718,8 +5610,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_MIND_ILLUSION:
                     description = "第六感の源からイメージの増幅を引き出す薬。力＋１００、技＋１００、知＋１００、体＋１００、心＋６００、潜力率＋２０％を付与する。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 500000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5727,8 +5617,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_ZETTAI_STAMINAUP:
                     description = "魂の源からオーラの存在を引き出す薬。力＋２００、知＋２００、体＋６００、物防率＋１０％、魔防率＋１０％を付与する。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 500000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5736,8 +5624,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_ZEPHER_BREATH:
                     description = "天性の源から躍動の心を引き出す薬。技＋６００、知＋４００、戦速率＋２０％を付与する。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 500000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5747,8 +5633,6 @@ namespace DungeonPlayer
                     description = "様々なマテリアルを分析し、耐性創生色素を抽出し、一つのシールに仕立てた薬品。";
                     description += "\r\n対象者の毒、沈黙、スタン、麻痺、凍結、誘惑、鈍化、暗闇、スリップを解除する。【戦闘中専用】";
                     description += "\r\n毒耐性、沈黙耐性、スタン耐性、麻痺耐性、凍結耐性、誘惑耐性、鈍化耐性、暗闇耐性、スリップ耐性【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 350000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5758,8 +5642,6 @@ namespace DungeonPlayer
                     description = "『源正酒造』と連携し、酒と薬をうまく調合した退魔の秘薬。";
                     description += "\r\n即死を伴うアクションが行われた場合、即死を回避する。この効果は一度だけ適用される。【戦闘中専用】";
                     description += "\r\nライフが０になった場合、ライフを半分にまで回復する。この効果は一度だけ適用される。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 700000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5769,8 +5651,6 @@ namespace DungeonPlayer
                     description = "神々しく光輝くエーテル剤。見ているだけでも、勇気が湧いてくる。";
                     description += "\r\n次のターンまで、【元核】スキルを一度だけ発動可能となる。【戦闘中専用】";
                     description += "\r\n次のターンまで、全ダメージが一切無効となる。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 750000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5780,8 +5660,6 @@ namespace DungeonPlayer
                     description = "体内に宿る悪しき力を純粋な力へと変換する薬。";
                     description += "\r\n最大ライフを５０％増加させる。その増加した分だけ、ライフ回復する。【戦闘中専用】";
                     description += "\r\nライフを減少させる効果（ライフ％減少、ライフ半分、ライフ１変換）が来た場合、それを回避する。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 750000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5791,8 +5669,6 @@ namespace DungeonPlayer
                     description = "物理的、または精神的な悪循環を払拭させるために開発された特効薬。";
                     description += "\r\n物理攻撃、物理防御、魔法攻撃、魔法防御、戦闘速度、戦闘反応、潜在能力DOWNを解除する。【戦闘中専用】";
                     description += "\r\n物理攻撃、物理防御、魔法攻撃、魔法防御、戦闘速度、戦闘反応、潜在能力DOWNに対する耐性を得る。【戦闘中専用】";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1000000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -5842,26 +5718,26 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_ZELKIS_ARMOR: // ゼルキス専用鎧
                     description = "ゼルキス愛用の鎧。僅かなコーティングが施されている。防御力５～７";
-                    PhysicalAttackMinValue = 5;
-                    PhysicalAttackMaxValue = 7;
+                    PhysicalDefenseMinValue = 5;
+                    PhysicalDefenseMaxValue = 7;
                     cost = 0;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_WHITE_ROD: // エオネ・フルネアが持っている杖
-                    description = "白色の杖。魔力が若干宿っている。魔力３～６";
-                    MagicMinValue = 3;
-                    MagicMaxValue = 6;
+                    description = "白色の杖。魔力が若干宿っている。魔法攻撃３～６";
+                    MagicAttackMinValue = 3;
+                    MagicAttackMaxValue = 6;
                     cost = 0;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BLUE_ROBE: // エオネ・フルネアが着ている防具
-                    description = "青色のローブ。僅かだが、魔法防御が上がる。防御力１～２、水耐性１０";
-                    MinValue = 1;
-                    MaxValue = 2;
+                    description = "青色のローブ。僅かだが、魔法防御が上がる。魔法防御４～８、水耐性１０";
+                    MagicDefenseMinValue = 4;
+                    MagicDefenseMaxValue = 8;
                     ResistIce = 10;
                     cost = 0;
                     AdditionalDescription(ItemType.Armor_Light);
@@ -5881,8 +5757,8 @@ namespace DungeonPlayer
 
                 case Database.EPIC_DEVIL_EYE_ROD:
                     description = "カール伯爵が息子を鍛えるために作成した杖。魔力１５０～２２０";
-                    MagicMinValue = 150;
-                    MagicMaxValue = 220;
+                    MagicAttackMinValue = 150;
+                    MagicAttackMaxValue = 220;
                     cost = 0;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Epic;
@@ -5891,8 +5767,8 @@ namespace DungeonPlayer
 
                 case Database.LEGENDARY_DARKMAGIC_DEVIL_EYE:
                     description = "直接眼に装着させる闇の擬眼。シニキア・カールハンツ自身が作成した本人専用の武具。知＋５４６８、魔力３６２５～３７９０";
-                    MagicMinValue = 3625;
-                    MagicMaxValue = 3790;
+                    MagicAttackMinValue = 3625;
+                    MagicAttackMaxValue = 3790;
                     BuffUpIntelligence = 5468;
                     cost = 0;
                     AdditionalDescription(ItemType.Weapon_Rod);
@@ -5902,8 +5778,8 @@ namespace DungeonPlayer
                     break;
                 case Database.LEGENDARY_DARKMAGIC_DEVIL_EYE_REPLICA:
                     description = "直接眼に装着させる闇の擬眼のレプリカ。シニキア・カールハンツ自身作成による武具。知＋５４６、魔力６２５～７９０";
-                    MagicMinValue = 625;
-                    MagicMaxValue = 790;
+                    MagicAttackMinValue = 625;
+                    MagicAttackMaxValue = 790;
                     BuffUpIntelligence = 546;
                     cost = 0;
                     AdditionalDescription(ItemType.Weapon_Rod);
@@ -5913,8 +5789,8 @@ namespace DungeonPlayer
                     break;
                 case Database.EPIC_DARKMAGIC_DEVIL_EYE_2:
                     description = "直接眼に装着させる闇の擬眼。シニキア・カールハンツ自身が作成した本人専用の武具。知＋８８９、魔力１３３２～１８６２";
-                    MagicMinValue = 1332;
-                    MagicMaxValue = 1862;
+                    MagicAttackMinValue = 1332;
+                    MagicAttackMaxValue = 1862;
                     BuffUpIntelligence = 889;
                     cost = 0;
                     AdditionalDescription(ItemType.Weapon_Rod);
@@ -5924,8 +5800,8 @@ namespace DungeonPlayer
                     break;
                 case Database.EPIC_YAMITUYUKUSA_MOON_ROBE:
                     description = "闇から生まれた露草の葉は魔力の根源を宿していると言われている。魔法防御４２０～５５０、沈黙耐性、誘惑耐性、鈍化耐性、毒耐性、魔攻率＋１２％、闇耐性＋3000、火耐性＋3000";
-                    MagicMinValue = 420;
-                    MagicMaxValue = 550;
+                    MagicDefenseMinValue = 420;
+                    MagicDefenseMaxValue = 550;
                     ResistSilence = true;
                     ResistTemptation = true;
                     ResistSlow = true;
@@ -5940,8 +5816,8 @@ namespace DungeonPlayer
                     break;
                 case Database.EPIC_YAMITUYUKUSA_MOON_ROBE_2:
                     description = "闇から生まれた露草の葉は魔力の根源を宿していると言われている。魔法防御１６２５～１９７０、沈黙耐性、誘惑耐性、鈍化耐性、毒耐性、魔攻率＋２０％、闇耐性＋50000、火耐性＋50000";
-                    MagicMinValue = 1625;
-                    MagicMaxValue = 1970;
+                    MagicDefenseMinValue = 1625;
+                    MagicDefenseMaxValue = 1970;
                     ResistSilence = true;
                     ResistTemptation = true;
                     ResistSlow = true;
@@ -6046,8 +5922,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_NEBARIITO_KUMO:
                     description = "土蜘蛛が構築していた蜘蛛の糸のかけら。かなり粘っこい。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 640;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6064,8 +5938,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_POISON_EKISU:
                     description = "解毒開発はあらゆ毒の要素を研究することから行われる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 860;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6081,11 +5953,11 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_GREEN_LEEF_CHARM:
-                    description = "緑葉の繊維を材質として作られた魔除け。知＋８、心＋４、魔力２～４";
+                    description = "緑葉の繊維を材質として作られた魔除け。知＋８、心＋４、魔法攻撃２～４";
                     BuffUpIntelligence = 8;
                     BuffUpMind = 4;
-                    MagicMinValue = 2;
-                    MagicMaxValue = 4;
+                    MagicAttackMinValue = 2;
+                    MagicAttackMaxValue = 4;
                     cost = 1400;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Common;
@@ -6110,9 +5982,9 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_KASHI_ROD:
-                    description = "樫のパワーが宿っている杖。魔力７～９";
-                    MagicMinValue = 7;
-                    MagicMaxValue = 9;
+                    description = "樫のパワーが宿っている杖。魔法攻撃７～９";
+                    MagicAttackMinValue = 7;
+                    MagicAttackMaxValue = 9;
                     cost = 550;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -6182,10 +6054,10 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_PURE_GREEN_SILK_ROBE:
                     description = "純度の高いシルク素材に緑色素を注入してある。防御力７～１０。魔法防御力２０～３０";
-                    PhysicalAttackMinValue = 7;
-                    PhysicalAttackMaxValue = 10;
-                    MagicMinValue = 20;
-                    MagicMaxValue = 30;
+                    PhysicalDefenseMinValue = 7;
+                    PhysicalDefenseMaxValue = 10;
+                    MagicDefenseMinValue = 20;
+                    MagicDefenseMaxValue = 30;
                     cost = 2500;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Rare;
@@ -6205,8 +6077,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_LIGHT_SHIELD:
                     description = "誰でも持てるほどの軽い盾。盾として最低限の能力しか持ちあわせてない。防御力２～３";
-                    PhysicalAttackMinValue = 2;
-                    PhysicalAttackMaxValue = 3;
+                    PhysicalDefenseMinValue = 2;
+                    PhysicalDefenseMaxValue = 3;
                     cost = 350;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -6225,8 +6097,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_FINE_ARMOR_1:
                     description = "そつなく使える鎧をガンツが強化した。防御力３(+2)～６(+2)";
-                    PhysicalAttackMinValue = 5;
-                    PhysicalAttackMaxValue = 8;
+                    PhysicalDefenseMinValue = 5;
+                    PhysicalDefenseMaxValue = 8;
                     cost = 900;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -6235,8 +6107,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_FINE_SHIELD_1:
                     description = "そつなく使える盾をガンツが強化した。防御力３(+1)～４(+2)";
-                    PhysicalAttackMinValue = 4;
-                    PhysicalAttackMaxValue = 5;
+                    PhysicalDefenseMinValue = 4;
+                    PhysicalDefenseMaxValue = 5;
                     cost = 750;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -6254,9 +6126,9 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_KASHI_ROD_1:
-                    description = "樫のパワーが宿っている杖。魔力７(+3)～９(+3)";
-                    MagicMinValue = 10;
-                    MagicMaxValue = 12;
+                    description = "樫のパワーが宿っている杖。魔法攻撃７(+3)～９(+3)";
+                    MagicAttackMinValue = 10;
+                    MagicAttackMaxValue = 12;
                     cost = 1000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Common;
@@ -6265,8 +6137,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_LETHER_CLOTHING_1:
                     description = "標準的なサイズで作成されたレザー製の衣をガンツが強化した。防御力４(+2)～７(+2)";
-                    PhysicalAttackMinValue = 6;
-                    PhysicalAttackMaxValue = 9;
+                    PhysicalDefenseMinValue = 6;
+                    PhysicalDefenseMaxValue = 9;
                     cost = 980;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -6295,8 +6167,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_FIT_ARMOR:
                     description = "初級者の体質に合うように作られた鎧。動きやすいが、それほど防御力に期待はできない。防御力２～５";
-                    PhysicalAttackMinValue = 2;
-                    PhysicalAttackMaxValue = 5;
+                    PhysicalDefenseMinValue = 2;
+                    PhysicalDefenseMaxValue = 5;
                     cost = 450;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -6305,8 +6177,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_KUSARI_KATABIRA:
                     description = "鎖を編み合わせて作成された鎧。ガンツ直伝の技で強化改良済み。防御力１４(+3)～１８(+3)";
-                    PhysicalAttackMinValue = 17;
-                    PhysicalAttackMaxValue = 21;
+                    PhysicalDefenseMinValue = 17;
+                    PhysicalDefenseMaxValue = 21;
                     cost = 2600;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -6314,11 +6186,11 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_FLOWER_WAND:
-                    description = "花型の取っ手が付いているワンド。ガンツがラナのイメージに合わせたとの事。【特殊能力：有】魔力２０～２４";
+                    description = "花型の取っ手が付いているワンド。ガンツがラナのイメージに合わせたとの事。魔法攻撃２０～２４";
                     description += "\r\n【特殊能力】　MPを回復する。";
                     UseSpecialAbility = true;
-                    MagicMinValue = 20;
-                    MagicMaxValue = 24;
+                    MagicAttackMinValue = 20;
+                    MagicAttackMaxValue = 24;
                     cost = 3000;
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Rare;
@@ -6337,8 +6209,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SUPERIOR_CROSS:
                     description = "レザー製の衣の中でも上質な素材を選定して、作られた舞踏衣。防御力８～１０";
-                    PhysicalAttackMinValue = 8;
-                    PhysicalAttackMaxValue = 10;
+                    PhysicalDefenseMinValue = 8;
+                    PhysicalDefenseMaxValue = 10;
                     cost = 1200;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -6347,10 +6219,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SILK_ROBE:
                     description = "普通のシルク素材をもちいた魔法のローブ。防御力４～８。魔法防御力１０～１５";
-                    PhysicalAttackMinValue = 4;
-                    PhysicalAttackMaxValue = 8;
-                    MagicMinValue = 10;
-                    MagicMaxValue = 15;
+                    PhysicalDefenseMinValue = 4;
+                    PhysicalDefenseMaxValue = 8;
+                    MagicDefenseMinValue = 10;
+                    MagicDefenseMaxValue = 15;
                     cost = 1300;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -6382,8 +6254,8 @@ namespace DungeonPlayer
                 // 防具(Common1)
                 case Database.COMMON_SMART_CLOTHING:
                     description = "着心地も良く、動きやすさも抜群の舞踏衣。防御力２５～２８。";
-                    PhysicalAttackMinValue = 25;
-                    PhysicalAttackMaxValue = 28;
+                    PhysicalDefenseMinValue = 25;
+                    PhysicalDefenseMaxValue = 28;
                     cost = 4600;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -6391,10 +6263,10 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SMART_ROBE:
                     description = "スラリとしたデザインを追求した戦闘向けローブ。防御力１０～１２。魔法防御２０～２２";
-                    PhysicalAttackMinValue = 10;
-                    PhysicalAttackMaxValue = 12;
-                    MagicMinValue = 20;
-                    MagicMaxValue = 22;
+                    PhysicalDefenseMinValue = 10;
+                    PhysicalDefenseMaxValue = 12;
+                    MagicDefenseMinValue = 20;
+                    MagicDefenseMaxValue = 22;
                     cost = 5500;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -6402,8 +6274,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SMART_PLATE:
                     description = "ガッチリした鎧にも関わらず、煩わしさが無い。防御力３０～３５";
-                    PhysicalAttackMinValue = 30;
-                    PhysicalAttackMaxValue = 35;
+                    PhysicalDefenseMinValue = 30;
+                    PhysicalDefenseMaxValue = 35;
                     cost = 5200;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -6412,10 +6284,10 @@ namespace DungeonPlayer
                 // 防具（Rare1）
                 case Database.RARE_DIRGE_ROBE:
                     description = "重々しさを背負うが、確かな魔法耐性を感じられる。防御力２０～２０、魔法防御４０～４０、聖耐性１００、闇耐性１００";
-                    PhysicalAttackMinValue = 20;
-                    PhysicalAttackMaxValue = 20;
-                    MagicMinValue = 40;
-                    MagicMaxValue = 40;
+                    PhysicalDefenseMinValue = 20;
+                    PhysicalDefenseMaxValue = 20;
+                    MagicDefenseMinValue = 40;
+                    MagicDefenseMaxValue = 40;
                     ResistLight = 100;
                     ResistShadow = 100;
                     cost = 12000;
@@ -6425,8 +6297,8 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_DUNSID_PLATE:
                     description = "巷で大人気だったアゼル・ダンシッドが装着していた鎧。防御力５１～５８、火耐性１００、水耐性１００";
-                    PhysicalAttackMinValue = 51;
-                    PhysicalAttackMaxValue = 58;
+                    PhysicalDefenseMinValue = 51;
+                    PhysicalDefenseMaxValue = 58;
                     ResistFire = 100;
                     ResistIce = 100;
                     cost = 12000;
@@ -6437,8 +6309,8 @@ namespace DungeonPlayer
                 // 防具（Common2）
                 case Database.COMMON_SERPENT_ARMOR:
                     description = "サーペント族がよく愛用している鎧。防御力４２～４９";
-                    PhysicalAttackMinValue = 42;
-                    PhysicalAttackMaxValue = 49;
+                    PhysicalDefenseMinValue = 42;
+                    PhysicalDefenseMaxValue = 49;
                     cost = 7000;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -6446,8 +6318,8 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SWIFT_CROSS:
                     description = "非常に瞬発力を出しやすい舞踏衣。防御力３８～４２";
-                    PhysicalAttackMinValue = 38;
-                    PhysicalAttackMaxValue = 32;
+                    PhysicalDefenseMinValue = 38;
+                    PhysicalDefenseMaxValue = 32;
                     cost = 6500;
                     AdditionalDescription(ItemType.Armor_Middle);
                     rareLevel = RareLevel.Common;
@@ -6455,10 +6327,10 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_CHIFFON_ROBE:
                     description = "フワフワとした感触で魔法耐性を持たせてある衣。防御力１５～１８、魔法防御２５～３０";
-                    PhysicalAttackMinValue = 15;
-                    PhysicalAttackMaxValue = 18;
-                    MagicMinValue = 25;
-                    MagicMaxValue = 30;
+                    PhysicalDefenseMinValue = 15;
+                    PhysicalDefenseMaxValue = 18;
+                    MagicDefenseMinValue = 25;
+                    MagicDefenseMaxValue = 30;
                     cost = 7000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Common;
@@ -6467,8 +6339,8 @@ namespace DungeonPlayer
                 // 防具（Rare2）
                 case Database.RARE_SHARKSKIN_ARMOR:
                     description = "鮫の鱗が新しく形状化し、鎧形状となった。防御力６６～７５、聖耐性２５０、火耐性２５０";
-                    PhysicalAttackMinValue = 66;
-                    PhysicalAttackMaxValue = 75;
+                    PhysicalDefenseMinValue = 66;
+                    PhysicalDefenseMaxValue = 75;
                     ResistLight = 250;
                     ResistFire = 250;
                     cost = 13000;
@@ -6478,10 +6350,10 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_BLACK_MAGICIAN_CROSS:
                     description = "魔法の使い手前衛で戦う事を前提として生み出された武闘衣。防御力５２～５８、魔法防御５２～５８、闇耐性２５０、火耐性２５０";
-                    PhysicalAttackMinValue = 52;
-                    PhysicalAttackMaxValue = 58;
-                    MagicMinValue = 52;
-                    MagicMaxValue = 58;
+                    PhysicalDefenseMinValue = 52;
+                    PhysicalDefenseMaxValue = 58;
+                    MagicDefenseMinValue = 52;
+                    MagicDefenseMaxValue = 58;
                     ResistShadow = 250;
                     ResistFire = 250;
                     cost = 12000;
@@ -6491,8 +6363,8 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_RED_THUNDER_ROBE:
                     description = "赤い雷の文様が描かれているローブ。防御力２５～３０、魔法防御６０～７５、聖耐性２５０、火耐性２５０";
-                    PhysicalAttackMinValue = 46;
-                    PhysicalAttackMaxValue = 51;
+                    PhysicalDefenseMinValue = 46;
+                    PhysicalDefenseMaxValue = 51;
                     ResistShadow = 250;
                     ResistFire = 250;
                     cost = 13500;
@@ -6503,8 +6375,8 @@ namespace DungeonPlayer
                 // 防具（ガンツ合成）2階
                 case Database.COMMON_BERSERKER_PLATE:
                     description = "狂戦士バーサーカーの気質が伝わってくる鎧。防御力７１～８２、魔法防御６０～７５、聖耐性２５０、火耐性２５０";
-                    PhysicalAttackMinValue = 71;
-                    PhysicalAttackMaxValue = 82;
+                    PhysicalDefenseMinValue = 71;
+                    PhysicalDefenseMaxValue = 82;
                     cost = 14500;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -6512,10 +6384,10 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_BRIGHTNESS_ROBE:
                     description = "光の輝きを宿らせた洗練されたローブ。防御力３６～４２、魔法防御８０～９０";
-                    PhysicalAttackMinValue = 36;
-                    PhysicalAttackMaxValue = 42;
-                    MagicMinValue = 80;
-                    MagicMaxValue = 90;
+                    PhysicalDefenseMinValue = 36;
+                    PhysicalDefenseMaxValue = 42;
+                    MagicDefenseMinValue = 80;
+                    MagicDefenseMaxValue = 90;
                     cost = 15000;
                     AdditionalDescription(ItemType.Armor_Light);
                     rareLevel = RareLevel.Rare;
@@ -6524,8 +6396,8 @@ namespace DungeonPlayer
                 // オル・ランディス初期装備
                 case Database.COMMON_AURA_ARMOR:
                     description = "オーラをまとっている鎧。ランディス本人の影響によるもの。防御力６８～７６、聖耐性２００";
-                    PhysicalAttackMinValue = 68;
-                    PhysicalAttackMaxValue = 76;
+                    PhysicalDefenseMinValue = 68;
+                    PhysicalDefenseMaxValue = 76;
                     ResistLight = 200;
                     cost = 0;
                     AdditionalDescription(ItemType.Armor_Heavy);
@@ -6535,8 +6407,8 @@ namespace DungeonPlayer
                     break;
                 case Database.EPIC_AURA_ARMOR_OMEGA:
                     description = "永遠なるオーラを帯びた鎧。ランディス本人の精神波動が伝わり続けている。防御力７２０～８６０、聖耐性＋16000、火耐性＋16000";
-                    PhysicalAttackMinValue = 720;
-                    PhysicalAttackMaxValue = 860;
+                    PhysicalDefenseMinValue = 720;
+                    PhysicalDefenseMaxValue = 860;
                     ResistLight = 16000;
                     ResistFire = 16000;
                     cost = 0;
@@ -6548,8 +6420,8 @@ namespace DungeonPlayer
                 // 盾（Common1)
                 case Database.COMMON_SMART_SHIELD:
                     description = "持ちやすく、向きもスッと変えられる盾。防御力１２～１５";
-                    PhysicalAttackMinValue = 12;
-                    PhysicalAttackMaxValue = 15;
+                    PhysicalDefenseMinValue = 12;
+                    PhysicalDefenseMaxValue = 15;
                     cost = 3500;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -6557,8 +6429,8 @@ namespace DungeonPlayer
                 // 盾（Common2)
                 case Database.COMMON_PURE_BRONZE_SHIELD:
                     description = "純度のある青銅で生み出された盾。防御力１８～２４";
-                    PhysicalAttackMinValue = 18;
-                    PhysicalAttackMaxValue = 24;
+                    PhysicalDefenseMinValue = 18;
+                    PhysicalDefenseMaxValue = 24;
                     cost = 4800;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Common;
@@ -6566,8 +6438,8 @@ namespace DungeonPlayer
                 // 盾（Rare1)
                 case Database.RARE_BLUE_SKY_SHIELD:
                     description = "青く広大な海が描かれている盾。防御力２５～３３、聖耐性３００、水耐性３００";
-                    PhysicalAttackMinValue = 25;
-                    PhysicalAttackMaxValue = 33;
+                    PhysicalDefenseMinValue = 25;
+                    PhysicalDefenseMaxValue = 33;
                     ResistLight = 300;
                     ResistIce = 300;
                     cost = 9500;
@@ -6577,8 +6449,8 @@ namespace DungeonPlayer
                 // 盾（ガンツ合成）２階
                 case Database.RARE_STRONG_SERPENT_SHIELD: // 半透明の石灰、青鮫の鱗
                     description = "強固な青鮫の鱗を更に高質化させ、低温度化で固めた盾。防御力３８～４０";
-                    PhysicalAttackMinValue = 38;
-                    PhysicalAttackMaxValue = 40;
+                    PhysicalDefenseMinValue = 38;
+                    PhysicalDefenseMaxValue = 40;
                     cost = 11000;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Rare;
@@ -6628,8 +6500,6 @@ namespace DungeonPlayer
                 #region "１階"
                 case Database.POOR_BLACK_MATERIAL: // ドロップアイテム（１階任意）
                     description = "純黒色の立方体。使用済みマテリアルのため、使い道はない。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 20;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -6637,8 +6507,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_YELLOW_MATERIAL:
                     description = "純黄色の立方体。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 6000;
                     AdditionalDescription(ItemType.None);
                     rareLevel = RareLevel.Common;
@@ -6647,8 +6515,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_WARM_NO_KOUKAKU: // ドロップアイテム（甲殻ワーム）
                     description = "死骸となったワームの甲殻の欠片。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 60;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6656,8 +6522,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_BEATLE_TOGATTA_TUNO: // ドロップアイテム（ひ弱なビートル）
                     description = "死骸となったビートルの角。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 72;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6665,8 +6529,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_GREEN_SIKISO: // ドロップアイテム（グリーン・チャイルド）
                     description = "樹木の表面にほんのり残っていた緑色素。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 80;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6674,8 +6536,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_MANDORAGORA_ROOT: // ドロップアイテム（マンドラゴラ）
                     description = "マンドラゴラ死に際の根には、魔力が宿る言われている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 250;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6684,8 +6544,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SUN_LEAF: // ドロップアイテム（サン・フラワー）
                     description = "【武具素材】太陽の恩恵を受けずに人工的な光で育った葉。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 90;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6693,8 +6551,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_INAGO: // ドロップアイテム（レッドホッパー）
                     description = "奇妙な形をした死骸。佃煮にすると上手いが少し度胸が必要。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 110;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6702,8 +6558,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SPIDER_SILK: // ドロップアイテム（アースパイダー）
                     description = "蜘蛛が攻撃の際に撒き散らした良質な形状の糸。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 120;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6711,8 +6565,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_ALRAUNE_KAHUN: // ドロップアイテム（アルラウネ）
                     description = "アルラウネから採取される花粉は媚薬の元となる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 300;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6720,8 +6572,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_MARY_KISS: // ドロップアイテム（ポイズン・マリー）
                     description = "最後に投げられた胞子。キスマークの形をしてる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1060;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -6730,8 +6580,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_RABBIT_KEGAWA: // ドロップアイテム（雑食ウサギ）
                     description = "柔軟性のあるウサギの毛皮。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 150;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6739,8 +6587,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_RABBIT_MEAT: // ドロップアイテム（雑食ウサギ）
                     description = "雑食で育ったウサギの肉。煮てから焼いて食べると美味しい。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 160;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6748,8 +6594,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_TAKA_FETHER: // ドロップアイテム（俊敏な鷹）
                     description = "鷹の羽には、鷹の精神が宿るといわれている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 172;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6757,8 +6601,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_PLANTNOID_SEED: // ドロップアイテム（ワンダーシード）
                     description = "体当たり時に紛れ落ちていたプラントノイド種。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 350;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6766,8 +6608,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_TOGE_HAETA_SYOKUSYU: // ドロップアイテム（フランシスナイト）
                     description = "攻撃用の触手として異常発達した触手。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 370;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6775,8 +6615,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_HYUI_SEED: // ドロップアイテム（ショットガン・ヒューイ）
                     description = "ばら撒かれた種弾丸に紛れていた種。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1220;
                     AdditionalDescription(ItemType.Material_Potion); description = description.Insert(0, Database.DESCRIPTION_POTION_MATERIAL);
                     rareLevel = RareLevel.Rare;
@@ -6785,8 +6623,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_OOKAMI_FANG: // ドロップアイテム（俊敏な鷹）
                     description = "番狼の牙は、今にも食いかかってきそうだ。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 210;
                     AdditionalDescription(ItemType.Material_Equip); description = description.Insert(0, Database.DESCRIPTION_EQUIP_MATERIAL);
                     rareLevel = RareLevel.Common;
@@ -6794,8 +6630,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_BRILLIANT_RINPUN: // ドロップアイテム（ブリリアント・バタフライ）
                     description = "バタフライ死の直後、一際輝いた部分の燐粉を採取。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 222;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6803,8 +6637,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_RED_HOUSI: // ドロップアイテム（ブラッドモス）
                     description = "胞子攻撃の際に噴出された胞子。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 450;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6812,8 +6644,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_MOSSGREEN_EKISU: // ドロップアイテム（モスグリーン・ダディ）
                     description = "この特有エキスは特殊な耐性を与えると言われている。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1310;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -6833,8 +6663,6 @@ namespace DungeonPlayer
                 #region "２階"
                 case Database.POOR_BLACK_MATERIAL2: // ドロップアイテム（２階任意）
                     description = "純黒色の立方体。若干の改良が試みた後があるが、使い道はない。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 900;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -6843,8 +6671,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_DAGGERFISH_UROKO: // ドロップアイテム（ダガーフィッシュ）
                     description = "牙魚の鱗は、薄いが歯ごたえのある硬さがウリの一つ。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 242;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6852,8 +6678,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SIPPUU_HIRE: // ドロップアイテム（疾風・フライングフィッシュ）
                     description = "疾魚のヒレは、柔らかさと香ばしさがウリの一つ。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 254;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6861,8 +6685,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_WHITE_MAGATAMA: // ドロップアイテム（オーブ・シェルフィッシュ）
                     description = "その白さは、質素ではあるが、品格のある形をしている。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 264;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6870,8 +6692,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_BLUE_MAGATAMA: // ドロップアイテム（オーブ・シェルフィッシュ）
                     description = "その青さは、目立たないが、高貴な雰囲気を出している。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 264;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6879,8 +6699,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_KURIONE_ZOUMOTU: // ドロップアイテム（スプラッシュ・クリオネ）
                     description = "臓物の中でも特に鮮度の高い部分を切り出してある。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 512;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6889,8 +6707,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_BLUEWHITE_SHARP_TOGE: // ドロップアイテム（乱暴なシー・アーチン）
                     description = "戦闘中にアーチンが飛ばしてきた、鋭い青白の針。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 310;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6898,8 +6714,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_RENEW_AKAMI: // ドロップアイテム（ローリング・マグロ）
                     description = "活きの良いマグロの赤身。ユング町では売れ筋No.1　売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 334;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6907,8 +6721,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SEA_WASI_KUTIBASI: // ドロップアイテム（青海鷲）
                     description = "異常成長した海鷲のくちばし、高温で焼くと香ばしい味がする。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 366;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6916,8 +6728,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_WASI_BLUE_FEATHER: // ドロップアイテム（青海鷲）
                     description = "異常成長した海鷲の青い羽。幸運を呼ぶと言われている。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 370;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6925,8 +6735,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_GANGAME_EGG: // ドロップアイテム（頑亀）
                     description = "異常な大きさの卵。生のままでは食べられない。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 724;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6934,8 +6742,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_JOE_TONGUE: // ドロップアイテム（ビッグマウス・ジョー）
                     description = "長い。硬い。ゴツい。料理の腕が問われる。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 2628;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Rare;
@@ -6943,8 +6749,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_JOE_ARM: // ドロップアイテム（ビッグマウス・ジョー）
                     description = "蛙とは思えないぐらいの大きい腕。骨格部は武具素材として使えそう。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 2722;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -6952,8 +6756,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_JOE_LEG: // ドロップアイテム（ビッグマウス・ジョー）
                     description = "初めて見る者は、これが蛙の足だとは思わず、美味しそうに食べる。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 2812;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Rare;
@@ -6962,8 +6764,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SOFT_BIG_HIRE: // ドロップアイテム（モーグル・マンタ）
                     description = "極薄のヒレ。コリコリした感触で、歯ごたえ十分。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 522;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6971,8 +6771,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_PURE_WHITE_BIGEYE: // ドロップアイテム（浮遊するゴールドフィッシュ）
                     description = "純白の目玉のため、逆に食事の際は恐ろしい印象を受ける。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 588;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -6980,8 +6778,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_HALF_TRANSPARENT_ROCK_ASH: // ドロップアイテム（バニッシング・コーラル）
                     description = "石灰は本来特定の色が付いてるが、これは不透明であり純度が低い。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 622;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6989,8 +6785,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_GOTUGOTU_KARA: // ドロップアイテム（護衛隊・ハーミットクラブ）
                     description = "ちょっとやそっとのパンチ・キックでは壊れない殻。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1250;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -6998,8 +6792,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_SEKIKASSYOKU_HASAMI: // ドロップアイテム（キャシー・ザ・キャンサー）
                     description = "キャシーのハサミは、通常のハサミと比べて形状が異常発達している。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 4200;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7008,8 +6800,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_KOUSITUKA_MATERIAL: // ドロップアイテム（ブラック・スターフィッシュ）
                     description = "ブラック・スターフィッシュは死亡後、硬質化し物質成分が変化する。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 820;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7017,8 +6807,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_NANAIRO_SYOKUSYU: // ドロップアイテム（レインボー・アネモネ）
                     description = "カラフルな触手のため、数多くの魚がこの罠に引っかかると言われている。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 890;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -7026,8 +6814,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_AOSAME_KENSHI: // ドロップアイテム（エッジド・ハイ・シャーク）
                     description = "強度が高く、形状も綺麗な剣歯。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1700;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7035,8 +6821,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_AOSAME_UROKO: // ドロップアイテム（エッジド・ハイ・シャーク）
                     description = "普通に触ると柔らかいが、対衝撃性に優れている。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 1800;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7044,8 +6828,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_EIGHTEIGHT_KUROSUMI: // ドロップアイテム（エイト・エイト）
                     description = "純黒色の墨。少し粘りっけがある。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 5100;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7053,8 +6835,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_EIGHTEIGHT_KYUUBAN: // ドロップアイテム（エイト・エイト）
                     description = "様々な形状をした吸盤。細かく刻んで焼くと大変美味しい。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 5200;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Rare;
@@ -7063,8 +6843,6 @@ namespace DungeonPlayer
 
                 case Database.EPIC_ORB_GROUNDSEA_STAR: // ドロップアイテム（二階の守護者：大海蛇リヴィアサン）
                     description = "リヴィアサン撃破の際、落とされた宝珠。稀にスペル詠唱が２回発生する。魔防率＋１０％、光耐性2500、水耐性2500、沈黙耐性、凍結耐性";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     amplifyMagicDefense = 1.1f;
                     ResistLight = 2500;
@@ -7079,8 +6857,6 @@ namespace DungeonPlayer
                 #region "３階"
                 case Database.POOR_BLACK_MATERIAL3: // ドロップアイテム（３階任意）
                     description = "純黒色の立方体。マテリアル圧縮を試みたが、残骸のままである。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 9500;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -7089,8 +6865,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_ORC_MOMONIKU: // ドロップアイテム（突進オーク）
                     description = "こんがり焼き上げたもも肉、定評のある味わい。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 10500;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -7098,8 +6872,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SNOW_CAT_KEGAWA: // ドロップアイテム（スノーキャット）
                     description = "上質な雪猫の毛皮。高く売れるが実用性は武具職人に腕次第。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 11200;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7107,8 +6879,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_BIG_HIZUME: // ドロップアイテム（ウォー・マンモス）
                     description = "マンモスの足跡を見て、その蹄を食料と考える人は数少ない。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 12600;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -7116,8 +6886,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_FAIRY_POWDER: // ドロップアイテム（ウィングド・コールドフェアリー）
                     description = "妖精から採取されるパウダーは、知力活性の源となる。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 28000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -7126,8 +6894,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_GOTUGOTU_KONBOU: // ドロップアイテム（ブルータル・オーガ）
                     description = "でかすぎてこのままでは使い物にならない、素材自体は丈夫な物。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 14100;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7135,8 +6901,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_LIZARD_UROKO: // ドロップアイテム（ハイドロー・リザード）
                     description = "青黒の自然色で形成される鱗は、迷彩にも使われる場合がある。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 15400;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7144,8 +6908,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_EMBLEM_OF_PENGUIN: // ドロップアイテム（ペンギンスター）
                     description = "ペンギン最強説を謡う者が各地のペンギンに配布してるらしい。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 16600;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7153,8 +6915,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SHARPNESS_TIGER_TOOTH: // ドロップアイテム（剣歯虎）
                     description = "剣歯虎の牙からは強靭性エキスが摘出可能である。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 36000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -7162,8 +6922,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_BEAR_CLAW_KAKERA: // ドロップアイテム（フェロシアス・レイジベア）
                     description = "憤怒しきったベアが研ぎ澄ました爪。切っ先は赤い血で染まっている。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 110000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7172,8 +6930,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_TOUMEI_SNOW_CRYSTAL: // ドロップアイテム（ウィンター・オーブ）
                     description = "雪結晶として形成されたウィンター・オーブの欠片。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 21000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -7181,8 +6937,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_WHITE_AZARASHI_MEAT: // ドロップアイテム（追従する雪アザラシ）
                     description = "極寒の地で取れた肉は身がしまっており、大変歯ごたえがある。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 23600;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -7190,8 +6944,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_ARGONIAN_PURPLE_UROKO: // ドロップアイテム（知的なアルゴニアン）
                     description = "アルゴニアンから剥ぎ取った鱗は光沢のある紫色をしている。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 45500;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7199,8 +6951,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_BLUE_DANGAN_KAKERA: // ドロップアイテム（蒼い弾丸の欠片）
                     description = "魔法生物が更に結晶化させてきた弾丸の欠片。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 68000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
@@ -7208,8 +6958,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_PURE_CRYSTAL: // ドロップアイテム（ピュア・ブリザード・クリスタル）
                     description = "純正のクリスタル、希少価値が高く、トレード材料に使われる。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 175000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7218,8 +6966,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_WOLF_KEGAWA: // ドロップアイテム（紫目・ウェアウルフ）
                     description = "ごわごわとしたウルフの毛皮。少しとげとげしてて触ると痛い。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 26000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7227,8 +6973,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_FROZEN_HEART: // ドロップアイテム（フロスト・ハート）
                     description = "魔法生物が結晶化した物の心臓部。鼓動が聞こえてきそうだ。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 28200;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -7236,8 +6980,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_ESSENCE_OF_WIND: // ドロップアイテム（ウィンドブレイカー）
                     description = "風のマテリアル合成素材。武具職人の力量が問われる。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 59000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -7245,8 +6987,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_TUNDRA_DEER_HORN: // ドロップアイテム（ツンドラ・ロングホーン・ディア）
                     description = "神の使いと称される鹿の偉大なる角、膨大な魔力が込められている。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 210000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7256,8 +6996,6 @@ namespace DungeonPlayer
                     // 攻撃ヒット時、稀に対象を凍結させ、＋効果のBUFFを全て消す。物理攻撃１０％UP、魔法攻撃１０％UP【常時】
                     description = "ハウリングシーザー撃破の際、落とされた宝珠。水魔法コスト３０％軽減、水魔法３０％強化";
                     description += "\r\n【特殊能力】　攻撃ヒット時、稀に対象を凍結させ、＋効果のBUFFを全て消す。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     manaCostReductionIce = 0.3f;
                     amplifyIce = 1.30f;
                     cost = 0;
@@ -7269,8 +7007,6 @@ namespace DungeonPlayer
                 #region "４階"
                 case Database.POOR_BLACK_MATERIAL4: // ドロップアイテム（４階任意）
                     description = "純黒色の立方体。素質変化を試みたが、不変のままである。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 78000;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -7279,8 +7015,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_HUNTER_SEVEN_TOOL: // ドロップアイテム（幻暗ハンター）
                     description = "ハンター達が長年利用してきたアイテム類は、戦況を有利な状況へと導いてくれる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 127000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7288,8 +7022,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_BEAST_KEGAWA: // ドロップアイテム（ビーストマスター）
                     description = "ビーストマスターが所有していた毛皮。弾力と剛質性を兼ね備えている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 131000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7297,8 +7029,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_BLOOD_DAGGER_KAKERA: // ドロップアイテム（エルダーアサシン）
                     description = "ダガーに付着している血液は、どの獣の血か既にわからない。血液成分をキッチリ鑑定すれば、何かに使えそうだ。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 138000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7306,8 +7036,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SABI_BUGU: // ドロップアイテム（フォールンシーカー）
                     description = "堕ちたる求道者は、武具のメンテナンスを全く行ってない。鍛冶屋がメンテナンスすれば元の状態に戻せそうだ。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 188000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7316,8 +7044,6 @@ namespace DungeonPlayer
 
                 case Database.RARE_ESSENCE_OF_DARK: // ドロップアイテム（マスターロード）
                     description = "闇のマテリアル合成素材。武具職人の力量が問われる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 179000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7325,8 +7051,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_EXECUTIONER_ROBE: // ドロップアイテム（エグゼキュージョナー）
                     description = "執行人のローブには呪いの念がこめられており、通常の人間には扱えない。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 191000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7334,8 +7058,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_SEEKER_HEAD: // ドロップアイテム（闇の眷属）
                     description = "求道者の末期姿。闇の眷属は求道者の潜在能力を吸い取り、それを糧として力を得ていた。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 216000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7343,8 +7065,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_MASTERBLADE_KAKERA: // ドロップアイテム（黒炎マスターブレイド）
                     description = "マスターブレイドの威力は宿る色により変化すると言われている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 263000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7352,8 +7072,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_MASTERBLADE_FIRE: // ドロップアイテム（黒炎マスターブレイド）
                     description = "マスターブレイドに宿らせる火。禍々しさは消えうせている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 273000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Rare;
@@ -7361,8 +7079,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_GREAT_JEWELCROWN: // ドロップアイテム（シン・ザ・ダークエルフ）
                     description = "派手な装飾により煌びやかに光っている。宝石素材のみ使い道あり。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 450000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7370,8 +7086,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_ESSENCE_OF_SHINE: // ドロップアイテム（サン・ストライダー）
                     description = "聖のマテリアル合成素材。ポーション合成スキルの力量が問われる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 360000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7379,8 +7093,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_DEMON_HORN: // ドロップアイテム（アークデーモン）
                     description = "悪魔の角には咎を収める能力が込められている。その能力は角の繊維の奥深くに隠されている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 370000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7388,8 +7100,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_KUMITATE_TENBIN: // ドロップアイテム（天秤を司る者）
                     description = "魔法生命の天秤より得られた素材。このままでは使えないが・・・";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 380000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7397,8 +7107,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_KUMITATE_TENBIN_DOU: // ドロップアイテム（天秤を司る者）
                     description = "魔法生命の天秤より得られた素材。このままでは使えないが・・・";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 380000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7406,8 +7114,6 @@ namespace DungeonPlayer
                     break;
                 case Database.COMMON_KUMITATE_TENBIN_BOU: // ドロップアイテム（天秤を司る者）
                     description = "魔法生命の天秤より得られた素材。このままでは使えないが・・・";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 380000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7415,8 +7121,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_ESSENCE_OF_FLAME: // ドロップアイテム（業・フレイムスラッシャー）
                     description = "火のマテリアル合成素材。武具職人の力量が問われる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 385000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7424,8 +7128,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_BLACK_SEAL_IMPRESSION: // ドロップアイテム（デビル・チルドレン）
                     description = "黒色とは分からないほど、禍々しいまでにドス黒い印鑑。黒い液体はエキスとして使えそうだ。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 520000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7434,8 +7136,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_ONRYOU_HAKO: // ドロップアイテム（ハウリングホラー）
                     description = "何が飛び出てくるか分からない・・・箱からは強烈な恐怖が伝わってくるため、肝のすわった鍛冶職人にしか開くことは出来ない。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 475000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7443,8 +7143,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_ANGEL_SILK: // ドロップアイテム（ペインエンジェル）
                     description = "純白かつ透明なシルク素材。触っている感触が分からないほど軽い。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 490000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
@@ -7452,8 +7150,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_CHAOS_SIZUKU: // ドロップアイテム（カオスワーデン)
                     description = "どれほどの人格者であったとしても、これに触れた途端、カオス属性に落とし込むエキスが内部に凝固化して入っている。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 560000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7461,8 +7157,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_DOOMBRINGER_TUKA: // ドロップアイテム（ドゥームブリンガー）
                     description = "闇を滅するドゥームブリンガーの柄。不思議と握られた跡がない。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 666666;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7470,8 +7164,6 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_DOOMBRINGER_KAKERA: // ドロップアイテム（ドゥームブリンガー）
                     description = "闇を滅するドゥームブリンガーの欠片。不思議と血液は付着してない。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 666666;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7493,8 +7185,6 @@ namespace DungeonPlayer
                     break;
                 case Database.EPIC_ORB_DESTRUCT_FIRE: // ドロップアイテム（闇焔レギィンアーゼ）
                     description = "レギィンアーゼ撃破の際、落とされた宝珠。クリティカルダメージ量を更に強化する。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Epic;
@@ -7504,8 +7194,6 @@ namespace DungeonPlayer
                 #region "５階"
                 case Database.POOR_BLACK_MATERIAL5: // ドロップアイテム
                     description = "純黒色の立方体。元素への還元を試みたが、還元はされないまま。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 8400;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -7514,8 +7202,6 @@ namespace DungeonPlayer
 
                 case "ハート・オブ・フェニックス": // ドロップアイテム（Phoenix）
                     description = "伝説の生物Phoenixの心得。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 110000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7523,8 +7209,6 @@ namespace DungeonPlayer
                     break;
                 case "ハート・オブ・ドラゴン": // ドロップアイテム（Emerald Dragon）
                     description = "伝説の生物Emerald Dragonの心得。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 120000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7532,8 +7216,6 @@ namespace DungeonPlayer
                     break;
                 case "ハート・オブ・モンスター": // ドロップアイテム（Nine Tail）
                     description = "伝説の生物Nine Tailの心得。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 130000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7541,8 +7223,6 @@ namespace DungeonPlayer
                     break;
                 case "ハート・オブ・ジャッジ": // ドロップアイテム（Judgement）
                     description = "伝説の生物Judgementの心得。売却専用品。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 140000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7783,9 +7463,9 @@ namespace DungeonPlayer
                 #endregion
                 #region "レベル範囲に応じたドロップアイテム(Epic Only)"
                 case Database.EPIC_RING_OF_OSCURETE:
-                    description = "古代賢者オスキュレーテが幼少時代に付けていたリング。力＋１５、技＋７、知＋３０、体力＋４、心＋８、魔力４５～６２";
-                    MagicMinValue = 45;
-                    MagicMaxValue = 62;
+                    description = "古代賢者オスキュレーテが幼少時代に付けていたリング。力＋１５、技＋７、知＋３０、体力＋４、心＋８、魔法攻撃４５～６２";
+                    MagicAttackMinValue = 45;
+                    MagicAttackMaxValue = 62;
                     BuffUpStrength = 15;
                     BuffUpAgility = 7;
                     BuffUpIntelligence = 30;
@@ -7797,11 +7477,11 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_MERGIZD_SOL_BLADE:
-                    description = "古代賢者メルギズドが幼少時代に付けていたブレード。力＋３０、知＋１６、攻撃力４５～７８、魔力３６～４２";
+                    description = "古代賢者メルギズドが幼少時代に付けていたブレード。力＋３０、知＋１６、攻撃力４５～７８、魔法攻撃３６～４２";
                     PhysicalAttackMinValue = 45;
                     PhysicalAttackMaxValue = 78;
-                    MagicMinValue = 36;
-                    MagicMaxValue = 42;
+                    MagicAttackMinValue = 36;
+                    MagicAttackMaxValue = 42;
                     BuffUpStrength = 30;
                     BuffUpIntelligence = 16;
                     AdditionalDescription(ItemType.Weapon_Heavy);
@@ -7811,8 +7491,8 @@ namespace DungeonPlayer
 
                 case Database.EPIC_GARVANDI_ADILORB:
                     description = "古代賢者エーディルが幼少時代に付けていた水晶。技＋６５、知＋１１０、体＋６３、魔力２０１～３４４";
-                    MagicMinValue = 201;
-                    MagicMaxValue = 344;
+                    MagicAttackMinValue = 201;
+                    MagicAttackMaxValue = 344;
                     buffUpAgility = 65;
                     buffUpIntelligence = 110;
                     buffUpStamina = 63;
@@ -7847,8 +7527,8 @@ namespace DungeonPlayer
                 case Database.EPIC_SHEZL_MYSTIC_FORTUNE:
                     description = "古代賢者シェズルが幼少時代に付けていた衣。【常備能力：有】魔法防御４６０～５９８、沈黙耐性、スタン耐性、麻痺耐性、知＋５６０、魔攻率＋１０％、魔防率＋１０％、光耐性2000、理耐性2000";
                     description += "\r\n【常備能力】　毎ターン、マナが回復する。";
-                    MagicMinValue = 460;
-                    MagicMaxValue = 598;
+                    MagicDefenseMinValue = 460;
+                    MagicDefenseMaxValue = 598;
                     ResistSilence = true;
                     ResistStun = true;
                     ResistParalyze = true;
@@ -7865,10 +7545,10 @@ namespace DungeonPlayer
                 case Database.EPIC_FLOW_FUNNEL_OF_THE_ZVELDOZE:
                     description = "古代賢者ツヴェルドーゼが幼少時代に付けていた装飾品。【常備能力：有】物理防御０～１０５０、魔法防御０～１０５０、心＋５００、光耐性3500、闇耐性3500";
                     description += "\r\n【常備能力】　戦闘開始時、ワード・オブ・ライフとライズ・オブ・イメージが自分自身にかかる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 1050;
-                    MagicMinValue = 0;
-                    MagicMaxValue = 1050;
+                    PhysicalDefenseMinValue = 0;
+                    PhysicalDefenseMaxValue = 1050;
+                    MagicDefenseMinValue = 0;
+                    MagicDefenseMaxValue = 1050;
                     amplifyPotential = 1.2f;
                     buffUpMind = 500;
                     ResistShadow = 3500;
@@ -7882,8 +7562,8 @@ namespace DungeonPlayer
                     description = "古代賢者メルギズドが青年時代に愛用していたブレード。攻撃力５４５～６１２、魔力４２３～４６５、力＋２８５、知＋１６８、戦攻率＋１５％、魔攻率＋１５％";
                     PhysicalAttackMinValue = 545;
                     PhysicalAttackMaxValue = 612;
-                    MagicMinValue = 423;
-                    MagicMaxValue = 465;
+                    MagicAttackMinValue = 423;
+                    MagicAttackMaxValue = 465;
                     buffUpStrength = 285;
                     buffUpIntelligence = 168;
                     amplifyPhysicalAttack = 1.15f;
@@ -7971,8 +7651,8 @@ namespace DungeonPlayer
                 #region "合成１階"
                 case Database.COMMON_KOUKAKU_ARMOR: // ワームの甲殻
                     description = "甲殻部を繋ぎ合わせた鎧に、魔法耐性を若干付与させた一品。防御力１１～１５。火耐性２０";
-                    PhysicalAttackMinValue = 11;
-                    PhysicalAttackMaxValue = 15;
+                    PhysicalDefenseMinValue = 11;
+                    PhysicalDefenseMaxValue = 15;
                     this.ResistFire = 20;
                     cost = 1800;
                     AdditionalDescription(ItemType.Armor_Heavy);
@@ -7981,8 +7661,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SISSO_TUKEHANE: // 鷹の白羽、太陽の葉
                     description = "毛皮に幾つかの白羽を埋め込んだアクセサリ。力＋３、技＋３、心＋３";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     BuffUpStrength = 3;
                     BuffUpAgility = 3;
                     BuffUpMind = 3;
@@ -8002,8 +7680,8 @@ namespace DungeonPlayer
 
                 case Database.COMMON_BLUE_COPPER_ARMOR_KAI:
                     description = "青銅の材質強度を落とさずに仕上げられた鎧。防御力２０～２５。";
-                    PhysicalAttackMinValue = 20;
-                    PhysicalAttackMaxValue = 25;
+                    PhysicalDefenseMinValue = 20;
+                    PhysicalDefenseMaxValue = 25;
                     cost = 3200;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Common;
@@ -8012,8 +7690,6 @@ namespace DungeonPlayer
 
                 case Database.COMMON_RABBIT_SHOES: // ウサギの毛皮、スパイダーシルク
                     description = "ウサギの毛皮と質の良いスパイダーシルクを合成した出来たシューズ。技＋１２、体力＋１０";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     BuffUpAgility = 12;
                     BuffUpStamina = 10;
                     cost = 3200;
@@ -8025,8 +7701,6 @@ namespace DungeonPlayer
                 #region "５階"
                 case "四神究極摂理": // ハート・オブ・フェニックス,ハート・オブ・ドラゴン,ハート・オブ・モンスター,ハート・オブ・ジャッジ
                     description = "伝説生物の心得を結集させたアクセサリ。魔法とスキルを同時併用可能になる。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 0;
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Epic;
@@ -8036,8 +7710,6 @@ namespace DungeonPlayer
                 #region "Duelist達のアイテム"
                 case Database.RARE_PURE_GREEN_WATER:
                     description = "約束された回復薬。毎日１度だけスキルポイントを100%回復。";
-                    PhysicalAttackMinValue = 0;
-                    PhysicalAttackMaxValue = 0;
                     cost = 25000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Rare;
@@ -8081,8 +7753,8 @@ namespace DungeonPlayer
                 case Database.EPIC_SHUVALTZ_FLORE_SHIELD:
                     description = "シュヴァルツェ愛用の剣。剣形状となっているが、防御を行うために作成された剣。【常備能力：有】防御力１９５～２３９  物防率＋１２％";
                     description += "\r\n【常備能力】　ターン経過毎に、最大ライフの５％だけライフ回復する。";
-                    PhysicalAttackMinValue = 195;
-                    PhysicalAttackMaxValue = 239;
+                    PhysicalDefenseMinValue = 195;
+                    PhysicalDefenseMaxValue = 239;
                     amplifyPhysicalDefense = 1.2f;
                     AdditionalDescription(ItemType.Shield);
                     rareLevel = RareLevel.Epic;
@@ -8091,10 +7763,10 @@ namespace DungeonPlayer
                 case Database.EPIC_SHUVALTZ_FLORE_ARMOR:
                     description = "シュヴァルツェ愛用の衣。ローブ系統でありながら、その防御力は計り知れない。【常備能力：有】防御力３６５～４２２　魔法防御４１５～５４６、沈黙耐性、知＋４２０、魔防率＋１２％、闇耐性2000、水耐性2000";
                     description += "\r\n【常備能力】　ターン経過毎に、最大マナの５％だけマナ回復する。";
-                    PhysicalAttackMinValue = 365;
-                    PhysicalAttackMaxValue = 422;
-                    MagicMinValue = 415;
-                    MagicMaxValue = 546;
+                    PhysicalDefenseMinValue = 365;
+                    PhysicalDefenseMaxValue = 422;
+                    MagicDefenseMinValue = 415;
+                    MagicDefenseMaxValue = 546;
                     ResistSilence = true;
                     amplifyMagicDefense = 1.2f;
                     buffUpIntelligence = 420;
@@ -8135,8 +7807,8 @@ namespace DungeonPlayer
                     description = "ルベル・ゼルキス愛用の大剣。剣からは物理・魔法の両方のオーラが感じ取れる。攻撃力２８０～７６０、魔力３２０～３９０";
                     PhysicalAttackMinValue = 280;
                     PhysicalAttackMaxValue = 760;
-                    MagicMinValue = 320;
-                    MagicMaxValue = 390;
+                    MagicAttackMinValue = 320;
+                    MagicAttackMaxValue = 390;
                     cost = 0;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
                     rareLevel = RareLevel.Rare;
@@ -8145,10 +7817,10 @@ namespace DungeonPlayer
 
                 case Database.COMMON_ARMOR_OF_RVEL: // ルベル・ゼルキス専用武器
                     description = "ルベル・ゼルキス愛用の鎧。鎧は魔法の光沢を帯びており、堅牢な城を連想させる。防御力１４０～１８０、魔法防御１７０～２２０";
-                    PhysicalAttackMinValue = 140;
-                    PhysicalAttackMaxValue = 180;
-                    MagicMinValue = 170;
-                    MagicMaxValue = 220;
+                    PhysicalDefenseMinValue = 140;
+                    PhysicalDefenseMaxValue = 180;
+                    MagicDefenseMinValue = 170;
+                    MagicDefenseMaxValue = 220;
                     cost = 0;
                     AdditionalDescription(ItemType.Armor_Heavy);
                     rareLevel = RareLevel.Rare;
@@ -8157,8 +7829,8 @@ namespace DungeonPlayer
 
                 case Database.EPIC_LADA_ACHROMATIC_ORB:
                     description = "ラダ愛用の漆黒のオーブ。オーブに光がどう照らされても決して輝く事はない。魔力１３２０～１６４４";
-                    MagicMinValue = 1320;
-                    MagicMaxValue = 1644;
+                    MagicAttackMinValue = 1320;
+                    MagicAttackMaxValue = 1644;
                     cost = 0;
                     AdditionalDescription(ItemType.Weapon_Light);
                     rareLevel = RareLevel.Epic;
@@ -8176,9 +7848,9 @@ namespace DungeonPlayer
                     break;
 
                 case Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR_0:
-                    description = "神の遺産の一つ。淡黒の光を自己発光しており、真空波動が鎧に付与されている。防御力１～２";
-                    PhysicalAttackMinValue = 1;
-                    PhysicalAttackMaxValue = 2;
+                    description = "神の遺産の一つ。淡黒の光を自己発光しており、真空波動が鎧に付与されている。防御力１～２"; // omega
+                    PhysicalDefenseMinValue = 1;
+                    PhysicalDefenseMaxValue = 2;
                     AdditionalDescription(ItemType.Armor_Middle);
                     equipablePerson = Equipable.Verze;
                     rareLevel = RareLevel.Legendary;
@@ -8236,8 +7908,8 @@ namespace DungeonPlayer
 
                 case Database.RARE_BLACK_AERIAL_ARMOR_REPLICA:
                     description = "神の遺産を模倣した鎧。黒く光る発行色が施してある。防御力８９～１０１";
-                    PhysicalAttackMinValue = 89;
-                    PhysicalAttackMaxValue = 101;
+                    PhysicalDefenseMinValue = 89;
+                    PhysicalDefenseMaxValue = 101;
                     AdditionalDescription(ItemType.Armor_Middle);
                     equipablePerson = Equipable.Verze;
                     rareLevel = RareLevel.Rare;
@@ -8246,10 +7918,10 @@ namespace DungeonPlayer
 
                 case Database.EPIC_BLACK_AERIAL_ARMOR_REPLICA:
                     description = "神の遺産を模倣した鎧。黒く光る発行色が施してある。物理防御力１１６５～１３４０、魔法防御力１０９２～１１８３";
-                    PhysicalAttackMinValue = 1165;
-                    PhysicalAttackMaxValue = 1340;
-                    MagicMinValue = 1092;
-                    MagicMaxValue = 1183;
+                    PhysicalDefenseMinValue = 1165;
+                    PhysicalDefenseMaxValue = 1340;
+                    MagicDefenseMinValue = 1092;
+                    MagicDefenseMaxValue = 1183;
                     AdditionalDescription(ItemType.Armor_Middle);
                     equipablePerson = Equipable.Verze;
                     rareLevel = RareLevel.Epic;
@@ -8258,10 +7930,10 @@ namespace DungeonPlayer
 
                 case Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR:
                     description = "神の遺産の一つ。淡黒の光を自己発光しており、真空波動が鎧に付与されている。物理防御力２７８２～２９７９、魔法防御力２６７４～３０１２";
-                    PhysicalAttackMinValue = 2782;
-                    PhysicalAttackMaxValue = 2979;
-                    MagicMinValue = 2674;
-                    MagicMaxValue = 3012;
+                    PhysicalDefenseMinValue = 2782;
+                    PhysicalDefenseMaxValue = 2979;
+                    MagicDefenseMinValue = 2674;
+                    MagicDefenseMaxValue = 3012;
                     ResistBlind = true;
                     ResistFrozen = true;
                     ResistNoResurrection = true;
@@ -8392,8 +8064,6 @@ namespace DungeonPlayer
             get { return PhysicalAttackMaxValue; }
             set { PhysicalAttackMaxValue = value; }
         }
-        public int MagicMinValue { get; set; } // 後編追加
-        public int MagicMaxValue { get; set; } // 後編追加
 
         public int Cost
         {

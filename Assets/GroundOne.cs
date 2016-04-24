@@ -212,24 +212,15 @@ namespace DungeonPlayer
             WE2 = objWE2.AddComponent<TruthWorldEnvironment>();
 
             MC = objMC.AddComponent<MainCharacter>();
-            MC.FirstName = Database.EIN_WOLENCE;
-            MC.FullName = Database.EIN_WOLENCE_FULL;
-            MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
-            MC.Agility = Database.MAINPLAYER_FIRST_AGILITY;
-            MC.Intelligence = Database.MAINPLAYER_FIRST_INTELLIGENCE;
-            MC.Stamina = Database.MAINPLAYER_FIRST_STAMINA;
-            MC.Mind = Database.MAINPLAYER_FIRST_MIND;
             MC.AvailableMana = true;
             MC.AvailableSkill = true;
-            MC.CurrentLife = MC.MaxLife;
-            MC.CurrentMana = MC.MaxMana;
-            MC.CurrentSkillPoint = MC.MaxSkillPoint;
-            MC.BattleActionCommandList[0] = Database.ATTACK_EN;
-            MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
-
             SC = objSC.AddComponent<MainCharacter>();
+            SC.AvailableMana = true;
+            SC.AvailableSkill = true;
             TC = objTC.AddComponent<MainCharacter>();
-            
+            TC.AvailableMana = true;
+            TC.AvailableSkill = true;
+
             // debug
             //WE.AvailablePotionshop = true;
             //WE.AvailableEquipShop = true;
@@ -521,29 +512,6 @@ namespace DungeonPlayer
             //MC.BattleActionCommandList[6] = Database.ARCHETYPE_EIN;
             //MC.BattleActionCommandList[7] = Database.RECOVER;
             //MC.BattleActionCommandList[8] = Database.STANCE_OF_SUDDENNESS;
-
-            SC = objSC.AddComponent<MainCharacter>();
-            SC.FullName = Database.RANA_AMILIA_FULL;
-            SC.FirstName = Database.RANA_AMILIA;
-            SC.Strength = Database.SECONDPLAYER_FIRST_STRENGTH;
-            SC.Agility = Database.SECONDPLAYER_FIRST_AGILITY;
-            SC.Intelligence = Database.SECONDPLAYER_FIRST_INTELLIGENCE;
-            SC.Stamina = Database.SECONDPLAYER_FIRST_STAMINA;
-            SC.Mind = Database.SECONDPLAYER_FIRST_MIND;
-            SC.AvailableMana = true;
-            SC.AvailableSkill = true;
-            SC.Level = 1;
-            SC.Exp = 0;
-            SC.BaseLife = 50;
-            SC.CurrentLife = 80;
-            SC.BaseSkillPoint = 100;
-            SC.CurrentSkillPoint = 100;
-            //SC.Gold = 10; // [警告]：ゴールドの所持は別クラスにするべきです。
-            SC.BaseMana = 30;
-            SC.CurrentMana = 130;
-            SC.MainWeapon = new ItemBackPack("ナックル");
-            SC.MainArmor = new ItemBackPack("ライト・クロス");
-            SC.Accessory = new ItemBackPack("珊瑚のブレスレット");
 
             //TC = objTC.AddComponent<MainCharacter>();
             //TC.FirstName = Database.OL_LANDIS;

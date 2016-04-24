@@ -50,18 +50,23 @@ namespace DungeonPlayer
         public Text strength;
         public Text addStrength;
         public Text addStrengthFood;
+        public Text totalStrength;
         public Text agility;
         public Text addAgility;
         public Text addAgilityFood;
+        public Text totalAgility;
         public Text intelligence;
         public Text addIntelligence;
         public Text addIntelligenceFood;
+        public Text totalIntelligence;
         public Text stamina;
         public Text addStamina;
         public Text addStaminaFood;
+        public Text totalStamina;
         public Text mind;
         public Text addMind;
         public Text addMindFood;
+        public Text totalMind;
         public Button plus1;
         public Button plus10;
         public Button plus100;
@@ -150,6 +155,9 @@ namespace DungeonPlayer
 
             RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
 
+            if (GroundOne.MC == null) { Debug.Log("status MC is null...?"); }
+            if (GroundOne.SC == null) { Debug.Log("status SC is null...?"); }
+            if (GroundOne.TC == null) { Debug.Log("status TC is null...?"); }
             if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
             if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
             if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
@@ -1998,6 +2006,32 @@ namespace DungeonPlayer
             groupTargetCommand.SetActive(false);
             CommandFilter.SetActive(false);
         }
+
+        private enum CoreType
+        {
+            Strength,
+            Agility,
+            Intelligence,
+            Stamina,
+            Mind
+        }
+
+        private void SettingCoreParameter(CoreType coreType, int basicValue, int addAccessoryValue, int addFoodValue, Text txtBasic, Text txtBuff, Text txtFood, Text txtTotal)
+        {
+            int totalValue = 0;
+
+            totalValue = basicValue;
+            txtBasic.text = basicValue.ToString();
+
+            txtBuff.text = "+" + addAccessoryValue.ToString();
+            totalValue += addAccessoryValue;
+
+            txtFood.text = "+" + addFoodValue.ToString();
+            totalValue += addFoodValue;
+
+            txtTotal.text = "= " + totalValue.ToString();
+        }
+
         private void SettingCharacterData(MainCharacter chara)
         {
             this.txtName.text = chara.FullName;
@@ -2011,35 +2045,12 @@ namespace DungeonPlayer
                 this.txtExperience.text = "-----" + " / " + "-----";
             }
 
-            this.strength.text = chara.Strength.ToString();
-            if (chara.BuffStrength_Accessory == 0) this.addStrength.text = "";
-            else this.addStrength.text = " + " + chara.BuffStrength_Accessory.ToString();
-            if (chara.BuffStrength_Food == 0) this.addStrengthFood.text = "";
-            else this.addStrengthFood.text = " + " + chara.BuffStrength_Food.ToString();
 
-            this.agility.text = chara.Agility.ToString();
-            if (chara.BuffAgility_Accessory == 0) this.addAgility.text = "";
-            else this.addAgility.text = " + " + chara.BuffAgility_Accessory.ToString();
-            if (chara.BuffAgility_Food == 0) this.addAgilityFood.text = "";
-            else this.addAgilityFood.text = " + " + chara.BuffAgility_Food.ToString();
-
-            this.intelligence.text = chara.Intelligence.ToString();
-            if (chara.BuffIntelligence_Accessory == 0) this.addIntelligence.text = "";
-            else this.addIntelligence.text = " + " + chara.BuffIntelligence_Accessory.ToString();
-            if (chara.BuffIntelligence_Food == 0) this.addIntelligenceFood.text = "";
-            else this.addIntelligenceFood.text = " + " + chara.BuffIntelligence_Food.ToString();
-
-            this.stamina.text = chara.Stamina.ToString();
-            if (chara.BuffStamina_Accessory == 0) this.addStamina.text = "";
-            else this.addStamina.text = " + " + chara.BuffStamina_Accessory.ToString();
-            if (chara.BuffStamina_Food == 0) this.addStaminaFood.text = "";
-            else this.addStaminaFood.text = " + " + chara.BuffStamina_Food.ToString();
-
-            this.mind.text = chara.Mind.ToString();
-            if (chara.BuffMind_Accessory == 0) this.addMind.text = "";
-            else this.addMind.text = " + " + chara.BuffMind_Accessory.ToString();
-            if (chara.BuffMind_Food == 0) this.addMindFood.text = "";
-            else this.addMindFood.text = " + " + chara.BuffMind_Food.ToString();
+            SettingCoreParameter(CoreType.Strength, chara.Strength, chara.BuffStrength_Accessory, chara.BuffStrength_Food, this.strength,  this.addStrength, this.addStrengthFood, this.totalStrength);
+            SettingCoreParameter(CoreType.Intelligence, chara.Intelligence, chara.BuffIntelligence_Accessory, chara.BuffIntelligence_Food, this.intelligence, this.addIntelligence, this.addIntelligenceFood, this.totalIntelligence);
+            SettingCoreParameter(CoreType.Agility, chara.Agility, chara.BuffAgility_Accessory, chara.BuffAgility_Food, this.agility, this.addAgility, this.addAgilityFood, this.totalAgility);
+            SettingCoreParameter(CoreType.Stamina, chara.Stamina, chara.BuffStamina_Accessory, chara.BuffStamina_Food, this.stamina, this.addStamina, this.addStaminaFood, this.totalStamina);
+            SettingCoreParameter(CoreType.Mind, chara.Mind, chara.BuffMind_Accessory, chara.BuffMind_Food, this.mind, this.addMind, this.addMindFood, this.totalMind);
 
             // over shifting
             if (this.useOverShifting)

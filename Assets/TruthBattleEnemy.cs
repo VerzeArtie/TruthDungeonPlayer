@@ -5790,7 +5790,7 @@ namespace DungeonPlayer
                     {
                         if (AP.Math.RandomInteger(100) < PrimaryLogic.EmblemOfValkyrieValue(player))
                         {
-                            NowStunning(player, target, (int)PrimaryLogic.EmblemOfValkyrieValue_A(player));
+                            NowStunning(player, target, (int)PrimaryLogic.EmblemOfValkyrieValue_A(player), false);
                         }
                     }
                     // エムブレム・オブ・ハデスによる効果
@@ -5834,12 +5834,12 @@ namespace DungeonPlayer
                                 }
                                 else
                                 {
-                                    NowStunning(player, target, crushingBlow);
+                                    NowStunning(player, target, crushingBlow, false);
                                 }
                             }
                             else
                             {
-                                NowStunning(player, target, crushingBlow);
+                                NowStunning(player, target, crushingBlow, false);
                             }
                         }
                     }
@@ -6650,7 +6650,7 @@ namespace DungeonPlayer
             {
                 if (AP.Math.RandomInteger(100) < PrimaryLogic.EmblemOfValkyrieValue(player))
                 {
-                    NowStunning(player, target, (int)PrimaryLogic.EmblemOfValkyrieValue_A(player));
+                    NowStunning(player, target, (int)PrimaryLogic.EmblemOfValkyrieValue_A(player), false);
                 }
             }
             // エムブレム・オブ・ハデスによる効果
@@ -7130,7 +7130,7 @@ namespace DungeonPlayer
                 if ((GroundOne.TC != null) && (!GroundOne.TC.Dead)) { group.Add(GroundOne.TC); }
                 for (int ii = 0; ii < group.Count; ii++)
                 {
-                    NowStunning(group[ii], group[ii], 2);
+                    NowStunning(group[ii], group[ii], 1, true);
                 }
                 return;
             }
