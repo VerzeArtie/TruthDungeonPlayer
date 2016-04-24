@@ -13684,10 +13684,174 @@ namespace DungeonPlayer
         // 絡みつくフランシスに遭遇済みの場合
         public static void Message40005(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：っくそ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：どうしたのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、１階のボスなんだがな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：これがもう強すぎてだな、全然歯がたたねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：無理に突っ込みすぎなんじゃないの？"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.MC.Level < 15)
+            {
+                messageList.Add("ラナ：って、バカアイン・・・レベル" + GroundOne.MC.Level.ToString() + "じゃないのよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：そんなんで勝てるわけないでしょ・・・はあああぁぁぁ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、狙ってやったわけじゃねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：単に突っ込んでたら、辿り付いちまったからな！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：それをバカって言うのよもう・・・はあああぁあぁぁ・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：レベルは・・・" + GroundOne.MC.Level.ToString() + "ね。まあそれなりにやってるみたいだけど。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("ラナ：まあ良いわ。ちょっと、よく聞きなさいよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：第一、ちゃんとレベルを上げる事。良いわね？"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.MC.Level < 15)
+            {
+            }
+            else
+            {
+                messageList.Add("ラナ：LV" + GroundOne.MC.Level.ToString() + "だし、それなりにやってるみたいだけど。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：パラメタの割り振りは慎重にね。無茶な上げ方してると後々苦しくなるわよ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("ラナ：第二、何も考えずにズンズカ進まないこと。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.dungeonEvent21KeyOpen || GroundOne.WE.dungeonEvent22KeyOpen)
+            {
+                messageList.Add("ラナ：警告を示すような看板とか、途中に何も無かったわけ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、あったけどな。でもそれなりにダンジョン探索しながら進めてきたつもりだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ふーん、ならいいんだけど・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：警告を示すような看板とか、途中に何も無かったわけ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッゲ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：やっぱりあったんだ。少しはそういう所にも注意してよね、ホント。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("ラナ：第三、これが結構大事なんだけど、良い装備を揃えるようにすること。"); eventList.Add(ActionEvent.None);
+            if (GroundOne.MC.MainWeapon != null)
+            {
+                if (GroundOne.MC.MainWeapon.Rare == ItemBackPack.RareLevel.Rare || GroundOne.MC.MainWeapon.Rare == ItemBackPack.RareLevel.Epic)
+                {
+                    messageList.Add("アイン：今装備してるのは【" + GroundOne.MC.MainWeapon.Name + "】で、それなりに良い装備だぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：へえ、結構いい物持ってるじゃない♪じゃあ言う事無いわね。"); eventList.Add(ActionEvent.None);
+                }
+                else if (GroundOne.MC.MainWeapon.Rare == ItemBackPack.RareLevel.Common)
+                {
+                    messageList.Add("ラナ：アインが今持ってるのって【" + GroundOne.MC.MainWeapon.Name + "】よね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：普通に使える装備みたいだけど、もう少し強い武器を探すといいわよ。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：っちょっと・・・【" + GroundOne.MC.MainWeapon.Name + "】って使えない装備してるわね。"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD)
+                    {
+                        messageList.Add("ラナ：まあその装備が何なのか、分かってるかはどうかは別としても・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    messageList.Add("ラナ：ダンジョンちゃんと探索してれば、もう少しマシな武器が見つかるはずよ。"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            messageList.Add("ラナ：とにかく、レベルアップ。ダンジョン探索。装備の充実よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：これさえやれば、それなりに解けるようにはなってるから、頑張ってよね。ホント。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ハイ。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.AlreadyCommunicate = true;
+            GroundOne.WE.Truth_CommunicationLana1_2 = true;
         }
         // ２階開始時
         public static void Message40006(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：っお、こんな所に居たのか。ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアイン、ちょうど良かったわ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ、そのあからさまな挨拶。。。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：実はね、とってもイイ事を思いついたの。ちょっとコッチコッチ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、おぉ、分かったって。どこ行くんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランラン薬品店の前にて・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：何だ、薬品店の前じゃないか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイン、ちょっとコレ飲んでみてよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：紫色のポーションだな。一体何が起こるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっとコレ飲んでみてよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：永続型なのか？非戦闘時でも使えるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：飲んでみてよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ・・・最初から嫌な予感はしてたが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：致死薬じゃねえよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そんなワケないでしょ。ッホラ、とっとと飲め♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、行くぜ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッゴクリ・・・』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：特に変化は感じられないようだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あっ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：どう？効いてきた？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何だかすげえ体が引き締まった感じがするぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：一体どんな効果を狙ったんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：身体の耐性能力を増強させる薬よ。今のは耐解毒効果なんだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：通常の解毒作用はもちろん効果はあるんだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：それに加えて、戦闘中であれば、その後ずっと毒耐性が付くってわけ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：へぇ！？すげえじゃねえか、それ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ、今のところ解毒作用のカテゴリーしか作れないんだけどね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、それだけでも大したもんだぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ、お前はやっぱすげえぜ！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、ありがと♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：いろいろレパートリー増やしていくわね、ご購入お願いします♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、頼んだぜ！また買いに来るからな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインは" + Database.COMMON_RESIST_POISON + "を手に入れた。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(Database.COMMON_RESIST_POISON); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
+
+            GroundOne.WE.Truth_CommunicationLana21 = true;
         }
         // ３階開始時
         public static void Message40007(ref List<string> messageList, ref List<ActionEvent> eventList)

@@ -674,6 +674,20 @@ namespace DungeonPlayer
                 NormalTapOK();
             }
             #endregion
+            #region "絡みつくフランシスに遭遇済みの場合"
+            else if (false) // after !we.Truth_CommunicationLana1_2 && Truth_KnownTileInfo[252] == true && !we.TruthCompleteSlayBoss1
+            {
+                MessagePack.Message40005(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "２階開始時"
+            else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.Truth_CommunicationLana21)
+            {
+                MessagePack.Message40006(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "イベントが特に無い場合"
             else
             {
