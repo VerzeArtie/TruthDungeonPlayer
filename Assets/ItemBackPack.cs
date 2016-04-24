@@ -304,7 +304,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "プレート・アーマー": // ３階アイテム
-                    description = "強い鋼素材を元にして、折り目を無くすように作られた鎧。防御力２４～３１";
+                    description = "強い鋼素材を元にして、折り目を無くすように作られた鎧。物理防御２４～３１";
                     PhysicalDefenseMinValue = 24;
                     PhysicalDefenseMaxValue = 31;
                     cost = 9600;
@@ -313,7 +313,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ラメラ・アーマー": // ３階アイテム
-                    description = "薄めの鋼板を繋ぎ合わせ、着こなしの良さと貫通系に対する防御を両立させた鎧。防御力２１～２７";
+                    description = "薄めの鋼板を繋ぎ合わせ、着こなしの良さと貫通系に対する防御を両立させた鎧。物理防御２１～２７";
                     PhysicalDefenseMinValue = 21;
                     PhysicalDefenseMaxValue = 27;
                     cost = 8100;
@@ -322,7 +322,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "シャムシール": // ３階アイテム
-                    description = "貫通系攻撃ではなく、曲線に流れる力が引き出されるように作られた剣。攻撃力４０～６５";
+                    description = "貫通系攻撃ではなく、曲線に流れる力が引き出されるように作られた剣。物理攻撃４０～６５";
                     PhysicalAttackMinValue = 40;
                     PhysicalAttackMaxValue = 65;
                     cost = 9000;
@@ -387,7 +387,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "エスパダス": // ダンジョン４階のアイテム
-                    description = "太古のエスパーダ種族が栄えた時代に作られた剣。攻撃力１３１～１４５";
+                    description = "太古のエスパーダ種族が栄えた時代に作られた剣。物理攻撃１３１～１４５";
                     PhysicalAttackMinValue = 131;
                     PhysicalAttackMaxValue = 145;
                     cost = 9200;
@@ -403,7 +403,7 @@ namespace DungeonPlayer
                     limitValue = OTHER_ITEM_STACK_SIZE;
                     break;
                 case "アヴォイド・クロス": // ダンジョン４階のアイテム
-                    description = "戦闘中の回避を主眼において作成された舞踏衣。防御力２４～２９";
+                    description = "戦闘中の回避を主眼において作成された舞踏衣。物理防御２４～２９";
                     PhysicalDefenseMinValue = 24;
                     PhysicalDefenseMaxValue = 29;
                     cost = 14000;
@@ -412,7 +412,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ブリガンダィン": // ダンジョン４階のアイテム
-                    description = "薄型軽装でかつ耐久性を高める金属片で縫われた鎧。防御力２６～３１";
+                    description = "薄型軽装でかつ耐久性を高める金属片で縫われた鎧。物理防御２６～３１";
                     PhysicalDefenseMinValue = 26;
                     PhysicalDefenseMaxValue = 31;
                     cost = 11000;
@@ -421,7 +421,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ソード・オブ・ブルールージュ": // ダンジョン４階のアイテム
-                    description = "青い宝玉と赤い刀帯が付与されている剣。攻撃力１２７～１６１";
+                    description = "青い宝玉と赤い刀帯が付与されている剣。物理攻撃１２７～１６１";
                     PhysicalAttackMinValue = 127;
                     PhysicalAttackMaxValue = 161;
                     cost = 78000;
@@ -449,7 +449,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ロリカ・セグメンタータ": // ダンジョン４階のアイテム
-                    description = "強烈な打撃・殴打系に耐えられる鎧。防御力３５～３９";
+                    description = "強烈な打撃・殴打系に耐えられる鎧。物理防御３５～３９";
                     PhysicalDefenseMinValue = 35;
                     PhysicalDefenseMaxValue = 39;
                     cost = 13000;
@@ -528,7 +528,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.LEGENDARY_GOD_FIRE_GLOVE: // "オル・ランディス　炎神グローブ": 後編編集
-                    description = "FiveSeekerの一人オル・ランディスの右手を常時炎で包んでいるグローブ。力＋１６９９、攻撃力２２００～２６００";
+                    description = "FiveSeekerの一人オル・ランディスの右手を常時炎で包んでいるグローブ。力＋１６９９、物理攻撃２２００～２６００";
                     PhysicalAttackMinValue = 2200;
                     PhysicalAttackMaxValue = 2600;
                     buffUpStrength = 1699;
@@ -549,7 +549,7 @@ namespace DungeonPlayer
                 // e 後編編集
 
                 case Database.POOR_PRACTICE_SWORD: // アイン初期装備
-                    description = "初心者向けの剣。威力はほとんどなく、剣を振る練習に向いている。攻撃力１～３";
+                    description = "初心者向けの剣。威力はほとんどなく、剣を振る練習に向いている。物理攻撃１～３";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 3;
                     cost = 100;
@@ -558,7 +558,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_PRACTICE_KNUCKLE: // ラナ初期装備
-                    description = "初心者向けのナックル。殺傷力は極めて低い。攻撃力１～２";
+                    description = "初心者向けのナックル。殺傷力は極めて低い。物理攻撃１～２";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 2;
                     cost = 100;
@@ -567,7 +567,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "白銀の剣（レプリカ）": // ヴェルゼ初期装備
-                    description = "ヴェルゼが以前装備していた剣を自前で作成したレプリカ。攻撃力３７～５８";
+                    description = "ヴェルゼが以前装備していた剣を自前で作成したレプリカ。物理攻撃３７～５８";
                     PhysicalAttackMinValue = 37;
                     PhysicalAttackMaxValue = 58;
                     cost = 0;
@@ -576,7 +576,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ショートソード": // ガンツの武具屋販売（ダンジョン１階）
-                    description = "小回りがよく利く標準的な剣。攻撃力４～９";
+                    description = "小回りがよく利く標準的な剣。物理攻撃４～９";
                     PhysicalAttackMinValue = 4;
                     PhysicalAttackMaxValue = 9;
                     cost = 500;
@@ -585,7 +585,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "洗練されたロングソード": // ガンツの武具屋販売（ダンジョン１階）
-                    description = "ある一定の力を持たせる事で十分な力を発揮できる剣。攻撃力１０～２０";
+                    description = "ある一定の力を持たせる事で十分な力を発揮できる剣。物理攻撃１０～２０";
                     PhysicalAttackMinValue = 10;
                     PhysicalAttackMaxValue = 20;
                     cost = 1200;
@@ -594,7 +594,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "青銅の剣": // ガンツの武具屋販売（ダンジョン２階）
-                    description = "青銅の材質を良好に引き出した剣。攻撃力２５～３７";
+                    description = "青銅の材質を良好に引き出した剣。物理攻撃２５～３７";
                     PhysicalAttackMinValue = 25;
                     PhysicalAttackMaxValue = 37;
                     cost = 3200;
@@ -603,7 +603,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "メタルフィスト": // ガンツの武具屋販売（ダンジョン２階）
-                    description = "メタル製の材料をグローブの形に仕立て上げた一品。攻撃力２２～３３";
+                    description = "メタル製の材料をグローブの形に仕立て上げた一品。物理攻撃２２～３３";
                     PhysicalAttackMinValue = 22;
                     PhysicalAttackMaxValue = 33;
                     cost = 2600;
@@ -612,7 +612,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "プラチナソード": // ガンツの武具屋販売（ダンジョン３階）
-                    description = "プラチナ製で作成された剣。攻撃力４２～６８";
+                    description = "プラチナ製で作成された剣。物理攻撃４２～６８";
                     PhysicalAttackMinValue = 42;
                     PhysicalAttackMaxValue = 68;
                     cost = 7700;
@@ -621,7 +621,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ファルシオン": // ガンツの武具屋販売（ダンジョン３階）
-                    description = "繊細な切れ味よりも、叩き斬る事に特化した剣。攻撃力３５～７７";
+                    description = "繊細な切れ味よりも、叩き斬る事に特化した剣。物理攻撃３５～７７";
                     PhysicalAttackMinValue = 35;
                     PhysicalAttackMaxValue = 77;
                     cost = 8200;
@@ -631,7 +631,7 @@ namespace DungeonPlayer
                     break;
 
                 case "アイアンクロー": // ガンツの武具屋販売（ダンジョン３階）
-                    description = "鉄製のかぎ爪が付与されているグローブ。攻撃力４５～５５";
+                    description = "鉄製のかぎ爪が付与されているグローブ。物理攻撃４５～５５";
                     PhysicalAttackMinValue = 45;
                     PhysicalAttackMaxValue = 55;
                     cost = 6900;
@@ -640,7 +640,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ライトプラズマブレード": // ガンツの武具屋販売（ダンジョン４階）
-                    description = "光と稲妻を剣の中に宿らせた。ガンツ自慢の一品。攻撃力１２３～１５１";
+                    description = "光と稲妻を剣の中に宿らせた。ガンツ自慢の一品。物理攻撃１２３～１５１";
                     PhysicalAttackMinValue = 123;
                     PhysicalAttackMaxValue = 151;
                     cost = 32000;
@@ -649,7 +649,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "イスリアルフィスト": // ガンツの武具屋販売（ダンジョン４階）
-                    description = "空想物理学をモチーフにした純オリハルコン製グローブ。攻撃力１４４～１６７";
+                    description = "空想物理学をモチーフにした純オリハルコン製グローブ。物理攻撃１４４～１６７";
                     PhysicalAttackMinValue = 144;
                     PhysicalAttackMaxValue = 167;
                     cost = 28000;
@@ -660,7 +660,7 @@ namespace DungeonPlayer
 
                 // s 後編編集
                 case Database.LEGENDARY_FELTUS:
-                    description = "柄無し、利き手無し、無形の神剣。心を有する者がその真価を発揮できる。攻撃力１～８９７４";
+                    description = "柄無し、利き手無し、無形の神剣。心を有する者がその真価を発揮できる。物理攻撃１～８９７４";
                     description += "\r\n【常備能力】任意の行動を行うたびに、神の蓄積カウンターが一つ自分にBUFFとして蓄積する。蓄積されたカウンターの分だけ、【心】パラメタが１００上昇する。最大30個まで蓄積が行える。";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 8974;
@@ -671,7 +671,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "双剣  ジュノセレステ":
-                    description = "鍛冶屋ヴァスタ三剣の一つ。逆・順、前・後、遠・近、相反の剣。双の視点が必要。【特殊能力：有】攻撃力１０５７～２８９６";
+                    description = "鍛冶屋ヴァスタ三剣の一つ。逆・順、前・後、遠・近、相反の剣。双の視点が必要。【特殊能力：有】物理攻撃１０５７～２８９６";
                     UseSpecialAbility = true;
                     PhysicalAttackMinValue = 1057;
                     PhysicalAttackMaxValue = 2896;
@@ -681,7 +681,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "極剣  ゼムルギアス":
-                    description = "鍛冶屋ヴァスタ三剣の一つ。力・技・知・体・心、五の剣。全能力が必要。【特殊能力：有】攻撃力１６１６～１６２０";
+                    description = "鍛冶屋ヴァスタ三剣の一つ。力・技・知・体・心、五の剣。全能力が必要。【特殊能力：有】物理攻撃１６１６～１６２０";
                     UseSpecialAbility = true;
                     PhysicalAttackMinValue = 1616;
                     PhysicalAttackMaxValue = 1620;
@@ -692,7 +692,7 @@ namespace DungeonPlayer
                     break;
 
                 case "クロノス・ロマティッド・ソード":
-                    description = "鍛冶屋ガンツの最高傑作の一つ。時間軸を超えた攻撃を可能とする剣。【特殊能力：有】攻撃力２０１２～２５９３";
+                    description = "鍛冶屋ガンツの最高傑作の一つ。時間軸を超えた攻撃を可能とする剣。【特殊能力：有】物理攻撃２０１２～２５９３";
                     UseSpecialAbility = true;
                     PhysicalAttackMinValue = 2012;
                     PhysicalAttackMaxValue = 2593;
@@ -702,7 +702,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "ヘパイストス・パナッサロイニ":
-                    description = "鍛冶屋ガンツの最高傑作の一つ。時間軸に関する魔法とスキルを無効化する鎧。【特殊能力：有】防御力１２４１～１３０９";
+                    description = "鍛冶屋ガンツの最高傑作の一つ。時間軸に関する魔法とスキルを無効化する鎧。【特殊能力：有】物理防御１２４１～１３０９";
                     UseSpecialAbility = true;
                     PhysicalDefenseMinValue = 1241;
                     PhysicalDefenseMaxValue = 1309;
@@ -722,7 +722,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.POOR_COTE_OF_PLATE: // アイン初期装備
-                    description = "初心者がまず初めに装備するチュニック。防御力２～４";
+                    description = "初心者がまず初めに装備するチュニック。物理防御２～４";
                     PhysicalDefenseMinValue = 2;
                     PhysicalDefenseMaxValue = 4;
                     cost = 100;
@@ -731,7 +731,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_LIGHT_CROSS: // ラナ初期装備
-                    description = "身軽に動け、かつ、戦闘向けに作成される衣類は舞踏衣と呼ばれている。防御力１～２";
+                    description = "身軽に動け、かつ、戦闘向けに作成される衣類は舞踏衣と呼ばれている。物理防御１～２";
                     PhysicalDefenseMinValue = 1;
                     PhysicalDefenseMaxValue = 2;
                     cost = 100;
@@ -740,7 +740,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "黒真空の鎧（レプリカ）": // ヴェルゼ初期装備
-                    description = "ヴェルゼが以前装備していた鎧を自前で作成したレプリカ。防御力１５～１８";
+                    description = "ヴェルゼが以前装備していた鎧を自前で作成したレプリカ。物理防御１５～１８";
                     PhysicalDefenseMinValue = 15;
                     PhysicalDefenseMaxValue = 18;
                     cost = 0;
@@ -749,7 +749,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "冒険者用の鎖かたびら": // ガンツの武具屋販売（ダンジョン１階）
-                    description = "冒険者がよく好んで使う鎖かたびら。防御力１～３";
+                    description = "冒険者がよく好んで使う鎖かたびら。物理防御１～３";
                     PhysicalDefenseMinValue = 1;
                     PhysicalDefenseMaxValue = 3;
                     cost = 400;
@@ -758,7 +758,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "青銅の鎧": // ガンツの武具屋販売（ダンジョン１階）
-                    description = "手頃な重さであり、モンスターの攻撃をよく受け止められる鎧。防御力３～５";
+                    description = "手頃な重さであり、モンスターの攻撃をよく受け止められる鎧。物理防御３～５";
                     PhysicalDefenseMinValue = 3;
                     PhysicalDefenseMaxValue = 5;
                     cost = 1500;
@@ -767,7 +767,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "真鍮の鎧": // ２階アイテム
-                    description = "真鍮製で出来た鎧。防御力４～８";
+                    description = "真鍮製で出来た鎧。物理防御４～８";
                     PhysicalDefenseMinValue = 4;
                     PhysicalDefenseMaxValue = 8;
                     cost = 1900;
@@ -776,7 +776,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "光沢のある鉄のプレート": // ガンツの武具屋販売（ダンジョン２階）
-                    description = "若干の光沢が採用されており、着ているものを安心させる鎧プレート。防御力１１～１５";
+                    description = "若干の光沢が採用されており、着ているものを安心させる鎧プレート。物理防御１１～１５";
                     PhysicalDefenseMinValue = 11;
                     PhysicalDefenseMaxValue = 15;
                     cost = 3700;
@@ -786,7 +786,7 @@ namespace DungeonPlayer
                     break;
                 case "シルクの武道衣": // ガンツの武具屋販売（ダンジョン２階）
                 case "シルクローブ": // スパイダーシルク、１階で入手した素材が２階ラナ参加以降でガンツ武具販売になる。
-                    description = "シルク製で生成された頑丈な武道衣。防御力５～９";
+                    description = "シルク製で生成された頑丈な武道衣。物理防御５～９";
                     PhysicalDefenseMinValue = 5;
                     PhysicalDefenseMaxValue = 9;
                     cost = 3100;
@@ -795,7 +795,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "シルバーアーマー": // ガンツの武具屋販売（ダンジョン３階）
-                    description = "純銀へのこだわりで生成された鎧。防御力２２～３０";
+                    description = "純銀へのこだわりで生成された鎧。物理防御２２～３０";
                     PhysicalDefenseMinValue = 22;
                     PhysicalDefenseMaxValue = 30;
                     cost = 7600;
@@ -804,7 +804,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "獣皮製の舞踏衣": // ガンツの武具屋販売（ダンジョン３階）
-                    description = "獣の皮を縫って作成された舞踏衣。防御力１８～２５";
+                    description = "獣の皮を縫って作成された舞踏衣。物理防御１８～２５";
                     PhysicalDefenseMinValue = 18;
                     PhysicalDefenseMaxValue = 25;
                     cost = 7100;
@@ -813,7 +813,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "フィスト・クロス": // ガンツの武具屋販売（ダンジョン３階）
-                    description = "主に打撃系に対して強化されている衣。防御力２２～２７";
+                    description = "主に打撃系に対して強化されている衣。物理防御２２～２７";
                     PhysicalDefenseMinValue = 22;
                     PhysicalDefenseMaxValue = 27;
                     cost = 10000;
@@ -822,7 +822,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "プリズマティックアーマー": // ガンツの武具屋販売（ダンジョン４階）
-                    description = "プリズムの仕組みを純水晶に組み合わせて作成された自慢の一品。防御力３６～４１";
+                    description = "プリズムの仕組みを純水晶に組み合わせて作成された自慢の一品。物理防御３６～４１";
                     PhysicalDefenseMinValue = 36;
                     PhysicalDefenseMaxValue = 41;
                     cost = 36000;
@@ -831,7 +831,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case "極薄合金製の羽衣": // ガンツの武具屋販売（ダンジョン４階）
-                    description = "合金材質を極力薄くして羽衣にした自慢の一品。防御力３２～３７";
+                    description = "合金材質を極力薄くして羽衣にした自慢の一品。物理防御３２～３７";
                     PhysicalDefenseMinValue = 32;
                     PhysicalDefenseMaxValue = 37;
                     cost = 40000;
@@ -867,7 +867,7 @@ namespace DungeonPlayer
                     break;
 
                 case "ルナ・エグゼキュージョナー": // ダンジョン５階
-                    description = "月の輝きを宿らせた剣。斬撃のたびに、光が輝いて見えるという。攻撃力２１１～２４８";
+                    description = "月の輝きを宿らせた剣。斬撃のたびに、光が輝いて見えるという。物理攻撃２１１～２４８";
                     PhysicalAttackMinValue = 211;
                     PhysicalAttackMaxValue = 248;
                     cost = 140000;
@@ -877,7 +877,7 @@ namespace DungeonPlayer
                     break;
 
                 case "蒼黒・氷大蛇の爪": // ダンジョン５階
-                    description = "外来国から伝承されている大蛇の血と鱗を素材として作られたかぎ爪。攻撃力２３９～２６１";
+                    description = "外来国から伝承されている大蛇の血と鱗を素材として作られたかぎ爪。物理攻撃２３９～２６１";
                     PhysicalAttackMinValue = 239;
                     PhysicalAttackMaxValue = 261;
                     cost = 170000;
@@ -887,7 +887,7 @@ namespace DungeonPlayer
                     break;
 
                 case "ファージル・ジ・エスペランザ": // ダンジョン５階
-                    description = "ファージル宮殿内の数ある国宝の一つとして飾られている剣。攻撃力２０７～２４４";
+                    description = "ファージル宮殿内の数ある国宝の一つとして飾られている剣。物理攻撃２０７～２４４";
                     PhysicalAttackMinValue = 207;
                     PhysicalAttackMaxValue = 244;
                     cost = 150000;
@@ -932,7 +932,7 @@ namespace DungeonPlayer
 
                 // s 後編追加
                 case Database.POOR_PRACTICE_SHILED: // アイン初期装備（後編）
-                    description = "初心者向けの盾。軽くて持ちやすいが耐久性は無い。防御力１～１";
+                    description = "初心者向けの盾。軽くて持ちやすいが耐久性は無い。物理防御１～１";
                     PhysicalDefenseMinValue = 1;
                     PhysicalDefenseMaxValue = 1;
                     cost = 100;
@@ -1167,7 +1167,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_MAGICIANS_MANTLE:
-                    description = "基本魔法に熟達した者が装着するマント。知＋１２、魔力５～１０";
+                    description = "基本魔法に熟達した者が装着するマント。知＋１２、魔法攻撃５～１０";
                     BuffUpIntelligence = 12;
                     MagicAttackMinValue = 5;
                     MagicAttackMaxValue = 10;
@@ -1189,7 +1189,7 @@ namespace DungeonPlayer
 
                 // 武器：Poor
                 case Database.POOR_TUKAIFURUSARETA_SWORD: // １階：エリア１：ランダムドロップ
-                    description = "刃こぼれが酷く、扱い辛くなっている剣。攻撃力２～４";
+                    description = "刃こぼれが酷く、扱い辛くなっている剣。物理攻撃２～４";
                     PhysicalAttackMinValue = 2;
                     PhysicalAttackMaxValue = 4;
                     cost = 150;
@@ -1198,7 +1198,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_TUKAINIKUI_LONGSWORD: // １階：エリア１：ランダムドロップ
-                    description = "長くしただけで調節の効いてない長剣。攻撃力０～１２";
+                    description = "長くしただけで調節の効いてない長剣。物理攻撃０～１２";
                     PhysicalAttackMinValue = 0;
                     PhysicalAttackMaxValue = 12;
                     cost = 200;
@@ -1209,7 +1209,7 @@ namespace DungeonPlayer
 
                 // 武器：Common
                 case Database.COMMON_FINE_SWORD: // １階：エリア１：ランダムドロップ
-                    description = "そつなく使える剣。攻撃力５～８";
+                    description = "そつなく使える剣。物理攻撃５～８";
                     PhysicalAttackMinValue = 5;
                     PhysicalAttackMaxValue = 8;
                     cost = 560;
@@ -1218,7 +1218,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_TWEI_SWORD: // １階：エリア１：ランダムドロップ
-                    description = "両手剣専用。重量感があり、振り方に一工夫が必要。攻撃力３～１８";
+                    description = "両手剣専用。重量感があり、振り方に一工夫が必要。物理攻撃３～１８";
                     PhysicalAttackMinValue = 3;
                     PhysicalAttackMaxValue = 18;
                     cost = 610;
@@ -1229,7 +1229,7 @@ namespace DungeonPlayer
 
                 // 武器：Rare
                 case Database.RARE_AERO_BLADE: // １階：エリア１：ランダムドロップ
-                    description = "疾駆の振りで、一癖ある切り方が可能なブレード。【特殊能力：有】攻撃力１０～１５";
+                    description = "疾駆の振りで、一癖ある切り方が可能なブレード。【特殊能力：有】物理攻撃１０～１５";
                     useSpecialAbility = true;
                     PhysicalAttackMinValue = 10;
                     PhysicalAttackMaxValue = 15;
@@ -1241,7 +1241,7 @@ namespace DungeonPlayer
 
                 // 防具(Poor)
                 case Database.POOR_GATAGAKITERU_ARMOR:
-                    description = "本来の性能を出せていない鎧。防御力２～３";
+                    description = "本来の性能を出せていない鎧。物理防御２～３";
                     PhysicalDefenseMinValue = 2;
                     PhysicalDefenseMaxValue = 3;
                     cost = 300;
@@ -1250,7 +1250,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_FESTERING_ARMOR:
-                    description = "胴の一部が破損している、ただれた鎧。防御力０～４";
+                    description = "胴の一部が破損している、ただれた鎧。物理防御０～４";
                     PhysicalDefenseMinValue = 0;
                     PhysicalDefenseMaxValue = 4;
                     cost = 300;
@@ -1261,7 +1261,7 @@ namespace DungeonPlayer
 
                 // 防具(Common)
                 case Database.COMMON_FINE_ARMOR: // １階：エリア１：ランダムドロップ
-                    description = "そつなく使える鎧。防御力３～６";
+                    description = "そつなく使える鎧。物理防御３～６";
                     PhysicalDefenseMinValue = 3;
                     PhysicalDefenseMaxValue = 6;
                     cost = 590;
@@ -1270,7 +1270,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_GOTHIC_PLATE: // １階：エリア１：ランダムドロップ
-                    description = "格式を重んじる飾り用の鎧。防御力４～７";
+                    description = "格式を重んじる飾り用の鎧。物理防御４～７";
                     PhysicalDefenseMinValue = 4;
                     PhysicalDefenseMaxValue = 7;
                     cost = 800;
@@ -1281,7 +1281,7 @@ namespace DungeonPlayer
 
                 // 盾(Poor)
                 case Database.POOR_HINSO_SHIELD: // １階：エリア１：ランダムドロップ
-                    description = "突進されると、すぐに壊れそうな盾。防御力１～２";
+                    description = "突進されると、すぐに壊れそうな盾。物理防御１～２";
                     PhysicalDefenseMinValue = 1;
                     PhysicalDefenseMaxValue = 2;
                     cost = 150;
@@ -1290,7 +1290,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_MUDANIOOKII_SHIELD: // １階：エリア１：ランダムドロップ
-                    description = "大きくしてはあるが、薄っぺらい盾。防御力０～３";
+                    description = "大きくしてはあるが、薄っぺらい盾。物理防御０～３";
                     PhysicalDefenseMinValue = 0;
                     PhysicalDefenseMaxValue = 3;
                     cost = 140;
@@ -1301,7 +1301,7 @@ namespace DungeonPlayer
 
                 // 盾(Common)
                 case Database.COMMON_FINE_SHIELD: // １階：エリア１：ランダムドロップ
-                    description = "そつなく使える盾。防御力３～４";
+                    description = "そつなく使える盾。物理防御３～４";
                     PhysicalDefenseMinValue = 3;
                     PhysicalDefenseMaxValue = 4;
                     cost = 550;
@@ -1310,7 +1310,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_GRIPPING_SHIELD: // １階：エリア１：ランダムドロップ
-                    description = "攻撃に備えた体制で持たないと、使いにくさが残る盾。防御力２～６";
+                    description = "攻撃に備えた体制で持たないと、使いにくさが残る盾。物理防御２～６";
                     PhysicalDefenseMinValue = 2;
                     PhysicalDefenseMaxValue = 6;
                     cost = 550;
@@ -1522,7 +1522,7 @@ namespace DungeonPlayer
                     break;
                 // 武器：Poor
                 case Database.POOR_OLD_USELESS_ROD:
-                    description = "本来の魔力を失っている状態の古ぼけた杖。魔力１～３";
+                    description = "本来の魔力を失っている状態の古ぼけた杖。魔法攻撃１～３";
                     MagicAttackMinValue = 1;
                     MagicAttackMaxValue = 3;
                     cost = 160;
@@ -1531,7 +1531,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_KISSAKI_MARUI_TUME:
-                    description = "切りかかった時の切れ味が悪い爪。攻撃力２～４";
+                    description = "切りかかった時の切れ味が悪い爪。物理攻撃２～４";
                     PhysicalAttackMinValue = 2;
                     PhysicalAttackMaxValue = 4;
                     cost = 200;
@@ -1542,7 +1542,7 @@ namespace DungeonPlayer
 
                 // 防具(Poor)
                 case Database.POOR_BATTLE_HUMUKI_BUTOUGI:
-                    description = "戦闘ではなく、踊り子向けの舞踏衣。防御力１～２";
+                    description = "戦闘ではなく、踊り子向けの舞踏衣。物理防御１～２";
                     PhysicalDefenseMinValue = 1;
                     PhysicalDefenseMaxValue = 2;
                     cost = 600;
@@ -1551,7 +1551,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_SIZE_AWANAI_ROBE:
-                    description = "適当なサイズで作成されたローブ。防御力０～２。闇耐性１０";
+                    description = "適当なサイズで作成されたローブ。物理防御０～２。闇耐性１０";
                     PhysicalDefenseMinValue = 0;
                     PhysicalDefenseMaxValue = 2;
                     this.ResistShadow = 10;
@@ -1563,7 +1563,7 @@ namespace DungeonPlayer
 
                 // 武器：Common
                 case Database.COMMON_SHORT_SWORD:
-                    description = "そつなく使える剣。攻撃力９～１２";
+                    description = "そつなく使える剣。物理攻撃９～１２";
                     PhysicalAttackMinValue = 9;
                     PhysicalAttackMaxValue = 12;
                     cost = 1050;
@@ -1572,7 +1572,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BASTARD_SWORD:
-                    description = "両手剣専用。ふり幅は大きく、威力を出すにはある程度の力が必要。攻撃力７～４０";
+                    description = "両手剣専用。ふり幅は大きく、威力を出すにはある程度の力が必要。物理攻撃７～４０";
                     PhysicalAttackMinValue = 7;
                     PhysicalAttackMaxValue = 40;
                     cost = 1000;
@@ -1581,7 +1581,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_LIGHT_CLAW:
-                    description = "普通の研ぎ方で作成された爪。攻撃力５～７";
+                    description = "普通の研ぎ方で作成された爪。物理攻撃５～７";
                     PhysicalAttackMinValue = 5;
                     PhysicalAttackMaxValue = 7;
                     cost = 550;
@@ -1590,7 +1590,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SHARP_CLAW:
-                    description = "通常の爪より少しだけ重量感を軽くした爪。攻撃力５～１３";
+                    description = "通常の爪より少しだけ重量感を軽くした爪。物理攻撃５～１３";
                     PhysicalAttackMinValue = 5;
                     PhysicalAttackMaxValue = 13;
                     cost = 1030;
@@ -1599,7 +1599,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_WOOD_ROD:
-                    description = "樹木の一部を切り取って作成された杖。魔力５～１０";
+                    description = "樹木の一部を切り取って作成された杖。魔法攻撃５～１０";
                     MagicAttackMinValue = 12;
                     MagicAttackMaxValue = 15;
                     cost = 1400;
@@ -1610,7 +1610,7 @@ namespace DungeonPlayer
 
                 // 防具(Common)
                 case Database.COMMON_LETHER_CLOTHING:
-                    description = "標準的なサイズで作成されたレザー製の衣。防御力４～７";
+                    description = "標準的なサイズで作成されたレザー製の衣。物理防御４～７";
                     PhysicalDefenseMinValue = 4;
                     PhysicalDefenseMaxValue = 7;
                     cost = 500;
@@ -1619,7 +1619,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_COTTON_ROBE:
-                    description = "木綿を編み合わせたローブ。防御力３～７。火耐性５。水耐性５";
+                    description = "木綿を編み合わせたローブ。物理防御３～７。火耐性５。水耐性５";
                     PhysicalDefenseMinValue = 3;
                     PhysicalDefenseMaxValue = 7;
                     ResistFire = 5;
@@ -1630,7 +1630,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_COPPER_ARMOR:
-                    description = "銅の素材をふんだんに使った鎧。防御力６～１０。";
+                    description = "銅の素材をふんだんに使った鎧。物理防御６～１０。";
                     PhysicalDefenseMinValue = 6;
                     PhysicalDefenseMaxValue = 10;
                     cost = 1000;
@@ -1639,7 +1639,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_HEAVY_ARMOR:
-                    description = "重量感を意識して作られた鎧。防御力８～１２。";
+                    description = "重量感を意識して作られた鎧。物理防御８～１２。";
                     PhysicalDefenseMinValue = 8;
                     PhysicalDefenseMaxValue = 12;
                     cost = 1400;
@@ -1650,7 +1650,7 @@ namespace DungeonPlayer
 
                 // 盾(Common)
                 case Database.COMMON_IRON_SHIELD:
-                    description = "鉄製の盾。それなりにガッチリしている。防御力５～８";
+                    description = "鉄製の盾。それなりにガッチリしている。物理防御５～８";
                     PhysicalDefenseMinValue = 5;
                     PhysicalDefenseMaxValue = 8;
                     cost = 1020;
@@ -1693,7 +1693,7 @@ namespace DungeonPlayer
 
                 // 武器（Rare)
                 case Database.RARE_ICE_SWORD:
-                    description = "水属性で斬る事が可能な剣。【特殊能力：有】攻撃力１８～２５";
+                    description = "水属性で斬る事が可能な剣。【特殊能力：有】物理攻撃１８～２５";
                     useSpecialAbility = true;
                     PhysicalAttackMinValue = 18;
                     PhysicalAttackMaxValue = 25;
@@ -1703,7 +1703,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_RISING_KNUCKLE:
-                    description = "力の加え方が軽い感触で、振りの速さを実感できる爪。【特殊能力：有】攻撃力２０～２５";
+                    description = "力の加え方が軽い感触で、振りの速さを実感できる爪。【特殊能力：有】物理攻撃２０～２５";
                     useSpecialAbility = true;
                     PhysicalAttackMinValue = 20;
                     PhysicalAttackMaxValue = 25;
@@ -1713,7 +1713,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_AUTUMN_ROD:
-                    description = "秋に生い茂った樹木の枝を採用した杖。【特殊能力：有】魔力１８～２２";
+                    description = "秋に生い茂った樹木の枝を採用した杖。【特殊能力：有】魔法攻撃１８～２２";
                     description += "\r\n【特殊能力】　MPを回復する。";
                     UseSpecialAbility = true;
                     MagicAttackMinValue = 18;
@@ -1726,7 +1726,7 @@ namespace DungeonPlayer
 
                 // 防具（Rare)
                 case Database.RARE_SUN_BRAVE_ARMOR:
-                    description = "太陽の光が注入されている鎧。防御力１４～１８。魔法防御力１０～１２。火耐性２０、聖耐性２０";
+                    description = "太陽の光が注入されている鎧。物理防御１４～１８。魔法防御力１０～１２。火耐性２０、聖耐性２０";
                     PhysicalDefenseMinValue = 14;
                     PhysicalDefenseMaxValue = 18;
                     MagicDefenseMinValue = 10;
@@ -1741,7 +1741,7 @@ namespace DungeonPlayer
 
                 // 盾(Rare)
                 case Database.RARE_ESMERALDA_SHIELD:
-                    description = "赤いコーティングと重量感のある盾。防御力８～１２、火耐性２０";
+                    description = "赤いコーティングと重量感のある盾。物理防御８～１２、火耐性２０";
                     PhysicalDefenseMinValue = 8;
                     PhysicalDefenseMaxValue = 12;
                     ResistFire = 20;
@@ -2350,7 +2350,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     break;
                 case Database.COMMON_CLAW_OF_SPRING:
-                    description = "春の風を漂わせる爪。振るとほんのり桜が見えるらしい。攻撃力３２～４２、技＋２０";
+                    description = "春の風を漂わせる爪。振るとほんのり桜が見えるらしい。物理攻撃３２～４２、技＋２０";
                     PhysicalAttackMinValue = 32;
                     PhysicalAttackMaxValue = 42;
                     buffUpAgility = 20;
@@ -2359,7 +2359,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     break;
                 case Database.COMMON_BREEZE_CROSS:
-                    description = "そよ風をほのかに感じられ、身を軽やかに動かせる舞踏衣。防御力２０～２２、技＋２０";
+                    description = "そよ風をほのかに感じられ、身を軽やかに動かせる舞踏衣。物理防御２０～２２、技＋２０";
                     PhysicalDefenseMinValue = 20;
                     PhysicalDefenseMaxValue = 22;
                     buffUpAgility = 20;
@@ -2368,7 +2368,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     break;
                 case Database.COMMON_GUST_SWORD:
-                    description = "突風の如く突き出せてしまう剣。攻撃力３２～４２、技＋２０";
+                    description = "突風の如く突き出せてしまう剣。物理攻撃３２～４２、技＋２０";
                     PhysicalAttackMinValue = 32;
                     PhysicalAttackMaxValue = 42;
                     buffUpAgility = 20;
@@ -2421,7 +2421,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     break;
                 case Database.COMMON_TIGER_BLADE:
-                    description = "剣を振るった時、虎の吠える声に似た音がする。攻撃力７２～７８、力＋２０";
+                    description = "剣を振るった時、虎の吠える声に似た音がする。物理攻撃７２～７８、力＋２０";
                     PhysicalAttackMinValue = 72;
                     PhysicalAttackMaxValue = 78;
                     buffUpStrength = 20;
@@ -2430,7 +2430,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     break;
                 case Database.RARE_ROD_OF_STRENGTH:
-                    description = "【力】そのものを宿らせている魔法の杖。【特殊能力：有】魔力９２～１０１、力＋３０";
+                    description = "【力】そのものを宿らせている魔法の杖。【特殊能力：有】魔法攻撃９２～１０１、力＋３０";
                     MagicAttackMinValue = 92;
                     MagicAttackMaxValue = 101;
                     buffUpStrength = 30;
@@ -2508,7 +2508,7 @@ namespace DungeonPlayer
 
                 // 武器(Common)
                 case Database.COMMON_SMART_SWORD:
-                    description = "サッと良い斬れ味のする剣。攻撃力４０～５０";
+                    description = "サッと良い斬れ味のする剣。物理攻撃４０～５０";
                     PhysicalAttackMinValue = 40;
                     PhysicalAttackMaxValue = 50;
                     cost = 6000;
@@ -2517,7 +2517,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_CLAW:
-                    description = "サクサクっと心地良く引っ掻ける爪。攻撃力３０～４０";
+                    description = "サクサクっと心地良く引っ掻ける爪。物理攻撃３０～４０";
                     PhysicalAttackMinValue = 30;
                     PhysicalAttackMaxValue = 40;
                     cost = 5000;
@@ -2526,7 +2526,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_ROD:
-                    description = "重量も軽く、ヒョイヒョイと振ることが出来る杖。魔力３５～４５";
+                    description = "重量も軽く、ヒョイヒョイと振ることが出来る杖。魔法攻撃３５～４５";
                     MagicAttackMinValue = 35;
                     MagicAttackMaxValue = 45;
                     cost = 4500;
@@ -2535,7 +2535,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_RAUGE_SWORD:
-                    description = "かなり質感があり重たいが、威力は期待できる両手剣。攻撃力２０～８０";
+                    description = "かなり質感があり重たいが、威力は期待できる両手剣。物理攻撃２０～８０";
                     PhysicalAttackMinValue = 20;
                     PhysicalAttackMaxValue = 80;
                     cost = 7000;
@@ -2545,7 +2545,7 @@ namespace DungeonPlayer
                     break;
                 // 武器（Rare）
                 case Database.RARE_WRATH_SERVEL_CLAW:
-                    description = "憤怒のオーラを宿した切っ先のスルドイ爪。【特殊能力：有】攻撃力５５～７０";
+                    description = "憤怒のオーラを宿した切っ先のスルドイ爪。【特殊能力：有】物理攻撃５５～７０";
                     useSpecialAbility = true;
                     PhysicalAttackMinValue = 55;
                     PhysicalAttackMaxValue = 70;
@@ -2555,7 +2555,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_BLUE_LIGHTNING:
-                    description = "青い閃光が宿っている剣。【特殊能力：有】攻撃力６３～８５";
+                    description = "青い閃光が宿っている剣。【特殊能力：有】物理攻撃６３～８５";
                     useSpecialAbility = true;
                     PhysicalAttackMinValue = 63;
                     PhysicalAttackMaxValue = 85;
@@ -2565,7 +2565,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_BURNING_CLAYMORE:
-                    description = "鮮やかな赤い火の粉が舞う真鍮製クレイモア。【特殊能力：有】攻撃力４０～１２０";
+                    description = "鮮やかな赤い火の粉が舞う真鍮製クレイモア。【特殊能力：有】物理攻撃４０～１２０";
                     useSpecialAbility = true;
                     PhysicalAttackMinValue = 40;
                     PhysicalAttackMaxValue = 120;
@@ -2576,7 +2576,7 @@ namespace DungeonPlayer
                     break;
                 // 武器（Common2）
                 case Database.COMMON_SMASH_BLADE:
-                    description = "素振りレベルでも打撃感が持てる剣。攻撃力５５～７０";
+                    description = "素振りレベルでも打撃感が持てる剣。物理攻撃５５～７０";
                     PhysicalAttackMinValue = 55;
                     PhysicalAttackMaxValue = 70;
                     cost = 7500;
@@ -2585,7 +2585,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_POWERED_BUSTER:
-                    description = "精一杯の力を込めて放てば威力はデカイ！攻撃力５０～１４５";
+                    description = "精一杯の力を込めて放てば威力はデカイ！物理攻撃５０～１４５";
                     PhysicalAttackMinValue = 50;
                     PhysicalAttackMaxValue = 145;
                     cost = 15000;
@@ -2594,7 +2594,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_STONE_CLAW:
-                    description = "石製でありつつ、身軽に触れる爪。攻撃力４２～５４";
+                    description = "石製でありつつ、身軽に触れる爪。物理攻撃４２～５４";
                     PhysicalAttackMinValue = 42;
                     PhysicalAttackMaxValue = 54;
                     cost = 6700;
@@ -2603,7 +2603,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ZALGE_CLAW:
-                    description = "ストーン・クローの切っ先に毒が塗ってある爪。攻撃力４２～５４【追加効果：猛毒】";
+                    description = "ストーン・クローの切っ先に毒が塗ってある爪。物理攻撃４２～５４【追加効果：猛毒】";
                     PhysicalAttackMinValue = 42;
                     PhysicalAttackMaxValue = 54;
                     cost = 20000;
@@ -2612,7 +2612,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_DENDOU_ROD:
-                    description = "持つと少しだけ電気が走る杖。魔力４６～６２";
+                    description = "持つと少しだけ電気が走る杖。魔法攻撃４６～６２";
                     MagicAttackMinValue = 46;
                     MagicAttackMaxValue = 62;
                     cost = 6000;
@@ -2622,7 +2622,7 @@ namespace DungeonPlayer
                     break;
                 // 武器（Rare2）
                 case Database.RARE_DARKNESS_SWORD:
-                    description = "闇を取り込み魔力を有している剣。攻撃力６０～８０、魔力６０～８０";
+                    description = "闇を取り込み魔力を有している剣。物理攻撃６０～８０、魔法攻撃６０～８０";
                     PhysicalAttackMinValue = 60;
                     PhysicalAttackMaxValue = 80;
                     MagicAttackMinValue = 60;
@@ -2633,7 +2633,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_BLUE_RED_ROD:
-                    description = "相反する赤と蒼の魔力を宿した杖。【特殊能力：有】魔力７０～８５";
+                    description = "相反する赤と蒼の魔力を宿した杖。【特殊能力：有】魔法攻撃７０～８５";
                     useSpecialAbility = true;
                     MagicAttackMinValue = 70;
                     MagicAttackMaxValue = 85;
@@ -2644,7 +2644,7 @@ namespace DungeonPlayer
                     break;
                 // 武器（ガンツ２階）
                 case Database.COMMON_SMART_SWORD_2:
-                    description = "サッと良い斬れ味のする剣をガンツが強化した。攻撃力４０(+8)～５０(+8)";
+                    description = "サッと良い斬れ味のする剣をガンツが強化した。物理攻撃４０(+8)～５０(+8)";
                     PhysicalAttackMinValue = 48;
                     PhysicalAttackMaxValue = 58;
                     cost = 6500;
@@ -2653,7 +2653,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_CLAW_2:
-                    description = "サクサクっと心地良く引っ掻ける爪をガンツが強化した。攻撃力３０(+7)～４０(+7)";
+                    description = "サクサクっと心地良く引っ掻ける爪をガンツが強化した。物理攻撃３０(+7)～４０(+7)";
                     PhysicalAttackMinValue = 37;
                     PhysicalAttackMaxValue = 47;
                     cost = 5800;
@@ -2662,7 +2662,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_ROD_2:
-                    description = "重量も軽く、ヒョイヒョイと振ることが出来る杖をガンツが強化した。魔力３５(+6)～４５(+6)";
+                    description = "重量も軽く、ヒョイヒョイと振ることが出来る杖をガンツが強化した。魔法攻撃３５(+6)～４５(+6)";
                     MagicAttackMinValue = 41;
                     MagicAttackMaxValue = 51;
                     cost = 5200;
@@ -2671,7 +2671,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_PLATE_2:
-                    description = "ガッチリした鎧をさらにガンツが強化した鎧。防御力３０(+5)～３５(+5)";
+                    description = "ガッチリした鎧をさらにガンツが強化した鎧。物理防御３０(+5)～３５(+5)";
                     PhysicalDefenseMinValue = 35;
                     PhysicalDefenseMaxValue = 40;
                     cost = 6000;
@@ -2680,7 +2680,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_CLOTHING_2:
-                    description = "着心地も良く、動きやすさも抜群の舞踏衣。防御力２５(+4)～２８(+4)";
+                    description = "着心地も良く、動きやすさも抜群の舞踏衣。物理防御２５(+4)～２８(+4)";
                     PhysicalDefenseMinValue = 29;
                     PhysicalDefenseMaxValue = 32;
                     cost = 5300;
@@ -2689,7 +2689,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_ROBE_2:
-                    description = "スラリとしたデザインを追求した戦闘向けローブ。防御力１０(+4)～１２(+4)。魔法防御２０(+5)～２２(+5)";
+                    description = "スラリとしたデザインを追求した戦闘向けローブ。物理防御１０(+4)～１２(+4)。魔法防御２０(+5)～２２(+5)";
                     PhysicalDefenseMinValue = 14;
                     PhysicalDefenseMaxValue = 16;
                     MagicDefenseMinValue = 25;
@@ -2700,7 +2700,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_RAUGE_SWORD_2:
-                    description = "かなり質感があり重たいが、威力は期待できる両手剣。攻撃力２０(+10)～８０(+15)";
+                    description = "かなり質感があり重たいが、威力は期待できる両手剣。物理攻撃２０(+10)～８０(+15)";
                     PhysicalAttackMinValue = 30;
                     PhysicalAttackMaxValue = 95;
                     cost = 8000;
@@ -2709,7 +2709,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_SHIELD_2:
-                    description = "持ちやすく、向きもスッと変えられる盾をガンツが強化した。防御力１２(+3)～１５(+3)";
+                    description = "持ちやすく、向きもスッと変えられる盾をガンツが強化した。物理防御１２(+3)～１５(+3)";
                     PhysicalDefenseMinValue = 15;
                     PhysicalDefenseMaxValue = 18;
                     cost = 4100;
@@ -2718,7 +2718,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_STEEL_SWORD:
-                    description = "ガンツが丹念に磨き上げたスチール製の剣。攻撃力８０(+8)～９０(+9)";
+                    description = "ガンツが丹念に磨き上げたスチール製の剣。物理攻撃８０(+8)～９０(+9)";
                     PhysicalAttackMinValue = 88;
                     PhysicalAttackMaxValue = 99;
                     cost = 16000;
@@ -2727,7 +2727,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_FACILITY_CLAW:
-                    description = "ガンツ直伝の改良を重ねて完成された爪。攻撃力６５(+2)～７０(+5)";
+                    description = "ガンツ直伝の改良を重ねて完成された爪。物理攻撃６５(+2)～７０(+5)";
                     PhysicalAttackMinValue = 67;
                     PhysicalAttackMaxValue = 76;
                     cost = 13500;
@@ -2736,7 +2736,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_MIX_HINOKI_ROD:
-                    description = "檜素材に金属製素材を合成させた杖。魔力８２～９６";
+                    description = "檜素材に金属製素材を合成させた杖。魔法攻撃８２～９６";
                     MagicAttackMinValue = 82;
                     MagicAttackMaxValue = 96;
                     cost = 13000;
@@ -2745,7 +2745,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_RED_ARM_BLADE:
-                    description = "豪腕なジョーの腕を加工し、赤褐色でコーティングを施した剣。攻撃力１０１～１１３";
+                    description = "豪腕なジョーの腕を加工し、赤褐色でコーティングを施した剣。物理攻撃１０１～１１３";
                     PhysicalAttackMinValue = 101;
                     PhysicalAttackMaxValue = 113;
                     cost = 27000;
@@ -2754,7 +2754,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_STRONG_SERPENT_CLAW:
-                    description = "強固な青鮫の剣歯を更に高質化させ、高熱で磨いだ爪。攻撃力７５～９１";
+                    description = "強固な青鮫の剣歯を更に高質化させ、高熱で磨いだ爪。物理攻撃７５～９１";
                     PhysicalAttackMinValue = 75;
                     PhysicalAttackMaxValue = 91;
                     cost = 24000;
@@ -2763,7 +2763,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_GOD_FIRE_GLOVE_REPLICA:
-                    description = "ランディスがオラオラ連打をするために自前で作成したレプリカ。攻撃力１１０～１１８";
+                    description = "ランディスがオラオラ連打をするために自前で作成したレプリカ。物理攻撃１１０～１１８";
                     PhysicalAttackMinValue = 110;
                     PhysicalAttackMaxValue = 118;
                     cost = 0;
@@ -3333,7 +3333,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_SWORD:
-                    description = "見た目も良く、切れ味も抜群の剣。攻撃力１２５～１４０";
+                    description = "見た目も良く、切れ味も抜群の剣。物理攻撃１２５～１４０";
                     PhysicalAttackMinValue = 125;
                     PhysicalAttackMaxValue = 140;
                     cost = 25000;
@@ -3343,7 +3343,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_KNUCKLE:
-                    description = "質感、見た目的に素晴らしく、切れ味最高の爪。攻撃力１３０～１３５";
+                    description = "質感、見た目的に素晴らしく、切れ味最高の爪。物理攻撃１３０～１３５";
                     PhysicalAttackMinValue = 130;
                     PhysicalAttackMaxValue = 135;
                     cost = 23000;
@@ -3353,7 +3353,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_BUSTER:
-                    description = "豪華な彩色であり、かつ、重さを感じさせない最高の両手剣。攻撃力６２～２５０";
+                    description = "豪華な彩色であり、かつ、重さを感じさせない最高の両手剣。物理攻撃６２～２５０";
                     PhysicalAttackMinValue = 62;
                     PhysicalAttackMaxValue = 250;
                     cost = 28000;
@@ -3363,7 +3363,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_ROD:
-                    description = "質素ながら上質、加えて、持っただけで魔力が伝わってくる杖。魔力１０５～１２２";
+                    description = "質素ながら上質、加えて、持っただけで魔力が伝わってくる杖。魔法攻撃１０５～１２２";
                     MagicAttackMinValue = 105;
                     MagicAttackMaxValue = 122;
                     cost = 30000;
@@ -3373,7 +3373,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_BLACK_ICE_SWORD:
-                    description = "黒色に変色した氷が刃形状となり、若干の禍々しさを感じさせる剣。【常備能力：有】力＋７０、知＋７０、攻撃力２１０～２４０";
+                    description = "黒色に変色した氷が刃形状となり、若干の禍々しさを感じさせる剣。【常備能力：有】力＋７０、知＋７０、物理攻撃２１０～２４０";
                     description += "\r\n【常備能力】　攻撃を当てるたび、マナポイントが回復する。";
                     buffUpStrength = 70;
                     buffUpIntelligence = 70;
@@ -3387,7 +3387,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_MENTALIZED_FORCE_CLAW:
-                    description = "精神的な欲求が僅かながら力として発揮される爪。【常備能力：有】力＋６５、技＋６５、攻撃力２００～２３０";
+                    description = "精神的な欲求が僅かながら力として発揮される爪。【常備能力：有】力＋６５、技＋６５、物理攻撃２００～２３０";
                     description += "\r\n【常備能力】　攻撃を当てるたび、スキルポイントが回復する。";
                     buffUpStrength = 65;
                     buffUpAgility = 65;
@@ -3401,7 +3401,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_CLAYMORE_ZUKS:
-                    description = "ガッツリダメージを当てつつ、それに付随し体力を奪い取る両手斧。【常備能力：有】力＋８０、心＋８０、攻撃力１２５～３９０";
+                    description = "ガッツリダメージを当てつつ、それに付随し体力を奪い取る両手斧。【常備能力：有】力＋８０、心＋８０、物理攻撃１２５～３９０";
                     description += "\r\n【常備能力】　攻撃を当てるたび、ライフポイントが回復する。";
                     buffUpStrength = 80;
                     buffUpMind = 80;
@@ -3415,7 +3415,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_ADERKER_FALSE_ROD:
-                    description = "澱んだ湿原の中で自然発生した奇妙な魔力を持つ杖。【常備能力：有】知＋６０、体＋６０、魔力１５５～１９０、";
+                    description = "澱んだ湿原の中で自然発生した奇妙な魔力を持つ杖。【常備能力：有】知＋６０、体＋６０、魔法攻撃１５５～１９０、";
                     description += "\r\n【常備能力】　魔法ダメージを当てるたび、インスタントポイントが回復する。";
                     buffUpIntelligence = 60;
                     buffUpStamina = 60;
@@ -3429,7 +3429,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_DESCENED_BLADE:
-                    description = "撫で下ろすような形状をした刀。攻撃力１５５～１８２";
+                    description = "撫で下ろすような形状をした刀。物理攻撃１５５～１８２";
                     PhysicalAttackMinValue = 155;
                     PhysicalAttackMaxValue = 182;
                     cost = 35000;
@@ -3438,7 +3438,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_FALSET_CLAW:
-                    description = "平穏な街ファルセットでは、獣狩用の爪が非常に流行しているらしい。攻撃力１６５～１７７";
+                    description = "平穏な街ファルセットでは、獣狩用の爪が非常に流行しているらしい。物理攻撃１６５～１７７";
                     PhysicalAttackMinValue = 165;
                     PhysicalAttackMaxValue = 177;
                     cost = 31000;
@@ -3447,7 +3447,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SEKIGAN_ROD:
-                    description = "片目を失ったとある者が魔力を失わないように作成した杖。魔力１３５～１５５";
+                    description = "片目を失ったとある者が魔力を失わないように作成した杖。魔法攻撃１３５～１５５";
                     MagicAttackMinValue = 135;
                     MagicAttackMaxValue = 155;
                     cost = 40000;
@@ -3456,7 +3456,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ROCK_BUSTER:
-                    description = "『岩をも砕く！』と名付けた者がそう発した両手剣。攻撃力８５～３１０";
+                    description = "『岩をも砕く！』と名付けた者がそう発した両手剣。物理攻撃８５～３１０";
                     PhysicalAttackMinValue = 85;
                     PhysicalAttackMaxValue = 310;
                     cost = 40000;
@@ -3466,7 +3466,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_SHARPNEL_SPIN_BLADE:
-                    description = "微かな高音を自律的に発している振動型の剣。【特殊能力：有】戦速率＋１０％、攻撃力２４５～２７０";
+                    description = "微かな高音を自律的に発している振動型の剣。【特殊能力：有】戦速率＋１０％、物理攻撃２４５～２７０";
                     description += "\r\n【特殊能力】　戦闘中使用すると、戦速率を1.1倍上昇させる。";
                     PhysicalAttackMinValue = 245;
                     PhysicalAttackMaxValue = 270;
@@ -3479,7 +3479,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_BLUE_LIGHT_MOON_CLAW:
-                    description = "戦闘の構えをした時、自然と青く光る月を連想させる爪。【特殊能力：有】物攻率＋１０％、攻撃力２３０～２６０";
+                    description = "戦闘の構えをした時、自然と青く光る月を連想させる爪。【特殊能力：有】物攻率＋１０％、物理攻撃２３０～２６０";
                     description += "\r\n【特殊能力】　戦闘中使用すると、物攻率を1.1倍上昇させる。";
                     PhysicalAttackMinValue = 230;
                     PhysicalAttackMaxValue = 260;
@@ -3492,7 +3492,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_SHAERING_BONE_CRUSHER:
-                    description = "骨をも砕かんばかりの威力を引き出してくれる両手斧。【特殊能力：有】潜力率＋１０％、攻撃力１５０～４７０";
+                    description = "骨をも砕かんばかりの威力を引き出してくれる両手斧。【特殊能力：有】潜力率＋１０％、物理攻撃１５０～４７０";
                     description += "\r\n【特殊能力】　戦闘中使用すると、潜力率を1.1倍上昇させる。";
                     PhysicalAttackMinValue = 150;
                     PhysicalAttackMaxValue = 470;
@@ -3505,7 +3505,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_BLIZZARD_SNOW_ROD:
-                    description = "骨まで結晶化させてしまうほどの威力をもつ杖。【特殊能力：有】魔攻率＋１０％、魔力１８５～２２０";
+                    description = "骨まで結晶化させてしまうほどの威力をもつ杖。【特殊能力：有】魔攻率＋１０％、魔法攻撃１８５～２２０";
                     description += "\r\n【特殊能力】　戦闘中使用すると、魔攻率を1.1倍上昇させる。";
                     MagicAttackMinValue = 185;
                     MagicAttackMaxValue = 220;
@@ -3518,7 +3518,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_ARMOR:
-                    description = "文句なし、最高品仕立ての鎧。防御力６０～７０";
+                    description = "文句なし、最高品仕立ての鎧。物理防御６０～７０";
                     PhysicalDefenseMinValue = 60;
                     PhysicalDefenseMaxValue = 70;
                     cost = 23000;
@@ -3528,7 +3528,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_CROSS:
-                    description = "軽さも最高で、防御力も上質の舞踏衣。防御力５２～５８";
+                    description = "軽さも最高で、防御力も上質の舞踏衣。物理防御５２～５８";
                     PhysicalDefenseMinValue = 52;
                     PhysicalDefenseMaxValue = 58;
                     cost = 21000;
@@ -3538,7 +3538,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_ROBE:
-                    description = "最高のローブ用素材使用。あみ目の弱点補強も施されている。防御力２９～３３、魔法防御４５～６０";
+                    description = "最高のローブ用素材使用。あみ目の弱点補強も施されている。物理防御２９～３３、魔法防御４５～６０";
                     PhysicalDefenseMinValue = 29;
                     PhysicalDefenseMaxValue = 33;
                     MagicDefenseMinValue = 45;
@@ -3550,7 +3550,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_DRAGONSCALE_ARMOR:
-                    description = "貴重なドラゴン鱗素材を駆使した鎧はほのかな光を放っている。防御力９０～１０５、麻痺耐性、闇耐性７５０";
+                    description = "貴重なドラゴン鱗素材を駆使した鎧はほのかな光を放っている。物理防御９０～１０５、麻痺耐性、闇耐性７５０";
                     PhysicalDefenseMinValue = 90;
                     PhysicalDefenseMaxValue = 105;
                     ResistParalyze = true;
@@ -3562,7 +3562,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_LIGHT_BLIZZARD_ROBE:
-                    description = "氷吹雪が結晶化した衣形状ローブ、淡い青光りが目に映る。防御力５４～６７、魔法防御１０５～１２０、スタン耐性、光耐性７５０";
+                    description = "氷吹雪が結晶化した衣形状ローブ、淡い青光りが目に映る。物理防御５４～６７、魔法防御１０５～１２０、スタン耐性、光耐性７５０";
                     PhysicalDefenseMinValue = 54;
                     PhysicalDefenseMaxValue = 67;
                     MagicDefenseMinValue = 105;
@@ -3576,7 +3576,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_COLD_STEEL_PLATE:
-                    description = "寒さは当然遮断しており、かつ、ダメージに対する遮断も強固な鎧。防御力７５～８８";
+                    description = "寒さは当然遮断しており、かつ、ダメージに対する遮断も強固な鎧。物理防御７５～８８";
                     PhysicalDefenseMinValue = 75;
                     PhysicalDefenseMaxValue = 88;
                     cost = 31000;
@@ -3586,7 +3586,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_AIR_HARE_CROSS:
-                    description = "この舞踏衣を装備している者は、快晴の空を稀に見るという。防御力６９～７９";
+                    description = "この舞踏衣を装備している者は、快晴の空を稀に見るという。物理防御６９～７９";
                     PhysicalDefenseMinValue = 69;
                     PhysicalDefenseMaxValue = 79;
                     cost = 29000;
@@ -3596,7 +3596,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_FLOATING_ROBE:
-                    description = "このローブを装備している者は、実際には浮かないが、浮遊感を感じるという。防御力３４～４０、魔法防御６５～８９";
+                    description = "このローブを装備している者は、実際には浮かないが、浮遊感を感じるという。物理防御３４～４０、魔法防御６５～８９";
                     PhysicalDefenseMinValue = 34;
                     PhysicalDefenseMaxValue = 40;
                     MagicDefenseMinValue = 65;
@@ -3608,7 +3608,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_SCALE_BLUERAGE:
-                    description = "蒼炎の魂が込められた鎧。分厚いわりに装備者に重さを感じさせない。【常備能力：有】防御力１１０～１３２";
+                    description = "蒼炎の魂が込められた鎧。分厚いわりに装備者に重さを感じさせない。【常備能力：有】物理防御１１０～１３２";
                     description += "\r\n【常備能力】　まれに物理による被ダメージを０にする";
                     PhysicalDefenseMinValue = 110;
                     PhysicalDefenseMaxValue = 132;
@@ -3619,7 +3619,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_BLUE_REFLECT_ROBE:
-                    description = "蒼炎の魂が込められた衣。その薄さとは裏腹にダメージ反射が起こりうる。【常備能力：有】防御力５８～７０、魔法防御１３０～１４５";
+                    description = "蒼炎の魂が込められた衣。その薄さとは裏腹にダメージ反射が起こりうる。【常備能力：有】物理防御５８～７０、魔法防御１３０～１４５";
                     description += "\r\n【常備能力】　まれに魔法による被ダメージを０にする";
                     PhysicalDefenseMinValue = 58;
                     PhysicalDefenseMaxValue = 70;
@@ -3632,7 +3632,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_SHIELD:
-                    description = "身体全体を守れるサイズで、かつ、耐久性にも優れている盾。防御力３７～４２";
+                    description = "身体全体を守れるサイズで、かつ、耐久性にも優れている盾。物理防御３７～４２";
                     PhysicalDefenseMinValue = 37;
                     PhysicalDefenseMaxValue = 42;
                     cost = 22000;
@@ -3642,7 +3642,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SNOW_CRYSTAL_SHIELD:
-                    description = "高位の結晶体が盾形状になったモノ。その硬さは一級品である。防御力４７～５０、魔法防御５０～５５";
+                    description = "高位の結晶体が盾形状になったモノ。その硬さは一級品である。物理防御４７～５０、魔法防御５０～５５";
                     PhysicalDefenseMinValue = 47;
                     PhysicalDefenseMaxValue = 50;
                     MagicDefenseMinValue = 50;
@@ -3654,7 +3654,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_SLIDE_THROUGH_SHIELD:
-                    description = "形状が非常に楕円系の形をしており、単純な攻撃ならさばくことが可能。【常備能力：有】防御力５２～５４";
+                    description = "形状が非常に楕円系の形をしており、単純な攻撃ならさばくことが可能。【常備能力：有】物理防御５２～５４";
                     description += "\r\n【常備能力】　まれに物理による被ダメージを０にする";
                     PhysicalDefenseMinValue = 52;
                     PhysicalDefenseMaxValue = 54;
@@ -3665,7 +3665,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_ELEMENTAL_STAR_SHIELD:
-                    description = "各属性の紋様が星型で刻まれている盾。防御力５０～５２、魔法防御４８～５０、光/闇/火/水/理/空耐性５００";
+                    description = "各属性の紋様が星型で刻まれている盾。物理防御５０～５２、魔法防御４８～５０、光/闇/火/水/理/空耐性５００";
                     PhysicalDefenseMinValue = 53;
                     PhysicalDefenseMaxValue = 55;
                     MagicDefenseMinValue = 48;
@@ -3684,7 +3684,7 @@ namespace DungeonPlayer
 
                 // ガンツ武器（３階）                                       
                 case Database.COMMON_EXCELLENT_SWORD_3:
-                    description = "見た目も良く、切れ味も抜群の剣をガンツが強化した。攻撃力１２５(+15)～１４０(+15)";
+                    description = "見た目も良く、切れ味も抜群の剣をガンツが強化した。物理攻撃１２５(+15)～１４０(+15)";
                     PhysicalAttackMinValue = 140;
                     PhysicalAttackMaxValue = 155;
                     cost = 3000;
@@ -3694,7 +3694,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_KNUCKLE_3:
-                    description = "質感、見た目的に素晴らしく、切れ味最高の爪をガンツが強化した。攻撃力１３０(+12)～１３５(+12)";
+                    description = "質感、見た目的に素晴らしく、切れ味最高の爪をガンツが強化した。物理攻撃１３０(+12)～１３５(+12)";
                     PhysicalAttackMinValue = 142;
                     PhysicalAttackMaxValue = 147;
                     cost = 27000;
@@ -3704,7 +3704,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_BUSTER_3:
-                    description = "豪華な彩色であり、かつ、重さを感じさせない最高の両手剣をガンツが強化した。攻撃力６２(+15)～２５０(+30)";
+                    description = "豪華な彩色であり、かつ、重さを感じさせない最高の両手剣をガンツが強化した。物理攻撃６２(+15)～２５０(+30)";
                     PhysicalAttackMinValue = 77;
                     PhysicalAttackMaxValue = 280;
                     cost = 34000;
@@ -3714,7 +3714,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_ROD_3:
-                    description = "質素ながら上質、加えて、持っただけで魔力が伝わってくる杖をガンツが強化した。魔力１０５(+20)～１２２(+20)";
+                    description = "質素ながら上質、加えて、持っただけで魔力が伝わってくる杖をガンツが強化した。魔法攻撃１０５(+20)～１２２(+20)";
                     MagicAttackMinValue = 125;
                     MagicAttackMaxValue = 142;
                     cost = 35000;
@@ -3724,7 +3724,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_ARMOR_3:
-                    description = "文句なし、最高品仕立ての鎧をガンツが強化した。防御力６０(+8)～７０(+8)";
+                    description = "文句なし、最高品仕立ての鎧をガンツが強化した。物理防御６０(+8)～７０(+8)";
                     PhysicalDefenseMinValue = 68;
                     PhysicalDefenseMaxValue = 78;
                     cost = 27000;
@@ -3734,7 +3734,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_CROSS_3:
-                    description = "軽さも最高で、防御力も上質の舞踏衣をガンツが強化した。防御力５２(+6)～５８(+6)";
+                    description = "軽さも最高で、防御力も上質の舞踏衣をガンツが強化した。物理防御５２(+6)～５８(+6)";
                     PhysicalDefenseMinValue = 58;
                     PhysicalDefenseMaxValue = 64;
                     cost = 25000;
@@ -3744,7 +3744,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_ROBE_3:
-                    description = "最高のローブ用素材使用。あみ目の弱点補強も施されており、さらにガンツが強化した。防御力２９(+3)～３３(+3)、魔法防御４５(+10)～６０(+10)";
+                    description = "最高のローブ用素材使用。あみ目の弱点補強も施されており、さらにガンツが強化した。物理防御２９(+3)～３３(+3)、魔法防御４５(+10)～６０(+10)";
                     PhysicalDefenseMinValue = 32;
                     PhysicalDefenseMaxValue = 36;
                     MagicDefenseMinValue = 55;
@@ -3756,7 +3756,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_EXCELLENT_SHIELD_3:
-                    description = "身体全体を守れるサイズで、かつ、耐久性にも優れている盾をガンツが強化した。防御力３７(+5)～４２(+5)";
+                    description = "身体全体を守れるサイズで、かつ、耐久性にも優れている盾をガンツが強化した。物理防御３７(+5)～４２(+5)";
                     PhysicalDefenseMinValue = 42;
                     PhysicalDefenseMaxValue = 47;
                     cost = 26000;
@@ -3766,7 +3766,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_STEEL_BLADE: // ゴツゴツした棍棒
-                    description = "強靭な素材のみ使用した鋼にガンツ直々の技が宿った剣！攻撃力２２５(+25）～２５５(+25)";
+                    description = "強靭な素材のみ使用した鋼にガンツ直々の技が宿った剣！物理攻撃２２５(+25）～２５５(+25)";
                     PhysicalAttackMinValue = 250;
                     PhysicalAttackMaxValue = 280;
                     cost = 73000;
@@ -3776,7 +3776,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_SPLASH_BARE_CLAW: // ベアクローの欠片
-                    description = "ゴツゴツし砕け散ったクマの手素材をガンツが見事に武器化に成功！　攻撃力２６２～２７７";
+                    description = "ゴツゴツし砕け散ったクマの手素材をガンツが見事に武器化に成功！　物理攻撃２６２～２７７";
                     PhysicalAttackMinValue = 262;
                     PhysicalAttackMaxValue = 277;
                     cost = 68000;
@@ -3786,7 +3786,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_GATO_HAWL_OF_GREAT: // 古代ツンドラ鹿の角
-                    description = "古代賢者ガトゥに仕えていた神鹿の紋章。沈黙・スタン・麻痺耐性。技＋８５、知＋３２５、魔力６６６～７７７、魔攻率＋２０％、潜力率＋２０％、闇耐性1500、火耐性1500";
+                    description = "古代賢者ガトゥに仕えていた神鹿の紋章。沈黙・スタン・麻痺耐性。技＋８５、知＋３２５、魔法攻撃６６６～７７７、魔攻率＋２０％、潜力率＋２０％、闇耐性1500、火耐性1500";
                     ResistSilence = true;
                     ResistStun = true;
                     ResistParalyze = true;
@@ -3805,7 +3805,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_LIZARDSCALE_ARMOR: // リザードの鱗
-                    description = "リザードの鱗を細かく細分化し、鎧形状に仕立てなおしたもの。防御力８０(+25)～１０５(+25)";
+                    description = "リザードの鱗を細かく細分化し、鎧形状に仕立てなおしたもの。物理防御８０(+25)～１０５(+25)";
                     PhysicalDefenseMinValue = 105;
                     PhysicalDefenseMaxValue = 130;
                     cost = 62000;
@@ -3815,7 +3815,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_ARGNIAN_TUNIC: // アルゴニアンの紫鱗
-                    description = "アルゴニアンの素材は紫色のコーティングがあり安定した防御性が出やすい。防御力７７～９０";
+                    description = "アルゴニアンの素材は紫色のコーティングがあり安定した防御性が出やすい。物理防御７７～９０";
                     PhysicalDefenseMinValue = 77;
                     PhysicalDefenseMaxValue = 90;
                     cost = 33000;
@@ -3825,7 +3825,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_WOLF_BATTLE_CLOTH: // ウルフの毛皮
-                    description = "野生ウルフのごわごわした質感を落とすことなく衣に仕立ててある。体＋７０、防御力７２～７９";
+                    description = "野生ウルフのごわごわした質感を落とすことなく衣に仕立ててある。体＋７０、物理防御７２～７９";
                     PhysicalDefenseMinValue = 72;
                     PhysicalDefenseMaxValue = 79;
                     buffUpStamina = 70;
@@ -3836,7 +3836,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_CHILL_BONE_SHIELD:
-                    description = "氷点下を遙かに下回る温度で凍結させた骨の盾。防御力６５～７０、火耐性７５０、水耐性７５０";
+                    description = "氷点下を遙かに下回る温度で凍結させた骨の盾。物理防御６５～７０、火耐性７５０、水耐性７５０";
                     PhysicalDefenseMinValue = 65;
                     PhysicalDefenseMaxValue = 70;
                     ResistIce = 750;
@@ -3942,7 +3942,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_SWORD_OF_DIVIDE:
-                    description = "一度分断された剣が再統合化された剣。異常なオーラを感じる。【常備能力：有】攻撃力２３３～２５５";
+                    description = "一度分断された剣が再統合化された剣。異常なオーラを感じる。【常備能力：有】物理攻撃２３３～２５５";
                     description += "\r\n【常備能力】　攻撃を当てた際、まれに対象のライフを1/5減らす。";
                     PhysicalAttackMinValue = 230;
                     PhysicalAttackMaxValue = 255;
@@ -4191,7 +4191,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MASTER_SWORD:
-                    description = "史上最高の質感と斬撃力が引き出されている剣。攻撃力４６８～４９０";
+                    description = "史上最高の質感と斬撃力が引き出されている剣。物理攻撃４６８～４９０";
                     PhysicalAttackMinValue = 468;
                     PhysicalAttackMaxValue = 490;
                     cost = 620000;
@@ -4201,7 +4201,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MASTER_KNUCKLE:
-                    description = "史上最高の軽さと殺傷力を併せ持つ爪。攻撃力４７５～４８５";
+                    description = "史上最高の軽さと殺傷力を併せ持つ爪。物理攻撃４７５～４８５";
                     PhysicalAttackMinValue = 475;
                     PhysicalAttackMaxValue = 485;
                     cost = 620000;
@@ -4211,7 +4211,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MASTER_ROD:
-                    description = "史上最高の魔力源を引き出す事に長けた杖。魔力３４３～４１８";
+                    description = "史上最高の魔力源を引き出す事に長けた杖。魔法攻撃３４３～４１８";
                     MagicAttackMinValue = 343;
                     MagicAttackMaxValue = 418;
                     cost = 620000;
@@ -4221,7 +4221,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MASTER_AXE:
-                    description = "史上最高の衝撃力を生み出す力が与えられている斧。攻撃力２２０～６１０";
+                    description = "史上最高の衝撃力を生み出す力が与えられている斧。物理攻撃２２０～６１０";
                     PhysicalAttackMinValue = 220;
                     PhysicalAttackMaxValue = 610;
                     cost = 620000;
@@ -4231,7 +4231,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MASTER_ARMOR:
-                    description = "史上最高の耐久性、そして、鉄壁の防御力を誇る鎧。防御力１２０～１４５";
+                    description = "史上最高の耐久性、そして、鉄壁の防御力を誇る鎧。物理防御１２０～１４５";
                     PhysicalDefenseMinValue = 120;
                     PhysicalDefenseMaxValue = 145;
                     cost = 580000;
@@ -4241,7 +4241,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MASTER_CROSS:
-                    description = "史上最高の柔軟性と耐突撃性を両立させたクロス。防御力８８～１１２";
+                    description = "史上最高の柔軟性と耐突撃性を両立させたクロス。物理防御８８～１１２";
                     PhysicalDefenseMinValue = 88;
                     PhysicalDefenseMaxValue = 112;
                     cost = 580000;
@@ -4251,7 +4251,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MASTER_ROBE:
-                    description = "史上最高の光沢と魔防を兼ね備えるローブ。防御力７６～８５、魔法防御１０８～１３２";
+                    description = "史上最高の光沢と魔防を兼ね備えるローブ。物理防御７６～８５、魔法防御１０８～１３２";
                     PhysicalDefenseMinValue = 76;
                     PhysicalDefenseMaxValue = 85;
                     MagicDefenseMinValue = 108;
@@ -4263,7 +4263,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MASTER_SHIELD:
-                    description = "史上最高の強靭さと堅牢さを実現させた盾。防御力６２～８５";
+                    description = "史上最高の強靭さと堅牢さを実現させた盾。物理防御６２～８５";
                     PhysicalDefenseMinValue = 62;
                     PhysicalDefenseMaxValue = 85;
                     cost = 300000;
@@ -4273,7 +4273,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_ASTRAL_VOID_BLADE:
-                    description = "真空の刃により、空間そのものへのダメージを与える剣。攻撃力６５２～７２９";
+                    description = "真空の刃により、空間そのものへのダメージを与える剣。物理攻撃６５２～７２９";
                     PhysicalAttackMinValue = 652;
                     PhysicalAttackMaxValue = 729;
                     cost = 1520000;
@@ -4283,7 +4283,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_VERDANT_SONIC_CLAW:
-                    description = "音速の振りで、常に共鳴波を放出しながら立ち振る舞える爪。攻撃力６７１～７０５";
+                    description = "音速の振りで、常に共鳴波を放出しながら立ち振る舞える爪。物理攻撃６７１～７０５";
                     PhysicalAttackMinValue = 671;
                     PhysicalAttackMaxValue = 705;
                     cost = 1520000;
@@ -4293,7 +4293,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_PRISONER_BREAKING_AXE:
-                    description = "監獄の檻ですら、へし折る力を引き出せるバカでかい斧。攻撃力３４３～１０１３";
+                    description = "監獄の檻ですら、へし折る力を引き出せるバカでかい斧。物理攻撃３４３～１０１３";
                     PhysicalAttackMinValue = 343;
                     PhysicalAttackMaxValue = 1013;
                     cost = 1520000;
@@ -4303,7 +4303,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_INVISIBLE_STATE_ROD:
-                    description = "ターゲットにされているものから、そのロッドの姿は見えない。魔力４８６～６７７";
+                    description = "ターゲットにされているものから、そのロッドの姿は見えない。魔法攻撃４８６～６７７";
                     MagicAttackMinValue = 486;
                     MagicAttackMaxValue = 677;
                     cost = 1520000;
@@ -4313,7 +4313,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_DOMINATION_BRAVE_ARMOR:
-                    description = "勇敢なる闘士を秘めたものが、防御の威力を支配する。防御力１８６～１９８";
+                    description = "勇敢なる闘士を秘めたものが、防御の威力を支配する。物理防御１８６～１９８";
                     PhysicalDefenseMinValue = 186;
                     PhysicalDefenseMaxValue = 198;
                     cost = 1120000;
@@ -4704,7 +4704,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_INITIATE_SWORD:
-                    description = "黒赤く光る部位は炎を連想させる、異形の剣。攻撃力５８４～６５２";
+                    description = "黒赤く光る部位は炎を連想させる、異形の剣。物理攻撃５８４～６５２";
                     PhysicalAttackMinValue = 584;
                     PhysicalAttackMaxValue = 652;
                     cost = 890000;
@@ -4714,7 +4714,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_BULLET_KNUCKLE:
-                    description = "刃先部が鋭くとがっており、遠目に見ると弾丸を連想させる爪。攻撃力５９１～６２８";
+                    description = "刃先部が鋭くとがっており、遠目に見ると弾丸を連想させる爪。物理攻撃５９１～６２８";
                     PhysicalAttackMinValue = 591;
                     PhysicalAttackMaxValue = 628;
                     cost = 890000;
@@ -4724,7 +4724,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_KENTOUSI_SWORD:
-                    description = "古来より剣闘士は死の間際まで、剣を離さないと言い伝えられている。攻撃力３１８～９２５";
+                    description = "古来より剣闘士は死の間際まで、剣を離さないと言い伝えられている。物理攻撃３１８～９２５";
                     PhysicalAttackMinValue = 318;
                     PhysicalAttackMaxValue = 925;
                     cost = 890000;
@@ -4734,7 +4734,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_ELECTRO_ROD:
-                    description = "電磁力と魔法は似て非なるものだが、魔法と同等の物質量を生み出せる技術が蓄積されている杖。魔力４２５～５６０";
+                    description = "電磁力と魔法は似て非なるものだが、魔法と同等の物質量を生み出せる技術が蓄積されている杖。魔法攻撃４２５～５６０";
                     MagicAttackMinValue = 425;
                     MagicAttackMaxValue = 560;
                     cost = 890000;
@@ -4744,7 +4744,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_FORTIFY_SCALE:
-                    description = "装備者の体格の原型がわからなくなるほどのゴツい鎧。防御力１６２～１８８";
+                    description = "装備者の体格の原型がわからなくなるほどのゴツい鎧。物理防御１６２～１８８";
                     PhysicalDefenseMinValue = 162;
                     PhysicalDefenseMaxValue = 188;
                     cost = 860000;
@@ -4754,7 +4754,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_MURYOU_CROSS:
-                    description = "装備している感触をまったく感じさせない舞踏衣。防御力１４８～１５６";
+                    description = "装備している感触をまったく感じさせない舞踏衣。物理防御１４８～１５６";
                     PhysicalDefenseMinValue = 148;
                     PhysicalDefenseMaxValue = 156;
                     cost = 860000;
@@ -4764,7 +4764,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_COLORLESS_ROBE:
-                    description = "装着者のイメージを連想させる色がローブ。防御力１０６～１２２、魔法防御力１８９～２１２";
+                    description = "装着者のイメージを連想させる色がローブ。物理防御１０６～１２２、魔法防御力１８９～２１２";
                     PhysicalDefenseMinValue = 106;
                     PhysicalDefenseMaxValue = 122;
                     MagicDefenseMinValue = 189;
@@ -4776,7 +4776,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_LOGISTIC_SHIELD:
-                    description = "魔法によるダメージをあたかも物理と見立てて防御可能とした盾。防御力７５～９５、魔法防御力７０～７２";
+                    description = "魔法によるダメージをあたかも物理と見立てて防御可能とした盾。物理防御７５～９５、魔法防御力７０～７２";
                     PhysicalDefenseMinValue = 75;
                     PhysicalDefenseMaxValue = 95;
                     MagicDefenseMinValue = 70;
@@ -4788,7 +4788,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_ETHREAL_EDGE_SABRE:
-                    description = "イスリアル素材による強靭な剣。剣を振った時、透明色が増し切っ先が見えなくなる。攻撃力８２１～９６５";
+                    description = "イスリアル素材による強靭な剣。剣を振った時、透明色が増し切っ先が見えなくなる。物理攻撃８２１～９６５";
                     PhysicalAttackMinValue = 821;
                     PhysicalAttackMaxValue = 965;
                     cost = 2260000;
@@ -4798,7 +4798,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_SHINGETUEN_CLAW:
-                    description = "月の曲線を描くように全体が丸く曲がっている爪。攻撃力８７７～９４３";
+                    description = "月の曲線を描くように全体が丸く曲がっている爪。物理攻撃８７７～９４３";
                     PhysicalAttackMinValue = 877;
                     PhysicalAttackMaxValue = 943;
                     cost = 2260000;
@@ -4808,7 +4808,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_BLOODY_DIRTY_SCYTHE:
-                    description = "おびただしい数の血痕がまとわりついている大鎌。攻撃力４６６～１４２３";
+                    description = "おびただしい数の血痕がまとわりついている大鎌。物理攻撃４６６～１４２３";
                     PhysicalAttackMinValue = 466;
                     PhysicalAttackMaxValue = 1423;
                     cost = 2260000;
@@ -4818,7 +4818,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_ALL_ELEMENTAL_ROD:
-                    description = "全属性の魔力が均等に込められている大杖。魔力７０５～８３９";
+                    description = "全属性の魔力が均等に込められている大杖。魔法攻撃７０５～８３９";
                     MagicAttackMinValue = 705;
                     MagicAttackMaxValue = 839;
                     cost = 2260000;
@@ -4828,7 +4828,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_BLOOD_BLAZER_CROSS:
-                    description = "赤い絹糸にイスリアル製の素材が編み込まれている舞踏衣。全体の模様が血管の様に見える。防御力３２５～３４５";
+                    description = "赤い絹糸にイスリアル製の素材が編み込まれている舞踏衣。全体の模様が血管の様に見える。物理防御３２５～３４５";
                     PhysicalDefenseMinValue = 325;
                     PhysicalDefenseMaxValue = 345;
                     cost = 1450000;
@@ -4838,7 +4838,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_DARK_ANGEL_ROBE:
-                    description = "真っ黒なローブをまとった姿は黒衣の天使を連想させる。物理防御力１９０～２３４、魔法防御力４９２～６５２";
+                    description = "真っ黒なローブをまとった姿は黒衣の天使を連想させる。物理防御１９０～２３４、魔法防御力４９２～６５２";
                     description += "\r\n【常備能力】　聖魔法１０％強化、闇属性１０％強化";
                     PhysicalDefenseMinValue = 190;
                     PhysicalDefenseMaxValue = 234;
@@ -4853,7 +4853,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_MAJEST_HAZZARD_SHIELD:
-                    description = "権威のオーラを放つかの如く、分厚い装甲の盾。物理防御力１０５～１３０、魔法防御力１４０～１５０";
+                    description = "権威のオーラを放つかの如く、分厚い装甲の盾。物理防御１０５～１３０、魔法防御力１４０～１５０";
                     PhysicalDefenseMinValue = 105;
                     PhysicalDefenseMaxValue = 130;
                     MagicDefenseMinValue = 140;
@@ -4865,7 +4865,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_WHITE_DIAMOND_SHIELD:
-                    description = "白く透明な輝きを持つダイヤモンド成分を含んだ大きな盾。防御力１２０～１４５";
+                    description = "白く透明な輝きを持つダイヤモンド成分を含んだ大きな盾。物理防御１２０～１４５";
                     PhysicalDefenseMinValue = 120;
                     PhysicalDefenseMaxValue = 145;
                     cost = 725000;
@@ -4875,7 +4875,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_VAPOR_SOLID_SHIELD:
-                    description = "蒸気型の粒子を完結合させ、固体化に成功した盾。重量が軽さと反比例して重厚な作り。防御力１６３～１７５";
+                    description = "蒸気型の粒子を完結合させ、固体化に成功した盾。重量が軽さと反比例して重厚な作り。物理防御１６３～１７５";
                     PhysicalDefenseMinValue = 163;
                     PhysicalDefenseMaxValue = 175;
                     cost = 730000;
@@ -4886,7 +4886,7 @@ namespace DungeonPlayer
 
                 // ガンツ武器屋
                 case Database.RARE_TYOU_KOU_SWORD:
-                    description = "合金製の素材を何度も何度も鍛え直し、超絶に硬い剣が完成した。攻撃力１０００～１２５０";
+                    description = "合金製の素材を何度も何度も鍛え直し、超絶に硬い剣が完成した。物理攻撃１０００～１２５０";
                     PhysicalAttackMinValue = 1000;
                     PhysicalAttackMaxValue = 1250;
                     cost = 3000000;
@@ -4895,7 +4895,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_TYOU_KOU_ARMOR:
-                    description = "合金製の素材をフルに駆使し、超絶に硬い鎧が完成した。防御力４４０～５５０";
+                    description = "合金製の素材をフルに駆使し、超絶に硬い鎧が完成した。物理防御４４０～５５０";
                     PhysicalDefenseMinValue = 440;
                     PhysicalDefenseMaxValue = 550;
                     cost = 2200000;
@@ -4904,7 +4904,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_TYOU_KOU_SHIELD:
-                    description = "合金製の素材を盾全体に行き渡らせ、超絶に硬い盾が完成した。防御力１９０～２００";
+                    description = "合金製の素材を盾全体に行き渡らせ、超絶に硬い盾が完成した。物理防御１９０～２００";
                     PhysicalDefenseMinValue = 190;
                     PhysicalDefenseMaxValue = 200;
                     cost = 1600000;
@@ -4913,7 +4913,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_SUPERIOR_CHOSEN_ROD:
-                    description = "厳選された合金製の素材を杖の先端部に丸型にして溶接したロッド。魔力７６８～８９３";
+                    description = "厳選された合金製の素材を杖の先端部に丸型にして溶接したロッド。魔法攻撃７６８～８９３";
                     MagicAttackMinValue = 768;
                     MagicAttackMaxValue = 893;
                     cost = 3000000;
@@ -4922,7 +4922,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_WHITE_GOLD_CROSS:
-                    description = "合金製の素材をマイクロ単位の薄い形状に変化させ、衣状の形に仕立て上げた。防御力３４７～３７０、魔法防御３４０～３７０";
+                    description = "合金製の素材をマイクロ単位の薄い形状に変化させ、衣状の形に仕立て上げた。物理防御３４７～３７０、魔法防御３４０～３７０";
                     PhysicalDefenseMinValue = 340;
                     PhysicalDefenseMaxValue = 370;
                     MagicDefenseMinValue = 340;
@@ -4934,7 +4934,7 @@ namespace DungeonPlayer
 
                 case Database.RARE_HUNTERS_EYE: // ハンターの七つ道具
                     description = "ハンター七つ道具を組み合わせて作成された擬眼。眼の動向の開き方に応じて様々なギミックが発動する。技＋３００、体＋３００、沈黙耐性、麻痺耐性、鈍化耐性、暗闇耐性";
-                    description += "\r\n【特殊能力】　以下のいずれかがランダムに発動する。\r\n　　敵全体に対して【鈍化】効果を与える / 味方全体のいずれかがトゥルス・ヴィジョンがかかっていない場合、トゥルス・ヴィジョンを発動する \r\n    / 自分自身の物理攻撃力と戦闘速度をUPする / 敵単体の物理攻撃力と戦闘速度をDOWNさせる";
+                    description += "\r\n【特殊能力】　以下のいずれかがランダムに発動する。\r\n　　敵全体に対して【鈍化】効果を与える / 味方全体のいずれかがトゥルス・ヴィジョンがかかっていない場合、トゥルス・ヴィジョンを発動する \r\n    / 自分自身の物理攻撃と戦闘速度をUPする / 敵単体の物理攻撃と戦闘速度をDOWNさせる";
                     buffUpAgility = 300;
                     buffUpStamina = 300;
                     useSpecialAbility = true;
@@ -4947,7 +4947,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Rare;
                     break;
                 case Database.RARE_ONEHUNDRED_BUTOUGI: // 猛獣の毛皮
-                    description = "選りすぐりの獣皮を集約し、動きやすさ・重量感を重視したもの。防御力１６４～１７８、聖耐性15000、闇耐性15000、火耐性15000、水耐性15000";
+                    description = "選りすぐりの獣皮を集約し、動きやすさ・重量感を重視したもの。物理防御１６４～１７８、聖耐性15000、闇耐性15000、火耐性15000、水耐性15000";
                     description += "\r\n【常備能力】　まれに物理/魔法による攻撃を回避する。";
                     PhysicalDefenseMinValue = 164;
                     PhysicalDefenseMaxValue = 178;
@@ -4982,7 +4982,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_DEVIL_KILLER: // 錆付いたガラクタ武具、エッセンス・オブ・ダーク
-                    description = "悪しき者を断つ剣。ガラクタから生成したとは思えないガンツ渾身の力作。攻撃力３６０～１８８５";
+                    description = "悪しき者を断つ剣。ガラクタから生成したとは思えないガンツ渾身の力作。物理攻撃３６０～１８８５";
                     description += "\r\n【常備能力】　稀に即死させる。";
                     PhysicalAttackMinValue = 360;
                     PhysicalAttackMaxValue = 1885;
@@ -4992,7 +4992,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_TRUERED_MASTER_BLADE: // シーカーの頭蓋骨、マスターブレイドの破片、エッセンス・オブ・フレイム
-                    description = "頭蓋骨を破砕した素材を柄に付け、剣の切っ先は常に火が宿る。攻撃力８００～８５０、魔力６５０～７００";
+                    description = "頭蓋骨を破砕した素材を柄に付け、剣の切っ先は常に火が宿る。物理攻撃８００～８５０、魔法攻撃６５０～７００";
                     description += "\r\n【常備能力】　物理攻撃がヒットする度に、稀にワード・オブ・パワーが追加効果で発動する。";
                     description += "\r\n    魔法攻撃がヒットする度に、稀にサイキック・ウェイブが追加効果で発動する。";
                     PhysicalAttackMinValue = 800;
@@ -5039,7 +5039,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_DOOMBRINGER: // ドゥームブリンガーの柄、ドゥームブリンガーの欠片
-                    description = "破滅した者へ永遠の安らぎをもたらすために作られた剣。攻撃力４７３～１４６９";
+                    description = "破滅した者へ永遠の安らぎをもたらすために作られた剣。物理攻撃４７３～１４６９";
                     description += "\r\n【常備能力】　理魔法＋１０％強化。";
                     description += "\r\n              戦闘開始時、ゲイル・ウィンドが自分自身にかかる。";
                     PhysicalAttackMinValue = 473;
@@ -5052,7 +5052,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_MEIKOU_DOOMBRINGER: // ドゥームブリンガー、浄火の鍛造
-                    description = "穢れを取り払われた闇の剣。持ち主の意図に関わらず、剣が宿主を選ぶ。攻撃力１２００～２４００、魔力１２００～２４００、物攻率＋２５％、魔攻率＋２０％、戦速率＋１５％";
+                    description = "穢れを取り払われた闇の剣。持ち主の意図に関わらず、剣が宿主を選ぶ。物理攻撃１２００～２４００、魔法攻撃１２００～２４００、物攻率＋２５％、魔攻率＋２０％、戦速率＋１５％";
                     description += "\r\n【常備能力】　理魔法＋１６％強化、聖魔法１６％強化。";
                     description += "\r\n              戦闘開始時、ゲイル・ウィンドが自分自身にかかる。";
                     description += "\r\n              戦闘開始時、ジェネシスの行動記憶に【ゲイル・ウィンド】がセットされる。";
@@ -5114,7 +5114,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_SHEZL_THE_MIRAGE_LANCER:
-                    description = "古代賢者シェズルが壮年時代に振るっていた剣。攻撃力１６８０～１８５５、魔法攻撃１５２２～１７２８、技＋７５０、知＋９５０、心＋５５０";
+                    description = "古代賢者シェズルが壮年時代に振るっていた剣。物理攻撃１６８０～１８５５、魔法攻撃１５２２～１７２８、技＋７５０、知＋９５０、心＋５５０";
                     description += "\r\n魔攻率＋２５％、戦応率＋２０％、潜力率＋１５％";
                     description += "\r\n【常備能力】この剣から物理攻撃がヒットした際、ダブルヒットとして扱われる。";
                     PhysicalAttackMinValue = 1680;
@@ -5133,7 +5133,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_JUZA_THE_PHANTASMAL_CLAW:
-                    description = "古代賢者ジュザが壮年時代に振るっていた爪。攻撃力１９８４～２０２１、力＋９５０、技＋７５０、体＋５５０";
+                    description = "古代賢者ジュザが壮年時代に振るっていた爪。物理攻撃１９８４～２０２１、力＋９５０、技＋７５０、体＋５５０";
                     description += "\r\n物攻率＋２５％、戦速率＋２０％、戦応率＋１５％";
                     description += "\r\n【常備能力】物理攻撃がヒットするたびに、颯の蓄積カウンターが１つ自分にBUFFとして蓄積する。蓄積されたカウンターの分だけ、戦闘速度が２％ずつ上昇する。最大10個まで蓄積が行える。";
                     PhysicalAttackMinValue = 1984;
@@ -5150,7 +5150,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_ADILRING_OF_BLUE_BURN:
-                    description = "古代賢者エーディルが壮年時代に装着していた蒼く光るリング。攻撃力１０５０～１１５０、魔法攻撃１２５０～１３５０。力＋５５０、知＋１０５０、心＋５５０、沈黙耐性、凍結耐性、鈍化耐性";
+                    description = "古代賢者エーディルが壮年時代に装着していた蒼く光るリング。物理攻撃１０５０～１１５０、魔法攻撃１２５０～１３５０。力＋５５０、知＋１０５０、心＋５５０、沈黙耐性、凍結耐性、鈍化耐性";
                     description += "\r\n物攻率＋１０％、魔攻率＋３０％、潜力率＋１０％、聖耐性10000、闇耐性10000、火耐性10000、水耐性75000、理耐性10000、空耐性10000";
                     description += "\r\n【常備能力】任意の行動を行うたびに、蒼の蓄積カウンターが１つ自分にBUFFとして蓄積する。最大30個まで蓄積が行える。";
                     description += "\r\n【特殊能力】MPを消費して、無属性のダメージを与える。ダメージ量は蒼の蓄積カウンターに依存する。";
@@ -5708,7 +5708,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "Duel闘技場の敵専用武具"
                 case Database.COMMON_ZELKIS_SWORD: // ゼルキス専用武器
-                    description = "ゼルキス愛用の剣。安定した威力と強さがある。攻撃力１２～１６";
+                    description = "ゼルキス愛用の剣。安定した威力と強さがある。物理攻撃１２～１６";
                     PhysicalAttackMinValue = 12;
                     PhysicalAttackMaxValue = 16;
                     cost = 0;
@@ -5717,7 +5717,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ZELKIS_ARMOR: // ゼルキス専用鎧
-                    description = "ゼルキス愛用の鎧。僅かなコーティングが施されている。防御力５～７";
+                    description = "ゼルキス愛用の鎧。僅かなコーティングが施されている。物理防御５～７";
                     PhysicalDefenseMinValue = 5;
                     PhysicalDefenseMaxValue = 7;
                     cost = 0;
@@ -5756,7 +5756,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_DEVIL_EYE_ROD:
-                    description = "カール伯爵が息子を鍛えるために作成した杖。魔力１５０～２２０";
+                    description = "カール伯爵が息子を鍛えるために作成した杖。魔法攻撃１５０～２２０";
                     MagicAttackMinValue = 150;
                     MagicAttackMaxValue = 220;
                     cost = 0;
@@ -5766,7 +5766,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.LEGENDARY_DARKMAGIC_DEVIL_EYE:
-                    description = "直接眼に装着させる闇の擬眼。シニキア・カールハンツ自身が作成した本人専用の武具。知＋５４６８、魔力３６２５～３７９０";
+                    description = "直接眼に装着させる闇の擬眼。シニキア・カールハンツ自身が作成した本人専用の武具。知＋５４６８、魔法攻撃３６２５～３７９０";
                     MagicAttackMinValue = 3625;
                     MagicAttackMaxValue = 3790;
                     BuffUpIntelligence = 5468;
@@ -5777,7 +5777,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.LEGENDARY_DARKMAGIC_DEVIL_EYE_REPLICA:
-                    description = "直接眼に装着させる闇の擬眼のレプリカ。シニキア・カールハンツ自身作成による武具。知＋５４６、魔力６２５～７９０";
+                    description = "直接眼に装着させる闇の擬眼のレプリカ。シニキア・カールハンツ自身作成による武具。知＋５４６、魔法攻撃６２５～７９０";
                     MagicAttackMinValue = 625;
                     MagicAttackMaxValue = 790;
                     BuffUpIntelligence = 546;
@@ -5788,7 +5788,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.EPIC_DARKMAGIC_DEVIL_EYE_2:
-                    description = "直接眼に装着させる闇の擬眼。シニキア・カールハンツ自身が作成した本人専用の武具。知＋８８９、魔力１３３２～１８６２";
+                    description = "直接眼に装着させる闇の擬眼。シニキア・カールハンツ自身が作成した本人専用の武具。知＋８８９、魔法攻撃１３３２～１８６２";
                     MagicAttackMinValue = 1332;
                     MagicAttackMaxValue = 1862;
                     BuffUpIntelligence = 889;
@@ -5912,7 +5912,7 @@ namespace DungeonPlayer
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_VIKING_SWORD:
-                    description = "標準的な大剣。少し重たいがバランスは良い方。攻撃力４～２２";
+                    description = "標準的な大剣。少し重たいがバランスは良い方。物理攻撃４～２２";
                     PhysicalAttackMinValue = 4;
                     PhysicalAttackMaxValue = 22;
                     cost = 850;
@@ -5944,7 +5944,7 @@ namespace DungeonPlayer
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SOLID_CLAW:
-                    description = "鋭さより当たりやすさを重視した鈍器のような爪。攻撃力１１～１２";
+                    description = "鋭さより当たりやすさを重視した鈍器のような爪。物理攻撃１１～１２";
                     PhysicalAttackMinValue = 11;
                     PhysicalAttackMaxValue = 12;
                     cost = 1100;
@@ -6043,7 +6043,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_LIFE_SWORD:
-                    description = "生命の大樹を一部切り取り、組み込まれた剣。【特殊能力：有】攻撃力１６～２２";
+                    description = "生命の大樹を一部切り取り、組み込まれた剣。【特殊能力：有】物理攻撃１６～２２";
                     useSpecialAbility = true;
                     PhysicalAttackMinValue = 16;
                     PhysicalAttackMaxValue = 22;
@@ -6053,7 +6053,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_PURE_GREEN_SILK_ROBE:
-                    description = "純度の高いシルク素材に緑色素を注入してある。防御力７～１０。魔法防御力２０～３０";
+                    description = "純度の高いシルク素材に緑色素を注入してある。物理防御７～１０。魔法防御力２０～３０";
                     PhysicalDefenseMinValue = 7;
                     PhysicalDefenseMaxValue = 10;
                     MagicDefenseMinValue = 20;
@@ -6066,7 +6066,7 @@ namespace DungeonPlayer
 
                 // ガンツ初版武具：１階
                 case Database.COMMON_BRONZE_SWORD:
-                    description = "銅製の剣。特に威力に期待は出来ないが、ひとまず使える武器である。攻撃力４～６";
+                    description = "銅製の剣。特に威力に期待は出来ないが、ひとまず使える武器である。物理攻撃４～６";
                     PhysicalAttackMinValue = 4;
                     PhysicalAttackMaxValue = 6;
                     cost = 300;
@@ -6076,7 +6076,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_LIGHT_SHIELD:
-                    description = "誰でも持てるほどの軽い盾。盾として最低限の能力しか持ちあわせてない。防御力２～３";
+                    description = "誰でも持てるほどの軽い盾。盾として最低限の能力しか持ちあわせてない。物理防御２～３";
                     PhysicalDefenseMinValue = 2;
                     PhysicalDefenseMaxValue = 3;
                     cost = 350;
@@ -6086,7 +6086,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_FINE_SWORD_1:
-                    description = "そつなく使える剣をガンツが強化した。攻撃力５(+3)～８(+3)";
+                    description = "そつなく使える剣をガンツが強化した。物理攻撃５(+3)～８(+3)";
                     PhysicalAttackMinValue = 8;
                     PhysicalAttackMaxValue = 11;
                     cost = 900;
@@ -6096,7 +6096,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_FINE_ARMOR_1:
-                    description = "そつなく使える鎧をガンツが強化した。防御力３(+2)～６(+2)";
+                    description = "そつなく使える鎧をガンツが強化した。物理防御３(+2)～６(+2)";
                     PhysicalDefenseMinValue = 5;
                     PhysicalDefenseMaxValue = 8;
                     cost = 900;
@@ -6106,7 +6106,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_FINE_SHIELD_1:
-                    description = "そつなく使える盾をガンツが強化した。防御力３(+1)～４(+2)";
+                    description = "そつなく使える盾をガンツが強化した。物理防御３(+1)～４(+2)";
                     PhysicalDefenseMinValue = 4;
                     PhysicalDefenseMaxValue = 5;
                     cost = 750;
@@ -6116,7 +6116,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_LIGHT_CLAW_1:
-                    description = "普通の研ぎ方で作成された爪をガンツが強化した。攻撃力５(+3)～７(+3)";
+                    description = "普通の研ぎ方で作成された爪をガンツが強化した。物理攻撃５(+3)～７(+3)";
                     PhysicalAttackMinValue = 8;
                     PhysicalAttackMaxValue = 10;
                     cost = 950;
@@ -6136,7 +6136,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_LETHER_CLOTHING_1:
-                    description = "標準的なサイズで作成されたレザー製の衣をガンツが強化した。防御力４(+2)～７(+2)";
+                    description = "標準的なサイズで作成されたレザー製の衣をガンツが強化した。物理防御４(+2)～７(+2)";
                     PhysicalDefenseMinValue = 6;
                     PhysicalDefenseMaxValue = 9;
                     cost = 980;
@@ -6146,7 +6146,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_BASTARD_SWORD_1:
-                    description = "両手剣専用。ある程度の力が必要だが、ガンツがさらにその威力を強化した。攻撃力７(+3)～４０(+5)";
+                    description = "両手剣専用。ある程度の力が必要だが、ガンツがさらにその威力を強化した。物理攻撃７(+3)～４０(+5)";
                     PhysicalAttackMinValue = 10;
                     PhysicalAttackMaxValue = 45;
                     cost = 1350;
@@ -6156,7 +6156,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_IRON_SWORD:
-                    description = "鉄製の剣。ガンツ渾身の技で強化改良済み。攻撃力２０(+6）～３０(+6)";
+                    description = "鉄製の剣。ガンツ渾身の技で強化改良済み。物理攻撃２０(+6）～３０(+6)";
                     PhysicalAttackMinValue = 26;
                     PhysicalAttackMaxValue = 36;
                     cost = 2300;
@@ -6166,7 +6166,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_FIT_ARMOR:
-                    description = "初級者の体質に合うように作られた鎧。動きやすいが、それほど防御力に期待はできない。防御力２～５";
+                    description = "初級者の体質に合うように作られた鎧。動きやすいが、それほど防御力に期待はできない。物理防御２～５";
                     PhysicalDefenseMinValue = 2;
                     PhysicalDefenseMaxValue = 5;
                     cost = 450;
@@ -6176,7 +6176,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_KUSARI_KATABIRA:
-                    description = "鎖を編み合わせて作成された鎧。ガンツ直伝の技で強化改良済み。防御力１４(+3)～１８(+3)";
+                    description = "鎖を編み合わせて作成された鎧。ガンツ直伝の技で強化改良済み。物理防御１４(+3)～１８(+3)";
                     PhysicalDefenseMinValue = 17;
                     PhysicalDefenseMaxValue = 21;
                     cost = 2600;
@@ -6198,7 +6198,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SURVIVAL_CLAW:
-                    description = "気性の荒い人（？）でも長く使えるように改良が施されている爪。攻撃力１６～１９";
+                    description = "気性の荒い人（？）でも長く使えるように改良が施されている爪。物理攻撃１６～１９";
                     PhysicalAttackMinValue = 16;
                     PhysicalAttackMaxValue = 19;
                     cost = 1600;
@@ -6208,7 +6208,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SUPERIOR_CROSS:
-                    description = "レザー製の衣の中でも上質な素材を選定して、作られた舞踏衣。防御力８～１０";
+                    description = "レザー製の衣の中でも上質な素材を選定して、作られた舞踏衣。物理防御８～１０";
                     PhysicalDefenseMinValue = 8;
                     PhysicalDefenseMaxValue = 10;
                     cost = 1200;
@@ -6218,7 +6218,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SILK_ROBE:
-                    description = "普通のシルク素材をもちいた魔法のローブ。防御力４～８。魔法防御力１０～１５";
+                    description = "普通のシルク素材をもちいた魔法のローブ。物理防御４～８。魔法防御力１０～１５";
                     PhysicalDefenseMinValue = 4;
                     PhysicalDefenseMaxValue = 8;
                     MagicDefenseMinValue = 10;
@@ -6253,7 +6253,7 @@ namespace DungeonPlayer
                     break;
                 // 防具(Common1)
                 case Database.COMMON_SMART_CLOTHING:
-                    description = "着心地も良く、動きやすさも抜群の舞踏衣。防御力２５～２８。";
+                    description = "着心地も良く、動きやすさも抜群の舞踏衣。物理防御２５～２８。";
                     PhysicalDefenseMinValue = 25;
                     PhysicalDefenseMaxValue = 28;
                     cost = 4600;
@@ -6262,7 +6262,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_ROBE:
-                    description = "スラリとしたデザインを追求した戦闘向けローブ。防御力１０～１２。魔法防御２０～２２";
+                    description = "スラリとしたデザインを追求した戦闘向けローブ。物理防御１０～１２。魔法防御２０～２２";
                     PhysicalDefenseMinValue = 10;
                     PhysicalDefenseMaxValue = 12;
                     MagicDefenseMinValue = 20;
@@ -6273,7 +6273,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SMART_PLATE:
-                    description = "ガッチリした鎧にも関わらず、煩わしさが無い。防御力３０～３５";
+                    description = "ガッチリした鎧にも関わらず、煩わしさが無い。物理防御３０～３５";
                     PhysicalDefenseMinValue = 30;
                     PhysicalDefenseMaxValue = 35;
                     cost = 5200;
@@ -6283,7 +6283,7 @@ namespace DungeonPlayer
                     break;
                 // 防具（Rare1）
                 case Database.RARE_DIRGE_ROBE:
-                    description = "重々しさを背負うが、確かな魔法耐性を感じられる。防御力２０～２０、魔法防御４０～４０、聖耐性１００、闇耐性１００";
+                    description = "重々しさを背負うが、確かな魔法耐性を感じられる。物理防御２０～２０、魔法防御４０～４０、聖耐性１００、闇耐性１００";
                     PhysicalDefenseMinValue = 20;
                     PhysicalDefenseMaxValue = 20;
                     MagicDefenseMinValue = 40;
@@ -6296,7 +6296,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_DUNSID_PLATE:
-                    description = "巷で大人気だったアゼル・ダンシッドが装着していた鎧。防御力５１～５８、火耐性１００、水耐性１００";
+                    description = "巷で大人気だったアゼル・ダンシッドが装着していた鎧。物理防御５１～５８、火耐性１００、水耐性１００";
                     PhysicalDefenseMinValue = 51;
                     PhysicalDefenseMaxValue = 58;
                     ResistFire = 100;
@@ -6308,7 +6308,7 @@ namespace DungeonPlayer
                     break;
                 // 防具（Common2）
                 case Database.COMMON_SERPENT_ARMOR:
-                    description = "サーペント族がよく愛用している鎧。防御力４２～４９";
+                    description = "サーペント族がよく愛用している鎧。物理防御４２～４９";
                     PhysicalDefenseMinValue = 42;
                     PhysicalDefenseMaxValue = 49;
                     cost = 7000;
@@ -6317,7 +6317,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SWIFT_CROSS:
-                    description = "非常に瞬発力を出しやすい舞踏衣。防御力３８～４２";
+                    description = "非常に瞬発力を出しやすい舞踏衣。物理防御３８～４２";
                     PhysicalDefenseMinValue = 38;
                     PhysicalDefenseMaxValue = 32;
                     cost = 6500;
@@ -6326,7 +6326,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_CHIFFON_ROBE:
-                    description = "フワフワとした感触で魔法耐性を持たせてある衣。防御力１５～１８、魔法防御２５～３０";
+                    description = "フワフワとした感触で魔法耐性を持たせてある衣。物理防御１５～１８、魔法防御２５～３０";
                     PhysicalDefenseMinValue = 15;
                     PhysicalDefenseMaxValue = 18;
                     MagicDefenseMinValue = 25;
@@ -6338,7 +6338,7 @@ namespace DungeonPlayer
                     break;
                 // 防具（Rare2）
                 case Database.RARE_SHARKSKIN_ARMOR:
-                    description = "鮫の鱗が新しく形状化し、鎧形状となった。防御力６６～７５、聖耐性２５０、火耐性２５０";
+                    description = "鮫の鱗が新しく形状化し、鎧形状となった。物理防御６６～７５、聖耐性２５０、火耐性２５０";
                     PhysicalDefenseMinValue = 66;
                     PhysicalDefenseMaxValue = 75;
                     ResistLight = 250;
@@ -6349,7 +6349,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_BLACK_MAGICIAN_CROSS:
-                    description = "魔法の使い手前衛で戦う事を前提として生み出された武闘衣。防御力５２～５８、魔法防御５２～５８、闇耐性２５０、火耐性２５０";
+                    description = "魔法の使い手前衛で戦う事を前提として生み出された武闘衣。物理防御５２～５８、魔法防御５２～５８、闇耐性２５０、火耐性２５０";
                     PhysicalDefenseMinValue = 52;
                     PhysicalDefenseMaxValue = 58;
                     MagicDefenseMinValue = 52;
@@ -6362,7 +6362,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_RED_THUNDER_ROBE:
-                    description = "赤い雷の文様が描かれているローブ。防御力２５～３０、魔法防御６０～７５、聖耐性２５０、火耐性２５０";
+                    description = "赤い雷の文様が描かれているローブ。物理防御２５～３０、魔法防御６０～７５、聖耐性２５０、火耐性２５０";
                     PhysicalDefenseMinValue = 46;
                     PhysicalDefenseMaxValue = 51;
                     ResistShadow = 250;
@@ -6374,7 +6374,7 @@ namespace DungeonPlayer
                     break;
                 // 防具（ガンツ合成）2階
                 case Database.COMMON_BERSERKER_PLATE:
-                    description = "狂戦士バーサーカーの気質が伝わってくる鎧。防御力７１～８２、魔法防御６０～７５、聖耐性２５０、火耐性２５０";
+                    description = "狂戦士バーサーカーの気質が伝わってくる鎧。物理防御７１～８２、魔法防御６０～７５、聖耐性２５０、火耐性２５０";
                     PhysicalDefenseMinValue = 71;
                     PhysicalDefenseMaxValue = 82;
                     cost = 14500;
@@ -6383,7 +6383,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BRIGHTNESS_ROBE:
-                    description = "光の輝きを宿らせた洗練されたローブ。防御力３６～４２、魔法防御８０～９０";
+                    description = "光の輝きを宿らせた洗練されたローブ。物理防御３６～４２、魔法防御８０～９０";
                     PhysicalDefenseMinValue = 36;
                     PhysicalDefenseMaxValue = 42;
                     MagicDefenseMinValue = 80;
@@ -6395,7 +6395,7 @@ namespace DungeonPlayer
                     break;
                 // オル・ランディス初期装備
                 case Database.COMMON_AURA_ARMOR:
-                    description = "オーラをまとっている鎧。ランディス本人の影響によるもの。防御力６８～７６、聖耐性２００";
+                    description = "オーラをまとっている鎧。ランディス本人の影響によるもの。物理防御６８～７６、聖耐性２００";
                     PhysicalDefenseMinValue = 68;
                     PhysicalDefenseMaxValue = 76;
                     ResistLight = 200;
@@ -6406,7 +6406,7 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
                 case Database.EPIC_AURA_ARMOR_OMEGA:
-                    description = "永遠なるオーラを帯びた鎧。ランディス本人の精神波動が伝わり続けている。防御力７２０～８６０、聖耐性＋16000、火耐性＋16000";
+                    description = "永遠なるオーラを帯びた鎧。ランディス本人の精神波動が伝わり続けている。物理防御７２０～８６０、聖耐性＋16000、火耐性＋16000";
                     PhysicalDefenseMinValue = 720;
                     PhysicalDefenseMaxValue = 860;
                     ResistLight = 16000;
@@ -6419,7 +6419,7 @@ namespace DungeonPlayer
                     break;
                 // 盾（Common1)
                 case Database.COMMON_SMART_SHIELD:
-                    description = "持ちやすく、向きもスッと変えられる盾。防御力１２～１５";
+                    description = "持ちやすく、向きもスッと変えられる盾。物理防御１２～１５";
                     PhysicalDefenseMinValue = 12;
                     PhysicalDefenseMaxValue = 15;
                     cost = 3500;
@@ -6428,7 +6428,7 @@ namespace DungeonPlayer
                     break;
                 // 盾（Common2)
                 case Database.COMMON_PURE_BRONZE_SHIELD:
-                    description = "純度のある青銅で生み出された盾。防御力１８～２４";
+                    description = "純度のある青銅で生み出された盾。物理防御１８～２４";
                     PhysicalDefenseMinValue = 18;
                     PhysicalDefenseMaxValue = 24;
                     cost = 4800;
@@ -6437,7 +6437,7 @@ namespace DungeonPlayer
                     break;
                 // 盾（Rare1)
                 case Database.RARE_BLUE_SKY_SHIELD:
-                    description = "青く広大な海が描かれている盾。防御力２５～３３、聖耐性３００、水耐性３００";
+                    description = "青く広大な海が描かれている盾。物理防御２５～３３、聖耐性３００、水耐性３００";
                     PhysicalDefenseMinValue = 25;
                     PhysicalDefenseMaxValue = 33;
                     ResistLight = 300;
@@ -6448,7 +6448,7 @@ namespace DungeonPlayer
                     break;
                 // 盾（ガンツ合成）２階
                 case Database.RARE_STRONG_SERPENT_SHIELD: // 半透明の石灰、青鮫の鱗
-                    description = "強固な青鮫の鱗を更に高質化させ、低温度化で固めた盾。防御力３８～４０";
+                    description = "強固な青鮫の鱗を更に高質化させ、低温度化で固めた盾。物理防御３８～４０";
                     PhysicalDefenseMinValue = 38;
                     PhysicalDefenseMaxValue = 40;
                     cost = 11000;
@@ -7477,7 +7477,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_MERGIZD_SOL_BLADE:
-                    description = "古代賢者メルギズドが幼少時代に付けていたブレード。力＋３０、知＋１６、攻撃力４５～７８、魔法攻撃３６～４２";
+                    description = "古代賢者メルギズドが幼少時代に付けていたブレード。力＋３０、知＋１６、物理攻撃４５～７８、魔法攻撃３６～４２";
                     PhysicalAttackMinValue = 45;
                     PhysicalAttackMaxValue = 78;
                     MagicAttackMinValue = 36;
@@ -7490,7 +7490,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_GARVANDI_ADILORB:
-                    description = "古代賢者エーディルが幼少時代に付けていた水晶。技＋６５、知＋１１０、体＋６３、魔力２０１～３４４";
+                    description = "古代賢者エーディルが幼少時代に付けていた水晶。技＋６５、知＋１１０、体＋６３、魔法攻撃２０１～３４４";
                     MagicAttackMinValue = 201;
                     MagicAttackMaxValue = 344;
                     buffUpAgility = 65;
@@ -7502,7 +7502,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_MAXCARN_X_BUSTER:
-                    description = "古代賢者マクスカーンが幼少時代に付けていた両手剣。力＋７５、技＋６３、心＋１００、攻撃力２２０～６００";
+                    description = "古代賢者マクスカーンが幼少時代に付けていた両手剣。力＋７５、技＋６３、心＋１００、物理攻撃２２０～６００";
                     PhysicalAttackMinValue = 220;
                     PhysicalAttackMaxValue = 600;
                     BuffUpStrength = 75;
@@ -7514,7 +7514,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_JUZA_ARESTINE_SLICER:
-                    description = "古代賢者ジュザが幼少時代に付けていたスライサー爪。力＋１０６、技＋１３２、攻撃力３２２～３８７";
+                    description = "古代賢者ジュザが幼少時代に付けていたスライサー爪。力＋１０６、技＋１３２、物理攻撃３２２～３８７";
                     PhysicalAttackMinValue = 322;
                     PhysicalAttackMaxValue = 387;
                     BuffUpStrength = 106;
@@ -7559,7 +7559,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_MERGIZD_DAV_AGITATED_BLADE:
-                    description = "古代賢者メルギズドが青年時代に愛用していたブレード。攻撃力５４５～６１２、魔力４２３～４６５、力＋２８５、知＋１６８、戦攻率＋１５％、魔攻率＋１５％";
+                    description = "古代賢者メルギズドが青年時代に愛用していたブレード。物理攻撃５４５～６１２、魔法攻撃４２３～４６５、力＋２８５、知＋１６８、戦攻率＋１５％、魔攻率＋１５％";
                     PhysicalAttackMinValue = 545;
                     PhysicalAttackMaxValue = 612;
                     MagicAttackMinValue = 423;
@@ -7575,7 +7575,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "フェルトゥーシュ段階UP"
                 case Database.POOR_PRACTICE_SWORD_ZERO:
-                    description = "ガンツ伯父さんから託された剣。どうみても練習用だが・・・。攻撃力１～３";
+                    description = "ガンツ伯父さんから託された剣。どうみても練習用だが・・・。物理攻撃１～３";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 3;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
@@ -7584,7 +7584,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_PRACTICE_SWORD_1:
-                    description = "ガンツ伯父さんから託された剣。Lv1に成長している。攻撃力１～４２";
+                    description = "ガンツ伯父さんから託された剣。Lv1に成長している。物理攻撃１～４２";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 42;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
@@ -7593,7 +7593,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.POOR_PRACTICE_SWORD_2:
-                    description = "ガンツ伯父さんから託された剣。Lv2に成長している。攻撃力１～９５";
+                    description = "ガンツ伯父さんから託された剣。Lv2に成長している。物理攻撃１～９５";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 95;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
@@ -7602,7 +7602,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_PRACTICE_SWORD_3:
-                    description = "ガンツ伯父さんから託された剣。Lv3に成長している。攻撃力１～２１１";
+                    description = "ガンツ伯父さんから託された剣。Lv3に成長している。物理攻撃１～２１１";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 211;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
@@ -7611,7 +7611,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_PRACTICE_SWORD_4:
-                    description = "ガンツ伯父さんから託された剣。Lv4に成長している。攻撃力１～４３９";
+                    description = "ガンツ伯父さんから託された剣。Lv4に成長している。物理攻撃１～４３９";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 439;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
@@ -7620,7 +7620,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_PRACTICE_SWORD_5:
-                    description = "ガンツ伯父さんから託された剣。Lv5に成長している。攻撃力１～１０１２";
+                    description = "ガンツ伯父さんから託された剣。Lv5に成長している。物理攻撃１～１０１２";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 1012;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
@@ -7629,7 +7629,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_PRACTICE_SWORD_6:
-                    description = "ガンツ伯父さんから託された剣。Lv6に成長している。攻撃力１～２３０８";
+                    description = "ガンツ伯父さんから託された剣。Lv6に成長している。物理攻撃１～２３０８";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 2308;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
@@ -7638,7 +7638,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.EPIC_PRACTICE_SWORD_7:
-                    description = "ガンツ伯父さんから託された剣。Lv7に成長している。攻撃力１～４５３７";
+                    description = "ガンツ伯父さんから託された剣。Lv7に成長している。物理攻撃１～４５３７";
                     PhysicalAttackMinValue = 1;
                     PhysicalAttackMaxValue = 4537;
                     AdditionalDescription(ItemType.Weapon_TwoHand);
@@ -7650,7 +7650,7 @@ namespace DungeonPlayer
                 #region "合成アイテム"
                 #region "合成１階"
                 case Database.COMMON_KOUKAKU_ARMOR: // ワームの甲殻
-                    description = "甲殻部を繋ぎ合わせた鎧に、魔法耐性を若干付与させた一品。防御力１１～１５。火耐性２０";
+                    description = "甲殻部を繋ぎ合わせた鎧に、魔法耐性を若干付与させた一品。物理防御１１～１５。火耐性２０";
                     PhysicalDefenseMinValue = 11;
                     PhysicalDefenseMaxValue = 15;
                     this.ResistFire = 20;
@@ -7670,7 +7670,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_WAR_WOLF_BLADE: // 刺の生えた触手、狼の牙
-                    description = "狼の牙を基素材とし、刺付き触手を加工した武器。攻撃力３２～４４";
+                    description = "狼の牙を基素材とし、刺付き触手を加工した武器。物理攻撃３２～４４";
                     PhysicalAttackMinValue = 32;
                     PhysicalAttackMaxValue = 44;
                     cost = 3600;
@@ -7679,7 +7679,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_BLUE_COPPER_ARMOR_KAI:
-                    description = "青銅の材質強度を落とさずに仕上げられた鎧。防御力２０～２５。";
+                    description = "青銅の材質強度を落とさずに仕上げられた鎧。物理防御２０～２５。";
                     PhysicalDefenseMinValue = 20;
                     PhysicalDefenseMaxValue = 25;
                     cost = 3200;
@@ -7741,7 +7741,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_SHUVALTZ_FLORE_SWORD:
-                    description = "シュヴァルツェ愛用の剣。卓越した舞踏に伴い威力を発揮する。【常備能力：有】　攻撃力４８８～５７１  力＋３６８";
+                    description = "シュヴァルツェ愛用の剣。卓越した舞踏に伴い威力を発揮する。【常備能力：有】　物理攻撃４８８～５７１  力＋３６８";
                     description += "\r\n【常備能力】　ターン経過毎に、スキルポイントが５回復する。";
                     PhysicalAttackMinValue = 488;
                     PhysicalAttackMaxValue = 571;
@@ -7751,7 +7751,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.EPIC_SHUVALTZ_FLORE_SHIELD:
-                    description = "シュヴァルツェ愛用の剣。剣形状となっているが、防御を行うために作成された剣。【常備能力：有】防御力１９５～２３９  物防率＋１２％";
+                    description = "シュヴァルツェ愛用の剣。剣形状となっているが、防御を行うために作成された剣。【常備能力：有】物理防御１９５～２３９  物防率＋１２％";
                     description += "\r\n【常備能力】　ターン経過毎に、最大ライフの５％だけライフ回復する。";
                     PhysicalDefenseMinValue = 195;
                     PhysicalDefenseMaxValue = 239;
@@ -7761,7 +7761,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.EPIC_SHUVALTZ_FLORE_ARMOR:
-                    description = "シュヴァルツェ愛用の衣。ローブ系統でありながら、その防御力は計り知れない。【常備能力：有】防御力３６５～４２２　魔法防御４１５～５４６、沈黙耐性、知＋４２０、魔防率＋１２％、闇耐性2000、水耐性2000";
+                    description = "シュヴァルツェ愛用の衣。ローブ系統でありながら、その防御力は計り知れない。【常備能力：有】物理防御３６５～４２２　魔法防御４１５～５４６、沈黙耐性、知＋４２０、魔防率＋１２％、闇耐性2000、水耐性2000";
                     description += "\r\n【常備能力】　ターン経過毎に、最大マナの５％だけマナ回復する。";
                     PhysicalDefenseMinValue = 365;
                     PhysicalDefenseMaxValue = 422;
@@ -7804,7 +7804,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SWORD_OF_RVEL: // ルベル・ゼルキス専用武器
-                    description = "ルベル・ゼルキス愛用の大剣。剣からは物理・魔法の両方のオーラが感じ取れる。攻撃力２８０～７６０、魔力３２０～３９０";
+                    description = "ルベル・ゼルキス愛用の大剣。剣からは物理・魔法の両方のオーラが感じ取れる。物理攻撃２８０～７６０、魔法攻撃３２０～３９０";
                     PhysicalAttackMinValue = 280;
                     PhysicalAttackMaxValue = 760;
                     MagicAttackMinValue = 320;
@@ -7816,7 +7816,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_ARMOR_OF_RVEL: // ルベル・ゼルキス専用武器
-                    description = "ルベル・ゼルキス愛用の鎧。鎧は魔法の光沢を帯びており、堅牢な城を連想させる。防御力１４０～１８０、魔法防御１７０～２２０";
+                    description = "ルベル・ゼルキス愛用の鎧。鎧は魔法の光沢を帯びており、堅牢な城を連想させる。物理防御１４０～１８０、魔法防御１７０～２２０";
                     PhysicalDefenseMinValue = 140;
                     PhysicalDefenseMaxValue = 180;
                     MagicDefenseMinValue = 170;
@@ -7828,7 +7828,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_LADA_ACHROMATIC_ORB:
-                    description = "ラダ愛用の漆黒のオーブ。オーブに光がどう照らされても決して輝く事はない。魔力１３２０～１６４４";
+                    description = "ラダ愛用の漆黒のオーブ。オーブに光がどう照らされても決して輝く事はない。魔法攻撃１３２０～１６４４";
                     MagicAttackMinValue = 1320;
                     MagicAttackMaxValue = 1644;
                     cost = 0;
@@ -7838,7 +7838,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.LEGENDARY_TAU_WHITE_SILVER_SWORD_0:
-                    description = "神の遺産の一つ。白銀色の光を自己発光する透明な剣。攻撃力１００～１０１";
+                    description = "神の遺産の一つ。白銀色の光を自己発光する透明な剣。物理攻撃１００～１０１";
                     PhysicalAttackMinValue = 100;
                     PhysicalAttackMaxValue = 101;
                     AdditionalDescription(ItemType.Weapon_Middle);
@@ -7848,7 +7848,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR_0:
-                    description = "神の遺産の一つ。淡黒の光を自己発光しており、真空波動が鎧に付与されている。防御力１～２"; // omega
+                    description = "神の遺産の一つ。淡黒の光を自己発光しており、真空波動が鎧に付与されている。物理防御１～２"; // omega
                     PhysicalDefenseMinValue = 1;
                     PhysicalDefenseMaxValue = 2;
                     AdditionalDescription(ItemType.Armor_Middle);
@@ -7868,7 +7868,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_WHITE_SILVER_SWORD_REPLICA:
-                    description = "神の遺産を模倣した剣。白色の光が電子経路で施されている。攻撃力４２７～４８１";
+                    description = "神の遺産を模倣した剣。白色の光が電子経路で施されている。物理攻撃４２７～４８１";
                     PhysicalAttackMinValue = 427;
                     PhysicalAttackMaxValue = 481;
                     AdditionalDescription(ItemType.Weapon_Middle);
@@ -7878,7 +7878,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_WHITE_SILVER_SWORD_REPLICA:
-                    description = "神の遺産を模倣した剣。白色の光が電子経路で施されている。攻撃力２０２６～２３８５";
+                    description = "神の遺産を模倣した剣。白色の光が電子経路で施されている。物理攻撃２０２６～２３８５";
                     PhysicalAttackMinValue = 2026;
                     PhysicalAttackMaxValue = 2385;
                     AdditionalDescription(ItemType.Weapon_Middle);
@@ -7888,7 +7888,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.LEGENDARY_TAU_WHITE_SILVER_SWORD:
-                    description = "神の遺産の一つ。白銀色の光を自己発光する透明な剣。攻撃力５０１２～６０２２";
+                    description = "神の遺産の一つ。白銀色の光を自己発光する透明な剣。物理攻撃５０１２～６０２２";
                     PhysicalAttackMinValue = 5012;
                     PhysicalAttackMaxValue = 6022;
                     AdditionalDescription(ItemType.Weapon_Middle);
@@ -7897,7 +7897,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
                 case Database.EPIC_COLORESS_ETERNAL_BREAKER:
-                    description = "煉獄のフェイズル洞窟の奥底で発見された剣。その剣は決して劣化しない。攻撃力４８７１～５２３９";
+                    description = "煉獄のフェイズル洞窟の奥底で発見された剣。その剣は決して劣化しない。物理攻撃４８７１～５２３９";
                     PhysicalAttackMinValue = 4871;
                     PhysicalAttackMaxValue = 5239;
                     AdditionalDescription(ItemType.Weapon_Middle);
@@ -7907,7 +7907,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_BLACK_AERIAL_ARMOR_REPLICA:
-                    description = "神の遺産を模倣した鎧。黒く光る発行色が施してある。防御力８９～１０１";
+                    description = "神の遺産を模倣した鎧。黒く光る発行色が施してある。物理防御８９～１０１";
                     PhysicalDefenseMinValue = 89;
                     PhysicalDefenseMaxValue = 101;
                     AdditionalDescription(ItemType.Armor_Middle);
@@ -7917,7 +7917,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.EPIC_BLACK_AERIAL_ARMOR_REPLICA:
-                    description = "神の遺産を模倣した鎧。黒く光る発行色が施してある。物理防御力１１６５～１３４０、魔法防御力１０９２～１１８３";
+                    description = "神の遺産を模倣した鎧。黒く光る発行色が施してある。物理防御１１６５～１３４０、魔法防御力１０９２～１１８３";
                     PhysicalDefenseMinValue = 1165;
                     PhysicalDefenseMaxValue = 1340;
                     MagicDefenseMinValue = 1092;
@@ -7929,7 +7929,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR:
-                    description = "神の遺産の一つ。淡黒の光を自己発光しており、真空波動が鎧に付与されている。物理防御力２７８２～２９７９、魔法防御力２６７４～３０１２";
+                    description = "神の遺産の一つ。淡黒の光を自己発光しており、真空波動が鎧に付与されている。物理防御２７８２～２９７９、魔法防御力２６７４～３０１２";
                     PhysicalDefenseMinValue = 2782;
                     PhysicalDefenseMaxValue = 2979;
                     MagicDefenseMinValue = 2674;
