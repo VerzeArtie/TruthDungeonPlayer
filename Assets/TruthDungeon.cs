@@ -2085,10 +2085,10 @@ namespace DungeonPlayer
                 // 左端ダンジョン外を見せないようにする
                 // 右端ダンジョン外を見せないようにする
                 // 下端ダンジョン外を見せないようにする
-                if ((direction == 0 && this.viewPoint.y >= Database.CAMERA_BORDER_Y_TOP) ||
-                    (direction == 1 && this.viewPoint.x <= Database.CAMERA_BORDER_X_LEFT) ||
-                    (direction == 2 && this.viewPoint.x >= Database.CAMERA_BORDER_X_RIGHT) ||
-                    (direction == 3 && this.viewPoint.y <= Database.CAMERA_BORDER_Y_BOTTOM)
+                if ((direction == 0 && this.viewPoint.y >= Database.CAMERA_BORDER_Y_TOP + Database.CAMERA_WORLD_POINT_Y) ||
+                    (direction == 1 && this.viewPoint.x <= Database.CAMERA_BORDER_X_LEFT + Database.CAMERA_WORLD_POINT_X) ||
+                    (direction == 2 && this.viewPoint.x >= Database.CAMERA_BORDER_X_RIGHT + Database.CAMERA_WORLD_POINT_X) ||
+                    (direction == 3 && this.viewPoint.y <= Database.CAMERA_BORDER_Y_BOTTOM + Database.CAMERA_WORLD_POINT_Y)
                     )
                 {
                     return;
@@ -8250,7 +8250,9 @@ namespace DungeonPlayer
                 SceneDimension.JumpToTitle();
             }
             else if (yesnoSystemMessage.text == Database.Message_GotoDownstair ||
-			           yesnoSystemMessage.text == Database.Message_GotoUpstair) {
+			           yesnoSystemMessage.text == Database.Message_GotoUpstair)
+            {
+                this.Filter.SetActive(false);
                 groupYesnoSystemMessage.SetActive(false);
                 mainMessage.text = "";
             }
@@ -8474,11 +8476,13 @@ namespace DungeonPlayer
                 {
                     yesnoSystemMessage.text = Database.Message_GotoDownstair;
                     groupYesnoSystemMessage.SetActive(true);
+                    HideFilterComplete = false; // フィルタを消さない。
                 }
                 else if (currentEvent == MessagePack.ActionEvent.YesNoBacktoDungeon)
                 {
                     yesnoSystemMessage.text = Database.Message_GotoUpstair;
                     groupYesnoSystemMessage.SetActive(true);
+                    HideFilterComplete = false; // フィルタを消さない。
                 }
                 else if (currentEvent == MessagePack.ActionEvent.GotoHomeTown)
                 {
