@@ -6375,27 +6375,22 @@ namespace DungeonPlayer
                     #endregion
                     #region "宝箱エリア１"
                     case 6:
-                        Debug.Log("treasure11 : " + this.Player.transform.position.ToString());
                         GroundOne.WE.TruthTreasure11 = GetTreasure(Database.COMMON_SIMPLE_BRACELET);
                         UpdateFieldElement(this.Player.transform.position);
                         break;
                     case 7:
-                        Debug.Log("treasure12 : " + this.Player.transform.position.ToString());
                         GroundOne.WE.TruthTreasure12 = GetTreasure(Database.POOR_HARD_SHOES);
                         UpdateFieldElement(this.Player.transform.position);
                         break;
                     case 8:
-                        Debug.Log("treasure13");
                         GroundOne.WE.TruthTreasure13 = GetTreasure(Database.COMMON_SEAL_OF_POSION);
                         UpdateFieldElement(this.Player.transform.position);
                         break;
                     case 9:
-                        Debug.Log("treasure14");
                         GroundOne.WE.TruthTreasure14 = GetTreasure(Database.COMMON_GREEN_EGG_KAIGARA);
                         UpdateFieldElement(this.Player.transform.position);
                         break;
                     case 10:
-                        Debug.Log("treasure15");
                         GroundOne.WE.TruthTreasure15 = GetTreasure(Database.COMMON_CHARM_OF_FIRE_ANGEL);
                         UpdateFieldElement(this.Player.transform.position);
                         break;
@@ -7833,12 +7828,10 @@ namespace DungeonPlayer
             {
                 for (int jj = 27; jj <= 34; jj++)
                 {
-                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false); // change unity
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
                     GroundOne.Truth_KnownTileInfo[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
                 }
             }
-            //dungeonField.Invalidate();
-            //this.Update();
         }
         private void UpdateUnknownTileArea12()
         {
@@ -7846,15 +7839,1565 @@ namespace DungeonPlayer
             {
                 for (int jj = 1; jj <= 12; jj++)
                 {
-                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false); // change unity
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
                     GroundOne.Truth_KnownTileInfo[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
                 }
             }
-            //dungeonField.Invalidate();
-            //this.Update();
         }
 
 
+        private void UpdateUnknownTileArea24()
+        {
+            for (int ii = 51; ii <= 53; ii++)
+            {
+                for (int jj = 13; jj <= 15; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+        private void UpdateUnknownTileArea25()
+        {
+            for (int ii = 37; ii <= 39; ii++)
+            {
+                for (int jj = 4; jj <= 6; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+        private void UpdateUnknownTileArea26()
+        {
+            for (int ii = 55; ii <= 57; ii++)
+            {
+                for (int jj = 10; jj <= 12; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+        private void UpdateUnknownTileArea27()
+        {
+            for (int ii = 36; ii <= 44; ii++)
+            {
+                for (int jj = 33; jj <= 35; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+        private void UpdateUnknownTileArea28()
+        {
+            for (int ii = 48; ii <= 56; ii++)
+            {
+                for (int jj = 33; jj <= 35; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+        private void UpdateUnknownTileArea29()
+        {
+            for (int ii = 0; ii <= 28; ii++)
+            {
+                for (int jj = 0; jj <= 12; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea2_10()
+        {
+            for (int ii = 29; ii <= 30; ii++)
+            {
+                for (int jj = 5; jj <= 7; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea2_11()
+        {
+            for (int ii = 20; ii <= 23; ii++)
+            {
+                for (int jj = 35; jj <= 37; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea2_12()
+        {
+            for (int ii = 19; ii <= 23; ii++)
+            {
+                for (int jj = 24; jj <= 27; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea2_13()
+        {
+            for (int ii = 11; ii <= 16; ii++)
+            {
+                for (int jj = 18; jj <= 22; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea2_14()
+        {
+            for (int ii = 1; ii <= 7; ii++)
+            {
+                for (int jj = 22; jj <= 27; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea2_15()
+        {
+            for (int ii = 1; ii <= 8; ii++)
+            {
+                for (int jj = 31; jj <= 37; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea2_16()
+        {
+            for (int ii = 10; ii <= 18; ii++)
+            {
+                for (int jj = 29; jj <= 36; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo2[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea3_1()
+        {
+            for (int ii = 3; ii <= 9; ii++)
+            {
+                for (int jj = 19; jj <= 20; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo3[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+            for (int ii = 3; ii <= 3; ii++)
+            {
+                for (int jj = 1; jj <= 38; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo3[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea3_0_1()
+        {
+            UpdateUnknownTile_Rectangle(19, 15, 25, 17, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_2()
+        {
+            UpdateUnknownTile_Rectangle(1, 15, 3, 17, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_3()
+        {
+            UpdateUnknownTile_Rectangle(8, 6, 17, 9, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_4()
+        {
+            UpdateUnknownTile_Rectangle(22, 6, 24, 9, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_5()
+        {
+            UpdateUnknownTile_Rectangle(10, 15, 17, 17, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_6()
+        {
+            UpdateUnknownTile_Rectangle(35, 11, 38, 17, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_7()
+        {
+            UpdateUnknownTile_Rectangle(16, 11, 25, 13, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_8()
+        {
+            UpdateUnknownTile_Rectangle(1, 6, 6, 10, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_9()
+        {
+            UpdateUnknownTile_Rectangle(0, 12, 7, 13, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_10()
+        {
+            UpdateUnknownTile_Rectangle(36, 6, 38, 9, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_11()
+        {
+            UpdateUnknownTile_Rectangle(27, 12, 30, 18, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_12()
+        {
+            UpdateUnknownTile_Rectangle(32, 12, 33, 17, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_13()
+        {
+            UpdateUnknownTile_Rectangle(33, 6, 34, 9, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_14()
+        {
+            UpdateUnknownTile_Rectangle(9, 11, 14, 13, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_15()
+        {
+            UpdateUnknownTile_Rectangle(5, 15, 8, 17, true);
+        }
+
+        private void UpdateUnknownTileArea3_0_16()
+        {
+            UpdateUnknownTile_Rectangle(26, 6, 31, 10, true);
+        }
+
+        private void UpdateUnknownTileArea3_Area1()
+        {
+            UpdateUnknownTile_Rectangle(14, 21, 16, 27, true);
+        }
+        private void UpdateUnknownTileArea3_Area2()
+        {
+            UpdateUnknownTileArea3_One(29, 40, true);
+            UpdateUnknownTileArea3_One(30, 40, true);
+            UpdateUnknownTileArea3_One(31, 40, true);
+            UpdateUnknownTile_Rectangle(31, 41, 34, 45, true);
+        }
+        private void UpdateUnknownTileArea3_Area3()
+        {
+            UpdateUnknownTileArea3_One(7, 33, true);
+            UpdateUnknownTileArea3_One(8, 33, true);
+            UpdateUnknownTileArea3_One(9, 33, true);
+            UpdateUnknownTileArea3_One(10, 33, true);
+            UpdateUnknownTileArea3_One(11, 33, true);
+            UpdateUnknownTileArea3_One(10, 34, true);
+            UpdateUnknownTileArea3_One(10, 35, true);
+            UpdateUnknownTileArea3_One(11, 35, true);
+            UpdateUnknownTileArea3_One(12, 35, true);
+            UpdateUnknownTileArea3_One(13, 35, true);
+            UpdateUnknownTileArea3_One(13, 34, true);
+            UpdateUnknownTileArea3_One(13, 33, true);
+            UpdateUnknownTileArea3_One(13, 32, true);
+        }
+        private void UpdateUnknownTileArea3_Area4()
+        {
+            UpdateUnknownTileArea3_One(23, 29, true);
+            UpdateUnknownTileArea3_One(24, 29, true);
+            UpdateUnknownTileArea3_One(25, 29, true);
+            UpdateUnknownTile_Rectangle(26, 26, 28, 32, true);
+        }
+        private void UpdateUnknownTileArea3_Area5()
+        {
+            UpdateUnknownTileArea3_One(20, 31, true);
+            UpdateUnknownTileArea3_One(20, 32, true);
+            UpdateUnknownTileArea3_One(20, 33, true);
+            UpdateUnknownTileArea3_One(20, 34, true);
+            UpdateUnknownTileArea3_One(20, 35, true);
+            UpdateUnknownTileArea3_One(20, 36, true);
+            UpdateUnknownTileArea3_One(21, 36, true);
+            UpdateUnknownTileArea3_One(22, 36, true);
+            UpdateUnknownTileArea3_One(23, 36, true);
+            UpdateUnknownTileArea3_One(24, 36, true);
+            UpdateUnknownTileArea3_One(25, 36, true);
+            UpdateUnknownTileArea3_One(26, 36, true);
+            UpdateUnknownTileArea3_One(27, 36, true);
+            UpdateUnknownTileArea3_One(28, 36, true);
+            UpdateUnknownTileArea3_One(29, 36, true);
+        }
+        private void UpdateUnknownTileArea3_Area6()
+        {
+            UpdateUnknownTileArea3_One(4, 52, true);
+            UpdateUnknownTileArea3_One(4, 51, true);
+            UpdateUnknownTileArea3_One(4, 50, true);
+            UpdateUnknownTileArea3_One(4, 49, true);
+            UpdateUnknownTileArea3_One(5, 49, true);
+            UpdateUnknownTileArea3_One(6, 49, true);
+            UpdateUnknownTileArea3_One(7, 49, true);
+            UpdateUnknownTileArea3_One(8, 49, true);
+            UpdateUnknownTileArea3_One(9, 49, true);
+            UpdateUnknownTileArea3_One(9, 50, true);
+        }
+        private void UpdateUnknownTileArea3_Area7()
+        {
+            UpdateUnknownTileArea3_One(12, 52, true);
+            UpdateUnknownTileArea3_One(12, 51, true);
+            UpdateUnknownTileArea3_One(12, 50, true);
+            UpdateUnknownTileArea3_One(12, 49, true);
+            UpdateUnknownTileArea3_One(12, 48, true);
+            UpdateUnknownTileArea3_One(12, 47, true);
+            UpdateUnknownTileArea3_One(12, 46, true);
+            UpdateUnknownTileArea3_One(12, 45, true);
+            UpdateUnknownTileArea3_One(13, 45, true);
+            UpdateUnknownTileArea3_One(14, 45, true);
+        }
+        private void UpdateUnknownTileArea3_Area8()
+        {
+            UpdateUnknownTileArea3_One(24, 42, true);
+            UpdateUnknownTileArea3_One(24, 41, true);
+            UpdateUnknownTileArea3_One(24, 40, true);
+            UpdateUnknownTileArea3_One(24, 39, true);
+            UpdateUnknownTileArea3_One(24, 38, true);
+            UpdateUnknownTileArea3_One(23, 38, true);
+            UpdateUnknownTileArea3_One(22, 38, true);
+            UpdateUnknownTileArea3_One(21, 38, true);
+            UpdateUnknownTileArea3_One(20, 38, true);
+            UpdateUnknownTileArea3_One(19, 38, true);
+            UpdateUnknownTileArea3_One(18, 38, true);
+            UpdateUnknownTileArea3_One(17, 38, true);
+            UpdateUnknownTileArea3_One(16, 38, true);
+            UpdateUnknownTile_Rectangle(13, 38, 15, 41, true);
+        }
+        private void UpdateUnknownTileArea3_Area9()
+        {
+            UpdateUnknownTileArea3_One(36, 29, true);
+            UpdateUnknownTileArea3_One(35, 29, true);
+            UpdateUnknownTileArea3_One(34, 29, true);
+            UpdateUnknownTileArea3_One(33, 29, true);
+            UpdateUnknownTile_Rectangle(30, 26, 32, 32, true);
+        }
+        private void UpdateUnknownTileArea3_Area10()
+        {
+            UpdateUnknownTileArea3_One(17, 35, true);
+            UpdateUnknownTileArea3_One(16, 35, true);
+            UpdateUnknownTileArea3_One(15, 35, true);
+            UpdateUnknownTileArea3_One(15, 34, true);
+            UpdateUnknownTileArea3_One(15, 33, true);
+            UpdateUnknownTileArea3_One(16, 33, true);
+            UpdateUnknownTileArea3_One(17, 33, true);
+            UpdateUnknownTileArea3_One(17, 32, true);
+            UpdateUnknownTileArea3_One(17, 31, true);
+            UpdateUnknownTileArea3_One(16, 31, true);
+            UpdateUnknownTileArea3_One(15, 31, true);
+            UpdateUnknownTileArea3_One(14, 31, true);
+            UpdateUnknownTileArea3_One(13, 31, true);
+            UpdateUnknownTileArea3_One(12, 31, true);
+            UpdateUnknownTileArea3_One(11, 31, true);
+            UpdateUnknownTileArea3_One(10, 31, true);
+            UpdateUnknownTileArea3_One(9, 31, true);
+            UpdateUnknownTileArea3_One(8, 31, true);
+            UpdateUnknownTileArea3_One(7, 31, true);
+            UpdateUnknownTileArea3_One(7, 30, true);
+            UpdateUnknownTileArea3_One(6, 30, true);
+            UpdateUnknownTileArea3_One(6, 29, true);
+            UpdateUnknownTileArea3_One(6, 28, true);
+            UpdateUnknownTileArea3_One(6, 27, true);
+            UpdateUnknownTileArea3_One(6, 26, true);
+            UpdateUnknownTileArea3_One(6, 25, true);
+            UpdateUnknownTileArea3_One(6, 24, true);
+            UpdateUnknownTileArea3_One(7, 24, true);
+            UpdateUnknownTileArea3_One(8, 24, true);
+            UpdateUnknownTileArea3_One(9, 24, true);
+            UpdateUnknownTileArea3_One(10, 24, true);
+            UpdateUnknownTileArea3_One(11, 24, true);
+            UpdateUnknownTileArea3_One(5, 24, true);
+            UpdateUnknownTileArea3_One(4, 24, true);
+            UpdateUnknownTileArea3_One(3, 24, true);
+            UpdateUnknownTileArea3_One(12, 32, true);
+            UpdateUnknownTileArea3_One(12, 33, true);
+            UpdateUnknownTileArea3_One(12, 34, true);
+            UpdateUnknownTileArea3_One(11, 34, true);
+            UpdateUnknownTileArea3_One(17, 30, true);
+            UpdateUnknownTileArea3_One(17, 29, true);
+            UpdateUnknownTileArea3_One(16, 29, true);
+            UpdateUnknownTileArea3_One(15, 29, true);
+        }
+        private void UpdateUnknownTileArea3_Area11()
+        {
+            UpdateUnknownTileArea3_One(28, 43, true);
+            UpdateUnknownTileArea3_One(28, 44, true);
+            UpdateUnknownTileArea3_One(28, 45, true);
+            UpdateUnknownTileArea3_One(28, 46, true);
+            UpdateUnknownTileArea3_One(27, 46, true);
+            UpdateUnknownTileArea3_One(26, 46, true);
+            UpdateUnknownTileArea3_One(25, 46, true);
+            UpdateUnknownTileArea3_One(24, 46, true);
+            UpdateUnknownTileArea3_One(23, 46, true);
+            UpdateUnknownTileArea3_One(22, 46, true);
+            UpdateUnknownTileArea3_One(22, 45, true);
+            UpdateUnknownTileArea3_One(22, 44, true);
+            UpdateUnknownTileArea3_One(22, 43, true);
+            UpdateUnknownTileArea3_One(22, 42, true);
+            UpdateUnknownTileArea3_One(22, 41, true);
+            UpdateUnknownTileArea3_One(21, 41, true);
+            UpdateUnknownTileArea3_One(20, 41, true);
+            UpdateUnknownTileArea3_One(19, 41, true);
+            UpdateUnknownTileArea3_One(18, 41, true);
+        }
+        private void UpdateUnknownTileArea3_Area12()
+        {
+            UpdateUnknownTileArea3_One(38, 38, true);
+            UpdateUnknownTileArea3_One(38, 37, true);
+            UpdateUnknownTileArea3_One(37, 37, true);
+            UpdateUnknownTileArea3_One(37, 36, true);
+            UpdateUnknownTileArea3_One(37, 35, true);
+            UpdateUnknownTileArea3_One(37, 34, true);
+            UpdateUnknownTileArea3_One(37, 33, true);
+            UpdateUnknownTileArea3_One(37, 32, true);
+            UpdateUnknownTileArea3_One(37, 31, true);
+            UpdateUnknownTileArea3_One(37, 30, true);
+            UpdateUnknownTileArea3_One(37, 29, true);
+            UpdateUnknownTileArea3_One(37, 28, true);
+            UpdateUnknownTileArea3_One(36, 28, true);
+            UpdateUnknownTileArea3_One(35, 28, true);
+            UpdateUnknownTileArea3_One(34, 28, true);
+            UpdateUnknownTileArea3_One(33, 28, true);
+            UpdateUnknownTileArea3_One(33, 27, true);
+            UpdateUnknownTileArea3_One(33, 26, true);
+            UpdateUnknownTileArea3_One(33, 25, true);
+            UpdateUnknownTileArea3_One(33, 24, true);
+            UpdateUnknownTileArea3_One(33, 23, true);
+            UpdateUnknownTileArea3_One(33, 22, true);
+            UpdateUnknownTileArea3_One(33, 21, true);
+            UpdateUnknownTileArea3_One(36, 37, true);
+            UpdateUnknownTileArea3_One(36, 38, true);
+            UpdateUnknownTileArea3_One(35, 38, true);
+            UpdateUnknownTileArea3_One(34, 38, true);
+            UpdateUnknownTileArea3_One(33, 38, true);
+            UpdateUnknownTileArea3_One(32, 38, true);
+            UpdateUnknownTileArea3_One(31, 38, true);
+            UpdateUnknownTileArea3_One(30, 38, true);
+        }
+        private void UpdateUnknownTileArea3_Area13()
+        {
+            UpdateUnknownTileArea3_One(3, 42, true);
+            UpdateUnknownTileArea3_One(4, 42, true);
+            UpdateUnknownTileArea3_One(5, 42, true);
+            UpdateUnknownTileArea3_One(6, 42, true);
+            UpdateUnknownTileArea3_One(7, 42, true);
+            UpdateUnknownTileArea3_One(8, 42, true);
+            UpdateUnknownTileArea3_One(9, 42, true);
+            UpdateUnknownTileArea3_One(10, 42, true);
+        }
+        private void UpdateUnknownTileArea3_Area14()
+        {
+            UpdateUnknownTileArea3_One(38, 53, true);
+            UpdateUnknownTileArea3_One(38, 52, true);
+            UpdateUnknownTile_Rectangle(34, 49, 38, 51, true);
+        }
+        private void UpdateUnknownTileArea3_Area15()
+        {
+            UpdateUnknownTileArea3_One(22, 21, true);
+            UpdateUnknownTileArea3_One(22, 22, true);
+            UpdateUnknownTileArea3_One(22, 23, true);
+            UpdateUnknownTileArea3_One(23, 23, true);
+            UpdateUnknownTileArea3_One(24, 23, true);
+            UpdateUnknownTileArea3_One(25, 23, true);
+            UpdateUnknownTileArea3_One(26, 23, true);
+            UpdateUnknownTileArea3_One(27, 23, true);
+            UpdateUnknownTileArea3_One(28, 23, true);
+            UpdateUnknownTileArea3_One(22, 24, true);
+            UpdateUnknownTileArea3_One(22, 25, true);
+        }
+        private void UpdateUnknownTileArea3_Area16()
+        {
+            UpdateUnknownTileArea3_One(16, 40, true);
+            UpdateUnknownTileArea3_One(16, 39, true);
+            UpdateUnknownTileArea3_One(17, 39, true);
+            UpdateUnknownTileArea3_One(18, 39, true);
+            UpdateUnknownTileArea3_One(19, 39, true);
+            UpdateUnknownTileArea3_One(20, 39, true);
+            UpdateUnknownTileArea3_One(21, 39, true);
+            UpdateUnknownTileArea3_One(22, 39, true);
+            UpdateUnknownTileArea3_One(23, 39, true);
+        }
+        private void UpdateUnknownTileArea3_Area17()
+        {
+            UpdateUnknownTileArea3_One(33, 30, true);
+            UpdateUnknownTileArea3_One(33, 31, true);
+            UpdateUnknownTileArea3_One(33, 32, true);
+            UpdateUnknownTileArea3_One(33, 33, true);
+            UpdateUnknownTileArea3_One(33, 34, true);
+            UpdateUnknownTile_Rectangle(31, 35, 35, 37, true);
+        }
+        private void UpdateUnknownTileArea3_Area18()
+        {
+            UpdateUnknownTileArea3_One(36, 53, true);
+            UpdateUnknownTileArea3_One(35, 53, true);
+            UpdateUnknownTileArea3_One(34, 53, true);
+            UpdateUnknownTileArea3_One(33, 53, true);
+            UpdateUnknownTileArea3_One(32, 53, true);
+            UpdateUnknownTile_Rectangle(28, 50, 31, 54, true);
+        }
+        private void UpdateUnknownTileArea3_Area19()
+        {
+            UpdateUnknownTileArea3_One(4, 35, true);
+            UpdateUnknownTileArea3_One(4, 36, true);
+            UpdateUnknownTileArea3_One(4, 37, true);
+            UpdateUnknownTileArea3_One(4, 38, true);
+            UpdateUnknownTileArea3_One(4, 39, true);
+            UpdateUnknownTileArea3_One(5, 39, true);
+            UpdateUnknownTileArea3_One(6, 39, true);
+            UpdateUnknownTileArea3_One(7, 39, true);
+            UpdateUnknownTileArea3_One(8, 39, true);
+            UpdateUnknownTileArea3_One(8, 38, true);
+            UpdateUnknownTileArea3_One(9, 38, true);
+            UpdateUnknownTileArea3_One(10, 38, true);
+            UpdateUnknownTileArea3_One(11, 38, true);
+            UpdateUnknownTileArea3_One(12, 38, true);
+            UpdateUnknownTileArea3_One(12, 39, true);
+            UpdateUnknownTileArea3_One(12, 40, true);
+            UpdateUnknownTileArea3_One(12, 41, true);
+        }
+        private void UpdateUnknownTileArea3_Area20()
+        {
+            UpdateUnknownTileArea3_One(17, 23, true);
+            UpdateUnknownTileArea3_One(17, 22, true);
+            UpdateUnknownTileArea3_One(17, 21, true);
+        }
+        private void UpdateUnknownTileArea3_Area21()
+        {
+            UpdateUnknownTileArea3_One(29, 25, true);
+            UpdateUnknownTileArea3_One(28, 25, true);
+            UpdateUnknownTileArea3_One(27, 25, true);
+            UpdateUnknownTileArea3_One(26, 25, true);
+            UpdateUnknownTile_Rectangle(23, 24, 25, 28, true);
+        }
+        private void UpdateUnknownTileArea3_Area22()
+        {
+            UpdateUnknownTileArea3_One(4, 45, true);
+            UpdateUnknownTileArea3_One(4, 46, true);
+            UpdateUnknownTileArea3_One(4, 47, true);
+            UpdateUnknownTileArea3_One(5, 47, true);
+            UpdateUnknownTileArea3_One(6, 47, true);
+            UpdateUnknownTile_Rectangle(7, 45, 9, 47, true);
+        }
+        private void UpdateUnknownTileArea3_Area23()
+        {
+            UpdateUnknownTileArea3_One(11, 45, true);
+            UpdateUnknownTileArea3_One(11, 46, true);
+            UpdateUnknownTileArea3_One(11, 47, true);
+            UpdateUnknownTileArea3_One(11, 48, true);
+            UpdateUnknownTileArea3_One(11, 49, true);
+            UpdateUnknownTileArea3_One(11, 50, true);
+            UpdateUnknownTileArea3_One(11, 51, true);
+            UpdateUnknownTileArea3_One(11, 52, true);
+            UpdateUnknownTileArea3_One(11, 53, true);
+            UpdateUnknownTileArea3_One(12, 53, true);
+            UpdateUnknownTileArea3_One(13, 53, true);
+            UpdateUnknownTileArea3_One(14, 53, true);
+            UpdateUnknownTileArea3_One(15, 53, true);
+            UpdateUnknownTileArea3_One(16, 53, true);
+            UpdateUnknownTileArea3_One(10, 53, true);
+            UpdateUnknownTileArea3_One(9, 53, true);
+        }
+        private void UpdateUnknownTileArea3_Area24()
+        {
+            UpdateUnknownTileArea3_One(13, 30, true);
+            UpdateUnknownTileArea3_One(13, 29, true);
+            UpdateUnknownTileArea3_One(13, 28, true);
+            UpdateUnknownTileArea3_One(13, 27, true);
+            UpdateUnknownTileArea3_One(13, 26, true);
+            UpdateUnknownTileArea3_One(13, 25, true);
+            UpdateUnknownTileArea3_One(13, 24, true);
+            UpdateUnknownTileArea3_One(13, 23, true);
+            UpdateUnknownTileArea3_One(13, 22, true);
+            UpdateUnknownTileArea3_One(13, 21, true);
+            UpdateUnknownTileArea3_One(13, 20, true);
+            UpdateUnknownTileArea3_One(14, 20, true);
+            UpdateUnknownTileArea3_One(15, 20, true);
+            UpdateUnknownTileArea3_One(16, 20, true);
+            UpdateUnknownTileArea3_One(17, 20, true);
+            UpdateUnknownTileArea3_One(18, 20, true);
+            UpdateUnknownTileArea3_One(18, 21, true);
+            UpdateUnknownTileArea3_One(18, 22, true);
+            UpdateUnknownTileArea3_One(18, 23, true);
+            UpdateUnknownTileArea3_One(12, 20, true);
+            UpdateUnknownTileArea3_One(11, 20, true);
+            UpdateUnknownTileArea3_One(11, 21, true);
+        }
+        private void UpdateUnknownTileArea3_Area25()
+        {
+            UpdateUnknownTileArea3_One(29, 26, true);
+            UpdateUnknownTileArea3_One(29, 27, true);
+            UpdateUnknownTileArea3_One(29, 28, true);
+            UpdateUnknownTileArea3_One(29, 29, true);
+            UpdateUnknownTileArea3_One(29, 30, true);
+            UpdateUnknownTileArea3_One(29, 31, true);
+            UpdateUnknownTileArea3_One(29, 32, true);
+            UpdateUnknownTile_Rectangle(26, 33, 32, 34, true);
+            UpdateUnknownTileArea3_One(29, 33, true);
+            UpdateUnknownTileArea3_One(28, 33, true);
+            UpdateUnknownTileArea3_One(27, 33, true);
+            UpdateUnknownTileArea3_One(26, 33, true);
+            UpdateUnknownTileArea3_One(30, 33, true);
+            UpdateUnknownTileArea3_One(31, 33, true);
+            UpdateUnknownTileArea3_One(32, 33, true);
+            UpdateUnknownTileArea3_One(26, 34, true);
+            UpdateUnknownTileArea3_One(28, 34, true);
+            UpdateUnknownTileArea3_One(30, 34, true);
+            UpdateUnknownTileArea3_One(32, 34, true);
+        }
+        private void UpdateUnknownTileArea3_Area26()
+        {
+            UpdateUnknownTileArea3_One(4, 30, true);
+            UpdateUnknownTileArea3_One(4, 31, true);
+            UpdateUnknownTileArea3_One(4, 32, true);
+            UpdateUnknownTileArea3_One(5, 32, true);
+            UpdateUnknownTileArea3_One(5, 33, true);
+            UpdateUnknownTileArea3_One(6, 33, true);
+            UpdateUnknownTileArea3_One(6, 34, true);
+            UpdateUnknownTileArea3_One(7, 34, true);
+            UpdateUnknownTileArea3_One(8, 34, true);
+            UpdateUnknownTileArea3_One(9, 34, true);
+            UpdateUnknownTileArea3_One(9, 35, true);
+        }
+        private void UpdateUnknownTileArea3_Area27()
+        {
+            UpdateUnknownTileArea3_One(30, 41, true);
+            UpdateUnknownTileArea3_One(29, 41, true);
+            UpdateUnknownTileArea3_One(28, 41, true);
+            UpdateUnknownTileArea3_One(27, 41, true);
+            UpdateUnknownTileArea3_One(27, 40, true);
+        }
+        private void UpdateUnknownTileArea3_Area28()
+        {
+            UpdateUnknownTileArea3_One(15, 51, true);
+            UpdateUnknownTileArea3_One(16, 51, true);
+            UpdateUnknownTileArea3_One(17, 51, true);
+            UpdateUnknownTile_Rectangle(18, 49, 20, 53, true);
+        }
+        private void UpdateUnknownTileArea3_Area29()
+        {
+            UpdateUnknownTileArea3_One(36, 36, true);
+            UpdateUnknownTileArea3_One(36, 35, true);
+            UpdateUnknownTile_Rectangle(34, 30, 36, 34, true);
+        }
+        private void UpdateUnknownTileArea3_Area30()
+        {
+            UpdateUnknownTileArea3_One(11, 32, true);
+            UpdateUnknownTileArea3_One(10, 32, true);
+            UpdateUnknownTileArea3_One(9, 32, true);
+            UpdateUnknownTileArea3_One(8, 32, true);
+            UpdateUnknownTileArea3_One(7, 32, true);
+            UpdateUnknownTileArea3_One(6, 32, true);
+            UpdateUnknownTileArea3_One(6, 31, true);
+            UpdateUnknownTileArea3_One(5, 31, true);
+            UpdateUnknownTileArea3_One(5, 30, true);
+            UpdateUnknownTile_Rectangle(3, 25, 5, 29, true);
+        }
+        private void UpdateUnknownTileArea3_Area31()
+        {
+            UpdateUnknownTileArea3_One(22, 31, true);
+            UpdateUnknownTileArea3_One(22, 32, true);
+            UpdateUnknownTileArea3_One(22, 33, true);
+            UpdateUnknownTileArea3_One(22, 34, true);
+            UpdateUnknownTileArea3_One(22, 35, true);
+            UpdateUnknownTileArea3_One(23, 35, true);
+            UpdateUnknownTileArea3_One(24, 35, true);
+            UpdateUnknownTileArea3_One(24, 34, true);
+            UpdateUnknownTileArea3_One(24, 33, true);
+            UpdateUnknownTileArea3_One(24, 32, true);
+            UpdateUnknownTileArea3_One(24, 31, true);
+        }
+        private void UpdateUnknownTileArea3_Area32()
+        {
+            UpdateUnknownTileArea3_One(33, 39, true);
+            UpdateUnknownTileArea3_One(34, 39, true);
+            UpdateUnknownTileArea3_One(35, 39, true);
+            UpdateUnknownTileArea3_One(36, 39, true);
+            UpdateUnknownTileArea3_One(36, 40, true);
+            UpdateUnknownTileArea3_One(37, 40, true);
+            UpdateUnknownTileArea3_One(37, 41, true);
+            UpdateUnknownTileArea3_One(38, 41, true);
+            UpdateUnknownTileArea3_One(38, 42, true);
+            UpdateUnknownTileArea3_One(38, 43, true);
+            UpdateUnknownTileArea3_One(39, 43, true);
+            UpdateUnknownTileArea3_One(39, 44, true);
+            UpdateUnknownTileArea3_One(39, 45, true);
+            UpdateUnknownTileArea3_One(39, 46, true);
+            UpdateUnknownTileArea3_One(39, 47, true);
+        }
+        private void UpdateUnknownTileArea3_Area33()
+        {
+            UpdateUnknownTileArea3_One(0, 41, true);
+            UpdateUnknownTileArea3_One(0, 42, true);
+            UpdateUnknownTileArea3_One(0, 43, true);
+            UpdateUnknownTileArea3_One(0, 44, true);
+            UpdateUnknownTileArea3_One(0, 45, true);
+            UpdateUnknownTileArea3_One(0, 46, true);
+            UpdateUnknownTileArea3_One(0, 47, true);
+            UpdateUnknownTileArea3_One(0, 48, true);
+            UpdateUnknownTileArea3_One(0, 49, true);
+            UpdateUnknownTileArea3_One(0, 50, true);
+            UpdateUnknownTileArea3_One(0, 51, true);
+            UpdateUnknownTileArea3_One(0, 52, true);
+            UpdateUnknownTileArea3_One(0, 53, true);
+            UpdateUnknownTileArea3_One(0, 54, true);
+            UpdateUnknownTileArea3_One(1, 54, true);
+            UpdateUnknownTileArea3_One(2, 54, true);
+            UpdateUnknownTileArea3_One(2, 53, true);
+            UpdateUnknownTileArea3_One(2, 52, true);
+            UpdateUnknownTileArea3_One(2, 51, true);
+            UpdateUnknownTileArea3_One(2, 50, true);
+            UpdateUnknownTileArea3_One(2, 49, true);
+            UpdateUnknownTileArea3_One(2, 48, true);
+            UpdateUnknownTileArea3_One(2, 47, true);
+            UpdateUnknownTileArea3_One(2, 46, true);
+            UpdateUnknownTileArea3_One(2, 45, true);
+            UpdateUnknownTileArea3_One(2, 44, true);
+            UpdateUnknownTileArea3_One(2, 43, true);
+            UpdateUnknownTileArea3_One(3, 43, true);
+            UpdateUnknownTileArea3_One(4, 43, true);
+            UpdateUnknownTileArea3_One(5, 43, true);
+            UpdateUnknownTileArea3_One(6, 43, true);
+            UpdateUnknownTileArea3_One(7, 43, true);
+            UpdateUnknownTileArea3_One(8, 43, true);
+            UpdateUnknownTileArea3_One(9, 43, true);
+            UpdateUnknownTileArea3_One(10, 43, true);
+            UpdateUnknownTileArea3_One(11, 43, true);
+            UpdateUnknownTileArea3_One(11, 42, true);
+            UpdateUnknownTileArea3_One(12, 42, true);
+            UpdateUnknownTileArea3_One(13, 42, true);
+            UpdateUnknownTileArea3_One(14, 42, true);
+            UpdateUnknownTileArea3_One(15, 42, true);
+            UpdateUnknownTileArea3_One(5, 44, true);
+            UpdateUnknownTileArea3_One(5, 45, true);
+            UpdateUnknownTileArea3_One(5, 46, true);
+            UpdateUnknownTileArea3_One(2, 42, true);
+            UpdateUnknownTileArea3_One(2, 41, true);
+            UpdateUnknownTileArea3_One(3, 41, true);
+            UpdateUnknownTileArea3_One(4, 41, true);
+            UpdateUnknownTileArea3_One(5, 41, true);
+            UpdateUnknownTileArea3_One(6, 41, true);
+            UpdateUnknownTileArea3_One(7, 41, true);
+            UpdateUnknownTileArea3_One(8, 41, true);
+            UpdateUnknownTileArea3_One(3, 54, true);
+            UpdateUnknownTileArea3_One(4, 54, true);
+            UpdateUnknownTileArea3_One(5, 54, true);
+            UpdateUnknownTileArea3_One(6, 54, true);
+            UpdateUnknownTileArea3_One(7, 54, true);
+            UpdateUnknownTileArea3_One(8, 54, true);
+            UpdateUnknownTileArea3_One(9, 54, true);
+            UpdateUnknownTileArea3_One(10, 54, true);
+        }
+        private void UpdateUnknownTileArea3_Area34()
+        {
+            UpdateUnknownTileArea3_One(4, 40, true);
+            UpdateUnknownTileArea3_One(5, 40, true);
+            UpdateUnknownTileArea3_One(6, 40, true);
+            UpdateUnknownTileArea3_One(7, 40, true);
+            UpdateUnknownTileArea3_One(8, 40, true);
+            UpdateUnknownTile_Rectangle(9, 39, 11, 41, true);
+        }
+
+        private void UpdateUnknownTileArea3_Area35()
+        {
+            UpdateUnknownTileArea3_One(11, 54, true);
+            UpdateUnknownTileArea3_One(12, 54, true);
+            UpdateUnknownTileArea3_One(13, 54, true);
+            UpdateUnknownTileArea3_One(14, 54, true);
+            UpdateUnknownTileArea3_One(15, 54, true);
+            UpdateUnknownTileArea3_One(16, 54, true);
+            UpdateUnknownTileArea3_One(17, 54, true);
+            UpdateUnknownTileArea3_One(18, 54, true);
+            UpdateUnknownTileArea3_One(19, 54, true);
+            UpdateUnknownTileArea3_One(20, 54, true);
+            UpdateUnknownTileArea3_One(21, 54, true);
+            UpdateUnknownTileArea3_One(22, 54, true);
+            UpdateUnknownTileArea3_One(23, 54, true);
+            UpdateUnknownTileArea3_One(24, 54, true);
+            UpdateUnknownTileArea3_One(25, 54, true);
+            UpdateUnknownTileArea3_One(25, 53, true);
+            UpdateUnknownTile_Rectangle(22, 48, 25, 52, true);
+        }
+        private void UpdateUnknownTileArea3_Area36()
+        {
+            UpdateUnknownTileArea3_One(26, 37, true);
+            UpdateUnknownTileArea3_One(27, 37, true);
+            UpdateUnknownTileArea3_One(28, 37, true);
+            UpdateUnknownTileArea3_One(29, 37, true);
+            UpdateUnknownTileArea3_One(30, 37, true);
+            UpdateUnknownTileArea3_One(30, 36, true);
+            UpdateUnknownTileArea3_One(30, 35, true);
+            UpdateUnknownTileArea3_One(29, 35, true);
+            UpdateUnknownTileArea3_One(28, 35, true);
+            UpdateUnknownTileArea3_One(27, 35, true);
+            UpdateUnknownTileArea3_One(26, 35, true);
+            UpdateUnknownTileArea3_One(25, 35, true);
+            UpdateUnknownTileArea3_One(25, 34, true);
+        }
+        private void UpdateUnknownTileArea3_Area37()
+        {
+            UpdateUnknownTileArea3_One(30, 21, true);
+            UpdateUnknownTileArea3_One(30, 22, true);
+            UpdateUnknownTileArea3_One(30, 23, true);
+            UpdateUnknownTileArea3_One(30, 24, true);
+            UpdateUnknownTileArea3_One(30, 25, true);
+            UpdateUnknownTileArea3_One(31, 25, true);
+            UpdateUnknownTileArea3_One(32, 25, true);
+            UpdateUnknownTileArea3_One(32, 24, true);
+            UpdateUnknownTileArea3_One(32, 23, true);
+            UpdateUnknownTileArea3_One(32, 22, true);
+            UpdateUnknownTileArea3_One(32, 21, true);
+        }
+        private void UpdateUnknownTileArea3_Area38()
+        {
+            UpdateUnknownTileArea3_One(0, 40, true);
+            UpdateUnknownTileArea3_One(1, 40, true);
+            UpdateUnknownTileArea3_One(2, 40, true);
+            UpdateUnknownTileArea3_One(3, 40, true);
+            UpdateUnknownTileArea3_One(3, 39, true);
+            UpdateUnknownTileArea3_One(3, 38, true);
+            UpdateUnknownTileArea3_One(3, 37, true);
+            UpdateUnknownTileArea3_One(3, 36, true);
+            UpdateUnknownTileArea3_One(3, 35, true);
+            UpdateUnknownTileArea3_One(3, 34, true);
+            UpdateUnknownTileArea3_One(1, 41, true);
+            UpdateUnknownTileArea3_One(1, 42, true);
+            UpdateUnknownTileArea3_One(1, 43, true);
+            UpdateUnknownTileArea3_One(1, 44, true);
+            UpdateUnknownTileArea3_One(1, 45, true);
+            UpdateUnknownTileArea3_One(1, 46, true);
+            UpdateUnknownTileArea3_One(1, 47, true);
+            UpdateUnknownTileArea3_One(1, 48, true);
+            UpdateUnknownTileArea3_One(1, 49, true);
+            UpdateUnknownTileArea3_One(1, 50, true);
+            UpdateUnknownTileArea3_One(1, 51, true);
+            UpdateUnknownTileArea3_One(1, 52, true);
+            UpdateUnknownTileArea3_One(1, 53, true);
+            UpdateUnknownTileArea3_One(1, 39, true);
+            UpdateUnknownTileArea3_One(1, 38, true);
+            UpdateUnknownTileArea3_One(1, 37, true);
+            UpdateUnknownTileArea3_One(1, 36, true);
+            UpdateUnknownTileArea3_One(1, 35, true);
+            UpdateUnknownTileArea3_One(1, 34, true);
+            UpdateUnknownTileArea3_One(1, 33, true);
+            UpdateUnknownTileArea3_One(1, 32, true);
+            UpdateUnknownTileArea3_One(1, 31, true);
+            UpdateUnknownTileArea3_One(1, 30, true);
+            UpdateUnknownTileArea3_One(1, 29, true);
+            UpdateUnknownTileArea3_One(1, 28, true);
+            UpdateUnknownTileArea3_One(1, 27, true);
+        }
+        private void UpdateUnknownTileArea3_Area39()
+        {
+            UpdateUnknownTileArea3_One(16, 32, true);
+            UpdateUnknownTileArea3_One(15, 32, true);
+            UpdateUnknownTileArea3_One(14, 32, true);
+            UpdateUnknownTileArea3_One(14, 33, true);
+            UpdateUnknownTileArea3_One(14, 34, true);
+            UpdateUnknownTileArea3_One(14, 35, true);
+            UpdateUnknownTileArea3_One(14, 36, true);
+            UpdateUnknownTileArea3_One(15, 36, true);
+            UpdateUnknownTileArea3_One(16, 36, true);
+            UpdateUnknownTileArea3_One(17, 36, true);
+            UpdateUnknownTileArea3_One(18, 36, true);
+            UpdateUnknownTileArea3_One(18, 35, true);
+            UpdateUnknownTileArea3_One(18, 34, true);
+            UpdateUnknownTileArea3_One(18, 33, true);
+            UpdateUnknownTileArea3_One(18, 32, true);
+            UpdateUnknownTileArea3_One(18, 31, true);
+            UpdateUnknownTileArea3_One(18, 30, true);
+            UpdateUnknownTileArea3_One(18, 29, true);
+            UpdateUnknownTileArea3_One(18, 28, true);
+            UpdateUnknownTileArea3_One(17, 28, true);
+            UpdateUnknownTileArea3_One(16, 28, true);
+            UpdateUnknownTileArea3_One(15, 28, true);
+            UpdateUnknownTileArea3_One(14, 28, true);
+            UpdateUnknownTileArea3_One(14, 29, true);
+            UpdateUnknownTileArea3_One(14, 30, true);
+            UpdateUnknownTileArea3_One(15, 30, true);
+            UpdateUnknownTileArea3_One(16, 30, true);
+            UpdateUnknownTileArea3_One(17, 34, true);
+            UpdateUnknownTileArea3_One(16, 34, true);
+        }
+        private void UpdateUnknownTileArea3_Area40()
+        {
+            UpdateUnknownTileArea3_One(20, 20, true);
+            UpdateUnknownTileArea3_One(20, 21, true);
+            UpdateUnknownTileArea3_One(20, 22, true);
+            UpdateUnknownTileArea3_One(20, 23, true);
+            UpdateUnknownTileArea3_One(20, 24, true);
+            UpdateUnknownTile_Rectangle(17, 25, 21, 27, true);
+            UpdateUnknownTile_Rectangle(19, 28, 21, 29, true);
+        }
+        private void UpdateUnknownTileArea3_Area41()
+        {
+            UpdateUnknownTileArea3_One(20, 45, true);
+            UpdateUnknownTileArea3_One(20, 44, true);
+            UpdateUnknownTileArea3_One(20, 43, true);
+            UpdateUnknownTileArea3_One(20, 42, true);
+            UpdateUnknownTileArea3_One(19, 42, true);
+            UpdateUnknownTileArea3_One(18, 42, true);
+            UpdateUnknownTileArea3_One(17, 42, true);
+        }
+        private void UpdateUnknownTileArea3_Area42()
+        {
+            UpdateUnknownTileArea3_One(20, 48, true);
+            UpdateUnknownTileArea3_One(19, 48, true);
+            UpdateUnknownTileArea3_One(18, 48, true);
+        }
+        private void UpdateUnknownTileArea3_Area43()
+        {
+            UpdateUnknownTileArea3_One(9, 21, true);
+            UpdateUnknownTile_Rectangle(5, 21, 9, 22, true);
+        }
+        private void UpdateUnknownTileArea3_Area44()
+        {
+            UpdateUnknownTileArea3_One(22, 26, true);
+            UpdateUnknownTileArea3_One(22, 27, true);
+            UpdateUnknownTileArea3_One(22, 28, true);
+            UpdateUnknownTileArea3_One(22, 29, true);
+            UpdateUnknownTileArea3_One(22, 30, true);
+            UpdateUnknownTileArea3_One(23, 30, true);
+            UpdateUnknownTileArea3_One(23, 31, true);
+            UpdateUnknownTileArea3_One(23, 32, true);
+            UpdateUnknownTileArea3_One(23, 33, true);
+            UpdateUnknownTileArea3_One(23, 34, true);
+            UpdateUnknownTileArea3_One(24, 30, true);
+            UpdateUnknownTileArea3_One(25, 30, true);
+            UpdateUnknownTileArea3_One(25, 31, true);
+            UpdateUnknownTileArea3_One(25, 32, true);
+            UpdateUnknownTileArea3_One(25, 33, true);
+            UpdateUnknownTileArea3_One(21, 30, true);
+            UpdateUnknownTileArea3_One(21, 31, true);
+            UpdateUnknownTileArea3_One(21, 32, true);
+            UpdateUnknownTileArea3_One(21, 33, true);
+            UpdateUnknownTileArea3_One(21, 34, true);
+            UpdateUnknownTileArea3_One(21, 35, true);
+            UpdateUnknownTileArea3_One(20, 30, true);
+            UpdateUnknownTileArea3_One(19, 30, true);
+            UpdateUnknownTileArea3_One(19, 31, true);
+            UpdateUnknownTileArea3_One(19, 32, true);
+            UpdateUnknownTileArea3_One(19, 33, true);
+            UpdateUnknownTileArea3_One(19, 34, true);
+            UpdateUnknownTileArea3_One(19, 35, true);
+            UpdateUnknownTileArea3_One(19, 36, true);
+        }
+        private void UpdateUnknownTileArea3_Area45()
+        {
+            UpdateUnknownTileArea3_One(28, 40, true);
+            UpdateUnknownTileArea3_One(28, 39, true);
+            UpdateUnknownTileArea3_One(27, 39, true);
+            UpdateUnknownTileArea3_One(26, 39, true);
+            UpdateUnknownTileArea3_One(25, 39, true);
+            UpdateUnknownTileArea3_One(25, 40, true);
+            UpdateUnknownTileArea3_One(25, 41, true);
+            UpdateUnknownTileArea3_One(25, 42, true);
+            UpdateUnknownTile_Rectangle(24, 43, 26, 44, true);
+        }
+        private void UpdateUnknownTileArea3_Area46()
+        {
+            UpdateUnknownTileArea3_One(22, 53, true);
+            UpdateUnknownTileArea3_One(23, 53, true);
+            UpdateUnknownTileArea3_One(24, 53, true);
+        }
+        private void UpdateUnknownTileArea3_Area47()
+        {
+            UpdateUnknownTileArea3_One(10, 52, true);
+            UpdateUnknownTileArea3_One(9, 52, true);
+            UpdateUnknownTile_Rectangle(6, 50, 8, 53, true);
+        }
+        private void UpdateUnknownTileArea3_Area48()
+        {
+            UpdateUnknownTileArea3_One(34, 27, true);
+            UpdateUnknownTileArea3_One(34, 26, true);
+            UpdateUnknownTileArea3_One(34, 25, true);
+            UpdateUnknownTileArea3_One(34, 24, true);
+            UpdateUnknownTileArea3_One(34, 23, true);
+            UpdateUnknownTileArea3_One(34, 22, true);
+            UpdateUnknownTileArea3_One(34, 21, true);
+            UpdateUnknownTileArea3_One(34, 20, true);
+            UpdateUnknownTileArea3_One(33, 20, true);
+            UpdateUnknownTileArea3_One(32, 20, true);
+            UpdateUnknownTileArea3_One(31, 20, true);
+            UpdateUnknownTileArea3_One(30, 20, true);
+            UpdateUnknownTileArea3_One(29, 20, true);
+            UpdateUnknownTileArea3_One(28, 20, true);
+            UpdateUnknownTileArea3_One(27, 20, true);
+            UpdateUnknownTileArea3_One(26, 20, true);
+            UpdateUnknownTileArea3_One(25, 20, true);
+            UpdateUnknownTileArea3_One(24, 20, true);
+            UpdateUnknownTileArea3_One(23, 20, true);
+            UpdateUnknownTileArea3_One(22, 20, true);
+            UpdateUnknownTileArea3_One(21, 20, true);
+            UpdateUnknownTileArea3_One(21, 21, true);
+            UpdateUnknownTileArea3_One(21, 22, true);
+            UpdateUnknownTileArea3_One(21, 23, true);
+            UpdateUnknownTileArea3_One(21, 24, true);
+            UpdateUnknownTileArea3_One(23, 21, true);
+            UpdateUnknownTileArea3_One(23, 22, true);
+            UpdateUnknownTileArea3_One(24, 22, true);
+            UpdateUnknownTileArea3_One(25, 22, true);
+            UpdateUnknownTileArea3_One(28, 21, true);
+            UpdateUnknownTileArea3_One(28, 22, true);
+            UpdateUnknownTileArea3_One(27, 22, true);
+            UpdateUnknownTileArea3_One(26, 22, true);
+            UpdateUnknownTileArea3_One(31, 21, true);
+            UpdateUnknownTileArea3_One(31, 22, true);
+            UpdateUnknownTileArea3_One(31, 23, true);
+            UpdateUnknownTileArea3_One(31, 24, true);
+        }
+        private void UpdateUnknownTileArea3_Area49()
+        {
+            UpdateUnknownTileArea3_One(36, 43, true);
+            UpdateUnknownTileArea3_One(36, 44, true);
+            UpdateUnknownTileArea3_One(36, 45, true);
+            UpdateUnknownTileArea3_One(36, 46, true);
+            UpdateUnknownTileArea3_One(36, 47, true);
+            UpdateUnknownTileArea3_One(35, 47, true);
+            UpdateUnknownTileArea3_One(34, 47, true);
+            UpdateUnknownTileArea3_One(33, 47, true);
+            UpdateUnknownTileArea3_One(32, 47, true);
+            UpdateUnknownTileArea3_One(31, 47, true);
+        }
+        private void UpdateUnknownTileArea3_Area50()
+        {
+            UpdateUnknownTileArea3_One(2, 31, true);
+            UpdateUnknownTileArea3_One(2, 32, true);
+            UpdateUnknownTileArea3_One(2, 33, true);
+            UpdateUnknownTileArea3_One(2, 34, true);
+            UpdateUnknownTileArea3_One(2, 35, true);
+            UpdateUnknownTileArea3_One(2, 36, true);
+            UpdateUnknownTileArea3_One(2, 37, true);
+            UpdateUnknownTileArea3_One(2, 38, true);
+            UpdateUnknownTileArea3_One(2, 39, true);
+        }
+        private void UpdateUnknownTileArea3_Area51()
+        {
+            UpdateUnknownTileArea3_One(32, 54, true);
+            UpdateUnknownTileArea3_One(33, 54, true);
+            UpdateUnknownTileArea3_One(34, 54, true);
+            UpdateUnknownTileArea3_One(35, 54, true);
+            UpdateUnknownTileArea3_One(36, 54, true);
+            UpdateUnknownTileArea3_One(37, 54, true);
+            UpdateUnknownTileArea3_One(38, 54, true);
+        }
+        private void UpdateUnknownTileArea3_Area52()
+        {
+            UpdateUnknownTileArea3_One(21, 42, true);
+            UpdateUnknownTileArea3_One(21, 43, true);
+            UpdateUnknownTileArea3_One(21, 44, true);
+            UpdateUnknownTileArea3_One(21, 45, true);
+            UpdateUnknownTileArea3_One(21, 46, true);
+            UpdateUnknownTileArea3_One(14, 47, true);
+            UpdateUnknownTileArea3_One(15, 47, true);
+            UpdateUnknownTileArea3_One(16, 47, true);
+            UpdateUnknownTileArea3_One(17, 47, true);
+            UpdateUnknownTileArea3_One(18, 47, true);
+            UpdateUnknownTileArea3_One(19, 47, true);
+            UpdateUnknownTileArea3_One(20, 47, true);
+            UpdateUnknownTileArea3_One(21, 47, true);
+            UpdateUnknownTileArea3_One(22, 47, true);
+            UpdateUnknownTileArea3_One(23, 47, true);
+            UpdateUnknownTileArea3_One(24, 47, true);
+            UpdateUnknownTileArea3_One(25, 47, true);
+            UpdateUnknownTileArea3_One(26, 47, true);
+            UpdateUnknownTileArea3_One(27, 47, true);
+            UpdateUnknownTileArea3_One(28, 47, true);
+            UpdateUnknownTileArea3_One(21, 48, true);
+            UpdateUnknownTileArea3_One(21, 49, true);
+            UpdateUnknownTileArea3_One(21, 50, true);
+            UpdateUnknownTileArea3_One(21, 51, true);
+            UpdateUnknownTileArea3_One(21, 52, true);
+            UpdateUnknownTileArea3_One(21, 53, true);
+        }
+        private void UpdateUnknownTileArea3_Area53()
+        {
+            UpdateUnknownTileArea3_One(17, 53, true);
+            UpdateUnknownTileArea3_One(17, 52, true);
+            UpdateUnknownTileArea3_One(16, 52, true);
+            UpdateUnknownTileArea3_One(15, 52, true);
+            UpdateUnknownTileArea3_One(14, 52, true);
+            UpdateUnknownTileArea3_One(14, 51, true);
+            UpdateUnknownTileArea3_One(14, 50, true);
+            UpdateUnknownTileArea3_One(15, 50, true);
+            UpdateUnknownTileArea3_One(16, 50, true);
+            UpdateUnknownTileArea3_One(17, 50, true);
+            UpdateUnknownTileArea3_One(17, 49, true);
+            UpdateUnknownTileArea3_One(17, 48, true);
+            UpdateUnknownTileArea3_One(16, 48, true);
+            UpdateUnknownTileArea3_One(15, 48, true);
+            UpdateUnknownTileArea3_One(14, 48, true);
+            UpdateUnknownTileArea3_One(13, 48, true);
+            UpdateUnknownTileArea3_One(13, 47, true);
+            UpdateUnknownTileArea3_One(13, 46, true);
+            UpdateUnknownTileArea3_One(14, 46, true);
+            UpdateUnknownTileArea3_One(15, 46, true);
+            UpdateUnknownTileArea3_One(16, 46, true);
+            UpdateUnknownTileArea3_One(17, 46, true);
+            UpdateUnknownTileArea3_One(18, 46, true);
+            UpdateUnknownTileArea3_One(19, 46, true);
+            UpdateUnknownTileArea3_One(20, 46, true);
+        }
+        private void UpdateUnknownTileArea3_Area54()
+        {
+            UpdateUnknownTileArea3_One(12, 21, true);
+            UpdateUnknownTileArea3_One(12, 22, true);
+            UpdateUnknownTileArea3_One(11, 22, true);
+            UpdateUnknownTileArea3_One(10, 22, true);
+            UpdateUnknownTileArea3_One(10, 21, true);
+            UpdateUnknownTileArea3_One(10, 20, true);
+            UpdateUnknownTileArea3_One(9, 20, true);
+            UpdateUnknownTileArea3_One(8, 20, true);
+            UpdateUnknownTileArea3_One(7, 20, true);
+            UpdateUnknownTileArea3_One(6, 20, true);
+            UpdateUnknownTileArea3_One(5, 20, true);
+            UpdateUnknownTileArea3_One(4, 20, true);
+            UpdateUnknownTileArea3_One(3, 20, true);
+            UpdateUnknownTileArea3_One(3, 21, true);
+        }
+        private void UpdateUnknownTileArea3_Area55()
+        {
+            UpdateUnknownTileArea3_One(37, 38, true);
+            UpdateUnknownTileArea3_One(37, 39, true);
+            UpdateUnknownTileArea3_One(38, 39, true);
+            UpdateUnknownTileArea3_One(38, 40, true);
+        }
+        private void UpdateUnknownTileArea3_Area56()
+        {
+            UpdateUnknownTileArea3_One(2, 25, true);
+            UpdateUnknownTileArea3_One(2, 24, true);
+            UpdateUnknownTileArea3_One(2, 23, true);
+            UpdateUnknownTileArea3_One(3, 23, true);
+            UpdateUnknownTileArea3_One(4, 23, true);
+            UpdateUnknownTileArea3_One(5, 23, true);
+            UpdateUnknownTileArea3_One(6, 23, true);
+            UpdateUnknownTileArea3_One(7, 23, true);
+            UpdateUnknownTileArea3_One(8, 23, true);
+            UpdateUnknownTileArea3_One(9, 23, true);
+            UpdateUnknownTileArea3_One(10, 23, true);
+            UpdateUnknownTileArea3_One(11, 23, true);
+            UpdateUnknownTileArea3_One(12, 23, true);
+            UpdateUnknownTileArea3_One(12, 24, true);
+            UpdateUnknownTile_Rectangle(7, 25, 12, 29, true);
+            UpdateUnknownTileArea3_One(8, 30, true);
+            UpdateUnknownTileArea3_One(9, 30, true);
+            UpdateUnknownTileArea3_One(10, 30, true);
+            UpdateUnknownTileArea3_One(11, 30, true);
+            UpdateUnknownTileArea3_One(12, 30, true);
+        }
+        private void UpdateUnknownTileArea3_Area57()
+        {
+            UpdateUnknownTileArea3_One(26, 24, true);
+            UpdateUnknownTileArea3_One(27, 24, true);
+            UpdateUnknownTileArea3_One(28, 24, true);
+            UpdateUnknownTileArea3_One(29, 24, true);
+            UpdateUnknownTileArea3_One(29, 23, true);
+            UpdateUnknownTileArea3_One(29, 22, true);
+            UpdateUnknownTileArea3_One(29, 21, true);
+        }
+        private void UpdateUnknownTileArea3_Area58()
+        {
+            UpdateUnknownTileArea3_One(17, 43, true);
+            UpdateUnknownTileArea3_One(18, 43, true);
+            UpdateUnknownTileArea3_One(19, 43, true);
+            UpdateUnknownTileArea3_One(19, 44, true);
+            UpdateUnknownTileArea3_One(19, 45, true);
+            UpdateUnknownTileArea3_One(18, 45, true);
+            UpdateUnknownTileArea3_One(17, 45, true);
+            UpdateUnknownTileArea3_One(16, 45, true);
+            UpdateUnknownTileArea3_One(15, 45, true);
+            UpdateUnknownTileArea3_One(15, 44, true);
+            UpdateUnknownTileArea3_One(14, 44, true);
+            UpdateUnknownTileArea3_One(13, 44, true);
+        }
+        private void UpdateUnknownTileArea3_Area59()
+        {
+            UpdateUnknownTileArea3_One(4, 21, true);
+            UpdateUnknownTileArea3_One(4, 22, true);
+            UpdateUnknownTileArea3_One(3, 22, true);
+            UpdateUnknownTileArea3_One(2, 22, true);
+            UpdateUnknownTileArea3_One(2, 21, true);
+            UpdateUnknownTileArea3_One(2, 20, true);
+            UpdateUnknownTileArea3_One(1, 20, true);
+            UpdateUnknownTileArea3_One(0, 20, true);
+            UpdateUnknownTileArea3_One(0, 21, true);
+            UpdateUnknownTileArea3_One(0, 22, true);
+            UpdateUnknownTileArea3_One(0, 23, true);
+            UpdateUnknownTileArea3_One(0, 24, true);
+            UpdateUnknownTileArea3_One(0, 25, true);
+            UpdateUnknownTileArea3_One(0, 26, true);
+            UpdateUnknownTileArea3_One(0, 27, true);
+            UpdateUnknownTileArea3_One(0, 28, true);
+            UpdateUnknownTileArea3_One(0, 29, true);
+            UpdateUnknownTileArea3_One(0, 30, true);
+            UpdateUnknownTileArea3_One(0, 31, true);
+            UpdateUnknownTileArea3_One(0, 32, true);
+            UpdateUnknownTileArea3_One(0, 33, true);
+            UpdateUnknownTileArea3_One(0, 34, true);
+            UpdateUnknownTileArea3_One(0, 35, true);
+            UpdateUnknownTileArea3_One(0, 36, true);
+            UpdateUnknownTileArea3_One(0, 37, true);
+            UpdateUnknownTileArea3_One(0, 38, true);
+            UpdateUnknownTileArea3_One(0, 39, true);
+        }
+        private void UpdateUnknownTileArea3_Area60()
+        {
+            UpdateUnknownTileArea3_One(39, 35, true);
+            UpdateUnknownTileArea3_One(39, 34, true);
+            UpdateUnknownTileArea3_One(39, 33, true);
+            UpdateUnknownTileArea3_One(39, 32, true);
+            UpdateUnknownTileArea3_One(39, 31, true);
+            UpdateUnknownTileArea3_One(39, 30, true);
+            UpdateUnknownTileArea3_One(39, 29, true);
+            UpdateUnknownTileArea3_One(39, 28, true);
+            UpdateUnknownTileArea3_One(39, 27, true);
+            UpdateUnknownTileArea3_One(39, 26, true);
+            UpdateUnknownTileArea3_One(39, 25, true);
+            UpdateUnknownTileArea3_One(39, 24, true);
+            UpdateUnknownTileArea3_One(39, 23, true);
+            UpdateUnknownTileArea3_One(39, 22, true);
+            UpdateUnknownTileArea3_One(39, 21, true);
+            UpdateUnknownTileArea3_One(39, 20, true);
+            UpdateUnknownTileArea3_One(38, 20, true);
+            UpdateUnknownTile_Rectangle(35, 20, 37, 27, true);
+        }
+        private void UpdateUnknownTileArea3_Area61()
+        {
+            UpdateUnknownTileArea3_One(38, 21, true);
+            UpdateUnknownTileArea3_One(38, 22, true);
+            UpdateUnknownTileArea3_One(38, 23, true);
+            UpdateUnknownTileArea3_One(38, 24, true);
+            UpdateUnknownTileArea3_One(38, 25, true);
+            UpdateUnknownTileArea3_One(38, 26, true);
+            UpdateUnknownTileArea3_One(38, 27, true);
+            UpdateUnknownTileArea3_One(38, 28, true);
+            UpdateUnknownTileArea3_One(38, 29, true);
+            UpdateUnknownTileArea3_One(38, 30, true);
+            UpdateUnknownTileArea3_One(38, 31, true);
+            UpdateUnknownTileArea3_One(38, 32, true);
+            UpdateUnknownTileArea3_One(38, 33, true);
+            UpdateUnknownTileArea3_One(38, 34, true);
+            UpdateUnknownTileArea3_One(38, 35, true);
+            UpdateUnknownTileArea3_One(38, 36, true);
+            UpdateUnknownTileArea3_One(39, 36, true);
+            UpdateUnknownTileArea3_One(39, 37, true);
+            UpdateUnknownTileArea3_One(39, 38, true);
+            UpdateUnknownTileArea3_One(39, 39, true);
+            UpdateUnknownTileArea3_One(39, 40, true);
+            UpdateUnknownTileArea3_One(39, 41, true);
+            UpdateUnknownTileArea3_One(39, 42, true);
+        }
+        private void UpdateUnknownTileArea3_Area62()
+        {
+            UpdateUnknownTileArea3_One(33, 49, true);
+            UpdateUnknownTileArea3_One(33, 50, true);
+            UpdateUnknownTileArea3_One(33, 51, true);
+        }
+        private void UpdateUnknownTileArea3_Area63()
+        {
+            UpdateUnknownTileArea3_One(16, 49, true);
+            UpdateUnknownTileArea3_One(15, 49, true);
+            UpdateUnknownTileArea3_One(14, 49, true);
+            UpdateUnknownTileArea3_One(13, 49, true);
+            UpdateUnknownTileArea3_One(13, 50, true);
+            UpdateUnknownTileArea3_One(13, 51, true);
+            UpdateUnknownTileArea3_One(13, 52, true);
+        }
+        private void UpdateUnknownTileArea3_Area64()
+        {
+            UpdateUnknownTileArea3_One(18, 44, true);
+            UpdateUnknownTileArea3_One(17, 44, true);
+            UpdateUnknownTileArea3_One(16, 44, true);
+            UpdateUnknownTileArea3_One(16, 43, true);
+            UpdateUnknownTileArea3_One(16, 42, true);
+            UpdateUnknownTileArea3_One(16, 41, true);
+            UpdateUnknownTileArea3_One(17, 41, true);
+            UpdateUnknownTileArea3_One(17, 40, true);
+            UpdateUnknownTileArea3_One(18, 40, true);
+            UpdateUnknownTileArea3_One(19, 40, true);
+            UpdateUnknownTileArea3_One(20, 40, true);
+            UpdateUnknownTileArea3_One(21, 40, true);
+            UpdateUnknownTileArea3_One(22, 40, true);
+            UpdateUnknownTileArea3_One(23, 40, true);
+            UpdateUnknownTileArea3_One(23, 41, true);
+            UpdateUnknownTileArea3_One(23, 42, true);
+            UpdateUnknownTileArea3_One(23, 43, true);
+            UpdateUnknownTileArea3_One(23, 44, true);
+            UpdateUnknownTileArea3_One(23, 45, true);
+            UpdateUnknownTileArea3_One(24, 45, true);
+            UpdateUnknownTileArea3_One(25, 45, true);
+            UpdateUnknownTileArea3_One(26, 45, true);
+            UpdateUnknownTileArea3_One(27, 45, true);
+            UpdateUnknownTileArea3_One(27, 44, true);
+            UpdateUnknownTileArea3_One(27, 43, true);
+            UpdateUnknownTileArea3_One(27, 42, true);
+            UpdateUnknownTileArea3_One(28, 42, true);
+            UpdateUnknownTileArea3_One(29, 42, true);
+            UpdateUnknownTileArea3_One(30, 42, true);
+            UpdateUnknownTileArea3_One(30, 43, true);
+            UpdateUnknownTileArea3_One(30, 44, true);
+            UpdateUnknownTileArea3_One(30, 45, true);
+            UpdateUnknownTileArea3_One(30, 46, true);
+            UpdateUnknownTileArea3_One(30, 47, true);
+            UpdateUnknownTileArea3_One(30, 48, true);
+            UpdateUnknownTileArea3_One(30, 49, true);
+            UpdateUnknownTileArea3_One(31, 49, true);
+            UpdateUnknownTileArea3_One(32, 49, true);
+            UpdateUnknownTileArea3_One(32, 50, true);
+            UpdateUnknownTileArea3_One(32, 51, true);
+            UpdateUnknownTileArea3_One(32, 52, true);
+            UpdateUnknownTileArea3_One(33, 52, true);
+            UpdateUnknownTileArea3_One(34, 52, true);
+            UpdateUnknownTileArea3_One(35, 52, true);
+            UpdateUnknownTileArea3_One(36, 52, true);
+            UpdateUnknownTileArea3_One(37, 52, true);
+            UpdateUnknownTileArea3_One(37, 53, true);
+            UpdateUnknownTileArea3_One(29, 49, true);
+            UpdateUnknownTileArea3_One(28, 49, true);
+            UpdateUnknownTileArea3_One(27, 49, true);
+            UpdateUnknownTileArea3_One(27, 50, true);
+            UpdateUnknownTileArea3_One(27, 51, true);
+            UpdateUnknownTileArea3_One(27, 52, true);
+            UpdateUnknownTileArea3_One(27, 53, true);
+            UpdateUnknownTileArea3_One(31, 46, true);
+            UpdateUnknownTileArea3_One(32, 46, true);
+            UpdateUnknownTileArea3_One(33, 46, true);
+            UpdateUnknownTileArea3_One(34, 46, true);
+            UpdateUnknownTileArea3_One(35, 46, true);
+            UpdateUnknownTileArea3_One(35, 45, true);
+            UpdateUnknownTileArea3_One(35, 44, true);
+            UpdateUnknownTileArea3_One(35, 43, true);
+            UpdateUnknownTileArea3_One(35, 42, true);
+            UpdateUnknownTileArea3_One(26, 42, true);
+            UpdateUnknownTileArea3_One(26, 41, true);
+            UpdateUnknownTileArea3_One(26, 40, true);
+            UpdateUnknownTileArea3_One(15, 43, true);
+            UpdateUnknownTileArea3_One(14, 43, true);
+            UpdateUnknownTileArea3_One(13, 43, true);
+            UpdateUnknownTileArea3_One(12, 43, true);
+            UpdateUnknownTileArea3_One(12, 44, true);
+            UpdateUnknownTileArea3_One(11, 44, true);
+            UpdateUnknownTileArea3_One(10, 44, true);
+            UpdateUnknownTileArea3_One(10, 45, true);
+            UpdateUnknownTileArea3_One(10, 46, true);
+            UpdateUnknownTileArea3_One(10, 47, true);
+            UpdateUnknownTileArea3_One(10, 48, true);
+            UpdateUnknownTileArea3_One(9, 48, true);
+            UpdateUnknownTileArea3_One(8, 48, true);
+            UpdateUnknownTileArea3_One(7, 48, true);
+            UpdateUnknownTileArea3_One(6, 48, true);
+            UpdateUnknownTileArea3_One(5, 48, true);
+            UpdateUnknownTileArea3_One(4, 48, true);
+            UpdateUnknownTileArea3_One(3, 48, true);
+            UpdateUnknownTileArea3_One(3, 49, true);
+            UpdateUnknownTileArea3_One(3, 50, true);
+            UpdateUnknownTileArea3_One(3, 51, true);
+            UpdateUnknownTileArea3_One(3, 52, true);
+            UpdateUnknownTileArea3_One(3, 53, true);
+            UpdateUnknownTileArea3_One(4, 53, true);
+            UpdateUnknownTileArea3_One(5, 53, true);
+            UpdateUnknownTileArea3_One(5, 52, true);
+            UpdateUnknownTileArea3_One(5, 51, true);
+            UpdateUnknownTileArea3_One(5, 50, true);
+            UpdateUnknownTileArea3_One(3, 47, true);
+            UpdateUnknownTileArea3_One(3, 46, true);
+            UpdateUnknownTileArea3_One(3, 45, true);
+            UpdateUnknownTileArea3_One(3, 44, true);
+            UpdateUnknownTileArea3_One(4, 44, true);
+            UpdateUnknownTileArea3_One(10, 49, true);
+            UpdateUnknownTileArea3_One(10, 50, true);
+            UpdateUnknownTileArea3_One(10, 51, true);
+            UpdateUnknownTileArea3_One(9, 51, true);
+            UpdateUnknownTileArea3_One(9, 44, true);
+            UpdateUnknownTileArea3_One(8, 44, true);
+            UpdateUnknownTileArea3_One(7, 44, true);
+            UpdateUnknownTileArea3_One(6, 44, true);
+            UpdateUnknownTileArea3_One(6, 45, true);
+            UpdateUnknownTileArea3_One(6, 46, true);
+        }
+        private void UpdateUnknownTileArea3_Area65()
+        {
+            UpdateUnknownTileArea3_One(24, 21, true);
+            UpdateUnknownTileArea3_One(25, 21, true);
+            UpdateUnknownTileArea3_One(26, 21, true);
+            UpdateUnknownTileArea3_One(27, 21, true);
+        }
+        private void UpdateUnknownTileArea3_Area66()
+        {
+            UpdateUnknownTileArea3_One(27, 54, true);
+            UpdateUnknownTileArea3_One(26, 54, true);
+            UpdateUnknownTileArea3_One(26, 53, true);
+            UpdateUnknownTileArea3_One(26, 52, true);
+            UpdateUnknownTileArea3_One(26, 51, true);
+            UpdateUnknownTileArea3_One(26, 50, true);
+            UpdateUnknownTileArea3_One(26, 49, true);
+            UpdateUnknownTileArea3_One(26, 48, true);
+            UpdateUnknownTileArea3_One(27, 48, true);
+            UpdateUnknownTileArea3_One(28, 48, true);
+            UpdateUnknownTileArea3_One(29, 48, true);
+            UpdateUnknownTileArea3_One(29, 47, true);
+            UpdateUnknownTileArea3_One(29, 46, true);
+            UpdateUnknownTileArea3_One(29, 45, true);
+            UpdateUnknownTileArea3_One(29, 44, true);
+            UpdateUnknownTileArea3_One(29, 43, true);
+        }
+        private void UpdateUnknownTileArea3_Area67()
+        {
+            UpdateUnknownTileArea3_One(31, 48, true);
+            UpdateUnknownTileArea3_One(32, 48, true);
+            UpdateUnknownTileArea3_One(33, 48, true);
+            UpdateUnknownTileArea3_One(34, 48, true);
+            UpdateUnknownTileArea3_One(35, 48, true);
+            UpdateUnknownTileArea3_One(36, 48, true);
+            UpdateUnknownTileArea3_One(37, 48, true);
+            UpdateUnknownTileArea3_One(37, 47, true);
+            UpdateUnknownTileArea3_One(37, 46, true);
+            UpdateUnknownTileArea3_One(37, 45, true);
+        }
+        //private void UpdateUnknownTileArea3_Area68() { } X5ルートは一歩ずつ進ませる事とする。
+
+        private void UpdateUnknownTileArea3_Area69()
+        {
+            UpdateUnknownTileArea3_One(5, 36, true);
+            UpdateUnknownTileArea3_One(6, 36, true);
+            UpdateUnknownTileArea3_One(5, 38, true);
+            UpdateUnknownTileArea3_One(6, 38, true);
+        }
+
+        private void UpdateUnknownTileArea3_One(int Y, int X)
+        {
+            UpdateUnknownTileArea3_One(Y, X, false);
+        }
+        private void UpdateUnknownTileArea3_One(int Y, int X, bool disableInvalidate)
+        {
+            unknownTile[Y * Database.TRUTH_DUNGEON_COLUMN + X].SetActive(false);
+            GroundOne.Truth_KnownTileInfo3[Y * Database.TRUTH_DUNGEON_COLUMN + X] = true;
+            if (disableInvalidate == false)
+            {
+                //dungeonField.Invalidate();
+                //this.Update();
+            }
+        }
+        private void UpdateUnknownTile_Rectangle(int top, int left, int bottom, int right)
+        {
+            UpdateUnknownTile_Rectangle(top, left, bottom, right, false);
+        }
+        private void UpdateUnknownTile_Rectangle(int top, int left, int bottom, int right, bool disableInvalidate)
+        {
+            for (int ii = left; ii <= right; ii++)
+            {
+                for (int jj = top; jj <= bottom; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo3[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+            if (disableInvalidate == false)
+            {
+                //dungeonField.Invalidate();
+                //this.Update();
+            }
+        }
+
+        private void UpdateUnknownTileArea3_Last0()
+        {
+            for (int ii = 55; ii <= 59; ii++)
+            {
+                for (int jj = 35; jj <= 39; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo3[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea3_Last(int jjStart)
+        {
+            for (int ii = 55; ii <= 59; ii++)
+            {
+                for (int jj = jjStart; jj <= jjStart + 2; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo3[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+        private void UpdateUnknownTileArea3_TruthLast()
+        {
+            for (int ii = 55; ii <= 59; ii++)
+            {
+                for (int jj = 0; jj <= 1; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo3[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+
+        private void UpdateUnknownTileArea41()
+        {
+            for (int ii = 44; ii <= 48; ii++)
+            {
+                for (int jj = 17; jj <= 21; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo4[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+        private void UpdateUnknownTileArea42()
+        {
+            for (int ii = 47; ii <= 47; ii++)
+            {
+                for (int jj = 14; jj <= 16; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    GroundOne.Truth_KnownTileInfo4[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
+        private void UpdateUnknownTileArea43()
+        {
+            UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 23, 43, 19, 19);
+        }
+        private void UpdateUnknownTileArea(bool[] tile, int x1, int x2, int y1, int y2)
+        {
+            for (int ii = x1; ii <= x2; ii++)
+            {
+                for (int jj = y1; jj <= y2; jj++)
+                {
+                    unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].SetActive(false);
+                    tile[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
+                }
+            }
+        }
         private void UpdateLife(MainCharacter player, Image gauge, Text txt)
         {
             float dx = (float)player.CurrentLife / (float)player.MaxLife;
@@ -8438,6 +9981,30 @@ namespace DungeonPlayer
 
                     OpenTheDoor(1, new Vector3(50, -2, 0));
                     OpenTheDoor(2, new Vector3(49, -2, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea24)
+                {
+                    UpdateUnknownTileArea24();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea25)
+                {
+                    UpdateUnknownTileArea25();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea26)
+                {
+                    UpdateUnknownTileArea26();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea27)
+                {
+                    UpdateUnknownTileArea27();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea28)
+                {
+                    UpdateUnknownTileArea28();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea29)
+                {
+                    UpdateUnknownTileArea29();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.TurnToBlack)
                 {

@@ -35,6 +35,7 @@ namespace DungeonPlayer
             UpdateUnknownTileArea26,
             UpdateUnknownTileArea27,
             UpdateUnknownTileArea28,
+            UpdateUnknownTileArea29,
             UpdateUnknownTile,
             EncountBoss,
             StopMusic,
@@ -59,7 +60,7 @@ namespace DungeonPlayer
             PlayMusic19,
             PlaySound,
             YesNoGotoDungeon,
-			YesNoBacktoDungeon,
+            YesNoBacktoDungeon,
             GotoHomeTown,
             GotoHomeTownForce,
             DecisionOpenDoor1,
@@ -4010,9 +4011,9 @@ namespace DungeonPlayer
 		#region "知の部屋、フェーズ３"
 		public static void Message12009(ref List<string> messageList, ref List<ActionEvent> eventList)
 		{
-			// after
-			//UpdateUnknownTileArea24();
-			if (!GroundOne.WE.dungeonEvent221)
+            messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea24);
+
+            if (!GroundOne.WE.dungeonEvent221)
 			{
 				GroundOne.WE.dungeonEvent221 = true;
 
@@ -4186,8 +4187,7 @@ namespace DungeonPlayer
 
 		public static void Message12009_2(ref List<string> messageList, ref List<ActionEvent> eventList)
 		{
-			// after
-			//UpdateUnknownTileArea25();
+            messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea25);
 
 			if (!GroundOne.WE.dungeonEvent222)
 			{
@@ -4363,8 +4363,8 @@ namespace DungeonPlayer
 
 		public static void Message12009_3(ref List<string> messageList, ref List<ActionEvent> eventList)
 		{
-			// after
-			//UpdateUnknownTileArea26();
+            messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea26);
+
 			if (!GroundOne.WE.dungeonEvent223)
 			{
 				GroundOne.WE.dungeonEvent223 = true;
@@ -8463,6 +8463,70 @@ namespace DungeonPlayer
         #region "心の部屋、ヒント１"
         public static void Message12033(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent238)
+            {
+                GroundOne.WE.dungeonEvent238 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea29);
+                
+                messageList.Add("アイン：うぉ・・・なんだココは・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：わぁ。。。奥の方が良く見えないわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：なんつうか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何もねえな、この部屋。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：調べても無いのに、分かるわけ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いやあ、そういうわけじゃねえけどさ・・・"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：どぉするつもりだ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どうするったって・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：調べてみるしかねえよな、実際。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：何もねぇんだろ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ、そうだと思うけどさ、実際。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：ハッキリしろ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ、何も無いと思うんだけどさ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：ハッキリしねぇやつだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：何だったら私が壁伝いに調べてみようか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：で、アインは中央の下壁、上壁をまんべんなく探す。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ランディスさんには壊せそうな薄壁を探してもらう。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いや、良い良い。一緒に調べてみようぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：そう？　まあ、アインがそう言うんなら。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：う～ん、何も無いなら調べる必要無いわよね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いや、いやいや、何かあるかもしれねえ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：え？だってさっき何もなさそうって。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、いやいやそう言う意味じゃねえ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そう思ったけどさ、実際なんかあるかもしれねえだろ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：う、うんまあね・・・"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：じゃ、少し探索してみようぜ。"); eventList.Add(ActionEvent.None);
+
+            }
         }
         #endregion
         #region "心の部屋、題材１"
@@ -8545,7 +8609,7 @@ namespace DungeonPlayer
         {
         }
         #endregion
-        #region "宝箱"
+        #region "２Ｆ宝箱"
         public static void Message12050(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
