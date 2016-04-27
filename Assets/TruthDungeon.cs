@@ -10006,6 +10006,25 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea29();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.MindRoomOpen1)
+                {
+                    // todo
+                    //dungeonTile[5 * Database.TRUTH_DUNGEON_COLUMN + 28].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
+                    //dungeonTile[5 * Database.TRUTH_DUNGEON_COLUMN + 28].Name = Database.TILEINFO_13;
+                    //tileInfo2[5 * Database.TRUTH_DUNGEON_COLUMN + 28] = dungeonTile[5 * Database.TRUTH_DUNGEON_COLUMN + 28].Name;
+
+                    //dungeonTile[6 * Database.TRUTH_DUNGEON_COLUMN + 28].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
+                    //dungeonTile[6 * Database.TRUTH_DUNGEON_COLUMN + 28].Name = Database.TILEINFO_13;
+                    //tileInfo2[6 * Database.TRUTH_DUNGEON_COLUMN + 28] = dungeonTile[6 * Database.TRUTH_DUNGEON_COLUMN + 28].Name;
+
+                    //dungeonTile[7 * Database.TRUTH_DUNGEON_COLUMN + 28].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
+                    //dungeonTile[7 * Database.TRUTH_DUNGEON_COLUMN + 28].Name = Database.TILEINFO_13;
+                    //tileInfo2[7 * Database.TRUTH_DUNGEON_COLUMN + 28] = dungeonTile[7 * Database.TRUTH_DUNGEON_COLUMN + 28].Name;
+
+                    UpdateUnknownTileArea2_10();
+
+                    UpdateUnknownTile();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.TurnToBlack)
                 {
                     TurnToBlack();
