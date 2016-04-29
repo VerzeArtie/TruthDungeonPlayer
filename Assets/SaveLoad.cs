@@ -37,6 +37,7 @@ namespace DungeonPlayer
         private string[] filenameList = null;
         private DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
 
+        private const string WorldSaveNum = "999_";
         // Use this for initialization
         public override void Start()
         {
@@ -262,11 +263,11 @@ namespace DungeonPlayer
 
         public void RealWorldSave()
         {
-            ExecSave(null, "999_", true);
+            ExecSave(null, WorldSaveNum, true);
         }
         public void RealWorldLoad()
         {
-            ExecLoad(null, "999_", true);
+            ExecLoad(null, WorldSaveNum, true);
         }
 
         private void ExecSave(Text sender, string targetFileName, bool forceSave)
@@ -894,7 +895,7 @@ namespace DungeonPlayer
             {
                 foreach (string currentFile in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
                 {
-                    if (currentFile.Contains("999_"))
+                    if (currentFile.Contains(WorldSaveNum))
                     {
                         targetFileName = System.IO.Path.GetFileName(currentFile);
                         break;
