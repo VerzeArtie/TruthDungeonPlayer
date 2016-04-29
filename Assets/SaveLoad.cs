@@ -62,6 +62,7 @@ namespace DungeonPlayer
             this.filenameList = System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml");
 
             // 一番新しいファイルのナンバーを記憶する。
+            int newNumber = 0;
             for (int ii = 0; ii < filenameList.Length; ii++)
             {
                 string targetString = System.IO.Path.GetFileName(filenameList[ii]);
@@ -70,10 +71,11 @@ namespace DungeonPlayer
                 if (targetDateTime > newDateTime)
                 {
                     newDateTime = targetDateTime;
+                    newNumber = Convert.ToInt32(targetString.Substring(0, 3));
                 }
 
             }
-            PageMove(1);
+            PageMove((newNumber - 1)/buttonText.Length + 1);
         }
 
         // Update is called once per frame
@@ -108,7 +110,7 @@ namespace DungeonPlayer
                 string targetString = System.IO.Path.GetFileName(filename);
                 for (int jj = 0; jj < buttonText.Length; jj++)
                 {
-                    if (targetString.Contains(((jj + 1) + ((this.pageNumber - 1) * 10)).ToString("D3") + "_"))
+                    if (targetString.Contains(((jj + 1) + ((this.pageNumber - 1) * buttonText.Length)).ToString("D3") + "_"))
                     {
                         targetButton = buttonText[jj];
                         targetButton.text = targetString.Substring(4, 4) + "/" + targetString.Substring(8, 2) + "/" + targetString.Substring(10, 2) + " " + targetString.Substring(12, 2) + ":" + targetString.Substring(14, 2) + ":" + targetString.Substring(16, 2) + this.gameDayString + targetString.Substring(18, 3) + this.gameDayString2 + archiveAreaString;
@@ -214,7 +216,7 @@ namespace DungeonPlayer
                 {
                     if (sender.Equals(buttonText[ii]))
                     {
-                        targetFileName = ((ii + 1) + ((this.pageNumber - 1) * 10)).ToString("D3") + "_";
+                        targetFileName = ((ii + 1) + ((this.pageNumber - 1) * buttonText.Length)).ToString("D3") + "_";
                         break;
                     }
                 }
@@ -232,7 +234,7 @@ namespace DungeonPlayer
                 {
                     if (sender.Equals(buttonText[ii]))
                     {
-                        targetFileName = (ii + 1 + ((this.pageNumber - 1) * 10)).ToString("D3") + "_";
+                        targetFileName = (ii + 1 + ((this.pageNumber - 1) * buttonText.Length)).ToString("D3") + "_";
                         break;
                     }
                 }
