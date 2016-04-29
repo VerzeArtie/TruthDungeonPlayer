@@ -36,7 +36,8 @@ namespace DungeonPlayer
             UpdateUnknownTileArea27,
             UpdateUnknownTileArea28,
             UpdateUnknownTileArea29,
-            MindRoomOpen1,
+            Floor1MindRoomOpen1,
+            Floor2MindRoomOpen1,
             UpdateUnknownTile,
             EncountBoss,
             StopMusic,
@@ -2171,9 +2172,11 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：大丈夫だ。変な頭痛は相変わらずだが、倒れるほどじゃねえ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っさ、行くぞ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：そんな事より、ここで・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：っえ、えぇ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：何してんのよ？そんなとこで突っ立って。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ、見てなって。"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
@@ -2183,7 +2186,38 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：（こんな所で立ち止まってたら駄目だ）"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：っよし、行くぜ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・ここで・・・）"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("　　【　アイン・ウォーレンス本人と認識　】"); eventList.Add(ActionEvent.None);
+                    
+                messageList.Add("　　【　適正ボーダーをクリア。心層の壁を解除　】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『ッゴゴゴゴゴ・・・ガコン！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor1MindRoomOpen1);
+
+                if (GroundOne.WE.AvailableSecondCharacter)
+                {
+                    messageList.Add("ラナ：え！何よ今の！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：このダンジョンのカラクリを一つ解いたのさ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：カラクリ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、結構面倒くさい仕掛けだったがな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っさ、行くぞ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：っえ、えぇ。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：（よし、これでこのダンジョンのカラクリを一つ解いた事になるな）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（おそらく、次の階も何かある・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（気を付けて進めるとするか）"); eventList.Add(ActionEvent.None);
                 }
 
                 GroundOne.WE.dungeonEvent31 = true;
@@ -9110,7 +9144,7 @@ namespace DungeonPlayer
 
                 GroundOne.WE.dungeonEvent249 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.MindRoomOpen1);
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2MindRoomOpen1);
 
                 messageList.Add("アイン：ふう・・・開いたぜ。"); eventList.Add(ActionEvent.None);
 

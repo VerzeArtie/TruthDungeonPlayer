@@ -33,6 +33,10 @@ namespace DungeonPlayer
         private Text currentSaveText = null;
         private string currentTargetFileName = string.Empty;
 
+        private int pageNumber = 1;
+        private string[] filenameList = null;
+        private DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
+
         // Use this for initialization
         public override void Start()
         {
@@ -45,102 +49,30 @@ namespace DungeonPlayer
                 return;
             }
 
-            MakeDirectory();
-
-            Text newDateTimeButton = null;
-            Button newDateBackButton = null;
-            DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
-
-            string[] filenameList = System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml");
-
-            for (int ii = 0; ii < filenameList.Length; ii++)
-            {
-                string filename = filenameList[ii];
-                Debug.Log("filename: " + filename);
-                Text targetButton = null;
-                string targetString = System.IO.Path.GetFileName(filename);
-                if (targetString.Contains("01_"))
-                {
-                    targetButton = buttonText[0];
-                }
-                else if (targetString.Contains("02_"))
-                {
-                    targetButton = buttonText[1];
-                }
-                else if (targetString.Contains("03_"))
-                {
-                    targetButton = buttonText[2];
-                }
-                else if (targetString.Contains("04_"))
-                {
-                    targetButton = buttonText[3];
-                }
-                else if (targetString.Contains("05_"))
-                {
-                    targetButton = buttonText[4];
-                }
-                else if (targetString.Contains("06_"))
-                {
-                    targetButton = buttonText[5];
-                }
-                else if (targetString.Contains("07_"))
-                {
-                    targetButton = buttonText[6];
-                }
-                else if (targetString.Contains("08_"))
-                {
-                    targetButton = buttonText[7];
-                }
-                else if (targetString.Contains("09_"))
-                {
-                    targetButton = buttonText[8];
-                }
-                else if (targetString.Contains("10_"))
-                {
-                    targetButton = buttonText[9];
-                }
-                else
-                {
-                    continue; // 後編追加（11番のオートセーブを拡張したため）
-                }
-
-                string DateTimeString = targetString.Substring(3, 4) + "/" + targetString.Substring(7, 2) + "/" + targetString.Substring(9, 2) + " " + targetString.Substring(11, 2) + ":" + targetString.Substring(13, 2) + ":" + targetString.Substring(15, 2);
-                DateTime targetDateTime = DateTime.Parse(DateTimeString);
-                if (targetDateTime > newDateTime)
-                {
-                    newDateTime = targetDateTime;
-                    newDateTimeButton = targetButton;
-                    newDateBackButton = back_button[ii];
-                }
-
-                targetButton.text = targetString.Substring(3, 4) + "/" + targetString.Substring(7, 2) + "/" + targetString.Substring(9, 2) + " " + targetString.Substring(11, 2) + ":" + targetString.Substring(13, 2) + ":" + targetString.Substring(15, 2) + this.gameDayString + targetString.Substring(17, 3) + this.gameDayString2 + archiveAreaString;
-
-                if (targetString.Substring(20, 1) == "6")
-                {
-                    targetButton.text += this.archiveAreaString3;
-                }
-                else
-                {
-                    targetButton.text += targetString.Substring(20, 1) + this.archiveAreaString2;
-                }
-
-                if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
-                {
-                    targetButton.text = "";
-                }
-            }
-
-            if (newDateTimeButton != null)// && GroundOne.WE2.RealWorld == false)
-            {
-                newDateBackButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNew2");
-            }
-
             this.Background.GetComponent<Image>().color = UnityColor.Aqua;
             if (GroundOne.SaveMode)
             {
                 titleLabel.text = "SAVE";
                 this.Background.GetComponent<Image>().color = UnityColor.Salmon;
             }
+
+            MakeDirectory();
+
+            this.filenameList = System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml");
+
+            // 一番新しいファイルのナンバーを記憶する。
+            for (int ii = 0; ii < filenameList.Length; ii++)
+            {
+                string targetString = System.IO.Path.GetFileName(filenameList[ii]);
+                string DateTimeString = targetString.Substring(4, 4) + "/" + targetString.Substring(8, 2) + "/" + targetString.Substring(10, 2) + " " + targetString.Substring(12, 2) + ":" + targetString.Substring(14, 2) + ":" + targetString.Substring(16, 2);
+                DateTime targetDateTime = DateTime.Parse(DateTimeString);
+                if (targetDateTime > newDateTime)
+                {
+                    newDateTime = targetDateTime;
+                }
+
+            }
+            PageMove(1);
         }
 
         // Update is called once per frame
@@ -153,6 +85,54 @@ namespace DungeonPlayer
                 if (this.autoKillTimer == 200)
                 {
                     tapExit();
+                }
+            }
+        }
+
+        private void PageMove(int pageNum)
+        {
+            this.pageNumber = pageNum;
+
+            for (int ii = 0; ii < buttonText.Length; ii++)
+            {
+                buttonText[ii].text = "";
+                back_button[ii].GetComponent<Image>().sprite = null;
+            }
+
+            for (int ii = 0; ii < filenameList.Length; ii++)
+            {
+                string filename = filenameList[ii];
+                Debug.Log("filename: " + filename);
+                Text targetButton = null;
+                string targetString = System.IO.Path.GetFileName(filename);
+                for (int jj = 0; jj < buttonText.Length; jj++)
+                {
+                    if (targetString.Contains(((jj + 1) + ((this.pageNumber - 1) * 10)).ToString("D3") + "_"))
+                    {
+                        targetButton = buttonText[jj];
+                        targetButton.text = targetString.Substring(4, 4) + "/" + targetString.Substring(8, 2) + "/" + targetString.Substring(10, 2) + " " + targetString.Substring(12, 2) + ":" + targetString.Substring(14, 2) + ":" + targetString.Substring(16, 2) + this.gameDayString + targetString.Substring(18, 3) + this.gameDayString2 + archiveAreaString;
+
+                        string DateTimeString = targetString.Substring(4, 4) + "/" + targetString.Substring(8, 2) + "/" + targetString.Substring(10, 2) + " " + targetString.Substring(12, 2) + ":" + targetString.Substring(14, 2) + ":" + targetString.Substring(16, 2);
+                        DateTime targetDateTime = DateTime.Parse(DateTimeString);
+                        if (targetDateTime.Equals(this.newDateTime))
+                        {
+                            back_button[jj].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNew2");
+                        }
+
+                        if (targetString.Substring(21, 1) == "6")
+                        {
+                            targetButton.text += this.archiveAreaString3;
+                        }
+                        else
+                        {
+                            targetButton.text += targetString.Substring(21, 1) + this.archiveAreaString2;
+                        }
+
+                        if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+                        {
+                            targetButton.text = "";
+                        }
+                    }
                 }
             }
         }
@@ -214,6 +194,12 @@ namespace DungeonPlayer
             }
         }
 
+        public void TapSelectNumber(Text txtNumber)
+        {
+            Debug.Log("txtNumber: " + txtNumber.text.ToString());
+            PageMove(Convert.ToInt32(txtNumber.text));
+        }
+
         public void tapButton(Text sender)
         {
             Debug.Log(sender.text);
@@ -223,45 +209,13 @@ namespace DungeonPlayer
             if (GroundOne.SaveMode)
             {
                 string targetFileName = String.Empty;
-                if (sender.Equals(buttonText[0]))
+                for (int ii = 0; ii < buttonText.Length; ii++)
                 {
-                    targetFileName = "01_";
-                }
-                else if (sender.Equals(buttonText[1]))
-                {
-                    targetFileName = "02_";
-                }
-                else if (sender.Equals(buttonText[2]))
-                {
-                    targetFileName = "03_";
-                }
-                else if (sender.Equals(buttonText[3]))
-                {
-                    targetFileName = "04_";
-                }
-                else if (sender.Equals(buttonText[4]))
-                {
-                    targetFileName = "05_";
-                }
-                else if (sender.Equals(buttonText[5]))
-                {
-                    targetFileName = "06_";
-                }
-                else if (sender.Equals(buttonText[6]))
-                {
-                    targetFileName = "07_";
-                }
-                else if (sender.Equals(buttonText[7]))
-                {
-                    targetFileName = "08_";
-                }
-                else if (sender.Equals(buttonText[8]))
-                {
-                    targetFileName = "09_";
-                }
-                else if (sender.Equals(buttonText[9]))
-                {
-                    targetFileName = "10_";
+                    if (sender.Equals(buttonText[ii]))
+                    {
+                        targetFileName = ((ii + 1) + ((this.pageNumber - 1) * 10)).ToString("D3") + "_";
+                        break;
+                    }
                 }
                 ExecSave((Text)sender, targetFileName, false); // 後編移動
             }
@@ -273,48 +227,15 @@ namespace DungeonPlayer
                 if (((Text)sender).text == String.Empty) return;
 
                 string targetFileName = String.Empty;
-                if (sender.Equals(buttonText[0]))
+                for (int ii = 0; ii < buttonText.Length; ii++)
                 {
-                    targetFileName = "01_";
-                }
-                else if (sender.Equals(buttonText[1]))
-                {
-                    targetFileName = "02_";
-                }
-                else if (sender.Equals(buttonText[2]))
-                {
-                    targetFileName = "03_";
-                }
-                else if (sender.Equals(buttonText[3]))
-                {
-                    targetFileName = "04_";
-                }
-                else if (sender.Equals(buttonText[4]))
-                {
-                    targetFileName = "05_";
-                }
-                else if (sender.Equals(buttonText[5]))
-                {
-                    targetFileName = "06_";
-                }
-                else if (sender.Equals(buttonText[6]))
-                {
-                    targetFileName = "07_";
-                }
-                else if (sender.Equals(buttonText[7]))
-                {
-                    targetFileName = "08_";
-                }
-                else if (sender.Equals(buttonText[8]))
-                {
-                    targetFileName = "09_";
-                }
-                else if (sender.Equals(buttonText[9]))
-                {
-                    targetFileName = "10_";
+                    if (sender.Equals(buttonText[ii]))
+                    {
+                        targetFileName = (ii + 1 + ((this.pageNumber - 1) * 10)).ToString("D3") + "_";
+                        break;
+                    }
                 }
                 ExecLoad((Text)sender, targetFileName, false); // 後編移動
-
             }
         }
 
@@ -341,11 +262,11 @@ namespace DungeonPlayer
 
         public void RealWorldSave()
         {
-            ExecSave(null, "11_", true);
+            ExecSave(null, "999_", true);
         }
         public void RealWorldLoad()
         {
-            ExecLoad(null, "11_", true);
+            ExecLoad(null, "999_", true);
         }
 
         private void ExecSave(Text sender, string targetFileName, bool forceSave)
@@ -973,7 +894,7 @@ namespace DungeonPlayer
             {
                 foreach (string currentFile in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
                 {
-                    if (currentFile.Contains("11_"))
+                    if (currentFile.Contains("999_"))
                     {
                         targetFileName = System.IO.Path.GetFileName(currentFile);
                         break;

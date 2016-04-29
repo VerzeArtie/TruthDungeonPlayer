@@ -56,8 +56,8 @@ namespace DungeonPlayer
         public static GameObject bgm = null; // BGM音源
         public static AudioSource bgmSource = null; // BGMソース
 
-        public static bool EnableBGM = true; // ミュージック、デフォルトはオン
-        public static bool EnableSoundEffect = true; // 効果音、デフォルトはオン
+        public static bool EnableBGM = false; // ミュージック、デフォルトはオン // debug
+        public static bool EnableSoundEffect = false; // 効果音、デフォルトはオン // debug
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 
@@ -569,8 +569,11 @@ namespace DungeonPlayer
         #region "BGM再生と効果音関連"
         public static void PlaySoundEffect(string soundName)
         {
-            soundSource.clip = Resources.Load<AudioClip>(Database.BaseSoundFolder + soundName);
-            soundSource.Play();
+            if (GroundOne.EnableSoundEffect)
+            {
+                soundSource.clip = Resources.Load<AudioClip>(Database.BaseSoundFolder + soundName);
+                soundSource.Play();
+            }
         }
 
         public static void PlayDungeonMusic(string targetMusicName, int loopBegin)
@@ -579,10 +582,13 @@ namespace DungeonPlayer
         }
         public static void PlayDungeonMusic(string targetMusicName, string targetMusicName2, int loopBegin)
         {
-            bgmSource.Stop();
-            bgmSource.clip = Resources.Load<AudioClip>(Database.BaseMusicFolder + targetMusicName);
-            bgmSource.loop = true;
-            bgmSource.Play();
+            if (GroundOne.EnableBGM)
+            {
+                bgmSource.Stop();
+                bgmSource.clip = Resources.Load<AudioClip>(Database.BaseMusicFolder + targetMusicName);
+                bgmSource.loop = true;
+                bgmSource.Play();
+            }
         }
 
         public static void StopDungeonMusic()
