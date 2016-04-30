@@ -1064,14 +1064,15 @@ namespace DungeonPlayer
         public static int INFINITY = 99999;
 
         public static int TILE_AREA_NUM = 4;
+        public static string PLAYER_MARK = @"Player";
         public static string TREASURE_BOX = @"TreasureBox";
         public static string TREASURE_BOX_OPEN = @"TreasureBoxOpen";
-        public static string BOARD = @"Board.bmp";
-        public static string UPSTAIR = @"Upstair.bmp";
-        public static string DOWNSTAIR = @"Downstair.bmp";
-        public static string MIRROR = @"Mirror.bmp";
-        public static string BLUEORB = @"BlueOrb.bmp";
-        public static string FOUNTAIN = @"Fountain.bmp";
+        public static string BOARD = @"Board";
+        public static string UPSTAIR = @"Upstair";
+        public static string DOWNSTAIR = @"Downstair";
+        public static string MIRROR = @"Mirror";
+        public static string BLUEORB = @"BlueOrb";
+        public static string FOUNTAIN = @"Fountain";
 
 
         #region "一般コマンド名称"
