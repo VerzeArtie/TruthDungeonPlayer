@@ -201,7 +201,7 @@ namespace DungeonPlayer
             this.prefab_TileElement.AddComponent<SpriteRenderer>();
             this.prefab_TileElement.transform.position = new Vector3(-99999, -99999, 0);
 
-            this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.PLAYER_MARK);
+            this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.PLAYER_MARK);
             this.Player = Instantiate(this.prefab_TileElement, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 
             if (GroundOne.WE.DungeonArea == 0 || GroundOne.WE.DungeonArea == 1)
@@ -318,14 +318,14 @@ namespace DungeonPlayer
                 {
                     if (childList2[ii].Name.Contains(OTHER1))
                     {
-                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TREASURE_BOX);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.TREASURE_BOX);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER1.Length, childList2[ii].Name.Length - OTHER1.Length));
                         int row = targetNumber / Database.TRUTH_DUNGEON_COLUMN;
                         int column = targetNumber % Database.TRUTH_DUNGEON_COLUMN;
                         GameObject current = Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject;
                         if (DetectOpenTreasure(new Vector3(column, -row, 0)))
                         {
-                            current.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TREASURE_BOX_OPEN);
+                            current.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.TREASURE_BOX_OPEN);
                         }
                         this.objOther.Add(current);
                         this.objTreasureList.Add(current);
@@ -333,19 +333,19 @@ namespace DungeonPlayer
                     }
                     else if (childList2[ii].Name.Contains(OTHER2))
                     {
-                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.BOARD);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BOARD);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER2.Length, childList2[ii].Name.Length - OTHER2.Length));
                         this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER3))
                     {
-                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.UPSTAIR);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.UPSTAIR);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER3.Length, childList2[ii].Name.Length - OTHER3.Length));
                         this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER4))
                     {
-                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.DOWNSTAIR);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.DOWNSTAIR);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER4.Length, childList2[ii].Name.Length - OTHER4.Length));
                         this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
