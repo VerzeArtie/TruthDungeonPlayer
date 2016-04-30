@@ -78,10 +78,6 @@ namespace DungeonPlayer
         List<GameObject> objTreasureList = new List<GameObject>();
         List<int> objTreasureNum = new List<int>();
 
-        public GameObject prefab_BlueWall_T;
-        public GameObject prefab_BlueWall_B;
-        public GameObject prefab_BlueWall_L;
-        public GameObject prefab_BlueWall_R;
         public Text mainMessage;
         public Image back_vigilance;
         public Text labelVigilance;
@@ -116,10 +112,6 @@ namespace DungeonPlayer
         }
 
         GameObject Player = null;
-
-        // ダンジョンマッピングデータを示すタイル情報
-        GameObject[] dungeonTile = new GameObject[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
-        //GameObject[] unknownTile = new GameObject[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
 
         // 敵の強さを区分けするためのタイルカラー情報
         int[] tileColor = new int[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
@@ -916,7 +908,7 @@ namespace DungeonPlayer
                 return;
             }
             #region "戦闘終了判定"
-            // 死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。
+            #region "死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。"
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
             {
                 GroundOne.BattleResult = GroundOne.battleResult.None;
@@ -924,7 +916,8 @@ namespace DungeonPlayer
                 this.ignoreCreateShadow = true;
                 this.nowEncountEnemy = true;
             }
-            // 敗北して、ゲーム終了を選択した時
+            #endregion
+            #region "敗北して、ゲーム終了を選択した時"
             else if (GroundOne.BattleResult == GroundOne.battleResult.Ignore)
             {
                 CopyShadowToMain();
@@ -933,24 +926,44 @@ namespace DungeonPlayer
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
-                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
+                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
                 {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
-                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
+                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
                 {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
-                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
-                if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
-                    GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
+                         GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
@@ -966,7 +979,8 @@ namespace DungeonPlayer
                     groupYesnoSystemMessage.SetActive(true);
                 }
             }
-            // 逃げた時、経験値とゴールドは入らない。(つまり、何もしない）
+            #endregion
+            #region "逃げた時、経験値とゴールドは入らない。(つまり、何もしない）"
             else if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
             {
                 GroundOne.BattleResult = GroundOne.battleResult.None;
@@ -975,6 +989,26 @@ namespace DungeonPlayer
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
                 {
@@ -999,7 +1033,8 @@ namespace DungeonPlayer
                 }
                 GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
             }
-            // 戦闘に勝利した場合（通常ルート）
+            #endregion
+            #region "戦闘に勝利した場合（通常ルート）"
             else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
             {
                 GroundOne.BattleResult = GroundOne.battleResult.None;
@@ -1011,9 +1046,42 @@ namespace DungeonPlayer
                 {
                     GroundOne.WE.TruthCompleteSlayBoss1 = true;
                 }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
+                {
+                    // todo レベルアップできなくなるのでは？要確認
+                    MessagePack.Message12044_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
+                {
+                    // todo レベルアップできなくなるのでは？要確認
+                    MessagePack.Message12045_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
+                {
+                    // todo レベルアップできなくなるのでは？要確認
+                    MessagePack.Message12046_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                {
+                    // todo レベルアップできなくなるのでは？要確認
+                    MessagePack.Message12047_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+                {
+                    // todo レベルアップできなくなるのでは？要確認
+                    MessagePack.Message12048_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
                 {
                     GroundOne.WE.TruthCompleteSlayBoss2 = true;
+                    // todo レベルアップできなくなるのでは？要確認
+                    MessagePack.Message12049_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
                 {
@@ -1410,6 +1478,7 @@ namespace DungeonPlayer
                 //  SetupPlayerStatus();
                 //  return true;
             }
+            #endregion
             #endregion
         }
 
@@ -9922,6 +9991,60 @@ namespace DungeonPlayer
                     OpenTheDoor(1, new Vector3(50, -2, 0));
                     OpenTheDoor(2, new Vector3(49, -2, 0));
                 }
+                else if (currentEvent == MessagePack.ActionEvent.StrengthRoomOpen1)
+                {
+                    OpenTheDoor(3, new Vector3(21, -34, 0));
+                    OpenTheDoor(0, new Vector3(21, -35, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.StrengthRoomOpen2)
+                {
+                    OpenTheDoor(3, new Vector3(21, -23, 0));
+                    OpenTheDoor(0, new Vector3(21, -24, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.StrengthRoomOpen3)
+                {
+                    OpenTheDoor(2, new Vector3(10, -18, 0));
+                    OpenTheDoor(1, new Vector3(11, -18, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.StrengthRoomOpen4)
+                {
+                    OpenTheDoor(3, new Vector3(6, -27, 0));
+                    OpenTheDoor(0, new Vector3(6, -28, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.StrengthRoomOpen5)
+                {
+                    OpenTheDoor(3, new Vector3(5, -37, 0));
+                    OpenTheDoor(0, new Vector3(5, -38, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.StrengthRoomOpen6)
+                {
+                    OpenTheDoor(3, new Vector3(14, -28, 0));
+                    OpenTheDoor(0, new Vector3(14, -29, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_11)
+                {
+                    UpdateUnknownTileArea2_11();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_12)
+                {
+                    UpdateUnknownTileArea2_12();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_13)
+                {
+                    UpdateUnknownTileArea2_13();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_14)
+                {
+                    UpdateUnknownTileArea2_14();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_15)
+                {
+                    UpdateUnknownTileArea2_15();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_16)
+                {
+                    UpdateUnknownTileArea2_16();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea24)
                 {
                     UpdateUnknownTileArea24();
@@ -9980,6 +10103,15 @@ namespace DungeonPlayer
                     GroundOne.enemyName1 = this.nowMessage[this.nowReading];
                     GroundOne.enemyName2 = String.Empty;
                     GroundOne.enemyName3 = String.Empty;
+                    if (this.nowMessage[this.nowReading] == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                    {
+                        GroundOne.enemyName2 = Database.ENEMY_JELLY_EYE_DEEP_BLUE;
+                    }
+                    else if (this.nowMessage[this.nowReading] == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+                    {
+                        GroundOne.enemyName2 = Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU;
+                        GroundOne.enemyName3 = Database.ENEMY_SEA_STAR_KNIGHT_AMARA;
+                    }
                     CancelKeyDownMovement();
                     SceneDimension.CallTruthBattleEnemy(this, false, false, false, false);
                 }

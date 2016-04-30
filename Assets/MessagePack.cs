@@ -30,6 +30,18 @@ namespace DungeonPlayer
             IntelligenceRoomOpen1,
             IntelligenceRoomOpen2,
             IntelligenceRoomOpen3,
+            StrengthRoomOpen1,
+            StrengthRoomOpen2,
+            StrengthRoomOpen3,
+            StrengthRoomOpen4,
+            StrengthRoomOpen5,
+            StrengthRoomOpen6,
+            UpdateUnknownTileArea2_11,
+            UpdateUnknownTileArea2_12,
+            UpdateUnknownTileArea2_13,
+            UpdateUnknownTileArea2_14,
+            UpdateUnknownTileArea2_15,
+            UpdateUnknownTileArea2_16,
             UpdateUnknownTileArea24,
             UpdateUnknownTileArea25,
             UpdateUnknownTileArea26,
@@ -9312,31 +9324,798 @@ namespace DungeonPlayer
         #region "力の部屋、ボス１"
         public static void Message12044(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent250)
+            {
+                GroundOne.WE.dungeonEvent250 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea2_11);
+
+                messageList.Add("アイン：っお、何か居るぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：あら、輝ける海の王子じゃない。アイン覚えてない？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？なんだって？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：もう臨戦態勢ってわけね・・・人の話、聞いてないし。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そうだな。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：後で話してやれ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：え、ええっと、ハイ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("ラナ：ハアアァァァ・・・もう、勝てなくても知らないわよ。"); eventList.Add(ActionEvent.None);
+            }
+
+            if (!GroundOne.WE.dungeonEvent250_SlayBoss)
+            {
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+
+                messageList.Add(Database.ENEMY_BRILLIANT_SEA_PRINCE); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+
+        public static void Message12044_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.dungeonEvent250_SlayBoss = true;
+
+            messageList.Add("アイン：っしゃ、やったぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StrengthRoomOpen1);
+
+            messageList.Add("ラナ：ふう・・・辛かったわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、さすが力の部屋というだけあるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイン、ところでさっきのボスに見覚えはない？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？そういや戦闘前にも言ってたな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：聞こえてるんなら答えなさいよね、もう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：正直違和感はあった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しかし、覚えてねえんだ。悪いな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：違和感の元は何だ？"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：違和感って何よ？"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：ん～と、どう言うんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何か覚えてるような気もするんだが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハッキリとは思い出せねえ。そんな感じだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【ヴェルガスの海底神殿】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おおおおおお！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ！？　今のマジだな！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何動転しちゃってんのよ・・・面白かったけど♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：マジに決まってるじゃない。忘れてたの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、ぜんぜん覚えてるぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：輝ける海の王子、あのグングニルがすげえ強力だったよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しかもたまに波にのってスピードUPとかありえねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：声を出してきただけで、ヤケにパワーアップもしてたよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやあ、マジで苦労したぜ！あれは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しかし・・・何で思い出せなかったんだ？？"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：寝ぼけてたんだろ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、決して寝ぼけてたワケじゃねえんだが・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：忘れっぽいだけでしょ、ホンットバカよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、マジで何で忘れてたんだ・・・？"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("ラナ：思い出すのと実際の行動がまるで逆よね・・・ハアァァ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：い、いやいや悪かったって！　次から気をつけるって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：次からは戦略思い出してからにするわよ？いいわね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ了解了解！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っさ、次行こうぜ！　ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：こんなノリで本当に大丈夫かしら・・・"); eventList.Add(ActionEvent.None);
         }
         #endregion
         #region "力の部屋、ボス２"
         public static void Message12045(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent251)
+            {
+                GroundOne.WE.dungeonEvent251 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea2_12);
+
+                messageList.Add("アイン：っと、ボスとの戦闘だ、気を引き締めて・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ちょっと待ってよ、アイン"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、分かってる分かってる。ボスの特徴だろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：珊瑚の女王。主に魔法攻撃を主力とするヤツだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：とは言っても、魔法主力は物理防御が低いなんて言うのは間違いだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：コイツは、海底神殿に祀られている２つの神を信仰している。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：武の神、アンダート。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：アンダートへの忠誠の祈りを捧げることでかなり高い物理防御を展開してくる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：この時点で物理攻撃によるダメージは諦めた方がいいだろうな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：って、おい聞いてるのかよラナ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え、ええ、もちろん聞いてるわよ。バカアインみたいに寝たりしないわ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、じゃあ続けて行くぞ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：生命の神、サルマン。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：サルマンへの忠誠も行うことで、魔法防御系統の効果を発揮してくる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：単なる魔法防御上昇なら良いが、確かミラーイメージが混じってたはずだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あれが張られた状態で攻撃魔法をぶっ放すとかなり危ないから気をつけるぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：それから最後だが、フローズンランスが通常攻撃だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：純粋にダメージを持っていかれるからパワー負けしないようにな。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：ほぉ、それなりにやる気になってるみてぇだな。ッカッカッカ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：当たり前だろ。小ボスとは言え、適当な戦術じゃ勝てそうもないしな。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("ラナ：ねえ、結局戦術はどうするの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：任せた！！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う～ん、ここでビシっと戦術指南まであると頼り甲斐もあるのに・・・ハアアァァァ"); eventList.Add(ActionEvent.None);
+            }
+
+            if (!GroundOne.WE.dungeonEvent251_SlayBoss)
+            {
+                messageList.Add("アイン：っしゃ、ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+
+                messageList.Add(Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+
+        public static void Message12045_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.dungeonEvent251_SlayBoss = true;
+
+            messageList.Add("アイン：っしゃ、やったぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：分かってはいたけど、結構面倒な相手だったわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、戦術パターンさえ見抜いてればそうでもなかっただろ。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：その割には、結構あぶねぇ場面もあった。もっとしっかりしろ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：うわっっつつ・・・わ、分かったって。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("ラナ：ねえ、アインって海底神殿のこと、全部思い出せてるワケ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん～、全部かどうかと言われてもな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんかこの、小ボスが次々湧いてくるのは覚えてるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ふうん、全部思い出せてるわけじゃないみたいね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何だよ、何か他に忘れてる事でもあったか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ううん、そういうワケじゃないけどね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：んん？何だよ、ヤケに気になる言い方じゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ、先に進めましょ♪　ッホラホラ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああそうだな。　じゃあ次へ進むとするか！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StrengthRoomOpen2);
         }
         #endregion
         #region "力の部屋、ボス３"
         public static void Message12046(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent252)
+            {
+                GroundOne.WE.dungeonEvent252 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea2_13);
+
+                messageList.Add("アイン：っしゃ、続けてボスだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あの格好・・・シェル・ザ・ソードナイトだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：戦闘はスピード感のある攻撃スタイルで攻めてくる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：きっちり固めて勝つ方法も無いわけじゃねえが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あいにくそういうのをやってるうちに負けちまう可能性もある。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ヤツが優勢かこちらが優勢かよりも、単純なダメージレースに持っていった方が良いだろう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：今度は唐突に戦術理論の方を展開してるわね。特徴はどうなのよ？"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：ヤツの特徴も添えつけろ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：あ、ああぁ、そうだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：特徴の一つは、シーストライプ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：攻撃と同時に急激に行動ゲージのスピード上昇があるせいかテンポのズレに気をつけた方がいい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あと、深海の渦だな。コイツは全体効果としてスロウをかけてくる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：仕掛けとしてはシンプルだが、タイミングがやべぇと相手が２回行動みたいな感じに繋がる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：アンラッキーな組み合わせにならないよう、ライフには常に気を配った方が良い。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：それから極めつけが、ジュエル・ブレイク。コイツが非常に厄介だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：インスタントで仕掛けてくるダメージ系で、加えて増強効果の魔法打ち消しが入っている。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：散々増強してもディスペルされるんだったら、最初から増強しない選択でやったほうが良いかも知れないな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：そういうトコだけは、ホンットよく覚えてるわよね・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そりゃ、そうだろ。これを知ってないと勝てるものも勝てなくなるからな"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：ッオイ、そろそろ始めるぞ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、了解！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：でもこういうのは助かるわ。次からもお願いね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、任せておけ！"); eventList.Add(ActionEvent.None);
+                }
+
+            }
+
+            if (!GroundOne.WE.dungeonEvent252_SlayBoss)
+            {
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+
+                messageList.Add(Database.ENEMY_SHELL_SWORD_KNIGHT); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+
+        public static void Message12046_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.dungeonEvent252_SlayBoss = true;
+
+            messageList.Add("アイン：っしゃ、やったぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っふう、間一髪って感じだったわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：さてと、ラナ。教えてもらうぜ。前回ボスの最後で言いかけてたのをな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何の話よ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え？そりゃお前、何か「全部思い出した？」とか何とか聞いてたじゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ああ、あの話はね。そんな大した事じゃないわよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何だよ、だから余計気になるって言ってるじゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：慌てない慌てない♪　このまま先へ進めましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：くそう・・・覚えてろよ、この借りはいつか必ず・・・"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：女性相手にムキんなってんじゃねぇ、ボケが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッイデ！　わわ、分かったって・・・ちくしょう・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：借りじゃなくて、アインが単に忘れてるだけだからね、フフフ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っちぇ、分かったよ。最後のボスまで倒したら教えてくれよな。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add(""); eventList.Add(ActionEvent.StrengthRoomOpen3);
         }
         #endregion
         #region "力の部屋、ボス４"
         public static void Message12047(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent253)
+            {
+                GroundOne.WE.dungeonEvent253 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea2_14);
+
+                messageList.Add("アイン：っしゃ、続けてボスだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：何か目玉みたいなのが２つ居るわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：左側が赤色のジェリーアイ【熱光】だな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：攻撃形態は火が基本だが、厄介なのはフラッシュ・バーンだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッパっと一瞬閃光が走るため、暗闇のステータスが付いちまう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：解除する方法を持っておくのも良いだろう。ただ面倒ならそのままって方法もアリだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：後は、火攻撃がひたすらウザイ。何とか耐えながらやるしかないな。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：もう一方の方も、簡潔に説明してみろ。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：もう一方の方はどうなの？"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：ああ、もう一方はジェリーアイ【流冷】だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：反対属性だからメインは水系統になる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：水系統の攻撃もかなり面倒くせえが、本当にウザいのがハルシネイト・アイだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：これを食らっちまうと、スタン状態に陥ってしまう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ダメージレースで大丈夫かと思っていても、すぐに崩されるからライフ配分は細心の注意が必要だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う～ん、結構面倒くさそうね・・・まあ、分かったわアリガト♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：待て、まだ大事な点が残ってる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：赤い方は、火耐性があり、青い方は水耐性がある。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：それに加えて、赤い側が青い方へ火耐性を付与してくる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：その逆も当然あって、赤い側に水耐性が付与されちまう。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：ッケ、魔法系統はほぼ無効って事か。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、物理で攻めていくしか無いな。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：じゃあ、物理で攻めていくようにするしか無いわね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、そういう事になるな。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：っしゃ、そろそろ始めるとするか。準備は良いよな？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、いつでもイイわよ。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：いつでも始めろ。"); eventList.Add(ActionEvent.None);
+                }
+                messageList.Add("アイン：っしゃ、了解！"); eventList.Add(ActionEvent.None);
+            }
+
+            if (!GroundOne.WE.dungeonEvent253_SlayBoss)
+            {
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+
+                messageList.Add(Database.ENEMY_JELLY_EYE_BRIGHT_RED); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+
+        public static void Message12047_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.dungeonEvent253_SlayBoss = true;
+
+            messageList.Add("アイン：っしゃ、やったぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しかし、どれだけいるんだよ、ここのボスは"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：マップの進み具合を見るかぎり、まだありそうね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ふう・・・休む暇も無しって所か・・・"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：ッオラ、何ボーっとしてやがる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、そういうわけじゃねえけどさ。"); eventList.Add(ActionEvent.None);
+            }
+
+
+            messageList.Add("アイン：俺、何でこんな所に来てるんだろうな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：テメェが行くと言ったんだろぉが。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：何言ってんのよ、行くって言ったのはアイン本人じゃない。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：ま、まあそうなんだけどさ。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：見失ってんじゃねぇぞ、ボケが。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そんなんじゃねえって。ちょっと考えてただけだって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ランディス：そういうのが見失ってる状態なんだろぉが、ザコが。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：わ、わわわ分かったって、そうまくし立てるなよ。"); eventList.Add(ActionEvent.None);
+
+            }
+            else
+            {
+                messageList.Add("ラナ：っえ・・・ひょっとして臆したわけ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、そういうわけじゃねえって、心配するな。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("ラナ：まあ、まだ先はあるみたいだし、先へ進みましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ了解！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StrengthRoomOpen4);
         }
         #endregion
         #region "力の部屋、ボス５"
         public static void Message12048(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent254)
+            {
+                GroundOne.WE.dungeonEvent254 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea2_15);
+
+                messageList.Add("アイン：っしゃ、続けてボスだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アイン、見てあれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、玉座に一人、そして付き添いの騎士が２人いる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まずは玉座に居るのが、海星源の王。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ヤツは基本的に聖魔法を駆使してくるだけだ、それほど問題にはならねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：問題なのは、付き添いの２人、海星騎士エーギルとアマラって事になる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まずエーギルだが、こいつが振るってくるのはスターソード『煌』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ヤツは王に対して、かなり高い物理防御フィールドを展開してくる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：つまり、コイツが居る間は王へ物理攻撃は効かないって事だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：逆も同様、アマラの方は魔法防御フィールドを展開してくるってワケだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：じゃあ、王を先に倒そうとするのはかなり無理があるわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、しかもそれだけじゃねえ。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("アイン：アイツらは、ラナや師匠を目掛けて攻撃してくる。気をつけてくれ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：望むところだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：分かったわ。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：アイツらは、ラナを目掛けて攻撃してくる。気をつけてくれ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：分かったわ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：攻撃に関しても単なる直接攻撃じゃねえ。暗闇やスタン、結構面倒なのが混ざってたはずだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：戦術は各々に任せる。頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：また、当然だが、王自身は聖魔法フレッシュヒールを使ってくる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：下手な長期戦はいたずらに消耗するだけだ。あまり良い作戦とは言えねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ある程度整った状態なら、臆せず攻撃に転じるようにもっていくぜ。いいな？"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：任せろ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ええ、了解よ。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：ええ、了解よ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：っしゃ、じゃあ行くぜ！"); eventList.Add(ActionEvent.None);
+            }
+
+            if (!GroundOne.WE.dungeonEvent254_SlayBoss)
+            {
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+
+                messageList.Add(Database.ENEMY_SEA_STAR_ORIGIN_KING); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+
+        public static void Message12048_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.dungeonEvent254_SlayBoss = true;
+
+            messageList.Add("アイン：っしゃ、やったぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っふううぅぅ、今度ばかりは本当に駄目かと思ったぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：騎士を一人倒すのが本当に辛かったわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、実質あいつらの護衛が主戦力だったな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：王の統率力、そこのボケアインも見習うべきだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハハ・・・確かに、あんだけ統率できりゃ大したもんだ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：さてっと、どうだラナ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っえ！？　何がよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マップだよ。ひょっとしたらそろそろ最後なんじゃねえのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あー、マップの事ね。びっくりするじゃない突然聞いてくるから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・そうね。このまま進めば、力の部屋の中央エリアに突入しそうよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おし、ここまで来たんだ。キッチリ気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：フフフ、やけに気合入ってるじゃない♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：当たり前だろ。もう何でも来いって感じだぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：勢いは良いけど、ライフ・マナの消耗が激しい場合は一旦戻った方がイイわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：分かってるって。それじゃ、行くぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StrengthRoomOpen5);
         }
         #endregion
         #region "力の部屋、ボス６"
         public static void Message12049(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent255)
+            {
+                GroundOne.WE.dungeonEvent255 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea2_16);
+
+                messageList.Add("アイン：っしゃ、最後のボスか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：って・・・デカ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：大海蛇のリヴィアサン。さすがに見てるだけでも引いちゃうわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っと、気圧されてる場合じゃねえ。俺が覚えてる事を述べるから、聞いてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まず、猛突進してくる「大激衝」だが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：マジでダメージが半端じゃねえ。即死レベルだから俺が倒れても文句は言うな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ダメよ。ちゃんと耐えなさいよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：だから、即死レベルなんだって・・・防衛援護頼むぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：それから、大きな巨体のくせに柔軟に絡んでくるのがサージェティックバインド。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：威力自体は普通だが、巻きつき効果によるスタンと出血ダメージは防ぎようがねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：対象はランダムだから、本当に気をつけてくれ。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.MC.RumbleShout)
+                {
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：おい、てめぇが対象になる方法を探せ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ッゲ・・・それだけは・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：ッカ・・・ヘタレアインが。まあ、好きにしろ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いや、まあ考えておくって。了解了解。"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：あれ、アインって対象を自分に向けるのって覚えてなかった？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ッゲ・・・それだけは・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：うーん、でもスタン状態で「大激衝」を食らっても困るわね、まあ好きにすれば良いわ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いや、まあ考えておくって。了解了解。"); eventList.Add(ActionEvent.None);
+                    }
+                }
+
+                messageList.Add("アイン：それから、これが結構大事なんだが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ライフが減ってくると、唐突に吠え始める。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：物理攻撃アップ、魔法攻撃アップ、戦闘反応アップ。正直勘弁してくれって感じだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：中でも最もひでえのは戦闘反応アップにある。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：どうしてそうなるのよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：溜め技・・・みたいなイメージかな。とにかく大技を出力するゲージが急速に早くなるんだよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：コイツの決め技は確か・・・タイダルウェイブだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：全員に大津波ダメージが入る。極めて致命傷だから絶対に食らいたくはねえ。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：よぉは、速攻で片付けろって話だろ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、できればそうしたい。頼んだぜ師匠。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：要するに、ライフが良い感じに減ってきたら、後は早めに倒したいって事？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、できればそうしたい。頼んだぜ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：解説は大体こんな所だ。っしゃ準備は良いよな？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、いつでもいいわよ。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：とっとと始めろ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：オーケー、じゃあ行くぜ。"); eventList.Add(ActionEvent.None);
+            }
+
+            if (!GroundOne.WE.dungeonEvent255_SlayBoss)
+            {
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+
+                messageList.Add(Database.ENEMY_BOSS_LEVIATHAN); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+
+        public static void Message12049_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.dungeonEvent255_SlayBoss = true;
+
+            messageList.Add("アイン：おおっしゃ！　やっと倒せたぜ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：もう二度とこういうのは相手したくないわね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ、ところでどうだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：え？　ああ、マップならもう後少ししか残ってないわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうじゃなくて、結構前に話してたやつだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ああ、アレ？　まだ覚えてたんだ、フフフ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：最後のボス、倒したぜ。だから頼む！　教えてくれ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、もう分かったわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：教えてあげるわ、でもそんな面白くないわよ、良いわね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、教えてくれ頼むぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ話すけど・・・実はね・・・"); eventList.Add(ActionEvent.None); ;
+
+            messageList.Add("ラナ：海底神殿ってね、実は私達、行ってないのよ。覚えてた？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・マジかよ！？"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：ッカッカッカ、どうやら本当に覚えてなかったようだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、マジで知らなかったぜ。ってか覚えてなかったワケだが・・・。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：じゃ・・・ここは一体何なんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：海底神殿ゲート前。つまり言ってみれば、入り口みたいなものね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：海底神殿はこのリヴィアサンを倒した先に突然海底から沸き上がってきたわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃ、じゃあ、ソコには行けてないって事かよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アンタがバテたから帰りたいって言ったんじゃないの。覚えてないわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、だからさ。覚えてねえって・・・さっきから言ってるじゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：待てよ・・・すると、その海底神殿には結局何があるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：分からないわよ。　あれから結局行ってないじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何で行ってねえんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインが一旦帰った後で、そのまま忘れてたからでしょ！？　ホンット覚えてないのね！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：って・・・っぷ・・・フフフ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：な、何で怒った直後に笑ってんだよ、気味が悪いな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：だって、オカシイじゃない、ッフフフ、あ～オカシイ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おいおい、説明してくれよ、意味がわかんねえぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：秘密♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ！？！？　何でソコが秘密なんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：悪い話じゃないことだけは確かよ♪"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("アイン：おいおいおい、師匠なら何か知ってるんじゃねえのか！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ランディス：ッカッカッカ、知らねえなぁ。"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：っくそおぉぉぉ・・・思いだせねえ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：もういいじゃない。過ぎた話なんだし、このままにしときましょ、フフフ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：くそぉ・・・まあ悪い話じゃないみたいだし、しょうがねえ。この辺にしとくか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っささ、いよいよ大詰めよね。早いとこ進めましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StrengthRoomOpen6);
         }
         #endregion
         #region "２Ｆ宝箱"
