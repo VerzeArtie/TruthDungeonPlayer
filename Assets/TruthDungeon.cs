@@ -211,6 +211,9 @@ namespace DungeonPlayer
 
         bool nowDecisionOpenDoor1 = false;
 
+        private GameObject prefab_DungeonTile = null;
+        private GameObject prefab_UnknownTile = null;
+
         // Use this for initialization
         public override void Start()
         {
@@ -246,6 +249,12 @@ namespace DungeonPlayer
             tileInfo5 = new string[Database.TRUTH_DUNGEON_ROW * Database.TRUTH_DUNGEON_COLUMN];
 
             this.Player = Instantiate(this.prefabPlayer, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            this.prefab_DungeonTile = new GameObject();
+            this.prefab_DungeonTile.AddComponent<SpriteRenderer>();
+            this.prefab_DungeonTile.transform.position = new Vector3(-99999, -99999, 0);
+            this.prefab_UnknownTile = new GameObject();
+            this.prefab_UnknownTile.AddComponent<SpriteRenderer>();
+            this.prefab_UnknownTile.transform.position = new Vector3(-99999, -99999, 0);
 
             if (GroundOne.WE.DungeonArea == 0 || GroundOne.WE.DungeonArea == 1)
             {
@@ -336,10 +345,8 @@ namespace DungeonPlayer
                 {
                     current = Database.TILEINFO_10_2;
                 }
-                GameObject obj = new GameObject();
-                obj.AddComponent<SpriteRenderer>();
-                obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current.Substring(0, current.Length - 4));
-                this.unknownTile.Add(Instantiate(obj, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                this.prefab_UnknownTile.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current.Substring(0, current.Length - 4));
+                this.unknownTile.Add(Instantiate(this.prefab_UnknownTile, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
             }
             #endregion
             #region "宝箱や看板などの設置"
@@ -807,15 +814,13 @@ namespace DungeonPlayer
                     current = Database.TILEINFO_21;
                 }
 
-                GameObject obj = new GameObject();
-                obj.AddComponent<SpriteRenderer>();
-                obj.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current.Substring(0, current.Length - 4));
-                this.objList.Add(Instantiate(obj, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                this.prefab_DungeonTile.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current.Substring(0, current.Length - 4));
+                this.objList.Add(Instantiate(this.prefab_DungeonTile, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
 
                 // unknownTileとTruth_KnownTileInfoはネームが反対ですが、意味付けは同じ本質です。
                 if ((GroundOne.WE.DungeonArea == 1) || (GroundOne.WE.DungeonArea == 0))
                 {
-                    unknownTile[ii].SetActive(!GroundOne.Truth_KnownTileInfo[ii]); 
+                    unknownTile[ii].SetActive(!GroundOne.Truth_KnownTileInfo[ii]);
                     tileInfo[ii] = current;
                 }
                 else if (GroundOne.WE.DungeonArea == 2)
