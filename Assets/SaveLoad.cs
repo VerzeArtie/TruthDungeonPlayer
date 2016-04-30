@@ -16,6 +16,7 @@ namespace DungeonPlayer
         public Text titleLabel;
         public Button[] back_button;
         public Text[] buttonText;
+        public Button[] buttonPage;
 
         private string gameDayString = "\r\n経過日数：";
         private string gameDayString2 = @"日 ";
@@ -95,12 +96,17 @@ namespace DungeonPlayer
         private void PageMove(int pageNum)
         {
             this.pageNumber = pageNum;
-
             for (int ii = 0; ii < buttonText.Length; ii++)
             {
                 buttonText[ii].text = "";
                 back_button[ii].GetComponent<Image>().sprite = null;
             }
+            for (int ii = 0; ii < buttonPage.Length; ii++)
+            {
+                buttonPage[ii].GetComponent<Image>().sprite = null;
+            }
+            buttonPage[this.pageNumber - 1].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNewPageNum");
+
 
             for (int ii = 0; ii < filenameList.Length; ii++)
             {
@@ -200,6 +206,7 @@ namespace DungeonPlayer
         public void TapSelectNumber(Text txtNumber)
         {
             Debug.Log("txtNumber: " + txtNumber.text.ToString());
+
             PageMove(Convert.ToInt32(txtNumber.text));
         }
 
