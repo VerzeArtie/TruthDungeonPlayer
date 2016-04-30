@@ -1070,6 +1070,10 @@ namespace DungeonPlayer
         public static string BOARD = @"Board";
         public static string UPSTAIR = @"Upstair";
         public static string DOWNSTAIR = @"Downstair";
+        public static string BLUE_WALL_T = @"BlueWall-T";
+        public static string BLUE_WALL_L = @"BlueWall-L";
+        public static string BLUE_WALL_R = @"BlueWall-R";
+        public static string BLUE_WALL_B = @"BlueWall-B";
         public static string MIRROR = @"Mirror";
         public static string BLUEORB = @"BlueOrb";
         public static string FOUNTAIN = @"Fountain";

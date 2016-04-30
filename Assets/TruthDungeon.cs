@@ -82,54 +82,6 @@ namespace DungeonPlayer
         public GameObject prefab_BlueWall_B;
         public GameObject prefab_BlueWall_L;
         public GameObject prefab_BlueWall_R;
-        public GameObject prefab_TILEINFO_1;
-        public GameObject prefab_TILEINFO_2;
-        public GameObject prefab_TILEINFO_3;
-        public GameObject prefab_TILEINFO_4;
-        public GameObject prefab_TILEINFO_5;
-        public GameObject prefab_TILEINFO_6;
-        public GameObject prefab_TILEINFO_7;
-        public GameObject prefab_TILEINFO_8;
-        public GameObject prefab_TILEINFO_9;
-        public GameObject prefab_TILEINFO_10;
-        public GameObject prefab_TILEINFO_10_2;
-        public GameObject prefab_TILEINFO_11;
-        public GameObject prefab_TILEINFO_12;
-        public GameObject prefab_TILEINFO_13;
-        public GameObject prefab_TILEINFO_14;
-        public GameObject prefab_TILEINFO_15;
-        public GameObject prefab_TILEINFO_16;
-        public GameObject prefab_TILEINFO_17;
-        public GameObject prefab_TILEINFO_18;
-        public GameObject prefab_TILEINFO_19;
-        public GameObject prefab_TILEINFO_20;
-        public GameObject prefab_TILEINFO_21;
-        public GameObject prefab_TILEINFO_22;
-        public GameObject prefab_TILEINFO_23;
-        public GameObject prefab_TILEINFO_24;
-        public GameObject prefab_TILEINFO_25;
-        public GameObject prefab_TILEINFO_26;
-        public GameObject prefab_TILEINFO_27;
-        public GameObject prefab_TILEINFO_28;
-        public GameObject prefab_TILEINFO_29;
-        public GameObject prefab_TILEINFO_30;
-        public GameObject prefab_TILEINFO_31;
-        public GameObject prefab_TILEINFO_32;
-        public GameObject prefab_TILEINFO_33;
-        public GameObject prefab_TILEINFO_34;
-        public GameObject prefab_TILEINFO_35;
-        public GameObject prefab_TILEINFO_36;
-        public GameObject prefab_TILEINFO_37;
-        public GameObject prefab_TILEINFO_38;
-        public GameObject prefab_TILEINFO_39;
-        public GameObject prefab_TILEINFO_40;
-        public GameObject prefab_TILEINFO_41;
-        public GameObject prefab_TILEINFO_42;
-        public GameObject prefab_TILEINFO_43;
-        public GameObject prefab_TILEINFO_44;
-        public GameObject prefab_FOUNTAIN;
-        public GameObject prefabPlayer;
-        public GameObject backgroundData;
         public Text mainMessage;
         public Image back_vigilance;
         public Text labelVigilance;
@@ -393,29 +345,34 @@ namespace DungeonPlayer
                     }
                     else if (childList2[ii].Name.Contains(OTHER4))
                     {
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.DOWNSTAIR);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER4.Length, childList2[ii].Name.Length - OTHER4.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TILEINFO_1, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER9))
                     {
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.MIRROR);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER9.Length, childList2[ii].Name.Length - OTHER9.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TILEINFO_43, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER10))
                     {
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.BLUEORB);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER10.Length, childList2[ii].Name.Length - OTHER10.Length));
-                        this.objOther.Add(Instantiate(this.prefab_TILEINFO_44, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER11))
                     {
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.FOUNTAIN);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER11.Length, childList2[ii].Name.Length - OTHER11.Length));
-                        this.objOther.Add(Instantiate(this.prefab_FOUNTAIN, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
                     if (childList2[ii].Name.Contains(OTHER5))
                     {
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER5.Length, childList2[ii].Name.Length - OTHER5.Length));
                         blueWallTop[targetNumber] = true;
-                        this.objBlueWallTop.Add(Instantiate(this.prefab_BlueWall_T, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUE_WALL_T);
+                        this.objBlueWallTop.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                         this.objBlueWallTop[this.objBlueWallTop.Count - 1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
@@ -500,7 +457,8 @@ namespace DungeonPlayer
                     {
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER6.Length, childList2[ii].Name.Length - OTHER6.Length));
                         blueWallLeft[targetNumber] = true;
-                        this.objBlueWallLeft.Add(Instantiate(this.prefab_BlueWall_L, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUE_WALL_L);
+                        this.objBlueWallLeft.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                         this.objBlueWallLeft[this.objBlueWallLeft.Count-1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
@@ -608,7 +566,8 @@ namespace DungeonPlayer
                     {
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER7.Length, childList2[ii].Name.Length - OTHER7.Length));
                         blueWallRight[targetNumber] = true;
-                        this.objBlueWallRight.Add(Instantiate(this.prefab_BlueWall_R, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUE_WALL_R);
+                        this.objBlueWallRight.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                         this.objBlueWallRight[this.objBlueWallRight.Count - 1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
@@ -716,7 +675,8 @@ namespace DungeonPlayer
                     {
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER8.Length, childList2[ii].Name.Length - OTHER8.Length));
                         blueWallBottom[targetNumber] = true;
-                        this.objBlueWallBottom.Add(Instantiate(this.prefab_BlueWall_B, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUE_WALL_B);
+                        this.objBlueWallBottom.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                         this.objBlueWallBottom[this.objBlueWallBottom.Count - 1].name = "bluewall_" + targetNumber.ToString();
 
                         // １階
