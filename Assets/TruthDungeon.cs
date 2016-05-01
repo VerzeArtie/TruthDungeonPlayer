@@ -7036,76 +7036,76 @@ namespace DungeonPlayer
                     #endregion
                     #region "宝箱"
                     case 75:
-                        MessagePack.Message12050(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure21 = GetTreasure(Database.COMMON_PUZZLE_BOX);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 76:
-                        MessagePack.Message12050_2(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure22 = GetTreasure(Database.COMMON_CHIENOWA_RING);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 77:
-                        MessagePack.Message12050_3(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure23 = GetTreasure(Database.RARE_MASTER_PIECE);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 78:
-                        MessagePack.Message12050_4(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure24 = GetTreasure(Database.COMMON_TUMUJIKAZE_BOX);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 79:
-                        MessagePack.Message12050_5(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure25 = GetTreasure(Database.COMMON_ROCKET_DASH);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 80:
-                        MessagePack.Message12050_6(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure26 = GetTreasure(Database.COMMON_CLAW_OF_SPRING);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 81:
-                        MessagePack.Message12050_7(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure27 = GetTreasure(Database.COMMON_SOUKAI_DRINK_SS);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 82:
-                        MessagePack.Message12050_8(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure28 = GetTreasure(Database.COMMON_BREEZE_CROSS);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 83:
-                        MessagePack.Message12050_9(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure29 = GetTreasure(Database.COMMON_GUST_SWORD);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 84:
-                        MessagePack.Message12050_10(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure210 = GetTreasure(Database.RARE_PURE_GREEN_WATER);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 85:
-                        MessagePack.Message12050_11(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure211 = GetTreasure(Database.COMMON_BLANK_BOX);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 86:
-                        MessagePack.Message12050_12(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure212 = GetTreasure(Database.RARE_SPIRIT_OF_HEART);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 87:
-                        MessagePack.Message12050_13(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure213 = GetTreasure(Database.COMMON_FUSION_BOX);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 88:
-                        MessagePack.Message12050_14(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure214 = GetTreasure(Database.COMMON_WAR_DRUM);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 89:
-                        MessagePack.Message12050_15(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure215 = GetTreasure(Database.COMMON_KOBUSHI_OBJE);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 90:
-                        MessagePack.Message12050_16(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure216 = GetTreasure(Database.COMMON_TIGER_BLADE);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 91:
-                        MessagePack.Message12050_17(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure217 = GetTreasure(Database.COMMON_TUUKAI_DRINK_DD);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 92:
-                        MessagePack.Message12050_18(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        GroundOne.WE.TruthTreasure218 = GetTreasure(Database.RARE_ROD_OF_STRENGTH);
+                        UpdateFieldElement(this.Player.transform.position);
                         return true;
                     #endregion
                     #region "知の部屋、複合レバーの看板１"

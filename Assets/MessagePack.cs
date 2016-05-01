@@ -10118,62 +10118,6 @@ namespace DungeonPlayer
             messageList.Add(""); eventList.Add(ActionEvent.StrengthRoomOpen6);
         }
         #endregion
-        #region "２Ｆ宝箱"
-        public static void Message12050(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_2(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_3(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_4(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_5(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_6(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_7(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_8(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_9(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_10(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_11(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_12(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_13(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_14(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_15(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_16(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_17(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message12050_18(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        #endregion
         #region "知の部屋、複合レバーの看板１"
         public static void Message12051(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
