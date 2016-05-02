@@ -182,6 +182,21 @@ namespace DungeonPlayer
             }
         }
 
+        private string pathForRootFile(string filename)
+        {
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                return filename;
+            }
+            else if (Application.platform == RuntimePlatform.Android)
+            {
+                return filename;
+            }
+            else
+            {
+                return filename;
+            }
+        }
         private string pathForDocumentsFile(string filename)
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
@@ -190,14 +205,12 @@ namespace DungeonPlayer
                 path = path.Substring(0, path.LastIndexOf('/'));
                 return Path.Combine(Path.Combine(path, "Documents"), filename);
             }
-
             else if (Application.platform == RuntimePlatform.Android)
             {
                 string path = Application.persistentDataPath;
                 path = path.Substring(0, path.LastIndexOf('/'));
                 return Path.Combine(path, filename);
             }
-
             else
             {
                 return Database.BaseSaveFolder + filename;
@@ -1279,49 +1292,46 @@ namespace DungeonPlayer
             //string temp1 = DateTime.Now.ToString() + "  " + DateTime.Now.Millisecond.ToString();
 
             XmlDocument xml2 = new XmlDocument();
-            try
+            xml2.Load(pathForRootFile(Database.WE2_FILE));
+            Type typeWE2 = GroundOne.WE2.GetType();
+            foreach (PropertyInfo pi in typeWE2.GetProperties())
             {
-                xml2.Load(pathForDocumentsFile(Database.WE2_FILE));
-                Type typeWE2 = GroundOne.WE2.GetType();
-                foreach (PropertyInfo pi in typeWE2.GetProperties())
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
                 {
-                    // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
-                    if (pi.PropertyType == typeof(System.Int32))
+                    try
                     {
-                        try
-                        {
-                            pi.SetValue(GroundOne.WE2, Convert.ToInt32(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                        }
-                        catch { }
+                        pi.SetValue(GroundOne.WE2, Convert.ToInt32(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
                     }
-                    else if (pi.PropertyType == typeof(System.String))
-                    {
-                        try
-                        {
-                            pi.SetValue(GroundOne.WE2, (xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                        }
-                        catch { }
-                    }
-                    else if (pi.PropertyType == typeof(System.Boolean))
-                    {
-                        try
-                        {
-                            pi.SetValue(GroundOne.WE2, Convert.ToBoolean(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                        }
-                        catch { }
-                    }
+                    catch { }
                 }
-                Debug.Log("ExecLoad 9 " + DateTime.Now); ;
-
-                XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
-                XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");
-                XmlNodeList list3 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonThreeInfo");
-                XmlNodeList list4 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFourInfo");
-                XmlNodeList list5 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFiveInfo");
-                Debug.Log("ExecLoad 75: " + list1.Count.ToString() + " " + GroundOne.Truth_KnownTileInfo.Length.ToString());
-                Debug.Log(DateTime.Now.ToString());
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, (xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, Convert.ToBoolean(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                    }
+                    catch { }
+                }
             }
-            catch {}
+            Debug.Log("ExecLoad 75 " + DateTime.Now); ;
+
+            XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
+            XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");
+            XmlNodeList list3 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonThreeInfo");
+            XmlNodeList list4 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFourInfo");
+            XmlNodeList list5 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFiveInfo");
+            Debug.Log("ExecLoad 76: " + list1.Count.ToString() + " " + GroundOne.Truth_KnownTileInfo.Length.ToString());
+            Debug.Log(DateTime.Now.ToString());
+
 
             for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
             {

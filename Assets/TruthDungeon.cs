@@ -151,7 +151,9 @@ namespace DungeonPlayer
 
         int nowAgilityRoomCounter = 0;
 
-        bool nowDecisionOpenDoor1 = false;
+        bool nowDecisionFloor1OpenDoor1 = false; // １階ボス部屋を開く際のフラグ
+        int nowDecisionFloor2EightAnswer = 0; // ２階TruthDecision2を呼び出すためのフラグ
+        int failCounter = 0; // 
 
         private GameObject prefab_TileElement = null;
 
@@ -759,10 +761,20 @@ namespace DungeonPlayer
                 this.tileColor[ii] = Convert.ToInt32(childList[ii * 2 + 1].InnerText);
 
                 string current = Convert.ToString(childList[ii * 2 + 0].InnerText);
-                // １階真実解、解放済み
+                // １階、終わりの部屋。心層の壁解除
                 if (GroundOne.WE.dungeonEvent31 && ii == 29 * Database.TRUTH_DUNGEON_COLUMN + 50)
                 {
                     current = Database.TILEINFO_21;
+                }
+                // ２階、心の部屋。心層の壁解除
+                if (GroundOne.WE.DungeonArea == 2 && GroundOne.WE.dungeonEvent249)
+                {
+                    if ((ii == 5 * Database.TRUTH_DUNGEON_COLUMN + 28) ||
+                        (ii == 6 * Database.TRUTH_DUNGEON_COLUMN + 28) ||
+                        (ii == 7 * Database.TRUTH_DUNGEON_COLUMN + 28))
+                    {
+                        current = Database.TILEINFO_13;
+                    }
                 }
 
                 this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current.Substring(0, current.Length - 4));
@@ -885,6 +897,26 @@ namespace DungeonPlayer
             }
         }
 
+        private void UpdateFloor2TruthAnswerStatus(ref string flag)
+        {
+            if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Top)
+            {
+                flag = GroundOne.Decision2_TopText;
+            }
+            else if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Left)
+            {
+                flag = GroundOne.Decision2_LeftText;
+            }
+            else if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Right)
+            {
+                flag = GroundOne.Decision2_RightText;
+            }
+            else if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Bottom)
+            {
+                flag = GroundOne.Decision2_BottomText;
+            }
+        }
+
         public override void SceneBack()
         {
             base.SceneBack();
@@ -892,9 +924,9 @@ namespace DungeonPlayer
             UpdateMainMessage("", true);
             SetupPlayerStatus(false);
 
-            if (this.nowDecisionOpenDoor1)
+            if (this.nowDecisionFloor1OpenDoor1)
             {
-                this.nowDecisionOpenDoor1 = false;
+                this.nowDecisionFloor1OpenDoor1 = false;
                 if (GroundOne.DecisionChoice == 1)
                 {
                     MessagePack.Message10050_2(ref nowMessage, ref nowEvent);
@@ -907,6 +939,188 @@ namespace DungeonPlayer
                 }
                 return;
             }
+            else if (this.nowDecisionFloor2EightAnswer == 1)
+            {
+                this.nowDecisionFloor2EightAnswer = 0;
+
+                string temp = string.Empty;
+                UpdateFloor2TruthAnswerStatus(ref temp);
+                GroundOne.WE2.TruthAnswer2_1_current = temp;
+
+                if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Top)
+                {
+                    GroundOne.WE2.TruthAnswer2_1 = true;
+                }
+                else
+                {
+                    GroundOne.WE2.TruthAnswer2_1 = false;                        
+                }
+                MessagePack.Message12063(ref nowMessage, ref nowEvent, false);
+                tapOK();
+            }
+            else if (this.nowDecisionFloor2EightAnswer == 2)
+            {
+                this.nowDecisionFloor2EightAnswer = 0;
+
+                string temp = string.Empty;
+                UpdateFloor2TruthAnswerStatus(ref temp);
+                GroundOne.WE2.TruthAnswer2_2_current = temp;
+
+                if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Right)
+                {
+                    GroundOne.WE2.TruthAnswer2_2 = true;
+                }
+                else
+                {
+                    GroundOne.WE2.TruthAnswer2_2 = false;
+                }
+                MessagePack.Message12063(ref nowMessage, ref nowEvent, false);
+                tapOK();
+            }
+            else if (this.nowDecisionFloor2EightAnswer == 3)
+            {
+                this.nowDecisionFloor2EightAnswer = 0;
+
+                string temp = string.Empty;
+                UpdateFloor2TruthAnswerStatus(ref temp);
+                GroundOne.WE2.TruthAnswer2_3_current = temp;
+
+                if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Left)
+                {
+                    GroundOne.WE2.TruthAnswer2_3 = true;
+                }
+                else
+                {
+                    GroundOne.WE2.TruthAnswer2_3 = false;
+                }
+                MessagePack.Message12063(ref nowMessage, ref nowEvent, false);
+                tapOK();
+            }
+            else if (this.nowDecisionFloor2EightAnswer == 4)
+            {
+                this.nowDecisionFloor2EightAnswer = 0;
+
+                string temp = string.Empty;
+                UpdateFloor2TruthAnswerStatus(ref temp);
+                GroundOne.WE2.TruthAnswer2_4_current = temp;
+
+                if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Bottom)
+                {
+                    GroundOne.WE2.TruthAnswer2_4 = true;
+                }
+                else
+                {
+                    GroundOne.WE2.TruthAnswer2_4 = false;
+                }
+                MessagePack.Message12063(ref nowMessage, ref nowEvent, false);
+                tapOK();
+            }
+            else if (this.nowDecisionFloor2EightAnswer == 5)
+            {
+                this.nowDecisionFloor2EightAnswer = 0;
+
+                string temp = string.Empty;
+                UpdateFloor2TruthAnswerStatus(ref temp);
+                GroundOne.WE2.TruthAnswer2_5_current = temp;
+
+                if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Top)
+                {
+                    GroundOne.WE2.TruthAnswer2_5 = true;
+                }
+                else
+                {
+                    GroundOne.WE2.TruthAnswer2_5 = false;
+                }
+                MessagePack.Message12063(ref nowMessage, ref nowEvent, true);
+                tapOK();
+            }
+            else if (this.nowDecisionFloor2EightAnswer == 6)
+            {
+                this.nowDecisionFloor2EightAnswer = 0;
+
+                string temp = string.Empty;
+                UpdateFloor2TruthAnswerStatus(ref temp);
+                GroundOne.WE2.TruthAnswer2_6_current = temp;
+
+                if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Left)
+                {
+                    GroundOne.WE2.TruthAnswer2_6 = true;
+                }
+                else
+                {
+                    GroundOne.WE2.TruthAnswer2_6 = false;
+                }
+                MessagePack.Message12063(ref nowMessage, ref nowEvent, true);
+                tapOK();
+            }
+            else if (this.nowDecisionFloor2EightAnswer == 7)
+            {
+                this.nowDecisionFloor2EightAnswer = 0;
+
+                string temp = string.Empty;
+                UpdateFloor2TruthAnswerStatus(ref temp);
+                GroundOne.WE2.TruthAnswer2_7_current = temp;
+
+                if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Right)
+                {
+                    GroundOne.WE2.TruthAnswer2_7 = true;
+                }
+                else
+                {
+                    GroundOne.WE2.TruthAnswer2_7 = false;
+                }
+                MessagePack.Message12063(ref nowMessage, ref nowEvent, false);
+                tapOK();
+            }
+            else if (this.nowDecisionFloor2EightAnswer == 8)
+            {
+                this.nowDecisionFloor2EightAnswer = 0;
+
+                string temp = string.Empty;
+                UpdateFloor2TruthAnswerStatus(ref temp);
+                GroundOne.WE2.TruthAnswer2_8_current = temp;
+
+                if (GroundOne.Decision2_Answer == TruthDecision2.AnswerType.Bottom)
+                {
+                    GroundOne.WE2.TruthAnswer2_8 = true;
+                }
+                else
+                {
+                    GroundOne.WE2.TruthAnswer2_8 = false;
+                }
+                MessagePack.Message12063(ref nowMessage, ref nowEvent, false);
+                tapOK();
+            }
+            else if (this.nowDecisionFloor2EightAnswer == 9)
+            {
+                Debug.Log("GroundOne.PermutationAnswer: " + GroundOne.PermutationAnswer);
+                this.nowDecisionFloor2EightAnswer = 0;
+                if (GroundOne.PermutationAnswer)
+                {
+                    this.failCounter = 0;
+                    int tilenum = GetTileNumber(Player.transform.position);
+                    int row = tilenum / Database.TRUTH_DUNGEON_COLUMN;
+                    int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
+                    bool fromStrengthRoom = false;
+
+                    // 力の部屋、複合レバー３－１
+                    // 力の部屋、複合レバー３－２
+                    if ((row == 26 && column == 13) ||
+                        (row == 26 && column == 15))
+                    {
+                        fromStrengthRoom = true;
+                    }
+                    MessagePack.Message12064_Success(ref nowMessage, ref nowEvent, fromStrengthRoom);
+                    tapOK();
+                }
+                else
+                {
+                    this.failCounter++;
+                    MessagePack.Message12064_Fail(ref nowMessage, ref nowEvent, failCounter);
+                    tapOK();
+                }
+            }
+
             #region "戦闘終了判定"
             #region "死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。"
             if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
@@ -2362,6 +2576,7 @@ namespace DungeonPlayer
         private int stepCounter = 0; // 敵エンカウント率調整の値
         private void EncountEnemy()
         {
+            //return; // debug
             if (GroundOne.WE2.SeekerEvent507)
             {
                 // 最下層、パーティメンバー選定後、雑魚敵で稼ぐのを許可するため、スルー
@@ -7182,25 +7397,25 @@ namespace DungeonPlayer
                     #endregion
                     #region "技の部屋、隠し通路発見"
                     case 105:
-                        MessagePack.Message12063(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12065(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "３階階段直前"
                     case 106:
-                        MessagePack.Message12064(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12066(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "下り階段"
                     case 107:
-                        MessagePack.Message12065(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12067(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "記憶の回想"
                     case 108:
-                        MessagePack.Message12066(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12068(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -9407,6 +9622,7 @@ namespace DungeonPlayer
                 }
             }
         }
+
         private void UpdateLife(MainCharacter player, Image gauge, Text txt)
         {
             float dx = (float)player.CurrentLife / (float)player.MaxLife;
@@ -10021,6 +10237,56 @@ namespace DungeonPlayer
                     OpenTheDoor(3, new Vector3(14, -28, 0));
                     OpenTheDoor(0, new Vector3(14, -29, 0));
                 }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswer1)
+                {
+                    this.nowDecisionFloor2EightAnswer = 1;
+                    SceneDimension.CallTruthDecision2(this, "歌い、木々が囁き始める", "鳥", "空", "樹", "霊", false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswer2)
+                {
+                    this.nowDecisionFloor2EightAnswer = 2;
+                    SceneDimension.CallTruthDecision2(this, "青く照らし、地は新緑を謳歌する", "湖", "人", "天", "海", false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswer3)
+                {
+                    this.nowDecisionFloor2EightAnswer = 3;
+                    SceneDimension.CallTruthDecision2(this, "流れ落ち、偉大なる海、天へと還り、無限循環", "生", "水", "死", "光", false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswer4)
+                {
+                    this.nowDecisionFloor2EightAnswer = 4;
+                    SceneDimension.CallTruthDecision2(this, "あらゆる場所、可能な場を生めつくし、創元浄化", "天", "災", "灰", "火", false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswer5)
+                {
+                    this.nowDecisionFloor2EightAnswer = 5;
+                    SceneDimension.CallTruthDecision2(this, "この世における絶対的な平等の象徴", "死", "母", "父", "命", false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswer6)
+                {
+                    this.nowDecisionFloor2EightAnswer = 6;
+                    SceneDimension.CallTruthDecision2(this, "偉大なる母、厳格なる父より生み出されし", "源", "生", "滅", "諭", false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswer7)
+                {
+                    this.nowDecisionFloor2EightAnswer = 7;
+                    SceneDimension.CallTruthDecision2(this, "誤り、恐れ、喚き、屈し、失い、揺らぎ続ける存在", "敵", "僧", "人", "神", false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswer8)
+                {
+                    this.nowDecisionFloor2EightAnswer = 8;
+                    SceneDimension.CallTruthDecision2(this, "神と人、鳥、木々、全生物における連続の理そこに見つけたり", "虚", "真", "心", "理", false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2EightAnswerFinal)
+                {
+                    this.nowDecisionFloor2EightAnswer = 9;
+                    SceneDimension.CallTruthDecision2(this, "４つのフロアを心得し者、その順列を示せ。", "知", "技", "力", "心", true);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2FinalRoomOpen)
+                {
+                    objList[26 * Database.TRUTH_DUNGEON_COLUMN + 13].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13.Substring(0, Database.TILEINFO_13.Length - 4));
+                    tileInfo2[26 * Database.TRUTH_DUNGEON_COLUMN + 13] = Database.TILEINFO_13;
+                }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_11)
                 {
                     UpdateUnknownTileArea2_11();
@@ -10155,7 +10421,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor1)
                 {
-                    this.nowDecisionOpenDoor1 = true;
+                    this.nowDecisionFloor1OpenDoor1 = true;
                     GroundOne.DecisionSequence = 0;
                     GroundOne.DecisionMainMessage = "【　扉を開けますか？　】";
                     GroundOne.DecisionFirstMessage = "扉を開ける。";

@@ -40,6 +40,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TruthDecision.unity
   - enabled: 1
+    path: Assets/TruthDecision2.unity
+  - enabled: 1
     path: Assets/TruthItemBank.unity
   - enabled: 1
     path: Assets/TruthItemDesc.unity

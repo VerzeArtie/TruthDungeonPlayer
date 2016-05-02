@@ -59,6 +59,18 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthDecision);
         }
 
+        public static void CallTruthDecision2(MotherForm scene, string message, string textTop, string textLeft, string textRight, string textBottom, bool permutation)
+        {
+            GroundOne.Decision2_Message = message;
+            GroundOne.Decision2_TopText = textTop;
+            GroundOne.Decision2_LeftText = textLeft;
+            GroundOne.Decision2_RightText = textRight;
+            GroundOne.Decision2_BottomText = textBottom;
+            GroundOne.Decision2_SelectPermutation = permutation;
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.TruthDecision2);
+        }
+
         public static void CallDuelRule(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);

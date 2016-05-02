@@ -126,6 +126,16 @@ namespace DungeonPlayer
         // TruthDecision
         public static int DecisionChoice = 0;
 
+        // TruthDecision2
+        public static string Decision2_Message = string.Empty;
+        public static string Decision2_TopText = string.Empty;
+        public static string Decision2_LeftText = string.Empty;
+        public static string Decision2_RightText = string.Empty;
+        public static string Decision2_BottomText = string.Empty;
+        public static TruthDecision2.AnswerType Decision2_Answer;
+        public static bool Decision2_SelectPermutation = false;
+        public static bool PermutationAnswer = false;
+
         // TruthItemDesc
         public static string ItemNameTitle = string.Empty;
 

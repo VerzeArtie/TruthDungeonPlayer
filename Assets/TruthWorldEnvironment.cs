@@ -226,6 +226,14 @@ namespace DungeonPlayer
         public int TruthWay3_5 { get; set; }
 
         // ２階、８レバーの正解判定
+        public string TruthAnswer2_1_current { get; set; }
+        public string TruthAnswer2_2_current { get; set; }
+        public string TruthAnswer2_3_current { get; set; }
+        public string TruthAnswer2_4_current { get; set; }
+        public string TruthAnswer2_5_current { get; set; }
+        public string TruthAnswer2_6_current { get; set; }
+        public string TruthAnswer2_7_current { get; set; }
+        public string TruthAnswer2_8_current { get; set; }
         public bool TruthAnswer2_1 { get; set; }
         public bool TruthAnswer2_2 { get; set; }
         public bool TruthAnswer2_3 { get; set; }

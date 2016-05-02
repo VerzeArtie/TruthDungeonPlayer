@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DungeonPlayer;
+using UnityEngine;
 
 namespace DungeonPlayer
 {
@@ -48,8 +49,18 @@ namespace DungeonPlayer
             UpdateUnknownTileArea27,
             UpdateUnknownTileArea28,
             UpdateUnknownTileArea29,
+            Floor2EightAnswer1,
+            Floor2EightAnswer2,
+            Floor2EightAnswer3,
+            Floor2EightAnswer4,
+            Floor2EightAnswer5,
+            Floor2EightAnswer6,
+            Floor2EightAnswer7,
+            Floor2EightAnswer8,
+            Floor2EightAnswerFinal,
             Floor1MindRoomOpen1,
             Floor2MindRoomOpen1,
+            Floor2FinalRoomOpen,
             UpdateUnknownTile,
             EncountBoss,
             StopMusic,
@@ -108,6 +119,7 @@ namespace DungeonPlayer
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
+            DungeonBadEnd,
             DungeonGetTreasure,
             DungeonAgilityRoomStart,
             DungeonAgilityRoomStop,
@@ -10121,80 +10133,813 @@ namespace DungeonPlayer
         #region "知の部屋、複合レバーの看板１"
         public static void Message12051(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent231)
+            {
+                GroundOne.WE.dungeonEvent231 = true;
+                messageList.Add("アイン：看板があるな。どれどれ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『  終わりなるは、心　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：っちょ・・・何よこれ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：待て・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（これは問いかけじゃねえな・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（だとすると・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：師匠、教えてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ランディス：言ってみろ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：問いじゃないとすれば、繋ぎ合わせか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ランディス：好きに考えれば良い。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っそうか・・・そうだよな。サンキュー。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：えっと・・・どういう意味なんですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ランディス：自信持たせてやった。それだけだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：バカアインって、たまに意味分からないけど・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：っその、ランディスさんなら分かるんですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おい、何やってんだラナ、師匠！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：両隣にレバーがあるみたいだ。さっそくやってみようぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ランディス：調子に乗ってんじゃねぇ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：何かヤケにハイテンションね・・・ハイハイ。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『  終わりなるは、心　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "知の部屋、複合レバー１－１"
         public static void Message12052(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent232)
+            {
+                GroundOne.WE.dungeonEvent232 = true;
+                if (!GroundOne.WE.dungeonEvent256)
+                {
+                    GroundOne.WE.dungeonEvent256 = true;
+                    messageList.Add("アイン：ん、これは・・・レバーか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：中央から上下左右の４方向にレバーが倒せるみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ、じゃあ早速・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うぉ！？　何かすげえ音が！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：見て！　何か空中に文字が浮かび上がってるわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ここもレバーか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな浮遊文字が・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                if (GroundOne.WE2.TruthAnswer2_1_current != null)
+                {
+                    messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_1_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswer1);
+            }
+            else
+            {
+                messageList.Add("　　　レバーはもう動かない。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "知の部屋、複合レバー１－２"
         public static void Message12053(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent232)
+            {
+                GroundOne.WE.dungeonEvent232 = true;
+
+                if (!GroundOne.WE.dungeonEvent256)
+                {
+                    GroundOne.WE.dungeonEvent256 = true;
+                    messageList.Add("アイン：ん、これは・・・レバーか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：中央から上下左右の４方向にレバーが倒せるみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ、じゃあ早速・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うぉ！？　何かすげえ音が！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：見て！　何か空中に文字が浮かび上がってるわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ここもレバーか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな浮遊文字が・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                if (GroundOne.WE2.TruthAnswer2_2_current != null)
+                {
+                    messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_2_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswer2);
+            }
+            else
+            {
+                messageList.Add("　　　レバーはもう動かない。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "技の部屋、複合レバーの看板１"
         public static void Message12054(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent259)
+            {
+                GroundOne.WE.dungeonEvent259 = true;
+                messageList.Add("アイン：っと、看板だな。どれどれ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『  始まりなるは、知　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ねえ、アインはこれ分かる？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：言っている意味がよく分かんねえな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：設問とも少しニュアンスが違うみたいだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（しかし、何だこれ・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（始まり？　「知」って「知の部屋」の事か？）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：う～ん・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：分からないものは無理にひねっても無駄よ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、そうかもな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：一応メモしておいたから。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、サンキュー"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・両隣にレバーがある事はあるが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ッホラ、さっさと進めるわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああぁ。じゃあレバーと行きますか！"); eventList.Add(ActionEvent.None);
+
+            }
+            else
+            {
+                messageList.Add("　　　　『  始まりなるは、知　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "技の部屋、複合レバー２－１"
         public static void Message12055(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent232)
+            {
+                GroundOne.WE.dungeonEvent232 = true;
+
+                if (!GroundOne.WE.dungeonEvent256)
+                {
+                    GroundOne.WE.dungeonEvent256 = true;
+                    messageList.Add("アイン：ん、これは・・・レバーか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：中央から上下左右の４方向にレバーが倒せるみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ、じゃあ早速・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うぉ！？　何かすげえ音が！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：見て！　何か空中に文字が浮かび上がってるわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ここもレバーか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな浮遊文字が・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                if (GroundOne.WE2.TruthAnswer2_3_current != null)
+                {
+                    messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_3_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswer3);
+            }
+            else
+            {
+                messageList.Add("　　　レバーはもう動かない。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "技の部屋、複合レバー２－２"
         public static void Message12056(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent232)
+            {
+                GroundOne.WE.dungeonEvent232 = true;
+
+                if (!GroundOne.WE.dungeonEvent256)
+                {
+                    GroundOne.WE.dungeonEvent256 = true;
+                    messageList.Add("アイン：ん、これは・・・レバーか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：中央から上下左右の４方向にレバーが倒せるみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ、じゃあ早速・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うぉ！？　何かすげえ音が！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：見て！　何か空中に文字が浮かび上がってるわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ここもレバーか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな浮遊文字が・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                if (GroundOne.WE2.TruthAnswer2_4_current != null)
+                {
+                    messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_4_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswer4);
+            }
+            else
+            {
+                messageList.Add("　　　レバーはもう動かない。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "力の部屋、複合レバーの看板１"
         public static void Message12057(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent260)
+            {
+                GroundOne.WE.dungeonEvent260 = true;
+                messageList.Add("アイン：お、ここに来て看板かよ。どれどれ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『  次に求められるは、技　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：次に求められる・・・一体どういう事かしら、ここにきて"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：技って言われてもな・・・技の部屋の事って事だよな？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う～ん、私もそう思うんだけど。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：今ひとつ、ハッキリしねえんだよな、これが。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：オマケに両隣にはレバーと来てる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：まあそのレバーを操作してみるしかないんでしょ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、まずは触ってみるとするか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『  次に求められるは、技　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "力の部屋、複合レバー３－１"
         public static void Message12058(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent232)
+            {
+                GroundOne.WE.dungeonEvent232 = true;
+
+                if (!GroundOne.WE.dungeonEvent256)
+                {
+                    GroundOne.WE.dungeonEvent256 = true;
+                    messageList.Add("アイン：ん、これは・・・レバーか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：中央から上下左右の４方向にレバーが倒せるみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ、じゃあ早速・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うぉ！？　何かすげえ音が！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：見て！　何か空中に文字が浮かび上がってるわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ここもレバーか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな浮遊文字が・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                if (GroundOne.WE2.TruthAnswer2_5_current != null)
+                {
+                    messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_5_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswer5);
+            }
+            else
+            {
+                messageList.Add("　　　レバーはもう動かない。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "力の部屋、複合レバー３－２"
         public static void Message12059(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent232)
+            {
+                GroundOne.WE.dungeonEvent232 = true;
+
+                if (!GroundOne.WE.dungeonEvent256)
+                {
+                    GroundOne.WE.dungeonEvent256 = true;
+                    messageList.Add("アイン：ん、これは・・・レバーか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：中央から上下左右の４方向にレバーが倒せるみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ、じゃあ早速・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うぉ！？　何かすげえ音が！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：見て！　何か空中に文字が浮かび上がってるわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ここもレバーか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな浮遊文字が・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                if (GroundOne.WE2.TruthAnswer2_6_current != null)
+                {
+                    messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_6_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswer6);
+            }
+            else
+            {
+                messageList.Add("　　　レバーはもう動かない。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "心の部屋、複合レバーの看板１"
         public static void Message12060(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent261)
+            {
+                GroundOne.WE.dungeonEvent261 = true;
+                messageList.Add("アイン：おっと、ようやくそれらしき看板だな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『  終わりの前、すなわち、力　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：終わりの・・・前？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：終わる前って事よね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・何だろうな、こういうのはしっくりこねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：両隣にはレバーがあるみたいだが。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：この看板はちょっと謎がありそうよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、解けるかどうかは正直分からないな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあレバーの方も探ってみるとするか。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『  終わりの前、すなわち、力　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "心の部屋、複合レバー４－１"
         public static void Message12061(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent232)
+            {
+                GroundOne.WE.dungeonEvent232 = true;
+
+                if (!GroundOne.WE.dungeonEvent256)
+                {
+                    GroundOne.WE.dungeonEvent256 = true;
+                    messageList.Add("アイン：ん、これは・・・レバーか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：中央から上下左右の４方向にレバーが倒せるみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ、じゃあ早速・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うぉ！？　何かすげえ音が！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：見て！　何か空中に文字が浮かび上がってるわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ここもレバーか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな浮遊文字が・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                if (GroundOne.WE2.TruthAnswer2_7_current != null)
+                {
+                    messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_7_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswer7);
+            }
+            else
+            {
+                messageList.Add("　　　レバーはもう動かない。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "心の部屋、複合レバー４－２"
         public static void Message12062(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent232)
+            {
+                GroundOne.WE.dungeonEvent232 = true;
+
+                if (!GroundOne.WE.dungeonEvent256)
+                {
+                    GroundOne.WE.dungeonEvent256 = true;
+                    messageList.Add("アイン：ん、これは・・・レバーか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：中央から上下左右の４方向にレバーが倒せるみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ、じゃあ早速・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うぉ！？　何かすげえ音が！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：見て！　何か空中に文字が浮かび上がってるわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ここもレバーか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【アインがレバーを掴んだ瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな浮遊文字が・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            if (!GroundOne.WE2.TruthAnswer2_OK)
+            {
+                if (GroundOne.WE2.TruthAnswer2_8_current != null)
+                {
+                    messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_8_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswer8);
+            }
+            else
+            {
+                messageList.Add("　　　レバーはもう動かない。"); eventList.Add(ActionEvent.None);
+            }
+        }
+        #endregion
+        #region "２階の知・技・力・心の部屋各種２レバー解答"
+        public static void Message12063(ref List<string> messageList, ref List<ActionEvent> eventList, bool fromStrengthRoom)
+        {
+            Debug.Log("2_1: " + GroundOne.WE2.TruthAnswer2_1);
+            Debug.Log("2_2: " + GroundOne.WE2.TruthAnswer2_2);
+            Debug.Log("2_3: " + GroundOne.WE2.TruthAnswer2_3);
+            Debug.Log("2_4: " + GroundOne.WE2.TruthAnswer2_4);
+            Debug.Log("2_5: " + GroundOne.WE2.TruthAnswer2_5);
+            Debug.Log("2_6: " + GroundOne.WE2.TruthAnswer2_6);
+            Debug.Log("2_7: " + GroundOne.WE2.TruthAnswer2_7);
+            Debug.Log("2_8: " + GroundOne.WE2.TruthAnswer2_8);
+               
+            if (GroundOne.WE2.TruthAnswer2_1 && GroundOne.WE2.TruthAnswer2_2 && GroundOne.WE2.TruthAnswer2_3 &&
+                GroundOne.WE2.TruthAnswer2_4 && GroundOne.WE2.TruthAnswer2_5 && GroundOne.WE2.TruthAnswer2_6 &&
+                GroundOne.WE2.TruthAnswer2_7 && GroundOne.WE2.TruthAnswer2_8 && GroundOne.WE2.TruthAnswer2_OK == false)
+            {
+                messageList.Add("　　　【アインがレバーを倒したその瞬間！】　"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おお！　更に浮遊文字が出現したぞ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：本当に驚かされるわね、ここの仕掛け。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：一体どうやって浮遊文字なんか出してるんだろうな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：まあそれは良いとして、どう？解けそうなの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、多分な。任せておけ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswerFinal);
+            }
+            else 
+            {
+                messageList.Add("ラナ：何も起きないわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、文字は選択したんだ。このまま次に行こうぜ。"); eventList.Add(ActionEvent.None);
+            }
+        }
+        #endregion
+        #region "２階、８つのレバー、ファイナル失敗"
+        public static void Message12064_Fail(ref List<string> messageList, ref List<ActionEvent> eventList, int failCounter)
+        {
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                if (failCounter == 1)
+                {
+                    messageList.Add("アイン：・・・何もおきねえな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：オイ、寝ぼけてんじゃねぇぞ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：そのまま放っておくつもりか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、いやいや、そうじゃなくて。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：しくじってんじゃねぇ、とっととやれ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：わわ、分かったって！"); eventList.Add(ActionEvent.None);
+                }
+                else if (failCounter == 2)
+                {
+                    messageList.Add("ランディス：ザコが・・・潰す"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：わーー、タンマタンマ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：今思い出してるから、タンマっととと！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：ほぉ？　思い出してる最中か。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：次はキッチリ正解出来るんだろうなぁ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：と、当然当然！"); eventList.Add(ActionEvent.None);
+                }
+                else if (failCounter == 3)
+                {
+                    messageList.Add("ランディス：何を思い出せたのか、言ってもらおうじゃねぇか。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そ・・・それは・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：次にミスったら、てめぇはこの場で潰す。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うわわ、分かったって。今度こそ！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ランディス：よおおぉぉぉぉし、いい度胸してんじゃねぇか！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：わーーー、っちょ！　ホントタンマタンマタンマ！！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：いっぺん死んでこいやああぁぁぁぁ！！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(" ～　THE　END　～　（そして永遠へ）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+                    return;
+                }
+            }
+            else
+            {
+                if (failCounter == 1)
+                {
+                    messageList.Add("アイン：・・・何もおきねえな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：上手く行けば、何かしらの音がしそうよね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どうしろってんだ、設問自体の意図が何となく・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：とりあえずもういっぺんやってみたら？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そうだな。"); eventList.Add(ActionEvent.None);
+                }
+                else if (failCounter == 2)
+                {
+                    messageList.Add("ラナ：ちょっと、あんまり適当すぎても駄目じゃない？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：おかしいな・・・これでも駄目かよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：４つのエリアを心得し者って書いてあるじゃない。思い出せないワケ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：い、いやいや・・・分かってるって。任せておけって！"); eventList.Add(ActionEvent.None);
+                }
+                else if (failCounter == 3)
+                {
+                    messageList.Add("アイン：・・・ぐぬぬ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ちょーーっと！？次駄目だったら、私もう帰るわよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：マジかよ！？何でそうなるんだよ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ココで正解出来ないアインなんてもう知らないわよ。ちゃんとやってよね！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うあっつ・・・分かったって。今度こそ！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：・・・・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：っさ、もう帰りましょ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っな！どうしてそうなるんだよ！？頼む、もう一度だけ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ううん、もう良いの帰りましょ、アイン♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ま、待てラナ！！　待ってくれえぇぇ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(" ～　THE　END　～　（見捨てられし者）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+                    return;
+                }
+            }
+            messageList.Add(""); eventList.Add(ActionEvent.Floor2EightAnswerFinal);
+        }
+        #endregion
+        #region "２階、８つのレバー、ファイナル成功"
+        public static void Message12064_Success(ref List<string> messageList, ref List<ActionEvent> eventList, bool fromStrengthRoom)
+        {
+            messageList.Add("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.Floor2FinalRoomOpen);
+
+            messageList.Add("アイン：っお！何か開いた音だな！？"); eventList.Add(ActionEvent.None);
+
+            if (fromStrengthRoom)
+            {
+                messageList.Add("ラナ：見て、あっちの壁が開いているわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ようやく開いたってか・・・隠し部屋。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、さっそく行ってみようぜ！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：どこかの扉かもしくは壁が開く音よね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ようやく開いたってか・・・隠し部屋。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、さっそく開いた隠し部屋を探して回るとするか！"); eventList.Add(ActionEvent.None);
+            }
+
+            GroundOne.WE2.TruthAnswer2_OK = true;
         }
         #endregion
         #region "技の部屋、隠し通路発見"
-        public static void Message12063(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        #endregion
-        #region "３階階段直前"
-        public static void Message12064(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        #endregion
-        #region "下り階段"
         public static void Message12065(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
-        #region "記憶の回想"
+        #region "３階階段直前"
         public static void Message12066(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "下り階段"
+        public static void Message12067(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "記憶の回想"
+        public static void Message12068(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
