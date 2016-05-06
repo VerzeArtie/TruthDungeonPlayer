@@ -64,6 +64,15 @@ namespace DungeonPlayer
             return player;
         }
 
+        public static int GetTileNumber(Vector3 pos)
+        {
+            Vector3 adjustPos = new Vector3(pos.x, pos.y, pos.z);
+            int number = (int)(adjustPos.x % Database.TRUTH_DUNGEON_COLUMN + (-adjustPos.y) * Database.TRUTH_DUNGEON_COLUMN);
+            int row = number / Database.TRUTH_DUNGEON_COLUMN;
+            int column = number % Database.TRUTH_DUNGEON_COLUMN;
+            return number;
+        }
+
         public static void GetItemFullCheck(MotherForm scene, MainCharacter player, string itemName)
         {
             bool result = player.AddBackPack(new ItemBackPack(itemName));

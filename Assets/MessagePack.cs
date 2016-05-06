@@ -122,7 +122,17 @@ namespace DungeonPlayer
             DungeonBadEnd,
             DungeonGetTreasure,
             DungeonAgilityRoomStart,
+            DungeonAgilityRoomStart2,
+            DungeonAgilityRoomStart3,
+            DungeonAgilityRoomUpdate3,
             DungeonAgilityRoomStop,
+            DungeonAgilityRoomFail1,
+            DungeonAgilityRoomFail2,
+            DungeonAgilityRoomFail3,
+            DungeonAgilityRoomFail4,
+            DungeonAgilityRoomFail5,
+            DungeonAgilityRoomFail6,
+            Floor2AgilityRoomJudgeDirection,
             Ending,
         }
 
@@ -7825,10 +7835,6 @@ namespace DungeonPlayer
             {
                 messageList.Add("　　　　『  挑戦者、俊足を持って挑め。』"); eventList.Add(ActionEvent.None);
             }
-            if (!GroundOne.WE.dungeonEvent233_Complete)
-            {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStart);
-            }
         }
 
         public static void Message12018(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -7836,6 +7842,150 @@ namespace DungeonPlayer
             if (!GroundOne.WE.dungeonEvent233_Complete)
             {
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStart);
+            }
+        }
+
+        public static void Message12019_fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+            if (!GroundOne.WE.dungeonEvent233_Complete)
+            {
+                messageList.Add("　　　　『ッブブー！！』"); eventList.Add(ActionEvent.None);
+
+                if (!GroundOne.WE.dungeonEvent233_Fail1)
+                {
+                    messageList.Add("アイン：ッゲ！　何か警告音が！？"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent233_Fail2)
+                {
+                    messageList.Add("アイン：しまった！　警告音だ！！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：うおおおぉぉ！　ダッシュダッシュ！！"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("（  アイン足元の床が突如開いた  ）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　＜＜＜　ッパカ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どわぁぁぁぁーーーっっ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomFail1);
+
+                if (!GroundOne.WE.dungeonEvent233_Fail1)
+                {
+                    GroundOne.WE.dungeonEvent233_Fail1 = true;
+
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ちょっと何やってんのよ？　遅いわね・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：んな事言ったってよ。ほんの少し立ち止まっただけだぜ？"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：ボケが。迷ってねえでとっとと行け。"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：頑張ってよね。とにかく早く進めばいいみたいだし♪"); eventList.Add(ActionEvent.None);
+                    }
+
+                    messageList.Add("アイン：っくそ・・・今度こそ・・・"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent233_Fail2)
+                {
+                    GroundOne.WE.dungeonEvent233_Fail2 = true;
+
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：また失敗したわけ！？　ほんっと使えないわね・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：待て待て、見えてないエリアだぞ？　ガンガン進めないだろが。"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：ザコが。ダッシュも知らねぇのか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：ダッシュすればいいじゃない♪　"); eventList.Add(ActionEvent.None);
+                    }
+
+                    messageList.Add("アイン：ダッシュ！？　どうやるんだよ、そんなの。"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：自分で見つけろ。"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：ガンバってね、アイン♪　"); eventList.Add(ActionEvent.None);
+                    }
+                    messageList.Add("アイン：くそぉ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、良いさ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：見せてやるぜ！　俺のスーパーダッシュをな！！"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent233_Fail3)
+                {
+                    GroundOne.WE.dungeonEvent233_Fail3 = true;
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ダッシュ、お疲れさま♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：おいおい！　これ無理だろ！？"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：泣き言、言ってんじぇねえ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：師匠、後生だ。ダッシュを教えてくれ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：ッチ・・・ザコが。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：移動ボタンをテンポよく連打しろ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：っはい・・・？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：いいから連打しろっつってんだ！　ボケが！！"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ワーーーー、分かった分かった！　ハイハイハイ！！"); eventList.Add(ActionEvent.None);
+
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：ダッシュ知らないと無理よね・・・確かに"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：なあ、ラナ。すまねえけど、教えてくれないか？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：うーんとね・・・そうね、何て言うのかしら。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：移動キーをタイミング良く連続で押すのよ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：移動キーを・・・タイミング良く連続で・・・？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：普通に押してるだけだと、一定間隔で進んでるでしょ？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：まあな。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：あー、なるほど。　なんとなく分かったぜ！"); eventList.Add(ActionEvent.None);
+                    }
+
+                    messageList.Add("アイン：っしゃ、今度こそダッシュして見せるぜ！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：アイン、ダッシュは移動ボタンをタイミング良く連打よ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、分かってるって・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っくそ！　今度こそ！！"); eventList.Add(ActionEvent.None);
+                }
             }
         }
 
@@ -7940,21 +8090,22 @@ namespace DungeonPlayer
             }
         }
 
-        public static void Message12021(ref List<string> messageList, ref List<ActionEvent> eventList, ref int ShadowTileNumber, ref int BeforeDirectionNumber)
+        public static void Message12021(ref List<string> messageList, ref List<ActionEvent> eventList, GameObject player, ref int ShadowTileNumber, ref int BeforeDirectionNumber)
         {
             if (!GroundOne.WE.dungeonEvent234_Complete)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+                //messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
 
-                // after
-                //if (!JudgeCorrectDirection())
-                //{
-                //    DungeonTwoAgilityRoomTwoFailMessage(); eventList.Add(ActionEvent.None);
-                //    return;
-                //}
+                if (!JudgeCorrectDirection(player, ShadowTileNumber, BeforeDirectionNumber))
+                {
+                    MessagePack.Message12021_Fail(ref messageList, ref eventList);
+                    return;
+                }
 
-                int tileNum = 0; // GetTileNumber(this.Player.Location); eventList.Add(ActionEvent.None); // after
+                int tileNum = Method.GetTileNumber(player.transform.position); 
                 int row = tileNum / Database.TRUTH_DUNGEON_COLUMN;
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStart2);
 
                 // 1:左 2:上 3:下
                 int direction = AP.Math.RandomInteger(3) + 1;
@@ -7989,26 +8140,128 @@ namespace DungeonPlayer
                         BeforeDirectionNumber = 3;
                     }
                 }
-                ShadowTileNumber = 0; // GetTileNumber(this.Player.Location); eventList.Add(ActionEvent.None); // after
+                ShadowTileNumber = Method.GetTileNumber(player.transform.position);
 
-                // after
-                //if (!GroundOne.WE.dungeonEvent234_Fail1)
-                //{
-                //    agilityRoomTimer.Interval = 500;
-                //}
-                //else if (!GroundOne.WE.dungeonEvent234_Fail2)
-                //{
-                //    agilityRoomTimer.Interval = 750;
-                //}
-                //else if (!GroundOne.WE.dungeonEvent234_Fail3)
-                //{
-                //    agilityRoomTimer.Interval = 1000;
-                //}
-                //else
-                //{
-                //    agilityRoomTimer.Interval = 1500;
-                //}
-                //agilityRoomTimer.Start(); eventList.Add(ActionEvent.None);
+            }
+        }
+
+        private static bool JudgeCorrectDirection(GameObject player, int ShadowTileNumber, int BeforeDirectionNumber)
+        {
+            // 特に何も設定されていない場合はTrueで返す
+            if ((ShadowTileNumber == -1) && (BeforeDirectionNumber == 0))
+            {
+                return true;
+            }
+
+            // 左指示に対して、前回の位置から１歩左ならTrueで返す
+            if (BeforeDirectionNumber == 1)
+            {
+                if ((Method.GetTileNumber(player.transform.position) + 1) == ShadowTileNumber)
+                {
+                    return true;
+                }
+            }
+            // 上指示に対して、前回の位置から１歩上ならTrueで返す
+            else if (BeforeDirectionNumber == 2)
+            {
+                if ((Method.GetTileNumber(player.transform.position) + 1 * Database.TRUTH_DUNGEON_COLUMN) == ShadowTileNumber)
+                {
+                    return true;
+                }
+            }
+            // 下指示に対して、前回の位置から１歩下ならTrueで返す
+            else if (BeforeDirectionNumber == 3)
+            {
+                if ((Method.GetTileNumber(player.transform.position) - 1 * Database.TRUTH_DUNGEON_COLUMN) == ShadowTileNumber)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void Message12021_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+
+            if (!GroundOne.WE.dungeonEvent234_Complete)
+            {
+                messageList.Add("　　　　『ッブブー！！』"); eventList.Add(ActionEvent.None);
+
+                if (!GroundOne.WE.dungeonEvent233_Fail1 || !GroundOne.WE.dungeonEvent233_Fail2 || !GroundOne.WE.dungeonEvent233_Fail3)
+                {
+                    messageList.Add("アイン：しまった！　警告音だ！！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ッゲ！　何か警告音が！？"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("（  アイン足元の床が突如開いた  ）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　＜＜＜　ッパカ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どわぁぁぁぁーーーっっ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomFail2);
+
+                if (!GroundOne.WE.dungeonEvent234_Fail1)
+                {
+                    GroundOne.WE.dungeonEvent234_Fail1 = true;
+
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：あんた何かアッチいったり、コッチ行ったり何やってんのよ？"); eventList.Add(ActionEvent.None);
+
+
+                    messageList.Add("アイン：声がしてるんだよ。『左！』とか『上！』っとかな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ふーん、そうなんだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：でも後ろから見てると、ちょっと笑っちゃうわよ。"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：ザコにお似合いの動きだな。"); eventList.Add(ActionEvent.None);
+                    }
+
+                    messageList.Add("アイン：くそお、笑い者にしやがって・・・見てろよ？　今度こそ！"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent234_Fail2)
+                {
+                    GroundOne.WE.dungeonEvent234_Fail2 = true;
+
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：っちょ、また失敗したわけ？　理屈は分かってるの？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：『下！』とか『左！』って声が脳に直接響くからな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：それに従って歩を進めるだけさ。理屈は単純だけどな・・・"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：ザコには荷が重いか"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いや、こんな単純なアクション、絶対やってみせるぜ！"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：何だったら交代する？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いや、ここは俺がやる。任せておけ！"); eventList.Add(ActionEvent.None);
+                    }
+                }
+                else
+                {
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：アイン、大丈夫？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：『左』は『←』、『上』は『↑』、『下』は『↓』だからね？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、分かってるって。　くそ、今度こそ！！"); eventList.Add(ActionEvent.None);
+                }
             }
         }
 
@@ -8085,6 +8338,8 @@ namespace DungeonPlayer
             if (!GroundOne.WE.dungeonEvent235_Complete)
             {
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStart3);
             }
         }
 
@@ -8092,7 +8347,168 @@ namespace DungeonPlayer
         {
             if (!GroundOne.WE.dungeonEvent235_Complete)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStart);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomUpdate3);
+            }
+        }
+
+        public static void Message12024_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+
+            if (!GroundOne.WE.dungeonEvent235_Complete)
+            {
+                messageList.Add("　　　　『ッブブー！！』"); eventList.Add(ActionEvent.None);
+
+                if (!GroundOne.WE.dungeonEvent233_Fail1 || !GroundOne.WE.dungeonEvent233_Fail2 || !GroundOne.WE.dungeonEvent233_Fail3 ||
+                    !GroundOne.WE.dungeonEvent234_Fail1 || !GroundOne.WE.dungeonEvent234_Fail2 || !GroundOne.WE.dungeonEvent234_Fail3)
+                {
+                    messageList.Add("アイン：しまった！　警告音だ！！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：ッゲ！　何か警告音が！？"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("（  アイン足元の床が突如開いた  ）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　＜＜＜　ッパカ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どわぁぁぁぁーーーっっ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomFail3);
+
+                if (!GroundOne.WE.dungeonEvent235_Fail1)
+                {
+                    GroundOne.WE.dungeonEvent235_Fail1 = true;
+
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：まあ、見事に失敗だったわけね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：失敗も成功のうちさ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：何言ってんのよ、純粋に失敗じゃない。"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：おい。"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：アイン、分からないなら相談してよね？"); eventList.Add(ActionEvent.None);
+                    }
+
+                    messageList.Add("アイン：いやいや、もう１回やらせてくれ、頼むぜ。"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent235_Fail2)
+                {
+                    GroundOne.WE.dungeonEvent235_Fail2 = true;
+
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ちょっと、またまた失敗だけど？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：１００の失敗があり、ようやく１つの成功を掴むのさ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：１００回もやってらんないでしょ、あんたバカじゃないの？"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("　（ランディスの目が光っている）"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：った、タンマ！！　今度こそマジ分かった！！"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：ほぉ"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ままま、任せてくれよ！　ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：本当に分かってるのかしら。　テキトーに言ってるでしょ！？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：っい、いやいやいや！　今度こそマジ分かった！！"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ホントにホント？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ホントにホントだ、任せてくれよ！　ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+                    }
+                }
+                else if (!GroundOne.WE.dungeonEvent235_Fail3)
+                {
+                    GroundOne.WE.dungeonEvent235_Fail3 = true;
+
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ドバキィィィ！！！』（ラナのコンビネーションキックが炸裂）"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("　　　『ズゴゴゴゴォオオン！！！』（ランディスのビートラッシュが炸裂）"); eventList.Add(ActionEvent.None);
+                    }
+
+                    messageList.Add("アイン：ゲ・・・ゲッフオォォ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そんなタイミング良く蹴る事無いだろ？"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("アイン：師匠まで連続コンボかまさないでくれよ。"); eventList.Add(ActionEvent.None);
+                    }
+
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：分からない事は、分からないと言え。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：スイマセン・・・教えてください"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：いいかザコ、良く聞け。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：「押しっぱなし」にしろ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：離すんじゃねえぞ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：何を？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ランディス：「キー」だ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：キー？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("　（ランディスの目が色濃くなった）"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ハイハイ！キーを押しっぱなしだな！　超了解！！"); eventList.Add(ActionEvent.None);
+
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：やっぱりホントは分かってないんでしょ？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：スイマセン・・・教えてください"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：最初っからそう言えば良いじゃないのよ、もう。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：呼吸を置かず。要するに「キー押しっぱなし」って事よ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：「キー」って何だ？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：「キー」に決まってるでしょ！？　良いじゃない別にそんなトコ追求しなくても。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：マジかよ。ま、まあ分かった。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：「キー」を離さずに押しっぱなしをキープするんだな。了解了解！"); eventList.Add(ActionEvent.None);
+                    }
+                }
+                else
+                {
+                    messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：「キー押しっぱなし」で進むのよ、頑張ってよね？　ホント"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ハイ・・・"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStart3);
             }
         }
 
@@ -25271,5 +25687,6 @@ namespace DungeonPlayer
         }
         #endregion
         #endregion
+
     }
 }

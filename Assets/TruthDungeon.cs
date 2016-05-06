@@ -153,7 +153,8 @@ namespace DungeonPlayer
 
         bool nowDecisionFloor1OpenDoor1 = false; // １階ボス部屋を開く際のフラグ
         int nowDecisionFloor2EightAnswer = 0; // ２階TruthDecision2を呼び出すためのフラグ
-        int failCounter = 0; // 
+        int failCounter = 0; // ２階、技の部屋で失敗した時のフラグ
+        bool detectKeyUp = false; // ２階、技の部屋Ｃでキーを離した事を示すフラグ
 
         private GameObject prefab_TileElement = null;
 
@@ -825,6 +826,7 @@ namespace DungeonPlayer
             }
             if (this.nowAgilityRoomCounter > 0)
             {
+                //Debug.Log("agilitycounter: " + nowAgilityRoomCounter);
                 this.nowAgilityRoomCounter--;
                 if (this.nowAgilityRoomCounter <= 0)
                 {
@@ -849,12 +851,13 @@ namespace DungeonPlayer
                 CancelKeyDownMovement();
                 SceneDimension.CallTruthBattleEnemy(this, false, false, false, false);
             }
-            else if (Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.UpArrow) ||
+            else if (Input.GetKeyUp(KeyCode.Alpha8) || Input.GetKeyUp(KeyCode.UpArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha4) || Input.GetKeyUp(KeyCode.LeftArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha6) || Input.GetKeyUp(KeyCode.RightArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.DownArrow) ||
                     (Application.platform == RuntimePlatform.Android && !this.arrowDown && !this.arrowUp && !this.arrowLeft && !this.arrowRight))
             {
+                this.detectKeyUp = true; // ただし、iOS/Androidでこれはうまくいかない。
                 CancelKeyDownMovement();
             }
             else if (this.Filter.activeInHierarchy == false)
@@ -869,22 +872,22 @@ namespace DungeonPlayer
                     this.keyDown = false;
                     movementTimer_Tick();
                 }
-                else if (Input.GetKey(KeyCode.Keypad4) || Input.GetKey(KeyCode.LeftArrow) || this.arrowLeft)
+                else if (Input.GetKey(KeyCode.Keypad2) || Input.GetKey(KeyCode.DownArrow) || this.arrowDown)
+                {
+                    this.keyDown = true;
+                    this.keyUp = false;
+                    movementTimer_Tick();
+                }
+                if (Input.GetKey(KeyCode.Keypad4) || Input.GetKey(KeyCode.LeftArrow) || this.arrowLeft)
                 {
                     this.keyLeft = true;
                     this.keyRight = false;
                     movementTimer_Tick();
                 }
-                else if (Input.GetKey(KeyCode.Keypad6) || Input.GetKey(KeyCode.RightArrow) || this.arrowRight)
+                if (Input.GetKey(KeyCode.Keypad6) || Input.GetKey(KeyCode.RightArrow) || this.arrowRight)
                 {
                     this.keyRight = true;
                     this.keyLeft = false;
-                    movementTimer_Tick();
-                }
-                else if (Input.GetKey(KeyCode.Keypad2) || Input.GetKey(KeyCode.DownArrow) || this.arrowDown)
-                {
-                    this.keyDown = true;
-                    this.keyUp = false;
                     movementTimer_Tick();
                 }
             }
@@ -1098,7 +1101,7 @@ namespace DungeonPlayer
                 if (GroundOne.PermutationAnswer)
                 {
                     this.failCounter = 0;
-                    int tilenum = GetTileNumber(Player.transform.position);
+                    int tilenum = Method.GetTileNumber(Player.transform.position);
                     int row = tilenum / Database.TRUTH_DUNGEON_COLUMN;
                     int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
                     bool fromStrengthRoom = false;
@@ -1780,22 +1783,10 @@ namespace DungeonPlayer
             //Debug.Log("p:" + this.Player.transform.position.ToString() + " v:" + this.viewPoint.ToString());
         }
 
-        private int GetTileNumber(Vector3 pos)
-        {
-            Vector3 adjustPos = new Vector3(pos.x, pos.y, pos.z);
-            //debug.text += "srcPos: " + pos.ToString() + " adjustPos: " + adjustPos.ToString() + " ";
-            //int number = (int)(((-viewPoint.x + adjustPos.x - 0)) / Database.DUNGEON_MOVE_LEN_U) % Database.TRUTH_DUNGEON_COLUMN + (int)(((-viewPoint.y + adjustPos.y - 0) / Database.DUNGEON_MOVE_LEN_U) * Database.TRUTH_DUNGEON_COLUMN);
-            int number = (int)(adjustPos.x % Database.TRUTH_DUNGEON_COLUMN + (-adjustPos.y) * Database.TRUTH_DUNGEON_COLUMN);
-            int row = number / Database.TRUTH_DUNGEON_COLUMN;
-            int column = number % Database.TRUTH_DUNGEON_COLUMN;
-            //label1.Text = "row: " + row.ToString() + "  column: " + column.ToString() + "  viewPoint.X: " + viewPoint.X.ToString() + "  viewPoint.Y: " + viewPoint.Y.ToString() + "  Player.transform.position.x: " + Player.transform.position.x.ToString() + "  Player.transform.position.y: " + Player.transform.position.y.ToString() + "  number: " + number.ToString();
-            //label1.Update();
-            return number;
-        }
         private bool CheckWall(int direction) // 0:↑ 1:← 2:→ 3:↓
         {
             //debug.text += "CheckWall(S) ";
-            int tilenum = GetTileNumber(Player.transform.position);
+            int tilenum = Method.GetTileNumber(Player.transform.position);
             //debug.text += "tilenum " + tilenum.ToString() + " ";
             int row = tilenum / Database.TRUTH_DUNGEON_COLUMN;
             int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
@@ -1828,7 +1819,7 @@ namespace DungeonPlayer
             string WallHitMessage = "アイン：いてぇ！";
             //if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd) { WallHitMessage = "アイン：・・・"; }
             #region "Wall判定"
-            switch (targetTileInfo[GetTileNumber(Player.transform.position)])
+            switch (targetTileInfo[Method.GetTileNumber(Player.transform.position)])
             {
                 case "Tile1.bmp":
                     break;
@@ -2162,7 +2153,7 @@ namespace DungeonPlayer
         {
             // プレイヤーの位置に対応している青壁情報を取得する。
             // 青壁情報を取得して、プレイヤー動作方向に対して青壁情報が一致する場合
-            if (blueWallBottom[GetTileNumber(Player.transform.position)])
+            if (blueWallBottom[Method.GetTileNumber(Player.transform.position)])
             {
                 if (direction == 3)
                 {
@@ -2174,7 +2165,7 @@ namespace DungeonPlayer
                 }
             }
 
-            if (blueWallLeft[GetTileNumber(Player.transform.position)])
+            if (blueWallLeft[Method.GetTileNumber(Player.transform.position)])
             {
                 if (direction == 1)
                 {
@@ -2186,7 +2177,7 @@ namespace DungeonPlayer
                 }
             }
 
-            if (blueWallRight[GetTileNumber(Player.transform.position)])
+            if (blueWallRight[Method.GetTileNumber(Player.transform.position)])
             {
                 if (direction == 2)
                 {
@@ -2198,7 +2189,7 @@ namespace DungeonPlayer
                 }
             }
 
-            if (blueWallTop[GetTileNumber(Player.transform.position)])
+            if (blueWallTop[Method.GetTileNumber(Player.transform.position)])
             {
                 if (direction == 0)
                 {
@@ -2248,6 +2239,7 @@ namespace DungeonPlayer
                 else if (direction == 2) moveX = Database.DUNGEON_MOVE_LEN;
                 else if (direction == 3) moveY = -Database.DUNGEON_MOVE_LEN; // change unity
 
+                Debug.Log("agility: " + nowAgilityRoomCounter);
                 JumpToLocation((int)this.Player.transform.position.x + moveX, (int)this.Player.transform.position.y + moveY, false);
 
                 // EPICアイテムEPIC_ORB_GROW_GREENの効果
@@ -2291,7 +2283,7 @@ namespace DungeonPlayer
                     Debug.Log("high-speed");
                     this.MovementInterval = MOVE_INTERVAL / 2;
                 }
-                GetTileNumber(Player.transform.position);
+                Method.GetTileNumber(Player.transform.position);
             }
             // View動作モード
             else
@@ -2416,7 +2408,7 @@ namespace DungeonPlayer
         private bool UpdateUnknownTile()
         {
             bool newUpdate = false; // 新しくタイルが拓けた事を示すフラグ
-            int currentPosNum = GetTileNumber(this.Player.transform.position);
+            int currentPosNum = Method.GetTileNumber(this.Player.transform.position);
             string currentTileInfo = "";
             bool[] targetKnownTileInfo = null;
             if (GroundOne.WE.DungeonArea == 1)
@@ -2559,24 +2551,10 @@ namespace DungeonPlayer
             return newUpdate;
         }
 
-        //private void UpdateUnknownTileArea11()
-        //{
-        //    for (int ii = 13; ii <= 22; ii++)
-        //    {
-        //        for (int jj = 27; jj <= 34; jj++)
-        //        {
-        //            unknownTile[jj * Database.TRUTH_DUNGEON_COLUMN + ii].Visible = false;
-        //            knownTileInfo[jj * Database.TRUTH_DUNGEON_COLUMN + ii] = true;
-        //        }
-        //    }
-        //    //dungeonField.Invalidate();
-        //    this.Update();
-        //}
-
         private int stepCounter = 0; // 敵エンカウント率調整の値
         private void EncountEnemy()
         {
-            //return; // debug
+            return; // debug
             if (GroundOne.WE2.SeekerEvent507)
             {
                 // 最下層、パーティメンバー選定後、雑魚敵で稼ぐのを許可するため、スルー
@@ -2648,7 +2626,7 @@ namespace DungeonPlayer
             string enemyName3 = "";
             string[] monsterName = null;
             string[] monsterName2 = null;
-            int enemyLevel = tileColor[GetTileNumber(this.Player.transform.position)];
+            int enemyLevel = tileColor[Method.GetTileNumber(this.Player.transform.position)];
             // １階は左上：エリア１、左下：エリア２、右上：エリア３、右下：エリア４
             if (GroundOne.WE.DungeonArea == 1)
             {
@@ -3169,7 +3147,7 @@ namespace DungeonPlayer
 
         private bool CheckTriggeredEvent(int eventNum)
         {
-            int tilenum = GetTileNumber(Player.transform.position);
+            int tilenum = Method.GetTileNumber(Player.transform.position);
             int row = tilenum / Database.TRUTH_DUNGEON_COLUMN;
             int column = tilenum % Database.TRUTH_DUNGEON_COLUMN;
 
@@ -7091,7 +7069,7 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     case 46:
-                        MessagePack.Message12021(ref this.nowMessage, ref this.nowEvent, ref ShadowTileNumber, ref BeforeDirectionNumber);
+                        MessagePack.Message12021(ref this.nowMessage, ref this.nowEvent, this.Player, ref ShadowTileNumber, ref BeforeDirectionNumber);
                         tapOK();
                         return true;
                     case 47:
@@ -7105,7 +7083,15 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     case 49:
-                        MessagePack.Message12024(ref this.nowMessage, ref this.nowEvent);
+                        if (this.detectKeyUp)
+                        {
+                            this.detectKeyUp = false;
+                            MessagePack.Message12024_Fail(ref this.nowMessage, ref this.nowEvent);
+                        }
+                        else
+                        {
+                            MessagePack.Message12024(ref this.nowMessage, ref this.nowEvent);
+                        }
                         tapOK();
                         return true;
                     case 50:
@@ -7615,7 +7601,7 @@ namespace DungeonPlayer
         }
         private void UpdateFieldElement(Vector3 pos)
         {
-            int number = GetTileNumber(pos);
+            int number = Method.GetTileNumber(pos);
             for (int ii = 0; ii < this.objTreasureNum.Count; ii++)
             {
                 if (this.objTreasureNum[ii] == number)
@@ -7636,40 +7622,7 @@ namespace DungeonPlayer
         // ダンジョン２階の技の部屋、エリア２に関する記述
         int ShadowTileNumber = -1;
         int BeforeDirectionNumber = 0; // 1:左 2:上 3:下
-        private bool JudgeCorrectDirection()
-        {
-            // 特に何も設定されていない場合はTrueで返す
-            if ((this.ShadowTileNumber == -1) && (this.BeforeDirectionNumber == 0))
-            {
-                return true;
-            }
 
-            // 左指示に対して、前回の位置から１歩左ならTrueで返す
-            if (this.BeforeDirectionNumber == 1)
-            {
-                if ((GetTileNumber(this.Player.transform.position) + 1) == this.ShadowTileNumber)
-                {
-                    return true;
-                }
-            }
-            // 上指示に対して、前回の位置から１歩上ならTrueで返す
-            else if (this.BeforeDirectionNumber == 2)
-            {
-                if ((GetTileNumber(this.Player.transform.position) - 1 * Database.TRUTH_DUNGEON_COLUMN) == this.ShadowTileNumber)
-                {
-                    return true;
-                }
-            }
-            // 下指示に対して、前回の位置から１歩下ならTrueで返す
-            else if (this.BeforeDirectionNumber == 3)
-            {
-                if ((GetTileNumber(this.Player.transform.position) + 1 * Database.TRUTH_DUNGEON_COLUMN) == this.ShadowTileNumber)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
 
         private void ReturnToNormal()
         {
@@ -10435,13 +10388,73 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart)
                 {
-                    this.nowAgilityRoomCounter = 100; // after
+                    this.nowAgilityRoomCounter = 30;
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart2)
+                {
+                    if (!GroundOne.WE.dungeonEvent234_Fail1)
+                    {
+                        this.nowAgilityRoomCounter = 300;
+                    }
+                    else if (!GroundOne.WE.dungeonEvent234_Fail2)
+                    {
+                        this.nowAgilityRoomCounter = 500;
+                    }
+                    else if (!GroundOne.WE.dungeonEvent234_Fail3)
+                    {
+                        this.nowAgilityRoomCounter = 700;
+                    }
+                    else
+                    {
+                        this.nowAgilityRoomCounter = 1000;
+                    }
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart3)
+                {
+                    this.detectKeyUp = false;
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomUpdate3)
+                {
+                    this.nowAgilityRoomCounter = 75;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStop)
                 {
                     this.nowAgilityRoomCounter = 0;
                 }
-                   
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomFail1)
+                {
+                    JumpToLocation(57, -27, true);
+                    GroundOne.PlaySoundEffect(Database.SOUND_ENEMY_ATTACK1);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomFail2)
+                {
+                    JumpToLocation(45, -27, true);
+                    GroundOne.PlaySoundEffect("EnemyAttack1.mp3");
+
+                    this.ShadowTileNumber = -1;
+                    this.BeforeDirectionNumber = 0;
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomFail3)
+                {
+                    JumpToLocation(33, -27, true);
+                    GroundOne.PlaySoundEffect(Database.SOUND_ENEMY_ATTACK1);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomFail4)
+                {
+                    JumpToLocation(57, -27, true);
+                    GroundOne.PlaySoundEffect(Database.SOUND_ENEMY_ATTACK1);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomFail5)
+                {
+                    JumpToLocation(57, -27, true);
+                    GroundOne.PlaySoundEffect(Database.SOUND_ENEMY_ATTACK1);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomFail6)
+                {
+                    JumpToLocation(57, -27, true);
+                    GroundOne.PlaySoundEffect(Database.SOUND_ENEMY_ATTACK1);
+                }
+                  
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "")
                 {
@@ -10465,9 +10478,28 @@ namespace DungeonPlayer
             }
         }
 
+        private void agilityRoomTimer_Tick()
+        {
+            if (!GroundOne.WE.dungeonEvent233_Complete)
+            {
+                MessagePack.Message12019_fail(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (!GroundOne.WE.dungeonEvent234_Complete)
+            {
+                MessagePack.Message12021_Fail(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (!GroundOne.WE.dungeonEvent235_Complete)
+            {
+                MessagePack.Message12024_Fail(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+        }
+
         private void OpenTheDoor(int direction, Vector3 pos)
         {
-            int TileNumber = GetTileNumber(pos);
+            int TileNumber = Method.GetTileNumber(pos);
             if (direction == 0)
             {
                 this.blueWallTop[TileNumber] = false;
@@ -10565,12 +10597,7 @@ namespace DungeonPlayer
             GroundOne.Difficulty = this.difficulty;
             SceneDimension.JumpToTruthHomeTown();
         }
-
-        private void agilityRoomTimer_Tick()
-        {
-            // after
-        }
-
+        
         private bool ExecSomeEvent_ReadWorld()
         {
             // after
