@@ -125,13 +125,15 @@ namespace DungeonPlayer
             DungeonAgilityRoomStart2,
             DungeonAgilityRoomStart3,
             DungeonAgilityRoomUpdate3,
+            DungeonAgilityRoomNormal4,
+            DungeonAgilityRoomUpdate4,
+            DungeonAgilityRoomStart5,
             DungeonAgilityRoomStop,
             DungeonAgilityRoomFail1,
             DungeonAgilityRoomFail2,
             DungeonAgilityRoomFail3,
             DungeonAgilityRoomFail4,
             DungeonAgilityRoomFail5,
-            DungeonAgilityRoomFail6,
             Floor2AgilityRoomJudgeDirection,
             Ending,
         }
@@ -8566,7 +8568,7 @@ namespace DungeonPlayer
         }
         #endregion
         #region "技の部屋、エリアＤ"
-        public static void Message12026(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message12026(ref List<string> messageList, ref List<ActionEvent> eventList, ref int Area4_InnerTimerCount, ref int Area4_ShadowTileNum)
         {
             if (!GroundOne.WE.dungeonEvent236)
             {
@@ -8603,45 +8605,10 @@ namespace DungeonPlayer
             {
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
 
-                // after
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 36].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_26); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 37].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 38].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 39].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 40].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 41].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 42].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 43].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_30); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomNormal4);
 
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 36].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 37].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 38].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 39].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 40].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 41].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 42].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 43].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 36].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_17); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 37].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 38].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 39].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 40].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 41].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 42].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 43].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_22); eventList.Add(ActionEvent.None);
-
-                //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
-            }
-            if (!GroundOne.WE.dungeonEvent236_Complete)
-            {
-                // after
-                //this.Area4_InnerTimerCount = 0;
-                //this.Area4_ShadowTileNum = -1;
-                //agilityRoomTimer.Stop(); eventList.Add(ActionEvent.None);
+                Area4_InnerTimerCount = 0;
+                Area4_ShadowTileNum = -1;
             }
         }
 
@@ -8651,7 +8618,142 @@ namespace DungeonPlayer
             {
                 messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea27);
 
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStart);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomUpdate4);
+            }
+        }
+
+        public static void Message12027_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+
+            messageList.Add("　　　　『ッブブー！！』"); eventList.Add(ActionEvent.None);
+
+            if (!GroundOne.WE.dungeonEvent233_Fail1 || !GroundOne.WE.dungeonEvent233_Fail2 || !GroundOne.WE.dungeonEvent233_Fail3 ||
+                !GroundOne.WE.dungeonEvent234_Fail1 || !GroundOne.WE.dungeonEvent234_Fail2 || !GroundOne.WE.dungeonEvent234_Fail3 ||
+                !GroundOne.WE.dungeonEvent235_Fail1 || !GroundOne.WE.dungeonEvent235_Fail2 || !GroundOne.WE.dungeonEvent235_Fail3)
+            {
+                messageList.Add("アイン：しまった！　警告音だ！！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：ッゲ！　何か警告音が！？"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("（  アイン足元の床が突如開いた  ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　＜＜＜　ッパカ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どわぁぁぁぁーーーっっ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomFail4);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomNormal4);
+
+            if (!GroundOne.WE.dungeonEvent236_Fail1)
+            {
+                GroundOne.WE.dungeonEvent236_Fail1 = true;
+
+                messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：床が「ッポヮア」っと浮かび上がって来てるわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、あれにタイミング良く飛び乗っていくだけだな。"); eventList.Add(ActionEvent.None);
+
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：乗るだけなんだろ。　早くクリアしてこい。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：楽勝なんでしょ？　早くクリアしてちょうだいね♪"); eventList.Add(ActionEvent.None);
+                }
+                messageList.Add("アイン：くそう分かったって・・・もう１回だ。"); eventList.Add(ActionEvent.None);
+            }
+            else if (!GroundOne.WE.dungeonEvent236_Fail2)
+            {
+                GroundOne.WE.dungeonEvent236_Fail2 = true;
+
+                messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：何か向こうの方に行くたびに失敗してない？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：少しずつタイミングが早くなってきてるんだよ。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：くだらんな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：うっせえな。タイミングが狂うのは苦手なんだよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：タイミングのせいか。ザコらしいな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：い、いや。タイミングのせいじゃねえ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どんなのであれ、やってやるさ！　もう１回だ！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：ゆっくり落ち着いて行けば良いんじゃない？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ、そうなんだろうけど、どうも焦っちまうな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：まあ、ココから見てるから、バカアインが慌ててる所を♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っけ・・・次で終わらせてやるぜ！"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!GroundOne.WE.dungeonEvent236_Fail3)
+            {
+                GroundOne.WE.dungeonEvent236_Fail3 = true;
+
+                messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アインにとって、少し苦手なトコかもね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そういうわけじゃねえんだけどな・・・"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：テンポ良く行け。　考えるな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：んな事ぐらい分かってるよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：てめぇは考えすぎだ。　ザコにはちょうど良い機会だ、突っ走れや。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：考えすぎじゃねえって、何か合わねえだけさ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：ッラァ！　とっとと行け！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：わわ分かったって！　ハイハイ！！"); eventList.Add(ActionEvent.None);
+
+                }
+                else
+                {
+                    messageList.Add("ラナ：テンポ良く行って見たらどう？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：テンポ良くか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：そうよ、１回１回止まってると、クセになって余計失敗するわよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：んまあ、ずっと見てると余計迷うのも確かだな・・・"); eventList.Add(ActionEvent.None);
+                }
+                messageList.Add("アイン：おし、テンポ良く・・・今度こそ！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・（ジィ～～～）"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：・・・（ビカーン）"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：ッグ・・・ハイハイ・・・今度こそ・・・"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -8663,40 +8765,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
 
-
-                // after
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 36].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_26); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 37].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 38].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 39].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 40].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 41].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 42].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 43].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-                //dungeonTile[33 * Database.TRUTH_DUNGEON_COLUMN + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24); eventList.Add(ActionEvent.None);
-
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 36].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 37].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 38].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 39].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 40].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 41].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 42].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 43].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                //dungeonTile[34 * Database.TRUTH_DUNGEON_COLUMN + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 36].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_17); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 37].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 38].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 39].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 40].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 41].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 42].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 43].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-                //dungeonTile[35 * Database.TRUTH_DUNGEON_COLUMN + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_14); eventList.Add(ActionEvent.None);
-
-                //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
-
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomNormal4);
 
                 messageList.Add("　　　　『　ピンポン　ピンポン　』"); eventList.Add(ActionEvent.None);
 
@@ -8816,25 +8885,164 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea28);
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
-   
-                // after
-                //if (GroundOne.WE.dungeonEvent237_Fail3)
-                //{
-                //    agilityRoomTimer.Interval = 4700;
-                //}
-                //else if (GroundOne.WE.dungeonEvent237_Fail2)
-                //{
-                //    agilityRoomTimer.Interval = 4400;
-                //}
-                //else if (GroundOne.WE.dungeonEvent237_Fail1)
-                //{
-                //    agilityRoomTimer.Interval = 4100;
-                //}
-                //else
-                //{
-                //    agilityRoomTimer.Interval = 3800;
-                //}
-                //agilityRoomTimer.Start(); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStart5);
+            }
+        }
+
+        public static void Message12030_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomStop);
+
+            messageList.Add("　　　　『ッブブー！！』"); eventList.Add(ActionEvent.None);
+
+            if (!GroundOne.WE.dungeonEvent233_Fail1 || !GroundOne.WE.dungeonEvent233_Fail2 || !GroundOne.WE.dungeonEvent233_Fail3 ||
+                !GroundOne.WE.dungeonEvent234_Fail1 || !GroundOne.WE.dungeonEvent234_Fail2 || !GroundOne.WE.dungeonEvent234_Fail3 ||
+                !GroundOne.WE.dungeonEvent235_Fail1 || !GroundOne.WE.dungeonEvent235_Fail2 || !GroundOne.WE.dungeonEvent235_Fail3 ||
+                !GroundOne.WE.dungeonEvent236_Fail1 || !GroundOne.WE.dungeonEvent236_Fail2 || !GroundOne.WE.dungeonEvent236_Fail3)
+            {
+                messageList.Add("アイン：しまった！　警告音だ！！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：ッゲ！　何か警告音が！？"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("（  アイン足元の床が突如開いた  ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　＜＜＜　ッパカ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どわぁぁぁぁーーーっっ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilityRoomFail5);
+
+            messageList.Add("アイン：っいて！！"); eventList.Add(ActionEvent.None);
+
+            if (!GroundOne.WE.dungeonEvent237_Fail1)
+            {
+                GroundOne.WE.dungeonEvent237_Fail1 = true;
+
+                messageList.Add("ラナ：駄目だったみたいね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っくそ、間に合ってねえか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：単純に時間勝負って事かしら？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、あの看板の内容だし。間違いねえ。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：久しぶりじゃねえか。その雰囲気。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：え？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：自覚ねぇんだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いつもと同じだって。　今度こそやってみせる。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：でもアイン、今回なんか雰囲気違ってない？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そうか？　いつもこんなもんだろ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：う～ん、まあ別に良けど。テキトーに頑張ってきて。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、今度こそ！"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!GroundOne.WE.dungeonEvent237_Fail2)
+            {
+                GroundOne.WE.dungeonEvent237_Fail2 = true;
+
+                messageList.Add("ラナ：うーん、残念だったわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：もう１回だ。　行くぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：うん、行ってらっしゃい。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ラナ：・・・ふぅ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：気になるか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：え？ええ、少し・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：ああ見えて、いつも手抜きだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：アインがですか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：マジモードは滅多に見れねぇしな。見といてやれ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ハ、ハイ。"); eventList.Add(ActionEvent.None);
+
+                }
+                else
+                {
+                    messageList.Add("ラナ：((( こっち見向きもしてないわね・・・)))"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!GroundOne.WE.dungeonEvent237_Fail3)
+            {
+                GroundOne.WE.dungeonEvent237_Fail3 = true;
+
+                messageList.Add("ラナ：ザーンネン♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：壁にぶつかったら間に合わねえな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：少し呼吸置くとかしてみたら、どう♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、サンキュー"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：それから最初のスタートダッシュとかで"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っじゃ、もう１回行ってくるぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ラナ：あんの素っ気無い態度。　失礼よね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：ザコにしちゃ上出来だ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：失敗してるのに、ですか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：失敗はどぉでもいい。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：確かに、失敗するたびに、雰囲気がこう・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：やる気んなってるって事だろ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：いつもやる気ないんですかね？アインって。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：本気ではねぇな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：「常に本気にしない」ってトコだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：意識的に抑制がかかってるって事ですか！？　ウソですよね！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：半分ウソだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ですよね♪　あのバカアインに限って・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：半分は本当なんですか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：さぁな。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：((( こっち見向きもしてないわね・・・)))"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else
+            {
+                messageList.Add("ラナ：残念♪　また行くの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、もう１回だ！"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -10641,7 +10849,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.TruthAnswer2_OK)
             {
-                if (GroundOne.WE2.TruthAnswer2_1_current != null)
+                if (GroundOne.WE2.TruthAnswer2_1_current != null && GroundOne.WE2.TruthAnswer2_1_current != string.Empty)
                 {
                     messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_1_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
                 }
@@ -10698,7 +10906,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.TruthAnswer2_OK)
             {
-                if (GroundOne.WE2.TruthAnswer2_2_current != null)
+                if (GroundOne.WE2.TruthAnswer2_2_current != null && GroundOne.WE2.TruthAnswer2_2_current != string.Empty)
                 {
                     messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_2_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
                 }
@@ -10798,7 +11006,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.TruthAnswer2_OK)
             {
-                if (GroundOne.WE2.TruthAnswer2_3_current != null)
+                if (GroundOne.WE2.TruthAnswer2_3_current != null && GroundOne.WE2.TruthAnswer2_3_current != string.Empty)
                 {
                     messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_3_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
                 }
@@ -10855,7 +11063,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.TruthAnswer2_OK)
             {
-                if (GroundOne.WE2.TruthAnswer2_4_current != null)
+                if (GroundOne.WE2.TruthAnswer2_4_current != null && GroundOne.WE2.TruthAnswer2_4_current != string.Empty)
                 {
                     messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_4_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
                 }
@@ -10942,7 +11150,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.TruthAnswer2_OK)
             {
-                if (GroundOne.WE2.TruthAnswer2_5_current != null)
+                if (GroundOne.WE2.TruthAnswer2_5_current != null && GroundOne.WE2.TruthAnswer2_5_current != string.Empty)
                 {
                     messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_5_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
                 }
@@ -10999,7 +11207,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.TruthAnswer2_OK)
             {
-                if (GroundOne.WE2.TruthAnswer2_6_current != null)
+                if (GroundOne.WE2.TruthAnswer2_6_current != null && GroundOne.WE2.TruthAnswer2_6_current != string.Empty)
                 {
                     messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_6_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
                 }
@@ -11086,7 +11294,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.TruthAnswer2_OK)
             {
-                if (GroundOne.WE2.TruthAnswer2_7_current != null)
+                if (GroundOne.WE2.TruthAnswer2_7_current != null && GroundOne.WE2.TruthAnswer2_7_current != string.Empty)
                 {
                     messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_7_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
                 }
@@ -11143,7 +11351,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.TruthAnswer2_OK)
             {
-                if (GroundOne.WE2.TruthAnswer2_8_current != null)
+                if (GroundOne.WE2.TruthAnswer2_8_current != null && GroundOne.WE2.TruthAnswer2_8_current != string.Empty)
                 {
                     messageList.Add("レバーの突端には現在【" + GroundOne.WE2.TruthAnswer2_8_current + "】の文字が表示されている。"); eventList.Add(ActionEvent.None);
                 }

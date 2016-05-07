@@ -6730,6 +6730,15 @@ namespace DungeonPlayer
                 this.baseMana = 80 + (this.level - 1) * 15;
             }
 
+            // debug
+            this.baseStrength = 1;
+            this.baseAgility = 1;
+            this.baseIntelligence = 1;
+            this.baseStamina = 1;
+            this.baseMind = 1;
+            this.baseLife = 1;
+            this.baseMana = 1;
+
             // omega
             //float powerValue = 1.0f;
             //if (GroundOne.Difficulty == 1)

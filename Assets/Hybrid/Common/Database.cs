@@ -1230,24 +1230,24 @@ namespace DungeonPlayer
         public const string TILEINFO_11 = @"Upstair.bmp";
         public const string TILEINFO_12 = @"Board.bmp";
 
-        public const string TILEINFO_13 = @"Tile1.bmp";
-        public const string TILEINFO_14 = @"Tile1-WallB.bmp";
+        public const string TILEINFO_13 = @"Tile1";
+        public const string TILEINFO_14 = @"Tile1-WallB";
         public const string TILEINFO_15 = @"Tile1-WallB-DummyB.bmp";
         public const string TILEINFO_16 = @"Tile1-WallL.bmp";
-        public const string TILEINFO_17 = @"Tile1-WallLB.bmp";
+        public const string TILEINFO_17 = @"Tile1-WallLB";
         public const string TILEINFO_18 = @"Tile1-WallLR.bmp";
         public const string TILEINFO_19 = @"Tile1-WallLRB.bmp";
         public const string TILEINFO_20 = @"Tile1-WallLR-DummyL.bmp";
         public const string TILEINFO_21 = @"Tile1-WallR.bmp";
-        public const string TILEINFO_22 = @"Tile1-WallRB.bmp";
+        public const string TILEINFO_22 = @"Tile1-WallRB";
         public const string TILEINFO_23 = @"Tile1-WallR-DummyR.bmp";
-        public const string TILEINFO_24 = @"Tile1-WallT.bmp";
+        public const string TILEINFO_24 = @"Tile1-WallT";
         public const string TILEINFO_25 = @"Tile1-WallTB.bmp";
-        public const string TILEINFO_26 = @"Tile1-WallTL.bmp";
+        public const string TILEINFO_26 = @"Tile1-WallTL";
         public const string TILEINFO_27 = @"Tile1-WallTLB.bmp";
         public const string TILEINFO_28 = @"Tile1-WallTLR.bmp";
         public const string TILEINFO_29 = @"Tile1-WallTLRB.bmp";
-        public const string TILEINFO_30 = @"Tile1-WallTR.bmp";
+        public const string TILEINFO_30 = @"Tile1-WallTR";
         public const string TILEINFO_31 = @"Tile1-WallTRB.bmp";
 
         public const string TILEINFO_32 = @"Tile1-WallT-NumT1.bmp";
@@ -1259,8 +1259,8 @@ namespace DungeonPlayer
         public const string TILEINFO_38 = @"Tile1-WallT-NumT7.bmp";
         public const string TILEINFO_39 = @"Tile1-WallR-NumT8.bmp";
 
-        public const string TILEINFO_40 = @"Tile1-Blue.bmp";
-        public const string TILEINFO_41 = @"Tile1-Black.bmp";
+        public const string TILEINFO_40 = @"Tile1-Blue";
+        public const string TILEINFO_41 = @"Tile1-Black";
 
         public const string TILEINFO_42 = @"Tile1-WallRB-DummyB.bmp";
 
