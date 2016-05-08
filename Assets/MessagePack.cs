@@ -2907,10 +2907,11 @@ namespace DungeonPlayer
 					messageList.Add("アイン：神よ・・・このラナ・アミリアという人間に慈しみの心を・・・"); eventList.Add(ActionEvent.None);
                 }
             }
-            else if (GroundOne.WE.dungeonEvent215 && !GroundOne.WE.dungeonEvent219)
-            {
-				messageList.Add("　　　　『  下３　上１２　左８  』"); eventList.Add(ActionEvent.None);
-            }
+        }
+
+        public static void Message12003_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+			messageList.Add("　　　　『  下３　上１２　左８  』"); eventList.Add(ActionEvent.None);
         }
 
         // 知の部屋、メイン看板、サード：( >10 _6 <7 )  ( <11 ~3 )  ( _3 >7 )

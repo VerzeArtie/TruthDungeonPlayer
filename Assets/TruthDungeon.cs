@@ -6932,20 +6932,30 @@ namespace DungeonPlayer
                     #endregion
                     #region "知の部屋、メイン看板、ファースト：３回"
                     case 5:
-                        MessagePack.Message12002(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
+                        if (!GroundOne.WE.dungeonEvent211)
+                        {
+                            MessagePack.Message12002(ref this.nowMessage, ref this.nowEvent);
+                            tapOK();
+                        }
                     #endregion
                     #region "知の部屋、メイン看板、セカンド：下３上１２左８"
-                    case 6:
-                        MessagePack.Message12003(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
+                        else if (!GroundOne.WE.dungeonEvent215)
+                        {
+                            MessagePack.Message12003(ref this.nowMessage, ref this.nowEvent);
+                            tapOK();
+                        }
+                        else if (!GroundOne.WE.dungeonEvent219)
+                        {
+                            MessagePack.Message12003_2(ref this.nowMessage, ref this.nowEvent);
+                            tapOK();                            
+                        }
                     #endregion
                     #region "知の部屋、メイン看板、サード：( >10 _6 <7 )  ( <11 ~3 )  ( _3 >7 )"
-                    case 7:
-                        MessagePack.Message12004(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        else if (GroundOne.WE.dungeonEvent215 && GroundOne.WE.dungeonEvent219 && !GroundOne.WE.dungeonEvent220)
+                        {
+                            MessagePack.Message12004(ref this.nowMessage, ref this.nowEvent);
+                            tapOK();
+                        }
                         return true;
                     #endregion
                     #region "知の部屋、フェーズ１"
@@ -6968,31 +6978,31 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     case 12:
-                        MessagePack.Message12009(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12008_2(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 13:
-                        MessagePack.Message12010(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12008_3(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "知の部屋、フェーズ３"
                     case 14:
-                        MessagePack.Message12011(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12009(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 15:
-                        MessagePack.Message12012(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12009_2(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 16:
-                        MessagePack.Message12013(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12009_3(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "知の部屋、正しき順序看板"
                     case 17:
-                        MessagePack.Message12014(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12010(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
