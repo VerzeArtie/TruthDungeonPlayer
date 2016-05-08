@@ -9,6 +9,7 @@ namespace DungeonPlayer
 {
     public static class MessagePack
     {
+        #region "アクションイベント"
         public enum ActionEvent
         {
             None,
@@ -140,19 +141,18 @@ namespace DungeonPlayer
             Floor2DownstairGateOpen,
             Ending,
         }
-
+        #endregion
 
         #region "ダンジョン内"
-        public static void MessageBackToTown(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-            messageList.Add("アイン：ユングの町に戻るか？"); eventList.Add(ActionEvent.GotoHomeTown);
-        }
-
         public static void MessageNotFound(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：ん？特に何もなかったと思うが。"); eventList.Add(ActionEvent.None);
         }
         #region "１階"
+        public static void MessageBackToTown(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：ユングの町に戻るか？"); eventList.Add(ActionEvent.GotoHomeTown);
+        }
         public static void Message10000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (!GroundOne.WE.BoardInfo10)
@@ -11988,6 +11988,14 @@ namespace DungeonPlayer
             }
         }
         #endregion
+        #endregion
+        #region "３階"
+        #endregion
+        #region "４階"
+        #endregion
+        #region "５階"
+        #endregion
+        #region "現実世界"
         #endregion
         #endregion
 

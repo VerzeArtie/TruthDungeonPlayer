@@ -787,6 +787,15 @@ namespace DungeonPlayer
                     }
                 }
 
+                // ２階、ダンジョン進行フラグに応じて、真実イベントへの防壁を解除
+                if (GroundOne.WE.DungeonArea == 2 && GroundOne.WE2.TruthAnswer2_OK)
+                {
+                    if (ii == Database.TRUTH_DUNGEON_COLUMN * 26 + 13)
+                    {
+                        current = Database.TILEINFO_13;
+                    }
+                }
+
                 this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current);
                 this.objList.Add(Instantiate(this.prefab_TileElement, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
 
