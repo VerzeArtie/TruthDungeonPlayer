@@ -1216,57 +1216,57 @@ namespace DungeonPlayer
         #endregion
 
         #region "ダンジョンタイルデータ名"
-        public const string TILEINFO_1 = @"Downstair.bmp";
-        public const string TILEINFO_2 = @"Downstair-WallLRB.bmp";
-        public const string TILEINFO_3 = @"Downstair-WallT.bmp";
-        public const string TILEINFO_4 = @"Downstair-WallTLB.bmp";
-        public const string TILEINFO_5 = @"Downstair-WallTRB.bmp";
-        public const string TILEINFO_6 = @"Upstair-WallLRB.bmp";
-        public const string TILEINFO_7 = @"Upstair-WallRB.bmp";
-        public const string TILEINFO_8 = @"Upstair-WallTLR.bmp";
-        public const string TILEINFO_9 = @"TreasureBox.bmp";
-        public const string TILEINFO_10 = @"UnknownTile.bmp";
-        public const string TILEINFO_10_2 = @"UnknownTile_Check.bmp";
-        public const string TILEINFO_11 = @"Upstair.bmp";
-        public const string TILEINFO_12 = @"Board.bmp";
+        public const string TILEINFO_1 = @"Downstair";
+        public const string TILEINFO_2 = @"Downstair-WallLRB";
+        public const string TILEINFO_3 = @"Downstair-WallT";
+        public const string TILEINFO_4 = @"Downstair-WallTLB";
+        public const string TILEINFO_5 = @"Downstair-WallTRB";
+        public const string TILEINFO_6 = @"Upstair-WallLRB";
+        public const string TILEINFO_7 = @"Upstair-WallRB";
+        public const string TILEINFO_8 = @"Upstair-WallTLR";
+        public const string TILEINFO_9 = @"TreasureBox";
+        public const string TILEINFO_10 = @"UnknownTile";
+        public const string TILEINFO_10_2 = @"UnknownTile_Check";
+        public const string TILEINFO_11 = @"Upstair";
+        public const string TILEINFO_12 = @"Board";
 
         public const string TILEINFO_13 = @"Tile1";
         public const string TILEINFO_14 = @"Tile1-WallB";
-        public const string TILEINFO_15 = @"Tile1-WallB-DummyB.bmp";
-        public const string TILEINFO_16 = @"Tile1-WallL.bmp";
+        public const string TILEINFO_15 = @"Tile1-WallB-DummyB";
+        public const string TILEINFO_16 = @"Tile1-WallL";
         public const string TILEINFO_17 = @"Tile1-WallLB";
-        public const string TILEINFO_18 = @"Tile1-WallLR.bmp";
-        public const string TILEINFO_19 = @"Tile1-WallLRB.bmp";
-        public const string TILEINFO_20 = @"Tile1-WallLR-DummyL.bmp";
-        public const string TILEINFO_21 = @"Tile1-WallR.bmp";
+        public const string TILEINFO_18 = @"Tile1-WallLR";
+        public const string TILEINFO_19 = @"Tile1-WallLRB";
+        public const string TILEINFO_20 = @"Tile1-WallLR-DummyL";
+        public const string TILEINFO_21 = @"Tile1-WallR";
         public const string TILEINFO_22 = @"Tile1-WallRB";
-        public const string TILEINFO_23 = @"Tile1-WallR-DummyR.bmp";
+        public const string TILEINFO_23 = @"Tile1-WallR-DummyR";
         public const string TILEINFO_24 = @"Tile1-WallT";
-        public const string TILEINFO_25 = @"Tile1-WallTB.bmp";
+        public const string TILEINFO_25 = @"Tile1-WallTB";
         public const string TILEINFO_26 = @"Tile1-WallTL";
-        public const string TILEINFO_27 = @"Tile1-WallTLB.bmp";
-        public const string TILEINFO_28 = @"Tile1-WallTLR.bmp";
-        public const string TILEINFO_29 = @"Tile1-WallTLRB.bmp";
+        public const string TILEINFO_27 = @"Tile1-WallTLB";
+        public const string TILEINFO_28 = @"Tile1-WallTLR";
+        public const string TILEINFO_29 = @"Tile1-WallTLRB";
         public const string TILEINFO_30 = @"Tile1-WallTR";
-        public const string TILEINFO_31 = @"Tile1-WallTRB.bmp";
+        public const string TILEINFO_31 = @"Tile1-WallTRB";
 
-        public const string TILEINFO_32 = @"Tile1-WallT-NumT1.bmp";
-        public const string TILEINFO_33 = @"Tile1-WallL-NumT2.bmp";
-        public const string TILEINFO_34 = @"Tile1-NumT3.bmp";
-        public const string TILEINFO_35 = @"Tile1-WallLB-NumT4.bmp";
-        public const string TILEINFO_36 = @"Tile1-Wall-NumT5.bmp";
-        public const string TILEINFO_37 = @"Tile1-WallLB-NumT6.bmp";
-        public const string TILEINFO_38 = @"Tile1-WallT-NumT7.bmp";
-        public const string TILEINFO_39 = @"Tile1-WallR-NumT8.bmp";
+        public const string TILEINFO_32 = @"Tile1-WallT-NumT1";
+        public const string TILEINFO_33 = @"Tile1-WallL-NumT2";
+        public const string TILEINFO_34 = @"Tile1-NumT3";
+        public const string TILEINFO_35 = @"Tile1-WallLB-NumT4";
+        public const string TILEINFO_36 = @"Tile1-Wall-NumT5";
+        public const string TILEINFO_37 = @"Tile1-WallLB-NumT6";
+        public const string TILEINFO_38 = @"Tile1-WallT-NumT7";
+        public const string TILEINFO_39 = @"Tile1-WallR-NumT8";
 
         public const string TILEINFO_40 = @"Tile1-Blue";
         public const string TILEINFO_41 = @"Tile1-Black";
 
-        public const string TILEINFO_42 = @"Tile1-WallRB-DummyB.bmp";
+        public const string TILEINFO_42 = @"Tile1-WallRB-DummyB";
 
-        public const string TILEINFO_43 = @"Mirror.bmp";
+        public const string TILEINFO_43 = @"Mirror";
 
-        public const string TILEINFO_44 = @"BlueOrb.bmp";
+        public const string TILEINFO_44 = @"BlueOrb";
         #endregion
 
         #region "アイテム名称"

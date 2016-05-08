@@ -151,10 +151,11 @@ namespace DungeonPlayer
 
         int nowAgilityRoomCounter = 0;
 
-        bool nowDecisionFloor1OpenDoor1 = false; // １階ボス部屋を開く際のフラグ
+        bool nowDecisionFloor1OpenDoor = false; // １階ボス部屋を開く際のフラグ
         int nowDecisionFloor2EightAnswer = 0; // ２階TruthDecision2を呼び出すためのフラグ
         int failCounter = 0; // ２階、技の部屋で失敗した時のフラグ
         bool detectKeyUp = false; // ２階、技の部屋Ｃでキーを離した事を示すフラグ
+        bool nowDecisionFloor2OpenDoor = false; // ２階ボスの後の扉を開く際のフラグ
 
         private GameObject prefab_TileElement = null;
 
@@ -288,7 +289,7 @@ namespace DungeonPlayer
                 {
                     current = Database.TILEINFO_10_2;
                 }
-                this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current.Substring(0, current.Length - 4));
+                this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current);
                 this.unknownTile.Add(Instantiate(this.prefab_TileElement, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
             }
             #endregion
@@ -777,8 +778,16 @@ namespace DungeonPlayer
                         current = Database.TILEINFO_13;
                     }
                 }
+                // ２階、技の部屋、隠し通路の壁解除
+                if (GroundOne.WE.DungeonArea == 2 && GroundOne.WE.dungeonEvent258)
+                {
+                    if (ii == 36 * Database.TRUTH_DUNGEON_COLUMN + 59)
+                    {
+                        current = Database.TILEINFO_21;
+                    }
+                }
 
-                this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current.Substring(0, current.Length - 4));
+                this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current);
                 this.objList.Add(Instantiate(this.prefab_TileElement, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
 
                 // unknownTileとTruth_KnownTileInfoはネームが反対ですが、意味付けは同じ本質です。
@@ -924,12 +933,13 @@ namespace DungeonPlayer
         {
             base.SceneBack();
 
+            mainMessage.text = "";
             UpdateMainMessage("", true);
             SetupPlayerStatus(false);
 
-            if (this.nowDecisionFloor1OpenDoor1)
+            if (this.nowDecisionFloor1OpenDoor)
             {
-                this.nowDecisionFloor1OpenDoor1 = false;
+                this.nowDecisionFloor1OpenDoor = false;
                 if (GroundOne.DecisionChoice == 1)
                 {
                     MessagePack.Message10050_2(ref nowMessage, ref nowEvent);
@@ -941,6 +951,20 @@ namespace DungeonPlayer
                     tapOK();
                 }
                 return;
+            }
+            else if (this.nowDecisionFloor2OpenDoor)
+            {
+                this.nowDecisionFloor2OpenDoor = false;
+                if (GroundOne.DecisionChoice == 1)
+                {
+                    MessagePack.Message12066_2(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else
+                {
+                    MessagePack.Message12066_3(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
             }
             else if (this.nowDecisionFloor2EightAnswer == 1)
             {
@@ -956,7 +980,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE2.TruthAnswer2_1 = false;                        
+                    GroundOne.WE2.TruthAnswer2_1 = false;
                 }
                 MessagePack.Message12063(ref nowMessage, ref nowEvent, false);
                 tapOK();
@@ -1298,6 +1322,11 @@ namespace DungeonPlayer
                     GroundOne.WE.TruthCompleteSlayBoss2 = true;
                     // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message12049_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_TINKOU_DEEPSEA)
+                {
+                    MessagePack.Message12066_4(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
@@ -1702,11 +1731,19 @@ namespace DungeonPlayer
         private void ShownEvent()
         {
             Debug.Log("ShownEvent (S): ");
-            if (GroundOne.GotoDownstair && GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1)
+            if (GroundOne.GotoDownstair)
             {
                 GroundOne.GotoDownstair = false;
-                MessagePack.Message10051_2(ref this.nowMessage, ref this.nowEvent);
-                tapOK();
+                if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.TruthCommunicationCompArea1)
+                {
+                    MessagePack.Message10051_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.TruthCommunicationCompArea2)
+                {
+                    MessagePack.Message12067_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
             }
         }
 
@@ -1821,9 +1858,9 @@ namespace DungeonPlayer
             #region "Wall判定"
             switch (targetTileInfo[Method.GetTileNumber(Player.transform.position)])
             {
-                case "Tile1.bmp":
+                case Database.TILEINFO_13:
                     break;
-                case "Tile1-WallT.bmp":
+                case Database.TILEINFO_24:
                     if (direction == 0)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -1833,7 +1870,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallL.bmp":
+                case Database.TILEINFO_16:
                     if (direction == 1)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -1843,7 +1880,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallR.bmp":
+                case Database.TILEINFO_21:
                     if (direction == 2)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -1853,7 +1890,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallB.bmp":
+                case Database.TILEINFO_14:
                     if (direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -1863,7 +1900,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallLR-DummyL.bmp":
+                case Database.TILEINFO_20:
                     if (direction == 2)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -1873,7 +1910,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallRB-DummyB.bmp":
+                case Database.TILEINFO_42:
                     if (direction == 2)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -1883,7 +1920,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallTL.bmp":
+                case Database.TILEINFO_26:
                     if (direction == 0 || direction == 1)
                     {
                         // ４階、36、34、上方向を無視
@@ -1906,7 +1943,7 @@ namespace DungeonPlayer
                         }
                     }
                     break;
-                case "Tile1-WallTR.bmp":
+                case Database.TILEINFO_30:
                     if (direction == 0 || direction == 2)
                     {
                         // ４階、35、29、右方向を無視
@@ -1924,7 +1961,7 @@ namespace DungeonPlayer
                         }
                     }
                     break;
-                case "Tile1-WallTB.bmp":
+                case Database.TILEINFO_25:
                     if (direction == 0 || direction == 3)
                     {
                         // ４階、39、40、上方向を無視
@@ -1947,7 +1984,7 @@ namespace DungeonPlayer
                         }
                     }
                     break;
-                case "Tile1-WallLR.bmp":
+                case Database.TILEINFO_18:
                     if (direction == 1 || direction == 2)
                     {
                         // ４階、31、52、左方向を無視
@@ -1980,7 +2017,7 @@ namespace DungeonPlayer
                         }
                     }
                     break;
-                case "Tile1-WallLB.bmp":
+                case Database.TILEINFO_17:
                     if (direction == 1 || direction == 3)
                     {
                         // ４階、39、40、左方向を無視
@@ -2013,7 +2050,7 @@ namespace DungeonPlayer
                         }
                     }
                     break;
-                case "Tile1-WallRB.bmp":
+                case Database.TILEINFO_22:
                     if (direction == 2 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2023,7 +2060,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallTLR.bmp":
+                case Database.TILEINFO_28:
                     if (direction == 0 || direction == 1 || direction == 2)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2033,7 +2070,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallTLB.bmp":
+                case Database.TILEINFO_27:
                     if (direction == 0 || direction == 1 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2043,7 +2080,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallTRB.bmp":
+                case Database.TILEINFO_31:
                     if (direction == 0 || direction == 2 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2053,7 +2090,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallLRB.bmp":
+                case Database.TILEINFO_19:
                     if (direction == 1 || direction == 2 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2063,7 +2100,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Tile1-WallTLRB.bmp":
+                case Database.TILEINFO_29:
                     if (direction == 0 || direction == 1 || direction == 2 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2073,7 +2110,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Upstair-WallLRB.bmp":
+                case Database.TILEINFO_6:
                     if (direction == 1 || direction == 2 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2083,7 +2120,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Upstair-WallRB.bmp":
+                case Database.TILEINFO_7:
                     if (direction == 2 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2093,7 +2130,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Upstair-WallTLR.bmp":
+                case Database.TILEINFO_8:
                     if (direction == 0 || direction == 1 || direction == 2)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2103,7 +2140,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Downstair-WallTRB.bmp":
+                case Database.TILEINFO_5:
                     if (direction == 0 || direction == 2 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2113,7 +2150,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Downstair-WallT.bmp":
+                case Database.TILEINFO_3:
                     if (direction == 0)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2123,7 +2160,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Downstair-WallLRB.bmp":
+                case Database.TILEINFO_2:
                     if (direction == 1 || direction == 2 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2133,7 +2170,7 @@ namespace DungeonPlayer
                         return true;
                     }
                     break;
-                case "Downstair-WallTLB.bmp":
+                case Database.TILEINFO_4:
                     if (direction == 0 || direction == 1 || direction == 3)
                     {
                         this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
@@ -2446,18 +2483,18 @@ namespace DungeonPlayer
 
             // 上の可視化
             if (currentPosNum >= Database.TRUTH_DUNGEON_COLUMN &&
-                (currentTileInfo != "Tile1-WallT.bmp" &&
-                 currentTileInfo != "Tile1-WallTL.bmp" &&
-                 currentTileInfo != "Tile1-WallTR.bmp" &&
-                 currentTileInfo != "Tile1-WallTB.bmp" &&
-                 currentTileInfo != "Tile1-WallTLR.bmp" &&
-                 currentTileInfo != "Tile1-WallTLB.bmp" &&
-                 currentTileInfo != "Tile1-WallTRB.bmp" &&
-                 currentTileInfo != "Tile1-WallTLRB.bmp" &&
-                 currentTileInfo != "Upstair-WallTLR.bmp" &&
-                 currentTileInfo != "Downstair-WallTRB.bmp" &&
-                 currentTileInfo != "Downstair-WallTLB.bmp" &&
-                 currentTileInfo != "Downstair-WallT.bmp" &&
+                (currentTileInfo != Database.TILEINFO_24 &&
+                 currentTileInfo != Database.TILEINFO_26 &&
+                 currentTileInfo != Database.TILEINFO_30 &&
+                 currentTileInfo != Database.TILEINFO_25 &&
+                 currentTileInfo != Database.TILEINFO_28 &&
+                 currentTileInfo != Database.TILEINFO_27 &&
+                 currentTileInfo != Database.TILEINFO_31 &&
+                 currentTileInfo != Database.TILEINFO_29 &&
+                 currentTileInfo != Database.TILEINFO_8 &&
+                 currentTileInfo != Database.TILEINFO_5 &&
+                 currentTileInfo != Database.TILEINFO_4 &&
+                 currentTileInfo != Database.TILEINFO_3 &&
                  blueWallTop[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum - Database.TRUTH_DUNGEON_COLUMN].activeInHierarchy)
@@ -2470,19 +2507,19 @@ namespace DungeonPlayer
 
             // 左の可視化
             if (currentPosNum % Database.TRUTH_DUNGEON_COLUMN != 0 &&
-                (currentTileInfo != "Tile1-WallL.bmp" &&
-                 currentTileInfo != "Tile1-WallTL.bmp" &&
-                 currentTileInfo != "Tile1-WallLR.bmp" &&
-                 currentTileInfo != "Tile1-WallLB.bmp" &&
-                 currentTileInfo != "Tile1-WallTLR.bmp" &&
-                 currentTileInfo != "Tile1-WallTLB.bmp" &&
-                 currentTileInfo != "Tile1-WallLRB.bmp" &&
-                 currentTileInfo != "Tile1-WallTLRB.bmp" &&
-                 currentTileInfo != "Upstair-WallLRB.bmp" &&
-                 currentTileInfo != "Upstair-WallTLR.bmp" &&
-                 currentTileInfo != "Downstair-WallTLB.bmp" &&
-                 currentTileInfo != "Downstair-WallLRB.bmp" &&
-                 currentTileInfo != "Tile1-WallLR-DummyL.bmp" &&
+                (currentTileInfo != Database.TILEINFO_16 &&
+                 currentTileInfo != Database.TILEINFO_26 &&
+                 currentTileInfo != Database.TILEINFO_18 &&
+                 currentTileInfo != Database.TILEINFO_17 &&
+                 currentTileInfo != Database.TILEINFO_28 &&
+                 currentTileInfo != Database.TILEINFO_27 &&
+                 currentTileInfo != Database.TILEINFO_19 &&
+                 currentTileInfo != Database.TILEINFO_29 &&
+                 currentTileInfo != Database.TILEINFO_6 &&
+                 currentTileInfo != Database.TILEINFO_8 &&
+                 currentTileInfo != Database.TILEINFO_4 &&
+                 currentTileInfo != Database.TILEINFO_2 &&
+                 currentTileInfo != Database.TILEINFO_20 &&
                  blueWallLeft[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum - 1].activeInHierarchy)
@@ -2495,21 +2532,21 @@ namespace DungeonPlayer
 
             // 右の可視化
             if (currentPosNum % Database.TRUTH_DUNGEON_COLUMN != (Database.TRUTH_DUNGEON_COLUMN - 1) &&
-                (currentTileInfo != "Tile1-WallR.bmp" &&
-                 currentTileInfo != "Tile1-WallTR.bmp" &&
-                 currentTileInfo != "Tile1-WallLR.bmp" &&
-                 currentTileInfo != "Tile1-WallRB.bmp" &&
-                 currentTileInfo != "Tile1-WallTLR.bmp" &&
-                 currentTileInfo != "Tile1-WallTRB.bmp" &&
-                 currentTileInfo != "Tile1-WallLRB.bmp" &&
-                 currentTileInfo != "Tile1-WallTLRB.bmp" &&
-                 currentTileInfo != "Upstair-WallLRB.bmp" &&
-                 currentTileInfo != "Upstair-WallRB.bmp" &&
-                 currentTileInfo != "Upstair-WallTLR.bmp" &&
-                 currentTileInfo != "Downstair-WallTRB.bmp" &&
-                 currentTileInfo != "Downstair-WallLRB.bmp" &&
-                 currentTileInfo != "Tile1-WallLR-DummyL.bmp" &&
-                 currentTileInfo != "Tile1-WallR-DummyR.bmp" &&
+                (currentTileInfo != Database.TILEINFO_21 &&
+                 currentTileInfo != Database.TILEINFO_30 &&
+                 currentTileInfo != Database.TILEINFO_18 &&
+                 currentTileInfo != Database.TILEINFO_22 &&
+                 currentTileInfo != Database.TILEINFO_28 &&
+                 currentTileInfo != Database.TILEINFO_31 &&
+                 currentTileInfo != Database.TILEINFO_19 &&
+                 currentTileInfo != Database.TILEINFO_29 &&
+                 currentTileInfo != Database.TILEINFO_6 &&
+                 currentTileInfo != Database.TILEINFO_7 &&
+                 currentTileInfo != Database.TILEINFO_8 &&
+                 currentTileInfo != Database.TILEINFO_5 &&
+                 currentTileInfo != Database.TILEINFO_2 &&
+                 currentTileInfo != Database.TILEINFO_20 &&
+                 currentTileInfo != Database.TILEINFO_23 &&
                  blueWallRight[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum + 1].activeInHierarchy)
@@ -2522,21 +2559,21 @@ namespace DungeonPlayer
 
             // 下の可視化
             if (currentPosNum < (Database.TRUTH_DUNGEON_COLUMN * (Database.TRUTH_DUNGEON_ROW - 1)) &&
-                (currentTileInfo != "Tile1-WallB.bmp" &&
-                 currentTileInfo != "Tile1-WallTB.bmp" &&
-                 currentTileInfo != "Tile1-WallLB.bmp" &&
-                 currentTileInfo != "Tile1-WallRB.bmp" &&
-                 currentTileInfo != "Tile1-WallTLB.bmp" &&
-                 currentTileInfo != "Tile1-WallTRB.bmp" &&
-                 currentTileInfo != "Tile1-WallLRB.bmp" &&
-                 currentTileInfo != "Tile1-WallTLRB.bmp" &&
-                 currentTileInfo != "Upstair-WallLRB.bmp" &&
-                 currentTileInfo != "Upstair-WallRB.bmp" &&
-                 currentTileInfo != "Downstair-WallTRB.bmp" &&
-                 currentTileInfo != "Downstair-WallTLB.bmp" &&
-                 currentTileInfo != "Downstair-WallLRB.bmp" &&
-                 currentTileInfo != "Tile1-WallB-DummyB.bmp" &&
-                 currentTileInfo != "Tile1-WallRB-DummyB.bmp" &&
+                (currentTileInfo != Database.TILEINFO_14 &&
+                 currentTileInfo != Database.TILEINFO_25 &&
+                 currentTileInfo != Database.TILEINFO_17 &&
+                 currentTileInfo != Database.TILEINFO_22 &&
+                 currentTileInfo != Database.TILEINFO_27 &&
+                 currentTileInfo != Database.TILEINFO_31 &&
+                 currentTileInfo != Database.TILEINFO_19 &&
+                 currentTileInfo != Database.TILEINFO_29 &&
+                 currentTileInfo != Database.TILEINFO_6 &&
+                 currentTileInfo != Database.TILEINFO_7 &&
+                 currentTileInfo != Database.TILEINFO_5 &&
+                 currentTileInfo != Database.TILEINFO_4 &&
+                 currentTileInfo != Database.TILEINFO_2 &&
+                 currentTileInfo != Database.TILEINFO_15 &&
+                 currentTileInfo != Database.TILEINFO_42 &&
                  blueWallBottom[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum + Database.TRUTH_DUNGEON_COLUMN].activeInHierarchy)
@@ -10240,7 +10277,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.Floor2FinalRoomOpen)
                 {
-                    objList[26 * Database.TRUTH_DUNGEON_COLUMN + 13].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13.Substring(0, Database.TILEINFO_13.Length - 4));
+                    objList[26 * Database.TRUTH_DUNGEON_COLUMN + 13].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
                     tileInfo2[26 * Database.TRUTH_DUNGEON_COLUMN + 13] = Database.TILEINFO_13;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea2_11)
@@ -10293,18 +10330,18 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.Floor1MindRoomOpen1)
                 {
-                    objList[29 * Database.TRUTH_DUNGEON_COLUMN + 50].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_21.Substring(0, Database.TILEINFO_21.Length - 4));
+                    objList[29 * Database.TRUTH_DUNGEON_COLUMN + 50].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_21);
                     tileInfo[29 * Database.TRUTH_DUNGEON_COLUMN + 50] = Database.TILEINFO_21;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.Floor2MindRoomOpen1)
                 {
-                    objList[5 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13.Substring(0, Database.TILEINFO_13.Length - 4));
+                    objList[5 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
                     tileInfo2[5 * Database.TRUTH_DUNGEON_COLUMN + 28] = Database.TILEINFO_13;
 
-                    objList[6 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13.Substring(0, Database.TILEINFO_13.Length - 4));
+                    objList[6 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
                     tileInfo2[6 * Database.TRUTH_DUNGEON_COLUMN + 28] = Database.TILEINFO_13;
 
-                    objList[7 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13.Substring(0, Database.TILEINFO_13.Length - 4));
+                    objList[7 * Database.TRUTH_DUNGEON_COLUMN + 28].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
                     tileInfo2[7 * Database.TRUTH_DUNGEON_COLUMN + 28] = Database.TILEINFO_13;
 
                     UpdateUnknownTileArea2_10();
@@ -10377,7 +10414,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor1)
                 {
-                    this.nowDecisionFloor1OpenDoor1 = true;
+                    this.nowDecisionFloor1OpenDoor = true;
                     GroundOne.DecisionSequence = 0;
                     GroundOne.DecisionMainMessage = "【　扉を開けますか？　】";
                     GroundOne.DecisionFirstMessage = "扉を開ける。";
@@ -10460,19 +10497,19 @@ namespace DungeonPlayer
                 {
                     if (GroundOne.WE.dungeonEvent237_Fail3)
                     {
-                        this.nowAgilityRoomCounter = 500;
+                        this.nowAgilityRoomCounter = 520;
                     }
                     else if (GroundOne.WE.dungeonEvent237_Fail2)
                     {
-                        this.nowAgilityRoomCounter = 470;
+                        this.nowAgilityRoomCounter = 490;
                     }
                     else if (GroundOne.WE.dungeonEvent237_Fail1)
                     {
-                        this.nowAgilityRoomCounter = 440;
+                        this.nowAgilityRoomCounter = 460;
                     }
                     else
                     {
-                        this.nowAgilityRoomCounter = 410;
+                        this.nowAgilityRoomCounter = 440;
                     }
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStop)
@@ -10507,6 +10544,27 @@ namespace DungeonPlayer
                     JumpToLocation(47, -34, true);
                     GroundOne.PlaySoundEffect(Database.SOUND_ENEMY_ATTACK1);
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonAgilitySecretOpen)
+                {
+                    objList[36 * Database.TRUTH_DUNGEON_COLUMN + 59].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_21);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor2)
+                {
+                    this.nowDecisionFloor2OpenDoor = true;
+                    GroundOne.DecisionSequence = 0;
+                    GroundOne.DecisionMainMessage = "【　扉を開けますか？　】";
+                    GroundOne.DecisionFirstMessage = "扉を開ける。";
+                    GroundOne.DecisionSecondMessage = "扉を開けず、他を探す。";
+                    this.Filter.SetActive(true);
+                    SceneDimension.CallTruthDecision(this);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Floor2DownstairGateOpen)
+                {
+                    OpenTheDoor(2, new Vector3(16, -26, 0));
+                    OpenTheDoor(1, new Vector3(17, -26, 0));
+                    UpdateUnknownTile();
+                }
+
                   
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "")

@@ -1990,8 +1990,9 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "形成消失" || player.StackCommandString == "形成消失")
                                 {
                                     txtBattleMessage.text = txtBattleMessage.text.Insert(0, "【沈降せし者】ディープシーは、その場より消えさった。\r\n");
-                                    System.Threading.Thread.Sleep(2000);
+                                    //System.Threading.Thread.Sleep(2000);
                                     endBattleForMatrixDragonEnd = true;
+                                    Debug.Log("endBattleForMatrixDragonEnd is now true ok");
                                 }
                                 else if (player.ActionLabel.text == "無音の呼び声")
                                 {

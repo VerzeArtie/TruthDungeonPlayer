@@ -134,7 +134,10 @@ namespace DungeonPlayer
             DungeonAgilityRoomFail3,
             DungeonAgilityRoomFail4,
             DungeonAgilityRoomFail5,
+            DungeonAgilitySecretOpen,
             Floor2AgilityRoomJudgeDirection,
+            DecisionOpenDoor2,
+            Floor2DownstairGateOpen,
             Ending,
         }
 
@@ -9988,7 +9991,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE.dungeonEvent250_SlayBoss)
             {
-                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(Database.ENEMY_BRILLIANT_SEA_PRINCE); eventList.Add(ActionEvent.EncountBoss);
             }
@@ -10142,7 +10145,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE.dungeonEvent251_SlayBoss)
             {
-                messageList.Add("アイン：っしゃ、ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+                messageList.Add("アイン：っしゃ、ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN); eventList.Add(ActionEvent.EncountBoss);
             }
@@ -10253,7 +10256,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE.dungeonEvent252_SlayBoss)
             {
-                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(Database.ENEMY_SHELL_SWORD_KNIGHT); eventList.Add(ActionEvent.EncountBoss);
             }
@@ -10375,7 +10378,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE.dungeonEvent253_SlayBoss)
             {
-                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(Database.ENEMY_JELLY_EYE_BRIGHT_RED); eventList.Add(ActionEvent.EncountBoss);
             }
@@ -10513,7 +10516,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE.dungeonEvent254_SlayBoss)
             {
-                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(Database.ENEMY_SEA_STAR_ORIGIN_KING); eventList.Add(ActionEvent.EncountBoss);
             }
@@ -10659,7 +10662,7 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE.dungeonEvent255_SlayBoss)
             {
-                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.EncountBoss);
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(Database.ENEMY_BOSS_LEVIATHAN); eventList.Add(ActionEvent.EncountBoss);
             }
@@ -11550,21 +11553,439 @@ namespace DungeonPlayer
         #region "技の部屋、隠し通路発見"
         public static void Message12065(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent258)
+            {
+                GroundOne.WE.dungeonEvent258 = true;
+
+                messageList.Add("アイン：よおし来た！　隠し通路発見っと！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：驚いたわ・・・見事な執念よね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あると思ったぜ、さすがにここはな。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：一旦諦めかけてたヤツがほざいてんじゃねぇ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っぐ・・・確かに・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：この先、てめぇ次第な面がある。何とかしてみろ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、あぁ分かった。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：何であるって思ったのよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そりゃあ・・・何というか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：答えにくいなら別にいいわよ。何となくでしょ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、あぁ。そうそう、何となくだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：せっかく見つけたんだし、進みましょ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、行ってみようぜ！"); eventList.Add(ActionEvent.None);
+                }
+
+                // ２階、技の部屋、隠し通路の壁解除
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonAgilitySecretOpen);
+            }
         }
         #endregion
         #region "３階階段直前"
         public static void Message12066(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent262)
+            {
+                GroundOne.WE.dungeonEvent262 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic16);
+
+                messageList.Add("アイン：っな・・・扉！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ボスは倒したわよね？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ。どう考えてもあのデカイ海主が最後だろうな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：私もマップを作ってきたけど、この先あるとしたら階段しか考えられないわ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・どうする・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DecisionOpenDoor2);
+            }
+            else
+            {
+                if (!GroundOne.WE.dungeonEvent263_KeyOpen)
+                {
+                    messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.PlayMusic16);
+
+                    messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DecisionOpenDoor2);
+                }
+            }
+        }
+
+        public static void Message12066_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ひょっとしてのまさかが、無いとは言い切れないが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よし、開けるぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.Floor2DownstairGateOpen);
+
+            messageList.Add("    【【【　その瞬間、アインは凄まじい精神干渉を感じ取った！　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな！？　何だこいつは！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　【　汝、何を願う？　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.ENEMY_DRAGON_TINKOU_DEEPSEA); eventList.Add(ActionEvent.EncountBoss);
+        }
+
+        public static void Message12066_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：もう少し周りを探索してみるか。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：的外れな探索するんじゃねぇぞ。分かってんな？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ分かってるって。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：そう？まあ、アインがそう言うなら別に構わないわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：すまねえな。じゃあ他を探索するか！"); eventList.Add(ActionEvent.None);
+            }
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+        }
+
+        public static void Message12066_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("   （ランディスはスゥっとした目でアインを遠くから見ている・・・）"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("ラナ：アイン・・・？ちょっと、そこのバカアイン！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・え・・・？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っと・・・よお、ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっと・・・アンタひょっとして本当におかしくなったんじゃない？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、ラナ。今さ、無茶苦茶デカイ竜が俺の前に現れたんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そんなものどこにも居ないわよ。アンタがそこでボーっとしてただけよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、何かそんな気はしたんだが、やっぱりそうなのか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何かこう・・・デカイ竜がさ。声をかけてきたんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、本当に大丈夫なの？　少し心配なんだけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・いや。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、悪い悪い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+
+            messageList.Add("アイン：っさてと、行こうぜ階段！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：え、大丈夫なの？　ホントに？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、見ての通りカラっと元気さ！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：カラっとねえ・・・心配して損しちゃったかも、ハアァァ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや悪かったって。本当に何ともねえから。　っさ、行こうぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、まあ分かったわ。早く降りて、街に戻りましょ♪"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                messageList.Add("ランディス：ボーっとしてて、足踏み外すのがオチだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：な、わけねえって！っさ、師匠も行こうぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ランディス：ッカ、急に元気になりやがって、好きにしろ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：悪い悪い！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            }
+            messageList.Add("アイン：おし、じゃあ階段を降りるとするぜ！"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE.dungeonEvent263_KeyOpen = true;
         }
         #endregion
         #region "下り階段"
         public static void Message12067(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(Database.Message_GotoDownstair); eventList.Add(ActionEvent.YesNoGotoDungeon);
+        }
+        public static void Message12067_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：おし、２階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
         }
         #endregion
         #region "記憶の回想"
         public static void Message12068(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.TruthRecollection2 == false)
+            {
+                GroundOne.WE2.TruthRecollection2 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+                
+                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　どこで落としたんだ？ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　盗まれたのだとしたら、どこだ？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
+
+                messageList.Add("　　アイン：しまった！！無くしちまった！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：いつ頃無くしたのよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いや、それが・・・２階を進めてる時は確か持ってたんだよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：いつ頃無くしたのかを聞いてるのよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いつ頃・・・いつ頃・・・。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：２階の時は持ってた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『ッドグシィィァ！！！』（ラナのアルバトロスキックがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：い、いやいや・・・本当思いだせないんだって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何せあの剣はさ、持った感じがしないというかなんというか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いつもと持った時の感触が何か違うなって気はしてたんだが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：それって、無くしたんじゃなくて、すり替えられたって事じゃないの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：おお！　その通り！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『ズゴゴゴオオォォン！！！』（ラナの千手観音ブローがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：グ・・グオオォォォ・・・わ、悪かったって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：じゃあ、盗まれたあるいはすり替えられたとしたら、どこで？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それもわかれば苦労しねえんだけど・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：でも、おかしいわよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何がだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：それ、相当おかしいわよ、だって・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：アインって、剣は常に手元に置いておく方でしょ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、まあそうだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：褒めるのはシャクに障るけど・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：アインが持っている剣をすり替えるなんて、そんな簡単な事じゃないと思うんだけど。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そうか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：そうよ。バカアインは、何だかんだ言っても気配察知は得意でしょ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：バカそうに見えて、油断らしい油断も見当たらないわけだし。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：まあ、そこら辺のゴロツキに取られるほど遅れは取るつもりはねえな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：でも、確かにすり替えられたんだって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：ひょっとしたら顔見知りにやられたんじゃないの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：顔見知りだったら少し気を許した状態になってるでしょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：まさか顔見知りがそんな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：イイから、少しだけ思い返してみなさいよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：知り合いの名前を言ってみなさいよ、ッホラホラ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナだろ、ボケ師匠に、ガンツ伯父さん、ハンナおばさん・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：DUEL闘技場の受付さん、カールハンツ先生・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それに街の皆・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それから・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add("　　アイン：ヴェルゼ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：【天空の翼】を保持する者"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ヴェルゼ・アーティ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+
+                messageList.Add("ラナ：ちょっと、アイン？　アインってば！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッハ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ホンットこんな所でなにッボーーーっとしてんのよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：い、いやいや、悪い悪い。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：妙に汗ビッショリになっちゃって、大丈夫なワケ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何か急に頭痛が激しくなってさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：過去の記憶が一気に蘇ってた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：そうなの。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：変な事言ってるかも知れないけどさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺、ヴェルゼ・アーティって人を知ってる気がする。"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：アーティの事か。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、ああ・・・ていうか面識はほとんどないんだけど"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：いや、面識はほとんどないんだけど"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：かすかに覚えてるというか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：何処で出会ったのよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：道草くってる時にその辺の通りでフラフラっと・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、そんなテキトーなわけ！？"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：その印象。確かなんだろうな？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、ああ・・・すまねえ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：いや、上等だ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：アイツの気配殺しは常人の域を超えてる。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ランディス：テメェの力量じゃかすかに覚えてるのでやっとだろ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そうなのか・・・"); eventList.Add(ActionEvent.None);
+                }
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：コンタクトの目的は？"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：何でそのアーティさんと出くわしてたのよ？"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：何だっけ・・・確か・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：風だ。　優しい風が触れたかと感じた瞬間。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：隣に居たんだ、確か。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ダンジョンゲートの裏じゃなかったかな・・・どうだったっけ・・・"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：目的を聞いてんだぞボケ。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：う～ん、そうじゃなくて目的よ、目的。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：あ、ああそっか・・・う～ん・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『ヴェルゼ：アイン君、はじめまして。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『本名はVerze Artieって言うんだ。よろしくね。』　　"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：とか何とか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：普通の挨拶じゃない。何よそれ？？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・うおおぉぉぉ・・・そんな事言われても"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：すまねえ・・・"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE.AvailableThirdCharacter)
+                {
+                    messageList.Add("ランディス：いや、十分だ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ラナ、師匠。すまねえ、何か変な話になっちまって。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ラナ：う～ん、別に良いけど。あんまり会って無いみたいだし。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("ラナ：う～ん・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ねえ。ボスも倒してるワケだし、先に進みましょ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：３階への階段ってマップ上から見て、すぐソコよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：早い所３階に降りて、それで一回街に戻りましょ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうか、そうだよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：せっかく２階も終わりって所だ。３階行って一旦戻るとするか！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：私もさすがに疲れちゃった、アインあとはお願いね♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、了解！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+            }
         }
         #endregion
         #endregion

@@ -704,42 +704,56 @@ namespace DungeonPlayer
             if (this.nowAnimation)
             {
                 ExecAnimation();
+                Debug.Log("nowAnimation is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowStackAnimation)
             {
                 ExecStackAnimation();
+                Debug.Log("nowStackAnimation is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowAnimationMatrixTalk)
             {
                 ExecAnimationMessageFadeOut();
+                Debug.Log("nowAnimationMatrixTalk is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowAnimationSandGlass)
             {
                 ExecAnimationSandGlass();
+                Debug.Log("nowAnimationSandGlass is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowAnimationFinal)
             {
                 ExecAnimationFinalBattle();
+                Debug.Log("nowAnimationFinal is true then return");
                 return; // アニメーション表示中は停止させる。
             }
 
             if (this.nowExecutionWarpGate)
             {
                 ExecPlayWarpGate();
+                Debug.Log("nowExecutionWarpGate is true then return");
                 return; // ワープゲート実行中は停止させる。
             }
 
             // バトル終了条件が満たされている場合、バトル終了とする。
-            if (this.BattleEndFlag) { BattleEndPhase(); }
+            if (this.BattleEndFlag) 
+            {
+                Debug.Log("BattleEndFlag is true then return"); 
+                BattleEndPhase(); 
+            }
 
-            if (UpdatePlayerDeadFlag()) { return; }
-            if (this.endFlag) { return; } // 終了サインが出た場合、戦闘終了として待機する。
-            if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
-            if (this.endBattleForMatrixDragonEnd) { return; } // 戦闘終了サインにより、戦闘を抜ける。
+            if (UpdatePlayerDeadFlag()) { Debug.Log("UpdatePlayerDeadFlag is true then return"); return; }
+            if (this.endFlag) { Debug.Log("endFlag is true then return"); return; } // 終了サインが出た場合、戦闘終了として待機する。
+            if (this.gameStart == false) { Debug.Log("gameStart is false then return"); return; } // 戦闘開始サインが無い状態では、待機する。
+            if (this.endBattleForMatrixDragonEnd)
+            {
+                BattleEndPhase();
+                return;
+            } // 戦闘終了サインにより、戦闘を抜ける。
             #endregion
 
             #region "ゲージ位置"
@@ -3423,6 +3437,7 @@ namespace DungeonPlayer
             {
                 if (((TruthEnemyCharacter)player).AI_TacticsNumber == 5)
                 {
+                    ((TruthEnemyCharacter)player).AI_TacticsNumber = 6;
                     ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.SpecialSkill, "形成消失");
                 }
             }
@@ -7110,30 +7125,31 @@ namespace DungeonPlayer
                 return;
             }
 
-            if (((GroundOne.MC.Level - this.ec1.Level <= -5) && AP.Math.RandomInteger(100) < 95) ||
-                ((GroundOne.MC.Level - this.ec1.Level == -4) && AP.Math.RandomInteger(100) < 90) ||
-                ((GroundOne.MC.Level - this.ec1.Level == -3) && AP.Math.RandomInteger(100) < 80) ||
-                ((GroundOne.MC.Level - this.ec1.Level == -2) && AP.Math.RandomInteger(100) < 70) ||
-                ((GroundOne.MC.Level - this.ec1.Level == -1) && AP.Math.RandomInteger(100) < 70) ||
-                ((GroundOne.MC.Level - this.ec1.Level == 0) && AP.Math.RandomInteger(100) < 50) ||
-                ((GroundOne.MC.Level - this.ec1.Level == 1) && AP.Math.RandomInteger(100) < 40) ||
-                ((GroundOne.MC.Level - this.ec1.Level == 2) && AP.Math.RandomInteger(100) < 30) ||
-                ((GroundOne.MC.Level - this.ec1.Level == 3) && AP.Math.RandomInteger(100) < 20) ||
-                ((GroundOne.MC.Level - this.ec1.Level == 4) && AP.Math.RandomInteger(100) < 10) ||
-                ((GroundOne.MC.Level - this.ec1.Level >= 5) && AP.Math.RandomInteger(100) < 5)
-                )
-            {
-                UpdateBattleText("逃げようとして、敵に追いつかれた！　パーティ全員にスタン効果が発生！\r\n");
-                List<MainCharacter> group = new List<MainCharacter>();
-                if ((GroundOne.MC != null) && (!GroundOne.MC.Dead)) { group.Add(GroundOne.MC); }
-                if ((GroundOne.SC != null) && (!GroundOne.SC.Dead)) { group.Add(GroundOne.SC); }
-                if ((GroundOne.TC != null) && (!GroundOne.TC.Dead)) { group.Add(GroundOne.TC); }
-                for (int ii = 0; ii < group.Count; ii++)
-                {
-                    NowStunning(group[ii], group[ii], 1, true);
-                }
-                return;
-            }
+            // debug
+            //if (((GroundOne.MC.Level - this.ec1.Level <= -5) && AP.Math.RandomInteger(100) < 95) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == -4) && AP.Math.RandomInteger(100) < 90) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == -3) && AP.Math.RandomInteger(100) < 80) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == -2) && AP.Math.RandomInteger(100) < 70) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == -1) && AP.Math.RandomInteger(100) < 70) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == 0) && AP.Math.RandomInteger(100) < 50) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == 1) && AP.Math.RandomInteger(100) < 40) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == 2) && AP.Math.RandomInteger(100) < 30) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == 3) && AP.Math.RandomInteger(100) < 20) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level == 4) && AP.Math.RandomInteger(100) < 10) ||
+            //    ((GroundOne.MC.Level - this.ec1.Level >= 5) && AP.Math.RandomInteger(100) < 5)
+            //    )
+            //{
+            //    UpdateBattleText("逃げようとして、敵に追いつかれた！　パーティ全員にスタン効果が発生！\r\n");
+            //    List<MainCharacter> group = new List<MainCharacter>();
+            //    if ((GroundOne.MC != null) && (!GroundOne.MC.Dead)) { group.Add(GroundOne.MC); }
+            //    if ((GroundOne.SC != null) && (!GroundOne.SC.Dead)) { group.Add(GroundOne.SC); }
+            //    if ((GroundOne.TC != null) && (!GroundOne.TC.Dead)) { group.Add(GroundOne.TC); }
+            //    for (int ii = 0; ii < group.Count; ii++)
+            //    {
+            //        NowStunning(group[ii], group[ii], 1, true);
+            //    }
+            //    return;
+            //}
 
             txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは逃げ出した。\r\n");
             System.Threading.Thread.Sleep(1000);
@@ -7672,12 +7688,14 @@ namespace DungeonPlayer
 
         private void BattleEndPhase()
         {
+            Debug.Log("BattleEndPhase (S)");
             if (this.execBattleEndPhase == false)
             {
                 this.execBattleEndPhase = true;
             }
             else
             {
+                Debug.Log("BattleEndPhase already done...");
                 return;
             }
 
@@ -7695,6 +7713,7 @@ namespace DungeonPlayer
             // 支配竜会話終了時、通常終了とみなす。
             if (this.endBattleForMatrixDragonEnd)
             {
+                Debug.Log("endBattleForMatrixDragonEnd true then exit ok");
                 GroundOne.BattleResult = GroundOne.battleResult.OK;
             }
             // [警告]万が一、相打ちの場合、プレイヤーの負けとみなす
