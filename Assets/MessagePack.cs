@@ -34,6 +34,7 @@ namespace DungeonPlayer
             IntelligenceRoomRequestInput2,
             IntelligenceRoomRequestInput3,
             IntelligenceRoomOpen2,
+            IntelligenceRoomGodSequence,
             IntelligenceRoomOpen3,
             StrengthRoomOpen1,
             StrengthRoomOpen2,
@@ -2747,7 +2748,6 @@ namespace DungeonPlayer
 					messageList.Add("アイン：どっち？どっちって言われると困るが・・・"); eventList.Add(ActionEvent.None);
 
                     messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
-                    //UpdateUnknownTile(); // after
 
 					messageList.Add("アイン：こっちじゃねえのか？"); eventList.Add(ActionEvent.None);
 
@@ -2994,10 +2994,6 @@ namespace DungeonPlayer
             }
             else
             {
-                Debug.Log("event221: " + GroundOne.WE.dungeonEvent221);
-                Debug.Log("event222: " + GroundOne.WE.dungeonEvent222);
-                Debug.Log("event223: " + GroundOne.WE.dungeonEvent223);
-                    
                 if (!GroundOne.WE.dungeonEvent221 || !GroundOne.WE.dungeonEvent222 || !GroundOne.WE.dungeonEvent223)
                 {
 					messageList.Add("　　　　『  ( >10 _6 <7 )  ( <11 ^3 )  ( _3 >7 )  』"); eventList.Add(ActionEvent.None);
@@ -3028,133 +3024,131 @@ namespace DungeonPlayer
 
 					messageList.Add(""); eventList.Add(ActionEvent.PlayMusic09);
 
-                    // after
-                    //using (TruthAnswer TA = new TruthAnswer())
-                    {
-                        //TA.ShowDialog();
-                        GroundOne.StopDungeonMusic();
-
-                        // after
-                        //if (TA.DialogResult == System.Windows.Forms.DialogResult.Yes)
-                        if (true)
-                        {
-                            GroundOne.WE2.TruthAnswerSuccess = true;
-                            GroundOne.WE.dungeonEvent224 = true;
-
-							messageList.Add("　　　　『空間が激しくフラッシュし、凝縮された空間へと連続的に小さくなる！！！』"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("　　　　『パパパパパパパ！！！！ッバシュウウウゥゥゥン！！！！！！！』"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("　　　　『空間は弾け飛んだ後、台座の前にアインの倒れた姿があった』"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：アイン！！大丈夫！？"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：あ、ああ。大丈夫だ。イッツツツ・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：何・・・心配させちゃってんのよ！！"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：アンタって本当にバカよ！！何やってんのよホントに！！！"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：わ、悪かったって。大丈夫だって言ってるじゃないか・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：叩くなっつうの、いってぇって・・・"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("アインとラナはしばらくその場で休息を取った。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-							messageList.Add("アイン：あの詩、全然聞いた事無いけどな。不思議と昔から知ってるような感じだったぜ。すげえ綺麗だった。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：でも、アインが選んでいた選択肢だけど"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：何だ、外から見えていたのか？"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：ええ、見えるってもんじゃなかったわよ。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：文字そのものが空中に浮いててビックリしたんだけど・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：っげ、そうだったのかよ？俺は全然周囲を把握できない状況だったしな。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：そんな事より、さっき順番に選択していた詩だけど。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：なんだ？"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：う～ん・・・多分私もその詩、知ってるわよ。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：マジかよ！？"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：私の母さんからよく聞かされていたわ。確かタイトルが・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：『神々の詩』よ。サブタイトルもあったと思うんだけど忘れちゃったわ。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：神々の詩？へえ、そんなタイトルなんだ・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：って、あれ？？　ラナ、お前知ってたのかよ！？"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：文字を見てたら偶然思い出したわ。思い出に近いって感じかしら。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：私とアインが小さい頃、私の母さんに歌ってもらったヤツよ。覚えてない？"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：そうだったっけ・・・全然覚えに無いが・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：そうだな、昔から知ってるって感覚は、そういう事か。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：なあ、一辺戻るか？　町へ。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：別に良いけど、どうかしたわけ？"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：何かちょっと気になる事があってな。途中で悪いけど。"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("ラナ：ん、良いわよ。じゃ戻りましょ♪"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：じゃ、使うぜ！　遠見の青水晶。"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
-                        }
-                        else
-                        {
-                            GroundOne.WE2.TruthAnswerFail = true;
-
-							messageList.Add("アイン：駄目だ・・・何かが違う・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：ひょっとして・・・今のは・・・確か・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：やべ・・・何か頭が・・・ッグ・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
-
-							messageList.Add(" ～　THE　END　～　（記憶の断片）"); eventList.Add(ActionEvent.None);
-
-                            // after
-                            //using (ESCMenu esc = new ESCMenu())
-                            //{
-                            //    esc.MC = this.MC;
-                            //    esc.SC = this.SC;
-                            //    esc.TC = this.TC;
-                            //    esc.WE = this.we;
-                            //    esc.KnownTileInfo = null;
-                            //    esc.KnownTileInfo2 = null;
-                            //    esc.KnownTileInfo3 = null;
-                            //    esc.KnownTileInfo4 = null;
-                            //    esc.KnownTileInfo5 = null;
-                            //    esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
-                            //    esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
-                            //    esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
-                            //    esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
-                            //    esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
-                            //    esc.StartPosition = FormStartPosition.CenterParent;
-                            //    esc.TruthStory = true;
-                            //    esc.OnlySave = true;
-                            //    esc.ShowDialog();
-                            //}
-
-                            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-                        }
-                    }
+                    messageList.Add(""); eventList.Add(ActionEvent.IntelligenceRoomGodSequence);
                 }
             }
+        }
+
+        public static void Message12004_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE2.TruthAnswerFail = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+			messageList.Add("アイン：駄目だ・・・何かが違う・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：ひょっとして・・・今のは・・・確か・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：やべ・・・何か頭が・・・ッグ・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add(" ～　THE　END　～　（記憶の断片）"); eventList.Add(ActionEvent.None);
+
+            // after
+            //using (ESCMenu esc = new ESCMenu())
+            //{
+            //    esc.MC = this.MC;
+            //    esc.SC = this.SC;
+            //    esc.TC = this.TC;
+            //    esc.WE = this.we;
+            //    esc.KnownTileInfo = null;
+            //    esc.KnownTileInfo2 = null;
+            //    esc.KnownTileInfo3 = null;
+            //    esc.KnownTileInfo4 = null;
+            //    esc.KnownTileInfo5 = null;
+            //    esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
+            //    esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
+            //    esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
+            //    esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
+            //    esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
+            //    esc.StartPosition = FormStartPosition.CenterParent;
+            //    esc.TruthStory = true;
+            //    esc.OnlySave = true;
+            //    esc.ShowDialog();
+            //}
+
+            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        }
+
+        public static void Message12004_Success(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            GroundOne.WE2.TruthAnswerSuccess = true;
+            GroundOne.WE.dungeonEvent224 = true;
+
+			messageList.Add("　　　　『空間が激しくフラッシュし、凝縮された空間へと連続的に小さくなる！！！』"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("　　　　『パパパパパパパ！！！！ッバシュウウウゥゥゥン！！！！！！！』"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("　　　　『空間は弾け飛んだ後、台座の前にアインの倒れた姿があった』"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：アイン！！大丈夫！？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：あ、ああ。大丈夫だ。イッツツツ・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：何・・・心配させちゃってんのよ！！"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：アンタって本当にバカよ！！何やってんのよホントに！！！"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：わ、悪かったって。大丈夫だって言ってるじゃないか・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：叩くなっつうの、いってぇって・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインとラナはしばらくその場で休息を取った。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+			messageList.Add("アイン：あの詩、全然聞いた事無いけどな。不思議と昔から知ってるような感じだったぜ。すげえ綺麗だった。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：でも、アインが選んでいた選択肢だけど"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：何だ、外から見えていたのか？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：ええ、見えるってもんじゃなかったわよ。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：文字そのものが空中に浮いててビックリしたんだけど・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：っげ、そうだったのかよ？俺は全然周囲を把握できない状況だったしな。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：そんな事より、さっき順番に選択していた詩だけど。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：なんだ？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：う～ん・・・多分私もその詩、知ってるわよ。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：マジかよ！？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：私の母さんからよく聞かされていたわ。確かタイトルが・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：『神々の詩』よ。サブタイトルもあったと思うんだけど忘れちゃったわ。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：神々の詩？へえ、そんなタイトルなんだ・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：って、あれ？？　ラナ、お前知ってたのかよ！？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：文字を見てたら偶然思い出したわ。思い出に近いって感じかしら。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：私とアインが小さい頃、私の母さんに歌ってもらったヤツよ。覚えてない？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：そうだったっけ・・・全然覚えに無いが・・・"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：そうだな、昔から知ってるって感覚は、そういう事か。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：なあ、一辺戻るか？　町へ。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：別に良いけど、どうかしたわけ？"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：何かちょっと気になる事があってな。途中で悪いけど。"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("ラナ：ん、良いわよ。じゃ戻りましょ♪"); eventList.Add(ActionEvent.None);
+
+			messageList.Add("アイン：じゃ、使うぜ！　遠見の青水晶。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
         }
 		#region "知の部屋、フェーズ１"
 		public static void Message12005(ref List<string> messageList, ref List<ActionEvent> eventList)
