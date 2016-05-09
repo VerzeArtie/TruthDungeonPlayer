@@ -157,6 +157,8 @@ namespace DungeonPlayer
         bool detectKeyUp = false; // ２階、技の部屋Ｃでキーを離した事を示すフラグ
         bool nowDecisionFloor2OpenDoor = false; // ２階ボスの後の扉を開く際のフラグ
 
+        int nowIntelligenceRoom = 0; // ２階、知の部屋レバー数値をインプットするためのフラグ
+
         private GameObject prefab_TileElement = null;
 
         // Use this for initialization
@@ -974,6 +976,48 @@ namespace DungeonPlayer
                     MessagePack.Message12066_3(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
+            }
+            else if (this.nowIntelligenceRoom == 1)
+            {
+                this.nowIntelligenceRoom = 0;
+                if (GroundOne.InputValue == 12569)
+                {
+                    GroundOne.WE.dungeonEvent216 = true;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent216 = false;
+                }
+                MessagePack.Message12008_4(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (this.nowIntelligenceRoom == 2)
+            {
+                this.nowIntelligenceRoom = 0;
+                if (GroundOne.InputValue == 847)
+                {
+                    GroundOne.WE.dungeonEvent217 = true;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent217 = false;
+                }
+                MessagePack.Message12008_4(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (this.nowIntelligenceRoom == 3)
+            {
+                this.nowIntelligenceRoom = 0;
+                if (GroundOne.InputValue == 30)
+                {
+                    GroundOne.WE.dungeonEvent218 = true;
+                }
+                else
+                {
+                    GroundOne.WE.dungeonEvent218 = false;
+                }
+                MessagePack.Message12008_4(ref nowMessage, ref nowEvent);
+                tapOK();
             }
             else if (this.nowDecisionFloor2EightAnswer == 1)
             {
@@ -6938,7 +6982,7 @@ namespace DungeonPlayer
                             tapOK();
                         }
                     #endregion
-                    #region "知の部屋、メイン看板、セカンド：下３上１２左８"
+                    #region "知の部屋、メイン看板、セカンド：下３０上１２５６９左８４７"
                         else if (!GroundOne.WE.dungeonEvent215)
                         {
                             MessagePack.Message12003(ref this.nowMessage, ref this.nowEvent);
@@ -6950,12 +6994,9 @@ namespace DungeonPlayer
                             tapOK();                            
                         }
                     #endregion
-                    #region "知の部屋、メイン看板、サード：( >10 _6 <7 )  ( <11 ~3 )  ( _3 >7 )"
-                        else if (GroundOne.WE.dungeonEvent215 && GroundOne.WE.dungeonEvent219 && !GroundOne.WE.dungeonEvent220)
-                        {
-                            MessagePack.Message12004(ref this.nowMessage, ref this.nowEvent);
-                            tapOK();
-                        }
+                    #region "知の部屋、メイン看板、サード：( >10 _6 <7 )  ( <11 ^3 )  ( _3 >7 )"
+                        MessagePack.Message12004(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
                         return true;
                     #endregion
                     #region "知の部屋、フェーズ１"
@@ -7008,95 +7049,95 @@ namespace DungeonPlayer
                     #endregion
                     #region "知の部屋、正しき順序フラグ"
                     case 18:
-                        MessagePack.Message12015(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 19:
-                        MessagePack.Message12015_2(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_2(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 20:
-                        MessagePack.Message12015_3(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_3(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 21:
-                        MessagePack.Message12015_4(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_4(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 22:
-                        MessagePack.Message12015_5(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_5(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 23:
-                        MessagePack.Message12015_6(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_6(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 24:
-                        MessagePack.Message12015_7(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_7(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 25:
-                        MessagePack.Message12015_8(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_8(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 26:
-                        MessagePack.Message12015_9(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_9(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 27:
-                        MessagePack.Message12015_10(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_10(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 28:
-                        MessagePack.Message12015_11(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_11(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 29:
-                        MessagePack.Message12015_12(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_12(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 30:
-                        MessagePack.Message12015_13(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_13(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 31:
-                        MessagePack.Message12015_14(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_14(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 32:
-                        MessagePack.Message12015_15(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_15(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 33:
-                        MessagePack.Message12015_16(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_16(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 34:
-                        MessagePack.Message12015_17(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_17(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 35:
-                        MessagePack.Message12015_18(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_18(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 36:
-                        MessagePack.Message12015_19(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_19(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 37:
-                        MessagePack.Message12015_20(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_20(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 38:
-                        MessagePack.Message12015_21(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_21(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 39:
-                        MessagePack.Message12015_22(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_22(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 40:
-                        MessagePack.Message12015_23(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message12011_23(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -10199,6 +10240,21 @@ namespace DungeonPlayer
 
                     OpenTheDoor(3, new Vector3(46, -7, 0));
                     OpenTheDoor(0, new Vector3(46, -8, 0));
+                }
+                else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomRequestInput1)
+                {
+                    this.nowIntelligenceRoom = 1;
+                    SceneDimension.CallTruthInputRequest(this);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomRequestInput2)
+                {
+                    this.nowIntelligenceRoom = 2;
+                    SceneDimension.CallTruthInputRequest(this);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomRequestInput3)
+                {
+                    this.nowIntelligenceRoom = 3;
+                    SceneDimension.CallTruthInputRequest(this);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomOpen2)
                 {

@@ -2622,6 +2622,7 @@ namespace DungeonPlayer
         public const string TruthSkillSpellDesc = @"TruthSkillSpellDesc";
         public const string TruthStatusPlayer = @"TruthStatusPlayer";
         public const string TruthWill = @"TruthWill";
+        public const string TruthRequestInput = @"TruthInputRequest";
         public const string SaveLoad = @"SaveLoad";
 
         // コマンドタイミングのアイコン(add unity)

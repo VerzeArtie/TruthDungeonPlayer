@@ -33,6 +33,12 @@ namespace DungeonPlayer
             GroundOne.Parent.Clear();
         }
 
+        public static void CallTruthInputRequest(MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.TruthRequestInput);
+        }
+
         public static void CallTruthDuelPlayerStatus(MotherForm scene, string duelPlayerName)
         {
             GroundOne.Parent.Add(scene);

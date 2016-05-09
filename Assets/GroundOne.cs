@@ -136,6 +136,9 @@ namespace DungeonPlayer
         public static bool Decision2_SelectPermutation = false;
         public static bool PermutationAnswer = false;
 
+        // TruthInputRequest
+        public static int InputValue = 0;
+
         // TruthItemDesc
         public static string ItemNameTitle = string.Empty;
 
