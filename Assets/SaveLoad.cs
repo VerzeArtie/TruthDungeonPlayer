@@ -1399,30 +1399,28 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
-            Debug.Log("tapExit (S)");
-
             if (this.systemMessage.text == this.MESSAGE_1 || this.systemMessage.text == this.MESSAGE_2)
             {
                 HideAllChild();
             }
             else if (this.nowAutoKill)
             {
-                Debug.Log("tapExit auto kill: " + GroundOne.Parent.Count);
-                if (GroundOne.Parent.Count > 0)
-                {
-                    GroundOne.Parent[GroundOne.Parent.Count - 1].NextScene();
-                }
-            }
-            else
-            {
                 if (GroundOne.AfterBacktoTitle)
                 {
                     SceneDimension.JumpToTitle();
                 }
-                else
+                else if (GroundOne.Parent.Count > 0)
                 {
-                    SceneDimension.Back(this);
+                    GroundOne.Parent[GroundOne.Parent.Count - 1].NextScene();
                 }
+            }
+            else if (GroundOne.AfterBacktoTitle)
+            {
+                SceneDimension.JumpToTitle();
+            }
+            else
+            {
+                SceneDimension.Back(this);
             }
         }
     }

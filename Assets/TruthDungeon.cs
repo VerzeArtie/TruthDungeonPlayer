@@ -10519,6 +10519,10 @@ namespace DungeonPlayer
                     this.Filter.SetActive(true);
                     SceneDimension.CallTruthDecision(this);
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonBadEnd)
+                {
+                    SceneDimension.CallSaveLoad(this, true, true);
+                }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonGetTreasure)
                 {
                     // todo メッセージ進行中の宝箱ゲットはどう実装するか？

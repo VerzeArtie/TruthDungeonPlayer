@@ -3049,30 +3049,7 @@ namespace DungeonPlayer
 
 			messageList.Add(" ～　THE　END　～　（記憶の断片）"); eventList.Add(ActionEvent.None);
 
-            // after
-            //using (ESCMenu esc = new ESCMenu())
-            //{
-            //    esc.MC = this.MC;
-            //    esc.SC = this.SC;
-            //    esc.TC = this.TC;
-            //    esc.WE = this.we;
-            //    esc.KnownTileInfo = null;
-            //    esc.KnownTileInfo2 = null;
-            //    esc.KnownTileInfo3 = null;
-            //    esc.KnownTileInfo4 = null;
-            //    esc.KnownTileInfo5 = null;
-            //    esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
-            //    esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
-            //    esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
-            //    esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
-            //    esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
-            //    esc.StartPosition = FormStartPosition.CenterParent;
-            //    esc.TruthStory = true;
-            //    esc.OnlySave = true;
-            //    esc.ShowDialog();
-            //}
-
-            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
         }
 
         public static void Message12004_Success(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -3100,7 +3077,7 @@ namespace DungeonPlayer
 
 			messageList.Add("アイン：叩くなっつうの、いってぇって・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アインとラナはしばらくその場で休息を取った。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            messageList.Add("アインとラナはしばらくその場で休息を取った。"); eventList.Add(ActionEvent.None);
 
 			messageList.Add("アイン：あの詩、全然聞いた事無いけどな。不思議と昔から知ってるような感じだったぜ。すげえ綺麗だった。"); eventList.Add(ActionEvent.None);
 

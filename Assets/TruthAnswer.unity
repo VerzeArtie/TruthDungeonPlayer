@@ -261,7 +261,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.9803922, b: 0.80392164, a: 1}
     m_HighlightedColor: {r: 1, g: 0.86764705, b: 0.86764705, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9803922, b: 0.80392164, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -992,7 +992,6 @@ GameObject:
   - 20: {fileID: 684662765}
   - 92: {fileID: 684662764}
   - 124: {fileID: 684662763}
-  - 81: {fileID: 684662762}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1000,13 +999,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &684662762
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 684662761}
-  m_Enabled: 1
 --- !u!124 &684662763
 Behaviour:
   m_ObjectHideFlags: 0
@@ -3380,3 +3372,19 @@ MonoBehaviour:
   - {fileID: 938940010}
   - {fileID: 1165623565}
   - {fileID: 1470184295}
+  textList:
+  - {fileID: 1674351260}
+  - {fileID: 333592608}
+  - {fileID: 1936250166}
+  - {fileID: 838376458}
+  - {fileID: 190684325}
+  - {fileID: 338430817}
+  - {fileID: 1110102680}
+  - {fileID: 982308744}
+  - {fileID: 356271309}
+  - {fileID: 1669483757}
+  - {fileID: 864173410}
+  - {fileID: 189262354}
+  - {fileID: 1214820186}
+  - {fileID: 1283374916}
+  - {fileID: 1615137381}

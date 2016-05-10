@@ -128,7 +128,7 @@ namespace DungeonPlayer
         public static Color SlateGray = new Color(112, 128, 144);
         public static Color LightslateGray = new Color(119, 136, 153);
         public static Color Indigo = new Color(75, 0, 130);
-        public static Color DarkSlateBlue = new Color(72, 61, 139);
+        public static Color DarkSlateBlue = new Color(72.0f / 255.0f, 61.0f / 255.0f, 139.0f / 255.0f);
         public static Color Midnightblue = new Color(25, 25, 112);
         public static Color Navy = new Color(0, 0, 128);
         public static Color DarkBlue = new Color(0, 0, 139);
