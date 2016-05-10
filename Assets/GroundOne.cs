@@ -139,6 +139,9 @@ namespace DungeonPlayer
         // TruthInputRequest
         public static int InputValue = 0;
 
+        // TruthAnswer
+        public static bool GodSeuqence = false;
+        
         // TruthItemDesc
         public static string ItemNameTitle = string.Empty;
 
