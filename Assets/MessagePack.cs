@@ -21562,6 +21562,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：行くぜ！"); eventList.Add(ActionEvent.None);
 
+            GroundOne.WE.TruthDuelMatch5 = true;
         }
         #endregion
 
