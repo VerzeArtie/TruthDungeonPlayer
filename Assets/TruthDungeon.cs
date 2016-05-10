@@ -159,6 +159,8 @@ namespace DungeonPlayer
 
         int nowIntelligenceRoom = 0; // ２階、知の部屋レバー数値をインプットするためのフラグ
 
+        bool nowIntelligenceRoomGodSequence = false; // ２階、知の部屋、神々の試練を実行中
+
         private GameObject prefab_TileElement = null;
 
         // Use this for initialization
@@ -1018,6 +1020,21 @@ namespace DungeonPlayer
                 }
                 MessagePack.Message12008_4(ref nowMessage, ref nowEvent);
                 tapOK();
+            }
+            else if (this.nowIntelligenceRoomGodSequence)
+            {
+                this.nowIntelligenceRoomGodSequence = false;
+
+                if (!GroundOne.GodSeuqence)
+                {
+                    MessagePack.Message12004_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else
+                {
+                    MessagePack.Message12004_Success(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
             }
             else if (this.nowDecisionFloor2EightAnswer == 1)
             {
@@ -10255,6 +10272,11 @@ namespace DungeonPlayer
                 {
                     this.nowIntelligenceRoom = 3;
                     SceneDimension.CallTruthInputRequest(this);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomGodSequence)
+                {
+                    this.nowIntelligenceRoomGodSequence = true;
+                    SceneDimension.CallTruthAnswer(this);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.IntelligenceRoomOpen2)
                 {
