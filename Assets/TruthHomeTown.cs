@@ -139,13 +139,6 @@ namespace DungeonPlayer
                 this.firstDay = GroundOne.WE.GameDay; // 休息したかどうかのフラグに関わらず町に訪れた最初の日を記憶します。
             }
 
-            if (GroundOne.BattleResult != GroundOne.battleResult.None)
-            {
-                // after
-                //MessagePack.Message70012_2(ref nowMessage, ref nowEvent, result);
-                //MessagePack.Message70013_2(ref nowMessage, ref nowEvent, result);
-            }
-
             GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
         }
         
@@ -180,26 +173,7 @@ namespace DungeonPlayer
             if (this.firstAction == false)
             {
                 this.firstAction = true;
-
-                // DUEL結果に応じた処理
-                // 再挑戦時、逃げた時、敗北した時
-                if ((GroundOne.BattleResult == GroundOne.battleResult.Retry) ||
-                    (GroundOne.BattleResult == GroundOne.battleResult.Abort) ||
-                    (GroundOne.BattleResult == GroundOne.battleResult.Ignore))
-                {
-                    MessagePack.Message30003(ref nowMessage, ref nowEvent);
-                    NormalTapOK();
-                }
-                // 勝利した時
-                else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
-                {
-                    MessagePack.Message30004(ref nowMessage, ref nowEvent);
-                    NormalTapOK();
-                }
-                else
-                {
-                    ShownEvent();
-                }
+                ShownEvent();
             }
             if (this.panelMessage.gameObject.activeInHierarchy && btnOK.gameObject.activeInHierarchy)
             {
@@ -1271,12 +1245,6 @@ namespace DungeonPlayer
             SceneDimension.CallTruthBattleEnemy(this, true, false, false, false);
         }
 
-        private void BattleResult(bool duelWin)
-        {
-            MessagePack.Message89998_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, duelWin, this.fromGoDungeon);
-            NormalTapOK();
-        }
-
         private void BlackOut()
         {
             GroundOne.StopDungeonMusic();
@@ -2009,22 +1977,51 @@ namespace DungeonPlayer
                 this.nowAfterRestMessage = false;
                 ExecRestInn();
             }
-            else if (this.nowDuel && !this.nowTalkingOlRandis)
+            else if (this.nowDuel)
             {
                 Debug.Log("SceneBack (nowDuel)");
 
                 this.nowDuel = false;
                 bool duelWin = false;
+
                 if (GroundOne.BattleResult == GroundOne.battleResult.OK)
                 {
-                    Debug.Log("duelWin is true");
                     duelWin = true;
                 }
-                else
+                GroundOne.BattleResult = GroundOne.battleResult.None;
+
+                // DUEL対戦相手、および、勝敗結果に応じた処理
+                if (GroundOne.enemyName1 == Database.DUEL_OL_LANDIS)
                 {
-                    Debug.Log("duelWin is still false...");
+                    MessagePack.Message80004_74(ref nowMessage, ref nowEvent, duelWin);
+                    NormalTapOK();
                 }
-                BattleResult(duelWin);
+                else if (GroundOne.enemyName1 == Database.DUEL_SINIKIA_KAHLHANZ)
+                {
+                    MessagePack.Message70012_2(ref nowMessage, ref nowEvent, duelWin);
+                }
+                else if (GroundOne.enemyName1 == Database.VERZE_ARTIE)
+                {
+                    MessagePack.Message70013_2(ref nowMessage, ref nowEvent, duelWin);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_RANA_AMILIA)
+                {
+                    if (duelWin)
+                    {
+                        MessagePack.Message30004(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message30003(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else // 通常のDUEL闘技場の対戦相手
+                {
+                    MessagePack.Message89998_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, duelWin, this.fromGoDungeon);
+                    NormalTapOK();
+                }
             }
             else if (this.nowTalkingOlRandis)
             {
@@ -2497,16 +2494,6 @@ namespace DungeonPlayer
                         MessagePack.Message80004_73(ref nowMessage, ref nowEvent);
                         NormalTapOK();
                     }
-                }
-                else if (GroundOne.DecisionSequence == 58)
-                {
-                    bool duelWin = false;
-                    if (GroundOne.BattleResult == GroundOne.battleResult.OK)
-                    {
-                        duelWin = true;
-                    }
-                    MessagePack.Message80004_74(ref nowMessage, ref nowEvent, duelWin);
-                    NormalTapOK();
                 }
                 else
                 {
