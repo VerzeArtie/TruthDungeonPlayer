@@ -1255,9 +1255,9 @@ namespace DungeonPlayer
         public const string TILEINFO_34 = @"Tile1-NumT3";
         public const string TILEINFO_35 = @"Tile1-WallLB-NumT4";
         public const string TILEINFO_36 = @"Tile1-Wall-NumT5";
-        public const string TILEINFO_37 = @"Tile1-WallLB-NumT6";
+        public const string TILEINFO_37 = @"Tile1-WallRB-NumT6";
         public const string TILEINFO_38 = @"Tile1-WallT-NumT7";
-        public const string TILEINFO_39 = @"Tile1-WallR-NumT8";
+        public const string TILEINFO_39 = @"Tile1-Wall-NumT8";
 
         public const string TILEINFO_40 = @"Tile1-Blue";
         public const string TILEINFO_41 = @"Tile1-Black";

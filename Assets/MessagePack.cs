@@ -4176,31 +4176,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4238,31 +4214,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4299,31 +4251,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4359,31 +4287,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4419,31 +4323,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4478,31 +4358,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4537,31 +4393,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4595,31 +4427,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4652,31 +4460,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -4709,31 +4493,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -4765,31 +4525,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4820,31 +4556,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -4875,31 +4587,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -4929,31 +4617,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -4982,31 +4646,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -5035,31 +4675,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -5087,31 +4703,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
         }
@@ -5138,31 +4730,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -5188,31 +4756,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -5237,31 +4781,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -5286,31 +4806,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -5334,31 +4830,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -5381,31 +4853,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }            
         }
@@ -5448,7 +4896,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：ん？　これは・・・？"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("【" + Database.RARE_SOUJUTENSHI_NO_GOFU + "】を手に入れた。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+                    messageList.Add("【" + Database.RARE_SOUJUTENSHI_NO_GOFU + "】を手に入れた。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("アイン：何だこれ・・・"); eventList.Add(ActionEvent.None);
 
@@ -5491,37 +4939,49 @@ namespace DungeonPlayer
 
                     messageList.Add("ラナ：ハアアァァ・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
+                    messageList.Add(Database.RARE_SOUJUTENSHI_NO_GOFU); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
                 }
                 else
                 {
-                    GroundOne.WE.dungeonEvent230_0 = false;
-                    GroundOne.WE.dungeonEvent230_01 = false;
-                    GroundOne.WE.dungeonEvent230_1 = false;
-                    GroundOne.WE.dungeonEvent230_11 = false;
-                    GroundOne.WE.dungeonEvent230_12 = false;
-                    GroundOne.WE.dungeonEvent230_2 = false;
-                    GroundOne.WE.dungeonEvent230_21 = false;
-                    GroundOne.WE.dungeonEvent230_3 = false;
-                    GroundOne.WE.dungeonEvent230_31 = false;
-                    GroundOne.WE.dungeonEvent230_32 = false;
-                    GroundOne.WE.dungeonEvent230_4 = false;
-                    GroundOne.WE.dungeonEvent230_41 = false;
-                    GroundOne.WE.dungeonEvent230_42 = false;
-                    GroundOne.WE.dungeonEvent230_5 = false;
-                    GroundOne.WE.dungeonEvent230_51 = false;
-                    GroundOne.WE.dungeonEvent230_52 = false;
-                    GroundOne.WE.dungeonEvent230_6 = false;
-                    GroundOne.WE.dungeonEvent230_61 = false;
-                    GroundOne.WE.dungeonEvent230_62 = false;
-                    GroundOne.WE.dungeonEvent230_63 = false;
-                    GroundOne.WE.dungeonEvent230_64 = false;
-                    GroundOne.WE.dungeonEvent230_7 = false;
-                    GroundOne.WE.dungeonEvent230_71 = false;
-                    GroundOne.WE.dungeonEvent230_72 = false;
-                    GroundOne.WE.dungeonEvent230_8 = false;
+                    messageList.Add("アイン：・・・特に扉はまだ開かないみたいだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：おかしいわね・・・道順を間違えたのかしら。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ、もういっぺん看板の所に戻って最初からやってみようぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ええ、分かったわ。"); eventList.Add(ActionEvent.None);
+
+                    ResetIntelligenceRoomNumberFlag();
                 }
             }
+        }
+        private static void ResetIntelligenceRoomNumberFlag()
+        {
+            GroundOne.WE.dungeonEvent230_0 = false;
+            GroundOne.WE.dungeonEvent230_01 = false;
+            GroundOne.WE.dungeonEvent230_1 = false;
+            GroundOne.WE.dungeonEvent230_11 = false;
+            GroundOne.WE.dungeonEvent230_12 = false;
+            GroundOne.WE.dungeonEvent230_2 = false;
+            GroundOne.WE.dungeonEvent230_21 = false;
+            GroundOne.WE.dungeonEvent230_3 = false;
+            GroundOne.WE.dungeonEvent230_31 = false;
+            GroundOne.WE.dungeonEvent230_32 = false;
+            GroundOne.WE.dungeonEvent230_4 = false;
+            GroundOne.WE.dungeonEvent230_41 = false;
+            GroundOne.WE.dungeonEvent230_42 = false;
+            GroundOne.WE.dungeonEvent230_5 = false;
+            GroundOne.WE.dungeonEvent230_51 = false;
+            GroundOne.WE.dungeonEvent230_52 = false;
+            GroundOne.WE.dungeonEvent230_6 = false;
+            GroundOne.WE.dungeonEvent230_61 = false;
+            GroundOne.WE.dungeonEvent230_62 = false;
+            GroundOne.WE.dungeonEvent230_63 = false;
+            GroundOne.WE.dungeonEvent230_64 = false;
+            GroundOne.WE.dungeonEvent230_7 = false;
+            GroundOne.WE.dungeonEvent230_71 = false;
+            GroundOne.WE.dungeonEvent230_72 = false;
+            GroundOne.WE.dungeonEvent230_8 = false;
         }
         #endregion
         #region "技の部屋、エリアＡ"

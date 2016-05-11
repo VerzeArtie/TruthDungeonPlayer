@@ -293,6 +293,7 @@ namespace DungeonPlayer
                 {
                     current = Database.TILEINFO_10_2;
                 }
+
                 this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current);
                 this.unknownTile.Add(Instantiate(this.prefab_TileElement, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
             }
@@ -772,6 +773,43 @@ namespace DungeonPlayer
                 {
                     current = Database.TILEINFO_21;
                 }
+                // ２階数字タイル
+                if (GroundOne.WE.DungeonArea == 2)
+                {
+                    if (ii == 11 * Database.TRUTH_DUNGEON_COLUMN + 42)
+                    {
+                        current = Database.TILEINFO_32;
+                    }
+                    if (ii == 13 * Database.TRUTH_DUNGEON_COLUMN + 38)
+                    {
+                        current = Database.TILEINFO_33;
+                    }
+                    if (ii == 15 * Database.TRUTH_DUNGEON_COLUMN + 40)
+                    {
+                        current = Database.TILEINFO_34;
+                    }
+                    if (ii == 19 * Database.TRUTH_DUNGEON_COLUMN + 38)
+                    {
+                        current = Database.TILEINFO_35;
+                    }
+                    if (ii == 17 * Database.TRUTH_DUNGEON_COLUMN + 42)
+                    {
+                        current = Database.TILEINFO_36;
+                    }
+                    if (ii == 19 * Database.TRUTH_DUNGEON_COLUMN + 46)
+                    {
+                        current = Database.TILEINFO_37;
+                    }
+                    if (ii == 11 * Database.TRUTH_DUNGEON_COLUMN + 44)
+                    {
+                        current = Database.TILEINFO_38;
+                    }
+                    if (ii == 15 * Database.TRUTH_DUNGEON_COLUMN + 46)
+                    {
+                        current = Database.TILEINFO_39;
+                    }
+                }
+
                 // ２階、心の部屋。心層の壁解除
                 if (GroundOne.WE.DungeonArea == 2 && GroundOne.WE.dungeonEvent249)
                 {
@@ -1924,69 +1962,52 @@ namespace DungeonPlayer
             // タイル情報にある壁情報を取得して
             // 壁情報とプレイヤー動作方向に対して壁情報が一致する場合
             string WallHitMessage = "アイン：いてぇ！";
-            //if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd) { WallHitMessage = "アイン：・・・"; }
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd) { WallHitMessage = "アイン：・・・"; }
             #region "Wall判定"
             switch (targetTileInfo[Method.GetTileNumber(Player.transform.position)])
             {
                 case Database.TILEINFO_13:
+                    // とくになし
                     break;
                 case Database.TILEINFO_24:
                     if (direction == 0)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_16:
                     if (direction == 1)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_21:
                     if (direction == 2)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_14:
                     if (direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_20:
                     if (direction == 2)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_42:
                     if (direction == 2)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
@@ -2005,10 +2026,7 @@ namespace DungeonPlayer
                         }
                         else
                         {
-                            this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                            tapOK();
-                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                            CancelKeyDownMovement();
+                            WallHit(WallHitMessage);
                             return true;
                         }
                     }
@@ -2023,10 +2041,7 @@ namespace DungeonPlayer
                         }
                         else
                         {
-                            this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                            tapOK();
-                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                            CancelKeyDownMovement();
+                            WallHit(WallHitMessage);
                             return true;
                         }
                     }
@@ -2046,10 +2061,7 @@ namespace DungeonPlayer
                         }
                         else
                         {
-                            this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                            tapOK();
-                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                            CancelKeyDownMovement();
+                            WallHit(WallHitMessage);
                             return true;
                         }
                     }
@@ -2079,10 +2091,7 @@ namespace DungeonPlayer
                         }
                         else
                         {
-                            this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                            tapOK();
-                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                            CancelKeyDownMovement();
+                            WallHit(WallHitMessage);
                             return true;
                         }
                     }
@@ -2112,10 +2121,7 @@ namespace DungeonPlayer
                         }
                         else
                         {
-                            this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                            tapOK();
-                            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                            CancelKeyDownMovement();
+                            WallHit(WallHitMessage);
                             return true;
                         }
                     }
@@ -2123,137 +2129,149 @@ namespace DungeonPlayer
                 case Database.TILEINFO_22:
                     if (direction == 2 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_28:
                     if (direction == 0 || direction == 1 || direction == 2)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_27:
                     if (direction == 0 || direction == 1 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_31:
                     if (direction == 0 || direction == 2 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_19:
                     if (direction == 1 || direction == 2 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_29:
                     if (direction == 0 || direction == 1 || direction == 2 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_6:
                     if (direction == 1 || direction == 2 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_7:
                     if (direction == 2 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_8:
                     if (direction == 0 || direction == 1 || direction == 2)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_5:
                     if (direction == 0 || direction == 2 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_3:
                     if (direction == 0)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_2:
                     if (direction == 1 || direction == 2 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
                     break;
                 case Database.TILEINFO_4:
                     if (direction == 0 || direction == 1 || direction == 3)
                     {
-                        this.nowMessage.Add(WallHitMessage); this.nowEvent.Add(MessagePack.ActionEvent.None);
-                        tapOK();
-                        GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
-                        CancelKeyDownMovement();
+                        WallHit(WallHitMessage);
                         return true;
                     }
+                    break;
+                case Database.TILEINFO_32:
+                    if (direction == 0)
+                    {
+                        WallHit(WallHitMessage);
+                        return true;
+                    }
+                    break;
+                case Database.TILEINFO_33:
+                    if (direction == 1)
+                    {
+                        WallHit(WallHitMessage);
+                        return true;
+                    }
+                    break;
+                case Database.TILEINFO_34:
+                    // とくになし
+                    break;
+                case Database.TILEINFO_35:
+                    if (direction == 1 || direction == 3)
+                    {
+                        WallHit(WallHitMessage);
+                        return true;
+                    }
+                    break;
+                case Database.TILEINFO_36:
+                    // とくになし
+                    break;
+                case Database.TILEINFO_37:
+                    if (direction == 2 || direction == 3)
+                    {
+                        WallHit(WallHitMessage);
+                        return true;
+                    }
+                    break;
+                case Database.TILEINFO_38:
+                    if (direction == 0)
+                    {
+                        WallHit(WallHitMessage);
+                        return true;
+                    }
+                    break;
+                case Database.TILEINFO_39:
+                    // とくになし
                     break;
             }
             #endregion
             UpdateMainMessage("", true, true);
             return false;
+        }
+
+        private void WallHit(string message)
+        {
+            CancelKeyDownMovement();
+            GroundOne.PlaySoundEffect(Database.SOUND_WALL_HIT);
+            this.mainMessage.text = message;
         }
 
         private bool CheckBlueWall(int direction) // 0:↑ 1:← 2:→ 3:↓
@@ -2565,6 +2583,8 @@ namespace DungeonPlayer
                  currentTileInfo != Database.TILEINFO_5 &&
                  currentTileInfo != Database.TILEINFO_4 &&
                  currentTileInfo != Database.TILEINFO_3 &&
+                 currentTileInfo != Database.TILEINFO_32 &&
+                 currentTileInfo != Database.TILEINFO_38 &&
                  blueWallTop[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum - Database.TRUTH_DUNGEON_COLUMN].activeInHierarchy)
@@ -2590,6 +2610,8 @@ namespace DungeonPlayer
                  currentTileInfo != Database.TILEINFO_4 &&
                  currentTileInfo != Database.TILEINFO_2 &&
                  currentTileInfo != Database.TILEINFO_20 &&
+                 currentTileInfo != Database.TILEINFO_33 &&
+                 currentTileInfo != Database.TILEINFO_35 &&
                  blueWallLeft[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum - 1].activeInHierarchy)
@@ -2617,6 +2639,7 @@ namespace DungeonPlayer
                  currentTileInfo != Database.TILEINFO_2 &&
                  currentTileInfo != Database.TILEINFO_20 &&
                  currentTileInfo != Database.TILEINFO_23 &&
+                 currentTileInfo != Database.TILEINFO_37 &&
                  blueWallRight[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum + 1].activeInHierarchy)
@@ -2644,6 +2667,8 @@ namespace DungeonPlayer
                  currentTileInfo != Database.TILEINFO_2 &&
                  currentTileInfo != Database.TILEINFO_15 &&
                  currentTileInfo != Database.TILEINFO_42 &&
+                 currentTileInfo != Database.TILEINFO_35 &&
+                 currentTileInfo != Database.TILEINFO_37 &&
                  blueWallBottom[currentPosNum] == false))
             {
                 if (unknownTile[currentPosNum + Database.TRUTH_DUNGEON_COLUMN].activeInHierarchy)
@@ -10296,6 +10321,7 @@ namespace DungeonPlayer
 
                     OpenTheDoor(1, new Vector3(50, -2, 0));
                     OpenTheDoor(2, new Vector3(49, -2, 0));
+                    UpdateUnknownTile();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.StrengthRoomOpen1)
                 {
