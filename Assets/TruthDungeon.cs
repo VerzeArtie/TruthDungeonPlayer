@@ -7555,7 +7555,50 @@ namespace DungeonPlayer
             #endregion
             #region "３階"
             else if (area == 3)
-            { // after
+            {
+                switch (ii)
+                {
+                    #region "２階へ戻る階段"
+                    case 0:
+                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "入り口看板への誘導
+                    case 1:
+                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "始めの誘導縛り"
+                    case 2:
+                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 3:
+                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "始まりの看板１"
+                    case 4:
+                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "始まりの看板２"
+                    case 5:
+                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "鏡解説(1)"
+                    case 6:
+                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                }
             }
             #endregion
             #region "４階"
