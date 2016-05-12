@@ -7560,41 +7560,42 @@ namespace DungeonPlayer
                 {
                     #region "２階へ戻る階段"
                     case 0:
-                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13000(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "入り口看板への誘導
                     case 1:
-                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13001(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "始めの誘導縛り"
                     case 2:
-                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13002(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 3:
-                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13003(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "始まりの看板１"
                     case 4:
-                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13004(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "始まりの看板２"
                     case 5:
-                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13005(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "鏡解説(1)"
                     case 6:
-                        MessagePack.Message130xx(ref this.nowMessage, ref this.nowEvent);
+                    case 7:
+                        MessagePack.Message13006(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -10493,6 +10494,10 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea29)
                 {
                     UpdateUnknownTileArea29();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_1)
+                {
+                    UpdateUnknownTileArea3_1();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.Floor1MindRoomOpen1)
                 {

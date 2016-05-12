@@ -612,6 +612,8 @@ namespace DungeonPlayer
                 return;
             }
 
+            Debug.Log("area2: " + GroundOne.WE.TruthCompleteArea2);
+            Debug.Log("comu31: " + GroundOne.WE.Truth_CommunicationLana31);
             #region "１日目"
             if (!GroundOne.WE.Truth_CommunicationLana1)
             {
@@ -659,6 +661,20 @@ namespace DungeonPlayer
             else if (GroundOne.WE.TruthCompleteArea1 && !GroundOne.WE.Truth_CommunicationLana21)
             {
                 MessagePack.Message40006(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "３階開始時"
+            else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.Truth_CommunicationLana31)
+            {
+                MessagePack.Message40007(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "４階開始時"
+            else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.Truth_CommunicationLana41)
+            {
+                MessagePack.Message40008(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
@@ -1577,9 +1593,33 @@ namespace DungeonPlayer
                 mainMessage.text = "アイン：カールハンツ爵にはまた今度教えてもらうとしよう。";
                 return;
             }
+            #region "三階開始時"
+            if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.Truth_CommunicationSinikia31 && !GroundOne.WE.alreadyCommunicateCahlhanz)
+            {
+                if (!GroundOne.WE.Truth_CommunicationLana31)
+                {
+                    mainMessage.text = "アイン：いや・・・その前に、ラナにひとまず挨拶しておくか。";
+                    return;
+                }
+                if (!GroundOne.WE.Truth_CommunicationOl31)
+                {
+                    mainMessage.text = "アイン：いや・・・その前に、師匠にひとまず挨拶しておくか。";
+                    return;
+                }
 
+                MessagePack.Message70013(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "四階開始時"
+            else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.Truth_CommunicationSinikia41 && !GroundOne.WE.alreadyCommunicateCahlhanz)
+            {
+                MessagePack.Message70014(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "カールハンツ爵の訓練場"
-            if (!GroundOne.WE.alreadyCommunicateCahlhanz)
+            else if (!GroundOne.WE.alreadyCommunicateCahlhanz)
             {
                 GroundOne.WE.alreadyCommunicateCahlhanz = true;
 
@@ -1672,31 +1712,6 @@ namespace DungeonPlayer
                     MessagePack.Message79999(ref nowMessage, ref nowEvent);
                     NormalTapOK();
                 }
-            }
-            #endregion
-            #region "三階開始時"
-            else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.Truth_CommunicationSinikia31 && !GroundOne.WE.alreadyCommunicateCahlhanz)
-            {
-                if (!GroundOne.WE.Truth_CommunicationLana31)
-                {
-                    mainMessage.text = "アイン：いや・・・その前に、ラナにひとまず挨拶しておくか。";
-                    return;
-                }
-                if (!GroundOne.WE.Truth_CommunicationOl31)
-                {
-                    mainMessage.text = "アイン：いや・・・その前に、師匠にひとまず挨拶しておくか。";
-                    return;
-                }
-
-                MessagePack.Message70013(ref nowMessage, ref nowEvent);
-                NormalTapOK();
-            }
-            #endregion
-            #region "四階開始時"
-            else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.Truth_CommunicationSinikia41 && !GroundOne.WE.alreadyCommunicateCahlhanz)
-            {
-                MessagePack.Message70014(ref nowMessage, ref nowEvent);
-                NormalTapOK();
             }
             #endregion
             #region "その他"
@@ -1999,10 +2014,12 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.DUEL_SINIKIA_KAHLHANZ)
                 {
                     MessagePack.Message70012_2(ref nowMessage, ref nowEvent, duelWin);
+                    NormalTapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.VERZE_ARTIE)
                 {
                     MessagePack.Message70013_2(ref nowMessage, ref nowEvent, duelWin);
+                    NormalTapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_RANA_AMILIA)
                 {
