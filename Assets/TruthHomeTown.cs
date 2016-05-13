@@ -111,12 +111,10 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE.AlreadyRest)
             {
-                Debug.Log("evening");
                 ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
             }
             else
             {
-                Debug.Log("moring");
                 ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
             }
 
@@ -935,6 +933,10 @@ namespace DungeonPlayer
                     mainMessage.text = "";
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
+                {
+                    mainMessage.text = "";
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownAddNewCharacter)
                 {
                     mainMessage.text = "";
                 }
@@ -1766,6 +1768,8 @@ namespace DungeonPlayer
 
         private void ButtonVisibleControl(bool visible)
         {
+            this.groupMenu.SetActive(visible);
+            this.dayLabel.gameObject.SetActive(visible);
             this.buttonHanna.gameObject.SetActive(visible);
             this.buttonDungeon.gameObject.SetActive(visible);
             this.buttonRana.gameObject.SetActive(visible);
@@ -3180,6 +3184,7 @@ namespace DungeonPlayer
             else
             {
                 Sprite current = Resources.Load<Sprite>(filename);
+                this.backgroundData.gameObject.SetActive(true);
                 if (darkValue > 0)
                 {
                     // after
