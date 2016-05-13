@@ -9809,6 +9809,499 @@ namespace DungeonPlayer
             }
         }
         #endregion
+        #region "鏡ワープ area 1"
+        public static void Message13007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13008(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13009(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13010(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13011(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13012(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13013(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13014(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13015(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13016(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13017(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13018(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13019(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13020(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13021(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13022(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13023(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13024(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13025(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13026(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13027(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13028(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13029(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13030(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13031(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13032(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13033(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13034(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13035(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13036(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13037(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13038(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13039(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13040(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13041(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13042(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13043(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13044(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13045(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実解のイベント１【記憶の回想】"
+        public static void Message13046(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "鏡ワープ area2"
+        public static void Message13047(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13048(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13049(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13050(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13051(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13052(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13053(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13054(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13055(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13056(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13057(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13058(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13059(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13060(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13061(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13062(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13063(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13064(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13065(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13066(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13067(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13068(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13069(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13070(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13071(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13072(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13073(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13074(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13075(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13076(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13077(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13078(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13079(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13080(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13081(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13082(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13083(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13084(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13085(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13086(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13087(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13088(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13089(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13090(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13091(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13092(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13093(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13094(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13095(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13096(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13097(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13098(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13099(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13100(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13101(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13102(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13103(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13104(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13105(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13106(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13107(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13108(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13109(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13110(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13111(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13112(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13113(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13114(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13115(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13116(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13117(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13118(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13119(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13120(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13121(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13122(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13123(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13124(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア２　看板X１～６"
+        public static void Message13125(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13126(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13127(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13128(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13129(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13130(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "ボス前の扉"
+        public static void Message13131(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "４階への階段"
+        public static void Message13132(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "無限回廊の看板"
+        public static void Message13133(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "無限回廊"
+        public static void Message13134(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13136(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13137(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13138(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13139(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13140(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13141(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13142(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13143(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13144(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message13145(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "鏡エリア２－５、台座ルート入り口"
+        public static void Message13146(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "鏡エリア３原点解の入口／出口"
+        public static void Message13147(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "聖者ルート（BADEND）"
+        public static void Message13148(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "愚者ルート（BADEND）"
+        public static void Message13149(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "４階への階段（２）"
+        public static void Message13150(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "無限回廊突破後の看板"
+        public static void Message13151(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実解のイベント２【記憶の回想】"
+        public static void Message13152(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "記憶の回想２から一本道正解ルートへ鏡ワープ"
+        public static void Message13153(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実解のイベント３【記憶の回想】"
+        public static void Message13154(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "原点解発見"
+        public static void Message13155(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実解のイベント４【記憶の回想】"
+        public static void Message13156(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "無限回廊突破後の看板にて"
+        public static void Message13157(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
         #endregion
         #region "４階"
         #endregion

@@ -1024,7 +1024,6 @@ namespace DungeonPlayer
                 else if (current == MessagePack.ActionEvent.HomeTownGotoFirstPlace)
                 {
                     ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FIELD_OF_FIRSTPLACE);
-                    this.cam.backgroundColor = UnityColor.WhiteSmoke;
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownExecRestInn)
                 {
