@@ -7599,6 +7599,619 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
+                    #region "鏡ワープ area 1"
+                    case 8:
+                        MessagePack.Message13007(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 9:
+                        // 通路
+                        MessagePack.Message13008(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 10:
+                        MessagePack.Message13009(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 11:
+                        MessagePack.Message13010(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 12:
+                        MessagePack.Message13011(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 13:
+                        // 通路
+                        MessagePack.Message13012(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 14:
+                        // 通路
+                        MessagePack.Message13013(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 15:
+                        // 通路（左隅)
+                        MessagePack.Message13014(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 16:
+                        MessagePack.Message13015(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 17:
+                        MessagePack.Message13016(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 18:
+                        MessagePack.Message13017(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 19:
+                        MessagePack.Message13018(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 20:
+                        // 通路
+                        MessagePack.Message13019(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 21:
+                        MessagePack.Message13020(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 22:
+                        // 通路
+                        MessagePack.Message13021(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 23:
+                        MessagePack.Message13022(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 24:
+                        MessagePack.Message13023(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 25:
+                        MessagePack.Message13024(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 26:
+                        MessagePack.Message13025(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 27:
+                        MessagePack.Message13026(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 28:
+                        MessagePack.Message13027(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 29:
+                        // 通路（中央左の上）
+                        MessagePack.Message13028(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 30:
+                        // 通路（中央左の下）
+                        MessagePack.Message13029(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 31:
+                        MessagePack.Message13030(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 32:
+                        // 通路
+                        MessagePack.Message13031(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 33:
+                        // 通路（左下）
+                        MessagePack.Message13032(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 34:
+                        MessagePack.Message13033(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 35:
+                        MessagePack.Message13034(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 36:
+                        MessagePack.Message13035(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 37:
+                        MessagePack.Message13036(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 38:
+                        MessagePack.Message13037(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 39:
+                        MessagePack.Message13038(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 40:
+                        MessagePack.Message13039(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 41:
+                        MessagePack.Message13040(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 42:
+                        // 通路
+                        MessagePack.Message13041(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 43:
+                        MessagePack.Message13042(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 44:
+                        // 左小部屋１
+                        MessagePack.Message13043(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 45: // clear
+                        MessagePack.Message13044(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 46: // 失敗戻り
+                        MessagePack.Message13045(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実解のイベント１【記憶の回想】"
+                    case 47:
+                        MessagePack.Message13046(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "鏡ワープ area2"
+                    case 48: // 38
+                        MessagePack.Message13047(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 49: // 39
+                        MessagePack.Message13048(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 50: // 40
+                        MessagePack.Message13049(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 51: // 41
+                        MessagePack.Message13050(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 52: // 42
+                        MessagePack.Message13051(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 53: // 43
+                        MessagePack.Message13052(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 54: // 44
+                        MessagePack.Message13053(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 55: // 45
+                        MessagePack.Message13054(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 56: // 46
+                        MessagePack.Message13055(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 57: // 47
+                        MessagePack.Message13056(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 58: // 48
+                        MessagePack.Message13057(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 59: // 49
+                        MessagePack.Message13058(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 60: // 50
+                        MessagePack.Message13059(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 61: // 51
+                        MessagePack.Message13060(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 62: // 52
+                        MessagePack.Message13061(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 63: // 53
+                        MessagePack.Message13062(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 64: // 54
+                        MessagePack.Message13063(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 65: // 55
+                        MessagePack.Message13064(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 66: // 56
+                        MessagePack.Message13065(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 67: // 57
+                        MessagePack.Message13066(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 68: // 58
+                        MessagePack.Message13067(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 69: // 59
+                        MessagePack.Message13068(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 70: // 60
+                        MessagePack.Message13069(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 71: // 61
+                        MessagePack.Message13070(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 72: // 62
+                        MessagePack.Message13071(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 73: // 63
+                        MessagePack.Message13072(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 74: // 64
+                        MessagePack.Message13073(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 75: // 65
+                        MessagePack.Message13074(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 76: // 66
+                        MessagePack.Message13075(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 77: // 67
+                        MessagePack.Message13076(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 78: // 68
+                        MessagePack.Message13077(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 79: // 69
+                        MessagePack.Message13078(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 80: // 70
+                        MessagePack.Message13079(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 81: // 71
+                        MessagePack.Message13080(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 82: // 72
+                        MessagePack.Message13081(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 83: // 73
+                        MessagePack.Message13082(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 84: // 74
+                        MessagePack.Message13083(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 85: // 75
+                        MessagePack.Message13084(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 86: // 76
+                        MessagePack.Message13085(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 87: // 77
+                        MessagePack.Message13086(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 88: // 78
+                        MessagePack.Message13087(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 89: // 79
+                        MessagePack.Message13088(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 90: // 80
+                        MessagePack.Message13089(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 91: // 81
+                        MessagePack.Message13090(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 92: // 82
+                        MessagePack.Message13091(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 93: // 83
+                        MessagePack.Message13092(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 94: // 84
+                        MessagePack.Message13093(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    // ５段階目以降、ルート通過順序によって可変。
+                    // 36 43
+                    // 17 53
+                    // 26 24
+                    // 38 21
+                    // 24 21
+
+                    // １箇所グループ
+                    case 95: // 85
+                    case 96: // 86
+                    case 97: // 87
+                    case 105: // 95
+                    case 112: // 102
+                    case 113: // 103
+                    case 121: // 111
+                    case 124: // 114
+                    case 125: // 115
+                    case 133: // 123
+                    case 138: // 128
+                    case 144: // 134
+                    // ２箇所グループ
+                    case 122: // 112
+                    case 123: // 113
+                    case 142: // 132
+                    case 143: // 133
+                    case 145: // 135
+                    case 146: // 136
+                    // ３箇所グループ
+                    case 98: // 88
+                    case 99: // 89
+                    case 100: // 90
+                    case 106: // 96
+                    case 107: // 97
+                    case 108: // 98
+                    case 109: // 99
+                    case 110: // 100
+                    case 111: // 101
+                    case 114: // 104
+                    case 115: // 105
+                    case 116: // 106
+                    case 130: // 120
+                    case 131: // 121
+                    case 132: // 122
+                    case 139: // 129
+                    case 140: // 130
+                    case 141: // 131
+                    // ４箇所グループ
+                    case 101: // 91
+                    case 102: // 92
+                    case 103: // 93
+                    case 104: // 94
+                    case 117: // 107
+                    case 118: // 108
+                    case 119: // 109
+                    case 120: // 110
+                    case 126: // 116
+                    case 127: // 117
+                    case 128: // 118
+                    case 129: // 119
+                    case 134: // 124
+                    case 135: // 125
+                    case 136: // 126
+                    case 137: // 127
+                    case 147: // 137
+                    case 148: // 138
+                    case 149: // 139
+                    case 150: // 140
+                        MessagePack.Message13094(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 151: // X1B
+                        MessagePack.Message13095(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 152: // X1C
+                        MessagePack.Message13096(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 153: // X1D
+                        MessagePack.Message13097(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 154: // X2B
+                        MessagePack.Message13098(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 155: // X2C
+                        MessagePack.Message13099(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 156: // X2D
+                        MessagePack.Message13100(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 157: // X3B
+                        MessagePack.Message13101(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 158: // X3C
+                        MessagePack.Message13102(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 159: // X3D
+                        MessagePack.Message13103(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 160: // X4B
+                        MessagePack.Message13104(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 161: // X4C
+                        MessagePack.Message13105(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 162: // X4D
+                        MessagePack.Message13106(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 163: // X5B
+                        MessagePack.Message13107(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 164: // X5C
+                        MessagePack.Message13108(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 165: // X5D
+                        MessagePack.Message13109(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    // Z1-Z4ルート
+                    case 166:
+                    case 167:
+                    case 168:
+                    case 169:
+                    case 170:
+                    case 171:
+                    case 172:
+                    case 173:
+                    case 174:
+                    case 175:
+                    case 176:
+                    case 177:
+                    case 178:
+                    case 179:
+                    case 180:
+                    case 181:
+                    case 182:
+                    case 183:
+                    case 184:
+                    case 185:
+                    case 186:
+                    case 187:
+                    case 188:
+                    case 189:
+                    case 190:
+                        MessagePack.Message13110(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "ボス戦闘"
+                    case 251:
+                        MessagePack.Message13111(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "鏡エリア２の始めの看板"
+                    case 252:
+                        MessagePack.Message13112(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "宝箱"
+                    case 253:
+                        MessagePack.Message13113(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 254:
+                        MessagePack.Message13114(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 255
+                        MessagePack.Message13115(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 256:
+                        MessagePack.Message13116(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 257:
+                        MessagePack.Message13117(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 258:
+                        MessagePack.Message13118(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 259:
+                        MessagePack.Message13119(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 260:
+                        MessagePack.Message13120(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 261:
+                        MessagePack.Message13121(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 262:
+                        MessagePack.Message13122(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 263:
+                        MessagePack.Message13123(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 264:
+                        MessagePack.Message13124(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア２　看板X１～６"
+                    case 265:
+                        MessagePack.Message13124(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 266:
+                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 267:
+                        MessagePack.Message13126(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 268:
+                        MessagePack.Message13127(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 269:
+                        MessagePack.Message13128(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    case 270:
+                        MessagePack.Message13129(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
                 }
             }
             #endregion
