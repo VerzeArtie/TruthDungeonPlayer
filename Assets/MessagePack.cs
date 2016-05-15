@@ -10833,6 +10833,9 @@ namespace DungeonPlayer
         }
         public static void Message13094(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            // todo
+            // after 同じルートを辿って最後失敗の時、次の会話イベントに流れてしまうのは防がないといけない
+            // 同じルートで最後失敗の時、次の会話ではなく、失敗で戻るのが正解。
         }
         public static void Message13095(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -10888,6 +10891,8 @@ namespace DungeonPlayer
         public static void Message13112(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
+        #endregion
+        #region "エリア２　看板X１～６"
         public static void Message13113(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
@@ -10906,15 +10911,23 @@ namespace DungeonPlayer
         public static void Message13118(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
+        #endregion
+        #region "ボス前の扉"
         public static void Message13119(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
+        #endregion
+        #region "４階への階段"
         public static void Message13120(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
+        #endregion
+        #region "無限回廊の看板"
         public static void Message13121(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
+        #endregion
+        #region "無限回廊"
         public static void Message13122(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
@@ -10924,8 +10937,6 @@ namespace DungeonPlayer
         public static void Message13124(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
-        #endregion
-        #region "エリア２　看板X１～６"
         public static void Message13125(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
@@ -10944,117 +10955,73 @@ namespace DungeonPlayer
         public static void Message13130(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
-        #endregion
-        #region "ボス前の扉"
         public static void Message13131(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
-        #endregion
-        #region "４階への階段"
         public static void Message13132(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
-        #endregion
-        #region "無限回廊の看板"
         public static void Message13133(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
-        #region "無限回廊"
-        public static void Message13134(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13136(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13137(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13138(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13139(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13140(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13141(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13142(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13143(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13144(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        public static void Message13145(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        #endregion
         #region "鏡エリア２－５、台座ルート入り口"
-        public static void Message13146(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13134(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "鏡エリア３原点解の入口／出口"
-        public static void Message13147(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "聖者ルート（BADEND）"
-        public static void Message13148(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13136(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "愚者ルート（BADEND）"
-        public static void Message13149(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13137(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "４階への階段（２）"
-        public static void Message13150(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13138(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "無限回廊突破後の看板"
-        public static void Message13151(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13139(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "真実解のイベント２【記憶の回想】"
-        public static void Message13152(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13140(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "記憶の回想２から一本道正解ルートへ鏡ワープ"
-        public static void Message13153(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13141(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "真実解のイベント３【記憶の回想】"
-        public static void Message13154(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13142(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "原点解発見"
-        public static void Message13155(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13143(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "真実解のイベント４【記憶の回想】"
-        public static void Message13156(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13144(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
         #region "無限回廊突破後の看板にて"
-        public static void Message13157(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13145(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
