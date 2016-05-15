@@ -166,8 +166,7 @@ namespace DungeonPlayer
             Method.UpdateBackPackLabel(player, this.back_Backpack, this.backpack, this.backpackStack, this.backpackIcon);
 
             // ケースに応じて、キャラクター選択ボタン／ライフの表示を切り替えます。
-            if ((!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter) ||
-                (GroundOne.DuelMode == true))
+            if ((!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter) || (GroundOne.DuelMode == true))
             {
                 this.groupBtnChara.SetActive(false);
                 this.groupTxtChara.SetActive(false);
@@ -188,6 +187,7 @@ namespace DungeonPlayer
                 btnSecondChara.gameObject.SetActive(false);
                 labelSecondPlayerLife.gameObject.SetActive(false);
             }
+
             if (GroundOne.WE.AvailableThirdCharacter && GroundOne.DuelMode == false)
             {
                 btnThirdChara.gameObject.SetActive(true);

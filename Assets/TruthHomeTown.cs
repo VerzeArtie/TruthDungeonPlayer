@@ -1090,6 +1090,7 @@ namespace DungeonPlayer
                     GroundOne.TC.MainWeapon = new ItemBackPack(Database.RARE_WHITE_SILVER_SWORD_REPLICA);
                     GroundOne.TC.MainArmor = new ItemBackPack(Database.RARE_BLACK_AERIAL_ARMOR_REPLICA);
                     GroundOne.TC.Accessory = new ItemBackPack(Database.RARE_HEAVENLY_SKY_WING_REPLICA);
+                    GroundOne.TC.Accessory2 = null;
                     GroundOne.TC.BattleActionCommandList[0] = Database.NEUTRAL_SMASH;
                     GroundOne.TC.BattleActionCommandList[1] = Database.INNER_INSPIRATION;
                     GroundOne.TC.BattleActionCommandList[2] = Database.MIRROR_IMAGE;
@@ -2000,6 +2001,7 @@ namespace DungeonPlayer
                 Debug.Log("SceneBack (nowDuel)");
 
                 this.nowDuel = false;
+                GroundOne.DuelMode = false;
                 bool duelWin = false;
 
                 if (GroundOne.BattleResult == GroundOne.battleResult.OK)

@@ -352,19 +352,19 @@ namespace DungeonPlayer
                     }
                     else if (childList2[ii].Name.Contains(OTHER9))
                     {
-                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.MIRROR);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.MIRROR);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER9.Length, childList2[ii].Name.Length - OTHER9.Length));
                         this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER10))
                     {
-                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.BLUEORB);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.BLUEORB);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER10.Length, childList2[ii].Name.Length - OTHER10.Length));
                         this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
                     else if (childList2[ii].Name.Contains(OTHER11))
                     {
-                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.FOUNTAIN);
+                        this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FOUNTAIN);
                         int targetNumber = Convert.ToInt32(childList2[ii].Name.Substring(OTHER11.Length, childList2[ii].Name.Length - OTHER11.Length));
                         this.objOther.Add(Instantiate(this.prefab_TileElement, new Vector3(targetNumber % Database.TRUTH_DUNGEON_COLUMN, -(targetNumber / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
                     }
@@ -7595,7 +7595,7 @@ namespace DungeonPlayer
                     #region "鏡解説(1)"
                     case 6:
                     case 7:
-                        MessagePack.Message13006(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13006(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     #endregion
@@ -10907,7 +10907,7 @@ namespace DungeonPlayer
                 }
                 else if (GroundOne.WE.DungeonArea == 3)
                 {
-                    JumpToLocation(17, -17, true);
+                    JumpToLocation(17, -26, true);
                     SetupDungeonMapping(2);
                 }
                 else if (GroundOne.WE.DungeonArea == 4)
@@ -10917,7 +10917,8 @@ namespace DungeonPlayer
                 }
                 else if (GroundOne.WE.DungeonArea == 5)
                 {
-                    // after (５階から４階へ戻るストーリがあるかどうかに依存する。
+                    JumpToLocation(52, -20, true);
+                    SetupDungeonMapping(4);
                 }
             }
             else if (yesnoSystemMessage.text == Database.Message_GotoDownstair)
@@ -11542,6 +11543,201 @@ namespace DungeonPlayer
                 {
                     OpenTheDoor(2, new Vector3(16, -26, 0));
                     OpenTheDoor(1, new Vector3(17, -26, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation1)
+                {
+                    JumpToLocation(16, -22, true);
+                    UpdateUnknownTileArea3_0_1();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation2)
+                {
+                    JumpToLocation(0, -33, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation3)
+                {
+                    JumpToLocation(16, -2, true);
+                    UpdateUnknownTileArea3_0_2();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation4)
+                {
+                    JumpToLocation(8, -12, true);
+                    UpdateUnknownTileArea3_0_3();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation5)
+                {
+                    JumpToLocation(8, -23, true);
+                    UpdateUnknownTileArea3_0_4();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation6)
+                {
+                    JumpToLocation(11, -26, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation7)
+                {
+                    JumpToLocation(14, -4, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation8)
+                {
+                    JumpToLocation(2, -2, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation9)
+                {
+                    JumpToLocation(16, -13, true);
+                    UpdateUnknownTileArea3_0_5();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation10)
+                {
+                    JumpToLocation(14, -36, true);
+                    UpdateUnknownTileArea3_0_6();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation11)
+                {
+                    JumpToLocation(12, -20, true);
+                    UpdateUnknownTileArea3_0_7();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation12)
+                {
+                    JumpToLocation(8, -4, true);
+                    UpdateUnknownTileArea3_0_8();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation13)
+                {
+                    JumpToLocation(0, -13, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation14)
+                {
+                    JumpToLocation(13, -7, true);
+                    UpdateUnknownTileArea3_0_9();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation15)
+                {
+                    JumpToLocation(10, -21, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation16)
+                {
+                    JumpToLocation(8, -37, true);
+                    UpdateUnknownTileArea3_0_10();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation17)
+                {
+                    JumpToLocation(15, -28, true);
+                    UpdateUnknownTileArea3_0_11();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation18)
+                {
+                    JumpToLocation(12, -32, true);
+                    UpdateUnknownTileArea3_0_12();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation19)
+                {
+                    JumpToLocation(9, -33, true);
+                    UpdateUnknownTileArea3_0_13();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation20)
+                {
+                    JumpToLocation(12, -7, true);
+                    UpdateUnknownTileArea3_0_9();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation21)
+                {
+                    JumpToLocation(12, -12, true);
+                    UpdateUnknownTileArea3_0_14();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation22)
+                {
+                    JumpToLocation(19, 0, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation23)
+                {
+                    JumpToLocation(19, -39, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation24)
+                {
+                    JumpToLocation(12, -33, true);
+                    UpdateUnknownTileArea3_0_12();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation25)
+                {
+                    JumpToLocation(18, -12, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation26)
+                {
+                    JumpToLocation(2, -37, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation27)
+                {
+                    JumpToLocation(9, -34, true);
+                    UpdateUnknownTileArea3_0_13();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation28)
+                {
+                    JumpToLocation(16, -7, true);
+                    UpdateUnknownTileArea3_0_15();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation29)
+                {
+                    JumpToLocation(14, -37, true);
+                    UpdateUnknownTileArea3_0_6();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation30)
+                {
+                    JumpToLocation(7, -23, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation31)
+                {
+                    JumpToLocation(4, -31, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation32)
+                {
+                    JumpToLocation(12, -21, true);
+                    UpdateUnknownTileArea3_0_7();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation33)
+                {
+                    JumpToLocation(8, -28, true);
+                    UpdateUnknownTileArea3_0_16();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation34)
+                {
+                    JumpToLocation(7, -37, true);
+                    UpdateUnknownTileArea3_0_10();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation35)
+                {
+                    JumpToLocation(6, 0, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation36)
+                {
+                    JumpToLocation(7, -12, true);
+                    UpdateUnknownTileArea3_0_3();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation37)
+                {
+                    JumpToLocation(1, -38, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationArea1End)
+                {
+                    JumpToLocation(18, -19, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationFail1)
+                {
+                    JumpToLocation(3, -19, true);
                     UpdateUnknownTile();
                 }
 

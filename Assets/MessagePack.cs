@@ -236,6 +236,45 @@ namespace DungeonPlayer
             Floor2AgilityRoomJudgeDirection,
             DecisionOpenDoor2,
             Floor2DownstairGateOpen,
+            DungeonJumpToLocation1,
+            DungeonJumpToLocation2,
+            DungeonJumpToLocation3,
+            DungeonJumpToLocation4,
+            DungeonJumpToLocation5,
+            DungeonJumpToLocation6,
+            DungeonJumpToLocation7,
+            DungeonJumpToLocation8,
+            DungeonJumpToLocation9,
+            DungeonJumpToLocation10,
+            DungeonJumpToLocation11,
+            DungeonJumpToLocation12,
+            DungeonJumpToLocation13,
+            DungeonJumpToLocation14,
+            DungeonJumpToLocation15,
+            DungeonJumpToLocation16,
+            DungeonJumpToLocation17,
+            DungeonJumpToLocation18,
+            DungeonJumpToLocation19,
+            DungeonJumpToLocation20,
+            DungeonJumpToLocation21,
+            DungeonJumpToLocation22,
+            DungeonJumpToLocation23,
+            DungeonJumpToLocation24,
+            DungeonJumpToLocation25,
+            DungeonJumpToLocation26,
+            DungeonJumpToLocation27,
+            DungeonJumpToLocation28,
+            DungeonJumpToLocation29,
+            DungeonJumpToLocation30,
+            DungeonJumpToLocation31,
+            DungeonJumpToLocation32,
+            DungeonJumpToLocation33,
+            DungeonJumpToLocation34,
+            DungeonJumpToLocation35,
+            DungeonJumpToLocation36,
+            DungeonJumpToLocation37,
+            DungeonJumpToLocationArea1End,
+            DungeonJumpToLocationFail1,
             Ending,
         }
         #endregion
@@ -9619,7 +9658,7 @@ namespace DungeonPlayer
         }
         #endregion
         #region "鏡解説(1)"
-        public static void Message13006(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13006(ref List<string> messageList, ref List<ActionEvent> eventList, int number)
         {
             if (!GroundOne.WE.dungeonEvent303)
             {
@@ -9779,15 +9818,14 @@ namespace DungeonPlayer
 
                 messageList.Add("ラナ：っわ、眩し・・・"); eventList.Add(ActionEvent.None);
 
-                // todo
-                //if (ii == 6)
-                //{
-                //    JumpByMirror(26, 11, 0, 10, true); eventList.Add(ActionEvent.None);
-                //}
-                //else if (ii == 7)
-                //{
-                //    JumpByMirror(4, 14, 0, 0, true); eventList.Add(ActionEvent.None);
-                //}
+                if (number == 6)
+                {
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocation6);
+                }
+                else if (number == 7)
+                {
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocation7);
+                }
 
                 messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
 
@@ -9810,122 +9848,576 @@ namespace DungeonPlayer
         }
         #endregion
         #region "鏡ワープ area 1"
+        private static void MessageJumpByMirror(ref List<string> messageList, ref List<ActionEvent> eventList, ActionEvent jumpEvent)
+        {
+            //if (!ignoreMessage)
+            {
+                if (GroundOne.WE2.StartSeeker)
+                {
+                    messageList.Add("　　『　アインはラナの事を一心に考え、鏡に手を添えた瞬間、辺りは白く光はじめた！　』　　"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("　　『　ラナがそっと鏡に手を添えた瞬間、辺りは白く光はじめた！　』　　"); eventList.Add(ActionEvent.None);
+                }
+            }
+
+            messageList.Add(""); eventList.Add(jumpEvent);
+
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
+        }
+
         public static void Message13007(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation1);
         }
         public static void Message13008(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation2);
         }
         public static void Message13009(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation3);
         }
         public static void Message13010(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation4);
         }
         public static void Message13011(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation5);
         }
         public static void Message13012(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation6);
         }
         public static void Message13013(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation7);
         }
         public static void Message13014(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation8);
         }
         public static void Message13015(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation9);
         }
         public static void Message13016(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation10);
         }
         public static void Message13017(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation11);
         }
         public static void Message13018(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation12);
         }
         public static void Message13019(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation13);
         }
         public static void Message13020(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation14);
         }
         public static void Message13021(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation15);
         }
         public static void Message13022(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation16);
         }
         public static void Message13023(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation17);
         }
         public static void Message13024(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation18);
         }
         public static void Message13025(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation19);
         }
         public static void Message13026(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation20);
         }
         public static void Message13027(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation21);
         }
         public static void Message13028(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation22);
         }
         public static void Message13029(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation23);
         }
         public static void Message13030(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation24);
         }
         public static void Message13031(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation25);
         }
         public static void Message13032(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation26);
         }
         public static void Message13033(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation27);
         }
         public static void Message13034(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation28);
         }
         public static void Message13035(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation29);
         }
         public static void Message13036(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation30);
         }
         public static void Message13037(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation31);
         }
         public static void Message13038(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation32);
         }
         public static void Message13039(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation33);
         }
         public static void Message13040(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation34);
         }
         public static void Message13041(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation35);
         }
         public static void Message13042(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation36);
         }
         public static void Message13043(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation37);
         }
         public static void Message13044(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationArea1End);
+
+            if (!GroundOne.WE.dungeonEvent305)
+            {
+                GroundOne.WE.dungeonEvent305 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.BlueOpenRight);
+
+                messageList.Add("    『ゴゴゴォ・・・ゴオオォォン！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：やった！扉が開いたぜ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：やりましたね、ラナさん。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：えっと・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ウン、やったわ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・うん？何か微妙にノリが悪いな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：あ、ううん。解けた事に対して少し驚いてただけよ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうか、なら良いんだ。良かったじゃねえか！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                // 304_1が無い場合初回突破。
+                if (!GroundOne.WE.dungeonEvent304_1)
+                {
+                    messageList.Add("アイン：いやでもさ。マジで初見突破だもんな、ホントすげぇぜ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ッフフ、ありがとね♪"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("ラナ：さて、このまま次に進めましょ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("        『この時、ラナの眼は普段のトパーズ色から薄白色になっていた。』"); eventList.Add(ActionEvent.None);
+
+                if (!GroundOne.WE.dungeonEvent304_5)
+                {
+                    messageList.Add("アイン：っな！？ラナ、お前目が・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：っえ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：い・・・いやいやいや・・・え～と何て言うんだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（目のカラーが変わってる事がすげぇ気になるが・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：なんていうかさ、何で正解ルートが分かったんだよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：それがね、鏡に触れると、自然と伝わってきてたのよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：何がだ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：どこからともなく声がしてきたのよ。それを何となく察知する感じだったわ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・へぇ・・・マジでか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：鏡に何度か触れた場合、初期段階としてそういった現象に本人は遭遇します。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：その声は触れた本人にのみ微弱に伝播されますので、本人のみが知りうるという事になります。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：何かすげえ仕組みだったんだな・・・まあ、了解了解。"); eventList.Add(ActionEvent.None);
+                }
+
+                if (!GroundOne.WE.dungeonEvent304_6)
+                {
+                    messageList.Add("　　　＜＜＜　ラナが少し進んだ後・・・＞＞＞"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（おい、ヴェルゼ）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（なんでしょう？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（ヴェルゼは何か知ってるのか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（何をですか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（ラナの目の色が変わってる件に関して、何か知ってるか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（・・・ええ、知ってます。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（危険は無いのか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（・・・無いわけではありません。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（っな！！）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（大丈夫です。明らかに危険だとなればボクが制止を試みます。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（それに、ラナさんならきっと大丈夫でしょう。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（そうなのか？なら良いんだが・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（でもちょっと心配なんだよな。今日は一旦戻らせても良いか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（ええ、構いませんよ。アイン君の考えた通りに進めてください。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（ああ、悪いな。）"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("アイン：ラナ、待て。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：一旦戻るぞ。今日はここまでだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え、せっかく開いたのに戻るってワケ！？　バカアインらしくない発言ね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、俺らしくないってのは確かにそうなんだが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：すみません、ボクも少しだけ疲れてしまいました。せっかくなので一度戻らせてもらっても構いませんか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：あ、そうだったんですね、すみません。じゃあ喜んでお受けいたします♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：すげえ勢いで態度が正反対だな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：じゃまあ、悪いけど一旦戻りだ。青水晶を使うぜ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、良いわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：じゃあ使うぜ。っそれ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+            }
         }
+
         public static void Message13045(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationFail1);
+
+            if (!GroundOne.WE.dungeonEvent306)
+            {
+                if (!GroundOne.WE.dungeonEvent304_1)
+                {
+                    GroundOne.WE.dungeonEvent304_1 = true;
+
+                    messageList.Add("アイン：あれ？向こうに看板が２つ見えるな・・・これはひょっとして。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：どうやら一番初めの位置に戻ってしまったみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：どうやら失敗ルートを踏んだようですね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ、最初だからな。もう１回ぐらい回ってみようぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：そうね、もう一度試してみるわ。"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent304_2)
+                {
+                    GroundOne.WE.dungeonEvent304_2 = true;
+                    messageList.Add("アイン：おっと、また元の場所か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：しかしまいったな。ヒントらしいヒントが全く無いよな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：・・・う～ん。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：どうかしましたか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：あ、いえ。なんでもないんです。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：出たな、ラナの「なんでもない」攻撃が炸裂。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ちょっと、失礼な言い方ね。ホントに何でもないんだから。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：分かりました。どうしても何か気になる事があれば言ってくださいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：あ、ハイ♪"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent304_3)
+                {
+                    GroundOne.WE.dungeonEvent304_3 = true;
+                    messageList.Add("アイン：おっと、また元の場所か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：本当、鏡だらけだな。どうしろってんだこんなの。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ヴェルゼさん、一つだけ教えて。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：はい、何でしょう？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：鏡に写る像は、私に必ず関連してる人？　無関係の人が映し出される可能性はあるのかしら？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っな、お前一体何を聞いて・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：ラナさんとは無関係の人が映し出される可能性はありませんよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：必ずラナさんと何かしら関係がある人が映し出されます。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っな、何だ何だ？何か思いついたのか！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：バカアインうるさい、ちょっと黙ってて、あんたホントバカなんだから。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ちぇ・・・了解了解。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：思いついたワケじゃないわ。ただ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・ただ・・・？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：あ～～もう、何でもないって言ってるでしょ！！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『シュッドォォォン！！！』（ラナのエクスプロード・ブローがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・（ッパタ・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：ラナさん、焦らずに自分のペースで構いませんからね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：はい♪"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent304_4)
+                {
+                    GroundOne.WE.dungeonEvent304_4 = true;
+
+                    messageList.Add("アイン：おっと、また元の場所か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どうだ、ラナ。何かヒントらしきものでも掴めそうか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：・・・ええ、何とか掴めそうよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そうか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あれ、今掴めそうって言ったのか！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：そうよ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どこらへんが掴めそうなんだよ！？俺には全然わかんねえぞ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：まあまあ、良いじゃない♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ねえ、後一回だけ回らせて。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ、そりゃ何回でも良いけどさ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ヴェルゼ、お前何か知ってるんじゃないのか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：いえ、ボクにも正解ルートは皆目検討が付きません。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：ただし、ラナさんが正解に至る理由は知っています。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どういう意味だ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：鏡に触れると、自然と伝わってくるのよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：何がだ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：どこからともなく声がしてくるのよ。それを何となく察知する感じね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・へぇ・・・マジでか・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：鏡に何度か触れた場合、初期段階としてそういった現象に本人は遭遇します。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：その声は触れた本人にのみ微弱に伝播されますので、本人のみが知りうるという事になります。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：何かすげえ仕組みだな・・・まあ、了解了解。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ラナ、ここはお前が居ないとダメみたいだな。本当頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ええ、任せておいて♪"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent304_5)
+                {
+                    GroundOne.WE.dungeonEvent304_5 = true;
+
+                    messageList.Add("アイン：おっと、また元の場所か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どうだ、ラナ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：・・・う～ん、多分だけどね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：少し通ってみたから、分かるとおもうんだけど。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：四角部屋の中を辿っていくんだと思うわ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：細長くつながってる通路側に出ちゃうとダメみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・なるほど。言われてみりゃ、そうかもな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：あと、もう一つ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("        『ラナの眼は普段のトパーズ色から薄白色になっていた。』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：初めは、４の３２よ。間違いないわ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っな！？ラナ、お前目が・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：って、４の３２？？　ラナ、何を言ってるんだ？？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：今のはおそらく、本ダンジョンのXY座標位置ですね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：０から数えてＸ方向に４、Ｙ方向に３２の位置にある鏡を潜るという意味でしょう。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：その先は・・・ゴメン、まだ見えないわ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：い・・・いやいやいや・・・え～と何て言うんだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（目のカラーが変わってる事がすげぇ気になるが・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：なんていうかさ、何でそんなのが分かるんだよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：何となくよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ッササ、もう１回潜ってみましょ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あっ、ああ。。。まあ良いが・・・"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent304_6)
+                {
+                    GroundOne.WE.dungeonEvent304_6 = true;
+
+                    messageList.Add("アイン：おっと、また元の場所か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ええと・・・ラナ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("        『ラナの眼は普段のトパーズ色から薄白色になっている。』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ハッキリ見えたわ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：４－３２"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：１７－３５"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：１１－９"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：１０－３１"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：間違いないわ、やってみましょ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：えっと・・・ちょっと良いかラナ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：何？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：だから何で分かるんだよ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：だから何となくよ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どう何となくなんだよ。全然わかんねえぞ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：方角とか位置からそういうのが何かヒントでもあったか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：う～ん、そんなんじゃないわよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：何となく聞こえてくるのよ、鏡から♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そうか・・・ならまあ、やっぱり鏡に触れてるラナにだけ何か伝わってるって話で本当みたいだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：行きましょ♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　＜＜＜　ラナが少し進んだ後・・・＞＞＞"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（おい、ヴェルゼ）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（なんでしょう？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（ヴェルゼは何か知ってるのか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（何をですか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（ラナの目の色が変わってる件に関して、何か知ってるか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（・・・ええ、知ってます。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（危険は無いのか？）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（・・・無いわけではありません。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（っな！！）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（大丈夫です。明らかに危険だとなればボクが制止を試みます。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（それに、ラナさんならきっと大丈夫でしょう。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（そうなのか？なら良いんだが・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ（小声）：（・・・少し離れすぎましたね。行きましょう。）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン（小声）：（ん？あ、あぁ。）"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：おっと、また元の場所か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：おかしいわね・・・どこかで間違えたかしら。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ええと・・・ラナが前に言ってたやつをもう1回言って見るな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：４－３２"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：１７－３５"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：１１－９"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：１０－３１"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どうだ、合ってるか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：う～ん、合ってると思ったんだけど。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：鏡を通じてラナさんが発した言葉にミスは無いと思いますよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：自信を持って進めてみましょう。きっと大丈夫ですから。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：はい、ありがとうございます。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ。じゃあ頼んだぜ、ラナ。"); eventList.Add(ActionEvent.None);
+                }
+            }
         }
         #endregion
         #region "真実解のイベント１【記憶の回想】"
