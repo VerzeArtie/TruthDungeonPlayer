@@ -273,6 +273,53 @@ namespace DungeonPlayer
             DungeonJumpToLocation35,
             DungeonJumpToLocation36,
             DungeonJumpToLocation37,
+            DungeonJumpToLocation38,
+            DungeonJumpToLocation39,
+            DungeonJumpToLocation40,
+            DungeonJumpToLocation41,
+            DungeonJumpToLocation42,
+            DungeonJumpToLocation43,
+            DungeonJumpToLocation44,
+            DungeonJumpToLocation45,
+            DungeonJumpToLocation46,
+            DungeonJumpToLocation47,
+            DungeonJumpToLocation48,
+            DungeonJumpToLocation49,
+            DungeonJumpToLocation50,
+            DungeonJumpToLocation51,
+            DungeonJumpToLocation52,
+            DungeonJumpToLocation53,
+            DungeonJumpToLocation54,
+            DungeonJumpToLocation55,
+            DungeonJumpToLocation56,
+            DungeonJumpToLocation57,
+            DungeonJumpToLocation58,
+            DungeonJumpToLocation59,
+            DungeonJumpToLocation60,
+            DungeonJumpToLocation61,
+            DungeonJumpToLocation62,
+            DungeonJumpToLocation63,
+            DungeonJumpToLocation64,
+            DungeonJumpToLocation65,
+            DungeonJumpToLocation66,
+            DungeonJumpToLocation67,
+            DungeonJumpToLocation68,
+            DungeonJumpToLocation69,
+            DungeonJumpToLocation70,
+            DungeonJumpToLocation71,
+            DungeonJumpToLocation72,
+            DungeonJumpToLocation73,
+            DungeonJumpToLocation74,
+            DungeonJumpToLocation75,
+            DungeonJumpToLocation76,
+            DungeonJumpToLocation77,
+            DungeonJumpToLocation78,
+            DungeonJumpToLocation79,
+            DungeonJumpToLocation80,
+            DungeonJumpToLocation81,
+            DungeonJumpToLocation82,
+            DungeonJumpToLocation83,
+            DungeonJumpToLocation84,
             DungeonJumpToLocationArea1End,
             DungeonJumpToLocationFail1,
             Ending,
@@ -10423,149 +10470,366 @@ namespace DungeonPlayer
         #region "真実解のイベント１【記憶の回想】"
         public static void Message13046(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.TruthRecollection3_1 == false)
+            {
+                GroundOne.WE2.TruthRecollection3_1 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+                #region "Story_TruthRecollection3_1"
+                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　全てが裏返しだとしたら？ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+                //messageList.Add("　　＜＜＜　この光景が全て幻想だとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                //messageList.Add("　　＜＜＜　初めから全てが間違っているのだとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ヴェルゼ・アーティ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：アイン、あんたホントに知らないの？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いや、マジで知らねえな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：ふうん、変ね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何が変なんだよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：もう何度か言ってると思うけど、もう一度言うわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、何度聞いても初めてにしか聞こえねえが、よろしく頼むぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：全てが裏返しな人なのよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナ。そういう言い方するから覚えられねえんだって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：頼む、もう少しだけわかりやすく教えてくれ。このとおりだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：FiveSeekerはその名の通り、パーティは合わせて５人。ここまでは良いわね？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：その中の５人を今から言うわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：おぉ、望むトコロだ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：望まれても困るんだけど・・・、じゃ行くわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：エルミ・ジョルジュ。現国王様よ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：ファラ・フローレ。現王妃様ね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：オル・ランディス。今は闘技場の覇者で名が通ってるわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：まあそんなトコだな、次。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：シニキア・カールハンツ。聖フローラ女学院の独立執行機関の長よ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：そして、ヴェルゼ・アーティ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：技の達人よ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：技の達人・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そう、そうそう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ソコだよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それだけなのかよ？他にもっとこう・・・ねえのかよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：無いわ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    ラナ：現所在地、職業、生活、交友関係、一切が不明よ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・う～ん、どうもその特徴が無くて覚えにくいよなあ・・・実際。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：でだ。【全てが裏返し】ってのはどういう意味なんだ結局？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    ラナ：私もよくわからないんだけどね・・・ゴメンナサイ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：い、いやいやいや、変なトコで謝るなよ。いいっていって！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    ラナ：この言葉はね、ランディスさんから聞いたのよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：っな！？　師匠からかよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    ラナ：うん、そうなのよ。だからホンットちょっとだけ触れて終わりって感じだったの。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ってか、何でラナはいつそんな会話を師匠としてたんだよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    ラナ：エスリミア草原区域で薬草の素材を探している時に偶然すれ違ったのよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そこで何でそういう会話になったんだよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    ラナ：何妙な所で突っかかってるのよ、ホンットにもう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いやいや、悪い悪ぃ・・・で、そん時に教えてもらったのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    ラナ：ええ、ちょっとその・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・うん？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+                #endregion
+
+                messageList.Add("ラナ：・・・バカアイン？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッハイー！ハイハイハイ、何でしょうか！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『ッシャゴオォォオォォ！！！』（ラナのライトニングキックがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE2.TruthRecollection1 || GroundOne.WE2.TruthRecollection2)
+                {
+                    messageList.Add("アイン：悪ぃ、例の頭痛だ。すまねえすまねえ。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：いつつつ・・・何かむちゃくちゃ変な頭痛がしてたんだよ。すまねえすまねえ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("ラナ：まあいいけど、汗びっしょりなのも何とかしなさいよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君、この現象はいつ頃からあるんですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ・・・何ていうかな・・・"); eventList.Add(ActionEvent.None);
+
+                if (GroundOne.WE2.TruthRecollection1)
+                {
+                    messageList.Add("アイン：何か１階の最後の隠し部屋を見つけた時からだな。"); eventList.Add(ActionEvent.None);
+                }
+                else if (GroundOne.WE2.TruthRecollection2)
+                {
+                    messageList.Add("アイン：何か２階の最後の隠し部屋を見つけた時からだな。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：今がはじめてだ。"); eventList.Add(ActionEvent.None);
+                }
+
+                messageList.Add("ヴェルゼ：・・・ラナさんにはこの現象は？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：私はバカアインみたいな現象は起きてないわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：そうですか。分かりました。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君、汗の量が少し異常ですので、もし具合が悪いのであれば必ず言ってください。体調が芳しくない場合は、ちゃんと休むべきです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ。悪い悪い、大丈夫だ。心配かけてすまねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：まあ、鏡のエリアも突破したと思うし、この小さい区画を進むだけだと思うわ、はやく出てしまいましょ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、了解！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+            }
         }
         #endregion
         #region "鏡ワープ area2"
         public static void Message13047(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation38);
         }
         public static void Message13048(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation39);
         }
         public static void Message13049(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation40);
         }
         public static void Message13050(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation41);
         }
         public static void Message13051(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation42);
         }
         public static void Message13052(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation43);
         }
         public static void Message13053(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation44);
         }
         public static void Message13054(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation45);
         }
         public static void Message13055(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation46);
         }
         public static void Message13056(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation47);
         }
         public static void Message13057(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation48);
         }
         public static void Message13058(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation49);
         }
         public static void Message13059(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation50);
         }
         public static void Message13060(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation51);
         }
         public static void Message13061(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation52);
         }
         public static void Message13062(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation53);
         }
         public static void Message13063(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation54);
         }
         public static void Message13064(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation55);
         }
         public static void Message13065(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation56);
         }
         public static void Message13066(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation57);
         }
         public static void Message13067(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation58);
         }
         public static void Message13068(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation59);
         }
         public static void Message13069(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation60);
         }
         public static void Message13070(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation61);
         }
         public static void Message13071(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation62);
         }
         public static void Message13072(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation63);
         }
         public static void Message13073(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation64);
         }
         public static void Message13074(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation65);
         }
         public static void Message13075(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation66);
         }
         public static void Message13076(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation67);
         }
         public static void Message13077(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation68);
         }
         public static void Message13078(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation69);
         }
         public static void Message13079(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation70);
         }
         public static void Message13080(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation71);
         }
         public static void Message13081(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation72);
         }
         public static void Message13082(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation73);
         }
         public static void Message13083(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation74);
         }
         public static void Message13084(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation75);
         }
         public static void Message13085(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation76);
         }
         public static void Message13086(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation77);
         }
         public static void Message13087(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation78);
         }
         public static void Message13088(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation79);
         }
         public static void Message13089(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation80);
         }
         public static void Message13090(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation81);
         }
         public static void Message13091(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation82);
         }
         public static void Message13092(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation83);
         }
         public static void Message13093(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation84);
         }
         public static void Message13094(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
