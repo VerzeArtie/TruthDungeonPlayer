@@ -320,6 +320,27 @@ namespace DungeonPlayer
             DungeonJumpToLocation82,
             DungeonJumpToLocation83,
             DungeonJumpToLocation84,
+            DungeonJumpToLocatinTruthWay1A,
+            DungeonJumpToLocatinTruthWay1B,
+            DungeonJumpToLocatinTruthWay1C,
+            DungeonJumpToLocatinTruthWay1D,
+            DungeonJumpToLocatinTruthWay2A,
+            DungeonJumpToLocatinTruthWay2B,
+            DungeonJumpToLocatinTruthWay2C,
+            DungeonJumpToLocatinTruthWay2D,
+            DungeonJumpToLocatinTruthWay3A,
+            DungeonJumpToLocatinTruthWay3B,
+            DungeonJumpToLocatinTruthWay3C,
+            DungeonJumpToLocatinTruthWay3D,
+            DungeonJumpToLocatinTruthWay4A,
+            DungeonJumpToLocatinTruthWay4B,
+            DungeonJumpToLocatinTruthWay4C,
+            DungeonJumpToLocatinTruthWay4D,
+            DungeonJumpToLocatinTruthWay5A,
+            DungeonJumpToLocatinTruthWay5B,
+            DungeonJumpToLocatinTruthWay5C,
+            DungeonJumpToLocatinTruthWay5D,
+            DungeonJumpToLocatinTruthWay5E,
             DungeonJumpToLocationArea1End,
             DungeonJumpToLocationFail1,
             Ending,
@@ -10831,11 +10852,201 @@ namespace DungeonPlayer
         {
             MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocation84);
         }
-        public static void Message13094(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13094(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
             // todo
             // after 同じルートを辿って最後失敗の時、次の会話イベントに流れてしまうのは防がないといけない
             // 同じルートで最後失敗の時、次の会話ではなく、失敗で戻るのが正解。
+
+            // WrongAnswerルート
+            if ((GroundOne.WE2.TruthWay95 == -1 && ii == 95) ||
+                (GroundOne.WE2.TruthWay96 == -1 && ii == 96) ||
+                (GroundOne.WE2.TruthWay97 == -1 && ii == 97) ||
+                (GroundOne.WE2.TruthWay98 == -1 && ii == 98) ||
+                (GroundOne.WE2.TruthWay99 == -1 && ii == 99) ||
+                (GroundOne.WE2.TruthWay100 == -1 && ii == 100) ||
+                (GroundOne.WE2.TruthWay101 == -1 && ii == 101) ||
+                (GroundOne.WE2.TruthWay102 == -1 && ii == 102) ||
+                (GroundOne.WE2.TruthWay103 == -1 && ii == 103) ||
+                (GroundOne.WE2.TruthWay104 == -1 && ii == 104) ||
+                (GroundOne.WE2.TruthWay105 == -1 && ii == 105) ||
+                (GroundOne.WE2.TruthWay106 == -1 && ii == 106) ||
+                (GroundOne.WE2.TruthWay107 == -1 && ii == 107) ||
+                (GroundOne.WE2.TruthWay108 == -1 && ii == 108) ||
+                (GroundOne.WE2.TruthWay109 == -1 && ii == 109) ||
+                (GroundOne.WE2.TruthWay110 == -1 && ii == 110) ||
+                (GroundOne.WE2.TruthWay111 == -1 && ii == 111) ||
+                (GroundOne.WE2.TruthWay112 == -1 && ii == 112) ||
+                (GroundOne.WE2.TruthWay113 == -1 && ii == 113) ||
+                (GroundOne.WE2.TruthWay114 == -1 && ii == 114) ||
+                (GroundOne.WE2.TruthWay115 == -1 && ii == 115) ||
+                (GroundOne.WE2.TruthWay116 == -1 && ii == 116) ||
+                (GroundOne.WE2.TruthWay117 == -1 && ii == 117) ||
+                (GroundOne.WE2.TruthWay118 == -1 && ii == 118) ||
+                (GroundOne.WE2.TruthWay119 == -1 && ii == 119) ||
+                (GroundOne.WE2.TruthWay120 == -1 && ii == 120) ||
+                (GroundOne.WE2.TruthWay121 == -1 && ii == 121) ||
+                (GroundOne.WE2.TruthWay122 == -1 && ii == 122) ||
+                (GroundOne.WE2.TruthWay123 == -1 && ii == 123) ||
+                (GroundOne.WE2.TruthWay124 == -1 && ii == 124) ||
+                (GroundOne.WE2.TruthWay125 == -1 && ii == 125) ||
+                (GroundOne.WE2.TruthWay126 == -1 && ii == 126) ||
+                (GroundOne.WE2.TruthWay127 == -1 && ii == 127) ||
+                (GroundOne.WE2.TruthWay128 == -1 && ii == 128) ||
+                (GroundOne.WE2.TruthWay129 == -1 && ii == 129) ||
+                (GroundOne.WE2.TruthWay130 == -1 && ii == 130) ||
+                (GroundOne.WE2.TruthWay131 == -1 && ii == 131) ||
+                (GroundOne.WE2.TruthWay132 == -1 && ii == 132) ||
+                (GroundOne.WE2.TruthWay133 == -1 && ii == 133) ||
+                (GroundOne.WE2.TruthWay134 == -1 && ii == 134) ||
+                (GroundOne.WE2.TruthWay135 == -1 && ii == 135) ||
+                (GroundOne.WE2.TruthWay136 == -1 && ii == 136) ||
+                (GroundOne.WE2.TruthWay137 == -1 && ii == 137) ||
+                (GroundOne.WE2.TruthWay138 == -1 && ii == 138) ||
+                (GroundOne.WE2.TruthWay139 == -1 && ii == 139) ||
+                (GroundOne.WE2.TruthWay140 == -1 && ii == 140) ||
+                (GroundOne.WE2.TruthWay141 == -1 && ii == 141) ||
+                (GroundOne.WE2.TruthWay142 == -1 && ii == 142) ||
+                (GroundOne.WE2.TruthWay143 == -1 && ii == 143) ||
+                (GroundOne.WE2.TruthWay144 == -1 && ii == 144) ||
+                (GroundOne.WE2.TruthWay145 == -1 && ii == 145) ||
+                (GroundOne.WE2.TruthWay146 == -1 && ii == 146) ||
+                (GroundOne.WE2.TruthWay147 == -1 && ii == 147) ||
+                (GroundOne.WE2.TruthWay148 == -1 && ii == 148) ||
+                (GroundOne.WE2.TruthWay149 == -1 && ii == 149) ||
+                (GroundOne.WE2.TruthWay150 == -1 && ii == 150))
+            {
+                JumpByMirror_TurnBack();
+                return;
+            }
+
+            // 正解ルート
+            if (GroundOne.WE2.TruthWay3_1 == ii)
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay1A);
+                return;
+            }
+            if (GroundOne.WE2.TruthWay3_2 == ii)
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay2A);
+                return;
+            }
+            if (GroundOne.WE2.TruthWay3_3 == ii)
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay3A);
+                return;
+            }
+            if (GroundOne.WE2.TruthWay3_4 == ii)
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay4A);
+                return;
+            }
+            if (GroundOne.WE2.TruthWay3_5 == ii)
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay5A);
+                return;
+            }
+
+            // 正解ルートが構築されてない場合、構築した上で正解ルートを辿る。
+            if (GroundOne.WE2.TruthWay3_1 == 0)
+            {
+                GroundOne.WE2.TruthWay3_1 = ii;
+                MakeCorrectAnswer(ii);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay1A);
+                return;
+            }
+            else if (GroundOne.WE2.TruthWay3_2 == 0)
+            {
+                GroundOne.WE2.TruthWay3_2 = ii;
+                MakeCorrectAnswer(ii);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay2A);
+                return;
+            }
+            else if (GroundOne.WE2.TruthWay3_3 == 0)
+            {
+                GroundOne.WE2.TruthWay3_3 = ii;
+                MakeCorrectAnswer(ii);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay3A);
+                return;
+            }
+            else if (GroundOne.WE2.TruthWay3_4 == 0)
+            {
+                GroundOne.WE2.TruthWay3_4 = ii;
+                MakeCorrectAnswer(ii);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay4A);
+                return;
+            }
+            else if (GroundOne.WE2.TruthWay3_5 == 0)
+            {
+                GroundOne.WE2.TruthWay3_5 = ii;
+                MakeCorrectAnswer(ii);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay5A);
+                // 最後はすべて通過済みとし、原点解ルートを見破れなくする。
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area1);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area2);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area3);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area4);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area5);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area6);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area7);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area8);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area9);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area10);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area11);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area12);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area13);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area14);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area15);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area16);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area17);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area18);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area19);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area20);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area21);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area22);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area23);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area24);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area25);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area26);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area27);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area28);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area29);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area30);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area31);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area32);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area33);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area34);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area35);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area36);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area37);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area38);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area39);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area40);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area41);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area42);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area43);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area44);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area45);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area46);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area47);
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area48);
+                return;
+            }
+            else
+            {
+                JumpByMirror_TurnBack();
+                return;
+            }
+        }
+        
+        private static void MakeCorrectAnswer(int ii)
+        {
+            // todo
+        }
+
+        private static void JumpByMirror_TurnBack()
+        {
+            // todo
         }
         public static void Message13095(ref List<string> messageList, ref List<ActionEvent> eventList)
         {

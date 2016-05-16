@@ -8031,7 +8031,7 @@ namespace DungeonPlayer
                     case 148: // 138
                     case 149: // 139
                     case 150: // 140
-                        MessagePack.Message13094(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13094(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 151: // X1B
@@ -10461,6 +10461,29 @@ namespace DungeonPlayer
             UpdateUnknownTileArea3_One(6, 38, true);
         }
 
+        private void JumpByMirror_TruthWay1A() { JumpToLocation(43, -36, true); UpdateUnknownTileArea3_Area49(); }
+        private void JumpByMirror_TruthWay1B() { JumpToLocation(31, -2, true); UpdateUnknownTileArea3_Area50(); }
+        private void JumpByMirror_TruthWay1C() { JumpToLocation(54, -32, true); UpdateUnknownTileArea3_Area51(); }
+        private void JumpByMirror_TruthWay1D() { JumpToLocation(47, -22, true); UpdateUnknownTileArea3_Area52(); }
+        private void JumpByMirror_TruthWay2A() { JumpToLocation(53, -17, true); UpdateUnknownTileArea3_Area53(); }
+        private void JumpByMirror_TruthWay2B() { JumpToLocation(21, -12, true); UpdateUnknownTileArea3_Area54(); }
+        private void JumpByMirror_TruthWay2C() { JumpToLocation(38, -37, true); UpdateUnknownTileArea3_Area55(); }
+        private void JumpByMirror_TruthWay2D() { JumpToLocation(25, -2, true); UpdateUnknownTileArea3_Area56(); }
+        private void JumpByMirror_TruthWay3A() { JumpToLocation(24, -26, true); UpdateUnknownTileArea3_Area57(); }
+        private void JumpByMirror_TruthWay3B() { JumpToLocation(43, -17, true); UpdateUnknownTileArea3_Area58(); }
+        private void JumpByMirror_TruthWay3C() { JumpToLocation(21, -4, true); UpdateUnknownTileArea3_Area59(); }
+        private void JumpByMirror_TruthWay3D() { JumpToLocation(35, -39, true); UpdateUnknownTileArea3_Area60(); }
+        private void JumpByMirror_TruthWay4A() { JumpToLocation(21, -38, true); UpdateUnknownTileArea3_Area61(); }
+        private void JumpByMirror_TruthWay4B() { JumpToLocation(49, -33, true); UpdateUnknownTileArea3_Area62(); }
+        private void JumpByMirror_TruthWay4C() { JumpToLocation(49, -16, true); UpdateUnknownTileArea3_Area63(); }
+        private void JumpByMirror_TruthWay4D() { JumpToLocation(44, -18, true); UpdateUnknownTileArea3_Area64(); }
+        private void JumpByMirror_TruthWay5A() { JumpToLocation(21, -24, true); UpdateUnknownTileArea3_Area65(); }
+        private void JumpByMirror_TruthWay5B() { JumpToLocation(54, -27, true); UpdateUnknownTileArea3_Area66(); }
+        private void JumpByMirror_TruthWay5C() { JumpToLocation(48, -31, true); UpdateUnknownTileArea3_Area67(); }
+        private void JumpByMirror_TruthWay5D() { JumpToLocation(1, -29, true); UpdateUnknownTile(); }
+        private void JumpByMirror_TruthWay5E() { JumpToLocation(21, -1, true); UpdateUnknownTile(); }
+        private void JumpByMirror_1_End() { JumpToLocation(18, -19, true); UpdateUnknownTile(); }
+ 
         private void UpdateUnknownTileArea3_One(int Y, int X)
         {
             UpdateUnknownTileArea3_One(Y, X, false);
@@ -11977,6 +12000,91 @@ namespace DungeonPlayer
                     JumpToLocation(27, -34, true);
                     UpdateUnknownTileArea3_Area48();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay1A)
+                {
+                    JumpByMirror_TruthWay1A();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay1B)
+                {
+                    JumpByMirror_TruthWay1B();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay1C)
+                {
+                    JumpByMirror_TruthWay1C();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay1D)
+                {
+                    JumpByMirror_TruthWay1D();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay2A)
+                {
+                    JumpByMirror_TruthWay2A();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay2B)
+                {
+                    JumpByMirror_TruthWay2B();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay2C)
+                {
+                    JumpByMirror_TruthWay2C();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay2D)
+                {
+                    JumpByMirror_TruthWay2D();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay3A)
+                {
+                    JumpByMirror_TruthWay3A();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay3B)
+                {
+                    JumpByMirror_TruthWay3B();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay3C)
+                {
+                    JumpByMirror_TruthWay3C();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay3D)
+                {
+                    JumpByMirror_TruthWay3D();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay4A)
+                {
+                    JumpByMirror_TruthWay4A();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay4B)
+                {
+                    JumpByMirror_TruthWay4B();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay4C)
+                {
+                    JumpByMirror_TruthWay4C();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay4D)
+                {
+                    JumpByMirror_TruthWay4D();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay5A)
+                {
+                    JumpByMirror_TruthWay5A();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay5B)
+                {
+                    JumpByMirror_TruthWay5B();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay5C)
+                {
+                    JumpByMirror_TruthWay5C();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay5D)
+                {
+                    JumpByMirror_TruthWay5D();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay5E)
+                {
+                    JumpByMirror_TruthWay5E();
+                }
+
                   
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "")
