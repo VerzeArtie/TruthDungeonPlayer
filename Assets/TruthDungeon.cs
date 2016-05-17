@@ -12084,6 +12084,10 @@ namespace DungeonPlayer
                 {
                     JumpByMirror_TruthWay5E();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area69)
+                {
+                    UpdateUnknownTileArea3_Area69();
+                }
 
                   
                 this.nowReading++;
