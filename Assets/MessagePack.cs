@@ -11842,33 +11842,8 @@ namespace DungeonPlayer
                         messageList.Add(" ～　THE　END　～　（曲げられた世界）"); eventList.Add(ActionEvent.None);
 
                         messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
-                        //this.dungeonField.Invalidate(); eventList.Add(ActionEvent.None); // セーブエンドなので、描画する必要はない。
 
-                        // todo
                         messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
-                        //using (ESCMenu esc = new ESCMenu())
-                        //{
-                        //    esc.MC = this.MC;
-                        //    esc.SC = this.SC;
-                        //    esc.TC = this.TC;
-                        //    esc.WE = this.we;
-                        //    esc.KnownTileInfo = null;
-                        //    esc.KnownTileInfo2 = null;
-                        //    esc.KnownTileInfo3 = null;
-                        //    esc.KnownTileInfo4 = null;
-                        //    esc.KnownTileInfo5 = null;
-                        //    esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
-                        //    esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
-                        //    esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
-                        //    esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
-                        //    esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
-                        //    esc.StartPosition = FormStartPosition.CenterParent;
-                        //    esc.TruthStory = true;
-                        //    esc.OnlySave = true;
-                        //    esc.ShowDialog(); eventList.Add(ActionEvent.None);
-                        //}
-
-                        //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
                     }
                 //}
             }
