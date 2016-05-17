@@ -122,7 +122,7 @@ namespace DungeonPlayer
         public static Color LightSkyBlue = new Color(135, 206, 250);
         public static Color DeepSkyBlue = new Color(0.0f, 191.0f/255.0f, 1.0f);
         public static Color Dodgerblue = new Color(30, 144, 255);
-        public static Color GhostWhite = new Color(248.0f / 255.0f, 248.0f / 2550.0f, 1.0f);
+        public static Color GhostWhite = new Color(248.0f / 255.0f, 248.0f / 255.0f, 1.0f);
         public static Color Lavender = new Color(230, 230, 250);
         public static Color Lightsteelblue = new Color(176, 196, 222);
         public static Color SlateGray = new Color(112, 128, 144);

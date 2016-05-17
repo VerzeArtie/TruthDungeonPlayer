@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ffbfef0a90ef2e47a3c3325487fee72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Background: {fileID: 0}
   yesnoSystemMessage: {fileID: 0}
   groupYesnoSystemMessage: {fileID: 0}
   Filter: {fileID: 0}
@@ -375,8 +376,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1895653841}
@@ -496,8 +497,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1910724007}
@@ -616,12 +617,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ThirdChara_Click
-        m_Mode: 1
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerButton_Click
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 166689111}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -844,7 +845,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 207096234}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1864888344}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &207096234
@@ -1028,12 +1040,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SecondChara_Click
-        m_Mode: 1
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerButton_Click
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 268820573}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1289,7 +1301,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 390796285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1350643233}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &390796285
@@ -1399,7 +1422,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 408001388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1378693021}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &408001388
@@ -1582,7 +1616,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 442890419}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BackpackPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 565293363}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &442890419
@@ -1840,8 +1885,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1463687784}
@@ -1960,7 +2005,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 488325842}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1207888452}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &488325842
@@ -2436,7 +2492,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 590143759}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 934460994}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &590143759
@@ -3413,8 +3480,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1431712664}
@@ -3534,8 +3601,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1319202726}
@@ -3864,8 +3931,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 692318268}
@@ -4067,7 +4134,6 @@ GameObject:
   - 20: {fileID: 1003768327}
   - 92: {fileID: 1003768326}
   - 124: {fileID: 1003768325}
-  - 81: {fileID: 1003768324}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4075,13 +4141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1003768324
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1003768323}
-  m_Enabled: 1
 --- !u!124 &1003768325
 Behaviour:
   m_ObjectHideFlags: 0
@@ -4217,8 +4276,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 688692963}
@@ -4410,7 +4469,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1065494741}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1943732801}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1065494741
@@ -4520,7 +4590,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1130333314}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BackpackPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 982117057}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1130333314
@@ -4630,12 +4711,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: FirstChara_Click
-        m_Mode: 1
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerButton_Click
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1188306077}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4751,8 +4832,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1600325749}
@@ -5312,8 +5393,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1314478438}
@@ -5580,8 +5661,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 215002299}
@@ -5775,8 +5856,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1969800850}
@@ -6105,7 +6186,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1493198848}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 492884446}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1493198848
@@ -6215,7 +6307,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1510485160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: FromPlayerToBackpack_Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1510485160
@@ -6326,8 +6429,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 449808966}
@@ -6521,8 +6624,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1974372816}
@@ -6641,7 +6744,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1552629313}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1918979098}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1552629313
@@ -7046,7 +7160,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1612543143}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1700973818}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1612543143
@@ -7291,8 +7416,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1595111846}
@@ -7704,8 +7829,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1584096802}
@@ -7898,8 +8023,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1975571208}
@@ -8229,8 +8354,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1966086601}
@@ -8349,7 +8474,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1863252115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankPageNumber_Click
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1681721577}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1863252115
@@ -8661,7 +8797,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1898150903}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: tapClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1898150903
@@ -8772,8 +8919,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: BankItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1529146686}
@@ -8967,8 +9114,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 507544889}
@@ -9234,8 +9381,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Backpack_Click
+      - m_Target: {fileID: 140265237}
+        m_MethodName: PlayerItem_Click
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 702810806}
@@ -9937,7 +10084,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2144394774}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 140265237}
+        m_MethodName: FromBackpackToPlayer_Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2144394774

@@ -51,10 +51,9 @@ namespace DungeonPlayer
 
             GroundOne.WE.LoadItemBankData(ref items, ref stacks);
 
-            PageNumber1_Click(bankListPage[0]);
-
-            player1Button_Click(player1Button);
-            p_PageNumber1_Click(playerListPage[0]);
+            BankPageNumber_Click(bankListPage[0]);
+            PlayerButton_Click(player1Button);
+            BackpackPageNumber_Click(playerListPage[0]);
         }
 
         public override void Update()
@@ -62,7 +61,7 @@ namespace DungeonPlayer
             base.Update();
         }
 
-        private void PageNumber1_Click(Text sender)
+        public void BankPageNumber_Click(Text sender)
         {
             this.currentListPage = Convert.ToInt32(sender.text);
 
@@ -93,12 +92,13 @@ namespace DungeonPlayer
                 }
                 else
                 {
+                    Debug.Log("stacks: " + ii.ToString() + " " + stacks[(this.currentListPage - 1) * MAX_VIEW_PAGE + ii]);
                     bankItemStack[ii].text = "x" + stacks[(this.currentListPage - 1) * MAX_VIEW_PAGE + ii].ToString();
                 }
             }
         }
 
-        private void p_PageNumber1_Click(Text sender)
+        public void BackpackPageNumber_Click(Text sender)
         {
             this.p_currentListPage = Convert.ToInt32(sender.text);
 
@@ -172,7 +172,7 @@ namespace DungeonPlayer
             }
         }
 
-        public void player1Button_Click(Button sender)
+        public void PlayerButton_Click(Button sender)
         {
             if (sender.GetComponent<Image>().color == Color.blue)
             {
@@ -202,11 +202,11 @@ namespace DungeonPlayer
                 this.p_currentListPage = shadowPage3;
             }
 
-            if (this.p_currentListPage == 1) p_PageNumber1_Click(this.playerListPage[0]);
-            else if (this.p_currentListPage == 2) p_PageNumber1_Click(this.playerListPage[1]);
+            if (this.p_currentListPage == 1) BackpackPageNumber_Click(this.playerListPage[0]);
+            else if (this.p_currentListPage == 2) BackpackPageNumber_Click(this.playerListPage[1]);
         }
 
-        private void FromBackpackToPlayer_Click(object sender)
+        public void FromBackpackToPlayer_Click()
         {
             if (this.currentBankItem == null) return; // 空選択は何もしない。
             if (this.currentBankItem.text == String.Empty || this.currentBankItem.text == "" || this.currentBankItem.text == null) return;
@@ -215,7 +215,7 @@ namespace DungeonPlayer
             int targetDeleteNum = 0;
             for (int ii = 0; ii < MAX_VIEW_PAGE; ii++)
             {
-                if (this.currentBankItem.Equals(bankItemsList[ii]))
+                if (this.currentBankItem.Equals(bankItemText[ii]))
                 {
                     targetDeleteNum = (this.currentListPage - 1) * 10 + ii;
                     stackValue = stacks[targetDeleteNum];
@@ -231,13 +231,13 @@ namespace DungeonPlayer
                 return;
             }
 
-            if (this.p_currentListPage == 1) p_PageNumber1_Click(playerListPage[0]);
-            else if (this.p_currentListPage == 2) p_PageNumber1_Click(playerListPage[1]);
+            if (this.p_currentListPage == 1) BackpackPageNumber_Click(playerListPage[0]);
+            else if (this.p_currentListPage == 2) BackpackPageNumber_Click(playerListPage[1]);
 
             this.currentBankItem.text = string.Empty;
             for (int ii = 0; ii < MAX_VIEW_PAGE; ii++)
             {
-                if (this.currentBankItem.Equals(bankItemsList[ii]))
+                if (this.currentBankItem.Equals(bankItemText[ii]))
                 {
                     bankItemStack[ii].text = "";
                 }
@@ -246,13 +246,13 @@ namespace DungeonPlayer
             stacks[targetDeleteNum] = 0;
 
             this.p_currentListPage = (addedNumber / MAX_VIEW_PAGE) + 1;
-            p_PageNumber1_Click(playerListPage[this.p_currentListPage - 1]);
+            BackpackPageNumber_Click(playerListPage[this.p_currentListPage - 1]);
             PlayerItem_Click(playerItemText[addedNumber % MAX_VIEW_PAGE]);
         }
 
-        private void FromPlayerToBackpack_Click(object sender)
+        public void FromPlayerToBackpack_Click()
         {
-            if (this.currentPlayerItem == null) return; // 空選択は何もしない。
+            if (this.currentPlayerItem == null) { return; } // 空選択は何もしない。
             if (this.currentPlayerItem.text == String.Empty || this.currentPlayerItem.text == "" || this.currentPlayerItem.text == null) return;
             if (TruthItemAttribute.CheckImportantItem(this.currentPlayerItem.text) != TruthItemAttribute.Transfer.Any)
             {
@@ -263,7 +263,7 @@ namespace DungeonPlayer
             int stackValue = 0;
             for (int ii = 0; ii < MAX_VIEW_PAGE; ii++)
             {
-                if (this.currentPlayerItem.Equals(playerItemList[ii]))
+                if (this.currentPlayerItem.Equals(playerItemText[ii]))
                 {
                     stackValue = this.currentPlayer.CheckBackPackExist(new ItemBackPack(this.currentPlayerItem.text), (this.p_currentListPage - 1) * 10 + ii);
                     break;
@@ -281,14 +281,14 @@ namespace DungeonPlayer
                     this.currentPlayerItem.text = string.Empty;
                     for (int jj = 0; jj < MAX_VIEW_PAGE; jj++)
                     {
-                        if (this.currentPlayerItem.Equals(playerItemList[jj]))
+                        if (this.currentPlayerItem.Equals(playerItemText[jj]))
                         {
                             playerItemStack[jj].text = "";
                         }
                     }
 
                     currentListPage = (ii / MAX_VIEW_PAGE) + 1;
-                    PageNumber1_Click(bankListPage[this.currentListPage - 1]);
+                    BankPageNumber_Click(bankListPage[this.currentListPage - 1]);
                     BankItem_Click(bankItemText[ii % MAX_VIEW_PAGE]);
                     return; // 余計なFor回しはせず終了する。
                 }
