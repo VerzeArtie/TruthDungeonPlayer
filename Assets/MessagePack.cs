@@ -273,6 +273,7 @@ namespace DungeonPlayer
             DungeonJumpToLocation35,
             DungeonJumpToLocation36,
             DungeonJumpToLocation37,
+            DungeonJumpToLocationFail1,
             DungeonJumpToLocationArea1End,
             DungeonJumpToLocation38,
             DungeonJumpToLocation39,
@@ -321,6 +322,8 @@ namespace DungeonPlayer
             DungeonJumpToLocation82,
             DungeonJumpToLocation83,
             DungeonJumpToLocation84,
+            DungeonMakeCorrectAnswer,
+            DungeonJumpToLocationTurnBack,
             DungeonJumpToLocatinTruthWay1A,
             DungeonJumpToLocatinTruthWay1B,
             DungeonJumpToLocatinTruthWay1C,
@@ -342,11 +345,9 @@ namespace DungeonPlayer
             DungeonJumpToLocatinTruthWay5C,
             DungeonJumpToLocatinTruthWay5D,
             DungeonJumpToLocatinTruthWay5E,
-            DungeonJumpToLocationTurnBack,
             DungeonJumpToLocationRecollection3,
             DungeonJumpToLocationRecollection4,
             DungeonJumpToLocationZeroWay,
-            DungeonJumpToLocationFail1,
             Ending,
         }
         #endregion

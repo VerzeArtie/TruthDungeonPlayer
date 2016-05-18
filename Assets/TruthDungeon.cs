@@ -11760,14 +11760,14 @@ namespace DungeonPlayer
                     JumpToLocation(1, -38, true);
                     UpdateUnknownTile();
                 }
-                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationArea1End)
-                {
-                    JumpToLocation(18, -19, true);
-                    UpdateUnknownTile();
-                }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationFail1)
                 {
                     JumpToLocation(3, -19, true);
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationArea1End)
+                {
+                    JumpToLocation(18, -19, true);
                     UpdateUnknownTile();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation38)
@@ -12005,6 +12005,14 @@ namespace DungeonPlayer
                     JumpToLocation(27, -34, true);
                     UpdateUnknownTileArea3_Area48();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonMakeCorrectAnswer)
+                {
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationTurnBack)
+                {
+                    JumpToLocation(20, -19, true);
+                    UpdateUnknownTile();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay1A)
                 {
                     JumpByMirror_TruthWay1A();
@@ -12088,11 +12096,6 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay5E)
                 {
                     JumpByMirror_TruthWay5E();
-                }
-                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationTurnBack)
-                {
-                    JumpToLocation(20, -19, true);
-                    UpdateUnknownTile();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationRecollection3)
                 {
