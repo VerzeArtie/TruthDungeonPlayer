@@ -273,6 +273,7 @@ namespace DungeonPlayer
             DungeonJumpToLocation35,
             DungeonJumpToLocation36,
             DungeonJumpToLocation37,
+            DungeonJumpToLocationArea1End,
             DungeonJumpToLocation38,
             DungeonJumpToLocation39,
             DungeonJumpToLocation40,
@@ -341,7 +342,10 @@ namespace DungeonPlayer
             DungeonJumpToLocatinTruthWay5C,
             DungeonJumpToLocatinTruthWay5D,
             DungeonJumpToLocatinTruthWay5E,
-            DungeonJumpToLocationArea1End,
+            DungeonJumpToLocationTurnBack,
+            DungeonJumpToLocationRecollection3,
+            DungeonJumpToLocationRecollection4,
+            DungeonJumpToLocationZeroWay,
             DungeonJumpToLocationFail1,
             Ending,
         }
@@ -10923,27 +10927,27 @@ namespace DungeonPlayer
             // 正解ルート
             if (GroundOne.WE2.TruthWay3_1 == ii)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay1A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay1A);
                 return;
             }
             if (GroundOne.WE2.TruthWay3_2 == ii)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay2A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay2A);
                 return;
             }
             if (GroundOne.WE2.TruthWay3_3 == ii)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay3A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay3A);
                 return;
             }
             if (GroundOne.WE2.TruthWay3_4 == ii)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay4A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay4A);
                 return;
             }
             if (GroundOne.WE2.TruthWay3_5 == ii)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay5A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay5A);
                 return;
             }
 
@@ -10952,35 +10956,36 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.TruthWay3_1 = ii;
                 MakeCorrectAnswer(ii);
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay1A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay1A);
                 return;
             }
             else if (GroundOne.WE2.TruthWay3_2 == 0)
             {
                 GroundOne.WE2.TruthWay3_2 = ii;
                 MakeCorrectAnswer(ii);
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay2A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay2A);
                 return;
             }
             else if (GroundOne.WE2.TruthWay3_3 == 0)
             {
                 GroundOne.WE2.TruthWay3_3 = ii;
                 MakeCorrectAnswer(ii);
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay3A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay3A);
                 return;
             }
             else if (GroundOne.WE2.TruthWay3_4 == 0)
             {
                 GroundOne.WE2.TruthWay3_4 = ii;
                 MakeCorrectAnswer(ii);
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay4A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay4A);
                 return;
             }
             else if (GroundOne.WE2.TruthWay3_5 == 0)
             {
                 GroundOne.WE2.TruthWay3_5 = ii;
                 MakeCorrectAnswer(ii);
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay5A);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay5A);
+
                 // 最後はすべて通過済みとし、原点解ルートを見破れなくする。
                 messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area1);
                 messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area2);
@@ -11059,6 +11064,58 @@ namespace DungeonPlayer
         public static void Message13097(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay1D);
+
+            if (!GroundOne.WE.dungeonEvent308)
+            {
+                GroundOne.WE.dungeonEvent308 = true;
+                messageList.Add("ラナ：来たみたいね、正解ルート。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っお、なんでわかるんだよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：目の前に看板があるじゃない、それを見てみましょ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.UpdateLocationTop);
+
+                messageList.Add("アイン：ええと、なになに・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『　進んではならない、ならざれば、散るがよい　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っな！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：これは・・・脅しでしょうか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・ックソ・・・なんだこれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アイン、進みましょ。道は見えてるわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、しかし・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：【罠】だとでも言いたいのかしら？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ッフフ、それ分かってて進んだんでしょ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・いや・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アンタって、ホントバカよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：そういうの私には絶対に気付かれないとでも思ってたんでしょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、止めて悪かった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：進むって決めたのは俺だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どんな結果であれ、進むぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ッフフ、そうこなくちゃ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナ、お前が思うように鏡を選択してくれ。　頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、任せておいて♪"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message13098(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -11108,8 +11165,311 @@ namespace DungeonPlayer
         {
             MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay5D);
         }
+        #endregion
+        #region "Z1-Z4ルート到達時の呼び声"
         public static void Message13110(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.StartSeeker)
+            {
+                JumpByMirror_TurnBack();
+            }
+            // ここにWorldEnvironment2のデータを自動書き込みする。
+            else if (!GroundOne.WE.dungeonEvent314)
+            {
+                GroundOne.WE.dungeonEvent314 = true;
+
+                messageList.Add("ラナ：・・・聞こえる？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：私よ、ラナよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("        『ラナの眼の色は今、完全に薄白色に完全統合している。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おい、誰に言ってるんだ。ラナ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：っし、しばらく静かに。大丈夫ですから。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜　ラナはどこに対してでもなく、鏡と自分の間に対して、何かを語り始めた　＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：私が迷ったわけじゃない。私が迷ってるわけがない。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：でもあなたが迷ったのでしょう？あなたが迷い続けるのが原因なのですよ、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：この事に関しては、他人から一方的に決められたくないし、自分自身で決めたくもないの。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：もし決定しまったとして、受け入れられるかしら？決められないわよこんなの。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：だとすれば、あなたはどうしたいのですか？明確に決定した上で、答えなさい、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：・・・・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：ええ、決めたわ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：決めた。もう決めたのよ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：そう、よくやりましたね、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：今私が決めた事。それを受け入れるわ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：それがあなた自身、そして、あなたの周りに居る人達にとって決定された事実になるのよ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：ええ。決定した事、それを私は受け入れるわ・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜　ラナは語りを終えると、その場で倒れこんだ　＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おい！ラナ！！　大丈夫か！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ひでえ汗だ・・・一体何が起きたっていうんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おい、青水晶を使って町に戻るぞ。いいな、ラナ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：べ・・・別に・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君、ここはボクも戻るべきだと思います。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうだよな。こんな状態で続けられるわけがねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、待ってろ。今すぐ戻ってやるからな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っそれ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+            }
+            else if (!GroundOne.WE.dungeonEvent315)
+            {
+                GroundOne.WE.dungeonEvent315 = true;
+
+                messageList.Add("ラナ：・・・私・・・私じゃないわよ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：のわ！　何がだ、何がどうしたんだ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：私じゃない・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("        『ラナの眼の色は完全に薄白色に完全統合している。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まさか・・・また例の・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：ココは静かに待っているしかありません。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ックソ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜　ラナはどこに対してでもなく、鏡と自分の間に対して、何かを語り始めた　＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：私じゃない・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：いいえ、あなた自身が決めた事でしょう？』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：違うわ、確かに私が決めた事なのは事実だけど・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：そう、あなた自身が決めた事。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：こんな結末になるなんて聞いてなかったわ！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：それでも決めたのはあなた。  あなた自身が決めてしまった事なのでしょう？』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：そんな・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：決定は事実になる。あなたが決めた事なのよ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：・・・・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：そうね、私が自分で決めた事。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：自分自身の判断で決めた事、これは私の意志よ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：そう、それであなたはようやく楽になれる。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：不安も消え去る。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：確定した安心も得る。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：あなたは今、ようやく迷わなくてすむようになるの。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：・・・自分自身で決めた事、受け入れる事で少し楽になれたわ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：そうね、不安も迷いも今はもう捨てるわ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：たとえ結末を知っていようと私は受け入れるわ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：そう、決定する事で、ヒトは不安を払拭し、迷いが消え去るもの。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：その事、決して忘れないよう・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜　ラナは語りを終えると、その場で倒れこんだ　＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：終わったようですね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナ、大丈夫か！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う・・・うん・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：また汗がビッショリだぞ、すぐ町に戻るか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ううん、少し休めば大丈夫だと思うけど・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・いや、悪いがココは戻らせてもらうぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ごめんなさいね・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：変なトコで謝るな。ラナは悪くねえんだし。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っさてと、じゃあ戻るぜ！　っそれ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+            }
+            else if (!GroundOne.WE.dungeonEvent316)
+            {
+                GroundOne.WE.dungeonEvent316 = true;
+
+                messageList.Add("ラナ：・・・う・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？どうした？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("        『ラナの眼の色は完全に薄白色に完全統合している。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っくそ・・・例の現象か・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ヴェルゼ、これはどうにもならないのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：ラナさんが意識している以上、避けようはありません。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：無理に引き剥がそうとすれば、確実に取り返しのつかない結果を生みます。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・分かった。見守るしかないようだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜　ラナはどこに対してでもなく、鏡と自分の間に対して、何かを語り始めた　＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：どこで間違えたのかしら。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：決定という行為自体にミスや誤りはないのですよ、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：違う・・・だから失敗するの』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：だからミスをするの』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：だから駄目なのよ・・・ダメなの！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：駄目・・・わかってるけど、もうどうにも・・・暗闇しか見えないわ・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：ラナ・アミリア、あなたが起因しているのですよ。それは分かっていますか？』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：アインがひとりでダンジョンに行くなんて言い出したわ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：FiveSeeker以外まともな状態で帰った人なんて居ないと聞いているわ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：そんなトコへ行こうとしたアインが悪いんじゃない！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っな！・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：それは違いますよ、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：彼の意志は独断ではなく、あなたを気遣っての事。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：彼自身の強さの証明があなたへの安心につながる。彼はそう考えての行為。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：分かってるわよ！！そんなことぐらい！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：その理解の上での行為。そう、あなたが決定したその意志もまた、あなた自身のもの』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：あなた以外の誰が悪いのでしょうか？ラナ・アミリアよ』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：・・・ッフフ、おかしいわね。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：自分で決めておいて言うのもなんだけど・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：そうよ、私のせいよ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：ダンジョンへ付いていくと決めた私自身の決定が全て悪いの。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：誰も悪くない。周りの人は誰も悪くないの。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッバ！　バカな事を！　何て事を言うんだ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：分かったでしょう？　結果的にはこれで良かった事となる、わかるでしょう？ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：・・・ええ、そうね。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：この結果なら最善だわ、誰も傷つかないし、誰も嫌な思いはしない。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：不幸と幸福は等しきもの。失敗も成功も等しきもの。良いも悪いも等しきもの。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：そのまま進めなさい、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜　ラナは語りを終えると、その場で倒れこんだ　＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナがどうしてこんな事をしなくちゃならないんだ・・・っくそ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・う・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：ラナさん・・・これは・・・酷い状態です。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：すぐに町に戻るぜ。異論はないな？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：もちろんです、すぐに戻りましょう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：じゃあ、使うぜ。っそれ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+            }
+            else if (!GroundOne.WE.dungeonEvent317)
+            {
+                GroundOne.WE.dungeonEvent317 = true;
+
+                messageList.Add("ラナ：・・・光が・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？光どうかしたのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("        『ラナの眼の色は完全に薄白色に完全統合している。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まだあるのか・・・負けるなよ、ラナ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜　ラナはどこに対してでもなく、鏡と自分の間に対して、何かを語り始めた　＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：誰も嫌な思いはさせない、そう思い始めてからは光が見え始めたの。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：光を求めなさい、ラナ・アミリア』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：ええ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：光を見出し、同時に全ての暗闇を抱えなさい、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：ええ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：何も無い所に全てを詰めるのよ、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：ええ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『（呼び声）：全てを終わらせたくなければ、全てを抱えなさい、ラナ・アミリア。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：ええ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『呼び声：あなたの居ない場所、あなたが居た場所。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("『ラナ：あなたが来る場所、あなたが来た場所へ。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜　ラナは語りを終えると、その場で倒れこんだ　＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・すぅ・・・すぅ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナ・・・気絶と同時に寝てしまったのか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君、戻りましょう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そうだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：じゃあ、使うぜ。っそれ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+            }
+            else
+            {
+                JumpByMirror_TurnBack(); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "ボス戦闘"
@@ -11120,6 +11480,8 @@ namespace DungeonPlayer
         #region "鏡エリア２の始めの看板"
         public static void Message13112(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area1);
+
             if (GroundOne.WE.dungeonEvent314 && GroundOne.WE.dungeonEvent314_2 &&
                 GroundOne.WE.dungeonEvent315 && GroundOne.WE.dungeonEvent315_2 &&
                 GroundOne.WE.dungeonEvent316 && GroundOne.WE.dungeonEvent316_2 &&
