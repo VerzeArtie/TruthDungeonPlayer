@@ -10596,6 +10596,366 @@ namespace DungeonPlayer
                 }
             }
         }
+        
+        private void MakeCorrectAnswer(int num)
+        {
+            // 95, 96, 97, 105, 112, 113, 121, 124, 125, 133, 138, 144
+            // [122-123] [142-143] [145-146]
+            // [98-100] [106-108] [109-111] [114-116] [130-132] [139-141]
+            // [101-104] [117-120] [126-129] [134-137] [147-150]
+
+            // グループ１なら、４，４，２
+            // グループ２なら、４，４，１
+            // グループ３なら、４，４
+            // グループ４なら、４，３
+            // と思ったが、よく考えるとX1A->B->C->D->戻るで一つづつ開いていく方が楽しいのでその方向で作り込む。
+            // いやいや、Ｘルートから最初の地点へ戻った時にオープンする方が楽しそう。
+
+            int totalOpenNum = 0;
+            if (GroundOne.WE2.TruthWay95 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay96 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay97 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay98 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay99 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay100 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay101 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay102 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay103 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay104 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay105 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay106 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay107 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay108 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay109 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay110 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay111 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay112 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay113 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay114 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay115 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay116 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay117 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay118 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay119 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay120 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay121 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay122 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay123 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay124 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay125 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay126 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay127 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay128 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay129 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay130 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay131 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay132 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay133 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay134 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay135 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay136 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay137 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay138 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay139 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay140 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay141 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay142 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay143 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay144 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay145 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay146 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay147 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay148 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay149 == -1) totalOpenNum++;
+            if (GroundOne.WE2.TruthWay150 == -1) totalOpenNum++;
+
+            if (totalOpenNum >= 55) return;
+
+            // 全体のオープンしていない数を数えておき、合計１１を開くようにしなければならない。
+            // 初めのオープン場所はnumで指定されているため、それをそのまま開く。
+            int ElevenCounter = 11;
+            int[] group1 = { 95, 96, 97, 105, 112, 113, 121, 124, 125, 133, 138, 144 };
+            foreach (int current in group1)
+            {
+                if (current == num)
+                {
+                    MakeWrongAnswerSub1(num); ElevenCounter -= 1;
+                    OpenWrongElevenAnswer(ElevenCounter);
+                    return;
+                }
+            }
+            int[] group2 = new int[] { 122, 123, 142, 143, 145, 146 };
+            foreach (int current in group2)
+            {
+                if (current == num)
+                {
+                    MakeWrongAnswerSub2(num); ElevenCounter -= 2;
+                    OpenWrongElevenAnswer(ElevenCounter);
+                    return;
+                }
+            }
+
+            int[] group3 = new int[] { 98, 99, 100, 106, 107, 108, 109, 110, 111, 114, 115, 116, 130, 131, 132, 139, 140, 141 };
+            foreach (int current in group3)
+            {
+                if (current == num)
+                {
+                    MakeWrongAnswerSub3(num); ElevenCounter -= 3;
+                    OpenWrongElevenAnswer(ElevenCounter);
+                    return;
+                }
+            }
+            int[] group4 = new int[] { 101, 102, 103, 104, 117, 118, 119, 120, 126, 127, 128, 129, 134, 135, 136, 137, 147, 148, 149, 150 };
+            foreach (int current in group4)
+            {
+                if (current == num)
+                {
+                    MakeWrongAnswerSub4(num); ElevenCounter -= 4;
+                    OpenWrongElevenAnswer(ElevenCounter);
+                    return;
+                }
+            }
+        }
+
+        private void OpenWrongElevenAnswer(int ElevenCounter)
+        {
+            while (ElevenCounter > 0)
+            {
+                if (ElevenCounter >= 4)
+                {
+                    if (SearchArriveGroup4() > 0) { MakeWrongAnswerSub4(); ElevenCounter -= 4; }
+                    else if (SearchArriveGroup3() > 0) { MakeWrongAnswerSub3(); ElevenCounter -= 3; }
+                    else if (SearchArriveGroup2() > 0) { MakeWrongAnswerSub2(); ElevenCounter -= 2; }
+                    else if (SearchArriveGroup1() > 0) { MakeWrongAnswerSub1(); ElevenCounter -= 1; }
+                }
+                else if (ElevenCounter == 3)
+                {
+                    if (SearchArriveGroup3() > 0) { MakeWrongAnswerSub3(); ElevenCounter -= 3; }
+                    else if (SearchArriveGroup2() > 0) { MakeWrongAnswerSub2(); ElevenCounter -= 2; }
+                    else if (SearchArriveGroup1() > 0) { MakeWrongAnswerSub1(); ElevenCounter -= 1; }
+                }
+                else if (ElevenCounter == 2)
+                {
+                    if (SearchArriveGroup2() > 0) { MakeWrongAnswerSub2(); ElevenCounter -= 2; }
+                    else if (SearchArriveGroup1() > 0) { MakeWrongAnswerSub1(); ElevenCounter -= 1; }
+                }
+                else
+                {
+                    if (SearchArriveGroup1() > 0) { MakeWrongAnswerSub1(); ElevenCounter -= 1; }
+                    else { return; } // 万が一にも通らないが、万が一のため。
+                }
+            }
+        }
+
+        private int SearchArriveGroup1()
+        {
+            int result = 0;
+            if (GroundOne.WE2.TruthWay95 == 0) result++;
+            if (GroundOne.WE2.TruthWay96 == 0) result++;
+            if (GroundOne.WE2.TruthWay97 == 0) result++;
+            if (GroundOne.WE2.TruthWay105 == 0) result++;
+            if (GroundOne.WE2.TruthWay112 == 0) result++;
+            if (GroundOne.WE2.TruthWay113 == 0) result++;
+            if (GroundOne.WE2.TruthWay121 == 0) result++;
+            if (GroundOne.WE2.TruthWay124 == 0) result++;
+            if (GroundOne.WE2.TruthWay125 == 0) result++;
+            if (GroundOne.WE2.TruthWay133 == 0) result++;
+            if (GroundOne.WE2.TruthWay138 == 0) result++;
+            if (GroundOne.WE2.TruthWay144 == 0) result++;
+
+            return result;
+        }
+        private int SearchArriveGroup2()
+        {
+            int result = 0;
+            if (GroundOne.WE2.TruthWay122 == 0) result++;
+            if (GroundOne.WE2.TruthWay142 == 0) result++;
+            if (GroundOne.WE2.TruthWay145 == 0) result++;
+
+            return result;
+        }
+        private int SearchArriveGroup3()
+        {
+            int result = 0;
+            if (GroundOne.WE2.TruthWay98 == 0) result++;
+            if (GroundOne.WE2.TruthWay106 == 0) result++;
+            if (GroundOne.WE2.TruthWay109 == 0) result++;
+            if (GroundOne.WE2.TruthWay114 == 0) result++;
+            if (GroundOne.WE2.TruthWay130 == 0) result++;
+            if (GroundOne.WE2.TruthWay139 == 0) result++;
+
+            return result;
+        }
+        private int SearchArriveGroup4()
+        {
+            int result = 0;
+            if (GroundOne.WE2.TruthWay101 == 0) result++;
+            if (GroundOne.WE2.TruthWay117 == 0) result++;
+            if (GroundOne.WE2.TruthWay126 == 0) result++;
+            if (GroundOne.WE2.TruthWay134 == 0) result++;
+            if (GroundOne.WE2.TruthWay147 == 0) result++;
+
+            return result;
+        }
+
+        private void MakeWrongAnswerSub1()
+        {
+            MakeWrongAnswerSub1(0);
+        }
+        private void MakeWrongAnswerSub1(int num)
+        {
+            if (GroundOne.WE2.TruthWay95 == 0 && (num == 0 || num == 95)) { GroundOne.WE2.TruthWay95 = -1; UpdateUnknownTileArea3_One(29, 36); UpdateUnknownTileArea3_Area5(); return; }
+            if (GroundOne.WE2.TruthWay96 == 0 && (num == 0 || num == 96)) { GroundOne.WE2.TruthWay96 = -1; UpdateUnknownTileArea3_One(9, 50); UpdateUnknownTileArea3_Area6(); return; }
+            if (GroundOne.WE2.TruthWay97 == 0 && (num == 0 || num == 97)) { GroundOne.WE2.TruthWay97 = -1; UpdateUnknownTileArea3_One(14, 45); UpdateUnknownTileArea3_Area7(); return; }
+            if (GroundOne.WE2.TruthWay105 == 0 && (num == 0 || num == 105)) { GroundOne.WE2.TruthWay105 = -1; UpdateUnknownTileArea3_One(10, 42); UpdateUnknownTileArea3_Area13(); return; }
+            if (GroundOne.WE2.TruthWay112 == 0 && (num == 0 || num == 112)) { GroundOne.WE2.TruthWay112 = -1; UpdateUnknownTileArea3_One(12, 41); UpdateUnknownTileArea3_Area19(); return; }
+            if (GroundOne.WE2.TruthWay113 == 0 && (num == 0 || num == 113)) { GroundOne.WE2.TruthWay113 = -1; UpdateUnknownTileArea3_One(17, 21); UpdateUnknownTileArea3_Area20(); return; }
+            if (GroundOne.WE2.TruthWay121 == 0 && (num == 0 || num == 121)) { GroundOne.WE2.TruthWay121 = -1; UpdateUnknownTileArea3_One(9, 35); UpdateUnknownTileArea3_Area26(); return; }
+            if (GroundOne.WE2.TruthWay124 == 0 && (num == 0 || num == 124)) { GroundOne.WE2.TruthWay124 = -1; UpdateUnknownTileArea3_One(24, 31); UpdateUnknownTileArea3_Area31(); return; }
+            if (GroundOne.WE2.TruthWay125 == 0 && (num == 0 || num == 125)) { GroundOne.WE2.TruthWay125 = -1; UpdateUnknownTileArea3_One(39, 47); UpdateUnknownTileArea3_Area32(); return; }
+            if (GroundOne.WE2.TruthWay133 == 0 && (num == 0 || num == 133)) { GroundOne.WE2.TruthWay133 = -1; UpdateUnknownTileArea3_One(25, 34); UpdateUnknownTileArea3_Area36(); return; }
+            if (GroundOne.WE2.TruthWay138 == 0 && (num == 0 || num == 138)) { GroundOne.WE2.TruthWay138 = -1; UpdateUnknownTileArea3_One(17, 42); UpdateUnknownTileArea3_Area41(); return; }
+            if (GroundOne.WE2.TruthWay144 == 0 && (num == 0 || num == 144)) { GroundOne.WE2.TruthWay144 = -1; UpdateUnknownTileArea3_One(24, 53); UpdateUnknownTileArea3_Area46(); return; }
+        }
+
+        private void MakeWrongAnswerSub2()
+        {
+            MakeWrongAnswerSub2(0);
+        }
+        private void MakeWrongAnswerSub2(int num)
+        {
+            if (GroundOne.WE2.TruthWay122 == 0 && (num == 0 || num == 122 || num == 123))
+            {
+                GroundOne.WE2.TruthWay122 = -1; UpdateUnknownTileArea3_One(20, 50);
+                GroundOne.WE2.TruthWay123 = -1; UpdateUnknownTileArea3_One(20, 52);
+                UpdateUnknownTileArea3_Area28();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay142 == 0 && (num == 0 || num == 142 || num == 143))
+            {
+                GroundOne.WE2.TruthWay142 = -1; UpdateUnknownTileArea3_One(24, 44);
+                GroundOne.WE2.TruthWay143 = -1; UpdateUnknownTileArea3_One(26, 44);
+                UpdateUnknownTileArea3_Area45();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay145 == 0 && (num == 0 || num == 145 || num == 146))
+            {
+                GroundOne.WE2.TruthWay145 = -1; UpdateUnknownTileArea3_One(6, 51);
+                GroundOne.WE2.TruthWay146 = -1; UpdateUnknownTileArea3_One(6, 52);
+                UpdateUnknownTileArea3_Area47();
+                return;
+            }
+        }
+
+        private void MakeWrongAnswerSub3()
+        {
+            MakeWrongAnswerSub3(0);
+        }
+        private void MakeWrongAnswerSub3(int num)
+        {
+            if (GroundOne.WE2.TruthWay98 == 0 && (num == 0 || num == 98 || num == 99 || num == 100))
+            {
+                GroundOne.WE2.TruthWay98 = -1; UpdateUnknownTileArea3_One(30, 27);
+                GroundOne.WE2.TruthWay99 = -1; UpdateUnknownTileArea3_One(30, 29);
+                GroundOne.WE2.TruthWay100 = -1; UpdateUnknownTileArea3_One(30, 31);
+                UpdateUnknownTileArea3_Area9();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay106 == 0 && (num == 0 || num == 106 || num == 107 || num == 108))
+            {
+                GroundOne.WE2.TruthWay106 = -1; UpdateUnknownTileArea3_One(34, 49);
+                GroundOne.WE2.TruthWay107 = -1; UpdateUnknownTileArea3_One(36, 49);
+                GroundOne.WE2.TruthWay108 = -1; UpdateUnknownTileArea3_One(38, 49);
+                UpdateUnknownTileArea3_Area14();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay109 == 0 && (num == 0 || num == 109 || num == 110 || num == 111))
+            {
+                GroundOne.WE2.TruthWay109 = -1; UpdateUnknownTileArea3_One(31, 37);
+                GroundOne.WE2.TruthWay110 = -1; UpdateUnknownTileArea3_One(33, 37);
+                GroundOne.WE2.TruthWay111 = -1; UpdateUnknownTileArea3_One(35, 37);
+                UpdateUnknownTileArea3_Area17();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay114 == 0 && (num == 0 || num == 114 || num == 115 || num == 116))
+            {
+                GroundOne.WE2.TruthWay114 = -1; UpdateUnknownTileArea3_One(23, 24);
+                GroundOne.WE2.TruthWay115 = -1; UpdateUnknownTileArea3_One(23, 26);
+                GroundOne.WE2.TruthWay116 = -1; UpdateUnknownTileArea3_One(23, 28);
+                UpdateUnknownTileArea3_Area21();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay130 == 0 && (num == 0 || num == 130 || num == 131 || num == 132))
+            {
+                GroundOne.WE2.TruthWay130 = -1; UpdateUnknownTileArea3_One(22, 48);
+                GroundOne.WE2.TruthWay131 = -1; UpdateUnknownTileArea3_One(22, 50);
+                GroundOne.WE2.TruthWay132 = -1; UpdateUnknownTileArea3_One(22, 52);
+                UpdateUnknownTileArea3_Area35();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay139 == 0 && (num == 0 || num == 139 || num == 140 || num == 141))
+            {
+                GroundOne.WE2.TruthWay139 = -1; UpdateUnknownTileArea3_One(8, 22);
+                GroundOne.WE2.TruthWay140 = -1; UpdateUnknownTileArea3_One(6, 22);
+                GroundOne.WE2.TruthWay141 = -1; UpdateUnknownTileArea3_One(5, 21);
+                UpdateUnknownTileArea3_Area43();
+                return;
+            }
+        }
+
+        private void MakeWrongAnswerSub4()
+        {
+            MakeWrongAnswerSub4(0);
+        }
+        private void MakeWrongAnswerSub4(int num)
+        {
+            if (GroundOne.WE2.TruthWay101 == 0 && (num == 0 || num == 101 || num == 102 || num == 103 || num == 104))
+            {
+                GroundOne.WE2.TruthWay101 = -1; UpdateUnknownTileArea3_One(15, 29);
+                GroundOne.WE2.TruthWay102 = -1; UpdateUnknownTileArea3_One(11, 34);
+                GroundOne.WE2.TruthWay103 = -1; UpdateUnknownTileArea3_One(11, 24);
+                GroundOne.WE2.TruthWay104 = -1; UpdateUnknownTileArea3_One(3, 24);
+                UpdateUnknownTileArea3_Area10();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay117 == 0 && (num == 0 || num == 117 || num == 118 || num == 119 || num == 120))
+            {
+                GroundOne.WE2.TruthWay117 = -1; UpdateUnknownTileArea3_One(26, 34);
+                GroundOne.WE2.TruthWay118 = -1; UpdateUnknownTileArea3_One(28, 34);
+                GroundOne.WE2.TruthWay119 = -1; UpdateUnknownTileArea3_One(30, 34);
+                GroundOne.WE2.TruthWay120 = -1; UpdateUnknownTileArea3_One(32, 34);
+                UpdateUnknownTileArea3_Area25();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay126 == 0 && (num == 0 || num == 126 || num == 127 || num == 128 || num == 129))
+            {
+                GroundOne.WE2.TruthWay126 = -1; UpdateUnknownTileArea3_One(10, 54);
+                GroundOne.WE2.TruthWay127 = -1; UpdateUnknownTileArea3_One(8, 41);
+                GroundOne.WE2.TruthWay128 = -1; UpdateUnknownTileArea3_One(5, 46);
+                GroundOne.WE2.TruthWay129 = -1; UpdateUnknownTileArea3_One(15, 42);
+                UpdateUnknownTileArea3_Area33();
+                return;
+            }
+
+            if (GroundOne.WE2.TruthWay134 == 0 && (num == 0 || num == 134 || num == 135 || num == 136 || num == 137))
+            {
+                GroundOne.WE2.TruthWay134 = -1; UpdateUnknownTileArea3_One(17, 26);
+                GroundOne.WE2.TruthWay135 = -1; UpdateUnknownTileArea3_One(18, 27);
+                GroundOne.WE2.TruthWay136 = -1; UpdateUnknownTileArea3_One(19, 28);
+                GroundOne.WE2.TruthWay137 = -1; UpdateUnknownTileArea3_One(20, 29);
+                UpdateUnknownTileArea3_Area40();
+                return;
+            }
+            if (GroundOne.WE2.TruthWay147 == 0 && (num == 0 || num == 147 || num == 148 || num == 149 || num == 150))
+            {
+                GroundOne.WE2.TruthWay147 = -1; UpdateUnknownTileArea3_One(31, 24);
+                GroundOne.WE2.TruthWay148 = -1; UpdateUnknownTileArea3_One(26, 22);
+                GroundOne.WE2.TruthWay149 = -1; UpdateUnknownTileArea3_One(25, 22);
+                GroundOne.WE2.TruthWay150 = -1; UpdateUnknownTileArea3_One(21, 24);
+                UpdateUnknownTileArea3_Area48();
+                return;
+            }
+        }
 
         private void UpdateLife(MainCharacter player, Image gauge, Text txt)
         {
@@ -12007,6 +12367,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonMakeCorrectAnswer)
                 {
+                    int num = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    MakeCorrectAnswer(num);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationTurnBack)
                 {

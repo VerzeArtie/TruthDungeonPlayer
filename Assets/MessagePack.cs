@@ -10956,35 +10956,35 @@ namespace DungeonPlayer
             if (GroundOne.WE2.TruthWay3_1 == 0)
             {
                 GroundOne.WE2.TruthWay3_1 = ii;
-                MakeCorrectAnswer(ii);
+                messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay1A);
                 return;
             }
             else if (GroundOne.WE2.TruthWay3_2 == 0)
             {
                 GroundOne.WE2.TruthWay3_2 = ii;
-                MakeCorrectAnswer(ii);
+                messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay2A);
                 return;
             }
             else if (GroundOne.WE2.TruthWay3_3 == 0)
             {
                 GroundOne.WE2.TruthWay3_3 = ii;
-                MakeCorrectAnswer(ii);
+                messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay3A);
                 return;
             }
             else if (GroundOne.WE2.TruthWay3_4 == 0)
             {
                 GroundOne.WE2.TruthWay3_4 = ii;
-                MakeCorrectAnswer(ii);
+                messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay4A);
                 return;
             }
             else if (GroundOne.WE2.TruthWay3_5 == 0)
             {
                 GroundOne.WE2.TruthWay3_5 = ii;
-                MakeCorrectAnswer(ii);
+                messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay5A);
 
                 // 最後はすべて通過済みとし、原点解ルートを見破れなくする。
@@ -11045,11 +11045,6 @@ namespace DungeonPlayer
             }
         }
         
-        private static void MakeCorrectAnswer(int ii)
-        {
-            // todo
-        }
-
         private static void JumpByMirror_TurnBack()
         {
             // todo
