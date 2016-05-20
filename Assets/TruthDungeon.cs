@@ -1440,6 +1440,9 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
                 {
                     GroundOne.WE.TruthCompleteSlayBoss3 = true;
+                    // todo レベルアップできなくなるのでは？要確認
+                    MessagePack.Message13111_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();                    
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
                 {
@@ -10461,10 +10464,10 @@ namespace DungeonPlayer
             UpdateUnknownTileArea3_One(6, 38, true);
         }
 
-        private void JumpByMirror_Recollection4() { JumpToLocation(1, -1, true); }
-        private void JumpByMirror_ZeroWay() { JumpToLocation(37, -12, true); }
-        private void JumpByMirror_Recollection3() { JumpToLocation(1, -10, true); }
-        private void JumpByMirror_TurnBack() { JumpToLocation(20, -19, true); }
+        private void JumpByMirror_Recollection4() { JumpToLocation(1, -1, true); UpdateUnknownTile(); }
+        private void JumpByMirror_ZeroWay() { JumpToLocation(37, -12, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Recollection3() { JumpToLocation(1, -10, true); UpdateUnknownTile(); }
+        private void JumpByMirror_TurnBack() { JumpToLocation(20, -19, true); UpdateUnknownTile(); }
 
         private void JumpByMirror_TruthWay1A() { JumpToLocation(43, -36, true); UpdateUnknownTileArea3_Area49(); }
         private void JumpByMirror_TruthWay1B() { JumpToLocation(31, -2, true); UpdateUnknownTileArea3_Area50(); }
@@ -10956,7 +10959,7 @@ namespace DungeonPlayer
                 return;
             }
         }
-
+        
         private void UpdateLife(MainCharacter player, Image gauge, Text txt)
         {
             float dx = (float)player.CurrentLife / (float)player.MaxLife;
@@ -12372,8 +12375,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationTurnBack)
                 {
-                    JumpToLocation(20, -19, true);
-                    UpdateUnknownTile();
+                    JumpByMirror_TurnBack();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay1A)
                 {
@@ -12482,7 +12484,19 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea3_Area69();
                 }
-
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Last0)
+                {
+                    UpdateUnknownTileArea3_Last0();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Last)
+                {
+                    int jjStart = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    UpdateUnknownTileArea3_Last(jjStart);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_TruthLast)
+                {
+                    UpdateUnknownTileArea3_TruthLast();
+                }
                   
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "")
