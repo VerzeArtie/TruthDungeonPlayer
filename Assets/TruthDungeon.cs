@@ -156,6 +156,7 @@ namespace DungeonPlayer
         int failCounter = 0; // ２階、技の部屋で失敗した時のフラグ
         bool detectKeyUp = false; // ２階、技の部屋Ｃでキーを離した事を示すフラグ
         bool nowDecisionFloor2OpenDoor = false; // ２階ボスの後の扉を開く際のフラグ
+        bool nowDecisionFloor3OpenDoor = false; // ３階ボス前の扉を開く際のフラグ
 
         int nowIntelligenceRoom = 0; // ２階、知の部屋レバー数値をインプットするためのフラグ
 
@@ -1017,6 +1018,20 @@ namespace DungeonPlayer
                     tapOK();
                 }
             }
+            else if (this.nowDecisionFloor3OpenDoor)
+            {
+                this.nowDecisionFloor3OpenDoor = false;
+                if (GroundOne.DecisionChoice == 1)
+                {
+                    MessagePack.Message13119_2(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else
+                {
+                    MessagePack.Message13119_3(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+            }
             else if (this.nowIntelligenceRoom == 1)
             {
                 this.nowIntelligenceRoom = 0;
@@ -1443,6 +1458,11 @@ namespace DungeonPlayer
                     // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message13111_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();                    
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
+                {
+                    MessagePack.Message13120_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
                 {
@@ -11422,6 +11442,12 @@ namespace DungeonPlayer
                     //    }
                     //}            
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonYesNoMessage)
+                {
+                    btnYes.enabled = true; btnYes.gameObject.SetActive(true);
+                    btnNo.enabled = true; btnNo.gameObject.SetActive(true);
+                     
+                }
                 else if (currentEvent == MessagePack.ActionEvent.HomeTownGetItemFullCheck)
                 {
                     Method.GetItemFullCheck(this, GroundOne.MC, this.nowMessage[this.nowReading]);
@@ -12460,6 +12486,16 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay5E)
                 {
                     JumpByMirror_TruthWay5E();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor3)
+                {
+                    this.nowDecisionFloor3OpenDoor = true;
+                    GroundOne.DecisionSequence = 0;
+                    GroundOne.DecisionMainMessage = "【　扉を開けますか？　】";
+                    GroundOne.DecisionFirstMessage = "扉を開ける。";
+                    GroundOne.DecisionSecondMessage = "扉を開けず、他を探す。";
+                    this.Filter.SetActive(true);
+                    SceneDimension.CallTruthDecision(this);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationRecollection3)
                 {
