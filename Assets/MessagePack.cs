@@ -12347,7 +12347,7 @@ namespace DungeonPlayer
         #region "記憶の回想２から一本道正解ルートへ鏡ワープ"
         public static void Message13118(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay5E);
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay5E);
 
             if (!GroundOne.WE.dungeonEvent318)
             {

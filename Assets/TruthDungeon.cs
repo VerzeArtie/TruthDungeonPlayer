@@ -2394,7 +2394,6 @@ namespace DungeonPlayer
                 else if (direction == 2) moveX = Database.DUNGEON_MOVE_LEN;
                 else if (direction == 3) moveY = -Database.DUNGEON_MOVE_LEN; // change unity
 
-                Debug.Log("agility: " + nowAgilityRoomCounter);
                 JumpToLocation((int)this.Player.transform.position.x + moveX, (int)this.Player.transform.position.y + moveY, false);
 
                 // EPICアイテムEPIC_ORB_GROW_GREENの効果
@@ -2430,12 +2429,10 @@ namespace DungeonPlayer
 
                 if (lowSpeed)
                 {
-                    Debug.Log("lowspeed");
                     this.MovementInterval = MOVE_INTERVAL;
                 }
                 else
                 {
-                    Debug.Log("high-speed");
                     this.MovementInterval = MOVE_INTERVAL / 2;
                 }
                 Method.GetTileNumber(Player.transform.position);
