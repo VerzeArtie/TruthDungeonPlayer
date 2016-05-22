@@ -1023,12 +1023,12 @@ namespace DungeonPlayer
                 this.nowDecisionFloor3OpenDoor = false;
                 if (GroundOne.DecisionChoice == 1)
                 {
-                    MessagePack.Message13119_2(ref nowMessage, ref nowEvent);
+                    MessagePack.Message13121_2(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 else
                 {
-                    MessagePack.Message13119_3(ref nowMessage, ref nowEvent);
+                    MessagePack.Message13121_3(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
             }
@@ -1461,7 +1461,7 @@ namespace DungeonPlayer
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
                 {
-                    MessagePack.Message13120_2(ref this.nowMessage, ref this.nowEvent);
+                    MessagePack.Message13122_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
@@ -8241,43 +8241,43 @@ namespace DungeonPlayer
                     #endregion
                     #region "真実解のイベント２【記憶の回想】"
                     case 280:
-                        MessagePack.Message13140(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13117(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "記憶の回想２から一本道正解ルートへ鏡ワープ"
                     case 281:
-                        MessagePack.Message13141(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13118(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "絶対試練"
                     case 269:
-                        MessagePack.Message13117(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13119(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "原点解の看板"
                     case 270:
-                        MessagePack.Message13118(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13120(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "ボス前の扉"
                     case 271:
-                        MessagePack.Message13119(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13121(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "４階への階段"
                     case 272:
-                        MessagePack.Message13120(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13122(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "無限回廊の看板"
                     case 273:
-                        MessagePack.Message13121(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13123(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -8289,7 +8289,7 @@ namespace DungeonPlayer
                     case 193:
                     case 194:
                     case 195:
-                        MessagePack.Message13122(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13124(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 196:
@@ -8297,7 +8297,7 @@ namespace DungeonPlayer
                     case 198:
                     case 199:
                     case 200:
-                        MessagePack.Message13123(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 201:
@@ -8305,7 +8305,7 @@ namespace DungeonPlayer
                     case 203:
                     case 204:
                     case 205:
-                        MessagePack.Message13124(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 206:
@@ -8313,7 +8313,7 @@ namespace DungeonPlayer
                     case 208:
                     case 209:
                     case 210:
-                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13127(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 211:
@@ -8321,7 +8321,7 @@ namespace DungeonPlayer
                     case 213:
                     case 214:
                     case 215:
-                        MessagePack.Message13126(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13128(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 216:
@@ -8329,7 +8329,7 @@ namespace DungeonPlayer
                     case 218:
                     case 219:
                     case 220:
-                        MessagePack.Message13127(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13129(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 221:
@@ -8337,7 +8337,7 @@ namespace DungeonPlayer
                     case 223:
                     case 224:
                     case 225:
-                        MessagePack.Message13128(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13130(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 226:
@@ -8345,7 +8345,7 @@ namespace DungeonPlayer
                     case 228:
                     case 229:
                     case 230:
-                        MessagePack.Message13129(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13131(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 231:
@@ -8353,7 +8353,7 @@ namespace DungeonPlayer
                     case 233:
                     case 234:
                     case 235:
-                        MessagePack.Message13130(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13132(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 236:
@@ -8361,7 +8361,7 @@ namespace DungeonPlayer
                     case 238:
                     case 239:
                     case 240:
-                        MessagePack.Message13131(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13133(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 241:
@@ -8369,7 +8369,7 @@ namespace DungeonPlayer
                     case 243:
                     case 244:
                     case 245:
-                        MessagePack.Message13132(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13134(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     case 246:
@@ -8377,43 +8377,43 @@ namespace DungeonPlayer
                     case 248:
                     case 249:
                     case 250:
-                        MessagePack.Message13133(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13135(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "鏡エリア２－５、台座ルート入り口"
                     case 274:
-                        MessagePack.Message13134(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13136(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "鏡エリア３原点解の入口／出口"
                     case 275:
-                        MessagePack.Message13135(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13137(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "聖者ルート（BADEND）"
                     case 276:
-                        MessagePack.Message13136(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13138(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "愚者ルート（BADEND）"
                     case 277:
-                        MessagePack.Message13137(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13139(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "４階への階段（２）"
                     case 278:
-                        MessagePack.Message13138(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13140(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "無限回廊突破後の看板"
                     case 279:
-                        MessagePack.Message13139(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13141(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
