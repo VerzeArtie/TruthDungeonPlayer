@@ -10860,9 +10860,39 @@ namespace DungeonPlayer
         }
         public static void Message13094(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            // todo
-            // after 同じルートを辿って最後失敗の時、次の会話イベントに流れてしまうのは防がないといけない
-            // 同じルートで最後失敗の時、次の会話ではなく、失敗で戻るのが正解。
+            Debug.Log("Message13094(S)");
+
+            // 正解ルート
+            if (GroundOne.WE2.TruthWay3_1 == ii)
+            {
+                Debug.Log("correct routine1, go truthway1");
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay1A);
+                return;
+            }
+            if (GroundOne.WE2.TruthWay3_2 == ii)
+            {
+                Debug.Log("correct routine2, go truthway2");
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay2A);
+                return;
+            }
+            if (GroundOne.WE2.TruthWay3_3 == ii)
+            {
+                Debug.Log("correct routine3, go truthway3");
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay3A);
+                return;
+            }
+            if (GroundOne.WE2.TruthWay3_4 == ii)
+            {
+                Debug.Log("correct routine4, go truthway4");
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay4A);
+                return;
+            }
+            if (GroundOne.WE2.TruthWay3_5 == ii)
+            {
+                Debug.Log("correct routine5, go truthway5");
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay5A);
+                return;
+            }
 
             // WrongAnswerルート
             if ((GroundOne.WE2.TruthWay95 == -1 && ii == 95) ||
@@ -10922,68 +10952,51 @@ namespace DungeonPlayer
                 (GroundOne.WE2.TruthWay149 == -1 && ii == 149) ||
                 (GroundOne.WE2.TruthWay150 == -1 && ii == 150))
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationTurnBack);
-                return;
-            }
-
-            // 正解ルート
-            if (GroundOne.WE2.TruthWay3_1 == ii)
-            {
-                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay1A);
-                return;
-            }
-            if (GroundOne.WE2.TruthWay3_2 == ii)
-            {
-                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay2A);
-                return;
-            }
-            if (GroundOne.WE2.TruthWay3_3 == ii)
-            {
-                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay3A);
-                return;
-            }
-            if (GroundOne.WE2.TruthWay3_4 == ii)
-            {
-                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay4A);
-                return;
-            }
-            if (GroundOne.WE2.TruthWay3_5 == ii)
-            {
-                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay5A);
+                Debug.Log("wrong routine1, turnback.");
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
                 return;
             }
 
             // 正解ルートが構築されてない場合、構築した上で正解ルートを辿る。
             if (GroundOne.WE2.TruthWay3_1 == 0)
             {
+                Debug.Log("make correct1");
                 GroundOne.WE2.TruthWay3_1 = ii;
                 messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay1A);
+                Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
                 return;
             }
-            else if (GroundOne.WE2.TruthWay3_2 == 0)
+            if (GroundOne.WE2.TruthWay3_2 == 0)
             {
+                Debug.Log("make correct2");
                 GroundOne.WE2.TruthWay3_2 = ii;
                 messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay2A);
+                Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
                 return;
             }
-            else if (GroundOne.WE2.TruthWay3_3 == 0)
+            if (GroundOne.WE2.TruthWay3_3 == 0)
             {
+                Debug.Log("make correct3");
                 GroundOne.WE2.TruthWay3_3 = ii;
                 messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay3A);
+                Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
                 return;
             }
-            else if (GroundOne.WE2.TruthWay3_4 == 0)
+            if (GroundOne.WE2.TruthWay3_4 == 0)
             {
+                Debug.Log("make correct4");
                 GroundOne.WE2.TruthWay3_4 = ii;
                 messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay4A);
+                Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
                 return;
             }
-            else if (GroundOne.WE2.TruthWay3_5 == 0)
+            if (GroundOne.WE2.TruthWay3_5 == 0)
             {
+                Debug.Log("make correct5");
                 GroundOne.WE2.TruthWay3_5 = ii;
                 messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonMakeCorrectAnswer);
                 MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocatinTruthWay5A);
@@ -11037,13 +11050,12 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area46);
                 messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area47);
                 messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area48);
+                Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
                 return;
             }
-            else
-            {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationTurnBack);
-                return;
-            }
+
+            Debug.Log("else routine, turnback");
+            MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
         }
         
         public static void Message13095(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -11164,11 +11176,11 @@ namespace DungeonPlayer
         {
             if (GroundOne.WE2.StartSeeker)
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationTurnBack);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
                 return;
             }
 
-            // ここにWorldEnvironment2のデータを自動書き込みする。
+            // todo ここにWorldEnvironment2のデータを自動書き込みする。
             if (!GroundOne.WE.dungeonEvent314)
             {
                 GroundOne.WE.dungeonEvent314 = true;
@@ -11235,7 +11247,21 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
             }
-            else if (!GroundOne.WE.dungeonEvent315)
+            else
+            {
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
+            }
+        }
+
+        public static void Message13110_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE2.StartSeeker)
+            {
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
+                return;
+            }
+
+            if (!GroundOne.WE.dungeonEvent315)
             {
                 GroundOne.WE.dungeonEvent315 = true;
 
@@ -11317,7 +11343,21 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
             }
-            else if (!GroundOne.WE.dungeonEvent316)
+            else
+            {
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
+            }
+        }
+
+        public static void Message13110_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE2.StartSeeker)
+            {
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
+                return;
+            }
+
+            if (!GroundOne.WE.dungeonEvent316)
             {
                 GroundOne.WE.dungeonEvent316 = true;
 
@@ -11411,6 +11451,20 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
             }
+            else
+            {
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
+            }
+        }
+
+        public static void Message13110_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE2.StartSeeker)
+            {
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
+                return;
+            }
+
             else if (!GroundOne.WE.dungeonEvent317)
             {
                 GroundOne.WE.dungeonEvent317 = true;
@@ -11463,7 +11517,7 @@ namespace DungeonPlayer
             }
             else
             {
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationTurnBack);
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
             }
         }
         #endregion
@@ -12125,6 +12179,181 @@ namespace DungeonPlayer
                 messageList.Add("　　　　『　終へと続く道　』"); eventList.Add(ActionEvent.None);
             }
         }
+        #endregion
+        #region "真実解のイベント２【記憶の回想】"
+        public static void Message13140(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE2.TruthRecollection3_2 == false)
+            {
+                GroundOne.WE2.TruthRecollection3_2 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                //Story_TruthRecollection3_2(); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　この光景が全て幻想だとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                //messageList.Add("　　＜＜＜　初めから全てが間違っているのだとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                //messageList.Add("　　＜＜＜　終わりへと足を運ぶな。　始まりへと足を進めろ。　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
+
+                messageList.Add("　　ラナ：ランディスさんに聞いてみたのよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何を？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：ヴェルゼさんの素性の事よ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・そしたら、師匠は何て言ったんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：【全ては裏返し】って・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・端的だなあ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：あ、そうそう。こうも言ってたわ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：（声マネ）『ランディス：アイツにとっちゃ、この光景が全て幻想なんだろ』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：こんな感じだったと思うわ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：全て幻想・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、ダメだ。全然意味がわからねえ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：そうかしら。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：私、なんとなく分かっちゃったけど。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：っな！！　マジかよ！？　教えてくれよ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：う～ん、教えてって言われても、合ってるかどうかもわかんないわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：それでもいい？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、ああ。　全然オッケー。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：じゃあ、言うわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：ヴェルゼさんには想い人が居たのよ、きっと。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・え？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：でも、不慮の事故か何かで、その想い人は死んでしまった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：想い人が死んでしまった世界の中で生きなくちゃいけない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：変えようと思っても変えられない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：だから、想い人の居ない現実の世界を、幻想の世界にしてしまいたいんじゃないかしら。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：幻想と現実を入れ替える、言ってみれば現実世界を『全て裏返し』にしてしまう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：そういう考え方もあるわよね。実際無理なのは頭で分かってても、心がそう動くんじゃないかしら。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナ、お前のその想像力はすげえよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：言っとくけど、当てずっぽだから、アテにならないわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いや、師匠がラナにかけた言葉は、ラナが推測しうる内容に誘導させているのは間違いねえんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：多分合ってるぜ。それ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　ラナ：そうかしら・・・今思いついたのを適当に言ってるだけだから、あんまり信頼しないでよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、了解了解。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+
+                messageList.Add("ラナ：・・・ちょっと・・・ソコのバカ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　『ッシャゴオォォオォォ！！！』（ラナのライトニングキックがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：グオオオォォ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：立ったまま寝ぼけないよね、ホント。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：わ、悪い悪い・・・ハハハ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君、一体何が起きているのですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：う～ん・・・記憶・・・って言うかな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：記憶の回想・・・みたいな感じだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：一体どのような内容だったんですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、それがさ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　＜＜＜　アインはその場で一瞬だけ、考え・・・　＞＞＞ "); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何か、ラナがボケ師匠と会話した時の話題を、俺が聞き出してるシーンだった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え、私とランディスさんの会話？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、何か内容はそれほど重要でもねえ、楽しい雑談だったぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ふうん・・・なら良いけど"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君、回想自体はいいのですが、汗が結構出ていますよ。大丈夫ですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：え？あ、本当だ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：い、いやいや。体調は万全だ、ほらこのとおりだ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：体調に異変があるときは、必ず連絡してください。青水晶を使いますから。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、了解だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：正解ルートはもうすぐみたいよ、早く進めましょう♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、行くとするか！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+            }
+        }
+        #endregion
+        #region "記憶の回想２から一本道正解ルートへ鏡ワープ"
+        public static void Message13141(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocatinTruthWay5E);
+
+            if (!GroundOne.WE.dungeonEvent318)
+            {
+                GroundOne.WE.dungeonEvent318 = true;
+
+                messageList.Add("ラナ：見えたわ、これが最後のルートになるわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、この一本道は俺にも何となく伝わってくるぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：ラナさん、体調は大丈夫ですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ大丈夫よ。特に問題はないわ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：本当か？鏡を潜り続けてたワケだが・・・。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：大丈夫よ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そか、じゃあわかった！　進むとするぜ！"); eventList.Add(ActionEvent.None);
+            }
+        }
+        #endregion
+        #region "絶対試練"
         public static void Message13117(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (!GroundOne.WE.dungeonEvent312)
@@ -12137,7 +12366,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
 
-                GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
                 messageList.Add("        『絶対試練：汝、答えを示せ。』"); eventList.Add(ActionEvent.None);
 
@@ -12145,7 +12374,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：っな！！　っおいラナ！？"); eventList.Add(ActionEvent.None);
 
-                GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic09);
 
                 // todo
                 //using (TruthWill TW = new TruthWill())
@@ -12529,6 +12758,8 @@ namespace DungeonPlayer
                 messageList.Add("台座はもうなくなってる"); eventList.Add(ActionEvent.None);
             }
         }
+        #endregion
+        #region "原点解の看板"
         public static void Message13118(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (!GroundOne.WE.dungeonEvent313)
@@ -12889,16 +13120,6 @@ namespace DungeonPlayer
         #endregion
         #region "無限回廊突破後の看板"
         public static void Message13139(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        #endregion
-        #region "真実解のイベント２【記憶の回想】"
-        public static void Message13140(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-        }
-        #endregion
-        #region "記憶の回想２から一本道正解ルートへ鏡ワープ"
-        public static void Message13141(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion

@@ -8122,12 +8122,20 @@ namespace DungeonPlayer
                     case 167:
                     case 168:
                     case 169:
+                        MessagePack.Message13110(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    // Z2ルート
                     case 170:
                     case 171:
                     case 172:
                     case 173:
                     case 174:
                     case 175:
+                        MessagePack.Message13110_2(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    // Z3ルート
                     case 176:
                     case 177:
                     case 178:
@@ -8135,6 +8143,10 @@ namespace DungeonPlayer
                     case 180:
                     case 181:
                     case 182:
+                        MessagePack.Message13110_3(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    // Z4ルート
                     case 183:
                     case 184:
                     case 185:
@@ -8143,7 +8155,7 @@ namespace DungeonPlayer
                     case 188:
                     case 189:
                     case 190:
-                        MessagePack.Message13110(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13110_4(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -8209,7 +8221,7 @@ namespace DungeonPlayer
                         UpdateFieldElement(this.Player.transform.position);
                         return true;
                     #endregion
-                    #region "エリア２　看板X１～６"
+                    #region "エリア２　看板X１～４"
                     case 265:
                         MessagePack.Message13113(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
@@ -8226,10 +8238,26 @@ namespace DungeonPlayer
                         MessagePack.Message13116(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
+                    #endregion
+                    #region "真実解のイベント２【記憶の回想】"
+                    case 280:
+                        MessagePack.Message13140(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "記憶の回想２から一本道正解ルートへ鏡ワープ"
+                    case 281:
+                        MessagePack.Message13141(ref this.nowMessage, ref this.nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "絶対試練"
                     case 269:
                         MessagePack.Message13117(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
+                    #endregion
+                    #region "原点解の看板"
                     case 270:
                         MessagePack.Message13118(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
@@ -8386,18 +8414,6 @@ namespace DungeonPlayer
                     #region "無限回廊突破後の看板"
                     case 279:
                         MessagePack.Message13139(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    #endregion
-                    #region "真実解のイベント２【記憶の回想】"
-                    case 280:
-                        MessagePack.Message13140(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
-                        return true;
-                    #endregion
-                    #region "記憶の回想２から一本道正解ルートへ鏡ワープ"
-                    case 281:
-                        MessagePack.Message13141(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -12486,6 +12502,7 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocatinTruthWay5E)
                 {
                     JumpByMirror_TruthWay5E();
+                    //UpdateUnknownTileArea3_Area68(); X5ルート最後は一歩ずつ進ませる事とする。
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor3)
                 {

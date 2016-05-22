@@ -68,6 +68,8 @@ namespace DungeonPlayer
             for (int ii = 0; ii < filenameList.Length; ii++)
             {
                 string targetString = System.IO.Path.GetFileName(filenameList[ii]);
+                if (Convert.ToInt32(targetString.Substring(0, 3)) >= 999) { continue; } // オートセーブは検査対象外
+
                 string DateTimeString = targetString.Substring(4, 4) + "/" + targetString.Substring(8, 2) + "/" + targetString.Substring(10, 2) + " " + targetString.Substring(12, 2) + ":" + targetString.Substring(14, 2) + ":" + targetString.Substring(16, 2);
                 DateTime targetDateTime = DateTime.Parse(DateTimeString);
                 if (targetDateTime > newDateTime)
@@ -106,6 +108,7 @@ namespace DungeonPlayer
             {
                 buttonPage[ii].GetComponent<Image>().sprite = null;
             }
+            Debug.Log("buttonpage: " + this.pageNumber);
             buttonPage[this.pageNumber - 1].GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + "SaveLoadNewPageNum");
 
 
