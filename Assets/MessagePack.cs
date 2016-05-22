@@ -12204,9 +12204,9 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-                //Story_TruthRecollection3_2(); eventList.Add(ActionEvent.None);
                 messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
 
+                #region "Story_TruthRecollection3_2"
                 messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　＜＜＜　この光景が全て幻想だとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
@@ -12288,6 +12288,7 @@ namespace DungeonPlayer
                 messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+                #endregion
 
                 messageList.Add("ラナ：・・・ちょっと・・・ソコのバカ！！！"); eventList.Add(ActionEvent.None);
 
