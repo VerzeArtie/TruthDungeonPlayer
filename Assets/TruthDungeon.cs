@@ -162,6 +162,13 @@ namespace DungeonPlayer
 
         bool nowIntelligenceRoomGodSequence = false; // ２階、知の部屋、神々の試練を実行中
 
+        // ３階無限回廊
+        const int INFINITE_LOOP_MAX = 12; // 無限回廊の組み合わせ最大数
+        int[] infinityLoopNumber = new int[INFINITE_LOOP_MAX]; // 無限解
+        int[] playerLoopNumber = new int[INFINITE_LOOP_MAX]; // プレイヤー解
+        //const int[] originNumber = { 1, 3, 4, 5, 4, 2, 3, 1, 4, 2, 5, 5 }; // 原点解
+        System.Collections.ObjectModel.ReadOnlyCollection<int> originNumber = Array.AsReadOnly<int>(new int[] { 1, 3, 4, 5, 4, 2, 3, 1, 4, 2, 5, 5 });
+
         private GameObject prefab_TileElement = null;
 
         // Use this for initialization
@@ -8289,7 +8296,7 @@ namespace DungeonPlayer
                     case 193:
                     case 194:
                     case 195:
-                        MessagePack.Message13124(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13124(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 196:
@@ -8297,7 +8304,7 @@ namespace DungeonPlayer
                     case 198:
                     case 199:
                     case 200:
-                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 201:
@@ -8305,7 +8312,7 @@ namespace DungeonPlayer
                     case 203:
                     case 204:
                     case 205:
-                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 206:
@@ -8313,7 +8320,7 @@ namespace DungeonPlayer
                     case 208:
                     case 209:
                     case 210:
-                        MessagePack.Message13127(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13127(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 211:
@@ -8321,7 +8328,7 @@ namespace DungeonPlayer
                     case 213:
                     case 214:
                     case 215:
-                        MessagePack.Message13128(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13128(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 216:
@@ -8329,7 +8336,7 @@ namespace DungeonPlayer
                     case 218:
                     case 219:
                     case 220:
-                        MessagePack.Message13129(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13129(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 221:
@@ -8337,7 +8344,7 @@ namespace DungeonPlayer
                     case 223:
                     case 224:
                     case 225:
-                        MessagePack.Message13130(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13130(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 226:
@@ -8345,7 +8352,7 @@ namespace DungeonPlayer
                     case 228:
                     case 229:
                     case 230:
-                        MessagePack.Message13131(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13131(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 231:
@@ -8353,7 +8360,7 @@ namespace DungeonPlayer
                     case 233:
                     case 234:
                     case 235:
-                        MessagePack.Message13132(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13132(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 236:
@@ -8361,7 +8368,7 @@ namespace DungeonPlayer
                     case 238:
                     case 239:
                     case 240:
-                        MessagePack.Message13133(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13133(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 241:
@@ -8369,7 +8376,7 @@ namespace DungeonPlayer
                     case 243:
                     case 244:
                     case 245:
-                        MessagePack.Message13134(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13134(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 246:
@@ -8377,7 +8384,7 @@ namespace DungeonPlayer
                     case 248:
                     case 249:
                     case 250:
-                        MessagePack.Message13135(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13135(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     #endregion
@@ -10500,10 +10507,7 @@ namespace DungeonPlayer
             UpdateUnknownTileArea3_One(6, 38, true);
         }
 
-        private void JumpByMirror_Recollection4() { JumpToLocation(1, -1, true); UpdateUnknownTile(); }
-        private void JumpByMirror_ZeroWay() { JumpToLocation(37, -12, true); UpdateUnknownTile(); }
-        private void JumpByMirror_Recollection3() { JumpToLocation(1, -10, true); UpdateUnknownTile(); }
-        private void JumpByMirror_TurnBack() { JumpToLocation(20, -19, true); UpdateUnknownTile(); }
+        private void JumpByMirror_1_End() { JumpToLocation(18, -19, true); UpdateUnknownTile(); }
 
         private void JumpByMirror_TruthWay1A() { JumpToLocation(43, -36, true); UpdateUnknownTileArea3_Area49(); }
         private void JumpByMirror_TruthWay1B() { JumpToLocation(31, -2, true); UpdateUnknownTileArea3_Area50(); }
@@ -10526,8 +10530,27 @@ namespace DungeonPlayer
         private void JumpByMirror_TruthWay5C() { JumpToLocation(48, -31, true); UpdateUnknownTileArea3_Area67(); }
         private void JumpByMirror_TruthWay5D() { JumpToLocation(1, -29, true); UpdateUnknownTile(); }
         private void JumpByMirror_TruthWay5E() { JumpToLocation(21, -1, true); UpdateUnknownTile(); }
-        private void JumpByMirror_1_End() { JumpToLocation(18, -19, true); UpdateUnknownTile(); }
- 
+
+        private void JumpByMirror_TurnBack() { JumpToLocation(20, -19, true); UpdateUnknownTile(); }
+
+        private void JumpByMirror_ZeroWay() { JumpToLocation(37, -12, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Recollection3() { JumpToLocation(1, -10, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Recollection4() { JumpToLocation(1, -1, true); UpdateUnknownTile(); }
+
+        private void JumpByMirror_InfinityWay1() { JumpToLocation(57, -34, true); UpdateUnknownTileArea3_Last(32); }
+        private void JumpByMirror_InfinityWay2() { JumpToLocation(57, -31, true); UpdateUnknownTileArea3_Last(29); }
+        private void JumpByMirror_InfinityWay3() { JumpToLocation(57, -28, true); UpdateUnknownTileArea3_Last(26); }
+        private void JumpByMirror_InfinityWay4() { JumpToLocation(57, -25, true); UpdateUnknownTileArea3_Last(23); }
+        private void JumpByMirror_InfinityWay5() { JumpToLocation(57, -22, true); UpdateUnknownTileArea3_Last(20); }
+        private void JumpByMirror_InfinityWay6() { JumpToLocation(57, -19, true); UpdateUnknownTileArea3_Last(17); }
+        private void JumpByMirror_InfinityWay7() { JumpToLocation(57, -16, true); UpdateUnknownTileArea3_Last(14); }
+        private void JumpByMirror_InfinityWay8() { JumpToLocation(57, -13, true); UpdateUnknownTileArea3_Last(11); }
+        private void JumpByMirror_InfinityWay9() { JumpToLocation(57, -10, true); UpdateUnknownTileArea3_Last(8); }
+        private void JumpByMirror_InfinityWay10() { JumpToLocation(57, -7, true); UpdateUnknownTileArea3_Last(5); }
+        private void JumpByMirror_InfinityWay11() { JumpToLocation(57, -4, true); UpdateUnknownTileArea3_Last(2); }
+        private void JumpByMirror_InfinityWayTurnBack() { JumpToLocation(56, -39, true); UpdateUnknownTile(); }
+        private void JumpByMirror_InfinityWayLast() { JumpToLocation(55, -1, true); UpdateUnknownTileArea3_TruthLast(); }
+
         private void UpdateUnknownTileArea3_One(int Y, int X)
         {
             UpdateUnknownTileArea3_One(Y, X, false);
@@ -12528,6 +12551,99 @@ namespace DungeonPlayer
                 {
                     JumpToLocation(37, -12, true);
                     UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSetupOriginRandom)
+                {
+                    for (int zz = 0; zz < INFINITE_LOOP_MAX; zz++)
+                    {
+                        this.infinityLoopNumber[zz] = AP.Math.RandomInteger(5) + 1;
+                    }
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSetupOriginFix)
+                {
+                    for (int zz = 0; zz < INFINITE_LOOP_MAX; zz++)
+                    {
+                        this.infinityLoopNumber[zz] = originNumber[zz];
+                    }
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity1)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[0] = ii - 190; // todo 3Fのcase xxxを変更完了した後、このナンバーも変える必要がある。
+                    JumpByMirror_InfinityWay1();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity2)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[1] = ii - 195;
+                    JumpByMirror_InfinityWay2();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity3)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[2] = ii - 200;
+                    JumpByMirror_InfinityWay3();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity4)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[3] = ii - 205;
+                    JumpByMirror_InfinityWay4();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity5)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[4] = ii - 210;
+                    JumpByMirror_InfinityWay5();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity6)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[5] = ii - 215;
+                    JumpByMirror_InfinityWay6();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity7)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[6] = ii - 220;
+                    JumpByMirror_InfinityWay7();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity8)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[7] = ii - 225;
+                    JumpByMirror_InfinityWay8();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity9)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[8] = ii - 230;
+                    JumpByMirror_InfinityWay9();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity10)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[9] = ii - 235;
+                    JumpByMirror_InfinityWay10();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity11)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[10] = ii - 240;
+                    JumpByMirror_InfinityWay11();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinityTurnBack)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[11] = ii - 245;
+                    JumpByMirror_InfinityWayTurnBack();
+                }
+                // todo recollection3
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinityLast)
+                {
+                    int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.playerLoopNumber[11] = ii - 245;
+                    JumpByMirror_InfinityWayLast();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area1)
                 {

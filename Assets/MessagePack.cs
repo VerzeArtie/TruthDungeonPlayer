@@ -349,6 +349,21 @@ namespace DungeonPlayer
             DungeonJumpToLocationRecollection4,
             DungeonJumpToLocationZeroWay,
             DecisionOpenDoor3,
+            DungeonSetupOriginRandom,
+            DungeonSetupOriginFix,
+            DungeonJumpToLocationInfinity1,
+            DungeonJumpToLocationInfinity2,
+            DungeonJumpToLocationInfinity3,
+            DungeonJumpToLocationInfinity4,
+            DungeonJumpToLocationInfinity5,
+            DungeonJumpToLocationInfinity6,
+            DungeonJumpToLocationInfinity7,
+            DungeonJumpToLocationInfinity8,
+            DungeonJumpToLocationInfinity9,
+            DungeonJumpToLocationInfinity10,
+            DungeonJumpToLocationInfinity11,
+            DungeonJumpToLocationInfinityTurnBack,
+            DungeonJumpToLocationInfinityLast,
             Ending,
         }
         #endregion
@@ -13053,44 +13068,470 @@ namespace DungeonPlayer
         #region "無限回廊の看板"
         public static void Message13123(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent330)
+            {
+                messageList.Add("　　　　『　正解を導きし者、無限解の探求にて永遠に彷徨い、原点を知ること無く、回り続けるがよい　』"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『　正解を導きし者、無限解の探求にて永遠に彷徨い、原点を知ること無く、回り続けるがよい　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：原点解は、1 3 4 5 4 2 3 1 4 2 5 5 の順序よ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：オーケー"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "無限回廊"
-        public static void Message13124(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13124(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            if (!GroundOne.WE.dungeonEvent329) // after 原点解フラグはWE2にしなければならない。
+            {
+                if (!GroundOne.WE.dungeonEvent320)
+                {
+                    GroundOne.WE.dungeonEvent320 = true;
+
+                    messageList.Add("ラナ：あれ、やっぱり試してみるわけ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、一回だけコッソリ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ッフフ、別に誰かが見てるわけでもないんだから、コッソリする必要は無いんじゃない♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：ところで、何かヒントらしきモノは掴んでいるのでしょうか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いや、正直ねえ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ヴェルゼ：まあ手当たり次第というのも、良いのでは。試しにやってみましょうか。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ラナ、お願いできるか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ええ、任せておいて。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：じゃあ、ひとまずここから行ってみるわね。ッハイ。"); eventList.Add(ActionEvent.None);
+                }
+                // 無限回廊の解をここで再設定する。
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupOriginRandom);
+            }
+            else
+            {
+                // 原点解を導いている場合は、以下の設定となる。
+                //1 3 4 5 4 2 3 1 4 2 5 5
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupOriginFix);
+            }
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity1);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13125(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13125(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity2);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13126(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13126(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity3);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13127(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13127(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity4);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13128(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13128(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity5);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13129(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13129(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity6);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13130(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13130(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity7);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13131(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13131(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity8);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13132(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13132(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity9);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13133(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13133(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity10);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13134(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13134(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity11);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //this.playerLoopNumber[11] = ii - 245;
+            //// 12段階の全正解かどうかをチェック
+            //if (CheckInfiniteLoopResult())
+            //{
+            //    if (!we.dungeonEvent328)
+            //    {
+            //        JumpByMirror_Instant(1, 55);
+            //        UpdateUnknownTileArea3_TruthLast();
+
+            //        MessageInfiniteLoopResult(1);
+
+            //        UpdateMainMessage("アイン：あっ・・・");
+
+            //        UpdateMainMessage("アイン：（俺はこの時・・・）");
+
+            //        UpdateMainMessage("アイン：（純粋にラナに声をかけようと思った。）");
+
+            //        UpdateMainMessage("アイン：（【ひょっとして、あれ階段じゃないか！？】って・・・）");
+
+            //        UpdateMainMessage("アイン：（が、急に声が発生できない・・・いや）");
+
+            //        UpdateMainMessage("アイン：（発声どころじゃない）");
+
+            //        UpdateMainMessage("アイン：（手、足、指先、眼球、毛一本一本に至るまで・・・）");
+
+            //        UpdateMainMessage("アイン：（そして心臓さえも）");
+
+            //        UpdateMainMessage("アイン：（全てが完全に自分の意志で動かせない、あるいは、動かなくなっていくのを感じた。）");
+
+            //        UpdateMainMessage("アイン：（唐突な死）");
+
+            //        UpdateMainMessage("アイン：（せっかく、進められた・・・ハズ・・・が・・・）");
+
+            //        UpdateMainMessage("アイン：（・・・　・・・）");
+
+            //        UpdateMainMessage("アイン：（・・・）");
+
+            //        UpdateMainMessage(" ～　THE　END　～　（訪れた究極確率）");
+
+            //        UpdatePlayerLocationInfo(this.Player.Location.X, this.Player.Location.Y - Database.DUNGEON_MOVE_LEN);
+            //        //this.dungeonField.Invalidate(); // セーブエンドなので、描画する必要はない。
+
+            //        using (ESCMenu esc = new ESCMenu())
+            //        {
+            //            esc.MC = this.MC;
+            //            esc.SC = this.SC;
+            //            esc.TC = this.TC;
+            //            esc.WE = this.we;
+            //            esc.KnownTileInfo = null;
+            //            esc.KnownTileInfo2 = null;
+            //            esc.KnownTileInfo3 = null;
+            //            esc.KnownTileInfo4 = null;
+            //            esc.KnownTileInfo5 = null;
+            //            esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
+            //            esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
+            //            esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
+            //            esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
+            //            esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
+            //            esc.StartPosition = FormStartPosition.CenterParent;
+            //            esc.TruthStory = true;
+            //            esc.OnlySave = true;
+            //            esc.ShowDialog();
+            //        }
+
+            //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            //    }
+            //    else
+            //    {
+            //        JumpByMirror_Recollection4();
+
+            //        if (!we.dungeonEvent332_1)
+            //        {
+            //            we.dungeonEvent332_1 = true;
+            //            UpdateMainMessage("アイン：おっ、何か５つ鏡じゃないトコに出たな。");
+
+            //            UpdateMainMessage("ラナ：アインの狙った通りって事じゃないかしら？");
+
+            //            UpdateMainMessage("ヴェルゼ：近そうですね、気をつけて進めましょう。");
+
+            //            UpdateMainMessage("アイン：ああ・・・");
+            //        }
+            //    }
+            //    return true;
+            //}
+            //else
+            //{
+            //    JumpByMirror_Instant(39, 56);
+            //}
+
+            //if (!we.dungeonEvent328)
+            //{
+            //    if (!we.dungeonEvent321)
+            //    {
+            //        we.dungeonEvent321 = true;
+
+            //        UpdateMainMessage("アイン：あれ、ひょっとして元に戻ったか？");
+
+            //        UpdateMainMessage("ラナ：どうも駄目だったみたいね。");
+
+            //        UpdateMainMessage("アイン：・・・いやいやいや。");
+
+            //        UpdateMainMessage("アイン：ぶっちゃけ、何の変哲もなく５つの鏡がズラズラだったな・・・");
+
+            //        UpdateMainMessage("ヴェルゼ：これは・・・");
+
+            //        UpdateMainMessage("アイン：ん？何か分かったのか、ヴェルゼは？");
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、看板に何か追加されていますよ。");
+
+            //        UpdateMainMessage("アイン：っお！本当かよ！？ちょっと見せてくれ。");
+
+            //        MessageInfiniteLoopResult();
+
+            //        UpdateMainMessage("アイン：っな・・・何だこれは・・・");
+
+            //        UpdateMainMessage("ヴェルゼ：何かの暗号でしょうか？");
+
+            //        UpdateMainMessage("ラナ：どうするアイン？");
+
+            //        UpdateMainMessage("アイン：うーん・・・");
+
+            //        UpdateMainMessage("アイン：追加された文字は今通ったトコに関連はしてそうなんだがな・・・");
+
+            //        UpdateMainMessage("アイン：さすがにもういっぺんぐらい行ってみないと分からねえな。");
+
+            //        UpdateMainMessage("ラナ：そう、じゃあアインがもう一回行きたいと思ったら言って頂戴。");
+
+            //        UpdateMainMessage("アイン：了解了解。");
+            //    }
+            //    else if (!we.dungeonEvent322)
+            //    {
+            //        we.dungeonEvent322 = true;
+
+            //        UpdateMainMessage("アイン：また元の場所に戻ったのか。");
+
+            //        UpdateMainMessage("ラナ：全然何の変化もないわね・・・");
+
+            //        UpdateMainMessage("アイン：ラナはもう、呼び声みたいなのは全然聞こえないのか？");
+
+            //        UpdateMainMessage("ラナ：うん、あの台座の一件があって以来、全然聞こえなくなったわ。");
+
+            //        UpdateMainMessage("アイン：そうか・・・");
+
+            //        UpdateMainMessage("ヴェルゼ：・・・これは・・・やはり・・・");
+
+            //        UpdateMainMessage("アイン：ん？何だ？");
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、看板を");
+
+            //        UpdateMainMessage("アイン：お、おお。");
+
+            //        MessageInfiniteLoopResult();
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、計算結果をお教えしましょう。");
+
+            //        UpdateMainMessage("アイン：計算結果？？何の・・・");
+
+            //        UpdateMainMessage("アイン：まっ、まさか！！！！！");
+
+            //        UpdateMainMessage("ヴェルゼ：ハイ、そのまさかです。");
+
+            //        UpdateMainMessage("ラナ：え、っちょっと一体何の話よ？");
+
+            //        UpdateMainMessage("アイン：５つ並んでいる鏡が12段階。そして、この文字はその結果を指している。合ってるか？");
+
+            //        UpdateMainMessage("ヴェルゼ：ええ、さすがはアイン君です。この辺に関しては察しが良いですね。");
+
+            //        UpdateMainMessage("ヴェルゼ：という事は、この文字の意味も既に理解したようですね。");
+
+            //        UpdateMainMessage("アイン：ああ、正解だったナンバーと、俺達が通ったナンバーが記されている。");
+
+            //        UpdateMainMessage("アイン：そして一致していれば○、不一致なら×が記されている。");
+
+            //        UpdateMainMessage("アイン：分かっていれば単純な表示だったな。");
+
+            //        UpdateMainMessage("ヴェルゼ：そのとおりですね。しかしこれは・・・");
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、ラナさん、絶望させて申し訳ないのですが");
+
+            //        UpdateMainMessage("ヴェルゼ：この組み合わせ数は");
+
+            //        UpdateMainMessage("ヴェルゼ：　【２４４１４０６２５】　です。");
+
+            //        UpdateMainMessage("アイン：２億・・・超えるってか・・・");
+
+            //        UpdateMainMessage("ラナ：え・・・２億分の１より確率が悪いって話？");
+
+            //        UpdateMainMessage("アイン：ああ、そういう事になるな・・・");
+
+            //        UpdateMainMessage("ラナ：・・・冗談でしょ。いくらなんでも当たりっこないわ。");
+
+            //        UpdateMainMessage("アイン：やっぱ最初の直感通りだな。");
+
+            //        UpdateMainMessage("アイン：無限解ってのは解けない事を指している。");
+
+            //        UpdateMainMessage("アイン：【永遠に彷徨う】言葉通りだ。");
+
+            //        UpdateMainMessage("ラナ：じゃあ、やっぱり階段に行くしかないみたいね。");
+
+            //        UpdateMainMessage("アイン：ああ、ひょっとしたら何かあるのかもしれないが、今のとこどうにもならねえ。");
+
+            //        UpdateMainMessage("ヴェルゼ：それでは、階段に向かうとしますか？");
+
+            //        UpdateMainMessage("アイン：ああ。すまねえがそうさせてもらうぜ。");
+            //    }
+            //    else if (!we.dungeonEvent323)
+            //    {
+            //        we.dungeonEvent323 = true;
+
+            //        MessageInfiniteLoopResult();
+
+            //        UpdateMainMessage("アイン：・・・くそ、やはり駄目か。");
+
+            //        UpdateMainMessage("ラナ：２億通りを超えてるのよね・・・さすがにヒントが無いとどうにもならないわね。");
+
+            //        UpdateMainMessage("アイン：ラナにも、もう呼び声が聞こえねえってトコだしな・・・");
+
+            //        UpdateMainMessage("ラナ：ゴメンね。何とか聞こうとはしてるんだけど。");
+
+            //        UpdateMainMessage("ヴェルゼ：いえ");
+
+            //        UpdateMainMessage("アイン：ん？");
+
+            //        UpdateMainMessage("ヴェルゼ：ラナさんに呼び声が聞こえないのはおそらく、ラナさん本人のせいではありません。");
+
+            //        UpdateMainMessage("ラナ：えっ、そうなんですか？");
+
+            //        UpdateMainMessage("ヴェルゼ：はい。これはある事実を表しています。");
+
+            //        UpdateMainMessage("アイン：ある事実？");
+
+            //        UpdateMainMessage("ヴェルゼ：ラナさんに呼び声が聞こえない理由は、シンプルです。");
+
+            //        UpdateMainMessage("ヴェルゼ：それは、呼び声自体が発していないからです。");
+
+            //        UpdateMainMessage("アイン：呼び声自体が発していない・・・");
+
+            //        UpdateMainMessage("ヴェルゼ：呼び声は正解を導くために発せられていたのは覚えていますか？");
+
+            //        UpdateMainMessage("アイン：・・・　・・・");
+
+            //        UpdateMainMessage("アイン：ッ！！　ひょっとして！！！");
+
+            //        UpdateMainMessage("ヴェルゼ：この時点で理解が及びましたか。　アイン君の読み方は本当にすごいですね。");
+
+            //        UpdateMainMessage("ラナ：どういうこと？");
+
+            //        UpdateMainMessage("アイン：ラナ・・・悪い、本当にココは止めておこう。");
+
+            //        UpdateMainMessage("ラナ：う～ん、別に良いけど教えてちょうだい。");
+
+            //        UpdateMainMessage("アイン：呼び声が聞こえないのは当たり前だ。");
+
+            //        UpdateMainMessage("アイン：ココは通るたびに、正解ルートが変化している。");
+
+            //        UpdateMainMessage("ラナ：・・・え？");
+
+            //        UpdateMainMessage("アイン：１２段階鏡を潜るだろ？");
+
+            //        UpdateMainMessage("ラナ：え、ええ。");
+
+            //        UpdateMainMessage("アイン：１２段階の鏡を潜った直後に、答えが毎回変化してるって事だ。");
+
+            //        UpdateMainMessage("アイン：つまり、回数を重ねる事自体に意味はねえ。");
+
+            //        UpdateMainMessage("アイン：失敗ルートを一つ一つ確認して積み重ねる方法が通用しねえ。");
+
+            //        UpdateMainMessage("ラナ：それって、毎回毎回が２億超えの確率を要求されてるって事？");
+
+            //        UpdateMainMessage("アイン：ああ・・・");
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、これは本当に止めておいた方が良いようですね。");
+
+            //        UpdateMainMessage("アイン：ああ、時間をかけちまって悪かった。階段へ進めるとしよう。");
+            //    }
+            //    else if (!we.dungeonEvent324)
+            //    {
+            //        we.dungeonEvent324 = true;
+
+            //        MessageInfiniteLoopResult();
+
+            //        UpdateMainMessage("アイン：・・・駄目だな。");
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、ラナさんに負担をかけるのは止めて階段へ進みましょう。");
+
+            //        UpdateMainMessage("ラナ：・・・っえ？");
+
+            //        UpdateMainMessage("アイン：しまった。　ラナすまねえな。");
+
+            //        UpdateMainMessage("ラナ：イイわよ、このぐらい。　気にしないで♪");
+
+            //        UpdateMainMessage("アイン：いやいや、悪かった。階段へ行こう。");
+            //    }
+            //    else
+            //    {
+            //        MessageInfiniteLoopResult();
+
+            //        UpdateMainMessage("アイン：・・・駄目か。");
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、ラナさんの負担を考えましょう。");
+
+            //        UpdateMainMessage("アイン：そうだな、すまねえ・・・階段へ行くとするか。");
+            //    }
+            //}
+            //else
+            //{
+            //    if (!we.dungeonEvent331)
+            //    {
+            //        we.dungeonEvent331 = true;
+            //        UpdateMainMessage("アイン：あれ、ひょっとして元に戻ったか？");
+
+            //        UpdateMainMessage("ラナ：どうも駄目だったみたいね。");
+
+            //        UpdateMainMessage("アイン：・・・いやいやいや。");
+
+            //        UpdateMainMessage("アイン：原点解がココの鏡を指し示しているのは間違いねえはず。");
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、看板を");
+
+            //        UpdateMainMessage("アイン：ん？看板がどうかしたのか？");
+
+            //        UpdateMainMessage("ヴェルゼ：看板に何か追加されていますよ。");
+
+            //        UpdateMainMessage("アイン：っお！本当かよ！？ちょっと見せてくれ。");
+
+            //        MessageInfiniteLoopResult();
+
+            //        UpdateMainMessage("アイン：っな・・・");
+
+            //        UpdateMainMessage("ヴェルゼ：どうやら、間違いがあったようですね。");
+
+            //        UpdateMainMessage("ラナ：アイン、原点解は ( 1 3 4 5 4 2 3 1 4 2 5 5 )だから間違えないでよねホント。");
+
+            //        UpdateMainMessage("アイン：しまった・・・悪い悪い。");
+
+            //        UpdateMainMessage("アイン：っしゃ、今度こそ間違えずに通過してやるぜ！");
+            //    }
+            //    else
+            //    {
+            //        UpdateMainMessage("アイン：あれ！？");
+
+            //        UpdateMainMessage("ヴェルゼ：アイン君、看板を。");
+
+            //        MessageInfiniteLoopResult();
+
+            //        UpdateMainMessage("アイン：・・・・・・");
+
+            //        UpdateMainMessage("ラナ：ちょっと・・・そこの本格バカアイン・・・");
+
+            //        UpdateMainMessage("アイン：悪い、今度こそ！");
+            //    }
+            //}
         }
         #endregion
         #region "鏡エリア２－５、台座ルート入り口"
