@@ -77,7 +77,7 @@ namespace DungeonPlayer
         public static Color Ivory = new Color(255, 255, 240);
         public static Color Floralwhite = new Color(255, 250, 240);
         public static Color Greenyellow = new Color(173, 255, 47);
-        public static Color Yellowgreen = new Color(154, 205, 50);
+        public static Color YellowGreen = new Color(154.0f / 255.0f, 205.0f / 255.0f, 50.0f / 255.0f);
         public static Color Olive = new Color(128, 128, 0);
         public static Color Darkolivegreen = new Color(85, 107, 47);
         public static Color Olivedrab = new Color(107, 142, 35);
@@ -144,7 +144,7 @@ namespace DungeonPlayer
         public static Color Violet = new Color(238, 130, 238);
         public static Color Fuchsia = new Color(255, 0, 255);
         public static Color Magenta = new Color(255, 0, 255);
-        public static Color Mediumpurple = new Color(147, 112, 219);
+        public static Color MediumPurple = new Color(147.0f / 255.0f, 112.0f / 255.0f, 219.0f / 255.0f);
         public static Color Mediumorchid = new Color(186, 85, 211);
         public static Color Darkorchid = new Color(153, 50, 204);
         public static Color Blueviolet = new Color(138, 43, 226);

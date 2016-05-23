@@ -169,6 +169,8 @@ namespace DungeonPlayer
         //const int[] originNumber = { 1, 3, 4, 5, 4, 2, 3, 1, 4, 2, 5, 5 }; // 原点解
         System.Collections.ObjectModel.ReadOnlyCollection<int> originNumber = Array.AsReadOnly<int>(new int[] { 1, 3, 4, 5, 4, 2, 3, 1, 4, 2, 5, 5 });
 
+        bool nowMirrorRoomGodSequence = false; // ３階、鏡の部屋、神々の試練を実行中
+
         private GameObject prefab_TileElement = null;
 
         // Use this for initialization
@@ -1093,6 +1095,21 @@ namespace DungeonPlayer
                 else
                 {
                     MessagePack.Message12004_Success(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+            }
+            else if (this.nowMirrorRoomGodSequence)
+            {
+                this.nowMirrorRoomGodSequence = false;
+
+                if (!GroundOne.GodSeuqence)
+                {
+                    MessagePack.Message13119_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else
+                {
+                    MessagePack.Message13119_Success(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
             }
@@ -12598,6 +12615,11 @@ namespace DungeonPlayer
                 {
                     JumpByMirror_TruthWay5E();
                     //UpdateUnknownTileArea3_Area68(); X5ルート最後は一歩ずつ進ませる事とする。
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonMirrorRoomGodSequence)
+                {
+                    this.nowMirrorRoomGodSequence = true;
+                    SceneDimension.CallTruthWill(this);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DecisionOpenDoor3)
                 {
