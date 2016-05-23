@@ -10658,6 +10658,7 @@ namespace DungeonPlayer
         
         private void MakeCorrectAnswer(int num)
         {
+            Debug.Log("MakeCorrectAnswer(S)");
             // 95, 96, 97, 105, 112, 113, 121, 124, 125, 133, 138, 144
             // [122-123] [142-143] [145-146]
             // [98-100] [106-108] [109-111] [114-116] [130-132] [139-141]
@@ -10739,6 +10740,7 @@ namespace DungeonPlayer
                 if (current == num)
                 {
                     MakeWrongAnswerSub1(num); ElevenCounter -= 1;
+                    Debug.Log("OpenWrongElevenAnswer call1: " + ElevenCounter);
                     OpenWrongElevenAnswer(ElevenCounter);
                     return;
                 }
@@ -10749,6 +10751,7 @@ namespace DungeonPlayer
                 if (current == num)
                 {
                     MakeWrongAnswerSub2(num); ElevenCounter -= 2;
+                    Debug.Log("OpenWrongElevenAnswer call2: " + ElevenCounter);
                     OpenWrongElevenAnswer(ElevenCounter);
                     return;
                 }
@@ -10760,6 +10763,7 @@ namespace DungeonPlayer
                 if (current == num)
                 {
                     MakeWrongAnswerSub3(num); ElevenCounter -= 3;
+                    Debug.Log("OpenWrongElevenAnswer call3: " + ElevenCounter);
                     OpenWrongElevenAnswer(ElevenCounter);
                     return;
                 }
@@ -10770,6 +10774,7 @@ namespace DungeonPlayer
                 if (current == num)
                 {
                     MakeWrongAnswerSub4(num); ElevenCounter -= 4;
+                    Debug.Log("OpenWrongElevenAnswer call4: " + ElevenCounter);
                     OpenWrongElevenAnswer(ElevenCounter);
                     return;
                 }
@@ -10778,6 +10783,8 @@ namespace DungeonPlayer
 
         private void OpenWrongElevenAnswer(int ElevenCounter)
         {
+            Debug.Log("OpenWrongElevenAnswer(S): " + ElevenCounter);
+
             while (ElevenCounter > 0)
             {
                 if (ElevenCounter >= 4)
@@ -10863,18 +10870,68 @@ namespace DungeonPlayer
         }
         private void MakeWrongAnswerSub1(int num)
         {
-            if (GroundOne.WE2.TruthWay95 == 0 && (num == 0 || num == 95)) { GroundOne.WE2.TruthWay95 = -1; UpdateUnknownTileArea3_One(29, 36); UpdateUnknownTileArea3_Area5(); return; }
-            if (GroundOne.WE2.TruthWay96 == 0 && (num == 0 || num == 96)) { GroundOne.WE2.TruthWay96 = -1; UpdateUnknownTileArea3_One(9, 50); UpdateUnknownTileArea3_Area6(); return; }
-            if (GroundOne.WE2.TruthWay97 == 0 && (num == 0 || num == 97)) { GroundOne.WE2.TruthWay97 = -1; UpdateUnknownTileArea3_One(14, 45); UpdateUnknownTileArea3_Area7(); return; }
-            if (GroundOne.WE2.TruthWay105 == 0 && (num == 0 || num == 105)) { GroundOne.WE2.TruthWay105 = -1; UpdateUnknownTileArea3_One(10, 42); UpdateUnknownTileArea3_Area13(); return; }
-            if (GroundOne.WE2.TruthWay112 == 0 && (num == 0 || num == 112)) { GroundOne.WE2.TruthWay112 = -1; UpdateUnknownTileArea3_One(12, 41); UpdateUnknownTileArea3_Area19(); return; }
-            if (GroundOne.WE2.TruthWay113 == 0 && (num == 0 || num == 113)) { GroundOne.WE2.TruthWay113 = -1; UpdateUnknownTileArea3_One(17, 21); UpdateUnknownTileArea3_Area20(); return; }
-            if (GroundOne.WE2.TruthWay121 == 0 && (num == 0 || num == 121)) { GroundOne.WE2.TruthWay121 = -1; UpdateUnknownTileArea3_One(9, 35); UpdateUnknownTileArea3_Area26(); return; }
-            if (GroundOne.WE2.TruthWay124 == 0 && (num == 0 || num == 124)) { GroundOne.WE2.TruthWay124 = -1; UpdateUnknownTileArea3_One(24, 31); UpdateUnknownTileArea3_Area31(); return; }
-            if (GroundOne.WE2.TruthWay125 == 0 && (num == 0 || num == 125)) { GroundOne.WE2.TruthWay125 = -1; UpdateUnknownTileArea3_One(39, 47); UpdateUnknownTileArea3_Area32(); return; }
-            if (GroundOne.WE2.TruthWay133 == 0 && (num == 0 || num == 133)) { GroundOne.WE2.TruthWay133 = -1; UpdateUnknownTileArea3_One(25, 34); UpdateUnknownTileArea3_Area36(); return; }
-            if (GroundOne.WE2.TruthWay138 == 0 && (num == 0 || num == 138)) { GroundOne.WE2.TruthWay138 = -1; UpdateUnknownTileArea3_One(17, 42); UpdateUnknownTileArea3_Area41(); return; }
-            if (GroundOne.WE2.TruthWay144 == 0 && (num == 0 || num == 144)) { GroundOne.WE2.TruthWay144 = -1; UpdateUnknownTileArea3_One(24, 53); UpdateUnknownTileArea3_Area46(); return; }
+            Debug.Log("MakeWrongAnswerSub1(S) " + num);
+
+            if (GroundOne.WE2.TruthWay95 == 0 && (num == 0 || num == 95))
+            {
+                Debug.Log("TruthWay95 now wrong!");
+                GroundOne.WE2.TruthWay95 = -1; UpdateUnknownTileArea3_One(29, 36); UpdateUnknownTileArea3_Area5(); return;
+            }
+            if (GroundOne.WE2.TruthWay96 == 0 && (num == 0 || num == 96))
+            {
+                Debug.Log("TruthWay96 now wrong!");
+                GroundOne.WE2.TruthWay96 = -1; UpdateUnknownTileArea3_One(9, 50); UpdateUnknownTileArea3_Area6(); return;
+            }
+            if (GroundOne.WE2.TruthWay97 == 0 && (num == 0 || num == 97))
+            {
+                Debug.Log("TruthWay97 now wrong!");
+                GroundOne.WE2.TruthWay97 = -1; UpdateUnknownTileArea3_One(14, 45); UpdateUnknownTileArea3_Area7(); return;
+            }
+            if (GroundOne.WE2.TruthWay105 == 0 && (num == 0 || num == 105))
+            {
+                Debug.Log("TruthWay105 now wrong!");
+                GroundOne.WE2.TruthWay105 = -1; UpdateUnknownTileArea3_One(10, 42); UpdateUnknownTileArea3_Area13(); return;
+            }
+            if (GroundOne.WE2.TruthWay112 == 0 && (num == 0 || num == 112))
+            {
+                Debug.Log("TruthWay112 now wrong!");
+                GroundOne.WE2.TruthWay112 = -1; UpdateUnknownTileArea3_One(12, 41); UpdateUnknownTileArea3_Area19(); return;
+            }
+            if (GroundOne.WE2.TruthWay113 == 0 && (num == 0 || num == 113))
+            {
+                Debug.Log("TruthWay113 now wrong!");
+                GroundOne.WE2.TruthWay113 = -1; UpdateUnknownTileArea3_One(17, 21); UpdateUnknownTileArea3_Area20(); return;
+            }
+            if (GroundOne.WE2.TruthWay121 == 0 && (num == 0 || num == 121))
+            {
+                Debug.Log("TruthWay121 now wrong!");
+                GroundOne.WE2.TruthWay121 = -1; UpdateUnknownTileArea3_One(9, 35); UpdateUnknownTileArea3_Area26(); return;
+            }
+            if (GroundOne.WE2.TruthWay124 == 0 && (num == 0 || num == 124))
+            {
+                Debug.Log("TruthWay124 now wrong!");
+                GroundOne.WE2.TruthWay124 = -1; UpdateUnknownTileArea3_One(24, 31); UpdateUnknownTileArea3_Area31(); return;
+            }
+            if (GroundOne.WE2.TruthWay125 == 0 && (num == 0 || num == 125))
+            {
+                Debug.Log("TruthWay125 now wrong!");
+                GroundOne.WE2.TruthWay125 = -1; UpdateUnknownTileArea3_One(39, 47); UpdateUnknownTileArea3_Area32(); return;
+            }
+            if (GroundOne.WE2.TruthWay133 == 0 && (num == 0 || num == 133))
+            {
+                Debug.Log("TruthWay133 now wrong!");
+                GroundOne.WE2.TruthWay133 = -1; UpdateUnknownTileArea3_One(25, 34); UpdateUnknownTileArea3_Area36(); return;
+            }
+            if (GroundOne.WE2.TruthWay138 == 0 && (num == 0 || num == 138))
+            {
+                Debug.Log("TruthWay138 now wrong!");
+                GroundOne.WE2.TruthWay138 = -1; UpdateUnknownTileArea3_One(17, 42); UpdateUnknownTileArea3_Area41(); return;
+            }
+            if (GroundOne.WE2.TruthWay144 == 0 && (num == 0 || num == 144))
+            {
+                Debug.Log("TruthWay144 now wrong!");
+                GroundOne.WE2.TruthWay144 = -1; UpdateUnknownTileArea3_One(24, 53); UpdateUnknownTileArea3_Area46(); return;
+            }
         }
 
         private void MakeWrongAnswerSub2()
@@ -10883,8 +10940,11 @@ namespace DungeonPlayer
         }
         private void MakeWrongAnswerSub2(int num)
         {
+            Debug.Log("MakeWrongAnswerSub2(S) " + num);
+
             if (GroundOne.WE2.TruthWay122 == 0 && (num == 0 || num == 122 || num == 123))
             {
+                Debug.Log("TruthWay122,123 now wrong!");
                 GroundOne.WE2.TruthWay122 = -1; UpdateUnknownTileArea3_One(20, 50);
                 GroundOne.WE2.TruthWay123 = -1; UpdateUnknownTileArea3_One(20, 52);
                 UpdateUnknownTileArea3_Area28();
@@ -10892,6 +10952,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay142 == 0 && (num == 0 || num == 142 || num == 143))
             {
+                Debug.Log("TruthWay142,143 now wrong!");
                 GroundOne.WE2.TruthWay142 = -1; UpdateUnknownTileArea3_One(24, 44);
                 GroundOne.WE2.TruthWay143 = -1; UpdateUnknownTileArea3_One(26, 44);
                 UpdateUnknownTileArea3_Area45();
@@ -10899,6 +10960,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay145 == 0 && (num == 0 || num == 145 || num == 146))
             {
+                Debug.Log("TruthWay145,146 now wrong!");
                 GroundOne.WE2.TruthWay145 = -1; UpdateUnknownTileArea3_One(6, 51);
                 GroundOne.WE2.TruthWay146 = -1; UpdateUnknownTileArea3_One(6, 52);
                 UpdateUnknownTileArea3_Area47();
@@ -10912,8 +10974,10 @@ namespace DungeonPlayer
         }
         private void MakeWrongAnswerSub3(int num)
         {
+            Debug.Log("MakeWrongAnswerSub3(S) " + num);
             if (GroundOne.WE2.TruthWay98 == 0 && (num == 0 || num == 98 || num == 99 || num == 100))
             {
+                Debug.Log("TruthWay98,99,100 now wrong!");
                 GroundOne.WE2.TruthWay98 = -1; UpdateUnknownTileArea3_One(30, 27);
                 GroundOne.WE2.TruthWay99 = -1; UpdateUnknownTileArea3_One(30, 29);
                 GroundOne.WE2.TruthWay100 = -1; UpdateUnknownTileArea3_One(30, 31);
@@ -10922,6 +10986,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay106 == 0 && (num == 0 || num == 106 || num == 107 || num == 108))
             {
+                Debug.Log("TruthWay106,107,108 now wrong!");
                 GroundOne.WE2.TruthWay106 = -1; UpdateUnknownTileArea3_One(34, 49);
                 GroundOne.WE2.TruthWay107 = -1; UpdateUnknownTileArea3_One(36, 49);
                 GroundOne.WE2.TruthWay108 = -1; UpdateUnknownTileArea3_One(38, 49);
@@ -10930,6 +10995,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay109 == 0 && (num == 0 || num == 109 || num == 110 || num == 111))
             {
+                Debug.Log("TruthWay109,110,111 now wrong!");
                 GroundOne.WE2.TruthWay109 = -1; UpdateUnknownTileArea3_One(31, 37);
                 GroundOne.WE2.TruthWay110 = -1; UpdateUnknownTileArea3_One(33, 37);
                 GroundOne.WE2.TruthWay111 = -1; UpdateUnknownTileArea3_One(35, 37);
@@ -10938,6 +11004,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay114 == 0 && (num == 0 || num == 114 || num == 115 || num == 116))
             {
+                Debug.Log("TruthWay114,115,116 now wrong!");
                 GroundOne.WE2.TruthWay114 = -1; UpdateUnknownTileArea3_One(23, 24);
                 GroundOne.WE2.TruthWay115 = -1; UpdateUnknownTileArea3_One(23, 26);
                 GroundOne.WE2.TruthWay116 = -1; UpdateUnknownTileArea3_One(23, 28);
@@ -10946,6 +11013,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay130 == 0 && (num == 0 || num == 130 || num == 131 || num == 132))
             {
+                Debug.Log("TruthWay130,131,132 now wrong!");
                 GroundOne.WE2.TruthWay130 = -1; UpdateUnknownTileArea3_One(22, 48);
                 GroundOne.WE2.TruthWay131 = -1; UpdateUnknownTileArea3_One(22, 50);
                 GroundOne.WE2.TruthWay132 = -1; UpdateUnknownTileArea3_One(22, 52);
@@ -10954,6 +11022,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay139 == 0 && (num == 0 || num == 139 || num == 140 || num == 141))
             {
+                Debug.Log("TruthWay139,140,141 now wrong!");
                 GroundOne.WE2.TruthWay139 = -1; UpdateUnknownTileArea3_One(8, 22);
                 GroundOne.WE2.TruthWay140 = -1; UpdateUnknownTileArea3_One(6, 22);
                 GroundOne.WE2.TruthWay141 = -1; UpdateUnknownTileArea3_One(5, 21);
@@ -10968,8 +11037,10 @@ namespace DungeonPlayer
         }
         private void MakeWrongAnswerSub4(int num)
         {
+            Debug.Log("MakeWrongAnswerSub4(S) " + num);
             if (GroundOne.WE2.TruthWay101 == 0 && (num == 0 || num == 101 || num == 102 || num == 103 || num == 104))
             {
+                Debug.Log("TruthWay101,102,103,104 now wrong!");
                 GroundOne.WE2.TruthWay101 = -1; UpdateUnknownTileArea3_One(15, 29);
                 GroundOne.WE2.TruthWay102 = -1; UpdateUnknownTileArea3_One(11, 34);
                 GroundOne.WE2.TruthWay103 = -1; UpdateUnknownTileArea3_One(11, 24);
@@ -10979,6 +11050,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay117 == 0 && (num == 0 || num == 117 || num == 118 || num == 119 || num == 120))
             {
+                Debug.Log("TruthWay117,118,119,120 now wrong!");
                 GroundOne.WE2.TruthWay117 = -1; UpdateUnknownTileArea3_One(26, 34);
                 GroundOne.WE2.TruthWay118 = -1; UpdateUnknownTileArea3_One(28, 34);
                 GroundOne.WE2.TruthWay119 = -1; UpdateUnknownTileArea3_One(30, 34);
@@ -10988,6 +11060,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay126 == 0 && (num == 0 || num == 126 || num == 127 || num == 128 || num == 129))
             {
+                Debug.Log("TruthWay126,127,128,129 now wrong!");
                 GroundOne.WE2.TruthWay126 = -1; UpdateUnknownTileArea3_One(10, 54);
                 GroundOne.WE2.TruthWay127 = -1; UpdateUnknownTileArea3_One(8, 41);
                 GroundOne.WE2.TruthWay128 = -1; UpdateUnknownTileArea3_One(5, 46);
@@ -10998,6 +11071,7 @@ namespace DungeonPlayer
 
             if (GroundOne.WE2.TruthWay134 == 0 && (num == 0 || num == 134 || num == 135 || num == 136 || num == 137))
             {
+                Debug.Log("TruthWay134,135,136,137 now wrong!");
                 GroundOne.WE2.TruthWay134 = -1; UpdateUnknownTileArea3_One(17, 26);
                 GroundOne.WE2.TruthWay135 = -1; UpdateUnknownTileArea3_One(18, 27);
                 GroundOne.WE2.TruthWay136 = -1; UpdateUnknownTileArea3_One(19, 28);
@@ -11007,6 +11081,7 @@ namespace DungeonPlayer
             }
             if (GroundOne.WE2.TruthWay147 == 0 && (num == 0 || num == 147 || num == 148 || num == 149 || num == 150))
             {
+                Debug.Log("TruthWay147,148,149,150 now wrong!");
                 GroundOne.WE2.TruthWay147 = -1; UpdateUnknownTileArea3_One(31, 24);
                 GroundOne.WE2.TruthWay148 = -1; UpdateUnknownTileArea3_One(26, 22);
                 GroundOne.WE2.TruthWay149 = -1; UpdateUnknownTileArea3_One(25, 22);
@@ -12645,6 +12720,194 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area1)
                 {
                     UpdateUnknownTileArea3_Area1();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area2)
+                {
+                    UpdateUnknownTileArea3_Area2();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area3)
+                {
+                    UpdateUnknownTileArea3_Area3();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area4)
+                {
+                    UpdateUnknownTileArea3_Area4();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area5)
+                {
+                    UpdateUnknownTileArea3_Area5();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area6)
+                {
+                    UpdateUnknownTileArea3_Area6();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area7)
+                {
+                    UpdateUnknownTileArea3_Area7();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area8)
+                {
+                    UpdateUnknownTileArea3_Area8();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area9)
+                {
+                    UpdateUnknownTileArea3_Area9();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area10)
+                {
+                    UpdateUnknownTileArea3_Area10();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area11)
+                {
+                    UpdateUnknownTileArea3_Area11();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area12)
+                {
+                    UpdateUnknownTileArea3_Area12();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area13)
+                {
+                    UpdateUnknownTileArea3_Area13();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area14)
+                {
+                    UpdateUnknownTileArea3_Area14();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area15)
+                {
+                    UpdateUnknownTileArea3_Area15();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area16)
+                {
+                    UpdateUnknownTileArea3_Area16();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area17)
+                {
+                    UpdateUnknownTileArea3_Area17();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area18)
+                {
+                    UpdateUnknownTileArea3_Area18();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area19)
+                {
+                    UpdateUnknownTileArea3_Area19();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area20)
+                {
+                    UpdateUnknownTileArea3_Area20();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area21)
+                {
+                    UpdateUnknownTileArea3_Area21();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area22)
+                {
+                    UpdateUnknownTileArea3_Area22();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area23)
+                {
+                    UpdateUnknownTileArea3_Area23();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area24)
+                {
+                    UpdateUnknownTileArea3_Area24();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area25)
+                {
+                    UpdateUnknownTileArea3_Area25();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area26)
+                {
+                    UpdateUnknownTileArea3_Area26();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area27)
+                {
+                    UpdateUnknownTileArea3_Area27();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area28)
+                {
+                    UpdateUnknownTileArea3_Area28();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area29)
+                {
+                    UpdateUnknownTileArea3_Area29();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area30)
+                {
+                    UpdateUnknownTileArea3_Area30();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area31)
+                {
+                    UpdateUnknownTileArea3_Area31();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area32)
+                {
+                    UpdateUnknownTileArea3_Area32();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area33)
+                {
+                    UpdateUnknownTileArea3_Area33();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area34)
+                {
+                    UpdateUnknownTileArea3_Area34();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area35)
+                {
+                    UpdateUnknownTileArea3_Area35();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area36)
+                {
+                    UpdateUnknownTileArea3_Area36();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area37)
+                {
+                    UpdateUnknownTileArea3_Area37();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area38)
+                {
+                    UpdateUnknownTileArea3_Area38();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area39)
+                {
+                    UpdateUnknownTileArea3_Area39();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area40)
+                {
+                    UpdateUnknownTileArea3_Area40();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area41)
+                {
+                    UpdateUnknownTileArea3_Area41();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area42)
+                {
+                    UpdateUnknownTileArea3_Area42();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area43)
+                {
+                    UpdateUnknownTileArea3_Area43();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area44)
+                {
+                    UpdateUnknownTileArea3_Area44();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area45)
+                {
+                    UpdateUnknownTileArea3_Area45();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area46)
+                {
+                    UpdateUnknownTileArea3_Area46();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area47)
+                {
+                    UpdateUnknownTileArea3_Area47();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area48)
+                {
+                    UpdateUnknownTileArea3_Area48();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area69)
                 {
