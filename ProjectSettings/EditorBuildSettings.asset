@@ -44,6 +44,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TruthAnswer.unity
   - enabled: 1
+    path: Assets/TruthWill.unity
+  - enabled: 1
     path: Assets/TruthInputRequest.unity
   - enabled: 1
     path: Assets/TruthItemBank.unity

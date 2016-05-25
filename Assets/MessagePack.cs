@@ -216,7 +216,6 @@ namespace DungeonPlayer
             GetGreenPotionForLana,
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
-            DungeonYesNoMessage,
             DungeonBadEnd,
             DungeonGetTreasure,
             DungeonAgilityRoomStart,
@@ -365,6 +364,7 @@ namespace DungeonPlayer
             DungeonJumpToLocationInfinity11,
             DungeonJumpToLocationInfinityTurnBack,
             DungeonJumpToLocationInfinityLast,
+            DungeonYesNoSkipMirror,
             Ending,
         }
         #endregion
@@ -11912,21 +11912,7 @@ namespace DungeonPlayer
                     messageList.Add("アイン：ああ、助かるぜ。"); eventList.Add(ActionEvent.None);
                 }
 
-                // todo
-                //messageList.Add("ラナ：台座ルートまで通じる鏡にワープできるわ。使ってみる？"); eventList.Add(ActionEvent.xxx);
-                //using (YesNoRequest ynr = new YesNoRequest())
-                //{
-                //    ynr.StartPosition = FormStartPosition.CenterParent;
-                //    ynr.ShowDialog();
-                //    if (ynr.DialogResult == DialogResult.Yes)
-                //    {
-                //        JumpByMirror(1, 22);
-                //    }
-                //    else
-                //    {
-                //        messageList.Add("", true);
-                //    }
-                //}
+                messageList.Add("ラナ：台座ルートまで通じる鏡にワープできるわ。使ってみる？"); eventList.Add(ActionEvent.DungeonYesNoSkipMirror);
             }
             else
             {
@@ -12953,9 +12939,9 @@ namespace DungeonPlayer
             {
                 messageList.Add("ラナ：あれ？　原点解が分かったんだから５つ鏡の方に行ってみるんじゃないの？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonYesNoMessage);
-
                 // todo
+                //messageList.Add(""); eventList.Add(ActionEvent.DungeonYesNoOriginOrNormal);
+
             //    using (YesNoRequest ynr = new YesNoRequest())
             //    {
             //        ynr.StartPosition = FormStartPosition.CenterParent;
@@ -13177,9 +13163,7 @@ namespace DungeonPlayer
             messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //this.playerLoopNumber[11] = ii - 245;
-            //// 12段階の全正解かどうかをチェック
+            // 12段階の全正解かどうかをチェック
             //if (CheckInfiniteLoopResult())
             //{
             //    if (!we.dungeonEvent328)

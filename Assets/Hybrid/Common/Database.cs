@@ -2645,6 +2645,7 @@ namespace DungeonPlayer
         public const string Message_SaveRequest2 = @"セーブしない場合、現在までのデータが破棄されます。セーブしますか？";
         public const string Message_GotoDownstair = @"アイン：下り階段発見！さっそく降りるとするか？";
         public const string Message_GotoUpstair = @"アイン：上の階へ戻る階段だな。ここは一旦戻るか？";
+        public const string Message_GotoSkipMirror = @"ラナ：台座ルートまで通じる鏡にワープできるわ。使ってみる？";
 
         // コマンド影響因子向けアイコン
         public const string WeaponIcon = @"WeaponMark";
