@@ -368,6 +368,7 @@ namespace DungeonPlayer
             DungeonJumpToLocationInfinity11,
             DungeonJumpToLocationInfinityTurnBack,
             DungeonJumpToLocationInfinityLast,
+            DungeonMessageInfiniteLoopResult,
             DungeonYesNoSkipMirror,
             DungeonYesNoOriginOrNormal,
             Ending,
@@ -11171,7 +11172,6 @@ namespace DungeonPlayer
                 return;
             }
 
-            // todo ここにWorldEnvironment2のデータを自動書き込みする。
             if (!GroundOne.WE.dungeonEvent314)
             {
                 GroundOne.WE.dungeonEvent314 = true;
@@ -13065,7 +13065,7 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupOriginFix);
             }
 
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity1);
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity1);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13125(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
@@ -13118,15 +13118,15 @@ namespace DungeonPlayer
             messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity11);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
-        public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
+        public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList, int ii, bool checkInfiniteLoopResult)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
-            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
-
             // todo
             // 12段階の全正解かどうかをチェック
-            //if (CheckInfiniteLoopResult())
-            //{
+            if (checkInfiniteLoopResult)
+            {
+                messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+                messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
+
             //    if (!we.dungeonEvent328)
             //    {
             //        JumpByMirror_Instant(1, 55);
@@ -13205,276 +13205,275 @@ namespace DungeonPlayer
             //            UpdateMainMessage("アイン：ああ・・・");
             //        }
             //    }
-            //    return true;
-            //}
-            //else
-            //{
-            //    JumpByMirror_Instant(39, 56);
-            //}
+                return;
+            }
 
-            //if (!we.dungeonEvent328)
-            //{
-            //    if (!we.dungeonEvent321)
-            //    {
-            //        we.dungeonEvent321 = true;
+            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityTurnBack);
+            messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：あれ、ひょっとして元に戻ったか？");
+            if (!GroundOne.WE.dungeonEvent328)
+            {
+                if (!GroundOne.WE.dungeonEvent321)
+                {
+                    GroundOne.WE.dungeonEvent321 = true;
 
-            //        UpdateMainMessage("ラナ：どうも駄目だったみたいね。");
+                    messageList.Add("アイン：あれ、ひょっとして元に戻ったか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：・・・いやいやいや。");
+                    messageList.Add("ラナ：どうも駄目だったみたいね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ぶっちゃけ、何の変哲もなく５つの鏡がズラズラだったな・・・");
+                    messageList.Add("アイン：・・・いやいやいや。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：これは・・・");
+                    messageList.Add("アイン：ぶっちゃけ、何の変哲もなく５つの鏡がズラズラだったな・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ん？何か分かったのか、ヴェルゼは？");
+                    messageList.Add("ヴェルゼ：これは・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、看板に何か追加されていますよ。");
+                    messageList.Add("アイン：ん？何か分かったのか、ヴェルゼは？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：っお！本当かよ！？ちょっと見せてくれ。");
+                    messageList.Add("ヴェルゼ：アイン君、看板に何か追加されていますよ。"); eventList.Add(ActionEvent.None);
 
-            //        MessageInfiniteLoopResult();
+                    messageList.Add("アイン：っお！本当かよ！？ちょっと見せてくれ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：っな・・・何だこれは・・・");
+                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
-            //        UpdateMainMessage("ヴェルゼ：何かの暗号でしょうか？");
+                    messageList.Add("アイン：っな・・・何だこれは・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：どうするアイン？");
+                    messageList.Add("ヴェルゼ：何かの暗号でしょうか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：うーん・・・");
+                    messageList.Add("ラナ：どうするアイン？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：追加された文字は今通ったトコに関連はしてそうなんだがな・・・");
+                    messageList.Add("アイン：うーん・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：さすがにもういっぺんぐらい行ってみないと分からねえな。");
+                    messageList.Add("アイン：追加された文字は今通ったトコに関連はしてそうなんだがな・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：そう、じゃあアインがもう一回行きたいと思ったら言って頂戴。");
+                    messageList.Add("アイン：さすがにもういっぺんぐらい行ってみないと分からねえな。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：了解了解。");
-            //    }
-            //    else if (!we.dungeonEvent322)
-            //    {
-            //        we.dungeonEvent322 = true;
+                    messageList.Add("ラナ：そう、じゃあアインがもう一回行きたいと思ったら言って頂戴。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：また元の場所に戻ったのか。");
+                    messageList.Add("アイン：了解了解。"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent322)
+                {
+                    GroundOne.WE.dungeonEvent322 = true;
 
-            //        UpdateMainMessage("ラナ：全然何の変化もないわね・・・");
+                    messageList.Add("アイン：また元の場所に戻ったのか。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ラナはもう、呼び声みたいなのは全然聞こえないのか？");
+                    messageList.Add("ラナ：全然何の変化もないわね・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：うん、あの台座の一件があって以来、全然聞こえなくなったわ。");
+                    messageList.Add("アイン：ラナはもう、呼び声みたいなのは全然聞こえないのか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：そうか・・・");
+                    messageList.Add("ラナ：うん、あの台座の一件があって以来、全然聞こえなくなったわ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：・・・これは・・・やはり・・・");
+                    messageList.Add("アイン：そうか・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ん？何だ？");
+                    messageList.Add("ヴェルゼ：・・・これは・・・やはり・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、看板を");
+                    messageList.Add("アイン：ん？何だ？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：お、おお。");
+                    messageList.Add("ヴェルゼ：アイン君、看板を"); eventList.Add(ActionEvent.None);
 
-            //        MessageInfiniteLoopResult();
+                    messageList.Add("アイン：お、おお。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、計算結果をお教えしましょう。");
+                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
-            //        UpdateMainMessage("アイン：計算結果？？何の・・・");
+                    messageList.Add("ヴェルゼ：アイン君、計算結果をお教えしましょう。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：まっ、まさか！！！！！");
+                    messageList.Add("アイン：計算結果？？何の・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：ハイ、そのまさかです。");
+                    messageList.Add("アイン：まっ、まさか！！！！！"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：え、っちょっと一体何の話よ？");
+                    messageList.Add("ヴェルゼ：ハイ、そのまさかです。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：５つ並んでいる鏡が12段階。そして、この文字はその結果を指している。合ってるか？");
+                    messageList.Add("ラナ：え、っちょっと一体何の話よ？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：ええ、さすがはアイン君です。この辺に関しては察しが良いですね。");
+                    messageList.Add("アイン：５つ並んでいる鏡が12段階。そして、この文字はその結果を指している。合ってるか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：という事は、この文字の意味も既に理解したようですね。");
+                    messageList.Add("ヴェルゼ：ええ、さすがはアイン君です。この辺に関しては察しが良いですね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ああ、正解だったナンバーと、俺達が通ったナンバーが記されている。");
+                    messageList.Add("ヴェルゼ：という事は、この文字の意味も既に理解したようですね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：そして一致していれば○、不一致なら×が記されている。");
+                    messageList.Add("アイン：ああ、正解だったナンバーと、俺達が通ったナンバーが記されている。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：分かっていれば単純な表示だったな。");
+                    messageList.Add("アイン：そして一致していれば○、不一致なら×が記されている。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：そのとおりですね。しかしこれは・・・");
+                    messageList.Add("アイン：分かっていれば単純な表示だったな。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、ラナさん、絶望させて申し訳ないのですが");
+                    messageList.Add("ヴェルゼ：そのとおりですね。しかしこれは・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：この組み合わせ数は");
+                    messageList.Add("ヴェルゼ：アイン君、ラナさん、絶望させて申し訳ないのですが"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：　【２４４１４０６２５】　です。");
+                    messageList.Add("ヴェルゼ：この組み合わせ数は"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：２億・・・超えるってか・・・");
+                    messageList.Add("ヴェルゼ：　【２４４１４０６２５】　です。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：え・・・２億分の１より確率が悪いって話？");
+                    messageList.Add("アイン：２億・・・超えるってか・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ああ、そういう事になるな・・・");
+                    messageList.Add("ラナ：え・・・２億分の１より確率が悪いって話？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：・・・冗談でしょ。いくらなんでも当たりっこないわ。");
+                    messageList.Add("アイン：ああ、そういう事になるな・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：やっぱ最初の直感通りだな。");
+                    messageList.Add("ラナ：・・・冗談でしょ。いくらなんでも当たりっこないわ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：無限解ってのは解けない事を指している。");
+                    messageList.Add("アイン：やっぱ最初の直感通りだな。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：【永遠に彷徨う】言葉通りだ。");
+                    messageList.Add("アイン：無限解ってのは解けない事を指している。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：じゃあ、やっぱり階段に行くしかないみたいね。");
+                    messageList.Add("アイン：【永遠に彷徨う】言葉通りだ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ああ、ひょっとしたら何かあるのかもしれないが、今のとこどうにもならねえ。");
+                    messageList.Add("ラナ：じゃあ、やっぱり階段に行くしかないみたいね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：それでは、階段に向かうとしますか？");
+                    messageList.Add("アイン：ああ、ひょっとしたら何かあるのかもしれないが、今のとこどうにもならねえ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ああ。すまねえがそうさせてもらうぜ。");
-            //    }
-            //    else if (!we.dungeonEvent323)
-            //    {
-            //        we.dungeonEvent323 = true;
+                    messageList.Add("ヴェルゼ：それでは、階段に向かうとしますか？"); eventList.Add(ActionEvent.None);
 
-            //        MessageInfiniteLoopResult();
+                    messageList.Add("アイン：ああ。すまねえがそうさせてもらうぜ。"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent323)
+                {
+                    GroundOne.WE.dungeonEvent323 = true;
 
-            //        UpdateMainMessage("アイン：・・・くそ、やはり駄目か。");
+                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
-            //        UpdateMainMessage("ラナ：２億通りを超えてるのよね・・・さすがにヒントが無いとどうにもならないわね。");
+                    messageList.Add("アイン：・・・くそ、やはり駄目か。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ラナにも、もう呼び声が聞こえねえってトコだしな・・・");
+                    messageList.Add("ラナ：２億通りを超えてるのよね・・・さすがにヒントが無いとどうにもならないわね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：ゴメンね。何とか聞こうとはしてるんだけど。");
+                    messageList.Add("アイン：ラナにも、もう呼び声が聞こえねえってトコだしな・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：いえ");
+                    messageList.Add("ラナ：ゴメンね。何とか聞こうとはしてるんだけど。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ん？");
+                    messageList.Add("ヴェルゼ：いえ"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：ラナさんに呼び声が聞こえないのはおそらく、ラナさん本人のせいではありません。");
+                    messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：えっ、そうなんですか？");
+                    messageList.Add("ヴェルゼ：ラナさんに呼び声が聞こえないのはおそらく、ラナさん本人のせいではありません。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：はい。これはある事実を表しています。");
+                    messageList.Add("ラナ：えっ、そうなんですか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ある事実？");
+                    messageList.Add("ヴェルゼ：はい。これはある事実を表しています。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：ラナさんに呼び声が聞こえない理由は、シンプルです。");
+                    messageList.Add("アイン：ある事実？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：それは、呼び声自体が発していないからです。");
+                    messageList.Add("ヴェルゼ：ラナさんに呼び声が聞こえない理由は、シンプルです。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：呼び声自体が発していない・・・");
+                    messageList.Add("ヴェルゼ：それは、呼び声自体が発していないからです。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：呼び声は正解を導くために発せられていたのは覚えていますか？");
+                    messageList.Add("アイン：呼び声自体が発していない・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：・・・　・・・");
+                    messageList.Add("ヴェルゼ：呼び声は正解を導くために発せられていたのは覚えていますか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ッ！！　ひょっとして！！！");
+                    messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：この時点で理解が及びましたか。　アイン君の読み方は本当にすごいですね。");
+                    messageList.Add("アイン：ッ！！　ひょっとして！！！"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：どういうこと？");
+                    messageList.Add("ヴェルゼ：この時点で理解が及びましたか。　アイン君の読み方は本当にすごいですね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ラナ・・・悪い、本当にココは止めておこう。");
+                    messageList.Add("ラナ：どういうこと？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：う～ん、別に良いけど教えてちょうだい。");
+                    messageList.Add("アイン：ラナ・・・悪い、本当にココは止めておこう。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：呼び声が聞こえないのは当たり前だ。");
+                    messageList.Add("ラナ：う～ん、別に良いけど教えてちょうだい。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ココは通るたびに、正解ルートが変化している。");
+                    messageList.Add("アイン：呼び声が聞こえないのは当たり前だ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：・・・え？");
+                    messageList.Add("アイン：ココは通るたびに、正解ルートが変化している。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：１２段階鏡を潜るだろ？");
+                    messageList.Add("ラナ：・・・え？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：え、ええ。");
+                    messageList.Add("アイン：１２段階鏡を潜るだろ？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：１２段階の鏡を潜った直後に、答えが毎回変化してるって事だ。");
+                    messageList.Add("ラナ：え、ええ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：つまり、回数を重ねる事自体に意味はねえ。");
+                    messageList.Add("アイン：１２段階の鏡を潜った直後に、答えが毎回変化してるって事だ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：失敗ルートを一つ一つ確認して積み重ねる方法が通用しねえ。");
+                    messageList.Add("アイン：つまり、回数を重ねる事自体に意味はねえ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：それって、毎回毎回が２億超えの確率を要求されてるって事？");
+                    messageList.Add("アイン：失敗ルートを一つ一つ確認して積み重ねる方法が通用しねえ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ああ・・・");
+                    messageList.Add("ラナ：それって、毎回毎回が２億超えの確率を要求されてるって事？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、これは本当に止めておいた方が良いようですね。");
+                    messageList.Add("アイン：ああ・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ああ、時間をかけちまって悪かった。階段へ進めるとしよう。");
-            //    }
-            //    else if (!we.dungeonEvent324)
-            //    {
-            //        we.dungeonEvent324 = true;
+                    messageList.Add("ヴェルゼ：アイン君、これは本当に止めておいた方が良いようですね。"); eventList.Add(ActionEvent.None);
 
-            //        MessageInfiniteLoopResult();
+                    messageList.Add("アイン：ああ、時間をかけちまって悪かった。階段へ進めるとしよう。"); eventList.Add(ActionEvent.None);
+                }
+                else if (!GroundOne.WE.dungeonEvent324)
+                {
+                    GroundOne.WE.dungeonEvent324 = true;
 
-            //        UpdateMainMessage("アイン：・・・駄目だな。");
+                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、ラナさんに負担をかけるのは止めて階段へ進みましょう。");
+                    messageList.Add("アイン：・・・駄目だな。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：・・・っえ？");
+                    messageList.Add("ヴェルゼ：アイン君、ラナさんに負担をかけるのは止めて階段へ進みましょう。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：しまった。　ラナすまねえな。");
+                    messageList.Add("ラナ：・・・っえ？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：イイわよ、このぐらい。　気にしないで♪");
+                    messageList.Add("アイン：しまった。　ラナすまねえな。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：いやいや、悪かった。階段へ行こう。");
-            //    }
-            //    else
-            //    {
-            //        MessageInfiniteLoopResult();
+                    messageList.Add("ラナ：イイわよ、このぐらい。　気にしないで♪"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：・・・駄目か。");
+                    messageList.Add("アイン：いやいや、悪かった。階段へ行こう。"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、ラナさんの負担を考えましょう。");
+                    messageList.Add("アイン：・・・駄目か。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：そうだな、すまねえ・・・階段へ行くとするか。");
-            //    }
-            //}
-            //else
-            //{
-            //    if (!we.dungeonEvent331)
-            //    {
-            //        we.dungeonEvent331 = true;
-            //        UpdateMainMessage("アイン：あれ、ひょっとして元に戻ったか？");
+                    messageList.Add("ヴェルゼ：アイン君、ラナさんの負担を考えましょう。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：どうも駄目だったみたいね。");
+                    messageList.Add("アイン：そうだな、すまねえ・・・階段へ行くとするか。"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else
+            {
+                if (!GroundOne.WE.dungeonEvent331)
+                {
+                    GroundOne.WE.dungeonEvent331 = true;
+                    messageList.Add("アイン：あれ、ひょっとして元に戻ったか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：・・・いやいやいや。");
+                    messageList.Add("ラナ：どうも駄目だったみたいね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：原点解がココの鏡を指し示しているのは間違いねえはず。");
+                    messageList.Add("アイン：・・・いやいやいや。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、看板を");
+                    messageList.Add("アイン：原点解がココの鏡を指し示しているのは間違いねえはず。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：ん？看板がどうかしたのか？");
+                    messageList.Add("ヴェルゼ：アイン君、看板を"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：看板に何か追加されていますよ。");
+                    messageList.Add("アイン：ん？看板がどうかしたのか？"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：っお！本当かよ！？ちょっと見せてくれ。");
+                    messageList.Add("ヴェルゼ：看板に何か追加されていますよ。"); eventList.Add(ActionEvent.None);
 
-            //        MessageInfiniteLoopResult();
+                    messageList.Add("アイン：っお！本当かよ！？ちょっと見せてくれ。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：っな・・・");
+                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
-            //        UpdateMainMessage("ヴェルゼ：どうやら、間違いがあったようですね。");
+                    messageList.Add("アイン：っな・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ラナ：アイン、原点解は ( 1 3 4 5 4 2 3 1 4 2 5 5 )だから間違えないでよねホント。");
+                    messageList.Add("ヴェルゼ：どうやら、間違いがあったようですね。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：しまった・・・悪い悪い。");
+                    messageList.Add("ラナ：アイン、原点解は ( 1 3 4 5 4 2 3 1 4 2 5 5 )だから間違えないでよねホント。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：っしゃ、今度こそ間違えずに通過してやるぜ！");
-            //    }
-            //    else
-            //    {
-            //        UpdateMainMessage("アイン：あれ！？");
+                    messageList.Add("アイン：しまった・・・悪い悪い。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("ヴェルゼ：アイン君、看板を。");
+                    messageList.Add("アイン：っしゃ、今度こそ間違えずに通過してやるぜ！"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("アイン：あれ！？"); eventList.Add(ActionEvent.None);
 
-            //        MessageInfiniteLoopResult();
+                    messageList.Add("ヴェルゼ：アイン君、看板を。"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：・・・・・・");
+                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
-            //        UpdateMainMessage("ラナ：ちょっと・・・そこの本格バカアイン・・・");
+                    messageList.Add("アイン：・・・・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：悪い、今度こそ！");
-            //    }
-            //}
+                    messageList.Add("ラナ：ちょっと・・・そこの本格バカアイン・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：悪い、今度こそ！"); eventList.Add(ActionEvent.None);
+                }
+            }
         }
         #endregion
         #region "鏡エリア２－５、台座ルート入り口"

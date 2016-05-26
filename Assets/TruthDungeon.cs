@@ -8331,7 +8331,7 @@ namespace DungeonPlayer
                     case 203:
                     case 204:
                     case 205:
-                        MessagePack.Message13125(ref this.nowMessage, ref this.nowEvent, ii);
+                        MessagePack.Message13126(ref this.nowMessage, ref this.nowEvent, ii);
                         tapOK();
                         return true;
                     case 206:
@@ -8403,7 +8403,8 @@ namespace DungeonPlayer
                     case 248:
                     case 249:
                     case 250:
-                        MessagePack.Message13135(ref this.nowMessage, ref this.nowEvent, ii);
+                        bool result = CheckInfiniteLoopResult();
+                        MessagePack.Message13135(ref this.nowMessage, ref this.nowEvent, ii, result);
                         tapOK();
                         return true;
                     #endregion
@@ -11336,6 +11337,76 @@ namespace DungeonPlayer
             }
         }
 
+        private bool CheckInfiniteLoopResult()
+        {
+            for (int zz = 0; zz < INFINITE_LOOP_MAX; zz++)
+            {
+                if (this.infinityLoopNumber[zz] != this.playerLoopNumber[zz])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        private void MessageInfiniteLoopResult()
+        {
+            MessageInfiniteLoopResult(0);
+        }
+        private void MessageInfiniteLoopResult(int num)
+        {
+            string[] correct = new string[INFINITE_LOOP_MAX];
+            for (int zz = 0; zz < INFINITE_LOOP_MAX; zz++)
+            {
+                if (this.infinityLoopNumber[zz] == this.playerLoopNumber[zz])
+                {
+                    correct[zz] = "○";
+                }
+                else
+                {
+                    correct[zz] = "×";
+                }
+            }
+            if (num == 1)
+            {
+                string commentString = "　　　　『　原点を知りし者、　　向かうは　　　　【死】　』\r\n　　　　　　";
+                if (GroundOne.WE.dungeonEvent328)
+                {
+                    commentString = "　　　　『　原点を知りし者、　　向かうは　【生】【死】　』\r\n　　　　　　";
+                }
+                mainMessage.text = commentString
+                                    + this.infinityLoopNumber[0] + " - " + this.playerLoopNumber[0] + " = " + correct[0] + "    "
+                                    + this.infinityLoopNumber[1] + " - " + this.playerLoopNumber[1] + " = " + correct[1] + "    "
+                                    + this.infinityLoopNumber[2] + " - " + this.playerLoopNumber[2] + " = " + correct[2] + "    "
+                                    + this.infinityLoopNumber[3] + " - " + this.playerLoopNumber[3] + " = " + correct[3] + "\r\n　　　　　　"
+                                    + this.infinityLoopNumber[4] + " - " + this.playerLoopNumber[4] + " = " + correct[4] + "    "
+                                    + this.infinityLoopNumber[5] + " - " + this.playerLoopNumber[5] + " = " + correct[5] + "    "
+                                    + this.infinityLoopNumber[6] + " - " + this.playerLoopNumber[6] + " = " + correct[6] + "    "
+                                    + this.infinityLoopNumber[7] + " - " + this.playerLoopNumber[7] + " = " + correct[7] + "\r\n　　　　　　"
+                                    + this.infinityLoopNumber[8] + " - " + this.playerLoopNumber[8] + " = " + correct[8] + "    "
+                                    + this.infinityLoopNumber[9] + " - " + this.playerLoopNumber[9] + " = " + correct[9] + "    "
+                                    + this.infinityLoopNumber[10] + " - " + this.playerLoopNumber[10] + " = " + correct[10] + "    "
+                                    + this.infinityLoopNumber[11] + " - " + this.playerLoopNumber[11] + " = " + correct[11] + "    ";
+            }
+            else
+            {
+                string commentString = "　　　　『　正解を導きし者、無限解の探求にて永遠に彷徨い、原点を知ること無く、回り続けるがよい　』\r\n　　　　　　";
+                mainMessage.text = commentString
+                                    + this.infinityLoopNumber[0] + " - " + this.playerLoopNumber[0] + " = " + correct[0] + "    "
+                                    + this.infinityLoopNumber[1] + " - " + this.playerLoopNumber[1] + " = " + correct[1] + "    "
+                                    + this.infinityLoopNumber[2] + " - " + this.playerLoopNumber[2] + " = " + correct[2] + "    "
+                                    + this.infinityLoopNumber[3] + " - " + this.playerLoopNumber[3] + " = " + correct[3] + "\r\n　　　　　　"
+                                    + this.infinityLoopNumber[4] + " - " + this.playerLoopNumber[4] + " = " + correct[4] + "    "
+                                    + this.infinityLoopNumber[5] + " - " + this.playerLoopNumber[5] + " = " + correct[5] + "    "
+                                    + this.infinityLoopNumber[6] + " - " + this.playerLoopNumber[6] + " = " + correct[6] + "    "
+                                    + this.infinityLoopNumber[7] + " - " + this.playerLoopNumber[7] + " = " + correct[7] + "\r\n　　　　　　"
+                                    + this.infinityLoopNumber[8] + " - " + this.playerLoopNumber[8] + " = " + correct[8] + "    "
+                                    + this.infinityLoopNumber[9] + " - " + this.playerLoopNumber[9] + " = " + correct[9] + "    "
+                                    + this.infinityLoopNumber[10] + " - " + this.playerLoopNumber[10] + " = " + correct[10] + "    "
+                                    + this.infinityLoopNumber[11] + " - " + this.playerLoopNumber[11] + " = " + correct[11] + "    ";
+            }
+        }
+
         private void UpdateMainMessage(string message)
         {
             UpdateMainMessage(message, false);
@@ -11542,6 +11613,8 @@ namespace DungeonPlayer
         public void tapOK()
         {
             bool HideFilterComplete = true;
+            bool ForceSkipTapOK = false;
+
             if (this.nowReading < this.nowMessage.Count)
             {
                 this.Filter.GetComponent<Image>().color = new Color(0, 0, 0, 0);
@@ -12722,78 +12795,91 @@ namespace DungeonPlayer
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[0] = ii - 190; // todo 3Fのcase xxxを変更完了した後、このナンバーも変える必要がある。
                     JumpByMirror_InfinityWay1();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity2)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[1] = ii - 195;
                     JumpByMirror_InfinityWay2();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity3)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[2] = ii - 200;
                     JumpByMirror_InfinityWay3();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity4)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[3] = ii - 205;
                     JumpByMirror_InfinityWay4();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity5)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[4] = ii - 210;
                     JumpByMirror_InfinityWay5();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity6)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[5] = ii - 215;
                     JumpByMirror_InfinityWay6();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity7)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[6] = ii - 220;
                     JumpByMirror_InfinityWay7();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity8)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[7] = ii - 225;
                     JumpByMirror_InfinityWay8();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity9)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[8] = ii - 230;
                     JumpByMirror_InfinityWay9();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity10)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[9] = ii - 235;
                     JumpByMirror_InfinityWay10();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity11)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[10] = ii - 240;
                     JumpByMirror_InfinityWay11();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinityTurnBack)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[11] = ii - 245;
                     JumpByMirror_InfinityWayTurnBack();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinityLast)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     this.playerLoopNumber[11] = ii - 245;
                     JumpByMirror_InfinityWayLast();
+                    ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_Area1)
                 {
@@ -13000,13 +13086,17 @@ namespace DungeonPlayer
                     int jjStart = Convert.ToInt32(this.nowMessage[this.nowReading]);
                     UpdateUnknownTileArea3_Last(jjStart);
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonMessageInfiniteLoopResult)
+                {
+                    MessageInfiniteLoopResult();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_TruthLast)
                 {
                     UpdateUnknownTileArea3_TruthLast();
                 }
                   
                 this.nowReading++;
-                if (this.nowMessage[this.nowReading - 1] == "")
+                if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
                 {
                     tapOK();
                 }
