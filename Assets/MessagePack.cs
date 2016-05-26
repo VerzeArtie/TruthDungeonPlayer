@@ -20,6 +20,10 @@ namespace DungeonPlayer
             HomeTown,
             TurnToBlack,
             ReturnToNormal,
+            MoveTop,
+            MoveLeft,
+            MoveRight,
+            MoveBottom,
             BlueOpenTop,
             BlueOpenLeft,
             BlueOpenRight,
@@ -365,6 +369,7 @@ namespace DungeonPlayer
             DungeonJumpToLocationInfinityTurnBack,
             DungeonJumpToLocationInfinityLast,
             DungeonYesNoSkipMirror,
+            DungeonYesNoOriginOrNormal,
             Ending,
         }
         #endregion
@@ -9495,22 +9500,7 @@ namespace DungeonPlayer
                     messageList.Add("アイン：ああ、頼むぜ。"); eventList.Add(ActionEvent.None);
                 }
 
-                messageList.Add("ラナ：台座ルートまで通じる鏡にワープできるわ。使ってみる？"); eventList.Add(ActionEvent.None);
-
-                // todo
-                //using (YesNoRequest ynr = new YesNoRequest())
-                //{
-                //    ynr.StartPosition = FormStartPosition.CenterParent;
-                //    ynr.ShowDialog(); eventList.Add(ActionEvent.None);
-                //    if (ynr.DialogResult == DialogResult.Yes)
-                //    {
-                //        JumpByMirror(1, 22); eventList.Add(ActionEvent.None);
-                //    }
-                //    else
-                //    {
-                //        messageList.Add(""); eventList.Add(ActionEvent.None);
-                //    }
-                //}
+                messageList.Add("ラナ：台座ルートまで通じる鏡にワープできるわ。使ってみる？"); eventList.Add(ActionEvent.DungeonYesNoSkipMirror);
             }
             else if (!GroundOne.WE.dungeonEvent302_1)
             {
@@ -9641,22 +9631,7 @@ namespace DungeonPlayer
                     messageList.Add("アイン：ああ、頼むぜ。"); eventList.Add(ActionEvent.None);
                 }
 
-                messageList.Add("ラナ：台座ルートまで通じる鏡にワープできるわ。使ってみる？"); eventList.Add(ActionEvent.None);
-
-                // todo
-                //using (YesNoRequest ynr = new YesNoRequest())
-                //{
-                //    ynr.StartPosition = FormStartPosition.CenterParent;
-                //    ynr.ShowDialog(); eventList.Add(ActionEvent.None);
-                //    if (ynr.DialogResult == DialogResult.Yes)
-                //    {
-                //        JumpByMirror(1, 22); eventList.Add(ActionEvent.None);
-                //    }
-                //    else
-                //    {
-                //        messageList.Add(""); eventList.Add(ActionEvent.None);
-                //    }
-                //}
+                messageList.Add("ラナ：台座ルートまで通じる鏡にワープできるわ。使ってみる？"); eventList.Add(ActionEvent.DungeonYesNoSkipMirror);
             }
             else if (!GroundOne.WE.dungeonEvent302_2)
             {
@@ -11540,8 +11515,6 @@ namespace DungeonPlayer
         #region "ボス戦闘"
         public static void Message13111(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Last0);
-
             if (!GroundOne.WE.dungeonEvent3_SlayBoss)
             {
                 messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
@@ -12859,6 +12832,8 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.BlueOpenRight);
 
+            messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Last0);
+
             messageList.Add("　　『その瞬間、部屋の奥底から、地鳴りのような唸り声が響き渡ってきた！！』"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　『ッヴオオオオォォォォォォ、グゥウウオォォオォォ！！！！！！』"); eventList.Add(ActionEvent.None);
@@ -12866,6 +12841,8 @@ namespace DungeonPlayer
             messageList.Add("アイン：で・・・デケェ！！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：ちょっとどうするのよ、こんなの・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
 
             messageList.Add("アイン：どうするもこうするも・・・"); eventList.Add(ActionEvent.None);
 
@@ -12934,65 +12911,48 @@ namespace DungeonPlayer
                 messageList.Add("　　　　【　汝、何を目指す？　】"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(Database.ENEMY_DRAGON_DESOLATOR_AZOLD); eventList.Add(ActionEvent.EncountBoss);
+                return;
             }
-            else if (GroundOne.WE.dungeonEvent328)
+
+            if (GroundOne.WE.dungeonEvent328)
             {
-                messageList.Add("ラナ：あれ？　原点解が分かったんだから５つ鏡の方に行ってみるんじゃないの？"); eventList.Add(ActionEvent.None);
-
-                // todo
-                //messageList.Add(""); eventList.Add(ActionEvent.DungeonYesNoOriginOrNormal);
-
-            //    using (YesNoRequest ynr = new YesNoRequest())
-            //    {
-            //        ynr.StartPosition = FormStartPosition.CenterParent;
-            //        ynr.ShowDialog(); eventList.Add(ActionEvent.None);
-            //        if (ynr.DialogResult == DialogResult.Yes)
-            //        {
-            //            messageList.Add("アイン：すまねえ、そうだったな。５つ鏡の方に進んでみるぜ。"); eventList.Add(ActionEvent.None);
-            //            return;
-            //        }
-            //        else
-            //        {
-            //            messageList.Add("アイン：いや、いっぺんこっちから降りてみるぜ。"); eventList.Add(ActionEvent.None);
-
-            //            messageList.Add("ラナ：ふ～ん、変なの・・・まあアインがそういうなら良いけど。"); eventList.Add(ActionEvent.None);
-
-            //            messageList.Add("アイン：ハハ・・・悪いな、混乱させちまって。"); eventList.Add(ActionEvent.None);
-
-            //            messageList.Add("ラナ：まあ良いわ、行きましょ♪"); eventList.Add(ActionEvent.None);
-
-            //            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
-            //        }
-            //    }
-
-            //    messageList.Add("アイン：下り階段発見！さっそく降りるとするか？"); eventList.Add(ActionEvent.None);
-            //    using (YesNoRequest ynr = new YesNoRequest())
-            //    {
-            //        bool tempCompleteArea3 = GroundOne.WE.TruthCompleteArea3;
-            //        ynr.StartPosition = FormStartPosition.CenterParent;
-            //        ynr.ShowDialog(); eventList.Add(ActionEvent.None);
-            //        if (ynr.DialogResult == DialogResult.Yes)
-            //        {
-            //            JumpByNormal(18, 52); eventList.Add(ActionEvent.None);
-            //            SetupDungeonMapping(4); eventList.Add(ActionEvent.None);
-            //            dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
-            //            messageList.Add("", true); eventList.Add(ActionEvent.None);
-
-            //            if (!tempCompleteArea3)
-            //            {
-            //                messageList.Add("アイン：おし、３階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
-            //                CallHomeTown(); eventList.Add(ActionEvent.None);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            messageList.Add(""); eventList.Add(ActionEvent.None);
-            //        }
-            //    }
+                messageList.Add(Database.Message_OriginOrNormal); eventList.Add(ActionEvent.DungeonYesNoOriginOrNormal);
+            }
+            else
+            {
+                messageList.Add(Database.Message_GotoDownstair); eventList.Add(ActionEvent.YesNoGotoDungeon);
             }
         }
 
-        public static void Message13122_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message13122_2_1(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：すまねえ、そうだったな。５つ鏡の方に進んでみるぜ。"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message13122_2_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：いや、いっぺんこっちから降りてみるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ふ～ん、変なの・・・まあアインがそういうなら良いけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ハハ・・・悪いな、混乱させちまって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ良いわ、行きましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.Message_GotoDownstair); eventList.Add(ActionEvent.YesNoGotoDungeon);
+        }
+
+        public static void Message13122_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：おし、３階制覇した事だし、一度ユングの町へ戻るとするか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+        }
+
+
+        public static void Message13122_4(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
 
@@ -13163,6 +13123,7 @@ namespace DungeonPlayer
             messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
 
+            // todo
             // 12段階の全正解かどうかをチェック
             //if (CheckInfiniteLoopResult())
             //{

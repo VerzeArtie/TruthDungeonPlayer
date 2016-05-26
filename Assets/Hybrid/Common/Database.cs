@@ -2646,6 +2646,7 @@ namespace DungeonPlayer
         public const string Message_GotoDownstair = @"アイン：下り階段発見！さっそく降りるとするか？";
         public const string Message_GotoUpstair = @"アイン：上の階へ戻る階段だな。ここは一旦戻るか？";
         public const string Message_GotoSkipMirror = @"ラナ：台座ルートまで通じる鏡にワープできるわ。使ってみる？";
+        public const string Message_OriginOrNormal = @"ラナ：あれ？　原点解が分かったんだから５つ鏡の方に行ってみるんじゃないの？";
 
         // コマンド影響因子向けアイコン
         public const string WeaponIcon = @"WeaponMark";
