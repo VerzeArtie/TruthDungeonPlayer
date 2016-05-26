@@ -13479,6 +13479,14 @@ namespace DungeonPlayer
         #region "鏡エリア２－５、台座ルート入り口"
         public static void Message13136(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent312)
+            {
+                messageList.Add("アイン：いや、今は先へ進む、それしかねえ。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
+            }
         }
         #endregion
         #region "鏡エリア３原点解の入口／出口"
