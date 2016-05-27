@@ -11348,7 +11348,8 @@ namespace DungeonPlayer
             }
             return true;
         }
-        
+
+        // todo num == 0と1で分岐させるべきなのか？MessagePackの呼び出し元DungeonMessageInfiniteLoopResultと連動して検討。
         private void MessageInfiniteLoopResult()
         {
             MessageInfiniteLoopResult(0);
