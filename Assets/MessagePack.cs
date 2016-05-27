@@ -367,6 +367,7 @@ namespace DungeonPlayer
             DungeonJumpToLocationInfinity10,
             DungeonJumpToLocationInfinity11,
             DungeonJumpToLocationInfinityTurnBack,
+            DungeonJumpToLocationInfinityBadEndBack,
             DungeonJumpToLocationInfinityLast,
             DungeonMessageInfiniteLoopResult,
             DungeonYesNoSkipMirror,
@@ -13120,91 +13121,65 @@ namespace DungeonPlayer
         }
         public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList, int ii, bool checkInfiniteLoopResult)
         {
-            // todo
             // 12段階の全正解かどうかをチェック
             if (checkInfiniteLoopResult)
             {
-                messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
-                messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
+                if (!GroundOne.WE.dungeonEvent328)
+                {
+                    messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+                    messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
 
-            //    if (!we.dungeonEvent328)
-            //    {
-            //        JumpByMirror_Instant(1, 55);
-            //        UpdateUnknownTileArea3_TruthLast();
+                    messageList.Add("1"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
-            //        MessageInfiniteLoopResult(1);
+                    messageList.Add("アイン：あっ・・・"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：あっ・・・");
+                    messageList.Add("アイン：（俺はこの時・・・）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（俺はこの時・・・）");
+                    messageList.Add("アイン：（純粋にラナに声をかけようと思った。）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（純粋にラナに声をかけようと思った。）");
+                    messageList.Add("アイン：（【ひょっとして、あれ階段じゃないか！？】って・・・）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（【ひょっとして、あれ階段じゃないか！？】って・・・）");
+                    messageList.Add("アイン：（が、急に声が発生できない・・・いや）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（が、急に声が発生できない・・・いや）");
+                    messageList.Add("アイン：（発声どころじゃない）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（発声どころじゃない）");
+                    messageList.Add("アイン：（手、足、指先、眼球、毛一本一本に至るまで・・・）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（手、足、指先、眼球、毛一本一本に至るまで・・・）");
+                    messageList.Add("アイン：（そして心臓さえも）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（そして心臓さえも）");
+                    messageList.Add("アイン：（全てが完全に自分の意志で動かせない、あるいは、動かなくなっていくのを感じた。）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（全てが完全に自分の意志で動かせない、あるいは、動かなくなっていくのを感じた。）");
+                    messageList.Add("アイン：（唐突な死）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（唐突な死）");
+                    messageList.Add("アイン：（せっかく、進められた・・・ハズ・・・が・・・）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（せっかく、進められた・・・ハズ・・・が・・・）");
+                    messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（・・・　・・・）");
+                    messageList.Add("アイン：（・・・）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage("アイン：（・・・）");
+                    messageList.Add(" ～　THE　END　～　（訪れた究極確率）"); eventList.Add(ActionEvent.None);
 
-            //        UpdateMainMessage(" ～　THE　END　～　（訪れた究極確率）");
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityBadEndBack);
 
-            //        UpdatePlayerLocationInfo(this.Player.Location.X, this.Player.Location.Y - Database.DUNGEON_MOVE_LEN);
-            //        //this.dungeonField.Invalidate(); // セーブエンドなので、描画する必要はない。
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+                }
+                else
+                {
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationRecollection4);
+                    messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
 
-            //        using (ESCMenu esc = new ESCMenu())
-            //        {
-            //            esc.MC = this.MC;
-            //            esc.SC = this.SC;
-            //            esc.TC = this.TC;
-            //            esc.WE = this.we;
-            //            esc.KnownTileInfo = null;
-            //            esc.KnownTileInfo2 = null;
-            //            esc.KnownTileInfo3 = null;
-            //            esc.KnownTileInfo4 = null;
-            //            esc.KnownTileInfo5 = null;
-            //            esc.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
-            //            esc.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
-            //            esc.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
-            //            esc.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
-            //            esc.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
-            //            esc.StartPosition = FormStartPosition.CenterParent;
-            //            esc.TruthStory = true;
-            //            esc.OnlySave = true;
-            //            esc.ShowDialog();
-            //        }
+                    if (!GroundOne.WE.dungeonEvent332_1)
+                    {
+                        GroundOne.WE.dungeonEvent332_1 = true;
+                        messageList.Add("アイン：おっ、何か５つ鏡じゃないトコに出たな。"); eventList.Add(ActionEvent.None);
 
-            //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            //    }
-            //    else
-            //    {
-            //        JumpByMirror_Recollection4();
+                        messageList.Add("ラナ：アインの狙った通りって事じゃないかしら？"); eventList.Add(ActionEvent.None);
 
-            //        if (!we.dungeonEvent332_1)
-            //        {
-            //            we.dungeonEvent332_1 = true;
-            //            UpdateMainMessage("アイン：おっ、何か５つ鏡じゃないトコに出たな。");
+                        messageList.Add("ヴェルゼ：近そうですね、気をつけて進めましょう。"); eventList.Add(ActionEvent.None);
 
-            //            UpdateMainMessage("ラナ：アインの狙った通りって事じゃないかしら？");
-
-            //            UpdateMainMessage("ヴェルゼ：近そうですね、気をつけて進めましょう。");
-
-            //            UpdateMainMessage("アイン：ああ・・・");
-            //        }
-            //    }
+                        messageList.Add("アイン：ああ・・・"); eventList.Add(ActionEvent.None);
+                    }
+                }
                 return;
             }
 
@@ -13233,7 +13208,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：っお！本当かよ！？ちょっと見せてくれ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+                    messageList.Add("0"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
                     messageList.Add("アイン：っな・・・何だこれは・・・"); eventList.Add(ActionEvent.None);
 
@@ -13273,7 +13248,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：お、おお。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+                    messageList.Add("0"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
                     messageList.Add("ヴェルゼ：アイン君、計算結果をお教えしましょう。"); eventList.Add(ActionEvent.None);
 
@@ -13331,7 +13306,7 @@ namespace DungeonPlayer
                 {
                     GroundOne.WE.dungeonEvent323 = true;
 
-                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+                    messageList.Add("0"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
                     messageList.Add("アイン：・・・くそ、やはり駄目か。"); eventList.Add(ActionEvent.None);
 
@@ -13401,7 +13376,7 @@ namespace DungeonPlayer
                 {
                     GroundOne.WE.dungeonEvent324 = true;
 
-                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+                    messageList.Add("0"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
                     messageList.Add("アイン：・・・駄目だな。"); eventList.Add(ActionEvent.None);
 
@@ -13417,7 +13392,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+                    messageList.Add("0"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
                     messageList.Add("アイン：・・・駄目か。"); eventList.Add(ActionEvent.None);
 
@@ -13447,7 +13422,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：っお！本当かよ！？ちょっと見せてくれ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+                    messageList.Add("0"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
                     messageList.Add("アイン：っな・・・"); eventList.Add(ActionEvent.None);
 
@@ -13465,7 +13440,7 @@ namespace DungeonPlayer
 
                     messageList.Add("ヴェルゼ：アイン君、看板を。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(" "); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+                    messageList.Add("0"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
                     messageList.Add("アイン：・・・・・・"); eventList.Add(ActionEvent.None);
 

@@ -12874,6 +12874,10 @@ namespace DungeonPlayer
                     JumpByMirror_InfinityWayTurnBack();
                     ForceSkipTapOK = true;
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinityBadEndBack)
+                {
+                    JumpToLocation(56, -39, true);
+                }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinityLast)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
