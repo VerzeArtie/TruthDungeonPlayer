@@ -11047,6 +11047,76 @@ namespace DungeonPlayer
                 return;
             }
 
+            // 正解ルートを全て通った後、最後の一つが原点解となる。
+            if ((GroundOne.WE2.TruthWay3_1 != 0) &&
+                (GroundOne.WE2.TruthWay3_2 != 0) &&
+                (GroundOne.WE2.TruthWay3_3 != 0) &&
+                (GroundOne.WE2.TruthWay3_4 != 0) &&
+                (GroundOne.WE2.TruthWay3_5 != 0))
+            {
+                if ((GroundOne.WE2.TruthWay95 == 0 && ii == 95) ||
+                    (GroundOne.WE2.TruthWay96 == 0 && ii == 96) ||
+                    (GroundOne.WE2.TruthWay97 == 0 && ii == 97) ||
+                    (GroundOne.WE2.TruthWay98 == 0 && ii == 98) ||
+                    (GroundOne.WE2.TruthWay99 == 0 && ii == 99) ||
+                    (GroundOne.WE2.TruthWay100 == 0 && ii == 100) ||
+                    (GroundOne.WE2.TruthWay101 == 0 && ii == 101) ||
+                    (GroundOne.WE2.TruthWay102 == 0 && ii == 102) ||
+                    (GroundOne.WE2.TruthWay103 == 0 && ii == 103) ||
+                    (GroundOne.WE2.TruthWay104 == 0 && ii == 104) ||
+                    (GroundOne.WE2.TruthWay105 == 0 && ii == 105) ||
+                    (GroundOne.WE2.TruthWay106 == 0 && ii == 106) ||
+                    (GroundOne.WE2.TruthWay107 == 0 && ii == 107) ||
+                    (GroundOne.WE2.TruthWay108 == 0 && ii == 108) ||
+                    (GroundOne.WE2.TruthWay109 == 0 && ii == 109) ||
+                    (GroundOne.WE2.TruthWay110 == 0 && ii == 110) ||
+                    (GroundOne.WE2.TruthWay111 == 0 && ii == 111) ||
+                    (GroundOne.WE2.TruthWay112 == 0 && ii == 112) ||
+                    (GroundOne.WE2.TruthWay113 == 0 && ii == 113) ||
+                    (GroundOne.WE2.TruthWay114 == 0 && ii == 114) ||
+                    (GroundOne.WE2.TruthWay115 == 0 && ii == 115) ||
+                    (GroundOne.WE2.TruthWay116 == 0 && ii == 116) ||
+                    (GroundOne.WE2.TruthWay117 == 0 && ii == 117) ||
+                    (GroundOne.WE2.TruthWay118 == 0 && ii == 118) ||
+                    (GroundOne.WE2.TruthWay119 == 0 && ii == 119) ||
+                    (GroundOne.WE2.TruthWay120 == 0 && ii == 120) ||
+                    (GroundOne.WE2.TruthWay121 == 0 && ii == 121) ||
+                    (GroundOne.WE2.TruthWay122 == 0 && ii == 122) ||
+                    (GroundOne.WE2.TruthWay123 == 0 && ii == 123) ||
+                    (GroundOne.WE2.TruthWay124 == 0 && ii == 124) ||
+                    (GroundOne.WE2.TruthWay125 == 0 && ii == 125) ||
+                    (GroundOne.WE2.TruthWay126 == 0 && ii == 126) ||
+                    (GroundOne.WE2.TruthWay127 == 0 && ii == 127) ||
+                    (GroundOne.WE2.TruthWay128 == 0 && ii == 128) ||
+                    (GroundOne.WE2.TruthWay129 == 0 && ii == 129) ||
+                    (GroundOne.WE2.TruthWay130 == 0 && ii == 130) ||
+                    (GroundOne.WE2.TruthWay131 == 0 && ii == 131) ||
+                    (GroundOne.WE2.TruthWay132 == 0 && ii == 132) ||
+                    (GroundOne.WE2.TruthWay133 == 0 && ii == 133) ||
+                    (GroundOne.WE2.TruthWay134 == 0 && ii == 134) ||
+                    (GroundOne.WE2.TruthWay135 == 0 && ii == 135) ||
+                    (GroundOne.WE2.TruthWay136 == 0 && ii == 136) ||
+                    (GroundOne.WE2.TruthWay137 == 0 && ii == 137) ||
+                    (GroundOne.WE2.TruthWay138 == 0 && ii == 138) ||
+                    (GroundOne.WE2.TruthWay139 == 0 && ii == 139) ||
+                    (GroundOne.WE2.TruthWay140 == 0 && ii == 140) ||
+                    (GroundOne.WE2.TruthWay141 == 0 && ii == 141) ||
+                    (GroundOne.WE2.TruthWay142 == 0 && ii == 142) ||
+                    (GroundOne.WE2.TruthWay143 == 0 && ii == 143) ||
+                    (GroundOne.WE2.TruthWay144 == 0 && ii == 144) ||
+                    (GroundOne.WE2.TruthWay145 == 0 && ii == 145) ||
+                    (GroundOne.WE2.TruthWay146 == 0 && ii == 146) ||
+                    (GroundOne.WE2.TruthWay147 == 0 && ii == 147) ||
+                    (GroundOne.WE2.TruthWay148 == 0 && ii == 148) ||
+                    (GroundOne.WE2.TruthWay149 == 0 && ii == 149) ||
+                    (GroundOne.WE2.TruthWay150 == 0 && ii == 150))
+                {
+                    Debug.Log("recollection3");
+                    MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationRecollection3);
+                    return;
+                }
+            }
+
             Debug.Log("else routine, turnback");
             MessageJumpByMirror(ref messageList, ref eventList, ActionEvent.DungeonJumpToLocationTurnBack);
         }
@@ -13464,32 +13534,32 @@ namespace DungeonPlayer
             }
         }
         #endregion
-        #region "鏡エリア３原点解の入口／出口"
+        #region "真実解のイベント３【記憶の回想】"
         public static void Message13137(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
-        #region "聖者ルート（BADEND）"
+        #region "鏡エリア３原点解の入口／出口"
         public static void Message13138(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
-        #region "愚者ルート（BADEND）"
+        #region "聖者ルート（BADEND）"
         public static void Message13139(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
-        #region "４階への階段（２）"
+        #region "愚者ルート（BADEND）"
         public static void Message13140(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
-        #region "無限回廊突破後の看板"
+        #region "４階への階段（２）"
         public static void Message13141(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
         #endregion
-        #region "真実解のイベント３【記憶の回想】"
+        #region "無限回廊突破後の看板"
         public static void Message13142(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }

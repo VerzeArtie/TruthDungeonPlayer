@@ -115,7 +115,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < filenameList.Length; ii++)
             {
                 string filename = filenameList[ii];
-                Debug.Log("filename: " + filename);
+                //Debug.Log("filename: " + filename);
                 Text targetButton = null;
                 string targetString = System.IO.Path.GetFileName(filename);
                 for (int jj = 0; jj < buttonText.Length; jj++)

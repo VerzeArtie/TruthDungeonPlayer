@@ -8416,37 +8416,37 @@ namespace DungeonPlayer
                     #endregion
                     #region "鏡エリア３原点解の入口／出口"
                     case 275:
-                        MessagePack.Message13137(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13138(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "聖者ルート（BADEND）"
                     case 276:
-                        MessagePack.Message13138(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13139(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "愚者ルート（BADEND）"
                     case 277:
-                        MessagePack.Message13139(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13140(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "４階への階段（２）"
                     case 278:
-                        MessagePack.Message13140(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13141(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "無限回廊突破後の看板"
                     case 279:
-                        MessagePack.Message13141(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13142(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "真実解のイベント３【記憶の回想】"
                     case 282:
-                        MessagePack.Message13142(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13137(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
