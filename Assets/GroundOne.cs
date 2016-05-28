@@ -56,7 +56,7 @@ namespace DungeonPlayer
         public static GameObject bgm = null; // BGM音源
         public static AudioSource bgmSource = null; // BGMソース
 
-        public static bool EnableBGM = false; // ミュージック、デフォルトはオン // debug
+        public static bool EnableBGM = true; // ミュージック、デフォルトはオン // debug
         public static bool EnableSoundEffect = false; // 効果音、デフォルトはオン // debug
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか

@@ -8416,31 +8416,31 @@ namespace DungeonPlayer
                     #endregion
                     #region "鏡エリア３原点解の入口／出口"
                     case 275:
-                        MessagePack.Message13138(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13139(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "聖者ルート（BADEND）"
                     case 276:
-                        MessagePack.Message13139(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13140(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "愚者ルート（BADEND）"
                     case 277:
-                        MessagePack.Message13140(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13141(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "４階への階段（２）"
                     case 278:
-                        MessagePack.Message13141(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13142(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
                     #region "無限回廊突破後の看板"
                     case 279:
-                        MessagePack.Message13142(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13143(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -8452,7 +8452,7 @@ namespace DungeonPlayer
                     #endregion
                     #region "原点解発見"
                     case 283:
-                        MessagePack.Message13143(ref this.nowMessage, ref this.nowEvent);
+                        MessagePack.Message13138(ref this.nowMessage, ref this.nowEvent);
                         tapOK();
                         return true;
                     #endregion
@@ -8691,6 +8691,10 @@ namespace DungeonPlayer
         private void TurnToBlack()
         {
             //this.BackColor = Color.Black; // todo 背景を黒色に変更する。
+        }
+        private void TurnToWhite()
+        {
+            // todo
         }
 
         private void CopyShadowToMain()
@@ -11990,6 +11994,10 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.TurnToBlack)
                 {
                     TurnToBlack();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.TurnToWhite)
+                {
+                    TurnToWhite();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.CenterBlueOpen)
                 {
