@@ -8473,7 +8473,972 @@ namespace DungeonPlayer
             #endregion
             #region "４階"
             else if (area == 4)
-            { // after
+            {
+                switch (ii)
+                {
+                    #region "３階へ戻る階段"
+                    case 0:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "始まりの扉"
+                    case 1:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１"
+                    case 2:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１-１"
+                    case 3:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "宝箱（エリア１）"
+                    case 4:
+                        GroundOne.WE.TruthTreasure401 = GetTreasure(Database.COMMON_SOCIETY_SYMBOL);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 5:
+                        GroundOne.WE.TruthTreasure402 = GetTreasure(Database.COMMON_BLACK_SALT);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 6:
+                        GroundOne.WE.TruthTreasure403 = GetTreasure(Database.RARE_ESSENCE_OF_DARK);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 7:
+                        GroundOne.WE.TruthTreasure404 = GetTreasure(Database.COMMON_LIGHT_SERVANT);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 8:
+                        GroundOne.WE.TruthTreasure405 = GetTreasure(Database.COMMON_FEBL_ANIS);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 9:
+                        GroundOne.WE.TruthTreasure406 = GetTreasure(Database.RARE_ASTRAL_VOID_BLADE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 10:
+                        GroundOne.WE.TruthTreasure407 = GetTreasure(Database.COMMON_SMORKY_HUNNY);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 11:
+                        GroundOne.WE.TruthTreasure408 = GetTreasure(Database.COMMON_SUN_TARAGON);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    #endregion
+                    #region "鍵（エリア１）"
+                    case 12:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 13:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 14:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 15:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 16:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 17:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 18:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 19:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 20:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉１"
+                    case 21:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉２"
+                    case 22:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉３"
+                    case 23:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉４"
+                    case 24:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉５"
+                    case 25:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉６"
+                    case 26:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉７"
+                    case 27:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉８"
+                    case 28:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉９"
+                    case 29:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想１"
+                    case 30:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想２"
+                    case 31:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想３"
+                    case 32:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想４"
+                    case 33:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想５"
+                    case 34:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想６"
+                    case 35:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想７"
+                    case 36:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想８"
+                    case 37:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想９"
+                    case 38:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実の回想１０"
+                    case 39:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１-２"
+                    case 40:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１-３"
+                    case 41:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１-４"
+                    case 42:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１-５"
+                    case 43:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１-６"
+                    case 44:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１-７"
+                    case 45:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "看板１-８"
+                    case 46:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア１ボス前"
+                    case 47:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア１ボス"
+                    case 48:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア１から２への通路"
+                    case 49:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア２スタート"
+                    case 50:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア２看板"
+                    case 51:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア２-１（看板）"
+                    case 52:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉の鍵（エリア２Ｘ）"
+                    case 53:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 54:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 55:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 56:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 57:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "宝箱（エリア２Ｘ）"
+                    case 58:
+                        GroundOne.WE.TruthTreasure409 = GetTreasure(Database.COMMON_MUKEI_SAKAZUKI);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 59:
+                        GroundOne.WE.TruthTreasure410 = GetTreasure(Database.COMMON_ELDER_PERSPECTIVE_GRASS);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 60:
+                        GroundOne.WE.TruthTreasure411 = GetTreasure(Database.RARE_SHADOW_BIBLE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 61:
+                        GroundOne.WE.TruthTreasure412 = GetTreasure(Database.RARE_MIND_ILLUSION);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 62:
+                        GroundOne.WE.TruthTreasure413 = GetTreasure(Database.COMMON_ANGEL_DUST);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 63:
+                        GroundOne.WE.TruthTreasure414 = GetTreasure(Database.GROWTH_LIQUID4_STRENGTH);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 64:
+                        GroundOne.WE.TruthTreasure415 = GetTreasure(Database.COMMON_SILVER_RING_3);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 65:
+                        GroundOne.WE.TruthTreasure416 = GetTreasure(Database.RARE_BLIND_NEEDLE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 66:
+                        GroundOne.WE.TruthTreasure417 = GetTreasure(Database.COMMON_PURPLE_FLOAT_STONE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 67:
+                        GroundOne.WE.TruthTreasure418 = GetTreasure(Database.COMMON_MURYOU_CROSS);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 68:
+                        GroundOne.WE.TruthTreasure419 = GetTreasure(Database.COMMON_HUGE_BLUE_POTION);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 69:
+                        GroundOne.WE.TruthTreasure420 = GetTreasure(Database.COMMON_GREEN_FLOAT_STONE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 70:
+                        GroundOne.WE.TruthTreasure421 = GetTreasure(Database.COMMON_SILVER_RING_7);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 71:
+                        GroundOne.WE.TruthTreasure422 = GetTreasure(Database.RARE_ANGEL_CONTRACT);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    #endregion
+                    #region "扉Ｘ１(入口)"
+                    case 72:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉Ｘ２(出口)"
+                    case 73:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "鍵（エリア２Ｙ）"
+                    case 74:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 75:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 76:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 77:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 78:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "宝箱（エリア２Ｙ）"
+                    case 79:
+                        GroundOne.WE.TruthTreasure423 = GetTreasure(Database.COMMON_YELLOW_FLOAT_STONE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 80:
+                        GroundOne.WE.TruthTreasure424 = GetTreasure(Database.RARE_DOMINATION_BRAVE_ARMOR);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 81:
+                        GroundOne.WE.TruthTreasure425 = GetTreasure(Database.GROWTH_LIQUID4_AGILITY);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 82:
+                        GroundOne.WE.TruthTreasure426 = GetTreasure(Database.COMMON_HUGE_RED_POTION);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 83:
+                        GroundOne.WE.TruthTreasure427 = GetTreasure(Database.COMMON_BULLET_KNUCKLE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 84:
+                        GroundOne.WE.TruthTreasure428 = GetTreasure(Database.COMMON_SILVER_RING_4);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 85:
+                        GroundOne.WE.TruthTreasure429 = GetTreasure(Database.RARE_SHINING_AETHER);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 86:
+                        GroundOne.WE.TruthTreasure430 = GetTreasure(Database.RARE_COLORESS_ANTIDOTE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 87:
+                        GroundOne.WE.TruthTreasure431 = GetTreasure(Database.RARE_DEVIL_SUMMONER_TOME);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 88:
+                        GroundOne.WE.TruthTreasure432 = GetTreasure(Database.COMMON_INITIATE_SWORD);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 89:
+                        GroundOne.WE.TruthTreasure433 = GetTreasure(Database.COMMON_ROYAL_GUARD_RING);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 90:
+                        GroundOne.WE.TruthTreasure434 = GetTreasure(Database.RARE_CORE_ESSENCE_CHANNEL);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    #endregion
+                    #region "扉Ｙ１(入口)"
+                    case 91:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "扉Ｙ２(出口)"
+                    case 92:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "鍵（エリア２Ｚ）"
+                    case 93:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 94:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 95:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 96:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 97:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "宝箱（エリア２Ｚ）"
+                    case 98:
+                        GroundOne.WE.TruthTreasure435 = GetTreasure(Database.RARE_ESSENCE_OF_ADAMANTINE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 99:
+                        GroundOne.WE.TruthTreasure436 = GetTreasure(Database.COMMON_HUGE_GREEN_POTION);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 100:
+                        GroundOne.WE.TruthTreasure437 = GetTreasure(Database.RARE_DEMON_HORN);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 101:
+                        GroundOne.WE.TruthTreasure438 = GetTreasure(Database.GROWTH_LIQUID4_INTELLIGENCE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 102:
+                        GroundOne.WE.TruthTreasure439 = GetTreasure(Database.RARE_BLACK_ELIXIR);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 103:
+                        GroundOne.WE.TruthTreasure440 = GetTreasure(Database.RARE_DARK_ANGEL_ROBE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 104:
+                        GroundOne.WE.TruthTreasure441 = GetTreasure(Database.RARE_DOOMBRINGER_KAKERA);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 105:
+                        GroundOne.WE.TruthTreasure442 = GetTreasure(Database.RARE_JOUKA_TANZOU);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    #endregion
+                    #region "扉Ｚ１(入口)"
+                    case 106:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア２ボス前"
+                    case 107:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア２ボス"
+                    case 108:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア２から３への通路"
+                    case 109:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３スタート"
+                    case 110:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３看板"
+                    case 111:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３-１開始"
+                    case 112:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３看板１"
+                    case 113:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実１"
+                    case 114:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実２"
+                    case 115:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実３"
+                    case 116:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実４"
+                    case 117:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実５"
+                    case 118:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実６"
+                    case 119:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実７"
+                    case 120:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実８"
+                    case 121:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実９"
+                    case 122:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３、事実１０"
+                    case 123:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３－２への扉"
+                    case 124:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３-２開始"
+                    case 125:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３-２看板"
+                    case 126:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実１"
+                    case 127:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実２"
+                    case 128:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実３"
+                    case 129:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実４"
+                    case 130:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実５"
+                    case 131:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実６"
+                    case 132:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実７"
+                    case 133:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実８"
+                    case 134:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実９"
+                    case 135:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実１０"
+                    case 136:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "宝箱エリア３"
+                    case 137:
+                        GroundOne.WE.TruthTreasure443 = GetTreasure(Database.RARE_KYUUDOUSYA_HIDENSYO);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 138:
+                        GroundOne.WE.TruthTreasure444 = GetTreasure(Database.GROWTH_LIQUID4_STAMINA);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 139:
+                        GroundOne.WE.TruthTreasure445 = GetTreasure(Database.RARE_ESSENCE_OF_SHINE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 140:
+                        GroundOne.WE.TruthTreasure446 = GetTreasure(Database.COMMON_ECHO_BEAST_MEAT);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 141:
+                        GroundOne.WE.TruthTreasure447 = GetTreasure(Database.RARE_BLACK_SEAL_IMPRESSION);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 142:
+                        GroundOne.WE.TruthTreasure448 = GetTreasure(Database.RARE_MASTERBLADE_KAKERA);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 143:
+                        GroundOne.WE.TruthTreasure449 = GetTreasure(Database.COMMON_CHAOS_TONGUE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 144:
+                        GroundOne.WE.TruthTreasure450 = GetTreasure(Database.RARE_CHAOS_SIZUKU);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    #endregion
+                    #region "エリア３-２終了の扉"
+                    case 145:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３ボス前"
+                    case 146:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３ボス"
+                    case 147:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア３から４への通路"
+                    case 148:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４スタート"
+                    case 149:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４看板"
+                    case 150:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４-１広間"
+                    case 151:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４-１看板"
+                    case 152:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４-１鍵
+                    case 153:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 154:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 155:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 156:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 157:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "宝箱エリア４-１"
+                    case 158:
+                        GroundOne.WE.TruthTreasure451 = GetTreasure(Database.GROWTH_LIQUID4_MIND);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 159:
+                        GroundOne.WE.TruthTreasure452 = GetTreasure(Database.RARE_VOID_HYMNSONIA);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 160:
+                        GroundOne.WE.TruthTreasure453 = GetTreasure(Database.RARE_WHITE_DIAMOND_SHIELD);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 161:
+                        GroundOne.WE.TruthTreasure454 = GetTreasure(Database.RARE_ARCHANGEL_CONTRACT);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    #endregion
+                    #region "エリア４-１扉"
+                    case 162:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４-１終了"
+                    case 163:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４-２看板"
+                    case 164:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４-２鍵"
+                    case 165:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 166:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 167:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 168:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 169:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 170:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 171:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 172:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "宝箱エリア４-２"
+                    case 173:
+                        GroundOne.WE.TruthTreasure455 = GetTreasure(Database.RARE_EVERMIND_SENSE);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 174:
+                        GroundOne.WE.TruthTreasure456 = GetTreasure(Database.GROWTH_LIQUID4_MIND);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 175:
+                        GroundOne.WE.TruthTreasure457 = GetTreasure(Database.RARE_DARKNESS_COIN);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 176:
+                        GroundOne.WE.TruthTreasure458 = GetTreasure(Database.RARE_DANZAI_ANGEL_GOHU);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    case 177:
+                        GroundOne.WE.TruthTreasure459 = GetTreasure(Database.EPIC_ETERNAL_HOMURA_RING);
+                        UpdateFieldElement(this.Player.transform.position);
+                        return true;
+                    #endregion
+                    #region "エリア４-２扉"
+                    case 178:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４-２終了"
+                    case 179:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "エリア４から１への通路"
+                    case 180:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "そして、現実世界へ"
+                    case 181:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "究極の二択"
+                    case 182:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "最下層への階段前の扉"
+                    case 183:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "下り階段"
+                    case 184:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "現実世界、移動ブロック"
+                    case 185:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 186:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 187:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    case 188:
+                        MessagePack.Message14000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                }
             }
             #endregion
             #region "５階"

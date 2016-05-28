@@ -14240,6 +14240,9 @@ namespace DungeonPlayer
         #endregion
         #endregion
         #region "４階"
+        public static void Message14000(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
         #endregion
         #region "５階"
         #endregion
