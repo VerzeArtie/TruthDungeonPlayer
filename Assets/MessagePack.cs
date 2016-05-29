@@ -14240,9 +14240,590 @@ namespace DungeonPlayer
         #endregion
         #endregion
         #region "４階"
+        #region "３階へ戻る階段"
         public static void Message14000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
+        #endregion
+        #region "始まりの扉"
+        public static void Message14001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１"
+        public static void Message14002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１-１"
+        public static void Message14003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "鍵（エリア１）"
+        public static void Message14004(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14005(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14006(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14008(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14009(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14010(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14011(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14012(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉１"
+        public static void Message14013(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉２"
+        public static void Message14014(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉３"
+        public static void Message14015(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉４"
+        public static void Message14016(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉５"
+        public static void Message14017(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉６"
+        public static void Message14018(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉７"
+        public static void Message14019(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉８"
+        public static void Message14020(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉９"
+        public static void Message14021(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想１"
+        public static void Message14022(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想２"
+        public static void Message14023(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想３"
+        public static void Message14024(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想４"
+        public static void Message14025(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想５"
+        public static void Message14026(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想６"
+        public static void Message14027(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想７"
+        public static void Message14028(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想８"
+        public static void Message14029(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想９"
+        public static void Message14030(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実の回想１０"
+        public static void Message14031(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１-２"
+        public static void Message14032(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１-３"
+        public static void Message14033(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１-４"
+        public static void Message14034(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１-５"
+        public static void Message14035(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１-６"
+        public static void Message14036(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１-７"
+        public static void Message14037(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "看板１-８"
+        public static void Message14038(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア１ボス前"
+        public static void Message14039(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア１ボス"
+        public static void Message14040(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア１から２への通路"
+        public static void Message14041(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア２スタート"
+        public static void Message14042(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア２看板"
+        public static void Message14043(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア２-１（看板）"
+        public static void Message14044(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉の鍵（エリア２Ｘ）"
+        public static void Message14045(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14046(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14047(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14048(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14049(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉Ｘ１(入口)"
+        public static void Message14050(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉Ｘ２(出口)"
+        public static void Message14051(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "鍵（エリア２Ｙ）"
+        public static void Message14052(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14053(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14054(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14055(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14056(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉Ｙ１(入口)"
+        public static void Message14057(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉Ｙ２(出口)"
+        public static void Message14058(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "鍵（エリア２Ｚ）"
+        public static void Message14059(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14060(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14061(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14062(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14063(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "扉Ｚ１(入口)"
+        public static void Message14064(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア２ボス前"
+        public static void Message14065(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア２ボス"
+        public static void Message14066(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア２から３への通路"
+        public static void Message14067(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３スタート"
+        public static void Message14068(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３看板"
+        public static void Message14069(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３-１開始"
+        public static void Message14070(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３看板１"
+        public static void Message14071(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実１"
+        public static void Message14072(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実２"
+        public static void Message14073(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実３"
+        public static void Message14074(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実４"
+        public static void Message14075(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実５"
+        public static void Message14076(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実６"
+        public static void Message14077(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実７"
+        public static void Message14078(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実８"
+        public static void Message14079(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実９"
+        public static void Message14080(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３、事実１０"
+        public static void Message14081(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３－２への扉"
+        public static void Message14082(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３-２開始"
+        public static void Message14083(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３-２看板"
+        public static void Message14084(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実１"
+        public static void Message14085(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実２"
+        public static void Message14086(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実３"
+        public static void Message14087(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実４"
+        public static void Message14088(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実５"
+        public static void Message14089(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実６"
+        public static void Message14090(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実７"
+        public static void Message14091(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実８"
+        public static void Message14092(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実９"
+        public static void Message14093(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "真実１０"
+        public static void Message14094(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３-２終了の扉"
+        public static void Message14095(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３ボス前"
+        public static void Message14096(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３ボス"
+        public static void Message14097(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア３から４への通路"
+        public static void Message14098(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４スタート"
+        public static void Message14099(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４看板"
+        public static void Message14100(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-１広間"
+        public static void Message14101(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-１看板"
+        public static void Message14102(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-１鍵
+        public static void Message14103(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14104(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14105(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14106(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14107(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-１扉"
+        public static void Message14108(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-１終了"
+        public static void Message14109(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-２看板"
+        public static void Message14110(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-２鍵"
+        public static void Message14111(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14112(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14113(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14114(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14115(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14116(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14117(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14118(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-２扉"
+        public static void Message14119(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４-２終了"
+        public static void Message14120(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "エリア４から１への通路"
+        public static void Message14121(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "そして、現実世界へ"
+        public static void Message14122(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "究極の二択"
+        public static void Message14123(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "最下層への階段前の扉"
+        public static void Message14124(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "下り階段"
+        public static void Message14125(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+        #region "現実世界、移動ブロック"
+        public static void Message14126(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14127(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14128(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        public static void Message14129(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+        }
+        #endregion
+
+
         #endregion
         #region "５階"
         #endregion
