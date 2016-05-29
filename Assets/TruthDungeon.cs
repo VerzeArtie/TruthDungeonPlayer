@@ -14072,6 +14072,20 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea3_TruthLast();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonRemovePartyTC)
+                {
+                    Method.RemoveParty(GroundOne.TC, false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSetupPlayerStatus)
+                {
+                    SetupPlayerStatus(false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGate1)
+                {
+                    OpenTheDoor(3, new Vector3(45, -16, 0));
+                    OpenTheDoor(0, new Vector3(45, -17, 0));
+                    UpdateUnknownTile();
+                }
                   
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)

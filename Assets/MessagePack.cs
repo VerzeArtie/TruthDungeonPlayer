@@ -373,6 +373,9 @@ namespace DungeonPlayer
             DungeonMessageInfiniteLoopResult,
             DungeonYesNoSkipMirror,
             DungeonYesNoOriginOrNormal,
+            DungeonSetupPlayerStatus,
+            DungeonRemovePartyTC,
+            DungeonFloor4OpenGate1,
             Ending,
         }
         #endregion
@@ -14243,16 +14246,127 @@ namespace DungeonPlayer
         #region "３階へ戻る階段"
         public static void Message14000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add(Database.Message_GotoUpstair); eventList.Add(ActionEvent.YesNoBacktoDungeon);
         }
         #endregion
         #region "始まりの扉"
         public static void Message14001(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent401)
+            {
+                GroundOne.WE.dungeonEvent401 = true;
+
+                messageList.Add("アイン：ゲッ、いきなり扉かよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：扉の横にスイッチがあるわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ・・・開くしかないか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：じゃあ、スイッチを押すぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.BlueOpenLeft);
+
+                messageList.Add("アイン：おし、開いたぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add("　　　【その瞬間、アインは、絶対的な時間と空間のズレを把握した！！！】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・っな・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（なんだ今の感触・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonRemovePartyTC);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupPlayerStatus);
+
+                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+
+                messageList.Add("アイン：っ！おい、ラナ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：っわ、なによ一体いきなり？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いるか・・・良かった・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：最初から、何いきなりバタバタしてんのよ、まったく。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：い、いやいや、悪い悪い・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ヴェルゼは？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いやいや、すぐ後ろにいただろ今まで。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：見当たらないな・・・帰っちまったのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ねえ、ちょっとバカアイン、良いかしら。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺はバカじゃねえ、なんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ヴェルゼさんなら、ここには来てないわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：私、アインに会ってからダンジョンに入るまで、ヴェルゼさんに遭遇してないわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：あと、ハンナおばさんにも早朝に話を聞いたの。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ヴェルゼさんが持ってた荷物は確かに受け取ったって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：だから、ここには来てないはずよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アインには、ヴェルゼさんから既に伝えてあるものだと思ったけど、聞いてないの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っそ、そんなばかな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：確かなのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、確かよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうか・・・本当に俺の勘違いって事なのか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：じゃあ、まあ二人で進めるとするか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：いいの？このまま進めても。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、大丈夫だ。行くぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+            }
         }
         #endregion
         #region "看板１"
         public static void Message14002(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent402)
+            {
+                GroundOne.WE.dungeonEvent402 = true;
+
+                messageList.Add("アイン：看板があるな、どれどれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『失われし剣と記憶』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：失われし・・・か・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGate1);
+
+                messageList.Add("アイン：うぉ、いきなり開いたぜ。何の仕掛けもナシかよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：特に変わった仕掛けもなさそうね。進んでみましょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そうだな。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『失われし剣と記憶』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "看板１-１"
@@ -20297,7 +20411,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：（声マネ）『ヴァスタ：ウォーレンス！！！』"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：（声マネ）『ヴァスタ：ッガーッハハハハハハ！』"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：（声マネ）『ヴァスタ：ガーッハハハハハハ！』"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（ッブフゥ！！！）"); eventList.Add(ActionEvent.None);
 
@@ -23914,7 +24028,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：何か強さの秘密があるって事なんじゃないですか？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("カール：基礎的な鍛練は怠る事は決してない。"); eventList.Add(ActionEvent.None);
+            messageList.Add("カール：基礎的な鍛練を怠る事は決してない。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：スピードを上げる魔法も多種多様。それに加え基本的な速度を引きだす訓練は日々の積み重ね。"); eventList.Add(ActionEvent.None);
 
@@ -23958,9 +24072,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：頼む！　もう一回だけ！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("カール：ッフ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("カール：フッ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("カール：ッフハハハハ、貴君は本当に面白い。"); eventList.Add(ActionEvent.None);
+            messageList.Add("カール：フハハハハハハ、貴君は本当に面白い。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：良いだろう、では行くぞ。"); eventList.Add(ActionEvent.None);
 
@@ -24012,7 +24126,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ぜんっぜん分かんねぇ！！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：アーッハッハッハ！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ハッハッハッハッ！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：ッフハハ、おかしな奴だ。"); eventList.Add(ActionEvent.None);
 

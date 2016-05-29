@@ -306,7 +306,7 @@ namespace DungeonPlayer
         }
 
         // 街でオル・ランディスが外れる、４階最初でヴェルゼが外れる、４階エリア３でラナが外れるのを統合
-        public static void RemoveParty(MainCharacter player, bool initialize)
+        public static void RemoveParty(MainCharacter player, bool initializeBank)
         {
             if (GroundOne.WE.AvailableThirdCharacter)
             {
@@ -321,7 +321,7 @@ namespace DungeonPlayer
             int[] itemBankStack = new int[Database.MAX_ITEM_BANK];
             int current = 0;
 
-            if (initialize)
+            if (initializeBank)
             {
                 GroundOne.WE.InitializeItemBankData();
             }
