@@ -1429,6 +1429,7 @@ namespace DungeonPlayer
 
                 GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
 
+                // todo レベルアップできなくなるのでは？要確認
                 // ボスに勝利した時、フラグ更新を行う。
                 if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
                 {
@@ -1436,38 +1437,32 @@ namespace DungeonPlayer
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
                 {
-                    // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message12044_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
                 {
-                    // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message12045_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
                 {
-                    // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message12046_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
                 {
-                    // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message12047_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
                 {
-                    // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message12048_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
                 {
                     GroundOne.WE.TruthCompleteSlayBoss2 = true;
-                    // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message12049_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
@@ -1479,7 +1474,6 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
                 {
                     GroundOne.WE.TruthCompleteSlayBoss3 = true;
-                    // todo レベルアップできなくなるのでは？要確認
                     MessagePack.Message13111_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();                    
                 }
@@ -1488,9 +1482,10 @@ namespace DungeonPlayer
                     MessagePack.Message13122_4(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
                 {
-                    GroundOne.WE.TruthCompleteSlayBoss4 = true;
+                    MessagePack.Message14040_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
@@ -14085,6 +14080,24 @@ namespace DungeonPlayer
                     OpenTheDoor(3, new Vector3(45, -16, 0));
                     OpenTheDoor(0, new Vector3(45, -17, 0));
                     UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGate2)
+                {
+                    OpenTheDoor(3, new Vector3(47, -16, 0));
+                    OpenTheDoor(0, new Vector3(47, -17, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea41)
+                {
+                    UpdateUnknownTileArea41();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea42)
+                {
+                    UpdateUnknownTileArea42();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea43)
+                {
+                    UpdateUnknownTileArea43();
                 }
                   
                 this.nowReading++;

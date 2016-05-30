@@ -376,6 +376,10 @@ namespace DungeonPlayer
             DungeonSetupPlayerStatus,
             DungeonRemovePartyTC,
             DungeonFloor4OpenGate1,
+            DungeonUpdateUnknownTileArea41,
+            DungeonUpdateUnknownTileArea42,
+            DungeonFloor4OpenGate2,
+            DungeonUpdateUnknownTileArea43,
             Ending,
         }
         #endregion
@@ -14268,6 +14272,8 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.BlueOpenLeft);
 
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea41);
+
                 messageList.Add("アイン：おし、開いたぜ。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
@@ -17067,46 +17073,518 @@ namespace DungeonPlayer
         #region "看板１-２"
         public static void Message14032(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent406)
+            {
+                GroundOne.WE.dungeonEvent406 = true;
+
+                messageList.Add("アイン：おっ、看板だな。どれどれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『森の細道では一本道、ダンジョン迷宮では分岐が存在する』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：こ・・・これって・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ダンジョン迷宮ってここの事かしら？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、多分な。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：森の細道って今通っているここよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そうだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ねえ、何か思い当たるフシでもあるわけ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ほおら、やっぱり何かあるんでしょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハ・・・そうかもな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アインってそういう時絶対教えてくれないのよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：わ、悪ぃ・・・先へ進めようぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ハイハイ。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『森の細道では一本道、ダンジョン迷宮では分岐が存在する』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "看板１-３"
         public static void Message14033(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent409)
+            {
+                GroundOne.WE.dungeonEvent409 = true;
+
+                messageList.Add("アイン：看板か。どれどれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『森で失いしは、フェルトゥーシュの剣』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：フェルトゥーシュの・・・剣・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：やけに考え込んでるわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、フェルトゥーシュってさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：誰が持ってたんだろうなって、ふと思ったのさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナ、お前は知ってるか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：えっ、知らないわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、先へ進めてみるしかなさそうだな。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『森で失いしは、フェルトゥーシュの剣』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "看板１-４"
         public static void Message14034(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent411)
+            {
+                GroundOne.WE.dungeonEvent411 = true;
+
+                messageList.Add("アイン：看板か。どれどれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『森は剣と共に、真実を覆い隠す』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どういう意味なんだ、これは。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：何かの一節みたいな感じね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：設問系統じゃなさそうだな、どうも・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：あんまりそこまで深い意味はないんじゃない？エスミリアの森林を表現してるだけだと思うけど"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、そうかもな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：しかし、クネクネとして道のりの割には一本道だよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：エスミリアの奥にある森林って、ちょうどこんな感じだったわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナ、お前あの場所知ってるのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：もちろんよ、あそこは希少価値の高い薬草が取れる場所だし、よく行ってたわ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：へえ、そうだったのか・・・知らなかったな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アインこそ、あの森林には行った事あるの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺か・・・俺はまあ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何となく、思い出せねえ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：それって、行った事無いんじゃないの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、何となく引っかかりは覚えてるんだが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハッキリとこう情景が浮かんでこないんだよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アバウトね・・・まあ良いけど。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、このまま進めてみようぜ。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『森は剣と共に、真実を覆い隠す』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "看板１-５"
         public static void Message14035(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent413)
+            {
+                GroundOne.WE.dungeonEvent413 = true;
+
+                messageList.Add("アイン：看板か。どれどれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『隠された真実への記憶は、森の奥底に眠る』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：森の奥底・・・って、この先の事か。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ねえ、アイン。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん、なんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：森林にはどういった経緯で出向いたのかは覚えてないわけ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうなんだよなあ・・・それがさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何か誰かに誘われて行った気もするんだよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：誘われたの？　誰に？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ～・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：誰だっけ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：思い出せないけど、確かなの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、多分な。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、進めてるうちに思い出せるかも知れねえ。ここは先に進めようぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え、ええ・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『隠された真実への記憶は、森の奥底に眠る』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "看板１-６"
         public static void Message14036(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent416)
+            {
+                GroundOne.WE.dungeonEvent416 = true;
+
+                messageList.Add("アイン：看板だな、ええと・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『呼び覚まされし、DUELの旋律』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：DUELの・・・旋律か・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：DUELって、闘技場でやってるアレの事よね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・ねえ、アイン"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何だ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：DUEL闘技場には、何で参加しようと思ったわけ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何でって言われてもな・・・ラナが出てみないかって言って来たのが発端かな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：えっ、ちょっとそれって私のせいで参加せざるを得なくなったって言いたいワケ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いやいやいや、別にそう言う意味じゃねえって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ッフフ、嘘よウソ♪　確かに私が最初に持ちかけたもんね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：い、いやいや・・・まあ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：伝説と呼ばれるFiveSeekerに追いつけていない感じがした。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：驕るつもりはねえんだが、俺はFiveSeekerに追いつきたい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：それが発端だな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ランディスさんや、カールハンツ爵に勝負で勝ちたいって事かしら？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、正直言って勝てる気は全くしねえな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：腕を上げるだけじゃ、到底かなわない気がしてんだ、実際。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ふうん・・・そんなものかしら。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、だからせめてDUEL闘技場で実践を積めば、少しでも近づけるんじゃないかと思った。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：闘技場なら、運良くあのボケ師匠と対戦する機会も増えるわけだしな、一石二鳥なのさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ッフフ、面白い考え方ね♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。こんな所だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：しかし、こんな所の看板にDUELが出てくるってのがな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：何か・・・思い出しそうなのね・・・？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：先、進めようぜ。話はそれからだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、分かったわ。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『呼び覚まされし、DUELの旋律』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "看板１-７"
         public static void Message14037(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent418)
+            {
+                GroundOne.WE.dungeonEvent418 = true;
+
+                messageList.Add("アイン：ふう、看板だな。どれどれ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『その特性、神々の遺産を超えるものなり』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：これはまた、よくわからない内容になってきたわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アイン、何か思い当たる所はある？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　【　アインは、すぅっとした鋭い目付きになっていた　】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ・・・ある"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：多分、神剣フェルトゥーシュの事だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ふうん、そうなの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、あの剣に関して、俺は途中で気づき始めたんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あの神剣は、成長する。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：剣が成長・・・する？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ちょっと冗談言わないでよ。剣は物理的な物体でしか無いでしょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、確かにそうだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：物理的なモノなら、【成長】なんて単語は絶対にありえねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：えっ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：じゃあまさか・・・ウソでしょ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：先へ進めようと思う。答えはもうすぐそこだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え、ええ・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『その特性、神々の遺産を超えるものなり』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "看板１-８"
         public static void Message14038(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent420)
+            {
+                GroundOne.WE.dungeonEvent420 = true;
+
+                messageList.Add("アイン：看板か、よし・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『古来より存在せしフェルトゥーシュ、絶対的な死と破滅を運命とする。』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・やっぱり・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺、これをどっかで聞いた事があるんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：もうすぐそこまで来てんだが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：頭が・・・イッツツツ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：あんまり無理しないでよ。しんどかったら休もうね？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、いやいや、大丈夫だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：本当？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、本当だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そんな事より、フェルトゥーシュに関してだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺はあの剣の事を・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：思い出さなくちゃならないんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：でも、それを思い出そうとすると頭に激痛が走るわけでしょ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：もう・・・止めておいたら？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッツツ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いいや、進めよう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：悪いな、もうちょっとなんだ。すまねえが、頼む。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う、うん・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『古来より存在せしフェルトゥーシュ、絶対的な死と破滅を運命とする。』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア１ボス前"
         public static void Message14039(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent423)
+            {
+                GroundOne.WE.dungeonEvent423 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea42);
+                 
+                messageList.Add("ラナ：あっ、扉が見えるわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add("アイン：ラナ、待て！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・居る。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ホント？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、暗くてよく見えないがな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：うっすらと黒い塊のようなモノがいるぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・っあ、本当だわ。アンタよく分かるわね？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
+
+                messageList.Add("　　【　その時、黒い塊が突然形状を変化させた！　】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ッワワ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：きっ、気持ち悪いわね・・・もう・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・ヒト・・・型か？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【　ちょうどアインの背丈と同じぐらいの人型になった　】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("？？？：ヒトよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("？？？：何故、ここまで来たか答えよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：しゃ・・・喋ってきた！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：てめえ、一体何者なんだ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("？？？：我が名は闇と焔を司りし者、レギィン・アーゼ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：このダンジョンにて理を守りし者。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：理を・・・守りし者？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どういう意味だ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：この階層は理と真実を明らかにする。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：答えよ、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：何ゆえ、ここまで辿り着いたか、答えよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：何でって言われてもな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：このダンジョンを制覇して、師匠に追いつきたい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：答えよ、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っくそ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アイン、これって通してくれないって事なんじゃない？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうかもしれねえな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：明確な解を持たぬ者、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：ここで解を得ぬようであれば。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：引き下がるがよい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：もしくは"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：ここで果てるがよい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：答えよ、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add("アイン：ッケ・・・ラナ、どうやら倒さなくちゃ駄目みたいだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：そうね、ここは引き下がれない所よね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どうやら、あっちから仕掛けては来ないみたいだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：準備はいいか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ええ、いつでもいいわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、始めるぞ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
+            }
         }
         #endregion
         #region "エリア１ボス"
         public static void Message14040(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_SlayBoss1)
+            {
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(Database.ENEMY_BOSS_LEGIN_ARZE_1); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+        public static void Message14040_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGate2);
+
+            GroundOne.WE.dungeonEvent4_SlayBoss1 = true;
+
+            messageList.Add("アイン：っしゃ！　どうだ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイン、見てあれ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なっ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　霧散した黒い粒子が再び人型を形成し始めた！　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：そのひと振り、無駄なコト。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っくそ・・・ダメなのか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：何も知らぬ者、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：何も持ちえぬ者、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：この先、お主の今の状態で進むのであれば。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：命は無いと知れ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　人型をしていたレギィン・アーゼは再び空中へ飛散していった　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ふう・・・どうやら去ってくれたようだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何か倒した感じが全然しないわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、また何か出てきそうだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ、ここの扉だけは開けてくれたみたいね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、本当だいつの間に。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：最初の部屋に戻るみたいだけど・・・結局無駄骨だったのかしら？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、そんな事はねえだろ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：絶対に次への道のりが拓けるはずさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうね、じゃあ部屋の中をくまなく探してみましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オーケー！"); eventList.Add(ActionEvent.None);
         }
         #endregion
         #region "エリア１から２への通路"
