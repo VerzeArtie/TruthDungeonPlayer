@@ -848,6 +848,43 @@ namespace DungeonPlayer
                     }
                 }
 
+                // ４階、ダンジョン進行フラグに応じて、真実イベントへの防壁を解除
+                if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE.dungeonEvent424)
+                {
+                    if (ii == Database.TRUTH_DUNGEON_COLUMN * 19 + 44)
+                    {
+                        current = Database.TILEINFO_13;
+                    }
+                }
+                if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE.dungeonEvent440)
+                {
+                    if (ii == Database.TRUTH_DUNGEON_COLUMN * 21 + 20)
+                    {
+                        current = Database.TILEINFO_13;
+                    }
+                }
+                if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE.dungeonEvent476)
+                {
+                    if (ii == Database.TRUTH_DUNGEON_COLUMN * 34 + 22)
+                    {
+                        current = Database.TILEINFO_13;
+                    }
+                }
+                if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE.dungeonEvent489)
+                {
+                    if (ii == Database.TRUTH_DUNGEON_COLUMN * 32 + 46)
+                    {
+                        current = Database.TILEINFO_13;
+                    }
+                }
+                if (GroundOne.WE.DungeonArea == 4 && GroundOne.WE2.SeekerEvent1)
+                {
+                    if (ii == Database.TRUTH_DUNGEON_COLUMN * 21 + 46)
+                    {
+                        current = Database.TILEINFO_13;
+                    }
+                }
+
                 this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + current);
                 this.objList.Add(Instantiate(this.prefab_TileElement, new Vector3((ii % Database.TRUTH_DUNGEON_COLUMN), -(ii / Database.TRUTH_DUNGEON_COLUMN), 0), Quaternion.identity) as GameObject);
 
@@ -14098,6 +14135,19 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea43)
                 {
                     UpdateUnknownTileArea43();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWall1)
+                {
+                    // todo
+                    objList[19 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 19 + 44].Name = Database.TILEINFO_13;
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 19 + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
+                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 19 + 44] = Database.TILEINFO_13;
+                    //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea421)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 18, 22, 17, 21);
                 }
                   
                 this.nowReading++;

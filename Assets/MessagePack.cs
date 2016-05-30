@@ -376,7 +376,9 @@ namespace DungeonPlayer
             DungeonUpdateUnknownTileArea41,
             DungeonUpdateUnknownTileArea42,
             DungeonFloor4OpenGate2,
+            DungeonFloor4OpenWall1,
             DungeonUpdateUnknownTileArea43,
+            DungeonUpdateUnknownTileArea421,
             Ending,
         }
         #endregion
@@ -17621,11 +17623,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：解を探し歩くんじゃなくて"); eventList.Add(ActionEvent.None);
 
-                    // todo
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 19 + 44].Name = Database.TILEINFO_13;
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 19 + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
-                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 19 + 44] = Database.TILEINFO_13;
-                    //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenWall1);
 
                     messageList.Add("　　【　壁は淡い光とともに、消滅した　】"); eventList.Add(ActionEvent.None);
 
@@ -17657,6 +17655,11 @@ namespace DungeonPlayer
         #region "エリア２スタート"
         public static void Message14042(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent425)
+            {
+                GroundOne.WE.dungeonEvent425 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea421);
+            }
         }
         #endregion
         #region "エリア２看板"
