@@ -148,9 +148,6 @@ namespace DungeonPlayer
             UpdateUnknownTileArea3_Last0,
             UpdateUnknownTileArea3_Last,
             UpdateUnknownTileArea3_TruthLast,
-            UpdateUnknownTileArea41,
-            UpdateUnknownTileArea42,
-            UpdateUnknownTileArea43,
             Floor2EightAnswer1,
             Floor2EightAnswer2,
             Floor2EightAnswer3,
@@ -17590,6 +17587,71 @@ namespace DungeonPlayer
         #region "エリア１から２への通路"
         public static void Message14041(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent1)
+            {
+                messageList.Add("　　（　・・・最下層へ・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
+            }
+            else if (GroundOne.WE.dungeonEvent4_SlayBoss1)
+            {
+                if (!GroundOne.WE.dungeonEvent424)
+                {
+                    GroundOne.WE.dungeonEvent424 = true;
+
+                    messageList.Add("アイン：・・・ここだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：え？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：抜けられる、多分。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【　アインの触れた壁は、うっすらと光りだし始めた　】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ワッ、光ったわね・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：って、ちょっとアインあんた何でそういうのわかるのよ。ちゃんと壁を調べたわけ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：この感覚・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：師匠もきっと、こういう風な感じだったんじゃねえかな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ランディスさんの事？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、何度か教えてもらった事がある。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：解を探し歩くんじゃなくて"); eventList.Add(ActionEvent.None);
+
+                    // todo
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 19 + 44].Name = Database.TILEINFO_13;
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 19 + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
+                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 19 + 44] = Database.TILEINFO_13;
+                    //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【　壁は淡い光とともに、消滅した　】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea43);
+
+                    messageList.Add("アイン：解を見つけていくんだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：し・・・信じられないわ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ちゃんと調べたわけ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いや、調べてはいないな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：じゃどうやって分かったわけ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：この辺だって分かったんだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：答えになってないからね、それ。・・・どういう思考回路なのよホント。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ッハハ・・・悪い悪い、見つかったんだしイイじゃねえか。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：まあ良いけど、次からはどうやって見つけたかちゃんと教えてよね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+                }
+            }
         }
         #endregion
         #region "エリア２スタート"
