@@ -391,6 +391,8 @@ namespace DungeonPlayer
             DungeonFloor4OpenGateB8,
             DungeonFloor4OpenWallB1,
             DungeonUpdateUnknownTileArea423,
+            DungeonUpdateUnknownTileArea431,
+            DungeonFloor4OpenGateC1,
             Ending,
         }
         #endregion
@@ -18030,8 +18032,6 @@ namespace DungeonPlayer
             {
                 GroundOne.WE.dungeonEvent4_key22_1 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
-
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
@@ -18048,8 +18048,6 @@ namespace DungeonPlayer
             if (!GroundOne.WE.dungeonEvent4_key22_2)
             {
                 GroundOne.WE.dungeonEvent4_key22_2 = true;
-
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
 
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
 
@@ -18071,8 +18069,6 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
 
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
-
                 messageList.Add("『扉の鍵【３】を手に入れました』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
@@ -18086,8 +18082,6 @@ namespace DungeonPlayer
             {
                 GroundOne.WE.dungeonEvent4_key22_4 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
 
@@ -18568,16 +18562,90 @@ namespace DungeonPlayer
         #region "エリア３スタート"
         public static void Message14068(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent441)
+            {
+                GroundOne.WE.dungeonEvent441 = true;
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea431);
+            }
         }
         #endregion
         #region "エリア３看板"
         public static void Message14069(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent442)
+            {
+                GroundOne.WE.dungeonEvent442 = true;
+                messageList.Add("アイン：看板だな・・・見てみるぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『　支配竜により定められしは真実、真実とは定められし事象　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（その看板を読んだ瞬間、壁面一体が《永久なる地下迷宮》の風景として映し出された）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：支配・・・竜・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateC1);
+
+                messageList.Add("アイン：なんなんだ・・・ココは。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アイン・・・辛そうだけど、大丈夫？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：悪い悪い、ちょっと焦ってるだけだ。問題はねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：通路は開いたんだ。行こうぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：うん・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『　支配竜により定められしは真実、真実とは定められし事象　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３-１開始"
         public static void Message14070(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent443)
+            {
+                GroundOne.WE.dungeonEvent443 = true;
+
+                messageList.Add("アイン：分かれ道に出たみたいだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：まずは看板の方を見てみましょう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveTop);
+
+                messageList.Add("　　　　『　事象と時間を紡ぎし者にのみ、次なる道は拓かれる　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・どうも、ここから先は行き止まりみたいだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：えっ、そうなの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、一旦戻ろうぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え、ええ。良いけど。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+
+                messageList.Add("ラナ：でも、何でそんな事が言えるのよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：もう一方のほうに【事象と時間】ってのが詰まってるんだろう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：４階は、今までもここまでほとんど一本道だしな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：信じて良いと思う。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：まあ、分かったわ。じゃあ、看板じゃない方を探索してみましょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３看板１"

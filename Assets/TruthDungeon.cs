@@ -14228,6 +14228,16 @@ namespace DungeonPlayer
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 20, 20, 22, 31);
                     UpdateUnknownTile();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea431)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 18, 22, 32, 36);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateC1) ;
+                {
+                    OpenTheDoor(2, new Vector3(17, -33, 0));
+                    OpenTheDoor(1, new Vector3(18, -33, 0));
+                    UpdateUnknownTile();
+                }
 
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
