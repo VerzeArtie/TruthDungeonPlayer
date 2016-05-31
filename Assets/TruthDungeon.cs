@@ -1383,6 +1383,10 @@ namespace DungeonPlayer
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
@@ -1522,6 +1526,11 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
                 {
                     MessagePack.Message14040_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
+                {
+                    MessagePack.Message14066_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
@@ -13074,6 +13083,10 @@ namespace DungeonPlayer
                 {
                     // todo メッセージ進行中の宝箱ゲットはどう実装するか？
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateFieldElement)
+                {
+                    UpdateFieldElement(this.Player.transform.position);
+                }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart)
                 {
                     this.nowAgilityRoomCounter = 30;
@@ -14112,13 +14125,13 @@ namespace DungeonPlayer
                 {
                     SetupPlayerStatus(false);
                 }
-                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGate1)
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateA1)
                 {
                     OpenTheDoor(3, new Vector3(45, -16, 0));
                     OpenTheDoor(0, new Vector3(45, -17, 0));
                     UpdateUnknownTile();
                 }
-                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGate2)
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateA2)
                 {
                     OpenTheDoor(3, new Vector3(47, -16, 0));
                     OpenTheDoor(0, new Vector3(47, -17, 0));
@@ -14136,7 +14149,7 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea43();
                 }
-                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWall1)
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallA1)
                 {
                     // todo
                     objList[19 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
@@ -14149,7 +14162,73 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 18, 22, 17, 21);
                 }
-                  
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB1)
+                {
+                    OpenTheDoor(2, new Vector3(17, -19, 0));
+                    OpenTheDoor(1, new Vector3(18, -19, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB2)
+                {
+                    OpenTheDoor(2, new Vector3(10, -8, 0));
+                    OpenTheDoor(1, new Vector3(11, -8, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB3)
+                {
+                    OpenTheDoor(3, new Vector3(10, -7, 0));
+                    OpenTheDoor(0, new Vector3(10, -8, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB4)
+                {
+                    OpenTheDoor(3, new Vector3(6, -7, 0));
+                    OpenTheDoor(0, new Vector3(6, -8, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB5)
+                {
+                    OpenTheDoor(2, new Vector3(11, -2, 0));
+                    OpenTheDoor(1, new Vector3(12, -2, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB6)
+                {
+                    OpenTheDoor(2, new Vector3(11, -8, 0));
+                    OpenTheDoor(1, new Vector3(12, -8, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB7)
+                {
+                    OpenTheDoor(3, new Vector3(16, -13, 0));
+                    OpenTheDoor(0, new Vector3(16, -14, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea422)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 17, 20, 16, 16);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB8)
+                {
+                    OpenTheDoor(3, new Vector3(20, -16, 0));
+                    OpenTheDoor(0, new Vector3(20, -17, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallB1)
+                {
+                    // todo
+                    objList[21 * Database.TRUTH_DUNGEON_COLUMN + 20].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 21 + 20].Name = Database.TILEINFO_13;
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 21 + 20].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
+                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 21 + 20] = Database.TILEINFO_13;
+                    //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea423)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 20, 20, 22, 31);
+                    UpdateUnknownTile();
+                }
+
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
                 {

@@ -220,6 +220,7 @@ namespace DungeonPlayer
             CallSomeMessageWithNotJoinLana,
             DungeonBadEnd,
             DungeonGetTreasure,
+            DungeonUpdateFieldElement,
             DungeonAgilityRoomStart,
             DungeonAgilityRoomStart2,
             DungeonAgilityRoomStart3,
@@ -372,13 +373,24 @@ namespace DungeonPlayer
             DungeonYesNoOriginOrNormal,
             DungeonSetupPlayerStatus,
             DungeonRemovePartyTC,
-            DungeonFloor4OpenGate1,
+            DungeonFloor4OpenGateA1,
             DungeonUpdateUnknownTileArea41,
             DungeonUpdateUnknownTileArea42,
-            DungeonFloor4OpenGate2,
-            DungeonFloor4OpenWall1,
+            DungeonFloor4OpenGateA2,
+            DungeonFloor4OpenWallA1,
             DungeonUpdateUnknownTileArea43,
             DungeonUpdateUnknownTileArea421,
+            DungeonFloor4OpenGateB1,
+            DungeonFloor4OpenGateB2,
+            DungeonFloor4OpenGateB3,
+            DungeonFloor4OpenGateB4,
+            DungeonFloor4OpenGateB5,
+            DungeonFloor4OpenGateB6,
+            DungeonFloor4OpenGateB7,
+            DungeonUpdateUnknownTileArea422,
+            DungeonFloor4OpenGateB8,
+            DungeonFloor4OpenWallB1,
+            DungeonUpdateUnknownTileArea423,
             Ending,
         }
         #endregion
@@ -14360,7 +14372,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGate1);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateA1);
 
                 messageList.Add("アイン：うぉ、いきなり開いたぜ。何の仕掛けもナシかよ。"); eventList.Add(ActionEvent.None);
 
@@ -14419,6 +14431,8 @@ namespace DungeonPlayer
                 GroundOne.WE.dungeonEvent4_key1_1 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
 
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
                 messageList.Add("『扉の鍵【１】を手に入れました』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：小さい鍵だな、これならポケットに突っ込んどけばいいな。"); eventList.Add(ActionEvent.None);
@@ -14441,6 +14455,8 @@ namespace DungeonPlayer
                 GroundOne.WE.dungeonEvent4_key1_2 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
 
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
                 messageList.Add("『扉の鍵【２】を手に入れました』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
@@ -14454,6 +14470,8 @@ namespace DungeonPlayer
             {
                 GroundOne.WE.dungeonEvent4_key1_3 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
 
                 messageList.Add("『扉の鍵【３】を手に入れました』"); eventList.Add(ActionEvent.None);
 
@@ -14469,6 +14487,8 @@ namespace DungeonPlayer
                 GroundOne.WE.dungeonEvent4_key1_4 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
 
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
                 messageList.Add("『扉の鍵【４】を手に入れました』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
@@ -14483,6 +14503,8 @@ namespace DungeonPlayer
                 GroundOne.WE.dungeonEvent4_key1_5 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
 
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
                 messageList.Add("『扉の鍵【５】を手に入れました』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
@@ -14496,6 +14518,8 @@ namespace DungeonPlayer
             {
                 GroundOne.WE.dungeonEvent4_key1_6 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
 
                 messageList.Add("『扉の鍵【６】を手に入れました』"); eventList.Add(ActionEvent.None);
 
@@ -14535,6 +14559,8 @@ namespace DungeonPlayer
                 GroundOne.WE.dungeonEvent4_key1_7 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
 
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
                 messageList.Add("『扉の鍵【７】を手に入れました』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
@@ -14549,6 +14575,8 @@ namespace DungeonPlayer
                 GroundOne.WE.dungeonEvent4_key1_8 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
 
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
                 messageList.Add("『扉の鍵【８】を手に入れました』"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
@@ -14562,6 +14590,8 @@ namespace DungeonPlayer
             {
                 GroundOne.WE.dungeonEvent4_key1_9 = true;
                 messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
 
                 messageList.Add("『扉の鍵【９】を手に入れました』"); eventList.Add(ActionEvent.None);
 
@@ -17537,7 +17567,7 @@ namespace DungeonPlayer
         }
         public static void Message14040_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGate2);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateA2);
 
             GroundOne.WE.dungeonEvent4_SlayBoss1 = true;
 
@@ -17623,7 +17653,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：解を探し歩くんじゃなくて"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenWall1);
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenWallA1);
 
                     messageList.Add("　　【　壁は淡い光とともに、消滅した　】"); eventList.Add(ActionEvent.None);
 
@@ -17665,102 +17695,874 @@ namespace DungeonPlayer
         #region "エリア２看板"
         public static void Message14043(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent426)
+            {
+                GroundOne.WE.dungeonEvent426 = true;
+                messageList.Add("アイン：看板だな、どれどれ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『未来と過去の断片化と記録の再結合』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：断片化・・・再結合・・・ってか"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateB1);
+
+                messageList.Add("ラナ：何か・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：怖いわね。何となくだけど・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、ちょっと不気味な感じだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ねえ、アイン。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：行こうぜ、進めるしかねえんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：え、ええ・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『未来と過去の断片化と記録の再結合』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア２-１（看板）"
         public static void Message14044(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent427)
+            {
+                GroundOne.WE.dungeonEvent427 = true;
+
+                messageList.Add("アイン：おっと、看板だ。読んでみるぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『宝物庫にて、鍵を拾い集めよ』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（その看板を読んだ瞬間、壁面一体が《宮殿の地下宝物庫》の風景として映し出された）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateB2);
+
+                messageList.Add("アイン：宝物庫！！　っしゃあ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ちょっと、はしゃがないでよね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッハハ、悪い悪い。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：でも、これは期待できる内容だぜ、全部しらみ潰しに探してみようぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う、うん・・・そうね。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                if (GroundOne.WE.dungeonEvent435)
+                {
+                    messageList.Add("　　　　『必然性と偶発性に起因する、真実の再統合』"); eventList.Add(ActionEvent.None);
+                }
+                else if (GroundOne.WE.dungeonEvent431)
+                {
+                    messageList.Add("　　　　『生と死にまつわる、事実の再結合』"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("　　　　『宝物庫にて、鍵を拾い集めよ』"); eventList.Add(ActionEvent.None);
+                }
+            }
         }
         #endregion
         #region "扉の鍵（エリア２Ｘ）"
         public static void Message14045(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key2_1)
+            {
+                GroundOne.WE.dungeonEvent4_key2_1 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【１】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵だな。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14046(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key2_2)
+            {
+                GroundOne.WE.dungeonEvent4_key2_2 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【２】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵だな。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14047(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key2_3)
+            {
+                GroundOne.WE.dungeonEvent4_key2_3 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【３】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵だな。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14048(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key2_4)
+            {
+                GroundOne.WE.dungeonEvent4_key2_4 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【４】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵だな。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14049(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key2_5)
+            {
+                GroundOne.WE.dungeonEvent4_key2_5 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【５】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵だな。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "扉Ｘ１(入口)"
         public static void Message14050(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent428)
+            {
+                GroundOne.WE.dungeonEvent428 = true;
+
+                messageList.Add("アイン：っと、扉に鍵穴がついてるな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ： 鍵穴・・・５つもあるわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：って事は鍵を５つも探してこいって話か、面倒だな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ： 地道に順番に回って行った方が良さそうね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、それに、普通の隠されたお宝があるかも知れねえしな！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ： 普通の隠されたお宝なんて、そんなご都合主義なのあるわけないでしょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：タハハ・・・まあとりあえずしらみ潰しにやっていくとするか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ： うん、そうしましょ。"); eventList.Add(ActionEvent.None);
+
+            }
+            else
+            {
+                if (!GroundOne.WE.dungeonEvent429)
+                {
+                    messageList.Add("　　　　『鍵穴が空いている。５箇所すべてを埋めれば扉は開きそうだ。』"); eventList.Add(ActionEvent.None);
+
+                    int keyNum = 0;
+                    if (GroundOne.WE.dungeonEvent4_key2_1) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key2_2) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key2_3) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key2_4) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key2_5) { keyNum++; }
+
+                    if (keyNum <= 0)
+                    {
+                        messageList.Add("アイン：まだ鍵は集めてねえな。さっさと探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 1)
+                    {
+                        messageList.Add("アイン：まだ１つしか持ってねえ。他の４つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 2)
+                    {
+                        messageList.Add("アイン：まだ２つしか持ってねえ。他の３つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 3)
+                    {
+                        messageList.Add("アイン：まだ３つしか持ってねえ。他の２つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 4)
+                    {
+                        messageList.Add("アイン：ようやく４つだ。あと１つ探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 5)
+                    {
+                        GroundOne.WE.dungeonEvent429 = true;
+                        messageList.Add("アイン：おし、５つ揃ったぜ。ラナ、開けてみてくれないか？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ええ、ちょっと待ってね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：何か・・・微妙に形が違うのね、この５つ・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうなのか？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ええ、鍵が合う場所もキッチリ決まってるみたいね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：っよし、これで良いかな。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("　　　　『ッギ・・・ッギギギイイィィィ・・・』"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateB4);
+
+                        messageList.Add("アイン：おっ、開いたぜ！やったな、ラナ！"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：何言ってんのよ、鍵を合わせて開けただけよ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いやいや、こういうのは本当助かるぜ、サンキュー。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：アイン。ちょっと良いかしら。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ん、なんだ？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：アインはこの宝物庫を見て何か思う事はない？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：思う事？？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：例えばこう・・・何か引っかかるとか、直感的に何か感じるとか。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いや、そういうのは今回は無いぜ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ってか、俺っていつもそんな訳分かんねえ感じなのか？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：なによ今更。いつもそうじゃない。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いやいや、いつもそういう訳じゃないんだけどな・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ここまで来たんだ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：どんなものが飛び込んで来ようとも、俺は逃げない。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：・・・うん・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ラナ、任せておけって。心配するな。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：う、うん。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：っさ、行くぞ！"); eventList.Add(ActionEvent.None);
+                    }
+                }
+            }
         }
         #endregion
         #region "扉Ｘ２(出口)"
         public static void Message14051(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent431)
+            {
+                GroundOne.WE.dungeonEvent431 = true;
+
+                messageList.Add("アイン：っお、扉だな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：特に仕掛けはなさそうよ。開いてみましょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、じゃあ行くぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.BlueOpenBottom);
+
+                messageList.Add("　　　　『ッバタン！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？なんだ、元の通路に戻っただけみたいだな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アイン・・・見て、看板・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：看板か？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
+
+                messageList.Add("　　　　『生と死にまつわる、事実の再結合』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・ああ、確かに変化してるな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：生と・・・死・・・ってか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『ッギ・・・ッギギギイイィィィ・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateB3);
+
+                messageList.Add("アイン：おし、次へのルートか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っつ、頭が・・・いつつ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ねえ、やっぱり・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：大丈夫だって、ホラ行くぞ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：うん・・・"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "鍵（エリア２Ｙ）"
         public static void Message14052(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key22_1)
+            {
+                GroundOne.WE.dungeonEvent4_key22_1 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【１】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14053(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key22_2)
+            {
+                GroundOne.WE.dungeonEvent4_key22_2 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【２】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14054(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key22_3)
+            {
+                GroundOne.WE.dungeonEvent4_key22_3 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【３】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14055(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key22_4)
+            {
+                GroundOne.WE.dungeonEvent4_key22_4 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【４】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14056(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key22_5)
+            {
+                GroundOne.WE.dungeonEvent4_key22_5 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【５】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "扉Ｙ１(入口)"
         public static void Message14057(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent432)
+            {
+                GroundOne.WE.dungeonEvent432 = true;
+
+                messageList.Add("アイン：っと、扉に鍵穴があるな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ： 前と同じね、鍵穴は５つみたい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、じゃあ鍵を探し回るとするか！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                if (!GroundOne.WE.dungeonEvent433)
+                {
+                    messageList.Add("　　　　『鍵穴が空いている。５箇所すべてを埋めれば扉は開きそうだ。』"); eventList.Add(ActionEvent.None);
+
+                    int keyNum = 0;
+                    if (GroundOne.WE.dungeonEvent4_key22_1) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key22_2) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key22_3) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key22_4) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key22_5) { keyNum++; }
+
+                    if (keyNum <= 0)
+                    {
+                        messageList.Add("アイン：まだ鍵は集めてねえな。さっさと探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 1)
+                    {
+                        messageList.Add("アイン：まだ１つしか持ってねえ。他の４つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 2)
+                    {
+                        messageList.Add("アイン：まだ２つしか持ってねえ。他の３つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 3)
+                    {
+                        messageList.Add("アイン：まだ３つしか持ってねえ。他の２つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 4)
+                    {
+                        messageList.Add("アイン：ようやく４つだ。あと１つ探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 5)
+                    {
+                        GroundOne.WE.dungeonEvent433 = true;
+                        messageList.Add("アイン：おし、５つ揃ったぜ。ラナ、開けてみてくれないか？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ええ、ちょっと待ってね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("　　　　『ッギ・・・ッギギギイイィィィ・・・』"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateB5);
+
+                        messageList.Add("アイン：おっ、開いたぜ！サンキュー！"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ねえ、アイン・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：行くぞ、任せておけ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：うん・・・"); eventList.Add(ActionEvent.None);
+                    }
+                }
+            }
         }
         #endregion
         #region "扉Ｙ２(出口)"
         public static void Message14058(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent435)
+            {
+                GroundOne.WE.dungeonEvent435 = true;
+
+                messageList.Add("アイン：おし、扉だな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：仕掛けはないみたいね。開いてみましょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、開くぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.BlueOpenLeft);
+
+                messageList.Add("　　　　『ッバタン！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：やっぱり元の通路に戻るだけか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：看板、変わってるみたいよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：看板か、どれどれ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+
+                messageList.Add("　　　　『必然性と偶発性に起因する、真実の再統合』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：必然性・・・偶発性・・・か。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・なるほどな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　　『ッギ・・・ッギギギイイィィィ・・・』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateB6);
+
+                messageList.Add("アイン：おし、次のルートに入ろうぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う、うん・・・"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "鍵（エリア２Ｚ）"
         public static void Message14059(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key23_1)
+            {
+                GroundOne.WE.dungeonEvent4_key23_1 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【１】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14060(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key23_2)
+            {
+                GroundOne.WE.dungeonEvent4_key23_2 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【２】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14061(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key23_3)
+            {
+                GroundOne.WE.dungeonEvent4_key23_3 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【３】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14062(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key23_4)
+            {
+                GroundOne.WE.dungeonEvent4_key23_4 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【４】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         public static void Message14063(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_key23_5)
+            {
+                GroundOne.WE.dungeonEvent4_key23_5 = true;
+                messageList.Add("アイン:よっしゃ！お宝だぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateFieldElement);
+
+                messageList.Add("『扉の鍵【５】を手に入れました』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：鍵か。ラナ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "扉Ｚ１(入口)"
         public static void Message14064(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent436)
+            {
+                GroundOne.WE.dungeonEvent436 = true;
+
+                messageList.Add("アイン：っと、扉に鍵穴があるな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ： ここも一緒みたいよ、鍵穴はちょうど５つ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、鍵を探すぜ！"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                if (!GroundOne.WE.dungeonEvent437)
+                {
+                    messageList.Add("　　　　『鍵穴が空いている。５箇所すべてを埋めれば扉は開きそうだ。』"); eventList.Add(ActionEvent.None);
+
+                    int keyNum = 0;
+                    if (GroundOne.WE.dungeonEvent4_key23_1) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key23_2) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key23_3) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key23_4) { keyNum++; }
+                    if (GroundOne.WE.dungeonEvent4_key23_5) { keyNum++; }
+
+                    if (keyNum <= 0)
+                    {
+                        messageList.Add("アイン：まだ鍵は集めてねえな。さっさと探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 1)
+                    {
+                        messageList.Add("アイン：まだ１つしか持ってねえ。他の４つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 2)
+                    {
+                        messageList.Add("アイン：まだ２つしか持ってねえ。他の３つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 3)
+                    {
+                        messageList.Add("アイン：まだ３つしか持ってねえ。他の２つを探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 4)
+                    {
+                        messageList.Add("アイン：ようやく４つだ。あと１つ探すとするか。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (keyNum == 5)
+                    {
+                        GroundOne.WE.dungeonEvent437 = true;
+                        messageList.Add("アイン：おし、５つ揃ったぜ。ラナ、開けてみてくれないか？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ええ、ちょっと待ってね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("　　　　『ッギ・・・ッギギギイイィィィ・・・』"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateB7);
+
+                        messageList.Add("アイン：おし、開いたみたいだな。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：進めるしかないんだ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：・・・わかってるわよ、もう止めても無駄なんでしょ・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：・・・すまねえって言ってるじゃねえか。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ほらっ、行くぞ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：うん・・・"); eventList.Add(ActionEvent.None);
+                    }
+                }
+            }
         }
         #endregion
         #region "エリア２ボス前"
         public static void Message14065(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent439)
+            {
+                GroundOne.WE.dungeonEvent439 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
+
+                messageList.Add("ラナ：あっ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea422);
+
+                messageList.Add("アイン：やっぱり、このタイミングで出てきたか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：我が名は闇と焔を司りし者、レギィン・アーゼ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：このダンジョンにて理を守りし者。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：答えよ、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：何ゆえに、歩を進めるか、答えよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：俺が俺自身である事を証明するためだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そこを通してくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：主の存在証明は他によってのみ、示される。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：主が主であるための他とは何か、述べよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・ックソ・・・禅問答に近いノリだな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：答えよ、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ねえ、やっぱり言葉じゃ無理なんじゃない？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：結局、戦うしかないのか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：明確な解を持たぬ者、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：ここで果てるがよい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っ来る！ラナ、準備しろ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解よ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+            }
         }
         #endregion
         #region "エリア２ボス"
         public static void Message14066(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_SlayBoss2)
+            {
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(Database.ENEMY_BOSS_LEGIN_ARZE_2); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+
+        public static void Message14066_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateB8);
+
+            GroundOne.WE.dungeonEvent4_SlayBoss2 = true;
+
+            messageList.Add("アイン：っしゃ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　しかし、霧散した黒い粒子が再び人型を形成し始めた！　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：愚かなり、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：既に知りえし者、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：既に解を見出し者、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：なにゆえ、既に持ち得し解を選択しないのか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：我には理解できぬ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：愚かなり、アイン・ウォーレンス"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　人型をしていたレギィン・アーゼは再び空中へ飛散していった　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ふう・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：戦ってみても全然ダメージを与えられてないって感じよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：くそ・・・どうすれば・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ねえ・・・扉"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、本当だ。開いてるみたいだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：最初の部屋に戻るわね。前の所と仕掛けは一緒みたいね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・進めるつもり・・・なのよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：どうしても？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・ゴメン"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ゴメンね・・・こんな風になっちゃって・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、悪いのは完全に俺の方だ。スマン。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：しんどくなったら、ちゃんと戻ろう・・・ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、分かった。"); eventList.Add(ActionEvent.None);
         }
         #endregion
         #region "エリア２から３への通路"
         public static void Message14067(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE.dungeonEvent4_SlayBoss2)
+            {
+                if (!GroundOne.WE.dungeonEvent440)
+                {
+                    GroundOne.WE.dungeonEvent440 = true;
+
+                    messageList.Add("アイン：・・・ここだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：行くぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【　アインの触れた壁は、うっすらと光りだし始めた　】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：脈略もなく、よく当てられるわね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：まあ、師匠のおかげだな。こればっかりは。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenWallB1);
+
+                    messageList.Add("　　【　壁は淡い光とともに、消滅した　】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea423);
+
+                    messageList.Add("ラナ：通路が浮かび上がったわ、進められそうね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ねえ、ランディスさんからは、一体どんな事を教わったの？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：なんて言ったら良いんだろうな・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（声マネ）『ランディス：どうせ、あるかどうかは、分かんねえだろぉが』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（声マネ）『まずはてめぇ自身、在ると信じてから行動しろ、ボケザコが』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：みたいな感じだったな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：うーん、相変わらず答えになってないわね・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：タハハ・・・悪いな。うまく言えないんだ、勘弁してくれ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ッフフ、相変わらずおかしいわね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：何でもない。　ッホラホラ、先に進めたいんでしょ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、ああ・・・じゃあ、進めるぜ！"); eventList.Add(ActionEvent.None);
+                }
+            }
         }
         #endregion
         #region "エリア３スタート"
