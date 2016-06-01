@@ -14353,6 +14353,50 @@ namespace DungeonPlayer
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 23, 43, 34, 34);
                     UpdateUnknownTile();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea441)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 44, 48, 32, 36);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateD1)
+                {
+                    OpenTheDoor(2, new Vector3(48, -34, 0));
+                    OpenTheDoor(1, new Vector3(49, -34, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea442)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 41, 43, 35, 38);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateD2)
+                {
+                    OpenTheDoor(2, new Vector3(47, -39, 0));
+                    OpenTheDoor(1, new Vector3(48, -39, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateD3)
+                {
+                    OpenTheDoor(2, new Vector3(50, -35, 0));
+                    OpenTheDoor(1, new Vector3(51, -35, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateD4)
+                {
+                    OpenTheDoor(2, new Vector3(50, -34, 0));
+                    OpenTheDoor(1, new Vector3(51, -34, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateD5)
+                {
+                    OpenTheDoor(2, new Vector3(48, -22, 0));
+                    OpenTheDoor(1, new Vector3(49, -22, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateD6)
+                {
+                    OpenTheDoor(3, new Vector3(48, -31, 0));
+                    OpenTheDoor(0, new Vector3(48, -32, 0));
+                    UpdateUnknownTile();
+                }
 
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
