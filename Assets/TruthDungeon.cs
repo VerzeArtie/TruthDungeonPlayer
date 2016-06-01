@@ -162,6 +162,9 @@ namespace DungeonPlayer
 
         bool nowIntelligenceRoomGodSequence = false; // ２階、知の部屋、神々の試練を実行中
 
+        int nowFloor4Area3LeverNumber = 0; // ４階、エリア３「事実」のレバー番号
+        int nowFloor4Area3LeverNumber2 = 0; // ４階、エリア３「真実」のレバー番号
+
         // ３階無限回廊
         const int INFINITE_LOOP_MAX = 12; // 無限回廊の組み合わせ最大数
         int[] infinityLoopNumber = new int[INFINITE_LOOP_MAX]; // 無限解
@@ -1381,11 +1384,15 @@ namespace DungeonPlayer
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
                 {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
@@ -1447,9 +1454,17 @@ namespace DungeonPlayer
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1) // after LEGIN_ARZE_2や3を対応必要では？
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
@@ -1531,6 +1546,11 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
                 {
                     MessagePack.Message14066_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                {
+                    MessagePack.Message14097_2(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
@@ -12211,6 +12231,12 @@ namespace DungeonPlayer
 
         public void BlueOrb_Click()
         {
+            if (GroundOne.WE.dungeonEvent4_SlayBoss3)
+            {
+                mainMessage.text = "アイン：ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ。";
+                return;
+            }
+
             MessagePack.MessageBackToTown(ref this.nowMessage, ref this.nowEvent);
             tapOK();
         }
@@ -12540,6 +12566,20 @@ namespace DungeonPlayer
                 MessagePack.Message13122_2_1(ref nowMessage, ref nowEvent);
                 tapOK();
             }
+            else if (yesnoSystemMessage.text == Database.Message_Floor4Area3Lever)
+            {
+                this.Filter.SetActive(false);
+                groupYesnoSystemMessage.SetActive(false);
+                MessagePack.Message14072_2(ref nowMessage, ref nowEvent, this.nowFloor4Area3LeverNumber);
+                tapOK();
+            }
+            else if (yesnoSystemMessage.text == Database.Message_Floor4Area3Lever2)
+            {
+                this.Filter.SetActive(false);
+                groupYesnoSystemMessage.SetActive(false);
+                MessagePack.Message14085_2(ref nowMessage, ref nowEvent, this.nowFloor4Area3LeverNumber2);
+                tapOK();
+            }
             else if (yesnoSystemMessage.text == Database.Message_GotoUpstair)
             {
                 if (GroundOne.WE.DungeonArea == 2)
@@ -12609,6 +12649,22 @@ namespace DungeonPlayer
                 this.Filter.SetActive(false);
                 groupYesnoSystemMessage.SetActive(false);
                 MessagePack.Message13122_2_2(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (yesnoSystemMessage.text == Database.Message_Floor4Area3Lever)
+            {
+                this.nowFloor4Area3LeverNumber = 0;
+                this.Filter.SetActive(false);
+                groupYesnoSystemMessage.SetActive(false);
+                MessagePack.Message14072_3(ref nowMessage, ref nowEvent);
+                tapOK();
+            }
+            else if (yesnoSystemMessage.text == Database.Message_Floor4Area3Lever2)
+            {
+                this.nowFloor4Area3LeverNumber2 = 0;
+                this.Filter.SetActive(false);
+                groupYesnoSystemMessage.SetActive(false);
+                MessagePack.Message14085_3(ref nowMessage, ref nowEvent);
                 tapOK();
             }
             else if (yesnoSystemMessage.text == Database.Message_GotoSkipMirror ||
@@ -14232,10 +14288,69 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 18, 22, 32, 36);
                 }
-                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateC1) ;
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateC1)
                 {
                     OpenTheDoor(2, new Vector3(17, -33, 0));
                     OpenTheDoor(1, new Vector3(18, -33, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonYesNoFloor4Area3Lever)
+                {
+                    this.nowFloor4Area3LeverNumber = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.Filter.SetActive(true);
+                    HideFilterComplete = false; // フィルタを消さない。
+                    this.mainMessage.text = Database.Message_Floor4Area3Lever;
+                    this.yesnoSystemMessage.text = Database.Message_Floor4Area3Lever;
+                    this.groupYesnoSystemMessage.SetActive(true);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonYesNoFloor4Area3Lever2)
+                {
+                    this.nowFloor4Area3LeverNumber2 = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    this.Filter.SetActive(true);
+                    HideFilterComplete = false; // フィルタを消さない。
+                    this.mainMessage.text = Database.Message_Floor4Area3Lever2;
+                    this.yesnoSystemMessage.text = Database.Message_Floor4Area3Lever2;
+                    this.groupYesnoSystemMessage.SetActive(true);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateC3)
+                {
+                    OpenTheDoor(2, new Vector3(22, -39, 0));
+                    OpenTheDoor(1, new Vector3(23, -39, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea432)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 23, 23, 35, 38);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateC4)
+                {
+                    OpenTheDoor(2, new Vector3(22, -35, 0));
+                    OpenTheDoor(1, new Vector3(23, -35, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonRemovePartySC)
+                {
+                    Method.RemoveParty(GroundOne.SC, false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonSystemMessage)
+                {
+                    this.Filter.SetActive(true);
+                    HideFilterComplete = false; // フィルタを消さない
+                    systemMessageText.text = this.nowMessage[this.nowReading];
+                    groupSystemMessage.SetActive(true);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallC1)
+                {
+                    // todo
+                    objList[34 * Database.TRUTH_DUNGEON_COLUMN + 22].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 34 + 22].Name = Database.TILEINFO_13;
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 34 + 22].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
+                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 34 + 22] = Database.TILEINFO_13;
+                    //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea433)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 23, 43, 34, 34);
                     UpdateUnknownTile();
                 }
 

@@ -393,6 +393,16 @@ namespace DungeonPlayer
             DungeonUpdateUnknownTileArea423,
             DungeonUpdateUnknownTileArea431,
             DungeonFloor4OpenGateC1,
+            DungeonYesNoFloor4Area3Lever,
+            //DungeonFloor4OpenGateC2, // ストーリーの進行上、プレイヤーには扉が一度も見える事はないため、無くても良い。
+            DungeonYesNoFloor4Area3Lever2,
+            DungeonFloor4OpenGateC3,
+            DungeonUpdateUnknownTileArea432,
+            DungeonFloor4OpenGateC4,
+            DungeonRemovePartySC,
+            DungeonSystemMessage,
+            DungeonFloor4OpenWallC1,
+            DungeonUpdateUnknownTileArea433,
             Ending,
         }
         #endregion
@@ -18651,141 +18661,1134 @@ namespace DungeonPlayer
         #region "エリア３看板１"
         public static void Message14071(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent457)
+            {
+                if (!GroundOne.WE.dungeonEvent444_storyok && !GroundOne.WE.dungeonEvent4_Area3_1_Fail)
+                {
+                    messageList.Add("　　　　『　事象と時間を紡ぎし者にのみ、次なる道は拓かれる　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：看板の意図を汲めた気がしない、ここはまだ探索を続けよう。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+                }
+                else if (GroundOne.WE.dungeonEvent4_Area3_1_Fail)
+                {
+                    messageList.Add("　　　　『　事象と時間を紡ぎし者にのみ、次なる道は拓かれる　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どうだ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：どうする？特に何も起きないみたいだけど。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・失敗かな。"); eventList.Add(ActionEvent.None);
+
+                    if (!GroundOne.WE.dungeonEvent4_Area3_1_Fail_2)
+                    {
+                        GroundOne.WE.dungeonEvent4_Area3_1_Fail_2 = true;
+                        messageList.Add("ラナ：レバー操作に順序があるのかしら？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ああ、多分な。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：何となくパーティ編成とか神々の何とやらが最初じゃねえのは分かるんだけどな。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：すまねえ、もういっぺん最初からでもいいか？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：うん、別に良いわよ。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (!GroundOne.WE.dungeonEvent4_Area3_1_Fail_3)
+                    {
+                        GroundOne.WE.dungeonEvent4_Area3_1_Fail_3 = true;
+                        messageList.Add("ラナ：う～ん、この階層に来て最初はエスミリア草原区域で、次がファージル宮殿の宝物庫だったわよね？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ああ、確かそうだ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：その見てきた内容が、順番通りとは限らないんじゃないかしら？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：たとえば、アインがそのエスミリア草原区域に行った経緯は私には分かんないけど。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ファージル宮殿へお招きいただいたのと、そのエスミリア草原に行ったのはどっちが先だったのよ？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：確かあれは・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ファージル宮殿が先だ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：じゃあ、宝物庫が先で、エスミリア草原が後って事になるわね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：サンキュー、ラナ。おし、もういっぺんやらせてくれ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：うん。"); eventList.Add(ActionEvent.None);
+                    }
+                    else if (!GroundOne.WE.dungeonEvent4_Area3_1_Fail_4)
+                    {
+                        GroundOne.WE.dungeonEvent4_Area3_1_Fail_4 = true;
+                        messageList.Add("アイン：宝物庫が最初、依頼状が来てから、緑小屋に赴いたのは確かなんだけどな。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：・・・アインの記憶だけが頼りよ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：パーティ編成をして、はじまりの部屋、神々の試練、神々の詩、そして回想録の終わり。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：この辺りは自信があるんだが・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：フェルトゥーシュの消失。これがどのタイミングなのかが分からねえ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：あっ！そうだった！！"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：（DUELに負けて・・・そうだ、緑の小屋の後じゃねえか）"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：緑の小屋の後で、フェルトゥーシュは失くなっちまったんだ。絶対そうだ、間違いない。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：何か気づいたみたいね。どう、行けそう？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ああ、今度こそ任せてくれ。"); eventList.Add(ActionEvent.None);
+                    }
+
+                    else if (!GroundOne.WE.dungeonEvent4_Area3_1_Fail_5)
+                    {
+                        GroundOne.WE.dungeonEvent4_Area3_1_Fail_5 = true;
+                        messageList.Add("ラナ：アインが辿ってきた記憶を、少し私なりに整理してみたわよ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ッゲ、マジかよ。どうやったんだよ！？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：・・・アンタがそこでブツブツ言ってるのをメモしただけよ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：お、教えてくれ、頼むぜ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ほんっともうしっかりしてよね・・・今から言うわね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ファージル宮殿の生誕祭で宝物庫へ赴く。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：次に、何かしらの依頼状を受け取とる。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：で、緑の小屋に赴いている。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：その後、フェルトゥーシュを無くしてる。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：それから、私とパーティ編成を組んでダンジョンへ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：始まりの部屋を発見してから"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：神々の試練をクリア"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：その直後に神々の詩まで詠唱成功させて"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：後は秤の三面鏡をクリアして"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：回想録が終わるっていう所ね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：オーケーオーケー、本当にすまないな。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：結構複雑みたいだけど、頑張ってね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ああ、今度こそ任せてくれ。"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：一応メモをもう一度言った方がいいかしら？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いや、マジすまねえ・・・頼むぜ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：一個ずつ分けると覚えにくいかもしれないし、まとめて言うわね？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：じゃあ、言うわね。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：ファージルの生誕祭、それから依頼状を受けて、緑の小屋へ、そしてフェルトゥーシュを失う。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：それから私とパーティを組んで、まず始まりの部屋、それから神々の試練を経て、神々の詩を詠唱成功。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：後は秤の三面鏡をやって、回想録の終了よ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：サンキュー！　よし、今度こそ！"); eventList.Add(ActionEvent.None);
+                    }
+
+                    messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+
+                    GroundOne.WE.dungeonEvent4_Area3_1_Fail = false;
+                    GroundOne.WE.dungeonEvent447 = false;
+                    GroundOne.WE.dungeonEvent448 = false;
+                    GroundOne.WE.dungeonEvent449 = false;
+                    GroundOne.WE.dungeonEvent450 = false;
+                    GroundOne.WE.dungeonEvent451 = false;
+                    GroundOne.WE.dungeonEvent452 = false;
+                    GroundOne.WE.dungeonEvent453 = false;
+                    GroundOne.WE.dungeonEvent454 = false;
+                    GroundOne.WE.dungeonEvent455 = false;
+                    GroundOne.WE.dungeonEvent456 = false;
+                }
+                else if (GroundOne.WE.dungeonEvent444_storyok)
+                {
+                    messageList.Add("　　　　『　事象と時間を紡ぎし者にのみ、次なる道は拓かれる　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どうだ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　　『ッゴゴゴゴゴ・・・ズウウゥゥン！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っしゃ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：・・・どこの扉が開いたわけ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：この先にある扉さ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ど、どうした？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ううん、何でもないわよ。進んでみるんでしょ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ、扉は開いた。おそらく次に進めるぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：行ってみましょう。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ああ"); eventList.Add(ActionEvent.None);
+                    GroundOne.WE.dungeonEvent457 = true;
+                }
+            }
+            else
+            {
+                messageList.Add("　　　　『　事象と時間を紡ぎし者にのみ、次なる道は拓かれる　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実１"
+        private static void UniteMessage_40(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE.dungeonEvent445)
+            {
+                messageList.Add("アイン：おっ、看板だな。"); eventList.Add(ActionEvent.None);
+            }
+        }
+        private static void UniteMessage_41(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE.dungeonEvent445)
+            {
+                messageList.Add("アイン：これは・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アイン、看板の右下に小さいレバーがあるわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：マジかよ？　見せてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ホラ、ここ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：本当だ。お前よくこういうの見つけるよな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：アンタが調べなさすぎなだけよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ッホラ、どうすんのよこのレバー。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：うーん・・・そうだなあ・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：レバーがある。どうすっかな・・・"); eventList.Add(ActionEvent.None);
+            }
+            GroundOne.WE.dungeonEvent445 = true;
+        }
+        private static void UniteMessage_42(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("　《カチャ》 "); eventList.Add(ActionEvent.None);
+            if (!GroundOne.WE.dungeonEvent446)
+            {
+                GroundOne.WE.dungeonEvent446 = true;
+                messageList.Add("アイン：・・・何も起きねえな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：他も一通り探索してみましょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そうだな。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：おしっ、次行くか"); eventList.Add(ActionEvent.None);
+            }
+        }
+        private static void UpdateArea4_3_LeverInfo(int number)
+        {
+            if (number == 1)
+            {
+                GroundOne.WE.dungeonEvent447 = true;
+                if (!GroundOne.WE.dungeonEvent447 && !GroundOne.WE.dungeonEvent448 && !GroundOne.WE.dungeonEvent449 && !GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 2)
+            {
+                GroundOne.WE.dungeonEvent448 = true;
+                if (GroundOne.WE.dungeonEvent447 && !GroundOne.WE.dungeonEvent448 && !GroundOne.WE.dungeonEvent449 && !GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 3)
+            {
+                GroundOne.WE.dungeonEvent449 = true;
+                if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && !GroundOne.WE.dungeonEvent449 && !GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 4)
+            {
+                GroundOne.WE.dungeonEvent450 = true;
+                if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && !GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 5)
+            {
+                GroundOne.WE.dungeonEvent451 = true;
+                if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 6)
+            {
+                GroundOne.WE.dungeonEvent452 = true;
+                if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 7)
+            {
+                GroundOne.WE.dungeonEvent453 = true;
+                if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 8)
+            {
+                GroundOne.WE.dungeonEvent454 = true;
+                if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && GroundOne.WE.dungeonEvent452 && GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 9)
+            {
+                GroundOne.WE.dungeonEvent455 = true;
+                if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && GroundOne.WE.dungeonEvent452 && GroundOne.WE.dungeonEvent453 && GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    return; // OK
+                }
+            }
+            else if (number == 10)
+            {
+                GroundOne.WE.dungeonEvent456 = true;
+                if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && GroundOne.WE.dungeonEvent452 && GroundOne.WE.dungeonEvent453 && GroundOne.WE.dungeonEvent454 && GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
+                {
+                    GroundOne.WE.dungeonEvent444_storyok = true;
+                    //GroundOne.WE.dungeonEvent4_Area3_1_Fail = false; // 一度失敗した記憶を消すわけではないため、ココはコメントアウト
+                    return; // OK
+                }
+            }
+            // NG
+            GroundOne.WE.dungeonEvent444_storyok = false;
+            GroundOne.WE.dungeonEvent4_Area3_1_Fail = true;
+        }
         public static void Message14072(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent447)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　ファージル宮殿　生誕祭　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("1"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　ファージル宮殿　生誕祭　』"); eventList.Add(ActionEvent.None);
+            }
+        }
+        public static void Message14072_2(ref List<string> messageList, ref List<ActionEvent> eventList, int number)
+        {
+            UpdateArea4_3_LeverInfo(number);
+            UniteMessage_42(ref messageList, ref eventList);
+        }
+        public static void Message14072_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：いや、他の所を探索してみよう。"); eventList.Add(ActionEvent.None);
         }
         #endregion
         #region "エリア３、事実２"
         public static void Message14073(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent448)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　ヴェルゼ・アーティ、DUEL依頼状』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("2"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　ヴェルゼ・アーティ、DUEL依頼状』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実３"
         public static void Message14074(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent449)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　エスミリア草原区域の緑小屋　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("3"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　エスミリア草原区域の緑小屋　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実４"
         public static void Message14075(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent450)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　神剣フェルトゥーシュの消失　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("4"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　神剣フェルトゥーシュの消失　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実５"
         public static void Message14076(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent451)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　パーティ編成：アイン・ウォーレンス、ラナ・アミリア　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("5"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　パーティ編成：アイン・ウォーレンス、ラナ・アミリア　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実６"
         public static void Message14077(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent452)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　閉ざされし【始まりの部屋】の到達　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("6"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　閉ざされし【始まりの部屋】の到達　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実７"
         public static void Message14078(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent453)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　定められし【神々の試練】を制覇　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("7"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　定められし【神々の試練】を制覇　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実８"
         public static void Message14079(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent454)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　導かれし【神々の詩】　完全一致　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("8"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　導かれし【神々の詩】　完全一致　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実９"
         public static void Message14080(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent455)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　【秤の三面鏡】にて<正解>を選択　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("9"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　【秤の三面鏡】にて<正解>を選択　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３、事実１０"
         public static void Message14081(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent456)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　第四階層、回想録の終焉　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("10"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever);
+            }
+            else
+            {
+                messageList.Add("　　　　『　第四階層、回想録の終焉　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３－２への扉"
         public static void Message14082(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent458)
+            {
+                GroundOne.WE.dungeonEvent458 = true;
+
+                messageList.Add("ラナ：あっ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？どうした。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：見て、この窪み・・・扉があった形跡があるわよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：だろ？さっきので開いたって事さ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ホント・・・正直アンタどうかしてるわよ、そういう所は。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッハッハッハ、偶然当たっただけさ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・ねえ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：（ゴメン・・・ね）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：な、何か言ったか？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ううん、扉は空いたんだし、早く行きましょ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。そうだな。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３-２開始"
         public static void Message14083(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent460)
+            {
+                GroundOne.WE.dungeonEvent460 = true;
+
+                messageList.Add("アイン：あっちの方に看板が見えるな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：見てみようか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveTop);
+
+                messageList.Add("　　　　『　真実と事実は非なるもの　真実への追及が事実を覆す　』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：真実と・・・事実・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：また同じ様に順番通りにレバー操作するのかしらね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：多分、そうだとは思うが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ、進めてみるぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：うん・・・"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３-２看板"
         public static void Message14084(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("　　　　『　真実と事実は非なるもの　真実への追及が事実を覆す　』"); eventList.Add(ActionEvent.None);
         }
         #endregion
         #region "真実１"
+        private static void UpdateArea4_3_2_LeverInfo(int number)
+        {
+            if (number == 1)
+            {
+                GroundOne.WE.dungeonEvent462 = true;
+                //    if (!GroundOne.WE.dungeonEvent462 && !GroundOne.WE.dungeonEvent463 && !GroundOne.WE.dungeonEvent464 && !GroundOne.WE.dungeonEvent465 && !GroundOne.WE.dungeonEvent466 && !GroundOne.WE.dungeonEvent467 && !GroundOne.WE.dungeonEvent468 && !GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 2)
+            {
+                GroundOne.WE.dungeonEvent463 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && !GroundOne.WE.dungeonEvent463 && !GroundOne.WE.dungeonEvent464 && !GroundOne.WE.dungeonEvent465 && !GroundOne.WE.dungeonEvent466 && !GroundOne.WE.dungeonEvent467 && !GroundOne.WE.dungeonEvent468 && !GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 3)
+            {
+                GroundOne.WE.dungeonEvent464 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && !GroundOne.WE.dungeonEvent464 && !GroundOne.WE.dungeonEvent465 && !GroundOne.WE.dungeonEvent466 && !GroundOne.WE.dungeonEvent467 && !GroundOne.WE.dungeonEvent468 && !GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 4)
+            {
+                GroundOne.WE.dungeonEvent465 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && GroundOne.WE.dungeonEvent464 && !GroundOne.WE.dungeonEvent465 && !GroundOne.WE.dungeonEvent466 && !GroundOne.WE.dungeonEvent467 && !GroundOne.WE.dungeonEvent468 && !GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 5)
+            {
+                GroundOne.WE.dungeonEvent466 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && GroundOne.WE.dungeonEvent464 && GroundOne.WE.dungeonEvent465 && !GroundOne.WE.dungeonEvent466 && !GroundOne.WE.dungeonEvent467 && !GroundOne.WE.dungeonEvent468 && !GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 6)
+            {
+                GroundOne.WE.dungeonEvent467 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && GroundOne.WE.dungeonEvent464 && GroundOne.WE.dungeonEvent465 && GroundOne.WE.dungeonEvent466 && !GroundOne.WE.dungeonEvent467 && !GroundOne.WE.dungeonEvent468 && !GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 7)
+            {
+                GroundOne.WE.dungeonEvent468 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && GroundOne.WE.dungeonEvent464 && GroundOne.WE.dungeonEvent465 && GroundOne.WE.dungeonEvent466 && GroundOne.WE.dungeonEvent467 && !GroundOne.WE.dungeonEvent468 && !GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 8)
+            {
+                GroundOne.WE.dungeonEvent469 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && GroundOne.WE.dungeonEvent464 && GroundOne.WE.dungeonEvent465 && GroundOne.WE.dungeonEvent466 && GroundOne.WE.dungeonEvent467 && GroundOne.WE.dungeonEvent468 && !GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 9)
+            {
+                GroundOne.WE.dungeonEvent470 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && GroundOne.WE.dungeonEvent464 && GroundOne.WE.dungeonEvent465 && GroundOne.WE.dungeonEvent466 && GroundOne.WE.dungeonEvent467 && GroundOne.WE.dungeonEvent468 && GroundOne.WE.dungeonEvent469 && !GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        return; // OK
+                //    }
+            }
+            else if (number == 10)
+            {
+                GroundOne.WE.dungeonEvent471 = true;
+                //    if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && GroundOne.WE.dungeonEvent464 && GroundOne.WE.dungeonEvent465 && GroundOne.WE.dungeonEvent466 && GroundOne.WE.dungeonEvent467 && GroundOne.WE.dungeonEvent468 && GroundOne.WE.dungeonEvent469 && GroundOne.WE.dungeonEvent470 && !GroundOne.WE.dungeonEvent471)
+                //    {
+                //        GroundOne.WE.dungeonEvent461_storyok = true;
+                //        //GroundOne.WE.dungeonEvent4_Area3_2_Fail = false; // 一度失敗した記憶を消すわけではないため、ココはコメントアウト
+                //        return; // OK
+                //    }
+            }
+
+            // 真実世界へのルートはこの時点でプレイヤーには伝わりきってないため、順序までは要求できない。ロジックを変更する。
+            if (GroundOne.WE.dungeonEvent462 && GroundOne.WE.dungeonEvent463 && GroundOne.WE.dungeonEvent464 && GroundOne.WE.dungeonEvent465 && GroundOne.WE.dungeonEvent466 && GroundOne.WE.dungeonEvent467 && GroundOne.WE.dungeonEvent468 && GroundOne.WE.dungeonEvent469 && GroundOne.WE.dungeonEvent470 && GroundOne.WE.dungeonEvent471)
+            {
+                GroundOne.WE.dungeonEvent461_storyok = true;
+                GroundOne.WE.dungeonEvent4_Area3_2_Fail = false;
+            }
+            else
+            {
+                GroundOne.WE.dungeonEvent461_storyok = false;
+                GroundOne.WE.dungeonEvent4_Area3_2_Fail = true;
+            }
+        }
         public static void Message14085(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent462)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　パーティ編成：アイン・ウォーレンス単独　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("1"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　パーティ編成：アイン・ウォーレンス単独　』"); eventList.Add(ActionEvent.None);
+            }
+        }
+        public static void Message14085_2(ref List<string> messageList, ref List<ActionEvent> eventList, int number)
+        {
+            // 真実世界へのルートはこの時点でプレイヤーには伝わりきってないため、順序までは要求できない。ロジックを変更する。
+            UpdateArea4_3_2_LeverInfo(number);
+            UniteMessage_42(ref messageList, ref eventList);
+        }
+        public static void Message14085_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：いや、他の所を探索してみよう。"); eventList.Add(ActionEvent.None);
         }
         #endregion
         #region "真実２"
         public static void Message14086(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent463)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　閉ざされし【終わりの部屋】への到達　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("2"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　閉ざされし【終わりの部屋】への到達　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "真実３"
         public static void Message14087(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent464)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　定められし【神々の試練】、＜迂回＞を選択　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("3"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　定められし【神々の試練】、＜迂回＞を選択　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "真実４"
         public static void Message14088(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent465)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　【海と大地、そして天空】　完全詠唱　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("4"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　【海と大地、そして天空】　完全詠唱　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "真実５"
         public static void Message14089(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent466)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　【愚者】と【賢者】の究極２択、　<破棄>を選択　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("5"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　【愚者】と【賢者】の究極２択、　<破棄>を選択　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "真実６"
         public static void Message14090(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent467)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　【虚無の鏡】、　<原点解>へと到達　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("6"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　【虚無の鏡】、　<原点解>へと到達　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "真実７"
         public static void Message14091(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent468)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　第四階層、無間地獄を踏破　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("7"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　第四階層、無間地獄を踏破　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "真実８"
         public static void Message14092(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent469)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　神剣フェルトゥーシュの入手　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("8"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　神剣フェルトゥーシュの入手　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "真実９"
         public static void Message14093(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent470)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　第四階層、第三の像を検知　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("9"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　第四階層、第三の像を検知　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "真実１０"
         public static void Message14094(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent471)
+            {
+                UniteMessage_40(ref messageList, ref eventList);
+                messageList.Add("　　　　『　偶像の崩壊、そして真実世界へ　』"); eventList.Add(ActionEvent.None);
+                UniteMessage_41(ref messageList, ref eventList);
+
+                messageList.Add("10"); eventList.Add(ActionEvent.DungeonYesNoFloor4Area3Lever2);
+            }
+            else
+            {
+                messageList.Add("　　　　『　偶像の崩壊、そして真実世界へ　』"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "エリア３-２終了の扉"
         public static void Message14095(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent473)
+            {
+                if (!GroundOne.WE.dungeonEvent461_storyok && !GroundOne.WE.dungeonEvent4_Area3_2_Fail)
+                {
+                    messageList.Add("アイン：ここは一旦戻って探索を続けるか。レバーはとりあえず落としてみよう。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.MoveTop);
+                }
+                else if (GroundOne.WE.dungeonEvent4_Area3_2_Fail)
+                {
+                    messageList.Add("アイン：扉か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：このままじゃ、開かないな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ねえアイン、扉の上に小さい穴があるみたいだけど？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ん？・・・おっ、本当だな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：何かレンズみたいなのが見えるけど、それ以外は特に何も無いみたいね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ここまでの探索がイマイチだったのかもな・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ちょっとまだ確認できてない所を探ってみるか。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ええ、そうね。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.MoveTop);
+
+                    GroundOne.WE.dungeonEvent4_Area3_2_Fail = false;
+                    // 真実世界へのルートはこの時点でプレイヤーには伝わりきってないため、順序までは要求できない。コメントアウトとする。
+                    //GroundOne.WE.dungeonEvent462 = false;
+                    //GroundOne.WE.dungeonEvent463 = false;
+                    //GroundOne.WE.dungeonEvent464 = false;
+                    //GroundOne.WE.dungeonEvent465 = false;
+                    //GroundOne.WE.dungeonEvent466 = false;
+                    //GroundOne.WEGroundOne.WE.dungeonEvent467 = false;
+                    //GroundOne.WE.dungeonEvent468 = false;
+                    //GroundOne.WE.dungeonEvent469 = false;
+                    //GroundOne.WE.dungeonEvent470 = false;
+                    //GroundOne.WE.dungeonEvent471 = false;
+                }
+                else if (GroundOne.WE.dungeonEvent461_storyok)
+                {
+                    messageList.Add("アイン：扉か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：このままじゃ、開かないみたいだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ねえアイン見て、扉の上側。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ん？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：何か小さい発光体のようなモノが付いてない？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：確かに・・・何かあるな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　＜　ッカチ！　＞　"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　『ブウゥゥン！！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：アイン・・・見て、文字が・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：すげえな・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ちょ・・・ちょっと・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：文字の・・・内容か・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                    messageList.Add("　　　　『　ホ　ロ　　　ビ　　　ヨ　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　　『　ア　　イ　　　　ン　　　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　　『　ウ　ォ　ー　レ　ン　ス　』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateC3);
+
+                    messageList.Add("ラナ：ねえ、アイン・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：・・・気にするな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：行くぜ。"); eventList.Add(ActionEvent.None);
+                    GroundOne.WE.dungeonEvent473 = true;
+
+                    messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+                }
+            }
         }
         #endregion
         #region "エリア３ボス前"
         public static void Message14096(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent475)
+            {
+                GroundOne.WE.dungeonEvent475 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea432);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
+
+                messageList.Add("レギィン：我が名は闇と焔を司りし者、レギィン・アーゼ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：このダンジョンにて理を守りし者。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：答えよ、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：何ゆえに、歩を進めるか、答えよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：このダンジョンの理を断ち切る。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：そのために、俺は進める。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：ダンジョンの理は決して崩せぬ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：どうしてそう言い切れる？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：ダンジョンが【主】であり、貴公は単なる【従】でしか在らず"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：理を断ち切るという概念を持つ時点で、断ち切る事は不可能。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：進めていけば・・・歩みを進められれば、何か分かるかもしれないだろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：無駄なこと。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：事象は決定されし事象。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：愚かなり、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っくそ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：貴公と話す事に、もう価値はない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：今、この場で我の真の姿を見るがよい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("レギィン：滅びよ、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：やべえ、殺気が半端じゃねえな・・・今までと違うって事か・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ラナ、すまねえ。万全の準備を頼む"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：了解。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+            }
         }
         #endregion
         #region "エリア３ボス"
         public static void Message14097(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE.dungeonEvent4_SlayBoss3)
+            {
+                messageList.Add("アイン：ボスとの戦闘だ！気を引き締めていくぜ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(Database.ENEMY_BOSS_LEGIN_ARZE_3); eventList.Add(ActionEvent.EncountBoss);
+            }
+        }
+        public static void Message14097_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateC4);
+
+            GroundOne.WE.dungeonEvent4_SlayBoss3 = true;
+
+            messageList.Add("レギィン：・・・ォ・・・ァ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どうだ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：ォォォォア・・ア・・・ア・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　レギィン・アーゼは黒いヴェール状になりアインとラナを覆ってきた！！　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("レギィン：グウウゥゥォオオオオォォォオオオ！！！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッキャアアアァァ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+            messageList.Add("　　【　瞬間、アインの視界は、完全に暗闇に閉ざされた　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ックソ、離せ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　その瞬間は終わり、アインは、絶対的な時間と空間のズレを把握した！！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ック・・・何だこの感触は・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　黒いヴェールの締め付けはすぐに消えていった　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonRemovePartySC);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupPlayerStatus);
+
+            messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+
+            messageList.Add("アイン：っふう・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ひでぇ最後だったな・・・結局理もクソもねえって感じだったな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　直後、周囲を見回し　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ラナ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ！　どこだラナ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　アインの頭痛は徐々に肥大化する　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ・・・ッツツ・・・ックソ、こんな時に・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　生と死のイメージを感じつつ　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：探さないと・・・ラナを・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【　アインは歩を進めた　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（この奥だ、間違いねえはずだ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（こっからは間違いはできねえ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（絶対にラナを助け出す）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（待ってろ、ラナ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ここから先は、遠見の青水晶が使用不可となります。"); eventList.Add(ActionEvent.DungeonSystemMessage);
         }
         #endregion
         #region "エリア３から４への通路"
         public static void Message14098(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE.dungeonEvent4_SlayBoss3)
+            {
+                if (!GroundOne.WE.dungeonEvent476)
+                {
+                    GroundOne.WE.dungeonEvent476 = true;
+
+                    messageList.Add("アイン：（ここだな、多分）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　【　アインの触れた壁は、うっすらと光りだし始めた　】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（おし・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenWallC1);
+
+                    messageList.Add("　　【　壁は淡い光とともに、消滅した　】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea433);
+
+                    messageList.Add("アイン：（この先だ、きっと・・・）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：（行くぜ）"); eventList.Add(ActionEvent.None);
+                }
+            }
         }
         #endregion
         #region "エリア４スタート"
