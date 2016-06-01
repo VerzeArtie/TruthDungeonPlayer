@@ -411,6 +411,8 @@ namespace DungeonPlayer
             DungeonFloor4OpenGateD4,
             DungeonFloor4OpenGateD5,
             DungeonFloor4OpenGateD6,
+            DungeonFloor4OpenWallD1,
+            DungeonUpdateUnknownTileArea443,
             Ending,
         }
         #endregion
@@ -20270,6 +20272,21 @@ namespace DungeonPlayer
         #region "エリア４から１への通路"
         public static void Message14121(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE.dungeonEvent488)
+            {
+                if (!GroundOne.WE.dungeonEvent489)
+                {
+                    GroundOne.WE.dungeonEvent489 = true;
+
+                    messageList.Add("　　【　アインの触れた壁は、うっすらと光りだし始めた　】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenWallD1);
+
+                    messageList.Add("　　【　壁は淡い光とともに、消滅した　】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea443);
+                }
+            }
         }
         #endregion
         #region "そして、現実世界へ"

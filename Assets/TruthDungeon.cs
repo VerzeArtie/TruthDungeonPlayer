@@ -14397,6 +14397,20 @@ namespace DungeonPlayer
                     OpenTheDoor(0, new Vector3(48, -32, 0));
                     UpdateUnknownTile();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallD1)
+                {
+                    // todo
+                    objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Name = Database.TILEINFO_13;
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
+                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 32 + 46] = Database.TILEINFO_13;
+                    //dungeonField.Invalidate();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea443)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 46, 46, 21, 31);
+                    UpdateUnknownTile();
+                }
 
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
