@@ -14411,6 +14411,18 @@ namespace DungeonPlayer
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 46, 46, 21, 31);
                     UpdateUnknownTile();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4BlockWallD1)
+                {
+                    // todo
+                    objList[31 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_19);
+                    objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 31 + 46].Name = Database.TILEINFO_19;
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 31 + 46].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_19);
+                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 31 + 46] = Database.TILEINFO_19;
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Name = Database.TILEINFO_24;
+                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_24);
+                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 32 + 46] = Database.TILEINFO_24;
+                }
 
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)

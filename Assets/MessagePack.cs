@@ -413,6 +413,7 @@ namespace DungeonPlayer
             DungeonFloor4OpenGateD6,
             DungeonFloor4OpenWallD1,
             DungeonUpdateUnknownTileArea443,
+            DungeonFloor4BlockWallD1,
             Ending,
         }
         #endregion
@@ -20292,11 +20293,75 @@ namespace DungeonPlayer
         #region "そして、現実世界へ"
         public static void Message14122(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                messageList.Add("　＜＜＜　その時だった　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　『ッガシャン！！！』"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4BlockWallD1);
+
+                messageList.Add("　＜＜＜　アイン・ウォーレンスの背後は突如、分厚い壁に覆われた　＞＞＞"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.RealWorld = true;
+                Method.AutoSaveTruthWorldEnvironment();
+
+                messageList.Add("　　　【そしてアインは、脳裏への激しい頭痛と共に、絶対的な時間と空間を把握し始める！！！】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（ッグ・・・頭ガ・・・ッグ・・・グアァ！！）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・ッグ・・・ック・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　【そして、脳裏への激痛は徐々に薄れていった】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・っふう）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（こ、ここは・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（そうだ、ラナを助けるんだ）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（俺はもう戻らない）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（絶対に助け出してみせる）"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #region "究極の二択"
         public static void Message14123(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE2.DungeonEvent1)
+            {
+                GroundOne.WE2.DungeonEvent1 = true;
+
+                messageList.Add("アイン：（何かが見える・・・これは・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
+
+                // todo
+                //using (TruthChoiceStatue tcs = new TruthChoiceStatue())
+                //{
+                //    tcs.StartPosition = FormStartPosition.CenterParent;
+                //    tcs.MC = this.MC;
+                //    tcs.SC = this.SC;
+                //    tcs.TC = this.TC;
+                //    tcs.WE = this.WE;
+                //    tcs.KnownTileInfo = this.knownTileInfo;
+                //    tcs.KnownTileInfo2 = this.knownTileInfo2;
+                //    tcs.KnownTileInfo3 = this.knownTileInfo3;
+                //    tcs.KnownTileInfo4 = this.knownTileInfo4;
+                //    tcs.KnownTileInfo5 = this.knownTileInfo5;
+                //    tcs.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
+                //    tcs.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
+                //    tcs.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
+                //    tcs.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
+                //    tcs.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
+                //    tcs.ShowDialog();
+                //    if (tcs.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                //    {
+                //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+                //    }
+                //}
+            }
         }
         #endregion
         #region "最下層への階段前の扉"
