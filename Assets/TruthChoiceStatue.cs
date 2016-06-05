@@ -13,5 +13,6 @@ public class TruthChoiceStatue : MotherForm {
     public override void Update()
     {
         base.Update();
+
     }
 }
