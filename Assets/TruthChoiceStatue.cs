@@ -144,6 +144,18 @@ public class TruthChoiceStatue : MotherForm {
             }
 
             // 各イベント固有の処理
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueHuman)
+            {
+                this.buttonChoice1.enabled = true;
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueLana)
+            {
+                this.buttonChoice2.enabled = true;
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueDestroySword)
+            {
+                this.buttonChoice3.enabled = true;
+            }
 
             this.nowReading++;
             if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
@@ -194,8 +206,16 @@ public class TruthChoiceStatue : MotherForm {
 
     private void ChangeChoice()
     {
-        MessagePack.Message14134(ref this.nowMessage, ref this.nowEvent);
-        tapOK();
+        if (this.flag1 && this.flag2 && this.flag3)
+        {
+            this.buttonChoice1.enabled = false;
+            this.buttonChoice2.enabled = false;
+            this.buttonChoice3.enabled = false;
+            this.flagA = true;
+
+            MessagePack.Message14134(ref this.nowMessage, ref this.nowEvent);
+            tapOK();
+        }
     }
 
     // 人間の像

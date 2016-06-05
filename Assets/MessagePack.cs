@@ -414,6 +414,9 @@ namespace DungeonPlayer
             DungeonFloor4OpenWallD1,
             DungeonUpdateUnknownTileArea443,
             DungeonFloor4BlockWallD1,
+            DungeonStatueHuman,
+            DungeonStatueLana,
+            DungeonStatueDestroySword,
             Ending,
         }
         #endregion
@@ -20669,34 +20672,17 @@ namespace DungeonPlayer
 
         public static void Message14134(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
-            //if (this.flag1 && this.flag2 && this.flag3)
-            //{
-            //    this.buttonChoice1.Visible = false;
-            //    this.buttonChoice1.Update(); eventList.Add(ActionEvent.None);
-            //    this.buttonChoice2.Visible = false;
-            //    this.buttonChoice2.Update(); eventList.Add(ActionEvent.None);
-            //    this.buttonChoice3.Visible = false;
-            //    this.buttonChoice3.Update(); eventList.Add(ActionEvent.None);
-            //    this.flagA = true;
+            messageList.Add("アイン：（選択肢は限られている）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（選択肢は限られている）"); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueHuman);
 
-            //    this.buttonChoice1.Text = "【人間の像】へ剣を差し込む";
-            //    this.buttonChoice1.Visible = true;
-            //    this.buttonChoice1.Update(); eventList.Add(ActionEvent.None);
-            //    messageList.Add("アイン：（【人間の像】に剣を差し込むか）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（【人間の像】に剣を差し込むか）"); eventList.Add(ActionEvent.None);
 
-            //    this.buttonChoice2.Text = "【ラナの像】へ剣を差し込む";
-            //    this.buttonChoice2.Visible = true;
-            //    this.buttonChoice2.Update(); eventList.Add(ActionEvent.None);
-            //    messageList.Add("アイン：（【ラナの像】に剣を差し込むか）"); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueLana);
+            messageList.Add("アイン：（【ラナの像】に剣を差し込むか）"); eventList.Add(ActionEvent.None);
 
-            //    this.buttonChoice3.Text = "剣を破壊して、引き返す";
-            //    this.buttonChoice3.Visible = true;
-            //    this.buttonChoice3.Update(); eventList.Add(ActionEvent.None);
-            //    messageList.Add("アイン：（あるいは、剣自体を破壊して引き返すか・・・）"); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueDestroySword);
+            messageList.Add("アイン：（あるいは、剣自体を破壊して引き返すか・・・）"); eventList.Add(ActionEvent.None);
         }
 
         public static void Message14135(ref List<string> messageList, ref List<ActionEvent> eventList)
