@@ -14423,6 +14423,20 @@ namespace DungeonPlayer
                     //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_24);
                     //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 32 + 46] = Database.TILEINFO_24;
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonCallChoiceStatue)
+                {
+                    SceneDimension.CallTruthChoiceStatue(this);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea45)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 49, 52, 20, 20);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDungeonFive)
+                {
+                    GroundOne.WE.TruthCompleteArea4 = true;
+                    JumpToLocation(57, -2, true);
+                    SetupDungeonMapping(5);
+                }
 
                 this.nowReading++;
                 if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)

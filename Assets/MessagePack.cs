@@ -219,6 +219,7 @@ namespace DungeonPlayer
             CallSomeMessageWithAnimation,
             CallSomeMessageWithNotJoinLana,
             DungeonBadEnd,
+            DungeonGoSeeker,
             DungeonGetTreasure,
             DungeonUpdateFieldElement,
             DungeonAgilityRoomStart,
@@ -414,9 +415,20 @@ namespace DungeonPlayer
             DungeonFloor4OpenWallD1,
             DungeonUpdateUnknownTileArea443,
             DungeonFloor4BlockWallD1,
-            DungeonStatueHuman,
-            DungeonStatueLana,
-            DungeonStatueDestroySword,
+            DungeonCallChoiceStatue,
+            // ChoiceStatue
+            DungeonStatueHideWalkFront,
+            DungeonStatueViewHuman,
+            DungeonStatueViewLana,
+            DungeonStatueViewFeltus,
+            DungeonStatueChangeChoice,
+            DungeonStatueViewTruth,
+            DungeonStatueViewFact,
+            DungeonStatueViewElement,
+            DungeonStatueViewSong,
+            // ChoiceStatue
+            DungeonUpdateUnknownTileArea45,
+            DungeonGotoDungeonFive,
             Ending,
         }
         #endregion
@@ -20340,59 +20352,135 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
 
-                // todo
-                //using (TruthChoiceStatue tcs = new TruthChoiceStatue())
-                //{
-                //    tcs.StartPosition = FormStartPosition.CenterParent;
-                //    tcs.MC = this.MC;
-                //    tcs.SC = this.SC;
-                //    tcs.TC = this.TC;
-                //    tcs.WE = this.WE;
-                //    tcs.KnownTileInfo = this.knownTileInfo;
-                //    tcs.KnownTileInfo2 = this.knownTileInfo2;
-                //    tcs.KnownTileInfo3 = this.knownTileInfo3;
-                //    tcs.KnownTileInfo4 = this.knownTileInfo4;
-                //    tcs.KnownTileInfo5 = this.knownTileInfo5;
-                //    tcs.Truth_KnownTileInfo = this.Truth_KnownTileInfo;
-                //    tcs.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2;
-                //    tcs.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3;
-                //    tcs.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4;
-                //    tcs.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5;
-                //    tcs.ShowDialog();
-                //    if (tcs.DialogResult == System.Windows.Forms.DialogResult.Cancel)
-                //    {
-                //        this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-                //    }
-                //}
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonCallChoiceStatue);
             }
         }
         #endregion
         #region "最下層への階段前の扉"
         public static void Message14124(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent2)
+            {
+                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　扉が開いている　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonUpdateUnknownTileArea45);
+
+                messageList.Add("　　（　そして階段が見える　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　だが特に何も感じない　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　絶望や虚無感すら感じ取れない　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　感情と呼べる感情はすべて消失したまま　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　歩を進める　）"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent2 = true;
+            }
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+
         }
         #endregion
         #region "下り階段"
         public static void Message14125(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (!GroundOne.WE2.SeekerEvent3)
+            {
+                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　階段だ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　・・・降りよう・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　考えたわけではなく　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ふと、記憶の断片がよみがえった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ダンジョンの最下層は　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　『　５階　』　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そう聞いたことがある　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　という事は　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　・・・この先が最下層・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　階段の先は完全に暗くなっている　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　明かりが全く灯っていないようだ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　だが、俺にとってそんな事は関係なかった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　何も感じずに最下層への階段を降り始めた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　まるで、深淵の奥底に消えていくかの様に・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDungeonFive);
+
+                messageList.Add("　　（　・・・　５階・・・　か・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent3 = true;
+            }
+            else
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDungeonFive);
+
+                messageList.Add("　　（　・・・　５階・・・　か・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+            }
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
         }
         #endregion
         #region "現実世界、移動ブロック"
         public static void Message14126(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent1)
+            {
+                messageList.Add("　　（　・・・最下層へ・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveTop);
+            }
         }
         public static void Message14127(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent1)
+            {
+                messageList.Add("　　（　・・・最下層へ・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+            }
         }
         public static void Message14128(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent1)
+            {
+                messageList.Add("　　（　・・・最下層へ・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+            }
         }
         public static void Message14129(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SeekerEvent1)
+            {
+                messageList.Add("　　（　・・・最下層へ・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
+            }
         }
         #endregion
         #region "ChoiceStatue"
-        public static void Message14130(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void NormalEnd_Correct(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
 
@@ -20496,11 +20584,9 @@ namespace DungeonPlayer
 
             messageList.Add("　　（　・・・　）"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //ThisFormAutoSave(); eventList.Add(ActionEvent.None);
-            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonGoSeeker);
         }
-        public static void Message14131(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void BadEnd_LanaStatue(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
 
@@ -20554,14 +20640,10 @@ namespace DungeonPlayer
 
             messageList.Add("　　（　・・・ラナ・・・　）"); eventList.Add(ActionEvent.None);
 
-            // 現在世界のスタート地点に戻るようセーブする。
-            // 次の開始で、ストーリーを示すようにする。
-            // todo
-            //ThisFormAutoSave(); eventList.Add(ActionEvent.None);
-            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonGoSeeker);
         }
 
-        public static void Message14132(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void BadEnd_HumanStatue(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
 
@@ -20621,12 +20703,10 @@ namespace DungeonPlayer
 
             messageList.Add("　　（　・・・ラナ・・・　）"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //ThisFormAutoSave(); eventList.Add(ActionEvent.None);
-            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonGoSeeker);
         }
 
-        public static void Message14133(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void BadEnd_Surrender(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
 
@@ -20665,694 +20745,660 @@ namespace DungeonPlayer
             messageList.Add(" ～　THE　END　～　（【夢幻】　永遠の停止）"); eventList.Add(ActionEvent.None);
 
             // 現在世界のスタート地点に戻るようセーブする。
-            // todo
-            //ThisFormAutoSave(); eventList.Add(ActionEvent.None);
-            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
         }
 
         public static void Message14134(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（選択肢は限られている）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueHuman);
-
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewHuman);
             messageList.Add("アイン：（【人間の像】に剣を差し込むか）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueLana);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewLana);
             messageList.Add("アイン：（【ラナの像】に剣を差し込むか）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueDestroySword);
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewFeltus);
             messageList.Add("アイン：（あるいは、剣自体を破壊して引き返すか・・・）"); eventList.Add(ActionEvent.None);
         }
 
-        public static void Message14135(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // 人間の像
+        public static void Message14135(ref List<string> messageList, ref List<ActionEvent> eventList, ref bool flagA, ref bool flag1, ref bool flagB, ref bool flag5, ref bool flagC, ref bool flagD, ref bool flagE, ref bool flagF, ref bool flagG, ref bool flagH, ref bool flagI, ref bool flagJ, ref bool flagK)
         {
-            // todo
-            //if (!this.flagA)
-            //{
-            //    if (!this.flag1)
-            //    {
-            //        this.flag1 = true;
-            //        messageList.Add("アイン：（人間の容をした像が立っている）"); eventList.Add(ActionEvent.None);
+            if (!flagA)
+            {
+                if (!flag1)
+                {
+                    flag1 = true;
+                    messageList.Add("アイン：（人間の容をした像が立っている）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（これに剣を差し込めという事なんだろうか・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（これに剣を差し込めという事なんだろうか・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（だが、これに差し込んでもしも・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（だが、これに差し込んでもしも・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・ッグ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・ッグ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
 
-            //        ChangeChoice(); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        messageList.Add("アイン：（万が一を考えると、迂闊に差し込めねえ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueChangeChoice);
+                }
+                else
+                {
+                    messageList.Add("アイン：（万が一を考えると、迂闊に差し込めねえ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）", true); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagB)
-            //{
-            //    if (!this.flag5)
-            //    {
-            //        this.flag5 = true;
-            //        messageList.Add("アイン：（人間を示す像だ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!flagB)
+            {
+                if (!flag5)
+                {
+                    flag5 = true;
+                    messageList.Add("アイン：（人間を示す像だ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（ラナを示す像なんかに、剣を差し込めるわけがない）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（ラナを示す像なんかに、剣を差し込めるわけがない）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（引き返す道も閉ざされている）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（引き返す道も閉ざされている）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（次に繋がる道を拓くためには、この像に剣を差し込むしかない）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（次に繋がる道を拓くためには、この像に剣を差し込むしかない）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（それしか、手は残されていない、そんな気がする）"); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        BadEnd_HumanStatue(); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagC)
-            //{
-            //    messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagD)
-            //{
-            //    // とくになし
-            //}
-            //else if (!this.flagE)
-            //{
-            //    this.flagE = true;
-            //    messageList.Add("アイン：（人間の像だ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（それしか、手は残されていない、そんな気がする）"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    MessagePack.BadEnd_HumanStatue(ref messageList, ref eventList);
+                }
+            }
+            else if (!flagC)
+            {
+                messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagD)
+            {
+                // とくになし
+            }
+            else if (!flagE)
+            {
+                flagE = true;
+                messageList.Add("アイン：（人間の像だ・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（こっちに差し込むつもりはねえが、ひとまず調べてみるか・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（こっちに差し込むつもりはねえが、ひとまず調べてみるか・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（あった。やっぱりな・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（あった。やっぱりな・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（像の背面側の台座だ。フタの形状部分がある）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（像の背面側の台座だ。フタの形状部分がある）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（開いてみよう）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（開いてみよう）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewTruth);
 
-            //    messageList.Add("アイン：（同じようにボタンがある）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（合計１０個）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（ボタンがある）"); eventList.Add(ActionEvent.None);
 
-            //    buttonTruth1.Visible = true;
-            //    buttonTruth2.Visible = true;
-            //    buttonTruth3.Visible = true;
-            //    buttonTruth4.Visible = true;
-            //    buttonTruth5.Visible = true;
-            //    buttonTruth6.Visible = true;
-            //    buttonTruth7.Visible = true;
-            //    buttonTruth8.Visible = true;
-            //    buttonTruth9.Visible = true;
-            //    buttonTruth10.Visible = true;
-            //    buttonTruth1.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth2.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth3.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth4.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth5.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth6.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth7.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth8.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth9.Update(); eventList.Add(ActionEvent.None);
-            //    buttonTruth10.Update(); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（合計１０個）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（よし・・・こっちも順番通りに合わせこめばいいはずだ）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（よし・・・こっちも順番通りに合わせこめばいいはずだ）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（待ってろラナ・・・）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagF)
-            //{
-            //    messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagG)
-            //{
-            //    BadEnd_HumanStatue(); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagH)
-            //{
-            //    messageList.Add("アイン：（今は、神剣フェルトゥーシュに集中しよう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagI)
-            //{
-            //    BadEnd_HumanStatue(); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagJ)
-            //{
-            //    messageList.Add("アイン：（今は、壁画の文字列を順番通り手をかざそう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagK)
-            //{
-            //    BadEnd_HumanStatue(); eventList.Add(ActionEvent.None);
-            //}
+                messageList.Add("アイン：（待ってろラナ・・・）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagF)
+            {
+                messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagG)
+            {
+                MessagePack.BadEnd_HumanStatue(ref messageList, ref eventList);
+            }
+            else if (!flagH)
+            {
+                messageList.Add("アイン：（今は、神剣フェルトゥーシュに集中しよう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagI)
+            {
+                MessagePack.BadEnd_HumanStatue(ref messageList, ref eventList);
+            }
+            else if (!flagJ)
+            {
+                messageList.Add("アイン：（今は、壁画の文字列を順番通り手をかざそう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagK)
+            {
+                MessagePack.BadEnd_HumanStatue(ref messageList, ref eventList);
+            }
         }
 
-        public static void Message14136(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // ラナ・アミリアの像
+        private static bool CheckFactOrder(List<int> factOrder)
         {
-            // todo
-            //if (!this.flagA)
-            //{
-            //    if (!this.flag2)
-            //    {
-            //        this.flag2 = true;
+            if (factOrder[0] != 1) { return false; }
+            if (factOrder[1] != 2) { return false; }
+            if (factOrder[2] != 3) { return false; }
+            if (factOrder[3] != 4) { return false; }
+            if (factOrder[4] != 5) { return false; }
+            if (factOrder[5] != 6) { return false; }
+            if (factOrder[6] != 7) { return false; }
+            if (factOrder[7] != 8) { return false; }
+            if (factOrder[8] != 9) { return false; }
+            if (factOrder[9] != 10) { return false; }
 
-            //        messageList.Add("アイン：（これは・・・ラナそっくりじゃねえか）"); eventList.Add(ActionEvent.None);
+            return true;
+        }
+        private static bool CheckTruthOrder(List<int> truthOrder)
+        {
+            if (truthOrder[0] != 1) { return false; }
+            if (truthOrder[1] != 2) { return false; }
+            if (truthOrder[2] != 3) { return false; }
+            if (truthOrder[3] != 4) { return false; }
+            if (truthOrder[4] != 5) { return false; }
+            if (truthOrder[5] != 6) { return false; }
+            if (truthOrder[6] != 7) { return false; }
+            if (truthOrder[7] != 8) { return false; }
+            if (truthOrder[8] != 9) { return false; }
+            if (truthOrder[9] != 10) { return false; }
 
-            //        messageList.Add("アイン：（これに剣を差し込めという事なんだろうか・・・）"); eventList.Add(ActionEvent.None);
+            return true;
+        }
+        public static void Message14136(ref List<string> messageList, ref List<ActionEvent> eventList, ref bool flagA, ref bool flag2, ref bool flagB, ref bool flag4, ref bool flag4_2, ref bool flagC, ref bool flagD, List<int> factOrder, ref bool flagE, ref bool flag7, ref bool flagF, ref bool flagG, List<int> truthOrder, ref bool flagH, ref bool flagI, ref bool flagJ, ref bool flagK)
+        {
+            if (!flagA)
+            {
+                if (!flag2)
+                {
+                    flag2 = true;
 
-            //        messageList.Add("アイン：（無理だ。ただでさえ今までフラッシュバックで嫌なもんを見てる）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（これは・・・ラナそっくりじゃねえか）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（この像に剣を突き立てる・・・できるはずがない）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（これに剣を差し込めという事なんだろうか・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（表とか裏とかそんな話じゃなく）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（無理だ。ただでさえ今までフラッシュバックで嫌なもんを見てる）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（出来ないモノは出来ない）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（この像に剣を突き立てる・・・できるはずがない）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（生理的に無理だ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（表とか裏とかそんな話じゃなく）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（出来ないモノは出来ない）"); eventList.Add(ActionEvent.None);
 
-            //        ChangeChoice(); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        messageList.Add("アイン：（ラナそっくりの像に剣を突き立てるつもりはねえ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（感情的に無理だ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）", true); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagB)
-            //{
-            //    if (!this.flag4)
-            //    {
-            //        this.flag4 = true;
-            //        messageList.Add("アイン：（ラナそっくりの像に・・・剣を・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（駄目だ。どうしても生理的な拒絶を感じる）"); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueChangeChoice);
+                }
+                else
+                {
+                    messageList.Add("アイン：（ラナそっくりの像に剣を突き立てるつもりはねえ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（手が・・・震えるんだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!flagB)
+            {
+                if (!flag4)
+                {
+                    flag4 = true;
+                    messageList.Add("アイン：（ラナそっくりの像に・・・剣を・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（自分の意志とは関係なく、無意識的に手が震える）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（駄目だ。どうしても感情的な拒絶を感じる）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（例え、この像に剣を差し込むのが１００％唯一の道だと思っても）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（手が・・・震えるんだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（心の底から、恐怖を感じる）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（自分の意志とは関係なく、無意識的に手が震える）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（刃を突き立てる姿勢だけでも、震えてしまう）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（例え、この像に剣を差し込むのが１００％唯一の道だと思っても）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（絶対に俺には無理だ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（心の底から、恐怖を感じる）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
-            //    }
-            //    else if (!this.flag4_2)
-            //    {
-            //        this.flag4_2 = true;
-            //        messageList.Add("アイン：（【人間の像】に差し込むのが正解なんじゃないか・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（刃を突き立てる姿勢だけでも、震えてしまう）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）", true); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        this.flagB = true;
-            //        messageList.Add("アイン：（・・・いや、違う・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（絶対に俺には無理だ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（【人間の像】なんて曖昧なものが合っているハズがねえんだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                }
+                else if (!flag4_2)
+                {
+                    flag4_2 = true;
+                    messageList.Add("アイン：（【人間の像】に差し込むのが正解なんじゃないか・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（そこは直感で何となく分かる。だが）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    flagB = true;
+                    messageList.Add("アイン：（・・・いや、違う・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（だからと言って、ラナそっくりの像に・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（【人間の像】なんて曖昧なものが合っているハズがねえんだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（無理だ、突き刺せない）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（そこは直感で何となく分かる。だが）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・おちつけ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（だからと言って、ラナそっくりの像に・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（おちつけ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（無理だ、突き刺せない）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（おちつくんだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・おちつけ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（おちつけ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（レギィンのヤツは、『貴公は既に解を得ている』と言っていた）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（おちつくんだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（言葉通りなんじゃないか）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（絶対に何かあるはずだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（レギィンのヤツは、『貴公は既に解を得ている』と言っていた）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（もっと、よく調べるんだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（言葉通りなんじゃないか）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（絶対に何かあるはずだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（あった・・・像の台座部分にうっすらと）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（もっと、よく調べるんだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（フタの形状をした部分がある）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（開いてみよう）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（あった・・・像の台座部分にうっすらと）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（フタの形状をした部分がある）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（ボタンがある）"); eventList.Add(ActionEvent.None);
-
-            //        messageList.Add("アイン：（合計１０個）"); eventList.Add(ActionEvent.None);
-
-            //        messageList.Add("アイン：（それぞれに何か書いてある）"); eventList.Add(ActionEvent.None);
-
-            //        buttonFact1.Visible = true;
-            //        buttonFact2.Visible = true;
-            //        buttonFact3.Visible = true;
-            //        buttonFact4.Visible = true;
-            //        buttonFact5.Visible = true;
-            //        buttonFact6.Visible = true;
-            //        buttonFact7.Visible = true;
-            //        buttonFact8.Visible = true;
-            //        buttonFact9.Visible = true;
-            //        buttonFact10.Visible = true;
-            //        buttonFact1.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact2.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact3.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact4.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact5.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact6.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact7.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact8.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact9.Update(); eventList.Add(ActionEvent.None);
-            //        buttonFact10.Update(); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（開いてみよう）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（これは・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewFact);
 
-            //        messageList.Add("アイン：（・・・よし・・・多分これを順番通りに合わせこめばいいんだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（待ってろラナ・・・今、助ける）"); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagC)
-            //{
-            //    messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagD)
-            //{
-            //    messageList.Add("アイン：（これで良いんだろうか・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（ボタンがある）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（ボタンは確かに順番通りに押したはずだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（合計１０個）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（だが、その行為に意味はあったんだろうか）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（それぞれに何か書いてある）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（レギィンのヤツが言った事を、勝手に解釈しているだけだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（これは・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（ラナが助かる保証は・・・どこにもない・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・よし・・・多分これを順番通りに合わせこめばいいんだ）"); eventList.Add(ActionEvent.None);
 
-            //    if (!CheckFactOrder())
-            //    {
-            //        BadEnd_LanaStatue(); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        this.flagD = true;
-            //        messageList.Add("アイン：（頼む・・・合っていてくれ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（待ってろラナ・・・今、助ける）"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!flagC)
+            {
+                messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagD)
+            {
+                messageList.Add("アイン：（これで良いんだろうか・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("【ッドクン】"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（ボタンは確かに順番通りに押したはずだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("＜＜＜　アインの胸の鼓動が急速に高まる ＞＞＞"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（だが、その行為に意味はあったんだろうか）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("【ッドクン、ッドクン、ッドクン】"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（レギィンのヤツが言った事を、勝手に解釈しているだけだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（あっ！！！）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（ラナが助かる保証は・・・どこにもない・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（ま、まて！！　落ち着け・・・）"); eventList.Add(ActionEvent.None);
+                if (!CheckFactOrder(factOrder))
+                {
+                    MessagePack.BadEnd_LanaStatue(ref messageList, ref eventList);
+                }
+                else
+                {
+                    flagD = true;
+                    messageList.Add("アイン：（頼む・・・合っていてくれ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（４階を進める際・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("【ッドクン】"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（事実を示す事と、もう一つ看板から示されていた内容がある）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("＜＜＜　アインの胸の鼓動が急速に高まる ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（まだ・・・何かあるはずだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("【ッドクン、ッドクン、ッドクン】"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（早とちりせず、探すんだ）"); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagE)
-            //{
-            //    if (!this.flag7)
-            //    {
-            //        this.flag7 = true;
-            //        messageList.Add("アイン：（・・・特にもう何も無さそうだな）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（あっ！！！）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（何かまだあると思ったが・・・気のせいだったのか）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（ま、まて！！　落ち着け・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（このまま、突き刺せば良いんだろうか・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（４階を進める際・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        BadEnd_LanaStatue(); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagF)
-            //{
-            //    messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagG)
-            //{
-            //    messageList.Add("アイン：（事実ではなく、真実を示す部分・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（事実を示す事と、もう一つ看板から示されていた内容がある）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（４階で見てきた看板の通り、ボタンを設定したはずだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（まだ・・・何かあるはずだ）"); eventList.Add(ActionEvent.None);
 
-            //    if (!CheckTruthOrder())
-            //    {
-            //        BadEnd_LanaStatue(); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        this.flagG = true;
-            //        messageList.Add("アイン：（頼む・・・合っていてくれ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（早とちりせず、探すんだ）"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!flagE)
+            {
+                if (!flag7)
+                {
+                    flag7 = true;
+                    messageList.Add("アイン：（・・・特にもう何も無さそうだな）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("【ッドクン】"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（何かまだあると思ったが・・・気のせいだったのか）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("＜＜＜　アインの胸の鼓動が急速に高まる ＞＞＞"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（このまま、突き刺せば良いんだろうか・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("【ッドクン、ッドクン、ッドクン】"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    MessagePack.BadEnd_LanaStatue(ref messageList, ref eventList);
+                }
+            }
+            else if (!flagF)
+            {
+                messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagG)
+            {
+                messageList.Add("アイン：（事実ではなく、真実を示す部分・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("　　（　その時、意識的ではなかったが　）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（４階で見てきた看板の通り、ボタンを設定したはずだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("　　（　極度の集中により、全神経が剣の切っ先にいった時　）"); eventList.Add(ActionEvent.None);
+                if (!CheckTruthOrder(truthOrder))
+                {
+                    MessagePack.BadEnd_LanaStatue(ref messageList, ref eventList);
+                }
+                else
+                {
+                    flagG = true;
+                    messageList.Add("アイン：（頼む・・・合っていてくれ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("　　（　視界にある文字列が、とっさに飛び込んできた　）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("【ッドクン】"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（切っ先に・・・何か見える！？）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("＜＜＜　アインの胸の鼓動が急速に高まる ＞＞＞"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（なんだこれ・・・何かの文字か？）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("【ッドクン、ッドクン、ッドクン】"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（今まで全然知らなかったぜ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("　　（　その時、意識的ではなかったが　）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・よく見ると文字の部分がうっすらと光を放っている）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("　　（　極度の集中により、全神経が剣の切っ先にいった時　）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（この暗い通路の中でようやく見えるって感じだ・・・それで見えたのか）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("　　（　視界にある文字列が、とっさに飛び込んできた　）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（よし、剣の表面を入念に調べてみよう）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（切っ先に・・・何か見える！？）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（なんだこれ・・・何かの文字か？）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（全部で合計８つ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（今まで全然知らなかったぜ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        buttonElemental1.Visible = true;
-            //        buttonElemental2.Visible = true;
-            //        buttonElemental3.Visible = true;
-            //        buttonElemental4.Visible = true;
-            //        buttonElemental5.Visible = true;
-            //        buttonElemental6.Visible = true;
-            //        buttonElemental7.Visible = true;
-            //        buttonElemental8.Visible = true;
-            //        buttonElemental1.Update(); eventList.Add(ActionEvent.None);
-            //        buttonElemental2.Update(); eventList.Add(ActionEvent.None);
-            //        buttonElemental3.Update(); eventList.Add(ActionEvent.None);
-            //        buttonElemental4.Update(); eventList.Add(ActionEvent.None);
-            //        buttonElemental5.Update(); eventList.Add(ActionEvent.None);
-            //        buttonElemental6.Update(); eventList.Add(ActionEvent.None);
-            //        buttonElemental7.Update(); eventList.Add(ActionEvent.None);
-            //        buttonElemental8.Update(); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・よく見ると文字の部分がうっすらと光を放っている）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（４階の看板に、この手の繋がる内容は無かったと思うが・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（この暗い通路の中でようやく見えるって感じだ・・・それで見えたのか）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・いや、当てて見せる）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（よし、剣の表面を入念に調べてみよう）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（今ここで、当てなきゃダメなんだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（待ってろラナ）"); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagH)
-            //{
-            //    messageList.Add("アイン：（今は、神剣フェルトゥーシュに集中しよう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagI)
-            //{
-            //    this.flagI = true;
-            //    messageList.Add("アイン：（剣全体が光っている・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（全部で合計８つ）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（よし、これで突き刺せば・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewElement);
 
-            //    messageList.Add("　　（　アインは、ゆっくりと剣を振りかざし始めた　）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（４階の看板に、この手の繋がる内容は無かったと思うが・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("　　（　その時だった　）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・いや、当てて見せる）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（ん・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（今ここで、当てなきゃダメなんだ）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（壁に・・・何か見える）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（待ってろラナ）"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!flagH)
+            {
+                messageList.Add("アイン：（今は、神剣フェルトゥーシュに集中しよう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagI)
+            {
+                flagI = true;
+                messageList.Add("アイン：（剣全体が光っている・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（剣の光のおかげでやっと見える感じだ）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（よし、これで突き刺せば・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（何で今まで気づかなかったんだ・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　（　アインは、ゆっくりと剣を振りかざし始めた　）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（２つの像と神剣の存在が強烈すぎて壁を見る余裕がなかったせいもあるが・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　（　その時だった　）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（ともかく、壁に近づいてみよう）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（ん・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（壁に・・・何か見える）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（これは・・・抽象画か）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（剣の光のおかげでやっと見える感じだ）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（・・・あっ）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（何で今まで気づかなかったんだ・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（文字列だ。小さい文字で何かが連なっている）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（２つの像と神剣の存在が強烈すぎて壁を見る余裕がなかったせいもあるが・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（４方向の壁全体に書いてありそうだ。くまなく調べてみよう。）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（ともかく、壁に近づいてみよう）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（それぞれの壁に一つずつ、合計４つか）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（これは・・・抽象画か）"); eventList.Add(ActionEvent.None);
 
-            //    buttonSong1.Visible = true;
-            //    buttonSong2.Visible = true;
-            //    buttonSong3.Visible = true;
-            //    buttonSong4.Visible = true;
-            //    buttonSong1.Update(); eventList.Add(ActionEvent.None);
-            //    buttonSong2.Update(); eventList.Add(ActionEvent.None);
-            //    buttonSong3.Update(); eventList.Add(ActionEvent.None);
-            //    buttonSong4.Update(); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（・・・あっ）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（いよいよ・・・最終局面の様相だな）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（文字列だ。小さい文字で何かが連なっている）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（これはさすがに本当の最後だと直感できる）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（４方向の壁全体に書いてありそうだ。くまなく調べてみよう。）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（ラナ・・・もうすぐだ、待ってろ）"); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagJ)
-            //{
-            //    messageList.Add("アイン：（今は、壁画の文字列を順番通り手をかざそう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagK)
-            //{
-            //    NormalEnd_Correct(); eventList.Add(ActionEvent.None);
-            //}
+                messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（それぞれの壁に一つずつ、合計４つか）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewSong);
+
+                messageList.Add("アイン：（いよいよ・・・最終局面の様相だな）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（これはさすがに本当の最後だと直感できる）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（ラナ・・・もうすぐだ、待ってろ）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagJ)
+            {
+                messageList.Add("アイン：（今は、壁画の文字列を順番通り手をかざそう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagK)
+            {
+                MessagePack.NormalEnd_Correct(ref messageList, ref eventList);
+            }
         }
 
-        public static void Message14137(ref List<string> messageList, ref List<ActionEvent> eventList)
+        // フェルトゥーシュの剣
+        public static void Message14137(ref List<string> messageList, ref List<ActionEvent> eventList, ref bool flagA, ref bool flag3, ref bool flagB, ref bool flag6, ref bool flag6_2, ref bool flag6_3, ref bool flagC, ref bool flagD, ref bool flagE, ref bool flagF, ref bool flagG, ref bool flagH, ref bool flagI, ref bool flagJ, ref bool flagK)
         {
-            //if (!this.flagA)
-            //{
-            //    if (!this.flag3)
-            //    {
-            //        this.flag3 = true;
+            if (!flagA)
+            {
+                if (!flag3)
+                {
+                    flag3 = true;
 
-            //        messageList.Add("アイン：（間違いねえ・・・フェルトゥーシュだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（間違いねえ・・・フェルトゥーシュだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（何だってこんな所で出てくるんだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（何だってこんな所で出てくるんだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（・・・これを使って、どちらかの像へ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（・・・これを使って、どちらかの像へ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
 
-            //        ChangeChoice(); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        messageList.Add("アイン：（・・・これを使って、どちらかの像へ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueChangeChoice);
+                }
+                else
+                {
+                    messageList.Add("アイン：（・・・これを使って、どちらかの像へ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（どうする・・・）", true); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagB)
-            //{
-            //    if (!this.flag6)
-            //    {
-            //        this.flag6 = true;
-            //        messageList.Add("アイン：（引き返す・・・どこへ？）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
+                }
+            }
+            else if (!flagB)
+            {
+                if (!flag6)
+                {
+                    flag6 = true;
+                    messageList.Add("アイン：（引き返す・・・どこへ？）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（ラナはこのダンジョンに囚われたままなんだ）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（ラナはこのダンジョンに囚われたままなんだ）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（囚われているラナを放ってはおけない）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（囚われているラナを放ってはおけない）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（必ず、救ってみせる）"); eventList.Add(ActionEvent.None);
-            //    }
-            //    else if (!this.flag6_2)
-            //    {
-            //        this.flag6_2 = true;
-            //        messageList.Add("アイン：（引き返した所で意味はねえ・・・）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（必ず、救ってみせる）"); eventList.Add(ActionEvent.None);
+                }
+                else if (!flag6_2)
+                {
+                    flag6_2 = true;
+                    messageList.Add("アイン：（引き返した所で意味はねえ・・・）"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：（絶対に救ってみせる）", true); eventList.Add(ActionEvent.None);
-            //    }
-            //    else if (!this.flag6_3)
-            //    {
-            //        this.flag6_3 = true;
-            //        messageList.Add("アイン：（絶対に・・・救うんだ）", true); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        BadEnd_Surrender(); eventList.Add(ActionEvent.None);
-            //    }
-            //}
-            //else if (!this.flagC)
-            //{
-            //    messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagD)
-            //{
-            //    BadEnd_Surrender(); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagE)
-            //{
-            //    messageList.Add("アイン：（囚われているラナを放ってはおけない）"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：（絶対に救ってみせる）"); eventList.Add(ActionEvent.None);
+                }
+                else if (!flag6_3)
+                {
+                    flag6_3 = true;
+                    messageList.Add("アイン：（絶対に・・・救うんだ）"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    MessagePack.BadEnd_Surrender(ref messageList, ref eventList);
+                }
+            }
+            else if (!flagC)
+            {
+                messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagD)
+            {
+                MessagePack.BadEnd_Surrender(ref messageList, ref eventList);
+            }
+            else if (!flagE)
+            {
+                messageList.Add("アイン：（囚われているラナを放ってはおけない）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（必ず、救ってみせる）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagF)
-            //{
-            //    messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagG)
-            //{
-            //    BadEnd_Surrender(); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagH)
-            //{
-            //    messageList.Add("アイン：（剣の一部が光を放っている・・・順序は・・・）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagI)
-            //{
-            //    BadEnd_Surrender(); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagJ)
-            //{
-            //    messageList.Add("アイン：（今は、壁画の文字列を順番通り手をかざそう）", true); eventList.Add(ActionEvent.None);
-            //}
-            //else if (!this.flagK)
-            //{
-            //    BadEnd_Surrender(); eventList.Add(ActionEvent.None);
-            //}
+                messageList.Add("アイン：（必ず、救ってみせる）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagF)
+            {
+                messageList.Add("アイン：（今は、台座にあるボタンを順番通りに押そう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagG)
+            {
+                MessagePack.BadEnd_Surrender(ref messageList, ref eventList);
+            }
+            else if (!flagH)
+            {
+                messageList.Add("アイン：（剣の一部が光を放っている・・・順序は・・・）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagI)
+            {
+                MessagePack.BadEnd_Surrender(ref messageList, ref eventList);
+            }
+            else if (!flagJ)
+            {
+                messageList.Add("アイン：（今は、壁画の文字列を順番通り手をかざそう）"); eventList.Add(ActionEvent.None);
+            }
+            else if (!flagK)
+            {
+                MessagePack.BadEnd_Surrender(ref messageList, ref eventList);
+            }
         }
 
-        public static void Message14138(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message14138(ref List<string> messageList, ref List<ActionEvent> eventList, ref bool flag0)
         {
-            // todo
-            //if (!this.flag0)
-            //{
-            //    this.flag0 = true;
-            //    buttonChoice4.Visible = false;
-            //    buttonChoice4.Update(); eventList.Add(ActionEvent.None);
+            if (!flag0)
+            {
+                flag0 = true;
 
-            //    messageList.Add("アイン：（・・・ッグ！！）"); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueHideWalkFront);
 
-            //    messageList.Add("アイン：（何か聞こえる・・・頭に・・・直接・・・だ、誰だ！？）"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（・・・ッグ！！）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：我が名は闇と焔を司りし者、レギィン・アーゼ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：（何か聞こえる・・・頭に・・・直接・・・だ、誰だ！？）"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：このダンジョンにて理を守りし者。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：我が名は闇と焔を司りし者、レギィン・アーゼ。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：ラナをどこへやった。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：このダンジョンにて理を守りし者。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：貴公は何ゆえ、歩を進める。答えよ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ラナをどこへやった。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：問答に付き合う暇はねえんだ。ラナをどこへやったんだ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：貴公は何ゆえ、歩を進める。答えよ。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：貴公のいう、ラナ・アミリアという存在は"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：問答に付き合う暇はねえんだ。ラナをどこへやったんだ。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：既に死を遂げたも同然である。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：貴公のいう、ラナ・アミリアという存在は"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：まだ生存してるって事なんだな？"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：既に死を遂げたも同然である。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：些末なこと。事象の覆りは起こらない。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：まだ生存してるって事なんだな？"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：そんな事は、やってみなくちゃわからないだろ？"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：些末なこと。事象の覆りは起こらない。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：貴公はこれまで何度も実施を試みている、すべては同一の事象となる。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：そんな事は、やってみなくちゃわからないだろ？"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：・・・何の話だ？"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：貴公はこれまで何度も実施を試みている、すべては同一の事象となる。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：貴公の眼前にある、一つの剣を見よ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・何の話だ？"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：・・・剣？"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：貴公の眼前にある、一つの剣を見よ。"); eventList.Add(ActionEvent.None);
 
-            //    buttonChoice3.Visible = true;
-            //    buttonChoice3.Update(); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・剣？"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：こ・・・これは"); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewFeltus);
 
-            //    messageList.Add("アイン：神剣フェルトゥーシュか！？"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：こ・・・これは"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：貴公自身が自ら手放した剣である。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：神剣フェルトゥーシュか！？"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：俺自身が・・・自ら？"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：貴公自身が自ら手放した剣である。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：このダンジョンは、対象者の願望によりその性質が形成される。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：俺自身が・・・自ら？"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：そしてその願望は、最終的には叶えられる。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：このダンジョンは、対象者の願望によりその性質が形成される。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：だが、それには犠牲が必要である。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：そしてその願望は、最終的には叶えられる。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：犠牲の対象となるは、いずれか二つ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：だが、それには犠牲が必要である。"); eventList.Add(ActionEvent.None);
 
-            //    buttonChoice1.Visible = true;
-            //    buttonChoice1.Update(); eventList.Add(ActionEvent.None);
-            //    messageList.Add("レギィン：一つは【人間を示す像】"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：犠牲の対象となるは、いずれか二つ。"); eventList.Add(ActionEvent.None);
 
-            //    buttonChoice2.Visible = true;
-            //    buttonChoice2.Update(); eventList.Add(ActionEvent.None);
-            //    messageList.Add("レギィン：そしてもう一つは、【ラナ・アミリアを示す像】"); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewHuman);
 
-            //    messageList.Add("アイン：ラナ！！！"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：一つは【人間を示す像】"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：貴公はいずれかに神剣フェルトゥーシュを差し込むのが務め。"); eventList.Add(ActionEvent.None);
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonStatueViewLana);
 
-            //    messageList.Add("レギィン：正しき方へ剣を突き刺すがよい。アイン・ウォーレンスよ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：そしてもう一つは、【ラナ・アミリアを示す像】"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：正しき方を選択すれば、道は拓かれる。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ラナ！！！"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：この【理】を認識せよ、アイン・ウォーレンスよ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：貴公はいずれかに神剣フェルトゥーシュを差し込むのが務め。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：正しき方へ剣を突き刺すがよい。アイン・ウォーレンスよ。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：己の心そのものが映し出されるこの場において"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：正しき方を選択すれば、道は拓かれる。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：アイン・ウォーレンス、貴公は既に解を得ているはず。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：この【理】を認識せよ、アイン・ウォーレンスよ。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：されど、これまで何度も実施を試みた貴公の選択意志。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：結果はすべて等しく同じ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：己の心そのものが映し出されるこの場において"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：毎回間違った方を選んでいるとでも言うつもりかよ？"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：アイン・ウォーレンス、貴公は既に解を得ているはず。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：愚かなり、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：されど、これまで何度も実施を試みた貴公の選択意志。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：全ては貴公次第。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：結果はすべて等しく同じ。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：何度も言おう。貴公は既に解を得ている。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：毎回間違った方を選んでいるとでも言うつもりかよ？"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：だが、それを選択せず、何故過ちへと歩を進めるか。"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：愚かなり、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：愚かなり"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：全ては貴公次第。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("レギィン：・・・愚かなり、アイン・ウォーレンスよ・・・"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：何度も言おう。貴公は既に解を得ている。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("　　【　レギィン・アーゼは再び空中へ飛散していった　】"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：だが、それを選択せず、何故過ちへと歩を進めるか。"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（・・・っくそ・・・惑わされるな・・・）"); eventList.Add(ActionEvent.None);
+                messageList.Add("レギィン：愚かなり"); eventList.Add(ActionEvent.None);
 
-            //    messageList.Add("アイン：（まずは、差し込む前に調べるんだ・・・）"); eventList.Add(ActionEvent.None);
-            //}
+                messageList.Add("レギィン：・・・愚かなり、アイン・ウォーレンスよ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【　レギィン・アーゼは再び空中へ飛散していった　】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・っくそ・・・惑わされるな・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（まずは、差し込む前に調べるんだ・・・）"); eventList.Add(ActionEvent.None);
+            }
         }
 
         public static void Message14139(ref List<string> messageList, ref List<ActionEvent> eventList)

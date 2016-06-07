@@ -7,44 +7,48 @@ using System.Collections.Generic;
 public class TruthChoiceStatue : MotherForm {
 
     // gui
-    private Text mainMessage;
-    private Button btnOK;
-    private Button buttonChoice2;
-    private Button buttonChoice1;
-    private Button buttonChoice3;
-    private Button buttonChoice4;
-    private Button buttonFact1;
-    private Button buttonFact2;
-    private Button buttonFact3;
-    private Button buttonFact4;
-    private Button buttonFact5;
-    private Button buttonFact6;
-    private Button buttonFact7;
-    private Button buttonFact8;
-    private Button buttonFact9;
-    private Button buttonFact10;
-    private Button buttonTruth1;
-    private Button buttonTruth2;
-    private Button buttonTruth3;
-    private Button buttonTruth4;
-    private Button buttonTruth5;
-    private Button buttonTruth6;
-    private Button buttonTruth7;
-    private Button buttonTruth8;
-    private Button buttonTruth9;
-    private Button buttonTruth10;
-    private Button buttonElemental6;
-    private Button buttonElemental5;
-    private Button buttonElemental4;
-    private Button buttonElemental3;
-    private Button buttonElemental2;
-    private Button buttonElemental1;
-    private Button buttonElemental7;
-    private Button buttonElemental8;
-    private Button buttonSong1;
-    private Button buttonSong2;
-    private Button buttonSong3;
-    private Button buttonSong4;
+    public GameObject groupFact;
+    public GameObject groupTruth;
+    public GameObject groupElement;
+    public GameObject groupSong;
+    public Text mainMessage;
+    public Button btnOK;
+    public Button buttonChoice1;
+    public Button buttonChoice2;
+    public Button buttonChoice3;
+    public Button buttonChoice4;
+    public Button buttonFact1;
+    public Button buttonFact2;
+    public Button buttonFact3;
+    public Button buttonFact4;
+    public Button buttonFact5;
+    public Button buttonFact6;
+    public Button buttonFact7;
+    public Button buttonFact8;
+    public Button buttonFact9;
+    public Button buttonFact10;
+    public Button buttonTruth1;
+    public Button buttonTruth2;
+    public Button buttonTruth3;
+    public Button buttonTruth4;
+    public Button buttonTruth5;
+    public Button buttonTruth6;
+    public Button buttonTruth7;
+    public Button buttonTruth8;
+    public Button buttonTruth9;
+    public Button buttonTruth10;
+    public Button buttonElemental1;
+    public Button buttonElemental2;
+    public Button buttonElemental3;
+    public Button buttonElemental4;
+    public Button buttonElemental5;
+    public Button buttonElemental6;
+    public Button buttonElemental7;
+    public Button buttonElemental8;
+    public Button buttonSong1;
+    public Button buttonSong2;
+    public Button buttonSong3;
+    public Button buttonSong4;
 
     private bool flag0 = false;
     private bool flag1 = false;
@@ -81,42 +85,6 @@ public class TruthChoiceStatue : MotherForm {
     public override void Start()
     {
         base.Start();
-
-        buttonChoice1.enabled = false;
-        buttonChoice2.enabled = false;
-        buttonChoice3.enabled = false;
-        buttonFact1.enabled = false;
-        buttonFact2.enabled = false;
-        buttonFact3.enabled = false;
-        buttonFact4.enabled = false;
-        buttonFact5.enabled = false;
-        buttonFact6.enabled = false;
-        buttonFact7.enabled = false;
-        buttonFact8.enabled = false;
-        buttonFact9.enabled = false;
-        buttonFact10.enabled = false;
-        buttonTruth1.enabled = false;
-        buttonTruth2.enabled = false;
-        buttonTruth3.enabled = false;
-        buttonTruth4.enabled = false;
-        buttonTruth5.enabled = false;
-        buttonTruth6.enabled = false;
-        buttonTruth7.enabled = false;
-        buttonTruth8.enabled = false;
-        buttonTruth9.enabled = false;
-        buttonTruth10.enabled = false;
-        buttonElemental1.enabled = false;
-        buttonElemental2.enabled = false;
-        buttonElemental3.enabled = false;
-        buttonElemental4.enabled = false;
-        buttonElemental5.enabled = false;
-        buttonElemental6.enabled = false;
-        buttonElemental7.enabled = false;
-        buttonElemental8.enabled = false;
-        buttonSong1.enabled = false;
-        buttonSong2.enabled = false;
-        buttonSong3.enabled = false;
-        buttonSong4.enabled = false;
     }
 
     public override void Update()
@@ -131,7 +99,6 @@ public class TruthChoiceStatue : MotherForm {
 
         if (this.nowReading < this.nowMessage.Count)
         {
-            this.Filter.GetComponent<Image>().color = new Color(0, 0, 0, 0);
             this.Filter.SetActive(true);
             this.btnOK.enabled = true;
             this.btnOK.gameObject.SetActive(true);
@@ -144,18 +111,52 @@ public class TruthChoiceStatue : MotherForm {
             }
 
             // 各イベント固有の処理
-            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueHuman)
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueHideWalkFront)
             {
-                this.buttonChoice1.enabled = true;
+                buttonChoice4.gameObject.SetActive(false);
             }
-            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueLana)
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueViewHuman)
             {
-                this.buttonChoice2.enabled = true;
+                this.buttonChoice1.gameObject.SetActive(true);
             }
-            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueDestroySword)
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueViewLana)
             {
-                this.buttonChoice3.enabled = true;
+                this.buttonChoice2.gameObject.SetActive(true);
             }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueViewFeltus)
+            {
+                this.buttonChoice3.gameObject.SetActive(true);
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueChangeChoice)
+            {
+                ChangeChoice();
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueViewTruth)
+            {
+                ViewButtonTruth();
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueViewFact)
+            {
+                ViewButtonFact();
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueViewElement)
+            {
+                ViewButtonElement();
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonStatueViewSong)
+            {
+                ViewButtonSong();
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonBadEnd)
+            {
+                SceneDimension.CallSaveLoad(this, true, true);
+            }
+            else if (currentEvent == MessagePack.ActionEvent.DungeonGoSeeker)
+            {
+                Method.AutoSaveRealWorld();
+                SceneDimension.CallSaveLoad(this, true, true);
+            }
+
 
             this.nowReading++;
             if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
@@ -174,110 +175,105 @@ public class TruthChoiceStatue : MotherForm {
             this.btnOK.gameObject.SetActive(false);
             if (HideFilterComplete)
             {
-                this.Filter.GetComponent<Image>().color = Color.white;
                 this.Filter.SetActive(false);
             }
         }
-    }
-
-    private void NormalEnd_Correct()
-    {
-        MessagePack.Message14130(ref this.nowMessage, ref this.nowEvent);
-        tapOK();
-    }
-
-    private void BadEnd_LanaStatue()
-    {
-        MessagePack.Message14131(ref this.nowMessage, ref this.nowEvent);
-        tapOK();
-    }
-
-    private void BadEnd_HumanStatue()
-    {
-        MessagePack.Message14132(ref this.nowMessage, ref this.nowEvent);
-        tapOK();
-    }
-
-    private void BadEnd_Surrender()
-    {
-        MessagePack.Message14133(ref this.nowMessage, ref this.nowEvent);
-        tapOK();
     }
 
     private void ChangeChoice()
     {
         if (this.flag1 && this.flag2 && this.flag3)
         {
-            this.buttonChoice1.enabled = false;
-            this.buttonChoice2.enabled = false;
-            this.buttonChoice3.enabled = false;
+            this.buttonChoice1.gameObject.SetActive(false);
+            this.buttonChoice2.gameObject.SetActive(false);
+            this.buttonChoice3.gameObject.SetActive(false);
             this.flagA = true;
 
             MessagePack.Message14134(ref this.nowMessage, ref this.nowEvent);
-            tapOK();
         }
     }
 
-    // 人間の像
-    private void buttonChoice1_Click()
+    private void ViewButtonTruth()
     {
-        MessagePack.Message14135(ref this.nowMessage, ref this.nowEvent);
+        groupTruth.SetActive(true);
+        buttonTruth1.gameObject.SetActive(true);
+        buttonTruth2.gameObject.SetActive(true);
+        buttonTruth3.gameObject.SetActive(true);
+        buttonTruth4.gameObject.SetActive(true);
+        buttonTruth5.gameObject.SetActive(true);
+        buttonTruth6.gameObject.SetActive(true);
+        buttonTruth7.gameObject.SetActive(true);
+        buttonTruth8.gameObject.SetActive(true);
+        buttonTruth9.gameObject.SetActive(true);
+        buttonTruth10.gameObject.SetActive(true);
+    }
+
+    private void ViewButtonFact()
+    {
+        groupFact.SetActive(true);
+        buttonFact1.gameObject.SetActive(true);
+        buttonFact2.gameObject.SetActive(true);
+        buttonFact3.gameObject.SetActive(true);
+        buttonFact4.gameObject.SetActive(true);
+        buttonFact5.gameObject.SetActive(true);
+        buttonFact6.gameObject.SetActive(true);
+        buttonFact7.gameObject.SetActive(true);
+        buttonFact8.gameObject.SetActive(true);
+        buttonFact9.gameObject.SetActive(true);
+        buttonFact10.gameObject.SetActive(true);
+    }
+    private void ViewButtonElement()
+    {
+        groupElement.SetActive(true);
+        buttonElemental1.gameObject.SetActive(true);
+        buttonElemental2.gameObject.SetActive(true);
+        buttonElemental3.gameObject.SetActive(true);
+        buttonElemental4.gameObject.SetActive(true);
+        buttonElemental5.gameObject.SetActive(true);
+        buttonElemental6.gameObject.SetActive(true);
+        buttonElemental7.gameObject.SetActive(true);
+        buttonElemental8.gameObject.SetActive(true);
+    }
+
+    private void ViewButtonSong()
+    {
+        groupSong.SetActive(true);
+        buttonSong1.gameObject.SetActive(true);
+        buttonSong2.gameObject.SetActive(true);
+        buttonSong3.gameObject.SetActive(true);
+        buttonSong4.gameObject.SetActive(true);
+    }
+
+    // 人間の像
+    public void buttonChoice1_Click()
+    {
+        MessagePack.Message14135(ref this.nowMessage, ref this.nowEvent, ref this.flagA, ref this.flag1, ref this.flagB, ref this.flag5, ref this.flagC, ref this.flagD, ref this.flagE, ref this.flagF, ref this.flagG, ref this.flagH, ref this.flagI, ref this.flagJ, ref this.flagK);
         tapOK();
     }
 
     // ラナ・アミリアの像
-    private void buttonChoice2_Click()
+    public void buttonChoice2_Click()
     {
-        MessagePack.Message14136(ref this.nowMessage, ref this.nowEvent);
+        MessagePack.Message14136(ref this.nowMessage, ref this.nowEvent, ref this.flagA, ref this.flag2, ref this.flagB, ref this.flag4, ref this.flag4_2, ref this.flagC, ref this.flagD, this.factOrder, ref this.flagE, ref this.flag7, ref this.flagF, ref this.flagG, this.truthOrder, ref this.flagH, ref this.flagI, ref this.flagJ, ref this.flagK);
         tapOK();
     }
 
     // フェルトゥーシュの剣
-    private void buttonChoice3_Click()
+    public void buttonChoice3_Click()
     {
-        MessagePack.Message14137(ref this.nowMessage, ref this.nowEvent);
+        MessagePack.Message14137(ref this.nowMessage, ref this.nowEvent, ref this.flagA, ref this.flag3, ref this.flagB, ref this.flag6, ref this.flag6_2, ref this.flag6_3, ref this.flagC, ref this.flagD, ref this.flagE, ref this.flagF, ref this.flagG, ref this.flagH, ref this.flagI, ref this.flagJ, ref this.flagK);
         tapOK();
     }
 
     // 歩を進める
-    private void buttonChoice4_Click()
+    public void buttonChoice4_Click()
     {
-        MessagePack.Message14138(ref this.nowMessage, ref this.nowEvent);
+        MessagePack.Message14138(ref this.nowMessage, ref this.nowEvent, ref this.flag0);
         tapOK();
     }
 
 
-    private bool CheckFactOrder()
-    {
-        if (this.factOrder[0] != 1) { return false; }
-        if (this.factOrder[1] != 2) { return false; }
-        if (this.factOrder[2] != 3) { return false; }
-        if (this.factOrder[3] != 4) { return false; }
-        if (this.factOrder[4] != 5) { return false; }
-        if (this.factOrder[5] != 6) { return false; }
-        if (this.factOrder[6] != 7) { return false; }
-        if (this.factOrder[7] != 8) { return false; }
-        if (this.factOrder[8] != 9) { return false; }
-        if (this.factOrder[9] != 10) { return false; }
 
-        return true;
-    }
-
-    private bool CheckTruthOrder()
-    {
-        if (this.truthOrder[0] != 1) { return false; }
-        if (this.truthOrder[1] != 2) { return false; }
-        if (this.truthOrder[2] != 3) { return false; }
-        if (this.truthOrder[3] != 4) { return false; }
-        if (this.truthOrder[4] != 5) { return false; }
-        if (this.truthOrder[5] != 6) { return false; }
-        if (this.truthOrder[6] != 7) { return false; }
-        if (this.truthOrder[7] != 8) { return false; }
-        if (this.truthOrder[8] != 9) { return false; }
-        if (this.truthOrder[9] != 10) { return false; }
-
-        return true;
-    }
 
     private bool CheckElementalOrder()
     {
@@ -304,10 +300,10 @@ public class TruthChoiceStatue : MotherForm {
     }
 
 
-    private void buttonFact_Click(Button sender)
+    public void buttonFact_Click(Button sender)
     {
         Button btn = (Button)sender;
-        btn.enabled = false;
+        btn.gameObject.SetActive(false);
         if (btn.Equals(buttonFact1)) { this.factOrder.Add(1); }
         if (btn.Equals(buttonFact2)) { this.factOrder.Add(2); }
         if (btn.Equals(buttonFact3)) { this.factOrder.Add(3); }
@@ -328,10 +324,10 @@ public class TruthChoiceStatue : MotherForm {
         }
     }
 
-    private void buttonTruth_Click(Button sender)
+    public void buttonTruth_Click(Button sender)
     {
         Button btn = (Button)sender;
-        btn.enabled = false;
+        btn.gameObject.SetActive(false);
         if (btn.Equals(buttonTruth1)) { this.truthOrder.Add(1); }
         if (btn.Equals(buttonTruth2)) { this.truthOrder.Add(2); }
         if (btn.Equals(buttonTruth3)) { this.truthOrder.Add(3); }
@@ -352,10 +348,10 @@ public class TruthChoiceStatue : MotherForm {
         }
     }
 
-    private void buttonElemental_Click(Button sender)
+    public void buttonElemental_Click(Button sender)
     {
         Button btn = (Button)sender;
-        btn.enabled = false;
+        btn.gameObject.SetActive(false);
         if (btn.Equals(buttonElemental1)) { this.elementalOrder.Add(1); }
         if (btn.Equals(buttonElemental2)) { this.elementalOrder.Add(2); }
         if (btn.Equals(buttonElemental3)) { this.elementalOrder.Add(3); }
@@ -381,10 +377,10 @@ public class TruthChoiceStatue : MotherForm {
         }
     }
 
-    private void buttonSong_Click(Button sender)
+    public void buttonSong_Click(Button sender)
     {
         Button btn = (Button)sender;
-        btn.enabled = false;
+        btn.gameObject.SetActive(false);
         if (btn.Equals(buttonSong1)) { this.songOrder.Add(1); }
         if (btn.Equals(buttonSong2)) { this.songOrder.Add(2); }
         if (btn.Equals(buttonSong3)) { this.songOrder.Add(3); }

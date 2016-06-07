@@ -33,6 +33,12 @@ namespace DungeonPlayer
             GroundOne.Parent.Clear();
         }
 
+        public static void CallTruthChoiceStatue(MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.TruthChoiceStatue);
+        }
+
         public static void CallTruthWill(MotherForm scene)
         {
             GroundOne.GodSeuqence = false;
