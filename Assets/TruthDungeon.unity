@@ -4435,7 +4435,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18e0f5bc449147059c219d5b34b5d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstName: 
   CurrentPreStunning: 0
   CurrentStunning: 0
   CurrentSilence: 0
@@ -8090,10 +8089,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50490536abc10c34c90b080f10d83129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Background: {fileID: 0}
+  Background: {fileID: 1261934004}
   yesnoSystemMessage: {fileID: 2032365743}
   groupYesnoSystemMessage: {fileID: 1370020383}
   Filter: {fileID: 1983497975}
+  groupDayLabel: {fileID: 1159125709}
   dayLabel: {fileID: 52440679}
   dungeonAreaLabel: {fileID: 642382572}
   groupSystemMessage: {fileID: 585119006}
@@ -8140,60 +8140,6 @@ MonoBehaviour:
   currentManaValue1: {fileID: 794660549}
   currentManaValue2: {fileID: 1724160190}
   currentManaValue3: {fileID: 2119086146}
-  prefab_BlueWall_T: {fileID: 2025930976}
-  prefab_BlueWall_B: {fileID: 1515855725}
-  prefab_BlueWall_L: {fileID: 593935303}
-  prefab_BlueWall_R: {fileID: 20130048}
-  prefabUnknownTile: {fileID: 1830772827}
-  prefabDungeonTile: {fileID: 633874158}
-  prefab_TILEINFO_1: {fileID: 558323545}
-  prefab_TILEINFO_2: {fileID: 1006810226}
-  prefab_TILEINFO_3: {fileID: 1400665010}
-  prefab_TILEINFO_4: {fileID: 617030846}
-  prefab_TILEINFO_5: {fileID: 1711413916}
-  prefab_TILEINFO_6: {fileID: 1859372220}
-  prefab_TILEINFO_7: {fileID: 322881747}
-  prefab_TILEINFO_8: {fileID: 905203015}
-  prefab_TILEINFO_9: {fileID: 157702173}
-  prefab_TILEINFO_10: {fileID: 1830772827}
-  prefab_TILEINFO_10_2: {fileID: 1957815192}
-  prefab_TILEINFO_11: {fileID: 1186893499}
-  prefab_TILEINFO_12: {fileID: 335613299}
-  prefab_TILEINFO_13: {fileID: 633874158}
-  prefab_TILEINFO_14: {fileID: 1966580276}
-  prefab_TILEINFO_15: {fileID: 977733010}
-  prefab_TILEINFO_16: {fileID: 854958860}
-  prefab_TILEINFO_17: {fileID: 897134027}
-  prefab_TILEINFO_18: {fileID: 285746319}
-  prefab_TILEINFO_19: {fileID: 1756828511}
-  prefab_TILEINFO_20: {fileID: 30928816}
-  prefab_TILEINFO_21: {fileID: 1737298062}
-  prefab_TILEINFO_22: {fileID: 977991975}
-  prefab_TILEINFO_23: {fileID: 944467610}
-  prefab_TILEINFO_24: {fileID: 528452638}
-  prefab_TILEINFO_25: {fileID: 1503371141}
-  prefab_TILEINFO_26: {fileID: 786403107}
-  prefab_TILEINFO_27: {fileID: 1788487212}
-  prefab_TILEINFO_28: {fileID: 2098663250}
-  prefab_TILEINFO_29: {fileID: 1843612557}
-  prefab_TILEINFO_30: {fileID: 149661908}
-  prefab_TILEINFO_31: {fileID: 1659186751}
-  prefab_TILEINFO_32: {fileID: 0}
-  prefab_TILEINFO_33: {fileID: 0}
-  prefab_TILEINFO_34: {fileID: 0}
-  prefab_TILEINFO_35: {fileID: 0}
-  prefab_TILEINFO_36: {fileID: 0}
-  prefab_TILEINFO_37: {fileID: 0}
-  prefab_TILEINFO_38: {fileID: 0}
-  prefab_TILEINFO_39: {fileID: 0}
-  prefab_TILEINFO_40: {fileID: 0}
-  prefab_TILEINFO_41: {fileID: 0}
-  prefab_TILEINFO_42: {fileID: 1419822179}
-  prefab_TILEINFO_43: {fileID: 345387639}
-  prefab_TILEINFO_44: {fileID: 778935623}
-  prefab_FOUNTAIN: {fileID: 263640448}
-  prefabPlayer: {fileID: 829939610}
-  backgroundData: {fileID: 1204597565}
   mainMessage: {fileID: 90746840}
   back_vigilance: {fileID: 436457713}
   labelVigilance: {fileID: 59443654}

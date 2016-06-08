@@ -2542,7 +2542,7 @@ namespace DungeonPlayer
         public const string OK_BUTTON_IMAGE = @"OkButton";// ".jpg"; // change unity
         public const string OK_BUTTON_IMAGE_BLACK = @"OkButton_Black";// ".jpg"; // change unity
 
-        public const string DUNGEON_BACKGROUND = @"background";// ".jpg"; // change unity
+        public const string DUNGEON_BACKGROUND = @"background3";// ".jpg"; // change unity
 
         public const string WE2_FILE = @"TruthWorldEnvironment.xml";
         #endregion

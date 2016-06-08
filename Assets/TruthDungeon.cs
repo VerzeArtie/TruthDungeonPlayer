@@ -21,6 +21,7 @@ namespace DungeonPlayer
         private int MovementInterval = 0; // ダンジョンマップ全体を見ている時のインターバル
 
         // GUI
+        public GameObject groupDayLabel;
         public Text dayLabel;
         public Text dungeonAreaLabel;
         public GameObject groupSystemMessage;
@@ -9707,20 +9708,32 @@ namespace DungeonPlayer
 
         private void ReturnToNormal()
         {
-            //this.BackColor = Color.RoyalBlue; // todo 背景を標準色に戻す
-            //this.BackColor = Color.RoyalBlue;
-            //mainMessage.BackColor = Color.Transparent;
-            //this.backgroundData = Image.FromFile(Database.BaseResourceFolder + Database.DUNGEON_BACKGROUND);
-            //this.Invalidate();
+            this.Background.GetComponent<Image>().color = Color.white;
+            this.Background.GetComponent<Image>().sprite = Resources.Load<Sprite>(Database.BaseResourceFolder + Database.DUNGEON_BACKGROUND);
+            this.groupDayLabel.SetActive(true);
+            this.groupPlayerList.SetActive(true);
+            this.GroupsubMenu.SetActive(true);
+            this.GroupMenu.SetActive(true);
         }
 
         private void TurnToBlack()
         {
-            //this.BackColor = Color.Black; // todo 背景を黒色に変更する。
+            this.Background.GetComponent<Image>().color = Color.black;
+            this.Background.GetComponent<Image>().sprite = null;
+            this.groupDayLabel.SetActive(false);
+            this.groupPlayerList.SetActive(false);
+            this.GroupsubMenu.SetActive(false);
+            this.GroupMenu.SetActive(false);
         }
+
         private void TurnToWhite()
         {
-            // todo
+            this.Background.GetComponent<Image>().color = Color.white;
+            this.Background.GetComponent<Image>().sprite = null;
+            this.groupDayLabel.SetActive(false);
+            this.groupPlayerList.SetActive(false);
+            this.GroupsubMenu.SetActive(false);
+            this.GroupMenu.SetActive(false);
         }
 
         private void CopyShadowToMain()
@@ -13053,6 +13066,10 @@ namespace DungeonPlayer
 
                     UpdateUnknownTile();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.ReturnToNormal)
+                {
+                    ReturnToNormal();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.TurnToBlack)
                 {
                     TurnToBlack();
@@ -14232,8 +14249,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB3)
                 {
-                    OpenTheDoor(3, new Vector3(10, -7, 0));
-                    OpenTheDoor(0, new Vector3(10, -8, 0));
+                    OpenTheDoor(3, new Vector3(11, -7, 0));
+                    OpenTheDoor(0, new Vector3(11, -8, 0));
                     UpdateUnknownTile();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateB4)

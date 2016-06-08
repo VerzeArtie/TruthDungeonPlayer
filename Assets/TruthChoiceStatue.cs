@@ -157,7 +157,6 @@ public class TruthChoiceStatue : MotherForm {
                 SceneDimension.CallSaveLoad(this, true, true);
             }
 
-
             this.nowReading++;
             if (this.nowMessage[this.nowReading - 1] == "" || ForceSkipTapOK)
             {
