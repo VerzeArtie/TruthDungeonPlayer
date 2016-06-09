@@ -415,6 +415,7 @@ namespace DungeonPlayer
             DungeonFloor4OpenWallD1,
             DungeonUpdateUnknownTileArea443,
             DungeonFloor4BlockWallD1,
+            DungeonFloor4InvalidateBlack,
             DungeonCallChoiceStatue,
             // ChoiceStatue
             DungeonStatueHideWalkFront,
@@ -20340,6 +20341,8 @@ namespace DungeonPlayer
 
                 GroundOne.WE2.RealWorld = true;
                 Method.AutoSaveTruthWorldEnvironment();
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4InvalidateBlack);
 
                 messageList.Add("　　　【そしてアインは、脳裏への激しい頭痛と共に、絶対的な時間と空間を把握し始める！！！】"); eventList.Add(ActionEvent.None);
 

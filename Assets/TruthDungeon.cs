@@ -12506,10 +12506,20 @@ namespace DungeonPlayer
 
         public void tapStatus()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent506)
+            {
+                mainMessage.text = "アイン：・・・　・・・";
+                return;
+            }
             SceneDimension.CallTruthStatusPlayer(this, false, "");
         }
         public void tapBattleSetting()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent506)
+            {
+                mainMessage.text = "アイン：・・・　・・・";
+                return;
+            }
             SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapSave()
@@ -12558,6 +12568,12 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent506)
+            {
+                mainMessage.text = "アイン：・・・　・・・";
+                return;
+            }
+
             yesnoSystemMessage.text = Database.exitMessage1;
             groupYesnoSystemMessage.SetActive(true);
         }
@@ -14430,6 +14446,58 @@ namespace DungeonPlayer
                     tileInfo4[31 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_19;
                     objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
                     tileInfo4[32 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_24;
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4InvalidateBlack)
+                {
+                    for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+                    {
+                        if ((ii == 22 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 23 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 24 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 25 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 26 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 27 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 28 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 29 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 30 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 31 * Database.TRUTH_DUNGEON_COLUMN + 46))
+                        {
+                            unknownTile[ii].SetActive(false);
+                            //if (unknownTile[ii].Visible)
+                            //{
+                            //    if (unknownTile[ii].Image != null)
+                            //    {
+                            //        g.DrawImage(unknownTile[ii].Image, (float)(viewPoint.X + unknownTile[ii].Location.X), (float)(viewPoint.Y + unknownTile[ii].Location.Y));
+                            //    }
+                            //}
+                        }
+                        else
+                        {
+                            objList[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                            unknownTile[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                            //g.FillRectangle(BlackPen, (float)(viewPoint.X + unknownTile[ii].Location.X), (float)(viewPoint.Y + unknownTile[ii].Location.Y), Database.DUNGEON_MOVE_LEN, Database.DUNGEON_MOVE_LEN);
+                        }
+                    }
+                    for (int ii = 0; ii < this.objOther.Count; ii++)
+                    {
+                        this.objOther[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                    }
+                    for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
+                    {
+                        this.objBlueWallTop[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                    }
+                    for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
+                    {
+                        this.objBlueWallBottom[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                    }
+                    for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
+                    {
+                        this.objBlueWallLeft[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                    }
+                    for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
+                    {
+                        this.objBlueWallRight[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                    }
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonCallChoiceStatue)
                 {
