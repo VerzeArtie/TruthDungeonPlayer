@@ -417,6 +417,7 @@ namespace DungeonPlayer
             DungeonFloor4BlockWallD1,
             DungeonFloor4InvalidateBlack,
             DungeonCallChoiceStatue,
+            DungeonFloor4InvalidateNormal,
             // ChoiceStatue
             DungeonStatueHideWalkFront,
             DungeonStatueViewHuman,

@@ -12189,97 +12189,7 @@ namespace DungeonPlayer
             txt.text = player.CurrentSkillPoint.ToString() + " / " + player.MaxSkillPoint.ToString();
             gauge.rectTransform.localScale = new Vector2(dx, 1.0f);
         }
-
-        public override void BookManual_Click()
-        {
-            this.back_playback.SetActive(false);
-            base.BookManual_Click();
-        }
-
-        public void DungeonView_Click()
-        {
-            this.back_playback.SetActive(false);
-            this.DungeonViewMode = !this.DungeonViewMode;
-            if (this.DungeonViewMode)
-            {
-                this.DungeonViewModeMasterLocation = new Vector2(this.viewPoint.x, this.viewPoint.y);
-                this.DungeonViewModeMasterPlayerLocation = new Vector2(this.Player.transform.position.x, this.Player.transform.position.y);
-
-                this.GroupMenu.SetActive(false);
-                this.groupPlayerList.SetActive(false);
-                this.HelpManual.SetActive(false);
-                this.PlayBack.SetActive(false);
-                this.BlueOrbImage.SetActive(false);
-                this.PathfindingModeImage.SetActive(false);
-                this.MovementInterval = 0;
-            }
-            else
-            {
-                this.MovementInterval = MOVE_INTERVAL;
-
-                this.viewPoint = new Vector2(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
-                this.Player.transform.position = new Vector2(this.DungeonViewModeMasterPlayerLocation.x, this.DungeonViewModeMasterPlayerLocation.y);
-
-                this.GroupMenu.SetActive(true);
-                this.groupPlayerList.SetActive(true);
-                this.HelpManual.SetActive(true);
-                this.PlayBack.SetActive(true);
-                this.BlueOrbImage.SetActive(true);
-                this.PathfindingModeImage.SetActive(true);
-                UpdateViewPoint(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
-            }
-        }
-
-        public void PlayBack_Click()
-        {
-            if (!this.back_playback.activeInHierarchy)
-            {
-                this.back_playback.SetActive(true);
-                this.GroupMenu.SetActive(false);
-                this.HelpManual.SetActive(false);
-                this.DungeonView.SetActive(false);
-                this.BlueOrbImage.SetActive(false);
-                this.BlueOrbText.SetActive(false);
-                this.PathfindingModeImage.SetActive(false);
-                this.labelVigilance.gameObject.SetActive(false);
-            }
-            else
-            {
-                this.back_playback.SetActive(false);
-                this.GroupMenu.SetActive(true);
-                this.HelpManual.SetActive(true);
-                this.DungeonView.SetActive(true);
-                this.BlueOrbImage.SetActive(true);
-                this.PathfindingModeImage.SetActive(true);
-            }
-        }
-
-        public void BlueOrb_Click()
-        {
-            if (GroundOne.WE.dungeonEvent4_SlayBoss3)
-            {
-                mainMessage.text = "アイン：（ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ）";
-                return;
-            }
-
-            MessagePack.MessageBackToTown(ref this.nowMessage, ref this.nowEvent);
-            tapOK();
-        }
-
-        public void PathfindingMode_Click()
-        {
-            if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
-            {
-                back_vigilance.sprite = Resources.Load<Sprite>(Database.FINDENEMY_MODE_RESOURCE);
-                labelVigilance.text = Database.TEXT_FINDENEMY_MODE;
-            }
-            else
-            {
-                back_vigilance.sprite = Resources.Load<Sprite>(Database.VIGILANCE_MODE_RESOURCE);
-                labelVigilance.text = Database.TEXT_VIGILANCE_MODE;
-            }
-        }
-        
+                
         private void SetupPlayerStatus()
         {
             SetupPlayerStatus(false);
@@ -12504,34 +12414,32 @@ namespace DungeonPlayer
             }
         }
 
-        public void tapStatus()
+        private bool BlockAction()
         {
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent506)
             {
                 mainMessage.text = "アイン：・・・　・・・";
-                return;
+                return true;
             }
+            return false;
+        }
+
+        public void tapStatus()
+        {
+            if (BlockAction()) { return; }
             SceneDimension.CallTruthStatusPlayer(this, false, "");
         }
         public void tapBattleSetting()
         {
-            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent506)
-            {
-                mainMessage.text = "アイン：・・・　・・・";
-                return;
-            }
+            if (BlockAction()) { return; }
             SceneDimension.CallTruthBattleSetting(this);
         }
         public void tapSave()
         {
+            if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
-                if (!GroundOne.WE2.SeekerEvent506)
-                {
-                    mainMessage.text = "アイン：・・・　・・・";
-                    return;
-                }
-                else
+                if (GroundOne.WE2.SeekerEvent506)
                 {
                     this.Filter.GetComponent<Image>().color = Color.clear;
                     this.Filter.SetActive(true);
@@ -12547,14 +12455,10 @@ namespace DungeonPlayer
         }
         public void tapLoad()
         {
+            if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
-                if (!GroundOne.WE2.SeekerEvent506)
-                {
-                    mainMessage.text = "アイン：・・・　・・・";
-                    return;
-                }
-                else
+                if (GroundOne.WE2.SeekerEvent506)
                 {
                     this.Filter.GetComponent<Image>().color = Color.clear;
                     this.Filter.SetActive(true);
@@ -12568,14 +12472,104 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
-            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent506)
+            if (BlockAction()) { return; }
+            yesnoSystemMessage.text = Database.exitMessage1;
+            groupYesnoSystemMessage.SetActive(true);
+        }
+
+        public override void BookManual_Click()
+        {
+            if (BlockAction()) { return; }
+            this.back_playback.SetActive(false);
+            base.BookManual_Click();
+        }
+
+        public void DungeonView_Click()
+        {
+            if (BlockAction()) { return; }
+            this.back_playback.SetActive(false);
+            this.DungeonViewMode = !this.DungeonViewMode;
+            if (this.DungeonViewMode)
             {
-                mainMessage.text = "アイン：・・・　・・・";
+                this.DungeonViewModeMasterLocation = new Vector2(this.viewPoint.x, this.viewPoint.y);
+                this.DungeonViewModeMasterPlayerLocation = new Vector2(this.Player.transform.position.x, this.Player.transform.position.y);
+
+                this.GroupMenu.SetActive(false);
+                this.groupPlayerList.SetActive(false);
+                this.HelpManual.SetActive(false);
+                this.PlayBack.SetActive(false);
+                this.BlueOrbImage.SetActive(false);
+                this.PathfindingModeImage.SetActive(false);
+                this.MovementInterval = 0;
+            }
+            else
+            {
+                this.MovementInterval = MOVE_INTERVAL;
+
+                this.viewPoint = new Vector2(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
+                this.Player.transform.position = new Vector2(this.DungeonViewModeMasterPlayerLocation.x, this.DungeonViewModeMasterPlayerLocation.y);
+
+                this.GroupMenu.SetActive(true);
+                this.groupPlayerList.SetActive(true);
+                this.HelpManual.SetActive(true);
+                this.PlayBack.SetActive(true);
+                this.BlueOrbImage.SetActive(true);
+                this.PathfindingModeImage.SetActive(true);
+                UpdateViewPoint(this.DungeonViewModeMasterLocation.x, this.DungeonViewModeMasterLocation.y);
+            }
+        }
+
+        public void PlayBack_Click()
+        {
+            if (BlockAction()) { return; }
+            if (!this.back_playback.activeInHierarchy)
+            {
+                this.back_playback.SetActive(true);
+                this.GroupMenu.SetActive(false);
+                this.HelpManual.SetActive(false);
+                this.DungeonView.SetActive(false);
+                this.BlueOrbImage.SetActive(false);
+                this.BlueOrbText.SetActive(false);
+                this.PathfindingModeImage.SetActive(false);
+                this.labelVigilance.gameObject.SetActive(false);
+            }
+            else
+            {
+                this.back_playback.SetActive(false);
+                this.GroupMenu.SetActive(true);
+                this.HelpManual.SetActive(true);
+                this.DungeonView.SetActive(true);
+                this.BlueOrbImage.SetActive(true);
+                this.PathfindingModeImage.SetActive(true);
+            }
+        }
+
+        public void BlueOrb_Click()
+        {
+            if (BlockAction()) { return; }
+            if (GroundOne.WE.dungeonEvent4_SlayBoss3)
+            {
+                mainMessage.text = "アイン：（ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ）";
                 return;
             }
 
-            yesnoSystemMessage.text = Database.exitMessage1;
-            groupYesnoSystemMessage.SetActive(true);
+            MessagePack.MessageBackToTown(ref this.nowMessage, ref this.nowEvent);
+            tapOK();
+        }
+
+        public void PathfindingMode_Click()
+        {
+            if (BlockAction()) { return; }
+            if (labelVigilance.text == Database.TEXT_VIGILANCE_MODE)
+            {
+                back_vigilance.sprite = Resources.Load<Sprite>(Database.FINDENEMY_MODE_RESOURCE);
+                labelVigilance.text = Database.TEXT_FINDENEMY_MODE;
+            }
+            else
+            {
+                back_vigilance.sprite = Resources.Load<Sprite>(Database.VIGILANCE_MODE_RESOURCE);
+                labelVigilance.text = Database.TEXT_VIGILANCE_MODE;
+            }
         }
 
         private DungeonPlayer.MessagePack.ActionEvent currentEvent;
@@ -14463,19 +14457,11 @@ namespace DungeonPlayer
                             (ii == 31 * Database.TRUTH_DUNGEON_COLUMN + 46))
                         {
                             unknownTile[ii].SetActive(false);
-                            //if (unknownTile[ii].Visible)
-                            //{
-                            //    if (unknownTile[ii].Image != null)
-                            //    {
-                            //        g.DrawImage(unknownTile[ii].Image, (float)(viewPoint.X + unknownTile[ii].Location.X), (float)(viewPoint.Y + unknownTile[ii].Location.Y));
-                            //    }
-                            //}
                         }
                         else
                         {
                             objList[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                             unknownTile[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-                            //g.FillRectangle(BlackPen, (float)(viewPoint.X + unknownTile[ii].Location.X), (float)(viewPoint.Y + unknownTile[ii].Location.Y), Database.DUNGEON_MOVE_LEN, Database.DUNGEON_MOVE_LEN);
                         }
                     }
                     for (int ii = 0; ii < this.objOther.Count; ii++)
@@ -14497,6 +14483,46 @@ namespace DungeonPlayer
                     for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
                     {
                         this.objBlueWallRight[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+                    }
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4InvalidateNormal) // todo [呼び出し元を作る]
+                {
+                    for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+                    {
+                        if ((ii == 22 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 23 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 24 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 25 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 26 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 27 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 28 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 29 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 30 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
+                            (ii == 31 * Database.TRUTH_DUNGEON_COLUMN + 46))
+                        {
+                            objList[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                            unknownTile[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                        }
+                    }
+                    for (int ii = 0; ii < this.objOther.Count; ii++)
+                    {
+                        this.objOther[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                    }
+                    for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
+                    {
+                        this.objBlueWallTop[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                    }
+                    for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
+                    {
+                        this.objBlueWallBottom[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                    }
+                    for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
+                    {
+                        this.objBlueWallLeft[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                    }
+                    for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
+                    {
+                        this.objBlueWallRight[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
                     }
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonCallChoiceStatue)
