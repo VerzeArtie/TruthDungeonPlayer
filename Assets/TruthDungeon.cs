@@ -6649,6 +6649,12 @@ namespace DungeonPlayer
                         return true;
                     }
                     #endregion
+                    #region "エリア３、ラナ消失後、戻りブロック"
+                    if (row == 31 && column == 20 && eventNum == 189)
+                    {
+                        return true;
+                    }
+                    #endregion
                     break;
                 #endregion
                 #region "５階"
@@ -9500,6 +9506,12 @@ namespace DungeonPlayer
                         tapOK();
                         return true;
                     #endregion
+                    #region "エリア３、ラナ消失後、戻りブロック"
+                    case 189:
+                        MessagePack.Message14098_2(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
                 }
             }
             #endregion
@@ -12246,7 +12258,7 @@ namespace DungeonPlayer
         {
             if (GroundOne.WE.dungeonEvent4_SlayBoss3)
             {
-                mainMessage.text = "アイン：ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ。";
+                mainMessage.text = "アイン：（ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ）";
                 return;
             }
 
@@ -14224,12 +14236,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallA1)
                 {
-                    // todo
                     objList[19 * Database.TRUTH_DUNGEON_COLUMN + 44].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 19 + 44].Name = Database.TILEINFO_13;
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 19 + 44].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
-                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 19 + 44] = Database.TILEINFO_13;
-                    //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
+                    tileInfo4[19 * Database.TRUTH_DUNGEON_COLUMN + 44] = Database.TILEINFO_13;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea421)
                 {
@@ -14289,12 +14297,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallB1)
                 {
-                    // todo
                     objList[21 * Database.TRUTH_DUNGEON_COLUMN + 20].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 21 + 20].Name = Database.TILEINFO_13;
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 21 + 20].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 21 + 20] = Database.TILEINFO_13;
-                    //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
+                    tileInfo4[21 * Database.TRUTH_DUNGEON_COLUMN + 20] = Database.TILEINFO_13;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea423)
                 {
@@ -14358,12 +14362,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallC1)
                 {
-                    // todo
                     objList[34 * Database.TRUTH_DUNGEON_COLUMN + 22].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 34 + 22].Name = Database.TILEINFO_13;
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 34 + 22].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13); eventList.Add(ActionEvent.None);
-                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 34 + 22] = Database.TILEINFO_13;
-                    //dungeonField.Invalidate(); eventList.Add(ActionEvent.None);
+                    tileInfo4[34 * Database.TRUTH_DUNGEON_COLUMN + 22] = Database.TILEINFO_13;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea433)
                 {
@@ -14416,12 +14416,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallD1)
                 {
-                    // todo
                     objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Name = Database.TILEINFO_13;
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_13);
-                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 32 + 46] = Database.TILEINFO_13;
-                    //dungeonField.Invalidate();
+                    tileInfo4[32 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_13;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea443)
                 {
@@ -14430,15 +14426,10 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4BlockWallD1)
                 {
-                    // todo
                     objList[31 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_19);
+                    tileInfo4[31 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_19;
                     objList[32 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_24);
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 31 + 46].Name = Database.TILEINFO_19;
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 31 + 46].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_19);
-                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 31 + 46] = Database.TILEINFO_19;
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Name = Database.TILEINFO_24;
-                    //dungeonTile[Database.TRUTH_DUNGEON_COLUMN * 32 + 46].Image = Image.FromFile(Database.BaseResourceFolder + Database.FloorFolder[we.DungeonArea - 1] + Database.TILEINFO_24);
-                    //tileInfo4[Database.TRUTH_DUNGEON_COLUMN * 32 + 46] = Database.TILEINFO_24;
+                    tileInfo4[32 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_24;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonCallChoiceStatue)
                 {

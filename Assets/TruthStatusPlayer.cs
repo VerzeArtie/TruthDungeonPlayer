@@ -1357,7 +1357,7 @@ namespace DungeonPlayer
                 case Database.RARE_TOOMI_BLUE_SUISYOU: // 初期ラナ会話イベントで入手アイテム
                     if (GroundOne.WE.dungeonEvent4_SlayBoss3)
                     {
-                        mainMessage.text = "アイン：ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ。";
+                        mainMessage.text = "アイン：（ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ）";
                         return;
                     }
                     if (GroundOne.WE.CompleteSlayBoss5)

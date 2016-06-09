@@ -18940,91 +18940,96 @@ namespace DungeonPlayer
         }
         private static void UpdateArea4_3_LeverInfo(int number)
         {
+            bool success = false;
             if (number == 1)
             {
-                GroundOne.WE.dungeonEvent447 = true;
                 if (!GroundOne.WE.dungeonEvent447 && !GroundOne.WE.dungeonEvent448 && !GroundOne.WE.dungeonEvent449 && !GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent447 = true;
             }
             else if (number == 2)
             {
-                GroundOne.WE.dungeonEvent448 = true;
                 if (GroundOne.WE.dungeonEvent447 && !GroundOne.WE.dungeonEvent448 && !GroundOne.WE.dungeonEvent449 && !GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent448 = true;
             }
             else if (number == 3)
             {
-                GroundOne.WE.dungeonEvent449 = true;
                 if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && !GroundOne.WE.dungeonEvent449 && !GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent449 = true;
             }
             else if (number == 4)
             {
-                GroundOne.WE.dungeonEvent450 = true;
                 if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && !GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent450 = true;
             }
             else if (number == 5)
             {
-                GroundOne.WE.dungeonEvent451 = true;
                 if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && !GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent451 = true;
             }
             else if (number == 6)
             {
-                GroundOne.WE.dungeonEvent452 = true;
                 if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && !GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent452 = true;
             }
             else if (number == 7)
             {
-                GroundOne.WE.dungeonEvent453 = true;
                 if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && GroundOne.WE.dungeonEvent452 && !GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent453 = true;
             }
             else if (number == 8)
             {
-                GroundOne.WE.dungeonEvent454 = true;
                 if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && GroundOne.WE.dungeonEvent452 && GroundOne.WE.dungeonEvent453 && !GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent454 = true;
             }
             else if (number == 9)
             {
-                GroundOne.WE.dungeonEvent455 = true;
                 if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && GroundOne.WE.dungeonEvent452 && GroundOne.WE.dungeonEvent453 && GroundOne.WE.dungeonEvent454 && !GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
-                    return; // OK
+                    success = true;
                 }
+                GroundOne.WE.dungeonEvent455 = true;
             }
             else if (number == 10)
             {
-                GroundOne.WE.dungeonEvent456 = true;
                 if (GroundOne.WE.dungeonEvent447 && GroundOne.WE.dungeonEvent448 && GroundOne.WE.dungeonEvent449 && GroundOne.WE.dungeonEvent450 && GroundOne.WE.dungeonEvent451 && GroundOne.WE.dungeonEvent452 && GroundOne.WE.dungeonEvent453 && GroundOne.WE.dungeonEvent454 && GroundOne.WE.dungeonEvent455 && !GroundOne.WE.dungeonEvent456)
                 {
+                    success = true;
                     GroundOne.WE.dungeonEvent444_storyok = true;
                     //GroundOne.WE.dungeonEvent4_Area3_1_Fail = false; // 一度失敗した記憶を消すわけではないため、ココはコメントアウト
-                    return; // OK
                 }
+                GroundOne.WE.dungeonEvent456 = true;
             }
-            // NG
-            GroundOne.WE.dungeonEvent444_storyok = false;
-            GroundOne.WE.dungeonEvent4_Area3_1_Fail = true;
+
+            if (!success)
+            {
+                // NG
+                GroundOne.WE.dungeonEvent444_storyok = false;
+                GroundOne.WE.dungeonEvent4_Area3_1_Fail = true;
+            }
         }
         public static void Message14072(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -19758,7 +19763,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：っふう・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ひでぇ最後だったな・・・結局理もクソもねえって感じだったな。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ひでぇ最後だったな・・・結局『理』もクソもねえって感じだったな。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
@@ -19817,6 +19822,17 @@ namespace DungeonPlayer
             }
         }
         #endregion
+        #region "エリア３、ラナ消失後、戻りブロック"
+        public static void Message14098_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (GroundOne.WE.dungeonEvent4_SlayBoss3)
+            {
+                messageList.Add("アイン：（ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+            }
+        }
+        #endregion
         #region "エリア４スタート"
         public static void Message14099(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -19848,6 +19864,10 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateD1);
 
                 messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("　　　　『　事実への到達　創造による循環　』"); eventList.Add(ActionEvent.None);
             }
         }
         #endregion
