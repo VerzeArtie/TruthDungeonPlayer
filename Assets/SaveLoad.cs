@@ -44,11 +44,26 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+            Debug.Log("saveload start");
 
             if (GroundOne.SaveAndExit)
             {
                 RealWorldSave();
                 SceneDimension.Back(this);
+                return;
+            }
+            if (GroundOne.SaveRealWorldAndExit)
+            {
+                RealWorldSave();
+                SceneDimension.JumpToTitle();
+                return;
+            }
+            if (GroundOne.LoadRealWorldAndExit)
+            {
+                Debug.Log("RealWorldLoadAndExit");
+                RealWorldLoad();
+                Debug.Log("RealWorldLoadAndExit ok");
+                SceneDimension.JumpToTruthDungeon(false);
                 return;
             }
 
@@ -293,6 +308,7 @@ namespace DungeonPlayer
         }
         public void RealWorldLoad()
         {
+            Debug.Log("RealWorldLoad start");
             ExecLoad(null, WorldSaveNum, true);
         }
 
@@ -1294,38 +1310,8 @@ namespace DungeonPlayer
             // [必須] 最終的には全階層分のデータを一括取得するようになるので、このFor分割は不要となる。
             //string temp1 = DateTime.Now.ToString() + "  " + DateTime.Now.Millisecond.ToString();
 
-            XmlDocument xml2 = new XmlDocument();
-            xml2.Load(pathForRootFile(Database.WE2_FILE));
-            Type typeWE2 = GroundOne.WE2.GetType();
-            foreach (PropertyInfo pi in typeWE2.GetProperties())
-            {
-                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
-                if (pi.PropertyType == typeof(System.Int32))
-                {
-                    try
-                    {
-                        pi.SetValue(GroundOne.WE2, Convert.ToInt32(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                    }
-                    catch { }
-                }
-                else if (pi.PropertyType == typeof(System.String))
-                {
-                    try
-                    {
-                        pi.SetValue(GroundOne.WE2, (xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                    }
-                    catch { }
-                }
-                else if (pi.PropertyType == typeof(System.Boolean))
-                {
-                    try
-                    {
-                        pi.SetValue(GroundOne.WE2, Convert.ToBoolean(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
-                    }
-                    catch { }
-                }
-            }
-            Debug.Log("ExecLoad 75 " + DateTime.Now); ;
+            Method.ReloadTruthWorldEnvironment();
+            Debug.Log("ExecLoad 75 " + DateTime.Now);
 
             XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
             XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");

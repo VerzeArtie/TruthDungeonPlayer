@@ -13,6 +13,11 @@ namespace DungeonPlayer
     {
         public Camera cam;
         public Text titleText;
+        public GameObject buttonGamestart;
+        public GameObject buttonSeeker;
+        public GameObject buttonLoad;
+        public GameObject buttonConfig;
+        public GameObject buttonExit;
         public override void Start()
         {
             base.Start();
@@ -20,16 +25,14 @@ namespace DungeonPlayer
             {
                 GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin); // 後編追加    
             }
-            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && GroundOne.WE2.SelectFalseStatue)
-            {
-                SettingRealWorldButtonLayout();
-            }
-        }
 
-        private void SettingRealWorldButtonLayout()
-        {
-        }
+            // GroundOne.WE2はゲーム全体のセーブデータであり、ここで読み込んでおく。
+            Method.ReloadTruthWorldEnvironment();
 
+            // 現実世界突入でSeekerモードを表示
+            buttonSeeker.SetActive(GroundOne.WE2.RealWorld);
+        }
+        
         public void GameStart_Click()
         {
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
@@ -84,6 +87,14 @@ namespace DungeonPlayer
 
         public void Seeker_Click()
         {
+            Debug.Log("Seeker_Click (S)");
+            GroundOne.WE2.StartSeeker = true;
+            Method.AutoSaveTruthWorldEnvironment();
+
+            GroundOne.StopDungeonMusic();
+            Debug.Log("call CallSaveLoadWithLoadRealWorldOnly (S)");
+            SceneDimension.CallSaveLoadWithLoadRealWorldOnly();
+            //SceneDimension.JumpToTruthDungeon(false);
         }
 
         public void PointerEnter()

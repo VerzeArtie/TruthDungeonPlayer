@@ -14485,46 +14485,6 @@ namespace DungeonPlayer
                         this.objBlueWallRight[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
                     }
                 }
-                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4InvalidateNormal) // todo [呼び出し元を作る]
-                {
-                    for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-                    {
-                        if ((ii == 22 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 23 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 24 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 25 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 26 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 27 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 28 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 29 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 30 * Database.TRUTH_DUNGEON_COLUMN + 46) ||
-                            (ii == 31 * Database.TRUTH_DUNGEON_COLUMN + 46))
-                        {
-                            objList[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                            unknownTile[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                        }
-                    }
-                    for (int ii = 0; ii < this.objOther.Count; ii++)
-                    {
-                        this.objOther[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                    }
-                    for (int ii = 0; ii < this.objBlueWallTop.Count; ii++)
-                    {
-                        this.objBlueWallTop[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                    }
-                    for (int ii = 0; ii < this.objBlueWallBottom.Count; ii++)
-                    {
-                        this.objBlueWallBottom[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                    }
-                    for (int ii = 0; ii < this.objBlueWallLeft.Count; ii++)
-                    {
-                        this.objBlueWallLeft[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                    }
-                    for (int ii = 0; ii < this.objBlueWallRight.Count; ii++)
-                    {
-                        this.objBlueWallRight[ii].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-                    }
-                }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonCallChoiceStatue)
                 {
                     SceneDimension.CallTruthChoiceStatue(this);

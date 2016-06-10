@@ -249,6 +249,57 @@ namespace DungeonPlayer
             }
         }
 
+        // GroundOne.WE2をリロード
+        private static string pathForRootFile(string filename)
+        {
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                return filename;
+            }
+            else if (Application.platform == RuntimePlatform.Android)
+            {
+                return filename;
+            }
+            else
+            {
+                return filename;
+            }
+        }
+        public static void ReloadTruthWorldEnvironment()
+        {
+            XmlDocument xml2 = new XmlDocument();
+            xml2.Load(pathForRootFile(Database.WE2_FILE));
+            Type typeWE2 = GroundOne.WE2.GetType();
+            foreach (PropertyInfo pi in typeWE2.GetProperties())
+            {
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, Convert.ToInt32(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, (xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, Convert.ToBoolean(xml2.GetElementsByTagName(pi.Name)[0].InnerText), null);
+                    }
+                    catch { }
+                }
+            }
+        }
+
         // 通常セーブ、現実世界の自動セーブ、タイトルSeekerモードの自動セーブを結合
         public static void AutoSaveTruthWorldEnvironment()
         {

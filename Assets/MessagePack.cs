@@ -417,7 +417,6 @@ namespace DungeonPlayer
             DungeonFloor4BlockWallD1,
             DungeonFloor4InvalidateBlack,
             DungeonCallChoiceStatue,
-            DungeonFloor4InvalidateNormal,
             // ChoiceStatue
             DungeonStatueHideWalkFront,
             DungeonStatueViewHuman,
@@ -12954,7 +12953,7 @@ namespace DungeonPlayer
 
         public static void Message13121_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.StopDungeonMusic();
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：よし、開けるぜ！"); eventList.Add(ActionEvent.None);
 
@@ -13084,7 +13083,7 @@ namespace DungeonPlayer
 
         public static void Message13122_4(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
@@ -20506,7 +20505,7 @@ namespace DungeonPlayer
         #region "ChoiceStatue"
         public static void NormalEnd_Correct(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：（合っているはず、間違いない）"); eventList.Add(ActionEvent.None);
 
@@ -20612,7 +20611,7 @@ namespace DungeonPlayer
         }
         public static void BadEnd_LanaStatue(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：（頼む・・・合っていてくれ・・・）"); eventList.Add(ActionEvent.None);
 
@@ -20669,7 +20668,7 @@ namespace DungeonPlayer
 
         public static void BadEnd_HumanStatue(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：（頼む・・・合っていてくれ・・・）"); eventList.Add(ActionEvent.None);
 
@@ -20732,7 +20731,7 @@ namespace DungeonPlayer
 
         public static void BadEnd_Surrender(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("アイン：（・・・）"); eventList.Add(ActionEvent.None);
 
@@ -20752,15 +20751,19 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（もう、このダンジョンへの挑戦は終わりにしよう・・・）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（ラナが死んだ世界）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（ラナが死んだ世界へと俺は還る）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（そして、最下層への到達も出来ぬまま・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（何も達成できる、何も成しえず、ラナを失ったまま・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・そうだ）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（どこか人里離れた山奥でひっそりと暮らそう）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（ラナが死んだとしても、俺が忘れなければ良いんだ）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（俺はラナを絶対に忘れない）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（俺はラナの事を絶対に忘れない）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（俺自身が死ぬまで・・・）"); eventList.Add(ActionEvent.None);
 
@@ -31274,7 +31277,7 @@ namespace DungeonPlayer
                 messageList.Add("ラナ：まあ、そんなに期待はしないけど・・・"); eventList.Add(ActionEvent.None);
             }
 
-            GroundOne.StopDungeonMusic();
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("　【　結果を発表します　】"); eventList.Add(ActionEvent.None);
 
@@ -31425,7 +31428,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：いや、違っ、っちょっちょちょ！タンマタンマタンマ！！"); eventList.Add(ActionEvent.None);
 
-            GroundOne.StopDungeonMusic(); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
             messageList.Add("ランディス：死んでこいやああぁぁぁぁぁ！！！"); eventList.Add(ActionEvent.None);
 
@@ -32546,8 +32549,7 @@ namespace DungeonPlayer
                 }
             }
 
-            GroundOne.StopDungeonMusic();
-            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic01);
 
             messageList.Add("　　【受付嬢：そちらの方々！！今すぐ対戦を中止してください！！　】"); eventList.Add(ActionEvent.None);
 

@@ -390,6 +390,11 @@ MonoBehaviour:
   Filter: {fileID: 2019157367}
   cam: {fileID: 1118463471}
   titleText: {fileID: 1762464350}
+  buttonGamestart: {fileID: 914702842}
+  buttonSeeker: {fileID: 2095276623}
+  buttonLoad: {fileID: 83016714}
+  buttonConfig: {fileID: 1877223482}
+  buttonExit: {fileID: 1446764207}
 --- !u!1 &327124757
 GameObject:
   m_ObjectHideFlags: 0

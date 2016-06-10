@@ -121,8 +121,28 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthPotionShop);
         }
 
+        public static void CallSaveLoadWithSaveRealWorldOnly()
+        {
+            GroundOne.SaveRealWorldAndExit = true;
+            GroundOne.LoadRealWorldAndExit = false;
+            GroundOne.SaveMode = false;
+            GroundOne.SaveAndExit = false;
+            Application.LoadLevelAdditive(Database.SaveLoad);
+        }
+
+        public static void CallSaveLoadWithLoadRealWorldOnly()
+        {
+            GroundOne.SaveRealWorldAndExit = false;
+            GroundOne.LoadRealWorldAndExit = true;
+            GroundOne.SaveMode = false;
+            GroundOne.SaveAndExit = false;
+            Application.LoadLevelAdditive(Database.SaveLoad);
+        }
+
         public static void CallSaveLoadWithSaveOnly()
         {
+            GroundOne.SaveRealWorldAndExit = false;
+            GroundOne.LoadRealWorldAndExit = false;
             GroundOne.SaveMode = true;
             GroundOne.SaveAndExit = true;
             Application.LoadLevelAdditive(Database.SaveLoad);
@@ -130,6 +150,8 @@ namespace DungeonPlayer
 
         public static void CallSaveLoad(MotherForm scene, bool SaveMode, bool AfterBacktoTitle)
         {
+            GroundOne.SaveRealWorldAndExit = false;
+            GroundOne.LoadRealWorldAndExit = false;
             GroundOne.SaveMode = SaveMode;
             GroundOne.AfterBacktoTitle = AfterBacktoTitle;
             GroundOne.Parent.Add(scene);
