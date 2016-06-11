@@ -432,6 +432,13 @@ namespace DungeonPlayer
             DungeonFloor4OpenWallE1,
             DungeonUpdateUnknownTileArea45,
             DungeonGotoDungeonFive,
+            DungeonFloor5UnknownTileArea1,
+            DungeonFloor5UnknownTileArea2,
+            DungeonFloor5UnknownTileArea3,
+            DungeonFloor5UnknownTileArea4,
+            DungeonFloor5UnknownTileArea5,
+            DungeonRefreshWater,
+            DungeonFloor5UnknownTileArea6,
             Ending,
         }
         #endregion
@@ -17098,7 +17105,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　（　早く助ける、その一心で歩を進めた　）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　（　レギィンアーゼという存在が俺の前に何度か立ちふさがった　）"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　（　レギィン・アーゼという存在が俺の前に何度か立ちふさがった　）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　（　奴は俺に幾度となくこう問いかけた　）"); eventList.Add(ActionEvent.None);
 
@@ -20739,7 +20746,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（どうして、こんな事になってしまったんだろう）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：（レギィンアーゼの言葉が頭から離れない）"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：（レギィン・アーゼの言葉が頭から離れない）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：（ラナを助ける術はもう残されていない、そんな気がする）"); eventList.Add(ActionEvent.None);
 
@@ -21555,6 +21562,1648 @@ namespace DungeonPlayer
         #endregion
         #endregion
         #region "５階"
+        public static void Message15000(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（４階に戻っても意味はないな・・・）"); eventList.Add(ActionEvent.None);
+        }
+        public static void Message15001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE2.SeekerEvent501)
+            {
+                GroundOne.WE2.SeekerEvent501 = true;
+            }
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+
+        }
+        public static void Message15002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5UnknownTileArea1);
+            if (!GroundOne.WE2.SeekerEvent502)
+            {
+                messageList.Add("アイン：（デカい通路に出たな・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent502 = true;
+            }
+            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
+            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
+
+        }
+        public static void Message15003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5UnknownTileArea2);
+            if (!GroundOne.WE2.SeekerEvent503)
+            {
+                messageList.Add("アイン：（・・・　壁には　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（無数の歯車・・・そして・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（ツブツブの小さい光だ・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（見ていると、自分が進んでるのかどうかが分からなくなってくる・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent503 = true;
+            }
+            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
+            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
+
+        }
+        public static void Message15004(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5UnknownTileArea3);
+            if (!GroundOne.WE2.SeekerEvent504)
+            {
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　うっすらと　・・・　何かが見える　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　玉座？　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent504 = true;
+            }
+            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
+            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
+        }
+        public static void Message15005(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5UnknownTileArea4);
+            if (!GroundOne.WE2.SeekerEvent505)
+            {
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　何か　・・・　存在を感じる　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　玉座は　・・・　もぬけの殻だ　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　誰か　・・・　いるのか？　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent505 = true;
+            }
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+
+        }
+        public static void Message15006(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5UnknownTileArea5);
+            if (!GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent507)
+            {
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　玉座に　・・・　ついたな　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　意味　・・・　ねえか　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　玉座に辿りついたこの時　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺は直感的に理解した　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ここに来た事自体で俺はようやく達成したんだ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　最下層　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　制覇　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　当初の目的は達成された　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　それだけだった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　何の感情も生まれてこない　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　無機質さだけが残った　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺はそこにずいぶんと長い事そうして居たようにも思える　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　気がつけば　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　誰も居なかったハズの玉座に　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ただ一人　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　こちらを見ることもなく、誰かが座っていた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺は剣を床に突きたて　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そこにゆっくりと座り込み　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そこで足の膝の上に頭の全面を突っ伏させるようにして　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　顔を下に伏せ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　動く事を完全にやめた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ソイツは何かを俺に語りかける事もなく　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺はソイツに何かを語りかける事もなく　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　時間軸は完全に消滅　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　空間だけが支配する世界となった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺は、喋ったり考えたりする気が完全に失せていた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　あらゆる行動に意味はなくなっていた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　生きていく意味は、もう存在しない感覚がある　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺はここで　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　無限の停止空間に入った感じがした　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　このままずっと止まっているのも良いだろう　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　永遠とも思える長い時間の間　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ひたすら突っ伏していた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic07);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：少年よ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：少年よ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：最愛の者を"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：失ったか"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：喋らなくて良い"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：少年よ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：このまま、ここで"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：この時間を続けるのもよいだろう"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：少年の気が済むまで"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：いつまでも待とう"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・ぅ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ウソだ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何でだよ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：別にラナじゃなくても良かったんだろ！？　そうだろ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：このダンジョンは、少女ラナ・アミリアを選定したのだ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：あきらめるがよい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：選定って何だよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：ダンジョンが決定する意志に基づくもののことを指している"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ダンジョンが決定する意志だと！？冗談じゃねぇ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：神様でも居るってのかよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：少年がどう考えるかは重要ではないのだ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：このダンジョンにはそれが存在している"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：じゃあ、ダンジョンが意志を持ってたと百万歩譲ってそうだとしよう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何でラナが死ぬ必要があったんだよ！！　答えろよ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：必要性とは少年にとって必要であったとしても"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：ダンジョンにとって必要性とは必要の無いもの"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：犠牲となる死は確約されていた真実だったのだ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：なんだよそれ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：なんだってんだ一体！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：必要もなく死なせたって事かよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：生まれる事に必要性はあるが死に至る事に必要性は存在しない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そうじゃねえ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ダンジョンが何で、生贄みたいなことを要求してくるかって事を聞いてんだよ！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：生贄ではない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：じゃあ、何なんだよ！！！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：真実である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：覆す術はない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ッグ・・・・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：っふざけるなよ！そんなものが真実なんておかしいだろうが！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：落ち着くがよい、少年"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ック・・・ックソ・・・ッグ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　【アインの身体の一部から、一つの雫が、床面に垂直に落ち、染み込んでいった】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：どっ、どうすりゃよかったんだよ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：これで、終わりなのかよ。もう手立てはないのかよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：答えてくれよ、なあ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：本当に無いのかよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何で無言なんだよ！教えてくれよ・・・頼む！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺には教える気は無いってことか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：そうではない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：じゃあ、なんで・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：まさか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺じゃ無理って話なのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：そういうことだ、少年"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：死んでしまった事実は覆らない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：ラナ・アミリアの事はあきらめるがよい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：無理でもいい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：不可能でもいい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：頼む・・・方法だけでも教えてくれ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：最下層には、財宝が眠ってるんだろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：神の遺産って聞いてる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：少年は受け取る権利がある"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：神の遺産を受け取りなさい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いらねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いらねえんだよ、そんなもん。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナが死んだ世界じゃ・・・そんなもの受け取っても意味ねえじゃねえか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：頼む、教えてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺の一生・・・いや・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺の魂の消滅をかけてもいい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：無に堕ちても構わない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺の関する全てを犠牲にしても構わない！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：頼む！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・やっぱりダメなのか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そういや・・・アンタ、名前は何ていうんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：少年よ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：我は名も無き傍観者Bystander"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：それが真実の名"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　？？？：世俗では支配竜と呼ばれている"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：し・・・支配竜・・・だと・・・？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：じゃあまさか、各階層で俺が見てきた竜の姿も、まさか！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年のイメージにより我の形態は常に変化する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：呼びやすくイメージしやすい姿で問いかけるとよい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そうだったのか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：頼む、支配竜よ教えてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：真実なんて言われても俺には納得ができない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナを死なさずに済む方法はあったのかどうかを聞きたいんだ、どうなんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：その真実を知りたいのかね"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：その問いかけに対する回答は少年自身が鍵となる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年よ問いかけてみなさい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：可能な限り少年へ言葉を贈ろう"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：じゃ・・・じゃあ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：この最下層に来るまでの間、選択しきれなかった俺自身が主原因って事なのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年自身に全ての要因があるわけではない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年およびその周囲の関連性によりいくつもの要因が存在する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：周囲って言うと、俺の父母、友人、街の皆、FiveSeeker達って事なのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年の知り得る情報では事を成さない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：この世の膨大な蓄積および関連性を指している"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：ただし少年が今思い付いた周囲というのは的を得ている"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺の知識経験だけじゃ役不足って事なのか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺だけが原因じゃないとしてもだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：やっぱり俺に少なからず原因はある。そうなんだろう？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年の赴くままである"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：まだ聞きたい事がある。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ダンジョンを進めるうち、どうして俺はあんなフラッシュバックが見え始めたんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年が見たという内容を述べてみるがよい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：小さいころの思い出だったり、ラナとファージル宮殿にいった時だったり・・・いろいろだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：他には"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ええと・・・ボケ師匠との遭遇とか、ハンナおばさんとの雑談とか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：他には"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：緑小屋でヴェルゼとDUEL、神剣フェルトゥーシュはいつの間にか失われて・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：どうして、そんな事聞くんだ？俺は今フラッシュバックが見える理由を聞いてるんだが？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：我が知りうる少年自身の系譜の中に存在するはずのものが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年がフラッシュバックだと感じたものの中に存在しない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：差異が発生し始めている"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ど、どういう意味だ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：我は意味を持たない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：意味とは少年の赴くままに生成される"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：我はこの世の真実を語るのみ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：この世の真実では神剣フェルトゥーシュは入手されるもの"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：な、なんだって！？バカな！！確かフェルトゥーシュは失ったはずだ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：我は真実を語るのみ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年がフラッシュバックを見るのは必然である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：失ったんじゃないのか・・・どういう事だ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：じゃあ、神剣フェルトゥーシュがどうして４階の最後に存在してるんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：あれは俺が小さい頃、ラナの母さんから譲り受けてから"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：不覚にも俺自身が失ってしまったものだ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：その失った物がこのダンジョンにあるのはおかしいだろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：このダンジョンに神剣フェルトゥーシュは存在しないはずだ、そこはどうなんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：フェルトゥーシュはこのダンジョンから生まれ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：そしてこのダンジョンへと還る"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ちょっと待ってくれよ。フェルトゥーシュは俺がラナの母さんから頂いたものだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ダンジョンから生まれたってどういう事だよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年が生まれるより遥か古来よりフェルトゥーシュは存在している"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナの母さんよりも前？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナの母さんが譲り受けた人よりも前？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：その譲り受けた人のさらに前から・・・？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：連鎖に終わりは存在しない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：でも元々その剣を創った人は存在するんじゃないのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：剣はこの世が生まれし頃より存在する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人の手により創生されし物ではない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：この世の創生より存在するもの"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：なっ・・・マジ・・・か・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いや、それにしてもだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何で【ダンジョンへと還る】なんて表現になるんだよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺が失ってからは、自動的にこのダンジョンへ返還されたって事なのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：剣は人の手に渡りそして人の手によりダンジョンへ還される"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：今回のケースにおいても例外なく人の手によりダンジョンへ還されている"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：誰なんだよ？そいつは？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：その者の名は"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：ヴェルス・エクストゥーゼ・アーティス"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　え・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年にとっては聞かぬ名であるが真実の名である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そ・・・それって・・・まさか！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ヴェルゼ・アーティの事を指してるのか！？！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：その名は本人が自分自身の生命を保持するために自ら命名したもの"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：本人が・・・自分自身のために？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何でそんな事する必要があったんだよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：現象の連鎖により必然的に起こり得た現象である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：意味および理由に関しては少年の赴くままである"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：わ、そこは分かったけどさ・・・じゃあ、ヴェルゼが剣を返還したって事なのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：どうなってんだ・・・一体・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：あのDUELの時、俺から奪い取ってこのダンジョンに返還したって事なんだろうか・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ヴェルゼ・・・そうだ、そういえば！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ヴェルゼ・アーティはいつ俺の傍から居なくなったんだ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：４階に降りたら突然居なくなってた感じだった。あの時に居なくなったのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：その者は４階へ到達している"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：え！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：その者は少年とは別の方法にてこのダンジョン４層に到達している"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：べ・・・別の・・・方法だって？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そ、そんなのがあるのかよ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺と離れて・・・一体何のために？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：神剣フェルトゥーシュをこのダンジョンに還すためである"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ちょ、ちょっと待ってくれ。そこがどうしても分からない・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ヴェルゼが神剣フェルトゥーシュを持っていたとしてだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：なんでダンジョンへ還さなくちゃならないんだよ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：摂理によって返還されている"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ヴェルゼが摂理そのものだとでも言うつもりか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：それは違う"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：摂理とは人の意志にあらず"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：摂理とは人の理由や意味にあらず"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：摂理とは神剣フェルトゥーシュそのもの"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：神剣フェルトゥーシュとは摂理そのもの"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：神剣フェルトゥーシュはこの世の創生から在りしモノ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：神剣フェルトゥーシュはそれそのものが意志を持つモノ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：剣が・・・意志を？バカな、そんな事あるわけないだろう？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年の理解が及ぶかどうかは少年次第"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：剣が意志を持ち剣の保持者を選定する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：選定されし強き存在はその自らの身体を使いこのダンジョンへ神具を還しにくる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：これは少年が生まれる遥か以前より永きにわたり行われ続けている"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：例外は存在しない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：す、少し待ってくれ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　不思議な感じだった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ワケの分からない話だらけで、混乱するかと思ったが　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　スっと心に染みわたってくる。不快感は一切ない　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そんな感じだった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：論点をまた変えさせてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ファージル宮殿、生誕祭の時だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：あの時、俺は不覚にも寝てしまったせいで"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そこで、ラナがエルミ国王やファラ王妃に誘われて宝物庫へ行ったという事を俺は知らない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：だが、このダンジョン４層で、俺にそれは見えた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：どうしてだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少女ラナ・アミリアによる精神干渉がこのダンジョンを対象として行われているためである"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：なっ、ラナが！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少女ラナ・アミリアが死の間際にて生前の最も刻み込まれた記憶をダンジョンに封じ込めた"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：また少年がそれを感知する潜在意識が存在するためビジョンが見えるのは必然である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そんな・・・死の間際でなんでそんな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いや、いやいやいや。待ってくれよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺が見たのは４層を進めてる間だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナは最後の銅像のトコで死んだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：時間的に辻褄が合わねえ。順序が逆じゃねえのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：時間軸に問題は存在しない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年が知る事になったのは少女ラナ・アミリアが死亡した時である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いや、だからそこが逆だって話だろ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年が意を介せないかどうかは関与に値しない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：我は真実を語るのみ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ばかな・・・ありえねえだろ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　自分の言葉とは真逆の感性が、この時、俺の中で湧きあがった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　この語り手のヤツに信頼をおくとかどうとかは関係なく　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ヤツは在り様をそのまま伝えてくるだけだ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ウソやホント、正や偽、表と裏、事実と証明　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そういった事が完全に存在しない　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　強いて誤りがあるとすれば　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ここでいう誤りは、すなわち、自分の感情や経験だ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：別の話をさせてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：３階に関してだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：あの鏡、秤の三面鏡はどういった内容なんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：対象の思考から人物像を読み取りそれを具現化する鏡である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：表面思考"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：原理思考"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：潜在思考"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：合わせて３つの像が鏡に映し出される"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：対象はそれら３つの像と対話を行うことが可能となる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：像って言うのは何だ？本物ってわけじゃないのにどうして会話が成立するんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：対象の思考パターンの通りに３つの像は語る"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それって・・・対象となったヤツが自分自身に問いかけてるのと同じって事か？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：３つの像の発言は対象の者の意のままである"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：像自身に自意識かつ自発的発言はない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：あるのは虚構のみ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：像はラナの思考そのものでしか喋らなかったって事なのか・・・？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナがその鏡を使った結果どうなったんだ？教えてくれ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少女ラナ・アミリアにさしたる変化はない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：心の在り様が増幅されるのみである"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺のダンジョン探索にラナが着いてくる事はないと思っていた。鏡を見て心変わりしたって事か？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少女ラナ・アミリアはもとより少年に着いていく心がはじめから存在している"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：虚無の鏡はその精神を増幅するまで"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：結果への因果に影響はしない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そんな・・・どうして・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：待てよ、さっきから虚無って言ってるが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：あれは秤の三面鏡だろ？俺でもさすがにそのぐらい知識として知っているぜ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年の言う鏡は我が生成したもの"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：名は虚無の鏡という"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：待ってくれよ。それは秤の三面鏡だって事は巷でも聞いてるし国宝として正式名称でもある、間違いないはずだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：秤の三面鏡とは人が命名した名である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：鏡の名が人間からどのように呼ばれようと変化はしない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：虚無の鏡は対象をより虚構へと導く"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：虚構って・・・そんな・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何でそんなものをラナに見せたりしたんだ、国王エルミとファラ王妃は・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そうか、ひょっとして"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ファラ王妃の何でもお見通しっていうカラクリは、そういう事か。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：鏡を使って一般市民からあらゆる情報を引き出していたって事なんじゃないのか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：本人にとって意味は無くとも、そこから得られる情報は国王や王妃にとって貴重な情報源だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：だとしたら・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺がダンジョンを挑む事を・・・ラナを鏡に照らし合わせる事で既に引き出されていた情報だったんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：３階でもう一つ質問がある。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：【正解】、【無限解】、【原点解】に関してだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：【正解】、【無限解】はおいとくにしても"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：【原点解】ってのは、明確にどこかに存在するのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：原点解は３階に存在する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺はその原点解には到達できていないが、この最下層には辿り着いた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ひょっとしてだが、最下層に来ること自体が誤りなのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：誤りかどうかは我は関与しない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そうだった・・・ええと・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：【正解】さえ得ていれば、この最下層には辿りつけるのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：正解を得た者は最下層へ到達する権利を持つ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：最下層へ到達せし者は神の遺産を受諾する権利を持つ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：じゃあ、【原点解】とは何なんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：原点解とは真実世界へと遷移するための鍵を手に入れる事である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：真実世界？一体どういう事だ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：真実世界とは少年が今ここにいる世界には非ず"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：今ここにいる世界ってのは何なんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：今ここに現存する世界は少年およびその関連する人物が創り上げた過去の幻想世界"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人の幻想が過去を構築する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人の認識が現実を構築する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：生命の波動が真実を構築する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：生命そのものが真実世界を開く鍵となる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・待ってくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：もし、そういう真実世界があるとして"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺達が生きてきた現実世界はどうなる？消えてしまうのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：過去としての世界は残り続ける"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人が認識する現実世界が消える事はない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：仮に今ここが過去の幻想世界だとしてだ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：この中で【原点解】をもし入手していれば"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナが死なずに済む方法があるって事だよな？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：真実世界とは生命波動の連続性で生成される世界"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：真実世界で少女ラナ・アミリアが死なずに済む方法があるかどうかは不確定である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：その可能性は変化する時間軸により変化する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：それは０％でもあり１００％でもある"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人の意識が束縛を生み不変を創り出す"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人の行為が真実から事象を遠ざけ幻想を生み出す"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：真実とは永遠に変化するものでありそれこそが永遠なる不変の理である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年アイン・ウォーレンス　これを認識せよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　考え方がまったく追いつかない　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　途中までは何となく理解できるが　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　その途中から突如、解釈方法が不明の領域へと放り込まれる　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺の思考範囲では、この支配竜の言葉は完全に遠く及ばぬ領域だ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　どうするべきなのか、何をしなくちゃいけないとか、考え方を改めるべきとか・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そういう類のレベルから大きくかけ離れる　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺たち人間の言う「思考」や「根拠」「正当性」「理論的」などがあるが　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　それら人間の行動原理の全てが　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　とても陳腐に感じられる　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　この支配竜は次元が違いすぎる　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　だからこそ、自分という中の知識や感性を全部捨てて、問いかける事ができる　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　支配竜は俺には分からないレベルの領域から明確に答えてくれる　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そんな感じだ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：【原点解】をもし見つけていれば、と俺は今思っているが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：【原点解】を見つけるためには、一定の規則や条件、ルールといったものが存在するんじゃないのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・頼む・・・教えてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：神々の詩を詠唱せよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：神々の・・・詩？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：詠唱の間にて神々の詩を一部欠ける事なく発するがよい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：原点解への導きはその詩を鍵として開かれる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ちょっと待ってくれ。何なんだその【神々の詩】ってのは"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：世界の理を呼び覚ます詩"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人がその領域へ意識が向けられる唯一の方法"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それは、俺自身知っている詩なのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：我が知りうる少年自身の系譜の中にその詩は存在する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：世界の創生より生まれし詩は時を経てなお消滅せず"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人から人へ永遠に受け継がれし詩である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：人から人へ・・・受け継がれし・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：まさか、ラナの母さんから聞かされていたヤツの事か？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：待てよ、そういえば"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：支配竜よ、答えてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：【詠唱の間】ってのは明確にどこかに存在するのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：詠唱の間は２階に存在する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：やっぱり、そういう事か・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　試練の台座と呼ばれる場所があったはずだ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　あれがおそらく、支配竜が語る真実の名称としては【詠唱の間】なんだ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　何で今まで気付かなかったんだろう、俺にとっては、分かってしまえば当たり前すぎる内容だ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　看板、そして壁面の文字にばかり気を取られていたから、気付けなかったのか　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：支配竜よ、教えてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：もしもだ。仮にこのダンジョンに挑んでいるのが俺じゃないとしたら"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ダンジョン内の構成として、【詠唱の間】は存在しない事になるのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：連続的な因果律の影響により来るべく来たる少年アイン・ウォーレンスよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：他の者がここへ訪れる事はない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年が訪れたのは必然である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年ではない何者かがここへ来る事は存在しない事象である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：どうしてそう言い切れるんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：このダンジョンにはいろんな奴が挑戦しにきてるはずだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺じゃない誰かが来る可能性は十分にある、違うか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：人は人として意志を持って行動する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：それは自由意志への呼びかけに応じて行われるもの"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：我はそれら全ての自由意志を認識する者である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：全ては既に知りえし事象"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：可能性という概念は人が生み出した幻想である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：全ては起こるべくして起こる事象であり必然でしかない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺がダンジョンへ行こうと思ったのも、知っていたって事か？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年がここに来る事は遥か以前より決定されている"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：知っているという概念ではなく語られるべき事象として少年は訪れた"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：因果律が固定であれば少年が訪れるべき時代もまた固定である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　まるで、何かの物語のような感触だ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺たち人間の感性で言う自由な振る舞いというのは　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　この支配竜にとっては全て決定された事象だと語っている　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺が来るべき・・・この地・・・この支配竜との対話・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　不思議と　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　心の中に綺麗に波紋が広がっていくのを感じた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺が【詠唱の間】に訪れる前にラナがパーティとして加わった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナが一緒にこのダンジョンに来たいと言った事に関して"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：支配竜よ、お前はそれも知っているのか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：ヒトの感性に値する感知方法に我は関与しない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少女ラナ・アミリアが来る事も語られるべき事象の一つに過ぎない"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少女ラナ・アミリアが来る事はこの世の創生が始まりし時代より紡がれる事象"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少女ラナ・アミリアとして生を受ける以前よりその者の生命波動は放たれておる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：これは定められし事象である"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：っな・・・なんだって・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：じゃ、じゃあ・・・ダンジョンへ俺が向かおうと思うよりも前からか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ファージルの生誕祭よりも前からか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺が傭兵訓練施設で師匠と出会う前からか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・っくそ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　嫌な予感がした　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　今まで感じた事のない感情　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　俺がこうして幾つか支配竜に問いかけ続け　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　次第に支配竜は　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　答えなくなっていった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　今、支配竜はもう返答をすることもなく　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　ただひたすらに俺の方を直視している　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　言葉のやりとりはもう不要だという事なんだろうか　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　支配竜がある特定の事象を一つ俺に向けている様にも思えてくる　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そうしている内に　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　一つの直観が全身を駆け巡った　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　この直観は支配竜が俺に授けてくれてるんじゃないかと思うぐらいだ　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　まさか　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：今、俺はこうして、ここにいる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ひょっとして・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年アイン・ウォーレンスよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年の生命波動は既に我に届いている"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：言葉にせよ少年アイン・ウォーレンスよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　わかった　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　答えを初めから知っている様な奇妙な感触に襲われた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺は今まで・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　絶望の感触が今まで以上に拡がるのを実感し　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：今までにおいて、そして、今回を含めて"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　それを感じた上でこう問いかけた　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：このダンジョンに一体何回挑んでいるんだ？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　絶望という単語では表しきれない感情　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年アイン・ウォーレンスがこのダンジョンに挑んだ回数は"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：" + Database.MUGEN_LOOP + "回目となる"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　そして、一切の感情が吹き飛んだ感じがした　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　言葉という言葉はもう喉から出てこない　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　（　頭の中が真っ白になった事すら認識できなくなった　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年よ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：聞くがよい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：絶望の光を少年に今から照らそう"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：神の遺産と引き換えに"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：ラナ・アミリア復活の方法を少年に授けよう"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：聞くがよい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：終わりを告げる場所"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年に制覇は不可"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年アイン・ウォーレンス"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年はなにを望む"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：答えよ少年アイン・ウォーレンス"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・死んでしまった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナが死んだのは俺のせいだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：お、俺の・・・せいで！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：頼む！ラナを生き返らせてくれ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：叶わぬ事"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何でだよ、教えてくれ頼む！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：最下層では望みが叶うってのはウソだったのかよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：初期条件の相違"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年の当初の願いそれにあらず"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：最強の力が欲しかった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：絶対的な強さ、誰にも負けない強さだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そうすればラナをずっと守る事が出来る、そう考えたんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そのためには、神の遺産とやらを欲しがった時期があったのも確かだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：でも、ラナが死んでしまった今、そんなことは全て無意味だ、どうだっていい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺の始めの願いは取り下げてくれ。　今の願いを叶えてくれよ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：心は満たず"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：満たぬモノに授けるのはただ一つ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：次はなにを願う"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：次なるは始まり"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：完全なる始まり始動"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：完全なる・・・始まり？？どういう意味だよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年の記憶の一切を消去する"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：時間はヒトの定義する過去と呼ばれる因称律へと"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：空間は始まりへと遷移させられる事となろう"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・ま、まさか！！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：もう一度ダンジョンの始まりから、やれって事なのかよ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：満たぬ主の最終選択肢"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：この最下層を現実とし世界へ還るか"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：完全なる始まりを始動とするか"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：決めよ少年アイン・ウォーレンス"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・もし、俺がうまくやれば、ラナは死なずに済むって事だよな！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：心満たぬままの少年であれば結果は同じコト"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：やってみなきゃわからないだろ！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：幼きヒトよ同じコト"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ッグ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・た・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：頼む。　それでもやらせてくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナの居ない世界で現実に戻ったとして"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それで人生を過ごすとすれば"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そんな人生、死んだも同然だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：このダンジョンに向かったのは俺のせいだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺さえ変な気を起こさなければ、ラナは死なずに済んだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：頼む、支配竜よ。俺にチャンスをくれ、頼む！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：完全なる始まり我の深淵にあり"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年アイン・ウォーレンスよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：選びそして我に挑め"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　突如、アインの後方に新しく像が現れた！！　＞＞＞　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：こ・・・これは・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（　像を調べてみるか　）"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent506 = true;
+            }
+            else if (GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent507)
+            {
+                messageList.Add("　　アイン：（　今は像を調べてみよう　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
+            }
+            else if (GroundOne.WE2.SeekerEvent506 && GroundOne.WE2.SeekerEvent507 && !GroundOne.WE2.SeekerEvent508)
+            {
+                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonRefreshWater);
+
+                messageList.Add("『　ライフ／スキル／マナが全回復しました。　』"); eventList.Add(ActionEvent.None);
+                
+                messageList.Add("　　支配竜：心満たぬ少年よ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　＜＜＜　突如、部屋全体に埋め込まれている、無数の小さい白と黒の球体が発光し始めた！！　＞＞＞　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：我に挑むがよい"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(Database.ENEMY_BOSS_BYSTANDER_EMPTINESS); eventList.Add(ActionEvent.EncountBoss);
+            }
+
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+        }
+
+        public static void Message15006_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            //bool tempFlag = GroundOne.WE2.SeekerEvent508_fail;
+            //if (tempFlag)
+            //{
+            //    using (YesNoReqWithMessage ynrw = new YesNoReqWithMessage())
+            //    {
+            //        ynrw.StartPosition = FormStartPosition.CenterParent;
+            //        ynrw.MainMessage = "戦闘をスキップし、勝利した状態からストーリーを進めますか？\r\n戦闘スキップによるペナルティはありません。";
+            //        ynrw.ShowDialog(); eventList.Add(ActionEvent.None);
+            //        if (ynrw.DialogResult == DialogResult.Yes)
+            //        {
+            //            result = true;
+            //        }
+            //    }
+            //}
+
+            //if (!result)
+            //{
+            //    GroundOne.WE2.SeekerEvent508_fail = true;
+            //}
+            //else
+
+            messageList.Add("　　支配竜：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　支配竜の形成が徐々に薄れ始めている　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：少年よ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：叶わぬ願いではあるが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：断ち切るとよい"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：えっ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　支配竜の形成はほとんど見えなくなり　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：決して及ばず"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：だが決して伏せず屈せず"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：赴くがよい完全なる始まりの地へ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　支配竜はその場から自然に消滅していた　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：始まりの・・・地か・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・ラナ・・・"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE2.SeekerEvent508 = true;
+
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+        }
+
+        public static void Message15007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE2.SeekerEvent508)
+            {
+                if (GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent507)
+                {
+                    messageList.Add("　　アイン：こ・・・これは・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：師匠・・・それにカールのおっさん・・・ラナも居る"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：なんなんだ、この像は？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　支配竜：選ぶがよい少年よ"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：パーティメンバーを・・・選べって事か？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：（　２人選ぼう　）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：（　カール爵は魔法のエキスパート　）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：（　師匠は典型的なカウンタータイプ、もちろん普通に攻勢にも立ち回れる。　）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：（　ラナは魔法がそこそこ、武術もかなり行ける方だ　）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：（　どうする・・・　）"); eventList.Add(ActionEvent.None);
+
+                    // todo
+                    //using (TruthSelectCharacter TSC = new TruthSelectCharacter())
+                    //{
+                    //    TSC.StartPosition = FormStartPosition.CenterScreen;
+                    //    TSC.SC = GroundOne.SC;
+                    //    TSC.TC = GroundOne.TC;
+                    //    TSC.ShowDialog(); eventList.Add(ActionEvent.None);
+                    //    GroundOne.SC = TSC.playerList[0];
+                    //    GroundOne.TC = TSC.playerList[1];
+                    //}
+
+                    GroundOne.WE.AvailableSecondCharacter = true;
+                    GroundOne.WE.AvailableThirdCharacter = true;
+
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupPlayerStatus);
+
+                    messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
+
+                    messageList.Add("　　アイン：よし、決めたぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：『" + GroundOne.SC.FullName + "』と『" + GroundOne.TC.FullName + "』で行く。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　支配竜：生命波動を認識"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　＜＜＜　その時、部屋全体の壁面にある歯車が、高速に回転しはじめた！　＞＞＞　）"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　支配竜：少年アイン・ウォーレンスよ"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　支配竜：我に挑め"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：よし・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　アイン：パーティの魔法／スキルを見直してから、戦闘開始だ。"); eventList.Add(ActionEvent.None);
+
+                    GroundOne.WE2.SeekerEvent507 = true;
+                }
+                else if (GroundOne.WE2.SeekerEvent506 && GroundOne.WE2.SeekerEvent507)
+                {
+                    messageList.Add("　　アイン：（石像はもう無いみたいだな・・・）"); eventList.Add(ActionEvent.None);
+                }
+                Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
+                Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：（　もう、戻る必要はないんだ、行こう。　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
+            }
+        }
+
+        public static void Message15008(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE2.SeekerEvent509)
+            {
+                messageList.Add("　　アイン：こ・・・これは・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナのイヤリングだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そうか、そういう事か。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：やっぱり、あの支配竜の言ってた事がそのまま事実なんだ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナが死んだ瞬間、血しぶきが噴き出し"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ラナのイヤリングが落ちた瞬間は、はっきり覚えてる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：あの時、頭の中に耐え難い激痛が走った。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺はその瞬間の状況に対して、精神的に絶えられなくなった。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：その瞬間から俺は一歩も進めてない。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それを認めたくない。その一心がさっきの支配竜に伝わったんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それでこの無限に過去へ循環する中に・・・閉じ込められた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：いいや、自らが進んで入ったんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そんな現実を受け入れないために。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：行こう。始まりの地へ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：支配竜がくれたチャンスだ。何かが用意されている。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：今回までで過去にさかのぼった合計は、" + Database.MUGEN_LOOP + "回"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・かまうもんか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何度だってやってやる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・掴み取るんだ。今度こそ。"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent509 = true;
+            }
+            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
+            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message15009(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5UnknownTileArea6);
+
+            if (!GroundOne.WE2.SeekerEvent510)
+            {
+                messageList.Add("　　アイン：何だ・・・？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：何かが浮いている・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：これって・・・遠見の青水晶じゃねえか！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そうか・・・そもそもこれも、支配竜が創った神具の一つだったのか。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：戻りたい場所へ戻る事が出来る水晶。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：って事は、おそらく俺が一番初めにこのダンジョンの最下層に来た時、これを手に入れてたんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：それで・・・毎回こうして最下層に来ては、一番初めのダンジョンに戻って・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：そういった記憶が微かに残っていて・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：これに手をかざせば、ダンジョンの一番始まりの所まで戻れそうだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：よし、待ってろラナ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：俺は今度こそ、お前を死なせない方法を導きだしてやる。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：絶対だ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・強く・・・強く心にイメージを持つんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：支配竜は、連続的な因果律の影響とか言ってた。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：少しずつ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：少しづつ・・・変化してきてるはずなんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：回数の累積がある以上、完全じゃねえはずだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　強く・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　強く　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：強くイメージだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：青水晶に手をかざそう。"); eventList.Add(ActionEvent.None);
+
+                GroundOne.WE2.SeekerEvent510 = true;
+            }
+            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
+            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message15010(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (!GroundOne.WE2.SeekerEvent511)
+            {
+                GroundOne.WE2.SeekerEvent511 = true;
+
+                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+                messageList.Add("　　支配竜：少年の記憶これまでの出来事を消滅受諾せよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、受諾する。完全に消し去ってくれて構わねえ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年のこれまでの時間全て消滅過去へ戻すコトを受諾せよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、受諾する。ダンジョンへ向かう所まで完全に戻してくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：現実を並行世界とし空間を補正遷移これを受諾せよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ、受諾する。なんでもやってくれ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：生命波動より受諾感知"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：転送開始"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：少年アイン・ウォーレンスよ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：願え"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：　　願え"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：　　　　願え"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　支配竜：次なる願い心の奥底に"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（ラナが死んだのは）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（俺が弱かったせいだ）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（俺が甘かったせいだ）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（次は、必ず強くなって）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（ラナが死なないように）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（やってみせる）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（ラナ・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（お前を必ず・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　アイン：（・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonRemovePartyTC);
+
+                messageList.Add(""); eventList.Add(ActionEvent.DungeonRemovePartySC);
+
+                // 遠見の青水晶を手放す
+                ItemBackPack[] backpackInfo = GroundOne.MC.GetBackPackInfo();
+                for (int jj = 0; jj < backpackInfo.Length; jj++)
+                {
+                    if (backpackInfo[jj] != null)
+                    {
+                        if ((backpackInfo[jj].Name == Database.RARE_TOOMI_BLUE_SUISYOU) ||
+                            (backpackInfo[jj].Name == Database.POOR_PRACTICE_SWORD_ZERO) ||
+                            (backpackInfo[jj].Name == Database.POOR_PRACTICE_SWORD) ||
+                            (backpackInfo[jj].Name == Database.POOR_PRACTICE_SWORD_1) ||
+                            (backpackInfo[jj].Name == Database.POOR_PRACTICE_SWORD_2) ||
+                            (backpackInfo[jj].Name == Database.COMMON_PRACTICE_SWORD_3) ||
+                            (backpackInfo[jj].Name == Database.COMMON_PRACTICE_SWORD_4) ||
+                            (backpackInfo[jj].Name == Database.RARE_PRACTICE_SWORD_5) ||
+                            (backpackInfo[jj].Name == Database.RARE_PRACTICE_SWORD_6) ||
+                            (backpackInfo[jj].Name == Database.EPIC_PRACTICE_SWORD_7) ||
+                            (backpackInfo[jj].Name == Database.LEGENDARY_FELTUS))
+                        {
+                            GroundOne.MC.DeleteBackPack(backpackInfo[jj]);
+                        }
+                    }
+                }
+                GroundOne.WE.GameDay = 1;
+                Method.AutoSaveTruthWorldEnvironment();
+                Method.AutoSaveRealWorld();
+
+                messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+            }
+        }
         #endregion
         #region "現実世界"
         #endregion

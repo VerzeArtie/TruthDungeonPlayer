@@ -1557,6 +1557,8 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
                     GroundOne.WE.TruthCompleteSlayBoss5 = true;
+                    MessagePack.Message15006_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
                 }
 
                 // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
@@ -9528,7 +9530,76 @@ namespace DungeonPlayer
             #endregion
             #region "５階"
             else if (area == 5)
-            { // after
+            {
+                switch (ii)
+                {
+                    #region "４階へ戻る階段"
+                    case 0:
+                        MessagePack.Message15000(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "細い通路の始まり"
+                    case 1:
+                        MessagePack.Message15001(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "大通路の始まり"
+                    case 2:
+                        MessagePack.Message15002(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "大通路の中間１"
+                    case 3:
+                        MessagePack.Message15003(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "大通路の中間２"
+                    case 4:
+                        MessagePack.Message15004(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "大通路の終わり"
+                    case 5:
+                        MessagePack.Message15005(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "ボスと語り、そして戦闘へ"
+                    case 6:
+                        MessagePack.Message15006(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "ホログラムによるパーティ編成"
+                    case 7:
+                        MessagePack.Message15007(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実世界への入り口"
+                    case 8:
+                        MessagePack.Message15008(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実世界、開始直前"
+                    case 9:
+                        MessagePack.Message15009(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                    #region "真実世界、開始"
+                    case 10:
+                        MessagePack.Message15010(ref nowMessage, ref nowEvent);
+                        tapOK();
+                        return true;
+                    #endregion
+                }
             }
             #endregion
             return false;
@@ -12390,6 +12461,14 @@ namespace DungeonPlayer
             }
         }
 
+        private void RefreshWater()
+        {
+            if (GroundOne.MC != null) { GroundOne.MC.ResurrectPlayer(GroundOne.MC.MaxLife); GroundOne.MC.MaxGain(); }
+            if (GroundOne.SC != null) { GroundOne.SC.ResurrectPlayer(GroundOne.SC.MaxLife); GroundOne.SC.MaxGain(); }
+            if (GroundOne.TC != null) { GroundOne.TC.ResurrectPlayer(GroundOne.TC.MaxLife); GroundOne.TC.MaxGain(); }
+            SetupPlayerStatus();
+        }
+
         private void UpdateMainMessage(string message)
         {
             UpdateMainMessage(message, false);
@@ -14529,6 +14608,30 @@ namespace DungeonPlayer
                     SetupDungeonMapping(5);
                     Method.AutoSaveTruthWorldEnvironment();
                     Method.AutoSaveRealWorld();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea1)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 44, 59, 29, 35);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea2)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 32, 43, 30, 34);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea3)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 20, 31, 31, 33);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea4)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 10, 19, 32, 32);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea5)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 0, 9, 27, 37);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea6)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 2, 2, 2, 3);
                 }
 
                 this.nowReading++;
