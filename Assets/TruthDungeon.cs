@@ -1967,6 +1967,17 @@ namespace DungeonPlayer
                     tapOK();
                 }
             }
+
+            Debug.Log("StartSeeker: " + GroundOne.WE2.StartSeeker);
+            if (GroundOne.WE2.StartSeeker)
+            {
+                if (!GroundOne.WE2.SeekerEvent1)
+                {
+                    GroundOne.WE2.SeekerEvent1 = true;
+                    MessagePack.Message14143(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+            }
         }
 
         private void movementTimer_Tick()
@@ -6636,7 +6647,7 @@ namespace DungeonPlayer
                     {
                         return true;
                     }
-                    if (row == 17 && column == 45 && eventNum == 186)
+                    if (row == 16 && column == 45 && eventNum == 186)
                     {
                         return true;
                     }
@@ -14492,6 +14503,17 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonUpdateUnknownTileArea45)
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 49, 52, 20, 20);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenGateE1)
+                {
+                    OpenTheDoor(2, new Vector3(48, -20, 0));
+                    OpenTheDoor(1, new Vector3(49, -20, 0));
+                    UpdateUnknownTile();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor4OpenWallE1)
+                {
+                    objList[21 * Database.TRUTH_DUNGEON_COLUMN + 46].GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.FloorFolder[GroundOne.WE.DungeonArea - 1] + Database.TILEINFO_13);
+                    tileInfo4[21 * Database.TRUTH_DUNGEON_COLUMN + 46] = Database.TILEINFO_13;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDungeonFive)
                 {

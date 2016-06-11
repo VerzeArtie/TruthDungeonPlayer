@@ -899,6 +899,7 @@ namespace DungeonPlayer
         public static int BGM23LoopBegin = 0;
         #endregion
 
+        #region "環境ファイル系"
         public static string BaseSoundFolder = @"Sounds/";
         public static string BaseSaveFolder = Environment.CurrentDirectory + @"\Save\";
         public static string BaseResourceFolder = @""; // Environment.CurrentDirectory + @"\Resource\"; change unity
@@ -906,6 +907,9 @@ namespace DungeonPlayer
         public static string[] FloorFolder = { @"Floor1\", @"Floor2\", @"Floor3\", @"Floor4\", @"Floor5\" };
 
         public static string GameSettingFileName = Environment.CurrentDirectory + @"\" + @"GameSetting.xml";
+
+        public static string WorldSaveNum = "999_";
+        #endregion
 
         #region "戦闘、敵のBuffUp汎用"
         public const string BUFF_PHYSICAL_ATTACK_UP = @"BuffPhysicalAttackUp.bmp";

@@ -149,7 +149,9 @@ public class TruthChoiceStatue : MotherForm {
             }
             else if (currentEvent == MessagePack.ActionEvent.DungeonBadEnd)
             {
-                SceneDimension.CallSaveLoadWithSaveRealWorldOnly();
+                const string WorldSaveNum = "999_";
+                Method.ExecSave(null, WorldSaveNum, true);
+                SceneDimension.JumpToTitle();
             }
             else if (currentEvent == MessagePack.ActionEvent.DungeonGoSeeker)
             {

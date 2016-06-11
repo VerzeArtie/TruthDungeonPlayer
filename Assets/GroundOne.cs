@@ -112,8 +112,6 @@ namespace DungeonPlayer
         public static bool AfterBacktoTitle = false; // タイトル戻り直前のセーブモード
         public static bool SaveMode = false; // false:Load true:Save
         public static bool SaveAndExit = false; // true:RealWorldSave and exit
-        public static bool LoadRealWorldAndExit = false; // true:LoadRealWorld and exit
-        public static bool SaveRealWorldAndExit = false; // true:SaveRealWorld and exit
 
         // TruthHomeTown
         public static bool TruthHomeTown_NowExit = false;

@@ -39,7 +39,6 @@ namespace DungeonPlayer
         private string[] filenameList = null;
         private DateTime newDateTime = new DateTime(1, 1, 1, 0, 0, 0);
 
-        private const string WorldSaveNum = "999_";
         // Use this for initialization
         public override void Start()
         {
@@ -52,20 +51,6 @@ namespace DungeonPlayer
                 SceneDimension.Back(this);
                 return;
             }
-            if (GroundOne.SaveRealWorldAndExit)
-            {
-                RealWorldSave();
-                SceneDimension.JumpToTitle();
-                return;
-            }
-            if (GroundOne.LoadRealWorldAndExit)
-            {
-                Debug.Log("RealWorldLoadAndExit");
-                RealWorldLoad();
-                Debug.Log("RealWorldLoadAndExit ok");
-                SceneDimension.JumpToTruthDungeon(false);
-                return;
-            }
 
             this.Background.GetComponent<Image>().color = UnityColor.Aqua;
             if (GroundOne.SaveMode)
@@ -76,7 +61,7 @@ namespace DungeonPlayer
 
             MakeDirectory();
 
-            this.filenameList = System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml");
+            this.filenameList = System.IO.Directory.GetFiles(Method.GetDirectoryName(), "*.xml");
 
             // 一番新しいファイルのナンバーを記憶する。
             int newNumber = 0;
@@ -165,22 +150,6 @@ namespace DungeonPlayer
             }
         }
 
-        private string GetDirectoryName()
-        {
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')); // after (ios)
-            }
-            else if (Application.platform == RuntimePlatform.Android)
-            {
-                return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/'));
-            }
-            else
-            {
-                return Database.BaseSaveFolder;
-            }
-
-        }
         private void MakeDirectory()
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
@@ -197,41 +166,6 @@ namespace DungeonPlayer
                 {
                     System.IO.Directory.CreateDirectory(Database.BaseSaveFolder);
                 }
-            }
-        }
-
-        private string pathForRootFile(string filename)
-        {
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                return filename;
-            }
-            else if (Application.platform == RuntimePlatform.Android)
-            {
-                return filename;
-            }
-            else
-            {
-                return filename;
-            }
-        }
-        private string pathForDocumentsFile(string filename)
-        {
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(Path.Combine(path, "Documents"), filename);
-            }
-            else if (Application.platform == RuntimePlatform.Android)
-            {
-                string path = Application.persistentDataPath;
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(path, filename);
-            }
-            else
-            {
-                return Database.BaseSaveFolder + filename;
             }
         }
 
@@ -304,19 +238,14 @@ namespace DungeonPlayer
 
         public void RealWorldSave()
         {
-            ExecSave(null, WorldSaveNum, true);
-        }
-        public void RealWorldLoad()
-        {
-            Debug.Log("RealWorldLoad start");
-            ExecLoad(null, WorldSaveNum, true);
+            ExecSave(null, Database.WorldSaveNum, true);
         }
 
         private void ExecSave(Text sender, string targetFileName, bool forceSave)
         {
             DateTime now = DateTime.Now;
 
-            foreach (string overwriteData in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
+            foreach (string overwriteData in System.IO.Directory.GetFiles(Method.GetDirectoryName(), "*.xml"))
             {
                 if (overwriteData.Contains(targetFileName))
                 {
@@ -363,7 +292,7 @@ namespace DungeonPlayer
             }
             targetFileName += ".xml";
 
-            XmlTextWriter xmlWriter = new XmlTextWriter(pathForDocumentsFile(targetFileName), Encoding.UTF8);
+            XmlTextWriter xmlWriter = new XmlTextWriter(Method.pathForDocumentsFile(targetFileName), Encoding.UTF8);
             try
             {
                 xmlWriter.WriteStartDocument();
@@ -935,9 +864,9 @@ namespace DungeonPlayer
             }
             else
             {
-                foreach (string currentFile in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
+                foreach (string currentFile in System.IO.Directory.GetFiles(Method.GetDirectoryName(), "*.xml"))
                 {
-                    if (currentFile.Contains(WorldSaveNum))
+                    if (currentFile.Contains(Database.WorldSaveNum))
                     {
                         targetFileName = System.IO.Path.GetFileName(currentFile);
                         break;
@@ -945,7 +874,7 @@ namespace DungeonPlayer
                 }
             }
 
-            xml.Load(pathForDocumentsFile(targetFileName));
+            xml.Load(Method.pathForDocumentsFile(targetFileName));
             Debug.Log("ExecLoad 2 " + DateTime.Now);
             
             try

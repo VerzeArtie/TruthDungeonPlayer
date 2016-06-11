@@ -92,9 +92,8 @@ namespace DungeonPlayer
             Method.AutoSaveTruthWorldEnvironment();
 
             GroundOne.StopDungeonMusic();
-            Debug.Log("call CallSaveLoadWithLoadRealWorldOnly (S)");
-            SceneDimension.CallSaveLoadWithLoadRealWorldOnly();
-            //SceneDimension.JumpToTruthDungeon(false);
+            Method.ExecLoad(null, Database.WorldSaveNum, true);
+            SceneDimension.JumpToTruthDungeon(false);
         }
 
         public void PointerEnter()

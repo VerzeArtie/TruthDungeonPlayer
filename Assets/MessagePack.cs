@@ -428,6 +428,8 @@ namespace DungeonPlayer
             DungeonStatueViewElement,
             DungeonStatueViewSong,
             // ChoiceStatue
+            DungeonFloor4OpenGateE1,
+            DungeonFloor4OpenWallE1,
             DungeonUpdateUnknownTileArea45,
             DungeonGotoDungeonFive,
             Ending,
@@ -20529,9 +20531,9 @@ namespace DungeonPlayer
 
             messageList.Add("　　（　ここから先、ダンジョンで何が起きたのか、未だに思い出せないでいる　）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　（　気がつけば、元の世界に居た　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　（　気がつけば、元の世界にいた　）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　（　ラナが居る世界　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　（　ラナが横にいる世界　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　（　俺はラナと現在一緒に生活している　）"); eventList.Add(ActionEvent.None);
 
@@ -21503,7 +21505,54 @@ namespace DungeonPlayer
             messageList.Add("アイン：（どうする・・・）"); eventList.Add(ActionEvent.None);
         }
         #endregion
+        #region "４階、現実世界スタート"
+        public static void Message14143(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　時間の感覚はなくなりつつあった　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　もう何かしらの思考パターンは形成されなくなった　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　街に戻る意義もなく、ダンジョンを進める意義もなく　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　ただ、時間だけが過ぎていった　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　・・・ラナ・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　何かを、決心をしたわけではなかった　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　何かに、希望を見出したわけでもなかった　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　何らかの、方法を探ろうとするわけでもなかった　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　無意味に何も無く　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　気が付けば、足が動いていた　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　目的はない　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　ラナが死んだ世界では、目的思考はすべて俺の中では動作してない　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　意味もなく、本質もなく、目的もなく　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　俺は、無思慮に歩を進め始めた　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenWallE1);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor4OpenGateE1);
+        }
+        #endregion
         #endregion
         #region "５階"
         #endregion
@@ -25127,6 +25176,7 @@ namespace DungeonPlayer
             //    sl.StartPosition = FormStartPosition.CenterParent;
             //    sl.ShowDialog(); eventList.Add(ActionEvent.None);
             //    sl.RealWorldSave(); eventList.Add(ActionEvent.None);
+            Method.ExecSave(null, Database.WorldSaveNum, true);
             //}
 
             //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
