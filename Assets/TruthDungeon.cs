@@ -12427,7 +12427,7 @@ namespace DungeonPlayer
 
         private bool BlockAction()
         {
-            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent506)
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd && !GroundOne.WE2.SeekerEvent1)
             {
                 mainMessage.text = "アイン：・・・　・・・";
                 return true;
@@ -12450,14 +12450,11 @@ namespace DungeonPlayer
             if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
-                if (GroundOne.WE2.SeekerEvent506)
-                {
-                    this.Filter.GetComponent<Image>().color = Color.clear;
-                    this.Filter.SetActive(true);
-                    systemMessageText.text = "ここまでの記録は自動セーブされており、新しいセーブはできません。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
-                    groupSystemMessage.SetActive(true);
-                    return;
-                }
+                this.Filter.GetComponent<Image>().color = Color.clear;
+                this.Filter.SetActive(true);
+                systemMessageText.text = "ここまでの記録は自動セーブされており、新しいセーブはできません。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
+                groupSystemMessage.SetActive(true);
+                return;
             }
 
             this.Filter.GetComponent<Image>().color = Color.white;
@@ -12469,14 +12466,11 @@ namespace DungeonPlayer
             if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
-                if (GroundOne.WE2.SeekerEvent506)
-                {
-                    this.Filter.GetComponent<Image>().color = Color.clear;
-                    this.Filter.SetActive(true);
-                    systemMessageText.text = "現在ロードはできません。ここまでの記録は自動セーブされています。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
-                    groupSystemMessage.SetActive(true);
-                    return;
-                }
+                this.Filter.GetComponent<Image>().color = Color.clear;
+                this.Filter.SetActive(true);
+                systemMessageText.text = "現在ロードはできません。ここまでの記録は自動セーブされています。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
+                groupSystemMessage.SetActive(true);
+                return;
             }
             SceneDimension.CallSaveLoad(this, false, false);
         }
@@ -12484,6 +12478,14 @@ namespace DungeonPlayer
         public void tapExit()
         {
             if (BlockAction()) { return; }
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                Method.AutoSaveTruthWorldEnvironment();
+                Method.AutoSaveRealWorld();
+                SceneDimension.JumpToTitle();
+                return;
+            }
+
             yesnoSystemMessage.text = Database.exitMessage1;
             groupYesnoSystemMessage.SetActive(true);
         }
@@ -12558,7 +12560,12 @@ namespace DungeonPlayer
         public void BlueOrb_Click()
         {
             if (BlockAction()) { return; }
-            if (GroundOne.WE.dungeonEvent4_SlayBoss3)
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                mainMessage.text = "アイン：・・・　・・・";
+                return;
+            }
+            else if (GroundOne.WE.dungeonEvent4_SlayBoss3)
             {
                 mainMessage.text = "アイン：（ダメだ。ラナが囚われたままだ。助けるまではもう街へは帰らねえ）";
                 return;
@@ -14520,6 +14527,8 @@ namespace DungeonPlayer
                     GroundOne.WE.TruthCompleteArea4 = true;
                     JumpToLocation(57, -2, true);
                     SetupDungeonMapping(5);
+                    Method.AutoSaveTruthWorldEnvironment();
+                    Method.AutoSaveRealWorld();
                 }
 
                 this.nowReading++;

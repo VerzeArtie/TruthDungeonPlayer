@@ -13,6 +13,9 @@ namespace DungeonPlayer
     {
         public Camera cam;
         public Text titleText;
+        public Text subtitleText;
+        public GameObject GroupSystemMessage;
+        public Text SystemMessageText;
         public GameObject buttonGamestart;
         public GameObject buttonSeeker;
         public GameObject buttonLoad;
@@ -23,18 +26,36 @@ namespace DungeonPlayer
             base.Start();
             if (GroundOne.EnableBGM)
             {
-                GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin); // ��Ғǉ�    
+                GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin); // 後編追加    
             }
 
-            // GroundOne.WE2�̓Q�[���S�̂̃Z�[�u�f�[�^�ł���A�����œǂݍ���ł����B
+            // GroundOne.WE2はゲーム全体のセーブデータであり、ここで読み込んでおく。
             Method.ReloadTruthWorldEnvironment();
 
-            // �������E�˓���Seeker���[�h��\��
-            buttonSeeker.SetActive(GroundOne.WE2.RealWorld);
+            // 現実世界突入でSeekerモードを表示
+            if (GroundOne.WE2.RealWorld)
+            {
+                buttonSeeker.SetActive(true);
+                this.cam.backgroundColor = Color.black;
+                this.titleText.color = Color.white;
+                this.subtitleText.color = Color.white;
+            }
         }
-        
+
+        public void tapExit()
+        {
+            GroupSystemMessage.SetActive(false);
+        }
+
         public void GameStart_Click()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、新しく始める事はできません。";
+                GroupSystemMessage.SetActive(true);
+                return;
+            }
+
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
             GroundOne.MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
@@ -72,6 +93,12 @@ namespace DungeonPlayer
 
         public void Load_Click()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                SystemMessageText.text = "アイン・ウォーレンスが並行世界へ突入している事により、ロードを行う事はできません。";
+                GroupSystemMessage.SetActive(true);
+                return;
+            }
             this.Filter.SetActive(true);
             SceneDimension.CallSaveLoad(this, false, false);
         }
@@ -87,7 +114,6 @@ namespace DungeonPlayer
 
         public void Seeker_Click()
         {
-            Debug.Log("Seeker_Click (S)");
             GroundOne.WE2.StartSeeker = true;
             Method.AutoSaveTruthWorldEnvironment();
 
