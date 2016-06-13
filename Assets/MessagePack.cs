@@ -22867,6 +22867,7 @@ namespace DungeonPlayer
 
         public static void Message15006_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            // after
             //bool tempFlag = GroundOne.WE2.SeekerEvent508_fail;
             //if (tempFlag)
             //{
