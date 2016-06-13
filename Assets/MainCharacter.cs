@@ -2729,7 +2729,6 @@ namespace DungeonPlayer
         {
             get
             {
-                Debug.Log("PlayerColor name: " + this.FirstName);
                 if (this.FirstName == Database.EIN_WOLENCE) { return new Color(Database.COLOR_BOX_EIN_R, Database.COLOR_BOX_EIN_G, Database.COLOR_BOX_EIN_B); }
                 else if (this.FirstName == Database.RANA_AMILIA) { return new Color(Database.COLOR_RANA_R, Database.COLOR_RANA_G, Database.COLOR_RANA_B); }
                 else if (this.FirstName == Database.OL_LANDIS) { return new Color(Database.COLOR_BOX_OL_R, Database.COLOR_BOX_OL_G, Database.COLOR_BOX_OL_B); }

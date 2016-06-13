@@ -69,17 +69,39 @@ public class TruthSelectCharacter : MotherForm
     public GameObject back_accessory;
     public GameObject back_accessory2;
 
-    public Button btnFirstChara;
-    public Button btnSecondChara;
-    public Button btnThirdChara;
-    public Text labelFirstPlayerLife;
-    public Text labelSecondPlayerLife;
-    public Text labelThirdPlayerLife;
+    public Button btnPlayer1;
+    public Button btnPlayer2;
+    public Button btnPlayer3;
+    public Button btnPlayer4;
+    public GameObject back_selected1;
+    public Text selected1;
+    public GameObject back_selected2;
+    public Text selected2;
+    public Button choice;
+    public Button btnFix;
 
     bool usingOvershifting = false;
     bool usingOvershiftingFirstSleep = false;
     bool usingOvershiftingSecondSleep = false;
     bool usingToomiBlueSuisyou = false;
+
+    public List<MainCharacter> playerList = new List<MainCharacter>();
+    private MainCharacter currentPlayer = null;
+    public const int MAX_ADD = 2;
+    private int remainSC = 0;
+    private int addStrSC = 0;
+    private int addAglSC = 0;
+    private int addIntSC = 0;
+    private int addStmSC = 0;
+    private int addMndSC = 0;
+    private int remainTC = 0;
+    private int addStrTC = 0;
+    private int addAglTC = 0;
+    private int addIntTC = 0;
+    private int addStmTC = 0;
+    private int addMndTC = 0;
+    private bool choiceSC = false;
+    private bool choiceTC = false;
 
     private enum CoreType
     {
@@ -92,43 +114,12 @@ public class TruthSelectCharacter : MotherForm
 
     public override void Start()
     {
-        base.Start(); base.Start();
+        base.Start();
 
         this.Background.GetComponent<Image>().color = GroundOne.CurrentStatusView;
         MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
         SettingCharacterData(player);
         RefreshPartyMembersBattleStatus(player);
-
-        RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
-
-        if (GroundOne.MC == null) { Debug.Log("status MC is null...?"); }
-        if (GroundOne.SC == null) { Debug.Log("status SC is null...?"); }
-        if (GroundOne.TC == null) { Debug.Log("status TC is null...?"); }
-        if (GroundOne.MC != null) { btnFirstChara.GetComponent<Image>().color = GroundOne.MC.PlayerColor; }
-        if (GroundOne.SC != null) { btnSecondChara.GetComponent<Image>().color = GroundOne.SC.PlayerColor; }
-        if (GroundOne.TC != null) { btnThirdChara.GetComponent<Image>().color = GroundOne.TC.PlayerColor; }
-
-        if (GroundOne.WE.AvailableSecondCharacter && GroundOne.DuelMode == false)
-        {
-            btnSecondChara.gameObject.SetActive(true);
-            labelSecondPlayerLife.gameObject.SetActive(true);
-        }
-        else
-        {
-            btnSecondChara.gameObject.SetActive(false);
-            labelSecondPlayerLife.gameObject.SetActive(false);
-        }
-
-        if (GroundOne.WE.AvailableThirdCharacter && GroundOne.DuelMode == false)
-        {
-            btnThirdChara.gameObject.SetActive(true);
-            labelThirdPlayerLife.gameObject.SetActive(true);
-        }
-        else
-        {
-            btnThirdChara.gameObject.SetActive(false);
-            labelThirdPlayerLife.gameObject.SetActive(false);
-        }
 
         btnMana.SetActive(GroundOne.MC.AvailableMana);
         mana.gameObject.SetActive(GroundOne.MC.AvailableMana);
@@ -137,6 +128,8 @@ public class TruthSelectCharacter : MotherForm
         skill.gameObject.SetActive(GroundOne.MC.AvailableSkill);
 
         mainMessage.text = "";
+
+
     }
 
     public override void Update()
@@ -151,37 +144,152 @@ public class TruthSelectCharacter : MotherForm
         MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
         SettingCharacterData(player);
         RefreshPartyMembersBattleStatus(player);
-        RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
     }
 
-    public void tapClose()
+    public void btnReset_Click()
     {
-        if (GroundOne.OnlySelectTrash)
+        //this.playerList.Clear();
+        //selected1.Text = "";
+        //selected2.Text = "";
+        //selected1.BackColor = Color.Cornsilk;
+        //selected2.BackColor = Color.Cornsilk;
+        //btnPlayer1.Enabled = true;
+        //btnPlayer2.Enabled = true;
+        //btnPlayer3.Enabled = true;
+        //btnPlayer4.Enabled = true;
+        //choice.Enabled = true;
+        //btnFix.Enabled = false;
+        //this.choiceSC = false;
+        //this.choiceTC = false;
+        //UpdateBtnUpReset();
+    }
+
+    public void choice_Click()
+    {
+        SelectOrAdd(this.currentPlayer);
+    }
+
+    public void btnFix_Click()
+    {
+        SceneDimension.Back(this);
+    }
+
+    private void CheckMaxAdd()
+    {
+        if (this.playerList.Count >= MAX_ADD)
         {
-            if (GroundOne.CannotSelectTrash != string.Empty)
+            btnPlayer1.enabled = false;
+            btnPlayer2.enabled = false;
+            btnPlayer3.enabled = false;
+            btnPlayer4.enabled = false;
+            choice.enabled = false;
+            btnFix.enabled = true;
+        }
+    }
+
+    private void PlayerAdd(string name)
+    {
+        Text current = selected1;
+        GameObject back_current = back_selected1;
+        this.playerList.Add(this.currentPlayer);
+        if (this.playerList.Count == 1)
+        {
+            current = selected1;
+            back_current = back_selected1;
+        }
+        else if (this.playerList.Count == 2)
+        {
+            current = selected2;
+            back_current = back_selected2;
+        }
+        current.text = this.currentPlayer.FullName;
+        if (currentPlayer.FirstName == Database.RANA_AMILIA)
+        {
+            back_current.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+            this.btnUpReset.gameObject.SetActive(false);
+        }
+        else if (currentPlayer.FirstName == Database.OL_LANDIS)
+        {
+            back_current.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+            this.btnUpReset.gameObject.SetActive(false);
+        }
+        else if (currentPlayer.FirstName == Database.VERZE_ARTIE)
+        {
+            back_current.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+        }
+        else if (currentPlayer.FirstName == Database.SINIKIA_KAHLHANZ)
+        {
+            back_current.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+        }
+        CheckMaxAdd();
+    }
+
+    private void UpdateBtnUpReset()
+    {
+        if (currentPlayer.Equals(GroundOne.SC))
+        {
+            btnUpReset.gameObject.SetActive(!this.choiceSC);
+        }
+        else if (currentPlayer.Equals(GroundOne.TC))
+        {
+            btnUpReset.gameObject.SetActive(!this.choiceTC);
+        }
+        else
+        {
+            btnUpReset.gameObject.SetActive(false);
+        }
+    }
+
+    private void SelectOrAdd(MainCharacter player)
+    {
+        if ((this.currentPlayer == null) ||
+            (this.currentPlayer.FullName != player.FullName))
+        {
+            this.currentPlayer = player;
+            this.Background.GetComponent<Image>().color = currentPlayer.PlayerStatusColor;
+            SettingCharacterData(player);
+            RefreshPartyMembersBattleStatus(player);
+        }
+        else
+        {
+            if (this.playerList.Contains(player))
             {
-                mainMessage.text = "アイン：いや【" + GroundOne.CannotSelectTrash + "】の入手を諦めるわけにはいかねえ。";
-                return;
+                // 何もしない
+            }
+            else
+            {
+                if (player.Equals(GroundOne.SC))
+                {
+                    if (this.remainSC > 0)
+                    {
+                        mainMessage.text = "アイン：パラメタを先に割り振ろう";// this.sc.FullName + "のパラメタ割り振りを完了してください。";
+                    }
+                    else
+                    {
+                        this.choiceSC = true;
+                        PlayerAdd(player.FullName);
+                    }
+                }
+                else if (player.Equals(GroundOne.TC))
+                {
+                    if (this.remainTC > 0)
+                    {
+                        mainMessage.text = "アイン：パラメタを先に割り振ろう"; // this.tc.FullName + "のパラメタ割り振りを完了してください。";
+                    }
+                    else
+                    {
+                        this.choiceTC = true;
+                        PlayerAdd(player.FullName);
+                    }
+                }
+                else
+                {
+                    PlayerAdd(player.FullName);
+                }
             }
         }
+        UpdateBtnUpReset();
     }
-
-    private void RefreshPartyMembersLife(Text player1Life, Text player2Life, Text player3Life)
-    {
-        if (GroundOne.WE.AvailableFirstCharacter)
-        {
-            player1Life.text = GroundOne.MC.CurrentLife.ToString() + "/" + GroundOne.MC.MaxLife.ToString();
-        }
-        if (GroundOne.WE.AvailableSecondCharacter && GroundOne.DuelMode == false)
-        {
-            player2Life.text = GroundOne.SC.CurrentLife.ToString() + "/" + GroundOne.SC.MaxLife.ToString();
-        }
-        if (GroundOne.WE.AvailableThirdCharacter && GroundOne.DuelMode == false)
-        {
-            player3Life.text = GroundOne.TC.CurrentLife.ToString() + "/" + GroundOne.TC.MaxLife.ToString();
-        }
-    }
-
 
     private void SettingCoreParameter(CoreType coreType, int basicValue, int addAccessoryValue, int addFoodValue, Text txtBasic, Text txtBuff, Text txtFood, Text txtTotal)
     {
@@ -226,7 +334,6 @@ public class TruthSelectCharacter : MotherForm
         btnUpReset.gameObject.SetActive(false);
         lblRemain.gameObject.SetActive(false);
 
-        RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
         this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
 
         if (chara.AvailableSkill)
@@ -366,12 +473,6 @@ public class TruthSelectCharacter : MotherForm
         RefreshPartyMembersBattleStatus(GroundOne.TC);
     }
 
-    // [警告] 以下、TruthSelectCharacterと重複する記述です。統一化を行ってください。
-    private int addStrSC = 0;
-    private int addAglSC = 0;
-    private int addIntSC = 0;
-    private int addStmSC = 0;
-    private int addMndSC = 0;
     upType number = upType.Strength;
 
     enum upType
@@ -525,7 +626,6 @@ public class TruthSelectCharacter : MotherForm
                 this.life.text = GroundOne.TC.CurrentLife.ToString() + " / " + GroundOne.TC.MaxLife.ToString();
                 RefreshPartyMembersBattleStatus(GroundOne.TC);
             }
-            RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
             CheckUpPoint();
         }
     }
@@ -595,7 +695,6 @@ public class TruthSelectCharacter : MotherForm
                 mind.text = player.Mind.ToString();
             }
             RefreshPartyMembersBattleStatus(player);
-            RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
             lblRemain.text = "残り " + remain.ToString();
         }
     }
@@ -643,7 +742,6 @@ public class TruthSelectCharacter : MotherForm
         ResetParameter(ref player, ref GroundOne.UpPoint, ref this.addStrSC, ref this.addAglSC, ref this.addIntSC, ref this.addStmSC, ref this.addMndSC);
         SettingCharacterData(player);
         RefreshPartyMembersBattleStatus(player);
-        RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
     }
 
 }
