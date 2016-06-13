@@ -148,20 +148,20 @@ public class TruthSelectCharacter : MotherForm
 
     public void btnReset_Click()
     {
-        //this.playerList.Clear();
-        //selected1.Text = "";
-        //selected2.Text = "";
-        //selected1.BackColor = Color.Cornsilk;
-        //selected2.BackColor = Color.Cornsilk;
-        //btnPlayer1.Enabled = true;
-        //btnPlayer2.Enabled = true;
-        //btnPlayer3.Enabled = true;
-        //btnPlayer4.Enabled = true;
-        //choice.Enabled = true;
-        //btnFix.Enabled = false;
-        //this.choiceSC = false;
-        //this.choiceTC = false;
-        //UpdateBtnUpReset();
+        this.playerList.Clear();
+        selected1.text = "";
+        selected2.text = "";
+        back_selected1.GetComponent<Image>().color = UnityColor.Cornsilk;
+        back_selected2.GetComponent<Image>().color = UnityColor.Cornsilk;
+        btnPlayer1.enabled = true;
+        btnPlayer2.enabled = true;
+        btnPlayer3.enabled = true;
+        btnPlayer4.enabled = true;
+        choice.enabled = true;
+        btnFix.enabled = false;
+        this.choiceSC = false;
+        this.choiceTC = false;
+        UpdateBtnUpReset();
     }
 
     public void choice_Click()

@@ -67,7 +67,7 @@ namespace DungeonPlayer
         public static Color Bisque = new Color(255, 228, 196);
         public static Color Blanchedalmond = new Color(255, 235, 205);
         public static Color Papayawhip = new Color(255, 239, 213);
-        public static Color Cornsilk = new Color(255, 248, 220);
+        public static Color Cornsilk = new Color(255.0f / 255.0f, 248.0f / 255.0f, 220.0f / 255.0f);
         public static Color LightYellow = new Color(1.0f, 1.0f, 224.0f / 255.0f);
         public static Color Lightgoldenrodyellow = new Color(250, 250, 210);
         public static Color Lemonchiffon = new Color(255, 250, 205);
