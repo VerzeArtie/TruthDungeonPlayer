@@ -2794,7 +2794,7 @@ GameObject:
   - 114: {fileID: 451528302}
   - 114: {fileID: 451528301}
   m_Layer: 5
-  m_Name: basic
+  m_Name: Lana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4961,7 +4961,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30E9\u30CA\u30FB\u30A2\u30DF\u30EA\u30A2"
+  m_Text: "\u30B7\u30CB\u30AD\u30A2\u30FB\u30AB\u30FC\u30EB\u30CF\u30F3\u30C4"
 --- !u!222 &778398560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8007,7 +8007,7 @@ GameObject:
   - 114: {fileID: 1251236456}
   - 114: {fileID: 1251236455}
   m_Layer: 5
-  m_Name: spell
+  m_Name: Shinikia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9197,6 +9197,17 @@ MonoBehaviour:
   back_armor: {fileID: 598380402}
   back_accessory: {fileID: 1889552403}
   back_accessory2: {fileID: 606094394}
+  btnPlayer1: {fileID: 451528301}
+  btnPlayer2: {fileID: 2013028119}
+  btnPlayer3: {fileID: 1251236455}
+  btnPlayer4: {fileID: 0}
+  back_selected1: {fileID: 1442806279}
+  selected1: {fileID: 301297139}
+  back_selected2: {fileID: 1381155731}
+  selected2: {fileID: 1111736308}
+  choice: {fileID: 811274146}
+  btnFix: {fileID: 279353126}
+  playerList: []
 --- !u!1 &1442806279
 GameObject:
   m_ObjectHideFlags: 0
@@ -11810,7 +11821,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B7\u30CB\u30AD\u30A2\u30FB\u30AB\u30FC\u30EB\u30CF\u30F3\u30C4"
+  m_Text: "\u30E9\u30CA\u30FB\u30A2\u30DF\u30EA\u30A2"
 --- !u!222 &1917250871
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12557,7 +12568,7 @@ GameObject:
   - 114: {fileID: 2013028120}
   - 114: {fileID: 2013028119}
   m_Layer: 5
-  m_Name: backpack
+  m_Name: Ol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

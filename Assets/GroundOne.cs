@@ -95,7 +95,7 @@ namespace DungeonPlayer
         public static bool GotoDownstair = false;
 
         // TruthStatusPlayer
-        public static Color CurrentStatusView = new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B);
+        public static Color CurrentStatusColor = new Color(Database.COLOR_EIN_R, Database.COLOR_EIN_G, Database.COLOR_EIN_B);
         public static bool LevelUp = false; // レベルアップモード画面
         public static int UpPoint = 0; // パラメタアップポイント
         public static int CumultiveLvUpValue = 0; // レベルアップカウント累積値

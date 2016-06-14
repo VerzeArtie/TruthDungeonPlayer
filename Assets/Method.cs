@@ -45,7 +45,15 @@ namespace DungeonPlayer
 
         public static MainCharacter GetCurrentPlayer(Color baseColor)
         {
+        Debug.Log("baseColor: " + baseColor);
             MainCharacter player = null;
+            if (GroundOne.MC == null) { Debug.Log("status MC is null...?"); }
+            if (GroundOne.SC == null) { Debug.Log("status SC is null...?"); }
+            if (GroundOne.TC == null) { Debug.Log("status TC is null...?"); }
+            Debug.Log("MC.color" + GroundOne.MC.PlayerStatusColor);
+            Debug.Log("SC.color" + GroundOne.SC.PlayerStatusColor);
+            Debug.Log("TC.color" + GroundOne.TC.PlayerStatusColor);
+
             if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == baseColor)
             {
                 player = GroundOne.MC;
