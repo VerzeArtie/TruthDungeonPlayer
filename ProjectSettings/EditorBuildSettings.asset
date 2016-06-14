@@ -48,6 +48,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TruthChoiceStatue.unity
   - enabled: 1
+    path: Assets/TruthSelectCharacter.unity
+  - enabled: 1
     path: Assets/TruthInputRequest.unity
   - enabled: 1
     path: Assets/TruthItemBank.unity

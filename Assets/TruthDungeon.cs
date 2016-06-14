@@ -117,6 +117,9 @@ namespace DungeonPlayer
         // 敵の強さを区分けするためのタイルカラー情報
         int[] tileColor = new int[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
 
+        // ダンジョンマップの基本タイル情報
+        private GameObject prefab_TileElement = null;
+
         // ダンジョンマップ上にあるイベント要素情報
         bool[] treasureBoxTile = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
         bool[] boardTile = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
@@ -175,7 +178,7 @@ namespace DungeonPlayer
 
         bool nowMirrorRoomGodSequence = false; // ３階、鏡の部屋、神々の試練を実行中
 
-        private GameObject prefab_TileElement = null;
+        bool nowSelectCharacter = false; // ５階、メンバー選定中
 
         // Use this for initialization
         public override void Start()
@@ -1334,6 +1337,12 @@ namespace DungeonPlayer
                     MessagePack.Message12064_Fail(ref nowMessage, ref nowEvent, failCounter);
                     tapOK();
                 }
+            }
+            else if (this.nowSelectCharacter)
+            {
+                this.nowSelectCharacter = false;
+                MessagePack.Message15007_2(ref nowMessage, ref nowEvent);
+                tapOK();
             }
 
             #region "戦闘終了判定"
@@ -14624,6 +14633,11 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea4)
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 10, 19, 32, 32);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5TruthSelectCharacter)
+                {
+                    this.nowSelectCharacter = true;
+                    SceneDimension.CallTruthSelectCharacter(this);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea5)
                 {

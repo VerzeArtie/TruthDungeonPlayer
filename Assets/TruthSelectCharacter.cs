@@ -639,6 +639,10 @@ public class TruthSelectCharacter : MotherForm
 
     public void btnFix_Click()
     {
+        GroundOne.WE.AvailableSecondCharacter = true;
+        GroundOne.WE.AvailableThirdCharacter = true;
+        GroundOne.SC = playerList[0];
+        GroundOne.TC = playerList[1];
         SceneDimension.Back(this);
     }
 

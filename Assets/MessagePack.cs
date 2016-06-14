@@ -436,6 +436,7 @@ namespace DungeonPlayer
             DungeonFloor5UnknownTileArea2,
             DungeonFloor5UnknownTileArea3,
             DungeonFloor5UnknownTileArea4,
+            DungeonFloor5TruthSelectCharacter,
             DungeonFloor5UnknownTileArea5,
             DungeonRefreshWater,
             DungeonFloor5UnknownTileArea6,
@@ -22834,6 +22835,8 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
 
+                messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
+
                 messageList.Add("　　アイン：（　像を調べてみるか　）"); eventList.Add(ActionEvent.None);
 
                 GroundOne.WE2.SeekerEvent506 = true;
@@ -22951,48 +22954,12 @@ namespace DungeonPlayer
 
                     messageList.Add("　　アイン：（　どうする・・・　）"); eventList.Add(ActionEvent.None);
 
-                    // todo
-                    //using (TruthSelectCharacter TSC = new TruthSelectCharacter())
-                    //{
-                    //    TSC.StartPosition = FormStartPosition.CenterScreen;
-                    //    TSC.SC = GroundOne.SC;
-                    //    TSC.TC = GroundOne.TC;
-                    //    TSC.ShowDialog(); eventList.Add(ActionEvent.None);
-                    //    GroundOne.SC = TSC.playerList[0];
-                    //    GroundOne.TC = TSC.playerList[1];
-                    //}
-
-                    GroundOne.WE.AvailableSecondCharacter = true;
-                    GroundOne.WE.AvailableThirdCharacter = true;
-
-                    messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupPlayerStatus);
-
-                    messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
-
-                    messageList.Add("　　アイン：よし、決めたぜ。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("　　アイン：『" + GroundOne.SC.FullName + "』と『" + GroundOne.TC.FullName + "』で行く。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("　　支配竜：生命波動を認識"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("　　＜＜＜　その時、部屋全体の壁面にある歯車が、高速に回転しはじめた！　＞＞＞　）"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("　　支配竜：少年アイン・ウォーレンスよ"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("　　支配竜：我に挑め"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("　　アイン：よし・・・"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("　　アイン：パーティの魔法／スキルを見直してから、戦闘開始だ。"); eventList.Add(ActionEvent.None);
-
-                    GroundOne.WE2.SeekerEvent507 = true;
+                    messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5TruthSelectCharacter);
                 }
                 else if (GroundOne.WE2.SeekerEvent506 && GroundOne.WE2.SeekerEvent507)
                 {
                     messageList.Add("　　アイン：（石像はもう無いみたいだな・・・）"); eventList.Add(ActionEvent.None);
                 }
-                Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
-                Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
             }
             else
             {
@@ -23000,6 +22967,34 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
             }
+        }
+
+        public static void Message15007_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupPlayerStatus);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
+
+            messageList.Add("　　アイン：よし、決めたぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：『" + GroundOne.SC.FullName + "』と『" + GroundOne.TC.FullName + "』で行く。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：生命波動を認識"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　その時、部屋全体の壁面にある歯車が、高速に回転しはじめた！　＞＞＞　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：少年アイン・ウォーレンスよ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　支配竜：我に挑め"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：よし・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：パーティの魔法／スキルを見直してから、戦闘開始だ。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE2.SeekerEvent507 = true;
+
+            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
+            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
         }
 
         public static void Message15008(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -23037,8 +23032,6 @@ namespace DungeonPlayer
                 messageList.Add("　　アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　アイン：行こう。始まりの地へ・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：支配竜がくれたチャンスだ。何かが用意されている。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　アイン：今回までで過去にさかのぼった合計は、" + Database.MUGEN_LOOP + "回"); eventList.Add(ActionEvent.None);
 
