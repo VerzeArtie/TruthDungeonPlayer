@@ -124,11 +124,8 @@ public class TruthSelectCharacter : MotherForm
         //GroundOne.SC.FullName = Database.RANA_AMILIA_FULL;
         //GroundOne.SC.FirstName = Database.RANA_AMILIA;
 
-        Debug.Log("currentstatuscolor: " + GroundOne.CurrentStatusColor);
         this.Background.GetComponent<Image>().color = GroundOne.CurrentStatusColor;
         MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
-        if (player == null) { Debug.Log("fatal seq..."); }
-        else { Debug.Log("ok"); }
 
         SettingCharacterData(player);
         RefreshPartyMembersBattleStatus(player);
@@ -172,13 +169,6 @@ public class TruthSelectCharacter : MotherForm
                 GroundOne.SC.Level++;
             }
 
-
-            //using (TruthStatusPlayer TSP = new TruthStatusPlayer())
-            //{
-
-            //}
-            //int totalParam = GroundOne.SC.Strength + GroundOne.SC.Agility + GroundOne.SC.Intelligence + GroundOne.SC.
-            //double ampStrength = 
             GroundOne.SC.Strength += this.remainSC / 5;
             GroundOne.SC.Agility += this.remainSC / 5;
             GroundOne.SC.Intelligence += this.remainSC / 5;
@@ -705,18 +695,21 @@ public class TruthSelectCharacter : MotherForm
 
     private void UpdateBtnUpReset()
     {
-        if (currentPlayer.Equals(GroundOne.SC))
-        {
-            btnUpReset.gameObject.SetActive(!this.choiceSC);
-        }
-        else if (currentPlayer.Equals(GroundOne.TC))
-        {
-            btnUpReset.gameObject.SetActive(!this.choiceTC);
-        }
-        else
-        {
-            btnUpReset.gameObject.SetActive(false);
-        }
+        btnUpReset.gameObject.SetActive(false);
+        //if (this.currentPlayer == null) { return; }
+
+        //if (this.currentPlayer.Equals(GroundOne.SC))
+        //{
+        //    btnUpReset.gameObject.SetActive(!this.choiceSC);
+        //}
+        //else if (this.currentPlayer.Equals(GroundOne.TC))
+        //{
+        //    btnUpReset.gameObject.SetActive(!this.choiceTC);
+        //}
+        //else
+        //{
+        //    btnUpReset.gameObject.SetActive(false);
+        //}
     }
 
     private void SelectOrAdd(MainCharacter player)
@@ -806,12 +799,39 @@ public class TruthSelectCharacter : MotherForm
         SettingCoreParameter(CoreType.Stamina, chara.Stamina, chara.BuffStamina_Accessory, chara.BuffStamina_Food, this.stamina, this.addStamina, this.addStaminaFood, this.totalStamina);
         SettingCoreParameter(CoreType.Mind, chara.Mind, chara.BuffMind_Accessory, chara.BuffMind_Food, this.mind, this.addMind, this.addMindFood, this.totalMind);
 
-        plus1.gameObject.SetActive(false);
-        plus10.gameObject.SetActive(false);
-        plus100.gameObject.SetActive(false);
-        plus1000.gameObject.SetActive(false);
-        btnUpReset.gameObject.SetActive(false);
-        lblRemain.gameObject.SetActive(false);
+        //    plus1.gameObject.SetActive(false);
+        //    plus10.gameObject.SetActive(false);
+        //    plus100.gameObject.SetActive(false);
+        //    plus1000.gameObject.SetActive(false);
+        //    btnUpReset.gameObject.SetActive(false);
+        //    lblRemain.gameObject.SetActive(false);
+        //if (chara.Equals(GroundOne.SC) || chara.Equals(GroundOne.TC))
+        //{
+        //    plus1.gameObject.SetActive(true);
+        //    plus10.gameObject.SetActive(true);
+        //    plus100.gameObject.SetActive(true);
+        //    plus1000.gameObject.SetActive(true);
+        //    btnUpReset.gameObject.SetActive(true);
+        //    lblRemain.gameObject.SetActive(true);
+        //    if (chara.Equals(GroundOne.SC))
+        //    {
+        //        lblRemain.text = "残り　" + this.remainSC.ToString();
+        //    }
+        //    else
+        //    {
+        //        lblRemain.text = "残り　" + this.remainTC.ToString();
+        //    }
+        //}
+        //else
+        //{
+        //    plus1.gameObject.SetActive(false);
+        //    plus10.gameObject.SetActive(false);
+        //    plus100.gameObject.SetActive(false);
+        //    plus1000.gameObject.SetActive(false);
+        //    btnUpReset.gameObject.SetActive(false);
+        //    lblRemain.gameObject.SetActive(false);
+        //}
+        //UpdateBtnUpReset();
 
         this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
 
@@ -1214,4 +1234,17 @@ public class TruthSelectCharacter : MotherForm
         RefreshPartyMembersBattleStatus(player);
     }
 
+
+    public void Item_MouseEnter(Text sender)
+    {
+        if (sender.text == "")
+        {
+            mainMessage.text = "";
+        }
+        else
+        {
+            ItemBackPack temp = new ItemBackPack(sender.text);
+            mainMessage.text = temp.Description;
+        }
+    }
 }
