@@ -23200,6 +23200,223 @@ namespace DungeonPlayer
         }
         #endregion
         #region "現実世界"
+        #region "１階スタート"
+        public static void Message16000(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "終わりの部屋"
+        public static void Message16001(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "１階、警告看板"
+        public static void Message16002(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "１階、最後の扉通過"
+        public static void Message16003(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "１階ボス撃破"
+        public static void Message16004(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "１階から２階へ"
+        public static void Message16005(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "２階スタート"
+        public static void Message16006(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "知の部屋【絶対試練】"
+        public static void Message16007(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "複合レバー【知】の部屋で、【心】関連の看板"
+        public static void Message16008(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "複合レバー【技】の部屋で、【知】関連の看板"
+        public static void Message16009(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "複合レバー【技】の部屋で、【知】関連"
+        public static void Message16010(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "【心】の部屋で、【力】関連の看板"
+        public static void Message16011(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "複合レバー【心】の部屋で、【力】関連"
+        public static void Message16012(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "ボス"
+        public static void Message16013(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "【知】の部屋で、【心】関連の看板"
+        public static void Message16014(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "複合レバー【力】の部屋で、【技】関連"
+        public static void Message16015(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "２階、回想録"
+        public static void Message16016(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "２階、カールハンツと会話／戦闘"
+        public static void Message16017(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "２階、カールハンツ会話後、戦闘敗北後の自由行動制限"
+        public static void Message16018(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "２階から３階へ"
+        public static void Message16019(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "３階スタート"
+        public static void Message16020(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "誘導看板"
+        public static void Message16021(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡エリア１コンプリート"
+        public static void Message16022(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡エリア２開始の分析"
+        public static void Message16023(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡エリア２の進行"
+        public static void Message16024(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "真実の回想録3_2"
+        public static void Message16025(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "正解への到達時"
+        public static void Message16026(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "原点解到達までのあらすじ"
+        public static void Message16027(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "原点解への道と、真実の回想録3_3"
+        public static void Message16028(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "原点解到達"
+        public static void Message16029(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        // この後は、プレイヤーに操作させること
+        #region "原点解の看板"
+        public static void Message16030(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "聖者の選択"
+        public static void Message16031(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "愚者の選択"
+        public static void Message16032(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "戻るを選択"
+        public static void Message16033(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "ボス撃破後の無限回廊看板"
+        public static void Message16034(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "３Fハウリングシーザー撃破の破、自由行動制限"
+        public static void Message16035(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "無限回廊前の看板"
+        public static void Message16036(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "原点解入手後の正解階段ブロック"
+        public static void Message16037(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "無限回廊"
+        public static void Message16038(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "無限回廊から真実の回想録へ抜ける"
+        public static void Message16039(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "真実の回想録3_4"
+        public static void Message16040(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "真実の回想録から右上最後の看板へ"
+        public static void Message16041(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "最後の看板"
+        public static void Message16042(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "３階、オル・ランディスと会話／戦闘"
+        public static void Message16043(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "３階から４階へ"
+        public static void Message16044(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "無間地獄の看板"
+        public static void Message16045(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "登り階段をブロック"
+        public static void Message16046(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡１"
+        public static void Message16047(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡２"
+        public static void Message16048(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡３"
+        public static void Message16049(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡４"
+        public static void Message16050(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡５"
+        public static void Message16051(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡６"
+        public static void Message16052(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡７"
+        public static void Message16053(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡８"
+        public static void Message16054(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡９"
+        public static void Message16055(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡１０"
+        public static void Message16056(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡１１"
+        public static void Message16057(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡１２"
+        public static void Message16058(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡１３"
+        public static void Message16059(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡１４"
+        public static void Message16060(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡１５"
+        public static void Message16061(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "失敗Ｘ"
+        public static void Message16062(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "鏡１６"
+        public static void Message16063(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "ボス前の扉"
+        public static void Message16064(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "フェルトゥーシュ入手＋第三偶像を破壊"
+        public static void Message16065(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "最終戦の前で引き返す事をさせないための制御"
+        public static void Message16066(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "回復の泉"
+        public static void Message16067(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "真実世界"
+        public static void Message16068(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "ヴェルゼ最終戦２【原罪】"
+        public static void Message16069(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "ヴェルゼ戦闘終了後"
+        public static void Message16070(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
+        #region "エンディングへ"
+        public static void Message16071(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        #endregion
         #endregion
         #endregion
 
