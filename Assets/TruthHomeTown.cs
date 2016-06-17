@@ -610,6 +610,7 @@ namespace DungeonPlayer
                 return;
             }
 
+            // todo ラナ・複合魔法・スキルの基礎習得
             Debug.Log("area2: " + GroundOne.WE.TruthCompleteArea2);
             Debug.Log("comu31: " + GroundOne.WE.Truth_CommunicationLana31);
             #region "１日目"
@@ -673,6 +674,13 @@ namespace DungeonPlayer
             else if (GroundOne.WE.TruthCompleteArea3 && !GroundOne.WE.Truth_CommunicationLana41)
             {
                 MessagePack.Message40008(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "現実世界"
+            else if (GroundOne.WE2.RealWorld && GroundOne.WE2.SeekerEvent601 && !GroundOne.WE2.SeekerEvent602)
+            {
+                MessagePack.Message40009(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion

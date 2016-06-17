@@ -119,7 +119,14 @@ namespace DungeonPlayer
 
             GroundOne.StopDungeonMusic();
             Method.ExecLoad(null, Database.WorldSaveNum, true);
-            SceneDimension.JumpToTruthDungeon(false);
+            if (GroundOne.WE.SaveByDungeon)
+            {
+                SceneDimension.JumpToTruthDungeon(false);
+            }
+            else
+            {
+                SceneDimension.JumpToTruthHomeTown();
+            }
         }
 
         public void PointerEnter()

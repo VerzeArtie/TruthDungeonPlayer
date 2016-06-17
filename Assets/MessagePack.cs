@@ -23192,6 +23192,8 @@ namespace DungeonPlayer
                     }
                 }
                 GroundOne.WE.GameDay = 1;
+                GroundOne.WE.AlreadyRest = true;
+                GroundOne.WE.AlreadyCommunicate = false;
                 Method.AutoSaveTruthWorldEnvironment();
                 Method.AutoSaveRealWorld();
 
@@ -28931,6 +28933,98 @@ namespace DungeonPlayer
         // 現実世界
         public static void Message40009(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：っあら、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、何だか寝覚めが良いんだ。今日も調子全快だぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカな事言ってないで、ホラホラ、朝ごはんでも食べましょ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだな！じゃあ、ハンナ叔母さんとこで食べようぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナの宿屋（料理亭）にて・・・"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：っさっすが、叔母さん！今日の飯もすげえ旨いよな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハンナ：アッハッハ、よく元気に食べるね。まだ沢山あるからね、どんどん食べな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイン、少しは控えなさいよね。恥ずかしいったら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、控えるぜ。次からな！ッハッハッハ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドス！』（ラナのサイレントブローがアインの横腹に炸裂）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うおおぉぉ・・・だから食ってる時にそれをやるなって・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ッムグ・・・ごっそうさん！っでだ、ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：え？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オレはダンジョンへ向かうぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そして、その最下層へオレは辿り付いてみせる！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っちょ、何よいきなり唐突に。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：全然脈略が無いじゃない。何よ、本当にそんなトコ行きたいわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、本当だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：金を稼いで収支を成り立たせるってのも当然なんだが、"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：伝説のFiveSeekerに追いつきたい気持ちもあるし、それに何より。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：行かなくちゃ、ならないんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そ、そう・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っと、そういえばそうだ。忘れないうちに・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何探してるのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：確かポケットに入れたはず・・・"); eventList.Add(ActionEvent.None);
+
+            // after
+            //while(true)
+            //{
+            //    using (TruthDecision td = new TruthDecision())
+            //    {
+            //        td.MainMessage = "　【　ラナにイヤリングを渡しますか？　】";
+            //        td.FirstMessage = "ラナにイヤリングを渡す。";
+            //        td.SecondMessage = "ラナにイヤリングを渡さず、ポケットにしまっておく。";
+            //        td.StartPosition = FormStartPosition.CenterParent;
+            //        td.ShowDialog(); eventList.Add(ActionEvent.None);
+            //        if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+            //        {
+            //            messageList.Add("アイン：（・・・いや・・・）"); eventList.Add(ActionEvent.None);
+
+            //        }
+            //        else
+            //        {
+                        messageList.Add("アイン：（・・・このイヤリング・・・）"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：（これをもってると、何か思い出せそうだ・・・）"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：（ラナには悪いが、もう少し持っておこう・・・）"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いや、何でもねえんだ。"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：今、ポケットをゴソゴソしてたじゃないの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：い、いやいや。何でもねえ、ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("ラナ：何よ、あからさまに怪しかったわよ？今のは・・・"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：いざ、ダンジョン！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+                //        break;
+                //    }
+                //}
+                GroundOne.WE.AlreadyCommunicate = true;
+            //}
+            GroundOne.WE2.SeekerEvent602 = true;
+            Method.AutoSaveTruthWorldEnvironment(); eventList.Add(ActionEvent.None);
+            Method.AutoSaveRealWorld(); eventList.Add(ActionEvent.None);
         }
         // ラナ・複合魔法・スキルの基礎習得
         // ラナ習得済み
