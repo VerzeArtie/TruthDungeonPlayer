@@ -960,6 +960,15 @@ namespace DungeonPlayer
                         AutoMove(this.nowAutoMoveNumber[0]);
                         System.Threading.Thread.Sleep(50);
                     }
+                    else if (3 < this.nowAutoMoveNumber[0] && this.nowAutoMoveNumber[0] < 500)
+                    {
+                        int sleep = this.nowAutoMoveNumber[0] / 10;
+                        sleep = sleep * 10;
+                        int move = this.nowAutoMoveNumber[0] - sleep;
+
+                        AutoMove(move);
+                        System.Threading.Thread.Sleep(sleep);
+                    }
                     else
                     {
                         System.Threading.Thread.Sleep(this.nowAutoMoveNumber[0]);
@@ -2079,6 +2088,26 @@ namespace DungeonPlayer
                     MessagePack.Message16006(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
+                else if (!GroundOne.WE2.SeekerEvent802 && row == 19 && column == 25 && GroundOne.WE2.RealDungeonArea == 2)
+                {
+                    MessagePack.Message16006_2(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent803 && row == 15 && column == 29 && GroundOne.WE2.RealDungeonArea == 2)
+                {
+                    MessagePack.Message16006_3(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent804 && row == 19 && column == 33 && GroundOne.WE2.RealDungeonArea == 2)
+                {
+                    MessagePack.Message16006_4(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent805 && row == 23 && column == 29 && GroundOne.WE2.RealDungeonArea == 2)
+                {
+                    MessagePack.Message16006_5(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
                 #endregion
                 #region "知の部屋【絶対試練】"
                 else if (!GroundOne.WE2.SeekerEvent806 && row == 8 && column == 49 && GroundOne.WE2.RealDungeonArea == 2)
@@ -2277,21 +2306,21 @@ namespace DungeonPlayer
                     MessagePack.Message16034(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
-                #endregion                
+                #endregion
                 #region "戻るを選択"
                 else if (!GroundOne.WE2.SeekerEvent919 && row == 12 && column == 37 && GroundOne.WE2.RealDungeonArea == 3 && GroundOne.WE2.SeekerEvent906)
                 {
                     MessagePack.Message16035(ref nowMessage, ref nowEvent);
                     //tapOK();
-                //}
+                    //}
                 #endregion
-                #region "ボス撃破後の無限回廊看板"
-                //else if (!GroundOne.WE2.SeekerEvent920 && row == 39 && column == 54 && GroundOne.WE2.RealDungeonArea == 3 && GroundOne.WE2.SeekerEvent909)
-                //{
+                    #region "ボス撃破後の無限回廊看板"
+                    //else if (!GroundOne.WE2.SeekerEvent920 && row == 39 && column == 54 && GroundOne.WE2.RealDungeonArea == 3 && GroundOne.WE2.SeekerEvent909)
+                    //{
                     MessagePack.Message16036(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
-                #endregion
+                    #endregion
                 #region "３Fハウリングシーザー撃破の破、自由行動制限"
                 else if (GroundOne.WE2.SeekerEvent920 && row == 39 && column == 54)
                 {
@@ -2321,7 +2350,7 @@ namespace DungeonPlayer
                 }
                 #endregion
                 #region "無限回廊から真実の回想録へ抜ける"
-                else if (row ==  2 && column == 59 && GroundOne.WE2.RealDungeonArea == 3)
+                else if (row == 2 && column == 59 && GroundOne.WE2.RealDungeonArea == 3)
                 {
                     MessagePack.Message16041(ref nowMessage, ref nowEvent);
                     tapOK();
@@ -2543,7 +2572,7 @@ namespace DungeonPlayer
                 {
                     MessagePack.Message16070(ref nowMessage, ref nowEvent);
                     //tapOK();
-                //}
+                    //}
                 #endregion
                     #region "ヴェルゼ最終戦２【原罪】"
                     if (!GroundOne.WE2.SeekerEvent1102)
@@ -13334,30 +13363,35 @@ namespace DungeonPlayer
             }
             else if (yesnoSystemMessage.text == Database.Message_GotoDownstair)
             {
-                if (GroundOne.WE.DungeonArea == 1)
-                {
-                    GroundOne.WE.TruthCompleteArea1 = true;
-                    JumpToLocation(29, -19, true);
-                    SetupDungeonMapping(2);
-                }
-                else if (GroundOne.WE.DungeonArea == 2)
-                {
-                    GroundOne.WE.TruthCompleteArea2 = true;
-                    JumpToLocation(0, -19, true);
-                    SetupDungeonMapping(3);
-                }
-                else if (GroundOne.WE.DungeonArea == 3)
-                {
-                    GroundOne.WE.TruthCompleteArea3 = true;
-                    JumpToLocation(52, -18, true);
-                    SetupDungeonMapping(4);
-                }
-                else if (GroundOne.WE.DungeonArea == 4)
-                {
-                    GroundOne.WE.TruthCompleteArea4 = true;
-                    JumpToLocation(57, -2, true);
-                    SetupDungeonMapping(5);
-                }
+                GoToDownStair();
+            }
+        }
+
+        private void GoToDownStair()
+        {
+            if (GroundOne.WE.DungeonArea == 1)
+            {
+                GroundOne.WE.TruthCompleteArea1 = true;
+                JumpToLocation(29, -19, true);
+                SetupDungeonMapping(2);
+            }
+            else if (GroundOne.WE.DungeonArea == 2)
+            {
+                GroundOne.WE.TruthCompleteArea2 = true;
+                JumpToLocation(0, -19, true);
+                SetupDungeonMapping(3);
+            }
+            else if (GroundOne.WE.DungeonArea == 3)
+            {
+                GroundOne.WE.TruthCompleteArea3 = true;
+                JumpToLocation(52, -18, true);
+                SetupDungeonMapping(4);
+            }
+            else if (GroundOne.WE.DungeonArea == 4)
+            {
+                GroundOne.WE.TruthCompleteArea4 = true;
+                JumpToLocation(57, -2, true);
+                SetupDungeonMapping(5);
             }
         }
 
@@ -15235,6 +15269,10 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 2, 2, 2, 3);
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDownstair)
+                {
+                    GoToDownStair();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.AutoMove)
                 {
                     int number = Convert.ToInt32(this.nowMessage[this.nowReading]);
@@ -15382,6 +15420,445 @@ namespace DungeonPlayer
                         this.nowAutoMoveNumber.Add(3);
                         this.nowAutoMoveNumber.Add(2);
                     }
+                    else if (number == 6)
+                    {
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                    }
+                    else if (number == 7)
+                    {
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                    }
+                    else if (number == 8)
+                    {
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                    }
+                    else if (number == 9)
+                    {
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                    }
+                    else if (number == 10)
+                    {       
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                    }
+                    else if (number == 11)
+                    {
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                    }
+                    else if (number == 12)
+                    {
+                        this.nowAutoMoveNumber.Add(0);
+                    }
+                    else if (number == 13)
+                    {
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                    }
+                    else if (number == 14)
+                    {
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(22);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(23);
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+
+                        // 技１
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(11);
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        // 技２
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        // 技３
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        // 技４
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(302);
+                        this.nowAutoMoveNumber.Add(272);
+                        this.nowAutoMoveNumber.Add(242);
+                        this.nowAutoMoveNumber.Add(212);
+                        this.nowAutoMoveNumber.Add(182);
+                        this.nowAutoMoveNumber.Add(152);
+                        this.nowAutoMoveNumber.Add(122);
+                        this.nowAutoMoveNumber.Add(92);
+                        this.nowAutoMoveNumber.Add(62);
+                        this.nowAutoMoveNumber.Add(32);
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        // 技５
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(50);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(53);
+                        this.nowAutoMoveNumber.Add(53);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(50);
+                        this.nowAutoMoveNumber.Add(50);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(53);
+                        this.nowAutoMoveNumber.Add(51);
+                        this.nowAutoMoveNumber.Add(51);
+                        this.nowAutoMoveNumber.Add(53);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(50);
+                        this.nowAutoMoveNumber.Add(50);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(53);
+                        this.nowAutoMoveNumber.Add(53);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(50);
+                        this.nowAutoMoveNumber.Add(52);
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        // 技看板最後
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        System.Threading.Thread.Sleep(500);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                    }
+
                     this.nowAutoMove = true;
                 }
 

@@ -441,6 +441,7 @@ namespace DungeonPlayer
             DungeonRefreshWater,
             DungeonFloor5UnknownTileArea6,
             AutoMove,
+            DungeonGotoDownstair,
             Ending,
         }
         #endregion
@@ -23323,30 +23324,219 @@ namespace DungeonPlayer
         {
             messageList.Add("アイン：（　階段だ、降りよう　）"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //JumpByNormal(19, 29);
-            //SetupDungeonMapping(2);
-            //dungeonField.Invalidate();
-            //UpdateMainMessage("", true);
-
-            //GroundOne.WE2.RealDungeonArea = 2;
-            //GroundOne.WE2.SeekerEvent706 = true;
+            GroundOne.WE2.RealDungeonArea = 2;
+            GroundOne.WE2.SeekerEvent706 = true;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDownstair);
         }
         #endregion
         #region "２階スタート"
-        public static void Message16006(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16006(ref List<string> messageList, ref List<ActionEvent> eventList) 
+        {
+            messageList.Add("アイン：（　・・・２階・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　４方向に分かれているが　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　まずは見てみるのが先決だな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("6"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent801 = true;
+        }
+        public static void Message16006_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("　　　　『力を示す者、戻り無き通路、真実への選択』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("7"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent802 = true;
+        }
+        public static void Message16006_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("　　　　『心を示す者、無間の部屋、存在しない解への選択』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("8"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent803 = true;
+        }
+        public static void Message16006_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("　　　　『知を示す者、隠されし通路、秘められた選択』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("9"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent804 = true;
+        }
+        public static void Message16006_5(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("　　　　『技を示す者、順序ある通路、閉ざされた選択』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　これで、４つの方向性が分かったな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　ここは　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　知を示す者の方を調べるのが、おそらく先決だ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("10"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent805 = true;
+        }
         #endregion
         #region "知の部屋【絶対試練】"
-        public static void Message16007(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　・・・何かある・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　地面にくぼみがほんの少し見えるな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　足を踏み入れると、台座のような物が上がってくる仕組みだな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　罠か・・・いやそれとも・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　こんな時、師匠ならきっと　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　迷わず、踏み込む　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　罠だと分かっていれば、大丈夫だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　よし、踏み込むぞ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『突如台座がアインの前に浮き上がった。直後、薄黄色い空間にアインが包まれた。』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『絶対試練：汝、答えを示せ。』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　答えか・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　石版の数は１５　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　順番通りに押せば、おそらく　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　いや　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　この節・・・それからこの節も・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　なんだこれ、所々だが文節の単語が違ってるじゃねえか　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　慌てて操作して、【答え】を導いていたらおそらく・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　ここと　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ッカコン ＞＞＞　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　これも　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ッカコン ＞＞＞　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　石版の中に小さなスリットがある、やっぱり・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　これで多分最後だ　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ッカコン ＞＞＞　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　違う文節の所だけ、ひっくり返る仕組みだったってワケだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　あ、あとココも・・・あぶねえな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ッカコン ＞＞＞　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　これで全部だな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　その瞬間、台座全体が淡く光り始めた ＞＞＞　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　よし、合ってるみたいだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　後は文節の石版を順序通り押して行くだけだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　これでＯＫのはずだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『空間が激しくフラッシュし、凝縮された空間へと連続的に小さくなる！！！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『パパパパパパパ！！！！ッバシュウウウゥゥゥン！！！！！！！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『空間は弾け飛んだ後、アインの前から台座が完全に取り除かれていた』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ふぅ、どうやら終わったみたいだな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ん・・・？何か落ちてる・・・？　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　違う、この床・・・何か小さく刻印がきざんである。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　（　始まりなるは火と水、後に死と生を経て、人と理を成し、そして鳥は天へと還る　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  なるほどな、そういう理論か　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  だとしたら・・・まだこの区画に在るって事だな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  探索を続けよう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("11"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent806 = true;
+        }
         #endregion
         #region "【知】の部屋で、【心】関連の看板"
-        public static void Message16008(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16008(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（  看板だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『  終わりなるは、心　』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  ・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  心を示す者の部屋が、おそらく一番最後　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  サイドにレバーが二つ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  ・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  なるほどな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("12"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent807 = true;
+        }
         #endregion
         #region "複合レバー【知】の部屋で、【心】関連"
-        public static void Message16009(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16009(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（  このレバーだな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  『歌い、木々が囁き始める』　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  【鳥】・・・【空】・・・【樹】・・・【霊】・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  ・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　【鳥】で決まりだな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　よし、もう一つ。すぐそこのレバーもチェックだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("13"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent808 = true;
+        }
         #endregion
         #region "複合レバー【技】の部屋で、【知】関連の看板"
-        public static void Message16010(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16010(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（  『青く照らし、地は新緑を謳歌する』　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  【湖】、【人】、【天】、【海】・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（  ・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ココは【天】で間違いないだろう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・特に何の音もしない、まだ残りがあるからだろう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　次の部屋へ行こう、次は・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　技の部屋だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("14"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent809 = true;
+        }
         #endregion
         #region "複合レバー【技】の部屋で、【知】関連"
         public static void Message16011(ref List<string> messageList, ref List<ActionEvent> eventList) { }
