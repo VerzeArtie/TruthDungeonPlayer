@@ -5985,10 +5985,11 @@ namespace DungeonPlayer
                     this.gold = 0;
                     this.experience = 0;
                     this.Armor = ArmorType.Normal;
-                    this.MainWeapon = new ItemBackPack(Database.EPIC_JUZA_THE_PHANTASMAL_CLAW);
-                    this.MainArmor = new ItemBackPack(Database.RARE_WHITE_GOLD_CROSS);
-                    this.Accessory = new ItemBackPack(Database.COMMON_PLATINUM_RING_1);
-                    this.Accessory2 = new ItemBackPack(Database.COMMON_PLATINUM_RING_10);
+                    // debug
+                    //this.MainWeapon = new ItemBackPack(Database.EPIC_JUZA_THE_PHANTASMAL_CLAW);
+                    //this.MainArmor = new ItemBackPack(Database.RARE_WHITE_GOLD_CROSS);
+                    //this.Accessory = new ItemBackPack(Database.COMMON_PLATINUM_RING_1);
+                    //this.Accessory2 = new ItemBackPack(Database.COMMON_PLATINUM_RING_10);
                     this.Area = MonsterArea.Duel;
                     break;
 

@@ -2592,7 +2592,6 @@ namespace DungeonPlayer
             GroundOne.WE.DungeonPosX = (int)x;
             GroundOne.WE.DungeonPosY = (int)y;
             this.Player.transform.position = new Vector3(x, y, this.Player.transform.position.z);
-
             if (!noSound)
             {
                 GroundOne.PlaySoundEffect(Database.SOUND_FOOT_STEP);
@@ -3118,6 +3117,18 @@ namespace DungeonPlayer
 
                 UpdateViewPoint(GroundOne.WE.dungeonViewPointX + moveX, GroundOne.WE.dungeonViewPointY + moveY);
             }
+        }
+
+        private void AutoMove(int direction)
+        {
+            int moveX = 0;
+            int moveY = 0;
+
+            if (direction == 0) moveY = Database.DUNGEON_MOVE_LEN; // change unity
+            else if (direction == 1) moveX = -Database.DUNGEON_MOVE_LEN;
+            else if (direction == 2) moveX = Database.DUNGEON_MOVE_LEN;
+            else if (direction == 3) moveY = -Database.DUNGEON_MOVE_LEN; // change unity
+            JumpToLocation((int)this.Player.transform.position.x + moveX, (int)this.Player.transform.position.y + moveY, false);
         }
 
         private void SearchSomeEvents()
@@ -15195,6 +15206,22 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonFloor5UnknownTileArea6)
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 2, 2, 2, 3);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.AutoMoveTop)
+                {
+                    AutoMove(0);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.AutoMoveLeft)
+                {
+                    AutoMove(1);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.AutoMoveRight)
+                {
+                    AutoMove(2);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.AutoMoveBottom)
+                {
+                    AutoMove(3);
                 }
 
                 this.nowReading++;

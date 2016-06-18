@@ -468,28 +468,74 @@ namespace DungeonPlayer
             }
             else
             {
-                this.OpponentDuelist = WhoisDuelPlayer();
-                if (this.OpponentDuelist != string.Empty)
+                if (GroundOne.WE2.RealWorld)
                 {
-                    DuelSupportMessage(SupportType.FromDungeonGate, this.OpponentDuelist);
-
-                    CallDuel(true);
-                }
-                else if (GroundOne.WE.TruthCompleteArea1 == false)
-                {
-                    CallDungeon(1);
+                    if (GroundOne.WE2.SeekerEvent605 && !GroundOne.WE2.SeekerEvent706)
+                    {
+                        GroundOne.WE.DungeonArea = 1;
+                        GroundOne.WE2.RealDungeonArea = 1;
+                        Method.AutoSaveTruthWorldEnvironment();
+                        Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                        SceneDimension.JumpToTruthDungeon(false); 
+                    }
+                    else if (GroundOne.WE2.SeekerEvent706 && !GroundOne.WE2.SeekerEvent822)
+                    {
+                        GroundOne.WE.DungeonArea = 2;
+                        GroundOne.WE2.RealDungeonArea = 2;
+                        Method.AutoSaveTruthWorldEnvironment();
+                        Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                        SceneDimension.JumpToTruthDungeon(false);
+                    }
+                    else if (GroundOne.WE2.SeekerEvent822 && !GroundOne.WE2.SeekerEvent925)
+                    {
+                        GroundOne.WE.DungeonArea = 3;
+                        GroundOne.WE2.RealDungeonArea = 3;
+                        Method.AutoSaveTruthWorldEnvironment();
+                        Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                        SceneDimension.JumpToTruthDungeon(false);
+                    }
+                    else if (GroundOne.WE2.SeekerEvent925 && !GroundOne.WE2.SeekerEvent1012)
+                    {
+                        GroundOne.WE.DungeonArea = 4;
+                        GroundOne.WE2.RealDungeonArea = 4;
+                        Method.AutoSaveTruthWorldEnvironment();
+                        Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                        SceneDimension.JumpToTruthDungeon(false);
+                    }
+                    else
+                    {
+                        GroundOne.WE.DungeonArea = 5;
+                        GroundOne.WE2.RealDungeonArea = 5;
+                        Method.AutoSaveTruthWorldEnvironment();
+                        Method.AutoSaveRealWorld(GroundOne.MC, GroundOne.SC, GroundOne.TC, GroundOne.WE, null, null, null, null, null, GroundOne.Truth_KnownTileInfo, GroundOne.Truth_KnownTileInfo2, GroundOne.Truth_KnownTileInfo3, GroundOne.Truth_KnownTileInfo4, GroundOne.Truth_KnownTileInfo5);
+                        SceneDimension.JumpToTruthDungeon(false);
+                    }
                 }
                 else
                 {
-                    mainMessage.text = "アイン：さて、何階から始めるかな。";
-                    selectDungeon[0].gameObject.SetActive(true);
-                    selectDungeon[1].gameObject.SetActive(GroundOne.WE.TruthCompleteArea1);
-                    selectDungeon[2].gameObject.SetActive(GroundOne.WE.TruthCompleteArea2);
-                    selectDungeon[3].gameObject.SetActive(GroundOne.WE.TruthCompleteArea3);
-                    selectDungeon[4].gameObject.SetActive(GroundOne.WE.TruthCompleteArea4);
+                    this.OpponentDuelist = WhoisDuelPlayer();
+                    if (this.OpponentDuelist != string.Empty)
+                    {
+                        DuelSupportMessage(SupportType.FromDungeonGate, this.OpponentDuelist);
 
-                    groupSelectDungeon.SetActive(true);
-                    panelHide.gameObject.SetActive(true);
+                        CallDuel(true);
+                    }
+                    else if (GroundOne.WE.TruthCompleteArea1 == false)
+                    {
+                        CallDungeon(1);
+                    }
+                    else
+                    {
+                        mainMessage.text = "アイン：さて、何階から始めるかな。";
+                        selectDungeon[0].gameObject.SetActive(true);
+                        selectDungeon[1].gameObject.SetActive(GroundOne.WE.TruthCompleteArea1);
+                        selectDungeon[2].gameObject.SetActive(GroundOne.WE.TruthCompleteArea2);
+                        selectDungeon[3].gameObject.SetActive(GroundOne.WE.TruthCompleteArea3);
+                        selectDungeon[4].gameObject.SetActive(GroundOne.WE.TruthCompleteArea4);
+
+                        groupSelectDungeon.SetActive(true);
+                        panelHide.gameObject.SetActive(true);
+                    }
                 }
             }
 	    }
@@ -1066,7 +1112,7 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownGotoRealDungeon)
                 {
-                    //this.targetDungeon = 1;
+                    GroundOne.WE.DungeonArea = 1;
                     GroundOne.WE2.RealDungeonArea = 1;
                     GroundOne.WE2.SeekerEvent605 = true;
                     Method.AutoSaveTruthWorldEnvironment();
@@ -1954,10 +2000,26 @@ namespace DungeonPlayer
 
         public void tapSave()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                this.Filter.GetComponent<Image>().color = Color.clear;
+                this.Filter.SetActive(true);
+                systemMessage.text = "ここまでの記録は自動セーブされており、新しいセーブはできません。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
+                systemMessagePanel.SetActive(true);
+                return;
+            } 
             SceneDimension.CallSaveLoad(this, true, false);
         }
         public void tapLoad()
         {
+            if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
+            {
+                this.Filter.GetComponent<Image>().color = Color.clear;
+                this.Filter.SetActive(true);
+                systemMessage.text = "現在ロードはできません。ここまでの記録は自動セーブされています。\nゲームを終わりたい場合は、ゲーム終了を押してください。";
+                systemMessagePanel.SetActive(true);
+                return;
+            }
             SceneDimension.CallSaveLoad(this, false, false);
         }
 

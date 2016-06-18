@@ -440,6 +440,10 @@ namespace DungeonPlayer
             DungeonFloor5UnknownTileArea5,
             DungeonRefreshWater,
             DungeonFloor5UnknownTileArea6,
+            AutoMoveTop,
+            AutoMoveLeft,
+            AutoMoveRight,
+            AutoMoveBottom,
             Ending,
         }
         #endregion
@@ -23203,7 +23207,53 @@ namespace DungeonPlayer
         #endregion
         #region "現実世界"
         #region "１階スタート"
-        public static void Message16000(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16000(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　まずは１階だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ここは通過すべきルートは自由だが　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　一つだけ必ず通らなければならない部屋がある　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　それは【終わりの部屋】だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　おれはもう、その部屋を知っている・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
+            System.Threading.Thread.Sleep(1000);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveLeft);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveLeft);
+            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveLeft);
+
+            GroundOne.WE2.SeekerEvent701 = true;
+        }
         #endregion
         #region "終わりの部屋"
         public static void Message16001(ref List<string> messageList, ref List<ActionEvent> eventList) { }
