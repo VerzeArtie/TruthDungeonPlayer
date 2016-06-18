@@ -440,10 +440,7 @@ namespace DungeonPlayer
             DungeonFloor5UnknownTileArea5,
             DungeonRefreshWater,
             DungeonFloor5UnknownTileArea6,
-            AutoMoveTop,
-            AutoMoveLeft,
-            AutoMoveRight,
-            AutoMoveBottom,
+            AutoMove,
             Ending,
         }
         #endregion
@@ -23221,54 +23218,120 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveRight);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveBottom);
-            System.Threading.Thread.Sleep(1000);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveLeft);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveLeft);
-            messageList.Add(""); eventList.Add(ActionEvent.AutoMoveLeft);
-
+            messageList.Add("1"); eventList.Add(ActionEvent.AutoMove);
             GroundOne.WE2.SeekerEvent701 = true;
         }
         #endregion
         #region "終わりの部屋"
-        public static void Message16001(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16001(ref List<string> messageList, ref List<ActionEvent> eventList) 
+        {
+            messageList.Add("アイン：（　・・・ここだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　俺はこの部屋は、何かしら始まりが起こる部屋だと錯覚していたが　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　違う・・・ここは、明らかに終わりの部屋だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　理由は明確だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ラナとここに来た時、俺は決定的な過ちを犯していた　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　この部屋は、神々の試練を受けるための登録の場なんだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ここに訪れなければラナが試練を受けるハメには、ならなかった　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　いいや、そもそも　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ラナをここまで連れて来る事自体がいけなかったんだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ここの迂回が出来ていたとしても　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　何か別のルートから、結局ラナが犠牲対象になりうる　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　そういう仕組みなんだろう、おそらく・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　俺が　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　俺だけが、神々の試練への登録を行う　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　基本的に立ち寄るだけで認識されているはずだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　他に行くべき所はない、次の階層へと進めよう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("2"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent702 = true;
+        }
         #endregion
         #region "１階、警告看板"
-        public static void Message16002(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16002(ref List<string> messageList, ref List<ActionEvent> eventList) 
+        {
+            messageList.Add("アイン：（　看板があるな・・・なになに　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『近道にこそ、危険が潜む』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　何かラナがすぐさま引き止めそうな看板内容だな、ハハハ・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　だが、ここは・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　このまま進める　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("3"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent703 = true;
+        }
         #endregion
         #region "１階、最後の扉通過"
-        public static void Message16003(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16003(ref List<string> messageList, ref List<ActionEvent> eventList) 
+        {
+            messageList.Add("アイン：（　この先へ進めば・・・次の階層だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("4"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent704 = true;
+        }
         #endregion
         #region "１階ボス撃破"
-        public static void Message16004(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16004(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　ボスのお出ましのようだな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("絡みつくフランシス：【【【キィィィシャアアアァァァ！！！】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　悪いが　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　今は俺一人、パーティを組んでないわけだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　つまり、誰にも気を配る必要はないって事だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　サクっと終わらせるぜ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　アインの展開する剣の軌道が、絡みつくフランシスの胴体に無数に瞬時に刻まれた ＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("絡みつくフランシス：ッピ・・・ピギャアアァァ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　悪いな、あっさり倒しちまって・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　よし、次へ進めるぜ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("5"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent705 = true;
+        }
         #endregion
         #region "１階から２階へ"
-        public static void Message16005(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16005(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　階段だ、降りよう　）"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //JumpByNormal(19, 29);
+            //SetupDungeonMapping(2);
+            //dungeonField.Invalidate();
+            //UpdateMainMessage("", true);
+
+            //GroundOne.WE2.RealDungeonArea = 2;
+            //GroundOne.WE2.SeekerEvent706 = true;
+        }
         #endregion
         #region "２階スタート"
         public static void Message16006(ref List<string> messageList, ref List<ActionEvent> eventList) { }

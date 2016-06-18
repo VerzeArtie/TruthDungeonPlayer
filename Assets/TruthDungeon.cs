@@ -180,6 +180,9 @@ namespace DungeonPlayer
 
         bool nowSelectCharacter = false; // ５階、メンバー選定中
 
+        bool nowAutoMove = false; // 現実世界、自動移動中
+        List<int> nowAutoMoveNumber = new List<int>();
+
         // Use this for initialization
         public override void Start()
         {
@@ -947,6 +950,31 @@ namespace DungeonPlayer
                     agilityRoomTimer_Tick();
                 }
             }
+
+            if (this.nowAutoMove)
+            {
+                if (this.nowAutoMoveNumber.Count > 0)
+                {
+                    if (this.nowAutoMoveNumber[0] <= 3)
+                    {
+                        AutoMove(this.nowAutoMoveNumber[0]);
+                        System.Threading.Thread.Sleep(50);
+                    }
+                    else
+                    {
+                        System.Threading.Thread.Sleep(this.nowAutoMoveNumber[0]);
+                    }
+                    this.nowAutoMoveNumber.RemoveAt(0);
+                }
+                else
+                {
+                    this.nowAutoMoveNumber.Clear();
+                    this.nowAutoMove = false;
+                    ShownEvent();
+                }
+                return;
+            }
+
 
             if (this.nowEncountEnemy)
             {
@@ -15207,21 +15235,154 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 2, 2, 2, 3);
                 }
-                else if (currentEvent == MessagePack.ActionEvent.AutoMoveTop)
+                else if (currentEvent == MessagePack.ActionEvent.AutoMove)
                 {
-                    AutoMove(0);
-                }
-                else if (currentEvent == MessagePack.ActionEvent.AutoMoveLeft)
-                {
-                    AutoMove(1);
-                }
-                else if (currentEvent == MessagePack.ActionEvent.AutoMoveRight)
-                {
-                    AutoMove(2);
-                }
-                else if (currentEvent == MessagePack.ActionEvent.AutoMoveBottom)
-                {
-                    AutoMove(3);
+                    int number = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    if (number == 1)
+                    {
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                    }
+                    else if (number == 2)
+                    {
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                    }
+                    else if (number == 3)
+                    {
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                    }
+                    else if (number == 4)
+                    {
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                    }
+                    else if (number == 5)
+                    {
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                    }
+                    this.nowAutoMove = true;
                 }
 
                 this.nowReading++;
