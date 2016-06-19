@@ -993,6 +993,10 @@ namespace DungeonPlayer
                     {
                         JumpByMirror_1_End();
                     }
+                    else if (this.nowAutoMoveNumber[0] == 10006)
+                    {
+                        JumpByMirror_TurnBack();
+                    }
                     else
                     {
                         System.Threading.Thread.Sleep(this.nowAutoMoveNumber[0]);
@@ -12360,7 +12364,53 @@ namespace DungeonPlayer
         }
 
         private void JumpByMirror_1_End() { JumpToLocation(18, -19, true); UpdateUnknownTile(); }
-
+        private void JumpByMirror_2_38() { JumpToLocation(40, -29, true); UpdateUnknownTileArea3_Area2(); }
+        private void JumpByMirror_2_39() { JumpToLocation(45, -4, true); UpdateUnknownTileArea3_Area22(); }
+        private void JumpByMirror_2_40() { JumpToLocation(21, -30, true); UpdateUnknownTileArea3_Area37(); }
+        private void JumpByMirror_2_41() { JumpToLocation(33, -7, true); UpdateUnknownTileArea3_Area3(); }
+        private void JumpByMirror_2_42() { JumpToLocation(43, -28, true); UpdateUnknownTileArea3_Area11(); }
+        private void JumpByMirror_2_43() { JumpToLocation(21, -22, true); UpdateUnknownTileArea3_Area15(); }
+        private void JumpByMirror_2_44() { JumpToLocation(45, -11, true); UpdateUnknownTileArea3_Area23(); }
+        private void JumpByMirror_2_45() { JumpToLocation(36, -36, true); UpdateUnknownTileArea3_Area29(); }
+        private void JumpByMirror_2_46() { JumpToLocation(40, 0, true); UpdateUnknownTileArea3_Area38(); }
+        private void JumpByMirror_2_47() { JumpToLocation(29, -23, true); UpdateUnknownTileArea3_Area4(); }
+        private void JumpByMirror_2_48() { JumpToLocation(42, -24, true); UpdateUnknownTileArea3_Area8(); }
+        private void JumpByMirror_2_49() { JumpToLocation(38, -38, true); UpdateUnknownTileArea3_Area12(); }
+        private void JumpByMirror_2_50() { JumpToLocation(40, -16, true); UpdateUnknownTileArea3_Area16(); }
+        private void JumpByMirror_2_51() { JumpToLocation(53, -36, true); UpdateUnknownTileArea3_Area18(); }
+        private void JumpByMirror_2_52() { JumpToLocation(30, -13, true); UpdateUnknownTileArea3_Area24(); }
+        private void JumpByMirror_2_53() { JumpToLocation(41, -30, true); UpdateUnknownTileArea3_Area27(); }
+        private void JumpByMirror_2_54() { JumpToLocation(32, -11, true); UpdateUnknownTileArea3_Area30(); }
+        private void JumpByMirror_2_55() { JumpToLocation(40, -4, true); UpdateUnknownTileArea3_Area34(); }
+        private void JumpByMirror_2_56() { JumpToLocation(32, -16, true); UpdateUnknownTileArea3_Area39(); }
+        private void JumpByMirror_2_57() { JumpToLocation(48, -20, true); UpdateUnknownTileArea3_Area42(); }
+        private void JumpByMirror_2_58() { JumpToLocation(26, -22, true); UpdateUnknownTileArea3_Area44(); }
+        private void JumpByMirror_2_59() { JumpToLocation(31, -20, true); UpdateUnknownTileArea3_Area5(); }
+        private void JumpByMirror_2_60() { JumpToLocation(52, -4, true); UpdateUnknownTileArea3_Area6(); }
+        private void JumpByMirror_2_61() { JumpToLocation(52, -12, true); UpdateUnknownTileArea3_Area7(); }
+        private void JumpByMirror_2_62() { JumpToLocation(29, -36, true); UpdateUnknownTileArea3_Area9(); }
+        private void JumpByMirror_2_63() { JumpToLocation(35, -17, true); UpdateUnknownTileArea3_Area10(); }
+        private void JumpByMirror_2_64() { JumpToLocation(42, -3, true); UpdateUnknownTileArea3_Area13(); }
+        private void JumpByMirror_2_65() { JumpToLocation(53, -38, true); UpdateUnknownTileArea3_Area14(); }
+        private void JumpByMirror_2_66() { JumpToLocation(30, -33, true); UpdateUnknownTileArea3_Area17(); }
+        private void JumpByMirror_2_67() { JumpToLocation(35, -4, true); UpdateUnknownTileArea3_Area19(); }
+        private void JumpByMirror_2_68() { JumpToLocation(23, -17, true); UpdateUnknownTileArea3_Area20(); }
+        private void JumpByMirror_2_69() { JumpToLocation(25, -29, true); UpdateUnknownTileArea3_Area21(); }
+        private void JumpByMirror_2_70() { JumpToLocation(26, -29, true); UpdateUnknownTileArea3_Area25(); }
+        private void JumpByMirror_2_71() { JumpToLocation(30, -4, true); UpdateUnknownTileArea3_Area26(); }
+        private void JumpByMirror_2_72() { JumpToLocation(51, -15, true); UpdateUnknownTileArea3_Area28(); }
+        private void JumpByMirror_2_73() { JumpToLocation(31, -22, true); UpdateUnknownTileArea3_Area31(); }
+        private void JumpByMirror_2_74() { JumpToLocation(39, -33, true); UpdateUnknownTileArea3_Area32(); }
+        private void JumpByMirror_2_75() { JumpToLocation(41, 0, true); UpdateUnknownTileArea3_Area33(); }
+        private void JumpByMirror_2_76() { JumpToLocation(54, -11, true); UpdateUnknownTileArea3_Area35(); }
+        private void JumpByMirror_2_77() { JumpToLocation(37, -26, true); UpdateUnknownTileArea3_Area36(); }
+        private void JumpByMirror_2_78() { JumpToLocation(20, -20, true); UpdateUnknownTileArea3_Area40(); }
+        private void JumpByMirror_2_79() { JumpToLocation(45, -20, true); UpdateUnknownTileArea3_Area41(); }
+        private void JumpByMirror_2_80() { JumpToLocation(21, -9, true); UpdateUnknownTileArea3_Area43(); }
+        private void JumpByMirror_2_81() { JumpToLocation(40, -28, true); UpdateUnknownTileArea3_Area45(); }
+        private void JumpByMirror_2_82() { JumpToLocation(53, -22, true); UpdateUnknownTileArea3_Area46(); }
+        private void JumpByMirror_2_83() { JumpToLocation(52, -10, true); UpdateUnknownTileArea3_Area47(); }
+        private void JumpByMirror_2_84() { JumpToLocation(27, -34, true); UpdateUnknownTileArea3_Area48(); } 
         private void JumpByMirror_TruthWay1A() { JumpToLocation(43, -36, true); UpdateUnknownTileArea3_Area49(); }
         private void JumpByMirror_TruthWay1B() { JumpToLocation(31, -2, true); UpdateUnknownTileArea3_Area50(); }
         private void JumpByMirror_TruthWay1C() { JumpToLocation(54, -32, true); UpdateUnknownTileArea3_Area51(); }
@@ -13162,6 +13212,987 @@ namespace DungeonPlayer
             if (GroundOne.SC != null) { GroundOne.SC.ResurrectPlayer(GroundOne.SC.MaxLife); GroundOne.SC.MaxGain(); }
             if (GroundOne.TC != null) { GroundOne.TC.ResurrectPlayer(GroundOne.TC.MaxLife); GroundOne.TC.MaxGain(); }
             SetupPlayerStatus();
+        }
+
+        public void MirrorWay(int wayLine, int anotherWayLine)
+        {
+            // 万が一、設定が無い場合は150, 138, 96, 130, 124で進める事にする。
+            if (wayLine < 95 || wayLine > 150)
+            {
+                if (anotherWayLine == 1) { wayLine = 150; }
+                else if (anotherWayLine == 2) { wayLine = 138; }
+                else if (anotherWayLine == 3) { wayLine = 96; }
+                else if (anotherWayLine == 4) { wayLine = 130; }
+                else if (anotherWayLine == 5) { wayLine = 124; } // 正解
+                else if (anotherWayLine == 6) { wayLine = 144; } // 原点解
+                else { wayLine = 124; } // それ以外の万が一が来た場合はanotherwayline5と同じにする。
+            }
+
+            #region "鏡38"
+            if (95 <= wayLine && wayLine <= 116)
+            {
+                AutoMove(1);
+                AutoMove(1);
+                AutoMove(0);
+                AutoMove(0);
+                JumpByMirror_2_38();
+                AutoMove(3);
+                AutoMove(3);
+                AutoMove(2);
+                if (95 <= wayLine && wayLine <= 104)
+                {
+                    AutoMove(3);
+                    AutoMove(3);
+                    AutoMove(3);
+                    JumpByMirror_2_41();
+                    AutoMove(3);
+                    AutoMove(3);
+                    AutoMove(3);
+                    if (wayLine == 95 || wayLine == 96 || wayLine == 97)
+                    {
+                        AutoMove(3);
+                        JumpByMirror_2_47();
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        if (wayLine == 95)
+                        {
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(3);
+                            AutoMove(3);
+                            JumpByMirror_2_59();
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                        }
+                        else if (wayLine == 96)
+                        {
+                            AutoMove(3);
+                            AutoMove(3);
+                            JumpByMirror_2_60();
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(2);
+                        }
+                        else if (wayLine == 97)
+                        {
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(3);
+                            JumpByMirror_2_61();
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(3);
+                            AutoMove(3);
+                        }
+                    }
+                    else if (wayLine == 98 || wayLine == 99 || wayLine == 100
+                          || wayLine == 101 || wayLine == 102 || wayLine == 103 || wayLine == 104)
+                    {
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        JumpByMirror_2_48();
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(2);
+                        if (wayLine == 98 || wayLine == 99 || wayLine == 100)
+                        {
+                            AutoMove(0);
+                            AutoMove(0);
+                            JumpByMirror_2_62();
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(0);
+                            if (wayLine == 98) { AutoMove(1); AutoMove(1); }
+                            else if (wayLine == 99) { /* なにもなし */ }
+                            else if (wayLine == 100) { AutoMove(2); AutoMove(2); }
+                            AutoMove(0);
+                            AutoMove(0);
+                        }
+                        else if (wayLine == 101 || wayLine == 102 || wayLine == 103 || wayLine == 104)
+                        {
+                            AutoMove(2);
+                            AutoMove(0);
+                            AutoMove(0);
+                            JumpByMirror_2_63();
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(1);
+                            AutoMove(1);
+                            if (wayLine == 101)
+                            {
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(0);
+                                AutoMove(0);
+                            }
+                            else if (wayLine == 102 || wayLine == 103 || wayLine == 104)
+                            {
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                if (wayLine == 102)
+                                {
+                                    AutoMove(2);
+                                    AutoMove(2);
+                                    AutoMove(2);
+                                    AutoMove(0);
+                                }
+                                else if (wayLine == 103 || wayLine == 104)
+                                {
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                    AutoMove(1);
+                                    AutoMove(0);
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    if (wayLine == 103)
+                                    {
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                    }
+                                    else// if (truthWay1 == 104) // 万が一を考えた場合の緊急回避として、ポイントミスはelseで始末するべきである
+                                    {
+                                        AutoMove(0);
+                                        AutoMove(0);
+                                        AutoMove(0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (105 <= wayLine && wayLine <= 108)
+                {
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(3);
+                    AutoMove(3);
+                    AutoMove(3);
+                    JumpByMirror_2_42();
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(0);
+                    AutoMove(0);
+                    AutoMove(0);
+                    AutoMove(0);
+                    AutoMove(0);
+                    AutoMove(0);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(0);
+                    AutoMove(0);
+                    AutoMove(0);
+                    AutoMove(0);
+                    JumpByMirror_2_49();
+                    AutoMove(1);
+                    AutoMove(0);
+                    if (wayLine == 105)
+                    {
+                        AutoMove(0);
+                        AutoMove(2);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        JumpByMirror_2_64();
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                    }
+                    else if (wayLine == 106 || wayLine == 107 || wayLine == 108)
+                    {
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        JumpByMirror_2_65();
+                        AutoMove(1);
+                        AutoMove(1);
+                        if (wayLine == 106) { AutoMove(0); AutoMove(0); AutoMove(0); AutoMove(0); }
+                        else if (wayLine == 107) { AutoMove(0); AutoMove(0); }
+                        else if (wayLine == 108) { /*何もしない*/ }
+                        AutoMove(1);
+                        AutoMove(1);
+                    }
+                }
+                else if (109 <= wayLine && wayLine <= 116)
+                {
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(3);
+                    AutoMove(3);
+                    AutoMove(3);
+                    JumpByMirror_2_43();
+                    AutoMove(2);
+                    AutoMove(2);
+                    if (109 <= wayLine && wayLine <= 111)
+                    {
+                        AutoMove(2);
+                        AutoMove(2);
+                        JumpByMirror_2_50();
+                        AutoMove(1);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        JumpByMirror_2_66();
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        if (wayLine == 109) { AutoMove(0); AutoMove(0); }
+                        else if (wayLine == 110) { /*何もしない*/ }
+                        else if (wayLine == 111) { AutoMove(3); AutoMove(3); }
+                        AutoMove(2);
+                        AutoMove(2);
+                    }
+                    else if (112 <= wayLine && wayLine <= 116)
+                    {
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        JumpByMirror_2_51();
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        if (wayLine == 112)
+                        {
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(0);
+                            JumpByMirror_2_67();
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(1);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                        }
+                        else if (wayLine == 113)
+                        {
+                            AutoMove(1);
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(0);
+                            JumpByMirror_2_68();
+                            AutoMove(1);
+                            AutoMove(1);
+                        }
+                        else if (wayLine == 114 || wayLine == 115 || wayLine == 116)
+                        {
+                            AutoMove(2);
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(0);
+                            JumpByMirror_2_69();
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(0);
+                            if (wayLine == 114) { AutoMove(1); }
+                            else if (wayLine == 115) { AutoMove(2); }
+                            else if (wayLine == 116) { AutoMove(2); AutoMove(2); AutoMove(2); }
+                            AutoMove(0);
+                            AutoMove(0);
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "鏡39"
+            else if (117 <= wayLine && wayLine <= 133)
+            {
+                AutoMove(0);
+                AutoMove(0);
+                JumpByMirror_2_39();
+                AutoMove(2);
+                AutoMove(2);
+                AutoMove(3);
+                AutoMove(3);
+                AutoMove(3);
+                if (117 <= wayLine && wayLine <= 123)
+                {
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(3);
+                    AutoMove(3);
+                    JumpByMirror_2_44();
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    if (117 <= wayLine && wayLine <= 121)
+                    {
+                        AutoMove(0);
+                        AutoMove(0);
+                        JumpByMirror_2_52();
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        if (wayLine == 117 || wayLine == 118 || wayLine == 119 || wayLine == 120)
+                        {
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(2);
+                            JumpByMirror_2_70();
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            if (wayLine == 117) { AutoMove(0); AutoMove(0); AutoMove(0); }
+                            else if (wayLine == 118) { AutoMove(0); }
+                            else if (wayLine == 119) { AutoMove(3); }
+                            else if (wayLine == 120) { AutoMove(3); AutoMove(3); AutoMove(3); }
+                            AutoMove(2);
+                        }
+                        else if (wayLine == 121)
+                        {
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            JumpByMirror_2_71();
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(2);
+                        }
+                    }
+                    else if (wayLine == 122 || wayLine == 123)
+                    {
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        JumpByMirror_2_53();
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(1);
+                        JumpByMirror_2_72();
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        if (wayLine == 122) { AutoMove(1); }
+                        else if (wayLine == 123) { AutoMove(2); }
+                        AutoMove(3);
+                        AutoMove(3);
+                    }
+                }
+                else if (124 <= wayLine && wayLine <= 133)
+                {
+                    AutoMove(3);
+                    AutoMove(3);
+                    JumpByMirror_2_45();
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    if (124 <= wayLine && wayLine <= 129)
+                    {
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(0);
+                        AutoMove(0);
+                        JumpByMirror_2_54();
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(1);
+                        AutoMove(0);
+                        AutoMove(1);
+                        AutoMove(1);
+                        if (wayLine == 124)
+                        {
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(0);
+                            AutoMove(0);
+                            JumpByMirror_2_73();
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(1);
+                        }
+                        else if (wayLine == 125)
+                        {
+                            AutoMove(1);
+                            AutoMove(1);
+                            AutoMove(0);
+                            AutoMove(0);
+                            JumpByMirror_2_74();
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(3);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                        }
+                        else if (wayLine == 126 || wayLine == 127 || wayLine == 128 || wayLine == 129)
+                        {
+                            AutoMove(0);
+                            AutoMove(0);
+                            JumpByMirror_2_75();
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(3);
+                            AutoMove(3);
+                            if (wayLine == 126)
+                            {
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                            }
+                            else
+                            {
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(1);
+                                if (wayLine == 127)
+                                {
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(3);
+                                    AutoMove(3);
+                                    AutoMove(3);
+                                    AutoMove(3);
+                                    AutoMove(3);
+                                    AutoMove(3);
+                                }
+                                else
+                                {
+                                    AutoMove(3);
+                                    AutoMove(3);
+                                    AutoMove(3);
+                                    if (wayLine == 128)
+                                    {
+                                        AutoMove(2);
+                                        AutoMove(2);
+                                        AutoMove(2);
+                                    }
+                                    else
+                                    {
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(1);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                        AutoMove(3);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        AutoMove(0);
+                        AutoMove(0);
+                        JumpByMirror_2_55();
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        if (130 <= wayLine && wayLine <= 133)
+                        {
+                            if (wayLine == 133)
+                            {
+                                AutoMove(2);
+                                AutoMove(3);
+                                AutoMove(3);
+                                JumpByMirror_2_77();
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(1);
+                                AutoMove(1);
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(1);
+                            }
+                            else if (130 <= wayLine && wayLine <= 132)
+                            {
+                                AutoMove(1);
+                                AutoMove(3);
+                                AutoMove(3);
+                                JumpByMirror_2_76();
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(3);
+                                AutoMove(1);
+                                AutoMove(1);
+                                if (wayLine == 130)
+                                {
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                }
+                                else if (wayLine == 131)
+                                {
+                                    AutoMove(1);
+                                    AutoMove(1);
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                }
+                                else if (wayLine == 132)
+                                {
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            #endregion
+            #region "鏡40"
+            else if (134 <= wayLine && wayLine <= 150)
+            {
+                AutoMove(2);
+                AutoMove(2);
+                AutoMove(0);
+                AutoMove(0);
+                JumpByMirror_2_40();
+                AutoMove(2);
+                AutoMove(2);
+                AutoMove(2);
+                AutoMove(2);
+                AutoMove(3);
+                AutoMove(3);
+                AutoMove(1);
+                AutoMove(1);
+                AutoMove(1);
+                AutoMove(1);
+                JumpByMirror_2_46();
+                AutoMove(3);
+                if (134 <= wayLine && wayLine <= 138)
+                {
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    JumpByMirror_2_56();
+                    AutoMove(0);
+                    AutoMove(0);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(3);
+                    AutoMove(3);
+                    AutoMove(3);
+                    AutoMove(3);
+                    AutoMove(1);
+                    AutoMove(1);
+                    if (wayLine == 134 || wayLine == 135 || wayLine == 136 || wayLine == 137)
+                    {
+                        AutoMove(0);
+                        AutoMove(0);
+                        JumpByMirror_2_78();
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        if (wayLine == 134) { AutoMove(0); AutoMove(0); AutoMove(0); }
+                        else if (wayLine == 135) { AutoMove(0); AutoMove(0); AutoMove(2); }
+                        else if (wayLine == 136) { AutoMove(2); AutoMove(2); AutoMove(0); }
+                        else if (wayLine == 137) { AutoMove(2); AutoMove(2); AutoMove(2); }
+                    }
+                    else if (wayLine == 138)
+                    {
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(3);
+                        AutoMove(3);
+                        JumpByMirror_2_79();
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                    }
+                }
+                else if (wayLine == 139 || wayLine == 140 || wayLine == 141)
+                {
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    JumpByMirror_2_57();
+                    AutoMove(0);
+                    AutoMove(0);
+                    JumpByMirror_2_80();
+                    AutoMove(0);
+                    if (wayLine == 139) { AutoMove(2); }
+                    else if (wayLine == 140) { AutoMove(0); AutoMove(0); AutoMove(2); }
+                    else if (wayLine == 141) { AutoMove(0); AutoMove(0); AutoMove(0); }
+                }
+                else if (142 <= wayLine && wayLine <= 150)
+                {
+                    AutoMove(3);
+                    AutoMove(3);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    AutoMove(1);
+                    JumpByMirror_2_58();
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    AutoMove(2);
+                    if (wayLine == 142 || wayLine == 143)
+                    {
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        JumpByMirror_2_81();
+                        AutoMove(1);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        if (wayLine == 142) { AutoMove(0); }
+                        else if (wayLine == 143) { AutoMove(3); }
+                        AutoMove(2);
+                    }
+                    else if (wayLine == 144)
+                    {
+                        AutoMove(0);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        JumpByMirror_2_82();
+                        AutoMove(3);
+                        AutoMove(3);
+                    }
+                    else if (wayLine == 145 || wayLine == 146)
+                    {
+                        AutoMove(3);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        JumpByMirror_2_83();
+                        AutoMove(0);
+                        AutoMove(0);
+                        if (wayLine == 145) { AutoMove(1); }
+                        else if (wayLine == 146) { /* 何もしない */ }
+                        AutoMove(0);
+                        AutoMove(0);
+                    }
+                    else if (wayLine == 147 || wayLine == 148 || wayLine == 149 || wayLine == 150)
+                    {
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(3);
+                        AutoMove(2);
+                        AutoMove(2);
+                        AutoMove(2);
+                        JumpByMirror_2_84();
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(1);
+                        AutoMove(0);
+                        AutoMove(0);
+                        AutoMove(0);
+                        if (wayLine == 147)
+                        {
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                            AutoMove(2);
+                        }
+                        else
+                        {
+                            AutoMove(0);
+                            AutoMove(0);
+                            AutoMove(0);
+                            if (wayLine == 148)
+                            {
+                                AutoMove(2);
+                                AutoMove(2);
+                                AutoMove(0);
+                                AutoMove(0);
+                            }
+                            else
+                            {
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                AutoMove(0);
+                                if (wayLine == 149)
+                                {
+                                    AutoMove(2);
+                                    AutoMove(2);
+                                    AutoMove(3);
+                                    AutoMove(3);
+                                }
+                                else if (wayLine == 150)
+                                {
+                                    AutoMove(0);
+                                    AutoMove(0);
+                                    AutoMove(2);
+                                    AutoMove(2);
+                                    AutoMove(2);
+                                    AutoMove(2);
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            #endregion
         }
 
         private void UpdateMainMessage(string message)
@@ -14322,238 +15353,191 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation38)
                 {
-                    JumpToLocation(40, -29, true);
-                    UpdateUnknownTileArea3_Area2();
+                    JumpByMirror_2_38();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation39)
                 {
-                    JumpToLocation(45, -4, true);
-                    UpdateUnknownTileArea3_Area22();
+                    JumpByMirror_2_39();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation40)
                 {
-                    JumpToLocation(21, -30, true);
-                    UpdateUnknownTileArea3_Area37();
+                    JumpByMirror_2_40();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation41)
                 {
-                    JumpToLocation(33, -7, true);
-                    UpdateUnknownTileArea3_Area3();
+                    JumpByMirror_2_41();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation42)
                 {
-                    JumpToLocation(43, -28, true);
-                    UpdateUnknownTileArea3_Area11();
+                    JumpByMirror_2_42();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation43)
                 {
-                    JumpToLocation(21, -22, true);
-                    UpdateUnknownTileArea3_Area15();
+                    JumpByMirror_2_43();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation44)
                 {
-                    JumpToLocation(45, -11, true);
-                    UpdateUnknownTileArea3_Area23();
+                    JumpByMirror_2_44();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation45)
                 {
-                    JumpToLocation(36, -36, true);
-                    UpdateUnknownTileArea3_Area29();
+                    JumpByMirror_2_45();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation46)
                 {
-                    JumpToLocation(40, 0, true);
-                    UpdateUnknownTileArea3_Area38();
+                    JumpByMirror_2_46();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation47)
                 {
-                    JumpToLocation(29, -23, true);
-                    UpdateUnknownTileArea3_Area4();
+                    JumpByMirror_2_47();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation48)
                 {
-                    JumpToLocation(42, -24, true);
-                    UpdateUnknownTileArea3_Area8();
+                    JumpByMirror_2_48();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation49)
                 {
-                    JumpToLocation(38, -38, true);
-                    UpdateUnknownTileArea3_Area12();
+                    JumpByMirror_2_49();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation50)
                 {
-                    JumpToLocation(40, -16, true);
-                    UpdateUnknownTileArea3_Area16();
+                    JumpByMirror_2_50();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation51)
                 {
-                    JumpToLocation(53, -36, true);
-                    UpdateUnknownTileArea3_Area18();
+                    JumpByMirror_2_51();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation52)
                 {
-                    JumpToLocation(30, -13, true);
-                    UpdateUnknownTileArea3_Area24();
+                    JumpByMirror_2_52();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation53)
                 {
-                    JumpToLocation(41, -30, true);
-                    UpdateUnknownTileArea3_Area27();
+                    JumpByMirror_2_53();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation54)
                 {
-                    JumpToLocation(32, -11, true);
-                    UpdateUnknownTileArea3_Area30();
+                    JumpByMirror_2_54();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation55)
                 {
-                    JumpToLocation(40, -4, true);
-                    UpdateUnknownTileArea3_Area34();
+                    JumpByMirror_2_55();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation56)
                 {
-                    JumpToLocation(32, -16, true);
-                    UpdateUnknownTileArea3_Area39();
+                    JumpByMirror_2_56();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation57)
                 {
-                    JumpToLocation(48, -20, true);
-                    UpdateUnknownTileArea3_Area42();
+                    JumpByMirror_2_57();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation58)
                 {
-                    JumpToLocation(26, -22, true);
-                    UpdateUnknownTileArea3_Area44();
+                    JumpByMirror_2_58();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation59)
                 {
-                    JumpToLocation(31, -20, true);
-                    UpdateUnknownTileArea3_Area5();
+                    JumpByMirror_2_59();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation60)
                 {
-                    JumpToLocation(52, -4, true);
-                    UpdateUnknownTileArea3_Area6();
+                    JumpByMirror_2_60();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation61)
                 {
-                    JumpToLocation(52, -12, true);
-                    UpdateUnknownTileArea3_Area7();
+                    JumpByMirror_2_61();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation62)
                 {
-                    JumpToLocation(29, -36, true);
-                    UpdateUnknownTileArea3_Area9();
+                    JumpByMirror_2_62();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation63)
                 {
-                    JumpToLocation(35, -17, true);
-                    UpdateUnknownTileArea3_Area10();
+                    JumpByMirror_2_63();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation64)
                 {
-                    JumpToLocation(42, -3, true);
-                    UpdateUnknownTileArea3_Area13();
+                    JumpByMirror_2_64();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation65)
                 {
-                    JumpToLocation(53, -38, true);
-                    UpdateUnknownTileArea3_Area14();
+                    JumpByMirror_2_65();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation66)
                 {
-                    JumpToLocation(30, -33, true);
-                    UpdateUnknownTileArea3_Area17();
+                    JumpByMirror_2_66();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation67)
                 {
-                    JumpToLocation(35, -4, true);
-                    UpdateUnknownTileArea3_Area19();
+                    JumpByMirror_2_67();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation68)
                 {
-                    JumpToLocation(23, -17, true);
-                    UpdateUnknownTileArea3_Area20();
+                    JumpByMirror_2_68();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation69)
                 {
-                    JumpToLocation(25, -29, true);
-                    UpdateUnknownTileArea3_Area21();
+                    JumpByMirror_2_69();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation70)
                 {
-                    JumpToLocation(26, -29, true);
-                    UpdateUnknownTileArea3_Area25();
+                    JumpByMirror_2_70();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation71)
                 {
-                    JumpToLocation(30, -4, true);
-                    UpdateUnknownTileArea3_Area26();
+                    JumpByMirror_2_71();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation72)
                 {
-                    JumpToLocation(51, -15, true);
-                    UpdateUnknownTileArea3_Area28();
+                    JumpByMirror_2_72();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation73)
                 {
-                    JumpToLocation(31, -22, true);
-                    UpdateUnknownTileArea3_Area31();
+                    JumpByMirror_2_73();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation74)
                 {
-                    JumpToLocation(39, -33, true);
-                    UpdateUnknownTileArea3_Area32();
+                    JumpByMirror_2_74();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation75)
                 {
-                    JumpToLocation(41, 0, true);
-                    UpdateUnknownTileArea3_Area33();
+                    JumpByMirror_2_75();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation76)
                 {
-                    JumpToLocation(54, -11, true);
-                    UpdateUnknownTileArea3_Area35();
+                    JumpByMirror_2_76();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation77)
                 {
-                    JumpToLocation(37, -26, true);
-                    UpdateUnknownTileArea3_Area36();
+                    JumpByMirror_2_77();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation78)
                 {
-                    JumpToLocation(20, -20, true);
-                    UpdateUnknownTileArea3_Area40();
+                    JumpByMirror_2_78();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation79)
                 {
-                    JumpToLocation(45, -20, true);
-                    UpdateUnknownTileArea3_Area41();
+                    JumpByMirror_2_79();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation80)
                 {
-                    JumpToLocation(21, -9, true);
-                    UpdateUnknownTileArea3_Area43();
+                    JumpByMirror_2_80();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation81)
                 {
-                    JumpToLocation(40, -28, true);
-                    UpdateUnknownTileArea3_Area45();
+                    JumpByMirror_2_81();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation82)
                 {
-                    JumpToLocation(53, -22, true);
-                    UpdateUnknownTileArea3_Area46();
+                    JumpByMirror_2_82();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation83)
                 {
-                    JumpToLocation(52, -10, true);
-                    UpdateUnknownTileArea3_Area47();
+                    JumpByMirror_2_83();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocation84)
                 {
-                    JumpToLocation(27, -34, true);
-                    UpdateUnknownTileArea3_Area48();
+                    JumpByMirror_2_84();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonMakeCorrectAnswer)
                 {
@@ -16682,6 +17666,93 @@ namespace DungeonPlayer
                         this.nowAutoMoveNumber.Add(0);
                     }
                     else if (number == 30)
+                    {
+                        ShownEvent();
+                    }
+                    else if (number == 31)
+                    {
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(20);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(21);
+                        this.nowAutoMoveNumber.Add(10006); // JumpByMirror_TurnBack();
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                    }
+                    else if (number == 32)
                     {
                         ShownEvent();
                     }

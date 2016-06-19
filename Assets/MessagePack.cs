@@ -12305,99 +12305,101 @@ namespace DungeonPlayer
         }
         #endregion
         #region "真実解のイベント２【記憶の回想】"
+        private static void Story_TruthRecollection3_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+            messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　この光景が全て幻想だとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            //messageList.Add("　　＜＜＜　初めから全てが間違っているのだとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            //messageList.Add("　　＜＜＜　終わりへと足を運ぶな。　始まりへと足を進めろ。　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
+
+            messageList.Add("　　ラナ：ランディスさんに聞いてみたのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：何を？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：ヴェルゼさんの素性の事よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・そしたら、師匠は何て言ったんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：【全ては裏返し】って・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・端的だなあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：あ、そうそう。こうも言ってたわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：（声マネ）『ランディス：アイツにとっちゃ、この光景が全て幻想なんだろ』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：こんな感じだったと思うわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：全て幻想・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ、ダメだ。全然意味がわからねえ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：そうかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：私、なんとなく分かっちゃったけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：っな！！　マジかよ！？　教えてくれよ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：う～ん、教えてって言われても、合ってるかどうかもわかんないわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：それでもいい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ、ああ。　全然オッケー。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：じゃあ、言うわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：ヴェルゼさんには想い人が居たのよ、きっと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・え？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：でも、不慮の事故か何かで、その想い人は死んでしまった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：想い人が死んでしまった世界の中で生きなくちゃいけない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：変えようと思っても変えられない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：だから、想い人の居ない現実の世界を、幻想の世界にしてしまいたいんじゃないかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：幻想と現実を入れ替える、言ってみれば現実世界を『全て裏返し』にしてしまう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：そういう考え方もあるわよね。実際無理なのは頭で分かってても、心がそう動くんじゃないかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ラナ、お前のその想像力はすげえよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：言っとくけど、当てずっぽだから、アテにならないわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いや、師匠がラナにかけた言葉は、ラナが推測しうる内容に誘導させているのは間違いねえんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：多分合ってるぜ。それ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：そうかしら・・・今思いついたのを適当に言ってるだけだから、あんまり信頼しないでよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ、了解了解。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+        }
         public static void Message13117(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (GroundOne.WE2.TruthRecollection3_2 == false)
             {
                 GroundOne.WE2.TruthRecollection3_2 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
-
-                #region "Story_TruthRecollection3_2"
-                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　＜＜＜　この光景が全て幻想だとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                //messageList.Add("　　＜＜＜　初めから全てが間違っているのだとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                //messageList.Add("　　＜＜＜　終わりへと足を運ぶな。　始まりへと足を進めろ。　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
-
-                messageList.Add("　　ラナ：ランディスさんに聞いてみたのよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：何を？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：ヴェルゼさんの素性の事よ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・そしたら、師匠は何て言ったんだ？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：【全ては裏返し】って・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・端的だなあ・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：あ、そうそう。こうも言ってたわ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：（声マネ）『ランディス：アイツにとっちゃ、この光景が全て幻想なんだろ』"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：こんな感じだったと思うわ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：全て幻想・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ、ダメだ。全然意味がわからねえ・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：そうかしら。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：私、なんとなく分かっちゃったけど。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：っな！！　マジかよ！？　教えてくれよ！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：う～ん、教えてって言われても、合ってるかどうかもわかんないわよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：それでもいい？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ、ああ。　全然オッケー。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：じゃあ、言うわね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：ヴェルゼさんには想い人が居たのよ、きっと。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・え？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：でも、不慮の事故か何かで、その想い人は死んでしまった。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：想い人が死んでしまった世界の中で生きなくちゃいけない。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：変えようと思っても変えられない。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：だから、想い人の居ない現実の世界を、幻想の世界にしてしまいたいんじゃないかしら。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：幻想と現実を入れ替える、言ってみれば現実世界を『全て裏返し』にしてしまう。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：そういう考え方もあるわよね。実際無理なのは頭で分かってても、心がそう動くんじゃないかしら。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ラナ、お前のその想像力はすげえよな。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：言っとくけど、当てずっぽだから、アテにならないわよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：いや、師匠がラナにかけた言葉は、ラナが推測しうる内容に誘導させているのは間違いねえんだ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：多分合ってるぜ。それ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：そうかしら・・・今思いついたのを適当に言ってるだけだから、あんまり信頼しないでよね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ、了解了解。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
-                #endregion
+                Story_TruthRecollection3_2(ref messageList, ref eventList);
 
                 messageList.Add("ラナ：・・・ちょっと・・・ソコのバカ！！！"); eventList.Add(ActionEvent.None);
 
@@ -24181,13 +24183,75 @@ namespace DungeonPlayer
         }
         #endregion
         #region "真実の回想録3_2"
-        public static void Message16026(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16026(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            Story_TruthRecollection3_2(ref messageList, ref eventList);
+            
+            // todo
+            //MirrorLastWay();
+
+            GroundOne.WE2.SeekerEvent911 = true;
+        }
         #endregion
         #region "正解への到達時"
-        public static void Message16027(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16027(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　・・・扉だ・・・ ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　これを開ければ、おそらく・・・ ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　いや　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　間違いねえ、これは『正解』だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　『正解』まで辿り着いた・・・後は、この後に来る『無限』に対応するため、『原点』を探る事だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ここまでくるにあたって、鏡を潜った回数は数えるほどだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　だが、俺が見る限り、最後の鏡に該当する鏡の総数は・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　１２８個　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・到達までが早過ぎる・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　一旦戻って、まだ潜ってない鏡を一つ一つ調べ直そう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　それが『原点解』を見つけるための手筋だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　よし、戻ろう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("31"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent912 = true;
+        }
         #endregion
         #region "原点解到達までのあらすじ"
-        public static void Message16028(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16028(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　原点解は・・・地道に探すしかねえな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　ここでは直観は使わない　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　総当たりで行くぜ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　一つずつ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　鏡を探る　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　きっとあるはずだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　そう考えながらひたすら鏡を潜った　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　潜り・・・潜り続けて・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　そして・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("32"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent913 = true;
+        }
         #endregion
         #region "原点解への道と、真実の回想録3_3"
         public static void Message16029(ref List<string> messageList, ref List<ActionEvent> eventList) { }
