@@ -6013,10 +6013,11 @@ namespace DungeonPlayer
                     this.gold = 0;
                     this.experience = 0;
                     this.Armor = ArmorType.Normal;
-                    this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD_1);
-                    this.MainArmor = new ItemBackPack(Database.EPIC_YAMITUYUKUSA_MOON_ROBE_2);
-                    this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
-                    this.Accessory2 = new ItemBackPack(Database.LEGENDARY_ANASTELISA_INNOCENT_FIRE_RING_2);
+                    // debug
+                    //this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD_1);
+                    //this.MainArmor = new ItemBackPack(Database.EPIC_YAMITUYUKUSA_MOON_ROBE_2);
+                    //this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
+                    //this.Accessory2 = new ItemBackPack(Database.LEGENDARY_ANASTELISA_INNOCENT_FIRE_RING_2);
                     this.Area = MonsterArea.Duel;
                     break;
 

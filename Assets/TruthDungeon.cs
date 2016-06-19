@@ -969,6 +969,30 @@ namespace DungeonPlayer
                         AutoMove(move);
                         System.Threading.Thread.Sleep(sleep);
                     }
+                    else if (this.nowAutoMoveNumber[0] == 10001)
+                    {
+                        JumpToLocation(14, -36, true);
+                        UpdateUnknownTileArea3_0_6();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10002)
+                    {
+                        JumpToLocation(12, -12, true);
+                        UpdateUnknownTileArea3_0_14();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10003)
+                    {
+                        JumpToLocation(8, -28, true);
+                        UpdateUnknownTileArea3_0_16();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10004)
+                    {
+                        JumpToLocation(1, -38, true);
+                        UpdateUnknownTile();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10005)
+                    {
+                        JumpByMirror_1_End();
+                    }
                     else
                     {
                         System.Threading.Thread.Sleep(this.nowAutoMoveNumber[0]);
@@ -1445,6 +1469,12 @@ namespace DungeonPlayer
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                 }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    MessagePack.Message16018_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
                          GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
                 {
@@ -1516,6 +1546,12 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    MessagePack.Message16018_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
                 }
                 if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
                     GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
@@ -1604,6 +1640,11 @@ namespace DungeonPlayer
                 {
                     GroundOne.WE.TruthCompleteSlayBoss5 = true;
                     MessagePack.Message15006_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
+                {
+                    MessagePack.Message16018_Success(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
 
@@ -2129,8 +2170,13 @@ namespace DungeonPlayer
                     MessagePack.Message16009(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
+                else if (!GroundOne.WE2.SeekerEvent809 && row == 6 && column == 51 && GroundOne.WE2.RealDungeonArea == 2)
+                {
+                    MessagePack.Message16009_2(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
                 #endregion
-                #region "複合レバー【技】の部屋で、【知】関連の看板"
+                #region "【技】の部屋で、【知】関連の看板"
                 else if (!GroundOne.WE2.SeekerEvent810 && row == 37 && column == 30 && GroundOne.WE2.RealDungeonArea == 2)
                 {
                     MessagePack.Message16010(ref nowMessage, ref nowEvent);
@@ -2143,6 +2189,11 @@ namespace DungeonPlayer
                     MessagePack.Message16011(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
+                else if (!GroundOne.WE2.SeekerEvent812 && row == 37 && column == 31 && GroundOne.WE2.RealDungeonArea == 2)
+                {
+                    MessagePack.Message16011_2(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
                 #endregion
                 #region "【心】の部屋で、【力】関連の看板"
                 else if (!GroundOne.WE2.SeekerEvent813 && row == 6 && column == 30 && GroundOne.WE2.RealDungeonArea == 2)
@@ -2150,89 +2201,85 @@ namespace DungeonPlayer
                     MessagePack.Message16012(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
-                else if (!GroundOne.WE2.SeekerEvent812 && row == 37 && column == 31 && GroundOne.WE2.RealDungeonArea == 2)
-                {
-                    MessagePack.Message16012_2(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                #endregion
-                #region "【心】の部屋で、【力】関連の看板"
-                else if (!GroundOne.WE2.SeekerEvent813 && row == 6 && column == 30 && GroundOne.WE2.RealDungeonArea == 2)
-                {
-                    MessagePack.Message16013(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
                 #endregion
                 #region "複合レバー【心】の部屋で、【力】関連"
                 else if (!GroundOne.WE2.SeekerEvent814 && row == 5 && column == 30 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16014(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16013(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 else if (!GroundOne.WE2.SeekerEvent815 && row == 7 && column == 30 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16014_2(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16013_2(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "ボス"
                 else if (!GroundOne.WE2.SeekerEvent816 && row == 36 && column == 14 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16015(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16014(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "【力】の部屋で、【技】関連の看板"
                 else if (!GroundOne.WE2.SeekerEvent817 && row == 26 && column == 14 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16016(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16015(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "複合レバー【力】の部屋で、【技】関連"
                 else if (!GroundOne.WE2.SeekerEvent818 && row == 26 && column == 13 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16017(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16016(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 else if (!GroundOne.WE2.SeekerEvent819 && row == 26 && column == 15 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16017_2(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16016_2(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "２階、回想録"
                 else if (!GroundOne.WE2.SeekerEvent820 && row == 26 && column == 10 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16018(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16017(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "２階、カールハンツと会話／戦闘"
                 else if (!GroundOne.WE2.SeekerEvent821 && row == 26 && column == 16 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16019(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16018(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "２階、カールハンツ会話後、戦闘敗北後の自由行動制限"
                 else if (GroundOne.WE2.SeekerEvent821_fail && !GroundOne.WE2.SeekerEvent821)
                 {
-                    MessagePack.Message16020(ref nowMessage, ref nowEvent);
-                    tapOK();
+                    if (row == 28 && column == 14 && GroundOne.WE2.RealDungeonArea == 2)
+                    {
+                        MessagePack.Message16019(ref nowMessage, ref nowEvent);
+                        tapOK();
+                    }
+                    else if (row == 26 && column == 12 && GroundOne.WE2.RealDungeonArea == 2)
+                    {
+                        MessagePack.Message16019_2(ref nowMessage, ref nowEvent);
+                        tapOK();
+                    }
                 }
                 #endregion
                 #region "２階から３階へ"
                 else if (row == 26 && column == 17 && GroundOne.WE2.RealDungeonArea == 2)
                 {
-                    MessagePack.Message16021(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16020(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "３階スタート"
                 else if (!GroundOne.WE2.SeekerEvent901 && row == 19 && column == 0 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16022(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16021(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
@@ -2240,70 +2287,70 @@ namespace DungeonPlayer
                 else if ((!GroundOne.WE2.SeekerEvent902 && row == 19 && column == 9 && GroundOne.WE2.RealDungeonArea == 3) ||
                          (!GroundOne.WE2.SeekerEvent902 && row == 20 && column == 9 && GroundOne.WE2.RealDungeonArea == 3))
                 {
-                    MessagePack.Message16023(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16022(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡エリア１コンプリート"
                 else if (!GroundOne.WE2.SeekerEvent903 && row == 35 && column == 1 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16024(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16023(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡エリア２開始の分析"
                 else if (!GroundOne.WE2.SeekerEvent904 && row == 16 && column == 24 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16025(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16024(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡エリア２の進行"
                 else if (!GroundOne.WE2.SeekerEvent905 && row == 16 && column == 24 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16026(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16025(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "真実の回想録3_2"
                 else if (!GroundOne.WE2.SeekerEvent911 && row == 25 && column == 1 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16027(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16026(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "正解への到達時"
                 else if (!GroundOne.WE2.SeekerEvent912 && row == 39 && column == 54 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16028(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16027(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "原点解到達までのあらすじ"
                 else if (!GroundOne.WE2.SeekerEvent913 && row == 16 && column == 24 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16029(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16028(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "原点解への道と、真実の回想録3_3"
                 else if (!GroundOne.WE2.SeekerEvent914 && row == 16 && column == 24 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16030(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16029(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "原点解到達"
                 else if (!GroundOne.WE2.SeekerEvent915 && row == 12 && column == 37 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16031(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16030(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "原点解の看板Phase1"
                 else if (!GroundOne.WE2.SeekerEvent916 && row == 7 && column == 37 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16032(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16031(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
@@ -2311,91 +2358,91 @@ namespace DungeonPlayer
                 #region "原点解の看板Phase2"
                 else if (row == 7 && column == 37 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16033(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16032(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "聖者の選択"
                 else if (!GroundOne.WE2.SeekerEvent917 && row == 5 && column == 36 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16034(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16033(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "愚者の選択"
                 else if (!GroundOne.WE2.SeekerEvent918 && row == 5 && column == 38 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16035(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16034(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "戻るを選択"
                 else if (!GroundOne.WE2.SeekerEvent919 && row == 12 && column == 37 && GroundOne.WE2.RealDungeonArea == 3 && GroundOne.WE2.SeekerEvent906)
                 {
-                    MessagePack.Message16036(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16035(ref nowMessage, ref nowEvent);
                     //tapOK();
                     //}
                 #endregion
                     #region "ボス撃破後の無限回廊看板"
                     //else if (!GroundOne.WE2.SeekerEvent920 && row == 39 && column == 54 && GroundOne.WE2.RealDungeonArea == 3 && GroundOne.WE2.SeekerEvent909)
                     //{
-                    MessagePack.Message16037(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16036(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                     #endregion
                 #region "３Fハウリングシーザー撃破の破、自由行動制限"
                 else if (GroundOne.WE2.SeekerEvent920 && row == 39 && column == 54)
                 {
-                    MessagePack.Message16038(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16037(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "無限回廊前の看板"
                 else if (GroundOne.WE2.SeekerEvent920 && row == 39 && column == 56)
                 {
-                    MessagePack.Message16039(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16038(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "原点解入手後の正解階段ブロック"
                 else if (GroundOne.WE2.SeekerEvent920 && row == 39 && column == 59)
                 {
-                    MessagePack.Message16040(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16039(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "無限回廊"
                 else if (!GroundOne.WE2.SeekerEvent921 && row == 35 && column == 55 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16041(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16040(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "無限回廊から真実の回想録へ抜ける"
                 else if (row == 2 && column == 59 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16042(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16041(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "真実の回想録3_4"
                 else if (!GroundOne.WE2.SeekerEvent922 && row == 4 && column == 1 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16043(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16042(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "真実の回想録から右上最後の看板へ"
                 else if (row == 8 && column == 1 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16044(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16043(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "最後の看板"
                 else if (row == 1 && column == 55 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16045(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16044(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
@@ -2403,133 +2450,133 @@ namespace DungeonPlayer
                 else if ((!GroundOne.WE2.SeekerEvent924 && row == 0 && column == 58 && GroundOne.WE2.RealDungeonArea == 3) ||
                          (!GroundOne.WE2.SeekerEvent924 && row == 1 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
                 {
-                    MessagePack.Message16046(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16045(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "３階から４階へ"
                 else if (row == 0 && column == 59 && GroundOne.WE2.RealDungeonArea == 3)
                 {
-                    MessagePack.Message16047(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16046(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "無間地獄の看板"
                 else if (row == 28 && column == 27 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16048(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16047(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "登り階段をブロック"
                 else if (row == 28 && column == 31 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16049(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16048(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡１"
                 else if (row == 28 && column == 23 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16050(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16049(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡２"
                 else if (row == 23 && column == 43 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16051(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16050(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡３"
                 else if (row == 22 && column == 28 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16052(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16051(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡４"
                 else if (row == 32 && column == 39 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16053(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16052(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡５"
                 else if (row == 22 && column == 22 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16054(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16053(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡６"
                 else if (row == 20 && column == 32 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16055(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16054(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡７"
                 else if (row == 29 && column == 21 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16056(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16055(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡８"
                 else if (row == 26 && column == 43 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16057(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16056(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡９"
                 else if (row == 25 && column == 26 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16058(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16057(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡１０"
                 else if (row == 32 && column == 23 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16059(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16058(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡１１"
                 else if (row == 22 && column == 32 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16060(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16059(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡１２"
                 else if (row == 31 && column == 44 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16061(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16060(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡１３"
                 else if (row == 31 && column == 28 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16062(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16061(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡１４"
                 else if (row == 25 && column == 34 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16063(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16062(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡１５"
                 else if (row == 28 && column == 32 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16064(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16063(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
@@ -2550,69 +2597,69 @@ namespace DungeonPlayer
                          (row == 33 && column == 40 && GroundOne.WE2.RealDungeonArea == 4) ||
                          (row == 22 && column == 44 && GroundOne.WE2.RealDungeonArea == 4))
                 {
-                    MessagePack.Message16065(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16064(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "鏡１６"
                 else if (row == 26 && column == 34 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16066(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16065(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "ボス前の扉"
                 else if (!GroundOne.WE2.SeekerEvent1011 && row == 19 && column == 52 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16067(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16066(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "フェルトゥーシュ入手＋第三偶像を破壊"
                 else if (!GroundOne.WE2.SeekerEvent1012 && row == 19 && column == 59 && GroundOne.WE2.RealDungeonArea == 4)
                 {
-                    MessagePack.Message16068(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16067(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "最終戦の前で引き返す事をさせないための制御"
                 else if (row == 16 && column == 30 && GroundOne.WE2.RealDungeonArea == 5)
                 {
-                    MessagePack.Message16069(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16068(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "回復の泉"
                 else if (row == 14 && column == 31 && GroundOne.WE2.RealDungeonArea == 5)
                 {
-                    MessagePack.Message16070(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16069(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
                 #region "真実世界"
                 else if (row == 9 && ((column == 29) || (column == 30) || (column == 31)) && GroundOne.WE2.RealDungeonArea == 5)
                 {
-                    MessagePack.Message16071(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16070(ref nowMessage, ref nowEvent);
                     //tapOK();
                     //}
                 #endregion
                     #region "ヴェルゼ最終戦２【原罪】"
                     if (!GroundOne.WE2.SeekerEvent1102)
                     {
-                        MessagePack.Message16072(ref nowMessage, ref nowEvent);
+                        MessagePack.Message16071(ref nowMessage, ref nowEvent);
                     }
                     #endregion
                     #region "ヴェルゼ戦闘終了後"
                     if (!GroundOne.WE2.SeekerEvent1103)
                     {
-                        MessagePack.Message16073(ref nowMessage, ref nowEvent);
+                        MessagePack.Message16072(ref nowMessage, ref nowEvent);
                     }
                 }
                     #endregion
                 #region "エンディングへ"
                 else if (row == 0 && column == 30 && GroundOne.WE2.RealDungeonArea == 5)
                 {
-                    MessagePack.Message16074(ref nowMessage, ref nowEvent);
+                    MessagePack.Message16073(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
@@ -3291,7 +3338,7 @@ namespace DungeonPlayer
                 #region "現実世界"
                 if (GroundOne.WE2.StartSeeker)
                 {
-                    ExecSomeEvent_ReadWorld();
+                    ShownEvent();
                 }
                 #endregion
 
@@ -13922,7 +13969,15 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonBadEnd)
                 {
-                    SceneDimension.CallSaveLoad(this, true, true);
+                    if (GroundOne.WE2.RealWorld)
+                    {
+                        Method.ExecSave(null, Database.WorldSaveNum, true);
+                        SceneDimension.JumpToTitle();
+                    }
+                    else
+                    {
+                        SceneDimension.CallSaveLoad(this, true, true);
+                    }
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonGetTreasure)
                 {
@@ -16536,6 +16591,100 @@ namespace DungeonPlayer
                         this.nowAutoMoveNumber.Add(1);
                         this.nowAutoMoveNumber.Add(1);
                     }
+                    else if (number == 25)
+                    {
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                    }
+                    else if (number == 26)
+                    {
+                        this.nowAutoMoveNumber.Add(2);
+                    }
+                    else if (number == 27)
+                    {
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                    }
+                    else if (number == 28)
+                    {
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(10001); // JumpByMirror_1_10
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(10002); // JumpByMirror_1_21
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(10003); // JumpByMirror_1_33
+                        this.nowAutoMoveNumber.Add(2000); // sleep
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(10004); // JumpByMirror_1_37
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(200);
+                        this.nowAutoMoveNumber.Add(200);
+                        this.nowAutoMoveNumber.Add(200);
+                    }
+                    else if (number == 29)
+                    {
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(10005); // JumpByMirror_1_End();
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                    }
+                    else if (number == 30)
+                    {
+                        ShownEvent();
+                    }
 
                     this.nowAutoMove = true;
                 }
@@ -16827,12 +16976,6 @@ namespace DungeonPlayer
             GroundOne.BattleSpeed = this.battleSpeed;
             GroundOne.Difficulty = this.difficulty;
             SceneDimension.JumpToTruthHomeTown();
-        }
-        
-        private bool ExecSomeEvent_ReadWorld()
-        {
-            // after
-            return true;
         }
 
         private void SetupDungeonMapping(int area)

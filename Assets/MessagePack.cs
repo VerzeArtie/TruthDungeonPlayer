@@ -9245,111 +9245,116 @@ namespace DungeonPlayer
         }
         #endregion
         #region "記憶の回想"
+        private static void Story_TruthRecollection2_1(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+            messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　どこで落としたんだ？ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　盗まれたのだとしたら、どこだ？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
+
+            messageList.Add("　　アイン：しまった！！無くしちまった！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：いつ頃無くしたのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いや、それが・・・２階を進めてる時は確か持ってたんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：いつ頃無くしたのかを聞いてるのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いつ頃・・・いつ頃・・・。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：２階の時は持ってた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドグシィィァ！！！』（ラナのアルバトロスキックがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：い、いやいや・・・本当思いだせないんだって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：何せあの剣はさ、持った感じがしないというかなんというか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いつもと持った時の感触が何か違うなって気はしてたんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：それって、無くしたんじゃなくて、すり替えられたって事じゃないの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：おお！　その通り！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ズゴゴゴオオォォン！！！』（ラナの千手観音ブローがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：グ・・グオオォォォ・・・わ、悪かったって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：じゃあ、盗まれたあるいはすり替えられたとしたら、どこで？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：それもわかれば苦労しねえんだけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：でも、おかしいわよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：何がだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：それ、相当おかしいわよ、だって・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：アインって、剣は常に手元に置いておく方でしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ、まあそうだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：褒めるのはシャクに障るけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：アインが持っている剣をすり替えるなんて、そんな簡単な事じゃないと思うんだけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そうか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：そうよ。バカアインは、何だかんだ言っても気配察知は得意でしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：バカそうに見えて、油断らしい油断も見当たらないわけだし。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：まあ、そこら辺のゴロツキに取られるほど遅れは取るつもりはねえな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：でも、確かにすり替えられたんだって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：ひょっとしたら顔見知りにやられたんじゃないの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：顔見知りだったら少し気を許した状態になってるでしょ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：まさか顔見知りがそんな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：イイから、少しだけ思い返してみなさいよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：知り合いの名前を言ってみなさいよ、ッホラホラ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ラナだろ、ボケ師匠に、ガンツ伯父さん、ハンナおばさん・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：DUEL闘技場の受付さん、カールハンツ先生・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：それに街の皆・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：それから・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("　　アイン：ヴェルゼ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：【天空の翼】を保持する者"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ヴェルゼ・アーティ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+        }
+
         public static void Message12068(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (GroundOne.WE2.TruthRecollection2 == false)
             {
                 GroundOne.WE2.TruthRecollection2 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-                
-                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
-
-                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　＜＜＜　どこで落としたんだ？ ＞＞＞"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　＜＜＜　盗まれたのだとしたら、どこだ？　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
-
-                messageList.Add("　　アイン：しまった！！無くしちまった！！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：いつ頃無くしたのよ？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：いや、それが・・・２階を進めてる時は確か持ってたんだよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：いつ頃無くしたのかを聞いてるのよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：いつ頃・・・いつ頃・・・。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：２階の時は持ってた。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　　『ッドグシィィァ！！！』（ラナのアルバトロスキックがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：い、いやいや・・・本当思いだせないんだって。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：何せあの剣はさ、持った感じがしないというかなんというか・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：いつもと持った時の感触が何か違うなって気はしてたんだが・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：それって、無くしたんじゃなくて、すり替えられたって事じゃないの？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：おお！　その通り！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　　『ズゴゴゴオオォォン！！！』（ラナの千手観音ブローがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：グ・・グオオォォォ・・・わ、悪かったって。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：じゃあ、盗まれたあるいはすり替えられたとしたら、どこで？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：それもわかれば苦労しねえんだけど・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：でも、おかしいわよね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：何がだ？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：それ、相当おかしいわよ、だって・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：アインって、剣は常に手元に置いておく方でしょ？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ、まあそうだな。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：褒めるのはシャクに障るけど・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：アインが持っている剣をすり替えるなんて、そんな簡単な事じゃないと思うんだけど。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：そうか？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：そうよ。バカアインは、何だかんだ言っても気配察知は得意でしょ？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：バカそうに見えて、油断らしい油断も見当たらないわけだし。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：まあ、そこら辺のゴロツキに取られるほど遅れは取るつもりはねえな。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：でも、確かにすり替えられたんだって。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：ひょっとしたら顔見知りにやられたんじゃないの？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：顔見知りだったら少し気を許した状態になってるでしょ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：まさか顔見知りがそんな・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：イイから、少しだけ思い返してみなさいよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：知り合いの名前を言ってみなさいよ、ッホラホラ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ラナだろ、ボケ師匠に、ガンツ伯父さん、ハンナおばさん・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：DUEL闘技場の受付さん、カールハンツ先生・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：それに街の皆・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：それから・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-                messageList.Add("　　アイン：ヴェルゼ"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：【天空の翼】を保持する者"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ヴェルゼ・アーティ"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+                Story_TruthRecollection2_1(ref messageList, ref eventList);
 
                 messageList.Add("ラナ：ちょっと、アイン？　アインってば！？"); eventList.Add(ActionEvent.None);
 
@@ -10558,125 +10563,128 @@ namespace DungeonPlayer
         }
         #endregion
         #region "真実解のイベント１【記憶の回想】"
+        private static void Story_TruthRecollection3_1(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+            messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　全てが裏返しだとしたら？ ＞＞＞"); eventList.Add(ActionEvent.None);
+
+            //messageList.Add("　　＜＜＜　この光景が全て幻想だとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            //messageList.Add("　　＜＜＜　初めから全てが間違っているのだとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
+
+            messageList.Add("　　アイン：ヴェルゼ・アーティ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：アイン、あんたホントに知らないの？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いや、マジで知らねえな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：ふうん、変ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：何が変なんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：もう何度か言ってると思うけど、もう一度言うわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ、何度聞いても初めてにしか聞こえねえが、よろしく頼むぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：全てが裏返しな人なのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ラナ。そういう言い方するから覚えられねえんだって。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：頼む、もう少しだけわかりやすく教えてくれ。このとおりだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：FiveSeekerはその名の通り、パーティは合わせて５人。ここまでは良いわね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：その中の５人を今から言うわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：おぉ、望むトコロだ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：望まれても困るんだけど・・・、じゃ行くわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：エルミ・ジョルジュ。現国王様よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：ファラ・フローレ。現王妃様ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：オル・ランディス。今は闘技場の覇者で名が通ってるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：まあそんなトコだな、次。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：シニキア・カールハンツ。聖フローラ女学院の独立執行機関の長よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：そして、ヴェルゼ・アーティ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：技の達人よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：技の達人・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そう、そうそう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ソコだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：それだけなのかよ？他にもっとこう・・・ねえのかよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ラナ：無いわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ラナ：現所在地、職業、生活、交友関係、一切が不明よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・う～ん、どうもその特徴が無くて覚えにくいよなあ・・・実際。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：でだ。【全てが裏返し】ってのはどういう意味なんだ結局？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ラナ：私もよくわからないんだけどね・・・ゴメンナサイ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：い、いやいやいや、変なトコで謝るなよ。いいっていって！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ラナ：この言葉はね、ランディスさんから聞いたのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：っな！？　師匠からかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ラナ：うん、そうなのよ。だからホンットちょっとだけ触れて終わりって感じだったの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ってか、何でラナはいつそんな会話を師匠としてたんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ラナ：エスリミア草原区域で薬草の素材を探している時に偶然すれ違ったのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そこで何でそういう会話になったんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ラナ：何妙な所で突っかかってるのよ、ホンットにもう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いやいや、悪い悪ぃ・・・で、そん時に教えてもらったのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ラナ：ええ、ちょっとその・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・うん？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+        }
+
         public static void Message13046(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (GroundOne.WE2.TruthRecollection3_1 == false)
             {
                 GroundOne.WE2.TruthRecollection3_1 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
-
-                #region "Story_TruthRecollection3_1"
-                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　＜＜＜　全てが裏返しだとしたら？ ＞＞＞"); eventList.Add(ActionEvent.None);
-
-                //messageList.Add("　　＜＜＜　この光景が全て幻想だとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                //messageList.Add("　　＜＜＜　初めから全てが間違っているのだとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ヴェルゼ・アーティ？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：アイン、あんたホントに知らないの？？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：いや、マジで知らねえな。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：ふうん、変ね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：何が変なんだよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：もう何度か言ってると思うけど、もう一度言うわね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ、何度聞いても初めてにしか聞こえねえが、よろしく頼むぜ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：全てが裏返しな人なのよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ラナ。そういう言い方するから覚えられねえんだって。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：頼む、もう少しだけわかりやすく教えてくれ。このとおりだ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：FiveSeekerはその名の通り、パーティは合わせて５人。ここまでは良いわね？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：その中の５人を今から言うわね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：おぉ、望むトコロだ！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：望まれても困るんだけど・・・、じゃ行くわね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：エルミ・ジョルジュ。現国王様よ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：ファラ・フローレ。現王妃様ね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：オル・ランディス。今は闘技場の覇者で名が通ってるわね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：まあそんなトコだな、次。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：シニキア・カールハンツ。聖フローラ女学院の独立執行機関の長よ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ああ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：そして、ヴェルゼ・アーティ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：技の達人よ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：技の達人・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：そう、そうそう。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ソコだよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：それだけなのかよ？他にもっとこう・・・ねえのかよ？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ラナ：無いわ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    ラナ：現所在地、職業、生活、交友関係、一切が不明よ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・う～ん、どうもその特徴が無くて覚えにくいよなあ・・・実際。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：でだ。【全てが裏返し】ってのはどういう意味なんだ結局？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    ラナ：私もよくわからないんだけどね・・・ゴメンナサイ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：い、いやいやいや、変なトコで謝るなよ。いいっていって！ッハッハッハ！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    ラナ：この言葉はね、ランディスさんから聞いたのよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：っな！？　師匠からかよ！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    ラナ：うん、そうなのよ。だからホンットちょっとだけ触れて終わりって感じだったの。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ってか、何でラナはいつそんな会話を師匠としてたんだよ！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    ラナ：エスリミア草原区域で薬草の素材を探している時に偶然すれ違ったのよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：そこで何でそういう会話になったんだよ！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    ラナ：何妙な所で突っかかってるのよ、ホンットにもう。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：いやいや、悪い悪ぃ・・・で、そん時に教えてもらったのか？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    ラナ：ええ、ちょっとその・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・うん？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
-                #endregion
+                Story_TruthRecollection3_1(ref messageList, ref eventList);
 
                 messageList.Add("ラナ：・・・バカアイン？"); eventList.Add(ActionEvent.None);
 
@@ -23516,9 +23524,7 @@ namespace DungeonPlayer
             messageList.Add("13"); eventList.Add(ActionEvent.AutoMove);
             GroundOne.WE2.SeekerEvent808 = true;
         }
-        #endregion
-        #region "複合レバー【技】の部屋で、【知】関連の看板"
-        public static void Message16010(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16009_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  『青く照らし、地は新緑を謳歌する』　）"); eventList.Add(ActionEvent.None);
 
@@ -23538,8 +23544,8 @@ namespace DungeonPlayer
             GroundOne.WE2.SeekerEvent809 = true;
         }
         #endregion
-        #region "複合レバー【技】の部屋で、【知】関連"
-        public static void Message16011(ref List<string> messageList, ref List<ActionEvent> eventList)
+        #region "【技】の部屋で、【知】関連の看板"
+        public static void Message16010(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  看板だ　）"); eventList.Add(ActionEvent.None);
 
@@ -23555,8 +23561,8 @@ namespace DungeonPlayer
             GroundOne.WE2.SeekerEvent810 = true;
         }
         #endregion
-        #region "【心】の部屋で、【力】関連の看板"
-        public static void Message16012(ref List<string> messageList, ref List<ActionEvent> eventList)
+        #region "複合レバー【技】の部屋で、【知】関連"
+        public static void Message16011(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  このレバーだな　）"); eventList.Add(ActionEvent.None);
 
@@ -23571,7 +23577,7 @@ namespace DungeonPlayer
             messageList.Add("16"); eventList.Add(ActionEvent.AutoMove);
             GroundOne.WE2.SeekerEvent811 = true;
         }
-        public static void Message16012_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16011_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  『あらゆる場所、可能な場を生めつくし、創元浄化』　）"); eventList.Add(ActionEvent.None);
 
@@ -23588,7 +23594,7 @@ namespace DungeonPlayer
         }
         #endregion
         #region "【心】の部屋で、【力】関連の看板"
-        public static void Message16013(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16012(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  看板だ　）"); eventList.Add(ActionEvent.None);
 
@@ -23603,7 +23609,7 @@ namespace DungeonPlayer
         }
         #endregion
         #region "複合レバー【心】の部屋で、【力】関連"
-        public static void Message16014(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16013(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  『誤り、恐れ、喚き、屈し、失い、揺らぎ続ける存在』　）"); eventList.Add(ActionEvent.None);
 
@@ -23616,7 +23622,7 @@ namespace DungeonPlayer
             messageList.Add("19"); eventList.Add(ActionEvent.AutoMove);
             GroundOne.WE2.SeekerEvent814 = true;
         }
-        public static void Message16014_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16013_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  『神と人、鳥、木々、全生物における連続の理そこに見つけたり』　）"); eventList.Add(ActionEvent.None);
 
@@ -23633,7 +23639,7 @@ namespace DungeonPlayer
         }
         #endregion
         #region "ボス"
-        public static void Message16015(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16014(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  ボスのお出ましか　）"); eventList.Add(ActionEvent.None);
 
@@ -23688,7 +23694,7 @@ namespace DungeonPlayer
         }
         #endregion
         #region "【力】の部屋で、【技】関連の看板"
-        public static void Message16016(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16015(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  看板だ　）"); eventList.Add(ActionEvent.None);
 
@@ -23703,7 +23709,7 @@ namespace DungeonPlayer
         }
         #endregion
         #region "複合レバー【力】の部屋で、【技】関連"
-        public static void Message16017(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16016(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  『この世における絶対的な平等の象徴』　）"); eventList.Add(ActionEvent.None);
 
@@ -23716,7 +23722,7 @@ namespace DungeonPlayer
             messageList.Add("23"); eventList.Add(ActionEvent.AutoMove);
             GroundOne.WE2.SeekerEvent818 = true;
         }
-        public static void Message16017_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16016_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add("アイン：（  『偉大なる母、厳格なる父より永久の確約』　）"); eventList.Add(ActionEvent.None);
 
@@ -23770,176 +23776,554 @@ namespace DungeonPlayer
         }
         #endregion
         #region "２階、回想録"
-        public static void Message16018(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16017(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            Story_TruthRecollection2_1(ref messageList, ref eventList);
+
+            messageList.Add("アイン：（・・・ヴェルゼ・・・アーティ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("25"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent820 = true;
+        }
         #endregion
         #region "２階、カールハンツと会話／戦闘"
-        public static void Message16019(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16018(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：この雰囲気は・・・カール先生か？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：如何にも。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：やっぱりそうか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生・・・何故ここに・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我がここにいる理由か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：しかしそれは愚問だと言える。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：解は、貴君の潜在意識の中に既に存在している、違うかね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：俺が・・・越えなければならない【壁】という認識に起因して"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール先生が現れた。そういう事だよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：如何にも。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君は今、現実の世界にいる。そして"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：このダンジョンは挑む者の精神を全て把握する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その中から、対象の者の苦手となる要素を摘出する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：つまり、今の我は、貴君が生み出した【壁】そのもの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：超えるがよい、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我を打ち倒すがよい、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：やらなきゃ・・・いけないみたいだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・構えるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：来るがよい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.ENEMY_LAST_SINIKIA_KAHLHANZ); eventList.Add(ActionEvent.EncountBoss);
+        }
+        public static void Message16018_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.StopDungeonMusic();
+            messageList.Add("アイン：ッグ・・・！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君のポテンシャル、そこまでのようだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：このPiercingFlameで最後だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ッボシュ！　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　意識が　）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　破壊された　）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　カール先生の最後の詠唱を見た瞬間　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　意識は暗闇へと誘われていった　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　ラナ・・・すまない・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　・・・　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(" ～　THE　END　～　（カールハンツとの死闘）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveLeft);
+
+            GroundOne.WE2.SeekerEvent821_fail = true;
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+        }
+        public static void Message16018_Success(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("カール：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（確かに討ち取ったはずだが・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（全く倒れる気配が無い・・・どうなってんだ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　その時　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　カールの黒いマントは　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　徐々に赤く染まっていった　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その太刀筋、見事である。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君の・・・勝利・・・だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・カール先生・・・俺・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君が気にしている事"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ヴェルゼ・アーティの事であろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ダンジョンを出た後、時間はかからなかった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ヴェルゼ・アーティは、再びダンジョンへ挑む様になっていた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：エレマ・セフィーネの死を知ったのが原因だろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：止めなかったんですか？このダンジョンに向かうのを。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：FiveSeekerと呼ばれた中において"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：あの者は特に秀でておる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：当時は、我もあのランディスも実力が拮抗したものだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：だが、今ではもはや力の差は歴然。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：止められなかった・・・って事なんですか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我とランディスの２人がかりだったが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：速度、パワー、判断ともに追いつけるレベルではなかった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：二人がかりでも？・・・そんな・・・バカな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：あやつの動きは、人間の限界を完全に超えておる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：おそらくヴェルゼ・アーティに立ち向かえるのは"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：アイン・ウォーレンス"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君なら可能だと言える。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：む、無理ですよ・・・師匠と先生二人がかりで止められなかったのが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：いや、貴君なら可能である。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どうしてそんなことが言い切れるんだ？無理なもんは無理だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッフ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ッフ、ッフハハハハハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：治っておらんな、貴君の相手への下手な気配りは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、そういうわけじゃねえんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：一つ、真実を貴君に語っておこう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・真実？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：そうだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ヴェルゼ・アーティと、貴君の関係だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ヴェルゼ・アーティとは"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君にとって"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：腹違いの兄である。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なっ・・・なんだって！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そんな馬鹿な！　俺には兄弟なんていねえはずだ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：これは貴君の父から固く口止めされておるが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君の父は、別の女性に一人ずつ子を授けておる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：それが、ヴェルゼ・アーティと貴君：アイン・ウォーレンスである。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ・・・そんな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：戦いにおける天性の素質は、両者とも父親から譲りうけておる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君が"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：止めてみせよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：頼ん・・・だ・・・ぞ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：せ、先生！！カール先生！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：消えちまったか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：行こう、この先へ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("26"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent821 = true;
+        }
         #endregion
         #region "２階、カールハンツ会話後、戦闘敗北後の自由行動制限"
-        public static void Message16020(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16019(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：いや、もう後ろへ振り返るのはよそう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveTop);
+        }
+        public static void Message16019_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：いや、もう後ろへ振り返るのはよそう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
+        }
         #endregion
         #region "２階から３階へ"
-        public static void Message16021(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16020(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　階段だ、降りよう　）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE2.RealDungeonArea = 3;
+            GroundOne.WE2.SeekerEvent822 = true;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDownstair);
+        }
         #endregion
         #region "３階スタート"
-        public static void Message16022(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16021(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　３階か・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　看板が見える、まずはそこからだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　行ってみよう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("27"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent901 = true;
+        }
         #endregion
         #region "誘導看板"
-        public static void Message16023(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16022(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　看板内容は・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『鏡、　それは本人の迷い・思考・判断を整理する。』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+
+            messageList.Add("　　　　『鏡から鏡へ。感じたままに触れよ。感じたままに進め。』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　どうだろうな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　最初は多分、練習的な要素、鏡の使い方を教えてくれてるって所だな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　だが、どこか途中で・・・あるいは、突然か・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　注意深く進めるとするか　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("28"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent902 = true;
+        }
         #endregion
         #region "鏡エリア１コンプリート"
-        public static void Message16024(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16023(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            Story_TruthRecollection3_1(ref messageList, ref eventList);
+
+            messageList.Add("アイン：（・・・　・・・　・・・）"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("29"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent903 = true;
+        }
         #endregion
         #region "鏡エリア２開始の分析"
-        public static void Message16025(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16024(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　おっと、看板だな・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『　２つ目は正解、３つ目は無限解、そして１つ目が原点解　』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　これは・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　まずいな・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　失敗は出来ない、まずはじっくりと分析だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　解答そのものに対する警告に見て取れる・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　しかも、２つ目が始めに書いてあるし、書いてある内容は『正解』って事は・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　『正解』がまずありきで、見つけ出しそれから・・・いや　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　それ以前に、順列通り行くとすれば、１つ目を見つける必要があるんじゃねえのか・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　原点・・・正解・・・無限・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　最初ではなく２番目が正解　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　つまり最初は２番目を解く事から始まる　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　最初から原点解は解けねえ、まず２番目を解く必要があるってことか　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　次に、無限解という表現・・・ ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　順列通り、進めようとすれば、言葉通り無限回の探索をしなくちゃいけなくなる　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　文字通り無限・・・永遠に同じ行動を取らなければいけなくなる　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　しかし、それじゃあ解けない。当然ながら無限回数を実行するのは不可能だ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　それゆえに、無限解へ順列通り読み解くのは駄目・・・となると ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　必ず目を通さなきゃならないのが原点解　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　無限解にハマらないように、『一つ目』となる原点解　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　この原点解をまず調べるのが無限解を解く上で重要な面なんだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　その原点解を知り得て初めて、無限解がなんたるかを知る事が許されるんじゃないのか　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　表現を整理しよう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　まずは手探りで『正解』をたぐり寄せる　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　『正解』により、道は拓けるが、『無限解』を前にして無限通りをこなさねばならなくなる ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　『無限解』の施行は、永遠の手探りが必要となる。つまり、道は拓けない　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　その永遠の手探りから抜け出るために、本来探らなければならない『原点解』が浮上する ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　一旦手にした『正解』が本当に正解なのかどうか、考え直す必要がある　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　『正解』を手に入れて、安心しちゃダメなんだ ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　師匠はよくこういう『正解』を嫌っていたからな。それがなきゃ俺は気付けてないかも知れない　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　感謝しないとな、ホント　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　それさえ気づけば後は、考え方は一本道　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　『正解』か『不正解』かは、関係ねえ。文字通り『原点』を探る行動をしなければならない　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　その『原点』を探る行動はつまり　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　今から始まる鏡ルートを一つ一つ確かめる行為が必要だって事だ ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　よし、決まりだ。迂闊に進み過ぎないように注意深く進めよう ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("30"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent903 = true;
+        }
         #endregion
         #region "鏡エリア２の進行"
-        public static void Message16026(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16025(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            // todo
+            //int wayLine = GroundOne.WE2.TruthWay3_1;
+            //int anotherWayLine = 1;
+            //if (!GroundOne.WE2.SeekerEvent906) { wayLine = GroundOne.WE2.TruthWay3_1; anotherWayLine = 1; }
+            //else if (!GroundOne.WE2.SeekerEvent907) { wayLine = GroundOne.WE2.TruthWay3_2; anotherWayLine = 2; }
+            //else if (!GroundOne.WE2.SeekerEvent908) { wayLine = GroundOne.WE2.TruthWay3_3; anotherWayLine = 3; }
+            //else if (!GroundOne.WE2.SeekerEvent909) { wayLine = GroundOne.WE2.TruthWay3_4; anotherWayLine = 4; }
+            //else if (!GroundOne.WE2.SeekerEvent910) { wayLine = GroundOne.WE2.TruthWay3_5; anotherWayLine = 5; }
+
+            //MirrorWay(wayLine, anotherWayLine);
+
+            //int wayPoint = 0;
+            //if (!GroundOne.WE2.SeekerEvent906) { wayPoint = 0; GroundOne.WE2.SeekerEvent906 = true; }
+            //else if (!GroundOne.WE2.SeekerEvent907) { wayPoint = 1; GroundOne.WE2.SeekerEvent907 = true; }
+            //else if (!GroundOne.WE2.SeekerEvent908) { wayPoint = 2; GroundOne.WE2.SeekerEvent908 = true; }
+            //else if (!GroundOne.WE2.SeekerEvent909) { wayPoint = 3; GroundOne.WE2.SeekerEvent909 = true; }
+            //else if (!GroundOne.WE2.SeekerEvent910) { wayPoint = 4; GroundOne.WE2.SeekerEvent910 = true; GroundOne.WE2.SeekerEvent905 = true; }
+
+            //MirrorTruthWay(wayPoint);
+        }
         #endregion
         #region "真実の回想録3_2"
-        public static void Message16027(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16026(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "正解への到達時"
-        public static void Message16028(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16027(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "原点解到達までのあらすじ"
-        public static void Message16029(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16028(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "原点解への道と、真実の回想録3_3"
-        public static void Message16030(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16029(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "原点解到達"
-        public static void Message16031(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16030(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "原点解の看板Phase1"
-        public static void Message16032(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16031(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         // この後は、プレイヤーに操作させること
         #region "原点解の看板Phase2"
-        public static void Message16033(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16032(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "聖者の選択"
-        public static void Message16034(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16033(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "愚者の選択"
-        public static void Message16035(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16034(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "戻るを選択"
-        public static void Message16036(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16035(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "ボス撃破後の無限回廊看板"
-        public static void Message16037(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16036(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "３Fハウリングシーザー撃破の破、自由行動制限"
-        public static void Message16038(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16037(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "無限回廊前の看板"
-        public static void Message16039(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16038(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "原点解入手後の正解階段ブロック"
-        public static void Message16040(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16039(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "無限回廊"
-        public static void Message16041(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16040(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "無限回廊から真実の回想録へ抜ける"
-        public static void Message16042(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16041(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "真実の回想録3_4"
-        public static void Message16043(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16042(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "真実の回想録から右上最後の看板へ"
-        public static void Message16044(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16043(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "最後の看板"
-        public static void Message16045(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16044(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "３階、オル・ランディスと会話／戦闘"
-        public static void Message16046(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16045(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "３階から４階へ"
-        public static void Message16047(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16046(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "無間地獄の看板"
-        public static void Message16048(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16047(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "登り階段をブロック"
-        public static void Message16049(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16048(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡１"
-        public static void Message16050(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16049(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡２"
-        public static void Message16051(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16050(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡３"
-        public static void Message16052(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16051(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡４"
-        public static void Message16053(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16052(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡５"
-        public static void Message16054(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16053(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡６"
-        public static void Message16055(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16054(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡７"
-        public static void Message16056(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16055(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡８"
-        public static void Message16057(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16056(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡９"
-        public static void Message16058(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16057(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡１０"
-        public static void Message16059(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16058(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡１１"
-        public static void Message16060(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16059(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡１２"
-        public static void Message16061(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16060(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡１３"
-        public static void Message16062(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16061(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡１４"
-        public static void Message16063(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16062(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡１５"
-        public static void Message16064(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16063(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "失敗Ｘ"
-        public static void Message16065(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16064(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "鏡１６"
-        public static void Message16066(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16065(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "ボス前の扉"
-        public static void Message16067(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16066(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "フェルトゥーシュ入手＋第三偶像を破壊"
-        public static void Message16068(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16067(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "最終戦の前で引き返す事をさせないための制御"
-        public static void Message16069(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16068(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "回復の泉"
-        public static void Message16070(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16069(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "真実世界"
-        public static void Message16071(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16070(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "ヴェルゼ最終戦２【原罪】"
-        public static void Message16072(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16071(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "ヴェルゼ戦闘終了後"
-        public static void Message16073(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16072(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #region "エンディングへ"
-        public static void Message16074(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16073(ref List<string> messageList, ref List<ActionEvent> eventList) { }
         #endregion
         #endregion
         #endregion
@@ -27138,7 +27522,7 @@ namespace DungeonPlayer
 
             messageList.Add("エルミ：アインくん・・・実はね・・・"); eventList.Add(ActionEvent.None);
 
-            GroundOne.PlayDungeonMusic(Database.BGM15, Database.BGM15LoopBegin); eventList.Add(ActionEvent.None);
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
 
             messageList.Add("---- ファージル宮殿、園芸の広場にて ----"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
