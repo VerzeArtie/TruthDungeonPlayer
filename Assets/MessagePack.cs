@@ -442,6 +442,8 @@ namespace DungeonPlayer
             DungeonFloor5UnknownTileArea6,
             AutoMove,
             DungeonGotoDownstair,
+            MirrorWay,
+            MirrorLastWay,
             Ending,
         }
         #endregion
@@ -24155,40 +24157,24 @@ namespace DungeonPlayer
             messageList.Add("アイン：（　よし、決まりだ。迂闊に進み過ぎないように注意深く進めよう ）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("30"); eventList.Add(ActionEvent.AutoMove);
-            GroundOne.WE2.SeekerEvent903 = true;
+            GroundOne.WE2.SeekerEvent904 = true;
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
         }
         #endregion
         #region "鏡エリア２の進行"
         public static void Message16025(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
-            //int wayLine = GroundOne.WE2.TruthWay3_1;
-            //int anotherWayLine = 1;
-            //if (!GroundOne.WE2.SeekerEvent906) { wayLine = GroundOne.WE2.TruthWay3_1; anotherWayLine = 1; }
-            //else if (!GroundOne.WE2.SeekerEvent907) { wayLine = GroundOne.WE2.TruthWay3_2; anotherWayLine = 2; }
-            //else if (!GroundOne.WE2.SeekerEvent908) { wayLine = GroundOne.WE2.TruthWay3_3; anotherWayLine = 3; }
-            //else if (!GroundOne.WE2.SeekerEvent909) { wayLine = GroundOne.WE2.TruthWay3_4; anotherWayLine = 4; }
-            //else if (!GroundOne.WE2.SeekerEvent910) { wayLine = GroundOne.WE2.TruthWay3_5; anotherWayLine = 5; }
-
-            //MirrorWay(wayLine, anotherWayLine);
-
-            //int wayPoint = 0;
-            //if (!GroundOne.WE2.SeekerEvent906) { wayPoint = 0; GroundOne.WE2.SeekerEvent906 = true; }
-            //else if (!GroundOne.WE2.SeekerEvent907) { wayPoint = 1; GroundOne.WE2.SeekerEvent907 = true; }
-            //else if (!GroundOne.WE2.SeekerEvent908) { wayPoint = 2; GroundOne.WE2.SeekerEvent908 = true; }
-            //else if (!GroundOne.WE2.SeekerEvent909) { wayPoint = 3; GroundOne.WE2.SeekerEvent909 = true; }
-            //else if (!GroundOne.WE2.SeekerEvent910) { wayPoint = 4; GroundOne.WE2.SeekerEvent910 = true; GroundOne.WE2.SeekerEvent905 = true; }
-
-            //MirrorTruthWay(wayPoint);
+            Debug.Log("16025call");
+            messageList.Add(""); eventList.Add(ActionEvent.MirrorWay);
         }
         #endregion
         #region "真実の回想録3_2"
         public static void Message16026(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             Story_TruthRecollection3_2(ref messageList, ref eventList);
-            
-            // todo
-            //MirrorLastWay();
+
+            messageList.Add(""); eventList.Add(ActionEvent.MirrorLastWay);
 
             GroundOne.WE2.SeekerEvent911 = true;
         }

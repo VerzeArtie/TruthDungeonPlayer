@@ -997,6 +997,278 @@ namespace DungeonPlayer
                     {
                         JumpByMirror_TurnBack();
                     }
+                    else if (this.nowAutoMoveNumber[0] == 10038)
+                    {
+                        JumpByMirror_2_38();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10039)
+                    {
+                        JumpByMirror_2_39();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10040)
+                    {
+                        JumpByMirror_2_40();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10041)
+                    {
+                        JumpByMirror_2_41();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10042)
+                    {
+                        JumpByMirror_2_42();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10043)
+                    {
+                        JumpByMirror_2_43();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10044)
+                    {
+                        JumpByMirror_2_44();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10045)
+                    {
+                        JumpByMirror_2_45();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10046)
+                    {
+                        JumpByMirror_2_46();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10047)
+                    {
+                        JumpByMirror_2_47();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10048)
+                    {
+                        JumpByMirror_2_48();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10049)
+                    {
+                        JumpByMirror_2_49();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10050)
+                    {
+                        JumpByMirror_2_50();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10051)
+                    {
+                        JumpByMirror_2_51();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10052)
+                    {
+                        JumpByMirror_2_52();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10053)
+                    {
+                        JumpByMirror_2_53();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10054)
+                    {
+                        JumpByMirror_2_54();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10055)
+                    {
+                        JumpByMirror_2_55();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10056)
+                    {
+                        JumpByMirror_2_56();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10057)
+                    {
+                        JumpByMirror_2_57();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10058)
+                    {
+                        JumpByMirror_2_58();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10059)
+                    {
+                        JumpByMirror_2_59();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10060)
+                    {
+                        JumpByMirror_2_60();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10061)
+                    {
+                        JumpByMirror_2_61();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10062)
+                    {
+                        JumpByMirror_2_62();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10063)
+                    {
+                        JumpByMirror_2_63();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10064)
+                    {
+                        JumpByMirror_2_64();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10065)
+                    {
+                        JumpByMirror_2_65();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10066)
+                    {
+                        JumpByMirror_2_66();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10067)
+                    {
+                        JumpByMirror_2_67();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10068)
+                    {
+                        JumpByMirror_2_68();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10069)
+                    {
+                        JumpByMirror_2_69();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10070)
+                    {
+                        JumpByMirror_2_70();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10071)
+                    {
+                        JumpByMirror_2_71();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10072)
+                    {
+                        JumpByMirror_2_72();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10073)
+                    {
+                        JumpByMirror_2_73();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10074)
+                    {
+                        JumpByMirror_2_74();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10075)
+                    {
+                        JumpByMirror_2_75();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10076)
+                    {
+                        JumpByMirror_2_76();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10077)
+                    {
+                        JumpByMirror_2_77();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10078)
+                    {
+                        JumpByMirror_2_78();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10079)
+                    {
+                        JumpByMirror_2_79();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10080)
+                    {
+                        JumpByMirror_2_80();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10081)
+                    {
+                        JumpByMirror_2_81();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10082)
+                    {
+                        JumpByMirror_2_82();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10083)
+                    {
+                        JumpByMirror_2_83();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10084)
+                    {
+                        JumpByMirror_2_84();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10101)
+                    {
+                        JumpByMirror_TruthWay1A();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10102)
+                    {
+                        JumpByMirror_TruthWay1B();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10103)
+                    {
+                        JumpByMirror_TruthWay1C();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10104)
+                    {
+                        JumpByMirror_TruthWay1D();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10201)
+                    {
+                        JumpByMirror_TruthWay2A();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10202)
+                    {
+                        JumpByMirror_TruthWay2B();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10203)
+                    {
+                        JumpByMirror_TruthWay2C();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10204)
+                    {
+                        JumpByMirror_TruthWay2D();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10301)
+                    {
+                        JumpByMirror_TruthWay3A();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10302)
+                    {
+                        JumpByMirror_TruthWay3B();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10303)
+                    {
+                        JumpByMirror_TruthWay3C();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10304)
+                    {
+                        JumpByMirror_TruthWay3D();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10401)
+                    {
+                        JumpByMirror_TruthWay4A();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10402)
+                    {
+                        JumpByMirror_TruthWay4B();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10403)
+                    {
+                        JumpByMirror_TruthWay4C();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10404)
+                    {
+                        JumpByMirror_TruthWay4D();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10501)
+                    {
+                        JumpByMirror_TruthWay5A();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10502)
+                    {
+                        JumpByMirror_TruthWay5B();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10503)
+                    {
+                        JumpByMirror_TruthWay5C();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10504)
+                    {
+                        JumpByMirror_TruthWay5D();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10505)
+                    {
+                        JumpByMirror_TruthWay5E();
+                    }
                     else
                     {
                         System.Threading.Thread.Sleep(this.nowAutoMoveNumber[0]);
@@ -13216,6 +13488,7 @@ namespace DungeonPlayer
 
         public void MirrorWay(int wayLine, int anotherWayLine)
         {
+            Debug.Log("MirrorWat " + wayLine.ToString() + " " + anotherWayLine);
             // 万が一、設定が無い場合は150, 138, 96, 130, 124で進める事にする。
             if (wayLine < 95 || wayLine > 150)
             {
@@ -13231,189 +13504,189 @@ namespace DungeonPlayer
             #region "鏡38"
             if (95 <= wayLine && wayLine <= 116)
             {
-                AutoMove(1);
-                AutoMove(1);
-                AutoMove(0);
-                AutoMove(0);
-                JumpByMirror_2_38();
-                AutoMove(3);
-                AutoMove(3);
-                AutoMove(2);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(10038); // JumpByMirror_2_38();
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(2);
                 if (95 <= wayLine && wayLine <= 104)
                 {
-                    AutoMove(3);
-                    AutoMove(3);
-                    AutoMove(3);
-                    JumpByMirror_2_41();
-                    AutoMove(3);
-                    AutoMove(3);
-                    AutoMove(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(10041); // JumpByMirror_2_41();
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
                     if (wayLine == 95 || wayLine == 96 || wayLine == 97)
                     {
-                        AutoMove(3);
-                        JumpByMirror_2_47();
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(10047); // JumpByMirror_2_47();
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
                         if (wayLine == 95)
                         {
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(3);
-                            AutoMove(3);
-                            JumpByMirror_2_59();
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(10059); // JumpByMirror_2_59();
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
                         }
                         else if (wayLine == 96)
                         {
-                            AutoMove(3);
-                            AutoMove(3);
-                            JumpByMirror_2_60();
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(10060); // JumpByMirror_2_60();
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
                         }
                         else if (wayLine == 97)
                         {
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(3);
-                            JumpByMirror_2_61();
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(3);
-                            AutoMove(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(10061); // JumpByMirror_2_61();
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
                         }
                     }
                     else if (wayLine == 98 || wayLine == 99 || wayLine == 100
                           || wayLine == 101 || wayLine == 102 || wayLine == 103 || wayLine == 104)
                     {
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        JumpByMirror_2_48();
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(10048); // JumpByMirror_2_48();
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
                         if (wayLine == 98 || wayLine == 99 || wayLine == 100)
                         {
-                            AutoMove(0);
-                            AutoMove(0);
-                            JumpByMirror_2_62();
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(0);
-                            if (wayLine == 98) { AutoMove(1); AutoMove(1); }
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(10062); // JumpByMirror_2_62();
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            if (wayLine == 98) { this.nowAutoMoveNumber.Add(1); this.nowAutoMoveNumber.Add(1); }
                             else if (wayLine == 99) { /* なにもなし */ }
-                            else if (wayLine == 100) { AutoMove(2); AutoMove(2); }
-                            AutoMove(0);
-                            AutoMove(0);
+                            else if (wayLine == 100) { this.nowAutoMoveNumber.Add(2); this.nowAutoMoveNumber.Add(2); }
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
                         }
                         else if (wayLine == 101 || wayLine == 102 || wayLine == 103 || wayLine == 104)
                         {
-                            AutoMove(2);
-                            AutoMove(0);
-                            AutoMove(0);
-                            JumpByMirror_2_63();
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(1);
-                            AutoMove(1);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(10063); // JumpByMirror_2_63();
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
                             if (wayLine == 101)
                             {
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(0);
-                                AutoMove(0);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
                             }
                             else if (wayLine == 102 || wayLine == 103 || wayLine == 104)
                             {
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
                                 if (wayLine == 102)
                                 {
-                                    AutoMove(2);
-                                    AutoMove(2);
-                                    AutoMove(2);
-                                    AutoMove(0);
+                                    this.nowAutoMoveNumber.Add(2);
+                                    this.nowAutoMoveNumber.Add(2);
+                                    this.nowAutoMoveNumber.Add(2);
+                                    this.nowAutoMoveNumber.Add(0);
                                 }
                                 else if (wayLine == 103 || wayLine == 104)
                                 {
-                                    AutoMove(0);
-                                    AutoMove(0);
-                                    AutoMove(0);
-                                    AutoMove(0);
-                                    AutoMove(0);
-                                    AutoMove(1);
-                                    AutoMove(0);
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(1);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
                                     if (wayLine == 103)
                                     {
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
                                     }
                                     else// if (truthWay1 == 104) // 万が一を考えた場合の緊急回避として、ポイントミスはelseで始末するべきである
                                     {
-                                        AutoMove(0);
-                                        AutoMove(0);
-                                        AutoMove(0);
+                                        this.nowAutoMoveNumber.Add(0);
+                                        this.nowAutoMoveNumber.Add(0);
+                                        this.nowAutoMoveNumber.Add(0);
                                     }
                                 }
                             }
@@ -13422,187 +13695,187 @@ namespace DungeonPlayer
                 }
                 else if (105 <= wayLine && wayLine <= 108)
                 {
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(3);
-                    AutoMove(3);
-                    AutoMove(3);
-                    JumpByMirror_2_42();
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(0);
-                    AutoMove(0);
-                    AutoMove(0);
-                    AutoMove(0);
-                    AutoMove(0);
-                    AutoMove(0);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(0);
-                    AutoMove(0);
-                    AutoMove(0);
-                    AutoMove(0);
-                    JumpByMirror_2_49();
-                    AutoMove(1);
-                    AutoMove(0);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(10042); // JumpByMirror_2_42();
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(10049); // JumpByMirror_2_49();
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(0);
                     if (wayLine == 105)
                     {
-                        AutoMove(0);
-                        AutoMove(2);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        JumpByMirror_2_64();
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(10064); // JumpByMirror_2_64();
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
                     }
                     else if (wayLine == 106 || wayLine == 107 || wayLine == 108)
                     {
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        JumpByMirror_2_65();
-                        AutoMove(1);
-                        AutoMove(1);
-                        if (wayLine == 106) { AutoMove(0); AutoMove(0); AutoMove(0); AutoMove(0); }
-                        else if (wayLine == 107) { AutoMove(0); AutoMove(0); }
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(10065); // JumpByMirror_2_65();
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        if (wayLine == 106) { this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); }
+                        else if (wayLine == 107) { this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); }
                         else if (wayLine == 108) { /*何もしない*/ }
-                        AutoMove(1);
-                        AutoMove(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
                     }
                 }
                 else if (109 <= wayLine && wayLine <= 116)
                 {
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(3);
-                    AutoMove(3);
-                    AutoMove(3);
-                    JumpByMirror_2_43();
-                    AutoMove(2);
-                    AutoMove(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(10043); // JumpByMirror_2_43();
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
                     if (109 <= wayLine && wayLine <= 111)
                     {
-                        AutoMove(2);
-                        AutoMove(2);
-                        JumpByMirror_2_50();
-                        AutoMove(1);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        JumpByMirror_2_66();
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        if (wayLine == 109) { AutoMove(0); AutoMove(0); }
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(10050); // JumpByMirror_2_50();
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(10066); // JumpByMirror_2_66();
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        if (wayLine == 109) { this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); }
                         else if (wayLine == 110) { /*何もしない*/ }
-                        else if (wayLine == 111) { AutoMove(3); AutoMove(3); }
-                        AutoMove(2);
-                        AutoMove(2);
+                        else if (wayLine == 111) { this.nowAutoMoveNumber.Add(3); this.nowAutoMoveNumber.Add(3); }
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
                     }
                     else if (112 <= wayLine && wayLine <= 116)
                     {
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        JumpByMirror_2_51();
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(10051); // JumpByMirror_2_51();
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
                         if (wayLine == 112)
                         {
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(0);
-                            JumpByMirror_2_67();
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(1);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(10067); // JumpByMirror_2_67();
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
                         }
                         else if (wayLine == 113)
                         {
-                            AutoMove(1);
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(0);
-                            JumpByMirror_2_68();
-                            AutoMove(1);
-                            AutoMove(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(10068); // JumpByMirror_2_68();
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
                         }
                         else if (wayLine == 114 || wayLine == 115 || wayLine == 116)
                         {
-                            AutoMove(2);
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(0);
-                            JumpByMirror_2_69();
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(0);
-                            if (wayLine == 114) { AutoMove(1); }
-                            else if (wayLine == 115) { AutoMove(2); }
-                            else if (wayLine == 116) { AutoMove(2); AutoMove(2); AutoMove(2); }
-                            AutoMove(0);
-                            AutoMove(0);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(10069); // JumpByMirror_2_69();
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            if (wayLine == 114) { this.nowAutoMoveNumber.Add(1); }
+                            else if (wayLine == 115) { this.nowAutoMoveNumber.Add(2); }
+                            else if (wayLine == 116) { this.nowAutoMoveNumber.Add(2); this.nowAutoMoveNumber.Add(2); this.nowAutoMoveNumber.Add(2); }
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
                         }
                     }
                 }
@@ -13611,253 +13884,253 @@ namespace DungeonPlayer
             #region "鏡39"
             else if (117 <= wayLine && wayLine <= 133)
             {
-                AutoMove(0);
-                AutoMove(0);
-                JumpByMirror_2_39();
-                AutoMove(2);
-                AutoMove(2);
-                AutoMove(3);
-                AutoMove(3);
-                AutoMove(3);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(10039); // JumpByMirror_2_39();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
                 if (117 <= wayLine && wayLine <= 123)
                 {
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(3);
-                    AutoMove(3);
-                    JumpByMirror_2_44();
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(10044); // JumpByMirror_2_44();
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
                     if (117 <= wayLine && wayLine <= 121)
                     {
-                        AutoMove(0);
-                        AutoMove(0);
-                        JumpByMirror_2_52();
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(10052); // JumpByMirror_2_52();
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
                         if (wayLine == 117 || wayLine == 118 || wayLine == 119 || wayLine == 120)
                         {
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(2);
-                            JumpByMirror_2_70();
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            if (wayLine == 117) { AutoMove(0); AutoMove(0); AutoMove(0); }
-                            else if (wayLine == 118) { AutoMove(0); }
-                            else if (wayLine == 119) { AutoMove(3); }
-                            else if (wayLine == 120) { AutoMove(3); AutoMove(3); AutoMove(3); }
-                            AutoMove(2);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(10070); // JumpByMirror_2_70();
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            if (wayLine == 117) { this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); }
+                            else if (wayLine == 118) { this.nowAutoMoveNumber.Add(0); }
+                            else if (wayLine == 119) { this.nowAutoMoveNumber.Add(3); }
+                            else if (wayLine == 120) { this.nowAutoMoveNumber.Add(3); this.nowAutoMoveNumber.Add(3); this.nowAutoMoveNumber.Add(3); }
+                            this.nowAutoMoveNumber.Add(2);
                         }
                         else if (wayLine == 121)
                         {
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            JumpByMirror_2_71();
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(10071); // JumpByMirror_2_71();
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
                         }
                     }
                     else if (wayLine == 122 || wayLine == 123)
                     {
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        JumpByMirror_2_53();
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(1);
-                        JumpByMirror_2_72();
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        if (wayLine == 122) { AutoMove(1); }
-                        else if (wayLine == 123) { AutoMove(2); }
-                        AutoMove(3);
-                        AutoMove(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(10053); // JumpByMirror_2_53();
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(10072); // JumpByMirror_2_72();
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        if (wayLine == 122) { this.nowAutoMoveNumber.Add(1); }
+                        else if (wayLine == 123) { this.nowAutoMoveNumber.Add(2); }
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
                     }
                 }
                 else if (124 <= wayLine && wayLine <= 133)
                 {
-                    AutoMove(3);
-                    AutoMove(3);
-                    JumpByMirror_2_45();
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(10045); // JumpByMirror_2_45();
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
                     if (124 <= wayLine && wayLine <= 129)
                     {
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(0);
-                        AutoMove(0);
-                        JumpByMirror_2_54();
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(1);
-                        AutoMove(0);
-                        AutoMove(1);
-                        AutoMove(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(10054); // JumpByMirror_2_54();
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
                         if (wayLine == 124)
                         {
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(0);
-                            AutoMove(0);
-                            JumpByMirror_2_73();
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(10073); // JumpByMirror_2_73();
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
                         }
                         else if (wayLine == 125)
                         {
-                            AutoMove(1);
-                            AutoMove(1);
-                            AutoMove(0);
-                            AutoMove(0);
-                            JumpByMirror_2_74();
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(3);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(1);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(10074); // JumpByMirror_2_74();
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
                         }
                         else if (wayLine == 126 || wayLine == 127 || wayLine == 128 || wayLine == 129)
                         {
-                            AutoMove(0);
-                            AutoMove(0);
-                            JumpByMirror_2_75();
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(3);
-                            AutoMove(3);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(10075); // JumpByMirror_2_75();
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(3);
+                            this.nowAutoMoveNumber.Add(3);
                             if (wayLine == 126)
                             {
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
                             }
                             else
                             {
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
                                 if (wayLine == 127)
                                 {
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(3);
-                                    AutoMove(3);
-                                    AutoMove(3);
-                                    AutoMove(3);
-                                    AutoMove(3);
-                                    AutoMove(3);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(3);
+                                    this.nowAutoMoveNumber.Add(3);
+                                    this.nowAutoMoveNumber.Add(3);
+                                    this.nowAutoMoveNumber.Add(3);
+                                    this.nowAutoMoveNumber.Add(3);
+                                    this.nowAutoMoveNumber.Add(3);
                                 }
                                 else
                                 {
-                                    AutoMove(3);
-                                    AutoMove(3);
-                                    AutoMove(3);
+                                    this.nowAutoMoveNumber.Add(3);
+                                    this.nowAutoMoveNumber.Add(3);
+                                    this.nowAutoMoveNumber.Add(3);
                                     if (wayLine == 128)
                                     {
-                                        AutoMove(2);
-                                        AutoMove(2);
-                                        AutoMove(2);
+                                        this.nowAutoMoveNumber.Add(2);
+                                        this.nowAutoMoveNumber.Add(2);
+                                        this.nowAutoMoveNumber.Add(2);
                                     }
                                     else
                                     {
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(1);
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
-                                        AutoMove(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(1);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
+                                        this.nowAutoMoveNumber.Add(3);
                                     }
                                 }
                             }
@@ -13865,80 +14138,80 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        AutoMove(0);
-                        AutoMove(0);
-                        JumpByMirror_2_55();
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(10055); // JumpByMirror_2_55();
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
                         if (130 <= wayLine && wayLine <= 133)
                         {
                             if (wayLine == 133)
                             {
-                                AutoMove(2);
-                                AutoMove(3);
-                                AutoMove(3);
-                                JumpByMirror_2_77();
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(1);
-                                AutoMove(1);
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(1);
+                                this.nowAutoMoveNumber.Add(2);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(10077); // JumpByMirror_2_77();
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(1);
                             }
                             else if (130 <= wayLine && wayLine <= 132)
                             {
-                                AutoMove(1);
-                                AutoMove(3);
-                                AutoMove(3);
-                                JumpByMirror_2_76();
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(3);
-                                AutoMove(1);
-                                AutoMove(1);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(10076); // JumpByMirror_2_76();
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(3);
+                                this.nowAutoMoveNumber.Add(1);
+                                this.nowAutoMoveNumber.Add(1);
                                 if (wayLine == 130)
                                 {
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(0);
-                                    AutoMove(0);
-                                    AutoMove(0);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
                                 }
                                 else if (wayLine == 131)
                                 {
-                                    AutoMove(1);
-                                    AutoMove(1);
-                                    AutoMove(0);
-                                    AutoMove(0);
-                                    AutoMove(0);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(1);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
                                 }
                                 else if (wayLine == 132)
                                 {
-                                    AutoMove(0);
-                                    AutoMove(0);
-                                    AutoMove(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
                                 }
                             }
                         }
@@ -13949,242 +14222,242 @@ namespace DungeonPlayer
             #region "鏡40"
             else if (134 <= wayLine && wayLine <= 150)
             {
-                AutoMove(2);
-                AutoMove(2);
-                AutoMove(0);
-                AutoMove(0);
-                JumpByMirror_2_40();
-                AutoMove(2);
-                AutoMove(2);
-                AutoMove(2);
-                AutoMove(2);
-                AutoMove(3);
-                AutoMove(3);
-                AutoMove(1);
-                AutoMove(1);
-                AutoMove(1);
-                AutoMove(1);
-                JumpByMirror_2_46();
-                AutoMove(3);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(10040); // JumpByMirror_2_40();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(10046); // JumpByMirror_2_46();
+                this.nowAutoMoveNumber.Add(3);
                 if (134 <= wayLine && wayLine <= 138)
                 {
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    JumpByMirror_2_56();
-                    AutoMove(0);
-                    AutoMove(0);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(3);
-                    AutoMove(3);
-                    AutoMove(3);
-                    AutoMove(3);
-                    AutoMove(1);
-                    AutoMove(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(10056); // JumpByMirror_2_56();
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
                     if (wayLine == 134 || wayLine == 135 || wayLine == 136 || wayLine == 137)
                     {
-                        AutoMove(0);
-                        AutoMove(0);
-                        JumpByMirror_2_78();
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        if (wayLine == 134) { AutoMove(0); AutoMove(0); AutoMove(0); }
-                        else if (wayLine == 135) { AutoMove(0); AutoMove(0); AutoMove(2); }
-                        else if (wayLine == 136) { AutoMove(2); AutoMove(2); AutoMove(0); }
-                        else if (wayLine == 137) { AutoMove(2); AutoMove(2); AutoMove(2); }
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(10078); // JumpByMirror_2_78();
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        if (wayLine == 134) { this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); }
+                        else if (wayLine == 135) { this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(2); }
+                        else if (wayLine == 136) { this.nowAutoMoveNumber.Add(2); this.nowAutoMoveNumber.Add(2); this.nowAutoMoveNumber.Add(0); }
+                        else if (wayLine == 137) { this.nowAutoMoveNumber.Add(2); this.nowAutoMoveNumber.Add(2); this.nowAutoMoveNumber.Add(2); }
                     }
                     else if (wayLine == 138)
                     {
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(3);
-                        AutoMove(3);
-                        JumpByMirror_2_79();
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(10079); // JumpByMirror_2_79();
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
                     }
                 }
                 else if (wayLine == 139 || wayLine == 140 || wayLine == 141)
                 {
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    JumpByMirror_2_57();
-                    AutoMove(0);
-                    AutoMove(0);
-                    JumpByMirror_2_80();
-                    AutoMove(0);
-                    if (wayLine == 139) { AutoMove(2); }
-                    else if (wayLine == 140) { AutoMove(0); AutoMove(0); AutoMove(2); }
-                    else if (wayLine == 141) { AutoMove(0); AutoMove(0); AutoMove(0); }
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(10057); // JumpByMirror_2_57();
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(0);
+                    this.nowAutoMoveNumber.Add(10080); // JumpByMirror_2_80();
+                    this.nowAutoMoveNumber.Add(0);
+                    if (wayLine == 139) { this.nowAutoMoveNumber.Add(2); }
+                    else if (wayLine == 140) { this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(2); }
+                    else if (wayLine == 141) { this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); this.nowAutoMoveNumber.Add(0); }
                 }
                 else if (142 <= wayLine && wayLine <= 150)
                 {
-                    AutoMove(3);
-                    AutoMove(3);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    AutoMove(1);
-                    JumpByMirror_2_58();
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
-                    AutoMove(2);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(3);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(1);
+                    this.nowAutoMoveNumber.Add(10058); // JumpByMirror_2_58();
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
+                    this.nowAutoMoveNumber.Add(2);
                     if (wayLine == 142 || wayLine == 143)
                     {
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        JumpByMirror_2_81();
-                        AutoMove(1);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        if (wayLine == 142) { AutoMove(0); }
-                        else if (wayLine == 143) { AutoMove(3); }
-                        AutoMove(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(10081); // JumpByMirror_2_81();
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        if (wayLine == 142) { this.nowAutoMoveNumber.Add(0); }
+                        else if (wayLine == 143) { this.nowAutoMoveNumber.Add(3); }
+                        this.nowAutoMoveNumber.Add(2);
                     }
                     else if (wayLine == 144)
                     {
-                        AutoMove(0);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        JumpByMirror_2_82();
-                        AutoMove(3);
-                        AutoMove(3);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(10082); // JumpByMirror_2_82();
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
                     }
                     else if (wayLine == 145 || wayLine == 146)
                     {
-                        AutoMove(3);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        JumpByMirror_2_83();
-                        AutoMove(0);
-                        AutoMove(0);
-                        if (wayLine == 145) { AutoMove(1); }
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(10083); // JumpByMirror_2_83();
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        if (wayLine == 145) { this.nowAutoMoveNumber.Add(1); }
                         else if (wayLine == 146) { /* 何もしない */ }
-                        AutoMove(0);
-                        AutoMove(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
                     }
                     else if (wayLine == 147 || wayLine == 148 || wayLine == 149 || wayLine == 150)
                     {
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(3);
-                        AutoMove(2);
-                        AutoMove(2);
-                        AutoMove(2);
-                        JumpByMirror_2_84();
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(1);
-                        AutoMove(0);
-                        AutoMove(0);
-                        AutoMove(0);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(10084); // JumpByMirror_2_84();
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(1);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
                         if (wayLine == 147)
                         {
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
-                            AutoMove(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
+                            this.nowAutoMoveNumber.Add(2);
                         }
                         else
                         {
-                            AutoMove(0);
-                            AutoMove(0);
-                            AutoMove(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
+                            this.nowAutoMoveNumber.Add(0);
                             if (wayLine == 148)
                             {
-                                AutoMove(2);
-                                AutoMove(2);
-                                AutoMove(0);
-                                AutoMove(0);
+                                this.nowAutoMoveNumber.Add(2);
+                                this.nowAutoMoveNumber.Add(2);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
                             }
                             else
                             {
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
-                                AutoMove(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
+                                this.nowAutoMoveNumber.Add(0);
                                 if (wayLine == 149)
                                 {
-                                    AutoMove(2);
-                                    AutoMove(2);
-                                    AutoMove(3);
-                                    AutoMove(3);
+                                    this.nowAutoMoveNumber.Add(2);
+                                    this.nowAutoMoveNumber.Add(2);
+                                    this.nowAutoMoveNumber.Add(3);
+                                    this.nowAutoMoveNumber.Add(3);
                                 }
                                 else if (wayLine == 150)
                                 {
-                                    AutoMove(0);
-                                    AutoMove(0);
-                                    AutoMove(2);
-                                    AutoMove(2);
-                                    AutoMove(2);
-                                    AutoMove(2);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(0);
+                                    this.nowAutoMoveNumber.Add(2);
+                                    this.nowAutoMoveNumber.Add(2);
+                                    this.nowAutoMoveNumber.Add(2);
+                                    this.nowAutoMoveNumber.Add(2);
                                 }
                             }
                         }
@@ -14193,6 +14466,409 @@ namespace DungeonPlayer
                 }
             }
             #endregion
+            this.nowAutoMove = true;
+        }
+
+        public void MirrorTruthWay(int wayPoint)
+        {
+            #region "鏡X1"
+            if (wayPoint == 0)
+            {
+                this.nowAutoMoveNumber.Add(10101); // JumpByMirror_TruthWay1A();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(10102); // JumpByMirror_TruthWay1B();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10103); // JumpByMirror_TruthWay1C();
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(10104); // JumpByMirror_TruthWay1D();
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1000); // sleep
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(10006); // JumpByMirror_TurnBack();
+                this.nowAutoMoveNumber.Add(500); // sleep
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+            }
+            #endregion
+            #region "鏡X2"
+            else if (wayPoint == 1)
+            {
+                this.nowAutoMoveNumber.Add(10201); // JumpByMirror_TruthWay2A();
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(10202); // JumpByMirror_TruthWay2B();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10203); // JumpByMirror_TruthWay2C();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10204); // JumpByMirror_TruthWay2D();
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1000); // sleep
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10006); // JumpByMirror_TurnBack();
+                this.nowAutoMoveNumber.Add(500); // sleep
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+            }
+            #endregion
+            #region "鏡X3"
+            else if (wayPoint == 2)
+            {
+                this.nowAutoMoveNumber.Add(10301); // JumpByMirror_TruthWay3A();
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(10302); // JumpByMirror_TruthWay3B();
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(10303); // JumpByMirror_TruthWay3C();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10304); // JumpByMirror_TruthWay3D();
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1000); // sleep
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(10006); // JumpByMirror_TurnBack();
+                this.nowAutoMoveNumber.Add(500); // sleep
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+            }
+            #endregion
+            #region "鏡X4"
+            else if (wayPoint == 3)
+            {
+                this.nowAutoMoveNumber.Add(10401); // JumpByMirror_TruthWay4A();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10402); // JumpByMirror_TruthWay4B();
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10403); // JumpByMirror_TruthWay4C();
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10404); // JumpByMirror_TruthWay4D();
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1000); // sleep
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(10006); // JumpByMirror_TurnBack();
+                this.nowAutoMoveNumber.Add(500); // sleep
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(2);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+            }
+            #endregion
+            #region "鏡X5"
+            else if (wayPoint == 4)
+            {
+                this.nowAutoMoveNumber.Add(10501); // JumpByMirror_TruthWay5A();
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(10502); // JumpByMirror_TruthWay5B();
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(10503); // JumpByMirror_TruthWay5C();
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(3);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(1);
+                this.nowAutoMoveNumber.Add(10504); // JumpByMirror_TruthWay5D();
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(500); // sleep
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+                this.nowAutoMoveNumber.Add(0);
+            }
+            #endregion
+            this.nowAutoMove = true;
+        }
+
+        public void MirrorLastWay()
+        {
+            this.nowAutoMoveNumber.Add(0);
+            this.nowAutoMoveNumber.Add(0);
+            this.nowAutoMoveNumber.Add(0);
+            this.nowAutoMoveNumber.Add(10505); // JumpByMirror_TruthWay5E();
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(1000); // sleep
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(3);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMoveNumber.Add(2);
+            this.nowAutoMove = true;
         }
 
         private void UpdateMainMessage(string message)
@@ -16334,9 +17010,34 @@ namespace DungeonPlayer
                 {
                     GoToDownStair();
                 }
+                else if (currentEvent == MessagePack.ActionEvent.MirrorWay)
+                {
+                    int wayLine = GroundOne.WE2.TruthWay3_1;
+                    int anotherWayLine = 1;
+                    if (!GroundOne.WE2.SeekerEvent906) { wayLine = GroundOne.WE2.TruthWay3_1; anotherWayLine = 1; }
+                    else if (!GroundOne.WE2.SeekerEvent907) { wayLine = GroundOne.WE2.TruthWay3_2; anotherWayLine = 2; }
+                    else if (!GroundOne.WE2.SeekerEvent908) { wayLine = GroundOne.WE2.TruthWay3_3; anotherWayLine = 3; }
+                    else if (!GroundOne.WE2.SeekerEvent909) { wayLine = GroundOne.WE2.TruthWay3_4; anotherWayLine = 4; }
+                    else if (!GroundOne.WE2.SeekerEvent910) { wayLine = GroundOne.WE2.TruthWay3_5; anotherWayLine = 5; }
+                    MirrorWay(wayLine, anotherWayLine);
+
+                    int wayPoint = 0;
+                    if (!GroundOne.WE2.SeekerEvent906) { wayPoint = 0; GroundOne.WE2.SeekerEvent906 = true; }
+                    else if (!GroundOne.WE2.SeekerEvent907) { wayPoint = 1; GroundOne.WE2.SeekerEvent907 = true; }
+                    else if (!GroundOne.WE2.SeekerEvent908) { wayPoint = 2; GroundOne.WE2.SeekerEvent908 = true; }
+                    else if (!GroundOne.WE2.SeekerEvent909) { wayPoint = 3; GroundOne.WE2.SeekerEvent909 = true; }
+                    else if (!GroundOne.WE2.SeekerEvent910) { wayPoint = 4; GroundOne.WE2.SeekerEvent910 = true; GroundOne.WE2.SeekerEvent905 = true; }
+
+                    MirrorTruthWay(wayPoint);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.MirrorLastWay)
+                {
+                    MirrorLastWay();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.AutoMove)
                 {
                     int number = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    #region "AutoMove"
                     if (number == 1)
                     {
                         this.nowAutoMoveNumber.Add(2);
@@ -16522,7 +17223,7 @@ namespace DungeonPlayer
                         this.nowAutoMoveNumber.Add(3);
                     }
                     else if (number == 10)
-                    {       
+                    {
                         this.nowAutoMoveNumber.Add(0);
                         this.nowAutoMoveNumber.Add(0);
                         this.nowAutoMoveNumber.Add(0);
@@ -17756,6 +18457,7 @@ namespace DungeonPlayer
                     {
                         ShownEvent();
                     }
+                    #endregion
 
                     this.nowAutoMove = true;
                 }
