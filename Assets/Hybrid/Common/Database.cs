@@ -2654,6 +2654,9 @@ namespace DungeonPlayer
         public const string Message_Floor4Area3Lever = @"「事実」のレバーを倒しますか？";
         public const string Message_Floor4Area3Lever2 = @"「真実」のレバーを倒しますか？";
 
+        // 原点解
+        public static List<int> OriginNumber = new List<int> {1, 3, 4, 5, 4, 2, 3, 1, 4, 2, 5, 5};
+
         // コマンド影響因子向けアイコン
         public const string WeaponIcon = @"WeaponMark";
         public const string StrengthIcon = @"StrengthMark";

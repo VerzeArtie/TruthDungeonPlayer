@@ -173,8 +173,6 @@ namespace DungeonPlayer
         const int INFINITE_LOOP_MAX = 12; // 無限回廊の組み合わせ最大数
         int[] infinityLoopNumber = new int[INFINITE_LOOP_MAX]; // 無限解
         int[] playerLoopNumber = new int[INFINITE_LOOP_MAX]; // プレイヤー解
-        //const int[] originNumber = { 1, 3, 4, 5, 4, 2, 3, 1, 4, 2, 5, 5 }; // 原点解
-        System.Collections.ObjectModel.ReadOnlyCollection<int> originNumber = Array.AsReadOnly<int>(new int[] { 1, 3, 4, 5, 4, 2, 3, 1, 4, 2, 5, 5 });
 
         bool nowMirrorRoomGodSequence = false; // ３階、鏡の部屋、神々の試練を実行中
 
@@ -1269,6 +1267,14 @@ namespace DungeonPlayer
                     {
                         JumpByMirror_TruthWay5E();
                     }
+                    else if (this.nowAutoMoveNumber[0] == 10601)
+                    {
+                        JumpByMirror_Recollection3();
+                    }
+                    else if (this.nowAutoMoveNumber[0] == 10602)
+                    {
+                        JumpByMirror_ZeroWay();
+                    }
                     else
                     {
                         System.Threading.Thread.Sleep(this.nowAutoMoveNumber[0]);
@@ -1751,6 +1757,12 @@ namespace DungeonPlayer
                     MessagePack.Message16018_Fail(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    MessagePack.Message16045_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
                          GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
                 {
@@ -1827,6 +1839,12 @@ namespace DungeonPlayer
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
                     MessagePack.Message16018_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    MessagePack.Message16045_Fail(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
@@ -2610,7 +2628,7 @@ namespace DungeonPlayer
                 }
                 #endregion
                 #region "原点解への道と、真実の回想録3_3"
-                else if (!GroundOne.WE2.SeekerEvent914 && row == 16 && column == 24 && GroundOne.WE2.RealDungeonArea == 3)
+                else if (!GroundOne.WE2.SeekerEvent914 && row == 14 && column == 1 && GroundOne.WE2.RealDungeonArea == 3)
                 {
                     MessagePack.Message16029(ref nowMessage, ref nowEvent);
                     tapOK();
@@ -2656,16 +2674,16 @@ namespace DungeonPlayer
                 else if (!GroundOne.WE2.SeekerEvent919 && row == 12 && column == 37 && GroundOne.WE2.RealDungeonArea == 3 && GroundOne.WE2.SeekerEvent906)
                 {
                     MessagePack.Message16035(ref nowMessage, ref nowEvent);
-                    //tapOK();
-                    //}
+                    tapOK();
+                }
                 #endregion
-                    #region "ボス撃破後の無限回廊看板"
-                    //else if (!GroundOne.WE2.SeekerEvent920 && row == 39 && column == 54 && GroundOne.WE2.RealDungeonArea == 3 && GroundOne.WE2.SeekerEvent909)
-                    //{
+                #region "ボス撃破後の無限回廊看板"
+                else if (!GroundOne.WE2.SeekerEvent920 && row == 39 && column == 54 && GroundOne.WE2.RealDungeonArea == 3 && GroundOne.WE2.SeekerEvent909)
+                {
                     MessagePack.Message16036(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
-                    #endregion
+                #endregion
                 #region "３Fハウリングシーザー撃破の破、自由行動制限"
                 else if (GroundOne.WE2.SeekerEvent920 && row == 39 && column == 54)
                 {
@@ -2691,6 +2709,152 @@ namespace DungeonPlayer
                 else if (!GroundOne.WE2.SeekerEvent921 && row == 35 && column == 55 && GroundOne.WE2.RealDungeonArea == 3)
                 {
                     MessagePack.Message16040(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 35 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 35 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 35 && column == 58 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 35 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 32 && column == 57 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_2(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if((!GroundOne.WE2.SeekerEvent921 && row == 32 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 32 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 32 && column == 58 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 32 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 29 && column == 58 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_3(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if((!GroundOne.WE2.SeekerEvent921 && row == 29 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 29 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 29 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 29 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 26 && column == 59 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_4(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if((!GroundOne.WE2.SeekerEvent921 && row == 26 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 26 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 26 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 26 && column == 58 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 23 && column == 58 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_5(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 23 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 23 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 23 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 23 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 20 && column == 56 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_6(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 20 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 20 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 20 && column == 58 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 20 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 17 && column == 57 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_7(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 17 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 17 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 17 && column == 58 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 17 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 14 && column == 55 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_8(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 14 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 14 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 14 && column == 58 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 14 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 11 && column == 58 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_9(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 11 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 11 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 11 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 11 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 8 && column == 56 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_10(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 8 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 8 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 8 && column == 58 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 8 && column == 59 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (!GroundOne.WE2.SeekerEvent921 && row == 5 && column == 59 && GroundOne.WE2.RealDungeonArea == 3)
+                {
+                    MessagePack.Message16040_11(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 5 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 5 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 5 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 5 && column == 58 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if ((!GroundOne.WE2.SeekerEvent921 && row == 2 && column == 55 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 2 && column == 56 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 2 && column == 57 && GroundOne.WE2.RealDungeonArea == 3) ||
+                        (!GroundOne.WE2.SeekerEvent921 && row == 2 && column == 58 && GroundOne.WE2.RealDungeonArea == 3))
+                {
+                    MessagePack.Message16040_False(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
@@ -3531,6 +3695,7 @@ namespace DungeonPlayer
             else if (direction == 2) moveX = Database.DUNGEON_MOVE_LEN;
             else if (direction == 3) moveY = -Database.DUNGEON_MOVE_LEN; // change unity
             JumpToLocation((int)this.Player.transform.position.x + moveX, (int)this.Player.transform.position.y + moveY, false);
+            UpdateUnknownTile();
         }
 
         private void SearchSomeEvents()
@@ -13419,11 +13584,6 @@ namespace DungeonPlayer
             return true;
         }
 
-        // todo num == 0と1で分岐させるべきなのか？MessagePackの呼び出し元DungeonMessageInfiniteLoopResultと連動して検討。
-        private void MessageInfiniteLoopResult()
-        {
-            MessageInfiniteLoopResult(0);
-        }
         private void MessageInfiniteLoopResult(int num)
         {
             string[] correct = new string[INFINITE_LOOP_MAX];
@@ -13488,7 +13648,6 @@ namespace DungeonPlayer
 
         public void MirrorWay(int wayLine, int anotherWayLine)
         {
-            Debug.Log("MirrorWat " + wayLine.ToString() + " " + anotherWayLine);
             // 万が一、設定が無い場合は150, 138, 96, 130, 124で進める事にする。
             if (wayLine < 95 || wayLine > 150)
             {
@@ -15171,6 +15330,13 @@ namespace DungeonPlayer
             }
         }
 
+        private void GotoDownStairFourTwo()
+        {
+            GroundOne.WE.TruthCompleteArea4 = true;
+            JumpToLocation(31, -28, true);
+            SetupDungeonMapping(4);
+        }
+
         public override void ExitNo()
         {
             base.ExitNo();
@@ -16347,8 +16513,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationRecollection4)
                 {
-                    JumpToLocation(1, -1, true);
-                    UpdateUnknownTile();
+                    JumpByMirror_Recollection4();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationZeroWay)
                 {
@@ -16366,7 +16531,7 @@ namespace DungeonPlayer
                 {
                     for (int zz = 0; zz < INFINITE_LOOP_MAX; zz++)
                     {
-                        this.infinityLoopNumber[zz] = originNumber[zz];
+                        this.infinityLoopNumber[zz] = Database.OriginNumber[zz];
                     }
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity1)
@@ -16671,7 +16836,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonMessageInfiniteLoopResult)
                 {
-                    MessageInfiniteLoopResult();
+                    int num = Convert.ToInt32(this.nowMessage[this.nowReading]);
+                    MessageInfiniteLoopResult(num);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileArea3_TruthLast)
                 {
@@ -18455,11 +18621,111 @@ namespace DungeonPlayer
                     }
                     else if (number == 32)
                     {
-                        ShownEvent();
+                        int zeroLine = 150; // 150とは鏡５６パターン内の最後の鏡である。万が一ロジック崩れがある場合は最後の鏡を原点解とする。
+                        if (GroundOne.WE2.TruthWay95 == 0) { zeroLine = 95; }
+                        else if (GroundOne.WE2.TruthWay96 == 0) { zeroLine = 96; }
+                        else if (GroundOne.WE2.TruthWay97 == 0) { zeroLine = 97; }
+                        else if (GroundOne.WE2.TruthWay98 == 0) { zeroLine = 98; }
+                        else if (GroundOne.WE2.TruthWay99 == 0) { zeroLine = 99; }
+                        else if (GroundOne.WE2.TruthWay100 == 0) { zeroLine = 100; }
+                        else if (GroundOne.WE2.TruthWay101 == 0) { zeroLine = 101; }
+                        else if (GroundOne.WE2.TruthWay102 == 0) { zeroLine = 102; }
+                        else if (GroundOne.WE2.TruthWay103 == 0) { zeroLine = 103; }
+                        else if (GroundOne.WE2.TruthWay104 == 0) { zeroLine = 104; }
+                        else if (GroundOne.WE2.TruthWay105 == 0) { zeroLine = 105; }
+                        else if (GroundOne.WE2.TruthWay106 == 0) { zeroLine = 106; }
+                        else if (GroundOne.WE2.TruthWay107 == 0) { zeroLine = 107; }
+                        else if (GroundOne.WE2.TruthWay108 == 0) { zeroLine = 108; }
+                        else if (GroundOne.WE2.TruthWay109 == 0) { zeroLine = 109; }
+                        else if (GroundOne.WE2.TruthWay110 == 0) { zeroLine = 110; }
+                        else if (GroundOne.WE2.TruthWay111 == 0) { zeroLine = 111; }
+                        else if (GroundOne.WE2.TruthWay112 == 0) { zeroLine = 112; }
+                        else if (GroundOne.WE2.TruthWay113 == 0) { zeroLine = 113; }
+                        else if (GroundOne.WE2.TruthWay114 == 0) { zeroLine = 114; }
+                        else if (GroundOne.WE2.TruthWay115 == 0) { zeroLine = 115; }
+                        else if (GroundOne.WE2.TruthWay116 == 0) { zeroLine = 116; }
+                        else if (GroundOne.WE2.TruthWay117 == 0) { zeroLine = 117; }
+                        else if (GroundOne.WE2.TruthWay118 == 0) { zeroLine = 118; }
+                        else if (GroundOne.WE2.TruthWay119 == 0) { zeroLine = 119; }
+                        else if (GroundOne.WE2.TruthWay120 == 0) { zeroLine = 120; }
+                        else if (GroundOne.WE2.TruthWay121 == 0) { zeroLine = 121; }
+                        else if (GroundOne.WE2.TruthWay122 == 0) { zeroLine = 122; }
+                        else if (GroundOne.WE2.TruthWay123 == 0) { zeroLine = 123; }
+                        else if (GroundOne.WE2.TruthWay124 == 0) { zeroLine = 124; }
+                        else if (GroundOne.WE2.TruthWay125 == 0) { zeroLine = 125; }
+                        else if (GroundOne.WE2.TruthWay126 == 0) { zeroLine = 126; }
+                        else if (GroundOne.WE2.TruthWay127 == 0) { zeroLine = 127; }
+                        else if (GroundOne.WE2.TruthWay128 == 0) { zeroLine = 128; }
+                        else if (GroundOne.WE2.TruthWay129 == 0) { zeroLine = 129; }
+                        else if (GroundOne.WE2.TruthWay130 == 0) { zeroLine = 130; }
+                        else if (GroundOne.WE2.TruthWay131 == 0) { zeroLine = 131; }
+                        else if (GroundOne.WE2.TruthWay132 == 0) { zeroLine = 132; }
+                        else if (GroundOne.WE2.TruthWay133 == 0) { zeroLine = 133; }
+                        else if (GroundOne.WE2.TruthWay134 == 0) { zeroLine = 134; }
+                        else if (GroundOne.WE2.TruthWay135 == 0) { zeroLine = 135; }
+                        else if (GroundOne.WE2.TruthWay136 == 0) { zeroLine = 136; }
+                        else if (GroundOne.WE2.TruthWay137 == 0) { zeroLine = 137; }
+                        else if (GroundOne.WE2.TruthWay138 == 0) { zeroLine = 138; }
+                        else if (GroundOne.WE2.TruthWay139 == 0) { zeroLine = 139; }
+                        else if (GroundOne.WE2.TruthWay140 == 0) { zeroLine = 140; }
+                        else if (GroundOne.WE2.TruthWay141 == 0) { zeroLine = 141; }
+                        else if (GroundOne.WE2.TruthWay142 == 0) { zeroLine = 142; }
+                        else if (GroundOne.WE2.TruthWay143 == 0) { zeroLine = 143; }
+                        else if (GroundOne.WE2.TruthWay144 == 0) { zeroLine = 144; }
+                        else if (GroundOne.WE2.TruthWay145 == 0) { zeroLine = 145; }
+                        else if (GroundOne.WE2.TruthWay146 == 0) { zeroLine = 146; }
+                        else if (GroundOne.WE2.TruthWay147 == 0) { zeroLine = 147; }
+                        else if (GroundOne.WE2.TruthWay148 == 0) { zeroLine = 148; }
+                        else if (GroundOne.WE2.TruthWay149 == 0) { zeroLine = 149; }
+                        else if (GroundOne.WE2.TruthWay150 == 0) { zeroLine = 150; }
+
+                        MirrorWay(zeroLine, 6);
+                        this.nowAutoMoveNumber.Add(10601); // JumpByMirror_Recollection3();
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                    }
+                    else if (number == 33)
+                    {
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(3);
+                        this.nowAutoMoveNumber.Add(10602); // JumpByMirror_ZeroWay();
+                    }
+                    else if (number == 34)
+                    {
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                    }
+                    //else if (number == 35) { }
+                    else if (number == 36)
+                    {
+                        this.nowAutoMoveNumber.Add(10006); // JumpByMirror_TurnBack();
+                        this.nowAutoMoveNumber.Add(500); // sleep
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(2);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(0);
+                        this.nowAutoMoveNumber.Add(1000); // sleep
+                        MirrorWay(GroundOne.WE2.TruthWay3_5, 5);
+                        MirrorTruthWay(4);
+                        MirrorLastWay();
                     }
                     #endregion
 
                     this.nowAutoMove = true;
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDownstairFourTwo)
+                {
                 }
 
                 this.nowReading++;

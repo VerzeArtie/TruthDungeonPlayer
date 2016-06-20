@@ -444,6 +444,7 @@ namespace DungeonPlayer
             DungeonGotoDownstair,
             MirrorWay,
             MirrorLastWay,
+            DungeonGotoDownstairFourTwo,
             Ending,
         }
         #endregion
@@ -13617,139 +13618,142 @@ namespace DungeonPlayer
         }
         #endregion
         #region "真実解のイベント３【記憶の回想】"
+        private static void Story_TruthRecollection3_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+            messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　初めから全てが間違っているのだとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            //messageList.Add("　　＜＜＜　終わりへと足を運ぶな。　始まりへと足を進めろ。　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
+
+            messageList.Add("　　アイン：墓標参り・・・ですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ええ、もしよければアインさんも見ていただければと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：国王エルミからのたっての希望です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いえいえいえ、そんなとんでもないお言葉、巡礼させていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ウフフ、巡礼じゃないんだけどね。行きましょうか（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ハハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：えっと、じゃあこちらがその・・・？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ええ、そうです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・（黙祷を捧げるか・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：私達は最初の頃、６人グループをよく旅をしていました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：私と、「カール」、「エルミ」、「オル」、「アーティ」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そしてもう１人が「エレマ・セフィーネ」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：エレマ・・・セフィーネ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：俺達一般市民は、伝説のFiveSeekerって言われてるぐらいだから、メンバーは常々5人なんだと思ってましたよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そうね。国王エルミとしては、FiveSeekerじゃなくて本当はSixSeekerにして欲しいのよ、きっと（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    アイン：そうか・・・俺達は始めから全て間違った認識のまま信じてたって事か・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：知らなければ、知らないままですので、しょうがない事です（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    アイン：す、すいません・・・ハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：えっと・・・死因は何だったんでしょう？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：事故だったと聞いています。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ヴェネステリア村まで向かう途中崖を通らなくては行けないのですが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：当日は激しい雨天で、足元もぬかるみやすく、崖の地層もずいぶんと傷んでいたと聞いています。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そこで・・・落ちたってワケか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：誰か引き止めはしなかったんでしょうか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：この辺りのエリアは当時、それほど治安や整備が整っていない時代です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ヴェネステリア村は自給自足が難しい土地であり、食料確保が厳しい地帯でした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そしてファージル区域は食料を定期的に送り届ける援助活動を行っていました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：それもあって、エレマであれば、どうあっても行くと言ってきかなかったんでしょう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ある程度警告を促す住人はいたのでしょうが、明確な引き止め行為は特になかったんだと思います。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ファラ様や他のメンバーは引き止めはしなかったんでしょうか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：当時、未開拓エリアと呼ばれていたウェクスラー州のユング区域の裏"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：とあるダンジョン"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ファラ：私達は当時、そのダンジョンの踏破を目指していました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ダンジョン？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ええ、『神の遺産』が宿ると言われているダンジョンです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そのダンジョンに入っている間でしたので、いつもなら私やカールが引き止めるのですが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・す、すみません。立ち入った事をお聞きしてしまって・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：良いんですよ、国王エルミも今の話を聞いてもらいたかったんだと思いますから（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そ、そうですか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：でも、何で俺なんかにこの話を？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：アインさんは、ユング街のダンジョンへ向かうおつもりでしたよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ッゲ！！！　何でそれを！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：俺はまだその件を誰にも喋ってないはずですが！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ウフフ、どうやら当たりの様でしたわ。国王エルミに報告しておきますね（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・っだああぁぁぁ！！　ヒッカケ誘導かよ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：って、エルミ様に知れたら、ボケ師匠にも自動的に伝わるんじゃねえかあああぁぁ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：あぁ・・・またダンジョン開始に向けて、ボコられんのかな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ウフフフ、ごめんなさいね（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いやいや・・・（でも最初からピッタリ言い当てられたし、誘導じゃねえよなコレ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：アインさん、お願いがあります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ッハ！ハイハイ、なんでしょうか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：これは国王エルミのお願いでもあるのですが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ユング街のダンジョンへ向かわれるのであれば・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+        }
+
         public static void Message13137(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             if (GroundOne.WE2.TruthRecollection3_3 == false)
             {
                 GroundOne.WE2.TruthRecollection3_3 = true;
 
-                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-                #region "Story_TruthRecollection3_3"
-                messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
-
-                messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　＜＜＜　初めから全てが間違っているのだとしたら？　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                //messageList.Add("　　＜＜＜　終わりへと足を運ぶな。　始まりへと足を進めろ。　＞＞＞"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
-
-                messageList.Add("　　アイン：墓標参り・・・ですか？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ええ、もしよければアインさんも見ていただければと。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：国王エルミからのたっての希望です。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：いえいえいえ、そんなとんでもないお言葉、巡礼させていただきます。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ウフフ、巡礼じゃないんだけどね。行きましょうか（＾＾"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ハハハ・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：えっと、じゃあこちらがその・・・？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ええ、そうです。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・（黙祷を捧げるか・・・）"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：私達は最初の頃、６人グループをよく旅をしていました。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：私と、「カール」、「エルミ」、「オル」、「アーティ」"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：そしてもう１人が「エレマ・セフィーネ」"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：エレマ・・・セフィーネ・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：俺達一般市民は、伝説のFiveSeekerって言われてるぐらいだから、メンバーは常々5人なんだと思ってましたよ。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：そうね。国王エルミとしては、FiveSeekerじゃなくて本当はSixSeekerにして欲しいのよ、きっと（＾＾"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    アイン：そうか・・・俺達は始めから全て間違った認識のまま信じてたって事か・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：知らなければ、知らないままですので、しょうがない事です（＾＾"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    アイン：す、すいません・・・ハハ・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：えっと・・・死因は何だったんでしょう？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：事故だったと聞いています。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ヴェネステリア村まで向かう途中崖を通らなくては行けないのですが"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：当日は激しい雨天で、足元もぬかるみやすく、崖の地層もずいぶんと傷んでいたと聞いています。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：そこで・・・落ちたってワケか・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：誰か引き止めはしなかったんでしょうか？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：この辺りのエリアは当時、それほど治安や整備が整っていない時代です。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ヴェネステリア村は自給自足が難しい土地であり、食料確保が厳しい地帯でした。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：そしてファージル区域は食料を定期的に送り届ける援助活動を行っていました。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：それもあって、エレマであれば、どうあっても行くと言ってきかなかったんでしょう。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ある程度警告を促す住人はいたのでしょうが、明確な引き止め行為は特になかったんだと思います。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ファラ様や他のメンバーは引き止めはしなかったんでしょうか？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：当時、未開拓エリアと呼ばれていたウェクスラー州のユング区域の裏"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：とあるダンジョン"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("    ファラ：私達は当時、そのダンジョンの踏破を目指していました。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ダンジョン？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ええ、『神の遺産』が宿ると言われているダンジョンです。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：そのダンジョンに入っている間でしたので、いつもなら私やカールが引き止めるのですが・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・す、すみません。立ち入った事をお聞きしてしまって・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：良いんですよ、国王エルミも今の話を聞いてもらいたかったんだと思いますから（＾＾"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：そ、そうですか・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：でも、何で俺なんかにこの話を？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：アインさんは、ユング街のダンジョンへ向かうおつもりでしたよね？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ッゲ！！！　何でそれを！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：俺はまだその件を誰にも喋ってないはずですが！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ウフフ、どうやら当たりの様でしたわ。国王エルミに報告しておきますね（＾＾"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：・・・っだああぁぁぁ！！　ヒッカケ誘導かよ！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：って、エルミ様に知れたら、ボケ師匠にも自動的に伝わるんじゃねえかあああぁぁ！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：あぁ・・・またダンジョン開始に向けて、ボコられんのかな・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ウフフフ、ごめんなさいね（＾＾"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：いやいや・・・（でも最初からピッタリ言い当てられたし、誘導じゃねえよなコレ・・・）"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：アインさん、お願いがあります。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　アイン：ッハ！ハイハイ、なんでしょうか！？"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：これは国王エルミのお願いでもあるのですが"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("　　ファラ：ユング街のダンジョンへ向かわれるのであれば・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-
-                messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
-                #endregion
+                Story_TruthRecollection3_3(ref messageList, ref eventList);
 
                 messageList.Add("ラナ：・・・（ジィ・・・）"); eventList.Add(ActionEvent.None);
 
@@ -14030,9 +14034,8 @@ namespace DungeonPlayer
         }
         #endregion
         #region "聖者ルート（BADEND）"
-        public static void Message13140(ref List<string> messageList, ref List<ActionEvent> eventList)
+        private static void Story_SeekerEvent907(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            #region "Story_SeekerEvent907"
             messageList.Add(""); eventList.Add(ActionEvent.TurnToWhite);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
@@ -14199,7 +14202,10 @@ namespace DungeonPlayer
             messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add(" ～　THE　END　～　（聖者　『究極解』を会得した者）"); eventList.Add(ActionEvent.None);
-            #endregion
+        }
+        public static void Message13140(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            Story_SeekerEvent907(ref messageList, ref eventList);
 
             messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
 
@@ -14207,10 +14213,9 @@ namespace DungeonPlayer
         }
         #endregion
         #region "愚者ルート（BADEND）"
-        public static void Message13141(ref List<string> messageList, ref List<ActionEvent> eventList)
+        private static void Story_SeekerEvent908(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            #region "Story_SeekerEvent908"
-            messageList.Add(""); eventList.Add(ActionEvent.TurnToWhite);
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -14239,7 +14244,7 @@ namespace DungeonPlayer
             messageList.Add("アイン：(その記憶がどんどん薄れていくのを感じた）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：(鏡を潜り続け・・・）"); eventList.Add(ActionEvent.None);
-            
+
             messageList.Add("アイン：(俺は当初の目的や想いを全く思い出せなくなってしまった）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：(今では、鏡を潜る事しか考えられない状態だ）"); eventList.Add(ActionEvent.None);
@@ -14288,7 +14293,10 @@ namespace DungeonPlayer
             messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add(" ～　THE　END　～　（愚者　『究極解』に溺れた者）"); eventList.Add(ActionEvent.None);
-            #endregion
+        }
+        public static void Message13141(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            Story_SeekerEvent908(ref messageList, ref eventList);
 
             messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
 
@@ -24165,7 +24173,6 @@ namespace DungeonPlayer
         #region "鏡エリア２の進行"
         public static void Message16025(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            Debug.Log("16025call");
             messageList.Add(""); eventList.Add(ActionEvent.MirrorWay);
         }
         #endregion
@@ -24173,6 +24180,8 @@ namespace DungeonPlayer
         public static void Message16026(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             Story_TruthRecollection3_2(ref messageList, ref eventList);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add(""); eventList.Add(ActionEvent.MirrorLastWay);
 
@@ -24223,6 +24232,8 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：（　総当たりで行くぜ　）"); eventList.Add(ActionEvent.None);
 
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
             messageList.Add("　　（　一つずつ　）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　（　鏡を探る　）"); eventList.Add(ActionEvent.None);
@@ -24235,64 +24246,723 @@ namespace DungeonPlayer
 
             messageList.Add("　　（　そして・・・　）"); eventList.Add(ActionEvent.None);
 
+            messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+
+            messageList.Add("アイン：（　よし、結構の回数を潜ったはずだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　いや、ここで無いかどうかを気にしちゃだめだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　当たるかどうかは全部やれば、分かる　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　行こう　）"); eventList.Add(ActionEvent.None);
+
             messageList.Add("32"); eventList.Add(ActionEvent.AutoMove);
             GroundOne.WE2.SeekerEvent913 = true;
         }
         #endregion
         #region "原点解への道と、真実の回想録3_3"
-        public static void Message16029(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16029(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            Story_TruthRecollection3_3(ref messageList, ref eventList);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("33"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent914 = true;
+        }
         #endregion
         #region "原点解到達"
-        public static void Message16030(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16030(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　よし・・・来たな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　これで『原点解』到達だ、間違いねえ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　奥に看板が見える、行ってみよう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("34"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent915 = true;
+        }
         #endregion
         #region "原点解の看板Phase1"
-        public static void Message16031(ref List<string> messageList, ref List<ActionEvent> eventList) { }
-        #endregion
-        // この後は、プレイヤーに操作させること
+        public static void Message16031(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　あった・・・これだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　　『　原点解(1 3 4 5 4 2 3 1 4 2 5 5)  左は聖者、右は愚者、究極解を選択せよ』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　原点解の数値は記憶すれば良いとして、後ろのは一体・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　左は聖者、右は愚者、究極解・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileArea3_Area69);
+
+            messageList.Add("アイン：（　前方に鏡が二つ見える、きっとあれの事を指しているんだろう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　答えは・・・　）"); eventList.Add(ActionEvent.None);
+
+            // この後は、プレイヤーに操作させること
+            //messageList.Add("35"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent916 = true;
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+        }
+        #endregion       
         #region "原点解の看板Phase2"
-        public static void Message16032(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16032(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("　　　　『　原点解(1 3 4 5 4 2 3 1 4 2 5 5)  左は聖者、右は愚者、究極解を選択せよ』"); eventList.Add(ActionEvent.None);
+        }
         #endregion
         #region "聖者の選択"
-        public static void Message16033(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16033(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            Story_SeekerEvent907(ref messageList, ref eventList);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+            // セーブする必要はないため、コメントアウト。タイトルへ戻る
+            //GroundOne.WE2.SeekerEvent917 = true;
+            //Method.AutoSaveTruthWorldEnvironment();
+            //Method.AutoSaveRealWorld(this.mc, this.sc, this.tc, this.we, this.knownTileInfo, this.knownTileInfo2, this.knownTileInfo3, this.knownTileInfo4, this.knownTileInfo5, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
+        }
         #endregion
         #region "愚者の選択"
-        public static void Message16034(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16034(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            Story_SeekerEvent908(ref messageList, ref eventList);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+
+            // セーブする必要はないため、コメントアウト。タイトルへ戻る
+            //GroundOne.WE2.SeekerEvent918 = true;
+            //Method.AutoSaveTruthWorldEnvironment();
+            //Method.AutoSaveRealWorld(this.mc, this.sc, this.tc, this.we, this.knownTileInfo, this.knownTileInfo2, this.knownTileInfo3, this.knownTileInfo4, this.knownTileInfo5, this.Truth_KnownTileInfo, this.Truth_KnownTileInfo2, this.Truth_KnownTileInfo3, this.Truth_KnownTileInfo4, this.Truth_KnownTileInfo5);
+        }
         #endregion
         #region "戻るを選択"
-        public static void Message16035(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16035(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　聖者か・・・愚者か・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　どちらが究極解って言われりゃ、そりゃあ聖者だろうな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　でも俺はそう言う『神様』みたいな雰囲気がする選択肢は、絶対に間違ってると思う ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　じゃあ、愚者を選んだらどうなるのか　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　愚者って言うと、耳障りは悪いが　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　究極解を得ようとして、貪欲に突き進む事を指すんだろう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　終わるまで止めない、ある意味じゃ聖者よりも究極解に近いって所じゃねえかな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・ ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　進めちゃ行けない、戻るんだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　俺は聖者、愚者、どちらにも興味はない ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　原点解は得られた　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　戻るんだ、元いた場所へ・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("36"); eventList.Add(ActionEvent.AutoMove);
+            GroundOne.WE2.SeekerEvent919 = true;
+        }
         #endregion
         #region "ボス撃破後の無限回廊看板"
-        public static void Message16036(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16036(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　扉を開けば、おそらくボスだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　原点解のキーは得ている・・・大丈夫　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　いくぜ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
+
+            messageList.Add("　　『その瞬間、部屋の奥底から、地鳴りのような唸り声が響き渡ってきた！！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハウリング・シーザー：『ッヴオオオオォォォォォォ、グゥウウオォォオォォ！！！！！！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　でけぇな・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　だが、こう見えても動き自体は早そうだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　攻撃タイプはおそらく・・・物理戦闘の重圧型　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　耐性装備には気を配っておくか　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　後はパワーゲーム　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　サクサクっと短期決戦に持ち込んでみせるぜ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　アインは初手、何の行動もせず立ち止まったままとした　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　ハウリング・シーザーからの威圧的な咆哮に対し、微動だにせず　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　部屋全体を破壊するが如くのぶん回し攻撃に対し、完全回避　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　壊滅的な全体ダメージ、アース・コールド・シェイクを、完全に見切りカウンター　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　そして、ハウリング・シーザーの巨大な手が、アインをわし掴み、胴体をもぎとろうとした瞬間　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　その巨大な手はバラバラに砕け散り　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　その直後、ハウリング・シーザーの腕／肩／胴体／首／顔面に直線的な亀裂が発生　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　亀裂に誘引され、ハウリング・シーザーの身体全体は、崩壊に至った　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ハウリング・シーザー：ッヴ・・・ヴォォォォ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　すまねえな　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　目の前に看板がある。　すぐ読もう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
+
+            messageList.Add("　　　　『　正解を導きし者、無限解の探求にて永遠に彷徨い、原点を知ること無く、回り続けるがよい　』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　大丈夫、予想通りだ ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　原点解は、1 3 4 5 4 2 3 1 4 2 5 5　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　目の前に階段が一応あるが、部屋の奥にも鏡がある　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　原点解の数字の羅列は１～５まで、そして鏡の数も左から数えて５つ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　目の前の階段はトラップだ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　左側が１、右側が５として、原点解の記載通りの順序で鏡を潜ろう　）"); eventList.Add(ActionEvent.None);
+            GroundOne.WE2.SeekerEvent920 = true;
+        }
         #endregion
         #region "３Fハウリングシーザー撃破の破、自由行動制限"
-        public static void Message16037(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16037(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：いや、もう後ろへ振り返るのはよそう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveRight);
+        }
         #endregion
         #region "無限回廊前の看板"
-        public static void Message16038(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16038(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("　　　　『　正解を導きし者、無限解の探求にて永遠に彷徨い、原点を知ること無く、回り続けるがよい　』"); eventList.Add(ActionEvent.None);
+        }
         #endregion
         #region "原点解入手後の正解階段ブロック"
-        public static void Message16039(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16039(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　・・・この階段へは行かないでおこう　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　原点解は得ている。確か・・・1 3 4 5 4 2 3 1 4 2 5 5　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　原点解の数字の羅列は１～５まで、そして鏡の数も左から数えて５つ　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（　左側が１、右側が５として、原点解の記載通りの順序で鏡を潜ろう　）"); eventList.Add(ActionEvent.None);
+        }
         #endregion
         #region "無限回廊"
-        public static void Message16040(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16040_False(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　いや、この鏡じゃねえな　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveBottom);
+        }
+        public static void Message16040(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[0].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity1);
+        }
+        public static void Message16040_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[1].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity2);
+        }
+        public static void Message16040_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[2].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity3);
+        }
+        public static void Message16040_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[3].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity4);
+        }
+        public static void Message16040_5(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[4].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity5);
+        }
+        public static void Message16040_6(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[5].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity6);
+        }
+        public static void Message16040_7(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[6].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity7);
+        }
+        public static void Message16040_8(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[7].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity8);
+        }
+        public static void Message16040_9(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[8].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity9);
+        }
+        public static void Message16040_10(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[9].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity10);
+        }
+        public static void Message16040_11(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(Database.OriginNumber[10].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity11);
+        }
         #endregion
         #region "無限回廊から真実の回想録へ抜ける"
-        public static void Message16041(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16041(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationRecollection4);
+
+            if (!GroundOne.WE2.SeekerEvent921)
+            {
+                messageList.Add("アイン：（　よし、抜けたみたいだな　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（　進めよう　）"); eventList.Add(ActionEvent.None);
+            }
+            GroundOne.WE2.SeekerEvent921 = true;
+        }
         #endregion
         #region "真実の回想録3_4"
-        public static void Message16042(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        private static void Story_TruthRecollection3_4(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToBlack);
+
+            messageList.Add("　　　【その瞬間、アインの脳裏に激しい激痛が襲った！周囲の感覚が麻痺する！！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　＜＜＜　終わりへと足を運ぶな。　始まりへと足を進めろ。　＞＞＞"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.PlayMusic15);
+
+            messageList.Add("　　アイン：終わりへと・・・足を運ばないように？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：はい、ダンジョンへ向かうのであれば、そうしてください。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：えっと、大変すいませんが、もう一度教えてもらえないでしょうか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：終わりへと、足を運ぶなかれ。　始まりへと足を進めよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：国王エルミからの教えです、ちゃんと守ってくださいね（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：えっと・・・？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：アインさんの今のお気持ちは察しします、よく分かりませんよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：えっ、ええ。正直なトコ、言語系は結構苦手なもんでして・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：始まりへと足を進めるってどういう行いを指してるんでしょうか？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：アインさんの赴くままに（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：足を進めている以上、物事は進むワケだし、嫌でも終わりに近づくのでは？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：アインさんの思うがままに（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：っぐ・・・了解、了解っす。　ハハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そうれはそうと、さっきの話ですが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：何故6人目のセフィだけがダンジョンに行かずに残ったのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：うわぁ、何でもお見通しかよ。　ええ、それに関してです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：何故、彼女だけがダンジョンに赴かなかったんでしょう？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ファージル区域は当時、それほど治安が良いとは言えない状態。ここまでは話しましたわね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ええ、それは聞きました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：あっ、ひょっとして！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ウフフ、噂通り読みは鋭いみたいね、アインさんは（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いやいや・・・外れてるかも・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：先ほどのご無礼のかわりに、まずはそちらからどうぞ（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いやいやいや・・・無礼なんてとんでもない、ダンジョン目指す事自体は言い当てられてたし・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：遠慮せず、どうぞ（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：かなわねえな・・・ハハ・・・じゃあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ファージル区域はいつも６人体制で、自警団のような活動をしていた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：それでファージル区域には、ある程度の治安が保たれていたわけだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ユング区域のダンジョンへ全員で赴けば、どうしてもファージル区域の治安はまた悪くなる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ファージル区域の継続的な自衛活動として、最低限一人は残る必要があった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ピンポン、大正解、さすがはアインさんです（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：いやいやいや・・・すみません、ホントこの辺で勘弁してください・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：いえいえ、当たっているもの、大したものですわ（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そう、当時ダンジョンへ行こうと決めたのはエルミなんだけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そこで、一つ声が上がったの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：誰か一人は最低でも残るべきだと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そう提案した声の主は、カールだったわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：シニキア・カールハンツ爵ですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ええ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：でも、その提案を聞き、残ると言い出したのは、アーティだった。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ヴェルゼさんが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：その後、続けてオルがこう付け足したのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ（声マネ）『ランディス：アーティ。てめえは絶対にダンジョンに来い。』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ（声マネ）『ランディス：じゃねえとダンジョン制覇は無理だ。』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：ヴェルゼさんがいないとダンジョンが解けない・・・師匠はそう読み切ったのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そうね、今となっては私も理解できます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：彼は戦闘面においては天才的でした。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：おそらく力量そのものは、オルよりも遥か上。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：マジか・・・師匠より上だなんて・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：いえ、正確には当時はまだオルの方が上だったのは事実です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ただし、早期段階でオルはアーティが自分に追いついてくるのを見越していた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そんな所だと思います。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そうだったのか・・・俺の知らない事ばかりだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ウフフ、昔話だから知らなくて当たり前ですよ（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：でも、今の流れで、誰が残る事になるか、どういう風に決まったんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そういう場合は、大概は話が平行線になるだろうし。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：アーティが「くじ引きにしよう」と言い出したんです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：それなら公平に決定できると。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：なるほど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ウフフ、でも彼は当時からトリックが大好きだったのよ、つまり（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：え？い、いや・・・意味が・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：彼が最後に引いて、貧乏クジの護衛をやるつもりだったんです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そんな事が可能なんですか？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：私には詳しく分かりませんが、できるそうです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：じ、じゃあ結局ヴェルゼさんが？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ウフフ、当時のアーティの性格や行動パターンは、セフィにとってお手玉のようなモノだったんですよ（＾＾"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：あっ！　じゃあひょっとして、貧乏くじをトリックで自分が取るはずだったモノが！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そうです、アーティの仕掛けたタネはセフィにバレてしまい、セフィが最後から２番目にくじを引き当てたのです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そうか、それでエレマさんに護衛役が回っちまったって事か・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：じゃあ、結局ダンジョンへ行かなければ、何とかなったんだろうか・・・？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：いいえ、当時ファージル区域はあのままでは犯罪は増加の一方でしたし。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：例えその時ダンジョンを諦めても、別の何らかの犯罪が起これば起こるほど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：・・・そうだとしても、ダンジョンへ何故そうまでして赴く必要があったんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：そのダンジョンでは、実は言い伝えがあるのですよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：『ダンジョンへ赴きし者達』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：『汝らは、何を願うか？』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：『攻略した暁にて』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ファラ：『その者の願い』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ファラ：『叶えてしんぜよう』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：願い事を・・・叶える？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    アイン：そんな神様みたいな話が本当に言い伝えとしてあったというんですか？？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ええ、本当よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：当時の私達はそれが唯一の頼りだったの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：そっか・・・治安が悪けりゃ、そういう頼みごともしてみたくなるよな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　ファラ：ええ・・・自分達がまだ若かったという事もあったと思うわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ファラ：でもこの言い伝え、実は続きがあったのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　アイン：続き・・・ですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("    ファラ：ええ、願い事が叶うと同時に・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("　　　【アインに対する激しい激痛は少しずつ引いていった。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.ReturnToNormal);
+        }
+        public static void Message16042(ref List<string> messageList, ref List<ActionEvent> eventList) 
+        {
+            Story_TruthRecollection3_4(ref messageList, ref eventList);
+            GroundOne.WE2.SeekerEvent922 = true;
+        }
         #endregion
         #region "真実の回想録から右上最後の看板へ"
-        public static void Message16043(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16043(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+
+            if (!GroundOne.WE2.SeekerEvent923)
+            {
+                messageList.Add("アイン：（　看板がある・・・見てみよう　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("1"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+
+                messageList.Add("アイン：（　向かうは、【生】か【死】か・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（　ラナを死なせはしない　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（　絶対に助け出して見せる　）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（　行こう、４階へ　）"); eventList.Add(ActionEvent.None);
+            }
+            GroundOne.WE2.SeekerEvent923 = true;
+        }
         #endregion
         #region "最後の看板"
-        public static void Message16044(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16044(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+        }
         #endregion
         #region "３階、オル・ランディスと会話／戦闘"
-        public static void Message16045(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16045(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：３階は・・・師匠か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：わりぃかよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・良い面構えじゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：土壇場になって、腹括ってるみてえだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：気持ちとしては師匠に勝ちたい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：でも、気合云々で師匠に勝てる気が到底しないんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：やる前から腰引けてんじゃねえ、ボケザコが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：師匠はなんでそんな強いんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：てめぇが勝手に俺を強いヤツにしてんだろ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：御託は要らねぇっつってんだろ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：とっとと、かかってこい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：おっ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：てめぇの本気は、久々に見るな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：行くぜ、師匠。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ああ、来い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.ENEMY_LAST_OL_LANDIS); eventList.Add(ActionEvent.EncountBoss);
+        }
+        public static void Message16045_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ッグホ・・・！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ッチ、くだらねえ手加減グセが治ってねえみてぇだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：最後のカルネージ・ラッシュだ、食らえやぁ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ッドドドドドシュ！　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　意識が　）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　破壊された　）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　師匠から何発もらったのか　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　数える事が出来ず、意識が崩れていくのが分かった　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　ラナ・・・すまない・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　・・・　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(" ～　THE　END　～　（オル・ランディスとの死闘）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE2.SeekerEvent924_fail = true;
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+        }
+        public static void Message16045_Success(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("ランディス：ッチ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：し、師匠！　今の大丈夫だったか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ああ、何でもねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ちっとばかし・・・ッグ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：し、師匠！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：ボ・・・ケが・・・そんな事より・・・も・・・だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：こっからは・・・俺からの頼み事・・・だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：アーティを・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：このダンジョンから・・・解放してやってくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どういう意味なんだ？ヴェルゼに一体何が起きてるんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：アイツはもう・・・何度もこのダンジョンに挑んでいる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：数え切れねえほど・・・だ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：目的は、今のてめぇなら・・・分かるな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：このダンジョンで・・・願い事が叶うというのを・・・信じて"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：アイツは今も・・・エレマ・セフィーネを・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：いや・・・違う・・・か・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：師匠、もういいよ。頼むから喋らないでくれよ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：カッ・・・てめぇは・・・つくづく・・・甘いぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：アーティの・・・事だが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：アイツは今・・・神の遺産をとりあえず願うだけになっちまってる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ・・・そんな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：【天空の翼】を手に入れてるんだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：もうそれ以上、神の遺産を受諾する事は叶わないんじゃないのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：普通はそうだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：だが、アーティの野郎は・・・それを・・・覆した。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：今のあいつは・・・【天空の翼】に加え・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：【黒真空の鎧】と・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・【白銀の剣】・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ・・・そんな・・・３つも・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：神の遺産は・・・膨大に心を・・・消費・・・する・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：アイツの精神は・・・もうとっくに限界だ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：頼む、アーティを・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ランディス：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：し、師匠！！　師匠！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：消えてしまった・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：この先・・・きっとヴェルゼが待ち構えている。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：神の遺産を・・・３つも・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そんなのを相手に勝てるのか・・・俺は・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、やるしかないんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：行こう。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE2.SeekerEvent924 = true;
+        }
         #endregion
         #region "３階から４階へ"
-        public static void Message16046(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16046(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：（　階段だ、降りよう　）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE2.RealDungeonArea = 4;
+            GroundOne.WE2.SeekerEvent925 = true;
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonGotoDownstairFourTwo);
+        }
         #endregion
         #region "無間地獄の看板"
         public static void Message16047(ref List<string> messageList, ref List<ActionEvent> eventList) { }
