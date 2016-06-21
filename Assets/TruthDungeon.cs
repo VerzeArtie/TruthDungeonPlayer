@@ -1941,6 +1941,11 @@ namespace DungeonPlayer
                     MessagePack.Message16018_Success(ref this.nowMessage, ref this.nowEvent);
                     tapOK();
                 }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
+                {
+                    MessagePack.Message16045_Success(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
 
                 // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
                 if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
@@ -13584,6 +13589,7 @@ namespace DungeonPlayer
             return true;
         }
 
+        // numの意味  0:fail, 1:success, 2:originFix 
         private void MessageInfiniteLoopResult(int num)
         {
             string[] correct = new string[INFINITE_LOOP_MAX];
@@ -13598,7 +13604,25 @@ namespace DungeonPlayer
                     correct[zz] = "×";
                 }
             }
-            if (num == 1)
+
+            if (num == 2)
+            {
+                string commentString = "　　　　『　原点を知りし者、　　向かうは　【生】【死】　』\r\n　　　　　　";
+                mainMessage.text = commentString
+                                    + Database.OriginNumber[0] + " - " + Database.OriginNumber[0] + " = ○    "
+                                    + Database.OriginNumber[1] + " - " + Database.OriginNumber[1] + " = ○    "
+                                    + Database.OriginNumber[2] + " - " + Database.OriginNumber[2] + " = ○    "
+                                    + Database.OriginNumber[3] + " - " + Database.OriginNumber[3] + " = ○\r\n　　　　　　"
+                                    + Database.OriginNumber[4] + " - " + Database.OriginNumber[4] + " = ○    "
+                                    + Database.OriginNumber[5] + " - " + Database.OriginNumber[5] + " = ○    "
+                                    + Database.OriginNumber[6] + " - " + Database.OriginNumber[6] + " = ○    "
+                                    + Database.OriginNumber[7] + " - " + Database.OriginNumber[7] + " = ○\r\n　　　　　　"
+                                    + Database.OriginNumber[8] + " - " + Database.OriginNumber[8] + " = ○    "
+                                    + Database.OriginNumber[9] + " - " + Database.OriginNumber[9] + " = ○    "
+                                    + Database.OriginNumber[10] + " - " + Database.OriginNumber[10] + " = ○    "
+                                    + Database.OriginNumber[11] + " - " + Database.OriginNumber[11] + " = ○    ";
+            }
+            else if (num == 1)
             {
                 string commentString = "　　　　『　原点を知りし者、　　向かうは　　　　【死】　』\r\n　　　　　　";
                 if (GroundOne.WE.dungeonEvent328)
@@ -15120,6 +15144,7 @@ namespace DungeonPlayer
             if (BlockAction()) { return; }
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
+                Method.ExecSave(null, Database.WorldSaveNum, true); // add unity
                 Method.AutoSaveTruthWorldEnvironment();
                 Method.AutoSaveRealWorld();
                 SceneDimension.JumpToTitle();
@@ -18726,6 +18751,7 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDownstairFourTwo)
                 {
+                    GotoDownStairFourTwo();
                 }
 
                 this.nowReading++;

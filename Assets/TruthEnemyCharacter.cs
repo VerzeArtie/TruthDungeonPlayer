@@ -6041,11 +6041,12 @@ namespace DungeonPlayer
                     this.gold = 0;
                     this.experience = 0;
                     this.Armor = ArmorType.Normal;
-                    this.MainWeapon = new ItemBackPack(Database.EPIC_JUZA_THE_PHANTASMAL_CLAW);
-                    this.SubWeapon = new ItemBackPack(Database.RARE_TYOU_KOU_SHIELD);
-                    this.MainArmor = new ItemBackPack(Database.EPIC_EZEKRIEL_ARMOR_SIGIL);
-                    this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
-                    this.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_CRYSTAL);
+                    // debug
+                    //this.MainWeapon = new ItemBackPack(Database.EPIC_JUZA_THE_PHANTASMAL_CLAW);
+                    //this.SubWeapon = new ItemBackPack(Database.RARE_TYOU_KOU_SHIELD);
+                    //this.MainArmor = new ItemBackPack(Database.EPIC_EZEKRIEL_ARMOR_SIGIL);
+                    //this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
+                    //this.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_CRYSTAL);
                     this.Area = MonsterArea.Duel;
                     this.OpponentUseInstantPoint = true;
                     break;

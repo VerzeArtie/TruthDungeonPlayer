@@ -24747,13 +24747,13 @@ namespace DungeonPlayer
         #region "真実の回想録から右上最後の看板へ"
         public static void Message16043(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+            messageList.Add(Database.OriginNumber[11].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
 
             if (!GroundOne.WE2.SeekerEvent923)
             {
                 messageList.Add("アイン：（　看板がある・・・見てみよう　）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("1"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+                messageList.Add("2"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
 
                 messageList.Add("アイン：（　向かうは、【生】か【死】か・・・　）"); eventList.Add(ActionEvent.None);
 
@@ -24771,7 +24771,7 @@ namespace DungeonPlayer
         #region "最後の看板"
         public static void Message16044(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add(""); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+            messageList.Add("2"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
         }
         #endregion
         #region "３階、オル・ランディスと会話／戦闘"
