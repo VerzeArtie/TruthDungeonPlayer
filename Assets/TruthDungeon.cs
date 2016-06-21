@@ -3045,6 +3045,10 @@ namespace DungeonPlayer
                     MessagePack.Message16064(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
+                else if (row == 26 && column == 32 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    MessagePack.Message16064_2(ref nowMessage, ref nowEvent);
+                }
                 #endregion
                 #region "鏡１６"
                 else if (row == 26 && column == 34 && GroundOne.WE2.RealDungeonArea == 4)
@@ -3057,6 +3061,11 @@ namespace DungeonPlayer
                 else if (!GroundOne.WE2.SeekerEvent1011 && row == 19 && column == 52 && GroundOne.WE2.RealDungeonArea == 4)
                 {
                     MessagePack.Message16066(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (row == 19 && column == 53 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    MessagePack.Message16066_2(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
                 #endregion
@@ -3084,6 +3093,17 @@ namespace DungeonPlayer
                 #region "真実世界"
                 else if (row == 9 && ((column == 29) || (column == 30) || (column == 31)) && GroundOne.WE2.RealDungeonArea == 5)
                 {
+                    if (column == 29)
+                    {
+                        UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
+                        UpdateUnknownTile();
+                    }
+                    if (column == 31)
+                    {
+                        UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y);
+                        UpdateUnknownTile();
+                    }
+
                     MessagePack.Message16070(ref nowMessage, ref nowEvent);
                     //tapOK();
                     //}
@@ -12895,6 +12915,25 @@ namespace DungeonPlayer
         private void JumpByMirror_InfinityWayTurnBack() { JumpToLocation(56, -39, true); UpdateUnknownTile(); }
         private void JumpByMirror_InfinityWayLast() { JumpToLocation(55, -1, true); UpdateUnknownTileArea3_TruthLast(); }
 
+        private void JumpByMirror_Hell1() { JumpToLocation(40, -22, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell2() { JumpToLocation(26, -20, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell3() { JumpToLocation(39, -31, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell4() { JumpToLocation(22, -28, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell5() { JumpToLocation(39, -21, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell6() { JumpToLocation(23, -31, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell7() { JumpToLocation(39, -26, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell8() { JumpToLocation(23, -23, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell9() { JumpToLocation(34, -33, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell10() { JumpToLocation(38, -22, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell11() { JumpToLocation(44, -25, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell12() { JumpToLocation(34, -31, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell13() { JumpToLocation(28, -25, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell14() { JumpToLocation(38, -25, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell15() { JumpToLocation(33, -27, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell16() { JumpToLocation(49, 19, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell16Back() { JumpToLocation(33, -26, true); UpdateUnknownTile(); }
+        private void JumpByMirror_HellFail() { JumpToLocation(27, -28, true); UpdateUnknownTile(); }
+
         private void UpdateUnknownTileArea3_One(int Y, int X)
         {
             UpdateUnknownTileArea3_One(Y, X, false);
@@ -15362,6 +15401,13 @@ namespace DungeonPlayer
             SetupDungeonMapping(4);
         }
 
+        private void GotoDownStairFiveTwo()
+        {
+            GroundOne.WE.TruthCompleteArea5 = true;
+            JumpToLocation(30, -15, true);
+            SetupDungeonMapping(5);
+        }
+
         public override void ExitNo()
         {
             base.ExitNo();
@@ -16871,6 +16917,10 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonRemovePartyTC)
                 {
                     Method.RemoveParty(GroundOne.TC, false);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonRefreshWater)
+                {
+                    RefreshWater();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonSetupPlayerStatus)
                 {
@@ -18752,6 +18802,86 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDownstairFourTwo)
                 {
                     GotoDownStairFourTwo();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror1)
+                {
+                    JumpByMirror_Hell1();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror2)
+                {
+                    JumpByMirror_Hell2();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror3)
+                {
+                    JumpByMirror_Hell3();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror4)
+                {
+                    JumpByMirror_Hell4();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror5)
+                {
+                    JumpByMirror_Hell5();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror6)
+                {
+                    JumpByMirror_Hell6();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror7)
+                {
+                    JumpByMirror_Hell7();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror8)
+                {
+                    JumpByMirror_Hell8();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror9)
+                {
+                    JumpByMirror_Hell9();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror10)
+                {
+                    JumpByMirror_Hell10();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror11)
+                {
+                    JumpByMirror_Hell11();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror12)
+                {
+                    JumpByMirror_Hell12();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror13)
+                {
+                    JumpByMirror_Hell13();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror14)
+                {
+                    JumpByMirror_Hell14();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror15)
+                {
+                    JumpByMirror_Hell15();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror16)
+                {
+                    JumpByMirror_Hell16();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirror16Back)
+                {
+                    JumpByMirror_Hell16Back();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.JumpToLocationHellMirrorFail)
+                {
+                    JumpByMirror_HellFail();
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileAreaHellLast)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 53, 59, 18, 20);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileAreaTruthFinal)
+                {
+                    UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 25, 35, 3, 9);
                 }
 
                 this.nowReading++;
