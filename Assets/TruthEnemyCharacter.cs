@@ -6072,9 +6072,10 @@ namespace DungeonPlayer
                     this.gold = 0;
                     this.experience = 0;
                     this.Armor = ArmorType.Normal;
-                    this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
-                    this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR);
-                    this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING);
+                    // debug
+                    //this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
+                    //this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR);
+                    //this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING);
                     this.Area = MonsterArea.Duel;
                     break;
 
@@ -6100,10 +6101,11 @@ namespace DungeonPlayer
                     this.gold = 0;
                     this.experience = 0;
                     this.Armor = ArmorType.Normal;
-                    this.MainWeapon = new ItemBackPack(Database.LEGENDARY_TAU_WHITE_SILVER_SWORD);
-                    this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR);
-                    this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING);
-                    this.Accessory2 = new ItemBackPack(Database.LEGENDARY_SEFINE_HYMNUS_RING);
+                    // debug
+                    //this.MainWeapon = new ItemBackPack(Database.LEGENDARY_TAU_WHITE_SILVER_SWORD);
+                    //this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR);
+                    //this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING);
+                    //this.Accessory2 = new ItemBackPack(Database.LEGENDARY_SEFINE_HYMNUS_RING);
                     this.Area = MonsterArea.LastBoss;
                     break;
 

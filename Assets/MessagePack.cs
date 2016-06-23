@@ -25659,226 +25659,223 @@ namespace DungeonPlayer
         {
             messageList.Add(""); eventList.Add(ActionEvent.UpdateUnknownTileAreaTruthFinal);
 
-            if (!GroundOne.WE2.SeekerEvent1101)
-            {
-                messageList.Add("アイン：ラ、ラナ！！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ラ、ラナ！！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：う・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：う・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ラナ、しっかりしろ！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ラナ、しっかりしろ！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：アイン・・・ごめんね。ごめんなさい。・・・ご・・・ごめんなさい・・・私"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：アイン・・・ごめんね。ごめんなさい。・・・ご・・・ごめんなさい・・・私"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：やめろ、喋るな！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：やめろ、喋るな！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：私はアインと一緒に居るから。絶対に。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：私はアインと一緒に居るから。絶対に。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　『ッブシュ！！！』（床一面が赤に染まっていく！）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　『ッブシュ！！！』（床一面が赤に染まっていく！）"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：わ・・・私ね。ごめんね・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：わ・・・私ね。ごめんね・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：分かった。分かったから！！　今直してやる。　フレッシュヒール！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：分かった。分かったから！！　今直してやる。　フレッシュヒール！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　【【【　神剣フェルトゥーシュの傷痕は、ヒーリング効果を打ち消している　】】】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　【【【　神剣フェルトゥーシュの傷痕は、ヒーリング効果を打ち消している　】】】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：っくそ、フェルトゥーシュの影響か・・・ックソ！　サークレッド・ヒール！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っくそ、フェルトゥーシュの影響か・・・ックソ！　サークレッド・ヒール！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　【【【　神剣フェルトゥーシュの傷痕は、ヒーリング効果を打ち消し続けている　】】】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　【【【　神剣フェルトゥーシュの傷痕は、ヒーリング効果を打ち消し続けている　】】】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：っくそ・・・どうして・・・こんな・・・？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っくそ・・・どうして・・・こんな・・・？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：ア、アイン・・・良いの、私の事は・・・あきらめて・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：ア、アイン・・・良いの、私の事は・・・あきらめて・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：私、最初からそういう運命だったのよ、きっと・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：私、最初からそういう運命だったのよ、きっと・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：何言ってる、そういう言い方はやめろ！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：何言ってる、そういう言い方はやめろ！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：良いの・・・助か・・・らない・・・から・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：良いの・・・助か・・・らない・・・から・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　【【【　ラナ・アミリアはその場で意識を完全に失った　】】】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　【【【　ラナ・アミリアはその場で意識を完全に失った　】】】"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ラナ！ラナ！！　うわあああぁぁぁ！！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ラナ！ラナ！！　うわあああぁぁぁ！！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：なんで・・何でこんな事に・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：なんで・・何でこんな事に・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・ック・・・ラナが・・・ラナが死んでしまう・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・ック・・・ラナが・・・ラナが死んでしまう・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ッグ・・・・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ッグ・・・・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　＜＜＜　その時　＞＞＞"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　＜＜＜　その時　＞＞＞"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　＜＜＜　アイン・ウォーレンスに、声が届いた　＞＞＞"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　＜＜＜　アイン・ウォーレンスに、声が届いた　＞＞＞"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：　　　アイン君　　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：　　　アイン君　　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　＜＜＜　時間が完全に停止した、そんな気がした　＞＞＞"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　＜＜＜　時間が完全に停止した、そんな気がした　＞＞＞"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：誰だ！？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：誰だ！？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　一つの風がアインの全体へ触れる　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　一つの風がアインの全体へ触れる　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：この雰囲気・・・まさかヴェルゼか！？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：この雰囲気・・・まさかヴェルゼか！？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ラナさんの事は、もうあきらめてください。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ラナさんの事は、もうあきらめてください。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：そのフェルトゥーシュで刺された者に対して"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：そのフェルトゥーシュで刺された者に対して"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ヒーリング効果は発揮されません。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ヒーリング効果は発揮されません。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ラナさんはもうすぐ絶命するでしょう。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ラナさんはもうすぐ絶命するでしょう。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：何で・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：何で・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：何でラナに神剣フェルトゥーシュが刺さってんだよ！？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：何でラナに神剣フェルトゥーシュが刺さってんだよ！？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：俺がこの部屋に来る前に何があったんだ！？答えてくれ、ヴェルゼ！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：俺がこの部屋に来る前に何があったんだ！？答えてくれ、ヴェルゼ！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ラナさんがこうなったのは、アイン君のせいではありません。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ラナさんがこうなったのは、アイン君のせいではありません。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：３階の最後で、迂闊にもラナを先に進めてしまった・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：３階の最後で、迂闊にもラナを先に進めてしまった・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：３階の妙な台座にラナが囚われちまって・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：３階の妙な台座にラナが囚われちまって・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：そのあとすぐ解けたと思ったら、ラナは黒い煙みたいなモノにさらわれてしまった。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：そのあとすぐ解けたと思ったら、ラナは黒い煙みたいなモノにさらわれてしまった。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：あの直後、気付いたらヴェルゼも居なくなってた。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：あの直後、気付いたらヴェルゼも居なくなってた。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：俺は完全に失敗だと思った。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：俺は完全に失敗だと思った。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：完全に俺のせいだ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：完全に俺のせいだ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：いや、アイン君のせいではありません。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：いや、アイン君のせいではありません。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：これは逃れられない事象なんです、アイン君。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：これは逃れられない事象なんです、アイン君。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：逃れられないって何だよ・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：逃れられないって何だよ・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：この部屋で何があったのかを教えてくれよ、頼む！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：この部屋で何があったのかを教えてくれよ、頼む！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　ヴェルゼ・アーティは目を閉じ　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　ヴェルゼ・アーティは目を閉じ　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　どこかへ向くともなく、どこかへ語り掛けることもなく　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　どこかへ向くともなく、どこかへ語り掛けることもなく　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　言葉を空中へ発した　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　言葉を空中へ発した　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：　　ラナさんは"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：　　ラナさんは"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：　　　　　　　　　ボクが"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：　　　　　　　　　ボクが"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：　　　　　　　　　　　　　　　殺しました。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：　　　　　　　　　　　　　　　殺しました。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　（　何を言ってるのか　）　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　（　何を言ってるのか　）　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　（　俺には分からなかった　）　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　（　俺には分からなかった　）　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ッハ・・・ハハハ・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ッハ・・・ハハハ・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：いやいや、やめてくれよ冗談は。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：いやいや、やめてくれよ冗談は。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：この部屋で何があったのかを聞いてるんだ、俺は。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：この部屋で何があったのかを聞いてるんだ、俺は。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　ヴェルゼ・アーティは目を閉じ続けている　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　ヴェルゼ・アーティは目を閉じ続けている　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　そのまま言葉を空中へと発する　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　そのまま言葉を空中へと発する　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：神剣フェルトゥーシュを"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：神剣フェルトゥーシュを"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：　　　　　　　　　　　　ラナさんの身体へ"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：　　　　　　　　　　　　ラナさんの身体へ"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：　　　　　　　　　　　　　　　　　　　　　突き刺しました。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：　　　　　　　　　　　　　　　　　　　　　突き刺しました。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ウソだ！！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ウソだ！！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：冗談じゃねえぞ！！何言ってんだ！！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：冗談じゃねえぞ！！何言ってんだ！！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　ヴェルゼ・アーティは突如目を開け　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　ヴェルゼ・アーティは突如目を開け　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　アイン・ウォーレンスの方へと視線を投げた　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　アイン・ウォーレンスの方へと視線を投げた　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君、ラナさんはボクが殺したんです。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君、ラナさんはボクが殺したんです。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　頭髪はいつのまにか全て純白へと色を変え　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　頭髪はいつのまにか全て純白へと色を変え　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　ヴェルゼの両目の色素は真紅に染まっていた　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　ヴェルゼの両目の色素は真紅に染まっていた　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ヴェ・・・ヴェルゼ・・・お前・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ヴェ・・・ヴェルゼ・・・お前・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君の痛み、ボクは分かります。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君の痛み、ボクは分かります。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君の苦しみを、ボクは知っています。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君の苦しみを、ボクは知っています。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君の全てを、ボクは理解しています。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君の全てを、ボクは理解しています。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ボクがアイン君を殺してあげましょう。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ボクがアイン君を殺してあげましょう。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：っな！・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っな！・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　ヴェルゼ・アーティは完全なる殺気を部屋中に満たしていった　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　ヴェルゼ・アーティは完全なる殺気を部屋中に満たしていった　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君を殺した後"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君を殺した後"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ボクもこの場で死ぬ事を約束します。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ボクもこの場で死ぬ事を約束します。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ふ、ふざけてんのか！？　ヴェルゼてめぇ！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ふ、ふざけてんのか！？　ヴェルゼてめぇ！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：止めたければ"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：止めたければ"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ボクを"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ボクを"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：殺すしか選択肢はありません。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：殺すしか選択肢はありません。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君、行きますよ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君、行きますよ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　アインは顔を微かに下に伏せ　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　アインは顔を微かに下に伏せ　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　視線を完全に隠す体制を取った　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　視線を完全に隠す体制を取った　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　体位は正面から微かに右へと向け　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　体位は正面から微かに右へと向け　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　剣の切っ先は地面との垂直方向より5度傾けた方向に向け　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　剣の切っ先は地面との垂直方向より5度傾けた方向に向け　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　体位を整えた　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　体位を整えた　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　腹部より大きい呼吸を一つ　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　腹部より大きい呼吸を一つ　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　アイン・ウォーレンスは　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　アイン・ウォーレンスは　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　この時、生まれてから初めて　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　この時、生まれてから初めて　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　今まで象った事の無い戦闘スタイルを取った　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　今まで象った事の無い戦闘スタイルを取った　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　＜＜＜　それは、アイン・ウォーレンスにとって唯一無二の戦闘スタイルであった　＞＞＞　　"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　＜＜＜　それは、アイン・ウォーレンスにとって唯一無二の戦闘スタイルであった　＞＞＞　　"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：アイン君"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：アイン君"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ラナさんと、そしてボクと共に"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ラナさんと、そしてボクと共に"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ヴェルゼ：ここで死を迎えましょう。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：ここで死を迎えましょう。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：絶対に"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：絶対に"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ヴェルゼ、おめえを倒す。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ヴェルゼ、おめえを倒す。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・行くぜ！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・行くぜ！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(Database.ENEMY_LAST_VERZE_ARTIE); eventList.Add(ActionEvent.EncountBoss);
-            }
+            messageList.Add(Database.ENEMY_LAST_VERZE_ARTIE); eventList.Add(ActionEvent.EncountBoss);
         }
-        public static void Message16071_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message16070_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -25920,13 +25917,288 @@ namespace DungeonPlayer
         }
         #endregion
         #region "ヴェルゼ最終戦２【原罪】"
-        public static void Message16071(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16071(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE2.SeekerEvent1101 = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("ヴェルゼ：グ・・・グアアアァァァ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ど、どうだ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ック・・・こ、このくらい・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：セ・・・セフィの苦しみに・・・比べたら・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：な！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ッグ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ハアアアァアァァァ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ヴェルゼの身体から血しぶきが出ると同時に　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ヴェルゼの頭髪は純白から漆黒へと変化を始めた！！　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ヴェ・・・ヴェルゼ、お前・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ハアァ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ヴェルゼは輝かしいオーラを放ち、ライフ・マナ・スキルを全回復させた！！　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ば、ばかな！！　かなりのダメージを与え始めたはずだぞ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：神具の力を使いました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：この神具さえあれば、ボクは何度でも代償を支払い全回復する事が可能です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：全・・・回復だと？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：そうです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：自分の生命力を使い切っていく事で"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：その恩恵は受けられます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：アイン君"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：今度こそ最後です。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：アイン君がボクを殺せないようであれば"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ボクがアイン君を殺してあげましょう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っく・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.ENEMY_LAST_SIN_VERZE_ARTIE); eventList.Add(ActionEvent.EncountBoss);
+        }
+        public static void Message16071_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("アイン：ッグ・・・グハァ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：とどめです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ッハアアアァァァァ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　＜＜＜　ッザシュ！　＞＞＞　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグ　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　意識が　）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　破壊された　）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　呼吸の方法を必死で探ったが　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　その意識すら消えていく　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　ラナ・・・すまない・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　・・・　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(" ～　THE　END　～　（超越者ヴェルゼとの死闘）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE2.SeekerEvent1102_fail = true;
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonBadEnd);
+        }
         #endregion
         #region "ヴェルゼ戦闘終了後"
-        public static void Message16072(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16072(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE2.SeekerEvent1102 = true;
+
+            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
+
+            messageList.Add("　　　（　ハッキリと狙ったわけじゃなかった　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　だが戦闘中の無意識的な動作により　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　俺の剣は　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　ヴェルゼの心臓部分にキッチリと　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　突き刺す形となった　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ッ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しまった！！　ヴェ、ヴェルゼ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ぃ・・・　い、良いんですよ・・・これで"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：こ・・・これで・・・ラナさんは・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：大丈夫・・・・だと・・・思います・・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：な、なんだって！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ボクが死ねば・・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：し・・・神剣・・・フェルトゥーシュ・・・は・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：主と・・・なる・・・対象を・・・変えます・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：その間・・・に・・・ヒーリング・・・スペルを・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ヴェルゼもういい、しゃべるな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：し・・・死なないでくれ・・・頼む・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：・・・ボ・・・ボクが死ぬのを・・・トリガーで・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：ヒーリング・・が・・発動・・・されます・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：・・・　・・・　安心　・・・　してくださ　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ヴェ・・・ヴェルゼ！！死ぬな！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：・・・"); eventList.Add(ActionEvent.None);
+
+            //this.BackColor = Color.White;
+            //this.backgroundData = null;
+            //this.Invalidate(); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　その時　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　やさしい風が肌に振れた感じがした　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　ヴェルゼが最後に放ったヒーリングスペルの波動だったのかもしれないが　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　それはヴェルゼの魂そのものだったと俺はその瞬間、感じ取った　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・ヴェルゼはもう・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・動かない・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ヴェルゼ！・・・おい、ヴェルゼ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　ッ　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッ、ッゴホ、ッゴホ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.MoveTop);
+
+            messageList.Add("アイン：ラ、ラナ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ウッ・・・あ・・・わたし・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：喋るな！いいから！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：イ・・・ッツツ・・・体中が何か感覚が・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いいから、動くな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ちゃんと担いでってやるから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラ、ラナ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　スゥ・・・　スゥ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・息はある"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：気絶してしまったみたいだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：大丈夫そうだ、良かった・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：向こう側に・・・何か光が見える。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あそこへ行けば、おそらく"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナは俺が背中に担いで行けばいい・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ちゃんと戻って、介抱してやる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：もう少しの辛抱だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ヴェルゼ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：死んでしまったのか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("37"); eventList.Add(ActionEvent.AutoMove);
+
+            GroundOne.WE2.SeekerEvent1103 = true;
+        }
+        public static void Message16073(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.TurnToWhite);
+
+            messageList.Add("　　　（　光の中に俺とラナは入り込んでいった　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　その空間がどうなっていたのか、俺には把握できなかった　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　光に包まれた後　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　見えるのは真っ白な世界　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　上下左右の空間的な方向感覚は遮断され　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　視点そのものが奪われた感触がした　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　やがて、思考そのものも消え失せていく　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　考える事ができない。そんな感じだ。　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　自分の存在、ラナの存在が消えていく中で　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　俺はハッキリとそれを認識した　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　支配竜　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　まっすぐにこちらを見据えている　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　今の自分は口を動かす術がなく、対話は行えない　）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　だが・・・何かしらの波動が伝わってくる　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・その内容は・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　・・・　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（　・・・　）　"); eventList.Add(ActionEvent.None);
+
+            GroundOne.WE2.SeekerEvent1104 = true;
+            GroundOne.WE.AlreadyShownEvent = false;
+            Method.AutoSaveTruthWorldEnvironment();
+            Method.AutoSaveRealWorld();
+
+            messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+        }
         #endregion
         #region "エンディングへ"
-        public static void Message16073(ref List<string> messageList, ref List<ActionEvent> eventList) { }
+        public static void Message16074(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add(""); eventList.Add(ActionEvent.GotoHomeTownForce);
+        }
         #endregion
         #endregion
         #endregion

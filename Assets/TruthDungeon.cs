@@ -1763,10 +1763,17 @@ namespace DungeonPlayer
                     MessagePack.Message16045_Fail(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
-                         GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                    MessagePack.Message16070_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                    MessagePack.Message16071_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
                 }
 
                 // DUELモードは現実世界でDUEL戦闘となった時に再戦を判断させたいため、一旦ここでfalse返しとする。
@@ -1847,10 +1854,17 @@ namespace DungeonPlayer
                     MessagePack.Message16045_Fail(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
-                if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE ||
-                    GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
                 {
                     UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                    MessagePack.Message16070_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                    MessagePack.Message16071_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
                 }
                 GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
             }
@@ -1944,6 +1958,16 @@ namespace DungeonPlayer
                 else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
                 {
                     MessagePack.Message16045_Success(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
+                {
+                    MessagePack.Message16071(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    MessagePack.Message16072(ref nowMessage, ref nowEvent);
                     tapOK();
                 }
 
@@ -2920,6 +2944,62 @@ namespace DungeonPlayer
                     tapOK();
                 }
                 #endregion
+                #region "宝箱１"
+                else if (!GroundOne.WE2.SeekerEvent1002 && row == 25 && column == 27 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GroundOne.WE2.SeekerEvent1002 = GetTreasure(Database.COMMON_GREEN_CRYSTAL);
+                    UpdateFieldElement(this.Player.transform.position);
+                }
+                #endregion
+                #region "宝箱２"
+                else if (!GroundOne.WE2.SeekerEvent1003 && row == 24 && column == 27 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GroundOne.WE2.SeekerEvent1003 = GetTreasure(Database.RARE_MEEK_HIDENSYO);
+                    UpdateFieldElement(this.Player.transform.position);
+                }
+                #endregion
+                #region "宝箱３"
+                else if (!GroundOne.WE2.SeekerEvent1004 && row == 31 && column == 26 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GroundOne.WE2.SeekerEvent1004 = GetTreasure(Database.COMMON_PLATINUM_RING_1);
+                    UpdateFieldElement(this.Player.transform.position);
+                }
+                #endregion
+                #region "宝箱４"
+                else if (!GroundOne.WE2.SeekerEvent1005 && row == 30 && column == 43 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GroundOne.WE2.SeekerEvent1005 = GetTreasure(Database.POOR_MIGAWARI_DOOL);
+                    UpdateFieldElement(this.Player.transform.position);
+                }
+                #endregion
+                #region "宝箱５"
+                else if (!GroundOne.WE2.SeekerEvent1006 && row == 32 && column == 27 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GroundOne.WE2.SeekerEvent1006 = GetTreasure(Database.COMMON_RED_CRYSTAL);
+                    UpdateFieldElement(this.Player.transform.position);
+                }
+                #endregion
+                #region "宝箱６"
+                else if (!GroundOne.WE2.SeekerEvent1007 && row == 28 && column == 44 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GroundOne.WE2.SeekerEvent1007 = GetTreasure(Database.RARE_SHINING_AETHER);
+                    UpdateFieldElement(this.Player.transform.position);
+                }
+                #endregion
+                #region "宝箱７"
+                else if (!GroundOne.WE2.SeekerEvent1008 && row == 27 && column == 31 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GroundOne.WE2.SeekerEvent1008 = GetTreasure(Database.EPIC_OVER_SHIFTING);
+                    UpdateFieldElement(this.Player.transform.position);
+                }
+                #endregion
+                #region "宝箱８"
+                else if (!GroundOne.WE2.SeekerEvent1009 && row == 28 && column == 38 && GroundOne.WE2.RealDungeonArea == 4)
+                {
+                    GroundOne.WE2.SeekerEvent1009 = GetTreasure(Database.EPIC_GOLD_POTION);
+                    UpdateFieldElement(this.Player.transform.position);
+                }
+                #endregion
                 #region "鏡１"
                 else if (row == 28 && column == 23 && GroundOne.WE2.RealDungeonArea == 4)
                 {
@@ -3104,28 +3184,42 @@ namespace DungeonPlayer
                         UpdateUnknownTile();
                     }
 
-                    MessagePack.Message16070(ref nowMessage, ref nowEvent);
-                    //tapOK();
-                    //}
-                #endregion
+                    #region "ヴェルゼ最終戦１"
+                    if (!GroundOne.WE2.SeekerEvent1101)
+                    {
+                        MessagePack.Message16070(ref nowMessage, ref nowEvent);
+                        tapOK();
+                    }
+                    #endregion
                     #region "ヴェルゼ最終戦２【原罪】"
-                    if (!GroundOne.WE2.SeekerEvent1102)
+                    else if (!GroundOne.WE2.SeekerEvent1102)
                     {
                         MessagePack.Message16071(ref nowMessage, ref nowEvent);
+                        tapOK();
                     }
                     #endregion
                     #region "ヴェルゼ戦闘終了後"
-                    if (!GroundOne.WE2.SeekerEvent1103)
+                    else if (!GroundOne.WE2.SeekerEvent1103)
                     {
                         MessagePack.Message16072(ref nowMessage, ref nowEvent);
+                        tapOK();
                     }
                 }
-                    #endregion
+                #endregion
+                #endregion
                 #region "エンディングへ"
                 else if (row == 0 && column == 30 && GroundOne.WE2.RealDungeonArea == 5)
                 {
-                    MessagePack.Message16073(ref nowMessage, ref nowEvent);
-                    tapOK();
+                    if (!GroundOne.WE2.SeekerEvent1104)
+                    {
+                        MessagePack.Message16073(ref nowMessage, ref nowEvent);
+                        tapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message16074(ref nowMessage, ref nowEvent);
+                        tapOK();
+                    }
                 }
                 #endregion
             }
@@ -12930,7 +13024,7 @@ namespace DungeonPlayer
         private void JumpByMirror_Hell13() { JumpToLocation(28, -25, true); UpdateUnknownTile(); }
         private void JumpByMirror_Hell14() { JumpToLocation(38, -25, true); UpdateUnknownTile(); }
         private void JumpByMirror_Hell15() { JumpToLocation(33, -27, true); UpdateUnknownTile(); }
-        private void JumpByMirror_Hell16() { JumpToLocation(49, 19, true); UpdateUnknownTile(); }
+        private void JumpByMirror_Hell16() { JumpToLocation(49, -19, true); UpdateUnknownTile(); }
         private void JumpByMirror_Hell16Back() { JumpToLocation(33, -26, true); UpdateUnknownTile(); }
         private void JumpByMirror_HellFail() { JumpToLocation(27, -28, true); UpdateUnknownTile(); }
 
@@ -18795,6 +18889,17 @@ namespace DungeonPlayer
                         MirrorTruthWay(4);
                         MirrorLastWay();
                     }
+                    else if (number == 37)
+                    {
+                        this.nowAutoMoveNumber.Add(300);
+                        this.nowAutoMoveNumber.Add(300);
+                        this.nowAutoMoveNumber.Add(300);
+                        this.nowAutoMoveNumber.Add(300);
+                        this.nowAutoMoveNumber.Add(300);
+                        this.nowAutoMoveNumber.Add(300);
+                        this.nowAutoMoveNumber.Add(300);
+                        this.nowAutoMoveNumber.Add(300);
+                    }
                     #endregion
 
                     this.nowAutoMove = true;
@@ -18879,9 +18984,17 @@ namespace DungeonPlayer
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo4, 53, 59, 18, 20);
                 }
+                else if (currentEvent == MessagePack.ActionEvent.DungeonGotoDownStairFiveTwo)
+                {
+                    GotoDownStairFiveTwo();
+                }
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileAreaTruthFinal)
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 25, 35, 3, 9);
+                }
+                else if (currentEvent == MessagePack.ActionEvent.Ending)
+                {
+                    // todo
                 }
 
                 this.nowReading++;
