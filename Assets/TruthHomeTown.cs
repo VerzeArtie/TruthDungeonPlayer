@@ -23,6 +23,7 @@ namespace DungeonPlayer
         bool waitMessage = false;
 
         // GUI
+        public Canvas parent;
         public Button btnOK;
         public GameObject systemMessagePanel;
         public Text systemMessage;
@@ -70,6 +71,7 @@ namespace DungeonPlayer
         public Text mainMessage;
         public Image panelMessage;
         public Image backgroundData;
+        public GameObject panelEnding;
 
 	    public static int serverPort = 8001;
 	    private bool firstAction = false;
@@ -88,6 +90,7 @@ namespace DungeonPlayer
         bool nowTalkingLanaAmiria = false;
 
         bool nowAnimationEnding = false;
+        bool nowAnimationEnding_First = false;
 
 	    // Use this for initialization
         public override void Start()
@@ -158,13 +161,145 @@ namespace DungeonPlayer
 		    }
 	    }
 
+        List<Text> endingMessage = new List<Text>();
+        List<Text> endingMessage2 = new List<Text>();
+        List<Text> endingMessage3 = new List<Text>();
+        private void ConstructEndingMessage(List<Text> messageList, Vector2 sizeDelta, TextAnchor txtAnchor, string text)
+        {
+            GameObject obj = new GameObject();
+            Text element = obj.AddComponent<Text>();
+            element.fontStyle = FontStyle.Normal;
+            Font ArialFont = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
+
+            element.font = ArialFont;
+            element.transform.SetParent(parent.transform);
+            element.rectTransform.localScale = new Vector3(1, 1, 1);
+            element.rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
+            element.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+            element.rectTransform.sizeDelta = sizeDelta;
+            element.color = Color.black;
+            element.text = text;
+            element.alignment = txtAnchor;
+            messageList.Add(element);
+        }
+
+        public void debug_click()
+        {
+
+        }
+
 	    // Update is called once per frame
 	    public override void Update () {
             base.Update();
 
             if (this.nowAnimationEnding)
             {
-                // after <== Message20601_2
+                if (this.panelEnding.GetComponent<Image>().color.a < 1.0f)
+                {
+                    Color current = this.panelEnding.GetComponent<Image>().color;
+                    this.panelEnding.GetComponent<Image>().color = new Color(current.r, current.g, current.g, current.a + 0.125f);
+                    System.Threading.Thread.Sleep(1000);
+                    return;
+                }
+
+                if (!this.nowAnimationEnding_First)
+                {
+                    this.nowAnimationEnding_First = true;
+                    GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin);
+
+                    for (int ii = this.endingMessage.Count - 1; ii >= 0; ii--)
+                    {
+                        this.endingMessage[ii].transform.localPosition = new Vector3(-Screen.width / 4, -ii * 40 - Screen.height / 2 - 50, 0);
+                    }
+                    for (int ii = this.endingMessage2.Count - 1; ii >= 0; ii--)
+                    {
+                        this.endingMessage2[ii].transform.localPosition = new Vector3(Screen.width / 4, -ii * 140 - Screen.height / 2 - 50, 0);
+                    }
+                    for (int ii = this.endingMessage3.Count - 1; ii >= 0; ii--)
+                    {
+                        this.endingMessage3[ii].color = new Color(0, 0, 0, 0);
+                        this.endingMessage3[ii].transform.localPosition = new Vector3(-Screen.width / 4, 0, 0);
+                    }
+                    return;
+                }
+
+                float move = 0.1f;
+                float lastPosition = this.endingMessage[this.endingMessage.Count - 1].transform.position.y;
+                if (lastPosition < -Screen.height / 4)
+                {
+                    move = 0.1f;
+                }
+                else if (-Screen.height / 4 <= lastPosition && lastPosition < 0)
+                {
+                    move = 0.3f;
+                }
+                else if (0 <= lastPosition && lastPosition <= Screen.height / 4)
+                {
+                    move = 0.5f;
+                }
+                else if (Screen.height / 4 <= lastPosition && lastPosition < Screen.height)
+                {
+                    move = 1.0f;
+                }
+                else
+                {
+                    move = 0;
+                }
+
+                for (int ii = 0; ii < this.endingMessage.Count; ii++)
+                {
+                    this.endingMessage[ii].transform.position = new Vector3(this.endingMessage[ii].transform.position.x, this.endingMessage[ii].transform.position.y + move, this.endingMessage[ii].transform.position.z);
+                }
+                for (int ii = 0; ii < this.endingMessage2.Count; ii++)
+                {
+                    this.endingMessage2[ii].transform.position = new Vector3(this.endingMessage2[ii].transform.position.x, this.endingMessage2[ii].transform.position.y + move, this.endingMessage2[ii].transform.position.z);
+                }
+
+                if (move == 0)
+                {
+                    float moveX = 0.1f;
+                    float alpha = this.endingMessage3[0].color.a;
+                    if (this.endingMessage3[0].transform.position.x < 400)
+                    {
+                        float lastPositionX = this.endingMessage3[this.endingMessage3.Count - 1].transform.position.x;
+                        if (this.endingMessage3[0].color.a < 1.0f)
+                        {
+                            moveX = 0.2f;
+                            this.endingMessage3[0].color = new Color(0, 0, 0, this.endingMessage3[0].color.a + 0.005f);
+                        }
+                    }
+                    else
+                    {
+                        if (alpha > 0.5f)
+                        {
+                            moveX = 0.3f;
+                        }
+                        else if (alpha > 0.25f)
+                        {
+                            moveX = 0.5f;
+                        }
+                        else
+                        {
+                            moveX = 0.7f;
+                        }
+                        this.endingMessage3[0].color = new Color(0, 0, 0, this.endingMessage3[0].color.a - 0.0025f);
+
+                        if (alpha <= 0.0f)
+                        {
+                            this.nowAnimationEnding = true;
+                            GroundOne.WE2.SeekerEnd = true;
+                            GroundOne.WE.TruthCompleteArea5 = true;
+                            GroundOne.WE.TruthCompleteArea5Day = GroundOne.WE.GameDay;
+                            Method.AutoSaveRealWorld();
+                            Method.AutoSaveTruthWorldEnvironment();
+                            Method.ExecSave(null, Database.WorldSaveNum, true);
+                            SceneDimension.JumpToTitle();
+                        }
+                    }
+                    this.endingMessage3[0].transform.position = new Vector3(this.endingMessage3[0].transform.position.x + moveX, this.endingMessage3[0].transform.position.y, this.endingMessage3[0].transform.position.z);
+
+                }
+
                 return;
             }
 
@@ -1278,7 +1413,8 @@ namespace DungeonPlayer
                 }
                 else if (current == MessagePack.ActionEvent.Ending)
                 {
-                    this.nowAnimationEnding = true;
+                    StartEnding();
+                    return;
                 }
 
                 this.nowReading++;
@@ -2638,11 +2774,6 @@ namespace DungeonPlayer
             }
         }
 
-        public void tapDebug1()
-        {
-            BattleStart(Database.DUEL_ANNA_HAMILTON);
-        }
-
         public void tapExit()
         {
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
@@ -3259,10 +3390,6 @@ namespace DungeonPlayer
                 this.backgroundData.gameObject.SetActive(true);
                 if (darkValue > 0)
                 {
-                    // after
-                    //System.Drawing.Imaging.ImageAttributes imageAttributes = new System.Drawing.Imaging.ImageAttributes();
-                    //Image newImg = AdjustBrightness(current, darkValue);
-                    //this.backgroundData = newImg;
                 }
                 else
                 {
@@ -3271,40 +3398,41 @@ namespace DungeonPlayer
                 }
             }
         }
-        public static Image AdjustBrightness(Image img, float b)
+
+        private void StartEnding()
         {
-            // after
-            Image newImg = null;
-            ////明るさを変更した画像の描画先となるImageオブジェクトを作成
-            //Bitmap newImg = new Bitmap(img.Width, img.Height);
-            ////newImgのGraphicsオブジェクトを取得
-            //Graphics g = Graphics.FromImage(newImg);
+            GroundOne.WE2.SeekerEndingRoll = true;
 
-            //float[][] colorMatrixElements = { 
-            //    new float[] {1,    0,    0,    0, 0},
-            //    new float[] {0,    1,    0,    0, 0},
-            //    new float[] {0,    0,    1,    0, 0},
-            //    new float[] {0,    0,    0,    1, 0},
-            //    new float[] {b,    b,    b,    0, 1}};
+            nowMessage.Clear();
+            nowEvent.Clear();
+            MessagePack.Message20602(ref nowMessage, ref nowEvent);
+            for (int ii = 0; ii < nowMessage.Count; ii++)
+            {
+                ConstructEndingMessage(this.endingMessage, new Vector2(Screen.width / 2, 60), TextAnchor.MiddleLeft, nowMessage[ii]);
+            }
 
-            ////ColorMatrixオブジェクトの作成
-            //System.Drawing.Imaging.ColorMatrix cm = new System.Drawing.Imaging.ColorMatrix(colorMatrixElements);
+            nowMessage.Clear();
+            nowEvent.Clear();
+            MessagePack.Message20602_2(ref nowMessage, ref nowEvent);
+            for (int ii = 0; ii < nowMessage.Count; ii++)
+            {
+                ConstructEndingMessage(this.endingMessage2, new Vector2(Screen.width / 2, 60), TextAnchor.MiddleCenter, nowMessage[ii]);
+            }
 
-            ////ImageAttributesオブジェクトの作成
-            //System.Drawing.Imaging.ImageAttributes ia =
-            //    new System.Drawing.Imaging.ImageAttributes();
-            ////ColorMatrixを設定する
-            //ia.SetColorMatrix(cm);
+            nowMessage.Clear();
+            nowEvent.Clear();
+            MessagePack.Message20602_3(ref nowMessage, ref nowEvent);
+            for (int ii = 0; ii < nowMessage.Count; ii++)
+            {
+                ConstructEndingMessage(this.endingMessage3, new Vector2(Screen.width / 2, 60), TextAnchor.MiddleLeft, nowMessage[ii]);
+            }
 
-            ////ImageAttributesを使用して描画
-            //g.DrawImage(img,
-            //    new Rectangle(0, 0, img.Width, img.Height),
-            //    0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
+            nowMessage.Clear();
+            nowEvent.Clear();
 
-            ////リソースを解放する
-            //g.Dispose();
-
-            return newImg;
+            this.panelMessage.gameObject.SetActive(false);
+            this.panelEnding.SetActive(true);
+            this.nowAnimationEnding = true;
         }
     }
 }

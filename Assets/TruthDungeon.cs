@@ -939,6 +939,7 @@ namespace DungeonPlayer
                 ShownEvent();
                 return;
             }
+
             if (this.nowAgilityRoomCounter > 0)
             {
                 //Debug.Log("agilitycounter: " + nowAgilityRoomCounter);
@@ -949,6 +950,7 @@ namespace DungeonPlayer
                 }
             }
 
+            #region "AutoMove"
             if (this.nowAutoMove)
             {
                 if (this.nowAutoMoveNumber.Count > 0)
@@ -1289,7 +1291,7 @@ namespace DungeonPlayer
                 }
                 return;
             }
-
+            #endregion
 
             if (this.nowEncountEnemy)
             {
@@ -4065,7 +4067,7 @@ namespace DungeonPlayer
         private int stepCounter = 0; // 敵エンカウント率調整の値
         private void EncountEnemy()
         {
-            return; // debug 敵を出さない状態
+            //return; // debug 敵を出さない状態
 
             if (GroundOne.WE2.SeekerEvent507)
             {
@@ -18991,10 +18993,6 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.UpdateUnknownTileAreaTruthFinal)
                 {
                     UpdateUnknownTileArea(GroundOne.Truth_KnownTileInfo5, 25, 35, 3, 9);
-                }
-                else if (currentEvent == MessagePack.ActionEvent.Ending)
-                {
-                    // todo
                 }
 
                 this.nowReading++;

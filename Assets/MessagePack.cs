@@ -29636,194 +29636,135 @@ namespace DungeonPlayer
             messageList.Add(""); eventList.Add(ActionEvent.Ending);
         }
 
-        public static void Message20601_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        public static void Message20602(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // after
-            //mainMessage.Visible = false;
+            messageList.Add("　ラナ：あれ・・・ヴェルゼさんじゃない？"); eventList.Add(ActionEvent.None);
 
-            //for (int ii = 0; ii < 10; ii++)
-            //{
-            //    ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_FAZIL_CASTLE, (ii + 1) * 0.1f); eventList.Add(ActionEvent.None);
-            //    System.Threading.Thread.Sleep(400); eventList.Add(ActionEvent.None);
-            //    Application.DoEvents(); eventList.Add(ActionEvent.None);
-            //}
+            messageList.Add("　アイン：ああ・・・"); eventList.Add(ActionEvent.None);
 
-            //labelEnding.Visible = false;
-            //labelEnding2.Visible = false;
-            //this.BackColor = Color.White;
-            //UpdateEndingMessage2(""); eventList.Add(ActionEvent.None);
-            //GroundOne.WE2.SeekerEndingRoll = true;
+            messageList.Add("　アイン：なぜ、こんな所に・・・"); eventList.Add(ActionEvent.None);
 
-            //GroundOne.PlayDungeonMusic(Database.BGM09, Database.BGM09LoopBegin); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("Dungeon Player\r\n ～ The Liberty Seeker ～"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　ダンジョンから出る最後　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("ストーリー　　【　湯淺　與範　】\r\n　　　　　　　【　辻谷　友紀　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　あの真っ白な空間の中で、支配竜が最後、俺に告げたこと　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("音楽　　【　湯淺　晋太郎　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　唯一の例外として　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("バトルシステム　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　ヴェルゼ・アーティを現世に戻してくれると伝えてくれた　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("マップ制作　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　ラナが助かったと分かった直後　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("モンスター制作　　【　辻谷　友紀　】\r\n　　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　俺の勝手なわがままだったかもしれないが　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("魔法／スキル　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　俺はあの真っ白な空間に引き込まれる中で必至に願った　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("サウンドエフェクト　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　それを支配竜は例外的に聞き入れてくれたようだ　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("アイテム制作　　【　石高　裕介　】\r\n　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　ただし、絶対の条件があった　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("グラフィック　　　【　辻谷　友紀　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　生命としての活動を復活させるだけでしか原理的には行えない　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("プログラマー　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　復活したとしても、本人の今までの記憶は一切保持されない　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("スペシャルサンクス　　【　KANAKO　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　記憶は完全に消去される　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage2("プロデューサー　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　最低限の生命活動を行うコア部分のみが魂として吹き込まれる）"); eventList.Add(ActionEvent.None);
 
+            messageList.Add("　アイン：（　この事象は支配竜を通じて俺にだけ伝えられている　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ラナ：あれ・・・ヴェルゼさんじゃない？"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：ああ・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：師匠やっぱり・・・ヴェルゼは記憶喪失なのか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：なぜ、こんな所に・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：通常の会話でも大体分かるんだが"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　ダンジョンから出る最後　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：エルミの事やファラ、カールの事、もちろん俺も含めて"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　あの真っ白な空間の中で、支配竜が最後、俺に告げたこと　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：アーティの野郎は、完全に覚えてねぇ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　唯一の例外として　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：曖昧な雑談の中では読み切れない面もあるが"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　ヴェルゼ・アーティを現世に戻してくれると伝えてくれた　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：あのDUEL闘技場で、俺が負けた時の試合"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　ラナが助かったと分かった直後　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：あの時の戦闘の動きで、きっちり実感させてもらった。"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　俺の勝手なわがままだったかもしれないが　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：今のアーティは完全に記憶喪失だ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　俺はあの真っ白な空間に引き込まれる中で必至に願った　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ラナ：エレマさんとの記憶も・・・全部残ってないのよね・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　それを支配竜は例外的に聞き入れてくれたようだ　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：だろうな。"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　ただし、絶対の条件があった　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ラナ：そんな・・・じゃあ、どうして・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　生命としての活動を復活させるだけでしか原理的には行えない　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　復活したとしても、本人の今までの記憶は一切保持されない　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　記憶が一切消去された状態で　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　記憶は完全に消去される　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　ヴェルゼは・・・無言で佇んでいる・・・　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　最低限の生命活動を行うコア部分のみが魂として吹き込まれる）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　最愛の人が眠る墓所の前で・・・　）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：（　この事象は支配竜を通じて俺にだけ伝えられている　）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：（　長い事・・・ずっと・・・）"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ラナ：ねえ、見てあれ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　アイン：師匠やっぱり・・・ヴェルゼは記憶喪失なのか？"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：ん？"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ラナ：ヴェルゼさんの足元、花が咲いてるわ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：通常の会話でも大体分かるんだが"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：・・・ホントだ・・・何ていう花なんだ？"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：エルミの事やファラ、カールの事、もちろん俺も含めて"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ラナ：アルヴィアナの花"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：アーティの野郎は、完全に覚えてねぇ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：アルヴィアナの・・・花？"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：曖昧な雑談の中では読み切れない面もあるが"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ラナ：この時期には、滅多に咲かない花よ。"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：あのDUEL闘技場で、俺が負けた時の試合"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：そうなんだ・・・"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：あの時の戦闘の動きで、きっちり実感させてもらった。"); eventList.Add(ActionEvent.None);
+            messageList.Add("　アイン：花言葉とか、あったりするのか？"); eventList.Add(ActionEvent.None);
 
-            //UpdateEndingMessage("　ランディス：今のアーティは完全に記憶喪失だ。"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　ラナ：エレマさんとの記憶も・・・全部残ってないのよね・・・"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　ランディス：だろうな。"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　ラナ：そんな・・・じゃあ、どうして・・・"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：（　記憶が一切消去された状態で　）"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：（　ヴェルゼは・・・無言で佇んでいる・・・　）"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：（　最愛の人が眠る墓所の前で・・・　）"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：（　長い事・・・ずっと・・・）"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　ラナ：ねえ、見てあれ。"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：ん？"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　ラナ：ヴェルゼさんの足元、花が咲いてるわ。"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：・・・ホントだ・・・何ていう花なんだ？"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　ラナ：アルヴィアナの花"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：アルヴィアナの・・・花？"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　ラナ：この時期には、滅多に咲かない花よ。"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：そうなんだ・・・"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　アイン：花言葉とか、あったりするのか？"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage("　ラナ：うん、花言葉はね・・・"); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage(""); eventList.Add(ActionEvent.None);
-
-            //UpdateEndingMessage(""); eventList.Add(ActionEvent.None);
-
-            //for (int ii = 0; ii < 3000; ii++)
-            //{
-            //    point = new PointF(point.X, point.Y - 1); eventList.Add(ActionEvent.None);
-            //    this.Invalidate(); eventList.Add(ActionEvent.None);
-
-            //    int sleep = 70;
-            //    if (ii > 2000) { sleep = 50; }
-            //    if (ii > 2500) { sleep = 30; }
-            //    if (ii > 2700) { sleep = 15; }
-            //    System.Threading.Thread.Sleep(sleep); eventList.Add(ActionEvent.None);
-            //    Application.DoEvents(); eventList.Add(ActionEvent.None);
-            //}
-
-            //this.endingText3.Add("＜　奇跡の再会　＞　って言うのよ。"); eventList.Add(ActionEvent.None);
-            //for (int ii = 0; ii < 800; ii++)
-            //{
-            //    this.Invalidate(); eventList.Add(ActionEvent.None);
-            //    System.Threading.Thread.Sleep(20); eventList.Add(ActionEvent.None);
-            //    Application.DoEvents(); eventList.Add(ActionEvent.None);
-            //}
-
-            messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
-            //GroundOne.WE2.SeekerEnd = true;
-            //this.we.TruthCompleteArea5 = true;
-            //this.we.TruthCompleteArea5Day = this.we.GameDay;
-            //using (SaveLoad sl = new SaveLoad())
-            //{
-            //    sl.MC = this.MC;
-            //    sl.SC = this.SC;
-            //    sl.TC = this.TC;
-            //    sl.WE = this.WE;
-            //    sl.Truth_KnownTileInfo = this.Truth_KnownTileInfo; // 後編追加
-            //    sl.Truth_KnownTileInfo2 = this.Truth_KnownTileInfo2; // 後編追加
-            //    sl.Truth_KnownTileInfo3 = this.Truth_KnownTileInfo3; // 後編追加
-            //    sl.Truth_KnownTileInfo4 = this.Truth_KnownTileInfo4; // 後編追加
-            //    sl.Truth_KnownTileInfo5 = this.Truth_KnownTileInfo5; // 後編追加
-            //    sl.SaveMode = true;
-            //    sl.StartPosition = FormStartPosition.CenterParent;
-            //    sl.ShowDialog(); eventList.Add(ActionEvent.None);
-            //    sl.RealWorldSave(); eventList.Add(ActionEvent.None);
-            Method.ExecSave(null, Database.WorldSaveNum, true);
-            //}
-
-            //this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            messageList.Add("　ラナ：うん、花言葉はね・・・"); eventList.Add(ActionEvent.None);
         }
+
+        public static void Message20602_2(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("Dungeon Player\r\n ～ The Liberty Seeker ～"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ストーリー　　【　湯淺　與範　】\r\n　　　　　　　【　辻谷　友紀　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("音楽　　【　湯淺　晋太郎　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("バトルシステム　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("マップ制作　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("モンスター制作　　【　辻谷　友紀　】\r\n　　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("魔法／スキル　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("サウンドエフェクト　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイテム制作　　【　石高　裕介　】\r\n　　　　　　　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("グラフィック　　　【　辻谷　友紀　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("プログラマー　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("スペシャルサンクス　　【　KANAKO　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("プロデューサー　　【　湯淺　與範　】"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message20602_3(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("＜　奇跡の再会　＞　って言うのよ。"); eventList.Add(ActionEvent.None);
+        }
+
         // DUEL闘技場開催
         public static void Message29000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
