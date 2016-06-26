@@ -16704,84 +16704,84 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity1)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[0] = ii - 190; // todo 3Fのcase xxxを変更完了した後、このナンバーも変える必要がある。
+                    this.playerLoopNumber[0] = ii;
                     JumpByMirror_InfinityWay1();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity2)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[1] = ii - 195;
+                    this.playerLoopNumber[1] = ii;
                     JumpByMirror_InfinityWay2();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity3)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[2] = ii - 200;
+                    this.playerLoopNumber[2] = ii;
                     JumpByMirror_InfinityWay3();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity4)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[3] = ii - 205;
+                    this.playerLoopNumber[3] = ii;
                     JumpByMirror_InfinityWay4();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity5)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[4] = ii - 210;
+                    this.playerLoopNumber[4] = ii;
                     JumpByMirror_InfinityWay5();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity6)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[5] = ii - 215;
+                    this.playerLoopNumber[5] = ii;
                     JumpByMirror_InfinityWay6();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity7)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[6] = ii - 220;
+                    this.playerLoopNumber[6] = ii;
                     JumpByMirror_InfinityWay7();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity8)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[7] = ii - 225;
+                    this.playerLoopNumber[7] = ii;
                     JumpByMirror_InfinityWay8();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity9)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[8] = ii - 230;
+                    this.playerLoopNumber[8] = ii;
                     JumpByMirror_InfinityWay9();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity10)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[9] = ii - 235;
+                    this.playerLoopNumber[9] = ii;
                     JumpByMirror_InfinityWay10();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinity11)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[10] = ii - 240;
+                    this.playerLoopNumber[10] = ii;
                     JumpByMirror_InfinityWay11();
                     ForceSkipTapOK = true;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinityTurnBack)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[11] = ii - 245;
+                    this.playerLoopNumber[11] = ii;
                     JumpByMirror_InfinityWayTurnBack();
                     ForceSkipTapOK = true;
                 }
@@ -16792,7 +16792,7 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonJumpToLocationInfinityLast)
                 {
                     int ii = Convert.ToInt32(this.nowMessage[this.nowReading]);
-                    this.playerLoopNumber[11] = ii - 245;
+                    this.playerLoopNumber[11] = ii;
                     JumpByMirror_InfinityWayLast();
                     ForceSkipTapOK = true;
                 }

@@ -13240,57 +13240,57 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonSetupOriginFix);
             }
 
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity1);
+            messageList.Add((ii-190).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity1);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13125(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity2);
+            messageList.Add((ii-195).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity2);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13126(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity3);
+            messageList.Add((ii-200).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity3);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13127(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity4);
+            messageList.Add((ii-205).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity4);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13128(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity5);
+            messageList.Add((ii-210).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity5);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13129(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity6);
+            messageList.Add((ii-215).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity6);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13130(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity7);
+            messageList.Add((ii-220).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity7);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13131(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity8);
+            messageList.Add((ii-225).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity8);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13132(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity9);
+            messageList.Add((ii-230).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity9);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13133(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity10);
+            messageList.Add((ii-235).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity10);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13134(ref List<string> messageList, ref List<ActionEvent> eventList, int ii)
         {
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity11);
+            messageList.Add((ii-240).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinity11);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
         }
         public static void Message13135(ref List<string> messageList, ref List<ActionEvent> eventList, int ii, bool checkInfiniteLoopResult)
@@ -13300,7 +13300,7 @@ namespace DungeonPlayer
             {
                 if (!GroundOne.WE.dungeonEvent328)
                 {
-                    messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+                    messageList.Add((ii-245).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
                     messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("1"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
@@ -13357,7 +13357,7 @@ namespace DungeonPlayer
                 return;
             }
 
-            messageList.Add(ii.ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityTurnBack);
+            messageList.Add((ii-245).ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityTurnBack);
             messageList.Add("　　　『ッバシュ！！！』　　"); eventList.Add(ActionEvent.None);
 
             if (!GroundOne.WE.dungeonEvent328)
@@ -14327,25 +14327,128 @@ namespace DungeonPlayer
         #region "４階への階段（２）"
         public static void Message13142(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
+            MessagePack.Message13122(ref messageList, ref eventList);
         }
         #endregion
         #region "無限回廊突破後の看板"
         public static void Message13143(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
+            messageList.Add("2"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
         }
         #endregion
         #region "真実解のイベント４【記憶の回想】"
         public static void Message13144(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
+            if (GroundOne.WE2.TruthRecollection3_4 == false)
+            {
+                GroundOne.WE2.TruthRecollection3_4 = true;
+
+                GroundOne.StopDungeonMusic();
+
+                Story_TruthRecollection3_4(ref messageList, ref eventList);
+
+                messageList.Add("アイン：ふぅ・・・っと"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：また例の現象なの？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：う～ん、まあな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：一体どんな内容だったの？今度は。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・いや、まあ・・・そのなんだ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：なんでそこで言いにくそうなのよ、スパスパっと言っちゃってよ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：まあ何ていうんだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ファラ様の昔話がつらつらと、雑談だって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：う～ん、どうかしら。なんだか怪しいわね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いやいや、本当に何もねえって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：最後にダンジョンでは願い事がどうのこうのって、それだけだって。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：うわ、何かあからさまに重要そうな内容じゃないの。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君、その先は思い出せないのですか？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、思い出せねえ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：前から何度も言ってますが"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ん？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　【【【　アイン、この時　】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：汗がびっしょりです。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　【【【　刹那、底知れぬ恐怖感　】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ！あぁ！！すまねぇ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("　　　【【【　不意に後ずさろうとし、そして、とっさにその行為の制止を行った　】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：！！っと！！ぉぉ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・何やってんの？？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いいやいやいや、立ちくらみだ、すまねぇ！！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ボケに磨きがかかったのかしら・・・本当に大丈夫？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、大丈夫だ。すまねえな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：アイン君、無限解もおそらく解けている事でしょうから、早く先へ行きましょう。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ、了解了解！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add(""); eventList.Add(ActionEvent.PlayMusic14);
+            }
         }
         #endregion
         #region "無限回廊突破後の看板にて"
         public static void Message13145(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // todo
+            messageList.Add(Database.OriginNumber[11].ToString()); eventList.Add(ActionEvent.DungeonJumpToLocationInfinityLast);
+
+            messageList.Add("2"); eventList.Add(ActionEvent.DungeonMessageInfiniteLoopResult);
+
+            if (!GroundOne.WE.dungeonEvent332)
+            {
+                GroundOne.WE.dungeonEvent332 = true;
+                messageList.Add("アイン：・・・おおおおお！！！　"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：おっしゃ！！　抜けたんだ！！　おっしゃあああ！！！　"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：やったじゃないアイン、お手柄よ♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：看板から手繰り寄せてここまで来た以上、何かありそうですね、ここから先は。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いやあ、しかし・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：嬉しい事は嬉しいんだが・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ヴェルゼ：看板がありましたね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ああ"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：向かうは・・・【生】【死】・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("【【【　アインは、一瞬全細胞が硬直したような感触を受けた】】】"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（なんだ・・・この感触は・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（・・・考えてもしょうがねえか・・・ここは・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：・・・アイン？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：あ、ああ悪い悪い。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：っしゃ、行こうぜ。"); eventList.Add(ActionEvent.None);
+            }
         }
         #endregion
         #endregion
