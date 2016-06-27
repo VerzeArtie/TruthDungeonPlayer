@@ -113,6 +113,7 @@ namespace DungeonPlayer
         }
 
         GameObject Player = null;
+        Vector3 viewPoint = new Vector3(); // ダンジョンビュー位置
 
         // 敵の強さを区分けするためのタイルカラー情報
         int[] tileColor = new int[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
@@ -146,19 +147,32 @@ namespace DungeonPlayer
         bool keyRight = false;
         int MOVE_INTERVAL = 50;
         int interval = 0;
-        // Update is called once per frame
+
         bool nowEncountEnemy = false;
         bool execEncountEnemy = false;
         bool ignoreCreateShadow = false;
 
         bool firstAction = false;
 
+        private DungeonPlayer.MessagePack.ActionEvent currentEvent; // MessagePackのevent情報
+
+        private int stepCounter = 0; // 敵エンカウント率調整の値
+
+        // 各種イベント発生時の変数群
         int nowAgilityRoomCounter = 0;
 
         bool nowDecisionFloor1OpenDoor = false; // １階ボス部屋を開く際のフラグ
         int nowDecisionFloor2EightAnswer = 0; // ２階TruthDecision2を呼び出すためのフラグ
         int failCounter = 0; // ２階、技の部屋で失敗した時のフラグ
         bool detectKeyUp = false; // ２階、技の部屋Ｃでキーを離した事を示すフラグ
+
+        // ダンジョン２階の技の部屋、エリア２に関する記述
+        int ShadowTileNumber = -1;
+        int BeforeDirectionNumber = 0; // 1:左 2:上 3:下
+        // ダンジョン２階の技の部屋、エリア４に関する記述
+        int Area4_InnerTimerCount = 0;
+        int Area4_ShadowTileNum = -1;
+
         bool nowDecisionFloor2OpenDoor = false; // ２階ボスの後の扉を開く際のフラグ
         bool nowDecisionFloor3OpenDoor = false; // ３階ボス前の扉を開く際のフラグ
 
@@ -277,8 +291,7 @@ namespace DungeonPlayer
 
             GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
         }
-
-
+        
         private void ReadDungeonTileFromXmlFile(string xmlFileName)
         {
             #region "ダンジョンマップをXMLから読み込み"
@@ -3700,7 +3713,6 @@ namespace DungeonPlayer
             UpdateMainMessage("", true, true);
             return false;
         }
-        Vector3 viewPoint = new Vector3();
         private void UpdatePlayersKeyEvents(int direction)
         {
             mainMessage.text = "";
@@ -4064,7 +4076,6 @@ namespace DungeonPlayer
             return newUpdate;
         }
 
-        private int stepCounter = 0; // 敵エンカウント率調整の値
         private void EncountEnemy()
         {
             //return; // debug 敵を出さない状態
@@ -7998,13 +8009,7 @@ namespace DungeonPlayer
             }
             return false;
         }
-
-        private void MessageProgress(int ii)
-        {
-
-        }
-
-
+        
         private bool GetTreasure(string targetItemName)
         {
             return GetTreasure(targetItemName, false);
@@ -10862,7 +10867,7 @@ namespace DungeonPlayer
             return false;
         }
 
-        bool DetectOpenTreasure(Vector3 pos)
+        private bool DetectOpenTreasure(Vector3 pos)
         {
             if ((((GroundOne.WE.TruthTreasure11 && pos.y == -13 && pos.x == 34) ||
                     (GroundOne.WE.TruthTreasure12 && pos.y == -21 && pos.x == 53) ||
@@ -11049,13 +11054,6 @@ namespace DungeonPlayer
                 }
             }
         }
-
-        // ダンジョン２階の技の部屋、エリア２に関する記述
-        int ShadowTileNumber = -1;
-        int BeforeDirectionNumber = 0; // 1:左 2:上 3:下
-        // ダンジョン２階の技の部屋、エリア４に関する記述
-        int Area4_InnerTimerCount = 0;
-        int Area4_ShadowTileNum = -1;
 
         private void ReturnToNormal()
         {
@@ -11474,8 +11472,6 @@ namespace DungeonPlayer
                 }
             }
         }
-
-
         private void UpdateUnknownTileArea24()
         {
             for (int ii = 51; ii <= 53; ii++)
@@ -11542,7 +11538,6 @@ namespace DungeonPlayer
                 }
             }
         }
-
         private void UpdateUnknownTileArea2_10()
         {
             for (int ii = 29; ii <= 30; ii++)
@@ -12254,7 +12249,6 @@ namespace DungeonPlayer
             UpdateUnknownTileArea3_One(8, 40, true);
             UpdateUnknownTile_Rectangle(9, 39, 11, 41, true);
         }
-
         private void UpdateUnknownTileArea3_Area35()
         {
             UpdateUnknownTileArea3_One(11, 54, true);
@@ -15389,9 +15383,6 @@ namespace DungeonPlayer
                 labelVigilance.text = Database.TEXT_VIGILANCE_MODE;
             }
         }
-
-        private DungeonPlayer.MessagePack.ActionEvent currentEvent;
-
 
         public override void ExitYes()
         {
