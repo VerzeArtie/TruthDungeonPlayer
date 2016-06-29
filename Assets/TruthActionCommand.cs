@@ -3831,7 +3831,7 @@ namespace DungeonPlayer
             if (command == Database.BLOODY_VENGEANCE) { return "味方対象：【力】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
             if (command == Database.DAMNATION) { return "敵対象：ターンが進む度に、対象に《最大ライフ／心》の【闇】ダメージを与える。\r\n心が1以上：10 + 10*(心/100)\r\n心が100以上：20 + 20*(心/300)\r\n心が400以上：34 + 18*(心/600)\r\n心が1000以上：52 + 22*(心/2500)\r\n心が3500以上：74 + 26*(心/6500)\r\n"; }
 
-            if (command == Database.FIRE_BALL) { return "敵対象：対象に" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
+            if (command == Database.FIRE_BALL) { return "対象に" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
             if (command == Database.FLAME_AURA) { return "味方対象：直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
             if (command == Database.HEAT_BOOST) { return "味方対象：【技】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
             if (command == Database.FLAME_STRIKE) { return "敵対象：対象に" + PowerResult("知", 3.5, 750, 1000) + "の【火】ダメージを与える。"; }
@@ -3840,7 +3840,7 @@ namespace DungeonPlayer
             if (command == Database.LAVA_ANNIHILATION) { return "敵全体：" + PowerResult("知", 5.0, 7000, 8000) + "の【火】ダメージを与える。"; }
 
             if (command == Database.ICE_NEEDLE) { return "敵対象：対象に" + PowerResult("知", 2.8, 30, 35) + "の【水】ダメージを与える。"; }
-            if (command == Database.ABSORB_WATER) { return "味方対象：魔法防御力を" + PowerResult(1.3) + "上昇させる。"; }
+            if (command == Database.ABSORB_WATER) { return "味方対象：魔法防御力を" + PowerResult(1.5) + "上昇させる。"; }
             if (command == Database.CLEANSING) { return "味方対象：負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
             if (command == Database.FROZEN_LANCE) { return "敵対象：対象に" + PowerResult("知", 3.3, 750, 1000) + "の【水】ダメージを与える。"; }
             if (command == Database.MIRROR_IMAGE) { return "味方対象：ダメージ源を有する魔法攻撃が向けられた場合、それを反射する。ただし、WordOfPowerは反射できない。"; }

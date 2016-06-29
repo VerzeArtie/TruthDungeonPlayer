@@ -183,9 +183,15 @@ namespace DungeonPlayer
             messageList.Add(element);
         }
 
+        public void enemy_click(Text txtName)
+        {
+            GroundOne.enemyName1 = txtName.text;
+            SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, false, false, false, false);
+        }
         public void debug_click()
         {
-
+            GroundOne.enemyName1 = Database.ENEMY_HIYOWA_BEATLE;
+            SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, false, false, false, false);
         }
 
 	    // Update is called once per frame
@@ -1450,7 +1456,7 @@ namespace DungeonPlayer
             GroundOne.enemyName1 = playerName;
             GroundOne.enemyName2 = string.Empty;
             GroundOne.enemyName3 = string.Empty;
-            SceneDimension.CallTruthBattleEnemy(this, true, false, false, false);
+            SceneDimension.CallTruthBattleEnemy(Database.TruthHomeTown, true, false, false, false);
         }
 
         private void BlackOut()

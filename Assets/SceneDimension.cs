@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace DungeonPlayer
 {
@@ -31,6 +32,26 @@ namespace DungeonPlayer
             GroundOne.StopDungeonMusic();
             Application.LoadLevel(Database.Title);
             GroundOne.Parent.Clear();
+        }
+
+        public static void CallTruthBattleEnemy(string sceneName, bool duel, bool hiSpeed, bool final, bool lifecount)
+        {
+            GroundOne.DuelMode = duel;
+            GroundOne.HiSpeedAnimation = hiSpeed;
+            GroundOne.FinalBattle = final;
+            GroundOne.LifeCountBattle = lifecount;
+            GroundOne.BattleResult = GroundOne.battleResult.None;
+            GroundOne.SceneName = sceneName;
+            GroundOne.StopDungeonMusic();
+            System.Threading.Thread.Sleep(500);
+            SceneManager.LoadScene(Database.TruthBattleEnemy);
+            GroundOne.Parent.Clear();
+        }
+        public static void CallBackBattleEnemy()
+        {
+            string target = GroundOne.SceneName;
+            GroundOne.SceneName = string.Empty;
+            SceneManager.LoadScene(target);
         }
 
         public static void CallTruthSelectCharacter(MotherForm scene)
@@ -150,19 +171,6 @@ namespace DungeonPlayer
             GroundOne.TargetPlayer = targetPlayer;
             GroundOne.Parent.Add(scene);
             Application.LoadLevelAdditive(Database.TruthSelectEquipment);
-        }
-
-        public static void CallTruthBattleEnemy(MotherForm scene, bool duel, bool hiSpeed, bool final, bool lifecount)
-        {
-            GroundOne.DuelMode = duel;
-            GroundOne.HiSpeedAnimation = hiSpeed;
-            GroundOne.FinalBattle = final;
-            GroundOne.LifeCountBattle = lifecount;
-            GroundOne.BattleResult = GroundOne.battleResult.None;
-            GroundOne.Parent.Add(scene);
-            GroundOne.StopDungeonMusic();
-            System.Threading.Thread.Sleep(500);
-            Application.LoadLevelAdditive(Database.TruthBattleEnemy);
         }
 
         public static void CallTruthStatusPlayer(MotherForm scene, bool onlySelectTrash, string itemName)

@@ -170,7 +170,6 @@ namespace DungeonPlayer
                     }
                     break;
                 case Database.ENEMY_HIYOWA_BEATLE:
-                    Debug.Log("choice hiyowa beatle");
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
@@ -4472,11 +4471,11 @@ namespace DungeonPlayer
                 #region "ダンジョン１階"
                 #region "エリア１"
                 case Database.ENEMY_KOUKAKU_WURM:
-                    this.baseStrength = 7;
+                    this.baseStrength = 14;
                     this.baseAgility = 2;
                     this.baseIntelligence = 1;
                     this.baseStamina = 1;
-                    this.baseMind = 1;
+                    this.baseMind = 2;
                     this.baseLife = 8;
                     this.experience = 102;
                     this.level = 3;
@@ -4487,11 +4486,11 @@ namespace DungeonPlayer
                     this.DropItem[0] = Database.COMMON_WARM_NO_KOUKAKU;
                     break;
                 case Database.ENEMY_HIYOWA_BEATLE:
-                    this.baseStrength = 6;
+                    this.baseStrength = 10;
                     this.baseAgility = 3;
                     this.baseIntelligence = 1;
                     this.baseStamina = 1;
-                    this.baseMind = 1;
+                    this.baseMind = 2;
                     this.baseLife = 5;
                     this.experience = 109;
                     this.level = 3;
@@ -4506,7 +4505,7 @@ namespace DungeonPlayer
                     this.baseAgility = 5;
                     this.baseIntelligence = 12;
                     this.baseStamina = 1;
-                    this.baseMind = 1;
+                    this.baseMind = 2;
                     this.baseLife = 2;
                     this.experience = 126;
                     this.level = 3;
@@ -4521,6 +4520,7 @@ namespace DungeonPlayer
                     this.baseAgility = 7;
                     this.baseIntelligence = 21;
                     this.baseStamina = 14;
+                    this.baseMind = 2;
                     this.baseLife = 0;
                     this.experience = 215;
                     this.level = 7;
@@ -4567,6 +4567,7 @@ namespace DungeonPlayer
                     this.baseAgility = 11;
                     this.baseIntelligence = 11;
                     this.baseStamina = 15;
+                    this.baseMind = 2;
                     this.experience = 198;
                     this.level = 9;
                     this.gold = 75;
@@ -4580,6 +4581,7 @@ namespace DungeonPlayer
                     this.baseAgility = 35;
                     this.baseIntelligence = 38;
                     this.baseStamina = 25;
+                    this.baseMind = 2;
                     this.experience = 337;
                     this.level = 12;
                     this.gold = 116;
@@ -4611,6 +4613,7 @@ namespace DungeonPlayer
                     this.baseAgility = 35;
                     this.baseIntelligence = 2;
                     this.baseStamina = 30;
+                    this.baseMind = 2;
                     this.experience = 405;
                     this.level = 11;
                     this.gold = 146;
@@ -4625,6 +4628,7 @@ namespace DungeonPlayer
                     this.baseAgility = 55;
                     this.baseIntelligence = 22;
                     this.baseStamina = 33;
+                    this.baseMind = 2;
                     this.experience = 437;
                     this.level = 11;
                     this.gold = 158;
@@ -4638,6 +4642,7 @@ namespace DungeonPlayer
                     this.baseAgility = 30;
                     this.baseIntelligence = 56;
                     this.baseStamina = 51;
+                    this.baseMind = 2;
                     this.experience = 743;
                     this.level = 14;
                     this.gold = 247;
@@ -4742,6 +4747,7 @@ namespace DungeonPlayer
                     this.baseAgility = 100;
                     this.baseIntelligence = 150;
                     this.baseStamina = 210;
+                    this.baseMind = 2;
                     this.experience = 4825;
                     this.baseLife = 3500;
                     this.baseInstantPoint = 3000;
@@ -4778,6 +4784,7 @@ namespace DungeonPlayer
                     this.baseAgility = 133;
                     this.baseIntelligence = 10;
                     this.baseStamina = 85;
+                    this.baseMind = 2;
                     this.experience = 3475;
                     this.level = 25;
                     this.gold = 1488;
@@ -4792,6 +4799,7 @@ namespace DungeonPlayer
                     this.baseAgility = 230;
                     this.baseIntelligence = 55;
                     this.baseStamina = 77;
+                    this.baseMind = 2;
                     this.experience = 3579;
                     this.level = 25;
                     this.gold = 1522;
@@ -4806,6 +4814,7 @@ namespace DungeonPlayer
                     this.baseAgility = 105;
                     this.baseIntelligence = 170;
                     this.baseStamina = 88;
+                    this.baseMind = 2;
                     this.experience = 3686;
                     this.level = 25;
                     this.gold = 1605;
@@ -4821,6 +4830,7 @@ namespace DungeonPlayer
                     this.baseAgility = 155;
                     this.baseIntelligence = 309;
                     this.baseStamina = 112;
+                    this.baseMind = 2;
                     this.experience = 4976;
                     this.level = 30;
                     this.gold = 2029;
@@ -4838,6 +4848,7 @@ namespace DungeonPlayer
                     this.baseAgility = 85;
                     this.baseIntelligence = 5;
                     this.baseStamina = 140;
+                    this.baseMind = 2;
                     this.experience = 3732;
                     this.level = 28;
                     this.gold = 1720;
@@ -4852,6 +4863,7 @@ namespace DungeonPlayer
                     this.baseAgility = 156;
                     this.baseIntelligence = 5;
                     this.baseStamina = 120;
+                    this.baseMind = 2;
                     this.experience = 3844;
                     this.level = 28;
                     this.gold = 1778;
@@ -4866,6 +4878,7 @@ namespace DungeonPlayer
                     this.baseAgility = 410;
                     this.baseIntelligence = 40;
                     this.baseStamina = 115;
+                    this.baseMind = 2;
                     this.experience = 3960;
                     this.level = 28;
                     this.gold = 1832;
@@ -4880,6 +4893,7 @@ namespace DungeonPlayer
                     this.baseAgility = 50;
                     this.baseIntelligence = 168;
                     this.baseStamina = 240;
+                    this.baseMind = 2;
                     this.experience = 4752;
                     this.level = 31;
                     this.gold = 2298;
@@ -4894,6 +4908,7 @@ namespace DungeonPlayer
                     this.baseAgility = 110;
                     this.baseIntelligence = 370;
                     this.baseStamina = 412;
+                    this.baseMind = 2;
                     this.experience = 6652;
                     this.level = 35;
                     this.gold = 3337;
@@ -4912,6 +4927,7 @@ namespace DungeonPlayer
                     this.baseAgility = 40;
                     this.baseIntelligence = 460;
                     this.baseStamina = 350;
+                    this.baseMind = 2;
                     this.experience = 4989;
                     this.level = 33;
                     this.gold = 2636;
@@ -4926,6 +4942,7 @@ namespace DungeonPlayer
                     this.baseAgility = 350;
                     this.baseIntelligence = 420;
                     this.baseStamina = 320;
+                    this.baseMind = 2;
                     this.experience = 5139;
                     this.level = 33;
                     this.gold = 2767;
@@ -4940,6 +4957,7 @@ namespace DungeonPlayer
                     this.baseAgility = 405;
                     this.baseIntelligence = 10;
                     this.baseStamina = 470;
+                    this.baseMind = 2;
                     this.experience = 6167;
                     this.level = 36;
                     this.gold = 3756;
@@ -4954,6 +4972,7 @@ namespace DungeonPlayer
                     this.baseAgility = 580;
                     this.baseIntelligence = 500;
                     this.baseStamina = 510;
+                    this.baseMind = 2;
                     this.experience = 6228;
                     this.level = 36;
                     this.gold = 3783;
@@ -4968,6 +4987,7 @@ namespace DungeonPlayer
                     this.baseAgility = 510;
                     this.baseIntelligence = 515;
                     this.baseStamina = 620;
+                    this.baseMind = 2;
                     this.experience = 8720;
                     this.level = 40;
                     this.gold = 6010;
@@ -4984,6 +5004,7 @@ namespace DungeonPlayer
                     this.baseAgility = 10;
                     this.baseIntelligence = 352;
                     this.baseStamina = 166;
+                    this.baseMind = 2;
                     this.experience = 6104;
                     this.level = 38;
                     this.gold = 4507;
@@ -4998,6 +5019,7 @@ namespace DungeonPlayer
                     this.baseAgility = 288;
                     this.baseIntelligence = 271;
                     this.baseStamina = 115;
+                    this.baseMind = 2;
                     this.experience = 6287;
                     this.level = 38;
                     this.gold = 4683;
@@ -5012,6 +5034,7 @@ namespace DungeonPlayer
                     this.baseAgility = 224;
                     this.baseIntelligence = 10;
                     this.baseStamina = 233;
+                    this.baseMind = 2;
                     this.experience = 7544;
                     this.level = 41;
                     this.gold = 6745;
@@ -5027,6 +5050,7 @@ namespace DungeonPlayer
                     this.baseAgility = 322;
                     this.baseIntelligence = 511;
                     this.baseStamina = 380;
+                    this.baseMind = 2;
                     this.experience = 10562;
                     this.level = 45;
                     this.gold = 11341;
@@ -5044,6 +5068,7 @@ namespace DungeonPlayer
                     this.baseAgility = 280;
                     this.baseIntelligence = 400;
                     this.baseStamina = 200;
+                    this.baseMind = 2;
                     this.experience = 10984;
                     this.baseLife = 16000;
                     this.baseInstantPoint = 2400;
@@ -5059,6 +5084,7 @@ namespace DungeonPlayer
                     this.baseAgility = 140;
                     this.baseIntelligence = 650;
                     this.baseStamina = 200;
+                    this.baseMind = 2;
                     this.experience = 11424;
                     this.baseLife = 19500;
                     this.baseInstantPoint = 1800;
@@ -5074,6 +5100,7 @@ namespace DungeonPlayer
                     this.baseAgility = 450;
                     this.baseIntelligence = 10;
                     this.baseStamina = 300;
+                    this.baseMind = 2;
                     this.experience = 11881;
                     this.baseLife = 22000;
                     this.baseInstantPoint = 3900;
@@ -5089,6 +5116,7 @@ namespace DungeonPlayer
                     this.baseAgility = 250;
                     this.baseIntelligence = 900;
                     this.baseStamina = 280;
+                    this.baseMind = 2;
                     this.experience = 12356;
                     this.baseLife = 20000;
                     this.baseInstantPoint = 2200;
@@ -5105,6 +5133,7 @@ namespace DungeonPlayer
                     this.baseAgility = 250;
                     this.baseIntelligence = 900;
                     this.baseStamina = 280;
+                    this.baseMind = 2;
                     this.experience = 12356;
                     this.baseLife = 20000;
                     this.baseInstantPoint = 2700;
@@ -5122,6 +5151,7 @@ namespace DungeonPlayer
                     this.baseAgility = 100;
                     this.baseIntelligence = 750;
                     this.baseStamina = 500;
+                    this.baseMind = 2;
                     this.experience = 12850;
                     this.baseLife = 28000;
                     this.baseInstantPoint = 15000;
@@ -5137,6 +5167,7 @@ namespace DungeonPlayer
                     this.baseAgility = 420;
                     this.baseIntelligence = 50;
                     this.baseStamina = 320;
+                    this.baseMind = 2;
                     this.experience = 12850;
                     this.baseLife = 15000;
                     this.baseInstantPoint = 5400;
@@ -5152,6 +5183,7 @@ namespace DungeonPlayer
                     this.baseAgility = 350;
                     this.baseIntelligence = 50;
                     this.baseStamina = 320;
+                    this.baseMind = 2;
                     this.experience = 12850;
                     this.baseLife = 15000;
                     this.baseInstantPoint = 3600;
@@ -5208,8 +5240,8 @@ namespace DungeonPlayer
                     this.baseAgility = 60;
                     this.baseIntelligence = 2;
                     this.baseStamina = 500;
+                    this.baseMind = 2;
                     this.baseLife = 26000;
-                    this.baseMind = 0;
                     this.experience = 19032;
                     this.level = 50;
                     this.gold = 7123;
@@ -5224,8 +5256,8 @@ namespace DungeonPlayer
                     this.baseAgility = 488;
                     this.baseIntelligence = 271;
                     this.baseStamina = 115;
+                    this.baseMind = 2;
                     this.baseLife = 22000;
-                    this.baseMind = 0;
                     this.experience = 19603;
                     this.level = 50;
                     this.gold = 7271;
@@ -5240,8 +5272,8 @@ namespace DungeonPlayer
                     this.baseAgility = 50;
                     this.baseIntelligence = 1;
                     this.baseStamina = 550;
+                    this.baseMind = 2;
                     this.baseLife = 32000;
-                    this.baseMind = 0;
                     this.experience = 20191;
                     this.level = 50;
                     this.gold = 7634;
@@ -5256,8 +5288,8 @@ namespace DungeonPlayer
                     this.baseAgility = 252;
                     this.baseIntelligence = 1015;
                     this.baseStamina = 330;
+                    this.baseMind = 2;
                     this.baseLife = 25000;
-                    this.baseMind = 0;
                     this.experience = 27257;
                     this.level = 54;
                     this.gold = 9479;
@@ -5273,8 +5305,8 @@ namespace DungeonPlayer
                     this.baseAgility = 550;
                     this.baseIntelligence = 1;
                     this.baseStamina = 160;
+                    this.baseMind = 2;
                     this.baseLife = 36000;
-                    this.baseMind = 0;
                     this.gold = 8135;
                     this.experience = 20443;
                     this.level = 55;
@@ -5288,8 +5320,8 @@ namespace DungeonPlayer
                     this.baseAgility = 320;
                     this.baseIntelligence = 650;
                     this.baseStamina = 220;
+                    this.baseMind = 2;
                     this.baseLife = 41000;
-                    this.baseMind = 0;
                     this.gold = 8386;
                     this.experience = 21056;
                     this.level = 55;
@@ -5303,8 +5335,8 @@ namespace DungeonPlayer
                     this.baseAgility = 380;
                     this.baseIntelligence = 380;
                     this.baseStamina = 380;
-                    this.baseLife = 45000;
                     this.baseMind = 380;
+                    this.baseLife = 45000;
                     this.gold = 8623;
                     this.experience = 21688;
                     this.level = 55;
@@ -5318,8 +5350,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1;
                     this.baseIntelligence = 650;
                     this.baseStamina = 350;
+                    this.baseMind = 2;
                     this.baseLife = 60000;
-                    this.baseMind = 0;
                     this.gold = 10652;
                     this.experience = 26026;
                     this.level = 58;
@@ -5333,8 +5365,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1;
                     this.baseIntelligence = 1;
                     this.baseStamina = 1000;
+                    this.baseMind = 2;
                     this.baseLife = 85000;
-                    this.baseMind = 0;
                     this.gold = 15173;
                     this.experience = 36436;
                     this.level = 62;
@@ -5351,8 +5383,8 @@ namespace DungeonPlayer
                     this.baseAgility = 200;
                     this.baseIntelligence = 1200;
                     this.baseStamina = 650;
+                    this.baseMind = 2;
                     this.baseLife = 50000;
-                    this.baseMind = 0;
                     this.gold = 12121;
                     this.experience = 27327;
                     this.level = 60;
@@ -5366,8 +5398,8 @@ namespace DungeonPlayer
                     this.baseAgility = 300;
                     this.baseIntelligence = 700;
                     this.baseStamina = 600;
-                    this.baseLife = 65000;
                     this.baseMind = 500;
+                    this.baseLife = 65000;
                     this.gold = 12691;
                     this.experience = 28147;
                     this.level = 60;
@@ -5381,8 +5413,8 @@ namespace DungeonPlayer
                     this.baseAgility = 300;
                     this.baseIntelligence = 1020;
                     this.baseStamina = 700;
+                    this.baseMind = 2;
                     this.baseLife = 73000;
-                    this.baseMind = 0;
                     this.gold = 16997;
                     this.experience = 33776;
                     this.level = 63;
@@ -5396,8 +5428,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1000;
                     this.baseIntelligence = 1800;
                     this.baseStamina = 200;
+                    this.baseMind = 2;
                     this.baseLife = 86000;
-                    this.baseMind = 0;
                     this.gold = 17117;
                     this.experience = 34114;
                     this.level = 63;
@@ -5411,8 +5443,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1;
                     this.baseIntelligence = 2600;
                     this.baseStamina = 1000;
+                    this.baseMind = 2;
                     this.baseLife = 110000;
-                    this.baseMind = 0;
                     this.gold = 26811;
                     this.experience = 47759;
                     this.level = 67;
@@ -5429,8 +5461,8 @@ namespace DungeonPlayer
                     this.baseAgility = 800;
                     this.baseIntelligence = 1;
                     this.baseStamina = 700;
+                    this.baseMind = 2;
                     this.baseLife = 85000;
-                    this.baseMind = 0;
                     this.gold = 20268;
                     this.experience = 33432;
                     this.level = 65;
@@ -5444,8 +5476,8 @@ namespace DungeonPlayer
                     this.baseAgility = 700;
                     this.baseIntelligence = 1900;
                     this.baseStamina = 300;
+                    this.baseMind = 2;
                     this.baseLife = 75000;
-                    this.baseMind = 0;
                     this.gold = 21031;
                     this.experience = 34435;
                     this.level = 65;
@@ -5459,8 +5491,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1400;
                     this.baseIntelligence = 1200;
                     this.baseStamina = 800;
+                    this.baseMind = 2;
                     this.baseLife = 110000;
-                    this.baseMind = 0;
                     this.gold = 30009;
                     this.experience = 41321;
                     this.level = 69;
@@ -5474,8 +5506,8 @@ namespace DungeonPlayer
                     this.baseAgility = 750;
                     this.baseIntelligence = 3500;
                     this.baseStamina = 1600;
-                    this.baseLife = 150000;
                     this.baseMind = 1600;
+                    this.baseLife = 150000;
                     this.gold = 50016;
                     this.experience = 57850;
                     this.level = 73;
@@ -5533,8 +5565,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1200;
                     this.baseIntelligence = 1;
                     this.baseStamina = 800;
+                    this.baseMind = 2;
                     this.baseLife = 98000;
-                    this.baseMind = 0;
                     this.gold = 45010;
                     this.experience = 42439;
                     this.level = 75;
@@ -5549,8 +5581,8 @@ namespace DungeonPlayer
                     this.baseAgility = 800;
                     this.baseIntelligence = 1;
                     this.baseStamina = 800;
+                    this.baseMind = 2;
                     this.baseLife = 105000;
-                    this.baseMind = 0;
                     this.gold = 45361;
                     this.experience = 43712;
                     this.level = 75;
@@ -5564,8 +5596,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1800;
                     this.baseIntelligence = 1300;
                     this.baseStamina = 900;
+                    this.baseMind = 2;
                     this.baseLife = 86000;
-                    this.baseMind = 0;
                     this.gold = 46219;
                     this.experience = 45023;
                     this.level = 75;
@@ -5580,8 +5612,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1200;
                     this.baseIntelligence = 1200;
                     this.baseStamina = 1400;
+                    this.baseMind = 2;
                     this.baseLife = 140000;
-                    this.baseMind = 0;
                     this.gold = 50572;
                     this.experience = 60781;
                     this.level = 78;
@@ -5597,8 +5629,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1400;
                     this.baseIntelligence = 1800;
                     this.baseStamina = 1700;
+                    this.baseMind = 2;
                     this.baseLife = 280000;
-                    this.baseMind = 0;
                     this.gold = 47401;
                     this.experience = 45586;
                     this.level = 79;
@@ -5612,8 +5644,8 @@ namespace DungeonPlayer
                     this.baseAgility = 700;
                     this.baseIntelligence = 1000;
                     this.baseStamina = 2000;
+                    this.baseMind = 2;
                     this.baseLife = 330000;
-                    this.baseMind = 0;
                     this.gold = 47993;
                     this.experience = 46954;
                     this.level = 79;
@@ -5627,8 +5659,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1;
                     this.baseIntelligence = 4500;
                     this.baseStamina = 500;
+                    this.baseMind = 2;
                     this.baseLife = 180000;
-                    this.baseMind = 0;
                     this.gold = 48552;
                     this.experience = 48362;
                     this.level = 79;
@@ -5642,8 +5674,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1400;
                     this.baseIntelligence = 2500;
                     this.baseStamina = 2200;
+                    this.baseMind = 2;
                     this.baseLife = 380000;
-                    this.baseMind = 0;
                     this.gold = 53341;
                     this.experience = 58035;
                     this.level = 83;
@@ -5658,8 +5690,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1200;
                     this.baseIntelligence = 4500;
                     this.baseStamina = 2000;
+                    this.baseMind = 2;
                     this.baseLife = 460000;
-                    this.baseMind = 0;
                     this.gold = 64015;
                     this.experience = 81249;
                     this.level = 87;
@@ -5675,8 +5707,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1600;
                     this.baseIntelligence = 1;
                     this.baseStamina = 2500;
+                    this.baseMind = 2;
                     this.baseLife = 450000;
-                    this.baseMind = 0;
                     this.gold = 56810;
                     this.experience = 60936;
                     this.level = 85;
@@ -5690,8 +5722,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1100;
                     this.baseIntelligence = 2200;
                     this.baseStamina = 1000;
+                    this.baseMind = 2;
                     this.baseLife = 490000;
-                    this.baseMind = 0;
                     this.gold = 58155;
                     this.experience = 62765;
                     this.level = 85;
@@ -5705,8 +5737,8 @@ namespace DungeonPlayer
                     this.baseAgility = 2222;
                     this.baseIntelligence = 2222;
                     this.baseStamina = 2222;
+                    this.baseMind = 2;
                     this.baseLife = 550000;
-                    this.baseMind = 0;
                     this.gold = 68322;
                     this.experience = 75317;
                     this.level = 89;
@@ -5722,8 +5754,8 @@ namespace DungeonPlayer
                     this.baseAgility = 2200;
                     this.baseIntelligence = 3600;
                     this.baseStamina = 3000;
+                    this.baseMind = 2;
                     this.baseLife = 570000;
-                    this.baseMind = 0;
                     this.gold = 68065;
                     this.experience = 76071;
                     this.level = 89;
@@ -5737,8 +5769,8 @@ namespace DungeonPlayer
                     this.baseAgility = 2500;
                     this.baseIntelligence = 4000;
                     this.baseStamina = 1000;
+                    this.baseMind = 2;
                     this.baseLife = 666666;
-                    this.baseMind = 0;
                     this.gold = 91489;
                     this.experience = 106499;
                     this.level = 93;
@@ -5754,8 +5786,8 @@ namespace DungeonPlayer
                     this.baseAgility = 2800;
                     this.baseIntelligence = 3300;
                     this.baseStamina = 2000;
+                    this.baseMind = 2;
                     this.baseLife = 590000;
-                    this.baseMind = 0;
                     this.gold = 76042;
                     this.experience = 74549;
                     this.level = 91;
@@ -5769,8 +5801,8 @@ namespace DungeonPlayer
                     this.baseAgility = 2000;
                     this.baseIntelligence = 3500;
                     this.baseStamina = 2200;
+                    this.baseMind = 2;
                     this.baseLife = 630000;
-                    this.baseMind = 0;
                     this.gold = 77844;
                     this.experience = 76786;
                     this.level = 91;
@@ -5784,8 +5816,8 @@ namespace DungeonPlayer
                     this.baseAgility = 1000;
                     this.baseIntelligence = 5500;
                     this.baseStamina = 4000;
+                    this.baseMind = 2;
                     this.baseLife = 700000;
-                    this.baseMind = 0;
                     this.gold = 99037;
                     this.experience = 92143;
                     this.level = 95;
@@ -5799,8 +5831,8 @@ namespace DungeonPlayer
                     this.baseAgility = 3000;
                     this.baseIntelligence = 1;
                     this.baseStamina = 2000;
+                    this.baseMind = 2;
                     this.baseLife = 800000;
-                    this.baseMind = 0;
                     this.gold = 146267;
                     this.experience = 129000;
                     this.level = 99;
@@ -5864,8 +5896,8 @@ namespace DungeonPlayer
                     this.baseAgility = 2500;
                     this.baseIntelligence = 5100;
                     this.baseStamina = 5000;
+                    this.baseMind = 2;
                     this.baseLife = 500000;
-                    this.baseMind = 0;
                     this.baseResistFire = 30000;
                     this.gold = 560000;
                     this.experience = 130000;
@@ -5880,8 +5912,8 @@ namespace DungeonPlayer
                     this.baseAgility = 2800;
                     this.baseIntelligence = 1600;
                     this.baseStamina = 5500;
+                    this.baseMind = 2;
                     this.baseLife = 550000;
-                    this.baseMind = 0;
                     this.gold = 620000;
                     this.experience = 130000;
                     this.level = 111;
@@ -5895,8 +5927,8 @@ namespace DungeonPlayer
                     this.baseAgility = 2400;
                     this.baseIntelligence = 3800;
                     this.baseStamina = 6000;
+                    this.baseMind = 2;
                     this.baseLife = 650000;
-                    this.baseMind = 0;
                     this.gold = 680000;
                     this.experience = 130000;
                     this.level = 112;
@@ -5910,8 +5942,8 @@ namespace DungeonPlayer
                     this.baseAgility = 3000;
                     this.baseIntelligence = 6200;
                     this.baseStamina = 4600;
+                    this.baseMind = 2;
                     this.baseLife = 600000;
-                    this.baseMind = 0;
                     this.gold = 730000;
                     this.experience = 130000;
                     this.level = 113;
@@ -5925,8 +5957,8 @@ namespace DungeonPlayer
                     this.baseAgility = 100;
                     this.baseIntelligence = 3000;
                     this.baseStamina = 9999;
+                    this.baseMind = 2;
                     this.baseLife = 9900009;
-                    this.baseMind = 1;
                     this.baseInstantPoint = 8000;
                     this.ResistBlind = true;
                     this.ResistFrozen = true;
@@ -6206,8 +6238,8 @@ namespace DungeonPlayer
                     this.baseStrength = 50;
                     this.baseAgility = 10;
                     this.baseIntelligence = 12;
-                    this.baseStamina = 45;
-                    this.baseMind = 1;
+                    this.baseStamina = 44;
+                    this.baseMind = 2;
                     this.baseLife = 0;
                     this.baseMana = 0;
                     this.experience = 0;
@@ -6359,11 +6391,11 @@ namespace DungeonPlayer
 
                 case Database.DUEL_BILLY_RAKI:
                     this.fullName = Database.DUEL_BILLY_RAKI;
-                    this.baseStrength = 301;
+                    this.baseStrength = 300;
                     this.baseAgility = 40;
                     this.baseIntelligence = 1;
                     this.baseStamina = 260;
-                    this.baseMind = 1;
+                    this.baseMind = 2;
                     this.baseLife = 50;
                     this.baseMana = 0;
                     this.experience = 0;
@@ -6530,8 +6562,8 @@ namespace DungeonPlayer
                     this.baseStrength = 1;
                     this.baseAgility = 450;
                     this.baseIntelligence = 1253;
-                    this.baseStamina = 396;
-                    this.baseMind = 1;
+                    this.baseStamina = 395;
+                    this.baseMind = 2;
                     this.baseLife = 0;
                     this.baseMana = 0;
                     this.experience = 0;
@@ -6553,11 +6585,11 @@ namespace DungeonPlayer
                     break;
                 case Database.DUEL_OHRYU_GENMA:
                     this.fullName = Database.DUEL_OHRYU_GENMA;
-                    this.baseStrength = 1385;
+                    this.baseStrength = 1384;
                     this.baseAgility = 1;
                     this.baseIntelligence = 1;
                     this.baseStamina = 1000;
-                    this.baseMind = 1;
+                    this.baseMind = 2;
                     this.baseLife = 0;
                     this.baseMana = 0;
                     this.experience = 0;
@@ -6711,7 +6743,7 @@ namespace DungeonPlayer
                     this.baseAgility = 100;
                     this.baseIntelligence = 100;
                     this.baseStamina = 9999;
-                    this.baseMind = 1;
+                    this.baseMind = 2;
                     this.experience = 0;
                     this.baseLife = 9990009;
                     this.baseMana = 999999;
@@ -6735,16 +6767,7 @@ namespace DungeonPlayer
                 this.baseMana = 80 + (this.level - 1) * 15;
             }
 
-            // debug
-            this.baseStrength = 1;
-            this.baseAgility = 1;
-            this.baseIntelligence = 1;
-            this.baseStamina = 1;
-            this.baseMind = 1;
-            this.baseLife = 1;
-            this.baseMana = 1;
-
-            // omega
+            // after
             //float powerValue = 1.0f;
             //if (GroundOne.Difficulty == 1)
             //{

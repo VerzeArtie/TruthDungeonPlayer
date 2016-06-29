@@ -133,5 +133,13 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect(Database.SOUND_LIFE_TAP);
         }
+
+        public void Debug_Click()
+        {
+            GroundOne.enemyName1 = Database.ENEMY_KOUKAKU_WURM;
+            GroundOne.enemyName2 = String.Empty;
+            GroundOne.enemyName3 = String.Empty;
+            SceneDimension.CallTruthBattleEnemy(Database.Title, false, false, false, false);
+        }
     }
 }

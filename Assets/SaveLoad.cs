@@ -6,7 +6,6 @@ using System.Xml;
 using System.Reflection;
 using System.Text;
 using System.IO;
-using UnityEditor;
 
 namespace DungeonPlayer
 {

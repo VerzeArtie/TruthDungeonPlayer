@@ -290,6 +290,675 @@ namespace DungeonPlayer
             UpdateMainMessage("", true);
 
             GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+
+            #region "戦闘終了判定"
+            #region "死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。"
+            if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
+            {
+                GroundOne.BattleResult = GroundOne.battleResult.None;
+                CopyShadowToMain();
+                this.ignoreCreateShadow = true;
+                this.nowEncountEnemy = true;
+            }
+            #endregion
+            #region "敗北して、ゲーム終了を選択した時"
+            else if (GroundOne.BattleResult == GroundOne.battleResult.Ignore)
+            {
+                CopyShadowToMain();
+                GroundOne.BattleResult = GroundOne.battleResult.None;
+                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    MessagePack.Message16018_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    MessagePack.Message16045_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                    MessagePack.Message16070_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                    MessagePack.Message16071_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+
+                // DUELモードは現実世界でDUEL戦闘となった時に再戦を判断させたいため、一旦ここでfalse返しとする。
+                if (GroundOne.DuelMode)
+                {
+                    // after 続きのメッセージを実装先へと繋いでください。
+                }
+                else
+                {
+                    yesnoSystemMessage.text = Database.Message_SaveRequest1;
+                    groupYesnoSystemMessage.SetActive(true);
+                }
+            }
+            #endregion
+            #region "逃げた時、経験値とゴールドは入らない。(つまり、何もしない）"
+            else if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
+            {
+                GroundOne.BattleResult = GroundOne.battleResult.None;
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+
+                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    MessagePack.Message16018_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
+                    MessagePack.Message16045_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                    MessagePack.Message16070_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
+                    MessagePack.Message16071_Fail(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+            }
+            #endregion
+            #region "戦闘に勝利した場合（通常ルート）"
+            else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
+            {
+                GroundOne.BattleResult = GroundOne.battleResult.None;
+
+                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+
+                // todo レベルアップできなくなるのでは？要確認
+                // ボスに勝利した時、フラグ更新を行う。
+                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss1 = true;
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
+                {
+                    MessagePack.Message12044_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
+                {
+                    MessagePack.Message12045_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
+                {
+                    MessagePack.Message12046_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                {
+                    MessagePack.Message12047_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
+                {
+                    MessagePack.Message12048_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss2 = true;
+                    MessagePack.Message12049_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_TINKOU_DEEPSEA)
+                {
+                    MessagePack.Message12066_4(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss3 = true;
+                    MessagePack.Message13111_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
+                {
+                    MessagePack.Message13122_4(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
+                {
+                    MessagePack.Message14040_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
+                {
+                    MessagePack.Message14066_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                {
+                    MessagePack.Message14097_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    GroundOne.WE.TruthCompleteSlayBoss5 = true;
+                    MessagePack.Message15006_2(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
+                {
+                    MessagePack.Message16018_Success(ref this.nowMessage, ref this.nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
+                {
+                    MessagePack.Message16045_Success(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
+                {
+                    MessagePack.Message16071(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
+                {
+                    MessagePack.Message16072(ref nowMessage, ref nowEvent);
+                    tapOK();
+                }
+
+                // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
+                if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
+                {
+                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
+                    return;
+                }
+                else if (GroundOne.Player2Levelup && GroundOne.WE.AvailableSecondCharacter)
+                {
+                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player2Levelup, ref GroundOne.Player2UpPoint, ref GroundOne.Player2CumultiveLvUpValue, GroundOne.SC.PlayerStatusColor);
+                    return;
+                }
+                else if (GroundOne.Player3Levelup && GroundOne.WE.AvailableThirdCharacter)
+                {
+                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player3Levelup, ref GroundOne.Player3UpPoint, ref GroundOne.Player3CumultiveLvUpValue, GroundOne.TC.PlayerStatusColor);
+                    return;
+                }
+
+                // after
+                //  bool alreadyPlayBackMusic = false;
+                //  if (GroundOne.WE.AvailableFirstCharacter)
+                //  {
+                //      this.MC = tempMC;
+                //      this.GroundOne.MC.ReplaceBackPack(tempGroundOne.MC.GetBackPackInfo());
+                //      if (GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL5)
+                //      {
+                //          GroundOne.MC.Exp += be.EC1.Exp;
+                //      }
+                //      GroundOne.MC.Gold += be.EC1.Gold;
+
+                //      int levelUpPoint = 0;
+                //      int cumultiveLvUpValue = 0;
+                //      while (true)
+                //      {
+                //          if (GroundOne.MC.Exp >= GroundOne.MC.NextLevelBorder && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL5)
+                //          {
+                //              levelUpPoint += GroundOne.MC.LevelUpPointTruth;
+                //              GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
+                //              GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
+                //              GroundOne.MC.Exp = GroundOne.MC.Exp - GroundOne.MC.NextLevelBorder;
+                //              GroundOne.MC.Level += 1;
+                //              cumultiveLvUpValue++;
+                //          }
+                //          else
+                //          {
+                //              break;
+                //          }
+                //      }
+
+                //      if (cumultiveLvUpValue > 0)
+                //      {
+                //          GroundOne.PlaySoundEffect("LvUp");
+                //          if (!alreadyPlayBackMusic)
+                //          {
+                //              alreadyPlayBackMusic = true;
+                //              GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+                //          }
+                //          using (TruthStatusPlayer sp = new TruthStatusPlayer())
+                //          {
+                //              sp.WE = we;
+                //              sp.MC = mc;
+                //              sp.SC = sc;
+                //              sp.TC = tc;
+                //              sp.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
+                //              sp.LevelUp = true;
+                //              sp.UpPoint = levelUpPoint;
+                //              sp.CumultiveLvUpValue = cumultiveLvUpValue;
+                //              sp.StartPosition = FormStartPosition.CenterParent;
+                //              sp.ShowDialog();
+                //          }
+
+                //      }
+
+                //      bool detect = false;
+                //      string targetGetName = String.Empty;
+                //      if (GroundOne.MC.MainWeapon != null)
+                //      {
+                //          if (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO && GroundOne.WE2.PracticeSwordCount >= 5)
+                //          {
+                //              targetGetName = Database.POOR_PRACTICE_SWORD_1;
+                //          }
+                //          else if (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_1 && GroundOne.WE2.PracticeSwordCount >= 15)
+                //          {
+                //              targetGetName = Database.POOR_PRACTICE_SWORD_2;
+                //          }
+                //          else if (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_2 && GroundOne.WE2.PracticeSwordCount >= 30 && GroundOne.WE.CompleteSlayBoss2)
+                //          {
+                //              targetGetName = Database.COMMON_PRACTICE_SWORD_3;
+                //          }
+                //          else if (GroundOne.MC.MainWeapon.Name == Database.COMMON_PRACTICE_SWORD_3 && GroundOne.WE2.PracticeSwordCount >= 50 && GroundOne.WE.CompleteSlayBoss2)
+                //          {
+                //              targetGetName = Database.COMMON_PRACTICE_SWORD_4;
+                //          }
+                //          else if (GroundOne.MC.MainWeapon.Name == Database.COMMON_PRACTICE_SWORD_4 && GroundOne.WE2.PracticeSwordCount >= 75 && GroundOne.WE.CompleteSlayBoss3)
+                //          {
+                //              targetGetName = Database.RARE_PRACTICE_SWORD_5;
+                //          }
+                //          else if (GroundOne.MC.MainWeapon.Name == Database.RARE_PRACTICE_SWORD_5 && GroundOne.WE2.PracticeSwordCount >= 105 && GroundOne.WE.CompleteSlayBoss3)
+                //          {
+                //              targetGetName = Database.RARE_PRACTICE_SWORD_6;
+                //          }
+                //          else if (GroundOne.MC.MainWeapon.Name == Database.RARE_PRACTICE_SWORD_6 && GroundOne.WE2.PracticeSwordCount >= 140 && GroundOne.WE.CompleteSlayBoss4)
+                //          {
+                //              targetGetName = Database.EPIC_PRACTICE_SWORD_7;
+                //          }
+                //          else if (GroundOne.MC.MainWeapon.Name == Database.EPIC_PRACTICE_SWORD_7 && GroundOne.WE2.PracticeSwordCount >= 180 && GroundOne.WE.CompleteSlayBoss5)
+                //          {
+                //              targetGetName = Database.LEGENDARY_FELTUS;
+                //          }
+
+                //          if (targetGetName != String.Empty)
+                //          {
+                //              GroundOne.MC.MainWeapon = new ItemBackPack(targetGetName);
+                //              detect = true;
+                //          }
+                //      }
+                //      if ((GroundOne.MC.SubWeapon != null))
+                //      {
+                //          if (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO && GroundOne.WE2.PracticeSwordCount >= 5)
+                //          {
+                //              targetGetName = Database.POOR_PRACTICE_SWORD_1;
+                //          }
+                //          else if (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_1 && GroundOne.WE2.PracticeSwordCount >= 20)
+                //          {
+                //              targetGetName = Database.POOR_PRACTICE_SWORD_2;
+                //          }
+                //          else if (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_2 && GroundOne.WE2.PracticeSwordCount >= 50 && GroundOne.WE.CompleteSlayBoss2)
+                //          {
+                //              targetGetName = Database.COMMON_PRACTICE_SWORD_3;
+                //          }
+                //          else if (GroundOne.MC.SubWeapon.Name == Database.COMMON_PRACTICE_SWORD_3 && GroundOne.WE2.PracticeSwordCount >= 100 && GroundOne.WE.CompleteSlayBoss2)
+                //          {
+                //              targetGetName = Database.COMMON_PRACTICE_SWORD_4;
+                //          }
+                //          else if (GroundOne.MC.SubWeapon.Name == Database.COMMON_PRACTICE_SWORD_4 && GroundOne.WE2.PracticeSwordCount >= 200 && GroundOne.WE.CompleteSlayBoss3)
+                //          {
+                //              targetGetName = Database.RARE_PRACTICE_SWORD_5;
+                //          }
+                //          else if (GroundOne.MC.SubWeapon.Name == Database.RARE_PRACTICE_SWORD_5 && GroundOne.WE2.PracticeSwordCount >= 400 && GroundOne.WE.CompleteSlayBoss3)
+                //          {
+                //              targetGetName = Database.RARE_PRACTICE_SWORD_6;
+                //          }
+                //          else if (GroundOne.MC.SubWeapon.Name == Database.RARE_PRACTICE_SWORD_6 && GroundOne.WE2.PracticeSwordCount >= 700 && GroundOne.WE.CompleteSlayBoss4)
+                //          {
+                //              targetGetName = Database.EPIC_PRACTICE_SWORD_7;
+                //          }
+                //          else if (GroundOne.MC.SubWeapon.Name == Database.EPIC_PRACTICE_SWORD_7 && GroundOne.WE2.PracticeSwordCount >= 1000 && GroundOne.WE.CompleteSlayBoss5)
+                //          {
+                //              targetGetName = Database.LEGENDARY_FELTUS;
+                //          }
+
+                //          if (targetGetName != String.Empty)
+                //          {
+                //              GroundOne.MC.SubWeapon = new ItemBackPack(targetGetName);
+                //              detect = true;
+                //          }
+                //      }
+
+                //      if (detect)
+                //      {
+                //          if (targetGetName == Database.POOR_PRACTICE_SWORD_1)
+                //          {
+                //              UpdateMainMessage("アイン：（この剣・・・）");
+
+                //              UpdateMainMessage("アイン：（何か持つ感触が変わったな。以前より鋭くなった感じがする。）");
+
+                //              UpdateMainMessage("アイン：（すげえ・・・ひょっとして成長する剣だったりするのか！？）");
+
+                //              UpdateMainMessage("アイン：（サンキューガンツ伯父さん、ありがたく使わせてもらうぜ。）");
+                //          }
+                //          else if (targetGetName == Database.POOR_PRACTICE_SWORD_2)
+                //          {
+                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
+
+                //              UpdateMainMessage("アイン：（でも、何だろうな・・・何か違う感じもするが・・・）");
+
+                //              UpdateMainMessage("アイン：（まあ、良いか。このままガンガン使っていくぜ！）");
+                //          }
+                //          else if (targetGetName == Database.COMMON_PRACTICE_SWORD_3)
+                //          {
+                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
+
+                //              UpdateMainMessage("アイン：（すげえぜ、この剣。最大値ばかりが上がって行くな。）");
+
+                //              UpdateMainMessage("アイン：（使いこなせるかどうかだが・・・）");
+
+                //              UpdateMainMessage("アイン：（まあ、この際だ。使えるだけ使ってみるとするか！）");
+                //          }
+                //          else if (targetGetName == Database.COMMON_PRACTICE_SWORD_4)
+                //          {
+                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
+
+                //              UpdateMainMessage("アイン：（しかしどんどん値が伸びていくな・・・）");
+
+                //              UpdateMainMessage("アイン：（今の俺でどこまで使いこなせるか、わかんねえけどな）");
+
+                //              UpdateMainMessage("アイン：（まあ気にしててもしょうがねえ、ドンドン上げていくぜ！）");
+                //          }
+                //          else if (targetGetName == Database.RARE_PRACTICE_SWORD_5)
+                //          {
+                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
+
+                //              UpdateMainMessage("アイン：（しかし、新しくなってるハズなんだが・・・");
+
+                //              UpdateMainMessage("アイン：（何となく懐かしい感じもするんだよな）");
+
+                //              UpdateMainMessage("アイン：（MAXまで上げきったら、ガンツ伯父さんにでも聞いてみるか）");
+                //          }
+                //          else if (targetGetName == Database.RARE_PRACTICE_SWORD_6)
+                //          {
+                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
+
+                //              UpdateMainMessage("アイン：（練習用の剣なんて、大嘘もいいとこじゃねえか）");
+
+                //              UpdateMainMessage("アイン：（・・・この、モヤモヤした感覚・・・）");
+
+                //              UpdateMainMessage("アイン：（・・・　・・・まあ、上げてくか！）");
+                //          }
+                //          else if (targetGetName == Database.EPIC_PRACTICE_SWORD_7)
+                //          {
+                //              UpdateMainMessage("アイン：（剣レベルアップ・・・と言いたい所だが）");
+
+                //              UpdateMainMessage("アイン：（そっか・・・何を忘れてたんだろうな、俺）");
+
+                //              UpdateMainMessage("アイン：（ッハハハ・・・そりゃ、そうだよな。情けねえぜ）");
+
+                //              UpdateMainMessage("アイン：（たぶん次でラストのレベルアップだ。やらせてもらうぜ）");
+                //          }
+                //          else if (targetGetName == Database.LEGENDARY_FELTUS)
+                //          {
+                //              // [コメント] 何か演出が欲しい。
+                //              UpdateMainMessage("アイン：（神剣、フェルトゥーシュだったんだ、コレ・・・）");
+
+                //              UpdateMainMessage("アイン：（そうさ・・・俺はコイツで・・・）");
+
+                //              UpdateMainMessage("アイン：（いや、これを受け止めなければならないんだ、俺は）");
+
+                //              UpdateMainMessage("アイン：（・・・今度こそ、心に決めたぜ）");
+
+                //              UpdateMainMessage("アイン：（この剣からは逃げない）");
+
+                //              UpdateMainMessage("アイン：（っしゃ！　それじゃ使うぜ、フェルトゥーシュを！）");
+                //          }
+                //          using (MessageDisplayWithIcon mdwi = new MessageDisplayWithIcon())
+                //          {
+                //              ItemBackPack item = new ItemBackPack(targetGetName);
+                //              mdwi.Message = item.Name + "を入手した！";
+                //              mdwi.Item = item;
+                //              GroundOne.PlaySoundEffect(Database.SOUND_LVUP_FELTUS);
+                //              mdwi.StartPosition = FormStartPosition.CenterParent;
+                //              mdwi.ShowDialog();
+                //          }
+                //      }
+                //  }
+
+
+
+                //  if (GroundOne.WE.AvailableSecondCharacter)
+                //  {
+                //      this.SC = tempSC;
+                //      this.SC.ReplaceBackPack(tempSC.GetBackPackInfo());
+                //      if (sc.Level < Database.CHARACTER_MAX_LEVEL5)
+                //      {
+                //          sc.Exp += be.EC1.Exp;
+                //      }
+                //      //SC.Gold += be.EC1.Gold; // [警告]：ゴールドの所持は別クラスにするべきです。
+
+                //      int levelUpPoint = 0;
+                //      int cumultiveLvUpValue = 0;
+                //      while (true)
+                //      {
+                //          if (sc.Exp >= sc.NextLevelBorder && sc.Level < Database.CHARACTER_MAX_LEVEL5)
+                //          {
+                //              levelUpPoint += sc.LevelUpPointTruth;
+                //              sc.BaseLife += sc.LevelUpLifeTruth;
+                //              sc.BaseMana += sc.LevelUpManaTruth;
+                //              sc.Exp = sc.Exp - sc.NextLevelBorder;
+                //              sc.Level += 1;
+                //              cumultiveLvUpValue++;
+                //          }
+                //          else
+                //          {
+                //              break;
+                //          }
+                //      }
+
+                //      if (cumultiveLvUpValue > 0)
+                //      {
+                //          GroundOne.PlaySoundEffect("LvUp");
+                //          if (!alreadyPlayBackMusic)
+                //          {
+                //              alreadyPlayBackMusic = true;
+                //              GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+                //          }
+                //          using (TruthStatusPlayer sp = new TruthStatusPlayer())
+                //          {
+                //              sp.WE = we;
+                //              sp.MC = mc;
+                //              sp.SC = sc;
+                //              sp.TC = tc;
+                //              sp.CurrentStatusView = sc.PlayerStatusColor;
+                //              sp.LevelUp = true;
+                //              sp.UpPoint = levelUpPoint;
+                //              sp.CumultiveLvUpValue = cumultiveLvUpValue;
+                //              sp.StartPosition = FormStartPosition.CenterParent;
+                //              sp.ShowDialog();
+                //          }
+
+                //      }
+                //  }
+
+                //  if (GroundOne.WE.AvailableThirdCharacter)
+                //  {
+                //      this.TC = tempTC;
+                //      this.TC.ReplaceBackPack(tempTC.GetBackPackInfo());
+                //      if (tc.FullName == Database.OL_LANDIS_FULL)
+                //      {
+                //          if (tc.Level < Database.CHARACTER_MAX_LEVEL2)
+                //          {
+                //              tc.Exp += be.EC1.Exp;
+                //          }
+                //      }
+                //      else if (tc.FullName == Database.VERZE_ARTIE_FULL)
+                //      {
+                //          if (tc.Level < Database.CHARACTER_MAX_LEVEL5)
+                //          {
+                //              tc.Exp += be.EC1.Exp;
+                //          }
+                //      }
+                //      //TC.Gold += be.EC1.Gold; // [警告]：ゴールドの所持は別クラスにするべきです。
+
+                //      int levelUpPoint = 0;
+                //      int cumultiveLvUpValue = 0;
+                //      while (true)
+                //      {
+                //          if (tc.Exp >= tc.NextLevelBorder && tc.Level < Database.CHARACTER_MAX_LEVEL5)
+                //          {
+                //              levelUpPoint += tc.LevelUpPointTruth;
+                //              tc.BaseLife += tc.LevelUpLifeTruth;
+                //              tc.BaseMana += tc.LevelUpManaTruth;
+                //              tc.Exp = tc.Exp - tc.NextLevelBorder;
+                //              tc.Level += 1;
+                //              cumultiveLvUpValue++;
+                //          }
+                //          else
+                //          {
+                //              break;
+                //          }
+                //      }
+
+                //      if (cumultiveLvUpValue > 0)
+                //      {
+                //          GroundOne.PlaySoundEffect("LvUp");
+                //          if (!alreadyPlayBackMusic)
+                //          {
+                //              alreadyPlayBackMusic = true;
+                //              GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+                //          }
+                //          using (TruthStatusPlayer sp = new TruthStatusPlayer())
+                //          {
+                //              sp.WE = we;
+                //              sp.MC = mc;
+                //              sp.SC = sc;
+                //              sp.TC = tc;
+                //              sp.CurrentStatusView = tc.PlayerStatusColor;
+                //              sp.LevelUp = true;
+                //              sp.UpPoint = levelUpPoint;
+                //              sp.CumultiveLvUpValue = cumultiveLvUpValue;
+                //              sp.StartPosition = FormStartPosition.CenterParent;
+                //              sp.ShowDialog();
+                //          }
+
+                //      }
+                //  }
+                //  this.WE = tempWE;
+
+                //  if (!alreadyPlayBackMusic && (ec1.Name != "五階の守護者：Bystander" && enemyName != Database.ENEMY_BOSS_BYSTANDER_EMPTINESS && enemyName != Database.ENEMY_LAST_SINIKIA_KAHLHANZ && enemyName != Database.ENEMY_LAST_OL_LANDIS))
+                //  {
+                //      alreadyPlayBackMusic = true;
+                //      GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
+                //  }
+                //  SetupPlayerStatus();
+                //  return true;
+            }
+            #endregion
+            #endregion
         }
         
         private void ReadDungeonTileFromXmlFile(string xmlFileName)
@@ -1321,7 +1990,7 @@ namespace DungeonPlayer
                     CreateShadowData();
                 }
                 CancelKeyDownMovement();
-                SceneDimension.CallTruthBattleEnemy(this, false, false, false, false);
+                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false);
             }
             else if (Input.GetKeyUp(KeyCode.Alpha8) || Input.GetKeyUp(KeyCode.UpArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha4) || Input.GetKeyUp(KeyCode.LeftArrow) ||
@@ -1400,6 +2069,7 @@ namespace DungeonPlayer
             UpdateMainMessage("", true);
             SetupPlayerStatus(false);
 
+            #region "小画面表示後の戻りイベント"
             if (this.nowDecisionFloor1OpenDoor)
             {
                 this.nowDecisionFloor1OpenDoor = false;
@@ -1702,673 +2372,6 @@ namespace DungeonPlayer
                 MessagePack.Message15007_2(ref nowMessage, ref nowEvent);
                 tapOK();
             }
-
-            #region "戦闘終了判定"
-            #region "死亡時、再挑戦する場合、初めから戦闘画面を呼びなおす。"
-            if (GroundOne.BattleResult == GroundOne.battleResult.Retry)
-            {
-                GroundOne.BattleResult = GroundOne.battleResult.None;
-                CopyShadowToMain();
-                this.ignoreCreateShadow = true;
-                this.nowEncountEnemy = true;
-            }
-            #endregion
-            #region "敗北して、ゲーム終了を選択した時"
-            else if (GroundOne.BattleResult == GroundOne.battleResult.Ignore)
-            {
-                CopyShadowToMain();
-                GroundOne.BattleResult = GroundOne.battleResult.None;
-                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                    MessagePack.Message16018_Fail(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                    MessagePack.Message16045_Fail(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                    MessagePack.Message16070_Fail(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                    MessagePack.Message16071_Fail(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-
-                // DUELモードは現実世界でDUEL戦闘となった時に再戦を判断させたいため、一旦ここでfalse返しとする。
-                if (GroundOne.DuelMode)
-                {
-                    // after 続きのメッセージを実装先へと繋いでください。
-                }
-                else
-                {
-                    yesnoSystemMessage.text = Database.Message_SaveRequest1;
-                    groupYesnoSystemMessage.SetActive(true);
-                }
-            }
-            #endregion
-            #region "逃げた時、経験値とゴールドは入らない。(つまり、何もしない）"
-            else if (GroundOne.BattleResult == GroundOne.battleResult.Abort)
-            {
-                GroundOne.BattleResult = GroundOne.battleResult.None;
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-
-                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y + Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x + Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                    MessagePack.Message16018_Fail(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x - Database.DUNGEON_MOVE_LEN, this.Player.transform.position.y, true);
-                    MessagePack.Message16045_Fail(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                    MessagePack.Message16070_Fail(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
-                {
-                    UpdatePlayerLocationInfo(this.Player.transform.position.x, this.Player.transform.position.y - Database.DUNGEON_MOVE_LEN, true);
-                    MessagePack.Message16071_Fail(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-            }
-            #endregion
-            #region "戦闘に勝利した場合（通常ルート）"
-            else if (GroundOne.BattleResult == GroundOne.battleResult.OK)
-            {
-                GroundOne.BattleResult = GroundOne.battleResult.None;
-
-                GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-
-                // todo レベルアップできなくなるのでは？要確認
-                // ボスに勝利した時、フラグ更新を行う。
-                if (GroundOne.enemyName1 == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
-                {
-                    GroundOne.WE.TruthCompleteSlayBoss1 = true;
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BRILLIANT_SEA_PRINCE)
-                {
-                    MessagePack.Message12044_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN)
-                {
-                    MessagePack.Message12045_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_SHELL_SWORD_KNIGHT)
-                {
-                    MessagePack.Message12046_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
-                {
-                    MessagePack.Message12047_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_SEA_STAR_ORIGIN_KING)
-                {
-                    MessagePack.Message12048_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEVIATHAN)
-                {
-                    GroundOne.WE.TruthCompleteSlayBoss2 = true;
-                    MessagePack.Message12049_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_TINKOU_DEEPSEA)
-                {
-                    MessagePack.Message12066_4(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_HOWLING_SEIZER)
-                {
-                    GroundOne.WE.TruthCompleteSlayBoss3 = true;
-                    MessagePack.Message13111_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();                    
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
-                {
-                    MessagePack.Message13122_4(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_1)
-                {
-                    MessagePack.Message14040_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_2)
-                {
-                    MessagePack.Message14066_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_LEGIN_ARZE_3)
-                {
-                    MessagePack.Message14097_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
-                {
-                    GroundOne.WE.TruthCompleteSlayBoss5 = true;
-                    MessagePack.Message15006_2(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SINIKIA_KAHLHANZ)
-                {
-                    MessagePack.Message16018_Success(ref this.nowMessage, ref this.nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_OL_LANDIS)
-                {
-                    MessagePack.Message16045_Success(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_VERZE_ARTIE)
-                {
-                    MessagePack.Message16071(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_SIN_VERZE_ARTIE)
-                {
-                    MessagePack.Message16072(ref nowMessage, ref nowEvent);
-                    tapOK();
-                }
-
-                // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
-                if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
-                {
-                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
-                    return;
-                }
-                else if (GroundOne.Player2Levelup && GroundOne.WE.AvailableSecondCharacter)
-                {
-                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player2Levelup, ref GroundOne.Player2UpPoint, ref GroundOne.Player2CumultiveLvUpValue, GroundOne.SC.PlayerStatusColor);
-                    return;
-                }
-                else if (GroundOne.Player3Levelup && GroundOne.WE.AvailableThirdCharacter)
-                {
-                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player3Levelup, ref GroundOne.Player3UpPoint, ref GroundOne.Player3CumultiveLvUpValue, GroundOne.TC.PlayerStatusColor);
-                    return;
-                }
-
-                //  bool alreadyPlayBackMusic = false;
-                //  if (GroundOne.WE.AvailableFirstCharacter)
-                //  {
-                //      this.MC = tempMC;
-                //      this.GroundOne.MC.ReplaceBackPack(tempGroundOne.MC.GetBackPackInfo());
-                //      if (GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL5)
-                //      {
-                //          GroundOne.MC.Exp += be.EC1.Exp;
-                //      }
-                //      GroundOne.MC.Gold += be.EC1.Gold;
-
-                //      int levelUpPoint = 0;
-                //      int cumultiveLvUpValue = 0;
-                //      while (true)
-                //      {
-                //          if (GroundOne.MC.Exp >= GroundOne.MC.NextLevelBorder && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL5)
-                //          {
-                //              levelUpPoint += GroundOne.MC.LevelUpPointTruth;
-                //              GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
-                //              GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
-                //              GroundOne.MC.Exp = GroundOne.MC.Exp - GroundOne.MC.NextLevelBorder;
-                //              GroundOne.MC.Level += 1;
-                //              cumultiveLvUpValue++;
-                //          }
-                //          else
-                //          {
-                //              break;
-                //          }
-                //      }
-
-                //      if (cumultiveLvUpValue > 0)
-                //      {
-                //          GroundOne.PlaySoundEffect("LvUp");
-                //          if (!alreadyPlayBackMusic)
-                //          {
-                //              alreadyPlayBackMusic = true;
-                //              GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-                //          }
-                //          using (TruthStatusPlayer sp = new TruthStatusPlayer())
-                //          {
-                //              sp.WE = we;
-                //              sp.MC = mc;
-                //              sp.SC = sc;
-                //              sp.TC = tc;
-                //              sp.CurrentStatusView = GroundOne.MC.PlayerStatusColor;
-                //              sp.LevelUp = true;
-                //              sp.UpPoint = levelUpPoint;
-                //              sp.CumultiveLvUpValue = cumultiveLvUpValue;
-                //              sp.StartPosition = FormStartPosition.CenterParent;
-                //              sp.ShowDialog();
-                //          }
-
-                //      }
-
-                //      bool detect = false;
-                //      string targetGetName = String.Empty;
-                //      if (GroundOne.MC.MainWeapon != null)
-                //      {
-                //          if (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO && GroundOne.WE2.PracticeSwordCount >= 5)
-                //          {
-                //              targetGetName = Database.POOR_PRACTICE_SWORD_1;
-                //          }
-                //          else if (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_1 && GroundOne.WE2.PracticeSwordCount >= 15)
-                //          {
-                //              targetGetName = Database.POOR_PRACTICE_SWORD_2;
-                //          }
-                //          else if (GroundOne.MC.MainWeapon.Name == Database.POOR_PRACTICE_SWORD_2 && GroundOne.WE2.PracticeSwordCount >= 30 && GroundOne.WE.CompleteSlayBoss2)
-                //          {
-                //              targetGetName = Database.COMMON_PRACTICE_SWORD_3;
-                //          }
-                //          else if (GroundOne.MC.MainWeapon.Name == Database.COMMON_PRACTICE_SWORD_3 && GroundOne.WE2.PracticeSwordCount >= 50 && GroundOne.WE.CompleteSlayBoss2)
-                //          {
-                //              targetGetName = Database.COMMON_PRACTICE_SWORD_4;
-                //          }
-                //          else if (GroundOne.MC.MainWeapon.Name == Database.COMMON_PRACTICE_SWORD_4 && GroundOne.WE2.PracticeSwordCount >= 75 && GroundOne.WE.CompleteSlayBoss3)
-                //          {
-                //              targetGetName = Database.RARE_PRACTICE_SWORD_5;
-                //          }
-                //          else if (GroundOne.MC.MainWeapon.Name == Database.RARE_PRACTICE_SWORD_5 && GroundOne.WE2.PracticeSwordCount >= 105 && GroundOne.WE.CompleteSlayBoss3)
-                //          {
-                //              targetGetName = Database.RARE_PRACTICE_SWORD_6;
-                //          }
-                //          else if (GroundOne.MC.MainWeapon.Name == Database.RARE_PRACTICE_SWORD_6 && GroundOne.WE2.PracticeSwordCount >= 140 && GroundOne.WE.CompleteSlayBoss4)
-                //          {
-                //              targetGetName = Database.EPIC_PRACTICE_SWORD_7;
-                //          }
-                //          else if (GroundOne.MC.MainWeapon.Name == Database.EPIC_PRACTICE_SWORD_7 && GroundOne.WE2.PracticeSwordCount >= 180 && GroundOne.WE.CompleteSlayBoss5)
-                //          {
-                //              targetGetName = Database.LEGENDARY_FELTUS;
-                //          }
-
-                //          if (targetGetName != String.Empty)
-                //          {
-                //              GroundOne.MC.MainWeapon = new ItemBackPack(targetGetName);
-                //              detect = true;
-                //          }
-                //      }
-                //      if ((GroundOne.MC.SubWeapon != null))
-                //      {
-                //          if (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_ZERO && GroundOne.WE2.PracticeSwordCount >= 5)
-                //          {
-                //              targetGetName = Database.POOR_PRACTICE_SWORD_1;
-                //          }
-                //          else if (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_1 && GroundOne.WE2.PracticeSwordCount >= 20)
-                //          {
-                //              targetGetName = Database.POOR_PRACTICE_SWORD_2;
-                //          }
-                //          else if (GroundOne.MC.SubWeapon.Name == Database.POOR_PRACTICE_SWORD_2 && GroundOne.WE2.PracticeSwordCount >= 50 && GroundOne.WE.CompleteSlayBoss2)
-                //          {
-                //              targetGetName = Database.COMMON_PRACTICE_SWORD_3;
-                //          }
-                //          else if (GroundOne.MC.SubWeapon.Name == Database.COMMON_PRACTICE_SWORD_3 && GroundOne.WE2.PracticeSwordCount >= 100 && GroundOne.WE.CompleteSlayBoss2)
-                //          {
-                //              targetGetName = Database.COMMON_PRACTICE_SWORD_4;
-                //          }
-                //          else if (GroundOne.MC.SubWeapon.Name == Database.COMMON_PRACTICE_SWORD_4 && GroundOne.WE2.PracticeSwordCount >= 200 && GroundOne.WE.CompleteSlayBoss3)
-                //          {
-                //              targetGetName = Database.RARE_PRACTICE_SWORD_5;
-                //          }
-                //          else if (GroundOne.MC.SubWeapon.Name == Database.RARE_PRACTICE_SWORD_5 && GroundOne.WE2.PracticeSwordCount >= 400 && GroundOne.WE.CompleteSlayBoss3)
-                //          {
-                //              targetGetName = Database.RARE_PRACTICE_SWORD_6;
-                //          }
-                //          else if (GroundOne.MC.SubWeapon.Name == Database.RARE_PRACTICE_SWORD_6 && GroundOne.WE2.PracticeSwordCount >= 700 && GroundOne.WE.CompleteSlayBoss4)
-                //          {
-                //              targetGetName = Database.EPIC_PRACTICE_SWORD_7;
-                //          }
-                //          else if (GroundOne.MC.SubWeapon.Name == Database.EPIC_PRACTICE_SWORD_7 && GroundOne.WE2.PracticeSwordCount >= 1000 && GroundOne.WE.CompleteSlayBoss5)
-                //          {
-                //              targetGetName = Database.LEGENDARY_FELTUS;
-                //          }
-
-                //          if (targetGetName != String.Empty)
-                //          {
-                //              GroundOne.MC.SubWeapon = new ItemBackPack(targetGetName);
-                //              detect = true;
-                //          }
-                //      }
-
-                //      if (detect)
-                //      {
-                //          if (targetGetName == Database.POOR_PRACTICE_SWORD_1)
-                //          {
-                //              UpdateMainMessage("アイン：（この剣・・・）");
-
-                //              UpdateMainMessage("アイン：（何か持つ感触が変わったな。以前より鋭くなった感じがする。）");
-
-                //              UpdateMainMessage("アイン：（すげえ・・・ひょっとして成長する剣だったりするのか！？）");
-
-                //              UpdateMainMessage("アイン：（サンキューガンツ伯父さん、ありがたく使わせてもらうぜ。）");
-                //          }
-                //          else if (targetGetName == Database.POOR_PRACTICE_SWORD_2)
-                //          {
-                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
-
-                //              UpdateMainMessage("アイン：（でも、何だろうな・・・何か違う感じもするが・・・）");
-
-                //              UpdateMainMessage("アイン：（まあ、良いか。このままガンガン使っていくぜ！）");
-                //          }
-                //          else if (targetGetName == Database.COMMON_PRACTICE_SWORD_3)
-                //          {
-                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
-
-                //              UpdateMainMessage("アイン：（すげえぜ、この剣。最大値ばかりが上がって行くな。）");
-
-                //              UpdateMainMessage("アイン：（使いこなせるかどうかだが・・・）");
-
-                //              UpdateMainMessage("アイン：（まあ、この際だ。使えるだけ使ってみるとするか！）");
-                //          }
-                //          else if (targetGetName == Database.COMMON_PRACTICE_SWORD_4)
-                //          {
-                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
-
-                //              UpdateMainMessage("アイン：（しかしどんどん値が伸びていくな・・・）");
-
-                //              UpdateMainMessage("アイン：（今の俺でどこまで使いこなせるか、わかんねえけどな）");
-
-                //              UpdateMainMessage("アイン：（まあ気にしててもしょうがねえ、ドンドン上げていくぜ！）");
-                //          }
-                //          else if (targetGetName == Database.RARE_PRACTICE_SWORD_5)
-                //          {
-                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
-
-                //              UpdateMainMessage("アイン：（しかし、新しくなってるハズなんだが・・・");
-
-                //              UpdateMainMessage("アイン：（何となく懐かしい感じもするんだよな）");
-
-                //              UpdateMainMessage("アイン：（MAXまで上げきったら、ガンツ伯父さんにでも聞いてみるか）");
-                //          }
-                //          else if (targetGetName == Database.RARE_PRACTICE_SWORD_6)
-                //          {
-                //              UpdateMainMessage("アイン：（っしゃ、来たぜ！剣レベルアップ！）");
-
-                //              UpdateMainMessage("アイン：（練習用の剣なんて、大嘘もいいとこじゃねえか）");
-
-                //              UpdateMainMessage("アイン：（・・・この、モヤモヤした感覚・・・）");
-
-                //              UpdateMainMessage("アイン：（・・・　・・・まあ、上げてくか！）");
-                //          }
-                //          else if (targetGetName == Database.EPIC_PRACTICE_SWORD_7)
-                //          {
-                //              UpdateMainMessage("アイン：（剣レベルアップ・・・と言いたい所だが）");
-
-                //              UpdateMainMessage("アイン：（そっか・・・何を忘れてたんだろうな、俺）");
-
-                //              UpdateMainMessage("アイン：（ッハハハ・・・そりゃ、そうだよな。情けねえぜ）");
-
-                //              UpdateMainMessage("アイン：（たぶん次でラストのレベルアップだ。やらせてもらうぜ）");
-                //          }
-                //          else if (targetGetName == Database.LEGENDARY_FELTUS)
-                //          {
-                //              // [コメント] 何か演出が欲しい。
-                //              UpdateMainMessage("アイン：（神剣、フェルトゥーシュだったんだ、コレ・・・）");
-
-                //              UpdateMainMessage("アイン：（そうさ・・・俺はコイツで・・・）");
-
-                //              UpdateMainMessage("アイン：（いや、これを受け止めなければならないんだ、俺は）");
-
-                //              UpdateMainMessage("アイン：（・・・今度こそ、心に決めたぜ）");
-
-                //              UpdateMainMessage("アイン：（この剣からは逃げない）");
-
-                //              UpdateMainMessage("アイン：（っしゃ！　それじゃ使うぜ、フェルトゥーシュを！）");
-                //          }
-                //          using (MessageDisplayWithIcon mdwi = new MessageDisplayWithIcon())
-                //          {
-                //              ItemBackPack item = new ItemBackPack(targetGetName);
-                //              mdwi.Message = item.Name + "を入手した！";
-                //              mdwi.Item = item;
-                //              GroundOne.PlaySoundEffect(Database.SOUND_LVUP_FELTUS);
-                //              mdwi.StartPosition = FormStartPosition.CenterParent;
-                //              mdwi.ShowDialog();
-                //          }
-                //      }
-                //  }
-
-
-
-                //  if (GroundOne.WE.AvailableSecondCharacter)
-                //  {
-                //      this.SC = tempSC;
-                //      this.SC.ReplaceBackPack(tempSC.GetBackPackInfo());
-                //      if (sc.Level < Database.CHARACTER_MAX_LEVEL5)
-                //      {
-                //          sc.Exp += be.EC1.Exp;
-                //      }
-                //      //SC.Gold += be.EC1.Gold; // [警告]：ゴールドの所持は別クラスにするべきです。
-
-                //      int levelUpPoint = 0;
-                //      int cumultiveLvUpValue = 0;
-                //      while (true)
-                //      {
-                //          if (sc.Exp >= sc.NextLevelBorder && sc.Level < Database.CHARACTER_MAX_LEVEL5)
-                //          {
-                //              levelUpPoint += sc.LevelUpPointTruth;
-                //              sc.BaseLife += sc.LevelUpLifeTruth;
-                //              sc.BaseMana += sc.LevelUpManaTruth;
-                //              sc.Exp = sc.Exp - sc.NextLevelBorder;
-                //              sc.Level += 1;
-                //              cumultiveLvUpValue++;
-                //          }
-                //          else
-                //          {
-                //              break;
-                //          }
-                //      }
-
-                //      if (cumultiveLvUpValue > 0)
-                //      {
-                //          GroundOne.PlaySoundEffect("LvUp");
-                //          if (!alreadyPlayBackMusic)
-                //          {
-                //              alreadyPlayBackMusic = true;
-                //              GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-                //          }
-                //          using (TruthStatusPlayer sp = new TruthStatusPlayer())
-                //          {
-                //              sp.WE = we;
-                //              sp.MC = mc;
-                //              sp.SC = sc;
-                //              sp.TC = tc;
-                //              sp.CurrentStatusView = sc.PlayerStatusColor;
-                //              sp.LevelUp = true;
-                //              sp.UpPoint = levelUpPoint;
-                //              sp.CumultiveLvUpValue = cumultiveLvUpValue;
-                //              sp.StartPosition = FormStartPosition.CenterParent;
-                //              sp.ShowDialog();
-                //          }
-
-                //      }
-                //  }
-
-                //  if (GroundOne.WE.AvailableThirdCharacter)
-                //  {
-                //      this.TC = tempTC;
-                //      this.TC.ReplaceBackPack(tempTC.GetBackPackInfo());
-                //      if (tc.FullName == Database.OL_LANDIS_FULL)
-                //      {
-                //          if (tc.Level < Database.CHARACTER_MAX_LEVEL2)
-                //          {
-                //              tc.Exp += be.EC1.Exp;
-                //          }
-                //      }
-                //      else if (tc.FullName == Database.VERZE_ARTIE_FULL)
-                //      {
-                //          if (tc.Level < Database.CHARACTER_MAX_LEVEL5)
-                //          {
-                //              tc.Exp += be.EC1.Exp;
-                //          }
-                //      }
-                //      //TC.Gold += be.EC1.Gold; // [警告]：ゴールドの所持は別クラスにするべきです。
-
-                //      int levelUpPoint = 0;
-                //      int cumultiveLvUpValue = 0;
-                //      while (true)
-                //      {
-                //          if (tc.Exp >= tc.NextLevelBorder && tc.Level < Database.CHARACTER_MAX_LEVEL5)
-                //          {
-                //              levelUpPoint += tc.LevelUpPointTruth;
-                //              tc.BaseLife += tc.LevelUpLifeTruth;
-                //              tc.BaseMana += tc.LevelUpManaTruth;
-                //              tc.Exp = tc.Exp - tc.NextLevelBorder;
-                //              tc.Level += 1;
-                //              cumultiveLvUpValue++;
-                //          }
-                //          else
-                //          {
-                //              break;
-                //          }
-                //      }
-
-                //      if (cumultiveLvUpValue > 0)
-                //      {
-                //          GroundOne.PlaySoundEffect("LvUp");
-                //          if (!alreadyPlayBackMusic)
-                //          {
-                //              alreadyPlayBackMusic = true;
-                //              GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-                //          }
-                //          using (TruthStatusPlayer sp = new TruthStatusPlayer())
-                //          {
-                //              sp.WE = we;
-                //              sp.MC = mc;
-                //              sp.SC = sc;
-                //              sp.TC = tc;
-                //              sp.CurrentStatusView = tc.PlayerStatusColor;
-                //              sp.LevelUp = true;
-                //              sp.UpPoint = levelUpPoint;
-                //              sp.CumultiveLvUpValue = cumultiveLvUpValue;
-                //              sp.StartPosition = FormStartPosition.CenterParent;
-                //              sp.ShowDialog();
-                //          }
-
-                //      }
-                //  }
-                //  this.WE = tempWE;
-
-                //  if (!alreadyPlayBackMusic && (ec1.Name != "五階の守護者：Bystander" && enemyName != Database.ENEMY_BOSS_BYSTANDER_EMPTINESS && enemyName != Database.ENEMY_LAST_SINIKIA_KAHLHANZ && enemyName != Database.ENEMY_LAST_OL_LANDIS))
-                //  {
-                //      alreadyPlayBackMusic = true;
-                //      GroundOne.PlayDungeonMusic(Database.BGM14, Database.BGM14LoopBegin);
-                //  }
-                //  SetupPlayerStatus();
-                //  return true;
-            }
-            #endregion
             #endregion
         }
 
@@ -15948,7 +15951,7 @@ namespace DungeonPlayer
                         GroundOne.enemyName3 = Database.ENEMY_SEA_STAR_KNIGHT_AMARA;
                     }
                     CancelKeyDownMovement();
-                    SceneDimension.CallTruthBattleEnemy(this, false, false, false, false);
+                    SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false);
                 }
                 else if (currentEvent == MessagePack.ActionEvent.StopMusic)
                 {

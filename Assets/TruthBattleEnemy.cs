@@ -748,7 +748,7 @@ namespace DungeonPlayer
 
             if (UpdatePlayerDeadFlag()) { Debug.Log("UpdatePlayerDeadFlag is true then return"); return; }
             if (this.endFlag) { Debug.Log("endFlag is true then return"); return; } // 終了サインが出た場合、戦闘終了として待機する。
-            if (this.gameStart == false) { Debug.Log("gameStart is false then return"); return; } // 戦闘開始サインが無い状態では、待機する。
+            if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
             if (this.endBattleForMatrixDragonEnd)
             {
                 BattleEndPhase();
@@ -5199,7 +5199,7 @@ namespace DungeonPlayer
         public void tapBattleClose()
         {
             GroundOne.StopDungeonMusic();
-            SceneDimension.Back(this);
+            SceneDimension.CallBackBattleEnemy();
         }
 
         public void tapActionButton(Button obj)
@@ -5426,7 +5426,7 @@ namespace DungeonPlayer
 
                     if (target.CurrentProtection > 0 && player.CurrentTruthVision <= 0)
                     {
-                        damage = (int)((float)damage / 1.2F);
+                        damage = (int)((float)damage / 1.5F);
                     }
                     if (target.CurrentEternalPresence > 0)
                     {
@@ -6136,7 +6136,7 @@ namespace DungeonPlayer
 
                 if (target.CurrentAbsorbWater > 0 && player.CurrentTruthVision <= 0)
                 {
-                    damage = damage / 1.3F;
+                    damage = damage / 1.5F;
                 }
                 if (target.CurrentEternalPresence > 0)
                 {
@@ -7115,7 +7115,7 @@ namespace DungeonPlayer
                 System.Threading.Thread.Sleep(1000);
                 GroundOne.BattleResult = GroundOne.battleResult.Abort;
                 GroundOne.StopDungeonMusic();
-                SceneDimension.Back(this);
+                SceneDimension.CallBackBattleEnemy();
                 return;
             }
 
@@ -7155,20 +7155,20 @@ namespace DungeonPlayer
             System.Threading.Thread.Sleep(1000);
             GroundOne.BattleResult = GroundOne.battleResult.Abort;
             GroundOne.StopDungeonMusic();
-            SceneDimension.Back(this);
+            SceneDimension.CallBackBattleEnemy();
         }
 
         public void GameOverYes_Click()
         {
             GroundOne.BattleResult = GroundOne.battleResult.Retry;
             GroundOne.StopDungeonMusic();
-            SceneDimension.Back(this);
+            SceneDimension.CallBackBattleEnemy();
         }
         public void GameOverNo_Click()
         {
             GroundOne.BattleResult = GroundOne.battleResult.Ignore;
             GroundOne.StopDungeonMusic();
-            SceneDimension.Back(this);
+            SceneDimension.CallBackBattleEnemy();
         }
 
         public void OnMouseEnterImage(Button sender)
@@ -7818,7 +7818,7 @@ namespace DungeonPlayer
 
             Debug.Log("BattleResult: " + GroundOne.BattleResult.ToString());
             GroundOne.StopDungeonMusic();
-            SceneDimension.Back(this);
+            SceneDimension.CallBackBattleEnemy();
         }
 
         private void GetExpAndGold()
