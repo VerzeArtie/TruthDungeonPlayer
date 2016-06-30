@@ -138,7 +138,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "HeatBoost":
+                case Database.HEAT_BOOST:
                     effectValue = player.StandardIntelligence / 2;
                     if ((effectValue - target.BuffAgility_HeatBoost) > 0)
                     {

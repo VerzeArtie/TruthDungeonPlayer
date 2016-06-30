@@ -1901,12 +1901,30 @@ namespace DungeonPlayer
         private void PlayerSkillSurpriseAttack(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(161));
-            if (PlayerNormalAttack(player, target, 0, false, false))
+
+            List<MainCharacter> group = new List<MainCharacter>();
+            if (IsPlayerAlly(player))
             {
-                bool result = NowParalyze(player, target, 1);
-                if (result == false)
+                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
+                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
+                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+            }
+            else
+            {
+                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+            }
+
+            for (int ii = 0; ii < group.Count; ii++)
+            {
+                if (PlayerNormalAttack(player, target, 0, false, false))
                 {
-                    ((TruthEnemyCharacter)player).DetectCannotBeParalyze = true;
+                    bool result = NowParalyze(player, target, 1);
+                    if (result == false)
+                    {
+                        ((TruthEnemyCharacter)player).DetectCannotBeParalyze = true;
+                    }
                 }
             }
         }

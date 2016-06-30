@@ -3730,7 +3730,7 @@ namespace DungeonPlayer
             if (command == Database.TRUST_SILENCE) { return TargetType.Own; }
             if (command == Database.MIND_KILLING) { return TargetType.Enemy; }
 
-            if (command == Database.SURPRISE_ATTACK) { return TargetType.Enemy; }
+            if (command == Database.SURPRISE_ATTACK) { return TargetType.EnemyGroup; }
             if (command == Database.STANCE_OF_MYSTIC) { return TargetType.Own; }
 
             if (command == Database.PSYCHIC_WAVE) { return TargetType.Enemy; }
@@ -3805,202 +3805,202 @@ namespace DungeonPlayer
         }
         public static string GetDescription(string command)
         {
-            if (command == Database.ATTACK_EN) { return "敵対象：通常攻撃を行う。"; }
-            if (command == Database.DEFENSE_EN) { return "自分対象：防御体制をとる。"; }
+            if (command == Database.ATTACK_EN) { return "通常攻撃を行う。"; }
+            if (command == Database.DEFENSE_EN) { return "防御体制をとる。"; }
             if (command == Database.STAY_EN) { return "待機体制をとる。"; }
             if (command == Database.WEAPON_SPECIAL_EN) { return "武器（メイン）に付随している能力を発揮する。\n武器（メイン）に【特殊能力：有】がある時、使用可能。"; }
             if (command == Database.WEAPON_SPECIAL_LEFT_EN) { return "武器（サブ）に付随している能力を発揮する。\n武器（サブ）に【特殊能力：有】がある時、使用可能。"; }
-            if (command == Database.TAMERU_EN) { return "自分対象：魔力をためる。\n武器（メイン）に杖を装備している時、使用可能。"; }
+            if (command == Database.TAMERU_EN) { return "魔力をためる。\n武器（メイン）に杖を装備している時、使用可能。"; }
             if (command == Database.ACCESSORY_SPECIAL_EN) { return "アクセサリ【１】に付随している能力を発揮する。"; }
             if (command == Database.ACCESSORY_SPECIAL2_EN) { return "アクセサリ【２】に付随している能力を発揮する。"; }
             if (command == Database.ARCHETYPE_COMMAND) { return "潜在奥義【元核】を発動する。"; }
 
-            if (command == Database.FRESH_HEAL) { return "味方対象：対象のライフを" + PowerResult("知", 4.0, 40, 50) + "の分だけ回復する。"; }
-            if (command == Database.PROTECTION) { return "味方対象：対象の物理防御力を" + PowerResult(1.5) + "上昇させる。"; }
-            if (command == Database.HOLY_SHOCK) { return "敵対象：対象に" + PowerResult("知", 2.2, 120, 135) + "の【聖】ダメージを与える。"; }
-            if (command == Database.SAINT_POWER) { return "味方対象：対象の物理攻撃を" + PowerResult(1.5) + "上昇させる。"; }
-            if (command == Database.GLORY) { return "自分対象：本効果が持続している間、直接攻撃する度に自分にFreshHealをかける。FreshHealの消費コストは０である。"; }
-            if (command == Database.RESURRECTION) { return "味方対象：対象をライフ１/２の状態で蘇生する。"; }
-            if (command == Database.CELESTIAL_NOVA) { return "敵または味方対象：対象が敵の場合、対象に" + PowerResult("知", 4.5, 4000, 5000) + "の【聖】ダメージを与える。対象が味方の場合、対象のライフを" + PowerResult("知", 5.0, 8000, 10000) + "回復する。"; }
+            if (command == Database.FRESH_HEAL) { return "対象のライフを" + PowerResult("知", 4.0, 40, 50) + "の分だけ回復する。"; }
+            if (command == Database.PROTECTION) { return "対象の物理防御力を" + PowerResult(1.5) + "上昇させる。"; }
+            if (command == Database.HOLY_SHOCK) { return "対象に" + PowerResult("知", 2.2, 120, 135) + "の【聖】ダメージを与える。"; }
+            if (command == Database.SAINT_POWER) { return "対象の物理攻撃を" + PowerResult(1.5) + "上昇させる。"; }
+            if (command == Database.GLORY) { return "本効果が持続している間、直接攻撃する度に自分にFreshHealをかける。FreshHealの消費コストは０である。"; }
+            if (command == Database.RESURRECTION) { return "対象をライフ１/２の状態で蘇生する。"; }
+            if (command == Database.CELESTIAL_NOVA) { return "対象が敵の場合、対象に" + PowerResult("知", 4.5, 4000, 5000) + "の【聖】ダメージを与える。対象が味方の場合、対象のライフを" + PowerResult("知", 5.0, 8000, 10000) + "回復する。"; }
 
-            if (command == Database.DARK_BLAST) { return "敵対象：対象に" + PowerResult("知", 2.6, 30, 35) + "の【闇】ダメージを与える。"; }
-            if (command == Database.SHADOW_PACT) { return "味方対象：魔法攻撃力を" + PowerResult(1.5) + "上昇させる。"; }
-            if (command == Database.LIFE_TAP) { return "味方対象：対象のライフを" + PowerResult("知", 4.0, 40, 50) + "の分だけ回復する。"; }
-            if (command == Database.BLACK_CONTRACT) { return "自分対象：本効果が持続している間、ターンが進む度に、10%のライフを失う。\r\n\r\nスキル、魔法の発動コストを０にする。"; }
-            if (command == Database.DEVOURING_PLAGUE) { return "敵対象：敵に" + PowerResult("知", 2.0, 120, 135) + "の【闇】ダメージあたえ、その分だけ自分のライフを回復する。"; }
-            if (command == Database.BLOODY_VENGEANCE) { return "味方対象：【力】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
-            if (command == Database.DAMNATION) { return "敵対象：ターンが進む度に、対象に《最大ライフ／心》の【闇】ダメージを与える。\r\n心が1以上：10 + 10*(心/100)\r\n心が100以上：20 + 20*(心/300)\r\n心が400以上：34 + 18*(心/600)\r\n心が1000以上：52 + 22*(心/2500)\r\n心が3500以上：74 + 26*(心/6500)\r\n"; }
+            if (command == Database.DARK_BLAST) { return "対象に" + PowerResult("知", 2.6, 30, 35) + "の【闇】ダメージを与える。"; }
+            if (command == Database.SHADOW_PACT) { return "魔法攻撃力を" + PowerResult(1.5) + "上昇させる。"; }
+            if (command == Database.LIFE_TAP) { return "対象のライフを" + PowerResult("知", 4.0, 40, 50) + "の分だけ回復する。"; }
+            if (command == Database.BLACK_CONTRACT) { return "本効果が持続している間、ターンが進む度に、10%のライフを失う。\r\n\r\nスキル、魔法の発動コストを０にする。"; }
+            if (command == Database.DEVOURING_PLAGUE) { return "対象に" + PowerResult("知", 2.0, 120, 135) + "の【闇】ダメージあたえ、その分だけ自分のライフを回復する。"; }
+            if (command == Database.BLOODY_VENGEANCE) { return "【力】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
+            if (command == Database.DAMNATION) { return "ターンが進む度に、対象に《最大ライフ／心》の【闇】ダメージを与える。\r\n心が1以上：10 + 10*(心/100)\r\n心が100以上：20 + 20*(心/300)\r\n心が400以上：34 + 18*(心/600)\r\n心が1000以上：52 + 22*(心/2500)\r\n心が3500以上：74 + 26*(心/6500)\r\n"; }
 
             if (command == Database.FIRE_BALL) { return "対象に" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
-            if (command == Database.FLAME_AURA) { return "味方対象：直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
-            if (command == Database.HEAT_BOOST) { return "味方対象：【技】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
-            if (command == Database.FLAME_STRIKE) { return "敵対象：対象に" + PowerResult("知", 3.5, 750, 1000) + "の【火】ダメージを与える。"; }
-            if (command == Database.VOLCANIC_WAVE) { return "敵対象：対象に" + PowerResult("知", 4.0, 1200, 1600) + "の【火】ダメージを与える。"; }
-            if (command == Database.IMMORTAL_RAVE) { return "自分対象：本効果が持続している間、直接攻撃＋1ターン目はFireBall、２ターン目はFlameStrike、3ターン目はVolcanicWaveをコスト０で行う。"; }
-            if (command == Database.LAVA_ANNIHILATION) { return "敵全体：" + PowerResult("知", 5.0, 7000, 8000) + "の【火】ダメージを与える。"; }
+            if (command == Database.FLAME_AURA) { return "直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
+            if (command == Database.HEAT_BOOST) { return "対象の【技】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
+            if (command == Database.FLAME_STRIKE) { return "対象に" + PowerResult("知", 3.5, 750, 1000) + "の【火】ダメージを与える。"; }
+            if (command == Database.VOLCANIC_WAVE) { return "対象に" + PowerResult("知", 4.0, 1200, 1600) + "の【火】ダメージを与える。"; }
+            if (command == Database.IMMORTAL_RAVE) { return "本効果が持続している間、直接攻撃＋1ターン目はFireBall、２ターン目はFlameStrike、3ターン目はVolcanicWaveをコスト０で行う。"; }
+            if (command == Database.LAVA_ANNIHILATION) { return "すべての敵に" + PowerResult("知", 5.0, 7000, 8000) + "の【火】ダメージを与える。"; }
 
-            if (command == Database.ICE_NEEDLE) { return "敵対象：対象に" + PowerResult("知", 2.8, 30, 35) + "の【水】ダメージを与える。"; }
-            if (command == Database.ABSORB_WATER) { return "味方対象：魔法防御力を" + PowerResult(1.5) + "上昇させる。"; }
-            if (command == Database.CLEANSING) { return "味方対象：負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
-            if (command == Database.FROZEN_LANCE) { return "敵対象：対象に" + PowerResult("知", 3.3, 750, 1000) + "の【水】ダメージを与える。"; }
-            if (command == Database.MIRROR_IMAGE) { return "味方対象：ダメージ源を有する魔法攻撃が向けられた場合、それを反射する。ただし、WordOfPowerは反射できない。"; }
-            if (command == Database.PROMISED_KNOWLEDGE) { return "味方対象：【知】パラメタを" + PowerResult("知", 0.5) + "上昇させる。"; }
-            if (command == Database.ABSOLUTE_ZERO) { return "敵対象：本効果が持続している間、対象はライフ・マナ・スキル回復不可、スペル詠唱不可、スキル使用不可、防御不可となる。"; }
+            if (command == Database.ICE_NEEDLE) { return "対象に" + PowerResult("知", 2.8, 30, 35) + "の【水】ダメージを与える。"; }
+            if (command == Database.ABSORB_WATER) { return "対象の魔法防御力を" + PowerResult(1.5) + "上昇させる。"; }
+            if (command == Database.CLEANSING) { return "対象の負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
+            if (command == Database.FROZEN_LANCE) { return "対象に" + PowerResult("知", 3.3, 750, 1000) + "の【水】ダメージを与える。"; }
+            if (command == Database.MIRROR_IMAGE) { return "対象にダメージ源を有する魔法攻撃が向けられた場合、それを反射する。ただし、WordOfPowerは反射できない。"; }
+            if (command == Database.PROMISED_KNOWLEDGE) { return "対象の【知】パラメタを" + PowerResult("知", 0.5) + "上昇させる。"; }
+            if (command == Database.ABSOLUTE_ZERO) { return "本効果が持続している間、対象はライフ・マナ・スキル回復不可、スペル詠唱不可、スキル使用不可、防御不可となる。"; }
 
-            if (command == Database.WORD_OF_POWER) { return "敵対象：対象の防御を無視した上で、対象に" + PowerResult("力", 2.4, 30, 35) + "の【理】ダメージを与える。\r\nこの魔法は物理ダメージとして扱われる。\r\nこの魔法はMirrorImageの対象とならない。\r\nこの魔法はカウンターされない。"; }
-            if (command == Database.GALE_WIND) { return "自分対象：本効果が持続している間、行動を行う際、同一コマンドを連続で２回行動する。\r\nこの効果は、メイン行動／インスタント行動のいずれにも適用される。"; }
-            if (command == Database.WORD_OF_LIFE) { return "味方対象：ターンが進む度に、ライフを" + PowerResult("知", 1.0, 30, 35) + "＋" + PowerResult("心", 1.0, 0, 0) + "の分だけ回復する。\r\n\r\nこの回復量は潜在能力値に応じて増幅する。"; }
-            if (command == Database.WORD_OF_FORTUNE) { return "味方対象：本効果が持続している間、必ずクリティカルヒットが発生する。\r\nこの効果は物理／魔法のいずれにも適用される。"; }
-            if (command == Database.AETHER_DRIVE) { return "自分対象：本効果が持続している間、自分に対する物理ダメージを半減させる。\r\nこれに加え、敵に対する物理ダメージを２倍にする。"; }
-            if (command == Database.GENESIS) { return "自分対象：前回とった行動と同じ行動を行う。前回消費した魔法／スキルのコストは０として扱われる。"; }
-            if (command == Database.ETERNAL_PRESENCE) { return "味方対象：物理攻撃力、物理防御力、魔法攻撃力、魔法防御力をそれぞれ" + PowerResult(1.3) + "上昇させる。"; }
+            if (command == Database.WORD_OF_POWER) { return "対象の防御を無視した上で、対象に" + PowerResult("力", 2.4, 30, 35) + "の【理】ダメージを与える。\r\nこの魔法は物理ダメージとして扱われる。\r\nこの魔法はMirrorImageの対象とならない。\r\nこの魔法はカウンターされない。"; }
+            if (command == Database.GALE_WIND) { return "本効果が持続している間、行動を行う際、同一コマンドを連続で２回行動する。\r\nこの効果は、メイン行動／インスタント行動のいずれにも適用される。"; }
+            if (command == Database.WORD_OF_LIFE) { return "ターンが進む度に、対象のライフを" + PowerResult("知", 1.0, 30, 35) + "＋" + PowerResult("心", 1.0, 0, 0) + "の分だけ回復する。\r\n\r\nこの回復量は潜在能力値に応じて増幅する。"; }
+            if (command == Database.WORD_OF_FORTUNE) { return "本効果が持続している間、必ずクリティカルヒットが発生する。\r\nこの効果は物理／魔法のいずれにも適用される。"; }
+            if (command == Database.AETHER_DRIVE) { return "本効果が持続している間、自分に対する物理ダメージを半減させる。\r\nこれに加え、敵に対する物理ダメージを２倍にする。"; }
+            if (command == Database.GENESIS) { return "前回とった行動と同じ行動を行う。前回消費した魔法／スキルのコストは０として扱われる。"; }
+            if (command == Database.ETERNAL_PRESENCE) { return "対象の物理攻撃力、物理防御力、魔法攻撃力、魔法防御力をそれぞれ" + PowerResult(1.3) + "上昇させる。"; }
 
-            if (command == Database.DISPEL_MAGIC) { return "敵対象：正のＢＵＦＦ効果を全て解除する。\r\n\r\n正のＢＵＦＦ効果には以下が含まれる。\r\nProtection、SaintPower、AbsorbWater、ShadowPact、EternalPresence、BloodyVengeance、HeatBoost、PromisedKnowledge、RiseOfImage、WordOfLife、FlameAura、PsychicTrance、BlindJustice、SkyShield、EverDroplet、HolyBreaker、ExaltedField、FrozenAura、PhantasmalWind、RedDragonWill、StaticBarrier、BlueDragonWill、SeventhMagic、ParadoxImage"; }
-            if (command == Database.RISE_OF_IMAGE) { return "味方対象：心パラメタを" + PowerResult("知", 0.5) + "上昇させる。"; }
-            if (command == Database.DEFLECTION) { return "味方対象：ダメージ源を有する物理攻撃が向けられた場合、それを反射する。ただし、WordOfPowerは反射できない。"; }
-            if (command == Database.TRANQUILITY) { return "敵対象：効果継続性のある正のＢＵＦＦ効果を全て解除する。\r\n\r\n効果継続性のある正のＢＵＦＦ効果には以下が含まれる。\r\n" + TurnPlusBuff(); }
-            if (command == Database.ONE_IMMUNITY) { return "自分対象：本効果が持続している間、防御している間、全ダメージを無効化する。\r\nただし、WordOfPowerとPsychicWaveはダメージを無効化する事はできない。"; }
-            if (command == Database.WHITE_OUT) { return "敵対象：対象に" + PowerResult("知", 3.8, 1200, 1600) + "の【空】ダメージを与える。"; }
-            if (command == Database.TIME_STOP) { return "敵味方対象：本効果が持続している間、自分を除く全員の行動を停止させる。\r\n本効果は１ターン持続される。"; }
+            if (command == Database.DISPEL_MAGIC) { return "対象の正のＢＵＦＦ効果を全て解除する。\r\n\r\n正のＢＵＦＦ効果には以下が含まれる。\r\nProtection、SaintPower、AbsorbWater、ShadowPact、EternalPresence、BloodyVengeance、HeatBoost、PromisedKnowledge、RiseOfImage、WordOfLife、FlameAura、PsychicTrance、BlindJustice、SkyShield、EverDroplet、HolyBreaker、ExaltedField、FrozenAura、PhantasmalWind、RedDragonWill、StaticBarrier、BlueDragonWill、SeventhMagic、ParadoxImage"; }
+            if (command == Database.RISE_OF_IMAGE) { return "対象の【心】パラメタを" + PowerResult("知", 0.5) + "上昇させる。"; }
+            if (command == Database.DEFLECTION) { return "対象にダメージ源を有する物理攻撃が向けられた場合、それを反射する。ただし、WordOfPowerは反射できない。"; }
+            if (command == Database.TRANQUILITY) { return "対象の効果継続性のある正のＢＵＦＦ効果を全て解除する。\r\n\r\n効果継続性のある正のＢＵＦＦ効果には以下が含まれる。\r\n" + TurnPlusBuff(); }
+            if (command == Database.ONE_IMMUNITY) { return "本効果が持続している間、防御している間、全ダメージを無効化する。\r\nただし、WordOfPowerとPsychicWaveはダメージを無効化する事はできない。"; }
+            if (command == Database.WHITE_OUT) { return "対象に" + PowerResult("知", 3.8, 1200, 1600) + "の【空】ダメージを与える。"; }
+            if (command == Database.TIME_STOP) { return "本効果が持続している間、自分を除く敵味方全ての行動を停止させる。\r\n本効果は１ターン持続される。"; }
 
-            if (command == Database.PSYCHIC_TRANCE) { return "味方対象：魔法攻撃力を" + PowerResult(1.7) + "上昇させ、魔法防御力を" + PowerResult(0.7) + "に減少させる。"; }
-            if (command == Database.BLIND_JUSTICE) { return "味方対象：物理攻撃力を" + PowerResult(1.7) + "上昇させ、物理防御力を" + PowerResult(0.7) + "に減少させる。"; }
-            if (command == Database.TRANSCENDENT_WISH) { return "自分対象：本効果が持続している間、力/技/知/体/心パラメタをそれぞれ" + PowerResult(1.5) + "上昇させる。本効果が切れた場合、対象者は死亡する。"; }
+            if (command == Database.PSYCHIC_TRANCE) { return "対象の魔法攻撃力を" + PowerResult(1.7) + "上昇させ、魔法防御力を" + PowerResult(0.7) + "に減少させる。"; }
+            if (command == Database.BLIND_JUSTICE) { return "対象の物理攻撃力を" + PowerResult(1.7) + "上昇させ、物理防御力を" + PowerResult(0.7) + "に減少させる。"; }
+            if (command == Database.TRANSCENDENT_WISH) { return "本効果が持続している間、力/技/知/体/心パラメタをそれぞれ" + PowerResult(1.5) + "上昇させる。本効果が切れた場合、対象者は死亡する。"; }
 
-            if (command == Database.FLASH_BLAZE) { return "敵対象：対象に" + PowerResult("知", 2.0, 200, 300) + "の【聖/火】ダメージを与える。そして、対象者に【フラッシュブレイズ】カウンターが置かれる。\r\n\r\nターン進行により【フラッシュブレイズ】カウンターが取り除かれた時、対象に" + PowerResult("知", 2.0, 200, 300) + "の【聖/火】ダメージを与える。"; }
-            if (command == Database.LIGHT_DETONATOR) { return "敵全体：対象者全員に" + PowerResult("知", 3.0, 750, 1000) + "の【聖/火】ダメージを与える。"; }
-            if (command == Database.ASCENDANT_METEOR) { return "敵対象：対象に" + PowerResult("知", 1.5, 2000, 3000) + "の【聖/火】ダメージを１０回連続で与える。"; }
+            if (command == Database.FLASH_BLAZE) { return "対象に" + PowerResult("知", 2.0, 200, 300) + "の【聖/火】ダメージを与える。そして、対象者に【フラッシュブレイズ】カウンターが置かれる。\r\n\r\nターン進行により【フラッシュブレイズ】カウンターが取り除かれた時、対象に" + PowerResult("知", 2.0, 200, 300) + "の【聖/火】ダメージを与える。"; }
+            if (command == Database.LIGHT_DETONATOR) { return "すべての敵に" + PowerResult("知", 3.0, 750, 1000) + "の【聖/火】ダメージを与える。"; }
+            if (command == Database.ASCENDANT_METEOR) { return "対象に" + PowerResult("知", 1.5, 2000, 3000) + "の【聖/火】ダメージを１０回連続で与える。"; }
 
-            if (command == Database.SKY_SHIELD) { return "味方対象：ダメージ源を有する魔法攻撃が向けられた場合、その魔法ダメージを０に軽減する。この効果は、３回分まで累積が可能である。"; }
-            if (command == Database.SACRED_HEAL) { return "味方全体：対象者全員のライフを" + PowerResult("知", 3.5, 4000, 6000) + "の分だけ回復する。"; }
-            if (command == Database.EVER_DROPLET) { return "味方対象：ターンが進む度に、対象のマナポイントを最大マナの1/30だけ回復する。"; }
+            if (command == Database.SKY_SHIELD) { return "対象にダメージ源を有する魔法攻撃が向けられた場合、その魔法ダメージを０に軽減する。この効果は、３回分まで累積が可能である。"; }
+            if (command == Database.SACRED_HEAL) { return "すべての味方のライフを" + PowerResult("知", 3.5, 4000, 6000) + "の分だけ回復する。"; }
+            if (command == Database.EVER_DROPLET) { return "ターンが進む度に、対象のマナポイントを最大マナの1/30だけ回復する。"; }
 
-            if (command == Database.HOLY_BREAKER) { return "味方対象：対象者が物理ダメージを受けた場合、それと同等の分だけのダメージを発生させた者に与える。"; }
-            if (command == Database.EXALTED_FIELD) { return "味方全体：対象者全員の物理防御力と魔法防御力を" + PowerResult(1.4) + "上昇させる。"; }
-            if (command == Database.HYMN_CONTRACT) { return "自分対象：本効果が持続している間、ターンが進む度に、10%のライフを失う。\r\n\r\n魔法／スキルの発動はカウンターされなくなる。"; }
+            if (command == Database.HOLY_BREAKER) { return "対象が物理ダメージを受けた場合、それと同等の分だけのダメージを発生させた者に与える。"; }
+            if (command == Database.EXALTED_FIELD) { return "すべての味方の物理防御力と魔法防御力を" + PowerResult(1.4) + "上昇させる。"; }
+            if (command == Database.HYMN_CONTRACT) { return "本効果が持続している間、ターンが進む度に、10%のライフを失う。\r\n\r\n魔法／スキルの発動はカウンターされなくなる。"; }
 
-            if (command == Database.STAR_LIGHTNING) { return "敵対象：対象に" + PowerResult("知", 1.0, 200, 300) + "の【聖/空】ダメージを与える。\r\n加えて、対象者に【スタン】効果を与える。\r\n本効果は１ターン持続される。"; }
-            if (command == Database.ANGEL_BREATH) { return "味方全体：対象者全員の負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
-            if (command == Database.ENDLESS_ANTHEM) { return "味方全体：効果継続性のある正のＢＵＦＦ効果を、もう１ターン追加で継続させる。\r\n\r\n効果継続性のある正のＢＵＦＦ効果には以下が含まれる。\r\n" + TurnPlusBuff(); }
+            if (command == Database.STAR_LIGHTNING) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【聖/空】ダメージを与える。\r\n加えて、対象者に【スタン】効果を与える。\r\n本効果は１ターン持続される。"; }
+            if (command == Database.ANGEL_BREATH) { return "すべての味方の負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
+            if (command == Database.ENDLESS_ANTHEM) { return "すべての味方の効果継続性のある正のＢＵＦＦ効果を、もう１ターン追加で継続させる。\r\n\r\n効果継続性のある正のＢＵＦＦ効果には以下が含まれる。\r\n" + TurnPlusBuff(); }
 
-            if (command == Database.BLACK_FIRE) { return "敵対象：対象に" + PowerResult("知", 1.0, 200, 300) + "の【闇/火】ダメージを与える。加えて、対象の魔法防御力を" + PowerResult(0.8) + "に減少させる。"; }
-            if (command == Database.BLAZING_FIELD) { return "敵全体：ターンが進む度に、対象者全員に" + PowerResult("知", 2.5, 1200, 1500) + "の【闇/火】ダメージを与える。"; }
-            if (command == Database.DEMONIC_IGNITE) { return "敵対象：対象に" + PowerResult("知", 4.5, 6000, 7000) + "の【闇/火】ダメージを与える。加えて、対象者に【ライフ回復不可】効果を与える。本効果は１ターン持続される。"; }
+            if (command == Database.BLACK_FIRE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【闇/火】ダメージを与える。加えて、対象の魔法防御力を" + PowerResult(0.8) + "に減少させる。"; }
+            if (command == Database.BLAZING_FIELD) { return "ターンが進む度に、対象者全員に" + PowerResult("知", 2.5, 1200, 1500) + "の【闇/火】ダメージを与える。"; }
+            if (command == Database.DEMONIC_IGNITE) { return "対象に" + PowerResult("知", 4.5, 6000, 7000) + "の【闇/火】ダメージを与える。加えて、対象者に【ライフ回復不可】効果を与える。本効果は１ターン持続される。"; }
 
-            if (command == Database.BLUE_BULLET) { return "敵対象：対象に" + PowerResult("知", 0.9, 200, 300) + "の【水/闇】ダメージを３回連続で与える。"; }
-            if (command == Database.DEEP_MIRROR) { return "インスタント対象：対象のインスタントがダメージ源を有しない魔法の場合、それをカウンターする。"; }
-            if (command == Database.DEATH_DENY) { return "味方対象：対象をライフ／マナ／スキルが全快の状態で蘇生する。加えて、対象者に【蘇生不可】効果を与える。"; }
+            if (command == Database.BLUE_BULLET) { return "対象に" + PowerResult("知", 0.9, 200, 300) + "の【水/闇】ダメージを３回連続で与える。"; }
+            if (command == Database.DEEP_MIRROR) { return "対象のインスタントがダメージ源を有しない魔法の場合、それをカウンターする。"; }
+            if (command == Database.DEATH_DENY) { return "対象をライフ／マナ／スキルが全快の状態で蘇生する。加えて、対象に【蘇生不可】効果を与える。"; }
 
-            if (command == Database.WORD_OF_MALICE) { return "敵対象：対象に" + PowerResult("知", 1.0, 200, 300) + "の【闇/理】ダメージを与える。加えて、対象の戦闘反応力を" + PowerResult(0.7) + "に減少させる。"; }
-            if (command == Database.ABYSS_EYE) { return "敵対象：対象を７０％の確率で死亡させる。\r\nそうでない場合、対象に" + PowerResult("知", 2.8, 4500, 6000) + "の【闇/理】ダメージを与える。"; }
-            if (command == Database.SIN_FORTUNE) { return "自分対象：次の行動時においてクリティカルダメージが発生した場合、そのクリティカルダメージ値を１．５倍にする。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.WORD_OF_MALICE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【闇/理】ダメージを与える。加えて、対象の戦闘反応力を" + PowerResult(0.7) + "に減少させる。"; }
+            if (command == Database.ABYSS_EYE) { return "対象を７０％の確率で死亡させる。\r\nそうでない場合、対象に" + PowerResult("知", 2.8, 4500, 6000) + "の【闇/理】ダメージを与える。"; }
+            if (command == Database.SIN_FORTUNE) { return "次の行動時においてクリティカルダメージが発生した場合、そのクリティカルダメージ値を１．５倍にする。\r\nこの効果は一度発動すると解除される。"; }
 
-            if (command == Database.DARKEN_FIELD) { return "敵全体：対象者全員の物理防御力と魔法防御力を" + PowerResult(0.8) + "に減少させる。"; }
-            if (command == Database.DOOM_BLADE) { return "敵対象：対象に" + PowerResult("知", 2.8, 2000, 3500) + "の【闇/空】ダメージを与える。\r\n加えて、対象に" + PowerResult("知", 1.5, 2000, 3000) + "のＭＰダメージを与える。"; }
-            if (command == Database.ECLIPSE_END) { return "敵味方全体：対象者全員の全BUFF、全DEBUFF効果を解除する。そして、【エクリプスエンド】カウンターが置かれる。\r\n\r\n本効果が持続している間、全ダメージを無効化する。本効果は２ターン持続される。"; }
+            if (command == Database.DARKEN_FIELD) { return "すべての敵の物理防御力と魔法防御力を" + PowerResult(0.8) + "に減少させる。"; }
+            if (command == Database.DOOM_BLADE) { return "対象に" + PowerResult("知", 2.8, 2000, 3500) + "の【闇/空】ダメージを与える。\r\n加えて、対象に" + PowerResult("知", 1.5, 2000, 3000) + "のＭＰダメージを与える。"; }
+            if (command == Database.ECLIPSE_END) { return "すべての敵味方の全BUFF、全DEBUFF効果を解除する。そして、【エクリプスエンド】カウンターが置かれる。\r\n\r\n本効果が持続している間、全ダメージを無効化する。本効果は２ターン持続される。"; }
 
-            if (command == Database.FROZEN_AURA) { return "味方対象：直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 2.8, 30, 35) + "の【水】ダメージを与える。"; }
-            if (command == Database.CHILL_BURN) { return "敵対象：対象に" + PowerResult("知", 1.0, 0, 0) + "の【火/水】ダメージを与える。\r\n加えて、対象者に【凍結】効果を与える。本効果は１ターン持続される。"; }
-            if (command == Database.ZETA_EXPLOSION) { return "敵対象：対象に" + PowerResult("知", 6.0, 8000, 12000) + "の【火／水】ダメージを与える。\r\n対象の防御姿勢を無視する。\r\nこの魔法はカウンターされない。\r\nこの魔法は軽減できない。"; }
+            if (command == Database.FROZEN_AURA) { return "対象の直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 2.8, 30, 35) + "の【水】ダメージを与える。"; }
+            if (command == Database.CHILL_BURN) { return "対象に" + PowerResult("知", 1.0, 0, 0) + "の【火/水】ダメージを与える。\r\n加えて、対象者に【凍結】効果を与える。本効果は１ターン持続される。"; }
+            if (command == Database.ZETA_EXPLOSION) { return "対象に" + PowerResult("知", 6.0, 8000, 12000) + "の【火／水】ダメージを与える。\r\n対象の防御姿勢を無視する。\r\nこの魔法はカウンターされない。\r\nこの魔法は軽減できない。"; }
 
-            if (command == Database.ENRAGE_BLAST) { return "敵全体：対象者全員に" + PowerResult("知", 1.0, 200, 300) + "の【火/理】ダメージを与える。\r\nその後、ターンが進む度に、対象者全員に" + PowerResult("知", 1.0, 200, 300) + "の【火/理】ダメージを与える。"; }
-            if (command == Database.PIERCING_FLAME) { return "敵対象：対象に" + PowerResult("知", 4.5, 3500, 5000) + "の【火/理】ダメージを与える。\r\n対象の防御姿勢を無視する。\r\nこの魔法は軽減できない。"; }
-            if (command == Database.SIGIL_OF_HOMURA) { return "敵対象：対象に【焔の刻印】カウンターを置く。\r\n\r\n【焔の刻印】カウンターを置かれた者は、【火】属性のダメージを受けた場合、加えて、そのダメージと同等の追加ダメージを受ける。\r\n\r\n火属性防御による軽減が適用されない。\r\n\r\nこのBUFF効果は解除できない。"; }
+            if (command == Database.ENRAGE_BLAST) { return "すべての敵に" + PowerResult("知", 1.0, 200, 300) + "の【火/理】ダメージを与える。\r\nその後、ターンが進む度に、対象者全員に" + PowerResult("知", 1.0, 200, 300) + "の【火/理】ダメージを与える。"; }
+            if (command == Database.PIERCING_FLAME) { return "対象に" + PowerResult("知", 4.5, 3500, 5000) + "の【火/理】ダメージを与える。\r\n対象の防御姿勢を無視する。\r\nこの魔法は軽減できない。"; }
+            if (command == Database.SIGIL_OF_HOMURA) { return "対象に【焔の刻印】カウンターを置く。\r\n\r\n【焔の刻印】カウンターを置かれた者は、【火】属性のダメージを受けた場合、加えて、そのダメージと同等の追加ダメージを受ける。\r\n\r\n火属性防御による軽減が適用されない。\r\n\r\nこのBUFF効果は解除できない。"; }
 
-            if (command == Database.IMMOLATE) { return "敵対象：対象に" + PowerResult("知", 1.0, 200, 300) + "の【火/空】ダメージを与える。加えて、対象の物理防御力を" + PowerResult(0.8) + "に減少させる。"; }
-            if (command == Database.PHANTASMAL_WIND) { return "味方対象：対象の戦闘反応力を" + PowerResult(1.2) + "上昇させる。"; }
-            if (command == Database.RED_DRAGON_WILL) { return "味方対象：【火】属性のダメージを" + PowerResult(1.5) + "上昇させる。"; }
+            if (command == Database.IMMOLATE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【火/空】ダメージを与える。加えて、対象の物理防御力を" + PowerResult(0.8) + "に減少させる。"; }
+            if (command == Database.PHANTASMAL_WIND) { return "対象の戦闘反応力を" + PowerResult(1.2) + "上昇させる。"; }
+            if (command == Database.RED_DRAGON_WILL) { return "対象の【火】属性のダメージを" + PowerResult(1.5) + "上昇させる。"; }
 
-            if (command == Database.WORD_OF_ATTITUDE) { return "味方対象：対象のインスタントポイントを全快にする。"; }
-            if (command == Database.STATIC_BARRIER) { return "味方対象：ダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、そのダメージを半分にする。この効果は３回まで累積が可能である。"; }
-            if (command == Database.AUSTERITY_MATRIX) { return "敵対象：対象の正のＢＵＦＦ効果を全て解除する。\r\n\r\nこの後、正のＢＵＦＦ効果は付与できなくなる。\r\n\r\n負のＢＵＦＦ効果は付与できる。"; }
+            if (command == Database.WORD_OF_ATTITUDE) { return "対象のインスタントポイントを全快にする。"; }
+            if (command == Database.STATIC_BARRIER) { return "対象のダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、そのダメージを半分にする。この効果は３回まで累積が可能である。"; }
+            if (command == Database.AUSTERITY_MATRIX) { return "対象の正のＢＵＦＦ効果を全て解除する。\r\n\r\nこの後、正のＢＵＦＦ効果は付与できなくなる。\r\n\r\n負のＢＵＦＦ効果は付与できる。"; }
 
-            if (command == Database.VANISH_WAVE) { return "敵対象：対象に" + PowerResult("知", 1.0, 200, 300) + "の【水/空】ダメージを与える。\r\n加えて、対象に【沈黙】効果を与える。本効果は３ターン持続される。"; }
-            if (command == Database.VORTEX_FIELD) { return "敵全体：対象者全員に【鈍化】効果を与える。本効果は４ターン持続される。"; }
-            if (command == Database.BLUE_DRAGON_WILL) { return "味方対象：【水】属性のダメージを" + PowerResult(1.5) + "上昇させる。"; }
+            if (command == Database.VANISH_WAVE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【水/空】ダメージを与える。\r\n加えて、対象に【沈黙】効果を与える。本効果は３ターン持続される。"; }
+            if (command == Database.VORTEX_FIELD) { return "すべての敵に【鈍化】効果を与える。本効果は４ターン持続される。"; }
+            if (command == Database.BLUE_DRAGON_WILL) { return "対象の【水】属性のダメージを" + PowerResult(1.5) + "上昇させる。"; }
 
-            if (command == Database.SEVENTH_MAGIC) { return "自分対象：物理攻撃の基を【力】から【知】へ転換する。\r\n\r\n魔法攻撃の基を【知】から【力】へ転換する。"; }
-            if (command == Database.PARADOX_IMAGE) { return "自分対象：潜在能力を" + PowerResult(1.2) + "上昇させる。"; }
-            if (command == Database.WARP_GATE) { return "自分対象：行動ゲージバーを半分進める。\r\n\r\nもし、行動フェーズを超える場合、現在選択している魔法／スキルをコスト消費する事なく行動する。その後行動ゲージを超えた分だけ、行動ゲージバーを進める。"; }
+            if (command == Database.SEVENTH_MAGIC) { return "対象の物理攻撃の基を【力】から【知】へ転換する。\r\n\r\n魔法攻撃の基を【知】から【力】へ転換する。"; }
+            if (command == Database.PARADOX_IMAGE) { return "対象の潜在能力を" + PowerResult(1.2) + "上昇させる。"; }
+            if (command == Database.WARP_GATE) { return "対象の行動ゲージバーを半分進める。\r\n\r\nもし、行動フェーズを超える場合、現在選択している魔法／スキルをコスト消費する事なく行動する。その後行動ゲージを超えた分だけ、行動ゲージバーを進める。"; }
             // スキル
-            if (command == Database.STRAIGHT_SMASH) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + " ＋ " + PowerResult("技", 2.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 0, 0) + "の物理ダメージを与える。"; }
-            if (command == Database.DOUBLE_SLASH) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを２回連続で与える。"; }
-            if (command == Database.CRUSHING_BLOW) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、対象者に【スタン】効果を与える。本効果は２ターン持続される。"; }
-            if (command == Database.SOUL_INFINITY) { return "敵対象：対象に" + PowerResult("力", 1.2, 0, 0) + " ＋ " + PowerResult("技", 1.2, 0, 0) + " ＋ " + PowerResult("知", 1.2, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
+            if (command == Database.STRAIGHT_SMASH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + " ＋ " + PowerResult("技", 2.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 0, 0) + "の物理ダメージを与える。"; }
+            if (command == Database.DOUBLE_SLASH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを２回連続で与える。"; }
+            if (command == Database.CRUSHING_BLOW) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、対象者に【スタン】効果を与える。本効果は２ターン持続される。"; }
+            if (command == Database.SOUL_INFINITY) { return "対象に" + PowerResult("力", 1.2, 0, 0) + " ＋ " + PowerResult("技", 1.2, 0, 0) + " ＋ " + PowerResult("知", 1.2, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
-            if (command == Database.COUNTER_ATTACK) { return "自分対象：ダメージ源を有する物理攻撃が向けられた場合、それをカウンターする。\r\nこの効果は一度発動すると解除される。"; }
-            if (command == Database.PURE_PURIFICATION) { return "自分対象：負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
-            if (command == Database.ANTI_STUN) { return "自分対象：【スタン】効果に対して、耐性（効果を防ぐ）を付与する。\r\nこの効果は一度発動すると解除される。"; }
-            if (command == Database.STANCE_OF_DEATH) { return "自分対象：致死ダメージを食らった場合、死亡を回避し、ライフ１で残る。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.COUNTER_ATTACK) { return "対象のダメージ源を有する物理攻撃が向けられた場合、それをカウンターする。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.PURE_PURIFICATION) { return "対象の負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
+            if (command == Database.ANTI_STUN) { return "対象に【スタン】耐性効果を付与する。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.STANCE_OF_DEATH) { return "対象が致死ダメージを食らった場合、死亡を回避し、ライフ１で残る。\r\nこの効果は一度発動すると解除される。"; }
 
-            if (command == Database.STANCE_OF_FLOW) { return "自分対象：本効果が持続している間、必ず後攻をとる。\r\n\r\n（敵がメイン行動を取るまでの間、自分のメイン行動が発動する直前で行動ゲージが停止する。）\r\n\r\n本効果は３ターン持続される。"; }
-            if (command == Database.ENIGMA_SENSE) { return "敵対象：【力】【技】【知】のうち最も高い値を《最大》として、対象に" + PowerResult("最大", 2.0, 0, 0) + "の物理ダメージを与える。"; }
-            if (command == Database.SILENT_RUSH) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを３回連続で与える。"; }
-            if (command == Database.OBORO_IMPACT) { return "敵対象：【力】【技】【知】のうち最も高い値を《最大》、中間の値を《中間》、最も低い値を《最小》として、対象に" + PowerResult("最大", 1.5, 0, 0) + " ＋ " + PowerResult("中間", 1.0, 0, 0) + " ＋ " + PowerResult("最小", 0.5, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
+            if (command == Database.STANCE_OF_FLOW) { return "本効果が持続している間、必ず後攻をとる。\r\n\r\n（敵がメイン行動を取るまでの間、自分のメイン行動が発動する直前で行動ゲージが停止する。）\r\n\r\n本効果は３ターン持続される。"; }
+            if (command == Database.ENIGMA_SENSE) { return "対象の【力】【技】【知】のうち最も高い値を《最大》として、対象に" + PowerResult("最大", 2.0, 0, 0) + "の物理ダメージを与える。"; }
+            if (command == Database.SILENT_RUSH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを３回連続で与える。"; }
+            if (command == Database.OBORO_IMPACT) { return "対象の【力】【技】【知】のうち最も高い値を《最大》、中間の値を《中間》、最も低い値を《最小》として、対象に" + PowerResult("最大", 1.5, 0, 0) + " ＋ " + PowerResult("中間", 1.0, 0, 0) + " ＋ " + PowerResult("最小", 0.5, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
-            if (command == Database.STANCE_OF_STANDING) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、本効果が持続している間、防御体制が維持される。本効果は１ターン持続される。"; }
-            if (command == Database.INNER_INSPIRATION) { return "自分対象：スキルポイントを《【心】+10》の分だけ回復する。\r\n心が1以上：0 + 心/10\r\n心が100以上：10 + (心-100)/90\r\n心が1000以上：20 + (心-1000)/900"; }
-            if (command == Database.KINETIC_SMASH) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + " ＋ " + PowerResult("心", 1.0, 0, 0) + " ＋ " + PowerResult("武器", 3.0, 2000, 3000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
-            if (command == Database.CATASTROPHE) { return "敵対象：【力】【技】【知】のうち最も低い値を《最小》として、対象に" + PowerResult("最小", 5.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
+            if (command == Database.STANCE_OF_STANDING) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、本効果が持続している間、防御体制が維持される。本効果は１ターン持続される。"; }
+            if (command == Database.INNER_INSPIRATION) { return "対象のスキルポイントを《【心】+10》の分だけ回復する。\r\n心が1以上：0 + 心/10\r\n心が100以上：10 + (心-100)/90\r\n心が1000以上：20 + (心-1000)/900"; }
+            if (command == Database.KINETIC_SMASH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + " ＋ " + PowerResult("心", 1.0, 0, 0) + " ＋ " + PowerResult("武器", 3.0, 2000, 3000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
+            if (command == Database.CATASTROPHE) { return "対象の【力】【技】【知】のうち最も低い値を《最小》として、対象に" + PowerResult("最小", 5.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
-            if (command == Database.TRUTH_VISION) { return "自分対象：敵が正のＢＵＦＦ効果を受けている場合、その効果によるパラメタ上昇を無視する。"; }
-            if (command == Database.HIGH_EMOTIONALITY) { return "自分対象：本効果が持続している間、力/技/知/心パラメタをそれぞれ" + PowerResult(1.3) + "上昇させる。"; }
-            if (command == Database.STANCE_OF_EYES) { return "敵対象：本効果が持続している間、相手の行動をカウンターする。\r\nこの効果は一度発動されると解除される。"; }
-            if (command == Database.PAINFUL_INSANITY) { return "自分対象：ターンが進む度に、それぞれの敵へ" + PowerResult("心", 3.0, 2000, 3000) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。"; }
+            if (command == Database.TRUTH_VISION) { return "対象の敵が正のＢＵＦＦ効果を受けている場合、その効果によるパラメタ上昇を無視する。"; }
+            if (command == Database.HIGH_EMOTIONALITY) { return "本効果が持続している間、力/技/知/心パラメタをそれぞれ" + PowerResult(1.3) + "上昇させる。"; }
+            if (command == Database.STANCE_OF_EYES) { return "本効果が持続している間、相手の行動をカウンターする。\r\nこの効果は一度発動されると解除される。"; }
+            if (command == Database.PAINFUL_INSANITY) { return "ターンが進む度に、それぞれの敵へ" + PowerResult("心", 3.0, 2000, 3000) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。"; }
 
-            if (command == Database.NEGATE) { return "敵対象：敵からスペル詠唱が行われた場合、そのスペル詠唱をカウンターする。"; }
-            if (command == Database.VOID_EXTRACTION) { return "自分対象：力、技、知、心のうち、最も高いパラメタを２倍にする。"; }
-            if (command == Database.CARNAGE_RUSH) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを５回連続で与える。"; }
-            if (command == Database.NOTHING_OF_NOTHINGNESS) { return "自分対象：魔法およびスキルがカウンターされなくなる。\r\n\r\n正のＢＵＦＦ効果が解除されなくなる。\r\n\r\nAusterityMatrixのBUFF効果は付与されなくなる。"; }
+            if (command == Database.NEGATE) { return "対象のインスタントが魔法である場合、その魔法詠唱をカウンターする。"; }
+            if (command == Database.VOID_EXTRACTION) { return "対象の力、技、知、心のうち、最も高いパラメタを２倍にする。"; }
+            if (command == Database.CARNAGE_RUSH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを５回連続で与える。"; }
+            if (command == Database.NOTHING_OF_NOTHINGNESS) { return "対象の魔法およびスキルがカウンターされなくなる。\r\n\r\n正のＢＵＦＦ効果が解除されなくなる。\r\n\r\nAusterityMatrixのBUFF効果は付与されなくなる。"; }
 
-            if (command == Database.NEUTRAL_SMASH) { return "敵対象：通常攻撃を行う。このスキルはスキルポイントを消費しない。"; }
-            if (command == Database.STANCE_OF_DOUBLE) { return "自分対象：本効果が持続している間、メイン行動を行う直前に、前回の行動を行う。本効果は１ターン持続される。"; }
+            if (command == Database.NEUTRAL_SMASH) { return "対象に通常攻撃を行う。このスキルはスキルポイントを消費しない。"; }
+            if (command == Database.STANCE_OF_DOUBLE) { return "本効果が持続している間、メイン行動を行う直前に、前回の行動を行う。本効果は１ターン持続される。"; }
 
-            if (command == Database.SWIFT_STEP) { return "自分対象：本効果が持続している間、戦闘速度を" + PowerResult(1.3) + "上昇させる。本効果は３ターン持続される。"; }
-            if (command == Database.VIGOR_SENSE) { return "自分対象：本効果が持続している間、戦闘反応を" + PowerResult(1.4) + "上昇させる。本効果は３ターン持続される。"; }
+            if (command == Database.SWIFT_STEP) { return "本効果が持続している間、戦闘速度を" + PowerResult(1.3) + "上昇させる。本効果は３ターン持続される。"; }
+            if (command == Database.VIGOR_SENSE) { return "本効果が持続している間、戦闘反応を" + PowerResult(1.4) + "上昇させる。本効果は３ターン持続される。"; }
 
-            if (command == Database.CIRCLE_SLASH) { return "敵全体：対象者全員に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。"; }
-            if (command == Database.RISING_AURA) { return "味方全体：対象者全員の物理攻撃力を" + PowerResult(1.4) + "上昇させる。"; }
+            if (command == Database.CIRCLE_SLASH) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。"; }
+            if (command == Database.RISING_AURA) { return "すべての味方の物理攻撃力を" + PowerResult(1.4) + "上昇させる。"; }
 
-            if (command == Database.RUMBLE_SHOUT) { return "敵対象：対象相手が自分以外の単一対象を取っている場合、その対象を自分に変更する。"; }
-            if (command == Database.ONSLAUGHT_HIT) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、物理攻撃力と魔法攻撃力を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
+            if (command == Database.RUMBLE_SHOUT) { return "対象が自分以外の単一対象を取っている場合、その対象を自分に変更する。"; }
+            if (command == Database.ONSLAUGHT_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、物理攻撃力と魔法攻撃力を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
-            if (command == Database.SMOOTHING_MOVE) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、その直後だけ自分の戦闘速度を2.0倍にする。"; }
-            if (command == Database.ASCENSION_AURA) { return "味方全体：対象者全員の魔法攻撃力を" + PowerResult(1.4) + "上昇させる。"; }
+            if (command == Database.SMOOTHING_MOVE) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、その直後だけ自分の戦闘速度を2.0倍にする。"; }
+            if (command == Database.ASCENSION_AURA) { return "すべての味方の魔法攻撃力を" + PowerResult(1.4) + "上昇させる。"; }
 
-            if (command == Database.FUTURE_VISION) { return "自分対象：本効果が持続している間、それぞれの敵がインスタント行動した場合、それをカウンターする。本効果は２ターン持続される。"; }
-            if (command == Database.UNKNOWN_SHOCK) { return "敵全体：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて、対象者に【暗闇】効果を与える。本効果は３ターン持続される。"; }
+            if (command == Database.FUTURE_VISION) { return "本効果が持続している間、それぞれの敵がインスタント行動した場合、それをカウンターする。本効果は２ターン持続される。"; }
+            if (command == Database.UNKNOWN_SHOCK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【暗闇】効果を与える。本効果は３ターン持続される。"; }
 
-            if (command == Database.REFLEX_SPIRIT) { return "自分対象：【スタン】/【麻痺】/【凍結】効果に対する耐性（効果を防ぐ）を付与する。\r\nこの効果は一度発動すると解除される。"; }
-            if (command == Database.FATAL_BLOW) { return "敵対象：対象を３３％の確率で死亡させる。\r\nそうでない場合、対象にクリティカルダメージを与える。"; }
+            if (command == Database.REFLEX_SPIRIT) { return "対象に【スタン】/【麻痺】/【凍結】耐性効果を付与する。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.FATAL_BLOW) { return "対象を３３％の確率で死亡させる。\r\nそうでない場合、対象にクリティカルダメージを与える。"; }
 
-            if (command == Database.SHARP_GLARE) { return "敵全体：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて、対象者に【沈黙】効果を与える。本効果は３ターン持続される。"; }
-            if (command == Database.CONCUSSIVE_HIT) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、物理防御力と魔法防御力を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
+            if (command == Database.SHARP_GLARE) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【沈黙】効果を与える。本効果は３ターン持続される。"; }
+            if (command == Database.CONCUSSIVE_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、物理防御力と魔法防御力を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
-            if (command == Database.TRUST_SILENCE) { return "自分対象：【沈黙】/【暗闇】/【誘惑】効果に対する耐性（効果を防ぐ）を付与する。\r\nこの効果は一度発動すると解除される。"; }
-            if (command == Database.MIND_KILLING) { return "敵対象：対象に" + PowerResult("力", 1.0, 100, 200) + "のＭＰダメージを与える。"; }
+            if (command == Database.TRUST_SILENCE) { return "対象に【沈黙】/【暗闇】/【誘惑】耐性効果を付与する。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.MIND_KILLING) { return "対象に" + PowerResult("力", 1.0, 100, 200) + "のＭＰダメージを与える。"; }
 
-            if (command == Database.SURPRISE_ATTACK) { return "敵全体：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて、対象者に【麻痺】効果を与える。本効果は１ターン持続される。"; }
-            if (command == Database.STANCE_OF_MYSTIC) { return "自分対象：ダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、ダメージを無効化し、それに付随する効果を回避する。\r\n\r\nこのスキルはカウンターされない。\r\nこの効果は３回まで累積が可能である。"; }
+            if (command == Database.SURPRISE_ATTACK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【麻痺】効果を与える。本効果は１ターン持続される。"; }
+            if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、ダメージを無効化し、それに付随する効果を回避する。\r\n\r\nこのスキルはカウンターされない。\r\nこの効果は３回まで累積が可能である。"; }
 
-            if (command == Database.PSYCHIC_WAVE) { return "敵対象：対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこの魔法はDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
-            if (command == Database.NOURISH_SENSE) { return "自分対象：ライフ回復を受ける際、回復量が通常の" + PowerResult(1.3) + "になる。"; }
+            if (command == Database.PSYCHIC_WAVE) { return "対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこの魔法はDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
+            if (command == Database.NOURISH_SENSE) { return "対象がライフ回復を受ける際、回復量が通常の" + PowerResult(1.3) + "になる。"; }
 
-            if (command == Database.RECOVER) { return "自分対象：スタン、麻痺、凍結を解除する。この効果はスタン、麻痺、凍結状態においても発動できる。"; }
-            if (command == Database.IMPULSE_HIT) { return "敵対象：対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、戦闘速度と戦闘反応を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
+            if (command == Database.RECOVER) { return "対象の【スタン】/【麻痺】/【凍結】を解除する。この効果は【スタン】/【麻痺】/【凍結】状態においても発動できる。"; }
+            if (command == Database.IMPULSE_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、戦闘速度と戦闘反応を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
-            if (command == Database.VIOLENT_SLASH) { return "敵対象：対象に" + PowerResult("力", 2.5, 0, 0) + "の物理ダメージを与える。\r\nこのスキルはカウンターされない。"; }
-            if (command == Database.ONE_AUTHORITY) { return "味方全体：本効果が持続している間、ターンが進む度に《【心】+10》の分だけスキルポイントが回復する。本効果は３ターン持続する。\r\n\r\n心が１以上：0 + 心/4\r\n心が100以上：25 + (心-100)/30\r\n心が1000以上：55 + (心-1000)/300"; }
+            if (command == Database.VIOLENT_SLASH) { return "対象に" + PowerResult("力", 2.5, 0, 0) + "の物理ダメージを与える。\r\nこのスキルはカウンターされない。"; }
+            if (command == Database.ONE_AUTHORITY) { return "本効果が持続している間、ターンが進む度に《【心】+10》の分だけスキルポイントが回復する。本効果は３ターン持続する。\r\n\r\n心が１以上：0 + 心/4\r\n心が100以上：25 + (心-100)/30\r\n心が1000以上：55 + (心-1000)/300"; }
 
-            if (command == Database.OUTER_INSPIRATION) { return "自分対象：物理攻撃/物理防御/魔法攻撃/魔法防御/戦闘速度/戦闘反応/潜在能力に対する負のＢＵＦＦ効果を解除する。"; }
-            if (command == Database.HARDEST_PARRY) { return "インスタント対象：対象のインスタント行動がダメージ源を有している場合、ダメージを無効化し、それに付随する効果を回避する。"; }
+            if (command == Database.OUTER_INSPIRATION) { return "対象の物理攻撃/物理防御/魔法攻撃/魔法防御/戦闘速度/戦闘反応/潜在能力に対する負のＢＵＦＦ効果を解除する。"; }
+            if (command == Database.HARDEST_PARRY) { return "対象のインスタント行動がダメージ源を有している場合、ダメージを無効化し、それに付随する効果を回避する。"; }
 
-            if (command == Database.STANCE_OF_SUDDENNESS) { return "インスタント対象：対象のインスタント行動を打ち消す。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
-            if (command == Database.SOUL_EXECUTION) { return "敵対象：対象に《力 ｘ 攻撃倍率》の物理ダメージをTruthVisionがかかった状態として１０回連続で与える。\r\n\r\n攻撃倍率は以下の通りである。\r\n１撃：1.0倍　２撃：1.1倍　３撃：1.2倍　４撃：1.3倍　５撃：1.5倍　６撃：1.7倍　７撃：1.9倍　８撃：2.2倍　９撃：2.5倍　１０撃：3.0倍"; }
+            if (command == Database.STANCE_OF_SUDDENNESS) { return "対象のインスタント行動を打ち消す。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
+            if (command == Database.SOUL_EXECUTION) { return "対象に《力 ｘ 攻撃倍率》の物理ダメージをTruthVisionがかかった状態として１０回連続で与える。\r\n\r\n攻撃倍率は以下の通りである。\r\n１撃：1.0倍　２撃：1.1倍　３撃：1.2倍　４撃：1.3倍　５撃：1.5倍　６撃：1.7倍　７撃：1.9倍　８撃：2.2倍　９撃：2.5倍　１０撃：3.0倍"; }
 
             // SOUL_EXECUTIONはダメージ計算値を出さないと駄目。
 
-            if (command == Database.ARCHETYPE_EIN) { return "自分対象：次に当たる「物理/魔法」ダメージをＸ倍にした上で、クリティカルダメージを与える。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
+            if (command == Database.ARCHETYPE_EIN) { return "自分が次に当てる「物理/魔法」ダメージをＸ倍にした上で、クリティカルとしてダメージを与える。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
             //if (command == Database.ARCHETYPE_RANA) { return "味方全体：ターン制依存のBUFF効果をＸターン追加で継続する。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
             //if (command == Database.ARCHETYPE_OL) { return "敵全体：Ｘ回の物理ダメージ。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
             //if (command == Database.ARCHETYPE_VERZE) { return "インスタント対象：自分のインスタント行動をＸ回行う。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
