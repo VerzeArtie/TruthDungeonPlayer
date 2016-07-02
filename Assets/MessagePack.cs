@@ -31133,8 +31133,8 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ああ、任せておけ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
 
-            // after 前衛後衛の概念を導入する意志はあるか？
-            GroundOne.MC.Stance = MainCharacter.PlayerStance.FrontOffence;
+            // 前衛後衛の概念を導入はしない
+            //GroundOne.MC.Stance = MainCharacter.PlayerStance.FrontOffence;
 
             //CallSomeMessageWithAnimation("【アインは前衛攻撃型になりました！】"); eventList.Add(ActionEvent.None);
 
@@ -31190,7 +31190,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：・・・面倒くせえぇぇ！！！"); eventList.Add(ActionEvent.None);
 
-            GroundOne.MC.Stance = MainCharacter.PlayerStance.FrontDefense;
+            //GroundOne.MC.Stance = MainCharacter.PlayerStance.FrontDefense;
 
             //CallSomeMessageWithAnimation("【アインは前衛防衛型になりました！】"); eventList.Add(ActionEvent.None);
 

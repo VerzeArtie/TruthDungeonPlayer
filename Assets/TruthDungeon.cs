@@ -11195,18 +11195,6 @@ namespace DungeonPlayer
                     catch { }
                 }
                 // s 後編追加
-                else if (pi.PropertyType == typeof(MainCharacter.PlayerStance))
-                {
-                    try
-                    {
-                        pi.SetValue(GroundOne.MC, (MainCharacter.PlayerStance)(Enum.Parse(typeof(MainCharacter.PlayerStance), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowMC, null).ToString())), null);
-                        pi.SetValue(GroundOne.SC, (MainCharacter.PlayerStance)(Enum.Parse(typeof(MainCharacter.PlayerStance), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowSC, null).ToString())), null);
-                        pi.SetValue(GroundOne.TC, (MainCharacter.PlayerStance)(Enum.Parse(typeof(MainCharacter.PlayerStance), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowTC, null).ToString())), null);
-                    }
-                    catch { }
-                }
-                // e 後編追加
-                // s 後編追加
                 else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
                 {
                     try
@@ -11356,18 +11344,6 @@ namespace DungeonPlayer
                     }
                     catch { }
                 }
-                // s 後編追加
-                else if (pi.PropertyType == typeof(MainCharacter.PlayerStance))
-                {
-                    try
-                    {
-                        pi.SetValue(GroundOne.ShadowMC, (MainCharacter.PlayerStance)(Enum.Parse(typeof(MainCharacter.PlayerStance), type.GetProperty(pi.Name).GetValue(GroundOne.MC, null).ToString())), null);
-                        pi.SetValue(GroundOne.ShadowSC, (MainCharacter.PlayerStance)(Enum.Parse(typeof(MainCharacter.PlayerStance), type.GetProperty(pi.Name).GetValue(GroundOne.SC, null).ToString())), null);
-                        pi.SetValue(GroundOne.ShadowTC, (MainCharacter.PlayerStance)(Enum.Parse(typeof(MainCharacter.PlayerStance), type.GetProperty(pi.Name).GetValue(GroundOne.TC, null).ToString())), null);
-                    }
-                    catch { }
-                }
-                // e 後編追加
                 // s 後編追加
                 else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
                 {

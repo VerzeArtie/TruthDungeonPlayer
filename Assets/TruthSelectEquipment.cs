@@ -110,16 +110,6 @@ namespace DungeonPlayer
                     catch { }
                 }
                 // s 後編追加
-                else if (pi.PropertyType == typeof(MainCharacter.PlayerStance))
-                {
-                    try
-                    {
-                        pi.SetValue(shadow, (MainCharacter.PlayerStance)(Enum.Parse(typeof(MainCharacter.PlayerStance), type.GetProperty(pi.Name).GetValue(GroundOne.TargetPlayer, null).ToString())), null);
-                    }
-                    catch { }
-                }
-                // e 後編追加
-                // s 後編追加
                 else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
                 {
                     try
@@ -338,52 +328,52 @@ namespace DungeonPlayer
             // 物理攻撃 (最小) - (最大)
             if (true)
             {
-                temp1 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
-                temp2 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false);
-                if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false) >
-                    PrimaryLogic.PhysicalAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
-                else if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false) <
-                    PrimaryLogic.PhysicalAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+                temp1 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false);
+                temp2 = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false);
+                if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false) >
+                    PrimaryLogic.PhysicalAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+                else if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false) <
+                    PrimaryLogic.PhysicalAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
                 else { PhysicalAttack.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
                 PhysicalAttack.text += " - ";
-                if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false) >
-                    PrimaryLogic.PhysicalAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
-                else if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false) <
-                    PrimaryLogic.PhysicalAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+                if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false) >
+                    PrimaryLogic.PhysicalAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
+                else if (PrimaryLogic.PhysicalAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false) <
+                    PrimaryLogic.PhysicalAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
                 else { PhysicalAttack.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
             }
             else if (MainBlade == false && SubBlade == true)
             {
-                temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
-                temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
-                if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) >
-                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
-                else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) <
-                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+                temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0, 0, 0, 1.0f, false);
+                temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0, 0, 0, 1.0f, false);
+                if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, false) >
+                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, false)) { PhysicalAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+                else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, false) <
+                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, false)) { PhysicalAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
                 else { PhysicalAttack.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
                 PhysicalAttack.text += " - ";
-                if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) >
-                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
-                else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) <
-                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+                if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, false) >
+                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
+                else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, false) <
+                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
                 else { PhysicalAttack.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
             }
             if (DoubleBlade)
             {
                 // ２刀流の場合、物理攻撃 (最小) - (最大)
-                temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
-                temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0, 0, 0, 1.0f, MainCharacter.PlayerStance.None, false);
+                temp1 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0, 0, 0, 1.0f, false);
+                temp2 = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0, 0, 0, 1.0f, false);
                 PhysicalAttack.text += "\r\n";
-                if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) >
-                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=blue>" + temp1.ToString("F2") + "</color>"; }
-                else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) <
-                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=red>" + temp1.ToString("F2") + "</color>"; }
+                if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, false) >
+                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, false)) { PhysicalAttack.text += "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+                else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, false) <
+                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0F, 0, 0, 0, 1.0F, false)) { PhysicalAttack.text += "<color=red>" + temp1.ToString("F2") + "</color>"; }
                 else { PhysicalAttack.text += "<color=black>" + temp1.ToString("F2") + "</color>"; }
                 PhysicalAttack.text += " - ";
-                if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) >
-                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
-                else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false) <
-                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, MainCharacter.PlayerStance.None, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+                if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, false) >
+                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, false)) { PhysicalAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
+                else if (PrimaryLogic.SubAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, false) <
+                    PrimaryLogic.SubAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0F, 0, 0, 0, 1.0F, false)) { PhysicalAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
                 else { PhysicalAttack.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
             }
 
@@ -399,18 +389,18 @@ namespace DungeonPlayer
             else { PhysicalDefense.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
 
             // 魔法攻撃 (最小) - (最大)
-            temp1 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
-            temp2 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false);
-            if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false) >
-                PrimaryLogic.MagicAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
-            else if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false) <
-                PrimaryLogic.MagicAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
+            temp1 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false);
+            temp2 = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false);
+            if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false) >
+                PrimaryLogic.MagicAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text = "<color=blue>" + temp1.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false) <
+                PrimaryLogic.MagicAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Min, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text = "<color=red>" + temp1.ToString("F2") + "</color>"; }
             else { MagicAttack.text = "<color=black>" + temp1.ToString("F2") + "</color>"; }
             MagicAttack.text += " - ";
-            if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false) >
-                PrimaryLogic.MagicAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
-            else if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false) <
-                PrimaryLogic.MagicAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, MainCharacter.PlayerStance.None, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
+            if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false) >
+                PrimaryLogic.MagicAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text += "<color=blue>" + temp2.ToString("F2") + "</color>"; }
+            else if (PrimaryLogic.MagicAttackValue(shadow, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false) <
+                PrimaryLogic.MagicAttackValue(GroundOne.TargetPlayer, PrimaryLogic.NeedType.Max, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, false)) { MagicAttack.text += "<color=red>" + temp2.ToString("F2") + "</color>"; }
             else { MagicAttack.text += "<color=black>" + temp2.ToString("F2") + "</color>"; }
 
             // 魔法防御 (最小) - (最大)

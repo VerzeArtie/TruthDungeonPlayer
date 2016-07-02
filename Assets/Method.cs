@@ -433,13 +433,6 @@ namespace DungeonPlayer
                         xmlWriter.WriteWhitespace("\r\n");
                     }
                     // s 後編追加
-                    else if (pi.PropertyType == typeof(MainCharacter.PlayerStance))
-                    {
-                        xmlWriter.WriteElementString(pi.Name, ((MainCharacter.PlayerStance)pi.GetValue(GroundOne.MC, null)).ToString());
-                        xmlWriter.WriteWhitespace("\r\n");
-                    }
-                    // e 後編追加
-                    // s 後編追加
                     else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
                     {
                         xmlWriter.WriteElementString(pi.Name, ((MainCharacter.AdditionalSpellType)pi.GetValue(GroundOne.MC, null)).ToString());
@@ -528,13 +521,6 @@ namespace DungeonPlayer
                         xmlWriter.WriteWhitespace("\r\n");
                     }
                     // s 後編追加
-                    else if (pi.PropertyType == typeof(MainCharacter.PlayerStance))
-                    {
-                        xmlWriter.WriteElementString(pi.Name, ((MainCharacter.PlayerStance)pi.GetValue(GroundOne.SC, null)).ToString());
-                        xmlWriter.WriteWhitespace("\r\n");
-                    }
-                    // e 後編追加
-                    // s 後編追加
                     else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
                     {
                         xmlWriter.WriteElementString(pi.Name, ((MainCharacter.AdditionalSpellType)pi.GetValue(GroundOne.SC, null)).ToString());
@@ -622,13 +608,6 @@ namespace DungeonPlayer
                         xmlWriter.WriteElementString(pi.Name, ((System.Boolean)pi.GetValue(GroundOne.TC, null)).ToString());
                         xmlWriter.WriteWhitespace("\r\n");
                     }
-                    // s 後編追加
-                    else if (pi.PropertyType == typeof(MainCharacter.PlayerStance))
-                    {
-                        xmlWriter.WriteElementString(pi.Name, ((MainCharacter.PlayerStance)pi.GetValue(GroundOne.TC, null)).ToString());
-                        xmlWriter.WriteWhitespace("\r\n");
-                    }
-                    // e 後編追加
                     // s 後編追加
                     else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
                     {
@@ -1220,31 +1199,6 @@ namespace DungeonPlayer
                     try { pi.SetValue(GroundOne.TC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText), null); }
                     catch { }
                 }
-                // s 後編追加
-                else if (pi.PropertyType == typeof(MainCharacter.PlayerStance))
-                {
-                    try
-                    {
-                        XmlNodeList currentList = xml.GetElementsByTagName(pi.Name);
-                        foreach (XmlNode node in currentList)
-                        {
-                            if (node.ParentNode.Name == Database.NODE_MAINPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.MC, (MainCharacter.PlayerStance)Enum.Parse(typeof(MainCharacter.PlayerStance), node.InnerText), null);
-                            }
-                            else if (node.ParentNode.Name == Database.NODE_SECONDPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.SC, (MainCharacter.PlayerStance)Enum.Parse(typeof(MainCharacter.PlayerStance), node.InnerText), null);
-                            }
-                            else if (node.ParentNode.Name == Database.NODE_THIRDPLAYERSTATUS)
-                            {
-                                pi.SetValue(GroundOne.TC, (MainCharacter.PlayerStance)Enum.Parse(typeof(MainCharacter.PlayerStance), node.InnerText), null);
-                            }
-                        }
-                    }
-                    catch { }
-                }
-                // e 後編追加
                 // s 後編追加
                 else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
                 {

@@ -22,16 +22,6 @@ namespace DungeonPlayer
             Archetype = 9, // 後編追加 元核使用
         }
 
-        public enum PlayerStance
-        {
-            None = 0,
-            FrontOffence = 1, // アイン、オル、ラナ、ヴェルゼ
-            FrontDefense = 2, // アイン、オル
-            BackOffence = 3, // ラナ、ヴェルゼ
-            BackSupport = 4, // アイン、ラナ、オル、ヴェルゼ
-            AllRounder = 5, // ヴェルゼ専用
-        }
-
         public enum AdditionalSpellType
         {
             None, // アイン、複合魔法属性を未選択
@@ -73,7 +63,6 @@ namespace DungeonPlayer
         protected double currentInstantPoint = 0; // 後編追加// 「コメント」初期直感ではMAX値に戻しておくほうがいいと思ったが、プレイしてみてはじめは０のほうが、ゲーム性は面白く感じられると思った。
         protected double currentSpecialInstant = 0; // 後編追加
         protected int gold = 0;
-        protected PlayerStance stance = PlayerStance.None; // 後編追加
         protected AdditionalSpellType additionSpellType = AdditionalSpellType.None; // 後編追加
         protected AdditionalSkillType additionSkillType = AdditionalSkillType.None; // 後編追加
 
@@ -1173,7 +1162,6 @@ namespace DungeonPlayer
         public bool AvailableArchitect = false;
 
         public PlayerAction PA = PlayerAction.None;
-        public PlayerStance Stance = PlayerStance.None;
         protected string currentUsingItem = string.Empty;
         protected string currentSkillName = string.Empty;
         protected string currentSpellName = string.Empty;

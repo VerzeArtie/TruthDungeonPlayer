@@ -60,16 +60,16 @@ namespace DungeonPlayer
         /// <summary>
         /// メインウェポンの物理攻撃値の算出
         /// </summary>
-        public static double PhysicalAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool duelMode)
+        public static double PhysicalAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, SpellSkillType spellSkill, bool duelMode)
         {
-            return PhysicalAttackValue(player, type, pStr, pAgl, pInt, pMind, pWeapon, stance, spellSkill, duelMode, false);
+            return PhysicalAttackValue(player, type, pStr, pAgl, pInt, pMind, pWeapon, spellSkill, duelMode, false);
         }
         /// <summary>
         /// サブウェポンの物理攻撃値の算出(引数はPhysicalAttackValueと同じだが、PsychicWaveは関係がない)
         /// </summary>
-        public static double SubAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, bool duelMode)
+        public static double SubAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, bool duelMode)
         {
-            return PhysicalAttackValue(player, type, pStr, pAgl, pInt, pMind, pWeapon, stance, SpellSkillType.Standard, duelMode, true);
+            return PhysicalAttackValue(player, type, pStr, pAgl, pInt, pMind, pWeapon, SpellSkillType.Standard, duelMode, true);
         }
         /// <summary>
         /// ウェポンの物理攻撃値の算出
@@ -86,9 +86,9 @@ namespace DungeonPlayer
         /// <param name="duelMode">Duel戦闘を示すフラグ</param>
         /// <param name="subWeapon">サブウェポンかどうかを示すフラグ</param>
         /// <returns></returns>
-        public static double PhysicalAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool duelMode, bool subWeapon)
+        public static double PhysicalAttackValue(MainCharacter player, NeedType type, double pStr, double pAgl, double pInt, double pMind, double pWeapon, SpellSkillType spellSkill, bool duelMode, bool subWeapon)
         {
-            return AttackValue(player, type, DmgAttr.Physical, pStr, pAgl, pInt, pMind, pWeapon, stance, spellSkill, false, duelMode, subWeapon);
+            return AttackValue(player, type, DmgAttr.Physical, pStr, pAgl, pInt, pMind, pWeapon, spellSkill, false, duelMode, subWeapon);
         }
         /// <summary>
         /// 魔法攻撃値の算出
@@ -100,16 +100,16 @@ namespace DungeonPlayer
         /// <param name="WordOfPower">ワード・オブ・パワーの場合True</param>
         /// <param name="ignoreChargeCount">ためるコマンドが対象外の場合True</param>
         /// <returns></returns>
-        public static double MagicAttackValue(MainCharacter player, NeedType type, double pInt, double pMind, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool ignoreChargeCount, bool duelMode)
+        public static double MagicAttackValue(MainCharacter player, NeedType type, double pInt, double pMind, SpellSkillType spellSkill, bool ignoreChargeCount, bool duelMode)
         {
             double pStr = 0;
             double pAgl = 0;
             double pWeapon = 0;
             bool subWeapon = false;
-            return AttackValue(player, type, DmgAttr.Magic, pStr, pAgl, pInt, pMind, pWeapon, stance, spellSkill, ignoreChargeCount, duelMode, subWeapon);
+            return AttackValue(player, type, DmgAttr.Magic, pStr, pAgl, pInt, pMind, pWeapon, spellSkill, ignoreChargeCount, duelMode, subWeapon);
         }
 
-        public static double AttackValue(MainCharacter player, NeedType type, DmgAttr attr, double pStr, double pAgl, double pInt, double pMind, double pWeapon, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool ignoreChargeCount, bool duelMode, bool subWeapon)
+        public static double AttackValue(MainCharacter player, NeedType type, DmgAttr attr, double pStr, double pAgl, double pInt, double pMind, double pWeapon, SpellSkillType spellSkill, bool ignoreChargeCount, bool duelMode, bool subWeapon)
         {
             double min = 0;
             double max = 0;
@@ -274,10 +274,6 @@ namespace DungeonPlayer
                     result = result * (double)(player.CurrentPhysicalChargeCount + 1.0F);
                 }
 
-                if (stance == MainCharacter.PlayerStance.FrontOffence && player.Stance == MainCharacter.PlayerStance.FrontOffence)
-                {
-                    result = result * 1.05f;
-                }
                 if (player.AmplifyPhysicalAttack > 0.0f)
                 {
                     result = result * player.AmplifyPhysicalAttack;
@@ -288,15 +284,6 @@ namespace DungeonPlayer
                 if (!ignoreChargeCount && (player.CurrentChargeCount > 0))
                 {
                     result = result * (double)(player.CurrentChargeCount + 1.0F);
-                }
-                if (stance == MainCharacter.PlayerStance.BackSupport && player.Stance == MainCharacter.PlayerStance.BackSupport)
-                {
-                    result = result * 1.05f;
-                }
-                if ((stance == MainCharacter.PlayerStance.FrontOffence || stance == MainCharacter.PlayerStance.BackOffence) &&
-                    (player.Stance == MainCharacter.PlayerStance.FrontOffence || player.Stance == MainCharacter.PlayerStance.BackOffence))
-                {
-                    result = result * 1.05f;
                 }
                 if (player.AmplifyMagicAttack > 0.0f) // 「警告」魔法攻撃増強で回復も増強するのか？
                 {
@@ -402,10 +389,6 @@ namespace DungeonPlayer
                 result = result * (1.00f - 0.15f * player.CurrentConcussiveHitValue);
             }
 
-            if (player.Stance == MainCharacter.PlayerStance.FrontDefense)
-            {
-                result = result * 1.05f;
-            }
             if (player.AmplifyPhysicalDefense > 0.0f)
             {
                 result = result * player.AmplifyPhysicalDefense;
@@ -491,10 +474,6 @@ namespace DungeonPlayer
                 result = result * (1.00f - 0.15f * player.CurrentConcussiveHitValue);
             }
 
-            if (player.Stance == MainCharacter.PlayerStance.FrontDefense || player.Stance == MainCharacter.PlayerStance.BackSupport)
-            {
-                result = result * 1.05f;
-            }
             if (player.AmplifyMagicDefense > 0.0f)
             {
                 result = result * player.AmplifyMagicDefense;
@@ -782,37 +761,37 @@ namespace DungeonPlayer
         // フレッシュ・ヒール値の算出
         public static double FreshHealValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 4.0F, 0.0F, 40, 50, MainCharacter.PlayerStance.BackSupport, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 4.0F, 0.0F, 40, 50, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ライフ・タップ値の算出
         public static double LifeTapValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 4.0F, 0.0F, 40, 50, MainCharacter.PlayerStance.BackSupport, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 4.0F, 0.0F, 40, 50, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ファイア・ボール値の算出
         public static double FireBallValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.0F, 0.0F, 30, 35, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 3.0F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // アイス・ニードル値の算出
         public static double IceNeedleValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.8F, 0.0F, 30, 35, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 2.8F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ダークブラスト値の算出
         public static double DarkBlastValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.6F, 0.0F, 30, 35, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 2.6F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ワード・オブ・パワー値の算出
         public static double WordOfPowerValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.4F, 0.0F, 30, 35, MainCharacter.PlayerStance.BackOffence, SpellSkillType.WordOfPower, false, duelMode);
+            return ConstructMagicDamage(player, 2.4F, 0.0F, 30, 35, SpellSkillType.WordOfPower, false, duelMode);
         }
 
         // ワード・オブ・ライフ値の算出
@@ -820,7 +799,7 @@ namespace DungeonPlayer
         {
             // (知＋心)*潜在能力値
             double result = 0;
-            result = ConstructMagicDamage(player, 1.0F, 1.0F, 30, 35, MainCharacter.PlayerStance.BackSupport, SpellSkillType.Standard, false, duelMode);
+            result = ConstructMagicDamage(player, 1.0F, 1.0F, 30, 35, SpellSkillType.Standard, false, duelMode);
             result += PotentialValue(player, duelMode);
             return result;
         }
@@ -828,114 +807,114 @@ namespace DungeonPlayer
         // フレイム・オーラ値の算出
         public static double FlameAuraValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.0F, 0.0F, 30, 35, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, true, duelMode);
+            return ConstructMagicDamage(player, 3.0F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, true, duelMode);
         }
 
         // フローズン・オーラ値の算出
         public static double FrozenAuraValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.8F, 0.0F, 30, 35, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, true, duelMode);
+            return ConstructMagicDamage(player, 2.8F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, true, duelMode);
         }
 
         // ホーリー・ショック値の算出
         public static double HolyShockValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.2F, 0.0F, 120, 135, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 2.2F, 0.0F, 120, 135, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // デヴォーリング・プラグー値の算出
         public static double DevouringPlagueValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.0F, 0.0F, 120, 135, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 2.0F, 0.0F, 120, 135, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // フラッシュ・ブレイズ値の算出
         public static double FlashBlazeValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 2.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // フラッシュ・ブレイズ（追加効果）値の算出
         public static double FlashBlaze_A_Value(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 2.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // エンレイジ・ブラスト値の算出
         public static double EnrageBlastValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
         // エンレイジ・ブラスト（追加効果）値の算出
         public static double EnrageBlast_A_Value(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ブラック・ファイア値の算出
         public static double BlackFireValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ワード・オブ・マリス値の算出
         public static double WordOfMaliceValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // イモレイト値の算出
         public static double ImmolateValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ヴァニッシュ・ウェイヴ値の算出
         public static double VanishWaveValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // スター・ライトニング値の算出
         public static double StarLightningValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.0F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ブルー・バレット値の算出
         public static double BlueBulletValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 0.9F, 0.0F, 200, 300, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 0.9F, 0.0F, 200, 300, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // フレイム・ストライク値の算出
         public static double FlameStrikeValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.5F, 0.0F, 750, 1000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
+            return ConstructMagicDamage(player, 3.5F, 0.0F, 750, 1000, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
         }
 
         // フローズン・ランス値の算出
         public static double FrozenLanceValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.3F, 0.0F, 750, 1000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
+            return ConstructMagicDamage(player, 3.3F, 0.0F, 750, 1000, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
         }
 
         // ライト・デトネイター値の算出
         public static double LightDetonatorValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.0f, 0.0F, 750, 1000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 3.0f, 0.0F, 750, 1000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ヴォルカニック・ウェイヴ値の算出
         public static double VolcanicWaveValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 4.0F, 0.0F, 1200, 1600, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
+            return ConstructMagicDamage(player, 4.0F, 0.0F, 1200, 1600, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
         }
 
         // ホワイト・アウト値の算出
         public static double WhiteOutValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.8F, 0.0F, 1200, 1600, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
+            return ConstructMagicDamage(player, 3.8F, 0.0F, 1200, 1600, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
         }
 
 
@@ -956,24 +935,24 @@ namespace DungeonPlayer
         // ピアッシング・フレイム値の算出
         public static double PiercingFlameValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 4.5F, 0.0F, 3500, 5000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 4.5F, 0.0F, 3500, 5000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ドゥーム・ブレイド値の算出
         public static double DoomBladeValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.8F, 0.0F, 2000, 3500, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 2.8F, 0.0F, 2000, 3500, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
         // ドゥーム・ブレイド（マナダメージ）値の算出
         public static double DoomBlade_A_Value(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.5F, 0.0F, 500, 1000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.5F, 0.0F, 500, 1000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // アビス・アイ値の算出
         public static double AbyssEyeValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0F, 0.0F, 4500, 6000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.0F, 0.0F, 4500, 6000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // シン・フォーチュン値の算出
@@ -985,47 +964,47 @@ namespace DungeonPlayer
         // サークレッド・ヒール値の算出
         public static double SacredHealValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.5F, 0.0F, 4000, 6000, MainCharacter.PlayerStance.BackSupport, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 3.5F, 0.0F, 4000, 6000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // アセンダント・メテオ値の算出
         public static double AscendantMeteorValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.5F, 0.0F, 2000, 3000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.5F, 0.0F, 2000, 3000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // セレスティアル・ノヴァ
         public static double CelestialNovaValue_A(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 4.5F, 0.0F, 4000, 5000, MainCharacter.PlayerStance.BackOffence, SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 4.5F, 0.0F, 4000, 5000, SpellSkillType.Standard, false, duelMode);
         }
         public static double CelestialNovaValue_B(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 5.0F, 0.0F, 8000, 10000, MainCharacter.PlayerStance.BackSupport, SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 5.0F, 0.0F, 8000, 10000, SpellSkillType.Standard, false, duelMode);
         }
 
         // デーモニック・イグニート
         public static double DemonicIgniteValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 4.5F, 0.0F, 6000, 7000, MainCharacter.PlayerStance.BackOffence, SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 4.5F, 0.0F, 6000, 7000, SpellSkillType.Standard, false, duelMode);
         }
 
         // ラヴァ・アニヒレーション値の算出
         public static double LavaAnnihilationValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 5.0f, 0.0F, 7000, 8000, MainCharacter.PlayerStance.BackOffence, SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 5.0f, 0.0F, 7000, 8000, SpellSkillType.Standard, false, duelMode);
         }
 
         // ゼータ・エクスプロージョン値の算出
         public static double ZetaExplosionValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 6.0F, 0.0F, 8000, 12000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 6.0F, 0.0F, 8000, 12000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // チル・バーン（直接）値の算出
         public static double ChillBurnValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.0f, 0.0F, 0, 0, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);// 5.0F, 3300, 7200, Character.PlayerStance.BackOffence, false, false);
+            return ConstructMagicDamage(player, 1.0f, 0.0F, 0, 0, PrimaryLogic.SpellSkillType.Standard, false, duelMode);// 5.0F, 3300, 7200, Character.PlayerStance.BackOffence, false, false);
         }
 
         // リザレクション値の算出
@@ -1139,10 +1118,10 @@ namespace DungeonPlayer
         /// <param name="stance">スタンスの対象、回復系はBackSupport、攻撃はFrontOffenseなど</param>
         /// <param name="spellSkill">スペル、スキルタイプを指定</param>
         /// <returns></returns>
-        private static double ConstructPhysicalDamage(MainCharacter player, double pStr, double pAgl, double pInt, double pMind, double pWeapon, int minBorder, int maxBorder, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool duelMode)
+        private static double ConstructPhysicalDamage(MainCharacter player, double pStr, double pAgl, double pInt, double pMind, double pWeapon, int minBorder, int maxBorder, SpellSkillType spellSkill, bool duelMode)
         {
             // ベース値を算出し・・・
-            double result = PhysicalAttackValue(player, NeedType.Random, pStr, pAgl, pInt, pMind, pWeapon, stance, spellSkill, duelMode);
+            double result = PhysicalAttackValue(player, NeedType.Random, pStr, pAgl, pInt, pMind, pWeapon, spellSkill, duelMode);
 
             // 弱すぎる場合の最低値を付与した上で
             System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
@@ -1163,10 +1142,10 @@ namespace DungeonPlayer
         /// <param name="spellSkill">スペル・スキルの名前</param>
         /// <param name="ignoreChargeCount">ためるコマンドが対象外の場合True</param>
         /// <returns></returns>
-        private static double ConstructMagicDamage(MainCharacter player, double pInt, double pMind, int minBorder, int maxBorder, MainCharacter.PlayerStance stance, SpellSkillType spellSkill, bool ignoreChargeCount, bool duelMode)
+        private static double ConstructMagicDamage(MainCharacter player, double pInt, double pMind, int minBorder, int maxBorder, SpellSkillType spellSkill, bool ignoreChargeCount, bool duelMode)
         {
             // ベース値を算出し・・・
-            double result = MagicAttackValue(player, NeedType.Random, pInt, pMind, stance, spellSkill, ignoreChargeCount, duelMode);
+            double result = MagicAttackValue(player, NeedType.Random, pInt, pMind, spellSkill, ignoreChargeCount, duelMode);
 
             // 弱すぎる場合の最低値を付与した上で
             System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
@@ -1205,7 +1184,7 @@ namespace DungeonPlayer
             // 力1.0　技2.0-3.0　知0.0  心0.0  武器1.0-2.0
             double pAgl = (double)(2.0F + (AP.Math.RandomInteger(1000) + 1) / 1000.0F);
             double pWeapon = (double)(1.0F + (AP.Math.RandomInteger(1000) + 1) / 1000.0F);
-            return ConstructPhysicalDamage(player, 1.0F, pAgl, 0.0F, 0.0F, pWeapon, 0, 1, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 1.0F, pAgl, 0.0F, 0.0F, pWeapon, 0, 1, SpellSkillType.Standard, duelMode);
         }
 
 
@@ -1213,18 +1192,18 @@ namespace DungeonPlayer
         public static double ViolentSlashValue(MainCharacter player, bool duelMode)
         {
             // 力2.5  技0.0  知0.0  心0.0  武器1.0
-            return ConstructPhysicalDamage(player, 2.5F, 0.0F, 0.0F, 0.0F, 1.0, 0, 1, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 2.5F, 0.0F, 0.0F, 0.0F, 1.0, 0, 1, SpellSkillType.Standard, duelMode);
         }
 
         // サイキック・ウェイブ値の算出
         public static double PsychicWaveValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 2.0F, 0, 0, 0, 1.0F, 0, 1, MainCharacter.PlayerStance.BackOffence, SpellSkillType.PsychicWave, duelMode);
+            return ConstructPhysicalDamage(player, 2.0F, 0, 0, 0, 1.0F, 0, 1, SpellSkillType.PsychicWave, duelMode);
         }
         // マインド・キリング（マナダメージ）値の算出
         public static double MindKillingValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 100, 200, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 100, 200, SpellSkillType.Standard, duelMode);
         }
 
         // ワン・オーソリティ（スキル回復量）値の算出
@@ -1309,7 +1288,7 @@ namespace DungeonPlayer
                     pInt = 0.0F;
                 }
             }
-            return ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 30, 35, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 30, 35, SpellSkillType.Standard, duelMode);
         }
 
         /// <summary>
@@ -1319,7 +1298,7 @@ namespace DungeonPlayer
         /// <returns></returns>
         public static double KineticSmashValue(MainCharacter player, bool duelMode)
         {
-            double result = ConstructPhysicalDamage(player, 1.0F, 0.0F, 0.0F, 1.0F, 3.0F, 2000, 3000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            double result = ConstructPhysicalDamage(player, 1.0F, 0.0F, 0.0F, 1.0F, 3.0F, 2000, 3000, SpellSkillType.Standard, duelMode);
             result = result * PotentialValue(player, duelMode);
             return result;
         }
@@ -1334,7 +1313,7 @@ namespace DungeonPlayer
             double pAgl = 1.2F;
             double pInt = 1.2F;
 
-            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 6000, 8000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 6000, 8000, SpellSkillType.Standard, duelMode);
             result = result * PotentialValue(player, duelMode);
             return result;
         }
@@ -1392,7 +1371,7 @@ namespace DungeonPlayer
                     pAgl = 0.5F;
                 }
             }
-            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 0.0F, 6000, 8000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 0.0F, 6000, 8000, SpellSkillType.Standard, duelMode);
             result = result * PotentialValue(player, duelMode);
             return result;
         }
@@ -1411,7 +1390,7 @@ namespace DungeonPlayer
             else if (min == player.TotalAgility) { pAgl = 5.0F; }
             else if (min == player.TotalIntelligence) { pInt = 5.0F; }
 
-            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 6000, 8000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            double result = ConstructPhysicalDamage(player, pStr, pAgl, pInt, 0.0F, 1.0F, 6000, 8000, SpellSkillType.Standard, duelMode);
             result = result * PotentialValue(player, duelMode);
             return result;
         }
@@ -1419,7 +1398,7 @@ namespace DungeonPlayer
         public static double PainfulInsanityValue(MainCharacter player, bool duelMode)
         {
             // 心ｘ３　（前編から後編にかけて、さらに潜在能力値増幅を追加）
-            double result = ConstructMagicDamage(player, 0.0f, 3.0f, 2000, 3000, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, true, duelMode);
+            double result = ConstructMagicDamage(player, 0.0f, 3.0f, 2000, 3000, SpellSkillType.Standard, true, duelMode);
             result = result * PotentialValue(player, duelMode);
             return result;
         }
@@ -1470,7 +1449,7 @@ namespace DungeonPlayer
         /// <returns></returns>
         public static double RisingKnuckleValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 1.0f, 1.0f, 0, 0, 0, 40, 50, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 1.0f, 1.0f, 0, 0, 0, 40, 50, SpellSkillType.Standard, duelMode);
         }
 
         /// <summary>
@@ -1480,7 +1459,7 @@ namespace DungeonPlayer
         /// <returns></returns>
         public static double IceSwordValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 1.0f, 0, 1.0f, 0, 0, 65, 90, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 1.0f, 0, 1.0f, 0, 0, 65, 90, SpellSkillType.Standard, duelMode);
         }
 
         /// <summary>
@@ -1490,7 +1469,7 @@ namespace DungeonPlayer
         /// <returns></returns>
         public static double AeroBladeValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 1.0f, 0, 1.0f, 0, 0, 30, 35, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 1.0f, 0, 1.0f, 0, 0, 30, 35, SpellSkillType.Standard, duelMode);
         }
 
         /// <summary>
@@ -1500,7 +1479,7 @@ namespace DungeonPlayer
         /// <returns></returns>
         public static double LifeSwordValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 0.0f, 0, 1.0f, 0, 1.0f, 30, 35, MainCharacter.PlayerStance.BackSupport, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 0.0f, 0, 1.0f, 0, 1.0f, 30, 35, SpellSkillType.Standard, duelMode);
         }
 
         /// <summary>
@@ -1536,7 +1515,7 @@ namespace DungeonPlayer
         /// </summary>
         public static double BlueLightningValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 0.0f, 0, 1.5f, 0, 0, 200, 250, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 0.0f, 0, 1.5f, 0, 0, 200, 250, SpellSkillType.Standard, duelMode);
         }
 
         /// <summary>
@@ -1584,7 +1563,7 @@ namespace DungeonPlayer
         /// </summary>
         public static double WrathServelClawValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 1.1f, 0, 1.1f, 0, 0, 400, 500, MainCharacter.PlayerStance.FrontOffence, SpellSkillType.Standard, duelMode);
+            return ConstructPhysicalDamage(player, 1.1f, 0, 1.1f, 0, 0, 400, 500, SpellSkillType.Standard, duelMode);
         }
 
         /// <summary>
@@ -1592,7 +1571,7 @@ namespace DungeonPlayer
         /// </summary>
         public static double BlueRedRodValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 1.5f, 0.0F, 500, 750, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 1.5f, 0.0F, 500, 750, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
         public static double BlueRedRodValue_A(MainCharacter player)
         {
@@ -1833,16 +1812,16 @@ namespace DungeonPlayer
         // レインボーチューブ値の算出
         public static double RainbowTubeValue_A(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 4.0F, 0.0F, 1200, 1600, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // ヴォルカニックウェイヴと同等
+            return ConstructMagicDamage(player, 4.0F, 0.0F, 1200, 1600, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // ヴォルカニックウェイヴと同等
         }
         public static double RainbowTubeValue_B(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 5.0F, 0.0F, 5000, 7000, MainCharacter.PlayerStance.BackSupport, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // サークレッド・ヒールと同等
+            return ConstructMagicDamage(player, 5.0F, 0.0F, 5000, 7000, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // サークレッド・ヒールと同等
         }
         // デビル・サモナーズ・トーム値の算出
         public static double DevilSummonerTomeValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.0F, 0.0F, 2500, 6000, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
+            return ConstructMagicDamage(player, 3.0F, 0.0F, 2500, 6000, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
         // シール・オブ・バランス値の算出
         public static double SealOfBalanceValue_A(MainCharacter player)
@@ -1871,7 +1850,7 @@ namespace DungeonPlayer
             double min = 90000;
             double max = 150000;
 
-            return ConstructMagicDamage(player, amp, 0.0F, (int)min, (int)max, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // ゼータ・エクスプロージョンと同等
+            return ConstructMagicDamage(player, amp, 0.0F, (int)min, (int)max, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // ゼータ・エクスプロージョンと同等
         }
         public static double EternalHomuraRingValue_A(MainCharacter player)
         {
@@ -1901,7 +1880,7 @@ namespace DungeonPlayer
             //        {
             //            pInt += player.CurrentAbyssWillValue * 0.5F;
             //        }
-            return ConstructMagicDamage(player, pInt, 0.0F, 0, 0, MainCharacter.PlayerStance.BackOffence, SpellSkillType.Standard, false, false);
+            return ConstructMagicDamage(player, pInt, 0.0F, 0, 0, SpellSkillType.Standard, false, false);
         }
         public static double AbyssFireValue(MainCharacter player)
         {
@@ -1910,7 +1889,7 @@ namespace DungeonPlayer
             //        {
             //            pInt += player.CurrentAbyssWillValue * 0.5F;
             //        }
-            return ConstructMagicDamage(player, pInt, 0.0F, 0, 0, MainCharacter.PlayerStance.BackOffence, SpellSkillType.Standard, false, false);
+            return ConstructMagicDamage(player, pInt, 0.0F, 0, 0, SpellSkillType.Standard, false, false);
         }
         public static double EternalDropletValue_A(MainCharacter player)
         {

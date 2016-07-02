@@ -71,12 +71,23 @@ namespace DungeonPlayer
         private TruthImage[] pbBuffEnemy1;
         private TruthImage[] pbBuffEnemy2;
         private TruthImage[] pbBuffEnemy3;
-
-
+        
         // resource
         public Sprite[] imageSandglass;
         
         // GUI
+        public Text debug1;
+        public Text debug2;
+        public Text debug3;
+        public Text debug4;
+        public Text debug5;
+        public Text debug21;
+        public Text debug22;
+        public Text debug23;
+        public Text debug24;
+        public Text debug25;
+        public Text debug26;
+        public Text debug27;
         public GameObject groupMatrixDragonTalk;
         public Image back_MatrixDragonTalk;
         public Text MatrixDragonTalkText;
@@ -616,6 +627,16 @@ namespace DungeonPlayer
         public override void Update()
         {
             base.Update();
+
+            // debug
+            if (GroundOne.MC != null)
+            {
+                this.debug1.text = GroundOne.MC.TotalStrength.ToString();
+                this.debug2.text = GroundOne.MC.TotalAgility.ToString();
+                this.debug3.text = GroundOne.MC.TotalIntelligence.ToString();
+                this.debug4.text = GroundOne.MC.TotalStamina.ToString();
+                this.debug5.text = GroundOne.MC.TotalMind.ToString();
+            }
 
             if (Application.platform == RuntimePlatform.Android)
             {
@@ -5376,11 +5397,11 @@ namespace DungeonPlayer
                     {
                         if (ii == 0)
                         {
-                            damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
+                            damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
                         }
                         else
                         {
-                            damage = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0, 0, 0, 1.0F, DungeonPlayer.MainCharacter.PlayerStance.FrontOffence, GroundOne.DuelMode);
+                            damage = PrimaryLogic.SubAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0, 0, 0, 1.0F, GroundOne.DuelMode);
                         }
                     }
                     else
@@ -6007,7 +6028,7 @@ namespace DungeonPlayer
             // ダメージ加算
             if (damage == 0)
             {
-                damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
+                damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
             }
             // ダメージ「×」増幅
             if (magnification > 0)
@@ -6682,7 +6703,7 @@ namespace DungeonPlayer
         // 魔法攻撃
         private void PlayerMagicAttack(MainCharacter player, MainCharacter target, int interval, double magnification)
         {
-            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, MainCharacter.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
+            double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, interval, ref damage, magnification, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.None, false, CriticalType.Random);
         }
 

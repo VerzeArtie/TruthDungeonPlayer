@@ -96,7 +96,7 @@ GameObject:
   - 222: {fileID: 33853408}
   - 114: {fileID: 33853407}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2231,7 +2231,7 @@ GameObject:
   - 222: {fileID: 1061375634}
   - 114: {fileID: 1061375633}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3439,7 +3439,7 @@ GameObject:
   - 222: {fileID: 1495396580}
   - 114: {fileID: 1495396579}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3987,7 +3987,7 @@ GameObject:
   - 222: {fileID: 1850791812}
   - 114: {fileID: 1850791811}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4181,7 +4181,7 @@ GameObject:
   - 222: {fileID: 1989171170}
   - 114: {fileID: 1989171169}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
