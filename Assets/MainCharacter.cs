@@ -734,7 +734,7 @@ namespace DungeonPlayer
 
         // 以下、複合魔法FlashBlazeから追加ダメージを当てようとして考えたもの
         public int CurrentFlashBlazeCount = 0; // 後編追加
-        public int CurrentFlashBlazeFactor = 0; // 後編追加
+        public double CurrentFlashBlazeFactor = 0; // 後編追加
 
 
         public double AmplifyPhysicalAttack = 0.0f;

@@ -287,6 +287,7 @@ namespace DungeonPlayer
 
                 case "FlashBlaze_Buff":
                     target.CurrentFlashBlazeCount = effectTime;
+                    target.CurrentFlashBlazeFactor = PrimaryLogic.FlashBlaze_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbFlashBlaze, Database.BaseResourceFolder + spellName, effectTime);
                     break;
                 case "StarLightning":

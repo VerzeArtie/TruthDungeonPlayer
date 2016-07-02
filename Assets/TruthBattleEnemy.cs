@@ -636,6 +636,13 @@ namespace DungeonPlayer
                 this.debug3.text = GroundOne.MC.TotalIntelligence.ToString();
                 this.debug4.text = GroundOne.MC.TotalStamina.ToString();
                 this.debug5.text = GroundOne.MC.TotalMind.ToString();
+                this.debug21.text = PrimaryLogic.PhysicalAttackValue(GroundOne.MC, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false).ToString("F2");
+                this.debug22.text = PrimaryLogic.PhysicalDefenseValue(GroundOne.MC, PrimaryLogic.NeedType.Min, false).ToString("F2");
+                this.debug23.text = PrimaryLogic.MagicAttackValue(GroundOne.MC, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, PrimaryLogic.SpellSkillType.Standard, false, false).ToString("F2");
+                this.debug24.text = PrimaryLogic.MagicDefenseValue(GroundOne.MC, PrimaryLogic.NeedType.Min, false).ToString("F2");
+                this.debug25.text = PrimaryLogic.BattleSpeedValue(GroundOne.MC, false).ToString("F2");
+                this.debug26.text = PrimaryLogic.BattleResponseValue(GroundOne.MC, false).ToString("F2");
+                this.debug27.text = PrimaryLogic.PotentialValue(GroundOne.MC, false).ToString("F2");
             }
 
             if (Application.platform == RuntimePlatform.Android)
@@ -3914,7 +3921,7 @@ namespace DungeonPlayer
                 // フラッシュ・ブレイズ効果
                 if (ActiveList[ii].CurrentFlashBlazeCount > 0 && ActiveList[ii].Dead == false)
                 {
-                    double effectValue = PrimaryLogic.FlashBlaze_A_Value(ActiveList[ii], GroundOne.DuelMode);
+                    double effectValue = ActiveList[ii].CurrentFlashBlazeFactor;
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "に閃光の炎が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
