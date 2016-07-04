@@ -732,7 +732,7 @@ namespace DungeonPlayer
             if (this.nowAnimation)
             {
                 ExecAnimation();
-                Debug.Log("nowAnimation is true then return");
+                //Debug.Log("nowAnimation is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowStackAnimation)
@@ -5587,6 +5587,7 @@ namespace DungeonPlayer
                     {
                         if (target.CurrentDeflection > 0)
                         {
+                            AnimationDamage(0, target, 0, Color.black, false, false, Database.SUCCESS_DEFLECTION);
                             damage = DamageIsZero(damage, player);
                             LifeDamage(damage, player);
                             target.RemoveDeflection();
