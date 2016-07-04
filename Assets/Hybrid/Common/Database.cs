@@ -676,7 +676,7 @@ namespace DungeonPlayer
         // [聖火]
         public static int FLASH_BLAZE_COST = 250;
         public static int LIGHT_DETONATOR_COST = 650;
-        public static int ASCENDANT_METEOR_COST = 0; // SpellCost = ( MaxMana / 2 )
+        public static int ASCENDANT_METEOR_COST = 0; // 全消費する意味で０としている。
 
         // [聖水]
         public static int SKY_SHIELD_COST = 350;

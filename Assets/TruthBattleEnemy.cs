@@ -88,6 +88,7 @@ namespace DungeonPlayer
         public Text debug25;
         public Text debug26;
         public Text debug27;
+        public Text debug31;
         public GameObject groupMatrixDragonTalk;
         public Image back_MatrixDragonTalk;
         public Text MatrixDragonTalkText;
@@ -643,6 +644,7 @@ namespace DungeonPlayer
                 this.debug25.text = PrimaryLogic.BattleSpeedValue(GroundOne.MC, false).ToString("F2");
                 this.debug26.text = PrimaryLogic.BattleResponseValue(GroundOne.MC, false).ToString("F2");
                 this.debug27.text = PrimaryLogic.PotentialValue(GroundOne.MC, false).ToString("F2");
+                this.debug31.text = GroundOne.MC.Target.FirstName;
             }
 
             if (Application.platform == RuntimePlatform.Android)
@@ -3592,6 +3594,7 @@ namespace DungeonPlayer
                 }
                 else
                 {
+                    if (mainCharacter.Target.Dead == false) { return; }
                     List<MainCharacter> group = new List<MainCharacter>();
                     if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
                     if (ec2 != null && !ec2.Dead) { group.Add(ec2); }

@@ -48,6 +48,8 @@ namespace DungeonPlayer
         public Text DebugIntelligence;
         public Text DebugStamina;
         public Text DebugMind;
+        public Toggle toggle2;
+        public Toggle toggle3;
         public void enemy_click(Text txtName)
         {
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
@@ -208,6 +210,14 @@ namespace DungeonPlayer
             GroundOne.MC.BattleActionCommandList[0] = Database.ATTACK_EN;
             GroundOne.MC.BattleActionCommandList[1] = Database.DEFENSE_EN;
             GroundOne.enemyName1 = txtName.text;
+            if (toggle2.isOn)
+            {
+                GroundOne.enemyName2 = Database.ENEMY_SPEEDY_TAKA;
+            }
+            if (toggle3.isOn)
+            {
+                GroundOne.enemyName3 = Database.ENEMY_SUN_FLOWER;
+            }
             SceneDimension.CallTruthBattleEnemy(Database.Title, false, false, false, false);
         }
 

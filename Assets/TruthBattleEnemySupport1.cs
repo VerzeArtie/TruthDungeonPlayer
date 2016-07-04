@@ -4320,12 +4320,7 @@ namespace DungeonPlayer
         private void PreExecPlaySpell(MainCharacter player, MainCharacter target, bool withoutCost, bool mainPhase, string CurrentSpellName)
         {
             Debug.Log("Call PreExecPlaySpell start");
-            if ((!withoutCost) && (CurrentSpellName == Database.ASCENDANT_METEOR) && (player.CurrentMana < player.MaxMana / 2))
-            {
-                Debug.Log("MissNotEnoughMana 1");
-                MissNotEnoughMana(player);
-            }
-            else if ((!withoutCost) && (player.CurrentMana < TruthActionCommand.Cost(CurrentSpellName, player)))
+            if ((!withoutCost) && (player.CurrentMana < TruthActionCommand.Cost(CurrentSpellName, player)))
             {
                 Debug.Log("MissNotEnoughMana 2 " + player.CurrentMana.ToString() + " " + TruthActionCommand.Cost(CurrentSpellName, player));
                 MissNotEnoughMana(player);
@@ -4346,14 +4341,7 @@ namespace DungeonPlayer
             {
                 if (!withoutCost)
                 {
-                    if (CurrentSpellName == Database.ASCENDANT_METEOR)
-                    {
-                        player.CurrentMana -= player.MaxMana / 2;
-                    }
-                    else
-                    {
-                        player.CurrentMana -= TruthActionCommand.Cost(CurrentSpellName, player);
-                    }
+                    player.CurrentMana -= TruthActionCommand.Cost(CurrentSpellName, player);
                     UpdateMana(player);
 
                     if (TruthActionCommand.GetTimingType(CurrentSpellName) == TruthActionCommand.TimingType.Sorcery)
@@ -4633,6 +4621,9 @@ namespace DungeonPlayer
             else if (CurrentSpellName == Database.ASCENDANT_METEOR)
             {
                 PlayerSpellAscendantMeteor(player, target, 0, 0);
+                // こちらでマナ全消費
+                player.CurrentMana = 0;
+                UpdateMana(player);
             }
             // 聖＋水 //
             else if (CurrentSpellName == Database.SKY_SHIELD)
