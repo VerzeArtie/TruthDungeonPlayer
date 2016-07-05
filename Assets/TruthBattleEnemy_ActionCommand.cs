@@ -622,9 +622,10 @@ namespace DungeonPlayer
                 if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
             }
 
+            UpdateBattleText(player.GetCharacterSentence(135));
             for (int ii = 0; ii < group.Count; ii++)
             {
-                PlayerAbstractLifeGain(player, group[ii], 0, PrimaryLogic.SacredHealValue(player, GroundOne.DuelMode), 0, "CelestialNova", 135);
+                PlayerAbstractLifeGain(player, group[ii], 0, PrimaryLogic.SacredHealValue(player, GroundOne.DuelMode), 0, "CelestialNova", 0);
             }
         }
 

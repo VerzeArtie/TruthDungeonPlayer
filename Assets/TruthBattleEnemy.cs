@@ -89,6 +89,25 @@ namespace DungeonPlayer
         public Text debug26;
         public Text debug27;
         public Text debug31;
+        public Text debug41;
+        public Text debug42;
+        public Text debug43;
+        public Text debugB1;
+        public Text debugB2;
+        public Text debugB3;
+        public Text debugB4;
+        public Text debugB5;
+        public Text debugB21;
+        public Text debugB22;
+        public Text debugB23;
+        public Text debugB24;
+        public Text debugB25;
+        public Text debugB26;
+        public Text debugB27;
+        public Text debugB31;
+        public Text debugB41;
+        public Text debugB42;
+        public Text debugB43;
         public GameObject groupMatrixDragonTalk;
         public Image back_MatrixDragonTalk;
         public Text MatrixDragonTalkText;
@@ -645,6 +664,28 @@ namespace DungeonPlayer
                 this.debug26.text = PrimaryLogic.BattleResponseValue(GroundOne.MC, false).ToString("F2");
                 this.debug27.text = PrimaryLogic.PotentialValue(GroundOne.MC, false).ToString("F2");
                 this.debug31.text = GroundOne.MC.Target.FirstName;
+                this.debug41.text = GroundOne.MC.MaxLife.ToString();
+                this.debug42.text = GroundOne.MC.MaxMana.ToString();
+                this.debug43.text = GroundOne.MC.MaxInstantPoint.ToString();
+            }
+            if (ec1 != null)
+            {
+                this.debugB1.text = ec1.TotalStrength.ToString();
+                this.debugB2.text = ec1.TotalAgility.ToString();
+                this.debugB3.text = ec1.TotalIntelligence.ToString();
+                this.debugB4.text = ec1.TotalStamina.ToString();
+                this.debugB5.text = ec1.TotalMind.ToString();
+                this.debugB21.text = PrimaryLogic.PhysicalAttackValue(ec1, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false).ToString("F2");
+                this.debugB22.text = PrimaryLogic.PhysicalDefenseValue(ec1, PrimaryLogic.NeedType.Min, false).ToString("F2");
+                this.debugB23.text = PrimaryLogic.MagicAttackValue(ec1, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, PrimaryLogic.SpellSkillType.Standard, false, false).ToString("F2");
+                this.debugB24.text = PrimaryLogic.MagicDefenseValue(ec1, PrimaryLogic.NeedType.Min, false).ToString("F2");
+                this.debugB25.text = PrimaryLogic.BattleSpeedValue(ec1, false).ToString("F2");
+                this.debugB26.text = PrimaryLogic.BattleResponseValue(ec1, false).ToString("F2");
+                this.debugB27.text = PrimaryLogic.PotentialValue(ec1, false).ToString("F2");
+                this.debugB31.text = ec1.Target.FirstName;
+                this.debugB41.text = ec1.MaxLife.ToString();
+                this.debugB42.text = ec1.MaxMana.ToString();
+                this.debugB43.text = ec1.MaxInstantPoint.ToString();
             }
 
             if (Application.platform == RuntimePlatform.Android)

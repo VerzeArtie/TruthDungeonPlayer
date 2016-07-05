@@ -3230,15 +3230,15 @@ namespace DungeonPlayer
                     case 64: // Stance Of Flow
                         return this.FirstName + "：俺はこれ苦手だけどな・・・StanceOfFlow！　" + this.FirstName + "は次３ターン、必ず後攻を取るように構えた。\r\n";
                     case 65: // Carnage Rush 1
-                        return this.FirstName + "：オラオラ、連発ラッシュいくぜ、CarnageRush！ ほらよ！ {0}ダメージ・・・   ";
+                        return this.FirstName + "：オラオラ、連発ラッシュいくぜ、CarnageRush！ ほらよ！ {0} へ {1} のダメージ・・・   ";
                     case 66: // Carnage Rush 2
-                        return "もういっちょ！ {0}ダメージ   ";
+                        return "もういっちょ！ {0} へ {1} のダメージ   ";
                     case 67: // Carnage Rush 3
-                        return "オラオラァ！ {0}ダメージ   ";
+                        return "オラオラァ！ {0} へ {1} のダメージ   ";
                     case 68: // Carnage Rush 4
-                        return "まだまだまぁ！ {0}ダメージ   ";
+                        return "まだまだまぁ！ {0} へ {1} のダメージ   ";
                     case 69: // Carnage Rush 5
-                        return "食らええぇ！！ {0}のダメージ\r\n";
+                        return "食らええぇ！！ {0} へ {1} のダメージ\r\n";
                     case 70: // Crushing Blow
                         return this.FirstName + "：ガツンと一撃止めて見せるぜ、CrushingBlow！  {0} へ {1} のダメージ。\r\n";
                     case 71: // リーベストランクポーション戦闘使用時
@@ -3270,7 +3270,7 @@ namespace DungeonPlayer
                     case 84: // Tranquility
                         return this.FirstName + "：うっとおしい効果だな。消えちまいな、Tranquility！\r\n";
                     case 85: // High Emotionality 1
-                        return this.FirstName + "：俺の最大能力はこんなものじゃねえ、ウオオォォ、HighEmotionality！\r\n";
+                        return this.FirstName + "：俺はまだまだやれる！　ウオオォォ、HighEmotionality！\r\n";
                     case 86: // High Emotionality 2
                         return this.FirstName + "の力、技、知、心パラメタがＵＰした！\r\n";
                     case 87: // AbsoluteZeroでスキル使用失敗
@@ -3278,11 +3278,11 @@ namespace DungeonPlayer
                     case 88: // AbsoluteZeroによる防御失敗
                         return this.FirstName + "：くそ・・・体が・・・防御できねえ！ \r\n";
                     case 89: // Silent Rush 1
-                        return this.FirstName + "：この３連打、受けてみろ、SilentRush！ ほらよ！ {0}ダメージ・・・   ";
+                        return this.FirstName + "：この３連打、受けてみろ、SilentRush！ ほらよ！ {0} へ {1} のダメージ・・・   ";
                     case 90: // Silent Rush 2
-                        return "もういっちょ！ {0}ダメージ   ";
+                        return "もういっちょ！{0} へ {1} のダメージ   ";
                     case 91: // Silent Rush 3
-                        return "３発目だ！おらぁ！ {0}のダメージ\r\n";
+                        return "３発目だ！おらぁ！ {0} へ {1} のダメージ\r\n";
                     case 92: // BUFFUP以外の永続効果が既についている場合
                         return "しかし、既にその効果は付与されている。\r\n";
                     case 93: // Anti Stun
@@ -3910,15 +3910,15 @@ namespace DungeonPlayer
                     case 64: // Stance Of Flow
                         return this.FirstName + "：後手必勝、必ず会得してみせるわ、StanceOfFlowよ。　" + this.FirstName + "は次３ターン、必ず後攻を取るように構えた。\r\n";
                     case 65: // Carnage Rush 1
-                        return this.FirstName + "：この連続コンボ、耐えられるかしら？CarnageRushよ。 ッハイ！ {0}ダメージ・・・   ";
+                        return this.FirstName + "：この連続コンボ、耐えられるかしら？CarnageRushよ。 ッハイ！ {0} へ {1} のダメージ・・・   ";
                     case 66: // Carnage Rush 2
-                        return "ッセイ！ {0}ダメージ   ";
+                        return "ッセイ！ {0} へ {1} のダメージ   ";
                     case 67: // Carnage Rush 3
-                        return "ヤァァ！ {0}ダメージ   ";
+                        return "ヤァァ！ {0} へ {1} のダメージ   ";
                     case 68: // Carnage Rush 4
-                        return "ッフ！ {0}ダメージ   ";
+                        return "ッフ！ {0} へ {1} のダメージ   ";
                     case 69: // Carnage Rush 5
-                        return "ハアアァァァ！！ {0}のダメージ\r\n";
+                        return "ハアアァァァ！！ {0} へ {1} のダメージ\r\n";
                     case 70: // Crushing Blow
                         return this.FirstName + "：この一撃で動きを止めて見せるわ。CrushingBlowよ。  {0} へ {1} のダメージ。\r\n";
                     case 71: // リーベストランクポーション戦闘使用時
@@ -3950,7 +3950,7 @@ namespace DungeonPlayer
                     case 84: // Tranquility
                         return this.FirstName + "：その効果さえ、消えてしまうがいいわ！ Tranquilityよ！\r\n";
                     case 85: // High Emotionality 1
-                        return this.FirstName + "：私の潜在能力はこんなものじゃないわ、HighEmotionalityよ！\r\n";
+                        return this.FirstName + "：まだまだやれるや、HighEmotionality！\r\n";
                     case 86: // High Emotionality 2
                         return this.FirstName + "の力、技、知、心パラメタがＵＰした！\r\n";
                     case 87: // AbsoluteZeroでスキル使用失敗
@@ -3958,11 +3958,11 @@ namespace DungeonPlayer
                     case 88: // AbsoluteZeroによる防御失敗
                         return this.FirstName + "：防御の・・・構えが取れないわ！ \r\n";
                     case 89: // Silent Rush 1
-                        return this.FirstName + "：動きを最小限に抑えた連続攻撃、SilentRushよ。　ッハイ！ {0}ダメージ・・・　";
+                        return this.FirstName + "：動きを最小限に抑えた連続攻撃、SilentRushよ。{0} へ {1} のダメージ・・・　";
                     case 90: // Silent Rush 2
-                        return "ッセイ！ {0}ダメージ   ";
+                        return "ッセイ！ {0} へ {1} のダメージ   ";
                     case 91: // Silent Rush 3
-                        return "ヤアァァ！ {0}のダメージ\r\n";
+                        return "ヤアァァ！ {0} へ {1} のダメージ\r\n";
                     case 92: // BUFFUP以外の永続効果が既についている場合
                         return "しかし、既にその効果は付与されている。\r\n";
                     case 93: // Anti Stun
@@ -4617,15 +4617,15 @@ namespace DungeonPlayer
                     case 64: // Stance Of Flow
                         return this.FirstName + "：相手の動き、封殺してみせましょう。StanceOfFlowです。　" + this.FirstName + "は次３ターン、必ず後攻を取るように構えた。\r\n";
                     case 65: // Carnage Rush 1
-                        return this.FirstName + "：技があれば容易いコンボでしょう、CarnageRushです。 ひとつ {0}ダメージ・・・   ";
+                        return this.FirstName + "：技があれば容易いコンボでしょう、CarnageRushです。 ひとつ {0} へ {1} のダメージ・・・   ";
                     case 66: // Carnage Rush 2
-                        return "ふたつ {0}ダメージ   ";
+                        return "ふたつ {0} へ {1} のダメージ  ";
                     case 67: // Carnage Rush 3
-                        return "みっつ {0}ダメージ   ";
+                        return "みっつ {0} へ {1} のダメージ   ";
                     case 68: // Carnage Rush 4
-                        return "よっつ {0}ダメージ   ";
+                        return "よっつ {0} へ {1} のダメージ   ";
                     case 69: // Carnage Rush 5
-                        return "そして最後です。ハアアァァァ！！ {0}のダメージ\r\n";
+                        return "そして最後です。ハアアァァァ！！ {0} へ {1} のダメージ\r\n";
                     case 70: // Crushing Blow
                         return this.FirstName + "：少し寝ててください。CrushingBlowです。  {0} へ {1} のダメージ。\r\n";
                     case 71: // リーベストランクポーション戦闘使用時
@@ -4665,11 +4665,11 @@ namespace DungeonPlayer
                     case 88: // AbsoluteZeroによる防御失敗
                         return this.FirstName + "：っく・・・防御が・・・思うようにできません！ \r\n";
                     case 89: // Silent Rush 1
-                        return this.FirstName + "：貴方は姿すら捉えられないでしょうね、SilentRushです。　一つ {0}ダメージ・・・　";
+                        return this.FirstName + "：貴方は姿すら捉えられないでしょうね、SilentRushです。　ひとつ {0} へ {1} のダメージ・・・　";
                     case 90: // Silent Rush 2
-                        return "ふたつ {0}ダメージ   ";
+                        return "ふたつ {0} へ {1} のダメージ   ";
                     case 91: // Silent Rush 3
-                        return "そして、みっつめです。ハアァァァ！ {0}のダメージ\r\n";
+                        return "そして、３つめです。ハアァァァ！ {0} へ {1} のダメージ\r\n";
                     case 92: // BUFFUP以外の永続効果が既についている場合
                         return "しかし、既にその効果は付与されている。\r\n";
                     case 93: // Anti Stun
@@ -5285,15 +5285,15 @@ namespace DungeonPlayer
                     case 64: // Stance Of Flow
                         return this.FirstName + "：スタンフロウ！　" + this.FirstName + "は次３ターン、必ず後攻を取るように構えた。\r\n";
                     case 65: // Carnage Rush 1
-                        return this.FirstName + "：オラァ！ {0}ダメージ・・・   ";
+                        return this.FirstName + "：オラァ！ {0} へ {1} のダメージ・・・   ";
                     case 66: // Carnage Rush 2
-                        return "ッラァ！ {0}ダメージ   ";
+                        return "ッラァ！ {0} へ {1} のダメージ   ";
                     case 67: // Carnage Rush 3
-                        return "ッラアァ！ {0}ダメージ   ";
+                        return "ッラアァ！ {0} へ {1} のダメージ   ";
                     case 68: // Carnage Rush 4
-                        return "ッラアァァ！ {0}ダメージ   ";
+                        return "ッラアァァ！ {0} へ {1} のダメージ   ";
                     case 69: // Carnage Rush 5
-                        return "ウォラアァァァ！！ {0}のダメージ\r\n";
+                        return "ウォラアァァァ！！ {0} へ {1} のダメージ\r\n";
                     case 70: // Crushing Blow
                         return this.FirstName + "：クラッシュ！  {0} へ {1} のダメージ。\r\n";
                     case 71: // リーベストランクポーション戦闘使用時
@@ -5333,11 +5333,11 @@ namespace DungeonPlayer
                     case 88: // AbsoluteZeroによる防御失敗
                         return this.FirstName + "：ッカ・・・防御できねぇとはな。 \r\n";
                     case 89: // Silent Rush 1
-                        return this.FirstName + "：ラッシュ！！ {0}ダメージ・・・   ";
+                        return this.FirstName + "：ラッシュ！！ {0} へ {1} のダメージ・・・   ";
                     case 90: // Silent Rush 2
-                        return "ッフン！ {0}ダメージ   ";
+                        return "ッフン！ {0} へ {1} のダメージ   ";
                     case 91: // Silent Rush 3
-                        return "ッラアァァ！ {0}のダメージ\r\n";
+                        return "ッラアァァ！ {0} へ {1} のダメージ\r\n";
                     case 92: // BUFFUP以外の永続効果が既についている場合
                         return "しかし、既にその効果は付与されている。\r\n";
                     case 93: // Anti Stun
@@ -6060,15 +6060,15 @@ namespace DungeonPlayer
                     case 14: // FlameAuraによる追加攻撃
                         return "『FlameAura』が襲いかかる！ {0} ダメージ\r\n";
                     case 65: // Carnage Rush 1
-                        return this.FirstName + "：『CarnageRush』 『壱』 {0}ダメージ   \r\n";
+                        return this.FirstName + "：『CarnageRush』 『壱』 {0} へ {1} のダメージ   \r\n";
                     case 66: // Carnage Rush 2
-                        return this.FirstName + "：『CarnageRush』 『弐』 {0}ダメージ   \r\n";
+                        return this.FirstName + "：『CarnageRush』 『弐』 {0} へ {1} のダメージ   \r\n";
                     case 67: // Carnage Rush 3
-                        return this.FirstName + "：『CarnageRush』 『参』 {0}ダメージ   \r\n";
+                        return this.FirstName + "：『CarnageRush』 『参』 {0} へ {1} のダメージ   \r\n";
                     case 68: // Carnage Rush 4
-                        return this.FirstName + "：『CarnageRush』 『四』 {0}ダメージ   \r\n";
+                        return this.FirstName + "：『CarnageRush』 『四』 {0} へ {1} のダメージ   \r\n";
                     case 69: // Carnage Rush 5
-                        return this.FirstName + "：『CarnageRush』 『終』 {0}のダメージ\r\n";
+                        return this.FirstName + "：『CarnageRush』 『終』 {0} へ {1} のダメージ\r\n";
                     case 53: // 対象不適切
                         return this.FirstName + "：既に『対象』は『消滅』している。\r\n";
                     case 9: // Fresh Healによるライフ回復
@@ -6266,15 +6266,15 @@ namespace DungeonPlayer
                     case 64: // Stance Of Flow
                         return this.FirstName + "はStanceOfFlowを繰り出した！ " + this.FirstName + "は次３ターン、必ず後攻を取るように構えた。\r\n";
                     case 65: // Carnage Rush 1
-                        return this.FirstName + "はCarnageRushを繰り出した！ １発目{0}ダメージ・・・   ";
+                        return this.FirstName + "はCarnageRushを繰り出した！ １発目{0} へ {1} のダメージ・・・   ";
                     case 66: // Carnage Rush 2
-                        return " ２発目{0}ダメージ   ";
+                        return " ２発目{0} へ {1} のダメージ   ";
                     case 67: // Carnage Rush 3
-                        return " ３発目{0}ダメージ   ";
+                        return " ３発目{0} へ {1} のダメージ   ";
                     case 68: // Carnage Rush 4
-                        return " ４発目{0}ダメージ   ";
+                        return " ４発目{0} へ {1} のダメージ   ";
                     case 69: // Carnage Rush 5
-                        return " ５発目{0}のダメージ\r\n";
+                        return " ５発目{0} へ {1} のダメージ\r\n";
                     case 70: // Crushing Blow
                         return this.FirstName + "はCrushingBlowを繰り出した！  {0} へ {1} のダメージ。\r\n";
                     case 71: // リーベストランクポーション戦闘使用時
@@ -6314,11 +6314,11 @@ namespace DungeonPlayer
                     case 88: // AbsoluteZeroによる防御失敗
                         return this.FirstName + "は絶対零度効果により、防御できないままでいる！ \r\n";
                     case 89: // Silent Rush 1
-                        return this.FirstName + "はSilentRushを繰り出した！ １発目 {0}ダメージ・・・　";
+                        return this.FirstName + "はSilentRushを繰り出した！ １発目 {0} へ {1} のダメージ・・・　";
                     case 90: // Silent Rush 2
-                        return "２発目 {0}ダメージ   ";
+                        return "２発目 {0} へ {1} のダメージ   ";
                     case 91: // Silent Rush 3
-                        return "３発目 {0}のダメージ\r\n";
+                        return "３発目 {0} へ {1} のダメージ\r\n";
                     case 92: // BUFFUP以外の永続効果が既についている場合
                         return "しかし、既にその効果は付与されている。\r\n";
                     case 93: // Anti Stun

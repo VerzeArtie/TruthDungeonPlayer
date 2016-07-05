@@ -476,11 +476,14 @@ namespace DungeonPlayer
                 case "HighEmotionality":
                     if (player.CurrentHighEmotionality <= 0)
                     {
-                        player.BuffStrength_HighEmotionality = player.Strength / 3;
-                        player.BuffAgility_HighEmotionality = player.Agility / 3;
-                        player.BuffIntelligence_HighEmotionality = player.Intelligence / 3;
-                        //player.BuffStamina_HighEmotionality = player.Stamina / 3;
-                        player.BuffMind_HighEmotionality = player.Mind / 3;
+                        //player.BuffStrength_HighEmotionality = player.Strength / 3;
+                        //player.BuffAgility_HighEmotionality = player.Agility / 3;
+                        //player.BuffIntelligence_HighEmotionality = player.Intelligence / 3;
+                        double plusValue = (double)player.Stamina * 0.2f;
+                        player.BuffStamina_HighEmotionality = (int)plusValue;
+                        //player.BuffMind_HighEmotionality = player.Mind / 3;
+
+                        PlayerAbstractLifeGain(player, player, 0, (int)plusValue * 10, 0, String.Empty, 5002);
 
                         player.CurrentHighEmotionality = effectTime;
                         target.ActivateBuff(target.pbHighEmotionality, Database.BaseResourceFolder + spellName, effectTime);

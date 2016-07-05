@@ -3944,7 +3944,7 @@ namespace DungeonPlayer
             if (command == Database.CATASTROPHE) { return "対象の【力】【技】【知】のうち最も低い値を《最小》として、対象に" + PowerResult("最小", 5.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
             if (command == Database.TRUTH_VISION) { return "対象の敵が正のＢＵＦＦ効果を受けている場合、その効果によるパラメタ上昇を無視する。"; }
-            if (command == Database.HIGH_EMOTIONALITY) { return "本効果が持続している間、力/技/知/心パラメタをそれぞれ" + PowerResult(1.3) + "上昇させる。"; }
+            if (command == Database.HIGH_EMOTIONALITY) { return "本効果が持続している間、【体】パラメタを" + PowerResult(1.2) + "上昇させる。本効果は３ターン持続される。"; }
             if (command == Database.STANCE_OF_EYES) { return "本効果が持続している間、相手の行動をカウンターする。\r\nこの効果は一度発動されると解除される。"; }
             if (command == Database.PAINFUL_INSANITY) { return "ターンが進む度に、それぞれの敵へ" + PowerResult("心", 3.0, 2000, 3000) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。"; }
 
