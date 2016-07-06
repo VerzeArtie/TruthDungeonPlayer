@@ -2336,7 +2336,7 @@ namespace DungeonPlayer
                                     {
                                         group[ii].CurrentSkyShield = 999;
                                         group[ii].CurrentSkyShieldValue++;
-                                        group[ii].ChangeSkyShieldStatus(group[ii].CurrentSkyShieldValue);
+                                        group[ii].ChangeSkyShieldStatus(group[ii].CurrentSkyShield);
                                     }
                                 }
                                 break;

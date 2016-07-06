@@ -4845,7 +4845,7 @@ namespace DungeonPlayer
                             ActiveList[ii].RemoveDebuffParam();
                             ActiveList[ii].RemoveDebuffSkill();
                             ActiveList[ii].RemoveDebuffSpell();
-                            ActiveList[ii].ChangeLifeCountStatus(ActiveList[ii].CurrentLifeCountValue);
+                            ActiveList[ii].ChangeLifeCountStatus(ActiveList[ii].CurrentLifeCount);
                             ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife);
                             UpdateLife(ActiveList[ii]);
                             //ActiveList[ii].labelLife.Update();
@@ -5643,7 +5643,7 @@ namespace DungeonPlayer
                     if (target.CurrentStaticBarrier > 0)
                     {
                         target.CurrentStaticBarrierValue--;
-                        target.ChangeStaticBarrierStatus(target.CurrentStaticBarrierValue);
+                        target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                         damage = damage * 0.5f;
                     }
 
@@ -5651,7 +5651,7 @@ namespace DungeonPlayer
                     if (target.CurrentStanceOfMysticValue > 0)
                     {
                         target.CurrentStanceOfMysticValue--;
-                        target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMysticValue);
+                        target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
                         damage = 0;
                         LifeDamage(damage, target, interval, false);
                         return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
@@ -6583,21 +6583,21 @@ namespace DungeonPlayer
             if (target.CurrentSkyShieldValue > 0)
             {
                 target.CurrentSkyShieldValue--;
-                target.ChangeSkyShieldStatus(target.CurrentSkyShieldValue);
+                target.ChangeSkyShieldStatus(target.CurrentSkyShield);
                 damage = 0;
             }
             // StaticBarrierの効果
             if (target.CurrentStaticBarrier > 0)
             {
                 target.CurrentStaticBarrierValue--;
-                target.ChangeStaticBarrierStatus(target.CurrentStaticBarrierValue);
+                target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                 damage = damage * 0.5f;
             }
             // StanceOfMysticによる効果
             if (target.CurrentStanceOfMysticValue > 0)
             {
                 target.CurrentStanceOfMysticValue--;
-                target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMysticValue);
+                target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
                 damage = 0;
                 LifeDamage(damage, target, interval, false);
                 return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し

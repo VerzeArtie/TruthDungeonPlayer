@@ -252,13 +252,13 @@ namespace DungeonPlayer
                 case "SkyShield":
                     target.CurrentSkyShield = effectTime;
                     target.CurrentSkyShieldValue++;
-                    target.ChangeSkyShieldStatus(target.CurrentSkyShieldValue);
+                    target.ChangeSkyShieldStatus(target.CurrentSkyShield);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(134), target.FirstName));
                     break;
                 case "StaticBarrier":
                     target.CurrentStaticBarrier = effectTime;
                     target.CurrentStaticBarrierValue++;
-                    target.ChangeStaticBarrierStatus(target.CurrentStaticBarrierValue);
+                    target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(186), target.FirstName));
                     break;
                 case "EverDroplet":
@@ -436,17 +436,17 @@ namespace DungeonPlayer
                 case "ConcussiveHit":
                     target.CurrentConcussiveHit = effectTime;
                     target.CurrentConcussiveHitValue++;
-                    target.ChangeConcussiveHitStatus(target.CurrentConcussiveHitValue);
+                    target.ChangeConcussiveHitStatus(target.CurrentConcussiveHit);
                     break;
                 case "OnslaughtHit":
                     target.CurrentOnslaughtHit = effectTime;
                     target.CurrentOnslaughtHitValue++;
-                    target.ChangeOnslaughtHitStatus(target.CurrentOnslaughtHitValue);
+                    target.ChangeOnslaughtHitStatus(target.CurrentOnslaughtHit);
                     break;
                 case "ImpulseHit":
                     target.CurrentImpulseHit = effectTime;
                     target.CurrentImpulseHitValue++;
-                    target.ChangeImpulseHitStatus(target.CurrentImpulseHitValue);
+                    target.ChangeImpulseHitStatus(target.CurrentImpulseHit);
                     break;
                 case "JUNKAN-SEIYAKU":
                     if (target.CurrentJunkan_Seiyaku <= 0)
@@ -464,7 +464,7 @@ namespace DungeonPlayer
                 case "StanceOfMystic":
                     target.CurrentStanceOfMystic = effectTime;
                     target.CurrentStanceOfMysticValue++;
-                    target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMysticValue);
+                    target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(168), target.FirstName));
                     break;
                 case "TruthVision":
@@ -595,49 +595,49 @@ namespace DungeonPlayer
                 case Database.ITEMCOMMAND_FELTUS:
                     player.CurrentFeltus = effectTime;
                     player.CurrentFeltusValue++;
-                    player.ChangeFeltusStatus(player.CurrentFeltusValue);
+                    player.ChangeFeltusStatus(player.CurrentFeltus);
                     UpdateBattleText(target.FirstName + "に、【神】の蓄積カウンターが乗った！\r\n");
                     break;
 
                 case Database.ITEMCOMMAND_JUZA_PHANTASMAL:
                     player.CurrentJuzaPhantasmal = effectTime;
                     player.CurrentJuzaPhantasmalValue++;
-                    player.ChangeJuzaPhantasmalStatus(player.CurrentJuzaPhantasmalValue);
+                    player.ChangeJuzaPhantasmalStatus(player.CurrentJuzaPhantasmal);
                     UpdateBattleText(target.FirstName + "に、【颯】の蓄積カウンターが乗った！\r\n");
                     break;
 
                 case Database.ITEMCOMMAND_ETERNAL_FATE:
                     player.CurrentEternalFateRing = effectTime;
                     player.CurrentEternalFateRingValue++;
-                    player.ChangeEternalFateRingStatus(player.CurrentEternalFateRingValue);
+                    player.ChangeEternalFateRingStatus(player.CurrentEternalFateRing);
                     UpdateBattleText(target.FirstName + "に、【轟】の蓄積カウンターが乗った！\r\n");
                     break;
 
                 case Database.ITEMCOMMAND_LIGHT_SERVANT:
                     player.CurrentLightServant = effectTime;
                     player.CurrentLightServantValue++;
-                    player.ChangeLightServantStatus(player.CurrentLightServantValue);
+                    player.ChangeLightServantStatus(player.CurrentLightServant);
                     UpdateBattleText(player.FirstName + "に、【聖】の蓄積カウンターが乗った！\r\n");
                     break;
 
                 case Database.ITEMCOMMAND_SHADOW_SERVANT:
                     player.CurrentShadowServant = effectTime;
                     player.CurrentShadowServantValue++;
-                    player.ChangeShadowServantStatus(player.CurrentShadowServantValue);
+                    player.ChangeShadowServantStatus(player.CurrentShadowServant);
                     UpdateBattleText(player.FirstName + "に、【闇】の蓄積カウンターが乗った！\r\n");
                     break;
 
                 case Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN:
                     player.CurrentAdilBlueBurn = effectTime;
                     player.CurrentAdilBlueBurnValue++;
-                    player.ChangeAdilBlueBurnStatus(player.CurrentAdilBlueBurnValue);
+                    player.ChangeAdilBlueBurnStatus(player.CurrentAdilBlueBurn);
                     UpdateBattleText(target.FirstName + "に、【蒼】の蓄積カウンターが乗った！\r\n");
                     break;
 
                 case Database.ITEMCOMMAND_MAZE_CUBE:
                     player.CurrentMazeCube = effectTime;
                     player.CurrentMazeCubeValue++;
-                    player.ChangeMazeCubeStatus(player.CurrentMazeCubeValue);
+                    player.ChangeMazeCubeStatus(player.CurrentMazeCube);
                     UpdateBattleText(player.FirstName + "に、【迷】の蓄積カウンターが乗った！\r\n");
                     break;
 
@@ -671,7 +671,7 @@ namespace DungeonPlayer
                     player.pbLifeCount.CumulativeAlign = TruthImage.CumulativeTextAlign.Center;
                     player.ActivateBuff(player.pbLifeCount, Database.BaseResourceFolder + spellName + fileExt, effectTime);
                     player.CurrentLifeCountValue = 3;
-                    player.ChangeLifeCountStatus(player.CurrentLifeCountValue);
+                    player.ChangeLifeCountStatus(player.CurrentLifeCount);
                     UpdateBattleText(player.FirstName + "に生命力カウンターが３つ発生した！\r\n");
                     break;
 

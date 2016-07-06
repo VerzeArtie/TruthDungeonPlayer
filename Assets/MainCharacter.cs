@@ -886,6 +886,7 @@ namespace DungeonPlayer
         // 武器特有のBUFF
         public int CurrentFeltus = 0;
         public int CurrentJuzaPhantasmal = 0;
+        public int CurrentEternalFateRing = 0;
         public int CurrentLightServant = 0;
         public int CurrentShadowServant = 0;
         public int CurrentAdilBlueBurn = 0;
@@ -1133,29 +1134,91 @@ namespace DungeonPlayer
             get { return buffMind_MainWeapon + buffMind_SubWeapon + buffMind_Armor + buffMind_Accessory + buffMind_Accessory2; } // c 後編追加
         }
         // 負の影響効果の重ねがけ効果
-        public int CurrentPoisonValue = 0; // 後編追加
-        public int CurrentConcussiveHitValue = 0; // 後編追加
-        public int CurrentOnslaughtHitValue = 0; // 後編追加
-        public int CurrentImpulseHitValue = 0; // 後編追加
+        public int CurrentPoisonValue
+        {
+            get { return currentPoisonValue; }
+            set { if (value <= 5) { currentPoisonValue = value; } }
+        }
+        public int CurrentConcussiveHitValue
+        {
+            get { return currentConcussiveHitValue; }
+            set { if (value <= 3) { currentConcussiveHitValue = value; } }
+        }
+        public int CurrentOnslaughtHitValue
+        {
+            get { return currentOnslaughtHitValue; }
+            set { if (value <= 3) { currentOnslaughtHitValue = value; } }
+        }
+        public int CurrentImpulseHitValue
+        {
+            get { return currentImpulseHitValue; }
+            set { if (value <= 3) { currentImpulseHitValue = value; } }
+        }
 
         // 正の影響効果の重ねがけ効果
-        public int CurrentSkyShieldValue = 0; // 後編追加
-        public int CurrentStaticBarrierValue = 0; // 後編追加
-        public int CurrentStanceOfMysticValue = 0; // 後編追加
-
+        public int CurrentSkyShieldValue
+        {
+            get { return currentSkyShieldValue; }
+            set { if (value <= 3) { currentSkyShieldValue = value; } }
+        }
+        public int CurrentStaticBarrierValue
+        {
+            get { return currentStaticBarrierValue; }
+            set { if (value <= 3) { currentStaticBarrierValue = value; } }
+        }
+        public int CurrentStanceOfMysticValue
+        {
+            get { return currentStanceOfMysticValue; }
+            set { if (value <= 3) { currentStanceOfMysticValue = value; } }
+        }
         // 武器特有の重ねがけ効果
-        public int CurrentFeltusValue = 0; // 後編追加
-        public int CurrentJuzaPhantasmalValue = 0; // 後編追加
-        public int CurrentLightServantValue = 0; // 後編追加
-        public int CurrentShadowServantValue = 0; // 後編追加
-        public int CurrentAdilBlueBurnValue = 0; // 後編追加
-        public int CurrentMazeCubeValue = 0; // 後編追加
-
+        public int CurrentFeltusValue
+        {
+            get { return currentFeltusValue; }
+            set { if (value <= 30) { currentFeltusValue = value; } }
+        }
+        public int CurrentJuzaPhantasmalValue
+        {
+            get { return currentJuzaPhantasmalValue; }
+            set { if (value <= 10) { currentJuzaPhantasmalValue = value; } }
+        }
+        public int CurrentEternalFateRingValue
+        {
+            get { return currentEternalFateRingValue; }
+            set { if (value <= 10) { currentEternalFateRingValue = value; } }
+        }
+        public int CurrentLightServantValue
+        {
+            get { return currentLightServantValue; }
+            set { if (value <= 3) { currentLightServantValue = value; } }
+        }
+        public int CurrentShadowServantValue
+        {
+            get { return currentShadowServantValue; }
+            set { if (value <= 3) { currentShadowServantValue = value; } }
+        }
+        public int CurrentAdilBlueBurnValue
+        {
+            get { return currentAdilBlueBurnValue; }
+            set { if (value <= 30) { currentAdilBlueBurnValue = value; } }
+        }
+        public int CurrentMazeCubeValue
+        {
+            get { return currentMazeCubeValue; }
+            set { if (value <= 10) { currentMazeCubeValue = value; } }
+        }
         // 消耗品特有の重ねがけ効果
-        public int CurrentBlackElixirValue = 0; // 後編追加
-
+        public int CurrentBlackElixirValue
+        {
+            get { return currentBlackElixirValue; }
+            set { currentBlackElixirValue = value; }
+        }
         // 最終戦闘のライフカウント
-        public int CurrentLifeCountValue = 0; // 後編追加
+        public int CurrentLifeCountValue
+        {
+            get { return currentLifeCountValue; }
+            set { if (value <= 3) { currentLifeCountValue = value; } }
+        }
 
         public bool AvailableSkill = false;
         public bool AvailableMana = false;
@@ -7940,19 +8003,7 @@ namespace DungeonPlayer
                 return upPoint;
             }
         }
-
-        public int CurrentEternalFateRingValue
-        {
-            get { return currentEternalFateRingValue; }
-            set { if (value <= 10) { currentEternalFateRingValue = value; } }
-        }
-        protected int currentEternalFateRing;
-        public int CurrentEternalFateRing
-        {
-            get { return this.currentEternalFateRing; }
-            set { this.currentEternalFateRing = value; }
-        }
-
+        
         public bool CheckResistStun
         {
             get
@@ -9372,7 +9423,7 @@ namespace DungeonPlayer
             }
             else if ((value == 1) && (pbData.sprite == null))
             {
-                this.ActivateBuff(pbData, Database.BaseResourceFolder + bmpName + ".bmp", count);
+                this.ActivateBuff(pbData, Database.BaseResourceFolder + bmpName, count);
             }
         }
         public void ChangePoisonStatus(int count)
@@ -9713,7 +9764,7 @@ namespace DungeonPlayer
                 // 動＋剛
                 AbstractCountDownBuff(pbRisingAura, ref CurrentRisingAura);
                 // 動＋心眼
-                AbstractCountDownBuff(pbOnslaughtHit, ref CurrentOnslaughtHit, ref CurrentOnslaughtHitValue);
+                AbstractCountDownBuff(pbOnslaughtHit, ref CurrentOnslaughtHit, ref currentOnslaughtHitValue);
                 // 動＋無心
                 AbstractCountDownBuff(pbSmoothingMove, ref CurrentSmoothingMove);
                 AbstractCountDownBuff(pbAscensionAura, ref CurrentAscensionAura);
@@ -9722,15 +9773,15 @@ namespace DungeonPlayer
                 // 静＋剛
                 AbstractCountDownBuff(pbReflexSpirit, ref CurrentReflexSpirit);
                 // 静＋心眼
-                AbstractCountDownBuff(pbConcussiveHit, ref CurrentConcussiveHit, ref CurrentConcussiveHitValue);
+                AbstractCountDownBuff(pbConcussiveHit, ref CurrentConcussiveHit, ref currentConcussiveHitValue);
                 // 静＋無心
                 AbstractCountDownBuff(pbTrustSilence, ref CurrentTrustSilence);
                 // 柔＋剛
-                AbstractCountDownBuff(pbStanceOfMystic, ref CurrentStanceOfMystic, ref CurrentStanceOfMysticValue);
+                AbstractCountDownBuff(pbStanceOfMystic, ref CurrentStanceOfMystic, ref currentStanceOfMysticValue);
                 // 柔＋心眼
                 AbstractCountDownBuff(pbNourishSense, ref CurrentNourishSense);
                 // 柔＋無心
-                AbstractCountDownBuff(pbImpulseHit, ref CurrentImpulseHit, ref CurrentImpulseHitValue);
+                AbstractCountDownBuff(pbImpulseHit, ref CurrentImpulseHit, ref currentImpulseHitValue);
                 // 剛＋心眼
                 AbstractCountDownBuff(pbOneAuthority, ref CurrentOneAuthority);
                 // 剛＋無心
@@ -9739,13 +9790,13 @@ namespace DungeonPlayer
                 CurrentStanceOfSuddenness = false;
 
                 // 武器特有
-                AbstractCountDownBuff(pbFeltus, ref CurrentFeltus, ref CurrentFeltusValue);
-                AbstractCountDownBuff(pbJuzaPhantasmal, ref CurrentJuzaPhantasmal, ref CurrentJuzaPhantasmalValue);
-                AbstractCountDownBuff(pbEternalFateRing, ref currentEternalFateRing, ref currentEternalFateRingValue);
-                AbstractCountDownBuff(pbLightServant, ref CurrentLightServant, ref CurrentLightServantValue);
-                AbstractCountDownBuff(pbShadowServant, ref CurrentShadowServant, ref CurrentShadowServantValue);
-                AbstractCountDownBuff(pbAdilBlueBurn, ref CurrentAdilBlueBurn, ref CurrentAdilBlueBurnValue);
-                AbstractCountDownBuff(pbMazeCube, ref CurrentMazeCube, ref CurrentMazeCubeValue);
+                AbstractCountDownBuff(pbFeltus, ref CurrentFeltus, ref currentFeltusValue);
+                AbstractCountDownBuff(pbJuzaPhantasmal, ref CurrentJuzaPhantasmal, ref currentJuzaPhantasmalValue);
+                AbstractCountDownBuff(pbEternalFateRing, ref CurrentEternalFateRing, ref currentEternalFateRingValue);
+                AbstractCountDownBuff(pbLightServant, ref CurrentLightServant, ref currentLightServantValue);
+                AbstractCountDownBuff(pbShadowServant, ref CurrentShadowServant, ref currentShadowServantValue);
+                AbstractCountDownBuff(pbAdilBlueBurn, ref CurrentAdilBlueBurn, ref currentAdilBlueBurnValue);
+                AbstractCountDownBuff(pbMazeCube, ref CurrentMazeCube, ref currentMazeCubeValue);
                 AbstractCountDownBuff(pbShadowBible, ref CurrentShadowBible);
                 AbstractCountDownBuff(pbDetachmentOrb, ref CurrentDetachmentOrb);
                 AbstractCountDownBuff(pbDevilSummonerTome, ref CurrentDevilSummonerTome);
@@ -9753,7 +9804,7 @@ namespace DungeonPlayer
                 AbstractCountDownBuff(pbSagePotionMini, ref CurrentSagePotionMini);
                 AbstractCountDownBuff(pbGenseiTaima, ref CurrentGenseiTaima);
                 AbstractCountDownBuff(pbShiningAether, ref CurrentShiningAether);
-                AbstractCountDownBuff(pbBlackElixir, ref CurrentBlackElixir, ref CurrentBlackElixirValue);
+                AbstractCountDownBuff(pbBlackElixir, ref CurrentBlackElixir, ref currentBlackElixirValue);
                 AbstractCountDownBuff(pbElementalSeal, ref CurrentElementalSeal);
                 AbstractCountDownBuff(pbColoressAntidote, ref CurrentColoressAntidote);
 
@@ -9805,7 +9856,7 @@ namespace DungeonPlayer
             AbstractCountDownBuff(pbPreStunning, ref CurrentPreStunning);
             AbstractCountDownBuff(pbStun, ref CurrentStunning);
             AbstractCountDownBuff(pbSilence, ref CurrentSilence);
-            AbstractCountDownBuff(pbPoison, ref CurrentPoison, ref CurrentPoisonValue);
+            AbstractCountDownBuff(pbPoison, ref CurrentPoison, ref currentPoisonValue);
             AbstractCountDownBuff(pbTemptation, ref CurrentTemptation);
             AbstractCountDownBuff(pbFrozen, ref CurrentFrozen);
             AbstractCountDownBuff(pbParalyze, ref CurrentParalyze);
