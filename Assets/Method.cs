@@ -226,7 +226,7 @@ namespace DungeonPlayer
         {
             if (actionCommand != null && actionCommand != "" && actionCommand != string.Empty)
             {
-                Debug.Log("not equal empty : " + actionCommand);
+                //Debug.Log("not equal empty : " + actionCommand);
 
                 actionButton.GetComponent<Image>().sprite = Resources.Load<Sprite>(actionCommand);
                 actionButton.name = actionCommand;

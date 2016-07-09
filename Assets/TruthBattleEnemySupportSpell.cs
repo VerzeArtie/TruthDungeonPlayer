@@ -311,8 +311,9 @@ namespace DungeonPlayer
                     target.CurrentBlackFire = effectTime;
                     target.ActivateBuff(target.pbBlackFire, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "EnrageBlast":
+                case Database.ENRAGE_BLAST:
                     target.CurrentEnrageBlast = effectTime;
+                    target.CurrentEnrageBlastFactor = PrimaryLogic.EnrageBlast_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbEnrageBlast, Database.BaseResourceFolder + spellName, effectTime);
                     break;
                 case "SigilOfHomura":

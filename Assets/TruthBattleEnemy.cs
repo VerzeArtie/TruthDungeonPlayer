@@ -3548,19 +3548,19 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
-                {
-                    //if (player.CurrentTimeStop > 0)
-                    {
-                        UseInstantPoint(player);
-                        player.StackActivePlayer = ec1;
-                        player.StackTarget = ec1;
-                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
-                        player.StackCommandString = Database.FRESH_HEAL;
-                        player.StackActivation = true;
-                        this.NowStackInTheCommand = true;
-                    }
-                }
+                //if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                //{
+                //    //if (player.CurrentTimeStop > 0)
+                //    {
+                //        UseInstantPoint(player);
+                //        player.StackActivePlayer = ec1;
+                //        player.StackTarget = ec1;
+                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                //        player.StackCommandString = Database.FRESH_HEAL;
+                //        player.StackActivation = true;
+                //        this.NowStackInTheCommand = true;
+                //    }
+                //}
             }
             #endregion
         }
@@ -3987,7 +3987,7 @@ namespace DungeonPlayer
                 // エンレイジ・ブラスト効果
                 if (ActiveList[ii].CurrentEnrageBlast > 0 && ActiveList[ii].Dead == false)
                 {
-                    double effectValue = PrimaryLogic.EnrageBlast_A_Value(ActiveList[ii], GroundOne.DuelMode);
+                    double effectValue = ActiveList[ii].CurrentEnrageBlastFactor;
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ火の粉が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);

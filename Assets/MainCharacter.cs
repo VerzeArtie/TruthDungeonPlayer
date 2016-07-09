@@ -732,9 +732,10 @@ namespace DungeonPlayer
         public int PoolManaConsumption = 0; // 無形の杯で、1ターンのダメージ/消費量が必要になった
         public int PoolSkillConsumption = 0; // 無形の杯で、1ターンのダメージ/消費量が必要になった
 
-        // 以下、複合魔法FlashBlazeから追加ダメージを当てようとして考えたもの
+        // Buff追加からダメージを与える要素
         public int CurrentFlashBlazeCount = 0; // 後編追加
         public double CurrentFlashBlazeFactor = 0; // 後編追加
+        public double CurrentEnrageBlastFactor = 0; // Unity追加
 
 
         public double AmplifyPhysicalAttack = 0.0f;
@@ -6768,14 +6769,12 @@ namespace DungeonPlayer
             {
                 DeBuff(imageData);
             }
-            //if (imageData.sprite == null)
-            //{
+
             imageData.sprite = Resources.Load<Sprite>(imageName);
             imageData.rectTransform.anchoredPosition = new Vector3(-1 * (Database.BUFFPANEL_OFFSET_X + Database.BUFFPANEL_BUFF_WIDTH) * (this.BuffNumber), 0);
             imageData.Count = count;
             imageData.gameObject.SetActive(true);
             this.BuffNumber++;
-            //}
         }
 
         public void ChangeBuffImage(TruthImage imageData, string imageName)
@@ -6796,27 +6795,24 @@ namespace DungeonPlayer
 
         private void RemoveOneBuff(TruthImage imageBox)
         {
-            Vector3 tempPoint = new Vector3(imageBox.transform.position.x - Database.BUFFPANEL_BUFF_WIDTH, 0);
+            Vector2 tempPoint = imageBox.rectTransform.anchoredPosition; //new Vector3(imageBox.transform.position.x - Database.BUFFPANEL_BUFF_WIDTH, 0);
+            MoveNextBuff(tempPoint);
+
             imageBox.Count = 0;
             imageBox.Cumulative = 0;
             imageBox.sprite = null;
             imageBox.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0);
             imageBox.gameObject.SetActive(false);
-            //imageBox.Update();
-
-            MoveNextBuff(tempPoint);
         }
 
-        private void MoveNextBuff(Vector3 tempPoint)
+        private void MoveNextBuff(Vector2 tempPoint)
         {
+            Debug.Log("MoveNextBuff(S) " + tempPoint.x);
             for (int ii = 0; ii < Database.BUFF_NUM; ii++)
             {
-                if (tempPoint == this.BuffElement[ii].transform.position)
+                if (tempPoint.x >= this.BuffElement[ii].rectTransform.anchoredPosition.x)
                 {
-                    this.BuffElement[ii].transform.position = new Vector3(this.BuffElement[ii].transform.position.x + Database.BUFFPANEL_BUFF_WIDTH, 0);
-                    Vector3 tempPointB = new Vector3(tempPoint.x - Database.BUFFPANEL_BUFF_WIDTH, 0);
-                    MoveNextBuff(tempPointB);
-                    break;
+                    this.BuffElement[ii].rectTransform.anchoredPosition = new Vector3(this.BuffElement[ii].rectTransform.anchoredPosition.x + (Database.BUFFPANEL_OFFSET_X + Database.BUFFPANEL_BUFF_WIDTH), 0);
                 }
             }
 
@@ -8563,6 +8559,7 @@ namespace DungeonPlayer
         public void RemoveFlashBlaze()
         {
             this.CurrentFlashBlazeCount = 0;
+            this.CurrentFlashBlazeFactor = 0;
             this.DeBuff(this.pbFlashBlaze);
         }
         public void RemoveSkyShield()
@@ -8650,6 +8647,7 @@ namespace DungeonPlayer
         public void RemoveEnrageBlast()
         {
             this.CurrentEnrageBlast = 0;
+            this.CurrentEnrageBlastFactor = 0;
             this.DeBuff(this.pbEnrageBlast);
         }
         //public void RemoveSigilOfHomura()
@@ -10314,6 +10312,10 @@ namespace DungeonPlayer
             CurrentHardestParry = false;
             // 心眼＋無心
             CurrentStanceOfSuddenness = false;
+
+            // Buff要素
+            CurrentFlashBlazeFactor = 0;
+            CurrentEnrageBlastFactor = 0;
 
             // 武器特有
             CurrentFeltus = 0;
