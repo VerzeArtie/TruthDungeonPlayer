@@ -6764,14 +6764,18 @@ namespace DungeonPlayer
 
         public void ActivateBuff(TruthImage imageData, string imageName, int count)
         {
-            if (imageData.sprite == null)
+            if (imageData.sprite != null)
             {
-                imageData.sprite = Resources.Load<Sprite>(imageName);
-                imageData.rectTransform.anchoredPosition = new Vector3(-1 * (Database.BUFFPANEL_OFFSET_X + Database.BUFFPANEL_BUFF_WIDTH) * (this.BuffNumber), 0);
-                imageData.Count = count;
-                imageData.gameObject.SetActive(true);
-                this.BuffNumber++;
+                DeBuff(imageData);
             }
+            //if (imageData.sprite == null)
+            //{
+            imageData.sprite = Resources.Load<Sprite>(imageName);
+            imageData.rectTransform.anchoredPosition = new Vector3(-1 * (Database.BUFFPANEL_OFFSET_X + Database.BUFFPANEL_BUFF_WIDTH) * (this.BuffNumber), 0);
+            imageData.Count = count;
+            imageData.gameObject.SetActive(true);
+            this.BuffNumber++;
+            //}
         }
 
         public void ChangeBuffImage(TruthImage imageData, string imageName)

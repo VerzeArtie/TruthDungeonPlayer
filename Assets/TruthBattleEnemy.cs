@@ -1793,10 +1793,13 @@ namespace DungeonPlayer
                         {
                             ExecActionMethod(this.currentTargetedPlayer, ec1, TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
                         }
+                        else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget)
+                        {
+                            ExecActionMethod(this.currentTargetedPlayer, this.stackActivePlayer[this.stackActivePlayer.Count - 1], TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
+                        }
                         else if ((TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.EnemyGroup) ||
                                  (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyGroup) ||
-                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllMember) ||
-                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget))
+                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllMember))
                         {
                             ExecActionMethod(this.currentTargetedPlayer, null, TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
                         }
@@ -1824,10 +1827,13 @@ namespace DungeonPlayer
                             this.NowSelectingTarget = true;
                             //this.Invalidate();
                         }
+                        else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget)
+                        {
+                            ExecActionMethod(this.currentTargetedPlayer, this.stackActivePlayer[this.stackActivePlayer.Count - 1], TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
+                        }
                         else if ((TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.EnemyGroup) ||
                                  (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyGroup) ||
-                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllMember) ||
-                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget))
+                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllMember))
                         {
                             ExecActionMethod(this.currentTargetedPlayer, null, TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
                         }
@@ -1853,10 +1859,13 @@ namespace DungeonPlayer
                         {
                             ExecActionMethod(this.currentTargetedPlayer, ec1, TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
                         }
+                        else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget)
+                        {
+                            ExecActionMethod(this.currentTargetedPlayer, this.stackActivePlayer[this.stackActivePlayer.Count - 1], TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
+                        }
                         else if ((TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.EnemyGroup) ||
                                  (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyGroup) ||
-                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllMember) ||
-                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget))
+                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllMember))
                         {
                             ExecActionMethod(this.currentTargetedPlayer, null, TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
                         }
@@ -1880,10 +1889,13 @@ namespace DungeonPlayer
                             this.NowSelectingTarget = true;
                             //this.Invalidate();
                         }
+                        else if (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget)
+                        {
+                            ExecActionMethod(this.currentTargetedPlayer, this.stackActivePlayer[this.stackActivePlayer.Count - 1], TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
+                        }
                         else if ((TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.EnemyGroup) ||
                                  (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllyGroup) ||
-                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllMember) ||
-                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.InstantTarget))
+                                 (TruthActionCommand.GetTargetType(BattleActionCommand) == TruthActionCommand.TargetType.AllMember))
                         {
                             ExecActionMethod(this.currentTargetedPlayer, null, TruthActionCommand.CheckPlayerActionFromString(BattleActionCommand), BattleActionCommand);
                         }
@@ -4694,7 +4706,7 @@ namespace DungeonPlayer
             else
             {
                 UpdateBattleText(target.GetCharacterSentence(messageNumber));
-                AnimationDamage(0, target, 0, Color.black, true, false, Database.SUCCESS_COUNTER);
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.SUCCESS_COUNTER);
                 return true;
             }
         }
@@ -5080,11 +5092,6 @@ namespace DungeonPlayer
             {
                 if ((this.instantActionCommandString != String.Empty))// && (this.currentTargetedPlayer.StackActivePlayer == null))
                 {
-                    for (int ii = 0; ii < ActiveList.Count; ii++)
-                    {
-                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton)) { this.tempTargetForInstant = ActiveList[ii]; }
-                    }
-
                     if ((TruthActionCommand.CheckPlayerActionFromString(this.instantActionCommandString) == MainCharacter.PlayerAction.UseSpell) && TruthActionCommand.GetTargetType(this.instantActionCommandString) == TruthActionCommand.TargetType.Enemy)
                     {
                         UpdateBattleText(this.currentTargetedPlayer.GetCharacterSentence(4074));
@@ -5105,36 +5112,44 @@ namespace DungeonPlayer
                         UpdateBattleText(this.currentTargetedPlayer.GetCharacterSentence(4076));
                         return;
                     }
-                    ExecActionMethod(this.currentTargetedPlayer, this.tempTargetForInstant, TruthActionCommand.CheckPlayerActionFromString(this.instantActionCommandString), this.instantActionCommandString);
+
+                    for (int ii = 0; ii < ActiveList.Count; ii++)
+                    {
+                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton)) 
+                        {
+                            ExecActionMethod(this.currentTargetedPlayer, ActiveList[ii], TruthActionCommand.CheckPlayerActionFromString(this.instantActionCommandString), this.instantActionCommandString);
+                            break;
+                        }
+                    }
                 }
                 else
                 {
-                    MainCharacter memoTarget = null;
-                    for (int ii = 0; ii < ActiveList.Count; ii++)
-                    {
-                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton)) { memoTarget = ActiveList[ii]; }
-                    }
-
                     if (TruthActionCommand.GetTargetType(this.currentTargetedPlayer.ReserveBattleCommand) == TruthActionCommand.TargetType.Enemy)
                     {
                         UpdateBattleText(this.currentTargetedPlayer.GetCharacterSentence(4074));
                         return;
                     }
 
-                    if ((TruthActionCommand.GetTargetType(this.currentTargetedPlayer.ReserveBattleCommand) == TruthActionCommand.TargetType.Ally) ||
-                        (TruthActionCommand.GetTargetType(this.instantActionCommandString) == TruthActionCommand.TargetType.Ally))
+                    for (int ii = 0; ii < ActiveList.Count; ii++)
                     {
-                        this.currentTargetedPlayer.Target2 = memoTarget;
+                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton))
+                        {
+                            if ((TruthActionCommand.GetTargetType(this.currentTargetedPlayer.ReserveBattleCommand) == TruthActionCommand.TargetType.Ally) ||
+                                (TruthActionCommand.GetTargetType(this.instantActionCommandString) == TruthActionCommand.TargetType.Ally))
+                            {
+                                this.currentTargetedPlayer.Target2 = ActiveList[ii];
+                            }
+                            else
+                            {
+                                this.currentTargetedPlayer.Target = ActiveList[ii];
+                            }
+                            PlayerActionSet(this.currentTargetedPlayer);
+                            break;
+                        }
                     }
-                    else
-                    {
-                        this.currentTargetedPlayer.Target = memoTarget;
-                    }
-                    PlayerActionSet(this.currentTargetedPlayer);
                 }
                 this.currentTargetedPlayer.ReserveBattleCommand = String.Empty;
                 this.NowSelectingTarget = false;
-                //this.Invalidate();
             }
         }
 
@@ -5144,11 +5159,6 @@ namespace DungeonPlayer
             {
                 if ((this.instantActionCommandString != String.Empty))// && (this.currentTargetedPlayer.StackActivePlayer == null))
                 {
-                    for (int ii = 0; ii < ActiveList.Count; ii++)
-                    {
-                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton)) { this.tempTargetForInstant = ActiveList[ii]; }
-                    }
-
                     if ((TruthActionCommand.CheckPlayerActionFromString(this.instantActionCommandString) == MainCharacter.PlayerAction.UseSpell) && TruthActionCommand.GetTargetType(this.instantActionCommandString) == TruthActionCommand.TargetType.Ally)
                     {
                         UpdateBattleText(this.currentTargetedPlayer.GetCharacterSentence(4072));
@@ -5164,36 +5174,43 @@ namespace DungeonPlayer
                         UpdateBattleText(this.currentTargetedPlayer.GetCharacterSentence(4072));
                         return;
                     }
-                    ExecActionMethod(this.currentTargetedPlayer, this.tempTargetForInstant, TruthActionCommand.CheckPlayerActionFromString(this.instantActionCommandString), this.instantActionCommandString);
+                    for (int ii = 0; ii < ActiveList.Count; ii++)
+                    {
+                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton)) 
+                        {
+                            ExecActionMethod(this.currentTargetedPlayer, ActiveList[ii], TruthActionCommand.CheckPlayerActionFromString(this.instantActionCommandString), this.instantActionCommandString);
+                            break;
+                        }
+                    }
                 }
                 else
                 {
-                    MainCharacter memoTarget = null;
-                    for (int ii = 0; ii < ActiveList.Count; ii++)
-                    {
-                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton)) { memoTarget = ActiveList[ii]; }
-                    }
-
                     if (TruthActionCommand.GetTargetType(this.currentTargetedPlayer.ReserveBattleCommand) == TruthActionCommand.TargetType.Ally)
                     {
                         UpdateBattleText(this.currentTargetedPlayer.GetCharacterSentence(4072));
                         return;
                     }
 
-                    if ((TruthActionCommand.GetTargetType(this.currentTargetedPlayer.ReserveBattleCommand) == TruthActionCommand.TargetType.Ally) ||
-                        (TruthActionCommand.GetTargetType(this.instantActionCommandString) == TruthActionCommand.TargetType.Ally))
+                    for (int ii = 0; ii < ActiveList.Count; ii++)
                     {
-                        this.currentTargetedPlayer.Target2 = memoTarget;
+                        if (((Button)sender).Equals(ActiveList[ii].MainObjectButton))
+                        {
+                            if ((TruthActionCommand.GetTargetType(this.currentTargetedPlayer.ReserveBattleCommand) == TruthActionCommand.TargetType.Ally) ||
+                                (TruthActionCommand.GetTargetType(this.instantActionCommandString) == TruthActionCommand.TargetType.Ally))
+                            {
+                                this.currentTargetedPlayer.Target2 = ActiveList[ii];
+                            }
+                            else
+                            {
+                                this.currentTargetedPlayer.Target = ActiveList[ii];
+                            }
+                            PlayerActionSet(this.currentTargetedPlayer);
+                            break;
+                        }
                     }
-                    else
-                    {
-                        this.currentTargetedPlayer.Target = memoTarget;
-                    }
-                    PlayerActionSet(this.currentTargetedPlayer);
                 }
                 this.currentTargetedPlayer.ReserveBattleCommand = String.Empty;
                 this.NowSelectingTarget = false;
-                //this.Invalidate();
             }
         }
 

@@ -196,7 +196,7 @@ namespace DungeonPlayer
                     UpdateBattleText(player.GetCharacterSentence(41));
                     break;
 
-                case "WordOfFortune":
+                case Database.WORD_OF_FORTUNE:
                     target.CurrentWordOfFortune = effectTime;
                     target.ActivateBuff(target.pbWordOfFortune, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(42));

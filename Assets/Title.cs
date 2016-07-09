@@ -54,6 +54,10 @@ namespace DungeonPlayer
         public Toggle toggleB3;
         public void enemy_click(Text txtName)
         {
+            GroundOne.WE.AvailableMixSpellSkill = true;
+            GroundOne.WE2.AvailableMixSpellSkill = true;
+            GroundOne.WE.AvailableInstantCommand = true;
+                
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
             GroundOne.MC.Strength = Convert.ToInt32(DebugStrength.text);
@@ -63,7 +67,6 @@ namespace DungeonPlayer
             GroundOne.MC.Mind = Convert.ToInt32(DebugMind.text);
             GroundOne.MC.Dead = false;
 
-            GroundOne.WE.AvailableMixSpellSkill = true;
             GroundOne.MC.FreshHeal = true;
             GroundOne.MC.Protection = true;
             GroundOne.MC.HolyShock = true;
@@ -539,7 +542,7 @@ namespace DungeonPlayer
             GroundOne.enemyName1 = txtName.text;
             if (toggle2.isOn)
             {
-                GroundOne.enemyName2 = txtName.text;
+                GroundOne.enemyName2 = Database.DUEL_DUMMY_SUBURI;
             }
             if (toggle3.isOn)
             {
