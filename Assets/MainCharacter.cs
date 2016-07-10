@@ -734,8 +734,9 @@ namespace DungeonPlayer
 
         // Buff追加からダメージを与える要素
         public int CurrentFlashBlazeCount = 0; // 後編追加
-        public double CurrentFlashBlazeFactor = 0; // 後編追加
-        public double CurrentEnrageBlastFactor = 0; // Unity追加
+        public int CurrentFlashBlazeFactor = 0; // 後編追加
+        public int CurrentEnrageBlastFactor = 0; // Unity追加
+        public int CurrentBlazingFieldFactor = 0; // Unity追加
 
 
         public double AmplifyPhysicalAttack = 0.0f;
@@ -852,7 +853,6 @@ namespace DungeonPlayer
         // 闇＋火
         public int CurrentBlackFire = 0;
         public int CurrentBlazingField = 0;
-        public int CurrentBlazingFieldFactor = 0;
         // 闇＋水
         public bool CurrentDeepMirror = false;
         // 闇＋理
@@ -9744,7 +9744,7 @@ namespace DungeonPlayer
                 // 火＋水
                 AbstractCountDownBuff(pbFrozenAura, ref CurrentFrozenAura);
                 // 火＋理
-                AbstractCountDownBuff(pbEnrageBlast, ref CurrentEnrageBlast);
+                AbstractCountDownBuff(pbEnrageBlast, ref CurrentEnrageBlast, ref CurrentEnrageBlastFactor);
                 AbstractCountDownBuff(pbSigilOfHomura, ref CurrentSigilOfHomura);
                 // 火＋空
                 AbstractCountDownBuff(pbImmolate, ref CurrentImmolate);
@@ -10316,6 +10316,7 @@ namespace DungeonPlayer
             // Buff要素
             CurrentFlashBlazeFactor = 0;
             CurrentEnrageBlastFactor = 0;
+            CurrentBlazingFieldFactor = 0;
 
             // 武器特有
             CurrentFeltus = 0;

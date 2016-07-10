@@ -287,7 +287,7 @@ namespace DungeonPlayer
 
                 case "FlashBlaze_Buff":
                     target.CurrentFlashBlazeCount = effectTime;
-                    target.CurrentFlashBlazeFactor = PrimaryLogic.FlashBlaze_A_Value(player, GroundOne.DuelMode);
+                    target.CurrentFlashBlazeFactor = (int)PrimaryLogic.FlashBlaze_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbFlashBlaze, Database.BaseResourceFolder + spellName, effectTime);
                     break;
                 case "StarLightning":
@@ -313,7 +313,7 @@ namespace DungeonPlayer
                     break;
                 case Database.ENRAGE_BLAST:
                     target.CurrentEnrageBlast = effectTime;
-                    target.CurrentEnrageBlastFactor = PrimaryLogic.EnrageBlast_A_Value(player, GroundOne.DuelMode);
+                    target.CurrentEnrageBlastFactor = (int)PrimaryLogic.EnrageBlast_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbEnrageBlast, Database.BaseResourceFolder + spellName, effectTime);
                     break;
                 case "SigilOfHomura":
@@ -343,9 +343,9 @@ namespace DungeonPlayer
                     target.CurrentEclipseEnd = effectTime;
                     target.ActivateBuff(target.pbEclipseEnd, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "BlazingField":
+                case Database.BLAZING_FIELD:
                     target.CurrentBlazingField = effectTime;
-                    target.CurrentBlazingFieldFactor = player.TotalIntelligence;
+                    target.CurrentBlazingFieldFactor = (int)PrimaryLogic.BlazingField_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbBlazingField, Database.BaseResourceFolder + spellName, effectTime);
                     break;
                 case "ExaltedField":

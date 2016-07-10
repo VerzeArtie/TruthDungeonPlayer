@@ -3548,19 +3548,19 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                //if (player.CurrentInstantPoint >= player.MaxInstantPoint)
-                //{
-                //    //if (player.CurrentTimeStop > 0)
-                //    {
-                //        UseInstantPoint(player);
-                //        player.StackActivePlayer = ec1;
-                //        player.StackTarget = ec1;
-                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
-                //        player.StackCommandString = Database.FRESH_HEAL;
-                //        player.StackActivation = true;
-                //        this.NowStackInTheCommand = true;
-                //    }
-                //}
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    //if (player.CurrentTimeStop > 0)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                        player.StackCommandString = Database.NEUTRAL_SMASH;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }
             }
             #endregion
         }
@@ -3996,7 +3996,7 @@ namespace DungeonPlayer
                 // ブレイジング・フィールド効果
                 if (ActiveList[ii].CurrentBlazingField > 0 && ActiveList[ii].Dead == false)
                 {
-                    double effectValue = PrimaryLogic.BlazingField_A_Value(ActiveList[ii], GroundOne.DuelMode);
+                    double effectValue = ActiveList[ii].CurrentBlazingFieldFactor;
                     effectValue = DamageIsZero(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ猛火が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);

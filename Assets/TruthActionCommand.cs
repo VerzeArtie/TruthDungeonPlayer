@@ -3678,7 +3678,7 @@ namespace DungeonPlayer
             if (command == Database.CRUSHING_BLOW) { return TargetType.Enemy; }
             if (command == Database.SOUL_INFINITY) { return TargetType.Enemy; }
 
-            if (command == Database.COUNTER_ATTACK) { return TargetType.Enemy; }
+            if (command == Database.COUNTER_ATTACK) { return TargetType.InstantTarget; }
             if (command == Database.PURE_PURIFICATION) { return TargetType.Own; }
             if (command == Database.ANTI_STUN) { return TargetType.Own; }
             if (command == Database.STANCE_OF_DEATH) { return TargetType.Own; }
@@ -3928,7 +3928,7 @@ namespace DungeonPlayer
             if (command == Database.CRUSHING_BLOW) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、対象者に【スタン】効果を与える。本効果は２ターン持続される。"; }
             if (command == Database.SOUL_INFINITY) { return "対象に" + PowerResult("力", 1.2, 0, 0) + " ＋ " + PowerResult("技", 1.2, 0, 0) + " ＋ " + PowerResult("知", 1.2, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
-            if (command == Database.COUNTER_ATTACK) { return "対象のダメージ源を有する物理攻撃が向けられた場合、それをカウンターする。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.COUNTER_ATTACK) { return "対象のインスタントがダメージ源を有する物理攻撃である場合、それをカウンターする。"; }
             if (command == Database.PURE_PURIFICATION) { return "対象の負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
             if (command == Database.ANTI_STUN) { return "対象に【スタン】耐性効果を付与する。\r\nこの効果は一度発動すると解除される。"; }
             if (command == Database.STANCE_OF_DEATH) { return "対象が致死ダメージを食らった場合、死亡を回避し、ライフ１で残る。\r\nこの効果は一度発動すると解除される。"; }

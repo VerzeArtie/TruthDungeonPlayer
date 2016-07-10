@@ -917,19 +917,10 @@ namespace DungeonPlayer
             return ConstructMagicDamage(player, 3.8F, 0.0F, 1200, 1600, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
         }
 
-
         // ブレイジング・フィールド（追加効果）値の算出
         public static double BlazingField_A_Value(MainCharacter player, bool duelMode)
         {
-            //return ConstructMagicDamage(player, 2.5F, 1200, 1500, Character.PlayerStance.BackOffence, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
-
-            double result = player.CurrentBlazingFieldFactor * 2.5F + AP.Math.RandomInteger(1000);
-
-            if (duelMode)
-            {
-                result = result * 0.5f;
-            }
-            return result;
+            return ConstructMagicDamage(player, 2.5F, 0.0F, 1200, 1500, PrimaryLogic.SpellSkillType.Standard, false, duelMode);
         }
 
         // ピアッシング・フレイム値の算出
