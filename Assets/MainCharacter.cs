@@ -6786,7 +6786,7 @@ namespace DungeonPlayer
         }
         public void DeBuff(TruthImage imageData)
         {
-            if (imageData.sprite != null)
+            if (imageData != null && imageData.sprite != null)
             {
                 RemoveOneBuff(imageData);
                 this.BuffNumber--;

@@ -635,11 +635,11 @@ namespace DungeonPlayer
         /// <param name="player"></param>
         private void PlayerSpellCleansing(MainCharacter player, MainCharacter target)
         {
-            if (player.CurrentStunning > 0 || player.CurrentSilence > 0 || player.CurrentPoison > 0 || player.CurrentParalyze > 0 || player.CurrentTemptation > 0 || player.CurrentFrozen > 0)
-            {
-                UpdateBattleText(player.GetCharacterSentence(109));
-                return;
-            }
+            //if (player.CurrentStunning > 0 || player.CurrentSilence > 0 || player.CurrentPoison > 0 || player.CurrentParalyze > 0 || player.CurrentTemptation > 0 || player.CurrentFrozen > 0)
+            //{
+            //    UpdateBattleText(player.GetCharacterSentence(109));
+            //    return;
+            //}
 
             if (target != ec1 || target != ec2 || target != ec3)
             {
