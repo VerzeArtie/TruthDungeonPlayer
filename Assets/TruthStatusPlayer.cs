@@ -2296,9 +2296,9 @@ namespace DungeonPlayer
                 lifeGain = (int)PrimaryLogic.SacredHealValue(player, false);
 
                 List<MainCharacter> group = new List<MainCharacter>();
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+                if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+                if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
                 for (int currentNumber = 0; currentNumber < group.Count; currentNumber++)
                 {
                     group[currentNumber].CurrentLife += lifeGain;

@@ -88,18 +88,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(10028));
             GroundOne.PlaySoundEffect("LavaAnnihilation");
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerAlly(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.LAVA_ANNIHILATION));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
@@ -225,18 +214,7 @@ namespace DungeonPlayer
         private void PlayerSpellLightDetonator(MainCharacter player, MainCharacter target, int p, int p_2)
         {
             List<MainCharacter> group = new List<MainCharacter>();
-            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else if (player == ec1 || player == ec2 || player == ec3)
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.LIGHT_DETONATOR));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
@@ -339,18 +317,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(144));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else if (player == ec1 || player == ec2 || player == ec3)
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ENRAGE_BLAST));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
@@ -522,18 +489,8 @@ namespace DungeonPlayer
         private void PlayerSpellEndlessAnthem(MainCharacter player, MainCharacter target)
         {
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerAlly(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ENDLESS_ANTHEM));
+
             for (int ii = 0; ii < group.Count; ii++)
             {
                 group[ii].BuffCountUp();
@@ -609,18 +566,7 @@ namespace DungeonPlayer
         private void PlayerSpellSacredHeal(MainCharacter player, MainCharacter target)
         {
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerEnemy(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.SACRED_HEAL));
 
             UpdateBattleText(player.GetCharacterSentence(135));
             for (int ii = 0; ii < group.Count; ii++)
@@ -672,18 +618,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(177));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerEnemy(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ANGEL_BREATH));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
@@ -1264,23 +1199,12 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(149));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else if (player == ec1 || player == ec2 || player == ec3)
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.DARKEN_FIELD));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("DarkBlast");
-                PlayerBuffAbstract(player, group[ii], 999, "DarkenField");
+                PlayerBuffAbstract(player, group[ii], 999, Database.DARKEN_FIELD);
             }
         }
 
@@ -1291,23 +1215,12 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(178));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else if (player == ec1 || player == ec2 || player == ec3)
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.BLAZING_FIELD));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("FlameStrike");
-                PlayerBuffAbstract(player, group[ii], 999, "BlazingField");
+                PlayerBuffAbstract(player, group[ii], 999, Database.BLAZING_FIELD);
             }
         }
 
@@ -1318,23 +1231,12 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(174));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerEnemy(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.EXALTED_FIELD));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("Protection");
-                PlayerBuffAbstract(player, group[ii], 999, "ExaltedField");
+                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.EXALTED_FIELD);
             }
         }
 
@@ -1345,23 +1247,12 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(202));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerEnemy(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ONE_AUTHORITY));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("SaintPower");
-                PlayerBuffAbstract(player, group[ii], 4, "ONEAuthority");
+                PlayerBuffAbstract(player, group[ii], 4, Database.ONE_AUTHORITY);
             }
         }
 
@@ -1372,18 +1263,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(185));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerAlly(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.VORTEX_FIELD));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
@@ -1399,23 +1279,12 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(175));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerEnemy(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.RISING_AURA));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("HighEmotionality");
-                PlayerBuffAbstract(player, group[ii], 999, "RisingAura");
+                PlayerBuffAbstract(player, group[ii], 999, Database.RISING_AURA);
             }
         }
 
@@ -1426,23 +1295,12 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(176));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerEnemy(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ASCENSION_AURA));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("HighEmotionality");
-                PlayerBuffAbstract(player, group[ii], 999, "AscensionAura");
+                PlayerBuffAbstract(player, group[ii], 999, Database.ASCENSION_AURA);
             }
         }
 
@@ -1454,17 +1312,12 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(210));
             GroundOne.PlaySoundEffect(Database.SOUND_ECLIPSE_END);
             List<MainCharacter> group = new List<MainCharacter>();
-            if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-            if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-            if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-            if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-            if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ECLIPSE_END));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
                 RemoveBuffAll(group[ii]);
-                PlayerBuffAbstract(player, group[ii], 2, "EclipseEnd");
+                PlayerBuffAbstract(player, group[ii], 2, Database.ECLIPSE_END);
             }
         }
 
@@ -1788,18 +1641,8 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(154));
             List<MainCharacter> group = new List<MainCharacter>();
-            if (player == GroundOne.MC || player == GroundOne.SC || player == GroundOne.TC)
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else if (player == ec1 || player == ec2 || player == ec3)
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.CIRCLE_SLASH));
+
             for (int ii = 0; ii < group.Count; ii++)
             {
                 PlayerNormalAttack(player, group[ii], 0, false, false);
@@ -1864,18 +1707,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(187));
 
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerAlly(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.UNKNOWN_SHOCK));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
@@ -1904,18 +1736,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(161));
 
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerAlly(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.SURPRISE_ATTACK));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
@@ -2273,22 +2094,11 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect(Database.SOUND_JUNKAN_SEIYAKU);
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerEnemy(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ARCHETYPE_RANA));
 
             for (int ii = 0; ii < group.Count; ii++)
             {
-                PlayerBuffAbstract(player, group[ii], (int)PrimaryLogic.JunkanSeiyakuValue(player), "JUNKAN-SEIYAKU");
+                PlayerBuffAbstract(player, group[ii], (int)PrimaryLogic.JunkanSeiyakuValue(player), Database.ARCHETYPE_RANA);
             }
             player.AlreadyPlayArchetype = true;
         }
@@ -2301,18 +2111,8 @@ namespace DungeonPlayer
             GroundOne.PlaySoundEffect(Database.SOUND_ORA_ORA_ORAAA);
             int num = (int)PrimaryLogic.OraOraOraaaValue(player);
             List<MainCharacter> group = new List<MainCharacter>();
-            if (IsPlayerAlly(player))
-            {
-                if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
-            }
-            else
-            {
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-            }
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.ARCHETYPE_OL));
+
             for (int ii = 0; ii < num; ii++)
             {
                 string soundName = "Hit01"; if (ii == num - 1) soundName = "KineticSmash";
@@ -2330,5 +2130,53 @@ namespace DungeonPlayer
         }
         #endregion
 
+        private void SetupAllGroup(MainCharacter player, ref List<MainCharacter> group, TruthActionCommand.TargetType targetType)
+        {
+            if (targetType == TruthActionCommand.TargetType.AllyGroup)
+            {
+                if (IsPlayerEnemy(player))
+                {
+                    SetupEnemyGroup(ref group);
+                }
+                else
+                {
+                    SetupAllyGroup(ref group);
+                }
+            }
+            else if (targetType == TruthActionCommand.TargetType.EnemyGroup)
+            {
+                if (IsPlayerEnemy(player))
+                {
+                    SetupAllyGroup(ref group);
+                }
+                else
+                {
+                    SetupEnemyGroup(ref group);
+                }
+            }
+            else if (targetType == TruthActionCommand.TargetType.AllMember)
+            {
+                SetupAllyGroup(ref group);
+                SetupEnemyGroup(ref group);
+            }
+            else
+            {
+                Debug.Log("SetupAllGroup [fatal sequence]");
+            }
+        }
+
+        private void SetupEnemyGroup(ref List<MainCharacter> group)
+        {
+            if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
+            if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
+            if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+        }
+
+        private void SetupAllyGroup(ref List<MainCharacter> group)
+        {
+            if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
+            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+        }
     }
 }

@@ -348,11 +348,11 @@ namespace DungeonPlayer
                     target.CurrentBlazingFieldFactor = (int)PrimaryLogic.BlazingField_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbBlazingField, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "ExaltedField":
+                case Database.EXALTED_FIELD:
                     target.CurrentExaltedField = effectTime;
                     target.ActivateBuff(target.pbExaltedField, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "ONEAuthority":
+                case Database.ONE_AUTHORITY:
                     target.CurrentOneAuthority = effectTime;
                     target.ActivateBuff(target.pbOneAuthority, Database.BaseResourceFolder + spellName, effectTime);
                     break;

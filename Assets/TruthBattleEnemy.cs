@@ -3548,19 +3548,19 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
-                {
-                    //if (player.CurrentTimeStop > 0)
-                    {
-                        UseInstantPoint(player);
-                        player.StackActivePlayer = ec1;
-                        player.StackTarget = GroundOne.MC;
-                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
-                        player.StackCommandString = Database.NEUTRAL_SMASH;
-                        player.StackActivation = true;
-                        this.NowStackInTheCommand = true;
-                    }
-                }
+                //if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                //{
+                //    //if (player.CurrentTimeStop > 0)
+                //    {
+                //        UseInstantPoint(player);
+                //        player.StackActivePlayer = ec1;
+                //        player.StackTarget = GroundOne.MC;
+                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                //        player.StackCommandString = Database.NEUTRAL_SMASH;
+                //        player.StackActivation = true;
+                //        this.NowStackInTheCommand = true;
+                //    }
+                //}
             }
             #endregion
         }
@@ -3609,9 +3609,7 @@ namespace DungeonPlayer
                 else
                 {
                     List<MainCharacter> group = new List<MainCharacter>();
-                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                    SetupAllyGroup(ref group);
                     if (((TruthEnemyCharacter)mainCharacter).InitialTarget == TruthEnemyCharacter.TargetLogic.Front)
                     {
                         mainCharacter.Target = group[0];
@@ -3649,9 +3647,7 @@ namespace DungeonPlayer
                 {
                     if (mainCharacter.Target.Dead == false) { return; }
                     List<MainCharacter> group = new List<MainCharacter>();
-                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                    SetupEnemyGroup(ref group);
                     mainCharacter.Target = group[0];
                 }
             }
@@ -3936,15 +3932,11 @@ namespace DungeonPlayer
                     List<MainCharacter> group = new List<MainCharacter>();
                     if (IsPlayerAlly(ActiveList[ii]))
                     {
-                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                        if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                        if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                        SetupEnemyGroup(ref group);
                     }
                     else
                     {
-                        if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                        if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                        if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                        SetupAllyGroup(ref group);
                     }
 
                     for (int jj = 0; jj < group.Count; jj++)
@@ -7231,9 +7223,7 @@ namespace DungeonPlayer
             //{
             //    UpdateBattleText("逃げようとして、敵に追いつかれた！　パーティ全員にスタン効果が発生！\r\n");
             //    List<MainCharacter> group = new List<MainCharacter>();
-            //    if ((GroundOne.MC != null) && (!GroundOne.MC.Dead)) { group.Add(GroundOne.MC); }
-            //    if ((GroundOne.SC != null) && (!GroundOne.SC.Dead)) { group.Add(GroundOne.SC); }
-            //    if ((GroundOne.TC != null) && (!GroundOne.TC.Dead)) { group.Add(GroundOne.TC); }
+            //    SetupAllyGroup(ref group);
             //    for (int ii = 0; ii < group.Count; ii++)
             //    {
             //        NowStunning(group[ii], group[ii], 1, true);
@@ -7645,12 +7635,8 @@ namespace DungeonPlayer
         private bool CheckCancelSpell(MainCharacter player, string currentSpellName)
         {
             List<MainCharacter> group = new List<MainCharacter>();
-            if ((GroundOne.MC != null) && (!GroundOne.MC.Dead)) { group.Add(GroundOne.MC); }
-            if ((GroundOne.SC != null) && (!GroundOne.SC.Dead)) { group.Add(GroundOne.SC); }
-            if ((GroundOne.TC != null) && (!GroundOne.TC.Dead)) { group.Add(GroundOne.TC); }
-            if ((ec1 != null) && (!ec1.Dead)) { group.Add(ec1); }
-            if ((ec2 != null) && (!ec2.Dead)) { group.Add(ec2); }
-            if ((ec3 != null) && (!ec3.Dead)) { group.Add(ec3); }
+            SetupAllyGroup(ref group);
+            SetupEnemyGroup(ref group);
 
             for (int ii = 0; ii < group.Count; ii++)
             {

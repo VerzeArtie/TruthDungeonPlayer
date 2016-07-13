@@ -352,12 +352,8 @@ namespace DungeonPlayer
                     effectValue = 0.0f;
                     List<MainCharacter> groupAlly = new List<MainCharacter>();
                     List<MainCharacter> groupEnemy = new List<MainCharacter>();
-                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { groupAlly.Add(GroundOne.MC); }
-                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { groupAlly.Add(GroundOne.SC); }
-                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { groupAlly.Add(GroundOne.TC); }
-                    if (ec1 != null && !ec1.Dead) { groupEnemy.Add(ec1); }
-                    if (ec2 != null && !ec2.Dead) { groupEnemy.Add(ec2); }
-                    if (ec3 != null && !ec3.Dead) { groupEnemy.Add(ec3); }
+                    SetupAllyGroup(ref groupAlly);
+                    SetupEnemyGroup(ref groupEnemy);
 
                     switch (CurrentUsingItem)
                     {
@@ -1900,9 +1896,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は海星源の場全体へ大きな授印を展開しはじめた！\r\n");
 
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    SetupEnemyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         PlayerSpellProtection(player, group[ii]);
@@ -1925,9 +1919,7 @@ namespace DungeonPlayer
                                 {
                                     // ランダムダメージ
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
 
                                     for (int ii = 0; ii < 10; ii++)
                                     {
@@ -1966,9 +1958,7 @@ namespace DungeonPlayer
                                 {
                                     // 巻きつきによるスタン＋出血ダメージ攻撃を行う。
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
 
                                     int tempRandom = AP.Math.RandomInteger(group.Count);
 
@@ -2079,9 +2069,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は場全体を蹂躙してきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         PlayerNormalAttack(player, group[ii], player.CurrentPhysicalChargeCount, true, false);
@@ -2094,9 +2082,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：凍えちゃえ、プチ・ブリザード！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         PlayerMagicAttack(player, group[ii], 0, 0);
@@ -2113,9 +2099,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：ステキでしょ・・・ウィンターソング。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         NowFrozen(player, group[ii], 3);
@@ -2223,9 +2207,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は轟音のような衝撃を放ってきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         if (PlayerNormalAttack(player, group[ii], 0, false, false))
@@ -2258,9 +2240,7 @@ namespace DungeonPlayer
                                     {
                                         double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 3;
                                         List<MainCharacter> group = new List<MainCharacter>();
-                                        if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                        if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                        if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                        SetupAllyGroup(ref group);
                                         int tempdata = AP.Math.RandomInteger(group.Count);
                                         if (AbstractMagicDamage(player, group[tempdata], 30, ref damage, 0, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
                                         {
@@ -2279,9 +2259,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は周囲全体の場が和むような呼び声を放った！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         NowParalyze(player, group[ii], 2);
@@ -2306,9 +2284,7 @@ namespace DungeonPlayer
                                     {
                                         double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 3;
                                         List<MainCharacter> group = new List<MainCharacter>();
-                                        if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                        if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                        if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                        SetupAllyGroup(ref group);
                                         int tempdata = AP.Math.RandomInteger(group.Count);
                                         AbstractMagicDamage(player, group[tempdata], 10, ref damage, 0, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random);
                                     }
@@ -2329,9 +2305,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は周囲全体に濃い青色のフィールドを展開した！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    SetupEnemyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         group[ii].CurrentSkyShield = 999;
@@ -2345,9 +2319,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：【クダケチレ　オール　ブリザード】\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < 16; ii++)
                                     {
                                         double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 0.8f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
@@ -2362,9 +2334,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：【ハテテシマエ　クウゼツホウ　ゼロシキ】\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 3.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
                                     int randomValue = AP.Math.RandomInteger(group.Count);
                                     if (AbstractMagicDamage(player, group[randomValue], 0, ref damage, 1.0f, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
@@ -2395,9 +2365,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "バトルクライ")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    SetupEnemyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         effectValue = 2500.0F;
@@ -2411,9 +2379,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "キリング・スラッシュ")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         PlayerNormalAttack(player, group[ii], 0, 0, false, false, 0, 10, string.Empty, -1, false, CriticalType.None);
@@ -2460,9 +2426,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：ッゴアアァァアァァァァアア！！！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count * 3; ii++)
                                     {
                                         int randomValue = AP.Math.RandomInteger(group.Count);
@@ -2497,9 +2461,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は真っ赤な角をこちらに向け、奇妙な呻き声を発しながら高熱の火の玉を吹き出してきた！！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         AbstractMagicDamage(player, group[ii], 0, 0, 2.0f, "LavaAnnihilation", 0, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
@@ -2513,9 +2475,7 @@ namespace DungeonPlayer
                                 {
                                     // 全体：ダメージ＋スタン＋凍結＋麻痺
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
 
                                     foreach (MainCharacter current in group)
                                     {
@@ -2565,9 +2525,7 @@ namespace DungeonPlayer
 
                                     // 全員：麻痺＋物理ダメージ
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
 
                                     foreach (MainCharacter current in group)
                                     {
@@ -2644,9 +2602,7 @@ namespace DungeonPlayer
                                 {
                                     // 全体：次のターン、敵を対象とする行動は失敗する。その後、自分自身がスタンする。
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
 
                                     foreach (MainCharacter current in group)
                                     {
@@ -2772,9 +2728,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は、エリア全体を圧迫するかのような雄叫びを上げた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     foreach (MainCharacter current in group)
                                     {
                                         int rand = AP.Math.RandomInteger(11);
@@ -2865,9 +2819,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "はホーリー・バレットを詠唱した！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     foreach (MainCharacter current in group)
                                     {
                                         double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
@@ -2889,9 +2841,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "スペリオル・フィールド")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    SetupEnemyGroup(ref group);
                                     foreach (MainCharacter current in group)
                                     {
                                         if (current.CurrentMagicAttackUp <= 0)
@@ -2974,9 +2924,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は黒龍より禁断の闇技を授かり、アイン達へ向けて呪術を放った。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     foreach (MainCharacter current in group)
                                     {
                                         NowNoResurrection(player, current, 999);
@@ -2985,10 +2933,8 @@ namespace DungeonPlayer
                                 }
                                 else if (player.ActionLabel.text == "チューズン・サクリファイ")
                                 {
-                                    List<TruthEnemyCharacter> group = new List<TruthEnemyCharacter>();
-                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    List<MainCharacter> group = new List<MainCharacter>(); // TruthEnemyCharacter
+                                    SetupEnemyGroup(ref group);
                                     foreach (TruthEnemyCharacter current in group)
                                     {
                                         if (current != player)
@@ -3004,10 +2950,8 @@ namespace DungeonPlayer
                                 }
                                 else if (player.ActionLabel.text == "死への背徳")
                                 {
-                                    List<TruthEnemyCharacter> group = new List<TruthEnemyCharacter>();
-                                    if (ec1 != null && ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && ec3.Dead) { group.Add(ec3); }
+                                    List<MainCharacter> group = new List<MainCharacter>(); // TruthEnemyCharacter
+                                    SetupEnemyGroup(ref group);
                                     foreach (TruthEnemyCharacter current in group)
                                     {
                                         UpdateBattleText(player.FirstName + "は" + current.FirstName + "の魂に黒龍の生命エネルギーを呪変換を行った！\r\n");
@@ -3024,9 +2968,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は刀の切っ先を素早く螺旋状に描き、黒い炎を噴出してきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     foreach (MainCharacter current in group)
                                     {
                                         if (AbstractMagicDamage(player, current, 0, PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 4.0f, 0.0f, 0.0f, 0.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
@@ -3041,9 +2983,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は狂気じみた旋律を奏でつつ、乱雑に刀を振り回してきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int i = 0; i < 10; i++)
                                     {
                                         PlayerNormalAttack(player, group[AP.Math.RandomInteger(group.Count - 1)], 3.0f, 0, false, false, 0, 2, "", -1, false, CriticalType.Random);
@@ -3053,9 +2993,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "の炎の色は、青白く輝き、" + target.FirstName + "に蒼く輝くファイア・ボールが放たれた！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     AbstractMagicDamage(player, group[AP.Math.RandomInteger(group.Count - 1)], 0, 0, 10.0f, Database.SOUND_KOKUEN_BLUE_EXPLODE, 120, TruthActionCommand.MagicType.Fire_Ice, true, CriticalType.None);
                                 }
                                 break;
@@ -3072,9 +3010,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は空間にずぶとい針形状の氷を創生してきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         AbstractMagicDamage(player, group[ii], 0, 0, 5.0f, Database.SOUND_SHARPNEL_NEEDLE, 120, TruthActionCommand.MagicType.Fire, false, CriticalType.None);
@@ -3084,9 +3020,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は見たことも無い紋様を描き、炎の渦を空間に自然発生させてきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         AbstractMagicDamage(player, group[ii], 0, 0, 5.0f, Database.SOUND_MEGID_BLAZE, 120, TruthActionCommand.MagicType.Fire, false, CriticalType.None);
@@ -3096,9 +3030,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は青紫のエネルギー体を創り出し、一気にそれを放出してきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         GroundOne.PlaySoundEffect(Database.SOUND_ARCANE_DESTRUCTION);
@@ -3112,9 +3044,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：太陽を滅ぼすが如く！　太陽の滅印をくらえ！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     PlayerLifeOne(player, current);
                                     NowSlip(player, current, 999);
@@ -3123,9 +3053,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：太陽の影より出てし熱き炎よ、焼き尽くせ！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     GroundOne.PlaySoundEffect(Database.SOUND_BLACK_FLARE);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     PlayerBuffAbstract(player, current, 999, Database.DAMNATION + fileExt);
@@ -3143,9 +3071,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：我が剣、喰らうがよい！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     PlayerNormalAttack(player, current, 2.0F, false, false);
                                     PlayerNormalAttack(player, current, 3.0F, false, false);
@@ -3169,9 +3095,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：シせよ、オロカなるモノ\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     PlayerDeath(player, current);
                                 }
@@ -3198,12 +3122,8 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：衰え朽ちなさい。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    SetupAllyGroup(ref group);
+                                    SetupEnemyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         PlayerLifeDown(player, group[ii], group[ii].CurrentLife * AP.Math.RandomReal());
@@ -3214,9 +3134,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "：この輝きを受け取りなさい。\r\n");
                                     double damage = player.CurrentLife / player.MaxLife;
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         AbstractMagicDamage(player, group[ii], 0, group[ii].MaxLife * (1.0f - damage), 0, Database.SOUND_MAGIC_ATTACK, 120, TruthActionCommand.MagicType.None, false, CriticalType.None);
@@ -3227,12 +3145,8 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：永久に果てることなく、永らえなさい。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    SetupAllyGroup(ref group);
+                                    SetupEnemyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         BuffUpPhysicalDefense(group[ii], 4000);
@@ -3247,12 +3161,8 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：苦しみを抱え込みなさい。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-                                    if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                    if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                    if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                    SetupAllyGroup(ref group);
+                                    SetupEnemyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         GroundOne.PlaySoundEffect(Database.SOUND_DAMNATION);
@@ -3268,9 +3178,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：ダラララララアァ！！！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < 10; ii++)
                                     {
                                         MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
@@ -3284,9 +3192,10 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：シュゴオオオォォォ！！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead && GroundOne.MC.CurrentFireDamage2 <= 0) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead && GroundOne.SC.CurrentFireDamage2 <= 0) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead && GroundOne.TC.CurrentFireDamage2 <= 0) { group.Add(GroundOne.TC); }
+                                    //if (GroundOne.MC != null && !GroundOne.MC.Dead && GroundOne.MC.CurrentFireDamage2 <= 0) { group.Add(GroundOne.MC); }
+                                    //if (GroundOne.SC != null && !GroundOne.SC.Dead && GroundOne.SC.CurrentFireDamage2 <= 0) { group.Add(GroundOne.SC); }
+                                    //if (GroundOne.TC != null && !GroundOne.TC.Dead && GroundOne.TC.CurrentFireDamage2 <= 0) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     if (AbstractMagicDamage(player, current, 0, 0, 5.0f, Database.SOUND_FLAME_STRIKE, 120, TruthActionCommand.MagicType.Fire, false, CriticalType.None))
                                     {
@@ -3299,9 +3208,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：フシャアアアアァァ！！！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         AbstractMagicDamage(player, group[ii], 0, PrimaryLogic.LavaAnnihilationValue(player, false), 0.0f, Database.SOUND_LAVA_ANNIHILATION, 0, TruthActionCommand.MagicType.Fire, false, CriticalType.None);
@@ -3322,9 +3229,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "：真空波だ。そのままジッとしてろ。\r\n");
                                     ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         GroundOne.PlaySoundEffect(Database.SOUND_ABSOLUTE_ZERO);
@@ -3342,9 +3247,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：灼け落ちろ、超高温熱波動だ。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
 
                                     if (AbstractMagicDamage(player, current, 0, PrimaryLogic.LavaAnnihilationValue(player, false), 0.0f, Database.SOUND_LAVA_ANNIHILATION, 0, TruthActionCommand.MagicType.Fire, false, CriticalType.None))
@@ -3357,9 +3260,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：ッハッハハハ、喰らえ喰らえ。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < 4; ii++)
                                     {
                                         MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
@@ -3399,9 +3300,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "のスペクター・ヴォイスが発動した！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         GroundOne.PlaySoundEffect(Database.SOUND_ABSOLUTE_ZERO);
@@ -3422,9 +3321,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "不気味なドス黒い物体を排出し、それを放ってきた。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     for (int ii = 0; ii < 5; ii++)
                                     {
@@ -3439,9 +3336,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：苦しみを刻み込みなさい、フェイブリオル・ランス！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     if (PlayerNormalAttack(player, current, 4.0F, 0, false, false, 0, 0, Database.SOUND_KINETIC_SMASH, -1, false, CriticalType.Absolute))
                                     {
@@ -3452,9 +3347,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：苦しむ事はないのよ、安らかなる死別を与えましょう。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     PlayerDeath(player, current);
                                 }
@@ -3462,9 +3355,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：この剣舞を受けてみなさい、ダンシング・ソード！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     PlayerNormalAttack(player, group[AP.Math.RandomInteger(group.Count - 1)], 3.0f, 0, false, false, 0, 5, Database.SOUND_STRAIGHT_SMASH, 120, false, CriticalType.None);
                                     AbstractMagicDamage(player, group[AP.Math.RandomInteger(group.Count - 1)], 0, 0, 3.0f, Database.SOUND_FLAME_STRIKE, 120, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
                                     PlayerNormalAttack(player, target, 3.0f, 0, false, false, 0, 5, Database.SOUND_STRAIGHT_SMASH, 120, false, CriticalType.None);
@@ -3479,9 +3370,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は終了のサインを示す演舞を踊ってみせた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         group[ii].CurrentChaosDesperate = Database.INFINITY;
@@ -3494,9 +3383,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は不気味で美しい妖艶な演舞を踊ってみせた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         NowTemptation(player, group[ii], 5);
@@ -3511,9 +3398,7 @@ namespace DungeonPlayer
                                     CleanUpStep();
 
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         CheckChaosDesperate(group[ii]);
@@ -3526,9 +3411,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "はえも言われぬ不気味かつ狂気的なオーラをまとい降りかかってきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < 2; ii++)
                                     {
                                         for (int jj = 0; jj < group.Count; jj++)
@@ -3541,9 +3424,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は地獄の円を部屋全体に描いてきた！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         NowSlow(player, group[ii], 5);
@@ -3555,9 +3436,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "はスっとどこへともなく振りかざしてきた。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
                                     NowNoResurrection(player, target, 999);
                                     PlayerDeath(player, current);
@@ -3566,9 +3445,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は部屋中をかき乱すように剣をぶん回してきた！！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < 10; ii++)
                                     {
                                         MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
@@ -3593,12 +3470,8 @@ namespace DungeonPlayer
                                         player.CurrentMana -= Database.COST_THE_ABYSS_WALL;
                                         UpdateMana(player);
                                         List<MainCharacter> group = new List<MainCharacter>();
-                                        if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                        if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                        if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-                                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                        if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                        if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                        SetupAllyGroup(ref group);
+                                        SetupEnemyGroup(ref group);
                                         for (int ii = 0; ii < group.Count; ii++)
                                         {
                                             PlayerLifeDown(player, group[ii], group[ii].CurrentLife * 0.5f);
@@ -3617,12 +3490,8 @@ namespace DungeonPlayer
                                         player.CurrentMana -= Database.COST_ABYSS_WILL;
                                         UpdateMana(player);
                                         List<MainCharacter> group = new List<MainCharacter>();
-                                        if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                        if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                        if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-                                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                        if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                        if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                        SetupAllyGroup(ref group);
+                                        SetupEnemyGroup(ref group);
                                         for (int ii = 0; ii < group.Count; ii++)
                                         {
                                             group[ii].CurrentAbyssWill = Database.INFINITY;
@@ -3703,12 +3572,8 @@ namespace DungeonPlayer
                                         player.CurrentMana -= Database.COST_AUSTERITY_MATRIX_OMEGA;
                                         UpdateMana(player);
                                         List<MainCharacter> group = new List<MainCharacter>();
-                                        if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                        if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                        if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-                                        if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                        if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                        if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                        SetupAllyGroup(ref group);
+                                        SetupEnemyGroup(ref group);
                                         for (int ii = 0; ii < group.Count; ii++)
                                         {
                                             group[ii].RemoveBuffSpell();
@@ -3729,13 +3594,9 @@ namespace DungeonPlayer
                                         player.CurrentMana -= Database.COST_VOICE_OF_ABYSS;
                                         UpdateMana(player);
                                         List<MainCharacter> group = new List<MainCharacter>();
-                                        if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                        if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                        if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                        SetupAllyGroup(ref group);
                                         // 【警告】敵だけ対象外なのは卑怯かもしれないので、要調整となる。
-                                        //if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-                                        //if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-                                        //if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+                                        //SetupEnemyGroup(ref group);
                                         for (int ii = 0; ii < group.Count; ii++)
                                         {
                                             group[ii].CurrentVoiceOfAbyss = 2;
@@ -3750,9 +3611,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "戦慄の金切り声")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         if (AbstractMagicDamage(player, group[ii], 0, 0, 0, Database.SOUND_FLAME_STRIKE, 120, TruthActionCommand.MagicType.Fire_Ice, false, CriticalType.None))
@@ -3765,9 +3624,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "焼き尽くす煉獄炎")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         AbstractMagicDamage(player, group[ii], 0, 0, 0, Database.LAVA_ANNIHILATION, 120, TruthActionCommand.MagicType.Fire, false, CriticalType.None);
@@ -3784,9 +3641,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "聖者の裁き")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         if (AbstractMagicDamage(player, group[ii], 0, 0, 0, Database.SOUND_CELESTIAL_NOVA, 120, TruthActionCommand.MagicType.Light, false, CriticalType.None))
@@ -3798,10 +3653,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "福音")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
-
+                                    SetupAllyGroup(ref group);
                                     GroundOne.PlaySoundEffect("RiseOfImage");
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
@@ -3822,9 +3674,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "ベジェ・テイル・アタック")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
 
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
@@ -3860,9 +3710,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "イル・メギド・ブレス")
                                 {
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         PlayerLifeHalfMax(player, group[ii]);
@@ -3898,9 +3746,7 @@ namespace DungeonPlayer
                                 {
                                     // 全体：ダメージ＋スタン＋凍結＋麻痺
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
 
                                     foreach (MainCharacter current in group)
                                     {
@@ -3926,9 +3772,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "：全て実像は等しく虚構である。虚無の理を受け入れよ。\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
-                                    if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                                    if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                                    if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                                    SetupAllyGroup(ref group);
                                     double amplify = BattleTurnCount / 999.0f;
                                     if (amplify > 1.0f) { amplify = 1.0f; }
                                     for (int ii = 0; ii < group.Count; ii++)
@@ -4049,89 +3893,90 @@ namespace DungeonPlayer
 
                                 break;
                             #endregion
-            //                #region "ダミー素振り君"
-            //                case Database.DUEL_DUMMY_SUBURI:
-            //                    if (player.ActionLabel.text == "BUFF!")
-            //                    {
-            //                        NowPreStunning(target, 999);
-            //                        //NowStun(player, target, 999);
-            //                        //NowSilence(player, target, 999);
-            //                        NowPoison(player, target, 999, true);
-            //                        NowTemptation(player, target, 999);
-            //                        //NowParalyze(player, target, 999);
-            //                        NowNoResurrection(player, target, 999);
-            //                        NowSlow(player, target, 999);
-            //                        NowSlip(player, target, 999);
+                            #region "ダミー素振り君"
+                            case Database.DUEL_DUMMY_SUBURI:
+                                if (player.ActionLabel.text == "BUFF!")
+                                {
+                                    NowPreStunning(target, 999);
+                                    NowStunning(player, target, 999, true);
+                                    NowSilence(player, target, 999);
+                                    NowPoison(player, target, 999, true);
+                                    NowTemptation(player, target, 999);
+                                    NowParalyze(player, target, 999);
+                                    NowNoResurrection(player, target, 999);
+                                    NowSlow(player, target, 999);
+                                    NowBlind(player, target, 999);
+                                    NowSlip(player, target, 999);
 
-            //                        NowBlinded(player, 999);
-            //                        player.CurrentSpeedBoost = 100;
+                                    //NowBlinded(player, 999);
+                                    //player.CurrentSpeedBoost = 100;
 
-            //                        player.CurrentPhysicalAttackUp = Database.INFINITY;
-            //                        player.CurrentPhysicalAttackUpValue = 1000;
-            //                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
+                                    //player.CurrentPhysicalAttackUp = Database.INFINITY;
+                                    //player.CurrentPhysicalAttackUpValue = 1000;
+                                    //player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
 
-            //                        player.CurrentPhysicalDefenseUp = Database.INFINITY;
-            //                        player.CurrentPhysicalDefenseUpValue = 1000;
-            //                        player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp", Database.INFINITY);
+                                    //player.CurrentPhysicalDefenseUp = Database.INFINITY;
+                                    //player.CurrentPhysicalDefenseUpValue = 1000;
+                                    //player.ActivateBuff(player.pbPhysicalDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp", Database.INFINITY);
 
-            //                        player.CurrentMagicAttackUp = Database.INFINITY;
-            //                        player.CurrentMagicAttackUpValue = 1000;
-            //                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
+                                    //player.CurrentMagicAttackUp = Database.INFINITY;
+                                    //player.CurrentMagicAttackUpValue = 1000;
+                                    //player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
 
-            //                        player.CurrentMagicDefenseUp = Database.INFINITY;
-            //                        player.CurrentMagicDefenseUpValue = 1000;
-            //                        player.ActivateBuff(player.pbMagicDefenseUp, Database.BaseResourceFolder + "BuffMagicDefenseUp", Database.INFINITY);
+                                    //player.CurrentMagicDefenseUp = Database.INFINITY;
+                                    //player.CurrentMagicDefenseUpValue = 1000;
+                                    //player.ActivateBuff(player.pbMagicDefenseUp, Database.BaseResourceFolder + "BuffMagicDefenseUp", Database.INFINITY);
 
-            //                        player.CurrentSpeedUp = Database.INFINITY;
-            //                        player.CurrentSpeedUpValue = 1000;
-            //                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
+                                    //player.CurrentSpeedUp = Database.INFINITY;
+                                    //player.CurrentSpeedUpValue = 1000;
+                                    //player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
 
-            //                        player.CurrentReactionUp = Database.INFINITY;
-            //                        player.CurrentReactionUpValue = 1000;
-            //                        player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + "BuffReactionUp", Database.INFINITY);
+                                    //player.CurrentReactionUp = Database.INFINITY;
+                                    //player.CurrentReactionUpValue = 1000;
+                                    //player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + "BuffReactionUp", Database.INFINITY);
 
-            //                        player.CurrentPotentialUp = Database.INFINITY;
-            //                        player.CurrentPotentialUpValue = 1000;
-            //                        player.ActivateBuff(player.pbPotentialUp, Database.BaseResourceFolder + "BuffPotentialUp", Database.INFINITY);
+                                    //player.CurrentPotentialUp = Database.INFINITY;
+                                    //player.CurrentPotentialUpValue = 1000;
+                                    //player.ActivateBuff(player.pbPotentialUp, Database.BaseResourceFolder + "BuffPotentialUp", Database.INFINITY);
 
-            //                        BuffUpPotential(target, 1000);
+                                    //BuffUpPotential(target, 1000);
 
-            //                        BuffDownPhysicalDefense(target, 1000);
+                                    //BuffDownPhysicalDefense(target, 1000);
 
-            //                        BuffDownMagicAttack(target, 1000);
+                                    //BuffDownMagicAttack(target, 1000);
 
-            //                        BuffDownMagicDefense(target, 1000);
+                                    //BuffDownMagicDefense(target, 1000);
 
-            //                        BuffDownBattleSpeed(target, 1000);
+                                    //BuffDownBattleSpeed(target, 1000);
 
-            //                        BuffDownBattleReaction(target, 1000);
+                                    //BuffDownBattleReaction(target, 1000);
 
-            //                        BuffDownPotential(target, 1000);
+                                    //BuffDownPotential(target, 1000);
 
-            //                        player.CurrentStrengthUp = Database.INFINITY;
-            //                        player.CurrentStrengthUpValue = 1000;
-            //                        player.CurrentAgilityUp = Database.INFINITY;
-            //                        player.CurrentAgilityUpValue = 1000;
-            //                        player.CurrentIntelligenceUp = Database.INFINITY;
-            //                        player.CurrentIntelligenceUpValue = 1000;
-            //                        player.CurrentStaminaUp = Database.INFINITY;
-            //                        player.CurrentStaminaUpValue = 1000;
-            //                        player.CurrentMindUp = Database.INFINITY;
-            //                        player.CurrentMindUpValue = 1000;
-            //                        player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
-            //                        player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp", Database.INFINITY);
-            //                        player.ActivateBuff(player.pbIntelligenceUp, Database.BaseResourceFolder + "BuffIntelligenceUp", Database.INFINITY);
-            //                        player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp", Database.INFINITY);
-            //                        player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp", Database.INFINITY);
+                                    //player.CurrentStrengthUp = Database.INFINITY;
+                                    //player.CurrentStrengthUpValue = 1000;
+                                    //player.CurrentAgilityUp = Database.INFINITY;
+                                    //player.CurrentAgilityUpValue = 1000;
+                                    //player.CurrentIntelligenceUp = Database.INFINITY;
+                                    //player.CurrentIntelligenceUpValue = 1000;
+                                    //player.CurrentStaminaUp = Database.INFINITY;
+                                    //player.CurrentStaminaUpValue = 1000;
+                                    //player.CurrentMindUp = Database.INFINITY;
+                                    //player.CurrentMindUpValue = 1000;
+                                    //player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
+                                    //player.ActivateBuff(player.pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp", Database.INFINITY);
+                                    //player.ActivateBuff(player.pbIntelligenceUp, Database.BaseResourceFolder + "BuffIntelligenceUp", Database.INFINITY);
+                                    //player.ActivateBuff(player.pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp", Database.INFINITY);
+                                    //player.ActivateBuff(player.pbMindUp, Database.BaseResourceFolder + "BuffMindUp", Database.INFINITY);
 
-            //                        player.CurrentResistFireUp = Database.INFINITY;
-            //                        player.CurrentResistFireUpValue = 1000;
-            //                        player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp", Database.INFINITY);
+                                    //player.CurrentResistFireUp = Database.INFINITY;
+                                    //player.CurrentResistFireUpValue = 1000;
+                                    //player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp", Database.INFINITY);
 
-            //                        player.CurrentResistIceUp = Database.INFINITY;
-            //                        player.CurrentResistIceUpValue = 1000;
-            //                        player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp", Database.INFINITY);
-            //                    }
+                                    //player.CurrentResistIceUp = Database.INFINITY;
+                                    //player.CurrentResistIceUpValue = 1000;
+                                    //player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp", Database.INFINITY);
+                                }
             //                    else if (player.ActionLabel.text == "弱体化「潜在能力」")
             //                    {
             //                        BuffDownPotential(target, 500, 2);
@@ -4204,8 +4049,8 @@ namespace DungeonPlayer
             //                    {
             //                        NowNoResurrection(player, target, 2);
             //                    }
-            //                    break;
-            //                #endregion
+                                break;
+                            #endregion
                         }
                     }
                     else
@@ -5098,9 +4943,7 @@ namespace DungeonPlayer
         private void PlayerMirrorImageAllAlly(MainCharacter player)
         {
             List<MainCharacter> group = new List<MainCharacter>();
-            if (ec1 != null && !ec1.Dead) { group.Add(ec1); }
-            if (ec2 != null && !ec2.Dead) { group.Add(ec2); }
-            if (ec3 != null && !ec3.Dead) { group.Add(ec3); }
+            SetupEnemyGroup(ref group);
 
             for (int ii = 0; ii < group.Count; ii++)
             {
@@ -5648,9 +5491,7 @@ namespace DungeonPlayer
                 double effectValue = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode) / 2;
 
                 List<MainCharacter> group = new List<MainCharacter>();
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                SetupAllyGroup(ref group);
 
                 int tempdata = AP.Math.RandomInteger(group.Count);
                 PlayerNormalAttack(player, group[tempdata], magnification, 0, false, false, 0, speed, String.Empty, -1, false, CriticalType.Random);
@@ -5664,9 +5505,7 @@ namespace DungeonPlayer
                 double effectValue = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) / 3;
 
                 List<MainCharacter> group = new List<MainCharacter>();
-                if (GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-                if (GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-                if (GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+                SetupAllyGroup(ref group);
 
                 int tempdata = AP.Math.RandomInteger(group.Count);
                 AbstractMagicDamage(player, group[tempdata], 30, ref effectValue, 0, soundName, 120, type, false, CriticalType.Random);

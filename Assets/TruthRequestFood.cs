@@ -358,9 +358,9 @@ namespace DungeonPlayer
         private void EatFood(int strUp, int aglUp, int intUp, int stmUp, int mindUp)
         {
             List<MainCharacter> group = new List<MainCharacter>();
-            if (GroundOne.MC != null && GroundOne.WE.AvailableFirstCharacter) group.Add(GroundOne.MC);
-            if (GroundOne.SC != null && GroundOne.WE.AvailableSecondCharacter) group.Add(GroundOne.SC);
-            if (GroundOne.TC != null && GroundOne.WE.AvailableThirdCharacter) group.Add(GroundOne.TC);
+            if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null && GroundOne.WE.AvailableFirstCharacter) group.Add(GroundOne.MC);
+            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && GroundOne.WE.AvailableSecondCharacter) group.Add(GroundOne.SC);
+            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && GroundOne.WE.AvailableThirdCharacter) group.Add(GroundOne.TC);
             for (int ii = 0; ii < group.Count; ii++)
             {
                 group[ii].BuffStrength_Food = strUp;
