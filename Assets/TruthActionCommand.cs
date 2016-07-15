@@ -3832,7 +3832,7 @@ namespace DungeonPlayer
             if (command == Database.DAMNATION) { return "ターンが進む度に、対象に《最大ライフ／心》の【闇】ダメージを与える。\r\n心が1以上：10 + 10*(心/100)\r\n心が100以上：20 + 20*(心/300)\r\n心が400以上：34 + 18*(心/600)\r\n心が1000以上：52 + 22*(心/2500)\r\n心が3500以上：74 + 26*(心/6500)\r\n"; }
 
             if (command == Database.FIRE_BALL) { return "対象に" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
-            if (command == Database.FLAME_AURA) { return "直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 3.0, 30, 35) + "の【火】ダメージを与える。"; }
+            if (command == Database.FLAME_AURA) { return "直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 2.0, 30, 35) + "の【火】ダメージを与える。"; }
             if (command == Database.HEAT_BOOST) { return "対象の【技】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
             if (command == Database.FLAME_STRIKE) { return "対象に" + PowerResult("知", 3.5, 750, 1000) + "の【火】ダメージを与える。"; }
             if (command == Database.VOLCANIC_WAVE) { return "対象に" + PowerResult("知", 4.0, 1200, 1600) + "の【火】ダメージを与える。"; }
@@ -3871,7 +3871,7 @@ namespace DungeonPlayer
             if (command == Database.LIGHT_DETONATOR) { return "すべての敵に" + PowerResult("知", 3.0, 750, 1000) + "の【聖/火】ダメージを与える。"; }
             if (command == Database.ASCENDANT_METEOR) { return "対象に" + PowerResult("知", 1.5, 2000, 3000) + "の【聖/火】ダメージを１０回連続で与える。"; }
 
-            if (command == Database.SKY_SHIELD) { return "対象にダメージ源を有する魔法攻撃が向けられた場合、その魔法ダメージを０に軽減する。この効果は、３回分まで累積が可能である。"; }
+            if (command == Database.SKY_SHIELD) { return "対象にダメージ源を有する魔法攻撃が向けられた場合、その魔法ダメージを０に軽減する。\r\n\r\nこの魔法は一度の詠唱で３つの累積が行われる。\r\n\r\n３つ以上の累積は行えない。"; }
             if (command == Database.SACRED_HEAL) { return "すべての味方のライフを" + PowerResult("知", 3.5, 4000, 6000) + "の分だけ回復する。"; }
             if (command == Database.EVER_DROPLET) { return "ターンが進む度に、対象のマナポイントを最大マナの1/30だけ回復する。"; }
 
@@ -3899,7 +3899,7 @@ namespace DungeonPlayer
             if (command == Database.DOOM_BLADE) { return "対象に" + PowerResult("知", 2.8, 2000, 3500) + "の【闇/空】ダメージを与える。\r\n加えて、対象に" + PowerResult("知", 1.5, 2000, 3000) + "のＭＰダメージを与える。"; }
             if (command == Database.ECLIPSE_END) { return "すべての敵味方の全BUFF、全DEBUFF効果を解除する。そして、【エクリプスエンド】カウンターが置かれる。\r\n\r\n本効果が持続している間、全ダメージを無効化する。本効果は２ターン持続される。"; }
 
-            if (command == Database.FROZEN_AURA) { return "対象の直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 2.8, 30, 35) + "の【水】ダメージを与える。"; }
+            if (command == Database.FROZEN_AURA) { return "対象の直接攻撃がヒットする度に、追加効果で" + PowerResult("知", 2.0, 30, 35) + "の【水】ダメージを与える。"; }
             if (command == Database.CHILL_BURN) { return "対象に" + PowerResult("知", 1.0, 0, 0) + "の【火/水】ダメージを与える。\r\n加えて、対象者に【凍結】効果を与える。本効果は１ターン持続される。"; }
             if (command == Database.ZETA_EXPLOSION) { return "対象に" + PowerResult("知", 6.0, 8000, 12000) + "の【火／水】ダメージを与える。\r\n対象の防御姿勢を無視する。\r\nこの魔法はカウンターされない。\r\nこの魔法は軽減できない。"; }
 
@@ -3912,7 +3912,7 @@ namespace DungeonPlayer
             if (command == Database.RED_DRAGON_WILL) { return "対象の【火】属性のダメージを" + PowerResult(1.5) + "上昇させる。"; }
 
             if (command == Database.WORD_OF_ATTITUDE) { return "対象のインスタントポイントを全快にする。"; }
-            if (command == Database.STATIC_BARRIER) { return "対象のダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、そのダメージを半分にする。この効果は３回まで累積が可能である。"; }
+            if (command == Database.STATIC_BARRIER) { return "対象のダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、そのダメージを半分にする。\r\n\r\nこの魔法は一度の詠唱で３つの累積が行われる。\r\n\r\n３つ以上の累積は行えない。"; }
             if (command == Database.AUSTERITY_MATRIX) { return "対象の正のＢＵＦＦ効果を全て解除する。\r\n\r\nこの後、正のＢＵＦＦ効果は付与できなくなる。\r\n\r\n負のＢＵＦＦ効果は付与できる。"; }
 
             if (command == Database.VANISH_WAVE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【水/空】ダメージを与える。\r\n加えて、対象に【沈黙】効果を与える。本効果は３ターン持続される。"; }

@@ -807,13 +807,13 @@ namespace DungeonPlayer
         // フレイム・オーラ値の算出
         public static double FlameAuraValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 3.0F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, true, duelMode);
+            return ConstructMagicDamage(player, 2.0F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, true, duelMode);
         }
 
         // フローズン・オーラ値の算出
         public static double FrozenAuraValue(MainCharacter player, bool duelMode)
         {
-            return ConstructMagicDamage(player, 2.8F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, true, duelMode);
+            return ConstructMagicDamage(player, 2.0F, 0.0F, 30, 35, PrimaryLogic.SpellSkillType.Standard, true, duelMode);
         }
 
         // ホーリー・ショック値の算出

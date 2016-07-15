@@ -125,6 +125,7 @@ namespace DungeonPlayer
                     break;
                 case "BloodyVengeance":
                     effectValue = player.StandardIntelligence / 2;
+                    if (effectValue <= 0) { effectValue = 1; }
                     if ((effectValue - target.BuffStrength_BloodyVengeance) > 0)
                     {
                         target.CurrentBloodyVengeance = effectTime;
@@ -140,6 +141,7 @@ namespace DungeonPlayer
 
                 case Database.HEAT_BOOST:
                     effectValue = player.StandardIntelligence / 2;
+                    if (effectValue <= 0) { effectValue = 1; }
                     if ((effectValue - target.BuffAgility_HeatBoost) > 0)
                     {
                         target.CurrentHeatBoost = effectTime;
@@ -162,6 +164,7 @@ namespace DungeonPlayer
 
                 case "PromisedKnowledge":
                     effectValue = player.StandardIntelligence / 2;
+                    if (effectValue <= 0) { effectValue = 1; }
                     if ((effectValue - target.BuffIntelligence_PromisedKnowledge) > 0)
                     {
                         target.CurrentPromisedKnowledge = effectTime;
@@ -177,6 +180,7 @@ namespace DungeonPlayer
 
                 case "RiseOfImage":
                     effectValue = player.StandardIntelligence / 2;
+                    if (effectValue <= 0) { effectValue = 1; }
                     if ((effectValue - target.BuffMind_RiseOfImage) > 0)
                     {
                         target.CurrentRiseOfImage = effectTime;
@@ -249,15 +253,17 @@ namespace DungeonPlayer
                         UpdateBattleText(player.GetCharacterSentence(82));
                     }
                     break;
-                case "SkyShield":
+                case Database.SKY_SHIELD:
                     target.CurrentSkyShield = effectTime;
-                    target.CurrentSkyShieldValue++;
+                    target.CurrentSkyShieldValue = 3;
+                    target.ActivateBuff(target.pbSkyShield, Database.SKY_SHIELD, effectTime);
                     target.ChangeSkyShieldStatus(target.CurrentSkyShield);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(134), target.FirstName));
                     break;
-                case "StaticBarrier":
+                case Database.STATIC_BARRIER:
                     target.CurrentStaticBarrier = effectTime;
-                    target.CurrentStaticBarrierValue++;
+                    target.CurrentStaticBarrierValue = 3;
+                    target.ActivateBuff(target.pbStaticBarrier, Database.STATIC_BARRIER, effectTime);
                     target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(186), target.FirstName));
                     break;

@@ -1057,7 +1057,7 @@ namespace DungeonPlayer
         private void PlayerSpellSkyShield(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Glory");
-            PlayerBuffAbstract(player, target, 999, "SkyShield");
+            PlayerBuffAbstract(player, target, Database.INFINITY, Database.SKY_SHIELD);
         }
 
         /// <summary>
@@ -1066,7 +1066,7 @@ namespace DungeonPlayer
         private void PlayerSpellStaticBarrier(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_STATIC_BARRIER);
-            PlayerBuffAbstract(player, target, 999, "StaticBarrier");
+            PlayerBuffAbstract(player, target, Database.INFINITY, Database.STATIC_BARRIER);
         }
 
         /// <summary>
@@ -1740,9 +1740,9 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < group.Count; ii++)
             {
-                if (PlayerNormalAttack(player, target, 0, false, false))
+                if (PlayerNormalAttack(player, group[ii], 0, false, false))
                 {
-                    bool result = NowParalyze(player, target, 1);
+                    bool result = NowParalyze(player, group[ii], 1);
                     if (result == false)
                     {
                         ((TruthEnemyCharacter)player).DetectCannotBeParalyze = true;
