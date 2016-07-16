@@ -3679,7 +3679,7 @@ namespace DungeonPlayer
             if (command == Database.SOUL_INFINITY) { return TargetType.Enemy; }
 
             if (command == Database.COUNTER_ATTACK) { return TargetType.InstantTarget; }
-            if (command == Database.PURE_PURIFICATION) { return TargetType.Own; }
+            if (command == Database.PURE_PURIFICATION) { return TargetType.Ally; }
             if (command == Database.ANTI_STUN) { return TargetType.Own; }
             if (command == Database.STANCE_OF_DEATH) { return TargetType.Own; }
 
@@ -3836,7 +3836,7 @@ namespace DungeonPlayer
             if (command == Database.HEAT_BOOST) { return "対象の【技】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
             if (command == Database.FLAME_STRIKE) { return "対象に" + PowerResult("知", 3.5, 750, 1000) + "の【火】ダメージを与える。"; }
             if (command == Database.VOLCANIC_WAVE) { return "対象に" + PowerResult("知", 4.0, 1200, 1600) + "の【火】ダメージを与える。"; }
-            if (command == Database.IMMORTAL_RAVE) { return "本効果が持続している間、直接攻撃＋1ターン目はFireBall、２ターン目はFlameStrike、3ターン目はVolcanicWaveをコスト０で行う。"; }
+            if (command == Database.IMMORTAL_RAVE) { return "本効果が持続している間、任意の行動を行う度に、いずれかの敵に追加効果で" + PowerResult("知", 4.0, 1200, 1600) + "の【火】ダメージを与える。"; }
             if (command == Database.LAVA_ANNIHILATION) { return "すべての敵に" + PowerResult("知", 5.0, 7000, 8000) + "の【火】ダメージを与える。"; }
 
             if (command == Database.ICE_NEEDLE) { return "対象に" + PowerResult("知", 2.8, 30, 35) + "の【水】ダメージを与える。"; }

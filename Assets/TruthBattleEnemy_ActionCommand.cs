@@ -645,6 +645,8 @@ namespace DungeonPlayer
                 group[ii].DeBuff(group[ii].pbSlip);
                 //group[ii].CurrentNoResurrection = 0; // 復活不可は負の影響という定義には当てはまらない。
                 //group[ii].DeBuff(group[ii].pbNoResurrection);
+                //group[ii].CurrentNoGainLife = 0;
+                //group[ii].DeBuff(player.pbNoGainLife);
                 GroundOne.PlaySoundEffect("Cleansing");
                 UpdateBattleText(group[ii].FirstName + "にかかっている負の影響が全て取り払われた。\r\n");
             }
@@ -654,36 +656,36 @@ namespace DungeonPlayer
         /// ピュア・プリファイケーションのメソッド
         /// </summary>
         /// <param name="player"></param>
-        private void PlayerSkillPurePurification(MainCharacter player)
+        private void PlayerSkillPurePurification(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(78));
-            player.CurrentPreStunning = 0;
-            player.DeBuff(player.pbPreStunning);
-            player.CurrentStunning = 0;
-            player.DeBuff(player.pbStun);
-            player.CurrentSilence = 0;
-            player.DeBuff(player.pbSilence);
-            player.CurrentPoison = 0;
-            player.CurrentPoisonValue = 0;
-            player.DeBuff(player.pbPoison);
-            player.CurrentTemptation = 0;
-            player.DeBuff(player.pbTemptation);
-            player.CurrentFrozen = 0;
-            player.DeBuff(player.pbFrozen);
-            player.CurrentParalyze = 0;
-            player.DeBuff(player.pbParalyze);
-            player.CurrentSlow = 0;
-            player.DeBuff(player.pbSlow);
-            player.CurrentBlind = 0;
-            player.DeBuff(player.pbBlind);
-            player.CurrentSlip = 0;
-            player.DeBuff(player.pbSlip);
-            //player.CurrentNoResurrection = 0; // 復活不可は負の影響という定義には当てはまらない。
-            //player.DeBuff(player.pbNoResurrection);
-            //player.CurrentNoGainLife = 0; // 復活不可は負の影響という定義には当てはまらない。
-            //player.DeBuff(player.pbNoGainLife);
+            target.CurrentPreStunning = 0;
+            target.DeBuff(target.pbPreStunning);
+            target.CurrentStunning = 0;
+            target.DeBuff(target.pbStun);
+            target.CurrentSilence = 0;
+            target.DeBuff(target.pbSilence);
+            target.CurrentPoison = 0;
+            target.CurrentPoisonValue = 0;
+            target.DeBuff(target.pbPoison);
+            target.CurrentTemptation = 0;
+            target.DeBuff(target.pbTemptation);
+            target.CurrentFrozen = 0;
+            target.DeBuff(target.pbFrozen);
+            target.CurrentParalyze = 0;
+            target.DeBuff(target.pbParalyze);
+            target.CurrentSlow = 0;
+            target.DeBuff(target.pbSlow);
+            target.CurrentBlind = 0;
+            target.DeBuff(target.pbBlind);
+            target.CurrentSlip = 0;
+            target.DeBuff(target.pbSlip);
+            //target.CurrentNoResurrection = 0; // 復活不可は負の影響という定義には当てはまらない。
+            //target.DeBuff(target.pbNoResurrection);
+            //target.CurrentNoGainLife = 0;
+            //target.DeBuff(target.pbNoGainLife);
             GroundOne.PlaySoundEffect("Cleansing");
-            UpdateBattleText(player.FirstName + "にかかっている負の影響が全て取り払われた。\r\n");
+            UpdateBattleText(target.FirstName + "にかかっている負の影響が全て取り払われた。\r\n");
         }
 
         /// <summary>

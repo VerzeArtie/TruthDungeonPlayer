@@ -911,6 +911,12 @@ namespace DungeonPlayer
             return ConstructMagicDamage(player, 4.0F, 0.0F, 1200, 1600, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // 後編増強
         }
 
+        // イモータル・レイブ値の算出
+        public static double ImmmortalRaveValue(MainCharacter player, bool duelMode)
+        {
+            return ConstructMagicDamage(player, 4.0F, 0.0F, 1200, 1600, PrimaryLogic.SpellSkillType.Standard, false, duelMode); // Unity追加
+        }
+
         // ホワイト・アウト値の算出
         public static double WhiteOutValue(MainCharacter player, bool duelMode)
         {

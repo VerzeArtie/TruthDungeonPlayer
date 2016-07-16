@@ -250,6 +250,22 @@ namespace DungeonPlayer
                 PlayerBuffAbstract(player, player, Database.INFINITY, Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN);
             }
 
+            // ImmortalRaveによる追加攻撃
+            if (player.CurrentImmortalRave > 0)
+            {
+                double immortalRaveValue = PrimaryLogic.ImmmortalRaveValue(player, GroundOne.DuelMode);
+                List<MainCharacter> group = new List<MainCharacter>();
+                if (IsPlayerAlly(player))
+                {
+                    SetupEnemyGroup(ref group);
+                }
+                else
+                {
+                    SetupAllyGroup(ref group);
+                }
+                AbstractMagicDamage(player, group[AP.Math.RandomInteger(group.Count - 1)], 0, ref immortalRaveValue, 0, "VolcanicWave", 0, TruthActionCommand.MagicType.Fire, false, CriticalType.Random);
+            }
+
             // 任意の行動が敵から自分に行われた場合、まれに回避する。
             if ((IsPlayerAlly(player) && IsPlayerEnemy(target)) ||
                 (IsPlayerEnemy(player) && IsPlayerAlly(target)))
@@ -4677,7 +4693,7 @@ namespace DungeonPlayer
             }
             else if (CurrentSkillName == Database.PURE_PURIFICATION)
             {
-                PlayerSkillPurePurification(player);
+                PlayerSkillPurePurification(player, target);
             }
             else if (CurrentSkillName == Database.ANTI_STUN)
             {

@@ -1785,7 +1785,7 @@ namespace DungeonPlayer
             get { return volcanicwave; }
             set { volcanicwave = value; }
         }
-        public bool immortalrave = false; // 次の３ターン、火攻撃スペル（コスト０）＋直接攻撃を行う
+        public bool immortalrave = false; // 次の３ターン、任意の行動＋ランダムの敵に火追加攻撃
         public bool ImmortalRave
         {
             get { return immortalrave; }

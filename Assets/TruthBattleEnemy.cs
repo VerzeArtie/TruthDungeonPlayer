@@ -664,9 +664,12 @@ namespace DungeonPlayer
                 this.debug26.text = PrimaryLogic.BattleResponseValue(GroundOne.MC, false).ToString("F2");
                 this.debug27.text = PrimaryLogic.PotentialValue(GroundOne.MC, false).ToString("F2");
                 this.debug31.text = GroundOne.MC.Target.FirstName;
-                this.debug41.text = GroundOne.MC.MaxLife.ToString();
-                this.debug42.text = GroundOne.MC.MaxMana.ToString();
-                this.debug43.text = GroundOne.MC.MaxInstantPoint.ToString();
+                //this.debug41.text = GroundOne.MC.MaxLife.ToString();
+                //this.debug42.text = GroundOne.MC.MaxMana.ToString();
+                //this.debug43.text = GroundOne.MC.MaxInstantPoint.ToString();
+                this.debug41.text = GroundOne.MC.CurrentLife.ToString();
+                this.debug42.text = GroundOne.MC.CurrentMana.ToString();
+                this.debug43.text = GroundOne.MC.CurrentSkillPoint.ToString();
             }
             if (ec1 != null)
             {
@@ -683,9 +686,12 @@ namespace DungeonPlayer
                 this.debugB26.text = PrimaryLogic.BattleResponseValue(ec1, false).ToString("F2");
                 this.debugB27.text = PrimaryLogic.PotentialValue(ec1, false).ToString("F2");
                 this.debugB31.text = ec1.Target.FirstName;
-                this.debugB41.text = ec1.MaxLife.ToString();
-                this.debugB42.text = ec1.MaxMana.ToString();
-                this.debugB43.text = ec1.MaxInstantPoint.ToString();
+                //this.debugB41.text = ec1.MaxLife.ToString();
+                //this.debugB42.text = ec1.MaxMana.ToString();
+                //this.debugB43.text = ec1.MaxInstantPoint.ToString();
+                this.debugB41.text = ec1.CurrentLife.ToString();
+                this.debugB42.text = ec1.CurrentMana.ToString();
+                this.debugB43.text = ec1.CurrentSkillPoint.ToString();
             }
 
             if (Application.platform == RuntimePlatform.Android)
@@ -6007,20 +6013,6 @@ namespace DungeonPlayer
                         additional = DamageIsZero(additional, target);
                         LifeDamage(additional, target, interval);
                         UpdateBattleText(String.Format(player.GetCharacterSentence(140), additional.ToString()));
-                    }
-
-                    // ImmortalRaveによる追加攻撃
-                    if (player.CurrentImmortalRave == 3)
-                    {
-                        PlayerSpellFireBall(player, target, 0, 0);
-                    }
-                    else if (player.CurrentImmortalRave == 2)
-                    {
-                        PlayerSpellFlameStrike(player, target, 0, 0);
-                    }
-                    else if (player.CurrentImmortalRave == 1)
-                    {
-                        PlayerSpellVolcanicWave(player, target, 0, 0);
                     }
                 }
 
