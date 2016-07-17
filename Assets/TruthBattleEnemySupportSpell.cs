@@ -406,7 +406,7 @@ namespace DungeonPlayer
                     UpdateBattleText(player.GetCharacterSentence(209));
                     break;
 
-                case "NourishSense":
+                case Database.NOURISH_SENSE:
                     target.CurrentNourishSense = effectTime;
                     target.ActivateBuff(target.pbNourishSense, Database.BaseResourceFolder + spellName, effectTime);
                     break;

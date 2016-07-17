@@ -34,7 +34,7 @@ namespace DungeonPlayer
                     int effect = backpackData.UseIt();
                     if (player.CurrentNourishSense > 0)
                     {
-                        effect = (int)((double)effect * 1.3f);
+                        effect = (int)((double)effect * PrimaryLogic.NourishSenseValue(player));
                     }
                     player.CurrentLife += effect;
                     player.DeleteBackPack(backpackData, 1, currentNumber);

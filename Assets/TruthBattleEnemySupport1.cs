@@ -398,7 +398,7 @@ namespace DungeonPlayer
                                 UpdateBattleText(player.FirstName + "は" + item.Name + "を使った。" + effect.ToString() + " ライフ回復\r\n");
                                 if (player.CurrentNourishSense > 0)
                                 {
-                                    effect = (int)((double)effect * 1.3f);
+                                    effect = (int)((double)effect * PrimaryLogic.NourishSenseValue(player));
                                 }
                                 effect = (int)GainIsZero(effect, player);
                                 player.CurrentLife += effect;

@@ -29,12 +29,12 @@ namespace DungeonPlayer
             return damage;
         }
 
-        protected double DamageIsZero(double damage, MainCharacter player)
+        protected double DamageIsZero(double damage, MainCharacter player, bool ignoreTargetDefense)
         {
-            if (player.CurrentEclipseEnd > 0) { damage = 0; }
+            if (player.CurrentEclipseEnd > 0) { damage = 0; } // ignoreTargetDefenseの対象外
             if (player.CurrentDetachmentOrb > 0) { damage = 0; }
             if (player.CurrentLightAndShadow > 0) { damage = 0; }
-            if (player.CurrentOneImmunity > 0 && player.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense) { damage = 0; }
+            if (player.CurrentOneImmunity > 0 && player.PA == DungeonPlayer.MainCharacter.PlayerAction.Defense && ignoreTargetDefense == false) { damage = 0; }
             return damage;
         }
 

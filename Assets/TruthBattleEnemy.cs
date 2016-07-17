@@ -3948,7 +3948,7 @@ namespace DungeonPlayer
                     for (int jj = 0; jj < group.Count; jj++)
                     {
                         double effectValue = PrimaryLogic.PainfulInsanityValue(ActiveList[ii], GroundOne.DuelMode);
-                        effectValue = DamageIsZero(effectValue, group[jj]);
+                        effectValue = DamageIsZero(effectValue, group[jj], false);
                         UpdateBattleText(ActiveList[ii].FirstName + "は" + group[jj].FirstName + "の心へ直接的なダメージを発生させている。" + ((int)effectValue).ToString() + "のダメージ\r\n");
                         LifeDamage(effectValue, group[jj]);
                     }
@@ -3958,7 +3958,7 @@ namespace DungeonPlayer
                 if (ActiveList[ii].CurrentPoison > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = PrimaryLogic.PoisonValue(ActiveList[ii]);
-                    effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                    effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                     UpdateBattleText(ActiveList[ii].FirstName + "は猛毒の効果により、ライフを削られていく。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
@@ -3967,7 +3967,7 @@ namespace DungeonPlayer
                 if (ActiveList[ii].CurrentSlip > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = PrimaryLogic.SlipValue(ActiveList[ii]);
-                    effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                    effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                     UpdateBattleText(ActiveList[ii].FirstName + "の傷口はひどく、ライフが削られていく。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
@@ -3976,7 +3976,7 @@ namespace DungeonPlayer
                 if (ActiveList[ii].CurrentFlashBlazeCount > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = ActiveList[ii].CurrentFlashBlazeFactor;
-                    effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                    effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                     UpdateBattleText(ActiveList[ii].FirstName + "に閃光の炎が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
@@ -3986,7 +3986,7 @@ namespace DungeonPlayer
                 if (ActiveList[ii].CurrentEnrageBlast > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = ActiveList[ii].CurrentEnrageBlastFactor;
-                    effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                    effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ火の粉が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
@@ -3995,7 +3995,7 @@ namespace DungeonPlayer
                 if (ActiveList[ii].CurrentBlazingField > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = ActiveList[ii].CurrentBlazingFieldFactor;
-                    effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                    effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ猛火が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
@@ -4004,7 +4004,7 @@ namespace DungeonPlayer
                 if (ActiveList[ii].CurrentFireDamage2 > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = PrimaryLogic.FireDamage2Value(ActiveList[ii]);
-                    effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                    effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ猛火が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
@@ -4013,7 +4013,7 @@ namespace DungeonPlayer
                 if (ActiveList[ii].CurrentIchinaruHomura > 0 && ActiveList[ii].Dead == false)
                 {
                     double effectValue = PrimaryLogic.IchinaruHomuraValue(ec1); // ダメージ発生源はレギィンアーゼ
-                    effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                    effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                     UpdateBattleText(ActiveList[ii].FirstName + "に焔火が降り注ぐ。\r\n");
                     LifeDamage(effectValue, ActiveList[ii]);
                     UpdateBattleText(ActiveList[ii].FirstName + "へ" + ((int)effectValue).ToString() + "のダメージ\r\n");
@@ -4276,7 +4276,7 @@ namespace DungeonPlayer
                         double effectValue = PrimaryLogic.EternalDropletValue_A(ActiveList[ii]);
                         if (ActiveList[ii].CurrentNourishSense > 0)
                         {
-                            effectValue = effectValue * 1.3f;
+                            effectValue = effectValue * PrimaryLogic.NourishSenseValue(ActiveList[ii]);
                         }
                         effectValue = GainIsZero(effectValue, ActiveList[ii]);
                         UpdateBattleText("永遠を示す理が、" + ActiveList[ii].FirstName + "へ生命力を注ぎ込んでいる。" + ((int)effectValue).ToString() + "ライフ回復\r\n");
@@ -4295,7 +4295,7 @@ namespace DungeonPlayer
                         double effectValue = PrimaryLogic.WordOfLifeValue(ActiveList[ii], GroundOne.DuelMode);
                         if (ActiveList[ii].CurrentNourishSense > 0)
                         {
-                            effectValue = effectValue * 1.3f;
+                            effectValue = effectValue * PrimaryLogic.NourishSenseValue(ActiveList[ii]);
                         }
                         effectValue = GainIsZero(effectValue, ActiveList[ii]);
                         UpdateBattleText("大自然から" + ActiveList[ii].FirstName + "へ力強い脈動が行き渡る。" + ((int)effectValue).ToString() + "ライフ回復\r\n");
@@ -4315,7 +4315,7 @@ namespace DungeonPlayer
                     if (ActiveList[ii].CurrentBlackContract > 0 && !ActiveList[ii].Dead)
                     {
                         double effectValue = Math.Ceiling((float)ActiveList[ii].MaxLife / 10.0F);//playerList[ii].TotalMind));
-                        effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                        effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                         UpdateBattleText(ActiveList[ii].FirstName + "は悪魔への代償を支払う。" + ((int)effectValue).ToString() + "ライフが削り取られる。\r\n");
                         LifeDamage(effectValue, ActiveList[ii]);
                     }
@@ -4323,7 +4323,7 @@ namespace DungeonPlayer
                     if (ActiveList[ii].CurrentHymnContract > 0 && !ActiveList[ii].Dead)
                     {
                         double effectValue = Math.Ceiling((float)ActiveList[ii].MaxLife / 10.0F);//playerList[ii].TotalMind));
-                        effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                        effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                         UpdateBattleText(ActiveList[ii].FirstName + "は天使との締結により、魂の代金を支払う。" + ((int)effectValue).ToString() + "ライフが削り取られる。\r\n");
                         LifeDamage(effectValue, ActiveList[ii]);
                     }
@@ -4331,7 +4331,7 @@ namespace DungeonPlayer
                     if (ActiveList[ii].CurrentDamnation > 0 && !ActiveList[ii].Dead)
                     {
                         double effectValue = PrimaryLogic.DamnationValue(ActiveList[ii]);
-                        effectValue = DamageIsZero(effectValue, ActiveList[ii]);
+                        effectValue = DamageIsZero(effectValue, ActiveList[ii], false);
                         UpdateBattleText("黒が" + ActiveList[ii].FirstName + "の存在している空間を歪ませてくる。" + ((int)effectValue).ToString() + "のダメージ\r\n");
                         LifeDamage(effectValue, ActiveList[ii]);
                     }
@@ -5647,7 +5647,7 @@ namespace DungeonPlayer
                         if (target.CurrentDeflection > 0)
                         {
                             AnimationDamage(0, target, 0, Color.black, false, false, Database.SUCCESS_DEFLECTION);
-                            damage = DamageIsZero(damage, player);
+                            damage = DamageIsZero(damage, player, ignoreDefense);
                             LifeDamage(damage, player);
                             target.RemoveDeflection();
                             return true;
@@ -5681,7 +5681,7 @@ namespace DungeonPlayer
                     }
 
                     // ダメージ０変換
-                    damage = DamageIsZero(damage, target);
+                    damage = DamageIsZero(damage, target, ignoreDefense);
 
                     // スケール・オブ・ブルーレイジによる効果
                     if ((target.MainArmor != null) && (target.MainArmor.Name == Database.RARE_SCALE_BLUERAGE))
@@ -5798,7 +5798,7 @@ namespace DungeonPlayer
                         if (AP.Math.RandomInteger(100) < PrimaryLogic.SwordOfDivideValue_A(player))
                         {
                             double effectValue = PrimaryLogic.SwordOfDivideValue(target);
-                            effectValue = DamageIsZero(effectValue, target);
+                            effectValue = DamageIsZero(effectValue, target, false);
                             LifeDamage(effectValue, target);
                         }
                     }
@@ -5976,7 +5976,7 @@ namespace DungeonPlayer
                                 }
                             }
                         }
-                        additional = DamageIsZero(additional, target);
+                        additional = DamageIsZero(additional, target, false);
                         LifeDamage(additional, target, interval);
                         UpdateBattleText(String.Format(player.GetCharacterSentence(14), additional.ToString()));
                     }
@@ -6010,7 +6010,7 @@ namespace DungeonPlayer
                                 }
                             }
                         }
-                        additional = DamageIsZero(additional, target);
+                        additional = DamageIsZero(additional, target, false);
                         LifeDamage(additional, target, interval);
                         UpdateBattleText(String.Format(player.GetCharacterSentence(140), additional.ToString()));
                     }
@@ -6571,7 +6571,7 @@ namespace DungeonPlayer
                 {
                     AnimationDamage(0, target, 0, Color.black, false, false, "反射");
 
-                    damage = DamageIsZero(damage, player);
+                    damage = DamageIsZero(damage, player, ignoreTargetDefense);
                     LifeDamage(damage, player);
                     UpdateBattleText(String.Format(target.GetCharacterSentence(58), ((int)damage).ToString(), player.FirstName), 1000);
 
@@ -6581,21 +6581,21 @@ namespace DungeonPlayer
                 }
             }
             // SkyShieldによる効果
-            if (target.CurrentSkyShieldValue > 0)
+            if (target.CurrentSkyShieldValue > 0 && ignoreTargetDefense == false)
             {
                 target.CurrentSkyShieldValue--;
                 target.ChangeSkyShieldStatus(target.CurrentSkyShield);
                 damage = 0;
             }
             // StaticBarrierの効果
-            if (target.CurrentStaticBarrier > 0)
+            if (target.CurrentStaticBarrier > 0 && ignoreTargetDefense == false)
             {
                 target.CurrentStaticBarrierValue--;
                 target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                 damage = damage * 0.5f;
             }
             // StanceOfMysticによる効果
-            if (target.CurrentStanceOfMysticValue > 0)
+            if (target.CurrentStanceOfMysticValue > 0) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
             {
                 target.CurrentStanceOfMysticValue--;
                 target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
@@ -6604,7 +6604,7 @@ namespace DungeonPlayer
                 return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
             }
             // HardestParryによる効果
-            if (target.CurrentHardestParry)
+            if (target.CurrentHardestParry) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
             {
                 target.CurrentHardestParry = false;
                 damage = 0;
@@ -6612,7 +6612,7 @@ namespace DungeonPlayer
                 return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
             }
             // ダメージ０変換
-            damage = DamageIsZero(damage, target);
+            damage = DamageIsZero(damage, target, ignoreTargetDefense);
 
             // ブルー・リフレクト・ローブによる効果
             if ((target.MainArmor != null) && (target.MainArmor.Name == Database.RARE_BLUE_REFLECT_ROBE))
@@ -6774,6 +6774,11 @@ namespace DungeonPlayer
         /// <param name="messageNumber">魔法ダメージメッセージ</param>
         private void PlayerAbstractLifeGain(MainCharacter player, MainCharacter target, int interval, double effectValue, double magnification, string soundName, int messageNumber)
         {
+            if (target.CurrentNourishSense > 0)
+            {
+                effectValue = effectValue * PrimaryLogic.NourishSenseValue(player);
+            }
+
             if (target != null)
             {
                 if ((target != ec1) ||

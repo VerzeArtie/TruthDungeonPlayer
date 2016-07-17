@@ -1020,6 +1020,11 @@ namespace DungeonPlayer
             return player.MaxMana / 30.0F; // 「警告」要調整
         }
 
+        // ノリッシュ・センス値の算出
+        public static double NourishSenseValue(MainCharacter player)
+        {
+            return 1.5F;
+        }
 
         // ダムネーションの算出
         public static double DamnationValue(MainCharacter player)

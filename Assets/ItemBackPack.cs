@@ -3619,7 +3619,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.RARE_BLUE_REFLECT_ROBE:
-                    description = "蒼炎の魂が込められた衣。その薄さとは裏腹にダメージ反射が起こりうる。【常備能力：有】物理防御５８～７０、魔法防御１３０～１４５";
+                    description = "蒼炎の魂が込められた衣。その衣は薄く、蒼く、そして炎のゆらめきを表現する。【常備能力：有】物理防御５８～７０、魔法防御１３０～１４５";
                     description += "\r\n【常備能力】　まれに魔法による被ダメージを０にする";
                     PhysicalDefenseMinValue = 58;
                     PhysicalDefenseMaxValue = 70;

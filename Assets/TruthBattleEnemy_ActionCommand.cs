@@ -43,13 +43,7 @@ namespace DungeonPlayer
             double damage = PrimaryLogic.DevouringPlagueValue(player, GroundOne.DuelMode);
             if (AbstractMagicDamage(player, target, interval, ref damage, magnification, "DevouringPlague", 29, TruthActionCommand.MagicType.Shadow, false, CriticalType.Random))
             {
-                if (player.CurrentNourishSense > 0)
-                {
-                    damage = damage * 1.3f;
-                }
-                damage = GainIsZero(damage, player);
-                player.CurrentLife += (int)damage;
-                UpdateLife(player, damage, true, true, 0, false);
+                PlayerAbstractLifeGain(player, player, interval, damage, magnification, "", 0);
             }
         }
         #endregion
@@ -200,11 +194,7 @@ namespace DungeonPlayer
             else
             {
                 double lifeGain = PrimaryLogic.CelestialNovaValue_B(player, GroundOne.DuelMode);
-                if (player.CurrentNourishSense > 0)
-                {
-                    lifeGain = lifeGain * 1.3f;
-                }
-                PlayerAbstractLifeGain(player, target, 0, lifeGain, 0, Database.SOUND_CELESTIAL_NOVA, 25);
+                PlayerAbstractLifeGain(player, player, 0, lifeGain, 0, Database.SOUND_CELESTIAL_NOVA, 25);
             }
         }
 
@@ -539,10 +529,6 @@ namespace DungeonPlayer
         private void PlayerSpellFreshHeal(MainCharacter player, MainCharacter target)
         {
             double lifeGain = PrimaryLogic.FreshHealValue(player, GroundOne.DuelMode);
-            if (player.CurrentNourishSense > 0)
-            {
-                lifeGain = lifeGain * 1.3f;
-            }
             PlayerAbstractLifeGain(player, player, 0, lifeGain, 0, Database.SOUND_FRESH_HEAL, 9);
         }
 
@@ -553,10 +539,6 @@ namespace DungeonPlayer
         private void PlayerSpellLifeTap(MainCharacter player, MainCharacter target)
         {
             double lifeGain = PrimaryLogic.LifeTapValue(player, GroundOne.DuelMode);
-            if (player.CurrentNourishSense > 0)
-            {
-                lifeGain = lifeGain * 1.3f;
-            }
             PlayerAbstractLifeGain(player, target, 0, lifeGain, 0, Database.SOUND_LIFE_TAP, 9);
         }
 
@@ -1133,7 +1115,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(199));
             GroundOne.PlaySoundEffect(Database.SOUND_NOURISH_SENSE);
-            PlayerBuffAbstract(player, target, 999, "NourishSense");
+            PlayerBuffAbstract(player, target, Database.INFINITY, Database.NOURISH_SENSE);
         }
 
         /// <summary>

@@ -3904,7 +3904,7 @@ namespace DungeonPlayer
             if (command == Database.ZETA_EXPLOSION) { return "対象に" + PowerResult("知", 6.0, 8000, 12000) + "の【火／水】ダメージを与える。\r\n対象の防御姿勢を無視する。\r\nこの魔法はカウンターされない。\r\nこの魔法は軽減できない。"; }
 
             if (command == Database.ENRAGE_BLAST) { return "すべての敵に" + PowerResult("知", 1.0, 200, 300) + "の【火/理】ダメージを与える。\r\nその後、ターンが進む度に、対象者全員に" + PowerResult("知", 1.0, 200, 300) + "の【火/理】ダメージを与える。"; }
-            if (command == Database.PIERCING_FLAME) { return "対象に" + PowerResult("知", 4.5, 3500, 5000) + "の【火/理】ダメージを与える。\r\n対象の防御姿勢を無視する。\r\nこの魔法は軽減できない。"; }
+            if (command == Database.PIERCING_FLAME) { return "対象に" + PowerResult("知", 4.5, 3500, 5000) + "の【火/理】ダメージを与える。\r\n対象の防御姿勢を無視する。\r\nこの魔法はダメージ軽減されない。"; }
             if (command == Database.SIGIL_OF_HOMURA) { return "対象に【焔の刻印】カウンターを置く。\r\n\r\n【焔の刻印】カウンターを置かれた者は、【火】属性のダメージを受けた場合、加えて、そのダメージと同等の追加ダメージを受ける。\r\n\r\n火属性防御による軽減が適用されない。\r\n\r\nこのBUFF効果は解除できない。"; }
 
             if (command == Database.IMMOLATE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【火/空】ダメージを与える。加えて、対象の物理防御力を" + PowerResult(0.8) + "に減少させる。"; }
@@ -3984,7 +3984,7 @@ namespace DungeonPlayer
             if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、ダメージを無効化し、それに付随する効果を回避する。\r\n\r\nこのスキルはカウンターされない。\r\nこの効果は３回まで累積が可能である。"; }
 
             if (command == Database.PSYCHIC_WAVE) { return "対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこの魔法はDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
-            if (command == Database.NOURISH_SENSE) { return "対象がライフ回復を受ける際、回復量が通常の" + PowerResult(1.3) + "になる。"; }
+            if (command == Database.NOURISH_SENSE) { return "対象がライフ回復を受ける際、回復量が通常の" + PowerResult(1.5) + "になる。"; }
 
             if (command == Database.RECOVER) { return "対象の【スタン】/【麻痺】/【凍結】を解除する。\r\nこのスキルは【スタン】/【麻痺】/【凍結】状態においても発動できる。"; }
             if (command == Database.IMPULSE_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、戦闘速度と戦闘反応を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
