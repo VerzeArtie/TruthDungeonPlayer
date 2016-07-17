@@ -3943,7 +3943,7 @@ namespace DungeonPlayer
             if (command == Database.SILENT_RUSH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを３回連続で与える。"; }
             if (command == Database.OBORO_IMPACT) { return "対象の【力】【技】【知】のうち最も高い値を《最大》、中間の値を《中間》、最も低い値を《最小》として、対象に" + PowerResult("最大", 1.5, 0, 0) + " ＋ " + PowerResult("中間", 1.0, 0, 0) + " ＋ " + PowerResult("最小", 0.5, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
 
-            if (command == Database.STANCE_OF_STANDING) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、本効果が持続している間、防御体制が維持される。本効果は１ターン持続される。"; }
+            if (command == Database.STANCE_OF_STANDING) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、本効果が持続している間、防御体制が維持される。本効果は２ターン持続される。"; }
             if (command == Database.INNER_INSPIRATION) { return "対象のスキルポイントを《【心】+10》の分だけ回復する。\r\n心が1以上：0 + 心/10\r\n心が100以上：10 + (心-100)/90\r\n心が1000以上：20 + (心-1000)/900"; }
             if (command == Database.KINETIC_SMASH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + " ＋ " + PowerResult("心", 1.0, 0, 0) + " ＋ " + PowerResult("武器", 3.0, 2000, 3000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
             if (command == Database.CATASTROPHE) { return "対象の【力】【技】【知】のうち最も低い値を《最小》として、対象に" + PowerResult("最小", 5.0, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }

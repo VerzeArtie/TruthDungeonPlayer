@@ -752,7 +752,7 @@ namespace DungeonPlayer
         public static int CRUSHING_BLOW_COST = 35;
         public static int SOUL_INFINITY_COST = 85;
         // [静]
-        public static int COUNTER_ATTACK_COST = 5;
+        public static int COUNTER_ATTACK_COST = 10;
         public static int PURE_PURIFICATION_COST = 20;
         public static int ANTI_STUN_COST = 10;
         public static int STANCE_OF_DEATH_COST = 30;
@@ -772,7 +772,7 @@ namespace DungeonPlayer
         public static int STANCE_OF_EYES_COST = 30;
         public static int PAINFUL_INSANITY_COST = 80;
         // [無心]
-        public static int NEGATE_COST = 5;
+        public static int NEGATE_COST = 10;
         public static int VOID_EXTRACTION_COST = 25;
         public static int CARNAGE_RUSH_COST = 60;
         public static int NOTHING_OF_NOTHINGNESS_COST = 100;

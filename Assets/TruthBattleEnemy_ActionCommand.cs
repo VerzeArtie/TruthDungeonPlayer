@@ -1587,7 +1587,7 @@ namespace DungeonPlayer
         {
             if (PlayerNormalAttack(player, target, 0, false, false))
             {
-                PlayerBuffAbstract(player, player, 1, Database.STANCE_OF_STANDING + "");
+                PlayerBuffAbstract(player, player, 2, Database.STANCE_OF_STANDING + "");
             }
             UpdateBattleText(player.GetCharacterSentence(56));
         }
