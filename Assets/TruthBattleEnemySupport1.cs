@@ -3911,7 +3911,19 @@ namespace DungeonPlayer
                             #endregion
                             #region "ダミー素振り君"
                             case Database.DUEL_DUMMY_SUBURI:
-                                if (player.ActionLabel.text == "BUFF!")
+                                if (player.ActionLabel.text == "DOWN!")
+                                {
+                                    BuffDownPhysicalAttack(target, 1000, Database.INFINITY);
+                                    BuffDownPhysicalDefense(target, 1000, Database.INFINITY);
+                                    BuffDownMagicAttack(target, 1000, Database.INFINITY);
+                                    BuffDownMagicDefense(target, 1000, Database.INFINITY);
+                                    BuffDownBattleSpeed(target, 1000, Database.INFINITY);
+                                    BuffDownBattleReaction(target, 1000, Database.INFINITY);
+                                    BuffDownPotential(target, 1000, Database.INFINITY);
+                                    //                        BuffDownPotential(target, 500, 2);
+
+                                }
+                                else if (player.ActionLabel.text == "BUFF!")
                                 {
                                     //NowPreStunning(target, 999);
                                     NowStunning(player, target, 999, true);

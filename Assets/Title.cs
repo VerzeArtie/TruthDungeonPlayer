@@ -52,6 +52,7 @@ namespace DungeonPlayer
         public Toggle toggle3;
         public Toggle toggleB2;
         public Toggle toggleB3;
+        public Toggle toggleDuel;
         public void enemy_click(Text txtName)
         {
             GroundOne.WE.AvailableMixSpellSkill = true;
@@ -548,7 +549,7 @@ namespace DungeonPlayer
             {
                 GroundOne.enemyName3 = txtName.text;
             }
-            SceneDimension.CallTruthBattleEnemy(Database.Title, false, false, false, false);
+            SceneDimension.CallTruthBattleEnemy(Database.Title, toggleDuel.isOn, false, false, false);
         }
 
         public void tapExit()

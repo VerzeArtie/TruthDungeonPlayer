@@ -18,6 +18,7 @@ namespace DungeonPlayer
         public enum Attribute
         {
             None, // 特殊武器やモンスター魔法として用いる。
+            NormalAttack,
             Spell,
             Skill,
             Archetype,
@@ -862,15 +863,19 @@ namespace DungeonPlayer
 
         public static Attribute GetAttribute(string command)
         {
-            if (CheckPlayerActionFromString(command) == DungeonPlayer.MainCharacter.PlayerAction.UseSpell)
+            if (CheckPlayerActionFromString(command) == MainCharacter.PlayerAction.NormalAttack)
+            {
+                return Attribute.NormalAttack;
+            }
+            if (CheckPlayerActionFromString(command) == MainCharacter.PlayerAction.UseSpell)
             {
                 return Attribute.Spell;
             }
-            else if (CheckPlayerActionFromString(command) == DungeonPlayer.MainCharacter.PlayerAction.UseSkill)
+            else if (CheckPlayerActionFromString(command) == MainCharacter.PlayerAction.UseSkill)
             {
                 return Attribute.Skill;
             }
-            else if (CheckPlayerActionFromString(command) == DungeonPlayer.MainCharacter.PlayerAction.Archetype)
+            else if (CheckPlayerActionFromString(command) == MainCharacter.PlayerAction.Archetype)
             {
                 return Attribute.Archetype;
             }
@@ -3695,7 +3700,7 @@ namespace DungeonPlayer
 
             if (command == Database.TRUTH_VISION) { return TargetType.Own; }
             if (command == Database.HIGH_EMOTIONALITY) { return TargetType.Own; }
-            if (command == Database.STANCE_OF_EYES) { return TargetType.Enemy; }
+            if (command == Database.STANCE_OF_EYES) { return TargetType.InstantTarget; } // change unity (Enemy -> InstantTarget)
             if (command == Database.PAINFUL_INSANITY) { return TargetType.Own; }
 
             if (command == Database.NEGATE) { return TargetType.InstantTarget; } // change unity (Enemy -> InstantTarget)
@@ -3889,7 +3894,7 @@ namespace DungeonPlayer
 
             if (command == Database.BLUE_BULLET) { return "対象に" + PowerResult("知", 0.9, 200, 300) + "の【水/闇】ダメージを３回連続で与える。"; }
             if (command == Database.DEEP_MIRROR) { return "対象のインスタントがダメージ源を有しない魔法の場合、それをカウンターする。"; }
-            if (command == Database.DEATH_DENY) { return "対象をライフ／マナ／スキルが全快の状態で蘇生する。加えて、対象に【蘇生不可】効果を与える。"; }
+            if (command == Database.DEATH_DENY) { return "対象をライフ／マナ／スキルが全快の状態で蘇生する。その後、対象に【蘇生不可】効果を与える。"; }
 
             if (command == Database.WORD_OF_MALICE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【闇/理】ダメージを与える。加えて、対象の戦闘反応力を" + PowerResult(0.7) + "に減少させる。"; }
             if (command == Database.ABYSS_EYE) { return "対象を７０％の確率で死亡させる。\r\nそうでない場合、対象に" + PowerResult("知", 2.8, 4500, 6000) + "の【闇/理】ダメージを与える。"; }
@@ -3945,7 +3950,7 @@ namespace DungeonPlayer
 
             if (command == Database.TRUTH_VISION) { return "対象の敵が正のＢＵＦＦ効果を受けている場合、その効果によるパラメタ上昇を無視する。"; }
             if (command == Database.HIGH_EMOTIONALITY) { return "本効果が持続している間、【体】パラメタを" + PowerResult(1.2) + "上昇させる。本効果は３ターン持続される。"; }
-            if (command == Database.STANCE_OF_EYES) { return "本効果が持続している間、相手の行動をカウンターする。\r\nこの効果は一度発動されると解除される。"; }
+            if (command == Database.STANCE_OF_EYES) { return "対象のインスタントをカウンターする。"; }
             if (command == Database.PAINFUL_INSANITY) { return "ターンが進む度に、それぞれの敵へ" + PowerResult("心", 3.0, 2000, 3000) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。"; }
 
             if (command == Database.NEGATE) { return "対象のインスタントが魔法である場合、その魔法詠唱をカウンターする。"; }

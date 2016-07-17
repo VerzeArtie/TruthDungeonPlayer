@@ -912,32 +912,32 @@ namespace DungeonPlayer
         #endregion
 
         #region "戦闘、敵のBuffUp汎用"
-        public const string BUFF_PHYSICAL_ATTACK_UP = @"BuffPhysicalAttackUp.bmp";
-        public const string BUFF_PHYSICAL_ATTACK_DOWN = @"BuffPhysicalAttackDown.bmp";
+        public const string BUFF_PHYSICAL_ATTACK_UP = @"BuffPhysicalAttackUp";
+        public const string BUFF_PHYSICAL_ATTACK_DOWN = @"BuffPhysicalAttackDown";
 
-        public const string BUFF_PHYSICAL_DEFENSE_UP = @"BuffPhysicalDefenseUp.bmp";
-        public const string BUFF_PHYSICAL_DEFENSE_DOWN = @"BuffPhysicalDefenseDown.bmp";
+        public const string BUFF_PHYSICAL_DEFENSE_UP = @"BuffPhysicalDefenseUp";
+        public const string BUFF_PHYSICAL_DEFENSE_DOWN = @"BuffPhysicalDefenseDown";
 
-        public const string BUFF_MAGIC_ATTACK_UP = @"BuffMagicAttackUp.bmp";
-        public const string BUFF_MAGIC_ATTACK_DOWN = @"BuffMagicAttackDown.bmp";
+        public const string BUFF_MAGIC_ATTACK_UP = @"BuffMagicAttackUp";
+        public const string BUFF_MAGIC_ATTACK_DOWN = @"BuffMagicAttackDown";
 
-        public const string BUFF_MAGIC_DEFENSE_UP = @"BuffMagicDefenseUp.bmp";
-        public const string BUFF_MAGIC_DEFENSE_DOWN = @"BuffMagicDefenseDown.bmp";
+        public const string BUFF_MAGIC_DEFENSE_UP = @"BuffMagicDefenseUp";
+        public const string BUFF_MAGIC_DEFENSE_DOWN = @"BuffMagicDefenseDown";
 
-        public const string BUFF_SPEED_UP = @"BuffSpeedUp.bmp";
-        public const string BUFF_SPEED_DOWN = @"BuffSpeedDown.bmp";
+        public const string BUFF_SPEED_UP = @"BuffSpeedUp";
+        public const string BUFF_SPEED_DOWN = @"BuffSpeedDown";
 
-        public const string BUFF_REACTION_UP = @"BuffReactionUp.bmp";
-        public const string BUFF_REACTION_DOWN = @"BuffReactionDown.bmp";
+        public const string BUFF_REACTION_UP = @"BuffReactionUp";
+        public const string BUFF_REACTION_DOWN = @"BuffReactionDown";
 
-        public const string BUFF_POTENTIAL_UP = @"BuffPotentialUp.bmp";
-        public const string BUFF_POTENTIAL_DOWN = @"BuffPotentialDown.bmp";
+        public const string BUFF_POTENTIAL_UP = @"BuffPotentialUp";
+        public const string BUFF_POTENTIAL_DOWN = @"BuffPotentialDown";
 
-        public const string BUFF_STRENGTH_UP = @"BuffStrengthUp.bmp";
-        public const string BUFF_AGILITY_UP = @"BuffAgilityUp.bmp";
-        public const string BUFF_INTELLIGENCE_UP = @"BuffIntelligenceUp.bmp";
-        public const string BUFF_STAMINA_UP = @"BuffStaminaUp.bmp";
-        public const string BUFF_MIND_UP = @"BuffMindUp.bmp";
+        public const string BUFF_STRENGTH_UP = @"BuffStrengthUp";
+        public const string BUFF_AGILITY_UP = @"BuffAgilityUp";
+        public const string BUFF_INTELLIGENCE_UP = @"BuffIntelligenceUp";
+        public const string BUFF_STAMINA_UP = @"BuffStaminaUp";
+        public const string BUFF_MIND_UP = @"BuffMindUp";
 
         public const string BUFF_LIGHT_UP = @"BuffLightUp";
         public const string BUFF_LIGHT_DOWN = @"BuffLightDown";

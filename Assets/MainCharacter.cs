@@ -3140,7 +3140,7 @@ namespace DungeonPlayer
                 if (this.MainObjectButton != null)
                 {
                     this.MainObjectButton.gameObject.SetActive(true);
-                    this.MainObjectButton.GetComponent<Image>().color = this.MainColor;
+                    this.MainObjectButton.GetComponent<Image>().color = Color.white;// this.MainColor;
                 }
                 if (this.labelName != null) { this.labelName.color = Color.black; }
                 if (this.labelCurrentLifePoint != null) { this.labelCurrentLifePoint.color = Color.black; this.labelCurrentLifePoint.text = CurrentLife.ToString(); }

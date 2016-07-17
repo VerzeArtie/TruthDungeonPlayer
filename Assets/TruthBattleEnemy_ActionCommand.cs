@@ -2050,19 +2050,19 @@ namespace DungeonPlayer
 
         private void PlayerSkillCounterAttack(MainCharacter player, MainCharacter target)
         {
-            PlayerBuffAbstract(player, player, Database.INFINITY, Database.COUNTER_ATTACK + "");
+            player.CurrentCounterAttack = Database.INFINITY;
             UpdateBattleText(player.FirstName + "はカウンターの構えをとっている。\r\n");
         }
 
         private void PlayerSkillNegate(MainCharacter player, MainCharacter target)
         {
-            PlayerBuffAbstract(player, player, Database.INFINITY, Database.NEGATE + "");
+            player.CurrentNegate = Database.INFINITY;
             UpdateBattleText(player.FirstName + "はニゲイトの構えをとっている。\r\n");
         }
 
         private void PlayerSkillStanceOfEyes(MainCharacter player)
         {
-            PlayerBuffAbstract(player, player, 1, Database.STANCE_OF_EYES + "");
+            player.CurrentStanceOfEyes = Database.INFINITY;
             UpdateBattleText(player.FirstName + "はスタンス・オブ・アイズの構えをとっている。\r\n");
         }
         #endregion
