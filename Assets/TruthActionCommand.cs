@@ -3680,7 +3680,7 @@ namespace DungeonPlayer
 
             if (command == Database.COUNTER_ATTACK) { return TargetType.InstantTarget; }
             if (command == Database.PURE_PURIFICATION) { return TargetType.Ally; }
-            if (command == Database.ANTI_STUN) { return TargetType.Own; }
+            if (command == Database.ANTI_STUN) { return TargetType.Ally; }
             if (command == Database.STANCE_OF_DEATH) { return TargetType.Own; }
 
             if (command == Database.STANCE_OF_FLOW) { return TargetType.Own; }
@@ -3736,7 +3736,7 @@ namespace DungeonPlayer
             if (command == Database.PSYCHIC_WAVE) { return TargetType.Enemy; }
             if (command == Database.NOURISH_SENSE) { return TargetType.Own; }
 
-            if (command == Database.RECOVER) { return TargetType.Ally; }
+            if (command == Database.RECOVER) { return TargetType.Own; }
             if (command == Database.IMPULSE_HIT) { return TargetType.Enemy; }
 
             if (command == Database.VIOLENT_SLASH) { return TargetType.Enemy; }
@@ -3930,7 +3930,7 @@ namespace DungeonPlayer
 
             if (command == Database.COUNTER_ATTACK) { return "対象のインスタントがダメージ源を有する物理攻撃である場合、それをカウンターする。"; }
             if (command == Database.PURE_PURIFICATION) { return "対象の負のＢＵＦＦ効果を全て解除する。\r\n\r\n負のＢＵＦＦ効果には以下が含まれる。\r\n" + MinusBuff(); }
-            if (command == Database.ANTI_STUN) { return "対象に【スタン】耐性効果を付与する。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.ANTI_STUN) { return "対象に【恐怖】/【スタン】/【沈黙】/【猛毒】/【誘惑】/【凍結】/【麻痺】/【スロウ】/【暗闇】/【スリップ】耐性を付与する。\r\nこの効果は一度発動すると解除される。"; }
             if (command == Database.STANCE_OF_DEATH) { return "対象が致死ダメージを食らった場合、死亡を回避し、ライフ１で残る。\r\nこの効果は一度発動すると解除される。"; }
 
             if (command == Database.STANCE_OF_FLOW) { return "本効果が持続している間、必ず後攻をとる。\r\n\r\n（敵がメイン行動を取るまでの間、自分のメイン行動が発動する直前で行動ゲージが停止する。）\r\n\r\n本効果は３ターン持続される。"; }
@@ -3971,13 +3971,13 @@ namespace DungeonPlayer
             if (command == Database.FUTURE_VISION) { return "本効果が持続している間、それぞれの敵がインスタント行動した場合、それをカウンターする。本効果は２ターン持続される。"; }
             if (command == Database.UNKNOWN_SHOCK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【暗闇】効果を与える。本効果は３ターン持続される。"; }
 
-            if (command == Database.REFLEX_SPIRIT) { return "対象に【スタン】/【麻痺】/【凍結】耐性効果を付与する。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.REFLEX_SPIRIT) { return "対象の【恐怖】/【猛毒】/【スロウ】 / 【スリップ】を解除する。\r\nこのスキルは【恐怖】 / 【猛毒】 / 【スロウ】 / 【スリップ】状態においても発動できる。"; }
             if (command == Database.FATAL_BLOW) { return "対象を３３％の確率で死亡させる。\r\nそうでない場合、対象にクリティカルダメージを与える。"; }
 
             if (command == Database.SHARP_GLARE) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【沈黙】効果を与える。本効果は３ターン持続される。"; }
             if (command == Database.CONCUSSIVE_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、物理防御力と魔法防御力を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
-            if (command == Database.TRUST_SILENCE) { return "対象に【沈黙】/【暗闇】/【誘惑】耐性効果を付与する。\r\nこの効果は一度発動すると解除される。"; }
+            if (command == Database.TRUST_SILENCE) { return "対象の【沈黙】/【暗闇】/【誘惑】を解除する。\r\nこのスキルは【沈黙】 / 【暗闇】 / 【誘惑】状態においても発動できる。"; }
             if (command == Database.MIND_KILLING) { return "対象に" + PowerResult("力", 1.0, 100, 200) + "のＭＰダメージを与える。"; }
 
             if (command == Database.SURPRISE_ATTACK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【麻痺】効果を与える。本効果は１ターン持続される。"; }
@@ -3986,7 +3986,7 @@ namespace DungeonPlayer
             if (command == Database.PSYCHIC_WAVE) { return "対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこの魔法はDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
             if (command == Database.NOURISH_SENSE) { return "対象がライフ回復を受ける際、回復量が通常の" + PowerResult(1.3) + "になる。"; }
 
-            if (command == Database.RECOVER) { return "対象の【スタン】/【麻痺】/【凍結】を解除する。この効果は【スタン】/【麻痺】/【凍結】状態においても発動できる。"; }
+            if (command == Database.RECOVER) { return "対象の【スタン】/【麻痺】/【凍結】を解除する。\r\nこのスキルは【スタン】/【麻痺】/【凍結】状態においても発動できる。"; }
             if (command == Database.IMPULSE_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、戦闘速度と戦闘反応を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
             if (command == Database.VIOLENT_SLASH) { return "対象に" + PowerResult("力", 2.5, 0, 0) + "の物理ダメージを与える。\r\nこのスキルはカウンターされない。"; }

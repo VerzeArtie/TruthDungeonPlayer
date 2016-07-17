@@ -3913,16 +3913,16 @@ namespace DungeonPlayer
                             case Database.DUEL_DUMMY_SUBURI:
                                 if (player.ActionLabel.text == "BUFF!")
                                 {
-                                    NowPreStunning(target, 999);
+                                    //NowPreStunning(target, 999);
                                     NowStunning(player, target, 999, true);
                                     NowSilence(player, target, 999);
-                                    NowPoison(player, target, 999, true);
-                                    NowTemptation(player, target, 999);
-                                    NowParalyze(player, target, 999);
-                                    NowNoResurrection(player, target, 999);
-                                    NowSlow(player, target, 999);
-                                    NowBlind(player, target, 999);
-                                    NowSlip(player, target, 999);
+                                    //NowPoison(player, target, 999, true);
+                                    //NowTemptation(player, target, 999);
+                                    //NowParalyze(player, target, 999);
+                                    //NowNoResurrection(player, target, 999);
+                                    //NowSlow(player, target, 999);
+                                    //NowBlind(player, target, 999);
+                                    //NowSlip(player, target, 999);
 
                                     //NowBlinded(player, 999);
                                     //player.CurrentSpeedBoost = 100;
@@ -4697,7 +4697,7 @@ namespace DungeonPlayer
             }
             else if (CurrentSkillName == Database.ANTI_STUN)
             {
-                PlayerSkillAntiStun(player);
+                PlayerSkillAntiStun(player, target);
             }
             else if (CurrentSkillName == Database.STANCE_OF_DEATH)
             {
@@ -5072,19 +5072,38 @@ namespace DungeonPlayer
             //target.DeadPlayer();
         }
 
+        private void NowPreStunning(MainCharacter target, int effectTime)
+        {
+            if (target.Dead)
+            {
+                // 何もしない
+            }
+            else if (target.CurrentAntiStun > 0)
+            {
+                target.RemoveAntiStun();
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_FEAR);
+            }
+            else
+            {
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_PRESTUNNING);
+                target.CurrentPreStunning = effectTime;
+                target.ActivateBuff(target.pbPreStunning, Database.BaseResourceFolder + "PreStunning", effectTime);
+                UpdateBattleText(target.FirstName + "は恐怖に駆られた。\r\n");
+            }
+        }
+
         private void NowStunning(MainCharacter player, MainCharacter target, int effectTime, bool forceStun)
         {
             if (target.Dead)
             {
                 // 何もしない
             }
-            else if (target.CurrentReflexSpirit > 0 && !forceStun)
+            else if (target.CurrentAntiStun > 0 && !forceStun)
             {
+                target.RemoveAntiStun();
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_STUN);
-                target.RemoveReflexSpirit();
-                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeStunはtrueにしない。
             }
-            else if ((target.CheckResistStun ||CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT) || CheckResistWithItem(target, Database.POOR_JUNK_TARISMAN_STUN)) && !forceStun)
+            else if ((target.CheckResistStun || CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT) || CheckResistWithItem(target, Database.POOR_JUNK_TARISMAN_STUN)) && !forceStun)
             {
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_STUN);
                 if (player.GetType() == typeof(TruthEnemyCharacter))
@@ -5110,11 +5129,10 @@ namespace DungeonPlayer
             {
                 // 何もしない
             }
-            else if (target.CurrentTrustSilence > 0)
+            else if (target.CurrentAntiStun > 0)
             {
+                target.RemoveAntiStun();
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_SILENCE);
-                target.RemoveTrustSilence();
-                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeSilenceはtrueにしない。
             }
             else if ((target.CheckResistSilence) ||
                      (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
@@ -5139,6 +5157,11 @@ namespace DungeonPlayer
             if (target.Dead)
             {
                 // 何もしない
+            }
+            else if (target.CurrentAntiStun > 0)
+            {
+                target.RemoveAntiStun();
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_POISON);
             }
             else if ((target.CheckResistPoison) ||
                      (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
@@ -5173,11 +5196,10 @@ namespace DungeonPlayer
             {
                 // 何もしない
             }
-            else if (target.CurrentTrustSilence > 0)
+            else if (target.CurrentAntiStun > 0)
             {
+                target.RemoveAntiStun();
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_TEMPTATION);
-                target.RemoveTrustSilence();
-                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeTemptationはtrueにしない。
             }
             else if ((target.CheckResistTemptation) ||
                      (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
@@ -5203,12 +5225,10 @@ namespace DungeonPlayer
             {
                 // 何もしない
             }
-            else if (target.CurrentReflexSpirit > 0)
+            else if (target.CurrentAntiStun > 0)
             {
+                target.RemoveAntiStun();
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_FROZEN);
-                target.RemoveReflexSpirit();
-                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeFrozenはtrueにしない。
-                return false;
             }
             else if ((target.CheckResistFrozen) ||
                      (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)) ||
@@ -5238,12 +5258,10 @@ namespace DungeonPlayer
             {
                 // 何もしない
             }
-            else if (target.CurrentReflexSpirit > 0)
+            else if (target.CurrentAntiStun > 0)
             {
+                target.RemoveAntiStun();
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_PARALYZE);
-                target.RemoveReflexSpirit();
-                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeParalyzeはtrueにしない。
-                return false;
             }
             else if ((target.CheckResistParalyze) ||
                      (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)) ||
@@ -5275,6 +5293,11 @@ namespace DungeonPlayer
             {
                 // 何もしない
             }
+            else if (target.CurrentAntiStun > 0)
+            {
+                target.RemoveAntiStun();
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_SLOW);
+            }
             else if ((target.CheckResistSlow) ||
                      (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
             {
@@ -5299,11 +5322,10 @@ namespace DungeonPlayer
             {
                 // 何もしない
             }
-            else if (target.CurrentTrustSilence > 0)
+            else if (target.CurrentAntiStun > 0)
             {
+                target.RemoveAntiStun();
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_BLIND);
-                target.RemoveTrustSilence();
-                // スキル使用による耐性は剥がれた後効く可能性があるため、ここではDetectCannotBeBlindはtrueにしない。
             }
             else if ((target.CheckResistBlind) ||
                      (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
@@ -5328,6 +5350,11 @@ namespace DungeonPlayer
             if (target.Dead)
             {
                 // 何もしない
+            }
+            else if (target.CurrentAntiStun > 0)
+            {
+                target.RemoveAntiStun();
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_SLIP);
             }
             else if ((target.CheckResistSlip) ||
                      (CheckResistWithItem(target, Database.POOR_DIRTY_ANGEL_CONTRACT)))
@@ -5430,21 +5457,6 @@ namespace DungeonPlayer
                 target.CurrentBlinded = effectTime;
                 target.ActivateBuff(target.pbBlinded, Database.BaseResourceFolder + "Blinded", effectTime);
                 UpdateBattleText(target.FirstName + "は退避状態に入った。\r\n");
-            }
-        }
-
-        private void NowPreStunning(MainCharacter target, int effectTime)
-        {
-            if (target.Dead)
-            {
-                // 何もしない
-            }
-            else
-            {
-                AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_PRESTUNNING);
-                target.CurrentPreStunning = effectTime;
-                target.ActivateBuff(target.pbPreStunning, Database.BaseResourceFolder + "PreStunning", effectTime);
-                UpdateBattleText(target.FirstName + "は恐怖に駆られた。\r\n");
             }
         }
 

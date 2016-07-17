@@ -1681,15 +1681,6 @@ namespace DungeonPlayer
             PlayerBuffAbstract(player, player, 2, "FutureVision");
         }
         /// <summary>
-        /// リフレックス・スピリットのメソッド
-        /// </summary>
-        private void PlayerSkillReflexSpirit(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(158));
-            GroundOne.PlaySoundEffect("Tranquility");
-            PlayerBuffAbstract(player, player, 999, "ReflexSpirit");
-        }
-        /// <summary>
         /// シャープ・グレアのメソッド
         /// </summary>
         private void PlayerSkillSharpGlare(MainCharacter player, MainCharacter target)
@@ -1722,15 +1713,6 @@ namespace DungeonPlayer
         }
 
         /// <summary>
-        /// トラスト・サイレンスのメソッド
-        /// </summary>
-        private void PlayerSkillTrustSilence(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(160));
-            GroundOne.PlaySoundEffect("Tranquility");
-            PlayerBuffAbstract(player, player, 999, "TrustSilence");
-        }
-        /// <summary>
         /// サプライズ・アタックのメソッド
         /// </summary>
         private void PlayerSkillSurpriseAttack(MainCharacter player, MainCharacter target)
@@ -1762,6 +1744,30 @@ namespace DungeonPlayer
             double damage = PrimaryLogic.PsychicWaveValue(player, GroundOne.DuelMode);
             AbstractMagicDamage(player, target, 0, damage, 0, "WordOfPower", -1, TruthActionCommand.MagicType.None, true, CriticalType.Random);
         }
+
+        /// <summary>
+        /// リフレックス・スピリットのメソッド
+        /// </summary>
+        private void PlayerSkillReflexSpirit(MainCharacter player, MainCharacter target)
+        {
+            UpdateBattleText(player.GetCharacterSentence(158));
+            target.RemovePreStunning();
+            target.RemovePoison();
+            target.RemoveSlow();
+            target.RemoveSlip();
+        }
+
+        /// <summary>
+        /// トラスト・サイレンスのメソッド
+        /// </summary>
+        private void PlayerSkillTrustSilence(MainCharacter player, MainCharacter target)
+        {
+            UpdateBattleText(player.GetCharacterSentence(160));
+            target.RemoveSilence();
+            target.RemoveBlind();
+            target.RemoveTemptation();
+        }
+
         /// <summary>
         /// リカバーのメソッド
         /// </summary>
@@ -1772,6 +1778,7 @@ namespace DungeonPlayer
             target.RecoverParalyze();
             target.RecoverFrozen();
         }
+
         /// <summary>
         /// バイオレント・スラッシュのメソッド
         /// </summary>
@@ -1884,11 +1891,11 @@ namespace DungeonPlayer
         /// <summary>
         /// アンチ・スタンのメソッド
         /// </summary>
-        private void PlayerSkillAntiStun(MainCharacter player)
+        private void PlayerSkillAntiStun(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("AntiStun");
-            player.Target = player;
-            PlayerBuffAbstract(player, player, 999, "AntiStun");
+            player.Target = target;
+            PlayerBuffAbstract(player, target, Database.INFINITY, Database.ANTI_STUN);
         }
 
         /// <summary>

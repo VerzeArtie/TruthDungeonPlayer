@@ -1135,6 +1135,7 @@ namespace DungeonPlayer
         // 正
         public const string EFFECT_BLINDED = @"退避状態";
 
+        public const string RESIST_FEAR = @"恐怖耐性！";
         public const string RESIST_STUN = @"スタン耐性！";
         public const string RESIST_SILENCE = @"沈黙耐性！";
         public const string RESIST_POISON = @"猛毒耐性！";

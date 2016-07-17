@@ -435,10 +435,10 @@ namespace DungeonPlayer
                     target.CurrentReflexSpirit = effectTime;
                     target.ActivateBuff(target.pbReflexSpirit, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "TrustSilence":
-                    target.CurrentTrustSilence = effectTime;
-                    target.ActivateBuff(target.pbTrustSilence, Database.BaseResourceFolder + spellName, effectTime);
-                    break;
+                //case "TrustSilence":
+                //    target.CurrentTrustSilence = effectTime;
+                //    target.ActivateBuff(target.pbTrustSilence, Database.BaseResourceFolder + spellName, effectTime);
+                //    break;
 
                 case "ConcussiveHit":
                     target.CurrentConcussiveHit = effectTime;
@@ -523,10 +523,10 @@ namespace DungeonPlayer
                     player.ActivateBuff(player.pbStanceOfStanding, Database.BaseResourceFolder + spellName, effectTime);
                     break;
 
-                case "AntiStun":
-                    if (player.CurrentAntiStun <= 0)
+                case Database.ANTI_STUN:
+                    if (target.CurrentAntiStun <= 0)
                     {
-                        player.CurrentAntiStun = effectTime;
+                        target.CurrentAntiStun = effectTime;
                         target.ActivateBuff(target.pbAntiStun, Database.BaseResourceFolder + spellName, effectTime);
                         UpdateBattleText(player.GetCharacterSentence(93));
                     }

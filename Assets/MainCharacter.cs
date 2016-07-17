@@ -3480,7 +3480,7 @@ namespace DungeonPlayer
                     case 157: // FutureVision
                         return this.FirstName + "：次のターン、見切ったぜ。FutureVision！\r\n";
                     case 158: // ReflexSpirit
-                        return this.FirstName + "：スタンや麻痺はゴメンだぜ、ReflexSpirit！\r\n";
+                        return this.FirstName + "：猛毒やスロウはゴメンだぜ、ReflexSpirit！\r\n";
                     case 159: // SharpGlare
                         return this.FirstName + "：黙らせてやるぜ、SharpGlare！\r\n";
                     case 160: // TrustSilence
@@ -4160,7 +4160,7 @@ namespace DungeonPlayer
                     case 157: // FutureVision
                         return this.FirstName + "：次のターン、何もさせないわよ、FutureVision！\r\n";
                     case 158: // ReflexSpirit
-                        return this.FirstName + "：スタン系は絶対回避するわ、ReflexSpiritよ。\r\n";
+                        return this.FirstName + "：猛毒やスロウは絶治すわよ、ReflexSpirit！\r\n";
                     case 159: // SharpGlare
                         return this.FirstName + "：少し黙っててちょうだい、SharpGlareよ。\r\n";
                     case 160: // TrustSilence
@@ -4867,7 +4867,7 @@ namespace DungeonPlayer
                     case 157: // FutureVision
                         return this.FirstName + "：ボクが見きれないハズがない、FutureVision。\r\n";
                     case 158: // ReflexSpirit
-                        return this.FirstName + "：スタン系は事前回避に限ります、ReflexSpirit。\r\n";
+                        return this.FirstName + "：猛毒やスロウはボクには効きませんね、ReflexSpirit。\r\n";
                     case 159: // SharpGlare
                         return this.FirstName + "：黙っていてくれませんか、SharpGlare。\r\n";
                     case 160: // TrustSilence
