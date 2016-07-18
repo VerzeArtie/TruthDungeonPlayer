@@ -3554,19 +3554,19 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
-                {
-                    //if (player.CurrentTimeStop > 0)
-                    {
-                        UseInstantPoint(player);
-                        player.StackActivePlayer = ec1;
-                        player.StackTarget = GroundOne.MC;
-                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
-                        player.StackCommandString = Database.STRAIGHT_SMASH;
-                        player.StackActivation = true;
-                        this.NowStackInTheCommand = true;
-                    }
-                }
+                //if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                //{
+                //    //if (player.CurrentTimeStop > 0)
+                //    {
+                //        UseInstantPoint(player);
+                //        player.StackActivePlayer = ec1;
+                //        player.StackTarget = GroundOne.MC;
+                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                //        player.StackCommandString = Database.STRAIGHT_SMASH;
+                //        player.StackActivation = true;
+                //        this.NowStackInTheCommand = true;
+                //    }
+                //}
             }
             #endregion
         }
@@ -4807,7 +4807,7 @@ namespace DungeonPlayer
                     {
                         ActiveList[ii].RemoveGenseiTaima();
                         UpdateBattleText(ActiveList[ii].FirstName + "に対して退魔の効果が発動し、致死の狭間で生き残った！！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "致死回避！");
                         ActiveList[ii].CurrentLife = ActiveList[ii].MaxLife / 2;
                         UpdateLife(ActiveList[ii]);
                     }
@@ -4815,7 +4815,7 @@ namespace DungeonPlayer
                     {
                         ActiveList[ii].RemoveStanceOfDeath();
                         UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間で生き残った！！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, false, false, "致死回避！");
                         ActiveList[ii].CurrentLife = 1;
                         UpdateLife(ActiveList[ii]);
                     }
@@ -4823,7 +4823,7 @@ namespace DungeonPlayer
                     {
                         ActiveList[ii].RemoveShadowBible();
                         UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間でみなぎる生命力を感じ取った！！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "致死回避！");
                         ActiveList[ii].CurrentLife = ActiveList[ii].MaxLife;
                         UpdateLife(ActiveList[ii]);
                         NowNoResurrection(ActiveList[ii], ActiveList[ii], 999);
@@ -4832,7 +4832,7 @@ namespace DungeonPlayer
                     {
                         ActiveList[ii].RemoveAfterReviveHalf();
                         UpdateBattleText(ActiveList[ii].FirstName + "は致死の狭間で生き残った！！\r\n");
-                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "復活");
+                        AnimationDamage(0, ActiveList[ii], 0, Color.black, true, false, "致死回避！");
                         ActiveList[ii].CurrentLife = (int)(ActiveList[ii].MaxLife / 2.0f);
                         UpdateLife(ActiveList[ii]);
                     }

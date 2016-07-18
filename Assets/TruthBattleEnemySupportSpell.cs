@@ -371,7 +371,7 @@ namespace DungeonPlayer
                     target.ActivateBuff(target.pbAscensionAura, Database.BaseResourceFolder + spellName, effectTime);
                     break;
 
-                case "SeventhMagic":
+                case Database.SEVENTH_MAGIC:
                     target.CurrentSeventhMagic = effectTime;
                     target.ActivateBuff(target.pbSeventhMagic, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(150));

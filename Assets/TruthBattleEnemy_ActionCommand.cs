@@ -1341,7 +1341,7 @@ namespace DungeonPlayer
         private void PlayerSpellSeventhMagic(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("TruthVision");
-            PlayerBuffAbstract(player, target, 999, "SeventhMagic");
+            PlayerBuffAbstract(player, target, Database.INFINITY, Database.SEVENTH_MAGIC);
         }
 
         /// <summary>
