@@ -3554,19 +3554,19 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                //if (player.CurrentInstantPoint >= player.MaxInstantPoint)
-                //{
-                //    //if (player.CurrentTimeStop > 0)
-                //    {
-                //        UseInstantPoint(player);
-                //        player.StackActivePlayer = ec1;
-                //        player.StackTarget = GroundOne.MC;
-                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
-                //        player.StackCommandString = Database.NEUTRAL_SMASH;
-                //        player.StackActivation = true;
-                //        this.NowStackInTheCommand = true;
-                //    }
-                //}
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    //if (player.CurrentTimeStop > 0)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                        player.StackCommandString = Database.STRAIGHT_SMASH;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }
             }
             #endregion
         }
@@ -4680,22 +4680,22 @@ namespace DungeonPlayer
                 AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
                 return false;
             }
-            else if (player.PA == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CantBeCountered(player.CurrentSpellName)) ||
-                     player.StackPlayerAction == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
+            else if (player.PA == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CannotBeCountered(player.CurrentSpellName)) ||
+                     player.StackPlayerAction == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CannotBeCountered(player.StackCommandString)))
             {
                 UpdateBattleText(player.CurrentSpellName + "はカウンター出来ない！！！\r\n");
                 AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
                 return false;
             }
-            else if (player.PA == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CantBeCountered(player.CurrentSkillName)) ||
-                     player.StackPlayerAction == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
+            else if (player.PA == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CannotBeCountered(player.CurrentSkillName)) ||
+                     player.StackPlayerAction == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CannotBeCountered(player.StackCommandString)))
             {
                 UpdateBattleText(player.CurrentSkillName + "はカウンター出来ない！！！\r\n");
                 AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
                 return false;
             }
-            else if (player.PA == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CantBeCountered(player.CurrentArchetypeName)) ||
-                player.StackPlayerAction == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CantBeCountered(player.StackCommandString)))
+            else if (player.PA == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CannotBeCountered(player.CurrentArchetypeName)) ||
+                player.StackPlayerAction == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CannotBeCountered(player.StackCommandString)))
             {
                 UpdateBattleText(player.CurrentArchetypeName + "はカウンター出来ない！！！\r\n");
                 AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);

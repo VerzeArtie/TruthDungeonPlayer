@@ -6,10 +6,25 @@ namespace DungeonPlayer
 {
     public partial class TruthBattleEnemy : MotherForm
     {
+        private int FAIL_ACTION_WAIT = 150;
+        private int failActionTimer = 0;
         private void CheckStackInTheCommand()
         {
             if (this.NowStackInTheCommand)
             {
+                #region "カウンター失敗時のアニメーション"
+                if (failActionTimer > 0)
+                {
+                    this.failActionTimer--;
+                    return;
+                }
+                else
+                {
+                    back_nowStackAnimationName.transform.localScale = new Vector2(0.0f, 1.0f);
+                    back_nowStackAnimationBar.transform.localScale = new Vector2(0.0f, 1.0f);
+                }
+                #endregion
+
                 // UnityではUpdateから連続的にコールされてアニメーションを行うため、ここではUnityロジックでスタックインザコマンドを実装した。
                 for (int ii = 0; ii < this.ActiveList.Count; ii++)
                 {
@@ -190,8 +205,6 @@ namespace DungeonPlayer
                                         back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
                                         nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
                                         nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.NEGATE + ")";
-                                        back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
-                                        back_StackInTheCommandName[this.StackNumber].transform.localScale = new Vector2(0.0f, 1.0f);
                                         ExecStackOut(true);
                                         return;
                                     }
@@ -207,12 +220,19 @@ namespace DungeonPlayer
                                 {
                                     if (TruthActionCommand.IsDamage(actionCommand) == true)
                                     {
-                                        back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
-                                        back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
-                                        back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
-                                        nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
-                                        nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.COUNTER_ATTACK + ")";
-                                        ExecStackOut(true);
+                                        if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 113))
+                                        {
+                                            back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
+                                            back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
+                                            back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
+                                            nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
+                                            nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.COUNTER_ATTACK + ")";
+                                            ExecStackOut(true);
+                                        }
+                                        else
+                                        {
+                                            CounterFail(actionCommand);
+                                        }
                                         return;
                                     }
                                 }
@@ -222,45 +242,66 @@ namespace DungeonPlayer
                             {
                                 ActiveList[ii].RemoveStanceOfEyes();
                                 // 任意の行動に対して発動する。
-                                back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
-                                back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
-                                back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
-                                nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
-                                nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.STANCE_OF_EYES + ")";
-                                ExecStackOut(true);
+                                if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 101))
+                                {
+                                    back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
+                                    back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
+                                    back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
+                                    nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
+                                    nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.STANCE_OF_EYES + ")";
+                                    ExecStackOut(true);
+                                }
+                                else
+                                {
+                                    CounterFail(actionCommand);
+                                }
                                 return;
                             }
 
                             if (ActiveList[ii].CurrentFutureVision > 0)
                             {
                                 // 任意の行動に対して発動する。
-                                back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
-                                back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
-                                back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
-                                nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
-                                nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.FUTURE_VISION + ")";
-                                ExecStackOut(true);
+                                if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 219))
+                                {
+                                    back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
+                                    back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
+                                    back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
+                                    nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
+                                    nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.FUTURE_VISION + ")";
+                                    ExecStackOut(true);
+                                }
+                                else
+                                {
+                                    CounterFail(actionCommand);
+                                }
                                 return;
                             }
                             if (ActiveList[ii].CurrentDeepMirror == true)
                             {
                                 ActiveList[ii].CurrentDeepMirror = false;
+                                // 非ダメージ系統の場合のみ発動する。
                                 if (TruthActionCommand.IsDamage(actionCommand) == false)
                                 {
-                                    // 非ダメージ系統の場合のみ発動する。
-                                    back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
-                                    back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
-                                    back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
-                                    nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
-                                    nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.DEEP_MIRROR + ")";
-                                    ExecStackOut(true);
+                                    if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 220))
+                                    {
+                                        back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
+                                        back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
+                                        back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
+                                        nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
+                                        nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "の" + Database.DEEP_MIRROR + ")";
+                                        ExecStackOut(true);
+                                    }
+                                    else
+                                    {
+                                        CounterFail(actionCommand);
+                                    }
                                     return;
                                 }
                             }
                         }
                         #endregion
 
-                        // 各プレイヤーのスタック割り込み
+                        #region "各プレイヤーのスタック割り込み"
                         if (this.cumulativeCounter[this.StackNumber] > Database.TIMEUP_COMPUTER_INTERRUPT && CanAction(ActiveList[ii]))
                         {
                             #region "シニキア・ヴェイルハンツ"
@@ -1027,7 +1068,17 @@ namespace DungeonPlayer
                             {
                                 if (ActiveList[ii].CurrentInstantPoint >= ActiveList[ii].MaxInstantPoint)
                                 {
-                                    if (((pa == MainCharacter.PlayerAction.UseSpell) && (actionCommand == Database.SIGIL_OF_HOMURA)))
+                                    if ((pa == MainCharacter.PlayerAction.UseSkill) && TruthActionCommand.IsDamage(actionCommand))
+                                    {
+                                        UpdateBattleText(ec1.FirstName + "：『カウンターアタック』。\r\n");
+                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].StackActivePlayer = ActiveList[ii];
+                                        ActiveList[ii].StackTarget = GroundOne.MC;
+                                        ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                                        ActiveList[ii].StackCommandString = Database.COUNTER_ATTACK;
+                                        ActiveList[ii].StackActivation = true;
+                                    }
+                                    else if ((pa == MainCharacter.PlayerAction.UseSpell) && (actionCommand == Database.PROMISED_KNOWLEDGE))
                                     {
                                         UpdateBattleText(ec1.FirstName + "：『ディープ・ミラー』。\r\n");
                                         ActiveList[ii].CurrentInstantPoint = 0;
@@ -1036,15 +1087,26 @@ namespace DungeonPlayer
                                         ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
                                         ActiveList[ii].StackCommandString = Database.DEEP_MIRROR;
                                         ActiveList[ii].StackActivation = true;
-
-                                        //UpdateBattleText(ec1.FirstName + "：『スタンスオブ・アイズ』。\r\n");
+                                    }
+                                    else if (((pa == MainCharacter.PlayerAction.UseSpell) && (actionCommand == Database.WORD_OF_POWER)) ||
+                                        ((pa == MainCharacter.PlayerAction.UseSkill) && (actionCommand == Database.PSYCHIC_WAVE)))
+                                    {
+                                        //UpdateBattleText(ec1.FirstName + "：『ディープ・ミラー』。\r\n");
                                         //ActiveList[ii].CurrentInstantPoint = 0;
                                         //ActiveList[ii].StackActivePlayer = ActiveList[ii];
                                         //ActiveList[ii].StackTarget = GroundOne.MC;
-                                        //ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
-                                        //ActiveList[ii].StackCommandString = Database.STANCE_OF_EYES;
+                                        //ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                                        //ActiveList[ii].StackCommandString = Database.DEEP_MIRROR;
                                         //ActiveList[ii].StackActivation = true;
-                                        
+
+                                        UpdateBattleText(ec1.FirstName + "：『スタンスオブ・アイズ』。\r\n");
+                                        ActiveList[ii].CurrentInstantPoint = 0;
+                                        ActiveList[ii].StackActivePlayer = ActiveList[ii];
+                                        ActiveList[ii].StackTarget = GroundOne.MC;
+                                        ActiveList[ii].StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                                        ActiveList[ii].StackCommandString = Database.STANCE_OF_EYES;
+                                        ActiveList[ii].StackActivation = true;
+
                                         //UpdateBattleText(ec1.FirstName + "：『カウンターアタック』。\r\n");
                                         //ActiveList[ii].CurrentInstantPoint = 0;
                                         //ActiveList[ii].StackActivePlayer = ActiveList[ii];
@@ -1061,7 +1123,6 @@ namespace DungeonPlayer
                                         //ActiveList[ii].StackCommandString = Database.NEGATE;
                                         //ActiveList[ii].StackActivation = true;
                                     }
-
                                     else if (((pa == MainCharacter.PlayerAction.UseSkill) && (actionCommand == Database.PSYCHIC_WAVE)) ||
                                         ((pa == MainCharacter.PlayerAction.UseSkill) && (actionCommand == Database.STRAIGHT_SMASH)) ||
                                         ((pa == MainCharacter.PlayerAction.UseSkill) && (actionCommand == Database.CRUSHING_BLOW)) ||
@@ -1085,9 +1146,10 @@ namespace DungeonPlayer
                             }
                             #endregion
                         }
+                        #endregion
                     }
 
-                    // タイムウェイト更新
+                    #region "タイムウェイト更新"
                     int cumulativeCounter = 0;
                     if (activePlayer.FirstName == Database.VERZE_ARTIE ||
                         activePlayer.FirstName == Database.ENEMY_LAST_VERZE_ARTIE ||
@@ -1125,6 +1187,7 @@ namespace DungeonPlayer
                     float dx = (float)(Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]) / (float)(Database.TIMEUP_FIRST_RESPONSE);
                     back_StackInTheCommandBar[this.StackNumber].transform.localScale = new Vector2(dx, 1.0f);
                     StackInTheCommandBarText[this.StackNumber].text = (Database.TIMEUP_FIRST_RESPONSE - this.cumulativeCounter[this.StackNumber]).ToString();
+                    #endregion
                 }
                 else
                 {
@@ -1138,6 +1201,16 @@ namespace DungeonPlayer
                     StackInTheCommandEnd();
                 }
             }
+        }
+
+        private void CounterFail(string actionCommand)
+        {
+            back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
+            back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
+            back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
+            nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
+            nowStackAnimationBarText.text = actionCommand + "はカウンターできない！";
+            this.failActionTimer = FAIL_ACTION_WAIT;
         }
     }
 }

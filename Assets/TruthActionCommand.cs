@@ -2910,7 +2910,7 @@ namespace DungeonPlayer
         }
 
         // 対象のコマンドがカウンター不可能かどうかを判別
-        public static bool CantBeCountered(string command)
+        public static bool CannotBeCountered(string command)
         {
             if ((command == Database.ZETA_EXPLOSION) ||
                 (command == Database.WORD_OF_POWER) ||
@@ -3364,7 +3364,7 @@ namespace DungeonPlayer
                 return false;
             }
         }
-
+        
         // 発動タイミングを判別
         public static TimingType GetTimingType(string command)
         {
@@ -3988,7 +3988,7 @@ namespace DungeonPlayer
             if (command == Database.SURPRISE_ATTACK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【麻痺】効果を与える。本効果は１ターン持続される。"; }
             if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、ダメージを無効化し、それに付随する効果を回避する。\r\n\r\nこのスキルはカウンターされない。\r\nこの効果は３回まで累積が可能である。"; }
 
-            if (command == Database.PSYCHIC_WAVE) { return "対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこの魔法はDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
+            if (command == Database.PSYCHIC_WAVE) { return "対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこのはスキルはDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
             if (command == Database.NOURISH_SENSE) { return "対象がライフ回復を受ける際、回復量が通常の" + PowerResult(1.5) + "になる。"; }
 
             if (command == Database.RECOVER) { return "対象の【スタン】/【麻痺】/【凍結】を解除する。\r\nこのスキルは【スタン】/【麻痺】/【凍結】状態においても発動できる。"; }

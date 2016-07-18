@@ -3601,6 +3601,10 @@ namespace DungeonPlayer
                         return this.FirstName + "：・・・ッグ・・・っく・・・\r\n";
                     case 218: // インスタント不足
                         return this.FirstName + "：まだインスタントが足りねぇ・・・\r\n";
+                    case 219: // Future Visionのカウンター
+                        return this.firstName + "：見えてるぜ、カウンターだ！\r\n";
+                    case 220: // Deep Mirrorのカウンター
+                        return this.firstName + "：見えてるぜ、カウンターだ！\r\n";
                         
                     case 2001: // ポーションまたは魔法による回復時
                         return this.FirstName + "：よし、{0} 回復したぜ。";
@@ -4281,6 +4285,10 @@ namespace DungeonPlayer
                         return this.FirstName + "：・・・ご・・・ごめん・・・な・・さ・・・\r\n";
                     case 218: // インスタント不足
                         return this.FirstName + "：まだインスタント足りないわね・・・\r\n";
+                    case 219: // Future Visionのカウンター
+                        return this.firstName + "：動きは見えてるわよ、カウンターを発動するわ！\r\n";
+                    case 220: // Deep Mirrorのカウンター
+                        return this.firstName + "：動きは見えてるわよ、カウンターを発動するわ！\r\n";
 
                     case 1001: // Home Town 1 コミュニケーション済で、休む前のアイン一人を対象
                         return this.FirstName + "：今日はもう休んで、明日に備えたら？";
@@ -4988,6 +4996,10 @@ namespace DungeonPlayer
                         return this.FirstName + "：ッグ・・・セ・・・セフィ・・・ネ・・・\r\n";
                     case 218: // インスタント不足
                         return this.FirstName + "：インスタントが不足していますね。\r\n";
+                    case 219: // Future Visionのカウンター
+                        return this.firstName + "：既に見切っています、カウンターさせてもらいましょう。\r\n";
+                    case 220: // Deep Mirrorのカウンター
+                        return this.firstName + "：既に見切っています、カウンターさせてもらいましょう。\r\n";
 
                     case 2001: // ポーション回復時
                         return this.FirstName + "：{0} 回復です。";
@@ -5656,6 +5668,10 @@ namespace DungeonPlayer
                         return this.FirstName + "：・・・　ッ・・・\r\n";
                     case 218: // インスタント不足
                         return this.FirstName + "：っち・・・インスタントが足りねぇ\r\n";
+                    case 219: // Future Visionのカウンター
+                        return this.firstName + "：ラァッ！カウンター！\r\n";
+                    case 220: // Deep Mirrorのカウンター
+                        return this.firstName + "：ラァッ！カウンター！\r\n";
 
                     case 2001: // ポーションまたは魔法による回復時
                         return this.FirstName + "：{0} 回復しといたぞ。";
@@ -6637,6 +6653,10 @@ namespace DungeonPlayer
                         return this.FirstName + "の生命は完全に消滅させらた・・・\r\n";
                     case 218: // インスタント不足
                         return this.FirstName + "はインスタント値が不足している。\r\n";
+                    case 219: // Future Visionのカウンター
+                        return this.firstName + "はFutureVisionによるカウンターを発動した！\r\n";
+                    case 220: // Deep Mirrorのカウンター
+                        return this.firstName + "はDeepMirrorによるカウンターを発動した！\r\n";
 
                     case 4001: // 通常攻撃を選択
                     case 4002: // 防御を選択
