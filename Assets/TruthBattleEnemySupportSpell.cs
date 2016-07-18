@@ -518,7 +518,7 @@ namespace DungeonPlayer
                     player.ActivateBuff(player.pbCounterAttack, Database.BaseResourceFolder + spellName, effectTime);
                     break;
 
-                case "StanceOfStanding":
+                case Database.STANCE_OF_STANDING:
                     player.CurrentStanceOfStanding = effectTime;
                     player.ActivateBuff(player.pbStanceOfStanding, Database.BaseResourceFolder + spellName, effectTime);
                     break;
