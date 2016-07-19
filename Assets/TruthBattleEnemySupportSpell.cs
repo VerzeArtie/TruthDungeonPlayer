@@ -468,12 +468,14 @@ namespace DungeonPlayer
                     break;
 
                 // 自分自身が対象
-                case "StanceOfMystic":
+                case Database.STANCE_OF_MYSTIC:
                     target.CurrentStanceOfMystic = effectTime;
-                    target.CurrentStanceOfMysticValue++;
+                    target.CurrentStanceOfMysticValue = 3;
+                    target.ActivateBuff(target.pbStanceOfMystic, Database.STANCE_OF_MYSTIC, effectTime);
                     target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(168), target.FirstName));
                     break;
+
                 case "TruthVision":
                     player.CurrentTruthVision = effectTime;
                     target.ActivateBuff(target.pbTruthVision, Database.BaseResourceFolder + spellName, effectTime);

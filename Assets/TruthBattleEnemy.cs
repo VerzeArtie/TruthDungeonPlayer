@@ -5661,7 +5661,7 @@ namespace DungeonPlayer
                     }
 
                     // StaticBarrierによる効果
-                    if (target.CurrentStaticBarrier > 0)
+                    if (target.CurrentStaticBarrier > 0 && ignoreDefense == false)
                     {
                         target.CurrentStaticBarrierValue--;
                         target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
@@ -5669,7 +5669,7 @@ namespace DungeonPlayer
                     }
 
                     // StanceOfMysticによる効果
-                    if (target.CurrentStanceOfMysticValue > 0)
+                    if (target.CurrentStanceOfMysticValue > 0) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
                     {
                         target.CurrentStanceOfMysticValue--;
                         target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
@@ -5678,7 +5678,7 @@ namespace DungeonPlayer
                         return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
                     }
                     // HardestParryによる効果
-                    if (target.CurrentHardestParry)
+                    if (target.CurrentHardestParry) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
                     {
                         target.CurrentHardestParry = false;
                         damage = 0;
@@ -6586,6 +6586,17 @@ namespace DungeonPlayer
                     return true;
                 }
             }
+
+            // ImmortalRaveによる追加攻撃
+            if (player.CurrentImmortalRave > 0)
+            {
+                UpdateBattleText("炎のダンシングソードが敵へめがけて炎を発射！\r\n");
+                double immortalRaveValue = PrimaryLogic.ImmmortalRaveValue(player, GroundOne.DuelMode);
+                immortalRaveValue = DamageIsZero(immortalRaveValue, player, ignoreTargetDefense);
+                LifeDamage(immortalRaveValue, target, interval, detectCritical);
+                UpdateBattleText(String.Format(player.GetCharacterSentence(120), target.FirstName, ((int)damage).ToString()), interval);
+            }
+
             // SkyShieldによる効果
             if (target.CurrentSkyShieldValue > 0 && ignoreTargetDefense == false)
             {

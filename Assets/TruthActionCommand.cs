@@ -3841,7 +3841,7 @@ namespace DungeonPlayer
             if (command == Database.HEAT_BOOST) { return "対象の【技】パラメタを" + PowerResult("知", 0.5) + "の分だけ上昇させる。"; }
             if (command == Database.FLAME_STRIKE) { return "対象に" + PowerResult("知", 3.5, 750, 1000) + "の【火】ダメージを与える。"; }
             if (command == Database.VOLCANIC_WAVE) { return "対象に" + PowerResult("知", 4.0, 1200, 1600) + "の【火】ダメージを与える。"; }
-            if (command == Database.IMMORTAL_RAVE) { return "本効果が持続している間、任意の行動を行う度に、いずれかの敵に追加効果で" + PowerResult("知", 4.0, 1200, 1600) + "の【火】ダメージを与える。"; }
+            if (command == Database.IMMORTAL_RAVE) { return "本効果が持続している間、ダメージ源を有する魔法攻撃を行う度に、対象の敵に追加効果で" + PowerResult("知", 4.0, 1200, 1600) + "の【火】ダメージを与える。"; }
             if (command == Database.LAVA_ANNIHILATION) { return "すべての敵に" + PowerResult("知", 5.0, 7000, 8000) + "の【火】ダメージを与える。"; }
 
             if (command == Database.ICE_NEEDLE) { return "対象に" + PowerResult("知", 2.8, 30, 35) + "の【水】ダメージを与える。"; }
@@ -3986,7 +3986,7 @@ namespace DungeonPlayer
             if (command == Database.MIND_KILLING) { return "対象に" + PowerResult("力", 1.0, 100, 200) + "のＭＰダメージを与える。"; }
 
             if (command == Database.SURPRISE_ATTACK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【麻痺】効果を与える。本効果は１ターン持続される。"; }
-            if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、ダメージを無効化し、それに付随する効果を回避する。\r\n\r\nこのスキルはカウンターされない。\r\nこの効果は３回まで累積が可能である。"; }
+            if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、ダメージを無効化し、それに付随する効果を回避する。\r\n\r\nこのスキルはカウンターされない。\r\n\r\nこのスキルは一度の詠唱で３つの累積が行われる。\r\n\r\n３つ以上の累積は行えない。"; }
 
             if (command == Database.PSYCHIC_WAVE) { return "対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこのはスキルはDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
             if (command == Database.NOURISH_SENSE) { return "対象がライフ回復を受ける際、回復量が通常の" + PowerResult(1.5) + "になる。"; }

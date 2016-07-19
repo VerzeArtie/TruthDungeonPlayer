@@ -1352,7 +1352,7 @@ namespace DungeonPlayer
         private void PlayerSkillStanceOfMystic(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("GaleWind");
-            PlayerBuffAbstract(player, target, 999, "StanceOfMystic");
+            PlayerBuffAbstract(player, target, Database.INFINITY, Database.STANCE_OF_MYSTIC);
         }
 
         bool CannotResurrect = false;
