@@ -195,10 +195,11 @@ namespace DungeonPlayer
                             if (ActiveList[ii].CurrentNegate > 0)
                             {
                                 ActiveList[ii].RemoveNegate(); // カウンター成功／失敗に限らず、一度チェックが入ったら解消されるものとする（１ターンで何度も発動するのは強すぎたため）
+                                string factor = String.Empty;
                                 // 魔法系統の場合のみ発動する。
                                 if (TruthActionCommand.GetAttribute(actionCommand) == TruthActionCommand.Attribute.Spell)
                                 {
-                                    if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 104))
+                                    if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 104, ref factor))
                                     {
                                         back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
                                         back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
@@ -208,19 +209,24 @@ namespace DungeonPlayer
                                         ExecStackOut(true);
                                         return;
                                     }
+                                    else
+                                    {
+                                        CounterFail(actionCommand, factor);
+                                    }
                                 }
                             }
 
                             if (ActiveList[ii].CurrentCounterAttack > 0)
                             {
                                 ActiveList[ii].RemoveCounterAttack();
+                                string factor = String.Empty;
                                 // スキル系統かつ、ダメージ系統の場合のみ発動する。
                                 if (TruthActionCommand.GetAttribute(actionCommand) == TruthActionCommand.Attribute.NormalAttack ||
                                     TruthActionCommand.GetAttribute(actionCommand) == TruthActionCommand.Attribute.Skill)
                                 {
                                     if (TruthActionCommand.IsDamage(actionCommand) == true)
                                     {
-                                        if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 113))
+                                        if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 113, ref factor))
                                         {
                                             back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
                                             back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
@@ -231,7 +237,7 @@ namespace DungeonPlayer
                                         }
                                         else
                                         {
-                                            CounterFail(actionCommand);
+                                            CounterFail(actionCommand, factor);
                                         }
                                         return;
                                     }
@@ -241,8 +247,9 @@ namespace DungeonPlayer
                             if (ActiveList[ii].CurrentStanceOfEyes > 0)
                             {
                                 ActiveList[ii].RemoveStanceOfEyes();
+                                string factor = String.Empty;
                                 // 任意の行動に対して発動する。
-                                if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 101))
+                                if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 101, ref factor))
                                 {
                                     back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
                                     back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
@@ -253,15 +260,17 @@ namespace DungeonPlayer
                                 }
                                 else
                                 {
-                                    CounterFail(actionCommand);
+                                    CounterFail(actionCommand, factor);
                                 }
                                 return;
                             }
 
                             if (ActiveList[ii].CurrentFutureVision > 0)
                             {
+                                //ActiveList[ii].RemoveFutureVision(); // 外れない仕様で進めている。強すぎる場合は他と同様外れる仕様にする。
+                                string factor = String.Empty;
                                 // 任意の行動に対して発動する。
-                                if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 219))
+                                if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 219, ref factor))
                                 {
                                     back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
                                     back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
@@ -272,17 +281,18 @@ namespace DungeonPlayer
                                 }
                                 else
                                 {
-                                    CounterFail(actionCommand);
+                                    CounterFail(actionCommand, factor);
                                 }
                                 return;
                             }
                             if (ActiveList[ii].CurrentDeepMirror == true)
                             {
                                 ActiveList[ii].CurrentDeepMirror = false;
+                                string factor = String.Empty;
                                 // 非ダメージ系統の場合のみ発動する。
                                 if (TruthActionCommand.IsDamage(actionCommand) == false)
                                 {
-                                    if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 220))
+                                    if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber], ActiveList[ii], 220, ref factor))
                                     {
                                         back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
                                         back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
@@ -293,7 +303,7 @@ namespace DungeonPlayer
                                     }
                                     else
                                     {
-                                        CounterFail(actionCommand);
+                                        CounterFail(actionCommand, factor);
                                     }
                                     return;
                                 }
@@ -1203,13 +1213,20 @@ namespace DungeonPlayer
             }
         }
 
-        private void CounterFail(string actionCommand)
+        private void CounterFail(string actionCommand, string factor)
         {
             back_nowStackAnimationName.transform.localScale = new Vector2(1.0f, 1.0f);
             back_nowStackAnimationBar.transform.localScale = new Vector2(1.0f, 1.0f);
             back_nowStackAnimationBar.GetComponent<Image>().color = Color.black;
             nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber].FirstName + "の" + this.stackActivePlayer[this.StackNumber].StackCommandString;
-            nowStackAnimationBarText.text = actionCommand + "はカウンターできない！";
+            if (factor == String.Empty)
+            {
+                nowStackAnimationBarText.text = actionCommand + "はカウンターできない！";
+            }
+            else
+            {
+                nowStackAnimationBarText.text = factor + "によりカウンター無効化！";
+            }
             this.failActionTimer = FAIL_ACTION_WAIT;
         }
     }

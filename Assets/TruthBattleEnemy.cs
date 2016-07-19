@@ -4666,25 +4666,14 @@ namespace DungeonPlayer
         /// <param name="target">対象先ターゲット</param>
         /// <param name="messageNumber">キャラクターセリフ番号</param>
         /// <returns>カウンター成功ならTrue、失敗ならFalse</returns>
-        private bool JudgeSuccessOfCounter(MainCharacter player, MainCharacter target, int messageNumber)
+        private bool JudgeSuccessOfCounter(MainCharacter player, MainCharacter target, int messageNumber, ref string factor)
         {
-            if (target.CurrentNothingOfNothingness > 0)
-            {
-                UpdateBattleText("しかし、" + player.FirstName + "は無効化を無効にするオーラによって護られている！\r\n");
-                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
-                return false;
-            }
-            else if (player.CurrentHymnContract > 0)
-            {
-                UpdateBattleText(player.FirstName + "は天使の契約により保護されており、カウンターを無視した！\r\n");
-                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
-                return false;
-            }
-            else if (player.PA == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CannotBeCountered(player.CurrentSpellName)) ||
+            if (player.PA == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CannotBeCountered(player.CurrentSpellName)) ||
                      player.StackPlayerAction == MainCharacter.PlayerAction.UseSpell && (TruthActionCommand.CannotBeCountered(player.StackCommandString)))
             {
                 UpdateBattleText(player.CurrentSpellName + "はカウンター出来ない！！！\r\n");
                 AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                factor = String.Empty;
                 return false;
             }
             else if (player.PA == MainCharacter.PlayerAction.UseSkill && (TruthActionCommand.CannotBeCountered(player.CurrentSkillName)) ||
@@ -4692,6 +4681,7 @@ namespace DungeonPlayer
             {
                 UpdateBattleText(player.CurrentSkillName + "はカウンター出来ない！！！\r\n");
                 AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                factor = String.Empty;
                 return false;
             }
             else if (player.PA == MainCharacter.PlayerAction.Archetype && (TruthActionCommand.CannotBeCountered(player.CurrentArchetypeName)) ||
@@ -4699,12 +4689,28 @@ namespace DungeonPlayer
             {
                 UpdateBattleText(player.CurrentArchetypeName + "はカウンター出来ない！！！\r\n");
                 AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                factor = String.Empty;
+                return false;
+            }
+            else if (target.CurrentNothingOfNothingness > 0)
+            {
+                UpdateBattleText("しかし、" + player.FirstName + "は無効化を無効にするオーラによって護られている！\r\n");
+                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                factor = Database.NOTHING_OF_NOTHINGNESS;
+                return false;
+            }
+            else if (player.CurrentHymnContract > 0)
+            {
+                UpdateBattleText(player.FirstName + "は天使の契約により保護されており、カウンターを無視した！\r\n");
+                AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
+                factor = Database.HYMN_CONTRACT;
                 return false;
             }
             else
             {
                 UpdateBattleText(target.GetCharacterSentence(messageNumber));
                 AnimationDamage(0, target, 0, Color.black, false, false, Database.SUCCESS_COUNTER);
+                factor = String.Empty;
                 return true;
             }
         }
@@ -7518,34 +7524,6 @@ namespace DungeonPlayer
             }
         }
         
-        /// <summary>
-        /// 物理攻撃カウンターCounterAttackのチェックメソッド</summary>
-        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
-        private bool CheckCounterAttack(MainCharacter player, string CurrentSkillName)
-        {
-            for (int ii = 0; ii < ActiveList.Count; ii++)
-            {
-                if (DetectOpponentParty(player, ActiveList[ii]))
-                {
-                    if (ActiveList[ii].CurrentCounterAttack > 0)
-                    {
-                        if (TruthActionCommand.IsDamage(CurrentSkillName))
-                        {
-                            ActiveList[ii].RemoveCounterAttack();
-                            if (JudgeSuccessOfCounter(player, ActiveList[ii], 113))
-                            {
-                                // [警告] カウンター判定内でダメージを与えるのはいかがなものか・・・
-                                // しかし、ここに入れておく。
-                                PlayerNormalAttack(ActiveList[ii], player, 0, false, false);
-                                return true; // カウンター成功
-                            }
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
         private bool CheckDodge(MainCharacter player, MainCharacter target)
         {
             return CheckDodge(player, target, false);
@@ -7685,24 +7663,52 @@ namespace DungeonPlayer
         }
 
         /// <summary>
+        /// 物理攻撃カウンターCounterAttackのチェックメソッド</summary>
+        /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
+        private bool CheckCounterAttack(MainCharacter player, string CurrentSkillName)
+        {
+            //for (int ii = 0; ii < ActiveList.Count; ii++)
+            //{
+            //    if (DetectOpponentParty(player, ActiveList[ii]))
+            //    {
+            //        if (ActiveList[ii].CurrentCounterAttack > 0)
+            //        {
+            //            if (TruthActionCommand.IsDamage(CurrentSkillName))
+            //            {
+            //                ActiveList[ii].RemoveCounterAttack();
+            //                if (JudgeSuccessOfCounter(player, ActiveList[ii], 113))
+            //                {
+            //                    // [警告] カウンター判定内でダメージを与えるのはいかがなものか・・・
+            //                    // しかし、ここに入れておく。
+            //                    PlayerNormalAttack(ActiveList[ii], player, 0, false, false);
+            //                    return true; // カウンター成功
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            return false;
+        }
+
+        /// <summary>
         /// 魔法・スキルカウンターStanceOfEyesのチェックメソッド</summary>
         /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
         private bool CheckStanceOfEyes(MainCharacter player)
         {
-            for (int ii = 0; ii < ActiveList.Count; ii++)
-            {
-                if (DetectOpponentParty(player, ActiveList[ii]))
-                {
-                    if (ActiveList[ii].CurrentStanceOfEyes > 0)
-                    {
-                        ActiveList[ii].RemoveStanceOfEyes(); // カウンター成功／失敗に限らず、一度チェックが入ったら解消されるものとする（１ターンで何度も発動するのは強すぎたため）
-                        if (JudgeSuccessOfCounter(player, ActiveList[ii], 101))
-                        {
-                            return true; // カウンター成功
-                        }
-                    }
-                }
-            }
+            //for (int ii = 0; ii < ActiveList.Count; ii++)
+            //{
+            //    if (DetectOpponentParty(player, ActiveList[ii]))
+            //    {
+            //        if (ActiveList[ii].CurrentStanceOfEyes > 0)
+            //        {
+            //            ActiveList[ii].RemoveStanceOfEyes(); // カウンター成功／失敗に限らず、一度チェックが入ったら解消されるものとする（１ターンで何度も発動するのは強すぎたため）
+            //            if (JudgeSuccessOfCounter(player, ActiveList[ii], 101))
+            //            {
+            //                return true; // カウンター成功
+            //            }
+            //        }
+            //    }
+            //}
             return false;
         }
 
@@ -7711,20 +7717,20 @@ namespace DungeonPlayer
         /// <returns>False：カウンター無しでスルー　true：カウンター判定あり</returns>
         private bool CheckNegateCounter(MainCharacter player)
         {
-            for (int ii = 0; ii < ActiveList.Count; ii++)
-            {
-                if (DetectOpponentParty(player, ActiveList[ii]))
-                {
-                    if (ActiveList[ii].CurrentNegate > 0)
-                    {
-                        ActiveList[ii].RemoveNegate(); // カウンター成功／失敗に限らず、一度チェックが入ったら解消されるものとする（１ターンで何度も発動するのは強すぎたため）
-                        if (JudgeSuccessOfCounter(player, ActiveList[ii], 104))
-                        {
-                            return true; // カウンター成功
-                        }
-                    }
-                }
-            }
+            //for (int ii = 0; ii < ActiveList.Count; ii++)
+            //{
+            //    if (DetectOpponentParty(player, ActiveList[ii]))
+            //    {
+            //        if (ActiveList[ii].CurrentNegate > 0)
+            //        {
+            //            ActiveList[ii].RemoveNegate(); // カウンター成功／失敗に限らず、一度チェックが入ったら解消されるものとする（１ターンで何度も発動するのは強すぎたため）
+            //            if (JudgeSuccessOfCounter(player, ActiveList[ii], 104))
+            //            {
+            //                return true; // カウンター成功
+            //            }
+            //        }
+            //    }
+            //}
             return false;
         }
 
