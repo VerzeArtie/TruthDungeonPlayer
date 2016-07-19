@@ -1115,6 +1115,7 @@ namespace DungeonPlayer
         public const string FAIL_COUNTER = @"カウンターミス！";
         public const string FAIL_DEFLECTION = @"物理反射ミス！";
         public const string SUCCESS_COUNTER = @"カウンター発動！";
+        public const string RESIST_DISPEL = @"ディスペル耐性！";
 
         // 負
         public const string EFFECT_PRESTUNNING = @"恐怖";

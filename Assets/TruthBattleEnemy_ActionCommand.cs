@@ -679,6 +679,7 @@ namespace DungeonPlayer
 
             if (target.CurrentNothingOfNothingness > 0)
             {
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_DISPEL);
                 UpdateBattleText("しかし、" + target.FirstName + "は無効化を無効にするオーラによって護られている！\r\n");
                 return;
             }
@@ -783,6 +784,7 @@ namespace DungeonPlayer
 
             if (target.CurrentNothingOfNothingness > 0)
             {
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.RESIST_DISPEL);
                 UpdateBattleText("しかし、" + target.FirstName + "は無効化を無効にするオーラによって護られている！\r\n");
                 return;
             }

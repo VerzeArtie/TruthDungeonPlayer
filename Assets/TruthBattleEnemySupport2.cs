@@ -112,12 +112,21 @@ namespace DungeonPlayer
                         if (this.ActiveList[ii].StackCommandString == Database.STANCE_OF_SUDDENNESS)
                         {
                             ActiveList[ii].CurrentStanceOfSuddenness = false;
-                            ExecStackIn();
-                            nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber - 1].FirstName + "の" + this.stackActivePlayer[this.StackNumber - 1].StackCommandString;
-                            nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "のStanceOfSuddenness)";
-                            ExecStackOut(true);
-                            StackInTheCommandEnd();
-                            ExecStackOut(true);
+                            string factor = String.Empty;
+                            if (JudgeSuccessOfCounter(this.stackActivePlayer[this.StackNumber - 1], ActiveList[ii], 104, ref factor))
+                            {
+                                ExecStackIn();
+                                nowStackAnimationNameText.text = this.stackActivePlayer[this.StackNumber - 1].FirstName + "の" + this.stackActivePlayer[this.StackNumber - 1].StackCommandString;
+                                nowStackAnimationBarText.text = "失敗！(要因：" + ActiveList[ii].FirstName + "のStanceOfSuddenness)";
+                                ExecStackOut(true);
+                                StackInTheCommandEnd();
+                                ExecStackOut(true);
+                            }
+                            else
+                            {
+                                CounterFail(this.stackActivePlayer[this.StackNumber - 1].StackCommandString, factor);
+                                ExecStackOut(true);
+                            }
                             return;
                         }
                         // リカバー

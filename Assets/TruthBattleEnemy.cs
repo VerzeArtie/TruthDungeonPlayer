@@ -4692,7 +4692,7 @@ namespace DungeonPlayer
                 factor = String.Empty;
                 return false;
             }
-            else if (target.CurrentNothingOfNothingness > 0)
+            else if (player.CurrentNothingOfNothingness > 0)
             {
                 UpdateBattleText("しかし、" + player.FirstName + "は無効化を無効にするオーラによって護られている！\r\n");
                 AnimationDamage(0, target, 0, Color.black, true, false, Database.FAIL_COUNTER);
