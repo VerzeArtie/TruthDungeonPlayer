@@ -451,6 +451,9 @@ namespace DungeonPlayer
         protected int currentStaticBarrierValue = 0; // 後編追加
         protected int currentStanceOfMysticValue = 0; // 後編追加
 
+        // TimeStop
+        protected int currentTimeStopValue = 0; // add unity
+
         // 武器特有の重ねがけ効果
         protected int currentFeltusValue = 0; // 後編追加
         protected int currentJuzaPhantasmalValue = 0; // 後編追加
@@ -1172,6 +1175,14 @@ namespace DungeonPlayer
             get { return currentStanceOfMysticValue; }
             set { if (value <= 3) { currentStanceOfMysticValue = value; } }
         }
+
+        // TimeStop
+        public int CurrentTimeStopValue
+        {
+            get { return currentTimeStopValue; }
+            set { currentTimeStopValue = value; }
+        }
+
         // 武器特有の重ねがけ効果
         public int CurrentFeltusValue
         {
@@ -8530,6 +8541,7 @@ namespace DungeonPlayer
         {
             this.CurrentTimeStop = 0;
             this.CurrentTimeStopImmediate = false;
+            this.CurrentTimeStopValue = 0;
             this.DeBuff(this.pbTimeStop);
         }
         public void RemoveBloodyVengeance()
@@ -10247,6 +10259,7 @@ namespace DungeonPlayer
             CurrentDeflection = 0;
             CurrentTimeStop = 0;
             CurrentTimeStopImmediate = false;
+            CurrentTimeStopValue = 0;
 
             // s 後編追加
             // 聖＋闇

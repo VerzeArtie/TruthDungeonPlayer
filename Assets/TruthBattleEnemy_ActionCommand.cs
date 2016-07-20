@@ -1174,7 +1174,7 @@ namespace DungeonPlayer
                 {
                     player.CurrentTimeStopImmediate = true;
                 }
-                PlayerBuffAbstract(player, player, 1, "TimeStop"); // １ターン継続
+                PlayerBuffAbstract(player, player, 1, Database.TIME_STOP); // １ターン継続
             }
         }
 

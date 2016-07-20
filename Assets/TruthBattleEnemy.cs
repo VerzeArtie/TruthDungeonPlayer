@@ -114,6 +114,7 @@ namespace DungeonPlayer
         public Image back_Sandglass;
         public Text SandGlassText;
         public Image SandGlassImage;
+        public Text TimeStopText;
         public Image back_FinalBattle;
         public Text FinalBattleText;
         public Text TimeSpeedLabel;
@@ -848,13 +849,23 @@ namespace DungeonPlayer
 
             #region "タイムストップチェック"
             bool tempTimeStop = false;
+            int tempTimeStopCounter = 0;
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
                 if ((ActiveList[ii].CurrentTimeStop > 0))
                 {
-                    this.NowTimeStop = true;
-                    tempTimeStop = true;
-                    break;
+                    ActiveList[ii].CurrentTimeStopValue--;
+                    tempTimeStopCounter = ActiveList[ii].CurrentTimeStopValue;
+                    if (ActiveList[ii].CurrentTimeStopValue <= 0)
+                    {
+                        ActiveList[ii].RemoveTimeStop();
+                    }
+                    else
+                    {
+                        this.NowTimeStop = true;
+                        tempTimeStop = true;
+                        break;
+                    }
                 }
             }
 
@@ -862,12 +873,13 @@ namespace DungeonPlayer
             {
                 this.NowTimeStop = false;
             }
-            if ((this.NowTimeStop == true) && (cam.backgroundColor == UnityColor.GhostWhite))
+            if ((this.NowTimeStop == true) && (this.Background.GetComponent<Image>().color == Color.white))
             {
-                cam.backgroundColor = Color.black;
+                this.Background.GetComponent<Image>().color = Color.black;
                 this.labelBattleTurn.color = Color.white;
                 this.TimeSpeedLabel.color = Color.white;
                 this.lblTimerCount.color = Color.white;
+                this.TimeStopText.gameObject.SetActive(true);
                 for (int ii = 0; ii < ActiveList.Count; ii++)
                 {
                     ActiveList[ii].labelName.color = Color.white;
@@ -878,7 +890,7 @@ namespace DungeonPlayer
                     ActiveList[ii].BuffPanel.GetComponent<Image>().color = Color.black;
                 }
             }
-            if ((this.NowTimeStop == false) && (cam.backgroundColor == Color.black))
+            if ((this.NowTimeStop == false) && (this.Background.GetComponent<Image>().color == Color.black))
             {
                 ExecPhaseElement(MethodType.TimeStopEnd, null);
             }
@@ -893,22 +905,30 @@ namespace DungeonPlayer
             if (this.NowStackInTheCommand) { return; } // スタックインザコマンド発動中は停止させる。
             #endregion
 
-            this.BattleTimeCounter++; // メイン戦闘タイマーカウント更新
-            #region "Bystander専用"
-            int currentTimerCount = this.BattleTimeCounter;
-            if (BattleTurnCount != 0)
+            #region "ターン砂時計"
+            if (this.NowTimeStop == false)
             {
-                double currentTime = (Database.BASE_TIMER_BAR_LENGTH - (double)currentTimerCount) / (Database.BASE_TIMER_BAR_LENGTH) * 5.0f;
-                lblTimerCount.text = currentTime.ToString("0.00");
-            }
-            const int DivNum = 32;
-            for (int ii = 0; ii < 8; ii++)
-            {
-                if (DivNum * ii <= this.BattleTimeCounter && this.BattleTimeCounter < DivNum * (ii + 1))
+                this.BattleTimeCounter++; // メイン戦闘タイマーカウント更新
+                // Bystander専用
+                int currentTimerCount = this.BattleTimeCounter;
+                if (BattleTurnCount != 0)
                 {
-                    pbSandglass.sprite = this.imageSandglass[ii];
-                    break;
+                    double currentTime = (Database.BASE_TIMER_BAR_LENGTH - (double)currentTimerCount) / (Database.BASE_TIMER_BAR_LENGTH) * 5.0f;
+                    lblTimerCount.text = currentTime.ToString("0.00");
                 }
+                const int DivNum = 32;
+                for (int ii = 0; ii < 8; ii++)
+                {
+                    if (DivNum * ii <= this.BattleTimeCounter && this.BattleTimeCounter < DivNum * (ii + 1))
+                    {
+                        pbSandglass.sprite = this.imageSandglass[ii];
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                this.TimeStopText.text = tempTimeStopCounter.ToString();
             }
             #endregion
 
@@ -3822,7 +3842,8 @@ namespace DungeonPlayer
                 ActiveList[ii].ActionCommandStackTarget.Clear();
             }
 
-            this.cam.backgroundColor = UnityColor.GhostWhite;
+            this.Background.GetComponent<Image>().color = UnityColor.White;
+            this.TimeStopText.gameObject.SetActive(false);
             this.labelBattleTurn.color = Color.black;
             this.TimeSpeedLabel.color = Color.black;
             this.lblTimerCount.color = Color.black;
@@ -6985,28 +7006,7 @@ namespace DungeonPlayer
         private void UpdateLife(MainCharacter player, double damage, bool plusValue, bool animationDamage, int interval, bool critical)
         {
             UpdateLife(player);
-            // after
-            //if (player.labelLife != null)
-            //{
-            //    player.labelLife.Text = player.CurrentLife.ToString();
-            //    if (player.CurrentLife >= player.MaxLife)
-            //    {
-            //        player.labelLife.ForeColor = Color.Green;
-            //        if (this.NowTimeStop)
-            //        {
-            //            player.labelLife.ForeColor = Color.LightGreen;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        player.labelLife.ForeColor = Color.Black;
-            //        if (this.NowTimeStop)
-            //        {
-            //            player.labelLife.ForeColor = Color.White;
-            //        }
-            //    }
-            //    player.labelLife.Update();
-            //}
+
             if (animationDamage)
             {
                 Color color = Color.black;
@@ -7035,6 +7035,27 @@ namespace DungeonPlayer
             if (player.meterCurrentLifePoint != null)
             {
                 player.meterCurrentLifePoint.rectTransform.localScale = new Vector2(dx, 1.0f);
+            }
+
+            // 色付け
+            if (player.labelCurrentLifePoint != null)
+            {
+                if (player.CurrentLife >= player.MaxLife)
+                {
+                    player.labelCurrentLifePoint.color = Color.green;
+                    if (this.NowTimeStop)
+                    {
+                        player.labelCurrentLifePoint.color = UnityColor.Lightgreen;
+                    }
+                }
+                else
+                {
+                    player.labelCurrentLifePoint.color = Color.black;
+                    if (this.NowTimeStop)
+                    {
+                        player.labelCurrentLifePoint.color = Color.white;
+                    }
+                }
             }
         }
 
