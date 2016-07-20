@@ -1483,30 +1483,30 @@ namespace DungeonPlayer
         private void PlayerSkillSoulExecution(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(188), 1000);
-            bool alreadyTruthVision = false;
+            //bool alreadyTruthVision = false;
             if (player.CurrentTruthVision <= 0)
             {
                 PlayerSkillTruthVision(player, player);
             }
-            else
-            {
-                alreadyTruthVision = true;
-            }
+            //else
+            //{
+            //    alreadyTruthVision = true;
+            //}
 
+            int[] interval = { 10, 9, 8, 7, 6, 5, 4, 3, 30, 0 };
+            int[] sentence = { 189, 190, 191, 192, 193, 194, 195, 196, 197, 198 };
+            double[] damageMag = { 1.0f, 1.1f, 1.2f, 1.3f, 1.5f, 1.7f, 1.9f, 2.2f, 2.5f, 3.0f }; // ; damageMag += ii * 0.2f; if (ii == 9) damageMag += 3.0f;
             for (int ii = 0; ii < 10; ii++)
             {
                 string soundName = "Hit01"; if (ii == 9) soundName = "Catastrophe";
-                int[] interval = { 10, 9, 8, 7, 6, 5, 4, 3, 50, 0 };
-                int[] sentence = { 189, 190, 191, 192, 193, 194, 195, 196, 197, 198 };
-                double[] damageMag = { 1.0f, 1.1f, 1.2f, 1.3f, 1.5f, 1.7f, 1.9f, 2.2f, 2.5f, 3.0f }; // ; damageMag += ii * 0.2f; if (ii == 9) damageMag += 3.0f;
                 PlayerNormalAttack(player, target, damageMag[ii], 0, false, false, 0, interval[ii], soundName, sentence[ii], false, CriticalType.Random);
             }
 
-            if (alreadyTruthVision == false)
-            {
-                player.CurrentTruthVision = 0;
-                player.DeBuff(player.pbTruthVision);
-            }
+            //if (alreadyTruthVision == false)
+            //{
+            //    player.CurrentTruthVision = 0;
+            //    player.DeBuff(player.pbTruthVision);
+            //}
         }
 
 

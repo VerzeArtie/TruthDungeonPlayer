@@ -5637,6 +5637,16 @@ namespace DungeonPlayer
                         }
                     }
 
+                    // StanceOfMysticによる効果
+                    if (target.CurrentStanceOfMysticValue > 0) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
+                    {
+                        target.CurrentStanceOfMysticValue--;
+                        target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
+                        damage = 0;
+                        AnimationDamage(0, target, 0, Color.black, false, false, Database.SUCCESS_AVOID);
+                        return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
+                    }
+
                     // デフレクション効果はクリティカル値も反映させる
                     // デフレクションによる物理攻撃反射
                     if (skipCounterPhase)
@@ -5668,15 +5678,6 @@ namespace DungeonPlayer
                         damage = damage * 0.5f;
                     }
 
-                    // StanceOfMysticによる効果
-                    if (target.CurrentStanceOfMysticValue > 0) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
-                    {
-                        target.CurrentStanceOfMysticValue--;
-                        target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
-                        damage = 0;
-                        LifeDamage(damage, target, interval, false);
-                        return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
-                    }
                     // HardestParryによる効果
                     if (target.CurrentHardestParry) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
                     {
@@ -6566,6 +6567,16 @@ namespace DungeonPlayer
                 GroundOne.PlaySoundEffect(soundName);
             }
 
+            // StanceOfMysticによる効果
+            if (target.CurrentStanceOfMysticValue > 0) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
+            {
+                target.CurrentStanceOfMysticValue--;
+                target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
+                damage = 0;
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.SUCCESS_AVOID);
+                return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
+            }
+
             // MirrorImageによる効果
             if (magicType == TruthActionCommand.MagicType.Force)
             {
@@ -6610,15 +6621,6 @@ namespace DungeonPlayer
                 target.CurrentStaticBarrierValue--;
                 target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                 damage = damage * 0.5f;
-            }
-            // StanceOfMysticによる効果
-            if (target.CurrentStanceOfMysticValue > 0) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
-            {
-                target.CurrentStanceOfMysticValue--;
-                target.ChangeStanceOfMysticStatus(target.CurrentStanceOfMystic);
-                damage = 0;
-                LifeDamage(damage, target, interval, false);
-                return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
             }
             // HardestParryによる効果
             if (target.CurrentHardestParry) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。

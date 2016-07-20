@@ -3986,7 +3986,7 @@ namespace DungeonPlayer
             if (command == Database.MIND_KILLING) { return "対象に" + PowerResult("力", 1.0, 100, 200) + "のＭＰダメージを与える。"; }
 
             if (command == Database.SURPRISE_ATTACK) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。加えて【麻痺】効果を与える。本効果は１ターン持続される。"; }
-            if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、ダメージを無効化し、それに付随する効果を回避する。\r\n\r\nこのスキルはカウンターされない。\r\n\r\nこのスキルは一度の詠唱で３つの累積が行われる。\r\n\r\n３つ以上の累積は行えない。"; }
+            if (command == Database.STANCE_OF_MYSTIC) { return "対象にダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、回避する（ダメージを無効化し、それに付随する効果を無効にする）\r\n\r\nこのスキルはカウンターされない。\r\n\r\nこのスキルは一度の詠唱で３つの累積が行われる。\r\n\r\n３つ以上の累積は行えない。"; }
 
             if (command == Database.PSYCHIC_WAVE) { return "対象の防御を無視した上で、対象に" + PowerResult("知", 2.0, 0, 0) + "のダメージを与える。\r\nこのスキルは魔法ダメージとして扱われる。\r\nこのはスキルはDeflectionの対象とならない。\r\nこのスキルはカウンターされない。"; }
             if (command == Database.NOURISH_SENSE) { return "対象がライフ回復を受ける際、回復量が通常の" + PowerResult(1.5) + "になる。"; }
@@ -4001,7 +4001,7 @@ namespace DungeonPlayer
             if (command == Database.HARDEST_PARRY) { return "対象のインスタント行動がダメージ源を有している場合、ダメージを無効化し、それに付随する効果を回避する。"; }
 
             if (command == Database.STANCE_OF_SUDDENNESS) { return "対象のインスタント行動を打ち消す。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
-            if (command == Database.SOUL_EXECUTION) { return "対象に《力 ｘ 攻撃倍率》の物理ダメージをTruthVisionがかかった状態として１０回連続で与える。\r\n\r\n攻撃倍率は以下の通りである。\r\n１撃：1.0倍　２撃：1.1倍　３撃：1.2倍　４撃：1.3倍　５撃：1.5倍　６撃：1.7倍　７撃：1.9倍　８撃：2.2倍　９撃：2.5倍　１０撃：3.0倍"; }
+            if (command == Database.SOUL_EXECUTION) { return "自分自身にTruthVisionのBuffを付与する。その上で、対象に《力 ｘ 攻撃倍率》の物理ダメージを１０回連続で与える。\r\n\r\n攻撃倍率は以下の通りである。\r\n１撃：1.0倍　２撃：1.1倍　３撃：1.2倍　４撃：1.3倍　５撃：1.5倍　６撃：1.7倍　７撃：1.9倍　８撃：2.2倍　９撃：2.5倍　１０撃：3.0倍"; }
 
             // SOUL_EXECUTIONはダメージ計算値を出さないと駄目。
 
