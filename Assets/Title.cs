@@ -187,7 +187,7 @@ namespace DungeonPlayer
             GroundOne.MC.RisingAura = true;
             GroundOne.MC.RumbleShout = true;
             GroundOne.MC.OnslaughtHit = true;
-            GroundOne.MC.SmoothingMove = true;
+            GroundOne.MC.ColorlessMove = true;
             GroundOne.MC.AscensionAura = true;
             GroundOne.MC.FutureVision = true;
             GroundOne.MC.UnknownShock = true;
@@ -348,7 +348,7 @@ namespace DungeonPlayer
                 GroundOne.SC.RisingAura = true;
                 GroundOne.SC.RumbleShout = true;
                 GroundOne.SC.OnslaughtHit = true;
-                GroundOne.SC.SmoothingMove = true;
+                GroundOne.SC.ColorlessMove = true;
                 GroundOne.SC.AscensionAura = true;
                 GroundOne.SC.FutureVision = true;
                 GroundOne.SC.UnknownShock = true;
@@ -510,7 +510,7 @@ namespace DungeonPlayer
                 GroundOne.TC.RisingAura = true;
                 GroundOne.TC.RumbleShout = true;
                 GroundOne.TC.OnslaughtHit = true;
-                GroundOne.TC.SmoothingMove = true;
+                GroundOne.TC.ColorlessMove = true;
                 GroundOne.TC.AscensionAura = true;
                 GroundOne.TC.FutureVision = true;
                 GroundOne.TC.UnknownShock = true;

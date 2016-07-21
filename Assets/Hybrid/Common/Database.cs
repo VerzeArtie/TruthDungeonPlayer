@@ -512,8 +512,8 @@ namespace DungeonPlayer
         public const string ONSLAUGHT_HIT_JP = @"オンスロート・ヒット";
 
         // [動　無心]
-        public const string SMOOTHING_MOVE = @"SmoothingMove";
-        public const string SMOOTHING_MOVE_JP = @"スムージング・ムーブ";
+        public const string COLORLESS_MOVE = @"ColorlessMove";
+        public const string COLORLESS_MOVE_JP = @"カラレス・ムーブ";
         public const string ASCENSION_AURA = @"AscensionAura";
         public const string ASCENSION_AURA_JP = @"アセンション・オーラ";
 
@@ -612,7 +612,7 @@ namespace DungeonPlayer
         public const string ITEMCOMMAND_SHINING_AETHER = @"ShiningAether";
         public const string ITEMCOMMAND_BLACK_ELIXIR = @"BlackElixir";
         public const string ITEMCOMMAND_ELEMENTAL_SEAL = @"ElementalSeal";
-        public const string ITEMCOMMAND_COLORESS_ANTIDOTE = @"ColoressAntidote";
+        public const string ITEMCOMMAND_COLORLESS_ANTIDOTE = @"ColorlessAntidote";
         #endregion
 
         #region "魔法消費コスト"
@@ -796,7 +796,7 @@ namespace DungeonPlayer
         public static int ONSLAUGHT_HIT_COST = 15;
 
         // [動　無心]
-        public static int SMOOTHING_MOVE_COST = 5;
+        public static int COLORLESS_MOVE_COST = 10;
         public static int ASCENSION_AURA_COST = 15;
 
         // [静　柔]
@@ -1180,7 +1180,7 @@ namespace DungeonPlayer
         public const string BUFF_SHINING_AETHER = @"元核スキル発動可／全ダメージ無効";
         public const string BUFF_BLACK_ELIXIR = @"最大ライフ増強／ライフダウン耐性";
         public const string BUFF_ELEMENTAL_SEAL = @"負の影響耐性";
-        public const string BUFF_COLORESS_ANTIDOTE = @"デバフ耐性";
+        public const string BUFF_COLORLESS_ANTIDOTE = @"デバフ耐性";
 
         public const string BUFF_ICHINARU_HOMURA = @"毎ターン、焔ダメージ";
         public const string BUFF_ABYSS_FIRE = @"物理攻撃か魔法攻撃を行う度に、アビスダメージ";
@@ -2091,7 +2091,7 @@ namespace DungeonPlayer
         public const string RARE_ZETTAI_STAMINAUP = @"確約の体力増強剤";
         public const string RARE_BLACK_ELIXIR = @"ブラック・エリクシール";
         public const string RARE_ZEPHER_BREATH = @"ゼフィール・ブレス";
-        public const string RARE_COLORESS_ANTIDOTE = @"カラレス・アンチドーテ";
+        public const string RARE_COLORLESS_ANTIDOTE = @"カラレス・アンチドーテ";
 
         #endregion
         #region "後編、ラナのポーション店５階"
@@ -2522,7 +2522,7 @@ namespace DungeonPlayer
 
         // ヴェルゼ・アーティ最終装備
         public const string LEGENDARY_TAU_WHITE_SILVER_SWORD = @"[τ] White Silver Sword";
-        public const string EPIC_COLORESS_ETERNAL_BREAKER = @"【新相】エターナル・ブレイカー";
+        public const string EPIC_COLORLESS_ETERNAL_BREAKER = @"【新相】エターナル・ブレイカー";
         public const string LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR = @"[λ] Black Aerial Armor";
         public const string LEGENDARY_EPSIRON_HEAVENLY_SKY_WING = @"[ε] Heavenly Sky Wing";
         public const string LEGENDARY_SEFINE_HYMNUS_RING = @"【永遠】セフィーネの腕輪";

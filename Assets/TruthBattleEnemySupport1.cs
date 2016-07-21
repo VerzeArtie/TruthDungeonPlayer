@@ -4807,9 +4807,9 @@ namespace DungeonPlayer
                 PlayerSkillOnslaughtHit(player, target);
             }
             // 動＋無心
-            else if (CurrentSkillName == Database.SMOOTHING_MOVE)
+            else if (CurrentSkillName == Database.COLORLESS_MOVE)
             {
-                PlayerSkillSmoothingMove(player, target);
+                PlayerSkillColorlessMove(player, target);
             }
             else if (CurrentSkillName == Database.ASCENSION_AURA)
             {

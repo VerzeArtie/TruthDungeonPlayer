@@ -1039,13 +1039,13 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case Database.RARE_COLORESS_ANTIDOTE:
+                case Database.RARE_COLORLESS_ANTIDOTE:
                     if (this.onlyUseItem)
                     {
                         player.DeleteBackPack(backpackData, 1, currentNumber);
                         player.RemoveDebuffParam();
-                        player.CurrentColoressAntidote = Database.INFINITY;
-                        player.ActivateBuff(player.pbColoressAntidote, Database.BaseResourceFolder + Database.ITEMCOMMAND_COLORESS_ANTIDOTE, Database.INFINITY);
+                        player.CurrentColorlessAntidote = Database.INFINITY;
+                        player.ActivateBuff(player.pbColorlessAntidote, Database.BaseResourceFolder + Database.ITEMCOMMAND_COLORLESS_ANTIDOTE, Database.INFINITY);
                     }
                     else
                     {

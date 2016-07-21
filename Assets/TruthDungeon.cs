@@ -10254,7 +10254,7 @@ namespace DungeonPlayer
                         UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 86:
-                        GroundOne.WE.TruthTreasure430 = GetTreasure(Database.RARE_COLORESS_ANTIDOTE);
+                        GroundOne.WE.TruthTreasure430 = GetTreasure(Database.RARE_COLORLESS_ANTIDOTE);
                         UpdateFieldElement(this.Player.transform.position);
                         return true;
                     case 87:

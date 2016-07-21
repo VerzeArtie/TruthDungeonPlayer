@@ -37536,7 +37536,7 @@ namespace DungeonPlayer
             GroundOne.TC.OneImmunity = true;
             GroundOne.TC.CircleSlash = true;
             GroundOne.TC.OuterInspiration = true;
-            GroundOne.TC.SmoothingMove = true;
+            GroundOne.TC.ColorlessMove = true;
             GroundOne.TC.WordOfMalice = true;
             GroundOne.TC.EnrageBlast = true;
             GroundOne.TC.SwiftStep = true;

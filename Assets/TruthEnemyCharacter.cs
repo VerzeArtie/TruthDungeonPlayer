@@ -3149,7 +3149,7 @@ namespace DungeonPlayer
                         if (this.CurrentSwiftStep > 0) { commands.Remove(Database.SWIFT_STEP); }
                         if (this.CurrentVigorSense > 0) { commands.Remove(Database.VIGOR_SENSE); }
                         if (this.CurrentRisingAura > 0) { commands.Remove(Database.RISING_AURA); }
-                        if (this.CurrentSmoothingMove > 0) { commands.Remove(Database.SMOOTHING_MOVE); }
+                        if (this.CurrentColorlessMove > 0) { commands.Remove(Database.COLORLESS_MOVE); }
                         if (this.CurrentAscensionAura > 0) { commands.Remove(Database.ASCENSION_AURA); }
                         if (this.CurrentFutureVision > 0) { commands.Remove(Database.FUTURE_VISION); }
                         //if (this.CurrentReflexSpirit > 0) { commands.Remove(Database.REFLEX_SPIRIT); } // 既に除外されている。
@@ -4217,13 +4217,13 @@ namespace DungeonPlayer
                     {
                         SetupActionCommand(this, this, PlayerAction.UseSpell, Database.PROTECTION);
                     }
-                    else if (this.CurrentShadowPact <= 0)
+                    else if (this.CurrentExaltedField <= 0)
                     {
-                        SetupActionCommand(this, this, PlayerAction.UseSpell, Database.SHADOW_PACT);
+                        SetupActionCommand(this, target, PlayerAction.UseSpell, Database.EXALTED_FIELD);
                     }
                     else
                     {
-                        SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
+                        SetupActionCommand(this, target, PlayerAction.UseSpell, Database.FIRE_BALL);
                     }
                     return;
 
@@ -6750,9 +6750,9 @@ namespace DungeonPlayer
 
                 #region "ダミー素振り君"
                 case Database.DUEL_DUMMY_SUBURI:
-                    this.baseStrength = 1;
-                    this.baseAgility = 1;
-                    this.baseIntelligence = 1;
+                    this.baseStrength = 100;
+                    this.baseAgility = 111;
+                    this.baseIntelligence = 1000;
                     this.baseStamina = 9999;
                     this.baseMind = 2;
                     this.experience = 0;

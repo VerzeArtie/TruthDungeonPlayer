@@ -512,7 +512,7 @@ namespace DungeonPlayer
         {
             get
             {
-                if (this.CurrentColoressAntidote > 0) return true;
+                if (this.CurrentColorlessAntidote > 0) return true;
                 return false;
             }
         }
@@ -520,7 +520,7 @@ namespace DungeonPlayer
         {
             get
             {
-                if (this.CurrentColoressAntidote > 0) return true;
+                if (this.CurrentColorlessAntidote > 0) return true;
                 return false;
             }
         }
@@ -528,7 +528,7 @@ namespace DungeonPlayer
         {
             get
             {
-                if (this.CurrentColoressAntidote > 0) return true;
+                if (this.CurrentColorlessAntidote > 0) return true;
                 return false;
             }
         }
@@ -536,7 +536,7 @@ namespace DungeonPlayer
         {
             get
             {
-                if (this.CurrentColoressAntidote > 0) return true;
+                if (this.CurrentColorlessAntidote > 0) return true;
                 return false;
             }
         }
@@ -544,7 +544,7 @@ namespace DungeonPlayer
         {
             get
             {
-                if (this.CurrentColoressAntidote > 0) return true;
+                if (this.CurrentColorlessAntidote > 0) return true;
                 return false;
             }
         }
@@ -552,7 +552,7 @@ namespace DungeonPlayer
         {
             get
             {
-                if (this.CurrentColoressAntidote > 0) return true;
+                if (this.CurrentColorlessAntidote > 0) return true;
                 return false;
             }
         }
@@ -560,7 +560,7 @@ namespace DungeonPlayer
         {
             get
             {
-                if (this.CurrentColoressAntidote > 0) return true;
+                if (this.CurrentColorlessAntidote > 0) return true;
                 return false;
             }
         }
@@ -784,7 +784,7 @@ namespace DungeonPlayer
         // 動＋心眼
         public int CurrentOnslaughtHit = 0;
         // 動＋無心
-        public int CurrentSmoothingMove = 0;
+        public int CurrentColorlessMove = 0;
         public int CurrentAscensionAura = 0;
         // 静＋柔
         public int CurrentFutureVision = 0;
@@ -906,7 +906,7 @@ namespace DungeonPlayer
         public int CurrentShiningAether = 0;
         public int CurrentBlackElixir = 0;
         public int CurrentElementalSeal = 0;
-        public int CurrentColoressAntidote = 0;
+        public int CurrentColorlessAntidote = 0;
 
         // 最終戦ライフカウント
         public int CurrentLifeCount = 0;
@@ -1640,7 +1640,7 @@ namespace DungeonPlayer
         public TruthImage pbSwiftStep = null;
         public TruthImage pbVigorSense = null;
         public TruthImage pbOnslaughtHit = null;
-        public TruthImage pbSmoothingMove = null;
+        public TruthImage pbColorlessMove = null;
         public TruthImage pbFutureVision = null;
         public TruthImage pbReflexSpirit = null;
         public TruthImage pbConcussiveHit = null;
@@ -1666,7 +1666,7 @@ namespace DungeonPlayer
         public TruthImage pbShiningAether = null;
         public TruthImage pbBlackElixir = null;
         public TruthImage pbElementalSeal = null;
-        public TruthImage pbColoressAntidote = null;
+        public TruthImage pbColorlessAntidote = null;
         // 最終戦ライフカウント
         public TruthImage pbLifeCount = null;
         // ヴェルゼ最終戦カオティックスキーマ
@@ -2459,11 +2459,11 @@ namespace DungeonPlayer
         }
 
         // 動＋無心
-        public bool smoothingMove = false;
-        public bool SmoothingMove
+        public bool colorlessMove = false;
+        public bool ColorlessMove
         {
-            get { return smoothingMove; }
-            set { smoothingMove = value; }
+            get { return colorlessMove; }
+            set { colorlessMove = value; }
         }
         public bool ascensionAura = false;
         public bool AscensionAura
@@ -3486,8 +3486,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：コレでも食らいな、CircleSlash！\r\n";
                     case 155: // RumbleShout
                         return this.FirstName + "：どこ見てる、コッチだ！\r\n";
-                    case 156: // SmoothingMove
-                        return this.FirstName + "：スライド式戦闘法、SmoothingMove！\r\n";
+                    case 156: // ColorlessMove
+                        return this.FirstName + "：ゼロ式戦闘法、ColorlessMove！\r\n";
                     case 157: // FutureVision
                         return this.FirstName + "：次のターン、見切ったぜ。FutureVision！\r\n";
                     case 158: // ReflexSpirit
@@ -4170,8 +4170,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：みんな邪魔よ、CircleSlash！\r\n";
                     case 155: // RumbleShout
                         return this.FirstName + "：どこ見てんのよ！コッチよ！\r\n";
-                    case 156: // SmoothingMove
-                        return this.FirstName + "：流れるように攻められるわ、SmoothingMove！\r\n";
+                    case 156: // ColorlessMove
+                        return this.FirstName + "：ゼロ式の戦闘スタイルに変更するわ、ColorlessMove！\r\n";
                     case 157: // FutureVision
                         return this.FirstName + "：次のターン、何もさせないわよ、FutureVision！\r\n";
                     case 158: // ReflexSpirit
@@ -4881,8 +4881,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：邪魔ですねどいてください、CircleSlash。\r\n";
                     case 155: // RumbleShout
                         return this.FirstName + "：どこを見てるんですか？コチラです。\r\n";
-                    case 156: // SmoothingMove
-                        return this.FirstName + "：ッククク、ほぼ無限コンボです、SmoothingMove。\r\n";
+                    case 156: // ColorlessMove
+                        return this.FirstName + "：ッククク、このコンボを理解できないようですね。見せてあげましょう、ColorlessMove。\r\n";
                     case 157: // FutureVision
                         return this.FirstName + "：ボクが見きれないハズがない、FutureVision。\r\n";
                     case 158: // ReflexSpirit
@@ -5553,8 +5553,8 @@ namespace DungeonPlayer
                         return this.FirstName + "：サークル！\r\n";
                     case 155: // RumbleShout
                         return this.FirstName + "：コッチだ、オラァ！\r\n";
-                    case 156: // SmoothingMove
-                        return this.FirstName + "：スムージン！\r\n";
+                    case 156: // ColorlessMove
+                        return this.FirstName + "：カラム！\r\n";
                     case 157: // FutureVision
                         return this.FirstName + "：フューチャーヴィ！\r\n";
                     case 158: // ReflexSpirit
@@ -6538,8 +6538,8 @@ namespace DungeonPlayer
                         return this.FirstName + "はCircleSlashを繰り出した！\r\n";
                     case 155: // RumbleShout
                         return this.FirstName + "はRumbleShoutを繰り出した！\r\n";
-                    case 156: // SmoothingMove
-                        return this.FirstName + "はSmoothingMoveを繰り出した！\r\n";
+                    case 156: // ColorlessMove
+                        return this.FirstName + "はColorlessMoveを繰り出した！\r\n";
                     case 157: // FutureVision
                         return this.FirstName + "はFutureVisionを繰り出した！\r\n";
                     case 158: // ReflexSpirit
@@ -8837,10 +8837,10 @@ namespace DungeonPlayer
             this.CurrentOnslaughtHitValue = 0;
             this.DeBuff(this.pbOnslaughtHit);
         }
-        public void RemoveSmoothingMove()
+        public void RemoveColorlessMove()
         {
-            this.CurrentSmoothingMove = 0;
-            this.DeBuff(this.pbSmoothingMove);
+            this.CurrentColorlessMove = 0;
+            this.DeBuff(this.pbColorlessMove);
         }
         public void RemoveAscensionAura()
         {
@@ -9371,10 +9371,10 @@ namespace DungeonPlayer
             this.CurrentElementalSeal = 0;
             this.DeBuff(this.pbElementalSeal);
         }
-        public void RemoveColoressAntidote()
+        public void RemoveColorlessAntidote()
         {
-            this.CurrentColoressAntidote = 0;
-            this.DeBuff(this.pbColoressAntidote);
+            this.CurrentColorlessAntidote = 0;
+            this.DeBuff(this.pbColorlessAntidote);
         }
         public void RemoveLifeCount()
         {
@@ -9800,7 +9800,7 @@ namespace DungeonPlayer
                 // 動＋心眼
                 AbstractCountDownBuff(pbOnslaughtHit, ref CurrentOnslaughtHit, ref currentOnslaughtHitValue);
                 // 動＋無心
-                AbstractCountDownBuff(pbSmoothingMove, ref CurrentSmoothingMove);
+                AbstractCountDownBuff(pbColorlessMove, ref CurrentColorlessMove);
                 AbstractCountDownBuff(pbAscensionAura, ref CurrentAscensionAura);
                 // 静＋柔
                 AbstractCountDownBuff(pbFutureVision, ref CurrentFutureVision);
@@ -9840,7 +9840,7 @@ namespace DungeonPlayer
                 AbstractCountDownBuff(pbShiningAether, ref CurrentShiningAether);
                 AbstractCountDownBuff(pbBlackElixir, ref CurrentBlackElixir, ref currentBlackElixirValue);
                 AbstractCountDownBuff(pbElementalSeal, ref CurrentElementalSeal);
-                AbstractCountDownBuff(pbColoressAntidote, ref CurrentColoressAntidote);
+                AbstractCountDownBuff(pbColorlessAntidote, ref CurrentColorlessAntidote);
 
                 // 最終戦ライフカウント
                 //AbstractCountDownBuff(pbLifeCount, ref CurrentLifeCount, ref CurrentLifeCountValue); // ターンのクリーンナップでカウントダウンはしない
@@ -10320,7 +10320,7 @@ namespace DungeonPlayer
             CurrentOnslaughtHit = 0;
             CurrentOnslaughtHitValue = 0;
             // 動＋無心
-            CurrentSmoothingMove = 0;
+            CurrentColorlessMove = 0;
             CurrentAscensionAura = 0;
             // 静＋柔
             CurrentFutureVision = 0;
@@ -10378,7 +10378,7 @@ namespace DungeonPlayer
             CurrentBlackElixir = 0;
             CurrentBlackElixirValue = 0;
             CurrentElementalSeal = 0;
-            CurrentColoressAntidote = 0;
+            CurrentColorlessAntidote = 0;
             
             // 最終戦ライフカウント
             CurrentLifeCount = 0;
@@ -10495,7 +10495,7 @@ namespace DungeonPlayer
             // 動＋心眼
             if (pbOnslaughtHit != null) { pbOnslaughtHit.sprite = null; pbOnslaughtHit.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
             // 動＋無心
-            if (pbSmoothingMove != null) { pbSmoothingMove.sprite = null; pbSmoothingMove.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbColorlessMove != null) { pbColorlessMove.sprite = null; pbColorlessMove.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
             if (pbAscensionAura != null) { pbAscensionAura.sprite = null; pbAscensionAura.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
             // 静＋柔
             if (pbFutureVision != null) { pbFutureVision.sprite = null; pbFutureVision.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
@@ -10535,7 +10535,7 @@ namespace DungeonPlayer
             if (pbShiningAether != null) { pbShiningAether.sprite = null; pbShiningAether.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
             if (pbBlackElixir != null) { pbBlackElixir.sprite = null; pbBlackElixir.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
             if (pbElementalSeal != null) { pbElementalSeal.sprite = null; pbElementalSeal.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
-            if (pbColoressAntidote != null) { pbColoressAntidote.sprite = null; pbColoressAntidote.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
+            if (pbColorlessAntidote != null) { pbColorlessAntidote.sprite = null; pbColorlessAntidote.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
 
             // 集中と断絶
             if (pbSyutyuDanzetsu != null) { pbSyutyuDanzetsu.sprite = null; pbSyutyuDanzetsu.transform.position = new Vector3(Database.BUFFPANEL_BUFF_WIDTH, 0); }
@@ -11028,7 +11028,7 @@ namespace DungeonPlayer
             // 動＋心眼
             //AbstractCountUpBuff(pbOnslaughtHit, ref CurrentOnslaughtHit); // 負の影響
             // 動＋無心
-            AbstractCountUpBuff(pbSmoothingMove, ref CurrentSmoothingMove);
+            AbstractCountUpBuff(pbColorlessMove, ref CurrentColorlessMove);
             AbstractCountUpBuff(pbAscensionAura, ref CurrentAscensionAura);
             // 静＋柔
             AbstractCountUpBuff(pbFutureVision, ref CurrentFutureVision);
@@ -11066,7 +11066,7 @@ namespace DungeonPlayer
             //AbstractCountUpBuff(pbShiningAether, ref CurrentShiningAether);
             //AbstractCountUpBuff(pbBlackElixir, ref CurrentBlackElixir);
             //AbstractCountUpBuff(pbElementalSeal, ref CurrentElementalSeal);
-            //AbstractCountUpBuff(pbColoressAntidote, ref CurrentColoressAntidote);
+            //AbstractCountUpBuff(pbCololressAntidote, ref CurrentColoressAntidote);
 
             // 最終戦ライフカウント
             //AbstractCountUpBuff(pbLifeCount, ref CurrentLifeCountValue); カウントアップする対象ではないため、コメントアウト

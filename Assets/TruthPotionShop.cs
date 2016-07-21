@@ -198,7 +198,7 @@ namespace DungeonPlayer
             if (!GroundOne.WE2.PotionAvailable_410 && (GroundOne.WE2.PotionMixtureDay_410 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_410))
             {
                 GroundOne.WE2.PotionAvailable_410 = true;
-                SceneDimension.CallTruthItemDesc(this, Database.RARE_COLORESS_ANTIDOTE);
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_COLORLESS_ANTIDOTE);
             }
             #endregion
         }
@@ -482,7 +482,7 @@ namespace DungeonPlayer
 
                     if (GroundOne.WE2.PotionAvailable_410)
                     {
-                        item = new ItemBackPack(Database.RARE_COLORESS_ANTIDOTE);
+                        item = new ItemBackPack(Database.RARE_COLORLESS_ANTIDOTE);
                         equipList[ii].text = item.Name;
                         Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
                     }

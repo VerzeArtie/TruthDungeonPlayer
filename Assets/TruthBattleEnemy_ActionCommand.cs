@@ -769,7 +769,7 @@ namespace DungeonPlayer
             target.RemoveStanceOfDouble();
             target.RemoveSwiftStep();
             target.RemoveVigorSense();
-            target.RemoveSmoothingMove();
+            target.RemoveColorlessMove();
             target.RemoveFutureVision();
             target.RemoveOneAuthority();
         }
@@ -805,7 +805,7 @@ namespace DungeonPlayer
             target.RemoveStanceOfDouble();
             target.RemoveSwiftStep();
             target.RemoveVigorSense();
-            target.RemoveSmoothingMove();
+            target.RemoveColorlessMove();
             target.RemoveFutureVision();
             target.RemoveOneAuthority();
 
@@ -1641,15 +1641,15 @@ namespace DungeonPlayer
             target.StackTarget = player;
         }
         /// <summary>
-        /// スムージング・ムーヴのメソッド
+        /// カラレス・ムーヴのメソッド
         /// </summary>
-        private void PlayerSkillSmoothingMove(MainCharacter player, MainCharacter target)
+        private void PlayerSkillColorlessMove(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(156));
             if (PlayerNormalAttack(player, target, 0, false, false))
             {
                 GroundOne.PlaySoundEffect("AeroBlade");
-                PlayerBuffAbstract(player, player, 1, "SmoothingMove");
+                PlayerBuffAbstract(player, player, 2, Database.COLORLESS_MOVE);
             }
         }
         /// <summary>

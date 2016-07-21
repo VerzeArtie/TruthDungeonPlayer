@@ -5665,7 +5665,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Rare;
                     limitValue = USING_ITEM_STACK_SIZE;
                     break;
-                case Database.RARE_COLORESS_ANTIDOTE:
+                case Database.RARE_COLORLESS_ANTIDOTE:
                     description = "物理的、または精神的な悪循環を払拭させるために開発された特効薬。";
                     description += "\r\n物理攻撃、物理防御、魔法攻撃、魔法防御、戦闘速度、戦闘反応、潜在能力DOWNを解除する。【戦闘中専用】";
                     description += "\r\n物理攻撃、物理防御、魔法攻撃、魔法防御、戦闘速度、戦闘反応、潜在能力DOWNに対する耐性を得る。【戦闘中専用】";
@@ -7896,7 +7896,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Legendary;
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
-                case Database.EPIC_COLORESS_ETERNAL_BREAKER:
+                case Database.EPIC_COLORLESS_ETERNAL_BREAKER:
                     description = "煉獄のフェイズル洞窟の奥底で発見された剣。その剣は決して劣化しない。物理攻撃４８７１～５２３９";
                     PhysicalAttackMinValue = 4871;
                     PhysicalAttackMaxValue = 5239;

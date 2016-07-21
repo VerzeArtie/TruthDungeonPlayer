@@ -1244,7 +1244,7 @@ namespace DungeonPlayer
             player.pbSeventhMagic = buffList[num]; buffList[num].ImageName = Database.SEVENTH_MAGIC; num++;
             player.pbStanceOfDouble = buffList[num]; buffList[num].ImageName = Database.STANCE_OF_DOUBLE; num++;
             player.pbSwiftStep = buffList[num]; buffList[num].ImageName = Database.SWIFT_STEP; num++;
-            player.pbSmoothingMove = buffList[num]; buffList[num].ImageName = Database.SMOOTHING_MOVE; num++;
+            player.pbColorlessMove = buffList[num]; buffList[num].ImageName = Database.COLORLESS_MOVE; num++;
             player.pbFutureVision = buffList[num]; buffList[num].ImageName = Database.FUTURE_VISION; num++;
             player.pbReflexSpirit = buffList[num]; buffList[num].ImageName = Database.REFLEX_SPIRIT; num++;
             player.pbTrustSilence = buffList[num]; buffList[num].ImageName = Database.TRUST_SILENCE; num++;
@@ -1321,7 +1321,7 @@ namespace DungeonPlayer
             player.pbShiningAether = buffList[num]; buffList[num].ImageName = Database.BUFF_SHINING_AETHER; num++;
             player.pbBlackElixir = buffList[num]; buffList[num].ImageName = Database.BUFF_BLACK_ELIXIR; num++;
             player.pbElementalSeal = buffList[num]; buffList[num].ImageName = Database.BUFF_ELEMENTAL_SEAL; num++;
-            player.pbColoressAntidote = buffList[num]; buffList[num].ImageName = Database.BUFF_COLORESS_ANTIDOTE; num++;
+            player.pbColorlessAntidote = buffList[num]; buffList[num].ImageName = Database.BUFF_COLORLESS_ANTIDOTE; num++;
 
             player.pbLifeCount = buffList[num]; buffList[num].ImageName = Database.BUFF_LIFE_COUNT; num++;
             player.pbChaoticSchema = buffList[num]; buffList[num].ImageName = Database.BUFF_CHAOTIC_SCHEMA; num++;
@@ -2090,14 +2090,11 @@ namespace DungeonPlayer
             {
                 movement = movement * 1.3f;
             }
-            if (player.CurrentSmoothingMove > 0)
-            {
-                movement = movement * 2.0f;
-            }
             if (player.CurrentJuzaPhantasmal > 0)
             {
                 movement = movement * PrimaryLogic.JuzaPhantasmalValue(player);
             }
+
             player.BattleBarPos += movement;
             if (player.BattleBarPos > Database.BASE_TIMER_BAR_LENGTH)
             {

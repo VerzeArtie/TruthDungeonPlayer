@@ -423,9 +423,9 @@ namespace DungeonPlayer
                     target.CurrentVigorSense = effectTime;
                     target.ActivateBuff(target.pbVigorSense, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "SmoothingMove":
-                    target.CurrentSmoothingMove = effectTime;
-                    target.ActivateBuff(target.pbSmoothingMove, Database.BaseResourceFolder + spellName, effectTime);
+                case Database.COLORLESS_MOVE:
+                    target.CurrentColorlessMove = effectTime;
+                    target.ActivateBuff(target.pbColorlessMove, Database.BaseResourceFolder + spellName, effectTime);
                     break;
                 case "FutureVision":
                     target.CurrentFutureVision = effectTime;

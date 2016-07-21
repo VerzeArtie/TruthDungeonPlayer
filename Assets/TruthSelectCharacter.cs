@@ -358,7 +358,7 @@ public class TruthSelectCharacter : MotherForm
         GroundOne.TC.RisingAura = true;
         GroundOne.TC.OuterInspiration = true;
         GroundOne.TC.HardestParry = true;
-        GroundOne.TC.SmoothingMove = true;
+        GroundOne.TC.ColorlessMove = true;
         GroundOne.TC.AscensionAura = true;
         //if (GroundOne.TC.MainWeapon != null) { if (GroundOne.TC.MainWeapon.Name == Database.POOR_GOD_FIRE_GLOVE_REPLICA) { GroundOne.TC.MainWeapon = new ItemBackPack(Database.LEGENDARY_GOD_FIRE_GLOVE); } }
 

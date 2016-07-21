@@ -432,7 +432,7 @@ namespace DungeonPlayer
             }
             else if (sender.text == "動/無心")
             {
-                SetupCommandButton(CommandButton[0], CommandButtonText[0], Database.SMOOTHING_MOVE);
+                SetupCommandButton(CommandButton[0], CommandButtonText[0], Database.COLORLESS_MOVE);
                 SetupCommandButton(CommandButton[1], CommandButtonText[1], Database.ASCENSION_AURA);
                 SetupCommandButton(CommandButton[2], CommandButtonText[2], "");
                 SetupCommandButton(CommandButton[3], CommandButtonText[3], "");

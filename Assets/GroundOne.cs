@@ -496,7 +496,7 @@ namespace DungeonPlayer
             MC.RisingAura = true;
             MC.RumbleShout = true;
             MC.OnslaughtHit = true;
-            MC.SmoothingMove = true;
+            MC.ColorlessMove = true;
             MC.AscensionAura = true;
             MC.FutureVision = true;
             MC.UnknownShock = true;

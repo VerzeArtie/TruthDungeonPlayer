@@ -275,7 +275,7 @@ namespace DungeonPlayer
             ssAvailable[124] = currentPlayer.RisingAura;
             ssAvailable[125] = currentPlayer.RumbleShout;
             ssAvailable[126] = currentPlayer.OnslaughtHit;
-            ssAvailable[127] = currentPlayer.SmoothingMove;
+            ssAvailable[127] = currentPlayer.ColorlessMove;
             ssAvailable[128] = currentPlayer.AscensionAura;
             ssAvailable[129] = currentPlayer.FutureVision;
             ssAvailable[130] = currentPlayer.UnknownShock;
@@ -465,7 +465,7 @@ namespace DungeonPlayer
             ssName[124] = Database.RISING_AURA;
             ssName[125] = Database.RUMBLE_SHOUT;
             ssName[126] = Database.ONSLAUGHT_HIT;
-            ssName[127] = Database.SMOOTHING_MOVE;
+            ssName[127] = Database.COLORLESS_MOVE;
             ssName[128] = Database.ASCENSION_AURA;
             ssName[129] = Database.FUTURE_VISION;
             ssName[130] = Database.UNKNOWN_SHOCK;
@@ -650,7 +650,7 @@ namespace DungeonPlayer
             ssName[counter] = Database.RISING_AURA; counter++;
             ssName[counter] = Database.RUMBLE_SHOUT; counter++;
             ssName[counter] = Database.ONSLAUGHT_HIT; counter++;
-            ssName[counter] = Database.SMOOTHING_MOVE; counter++;
+            ssName[counter] = Database.COLORLESS_MOVE; counter++;
             ssName[counter] = Database.ASCENSION_AURA; counter++;
             ssName[counter] = Database.FUTURE_VISION; counter++;
             ssName[counter] = Database.UNKNOWN_SHOCK; counter++;
@@ -822,7 +822,7 @@ namespace DungeonPlayer
                      (commandName == Database.RISING_AURA) ||
                      (commandName == Database.RUMBLE_SHOUT) ||
                      (commandName == Database.ONSLAUGHT_HIT) ||
-                     (commandName == Database.SMOOTHING_MOVE) ||
+                     (commandName == Database.COLORLESS_MOVE) ||
                      (commandName == Database.ASCENSION_AURA) ||
                      (commandName == Database.FUTURE_VISION) ||
                      (commandName == Database.UNKNOWN_SHOCK) ||
@@ -1377,7 +1377,7 @@ namespace DungeonPlayer
             {
                 return DispelType.None;
             }
-            else if (commandName == Database.SMOOTHING_MOVE)
+            else if (commandName == Database.COLORLESS_MOVE)
             {
                 return DispelType.None;
             }
@@ -1984,9 +1984,9 @@ namespace DungeonPlayer
             {
                 return Database.ONSLAUGHT_HIT_COST;
             }
-            else if (commandName == Database.SMOOTHING_MOVE)
+            else if (commandName == Database.COLORLESS_MOVE)
             {
-                return Database.SMOOTHING_MOVE_COST;
+                return Database.COLORLESS_MOVE_COST;
             }
             else if (commandName == Database.ASCENSION_AURA)
             {
@@ -2614,9 +2614,9 @@ namespace DungeonPlayer
             {
                 return Database.ONSLAUGHT_HIT_JP;
             }
-            else if (commandName == Database.SMOOTHING_MOVE)
+            else if (commandName == Database.COLORLESS_MOVE)
             {
-                return Database.SMOOTHING_MOVE_JP;
+                return Database.COLORLESS_MOVE_JP;
             }
             else if (commandName == Database.ASCENSION_AURA)
             {
@@ -2870,7 +2870,7 @@ namespace DungeonPlayer
                      (commandName == Database.RISING_AURA) ||
                      (commandName == Database.RUMBLE_SHOUT) ||
                      (commandName == Database.ONSLAUGHT_HIT) ||
-                     (commandName == Database.SMOOTHING_MOVE) ||
+                     (commandName == Database.COLORLESS_MOVE) ||
                      (commandName == Database.ASCENSION_AURA) ||
                      (commandName == Database.FUTURE_VISION) ||
                      (commandName == Database.UNKNOWN_SHOCK) ||
@@ -3173,7 +3173,7 @@ namespace DungeonPlayer
             if (command == Database.RUMBLE_SHOUT) { return (int)((double)Database.RUMBLE_SHOUT_COST * (1.00f - skillReduce)); }
             if (command == Database.ONSLAUGHT_HIT) { return (int)((double)Database.ONSLAUGHT_HIT_COST * (1.00f - skillReduce)); }
 
-            if (command == Database.SMOOTHING_MOVE) { return (int)((double)Database.SMOOTHING_MOVE_COST * (1.00f - skillReduce)); }
+            if (command == Database.COLORLESS_MOVE) { return (int)((double)Database.COLORLESS_MOVE_COST * (1.00f - skillReduce)); }
             if (command == Database.ASCENSION_AURA) { return (int)((double)Database.ASCENSION_AURA_COST * (1.00f - skillReduce)); }
 
             if (command == Database.FUTURE_VISION) { return (int)((double)Database.FUTURE_VISION_COST * (1.00f - skillReduce)); }
@@ -3521,7 +3521,7 @@ namespace DungeonPlayer
             if (command == Database.RUMBLE_SHOUT) { return TimingType.Instant; }
             if (command == Database.ONSLAUGHT_HIT) { return TimingType.Instant; }
 
-            if (command == Database.SMOOTHING_MOVE) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
+            if (command == Database.COLORLESS_MOVE) { return TimingType.Instant; } // change unity (Sorcery -> Instant)
             if (command == Database.ASCENSION_AURA) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
             if (command == Database.FUTURE_VISION) { return TimingType.Sorcery; }
@@ -3720,7 +3720,7 @@ namespace DungeonPlayer
             if (command == Database.RUMBLE_SHOUT) { return TargetType.Enemy; }
             if (command == Database.ONSLAUGHT_HIT) { return TargetType.Enemy; }
 
-            if (command == Database.SMOOTHING_MOVE) { return TargetType.Enemy; }
+            if (command == Database.COLORLESS_MOVE) { return TargetType.Own; } // change unity (Enemy -> Own)
             if (command == Database.ASCENSION_AURA) { return TargetType.AllyGroup; }
 
             if (command == Database.FUTURE_VISION) { return TargetType.Own; }
@@ -3802,7 +3802,7 @@ namespace DungeonPlayer
         }
         public static string TurnPlusBuff()
         {
-            return "Glory、GaleWind、WordOfFortune、BlackContract、HymnContract、ImmortalRave、AetherDrive、OneImmunity、HighEmotionality、StanceOfFlow、StanceOfDouble、SwiftStep、VigorSense、SmoothingMove、FutureVision、OneAuthority";
+            return "Glory、GaleWind、WordOfFortune、BlackContract、HymnContract、ImmortalRave、AetherDrive、OneImmunity、HighEmotionality、StanceOfFlow、StanceOfDouble、SwiftStep、VigorSense、" + Database.COLORLESS_MOVE + "、FutureVision、OneAuthority";
         }
         public static string MinusBuff()
         {
@@ -3970,7 +3970,7 @@ namespace DungeonPlayer
             if (command == Database.RUMBLE_SHOUT) { return "対象が自分以外の単一対象を取っている場合、その対象を自分に変更する。"; }
             if (command == Database.ONSLAUGHT_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、物理攻撃力と魔法攻撃力を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
-            if (command == Database.SMOOTHING_MOVE) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、その直後だけ自分の戦闘速度を2.0倍にする。"; }
+            if (command == Database.COLORLESS_MOVE) { return "自分自身の戦闘速度を０にする。\r\n\r\n自分自身の戦闘反応を" + PowerResult(2.0) + "上昇させる。\r\n\r\n本効果は２ターン持続される。"; }
             if (command == Database.ASCENSION_AURA) { return "すべての味方の魔法攻撃力を" + PowerResult(1.4) + "上昇させる。"; }
 
             if (command == Database.FUTURE_VISION) { return "本効果が持続している間、それぞれの敵がインスタント行動した場合、それをカウンターする。本効果は２ターン持続される。"; }
@@ -4410,7 +4410,7 @@ namespace DungeonPlayer
                     return SkillType.Active_Truth;
 
                 // [動　無心]
-                case Database.SMOOTHING_MOVE:
+                case Database.COLORLESS_MOVE:
                 case Database.ASCENSION_AURA:
                     return SkillType.Active_Void;
 

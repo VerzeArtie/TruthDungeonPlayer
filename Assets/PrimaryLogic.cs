@@ -560,6 +560,11 @@ namespace DungeonPlayer
 
             //result += 1.0f; // 万が一０の場合進まなくなるため、1.0を追加
             if (result < 1.0f) { result = 1.0f; } // 万が一、1よりも小さい場合、進みが遅すぎるため、1.0を追加
+
+            if (player.CurrentColorlessMove > 0)
+            {
+                result = 0;
+            } 
             return result;
         }
 
@@ -614,6 +619,10 @@ namespace DungeonPlayer
             {
                 result = result * 1.4f;
             }
+            if (player.CurrentColorlessMove > 0)
+            {
+                result = result * 2.0f;
+            } 
             if (player.CurrentWordOfMalice > 0)
             {
                 result = result * 0.7f;
