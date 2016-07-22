@@ -1259,6 +1259,22 @@ namespace DungeonPlayer
         }
 
         /// <summary>
+        /// スウィフト・ステップのメソッド
+        /// </summary>
+        private void PlayerSkillSwiftStep(MainCharacter player, MainCharacter target)
+        {
+            UpdateBattleText(player.GetCharacterSentence(153));
+            List<MainCharacter> group = new List<MainCharacter>();
+            SetupAllGroup(player, ref group, TruthActionCommand.GetTargetType(Database.SWIFT_STEP));
+
+            for (int ii = 0; ii < group.Count; ii++)
+            {
+                GroundOne.PlaySoundEffect("StanceOfFlow");
+                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.SWIFT_STEP);
+            }
+        }
+
+        /// <summary>
         /// ライジング・オーラのメソッド
         /// </summary>
         private void PlayerSkillRisingAura(MainCharacter player, MainCharacter target)
@@ -1270,7 +1286,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("HighEmotionality");
-                PlayerBuffAbstract(player, group[ii], 999, Database.RISING_AURA);
+                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.RISING_AURA);
             }
         }
 
@@ -1286,7 +1302,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("HighEmotionality");
-                PlayerBuffAbstract(player, group[ii], 999, Database.ASCENSION_AURA);
+                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.ASCENSION_AURA);
             }
         }
 
@@ -1597,15 +1613,6 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(152));
             PlayerNormalAttack(player, target, 0, false, false);
-        }
-        /// <summary>
-        /// スウィフト・ステップのメソッド
-        /// </summary>
-        private void PlayerSkillSwiftStep(MainCharacter player, MainCharacter target)
-        {
-            UpdateBattleText(player.GetCharacterSentence(153));
-            GroundOne.PlaySoundEffect("StanceOfFlow");
-            PlayerBuffAbstract(player, target, 3, "SwiftStep");
         }
         /// <summary>
         /// ヴィゴー・センスのメソッド

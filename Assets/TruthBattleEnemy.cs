@@ -2086,10 +2086,6 @@ namespace DungeonPlayer
                 player.CurrentSpeedBoost--;
                 movement = movement + 2;
             }
-            if (player.CurrentSwiftStep > 0)
-            {
-                movement = movement * 1.3f;
-            }
             if (player.CurrentJuzaPhantasmal > 0)
             {
                 movement = movement * PrimaryLogic.JuzaPhantasmalValue(player);

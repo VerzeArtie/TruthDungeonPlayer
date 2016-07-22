@@ -3512,7 +3512,7 @@ namespace DungeonPlayer
             if (command == Database.NEUTRAL_SMASH) { return TimingType.Instant; }
             if (command == Database.STANCE_OF_DOUBLE) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
 
-            if (command == Database.SWIFT_STEP) { return TimingType.Instant; }
+            if (command == Database.SWIFT_STEP) { return TimingType.Normal; } // change unity (Instant -> Normal)
             if (command == Database.VIGOR_SENSE) { return TimingType.Instant; }
 
             if (command == Database.CIRCLE_SLASH) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
@@ -3711,7 +3711,7 @@ namespace DungeonPlayer
             if (command == Database.NEUTRAL_SMASH) { return TargetType.Enemy; }
             if (command == Database.STANCE_OF_DOUBLE) { return TargetType.Own; }
 
-            if (command == Database.SWIFT_STEP) { return TargetType.Own; }
+            if (command == Database.SWIFT_STEP) { return TargetType.AllyGroup; } // change unity (Own -> AllyGroup)
             if (command == Database.VIGOR_SENSE) { return TargetType.Own; }
 
             if (command == Database.CIRCLE_SLASH) { return TargetType.EnemyGroup; }
@@ -3961,7 +3961,7 @@ namespace DungeonPlayer
             if (command == Database.NEUTRAL_SMASH) { return "対象に通常攻撃を行う。このスキルはスキルポイントを消費しない。"; }
             if (command == Database.STANCE_OF_DOUBLE) { return "本効果が持続している間、メイン行動を行う直前に、前回の行動を行う。本効果は１ターン持続される。"; }
 
-            if (command == Database.SWIFT_STEP) { return "本効果が持続している間、戦闘速度を" + PowerResult(1.3) + "上昇させる。本効果は３ターン持続される。"; }
+            if (command == Database.SWIFT_STEP) { return "すべての味方の戦闘速度を" + PowerResult(1.2) + "上昇させる。"; }
             if (command == Database.VIGOR_SENSE) { return "本効果が持続している間、戦闘反応を" + PowerResult(1.4) + "上昇させる。本効果は３ターン持続される。"; }
 
             if (command == Database.CIRCLE_SLASH) { return "すべての敵に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。"; }
