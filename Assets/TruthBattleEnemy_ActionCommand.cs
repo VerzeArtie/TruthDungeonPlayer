@@ -503,15 +503,20 @@ namespace DungeonPlayer
         private void ExecPlayWarpGate()
         {
             UpdatePlayerMainFaceArrow(this.nowExecutionWarpGatePlayer);
-            this.nowExecutionWarpGatePlayer.BattleBarPos++;
+            double movement = PrimaryLogic.BattleSpeedValue(this.nowExecutionWarpGatePlayer, GroundOne.DuelMode);
+            this.nowExecutionWarpGatePlayer.BattleBarPos += movement;
+            this.nowExecutionWarpGateCounter += (int)movement;
+            if (this.nowExecutionWarpGatePlayer.BattleBarPos > Database.BASE_TIMER_BAR_LENGTH)
+            {
+                this.nowExecutionWarpGatePlayer.BattleBarPos = Database.BASE_TIMER_BAR_LENGTH + 1;
+            }
+
             if (this.nowExecutionWarpGatePlayer.BattleBarPos >= Database.BASE_TIMER_BAR_LENGTH)
             {
                 PlayerAttackPhase(this.nowExecutionWarpGatePlayer, true, false, false);
                 this.nowExecutionWarpGatePlayer.BattleBarPos = 0;
             }
             System.Threading.Thread.Sleep(0);
-
-            this.nowExecutionWarpGateCounter++;
 
             if (this.nowExecutionWarpGateCounter >= (int)PrimaryLogic.WarpGateValue())
             {

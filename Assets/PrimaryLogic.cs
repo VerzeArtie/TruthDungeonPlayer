@@ -1120,7 +1120,7 @@ namespace DungeonPlayer
         /// </summary>
         public static double WarpGateValue()
         {
-            return 250; // ゲージバーを進める値
+            return Database.BASE_TIMER_BAR_LENGTH / 2; // ゲージバーを進める値
         }
 
         /// <summary>
