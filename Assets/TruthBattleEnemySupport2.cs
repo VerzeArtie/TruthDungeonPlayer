@@ -134,11 +134,22 @@ namespace DungeonPlayer
                         {
                             ExecStackIn();
                             nowStackAnimationNameText.text = this.ActiveList[ii].FirstName + "の" + this.ActiveList[ii].StackCommandString;
-                            nowStackAnimationBarText.text = "【リカバー】発動！　スタン／麻痺／凍結を解除　";
+                            nowStackAnimationBarText.text = "【リカバー】発動！　スタン／麻痺／凍結を解除";
                             PlayerSkillRecover(this.ActiveList[ii], this.ActiveList[ii]);
                             ExecStackOut(true);
                             return;
                         }
+                        // ハーデスト・パリィ
+                        if (this.ActiveList[ii].StackCommandString == Database.HARDEST_PARRY)
+                        {
+                            ExecStackIn();
+                            nowStackAnimationNameText.text = this.ActiveList[ii].FullName;
+                            nowStackAnimationBarText.text = "【ハーデスト・パリィ】を発動！";
+                            PlayerSkillHardestParry(this.ActiveList[ii], this.stackActivePlayer[this.StackNumber - 1]);
+                            ExecStackOut(true);
+                            return;
+                        }
+
                         // 防御姿勢
                         if (this.ActiveList[ii].StackCommandString == Database.DEFENSE_EN)
                         {

@@ -3567,19 +3567,19 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                //if (player.CurrentInstantPoint >= player.MaxInstantPoint)
-                //{
-                //    //if (player.CurrentTimeStop > 0)
-                //    {
-                //        UseInstantPoint(player);
-                //        player.StackActivePlayer = ec1;
-                //        player.StackTarget = GroundOne.MC;
-                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
-                //        player.StackCommandString = Database.STRAIGHT_SMASH;
-                //        player.StackActivation = true;
-                //        this.NowStackInTheCommand = true;
-                //    }
-                //}
+                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                {
+                    //if (player.CurrentTimeStop > 0)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = GroundOne.MC;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                        player.StackCommandString = Database.STRAIGHT_SMASH;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
+                }
             }
             #endregion
         }
@@ -5661,6 +5661,15 @@ namespace DungeonPlayer
                         return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
                     }
 
+                    // HardestParryによる効果
+                    if (target.CurrentHardestParry) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
+                    {
+                        target.CurrentHardestParry = false;
+                        damage = 0;
+                        AnimationDamage(0, target, 0, Color.black, false, false, Database.SUCCESS_AVOID);
+                        return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
+                    }
+
                     // デフレクション効果はクリティカル値も反映させる
                     // デフレクションによる物理攻撃反射
                     if (skipCounterPhase)
@@ -5691,16 +5700,7 @@ namespace DungeonPlayer
                         target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                         damage = damage * 0.5f;
                     }
-
-                    // HardestParryによる効果
-                    if (target.CurrentHardestParry) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
-                    {
-                        target.CurrentHardestParry = false;
-                        damage = 0;
-                        LifeDamage(damage, target, interval, false);
-                        return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
-                    }
-
+                    
                     // ダメージ０変換
                     damage = DamageIsZero(damage, target, ignoreDefense);
 
@@ -6591,6 +6591,15 @@ namespace DungeonPlayer
                 return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
             }
 
+            // HardestParryによる効果
+            if (target.CurrentHardestParry) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
+            {
+                target.CurrentHardestParry = false;
+                damage = 0;
+                AnimationDamage(0, target, 0, Color.black, false, false, Database.SUCCESS_AVOID);
+                return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
+            }
+
             // MirrorImageによる効果
             if (magicType == TruthActionCommand.MagicType.Force)
             {
@@ -6635,14 +6644,6 @@ namespace DungeonPlayer
                 target.CurrentStaticBarrierValue--;
                 target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                 damage = damage * 0.5f;
-            }
-            // HardestParryによる効果
-            if (target.CurrentHardestParry) // && ignoreTargetDefense == false) ダメージ置き換えはignoreTargetDefenseの対象外でダメージを０にする。
-            {
-                target.CurrentHardestParry = false;
-                damage = 0;
-                LifeDamage(damage, target, interval, false);
-                return false; // 呼び出し元で追加効果をスキップさせるためのfalse返し
             }
             // ダメージ０変換
             damage = DamageIsZero(damage, target, ignoreTargetDefense);
