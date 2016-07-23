@@ -58,72 +58,85 @@ namespace DungeonPlayer
 
             switch (spellName)
             {
-                case "Damnation":
+                case Database.DAMNATION:
                     target.CurrentDamnation = effectTime;
                     target.ActivateBuff(target.pbDamnation, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(37));
                     break;
-                case "AbsoluteZero":
+
+                case Database.ABSOLUTE_ZERO:
                     target.CurrentAbsoluteZero = effectTime;
                     target.ActivateBuff(target.pbAbsoluteZero, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(81));
                     break;
-                case "StanceOfFlow":
+
+                case Database.STANCE_OF_FLOW:
                     target.CurrentStanceOfFlow = effectTime;
                     target.ActivateBuff(target.pbStanceOfFlow, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(64));
                     break;
-                case "OneImmunity":
+
+                case Database.ONE_IMMUNITY:
                     target.CurrentOneImmunity = effectTime;
                     target.ActivateBuff(target.pbOneImmunity, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(46));
                     break;
-                case "GaleWind":
+
+                case Database.GALE_WIND:
                     target.CurrentGaleWind = effectTime;
                     target.ActivateBuff(target.pbGaleWind, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(40));
                     break;
-                case "AetherDrive":
+
+                case Database.AETHER_DRIVE:
                     target.CurrentAetherDrive = effectTime;
                     target.ActivateBuff(target.pbAetherDrive, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(43));
                     break;
-                case "ImmortalRave":
+
+                case Database.IMMORTAL_RAVE:
                     target.CurrentImmortalRave = effectTime;
                     target.ActivateBuff(target.pbImmortalRave, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(39));
                     break;
-                case "BlackContract":
+
+                case Database.BLACK_CONTRACT:
                     target.CurrentBlackContract = effectTime;
                     target.ActivateBuff(target.pbBlackContract, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(35));
                     break;
-                case "Glory":
+
+                case Database.GLORY:
                     target.CurrentGlory = effectTime;
                     target.ActivateBuff(target.pbGlory, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(24));
                     break;
-                case "Protection":
+
+                case Database.PROTECTION:
                     target.CurrentProtection = effectTime;
                     target.ActivateBuff(target.pbProtection, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(18));
                     break;
-                case "AbsorbWater":
+
+                case Database.ABSORB_WATER:
                     target.CurrentAbsorbWater = effectTime;
                     target.ActivateBuff(target.pbAbsorbWater, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(19));
                     break;
-                case "SaintPower":
+
+                case Database.SAINT_POWER:
                     target.CurrentSaintPower = effectTime;
                     target.ActivateBuff(target.pbSaintPower, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(20));
                     break;
-                case "ShadowPact":
+
+                case Database.SHADOW_PACT:
                     target.CurrentShadowPact = effectTime;
                     target.ActivateBuff(target.pbShadowPact, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(21));
                     break;
-                case "BloodyVengeance":
+
+                case Database.BLOODY_VENGEANCE:
                     effectValue = player.StandardIntelligence / 2;
                     if (effectValue <= 0) { effectValue = 1; }
                     if ((effectValue - target.BuffStrength_BloodyVengeance) > 0)
@@ -155,14 +168,13 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "FlameAura":
-                    Debug.Log("call FlameAura");
+                case Database.FLAME_AURA:
                     target.CurrentFlameAura = effectTime;
                     target.ActivateBuff(target.pbFlameAura, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(36));
                     break;
 
-                case "PromisedKnowledge":
+                case Database.PROMISED_KNOWLEDGE:
                     effectValue = player.StandardIntelligence / 2;
                     if (effectValue <= 0) { effectValue = 1; }
                     if ((effectValue - target.BuffIntelligence_PromisedKnowledge) > 0)
@@ -178,7 +190,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "RiseOfImage":
+                case Database.RISE_OF_IMAGE:
                     effectValue = player.StandardIntelligence / 2;
                     if (effectValue <= 0) { effectValue = 1; }
                     if ((effectValue - target.BuffMind_RiseOfImage) > 0)
@@ -194,7 +206,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "WordOfLife":
+                case Database.WORD_OF_LIFE:
                     target.CurrentWordOfLife = effectTime;
                     target.ActivateBuff(target.pbWordOfLife, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(41));
@@ -206,36 +218,38 @@ namespace DungeonPlayer
                     UpdateBattleText(player.GetCharacterSentence(42));
                     break;
 
-                case "EternalPresence":
+                case Database.ETERNAL_PRESENCE:
                     target.CurrentEternalPresence = effectTime;
                     target.ActivateBuff(target.pbEternalPresence, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(44), 1000);
                     UpdateBattleText(player.GetCharacterSentence(45));
                     break;
 
-                case "MirrorImage":
+                case Database.MIRROR_IMAGE:
                     target.CurrentMirrorImage = effectTime;
                     target.ActivateBuff(target.pbMirrorImage, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(57), player.Target.FirstName));
                     break;
 
-                case "Deflection":
+                case Database.DEFLECTION:
                     target.CurrentDeflection = effectTime;
                     target.ActivateBuff(target.pbDeflection, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(60), target.FirstName));
                     break;
 
-                case "PsychicTrance":
+                case Database.PSYCHIC_TRANCE:
                     target.CurrentPsychicTrance = effectTime;
                     target.ActivateBuff(target.pbPsychicTrance, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(129), target.FirstName));
                     break;
-                case "BlindJustice":
+
+                case Database.BLIND_JUSTICE:
                     target.CurrentBlindJustice = effectTime;
                     target.ActivateBuff(target.pbBlindJustice, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(130), target.FirstName));
                     break;
-                case "TranscendentWish":
+
+                case Database.TRANSCENDENT_WISH:
                     if (target.CurrentTranscendentWish <= 0)
                     {
                         target.CurrentTranscendentWish = effectTime;
@@ -253,6 +267,7 @@ namespace DungeonPlayer
                         UpdateBattleText(player.GetCharacterSentence(82));
                     }
                     break;
+
                 case Database.SKY_SHIELD:
                     target.CurrentSkyShield = effectTime;
                     target.CurrentSkyShieldValue = 3;
@@ -260,6 +275,7 @@ namespace DungeonPlayer
                     target.ChangeSkyShieldStatus(target.CurrentSkyShield);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(134), target.FirstName));
                     break;
+
                 case Database.STATIC_BARRIER:
                     target.CurrentStaticBarrier = effectTime;
                     target.CurrentStaticBarrierValue = 3;
@@ -267,36 +283,33 @@ namespace DungeonPlayer
                     target.ChangeStaticBarrierStatus(target.CurrentStaticBarrier);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(186), target.FirstName));
                     break;
-                case "EverDroplet":
+
+                case Database.EVER_DROPLET:
                     target.CurrentEverDroplet = effectTime;
                     target.ActivateBuff(target.pbEverDroplet, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(136), target.FirstName));
                     break;
-                case "FrozenAura":
+
+                case Database.FROZEN_AURA:
                     target.CurrentFrozenAura = effectTime;
                     target.ActivateBuff(target.pbFrozenAura, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(137), target.FirstName));
                     break;
 
-                //case "Damnation":
-                //    player.Target.CurrentDamnation = effectTime;
-                //    player.Target.pbDamnation.Image = Image.FromFile(Database.BaseResourceFolder + spellName);
-                //    player.Target.pbDamnation.Update();
-                //    UpdateBattleText(player.GetCharacterSentence(37));
-                //    break;
 
-                case "PainfulInsanity":
+                case Database.PAINFUL_INSANITY:
                     player.CurrentPainfulInsanity = effectTime;
                     player.ActivateBuff(player.pbPainfulInsanity, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(4));
                     break;
 
-                case "FlashBlaze_Buff":
+                case Database.FLASH_BLAZE_BUFF:
                     target.CurrentFlashBlazeCount = effectTime;
                     target.CurrentFlashBlazeFactor = (int)PrimaryLogic.FlashBlaze_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbFlashBlaze, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "StarLightning":
+
+                case Database.STAR_LIGHTNING:
                     if (target.CurrentStarLightning <= 0) // スタン効果なので、累積させない。
                     {
                         target.CurrentStarLightning = effectTime;
@@ -304,69 +317,83 @@ namespace DungeonPlayer
                     target.ActivateBuff(target.pbStarLightning, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(target.FirstName + "は気絶した。\r\n");
                     break;
-                case "WordOfMalice":
+
+                case Database.WORD_OF_MALICE:
                     target.CurrentWordOfMalice = effectTime;
                     target.ActivateBuff(target.pbWordOfMalice, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "SinFortune":
+
+                case Database.SIN_FORTUNE:
                     target.CurrentSinFortune = effectTime;
                     target.ActivateBuff(target.pbSinFortune, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(211), target.FirstName));
                     break;
-                case "BlackFire":
+
+                case Database.BLACK_FIRE:
                     target.CurrentBlackFire = effectTime;
                     target.ActivateBuff(target.pbBlackFire, Database.BaseResourceFolder + spellName, effectTime);
                     break;
+
                 case Database.ENRAGE_BLAST:
                     target.CurrentEnrageBlast = effectTime;
                     target.CurrentEnrageBlastFactor = (int)PrimaryLogic.EnrageBlast_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbEnrageBlast, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "SigilOfHomura":
+
+                case Database.SIGIL_OF_HOMURA:
                     target.CurrentSigilOfHomura = effectTime;
                     target.ActivateBuff(target.pbSigilOfHomura, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(String.Format(player.GetCharacterSentence(206)));
                     break;
-                case "Immolate":
+
+                case Database.IMMOLATE:
                     target.CurrentImmolate = effectTime;
                     target.ActivateBuff(target.pbImmolate, Database.BaseResourceFolder + spellName, effectTime);
                     break;
 
-                case "HolyBreaker":
+                case Database.HOLY_BREAKER:
                     target.CurrentHolyBreaker = effectTime;
                     target.ActivateBuff(target.pbHolyBreaker, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(148));
                     break;
-                case "HymnContract":
+
+                case Database.HYMN_CONTRACT:
                     target.CurrentHymnContract = effectTime;
                     target.ActivateBuff(target.pbHymnContract, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "DarkenField":
+
+                case Database.DARKEN_FIELD:
                     target.CurrentDarkenField = effectTime;
                     target.ActivateBuff(target.pbDarkenField, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "EclipseEnd":
+
+                case Database.ECLIPSE_END:
                     target.CurrentEclipseEnd = effectTime;
                     target.ActivateBuff(target.pbEclipseEnd, Database.BaseResourceFolder + spellName, effectTime);
                     break;
+
                 case Database.BLAZING_FIELD:
                     target.CurrentBlazingField = effectTime;
                     target.CurrentBlazingFieldFactor = (int)PrimaryLogic.BlazingField_A_Value(player, GroundOne.DuelMode);
                     target.ActivateBuff(target.pbBlazingField, Database.BaseResourceFolder + spellName, effectTime);
                     break;
+
                 case Database.EXALTED_FIELD:
                     target.CurrentExaltedField = effectTime;
                     target.ActivateBuff(target.pbExaltedField, Database.BaseResourceFolder + spellName, effectTime);
                     break;
+
                 case Database.ONE_AUTHORITY:
                     target.CurrentOneAuthority = effectTime;
                     target.ActivateBuff(target.pbOneAuthority, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "RisingAura":
+
+                case Database.RISING_AURA:
                     target.CurrentRisingAura = effectTime;
                     target.ActivateBuff(target.pbRisingAura, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "AscensionAura":
+
+                case Database.ASCENSION_AURA:
                     target.CurrentAscensionAura = effectTime;
                     target.ActivateBuff(target.pbAscensionAura, Database.BaseResourceFolder + spellName, effectTime);
                     break;
@@ -377,30 +404,31 @@ namespace DungeonPlayer
                     UpdateBattleText(player.GetCharacterSentence(150));
                     break;
 
-                case "PhantasmalWind":
+                case Database.PHANTASMAL_WIND:
                     target.CurrentPhantasmalWind = effectTime;
                     target.ActivateBuff(target.pbPhantasmalWind, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(183));
                     break;
-                case "ParadoxImage":
+
+                case Database.PARADOX_IMAGE:
                     target.CurrentParadoxImage = effectTime;
                     target.ActivateBuff(target.pbParadoxImage, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(184));
                     break;
 
-                case "AusterityMatrix":
+                case Database.AUSTERITY_MATRIX:
                     target.CurrentAusterityMatrix = effectTime;
                     target.ActivateBuff(target.pbAusterityMatrix, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(207));
                     break;
 
-                case "RedDragonWill":
+                case Database.RED_DRAGON_WILL:
                     target.CurrentRedDragonWill = effectTime;
                     target.ActivateBuff(target.pbRedDragonWill, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(208));
                     break;
 
-                case "BlueDragonWill":
+                case Database.BLUE_DRAGON_WILL:
                     target.CurrentBlueDragonWill = effectTime;
                     target.ActivateBuff(target.pbBlueDragonWill, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(209));
@@ -411,51 +439,55 @@ namespace DungeonPlayer
                     target.ActivateBuff(target.pbNourishSense, Database.BaseResourceFolder + spellName, effectTime);
                     break;
 
-                case "StanceOfDouble":
+                case Database.STANCE_OF_DOUBLE:
                     target.CurrentStanceOfDouble = effectTime;
                     target.ActivateBuff(target.pbStanceOfDouble, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "SwiftStep":
+
+                case Database.SWIFT_STEP:
                     target.CurrentSwiftStep = effectTime;
                     target.ActivateBuff(target.pbSwiftStep, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "VigorSense":
+
+                case Database.VIGOR_SENSE:
                     target.CurrentVigorSense = effectTime;
                     target.ActivateBuff(target.pbVigorSense, Database.BaseResourceFolder + spellName, effectTime);
                     break;
+
                 case Database.COLORLESS_MOVE:
                     target.CurrentColorlessMove = effectTime;
                     target.ActivateBuff(target.pbColorlessMove, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "FutureVision":
+
+                case Database.FUTURE_VISION:
                     target.CurrentFutureVision = effectTime;
                     target.ActivateBuff(target.pbFutureVision, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                case "ReflexSpirit":
+
+                case Database.REFLEX_SPIRIT:
                     target.CurrentReflexSpirit = effectTime;
                     target.ActivateBuff(target.pbReflexSpirit, Database.BaseResourceFolder + spellName, effectTime);
                     break;
-                //case "TrustSilence":
-                //    target.CurrentTrustSilence = effectTime;
-                //    target.ActivateBuff(target.pbTrustSilence, Database.BaseResourceFolder + spellName, effectTime);
-                //    break;
 
-                case "ConcussiveHit":
+                case Database.CONCUSSIVE_HIT:
                     target.CurrentConcussiveHit = effectTime;
                     target.CurrentConcussiveHitValue++;
                     target.ChangeConcussiveHitStatus(target.CurrentConcussiveHit);
                     break;
-                case "OnslaughtHit":
+
+                case Database.ONSLAUGHT_HIT:
                     target.CurrentOnslaughtHit = effectTime;
                     target.CurrentOnslaughtHitValue++;
                     target.ChangeOnslaughtHitStatus(target.CurrentOnslaughtHit);
                     break;
-                case "ImpulseHit":
+
+                case Database.IMPULSE_HIT:
                     target.CurrentImpulseHit = effectTime;
                     target.CurrentImpulseHitValue++;
                     target.ChangeImpulseHitStatus(target.CurrentImpulseHit);
                     break;
-                case "JUNKAN-SEIYAKU":
+
+                case Database.ARCHETYPE_RANA:
                     if (target.CurrentJunkan_Seiyaku <= 0)
                     {
                         target.CurrentJunkan_Seiyaku = effectTime;
@@ -476,13 +508,13 @@ namespace DungeonPlayer
                     UpdateBattleText(String.Format(player.GetCharacterSentence(168), target.FirstName));
                     break;
 
-                case "TruthVision":
+                case Database.TRUTH_VISION:
                     player.CurrentTruthVision = effectTime;
                     target.ActivateBuff(target.pbTruthVision, Database.BaseResourceFolder + spellName, effectTime);
                     UpdateBattleText(player.GetCharacterSentence(63));
                     break;
 
-                case "HighEmotionality":
+                case Database.HIGH_EMOTIONALITY:
                     if (player.CurrentHighEmotionality <= 0)
                     {
                         //player.BuffStrength_HighEmotionality = player.Strength / 3;
@@ -505,17 +537,17 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "Negate":
+                case Database.NEGATE:
                     player.CurrentNegate = effectTime;
                     player.ActivateBuff(player.pbNegate, Database.BaseResourceFolder + spellName, effectTime);
                     break;
 
-                case "StanceOfEyes":
+                case Database.STANCE_OF_EYES:
                     player.CurrentStanceOfEyes = effectTime;
                     player.ActivateBuff(player.pbStanceOfEyes, Database.BaseResourceFolder + spellName, effectTime);
                     break;
 
-                case "CounterAttack":
+                case Database.COUNTER_ATTACK:
                     player.CurrentCounterAttack = effectTime;
                     player.ActivateBuff(player.pbCounterAttack, Database.BaseResourceFolder + spellName, effectTime);
                     break;
@@ -538,7 +570,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "StanceOfDeath":
+                case Database.STANCE_OF_DEATH:
                     if (player.CurrentStanceOfDeath <= 0)
                     {
                         player.CurrentStanceOfDeath = effectTime;
@@ -551,7 +583,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "NothingOfNothingness":
+                case Database.NOTHING_OF_NOTHINGNESS:
                     if (player.CurrentNothingOfNothingness <= 0)
                     {
                         player.CurrentNothingOfNothingness = effectTime;
@@ -565,7 +597,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "SYUTYU-DANZETSU":
+                case Database.ARCHETYPE_EIN:
                     if (player.CurrentSyutyu_Danzetsu <= 0)
                     {
                         player.CurrentSyutyu_Danzetsu = effectTime;
@@ -592,7 +624,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case "AfterReviveHalf":
+                case Database.AFTER_REVIVE_HALF:
                     if (player.CurrentAfterReviveHalf <= 0)
                     {
                         player.CurrentAfterReviveHalf = effectTime;

@@ -2557,6 +2557,7 @@ namespace DungeonPlayer
         #endregion
 
         // BUFF追加向けファイル名
+        public const string FLASH_BLAZE_BUFF = @"FlashBlaze_Buff"; // 炎追加効果
         public const string AFTER_REVIVE_HALF = @"AfterReviveHalf";
         public const string FIRE_DAMAGE_2 = @"FireDamage2";
         public const string BLACK_MAGIC = @"BlackMagic";
