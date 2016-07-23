@@ -3998,7 +3998,7 @@ namespace DungeonPlayer
             if (command == Database.ONE_AUTHORITY) { return "本効果が持続している間、ターンが進む度に《【心】+10》の分だけスキルポイントが回復する。本効果は３ターン持続する。\r\n\r\n心が１以上：0 + 心/4\r\n心が100以上：25 + (心-100)/30\r\n心が1000以上：55 + (心-1000)/300"; }
 
             if (command == Database.OUTER_INSPIRATION) { return "対象の物理攻撃/物理防御/魔法攻撃/魔法防御/戦闘速度/戦闘反応/潜在能力に対する負のＢＵＦＦ効果を解除する。"; }
-            if (command == Database.HARDEST_PARRY) { return "対象のインスタント行動がダメージ源を有している場合、ダメージを無効化し、それに付随する効果を回避する。"; }
+            if (command == Database.HARDEST_PARRY) { return "対象のインスタント行動がダメージ源を有している場合、回避する（ダメージを無効化し、それに付随する効果を無効にする）。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
 
             if (command == Database.STANCE_OF_SUDDENNESS) { return "対象のインスタント行動を打ち消す。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
             if (command == Database.SOUL_EXECUTION) { return "自分自身にTruthVisionのBuffを付与する。その上で、対象に《力 ｘ 攻撃倍率》の物理ダメージを１０回連続で与える。\r\n\r\n攻撃倍率は以下の通りである。\r\n１撃：1.0倍　２撃：1.1倍　３撃：1.2倍　４撃：1.3倍　５撃：1.5倍　６撃：1.7倍　７撃：1.9倍　８撃：2.2倍　９撃：2.5倍　１０撃：3.0倍"; }
