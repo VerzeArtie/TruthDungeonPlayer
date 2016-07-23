@@ -5535,7 +5535,7 @@ namespace DungeonPlayer
                     {
                         damage = (int)((float)damage / 1.5F);
                     }
-                    if (target.CurrentEternalPresence > 0)
+                    if (target.CurrentEternalPresence > 0 && player.CurrentTruthVision <= 0)
                     {
                         damage = damage * 0.8F;
                     }
@@ -6233,7 +6233,7 @@ namespace DungeonPlayer
                 {
                     damage = damage / 1.5F;
                 }
-                if (target.CurrentEternalPresence > 0)
+                if (target.CurrentEternalPresence > 0 && player.CurrentTruthVision <= 0)
                 {
                     damage = damage * 0.8F;
                 }
