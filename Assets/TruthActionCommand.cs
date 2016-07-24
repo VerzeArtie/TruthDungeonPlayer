@@ -3004,6 +3004,11 @@ namespace DungeonPlayer
         {
             double manaReduce = 0;
             double skillReduce = 0;
+
+            if (player.CurrentOneAuthority > 0)
+            {
+                skillReduce = 0.5f;
+            }
             //            if (player != null)
             //            {
             //                manaReduce += ItemEffect_ManaCost(command, player.MainWeapon);
@@ -3995,15 +4000,13 @@ namespace DungeonPlayer
             if (command == Database.IMPULSE_HIT) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを与える。\r\n加えて、戦闘速度と戦闘反応を累積数に応じて低下させる。この効果は３回まで累積が可能である。\r\n累積数１：１５％ダウン\r\n累積数２：３０％ダウン\r\n累積数３：４５％ダウン"; }
 
             if (command == Database.VIOLENT_SLASH) { return "対象に" + PowerResult("力", 2.5, 0, 0) + "の物理ダメージを与える。\r\nこのスキルはカウンターされない。"; }
-            if (command == Database.ONE_AUTHORITY) { return "本効果が持続している間、ターンが進む度に《【心】+10》の分だけスキルポイントが回復する。本効果は３ターン持続する。\r\n\r\n心が１以上：0 + 心/4\r\n心が100以上：25 + (心-100)/30\r\n心が1000以上：55 + (心-1000)/300"; }
+            if (command == Database.ONE_AUTHORITY) { return "対象にOneAuthorityのＢＵＦＦを付与する。本効果が持続している間、スキル消費コストが半分になる。また、ターンが進む度にスキルポイントが回復する。本効果は３ターン持続する。\r\n\r\nスキルの回復量\r\n【心】が１以上：10 + 【心】/10\r\n【心】が100以上：20 + 【心】/100\r\n【心】が1000以上：30 + 【心】/1000"; }
 
             if (command == Database.OUTER_INSPIRATION) { return "対象の物理攻撃/物理防御/魔法攻撃/魔法防御/戦闘速度/戦闘反応/潜在能力に対する負のＢＵＦＦ効果を解除する。"; }
             if (command == Database.HARDEST_PARRY) { return "対象のインスタント行動がダメージ源を有している場合、回避する（ダメージを無効化し、それに付随する効果を無効にする）。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
 
             if (command == Database.STANCE_OF_SUDDENNESS) { return "対象のインスタント行動を打ち消す。\r\nこのスキルはスタックの対象とならず即座に効果を発揮する。"; }
             if (command == Database.SOUL_EXECUTION) { return "自分自身にTruthVisionのBuffを付与する。その上で、対象に《力 ｘ 攻撃倍率》の物理ダメージを１０回連続で与える。\r\n\r\n攻撃倍率は以下の通りである。\r\n１撃：1.0倍　２撃：1.1倍　３撃：1.2倍　４撃：1.3倍　５撃：1.5倍　６撃：1.7倍　７撃：1.9倍　８撃：2.2倍　９撃：2.5倍　１０撃：3.0倍"; }
-
-            // SOUL_EXECUTIONはダメージ計算値を出さないと駄目。
 
             if (command == Database.ARCHETYPE_EIN) { return "自分が次に当てる「物理/魔法」ダメージをＸ倍にした上で、クリティカルとしてダメージを与える。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
             //if (command == Database.ARCHETYPE_RANA) { return "味方全体：ターン制依存のBUFF効果をＸターン追加で継続する。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }

@@ -1242,7 +1242,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("SaintPower");
-                PlayerBuffAbstract(player, group[ii], 4, Database.ONE_AUTHORITY);
+                PlayerBuffAbstract(player, group[ii], 3, Database.ONE_AUTHORITY);
             }
         }
 

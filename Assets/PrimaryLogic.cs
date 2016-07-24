@@ -1227,24 +1227,23 @@ namespace DungeonPlayer
             double min = 0;
             double max = 0;
 
-            // ベース値＋１５は固定
-            // 心      [ 1 - 100 ] -->   0 + 心 / 5
-            //      [ 101 - 1000 ] -->  25 + 心 / 25
-            //    [ 1001 - 10000 ] -->  61 + 心 / 450
+            // 心      [ 1 - 100 ] -->  10 + 心 / 10
+            //      [ 101 - 1000 ] -->  20 + 心 / 100
+            //    [ 1001 - 10000 ] -->  30 + 心 / 1000
             if (0 <= player.TotalMind && player.TotalMind <= 100)
             {
                 min = 0.0F;
-                max = 0.0F + (double)player.TotalMind / 4.0F;
+                max = 0.0F + (double)player.TotalMind / 10.0F;
             }
             else if (101 <= player.TotalMind && player.TotalMind <= 1000)
             {
-                min = 25.0F;
-                max = 25.0F + (double)(player.TotalMind - 100.0F) / 30.0F;
+                min = 20.0F;
+                max = 20.0F + (double)player.TotalMind / 100.0F;
             }
             else if (1001 <= player.TotalMind && player.TotalMind <= 9999)
             {
-                min = 55.0F;
-                max = 55.0F + (double)(player.TotalMind - 1000.0F) / 300.0F;
+                min = 30.0F;
+                max = 30.0F + (double)player.TotalMind / 1000.0F;
             }
 
             System.Random rd = new System.Random(DateTime.Now.Millisecond * Environment.TickCount);
