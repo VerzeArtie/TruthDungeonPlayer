@@ -546,7 +546,7 @@ namespace DungeonPlayer
                 UpdateSkillPoint(this.ActiveList[ii]);
                 float widthScale = (float)(Screen.width) / (float)(Database.BASE_TIMER_BAR_LENGTH);
                 Vector3 current = ActiveList[ii].MainFaceArrow.transform.position;
-                ActiveList[ii].MainFaceArrow.transform.position = new Vector3((float)ActiveList[ii].BattleBarPos * widthScale, current.y, current.z);
+                ActiveList[ii].MainFaceArrow.transform.position = new Vector3((float)ActiveList[ii].BattleBarPos * widthScale - ActiveList[ii].MainFaceArrow.rectTransform.sizeDelta.x/2.0f, current.y, current.z);
             }
 
             this.currentPlayer = GroundOne.MC;
@@ -1022,7 +1022,7 @@ namespace DungeonPlayer
         {
             float widthScale = (float)(Screen.width) / (float)(Database.BASE_TIMER_BAR_LENGTH);
             Vector3 current = player.MainFaceArrow.transform.position;
-            player.MainFaceArrow.transform.position = new Vector3((float)player.BattleBarPos * widthScale, current.y, current.z);
+            player.MainFaceArrow.transform.position = new Vector3((float)player.BattleBarPos * widthScale - player.MainFaceArrow.rectTransform.sizeDelta.x/2.0f, current.y, current.z);
         }
 
         void ActivateSomeCharacter(MainCharacter player, MainCharacter target,
@@ -3567,19 +3567,19 @@ namespace DungeonPlayer
             #region "ダミー素振り君"
             else if (player.FirstName == Database.DUEL_DUMMY_SUBURI)
             {
-                if (player.CurrentInstantPoint >= player.MaxInstantPoint)
-                {
-                    //if (player.CurrentTimeStop > 0)
-                    {
-                        UseInstantPoint(player);
-                        player.StackActivePlayer = ec1;
-                        player.StackTarget = GroundOne.MC;
-                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
-                        player.StackCommandString = Database.STRAIGHT_SMASH;
-                        player.StackActivation = true;
-                        this.NowStackInTheCommand = true;
-                    }
-                }
+                //if (player.CurrentInstantPoint >= player.MaxInstantPoint)
+                //{
+                //    //if (player.CurrentTimeStop > 0)
+                //    {
+                //        UseInstantPoint(player);
+                //        player.StackActivePlayer = ec1;
+                //        player.StackTarget = GroundOne.MC;
+                //        player.StackPlayerAction = MainCharacter.PlayerAction.UseSkill;
+                //        player.StackCommandString = Database.STRAIGHT_SMASH;
+                //        player.StackActivation = true;
+                //        this.NowStackInTheCommand = true;
+                //    }
+                //}
             }
             #endregion
         }

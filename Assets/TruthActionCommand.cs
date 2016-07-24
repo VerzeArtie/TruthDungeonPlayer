@@ -3943,7 +3943,7 @@ namespace DungeonPlayer
             if (command == Database.ANTI_STUN) { return "対象に【恐怖】/【スタン】/【沈黙】/【猛毒】/【誘惑】/【凍結】/【麻痺】/【スロウ】/【暗闇】/【スリップ】耐性を付与する。\r\nこの効果は一度発動すると解除される。"; }
             if (command == Database.STANCE_OF_DEATH) { return "対象が致死ダメージを食らった場合、死亡を回避し、ライフ１で残る。\r\nこの効果は一度発動すると解除される。"; }
 
-            if (command == Database.STANCE_OF_FLOW) { return "本効果が持続している間、必ず後攻をとる。\r\n\r\n（敵がメイン行動を取るまでの間、自分のメイン行動が発動する直前で行動ゲージが停止する。）\r\n\r\n本効果は３ターン持続される。"; }
+            if (command == Database.STANCE_OF_FLOW) { return "対象にStanceOfFlowのＢＵＦＦを付与する。本効果が持続している間、必ず後攻をとる。（いずれかの敵がメイン行動を取るまでの間、自分のメイン行動が発動する直前で行動ゲージが停止する。）\r\n\r\n本効果は３ターン持続される。"; }
             if (command == Database.ENIGMA_SENSE) { return "対象の【力】【技】【知】のうち最も高い値を《最大》として、対象に" + PowerResult("最大", 2.0, 0, 0) + "の物理ダメージを与える。"; }
             if (command == Database.SILENT_RUSH) { return "対象に" + PowerResult("力", 1.0, 0, 0) + "の物理ダメージを３回連続で与える。"; }
             if (command == Database.OBORO_IMPACT) { return "対象の【力】【技】【知】のうち最も高い値を《最大》、中間の値を《中間》、最も低い値を《最小》として、対象に" + PowerResult("最大", 1.5, 0, 0) + " ＋ " + PowerResult("中間", 1.0, 0, 0) + " ＋ " + PowerResult("最小", 0.5, 0, 0) + " ＋ " + PowerResult("武器", 1.0, 6000, 8000) + "の物理ダメージを与える。\r\n\r\nこのダメージは潜在能力値に応じて増幅する。"; }
@@ -3964,7 +3964,7 @@ namespace DungeonPlayer
             if (command == Database.NOTHING_OF_NOTHINGNESS) { return "対象の魔法およびスキルがカウンターされなくなる。\r\n\r\n正のＢＵＦＦ効果が解除されなくなる。\r\n\r\nAusterityMatrixのBUFF効果は付与されなくなる。"; }
 
             if (command == Database.NEUTRAL_SMASH) { return "対象に通常攻撃を行う。このスキルはスキルポイントを消費しない。"; }
-            if (command == Database.STANCE_OF_DOUBLE) { return "本効果が持続している間、メイン行動を行う直前に、前回の行動を行う。本効果は１ターン持続される。"; }
+            if (command == Database.STANCE_OF_DOUBLE) { return "本効果が持続している間、メイン行動を行う直前に、前回の行動を行う。本効果は３ターン持続される。"; }
 
             if (command == Database.SWIFT_STEP) { return "すべての味方の戦闘速度を" + PowerResult(1.2) + "上昇させる。"; }
             if (command == Database.VIGOR_SENSE) { return "本効果が持続している間、戦闘反応を" + PowerResult(1.4) + "上昇させる。本効果は３ターン持続される。"; }

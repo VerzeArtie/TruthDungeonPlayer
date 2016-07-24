@@ -1163,7 +1163,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(215));
             GroundOne.PlaySoundEffect(Database.SOUND_STANCE_OF_DOUBLE);
-            PlayerBuffAbstract(player, target, 1, Database.STANCE_OF_DOUBLE);
+            PlayerBuffAbstract(player, target, 3, Database.STANCE_OF_DOUBLE);
         }
 
         /// <summary>
