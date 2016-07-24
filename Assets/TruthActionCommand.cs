@@ -3923,7 +3923,7 @@ namespace DungeonPlayer
 
             if (command == Database.WORD_OF_ATTITUDE) { return "対象のインスタントポイントを全快にする。"; }
             if (command == Database.STATIC_BARRIER) { return "対象のダメージ源を有する物理攻撃または魔法攻撃が向けられた場合、そのダメージを半分にする。\r\n\r\nこの魔法は一度の詠唱で３つの累積が行われる。\r\n\r\n３つ以上の累積は行えない。"; }
-            if (command == Database.AUSTERITY_MATRIX) { return "対象の正のＢＵＦＦ効果を全て解除する。\r\n\r\nこの後、正のＢＵＦＦ効果は付与できなくなる。\r\n\r\n負のＢＵＦＦ効果は付与できる。"; }
+            if (command == Database.AUSTERITY_MATRIX) { return "対象の正のＢＵＦＦ効果を全て解除し、AusterityMatrixのＢＵＦＦを付与する。\r\n\r\nAusterityMatrixのＢＵＦＦがある間は、正のＢＵＦＦ効果は付与できなくなる。"; }
 
             if (command == Database.VANISH_WAVE) { return "対象に" + PowerResult("知", 1.0, 200, 300) + "の【水/空】ダメージを与える。\r\n加えて、対象に【沈黙】効果を与える。本効果は３ターン持続される。"; }
             if (command == Database.VORTEX_FIELD) { return "すべての敵に【鈍化】効果を与える。本効果は４ターン持続される。"; }

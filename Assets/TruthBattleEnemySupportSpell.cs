@@ -47,11 +47,10 @@ namespace DungeonPlayer
             int effectValue = 0;
             if (target.CurrentAusterityMatrix > 0 || target.CurrentAusterityMatrixOmega > 0)
             {
-                string spellNameWithoutExt = spellName.Substring(0, spellName.Length - 4);
-                if (TruthActionCommand.GetBuffType(spellNameWithoutExt) == TruthActionCommand.BuffType.Up)
+                if (TruthActionCommand.GetBuffType(spellName) == TruthActionCommand.BuffType.Up)
                 {
                     UpdateBattleText(target.FirstName + "はAusterityMatrixに支配されており、BUFFを付与できなかった！！\r\n");
-                    AnimationDamage(0, target, 0, Color.black, true, false, Database.EFFECT_CANNOT_BUFF);
+                    AnimationDamage(0, target, 0, Color.black, false, false, Database.EFFECT_CANNOT_BUFF);
                     return;
                 }
             }
