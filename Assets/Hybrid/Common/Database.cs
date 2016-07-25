@@ -618,130 +618,130 @@ namespace DungeonPlayer
         #region "魔法消費コスト"
         // [聖]
         public static int FRESH_HEAL_COST = 20;
-        public static int PROTECTION_COST = 30;
-        public static int HOLY_SHOCK_COST = 45;
-        public static int SAINT_POWER_COST = 55;
-        public static int GLORY_COST = 60;
-        public static int RESURRECTION_COST = 200;
-        public static int CELESTIAL_NOVA_COST = 150;
+        public static int PROTECTION_COST = 40;
+        public static int HOLY_SHOCK_COST = 70;
+        public static int SAINT_POWER_COST = 100;
+        public static int GLORY_COST = 250;
+        public static int RESURRECTION_COST = 400;
+        public static int CELESTIAL_NOVA_COST = 850;
         // [闇]
         public static int DARK_BLAST_COST = 15;
-        public static int SHADOW_PACT_COST = 30;
-        public static int LIFE_TAP_COST = 45;
-        public static int BLACK_CONTRACT_COST = 55;
-        public static int DEVOURING_PLAGUE_COST = 40;
-        public static int BLOODY_VENGEANCE_COST = 120;
-        public static int DAMNATION_COST = 200;
+        public static int SHADOW_PACT_COST = 40;
+        public static int LIFE_TAP_COST = 60;
+        public static int BLACK_CONTRACT_COST = 120;
+        public static int DEVOURING_PLAGUE_COST = 200;
+        public static int BLOODY_VENGEANCE_COST = 450;
+        public static int DAMNATION_COST = 900;
         // [火]
         public static int FIRE_BALL_COST = 15;
         public static int FLAME_AURA_COST = 30;
-        public static int HEAT_BOOST_COST = 30;
-        public static int FLAME_STRIKE_COST = 45;
-        public static int VOLCANIC_WAVE_COST = 75;
-        public static int IMMORTAL_RAVE_COST = 100;
-        public static int LAVA_ANNIHILATION_COST = 400;
+        public static int HEAT_BOOST_COST = 55;
+        public static int FLAME_STRIKE_COST = 90;
+        public static int VOLCANIC_WAVE_COST = 200;
+        public static int IMMORTAL_RAVE_COST = 450;
+        public static int LAVA_ANNIHILATION_COST = 1200;
         // [水]
         public static int ICE_NEEDLE_COST = 15;
         public static int ABSORB_WATER_COST = 30;
         public static int CLEANSING_COST = 50;
-        public static int FROZEN_LANCE_COST = 45;
-        public static int MIRROR_IMAGE_COST = 120;
-        public static int PROMISED_KNOWLEDGE_COST = 100;
-        public static int ABSOLUTE_ZERO_COST = 250;
+        public static int FROZEN_LANCE_COST = 80;
+        public static int MIRROR_IMAGE_COST = 160;
+        public static int PROMISED_KNOWLEDGE_COST = 500;
+        public static int ABSOLUTE_ZERO_COST = 1200;
         // [理]
         public static int WORD_OF_POWER_COST = 30;
-        public static int GALE_WIND_COST = 45;
-        public static int WORD_OF_LIFE_COST = 45;
-        public static int WORD_OF_FORTUNE_COST = 65;
-        public static int AETHER_DRIVE_COST = 120;
+        public static int GALE_WIND_COST = 80;
+        public static int WORD_OF_LIFE_COST = 100;
+        public static int WORD_OF_FORTUNE_COST = 250;
+        public static int AETHER_DRIVE_COST = 450;
         public static int GENESIS_COST = 0;
-        public static int ETERNAL_PRESENCE_COST = 350;
+        public static int ETERNAL_PRESENCE_COST = 1000;
         // [空]
         public static int DISPEL_MAGIC_COST = 50;
-        public static int RISE_OF_IMAGE_COST = 30;
-        public static int DEFLECTION_COST = 120;
-        public static int TRANQUILITY_COST = 50;
-        public static int ONE_IMMUNITY_COST = 65;
-        public static int WHITE_OUT_COST = 95;
-        public static int TIME_STOP_COST = 300;
+        public static int RISE_OF_IMAGE_COST = 80;
+        public static int DEFLECTION_COST = 150;
+        public static int TRANQUILITY_COST = 200;
+        public static int ONE_IMMUNITY_COST = 550;
+        public static int WHITE_OUT_COST = 800;
+        public static int TIME_STOP_COST = 1500;
         #endregion
 
         // s 後編追加
         #region "複合魔法消費コスト"
         // [聖闇]（完全逆）
-        public static int PSYCHIC_TRANCE_COST = 1600;
-        public static int BLIND_JUSTICE_COST = 1600;
-        public static int TRANSCENDENT_WISH_COST = 3600;
+        public static int PSYCHIC_TRANCE_COST = 800;
+        public static int BLIND_JUSTICE_COST = 800;
+        public static int TRANSCENDENT_WISH_COST = 1800;
 
         // [聖火]
         public static int FLASH_BLAZE_COST = 250;
         public static int LIGHT_DETONATOR_COST = 650;
-        public static int ASCENDANT_METEOR_COST = 0; // 全消費する意味で０としている。
+        public static int ASCENDANT_METEOR_COST = 0;
 
         // [聖水]
         public static int SKY_SHIELD_COST = 350;
-        public static int SACRED_HEAL_COST = 1100;
-        public static int EVER_DROPLET_COST = 500;
+        public static int SACRED_HEAL_COST = 700;
+        public static int EVER_DROPLET_COST = 950;
 
         // [聖理]
         public static int HOLY_BREAKER_COST = 210;
         public static int EXALTED_FIELD_COST = 650;
-        public static int HYMN_CONTRACT_COST = 1200;
+        public static int HYMN_CONTRACT_COST = 900;
 
         // [聖空]
         public static int STAR_LIGHTNING_COST = 400;
-        public static int ANGEL_BREATH_COST = 1100;
-        public static int ENDLESS_ANTHEM_COST = 1500;
+        public static int ANGEL_BREATH_COST = 600;
+        public static int ENDLESS_ANTHEM_COST = 900;
 
         // [闇火]
         public static int BLACK_FIRE_COST = 350;
-        public static int BLAZING_FIELD_COST = 1000;
-        public static int DEMONIC_IGNITE_COST = 1600;
+        public static int BLAZING_FIELD_COST = 600;
+        public static int DEMONIC_IGNITE_COST = 1200;
 
         // [闇水]
-        public static int BLUE_BULLET_COST = 200;
-        public static int DEEP_MIRROR_COST = 700;
-        public static int DEATH_DENY_COST = 2500;
+        public static int BLUE_BULLET_COST = 250;
+        public static int DEEP_MIRROR_COST = 400;
+        public static int DEATH_DENY_COST = 1000;
 
         // [闇理]
         public static int WORD_OF_MALICE_COST = 250;
-        public static int ABYSS_EYE_COST = 1000;
-        public static int SIN_FORTUNE_COST = 2700;
+        public static int ABYSS_EYE_COST = 600;
+        public static int SIN_FORTUNE_COST = 850;
 
         // [闇空]
-        public static int DARKEN_FIELD_COST = 500;
-        public static int DOOM_BLADE_COST = 1200;
-        public static int ECLIPSE_END_COST = 2500;
+        public static int DARKEN_FIELD_COST = 450;
+        public static int DOOM_BLADE_COST = 700;
+        public static int ECLIPSE_END_COST = 1500;
 
         // [火水]（完全逆）
-        public static int FROZEN_AURA_COST = 1500;
-        public static int CHILL_BURN_COST = 3500;
-        public static int ZETA_EXPLOSION_COST = 5000;
+        public static int FROZEN_AURA_COST = 800;
+        public static int CHILL_BURN_COST = 1200;
+        public static int ZETA_EXPLOSION_COST = 2500;
 
         // [火理]
-        public static int ENRAGE_BLAST_COST = 250;
+        public static int ENRAGE_BLAST_COST = 300;
         public static int PIERCING_FLAME_COST = 650;
-        public static int SIGIL_OF_HOMURA_COST = 1600;
+        public static int SIGIL_OF_HOMURA_COST = 1200;
 
         // [火空]
         public static int IMMOLATE_COST = 300;
-        public static int PHANTASMAL_WIND_COST = 500;
-        public static int RED_DRAGON_WILL_COST = 2200;
+        public static int PHANTASMAL_WIND_COST = 600;
+        public static int RED_DRAGON_WILL_COST = 1000;
 
         // [水理]
-        public static int WORD_OF_ATTITUDE_COST = 200;
-        public static int STATIC_BARRIER_COST = 900;
-        public static int AUSTERITY_MATRIX_COST = 1800;
+        public static int WORD_OF_ATTITUDE_COST = 350;
+        public static int STATIC_BARRIER_COST = 600;
+        public static int AUSTERITY_MATRIX_COST = 1500;
 
         // [水空]
-        public static int VANISH_WAVE_COST = 500;
-        public static int VORTEX_FIELD_COST = 1100;
-        public static int BLUE_DRAGON_WILL_COST = 2200;
+        public static int VANISH_WAVE_COST = 450;
+        public static int VORTEX_FIELD_COST = 700;
+        public static int BLUE_DRAGON_WILL_COST = 1000;
 
         // [理空]（完全逆）
-        public static int SEVENTH_MAGIC_COST = 1200;
-        public static int PARADOX_IMAGE_COST = 1800;
-        public static int WARP_GATE_COST = 3500;
+        public static int SEVENTH_MAGIC_COST = 750;
+        public static int PARADOX_IMAGE_COST = 1200;
+        public static int WARP_GATE_COST = 2000;
         #endregion
         // e 後編追加
 
@@ -753,13 +753,13 @@ namespace DungeonPlayer
         public static int SOUL_INFINITY_COST = 85;
         // [静]
         public static int COUNTER_ATTACK_COST = 10;
-        public static int PURE_PURIFICATION_COST = 20;
-        public static int ANTI_STUN_COST = 10;
-        public static int STANCE_OF_DEATH_COST = 30;
+        public static int PURE_PURIFICATION_COST = 15;
+        public static int ANTI_STUN_COST = 20;
+        public static int STANCE_OF_DEATH_COST = 35;
         // [柔]
         public static int STANCE_OF_FLOW_COST = 5;
-        public static int ENIGMA_SENSE_COST = 10;
-        public static int SILENT_RUSH_COST = 45;
+        public static int ENIGMA_SENSE_COST = 15;
+        public static int SILENT_RUSH_COST = 40;
         public static int OBORO_IMPACT_COST = 90;
         // [剛]
         public static int STANCE_OF_STANDING_COST = 5;
@@ -785,23 +785,23 @@ namespace DungeonPlayer
 
         // [動　柔]
         public static int SWIFT_STEP_COST = 20;
-        public static int VIGOR_SENSE_COST = 10;
+        public static int VIGOR_SENSE_COST = 35;
 
         // [動　剛]
-        public static int CIRCLE_SLASH_COST = 30;
-        public static int RISING_AURA_COST = 60;
+        public static int CIRCLE_SLASH_COST = 20;
+        public static int RISING_AURA_COST = 30;
 
         // [動　心眼]
         public static int RUMBLE_SHOUT_COST = 5;
-        public static int ONSLAUGHT_HIT_COST = 15;
+        public static int ONSLAUGHT_HIT_COST = 20;
 
         // [動　無心]
-        public static int COLORLESS_MOVE_COST = 10;
-        public static int ASCENSION_AURA_COST = 15;
+        public static int COLORLESS_MOVE_COST = 15;
+        public static int ASCENSION_AURA_COST = 30;
 
         // [静　柔]
-        public static int FUTURE_VISION_COST = 10;
-        public static int UNKNOWN_SHOCK_COST = 20;
+        public static int FUTURE_VISION_COST = 20;
+        public static int UNKNOWN_SHOCK_COST = 30;
 
         // [静　剛]
         public static int REFLEX_SPIRIT_COST = 10;
@@ -809,15 +809,15 @@ namespace DungeonPlayer
 
         // [静　心眼]
         public static int SHARP_GLARE_COST = 15;
-        public static int CONCUSSIVE_HIT_COST = 15;
+        public static int CONCUSSIVE_HIT_COST = 20;
 
         // [静　無心]
-        public static int TRUST_SILENCE_COST = 40;
-        public static int MIND_KILLING_COST = 5;
+        public static int TRUST_SILENCE_COST = 10;
+        public static int MIND_KILLING_COST = 20;
 
         // [柔　剛]（完全逆）
-        public static int SURPRISE_ATTACK_COST = 40;
-        public static int IMPULSE_HIT_COST = 20;
+        public static int SURPRISE_ATTACK_COST = 35;
+        public static int STANCE_OF_MYSTIC_COST = 60;
 
         // [柔　心眼]
         public static int PSYCHIC_WAVE_COST = 10;
@@ -825,11 +825,11 @@ namespace DungeonPlayer
 
         // [柔　無心]
         public static int RECOVER_COST = 10;
-        public static int STANCE_OF_MYSTIC_COST = 30;
+        public static int IMPULSE_HIT_COST = 20;
 
         // [剛　心眼]
-        public static int VIOLENT_SLASH_COST = 25;
-        public static int ONE_AUTHORITY_COST = 10;
+        public static int VIOLENT_SLASH_COST = 15;
+        public static int ONE_AUTHORITY_COST = 30;
 
         // [剛　無心]
         public static int OUTER_INSPIRATION_COST = 10;

@@ -7036,7 +7036,7 @@ namespace DungeonPlayer
             {
                 if (player.CurrentLife >= player.MaxLife)
                 {
-                    player.labelCurrentLifePoint.color = Color.green;
+                    player.labelCurrentLifePoint.color = UnityColor.ForestGreen;
                     if (this.NowTimeStop)
                     {
                         player.labelCurrentLifePoint.color = UnityColor.Lightgreen;
