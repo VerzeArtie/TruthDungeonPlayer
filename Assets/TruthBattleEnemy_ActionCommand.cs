@@ -1147,7 +1147,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellAbsoluteZero(MainCharacter player, MainCharacter target)
         {
-            int effectTurn = 4;
+            int effectTurn = TruthActionCommand.IsBuffTurn(Database.ABSOLUTE_ZERO);
             if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE) { effectTurn = 1; }
             GroundOne.PlaySoundEffect("AbsoluteZero");
             if (player.Target.CurrentAbsoluteZero <= 0) // 強力無比な魔法のため、継続ターンの連続更新は出来なくしている。
@@ -1607,7 +1607,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSkillStanceOfStanding(MainCharacter player, MainCharacter target)
         {
-            PlayerBuffAbstract(player, player, 2, Database.STANCE_OF_STANDING);
+            PlayerBuffAbstract(player, player, 3, Database.STANCE_OF_STANDING);
             UpdateBattleText(player.GetCharacterSentence(56));
         }
         /// <summary>

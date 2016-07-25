@@ -677,7 +677,7 @@ namespace DungeonPlayer
         }
 
         // プレイヤーアクションタイプを判別
-        public static DungeonPlayer.MainCharacter.PlayerAction CheckPlayerActionFromString(string commandName)
+        public static MainCharacter.PlayerAction CheckPlayerActionFromString(string commandName)
         {
             if (commandName == Database.ATTACK_EN)
             {
@@ -2724,191 +2724,6 @@ namespace DungeonPlayer
             }
         }
 
-        // プレイヤーアクションタイプを判別
-        public static MainCharacter.PlayerAction PlayerActionFromString(string commandName)
-        {
-            if (commandName == Database.ATTACK_EN)
-            {
-                return MainCharacter.PlayerAction.NormalAttack;
-            }
-            else if (commandName == Database.DEFENSE_EN)
-            {
-                return MainCharacter.PlayerAction.Defense;
-            }
-            else if (commandName == Database.STAY_EN)
-            {
-                return MainCharacter.PlayerAction.None;
-            }
-            else if (commandName == Database.TAMERU_EN)
-            {
-                return MainCharacter.PlayerAction.Charge;
-            }
-            else if ((commandName == Database.FRESH_HEAL) ||
-                     (commandName == Database.PROTECTION) ||
-                     (commandName == Database.HOLY_SHOCK) ||
-                     (commandName == Database.SAINT_POWER) ||
-                     (commandName == Database.GLORY) ||
-                     (commandName == Database.RESURRECTION) ||
-                     (commandName == Database.CELESTIAL_NOVA) ||
-                     (commandName == Database.DARK_BLAST) ||
-                     (commandName == Database.SHADOW_PACT) ||
-                     (commandName == Database.LIFE_TAP) ||
-                     (commandName == Database.BLACK_CONTRACT) ||
-                     (commandName == Database.DEVOURING_PLAGUE) ||
-                     (commandName == Database.BLOODY_VENGEANCE) ||
-                     (commandName == Database.DAMNATION) ||
-                     (commandName == Database.FIRE_BALL) ||
-                     (commandName == Database.FLAME_AURA) ||
-                     (commandName == Database.HEAT_BOOST) ||
-                     (commandName == Database.FLAME_STRIKE) ||
-                     (commandName == Database.VOLCANIC_WAVE) ||
-                     (commandName == Database.IMMORTAL_RAVE) ||
-                     (commandName == Database.LAVA_ANNIHILATION) ||
-                     (commandName == Database.ICE_NEEDLE) ||
-                     (commandName == Database.ABSORB_WATER) ||
-                     (commandName == Database.CLEANSING) ||
-                     (commandName == Database.FROZEN_LANCE) ||
-                     (commandName == Database.MIRROR_IMAGE) ||
-                     (commandName == Database.PROMISED_KNOWLEDGE) ||
-                     (commandName == Database.ABSOLUTE_ZERO) ||
-                     (commandName == Database.WORD_OF_POWER) ||
-                     (commandName == Database.GALE_WIND) ||
-                     (commandName == Database.WORD_OF_LIFE) ||
-                     (commandName == Database.WORD_OF_FORTUNE) ||
-                     (commandName == Database.AETHER_DRIVE) ||
-                     (commandName == Database.GENESIS) ||
-                     (commandName == Database.ETERNAL_PRESENCE) ||
-                     (commandName == Database.DISPEL_MAGIC) ||
-                     (commandName == Database.RISE_OF_IMAGE) ||
-                     (commandName == Database.DEFLECTION) ||
-                     (commandName == Database.TRANQUILITY) ||
-                     (commandName == Database.ONE_IMMUNITY) ||
-                     (commandName == Database.WHITE_OUT) ||
-                     (commandName == Database.TIME_STOP) ||
-                     (commandName == Database.PSYCHIC_TRANCE) ||
-                     (commandName == Database.BLIND_JUSTICE) ||
-                     (commandName == Database.TRANSCENDENT_WISH) ||
-                     (commandName == Database.FLASH_BLAZE) ||
-                     (commandName == Database.LIGHT_DETONATOR) ||
-                     (commandName == Database.ASCENDANT_METEOR) ||
-                     (commandName == Database.SKY_SHIELD) ||
-                     (commandName == Database.SACRED_HEAL) ||
-                     (commandName == Database.EVER_DROPLET) ||
-                     (commandName == Database.HOLY_BREAKER) ||
-                     (commandName == Database.EXALTED_FIELD) ||
-                     (commandName == Database.HYMN_CONTRACT) ||
-                     (commandName == Database.STAR_LIGHTNING) ||
-                     (commandName == Database.ANGEL_BREATH) ||
-                     (commandName == Database.ENDLESS_ANTHEM) ||
-                     (commandName == Database.BLACK_FIRE) ||
-                     (commandName == Database.BLAZING_FIELD) ||
-                     (commandName == Database.DEMONIC_IGNITE) ||
-                     (commandName == Database.BLUE_BULLET) ||
-                     (commandName == Database.DEEP_MIRROR) ||
-                     (commandName == Database.DEATH_DENY) ||
-                     (commandName == Database.WORD_OF_MALICE) ||
-                     (commandName == Database.ABYSS_EYE) ||
-                     (commandName == Database.SIN_FORTUNE) ||
-                     (commandName == Database.DARKEN_FIELD) ||
-                     (commandName == Database.DOOM_BLADE) ||
-                     (commandName == Database.ECLIPSE_END) ||
-                     (commandName == Database.DARKEN_FIELD) ||
-                     (commandName == Database.DOOM_BLADE) ||
-                     (commandName == Database.ECLIPSE_END) ||
-                     (commandName == Database.FROZEN_AURA) ||
-                     (commandName == Database.CHILL_BURN) ||
-                     (commandName == Database.ZETA_EXPLOSION) ||
-                     (commandName == Database.ENRAGE_BLAST) ||
-                     (commandName == Database.PIERCING_FLAME) ||
-                     (commandName == Database.SIGIL_OF_HOMURA) ||
-                     (commandName == Database.IMMOLATE) ||
-                     (commandName == Database.PHANTASMAL_WIND) ||
-                     (commandName == Database.RED_DRAGON_WILL) ||
-                     (commandName == Database.WORD_OF_ATTITUDE) ||
-                     (commandName == Database.STATIC_BARRIER) ||
-                     (commandName == Database.AUSTERITY_MATRIX) ||
-                     (commandName == Database.VANISH_WAVE) ||
-                     (commandName == Database.VORTEX_FIELD) ||
-                     (commandName == Database.BLUE_DRAGON_WILL) ||
-                     (commandName == Database.SEVENTH_MAGIC) ||
-                     (commandName == Database.PARADOX_IMAGE) ||
-                     (commandName == Database.WARP_GATE)
-                )
-            {
-                return MainCharacter.PlayerAction.UseSpell;
-            }
-
-            else if ((commandName == Database.STRAIGHT_SMASH) ||
-                     (commandName == Database.DOUBLE_SLASH) ||
-                     (commandName == Database.CRUSHING_BLOW) ||
-                     (commandName == Database.SOUL_INFINITY) ||
-                     (commandName == Database.COUNTER_ATTACK) ||
-                     (commandName == Database.PURE_PURIFICATION) ||
-                     (commandName == Database.ANTI_STUN) ||
-                     (commandName == Database.STANCE_OF_DEATH) ||
-                     (commandName == Database.STANCE_OF_FLOW) ||
-                     (commandName == Database.ENIGMA_SENSE) ||
-                     (commandName == Database.SILENT_RUSH) ||
-                     (commandName == Database.OBORO_IMPACT) ||
-                     (commandName == Database.STANCE_OF_STANDING) ||
-                     (commandName == Database.INNER_INSPIRATION) ||
-                     (commandName == Database.KINETIC_SMASH) ||
-                     (commandName == Database.CATASTROPHE) ||
-                     (commandName == Database.TRUTH_VISION) ||
-                     (commandName == Database.HIGH_EMOTIONALITY) ||
-                     (commandName == Database.STANCE_OF_EYES) ||
-                     (commandName == Database.PAINFUL_INSANITY) ||
-                     (commandName == Database.NEGATE) ||
-                     (commandName == Database.VOID_EXTRACTION) ||
-                     (commandName == Database.CARNAGE_RUSH) ||
-                     (commandName == Database.NOTHING_OF_NOTHINGNESS) ||
-                     (commandName == Database.NEUTRAL_SMASH) ||
-                     (commandName == Database.STANCE_OF_DOUBLE) ||
-                     (commandName == Database.SWIFT_STEP) ||
-                     (commandName == Database.VIGOR_SENSE) ||
-                     (commandName == Database.CIRCLE_SLASH) ||
-                     (commandName == Database.RISING_AURA) ||
-                     (commandName == Database.RUMBLE_SHOUT) ||
-                     (commandName == Database.ONSLAUGHT_HIT) ||
-                     (commandName == Database.COLORLESS_MOVE) ||
-                     (commandName == Database.ASCENSION_AURA) ||
-                     (commandName == Database.FUTURE_VISION) ||
-                     (commandName == Database.UNKNOWN_SHOCK) ||
-                     (commandName == Database.REFLEX_SPIRIT) ||
-                     (commandName == Database.FATAL_BLOW) ||
-                     (commandName == Database.SHARP_GLARE) ||
-                     (commandName == Database.CONCUSSIVE_HIT) ||
-                     (commandName == Database.TRUST_SILENCE) ||
-                     (commandName == Database.MIND_KILLING) ||
-                     (commandName == Database.SURPRISE_ATTACK) ||
-                     (commandName == Database.STANCE_OF_MYSTIC) ||
-                     (commandName == Database.PSYCHIC_WAVE) ||
-                     (commandName == Database.NOURISH_SENSE) ||
-                     (commandName == Database.RECOVER) ||
-                     (commandName == Database.IMPULSE_HIT) ||
-                     (commandName == Database.VIOLENT_SLASH) ||
-                     (commandName == Database.ONE_AUTHORITY) ||
-                     (commandName == Database.OUTER_INSPIRATION) ||
-                     (commandName == Database.HARDEST_PARRY) ||
-                     (commandName == Database.STANCE_OF_SUDDENNESS) ||
-                     (commandName == Database.SOUL_EXECUTION)
-                )
-            {
-                return MainCharacter.PlayerAction.UseSkill;
-            }
-            else if ((commandName == Database.ARCHETYPE_EIN) ||
-                     (commandName == Database.ARCHETYPE_RANA) ||
-                     (commandName == Database.ARCHETYPE_OL) ||
-                     (commandName == Database.ARCHETYPE_VERZE))
-            {
-                return MainCharacter.PlayerAction.Archetype;
-            }
-            else
-            {
-                return MainCharacter.PlayerAction.UseItem; // 任意の文字は全てアイテム使用と判断する。
-            }
-        }
-
         // 対象のコマンドがカウンター不可能かどうかを判別
         public static bool CannotBeCountered(string command)
         {
@@ -2927,77 +2742,77 @@ namespace DungeonPlayer
             return false;
         }
 
-        //        private static double ItemEffect_SkillCost(string command, ItemBackPack item)
-        //        {
-        //            double reduce = 0.00f;
-        //            if ((item != null))
-        //            {
-        //                reduce += item.SkillCostReduction;
-        //                if (IsActive(GetSkillType(command)))
-        //                {
-        //                    reduce += item.SkillCostReductionActive;
-        //                }
-        //                if (IsPassive(GetSkillType(command)))
-        //                {
-        //                    reduce += item.SkillCostReductionPassive;
-        //                }
-        //                if (IsSoft(GetSkillType(command)))
-        //                {
-        //                    reduce += item.SkillCostReductionSoft;
-        //                }
-        //                if (IsHard(GetSkillType(command)))
-        //                {
-        //                    reduce += item.SkillCostReductionHard;
-        //                }
-        //                if (IsTruth(GetSkillType(command)))
-        //                {
-        //                    reduce += item.SkillCostReductionTruth;
-        //                }
-        //                if (IsVoid(GetSkillType(command)))
-        //                {
-        //                    reduce += item.SkillCostReductionVoid;
-        //                }
-        //            }
-        //            if (reduce >= 1.00f) { reduce = 1.00f; }
-        //
-        //            return reduce;
-        //        }
-        //
-        //        private static double ItemEffect_ManaCost(string command, ItemBackPack item)
-        //        {
-        //            double reduce = 0.00f;
-        //            if ((item != null))
-        //            {
-        //                reduce += item.ManaCostReduction;
-        //                if (IsLight(GetMagicType(command)))
-        //                {
-        //                    reduce += item.ManaCostReductionLight;
-        //                }
-        //                if (IsShadow(GetMagicType(command)))
-        //                {
-        //                    reduce += item.ManaCostReductionShadow;
-        //                }
-        //                if (IsFire(GetMagicType(command)))
-        //                {
-        //                    reduce += item.ManaCostReductionFire;
-        //                }
-        //                if (IsIce(GetMagicType(command)))
-        //                {
-        //                    reduce += item.ManaCostReductionIce;
-        //                }
-        //                if (IsForce(GetMagicType(command)))
-        //                {
-        //                    reduce += item.ManaCostReductionForce;
-        //                }
-        //                if (IsWill(GetMagicType(command)))
-        //                {
-        //                    reduce += item.ManaCostReductionWill;
-        //                }
-        //            }
-        //            if (reduce >= 1.00f) { reduce = 1.00f; }
-        //
-        //            return reduce;
-        //        }
+        private static double ItemEffect_SkillCost(string command, ItemBackPack item)
+        {
+            double reduce = 0.00f;
+            if ((item != null))
+            {
+                reduce += item.SkillCostReduction;
+                if (IsActive(GetSkillType(command)))
+                {
+                    reduce += item.SkillCostReductionActive;
+                }
+                if (IsPassive(GetSkillType(command)))
+                {
+                    reduce += item.SkillCostReductionPassive;
+                }
+                if (IsSoft(GetSkillType(command)))
+                {
+                    reduce += item.SkillCostReductionSoft;
+                }
+                if (IsHard(GetSkillType(command)))
+                {
+                    reduce += item.SkillCostReductionHard;
+                }
+                if (IsTruth(GetSkillType(command)))
+                {
+                    reduce += item.SkillCostReductionTruth;
+                }
+                if (IsVoid(GetSkillType(command)))
+                {
+                    reduce += item.SkillCostReductionVoid;
+                }
+            }
+            if (reduce >= 1.00f) { reduce = 1.00f; }
+
+            return reduce;
+        }
+
+        private static double ItemEffect_ManaCost(string command, ItemBackPack item)
+        {
+            double reduce = 0.00f;
+            if ((item != null))
+            {
+                reduce += item.ManaCostReduction;
+                if (IsLight(GetMagicType(command)))
+                {
+                    reduce += item.ManaCostReductionLight;
+                }
+                if (IsShadow(GetMagicType(command)))
+                {
+                    reduce += item.ManaCostReductionShadow;
+                }
+                if (IsFire(GetMagicType(command)))
+                {
+                    reduce += item.ManaCostReductionFire;
+                }
+                if (IsIce(GetMagicType(command)))
+                {
+                    reduce += item.ManaCostReductionIce;
+                }
+                if (IsForce(GetMagicType(command)))
+                {
+                    reduce += item.ManaCostReductionForce;
+                }
+                if (IsWill(GetMagicType(command)))
+                {
+                    reduce += item.ManaCostReductionWill;
+                }
+            }
+            if (reduce >= 1.00f) { reduce = 1.00f; }
+
+            return reduce;
+        }
 
         // コマンドのコスト
         public static int Cost(string command, MainCharacter player)
@@ -3005,24 +2820,25 @@ namespace DungeonPlayer
             double manaReduce = 0;
             double skillReduce = 0;
 
-            if (player.CurrentOneAuthority > 0)
+            if (player != null)
             {
-                skillReduce = 0.5f;
+                if (player.CurrentOneAuthority > 0)
+                {
+                    skillReduce = 0.5f;
+                }
+
+                manaReduce += ItemEffect_ManaCost(command, player.MainWeapon);
+                manaReduce += ItemEffect_ManaCost(command, player.SubWeapon);
+                manaReduce += ItemEffect_ManaCost(command, player.MainArmor);
+                manaReduce += ItemEffect_ManaCost(command, player.Accessory);
+                manaReduce += ItemEffect_ManaCost(command, player.Accessory2);
+
+                skillReduce += ItemEffect_SkillCost(command, player.MainWeapon);
+                skillReduce += ItemEffect_SkillCost(command, player.SubWeapon);
+                skillReduce += ItemEffect_SkillCost(command, player.MainArmor);
+                skillReduce += ItemEffect_SkillCost(command, player.Accessory);
+                skillReduce += ItemEffect_SkillCost(command, player.Accessory2);
             }
-            //            if (player != null)
-            //            {
-            //                manaReduce += ItemEffect_ManaCost(command, player.MainWeapon);
-            //                manaReduce += ItemEffect_ManaCost(command, player.SubWeapon);
-            //                manaReduce += ItemEffect_ManaCost(command, player.MainArmor);
-            //                manaReduce += ItemEffect_ManaCost(command, player.Accessory);
-            //                manaReduce += ItemEffect_ManaCost(command, player.Accessory2);
-            //
-            //                skillReduce += ItemEffect_SkillCost(command, player.MainWeapon);
-            //                skillReduce += ItemEffect_SkillCost(command, player.SubWeapon);
-            //                skillReduce += ItemEffect_SkillCost(command, player.MainArmor);
-            //                skillReduce += ItemEffect_SkillCost(command, player.Accessory);
-            //                skillReduce += ItemEffect_SkillCost(command, player.Accessory2);
-            //            }
             if (manaReduce >= 1.00f) { manaReduce = 1.00f; }
             if (skillReduce >= 1.00f) { skillReduce = 1.00f; }
 
@@ -3486,7 +3302,7 @@ namespace DungeonPlayer
             // スキル
             if (command == Database.STRAIGHT_SMASH) { return TimingType.Instant; }
             if (command == Database.DOUBLE_SLASH) { return TimingType.Instant; }
-            if (command == Database.CRUSHING_BLOW) { return TimingType.Sorcery; }
+            if (command == Database.CRUSHING_BLOW) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.SOUL_INFINITY) { return TimingType.Sorcery; }
 
             if (command == Database.COUNTER_ATTACK) { return TimingType.Instant; }
@@ -3511,7 +3327,7 @@ namespace DungeonPlayer
 
             if (command == Database.NEGATE) { return TimingType.Instant; }
             if (command == Database.VOID_EXTRACTION) { return TimingType.Instant; }
-            if (command == Database.CARNAGE_RUSH) { return TimingType.Sorcery; }
+            if (command == Database.CARNAGE_RUSH) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.NOTHING_OF_NOTHINGNESS) { return TimingType.Sorcery; }
 
             if (command == Database.NEUTRAL_SMASH) { return TimingType.Instant; }
@@ -3783,6 +3599,93 @@ namespace DungeonPlayer
             if (command == Database.COMMON_STAR_DUST_RING) { return TargetType.Enemy; }
 
             return TargetType.NoTarget;
+        }
+
+        public static int IsBuffTurn(string command)
+        {
+            if (command == Database.PROTECTION) { return Database.INFINITY; }
+            if (command == Database.SAINT_POWER) { return Database.INFINITY; }
+            if (command == Database.GLORY) { return 3; }
+            if (command == Database.BLACK_CONTRACT) { return 3; }
+            if (command == Database.BLOODY_VENGEANCE) { return Database.INFINITY; }
+            if (command == Database.DAMNATION) { return Database.INFINITY; }
+            if (command == Database.FLAME_AURA) { return Database.INFINITY; }
+            if (command == Database.HEAT_BOOST) { return Database.INFINITY; }
+            if (command == Database.IMMORTAL_RAVE) { return 3; }
+            if (command == Database.ABSORB_WATER) { return Database.INFINITY; }
+            if (command == Database.MIRROR_IMAGE) { return Database.INFINITY; }
+            if (command == Database.PROMISED_KNOWLEDGE) { return Database.INFINITY; }
+            if (command == Database.ABSOLUTE_ZERO) { return 3; }
+            if (command == Database.GALE_WIND) { return 2; }
+            if (command == Database.WORD_OF_LIFE) { return Database.INFINITY; }
+            if (command == Database.WORD_OF_FORTUNE) { return 2; }
+            if (command == Database.AETHER_DRIVE) { return 3; }
+            if (command == Database.ETERNAL_PRESENCE) { return Database.INFINITY; }
+            if (command == Database.RISE_OF_IMAGE) { return Database.INFINITY; }
+            if (command == Database.DEFLECTION) { return Database.INFINITY; }
+            if (command == Database.ONE_IMMUNITY) { return 3; }
+            if (command == Database.TIME_STOP) { return 2; }
+            if (command == Database.PSYCHIC_TRANCE) { return Database.INFINITY; }
+            if (command == Database.BLIND_JUSTICE) { return Database.INFINITY; }
+            if (command == Database.TRANSCENDENT_WISH) { return 3; }
+            if (command == Database.FLASH_BLAZE) { return Database.INFINITY; }
+            if (command == Database.SKY_SHIELD) { return Database.INFINITY; }
+            if (command == Database.EVER_DROPLET) { return Database.INFINITY; }
+            if (command == Database.HOLY_BREAKER) { return Database.INFINITY; }
+            if (command == Database.EXALTED_FIELD) { return Database.INFINITY; }
+            if (command == Database.HYMN_CONTRACT) { return 3; }
+            if (command == Database.STAR_LIGHTNING) { return 1; }
+            if (command == Database.BLACK_FIRE) { return Database.INFINITY; }
+            if (command == Database.BLAZING_FIELD) { return Database.INFINITY; }
+            if (command == Database.DEMONIC_IGNITE) { return 2; }
+            if (command == Database.WORD_OF_MALICE) { return Database.INFINITY; }
+            if (command == Database.SIN_FORTUNE) { return Database.INFINITY; }
+            if (command == Database.DARKEN_FIELD) { return Database.INFINITY; }
+            if (command == Database.ECLIPSE_END) { return 2; }
+            if (command == Database.FROZEN_AURA) { return Database.INFINITY; }
+            if (command == Database.CHILL_BURN) { return 2; }
+            if (command == Database.ENRAGE_BLAST) { return Database.INFINITY; }
+            if (command == Database.SIGIL_OF_HOMURA) { return Database.INFINITY; }
+            if (command == Database.IMMOLATE) { return Database.INFINITY; }
+            if (command == Database.PHANTASMAL_WIND) { return Database.INFINITY; }
+            if (command == Database.RED_DRAGON_WILL) { return Database.INFINITY; }
+            if (command == Database.STATIC_BARRIER) { return Database.INFINITY; }
+            if (command == Database.AUSTERITY_MATRIX) { return Database.INFINITY; }
+            if (command == Database.VORTEX_FIELD) { return 3; }
+            if (command == Database.BLUE_DRAGON_WILL) { return Database.INFINITY; }
+            if (command == Database.SEVENTH_MAGIC) { return Database.INFINITY; }
+            if (command == Database.PARADOX_IMAGE) { return Database.INFINITY; }
+
+            // スキル
+            if (command == Database.CRUSHING_BLOW) { return 2; }
+            if (command == Database.ANTI_STUN) { return Database.INFINITY; }
+            if (command == Database.STANCE_OF_DEATH) { return Database.INFINITY; }
+            if (command == Database.STANCE_OF_FLOW) { return 3; }
+            if (command == Database.STANCE_OF_STANDING) { return 3; }
+            if (command == Database.TRUTH_VISION) { return Database.INFINITY; }
+            if (command == Database.HIGH_EMOTIONALITY) { return 3; }
+            if (command == Database.PAINFUL_INSANITY) { return Database.INFINITY; }
+            if (command == Database.VOID_EXTRACTION) { return 3; }
+            if (command == Database.NOTHING_OF_NOTHINGNESS) { return Database.INFINITY; }
+            if (command == Database.STANCE_OF_DOUBLE) { return 3; }
+            if (command == Database.SWIFT_STEP) { return Database.INFINITY; }
+            if (command == Database.VIGOR_SENSE) { return 3; }
+            if (command == Database.RISING_AURA) { return Database.INFINITY; }
+            if (command == Database.ONSLAUGHT_HIT) { return Database.INFINITY; }
+            if (command == Database.COLORLESS_MOVE) { return 3; }
+            if (command == Database.ASCENSION_AURA) { return Database.INFINITY; }
+            if (command == Database.FUTURE_VISION) { return 2; }
+            if (command == Database.UNKNOWN_SHOCK) { return 3; }
+            if (command == Database.SHARP_GLARE) { return 3; }
+            if (command == Database.CONCUSSIVE_HIT) { return Database.INFINITY; }
+            if (command == Database.SURPRISE_ATTACK) { return 2; }
+            if (command == Database.STANCE_OF_MYSTIC) { return Database.INFINITY; }
+            if (command == Database.NOURISH_SENSE) { return 5; }
+            if (command == Database.IMPULSE_HIT) { return Database.INFINITY; }
+            if (command == Database.ONE_AUTHORITY) { return 3; }
+            if (command == Database.ARCHETYPE_EIN) { return Database.INFINITY; }
+
+            return 0;
         }
 
         // 解説部
