@@ -3606,6 +3606,7 @@ namespace DungeonPlayer
             if (command == Database.PROTECTION) { return Database.INFINITY; }
             if (command == Database.SAINT_POWER) { return Database.INFINITY; }
             if (command == Database.GLORY) { return 3; }
+            if (command == Database.SHADOW_PACT) { return Database.INFINITY; }
             if (command == Database.BLACK_CONTRACT) { return 3; }
             if (command == Database.BLOODY_VENGEANCE) { return Database.INFINITY; }
             if (command == Database.DAMNATION) { return Database.INFINITY; }
@@ -3615,7 +3616,7 @@ namespace DungeonPlayer
             if (command == Database.ABSORB_WATER) { return Database.INFINITY; }
             if (command == Database.MIRROR_IMAGE) { return Database.INFINITY; }
             if (command == Database.PROMISED_KNOWLEDGE) { return Database.INFINITY; }
-            if (command == Database.ABSOLUTE_ZERO) { return 3; }
+            if (command == Database.ABSOLUTE_ZERO) { return 2; }
             if (command == Database.GALE_WIND) { return 2; }
             if (command == Database.WORD_OF_LIFE) { return Database.INFINITY; }
             if (command == Database.WORD_OF_FORTUNE) { return 2; }
@@ -3624,7 +3625,7 @@ namespace DungeonPlayer
             if (command == Database.RISE_OF_IMAGE) { return Database.INFINITY; }
             if (command == Database.DEFLECTION) { return Database.INFINITY; }
             if (command == Database.ONE_IMMUNITY) { return 3; }
-            if (command == Database.TIME_STOP) { return 2; }
+            if (command == Database.TIME_STOP) { return 1; }
             if (command == Database.PSYCHIC_TRANCE) { return Database.INFINITY; }
             if (command == Database.BLIND_JUSTICE) { return Database.INFINITY; }
             if (command == Database.TRANSCENDENT_WISH) { return 3; }
@@ -3684,6 +3685,40 @@ namespace DungeonPlayer
             if (command == Database.IMPULSE_HIT) { return Database.INFINITY; }
             if (command == Database.ONE_AUTHORITY) { return 3; }
             if (command == Database.ARCHETYPE_EIN) { return Database.INFINITY; }
+
+            // アイテム
+            //if (command == Database.RARE_RISING_KNUCKLE) { return TargetType.Enemy; }
+            //if (command == Database.RARE_ICE_SWORD) { return TargetType.Enemy; }
+            //if (command == Database.RARE_AERO_BLADE) { return TargetType.Enemy; }
+            //if (command == Database.RARE_LIFE_SWORD) { return TargetType.Own; }
+            //if (command == Database.COMMON_HAYATE_ORB) { return TargetType.Own; }
+            //if (command == Database.RARE_AUTUMN_ROD) { return TargetType.Own; }
+            //if (command == Database.RARE_BLUE_LIGHTNING) { return TargetType.Enemy; }
+            //if (command == Database.RARE_BURNING_CLAYMORE) { return TargetType.Own; }
+            //if (command == Database.COMMON_CHIENOWA_RING) { return TargetType.Own; }
+            //if (command == Database.COMMON_ROCKET_DASH) { return TargetType.Own; }
+            //if (command == Database.COMMON_WAR_DRUM) { return TargetType.AllyGroup; }
+            //if (command == Database.RARE_ROD_OF_STRENGTH) { return TargetType.Own; }
+            //if (command == Database.RARE_WRATH_SERVEL_CLAW) { return TargetType.Enemy; }
+            //if (command == Database.RARE_BLUE_RED_ROD) { return TargetType.Enemy; } // マナ回復自分自身はココから指定ではなく、直接コード記述となっている。
+            //if (command == Database.RARE_MEIUN_BOX) { return TargetType.Own; }
+            //if (command == Database.RARE_FROZEN_LAVA) { return TargetType.Enemy; }
+            //if (command == Database.COMMON_STAR_DUST_RING) { return TargetType.Enemy; }
+            if (command == Database.ITEMCOMMAND_ETERNAL_FATE) { return Database.INFINITY; }
+            if (command == Database.ITEMCOMMAND_LIGHT_SERVANT) { return Database.INFINITY; }
+            if (command == Database.ITEMCOMMAND_SHADOW_SERVANT) { return Database.INFINITY; }
+            if (command == Database.ITEMCOMMAND_MAZE_CUBE) { return Database.INFINITY; }
+            if (command == Database.ITEMCOMMAND_DETACHMENT_ORB) { return 2; }
+            if (command == Database.ITEMCOMMAND_DEVIL_SUMMONER_TOME) { return Database.INFINITY; }
+            if (command == Database.ITEMCOMMAND_JUZA_PHANTASMAL) { return Database.INFINITY; }
+            if (command == Database.ITEMCOMMAND_VOID_HYMNSONIA) { return Database.INFINITY; }
+            if (command == Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN) { return Database.INFINITY; }
+            if (command == Database.ITEMCOMMAND_FELTUS) { return Database.INFINITY; }
+
+            // その他
+            if (command == Database.AFTER_REVIVE_HALF) { return Database.INFINITY; }
+            if (command == Database.CHAOTIC_SCHEMA) { return 1; }
+            if (command == Database.LIFE_COUNT) { return Database.INFINITY; }
 
             return 0;
         }

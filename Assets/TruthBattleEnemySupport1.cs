@@ -233,21 +233,21 @@ namespace DungeonPlayer
             // 任意の行動を行うたびに、神の蓄積カウンターが１つ自分にBUFFとして蓄積する。
             if ((player.MainWeapon != null) && (player.MainWeapon.Name == Database.LEGENDARY_FELTUS) && (PA != MainCharacter.PlayerAction.Defense))
             {
-                PlayerBuffAbstract(player, player, Database.INFINITY, Database.ITEMCOMMAND_FELTUS);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_FELTUS);
             }
             if ((player.SubWeapon != null) && (player.SubWeapon.Name == Database.LEGENDARY_FELTUS) && (PA != MainCharacter.PlayerAction.Defense))
             {
-                PlayerBuffAbstract(player, player, Database.INFINITY, Database.ITEMCOMMAND_FELTUS);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_FELTUS);
             }
 
             // 任意の行動を行うたびに、蒼の蓄積カウンターが１つ自分にBUFFとして蓄積する。
             if ((player.Accessory != null) && (player.Accessory.Name == Database.EPIC_ADILRING_OF_BLUE_BURN) && (PA != MainCharacter.PlayerAction.Defense))
             {
-                PlayerBuffAbstract(player, player, Database.INFINITY, Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN);
             }
             if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.EPIC_ADILRING_OF_BLUE_BURN) && (PA != MainCharacter.PlayerAction.Defense))
             {
-                PlayerBuffAbstract(player, player, Database.INFINITY, Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_ADIL_RING_BLUE_BURN);
             }
 
             // 任意の行動が敵から自分に行われた場合、まれに回避する。
@@ -891,7 +891,7 @@ namespace DungeonPlayer
                                 player.Accessory.OnlyOnce = true;
                                 for (int ii = 0; ii < groupAlly.Count; ii++)
                                 {
-                                    PlayerBuffAbstract(player, groupAlly[ii], 2, Database.ITEMCOMMAND_DETACHMENT_ORB);
+                                    PlayerBuffAbstract(player, groupAlly[ii], Database.ITEMCOMMAND_DETACHMENT_ORB);
                                 }
                             }
                             else if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.RARE_DETACHMENT_ORB) && (player.Accessory2.OnlyOnce == false))
@@ -899,7 +899,7 @@ namespace DungeonPlayer
                                 player.Accessory2.OnlyOnce = true;
                                 for (int ii = 0; ii < groupAlly.Count; ii++)
                                 {
-                                    PlayerBuffAbstract(player, groupAlly[ii], 2, Database.ITEMCOMMAND_DETACHMENT_ORB);
+                                    PlayerBuffAbstract(player, groupAlly[ii], Database.ITEMCOMMAND_DETACHMENT_ORB);
                                 }
                             }
                             else
@@ -909,7 +909,7 @@ namespace DungeonPlayer
                             break;
 
                         case Database.RARE_DEVIL_SUMMONER_TOME:
-                            PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_DEVIL_SUMMONER_TOME);
+                            PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_DEVIL_SUMMONER_TOME);
                             break;
 
                         case Database.RARE_VOID_HYMNSONIA:
@@ -2885,7 +2885,7 @@ namespace DungeonPlayer
                                 {
                                     UpdateBattleText(player.FirstName + "は剣を天へとすくい上げるモーションを取り、断罪を誓った！\r\n");
                                     GroundOne.PlaySoundEffect(Database.SOUND_GLORY);
-                                    PlayerBuffAbstract(player, player, 999, Database.AFTER_REVIVE_HALF + fileExt);
+                                    PlayerBuffAbstract(player, player, Database.AFTER_REVIVE_HALF);
                                 }
                                 else if (player.ActionLabel.text == "魂への凍結")
                                 {
@@ -2893,7 +2893,7 @@ namespace DungeonPlayer
                                     GroundOne.PlaySoundEffect(Database.SOUND_ABSOLUTE_ZERO);
                                     if (player.Target.CurrentAbsoluteZero <= 0) // 強力無比な魔法のため、継続ターンの連続更新は出来なくしている。
                                     {
-                                        PlayerBuffAbstract(player, target, 2, Database.ABSOLUTE_ZERO + fileExt);
+                                        PlayerBuffAbstract(player, target, Database.ABSOLUTE_ZERO);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "死滅のひと振り")
@@ -2902,7 +2902,7 @@ namespace DungeonPlayer
                                     if (PlayerNormalAttack(player, target, 2.0F, false, false))
                                     {
                                         GroundOne.PlaySoundEffect(Database.SOUND_DAMNATION);
-                                        PlayerBuffAbstract(player, target, 999, Database.DAMNATION + fileExt);
+                                        PlayerBuffAbstract(player, target, Database.DAMNATION);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "デス・ストライク")
@@ -3002,8 +3002,8 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "ネイチャー・エンゼンブル")
                                 {
                                     UpdateBattleText(player.FirstName + "の辺りは淡い緑色に球体に包まれた！\r\n");
-                                    PlayerBuffAbstract(player, player, 999, "NourishSense");
-                                    PlayerBuffAbstract(player, player, 999, "WordOfLife");
+                                    PlayerBuffAbstract(player, player, Database.NOURISH_SENSE);
+                                    PlayerBuffAbstract(player, player, Database.WORD_OF_LIFE);
                                     PlayerAbstractLifeGain(player, player, 0, PrimaryLogic.SacredHealValue(player, false), 0, "CelestialNova", 0);
                                 }
                                 else if (player.ActionLabel.text == "シャープネル・ニードル")
@@ -3056,16 +3056,16 @@ namespace DungeonPlayer
                                     SetupAllyGroup(ref group);
                                     GroundOne.PlaySoundEffect(Database.SOUND_BLACK_FLARE);
                                     MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
-                                    PlayerBuffAbstract(player, current, 999, Database.DAMNATION + fileExt);
-                                    PlayerBuffAbstract(player, current, 999, Database.ENRAGE_BLAST + fileExt);
+                                    PlayerBuffAbstract(player, current, Database.DAMNATION);
+                                    PlayerBuffAbstract(player, current, Database.ENRAGE_BLAST);
                                 }
                                 else if (player.ActionLabel.text == "サテライト・エナジー")
                                 {
                                     UpdateBattleText(player.FirstName + "：天より授かりし力よ、今ここに！！\r\n");
                                     GroundOne.PlaySoundEffect(Database.SOUND_GLORY);
-                                    PlayerBuffAbstract(player, player, 999, Database.HOLY_BREAKER + fileExt);
-                                    PlayerBuffAbstract(player, player, 999, Database.SAINT_POWER + fileExt);
-                                    PlayerBuffAbstract(player, player, 999, Database.PSYCHIC_TRANCE + fileExt);
+                                    PlayerBuffAbstract(player, player, Database.HOLY_BREAKER);
+                                    PlayerBuffAbstract(player, player, Database.SAINT_POWER);
+                                    PlayerBuffAbstract(player, player, Database.PSYCHIC_TRANCE);
                                 }
                                 else if (player.ActionLabel.text == "サテライト・ソード")
                                 {
@@ -3152,7 +3152,7 @@ namespace DungeonPlayer
                                         BuffUpPhysicalDefense(group[ii], 4000);
                                         BuffUpMagicDefense(group[ii], 5000);
                                         GroundOne.PlaySoundEffect(Database.SOUND_GLORY);
-                                        PlayerBuffAbstract(player, group[ii], 999, "AfterReviveHalf" + fileExt);
+                                        PlayerBuffAbstract(player, group[ii], Database.AFTER_REVIVE_HALF);
                                         player.CurrentStanceOfDeath = Database.INFINITY;
                                         group[ii].ActivateBuff(group[ii].pbStanceOfDeath, Database.BaseResourceFolder + Database.STANCE_OF_DEATH + fileExt, Database.INFINITY);
                                     }
@@ -3168,7 +3168,7 @@ namespace DungeonPlayer
                                         GroundOne.PlaySoundEffect(Database.SOUND_DAMNATION);
                                         NowSlip(player, group[ii], 999);
                                         NowPoison(player, group[ii], 999, true);
-                                        PlayerBuffAbstract(player, target, 999, Database.DAMNATION + fileExt);
+                                        PlayerBuffAbstract(player, target, Database.DAMNATION);
                                     }
                                 }
                                 break;
@@ -3233,7 +3233,7 @@ namespace DungeonPlayer
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         GroundOne.PlaySoundEffect(Database.SOUND_ABSOLUTE_ZERO);
-                                        PlayerBuffAbstract(player, group[ii], 2, Database.ABSOLUTE_ZERO + fileExt);
+                                        PlayerBuffAbstract(player, group[ii], Database.ABSOLUTE_ZERO);
                                     }
                                     ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
                                 }
@@ -3828,7 +3828,7 @@ namespace DungeonPlayer
                                     if (withoutCost == false)
                                     {
                                         AnimationFinal("叡技：Ladarynte Chaotic Schema");
-                                        PlayerBuffAbstract(player, player, 1, Database.CHAOTIC_SCHEMA);
+                                        PlayerBuffAbstract(player, player, Database.CHAOTIC_SCHEMA);
                                         player.BattleBarPos = 0;
                                         if (player.CurrentLifeCountValue <= 1)
                                         {
@@ -4960,7 +4960,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("MirrorImage");
-                PlayerBuffAbstract(player, group[ii], 999, "MirrorImage");
+                PlayerBuffAbstract(player, group[ii], Database.MIRROR_IMAGE);
             }
         }
 

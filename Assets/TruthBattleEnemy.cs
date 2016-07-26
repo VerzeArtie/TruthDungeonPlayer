@@ -4380,7 +4380,7 @@ namespace DungeonPlayer
             {
                 if (this.LifeCountBattle)
                 {
-                    PlayerBuffAbstract(ActiveList[ii], ActiveList[ii], Database.INFINITY, Database.LIFE_COUNT);
+                    PlayerBuffAbstract(ActiveList[ii], ActiveList[ii], Database.LIFE_COUNT);
                 }
                 // 装備品特殊効果
                 ItemEffect(ActiveList[ii], ActiveList[ii].MainWeapon);
@@ -4446,7 +4446,7 @@ namespace DungeonPlayer
                     }
                     if (ActiveList[ii].Accessory.Name == Database.RARE_VOID_HYMNSONIA)
                     {
-                        PlayerBuffAbstract(ActiveList[ii], ActiveList[ii], 999, Database.ITEMCOMMAND_VOID_HYMNSONIA);
+                        PlayerBuffAbstract(ActiveList[ii], ActiveList[ii], Database.ITEMCOMMAND_VOID_HYMNSONIA);
                     }
                 }
                 if (ActiveList[ii].Accessory2 != null)
@@ -4483,7 +4483,7 @@ namespace DungeonPlayer
                     }
                     if (ActiveList[ii].Accessory2.Name == Database.RARE_VOID_HYMNSONIA)
                     {
-                        PlayerBuffAbstract(ActiveList[ii], ActiveList[ii], 999, Database.ITEMCOMMAND_VOID_HYMNSONIA);
+                        PlayerBuffAbstract(ActiveList[ii], ActiveList[ii], Database.ITEMCOMMAND_VOID_HYMNSONIA);
                     }
                 }
             }
@@ -5847,17 +5847,17 @@ namespace DungeonPlayer
                     if ((ii == 0) && (player.MainWeapon != null) && (player.MainWeapon.Name == Database.EPIC_JUZA_THE_PHANTASMAL_CLAW) ||
                         (ii == 1) && (player.SubWeapon != null) && (player.SubWeapon.Name == Database.EPIC_JUZA_THE_PHANTASMAL_CLAW))
                     {
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_JUZA_PHANTASMAL);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_JUZA_PHANTASMAL);
                     }
 
                     // エターナル・フェイトリングによる効果
                     if ((player.Accessory != null) && (player.Accessory.Name == Database.EPIC_FATE_RING_OMEGA))
                     {
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_ETERNAL_FATE);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_ETERNAL_FATE);
                     }
                     if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.EPIC_FATE_RING_OMEGA))
                     {
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_ETERNAL_FATE);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_ETERNAL_FATE);
                     }
 
                     // エターナル・ロイヤルリングによる効果
@@ -5879,33 +5879,33 @@ namespace DungeonPlayer
                     // ライト・サーヴァントによる効果
                     if ((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_LIGHT_SERVANT))
                     {
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_LIGHT_SERVANT);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_LIGHT_SERVANT);
                     }
                     if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_LIGHT_SERVANT))
                     {
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_LIGHT_SERVANT);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_LIGHT_SERVANT);
                     }
 
                     // シャドウ・サーヴァントによる効果
                     if ((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_SHADOW_SERVANT))
                     {
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_SHADOW_SERVANT);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_SHADOW_SERVANT);
                     }
                     if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_SHADOW_SERVANT))
                     {
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_SHADOW_SERVANT);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_SHADOW_SERVANT);
                     }
 
                     // メイズ・キューブによる効果
                     if ((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_MAZE_CUBE) && (player.Accessory.SwitchStatus1 == false))
                     {
                         player.Accessory.SwitchStatus1 = true;
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_MAZE_CUBE);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_MAZE_CUBE);
                     }
                     if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_MAZE_CUBE) && (player.Accessory2.SwitchStatus1 == false))
                     {
                         player.Accessory2.SwitchStatus1 = true;
-                        PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_MAZE_CUBE);
+                        PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_MAZE_CUBE);
                     }
 
                     // エムブレム・オブ・ヴァルキリーによる効果
@@ -6738,33 +6738,33 @@ namespace DungeonPlayer
             // ライト・サーヴァントによる効果
             if ((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_LIGHT_SERVANT))
             {
-                PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_LIGHT_SERVANT);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_LIGHT_SERVANT);
             }
             if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_LIGHT_SERVANT))
             {
-                PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_LIGHT_SERVANT);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_LIGHT_SERVANT);
             }
 
             // シャドウ・サーヴァントによる効果
             if ((player.Accessory != null) && (player.Accessory.Name == Database.BUFF_SHADOW_SERVANT))
             {
-                PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_SHADOW_SERVANT);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_SHADOW_SERVANT);
             }
             if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.BUFF_SHADOW_SERVANT))
             {
-                PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_SHADOW_SERVANT);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_SHADOW_SERVANT);
             }
 
             // メイズ・キューブによる効果
             if ((player.Accessory != null) && (player.Accessory.Name == Database.COMMON_MAZE_CUBE) && (player.Accessory.SwitchStatus1 == true))
             {
                 player.Accessory.SwitchStatus1 = false;
-                PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_MAZE_CUBE);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_MAZE_CUBE);
             }
             if ((player.Accessory2 != null) && (player.Accessory2.Name == Database.COMMON_MAZE_CUBE) && (player.Accessory2.SwitchStatus1 == true))
             {
                 player.Accessory2.SwitchStatus1 = false;
-                PlayerBuffAbstract(player, player, 999, Database.ITEMCOMMAND_MAZE_CUBE);
+                PlayerBuffAbstract(player, player, Database.ITEMCOMMAND_MAZE_CUBE);
             }
 
             // エムブレム・オブ・ヴァルキリーによる効果

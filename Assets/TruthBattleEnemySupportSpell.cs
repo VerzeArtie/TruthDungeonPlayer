@@ -40,10 +40,16 @@ namespace DungeonPlayer
 
         // [情報]：全てのＢＵＦＦ＿ＵＰ魔法は、ここへ集約されるようにしてください。
         // [警告]：ここに集約されている情報は味方プレイヤーのみを対象としています。敵味方区別無くいけるようにしてください。
-        private void PlayerBuffAbstract(MainCharacter player, MainCharacter target, int effectTime, string spellName)
+        private void PlayerBuffAbstract(MainCharacter player, MainCharacter target, string spellName, int effectTime = 0)
         {
             Debug.Log("playerbuffabstract start");
             string fileExt = "";
+
+            if (effectTime == 0)
+            {
+                effectTime = TruthActionCommand.IsBuffTurn(spellName);
+            }
+
             int effectValue = 0;
             if (target.CurrentAusterityMatrix > 0 || target.CurrentAusterityMatrixOmega > 0)
             {

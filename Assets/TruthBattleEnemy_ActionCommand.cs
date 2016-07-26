@@ -178,7 +178,7 @@ namespace DungeonPlayer
             double damage = PrimaryLogic.FlashBlazeValue(player, GroundOne.DuelMode);
             if (AbstractMagicDamage(player, target, interval, ref damage, magnification, "HolyShock", 120, TruthActionCommand.MagicType.Light, false, CriticalType.Random))
             {
-                PlayerBuffAbstract(player, target, Database.INFINITY, Database.FLASH_BLAZE_BUFF);
+                PlayerBuffAbstract(player, target, Database.FLASH_BLAZE_BUFF);
             }
         }
 
@@ -272,7 +272,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(141));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.StarLightningValue(player, GroundOne.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Light_Will, false, CriticalType.Random))
             {
-                PlayerBuffAbstract(player, target, 1, "StarLightning");
+                PlayerBuffAbstract(player, target, Database.STAR_LIGHTNING);
             }
         }
 
@@ -284,7 +284,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(143));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.BlackFireValue(player, GroundOne.DuelMode), 0, "DarkBlast", 120, TruthActionCommand.MagicType.Shadow_Fire, false, CriticalType.Random))
             {
-                PlayerBuffAbstract(player, target, Database.INFINITY, Database.BLACK_FIRE);
+                PlayerBuffAbstract(player, target, Database.BLACK_FIRE);
             }
         }
 
@@ -296,7 +296,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(142));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.WordOfMaliceValue(player, GroundOne.DuelMode), 0, "WhiteOut", 120, TruthActionCommand.MagicType.Shadow_Force, false, CriticalType.Random))
             {
-                PlayerBuffAbstract(player, target, Database.INFINITY, Database.WORD_OF_MALICE);
+                PlayerBuffAbstract(player, target, Database.WORD_OF_MALICE);
             }
         }
 
@@ -313,7 +313,7 @@ namespace DungeonPlayer
             {
                 if (AbstractMagicDamage(player, group[ii], 0, PrimaryLogic.EnrageBlastValue(player, GroundOne.DuelMode), 0, "FlameStrike", 120, TruthActionCommand.MagicType.Fire_Force, false, CriticalType.Random))
                 {
-                    PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.ENRAGE_BLAST);
+                    PlayerBuffAbstract(player, group[ii], Database.ENRAGE_BLAST);
                 }
             }
         }
@@ -326,7 +326,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(145));
             if (AbstractMagicDamage(player, target, 0, PrimaryLogic.ImmolateValue(player, GroundOne.DuelMode), 0, "FireBall", 120, TruthActionCommand.MagicType.Fire_Will, false, CriticalType.Random))
             {
-                PlayerBuffAbstract(player, target, Database.INFINITY, Database.IMMOLATE);
+                PlayerBuffAbstract(player, target, Database.IMMOLATE);
             }
         }
 
@@ -833,21 +833,21 @@ namespace DungeonPlayer
         private void PlayerSpellGlory(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("Glory");
-            PlayerBuffAbstract(player, player, 4, "Glory");
+            PlayerBuffAbstract(player, player, Database.GLORY);
         }
 
         // ブラック・コントラクトのメソッド
         private void PlayerSpellBlackContract(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("BlackContract");
-            PlayerBuffAbstract(player, target, 4, "BlackContract");
+            PlayerBuffAbstract(player, target, Database.BLACK_CONTRACT);
         }
 
         // イモータル・レイブのメソッド
         private void PlayerSpellImmortalRave(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("ImmortalRave");
-            PlayerBuffAbstract(player, player, 4, "ImmortalRave");
+            PlayerBuffAbstract(player, player, Database.IMMORTAL_RAVE);
         }
 
         // ゲイル・ウィンドのメソッド
@@ -856,12 +856,7 @@ namespace DungeonPlayer
             GroundOne.PlaySoundEffect("GaleWind");
             if (player.CurrentGaleWind <= 0)
             {
-                PlayerBuffAbstract(player, player, 2, "GaleWind");
-            }
-            else
-            {
-                // 後編、ヴェルゼがＸ回行動を取るための仕組み。
-                PlayerBuffAbstract(player, player, player.CurrentGaleWind + 1, "GaleWind");
+                PlayerBuffAbstract(player, player, Database.GALE_WIND);
             }
         }
 
@@ -869,35 +864,35 @@ namespace DungeonPlayer
         private void PlayerSpellAetherDrive(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("AetherDrive");
-            PlayerBuffAbstract(player, player, 4, "AetherDrive");
+            PlayerBuffAbstract(player, player, Database.AETHER_DRIVE);
         }
 
         // ワン・イムーニティのメソッド
         private void PlayerSpellOneImmunity(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("OneImmunity");
-            PlayerBuffAbstract(player, player, 4, "OneImmunity");
+            PlayerBuffAbstract(player, player, Database.ONE_IMMUNITY);
         }
 
         // スタンス・オブ・フローのメソッド
         private void PlayerSkillStanceOfFlow(MainCharacter player)
         {
             GroundOne.PlaySoundEffect("StanceOfFlow");
-            PlayerBuffAbstract(player, player, 3, "StanceOfFlow");
+            PlayerBuffAbstract(player, player, Database.STANCE_OF_FLOW);
         }
 
         //　トルゥス・ヴィジョンのメソッド
         private void PlayerSkillTruthVision(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("TruthVision");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.TRUTH_VISION);
+            PlayerBuffAbstract(player, target, Database.TRUTH_VISION);
         }
 
         // プロテクションのメソッド
         private void PlayerSpellProtection(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Protection");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.PROTECTION);
+            PlayerBuffAbstract(player, target, Database.PROTECTION);
         }
 
         /// <summary>
@@ -906,79 +901,79 @@ namespace DungeonPlayer
         private void PlayerSpellAbsorbWater(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("AbsorbWater");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.ABSORB_WATER);
+            PlayerBuffAbstract(player, target, Database.ABSORB_WATER);
         }
 
         private void PlayerSpellSaintPower(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("SaintPower");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.SAINT_POWER);
+            PlayerBuffAbstract(player, target, Database.SAINT_POWER);
         }
 
         private void PlayerSpellShadowPact(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("ShadowPact");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.SHADOW_PACT);
+            PlayerBuffAbstract(player, target, Database.SHADOW_PACT);
         }
 
         private void PlayerSpellBloodyVengeance(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("BloodyVengeance");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.BLOODY_VENGEANCE);
+            PlayerBuffAbstract(player, target, Database.BLOODY_VENGEANCE);
         }
 
         private void PlayerSpellHeatBoost(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("HeatBoost");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.HEAT_BOOST);
+            PlayerBuffAbstract(player, target, Database.HEAT_BOOST);
         }
 
         private void PlayerSpellRiseOfImage(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("RiseOfImage");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.RISE_OF_IMAGE);
+            PlayerBuffAbstract(player, target, Database.RISE_OF_IMAGE);
         }
 
         protected void PlayerSpellPromisedKnowledge(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("PromisedKnowledge");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.PROMISED_KNOWLEDGE);
+            PlayerBuffAbstract(player, target, Database.PROMISED_KNOWLEDGE);
         }
 
         private void PlayerSpellFlameAura(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("FlameAura");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.FLAME_AURA);
+            PlayerBuffAbstract(player, target, Database.FLAME_AURA);
         }
 
         private void PlayerSpellWordOfLife(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("WordOfLife");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.WORD_OF_LIFE);
+            PlayerBuffAbstract(player, target, Database.WORD_OF_LIFE);
         }
 
         private void PlayerSpellWordOfFortune(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("WordOfFortune");
-            PlayerBuffAbstract(player, target, 2, Database.WORD_OF_FORTUNE); // １ターン継続のためには、初期値は１＋１
+            PlayerBuffAbstract(player, target, Database.WORD_OF_FORTUNE);
         }
 
         private void PlayerSpellMirrorImage(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("MirrorImage");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.MIRROR_IMAGE);
+            PlayerBuffAbstract(player, target, Database.MIRROR_IMAGE);
         }
 
         private void PlayerSpellDeflection(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Deflection");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.DEFLECTION);
+            PlayerBuffAbstract(player, target, Database.DEFLECTION);
         }
 
         private void PlayerSpellSigilOfHomura(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_SIGIL_OF_HOMURA);
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.SIGIL_OF_HOMURA);
+            PlayerBuffAbstract(player, target, Database.SIGIL_OF_HOMURA);
         }
 
         /// <summary>
@@ -987,7 +982,7 @@ namespace DungeonPlayer
         private void PlayerSpellPhantasmalWind(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_PHANTASMAL_WIND);
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.PHANTASMAL_WIND);
+            PlayerBuffAbstract(player, target, Database.PHANTASMAL_WIND);
         }
 
         /// <summary>
@@ -996,13 +991,13 @@ namespace DungeonPlayer
         private void PlayerSpellParadoxImage(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_PARADOX_IMAGE);
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.PARADOX_IMAGE);
+            PlayerBuffAbstract(player, target, Database.PARADOX_IMAGE);
         }
 
         private void PlayerSpellHymnContract(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_HYMN_CONTRACT);
-            PlayerBuffAbstract(player, target, 4, Database.HYMN_CONTRACT);
+            PlayerBuffAbstract(player, target, Database.HYMN_CONTRACT);
         }
 
         /// <summary>
@@ -1011,7 +1006,7 @@ namespace DungeonPlayer
         private void PlayerSpellPsychicTrance(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("RiseOfImage");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.PSYCHIC_TRANCE);
+            PlayerBuffAbstract(player, target, Database.PSYCHIC_TRANCE);
         }
 
         /// <summary>
@@ -1020,7 +1015,7 @@ namespace DungeonPlayer
         private void PlayerSpellBlindJustice(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("RiseOfImage");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.BLIND_JUSTICE);
+            PlayerBuffAbstract(player, target, Database.BLIND_JUSTICE);
         }
 
         /// <summary>
@@ -1029,7 +1024,7 @@ namespace DungeonPlayer
         private void PlayerSpellTranscendentWish(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("RiseOfImage");
-            PlayerBuffAbstract(player, target, 4, Database.TRANSCENDENT_WISH); // ３ターン継続のためには、初期値は３＋１
+            PlayerBuffAbstract(player, target, Database.TRANSCENDENT_WISH);
         }
 
         /// <summary>
@@ -1038,7 +1033,7 @@ namespace DungeonPlayer
         private void PlayerSpellFrozenAura(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("IceNeedle");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.FROZEN_AURA);
+            PlayerBuffAbstract(player, target, Database.FROZEN_AURA);
         }
 
         /// <summary>
@@ -1047,7 +1042,7 @@ namespace DungeonPlayer
         private void PlayerSpellSkyShield(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Glory");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.SKY_SHIELD);
+            PlayerBuffAbstract(player, target, Database.SKY_SHIELD);
         }
 
         /// <summary>
@@ -1056,7 +1051,7 @@ namespace DungeonPlayer
         private void PlayerSpellStaticBarrier(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_STATIC_BARRIER);
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.STATIC_BARRIER);
+            PlayerBuffAbstract(player, target, Database.STATIC_BARRIER);
         }
 
         /// <summary>
@@ -1065,7 +1060,7 @@ namespace DungeonPlayer
         private void PlayerSpellEverDroplet(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Glory");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.EVER_DROPLET);
+            PlayerBuffAbstract(player, target, Database.EVER_DROPLET);
         }
 
         /// <summary>
@@ -1074,7 +1069,7 @@ namespace DungeonPlayer
         private void PlayerSpellHolyBreaker(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Glory");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.HOLY_BREAKER);
+            PlayerBuffAbstract(player, target, Database.HOLY_BREAKER);
         }
 
         /// <summary>
@@ -1084,7 +1079,7 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect(Database.SOUND_AUSTERITY_MATRIX);
             target.RemoveBuffSpell();
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.AUSTERITY_MATRIX);
+            PlayerBuffAbstract(player, target, Database.AUSTERITY_MATRIX);
         }
 
         /// <summary>
@@ -1093,7 +1088,7 @@ namespace DungeonPlayer
         private void PlayerSpellRedDragonWill(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_RED_DRAGON_WILL);
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.RED_DRAGON_WILL);
+            PlayerBuffAbstract(player, target, Database.RED_DRAGON_WILL);
         }
 
         /// <summary>
@@ -1102,7 +1097,7 @@ namespace DungeonPlayer
         private void PlayerSpellBlueDragonWill(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_BLUE_DRAGON_WILL);
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.BLUE_DRAGON_WILL);
+            PlayerBuffAbstract(player, target, Database.BLUE_DRAGON_WILL);
         }
 
         /// <summary>
@@ -1111,7 +1106,7 @@ namespace DungeonPlayer
         private void PlayerSpellSinFortune(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_SIN_FORTUNE);
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.SIN_FORTUNE);
+            PlayerBuffAbstract(player, target, Database.SIN_FORTUNE);
         }
 
         /// <summary>
@@ -1121,7 +1116,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(199));
             GroundOne.PlaySoundEffect(Database.SOUND_NOURISH_SENSE);
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.NOURISH_SENSE);
+            PlayerBuffAbstract(player, target, Database.NOURISH_SENSE);
         }
 
         /// <summary>
@@ -1130,7 +1125,7 @@ namespace DungeonPlayer
         private void PlayerSpellEternalPresence(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("EternalPresence");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.ETERNAL_PRESENCE);
+            PlayerBuffAbstract(player, target, Database.ETERNAL_PRESENCE);
         }
 
         /// <summary>
@@ -1139,7 +1134,7 @@ namespace DungeonPlayer
         private void PlayerSpellDamnation(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("Damnation");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.DAMNATION);
+            PlayerBuffAbstract(player, target, Database.DAMNATION);
         }
 
         /// <summary>
@@ -1147,12 +1142,10 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSpellAbsoluteZero(MainCharacter player, MainCharacter target)
         {
-            int effectTurn = TruthActionCommand.IsBuffTurn(Database.ABSOLUTE_ZERO);
-            if (player.FirstName == Database.ENEMY_LAST_SIN_VERZE_ARTIE) { effectTurn = 1; }
             GroundOne.PlaySoundEffect("AbsoluteZero");
             if (player.Target.CurrentAbsoluteZero <= 0) // 強力無比な魔法のため、継続ターンの連続更新は出来なくしている。
             {
-                PlayerBuffAbstract(player, target, effectTurn, Database.ABSOLUTE_ZERO);
+                PlayerBuffAbstract(player, target, Database.ABSOLUTE_ZERO);
             }
         }
 
@@ -1163,7 +1156,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(215));
             GroundOne.PlaySoundEffect(Database.SOUND_STANCE_OF_DOUBLE);
-            PlayerBuffAbstract(player, target, 3, Database.STANCE_OF_DOUBLE);
+            PlayerBuffAbstract(player, target, Database.STANCE_OF_DOUBLE);
         }
 
         /// <summary>
@@ -1178,7 +1171,7 @@ namespace DungeonPlayer
                 {
                     player.CurrentTimeStopImmediate = true;
                 }
-                PlayerBuffAbstract(player, player, 1, Database.TIME_STOP); // １ターン継続
+                PlayerBuffAbstract(player, player, Database.TIME_STOP); // １ターン継続
             }
         }
 
@@ -1194,7 +1187,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("DarkBlast");
-                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.DARKEN_FIELD);
+                PlayerBuffAbstract(player, group[ii], Database.DARKEN_FIELD);
             }
         }
 
@@ -1210,7 +1203,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("FlameStrike");
-                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.BLAZING_FIELD);
+                PlayerBuffAbstract(player, group[ii], Database.BLAZING_FIELD);
             }
         }
 
@@ -1226,7 +1219,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("Protection");
-                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.EXALTED_FIELD);
+                PlayerBuffAbstract(player, group[ii], Database.EXALTED_FIELD);
             }
         }
 
@@ -1242,7 +1235,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("SaintPower");
-                PlayerBuffAbstract(player, group[ii], 3, Database.ONE_AUTHORITY);
+                PlayerBuffAbstract(player, group[ii], Database.ONE_AUTHORITY);
             }
         }
 
@@ -1274,7 +1267,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("StanceOfFlow");
-                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.SWIFT_STEP);
+                PlayerBuffAbstract(player, group[ii], Database.SWIFT_STEP);
             }
         }
 
@@ -1290,7 +1283,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("HighEmotionality");
-                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.RISING_AURA);
+                PlayerBuffAbstract(player, group[ii], Database.RISING_AURA);
             }
         }
 
@@ -1306,7 +1299,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 GroundOne.PlaySoundEffect("HighEmotionality");
-                PlayerBuffAbstract(player, group[ii], Database.INFINITY, Database.ASCENSION_AURA);
+                PlayerBuffAbstract(player, group[ii], Database.ASCENSION_AURA);
             }
         }
 
@@ -1323,7 +1316,7 @@ namespace DungeonPlayer
             for (int ii = 0; ii < group.Count; ii++)
             {
                 RemoveBuffAll(group[ii]);
-                PlayerBuffAbstract(player, group[ii], 2, Database.ECLIPSE_END);
+                PlayerBuffAbstract(player, group[ii], Database.ECLIPSE_END);
             }
         }
 
@@ -1363,7 +1356,7 @@ namespace DungeonPlayer
         private void PlayerSpellSeventhMagic(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("TruthVision");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.SEVENTH_MAGIC);
+            PlayerBuffAbstract(player, target, Database.SEVENTH_MAGIC);
         }
 
         /// <summary>
@@ -1372,7 +1365,7 @@ namespace DungeonPlayer
         private void PlayerSkillStanceOfMystic(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect("GaleWind");
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.STANCE_OF_MYSTIC);
+            PlayerBuffAbstract(player, target, Database.STANCE_OF_MYSTIC);
         }
 
         bool CannotResurrect = false;
@@ -1607,7 +1600,7 @@ namespace DungeonPlayer
         /// </summary>
         private void PlayerSkillStanceOfStanding(MainCharacter player, MainCharacter target)
         {
-            PlayerBuffAbstract(player, player, 3, Database.STANCE_OF_STANDING);
+            PlayerBuffAbstract(player, player, Database.STANCE_OF_STANDING);
             UpdateBattleText(player.GetCharacterSentence(56));
         }
         /// <summary>
@@ -1625,7 +1618,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(201));
             GroundOne.PlaySoundEffect("StanceOfFlow");
-            PlayerBuffAbstract(player, target, 3, "VigorSense");
+            PlayerBuffAbstract(player, target, Database.VIGOR_SENSE);
         }
 
         /// <summary>
@@ -1660,7 +1653,7 @@ namespace DungeonPlayer
             if (PlayerNormalAttack(player, target, 0, false, false))
             {
                 GroundOne.PlaySoundEffect("AeroBlade");
-                PlayerBuffAbstract(player, player, 2, Database.COLORLESS_MOVE);
+                PlayerBuffAbstract(player, player, Database.COLORLESS_MOVE);
             }
         }
         /// <summary>
@@ -1670,7 +1663,7 @@ namespace DungeonPlayer
         {
             UpdateBattleText(player.GetCharacterSentence(157));
             GroundOne.PlaySoundEffect("Tranquility");
-            PlayerBuffAbstract(player, player, 2, "FutureVision");
+            PlayerBuffAbstract(player, player, Database.FUTURE_VISION);
         }
         /// <summary>
         /// シャープ・グレアのメソッド
@@ -1832,7 +1825,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(170));
             if (PlayerNormalAttack(player, target, 0, false, false))
             {
-                PlayerBuffAbstract(player, target, Database.INFINITY, Database.CONCUSSIVE_HIT);
+                PlayerBuffAbstract(player, target, Database.CONCUSSIVE_HIT);
             }
         }
 
@@ -1844,7 +1837,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(171));
             if (PlayerNormalAttack(player, target, 0, false, false))
             {
-                PlayerBuffAbstract(player, target, Database.INFINITY, Database.ONSLAUGHT_HIT);
+                PlayerBuffAbstract(player, target, Database.ONSLAUGHT_HIT);
             }
         }
 
@@ -1856,7 +1849,7 @@ namespace DungeonPlayer
             UpdateBattleText(player.GetCharacterSentence(172));
             if (PlayerNormalAttack(player, target, 0, false, false))
             {
-                PlayerBuffAbstract(player, target, Database.INFINITY, Database.IMPULSE_HIT);
+                PlayerBuffAbstract(player, target, Database.IMPULSE_HIT);
             }
         }
 
@@ -1867,7 +1860,7 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect("HighEmotionality");
             player.Target = player;
-            PlayerBuffAbstract(player, player, 4, Database.HIGH_EMOTIONALITY);
+            PlayerBuffAbstract(player, player, Database.HIGH_EMOTIONALITY);
         }
 
         /// <summary>
@@ -1877,7 +1870,7 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect("StanceOfDeath");
             player.Target = player;
-            PlayerBuffAbstract(player, player, Database.INFINITY, Database.STANCE_OF_DEATH);
+            PlayerBuffAbstract(player, player, Database.STANCE_OF_DEATH);
         }
 
         /// <summary>
@@ -1887,7 +1880,7 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect("AntiStun");
             player.Target = target;
-            PlayerBuffAbstract(player, target, Database.INFINITY, Database.ANTI_STUN);
+            PlayerBuffAbstract(player, target, Database.ANTI_STUN);
         }
 
         /// <summary>
@@ -1897,7 +1890,7 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect("PainfulInsanity");
             player.Target = player;
-            PlayerBuffAbstract(player, player, Database.INFINITY, Database.PAINFUL_INSANITY);
+            PlayerBuffAbstract(player, player, Database.PAINFUL_INSANITY);
         }
 
         /// <summary>
@@ -1907,7 +1900,7 @@ namespace DungeonPlayer
         {
             GroundOne.PlaySoundEffect("NothingOfNothingness");
             player.Target = player;
-            PlayerBuffAbstract(player, player, Database.INFINITY, Database.NOTHING_OF_NOTHINGNESS);
+            PlayerBuffAbstract(player, player, Database.NOTHING_OF_NOTHINGNESS);
         }
 
         #endregion
@@ -2084,7 +2077,7 @@ namespace DungeonPlayer
         private void PlayerArchetypeSyutyuDanzetsu(MainCharacter player, MainCharacter target)
         {
             GroundOne.PlaySoundEffect(Database.SOUND_SYUTYU_DANZETSU);
-            PlayerBuffAbstract(player, player, Database.INFINITY, Database.ARCHETYPE_EIN);
+            PlayerBuffAbstract(player, player, Database.ARCHETYPE_EIN);
             player.AlreadyPlayArchetype = true;
         }
         /// <summary>
@@ -2098,7 +2091,7 @@ namespace DungeonPlayer
 
             for (int ii = 0; ii < group.Count; ii++)
             {
-                PlayerBuffAbstract(player, group[ii], (int)PrimaryLogic.JunkanSeiyakuValue(player), Database.ARCHETYPE_RANA);
+                PlayerBuffAbstract(player, group[ii], Database.ARCHETYPE_RANA, (int)PrimaryLogic.JunkanSeiyakuValue(player));
             }
             player.AlreadyPlayArchetype = true;
         }
