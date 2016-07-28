@@ -58,9 +58,9 @@ namespace DungeonPlayer
                 this.Background.GetComponent<Image>().color = UnityColor.Salmon;
             }
 
-            MakeDirectory();
+            Method.MakeDirectory();
 
-            this.filenameList = System.IO.Directory.GetFiles(Method.GetDirectoryName(), "*.xml");
+            this.filenameList = System.IO.Directory.GetFiles(Method.PathForSaveFile(), "*.xml");
 
             // 一番新しいファイルのナンバーを記憶する。
             int newNumber = 0;
@@ -148,26 +148,7 @@ namespace DungeonPlayer
                 }
             }
         }
-
-        private void MakeDirectory()
-        {
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                // なし
-            }
-            else if (Application.platform == RuntimePlatform.Android)
-            {
-                // なし
-            }
-            else
-            {
-                if (System.IO.Directory.Exists(Database.BaseSaveFolder) == false)
-                {
-                    System.IO.Directory.CreateDirectory(Database.BaseSaveFolder);
-                }
-            }
-        }
-
+        
         public void TapSelectNumber(Text txtNumber)
         {
             Debug.Log("txtNumber: " + txtNumber.text.ToString());
@@ -244,7 +225,7 @@ namespace DungeonPlayer
         {
             DateTime now = DateTime.Now;
 
-            foreach (string overwriteData in System.IO.Directory.GetFiles(Method.GetDirectoryName(), "*.xml"))
+            foreach (string overwriteData in System.IO.Directory.GetFiles(Method.PathForSaveFile(), "*.xml"))
             {
                 if (overwriteData.Contains(targetFileName))
                 {
@@ -842,7 +823,7 @@ namespace DungeonPlayer
             }
             else
             {
-                foreach (string currentFile in System.IO.Directory.GetFiles(Method.GetDirectoryName(), "*.xml"))
+                foreach (string currentFile in System.IO.Directory.GetFiles(Method.PathForSaveFile(), "*.xml"))
                 {
                     if (currentFile.Contains(Database.WorldSaveNum))
                     {
@@ -854,7 +835,7 @@ namespace DungeonPlayer
 
             xml.Load(Method.pathForDocumentsFile(targetFileName));
             Debug.Log("ExecLoad 2 " + DateTime.Now);
-            
+
             try
             {
                 XmlNodeList currentList = xml.GetElementsByTagName("MainWeapon");
@@ -1071,21 +1052,30 @@ namespace DungeonPlayer
                 // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
                 if (pi.PropertyType == typeof(System.Int32))
                 {
-                    try { pi.SetValue(GroundOne.MC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
-                    try { pi.SetValue(GroundOne.SC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
-                    try { pi.SetValue(GroundOne.TC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
+                    try { pi.SetValue(GroundOne.MC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText), null); }
+                    catch { }
+                    try { pi.SetValue(GroundOne.SC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText), null); }
+                    catch { }
+                    try { pi.SetValue(GroundOne.TC, Convert.ToInt32(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText), null); }
+                    catch { }
                 }
                 else if (pi.PropertyType == typeof(System.String))
                 {
-                    try { pi.SetValue(GroundOne.MC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText, null); } catch {}
-                    try { pi.SetValue(GroundOne.SC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText, null); } catch {}
-                    try { pi.SetValue(GroundOne.TC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText, null); } catch {}
+                    try { pi.SetValue(GroundOne.MC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText, null); }
+                    catch { }
+                    try { pi.SetValue(GroundOne.SC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText, null); }
+                    catch { }
+                    try { pi.SetValue(GroundOne.TC, xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText, null); }
+                    catch { }
                 }
                 else if (pi.PropertyType == typeof(System.Boolean))
                 {
-                    try { pi.SetValue(GroundOne.MC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
-                    try { pi.SetValue(GroundOne.SC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
-                    try { pi.SetValue(GroundOne.TC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText), null); } catch {}
+                    try { pi.SetValue(GroundOne.MC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_MAINPLAYERSTATUS + "/" + pi.Name).InnerText), null); }
+                    catch { }
+                    try { pi.SetValue(GroundOne.SC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_SECONDPLAYERSTATUS + "/" + pi.Name).InnerText), null); }
+                    catch { }
+                    try { pi.SetValue(GroundOne.TC, Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/" + Database.NODE_THIRDPLAYERSTATUS + "/" + pi.Name).InnerText), null); }
+                    catch { }
                 }
                 // s 後編追加
                 else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
@@ -1226,7 +1216,7 @@ namespace DungeonPlayer
             }
             Debug.Log(DateTime.Now.ToString());
             Debug.Log("ExecLoad 8-1 " + DateTime.Now);
-            
+
             if (forceLoad == false)
             {
                 this.systemMessage.text = "ゲームデータの読み込みが完了しました。";
@@ -1234,7 +1224,6 @@ namespace DungeonPlayer
                 this.autoKillTimer = 0;
                 this.nowAutoKill = true;
             }
-
             Debug.Log("ExecLoad end");
         }
         // move-out(e) 後編追加

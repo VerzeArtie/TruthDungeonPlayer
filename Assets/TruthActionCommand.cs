@@ -3687,23 +3687,6 @@ namespace DungeonPlayer
             if (command == Database.ARCHETYPE_EIN) { return Database.INFINITY; }
 
             // アイテム
-            //if (command == Database.RARE_RISING_KNUCKLE) { return TargetType.Enemy; }
-            //if (command == Database.RARE_ICE_SWORD) { return TargetType.Enemy; }
-            //if (command == Database.RARE_AERO_BLADE) { return TargetType.Enemy; }
-            //if (command == Database.RARE_LIFE_SWORD) { return TargetType.Own; }
-            //if (command == Database.COMMON_HAYATE_ORB) { return TargetType.Own; }
-            //if (command == Database.RARE_AUTUMN_ROD) { return TargetType.Own; }
-            //if (command == Database.RARE_BLUE_LIGHTNING) { return TargetType.Enemy; }
-            //if (command == Database.RARE_BURNING_CLAYMORE) { return TargetType.Own; }
-            //if (command == Database.COMMON_CHIENOWA_RING) { return TargetType.Own; }
-            //if (command == Database.COMMON_ROCKET_DASH) { return TargetType.Own; }
-            //if (command == Database.COMMON_WAR_DRUM) { return TargetType.AllyGroup; }
-            //if (command == Database.RARE_ROD_OF_STRENGTH) { return TargetType.Own; }
-            //if (command == Database.RARE_WRATH_SERVEL_CLAW) { return TargetType.Enemy; }
-            //if (command == Database.RARE_BLUE_RED_ROD) { return TargetType.Enemy; } // マナ回復自分自身はココから指定ではなく、直接コード記述となっている。
-            //if (command == Database.RARE_MEIUN_BOX) { return TargetType.Own; }
-            //if (command == Database.RARE_FROZEN_LAVA) { return TargetType.Enemy; }
-            //if (command == Database.COMMON_STAR_DUST_RING) { return TargetType.Enemy; }
             if (command == Database.ITEMCOMMAND_ETERNAL_FATE) { return Database.INFINITY; }
             if (command == Database.ITEMCOMMAND_LIGHT_SERVANT) { return Database.INFINITY; }
             if (command == Database.ITEMCOMMAND_SHADOW_SERVANT) { return Database.INFINITY; }

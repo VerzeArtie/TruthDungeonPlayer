@@ -6,6 +6,7 @@ using System.Xml;
 using System;
 using System.Reflection;
 using DungeonPlayer;
+using System.IO;
 
 namespace DungeonPlayer
 {
@@ -28,6 +29,9 @@ namespace DungeonPlayer
             {
                 GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin); // 後編追加    
             }
+
+            // 初期開始時、ファイルが無い場合準備しておく。
+            //Method.MakeDirectory();
 
             // GroundOne.WE2はゲーム全体のセーブデータであり、ここで読み込んでおく。
             Method.ReloadTruthWorldEnvironment();

@@ -258,8 +258,35 @@ namespace DungeonPlayer
             }
         }
 
+        public static void MakeDirectory()
+        {
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                // なし
+            }
+            else if (Application.platform == RuntimePlatform.Android)
+            {
+                if (System.IO.File.Exists(Method.PathForRootFile(Database.WE2_FILE)) == false)
+                {
+                    Method.AutoSaveTruthWorldEnvironment();
+                }
+                string directory = Method.PathForSaveFile();
+                if (System.IO.Directory.Exists(directory) == false)
+                {
+                    System.IO.Directory.CreateDirectory(directory);
+                }
+            }
+            else
+            {
+                if (System.IO.Directory.Exists(Database.BaseSaveFolder) == false)
+                {
+                    System.IO.Directory.CreateDirectory(Database.BaseSaveFolder);
+                }
+            }
+        }
+
         // GroundOne.WE2をリロード
-        public static string GetDirectoryName()
+        public static string PathForSaveFile()
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
@@ -267,7 +294,7 @@ namespace DungeonPlayer
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
-                return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/'));
+                return Path.Combine(Application.persistentDataPath, "save");
             }
             else
             {
@@ -286,9 +313,7 @@ namespace DungeonPlayer
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
-                string path = Application.persistentDataPath;
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(path, filename);
+                return Path.Combine(PathForSaveFile(), filename);
             }
             else
             {
@@ -296,7 +321,7 @@ namespace DungeonPlayer
             }
         }
 
-        public static string pathForRootFile(string filename)
+        public static string PathForRootFile(string filename)
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
@@ -304,7 +329,7 @@ namespace DungeonPlayer
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
-                return filename;
+                return Path.Combine(Application.persistentDataPath, filename);
             }
             else
             {
@@ -315,7 +340,7 @@ namespace DungeonPlayer
         public static void ReloadTruthWorldEnvironment()
         {
             XmlDocument xml2 = new XmlDocument();
-            xml2.Load(pathForRootFile(Database.WE2_FILE));
+            xml2.Load(PathForRootFile(Database.WE2_FILE));
             Type typeWE2 = GroundOne.WE2.GetType();
             foreach (PropertyInfo pi in typeWE2.GetProperties())
             {
@@ -351,7 +376,7 @@ namespace DungeonPlayer
         {
             DateTime now = DateTime.Now;
 
-            foreach (string overwriteData in System.IO.Directory.GetFiles(GetDirectoryName(), "*.xml"))
+            foreach (string overwriteData in System.IO.Directory.GetFiles(PathForSaveFile(), "*.xml"))
             {
                 if (overwriteData.Contains(targetFileName))
                 {
@@ -945,7 +970,7 @@ namespace DungeonPlayer
             //}
             //else
             {
-                foreach (string currentFile in System.IO.Directory.GetFiles(Method.GetDirectoryName(), "*.xml"))
+                foreach (string currentFile in System.IO.Directory.GetFiles(Method.PathForSaveFile(), "*.xml"))
                 {
                     if (currentFile.Contains(Database.WorldSaveNum))
                     {
@@ -1353,7 +1378,7 @@ namespace DungeonPlayer
         // 通常セーブ、現実世界の自動セーブ、タイトルSeekerモードの自動セーブを結合
         public static void AutoSaveTruthWorldEnvironment()
         {
-            XmlTextWriter xmlWriter2 = new XmlTextWriter(Database.WE2_FILE, Encoding.UTF8);
+            XmlTextWriter xmlWriter2 = new XmlTextWriter(Method.PathForRootFile(Database.WE2_FILE), Encoding.UTF8);
             try
             {
                 xmlWriter2.WriteStartDocument();
