@@ -59,7 +59,7 @@ namespace DungeonPlayer
         public Toggle toggleB3;
         public Toggle toggleDuel;
 
-        ControlSQL sql = null;
+       // ControlSQL sql = null;
 
         public void enemy_click(Text txtName)
         {
@@ -567,24 +567,24 @@ namespace DungeonPlayer
 
         public void tapAccountOK(Text account)
         {
-            string connection = string.Empty;
-            StringBuilder sb = new StringBuilder();
-            //sb.Append("Server=localhost;");
+            //string connection = string.Empty;
+            //StringBuilder sb = new StringBuilder();
+            ////sb.Append("Server=localhost;");
+            ////sb.Append("Port=5432;");
+            ////sb.Append("User Id=postgres;");
+            ////sb.Append("Password=aspa2057!;");
+            ////sb.Append("Database=postgres;");
+            //sb.Append("Server=133.242.151.26;");
             //sb.Append("Port=5432;");
             //sb.Append("User Id=postgres;");
-            //sb.Append("Password=aspa2057!;");
+            //sb.Append("Password=postgres;");
             //sb.Append("Database=postgres;");
-            sb.Append("Server=133.242.151.26;");
-            sb.Append("Port=5432;");
-            sb.Append("User Id=postgres;");
-            sb.Append("Password=postgres;");
-            sb.Append("Database=postgres;");
 
-            connection = sb.ToString();
-            this.sql = new ControlSQL();
-            this.sql.connection = connection;
+            //connection = sb.ToString();
+            //this.sql = new ControlSQL();
+            //this.sql.connection = connection;
 
-            this.sql.SelectOwner(account.text); //.CreateOwner(account.text);
+            //this.sql.SelectOwner(account.text); //.CreateOwner(account.text);
         }
 
         public void GameStart_Click()
