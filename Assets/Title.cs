@@ -31,7 +31,7 @@ namespace DungeonPlayer
             }
 
             // 初期開始時、ファイルが無い場合準備しておく。
-            //Method.MakeDirectory();
+            Method.MakeDirectory();
 
             // GroundOne.WE2はゲーム全体のセーブデータであり、ここで読み込んでおく。
             Method.ReloadTruthWorldEnvironment();
@@ -559,6 +559,10 @@ namespace DungeonPlayer
         public void tapExit()
         {
             GroupSystemMessage.SetActive(false);
+        }
+
+        public void tapAccountOK()
+        { 
         }
 
         public void GameStart_Click()
