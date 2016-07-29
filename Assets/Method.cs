@@ -260,16 +260,16 @@ namespace DungeonPlayer
 
         public static void MakeDirectory()
         {
+            if (System.IO.File.Exists(Method.PathForRootFile(Database.WE2_FILE)) == false)
+            {
+                Method.AutoSaveTruthWorldEnvironment();
+            }
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
                 // なし
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
-                if (System.IO.File.Exists(Method.PathForRootFile(Database.WE2_FILE)) == false)
-                {
-                    Method.AutoSaveTruthWorldEnvironment();
-                }
                 string directory = Method.PathForSaveFile();
                 if (System.IO.Directory.Exists(directory) == false)
                 {
