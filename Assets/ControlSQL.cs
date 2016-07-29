@@ -21,7 +21,7 @@ namespace DungeonPlayer
             using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
             {
                 con.Open();
-                var cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
+                NpgsqlCommand cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
                 var dataReader = cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
@@ -38,7 +38,7 @@ namespace DungeonPlayer
             {
                 con.Open();
                 DateTime update_time = DateTime.Now;
-                var command = new NpgsqlCommand(@"update " + TABLE_OWNER_DATA + " set update_time = :update_time where name = :name", con);
+                NpgsqlCommand command = new NpgsqlCommand(@"update " + TABLE_OWNER_DATA + " set update_time = :update_time where name = :name", con);
                 command.Parameters.Add(new NpgsqlParameter("name", DbType.String) { Value = name });
                 command.Parameters.Add(new NpgsqlParameter("update_time", DbType.DateTime) { Value = update_time });
                 command.ExecuteNonQuery();
@@ -67,7 +67,7 @@ namespace DungeonPlayer
                     else { sqlCmd += ", :" + nameList[ii]; }
                 }
                 sqlCmd += ")";
-                var cmd = new NpgsqlCommand(sqlCmd, con);
+                NpgsqlCommand cmd = new NpgsqlCommand(sqlCmd, con);
                 //cmd.Prepare();
                 for (int ii = 0; ii < nameList.Count; ii++)
                 {
