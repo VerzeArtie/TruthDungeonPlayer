@@ -34,12 +34,14 @@ namespace DungeonPlayer
         private static GameObject objTC = null;
         private static GameObject objWE = null;
         private static GameObject objWE2 = null;
+        private static GameObject objSQL = null;
 
         public static MainCharacter MC = null;
         public static MainCharacter SC = null;
         public static MainCharacter TC = null;
         public static WorldEnvironment WE = null;
         public static TruthWorldEnvironment WE2 = null; // ゲームストーリー全体のワールド環境フラグ
+        public static ControlSQL SQL = null;
 
         public static bool[] Truth_KnownTileInfo = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
         public static bool[] Truth_KnownTileInfo2 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
@@ -163,6 +165,8 @@ namespace DungeonPlayer
             WE = null;
             GameObject.DestroyObject(WE2);
             WE2 = null;
+            GameObject.DestroyObject(SQL);
+            SQL = null;
             GameObject.DestroyObject(objMC);
             objMC = null;
             GameObject.DestroyObject(objSC);
@@ -173,6 +177,8 @@ namespace DungeonPlayer
             objWE = null;
             GameObject.DestroyObject(objWE2);
             objWE2 = null;
+            GameObject.DestroyObject(objSQL);
+            objSQL = null;
             GameObject.DestroyObject(ShadowMC);
             ShadowMC = null;
             GameObject.DestroyObject(ShadowSC);
@@ -212,6 +218,7 @@ namespace DungeonPlayer
             objTC = new GameObject("objTC");
             objWE = new GameObject("objWE");
             objWE2 = new GameObject("objWE2");
+            objSQL = new GameObject("objSQL");
 
             if (FromGameLoad == false)
             {
@@ -237,6 +244,9 @@ namespace DungeonPlayer
             TC = objTC.AddComponent<MainCharacter>();
             TC.AvailableMana = true;
             TC.AvailableSkill = true;
+
+            SQL = objSQL.AddComponent<ControlSQL>();
+            SQL.SetupSql();
 
             // debug
             //WE.AvailablePotionshop = true;
@@ -571,6 +581,7 @@ namespace DungeonPlayer
             UnityEngine.Object.DontDestroyOnLoad(soundSource);
             UnityEngine.Object.DontDestroyOnLoad(bgm);
             UnityEngine.Object.DontDestroyOnLoad(bgmSource);
+            UnityEngine.Object.DontDestroyOnLoad(SQL);
             return true;
         }
 		public static void InitializeNetworkConnection()

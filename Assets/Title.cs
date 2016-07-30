@@ -18,11 +18,27 @@ namespace DungeonPlayer
         public Text subtitleText;
         public GameObject GroupSystemMessage;
         public Text SystemMessageText;
+        public GameObject GroupMenu;
         public GameObject buttonGamestart;
         public GameObject buttonSeeker;
         public GameObject buttonLoad;
         public GameObject buttonConfig;
         public GameObject buttonExit;
+        public GameObject groupAccount;
+        public Text account;
+
+        // debug
+        public Text DebugStrength;
+        public Text DebugAgility;
+        public Text DebugIntelligence;
+        public Text DebugStamina;
+        public Text DebugMind;
+        public Toggle toggle2;
+        public Toggle toggle3;
+        public Toggle toggleB2;
+        public Toggle toggleB3;
+        public Toggle toggleDuel;
+
         public override void Start()
         {
             base.Start();
@@ -45,22 +61,19 @@ namespace DungeonPlayer
                 this.titleText.color = Color.white;
                 this.subtitleText.color = Color.white;
             }
+
+            if (GroundOne.WE2.Account != null && GroundOne.WE2.Account != String.Empty)
+            {
+                groupAccount.SetActive(false);
+                GroupMenu.SetActive(true);
+            }
+            else
+            {
+                groupAccount.SetActive(true);
+                GroupMenu.SetActive(false);
+            }
         }
-
-        // debug
-        public Text DebugStrength;
-        public Text DebugAgility;
-        public Text DebugIntelligence;
-        public Text DebugStamina;
-        public Text DebugMind;
-        public Toggle toggle2;
-        public Toggle toggle3;
-        public Toggle toggleB2;
-        public Toggle toggleB3;
-        public Toggle toggleDuel;
-
-       // ControlSQL sql = null;
-
+        
         public void enemy_click(Text txtName)
         {
             GroundOne.WE.AvailableMixSpellSkill = true;
@@ -567,24 +580,10 @@ namespace DungeonPlayer
 
         public void tapAccountOK(Text account)
         {
-            //string connection = string.Empty;
-            //StringBuilder sb = new StringBuilder();
-            ////sb.Append("Server=localhost;");
-            ////sb.Append("Port=5432;");
-            ////sb.Append("User Id=postgres;");
-            ////sb.Append("Password=aspa2057!;");
-            ////sb.Append("Database=postgres;");
-            //sb.Append("Server=133.242.151.26;");
-            //sb.Append("Port=5432;");
-            //sb.Append("User Id=postgres;");
-            //sb.Append("Password=postgres;");
-            //sb.Append("Database=postgres;");
-
-            //connection = sb.ToString();
-            //this.sql = new ControlSQL();
-            //this.sql.connection = connection;
-
-            //this.sql.SelectOwner(account.text); //.CreateOwner(account.text);
+            GroundOne.SQL.CreateOwner(account.text);
+            GroundOne.WE2.Account = account.text;
+            Method.AutoSaveTruthWorldEnvironment();
+            groupAccount.SetActive(false);
         }
 
         public void GameStart_Click()
@@ -596,6 +595,7 @@ namespace DungeonPlayer
                 return;
             }
 
+            GroundOne.SQL.UpdateOwner(GroundOne.WE2.Account, "GameStart", String.Empty, String.Empty);
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
             GroundOne.MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;

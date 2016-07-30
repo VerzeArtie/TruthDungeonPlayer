@@ -18,6 +18,11 @@ namespace DungeonPlayer
         public virtual void Start()
         {
             GroundOne.InitializeGroundOne(false);
+
+            if (GroundOne.WE2 != null && GroundOne.SQL != null && GroundOne.WE2.Account != String.Empty)
+            {
+                GroundOne.SQL.UpdateOwner(GroundOne.WE2.Account, string.Empty, string.Empty, this.GetType().ToString());
+            }
         }
 
         public virtual void Update()

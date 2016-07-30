@@ -533,5 +533,8 @@ namespace DungeonPlayer
         public bool FoodAvailable_52 { get; set; }
         public bool FoodAvailable_53 { get; set; }
         public bool FoodAvailable_54 { get; set; }
+
+        // SQLログ採取用アカウント
+        public string Account { get; set; }
     }
 }
