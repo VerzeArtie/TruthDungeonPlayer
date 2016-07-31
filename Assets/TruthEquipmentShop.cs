@@ -1752,12 +1752,14 @@ namespace DungeonPlayer
         
         public void Equip_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYEREQUIPITEM, sender.text, String.Empty);
             SelectSellItem(sender);
         }
 
         bool nowSellItem = false;
         public void Backpack_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYERITEM, sender.text, String.Empty);
             SelectSellItem(sender);
         }
         private void SelectSellItem(Text sender)
@@ -1813,6 +1815,7 @@ namespace DungeonPlayer
 
         public void EquipmentShop_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_VENDORITEM, sender.text, String.Empty);
             ItemBackPack backpackData = new ItemBackPack(((Text)sender).text);
             if (!GroundOne.WE.AvailableEquipShop5)
             {
@@ -2114,6 +2117,7 @@ namespace DungeonPlayer
         bool nowCannotBuy = false;
         public void Yes_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_YES, String.Empty, String.Empty);
             if (nowCannotBuy)
             {
                 // 何もしない
@@ -2152,6 +2156,7 @@ namespace DungeonPlayer
 
         public void No_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_NO, String.Empty, String.Empty);
             MessageExchange4();
             VendorComplete();
         }
@@ -2166,27 +2171,32 @@ namespace DungeonPlayer
 
         public void tapExchange()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_EXCHANGE, String.Empty, String.Empty);
             groupCurrentEquip.SetActive(!groupCurrentEquip.activeInHierarchy);
             groupBackPack.SetActive(!groupCurrentEquip.activeInHierarchy);
         }
 
         public void tapLevel(int level)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_LEVEL, level.ToString(), String.Empty);
             SetupAvailableList(level);
         }
 
         public void tapChara1()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER1, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.MC;
             UpdateBackPackLabel(this.currentPlayer);
         }
         public void tapChara2()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER2, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.SC;
             UpdateBackPackLabel(this.currentPlayer);
         }
         public void tapChara3()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_PLAYER3, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.TC;
             UpdateBackPackLabel(this.currentPlayer);
         }
@@ -2196,6 +2206,7 @@ namespace DungeonPlayer
         }
         public void tapExit()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIPSHOP_CLOSE, String.Empty, String.Empty);
             nowClose = true;
         }
     }

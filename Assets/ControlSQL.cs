@@ -18,93 +18,110 @@ namespace DungeonPlayer
 
         public void SetupSql()
         {
-            string connection = string.Empty;
-            StringBuilder sb = new StringBuilder();
-            sb.Append("Server=133.242.151.26;");
-            sb.Append("Port=5432;");
-            sb.Append("User Id=postgres;");
-            sb.Append("Password=postgres;");
-            sb.Append("Database=postgres;");
+            try
+            {
+                string connection = string.Empty;
+                StringBuilder sb = new StringBuilder();
+                sb.Append("Server=133.242.151.26;");
+                sb.Append("Port=5432;");
+                sb.Append("User Id=postgres;");
+                sb.Append("Password=postgres;");
+                sb.Append("Database=postgres;");
 
-            connection = sb.ToString();
-            this.connection = connection;
+                connection = sb.ToString();
+                this.connection = connection;
+            }
+            catch { } // ログ失敗時は、そのまま進む
         }
 
         public string SelectOwner(string name)
         {
             string table = TABLE_OWNER_DATA;
             string jsonData = String.Empty;
-            using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+            try
             {
-                con.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
-                var dataReader = cmd.ExecuteReader();
-                while (dataReader.Read())
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    jsonData += dataReader[0].ToString();
+                    con.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        jsonData += dataReader[0].ToString();
+                    }
                 }
             }
+            catch { } // ログ失敗時は、そのまま進む
 
             return jsonData;
         }
 
-        public void UpdateOwner(string name, string main_event, string sub_event, string current_field)
+        public void UpdateOwner(string main_event, string sub_event, string current_field)
         {
             if (GroundOne.SQL == null) { return; }
 
-            using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+            try
             {
-                con.Open();
-                DateTime update_time = DateTime.Now;
-                string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
-                if (main_event != string.Empty)
+                string name = GroundOne.WE2.Account;
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
-                    updateCommand += ", main_event = :main_event";
-                }
-                if (sub_event != string.Empty)
-                {
-                    updateCommand += ", sub_event = :sub_event";
-                }
-                if (current_field != string.Empty)
-                {
-                    updateCommand += ", current_field = :current_field";
-                }
-                updateCommand += " where name = :name";
+                    con.Open();
+                    DateTime update_time = DateTime.Now;
+                    string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
+                    if (main_event != string.Empty)
+                    {
+                        updateCommand += ", main_event = :main_event";
+                    }
+                    if (sub_event != string.Empty)
+                    {
+                        updateCommand += ", sub_event = :sub_event";
+                    }
+                    if (current_field != string.Empty)
+                    {
+                        updateCommand += ", current_field = :current_field";
+                    }
+                    updateCommand += " where name = :name";
 
-                NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
-                command.Parameters.Add(new NpgsqlParameter("name", DbType.String) { Value = name });
-                command.Parameters.Add(new NpgsqlParameter("update_time", DbType.DateTime) { Value = update_time });
-                if (main_event != string.Empty)
-                {
-                    command.Parameters.Add(new NpgsqlParameter("main_event", DbType.String) { Value = main_event });
+                    NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                    command.Parameters.Add(new NpgsqlParameter("name", DbType.String) { Value = name });
+                    command.Parameters.Add(new NpgsqlParameter("update_time", DbType.DateTime) { Value = update_time });
+                    if (main_event != string.Empty)
+                    {
+                        command.Parameters.Add(new NpgsqlParameter("main_event", DbType.String) { Value = main_event });
+                    }
+                    if (sub_event != string.Empty)
+                    {
+                        command.Parameters.Add(new NpgsqlParameter("sub_event", DbType.String) { Value = sub_event });
+                    }
+                    if (current_field != string.Empty)
+                    {
+                        command.Parameters.Add(new NpgsqlParameter("current_field", DbType.String) { Value = current_field });
+                    }
+                    command.ExecuteNonQuery();
                 }
-                if (sub_event != string.Empty)
-                {
-                    command.Parameters.Add(new NpgsqlParameter("sub_event", DbType.String) { Value = sub_event });
-                }
-                if (current_field != string.Empty)
-                {
-                    command.Parameters.Add(new NpgsqlParameter("current_field", DbType.String) { Value = current_field });
-                }
-                command.ExecuteNonQuery();
             }
+            catch { } // ログ失敗時は、そのまま進む
         }
 
         public void CreateOwner(string name)
         {
-            System.Guid guid = System.Guid.NewGuid();
-            DateTime create_time = DateTime.Now;
-            using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+            try
             {
-                con.Open();
-                string sqlCmd = "INSERT INTO " + TABLE_OWNER_DATA + " ( name, guid, create_time ) VALUES ( :name, :guid, :create_time )";
-                var cmd = new NpgsqlCommand(sqlCmd, con);
-                //cmd.Prepare();
-                cmd.Parameters.Add(new NpgsqlParameter("name", NpgsqlDbType.Varchar) { Value = name });
-                cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
-                cmd.Parameters.Add(new NpgsqlParameter("create_time", NpgsqlDbType.Timestamp) { Value = create_time });
-                cmd.ExecuteNonQuery();
+                System.Guid guid = System.Guid.NewGuid();
+                DateTime create_time = DateTime.Now;
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    string sqlCmd = "INSERT INTO " + TABLE_OWNER_DATA + " ( name, guid, create_time ) VALUES ( :name, :guid, :create_time )";
+                    var cmd = new NpgsqlCommand(sqlCmd, con);
+                    //cmd.Prepare();
+                    cmd.Parameters.Add(new NpgsqlParameter("name", NpgsqlDbType.Varchar) { Value = name });
+                    cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                    cmd.Parameters.Add(new NpgsqlParameter("create_time", NpgsqlDbType.Timestamp) { Value = create_time });
+                    cmd.ExecuteNonQuery();
+                }
             }
+            catch { } // ログ失敗時は、そのまま進む
         }
 
         private string SelectCharacter(string table, string name)

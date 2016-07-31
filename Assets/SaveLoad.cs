@@ -152,6 +152,7 @@ namespace DungeonPlayer
         public void TapSelectNumber(Text txtNumber)
         {
             Debug.Log("txtNumber: " + txtNumber.text.ToString());
+            GroundOne.SQL.UpdateOwner(Database.LOG_SAVELOAD_PAGE, txtNumber.text, String.Empty);
 
             PageMove(Convert.ToInt32(txtNumber.text));
         }
@@ -159,6 +160,7 @@ namespace DungeonPlayer
         public void tapButton(Text sender)
         {
             Debug.Log(sender.text);
+            GroundOne.SQL.UpdateOwner(Database.LOG_SAVELOAD_NUMBER, sender.text, String.Empty);
             //
             // セーブ！！！
             //
@@ -1238,6 +1240,7 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_SAVELOAD_CLOSE, String.Empty, String.Empty);
             if (this.systemMessage.text == this.MESSAGE_1 || this.systemMessage.text == this.MESSAGE_2)
             {
                 HideAllChild();

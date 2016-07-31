@@ -379,6 +379,7 @@ namespace DungeonPlayer
 
         public void tapClose()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_CLOSE, String.Empty, String.Empty);
             if (GroundOne.OnlySelectTrash)
             {
                 if (GroundOne.CannotSelectTrash != String.Empty)
@@ -1587,6 +1588,7 @@ namespace DungeonPlayer
 
         public void StatusPlayer_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_SELECTPLAYER, String.Empty, String.Empty);
             MainCharacter player = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
 
             if (sender.text == "")
@@ -2431,10 +2433,12 @@ namespace DungeonPlayer
 
         public void weapon_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_MAINWEAPON, String.Empty, String.Empty);
             ChangeEquipment(0);
         }
         public void subWeapon_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_SUBWEAPON, String.Empty, String.Empty);
             MainCharacter targetPlayer = Method.GetCurrentPlayer(this.Background.GetComponent<Image>().color);
             if (targetPlayer.MainWeapon != null)
             {
@@ -2459,14 +2463,17 @@ namespace DungeonPlayer
         }
         public void armor_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_ARMOR, String.Empty, String.Empty);
             ChangeEquipment(2);
         }
         public void accessory_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_ACCESSORY1, String.Empty, String.Empty);
             ChangeEquipment(3);
         }
         public void accessory2_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_STATUS_ACCESSORY2, String.Empty, String.Empty);
             ChangeEquipment(4);
         }
 

@@ -63,6 +63,7 @@ namespace DungeonPlayer
 
         public void BankPageNumber_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_ITEMBANK_LEFTPAGE, sender.text, String.Empty);
             this.currentListPage = Convert.ToInt32(sender.text);
 
             for (int ii = 0; ii < MAX_VIEW_PAGE; ii++)
@@ -100,6 +101,7 @@ namespace DungeonPlayer
 
         public void BackpackPageNumber_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_ITEMBANK_RIGHTPAGE, sender.text, String.Empty);
             this.p_currentListPage = Convert.ToInt32(sender.text);
 
             for (int ii = 0; ii < MAX_PLAYER_LIST_PAGE; ii++)
@@ -174,6 +176,7 @@ namespace DungeonPlayer
 
         public void PlayerButton_Click(Button sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_ITEMBANK_PLAYER, sender.name, String.Empty);
             if (sender.GetComponent<Image>().color == Color.blue)
             {
                 this.currentPlayer = GroundOne.MC;
@@ -210,6 +213,8 @@ namespace DungeonPlayer
         {
             if (this.currentBankItem == null) return; // 空選択は何もしない。
             if (this.currentBankItem.text == String.Empty || this.currentBankItem.text == "" || this.currentBankItem.text == null) return;
+
+            GroundOne.SQL.UpdateOwner(Database.LOG_ITEMBANK_LEFTTORIGHT, this.currentBankItem.text, String.Empty);
 
             int stackValue = 0;
             int targetDeleteNum = 0;
@@ -254,6 +259,9 @@ namespace DungeonPlayer
         {
             if (this.currentPlayerItem == null) { return; } // 空選択は何もしない。
             if (this.currentPlayerItem.text == String.Empty || this.currentPlayerItem.text == "" || this.currentPlayerItem.text == null) return;
+
+            GroundOne.SQL.UpdateOwner(Database.LOG_ITEMBANK_RIGHTTOLEFT, this.currentPlayerItem.text, String.Empty);
+
             if (TruthItemAttribute.CheckImportantItem(this.currentPlayerItem.text) != TruthItemAttribute.Transfer.Any)
             {
                 mainMessage.text = this.currentPlayer.GetCharacterSentence(2033);
@@ -297,6 +305,8 @@ namespace DungeonPlayer
 
         public void PlayerItem_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_ITEMBANK_RIGHTITEM, sender.text, String.Empty);
+
             this.currentPlayerItem = (Text)sender;
             for (int ii = 0; ii < MAX_VIEW_PAGE; ii++)
             {
@@ -325,6 +335,7 @@ namespace DungeonPlayer
 
         public void BankItem_Click(Text sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_ITEMBANK_LEFTITEM, sender.text, String.Empty);
             this.currentBankItem = (Text)sender;
             for (int ii = 0; ii < MAX_VIEW_PAGE; ii++)
             {
@@ -342,6 +353,7 @@ namespace DungeonPlayer
 
         public void tapClose()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_ITEMBANK_CLOSE, String.Empty, String.Empty);
             GroundOne.WE.UpdateItemBankData(items, stacks);
             SceneDimension.Back(this);
         }

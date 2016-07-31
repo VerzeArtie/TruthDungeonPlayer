@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using System;
 
 namespace DungeonPlayer
 {
@@ -683,6 +684,7 @@ namespace DungeonPlayer
 
         public void CallDungeon(int targetDungeon)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_DUNGEON_GO, String.Empty, String.Empty);
             if (targetDungeon == 1)
             {
                 GroundOne.WE.DungeonArea = 1;
@@ -784,6 +786,7 @@ namespace DungeonPlayer
 
         public void tapCommunicationLana()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_TALK_LANA, String.Empty, String.Empty);
             if (GroundOne.WE.AlreadyCommunicate)
             {
                 if (!GroundOne.WE.AlreadyRest)
@@ -881,6 +884,7 @@ namespace DungeonPlayer
         }
 
 	    public void tapDuel() {
+            GroundOne.SQL.UpdateOwner(Database.LOG_DUEL_ENTRANCE, String.Empty, String.Empty);
             this.OpponentDuelist = WhoisDuelPlayer();
             #region "Duel申請中"
             if (!GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
@@ -1014,6 +1018,7 @@ namespace DungeonPlayer
 
         public void tapBattleSetting()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLE_SETTING, "FromHomeTown", String.Empty);
             SceneDimension.CallTruthBattleSetting(this);
         }
 
@@ -1499,6 +1504,7 @@ namespace DungeonPlayer
         }
 
 	    public void tapShop() {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EQUIP_SHOP, String.Empty, String.Empty);
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailableEquipShop2 = true; // 前編で既に周知のため、解説は不要。
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailableEquipShop3 = true; // 前編で既に周知のため、解説は不要。
             if (GroundOne.WE.TruthCompleteArea3) GroundOne.WE.AvailableEquipShop4 = true; // 前編で既に周知のため、解説は不要。
@@ -1653,12 +1659,14 @@ namespace DungeonPlayer
         
         public void tapPotionShop()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_POTION_SHOP, String.Empty, String.Empty);
             this.Filter.SetActive(true);
             SceneDimension.CallPotionShop(this);
         }
 
         public void tapGate()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_TRANSPORT_GATE, String.Empty, String.Empty);
             #region "ファージル宮殿 or カールハンツ爵の訓練場を選択"
             if (GroundOne.WE.AvailableFazilCastle)
             {
@@ -1697,6 +1705,7 @@ namespace DungeonPlayer
 
         public void CallFazilCastle()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_TRANSPORT_GATE, Database.LOG_CALL_FAZILCASTLE, String.Empty);
             this.Filter.SetActive(false);
             this.panelHide.gameObject.SetActive(false);
             groupSelectGate.SetActive(false);
@@ -1782,6 +1791,7 @@ namespace DungeonPlayer
 
         public void CallKahlhanz()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_TRANSPORT_GATE, Database.LOG_CALL_KAHLHANZ, String.Empty);
             this.Filter.SetActive(false);
             this.panelHide.gameObject.SetActive(false);
             groupSelectGate.SetActive(false);
@@ -1986,6 +1996,7 @@ namespace DungeonPlayer
         }
 
 	    public void tapInn() {
+            GroundOne.SQL.UpdateOwner(Database.LOG_INN, String.Empty, String.Empty);
             #region "一日目"
             if (this.firstDay >= 1 && !GroundOne.WE.Truth_CommunicationHanna1 && GroundOne.MC.Level >= 1)
             {
@@ -2053,6 +2064,7 @@ namespace DungeonPlayer
 
         public void CallRestInn()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_CALL_RESTINN, String.Empty, String.Empty);
             HideAllChild();
             if (!GroundOne.WE.AlreadyRest)
             {
@@ -2068,6 +2080,7 @@ namespace DungeonPlayer
 
         public void CallItemBank()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_CALL_ITEMBANK, String.Empty, String.Empty);
             HideAllChild();
             MessagePack.Message69993(ref nowMessage, ref nowEvent);
             NormalTapOK();
@@ -2142,6 +2155,7 @@ namespace DungeonPlayer
 
         public void tapSave()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_SAVE_GAME, "FromHomeTown", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -2154,6 +2168,7 @@ namespace DungeonPlayer
         }
         public void tapLoad()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, "FromHomeTown", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 this.Filter.GetComponent<Image>().color = Color.clear;
@@ -2782,6 +2797,7 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, "FromHomeTown", String.Empty);
             if (GroundOne.WE2.RealWorld && !GroundOne.WE2.SeekerEnd)
             {
                 // 現実世界
@@ -2813,6 +2829,7 @@ namespace DungeonPlayer
 
         public void CallStatusPlayer()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromHomeTown", String.Empty);
             SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
         }
 

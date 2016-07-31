@@ -114,6 +114,7 @@ namespace DungeonPlayer
 
         public void TruthBattleSetting_MouseUp(Button sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_CHOICEEND, sender.name, String.Empty);
             moveActionBox.gameObject.SetActive(false);
 
             float positionX = Input.mousePosition.x;
@@ -135,6 +136,7 @@ namespace DungeonPlayer
         int adjustY = 0;
         public void TruthBattleSetting_MouseDown(Button sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_CHOICESTART, sender.name, String.Empty);
             moveActionBox.gameObject.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z);
             Method.SetupActionButton(moveActionBox.gameObject, moveActionBoxSorcery, sender.name);
             moveActionBox.gameObject.SetActive(true);
@@ -159,6 +161,7 @@ namespace DungeonPlayer
 
         public void tapExit()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_CLOSE, String.Empty, String.Empty);
             SceneDimension.Back(this);
         }
 
@@ -246,6 +249,7 @@ namespace DungeonPlayer
         
         public void FirstChara_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERFIRST, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.MC;
             this.currentPlayerNumber = 0;
             this.Background.GetComponent<Image>().color = GroundOne.MC.PlayerStatusColor;
@@ -254,6 +258,7 @@ namespace DungeonPlayer
 
         public void SecondChara_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERSECOND, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.SC;
             this.currentPlayerNumber = 1;
             this.Background.GetComponent<Image>().color = GroundOne.SC.PlayerStatusColor;
@@ -262,6 +267,7 @@ namespace DungeonPlayer
 
         public void ThirdChara_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLESET_PLAYERTHIRD, String.Empty, String.Empty);
             this.currentPlayer = GroundOne.TC;
             this.currentPlayerNumber = 2;
             this.Background.GetComponent<Image>().color = GroundOne.TC.PlayerStatusColor;

@@ -5106,6 +5106,7 @@ namespace DungeonPlayer
 
         public void buttonTargetPlayer_Click(Button sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_PLAYER, sender.name, String.Empty);
             if (this.NowSelectingTarget)
             {
                 if ((this.instantActionCommandString != String.Empty))// && (this.currentTargetedPlayer.StackActivePlayer == null))
@@ -5173,6 +5174,7 @@ namespace DungeonPlayer
 
         public void buttonTargetEnemy_Click(Button sender)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_ENEMY, sender.name, String.Empty);
             if (this.NowSelectingTarget)
             {
                 if ((this.instantActionCommandString != String.Empty))// && (this.currentTargetedPlayer.StackActivePlayer == null))
@@ -5235,6 +5237,7 @@ namespace DungeonPlayer
 
         public void BattleStart_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_BATTLE_START, String.Empty, String.Empty);
             const string NOW_BATTLE = "戦闘中・・・";
             const string NOW_DUEL = "DUEL中・・・";
             const string NOW_STOP = "戦闘停止";
@@ -5311,11 +5314,13 @@ namespace DungeonPlayer
 
         public void tapActionButton(Button obj)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_COMMAND1, obj.name, String.Empty);
             string command = obj.name;
             ActionCommand(false, GroundOne.MC, obj.name);
         }
         public void tapActionButton2(Button obj)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_COMMAND1, obj.name, String.Empty);
             string command = obj.name;
             player2MainObject.image.sprite = obj.image.sprite;
 
@@ -5323,6 +5328,7 @@ namespace DungeonPlayer
         }
         public void tapActionButton3(Button obj)
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_COMMAND1, obj.name, String.Empty);
             string command = obj.name;
             player3MainObject.image.sprite = obj.image.sprite;
 
@@ -7212,10 +7218,12 @@ namespace DungeonPlayer
 
         public void UseItemButton_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_USEITEM, String.Empty, String.Empty);
             groupParentBackpack.SetActive(!groupParentBackpack.activeInHierarchy);
         }
         public void RunAwayButton_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_RUNAWAY, String.Empty, String.Empty);
             if (this.cannotRunAway)
             {
                 txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは今逃げられない状態に居る。\r\n");

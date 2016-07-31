@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using DungeonPlayer;
 using System.Collections.Generic;
+using System;
 
 namespace DungeonPlayer
 {
@@ -21,6 +22,13 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
+
+            // debug
+            GroundOne.WE.AvailableFood2 = true;
+            GroundOne.WE.AvailableFood3 = true;
+            GroundOne.WE.AvailableFood4 = true;
+            GroundOne.WE.AvailableFood5 = true;
+
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailableFood2 = true;
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailableFood3 = true;
             if (GroundOne.WE.TruthCompleteArea3) GroundOne.WE.AvailableFood4 = true;
@@ -131,21 +139,22 @@ namespace DungeonPlayer
             }
         }
 
-        public void LevelButton_Click(Button sender)
+        public void LevelButton_Click(Text sender)
         {
-            for (int ii = 0; ii < FoodButtonList.Length; ii++ )
-            {
-                if (sender == FoodButtonList[ii])
-                {
-                    SetupAvailableList(ii+1);
-                    break;
-                }
-            }
+            int number = 1;
+            if (sender.text == "I") { number = 1; }
+            else if (sender.text == "II") { number = 2; }
+            else if (sender.text == "III") { number = 3; }
+            else if (sender.text == "IV") { number = 4; }
+            else if (sender.text == "V") { number = 5; }
+            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_NUMBER, number.ToString(), string.Empty);
+            SetupAvailableList(number);
         }
 
 
         public void button1_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[0].text, string.Empty);
             if (FoodTextList[0].text == Database.FOOD_BIFUKATU)
             {
                 DescriptionText.text = "　『" + Database.FOOD_BIFUKATU + "』\r\n\r\nボリュームたっぷりで味も申し分が無いと好評。\r\n\r\n食べた次の日は、以下の効果。\r\n 力＋５\r\n 体＋５";
@@ -170,6 +179,7 @@ namespace DungeonPlayer
 
         public void button2_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[1].text, string.Empty);
             if (FoodTextList[1].text == Database.FOOD_GEKIKARA_CURRY)
             {
                 DescriptionText.text = "　『" + Database.FOOD_GEKIKARA_CURRY + "』\r\n\r\nか・・・辛い！！でもウマイ！！\r\n　実はハンナが客に応じて辛い配分を全調整してるとの事。\r\n\r\n食べた次の日は、以下の効果。\r\n 体＋５\r\n 心＋５";
@@ -194,6 +204,7 @@ namespace DungeonPlayer
 
         public void button3_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[2].text, string.Empty);
             if (FoodTextList[2].text == Database.FOOD_INAGO)
             {
                 DescriptionText.text = "　『" + Database.FOOD_INAGO + "』\r\n\r\n味自体が非常に絶妙で、歯ごたえも非常に良い。問題はその見た目だが・・・。\r\n\r\n食べた次の日は、以下の効果。\r\n 知＋５\r\n 心＋５";
@@ -219,6 +230,7 @@ namespace DungeonPlayer
 
         public void button4_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[3].text, string.Empty);
             if (FoodTextList[3].text == Database.FOOD_USAGI)
             {
                 DescriptionText.text = "　『" + Database.FOOD_USAGI + "』\r\n\r\nウサギ独特の臭みを無くし、肉の旨みは残してある。\r\n\r\n食べた次の日は、以下の効果。\r\n 力＋５\r\n 技＋５";
@@ -243,6 +255,7 @@ namespace DungeonPlayer
 
         public void button5_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_FOOD, FoodTextList[4].text, string.Empty);
             if (FoodTextList[4].text == Database.FOOD_SANMA)
             {
                 DescriptionText.text = "  『" + Database.FOOD_SANMA + "』\r\n\r\n魚本来の味を引き出しており、かつ、煮物と非常にマッチしてる。\r\n\r\n食べた次の日は、以下の効果。\r\n 技＋５\r\n 知＋５";
@@ -267,6 +280,7 @@ namespace DungeonPlayer
 
         public void Order_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_REQUESTFOOD_ORDER, this.CurrentSelect, string.Empty);
             if (this.CurrentSelect == Database.FOOD_BIFUKATU)
             {
                 EatFood(5, 0, 0, 5, 0);

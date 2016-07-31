@@ -584,6 +584,7 @@ namespace DungeonPlayer
             GroundOne.WE2.Account = account.text;
             Method.AutoSaveTruthWorldEnvironment();
             groupAccount.SetActive(false);
+            GroupMenu.SetActive(true);
         }
 
         public void GameStart_Click()
@@ -595,7 +596,7 @@ namespace DungeonPlayer
                 return;
             }
 
-            GroundOne.SQL.UpdateOwner(GroundOne.WE2.Account, "GameStart", String.Empty, String.Empty);
+            GroundOne.SQL.UpdateOwner(Database.LOG_GAME_START, String.Empty, String.Empty);
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
             GroundOne.MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;
@@ -639,21 +640,25 @@ namespace DungeonPlayer
                 GroupSystemMessage.SetActive(true);
                 return;
             }
+            GroundOne.SQL.UpdateOwner(Database.LOG_LOAD_GAME, String.Empty, String.Empty);                
             this.Filter.SetActive(true);
             SceneDimension.CallSaveLoad(this, false, false);
         }
 
         public void Config_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_CONFIG, String.Empty, String.Empty);
         }
 
         public void Exit_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_EXIT_GAME, String.Empty, String.Empty);
             Application.Quit();
         }
 
         public void Seeker_Click()
         {
+            GroundOne.SQL.UpdateOwner(Database.LOG_START_SEEKER, String.Empty, String.Empty);
             GroundOne.WE2.StartSeeker = true;
             Method.AutoSaveTruthWorldEnvironment();
 
@@ -667,11 +672,6 @@ namespace DungeonPlayer
             {
                 SceneDimension.JumpToTruthHomeTown();
             }
-        }
-
-        public void PointerEnter()
-        {
-            GroundOne.PlaySoundEffect(Database.SOUND_LIFE_TAP);
         }
     }
 }
