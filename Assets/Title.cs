@@ -597,6 +597,7 @@ namespace DungeonPlayer
             }
 
             GroundOne.SQL.UpdateOwner(Database.LOG_GAME_START, String.Empty, String.Empty);
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_FIRST_TRY);
             GroundOne.MC.FirstName = Database.EIN_WOLENCE;
             GroundOne.MC.FullName = Database.EIN_WOLENCE_FULL;
             GroundOne.MC.Strength = Database.MAINPLAYER_FIRST_STRENGTH;

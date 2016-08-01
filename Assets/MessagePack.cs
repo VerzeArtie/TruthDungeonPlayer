@@ -21807,6 +21807,7 @@ namespace DungeonPlayer
             messageList.Add(""); eventList.Add(ActionEvent.DungeonFloor5UnknownTileArea5);
             if (!GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent507)
             {
+                GroundOne.WE2.TruthRecollection5 = true;
                 messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：（・・・　玉座に　・・・　ついたな　・・・）"); eventList.Add(ActionEvent.None);
@@ -21963,7 +21964,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：神様でも居るってのかよ！？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　？？？：少年がどう考えるかは重要ではないのだ"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　？？？：少年がどう考えるかは重要ではない"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　？？？：このダンジョンにはそれが存在している"); eventList.Add(ActionEvent.None);
 
@@ -21975,7 +21976,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　？？？：ダンジョンにとって必要性とは必要の無いもの"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　？？？：犠牲となる死は確約されていた真実だったのだ"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　？？？：犠牲となる死は確約されていた真実"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　アイン：なんだよそれ！！"); eventList.Add(ActionEvent.None);
 
@@ -22001,7 +22002,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：っふざけるなよ！そんなものが真実なんておかしいだろうが！！！"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　？？？：落ち着くがよい、少年"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　？？？：・・・　・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　アイン：ック・・・ックソ・・・ッグ・・・"); eventList.Add(ActionEvent.None);
 
@@ -22037,7 +22038,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　アイン：俺じゃ無理って話なのか？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　？？？：そういうことだ、少年"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　？？？：少年よ"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　？？？：死んでしまった事実は覆らない"); eventList.Add(ActionEvent.None);
 
@@ -22063,7 +22064,7 @@ namespace DungeonPlayer
 
                 messageList.Add("　　？？？：少年は受け取る権利がある"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　？？？：神の遺産を受け取りなさい"); eventList.Add(ActionEvent.None);
+                messageList.Add("　　？？？：神の遺産を受け取るがよい"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("　　アイン：それ"); eventList.Add(ActionEvent.None);
 
@@ -24038,9 +24039,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("カール：ダンジョンを出た後、時間はかからなかった。"); eventList.Add(ActionEvent.None);
+            messageList.Add("カール：ダンジョンを出た後、事実を知ってしまってから、そうそう時間はかからなかった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("カール：ヴェルゼ・アーティは、再びダンジョンへ挑む様になっていた。"); eventList.Add(ActionEvent.None);
+            messageList.Add("カール：ヴェルゼ・アーティは、何度も何度もダンジョンへ挑む様になっていた。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("カール：エレマ・セフィーネの死を知ったのが原因だろう。"); eventList.Add(ActionEvent.None);
 
@@ -25224,7 +25225,7 @@ namespace DungeonPlayer
         }
         #endregion
         #region "鏡１５"
-        private static void Story_TruthRecollection4_5(ref List<string> messageList, ref List<ActionEvent> eventList)
+        private static void Story_TruthRecollection4(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -25384,7 +25385,9 @@ namespace DungeonPlayer
 
             if (!GroundOne.WE2.SeekerEvent1015)
             {
-                Story_TruthRecollection4_5(ref messageList, ref eventList);
+                GroundOne.WE2.TruthRecollection4 = true;
+
+                Story_TruthRecollection4(ref messageList, ref eventList);
 
                 messageList.Add("アイン：（　・・・　・・・　・・・　）"); eventList.Add(ActionEvent.None);
 
@@ -26052,13 +26055,15 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ば、ばかな！！　かなりのダメージを与え始めたはずだぞ！？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ヴェルゼ：神具の力を使いました。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ヴェルゼ：神具【黒真空の鎧】の力を使いました。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ヴェルゼ：この神具さえあれば、ボクは何度でも代償を支払い全回復する事が可能です。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：全・・・回復だと？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ヴェルゼ：そうです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：代償は自分の生命力そのもの"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ヴェルゼ：自分の生命力を使い切っていく事で"); eventList.Add(ActionEvent.None);
 
@@ -26148,6 +26153,8 @@ namespace DungeonPlayer
             messageList.Add("ヴェルゼ：し・・・神剣・・・フェルトゥーシュ・・・は・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ヴェルゼ：主と・・・なる・・・対象を・・・変えます・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ヴェルゼ：対象を・・・変える瞬間のみ・・・効果を・・・失い・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ヴェルゼ：その間・・・に・・・ヒーリング・・・スペルを・・・"); eventList.Add(ActionEvent.None);
 
@@ -29454,7 +29461,7 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
-            messageList.Add("エルミ：実はね、２か月前あたりから考えてたんだよ、" + Database.VINSGALDE + "の件は。"); eventList.Add(ActionEvent.None);
+            messageList.Add("エルミ：実はね、以前から考えてたんだよ、" + Database.VINSGALDE + "の件は。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("エルミ：適任役は誰かなと考えた所"); eventList.Add(ActionEvent.None);
 
@@ -29488,7 +29495,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：何で俺の分まで？？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ファラ：・・・ッキャ、野暮だわ（＾＾"); eventList.Add(ActionEvent.None);
+            messageList.Add("ファラ：・・・キャッ、野暮だわ（＾＾"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：・・・ハイ？？"); eventList.Add(ActionEvent.None);
 
@@ -29787,7 +29794,7 @@ namespace DungeonPlayer
 
             messageList.Add("　ランディス：エルミの事やファラ、カールの事、もちろん俺も含めて"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　ランディス：アーティの野郎は、完全に覚えてねぇ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("　ランディス：アーティは、何もかも完全に覚えてねぇ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　ランディス：曖昧な雑談の中では読み切れない面もあるが"); eventList.Add(ActionEvent.None);
 

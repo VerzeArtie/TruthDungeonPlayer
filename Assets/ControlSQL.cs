@@ -15,7 +15,7 @@ namespace DungeonPlayer
         public string connection = string.Empty;
 
         private string TABLE_OWNER_DATA = "owner_data";
-
+        private string TABLE_ARCHIVEMENT = "archivement";
         public void SetupSql()
         {
             try
@@ -98,6 +98,87 @@ namespace DungeonPlayer
                         command.Parameters.Add(new NpgsqlParameter("current_field", DbType.String) { Value = current_field });
                     }
                     command.ExecuteNonQuery();
+                }
+            }
+            catch { } // ログ失敗時は、そのまま進む
+        }
+
+        public void UpdateArchivement(string archive_name)
+        {
+            try
+            {
+                if (GroundOne.SQL == null) { return; }
+
+                string guid = String.Empty;
+
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        guid += dataReader[0].ToString();
+                    }
+                }
+
+                if (guid == String.Empty)
+                {
+                    return;
+                }
+
+                string count = String.Empty;
+                using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                {
+                    con.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + TABLE_ARCHIVEMENT + " where guid = '" + guid + "'", con);
+                    var dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        count += dataReader[0].ToString();
+                    }
+                }
+
+                DateTime update_time = DateTime.Now;
+                if (count.ToString() == "0")
+                {
+                    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                    {
+                        con.Open();
+                        string sqlCmd = "INSERT INTO " + TABLE_ARCHIVEMENT + " ( guid, " + archive_name + " ) VALUES ( :guid, :" + archive_name + " )";
+                        var cmd = new NpgsqlCommand(sqlCmd, con);
+                        //cmd.Prepare();
+                        cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
+                        cmd.Parameters.Add(new NpgsqlParameter(archive_name, NpgsqlDbType.Timestamp) { Value = update_time });
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else
+                {
+                    string currentValue = String.Empty;
+                    using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                    {
+                        con.Open();
+                        NpgsqlCommand cmd = new NpgsqlCommand(@"select " + archive_name + " from " + TABLE_ARCHIVEMENT + " where guid = '" + guid + "'", con);
+                        var dataReader = cmd.ExecuteReader();
+                        while (dataReader.Read())
+                        {
+                            currentValue += dataReader[0].ToString();
+                        }
+                    }
+
+                    if (currentValue == String.Empty)
+                    {
+                        using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
+                        {
+                            con.Open();
+                            string updateCommand = @"update " + TABLE_ARCHIVEMENT + " set " + archive_name + " = :" + archive_name + " where guid = :guid";
+                            NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
+                            command.Parameters.Add(new NpgsqlParameter(archive_name, DbType.DateTime) { Value = update_time });
+                            command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
+                            command.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
             catch { } // ログ失敗時は、そのまま進む

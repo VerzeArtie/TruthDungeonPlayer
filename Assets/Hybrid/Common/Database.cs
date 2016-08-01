@@ -2772,6 +2772,55 @@ namespace DungeonPlayer
         //public const string LOG_POTIONSHOP_NO = @"PotionShopNo";
         //public const string LOG_POTIONSHOP_EXCHANGE = @"PotionShopExchange";
         //public const string LOG_POTIONSHOP_CLOSE = @"PotionShopClose";
+
+        public const string ARCHIVEMENT_FIRST_TRY = @"first_try";
+        public const string ARCHIVEMENT_FIRST_DUNGEON = @"first_dungeon";
+        public const string ARCHIVEMENT_COMPLETE_FLOOR1 = @"complete_floor1";
+        public const string ARCHIVEMENT_COMPLETE_FLOOR2 = @"complete_floor2";
+        public const string ARCHIVEMENT_COMPLETE_FLOOR3 = @"complete_floor3";
+        public const string ARCHIVEMENT_COMPLETE_FLOOR4 = @"complete_floor4";
+        public const string ARCHIVEMENT_COMPLETE_FLOOR5 = @"complete_floor5";
+        public const string ARCHIVEMENT_TRUTH_RECOLLECTION1 = @"truth_recollection1";
+        public const string ARCHIVEMENT_TRUTH_RECOLLECTION2 = @"truth_recollection2";
+        public const string ARCHIVEMENT_TRUTH_RECOLLECTION31 = @"truth_recollection31";
+        public const string ARCHIVEMENT_TRUTH_RECOLLECTION32 = @"truth_recollection32";
+        public const string ARCHIVEMENT_TRUTH_RECOLLECTION33 = @"truth_recollection33";
+        public const string ARCHIVEMENT_TRUTH_RECOLLECTION34 = @"truth_recollection34";
+        public const string ARCHIVEMENT_TRUTH_RECOLLECTION4 = @"truth_recollection4";
+        public const string ARCHIVEMENT_TRUTH_RECOLLECTION5 = @"truth_recollection5";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_START_LANA = @"truthbattle_start_lana";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_END_LANA = @"truthbattle_end_lana";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_START_KAHLHANZ = @"truthbattle_start_kahlhanz";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_END_KAHLHANZ = @"truthbattle_end_kahlhanz";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_START_OL = @"truthbattle_start_ol";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_END_OL = @"truthbattle_end_ol";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_START_VERZE_1 = @"truthbattle_start_verze1";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_1 = @"truthbattle_end_verze1";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_START_VERZE_2 = @"truthbattle_start_verze2";
+        public const string ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_2 = @"truthbattle_end_verze2";
+        public const string ARCHIVEMENT_EPILOGUE = @"epilogue";
+        public const string ARCHIVEMENT_ENDING = @"ending";
+        public const string ARCHIVEMENT_DUEL_1 = @"duel_1"; // エオネ・フルネア
+        public const string ARCHIVEMENT_DUEL_2 = @"duel_2"; // マーギ・ゼルキス
+        public const string ARCHIVEMENT_DUEL_3 = @"duel_3"; // セルモイ・ロウ
+        public const string ARCHIVEMENT_DUEL_4 = @"duel_4"; // カーティン・マイ
+        public const string ARCHIVEMENT_DUEL_5 = @"duel_5"; // ジェダ・アルス
+        public const string ARCHIVEMENT_DUEL_6 = @"duel_6"; // シニキア・ヴェイルハンツ
+        public const string ARCHIVEMENT_DUEL_7 = @"duel_7"; // アデル・ブリガンディ
+        public const string ARCHIVEMENT_DUEL_8 = @"duel_8"; // レネ・コルトス
+        public const string ARCHIVEMENT_DUEL_9 = @"duel_9"; // スコーティ・ザルゲ
+        public const string ARCHIVEMENT_DUEL_10 = @"duel_10"; // ペルマ・ワラミィ
+        public const string ARCHIVEMENT_DUEL_11 = @"duel_11"; // キルト・ジョルジュ
+        public const string ARCHIVEMENT_DUEL_12 = @"duel_12"; // ビリー・ラキ
+        public const string ARCHIVEMENT_DUEL_13 = @"duel_13"; // アンナ・ハミルトン
+        public const string ARCHIVEMENT_DUEL_14 = @"duel_14"; // カルマンズ・オーン
+        public const string ARCHIVEMENT_DUEL_15 = @"duel_15"; // サン・ユウ
+        public const string ARCHIVEMENT_DUEL_16 = @"duel_16"; // シュヴァルツェ・フローレ
+        public const string ARCHIVEMENT_DUEL_17 = @"duel_17"; // ルベル・ゼルキス
+        public const string ARCHIVEMENT_DUEL_18 = @"duel_18"; // ヴァン・ヘーグステル
+        public const string ARCHIVEMENT_DUEL_19 = @"duel_19"; // オウリュウ・ゲンマ
+        public const string ARCHIVEMENT_DUEL_20 = @"duel_20"; // ラダ・ミストゥルス
+        public const string ARCHIVEMENT_DUEL_21 = @"duel_21"; // シン・オスキュレーテ
     }
 }
 
