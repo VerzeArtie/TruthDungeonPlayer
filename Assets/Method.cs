@@ -18,6 +18,98 @@ namespace DungeonPlayer
             Lottery,
         }
 
+        public static string DuelistConvertToEnglish(string duelist)
+        {
+            if (duelist == Database.DUEL_EONE_FULNEA)
+            {
+                return Database.DUEL_EONE_FULNEA_DB;
+            }
+            else if (duelist == Database.DUEL_MAGI_ZELKIS)
+            {
+                return Database.DUEL_MAGI_ZELKIS_DB;
+            }
+            else if (duelist == Database.DUEL_SELMOI_RO)
+            {
+                return Database.DUEL_SELMOI_RO_DB;
+            }
+            else if (duelist == Database.DUEL_KARTIN_MAI)
+            {
+                return Database.DUEL_KARTIN_MAI_DB;
+            }
+            else if (duelist == Database.DUEL_JEDA_ARUS)
+            {
+                return Database.DUEL_JEDA_ARUS_DB;
+            }
+            else if (duelist == Database.DUEL_SINIKIA_VEILHANZ)
+            {
+                return Database.DUEL_SINIKIA_VEILHANZ_DB;
+            }
+            else if (duelist == Database.DUEL_ADEL_BRIGANDY)
+            {
+                return Database.DUEL_ADEL_BRIGANDY_DB;
+            }
+            else if (duelist == Database.DUEL_LENE_COLTOS)
+            {
+                return Database.DUEL_LENE_COLTOS_DB;                    
+            }
+            else if (duelist == Database.DUEL_SCOTY_ZALGE)
+            {
+                return Database.DUEL_SCOTY_ZALGE_DB;
+            }
+            else if (duelist == Database.DUEL_PERMA_WARAMY)
+            {
+                return Database.DUEL_PERMA_WARAMY_DB;
+            }
+            else if (duelist == Database.DUEL_KILT_JORJU)
+            {
+                return Database.DUEL_KILT_JORJU_DB;
+            }
+            else if (duelist == Database.DUEL_BILLY_RAKI)
+            {
+                return Database.DUEL_BILLY_RAKI_DB;
+            }
+            else if (duelist == Database.DUEL_ANNA_HAMILTON)
+            {
+                return Database.DUEL_ANNA_HAMILTON_DB;
+            }
+            else if (duelist == Database.DUEL_CALMANS_OHN)
+            {
+                return Database.DUEL_CALMANS_OHN_DB;
+            }
+            else if (duelist == Database.DUEL_SUN_YU)
+            {
+                return Database.DUEL_SUN_YU_DB;
+            }
+            else if (duelist == Database.DUEL_SHUVALTZ_FLORE)
+            {
+                return Database.DUEL_SHUVALTZ_FLORE_DB;
+            }
+            else if (duelist == Database.DUEL_RVEL_ZELKIS)
+            {
+                return Database.DUEL_RVEL_ZELKIS_DB;
+            }
+            else if (duelist == Database.DUEL_VAN_HEHGUSTEL)
+            {
+                return Database.DUEL_VAN_HEHGUSTEL_DB;
+            }
+            else if (duelist == Database.DUEL_OHRYU_GENMA)
+            {
+                return Database.DUEL_OHRYU_GENMA_DB;
+            }
+            else if (duelist == Database.DUEL_LADA_MYSTORUS)
+            {
+                return Database.DUEL_LADA_MYSTORUS_DB;
+            }
+            else if (duelist == Database.DUEL_SIN_OSCURETE)
+            {
+                return Database.DUEL_SIN_OSCURETE_DB;
+            }
+            else
+            {
+                return duelist; // 何も判定できなかった場合は、そのまま値を返す
+            }
+        }
+
         public static void UseItem(MainCharacter player, string itemName, int currentNumber, Text mainMessage)
         {
             ItemBackPack backpackData = new ItemBackPack(itemName);

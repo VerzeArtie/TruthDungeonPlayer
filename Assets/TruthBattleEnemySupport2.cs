@@ -335,7 +335,7 @@ namespace DungeonPlayer
                         if (this.cumulativeCounter[this.StackNumber] > Database.TIMEUP_COMPUTER_INTERRUPT && CanAction(ActiveList[ii]))
                         {
                             #region "シニキア・ヴェイルハンツ"
-                            if (ActiveList[ii].FirstName == Database.DUEL_SINIKIA_VEILHANTU)
+                            if (ActiveList[ii].FirstName == Database.DUEL_SINIKIA_VEILHANZ)
                             {
                                 if (ActiveList[ii].CurrentInstantPoint >= ActiveList[ii].MaxInstantPoint)
                                 {

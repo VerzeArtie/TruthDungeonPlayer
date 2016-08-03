@@ -3463,7 +3463,7 @@ namespace DungeonPlayer
                     }
                     break;
 
-                case Database.DUEL_SINIKIA_VEILHANTU:
+                case Database.DUEL_SINIKIA_VEILHANZ:
                     switch (AP.Math.RandomInteger(1))
                     {
                         case 0:
@@ -6269,8 +6269,8 @@ namespace DungeonPlayer
                     this.Area = MonsterArea.Duel;
                     break;
 
-                case Database.DUEL_SINIKIA_VEILHANTU:
-                    this.fullName = Database.DUEL_SINIKIA_VEILHANTU;
+                case Database.DUEL_SINIKIA_VEILHANZ:
+                    this.fullName = Database.DUEL_SINIKIA_VEILHANZ;
                     this.baseStrength = 2;
                     this.baseAgility = 2;
                     this.baseIntelligence = 80;

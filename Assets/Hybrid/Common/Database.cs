@@ -2432,29 +2432,50 @@ namespace DungeonPlayer
         #endregion
         #region "Duel闘技場"
         public const string DUEL_SIN_OSCURETE = @"シン・オスキュレーテ"; // 60
+        public const string DUEL_SIN_OSCURETE_DB = @"sin_oscurete";
         public const string DUEL_LADA_MYSTORUS = @"ラダ・ミストゥルス"; // 58
+        public const string DUEL_LADA_MYSTORUS_DB = @"lada_mystorus";
         public const string DUEL_OHRYU_GENMA = @"オウリュウ・ゲンマ"; // 56
+        public const string DUEL_OHRYU_GENMA_DB = @"ohryu_genma";
         public const string DUEL_VAN_HEHGUSTEL = @"ヴァン・ヘーグステル"; // 54
+        public const string DUEL_VAN_HEHGUSTEL_DB = @"van_hehgustel";
         public const string DUEL_RVEL_ZELKIS = @"ルベル・ゼルキス"; // 52
+        public const string DUEL_RVEL_ZELKIS_DB = @"rvel_zelkis";
 
         public const string DUEL_SHUVALTZ_FLORE = @"シュヴァルツェ・フローレ"; // 50
+        public const string DUEL_SHUVALTZ_FLORE_DB = @"shuvaltz_flore";
         public const string DUEL_SUN_YU = @"サン・ユウ"; // 47
+        public const string DUEL_SUN_YU_DB = @"sun_yu";
         public const string DUEL_CALMANS_OHN = @"カルマンズ・オーン"; // 44
+        public const string DUEL_CALMANS_OHN_DB = @"calmans_ohn";
         public const string DUEL_ANNA_HAMILTON = @"アンナ・ハミルトン"; // 41
+        public const string DUEL_ANNA_HAMILTON_DB = @"anna_hamilton";
         public const string DUEL_BILLY_RAKI = @"ビリー・ラキ"; // 38
+        public const string DUEL_BILLY_RAKI_DB = @"billy_raki";
 
         public const string DUEL_KILT_JORJU = @"キルト・ジョルジュ"; // 35
+        public const string DUEL_KILT_JORJU_DB = @"kilt_jorju";
         public const string DUEL_PERMA_WARAMY = @"ペルマ・ワラミィ"; // 32
+        public const string DUEL_PERMA_WARAMY_DB = @"perma_waramy";
         public const string DUEL_SCOTY_ZALGE = @"スコーティ・ザルゲ"; // 29
+        public const string DUEL_SCOTY_ZALGE_DB = @"scoty_zalge";
         public const string DUEL_LENE_COLTOS = @"レネ・コルトス"; // 26
+        public const string DUEL_LENE_COLTOS_DB = @"lene_coltos";
         public const string DUEL_ADEL_BRIGANDY = @"アデル・ブリガンディ"; // 23
+        public const string DUEL_ADEL_BRIGANDY_DB = @"adel_brigandy";
 
-        public const string DUEL_SINIKIA_VEILHANTU = @"シニキア・ヴェイルハンツ"; // 20
+        public const string DUEL_SINIKIA_VEILHANZ = @"シニキア・ヴェイルハンツ"; // 20
+        public const string DUEL_SINIKIA_VEILHANZ_DB = @"sinikia_veilhanz";
         public const string DUEL_JEDA_ARUS = @"ジェダ・アルス"; // 16
+        public const string DUEL_JEDA_ARUS_DB = @"jeda_arus";
         public const string DUEL_KARTIN_MAI = @"カーティン・マイ"; // 13
+        public const string DUEL_KARTIN_MAI_DB = @"kartin_mai";
         public const string DUEL_SELMOI_RO = @"セルモイ・ロウ"; // 10
+        public const string DUEL_SELMOI_RO_DB = @"selmoi_ro";
         public const string DUEL_MAGI_ZELKIS = @"マーギ・ゼルキス"; // 7
+        public const string DUEL_MAGI_ZELKIS_DB = @"magi_zelkis";
         public const string DUEL_EONE_FULNEA = @"エオネ・フルネア"; // 4
+        public const string DUEL_EONE_FULNEA_DB = @"eone_fulnea";
         #endregion
         public const string DUEL_DUMMY_SUBURI = @"ダミー素振り君";
 
@@ -2779,7 +2800,7 @@ namespace DungeonPlayer
         public const string ARCHIVEMENT_COMPLETE_FLOOR2 = @"complete_floor2";
         public const string ARCHIVEMENT_COMPLETE_FLOOR3 = @"complete_floor3";
         public const string ARCHIVEMENT_COMPLETE_FLOOR4 = @"complete_floor4";
-        public const string ARCHIVEMENT_COMPLETE_FLOOR5 = @"complete_floor5";
+        public const string ARCHIVEMENT_COMPLETE_REBOOT = @"complete_reboot"; // 最下層から始まりへ
         public const string ARCHIVEMENT_TRUTH_RECOLLECTION1 = @"truth_recollection1";
         public const string ARCHIVEMENT_TRUTH_RECOLLECTION2 = @"truth_recollection2";
         public const string ARCHIVEMENT_TRUTH_RECOLLECTION31 = @"truth_recollection31";
@@ -2800,27 +2821,8 @@ namespace DungeonPlayer
         public const string ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_2 = @"truthbattle_end_verze2";
         public const string ARCHIVEMENT_EPILOGUE = @"epilogue";
         public const string ARCHIVEMENT_ENDING = @"ending";
-        public const string ARCHIVEMENT_DUEL_1 = @"duel_1"; // エオネ・フルネア
-        public const string ARCHIVEMENT_DUEL_2 = @"duel_2"; // マーギ・ゼルキス
-        public const string ARCHIVEMENT_DUEL_3 = @"duel_3"; // セルモイ・ロウ
-        public const string ARCHIVEMENT_DUEL_4 = @"duel_4"; // カーティン・マイ
-        public const string ARCHIVEMENT_DUEL_5 = @"duel_5"; // ジェダ・アルス
-        public const string ARCHIVEMENT_DUEL_6 = @"duel_6"; // シニキア・ヴェイルハンツ
-        public const string ARCHIVEMENT_DUEL_7 = @"duel_7"; // アデル・ブリガンディ
-        public const string ARCHIVEMENT_DUEL_8 = @"duel_8"; // レネ・コルトス
-        public const string ARCHIVEMENT_DUEL_9 = @"duel_9"; // スコーティ・ザルゲ
-        public const string ARCHIVEMENT_DUEL_10 = @"duel_10"; // ペルマ・ワラミィ
-        public const string ARCHIVEMENT_DUEL_11 = @"duel_11"; // キルト・ジョルジュ
-        public const string ARCHIVEMENT_DUEL_12 = @"duel_12"; // ビリー・ラキ
-        public const string ARCHIVEMENT_DUEL_13 = @"duel_13"; // アンナ・ハミルトン
-        public const string ARCHIVEMENT_DUEL_14 = @"duel_14"; // カルマンズ・オーン
-        public const string ARCHIVEMENT_DUEL_15 = @"duel_15"; // サン・ユウ
-        public const string ARCHIVEMENT_DUEL_16 = @"duel_16"; // シュヴァルツェ・フローレ
-        public const string ARCHIVEMENT_DUEL_17 = @"duel_17"; // ルベル・ゼルキス
-        public const string ARCHIVEMENT_DUEL_18 = @"duel_18"; // ヴァン・ヘーグステル
-        public const string ARCHIVEMENT_DUEL_19 = @"duel_19"; // オウリュウ・ゲンマ
-        public const string ARCHIVEMENT_DUEL_20 = @"duel_20"; // ラダ・ミストゥルス
-        public const string ARCHIVEMENT_DUEL_21 = @"duel_21"; // シン・オスキュレーテ
+        public const string ARCHIVEMENT_DUEL_WIN_X = @"duel_win_";
+        public const string ARCHIVEMENT_DUEL_LOSE_X = @"duel_lose_";
     }
 }
 

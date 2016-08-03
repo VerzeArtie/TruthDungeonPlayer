@@ -16,6 +16,7 @@ namespace DungeonPlayer
 
         private string TABLE_OWNER_DATA = "owner_data";
         private string TABLE_ARCHIVEMENT = "archivement";
+        private string TABLE_DUEL = "duel";
         public void SetupSql()
         {
             try
@@ -103,7 +104,7 @@ namespace DungeonPlayer
             catch { } // ログ失敗時は、そのまま進む
         }
 
-        public void UpdateArchivement(string archive_name)
+        private void UpdateArchiveData(string table, string archive_name)
         {
             try
             {
@@ -131,7 +132,7 @@ namespace DungeonPlayer
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
                     con.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + TABLE_ARCHIVEMENT + " where guid = '" + guid + "'", con);
+                    NpgsqlCommand cmd = new NpgsqlCommand(@"select count(*) from " + table + " where guid = '" + guid + "'", con);
                     var dataReader = cmd.ExecuteReader();
                     while (dataReader.Read())
                     {
@@ -145,7 +146,7 @@ namespace DungeonPlayer
                     using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                     {
                         con.Open();
-                        string sqlCmd = "INSERT INTO " + TABLE_ARCHIVEMENT + " ( guid, " + archive_name + " ) VALUES ( :guid, :" + archive_name + " )";
+                        string sqlCmd = "INSERT INTO " + table + " ( guid, " + archive_name + " ) VALUES ( :guid, :" + archive_name + " )";
                         var cmd = new NpgsqlCommand(sqlCmd, con);
                         //cmd.Prepare();
                         cmd.Parameters.Add(new NpgsqlParameter("guid", NpgsqlDbType.Varchar) { Value = guid });
@@ -159,7 +160,7 @@ namespace DungeonPlayer
                     using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                     {
                         con.Open();
-                        NpgsqlCommand cmd = new NpgsqlCommand(@"select " + archive_name + " from " + TABLE_ARCHIVEMENT + " where guid = '" + guid + "'", con);
+                        NpgsqlCommand cmd = new NpgsqlCommand(@"select " + archive_name + " from " + table + " where guid = '" + guid + "'", con);
                         var dataReader = cmd.ExecuteReader();
                         while (dataReader.Read())
                         {
@@ -172,7 +173,7 @@ namespace DungeonPlayer
                         using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                         {
                             con.Open();
-                            string updateCommand = @"update " + TABLE_ARCHIVEMENT + " set " + archive_name + " = :" + archive_name + " where guid = :guid";
+                            string updateCommand = @"update " + table + " set " + archive_name + " = :" + archive_name + " where guid = :guid";
                             NpgsqlCommand command = new NpgsqlCommand(updateCommand, con);
                             command.Parameters.Add(new NpgsqlParameter(archive_name, DbType.DateTime) { Value = update_time });
                             command.Parameters.Add(new NpgsqlParameter("guid", DbType.String) { Value = guid });
@@ -182,6 +183,15 @@ namespace DungeonPlayer
                 }
             }
             catch { } // ログ失敗時は、そのまま進む
+        }
+
+        public void UpdateDuel(string archive_name)
+        {
+            UpdateArchiveData(TABLE_DUEL, archive_name);
+        }
+        public void UpdateArchivement(string archive_name)
+        {
+            UpdateArchiveData(TABLE_ARCHIVEMENT, archive_name);
         }
 
         public void CreateOwner(string name)

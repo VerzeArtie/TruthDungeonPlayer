@@ -2596,6 +2596,7 @@ namespace DungeonPlayer
             if (GroundOne.WE2.TruthRecollection1 == false)
             {
                 GroundOne.WE2.TruthRecollection1 = true;
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION1);
 
                 messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -9377,6 +9378,7 @@ namespace DungeonPlayer
             if (GroundOne.WE2.TruthRecollection2 == false)
             {
                 GroundOne.WE2.TruthRecollection2 = true;
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION2);
 
                 Story_TruthRecollection2_1(ref messageList, ref eventList);
 
@@ -10707,6 +10709,7 @@ namespace DungeonPlayer
             if (GroundOne.WE2.TruthRecollection3_1 == false)
             {
                 GroundOne.WE2.TruthRecollection3_1 = true;
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION31);
 
                 Story_TruthRecollection3_1(ref messageList, ref eventList);
 
@@ -12422,6 +12425,7 @@ namespace DungeonPlayer
             if (GroundOne.WE2.TruthRecollection3_2 == false)
             {
                 GroundOne.WE2.TruthRecollection3_2 = true;
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION32);
 
                 Story_TruthRecollection3_2(ref messageList, ref eventList);
 
@@ -13773,6 +13777,7 @@ namespace DungeonPlayer
             if (GroundOne.WE2.TruthRecollection3_3 == false)
             {
                 GroundOne.WE2.TruthRecollection3_3 = true;
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION33);
 
                 Story_TruthRecollection3_3(ref messageList, ref eventList);
 
@@ -14342,6 +14347,7 @@ namespace DungeonPlayer
             if (GroundOne.WE2.TruthRecollection3_4 == false)
             {
                 GroundOne.WE2.TruthRecollection3_4 = true;
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION34);
 
                 GroundOne.StopDungeonMusic();
 
@@ -21808,6 +21814,8 @@ namespace DungeonPlayer
             if (!GroundOne.WE2.SeekerEvent506 && !GroundOne.WE2.SeekerEvent507)
             {
                 GroundOne.WE2.TruthRecollection5 = true;
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION5);
+
                 messageList.Add("アイン：（・・・　・・・）"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：（・・・　玉座に　・・・　ついたな　・・・）"); eventList.Add(ActionEvent.None);
@@ -23316,6 +23324,7 @@ namespace DungeonPlayer
 
                 messageList.Add(""); eventList.Add(ActionEvent.DungeonRemovePartySC);
 
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_COMPLETE_REBOOT);
                 // 遠見の青水晶を手放す
                 ItemBackPack[] backpackInfo = GroundOne.MC.GetBackPackInfo();
                 for (int jj = 0; jj < backpackInfo.Length; jj++)
@@ -23972,6 +23981,7 @@ namespace DungeonPlayer
 
             messageList.Add("カール：来るがよい。"); eventList.Add(ActionEvent.None);
 
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_START_KAHLHANZ);
             messageList.Add(Database.ENEMY_LAST_SINIKIA_KAHLHANZ); eventList.Add(ActionEvent.EncountBoss);
         }
         public static void Message16018_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -24131,6 +24141,7 @@ namespace DungeonPlayer
 
             messageList.Add("26"); eventList.Add(ActionEvent.AutoMove);
             GroundOne.WE2.SeekerEvent821 = true;
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_KAHLHANZ);
         }
         #endregion
         #region "２階、カールハンツ会話後、戦闘敗北後の自由行動制限"
@@ -24944,6 +24955,7 @@ namespace DungeonPlayer
 
             messageList.Add("ランディス：ああ、来い。"); eventList.Add(ActionEvent.None);
 
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_START_OL);
             messageList.Add(Database.ENEMY_LAST_OL_LANDIS); eventList.Add(ActionEvent.EncountBoss);
         }
         public static void Message16045_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -25077,6 +25089,7 @@ namespace DungeonPlayer
             messageList.Add("アイン：行こう。"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE2.SeekerEvent924 = true;
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_OL);
         }
         #endregion
         #region "３階から４階へ"
@@ -25386,6 +25399,7 @@ namespace DungeonPlayer
             if (!GroundOne.WE2.SeekerEvent1015)
             {
                 GroundOne.WE2.TruthRecollection4 = true;
+                GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_RECOLLECTION4);
 
                 Story_TruthRecollection4(ref messageList, ref eventList);
 
@@ -25979,6 +25993,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：・・・行くぜ！！"); eventList.Add(ActionEvent.None);
 
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_START_VERZE_1);
             messageList.Add(Database.ENEMY_LAST_VERZE_ARTIE); eventList.Add(ActionEvent.EncountBoss);
         }
         public static void Message16070_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -26026,6 +26041,7 @@ namespace DungeonPlayer
         public static void Message16071(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE2.SeekerEvent1101 = true;
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_1);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -26079,6 +26095,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：っく・・・"); eventList.Add(ActionEvent.None);
 
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_START_VERZE_2);
             messageList.Add(Database.ENEMY_LAST_SIN_VERZE_ARTIE); eventList.Add(ActionEvent.EncountBoss);
         }
         public static void Message16071_Fail(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -26123,6 +26140,7 @@ namespace DungeonPlayer
         public static void Message16072(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE2.SeekerEvent1102 = true;
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_VERZE_2);
 
             messageList.Add(""); eventList.Add(ActionEvent.StopMusic);
 
@@ -29069,6 +29087,8 @@ namespace DungeonPlayer
         // エンディング
         public static void Message20601(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_EPILOGUE);
+
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownMorning);
 
             messageList.Add(""); eventList.Add(ActionEvent.HomeTownButtonHidden);
@@ -30555,6 +30575,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：０！！"); eventList.Add(ActionEvent.None);
 
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_START_LANA);
             messageList.Add(Database.ENEMY_LAST_RANA_AMILIA); eventList.Add(ActionEvent.HomeTownCallDuel);
         }
 
@@ -30601,6 +30622,8 @@ namespace DungeonPlayer
         public static void Message30004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             // 「DUEL最終戦闘：ラナ」で勝った場合
+            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_TRUTH_BATTLE_END_LANA);
+
             messageList.Add("ラナ：ッキャ！！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：しまっっ！！　大丈夫か、ラナ！？"); eventList.Add(ActionEvent.None);
@@ -37820,8 +37843,10 @@ namespace DungeonPlayer
      
         public static void Message89998_2(ref List<string> messageList, ref List<ActionEvent> eventList, string OpponentDuelist, bool win, bool fromGoDungeon)
         {
+            string duelist = Method.DuelistConvertToEnglish(OpponentDuelist);
             if (win)
             {
+                GroundOne.SQL.UpdateDuel(Database.ARCHIVEMENT_DUEL_WIN_X + duelist);
                 GroundOne.WE2.DuelWin += 1;
 
                 messageList.Add("　　【受付嬢：勝者 アイン・ウォーレンス！】"); eventList.Add(ActionEvent.None);
@@ -37830,6 +37855,7 @@ namespace DungeonPlayer
             }
             else
             {
+                GroundOne.SQL.UpdateDuel(Database.ARCHIVEMENT_DUEL_LOSE_X + duelist);
                 GroundOne.WE2.DuelLose += 1;
                 messageList.Add("　　【受付嬢：勝者 " + OpponentDuelist + "！】"); eventList.Add(ActionEvent.None);
 
@@ -37847,7 +37873,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：雑魚で悪かったな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ザルゲ：ックソォォォ・・・っおい、キーナ嬢！！"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ザルゲ：クッソォォォ・・・っおい、キーナ嬢！！"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("ザルゲ：今から言う話をよぉぉぉく聞いておけよ！"); eventList.Add(ActionEvent.None);
 

@@ -2326,7 +2326,7 @@ namespace DungeonPlayer
             }
             #endregion
             #region "シニキア・ヴェイルハンツ"
-            else if (player.FirstName == Database.DUEL_SINIKIA_VEILHANTU)
+            else if (player.FirstName == Database.DUEL_SINIKIA_VEILHANZ)
             {
                 if (player.CurrentLife < player.MaxLife / 3)
                 {

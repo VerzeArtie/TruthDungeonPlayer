@@ -293,6 +293,7 @@ namespace DungeonPlayer
 
                         if (alpha <= 0.0f)
                         {
+                            GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_ENDING);
                             this.nowAnimationEnding = true;
                             GroundOne.WE2.SeekerEnd = true;
                             GroundOne.WE.TruthCompleteArea5 = true;
@@ -3206,7 +3207,7 @@ namespace DungeonPlayer
             }
             else if (!GroundOne.WE.TruthDuelMatch6)
             {
-                duelPlayerName = Database.DUEL_SINIKIA_VEILHANTU;
+                duelPlayerName = Database.DUEL_SINIKIA_VEILHANZ;
             }
             else if (!GroundOne.WE.TruthDuelMatch7)
             {
@@ -3328,7 +3329,7 @@ namespace DungeonPlayer
                 }
                 else if (levelBorder[5] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch6)
                 {
-                    OpponentDuelist = Database.DUEL_SINIKIA_VEILHANTU;
+                    OpponentDuelist = Database.DUEL_SINIKIA_VEILHANZ;
                 }
                 else if (levelBorder[6] <= GroundOne.MC.Level && !GroundOne.WE.TruthDuelMatch7)
                 {
