@@ -169,34 +169,31 @@ namespace DungeonPlayer
                             break;
                     }
                     break;
+
                 case Database.ENEMY_HIYOWA_BEATLE:
+                    this.PA = PlayerAction.NormalAttack;
+                    this.ActionLabel.text = Database.ATTACK_JP;
+                    break;
+
+                case Database.ENEMY_GREEN_CHILD:
+                    this.PA = PlayerAction.SpecialSkill;
+                    this.ActionLabel.text = Database.MAGIC_ATTACK;
+                    break;
+
+                case Database.ENEMY_TINY_MANTIS:
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            if (this.CurrentStrengthUp <= 0)
-                            {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = Database.BUFFUP_STRENGTH;
-                            }
-                            else
-                            {
-                                this.PA = PlayerAction.NormalAttack;
-                                this.ActionLabel.text = Database.ATTACK_JP;
-                            }
+                            this.PA = PlayerAction.SpecialSkill;
+                            this.ActionLabel.text = "振り上げるカマ";
                             break;
                         case 1:
                             this.PA = PlayerAction.NormalAttack;
                             this.ActionLabel.text = Database.ATTACK_JP;
                             break;
-                        default:
-                            Debug.Log("default choice");
-                            break;
                     }
                     break;
-                case Database.ENEMY_GREEN_CHILD:
-                    this.PA = PlayerAction.SpecialSkill;
-                    this.ActionLabel.text = Database.MAGIC_ATTACK;
-                    break;
+
                 case Database.ENEMY_MANDRAGORA:
                     this.PA = PlayerAction.SpecialSkill;
                     this.ActionLabel.text = "超音波";
@@ -3311,19 +3308,9 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        if (AP.Math.RandomInteger(2) <= 0)
-                        {
-                            this.PA = PlayerAction.NormalAttack;
-                            this.Target = target;
-                            this.ActionLabel.text = Database.ATTACK_JP;
-                        }
-                        else
-                        {
-                            this.PA = PlayerAction.UseSpell;
-                            this.CurrentSpellName = Database.FIRE_BALL;
-                            this.Target = target;
-                            this.ActionLabel.text = Database.FIRE_BALL_JP;
-                        }
+                        this.PA = PlayerAction.NormalAttack;
+                        this.Target = target;
+                        this.ActionLabel.text = Database.ATTACK_JP;
                     }
                     break;
 
@@ -3572,6 +3559,10 @@ namespace DungeonPlayer
                     {
                         SetupActionCommand(this, target, PlayerAction.UseSkill, Database.STRAIGHT_SMASH);
                     }
+                    break;
+
+                case Database.DUEL_ADEL_BRIGANDY:
+                    // todo
                     break;
 
                 case Database.DUEL_LENE_COLTOS:
@@ -3923,7 +3914,7 @@ namespace DungeonPlayer
                                  this.CurrentPromisedKnowledge <= 0)
                         {
                             SetupActionCommand(this, this, PlayerAction.UseSpell, Database.PROMISED_KNOWLEDGE);
-                        }
+                        } // todo (not blue bullet?)
                         else if (this.CurrentMana >= Database.BLUE_BULLET_COST)
                         {
                             SetupActionCommand(this, target, PlayerAction.UseSpell, Database.BLUE_BULLET);
@@ -4481,62 +4472,92 @@ namespace DungeonPlayer
             {
                 #region "ダンジョン１階"
                 #region "エリア１"
-                case Database.ENEMY_KOUKAKU_WURM:
-                    this.baseStrength = 14;
-                    this.baseAgility = 2;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 1;
-                    this.baseMind = 2;
-                    this.baseLife = 8;
-                    this.experience = 102;
-                    this.level = 3;
-                    this.gold = 44;
-                    this.Rare = RareString.Black;
-                    this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.Area11;
-                    this.DropItem[0] = Database.COMMON_WARM_NO_KOUKAKU;
-                    break;
                 case Database.ENEMY_HIYOWA_BEATLE:
-                    this.baseStrength = 10;
+                    this.baseStrength = 7;
                     this.baseAgility = 3;
                     this.baseIntelligence = 1;
                     this.baseStamina = 1;
                     this.baseMind = 2;
                     this.baseLife = 5;
-                    this.experience = 109;
-                    this.level = 3;
+                    this.experience = 92;
+                    this.level = 1;
                     this.gold = 47;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_BEATLE_TOGATTA_TUNO;
                     break;
+                case Database.ENEMY_HENSYOKU_PLANT:
+                    this.baseStrength = 9;
+                    this.baseAgility = 1;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 1;
+                    this.baseMind = 2;
+                    this.baseLife = 8;
+                    this.experience = 94;
+                    this.level = 1;
+                    this.gold = 44;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area11;
+                    this.DropItem[0] = Database.COMMON_HENSYOKU_KUKI;
+                    break;
                 case Database.ENEMY_GREEN_CHILD:
-                    this.baseStrength = 5;
-                    this.baseAgility = 5;
+                    this.baseStrength = 1;
+                    this.baseAgility = 6;
                     this.baseIntelligence = 12;
                     this.baseStamina = 1;
                     this.baseMind = 2;
-                    this.baseLife = 2;
-                    this.experience = 126;
-                    this.level = 3;
+                    this.baseLife = 22;
+                    this.experience = 109;
+                    this.level = 1;
                     this.gold = 54;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_GREEN_SIKISO;
                     break;
-                case Database.ENEMY_MANDRAGORA:
-                    this.baseStrength = 16;
+                case Database.ENEMY_TINY_MANTIS:
+                    this.baseStrength = 18;
                     this.baseAgility = 7;
-                    this.baseIntelligence = 21;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 2;
+                    this.baseMind = 2;
+                    this.baseLife = 0;
+                    this.experience = 115;
+                    this.level = 2;
+                    this.gold = 54;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area11;
+                    this.DropItem[0] = Database.COMMON_MANTIS_CLAW;
+                    break;
+                case Database.ENEMY_KOUKAKU_WURM:
+                    this.baseStrength = 18;
+                    this.baseAgility = 7;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 2;
+                    this.baseMind = 2;
+                    this.baseLife = 0;
+                    this.experience = 126;
+                    this.level = 3;
+                    this.gold = 54;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area11;
+                    this.DropItem[0] = Database.COMMON_MANTIS_CLAW;
+                    break;
+                case Database.ENEMY_MANDRAGORA:
+                    this.baseStrength = 1;
+                    this.baseAgility = 9;
+                    this.baseIntelligence = 35;
                     this.baseStamina = 14;
                     this.baseMind = 2;
                     this.baseLife = 0;
                     this.experience = 215;
-                    this.level = 7;
+                    this.level = 4;
                     this.gold = 92;
-                    this.Rare = RareString.Blue;
+                    this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_MANDORAGORA_ROOT;
@@ -4550,14 +4571,15 @@ namespace DungeonPlayer
                     this.baseAgility = 10;
                     this.baseIntelligence = 25;
                     this.baseStamina = 12;
-                    this.baseMind = 14;
+                    this.baseMind = 6;
+                    this.baseLife = 0;
                     this.experience = 172;
-                    this.level = 9;
+                    this.level = 6;
                     this.gold = 64;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
-                    this.DropItem[0] = "太陽の葉";
+                    this.DropItem[0] = Database.COMMON_SUN_LEAF;
                     break;
                 case Database.ENEMY_RED_HOPPER:
                     this.baseStrength = 20;
@@ -4565,27 +4587,44 @@ namespace DungeonPlayer
                     this.baseIntelligence = 5;
                     this.baseStamina = 8;
                     this.baseMind = 3;
+                    this.baseLife = 0;
                     this.experience = 186;
                     this.level = 9;
                     this.gold = 70;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Regist_Physical;
                     this.Area = MonsterArea.Area12;
-                    this.DropItem[0] = "蝗";
+                    this.DropItem[0] = Database.COMMON_INAGO;
                     break;
                 case Database.ENEMY_EARTH_SPIDER:
-                    this.baseStrength = 56;
+                    this.baseStrength = 46;
                     this.baseAgility = 11;
                     this.baseIntelligence = 11;
                     this.baseStamina = 15;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 198;
-                    this.level = 9;
+                    this.level = 10;
                     this.gold = 75;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
-                    this.DropItem[0] = "スパイダーシルク";
+                    this.DropItem[0] = Database.COMMON_SPIDER_SILK;
+                    break;
+                case Database.ENEMY_WILD_ANT:
+                    this.baseStrength = 40;
+                    this.baseAgility = 15;
+                    this.baseIntelligence = 1;
+                    this.baseStamina = 30;
+                    this.baseMind = 2;
+                    this.baseLife = 0;
+                    this.experience = 198;
+                    this.level = 11;
+                    this.gold = 75;
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area12;
+                    this.DropItem[0] = Database.COMMON_ANT_ESSENCE;
                     break;
                 case Database.ENEMY_ALRAUNE:
                     this.baseStrength = 5;
@@ -4593,6 +4632,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 38;
                     this.baseStamina = 25;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 337;
                     this.level = 12;
                     this.gold = 116;
@@ -4607,6 +4647,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 52;
                     this.baseStamina = 39;
                     this.baseMind = 40;
+                    this.baseLife = 0;
                     this.experience = 506;
                     this.level = 16;
                     this.gold = 209;
@@ -4625,6 +4666,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 2;
                     this.baseStamina = 30;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 405;
                     this.level = 11;
                     this.gold = 146;
@@ -4640,6 +4682,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 22;
                     this.baseStamina = 33;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 437;
                     this.level = 11;
                     this.gold = 158;
@@ -4654,6 +4697,22 @@ namespace DungeonPlayer
                     this.baseIntelligence = 56;
                     this.baseStamina = 51;
                     this.baseMind = 2;
+                    this.baseLife = 0;
+                    this.experience = 743;
+                    this.level = 14;
+                    this.gold = 247;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area13;
+                    this.DropItem[0] = "プラントノイドの種";
+                    break;
+                case Database.ENEMY_ASH_CREEPER:
+                    this.baseStrength = 93;
+                    this.baseAgility = 30;
+                    this.baseIntelligence = 56;
+                    this.baseStamina = 51;
+                    this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 743;
                     this.level = 14;
                     this.gold = 247;
@@ -4668,6 +4727,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 3;
                     this.baseStamina = 65;
                     this.baseMind = 5;
+                    this.baseLife = 0;
                     this.experience = 751;
                     this.level = 15;
                     this.gold = 249;
@@ -4682,6 +4742,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 42;
                     this.baseStamina = 81;
                     this.baseMind = 53;
+                    this.baseLife = 0;
                     this.experience = 1126;
                     this.level = 18;
                     this.gold = 449;
@@ -4699,6 +4760,8 @@ namespace DungeonPlayer
                     this.baseAgility = 62;
                     this.baseIntelligence = 10;
                     this.baseStamina = 62;
+                    this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 901;
                     this.level = 19;
                     this.gold = 314;
@@ -4712,6 +4775,8 @@ namespace DungeonPlayer
                     this.baseAgility = 9;
                     this.baseIntelligence = 135;
                     this.baseStamina = 48;
+                    this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 946;
                     this.level = 19;
                     this.gold = 330;
@@ -4726,6 +4791,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 90;
                     this.baseStamina = 66;
                     this.baseMind = 20;
+                    this.baseLife = 0;
                     this.experience = 1608;
                     this.level = 21;
                     this.gold = 514;
@@ -4740,6 +4806,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 131;
                     this.baseStamina = 82;
                     this.baseMind = 30;
+                    this.baseLife = 0;
                     this.experience = 2413;
                     this.level = 24;
                     this.gold = 926;
@@ -4759,8 +4826,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 150;
                     this.baseStamina = 210;
                     this.baseMind = 2;
-                    this.experience = 4825;
                     this.baseLife = 3500;
+                    this.experience = 4825;
                     this.baseInstantPoint = 3000;
                     this.level = 30;
                     this.gold = 10000;
@@ -4777,8 +4844,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 77610;
                     this.baseStamina = 40650;
                     this.baseMind = 2150;
-                    this.experience = 0;//15000000;
                     this.baseLife = 34359122;
+                    this.experience = 0;//15000000;
                     this.level = 251;
                     this.gold = 15000000;
                     this.Area = MonsterArea.TruthBoss1;
@@ -4796,6 +4863,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 10;
                     this.baseStamina = 85;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 3475;
                     this.level = 25;
                     this.gold = 1488;
@@ -4811,6 +4879,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 55;
                     this.baseStamina = 77;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 3579;
                     this.level = 25;
                     this.gold = 1522;
@@ -4826,6 +4895,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 170;
                     this.baseStamina = 88;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 3686;
                     this.level = 25;
                     this.gold = 1605;
@@ -4842,6 +4912,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 309;
                     this.baseStamina = 112;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 4976;
                     this.level = 30;
                     this.gold = 2029;
@@ -4860,6 +4931,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 5;
                     this.baseStamina = 140;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 3732;
                     this.level = 28;
                     this.gold = 1720;
@@ -4875,6 +4947,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 5;
                     this.baseStamina = 120;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 3844;
                     this.level = 28;
                     this.gold = 1778;
@@ -4890,6 +4963,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 40;
                     this.baseStamina = 115;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 3960;
                     this.level = 28;
                     this.gold = 1832;
@@ -4905,6 +4979,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 168;
                     this.baseStamina = 240;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 4752;
                     this.level = 31;
                     this.gold = 2298;
@@ -4920,6 +4995,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 370;
                     this.baseStamina = 412;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 6652;
                     this.level = 35;
                     this.gold = 3337;
@@ -4939,6 +5015,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 460;
                     this.baseStamina = 350;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 4989;
                     this.level = 33;
                     this.gold = 2636;
@@ -4954,6 +5031,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 420;
                     this.baseStamina = 320;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 5139;
                     this.level = 33;
                     this.gold = 2767;
@@ -4969,6 +5047,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 10;
                     this.baseStamina = 470;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 6167;
                     this.level = 36;
                     this.gold = 3756;
@@ -4984,6 +5063,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 500;
                     this.baseStamina = 510;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 6228;
                     this.level = 36;
                     this.gold = 3783;
@@ -4999,6 +5079,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 515;
                     this.baseStamina = 620;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 8720;
                     this.level = 40;
                     this.gold = 6010;
@@ -5016,6 +5097,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 352;
                     this.baseStamina = 166;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 6104;
                     this.level = 38;
                     this.gold = 4507;
@@ -5031,6 +5113,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 271;
                     this.baseStamina = 115;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 6287;
                     this.level = 38;
                     this.gold = 4683;
@@ -5046,6 +5129,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 10;
                     this.baseStamina = 233;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 7544;
                     this.level = 41;
                     this.gold = 6745;
@@ -5062,6 +5146,7 @@ namespace DungeonPlayer
                     this.baseIntelligence = 511;
                     this.baseStamina = 380;
                     this.baseMind = 2;
+                    this.baseLife = 0;
                     this.experience = 10562;
                     this.level = 45;
                     this.gold = 11341;
@@ -5080,8 +5165,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 400;
                     this.baseStamina = 200;
                     this.baseMind = 2;
-                    this.experience = 10984;
                     this.baseLife = 16000;
+                    this.experience = 10984;
                     this.baseInstantPoint = 2400;
                     this.level = 50;
                     this.gold = 15000;
@@ -5096,8 +5181,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 650;
                     this.baseStamina = 200;
                     this.baseMind = 2;
-                    this.experience = 11424;
                     this.baseLife = 19500;
+                    this.experience = 11424;
                     this.baseInstantPoint = 1800;
                     this.level = 51;
                     this.gold = 16000;
@@ -5112,8 +5197,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 10;
                     this.baseStamina = 300;
                     this.baseMind = 2;
-                    this.experience = 11881;
                     this.baseLife = 22000;
+                    this.experience = 11881;
                     this.baseInstantPoint = 3900;
                     this.level = 52;
                     this.gold = 17000;
@@ -5128,8 +5213,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 900;
                     this.baseStamina = 280;
                     this.baseMind = 2;
-                    this.experience = 12356;
                     this.baseLife = 20000;
+                    this.experience = 12356;
                     this.baseInstantPoint = 2200;
                     this.level = 53;
                     this.gold = 18000;
@@ -5145,8 +5230,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 900;
                     this.baseStamina = 280;
                     this.baseMind = 2;
-                    this.experience = 12356;
                     this.baseLife = 20000;
+                    this.experience = 12356;
                     this.baseInstantPoint = 2700;
                     this.level = 53;
                     this.gold = 18000;
@@ -5163,8 +5248,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 750;
                     this.baseStamina = 500;
                     this.baseMind = 2;
-                    this.experience = 12850;
                     this.baseLife = 28000;
+                    this.experience = 12850;
                     this.baseInstantPoint = 15000;
                     this.level = 55;
                     this.gold = 19000;
@@ -5179,8 +5264,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 50;
                     this.baseStamina = 320;
                     this.baseMind = 2;
-                    this.experience = 12850;
                     this.baseLife = 15000;
+                    this.experience = 12850;
                     this.baseInstantPoint = 5400;
                     this.level = 50;
                     this.gold = 19000;
@@ -5195,8 +5280,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 50;
                     this.baseStamina = 320;
                     this.baseMind = 2;
-                    this.experience = 12850;
                     this.baseLife = 15000;
+                    this.experience = 12850;
                     this.baseInstantPoint = 3600;
                     this.level = 50;
                     this.gold = 19000;
@@ -5215,8 +5300,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 1000;
                     this.baseStamina = 600;
                     this.baseMind = 250;
-                    this.experience = 25700;
                     this.baseLife = 40000;
+                    this.experience = 25700;
                     this.baseInstantPoint = 75000;
                     this.level = 57;
                     this.gold = 50000;
@@ -5233,8 +5318,8 @@ namespace DungeonPlayer
                     this.baseIntelligence = 91210;
                     this.baseStamina = 61120;
                     this.baseMind = 2150;
-                    this.experience = 0;//15000000;
                     this.baseLife = 41226289;
+                    this.experience = 0;//15000000;
                     this.level = 252;
                     this.gold = 15000000;
                     this.Area = MonsterArea.TruthBoss2;
@@ -6016,7 +6101,7 @@ namespace DungeonPlayer
                     this.baseStamina = 700;
                     this.baseMind = 400;
                     this.baseLife = 0;
-                    this.baseMind = 0;
+                    this.baseMana = 0;
                     this.level = 0;
                     for (int ii = 0; ii < 70; ii++)
                     {
@@ -6044,7 +6129,7 @@ namespace DungeonPlayer
                     this.baseStamina = 600;
                     this.baseMind = 300;
                     this.baseLife = 0;
-                    this.baseMind = 0;
+                    this.baseMana = 0;
                     this.level = 0;
                     for (int ii = 0; ii < 70; ii++)
                     {
@@ -6072,7 +6157,7 @@ namespace DungeonPlayer
                     this.baseStamina = 700;
                     this.baseMind = 600;
                     this.baseLife = 0;
-                    this.baseMind = 0;
+                    this.baseMana = 0;
                     this.level = 0;
                     for (int ii = 0; ii < 70; ii++)
                     {
@@ -6102,7 +6187,7 @@ namespace DungeonPlayer
                     this.baseStamina = 5650;//1047;
                     this.baseMind = 500;
                     this.baseLife = 0;
-                    this.baseMind = 0;
+                    this.baseMana = 0;
                     this.baseSpecialInstant = 15000;
                     this.level = 0;
                     for (int ii = 0; ii < 70; ii++)
@@ -6131,7 +6216,7 @@ namespace DungeonPlayer
                     this.baseStamina = 8681;//1047;
                     this.baseMind = 2200;
                     this.baseLife = 0;
-                    this.baseMind = 0;
+                    this.baseMana = 0;
                     this.baseSpecialInstant = 12000;
                     this.level = 0;
                     for (int ii = 0; ii < 70; ii++)
@@ -6158,13 +6243,8 @@ namespace DungeonPlayer
                 #region "DUEL闘技場"
                 case Database.DUEL_EONE_FULNEA:
                     this.fullName = Database.DUEL_EONE_FULNEA;
-                    this.baseStrength = 2;
-                    this.baseAgility = 3;
-                    this.baseIntelligence = 23;
-                    this.baseStamina = 8;
-                    this.baseMind = 3;
+                    SetupParameter(4, 2, 3, 19, 12, 3);
                     this.experience = 0;
-                    this.level = 4;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6177,15 +6257,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_MAGI_ZELKIS:
                     this.fullName = Database.DUEL_MAGI_ZELKIS;
-                    this.baseStrength = 15;
-                    this.baseAgility = 5;
-                    this.baseIntelligence = 11;
-                    this.baseStamina = 16;
-                    this.baseMind = 4;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(7, 24, 5, 3, 15, 4);
                     this.experience = 0;
-                    this.level = 7;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6201,15 +6274,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_SELMOI_RO:
                     this.fullName = Database.DUEL_SELMOI_RO;
-                    this.baseStrength = 25;
-                    this.baseAgility = 15;
-                    this.baseIntelligence = 2;
-                    this.baseStamina = 20;
-                    this.baseMind = 5;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(10, 30, 10, 2, 20, 5);
                     this.experience = 0;
-                    this.level = 10;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6225,15 +6291,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_KARTIN_MAI:
                     this.fullName = Database.DUEL_KARTIN_MAI;
-                    this.baseStrength = 1;
-                    this.baseAgility = 10;
-                    this.baseIntelligence = 60;
-                    this.baseStamina = 15;
-                    this.baseMind = 6;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(13, 1, 27, 35, 23, 6);
                     this.experience = 0;
-                    this.level = 13;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6246,15 +6305,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_JEDA_ARUS:
                     this.fullName = Database.DUEL_JEDA_ARUS;
-                    this.baseStrength = 50;
-                    this.baseAgility = 10;
-                    this.baseIntelligence = 12;
-                    this.baseStamina = 44;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(16, 48, 20, 7, 35, 8);
                     this.experience = 0;
-                    this.level = 16;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6271,15 +6323,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_SINIKIA_VEILHANZ:
                     this.fullName = Database.DUEL_SINIKIA_VEILHANZ;
-                    this.baseStrength = 2;
-                    this.baseAgility = 2;
-                    this.baseIntelligence = 80;
-                    this.baseStamina = 50;
-                    this.baseMind = 20;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(20, 2, 30, 63, 45, 14);
                     this.experience = 0;
-                    this.level = 20;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6292,15 +6337,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_ADEL_BRIGANDY:
                     this.fullName = Database.DUEL_ADEL_BRIGANDY;
-                    this.baseStrength = 77;
-                    this.baseAgility = 60;
-                    this.baseIntelligence = 5;
-                    this.baseStamina = 40;
-                    this.baseMind = 8;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(23, 80, 43, 5, 50, 12);
                     this.experience = 0;
-                    this.level = 23;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6313,15 +6351,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_LENE_COLTOS:
                     this.fullName = Database.DUEL_LENE_COLTOS;
-                    this.baseStrength = 5;
-                    this.baseAgility = 5;
-                    this.baseIntelligence = 150;
-                    this.baseStamina = 78;
-                    this.baseMind = 10;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(26, 5, 55, 100, 73, 15);
                     this.experience = 0;
-                    this.level = 26;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6334,15 +6365,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_SCOTY_ZALGE:
                     this.fullName = Database.DUEL_SCOTY_ZALGE;
-                    this.baseStrength = 80;
-                    this.baseAgility = 140;
-                    this.baseIntelligence = 2;
-                    this.baseStamina = 80;
-                    this.baseMind = 3;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(29, 90, 130, 2, 80, 3);
                     this.experience = 0;
-                    this.level = 29;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6359,15 +6383,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_PERMA_WARAMY:
                     this.fullName = Database.DUEL_PERMA_WARAMY;
-                    this.baseStrength = 19;
-                    this.baseAgility = 5;
-                    this.baseIntelligence = 125;
-                    this.baseStamina = 100;
-                    this.baseMind = 140;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(32, 19, 65, 120, 160, 25);
                     this.experience = 0;
-                    this.level = 32;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6380,15 +6397,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_KILT_JORJU:
                     this.fullName = Database.DUEL_KILT_JORJU;
-                    this.baseStrength = 100;
-                    this.baseAgility = 100;
-                    this.baseIntelligence = 100;
-                    this.baseStamina = 100;
-                    this.baseMind = 100;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(35, 120, 120, 120, 100, 40);
                     this.experience = 0;
-                    this.level = 35;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6402,21 +6412,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_BILLY_RAKI:
                     this.fullName = Database.DUEL_BILLY_RAKI;
-                    this.baseStrength = 300;
-                    this.baseAgility = 40;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 260;
-                    this.baseMind = 2;
-                    this.baseLife = 50;
-                    this.baseMana = 0;
+                    SetupParameter(38, 220, 105, 1, 285, 30);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 38; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6430,21 +6427,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_ANNA_HAMILTON:
                     this.fullName = Database.DUEL_ANNA_HAMILTON;
-                    this.baseStrength = 10;
-                    this.baseAgility = 120;
-                    this.baseIntelligence = 420;
-                    this.baseStamina = 202;
-                    this.baseMind = 80;
-                    this.baseLife = 50;
-                    this.baseMana = 0;
+                    SetupParameter(41, 10, 120, 345, 314, 33);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 41; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6457,21 +6441,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_CALMANS_OHN:
                     this.fullName = Database.DUEL_CALMANS_OHN;
-                    this.baseStrength = 10;
-                    this.baseAgility = 250;
-                    this.baseIntelligence = 210;
-                    this.baseStamina = 121;
-                    this.baseMind = 450;
-                    this.baseLife = 50;
-                    this.baseMana = 0;
+                    SetupParameter(44, 44, 136, 400, 425, 36);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 44; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6484,21 +6455,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_SUN_YU:
                     this.fullName = Database.DUEL_SUN_YU;
-                    this.baseStrength = 559;
-                    this.baseAgility = 200;
-                    this.baseIntelligence = 80;
-                    this.baseStamina = 450;
-                    this.baseMind = 10;
-                    this.baseLife = 50;
-                    this.baseMana = 0;
+                    SetupParameter(47, 450, 200, 80, 529, 40);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 47; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6512,21 +6470,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_SHUVALTZ_FLORE:
                     this.fullName = Database.DUEL_SHUVALTZ_FLORE;
-                    this.baseStrength = 10;
-                    this.baseAgility = 450;
-                    this.baseIntelligence = 160;
-                    this.baseStamina = 900;
-                    this.baseMind = 85;
-                    this.baseLife = 50;
-                    this.baseMana = 0;
+                    SetupParameter(50, 10, 300, 630, 555, 110);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 50; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6540,21 +6485,8 @@ namespace DungeonPlayer
 
                 case Database.DUEL_RVEL_ZELKIS:
                     this.fullName = Database.DUEL_RVEL_ZELKIS;
-                    this.baseStrength = 30;
-                    this.baseAgility = 400;
-                    this.baseIntelligence = 700;
-                    this.baseStamina = 311;
-                    this.baseMind = 400;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(52, 800, 340, 21, 620, 60);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 52; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6568,23 +6500,11 @@ namespace DungeonPlayer
                     this.backpack[2] = new ItemBackPack(Database.COMMON_HUGE_GREEN_POTION);
                     this.Area = MonsterArea.Duel;
                     break;
+
                 case Database.DUEL_VAN_HEHGUSTEL:
                     this.fullName = Database.DUEL_VAN_HEHGUSTEL;
-                    this.baseStrength = 1;
-                    this.baseAgility = 450;
-                    this.baseIntelligence = 1253;
-                    this.baseStamina = 395;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(54, 15, 400, 874, 747, 65);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 54; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6594,23 +6514,11 @@ namespace DungeonPlayer
                     this.Accessory2 = new ItemBackPack(Database.RARE_CORE_ESSENCE_CHANNEL);
                     this.Area = MonsterArea.Duel;
                     break;
+
                 case Database.DUEL_OHRYU_GENMA:
                     this.fullName = Database.DUEL_OHRYU_GENMA;
-                    this.baseStrength = 1384;
-                    this.baseAgility = 1;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 1000;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(56, 1096, 422, 10, 790, 70);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 56; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6621,23 +6529,11 @@ namespace DungeonPlayer
                     this.Accessory2 = new ItemBackPack(Database.COMMON_FLOATING_WHITE_BALL);
                     this.Area = MonsterArea.Duel;
                     break;
+
                 case Database.DUEL_LADA_MYSTORUS:
                     this.fullName = Database.DUEL_LADA_MYSTORUS;
-                    this.baseStrength = 1;
-                    this.baseAgility = 500;
-                    this.baseIntelligence = 1003;
-                    this.baseStamina = 500;
-                    this.baseMind = 700;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(58, 1, 480, 1223, 870, 130);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 58; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6648,23 +6544,11 @@ namespace DungeonPlayer
                     this.Accessory2 = new ItemBackPack(Database.RARE_OLD_TREE_SINKI);
                     this.Area = MonsterArea.Duel;
                     break;
+
                 case Database.DUEL_SIN_OSCURETE:
                     this.fullName = Database.DUEL_SIN_OSCURETE;
-                    this.baseStrength = 590;
-                    this.baseAgility = 630;
-                    this.baseIntelligence = 480;
-                    this.baseStamina = 500;
-                    this.baseMind = 854;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
+                    SetupParameter(60, 1400, 520, 10, 924, 200);
                     this.experience = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 60; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6676,42 +6560,12 @@ namespace DungeonPlayer
                     break;
 
                 #endregion
-
-                #region "シニキア・カールハンツ、元核習得前"
-                case Database.DUEL_SINIKIA_KAHLHANZ:
-                    this.fullName = Database.DUEL_SINIKIA_KAHLHANZ;
-                    this.baseStrength = Database.SINIKIA_KAHLHANTZ_FIRST_STRENGTH;
-                    this.baseAgility = Database.SINIKIA_KAHLHANTZ_FIRST_AGILITY;
-                    this.baseIntelligence = Database.SINIKIA_KAHLHANTZ_FIRST_INTELLIGENCE;
-                    this.baseStamina = Database.SINIKIA_KAHLHANTZ_FIRST_STAMINA;
-                    this.baseMind = Database.SINIKIA_KAHLHANTZ_FIRST_MIND;
-                    this.baseLife = 8080;
-                    this.baseMana = 6015;
-                    this.experience = 0;
-                    this.level = 50;
-                    this.gold = 0;
-                    this.Rare = RareString.Blue;
-                    this.Armor = ArmorType.Normal;
-                    this.MainWeapon = new ItemBackPack(Database.LEGENDARY_DARKMAGIC_DEVIL_EYE_REPLICA);
-                    this.MainArmor = new ItemBackPack(Database.EPIC_YAMITUYUKUSA_MOON_ROBE);
-                    this.Accessory = new ItemBackPack(Database.LEGENDARY_ZVELDOSE_DEVIL_FIRE_RING);
-                    this.Accessory2 = new ItemBackPack(Database.LEGENDARY_ANASTELISA_INNOCENT_FIRE_RING);
-                    this.Area = MonsterArea.Duel;
-                    break;
-                #endregion
-
+                    
                 #region "オル・ランディス仲間にする前"
                 case Database.DUEL_OL_LANDIS:
                     this.fullName = Database.DUEL_OL_LANDIS;
-                    this.baseStrength = Database.OL_LANDIS_FIRST_STRENGTH;//650;
-                    this.baseAgility = Database.OL_LANDIS_FIRST_AGILITY; // 210;
-                    this.baseIntelligence = Database.OL_LANDIS_FIRST_INTELLIGENCE;//5
-                    this.baseStamina = Database.OL_LANDIS_FIRST_STAMINA; //205;
-                    this.baseMind = Database.OL_LANDIS_FIRST_MIND;//266;
-                    this.baseLife = 2080;
-                    this.baseMana = 1290;
+                    SetupParameter(35, Database.OL_LANDIS_FIRST_STRENGTH, Database.OL_LANDIS_FIRST_AGILITY, Database.OL_LANDIS_FIRST_INTELLIGENCE, Database.OL_LANDIS_FIRST_STAMINA, Database.OL_LANDIS_FIRST_MIND);
                     this.experience = 0;
-                    this.level = 35;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
@@ -6726,17 +6580,7 @@ namespace DungeonPlayer
                 #region "ヴェルゼ・アーティDUELその１"
                 case Database.VERZE_ARTIE:
                     this.fullName = Database.VERZE_ARTIE_FULL;
-                    this.baseStrength = 100;
-                    this.baseAgility = 1205;
-                    this.baseIntelligence = 100;
-                    this.baseStamina = 100;
-                    this.baseMind = 100;
-                    for (int ii = 0; ii < 50; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.Level++;
-                    }
+                    SetupParameter(50, 30, 1205, 30, 240, 100);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -6744,6 +6588,22 @@ namespace DungeonPlayer
                     this.MainWeapon = new ItemBackPack(Database.LEGENDARY_TAU_WHITE_SILVER_SWORD_0);
                     this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR_0);
                     this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING_0);
+                    this.Area = MonsterArea.Duel;
+                    break;
+                #endregion
+
+                #region "シニキア・カールハンツ、元核習得前"
+                case Database.DUEL_SINIKIA_KAHLHANZ:
+                    this.fullName = Database.DUEL_SINIKIA_KAHLHANZ;
+                    SetupParameter(50, 5, 320, 670, 500, 110);
+                    this.experience = 0;
+                    this.gold = 0;
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.MainWeapon = new ItemBackPack(Database.LEGENDARY_DARKMAGIC_DEVIL_EYE_REPLICA);
+                    this.MainArmor = new ItemBackPack(Database.EPIC_YAMITUYUKUSA_MOON_ROBE);
+                    this.Accessory = new ItemBackPack(Database.LEGENDARY_ZVELDOSE_DEVIL_FIRE_RING);
+                    this.Accessory2 = new ItemBackPack(Database.LEGENDARY_ANASTELISA_INNOCENT_FIRE_RING);
                     this.Area = MonsterArea.Duel;
                     break;
                 #endregion
@@ -6771,7 +6631,7 @@ namespace DungeonPlayer
 
             if (this.baseLife == 0)
             {
-                this.baseLife = 50 + (this.level - 1) * 20;
+                this.baseLife = (this.level - 1) * 20;
             }
             if (this.baseMana == 0)
             {
@@ -6818,6 +6678,22 @@ namespace DungeonPlayer
 
             this.currentLife = this.MaxLife; // c 後編編集
             this.currentMana = this.MaxMana; // c 後編編集
+        }
+
+        private void SetupParameter(int lvl, int strength, int agility, int intelligence, int stamina, int mind)
+        {
+            this.baseStrength = strength;
+            this.baseAgility = agility;
+            this.baseIntelligence = intelligence;
+            this.baseStamina = stamina;
+            this.baseMind = mind;
+            this.level = 0;
+            for (int ii = 0; ii < lvl; ii++)
+            {
+                this.baseLife += this.LevelUpLifeTruth;
+                this.baseMana += this.LevelUpManaTruth;
+                this.level++;
+            }
         }
 
         public new void CleanUpEffectForBoss()

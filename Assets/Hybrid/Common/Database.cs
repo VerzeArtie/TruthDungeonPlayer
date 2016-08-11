@@ -986,11 +986,11 @@ namespace DungeonPlayer
         public static int THIRDPLAYER_FIRST_MIND = 1;
 
         // s 後編追加
-        public static int OL_LANDIS_FIRST_STRENGTH = 147; // 5;
-        public static int OL_LANDIS_FIRST_AGILITY = 88; // 3;
+        public static int OL_LANDIS_FIRST_STRENGTH = 200; // 5;
+        public static int OL_LANDIS_FIRST_AGILITY = 116; // 3;
         public static int OL_LANDIS_FIRST_INTELLIGENCE = 118; // 4;
-        public static int OL_LANDIS_FIRST_STAMINA = 29; // 1;
-        public static int OL_LANDIS_FIRST_MIND = 118; // 4;
+        public static int OL_LANDIS_FIRST_STAMINA = 26; // 1;
+        public static int OL_LANDIS_FIRST_MIND = 40; // 4;
 
         public static int OL_LANDIS_STRENGTH_2 = 2100;
         public static int OL_LANDIS_AGILITY_2 = 800;
@@ -1009,12 +1009,6 @@ namespace DungeonPlayer
         public static int VERZE_ARTIE_INTELLIGENCE_3 = 120;
         public static int VERZE_ARTIE_STAMINA_3 = 1000;
         public static int VERZE_ARTIE_MIND_3 = 124;
-
-        public static int SINIKIA_KAHLHANTZ_FIRST_STRENGTH = 5;
-        public static int SINIKIA_KAHLHANTZ_FIRST_AGILITY = 150;
-        public static int SINIKIA_KAHLHANTZ_FIRST_INTELLIGENCE = 900;
-        public static int SINIKIA_KAHLHANTZ_FIRST_STAMINA = 500;
-        public static int SINIKIA_KAHLHANTZ_FIRST_MIND = 50;
 
         public static int SINIKIA_KAHLHANTZ_STRENGTH_2 = 5;
         public static int SINIKIA_KAHLHANTZ_AGILITY_2 = 600;
@@ -1830,14 +1824,17 @@ namespace DungeonPlayer
 
         #region "後編、１階の素材系ドロップアイテム"
         public const string COMMON_YELLOW_MATERIAL = @"イエローマテリアル";
-        public const string COMMON_WARM_NO_KOUKAKU = @"ワームの甲殻";
         public const string COMMON_BEATLE_TOGATTA_TUNO = @"ビートルの尖った角";
+        public const string COMMON_HENSYOKU_KUKI = @"変色した茎";
         public const string COMMON_GREEN_SIKISO = @"緑化色素";
+        public const string COMMON_MANTIS_CLAW = @"マンティスの爪";
+        public const string COMMON_WARM_NO_KOUKAKU = @"ワームの甲殻";
         public const string COMMON_MANDORAGORA_ROOT = @"マンドラゴラの根";
 
         public const string COMMON_SUN_LEAF = @"太陽の葉";
         public const string COMMON_INAGO = @"蝗";
         public const string COMMON_SPIDER_SILK = @"スパイダーシルク";
+        public const string COMMON_ANT_ESSENCE = @"アントのエキス";
         public const string COMMON_ALRAUNE_KAHUN = @"アルラウネの花粉";
         public const string RARE_MARY_KISS = @"マリーキッス";
 
@@ -2293,20 +2290,24 @@ namespace DungeonPlayer
 
         #region "敵の名前"
         #region "ダンジョン１階"
-        public const string ENEMY_KOUKAKU_WURM = @"甲殻ワーム";
         public const string ENEMY_HIYOWA_BEATLE = @"ひ弱なビートル";
+        public const string ENEMY_HENSYOKU_PLANT = @"変色したプラント";
         public const string ENEMY_GREEN_CHILD = @"グリーン・チャイルド";
+        public const string ENEMY_TINY_MANTIS = @"タイニー・マンティス";
+        public const string ENEMY_KOUKAKU_WURM = @"甲殻ワーム";
         public const string ENEMY_MANDRAGORA = @"マンドラゴラ";
 
         public const string ENEMY_SUN_FLOWER = @"サン・フラワー";
         public const string ENEMY_RED_HOPPER = @"レッド・ホッパー";
         public const string ENEMY_EARTH_SPIDER = @"アースパイダー";
+        public const string ENEMY_WILD_ANT = @"ワイルド・アント";
         public const string ENEMY_ALRAUNE = @"アルラウネ";
         public const string ENEMY_POISON_MARY = @"ポイズン・マリー";
 
         public const string ENEMY_SPEEDY_TAKA = @"俊敏な鷹";
         public const string ENEMY_ZASSYOKU_RABBIT = @"雑食ウサギ";
         public const string ENEMY_WONDER_SEED = @"ワンダー・シード";
+        public const string ENEMY_ASH_CREEPER = @"アッシュ・クリーパー";
         public const string ENEMY_FLANSIS_KNIGHT = @"フランシス・ナイト";
         public const string ENEMY_SHOTGUN_HYUI = @"ショットガン・ヒューイ";
 

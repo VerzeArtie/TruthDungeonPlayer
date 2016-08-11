@@ -949,6 +949,11 @@ namespace DungeonPlayer
                                 player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
                                 break;
 
+                            case Database.ENEMY_TINY_MANTIS:
+                                UpdateBattleText(player.FirstName + "はカマを大きく振ってきた！\r\n");
+                                PlayerNormalAttack(player, target, 2.0f, false, true);
+                                break;
+
                             case Database.ENEMY_GREEN_CHILD:
                                 UpdateBattleText(player.FirstName + "はグリーン・スプラッシュを唱えた！\r\n");
                                 PlayerMagicAttack(player, target, 0, 2.0f);
@@ -2150,10 +2155,10 @@ namespace DungeonPlayer
                                     player.CurrentMindUp = Database.INFINITY;
                                     player.CurrentMindUpValue = 300;
                                     player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", Database.INFINITY);
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffAgilityUp", Database.INFINITY);
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffIntelligenceUp", Database.INFINITY);
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffStaminaUp", Database.INFINITY);
-                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStrengthUp, Database.BaseResourceFolder + "BuffMindUp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbAgilityUp, Database.BaseResourceFolder + "BuffAgilityUp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbIntelligenceUp, Database.BaseResourceFolder + "BuffIntelligenceUp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbStaminaUp, Database.BaseResourceFolder + "BuffStaminaUp", Database.INFINITY);
+                                    player.ActivateBuff(((TruthEnemyCharacter)player).pbMindUp, Database.BaseResourceFolder + "BuffMindUp", Database.INFINITY);
                                 }
                                 else if (player.ActionLabel.text == "ペンギンアタック！")
                                 {
@@ -3083,8 +3088,8 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "デビル・プロミス")
                                 {
                                     UpdateBattleText(player.FirstName + "：チカラをシラヌモノ、ゼツボウセヨ\r\n");
-                                    BuffUpPhysicalAttack(player, 3000.0F);
-                                    BuffUpMagicAttack(player, 3000.0F);
+                                    BuffUpPhysicalAttack(player, 1200.0F);
+                                    BuffUpMagicAttack(player, 1200.0F);
                                     BuffUpPhysicalDefense(player, 700.0F);
                                     BuffUpMagicDefense(player, 700.0F);
                                     BuffUpBattleSpeed(player, 500.0F);

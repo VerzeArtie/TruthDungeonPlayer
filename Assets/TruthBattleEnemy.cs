@@ -2974,7 +2974,11 @@ namespace DungeonPlayer
                 {
                     if (((TruthEnemyCharacter)player).AI_TacticsNumber == 0)
                     {
-                        if (player.CurrentProtection <= 0)
+                        if (player.CurrentFlameAura <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.FLAME_AURA);
+                        }
+                        else if (player.CurrentProtection <= 0)
                         {
                             ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.PROTECTION);
                         }
@@ -2986,13 +2990,9 @@ namespace DungeonPlayer
                         {
                             ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.SAINT_POWER);
                         }
-                        else if (player.CurrentAbsorbWater <= 0)
+                        else if (player.CurrentFrozenAura <= 0)
                         {
-                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.ABSORB_WATER);
-                        }
-                        else if (player.CurrentAetherDrive <= 0)
-                        {
-                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.AETHER_DRIVE);
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.FROZEN_AURA);
                         }
                         ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
                     }
@@ -3109,13 +3109,17 @@ namespace DungeonPlayer
                         {
                             ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.CHILL_BURN);
                         }
+                        else if (player.CurrentBlackContract <= 0)
+                        {
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSpell, Database.BLACK_CONTRACT);
+                        }
                         else if (player.CurrentSkillPoint >= Database.CARNAGE_RUSH_COST)
                         {
                             ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSkill, Database.CARNAGE_RUSH);
                         }
-                        else if (player.CurrentMana >= Database.BLUE_BULLET_COST)
+                        else
                         {
-                            ExecActionMethod(player, GroundOne.MC, MainCharacter.PlayerAction.UseSpell, Database.BLUE_BULLET);
+                            ExecActionMethod(player, player, MainCharacter.PlayerAction.UseSkill, Database.INNER_INSPIRATION);
                         }
                     }
                 }

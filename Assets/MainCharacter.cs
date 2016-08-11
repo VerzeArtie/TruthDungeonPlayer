@@ -54,8 +54,8 @@ namespace DungeonPlayer
 
         protected int level = 1;
         protected int experience = 0;
-        protected int baseLife = 50;
-        protected int currentLife = 50;
+        protected int baseLife = 0;
+        protected int currentLife = 0;
         protected int baseSkillPoint = 100;
         protected int currentSkillPoint = 100;
         protected int baseInstantPoint = 1000; // 後編追加

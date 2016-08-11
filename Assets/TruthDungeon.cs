@@ -4161,23 +4161,29 @@ namespace DungeonPlayer
             {
                 if (enemyLevel == 1)
                 {
-                    monsterName = new string[4];
-                    monsterName[0] = Database.ENEMY_KOUKAKU_WURM;
-                    monsterName[1] = Database.ENEMY_HIYOWA_BEATLE;
+                    monsterName = new string[5];
+                    monsterName[0] = Database.ENEMY_HIYOWA_BEATLE;
+                    monsterName[1] = Database.ENEMY_KOUKAKU_WURM;
                     monsterName[2] = Database.ENEMY_GREEN_CHILD;
+                    monsterName[3] = Database.ENEMY_TINY_MANTIS;
+                    monsterName[4] = Database.ENEMY_MANDRAGORA;
+
+                    if (GroundOne.MC.Level <= 1)
+                    {
+                        monsterName[2] = Database.ENEMY_HIYOWA_BEATLE;
+                        monsterName[3] = Database.ENEMY_KOUKAKU_WURM;
+                    }
 
                     if (GroundOne.MC.Level <= 3)
                     {
-                        monsterName[3] = monsterName[2];
+                        monsterName[4] = monsterName[2];
                     }
-                    else
-                    {
-                        monsterName[3] = Database.ENEMY_MANDRAGORA;
-                    }
-                    monsterName2 = new string[3];
+
+                    monsterName2 = new string[4];
                     monsterName2[0] = monsterName[0];
                     monsterName2[1] = monsterName[1];
                     monsterName2[2] = monsterName[2];
+                    monsterName2[3] = monsterName[3];
                 }
                 else if (enemyLevel == 2)
                 {
