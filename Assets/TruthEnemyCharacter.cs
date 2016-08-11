@@ -6095,145 +6095,75 @@ namespace DungeonPlayer
                 #region "真実世界"
                 case Database.ENEMY_LAST_RANA_AMILIA:
                     this.fullName = Database.ENEMY_LAST_RANA_AMILIA;
-                    this.baseStrength = 1150;
-                    this.baseAgility = 1400;
-                    this.baseIntelligence = 1400;
-                    this.baseStamina = 700;
-                    this.baseMind = 400;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 70; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
-                    this.Rare = RareString.Legendary;
-                    this.gold = 0;
+                    SetupParameter(70, 650, 900, 1730, 1500, 270);
                     this.experience = 0;
+                    this.gold = 0;
+                    this.Rare = RareString.Legendary;
                     this.Armor = ArmorType.Normal;
-                    // debug
-                    //this.MainWeapon = new ItemBackPack(Database.EPIC_JUZA_THE_PHANTASMAL_CLAW);
-                    //this.MainArmor = new ItemBackPack(Database.RARE_WHITE_GOLD_CROSS);
-                    //this.Accessory = new ItemBackPack(Database.COMMON_PLATINUM_RING_1);
-                    //this.Accessory2 = new ItemBackPack(Database.COMMON_PLATINUM_RING_10);
+                    this.MainWeapon = new ItemBackPack(Database.EPIC_JUZA_THE_PHANTASMAL_CLAW);
+                    this.MainArmor = new ItemBackPack(Database.RARE_WHITE_GOLD_CROSS);
+                    this.Accessory = new ItemBackPack(Database.COMMON_PLATINUM_RING_1);
+                    this.Accessory2 = new ItemBackPack(Database.COMMON_PLATINUM_RING_10);
                     this.Area = MonsterArea.Duel;
                     break;
 
                 case Database.ENEMY_LAST_SINIKIA_KAHLHANZ:
                     this.fullName = Database.ENEMY_LAST_SINIKIA_KAHLHANZ;
-                    this.baseStrength = 1;
-                    this.baseAgility = 2600;
-                    this.baseIntelligence = 1549;
-                    this.baseStamina = 600;
-                    this.baseMind = 300;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 70; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
-                    this.Rare = RareString.Legendary;
-                    this.gold = 0;
+                    SetupParameter(70, 1, 1000, 1850, 1899, 300);
                     this.experience = 0;
+                    this.gold = 0;
+                    this.Rare = RareString.Legendary;
                     this.Armor = ArmorType.Normal;
-                    // debug
-                    //this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD_1);
-                    //this.MainArmor = new ItemBackPack(Database.EPIC_YAMITUYUKUSA_MOON_ROBE_2);
-                    //this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
-                    //this.Accessory2 = new ItemBackPack(Database.LEGENDARY_ANASTELISA_INNOCENT_FIRE_RING_2);
+                    this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD_1);
+                    this.MainArmor = new ItemBackPack(Database.EPIC_YAMITUYUKUSA_MOON_ROBE_2);
+                    this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
+                    this.Accessory2 = new ItemBackPack(Database.LEGENDARY_ANASTELISA_INNOCENT_FIRE_RING_2);
                     this.Area = MonsterArea.Duel;
                     break;
 
                 case Database.ENEMY_LAST_OL_LANDIS:
                     this.fullName = Database.ENEMY_LAST_OL_LANDIS;
-                    this.baseStrength = 1800;
-                    this.baseAgility = 2700;
-                    this.baseIntelligence = 700;
-                    this.baseStamina = 700;
-                    this.baseMind = 600;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
-                    this.level = 0;
-                    for (int ii = 0; ii < 70; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
-                    this.Rare = RareString.Legendary;
-                    this.gold = 0;
+                    SetupParameter(70, 1850, 1000, 1, 1899, 300);
                     this.experience = 0;
+                    this.gold = 0;
+                    this.Rare = RareString.Legendary;
                     this.Armor = ArmorType.Normal;
-                    // debug
-                    //this.MainWeapon = new ItemBackPack(Database.EPIC_JUZA_THE_PHANTASMAL_CLAW);
-                    //this.SubWeapon = new ItemBackPack(Database.RARE_TYOU_KOU_SHIELD);
-                    //this.MainArmor = new ItemBackPack(Database.EPIC_EZEKRIEL_ARMOR_SIGIL);
-                    //this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
-                    //this.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_CRYSTAL);
+                    this.MainWeapon = new ItemBackPack(Database.EPIC_JUZA_THE_PHANTASMAL_CLAW);
+                    this.SubWeapon = new ItemBackPack(Database.RARE_TYOU_KOU_SHIELD);
+                    this.MainArmor = new ItemBackPack(Database.EPIC_EZEKRIEL_ARMOR_SIGIL);
+                    this.Accessory = new ItemBackPack(Database.RARE_DANZAI_ANGEL_GOHU);
+                    this.Accessory2 = new ItemBackPack(Database.COMMON_GREEN_CRYSTAL);
                     this.Area = MonsterArea.Duel;
                     this.OpponentUseInstantPoint = true;
                     break;
 
                 case Database.ENEMY_LAST_VERZE_ARTIE:
                     this.fullName = Database.ENEMY_LAST_VERZE_ARTIE;
-                    this.baseStrength = 1500;
-                    this.baseAgility = 100;
-                    this.baseIntelligence = 1000;
-                    this.baseStamina = 5650;//1047;
-                    this.baseMind = 500;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
-                    this.baseSpecialInstant = 15000;
-                    this.level = 0;
-                    for (int ii = 0; ii < 70; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
-                    this.Rare = RareString.Legendary;
-                    this.gold = 0;
+                    SetupParameter(70, 1, 2500, 1, 2547, 300);
                     this.experience = 0;
+                    this.gold = 0;
+                    this.baseSpecialInstant = 15000;
+                    this.Rare = RareString.Legendary;
                     this.Armor = ArmorType.Normal;
-                    // debug
-                    //this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
-                    //this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR);
-                    //this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING);
+                    this.MainWeapon = new ItemBackPack(Database.POOR_PRACTICE_SWORD);
+                    this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR);
+                    this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING);
                     this.Area = MonsterArea.Duel;
                     break;
 
                 case Database.ENEMY_LAST_SIN_VERZE_ARTIE:
                     this.fullName = Database.ENEMY_LAST_SIN_VERZE_ARTIE;
                     this.FirstName = Database.ENEMY_LAST_SIN_VERZE_ARTIE;
-                    this.baseStrength = 3500;
-                    this.baseAgility = 500;
-                    this.baseIntelligence = 1900;
-                    this.baseStamina = 8681;//1047;
-                    this.baseMind = 2200;
-                    this.baseLife = 0;
-                    this.baseMana = 0;
-                    this.baseSpecialInstant = 12000;
-                    this.level = 0;
-                    for (int ii = 0; ii < 70; ii++)
-                    {
-                        this.baseLife += this.LevelUpLifeTruth;
-                        this.baseMana += this.LevelUpManaTruth;
-                        this.level++;
-                    }
-                    this.Rare = RareString.Legendary;
-                    this.gold = 0;
+                    SetupParameter(80, 3500, 3000, 4000, 8600, 2200);
                     this.experience = 0;
+                    this.gold = 0;
+                    this.baseSpecialInstant = 12000;
+                    this.Rare = RareString.Legendary;
                     this.Armor = ArmorType.Normal;
-                    // debug
-                    //this.MainWeapon = new ItemBackPack(Database.LEGENDARY_TAU_WHITE_SILVER_SWORD);
-                    //this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR);
-                    //this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING);
-                    //this.Accessory2 = new ItemBackPack(Database.LEGENDARY_SEFINE_HYMNUS_RING);
+                    this.MainWeapon = new ItemBackPack(Database.LEGENDARY_TAU_WHITE_SILVER_SWORD);
+                    this.MainArmor = new ItemBackPack(Database.LEGENDARY_LAMUDA_BLACK_AERIAL_ARMOR);
+                    this.Accessory = new ItemBackPack(Database.LEGENDARY_EPSIRON_HEAVENLY_SKY_WING);
+                    this.Accessory2 = new ItemBackPack(Database.LEGENDARY_SEFINE_HYMNUS_RING);
                     this.Area = MonsterArea.LastBoss;
                     break;
 
