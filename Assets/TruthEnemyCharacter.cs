@@ -4457,6 +4457,26 @@ namespace DungeonPlayer
         public void Initialize(string createName)
         {
             Debug.Log("TruthEnemyCharacter(S) " + createName);
+            double maxExp = 140000;
+            double[] factorExp = { 1.07, 1.20, 1.20, 1.20, 1.50, 0.80, 1.07, 1.08, 1.20, 1.20, 1.50, 0.80, 1.08, 1.10, 1.10, 1.10, 1.20, 1.50, 0.80, 1.05, 1.20, 1.20, 1.20, 1.50, 2.00,
+                                   0.60, 1.03, 1.03, 1.10, 1.30, 0.75, 1.03, 1.03, 1.10, 1.10, 1.30, 0.75, 1.03, 1.05, 1.05, 1.05, 1.30, 0.70, 1.03, 1.10, 1.10, 1.30, 1.40, 1.04, 1.04, 1.04, 1.00, 1.04, 1.00, 1.00, 2.00,
+                                   0.60, 1.03, 1.03, 1.10, 1.30, 0.75, 1.03, 1.03, 1.10, 1.10, 1.30, 0.75, 1.03, 1.05, 1.05, 1.05, 1.30, 0.70, 1.03, 1.10, 1.10, 1.30, 2.00, 
+                                   0.60, 1.03, 1.03, 1.10, 1.30, 0.75, 1.03, 1.03, 1.10, 1.10, 1.40, 0.75, 1.03, 1.05, 1.05, 1.05, 1.40, 0.70, 1.03, 1.10, 1.10, 1.40, 2.00, 1.00, 1.00,
+                                   0.50, 1.00, 1.00, 1.00, 1.00,
+                                   1.00,
+                                   1.00 };
+            double[] listExp = new double[factorExp.Length];
+            double current = maxExp;
+            for (int ii = 0; ii < factorExp.Length; ii++)
+            {
+                listExp[factorExp.Length - 1 - ii] = current / factorExp[factorExp.Length - 1 - ii];
+                current = listExp[factorExp.Length - 1 - ii];
+            }
+            for (int ii = 0; ii < factorExp.Length; ii++)
+            {
+                listExp[ii] = Math.Round(listExp[ii]);
+            }
+
             this.DropItem = new string[MAX_DROPITEM_SIZE];
             for (int ii = 0; ii < MAX_DROPITEM_SIZE; ii++)
             {
@@ -4473,90 +4493,42 @@ namespace DungeonPlayer
                 #region "ダンジョン１階"
                 #region "エリア１"
                 case Database.ENEMY_HIYOWA_BEATLE:
-                    this.baseStrength = 7;
-                    this.baseAgility = 3;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 1;
-                    this.baseMind = 2;
-                    this.baseLife = 5;
-                    this.experience = 92;
-                    this.level = 1;
-                    this.gold = 47;
+                    SetupParameterMonster(1, 8, 1, 1, 1, 2, (int)(listExp[0]), 44, 5);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_BEATLE_TOGATTA_TUNO;
                     break;
                 case Database.ENEMY_HENSYOKU_PLANT:
-                    this.baseStrength = 9;
-                    this.baseAgility = 1;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 1;
-                    this.baseMind = 2;
-                    this.baseLife = 8;
-                    this.experience = 94;
-                    this.level = 1;
-                    this.gold = 44;
+                    SetupParameterMonster(1, 7, 1, 1, 1, 2, (int)(listExp[1]), 47, 8);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_HENSYOKU_KUKI;
                     break;
                 case Database.ENEMY_GREEN_CHILD:
-                    this.baseStrength = 1;
-                    this.baseAgility = 6;
-                    this.baseIntelligence = 12;
-                    this.baseStamina = 1;
-                    this.baseMind = 2;
-                    this.baseLife = 22;
-                    this.experience = 109;
-                    this.level = 1;
-                    this.gold = 54;
+                    SetupParameterMonster(2, 7, 4, 12, 3, 3, (int)(listExp[2]), 54);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_GREEN_SIKISO;
                     break;
                 case Database.ENEMY_TINY_MANTIS:
-                    this.baseStrength = 18;
-                    this.baseAgility = 7;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 2;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 115;
-                    this.level = 2;
-                    this.gold = 54;
+                    SetupParameterMonster(3, 14, 6, 5, 4, 3, (int)(listExp[3]), 57);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_MANTIS_CLAW;
                     break;
                 case Database.ENEMY_KOUKAKU_WURM:
-                    this.baseStrength = 18;
-                    this.baseAgility = 7;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 2;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 126;
-                    this.level = 3;
-                    this.gold = 54;
+                    SetupParameterMonster(4, 18, 7, 6, 5, 3, (int)(listExp[4]), 60);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
-                    this.DropItem[0] = Database.COMMON_MANTIS_CLAW;
+                    this.DropItem[0] = Database.COMMON_WARM_NO_KOUKAKU;
                     break;
                 case Database.ENEMY_MANDRAGORA:
-                    this.baseStrength = 1;
-                    this.baseAgility = 9;
-                    this.baseIntelligence = 35;
-                    this.baseStamina = 14;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 215;
-                    this.level = 4;
-                    this.gold = 92;
+                    SetupParameterMonster(5, 10, 12, 25, 18, 7, (int)(listExp[5]), 92);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
@@ -4566,91 +4538,43 @@ namespace DungeonPlayer
 
                 #region "エリア２"
                 case Database.ENEMY_SUN_FLOWER:
+                    SetupParameterMonster(6, 8, 10, 20, 12, 4, (int)(listExp[6]), 64);
                     this.baseResistFire = 30;
-                    this.baseStrength = 1;
-                    this.baseAgility = 10;
-                    this.baseIntelligence = 25;
-                    this.baseStamina = 12;
-                    this.baseMind = 6;
-                    this.baseLife = 0;
-                    this.experience = 172;
-                    this.level = 6;
-                    this.gold = 64;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = Database.COMMON_SUN_LEAF;
                     break;
                 case Database.ENEMY_RED_HOPPER:
-                    this.baseStrength = 20;
-                    this.baseAgility = 21;
-                    this.baseIntelligence = 5;
-                    this.baseStamina = 8;
-                    this.baseMind = 3;
-                    this.baseLife = 0;
-                    this.experience = 186;
-                    this.level = 9;
-                    this.gold = 70;
+                    SetupParameterMonster(7, 20, 16, 9, 13, 4, (int)(listExp[7]), 70);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Regist_Physical;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = Database.COMMON_INAGO;
                     break;
                 case Database.ENEMY_EARTH_SPIDER:
-                    this.baseStrength = 46;
-                    this.baseAgility = 11;
-                    this.baseIntelligence = 11;
-                    this.baseStamina = 15;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 198;
-                    this.level = 10;
-                    this.gold = 75;
+                    SetupParameterMonster(8, 25, 11, 11, 15, 5, (int)(listExp[8]), 72);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = Database.COMMON_SPIDER_SILK;
                     break;
                 case Database.ENEMY_WILD_ANT:
-                    this.baseStrength = 40;
-                    this.baseAgility = 15;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 30;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 198;
-                    this.level = 11;
-                    this.gold = 75;
+                    SetupParameterMonster(9, 35, 15, 13, 30, 5, (int)(listExp[9]), 75);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = Database.COMMON_ANT_ESSENCE;
                     break;
                 case Database.ENEMY_ALRAUNE:
-                    this.baseStrength = 5;
-                    this.baseAgility = 35;
-                    this.baseIntelligence = 38;
-                    this.baseStamina = 25;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 337;
-                    this.level = 12;
-                    this.gold = 116;
+                    SetupParameterMonster(10, 18, 17, 40, 25, 6, (int)(listExp[10]), 116);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = "アルラウネの花粉";
                     break;
                 case Database.ENEMY_POISON_MARY:
-                    this.baseStrength = 8;
-                    this.baseAgility = 48;
-                    this.baseIntelligence = 52;
-                    this.baseStamina = 39;
-                    this.baseMind = 40;
-                    this.baseLife = 0;
-                    this.experience = 506;
-                    this.level = 16;
-                    this.gold = 209;
+                    SetupParameterMonster(12, 20, 20, 50, 45, 12, (int)(listExp[11]), 209);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
@@ -4661,15 +4585,7 @@ namespace DungeonPlayer
 
                 #region "エリア３"
                 case Database.ENEMY_ZASSYOKU_RABBIT:
-                    this.baseStrength = 72;
-                    this.baseAgility = 35;
-                    this.baseIntelligence = 2;
-                    this.baseStamina = 30;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 405;
-                    this.level = 11;
-                    this.gold = 146;
+                    SetupParameterMonster(13, 40, 18, 20, 40, 7, (int)(listExp[12]), 146);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
@@ -4677,75 +4593,42 @@ namespace DungeonPlayer
                     this.DropItem[1] = "ウサギの肉";
                     break;
                 case Database.ENEMY_SPEEDY_TAKA:
-                    this.baseStrength = 66;
-                    this.baseAgility = 55;
-                    this.baseIntelligence = 22;
-                    this.baseStamina = 33;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 437;
-                    this.level = 11;
-                    this.gold = 158;
+                    SetupParameterMonster(14, 30, 30, 22, 33, 7, (int)(listExp[13]), 158);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
                     this.DropItem[0] = "鷹の白羽";
                     break;
-                case Database.ENEMY_WONDER_SEED:
-                    this.baseStrength = 93;
-                    this.baseAgility = 30;
-                    this.baseIntelligence = 56;
-                    this.baseStamina = 51;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 743;
-                    this.level = 14;
-                    this.gold = 247;
+                case Database.ENEMY_ASH_CREEPER:
+                    SetupParameterMonster(15, 25, 22, 45, 45, 8, (int)(listExp[14]), 204);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
-                    this.DropItem[0] = "プラントノイドの種";
+                    this.DropItem[0] = "薄灰色の卵";
                     break;
-                case Database.ENEMY_ASH_CREEPER:
-                    this.baseStrength = 93;
-                    this.baseAgility = 30;
-                    this.baseIntelligence = 56;
-                    this.baseStamina = 51;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 743;
-                    this.level = 14;
-                    this.gold = 247;
+                case Database.ENEMY_GIANT_SNAKE:
+                    SetupParameterMonster(16, 55, 28, 30, 50, 8, (int)(listExp[15]), 217);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area13;
+                    this.DropItem[0] = "刺の生えた触手";
+                    break;
+                case Database.ENEMY_WONDER_SEED:
+                    SetupParameterMonster(17, 60, 32, 35, 55, 9, (int)(listExp[16]), 231);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
                     this.DropItem[0] = "プラントノイドの種";
                     break;
                 case Database.ENEMY_FLANSIS_KNIGHT:
-                    this.baseStrength = 115;
-                    this.baseAgility = 13;
-                    this.baseIntelligence = 3;
-                    this.baseStamina = 65;
-                    this.baseMind = 5;
-                    this.baseLife = 0;
-                    this.experience = 751;
-                    this.level = 15;
-                    this.gold = 249;
+                    SetupParameterMonster(18, 65, 40, 40, 65, 9, (int)(listExp[17]), 249);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
                     this.DropItem[0] = "刺の生えた触手";
                     break;
                 case Database.ENEMY_SHOTGUN_HYUI:
-                    this.baseStrength = 85;
-                    this.baseAgility = 113;
-                    this.baseIntelligence = 42;
-                    this.baseStamina = 81;
-                    this.baseMind = 53;
-                    this.baseLife = 0;
-                    this.experience = 1126;
-                    this.level = 18;
-                    this.gold = 449;
+                    SetupParameterMonster(20, 90, 70, 42, 81, 16, (int)(listExp[18]), 449);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
@@ -4756,60 +4639,42 @@ namespace DungeonPlayer
 
                 #region "エリア４"
                 case Database.ENEMY_WAR_WOLF:
-                    this.baseStrength = 85;
-                    this.baseAgility = 62;
-                    this.baseIntelligence = 10;
-                    this.baseStamina = 62;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 901;
-                    this.level = 19;
-                    this.gold = 314;
+                    SetupParameterMonster(21, 75, 50, 50, 75, 10, (int)(listExp[19]), 314);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
                     this.DropItem[0] = "狼の牙";
                     break;
                 case Database.ENEMY_BRILLIANT_BUTTERFLY:
-                    this.baseStrength = 2;
-                    this.baseAgility = 9;
-                    this.baseIntelligence = 135;
-                    this.baseStamina = 48;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 946;
-                    this.level = 19;
-                    this.gold = 330;
+                    SetupParameterMonster(22, 50, 53, 80, 60, 10, (int)(listExp[20]), 332);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
                     this.DropItem[0] = "輝きの燐粉";
                     break;
+                case Database.ENEMY_MIST_ELEMENTAL:
+                    SetupParameterMonster(23, 90, 60, 55, 80, 11, (int)(listExp[21]), 364);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area14;
+                    this.DropItem[0] = "霧の結晶";
+                    break;
+                case Database.ENEMY_WHISPER_DRYAD:
+                    SetupParameterMonster(24, 55, 65, 95, 70, 11, (int)(listExp[22]), 407);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area14;
+                    this.DropItem[0] = "ドライアドの鱗粉";
+                    break;
                 case Database.ENEMY_BLOOD_MOSS:
-                    this.baseStrength = 96;
-                    this.baseAgility = 3;
-                    this.baseIntelligence = 90;
-                    this.baseStamina = 66;
-                    this.baseMind = 20;
-                    this.baseLife = 0;
-                    this.experience = 1608;
-                    this.level = 21;
-                    this.gold = 514;
+                    SetupParameterMonster(25, 100, 70, 60, 66, 11, (int)(listExp[23]), 514);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
                     this.DropItem[0] = "赤い胞子";
                     break;
                 case Database.ENEMY_MOSSGREEN_DADDY:
-                    this.baseStrength = 145;
-                    this.baseAgility = 39;
-                    this.baseIntelligence = 131;
-                    this.baseStamina = 82;
-                    this.baseMind = 30;
-                    this.baseLife = 0;
-                    this.experience = 2413;
-                    this.level = 24;
-                    this.gold = 926;
+                    SetupParameterMonster(27, 65, 75, 110, 82, 17, (int)(listExp[24]), 926);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
@@ -4821,52 +4686,20 @@ namespace DungeonPlayer
 
                 #region "ボス"
                 case Database.ENEMY_BOSS_KARAMITUKU_FLANSIS:
-                    this.baseStrength = 195;
-                    this.baseAgility = 100;
-                    this.baseIntelligence = 150;
-                    this.baseStamina = 210;
-                    this.baseMind = 2;
-                    this.baseLife = 3500;
-                    this.experience = 4825;
+                    SetupParameterMonster(30, 200, 100, 200, 602, 45, (int)(listExp[25]), 3000);
                     this.baseInstantPoint = 3000;
-                    this.level = 30;
-                    this.gold = 10000;
+                    this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss1;
                     this.DropItem[0] = Database.EPIC_ORB_GROW_GREEN;
-                    this.UseStackCommand = true;
-                    break;
-
-                case Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD:
-                    this.baseStrength = 68590;
-                    this.baseAgility = 1;//4241;会話専用のため、スピードを減らす。
-                    this.baseIntelligence = 77610;
-                    this.baseStamina = 40650;
-                    this.baseMind = 2150;
-                    this.baseLife = 34359122;
-                    this.experience = 0;//15000000;
-                    this.level = 251;
-                    this.gold = 15000000;
-                    this.Area = MonsterArea.TruthBoss1;
-                    this.Rare = RareString.Purple;
-                    this.Armor = ArmorType.Normal;
-                    this.UseStackCommand = true;
                     break;
                 #endregion
                 #endregion
                 #region "ダンジョン２階"
                 #region "エリア１"
                 case Database.ENEMY_DAGGER_FISH:
-                    this.baseStrength = 220;
-                    this.baseAgility = 133;
-                    this.baseIntelligence = 10;
-                    this.baseStamina = 85;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 3475;
-                    this.level = 25;
-                    this.gold = 1488;
+                    SetupParameterMonster(30, 160, 130, 90, 100, 20, (int)(listExp[26]), 1488);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
@@ -4874,15 +4707,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SIPPU_FLYING_FISH:
-                    this.baseStrength = 220;
-                    this.baseAgility = 230;
-                    this.baseIntelligence = 55;
-                    this.baseStamina = 77;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 3579;
-                    this.level = 25;
-                    this.gold = 1522;
+                    SetupParameterMonster(31, 140, 180, 90, 110, 20, (int)(listExp[27]), 1522);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
@@ -4890,15 +4715,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_ORB_SHELLFISH:
-                    this.baseStrength = 30;
-                    this.baseAgility = 105;
-                    this.baseIntelligence = 170;
-                    this.baseStamina = 88;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 3686;
-                    this.level = 25;
-                    this.gold = 1605;
+                    SetupParameterMonster(32, 90, 140, 180, 120, 20, (int)(listExp[28]), 1605);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
@@ -4907,34 +4724,26 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SPLASH_KURIONE:
-                    this.baseStrength = 120;
-                    this.baseAgility = 155;
-                    this.baseIntelligence = 309;
-                    this.baseStamina = 112;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 4976;
-                    this.level = 30;
-                    this.gold = 2029;
+                    SetupParameterMonster(33, 110, 155, 190, 150, 22, (int)(listExp[29]), 1763);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
                     this.DropItem[0] = Database.COMMON_BLUEWHITE_SHARP_TOGE;
                     this.DropItem[1] = Database.COMMON_KURIONE_ZOUMOTU;
                     break;
+
+                case Database.ENEMY_TRANSPARENT_UMIUSHI:
+                    SetupParameterMonster(35, 120, 180, 230, 220, 30, (int)(listExp[30]), 2568);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area21;
+                    this.DropItem[0] = Database.RARE_TRANSPARENT_POWDER;
+                    break;
                 #endregion
 
                 #region "エリア２"
                 case Database.ENEMY_ROLLING_MAGURO:
-                    this.baseStrength = 450;
-                    this.baseAgility = 85;
-                    this.baseIntelligence = 5;
-                    this.baseStamina = 140;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 3732;
-                    this.level = 28;
-                    this.gold = 1720;
+                    SetupParameterMonster(36, 210, 165, 130, 200, 25, (int)(listExp[31]), 1720);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4942,15 +4751,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_RANBOU_SEA_ARTINE:
-                    this.baseStrength = 360;
-                    this.baseAgility = 156;
-                    this.baseIntelligence = 5;
-                    this.baseStamina = 120;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 3844;
-                    this.level = 28;
-                    this.gold = 1778;
+                    SetupParameterMonster(37, 220, 175, 135, 260, 25, (int)(listExp[32]), 1778);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4958,31 +4759,23 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_BLUE_SEA_WASI:
-                    this.baseStrength = 320;
-                    this.baseAgility = 410;
-                    this.baseIntelligence = 40;
-                    this.baseStamina = 115;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 3960;
-                    this.level = 28;
-                    this.gold = 1832;
+                    SetupParameterMonster(38, 190, 250, 140, 230, 25, (int)(listExp[33]), 1832);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
                     this.DropItem[0] = Database.COMMON_WASI_BLUE_FEATHER;
                     break;
 
+                case Database.ENEMY_BRIGHT_SQUID:
+                    SetupParameterMonster(40, 140, 190, 250, 300, 28, (int)(listExp[34]), 2166);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area22;
+                    this.DropItem[0] = Database.COMMON_BRIGHT_GESO;
+                    break;
+
                 case Database.ENEMY_GANGAME:
-                    this.baseStrength = 165;
-                    this.baseAgility = 50;
-                    this.baseIntelligence = 168;
-                    this.baseStamina = 240;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 4752;
-                    this.level = 31;
-                    this.gold = 2298;
+                    SetupParameterMonster(41, 260, 200, 150, 350, 28, (int)(listExp[35]), 2298);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4990,15 +4783,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_BIGMOUSE_JOE:
-                    this.baseStrength = 560;
-                    this.baseAgility = 110;
-                    this.baseIntelligence = 370;
-                    this.baseStamina = 412;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 6652;
-                    this.level = 35;
-                    this.gold = 3337;
+                    SetupParameterMonster(43, 320, 240, 160, 560, 40, (int)(listExp[36]), 3337);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -5010,15 +4795,7 @@ namespace DungeonPlayer
 
                 #region "エリア３"
                 case Database.ENEMY_MOGURU_MANTA:
-                    this.baseStrength = 120;
-                    this.baseAgility = 40;
-                    this.baseIntelligence = 460;
-                    this.baseStamina = 350;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 4989;
-                    this.level = 33;
-                    this.gold = 2636;
+                    SetupParameterMonster(44, 150, 220, 300, 500, 32, (int)(listExp[37]), 2636);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -5026,15 +4803,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_FLOATING_GOLD_FISH:
-                    this.baseStrength = 10;
-                    this.baseAgility = 350;
-                    this.baseIntelligence = 420;
-                    this.baseStamina = 320;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 5139;
-                    this.level = 33;
-                    this.gold = 2767;
+                    SetupParameterMonster(45, 280, 280, 160, 550, 32, (int)(listExp[38]), 2767);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -5042,31 +4811,23 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_GOEI_HERMIT_CLUB:
-                    this.baseStrength = 520;
-                    this.baseAgility = 405;
-                    this.baseIntelligence = 10;
-                    this.baseStamina = 470;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 6167;
-                    this.level = 36;
-                    this.gold = 3756;
+                    SetupParameterMonster(47, 350, 280, 170, 650, 36, (int)(listExp[39]), 3356);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
                     this.DropItem[0] = Database.COMMON_GOTUGOTU_KARA;
                     break;
 
+                case Database.ENEMY_ABARE_SHARK:
+                    SetupParameterMonster(48, 360, 290, 180, 750, 36, (int)(listExp[40]), 3579);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area23;
+                    this.DropItem[0] = Database.COMMON_SAME_HIRE;
+                    break;
+
                 case Database.ENEMY_VANISHING_CORAL:
-                    this.baseStrength = 10;
-                    this.baseAgility = 580;
-                    this.baseIntelligence = 500;
-                    this.baseStamina = 510;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 6228;
-                    this.level = 36;
-                    this.gold = 3783;
+                    SetupParameterMonster(49, 180, 300, 370, 700, 36, (int)(listExp[41]), 3783);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -5074,15 +4835,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_CASSY_CANCER:
-                    this.baseStrength = 690;
-                    this.baseAgility = 510;
-                    this.baseIntelligence = 515;
-                    this.baseStamina = 620;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 8720;
-                    this.level = 40;
-                    this.gold = 6010;
+                    SetupParameterMonster(51, 450, 350, 250, 950, 56, (int)(listExp[42]), 6010);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -5092,15 +4845,7 @@ namespace DungeonPlayer
 
                 #region "エリア４"
                 case Database.ENEMY_BLACK_STARFISH:
-                    this.baseStrength = 10;
-                    this.baseAgility = 10;
-                    this.baseIntelligence = 352;
-                    this.baseStamina = 166;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 6104;
-                    this.level = 38;
-                    this.gold = 4507;
+                    SetupParameterMonster(52, 200, 320, 390, 800, 40, (int)(listExp[43]), 4507);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
@@ -5108,31 +4853,23 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_RAINBOW_ANEMONE:
-                    this.baseStrength = 10;
-                    this.baseAgility = 288;
-                    this.baseIntelligence = 271;
-                    this.baseStamina = 115;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 6287;
-                    this.level = 38;
-                    this.gold = 4683;
+                    SetupParameterMonster(53, 210, 330, 400, 860, 40, (int)(listExp[44]), 4683);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
                     this.DropItem[0] = Database.COMMON_NANAIRO_SYOKUSYU;
                     break;
 
+                case Database.ENEMY_MACHIBUSE_ANKOU:
+                    SetupParameterMonster(55, 450, 360, 220, 1000, 45, (int)(listExp[45]), 5296);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area24;
+                    this.DropItem[0] = Database.COMMON_PUREWHITE_KIMO;
+                    break;
+
                 case Database.ENEMY_EDGED_HIGH_SHARK:
-                    this.baseStrength = 412;
-                    this.baseAgility = 224;
-                    this.baseIntelligence = 10;
-                    this.baseStamina = 233;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 7544;
-                    this.level = 41;
-                    this.gold = 6745;
+                    SetupParameterMonster(56, 470, 370, 230, 1060, 45, (int)(listExp[46]), 6745);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
@@ -5141,15 +4878,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_EIGHT_EIGHT:
-                    this.baseStrength = 10;
-                    this.baseAgility = 322;
-                    this.baseIntelligence = 511;
-                    this.baseStamina = 380;
-                    this.baseMind = 2;
-                    this.baseLife = 0;
-                    this.experience = 10562;
-                    this.level = 45;
-                    this.gold = 11341;
+                    SetupParameterMonster(58, 250, 430, 550, 1300, 62, (int)(listExp[47]), 11341);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
@@ -5160,64 +4889,32 @@ namespace DungeonPlayer
 
                 #region "力の部屋：ボス"
                 case Database.ENEMY_BRILLIANT_SEA_PRINCE:
-                    this.baseStrength = 360;
-                    this.baseAgility = 280;
-                    this.baseIntelligence = 400;
-                    this.baseStamina = 200;
-                    this.baseMind = 2;
-                    this.baseLife = 16000;
-                    this.experience = 10984;
+                    SetupParameterMonster(65, 700, 550, 700, 2872, 100, (int)(listExp[48]), 15000);
                     this.baseInstantPoint = 2400;
-                    this.level = 50;
-                    this.gold = 15000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss21;
                     break;
 
                 case Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN:
-                    this.baseStrength = 250;
-                    this.baseAgility = 140;
-                    this.baseIntelligence = 650;
-                    this.baseStamina = 200;
-                    this.baseMind = 2;
-                    this.baseLife = 19500;
-                    this.experience = 11424;
+                    SetupParameterMonster(66, 300, 500, 800, 3070, 100, (int)(listExp[49]), 16000);
                     this.baseInstantPoint = 1800;
-                    this.level = 51;
-                    this.gold = 16000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss22;
                     break;
 
                 case Database.ENEMY_SHELL_SWORD_KNIGHT:
-                    this.baseStrength = 720;
-                    this.baseAgility = 450;
-                    this.baseIntelligence = 10;
-                    this.baseStamina = 300;
-                    this.baseMind = 2;
-                    this.baseLife = 22000;
-                    this.experience = 11881;
+                    SetupParameterMonster(67, 900, 650, 300, 3368, 100, (int)(listExp[50]), 17000);
                     this.baseInstantPoint = 3900;
-                    this.level = 52;
-                    this.gold = 17000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss23;
                     break;
 
                 case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
-                    this.baseStrength = 150;
-                    this.baseAgility = 250;
-                    this.baseIntelligence = 900;
-                    this.baseStamina = 280;
-                    this.baseMind = 2;
-                    this.baseLife = 20000;
-                    this.experience = 12356;
+                    SetupParameterMonster(68, 300, 550, 800, 3166, 100, (int)(listExp[51]), 18000);
                     this.baseInstantPoint = 2200;
-                    this.level = 53;
-                    this.gold = 18000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss24;
@@ -5225,16 +4922,8 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
-                    this.baseStrength = 150;
-                    this.baseAgility = 250;
-                    this.baseIntelligence = 900;
-                    this.baseStamina = 280;
-                    this.baseMind = 2;
-                    this.baseLife = 20000;
-                    this.experience = 12356;
+                    SetupParameterMonster(68, 300, 550, 800, 3166, 100, (int)(listExp[52]), 18000);
                     this.baseInstantPoint = 2700;
-                    this.level = 53;
-                    this.gold = 18000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss24;
@@ -5243,48 +4932,24 @@ namespace DungeonPlayer
 
 
                 case Database.ENEMY_SEA_STAR_ORIGIN_KING:
-                    this.baseStrength = 750;
-                    this.baseAgility = 100;
-                    this.baseIntelligence = 750;
-                    this.baseStamina = 500;
-                    this.baseMind = 2;
-                    this.baseLife = 28000;
-                    this.experience = 12850;
-                    this.baseInstantPoint = 15000;
-                    this.level = 55;
-                    this.gold = 19000;
+                    SetupParameterMonster(75, 600, 450, 600, 3852, 100, (int)(listExp[53]), 19000);
+                    this.baseInstantPoint = 12000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss25;
                     break;
 
                 case Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU:
-                    this.baseStrength = 350;
-                    this.baseAgility = 420;
-                    this.baseIntelligence = 50;
-                    this.baseStamina = 320;
-                    this.baseMind = 2;
-                    this.baseLife = 15000;
-                    this.experience = 12850;
+                    SetupParameterMonster(70, 900, 650, 300, 2662, 100, (int)(listExp[54]), 19000);
                     this.baseInstantPoint = 5400;
-                    this.level = 50;
-                    this.gold = 19000;
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss25;
                     break;
 
                 case Database.ENEMY_SEA_STAR_KNIGHT_AMARA:
-                    this.baseStrength = 420;
-                    this.baseAgility = 350;
-                    this.baseIntelligence = 50;
-                    this.baseStamina = 320;
-                    this.baseMind = 2;
-                    this.baseLife = 15000;
-                    this.experience = 12850;
+                    SetupParameterMonster(70, 900, 680, 300, 2662, 100, (int)(listExp[55]), 19000);
                     this.baseInstantPoint = 3600;
-                    this.level = 50;
-                    this.gold = 19000;
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss25;
@@ -5295,36 +4960,12 @@ namespace DungeonPlayer
                 #region "ボス"
 
                 case Database.ENEMY_BOSS_LEVIATHAN:
-                    this.baseStrength = 850;
-                    this.baseAgility = 700;
-                    this.baseIntelligence = 1000;
-                    this.baseStamina = 600;
-                    this.baseMind = 250;
-                    this.baseLife = 40000;
-                    this.experience = 25700;
-                    this.baseInstantPoint = 75000;
-                    this.level = 57;
-                    this.gold = 50000;
+                    SetupParameterMonster(80, 1000, 800, 1200, 8142, 250, (int)(listExp[56]), 35000);
+                    this.baseInstantPoint = 55000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss2;
                     this.DropItem[0] = Database.EPIC_ORB_GROUNDSEA_STAR;
-                    this.UseStackCommand = true;
-                    break;
-
-                case Database.ENEMY_DRAGON_TINKOU_DEEPSEA:
-                    this.baseStrength = 35510;
-                    this.baseAgility = 100;//2566;会話専用のため、スピードを減らす。
-                    this.baseIntelligence = 91210;
-                    this.baseStamina = 61120;
-                    this.baseMind = 2150;
-                    this.baseLife = 41226289;
-                    this.experience = 0;//15000000;
-                    this.level = 252;
-                    this.gold = 15000000;
-                    this.Area = MonsterArea.TruthBoss2;
-                    this.Rare = RareString.Purple;
-                    this.Armor = ArmorType.Normal;
                     this.UseStackCommand = true;
                     break;
                 #endregion
@@ -5332,15 +4973,7 @@ namespace DungeonPlayer
                 #region "３階"
                 #region "エリア１"
                 case Database.ENEMY_TOSSIN_ORC:
-                    this.baseStrength = 788;
-                    this.baseAgility = 60;
-                    this.baseIntelligence = 2;
-                    this.baseStamina = 500;
-                    this.baseMind = 2;
-                    this.baseLife = 26000;
-                    this.experience = 19032;
-                    this.level = 50;
-                    this.gold = 7123;
+                    SetupParameterMonster(70, 650, 500, 350, 2462, 50, (int)(listExp[57]), 7123);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
@@ -5348,15 +4981,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SNOW_CAT:
-                    this.baseStrength = 566;
-                    this.baseAgility = 488;
-                    this.baseIntelligence = 271;
-                    this.baseStamina = 115;
-                    this.baseMind = 2;
-                    this.baseLife = 22000;
-                    this.experience = 19603;
-                    this.level = 50;
-                    this.gold = 7271;
+                    SetupParameterMonster(71, 550, 600, 360, 2260, 50, (int)(listExp[58]), 7271);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
@@ -5364,15 +4989,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_WAR_MAMMOTH:
-                    this.baseStrength = 720;
-                    this.baseAgility = 50;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 550;
-                    this.baseMind = 2;
-                    this.baseLife = 32000;
-                    this.experience = 20191;
-                    this.level = 50;
-                    this.gold = 7634;
+                    SetupParameterMonster(72, 670, 540, 370, 3058, 50, (int)(listExp[59]), 7634);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
@@ -5380,92 +4997,65 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_WINGED_COLD_FAIRY:
-                    this.baseStrength = 5;
-                    this.baseAgility = 252;
-                    this.baseIntelligence = 1015;
-                    this.baseStamina = 330;
-                    this.baseMind = 2;
-                    this.baseLife = 25000;
-                    this.experience = 27257;
-                    this.level = 54;
-                    this.gold = 9479;
+                    SetupParameterMonster(74, 400, 570, 730, 3154, 60, (int)(listExp[60]), 9479);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
                     this.DropItem[0] = Database.COMMON_FAIRY_POWDER;
                     break;
+
+                case Database.ENEMY_FREEZING_GRIFFIN:
+                    SetupParameterMonster(75, 850, 600, 420, 3352, 60, (int)(listExp[61]), 11564);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area31;
+                    this.DropItem[0] = Database.RARE_GRIFFIN_EYE;
+                    break;
+
                 #endregion
                 #region "エリア２"
                 case Database.ENEMY_BRUTAL_OGRE:
-                    this.baseStrength = 850;
-                    this.baseAgility = 550;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 160;
-                    this.baseMind = 2;
-                    this.baseLife = 36000;
-                    this.gold = 8135;
-                    this.experience = 20443;
-                    this.level = 55;
+                    SetupParameterMonster(76, 800, 580, 440, 3650, 70, (int)(listExp[62]), 8135);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
                     this.DropItem[0] = Database.COMMON_GOTUGOTU_KONBOU;
                     break;
+
                 case Database.ENEMY_HYDRO_LIZARD:
-                    this.baseStrength = 650;
-                    this.baseAgility = 320;
-                    this.baseIntelligence = 650;
-                    this.baseStamina = 220;
-                    this.baseMind = 2;
-                    this.baseLife = 41000;
-                    this.gold = 8386;
-                    this.experience = 21056;
-                    this.level = 55;
+                    SetupParameterMonster(77, 830, 600, 450, 4048, 70, (int)(listExp[63]), 8386);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
                     this.DropItem[0] = Database.COMMON_LIZARD_UROKO;
                     break;
+
                 case Database.ENEMY_PENGUIN_STAR:
-                    this.baseStrength = 380;
-                    this.baseAgility = 380;
-                    this.baseIntelligence = 380;
-                    this.baseStamina = 380;
-                    this.baseMind = 380;
-                    this.baseLife = 45000;
-                    this.gold = 8623;
-                    this.experience = 21688;
-                    this.level = 55;
+                    SetupParameterMonster(78, 720, 720, 720, 4346, 70, (int)(listExp[64]), 8623);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
                     this.DropItem[0] = Database.COMMON_EMBLEM_OF_PENGUIN;
                     break;
+
+                case Database.ENEMY_ICEBERG_SPIRIT:
+                    SetupParameterMonster(80, 470, 640, 920, 4742, 80, (int)(listExp[65]), 9502);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area32;
+                    this.DropItem[0] = Database.COMMON_KINKIN_ICE;
+                    break;
+
                 case Database.ENEMY_SWORD_TOOTH_TIGER:
-                    this.baseStrength = 1100;
-                    this.baseAgility = 1;
-                    this.baseIntelligence = 650;
-                    this.baseStamina = 350;
-                    this.baseMind = 2;
-                    this.baseLife = 60000;
-                    this.gold = 10652;
-                    this.experience = 26026;
-                    this.level = 58;
+                    SetupParameterMonster(81, 950, 660, 480, 5140, 80, (int)(listExp[66]), 10652);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
                     this.DropItem[0] = Database.COMMON_SHARPNESS_TIGER_TOOTH;
                     break;
+
                 case Database.ENEMY_FEROCIOUS_RAGE_BEAR:
-                    this.baseStrength = 1500;
-                    this.baseAgility = 1;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 1000;
-                    this.baseMind = 2;
-                    this.baseLife = 85000;
-                    this.gold = 15173;
-                    this.experience = 36436;
-                    this.level = 62;
+                    SetupParameterMonster(83, 1300, 750, 600, 6536, 150, (int)(listExp[67]), 15173);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
@@ -5475,75 +5065,47 @@ namespace DungeonPlayer
 
                 #region "エリア３"
                 case Database.ENEMY_WINTER_ORB:
-                    this.baseStrength = 1;
-                    this.baseAgility = 200;
-                    this.baseIntelligence = 1200;
-                    this.baseStamina = 650;
-                    this.baseMind = 2;
-                    this.baseLife = 50000;
-                    this.gold = 12121;
-                    this.experience = 27327;
-                    this.level = 60;
+                    SetupParameterMonster(84, 520, 680, 1000, 5834, 90, (int)(listExp[68]), 12121);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
                     this.DropItem[0] = Database.COMMON_TOUMEI_SNOW_CRYSTAL;
                     break;
+
                 case Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI:
-                    this.baseStrength = 1;
-                    this.baseAgility = 300;
-                    this.baseIntelligence = 700;
-                    this.baseStamina = 600;
-                    this.baseMind = 500;
-                    this.baseLife = 65000;
-                    this.gold = 12691;
-                    this.experience = 28147;
-                    this.level = 60;
+                    SetupParameterMonster(85, 530, 700, 1030, 6032, 90, (int)(listExp[69]), 12691);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
                     this.DropItem[0] = Database.COMMON_WHITE_AZARASHI_MEAT;
                     break;
+
+                case Database.ENEMY_MAJESTIC_CENTAURUS:
+                    SetupParameterMonster(87, 1080, 750, 550, 6528, 100, (int)(listExp[70]), 15352);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area33;
+                    this.DropItem[0] = Database.COMMON_CENTAURUS_LEATHER;
+                    break;
+
                 case Database.ENEMY_INTELLIGENCE_ARGONIAN:
-                    this.baseStrength = 1015;
-                    this.baseAgility = 300;
-                    this.baseIntelligence = 1020;
-                    this.baseStamina = 700;
-                    this.baseMind = 2;
-                    this.baseLife = 73000;
-                    this.gold = 16997;
-                    this.experience = 33776;
-                    this.level = 63;
+                    SetupParameterMonster(88, 950, 770, 950, 6726, 100, (int)(listExp[71]), 16997);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
                     this.DropItem[0] = Database.COMMON_ARGONIAN_PURPLE_UROKO;
                     break;
+
                 case Database.ENEMY_MAGIC_HYOU_RIFLE:
-                    this.baseStrength = 1;
-                    this.baseAgility = 1000;
-                    this.baseIntelligence = 1800;
-                    this.baseStamina = 200;
-                    this.baseMind = 2;
-                    this.baseLife = 86000;
-                    this.gold = 17117;
-                    this.experience = 34114;
-                    this.level = 63;
+                    SetupParameterMonster(89, 580, 790, 1120, 7024, 100, (int)(listExp[72]), 17117);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
                     this.DropItem[0] = Database.COMMON_BLUE_DANGAN_KAKERA;
                     break;
+
                 case Database.ENEMY_PURE_BLIZZARD_CRYSTAL:
-                    this.baseStrength = 1;
-                    this.baseAgility = 1;
-                    this.baseIntelligence = 2600;
-                    this.baseStamina = 1000;
-                    this.baseMind = 2;
-                    this.baseLife = 110000;
-                    this.gold = 26811;
-                    this.experience = 47759;
-                    this.level = 67;
+                    SetupParameterMonster(91, 700, 860, 1600, 9420, 180, (int)(listExp[73]), 26811);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
@@ -5553,60 +5115,39 @@ namespace DungeonPlayer
 
                 #region "エリア４"
                 case Database.ENEMY_PURPLE_EYE_WARE_WOLF:
-                    this.baseStrength = 1400;
-                    this.baseAgility = 800;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 700;
-                    this.baseMind = 2;
-                    this.baseLife = 85000;
-                    this.gold = 20268;
-                    this.experience = 33432;
-                    this.level = 65;
+                    SetupParameterMonster(92, 1200, 800, 600, 7818, 110, (int)(listExp[74]), 20268);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
                     this.DropItem[0] = Database.COMMON_WOLF_KEGAWA;
                     break;
+
                 case Database.ENEMY_FROST_HEART:
-                    this.baseStrength = 1;
-                    this.baseAgility = 700;
-                    this.baseIntelligence = 1900;
-                    this.baseStamina = 300;
-                    this.baseMind = 2;
-                    this.baseLife = 75000;
-                    this.gold = 21031;
-                    this.experience = 34435;
-                    this.level = 65;
+                    SetupParameterMonster(94, 630, 820, 1230, 7614, 110, (int)(listExp[75]), 21031);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
                     this.DropItem[0] = Database.COMMON_FROZEN_HEART;
                     break;
+
+                case Database.ENEMY_WHITENIGHT_GRIZZLY:
+                    SetupParameterMonster(96, 1300, 860, 680, 9010, 120, (int)(listExp[76]), 26777);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area34;
+                    this.DropItem[0] = Database.COMMON_BRIGHT_CLAW;
+                    break;
+
                 case Database.ENEMY_WIND_BREAKER:
-                    this.baseStrength = 1800;
-                    this.baseAgility = 1400;
-                    this.baseIntelligence = 1200;
-                    this.baseStamina = 800;
-                    this.baseMind = 2;
-                    this.baseLife = 110000;
-                    this.gold = 30009;
-                    this.experience = 41321;
-                    this.level = 69;
+                    SetupParameterMonster(97, 1100, 880, 1100, 9308, 120, (int)(listExp[77]), 30009);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
                     this.DropItem[0] = Database.COMMON_ESSENCE_OF_WIND;
                     break;
+
                 case Database.ENEMY_TUNDRA_LONGHORN_DEER:
-                    this.baseStrength = 1;
-                    this.baseAgility = 750;
-                    this.baseIntelligence = 3500;
-                    this.baseStamina = 1600;
-                    this.baseMind = 1600;
-                    this.baseLife = 150000;
-                    this.gold = 50016;
-                    this.experience = 57850;
-                    this.level = 73;
+                    SetupParameterMonster(100, 800, 920, 2000, 11802, 200, (int)(listExp[78]), 50016);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
@@ -5616,16 +5157,8 @@ namespace DungeonPlayer
 
                 #region "ボス"
                 case Database.ENEMY_BOSS_HOWLING_SEIZER:
-                    this.baseStrength = 4500;
-                    this.baseAgility = 950;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 3400;
-                    this.baseMind = 1200;
-                    this.experience = 115700;
-                    this.baseLife = 560000;
+                    SetupParameterMonster(120, 4000, 1200, 1500, 64762, 500, (int)(listExp[79]), 98000);
                     this.baseInstantPoint = 15000;
-                    this.level = 85;
-                    this.gold = 200000;
                     this.ResistStun = true;
                     this.ResistParalyze = true;
                     this.ResistFrozen = true;
@@ -5635,162 +5168,97 @@ namespace DungeonPlayer
                     this.DropItem[0] = Database.EPIC_ORB_SILENT_COLD_ICE;
                     this.UseStackCommand = true;
                     break;
-
-                case Database.ENEMY_DRAGON_DESOLATOR_AZOLD:
-                    this.baseStrength = 99930;
-                    this.baseAgility = 500;//4543;会話専用のため、スピードを減らす。
-                    this.baseIntelligence = 11250;
-                    this.baseStamina = 44510;
-                    this.baseMind = 3190;
-                    this.experience = 0;//15000000;
-                    this.baseLife = 49938705;
-                    this.baseInstantPoint = 100000;
-                    this.level = 253;
-                    this.gold = 15000000;
-                    this.Rare = RareString.Purple;
-                    this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.TruthBoss3;
-                    this.UseStackCommand = true;
-                    break;
                 #endregion
                 #endregion
                 #region "４階"
                 #region "エリア１"
                 case Database.ENEMY_GENAN_HUNTER:
-                    this.baseStrength = 1600;
-                    this.baseAgility = 1200;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 800;
-                    this.baseMind = 2;
-                    this.baseLife = 98000;
-                    this.gold = 45010;
-                    this.experience = 42439;
-                    this.level = 75;
+                    SetupParameterMonster(101, 1400, 920, 700, 9500, 150, (int)(listExp[80]), 45010);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
                     this.DropItem[0] = Database.COMMON_HUNTER_SEVEN_TOOL;
                     this.InitialTarget = TargetLogic.Back;
                     break;
+
                 case Database.ENEMY_BEAST_MASTER:
-                    this.baseStrength = 1700;
-                    this.baseAgility = 800;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 800;
-                    this.baseMind = 2;
-                    this.baseLife = 105000;
-                    this.gold = 45361;
-                    this.experience = 43712;
-                    this.level = 75;
+                    SetupParameterMonster(102, 1430, 950, 720, 11798, 150, (int)(listExp[81]), 45361);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
                     this.DropItem[0] = Database.COMMON_BEAST_KEGAWA;
                     break;
+
                 case Database.ENEMY_ELDER_ASSASSIN:
-                    this.baseStrength = 1;
-                    this.baseAgility = 1800;
-                    this.baseIntelligence = 1300;
-                    this.baseStamina = 900;
-                    this.baseMind = 2;
-                    this.baseLife = 86000;
-                    this.gold = 46219;
-                    this.experience = 45023;
-                    this.level = 75;
+                    SetupParameterMonster(103, 1500, 1460, 750, 10796, 150, (int)(listExp[82]), 46219);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
                     this.DropItem[0] = Database.RARE_BLOOD_DAGGER_KAKERA;
                     this.InitialTarget = TargetLogic.Back;
                     break;
+
                 case Database.ENEMY_FALLEN_SEEKER:
-                    this.baseStrength = 1500;
-                    this.baseAgility = 1200;
-                    this.baseIntelligence = 1200;
-                    this.baseStamina = 1400;
-                    this.baseMind = 2;
-                    this.baseLife = 140000;
-                    this.gold = 50572;
-                    this.experience = 60781;
-                    this.level = 78;
+                    SetupParameterMonster(105, 800, 1000, 1600, 12792, 170, (int)(listExp[83]), 50572);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
                     this.DropItem[0] = Database.COMMON_SABI_BUGU;
                     break;
+
+                case Database.ENEMY_MEPHISTO_RIGHTARM:
+                    SetupParameterMonster(107, 1100, 1100, 2500, 19788, 260, (int)(listExp[84]), 57818);
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area41;
+                    this.DropItem[0] = Database.RARE_MEPHISTO_BLACKMEAT;
+                    break;
+
                 #endregion
                 #region "エリア２"
-                case Database.ENEMY_MASTER_LOAD:
-                    this.baseStrength = 1;
-                    this.baseAgility = 1400;
-                    this.baseIntelligence = 1800;
-                    this.baseStamina = 1700;
-                    this.baseMind = 2;
-                    this.baseLife = 280000;
-                    this.gold = 47401;
-                    this.experience = 45586;
-                    this.level = 79;
-                    this.Rare = RareString.Black;
-                    this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.Area42;
-                    this.DropItem[0] = Database.RARE_ESSENCE_OF_DARK;
-                    break;
-                case Database.ENEMY_EXECUTIONER:
-                    this.baseStrength = 2500;
-                    this.baseAgility = 700;
-                    this.baseIntelligence = 1000;
-                    this.baseStamina = 2000;
-                    this.baseMind = 2;
-                    this.baseLife = 330000;
-                    this.gold = 47993;
-                    this.experience = 46954;
-                    this.level = 79;
-                    this.Rare = RareString.Black;
-                    this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.Area42;
-                    this.DropItem[0] = Database.COMMON_EXECUTIONER_ROBE;
-                    break;
                 case Database.ENEMY_DARK_MESSENGER:
-                    this.baseStrength = 1;
-                    this.baseAgility = 1;
-                    this.baseIntelligence = 4500;
-                    this.baseStamina = 500;
-                    this.baseMind = 2;
-                    this.baseLife = 180000;
-                    this.gold = 48552;
-                    this.experience = 48362;
-                    this.level = 79;
+                    SetupParameterMonster(108, 850, 1050, 1700, 16786, 180, (int)(listExp[85]), 47401);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
                     this.DropItem[0] = Database.COMMON_SEEKER_HEAD;
                     break;
+
+                case Database.ENEMY_MASTER_LOAD:
+                    SetupParameterMonster(109, 860, 1080, 1730, 20784, 180, (int)(listExp[86]), 47956);
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area42;
+                    this.DropItem[0] = Database.RARE_ESSENCE_OF_DARK;
+                    break;
+
+                case Database.ENEMY_EXECUTIONER:
+                    SetupParameterMonster(110, 1760, 1110, 870, 23782, 180, (int)(listExp[87]), 48452);
+                    this.Rare = RareString.Black;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area42;
+                    this.DropItem[0] = Database.COMMON_EXECUTIONER_ROBE;
+                    break;
+
+                case Database.ENEMY_MARIONETTE_NEMESIS:
+                    SetupParameterMonster(112, 1900, 1170, 900, 28778, 200, (int)(listExp[88]), 50127);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area42;
+                    this.DropItem[0] = Database.COMMON_MARIONETTE_STRING;
+                    break;
+
                 case Database.ENEMY_BLACKFIRE_MASTER_BLADE:
-                    this.baseStrength = 3000;
-                    this.baseAgility = 1400;
-                    this.baseIntelligence = 2500;
-                    this.baseStamina = 2200;
-                    this.baseMind = 2;
-                    this.baseLife = 380000;
-                    this.gold = 53341;
-                    this.experience = 58035;
-                    this.level = 83;
+                    SetupParameterMonster(113, 1950, 1200, 920, 31776, 200, (int)(listExp[89]), 53341);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
                     this.DropItem[0] = Database.RARE_MASTERBLADE_KAKERA;
                     this.DropItem[1] = Database.RARE_MASTERBLADE_FIRE;
                     break;
+
                 case Database.ENEMY_SIN_THE_DARKELF:
-                    this.baseStrength = 1;
-                    this.baseAgility = 1200;
-                    this.baseIntelligence = 4500;
-                    this.baseStamina = 2000;
-                    this.baseMind = 2;
-                    this.baseLife = 460000;
-                    this.gold = 64015;
-                    this.experience = 81249;
-                    this.level = 87;
+                    SetupParameterMonster(115, 1600, 1300, 3200, 37772, 300, (int)(listExp[90]), 64015);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
@@ -5799,45 +5267,23 @@ namespace DungeonPlayer
                 #endregion
                 #region "エリア３"
                 case Database.ENEMY_SUN_STRIDER:
-                    this.baseStrength = 2800;
-                    this.baseAgility = 1600;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 2500;
-                    this.baseMind = 2;
-                    this.baseLife = 450000;
-                    this.gold = 56810;
-                    this.experience = 60936;
-                    this.level = 85;
+                    SetupParameterMonster(116, 2000, 1250, 1000, 34770, 220, (int)(listExp[91]), 56810);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
                     this.DropItem[0] = Database.RARE_ESSENCE_OF_SHINE;
                     break;
+
                 case Database.ENEMY_ARC_DEMON:
-                    this.baseStrength = 2900;
-                    this.baseAgility = 1100;
-                    this.baseIntelligence = 2200;
-                    this.baseStamina = 1000;
-                    this.baseMind = 2;
-                    this.baseLife = 490000;
-                    this.gold = 58155;
-                    this.experience = 62765;
-                    this.level = 85;
+                    SetupParameterMonster(117, 2050, 1280, 1020, 36768, 220, (int)(listExp[92]), 58155);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
                     this.DropItem[0] = Database.RARE_DEMON_HORN;
                     break;
+
                 case Database.ENEMY_BALANCE_IDLE:
-                    this.baseStrength = 2222;
-                    this.baseAgility = 2222;
-                    this.baseIntelligence = 2222;
-                    this.baseStamina = 2222;
-                    this.baseMind = 2;
-                    this.baseLife = 550000;
-                    this.gold = 68322;
-                    this.experience = 75317;
-                    this.level = 89;
+                    SetupParameterMonster(119, 1800, 1380, 1800, 41764, 240, (int)(listExp[93]), 64322);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
@@ -5845,31 +5291,25 @@ namespace DungeonPlayer
                     this.DropItem[1] = Database.COMMON_KUMITATE_TENBIN_BOU;
                     this.DropItem[2] = Database.COMMON_KUMITATE_TENBIN_DOU;
                     break;
+
+                case Database.ENEMY_ANDEAD_WYVERN:
+                    SetupParameterMonster(120, 1050, 1410, 2200, 43762, 240, (int)(listExp[94]), 66810);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area43;
+                    this.DropItem[0] = Database.COMMON_WYVERN_MEAT;
+                    break;
+
                 case Database.ENEMY_GO_FLAME_SLASHER:
-                    this.baseStrength = 3300;
-                    this.baseAgility = 2200;
-                    this.baseIntelligence = 3600;
-                    this.baseStamina = 3000;
-                    this.baseMind = 2;
-                    this.baseLife = 570000;
-                    this.gold = 68065;
-                    this.experience = 76071;
-                    this.level = 89;
+                    SetupParameterMonster(121, 2250, 1440, 1070, 45760, 240, (int)(listExp[95]), 68065);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
                     this.DropItem[0] = Database.RARE_ESSENCE_OF_FLAME;
                     break;
+
                 case Database.ENEMY_DEVIL_CHILDREN:
-                    this.baseStrength = 3000;
-                    this.baseAgility = 2500;
-                    this.baseIntelligence = 4000;
-                    this.baseStamina = 1000;
-                    this.baseMind = 2;
-                    this.baseLife = 666666;
-                    this.gold = 91489;
-                    this.experience = 106499;
-                    this.level = 93;
+                    SetupParameterMonster(123, 2800, 1600, 2800, 53756, 340, (int)(listExp[96]), 91489);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
@@ -5878,60 +5318,39 @@ namespace DungeonPlayer
                 #endregion
                 #region "エリア４"
                 case Database.ENEMY_HOWLING_HORROR:
-                    this.baseStrength = 1;
-                    this.baseAgility = 2800;
-                    this.baseIntelligence = 3300;
-                    this.baseStamina = 2000;
-                    this.baseMind = 2;
-                    this.baseLife = 590000;
-                    this.gold = 76042;
-                    this.experience = 74549;
-                    this.level = 91;
+                    SetupParameterMonster(124, 1120, 1500, 2300, 50754, 260, (int)(listExp[97]), 76042);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
                     this.DropItem[0] = Database.COMMON_ONRYOU_HAKO;
                     break;
+
                 case Database.ENEMY_PAIN_ANGEL:
-                    this.baseStrength = 4600;
-                    this.baseAgility = 2000;
-                    this.baseIntelligence = 3500;
-                    this.baseStamina = 2200;
-                    this.baseMind = 2;
-                    this.baseLife = 630000;
-                    this.gold = 77844;
-                    this.experience = 76786;
-                    this.level = 91;
+                    SetupParameterMonster(125, 2350, 1530, 1150, 52752, 260, (int)(listExp[98]), 77844);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
                     this.DropItem[0] = Database.RARE_ANGEL_SILK;
                     break;
+
                 case Database.ENEMY_CHAOS_WARDEN:
-                    this.baseStrength = 1;
-                    this.baseAgility = 1000;
-                    this.baseIntelligence = 5500;
-                    this.baseStamina = 4000;
-                    this.baseMind = 2;
-                    this.baseLife = 700000;
-                    this.gold = 99037;
-                    this.experience = 92143;
-                    this.level = 95;
+                    SetupParameterMonster(127, 1200, 1580, 2500, 56748, 280, (int)(listExp[99]), 99037);
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
                     this.DropItem[0] = Database.RARE_CHAOS_SIZUKU;
                     break;
+
+                case Database.ENEMY_DREAD_KNIGHT:
+                    SetupParameterMonster(128, 2550, 1610, 1250, 58746, 280, (int)(listExp[100]), 105328);
+                    this.Rare = RareString.Blue;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area44;
+                    this.DropItem[0] = Database.RARE_HORSE_HORN;
+                    break;
+
                 case Database.ENEMY_DOOM_BRINGER:
-                    this.baseStrength = 6000;
-                    this.baseAgility = 3000;
-                    this.baseIntelligence = 1;
-                    this.baseStamina = 2000;
-                    this.baseMind = 2;
-                    this.baseLife = 800000;
-                    this.gold = 146267;
-                    this.experience = 129000;
-                    this.level = 99;
+                    SetupParameterMonster(130, 3200, 1800, 2000, 71742, 380, (int)(listExp[101]), 146267);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
@@ -5945,19 +5364,11 @@ namespace DungeonPlayer
                 case Database.ENEMY_BOSS_LEGIN_ARZE_2:
                 case Database.ENEMY_BOSS_LEGIN_ARZE_3:
                     //this.name = Database.ENEMY_BOSS_LEGIN_ARZE;
-                    this.baseStrength = 1;
-                    this.baseAgility = 1500;
-                    this.baseIntelligence = 1300; // ベース値が強すぎると、BUFFDOWN魔法の威力が強すぎなので、意図的に弱体化//13000;
-                    this.baseStamina = 17000;
-                    this.baseMind = 100;
-                    this.experience = 125000;
-                    this.baseLife = 2590000;
-                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_2) this.baseLife = 2800000;
-                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_3) this.baseLife = 3100000;
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_1) { SetupParameterMonster(150, 1, 2500, 4500, 294702, 650, (int)(listExp[102]), 250000); }
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_2) { SetupParameterMonster(150, 1, 2500, 4500, 336702, 650, (int)(listExp[103]), 250000); }
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_3) { SetupParameterMonster(150, 1, 2500, 4500, 381702, 650, (int)(listExp[104]), 250000); }
                     this.baseMana = 2720000;
                     this.baseInstantPoint = 25000;
-                    this.level = 107;
-                    this.gold = 500000;
                     this.ResistStun = true;
                     this.ResistParalyze = true;
                     this.ResistFrozen = true;
@@ -5967,94 +5378,49 @@ namespace DungeonPlayer
                     //this.DropItem[0] = Database.EPIC_ORB_DESTRUCT_FIRE;
                     this.UseStackCommand = true;
                     break;
-
-                case Database.ENEMY_DRAGON_IDEA_CAGE_ZEED:
-                    this.baseStrength = 21260;
-                    this.baseAgility = 1000; // 会話専用のため、スピードを減らす。
-                    this.baseIntelligence = 92370;
-                    this.baseStamina = 81100;
-                    this.baseMind = 3950;
-                    this.experience = 0;
-                    this.baseLife = 53910687;
-                    this.baseInstantPoint = 100000;
-                    this.level = 254;
-                    this.gold = 15000000;
-                    this.Rare = RareString.Purple;
-                    this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.TruthBoss4;
-                    this.UseStackCommand = true;
-                    break;
                 #endregion
                 #endregion
                 #region "５階"
                 case Database.ENEMY_PHOENIX:
-                    this.baseStrength = 3400;
-                    this.baseAgility = 2500;
-                    this.baseIntelligence = 5100;
-                    this.baseStamina = 5000;
-                    this.baseMind = 2;
-                    this.baseLife = 500000;
+                    SetupParameterMonster(160, 2500, 2000, 3500, 79682, 500, (int)(listExp[105]), 200000);
                     this.baseResistFire = 30000;
-                    this.gold = 560000;
-                    this.experience = 130000;
-                    this.level = 110;
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area51;
                     break;
 
                 case Database.ENEMY_NINE_TAIL:
-                    this.baseStrength = 6100;
-                    this.baseAgility = 2800;
-                    this.baseIntelligence = 1600;
-                    this.baseStamina = 5500;
-                    this.baseMind = 2;
-                    this.baseLife = 550000;
-                    this.gold = 620000;
-                    this.experience = 130000;
-                    this.level = 111;
+                    SetupParameterMonster(160, 3500, 2150, 2500, 83682, 500, (int)(listExp[106]), 200000);
+                    this.Rare = RareString.Red;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.Area51;
+                    break;
+
+                case Database.ENEMY_MEPHISTOPHELES:
+                    SetupParameterMonster(160, 3300, 3000, 2500, 87682, 500, (int)(listExp[107]), 200000);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area51;
                     break;
 
                 case Database.ENEMY_JUDGEMENT:
-                    this.baseStrength = 3800;
-                    this.baseAgility = 2400;
-                    this.baseIntelligence = 3800;
-                    this.baseStamina = 6000;
-                    this.baseMind = 2;
-                    this.baseLife = 650000;
-                    this.gold = 680000;
-                    this.experience = 130000;
-                    this.level = 112;
+                    SetupParameterMonster(160, 4000, 2300, 4000, 91682, 500, (int)(listExp[108]), 200000);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area51;
                     break;
 
                 case Database.ENEMY_EMERALD_DRAGON:
-                    this.baseStrength = 2200;
-                    this.baseAgility = 3000;
-                    this.baseIntelligence = 6200;
-                    this.baseStamina = 4600;
-                    this.baseMind = 2;
-                    this.baseLife = 600000;
-                    this.gold = 730000;
-                    this.experience = 130000;
-                    this.level = 113;
+                    SetupParameterMonster(160, 2500, 2450, 5000, 95682, 500, (int)(listExp[109]), 200000);
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area51;
                     break;
 
                 case Database.ENEMY_BOSS_BYSTANDER_EMPTINESS:
-                    this.baseStrength = 3000;
-                    this.baseAgility = 100;
-                    this.baseIntelligence = 3000;
-                    this.baseStamina = 9999;
-                    this.baseMind = 2;
-                    this.baseLife = 9900009;
+                    this.firstName = Database.ENEMY_BOSS_BYSTANDER_EMPTINESS;
+                    SetupParameterMonster(200, 3000, 4200, 3000, 999999, 500, (int)(listExp[110]), 200000);
+                    this.baseLife = 9;
                     this.baseInstantPoint = 8000;
                     this.ResistBlind = true;
                     this.ResistFrozen = true;
@@ -6068,27 +5434,9 @@ namespace DungeonPlayer
                     this.ResistTemptation = true;
                     this.gold = 0;
                     this.experience = 0;
-                    this.level = 200;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss5;
-                    break;
-
-                case Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA:
-                    this.baseStrength = 78772;
-                    this.baseAgility = 1000; // 会話専用のため、スピードを減らす。
-                    this.baseIntelligence = 56910;
-                    this.baseStamina = 92500;
-                    this.baseMind = 5850;
-                    this.experience = 0;
-                    this.baseLife = 68119820;
-                    this.baseInstantPoint = 100000;
-                    this.level = 255;
-                    this.gold = 15000000;
-                    this.Rare = RareString.Purple;
-                    this.Armor = ArmorType.Normal;
-                    this.Area = MonsterArea.TruthBoss5;
-                    this.UseStackCommand = true;
                     break;
                 #endregion
 
@@ -6538,6 +5886,91 @@ namespace DungeonPlayer
                     break;
                 #endregion
 
+                #region "Matrix Dragon"
+                case Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD:
+                    this.baseStrength = 68590;
+                    this.baseAgility = 1;//4241;会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 77610;
+                    this.baseStamina = 40650;
+                    this.baseMind = 2150;
+                    this.baseLife = 34359122;
+                    this.experience = 0;//15000000;
+                    this.level = 251;
+                    this.gold = 15000000;
+                    this.Area = MonsterArea.TruthBoss1;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.UseStackCommand = true;
+                    break;
+
+                case Database.ENEMY_DRAGON_TINKOU_DEEPSEA:
+                    this.baseStrength = 35510;
+                    this.baseAgility = 100;//2566;会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 91210;
+                    this.baseStamina = 61120;
+                    this.baseMind = 2150;
+                    this.baseLife = 41226289;
+                    this.experience = 0;//15000000;
+                    this.level = 252;
+                    this.gold = 15000000;
+                    this.Area = MonsterArea.TruthBoss2;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.UseStackCommand = true;
+                    break;
+
+                case Database.ENEMY_DRAGON_DESOLATOR_AZOLD:
+                    this.baseStrength = 99930;
+                    this.baseAgility = 500;//4543;会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 11250;
+                    this.baseStamina = 44510;
+                    this.baseMind = 3190;
+                    this.experience = 0;//15000000;
+                    this.baseLife = 49938705;
+                    this.baseInstantPoint = 100000;
+                    this.level = 253;
+                    this.gold = 15000000;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.TruthBoss3;
+                    this.UseStackCommand = true;
+                    break;
+
+                case Database.ENEMY_DRAGON_IDEA_CAGE_ZEED:
+                    this.baseStrength = 21260;
+                    this.baseAgility = 1000; // 会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 92370;
+                    this.baseStamina = 81100;
+                    this.baseMind = 3950;
+                    this.experience = 0;
+                    this.baseLife = 53910687;
+                    this.baseInstantPoint = 100000;
+                    this.level = 254;
+                    this.gold = 15000000;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.TruthBoss4;
+                    this.UseStackCommand = true;
+                    break;
+
+                case Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA:
+                    this.baseStrength = 78772;
+                    this.baseAgility = 1000; // 会話専用のため、スピードを減らす。
+                    this.baseIntelligence = 56910;
+                    this.baseStamina = 92500;
+                    this.baseMind = 5850;
+                    this.experience = 0;
+                    this.baseLife = 68119820;
+                    this.baseInstantPoint = 100000;
+                    this.level = 255;
+                    this.gold = 15000000;
+                    this.Rare = RareString.Purple;
+                    this.Armor = ArmorType.Normal;
+                    this.Area = MonsterArea.TruthBoss5;
+                    this.UseStackCommand = true;
+                    break;
+                #endregion
+
                 #region "ダミー素振り君"
                 case Database.DUEL_DUMMY_SUBURI:
                     this.baseStrength = 100;
@@ -6608,6 +6041,20 @@ namespace DungeonPlayer
 
             this.currentLife = this.MaxLife; // c 後編編集
             this.currentMana = this.MaxMana; // c 後編編集
+        }
+
+        private void SetupParameterMonster(int lvl, int strength, int agility, int intelligence, int stamina, int mind, int exp, int gold, int baselife = 0, int basemana = 0)
+        {
+            this.baseStrength = strength;
+            this.baseAgility = agility;
+            this.baseIntelligence = intelligence;
+            this.baseStamina = stamina;
+            this.baseMind = mind;
+            this.level = lvl;
+            this.baseLife = baselife;
+            this.baseMana = basemana;
+            this.experience = exp;
+            this.gold = gold;
         }
 
         private void SetupParameter(int lvl, int strength, int agility, int intelligence, int stamina, int mind)
