@@ -92,6 +92,7 @@ namespace DungeonPlayer
         public Text debug41;
         public Text debug42;
         public Text debug43;
+        public Text debug51;
         public Text debugB1;
         public Text debugB2;
         public Text debugB3;
@@ -108,6 +109,7 @@ namespace DungeonPlayer
         public Text debugB41;
         public Text debugB42;
         public Text debugB43;
+        public Text debugB51;
         public GameObject groupMatrixDragonTalk;
         public Image back_MatrixDragonTalk;
         public Text MatrixDragonTalkText;
@@ -671,6 +673,7 @@ namespace DungeonPlayer
                 this.debug41.text = GroundOne.MC.CurrentLife.ToString();
                 this.debug42.text = GroundOne.MC.CurrentMana.ToString();
                 this.debug43.text = GroundOne.MC.CurrentSkillPoint.ToString();
+                this.debug51.text = GroundOne.MC.Gold.ToString();
             }
             if (ec1 != null)
             {
@@ -693,6 +696,7 @@ namespace DungeonPlayer
                 this.debugB41.text = ec1.CurrentLife.ToString();
                 this.debugB42.text = ec1.CurrentMana.ToString();
                 this.debugB43.text = ec1.CurrentSkillPoint.ToString();
+                this.debugB51.text = ec1.Gold.ToString();
             }
 
             if (Application.platform == RuntimePlatform.Android)

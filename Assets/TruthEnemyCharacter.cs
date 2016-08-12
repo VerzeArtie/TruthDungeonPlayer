@@ -4457,6 +4457,7 @@ namespace DungeonPlayer
         public void Initialize(string createName)
         {
             Debug.Log("TruthEnemyCharacter(S) " + createName);
+            // Expリスト設定
             double maxExp = 140000;
             double[] factorExp = { 1.07, 1.20, 1.20, 1.20, 1.50, 0.80, 1.07, 1.08, 1.20, 1.20, 1.50, 0.80, 1.08, 1.10, 1.10, 1.10, 1.20, 1.50, 0.80, 1.05, 1.20, 1.20, 1.20, 1.50, 2.00,
                                    0.60, 1.03, 1.03, 1.10, 1.30, 0.75, 1.03, 1.03, 1.10, 1.10, 1.30, 0.75, 1.03, 1.05, 1.05, 1.05, 1.30, 0.70, 1.03, 1.10, 1.10, 1.30, 1.40, 1.04, 1.04, 1.04, 1.00, 1.04, 1.00, 1.00, 2.00,
@@ -4476,6 +4477,29 @@ namespace DungeonPlayer
             {
                 listExp[ii] = Math.Round(listExp[ii]);
             }
+            // Goldリスト設定
+            double maxGold = 200000;
+            double[] factorGold = { 1.10, 1.20, 1.20, 1.20, 1.50, 0.80, 1.10, 1.10, 1.20, 1.20, 1.50, 0.80, 1.10, 1.10, 1.20, 1.20, 1.20, 1.50, 0.80, 1.10, 1.20, 1.20, 1.20, 1.50, 3.00,
+                                    0.45, 1.05, 1.05, 1.10, 1.30, 0.80, 1.05, 1.05, 1.10, 1.10, 1.30, 0.80, 1.05, 1.10, 1.10, 1.10, 1.30, 0.80, 1.05, 1.10, 1.10, 1.30, 1.50, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 3.00,
+                                    0.40, 1.05, 1.05, 1.10, 1.30, 0.80, 1.05, 1.05, 1.10, 1.10, 1.30, 0.80, 1.05, 1.10, 1.10, 1.10, 1.30, 0.80, 1.02, 1.05, 1.05, 1.30, 2.50,
+                                    0.43, 1.02, 1.02, 1.05, 1.30, 0.80, 1.02, 1.02, 1.05, 1.05, 1.30, 0.80, 1.02, 1.05, 1.05, 1.05, 1.30, 0.80, 1.02, 1.05, 1.05, 1.20, 1.50, 1.00, 1.00,
+                                    0.50, 1.00, 1.00, 1.00, 1.00, 2.00,
+                                    1.00,
+                                    1.00,
+                                  };
+            double[] listGold = new double[factorGold.Length];
+            double currentGold = maxGold;
+            for (int ii = 0; ii < factorGold.Length; ii++)
+            {
+                listGold[factorGold.Length - 1 - ii] = currentGold / factorGold[factorGold.Length - 1 - ii];
+                currentGold = listGold[factorGold.Length - 1 - ii];
+            }
+
+            for (int ii = 0; ii < factorGold.Length; ii++)
+            {
+                listGold[ii] = Math.Round(listGold[ii]);
+            }
+
 
             this.DropItem = new string[MAX_DROPITEM_SIZE];
             for (int ii = 0; ii < MAX_DROPITEM_SIZE; ii++)
@@ -4493,42 +4517,42 @@ namespace DungeonPlayer
                 #region "ダンジョン１階"
                 #region "エリア１"
                 case Database.ENEMY_HIYOWA_BEATLE:
-                    SetupParameterMonster(1, 8, 1, 1, 1, 2, (int)(listExp[0]), 44, 5);
+                    SetupParameterMonster(1, 8, 1, 1, 1, 2, (int)(listExp[0]), (int)(listGold[0]), 5);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_BEATLE_TOGATTA_TUNO;
                     break;
                 case Database.ENEMY_HENSYOKU_PLANT:
-                    SetupParameterMonster(1, 7, 1, 1, 1, 2, (int)(listExp[1]), 47, 8);
+                    SetupParameterMonster(1, 7, 1, 1, 1, 2, (int)(listExp[1]), (int)(listGold[1]), 8);
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_HENSYOKU_KUKI;
                     break;
                 case Database.ENEMY_GREEN_CHILD:
-                    SetupParameterMonster(2, 7, 4, 12, 3, 3, (int)(listExp[2]), 54);
+                    SetupParameterMonster(2, 7, 4, 12, 3, 3, (int)(listExp[2]), (int)(listGold[2]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_GREEN_SIKISO;
                     break;
                 case Database.ENEMY_TINY_MANTIS:
-                    SetupParameterMonster(3, 14, 6, 5, 4, 3, (int)(listExp[3]), 57);
+                    SetupParameterMonster(3, 14, 6, 5, 4, 3, (int)(listExp[3]), (int)(listGold[3]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_MANTIS_CLAW;
                     break;
                 case Database.ENEMY_KOUKAKU_WURM:
-                    SetupParameterMonster(4, 18, 7, 6, 5, 3, (int)(listExp[4]), 60);
+                    SetupParameterMonster(4, 18, 7, 6, 5, 3, (int)(listExp[4]), (int)(listGold[4]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
                     this.DropItem[0] = Database.COMMON_WARM_NO_KOUKAKU;
                     break;
                 case Database.ENEMY_MANDRAGORA:
-                    SetupParameterMonster(5, 10, 12, 25, 18, 7, (int)(listExp[5]), 92);
+                    SetupParameterMonster(5, 10, 12, 25, 18, 7, (int)(listExp[5]), (int)(listGold[5]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
@@ -4538,7 +4562,7 @@ namespace DungeonPlayer
 
                 #region "エリア２"
                 case Database.ENEMY_SUN_FLOWER:
-                    SetupParameterMonster(6, 8, 10, 20, 12, 4, (int)(listExp[6]), 64);
+                    SetupParameterMonster(6, 8, 10, 20, 12, 4, (int)(listExp[6]), (int)(listGold[6]));
                     this.baseResistFire = 30;
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
@@ -4546,35 +4570,35 @@ namespace DungeonPlayer
                     this.DropItem[0] = Database.COMMON_SUN_LEAF;
                     break;
                 case Database.ENEMY_RED_HOPPER:
-                    SetupParameterMonster(7, 20, 16, 9, 13, 4, (int)(listExp[7]), 70);
+                    SetupParameterMonster(7, 20, 16, 9, 13, 4, (int)(listExp[7]), (int)(listGold[7]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Regist_Physical;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = Database.COMMON_INAGO;
                     break;
                 case Database.ENEMY_EARTH_SPIDER:
-                    SetupParameterMonster(8, 25, 11, 11, 15, 5, (int)(listExp[8]), 72);
+                    SetupParameterMonster(8, 25, 11, 11, 15, 5, (int)(listExp[8]), (int)(listGold[8]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = Database.COMMON_SPIDER_SILK;
                     break;
                 case Database.ENEMY_WILD_ANT:
-                    SetupParameterMonster(9, 35, 15, 13, 30, 5, (int)(listExp[9]), 75);
+                    SetupParameterMonster(9, 35, 15, 13, 30, 5, (int)(listExp[9]), (int)(listGold[9]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = Database.COMMON_ANT_ESSENCE;
                     break;
                 case Database.ENEMY_ALRAUNE:
-                    SetupParameterMonster(10, 18, 17, 40, 25, 6, (int)(listExp[10]), 116);
+                    SetupParameterMonster(10, 18, 17, 40, 25, 6, (int)(listExp[10]), (int)(listGold[10]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = "アルラウネの花粉";
                     break;
                 case Database.ENEMY_POISON_MARY:
-                    SetupParameterMonster(12, 20, 20, 50, 45, 12, (int)(listExp[11]), 209);
+                    SetupParameterMonster(12, 20, 20, 50, 45, 12, (int)(listExp[11]), (int)(listGold[11]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
@@ -4585,7 +4609,7 @@ namespace DungeonPlayer
 
                 #region "エリア３"
                 case Database.ENEMY_ZASSYOKU_RABBIT:
-                    SetupParameterMonster(13, 40, 18, 20, 40, 7, (int)(listExp[12]), 146);
+                    SetupParameterMonster(13, 40, 18, 20, 40, 7, (int)(listExp[12]), (int)(listGold[12]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
@@ -4593,42 +4617,42 @@ namespace DungeonPlayer
                     this.DropItem[1] = "ウサギの肉";
                     break;
                 case Database.ENEMY_SPEEDY_TAKA:
-                    SetupParameterMonster(14, 30, 30, 22, 33, 7, (int)(listExp[13]), 158);
+                    SetupParameterMonster(14, 30, 30, 22, 33, 7, (int)(listExp[13]), (int)(listGold[13]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
                     this.DropItem[0] = "鷹の白羽";
                     break;
                 case Database.ENEMY_ASH_CREEPER:
-                    SetupParameterMonster(15, 25, 22, 45, 45, 8, (int)(listExp[14]), 204);
+                    SetupParameterMonster(15, 25, 22, 45, 45, 8, (int)(listExp[14]), (int)(listGold[14]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
                     this.DropItem[0] = "薄灰色の卵";
                     break;
                 case Database.ENEMY_GIANT_SNAKE:
-                    SetupParameterMonster(16, 55, 28, 30, 50, 8, (int)(listExp[15]), 217);
+                    SetupParameterMonster(16, 55, 28, 30, 50, 8, (int)(listExp[15]), (int)(listGold[15]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
                     this.DropItem[0] = "刺の生えた触手";
                     break;
                 case Database.ENEMY_WONDER_SEED:
-                    SetupParameterMonster(17, 60, 32, 35, 55, 9, (int)(listExp[16]), 231);
+                    SetupParameterMonster(17, 60, 32, 35, 55, 9, (int)(listExp[16]), (int)(listGold[16]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
                     this.DropItem[0] = "プラントノイドの種";
                     break;
                 case Database.ENEMY_FLANSIS_KNIGHT:
-                    SetupParameterMonster(18, 65, 40, 40, 65, 9, (int)(listExp[17]), 249);
+                    SetupParameterMonster(18, 65, 40, 40, 65, 9, (int)(listExp[17]), (int)(listGold[17]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
                     this.DropItem[0] = "刺の生えた触手";
                     break;
                 case Database.ENEMY_SHOTGUN_HYUI:
-                    SetupParameterMonster(20, 90, 70, 42, 81, 16, (int)(listExp[18]), 449);
+                    SetupParameterMonster(20, 90, 70, 42, 81, 16, (int)(listExp[18]), (int)(listGold[18]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
@@ -4639,42 +4663,42 @@ namespace DungeonPlayer
 
                 #region "エリア４"
                 case Database.ENEMY_WAR_WOLF:
-                    SetupParameterMonster(21, 75, 50, 50, 75, 10, (int)(listExp[19]), 314);
+                    SetupParameterMonster(21, 75, 50, 50, 75, 10, (int)(listExp[19]), (int)(listGold[19]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
                     this.DropItem[0] = "狼の牙";
                     break;
                 case Database.ENEMY_BRILLIANT_BUTTERFLY:
-                    SetupParameterMonster(22, 50, 53, 80, 60, 10, (int)(listExp[20]), 332);
+                    SetupParameterMonster(22, 50, 53, 80, 60, 10, (int)(listExp[20]), (int)(listGold[20]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
                     this.DropItem[0] = "輝きの燐粉";
                     break;
                 case Database.ENEMY_MIST_ELEMENTAL:
-                    SetupParameterMonster(23, 90, 60, 55, 80, 11, (int)(listExp[21]), 364);
+                    SetupParameterMonster(23, 90, 60, 55, 80, 11, (int)(listExp[21]), (int)(listGold[21]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
                     this.DropItem[0] = "霧の結晶";
                     break;
                 case Database.ENEMY_WHISPER_DRYAD:
-                    SetupParameterMonster(24, 55, 65, 95, 70, 11, (int)(listExp[22]), 407);
+                    SetupParameterMonster(24, 55, 65, 95, 70, 11, (int)(listExp[22]), (int)(listGold[22]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
                     this.DropItem[0] = "ドライアドの鱗粉";
                     break;
                 case Database.ENEMY_BLOOD_MOSS:
-                    SetupParameterMonster(25, 100, 70, 60, 66, 11, (int)(listExp[23]), 514);
+                    SetupParameterMonster(25, 100, 70, 60, 66, 11, (int)(listExp[23]), (int)(listGold[23]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
                     this.DropItem[0] = "赤い胞子";
                     break;
                 case Database.ENEMY_MOSSGREEN_DADDY:
-                    SetupParameterMonster(27, 65, 75, 110, 82, 17, (int)(listExp[24]), 926);
+                    SetupParameterMonster(27, 65, 75, 110, 82, 17, (int)(listExp[24]), (int)(listGold[24]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
@@ -4686,7 +4710,7 @@ namespace DungeonPlayer
 
                 #region "ボス"
                 case Database.ENEMY_BOSS_KARAMITUKU_FLANSIS:
-                    SetupParameterMonster(30, 200, 100, 200, 602, 45, (int)(listExp[25]), 3000);
+                    SetupParameterMonster(30, 200, 100, 200, 602, 45, (int)(listExp[25]), (int)(listGold[25]));
                     this.baseInstantPoint = 3000;
                     this.UseStackCommand = true;
                     this.Rare = RareString.Gold;
@@ -4699,7 +4723,7 @@ namespace DungeonPlayer
                 #region "ダンジョン２階"
                 #region "エリア１"
                 case Database.ENEMY_DAGGER_FISH:
-                    SetupParameterMonster(30, 160, 130, 90, 100, 20, (int)(listExp[26]), 1488);
+                    SetupParameterMonster(30, 160, 130, 90, 100, 20, (int)(listExp[26]), (int)(listGold[26]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
@@ -4707,7 +4731,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SIPPU_FLYING_FISH:
-                    SetupParameterMonster(31, 140, 180, 90, 110, 20, (int)(listExp[27]), 1522);
+                    SetupParameterMonster(31, 140, 180, 90, 110, 20, (int)(listExp[27]), (int)(listGold[27]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
@@ -4715,7 +4739,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_ORB_SHELLFISH:
-                    SetupParameterMonster(32, 90, 140, 180, 120, 20, (int)(listExp[28]), 1605);
+                    SetupParameterMonster(32, 90, 140, 180, 120, 20, (int)(listExp[28]), (int)(listGold[28]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
@@ -4724,7 +4748,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SPLASH_KURIONE:
-                    SetupParameterMonster(33, 110, 155, 190, 150, 22, (int)(listExp[29]), 1763);
+                    SetupParameterMonster(33, 110, 155, 190, 150, 22, (int)(listExp[29]), (int)(listGold[29]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
@@ -4733,7 +4757,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_TRANSPARENT_UMIUSHI:
-                    SetupParameterMonster(35, 120, 180, 230, 220, 30, (int)(listExp[30]), 2568);
+                    SetupParameterMonster(35, 120, 180, 230, 220, 30, (int)(listExp[30]), (int)(listGold[30]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area21;
@@ -4743,7 +4767,7 @@ namespace DungeonPlayer
 
                 #region "エリア２"
                 case Database.ENEMY_ROLLING_MAGURO:
-                    SetupParameterMonster(36, 210, 165, 130, 200, 25, (int)(listExp[31]), 1720);
+                    SetupParameterMonster(36, 210, 165, 130, 200, 25, (int)(listExp[31]), (int)(listGold[31]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4751,7 +4775,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_RANBOU_SEA_ARTINE:
-                    SetupParameterMonster(37, 220, 175, 135, 260, 25, (int)(listExp[32]), 1778);
+                    SetupParameterMonster(37, 220, 175, 135, 260, 25, (int)(listExp[32]), (int)(listGold[32]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4759,7 +4783,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_BLUE_SEA_WASI:
-                    SetupParameterMonster(38, 190, 250, 140, 230, 25, (int)(listExp[33]), 1832);
+                    SetupParameterMonster(38, 190, 250, 140, 230, 25, (int)(listExp[33]), (int)(listGold[33]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4767,7 +4791,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_BRIGHT_SQUID:
-                    SetupParameterMonster(40, 140, 190, 250, 300, 28, (int)(listExp[34]), 2166);
+                    SetupParameterMonster(40, 140, 190, 250, 300, 28, (int)(listExp[34]), (int)(listGold[34]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4775,7 +4799,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_GANGAME:
-                    SetupParameterMonster(41, 260, 200, 150, 350, 28, (int)(listExp[35]), 2298);
+                    SetupParameterMonster(41, 260, 200, 150, 350, 28, (int)(listExp[35]), (int)(listGold[35]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4783,7 +4807,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_BIGMOUSE_JOE:
-                    SetupParameterMonster(43, 320, 240, 160, 560, 40, (int)(listExp[36]), 3337);
+                    SetupParameterMonster(43, 320, 240, 160, 560, 40, (int)(listExp[36]), (int)(listGold[36]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area22;
@@ -4795,7 +4819,7 @@ namespace DungeonPlayer
 
                 #region "エリア３"
                 case Database.ENEMY_MOGURU_MANTA:
-                    SetupParameterMonster(44, 150, 220, 300, 500, 32, (int)(listExp[37]), 2636);
+                    SetupParameterMonster(44, 150, 220, 300, 500, 32, (int)(listExp[37]), (int)(listGold[37]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -4803,7 +4827,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_FLOATING_GOLD_FISH:
-                    SetupParameterMonster(45, 280, 280, 160, 550, 32, (int)(listExp[38]), 2767);
+                    SetupParameterMonster(45, 280, 280, 160, 550, 32, (int)(listExp[38]), (int)(listGold[38]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -4811,7 +4835,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_GOEI_HERMIT_CLUB:
-                    SetupParameterMonster(47, 350, 280, 170, 650, 36, (int)(listExp[39]), 3356);
+                    SetupParameterMonster(47, 350, 280, 170, 650, 36, (int)(listExp[39]), (int)(listGold[39]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -4819,7 +4843,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_ABARE_SHARK:
-                    SetupParameterMonster(48, 360, 290, 180, 750, 36, (int)(listExp[40]), 3579);
+                    SetupParameterMonster(48, 360, 290, 180, 750, 36, (int)(listExp[40]), (int)(listGold[40]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -4827,7 +4851,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_VANISHING_CORAL:
-                    SetupParameterMonster(49, 180, 300, 370, 700, 36, (int)(listExp[41]), 3783);
+                    SetupParameterMonster(49, 180, 300, 370, 700, 36, (int)(listExp[41]), (int)(listGold[41]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -4835,7 +4859,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_CASSY_CANCER:
-                    SetupParameterMonster(51, 450, 350, 250, 950, 56, (int)(listExp[42]), 6010);
+                    SetupParameterMonster(51, 450, 350, 250, 950, 56, (int)(listExp[42]), (int)(listGold[42]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
@@ -4845,7 +4869,7 @@ namespace DungeonPlayer
 
                 #region "エリア４"
                 case Database.ENEMY_BLACK_STARFISH:
-                    SetupParameterMonster(52, 200, 320, 390, 800, 40, (int)(listExp[43]), 4507);
+                    SetupParameterMonster(52, 200, 320, 390, 800, 40, (int)(listExp[43]), (int)(listGold[43]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
@@ -4853,7 +4877,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_RAINBOW_ANEMONE:
-                    SetupParameterMonster(53, 210, 330, 400, 860, 40, (int)(listExp[44]), 4683);
+                    SetupParameterMonster(53, 210, 330, 400, 860, 40, (int)(listExp[44]), (int)(listGold[44]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
@@ -4861,7 +4885,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_MACHIBUSE_ANKOU:
-                    SetupParameterMonster(55, 450, 360, 220, 1000, 45, (int)(listExp[45]), 5296);
+                    SetupParameterMonster(55, 450, 360, 220, 1000, 45, (int)(listExp[45]), (int)(listGold[45]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
@@ -4869,7 +4893,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_EDGED_HIGH_SHARK:
-                    SetupParameterMonster(56, 470, 370, 230, 1060, 45, (int)(listExp[46]), 6745);
+                    SetupParameterMonster(56, 470, 370, 230, 1060, 45, (int)(listExp[46]), (int)(listGold[46]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
@@ -4878,7 +4902,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_EIGHT_EIGHT:
-                    SetupParameterMonster(58, 250, 430, 550, 1300, 62, (int)(listExp[47]), 11341);
+                    SetupParameterMonster(58, 250, 430, 550, 1300, 62, (int)(listExp[47]), (int)(listGold[47]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area24;
@@ -4889,7 +4913,7 @@ namespace DungeonPlayer
 
                 #region "力の部屋：ボス"
                 case Database.ENEMY_BRILLIANT_SEA_PRINCE:
-                    SetupParameterMonster(65, 700, 550, 700, 2872, 100, (int)(listExp[48]), 15000);
+                    SetupParameterMonster(65, 700, 550, 700, 2872, 100, (int)(listExp[48]), (int)(listGold[48]));
                     this.baseInstantPoint = 2400;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
@@ -4897,7 +4921,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_ORIGIN_STAR_CORAL_QUEEN:
-                    SetupParameterMonster(66, 300, 500, 800, 3070, 100, (int)(listExp[49]), 16000);
+                    SetupParameterMonster(66, 300, 500, 800, 3070, 100, (int)(listExp[49]), (int)(listGold[49]));
                     this.baseInstantPoint = 1800;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
@@ -4905,7 +4929,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SHELL_SWORD_KNIGHT:
-                    SetupParameterMonster(67, 900, 650, 300, 3368, 100, (int)(listExp[50]), 17000);
+                    SetupParameterMonster(67, 900, 650, 300, 3368, 100, (int)(listExp[50]), (int)(listGold[50]));
                     this.baseInstantPoint = 3900;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
@@ -4913,7 +4937,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_JELLY_EYE_BRIGHT_RED:
-                    SetupParameterMonster(68, 300, 550, 800, 3166, 100, (int)(listExp[51]), 18000);
+                    SetupParameterMonster(68, 300, 550, 800, 3166, 100, (int)(listExp[51]), (int)(listGold[51]));
                     this.baseInstantPoint = 2200;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
@@ -4922,7 +4946,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_JELLY_EYE_DEEP_BLUE:
-                    SetupParameterMonster(68, 300, 550, 800, 3166, 100, (int)(listExp[52]), 18000);
+                    SetupParameterMonster(68, 300, 550, 800, 3166, 100, (int)(listExp[52]), (int)(listGold[52]));
                     this.baseInstantPoint = 2700;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
@@ -4932,7 +4956,7 @@ namespace DungeonPlayer
 
 
                 case Database.ENEMY_SEA_STAR_ORIGIN_KING:
-                    SetupParameterMonster(75, 600, 450, 600, 3852, 100, (int)(listExp[53]), 19000);
+                    SetupParameterMonster(75, 600, 450, 600, 3852, 100, (int)(listExp[53]), (int)(listGold[53]));
                     this.baseInstantPoint = 12000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
@@ -4940,7 +4964,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU:
-                    SetupParameterMonster(70, 900, 650, 300, 2662, 100, (int)(listExp[54]), 19000);
+                    SetupParameterMonster(70, 900, 650, 300, 2662, 100, (int)(listExp[54]), (int)(listGold[54]));
                     this.baseInstantPoint = 5400;
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
@@ -4948,7 +4972,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SEA_STAR_KNIGHT_AMARA:
-                    SetupParameterMonster(70, 900, 680, 300, 2662, 100, (int)(listExp[55]), 19000);
+                    SetupParameterMonster(70, 900, 680, 300, 2662, 100, (int)(listExp[55]), (int)(listGold[55]));
                     this.baseInstantPoint = 3600;
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
@@ -4960,7 +4984,7 @@ namespace DungeonPlayer
                 #region "ボス"
 
                 case Database.ENEMY_BOSS_LEVIATHAN:
-                    SetupParameterMonster(80, 1000, 800, 1200, 8142, 250, (int)(listExp[56]), 35000);
+                    SetupParameterMonster(80, 1000, 800, 1200, 8142, 250, (int)(listExp[56]), (int)(listGold[56]));
                     this.baseInstantPoint = 55000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
@@ -4973,7 +4997,7 @@ namespace DungeonPlayer
                 #region "３階"
                 #region "エリア１"
                 case Database.ENEMY_TOSSIN_ORC:
-                    SetupParameterMonster(70, 650, 500, 350, 2462, 50, (int)(listExp[57]), 7123);
+                    SetupParameterMonster(70, 650, 500, 350, 2462, 50, (int)(listExp[57]), (int)(listGold[57]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
@@ -4981,7 +5005,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SNOW_CAT:
-                    SetupParameterMonster(71, 550, 600, 360, 2260, 50, (int)(listExp[58]), 7271);
+                    SetupParameterMonster(71, 550, 600, 360, 2260, 50, (int)(listExp[58]), (int)(listGold[58]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
@@ -4989,7 +5013,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_WAR_MAMMOTH:
-                    SetupParameterMonster(72, 670, 540, 370, 3058, 50, (int)(listExp[59]), 7634);
+                    SetupParameterMonster(72, 670, 540, 370, 3058, 50, (int)(listExp[59]), (int)(listGold[59]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
@@ -4997,7 +5021,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_WINGED_COLD_FAIRY:
-                    SetupParameterMonster(74, 400, 570, 730, 3154, 60, (int)(listExp[60]), 9479);
+                    SetupParameterMonster(74, 400, 570, 730, 3154, 60, (int)(listExp[60]), (int)(listGold[60]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
@@ -5005,7 +5029,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_FREEZING_GRIFFIN:
-                    SetupParameterMonster(75, 850, 600, 420, 3352, 60, (int)(listExp[61]), 11564);
+                    SetupParameterMonster(75, 850, 600, 420, 3352, 60, (int)(listExp[61]), (int)(listGold[61]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
@@ -5015,7 +5039,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "エリア２"
                 case Database.ENEMY_BRUTAL_OGRE:
-                    SetupParameterMonster(76, 800, 580, 440, 3650, 70, (int)(listExp[62]), 8135);
+                    SetupParameterMonster(76, 800, 580, 440, 3650, 70, (int)(listExp[62]), (int)(listGold[62]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
@@ -5023,7 +5047,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_HYDRO_LIZARD:
-                    SetupParameterMonster(77, 830, 600, 450, 4048, 70, (int)(listExp[63]), 8386);
+                    SetupParameterMonster(77, 830, 600, 450, 4048, 70, (int)(listExp[63]), (int)(listGold[63]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
@@ -5031,7 +5055,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_PENGUIN_STAR:
-                    SetupParameterMonster(78, 720, 720, 720, 4346, 70, (int)(listExp[64]), 8623);
+                    SetupParameterMonster(78, 720, 720, 720, 4346, 70, (int)(listExp[64]), (int)(listGold[64]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
@@ -5039,7 +5063,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_ICEBERG_SPIRIT:
-                    SetupParameterMonster(80, 470, 640, 920, 4742, 80, (int)(listExp[65]), 9502);
+                    SetupParameterMonster(80, 470, 640, 920, 4742, 80, (int)(listExp[65]), (int)(listGold[65]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
@@ -5047,7 +5071,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SWORD_TOOTH_TIGER:
-                    SetupParameterMonster(81, 950, 660, 480, 5140, 80, (int)(listExp[66]), 10652);
+                    SetupParameterMonster(81, 950, 660, 480, 5140, 80, (int)(listExp[66]), (int)(listGold[66]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
@@ -5055,7 +5079,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_FEROCIOUS_RAGE_BEAR:
-                    SetupParameterMonster(83, 1300, 750, 600, 6536, 150, (int)(listExp[67]), 15173);
+                    SetupParameterMonster(83, 1300, 750, 600, 6536, 150, (int)(listExp[67]), (int)(listGold[67]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area32;
@@ -5065,7 +5089,7 @@ namespace DungeonPlayer
 
                 #region "エリア３"
                 case Database.ENEMY_WINTER_ORB:
-                    SetupParameterMonster(84, 520, 680, 1000, 5834, 90, (int)(listExp[68]), 12121);
+                    SetupParameterMonster(84, 520, 680, 1000, 5834, 90, (int)(listExp[68]), (int)(listGold[68]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
@@ -5073,7 +5097,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI:
-                    SetupParameterMonster(85, 530, 700, 1030, 6032, 90, (int)(listExp[69]), 12691);
+                    SetupParameterMonster(85, 530, 700, 1030, 6032, 90, (int)(listExp[69]), (int)(listGold[69]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
@@ -5081,7 +5105,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_MAJESTIC_CENTAURUS:
-                    SetupParameterMonster(87, 1080, 750, 550, 6528, 100, (int)(listExp[70]), 15352);
+                    SetupParameterMonster(87, 1080, 750, 550, 6528, 100, (int)(listExp[70]), (int)(listGold[70]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
@@ -5089,7 +5113,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_INTELLIGENCE_ARGONIAN:
-                    SetupParameterMonster(88, 950, 770, 950, 6726, 100, (int)(listExp[71]), 16997);
+                    SetupParameterMonster(88, 950, 770, 950, 6726, 100, (int)(listExp[71]), (int)(listGold[71]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
@@ -5097,7 +5121,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_MAGIC_HYOU_RIFLE:
-                    SetupParameterMonster(89, 580, 790, 1120, 7024, 100, (int)(listExp[72]), 17117);
+                    SetupParameterMonster(89, 580, 790, 1120, 7024, 100, (int)(listExp[72]), (int)(listGold[72]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
@@ -5105,7 +5129,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_PURE_BLIZZARD_CRYSTAL:
-                    SetupParameterMonster(91, 700, 860, 1600, 9420, 180, (int)(listExp[73]), 26811);
+                    SetupParameterMonster(91, 700, 860, 1600, 9420, 180, (int)(listExp[73]), (int)(listGold[73]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area33;
@@ -5115,7 +5139,7 @@ namespace DungeonPlayer
 
                 #region "エリア４"
                 case Database.ENEMY_PURPLE_EYE_WARE_WOLF:
-                    SetupParameterMonster(92, 1200, 800, 600, 7818, 110, (int)(listExp[74]), 20268);
+                    SetupParameterMonster(92, 1200, 800, 600, 7818, 110, (int)(listExp[74]), (int)(listGold[74]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
@@ -5123,7 +5147,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_FROST_HEART:
-                    SetupParameterMonster(94, 630, 820, 1230, 7614, 110, (int)(listExp[75]), 21031);
+                    SetupParameterMonster(94, 630, 820, 1230, 7614, 110, (int)(listExp[75]), (int)(listGold[75]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
@@ -5131,7 +5155,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_WHITENIGHT_GRIZZLY:
-                    SetupParameterMonster(96, 1300, 860, 680, 9010, 120, (int)(listExp[76]), 26777);
+                    SetupParameterMonster(96, 1300, 860, 680, 9010, 120, (int)(listExp[76]), (int)(listGold[76]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
@@ -5139,7 +5163,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_WIND_BREAKER:
-                    SetupParameterMonster(97, 1100, 880, 1100, 9308, 120, (int)(listExp[77]), 30009);
+                    SetupParameterMonster(97, 1100, 880, 1100, 9308, 120, (int)(listExp[77]), (int)(listGold[77]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
@@ -5147,7 +5171,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_TUNDRA_LONGHORN_DEER:
-                    SetupParameterMonster(100, 800, 920, 2000, 11802, 200, (int)(listExp[78]), 50016);
+                    SetupParameterMonster(100, 800, 920, 2000, 11802, 200, (int)(listExp[78]), (int)(listGold[78]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
@@ -5157,7 +5181,7 @@ namespace DungeonPlayer
 
                 #region "ボス"
                 case Database.ENEMY_BOSS_HOWLING_SEIZER:
-                    SetupParameterMonster(120, 4000, 1200, 1500, 64762, 500, (int)(listExp[79]), 98000);
+                    SetupParameterMonster(120, 4000, 1200, 1500, 64762, 500, (int)(listExp[79]), (int)(listGold[79]));
                     this.baseInstantPoint = 15000;
                     this.ResistStun = true;
                     this.ResistParalyze = true;
@@ -5173,7 +5197,7 @@ namespace DungeonPlayer
                 #region "４階"
                 #region "エリア１"
                 case Database.ENEMY_GENAN_HUNTER:
-                    SetupParameterMonster(101, 1400, 920, 700, 9500, 150, (int)(listExp[80]), 45010);
+                    SetupParameterMonster(101, 1400, 920, 700, 9500, 150, (int)(listExp[80]), (int)(listGold[80]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
@@ -5182,7 +5206,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_BEAST_MASTER:
-                    SetupParameterMonster(102, 1430, 950, 720, 11798, 150, (int)(listExp[81]), 45361);
+                    SetupParameterMonster(102, 1430, 950, 720, 11798, 150, (int)(listExp[81]), (int)(listGold[81]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
@@ -5190,7 +5214,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_ELDER_ASSASSIN:
-                    SetupParameterMonster(103, 1500, 1460, 750, 10796, 150, (int)(listExp[82]), 46219);
+                    SetupParameterMonster(103, 1500, 1460, 750, 10796, 150, (int)(listExp[82]), (int)(listGold[82]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
@@ -5199,7 +5223,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_FALLEN_SEEKER:
-                    SetupParameterMonster(105, 800, 1000, 1600, 12792, 170, (int)(listExp[83]), 50572);
+                    SetupParameterMonster(105, 800, 1000, 1600, 12792, 170, (int)(listExp[83]), (int)(listGold[83]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
@@ -5207,7 +5231,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_MEPHISTO_RIGHTARM:
-                    SetupParameterMonster(107, 1100, 1100, 2500, 19788, 260, (int)(listExp[84]), 57818);
+                    SetupParameterMonster(107, 1100, 1100, 2500, 19788, 260, (int)(listExp[84]), (int)(listGold[84]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
@@ -5217,7 +5241,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "エリア２"
                 case Database.ENEMY_DARK_MESSENGER:
-                    SetupParameterMonster(108, 850, 1050, 1700, 16786, 180, (int)(listExp[85]), 47401);
+                    SetupParameterMonster(108, 850, 1050, 1700, 16786, 180, (int)(listExp[85]), (int)(listGold[85]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
@@ -5225,7 +5249,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_MASTER_LOAD:
-                    SetupParameterMonster(109, 860, 1080, 1730, 20784, 180, (int)(listExp[86]), 47956);
+                    SetupParameterMonster(109, 860, 1080, 1730, 20784, 180, (int)(listExp[86]), (int)(listGold[86]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
@@ -5233,7 +5257,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_EXECUTIONER:
-                    SetupParameterMonster(110, 1760, 1110, 870, 23782, 180, (int)(listExp[87]), 48452);
+                    SetupParameterMonster(110, 1760, 1110, 870, 23782, 180, (int)(listExp[87]), (int)(listGold[87]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
@@ -5241,7 +5265,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_MARIONETTE_NEMESIS:
-                    SetupParameterMonster(112, 1900, 1170, 900, 28778, 200, (int)(listExp[88]), 50127);
+                    SetupParameterMonster(112, 1900, 1170, 900, 28778, 200, (int)(listExp[88]), (int)(listGold[88]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
@@ -5249,7 +5273,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_BLACKFIRE_MASTER_BLADE:
-                    SetupParameterMonster(113, 1950, 1200, 920, 31776, 200, (int)(listExp[89]), 53341);
+                    SetupParameterMonster(113, 1950, 1200, 920, 31776, 200, (int)(listExp[89]), (int)(listGold[89]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
@@ -5258,7 +5282,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_SIN_THE_DARKELF:
-                    SetupParameterMonster(115, 1600, 1300, 3200, 37772, 300, (int)(listExp[90]), 64015);
+                    SetupParameterMonster(115, 1600, 1300, 3200, 37772, 300, (int)(listExp[90]), (int)(listGold[90]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
@@ -5267,7 +5291,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "エリア３"
                 case Database.ENEMY_SUN_STRIDER:
-                    SetupParameterMonster(116, 2000, 1250, 1000, 34770, 220, (int)(listExp[91]), 56810);
+                    SetupParameterMonster(116, 2000, 1250, 1000, 34770, 220, (int)(listExp[91]), (int)(listGold[91]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
@@ -5275,7 +5299,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_ARC_DEMON:
-                    SetupParameterMonster(117, 2050, 1280, 1020, 36768, 220, (int)(listExp[92]), 58155);
+                    SetupParameterMonster(117, 2050, 1280, 1020, 36768, 220, (int)(listExp[92]), (int)(listGold[92]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
@@ -5283,7 +5307,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_BALANCE_IDLE:
-                    SetupParameterMonster(119, 1800, 1380, 1800, 41764, 240, (int)(listExp[93]), 64322);
+                    SetupParameterMonster(119, 1800, 1380, 1800, 41764, 240, (int)(listExp[93]), (int)(listGold[93]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
@@ -5293,7 +5317,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_ANDEAD_WYVERN:
-                    SetupParameterMonster(120, 1050, 1410, 2200, 43762, 240, (int)(listExp[94]), 66810);
+                    SetupParameterMonster(120, 1050, 1410, 2200, 43762, 240, (int)(listExp[94]), (int)(listGold[94]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
@@ -5301,7 +5325,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_GO_FLAME_SLASHER:
-                    SetupParameterMonster(121, 2250, 1440, 1070, 45760, 240, (int)(listExp[95]), 68065);
+                    SetupParameterMonster(121, 2250, 1440, 1070, 45760, 240, (int)(listExp[95]), (int)(listGold[95]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
@@ -5309,7 +5333,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_DEVIL_CHILDREN:
-                    SetupParameterMonster(123, 2800, 1600, 2800, 53756, 340, (int)(listExp[96]), 91489);
+                    SetupParameterMonster(123, 2800, 1600, 2800, 53756, 340, (int)(listExp[96]), (int)(listGold[96]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
@@ -5318,7 +5342,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "エリア４"
                 case Database.ENEMY_HOWLING_HORROR:
-                    SetupParameterMonster(124, 1120, 1500, 2300, 50754, 260, (int)(listExp[97]), 76042);
+                    SetupParameterMonster(124, 1120, 1500, 2300, 50754, 260, (int)(listExp[97]), (int)(listGold[97]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
@@ -5326,7 +5350,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_PAIN_ANGEL:
-                    SetupParameterMonster(125, 2350, 1530, 1150, 52752, 260, (int)(listExp[98]), 77844);
+                    SetupParameterMonster(125, 2350, 1530, 1150, 52752, 260, (int)(listExp[98]), (int)(listGold[98]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
@@ -5334,7 +5358,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_CHAOS_WARDEN:
-                    SetupParameterMonster(127, 1200, 1580, 2500, 56748, 280, (int)(listExp[99]), 99037);
+                    SetupParameterMonster(127, 1200, 1580, 2500, 56748, 280, (int)(listExp[99]), (int)(listGold[99]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
@@ -5342,7 +5366,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_DREAD_KNIGHT:
-                    SetupParameterMonster(128, 2550, 1610, 1250, 58746, 280, (int)(listExp[100]), 105328);
+                    SetupParameterMonster(128, 2550, 1610, 1250, 58746, 280, (int)(listExp[100]), (int)(listGold[100]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
@@ -5350,7 +5374,7 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_DOOM_BRINGER:
-                    SetupParameterMonster(130, 3200, 1800, 2000, 71742, 380, (int)(listExp[101]), 146267);
+                    SetupParameterMonster(130, 3200, 1800, 2000, 71742, 380, (int)(listExp[101]), (int)(listGold[101]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
@@ -5364,9 +5388,9 @@ namespace DungeonPlayer
                 case Database.ENEMY_BOSS_LEGIN_ARZE_2:
                 case Database.ENEMY_BOSS_LEGIN_ARZE_3:
                     //this.name = Database.ENEMY_BOSS_LEGIN_ARZE;
-                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_1) { SetupParameterMonster(150, 1, 2500, 4500, 294702, 650, (int)(listExp[102]), 250000); }
-                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_2) { SetupParameterMonster(150, 1, 2500, 4500, 336702, 650, (int)(listExp[103]), 250000); }
-                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_3) { SetupParameterMonster(150, 1, 2500, 4500, 381702, 650, (int)(listExp[104]), 250000); }
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_1) { SetupParameterMonster(150, 1, 2500, 4500, 294702, 650, (int)(listExp[102]), (int)(listGold[102])); }
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_2) { SetupParameterMonster(150, 1, 2500, 4500, 336702, 650, (int)(listExp[103]), (int)(listGold[103])); }
+                    if (createName == Database.ENEMY_BOSS_LEGIN_ARZE_3) { SetupParameterMonster(150, 1, 2500, 4500, 381702, 650, (int)(listExp[104]), (int)(listGold[104])); }
                     this.baseMana = 2720000;
                     this.baseInstantPoint = 25000;
                     this.ResistStun = true;
@@ -5382,7 +5406,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "５階"
                 case Database.ENEMY_PHOENIX:
-                    SetupParameterMonster(160, 2500, 2000, 3500, 79682, 500, (int)(listExp[105]), 200000);
+                    SetupParameterMonster(160, 2500, 2000, 3500, 79682, 500, (int)(listExp[105]), (int)(listGold[105]));
                     this.baseResistFire = 30000;
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
@@ -5390,28 +5414,28 @@ namespace DungeonPlayer
                     break;
 
                 case Database.ENEMY_NINE_TAIL:
-                    SetupParameterMonster(160, 3500, 2150, 2500, 83682, 500, (int)(listExp[106]), 200000);
+                    SetupParameterMonster(160, 3500, 2150, 2500, 83682, 500, (int)(listExp[106]), (int)(listGold[106]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area51;
                     break;
 
                 case Database.ENEMY_MEPHISTOPHELES:
-                    SetupParameterMonster(160, 3300, 3000, 2500, 87682, 500, (int)(listExp[107]), 200000);
+                    SetupParameterMonster(160, 3300, 3000, 2500, 87682, 500, (int)(listExp[107]), (int)(listGold[107]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area51;
                     break;
 
                 case Database.ENEMY_JUDGEMENT:
-                    SetupParameterMonster(160, 4000, 2300, 4000, 91682, 500, (int)(listExp[108]), 200000);
+                    SetupParameterMonster(160, 4000, 2300, 4000, 91682, 500, (int)(listExp[108]), (int)(listGold[108]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area51;
                     break;
 
                 case Database.ENEMY_EMERALD_DRAGON:
-                    SetupParameterMonster(160, 2500, 2450, 5000, 95682, 500, (int)(listExp[109]), 200000);
+                    SetupParameterMonster(160, 2500, 2450, 5000, 95682, 500, (int)(listExp[109]), (int)(listGold[109]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area51;
@@ -5419,7 +5443,7 @@ namespace DungeonPlayer
 
                 case Database.ENEMY_BOSS_BYSTANDER_EMPTINESS:
                     this.firstName = Database.ENEMY_BOSS_BYSTANDER_EMPTINESS;
-                    SetupParameterMonster(200, 3000, 4200, 3000, 999999, 500, (int)(listExp[110]), 200000);
+                    SetupParameterMonster(200, 3000, 4200, 3000, 999999, 500, (int)(listExp[110]), 0);
                     this.baseLife = 9;
                     this.baseInstantPoint = 8000;
                     this.ResistBlind = true;
