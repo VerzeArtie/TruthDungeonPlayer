@@ -1856,11 +1856,13 @@ namespace DungeonPlayer
         public const string COMMON_SIPPUU_HIRE = @"疾魚のヒレ";
         public const string COMMON_WHITE_MAGATAMA = @"白の勾玉";
         public const string COMMON_BLUE_MAGATAMA = @"青の勾玉";
+        public const string RARE_TRANSPARENT_POWDER = @"透明なパウダー";
         public const string COMMON_KURIONE_ZOUMOTU = @"クリオネの臓物";
         public const string COMMON_BLUEWHITE_SHARP_TOGE = @"青白の鋭いトゲ";
         public const string COMMON_RENEW_AKAMI = @"新鮮な赤身";
         public const string COMMON_SEA_WASI_KUTIBASI = @"海鷲のくちばし";
         public const string COMMON_WASI_BLUE_FEATHER = @"鷲の青羽";
+        public const string COMMON_BRIGHT_GESO = @"光るゲソ";
         public const string COMMON_GANGAME_EGG = @"頑亀の卵";
         public const string RARE_JOE_TONGUE = @"ジョーの舌";
         public const string RARE_JOE_ARM = @"ジョーの腕";
@@ -1869,9 +1871,11 @@ namespace DungeonPlayer
         public const string COMMON_PURE_WHITE_BIGEYE = @"真っ白な大目玉";
         public const string COMMON_HALF_TRANSPARENT_ROCK_ASH = @"半透明の石灰";
         public const string COMMON_GOTUGOTU_KARA = @"ゴツゴツした殻";
+        public const string COMMON_SAME_HIRE = @"サメのヒレ";
         public const string RARE_SEKIKASSYOKU_HASAMI = @"赤褐色のハサミ";
         public const string COMMON_KOUSITUKA_MATERIAL = @"硬質化素材";
         public const string COMMON_NANAIRO_SYOKUSYU = @"七色の触手";
+        public const string COMMON_PUREWHITE_KIMO = @"真っ白なキモ";
         public const string COMMON_AOSAME_KENSHI = @"青鮫の剣歯";
         public const string COMMON_AOSAME_UROKO = @"青鮫の鱗";
         public const string COMMON_EIGHTEIGHT_KUROSUMI = @"エイト・エイトの黒墨";
@@ -1883,18 +1887,22 @@ namespace DungeonPlayer
         public const string COMMON_SNOW_CAT_KEGAWA = @"雪猫の毛皮";
         public const string COMMON_BIG_HIZUME = @"大きな蹄";
         public const string COMMON_FAIRY_POWDER = @"妖精パウダー";
+        public const string RARE_GRIFFIN_EYE = @"グリフィンの目玉";
         public const string COMMON_GOTUGOTU_KONBOU = @"ゴツゴツした棍棒";
         public const string COMMON_LIZARD_UROKO = @"リザードの鱗";
         public const string COMMON_EMBLEM_OF_PENGUIN = @"エムブレム・オブ・ペンギン";
+        public const string COMMON_KINKIN_ICE = @"キンキンに冷えた氷";
         public const string COMMON_SHARPNESS_TIGER_TOOTH = @"鋭く尖った虎牙";
         public const string RARE_BEAR_CLAW_KAKERA = @"ベアクローの欠片";
         public const string COMMON_TOUMEI_SNOW_CRYSTAL = @"透明な雪結晶";
         public const string COMMON_WHITE_AZARASHI_MEAT = @"白アザラシの肉";
+        public const string COMMON_CENTAURUS_LEATHER = @"ケンタウルスの皮";
         public const string COMMON_ARGONIAN_PURPLE_UROKO = @"アルゴニアンの紫鱗";
         public const string COMMON_BLUE_DANGAN_KAKERA = @"蒼い弾丸の欠片";
         public const string RARE_PURE_CRYSTAL = @"ピュア・クリスタル";
         public const string COMMON_WOLF_KEGAWA = @"ウルフの毛皮";
         public const string COMMON_FROZEN_HEART = @"凍結した心臓";
+        public const string COMMON_BRIGHT_CLAW = @"グリズリーの輝く爪";
         public const string COMMON_ESSENCE_OF_WIND = @"エッセンス・オヴ・ウィンド";
         public const string RARE_TUNDRA_DEER_HORN = @"古代ツンドラ鹿の角";
         #endregion
@@ -1903,8 +1911,11 @@ namespace DungeonPlayer
         public const string COMMON_HUNTER_SEVEN_TOOL = @"ハンターの七つ道具";
         public const string COMMON_BEAST_KEGAWA = @"猛獣の毛皮";
         public const string COMMON_EXECUTIONER_ROBE = @"執行人の汚れたローブ";
+        public const string COMMON_MARIONETTE_STRING = @"マリオネットの糸";
         public const string RARE_ANGEL_SILK = @"天使のシルク";
         public const string COMMON_SABI_BUGU = @"錆付いたガラクタ武具";
+        public const string RARE_MEPHISTO_BLACKMEAT = @"メフィストの黒肉";
+
         public const string RARE_ESSENCE_OF_DARK = @"エッセンス・オブ・ダーク";
         public const string COMMON_SEEKER_HEAD = @"シーカーの頭蓋骨";
         public const string RARE_MASTERBLADE_KAKERA = @"マスターブレイドの破片";
@@ -1914,6 +1925,7 @@ namespace DungeonPlayer
         public const string COMMON_KUMITATE_TENBIN = @"組み立て素材　天秤";
         public const string COMMON_KUMITATE_TENBIN_DOU = @"組み立て素材　天分銅";
         public const string COMMON_KUMITATE_TENBIN_BOU = @"組み立て素材　天秤棒";
+        public const string COMMON_WYVERN_MEAT = @"ワイバーンのむね肉";
         public const string RARE_DOOMBRINGER_TUKA = @"ドゥームブリンガーの柄";
         public const string RARE_DOOMBRINGER_KAKERA = @"ドゥームブリンガーの欠片";
 
@@ -1922,6 +1934,7 @@ namespace DungeonPlayer
         public const string RARE_ESSENCE_OF_SHINE = @"エッセンス・オブ・シャイン";
         public const string RARE_BLACK_SEAL_IMPRESSION = @"黒の印鑑";
         public const string RARE_CHAOS_SIZUKU = @"混沌の雫";
+        public const string RARE_HORSE_HORN = @"馬の丸角";
 
         public const string RARE_MASTERBLADE_FIRE = @"マスターブレイドの残り火";
         #endregion
@@ -2308,11 +2321,14 @@ namespace DungeonPlayer
         public const string ENEMY_ZASSYOKU_RABBIT = @"雑食ウサギ";
         public const string ENEMY_WONDER_SEED = @"ワンダー・シード";
         public const string ENEMY_ASH_CREEPER = @"アッシュ・クリーパー";
+        public const string ENEMY_GIANT_SNAKE = @"ジャイアント・スネーク";
         public const string ENEMY_FLANSIS_KNIGHT = @"フランシス・ナイト";
         public const string ENEMY_SHOTGUN_HYUI = @"ショットガン・ヒューイ";
 
-        public const string ENEMY_BRILLIANT_BUTTERFLY = @"ブリリアント・バタフライ";
         public const string ENEMY_WAR_WOLF = @"番狼";
+        public const string ENEMY_BRILLIANT_BUTTERFLY = @"ブリリアント・バタフライ";
+        public const string ENEMY_MIST_ELEMENTAL = @"ミスト・エレメンタル";
+        public const string ENEMY_WHISPER_DRYAD = @"ウィスパー・ドライアド";
         public const string ENEMY_BLOOD_MOSS = @"ブラッド・モス";
         public const string ENEMY_MOSSGREEN_DADDY = @"モスグリーン・ダディ";
 
@@ -2326,21 +2342,25 @@ namespace DungeonPlayer
         public const string ENEMY_SIPPU_FLYING_FISH = @"疾風・フライングフィッシュ";
         public const string ENEMY_ORB_SHELLFISH = @"オーブ・シェルフィッシュ";
         public const string ENEMY_SPLASH_KURIONE = @"スプラッシュ・クリオネ";
+        public const string ENEMY_TRANSPARENT_UMIUSHI = @"透明なウミウシ";
 
         public const string ENEMY_ROLLING_MAGURO = @"ローリング・マグロ";
         public const string ENEMY_RANBOU_SEA_ARTINE = @"乱暴なシー・アーチン";
         public const string ENEMY_BLUE_SEA_WASI = @"青海鷲";
+        public const string ENEMY_BRIGHT_SQUID = @"ブライト・スクイッド";
         public const string ENEMY_GANGAME = @"頑亀";
         public const string ENEMY_BIGMOUSE_JOE = @"ビッグマウス・ジョー";
 
         public const string ENEMY_MOGURU_MANTA = @"モーグル・マンタ";
         public const string ENEMY_FLOATING_GOLD_FISH = @"浮遊するゴールドフィッシュ";
         public const string ENEMY_GOEI_HERMIT_CLUB = @"護衛隊・ハーミットクラブ";
+        public const string ENEMY_ABARE_SHARK = @"暴れ大ザメ";
         public const string ENEMY_VANISHING_CORAL = @"バニッシング・コーラル";
         public const string ENEMY_CASSY_CANCER = @"キャシー・ザ・キャンサー";
 
         public const string ENEMY_BLACK_STARFISH = @"ブラック・スターフィッシュ";
         public const string ENEMY_RAINBOW_ANEMONE = @"レインボー・アネモネ";
+        public const string ENEMY_MACHIBUSE_ANKOU = @"待ち伏せアンコウ";
         public const string ENEMY_EDGED_HIGH_SHARK = @"エッジド・ハイ・シャーク";
         public const string ENEMY_EIGHT_EIGHT = @"エイト・エイト";
 
@@ -2362,21 +2382,25 @@ namespace DungeonPlayer
         public const string ENEMY_SNOW_CAT = @"スノー・キャット";
         public const string ENEMY_WAR_MAMMOTH = @"ウォー・マンモス";
         public const string ENEMY_WINGED_COLD_FAIRY = @"ウィングド・コールドフェアリー";
+        public const string ENEMY_FREEZING_GRIFFIN = @"フリージング・グリフィン";
 
         public const string ENEMY_BRUTAL_OGRE = @"ブルータル・オーガ";
         public const string ENEMY_HYDRO_LIZARD = @"ハイドロ・リザード";
         public const string ENEMY_PENGUIN_STAR = @"ペンギンスター";
+        public const string ENEMY_ICEBERG_SPIRIT = @"アイスバーグ・スピリット";
         public const string ENEMY_SWORD_TOOTH_TIGER = @"剣歯虎";
         public const string ENEMY_FEROCIOUS_RAGE_BEAR = @"フェロシアス・レイジベア";
 
         public const string ENEMY_WINTER_ORB = @"ウィンター・オーヴ";
         public const string ENEMY_PATHFINDING_LIGHTNING_AZARASI = @"追従する雷アザラシ";
+        public const string ENEMY_MAJESTIC_CENTAURUS = @"マジェスティック・ケンタウルス";
         public const string ENEMY_INTELLIGENCE_ARGONIAN = @"知的なアルゴニアン";
         public const string ENEMY_MAGIC_HYOU_RIFLE = @"魔法雹穴銃";
         public const string ENEMY_PURE_BLIZZARD_CRYSTAL = @"ピュア・ブリザード・クリスタル";
 
         public const string ENEMY_PURPLE_EYE_WARE_WOLF = @"紫目・ウェアウルフ";
         public const string ENEMY_FROST_HEART = @"フロスト・ハート";
+        public const string ENEMY_WHITENIGHT_GRIZZLY = @"白夜のグリズリー";
         public const string ENEMY_WIND_BREAKER = @"ウィンド・ブレイカー";
         public const string ENEMY_TUNDRA_LONGHORN_DEER = @"ツンドラ・ロングホーン・ディア";
 
@@ -2389,22 +2413,26 @@ namespace DungeonPlayer
         public const string ENEMY_BEAST_MASTER = @"ビーストマスター";
         public const string ENEMY_ELDER_ASSASSIN = @"エルダーアサシン";
         public const string ENEMY_FALLEN_SEEKER = @"フォールン・シーカー";
+        public const string ENEMY_MEPHISTO_RIGHTARM = @"メフィスト・ザ・ライトアーム";
 
+        public const string ENEMY_DARK_MESSENGER = @"闇の眷属";
         public const string ENEMY_MASTER_LOAD = @"マスターロード";
         public const string ENEMY_EXECUTIONER = @"エグゼキューショナー";
-        public const string ENEMY_DARK_MESSENGER = @"闇の眷属";
+        public const string ENEMY_MARIONETTE_NEMESIS = @"マリオネット・ネメシス";
         public const string ENEMY_BLACKFIRE_MASTER_BLADE = @"黒炎マスターブレイド";
         public const string ENEMY_SIN_THE_DARKELF = @"シン・ザ・ダークエルフ";
 
         public const string ENEMY_SUN_STRIDER = @"サン・ストライダー";
         public const string ENEMY_ARC_DEMON = @"アークデーモン";
         public const string ENEMY_BALANCE_IDLE = @"天秤を司る者";
+        public const string ENEMY_ANDEAD_WYVERN = @"アンデッド・ワイバーン";
         public const string ENEMY_GO_FLAME_SLASHER = @"業・フレイムスラッシャー";
         public const string ENEMY_DEVIL_CHILDREN = @"デビル・チルドレン";
 
         public const string ENEMY_HOWLING_HORROR = @"ハウリングホラー";
         public const string ENEMY_PAIN_ANGEL = @"ペインエンジェル";
         public const string ENEMY_CHAOS_WARDEN = @"カオス・ワーデン";
+        public const string ENEMY_DREAD_KNIGHT = @"ドレッド・ナイト";
         public const string ENEMY_DOOM_BRINGER = @"ドゥームブリンガー";
 
         public const string ENEMY_BOSS_LEGIN_ARZE = @"四階の守護者：闇焔レギィン・アーゼ";
@@ -2417,6 +2445,7 @@ namespace DungeonPlayer
         #region "ダンジョン５階"
         public const string ENEMY_PHOENIX = @"Phoenix";
         public const string ENEMY_NINE_TAIL = @"Nine Tail";
+        public const string ENEMY_MEPHISTOPHELES = @"Mephistopheles";
         public const string ENEMY_JUDGEMENT = @"Judgement";
         public const string ENEMY_EMERALD_DRAGON = @"Emerald Dragon";
 
