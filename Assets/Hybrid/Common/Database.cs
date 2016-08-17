@@ -1823,11 +1823,11 @@ namespace DungeonPlayer
         public const string RARE_SEAL_AQUA_FIRE = @"シールオブアクア＆ファイア";
 
         #region "後編、１階の素材系ドロップアイテム"
-        public const string COMMON_YELLOW_MATERIAL = @"イエローマテリアル";
+        public const string COMMON_YELLOW_MATERIAL = @"イエロー・マテリアル";
         public const string COMMON_BEATLE_TOGATTA_TUNO = @"ビートルの尖った角";
         public const string COMMON_HENSYOKU_KUKI = @"変色した茎";
         public const string COMMON_GREEN_SIKISO = @"緑化色素";
-        public const string COMMON_MANTIS_CLAW = @"マンティスの爪";
+        public const string COMMON_MANTIS_TAIEKI = @"マンティスの体液";
         public const string COMMON_WARM_NO_KOUKAKU = @"ワームの甲殻";
         public const string COMMON_MANDORAGORA_ROOT = @"マンドラゴラの根";
 
@@ -1869,9 +1869,9 @@ namespace DungeonPlayer
         public const string RARE_JOE_LEG = @"ジョーの足";
         public const string COMMON_SOFT_BIG_HIRE = @"柔らかい大ヒレ";
         public const string COMMON_PURE_WHITE_BIGEYE = @"真っ白な大目玉";
-        public const string COMMON_HALF_TRANSPARENT_ROCK_ASH = @"半透明の石灰";
         public const string COMMON_GOTUGOTU_KARA = @"ゴツゴツした殻";
         public const string COMMON_SAME_HIRE = @"サメのヒレ";
+        public const string COMMON_HALF_TRANSPARENT_ROCK_ASH = @"半透明の石灰";
         public const string RARE_SEKIKASSYOKU_HASAMI = @"赤褐色のハサミ";
         public const string COMMON_KOUSITUKA_MATERIAL = @"硬質化素材";
         public const string COMMON_NANAIRO_SYOKUSYU = @"七色の触手";
@@ -1910,33 +1910,34 @@ namespace DungeonPlayer
         #region "後編、４階、素材ドロップ"
         public const string COMMON_HUNTER_SEVEN_TOOL = @"ハンターの七つ道具";
         public const string COMMON_BEAST_KEGAWA = @"猛獣の毛皮";
-        public const string COMMON_EXECUTIONER_ROBE = @"執行人の汚れたローブ";
-        public const string COMMON_MARIONETTE_STRING = @"マリオネットの糸";
-        public const string RARE_ANGEL_SILK = @"天使のシルク";
+        public const string RARE_BLOOD_DAGGER_KAKERA = @"血塗られたダガーの破片";
         public const string COMMON_SABI_BUGU = @"錆付いたガラクタ武具";
         public const string RARE_MEPHISTO_BLACKMEAT = @"メフィストの黒肉";
 
-        public const string RARE_ESSENCE_OF_DARK = @"エッセンス・オブ・ダーク";
         public const string COMMON_SEEKER_HEAD = @"シーカーの頭蓋骨";
+        public const string RARE_ESSENCE_OF_DARK = @"エッセンス・オブ・ダーク";
+        public const string COMMON_EXECUTIONER_ROBE = @"執行人の汚れたローブ";
+        public const string COMMON_MARIONETTE_STRING = @"マリオネットの糸";
         public const string RARE_MASTERBLADE_KAKERA = @"マスターブレイドの破片";
-        public const string RARE_ESSENCE_OF_FLAME = @"エッセンス・オブ・フレイム";
+        public const string RARE_MASTERBLADE_FIRE = @"マスターブレイドの残り火";
         public const string COMMON_GREAT_JEWELCROWN = @"豪華なジュエルクラウン";
-        public const string COMMON_ONRYOU_HAKO = @"怨霊箱";
+
+        public const string RARE_ESSENCE_OF_SHINE = @"エッセンス・オブ・シャイン";
+        public const string RARE_DEMON_HORN = @"デーモンホーン";
         public const string COMMON_KUMITATE_TENBIN = @"組み立て素材　天秤";
         public const string COMMON_KUMITATE_TENBIN_DOU = @"組み立て素材　天分銅";
         public const string COMMON_KUMITATE_TENBIN_BOU = @"組み立て素材　天秤棒";
         public const string COMMON_WYVERN_MEAT = @"ワイバーンのむね肉";
-        public const string RARE_DOOMBRINGER_TUKA = @"ドゥームブリンガーの柄";
-        public const string RARE_DOOMBRINGER_KAKERA = @"ドゥームブリンガーの欠片";
-
-        public const string RARE_BLOOD_DAGGER_KAKERA = @"血塗られたダガーの破片";
-        public const string RARE_DEMON_HORN = @"デーモンホーン";
-        public const string RARE_ESSENCE_OF_SHINE = @"エッセンス・オブ・シャイン";
+        public const string RARE_ESSENCE_OF_FLAME = @"エッセンス・オブ・フレイム";
         public const string RARE_BLACK_SEAL_IMPRESSION = @"黒の印鑑";
+
+
+        public const string COMMON_ONRYOU_HAKO = @"怨霊箱";
+        public const string RARE_ANGEL_SILK = @"天使のシルク";
         public const string RARE_CHAOS_SIZUKU = @"混沌の雫";
         public const string RARE_HORSE_HORN = @"馬の丸角";
-
-        public const string RARE_MASTERBLADE_FIRE = @"マスターブレイドの残り火";
+        public const string RARE_DOOMBRINGER_TUKA = @"ドゥームブリンガーの柄";
+        public const string RARE_DOOMBRINGER_KAKERA = @"ドゥームブリンガーの欠片";
         #endregion
 
         #region "後編、ガンツの武具屋１階"
@@ -2655,6 +2656,7 @@ namespace DungeonPlayer
         public const string MUGEN_LOOP = @"９８３２６";
 
         public const string VINSGALDE = @"ヴィンスガルデ";
+        public const string ORGAWEIN = @"オルガウェイン傭兵訓練施設";
         
         // 画面名称(add unity)
         public const string Title = @"Title";

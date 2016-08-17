@@ -811,25 +811,46 @@ namespace DungeonPlayer
                 NormalTapOK();
             }
             #endregion
-            #region "２日目"
-            else if (this.firstDay >= 2 && !GroundOne.WE.Truth_CommunicationLana2)
+            #region "日常会話１"
+            else if (!GroundOne.WE.Truth_CommunicationLana101)
             {
-                MessagePack.Message40001(ref nowMessage, ref nowEvent);
+                MessagePack.Message41001(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "日常会話２"
+            else if (!GroundOne.WE.Truth_CommunicationLana2)
+            {
+                MessagePack.Message41002(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "３日目"
-            else if (this.firstDay >= 3 && !GroundOne.WE.Truth_CommunicationLana3)
+            else if (!GroundOne.WE.Truth_CommunicationLana3)
             {
                 MessagePack.Message40002(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
+            #region "日常会話３"
+            else if (!GroundOne.WE.Truth_CommunicationLana102)
+            {
+                MessagePack.Message41003(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "Ｌｖ４以降、スタンスの習得会話"
-            else if (this.firstDay >= 4 && GroundOne.MC.Level >= 4 && !GroundOne.WE.Truth_CommunicationLana1_1 && GroundOne.WE.AvailableSecondCharacter)
+            else if (GroundOne.MC.Level >= 4 && !GroundOne.WE.Truth_CommunicationLana1_1 && GroundOne.WE.AvailableSecondCharacter)
             {
                 this.nowTalkingLanaAmiria = true;
                 MessagePack.Message40003(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "日常会話４"
+            else if (GroundOne.WE.Truth_CommunicationLana103)
+            {
+                MessagePack.Message41004(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion

@@ -55,13 +55,13 @@ namespace DungeonPlayer
             switch (createName)
             {
                 #region "ポーション系"
-                case "小さい赤ポーション":
+                case Database.POOR_SMALL_RED_POTION:
                     description = "小さめに作られたライフ回復用の薬。回復量７０～１１０";
                     PhysicalAttackMinValue = 70;
                     PhysicalAttackMaxValue = 110;
                     cost = 100;
                     AdditionalDescription(ItemType.Use_Potion);
-                    rareLevel = RareLevel.Poor;
+                    rareLevel = RareLevel.Common;
                     limitValue = USING_ITEM_STACK_SIZE;
                     break;
                 case "普通の赤ポーション":
@@ -107,7 +107,7 @@ namespace DungeonPlayer
                     PhysicalAttackMaxValue = 80;
                     cost = 100;
                     AdditionalDescription(ItemType.Use_Potion);
-                    rareLevel = RareLevel.Poor;
+                    rareLevel = RareLevel.Common;
                     limitValue = USING_ITEM_STACK_SIZE;
                     break;
                 case "普通の青ポーション":
@@ -5402,7 +5402,7 @@ namespace DungeonPlayer
                     PhysicalAttackMaxValue = 10;
                     cost = 150;
                     AdditionalDescription(ItemType.Use_Potion);
-                    rareLevel = RareLevel.Poor;
+                    rareLevel = RareLevel.Common;
                     break;
                 case Database.POOR_POTION_CURE_POISON:
                     description = "少量の毒を瞬時に浄化する薬。効果【猛毒】を解除。";
@@ -6505,14 +6505,6 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Poor;
                     limitValue = OTHER_ITEM_STACK_SIZE;
                     break;
-                case Database.COMMON_YELLOW_MATERIAL:
-                    description = "純黄色の立方体。";
-                    cost = 6000;
-                    AdditionalDescription(ItemType.None);
-                    rareLevel = RareLevel.Common;
-                    limitValue = OTHER_ITEM_STACK_SIZE;
-                    break;
-
                 case Database.COMMON_WARM_NO_KOUKAKU: // ドロップアイテム（甲殻ワーム）
                     description = "死骸となったワームの甲殻の欠片。";
                     cost = 60;
@@ -6562,6 +6554,13 @@ namespace DungeonPlayer
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_YELLOW_MATERIAL: // ドロップアイテム（ワイルドアント）
+                    description = "純黄色の立方体。";
+                    cost = 160;
+                    AdditionalDescription(ItemType.Material_Equip);
+                    rareLevel = RareLevel.Common;
+                    limitValue = OTHER_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ALRAUNE_KAHUN: // ドロップアイテム（アルラウネ）
                     description = "アルラウネから採取される花粉は媚薬の元となる。";

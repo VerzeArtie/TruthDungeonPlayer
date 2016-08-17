@@ -26432,153 +26432,82 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：まあ１階の始めなんだし、冒険者への最初の警告って所じゃないの？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：うーん・・・なんて言うんだ・・・"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：うーん・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：・・・ッハイ、ポーションでもどうぞ♪"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：・・・なあ、ラナ。ところで話は変わるんだが。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add(""); eventList.Add(ActionEvent.GetGreenPotionForLana);
+            messageList.Add("ラナ：なによ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：っお！？悪いな、わざわざ。代金はいくらだ？"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：良いわよ、そんなの。とっときなさいよ。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：いやいや、すまねえな。サンキュー！"); eventList.Add(ActionEvent.None);
-
-            if (GroundOne.WE2.TruthBadEnd1)
+            //using (TruthDecision td = new TruthDecision())
             {
-                messageList.Add("アイン：・・・なあ、ラナ。ところで話は変わるんだが。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：なによ？"); eventList.Add(ActionEvent.None);
-
-                //using (TruthDecision td = new TruthDecision())
+                //td.MainMessage = "　【　ラナをパーティに誘いますか？　】";
+                //td.FirstMessage = "ラナをパーティに誘う。";
+                //td.SecondMessage = "ラナをパーティに誘わない。";
+                //td.StartPosition = FormStartPosition.CenterParent;
+                //td.ShowDialog(); eventList.Add(ActionEvent.None);
+                //if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
-                    //td.MainMessage = "　【　ラナをパーティに誘いますか？　】";
-                    //td.FirstMessage = "ラナをパーティに誘う。";
-                    //td.SecondMessage = "ラナをパーティに誘わない。";
-                    //td.StartPosition = FormStartPosition.CenterParent;
-                    //td.ShowDialog(); eventList.Add(ActionEvent.None);
-                    //if (td.DialogResult == System.Windows.Forms.DialogResult.Yes)
+                    messageList.Add("アイン：ダンジョン、一緒に来ないか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：う～ん、どうしようかな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：お前が居るとポーションとかダンジョンマップが頼りになるからな。っな、頼むぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("　　　【ラナは一瞬、アインには見えないように、遠くを見るような笑顔をした後・・・】"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ラナ：ッフフ、良いわよべつに♪"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：サンキュー！恩にきるぜ！！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+                    if (GroundOne.WE.AvailablePotionshop)
                     {
-                        messageList.Add("アイン：ダンジョン、一緒に来ないか？"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：っと、そういえばラナ。お前のお店はどうするんだよ？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：う～ん、どうしようかな。"); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：ご心配なく♪　ちゃんと雇っておいたから♪"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("アイン：お前が居るとポーションとかダンジョンマップが頼りになるからな。っな、頼むぜ。"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：ッマジかよ！？何でそんな用意周到なんだよ！？"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("　　　【ラナは一瞬、アインには見えないように、遠くを見るような笑顔をした後・・・】"); eventList.Add(ActionEvent.None);
+                        messageList.Add("ラナ：まあ、私、接客はあんまり向いてないのよね。何か疲れちゃうし。"); eventList.Add(ActionEvent.None);
 
-                        messageList.Add("ラナ：条件があるわね。聞いてもらえるかしら♪"); eventList.Add(ActionEvent.None);
-
-                        messageList.Add("アイン：っお、何だよ？言ってみろよ。"); eventList.Add(ActionEvent.None);
-
-                        messageList.Add("ラナ：【　真実の答え　】　　探してよね？"); eventList.Add(ActionEvent.None);
-
-                        messageList.Add("アイン：っな。何だって？"); eventList.Add(ActionEvent.None);
-
-                        messageList.Add("ラナ：ッフフ、冗談よ。冗談♪　じゃあ、明日からは私も行くわよ♪"); eventList.Add(ActionEvent.None);
-
-                        messageList.Add("アイン：サンキュー！恩にきるぜ！！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
-
-                        if (GroundOne.WE.AvailablePotionshop)
-                        {
-                            messageList.Add("アイン：っと、そういえばラナ。お前のお店はどうするんだよ？"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("ラナ：ご心配なく♪　ちゃんと雇っておいたから♪"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("アイン：ッマジかよ！？何でそんな用意周到なんだよ！？"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("ラナ：まあ、私、接客はあんまり向いてないのよね。何か疲れちゃうし。"); eventList.Add(ActionEvent.None);
-
-                            messageList.Add("ラナ：そんなわけだから、心配ご無用よ♪"); eventList.Add(ActionEvent.None);
-                        }
-
-                        messageList.Add("アイン：じゃあ、明日からよろしく頼むぜ！！"); eventList.Add(ActionEvent.None);
-
-                        messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
-
-                        messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-                        messageList.Add(""); eventList.Add(ActionEvent.None);
-
-                        GroundOne.WE.AvailableSecondCharacter = true;
-                        GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
+                        messageList.Add("ラナ：そんなわけだから、心配ご無用よ♪"); eventList.Add(ActionEvent.None);
                     }
-                    // after revive
-                    //else
-                    //{
-                    //    messageList.Add("アイン：い、いやいや、何でもねえ。"); eventList.Add(ActionEvent.None);
 
-                    //    messageList.Add("ラナ：アイン、らしくないわね。言いたい事は正直に言ってよね？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アイン：じゃあ、明日からよろしく頼むぜ！！"); eventList.Add(ActionEvent.None);
 
-                    //    messageList.Add("アイン：・・・ああ、正直言うとだな。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
 
-                    //    messageList.Add("アイン：ラナ、お前をパーティに誘おうと思ったんだが。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-                    //    messageList.Add("アイン：やめた。俺一人で行ってみせるぜ。"); eventList.Add(ActionEvent.None);
+                    messageList.Add(""); eventList.Add(ActionEvent.None);
 
-                    //    messageList.Add("アイン：すまねえな。ラナ。"); eventList.Add(ActionEvent.None);
-
-                    //    messageList.Add("ラナ：う～ん、別に良いわよ。ちゃんとそう言ってくれれば。"); eventList.Add(ActionEvent.None);
-
-                    //    messageList.Add("アイン：じゃあ、また明日からダンジョンいって来るぜ。"); eventList.Add(ActionEvent.None);
-
-                    //    messageList.Add("ラナ：ハイハイ、頑張ってきてよね♪"); eventList.Add(ActionEvent.None);
-
-                        messageList.Add("【  ラナがパーティに加えませんでした  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-                    //    GroundOne.WE.Truth_CommunicationNotJoinLana = true;
-                    //}
+                    GroundOne.WE.AvailableSecondCharacter = true;
+                    GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
                 }
-            }
-            else
-            {
-                messageList.Add("アイン：・・・なあ、ラナ。ポーションもらったトコ悪いんだが。"); eventList.Add(ActionEvent.None);
+                // after revive
+                //else
+                //{
+                //    messageList.Add("アイン：い、いやいや、何でもねえ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：なによ？"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("ラナ：アイン、らしくないわね。言いたい事は正直に言ってよね？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ダンジョン、一緒に来ないか？"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("アイン：・・・ああ、正直言うとだな。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：う～ん、どうしようかな。"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("アイン：ラナ、お前をパーティに誘おうと思ったんだが。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：お前が居るとポーションとかダンジョンマップが頼りになるからな。っな、頼むぜ。"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("アイン：やめた。俺一人で行ってみせるぜ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("　　　【ラナは一瞬、アインには見えないように、遠くを見るような笑顔をした後・・・】"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("アイン：すまねえな。ラナ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：条件があるわね。聞いてもらえるかしら♪"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("ラナ：う～ん、別に良いわよ。ちゃんとそう言ってくれれば。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：っお、何だよ？言ってみろよ。"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("アイン：じゃあ、また明日からダンジョンいって来るぜ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：【　真実の答え　】　　探してよね？"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("ラナ：ハイハイ、頑張ってきてよね♪"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：っな。何だって？"); eventList.Add(ActionEvent.None);
+                //    messageList.Add("【  ラナがパーティに加えませんでした  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-                messageList.Add("ラナ：ッフフ、冗談よ。冗談♪　じゃあ、明日からは私も行くわよ♪"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("アイン：サンキュー！恩にきるぜ！！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
-
-                if (GroundOne.WE.AvailablePotionshop)
-                {
-                    messageList.Add("アイン：っと、そういえばラナ。お前のお店はどうするんだよ？"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：ご心配なく♪　ちゃんと雇っておいたから♪"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("アイン：ッマジかよ！？何でそんな用意周到なんだよ！？"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：まあ、私、接客はあんまり向いてないのよね。何か疲れちゃうし。"); eventList.Add(ActionEvent.None);
-
-                    messageList.Add("ラナ：そんなわけだから、心配ご無用よ♪"); eventList.Add(ActionEvent.None);
-                }
-
-                messageList.Add("アイン：じゃあ、明日からよろしく頼むぜ！！"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("ラナ：ハイハイ♪　じゃあまた明日ね。"); eventList.Add(ActionEvent.None);
-
-                messageList.Add("【  ラナがパーティに加わりました  】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-                messageList.Add(""); eventList.Add(ActionEvent.None);
-
-                GroundOne.WE.AvailableSecondCharacter = true;
-                GroundOne.WE.Truth_CommunicationJoinPartyLana = true;
+                //    GroundOne.WE.Truth_CommunicationNotJoinLana = true;
+                //}
             }
         }
         
@@ -30892,28 +30821,106 @@ namespace DungeonPlayer
             GroundOne.WE.AlreadyCommunicate = true;
             GroundOne.WE.Truth_CommunicationLana1 = true; // 初回一日目のみ、ラナ、ガンツ、ハンナの会話を聞いたかどうか判定するため、ここでTRUEとします。
         }
-        // ２日目
-        public static void Message40001(ref List<string> messageList, ref List<ActionEvent> eventList)
+        
+        // 日常会話１
+        public static void Message41001(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("アイン：よおラナ！ダンジョンから戻った時に気づいたんだが。"); eventList.Add(ActionEvent.None);
+            GroundOne.WE.Truth_CommunicationLana101 = true;
 
-            messageList.Add("ラナ：赤ポーションでも欲しいわけ？"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：アイン、【遠見の青水晶】は絶対に無くさないでよ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：っな！？　何で分かった！！？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ああ、分かってるって。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：大体ポーションひとつも持たずにダンジョンに突っ込むヤツなんてどこに居るのよ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：・・・ガンツおじさんの所で売らないでよ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：悪ぃ・・・悪かったって、なあココはひとつ頼むぜ！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：あのな。売るわけないだろ、こんな便利なモノ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：しょうがないわね、今回だけよ。ッホラ♪"); eventList.Add(ActionEvent.None);
-            
-            messageList.Add(GetPotionForLana()); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
+            messageList.Add("ラナ：・・・寝ボケた状態で、無くさないでよ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：っしゃ！サンキューサンキュー！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：『無くしました』なんてイベントでもない限りそれは無いな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・食べたりしないでよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：さすがにそこまでバカじゃねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ねえ、ところでポーション一つも持たずに向かってるわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあな、ガンツおじさんでは取り扱ってないみたいだし。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そもそも何も持たずに突っ込むアンタは、どうかしてるわよホント・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しょうがねえだろ。・・・って何だその手に持ってるのは？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：フフフ、これ何だと思う？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、まさかのポーションかよ！どこで入手したんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：入手じゃないわ、私がつくったモノよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いつの間にそんなモノ作れるようになってたんだよ。すげえじゃねえか！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・って、いくらなんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：１５０Ｇぐらいで売るつもりなんだけどね"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ック・・・、それなりの金額だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でもまあ、昔のよしみって事で１個だけあげるわよ、ホラッ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("小さい赤ポーションを手に入れた。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：おいおい、良いのかよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：言っとくけど、今回だけだからね。そんなにたくさんは調合出来ないから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、助かるぜ、サンキューな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.POOR_SMALL_RED_POTION); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
+        }
+
+        public static void Message41002(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：ラナ、良いこと思いついたぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：無い頭で何を思いついたのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ダンジョンに行かず、ダンジョン最下層へ到着する方法だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：言葉分かって使ってんのかしらホント・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そもそも目的地はダンジョンの最奥なんだろう？ならば、全てを掘り返してしまえば良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃ頑張って掘り返せば？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：見ろ、マトックを用意したんだ。任せとけって！ッハッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・（遠い目）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("・・・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("・・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ッバキ・・・（マトックが壊れました）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・・・・ッハッハッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：今日もお疲れ様ってとこかしらね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：アーーーッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：早く諦めてダンジョンに専念しなさいよ。このバカ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうする・・・悪ぃ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：はい、今日のポーションね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：助かるぜ、サンキューな。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：っあ、っちょっとちょっと。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ん？何だよ？"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ん？何だ？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：ッフフ、やっぱり秘密かな♪"); eventList.Add(ActionEvent.None);
 
@@ -30924,6 +30931,8 @@ namespace DungeonPlayer
             messageList.Add("アイン：ちぇ、相変わらず秘密主義だよな・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：じゃ、またね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(Database.POOR_SMALL_RED_POTION); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
 
             GroundOne.WE.AlreadyCommunicate = true;
             GroundOne.WE.Truth_CommunicationLana2 = true;
@@ -31229,6 +31238,145 @@ namespace DungeonPlayer
             GroundOne.WE.AlreadyCommunicate = true;
             GroundOne.WE.Truth_CommunicationLana1_1 = true;
         }
+
+        public static void Message41003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.Truth_CommunicationLana102 = true;
+
+            messageList.Add("ラナ：どう、少しはダンジョンの進行に慣れてきたんじゃない？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、でもな、何かこうしっくりと来ないんだよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：どうしてよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：さあな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：『さあな』ってひょっとしてバカ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おまえその『バカ』ってよく使うな。俺は決してバカじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：へー・・・そぉなんだ。じゃ例えばで良いから戦術論を語ってみてよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ストレート・スマッシュ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：へー・・・他には？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ライフが半分ほど減ったらフレッシュ・ヒール！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ・・・そうなんでしょうけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あとは戦況を見て、逃げる！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：最後はポーションでたまに回復？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ピンチの時こそ、ポーショ・・・何故分かる！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインの思考回路って極めてワンパターンよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな、じゃどうしろと言うんだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインって、その・・・曲がりなりにも、" + Database.ORGAWEIN + "に通ってたのよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("ラナ：その訓練施設で習った内容は思い出せないのかしら？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん～・・・そう言われてもな。何となく学習した内容はやってるつもりだが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そーだ、イイコト考えたわ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ゲッ、まさか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私がバカアインに戦闘に関する基本を教えてあげるわ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、結構だ。俺は今の俺で十分だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何言ってんのよ、まともな動きができてない状態だと、この後立ち回れなくなるわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：いいからちゃんと聞きなさいよね。分かった？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフ、どこから教えようかしら。次からはちょっと付き合ってよね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、確かに分からない点も細々とある事だしな。了解だぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃ、よろしくね♪"); eventList.Add(ActionEvent.None);
+        }
+
+        public static void Message41004(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.Truth_CommunicationLana103 = true;
+
+            messageList.Add("アイン：よう、ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あ、良い所に来たわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：確か、戦闘に関する話をしてくれるんだったよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、じゃさっそく始めるわよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、まず戦闘以前に大前提となる「コア・パラメタ」に関してなんだけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：「コア・パラメタ」は全部で５種類存在するの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【力】【技】【知】【体】【心】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ここまでは大丈夫よね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、オーケーだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：で、まずは【力】なんだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それなら俺も知ってるぜ。まさに【力】こそが全てさ。ラナもそう思うだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ぜーんぜん♪♪"); eventList.Add(ActionEvent.None);
+                        
+            messageList.Add("アイン：何かお前やたらとノリノリな姿だな・・・違うとでも言いたそうだな？"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("ラナ：だって、【力】と言えば、【物理攻撃】でしょ？"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("アイン：そうだ。この世で一番絶対的なものだ。"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("ラナ：【物理攻撃】が効かない相手も居るわよ。"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("アイン：それでも俺は当てる。当てて見せる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：もう、ムチャクチャ言ってるし・・・まあ今の所は大丈夫だと思うけどね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あとは、【物理攻撃】だけに目がいくかもしれないけど、"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じつは、【物理防御】も上がるからこれは知っておいて損は無いわよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな・・・そうだったのか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：やっぱり知らなかったんでしょ？良かったわね、今の時点で気付く事が出来てて・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも【物理攻撃】ほど上がるわけじゃないから、気を付けてね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、了解だ。"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("ラナ：私からは以上だけど、アインから何か聞きたい事はある？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうだなあ・・・何だろうな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：武器の強さに関してなんだが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：武器の威力は、【力】とは特に関連性は無いんだよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうよ、【力】が影響しているのはあくまでもバカアインの【物理攻撃】が増強されるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：武器の物理攻撃力と【力】による物理攻撃力が、アインの総合的な物理攻撃力となるわけよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なるほどな、なんとなく分かったぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ、今回はここまでね。次は【技】に関して少し教えてあげるわ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+        }
+
         // オル・ランディス遭遇前後
         public static void Message40004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -31928,7 +32076,7 @@ namespace DungeonPlayer
         public static void Message40010_13(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
         }
-
+                
         // イベントが特に無い場合
         public static void Message49999(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
@@ -33366,6 +33514,8 @@ namespace DungeonPlayer
             messageList.Add("ハンナ：はいよ、お待たせ。たんと召し上がれ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("　　【アインは十分な食事を取りました。】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.DungeonRefreshWater);
 
             messageList.Add("アイン：ふう～、食った食った・・・"); eventList.Add(ActionEvent.None);
 
@@ -39359,7 +39509,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：そうなのか？アレ、誰だったっけ・・・やべ・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add(KIINA + "：アイン様は確か、オルガウェイン傭兵訓練施設の卒業者でしたよね？"); eventList.Add(ActionEvent.None);
+                messageList.Add(KIINA + "：アイン様は確か、" + Database.ORGAWEIN + "の卒業者でしたよね？"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：ああ、そうだな。よく知ってるじゃねえか。"); eventList.Add(ActionEvent.None);
 

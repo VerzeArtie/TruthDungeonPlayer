@@ -24,10 +24,10 @@ namespace DungeonPlayer
             base.Start();
 
             // debug
-            GroundOne.WE.AvailableFood2 = true;
-            GroundOne.WE.AvailableFood3 = true;
-            GroundOne.WE.AvailableFood4 = true;
-            GroundOne.WE.AvailableFood5 = true;
+            //GroundOne.WE.AvailableFood2 = true;
+            //GroundOne.WE.AvailableFood3 = true;
+            //GroundOne.WE.AvailableFood4 = true;
+            //GroundOne.WE.AvailableFood5 = true;
 
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailableFood2 = true;
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailableFood3 = true;
@@ -382,6 +382,7 @@ namespace DungeonPlayer
                 group[ii].BuffIntelligence_Food = intUp;
                 group[ii].BuffStamina_Food = stmUp;
                 group[ii].BuffMind_Food = mindUp;
+                group[ii].MaxGain();
             }
         }
     }

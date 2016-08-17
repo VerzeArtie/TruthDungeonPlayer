@@ -119,6 +119,40 @@ namespace DungeonPlayer
             }
             set { baseMind = value; }
         }
+
+        // buff up(+)
+        protected int buffStrength_Food = 0;
+        protected int buffAgility_Food = 0;
+        protected int buffIntelligence_Food = 0;
+        protected int buffStamina_Food = 0;
+        protected int buffMind_Food = 0;
+
+        public int BuffStrength_Food
+        {
+            get { return buffStrength_Food; }
+            set { buffStrength_Food = value; }
+        }
+        public int BuffAgility_Food
+        {
+            get { return buffAgility_Food; }
+            set { buffAgility_Food = value; }
+        }
+        public int BuffIntelligence_Food
+        {
+            get { return buffIntelligence_Food; }
+            set { buffIntelligence_Food = value; }
+        }
+        public int BuffStamina_Food
+        {
+            get { return buffStamina_Food; }
+            set { buffStamina_Food = value; }
+        }
+        public int BuffMind_Food
+        {
+            get { return buffMind_Food; }
+            set { buffMind_Food = value; }
+        }
+
         protected string currentArchetypeName = string.Empty; // 後編追加
         public string CurrentArchetypeName
         {
@@ -388,38 +422,6 @@ namespace DungeonPlayer
             }
         }
 
-        // buff up(+)
-        protected int buffStrength_Food = 0;
-        protected int buffAgility_Food = 0;
-        protected int buffIntelligence_Food = 0;
-        protected int buffStamina_Food = 0;
-        protected int buffMind_Food = 0;
-
-        public int BuffStrength_Food
-        {
-            get { return buffStrength_Food; }
-            set { buffStrength_Food = value; }
-        }
-        public int BuffAgility_Food
-        {
-            get { return buffAgility_Food; }
-            set { buffAgility_Food = value; }
-        }
-        public int BuffIntelligence_Food
-        {
-            get { return buffIntelligence_Food; }
-            set { buffIntelligence_Food = value; }
-        }
-        public int BuffStamina_Food
-        {
-            get { return buffStamina_Food; }
-            set { buffStamina_Food = value; }
-        }
-        public int BuffMind_Food
-        {
-            get { return buffMind_Food; }
-            set { buffMind_Food = value; }
-        }
         // 負の影響効果（ボス専用、対象行動されると失敗しスタンになる）
         protected int currentPreStunning = 0;
         // 負の影響効果
@@ -3022,19 +3024,21 @@ namespace DungeonPlayer
         }
         public int TotalStamina
         {
-            get { return this.baseStamina +
-                    this.buffStamina_Unknown +
-                    this.buffStamina_HighEmotionality +
-                    this.buffStamina_VoidExtraction +
-                    this.buffStamina_TranscendentWish + // 後編追加
-                    this.buffStamina_Hiyaku_Kassei + // c 後編追加
-                    this.buffStamina_MainWeapon + // 後編追加
-                    this.buffStamina_SubWeapon + // 後編追加
-                    this.buffStamina_Armor + // 後編追加
-                    this.buffStamina_Accessory +
-                    this.buffStamina_Accessory2 + // 後編追加
-                    this.buffStamina_Food + // 後編追加
-                    this.CurrentStaminaUpValue; // 後編追加
+            get
+            {
+                return this.baseStamina +
+                   this.buffStamina_Unknown +
+                   this.buffStamina_HighEmotionality +
+                   this.buffStamina_VoidExtraction +
+                   this.buffStamina_TranscendentWish + // 後編追加
+                   this.buffStamina_Hiyaku_Kassei + // c 後編追加
+                   this.buffStamina_MainWeapon + // 後編追加
+                   this.buffStamina_SubWeapon + // 後編追加
+                   this.buffStamina_Armor + // 後編追加
+                   this.buffStamina_Accessory +
+                   this.buffStamina_Accessory2 + // 後編追加
+                   this.buffStamina_Food + // 後編追加
+                   this.CurrentStaminaUpValue; // 後編追加
             }
         }
         public int TotalMind
@@ -7134,16 +7138,16 @@ namespace DungeonPlayer
                 switch (this.level)
                 {
                     case 1:
-                        nextValue = 400;
+                        nextValue = 200;
                         break;
                     case 2:
-                        nextValue = 900;
+                        nextValue = 500;
                         break;
                     case 3:
-                        nextValue = 1400;
+                        nextValue = 1300;
                         break;
                     case 4:
-                        nextValue = 2100;
+                        nextValue = 2000;
                         break;
                     case 5:
                         nextValue = 2800;

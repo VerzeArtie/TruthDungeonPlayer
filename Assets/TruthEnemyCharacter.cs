@@ -4542,7 +4542,7 @@ namespace DungeonPlayer
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area11;
-                    this.DropItem[0] = Database.COMMON_MANTIS_CLAW;
+                    this.DropItem[0] = Database.COMMON_MANTIS_TAIEKI;
                     break;
                 case Database.ENEMY_KOUKAKU_WURM:
                     SetupParameterMonster(4, 18, 7, 6, 5, 3, (int)(listExp[4]), (int)(listGold[4]));
@@ -4589,6 +4589,7 @@ namespace DungeonPlayer
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
                     this.DropItem[0] = Database.COMMON_ANT_ESSENCE;
+                    this.DropItem[1] = Database.COMMON_YELLOW_MATERIAL;
                     break;
                 case Database.ENEMY_ALRAUNE:
                     SetupParameterMonster(10, 18, 17, 40, 25, 6, (int)(listExp[10]), (int)(listGold[10]));

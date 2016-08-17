@@ -1361,9 +1361,12 @@ namespace DungeonPlayer
 
         // ‚»‚êˆÈŠO‚Ì‘O•Ò“¯—l“úí
         public bool Truth_CommunicationLana1 { get; set; }
+        public bool Truth_CommunicationLana101 { get; set; }
         public bool Truth_CommunicationLana2 { get; set; }
         public bool Truth_CommunicationLana3 { get; set; }
+        public bool Truth_CommunicationLana102 { get; set; }
         public bool Truth_CommunicationLana4 { get; set; }
+        public bool Truth_CommunicationLana103 { get; set; }
         public bool Truth_CommunicationLana5 { get; set; }
         public bool Truth_CommunicationLana6 { get; set; }
         public bool Truth_CommunicationLana7 { get; set; }
