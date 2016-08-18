@@ -714,7 +714,7 @@ namespace DungeonPlayer
                 // e 後編編集
 
                 case "タイム・オブ・ルーセ": // ダンジョン５階の隠しアイテム
-                    description = "鍛冶屋ガンツの最高傑作を生み出すための素材。　売却専用品";
+                    description = "鍛冶屋ガンツの最高傑作を生み出すための素材。";
                     cost = 0;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Epic;
@@ -6499,49 +6499,49 @@ namespace DungeonPlayer
                 #region "固定ドロップアイテム"
                 #region "１階"
                 case Database.POOR_BLACK_MATERIAL: // ドロップアイテム（１階任意）
-                    description = "純黒色の立方体。使用済みマテリアルのため、使い道はない。売却専用品。";
+                    description = "純黒色の立方体。使用済みマテリアルのため、使い道はない。";
                     cost = 20;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
                     limitValue = OTHER_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BEATLE_TOGATTA_TUNO: // ドロップアイテム（ひ弱なビートル）
-                    description = "死骸となったビートルの角。売却専用品。";
+                    description = "死骸となったビートルの角。";
                     cost = 62;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_HENSYOKU_KUKI: // ドロップアイテム（変色したプラント）
-                    description = "変色した茎にはほんのりと熱がこもっている。売却専用品。";
+                    description = "変色した茎にはほんのりと熱がこもっている。";
                     cost = 70;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_GREEN_SIKISO: // ドロップアイテム（グリーン・チャイルド）
-                    description = "樹木の表面にほんのり残っていた緑色素。売却専用品。";
+                    description = "樹木の表面にほんのり残っていた緑色素。";
                     cost = 78;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_MANTIS_TAIEKI: // ドロップアイテム（タイニー・マンティス）
-                    description = "マンティスの体液は皮膚に塗ると薬用として効果があると言われている。売却専用品。";
+                    description = "マンティスの体液は皮膚に塗ると薬用として効果があると言われている。";
                     cost = 87;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_WARM_NO_KOUKAKU: // ドロップアイテム（甲殻ワーム）
-                    description = "死骸となったワームの甲殻の欠片。売却専用品。";
+                    description = "死骸となったワームの甲殻の欠片。";
                     cost = 94;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_MANDORAGORA_ROOT: // ドロップアイテム（マンドラゴラ）
-                    description = "マンドラゴラ死に際の根には、魔力が宿る言われている。売却専用品。";
+                    description = "マンドラゴラ死に際の根には、魔力が宿る言われている。";
                     cost = 250;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6549,49 +6549,49 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SUN_LEAF: // ドロップアイテム（サン・フラワー）
-                    description = "【武具素材】太陽の恩恵を受けずに人工的な光で育った葉。売却専用品。";
+                    description = "【武具素材】太陽の恩恵を受けずに人工的な光で育った葉。";
                     cost = 100;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_INAGO: // ドロップアイテム（レッドホッパー）
-                    description = "奇妙な形をした死骸。佃煮にすると上手いが少し度胸が必要。売却専用品。";
+                    description = "奇妙な形をした死骸。佃煮にすると上手いが少し度胸が必要。";
                     cost = 110;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SPIDER_SILK: // ドロップアイテム（アースパイダー）
-                    description = "蜘蛛が攻撃の際に撒き散らした良質な形状の糸。売却専用品。";
+                    description = "蜘蛛が攻撃の際に撒き散らした良質な形状の糸。";
                     cost = 120;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ANT_ESSENCE: // ドロップアイテム（ワイルドアント）
-                    description = "アリの死骸から採取されたエッセンス。売却専用品。";
+                    description = "アリの死骸から採取されたエッセンス。";
                     cost = 140;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_YELLOW_MATERIAL: // ドロップアイテム（ワイルドアント）
-                    description = "純黄色の立方体。売却専用品。";
+                    description = "純黄色の立方体。";
                     cost = 160;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = OTHER_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ALRAUNE_KAHUN: // ドロップアイテム（アルラウネ）
-                    description = "アルラウネから採取される花粉は媚薬の元となる。売却専用品。";
+                    description = "アルラウネから採取される花粉は媚薬の元となる。";
                     cost = 300;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_MARY_KISS: // ドロップアイテム（ポイズン・マリー）
-                    description = "最後に投げられた胞子。キスマークの形をしてる。売却専用品。";
+                    description = "最後に投げられた胞子。キスマークの形をしてる。";
                     cost = 1060;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -6599,56 +6599,56 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_RABBIT_KEGAWA: // ドロップアイテム（雑食ウサギ）
-                    description = "柔軟性のあるウサギの毛皮。売却専用品。";
+                    description = "柔軟性のあるウサギの毛皮。";
                     cost = 150;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_RABBIT_MEAT: // ドロップアイテム（雑食ウサギ）
-                    description = "雑食で育ったウサギの肉。煮てから焼いて食べると美味しい。売却専用品。";
+                    description = "雑食で育ったウサギの肉。煮てから焼いて食べると美味しい。";
                     cost = 160;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_TAKA_FETHER: // ドロップアイテム（俊敏な鷹）
-                    description = "鷹の羽には、鷹の素早さの精神が宿るといわれている。売却専用品。";
+                    description = "鷹の羽には、鷹の素早さの精神が宿るといわれている。";
                     cost = 172;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ASH_EGG: // ドロップアイテム（アッシュ・クリーパー）
-                    description = "灰色ではあるが、れっきとした卵。不気味だが美味と言われている。売却専用品。";
+                    description = "灰色ではあるが、れっきとした卵。不気味だが美味と言われている。";
                     cost = 186;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SNEAK_UROKO: // ドロップアイテム（ジャイアント・スネーク）
-                    description = "蛇の鱗。ツヤはあるが何となく触るのに勇気がいる・・・。売却専用品。";
+                    description = "蛇の鱗。ツヤはあるが何となく触るのに勇気がいる・・・。";
                     cost = 300;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_PLANTNOID_SEED: // ドロップアイテム（ワンダーシード）
-                    description = "体当たり時に紛れ落ちていたプラントノイド種。売却専用品。";
+                    description = "体当たり時に紛れ落ちていたプラントノイド種。";
                     cost = 350;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_TOGE_HAETA_SYOKUSYU: // ドロップアイテム（フランシスナイト）
-                    description = "攻撃用の触手として異常発達した触手。売却専用品。";
+                    description = "攻撃用の触手として異常発達した触手。";
                     cost = 370;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_HYUI_SEED: // ドロップアイテム（ショットガン・ヒューイ）
-                    description = "ばら撒かれた種弾丸に紛れていた種。売却専用品。";
+                    description = "ばら撒かれた種弾丸に紛れていた種。";
                     cost = 1220;
                     AdditionalDescription(ItemType.Material_Potion); description = description.Insert(0, Database.DESCRIPTION_POTION_MATERIAL);
                     rareLevel = RareLevel.Rare;
@@ -6656,42 +6656,42 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_OOKAMI_FANG: // ドロップアイテム（俊敏な鷹）
-                    description = "番狼の牙は、今にも食いかかってきそうだ。売却専用品。";
+                    description = "番狼の牙は、今にも食いかかってきそうだ。";
                     cost = 210;
                     AdditionalDescription(ItemType.Material_Equip); description = description.Insert(0, Database.DESCRIPTION_EQUIP_MATERIAL);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BRILLIANT_RINPUN: // ドロップアイテム（ブリリアント・バタフライ）
-                    description = "バタフライ死の直後、一際輝いた部分の燐粉を採取。売却専用品。";
+                    description = "バタフライ死の直後、一際輝いた部分の燐粉を採取。";
                     cost = 222;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_MIST_CRYSTAL: // ドロップアイテム（ミスト・エレメンタル）
-                    description = "霧の形状が結晶化したもの。デリケートに扱わないとすぐ砕けてしまう。売却専用品。";
+                    description = "霧の形状が結晶化したもの。デリケートに扱わないとすぐ砕けてしまう。";
                     cost = 420;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_DRYAD_RINPUN: // ドロップアイテム（ウィスパー・ドライアド）
-                    description = "ドライアドが死に際に散布した鱗粉。ほのかに良い香りがする。売却専用品。";
+                    description = "ドライアドが死に際に散布した鱗粉。ほのかに良い香りがする。";
                     cost = 450;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_RED_HOUSI: // ドロップアイテム（ブラッドモス）
-                    description = "胞子攻撃の際に噴出された胞子。売却専用品。";
+                    description = "胞子攻撃の際に噴出された胞子。";
                     cost = 480;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_MOSSGREEN_EKISU: // ドロップアイテム（モスグリーン・ダディ）
-                    description = "この特有エキスは特殊な耐性を与えると言われている。売却専用品。";
+                    description = "この特有エキスは特殊な耐性を与えると言われている。";
                     cost = 1310;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -6710,7 +6710,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "２階"
                 case Database.POOR_BLACK_MATERIAL2: // ドロップアイテム（２階任意）
-                    description = "純黒色の立方体。若干の改良が試みた後があるが、使い道はない。売却専用品。";
+                    description = "純黒色の立方体。若干の改良が試みた後があるが、使い道はない。";
                     cost = 900;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -6718,105 +6718,105 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_DAGGERFISH_UROKO: // ドロップアイテム（ダガーフィッシュ）
-                    description = "牙魚の鱗は、薄いが歯ごたえのある硬さがウリの一つ。売却専用品。";
+                    description = "牙魚の鱗は、薄いが歯ごたえのある硬さがウリの一つ。";
                     cost = 242;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SIPPUU_HIRE: // ドロップアイテム（疾風・フライングフィッシュ）
-                    description = "疾魚のヒレは、柔らかさと香ばしさがウリの一つ。売却専用品。";
+                    description = "疾魚のヒレは、柔らかさと香ばしさがウリの一つ。";
                     cost = 254;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_WHITE_MAGATAMA: // ドロップアイテム（オーブ・シェルフィッシュ）
-                    description = "その白さは、質素ではあるが、品格のある形をしている。売却専用品。";
+                    description = "その白さは、質素ではあるが、品格のある形をしている。";
                     cost = 264;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BLUE_MAGATAMA: // ドロップアイテム（オーブ・シェルフィッシュ）
-                    description = "その青さは、目立たないが、高貴な雰囲気を出している。売却専用品。";
+                    description = "その青さは、目立たないが、高貴な雰囲気を出している。";
                     cost = 264;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_KURIONE_ZOUMOTU: // ドロップアイテム（スプラッシュ・クリオネ）
-                    description = "臓物の中でも特に鮮度の高い部分を切り出してある。売却専用品。";
+                    description = "臓物の中でも特に鮮度の高い部分を切り出してある。";
                     cost = 512;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BLUEWHITE_SHARP_TOGE: // ドロップアイテム（スプラッシュ・クリオネ）
-                    description = "戦闘中にクリオネが飛ばしてきた、鋭い青白の針。売却専用品。";
+                    description = "戦闘中にクリオネが飛ばしてきた、鋭い青白の針。";
                     cost = 520;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_TRANSPARENT_POWDER: // ドロップアイテム（透明なウミウシ）
-                    description = "透明のため目視は難しいが、よく目を凝らすと見えなくもない粉末。売却専用品。";
+                    description = "透明のため目視は難しいが、よく目を凝らすと見えなくもない粉末。";
                     cost = 1450;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_RENEW_AKAMI: // ドロップアイテム（ローリング・マグロ）
-                    description = "活きの良いマグロの赤身。ユング町では売れ筋No.1　売却専用品。";
+                    description = "活きの良いマグロの赤身。ユング町では売れ筋No.1　";
                     cost = 334;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SEA_WASI_KUTIBASI: // ドロップアイテム（青海鷲）
-                    description = "異常成長した海鷲のくちばし、高温で焼くと香ばしい味がする。売却専用品。";
+                    description = "異常成長した海鷲のくちばし、高温で焼くと香ばしい味がする。";
                     cost = 366;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_WASI_BLUE_FEATHER: // ドロップアイテム（青海鷲）
-                    description = "異常成長した海鷲の青い羽。幸運を呼ぶと言われている。売却専用品。";
+                    description = "異常成長した海鷲の青い羽。幸運を呼ぶと言われている。";
                     cost = 370;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BRIGHT_GESO: // ドロップアイテム（ブライト・スクイッド）
-                    description = "単なるゲソだが、異常に眩しく光っている・・・。売却専用品。";
+                    description = "単なるゲソだが、異常に眩しく光っている・・・。";
                     cost = 430;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_GANGAME_EGG: // ドロップアイテム（頑亀）
-                    description = "異常な大きさの卵。生のままでは食べられない。売却専用品。";
+                    description = "異常な大きさの卵。生のままでは食べられない。";
                     cost = 724;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_JOE_TONGUE: // ドロップアイテム（ビッグマウス・ジョー）
-                    description = "長い。硬い。ゴツい。料理の腕が問われる。売却専用品。";
+                    description = "長い。硬い。ゴツい。料理の腕が問われる。";
                     cost = 2628;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Rare;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_JOE_ARM: // ドロップアイテム（ビッグマウス・ジョー）
-                    description = "蛙とは思えないぐらいの大きい腕。骨格部は武具素材として使えそう。売却専用品。";
+                    description = "蛙とは思えないぐらいの大きい腕。骨格部は武具素材として使えそう。";
                     cost = 2722;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_JOE_LEG: // ドロップアイテム（ビッグマウス・ジョー）
-                    description = "初めて見る者は、これが蛙の足だとは思わず、美味しそうに食べる。売却専用品。";
+                    description = "初めて見る者は、これが蛙の足だとは思わず、美味しそうに食べる。";
                     cost = 2812;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Rare;
@@ -6824,42 +6824,42 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SOFT_BIG_HIRE: // ドロップアイテム（モーグル・マンタ）
-                    description = "極薄のヒレ。コリコリした感触で、歯ごたえ十分。売却専用品。";
+                    description = "極薄のヒレ。コリコリした感触で、歯ごたえ十分。";
                     cost = 522;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_PURE_WHITE_BIGEYE: // ドロップアイテム（浮遊するゴールドフィッシュ）
-                    description = "純白の目玉のため、逆に食事の際は恐ろしい印象を受ける。売却専用品。";
+                    description = "純白の目玉のため、逆に食事の際は恐ろしい印象を受ける。";
                     cost = 588;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SAME_NANKOTSU: // ドロップアイテム（暴れ大ザメ）
-                    description = "サメの軟骨には意外と知られていない効用のある成分が含まれている。売却専用品。";
+                    description = "サメの軟骨には意外と知られていない効用のある成分が含まれている。";
                     cost = 600;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_HALF_TRANSPARENT_ROCK_ASH: // ドロップアイテム（バニッシング・コーラル）
-                    description = "石灰は本来特定の色が付いてるが、これは不透明であり純度が低い。売却専用品。";
+                    description = "石灰は本来特定の色が付いてるが、これは不透明であり純度が低い。";
                     cost = 622;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_GOTUGOTU_KARA: // ドロップアイテム（護衛隊・ハーミットクラブ）
-                    description = "ちょっとやそっとのパンチ・キックでは壊れない殻。売却専用品。";
+                    description = "ちょっとやそっとのパンチ・キックでは壊れない殻。";
                     cost = 1250;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_SEKIKASSYOKU_HASAMI: // ドロップアイテム（キャシー・ザ・キャンサー）
-                    description = "キャシーのハサミは、通常のハサミと比べて形状が異常発達している。売却専用品。";
+                    description = "キャシーのハサミは、通常のハサミと比べて形状が異常発達している。";
                     cost = 4200;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -6867,21 +6867,21 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_KOUSITUKA_MATERIAL: // ドロップアイテム（ブラック・スターフィッシュ）
-                    description = "ブラック・スターフィッシュは死亡後、硬質化し物質成分が変化する。売却専用品。";
+                    description = "ブラック・スターフィッシュは死亡後、硬質化し物質成分が変化する。";
                     cost = 820;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_NANAIRO_SYOKUSYU: // ドロップアイテム（レインボー・アネモネ）
-                    description = "カラフルな触手のため、数多くの魚がこの罠に引っかかると言われている。売却専用品。";
+                    description = "カラフルな触手のため、数多くの魚がこの罠に引っかかると言われている。";
                     cost = 890;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_PUREWHITE_KIMO: // ドロップアイテム（待ち伏せアンコウ）
-                    description = "白色の肝には、身体の健康を促進させる効果があると言われている。売却専用品。";
+                    description = "白色の肝には、身体の健康を促進させる効果があると言われている。";
                     cost = 970;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -6889,28 +6889,28 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_AOSAME_KENSHI: // ドロップアイテム（エッジド・ハイ・シャーク）
-                    description = "強度が高く、形状も綺麗な剣歯。売却専用品。";
+                    description = "強度が高く、形状も綺麗な剣歯。";
                     cost = 1700;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_AOSAME_UROKO: // ドロップアイテム（エッジド・ハイ・シャーク）
-                    description = "普通に触ると柔らかいが、対衝撃性に優れている。売却専用品。";
+                    description = "普通に触ると柔らかいが、対衝撃性に優れている。";
                     cost = 1800;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_EIGHTEIGHT_KUROSUMI: // ドロップアイテム（エイト・エイト）
-                    description = "純黒色の墨。少し粘りっけがある。売却専用品。";
+                    description = "純黒色の墨。少し粘りっけがある。";
                     cost = 5100;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_EIGHTEIGHT_KYUUBAN: // ドロップアイテム（エイト・エイト）
-                    description = "様々な形状をした吸盤。細かく刻んで焼くと大変美味しい。売却専用品。";
+                    description = "様々な形状をした吸盤。細かく刻んで焼くと大変美味しい。";
                     cost = 5200;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Rare;
@@ -6932,7 +6932,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "３階"
                 case Database.POOR_BLACK_MATERIAL3: // ドロップアイテム（３階任意）
-                    description = "純黒色の立方体。マテリアル圧縮を試みたが、残骸のままである。売却専用品。";
+                    description = "純黒色の立方体。マテリアル圧縮を試みたが、残骸のままである。";
                     cost = 9500;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -6940,35 +6940,35 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_ORC_MOMONIKU: // ドロップアイテム（突進オーク）
-                    description = "こんがり焼き上げたもも肉、定評のある味わい。売却専用品。";
+                    description = "こんがり焼き上げたもも肉、定評のある味わい。";
                     cost = 10500;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SNOW_CAT_KEGAWA: // ドロップアイテム（スノーキャット）
-                    description = "上質な雪猫の毛皮。高く売れるが実用性は武具職人に腕次第。売却専用品。";
+                    description = "上質な雪猫の毛皮。高く売れるが実用性は武具職人に腕次第。";
                     cost = 11200;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BIG_HIZUME: // ドロップアイテム（ウォー・マンモス）
-                    description = "マンモスの足跡を見て、その蹄を食料と考える人は数少ない。売却専用品。";
+                    description = "マンモスの足跡を見て、その蹄を食料と考える人は数少ない。";
                     cost = 12600;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_FAIRY_POWDER: // ドロップアイテム（ウィングド・コールドフェアリー）
-                    description = "妖精から採取されるパウダーは、知力活性の源となる。売却専用品。";
+                    description = "妖精から採取されるパウダーは、知力活性の源となる。";
                     cost = 28000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_GRIFFIN_WHITE_FEATHER: // ドロップアイテム（フリージング・グリフィン）
-                    description = "グリフィンの羽は寒い環境下にも耐えるため、強度の高い素材として用いられる。売却専用品。";
+                    description = "グリフィンの羽は寒い環境下にも耐えるため、強度の高い素材として用いられる。";
                     cost = 50000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -6976,42 +6976,42 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_GOTUGOTU_KONBOU: // ドロップアイテム（ブルータル・オーガ）
-                    description = "でかすぎてこのままでは使い物にならない、素材自体は丈夫な物。売却専用品。";
+                    description = "でかすぎてこのままでは使い物にならない、素材自体は丈夫な物。";
                     cost = 14100;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_LIZARD_UROKO: // ドロップアイテム（ハイドロー・リザード）
-                    description = "青黒の自然色で形成される鱗は、迷彩にも使われる場合がある。売却専用品。";
+                    description = "青黒の自然色で形成される鱗は、迷彩にも使われる場合がある。";
                     cost = 15400;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_EMBLEM_OF_PENGUIN: // ドロップアイテム（ペンギンスター）
-                    description = "ペンギン最強説を謡う者が各地のペンギンに配布してるらしい。売却専用品。";
+                    description = "ペンギン最強説を謡う者が各地のペンギンに配布してるらしい。";
                     cost = 16600;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_KINKIN_ICE: // ドロップアイテム（アイスバーグ・スピリット）
-                    description = "あまりにも冷たすぎるため、素手では触れない氷。そう簡単には溶けないようだ。売却専用品。";
+                    description = "あまりにも冷たすぎるため、素手では触れない氷。そう簡単には溶けないようだ。";
                     cost = 18000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SHARPNESS_TIGER_TOOTH: // ドロップアイテム（剣歯虎）
-                    description = "剣歯虎の牙からは強靭性エキスが摘出可能である。売却専用品。";
+                    description = "剣歯虎の牙からは強靭性エキスが摘出可能である。";
                     cost = 36000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_BEAR_CLAW_KAKERA: // ドロップアイテム（フェロシアス・レイジベア）
-                    description = "憤怒しきったベアが研ぎ澄ました爪。切っ先は赤い血で染まっている。売却専用品。";
+                    description = "憤怒しきったベアが研ぎ澄ました爪。切っ先は赤い血で染まっている。";
                     cost = 110000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7019,42 +7019,42 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_TOUMEI_SNOW_CRYSTAL: // ドロップアイテム（ウィンター・オーブ）
-                    description = "雪結晶として形成されたウィンター・オーブの欠片。売却専用品。";
+                    description = "雪結晶として形成されたウィンター・オーブの欠片。";
                     cost = 21000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_WHITE_AZARASHI_MEAT: // ドロップアイテム（追従する雪アザラシ）
-                    description = "極寒の地で取れた肉は身がしまっており、大変歯ごたえがある。売却専用品。";
+                    description = "極寒の地で取れた肉は身がしまっており、大変歯ごたえがある。";
                     cost = 23600;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_CENTAURUS_LEATHER: // ドロップアイテム（マジェスティック・ケンタウルス）
-                    description = "ケンタウルスから剥ぎ取った皮は非常に柔らかく、かつ、剛性力が強い。売却専用品。";
+                    description = "ケンタウルスから剥ぎ取った皮は非常に柔らかく、かつ、剛性力が強い。";
                     cost = 42000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ARGONIAN_PURPLE_UROKO: // ドロップアイテム（知的なアルゴニアン）
-                    description = "アルゴニアンから剥ぎ取った鱗は光沢のある紫色をしている。売却専用品。";
+                    description = "アルゴニアンから剥ぎ取った鱗は光沢のある紫色をしている。";
                     cost = 45500;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_BLUE_DANGAN_KAKERA: // ドロップアイテム（蒼い弾丸の欠片）
-                    description = "魔法生物が更に結晶化させてきた弾丸の欠片。売却専用品。";
+                    description = "魔法生物が更に結晶化させてきた弾丸の欠片。";
                     cost = 68000;
                     AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_PURE_CRYSTAL: // ドロップアイテム（ピュア・ブリザード・クリスタル）
-                    description = "純正のクリスタル、希少価値が高く、トレード材料に使われる。売却専用品。";
+                    description = "純正のクリスタル、希少価値が高く、トレード材料に使われる。";
                     cost = 175000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7062,35 +7062,35 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_WOLF_KEGAWA: // ドロップアイテム（紫目・ウェアウルフ）
-                    description = "ごわごわとしたウルフの毛皮。少しとげとげしてて触ると痛い。売却専用品。";
+                    description = "ごわごわとしたウルフの毛皮。少しとげとげしてて触ると痛い。";
                     cost = 26000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_FROZEN_HEART: // ドロップアイテム（フロスト・ハート）
-                    description = "魔法生物が結晶化した物の心臓部。鼓動が聞こえてきそうだ。売却専用品。";
+                    description = "魔法生物が結晶化した物の心臓部。鼓動が聞こえてきそうだ。";
                     cost = 28200;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_CLAW_HEART: // ドロップアイテム（百夜のグリズリー）
-                    description = "死んだ直後に採取されたグリズリーの心臓。非常に大きく、ゴツゴツしている。売却専用品。";
+                    description = "死んだ直後に採取されたグリズリーの心臓。非常に大きく、ゴツゴツしている。";
                     cost = 31000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_ESSENCE_OF_WIND: // ドロップアイテム（ウィンドブレイカー）
-                    description = "風のマテリアル合成素材。武具職人の力量が問われる。売却専用品。";
+                    description = "風のマテリアル合成素材。武具職人の力量が問われる。";
                     cost = 59000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_TUNDRA_DEER_HORN: // ドロップアイテム（ツンドラ・ロングホーン・ディア）
-                    description = "神の使いと称される鹿の偉大なる角、膨大な魔力が込められている。売却専用品。";
+                    description = "神の使いと称される鹿の偉大なる角、膨大な魔力が込められている。";
                     cost = 210000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
@@ -7110,7 +7110,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "４階"
                 case Database.POOR_BLACK_MATERIAL4: // ドロップアイテム（４階任意）
-                    description = "純黒色の立方体。素質変化を試みたが、不変のままである。売却専用品。";
+                    description = "純黒色の立方体。素質変化を試みたが、不変のままである。";
                     cost = 78000;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -7139,14 +7139,14 @@ namespace DungeonPlayer
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SABI_BUGU: // ドロップアイテム（フォールンシーカー）
-                    description = "堕ちたる求道者は、武具のメンテナンスを全く行ってない。鍛冶屋がメンテナンスすれば元の状態に戻せそうだ。売却専用品。";
+                    description = "堕ちたる求道者は、武具のメンテナンスを全く行ってない。鍛冶屋がメンテナンスすれば元の状態に戻せそうだ。";
                     cost = 188000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_MEPHISTO_BLACKLIGHT: // ドロップアイテム（メフィスト・ザ・ライトアーム）
-                    description = "メフィストの右腕についていた黒い瘴気が怪しく光っている。売却専用品。";
+                    description = "メフィストの右腕についていた黒い瘴気が怪しく光っている。";
                     cost = 300000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
@@ -7154,28 +7154,28 @@ namespace DungeonPlayer
                     break;
 
                 case Database.COMMON_SEEKER_HEAD: // ドロップアイテム（闇の眷属）
-                    description = "求道者の末期姿。闇の眷属は求道者の潜在能力を吸い取り、それを糧として力を得ていた。売却専用品。";
+                    description = "求道者の末期姿。闇の眷属は求道者の潜在能力を吸い取り、それを糧として力を得ていた。";
                     cost = 179000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.RARE_ESSENCE_OF_DARK: // ドロップアイテム（マスターロード）
-                    description = "闇のマテリアル合成素材。武具職人の力量が問われる。売却専用品。";
+                    description = "闇のマテリアル合成素材。武具職人の力量が問われる。";
                     cost = 191000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_EXECUTIONER_ROBE: // ドロップアイテム（エグゼキュージョナー）
-                    description = "執行人のローブには呪いの念がこめられており、通常の人間には扱えない。売却専用品。";
+                    description = "執行人のローブには呪いの念がこめられており、通常の人間には扱えない。";
                     cost = 216000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_NEMESIS_ESSENCE: // ドロップアイテム（マリオネット・ネメシス）
-                    description = "倒れていたマリオネットにネメシスのエッセンスがこびりついていた液体。売却専用品";
+                    description = "倒れていたネメシスからエッセンスが抽出されたもの。溶かす事で何かの成分が摘出できそうだ。";
                     cost = 250000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
@@ -7325,7 +7325,7 @@ namespace DungeonPlayer
                 #endregion
                 #region "５階"
                 case Database.POOR_BLACK_MATERIAL5: // ドロップアイテム
-                    description = "純黒色の立方体。元素への還元を試みたが、還元はされないまま。売却専用品。";
+                    description = "純黒色の立方体。元素への還元を試みたが、還元はされないまま。";
                     cost = 8400;
                     AdditionalDescription(ItemType.Useless);
                     rareLevel = RareLevel.Poor;
@@ -7333,28 +7333,28 @@ namespace DungeonPlayer
                     break;
 
                 case "ハート・オブ・フェニックス": // ドロップアイテム（Phoenix）
-                    description = "伝説の生物Phoenixの心得。売却専用品。";
+                    description = "伝説の生物Phoenixの心得。";
                     cost = 110000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case "ハート・オブ・ドラゴン": // ドロップアイテム（Emerald Dragon）
-                    description = "伝説の生物Emerald Dragonの心得。売却専用品。";
+                    description = "伝説の生物Emerald Dragonの心得。";
                     cost = 120000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case "ハート・オブ・モンスター": // ドロップアイテム（Nine Tail）
-                    description = "伝説の生物Nine Tailの心得。売却専用品。";
+                    description = "伝説の生物Nine Tailの心得。";
                     cost = 130000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case "ハート・オブ・ジャッジ": // ドロップアイテム（Judgement）
-                    description = "伝説の生物Judgementの心得。売却専用品。";
+                    description = "伝説の生物Judgementの心得。";
                     cost = 140000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Rare;
