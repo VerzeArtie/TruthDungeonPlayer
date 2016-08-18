@@ -1895,18 +1895,21 @@ namespace DungeonPlayer
         public const string COMMON_BIG_HIZUME = @"大きな蹄";
         public const string COMMON_FAIRY_POWDER = @"妖精パウダー";
         public const string RARE_GRIFFIN_WHITE_FEATHER = @"グリフィンの白い羽";
+
         public const string COMMON_GOTUGOTU_KONBOU = @"ゴツゴツした棍棒";
         public const string COMMON_LIZARD_UROKO = @"リザードの鱗";
         public const string COMMON_EMBLEM_OF_PENGUIN = @"エムブレム・オブ・ペンギン";
         public const string COMMON_KINKIN_ICE = @"キンキンに冷えた氷";
         public const string COMMON_SHARPNESS_TIGER_TOOTH = @"鋭く尖った虎牙";
         public const string RARE_BEAR_CLAW_KAKERA = @"ベアクローの欠片";
+
         public const string COMMON_TOUMEI_SNOW_CRYSTAL = @"透明な雪結晶";
         public const string COMMON_WHITE_AZARASHI_MEAT = @"白アザラシの肉";
         public const string COMMON_CENTAURUS_LEATHER = @"ケンタウルスの皮";
         public const string COMMON_ARGONIAN_PURPLE_UROKO = @"アルゴニアンの紫鱗";
         public const string COMMON_BLUE_DANGAN_KAKERA = @"蒼い弾丸の欠片";
         public const string RARE_PURE_CRYSTAL = @"ピュア・クリスタル";
+
         public const string COMMON_WOLF_KEGAWA = @"ウルフの毛皮";
         public const string COMMON_FROZEN_HEART = @"凍結した心臓";
         public const string COMMON_CLAW_HEART = @"グリズリーの心臓";
