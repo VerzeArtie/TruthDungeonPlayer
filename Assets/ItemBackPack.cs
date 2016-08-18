@@ -7139,31 +7139,45 @@ namespace DungeonPlayer
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_SABI_BUGU: // ドロップアイテム（フォールンシーカー）
-                    description = "堕ちたる求道者は、武具のメンテナンスを全く行ってない。鍛冶屋がメンテナンスすれば元の状態に戻せそうだ。";
+                    description = "堕ちたる求道者は、武具のメンテナンスを全く行ってない。鍛冶屋がメンテナンスすれば元の状態に戻せそうだ。売却専用品。";
                     cost = 188000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
+                case Database.RARE_MEPHISTO_BLACKLIGHT: // ドロップアイテム（メフィスト・ザ・ライトアーム）
+                    description = "メフィストの右腕についていた黒い瘴気が怪しく光っている。売却専用品。";
+                    cost = 300000;
+                    AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Rare;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
 
-                case Database.RARE_ESSENCE_OF_DARK: // ドロップアイテム（マスターロード）
-                    description = "闇のマテリアル合成素材。武具職人の力量が問われる。";
+                case Database.COMMON_SEEKER_HEAD: // ドロップアイテム（闇の眷属）
+                    description = "求道者の末期姿。闇の眷属は求道者の潜在能力を吸い取り、それを糧として力を得ていた。売却専用品。";
                     cost = 179000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
-                case Database.COMMON_EXECUTIONER_ROBE: // ドロップアイテム（エグゼキュージョナー）
-                    description = "執行人のローブには呪いの念がこめられており、通常の人間には扱えない。";
+                case Database.RARE_ESSENCE_OF_DARK: // ドロップアイテム（マスターロード）
+                    description = "闇のマテリアル合成素材。武具職人の力量が問われる。売却専用品。";
                     cost = 191000;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
-                case Database.COMMON_SEEKER_HEAD: // ドロップアイテム（闇の眷属）
-                    description = "求道者の末期姿。闇の眷属は求道者の潜在能力を吸い取り、それを糧として力を得ていた。";
+                case Database.COMMON_EXECUTIONER_ROBE: // ドロップアイテム（エグゼキュージョナー）
+                    description = "執行人のローブには呪いの念がこめられており、通常の人間には扱えない。売却専用品。";
                     cost = 216000;
                     AdditionalDescription(ItemType.Material_Equip);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_NEMESIS_ESSENCE: // ドロップアイテム（マリオネット・ネメシス）
+                    description = "倒れていたマリオネットにネメシスのエッセンスがこびりついていた液体。売却専用品";
+                    cost = 250000;
+                    AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
@@ -7223,6 +7237,13 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
+                case Database.COMMON_WYVERN_BONE: // ドロップアイテム（アンデッド・ワイバーン）
+                    description = "ワイバーンの骨からは体力維持に欠かせないエキスが大量に抽出できる。";
+                    cost = 383000;
+                    AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
                 case Database.RARE_ESSENCE_OF_FLAME: // ドロップアイテム（業・フレイムスラッシャー）
                     description = "火のマテリアル合成素材。武具職人の力量が問われる。";
                     cost = 385000;
@@ -7254,6 +7275,13 @@ namespace DungeonPlayer
                     break;
                 case Database.RARE_CHAOS_SIZUKU: // ドロップアイテム（カオスワーデン)
                     description = "どれほどの人格者であったとしても、これに触れた途端、カオス属性に落とし込むエキスが内部に凝固化して入っている。";
+                    cost = 520000;
+                    AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Rare;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.RARE_DREAD_EXTRACT: // ドロップアイテム（ドレッド・ナイト）
+                    description = "恐怖のエッセンスが凝縮されているエキス。耐性力を高める効果が期待できる。";
                     cost = 560000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;

@@ -1940,8 +1940,7 @@ namespace DungeonPlayer
         public const string COMMON_WYVERN_BONE = @"ワイバーン・ボーン";
         public const string RARE_ESSENCE_OF_FLAME = @"エッセンス・オブ・フレイム";
         public const string RARE_BLACK_SEAL_IMPRESSION = @"黒の印鑑";
-
-
+        
         public const string COMMON_ONRYOU_HAKO = @"怨霊箱";
         public const string RARE_ANGEL_SILK = @"天使のシルク";
         public const string RARE_CHAOS_SIZUKU = @"混沌の雫";
