@@ -1823,7 +1823,6 @@ namespace DungeonPlayer
         public const string RARE_SEAL_AQUA_FIRE = @"シールオブアクア＆ファイア";
 
         #region "後編、１階の素材系ドロップアイテム"
-        public const string COMMON_YELLOW_MATERIAL = @"イエロー・マテリアル";
         public const string COMMON_BEATLE_TOGATTA_TUNO = @"ビートルの尖った角";
         public const string COMMON_HENSYOKU_KUKI = @"変色した茎";
         public const string COMMON_GREEN_SIKISO = @"緑化色素";
@@ -1835,18 +1834,23 @@ namespace DungeonPlayer
         public const string COMMON_INAGO = @"蝗";
         public const string COMMON_SPIDER_SILK = @"スパイダーシルク";
         public const string COMMON_ANT_ESSENCE = @"アントのエキス";
+        public const string COMMON_YELLOW_MATERIAL = @"イエロー・マテリアル";
         public const string COMMON_ALRAUNE_KAHUN = @"アルラウネの花粉";
         public const string RARE_MARY_KISS = @"マリーキッス";
 
         public const string COMMON_RABBIT_KEGAWA = @"ウサギの毛皮";
         public const string COMMON_RABBIT_MEAT = @"ウサギの肉";
         public const string COMMON_TAKA_FETHER = @"鷹の白羽";
+        public const string COMMON_ASH_EGG = @"薄灰色の卵";
+        public const string COMMON_SNEAK_UROKO = @"ヘビの鱗";
         public const string COMMON_PLANTNOID_SEED = @"プラントノイドの種";
         public const string COMMON_TOGE_HAETA_SYOKUSYU = @"刺の生えた触手";
         public const string RARE_HYUI_SEED = @"ヒューイの種";
 
         public const string COMMON_OOKAMI_FANG = @"狼の牙";
         public const string COMMON_BRILLIANT_RINPUN = @"輝きの燐粉";
+        public const string COMMON_MIST_CRYSTAL = @"霧の結晶";
+        public const string COMMON_DRYAD_RINPUN = @"ドライアドの鱗粉";
         public const string COMMON_RED_HOUSI = @"赤い胞子";
         public const string RARE_MOSSGREEN_EKISU = @"モスグリーンのエキス";
         #endregion
@@ -1870,7 +1874,7 @@ namespace DungeonPlayer
         public const string COMMON_SOFT_BIG_HIRE = @"柔らかい大ヒレ";
         public const string COMMON_PURE_WHITE_BIGEYE = @"真っ白な大目玉";
         public const string COMMON_GOTUGOTU_KARA = @"ゴツゴツした殻";
-        public const string COMMON_SAME_HIRE = @"サメのヒレ";
+        public const string COMMON_SAME_NANKOTSU = @"サメの軟骨";
         public const string COMMON_HALF_TRANSPARENT_ROCK_ASH = @"半透明の石灰";
         public const string RARE_SEKIKASSYOKU_HASAMI = @"赤褐色のハサミ";
         public const string COMMON_KOUSITUKA_MATERIAL = @"硬質化素材";
@@ -1887,7 +1891,7 @@ namespace DungeonPlayer
         public const string COMMON_SNOW_CAT_KEGAWA = @"雪猫の毛皮";
         public const string COMMON_BIG_HIZUME = @"大きな蹄";
         public const string COMMON_FAIRY_POWDER = @"妖精パウダー";
-        public const string RARE_GRIFFIN_EYE = @"グリフィンの目玉";
+        public const string RARE_GRIFFIN_WHITE_FEATHER = @"グリフィンの白い羽";
         public const string COMMON_GOTUGOTU_KONBOU = @"ゴツゴツした棍棒";
         public const string COMMON_LIZARD_UROKO = @"リザードの鱗";
         public const string COMMON_EMBLEM_OF_PENGUIN = @"エムブレム・オブ・ペンギン";
@@ -1902,7 +1906,7 @@ namespace DungeonPlayer
         public const string RARE_PURE_CRYSTAL = @"ピュア・クリスタル";
         public const string COMMON_WOLF_KEGAWA = @"ウルフの毛皮";
         public const string COMMON_FROZEN_HEART = @"凍結した心臓";
-        public const string COMMON_BRIGHT_CLAW = @"グリズリーの輝く爪";
+        public const string COMMON_CLAW_HEART = @"グリズリーの心臓";
         public const string COMMON_ESSENCE_OF_WIND = @"エッセンス・オヴ・ウィンド";
         public const string RARE_TUNDRA_DEER_HORN = @"古代ツンドラ鹿の角";
         #endregion
@@ -1912,12 +1916,12 @@ namespace DungeonPlayer
         public const string COMMON_BEAST_KEGAWA = @"猛獣の毛皮";
         public const string RARE_BLOOD_DAGGER_KAKERA = @"血塗られたダガーの破片";
         public const string COMMON_SABI_BUGU = @"錆付いたガラクタ武具";
-        public const string RARE_MEPHISTO_BLACKMEAT = @"メフィストの黒肉";
+        public const string RARE_MEPHISTO_BLACKLIGHT = @"メフィストの黒い灯";
 
         public const string COMMON_SEEKER_HEAD = @"シーカーの頭蓋骨";
         public const string RARE_ESSENCE_OF_DARK = @"エッセンス・オブ・ダーク";
         public const string COMMON_EXECUTIONER_ROBE = @"執行人の汚れたローブ";
-        public const string COMMON_MARIONETTE_STRING = @"マリオネットの糸";
+        public const string COMMON_NEMESIS_ESSENCE = @"ネメシス・エッセンス";
         public const string RARE_MASTERBLADE_KAKERA = @"マスターブレイドの破片";
         public const string RARE_MASTERBLADE_FIRE = @"マスターブレイドの残り火";
         public const string COMMON_GREAT_JEWELCROWN = @"豪華なジュエルクラウン";
@@ -1927,7 +1931,7 @@ namespace DungeonPlayer
         public const string COMMON_KUMITATE_TENBIN = @"組み立て素材　天秤";
         public const string COMMON_KUMITATE_TENBIN_DOU = @"組み立て素材　天分銅";
         public const string COMMON_KUMITATE_TENBIN_BOU = @"組み立て素材　天秤棒";
-        public const string COMMON_WYVERN_MEAT = @"ワイバーンのむね肉";
+        public const string COMMON_WYVERN_BONE = @"ワイバーン・ボーン";
         public const string RARE_ESSENCE_OF_FLAME = @"エッセンス・オブ・フレイム";
         public const string RARE_BLACK_SEAL_IMPRESSION = @"黒の印鑑";
 
@@ -1935,7 +1939,7 @@ namespace DungeonPlayer
         public const string COMMON_ONRYOU_HAKO = @"怨霊箱";
         public const string RARE_ANGEL_SILK = @"天使のシルク";
         public const string RARE_CHAOS_SIZUKU = @"混沌の雫";
-        public const string RARE_HORSE_HORN = @"馬の丸角";
+        public const string RARE_DREAD_EXTRACT = @"ドレッド・エキス";
         public const string RARE_DOOMBRINGER_TUKA = @"ドゥームブリンガーの柄";
         public const string RARE_DOOMBRINGER_KAKERA = @"ドゥームブリンガーの欠片";
         #endregion
@@ -2011,7 +2015,7 @@ namespace DungeonPlayer
         public const string COMMON_LIZARDSCALE_ARMOR = @"リザードスケイル・アーマー【＋４】";
         public const string COMMON_PENGUIN_OF_PENGUIN = @"ペンギン・オブ・ペンギン";
         public const string COMMON_ARGNIAN_TUNIC = @"アルゴニアン・チュニック";
-        public const string COMMON_WOLF_BATTLE_CLOTH = @"ウルフ製の舞踏衣";
+        public const string COMMON_ANIMAL_FUR_CROSS = @"アニマル・ファークロス";
         public const string RARE_SPLASH_BARE_CLAW = @"スプラッシュ・ベアクロー";
         public const string EPIC_GATO_HAWL_OF_GREAT = @"ガトゥ・ハウル・オブ・グレイト";
         #endregion

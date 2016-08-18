@@ -3824,8 +3824,8 @@ namespace DungeonPlayer
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
 
-                case Database.COMMON_WOLF_BATTLE_CLOTH: // ウルフの毛皮
-                    description = "野生ウルフのごわごわした質感を落とすことなく衣に仕立ててある。体＋７０、物理防御７２～７９";
+                case Database.COMMON_ANIMAL_FUR_CROSS: // ウルフの毛皮
+                    description = "野生動物特有のゴワゴワした質感を落とすことなく戦闘衣に仕立ててある。体＋７０、物理防御７２～７９";
                     PhysicalDefenseMinValue = 72;
                     PhysicalDefenseMaxValue = 79;
                     buffUpStamina = 70;
@@ -6505,24 +6505,38 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Poor;
                     limitValue = OTHER_ITEM_STACK_SIZE;
                     break;
-                case Database.COMMON_WARM_NO_KOUKAKU: // ドロップアイテム（甲殻ワーム）
-                    description = "死骸となったワームの甲殻の欠片。";
-                    cost = 60;
+                case Database.COMMON_BEATLE_TOGATTA_TUNO: // ドロップアイテム（ひ弱なビートル）
+                    description = "死骸となったビートルの角。";
+                    cost = 62;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
-                case Database.COMMON_BEATLE_TOGATTA_TUNO: // ドロップアイテム（ひ弱なビートル）
-                    description = "死骸となったビートルの角。";
-                    cost = 72;
-                    AdditionalDescription(ItemType.Material_Equip);
+                case Database.COMMON_HENSYOKU_KUKI: // ドロップアイテム（変色したプラント）
+                    description = "変色した茎にはほんのりと熱がこもっている。";
+                    cost = 70;
+                    AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_GREEN_SIKISO: // ドロップアイテム（グリーン・チャイルド）
                     description = "樹木の表面にほんのり残っていた緑色素。";
-                    cost = 80;
+                    cost = 78;
                     AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_MANTIS_TAIEKI: // ドロップアイテム（タイニー・マンティス）
+                    description = "マンティスの体液は皮膚に塗ると薬用として効果があると言われている。";
+                    cost = 87;
+                    AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_WARM_NO_KOUKAKU: // ドロップアイテム（甲殻ワーム）
+                    description = "死骸となったワームの甲殻の欠片。";
+                    cost = 94;
+                    AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
@@ -6536,7 +6550,7 @@ namespace DungeonPlayer
 
                 case Database.COMMON_SUN_LEAF: // ドロップアイテム（サン・フラワー）
                     description = "【武具素材】太陽の恩恵を受けずに人工的な光で育った葉。";
-                    cost = 90;
+                    cost = 100;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
@@ -6552,6 +6566,13 @@ namespace DungeonPlayer
                     description = "蜘蛛が攻撃の際に撒き散らした良質な形状の糸。";
                     cost = 120;
                     AdditionalDescription(ItemType.Material_Equip);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_ANT_ESSENCE: // ドロップアイテム（ワイルドアント）
+                    description = "アリの死骸から採取されたエッセンス。";
+                    cost = 140;
+                    AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
@@ -6598,6 +6619,20 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
+                case Database.COMMON_ASH_EGG:
+                    description = "灰色ではあるが、れっきとした卵。不気味だが美味と言われている。";
+                    cost = 186;
+                    AdditionalDescription(ItemType.Material_Food);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_SNEAK_UROKO: // ドロップアイテム（ジャイアント・スネーク）
+                    description = "蛇の鱗。ツヤはあるが何となく触るのに勇気がいる・・・。";
+                    cost = 300;
+                    AdditionalDescription(ItemType.Material_Equip);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
                 case Database.COMMON_PLANTNOID_SEED: // ドロップアイテム（ワンダーシード）
                     description = "体当たり時に紛れ落ちていたプラントノイド種。";
                     cost = 350;
@@ -6634,9 +6669,23 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
+                case Database.COMMON_MIST_CRYSTAL: // ドロップアイテム（ミスト・エレメンタル）
+                    description = "霧の形状が結晶化したもの。デリケートに扱わないとすぐ砕けてしまう";
+                    cost = 420;
+                    AdditionalDescription(ItemType.Material_Equip);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_DRYAD_RINPUN: // ドロップアイテム（ウィスパー・ドライアド）
+                    description = "ドライアドが死に際に散布した鱗粉。ほのかに良い香りがする。";
+                    cost = 450;
+                    AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
                 case Database.COMMON_RED_HOUSI: // ドロップアイテム（ブラッドモス）
                     description = "胞子攻撃の際に噴出された胞子。売却専用品。";
-                    cost = 450;
+                    cost = 480;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;

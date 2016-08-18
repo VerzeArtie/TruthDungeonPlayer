@@ -278,7 +278,7 @@ namespace DungeonPlayer
             else if (!GroundOne.WE2.EquipAvailable_37 && (GroundOne.WE2.EquipMixtureDay_37 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_37))
             {
                 GroundOne.WE2.EquipAvailable_37 = true;
-                SceneDimension.CallTruthItemDesc(this, Database.COMMON_WOLF_BATTLE_CLOTH);
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_ANIMAL_FUR_CROSS);
             }
             else if (!GroundOne.WE2.EquipAvailable_38 && (GroundOne.WE2.EquipMixtureDay_38 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_38))
             {
@@ -1151,7 +1151,7 @@ namespace DungeonPlayer
             if (GroundOne.WE2.PotionMaterial_41 >= 1 && GroundOne.WE2.PotionMixtureDay_41 <= 0)
             {
                 GroundOne.WE2.PotionMixtureDay_41 = GroundOne.WE.GameDay;
-                GroundOne.WE2.PotionMixtureDay_42 = GroundOne.WE.GameDay;
+                //GroundOne.WE2.PotionMixtureDay_42 = GroundOne.WE.GameDay;
             }
             if (GroundOne.WE2.PotionMaterial_42 >= 1 && GroundOne.WE2.PotionMixtureDay_43 <= 0)
             {
@@ -1192,15 +1192,15 @@ namespace DungeonPlayer
             }
             #endregion
             #region "２階"
-            if (GroundOne.WE2.FoodMaterial_21 >= 1 && GroundOne.WE2.FoodMaterial_22 >= 1 && GroundOne.WE2.FoodMixtureDay_21 <= 0)
+            if (GroundOne.WE2.FoodMaterial_21 >= 1 && GroundOne.WE2.FoodMixtureDay_21 <= 0)
             {
                 GroundOne.WE2.FoodMixtureDay_21 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.FoodMaterial_23 >= 1 && GroundOne.WE2.FoodMaterial_24 >= 1 && GroundOne.WE2.FoodMaterial_25 >= 1 && GroundOne.WE2.FoodMixtureDay_22 <= 0)
+            if (GroundOne.WE2.FoodMaterial_22 >= 1 && GroundOne.WE2.FoodMaterial_23 >= 1 && GroundOne.WE2.FoodMaterial_25 >= 1 && GroundOne.WE2.FoodMixtureDay_22 <= 0)
             {
                 GroundOne.WE2.FoodMixtureDay_22 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.FoodMaterial_26 >= 1 && GroundOne.WE2.FoodMaterial_27 >= 1 && GroundOne.WE2.FoodMixtureDay_23 <= 0)
+            if (GroundOne.WE2.FoodMaterial_24 >= 1 && GroundOne.WE2.FoodMaterial_26 >= 1 && GroundOne.WE2.FoodMaterial_27 >= 1 && GroundOne.WE2.FoodMixtureDay_23 <= 0)
             {
                 GroundOne.WE2.FoodMixtureDay_23 = GroundOne.WE.GameDay;
             }
@@ -1569,7 +1569,7 @@ namespace DungeonPlayer
 
                     if (GroundOne.WE2.EquipAvailable_37)
                     {
-                        item = new ItemBackPack(Database.COMMON_WOLF_BATTLE_CLOTH);
+                        item = new ItemBackPack(Database.COMMON_ANIMAL_FUR_CROSS);
                         equipList[8].text = item.Name;
                         Method.UpdateRareColor(item, equipList[8], backEquip[8]);
                     }

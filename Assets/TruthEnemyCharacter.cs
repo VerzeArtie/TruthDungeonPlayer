@@ -4596,15 +4596,14 @@ namespace DungeonPlayer
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
-                    this.DropItem[0] = "アルラウネの花粉";
+                    this.DropItem[0] = Database.COMMON_ALRAUNE_KAHUN;
                     break;
                 case Database.ENEMY_POISON_MARY:
                     SetupParameterMonster(12, 20, 20, 50, 45, 12, (int)(listExp[11]), (int)(listGold[11]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area12;
-                    this.DropItem[0] = "マリーキッス";
-                    this.DropItem[1] = "ブルーマテリアル";
+                    this.DropItem[0] = Database.RARE_MARY_KISS;
                     break;
                 #endregion
 
@@ -4614,51 +4613,50 @@ namespace DungeonPlayer
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
-                    this.DropItem[0] = "ウサギの毛皮";
-                    this.DropItem[1] = "ウサギの肉";
+                    this.DropItem[0] = Database.COMMON_RABBIT_KEGAWA;
+                    this.DropItem[1] = Database.COMMON_RABBIT_MEAT;
                     break;
                 case Database.ENEMY_SPEEDY_TAKA:
                     SetupParameterMonster(14, 30, 30, 22, 33, 7, (int)(listExp[13]), (int)(listGold[13]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
-                    this.DropItem[0] = "鷹の白羽";
+                    this.DropItem[0] = Database.COMMON_TAKA_FETHER;
                     break;
                 case Database.ENEMY_ASH_CREEPER:
                     SetupParameterMonster(15, 25, 22, 45, 45, 8, (int)(listExp[14]), (int)(listGold[14]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
-                    this.DropItem[0] = "薄灰色の卵";
+                    this.DropItem[0] = Database.COMMON_ASH_EGG;
                     break;
                 case Database.ENEMY_GIANT_SNAKE:
                     SetupParameterMonster(16, 55, 28, 30, 50, 8, (int)(listExp[15]), (int)(listGold[15]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
-                    this.DropItem[0] = "刺の生えた触手";
+                    this.DropItem[0] = Database.COMMON_SNEAK_UROKO;
                     break;
                 case Database.ENEMY_WONDER_SEED:
                     SetupParameterMonster(17, 60, 32, 35, 55, 9, (int)(listExp[16]), (int)(listGold[16]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
-                    this.DropItem[0] = "プラントノイドの種";
+                    this.DropItem[0] = Database.COMMON_PLANTNOID_SEED;
                     break;
                 case Database.ENEMY_FLANSIS_KNIGHT:
                     SetupParameterMonster(18, 65, 40, 40, 65, 9, (int)(listExp[17]), (int)(listGold[17]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
-                    this.DropItem[0] = "刺の生えた触手";
+                    this.DropItem[0] = Database.COMMON_TOGE_HAETA_SYOKUSYU;
                     break;
                 case Database.ENEMY_SHOTGUN_HYUI:
                     SetupParameterMonster(20, 90, 70, 42, 81, 16, (int)(listExp[18]), (int)(listGold[18]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area13;
-                    this.DropItem[0] = "ヒューイの種";
-                    this.DropItem[1] = "ブルーマテリアル";
+                    this.DropItem[0] = Database.RARE_HYUI_SEED;
                     break;
                 #endregion
 
@@ -4668,44 +4666,42 @@ namespace DungeonPlayer
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
-                    this.DropItem[0] = "狼の牙";
+                    this.DropItem[0] = Database.COMMON_OOKAMI_FANG;
                     break;
                 case Database.ENEMY_BRILLIANT_BUTTERFLY:
                     SetupParameterMonster(22, 50, 53, 80, 60, 10, (int)(listExp[20]), (int)(listGold[20]));
                     this.Rare = RareString.Black;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
-                    this.DropItem[0] = "輝きの燐粉";
+                    this.DropItem[0] = Database.COMMON_BRILLIANT_RINPUN;
                     break;
                 case Database.ENEMY_MIST_ELEMENTAL:
                     SetupParameterMonster(23, 90, 60, 55, 80, 11, (int)(listExp[21]), (int)(listGold[21]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
-                    this.DropItem[0] = "霧の結晶";
+                    this.DropItem[0] = Database.COMMON_MIST_CRYSTAL;
                     break;
                 case Database.ENEMY_WHISPER_DRYAD:
                     SetupParameterMonster(24, 55, 65, 95, 70, 11, (int)(listExp[22]), (int)(listGold[22]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
-                    this.DropItem[0] = "ドライアドの鱗粉";
+                    this.DropItem[0] = Database.COMMON_DRYAD_RINPUN;
                     break;
                 case Database.ENEMY_BLOOD_MOSS:
                     SetupParameterMonster(25, 100, 70, 60, 66, 11, (int)(listExp[23]), (int)(listGold[23]));
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
-                    this.DropItem[0] = "赤い胞子";
+                    this.DropItem[0] = Database.COMMON_RED_HOUSI;
                     break;
                 case Database.ENEMY_MOSSGREEN_DADDY:
                     SetupParameterMonster(27, 65, 75, 110, 82, 17, (int)(listExp[24]), (int)(listGold[24]));
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area14;
-                    this.DropItem[0] = "モスグリーンのエキス";
-                    this.DropItem[1] = "ブルーマテリアル";
-                    this.DropItem[2] = "成長リキッド【知】";
+                    this.DropItem[0] = Database.RARE_MOSSGREEN_EKISU;
                     break;
                 #endregion
 
@@ -4848,7 +4844,7 @@ namespace DungeonPlayer
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area23;
-                    this.DropItem[0] = Database.COMMON_SAME_HIRE;
+                    this.DropItem[0] = Database.COMMON_SAME_NANKOTSU;
                     break;
 
                 case Database.ENEMY_VANISHING_CORAL:
@@ -5034,7 +5030,7 @@ namespace DungeonPlayer
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area31;
-                    this.DropItem[0] = Database.RARE_GRIFFIN_EYE;
+                    this.DropItem[0] = Database.RARE_GRIFFIN_WHITE_FEATHER;
                     break;
 
                 #endregion
@@ -5160,7 +5156,7 @@ namespace DungeonPlayer
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area34;
-                    this.DropItem[0] = Database.COMMON_BRIGHT_CLAW;
+                    this.DropItem[0] = Database.COMMON_CLAW_HEART;
                     break;
 
                 case Database.ENEMY_WIND_BREAKER:
@@ -5236,7 +5232,7 @@ namespace DungeonPlayer
                     this.Rare = RareString.Red;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area41;
-                    this.DropItem[0] = Database.RARE_MEPHISTO_BLACKMEAT;
+                    this.DropItem[0] = Database.RARE_MEPHISTO_BLACKLIGHT;
                     break;
 
                 #endregion
@@ -5270,7 +5266,7 @@ namespace DungeonPlayer
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area42;
-                    this.DropItem[0] = Database.COMMON_MARIONETTE_STRING;
+                    this.DropItem[0] = Database.COMMON_NEMESIS_ESSENCE;
                     break;
 
                 case Database.ENEMY_BLACKFIRE_MASTER_BLADE:
@@ -5322,7 +5318,7 @@ namespace DungeonPlayer
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area43;
-                    this.DropItem[0] = Database.COMMON_WYVERN_MEAT;
+                    this.DropItem[0] = Database.COMMON_WYVERN_BONE;
                     break;
 
                 case Database.ENEMY_GO_FLAME_SLASHER:
@@ -5371,7 +5367,7 @@ namespace DungeonPlayer
                     this.Rare = RareString.Blue;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Area44;
-                    this.DropItem[0] = Database.RARE_HORSE_HORN;
+                    this.DropItem[0] = Database.RARE_DREAD_EXTRACT;
                     break;
 
                 case Database.ENEMY_DOOM_BRINGER:
