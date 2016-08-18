@@ -1860,9 +1860,10 @@ namespace DungeonPlayer
         public const string COMMON_SIPPUU_HIRE = @"疾魚のヒレ";
         public const string COMMON_WHITE_MAGATAMA = @"白の勾玉";
         public const string COMMON_BLUE_MAGATAMA = @"青の勾玉";
-        public const string RARE_TRANSPARENT_POWDER = @"透明なパウダー";
         public const string COMMON_KURIONE_ZOUMOTU = @"クリオネの臓物";
         public const string COMMON_BLUEWHITE_SHARP_TOGE = @"青白の鋭いトゲ";
+        public const string RARE_TRANSPARENT_POWDER = @"透明なパウダー";
+
         public const string COMMON_RENEW_AKAMI = @"新鮮な赤身";
         public const string COMMON_SEA_WASI_KUTIBASI = @"海鷲のくちばし";
         public const string COMMON_WASI_BLUE_FEATHER = @"鷲の青羽";
@@ -1871,12 +1872,14 @@ namespace DungeonPlayer
         public const string RARE_JOE_TONGUE = @"ジョーの舌";
         public const string RARE_JOE_ARM = @"ジョーの腕";
         public const string RARE_JOE_LEG = @"ジョーの足";
+
         public const string COMMON_SOFT_BIG_HIRE = @"柔らかい大ヒレ";
         public const string COMMON_PURE_WHITE_BIGEYE = @"真っ白な大目玉";
         public const string COMMON_GOTUGOTU_KARA = @"ゴツゴツした殻";
         public const string COMMON_SAME_NANKOTSU = @"サメの軟骨";
         public const string COMMON_HALF_TRANSPARENT_ROCK_ASH = @"半透明の石灰";
         public const string RARE_SEKIKASSYOKU_HASAMI = @"赤褐色のハサミ";
+
         public const string COMMON_KOUSITUKA_MATERIAL = @"硬質化素材";
         public const string COMMON_NANAIRO_SYOKUSYU = @"七色の触手";
         public const string COMMON_PUREWHITE_KIMO = @"真っ白なキモ";

@@ -6752,12 +6752,18 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
-
-                case Database.COMMON_BLUEWHITE_SHARP_TOGE: // ドロップアイテム（乱暴なシー・アーチン）
-                    description = "戦闘中にアーチンが飛ばしてきた、鋭い青白の針。売却専用品。";
-                    cost = 310;
+                case Database.COMMON_BLUEWHITE_SHARP_TOGE: // ドロップアイテム（スプラッシュ・クリオネ）
+                    description = "戦闘中にクリオネが飛ばしてきた、鋭い青白の針。売却専用品。";
+                    cost = 520;
                     AdditionalDescription(ItemType.Material_Equip);
                     rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.RARE_TRANSPARENT_POWDER: // ドロップアイテム（透明なウミウシ）
+                    description = "透明のため目視は難しいが、よく目を凝らすと見えなくもない粉末";
+                    cost = 1450;
+                    AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Rare;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
                 case Database.COMMON_RENEW_AKAMI: // ドロップアイテム（ローリング・マグロ）
@@ -6778,6 +6784,13 @@ namespace DungeonPlayer
                     description = "異常成長した海鷲の青い羽。幸運を呼ぶと言われている。売却専用品。";
                     cost = 370;
                     AdditionalDescription(ItemType.Material_Equip);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_BRIGHT_GESO:
+                    description = "単なるゲソだが、異常に眩しく光っている・・・";
+                    cost = 430;
+                    AdditionalDescription(ItemType.Material_Food);
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
@@ -6824,6 +6837,13 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
+                case Database.COMMON_SAME_NANKOTSU:
+                    description = "サメの軟骨には意外と知られていない効用のある成分が含まれている。";
+                    cost = 600;
+                    AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
                 case Database.COMMON_HALF_TRANSPARENT_ROCK_ASH: // ドロップアイテム（バニッシング・コーラル）
                     description = "石灰は本来特定の色が付いてるが、これは不透明であり純度が低い。売却専用品。";
                     cost = 622;
@@ -6860,6 +6880,14 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     limitValue = MATERIAL_ITEM_STACK_SIZE;
                     break;
+                case Database.COMMON_PUREWHITE_KIMO:
+                    description = "白色の肝には、身体の健康を促進させる効果があると言われている。";
+                    cost = 970;
+                    AdditionalDescription(ItemType.Material_Potion);
+                    rareLevel = RareLevel.Common;
+                    limitValue = MATERIAL_ITEM_STACK_SIZE;
+                    break;
+
                 case Database.COMMON_AOSAME_KENSHI: // ドロップアイテム（エッジド・ハイ・シャーク）
                     description = "強度が高く、形状も綺麗な剣歯。売却専用品。";
                     cost = 1700;
