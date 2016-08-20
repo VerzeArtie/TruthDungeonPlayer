@@ -270,6 +270,8 @@ namespace DungeonPlayer
         public int EquipMaterial_19 { get; set; }
         public int EquipMaterial_110 { get; set; }
         public int EquipMaterial_111 { get; set; }
+        public int EquipMaterial_112 { get; set; }
+        public int EquipMaterial_113 { get; set; }
         public int EquipMaterial_21 { get; set; } // COMMON_WHITE_MAGATAMA
         public int EquipMaterial_22 { get; set; } // COMMON_BLUE_MAGATAMA
         public int EquipMaterial_23 { get; set; } // COMMON_WASI_BLUE_FEATHER
@@ -291,6 +293,9 @@ namespace DungeonPlayer
         public int EquipMaterial_38 { get; set; } // ウルフの毛皮
         public int EquipMaterial_39 { get; set; } // 古代ツンドラ鹿の角
         public int EquipMaterial_310 { get; set; } // 古代栄樹の幹の断片
+        public int EquipMaterial_311 { get; set; }
+        public int EquipMaterial_312 { get; set; }
+        public int EquipMaterial_313 { get; set; }
         public int EquipMaterial_41 { get; set; } // ハンターの七つ道具
         public int EquipMaterial_42 { get; set; } // 猛獣の毛皮
         public int EquipMaterial_43 { get; set; } // 執行人の汚れたローブ
@@ -322,24 +327,39 @@ namespace DungeonPlayer
         public int PotionMaterial_19 { get; set; }
         public int PotionMaterial_110 { get; set; }
         public int PotionMaterial_111 { get; set; }
+        public int PotionMaterial_112 { get; set; }
+        public int PotionMaterial_113 { get; set; }
+        public int PotionMaterial_114 { get; set; }
+        public int PotionMaterial_115 { get; set; }
         public int PotionMaterial_21 { get; set; } // COMMON_GANGAME_EGG
         public int PotionMaterial_22 { get; set; } // COMMON_NANAIRO_SYOKUSYU
         public int PotionMaterial_23 { get; set; } // COMMON_EIGHTEIGHT_KUROSUMI
+        public int PotionMaterial_24 { get; set; }
+        public int PotionMaterial_25 { get; set; }
+        public int PotionMaterial_26 { get; set; }
+        public int PotionMaterial_27 { get; set; }
+        public int PotionMaterial_28 { get; set; }
         public int PotionMaterial_31 { get; set; } // 妖精パウダー
         public int PotionMaterial_32 { get; set; } // エッセンス・オブ・ウィンド
         public int PotionMaterial_33 { get; set; } // 凍結した心臓
         public int PotionMaterial_34 { get; set; } // 鋭く尖った虎牙
         public int PotionMaterial_35 { get; set; } // ピュア・クリスタル
+        public int PotionMaterial_36 { get; set; }
         public int PotionMaterial_41 { get; set; } // 血塗られたダガーの破片
         public int PotionMaterial_42 { get; set; } // デーモンホーン
         public int PotionMaterial_43 { get; set; } // エッセンス・オブ・シャイン
         public int PotionMaterial_44 { get; set; } // 黒の印鑑
         public int PotionMaterial_45 { get; set; } // 混沌の雫
+        public int PotionMaterial_46 { get; set; }
+        public int PotionMaterial_47 { get; set; }
+        public int PotionMaterial_48 { get; set; }
+        public int PotionMaterial_49 { get; set; }
 
         public int FoodMaterial_11 { get; set; }
         public int FoodMaterial_12 { get; set; }
         public int FoodMaterial_13 { get; set; }
         public int FoodMaterial_14 { get; set; }
+        public int FoodMaterial_15 { get; set; }
         public int FoodMaterial_21 { get; set; } // COMMON_DAGGERFISH_UROKO
         public int FoodMaterial_22 { get; set; } // COMMON_SIPPUU_HIRE
         public int FoodMaterial_23 { get; set; } // COMMON_KURIONE_ZOUMOTU
@@ -350,6 +370,7 @@ namespace DungeonPlayer
         public int FoodMaterial_28 { get; set; } // COMMON_SOFT_BIG_HIRE
         public int FoodMaterial_29 { get; set; } // COMMON_PURE_WHITE_BIGEYE
         public int FoodMaterial_210 { get; set; } // COMMON_EIGHTEIGHT_KYUUBAN
+        public int FoodMaterial_211 { get; set; }
         public int FoodMaterial_31 { get; set; } // 白アザラシの肉
         public int FoodMaterial_32 { get; set; } // 結晶化した海水塩
         public int FoodMaterial_33 { get; set; } // オークのもも肉
@@ -373,6 +394,7 @@ namespace DungeonPlayer
         public int EquipMixtureDay_13 { get; set; }
         public int EquipMixtureDay_14 { get; set; }
         public int EquipMixtureDay_15 { get; set; }
+        public int EquipMixtureDay_16 { get; set; }
         public int EquipMixtureDay_21 { get; set; }
         public int EquipMixtureDay_22 { get; set; }
         public int EquipMixtureDay_23 { get; set; }

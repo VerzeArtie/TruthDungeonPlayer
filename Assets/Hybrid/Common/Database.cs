@@ -1499,7 +1499,7 @@ namespace DungeonPlayer
         public const string COMMON_TUMUJIKAZE_BOX = @"つむじ風の箱";
         public const string COMMON_ROCKET_DASH = @"ロケット・ダッシュ";
         public const string COMMON_CLAW_OF_SPRING = @"春風の爪";
-        public const string COMMON_SOUKAI_DRINK_SS = @"爽快ドリンク【Ｓ＆Ｓ】";
+        public const string COMMON_SOUKAI_DRINK_WATER = @"爽快ドリンクの原液";
         public const string COMMON_BREEZE_CROSS = @"そよ風の舞踏衣";
         public const string COMMON_GUST_SWORD = @"ソード・オブ・ガスト";
         //public const string RARE_PURE_GREEN_WATER = @"活湧水"; // Duel、ジェダ・アルスの持ち物はここで入手可能とする。
@@ -1509,7 +1509,7 @@ namespace DungeonPlayer
         public const string COMMON_WAR_DRUM = @"ウォードラム";
         public const string COMMON_KOBUSHI_OBJE = @"拳型のオブジェ";
         public const string COMMON_TIGER_BLADE = @"タイガー・ブレイド";
-        public const string COMMON_TUUKAI_DRINK_DD = @"爽快ドリンク【Ｄ＆Ｄ】";
+        public const string COMMON_TUUKAI_DRINK_WATER = @"痛快ドリンクの原液";
         public const string RARE_ROD_OF_STRENGTH = @"力の杖";
         public const string RARE_SOUJUTENSHI_NO_GOFU = @"蒼授天使の護符";
         #endregion
@@ -2083,6 +2083,8 @@ namespace DungeonPlayer
         public const string COMMON_POTION_OVER_GROWTH = @"オーバー・グロース";
         public const string COMMON_POTION_RAINBOW_IMPACT = @"レインボー・インパクト";
         public const string COMMON_POTION_BLACK_GAST = @"ブラック・ガスト";
+        public const string COMMON_SOUKAI_DRINK_SS = @"爽快ドリンク【Ｓ＆Ｓ】";
+        public const string COMMON_TUUKAI_DRINK_DD = @"痛快ドリンク【Ｄ＆Ｄ】";
         #endregion
         #region "後編、ラナのポーション店３階"
         // ３階

@@ -547,6 +547,14 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.EquipMaterial_111 += updateWE2Value;
             }
+            else if (backpackData.Name == Database.COMMON_SNEAK_UROKO)
+            {
+                GroundOne.WE2.EquipMaterial_112 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_MIST_CRYSTAL)
+            {
+                GroundOne.WE2.EquipMaterial_113 += updateWE2Value;
+            }
             #endregion
             #region "２階"
             else if (backpackData.Name == Database.COMMON_WHITE_MAGATAMA)
@@ -599,41 +607,53 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.EquipMaterial_31 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_LIZARD_UROKO)
+            else if (backpackData.Name == Database.RARE_GRIFFIN_WHITE_FEATHER)
             {
                 GroundOne.WE2.EquipMaterial_32 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_GOTUGOTU_KONBOU)
+            else if (backpackData.Name == Database.COMMON_LIZARD_UROKO)
             {
                 GroundOne.WE2.EquipMaterial_33 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_EMBLEM_OF_PENGUIN)
+            else if (backpackData.Name == Database.COMMON_GOTUGOTU_KONBOU)
             {
                 GroundOne.WE2.EquipMaterial_34 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_ARGONIAN_PURPLE_UROKO)
+            else if (backpackData.Name == Database.COMMON_EMBLEM_OF_PENGUIN)
             {
                 GroundOne.WE2.EquipMaterial_35 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_BEAR_CLAW_KAKERA)
+            else if (backpackData.Name == Database.COMMON_KINKIN_ICE)
             {
                 GroundOne.WE2.EquipMaterial_36 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_ESSENCE_OF_EARTH)
+            else if (backpackData.Name == Database.COMMON_ARGONIAN_PURPLE_UROKO)
             {
                 GroundOne.WE2.EquipMaterial_37 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_WOLF_KEGAWA)
+            else if (backpackData.Name == Database.RARE_BEAR_CLAW_KAKERA)
             {
                 GroundOne.WE2.EquipMaterial_38 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_TUNDRA_DEER_HORN)
+            else if (backpackData.Name == Database.COMMON_ESSENCE_OF_EARTH)
             {
                 GroundOne.WE2.EquipMaterial_39 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.EPIC_OLD_TREE_MIKI_DANPEN)
+            else if (backpackData.Name == Database.COMMON_CENTAURUS_LEATHER)
             {
                 GroundOne.WE2.EquipMaterial_310 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_WOLF_KEGAWA)
+            {
+                GroundOne.WE2.EquipMaterial_311 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_TUNDRA_DEER_HORN)
+            {
+                GroundOne.WE2.EquipMaterial_312 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.EPIC_OLD_TREE_MIKI_DANPEN)
+            {
+                GroundOne.WE2.EquipMaterial_313 += updateWE2Value;
             }
             #endregion
             #region "４階"
@@ -726,41 +746,57 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.PotionMaterial_12 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_RED_HOUSI)
+            else if (backpackData.Name == Database.COMMON_HENSYOKU_KUKI)
             {
                 GroundOne.WE2.PotionMaterial_13 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_MARY_KISS)
+            else if (backpackData.Name == Database.COMMON_MANTIS_TAIEKI)
             {
                 GroundOne.WE2.PotionMaterial_14 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_ALRAUNE_KAHUN)
+            else if (backpackData.Name == Database.COMMON_RED_HOUSI)
             {
                 GroundOne.WE2.PotionMaterial_15 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_HYUI_SEED)
+            else if (backpackData.Name == Database.RARE_MARY_KISS)
             {
                 GroundOne.WE2.PotionMaterial_16 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_NEBARIITO_KUMO)
+            else if (backpackData.Name == Database.COMMON_ALRAUNE_KAHUN)
             {
                 GroundOne.WE2.PotionMaterial_17 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_MANDORAGORA_ROOT)
+            else if (backpackData.Name == Database.RARE_HYUI_SEED)
             {
                 GroundOne.WE2.PotionMaterial_18 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_BRILLIANT_RINPUN)
+            else if (backpackData.Name == Database.COMMON_NEBARIITO_KUMO)
             {
                 GroundOne.WE2.PotionMaterial_19 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_MOSSGREEN_EKISU)
+            else if (backpackData.Name == Database.COMMON_MANDORAGORA_ROOT)
             {
                 GroundOne.WE2.PotionMaterial_110 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_DREAM_POWDER)
+            else if (backpackData.Name == Database.COMMON_BRILLIANT_RINPUN)
             {
                 GroundOne.WE2.PotionMaterial_111 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_MOSSGREEN_EKISU)
+            {
+                GroundOne.WE2.PotionMaterial_112 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_DREAM_POWDER)
+            {
+                GroundOne.WE2.PotionMaterial_113 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_ANT_ESSENCE)
+            {
+                GroundOne.WE2.PotionMaterial_114 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_DRYAD_RINPUN)
+            {
+                GroundOne.WE2.PotionMaterial_115 += updateWE2Value;
             }
             #endregion
             #region "２階"
@@ -768,13 +804,33 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.PotionMaterial_21 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_NANAIRO_SYOKUSYU)
+            else if (backpackData.Name == Database.RARE_TRANSPARENT_POWDER)
             {
                 GroundOne.WE2.PotionMaterial_22 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_EIGHTEIGHT_KUROSUMI)
+            else if (backpackData.Name == Database.COMMON_NANAIRO_SYOKUSYU)
             {
                 GroundOne.WE2.PotionMaterial_23 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_EIGHTEIGHT_KUROSUMI)
+            {
+                GroundOne.WE2.PotionMaterial_24 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SOUKAI_DRINK_WATER)
+            {
+                GroundOne.WE2.PotionMaterial_25 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_SAME_NANKOTSU)
+            {
+                GroundOne.WE2.PotionMaterial_26 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_TUUKAI_DRINK_WATER)
+            {
+                GroundOne.WE2.PotionMaterial_27 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_PUREWHITE_KIMO)
+            {
+                GroundOne.WE2.PotionMaterial_28 += updateWE2Value;
             }
             #endregion
             #region "３階"
@@ -786,11 +842,11 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.PotionMaterial_32 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_FROZEN_HEART)
+            else if (backpackData.Name == Database.COMMON_SHARPNESS_TIGER_TOOTH)
             {
                 GroundOne.WE2.PotionMaterial_33 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_SHARPNESS_TIGER_TOOTH)
+            else if (backpackData.Name == Database.COMMON_FROZEN_HEART)
             {
                 GroundOne.WE2.PotionMaterial_34 += updateWE2Value;
             }
@@ -798,27 +854,47 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.PotionMaterial_35 += updateWE2Value;
             }
+            else if (backpackData.Name == Database.COMMON_CLAW_HEART)
+            {
+                GroundOne.WE2.PotionMaterial_36 += updateWE2Value;
+            }
             #endregion
             #region "４階"
             else if (backpackData.Name == Database.RARE_BLOOD_DAGGER_KAKERA)
             {
                 GroundOne.WE2.PotionMaterial_41 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_DEMON_HORN)
+            else if (backpackData.Name == Database.RARE_MEPHISTO_BLACKLIGHT)
             {
                 GroundOne.WE2.PotionMaterial_42 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_ESSENCE_OF_SHINE)
+            else if (backpackData.Name == Database.COMMON_NEMESIS_ESSENCE)
             {
                 GroundOne.WE2.PotionMaterial_43 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_BLACK_SEAL_IMPRESSION)
+            else if (backpackData.Name == Database.RARE_DEMON_HORN)
             {
                 GroundOne.WE2.PotionMaterial_44 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_CHAOS_SIZUKU)
+            else if (backpackData.Name == Database.RARE_ESSENCE_OF_SHINE)
             {
                 GroundOne.WE2.PotionMaterial_45 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_WYVERN_BONE)
+            {
+                GroundOne.WE2.PotionMaterial_46 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_BLACK_SEAL_IMPRESSION)
+            {
+                GroundOne.WE2.PotionMaterial_47 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_CHAOS_SIZUKU)
+            {
+                GroundOne.WE2.PotionMaterial_48 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.RARE_DREAD_EXTRACT)
+            {
+                GroundOne.WE2.PotionMaterial_49 += updateWE2Value;
             }
             #endregion
             #endregion
@@ -828,17 +904,21 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.FoodMaterial_11 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_RABBIT_MEAT)
+            else if (backpackData.Name == Database.COMMON_ASH_EGG)
             {
                 GroundOne.WE2.FoodMaterial_12 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_PLANTNOID_SEED)
+            else if (backpackData.Name == Database.COMMON_RABBIT_MEAT)
             {
                 GroundOne.WE2.FoodMaterial_13 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_GREEN_EGG_KAIGARA)
+            else if (backpackData.Name == Database.COMMON_PLANTNOID_SEED)
             {
                 GroundOne.WE2.FoodMaterial_14 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_GREEN_EGG_KAIGARA)
+            {
+                GroundOne.WE2.FoodMaterial_15 += updateWE2Value;
             }
             #endregion
             #region "２階"
@@ -846,7 +926,7 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.FoodMaterial_21 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.RARE_JOE_TONGUE)
+            else if (backpackData.Name == Database.COMMON_BRIGHT_GESO)
             {
                 GroundOne.WE2.FoodMaterial_22 += updateWE2Value;
             }
@@ -854,7 +934,7 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.FoodMaterial_23 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_DAGGERFISH_UROKO)
+            else if (backpackData.Name == Database.RARE_JOE_TONGUE)
             {
                 GroundOne.WE2.FoodMaterial_24 += updateWE2Value;
             }
@@ -862,25 +942,29 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.FoodMaterial_25 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_SIPPUU_HIRE)
+            else if (backpackData.Name == Database.COMMON_DAGGERFISH_UROKO)
             {
                 GroundOne.WE2.FoodMaterial_26 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_SOFT_BIG_HIRE)
+            else if (backpackData.Name == Database.COMMON_SIPPUU_HIRE)
             {
                 GroundOne.WE2.FoodMaterial_27 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_KURIONE_ZOUMOTU)
+            else if (backpackData.Name == Database.COMMON_SOFT_BIG_HIRE)
             {
                 GroundOne.WE2.FoodMaterial_28 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_EIGHTEIGHT_KYUUBAN)
+            else if (backpackData.Name == Database.COMMON_KURIONE_ZOUMOTU)
             {
                 GroundOne.WE2.FoodMaterial_29 += updateWE2Value;
             }
-            else if (backpackData.Name == Database.COMMON_RENEW_AKAMI)
+            else if (backpackData.Name == Database.COMMON_EIGHTEIGHT_KYUUBAN)
             {
                 GroundOne.WE2.FoodMaterial_210 += updateWE2Value;
+            }
+            else if (backpackData.Name == Database.COMMON_RENEW_AKAMI)
+            {
+                GroundOne.WE2.FoodMaterial_211 += updateWE2Value;
             }
             #endregion
             #region "３階"
@@ -975,6 +1059,10 @@ namespace DungeonPlayer
             if (GroundOne.WE2.EquipMaterial_110 >= 1 && GroundOne.WE2.EquipMaterial_111 >= 1 && GroundOne.WE2.EquipMixtureDay_15 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_15 = GroundOne.WE.GameDay;
+            }
+            if (GroundOne.WE2.EquipMaterial_112 >= 1 && GroundOne.WE2.EquipMaterial_113 >= 1 && GroundOne.WE2.EquipMixtureDay_16 <= 0)
+            {
+                GroundOne.WE2.EquipMixtureDay_16 = GroundOne.WE.GameDay;
             }
             #endregion
             #region "２階"

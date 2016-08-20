@@ -2438,15 +2438,15 @@ namespace DungeonPlayer
                     AdditionalDescription(ItemType.Weapon_Rod);
                     rareLevel = RareLevel.Rare;
                     break;
-                case Database.COMMON_SOUKAI_DRINK_SS:
-                    description = "スッキリ爽快！（Speedy & Splashが記載されている）";
-                    cost = 10000;
+                case Database.COMMON_SOUKAI_DRINK_WATER:
+                    description = "スッキリ爽快になるドリンク剤の原液。そのままでは苦すぎる・・・";
+                    cost = 42000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     break;
-                case Database.COMMON_TUUKAI_DRINK_DD:
-                    description = "スッキリ爽快！（Dont DoIt! と記載されている）";
-                    cost = 10000;
+                case Database.COMMON_TUUKAI_DRINK_WATER:
+                    description = "ガッツリ痛快になるドリンク剤の原液。そのままでは苦すぎる・・・";
+                    cost = 42000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Common;
                     break;
@@ -2459,7 +2459,6 @@ namespace DungeonPlayer
                     AdditionalDescription(ItemType.Accessory);
                     rareLevel = RareLevel.Rare;
                     break;
-
 
                 // オル・ランディス初期装備
                 case Database.COMMON_FATE_RING:
@@ -5510,6 +5509,20 @@ namespace DungeonPlayer
                 case Database.COMMON_POTION_BLACK_GAST:
                     description = "強力な身体活性と魔力活性エキスを調合した薬品。魔法攻撃/物理攻撃７％ＵＰ【戦闘中専用】";
                     cost = 25000;
+                    AdditionalDescription(ItemType.Use_Potion);
+                    rareLevel = RareLevel.Common;
+                    limitValue = USING_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_SOUKAI_DRINK_SS:
+                    description = "スッキリ爽快（Speedy & Splash!）頭と身体が冴えわたる！魔法攻撃／戦闘速度７％ＵＰ【戦闘中専用】";
+                    cost = 27000;
+                    AdditionalDescription(ItemType.Use_Potion);
+                    rareLevel = RareLevel.Common;
+                    limitValue = USING_ITEM_STACK_SIZE;
+                    break;
+                case Database.COMMON_TUUKAI_DRINK_DD:
+                    description = "ガッツリ痛快（Dont & DoIt!) 身体中に力がみなぎる！物理攻撃／戦闘速度７％ＵＰ【戦闘中専用】";
+                    cost = 27000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
                     limitValue = USING_ITEM_STACK_SIZE;

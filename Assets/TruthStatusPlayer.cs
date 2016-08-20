@@ -855,8 +855,38 @@ namespace DungeonPlayer
                         player.DeleteBackPack(backpackData, 1, currentNumber);
                         player.AmplifyMagicAttack = 1.07f;
                         player.AmplifyPhysicalAttack = 1.07f;
-                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp.bmp", Database.INFINITY);
-                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp.bmp", Database.INFINITY);
+                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
+                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_SOUKAI_DRINK_SS:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.AmplifyMagicAttack = 1.07f;
+                        player.AmplifyBattleSpeed = 1.07f;
+                        player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + "BuffMagicAttackUp", Database.INFINITY);
+                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.COMMON_TUUKAI_DRINK_DD:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.AmplifyPhysicalAttack = 1.07f;
+                        player.AmplifyBattleSpeed = 1.07f;
+                        player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + "BuffPhysicalAttackUp", Database.INFINITY);
+                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
                     }
                     else
                     {
