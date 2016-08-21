@@ -5543,7 +5543,7 @@ namespace DungeonPlayer
                 case Database.DUEL_EONE_FULNEA:
                     this.fullName = Database.DUEL_EONE_FULNEA;
                     SetupParameter(4, 2, 3, 19, 12, 3);
-                    SetupFoodParameter(0, 5, 0, 5, 0);
+                    SetupFoodParameter(0, 0, 5, 5, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5558,6 +5558,7 @@ namespace DungeonPlayer
                 case Database.DUEL_MAGI_ZELKIS:
                     this.fullName = Database.DUEL_MAGI_ZELKIS;
                     SetupParameter(7, 24, 5, 3, 15, 4);
+                    SetupFoodParameter(5, 0, 0, 5, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5575,6 +5576,7 @@ namespace DungeonPlayer
                 case Database.DUEL_SELMOI_RO:
                     this.fullName = Database.DUEL_SELMOI_RO;
                     SetupParameter(10, 30, 10, 2, 20, 5);
+                    SetupFoodParameter(5, 0, 0, 5, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5592,6 +5594,7 @@ namespace DungeonPlayer
                 case Database.DUEL_KARTIN_MAI:
                     this.fullName = Database.DUEL_KARTIN_MAI;
                     SetupParameter(13, 1, 27, 35, 23, 6);
+                    SetupFoodParameter(0, 0, 5, 5, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5606,6 +5609,7 @@ namespace DungeonPlayer
                 case Database.DUEL_JEDA_ARUS:
                     this.fullName = Database.DUEL_JEDA_ARUS;
                     SetupParameter(16, 48, 20, 7, 35, 8);
+                    SetupFoodParameter(5, 0, 0, 5, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5624,6 +5628,7 @@ namespace DungeonPlayer
                 case Database.DUEL_SINIKIA_VEILHANZ:
                     this.fullName = Database.DUEL_SINIKIA_VEILHANZ;
                     SetupParameter(20, 2, 30, 63, 45, 14);
+                    SetupFoodParameter(0, 0, 5, 5, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5638,6 +5643,7 @@ namespace DungeonPlayer
                 case Database.DUEL_ADEL_BRIGANDY:
                     this.fullName = Database.DUEL_ADEL_BRIGANDY;
                     SetupParameter(23, 80, 43, 5, 50, 12);
+                    SetupFoodParameter(30, 0, 0, 20, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5652,6 +5658,7 @@ namespace DungeonPlayer
                 case Database.DUEL_LENE_COLTOS:
                     this.fullName = Database.DUEL_LENE_COLTOS;
                     SetupParameter(26, 5, 55, 100, 73, 15);
+                    SetupFoodParameter(0, 0, 30, 20, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5666,6 +5673,7 @@ namespace DungeonPlayer
                 case Database.DUEL_SCOTY_ZALGE:
                     this.fullName = Database.DUEL_SCOTY_ZALGE;
                     SetupParameter(29, 90, 130, 2, 80, 3);
+                    SetupFoodParameter(20, 0, 0, 30, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5684,6 +5692,7 @@ namespace DungeonPlayer
                 case Database.DUEL_PERMA_WARAMY:
                     this.fullName = Database.DUEL_PERMA_WARAMY;
                     SetupParameter(32, 19, 65, 120, 160, 25);
+                    SetupFoodParameter(0, 0, 20, 30, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5698,6 +5707,7 @@ namespace DungeonPlayer
                 case Database.DUEL_KILT_JORJU:
                     this.fullName = Database.DUEL_KILT_JORJU;
                     SetupParameter(35, 120, 120, 120, 100, 40);
+                    SetupFoodParameter(0, 0, 0, 50, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5713,6 +5723,7 @@ namespace DungeonPlayer
                 case Database.DUEL_BILLY_RAKI:
                     this.fullName = Database.DUEL_BILLY_RAKI;
                     SetupParameter(38, 220, 105, 1, 285, 30);
+                    SetupFoodParameter(60, 0, 0, 80, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5728,6 +5739,7 @@ namespace DungeonPlayer
                 case Database.DUEL_ANNA_HAMILTON:
                     this.fullName = Database.DUEL_ANNA_HAMILTON;
                     SetupParameter(41, 10, 120, 345, 314, 33);
+                    SetupFoodParameter(60, 0, 0, 80, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5742,6 +5754,7 @@ namespace DungeonPlayer
                 case Database.DUEL_CALMANS_OHN:
                     this.fullName = Database.DUEL_CALMANS_OHN;
                     SetupParameter(44, 44, 136, 400, 425, 36);
+                    SetupFoodParameter(0, 0, 60, 80, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5756,6 +5769,7 @@ namespace DungeonPlayer
                 case Database.DUEL_SUN_YU:
                     this.fullName = Database.DUEL_SUN_YU;
                     SetupParameter(47, 450, 200, 80, 529, 40);
+                    SetupFoodParameter(60, 0, 60, 80, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5771,6 +5785,7 @@ namespace DungeonPlayer
                 case Database.DUEL_SHUVALTZ_FLORE:
                     this.fullName = Database.DUEL_SHUVALTZ_FLORE;
                     SetupParameter(50, 10, 300, 630, 555, 110);
+                    SetupFoodParameter(0, 0, 100, 150, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5786,6 +5801,7 @@ namespace DungeonPlayer
                 case Database.DUEL_RVEL_ZELKIS:
                     this.fullName = Database.DUEL_RVEL_ZELKIS;
                     SetupParameter(52, 800, 340, 21, 620, 60);
+                    SetupFoodParameter(250, 0, 0, 500, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5804,6 +5820,7 @@ namespace DungeonPlayer
                 case Database.DUEL_VAN_HEHGUSTEL:
                     this.fullName = Database.DUEL_VAN_HEHGUSTEL;
                     SetupParameter(54, 15, 400, 874, 747, 65);
+                    SetupFoodParameter(0, 250, 0, 500, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5818,6 +5835,7 @@ namespace DungeonPlayer
                 case Database.DUEL_OHRYU_GENMA:
                     this.fullName = Database.DUEL_OHRYU_GENMA;
                     SetupParameter(56, 1096, 422, 10, 790, 70);
+                    SetupFoodParameter(250, 0, 0, 500, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5833,6 +5851,7 @@ namespace DungeonPlayer
                 case Database.DUEL_LADA_MYSTORUS:
                     this.fullName = Database.DUEL_LADA_MYSTORUS;
                     SetupParameter(58, 1, 480, 1223, 870, 130);
+                    SetupFoodParameter(0, 250, 0, 500, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5848,6 +5867,7 @@ namespace DungeonPlayer
                 case Database.DUEL_SIN_OSCURETE:
                     this.fullName = Database.DUEL_SIN_OSCURETE;
                     SetupParameter(60, 1400, 520, 10, 924, 200);
+                    SetupFoodParameter(250, 0, 0, 500, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5865,6 +5885,7 @@ namespace DungeonPlayer
                 case Database.DUEL_OL_LANDIS:
                     this.fullName = Database.DUEL_OL_LANDIS;
                     SetupParameter(35, Database.OL_LANDIS_FIRST_STRENGTH, Database.OL_LANDIS_FIRST_AGILITY, Database.OL_LANDIS_FIRST_INTELLIGENCE, Database.OL_LANDIS_FIRST_STAMINA, Database.OL_LANDIS_FIRST_MIND);
+                    SetupFoodParameter(0, 0, 0, 50, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5881,6 +5902,7 @@ namespace DungeonPlayer
                 case Database.VERZE_ARTIE:
                     this.fullName = Database.VERZE_ARTIE_FULL;
                     SetupParameter(50, 30, 1205, 30, 240, 100);
+                    SetupFoodParameter(0, 0, 0, 200, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -5896,6 +5918,7 @@ namespace DungeonPlayer
                 case Database.DUEL_SINIKIA_KAHLHANZ:
                     this.fullName = Database.DUEL_SINIKIA_KAHLHANZ;
                     SetupParameter(50, 5, 320, 670, 500, 110);
+                    SetupFoodParameter(0, 0, 0, 200, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;

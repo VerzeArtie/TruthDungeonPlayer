@@ -333,15 +333,15 @@ namespace DungeonPlayer
             }
             else if (this.CurrentSelect == Database.FOOD_WINTER_BEEF_CURRY)
             {
-                EatFood(80, 50, 0, 50, 50);
+                EatFood(80, 0, 0, 80, 40);
             }
             else if (this.CurrentSelect == Database.FOOD_GATTURI_GOZEN)
             {
-                EatFood(60, 60, 60, 60, 60);
+                EatFood(50, 50, 50, 50, 50);
             }
             else if (this.CurrentSelect == Database.FOOD_KOGOERU_DESSERT)
             {
-                EatFood(70, 0, 100, 0, 120);
+                EatFood(0, 0, 150, 100, 0);
             }
             // ４階
             else if (this.CurrentSelect == Database.FOOD_BLACK_BUTTER_SPAGHETTI)
