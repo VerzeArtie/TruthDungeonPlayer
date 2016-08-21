@@ -1354,15 +1354,15 @@ namespace DungeonPlayer
                     Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
                     ii++;
 
-                    item = new ItemBackPack(Database.COMMON_LIGHT_SHIELD);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
-                    ii++;
+                    //item = new ItemBackPack(Database.COMMON_LIGHT_SHIELD);
+                    //equipList[ii].text = item.Name;
+                    //Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    //ii++;
 
-                    item = new ItemBackPack(Database.COMMON_FINE_SWORD_1);
-                    equipList[ii].text = item.Name;
-                    Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
-                    ii++;
+                    //item = new ItemBackPack(Database.COMMON_FINE_SWORD_1);
+                    //equipList[ii].text = item.Name;
+                    //Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    //ii++;
                     
                     item = new ItemBackPack(Database.COMMON_BASTARD_SWORD_1);
                     equipList[ii].text = item.Name;

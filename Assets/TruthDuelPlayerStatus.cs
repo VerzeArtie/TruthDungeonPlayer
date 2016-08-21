@@ -18,14 +18,24 @@ namespace DungeonPlayer
         public Text skill;
         public Text strength;
         public Text addStrength;
+        public Text addStrengthFood;
+        public Text totalStrength;
         public Text agility;
         public Text addAgility;
+        public Text addAgilityFood;
+        public Text totalAgility;
         public Text intelligence;
         public Text addIntelligence;
+        public Text addIntelligenceFood;
+        public Text totalIntelligence;
         public Text stamina;
         public Text addStamina;
+        public Text addStaminaFood;
+        public Text totalStamina;
         public Text mind;
         public Text addMind;
+        public Text addMindFood;
+        public Text totalMind;
         public Text weapon;
         public Text subWeapon;
         public Text armor;
@@ -59,30 +69,15 @@ namespace DungeonPlayer
 
         private void SettingCharacterData(MainCharacter chara)
         {
-            Debug.Log("SettingCharacterData (S)");
             this.txtName.text = chara.FullName;
             this.txtLevel.text = chara.Level.ToString();
 
-            this.strength.text = chara.Strength.ToString();
-            if (chara.BuffStrength_Accessory == 0) this.addStrength.text = "";
-            else this.addStrength.text = " + " + chara.BuffStrength_Accessory.ToString();
+            SettingCoreParameter(CoreType.Strength, chara.Strength, chara.BuffStrength_Accessory, chara.BuffStrength_Food, this.strength, this.addStrength, this.addStrengthFood, this.totalStrength);
+            SettingCoreParameter(CoreType.Intelligence, chara.Intelligence, chara.BuffIntelligence_Accessory, chara.BuffIntelligence_Food, this.intelligence, this.addIntelligence, this.addIntelligenceFood, this.totalIntelligence);
+            SettingCoreParameter(CoreType.Agility, chara.Agility, chara.BuffAgility_Accessory, chara.BuffAgility_Food, this.agility, this.addAgility, this.addAgilityFood, this.totalAgility);
+            SettingCoreParameter(CoreType.Stamina, chara.Stamina, chara.BuffStamina_Accessory, chara.BuffStamina_Food, this.stamina, this.addStamina, this.addStaminaFood, this.totalStamina);
+            SettingCoreParameter(CoreType.Mind, chara.Mind, chara.BuffMind_Accessory, chara.BuffMind_Food, this.mind, this.addMind, this.addMindFood, this.totalMind);
 
-            this.agility.text = chara.Agility.ToString();
-            if (chara.BuffAgility_Accessory == 0) this.addAgility.text = "";
-            else this.addAgility.text = " + " + chara.BuffAgility_Accessory.ToString();
-
-            this.intelligence.text = chara.Intelligence.ToString();
-            if (chara.BuffIntelligence_Accessory == 0) this.addIntelligence.text = "";
-            else this.addIntelligence.text = " + " + chara.BuffIntelligence_Accessory.ToString();
-
-            this.stamina.text = chara.Stamina.ToString();
-            if (chara.BuffStamina_Accessory == 0) this.addStamina.text = "";
-            else this.addStamina.text = " + " + chara.BuffStamina_Accessory.ToString();
-
-            this.mind.text = chara.Mind.ToString();
-            if (chara.BuffMind_Accessory == 0) this.addMind.text = "";
-            else this.addMind.text = " + " + chara.BuffMind_Accessory.ToString();
-            
             this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
 
             if (chara.AvailableSkill)
@@ -153,9 +148,32 @@ namespace DungeonPlayer
                 this.accessory2.text = "";
             }
             Method.UpdateRareColor(chara.Accessory2, accessory2, back_accessory2);
-            Debug.Log("SettingCharacterData (E)");
         }
-        
+
+        private enum CoreType
+        {
+            Strength,
+            Agility,
+            Intelligence,
+            Stamina,
+            Mind
+        }
+
+        private void SettingCoreParameter(CoreType coreType, int basicValue, int addAccessoryValue, int addFoodValue, Text txtBasic, Text txtBuff, Text txtFood, Text txtTotal)
+        {
+            int totalValue = 0;
+
+            totalValue = basicValue;
+            txtBasic.text = basicValue.ToString();
+
+            txtBuff.text = "+" + addAccessoryValue.ToString();
+            totalValue += addAccessoryValue;
+
+            txtFood.text = "+" + addFoodValue.ToString();
+            totalValue += addFoodValue;
+
+            txtTotal.text = "= " + totalValue.ToString();
+        }
         public void tapExit()
         {
             SceneDimension.Back(this);

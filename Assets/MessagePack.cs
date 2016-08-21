@@ -3248,7 +3248,7 @@ namespace DungeonPlayer
             {
                 GroundOne.WE.dungeonEvent220 = true;
 
-				messageList.Add("ラナ：っあ、見てみてアイン。看板の内容が変わってるわよ♪"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：あっ、見てみてアイン。看板の内容が変わってるわよ♪"); eventList.Add(ActionEvent.None);
 
 				messageList.Add("　　　　『  ( >10 _6 <7 )  ( <11 ^3 )  ( _3 >7 )  』"); eventList.Add(ActionEvent.None);
 
@@ -6743,7 +6743,7 @@ namespace DungeonPlayer
 
                 messageList.Add("ラナ：う～ん、特に何もなさそうだけど・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：っあ、何か変なくぼみがあるわよ？"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：あっ、何か変なくぼみがあるわよ？"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：マジかよ！？　見せてみろ。"); eventList.Add(ActionEvent.None);
 
@@ -7240,7 +7240,7 @@ namespace DungeonPlayer
 
                 messageList.Add("ラナ：そうだとしても！　何でココが正解だって分かるんですか！？"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：っあ！・・・ゴメンなさい、つい勢いで・・・"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：あっ！・・・ゴメンなさい、つい勢いで・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("ランディス：良い調子じゃねぇか。悪かねぇ。"); eventList.Add(ActionEvent.None);
 
@@ -9976,7 +9976,7 @@ namespace DungeonPlayer
 
                 messageList.Add("ヴェルゼ：実際その時になったら、ラナさん本人だけが像を認識する事となります。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：っあ、そうなんだ♪　ありがとうございます。"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：あっ、そうなんだ♪　ありがとうございます。"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("ラナ：じゃあ、ちょっと不安だけど・・・やってみるわね。"); eventList.Add(ActionEvent.None);
 
@@ -17678,7 +17678,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：うっすらと黒い塊のようなモノがいるぜ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("ラナ：・・・っあ、本当だわ。アンタよく分かるわね？"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：・・・あっ、本当だわ。アンタよく分かるわね？"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(""); eventList.Add(ActionEvent.PlayMusic19);
 
@@ -27314,7 +27314,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：うわわ、っ分かったって。そんなビビんなくて良いだろうが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：まったく・・・っあ、そうだ。もう一個聞いて良い？"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：まったく・・・あっ、そうだ。もう一個聞いて良い？"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("アイン：ん？ああ、何個でも聞いてくれ。"); eventList.Add(ActionEvent.None);
 
@@ -27609,7 +27609,7 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：いや、良いんだ。悪かったな。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ラナ：っあ、そうじゃないの。"); eventList.Add(ActionEvent.None);
+                    messageList.Add("ラナ：あっ、そうじゃないの。"); eventList.Add(ActionEvent.None);
 
                     messageList.Add("ラナ：ランディスのお師匠さんに、聞きにいってみない？"); eventList.Add(ActionEvent.None);
 
@@ -29827,7 +29827,7 @@ namespace DungeonPlayer
         // DUEL闘技場開催
         public static void Message29000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("ラナ：っあ、アイン。こんな所に居たのね。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あっ、アイン。こんな所に居たのね。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ようラナ、何のようだ？"); eventList.Add(ActionEvent.None);
 
@@ -30666,7 +30666,7 @@ namespace DungeonPlayer
         {
             // if (!we.AlreadyRest) // 1日目はアインが起きたばかりなので、本フラグを未使用とします。
 
-            messageList.Add("ラナ：っあら、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あらっ、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ああ、何だか寝覚めが良いんだ。今日も調子全快だぜ！"); eventList.Add(ActionEvent.None);
 
@@ -30918,7 +30918,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：助かるぜ、サンキューな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：っあ、っちょっとちょっと。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あっ、っちょっとちょっと。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ん？何だ？"); eventList.Add(ActionEvent.None);
 
@@ -30994,7 +30994,7 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：おお、おいおいどこ行くんだよ！？そっちの角には何にも・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：・・・おおぉぉお！？んだこれは！！！"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・おおぉぉお！？なんだこれは！！！"); eventList.Add(ActionEvent.None);
 
                 messageList.Add(Database.Message_PotionShopAvailable); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
@@ -31615,7 +31615,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：フフフ、言ってくれるじゃない。安心したわ♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：っあ、そういえば、アイン。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あっ、そういえば、アイン。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ん？何だよ。"); eventList.Add(ActionEvent.None);
 
@@ -31930,7 +31930,7 @@ namespace DungeonPlayer
         // 現実世界
         public static void Message40009(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            messageList.Add("ラナ：っあら、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あらっ、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ああ、何だか寝覚めが良いんだ。今日も調子全快だぜ！"); eventList.Add(ActionEvent.None);
 
@@ -32179,7 +32179,9 @@ namespace DungeonPlayer
             }
             else
             {
-                messageList.Add("アイン：（しょうがねえ、もう闘技場へ行くしかねえみてえだな。）"); eventList.Add(ActionEvent.None);
+                messageList.Add("ガンツ：アインよ、精進してきなさい。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハハ・・・"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -33137,6 +33139,8 @@ namespace DungeonPlayer
             else
             {
                 messageList.Add("ハンナ：っさあ、おとなしくＤＵＥＬ闘技場へ行ってくるんだね。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ハハハ・・・"); eventList.Add(ActionEvent.None);
             }
         }
 
@@ -35015,7 +35019,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：確か、この辺りの木の枝よ・・・えっとね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：っあ、あったわ、コレね♪"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あっ、あったわ、コレね♪"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：どうみても普通の枝だけどな。"); eventList.Add(ActionEvent.None);
 
@@ -35865,7 +35869,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：マジかよ・・・そこまでするのか。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：っあ、ホラ来たわ！　っ静かに！"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あっ、ホラ来たわ！　っ静かに！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：・・・（ドキドキ・・・）"); eventList.Add(ActionEvent.None);
 
@@ -36499,7 +36503,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：っくそう。結局、殴られ損かよ・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：っあ、アイン。いたいた♪"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：あっ、アイン。いたいた♪"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ラナ。いつのまに来てたんだ？"); eventList.Add(ActionEvent.None);
 
@@ -36517,7 +36521,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：あ、そうそう。今日から参戦可能になったんでしょ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：まあ、そうだな。せっかくだし、今日から対戦してみる所なんだが"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：まあ、そうだな。せっかくだし、ちょっと入り口だけ覗いておくか。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：ＤＵＥＬにおける詳細ルールは、見てみた？"); eventList.Add(ActionEvent.None);
 
@@ -36573,13 +36577,17 @@ namespace DungeonPlayer
 
             messageList.Add("　　　『シャゴオォォン！！』（ラナのドラスティックキックがアインのミゾオチに炸裂）　　"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：っつうう・・・分かった、分かったって。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：もう知らない。ずっとそのルール表を読んでればいいじゃない。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：っまあ、ちょっと１回だけ対戦させてくれ。その後で、飯食べにいこうぜ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：っつうう・・・分かった、分かったって。すまなかった。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：ん、じゃあ待ってるわね。やるからには、ちゃんと勝ってよね♪"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：ッフフ、冗談よ♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、任せとけって！ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：このルール、色々気になる所があるしな。ちょっと後でまた読んでみるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、そうして。今は何か食べにでも行きましょ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、了解！"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.MeetOlLandis = true;
         }

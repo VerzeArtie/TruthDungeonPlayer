@@ -5543,6 +5543,7 @@ namespace DungeonPlayer
                 case Database.DUEL_EONE_FULNEA:
                     this.fullName = Database.DUEL_EONE_FULNEA;
                     SetupParameter(4, 2, 3, 19, 12, 3);
+                    SetupFoodParameter(0, 5, 0, 5, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;
@@ -6092,6 +6093,14 @@ namespace DungeonPlayer
                 this.baseMana += this.LevelUpManaTruth;
                 this.level++;
             }
+        }
+        private void SetupFoodParameter(int strength, int agility, int intelligence, int stamina, int mind)
+        {
+            this.BuffStrength_Food = strength;
+            this.BuffAgility_Food = agility;
+            this.BuffIntelligence_Food = intelligence;
+            this.BuffStamina_Food = stamina;
+            this.BuffMind_Food = mind;
         }
 
         public new void CleanUpEffectForBoss()
