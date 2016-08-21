@@ -1092,37 +1092,35 @@ namespace DungeonPlayer
             }
             #endregion
             #region "３階"
-            if (GroundOne.WE2.EquipMaterial_31 >= 1 && GroundOne.WE2.EquipMixtureDay_31 <= 0)
+            if (GroundOne.WE2.EquipMaterial_31 >= 1 && GroundOne.WE2.EquipMaterial_32 >= 1 && GroundOne.WE2.EquipMixtureDay_31 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_31 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_32 >= 1 && GroundOne.WE2.EquipMixtureDay_32 <= 0)
+            if (GroundOne.WE2.EquipMaterial_33 >= 1 && GroundOne.WE2.EquipMixtureDay_32 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_32 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_33 >= 1 && GroundOne.WE2.EquipMixtureDay_33 <= 0)
+            if (GroundOne.WE2.EquipMaterial_34 >= 1 && GroundOne.WE2.EquipMixtureDay_33 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_33 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_34 >= 1 && GroundOne.WE2.EquipMixtureDay_34 <= 0)
+            if (GroundOne.WE2.EquipMaterial_35 >= 1 && GroundOne.WE2.EquipMaterial_36 >= 1 && GroundOne.WE2.EquipMixtureDay_34 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_34 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_35 >= 1 && GroundOne.WE2.EquipMixtureDay_35 <= 0)
+            if (GroundOne.WE2.EquipMaterial_37 >= 1 && GroundOne.WE2.EquipMixtureDay_35 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_35 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_36 >= 1 &&
-                GroundOne.WE2.EquipMaterial_37 >= 1 && GroundOne.WE2.EquipMixtureDay_36 <= 0)
+            if (GroundOne.WE2.EquipMaterial_38 >= 1 && GroundOne.WE2.EquipMaterial_39 >= 1 && GroundOne.WE2.EquipMixtureDay_36 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_36 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_38 >= 1 && GroundOne.WE2.EquipMixtureDay_37 <= 0)
+            if (GroundOne.WE2.EquipMaterial_310 >= 1 && GroundOne.WE2.EquipMaterial_311 >= 1 && GroundOne.WE2.EquipMixtureDay_37 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_37 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_39 >= 1 &&
-                GroundOne.WE2.EquipMaterial_310 >= 1 && GroundOne.WE2.EquipMixtureDay_38 <= 0)
+            if (GroundOne.WE2.EquipMaterial_312 >= 1 && GroundOne.WE2.EquipMaterial_313 >= 1 && GroundOne.WE2.EquipMixtureDay_38 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_38 = GroundOne.WE.GameDay;
             }
@@ -1136,45 +1134,35 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.EquipMixtureDay_42 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_43 >= 1 &&
-                GroundOne.WE2.EquipMaterial_44 >= 1 && GroundOne.WE2.EquipMixtureDay_43 <= 0)
+            if (GroundOne.WE2.EquipMaterial_43 >= 1 && GroundOne.WE2.EquipMaterial_44 >= 1 && GroundOne.WE2.EquipMixtureDay_43 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_43 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_45 >= 1 &&
-                GroundOne.WE2.EquipMaterial_46 >= 1 && GroundOne.WE2.EquipMixtureDay_44 <= 0)
+            if (GroundOne.WE2.EquipMaterial_45 >= 1 && GroundOne.WE2.EquipMaterial_46 >= 1 && GroundOne.WE2.EquipMixtureDay_44 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_44 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_47 >= 1 &&
-                GroundOne.WE2.EquipMaterial_48 >= 1 &&
-                GroundOne.WE2.EquipMaterial_49 >= 1 && GroundOne.WE2.EquipMixtureDay_45 <= 0)
+            if (GroundOne.WE2.EquipMaterial_47 >= 1 && GroundOne.WE2.EquipMaterial_48 >= 1 && GroundOne.WE2.EquipMaterial_49 >= 1 && GroundOne.WE2.EquipMixtureDay_45 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_45 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_410 >= 1 &&
-                GroundOne.WE2.EquipMaterial_411 >= 1 && GroundOne.WE2.EquipMixtureDay_46 <= 0)
+            if (GroundOne.WE2.EquipMaterial_410 >= 1 && GroundOne.WE2.EquipMaterial_411 >= 1 && GroundOne.WE2.EquipMixtureDay_46 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_46 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_412 >= 1 &&
-                GroundOne.WE2.EquipMaterial_413 >= 1 &&
-                GroundOne.WE2.EquipMaterial_414 >= 1 && GroundOne.WE2.EquipMixtureDay_47 <= 0)
+            if (GroundOne.WE2.EquipMaterial_412 >= 1 && GroundOne.WE2.EquipMaterial_413 >= 1 && GroundOne.WE2.EquipMaterial_414 >= 1 && GroundOne.WE2.EquipMixtureDay_47 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_47 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_415 >= 1 &&
-                GroundOne.WE2.EquipMaterial_416 >= 1 && GroundOne.WE2.EquipMixtureDay_48 <= 0)
+            if (GroundOne.WE2.EquipMaterial_415 >= 1 && GroundOne.WE2.EquipMaterial_416 >= 1 && GroundOne.WE2.EquipMixtureDay_48 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_48 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_417 >= 1 &&
-                GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMixtureDay_49 <= 0)
+            if (GroundOne.WE2.EquipMaterial_417 >= 1 && GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMixtureDay_49 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_49 = GroundOne.WE.GameDay;
             }
-            if (GroundOne.WE2.EquipMaterial_418 >= 1 &&
-                GroundOne.WE2.EquipMaterial_419 >= 1 && GroundOne.WE2.EquipMixtureDay_410 <= 0)
+            if (GroundOne.WE2.EquipMaterial_418 >= 1 && GroundOne.WE2.EquipMaterial_419 >= 1 && GroundOne.WE2.EquipMixtureDay_410 <= 0)
             {
                 GroundOne.WE2.EquipMixtureDay_410 = GroundOne.WE.GameDay;
             }
