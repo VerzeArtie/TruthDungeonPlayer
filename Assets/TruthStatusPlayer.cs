@@ -709,6 +709,20 @@ namespace DungeonPlayer
                     WhoTarget_View();
                     break;
 
+                case Database.COMMON_POTION_RESIST_FIRE:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+                        player.CurrentResistFireUp = Database.INFINITY;
+                        player.CurrentResistFireUpValue = 50;
+                        player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp", Database.INFINITY);
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
                 case Database.COMMON_POTION_MAGIC_SEAL:
                     if (this.onlyUseItem)
                     {
@@ -783,13 +797,21 @@ namespace DungeonPlayer
                     if (this.onlyUseItem)
                     {
                         player.DeleteBackPack(backpackData, 1, currentNumber);
-                        player.CurrentSlow = 0;
-                        player.DeBuff(player.pbSlow);
-                        player.CurrentPoison = 0;
-                        player.CurrentPoisonValue = 0;
-                        player.DeBuff(player.pbPoison);
-                        player.CurrentBlind = 0;
-                        player.DeBuff(player.pbBlind);
+                        player.RemoveSlow();
+                        player.RemovePoison();
+                        player.RemoveBlind();
+                    }
+                    else
+                    {
+                        mainMessage.text = player.GetCharacterSentence(2011);
+                    }
+                    break;
+
+                case Database.RARE_DRYAD_SAGE_POTION:
+                    if (this.onlyUseItem)
+                    {
+                        player.DeleteBackPack(backpackData, 1, currentNumber);
+
                     }
                     else
                     {

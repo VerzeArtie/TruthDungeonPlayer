@@ -86,7 +86,6 @@ namespace DungeonPlayer
 
         protected override void CheckAndCallTruthItemDesc()
         {
-            Debug.Log("PotionShop CheckAndCallTruthItemDesc");
             #region "１階"
             if (!GroundOne.WE2.PotionAvailable_11 && (GroundOne.WE2.PotionMixtureDay_11 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_11))
             {
@@ -96,22 +95,32 @@ namespace DungeonPlayer
             if (!GroundOne.WE2.PotionAvailable_12 && (GroundOne.WE2.PotionMixtureDay_12 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_12))
             {
                 GroundOne.WE2.PotionAvailable_12 = true;
-                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_MAGIC_SEAL);
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_RESIST_FIRE);
             }
             if (!GroundOne.WE2.PotionAvailable_13 && (GroundOne.WE2.PotionMixtureDay_13 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_13))
             {
                 GroundOne.WE2.PotionAvailable_13 = true;
-                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_ATTACK_SEAL);
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_MAGIC_SEAL);
             }
             if (!GroundOne.WE2.PotionAvailable_14 && (GroundOne.WE2.PotionMixtureDay_14 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_14))
             {
                 GroundOne.WE2.PotionAvailable_14 = true;
-                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_CURE_BLIND);
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_ATTACK_SEAL);
             }
             if (!GroundOne.WE2.PotionAvailable_15 && (GroundOne.WE2.PotionMixtureDay_15 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_15))
             {
                 GroundOne.WE2.PotionAvailable_15 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_CURE_BLIND);
+            }
+            if (!GroundOne.WE2.PotionAvailable_16 && (GroundOne.WE2.PotionMixtureDay_16 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_16))
+            {
+                GroundOne.WE2.PotionAvailable_16 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_POTION_MOSSGREEN_DREAM);
+            }
+            if (!GroundOne.WE2.PotionAvailable_17 && (GroundOne.WE2.PotionMixtureDay_17 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_17))
+            {
+                GroundOne.WE2.PotionAvailable_17 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_DRYAD_SAGE_POTION);
             }
             #endregion
             #region "２階"
@@ -129,6 +138,16 @@ namespace DungeonPlayer
             {
                 GroundOne.WE2.PotionAvailable_23 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_BLACK_GAST);
+            }
+            if (!GroundOne.WE2.PotionAvailable_24 && (GroundOne.WE2.PotionMixtureDay_24 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_24))
+            {
+                GroundOne.WE2.PotionAvailable_24 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_SOUKAI_DRINK_SS);
+            }
+            if (!GroundOne.WE2.PotionAvailable_25 && (GroundOne.WE2.PotionMixtureDay_25 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_25))
+            {
+                GroundOne.WE2.PotionAvailable_25 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.COMMON_TUUKAI_DRINK_DD);
             }
             #endregion
             #region "３階"

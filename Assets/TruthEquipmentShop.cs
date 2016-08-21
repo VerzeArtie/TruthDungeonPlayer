@@ -1467,6 +1467,12 @@ namespace DungeonPlayer
                         equipList[ii].text = item.Name;
                         Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
                     }
+                    if (GroundOne.WE2.EquipAvailable_16)
+                    {
+                        item = new ItemBackPack(Database.RARE_MISTSCALE_SHIELD);
+                        equipList[ii].text = item.Name;
+                        Method.UpdateRareColor(item, equipList[ii], backEquip[ii]);
+                    }
                     ii++;
                     break;
 

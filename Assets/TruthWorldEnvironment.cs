@@ -431,9 +431,13 @@ namespace DungeonPlayer
         public int PotionMixtureDay_13 { get; set; }
         public int PotionMixtureDay_14 { get; set; }
         public int PotionMixtureDay_15 { get; set; }
+        public int PotionMixtureDay_16 { get; set; }
+        public int PotionMixtureDay_17 { get; set; }
         public int PotionMixtureDay_21 { get; set; }
         public int PotionMixtureDay_22 { get; set; }
         public int PotionMixtureDay_23 { get; set; }
+        public int PotionMixtureDay_24 { get; set; }
+        public int PotionMixtureDay_25 { get; set; }
         public int PotionMixtureDay_31 { get; set; }
         public int PotionMixtureDay_32 { get; set; }
         public int PotionMixtureDay_33 { get; set; }
@@ -478,6 +482,7 @@ namespace DungeonPlayer
         public bool EquipAvailable_13 { get; set; }
         public bool EquipAvailable_14 { get; set; }
         public bool EquipAvailable_15 { get; set; }
+        public bool EquipAvailable_16 { get; set; }
         public bool EquipAvailable_21 { get; set; }
         public bool EquipAvailable_22 { get; set; }
         public bool EquipAvailable_23 { get; set; }
@@ -514,9 +519,13 @@ namespace DungeonPlayer
         public bool PotionAvailable_13 { get; set; }
         public bool PotionAvailable_14 { get; set; }
         public bool PotionAvailable_15 { get; set; }
+        public bool PotionAvailable_16 { get; set; }
+        public bool PotionAvailable_17 { get; set; }
         public bool PotionAvailable_21 { get; set; }
         public bool PotionAvailable_22 { get; set; }
         public bool PotionAvailable_23 { get; set; }
+        public bool PotionAvailable_24 { get; set; }
+        public bool PotionAvailable_25 { get; set; }
         public bool PotionAvailable_31 { get; set; }
         public bool PotionAvailable_32 { get; set; }
         public bool PotionAvailable_33 { get; set; }

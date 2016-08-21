@@ -2169,6 +2169,67 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Common;
                     limitValue = EQUIP_ITEM_STACK_SIZE;
                     break;
+                #region "合成１階"
+                case Database.COMMON_KOUKAKU_ARMOR: // ワームの甲殻
+                    description = "甲殻部を繋ぎ合わせた鎧に、魔法耐性を若干付与させた一品。物理防御１１～１５。火耐性２０";
+                    PhysicalDefenseMinValue = 11;
+                    PhysicalDefenseMaxValue = 15;
+                    this.ResistFire = 20;
+                    cost = 1800;
+                    AdditionalDescription(ItemType.Armor_Heavy);
+                    rareLevel = RareLevel.Common;
+                    break;
+
+                case Database.COMMON_SISSO_TUKEHANE: // 鷹の白羽、太陽の葉
+                    description = "毛皮に幾つかの白羽を埋め込んだアクセサリ。力＋３、技＋３、心＋３";
+                    BuffUpStrength = 3;
+                    BuffUpAgility = 3;
+                    BuffUpMind = 3;
+                    cost = 2500;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Common;
+                    break;
+
+                case Database.RARE_WAR_WOLF_BLADE: // 刺の生えた触手、狼の牙
+                    description = "狼の牙を基素材とし、刺付き触手を加工した武器。物理攻撃３２～４４";
+                    PhysicalAttackMinValue = 32;
+                    PhysicalAttackMaxValue = 44;
+                    cost = 3600;
+                    AdditionalDescription(ItemType.Weapon_Heavy);
+                    rareLevel = RareLevel.Rare;
+                    break;
+
+                case Database.COMMON_BLUE_COPPER_ARMOR_KAI:
+                    description = "青銅の材質強度を落とさずに仕上げられた鎧。物理防御２０～２５。";
+                    PhysicalDefenseMinValue = 20;
+                    PhysicalDefenseMaxValue = 25;
+                    cost = 3200;
+                    AdditionalDescription(ItemType.Armor_Heavy);
+                    rareLevel = RareLevel.Common;
+                    limitValue = EQUIP_ITEM_STACK_SIZE;
+                    break;
+
+                case Database.COMMON_RABBIT_SHOES: // ウサギの毛皮、スパイダーシルク
+                    description = "ウサギの毛皮と質の良いスパイダーシルクを合成した出来たシューズ。技＋１２、体力＋１０";
+                    BuffUpAgility = 12;
+                    BuffUpStamina = 10;
+                    cost = 3200;
+                    AdditionalDescription(ItemType.Accessory);
+                    rareLevel = RareLevel.Common;
+                    break;
+
+                case Database.RARE_MISTSCALE_SHIELD:
+                    description = "通常のスケイルシールドに霧が塗されている。物理防御４０～４５、魔法防御４０～４５";
+                    cost = 4500;
+                    PhysicalDefenseMinValue = 40;
+                    PhysicalDefenseMaxValue = 45;
+                    MagicDefenseMinValue = 40;
+                    MagicDefenseMaxValue = 45;
+                    AdditionalDescription(ItemType.Shield);
+                    rareLevel = RareLevel.Rare;
+                    break;
+
+                #endregion
                 // アクセサリ（Rare2）
                 case Database.RARE_RING_BRONZE_RING_KONSHIN:
                     description = "燐青銅素材で作られた腕輪。渾身の刻印がされている。力＋４８、技＋１３、体＋１２、心＋１７";
@@ -5420,6 +5481,7 @@ namespace DungeonPlayer
                     limitValue = RARE_EPIC_ITEM_STACK_SIZE;
                     break;
 
+                // 合成
                 case Database.COMMON_POTION_NATURALIZE:
                     description = "自然素材の緑色素を調合した浄化薬。効果【猛毒】【鈍化】を解除。【戦闘中専用】";
                     PhysicalAttackMinValue = 100;
@@ -5428,29 +5490,40 @@ namespace DungeonPlayer
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
                     break;
-                // 合成
+                case Database.COMMON_POTION_RESIST_FIRE:
+                    description = "枯れた茎から抽出した耐熱成分を体液と融合させた薬。火耐性５０。【戦闘中専用】";
+                    cost = 850;
+                    AdditionalDescription(ItemType.Use_Potion);
+                    rareLevel = RareLevel.Common;
+                    break;
                 case Database.COMMON_POTION_MAGIC_SEAL:
                     description = "赤い胞子内から魔法成分を摘出し、統合に成功。魔法攻撃５％ＵＰ。【戦闘中専用】";
-                    cost = 2500;
+                    cost = 1500;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
                     break;
                 case Database.COMMON_POTION_ATTACK_SEAL:
                     description = "アルラウネの花粉から筋力を一時増強させる薬。物理攻撃５％ＵＰ。【戦闘中専用】";
-                    cost = 2500;
+                    cost = 1500;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
                     break;
                 case Database.COMMON_POTION_CURE_BLIND:
                     description = "闇属性のマンドラゴラに輝く燐粉を織り交ぜた薬。効果【暗闇】を解除。【戦闘中専用】";
-                    cost = 2500;
+                    cost = 2000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
                     break;
                 case Database.RARE_POTION_MOSSGREEN_DREAM:
                     description = "モスの有効なエキスを摘出し、ドリームパウダーで清浄化した薬。効果【猛毒】【鈍化】【暗闇】を解除。【戦闘中専用】";
-                    cost = 6000;
+                    cost = 3500;
                     AdditionalDescription(ItemType.Use_Potion);
+                    rareLevel = RareLevel.Rare;
+                    break;
+                case Database.RARE_DRYAD_SAGE_POTION:
+                    description = "鱗粉とエキスを融合させた薬。強烈な匂いにより身体能力を活性化させる。体＋";
+                    cost = 4000;
+                    AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;
                     break;
                 #endregion
@@ -7793,56 +7866,7 @@ namespace DungeonPlayer
                     break;
                 #endregion
                 #region "合成アイテム"
-                #region "合成１階"
-                case Database.COMMON_KOUKAKU_ARMOR: // ワームの甲殻
-                    description = "甲殻部を繋ぎ合わせた鎧に、魔法耐性を若干付与させた一品。物理防御１１～１５。火耐性２０";
-                    PhysicalDefenseMinValue = 11;
-                    PhysicalDefenseMaxValue = 15;
-                    this.ResistFire = 20;
-                    cost = 1800;
-                    AdditionalDescription(ItemType.Armor_Heavy);
-                    rareLevel = RareLevel.Common;
-                    break;
 
-                case Database.COMMON_SISSO_TUKEHANE: // 鷹の白羽、太陽の葉
-                    description = "毛皮に幾つかの白羽を埋め込んだアクセサリ。力＋３、技＋３、心＋３";
-                    BuffUpStrength = 3;
-                    BuffUpAgility = 3;
-                    BuffUpMind = 3;
-                    cost = 2500;
-                    AdditionalDescription(ItemType.Accessory);
-                    rareLevel = RareLevel.Common;
-                    break;
-
-                case Database.RARE_WAR_WOLF_BLADE: // 刺の生えた触手、狼の牙
-                    description = "狼の牙を基素材とし、刺付き触手を加工した武器。物理攻撃３２～４４";
-                    PhysicalAttackMinValue = 32;
-                    PhysicalAttackMaxValue = 44;
-                    cost = 3600;
-                    AdditionalDescription(ItemType.Weapon_Heavy);
-                    rareLevel = RareLevel.Rare;
-                    break;
-
-                case Database.COMMON_BLUE_COPPER_ARMOR_KAI:
-                    description = "青銅の材質強度を落とさずに仕上げられた鎧。物理防御２０～２５。";
-                    PhysicalDefenseMinValue = 20;
-                    PhysicalDefenseMaxValue = 25;
-                    cost = 3200;
-                    AdditionalDescription(ItemType.Armor_Heavy);
-                    rareLevel = RareLevel.Common;
-                    limitValue = EQUIP_ITEM_STACK_SIZE;
-                    break;
-
-                case Database.COMMON_RABBIT_SHOES: // ウサギの毛皮、スパイダーシルク
-                    description = "ウサギの毛皮と質の良いスパイダーシルクを合成した出来たシューズ。技＋１２、体力＋１０";
-                    BuffUpAgility = 12;
-                    BuffUpStamina = 10;
-                    cost = 3200;
-                    AdditionalDescription(ItemType.Accessory);
-                    rareLevel = RareLevel.Common;
-                    break;
-
-                #endregion
                 #region "５階"
                 case "四神究極摂理": // ハート・オブ・フェニックス,ハート・オブ・ドラゴン,ハート・オブ・モンスター,ハート・オブ・ジャッジ
                     description = "伝説生物の心得を結集させたアクセサリ。魔法とスキルを同時併用可能になる。";

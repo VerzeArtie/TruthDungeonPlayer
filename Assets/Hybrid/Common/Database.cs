@@ -1972,9 +1972,10 @@ namespace DungeonPlayer
         // 合成
         public const string COMMON_KOUKAKU_ARMOR = @"甲殻の鎧";
         public const string COMMON_SISSO_TUKEHANE = @"質素な付け羽";
+        public const string RARE_WAR_WOLF_BLADE = @"ワーウルフ・ブレード";
         public const string COMMON_BLUE_COPPER_ARMOR_KAI = @"青銅の鎧【改】";
         public const string COMMON_RABBIT_SHOES = @"ラビット・シューズ";
-        public const string RARE_WAR_WOLF_BLADE = @"ワーウルフ・ブレード";
+        public const string RARE_MISTSCALE_SHIELD = @"ミストスケイル・シールド";
         #endregion
         #region "後編、ガンツの武具屋２階"
         // ２階
@@ -2067,10 +2068,12 @@ namespace DungeonPlayer
         
         // 合成
         public const string COMMON_POTION_NATURALIZE = @"ナチュラライズ・ポーション";
+        public const string COMMON_POTION_RESIST_FIRE = @"耐熱ポーション";
         public const string COMMON_POTION_MAGIC_SEAL = @"マジック・シール薬";
         public const string COMMON_POTION_ATTACK_SEAL = @"アタック・シール薬";
         public const string COMMON_POTION_CURE_BLIND = @"キュア・ブラインド";
         public const string RARE_POTION_MOSSGREEN_DREAM = @"モスグリーン・ドリーム";
+        public const string RARE_DRYAD_SAGE_POTION = @"ドライアドの秘薬";
         #endregion
         #region "後編、ラナのポーション店２階"
         // ２階

@@ -1648,13 +1648,13 @@ namespace DungeonPlayer
             {
                 player.CurrentResistFireUp = Database.INFINITY;
                 player.CurrentResistFireUpValue = 2000;
-                player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp.bmp", Database.INFINITY);
+                player.ActivateBuff(player.pbResistFireUp, Database.BaseResourceFolder + "ResistFireUp", Database.INFINITY);
             }
             if (player == ec2 && player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
             {
                 player.CurrentResistIceUp = Database.INFINITY;
                 player.CurrentResistIceUpValue = 2000;
-                player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp.bmp", Database.INFINITY);
+                player.ActivateBuff(player.pbResistIceUp, Database.BaseResourceFolder + "ResistIceUp", Database.INFINITY);
             }
 
             // 死んでいる場合、グレー化する
