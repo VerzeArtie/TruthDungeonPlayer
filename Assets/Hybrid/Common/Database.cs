@@ -2135,9 +2135,9 @@ namespace DungeonPlayer
         // 後編、ハンナの料理屋
         #region "食事"
         // １階
-        public const string FOOD_BIFUKATU = @"ビーフカツ定食";
-        public const string FOOD_GEKIKARA_CURRY = @"激辛カレー";
-        public const string FOOD_INAGO = @"イナゴの佃煮定食";
+        public const string FOOD_KATUCARRY = @"激辛カツカレー定食";
+        public const string FOOD_OLIVE_AND_ONION = @"オリーブパンとオニオンスープ";
+        public const string FOOD_INAGO_AND_TAMAGO = @"イナゴの佃煮と卵和え定食";
         public const string FOOD_USAGI = @"ウサギ肉のシチュー";
         public const string FOOD_SANMA = @"サンマ定食（煮物添え）";
         // ２階

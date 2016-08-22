@@ -5521,7 +5521,7 @@ namespace DungeonPlayer
                     rareLevel = RareLevel.Rare;
                     break;
                 case Database.RARE_DRYAD_SAGE_POTION:
-                    description = "鱗粉とエキスを融合させた薬。強烈な匂いにより身体能力を活性化させる。体＋";
+                    description = "鱗粉とエキスを融合させた薬。強烈な匂いにより敏感な能力を活性化させる。戦闘速度／戦闘反応５％ＵＰ。【戦闘中専用】";
                     cost = 4000;
                     AdditionalDescription(ItemType.Material_Potion);
                     rareLevel = RareLevel.Rare;

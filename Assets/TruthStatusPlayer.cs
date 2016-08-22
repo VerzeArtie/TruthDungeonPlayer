@@ -811,7 +811,10 @@ namespace DungeonPlayer
                     if (this.onlyUseItem)
                     {
                         player.DeleteBackPack(backpackData, 1, currentNumber);
-
+                        player.AmplifyBattleSpeed = 1.05f;
+                        player.AmplifyBattleResponse = 1.05f;
+                        player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + "BuffSpeedUp", Database.INFINITY);
+                        player.ActivateBuff(player.pbReactionUp, Database.BaseResourceFolder + "BuffReactionUp", Database.INFINITY);
                     }
                     else
                     {
