@@ -24,10 +24,16 @@ namespace DungeonPlayer
             vendor.FullName = "ラナ・アミリア";
             vendor.FirstName = "ラナ";
 
+            // debug
+            //GroundOne.WE.AvailablePotion2 = true;
+            //GroundOne.WE.AvailablePotion3 = true;
+            //GroundOne.WE.AvailablePotion4 = true;
+            //GroundOne.WE.AvailablePotion5 = true;
+
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailablePotion2 = true;
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailablePotion3 = true;
             if (GroundOne.WE.TruthCompleteArea3) GroundOne.WE.AvailablePotion4 = true;
-            if (GroundOne.WE.TruthCompleteArea4) GroundOne.WE.AvailablePotion5 = true;
+            //if (GroundOne.WE.TruthCompleteArea4) GroundOne.WE.AvailablePotion5 = true;
 
             if (/*GroundOne.WE.AvailablePotionshop && */!GroundOne.WE.AvailablePotion2)
             {
@@ -92,129 +98,129 @@ namespace DungeonPlayer
                 GroundOne.WE2.PotionAvailable_11 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_NATURALIZE);
             }
-            if (!GroundOne.WE2.PotionAvailable_12 && (GroundOne.WE2.PotionMixtureDay_12 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_12))
+            else if (!GroundOne.WE2.PotionAvailable_12 && (GroundOne.WE2.PotionMixtureDay_12 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_12))
             {
                 GroundOne.WE2.PotionAvailable_12 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_RESIST_FIRE);
             }
-            if (!GroundOne.WE2.PotionAvailable_13 && (GroundOne.WE2.PotionMixtureDay_13 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_13))
+            else if (!GroundOne.WE2.PotionAvailable_13 && (GroundOne.WE2.PotionMixtureDay_13 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_13))
             {
                 GroundOne.WE2.PotionAvailable_13 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_MAGIC_SEAL);
             }
-            if (!GroundOne.WE2.PotionAvailable_14 && (GroundOne.WE2.PotionMixtureDay_14 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_14))
+            else if (!GroundOne.WE2.PotionAvailable_14 && (GroundOne.WE2.PotionMixtureDay_14 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_14))
             {
                 GroundOne.WE2.PotionAvailable_14 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_ATTACK_SEAL);
             }
-            if (!GroundOne.WE2.PotionAvailable_15 && (GroundOne.WE2.PotionMixtureDay_15 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_15))
+            else if (!GroundOne.WE2.PotionAvailable_15 && (GroundOne.WE2.PotionMixtureDay_15 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_15))
             {
                 GroundOne.WE2.PotionAvailable_15 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_CURE_BLIND);
             }
-            if (!GroundOne.WE2.PotionAvailable_16 && (GroundOne.WE2.PotionMixtureDay_16 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_16))
+            else if (!GroundOne.WE2.PotionAvailable_16 && (GroundOne.WE2.PotionMixtureDay_16 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_16))
             {
                 GroundOne.WE2.PotionAvailable_16 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_POTION_MOSSGREEN_DREAM);
             }
-            if (!GroundOne.WE2.PotionAvailable_17 && (GroundOne.WE2.PotionMixtureDay_17 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_17))
+            else if (!GroundOne.WE2.PotionAvailable_17 && (GroundOne.WE2.PotionMixtureDay_17 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_17))
             {
                 GroundOne.WE2.PotionAvailable_17 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_DRYAD_SAGE_POTION);
             }
             #endregion
             #region "２階"
-            if (!GroundOne.WE2.PotionAvailable_21 && (GroundOne.WE2.PotionMixtureDay_21 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_21))
+            else if (!GroundOne.WE2.PotionAvailable_21 && (GroundOne.WE2.PotionMixtureDay_21 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_21))
             {
                 GroundOne.WE2.PotionAvailable_21 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_OVER_GROWTH);
             }
-            if (!GroundOne.WE2.PotionAvailable_22 && (GroundOne.WE2.PotionMixtureDay_22 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_22))
+            else if (!GroundOne.WE2.PotionAvailable_22 && (GroundOne.WE2.PotionMixtureDay_22 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_22))
             {
                 GroundOne.WE2.PotionAvailable_22 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_RAINBOW_IMPACT);
             }
-            if (!GroundOne.WE2.PotionAvailable_23 && (GroundOne.WE2.PotionMixtureDay_23 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_23))
+            else if (!GroundOne.WE2.PotionAvailable_23 && (GroundOne.WE2.PotionMixtureDay_23 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_23))
             {
                 GroundOne.WE2.PotionAvailable_23 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_POTION_BLACK_GAST);
             }
-            if (!GroundOne.WE2.PotionAvailable_24 && (GroundOne.WE2.PotionMixtureDay_24 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_24))
+            else if (!GroundOne.WE2.PotionAvailable_24 && (GroundOne.WE2.PotionMixtureDay_24 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_24))
             {
                 GroundOne.WE2.PotionAvailable_24 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_SOUKAI_DRINK_SS);
             }
-            if (!GroundOne.WE2.PotionAvailable_25 && (GroundOne.WE2.PotionMixtureDay_25 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_25))
+            else if (!GroundOne.WE2.PotionAvailable_25 && (GroundOne.WE2.PotionMixtureDay_25 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_25))
             {
                 GroundOne.WE2.PotionAvailable_25 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_TUUKAI_DRINK_DD);
             }
             #endregion
             #region "３階"
-            if (!GroundOne.WE2.PotionAvailable_31 && (GroundOne.WE2.PotionMixtureDay_31 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_31))
+            else if (!GroundOne.WE2.PotionAvailable_31 && (GroundOne.WE2.PotionMixtureDay_31 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_31))
             {
                 GroundOne.WE2.PotionAvailable_31 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_FAIRY_BREATH);
             }
 
-            if (!GroundOne.WE2.PotionAvailable_32 && (GroundOne.WE2.PotionMixtureDay_32 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_32))
+            else if (!GroundOne.WE2.PotionAvailable_32 && (GroundOne.WE2.PotionMixtureDay_32 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_32))
             {
                 GroundOne.WE2.PotionAvailable_32 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_HEART_ACCELERATION);
             }
-            if (!GroundOne.WE2.PotionAvailable_33 && (GroundOne.WE2.PotionMixtureDay_33 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_33))
+            else if (!GroundOne.WE2.PotionAvailable_33 && (GroundOne.WE2.PotionMixtureDay_33 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_33))
             {
                 GroundOne.WE2.PotionAvailable_33 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_SAGE_POTION_MINI);
             }
             #endregion
             #region "４階"
-            if (!GroundOne.WE2.PotionAvailable_41 && (GroundOne.WE2.PotionMixtureDay_41 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_41))
+            else if (!GroundOne.WE2.PotionAvailable_41 && (GroundOne.WE2.PotionMixtureDay_41 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_41))
             {
                 GroundOne.WE2.PotionAvailable_41 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_POWER_SURGE);
             }
-            if (!GroundOne.WE2.PotionAvailable_42 && (GroundOne.WE2.PotionMixtureDay_42 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_42))
+            else if (!GroundOne.WE2.PotionAvailable_42 && (GroundOne.WE2.PotionMixtureDay_42 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_42))
             {
                 GroundOne.WE2.PotionAvailable_42 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_ELEMENTAL_SEAL);
             }
-            if (!GroundOne.WE2.PotionAvailable_43 && (GroundOne.WE2.PotionMixtureDay_43 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_43))
+            else if (!GroundOne.WE2.PotionAvailable_43 && (GroundOne.WE2.PotionMixtureDay_43 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_43))
             {
                 GroundOne.WE2.PotionAvailable_43 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_GENSEI_MAGIC_BOTTLE);
             }
-            if (!GroundOne.WE2.PotionAvailable_44 && (GroundOne.WE2.PotionMixtureDay_44 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_44))
+            else if (!GroundOne.WE2.PotionAvailable_44 && (GroundOne.WE2.PotionMixtureDay_44 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_44))
             {
                 GroundOne.WE2.PotionAvailable_44 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_GENSEI_TAIMA_KUSURI);
             }
-            if (!GroundOne.WE2.PotionAvailable_45 && (GroundOne.WE2.PotionMixtureDay_45 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_45))
+            else if (!GroundOne.WE2.PotionAvailable_45 && (GroundOne.WE2.PotionMixtureDay_45 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_45))
             {
                 GroundOne.WE2.PotionAvailable_45 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_MIND_ILLUSION);
             }
-            if (!GroundOne.WE2.PotionAvailable_46 && (GroundOne.WE2.PotionMixtureDay_46 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_46))
+            else if (!GroundOne.WE2.PotionAvailable_46 && (GroundOne.WE2.PotionMixtureDay_46 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_46))
             {
                 GroundOne.WE2.PotionAvailable_46 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_SHINING_AETHER);
             }
-            if (!GroundOne.WE2.PotionAvailable_47 && (GroundOne.WE2.PotionMixtureDay_47 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_47))
+            else if (!GroundOne.WE2.PotionAvailable_47 && (GroundOne.WE2.PotionMixtureDay_47 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_47))
             {
                 GroundOne.WE2.PotionAvailable_47 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_ZETTAI_STAMINAUP);
             }
-            if (!GroundOne.WE2.PotionAvailable_48 && (GroundOne.WE2.PotionMixtureDay_48 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_48))
+            else if (!GroundOne.WE2.PotionAvailable_48 && (GroundOne.WE2.PotionMixtureDay_48 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_48))
             {
                 GroundOne.WE2.PotionAvailable_48 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_BLACK_ELIXIR);
             }
-            if (!GroundOne.WE2.PotionAvailable_49 && (GroundOne.WE2.PotionMixtureDay_49 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_49))
+            else if (!GroundOne.WE2.PotionAvailable_49 && (GroundOne.WE2.PotionMixtureDay_49 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_49))
             {
                 GroundOne.WE2.PotionAvailable_49 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_ZEPHER_BREATH);
             }
-            if (!GroundOne.WE2.PotionAvailable_410 && (GroundOne.WE2.PotionMixtureDay_410 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_410))
+            else if (!GroundOne.WE2.PotionAvailable_410 && (GroundOne.WE2.PotionMixtureDay_410 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.PotionMixtureDay_410))
             {
                 GroundOne.WE2.PotionAvailable_410 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.RARE_COLORLESS_ANTIDOTE);

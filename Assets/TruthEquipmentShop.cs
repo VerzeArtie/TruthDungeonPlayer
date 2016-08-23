@@ -211,6 +211,11 @@ namespace DungeonPlayer
                 GroundOne.WE2.EquipAvailable_15 = true;
                 SceneDimension.CallTruthItemDesc(this, Database.COMMON_RABBIT_SHOES);
             }
+            else if (!GroundOne.WE2.EquipAvailable_16 && (GroundOne.WE2.EquipMixtureDay_16 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_16))
+            {
+                GroundOne.WE2.EquipAvailable_16 = true;
+                SceneDimension.CallTruthItemDesc(this, Database.RARE_MISTSCALE_SHIELD);
+            }
             #endregion
             #region "２階"
             else if (!GroundOne.WE2.EquipAvailable_21 && (GroundOne.WE2.EquipMixtureDay_21 != 0) && (GroundOne.WE.GameDay > GroundOne.WE2.EquipMixtureDay_21))
