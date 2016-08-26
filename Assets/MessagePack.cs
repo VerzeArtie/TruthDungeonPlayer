@@ -31478,6 +31478,71 @@ namespace DungeonPlayer
         public static void Message41006(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
             GroundOne.WE.Truth_CommunicationLana10 = true;
+
+            messageList.Add("アイン：よう、ラナ。例の解説の続きを頼むぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：次は確か【知】に関する説明ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、頼む。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【知】は魔力そのものを司るパラメタとして考えてもらって問題無いわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：影響してくるのは【魔法攻撃】と【魔法防御】の２つ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【力】と双子の関係として覚えておくと、把握しやすのが特徴ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：【力】を上げれば物理系が、【知】を上げれば魔法系って事か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、そうよ。それにあともう一つだけ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：魔法を使用する時にはマナが必要になってくるんだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【知】を上げていけば、そのマナの最大値を引き上げる事になるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：って事は、魔法をバンバン打ちたければ、純粋に【知】を上げないと駄目って事だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、そういう事よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？いやしかし、ちょっと待ってくれよ。【力】を上げた場合、ライフの最大値が上がったりしないのかよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ライフの最大値を上げたい場合は【体】を上げるしかないわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何でだ。そこが一緒じゃないと双子として覚えやすくはならないぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私に言ったってしょうがないじゃない。そもそもそういうなのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：【知】を上げれば、マナの最大値も上がる・・・か。何となく忘れちまいそうだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、了解だ。ところで【知】に関しては以上か？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、こんな所ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちなみに【体】に関しても、さっきの説明が全てよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：【体】はライフの最大値を引き上げる。それ以外に要素は無いって事か？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、そうよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：実は何かこっそりと隠し要素が・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：無いわよそんなもの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：攻撃耐性が強くなるとか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：無いって言ってるじゃないの。"); eventList.Add(ActionEvent.None);
+
+
+            messageList.Add("ラナ：しつこいわね。いい加減にしないと蹴るわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：わ、わかった分かった・・・ハハハ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、ひとまずここまでね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：色々とサンキューな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、続きはまた今度ね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、了解！"); eventList.Add(ActionEvent.None);
         }
 
         // オル・ランディス遭遇前後
