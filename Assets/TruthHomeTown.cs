@@ -559,13 +559,6 @@ namespace DungeonPlayer
             	NormalTapOK();
             }
             #endregion
-            #region "戦闘：インスタントアクション"
-            else if (!GroundOne.WE.AvailableInstantCommand && GroundOne.MC.Level >= 6)
-            {
-            	MessagePack.Message29003(ref nowMessage, ref nowEvent);
-            	NormalTapOK();
-            }
-            #endregion
             else
             {
                 mainMessage.text = "アイン：さて、何すっかな";
@@ -802,8 +795,6 @@ namespace DungeonPlayer
             }
 
             // todo ラナ・複合魔法・スキルの基礎習得
-            Debug.Log("area2: " + GroundOne.WE.TruthCompleteArea2);
-            Debug.Log("comu31: " + GroundOne.WE.Truth_CommunicationLana31);
             #region "１日目"
             if (!GroundOne.WE.Truth_CommunicationLana1)
             {
@@ -812,45 +803,66 @@ namespace DungeonPlayer
             }
             #endregion
             #region "日常会話１"
-            else if (!GroundOne.WE.Truth_CommunicationLana101)
+            else if (!GroundOne.WE.Truth_CommunicationLana2)
             {
                 MessagePack.Message41001(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "日常会話２"
-            else if (!GroundOne.WE.Truth_CommunicationLana2)
+            else if (!GroundOne.WE.Truth_CommunicationLana3)
             {
                 MessagePack.Message41002(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
-            #region "３日目"
-            else if (!GroundOne.WE.Truth_CommunicationLana3)
+            #region "ラナの薬品店完成"
+            else if (!GroundOne.WE.Truth_CommunicationLana4)
             {
                 MessagePack.Message40002(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
-            #region "日常会話３"
-            else if (!GroundOne.WE.Truth_CommunicationLana102)
+            #region "戦闘：インスタントアクション"
+            else if (!GroundOne.WE.Truth_CommunicationLana5)
             {
-                MessagePack.Message41003(ref nowMessage, ref nowEvent);
+                MessagePack.Message29003(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
-            #region "Ｌｖ４以降、スタンスの習得会話"
-            else if (GroundOne.MC.Level >= 4 && !GroundOne.WE.Truth_CommunicationLana1_1 && GroundOne.WE.AvailableSecondCharacter)
+            #region "スタンスの習得会話"
+            else if (!GroundOne.WE.Truth_CommunicationLana6)
             {
                 this.nowTalkingLanaAmiria = true;
                 MessagePack.Message40003(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
+            #region "日常会話３"
+            else if (!GroundOne.WE.Truth_CommunicationLana7)
+            {
+                MessagePack.Message41003(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "日常会話４"
-            else if (GroundOne.WE.Truth_CommunicationLana103)
+            else if (GroundOne.WE.Truth_CommunicationLana8)
             {
                 MessagePack.Message41004(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "日常会話５"
+            else if (GroundOne.WE.Truth_CommunicationLana9)
+            {
+                MessagePack.Message41005(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
+            #region "日常会話６"
+            else if (GroundOne.WE.Truth_CommunicationLana10)
+            {
+                MessagePack.Message41006(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
@@ -903,6 +915,7 @@ namespace DungeonPlayer
                 NormalTapOK();
             }
             #endregion
+            GroundOne.WE.AlreadyCommunicate = true;
         }
 
 	    public void tapDuel() {

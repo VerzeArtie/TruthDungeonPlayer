@@ -30125,78 +30125,6 @@ namespace DungeonPlayer
 
             messageList.Add(""); eventList.Add(ActionEvent.None);
         }
-        
-        // 戦闘：インスタントアクション
-        public static void Message29003(ref List<string> messageList, ref List<ActionEvent> eventList)
-        {
-            messageList.Add("アイン：この前は、確かこんな感じでやってた気がするんだが・・・"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：何か難しそうな顔してるわね。何か思いついたわけ？"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：ん～いや、以前師匠に教わったヤツなんだけどな。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：ランディスのお師匠さん？"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：インスタントアクションっていう行動らしいが。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：簡単に言うと・・・"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：インスタントアクションだ！！"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：言い換えも出来てないじゃない・・・"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：まあそれは良いとして、出来そうなの？"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：ああ、もうちょいのハズだ。まあ見ててくれよ。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("　【　アインはストレート・スマッシュの体勢に入った　】"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：ファイア・ボール！！"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：っえ！？"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("　【　アインはダミー素振り君にファイア・ボールを放った！】"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：よっしゃ！完璧だろ？ッハッハッハ！！"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：っお・・・驚いたわ。良くこんなの出来るわね？"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：理屈は簡単だ。ラナ、お前にもたぶん出来る内容だぜ。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：要は、最初っからファイア・ボールを放つようにしとけばいいのさ。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：見た目の素振りだけをストレート・スマッシュにしてたって事？"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：いや、ストレート・スマッシュの体勢からは、ストレート・スマッシュは可能だ。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：・・・私にも出来るのかしら・・・"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：大丈夫だって。やってみろって。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("　【　ラナは通常攻撃の体勢に入った　】"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：う～ん・・・っと、こうかしら。ッハイ！"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("　【　ラナはアイスニードルをダミー素振り君に放った！】"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：・・・そんな感じだな！出来たじゃねえか！　ッハッハッハ！！"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：う～ん、アインのとは少し違う気がしたんだけど。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：このやり方さえ出来てれば、戦闘スタイルもかなり幅が拡がるぜ。"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("ラナ：まあ確かに通常の戦闘コマンドに加えて、この行動が出来るのは嬉しいわね♪"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("アイン：楽しみになってきたな！っしゃ、もういっちょ練習しておくぜ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
-
-            messageList.Add("【戦闘中にインスタントアクションが出来るようになりました】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-            messageList.Add("【戦闘中、アクションコマンドを右クリックする事で使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
-
-            GroundOne.WE.AvailableInstantCommand = true;
-        }
         #endregion
 
         #region "ダンジョンGO！"
@@ -30664,7 +30592,7 @@ namespace DungeonPlayer
         // １日目
         public static void Message40000(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            // if (!we.AlreadyRest) // 1日目はアインが起きたばかりなので、本フラグを未使用とします。
+            GroundOne.WE.Truth_CommunicationLana1 = true;
 
             messageList.Add("ラナ：あらっ、意外と早いじゃない。"); eventList.Add(ActionEvent.None);
 
@@ -30818,14 +30746,12 @@ namespace DungeonPlayer
             //        }
             //    }
             //}
-            GroundOne.WE.AlreadyCommunicate = true;
-            GroundOne.WE.Truth_CommunicationLana1 = true; // 初回一日目のみ、ラナ、ガンツ、ハンナの会話を聞いたかどうか判定するため、ここでTRUEとします。
         }
         
         // 日常会話１
         public static void Message41001(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.WE.Truth_CommunicationLana101 = true;
+            GroundOne.WE.Truth_CommunicationLana2 = true;
 
             messageList.Add("ラナ：アイン、【遠見の青水晶】は絶対に無くさないでよ。"); eventList.Add(ActionEvent.None);
 
@@ -30878,8 +30804,11 @@ namespace DungeonPlayer
             messageList.Add(Database.POOR_SMALL_RED_POTION); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
         }
 
+        // 日常会話２
         public static void Message41002(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.WE.Truth_CommunicationLana3 = true;
+
             messageList.Add("アイン：ラナ、良いこと思いついたぜ！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：無い頭で何を思いついたのよ？"); eventList.Add(ActionEvent.None);
@@ -30933,9 +30862,6 @@ namespace DungeonPlayer
             messageList.Add("ラナ：じゃ、またね。"); eventList.Add(ActionEvent.None);
 
             messageList.Add(Database.POOR_SMALL_RED_POTION); eventList.Add(ActionEvent.HomeTownGetItemFullCheck);
-
-            GroundOne.WE.AlreadyCommunicate = true;
-            GroundOne.WE.Truth_CommunicationLana2 = true;
         }
 
         private static string GetPotionForLana()
@@ -30969,9 +30895,11 @@ namespace DungeonPlayer
             return potionName;
         }
 
-        // ３日目
+        // ラナの薬品店完成
         public static void Message40002(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.WE.Truth_CommunicationLana4 = true;
+
             if (!GroundOne.WE.AlreadyRest)
             {
                 messageList.Add("ラナ：っよし、完成完成♪"); eventList.Add(ActionEvent.None);
@@ -31121,12 +31049,105 @@ namespace DungeonPlayer
                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallPotionShop);
 
             }
-            GroundOne.WE.AlreadyCommunicate = true;
-            GroundOne.WE.Truth_CommunicationLana3 = true;
         }
-        // Level4以降、スタンスの習得会話
+        
+        // 戦闘：インスタントアクション
+        public static void Message29003(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.Truth_CommunicationLana5 = true;
+
+            messageList.Add("アイン：この前は、確かこんな感じでやってた気がするんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何か難しそうな顔してるわね。何か思いついたわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん～いや、以前師匠に教わったヤツなんだけどな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ランディスのお師匠さん？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あれ、何て言ってたっけ・・・よく思い出せねえんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：それってひょっとしてインスタント行動の事じゃないかしら？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そう！それだそれ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：インスタント行動は、自分のメイン行動の姿勢を変えないまま、別の行動を発動させる基本戦術よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：その解説は何となく理解はできるんだけどな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあバカアインの事だから、直接敵な実践形式の方が早いわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、そこで構えてみなさいよ。今から実践で見せてあげるから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、構えたぜ。いつでもオーケーだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃ、行くわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　ラナはのダーク・ブラスト詠唱の体勢に入った　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイス・ニードル！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　アインはラナのアイス・ニードルをもろに食らった！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッグホ・・・マジかよ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：今みたいにメイン行動の姿勢を変える事なく、別の行動を発動させることが出来るのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：理屈はまあ、そうなんだろうが・・・ラナ、お前も随分と訓練してるんだな、そういうの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何言ってんのよ、アインだって結局すぐマスターするんでしょうが。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そんな簡単にいくかよ・・・まあ、俺ももう１回やってみるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ、構えてくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：イヤよ、私に攻撃を向けないでよ。そっちのダミー素振り君で練習してちょうだい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああそうだったな・・・じゃあこっちのダミーで・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　アインはストレート・スマッシュの体勢に入った　】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハァ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　【　アインはファイア・ボールをダミー素振り君に放った！】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どうだ、ラナ！？　ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・あれ？だ、駄目だったか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う、ううん。出来てたと思うわ。やるじゃない♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よし、サンキューサンキュー！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：通常のメイン行動に加えて、このインスタント行動をどう絡めていくかが戦術の基礎になるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アクションコマンドに何を設定しておくか良く考えて選択する事をオススメするわ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやあ、ホント戦闘スタイルがかなり幅が拡がりそうだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：楽しみになってきたぜ！っしゃ、もういっちょ練習しておくぜ！ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("【戦闘中にインスタントアクションが出来るようになりました】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("【戦闘中、アクションコマンドを右クリックする事で使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            GroundOne.WE.AvailableInstantCommand = true;
+        }
+
+        // スタンスの習得会話
         public static void Message40003(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.WE.CommunicationLana6 = true;
+
             messageList.Add("ラナ：バカアイン、ちょっといい？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：俺はバカじゃねえって。何だ？"); eventList.Add(ActionEvent.None);
@@ -31142,8 +31163,6 @@ namespace DungeonPlayer
             messageList.Add("アイン：別にいいじゃねえか。ダメージレースの基本だろ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：そのスタンス、変えようと思った事は一度もないわけ？"); eventList.Add(ActionEvent.None);
-
-            GroundOne.WE.AlreadyCommunicate = true;
 
             GroundOne.DecisionSequence = 0;
             GroundOne.DecisionMainMessage = "　【　スタンスを変えようと思いますか？　】";
@@ -31179,7 +31198,6 @@ namespace DungeonPlayer
 
             //CallSomeMessageWithAnimation("【物理攻撃５％ＵＰ、魔法攻撃５％ＵＰ】"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE.AlreadyCommunicate = true;
             GroundOne.WE.Truth_CommunicationLana1_1 = true;
         }
 
@@ -31235,13 +31253,13 @@ namespace DungeonPlayer
 
             //CallSomeMessageWithAnimation("【物理防御５％ＵＰ、魔法防御５％ＵＰ】"); eventList.Add(ActionEvent.None);
 
-            GroundOne.WE.AlreadyCommunicate = true;
             GroundOne.WE.Truth_CommunicationLana1_1 = true;
         }
 
+        // 日常会話３
         public static void Message41003(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.WE.Truth_CommunicationLana102 = true;
+            GroundOne.WE.Truth_CommunicationLana7 = true;
 
             messageList.Add("ラナ：どう、少しはダンジョンの進行に慣れてきたんじゃない？"); eventList.Add(ActionEvent.None);
 
@@ -31304,9 +31322,10 @@ namespace DungeonPlayer
             messageList.Add("ラナ：じゃ、よろしくね♪"); eventList.Add(ActionEvent.None);
         }
 
+        // 日常会話４
         public static void Message41004(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
-            GroundOne.WE.Truth_CommunicationLana103 = true;
+            GroundOne.WE.Truth_CommunicationLana8 = true;
 
             messageList.Add("アイン：よう、ラナ。"); eventList.Add(ActionEvent.None);
 
@@ -31374,7 +31393,91 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：まあ、今回はここまでね。次は【技】に関して少し教えてあげるわ♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ああ、頼んだぜ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：ああ、了解！"); eventList.Add(ActionEvent.None);
+        }
+
+        // 日常会話５
+        public static void Message41005(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.Truth_CommunicationLana9 = true;
+
+            messageList.Add("アイン：よう、ラナ。この前の続きを教えてくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっと、良いわよ。確か【技】に関してだったわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、頼む。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【技】は基本的に速度に関係する能力に影響するの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインでも【技】に関してそのぐらいの印象はあるわよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、大体のイメージはあるな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：具体的には【戦闘速度】と【戦闘反応】という値が上がっていくのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【戦闘速度】が上がれば、自分のメイン行動順番が回ってくるのが早くなるのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：相手より【技】の値が大きければ、相手のメイン行動が先に見える場合でもちょっとずつ追いつけるって感じだよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、まあそんな所よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：次が【戦闘反応】なんだけれども・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインにこれ分かるかしら。一応説明だけしておくわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：任せておけ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【戦闘反応】を上げる事によって、インスタント行動を行うためのインスタントポイントの回復が早くなるの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：インスタント行動というのがイメージしにくい場合は「とっさの行動」という風に読み替えて認識すると良いわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：インスタントポイントが満タンになった状態では特に影響はしなくなるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：インスタント行動を適度に織り交ぜていく事が【戦闘反応】の上昇を上手く使う行動になるから覚えておいてね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：って、聞いてるわよね？ちょっとそこのバカアイン。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ああ、もちろんだ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：早くなるって事だよな！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハアアァ・・・まあ実践で慣れるのが一番ね。とりあえず覚えるだけ覚えといてちょうだい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、了解だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：これで【技】に関する内容は全部なのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ううん、実はもう一つ重要なポイントがあるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：戦闘中にダメージを相手に与えた時、稀にそのダメージがいつもより極端に大きい場合があるのは知ってるでしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それなら俺も知ってるぜ。スーパークリティカルヒットの事だよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっと・・・いちいちスーパーは付けなくても良いわよ。"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("ラナ：【技】を上げる事によって、そのクリティカルヒットの発生確率がわずかに上昇するのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：発生確率の・・・上昇！？マジかよ、それ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それってつまり、クリティカルヒットがどんどん出やすくなるって事だよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そういう事になるわね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：すげぇな・・・【技】を上げるとある意味良い事づくしだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも原則的には順序が早くなったり、確率が上がるだけでダメージが増強されるわけじゃないからその点は注意が必要よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、分かったぜ。サンキュー。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：こんな所かしらね。次は【知】について教えてあげるから覚えておいてね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None);
+        }
+        
+        // 日常会話６
+        public static void Message41006(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.Truth_CommunicationLana10 = true;
         }
 
         // オル・ランディス遭遇前後
