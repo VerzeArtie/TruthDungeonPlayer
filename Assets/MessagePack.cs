@@ -31531,6 +31531,7 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：無いって言ってるじゃないの。"); eventList.Add(ActionEvent.None);
 
+            messageList.Add("アイン：何らかの特殊攻撃への抵抗力が付くとか？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：しつこいわね。いい加減にしないと蹴るわよ。"); eventList.Add(ActionEvent.None);
 
@@ -31543,6 +31544,101 @@ namespace DungeonPlayer
             messageList.Add("ラナ：じゃあ、続きはまた今度ね♪"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：ああ、了解！"); eventList.Add(ActionEvent.None);
+        }
+
+        // 日常会話７
+        public static void Message41007(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            GroundOne.WE.Truth_CommunicationLana11 = true;
+
+            messageList.Add("アイン：ラナ。この前の解説の続きを頼むぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、良いわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：最後の５つ目のパラメタ【心】に関してなんだけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【心】を上げる事によって【潜在能力】が上昇していくわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：その【潜在能力】ってのは何なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ダメージ系統に属さず、行動原理定義内に含まれているＸの影響因子に影響するみたいなんだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：Ｘの・・・影響因子？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ごめんなさい・・・この意味に関しては、私も良く分かってないのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そ、そうなのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、過去に何度も色々調べてみてはいるんだけど、どうしても解釈する部分の情報にまとまりが無いのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ごめんなさいね、解説すると言っておきながらなんだけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：い、いやいやいや、悪い。悪かった。別に良いって、気にするな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：しかし・・・学園内で常に主席を取っていたラナでも分からない事ってあるんだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、私なんて本当まだまだよ。もっと・・・ちゃんとしないと。。。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ま、待て待て！分かった、分かったから！　そういや、他に隠し要素とかは無いのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：隠し要素って言うと、ちょっと語弊があるけど、【心】パラメタに関して重要なのはもう一つあるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おお、それ頼むぜ、教えてくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：今まで【力】【技】【知】でも説明で取り上げてきた戦闘関連の値に関してなんだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：実はこれらの値の全てが上昇の対象となるのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな・・・ちょっと待ってくれよ、ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それって【物理攻撃】【物理防御】【魔法攻撃】【魔法防御】【戦闘速度】【戦闘反応】【潜在能力】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：この全部が上昇の対象だって言ってるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、そういう事になるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：例えば【物理攻撃】を高めたい場合は、【力】を上げても【心】を上げても良いって事よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【魔法攻撃】に関しても同様ね。【知】または【心】を上げる事で上昇させる事が出来るわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【心】に関しては以上ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なるほどな・・・確かにこいつはちょっと難解だな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：全体的な上昇が期待できるという雰囲気は何となく掴めるけどな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：根本的な所が見えない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　いや、待てよ　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと、解説は以上よ。ボーっと突っ立ってないで。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おっ、そうだったな。悪い悪い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：念のためだから、一応今まで解説を要約しておくわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、頼む。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【力】を上昇させれば、【物理攻撃】【物理防御】が上昇。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【技】を上昇させれば、【戦闘速度】【戦闘反応】が上昇。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【知】を上昇させれば、【魔法攻撃】【魔法防御】が上昇。加えて、最大マナの上限を上げる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【体】を上昇させれば、最大ライフの上限を上げる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【心】を上昇させれば、【潜在能力】が上昇。加えて、戦闘関連の値すべてを上げる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：要約は以上よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ！いろいろとありがとな、サンキュー！"); eventList.Add(ActionEvent.None);
+
+
+            messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None);
         }
 
         // オル・ランディス遭遇前後

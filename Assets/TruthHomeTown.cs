@@ -866,6 +866,13 @@ namespace DungeonPlayer
                 NormalTapOK();
             }
             #endregion
+            #region "日常会話７"
+            else if (GroundOne.WE.Truth_CommunicationLana11)
+            {
+                MessagePack.Message41007(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "オル・ランディス遭遇前後"
             else if (GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
             {
