@@ -31152,10 +31152,18 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：俺はバカじゃねえって。何だ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：フレッシュ・ヒール。覚えたわよね。"); eventList.Add(ActionEvent.None);
+            if (GroundOne.MC.FreshHeal)
+            {
+                messageList.Add("ラナ：フレッシュ・ヒール。覚えたわよね。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：ん？ああ、そうだな。なんとなく思い出したぜ。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ん？ああ、そうだな。大体良いタイミングで回復させるぜ。"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("ラナ：戦闘中にライフが減ってきたら？"); eventList.Add(ActionEvent.None);
 
+                messageList.Add("アイン：ポーションを良いタイミングで使っていくぜ。"); eventList.Add(ActionEvent.None);
+            }
             messageList.Add("アイン：ヒール ＆ アタック！ 基本だからな！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：昔っからそうよね・・・その単調なノリ・・・"); eventList.Add(ActionEvent.None);
@@ -31637,6 +31645,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：っしゃ！いろいろとありがとな、サンキュー！"); eventList.Add(ActionEvent.None);
 
+            messageList.Add("ラナ：コア・パラメタは戦闘を有利に進めるための基本的な値だから良く考えてから割り振ってよね。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：了解！"); eventList.Add(ActionEvent.None);
         }

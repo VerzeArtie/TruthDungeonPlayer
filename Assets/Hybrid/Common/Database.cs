@@ -1098,6 +1098,7 @@ namespace DungeonPlayer
         public const string TOSSIN = @"突進";
         public const string BUFFUP_STRENGTH = @"パワーアップ【力】";
         public const string MAGIC_ATTACK = @"魔法攻撃";
+        public const string RENZOKU_ATTACK = @"連続攻撃";
 
         // 戦闘中のアニメーション文字
         public const string SUCCESS_DEFLECTION = @"物理反射！";

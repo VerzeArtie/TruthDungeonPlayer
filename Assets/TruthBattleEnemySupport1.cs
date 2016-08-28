@@ -934,13 +934,10 @@ namespace DungeonPlayer
                     {
                         switch (player.FirstName)
                         {
-                            // 「警告」抽象化していくべきではないだろうか？
+                            // 一見コマンドは抽象化出来そうだが、モンスター個々でダメージ倍率が違ったり、
+                            // コマンド名が同じであっても、中身を変えたりする時があるので
+                            // 個別に分けて記載した方が良い。
                             #region "１階の敵"
-                            case Database.ENEMY_KOUKAKU_WURM:
-                                UpdateBattleText(player.FirstName + "は硬い甲殻部分を丸めて突進してきた！\r\n");
-                                PlayerNormalAttack(player, target, 2.0f, false, true);
-                                break;
-
                             case Database.ENEMY_HIYOWA_BEATLE:
                                 effectValue = 4.0F;
                                 UpdateBattleText(player.FirstName + "は尖った角を掲げ上げた！ 【力】" + effectValue.ToString() + "上昇\r\n");
@@ -954,14 +951,27 @@ namespace DungeonPlayer
                                 PlayerNormalAttack(player, target, 2.0f, false, true);
                                 break;
 
+                            case Database.ENEMY_KOUKAKU_WURM:
+                                UpdateBattleText(player.FirstName + "は硬い甲殻部分を丸めて突進してきた！\r\n");
+                                PlayerNormalAttack(player, target, 2.0f, false, true);
+                                break;
+
                             case Database.ENEMY_GREEN_CHILD:
                                 UpdateBattleText(player.FirstName + "はグリーン・スプラッシュを唱えた！\r\n");
                                 PlayerMagicAttack(player, target, 0, 2.0f);
                                 break;
 
                             case Database.ENEMY_MANDRAGORA:
-                                UpdateBattleText(player.FirstName + "は奇妙な悲鳴を上げてきた！\r\n");
-                                PlayerMagicAttack(player, target, 0, 3.0f);
+                                if (player.ActionLabel.text == "超音波")
+                                {
+                                    UpdateBattleText(player.FirstName + "は奇妙な悲鳴を上げてきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerMagicAttack(player, group[ii], 0, 2.0f);
+                                    }
+                                }
                                 break;
 
                             case Database.ENEMY_RED_HOPPER:
@@ -976,6 +986,11 @@ namespace DungeonPlayer
                             case Database.ENEMY_EARTH_SPIDER:
                                 UpdateBattleText(player.FirstName + "は蜘蛛の糸を絡み付かせてきた！\r\n");
                                 NowSlow(player, target, 2);
+                                break;
+
+                            case Database.ENEMY_WILD_ANT:
+                                UpdateBattleText(player.FirstName + "は大きなアゴでかみついてきた！\r\n");
+                                PlayerNormalAttack(player, target, 2.0f, false, true);
                                 break;
 
                             case Database.ENEMY_ALRAUNE:
@@ -1015,6 +1030,7 @@ namespace DungeonPlayer
                                 PlayerNormalAttack(player, target, 0, false, true);
                                 System.Threading.Thread.Sleep(100);
                                 break;
+
                             case Database.ENEMY_ZASSYOKU_RABBIT:
                                 if (player.ActionLabel.text == Database.BUFFUP_STRENGTH)
                                 {
@@ -1029,6 +1045,17 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は勢い良く突進してきた！\r\n");
                                     PlayerNormalAttack(player, target, 3.0f, false, true);
                                 }
+                                break;
+
+                            case Database.ENEMY_ASH_CREEPER:
+                                if (player.ActionLabel.text == "まとわりつく")
+                                {
+                                    UpdateBattleText(player.FirstName + "は灰をまき散らして、まとわりついてきた！\r\n");
+                                    NowSlow(player, target, 2);
+                                }
+                                break;
+
+                            case Database.ENEMY_GIANT_SNAKE:
                                 break;
 
                             case Database.ENEMY_WONDER_SEED:
@@ -1057,7 +1084,7 @@ namespace DungeonPlayer
                                         NowSlow(player, target, 2);
                                     }
                                 }
-                                else if (player.ActionLabel.text == "連続攻撃")
+                                else if (player.ActionLabel.text == Database.RENZOKU_ATTACK)
                                 {
                                     UpdateBattleText(player.FirstName + "は２回連続で攻撃を繰り出してきた！\r\n");
                                     PlayerNormalAttack(player, target, 0, false, true);
@@ -1066,6 +1093,7 @@ namespace DungeonPlayer
                                     System.Threading.Thread.Sleep(100);
                                 }
                                 break;
+
                             case Database.ENEMY_FLANSIS_KNIGHT:
                                 if (player.ActionLabel.text == "なぎ払い")
                                 {

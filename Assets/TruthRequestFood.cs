@@ -53,10 +53,10 @@ namespace DungeonPlayer
             base.Start();
 
             // debug
-            GroundOne.WE.AvailableFood2 = true;
-            GroundOne.WE.AvailableFood3 = true;
-            GroundOne.WE.AvailableFood4 = true;
-            GroundOne.WE.AvailableFood5 = true;
+            //GroundOne.WE.AvailableFood2 = true;
+            //GroundOne.WE.AvailableFood3 = true;
+            //GroundOne.WE.AvailableFood4 = true;
+            //GroundOne.WE.AvailableFood5 = true;
 
             if (GroundOne.WE.TruthCompleteArea1) GroundOne.WE.AvailableFood2 = true;
             if (GroundOne.WE.TruthCompleteArea2) GroundOne.WE.AvailableFood3 = true;

@@ -2730,6 +2730,27 @@ namespace DungeonPlayer
                 mainMessage.text = "あと" + GroundOne.UpPoint.ToString() + "ポイントを割り振ってください。";
             }
         }
+
+        private MainCharacter SelectCurrentPlayer()
+        {
+            if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
+            {
+                return GroundOne.MC;
+            }
+            else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
+            {
+                return GroundOne.SC;
+            }
+            else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
+            {
+                return GroundOne.TC;
+            }
+            else
+            {
+                return GroundOne.MC;
+            }
+        }
+
         public void buttonStrength_Click()
         {
             if (GroundOne.UpPoint <= 0) { return; } // add unity
@@ -2737,24 +2758,11 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.MC.Strength++;
-                    strength.text = GroundOne.MC.Strength.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.MC);
-                }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.SC.Strength++;
-                    strength.text = GroundOne.SC.Strength.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.SC);
-                }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.TC.Strength++;
-                    strength.text = GroundOne.TC.Strength.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.TC);
-                }
+                MainCharacter chara = SelectCurrentPlayer();
+                chara.Strength++;
+                strength.text = chara.Strength.ToString();
+                SettingCoreParameter(CoreType.Strength, chara.Strength, chara.BuffStrength_Accessory, chara.BuffStrength_Food, this.strength, this.addStrength, this.addStrengthFood, this.totalStrength);
+                RefreshPartyMembersBattleStatus(chara);
                 CheckUpPoint();
             }
             // オーバーシフティング
@@ -2771,24 +2779,11 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.MC.Agility++;
-                    agility.text = GroundOne.MC.Agility.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.MC);
-                }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.SC.Agility++;
-                    agility.text = GroundOne.SC.Agility.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.SC);
-                }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.TC.Agility++;
-                    agility.text = GroundOne.TC.Agility.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.TC);
-                }
+                MainCharacter chara = SelectCurrentPlayer();
+                chara.Agility++;
+                agility.text = chara.Agility.ToString();
+                RefreshPartyMembersBattleStatus(chara);
+                SettingCoreParameter(CoreType.Agility, chara.Agility, chara.BuffAgility_Accessory, chara.BuffAgility_Food, this.agility, this.addAgility, this.addAgilityFood, this.totalAgility);
                 CheckUpPoint();
             }
             // オーバーシフティング
@@ -2805,36 +2800,15 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
+                MainCharacter chara = SelectCurrentPlayer();
+                chara.Intelligence++;
+                intelligence.text = chara.Intelligence.ToString();
+                if (chara.AvailableMana)
                 {
-                    GroundOne.MC.Intelligence++;
-                    intelligence.text = GroundOne.MC.Intelligence.ToString();
-                    if (GroundOne.MC.AvailableMana)
-                    {
-                        this.mana.text = GroundOne.MC.CurrentMana.ToString() + " / " + GroundOne.MC.MaxMana.ToString();
-                    }
-                    RefreshPartyMembersBattleStatus(GroundOne.MC);
+                    this.mana.text = chara.CurrentMana.ToString() + " / " + chara.MaxMana.ToString();
                 }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.SC.Intelligence++;
-                    intelligence.text = GroundOne.SC.Intelligence.ToString();
-                    if (GroundOne.SC.AvailableMana)
-                    {
-                        this.mana.text = GroundOne.SC.CurrentMana.ToString() + " / " + GroundOne.SC.MaxMana.ToString();
-                    }
-                    RefreshPartyMembersBattleStatus(GroundOne.SC);
-                }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.TC.Intelligence++;
-                    intelligence.text = GroundOne.TC.Intelligence.ToString();
-                    if (GroundOne.TC.AvailableMana)
-                    {
-                        this.mana.text = GroundOne.TC.CurrentMana.ToString() + " / " + GroundOne.TC.MaxMana.ToString();
-                    }
-                    RefreshPartyMembersBattleStatus(GroundOne.TC);
-                }
+                RefreshPartyMembersBattleStatus(chara);
+                SettingCoreParameter(CoreType.Intelligence, chara.Intelligence, chara.BuffIntelligence_Accessory, chara.BuffIntelligence_Food, this.intelligence, this.addIntelligence, this.addIntelligenceFood, this.totalIntelligence);
                 CheckUpPoint();
             }
             // オーバーシフティング
@@ -2851,27 +2825,12 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.MC.Stamina++;
-                    stamina.text = GroundOne.MC.Stamina.ToString();
-                    this.life.text = GroundOne.MC.CurrentLife.ToString() + " / " + GroundOne.MC.MaxLife.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.MC);
-                }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.SC.Stamina++;
-                    stamina.text = GroundOne.SC.Stamina.ToString();
-                    this.life.text = GroundOne.SC.CurrentLife.ToString() + " / " + GroundOne.SC.MaxLife.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.SC);
-                }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.TC.Stamina++;
-                    stamina.text = GroundOne.TC.Stamina.ToString();
-                    this.life.text = GroundOne.TC.CurrentLife.ToString() + " / " + GroundOne.TC.MaxLife.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.TC);
-                }
+                MainCharacter chara = SelectCurrentPlayer();
+                chara.Stamina++;
+                stamina.text = chara.Stamina.ToString();
+                this.life.text = chara.CurrentLife.ToString() + " / " + chara.MaxLife.ToString();
+                RefreshPartyMembersBattleStatus(chara);
+                SettingCoreParameter(CoreType.Stamina, chara.Stamina, chara.BuffStamina_Accessory, chara.BuffStamina_Food, this.stamina, this.addStamina, this.addStaminaFood, this.totalStamina);
                 RefreshPartyMembersLife(labelFirstPlayerLife, labelSecondPlayerLife, labelThirdPlayerLife);
                 CheckUpPoint();
             }
@@ -2889,24 +2848,11 @@ namespace DungeonPlayer
             // 通常レベルアップ＋１のロジック
             if (GroundOne.LevelUp)
             {
-                if (GroundOne.MC != null && GroundOne.MC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.MC.Mind++;
-                    mind.text = GroundOne.MC.Mind.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.MC);
-                }
-                else if (GroundOne.SC != null && GroundOne.SC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.SC.Mind++;
-                    mind.text = GroundOne.SC.Mind.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.SC);
-                }
-                else if (GroundOne.TC != null && GroundOne.TC.PlayerStatusColor == this.Background.GetComponent<Image>().color)
-                {
-                    GroundOne.TC.Mind++;
-                    mind.text = GroundOne.TC.Mind.ToString();
-                    RefreshPartyMembersBattleStatus(GroundOne.TC);
-                }
+                MainCharacter chara = SelectCurrentPlayer();
+                chara.Mind++;
+                mind.text = chara.Mind.ToString();
+                RefreshPartyMembersBattleStatus(chara);
+                SettingCoreParameter(CoreType.Mind, chara.Mind, chara.BuffMind_Accessory, chara.BuffMind_Food, this.mind, this.addMind, this.addMindFood, this.totalMind);
                 CheckUpPoint();
             }
             // オーバーシフティング
