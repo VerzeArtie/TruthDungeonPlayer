@@ -561,11 +561,29 @@ namespace DungeonPlayer
                     }
                     break;
 
+                case Database.ENEMY_TRANSPARENT_UMIUSHI:
+                    switch (AP.Math.RandomInteger(2))
+                    {
+                        case 0:
+                            break;
+
+                        case 1:
+                            break;
+                    }
+                    break;
+
                 case Database.ENEMY_ROLLING_MAGURO:
-                    Debug.Log("targetting: " + this.Target.FirstName);
                     if (this.Target.FirstName == GroundOne.MC.FirstName)
                     {
-                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "捕獲選定");
+                        if ((GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && GroundOne.SC.Dead) &&
+                            (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && GroundOne.TC.Dead))
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ローリング突進");
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "捕獲選定");
+                        }
                     }
                     else
                     {
@@ -596,14 +614,10 @@ namespace DungeonPlayer
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "連続攻撃";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, Database.RENZOKU_ATTACK);
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "金切り声";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "金切り声");
                             break;
                     }
                     break;
@@ -612,28 +626,20 @@ namespace DungeonPlayer
                     switch (AP.Math.RandomInteger(3))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "地響き";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "地響き");
                             break;
                         case 1:
                             if (this.CurrentPhysicalDefenseUp <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "タートル・シェル";
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "タートル・シェル");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "がぶりつき";
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "がぶりつき");
                             }
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "がぶりつき";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "がぶりつき");
                             break;
                     }
                     break;
@@ -644,18 +650,15 @@ namespace DungeonPlayer
                         case 0:
                             if (this.CurrentAgilityUp <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "伸張する舌";
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "伸張する舌");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "トリプル・パンチ";
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "トリプル・パンチ");
                             }
                             break;
                         case 1:
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "トリプル・パンチ");
                             this.PA = PlayerAction.SpecialSkill;
                             this.ActionLabel.text = "トリプル・パンチ";
                             this.Target = target;
