@@ -1056,6 +1056,12 @@ namespace DungeonPlayer
                                 break;
 
                             case Database.ENEMY_GIANT_SNAKE:
+                                if (player.ActionLabel.text == "毒かみつき")
+                                {
+                                    UpdateBattleText(player.FirstName + "は毒の牙でかみついてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                    NowPoison(player, target, 3, false);
+                                }
                                 break;
 
                             case Database.ENEMY_WONDER_SEED:
@@ -1262,14 +1268,14 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は黒色の毒胞子をばらまいてきた！！\r\n");
                                     if (GroundOne.MC.Dead == false)
                                     {
-                                        NowPoison(player, GroundOne.MC, 999, true);
+                                        NowPoison(player, GroundOne.MC, Database.INFINITY, true);
                                         NowBlind(player, GroundOne.MC, 4);
                                     }
                                     if (GroundOne.SC != null)
                                     {
                                         if (GroundOne.SC.Dead == false)
                                         {
-                                            NowPoison(player, GroundOne.SC, 999, true);
+                                            NowPoison(player, GroundOne.SC, Database.INFINITY, true);
                                             NowBlind(player, GroundOne.SC, 4);
                                         }
                                     }
@@ -1370,17 +1376,19 @@ namespace DungeonPlayer
                             case Database.ENEMY_ROLLING_MAGURO:
                                 if (player.ActionLabel.text == "捕獲選定")
                                 {
-                                    UpdateBattleText(player.FirstName + "はローリング突進するターゲットを選び始めた！\r\n");
                                     if (GroundOne.SC != null && !GroundOne.SC.Dead)
                                     {
+                                        UpdateBattleText(player.FirstName + "はローリング突進するターゲットに" + GroundOne.SC.FirstName + "を選んだ！\r\n");
                                         player.Target = GroundOne.SC;
                                     }
                                     else if (GroundOne.TC != null && !GroundOne.TC.Dead)
                                     {
+                                        UpdateBattleText(player.FirstName + "はローリング突進するターゲットに" + GroundOne.TC.FirstName + "を選んだ！\r\n");
                                         player.Target = GroundOne.TC;
                                     }
                                     else
                                     {
+                                        UpdateBattleText(player.FirstName + "はローリング突進するターゲットに" + GroundOne.MC.FirstName + "を選んだ！\r\n");
                                         player.Target = GroundOne.MC;
                                     }
                                 }

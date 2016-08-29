@@ -3614,11 +3614,13 @@ namespace DungeonPlayer
         /// <summary>
         /// "[後編必須]ただし、パーティ編成が可能にすることを想定すると、このままではいけないはず。"
         /// </summary>
-        /// <param name="mainCharacter"></param>
-        private void UpdatePlayerTarget(MainCharacter mainCharacter)
+        /// <param name="player"></param>
+        private void UpdatePlayerTarget(MainCharacter player)
         {
-            if (mainCharacter == ec1 || mainCharacter == ec2 || mainCharacter == ec3)
+            if (player == ec1 || player == ec2 || player == ec3)
             {
+                if (player.Target.Dead == false) { return; } // ターゲットが死亡してない場合は変更しない。
+
                 if (GroundOne.DuelMode)
                 {
                     // Duelモードの場合、なにもしない。
@@ -3630,32 +3632,32 @@ namespace DungeonPlayer
                 else if (GroundOne.WE.AvailableSecondCharacter == true && GroundOne.WE.AvailableThirdCharacter == false)
                 {
                     // 味方二人の場合、死んでないほうへ切り替える。
-                    if (GroundOne.MC != null && GroundOne.MC.Dead) mainCharacter.Target = GroundOne.SC;
-                    else if (GroundOne.SC != null & GroundOne.SC.Dead) mainCharacter.Target = GroundOne.MC;
+                    if (GroundOne.MC != null && GroundOne.MC.Dead) player.Target = GroundOne.SC;
+                    else if (GroundOne.SC != null & GroundOne.SC.Dead) player.Target = GroundOne.MC;
                 }
                 else
                 {
                     List<MainCharacter> group = new List<MainCharacter>();
                     SetupAllyGroup(ref group);
-                    if (((TruthEnemyCharacter)mainCharacter).InitialTarget == TruthEnemyCharacter.TargetLogic.Front)
+                    if (((TruthEnemyCharacter)player).InitialTarget == TruthEnemyCharacter.TargetLogic.Front)
                     {
-                        mainCharacter.Target = group[0];
+                        player.Target = group[0];
                     }
-                    else
+                    else if (((TruthEnemyCharacter)player).InitialTarget == TruthEnemyCharacter.TargetLogic.Back)
                     {
-                        mainCharacter.Target = group[group.Count - 1];
+                        player.Target = group[group.Count - 1];
                     }
                 }
 
                 // 敵側の場合、プレイヤー側へ行動完了後の行動指針を待機にしたことを伝えるため。
-                if (mainCharacter.FullName == Database.DUEL_CALMANS_OHN)
+                if (player.FullName == Database.DUEL_CALMANS_OHN)
                 {
-                    mainCharacter.PA = MainCharacter.PlayerAction.Defense;
-                    mainCharacter.ActionLabel.text = Database.DEFENSE_JP;
+                    player.PA = MainCharacter.PlayerAction.Defense;
+                    player.ActionLabel.text = Database.DEFENSE_JP;
                 }
                 else
                 {
-                    mainCharacter.ActionLabel.text = Database.STAY_JP;
+                    player.ActionLabel.text = Database.STAY_JP;
                 }
             }
             else
@@ -3667,15 +3669,15 @@ namespace DungeonPlayer
                 else if (ec2 != null && ec3 == null)
                 {
                     // 敵二人の場合、死んでないほうへ切り替える。
-                    if (ec1 != null && ec1.Dead) mainCharacter.Target = ec2;
-                    else if (ec2 != null && ec2.Dead) mainCharacter.Target = ec1;
+                    if (ec1 != null && ec1.Dead) player.Target = ec2;
+                    else if (ec2 != null && ec2.Dead) player.Target = ec1;
                 }
                 else
                 {
-                    if (mainCharacter.Target.Dead == false) { return; }
+                    if (player.Target.Dead == false) { return; }
                     List<MainCharacter> group = new List<MainCharacter>();
                     SetupEnemyGroup(ref group);
-                    mainCharacter.Target = group[0];
+                    player.Target = group[0];
                 }
             }
         }
@@ -3798,6 +3800,7 @@ namespace DungeonPlayer
                     UpkeepStep();
                     break;
                 case MethodType.PlayerAttackPhase:
+                    Debug.Log("PAPhase: " + player.FirstName + " to " + player.Target.FirstName);
                     PlayerAttackPhase(player, false, false, true);
                     break;
                 case MethodType.CleanUpForBoss:
