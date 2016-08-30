@@ -1373,6 +1373,28 @@ namespace DungeonPlayer
                                 }
                                 break;
 
+                            case Database.ENEMY_TRANSPARENT_UMIUSHI:
+                                if (player.ActionLabel.text == "透明化")
+                                {
+                                    UpdateBattleText(player.FirstName + "は身体全体を透明化させてきた！\r\n");
+                                    // 魔法防御UP
+                                    AnimationDamage(0, player, 0, Color.black, false, false, "魔法防御UP");
+                                    effectValue = 300.0F;
+                                    player.CurrentMagicDefenseUp = 4;
+                                    player.CurrentMagicDefenseUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbMagicDefenseUp, Database.BaseResourceFolder + "BuffPhysicalDefenseUp", 4);
+                                }
+                                else if (player.ActionLabel.text == "吸い取り")
+                                {
+                                    UpdateBattleText(player.FirstName + "はアインの身体を吸いこもうとしてきた！\r\n");
+                                    double damage = PrimaryLogic.DevouringPlagueValue(player, GroundOne.DuelMode);
+                                    if (AbstractMagicDamage(player, target, 0, ref damage, 0, "DevouringPlague", 29, TruthActionCommand.MagicType.Shadow, false, CriticalType.Random))
+                                    {
+                                        PlayerAbstractLifeGain(player, player, 0, damage, 0, "", 0);
+                                    }
+                                }
+                                break;
+
                             case Database.ENEMY_ROLLING_MAGURO:
                                 if (player.ActionLabel.text == "捕獲選定")
                                 {
@@ -1423,6 +1445,14 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "はキリキリした声を全体へ発生させてきた！\r\n");
                                     // 全体ダメージ
                                     PlayerMagicAttackAllEnemy(player, PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode) * 2.0F, Database.SOUND_MAGIC_ATTACK, TruthActionCommand.MagicType.Will);
+                                }
+                                break;
+
+                            case Database.ENEMY_BRIGHT_SQUID:
+                                if (player.ActionLabel.text == "フラッシュ")
+                                {
+                                    UpdateBattleText(player.FirstName + "は" + target.FirstName + "に向けて身体全体を発行させてきた！\r\n");
+                                    NowBlind(player, target, 3);
                                 }
                                 break;
 
@@ -1539,6 +1569,24 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は" + target.FirstName + "に両方のハサミで攻撃してきた！\r\n");
                                     PlayerNormalAttack(player, target, 1.5F, false, false);
                                     PlayerNormalAttack(player, target, 1.5F, false, false);
+                                }
+                                break;
+
+                            case Database.ENEMY_ABARE_SHARK:
+                                if (player.ActionLabel.text == "のこぎり歯")
+                                {
+                                    UpdateBattleText(player.FirstName + "は" + target.FirstName + "に大きな口を開けて襲ってきた！\r\n");
+                                    PlayerNormalAttack(player, target, 2.0F, true, false);
+                                }
+                                else if (player.ActionLabel.text == "食い散らかし")
+                                {
+                                    UpdateBattleText(player.FirstName + "は" + target.FirstName + "に辺り一帯を食い散らかしにかかってきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerNormalAttack(player, group[ii], 1.5F, true, false);
+                                    }
                                 }
                                 break;
 
