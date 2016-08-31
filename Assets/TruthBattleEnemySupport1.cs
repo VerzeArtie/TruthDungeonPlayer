@@ -1189,19 +1189,35 @@ namespace DungeonPlayer
                                 PlayerNormalAttack(player, target, 3.0f, false, true);
                                 break;
 
+                            case Database.ENEMY_MIST_ELEMENTAL:
+                                if (player.ActionLabel.text == "ホワイトミスト")
+                                {
+                                    UpdateBattleText(player.FirstName + "は真っ白な霧を空中へ飛散させてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                    NowBlind(player, target, 3);
+                                }
+                                break;
+
+                            case Database.ENEMY_WHISPER_DRYAD:
+                                if (player.ActionLabel.text == "猛毒のバラ")
+                                {
+                                    UpdateBattleText(player.FirstName + "は猛毒のバラをばらまいてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 0, false, true);
+                                    NowPoison(player, target, 3, true);
+                                }
+                                break;
+
                             case Database.ENEMY_BLOOD_MOSS:
                                 UpdateBattleText(player.FirstName + "は赤い胞子をばら撒いてきた！\r\n");
                                 if (GroundOne.MC.Dead == false)
                                 {
-                                    PlayerNormalAttack(player, GroundOne.MC, 0, false, true);
-                                    System.Threading.Thread.Sleep(100);
+                                    NowTemptation(player, GroundOne.MC, 2);
                                 }
                                 if (GroundOne.SC != null)
                                 {
                                     if (GroundOne.SC.Dead == false)
                                     {
-                                        PlayerNormalAttack(player, GroundOne.SC, 0, false, true);
-                                        System.Threading.Thread.Sleep(100);
+                                        NowTemptation(player, GroundOne.SC, 2);
                                     }
                                 }
                                 break;
@@ -1390,7 +1406,7 @@ namespace DungeonPlayer
                                     double damage = PrimaryLogic.DevouringPlagueValue(player, GroundOne.DuelMode);
                                     if (AbstractMagicDamage(player, target, 0, ref damage, 0, "DevouringPlague", 29, TruthActionCommand.MagicType.Shadow, false, CriticalType.Random))
                                     {
-                                        PlayerAbstractLifeGain(player, player, 0, damage, 0, "", 0);
+                                        PlayerAbstractLifeGain(player, player, 0, damage/2, 0, "", 0);
                                     }
                                 }
                                 break;
@@ -1417,7 +1433,7 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "ローリング突進")
                                 {
                                     UpdateBattleText(player.FirstName + "は" + target.FirstName + "に猛回転しながら突進してきた！\r\n");
-                                    PlayerNormalAttack(player, target, 2.0F, true, false);
+                                    PlayerNormalAttack(player, target, 2.5F, false, false);
                                 }
                                 break;
 
@@ -1553,7 +1569,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "豪腕ハサミ")
                                 {
                                     UpdateBattleText(player.FirstName + "は" + target.FirstName + "に強引にハサミを向けてきた！\r\n");
-                                    PlayerNormalAttack(player, target, 2.0F, true, false);
+                                    PlayerNormalAttack(player, target, 2.0F, false, false);
                                 }
                                 else if (player.ActionLabel.text == "突進バサミ")
                                 {
@@ -1576,7 +1592,7 @@ namespace DungeonPlayer
                                 if (player.ActionLabel.text == "のこぎり歯")
                                 {
                                     UpdateBattleText(player.FirstName + "は" + target.FirstName + "に大きな口を開けて襲ってきた！\r\n");
-                                    PlayerNormalAttack(player, target, 2.0F, true, false);
+                                    PlayerNormalAttack(player, target, 2.0F, false, false);
                                 }
                                 else if (player.ActionLabel.text == "食い散らかし")
                                 {
@@ -1585,7 +1601,7 @@ namespace DungeonPlayer
                                     SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
-                                        PlayerNormalAttack(player, group[ii], 1.5F, true, false);
+                                        PlayerNormalAttack(player, group[ii], 1.5F, false, false);
                                     }
                                 }
                                 break;
@@ -1638,7 +1654,25 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "キャンサー・ブロー")
                                 {
                                     UpdateBattleText(player.FirstName + "のキャンサー・ブローが炸裂！\r\n");
-                                    PlayerNormalAttack(player, target, 5.0F, false, false);
+                                    PlayerNormalAttack(player, target, 3.0F, false, false);
+                                }
+                                break;
+
+                            case Database.ENEMY_MACHIBUSE_ANKOU:
+                                if (player.ActionLabel.text == "飛びかかり")
+                                {
+                                    UpdateBattleText(player.FirstName + "は身体全体で飛びかかってきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        NowSlow(player, group[ii], 3);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "かぶりつき")
+                                {
+                                    UpdateBattleText(player.FirstName + "は突然見えない所から、かぶりついてきた！\r\n");
+                                    PlayerNormalAttack(player, target, 2.0F, false, false);
                                 }
                                 break;
 
@@ -1742,6 +1776,8 @@ namespace DungeonPlayer
                                     // 物理攻撃
                                     double damage = PrimaryLogic.PhysicalAttackValue(player, PrimaryLogic.NeedType.Random, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, GroundOne.DuelMode);
                                     PlayerNormalAttack(player, target, 10.0f, 0, false, true, 0, 0, string.Empty, -1, true, CriticalType.Random);
+                                    player.RemoveStrengthUp();
+                                    player.RemoveMindUp();
                                 }
                                 else if (player.ActionLabel.text == "グングニルの閃光")
                                 {
@@ -1750,6 +1786,8 @@ namespace DungeonPlayer
                                     // 魔法攻撃
                                     double damage = PrimaryLogic.MagicAttackValue(player, PrimaryLogic.NeedType.Random, 1.0f, 0.0f, PrimaryLogic.SpellSkillType.Standard, false, GroundOne.DuelMode);
                                     PlayerMagicAttack(player, target, 0, 10.0f);
+                                    player.RemoveMagicAttackUp();
+                                    player.RemoveSpeedUp();
                                 }
                                 break;
 
