@@ -2420,7 +2420,7 @@ namespace DungeonPlayer
         public const string ENEMY_WIND_BREAKER = @"ウィンド・ブレイカー";
         public const string ENEMY_TUNDRA_LONGHORN_DEER = @"ツンドラ・ロングホーン・ディア";
 
-        public const string ENEMY_BOSS_HOWLING_SEIZER = @"三階の守護者：恐鳴主ハウリング・シーザー";
+        public const string ENEMY_BOSS_HOWLING_SEIZER = @"恐鳴主ハウリング・シーザー";
 
         public const string ENEMY_DRAGON_DESOLATOR_AZOLD = @"凍てつく者アゾルド";//(The Desolate)";
         #endregion

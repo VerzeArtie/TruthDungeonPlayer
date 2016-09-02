@@ -475,6 +475,7 @@ namespace DungeonPlayer
                             break;
                     }
                     break;
+
                 case Database.ENEMY_MOSSGREEN_DADDY:
                     switch (AP.Math.RandomInteger(3))
                     {
@@ -736,7 +737,6 @@ namespace DungeonPlayer
                     }
                     break;
 
-
                 case Database.ENEMY_MOGURU_MANTA:
                     switch (AP.Math.RandomInteger(2))
                     {
@@ -838,8 +838,7 @@ namespace DungeonPlayer
                             break;
                     }
                     break;
-
-
+                    
                 case Database.ENEMY_BLACK_STARFISH:
                     switch (AP.Math.RandomInteger(2))
                     {
@@ -919,7 +918,6 @@ namespace DungeonPlayer
                             break;
                     }
                     break;
-
 
                 // ２階、力の部屋ボス１
                 case Database.ENEMY_BRILLIANT_SEA_PRINCE:
@@ -1014,24 +1012,16 @@ namespace DungeonPlayer
                     switch (rand)
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "燃え盛る炎弾丸";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "燃え盛る炎弾丸");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = this;
-                            this.ActionLabel.text = "ファイア・ウォール";
+                            SetupActionCommand(this, this, PlayerAction.SpecialSkill, "ファイア・ウォール");
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "ブレイジング・ストーム";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ブレイジング・ストーム");
                             break;
                         case 3:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "フラッシュ・バーン";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "フラッシュ・バーン");
                             break;
                     }
                     break;
@@ -1042,24 +1032,16 @@ namespace DungeonPlayer
                     switch (rand)
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "凍てつく氷弾丸";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "凍てつく氷弾丸");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = this;
-                            this.ActionLabel.text = "ウォータ・バブル";
+                            SetupActionCommand(this, this, PlayerAction.SpecialSkill, "ウォータ・バブル");
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "ウォーター・スラッシュ";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ウォーター・スラッシュ");
                             break;
                         case 3:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "ハルシネイト・アイ";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ハルシネイト・アイ");
                             break;
                     }
                     break;
@@ -1070,22 +1052,17 @@ namespace DungeonPlayer
                     switch (rand)
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "スターソード『煌』";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "スターソード『煌』");
                             break;
 
                         case 1:
                             if (this.Target2 != null && !this.Target2.Dead && this.Target2.CurrentPhysicalDefenseUp <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "エーギル・フィールド";
+                                SetupActionCommand(this, this.Target2, PlayerAction.SpecialSkill, "エーギル・フィールド");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.Target = target;
-                                this.ActionLabel.text = "スターソード『煌』";
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "スターソード『煌』");
                             }
                             break;
                     }
@@ -1097,22 +1074,17 @@ namespace DungeonPlayer
                     switch (rand)
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "スターソード『艶』";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "スターソード『艶』");
                             break;
 
                         case 1:
                             if (this.Target2 != null && !this.Target2.Dead && this.Target2.CurrentPhysicalDefenseUp <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "アマラ・フィールド";
+                                SetupActionCommand(this, this.Target2, PlayerAction.SpecialSkill, "アマラ・フィールド");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.Target = target;
-                                this.ActionLabel.text = "スターソード『艶』";
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "スターソード『艶』");
                             }
                             break;
                     }
@@ -1126,61 +1098,42 @@ namespace DungeonPlayer
                         case 0:
                             if (ec2 != null && !ec2.Dead && ec2.CurrentProtection <= 0)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.PROTECTION;
-                                this.ActionLabel.text = Database.PROTECTION_JP;
                                 this.Target2 = ec2;
+                                SetupActionCommand(this, this.Target2, PlayerAction.UseSpell, Database.PROTECTION);
                             }
                             else if (ec3 != null && !ec3.Dead && ec3.CurrentProtection <= 0)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.PROTECTION;
-                                this.ActionLabel.text = Database.PROTECTION_JP;
                                 this.Target2 = ec3;
+                                SetupActionCommand(this, this.Target2, PlayerAction.UseSpell, Database.PROTECTION);
                             }
                             else if (this.CurrentProtection <= 0)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.PROTECTION;
-                                this.ActionLabel.text = Database.PROTECTION_JP;
                                 this.Target2 = this;
+                                SetupActionCommand(this, this.Target2, PlayerAction.UseSpell, Database.PROTECTION);
                             }
                             else
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.HOLY_SHOCK;
-                                this.ActionLabel.text = Database.HOLY_SHOCK_JP;
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.UseSpell, Database.HOLY_SHOCK);
                             }
                             break;
                         case 1:
                             if (ec2 != null && !ec2.Dead && ec2.CurrentSaintPower <= 0)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.SAINT_POWER;
-                                this.ActionLabel.text = Database.SAINT_POWER_JP;
                                 this.Target2 = ec2;
+                                SetupActionCommand(this, this.Target2, PlayerAction.UseSpell, Database.SAINT_POWER);
                             }
                             else if (ec3 != null && !ec3.Dead && ec3.CurrentSaintPower <= 0)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.SAINT_POWER;
-                                this.ActionLabel.text = Database.SAINT_POWER_JP;
                                 this.Target2 = ec3;
+                                SetupActionCommand(this, this.Target2, PlayerAction.UseSpell, Database.SAINT_POWER);
                             }
                             else
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.HOLY_SHOCK;
-                                this.ActionLabel.text = Database.HOLY_SHOCK_JP;
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.UseSpell, Database.HOLY_SHOCK);
                             }
                             break;
 
                         case 2:
-                            this.PA = PlayerAction.UseSpell;
-                            this.CurrentSpellName = Database.FRESH_HEAL;
-                            this.ActionLabel.text = Database.FRESH_HEAL_JP;
                             if (ec2 != null && !ec2.Dead && ec3 != null && !ec3.dead)
                             {
                                 if ((ec2.CurrentLife >= ec2.MaxLife) && (ec3.CurrentLife >= ec3.MaxLife))
@@ -1216,6 +1169,7 @@ namespace DungeonPlayer
                             {
                                 this.Target2 = this;
                             }
+                            SetupActionCommand(this, this.Target2, PlayerAction.UseSpell, Database.FRESH_HEAL);
                             break;
                     }
                     break;
@@ -1226,34 +1180,27 @@ namespace DungeonPlayer
                     switch (rand)
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "バースト・クラウド";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "バースト・クラウド");
                             break;
 
                         case 1:
                             if ((this.CurrentLife <= this.MaxLife / 2) && (this.CurrentPhysicalAttackUp <= 0))
                             {
-                                this.PA = PlayerAction.SpecialSkill;
                                 this.Target2 = this;
-                                this.ActionLabel.text = "海王の咆哮";
+                                SetupActionCommand(this, this.Target2, PlayerAction.SpecialSkill, "海王の咆哮");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.Target = target;
-                                this.ActionLabel.text = "大激衝";
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "大激衝");
                             }
                             break;
 
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "サージェティック・バインド";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "サージェティック・バインド");
                             break;
 
                         case 3:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.Target = target;
-                            this.ActionLabel.text = "大激衝";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "大激衝");
                             break;
                     }
                     break;
@@ -1264,13 +1211,11 @@ namespace DungeonPlayer
                 case Database.ENEMY_DRAGON_DESOLATOR_AZOLD:
                     if (this.AI_TacticsNumber < 5)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "無音の呼び声";
+                        SetupActionCommand(this, this, PlayerAction.SpecialSkill, "無音の呼び声");
                     }
                     else
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "形成消失";
+                        SetupActionCommand(this, this, PlayerAction.SpecialSkill, "形成消失");
                     }
                     break;
                 #endregion
@@ -1279,63 +1224,85 @@ namespace DungeonPlayer
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "突貫";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "突貫");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "暴走";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "暴走");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_SNOW_CAT:
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "連続攻撃";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, Database.RENZOKU_ATTACK);
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "凍りつく吹雪";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "凍りつく吹雪");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_WAR_MAMMOTH:
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ためる";
-                            this.Target = this;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "蹂躙");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "蹂躙";
-                            this.Target = target;
+                            if (this.CurrentPhysicalChargeCount <= 0)
+                            {
+                                SetupActionCommand(this, this, PlayerAction.SpecialSkill, "ためる");
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "蹂躙");
+                            }
                             break;
                     }
                     break;
+
                 case Database.ENEMY_WINGED_COLD_FAIRY:
                     switch (AP.Math.RandomInteger(3))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "プチ・ブリザード";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "プチ・ブリザード");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "凍結玉";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "凍結玉");
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ウィンター・ソング";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ウィンター・ソング");
+                            break;
+                    }
+                    break;
+
+                case Database.ENEMY_FREEZING_GRIFFIN:
+                    switch (AP.Math.RandomInteger(3))
+                    {
+                        case 0:
+                            if (target.CurrentFrozen <= 0)
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アイス・ウィンド");
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "直滑降");
+                            }
+                            break;
+                        case 1:
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "直滑降");
+                            break;
+                        case 2:
+                            if (this.CurrentSpeedUp <= 0)
+                            {
+                                SetupActionCommand(this, this, PlayerAction.SpecialSkill, "雄叫び");
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "直滑降");
+                            }
                             break;
                     }
                     break;
@@ -1344,88 +1311,82 @@ namespace DungeonPlayer
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ぶん投げる";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ぶん投げる");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "氷の儀式";
-                            this.Target = this;
+                            SetupActionCommand(this, this, PlayerAction.SpecialSkill, "氷の儀式");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_HYDRO_LIZARD:
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "リザード・スラッシュ";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "リザード・スラッシュ");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "アイシクル・ブレード";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アイシクル・ブレード");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_PENGUIN_STAR:
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ペンギンの輝き！";
-                            this.Target = this;
+                            SetupActionCommand(this, this, PlayerAction.SpecialSkill, "ペンギンの輝き！");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ペンギンアタック！";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ペンギンアタック！");
                             break;
                     }
                     break;
+
+                case Database.ENEMY_ICEBERG_SPIRIT:
+                    switch (AP.Math.RandomInteger(3))
+                    {
+                        case 0:
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "エコーヴォイス");
+                            break;
+                        case 1:
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "巨大な氷針の嵐");
+                            break;
+                        case 2:
+                            SetupActionCommand(this, target, PlayerAction.UseSpell, Database.BLUE_BULLET);
+                            break;
+                    }
+                    break;
+
                 case Database.ENEMY_SWORD_TOOTH_TIGER:
                     switch (AP.Math.RandomInteger(3))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "サーヴェルクロー";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "サーヴェルクロー");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "目くらまし";
-                            this.Target = this;
+                            SetupActionCommand(this, this, PlayerAction.SpecialSkill, "目くらまし");
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "連速三段";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "連速三段");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_FEROCIOUS_RAGE_BEAR:
                     switch (AP.Math.RandomInteger(4))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "四歯戦速";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "四歯戦速");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "自己増強";
-                            this.Target = this;
+                            SetupActionCommand(this, this, PlayerAction.SpecialSkill, "自己増強");
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "漸波動";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "漸波動");
                             break;
                         case 3:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "食いちぎり";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "食いちぎり");
                             break;
                     }
                     break;
@@ -1434,126 +1395,141 @@ namespace DungeonPlayer
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "氷の結晶術";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "氷の結晶術");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "冷気の射出";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "冷気の射出");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI:
+                    string COMMAND_1 = "津波の呼び声";
+                    string COMMAND_2 = "平穏の呼び声";
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
                             if (this == ec2)
                             {
-                                if (ec1.ActionLabel.text == "津波の呼び声")
+                                if (ec1.ActionLabel.text == COMMAND_1)
                                 {
-                                    this.PA = PlayerAction.SpecialSkill;
-                                    this.ActionLabel.text = "平穏の呼び声";
-                                    this.Target = target;
+                                    SetupActionCommand(this, target, PlayerAction.SpecialSkill, COMMAND_2);
                                 }
                                 else
                                 {
-                                    this.PA = PlayerAction.SpecialSkill;
-                                    this.ActionLabel.text = "津波の呼び声";
-                                    this.Target = target;
+                                    SetupActionCommand(this, target, PlayerAction.SpecialSkill, COMMAND_1);
                                 }
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "津波の呼び声";
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, COMMAND_1);
                             }
                             break;
                         case 1:
                             if (this == ec2)
                             {
-                                if (ec1.ActionLabel.text == "平穏の呼び声")
+                                if (ec1.ActionLabel.text == COMMAND_2)
                                 {
-                                    this.PA = PlayerAction.SpecialSkill;
-                                    this.ActionLabel.text = "津波の呼び声";
-                                    this.Target = target;
+                                    SetupActionCommand(this, target, PlayerAction.SpecialSkill, COMMAND_1);
                                 }
                                 else
                                 {
-                                    this.PA = PlayerAction.SpecialSkill;
-                                    this.ActionLabel.text = "平穏の呼び声";
-                                    this.Target = target;
+                                    SetupActionCommand(this, target, PlayerAction.SpecialSkill, COMMAND_2);
                                 }
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "平穏の呼び声";
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, COMMAND_2);
                             }
                             break;
                     }
                     break;
+
+                case Database.ENEMY_MAJESTIC_CENTAURUS:
+                    switch (AP.Math.RandomInteger(3))
+                    {
+                        case 0:
+                            if (target.CurrentFrozen <= 0)
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アイスランス");
+                            }
+                            else if (this.currentSkillPoint >= Database.STRAIGHT_SMASH_COST)
+                            {
+                                SetupActionCommand(this, target, PlayerAction.UseSkill, Database.STRAIGHT_SMASH);
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
+                            }
+                            break;
+                        case 1:
+                            if (target.CurrentPhysicalDefenseDown <= 0)
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "圧力ある雄叫び");
+                            }
+                            else if (this.currentSkillPoint >= Database.STRAIGHT_SMASH_COST)
+                            {
+                                SetupActionCommand(this, target, PlayerAction.UseSkill, Database.STRAIGHT_SMASH);
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
+                            }
+                            break;
+                        case 2:
+                            if (this.currentSkillPoint >= Database.STRAIGHT_SMASH_COST)
+                            {
+                                SetupActionCommand(this, target, PlayerAction.UseSkill, Database.STRAIGHT_SMASH);
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
+                            }
+                            break;
+                    }
+                    break;
+
                 case Database.ENEMY_INTELLIGENCE_ARGONIAN:
                     switch (AP.Math.RandomInteger(2))
                     {
                         case 0:
-                            this.PA = PlayerAction.UseSpell;
-                            this.CurrentSpellName = Database.FROZEN_AURA;
-                            this.ActionLabel.text = Database.FROZEN_AURA_JP;
-                            this.Target = this;
+                            SetupActionCommand(this, this, PlayerAction.UseSpell, Database.FROZEN_AURA);
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "打突";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "打突");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_MAGIC_HYOU_RIFLE:
                     switch (AP.Math.RandomInteger(3))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "雹弾乱射";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "雹弾乱射");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ＳＰＬＡＳＨ！";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ＳＰＬＡＳＨ！");
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "マジックバリア";
-                            this.Target = this;
+                            SetupActionCommand(this, this, PlayerAction.SpecialSkill, "マジックバリア");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_PURE_BLIZZARD_CRYSTAL:
                     switch (AP.Math.RandomInteger(4))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ブリザード";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ブリザード");
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "零式";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "零式");
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "蒼授の気配";
-                            this.Target = this;
+                            SetupActionCommand(this, this, PlayerAction.SpecialSkill, "蒼授の気配");
                             break;
                         case 3:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "絶・スピニングランサー";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "絶・スピニングランサー");
                             break;
                     }
                     break;
@@ -1564,43 +1540,55 @@ namespace DungeonPlayer
                         case 0:
                             if (this.CurrentStrengthUp <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "バトルクライ";
-                                this.Target = this;
+                                SetupActionCommand(this, this, PlayerAction.SpecialSkill, "バトルクライ");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "キリング・スラッシュ";
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "キリング・スラッシュ");
                             }
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "キリング・スラッシュ";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "キリング・スラッシュ");
                             break;
                     }
                     break;
+
                 case Database.ENEMY_FROST_HEART:
-                    if (this.CurrentMagicAttackUpValue <= 30000)
+                    switch (AP.Math.RandomInteger(2))
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "冷気圧縮";
-                        this.Target = this;
-                    }
-                    else
-                    {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "自爆";
-                        List<MainCharacter> group = new List<MainCharacter>();
-                        if (mc != null && !mc.Dead) { group.Add(mc); }
-                        if (sc != null && !sc.Dead) { group.Add(sc); }
-                        if (tc != null && !tc.Dead) { group.Add(tc); }
-                        int randomValue = AP.Math.RandomInteger(group.Count);
-                        this.Target = group[randomValue];
+                        case 0:
+                            if (this.CurrentMagicAttackUpValue <= 0)
+                            {
+                                SetupActionCommand(this, this, PlayerAction.SpecialSkill, "冷気圧縮");
+                            }
+                            else if (this.currentLife > 1)
+                            {
+                                List<MainCharacter> group = new List<MainCharacter>();
+                                if (mc != null && !mc.Dead) { group.Add(mc); }
+                                if (sc != null && !sc.Dead) { group.Add(sc); }
+                                if (tc != null && !tc.Dead) { group.Add(tc); }
+                                int randomValue = AP.Math.RandomInteger(group.Count);
+                                this.Target = group[randomValue];
+                                SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "大暴発");
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.UseSpell, Database.BLUE_BULLET);
+                            }
+                            break;
+
+                        case 1:
+                            SetupActionCommand(this, target, PlayerAction.UseSpell, Database.BLUE_BULLET);
+                            break;
                     }
                     break;
+
+                case Database.ENEMY_WHITENIGHT_GRIZZLY:
+                    switch (AP.Math.RandomInteger(3))
+                    {
+                    }
+                    break;
+
                 case Database.ENEMY_WIND_BREAKER:
                     switch (AP.Math.RandomInteger(3))
                     {

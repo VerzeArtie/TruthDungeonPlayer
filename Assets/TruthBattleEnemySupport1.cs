@@ -2207,13 +2207,12 @@ namespace DungeonPlayer
                             case Database.ENEMY_WINGED_COLD_FAIRY:
                                 if (player.ActionLabel.text == "プチ・ブリザード")
                                 {
-                                    UpdateBattleText(player.FirstName + "：凍えちゃえ、プチ・ブリザード！\r\n");
+                                    UpdateBattleText(player.FirstName + "：みんな凍えちゃえ、プチ・ブリザード！\r\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
                                     SetupAllyGroup(ref group);
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         PlayerMagicAttack(player, group[ii], 0, 0);
-                                        NowFrozen(player, group[ii], 1);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "凍結玉")
@@ -2231,6 +2230,40 @@ namespace DungeonPlayer
                                     {
                                         NowFrozen(player, group[ii], 3);
                                     }
+                                }
+                                break;
+
+                            case Database.ENEMY_FREEZING_GRIFFIN:
+                                if (player.ActionLabel.text == "アイス・ウィンド")
+                                {
+                                    UpdateBattleText(player.FirstName + "は凍える強風を放ってきた！\r\n");
+                                    if (PlayerNormalAttack(player, target, 0.5f, false, false))
+                                    {
+                                        NowFrozen(player, target, 2);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "直滑降")
+                                {
+                                    UpdateBattleText(player.FirstName + "はものすごい勢いで上空から突っ込んできた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerNormalAttack(player, group[ii], 0, false, false);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "雄叫び")
+                                {
+                                    UpdateBattleText(player.FirstName + "は激しい雄叫びを上げた！\r\n");
+
+                                    effectValue = 450.0F;
+
+                                    AnimationDamage(0, player, 0, Color.black, false, false, "力UP");
+                                    player.CurrentStrengthUp = 4;
+                                    player.CurrentStrengthUpValue = (int)effectValue;
+                                    player.ActivateBuff(player.pbStrengthUp, Database.BaseResourceFolder + "BuffStrengthUp", 4);
+
+                                    UpdateBattleText(player.FirstName + "は【力】が" + effectValue.ToString() + "上昇\r\n");
                                 }
                                 break;
 
@@ -2285,7 +2318,27 @@ namespace DungeonPlayer
                                 else if (player.ActionLabel.text == "ペンギンアタック！")
                                 {
                                     UpdateBattleText(player.FirstName + "は勇猛果敢に正面から突っ込んできた！\r\n");
-                                    PlayerNormalAttack(player, target, 0, true, false);
+                                    PlayerNormalAttack(player, target, 0, false, false);
+                                }
+                                break;
+                            case Database.ENEMY_ICEBERG_SPIRIT:
+                                if (player.ActionLabel.text == "エコーヴォイス")
+                                {
+                                    UpdateBattleText(player.FirstName + "は重低音の響きわたる声を発してきた。\r\n");
+                                    if (PlayerNormalAttack(player, target, 0, false, false))
+                                    {
+                                        NowSilence(player, target, 3);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "巨大な氷針の嵐")
+                                {
+                                    UpdateBattleText(player.FirstName + "は巨大な氷針の嵐を発生させてきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerMagicAttack(player, group[ii], 0, 0);
+                                    }
                                 }
                                 break;
                             case Database.ENEMY_SWORD_TOOTH_TIGER:
@@ -2390,6 +2443,27 @@ namespace DungeonPlayer
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         NowParalyze(player, group[ii], 2);
+                                    }
+                                }
+                                break;
+                            case Database.ENEMY_MAJESTIC_CENTAURUS:
+                                if (player.ActionLabel.text == "アイスランス")
+                                {
+                                    UpdateBattleText(player.FirstName + "は" + target.FirstName + "へめがけて氷の槍を放ってきた！\r\n");
+                                    if (PlayerNormalAttack(player, target, 0, false, false))
+                                    {
+                                        NowFrozen(player, target, 1);
+                                        NowSlow(player, target, 4);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "圧力ある雄叫び")
+                                {
+                                    UpdateBattleText(player.FirstName + "は全体へ強烈な圧力ある雄叫びをあげてきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        BuffDownPhysicalAttack(group[ii], 400, 3);
                                     }
                                 }
                                 break;
@@ -2524,15 +2598,15 @@ namespace DungeonPlayer
                                     player.CurrentMagicAttackUpValue += (int)effectValue;
                                     player.ActivateBuff(player.pbMagicAttackUp, Database.BaseResourceFolder + Database.BUFF_MAGIC_ATTACK_UP, Database.INFINITY);
                                 }
-                                else if (player.ActionLabel.text == "自爆")
+                                else if (player.ActionLabel.text == "大暴発")
                                 {
                                     UpdateBattleText(player.FirstName + "の発光状態が急激に青から白へと変わっていく！！\r\n");
-                                    if (AbstractMagicDamage(player, target, 0, 0, 1.0f, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
+                                    if (AbstractMagicDamage(player, target, 0, 0, 5.0F, "IceNeedle", 120, TruthActionCommand.MagicType.Ice, false, CriticalType.Random))
                                     {
                                         double damage = player.CurrentLife;
-                                        player.CurrentLife = 0;
+                                        player.CurrentLife = 1;
                                         UpdateLife(player, damage, false, false, 0, false);
-                                        player.DeadPlayer();
+                                        //player.DeadPlayer();
                                     }
                                 }
                                 break;
