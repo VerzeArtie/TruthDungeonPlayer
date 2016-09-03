@@ -1586,6 +1586,22 @@ namespace DungeonPlayer
                 case Database.ENEMY_WHITENIGHT_GRIZZLY:
                     switch (AP.Math.RandomInteger(3))
                     {
+                        case 0:
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "三本爪");
+                            break;
+                        case 1:
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ぶんまわし");
+                            break;
+                        case 2:
+                            if (this.CurrentPhysicalAttackUp <= 0)
+                            {
+                                SetupActionCommand(this, this, PlayerAction.SpecialSkill, "一発気合");
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ぶんまわし");
+                            }
+                            break;
                     }
                     break;
 
@@ -1595,26 +1611,18 @@ namespace DungeonPlayer
                         case 0:
                             if (this.CurrentGaleWind <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "ソード・オブ・ウィンド";
-                                this.Target = this;
+                                SetupActionCommand(this, this, PlayerAction.SpecialSkill, "ソード・オブ・ウィンド");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "断空";
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "断空");
                             }
                             break;
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "断空";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "断空");
                             break;
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "アイス・トルネード";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "アイス・トルネード");
                             break;
                     }
                     break;
@@ -1624,48 +1632,37 @@ namespace DungeonPlayer
                     if (sc != null && !sc.Dead) { group_deer.Add(sc); }
                     if (tc != null && !tc.Dead) { group_deer.Add(tc); }
                     int randomValue_deer = AP.Math.RandomInteger(group_deer.Count);
+                    this.Target = group_deer[randomValue_deer];
                     switch (AP.Math.RandomInteger(3))
                     {
                         case 0:
                             if (group_deer[randomValue_deer].CurrentReactionDown <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "トキのコエ";
-                                this.Target = group_deer[randomValue_deer];
+                                SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "トキのコエ");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "レッドスノーホーン";
-                                this.Target = group_deer[randomValue_deer];
+                                SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "レッドスノーホーン");
                             }
                             break;
                         case 1:
                             if (group_deer[randomValue_deer].CurrentPhysicalAttackDown <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "氷雪化現象";
-                                this.Target = group_deer[randomValue_deer];
+                                SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "氷雪化現象");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "レッドスノーホーン";
-                                this.Target = group_deer[randomValue_deer];
+                                SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "レッドスノーホーン");
                             }
                             break;
                         case 2:
                             if (group_deer[randomValue_deer].CurrentMagicDefenseDown <= 0)
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "無音音響の和";
-                                this.Target = group_deer[randomValue_deer];
+                                SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "無音音響の和");
                             }
                             else
                             {
-                                this.PA = PlayerAction.SpecialSkill;
-                                this.ActionLabel.text = "レッドスノーホーン";
-                                this.Target = group_deer[randomValue_deer];
+                                SetupActionCommand(this, this.Target, PlayerAction.SpecialSkill, "レッドスノーホーン");
                             }
                             break;
                     }
@@ -1678,30 +1675,23 @@ namespace DungeonPlayer
                     switch (rand)
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "もぎとり";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "もぎとり");
                             break;
 
                         case 1:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ブンまわし";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ブンまわし");
                             break;
 
                         case 2:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "異常音響";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "異常音響");
                             break;
 
                         case 3:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "凍らせる視線";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "凍らせる視線");
                             break;
 
                         case 4:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "破裂する雄叫び";
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "破裂する雄叫び");
                             break;
                     }
                     break;

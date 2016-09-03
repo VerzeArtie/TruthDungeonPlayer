@@ -2610,6 +2610,30 @@ namespace DungeonPlayer
                                     }
                                 }
                                 break;
+                            case Database.ENEMY_WHITENIGHT_GRIZZLY:
+                                if (player.ActionLabel.text == "三本爪")
+                                {
+                                    UpdateBattleText(player.FirstName + "の鋭い三本爪がキラリと光る！\r\n");
+                                    for (int ii = 0; ii < 3; ii++)
+                                    {
+                                        PlayerNormalAttack(player, target, 0, false, false);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ぶんまわし")
+                                {
+                                    UpdateBattleText(player.FirstName + "は大きい両腕を勢いよくぶんまわしてきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerNormalAttack(player, group[ii], 0, false, false);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "一発気合")
+                                {
+                                    BuffUpPhysicalAttack(player, 400.0F, 10);
+                                }
+                                break;
                             case Database.ENEMY_WIND_BREAKER:
                                 if (player.ActionLabel.text == "ソード・オブ・ウィンド")
                                 {
