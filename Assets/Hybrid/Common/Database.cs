@@ -2451,10 +2451,10 @@ namespace DungeonPlayer
         public const string ENEMY_DREAD_KNIGHT = @"ドレッド・ナイト";
         public const string ENEMY_DOOM_BRINGER = @"ドゥームブリンガー";
 
-        public const string ENEMY_BOSS_LEGIN_ARZE = @"四階の守護者：闇焔レギィン・アーゼ";
-        public const string ENEMY_BOSS_LEGIN_ARZE_1 = @"四階の守護者：闇焔レギィン・アーゼ【瘴気】";
-        public const string ENEMY_BOSS_LEGIN_ARZE_2 = @"四階の守護者：闇焔レギィン・アーゼ【無音】";
-        public const string ENEMY_BOSS_LEGIN_ARZE_3 = @"四階の守護者：闇焔レギィン・アーゼ【深淵】";
+        public const string ENEMY_BOSS_LEGIN_ARZE = @"闇焔レギィン・アーゼ";
+        public const string ENEMY_BOSS_LEGIN_ARZE_1 = @"闇焔レギィン・アーゼ【瘴気】";
+        public const string ENEMY_BOSS_LEGIN_ARZE_2 = @"闇焔レギィン・アーゼ【無音】";
+        public const string ENEMY_BOSS_LEGIN_ARZE_3 = @"闇焔レギィン・アーゼ【深淵】";
 
         public const string ENEMY_DRAGON_IDEA_CAGE_ZEED = @"黙考せし者ジード";
         #endregion
@@ -2470,10 +2470,10 @@ namespace DungeonPlayer
 
         #endregion
         #region "真実世界"
-        public const string ENEMY_LAST_RANA_AMILIA = @"ラナ・アミリア ";
-        public const string ENEMY_LAST_OL_LANDIS = @"オル・ランディス ";
-        public const string ENEMY_LAST_SINIKIA_KAHLHANZ = @"シニキア・カールハンツ ";
-        public const string ENEMY_LAST_VERZE_ARTIE = @"ヴェルゼ・アーティ ";
+        public const string ENEMY_LAST_RANA_AMILIA = @"ラナ・アミリア "; // DUEL名識別のため、最後の空白スペースで意図的に区別
+        public const string ENEMY_LAST_OL_LANDIS = @"オル・ランディス "; // DUEL名識別のため、最後の空白スペースで意図的に区別
+        public const string ENEMY_LAST_SINIKIA_KAHLHANZ = @"シニキア・カールハンツ "; // DUEL名識別のため、最後の空白スペースで意図的に区別
+        public const string ENEMY_LAST_VERZE_ARTIE = @"ヴェルゼ・アーティ "; // DUEL名識別のため、最後の空白スペースで意図的に区別
         public const string ENEMY_LAST_SIN_VERZE_ARTIE = @"【原罪】ヴェルゼ・アーティ";
         #endregion
         #region "Duel闘技場"

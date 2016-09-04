@@ -4019,6 +4019,39 @@ namespace DungeonPlayer
                                     BuffUpMagicAttack(player, current, Database.INFINITY);
                                 }
                                 break;
+
+                            case Database.ENEMY_NINE_TAIL:
+                                if (player.ActionLabel.text == "ベジェ・テイル・アタック")
+                                {
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        if (PlayerNormalAttack(player, group[ii], 2.0f, false, false))
+                                        {
+                                            NowBlind(player, group[ii], 1);
+                                            NowSlip(player, group[ii], Database.INFINITY);
+                                        }
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "喰らいつき")
+                                {
+                                    for (int ii = 0; ii < 3; ii++)
+                                    {
+                                        PlayerLifeHalfCurrent(player, target, 0);
+                                    }
+                                    NowSlip(player, target, 3);
+                                }
+                                else if (player.ActionLabel.text == "隕石を呼ぶ声")
+                                {
+                                    for (int ii = 0; ii < 10; ii++)
+                                    {
+                                        AbstractMagicDamage(player, target, 15, PrimaryLogic.AscendantMeteorValue(player, GroundOne.DuelMode), 0.3f, "FireBall", 120, TruthActionCommand.MagicType.Light_Fire, false, CriticalType.Random);
+                                    }
+                                }
+                                break;
+
                             case Database.ENEMY_JUDGEMENT:
                                 if (player.ActionLabel.text == "聖者の裁き")
                                 {
@@ -4052,37 +4085,7 @@ namespace DungeonPlayer
                                     PlayerSpellBlindJustice(player, player);
                                 }
                                 break;
-                            case Database.ENEMY_NINE_TAIL:
-                                if (player.ActionLabel.text == "ベジェ・テイル・アタック")
-                                {
-                                    List<MainCharacter> group = new List<MainCharacter>();
-                                    SetupAllyGroup(ref group);
 
-                                    for (int ii = 0; ii < group.Count; ii++)
-                                    {
-                                        if (PlayerNormalAttack(player, group[ii], 2.0f, false, false))
-                                        {
-                                            NowBlind(player, group[ii], 1);
-                                            NowSlip(player, group[ii], Database.INFINITY);
-                                        }
-                                    }
-                                }
-                                else if (player.ActionLabel.text == "喰らいつき")
-                                {
-                                    for (int ii = 0; ii < 3; ii++)
-                                    {
-                                        PlayerLifeHalfCurrent(player, target, 0);
-                                    }
-                                    NowSlip(player, target, 3);
-                                }
-                                else if (player.ActionLabel.text == "隕石を呼ぶ声")
-                                {
-                                    for (int ii = 0; ii < 10; ii++)
-                                    {
-                                        AbstractMagicDamage(player, target, 15, PrimaryLogic.AscendantMeteorValue(player, GroundOne.DuelMode), 0.3f, "FireBall", 120, TruthActionCommand.MagicType.Light_Fire, false, CriticalType.Random);
-                                    }
-                                }
-                                break;
                             case Database.ENEMY_EMERALD_DRAGON:
                                 if (player.ActionLabel.text == "圧死の視線")
                                 {

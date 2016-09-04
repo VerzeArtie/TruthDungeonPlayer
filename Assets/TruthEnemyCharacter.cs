@@ -145,6 +145,22 @@ namespace DungeonPlayer
             return mc;
         }
 
+        private bool SearchItem(string ItemName)
+        {
+            ItemBackPack[] tempItem = this.GetBackPackInfo();
+            foreach (ItemBackPack value in tempItem)
+            {
+                if (value != null)
+                {
+                    if (value.Name == ItemName)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public void NextAttackDecision(MainCharacter target,
                                         MainCharacter mc,
                                         MainCharacter sc,
@@ -2315,114 +2331,108 @@ namespace DungeonPlayer
                 #region "５階"
                 case Database.ENEMY_BOSS_BYSTANDER_EMPTINESS:
                     SetupActionCommand(this, this, PlayerAction.SpecialSkill, "時間律の支配");
+                    //rand = AP.Math.RandomInteger(3);
+                    //switch (rand)
+                    //{
+                    //    case 0:
+                    //        this.PA = PlayerAction.SpecialSkill;
+                    //        this.ActionLabel.text = "時間律（憎業）";
+                    //        break;
+                    //    case 1:
+                    //        this.PA = PlayerAction.SpecialSkill;
+                    //        this.ActionLabel.text = "時間律（零空）";
+                    //        break;
+                    //    case 2:
+                    //        this.PA = PlayerAction.SpecialSkill;
+                    //        this.ActionLabel.text = "時間律（盛栄）";
+                    //        break;
+                    //    case 3:
+                    //        this.PA = PlayerAction.SpecialSkill;
+                    //        this.ActionLabel.text = "時間律（絶剣）";
+                    //        break;
+                    //    case 4:
+                    //        this.PA = PlayerAction.SpecialSkill;
+                    //        this.ActionLabel.text = "時間律（緑永）";
+                    //        break;
+                    //    case 5:
+                    //        this.PA = PlayerAction.SpecialSkill;
+                    //        this.ActionLabel.text = "完全絶対時間律（終焉）";
+                    //        break;
+                    //}
+                    //break;
                     break;
-                //rand = AP.Math.RandomInteger(3);
-                //switch (rand)
-                //{
-                //    case 0:
-                //        this.PA = PlayerAction.SpecialSkill;
-                //        this.ActionLabel.text = "時間律（憎業）";
-                //        break;
-                //    case 1:
-                //        this.PA = PlayerAction.SpecialSkill;
-                //        this.ActionLabel.text = "時間律（零空）";
-                //        break;
-                //    case 2:
-                //        this.PA = PlayerAction.SpecialSkill;
-                //        this.ActionLabel.text = "時間律（盛栄）";
-                //        break;
-                //    case 3:
-                //        this.PA = PlayerAction.SpecialSkill;
-                //        this.ActionLabel.text = "時間律（絶剣）";
-                //        break;
-                //    case 4:
-                //        this.PA = PlayerAction.SpecialSkill;
-                //        this.ActionLabel.text = "時間律（緑永）";
-                //        break;
-                //    case 5:
-                //        this.PA = PlayerAction.SpecialSkill;
-                //        this.ActionLabel.text = "完全絶対時間律（終焉）";
-                //        break;
-                //}
-                //break;
+
                 case Database.ENEMY_PHOENIX:
                     if (this.AI_TacticsNumber == 0)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "戦慄の金切り声";
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "戦慄の金切り声");
                         this.AI_TacticsNumber++;
                     }
                     else if (this.AI_TacticsNumber == 1)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "焼き尽くす煉獄炎";
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "焼き尽くす煉獄炎");
                         this.AI_TacticsNumber++;
                     }
                     else if (this.AI_TacticsNumber == 2)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "輝ける生命";
+                        SetupActionCommand(this, this, PlayerAction.SpecialSkill, "輝ける生命");
                         this.AI_TacticsNumber = 0;
                     }
                     break;
-                case Database.ENEMY_JUDGEMENT:
-                    if (this.AI_TacticsNumber == 0)
-                    {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "聖者の裁き";
-                        this.AI_TacticsNumber++;
-                    }
-                    else if (this.AI_TacticsNumber == 1)
-                    {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "福音";
-                        this.AI_TacticsNumber++;
-                    }
-                    else if (this.AI_TacticsNumber == 2)
-                    {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "解放の賛歌";
-                        this.AI_TacticsNumber = 0;
-                    }
-                    break;
+                    
                 case Database.ENEMY_NINE_TAIL:
                     if (this.AI_TacticsNumber == 0)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "ベジェ・テイル・アタック";
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ベジェ・テイル・アタック");
+                        this.AI_TacticsNumber++;
                     }
                     else if (this.AI_TacticsNumber == 1)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "喰らいつき";
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "喰らいつき");
+                        this.AI_TacticsNumber++;
                     }
                     else
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "隕石を呼ぶ声";
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "隕石を呼ぶ声");
+                        this.AI_TacticsNumber = 0;
                     }
-                    this.AI_TacticsNumber++;
                     break;
-                case Database.ENEMY_EMERALD_DRAGON:
+
+                case Database.ENEMY_JUDGEMENT:
                     if (this.AI_TacticsNumber == 0)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "圧死の視線"; // ライフ１、蘇生不可
-                        this.Target = target;
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "聖者の裁き");
+                        this.AI_TacticsNumber++;
                     }
                     else if (this.AI_TacticsNumber == 1)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "イル・メギド・ブレス"; // 全員、最大ライフ－１のダメージ
-                        this.Target = target;
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "福音");
+                        this.AI_TacticsNumber++;
                     }
                     else if (this.AI_TacticsNumber == 2)
                     {
-                        this.PA = PlayerAction.SpecialSkill;
-                        this.ActionLabel.text = "炎と氷の爆発";
-                        this.Target = target;
+                        SetupActionCommand(this, this, PlayerAction.SpecialSkill, "解放の賛歌");
+                        this.AI_TacticsNumber = 0;
                     }
-                    this.AI_TacticsNumber++;
+                    break;
+
+                case Database.ENEMY_EMERALD_DRAGON:
+                    if (this.AI_TacticsNumber == 0)
+                    {
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "圧死の視線"); // ライフ１、蘇生不可
+                        this.AI_TacticsNumber++;
+                    }
+                    else if (this.AI_TacticsNumber == 1)
+                    {
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "イル・メギド・ブレス"); // 全員、最大ライフ－１のダメージ
+                        this.AI_TacticsNumber++;
+                    }
+                    else if (this.AI_TacticsNumber == 2)
+                    {
+                        SetupActionCommand(this, target, PlayerAction.SpecialSkill, "炎と氷の爆発");
+                        this.AI_TacticsNumber = 0;
+                    }
+
                     break;
                 #endregion
                 #region "真実世界"
@@ -3197,65 +3207,37 @@ namespace DungeonPlayer
                 #endregion
                 #region "Duel対戦相手（１階）"
                 case Database.DUEL_EONE_FULNEA:
-                    this.PA = PlayerAction.UseSpell;
-                    this.CurrentSpellName = Database.ICE_NEEDLE;
-                    this.Target = target;
-                    this.ActionLabel.text = Database.ICE_NEEDLE_JP;
+                    SetupActionCommand(this, target, PlayerAction.UseSpell, Database.ICE_NEEDLE);
                     break;
 
                 case Database.DUEL_MAGI_ZELKIS:
-
-                    bool existItem = false;
-                    ItemBackPack[] tempItem = this.GetBackPackInfo();
-                    foreach (ItemBackPack value in tempItem)
+                    if ((this.CurrentLife < this.MaxLife / 2) && (SearchItem(Database.COMMON_NORMAL_RED_POTION)))
                     {
-                        if (value != null)
-                        {
-                            if (value.Name == Database.COMMON_NORMAL_RED_POTION)
-                            {
-                                existItem = true;
-                            }
-                        }
-                    }
-
-                    if ((this.CurrentLife < this.MaxLife) &&
-                        (existItem))
-                    {
-                        this.PA = PlayerAction.UseItem;
-                        this.CurrentUsingItem = Database.COMMON_NORMAL_RED_POTION;
-                        this.Target = this;
-                        this.ActionLabel.text = Database.COMMON_NORMAL_RED_POTION;
+                        SetupActionCommand(this, this, PlayerAction.UseItem, Database.COMMON_NORMAL_RED_POTION);
                     }
                     else if (this.CurrentFlameAura <= 0)
                     {
-                        this.PA = PlayerAction.UseSpell;
-                        this.CurrentSpellName = Database.FLAME_AURA;
-                        this.Target = this;
-                        this.ActionLabel.text = Database.FLAME_AURA_JP;
+                        SetupActionCommand(this, this, PlayerAction.UseSpell, Database.FLAME_AURA);
                     }
                     else
                     {
-                        this.PA = PlayerAction.NormalAttack;
-                        this.Target = target;
-                        this.ActionLabel.text = Database.ATTACK_JP;
+                        SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
                     }
                     break;
 
                 case Database.DUEL_SELMOI_RO:
-                    switch (AP.Math.RandomInteger(2))
+                    if ((this.CurrentLife < this.MaxLife / 2) && (SearchItem(Database.COMMON_NORMAL_RED_POTION)))
                     {
-                        case 0:
-                            this.PA = PlayerAction.UseSpell;
-                            this.Target = target;
-                            this.CurrentSpellName = Database.WORD_OF_POWER;
-                            this.ActionLabel.text = Database.WORD_OF_POWER_JP;
-                            break;
-                        case 1:
-                            this.PA = PlayerAction.UseSkill;
-                            this.Target = target;
-                            this.CurrentSkillName = Database.STANCE_OF_STANDING;
-                            this.ActionLabel.text = Database.STANCE_OF_STANDING_JP;
-                            break;
+                        SetupActionCommand(this, this, PlayerAction.UseItem, Database.COMMON_NORMAL_RED_POTION);
+                    }
+                    else if (this.CurrentStanceOfStanding <= 0)
+                    {
+                        SetupActionCommand(this, this, PlayerAction.UseSkill, Database.STANCE_OF_STANDING);
+
+                    }
+                    else
+                    {
+                        SetupActionCommand(this, target, PlayerAction.UseSpell, Database.WORD_OF_POWER);
                     }
                     break;
 
@@ -3295,19 +3277,7 @@ namespace DungeonPlayer
                 case Database.DUEL_JEDA_ARUS:
                     if (this.CurrentSkillPoint < 25)
                     {
-                        existItem = false;
-                        tempItem = this.GetBackPackInfo();
-                        foreach (ItemBackPack value in tempItem)
-                        {
-                            if (value != null)
-                            {
-                                if (value.Name == Database.RARE_PURE_GREEN_WATER)
-                                {
-                                    existItem = true;
-                                }
-                            }
-                        }
-                        if (existItem)
+                        if (SearchItem(Database.RARE_PURE_GREEN_WATER))
                         {
                             this.PA = PlayerAction.UseItem;
                             this.CurrentUsingItem = Database.RARE_PURE_GREEN_WATER;
@@ -3327,20 +3297,7 @@ namespace DungeonPlayer
                         switch (AP.Math.RandomInteger(2))
                         {
                             case 0:
-                                existItem = false;
-                                tempItem = this.GetBackPackInfo();
-                                foreach (ItemBackPack value in tempItem)
-                                {
-                                    if (value != null)
-                                    {
-                                        if (value.Name == Database.RARE_PURE_WATER)
-                                        {
-                                            existItem = true;
-                                        }
-                                    }
-                                }
-
-                                if (this.CurrentLife < this.MaxLife * 0.5F && existItem)
+                                if (this.CurrentLife < this.MaxLife * 0.5F && SearchItem(Database.RARE_PURE_WATER))
                                 {
                                     this.PA = PlayerAction.UseItem;
                                     this.CurrentUsingItem = Database.RARE_PURE_WATER;
@@ -5494,14 +5451,14 @@ namespace DungeonPlayer
                     this.MainArmor = new ItemBackPack(Database.COMMON_ZELKIS_ARMOR);
                     this.Accessory = new ItemBackPack(Database.COMMON_RED_PENDANT);
                     this.Accessory2 = new ItemBackPack(Database.COMMON_RED_PENDANT);
-                    this.backpack = new ItemBackPack[2];
+                    this.backpack = new ItemBackPack[1];
                     this.backpack[0] = new ItemBackPack(Database.COMMON_NORMAL_RED_POTION);
-                    this.backpack[1] = new ItemBackPack(Database.COMMON_NORMAL_RED_POTION);
                     this.Area = MonsterArea.Duel;
                     break;
 
                 case Database.DUEL_SELMOI_RO:
                     this.fullName = Database.DUEL_SELMOI_RO;
+                    this.firstName = Database.DUEL_SELMOI_RO;
                     SetupParameter(10, 30, 10, 2, 20, 5);
                     SetupFoodParameter(5, 0, 0, 5, 0);
                     this.experience = 0;
@@ -5513,8 +5470,9 @@ namespace DungeonPlayer
                     this.MainArmor = new ItemBackPack(Database.COMMON_FINE_ARMOR);
                     this.Accessory = new ItemBackPack(Database.COMMON_PRISM_EMBLEM);
                     this.Accessory2 = new ItemBackPack(Database.COMMON_PRISM_EMBLEM);
-                    this.backpack = new ItemBackPack[1];
+                    this.backpack = new ItemBackPack[2];
                     this.backpack[0] = new ItemBackPack(Database.COMMON_FROZEN_BALL);
+                    this.backpack[1] = new ItemBackPack(Database.COMMON_NORMAL_RED_POTION);
                     this.Area = MonsterArea.Duel;
                     break;
 
