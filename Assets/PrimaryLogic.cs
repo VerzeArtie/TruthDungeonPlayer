@@ -1771,7 +1771,7 @@ namespace DungeonPlayer
         }
         public static double HuntersEyeValue_B(MainCharacter player)
         {
-            return 150;
+            return 1.5F;
         }
         public static double HuntersEyeValue_C(MainCharacter player)
         {
@@ -1779,7 +1779,7 @@ namespace DungeonPlayer
         }
         public static double HuntersEyeValue_D(MainCharacter player)
         {
-            return 200;
+            return 1.0F;
         }
         // エムブレム・オブ・ヴァルキリー値の算出
         public static double EmblemOfValkyrieValue(MainCharacter player)

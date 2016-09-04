@@ -140,7 +140,7 @@ namespace DungeonPlayer
         private void PlayerAttackPhase2(MainCharacter player, MainCharacter target, MainCharacter.PlayerAction PA, String CurrentSpellName, String CurrentSkillName, String CurrentUsingItem, String CurrentArchetypeName, bool withoutCost, bool mainPhase)
         {
             Debug.Log(PA.ToString() + " " + CurrentSpellName + " " + CurrentSkillName + " " + CurrentUsingItem);
-            string fileExt = ".bmp";
+            string fileExt = "";
             double effectValue = 1.0F;
 
             // 行動の成功・失敗を問わず、アクションコマンド自体は記憶する。
@@ -937,7 +937,7 @@ namespace DungeonPlayer
                             // 一見コマンドは抽象化出来そうだが、モンスター個々でダメージ倍率が違ったり、
                             // コマンド名が同じであっても、中身を変えたりする時があるので
                             // 個別に分けて記載した方が良い。
-                            #region "１階の敵"
+                            #region "１階"
                             case Database.ENEMY_HIYOWA_BEATLE:
                                 effectValue = 4.0F;
                                 UpdateBattleText(player.FirstName + "は尖った角を掲げ上げた！ 【力】" + effectValue.ToString() + "上昇\r\n");
@@ -1356,7 +1356,7 @@ namespace DungeonPlayer
 
                                 break;
                             #endregion
-                            #region "２階の敵"
+                            #region "２階"
                             case Database.ENEMY_DAGGER_FISH:
                                 UpdateBattleText(player.FirstName + "は見境なく噛み付いてきた！\r\n");
                                 PlayerRandomTargetPhysicalDamage(player, 6, 20, 0);
@@ -2665,7 +2665,7 @@ namespace DungeonPlayer
                                     UpdateBattleText(player.FirstName + "は澄み切った発声を一定のリズムを刻む波長を発してきた！\r\n");
                                     NowSlow(player, target, 10);
                                     NowTemptation(player, target, 2);
-                                    BuffDownBattleReaction(target, 10000);
+                                    BuffDownBattleReaction(target, 5.0F);
                                 }
                                 else if (player.ActionLabel.text == "氷雪化現象")
                                 {
@@ -2811,16 +2811,16 @@ namespace DungeonPlayer
 
                                     if (GroundOne.Difficulty <= 1)
                                     {
-                                        BuffDownBattleSpeed(target, 500, 3);
+                                        BuffDownBattleSpeed(target, 1.0F, 3);
                                     }
                                     else
                                     {
-                                        BuffDownBattleSpeed(target, 500);
+                                        BuffDownBattleSpeed(target, 1.0F);
                                     }
 
                                     if (GroundOne.Difficulty > 1)
                                     {
-                                        BuffDownBattleReaction(target, 1000);
+                                        BuffDownBattleReaction(target, 7.0F);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "破裂する雄叫び")
@@ -3010,7 +3010,7 @@ namespace DungeonPlayer
                                             BuffDownPhysicalAttack(target, 1500.0F, 3);
                                             BuffDownPhysicalDefense(target, 1500.0F, 3);
                                         }
-                                        BuffDownPotential(target, 1500.0F, 3);
+                                        BuffDownPotential(target, 1.0F, 3);
                                     }
                                 }
                                 else if (player.ActionLabel.text == "神速の連撃")
@@ -3062,6 +3062,97 @@ namespace DungeonPlayer
                                 }
                                 break;
 
+                            case Database.ENEMY_MEPHISTO_RIGHTARM:
+                                if (player.ActionLabel.text == "見えざる暗黒呪文")
+                                {
+                                    UpdateBattleText(player.FirstName + "は得たいの知れない呪文を放ってきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerMagicAttack(player, group[ii], 0, 0);
+                                        NowBlind(player, group[ii], 5);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "煉獄の禁術")
+                                {
+                                    UpdateBattleText(player.FirstName + "は煉獄の禁術を放ってきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerBuffAbstract(player, group[ii], Database.ENRAGE_BLAST, Database.INFINITY);
+                                        PlayerBuffAbstract(player, group[ii], Database.BLAZING_FIELD, Database.INFINITY);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "デスサイン")
+                                {
+                                    UpdateBattleText(player.FirstName + "の指先からデスサインが放たれた！\r\n");
+                                    if (AP.Math.RandomInteger(3) == 0)
+                                    {
+                                        PlayerDeath(player, target);
+                                    }
+                                    else
+                                    {
+                                        PlayerLifeOne(player, target);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "地獄の鼓動")
+                                {
+                                    UpdateBattleText(player.FirstName + "の６本の指先がゆっくりと地面へ向けられる！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerMagicAttack(player, group[ii], 0, 0);
+                                    }
+                                }
+                                break;
+
+                            case Database.ENEMY_DARK_MESSENGER:
+                                if (player.ActionLabel.text == "黒龍のささやき")
+                                {
+                                    UpdateBattleText(player.FirstName + "は黒龍より禁断の闇技を授かり、アイン達へ向けて呪術を放った。\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    foreach (MainCharacter current in group)
+                                    {
+                                        NowNoResurrection(player, current, Database.INFINITY);
+                                    }
+                                    ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
+                                }
+                                else if (player.ActionLabel.text == "チューズン・サクリファイ")
+                                {
+                                    List<MainCharacter> group = new List<MainCharacter>(); // TruthEnemyCharacter
+                                    SetupEnemyGroup(ref group);
+                                    foreach (TruthEnemyCharacter current in group)
+                                    {
+                                        if (current != player)
+                                        {
+                                            UpdateBattleText(player.FirstName + "は" + current.FirstName + "の魂を根こそぎエネルギーに変換し、それを放出してきた！\r\n");
+                                            int damage = current.CurrentLife;
+                                            PlayerDeath(player, current);
+                                            AbstractMagicDamage(player, target, 0, damage, 0, Database.SOUND_CHOSEN_SACRIFY, 120, TruthActionCommand.MagicType.Shadow, false, CriticalType.None);
+                                            break;
+                                        }
+                                    }
+                                    ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
+                                }
+                                else if (player.ActionLabel.text == "死への背徳")
+                                {
+                                    List<MainCharacter> group = new List<MainCharacter>(); // TruthEnemyCharacter
+                                    SetupEnemyGroup(ref group);
+                                    foreach (TruthEnemyCharacter current in group)
+                                    {
+                                        UpdateBattleText(player.FirstName + "は" + current.FirstName + "の魂に黒龍の生命エネルギーを呪変換を行った！\r\n");
+                                        AnimationDamage(0, current, 0, Color.black, false, false, "復活");
+                                        current.ResurrectPlayer(current.MaxLife);
+                                        break;
+                                    }
+                                    ((TruthEnemyCharacter)player).AI_TacticsNumber = 0;
+                                }
+                                break;
+
                             case Database.ENEMY_MASTER_LOAD:
                                 if (player.ActionLabel.text == "スペリオル・フィールド")
                                 {
@@ -3079,11 +3170,11 @@ namespace DungeonPlayer
                                         }
                                         else if (current.CurrentSpeedUp <= 0)
                                         {
-                                            BuffUpBattleSpeed(current, 500.0F, 10);
+                                            BuffUpBattleSpeed(current, 1.5F, 10);
                                         }
                                         else if (current.CurrentPotentialUp <= 0)
                                         {
-                                            BuffUpPotential(current, 500.0F, 10);
+                                            BuffUpPotential(current, 1.0F, 10);
                                         }
                                     }
                                 }
@@ -3144,47 +3235,37 @@ namespace DungeonPlayer
                                 }
                                 break;
 
-                            case Database.ENEMY_DARK_MESSENGER:
-                                if (player.ActionLabel.text == "黒龍のささやき")
+                            case Database.ENEMY_MARIONETTE_NEMESIS:
+                                if (player.ActionLabel.text == "呪いの糸")
                                 {
-                                    UpdateBattleText(player.FirstName + "は黒龍より禁断の闇技を授かり、アイン達へ向けて呪術を放った。\r\n");
+                                    UpdateBattleText(player.FirstName + "：・・ックスス、ほぉら呪いの糸よ。\n");
+                                    if (PlayerNormalAttack(player, target, 0, false, false))
+                                    {
+                                        NowParalyze(player, target, 3);
+                                        NowSlip(player, target, 10);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ヴェイパー・ドライブ")
+                                {
+                                    UpdateBattleText(player.FirstName + "：ほぉら、アタシのヴェイパー・ドライブを受け止めなぁ！\n");
                                     List<MainCharacter> group = new List<MainCharacter>();
                                     SetupAllyGroup(ref group);
-                                    foreach (MainCharacter current in group)
+                                    for (int ii = 0; ii < group.Count; ii++)
                                     {
-                                        NowNoResurrection(player, current, 999);
+                                        PlayerNormalAttack(player, group[ii], 0, false, false);
                                     }
-                                    ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
+
                                 }
-                                else if (player.ActionLabel.text == "チューズン・サクリファイ")
+                                else if (player.ActionLabel.text == "ホラー・ビジョン")
                                 {
-                                    List<MainCharacter> group = new List<MainCharacter>(); // TruthEnemyCharacter
-                                    SetupEnemyGroup(ref group);
-                                    foreach (TruthEnemyCharacter current in group)
+                                    UpdateBattleText(player.FirstName + "：アッハハハ！！アタシを見ながら死ねえぇぇ！\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
                                     {
-                                        if (current != player)
-                                        {
-                                            UpdateBattleText(player.FirstName + "は" + current.FirstName + "の魂を根こそぎエネルギーに変換し、それを放出してきた！\r\n");
-                                            int damage = current.CurrentLife;
-                                            PlayerDeath(player, current);
-                                            AbstractMagicDamage(player, target, 0, damage, 0, Database.SOUND_CHOSEN_SACRIFY, 120, TruthActionCommand.MagicType.Shadow, false, CriticalType.None);
-                                            break;
-                                        }
+                                        BuffDownBattleSpeed(group[ii], 2.0F, 4);
+                                        BuffDownPotential(group[ii], 1.0F, 4);
                                     }
-                                    ((TruthEnemyCharacter)player).AI_TacticsNumber = 2;
-                                }
-                                else if (player.ActionLabel.text == "死への背徳")
-                                {
-                                    List<MainCharacter> group = new List<MainCharacter>(); // TruthEnemyCharacter
-                                    SetupEnemyGroup(ref group);
-                                    foreach (TruthEnemyCharacter current in group)
-                                    {
-                                        UpdateBattleText(player.FirstName + "は" + current.FirstName + "の魂に黒龍の生命エネルギーを呪変換を行った！\r\n");
-                                        AnimationDamage(0, current, 0, Color.black, false, false, "復活");
-                                        current.ResurrectPlayer(current.MaxLife);
-                                        break;
-                                    }
-                                    ((TruthEnemyCharacter)player).AI_TacticsNumber = 0;
                                 }
                                 break;
 
@@ -3312,9 +3393,9 @@ namespace DungeonPlayer
                                     BuffUpMagicAttack(player, 1200.0F);
                                     BuffUpPhysicalDefense(player, 700.0F);
                                     BuffUpMagicDefense(player, 700.0F);
-                                    BuffUpBattleSpeed(player, 500.0F);
-                                    BuffUpBattleReaction(player, 500.0F);
-                                    BuffUpPotential(player, 100.0F);
+                                    BuffUpBattleSpeed(player, 2.0F);
+                                    BuffUpBattleReaction(player, 5.0F);
+                                    BuffUpPotential(player, 1.0F);
                                 }
                                 else if (player.ActionLabel.text == "呪怨殺")
                                 {
@@ -3331,9 +3412,9 @@ namespace DungeonPlayer
                                     BuffDownMagicAttack(target, 2500.0F);
                                     BuffDownPhysicalDefense(target, 600.0F);
                                     BuffDownMagicDefense(target, 600.0F);
-                                    BuffDownBattleSpeed(target, 500.0F);
-                                    BuffDownBattleReaction(target, 350.0F);
-                                    BuffDownPotential(target, 2000.0F);
+                                    BuffDownBattleSpeed(target, 2.5F);
+                                    BuffDownBattleReaction(target, 7.0F);
+                                    BuffDownPotential(target, 1.0F);
                                 }
                                 else if (player.ActionLabel.text == "ギガント・スレイヤー")
                                 {
@@ -3396,6 +3477,44 @@ namespace DungeonPlayer
                                         PlayerBuffAbstract(player, target, Database.DAMNATION);
                                     }
                                 }
+                                break;
+
+                            case Database.ENEMY_UNDEAD_WYVERN:
+                                if (player.ActionLabel.text == "スカル・クラッシュ")
+                                {
+                                    UpdateBattleText(player.FirstName + "は頭蓋骨の部分をめがけて突進してきた。\r\n");
+                                    if (PlayerNormalAttack(player, target, 0, false, false))
+                                    {
+                                        NowStunning(player, target, 3, false);
+                                        NowSlip(player, target, 10);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "死への囁き")
+                                {
+                                    UpdateBattleText(player.FirstName + "：は禍々しい呪詛を部屋中に響き渡らせてきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    MainCharacter current = group[AP.Math.RandomInteger(group.Count - 1)];
+                                    if (AP.Math.RandomInteger(3) == 0)
+                                    {
+                                        PlayerDeath(player, target);
+                                    }
+                                    else
+                                    {
+                                        PlayerLifeHalfMax(player, target);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "ボーン・トルネード")
+                                {
+                                    UpdateBattleText(player.FirstName + "：は骨の嵐を部屋中に巻き起こしてきた！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        PlayerMagicAttack(player, group[ii], 0, 0);
+                                    }
+                                }
+
                                 break;
 
                             case Database.ENEMY_GO_FLAME_SLASHER:
@@ -3599,7 +3718,7 @@ namespace DungeonPlayer
                                     for (int ii = 0; ii < group.Count; ii++)
                                     {
                                         group[ii].CurrentChaosDesperate = Database.INFINITY;
-                                        group[ii].CurrentChaosDesperateValue = 10;
+                                        group[ii].CurrentChaosDesperateValue = 8;
                                         group[ii].ActivateBuff(group[ii].pbChaosDesperate, Database.BaseResourceFolder + Database.CHAOS_DESPERATE + fileExt, Database.INFINITY);
                                     }
                                     ((TruthEnemyCharacter)player).AI_TacticsNumber = 1;
@@ -3628,6 +3747,44 @@ namespace DungeonPlayer
                                     {
                                         CheckChaosDesperate(group[ii]);
                                     }
+                                }
+                                break;
+
+                            case Database.ENEMY_DREAD_KNIGHT:
+                                if (player.ActionLabel.text == "暗黒の槍")
+                                {
+                                    UpdateBattleText(player.FirstName + "は突先が純黒に染まった槍を" + target.FirstName + "に向けて放ってきた！\r\n");
+                                    if (target.CurrentLife <= 1)
+                                    {
+                                        PlayerDeath(player, target);
+                                    }
+                                    else if (AP.Math.RandomInteger(3) == 0)
+                                    {
+                                        PlayerLifeOne(player, target);
+                                    }
+                                    else
+                                    {
+                                        NowBlind(player, target, 4);
+                                        NowSlip(player, target, 4);
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "大地の裂け目")
+                                {
+                                    UpdateBattleText(player.FirstName + "の純黒の槍が地上へ突き刺された。大地に裂け目が発生する！\r\n");
+                                    List<MainCharacter> group = new List<MainCharacter>();
+                                    SetupAllyGroup(ref group);
+                                    for (int ii = 0; ii < group.Count; ii++)
+                                    {
+                                        if (PlayerNormalAttack(player, group[ii], 0, false, false))
+                                        {
+                                            NowParalyze(player, target, 1);
+                                        }
+                                    }
+                                }
+                                else if (player.ActionLabel.text == "不死への渇望")
+                                {
+                                    UpdateBattleText(player.FirstName + "は不死への渇望を貪欲に見せ始めた！\r\n");
+                                    PlayerAbstractLifeGain(player, player, 0, player.MaxLife, 0, Database.SOUND_CELESTIAL_NOVA, 9);
                                 }
                                 break;
 
@@ -4126,9 +4283,9 @@ namespace DungeonPlayer
                                     BuffDownPhysicalDefense(target, 1000, Database.INFINITY);
                                     BuffDownMagicAttack(target, 1000, Database.INFINITY);
                                     BuffDownMagicDefense(target, 1000, Database.INFINITY);
-                                    BuffDownBattleSpeed(target, 1000, Database.INFINITY);
-                                    BuffDownBattleReaction(target, 1000, Database.INFINITY);
-                                    BuffDownPotential(target, 1000, Database.INFINITY);
+                                    BuffDownBattleSpeed(target, 4.0F, Database.INFINITY);
+                                    BuffDownBattleReaction(target, 10.0F, Database.INFINITY);
+                                    BuffDownPotential(target, 2.0F, Database.INFINITY);
                                     //                        BuffDownPotential(target, 500, 2);
 
                                 }
@@ -4176,7 +4333,7 @@ namespace DungeonPlayer
                                     //player.CurrentPotentialUpValue = 1000;
                                     //player.ActivateBuff(player.pbPotentialUp, Database.BaseResourceFolder + "BuffPotentialUp", Database.INFINITY);
 
-                                    //BuffUpPotential(target, 1000);
+                                    //BuffUpPotential(target, 1.0F);
 
                                     //BuffDownPhysicalDefense(target, 1000);
 
@@ -4184,7 +4341,7 @@ namespace DungeonPlayer
 
                                     //BuffDownMagicDefense(target, 1000);
 
-                                    //BuffDownBattleSpeed(target, 1000);
+                                    //BuffDownBattleSpeed(target, 2.0F);
 
                                     //BuffDownBattleReaction(target, 1000);
 
@@ -4224,7 +4381,7 @@ namespace DungeonPlayer
             //                    }
             //                    else if (player.ActionLabel.text == "弱体化「戦闘速度」")
             //                    {
-            //                        BuffDownBattleSpeed(target, 500, 2);
+            //                        BuffDownBattleSpeed(target, 2.0F, 2);
             //                    }
             //                    else if (player.ActionLabel.text == "弱体化「魔法防御」")
             //                    {

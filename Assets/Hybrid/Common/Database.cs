@@ -2441,7 +2441,7 @@ namespace DungeonPlayer
         public const string ENEMY_SUN_STRIDER = @"サン・ストライダー";
         public const string ENEMY_ARC_DEMON = @"アークデーモン";
         public const string ENEMY_BALANCE_IDLE = @"天秤を司る者";
-        public const string ENEMY_ANDEAD_WYVERN = @"アンデッド・ワイバーン";
+        public const string ENEMY_UNDEAD_WYVERN = @"アンデッド・ワイバーン";
         public const string ENEMY_GO_FLAME_SLASHER = @"業・フレイムスラッシャー";
         public const string ENEMY_DEVIL_CHILDREN = @"デビル・チルドレン";
 
