@@ -123,6 +123,7 @@ namespace DungeonPlayer
         public GameObject groupChooseCommand;
         public Camera cam;
         public TruthImage[] FieldBuff;
+        public GameObject groupFieldBuff;
         public GameObject groupParentBackpack;
         public GameObject[] back_Backpack;
         public Text[] backpack;
@@ -557,6 +558,15 @@ namespace DungeonPlayer
             UpdateUseItemGauge();
             //tapFirstChara ();
 
+            if (this.ec1 != null && this.ec1.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+            {
+                groupFieldBuff.SetActive(true);
+            }
+            else
+            {
+                groupFieldBuff.SetActive(false);
+            }
+
             if (this.ec1 != null)
             {
                 // ヴェルゼ最終戦闘２
@@ -804,7 +814,7 @@ namespace DungeonPlayer
             if (this.nowAnimationSandGlass)
             {
                 ExecAnimationSandGlass();
-                Debug.Log("nowAnimationSandGlass is true then return");
+                //Debug.Log("nowAnimationSandGlass is true then return");
                 return; // アニメーション表示中は停止させる。
             }
             if (this.nowAnimationFinal)
@@ -3829,10 +3839,10 @@ namespace DungeonPlayer
                         if (tempStop == false)
                         {
                             tempStop = true;
-                            this.back_labelBattleTurn.GetComponent<Image>().color = Color.white;
+                            //this.back_labelBattleTurn.GetComponent<Image>().color = Color.white;
                             this.labelBattleTurn.color = Color.black;
                             System.Threading.Thread.Sleep(1000);
-                            this.back_labelBattleTurn.GetComponent<Image>().color = UnityColor.GhostWhite;
+                            //this.back_labelBattleTurn.GetComponent<Image>().color = UnityColor.GhostWhite;
                             this.labelBattleTurn.color = Color.black;
                         }
                         PlayerAttackPhase(ActiveList[ii], ActiveList[ii].ActionCommandStackTarget[jj], TruthActionCommand.CheckPlayerActionFromString(ActiveList[ii].ActionCommandStackList[jj]), ActiveList[ii].ActionCommandStackList[jj], true, false, false);
@@ -4100,6 +4110,17 @@ namespace DungeonPlayer
                 }
             }
         }
+        
+        protected void TimeStopAlly(MainCharacter player)
+        {
+            List<MainCharacter> group = new List<MainCharacter>();
+            SetupAllyGroup(ref group);
+
+            foreach (MainCharacter current in group)
+            {
+                PlayerSpellTimeStop(player, current, true);
+            }
+        }
 
         private int CurrentTimeStop = 0; // [後編必須]タイムストップを後編専用で書き直してください。本フラグは不要です。
         private void CleanUpStep()
@@ -4107,98 +4128,97 @@ namespace DungeonPlayer
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
                 ActiveList[ii].CleanUpEffect(false, false);
-                // after
-                //if (ActiveList[ii].Name == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
-                //{
-                //    // 憎業「攻撃１」
-                //    if (FieldBuff1.AbstractCountDownBuff())
-                //    {
-                //        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
+                if (ActiveList[ii].FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                {
+                    // 憎業「攻撃１」
+                    if (this.FieldBuff[0].AbstractCountDownBuff())
+                    {
+                        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
 
-                //        player.Pattern1++;
+                        player.Pattern1++;
 
-                //        if (player.Pattern1 > 0) { player.ActionCommandStackList.Add(Database.BLAZING_FIELD); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern1 > 1) { player.ActionCommandStackList.Add(Database.SIGIL_OF_HOMURA); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern1 > 2) { player.ActionCommandStackList.Add(Database.IMMOLATE); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern1 > 3) { player.ActionCommandStackList.Add(Database.WORD_OF_MALICE); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern1 > 4) { player.ActionCommandStackList.Add(Database.PIERCING_FLAME); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern1 > 5) { player.ActionCommandStackList.Add(Database.DEMONIC_IGNITE); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern1 > 6) { player.ActionCommandStackList.Add(Database.DOOM_BLADE); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern1 > 7) { player.ActionCommandStackList.Add(Database.LAVA_ANNIHILATION); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
+                        if (player.Pattern1 > 0) { player.ActionCommandStackList.Add(Database.BLAZING_FIELD); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern1 > 1) { player.ActionCommandStackList.Add(Database.SIGIL_OF_HOMURA); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern1 > 2) { player.ActionCommandStackList.Add(Database.IMMOLATE); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern1 > 3) { player.ActionCommandStackList.Add(Database.WORD_OF_MALICE); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern1 > 4) { player.ActionCommandStackList.Add(Database.PIERCING_FLAME); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern1 > 5) { player.ActionCommandStackList.Add(Database.DEMONIC_IGNITE); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern1 > 6) { player.ActionCommandStackList.Add(Database.DOOM_BLADE); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern1 > 7) { player.ActionCommandStackList.Add(Database.LAVA_ANNIHILATION); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
 
-                //        TimeStopAlly(ActiveList[ii]);
-                //    }
-                //    // 零空「ディスペル」
-                //    if (FieldBuff2.AbstractCountDownBuff())
-                //    {
-                //        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
-                //        player.Pattern2++;
+                        TimeStopAlly(ActiveList[ii]);
+                    }
+                    // 零空「ディスペル」
+                    if (this.FieldBuff[1].AbstractCountDownBuff())
+                    {
+                        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
+                        player.Pattern2++;
 
-                //        if (player.Pattern2 > 0) { player.ActionCommandStackList.Add(Database.ABSOLUTE_ZERO); player.ActionCommandStackTarget.Add(player.Targetting(tc, sc, mc)); }
-                //        if (player.Pattern2 > 0) { player.ActionCommandStackList.Add(Database.DAMNATION); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern2 > 1) { player.ActionCommandStackList.Add(Database.AUSTERITY_MATRIX); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern2 > 2) { player.ActionCommandStackList.Add(Database.BLACK_CONTRACT); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern2 > 3) { player.ActionCommandStackList.Add(Database.TRANQUILITY); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern2 > 4) { player.ActionCommandStackList.Add(Database.HYMN_CONTRACT); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern2 > 5) { player.ActionCommandStackList.Add(Database.DISPEL_MAGIC); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        if (player.Pattern2 > 6) { player.ActionCommandStackList.Add(Database.TRANSCENDENT_WISH); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
+                        if (player.Pattern2 > 0) { player.ActionCommandStackList.Add(Database.ABSOLUTE_ZERO); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern2 > 0) { player.ActionCommandStackList.Add(Database.DAMNATION); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern2 > 1) { player.ActionCommandStackList.Add(Database.AUSTERITY_MATRIX); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern2 > 2) { player.ActionCommandStackList.Add(Database.BLACK_CONTRACT); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern2 > 3) { player.ActionCommandStackList.Add(Database.TRANQUILITY); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern2 > 4) { player.ActionCommandStackList.Add(Database.HYMN_CONTRACT); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern2 > 5) { player.ActionCommandStackList.Add(Database.DISPEL_MAGIC); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        if (player.Pattern2 > 6) { player.ActionCommandStackList.Add(Database.TRANSCENDENT_WISH); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
 
-                //        TimeStopAlly(ActiveList[ii]);
-                //    }
-                //    // 盛栄「防御」
-                //    if (FieldBuff3.AbstractCountDownBuff())
-                //    {
-                //        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
-                //        player.Pattern3++;
+                        TimeStopAlly(ActiveList[ii]);
+                    }
+                    // 盛栄「防御」
+                    if (this.FieldBuff[2].AbstractCountDownBuff())
+                    {
+                        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
+                        player.Pattern3++;
 
-                //        if (player.Pattern3 > 0) { player.ActionCommandStackList.Add(Database.PROTECTION); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 1) { player.ActionCommandStackList.Add(Database.MIRROR_IMAGE); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 2) { player.ActionCommandStackList.Add(Database.DEFLECTION); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 3) { player.ActionCommandStackList.Add(Database.SKY_SHIELD); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 4) { player.ActionCommandStackList.Add(Database.STATIC_BARRIER); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 5) { player.ActionCommandStackList.Add(Database.SKY_SHIELD); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 6) { player.ActionCommandStackList.Add(Database.STATIC_BARRIER); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 7) { player.ActionCommandStackList.Add(Database.SKY_SHIELD); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 8) { player.ActionCommandStackList.Add(Database.STATIC_BARRIER); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern3 > 9) { player.ActionCommandStackList.Add(Database.HOLY_BREAKER); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 0) { player.ActionCommandStackList.Add(Database.PROTECTION); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 1) { player.ActionCommandStackList.Add(Database.MIRROR_IMAGE); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 2) { player.ActionCommandStackList.Add(Database.DEFLECTION); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 3) { player.ActionCommandStackList.Add(Database.SKY_SHIELD); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 4) { player.ActionCommandStackList.Add(Database.STATIC_BARRIER); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 5) { player.ActionCommandStackList.Add(Database.SKY_SHIELD); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 6) { player.ActionCommandStackList.Add(Database.STATIC_BARRIER); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 7) { player.ActionCommandStackList.Add(Database.SKY_SHIELD); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 8) { player.ActionCommandStackList.Add(Database.STATIC_BARRIER); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern3 > 9) { player.ActionCommandStackList.Add(Database.HOLY_BREAKER); player.ActionCommandStackTarget.Add(player); }
 
-                //        TimeStopAlly(ActiveList[ii]);
-                //    }
-                //    // 絶剣「攻撃２」
-                //    if (FieldBuff4.AbstractCountDownBuff())
-                //    {
-                //        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
-                //        player.Pattern4++;
+                        TimeStopAlly(ActiveList[ii]);
+                    }
+                    // 絶剣「攻撃２」
+                    if (this.FieldBuff[3].AbstractCountDownBuff())
+                    {
+                        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
+                        player.Pattern4++;
 
-                //        if (player.Pattern4 <= 2) { player.ActionCommandStackList.Add(Database.STRAIGHT_SMASH); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        else if (player.Pattern4 <= 4) { player.ActionCommandStackList.Add(Database.DOUBLE_SLASH); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        else if (player.Pattern4 <= 8) { player.ActionCommandStackList.Add(Database.SILENT_RUSH); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        else if (player.Pattern4 <= 16) { player.ActionCommandStackList.Add(Database.CARNAGE_RUSH); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
-                //        else if (player.Pattern4 <= 32) { player.ActionCommandStackList.Add(Database.SOUL_EXECUTION); player.ActionCommandStackTarget.Add(player.Targetting(mc, sc, tc)); }
+                        if (player.Pattern4 <= 2) { player.ActionCommandStackList.Add(Database.STRAIGHT_SMASH); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        else if (player.Pattern4 <= 4) { player.ActionCommandStackList.Add(Database.DOUBLE_SLASH); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        else if (player.Pattern4 <= 8) { player.ActionCommandStackList.Add(Database.SILENT_RUSH); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        else if (player.Pattern4 <= 16) { player.ActionCommandStackList.Add(Database.CARNAGE_RUSH); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
+                        else if (player.Pattern4 <= 32) { player.ActionCommandStackList.Add(Database.SOUL_EXECUTION); player.ActionCommandStackTarget.Add(player.Targetting(GroundOne.MC, GroundOne.SC, GroundOne.TC)); }
 
-                //        if (player.Pattern4 > 0) { player.ActionCommandStackList.Add(Database.SAINT_POWER); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern4 > 1) { player.ActionCommandStackList.Add(Database.FLAME_AURA); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern4 > 2) { player.ActionCommandStackList.Add(Database.FROZEN_AURA); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern4 > 3) { player.ActionCommandStackList.Add(Database.GALE_WIND); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern4 > 4) { player.ActionCommandStackList.Add(Database.WORD_OF_FORTUNE); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern4 > 5) { player.ActionCommandStackList.Add(Database.SIN_FORTUNE); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern4 > 0) { player.ActionCommandStackList.Add(Database.SAINT_POWER); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern4 > 1) { player.ActionCommandStackList.Add(Database.FLAME_AURA); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern4 > 2) { player.ActionCommandStackList.Add(Database.FROZEN_AURA); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern4 > 3) { player.ActionCommandStackList.Add(Database.GALE_WIND); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern4 > 4) { player.ActionCommandStackList.Add(Database.WORD_OF_FORTUNE); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern4 > 5) { player.ActionCommandStackList.Add(Database.SIN_FORTUNE); player.ActionCommandStackTarget.Add(player); }
 
-                //        TimeStopAlly(ActiveList[ii]);
-                //    }
-                //    // 緑永「回復」
-                //    if (FieldBuff5.AbstractCountDownBuff())
-                //    {
-                //        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
-                //        player.Pattern5++;
+                        TimeStopAlly(ActiveList[ii]);
+                    }
+                    // 緑永「回復」
+                    if (this.FieldBuff[4].AbstractCountDownBuff())
+                    {
+                        TruthEnemyCharacter player = ((TruthEnemyCharacter)ActiveList[ii]);
+                        player.Pattern5++;
 
-                //        if (player.Pattern5 > 0) { player.ActionCommandStackList.Add(Database.NOURISH_SENSE); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern5 > 0) { player.ActionCommandStackList.Add(Database.FRESH_HEAL); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern5 > 1) { player.ActionCommandStackList.Add(Database.WORD_OF_LIFE); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern5 > 2) { player.ActionCommandStackList.Add(Database.SACRED_HEAL); player.ActionCommandStackTarget.Add(player); }
-                //        if (player.Pattern5 > 3) { player.ActionCommandStackList.Add(Database.CELESTIAL_NOVA); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern5 > 0) { player.ActionCommandStackList.Add(Database.NOURISH_SENSE); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern5 > 0) { player.ActionCommandStackList.Add(Database.FRESH_HEAL); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern5 > 1) { player.ActionCommandStackList.Add(Database.WORD_OF_LIFE); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern5 > 2) { player.ActionCommandStackList.Add(Database.SACRED_HEAL); player.ActionCommandStackTarget.Add(player); }
+                        if (player.Pattern5 > 3) { player.ActionCommandStackList.Add(Database.CELESTIAL_NOVA); player.ActionCommandStackTarget.Add(player); }
 
-                //        TimeStopAlly(ActiveList[ii]);
-                //    }
+                        TimeStopAlly(ActiveList[ii]);
+                    }
                 //    // 終焉
                 //    if (FieldBuff6.AbstractCountDownBuff())
                 //    {
@@ -4258,7 +4278,7 @@ namespace DungeonPlayer
 
                 //        TimeStopAlly(ActiveList[ii]);
                 //    }
-                //}
+                }
             }
 
             // 前編からの引継ぎには不足してるコーディング。書き直し必要。
@@ -7480,7 +7500,7 @@ namespace DungeonPlayer
             if (this.nowAnimationSandGlassCounter <= 0)
             {
                 back_Sandglass.gameObject.SetActive(true);
-                targetLabel.text = this.BattleTurnCount.ToString();
+                targetLabel.text = (this.BattleTurnCount - 1).ToString();
                 targetLabel.gameObject.SetActive(true);
                 SandGlassImage.sprite = Resources.Load<Sprite>("AnimeSandGlass0");
                 SandGlassImage.gameObject.SetActive(true);
@@ -7498,7 +7518,7 @@ namespace DungeonPlayer
 
                 if (this.nowAnimationSandGlassCounter == 42)
                 {
-                    targetLabel.text = (this.BattleTurnCount + 1).ToString();
+                    targetLabel.text = this.BattleTurnCount.ToString();
                 }
             }
 

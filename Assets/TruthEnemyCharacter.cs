@@ -2331,35 +2331,6 @@ namespace DungeonPlayer
                 #region "５階"
                 case Database.ENEMY_BOSS_BYSTANDER_EMPTINESS:
                     SetupActionCommand(this, this, PlayerAction.SpecialSkill, "時間律の支配");
-                    //rand = AP.Math.RandomInteger(3);
-                    //switch (rand)
-                    //{
-                    //    case 0:
-                    //        this.PA = PlayerAction.SpecialSkill;
-                    //        this.ActionLabel.text = "時間律（憎業）";
-                    //        break;
-                    //    case 1:
-                    //        this.PA = PlayerAction.SpecialSkill;
-                    //        this.ActionLabel.text = "時間律（零空）";
-                    //        break;
-                    //    case 2:
-                    //        this.PA = PlayerAction.SpecialSkill;
-                    //        this.ActionLabel.text = "時間律（盛栄）";
-                    //        break;
-                    //    case 3:
-                    //        this.PA = PlayerAction.SpecialSkill;
-                    //        this.ActionLabel.text = "時間律（絶剣）";
-                    //        break;
-                    //    case 4:
-                    //        this.PA = PlayerAction.SpecialSkill;
-                    //        this.ActionLabel.text = "時間律（緑永）";
-                    //        break;
-                    //    case 5:
-                    //        this.PA = PlayerAction.SpecialSkill;
-                    //        this.ActionLabel.text = "完全絶対時間律（終焉）";
-                    //        break;
-                    //}
-                    //break;
                     break;
 
                 case Database.ENEMY_PHOENIX:
