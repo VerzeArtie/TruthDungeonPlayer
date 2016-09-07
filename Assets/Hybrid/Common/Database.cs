@@ -2691,7 +2691,7 @@ namespace DungeonPlayer
         public const string TruthInformation = @"TruthInformation";
         public const string TruthItemBank = @"TruthItemBank";
         public const string TruthItemDesc = @"TruthItemDesc";
-        public const string TruthPlaybackMessage = @"TruthPlaybackMessage";
+        public const string TruthPlayback = @"TruthPlayback";
         public const string TruthPlayerInformation = @"TruthPlayerInformation";
         public const string TruthPotionShop = @"TruthPotionShop";
         public const string TruthRequestFood = @"TruthRequestFood";
@@ -2828,6 +2828,7 @@ namespace DungeonPlayer
         public const string LOG_EQUIPSHOP_NO = @"EquipShopNo";
         public const string LOG_EQUIPSHOP_EXCHANGE = @"EquipShopExchange";
         public const string LOG_EQUIPSHOP_CLOSE = @"EquipShopClose";
+        public const string LOG_PLAYBACK_CLOSE = @"PlaybackClose";
         // overrideクラスによる二重出力は不要。
         //public const string LOG_POTIONSHOP_LEVEL = @"PotionShopLevel";
         //public const string LOG_POTIONSHOP_PLAYER1 = @"PotionShopPlayer1";

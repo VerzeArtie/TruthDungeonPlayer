@@ -15327,26 +15327,27 @@ namespace DungeonPlayer
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
             if (BlockAction()) { return; }
-            if (!this.back_playback.activeInHierarchy)
-            {
-                this.back_playback.SetActive(true);
-                this.GroupMenu.SetActive(false);
-                this.HelpManual.SetActive(false);
-                this.DungeonView.SetActive(false);
-                this.BlueOrbImage.SetActive(false);
-                this.BlueOrbText.SetActive(false);
-                this.PathfindingModeImage.SetActive(false);
-                this.labelVigilance.gameObject.SetActive(false);
-            }
-            else
-            {
-                this.back_playback.SetActive(false);
-                this.GroupMenu.SetActive(true);
-                this.HelpManual.SetActive(true);
-                this.DungeonView.SetActive(true);
-                this.BlueOrbImage.SetActive(true);
-                this.PathfindingModeImage.SetActive(true);
-            }
+            SceneDimension.CallTruthPlayBack(this);
+            //if (!this.back_playback.activeInHierarchy)
+            //{
+            //    this.back_playback.SetActive(true);
+            //    this.GroupMenu.SetActive(false);
+            //    this.HelpManual.SetActive(false);
+            //    this.DungeonView.SetActive(false);
+            //    this.BlueOrbImage.SetActive(false);
+            //    this.BlueOrbText.SetActive(false);
+            //    this.PathfindingModeImage.SetActive(false);
+            //    this.labelVigilance.gameObject.SetActive(false);
+            //}
+            //else
+            //{
+            //    this.back_playback.SetActive(false);
+            //    this.GroupMenu.SetActive(true);
+            //    this.HelpManual.SetActive(true);
+            //    this.DungeonView.SetActive(true);
+            //    this.BlueOrbImage.SetActive(true);
+            //    this.PathfindingModeImage.SetActive(true);
+            //}
         }
 
         public void BlueOrb_Click()

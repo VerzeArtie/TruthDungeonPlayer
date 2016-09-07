@@ -54,6 +54,18 @@ namespace DungeonPlayer
             SceneManager.LoadScene(target);
         }
 
+        public static void CallTruthPlayBack(MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.TruthPlayback);
+        }
+
+        public static void CallTruthBookManual(MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.TruthInformation);
+        }
+
         public static void CallTruthSelectCharacter(MotherForm scene)
         {
             GroundOne.Parent.Add(scene);

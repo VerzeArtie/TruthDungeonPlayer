@@ -2719,7 +2719,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1012082962}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6090155
+  m_Size: 0.6090156
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4544,6 +4544,8 @@ MonoBehaviour:
   PoolSkillConsumption: 0
   CurrentFlashBlazeCount: 0
   CurrentFlashBlazeFactor: 0
+  CurrentEnrageBlastFactor: 0
+  CurrentBlazingFieldFactor: 0
   AmplifyPhysicalAttack: 0
   AmplifyMagicAttack: 0
   AmplifyPhysicalDefense: 0
@@ -4568,7 +4570,7 @@ MonoBehaviour:
   CurrentVigorSense: 0
   CurrentRisingAura: 0
   CurrentOnslaughtHit: 0
-  CurrentSmoothingMove: 0
+  CurrentColorlessMove: 0
   CurrentAscensionAura: 0
   CurrentFutureVision: 0
   CurrentReflexSpirit: 0
@@ -4616,7 +4618,6 @@ MonoBehaviour:
   CurrentStarLightning: 0
   CurrentBlackFire: 0
   CurrentBlazingField: 0
-  CurrentBlazingFieldFactor: 0
   CurrentDeepMirror: 0
   CurrentWordOfMalice: 0
   CurrentSinFortune: 0
@@ -4637,6 +4638,7 @@ MonoBehaviour:
   CurrentJunkan_Seiyaku: 0
   CurrentFeltus: 0
   CurrentJuzaPhantasmal: 0
+  CurrentEternalFateRing: 0
   CurrentLightServant: 0
   CurrentShadowServant: 0
   CurrentAdilBlueBurn: 0
@@ -4650,29 +4652,13 @@ MonoBehaviour:
   CurrentShiningAether: 0
   CurrentBlackElixir: 0
   CurrentElementalSeal: 0
-  CurrentColoressAntidote: 0
+  CurrentColorlessAntidote: 0
   CurrentLifeCount: 0
   CurrentChaoticSchema: 0
-  CurrentPoisonValue: 0
-  CurrentConcussiveHitValue: 0
-  CurrentOnslaughtHitValue: 0
-  CurrentImpulseHitValue: 0
-  CurrentSkyShieldValue: 0
-  CurrentStaticBarrierValue: 0
-  CurrentStanceOfMysticValue: 0
-  CurrentFeltusValue: 0
-  CurrentJuzaPhantasmalValue: 0
-  CurrentLightServantValue: 0
-  CurrentShadowServantValue: 0
-  CurrentAdilBlueBurnValue: 0
-  CurrentMazeCubeValue: 0
-  CurrentBlackElixirValue: 0
-  CurrentLifeCountValue: 0
   AvailableSkill: 0
   AvailableMana: 0
   AvailableArchitect: 0
   PA: 0
-  Stance: 0
   BuffPanel: {fileID: 0}
   BuffNumber: 0
   BuffElement: []
@@ -4825,7 +4811,7 @@ MonoBehaviour:
   pbSwiftStep: {fileID: 0}
   pbVigorSense: {fileID: 0}
   pbOnslaughtHit: {fileID: 0}
-  pbSmoothingMove: {fileID: 0}
+  pbColorlessMove: {fileID: 0}
   pbFutureVision: {fileID: 0}
   pbReflexSpirit: {fileID: 0}
   pbConcussiveHit: {fileID: 0}
@@ -4849,7 +4835,7 @@ MonoBehaviour:
   pbShiningAether: {fileID: 0}
   pbBlackElixir: {fileID: 0}
   pbElementalSeal: {fileID: 0}
-  pbColoressAntidote: {fileID: 0}
+  pbColorlessAntidote: {fileID: 0}
   pbLifeCount: {fileID: 0}
   pbChaoticSchema: {fileID: 0}
   pbSyutyuDanzetsu: {fileID: 0}
@@ -4973,7 +4959,7 @@ MonoBehaviour:
   risingAura: 0
   rumbleShout: 0
   onslaughtHit: 0
-  smoothingMove: 0
+  colorlessMove: 0
   ascensionAura: 0
   futureVision: 0
   unknownShock: 0

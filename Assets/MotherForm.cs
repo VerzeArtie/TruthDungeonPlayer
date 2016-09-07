@@ -100,7 +100,7 @@ namespace DungeonPlayer
         
         public virtual void BookManual_Click()
         {
-            Application.LoadLevelAdditive(Database.TruthInformation);
+            SceneDimension.CallTruthBookManual(this);
         }
 
         public void GetNewItemAndBack()

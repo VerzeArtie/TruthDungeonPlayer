@@ -2869,6 +2869,18 @@ namespace DungeonPlayer
             }
         }
 
+        public void tapBookManual()
+        {
+            GroundOne.SQL.UpdateOwner(Database.LOG_DESCRIPTION, String.Empty, String.Empty);
+            SceneDimension.CallTruthBookManual(this);
+        }
+
+        public void tapPlayback()
+        {
+            GroundOne.SQL.UpdateOwner(Database.LOG_PLAYBACK, String.Empty, String.Empty);
+            SceneDimension.CallTruthPlayBack(this);
+        }
+
         public void CallStatusPlayer()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_PLAYER_STATUS, "FromHomeTown", String.Empty);
