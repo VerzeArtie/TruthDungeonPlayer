@@ -15561,6 +15561,7 @@ namespace DungeonPlayer
                 if (currentEvent == MessagePack.ActionEvent.None)
                 {
                     mainMessage.text = "   " + this.nowMessage[this.nowReading];
+                    GroundOne.playbackMessage.Add(this.nowMessage[this.nowReading]);
                 }
 
                 // 各イベント固有の処理
