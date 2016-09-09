@@ -726,7 +726,7 @@ namespace DungeonPlayer
                             break;
                         case Database.EPIC_ADILRING_OF_BLUE_BURN:
                             effectValue = PrimaryLogic.AdilBlueBurnValue(player);
-                            AbstractMagicDamage(player, target, 0, ref effectValue, 0, "blueLightning", 5010, TruthActionCommand.MagicType.None, false, CriticalType.Random);
+                            AbstractMagicDamage(player, player.Target, 0, ref effectValue, 0, "blueLightning", 5010, TruthActionCommand.MagicType.None, false, CriticalType.Random);
                             break;
                         case Database.RARE_SOUSUI_HIDENSYO:
                             PreExecPlaySkill(player, target, false, false, Database.VIOLENT_SLASH);

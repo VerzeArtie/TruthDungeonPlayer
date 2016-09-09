@@ -8055,7 +8055,7 @@ MonoBehaviour:
   - {fileID: 775391832}
   - {fileID: 723398306}
   - {fileID: 18206362}
-  groupFieldBuff: {fileID: 0}
+  groupFieldBuff: {fileID: 979559095}
   groupParentBackpack: {fileID: 477460959}
   back_Backpack:
   - {fileID: 1202044403}
@@ -36216,7 +36216,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1079667845}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.23333333
+  m_Size: 0.23333336
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
