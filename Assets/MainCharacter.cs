@@ -7624,189 +7624,189 @@ namespace DungeonPlayer
                         upPoint = 20;
                         break;
                     case 10:
-                        upPoint = 20;
-                        break;
-                    case 11:
-                        upPoint = 20;
-                        break;
-                    case 12:
-                        upPoint = 20;
-                        break;
-                    case 13:
-                        upPoint = 20;
-                        break;
-                    case 14:
-                        upPoint = 20;
-                        break;
-                    case 15:
-                        upPoint = 20;
-                        break;
-                    case 16:
-                        upPoint = 20;
-                        break;
-                    case 17:
-                        upPoint = 20;
-                        break;
-                    case 18:
-                        upPoint = 20;
-                        break;
-                    case 19:
-                        upPoint = 20;
-                        break;
-
-                    case 20:
                         upPoint = 30;
                         break;
-                    case 21:
+                    case 11:
                         upPoint = 40;
                         break;
-                    case 22:
+                    case 12:
                         upPoint = 50;
                         break;
-                    case 23:
+                    case 13:
                         upPoint = 60;
                         break;
-                    case 24:
+                    case 14:
                         upPoint = 70;
                         break;
-                    case 25:
+                    case 15:
                         upPoint = 80;
                         break;
-                    case 26:
+                    case 16:
                         upPoint = 90;
                         break;
-                    case 27:
+                    case 17:
                         upPoint = 100;
                         break;
-                    case 28:
+                    case 18:
                         upPoint = 110;
                         break;
-                    case 29:
+                    case 19:
                         upPoint = 120;
                         break;
 
-                    case 30:
-                        upPoint = 140;
+                    case 20:
+                        upPoint = 150;
                         break;
-                    case 31:
-                        upPoint = 160;
-                        break;
-                    case 32:
+                    case 21:
                         upPoint = 180;
                         break;
-                    case 33:
-                        upPoint = 200;
+                    case 22:
+                        upPoint = 210;
                         break;
-                    case 34:
-                        upPoint = 220;
-                        break;
-                    case 35:
+                    case 23:
                         upPoint = 240;
                         break;
+                    case 24:
+                        upPoint = 270;
+                        break;
+                    case 25:
+                        upPoint = 310;
+                        break;
+                    case 26:
+                        upPoint = 350;
+                        break;
+                    case 27:
+                        upPoint = 390;
+                        break;
+                    case 28:
+                        upPoint = 430;
+                        break;
+                    case 29:
+                        upPoint = 470;
+                        break;
+
+                    case 30:
+                        upPoint = 520;
+                        break;
+                    case 31:
+                        upPoint = 570;
+                        break;
+                    case 32:
+                        upPoint = 620;
+                        break;
+                    case 33:
+                        upPoint = 670;
+                        break;
+                    case 34:
+                        upPoint = 720;
+                        break;
+                    case 35:
+                        upPoint = 800;
+                        break;
                     case 36:
-                        upPoint = 260;
+                        upPoint = 880;
                         break;
                     case 37:
-                        upPoint = 280;
+                        upPoint = 960;
                         break;
                     case 38:
-                        upPoint = 300;
+                        upPoint = 1040;
                         break;
                     case 39:
-                        upPoint = 320;
+                        upPoint = 1120;
                         break;
 
                     case 40:
-                        upPoint = 360;
+                        upPoint = 1220;
                         break;
                     case 41:
-                        upPoint = 400;
+                        upPoint = 1320;
                         break;
                     case 42:
-                        upPoint = 440;
+                        upPoint = 1420;
                         break;
                     case 43:
-                        upPoint = 480;
+                        upPoint = 1520;
                         break;
                     case 44:
-                        upPoint = 520;
+                        upPoint = 1620;
                         break;
                     case 45:
-                        upPoint = 560;
+                        upPoint = 1740;
                         break;
                     case 46:
-                        upPoint = 600;
+                        upPoint = 1860;
                         break;
                     case 47:
-                        upPoint = 640;
+                        upPoint = 1980;
                         break;
                     case 48:
-                        upPoint = 680;
+                        upPoint = 2100;
                         break;
                     case 49:
-                        upPoint = 720;
+                        upPoint = 2220;
                         break;
 
                     case 50:
-                        upPoint = 800;
+                        upPoint = 2370;
                         break;
                     case 51:
-                        upPoint = 880;
+                        upPoint = 2520;
                         break;
                     case 52:
-                        upPoint = 960;
+                        upPoint = 2670;
                         break;
                     case 53:
-                        upPoint = 1040;
+                        upPoint = 2820;
                         break;
                     case 54:
-                        upPoint = 1120;
+                        upPoint = 2970;
                         break;
                     case 55:
-                        upPoint = 1200;
+                        upPoint = 3150;
                         break;
                     case 56:
-                        upPoint = 1280;
+                        upPoint = 3330;
                         break;
                     case 57:
-                        upPoint = 1360;
+                        upPoint = 3510;
                         break;
                     case 58:
-                        upPoint = 1440;
+                        upPoint = 3690;
                         break;
                     case 59:
-                        upPoint = 1520;
+                        upPoint = 3870;
                         break;
 
                     case 60:
-                        upPoint = 1670;
+                        upPoint = 4090;
                         break;
                     case 61:
-                        upPoint = 1820;
+                        upPoint = 4310;
                         break;
                     case 62:
-                        upPoint = 1980;
+                        upPoint = 4570;
                         break;
                     case 63:
-                        upPoint = 2140;
+                        upPoint = 4830;
                         break;
                     case 64:
-                        upPoint = 2320;
+                        upPoint = 5130;
                         break;
                     case 65:
-                        upPoint = 2500;
+                        upPoint = 5430;
                         break;
                     case 66:
-                        upPoint = 2700;
+                        upPoint = 5770;
                         break;
                     case 67:
-                        upPoint = 2900;
+                        upPoint = 6110;
                         break;
                     case 68:
-                        upPoint = 3130;
+                        upPoint = 6490;
                         break;
                     case 69:
-                        upPoint = 3360;
+                        upPoint = 6870;
                         break;
                 }
 
