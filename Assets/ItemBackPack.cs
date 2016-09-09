@@ -56,9 +56,9 @@ namespace DungeonPlayer
             {
                 #region "ポーション系"
                 case Database.POOR_SMALL_RED_POTION:
-                    description = "小さめに作られたライフ回復用の薬。回復量７０～１１０";
-                    PhysicalAttackMinValue = 70;
-                    PhysicalAttackMaxValue = 110;
+                    description = "小さめに作られたライフ回復用の薬。回復量２００～３５０";
+                    PhysicalAttackMinValue = 200;
+                    PhysicalAttackMaxValue = 350;
                     cost = 100;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
@@ -5531,9 +5531,9 @@ namespace DungeonPlayer
                 // 初版
                 // 後編調整ポーション。前編の設定とバランスが合わないので新規作成する。
                 case Database.COMMON_NORMAL_RED_POTION:
-                    description = "標準的な大きさで作られたライフ回復用の薬。回復量１０２０～１２８０";
-                    PhysicalAttackMinValue = 1020;
-                    PhysicalAttackMaxValue = 1280;
+                    description = "標準的な大きさで作られたライフ回復用の薬。回復量２１２０～３６８０";
+                    PhysicalAttackMinValue = 2120;
+                    PhysicalAttackMaxValue = 3680;
                     cost = 2000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
@@ -5603,9 +5603,9 @@ namespace DungeonPlayer
                 #endregion
                 #region "ダンジョン３階"
                 case Database.COMMON_LARGE_RED_POTION:
-                    description = "かなり大きめに作られたライフ回復用の薬。回復量３２５０～４３８０";
-                    PhysicalAttackMinValue = 3250;
-                    PhysicalAttackMaxValue = 4380;
+                    description = "かなり大きめに作られたライフ回復用の薬。回復量９０００～１２０００";
+                    PhysicalAttackMinValue = 9000;
+                    PhysicalAttackMaxValue = 12000;
                     cost = 15000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
@@ -5654,9 +5654,9 @@ namespace DungeonPlayer
                 #endregion
                 #region "ダンジョン４階"
                 case Database.COMMON_HUGE_RED_POTION:
-                    description = "超ビッグサイズで、派手な光沢が施されているライフ回復用の薬。回復量２５０００～３００００";
-                    PhysicalAttackMinValue = 25000;
-                    PhysicalAttackMaxValue = 30000;
+                    description = "超ビッグサイズで、派手な光沢が施されているライフ回復用の薬。回復量３００００～４５０００";
+                    PhysicalAttackMinValue = 30000;
+                    PhysicalAttackMaxValue = 45000;
                     cost = 200000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
@@ -5763,9 +5763,9 @@ namespace DungeonPlayer
                 #endregion
                 #region "ダンジョン５階"
                 case Database.COMMON_GORGEOUS_RED_POTION:
-                    description = "超ビッグサイズで、派手な光沢が施されているライフ回復用の薬。回復量３５０００～５００００";
-                    PhysicalAttackMinValue = 35000;
-                    PhysicalAttackMaxValue = 50000;
+                    description = "超ビッグサイズで、派手な光沢が施されているライフ回復用の薬。回復量５００００～７００００";
+                    PhysicalAttackMinValue = 50000;
+                    PhysicalAttackMaxValue = 70000;
                     cost = 450000;
                     AdditionalDescription(ItemType.Use_Potion);
                     rareLevel = RareLevel.Common;
