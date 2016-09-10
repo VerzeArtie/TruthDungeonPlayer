@@ -1560,7 +1560,7 @@ namespace DungeonPlayer
                                     // スピードUP
                                     AnimationDamage(0, player, 0, Color.black, false, false, "戦闘速度UP");
                                     player.CurrentSpeedUp = 2;
-                                    player.CurrentSpeedUpValue = (int)250;
+                                    player.CurrentSpeedUpValue = 1;
                                     player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 2);
                                 }
                                 break;
@@ -1740,7 +1740,7 @@ namespace DungeonPlayer
                                     // スピードUP
                                     AnimationDamage(0, player, 0, Color.black, false, false, "戦闘速度UP");
                                     player.CurrentSpeedUp = 3;
-                                    player.CurrentSpeedUpValue = (int)effectValue;
+                                    player.CurrentSpeedUpValue = 1;
                                     player.ActivateBuff(player.pbSpeedUp, Database.BaseResourceFolder + Database.BUFF_SPEED_UP, 3);
 
                                     UpdateBattleText(player.FirstName + "は【魔法攻撃】【戦闘速度】が" + effectValue.ToString() + "上昇\r\n");
@@ -2979,7 +2979,7 @@ namespace DungeonPlayer
                                     player.CurrentPhysicalAttackUpValue = (int)effectValue;
                                     player.ActivateBuff(player.pbPhysicalAttackUp, Database.BaseResourceFolder + Database.BUFF_PHYSICAL_ATTACK_UP, 2);
 
-                                    effectValue = 1200.0F;
+                                    effectValue = 1.0F;
                                     UpdateBattleText(player.FirstName + "は【戦闘速度】が" + effectValue.ToString() + "上昇\r\n");
                                     AnimationDamage(0, player, 0, Color.black, false, false, "戦闘速度UP");
                                     player.CurrentSpeedUp = 2;
