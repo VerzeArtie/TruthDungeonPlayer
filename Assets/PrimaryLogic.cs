@@ -500,32 +500,10 @@ namespace DungeonPlayer
         public static double BattleSpeedValue(MainCharacter player, bool duelMode)
         {
             // 最大速度が速すぎるため以下のように調整。
-            // 最小が1.00、最大が4.00となるようにする。
-
-            // 技1.0
-            //double result = (player.TotalAgility) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 1.00;
-            // double result = (player.TotalAgility) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 1.00;
-            // 指数関数的増大は戦闘速度が無限に膨れ上がってしまっては困る原因の元を作ってしまった。ここだけは線形増加に留める。
+            // 最小1.0000000 ~ 最大8.2337514となるようにする。
+            // result = 1.00 + LN(agl) * (LN(mind) + 1.00) / 13.0
+            double result = 1.00f + Math.Log(Convert.ToInt32(player.TotalAgility), Math.Exp(1)) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) / 13.0f;
             double result = (double)(player.TotalAgility);
-
-            // 技      [ 1 - 100 ] -->   1.0 + 技 / 100 * 0.5
-            //      [ 101 - 1000 ] -->   1.5 + 技 / 1000 * 1.0
-            //    [ 1001 - 10000 ] -->   2.5 + 技 / 9999 * 1.5
-            if (0 <= player.TotalAgility && player.TotalAgility <= 100)
-            {
-                result = 1.0F + result / 100.0F * 0.5F;
-            }
-            else if (101 <= player.TotalAgility && player.TotalAgility <= 1000)
-            {
-                result = 1.5F + (result - 100) / 900.0F * 1.0F;
-            }
-            else if (1001 <= player.TotalAgility && player.TotalAgility <= 9999)
-            {
-                result = 2.5F + (result - 1000) / 9000.0F * 1.5F;
-            }
-
-            // 心係数はここでは、線形増強
-            result = result * (1.00f + (double)(player.TotalMind) / 9999.0f * 1.00f);
 
             // 武器、防具、アクセサリからの増強
             if ((player.MainWeapon != null) && (player.MainWeapon.AmplifyBattleSpeed != 0.0f)) result = result * player.MainWeapon.AmplifyBattleSpeed;
