@@ -503,7 +503,6 @@ namespace DungeonPlayer
             // 最小1.0000000 ~ 最大8.2337514となるようにする。
             // result = 1.00 + LN(agl) * (LN(mind) + 1.00) / 13.0
             double result = 1.00f + Math.Log(Convert.ToInt32(player.TotalAgility), Math.Exp(1)) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) / 13.0f;
-            double result = (double)(player.TotalAgility);
 
             // 武器、防具、アクセサリからの増強
             if ((player.MainWeapon != null) && (player.MainWeapon.AmplifyBattleSpeed != 0.0f)) result = result * player.MainWeapon.AmplifyBattleSpeed;
