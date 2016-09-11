@@ -38416,6 +38416,24 @@ namespace DungeonPlayer
                 }
             }
             #endregion
+            #region "アンナ・ハミルトン"
+            if (OpponentDuelist == Database.DUEL_ANNA_HAMILTON)
+            {
+                if (win)
+                {
+                    messageList.Add("アンナ：クッ・・・信じられないわ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：アンタみたいなザコアインなんかに何で負けなきゃなんないのよ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：悪いな、たまには勝つときもあるって事さ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：アンタが勝ったからと言って"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                }                
+            }
+            #endregion
 
             messageList.Add("　　【受付嬢：アイン様、現時点で" + GroundOne.WE2.DuelWin.ToString() + " 勝 " + GroundOne.WE2.DuelLose.ToString() + " 敗となります。】"); eventList.Add(ActionEvent.None);
 

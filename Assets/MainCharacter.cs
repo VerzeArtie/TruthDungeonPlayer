@@ -10554,19 +10554,17 @@ namespace DungeonPlayer
             // e 後編追加
 
             // 負の影響効果
-            CurrentPreStunning = 0;
-            CurrentStunning = 0;
-            CurrentSilence = 0;
-            CurrentPoison = 0;
-            CurrentTemptation = 0;
-            CurrentFrozen = 0;
-            CurrentParalyze = 0;
-            CurrentNoResurrection = 0;
-            CurrentSlow = 0; // 後編追加
-            CurrentBlind = 0; // 後編追加
-            CurrentSlip = 0; // 後編追加
-            CurrentNoGainLife = 0; // 後編追加
-            CurrentBlinded = 0; // 後編追加
+            RemovePreStunning();
+            RemoveStun();
+            RemoveSilence();
+            RemovePoison();
+            RemoveTemptation();
+            RemoveFrozen();
+            RemoveNoResurrection();
+            RemoveSlow();
+            RemoveBlind();
+            RemoveSlip();
+            RemoveNoGainLife();
 
             // s 後編追加
             battleResistStun = false;
@@ -10586,61 +10584,32 @@ namespace DungeonPlayer
             DeadSignForTranscendentWish = false; // 後編追加
 
             // 正の影響効果
-            CurrentSpeedBoost = 0; // 後編追加
-            CurrentBlinded = 0; // 後編追加
-            CurrentChargeCount = 0; // 後編追加
-            CurrentPhysicalChargeCount = 0; // 後編追加
+            RemoveSpeedBoost();
+            RemoveBlinded();
+            RemoveChargeCount();
+            RemovePhysicalChargeCount();
 
             // s 後編追加
-            CurrentPhysicalAttackUp = 0;
-            CurrentPhysicalAttackUpValue = 0;
-            CurrentPhysicalAttackDown = 0;
-            CurrentPhysicalAttackDownValue = 0;
+            RemovePhysicalAttackUp();
+            RemovePhysicalAttackDown();
+            RemovePhysicalDefenseUp();
+            RemovePhysicalDefenseDown();
+            RemoveMagicAttackUp();
+            RemoveMagicAttackDown();
+            RemoveMagicDefenseUp();
+            RemoveMagicDefenseDown();
+            RemoveSpeedUp();
+            RemoveSpeedDown();
+            RemoveReactionUp();
+            RemoveReactionDown();
+            RemovePotentialUp();
+            RemovePotentialDown();
 
-            CurrentPhysicalDefenseUp = 0;
-            CurrentPhysicalDefenseUpValue = 0;
-            CurrentPhysicalDefenseDown = 0;
-            CurrentPhysicalDefenseDownValue = 0;
-
-            CurrentMagicDefenseUp = 0;
-            CurrentMagicDefenseUpValue = 0;
-            CurrentMagicDefenseDown = 0;
-            CurrentMagicDefenseDownValue = 0;
-
-            CurrentMagicAttackUp = 0;
-            CurrentMagicAttackUpValue = 0;
-            CurrentMagicAttackDown = 0;
-            CurrentMagicAttackDownValue = 0;
-
-            CurrentSpeedUp = 0;
-            CurrentSpeedUpValue = 0;
-            CurrentSpeedDown = 0;
-            CurrentSpeedDownValue = 0;
-
-            CurrentReactionUp = 0;
-            CurrentReactionUpValue = 0;
-            CurrentReactionDown = 0;
-            CurrentReactionDownValue = 0;
-
-            CurrentPotentialUp = 0;
-            CurrentPotentialUpValue = 0;
-            CurrentPotentialDown = 0;
-            CurrentPotentialDownValue = 0;
-
-            CurrentStrengthUp = 0; // 後編追加
-            CurrentStrengthUpValue = 0; // 後編追加
-
-            CurrentAgilityUp = 0; // 後編追加
-            CurrentAgilityUpValue = 0; // 後編追加
-
-            CurrentIntelligenceUp = 0; // 後編追加
-            CurrentIntelligenceUpValue = 0; // 後編追加
-
-            CurrentStaminaUp = 0; // 後編追加
-            CurrentStaminaUpValue = 0; // 後編追加
-
-            CurrentMindUp = 0; // 後編追加
-            CurrentMindUpValue = 0; // 後編追加
+            RemoveStrengthUp();
+            RemoveAgilityUp();
+            RemoveIntelligenceUp();
+            RemoveStaminaUp();
+            RemoveMindUp();
 
             CurrentLightUp = 0;
             CurrentLightUpValue = 0;

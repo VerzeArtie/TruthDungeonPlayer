@@ -43,7 +43,6 @@ namespace DungeonPlayer
             GroundOne.BattleResult = GroundOne.battleResult.None;
             GroundOne.SceneName = sceneName;
             GroundOne.StopDungeonMusic();
-            System.Threading.Thread.Sleep(500);
             SceneManager.LoadScene(Database.TruthBattleEnemy);
             GroundOne.Parent.Clear();
         }

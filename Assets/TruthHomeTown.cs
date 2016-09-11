@@ -84,8 +84,6 @@ namespace DungeonPlayer
         bool nowAfterRestMessage = false; // 宿屋で休息の後、”休息しました”を表示するためのフラグ
         private string MESSAGE_AUTOSAVE_EXIT = @"ここまでの記録は自動セーブとなります。次回起動は、ここから再開となります";
 
-        bool nowDuel = false;
-        string OpponentDuelist = string.Empty;
         bool fromGoDungeon = false;
         bool nowTalkingOlRandis = false;
         bool nowTalkingLanaAmiria = false;
@@ -199,6 +197,7 @@ namespace DungeonPlayer
 	    public override void Update () {
             base.Update();
 
+            #region "エンディング"
             if (this.nowAnimationEnding)
             {
                 if (this.panelEnding.GetComponent<Image>().color.a < 1.0f)
@@ -310,6 +309,7 @@ namespace DungeonPlayer
 
                 return;
             }
+            #endregion
 
             if (this.firstAction == false)
             {
@@ -336,6 +336,58 @@ namespace DungeonPlayer
 
         private void ShownEvent()
         {
+            if (GroundOne.DuelMode)
+            {
+                Debug.Log("GroundOne.DuelMode");
+                mainMessage.text = "";
+                GroundOne.DuelMode = false;
+                string opponentDuelist = GroundOne.OpponentDuelist;
+                GroundOne.OpponentDuelist = string.Empty;
+                bool duelWin = false;
+
+                if (GroundOne.BattleResult == GroundOne.battleResult.OK)
+                {
+                    duelWin = true;
+                }
+                GroundOne.BattleResult = GroundOne.battleResult.None;
+
+                // DUEL対戦相手、および、勝敗結果に応じた処理
+                if (GroundOne.enemyName1 == Database.DUEL_OL_LANDIS)
+                {
+                    MessagePack.Message80004_74(ref nowMessage, ref nowEvent, duelWin);
+                    NormalTapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.DUEL_SINIKIA_KAHLHANZ)
+                {
+                    MessagePack.Message70012_2(ref nowMessage, ref nowEvent, duelWin);
+                    NormalTapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.VERZE_ARTIE)
+                {
+                    MessagePack.Message70013_2(ref nowMessage, ref nowEvent, duelWin);
+                    NormalTapOK();
+                }
+                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_RANA_AMILIA)
+                {
+                    if (duelWin)
+                    {
+                        MessagePack.Message30004(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message30003(ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else // 通常のDUEL闘技場の対戦相手
+                {
+                    MessagePack.Message89998_2(ref nowMessage, ref nowEvent, opponentDuelist, duelWin, this.fromGoDungeon);
+                    NormalTapOK();
+                }
+                return;
+            }
+            
             // 死亡しているものは自動的に復活させます。
             if (GroundOne.MC != null)
             {
@@ -363,9 +415,9 @@ namespace DungeonPlayer
                     GroundOne.TC.CurrentLife = GroundOne.TC.MaxLife / 2;
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.TC);
                 }
-            }       
-            
-        	if (GroundOne.WE.AlreadyShownEvent == false)
+            }
+
+            if (GroundOne.WE.AlreadyShownEvent == false)
         	{
         		GroundOne.WE.AlreadyShownEvent = true;
         	}
@@ -561,6 +613,7 @@ namespace DungeonPlayer
             #endregion
             else
             {
+                Debug.Log("all else, then no event");
                 mainMessage.text = "アイン：さて、何すっかな";
                 GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
             }
@@ -649,10 +702,10 @@ namespace DungeonPlayer
                 }
                 else
                 {
-                    this.OpponentDuelist = WhoisDuelPlayer();
-                    if (this.OpponentDuelist != string.Empty)
+                    GroundOne.OpponentDuelist = WhoisDuelPlayer();
+                    if (GroundOne.OpponentDuelist != string.Empty)
                     {
-                        DuelSupportMessage(SupportType.FromDungeonGate, this.OpponentDuelist);
+                        DuelSupportMessage(SupportType.FromDungeonGate, GroundOne.OpponentDuelist);
 
                         CallDuel(true);
                     }
@@ -927,7 +980,7 @@ namespace DungeonPlayer
 
 	    public void tapDuel() {
             GroundOne.SQL.UpdateOwner(Database.LOG_DUEL_ENTRANCE, String.Empty, String.Empty);
-            this.OpponentDuelist = WhoisDuelPlayer();
+            GroundOne.OpponentDuelist = WhoisDuelPlayer();
             #region "Duel申請中"
             if (!GroundOne.WE.AvailableDuelMatch && !GroundOne.WE.MeetOlLandis)
             {
@@ -972,10 +1025,10 @@ namespace DungeonPlayer
             }
             #endregion
             #region "条件に応じて、Duelを実施します。"
-            else if (this.OpponentDuelist != string.Empty && GroundOne.WE.AlreadyRest)
+            else if (GroundOne.OpponentDuelist != string.Empty && GroundOne.WE.AlreadyRest)
             {
                 GroundOne.WE.AlreadyDuelComplete = true;
-                DuelSupportMessage(SupportType.FromDuelGate, this.OpponentDuelist);
+                DuelSupportMessage(SupportType.FromDuelGate, GroundOne.OpponentDuelist);
                 CallDuel(false);
             }
             #endregion
@@ -1494,13 +1547,12 @@ namespace DungeonPlayer
         private void CallDuel(bool fromGoDungeon)
         {
             this.fromGoDungeon = fromGoDungeon;
-            MessagePack.Message89998(ref nowMessage, ref nowEvent, this.OpponentDuelist);
+            MessagePack.Message89998(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist);
             //NormalTapOK(); // ここでは不要
         }
 
         private void BattleStart(string playerName)
         {
-            this.nowDuel = true;
             GroundOne.enemyName1 = playerName;
             GroundOne.enemyName2 = string.Empty;
             GroundOne.enemyName3 = string.Empty;
@@ -2188,10 +2240,10 @@ namespace DungeonPlayer
                     NormalTapOK();
                 }
 
-                this.OpponentDuelist = WhoisDuelPlayer();
-                if (this.OpponentDuelist != string.Empty)
+                GroundOne.OpponentDuelist = WhoisDuelPlayer();
+                if (GroundOne.OpponentDuelist != string.Empty)
                 {
-                    DuelSupportMessage(SupportType.Begin, this.OpponentDuelist);
+                    DuelSupportMessage(SupportType.Begin, GroundOne.OpponentDuelist);
                 }
             }
         }
@@ -2265,55 +2317,6 @@ namespace DungeonPlayer
             {
                 this.nowAfterRestMessage = false;
                 ExecRestInn();
-            }
-            else if (this.nowDuel)
-            {
-                Debug.Log("SceneBack (nowDuel)");
-
-                this.nowDuel = false;
-                GroundOne.DuelMode = false;
-                bool duelWin = false;
-
-                if (GroundOne.BattleResult == GroundOne.battleResult.OK)
-                {
-                    duelWin = true;
-                }
-                GroundOne.BattleResult = GroundOne.battleResult.None;
-
-                // DUEL対戦相手、および、勝敗結果に応じた処理
-                if (GroundOne.enemyName1 == Database.DUEL_OL_LANDIS)
-                {
-                    MessagePack.Message80004_74(ref nowMessage, ref nowEvent, duelWin);
-                    NormalTapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.DUEL_SINIKIA_KAHLHANZ)
-                {
-                    MessagePack.Message70012_2(ref nowMessage, ref nowEvent, duelWin);
-                    NormalTapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.VERZE_ARTIE)
-                {
-                    MessagePack.Message70013_2(ref nowMessage, ref nowEvent, duelWin);
-                    NormalTapOK();
-                }
-                else if (GroundOne.enemyName1 == Database.ENEMY_LAST_RANA_AMILIA)
-                {
-                    if (duelWin)
-                    {
-                        MessagePack.Message30004(ref nowMessage, ref nowEvent);
-                        NormalTapOK();
-                    }
-                    else
-                    {
-                        MessagePack.Message30003(ref nowMessage, ref nowEvent);
-                        NormalTapOK();
-                    }
-                }
-                else // 通常のDUEL闘技場の対戦相手
-                {
-                    MessagePack.Message89998_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, duelWin, this.fromGoDungeon);
-                    NormalTapOK();
-                }
             }
             else if (this.nowTalkingOlRandis)
             {
@@ -2935,7 +2938,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90001_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90001_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -2949,7 +2952,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90002_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90002_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -2963,7 +2966,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90003_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90003_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -2977,7 +2980,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90004_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90004_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -2991,7 +2994,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90005_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90005_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3005,7 +3008,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90006_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90006_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3019,7 +3022,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90007_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90007_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3033,7 +3036,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90008_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90008_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3047,7 +3050,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90009_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90009_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3061,7 +3064,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90010_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90010_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3075,7 +3078,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90010_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90010_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3089,7 +3092,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90011_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90011_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3103,7 +3106,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90012_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90012_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3117,7 +3120,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90013_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90013_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3131,7 +3134,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90014_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90014_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3145,7 +3148,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90015_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90015_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3159,7 +3162,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90016_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90016_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3173,7 +3176,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90017_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90017_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3187,7 +3190,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90018_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90018_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3201,7 +3204,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90019_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90019_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3215,7 +3218,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90020_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90020_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }
@@ -3229,7 +3232,7 @@ namespace DungeonPlayer
                 else if ((type == SupportType.FromDungeonGate) ||
                             (type == SupportType.FromDuelGate))
                 {
-                    MessagePack.Message90021_2(ref nowMessage, ref nowEvent, this.OpponentDuelist, type);
+                    MessagePack.Message90021_2(ref nowMessage, ref nowEvent, GroundOne.OpponentDuelist, type);
                     NormalTapOK();
                 }
             }

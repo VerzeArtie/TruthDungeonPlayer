@@ -330,20 +330,9 @@ namespace DungeonPlayer
             double min = 0;
             double max = 0;
 
-            // 力0.20 + 技0.05 + 心0.10
-            min = (player.TotalStrength) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20
-                 + (player.TotalAgility) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.05
-                 + (player.TotalMind) * 0.10; // 心パラメタは潜在能力以外はLog乗算しない
-            max = (player.TotalStrength) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20
-                 + (player.TotalAgility) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.05
-                 + (player.TotalMind) * 0.10;
-            //min = (player.TotalStrength) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.20
-            //	+ (player.TotalAgility) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.05
-            //		+ (player.TotalMind) * 0.10; // 心パラメタは潜在能力以外はLog乗算しない
-            //max = (player.TotalStrength) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.20
-            //	+ (player.TotalAgility) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.05
-            //		+ (player.TotalMind) * 0.10;
-
+            // 力0.20
+            min = (player.TotalStrength) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20;
+            max = (player.TotalStrength) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20;
 
             // 鎧1.0
             if (player.MainArmor != null)
@@ -417,19 +406,9 @@ namespace DungeonPlayer
             double min = 0;
             double max = 0;
 
-            // 知0.20 + 力0.05 + 心0.10
-            min = (player.TotalIntelligence) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20
-                + (player.TotalStrength) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.05
-                + (player.TotalMind) * 0.10;
-            max = (player.TotalIntelligence) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20
-                + (player.TotalStrength) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.05
-                + (player.TotalMind) * 0.10;
-            //min = (player.TotalIntelligence) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.20
-            //	+ (player.TotalStrength) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.05
-            //		+ (player.TotalMind) * 0.10;
-            //max = (player.TotalIntelligence) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.20
-            //	+ (player.TotalStrength) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.05
-            //		+ (player.TotalMind) * 0.10;
+            // 知0.20
+            min = (player.TotalIntelligence) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20;
+            max = (player.TotalIntelligence) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20;
 
             // 鎧1.0
             if (player.MainArmor != null)

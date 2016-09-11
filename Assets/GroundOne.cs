@@ -105,6 +105,7 @@ namespace DungeonPlayer
         public static bool OnlySelectTrash = false; // 捨てる限定画面
         public static string CannotSelectTrash = string.Empty; // 対象アイテムが重要品で捨てられない場合。
         public static bool DuelMode = false; // Duelモード
+        public static string OpponentDuelist = string.Empty; // Duel対戦相手名
         public static bool OnlyUseItem = false; // 戦闘画面からアイテムを使用する時
 
         // TruthSkillSpellDesc
