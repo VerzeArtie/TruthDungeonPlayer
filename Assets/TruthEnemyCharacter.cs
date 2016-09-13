@@ -503,6 +503,10 @@ namespace DungeonPlayer
                             {
                                 SetupActionCommand(this, this, PlayerAction.UseSpell, Database.SHADOW_PACT);
                             }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.UseSpell, Database.FIRE_BALL);
+                            }
                             break;
                         case 2:
                             SetupActionCommand(this, target, PlayerAction.SpecialSkill, "エンタングル");
@@ -5423,7 +5427,7 @@ namespace DungeonPlayer
                     this.Accessory = new ItemBackPack(Database.COMMON_RED_PENDANT);
                     this.Accessory2 = new ItemBackPack(Database.COMMON_RED_PENDANT);
                     this.backpack = new ItemBackPack[1];
-                    this.backpack[0] = new ItemBackPack(Database.COMMON_NORMAL_RED_POTION);
+                    this.backpack[0] = new ItemBackPack(Database.POOR_SMALL_RED_POTION);
                     this.Area = MonsterArea.Duel;
                     break;
 

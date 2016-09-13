@@ -31138,7 +31138,18 @@ namespace DungeonPlayer
 
             messageList.Add("【戦闘中にインスタントアクションが出来るようになりました】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
 
-            messageList.Add("【戦闘中、アクションコマンドを右クリックする事で使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                messageList.Add("【戦闘中、アクションコマンドを対象へドラッグする事で使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            }
+            else if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                messageList.Add("【戦闘中、アクションコマンドを対象へドラッグする事で使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            }
+            else
+            {
+                messageList.Add("【戦闘中、アクションコマンドを右クリックする事で使用可能になります】"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+            }
 
             GroundOne.WE.AvailableInstantCommand = true;
         }
@@ -31207,6 +31218,7 @@ namespace DungeonPlayer
             //CallSomeMessageWithAnimation("【物理攻撃５％ＵＰ、魔法攻撃５％ＵＰ】"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.Truth_CommunicationLana1_1 = true;
+            GroundOne.WE.Truth_CommunicationLana6 = true;
         }
 
         public static void Message40003_3(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -31262,6 +31274,7 @@ namespace DungeonPlayer
             //CallSomeMessageWithAnimation("【物理防御５％ＵＰ、魔法防御５％ＵＰ】"); eventList.Add(ActionEvent.None);
 
             GroundOne.WE.Truth_CommunicationLana1_1 = true;
+            GroundOne.WE.Truth_CommunicationLana6 = true;
         }
 
         // 日常会話３
@@ -38293,6 +38306,7 @@ namespace DungeonPlayer
                 messageList.Add("アイン：ックソ・・・負けちまったか・・・"); eventList.Add(ActionEvent.None);
             }
 
+
             #region "ザルゲのDUEL戦闘後のセリフ"
             if (OpponentDuelist == Database.DUEL_SCOTY_ZALGE)
             {
@@ -38408,11 +38422,85 @@ namespace DungeonPlayer
 
                     if (GroundOne.MC != null)
                     {
+                        GroundOne.MC.ResurrectPlayer(GroundOne.MC.MaxLife);
                         GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife;
                         GroundOne.MC.CurrentSkillPoint = GroundOne.MC.MaxSkillPoint;
                         GroundOne.MC.CurrentMana = GroundOne.MC.MaxMana;
                     }
                     return;
+                }
+            }
+            #endregion
+            #region "ビリー・ラキ"
+            if (OpponentDuelist == Database.DUEL_BILLY_RAKI)
+            {
+                if (win)
+                {
+                    messageList.Add("ビリー：ワアアアァァ、負けちまったチクショオオオォ～～～！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：い、意外と元気だな・・・大丈夫だったか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：おい、アイン！　てめぇ・・・てめぇ一体どこまで進んでやがるんだ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：進んでるって一体何の話をしてるんだ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：ふざけやがって、同じ宿屋に毎日一緒に帰ってくるくせに、とぼけてんじゃねぇぞ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ひょっとしたら、ラナの事を言ってるのか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：よ・・・呼び捨てにしてんじゃねぇ！ラナちゃんと呼べ！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いやいやそれはさすがに無理だ・・・あの性格を差し置いてちゃん付けは無理だ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：っくそ、今回は負けたけどな・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：次こそお前をぶっ倒して、俺は・・・俺は・・・ラナちゃんに！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：ワアアアァァ、やっぱり駄目だああぁぁ！俺にはできねえぇぇ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ぐあ・・・頼むから騒々しいのは止めてくれ。おい、DUEL終了だ！終わりだ終わり！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：アイン！てめぇ、逃げる気か！？"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("ビリー：ウオオオォォ、遂に勝っちまったぜ～～～ッシャアアァァ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いつつ。かなり強引にやってきたな・・・油断しちまったぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：おい、アイン！遂にこの時が来たな！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ん？何の事だ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：とぼけやがって・・・俺と、オマエと、ラナちゃんの話に決まってんだろうが！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いや、話の流れが全然見えないが・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：俺はついにこの時、この瞬間を持って、お前よりも格上だという事を証明した！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：これで相手をどっちにしようか迷っていたラナちゃんも気持ちを固めるだろ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：い・・・いやいやいや・・・"); eventList.Add(ActionEvent.None);
+                    
+                    messageList.Add("ビリー：ハハハハハ！アイン、おまえがそう悔しがる気持ちは分かる。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いや、確かに負けたのは悔しいけどな・・・そうじゃなくて・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：俺は決めてたんだ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：この勝負でもしも勝利したら！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：そ、その時は、今度こそ・・・ラ、ラ・・・ラナちゃんに・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：いや・・・分かった、分かったから、別にここで頑張って言わなくても良い。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：ウ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：ワアアアァァ、やっぱり駄目だああぁぁ！俺にはできねえぇぇ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ぐあ・・・頼むから騒々しいのは止めてくれ。おい、DUEL終了だ！終わりだ終わり！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("ビリー：アイン！てめぇ、話をはぐらかす気か！？"); eventList.Add(ActionEvent.None);
                 }
             }
             #endregion
@@ -38427,11 +38515,127 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：悪いな、たまには勝つときもあるって事さ。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アンナ：アンタが勝ったからと言って"); eventList.Add(ActionEvent.None);
+                    messageList.Add("アンナ：アンタが勝ったからって・・・勝ったからって・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：キーナは絶対に渡さないわよ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：わ、分かった・・・落ち着け。俺は何もしてないから。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：何も・・・してないですって！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：け、汚らわしい事考えないでちょうだいよ！！　許さないわホントに！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：タ、タンマ！！そういう意味じゃねえって！勘違いさせたんなら悪かった！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：今度また話だけなら聞いてやるから。な？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：あ、あ、・・・アンタに相談なんかしてないわよ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：構えなさい！アイン・ウォーレンス！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：アンタがこの場から消え去るまでぶちのめしてやるわ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ドワアアァァァ！ちょっタンマ！　勝負はまた今度！！"); eventList.Add(ActionEvent.None);
                 }
                 else
                 {
-                }                
+                    messageList.Add("アンナ：ホッ・・・ホーッホッホッホ！！　勝ったわ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：良い感じだと思ったんだけどな・・・やられちまったぜ、完敗だ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：これで、分かったでしょ。アンタがキーナとは不釣り合いだって事が。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：これ以上、、キーナに付きまとうのは止めてちょうだいよね。迷惑してるって本人から聞いてるんだから。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ん？いやいや、待ってくれ。DUEL開始前から一体何の話をしてるんだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：俺は単純にDUEL開始前に軽く会話をしてるだけだ。それ以上は何もないぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：！！！　しらばっくれるつもりなの！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：待て、まてまて。待ってくれ！マジで何もないぞ、本当だ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：キーナ・・・こんな優柔不断なヤツのどこが良いのよ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：やっぱり・・・コイツだけは許せない！！"); eventList.Add(ActionEvent.None);
+                   
+                    messageList.Add("アイン：い、いやいや、こうして俺が負けたんだからさ。一旦この場は終わろう・・・な？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：構えなさい！アイン・ウォーレンス！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アンナ：アンタがこの場から消え去るまでぶちのめしてやるわ！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：ドワアアァァァ！ちょっタンマ！　勝負はまた今度で！！"); eventList.Add(ActionEvent.None);
+                }
+            }
+            #endregion
+            #region "シン・オスキュレーテ"
+            if (OpponentDuelist == Database.DUEL_SIN_OSCURETE)
+            {
+                if (win)
+                {
+                    messageList.Add("アイン：・・・て、あれ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：どうかしましたか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あれだけのダメージが当たってDUEL敗北判定が出ていたはずだ。どうしてそんな無傷なんだ！？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：それほど難しい事ではありませんよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：とは言え、手品の様なものですからね。詳しく教えるわけにはいきませんが。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そんなバカな・・・これじゃ、勝ったかどうかなんて怪しいもんだな。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：そんな事はありませんよ。この勝負、間違いなく君の勝ちです。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：こちらも真剣勝負で挑んでいます、手を抜く様な事は一切していません。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：そっか、じゃあ一応は俺の勝利って事でありがたく収めませてもらうぜ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：ええ、もちろんです。それでは。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：・・・おや、プロフェシー・サーガが・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：ば、馬鹿な・・・信じられない！！"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：どうかしたのか？その手に持ってる本が何か光ってるみたいだが・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：いえ、気にしないでください。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：ッフ・・・ッフフフ、しかし君は本当に面白い。将来が楽しみですよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：また、どこかで必ず会いましょう。アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、ああ・・・"); eventList.Add(ActionEvent.None);
+                }
+                else
+                {
+                    messageList.Add("シン：良き立ち振る舞いでした。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：駄目だ、全然歯が立たなかったぜ・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：DUEL自体はまたどこかでお相手をさせてください。ところで・・・"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：おかしいと思いませんか？この結果。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：っえ？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：何故、私が勝利して、君が敗北しているのか。おかしいとは思いませんでしたか？"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：？・・・変な言い方だな。まあ負けて悔しいという気持ちが正直な所だ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：この勝負に負けた事自体は俺自身が弱かっただけだ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：師匠との勝負もまだまだ先って事だ。一から出直すさ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：ッフ・・・ッフフフ、君は本当に面白い。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：君のポテンシャルはどうやらこのプロフェシー・サーガの枠を超えている様です。将来が楽しみですよ。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("シン：また、どこかで必ず会いましょう。アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+                    messageList.Add("アイン：あ、ああ・・・"); eventList.Add(ActionEvent.None);
+                }
             }
             #endregion
 
@@ -38459,6 +38663,20 @@ namespace DungeonPlayer
                     messageList.Add("アイン：っと、終わったら闘技場入り口へと送還されるのか。便利なシステムだな。"); eventList.Add(ActionEvent.None);
                 }
             }
+            else if (OpponentDuelist == Database.DUEL_BILLY_RAKI)
+            {
+                messageList.Add("アイン：（元の場所に戻ったみたいだな・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（ビリー・ラキ、思い出した。あのやかましくて支離滅裂な感じ・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（まあ・・・放っておこう。）"); eventList.Add(ActionEvent.None);
+            }
+            else if (OpponentDuelist == Database.DUEL_ANNA_HAMILTON)
+            {
+                messageList.Add("アイン：（場外に戻ったか・・・危なかったぜ、ッフウゥゥ・・・）"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：（DUELの場合、こういう事はよくあるからな、気を付けて行かないとな・・・）"); eventList.Add(ActionEvent.None);
+            }
 
             if (fromGoDungeon)
             {
@@ -38472,6 +38690,7 @@ namespace DungeonPlayer
             // [警告]：オブジェクトの参照が全ての場合、クラスにメソッドを用意してそれをコールした方がいい。
             if (GroundOne.MC != null)
             {
+                GroundOne.MC.ResurrectPlayer(GroundOne.MC.MaxLife);
                 GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife;
                 GroundOne.MC.CurrentSkillPoint = GroundOne.MC.MaxSkillPoint;
                 GroundOne.MC.CurrentMana = GroundOne.MC.MaxMana;
@@ -40385,7 +40604,7 @@ namespace DungeonPlayer
 
             messageList.Add("サン：ッグ！！！"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("サン：っく、くそおおおぉぉぉ！！！！！！"); eventList.Add(ActionEvent.None);
+            messageList.Add("サン：くっ、くそおおおぉぉぉ！！！！！！"); eventList.Add(ActionEvent.None);
 
             messageList.Add("サン：ボクが２敗なんてあり得ないんだ！！　貴様だけは絶対に絶対に絶対に絶対に絶対に絶対に潰す！！！！！"); eventList.Add(ActionEvent.None);
 

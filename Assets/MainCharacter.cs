@@ -7138,228 +7138,216 @@ namespace DungeonPlayer
                 switch (this.level)
                 {
                     case 1:
-                        nextValue = 200;
+                        nextValue = 150;
                         break;
                     case 2:
-                        nextValue = 500;
+                        nextValue = 300;
                         break;
                     case 3:
-                        nextValue = 1300;
+                        nextValue = 490;
                         break;
                     case 4:
-                        nextValue = 2000;
+                        nextValue = 680;
                         break;
                     case 5:
-                        nextValue = 2800;
+                        nextValue = 870;
                         break;
                     case 6:
-                        nextValue = 3600;
+                        nextValue = 1060;
                         break;
                     case 7:
-                        nextValue = 4500;
+                        nextValue = 1300;
                         break;
                     case 8:
-                        nextValue = 5400;
+                        nextValue = 1540;
                         break;
                     case 9:
-                        nextValue = 6500;
+                        nextValue = 1780;
                         break;
                     case 10:
-                        nextValue = 7600;
+                        nextValue = 2020;
                         break;
                     case 11:
-                        nextValue = 8700;
+                        nextValue = 2320;
                         break;
                     case 12:
-                        nextValue = 9800;
+                        nextValue = 2620;
                         break;
                     case 13:
-                        nextValue = 11000;
+                        nextValue = 2920;
                         break;
                     case 14:
-                        nextValue = 12300;
+                        nextValue = 3220;
                         break;
                     case 15:
-                        nextValue = 13600;
+                        nextValue = 3590;
                         break;
                     case 16:
-                        nextValue = 15000;
+                        nextValue = 3960;
                         break;
                     case 17:
-                        nextValue = 16400;
+                        nextValue = 4330;
                         break;
                     case 18:
-                        nextValue = 17800;
+                        nextValue = 4700;
                         break;
                     case 19:
-                        nextValue = 19300;
+                        nextValue = 5370;
                         break;
                     case 20:
-                        nextValue = 20800;
+                        nextValue = 6640;
                         break;
                     case 21:
-                        nextValue = 22400;
+                        nextValue = 7910;
                         break;
                     case 22:
-                        nextValue = 24000;
+                        nextValue = 9180;
                         break;
                     case 23:
-                        nextValue = 25500;
+                        nextValue = 10450;
                         break;
                     case 24:
-                        nextValue = 27200;
+                        nextValue = 12370;
                         break;
                     case 25:
-                        nextValue = 28900;
+                        nextValue = 14290;
                         break;
                     case 26:
-                        nextValue = 30500;
+                        nextValue = 16210;
                         break;
                     case 27:
-                        nextValue = 32200;
+                        nextValue = 18130;
                         break;
                     case 28:
-                        nextValue = 33900;
+                        nextValue = 20750;
                         break;
                     case 29:
-                        nextValue = 36300;
+                        nextValue = 23370;
                         break;
                     case 30:
-                        nextValue = 38800;
+                        nextValue = 25990;
                         break;
                     case 31:
-                        nextValue = 41600;
+                        nextValue = 28610;
                         break;
                     case 32:
-                        nextValue = 44600;
+                        nextValue = 31980;
                         break;
                     case 33:
-                        nextValue = 48000;
+                        nextValue = 35350;
                         break;
                     case 34:
-                        nextValue = 51400;
+                        nextValue = 39720;
                         break;
                     case 35:
-                        nextValue = 55000;
+                        nextValue = 44090;
                         break;
                     case 36:
-                        nextValue = 58700;
+                        nextValue = 48460;
                         break;
                     case 37:
-                        nextValue = 62400;
+                        nextValue = 52830;
                         break;
                     case 38:
-                        nextValue = 66200;
+                        nextValue = 58300;
                         break;
                     case 39:
-                        nextValue = 70200;
+                        nextValue = 63770;
                         break;
                     case 40:
-                        nextValue = 74300;
+                        nextValue = 69240;
                         break;
-                    // s 後編追加
                     case 41:
-                        nextValue = 78500;
+                        nextValue = 74710;
                         break;
                     case 42:
-                        nextValue = 82800;
+                        nextValue = 81380;
                         break;
                     case 43:
-                        nextValue = 87100;
+                        nextValue = 88050;
                         break;
                     case 44:
-                        nextValue = 91600;
+                        nextValue = 94720;
                         break;
                     case 45:
-                        nextValue = 96300;
+                        nextValue = 101390;
                         break;
                     case 46:
-                        nextValue = 101000;
+                        nextValue = 109360;
                         break;
                     case 47:
-                        nextValue = 105800;
+                        nextValue = 117330;
                         break;
                     case 48:
-                        nextValue = 110700;
+                        nextValue = 125300;
                         break;
                     case 49:
-                        nextValue = 115700;
+                        nextValue = 134770;
                         break;
                     case 50:
-                        nextValue = 120900;
+                        nextValue = 146240;
                         break;
                     case 51:
-                        nextValue = 126100;
+                        nextValue = 157710;
                         break;
                     case 52:
-                        nextValue = 131500;
+                        nextValue = 169180;
                         break;
                     case 53:
-                        nextValue = 137000;
+                        nextValue = 182850;
                         break;
                     case 54:
-                        nextValue = 142500;
+                        nextValue = 196520;
                         break;
                     case 55:
-                        nextValue = 148200;
+                        nextValue = 210190;
                         break;
                     case 56:
-                        nextValue = 154000;
+                        nextValue = 226260;
                         break;
                     case 57:
-                        nextValue = 159900;
+                        nextValue = 242330;
                         break;
                     case 58:
-                        nextValue = 165800;
+                        nextValue = 258400;
                         break;
                     case 59:
-                        nextValue = 172000;
+                        nextValue = 277070;
                         break;
                     case 60:
-                        nextValue = 290000;
+                        nextValue = 295740;
                         break;
                     case 61:
-                        nextValue = 317000;
+                        nextValue = 314410;
                         break;
                     case 62:
-                        nextValue = 349000;
+                        nextValue = 333080;
                         break;
                     case 63:
-                        nextValue = 386000;
+                        nextValue = 351750;
                         break;
                     case 64:
-                        nextValue = 428000;
+                        nextValue = 378420;
                         break;
                     case 65:
-                        nextValue = 475000;
+                        nextValue = 405090;
                         break;
                     case 66:
-                        nextValue = 527000;
+                        nextValue = 431760;
                         break;
                     case 67:
-                        nextValue = 585000;
+                        nextValue = 458430;
                         break;
                     case 68:
-                        nextValue = 648000;
+                        nextValue = 485100;
                         break;
                     case 69:
-                        nextValue = 717000;
+                        nextValue = 511770;
                         break;
                     case 70:
-                        nextValue = 1523800;
+                        nextValue = 1023540;
                         break;
-                    // e 後編追加
                 }
-
-                // omega
-                //if (this.level < 35)
-                //{
-                //    return nextValue / 4; // ハードモードの場合、２
-                //}
-                //else
-                //{
-                //    return nextValue / 2; // ハードモードの場合、１
-                //}
                 return nextValue;
             }
         }

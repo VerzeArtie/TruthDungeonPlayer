@@ -53,9 +53,9 @@ namespace DungeonPlayer
         List<Text> nowAnimationText = new List<Text>();
         bool NowSelectingTarget = false;
         MainCharacter currentTargetedPlayer = null;
+        bool RunAwayFlag = false; // 戦闘逃げるで終了するためのフラグ
         bool BattleEndFlag = false; // 戦闘終了条件を満たし、バトル終了するためのフラグ
         bool tempStopFlag = false; // [戦闘停止」ボタンやESCキーで、戦闘を一旦停止させたい時に使うフラグ
-        bool endFlag = false; // メイン戦闘のループを抜ける時に使うフラグ
         bool cannotRunAway = false; // 戦闘から逃げられるかどうかを示すフラグ
         bool NowStackInTheCommand = false; // スタックインザコマンドで一旦停止させたい時に使うフラグ
         List<MainCharacter> stackActivePlayer = new List<MainCharacter>();
@@ -839,7 +839,7 @@ namespace DungeonPlayer
             }
 
             if (UpdatePlayerDeadFlag()) { Debug.Log("UpdatePlayerDeadFlag is true then return"); return; }
-            if (this.endFlag) { Debug.Log("endFlag is true then return"); return; } // 終了サインが出た場合、戦闘終了として待機する。
+            if (this.BattleEndFlag) { Debug.Log("endFlag is true then return"); return; } // 終了サインが出た場合、戦闘終了として待機する。
             if (this.gameStart == false) { return; } // 戦闘開始サインが無い状態では、待機する。
             if (this.endBattleForMatrixDragonEnd)
             {
@@ -7264,10 +7264,10 @@ namespace DungeonPlayer
             if (GroundOne.DuelMode)
             {
                 txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは降参を宣言した。\r\n");
+                this.BattleEndFlag = true;
+                this.RunAwayFlag = true;
+                BattleEndPhase();
                 System.Threading.Thread.Sleep(1000);
-                GroundOne.BattleResult = GroundOne.battleResult.Abort;
-                GroundOne.StopDungeonMusic();
-                SceneDimension.CallBackBattleEnemy();
                 return;
             }
 
@@ -7302,10 +7302,10 @@ namespace DungeonPlayer
             //}
 
             txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは逃げ出した。\r\n");
+            this.BattleEndFlag = true;
+            this.RunAwayFlag = true;
+            BattleEndPhase();
             System.Threading.Thread.Sleep(1000);
-            GroundOne.BattleResult = GroundOne.battleResult.Abort;
-            GroundOne.StopDungeonMusic();
-            SceneDimension.CallBackBattleEnemy();
         }
 
         public void GameOverYes_Click()
@@ -7845,6 +7845,7 @@ namespace DungeonPlayer
                 return;
             }
 
+            // 全てのBUFF効果を解除する。
             for (int ii = 0; ii < ActiveList.Count; ii++)
             {
                 string brokenName = String.Empty;
@@ -7879,7 +7880,7 @@ namespace DungeonPlayer
                     return; // scenebackさせない
                 }
             }
-            else if (endFlag)
+            else if (this.BattleEndFlag)
             {
                 if (!GroundOne.WE.AvailableSecondCharacter)
                 {
