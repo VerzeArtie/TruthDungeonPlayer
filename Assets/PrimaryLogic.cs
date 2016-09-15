@@ -177,8 +177,8 @@ namespace DungeonPlayer
             }
 
             // 心係数はここで増幅させる。
-            min = minFactor * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 1.00;
-            max = maxFactor * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 1.00;
+            min = minFactor * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.50;
+            max = maxFactor * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.50;
             //min = minFactor * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 1.00;
             //max = maxFactor * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 1.00;
 

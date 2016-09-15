@@ -4134,15 +4134,15 @@ namespace DungeonPlayer
             {
                 encountBorder = (int)(stepCounter / 5);
             }
-            int lowLevelBorder = 0;
+            int lowLevelBorder = 1;
             if (GroundOne.WE2.RealWorld == false)
             {
                 int[] factor = { Database.CHARACTER_MAX_LEVEL1, Database.CHARACTER_MAX_LEVEL2, Database.CHARACTER_MAX_LEVEL3, Database.CHARACTER_MAX_LEVEL4, Database.CHARACTER_MAX_LEVEL5 };
-                lowLevelBorder = (Database.CHARACTER_MAX_LEVEL1 - GroundOne.MC.Level) / 5;
+                lowLevelBorder = (factor[GroundOne.WE.DungeonArea - 1] - GroundOne.MC.Level) / 4 + 1;
             }
             else
             {
-                lowLevelBorder = (Database.CHARACTER_MAX_LEVEL6 - GroundOne.MC.Level) / 5;
+                lowLevelBorder = Database.CHARACTER_MAX_LEVEL6 - GroundOne.MC.Level + 1;
             }
             if (resultValue > encountBorder * lowLevelBorder)
             {

@@ -700,7 +700,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &150239265
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1548,7 +1548,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &358317307
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3147,7 +3147,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &680967008
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5432,7 +5432,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &929085085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6162,7 +6162,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &1041951846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8974,7 +8974,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &1418650134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9068,7 +9068,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &1422201925
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9803,7 +9803,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &1571185200
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11245,7 +11245,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &1817903213
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11438,7 +11438,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sample
+  m_Text: 
 --- !u!222 &1826017271
 CanvasRenderer:
   m_ObjectHideFlags: 0

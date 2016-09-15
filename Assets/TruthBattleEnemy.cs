@@ -19,6 +19,7 @@ namespace DungeonPlayer
             Absolute,
         }
 
+        bool ActionInstantMode = false;
         string instantActionCommandString = String.Empty;
         MainCharacter tempTargetForInstant = null;
         MainCharacter tempTargetForTarget2 = null;
@@ -3753,7 +3754,7 @@ namespace DungeonPlayer
                     case ItemBackPack.ItemType.Shield:
                         treasureIcon.sprite = Resources.Load<Sprite>("Shield");
                         break;
-                    case ItemBackPack.ItemType.Use_Any:
+                    case ItemBackPack.ItemType.Use_Item:
                         treasureIcon.sprite = Resources.Load<Sprite>("UseItem");
                         break;
                     case ItemBackPack.ItemType.Use_Potion:
@@ -5001,7 +5002,8 @@ namespace DungeonPlayer
                 return;
             }
 
-            if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            if (Input.GetMouseButton(1) || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) ||
+                this.ActionInstantMode)
             {
                 Debug.Log("Right Click Action");
                 if (CheckBattlePlaying())
@@ -5370,6 +5372,7 @@ namespace DungeonPlayer
         {
             SceneDimension.CallTruthBattleSetting(this);
         }
+
         public void tapPanel1()
         {
             this.currentPlayer = GroundOne.MC;
@@ -5390,6 +5393,14 @@ namespace DungeonPlayer
             GroundOne.MC.DisableGUI();
             GroundOne.SC.DisableGUI();
             GroundOne.TC.EnableGUI();
+        }
+        public void PointerDownPanel()
+        {
+            this.ActionInstantMode = true;
+        }
+        public void PointerUpPanel()
+        {
+            this.ActionInstantMode = false;
         }
 
         public void tapFirstChara()
@@ -7880,7 +7891,7 @@ namespace DungeonPlayer
                     return; // scenebackさせない
                 }
             }
-            else if (this.BattleEndFlag)
+            else if (this.RunAwayFlag)
             {
                 if (!GroundOne.WE.AvailableSecondCharacter)
                 {
@@ -7972,11 +7983,11 @@ namespace DungeonPlayer
         {
             if (GroundOne.WE.AvailableFirstCharacter)
             {
-                if (GroundOne.MC != null && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
+                // ダンジョン階層のクリア状況に応じてMAXレベル制限を設ける。
+                if (GroundOne.MC != null && GroundOne.MC.Level < Method.GetMaxLevel())
                 {
                     GroundOne.MC.Exp += ec1.Exp;
                 }
-
                 GroundOne.MC.Gold += ec1.Gold;
 
                 int levelUpPoint = 0;
@@ -8005,9 +8016,11 @@ namespace DungeonPlayer
                     GroundOne.Player1UpPoint = levelUpPoint;
                 }
             }
+
             if (GroundOne.WE.AvailableSecondCharacter)
             {
-                if (GroundOne.SC != null && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
+                // ダンジョン階層のクリア状況に応じてMAXレベル制限を設ける。
+                if (GroundOne.SC != null && GroundOne.SC.Level < Method.GetMaxLevel())
                 {
                     GroundOne.SC.Exp += ec1.Exp;
                 }
@@ -8041,9 +8054,10 @@ namespace DungeonPlayer
 
             if (GroundOne.WE.AvailableThirdCharacter)
             {
-                if (GroundOne.TC != null && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
+                // ダンジョン階層のクリア状況に応じてMAXレベル制限を設ける。
+                if (GroundOne.TC != null && GroundOne.TC.Level < Method.GetMaxLevel())
                 {
-                    GroundOne.TC.Exp = ec1.Exp;
+                    GroundOne.TC.Exp += ec1.Exp;
                 }
 
                 int levelUpPoint = 0;

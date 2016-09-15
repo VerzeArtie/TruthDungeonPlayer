@@ -2093,7 +2093,7 @@ namespace DungeonPlayer
         {
             this.txtName.text = chara.FullName;
             this.txtLevel.text = chara.Level.ToString();
-            if (chara.Level < Database.CHARACTER_MAX_LEVEL5)
+            if (chara.Level < Method.GetMaxLevel())
             {
                 this.txtExperience.text = chara.Exp.ToString() + " / " + chara.NextLevelBorder.ToString();
             }

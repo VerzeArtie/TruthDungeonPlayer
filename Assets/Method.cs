@@ -18,6 +18,17 @@ namespace DungeonPlayer
             Lottery,
         }
 
+        public static int GetMaxLevel()
+        {
+            if (GroundOne.WE.TruthCompleteArea1 == false) { return Database.CHARACTER_MAX_LEVEL1; }
+            if (GroundOne.WE.TruthCompleteArea2 == false) { return Database.CHARACTER_MAX_LEVEL2; }
+            if (GroundOne.WE.TruthCompleteArea3 == false) { return Database.CHARACTER_MAX_LEVEL3; }
+            if (GroundOne.WE.TruthCompleteArea4 == false) { return Database.CHARACTER_MAX_LEVEL4; }
+            if (GroundOne.WE.TruthCompleteArea5 == false) { return Database.CHARACTER_MAX_LEVEL5; }
+
+            return Database.CHARACTER_MAX_LEVEL6;
+        }
+
         public static string DuelistConvertToEnglish(string duelist)
         {
             if (duelist == Database.DUEL_EONE_FULNEA)
@@ -251,9 +262,9 @@ namespace DungeonPlayer
                     {
                         backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Potion");
                     }
-                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Any)
+                    else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_Item)
                     {
-                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("Useless");
+                        backpackIcon[currentNumber].sprite = Resources.Load<Sprite>("UseItem");
                     }
                     else if (backpackData[currentNumber].Type == ItemBackPack.ItemType.Use_BlueOrb)
                     {
