@@ -11101,19 +11101,19 @@ namespace DungeonPlayer
 
         private void CopyShadowToMain()
         {
-            GroundOne.MC.MainWeapon = GroundOne.ShadowMC.MainArmor;
+            GroundOne.MC.MainWeapon = GroundOne.ShadowMC.MainWeapon;
             GroundOne.MC.SubWeapon = GroundOne.ShadowMC.SubWeapon;
             GroundOne.MC.MainArmor = GroundOne.ShadowMC.MainArmor;
             GroundOne.MC.Accessory = GroundOne.ShadowMC.Accessory;
             GroundOne.MC.Accessory2 = GroundOne.ShadowMC.Accessory2;
 
-            GroundOne.SC.MainWeapon = GroundOne.ShadowSC.MainArmor;
+            GroundOne.SC.MainWeapon = GroundOne.ShadowSC.MainWeapon;
             GroundOne.SC.SubWeapon = GroundOne.ShadowSC.SubWeapon;
             GroundOne.SC.MainArmor = GroundOne.ShadowSC.MainArmor;
             GroundOne.SC.Accessory = GroundOne.ShadowSC.Accessory;
             GroundOne.SC.Accessory2 = GroundOne.ShadowSC.Accessory2;
 
-            GroundOne.TC.MainWeapon = GroundOne.ShadowTC.MainArmor;
+            GroundOne.TC.MainWeapon = GroundOne.ShadowTC.MainWeapon;
             GroundOne.TC.SubWeapon = GroundOne.ShadowTC.SubWeapon;
             GroundOne.TC.MainArmor = GroundOne.ShadowTC.MainArmor;
             GroundOne.TC.Accessory = GroundOne.ShadowTC.Accessory;
@@ -11300,21 +11300,21 @@ namespace DungeonPlayer
             GameObject shadowObjTC = new GameObject();
             GroundOne.ShadowTC = shadowObjTC.AddComponent<MainCharacter>();
 
-            GroundOne.ShadowMC.MainWeapon = GroundOne.MC.MainArmor;
+            GroundOne.ShadowMC.MainWeapon = GroundOne.MC.MainWeapon;
             GroundOne.ShadowMC.SubWeapon = GroundOne.MC.SubWeapon;
             GroundOne.ShadowMC.MainArmor = GroundOne.MC.MainArmor;
             GroundOne.ShadowMC.Accessory = GroundOne.MC.Accessory;
             GroundOne.ShadowMC.Accessory2 = GroundOne.MC.Accessory2;
             GroundOne.ShadowMC.ReplaceBackPack(GroundOne.MC.GetBackPackInfo());
 
-            GroundOne.ShadowSC.MainWeapon = GroundOne.SC.MainArmor;
+            GroundOne.ShadowSC.MainWeapon = GroundOne.SC.MainWeapon;
             GroundOne.ShadowSC.SubWeapon = GroundOne.SC.SubWeapon;
             GroundOne.ShadowSC.MainArmor = GroundOne.SC.MainArmor;
             GroundOne.ShadowSC.Accessory = GroundOne.SC.Accessory;
             GroundOne.ShadowSC.Accessory2 = GroundOne.SC.Accessory2;
             GroundOne.ShadowSC.ReplaceBackPack(GroundOne.SC.GetBackPackInfo());
 
-            GroundOne.ShadowTC.MainWeapon = GroundOne.TC.MainArmor;
+            GroundOne.ShadowTC.MainWeapon = GroundOne.TC.MainWeapon;
             GroundOne.ShadowTC.SubWeapon = GroundOne.TC.SubWeapon;
             GroundOne.ShadowTC.MainArmor = GroundOne.TC.MainArmor;
             GroundOne.ShadowTC.Accessory = GroundOne.TC.Accessory;

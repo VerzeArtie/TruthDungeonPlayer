@@ -31406,9 +31406,9 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：武器の威力は、【力】とは特に関連性は無いんだよな？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：そうよ、【力】が影響しているのはあくまでもバカアインの【物理攻撃】が増強されるわ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：ええ、無いわね。【力】が影響しているのはあくまでもバカアインの【物理攻撃】が増強されるわ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：武器の物理攻撃力と【力】による物理攻撃力が、アインの総合的な物理攻撃力となるわけよ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：武器の物理攻撃力と【力】による物理攻撃力が、総合的な物理攻撃力となるのよ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：なるほどな、なんとなく分かったぜ。"); eventList.Add(ActionEvent.None);
 
@@ -31596,7 +31596,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：い、いやいやいや、悪い。悪かった。別に良いって、気にするな。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("アイン：しかし・・・学園内で常に主席を取っていたラナでも分からない事ってあるんだな。"); eventList.Add(ActionEvent.None);
+            messageList.Add("アイン：しかし・・・学園内で常に主席を取っていたラナ様でも分からない事ってあるんだな。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：う～ん、私なんて本当まだまだよ。もっと・・・ちゃんとしないと。。。"); eventList.Add(ActionEvent.None);
 
@@ -31606,7 +31606,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：おお、それ頼むぜ、教えてくれ。"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：今まで【力】【技】【知】でも説明で取り上げてきた戦闘関連の値に関してなんだけど"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：今まで【力】【技】【知】の説明で取り上げてきた戦闘関連の値に関してなんだけど"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：実はこれらの値の全てが上昇の対象となるのよ。"); eventList.Add(ActionEvent.None);
 
@@ -31621,6 +31621,8 @@ namespace DungeonPlayer
             messageList.Add("ラナ：例えば【物理攻撃】を高めたい場合は、【力】を上げても【心】を上げても良いって事よ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：【魔法攻撃】に関しても同様ね。【知】または【心】を上げる事で上昇させる事が出来るわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：【戦闘速度】や【戦闘反応】に関しても、【技】または【心】で上昇が適用されるのよ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：【心】に関しては以上ね。"); eventList.Add(ActionEvent.None);
 

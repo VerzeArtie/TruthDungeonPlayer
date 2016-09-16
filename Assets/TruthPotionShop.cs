@@ -24,6 +24,25 @@ namespace DungeonPlayer
             vendor.FullName = "ラナ・アミリア";
             vendor.FirstName = "ラナ";
 
+            if (!GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
+            {
+                btnChara1.gameObject.SetActive(false); // [コメント]：最初はキャラクター増加を見せない演出のため、VisibleはFalse
+                btnChara2.gameObject.SetActive(false);
+                btnChara3.gameObject.SetActive(false);
+            }
+            else if (GroundOne.WE.AvailableSecondCharacter && !GroundOne.WE.AvailableThirdCharacter)
+            {
+                btnChara1.gameObject.SetActive(true);
+                btnChara2.gameObject.SetActive(true);
+                btnChara3.gameObject.SetActive(false);
+            }
+            else if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                btnChara1.gameObject.SetActive(true);
+                btnChara2.gameObject.SetActive(true);
+                btnChara3.gameObject.SetActive(false); // [コメント]：ストーリーの演出上、ヴェルゼはガンツの武具屋へ訪れる事はないため。
+            }
+
             // debug
             //GroundOne.WE.AvailablePotion2 = true;
             //GroundOne.WE.AvailablePotion3 = true;

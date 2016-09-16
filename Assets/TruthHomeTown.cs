@@ -899,28 +899,28 @@ namespace DungeonPlayer
             }
             #endregion
             #region "日常会話４"
-            else if (GroundOne.WE.Truth_CommunicationLana8)
+            else if (!GroundOne.WE.Truth_CommunicationLana8)
             {
                 MessagePack.Message41004(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "日常会話５"
-            else if (GroundOne.WE.Truth_CommunicationLana9)
+            else if (!GroundOne.WE.Truth_CommunicationLana9)
             {
                 MessagePack.Message41005(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "日常会話６"
-            else if (GroundOne.WE.Truth_CommunicationLana10)
+            else if (!GroundOne.WE.Truth_CommunicationLana10)
             {
                 MessagePack.Message41006(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
             #endregion
             #region "日常会話７"
-            else if (GroundOne.WE.Truth_CommunicationLana11)
+            else if (!GroundOne.WE.Truth_CommunicationLana11)
             {
                 MessagePack.Message41007(ref nowMessage, ref nowEvent);
                 NormalTapOK();
