@@ -7929,9 +7929,12 @@ namespace DungeonPlayer
             else
             {
                 GroundOne.BattleResult = GroundOne.battleResult.OK;
-                UpdateBattleText("敵を倒した！　" + ec1.Exp + "の経験値を得た。\r\n");
-                ExpGoldDisplay(ec1.Exp, ec1.Gold);
-                System.Threading.Thread.Sleep(1000);
+                if (GroundOne.DuelMode == false)
+                {
+                    UpdateBattleText("敵を倒した！　" + ec1.Exp + "の経験値を得た。\r\n");
+                    ExpGoldDisplay(ec1.Exp, ec1.Gold);
+                }
+                System.Threading.Thread.Sleep(500);
 
                 // 敵撃墜カウントを数える。
                 GroundOne.WE2.KillingEnemy++;
