@@ -73,6 +73,7 @@ namespace DungeonPlayer
         public Image panelMessage;
         public Image backgroundData;
         public GameObject panelEnding;
+        public GameObject panelSubMenu;
 
 	    public static int serverPort = 8001;
 	    private bool firstAction = false;
@@ -336,6 +337,7 @@ namespace DungeonPlayer
 
         private void ShownEvent()
         {
+            #region "DUEL対戦結果"
             if (GroundOne.DuelMode)
             {
                 Debug.Log("GroundOne.DuelMode");
@@ -387,7 +389,8 @@ namespace DungeonPlayer
                 }
                 return;
             }
-            
+            #endregion
+
             // 死亡しているものは自動的に復活させます。
             if (GroundOne.MC != null)
             {
@@ -396,6 +399,7 @@ namespace DungeonPlayer
                     GroundOne.MC.Dead = false;
                     GroundOne.MC.CurrentLife = GroundOne.MC.MaxLife / 2;
                     MessagePack.HomeTownResurrect(ref nowMessage, ref nowEvent, GroundOne.MC);
+                    NormalTapOK();
                 }
             }
             if (GroundOne.SC != null)
@@ -614,8 +618,9 @@ namespace DungeonPlayer
             else
             {
                 Debug.Log("all else, then no event");
-                mainMessage.text = "アイン：さて、何すっかな";
+                MessagePack.HomeTownNoEvent(ref nowMessage, ref nowEvent);
                 GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                NormalTapOK();
             }
         }
             	
@@ -1573,6 +1578,7 @@ namespace DungeonPlayer
             buttonShinikia.gameObject.SetActive(false);
             buttonDuel.gameObject.SetActive(false);
             dayLabel.gameObject.SetActive(false);
+            panelSubMenu.SetActive(false);
             this.imgBackground.gameObject.SetActive(false);
         }
 
@@ -1595,6 +1601,7 @@ namespace DungeonPlayer
             this.buttonDuel.gameObject.SetActive(duelVisible);
 
             dayLabel.gameObject.SetActive(true);
+            panelSubMenu.SetActive(true);
             this.imgBackground.gameObject.SetActive(true);
         }
 

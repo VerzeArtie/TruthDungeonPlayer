@@ -575,22 +575,7 @@ namespace DungeonPlayer
                     tapOK();
                 }
 
-                // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
-                if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
-                {
-                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
-                    return;
-                }
-                else if (GroundOne.Player2Levelup && GroundOne.WE.AvailableSecondCharacter)
-                {
-                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player2Levelup, ref GroundOne.Player2UpPoint, ref GroundOne.Player2CumultiveLvUpValue, GroundOne.SC.PlayerStatusColor);
-                    return;
-                }
-                else if (GroundOne.Player3Levelup && GroundOne.WE.AvailableThirdCharacter)
-                {
-                    SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player3Levelup, ref GroundOne.Player3UpPoint, ref GroundOne.Player3CumultiveLvUpValue, GroundOne.TC.PlayerStatusColor);
-                    return;
-                }
+                if (UpdateCheckLevelUp()) { return; }
 
                 // after
                 //  bool alreadyPlayBackMusic = false;
@@ -2062,6 +2047,27 @@ namespace DungeonPlayer
             }
         }
 
+        private bool UpdateCheckLevelUp()
+        {
+            // 戦闘終了後、レベルアップがあるなら、ステータス画面を開く
+            if (GroundOne.Player1Levelup && GroundOne.WE.AvailableFirstCharacter)
+            {
+                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player1Levelup, ref GroundOne.Player1UpPoint, ref GroundOne.Player1CumultiveLvUpValue, GroundOne.MC.PlayerStatusColor);
+                return true;
+            }
+            else if (GroundOne.Player2Levelup && GroundOne.WE.AvailableSecondCharacter)
+            {
+                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player2Levelup, ref GroundOne.Player2UpPoint, ref GroundOne.Player2CumultiveLvUpValue, GroundOne.SC.PlayerStatusColor);
+                return true;
+            }
+            else if (GroundOne.Player3Levelup && GroundOne.WE.AvailableThirdCharacter)
+            {
+                SceneDimension.CallTruthStatusPlayer(this, ref GroundOne.Player3Levelup, ref GroundOne.Player3UpPoint, ref GroundOne.Player3CumultiveLvUpValue, GroundOne.TC.PlayerStatusColor);
+                return true;
+            }
+            return false;
+        }
+
         public override void SceneBack()
         {
             base.SceneBack();
@@ -2069,6 +2075,13 @@ namespace DungeonPlayer
             mainMessage.text = "";
             UpdateMainMessage("", true);
             SetupPlayerStatus(false);
+
+            if (GroundOne.LevelUpRoutine)
+            {
+                GroundOne.LevelUpRoutine = false;
+                UpdateCheckLevelUp();
+                return;
+            }
 
             #region "小画面表示後の戻りイベント"
             if (this.nowDecisionFloor1OpenDoor)

@@ -458,6 +458,7 @@ namespace DungeonPlayer
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
                     GroundOne.UpPoint = 0;
+                    GroundOne.LevelUpRoutine = true;
                     SceneDimension.Back(this);
                 }
                 #endregion
@@ -525,6 +526,7 @@ namespace DungeonPlayer
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
                     GroundOne.UpPoint = 0;
+                    GroundOne.LevelUpRoutine = true;
                     SceneDimension.Back(this);
                 }
                 #endregion
@@ -574,6 +576,7 @@ namespace DungeonPlayer
                     GroundOne.CumultiveLvUpValue = 0;
                     GroundOne.LevelUp = false;
                     GroundOne.UpPoint = 0;
+                    GroundOne.LevelUpRoutine = true;
                     SceneDimension.Back(this);
                 }
                 #endregion

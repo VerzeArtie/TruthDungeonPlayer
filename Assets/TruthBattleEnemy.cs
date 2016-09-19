@@ -310,6 +310,8 @@ namespace DungeonPlayer
         public GameObject treasurePanel;
         public Image treasureIcon;
         public Text treasureText;
+        public GameObject ExpGoldPanel;
+        public Text ExpGoldText;
 
         // internal
         int BattleTimeCounter = Database.BASE_TIMER_BAR_LENGTH;
@@ -3691,6 +3693,12 @@ namespace DungeonPlayer
                     player.Target = group[0];
                 }
             }
+        }
+
+        private void ExpGoldDisplay(int exp, int gold)
+        {
+            ExpGoldText.text = ec1.Exp + "の経験値、 " + ec1.Gold + "Goldを獲得";
+            ExpGoldPanel.SetActive(true);
         }
 
         private void MessageDisplayWithIcon(ItemBackPack item)
@@ -7922,6 +7930,7 @@ namespace DungeonPlayer
             {
                 GroundOne.BattleResult = GroundOne.battleResult.OK;
                 UpdateBattleText("敵を倒した！　" + ec1.Exp + "の経験値を得た。\r\n");
+                ExpGoldDisplay(ec1.Exp, ec1.Gold);
                 System.Threading.Thread.Sleep(1000);
 
                 // 敵撃墜カウントを数える。
@@ -7994,7 +8003,7 @@ namespace DungeonPlayer
                 int cumultiveLvUpValue = 0;
                 while (true)
                 {
-                    if (GroundOne.MC.Exp >= GroundOne.MC.NextLevelBorder && GroundOne.MC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    if (GroundOne.MC.Exp >= GroundOne.MC.NextLevelBorder && GroundOne.MC.Level < Method.GetMaxLevel())
                     {
                         levelUpPoint += GroundOne.MC.LevelUpPointTruth;
                         GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
@@ -8029,7 +8038,7 @@ namespace DungeonPlayer
                 int cumultiveLvUpValue = 0;
                 while (true)
                 {
-                    if (GroundOne.SC.Exp >= GroundOne.SC.NextLevelBorder && GroundOne.SC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    if (GroundOne.SC.Exp >= GroundOne.SC.NextLevelBorder && GroundOne.SC.Level < Method.GetMaxLevel())
                     {
                         levelUpPoint += GroundOne.SC.LevelUpPointTruth;
                         GroundOne.SC.BaseLife += GroundOne.SC.LevelUpLifeTruth;
@@ -8064,7 +8073,7 @@ namespace DungeonPlayer
                 int cumultiveLvUpValue = 0;
                 while (true)
                 {
-                    if (GroundOne.TC.Exp >= GroundOne.TC.NextLevelBorder && GroundOne.TC.Level < Database.CHARACTER_MAX_LEVEL1)
+                    if (GroundOne.TC.Exp >= GroundOne.TC.NextLevelBorder && GroundOne.TC.Level < Method.GetMaxLevel())
                     {
                         levelUpPoint += GroundOne.TC.LevelUpPointTruth;
                         GroundOne.TC.BaseLife += GroundOne.TC.LevelUpLifeTruth;

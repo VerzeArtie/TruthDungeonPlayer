@@ -26339,7 +26339,12 @@ namespace DungeonPlayer
             messageList.Add(player.FirstName + "は命を吹き返した。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
         }
         #endregion
-
+        #region "ホームタウン、イベントなし"
+        public static void HomeTownNoEvent(ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            messageList.Add("アイン：さて、何すっかな"); eventList.Add(ActionEvent.None);
+        }
+        #endregion
         #region "ホームタウン表示時"
         // 後編初日
         public static void Message20100(ref List<string> messageList, ref List<ActionEvent> eventList)
@@ -27203,21 +27208,31 @@ namespace DungeonPlayer
 
                 messageList.Add("アイン：・・・　なんだろう　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：ラナと一緒にダンジョンへ進んで・・・それから・・・"); eventList.Add(ActionEvent.None);
-
                 messageList.Add(""); eventList.Add(ActionEvent.HomeTownBlackOut);
 
-                messageList.Add("アイン：・・・　何か忘れてる気がする　・・・"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：・・・　奇妙な感覚だ　・・・"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：俺、何やってたんだっけ・・・"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：１階はそれなりに探索はした。問題ないはずだ。"); eventList.Add(ActionEvent.None);
 
-                messageList.Add("アイン：まあいいや、ひとまずダンジョンの最下層へ・・・"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ボスを倒して、次の階層へ進める・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：問題はないはずだ・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：いや、気にし過ぎだ。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：１階制覇で少し疲れが出たのかもしれないな。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　しっかりと寝よう　・・・"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
 
                 messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
-
-                messageList.Add(" ～　THE　END　～　（虚構へ）"); eventList.Add(ActionEvent.None);
 
                 GroundOne.WE2.TruthBadEnd1 = true;
             }
