@@ -3421,7 +3421,34 @@ namespace DungeonPlayer
                     break;
 
                 case Database.DUEL_ADEL_BRIGANDY:
-                    // todo
+                    if (AI_TacticsNumber == 0)
+                    {
+                        if (this.CurrentHeatBoost <= 0)
+                        {
+                            SetupActionCommand(this, this, PlayerAction.UseSpell, Database.HEAT_BOOST);
+                        }
+                        else if (this.CurrentHighEmotionality <= 0)
+                        {
+                            SetupActionCommand(this, this, PlayerAction.UseSkill, Database.HIGH_EMOTIONALITY);
+                        }
+                        else if (this.CurrentGaleWind <= 0)
+                        {
+                            SetupActionCommand(this, this, PlayerAction.UseSpell, Database.GALE_WIND);
+                        }
+                        AI_TacticsNumber = 1;
+                    }
+                    else
+                    {
+                        if (this.CurrentSkillPoint < Database.ENIGMA_SENSE_COST)
+                        {
+                            SetupActionCommand(this, this, PlayerAction.UseSkill, Database.INNER_INSPIRATION);
+                        }
+                        else
+                        {
+                            SetupActionCommand(this, target, PlayerAction.UseSkill, Database.ENIGMA_SENSE);
+                        }
+                        AI_TacticsNumber = 0;
+                    }
                     break;
 
                 case Database.DUEL_LENE_COLTOS:
@@ -5503,7 +5530,7 @@ namespace DungeonPlayer
                 case Database.DUEL_ADEL_BRIGANDY:
                     this.fullName = Database.DUEL_ADEL_BRIGANDY;
                     SetupParameter(23, 80, 43, 5, 50, 12);
-                    SetupFoodParameter(30, 0, 0, 20, 0);
+                    SetupFoodParameter(0, 30, 0, 20, 0);
                     this.experience = 0;
                     this.gold = 0;
                     this.Rare = RareString.Blue;

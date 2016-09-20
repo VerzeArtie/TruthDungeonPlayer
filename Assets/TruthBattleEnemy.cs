@@ -712,14 +712,7 @@ namespace DungeonPlayer
                 this.debugB51.text = ec1.Gold.ToString();
             }
 
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                // スリープさせない
-            }
-            else
-            {
-                System.Threading.Thread.Sleep(Database.BATTLE_CORE_SLEEP);
-            }
+            System.Threading.Thread.Sleep(Database.BATTLE_CORE_SLEEP);
             #region "キー制御"
             bool detectShift = false;
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
@@ -2612,13 +2605,16 @@ namespace DungeonPlayer
             {
                 if (player.CurrentInstantPoint >= player.MaxInstantPoint)
                 {
-                    UseInstantPoint(player);
-                    player.StackActivePlayer = ec1;
-                    player.StackTarget = GroundOne.MC;
-                    player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
-                    player.StackCommandString = Database.WORD_OF_POWER;
-                    player.StackActivation = true;
-                    this.NowStackInTheCommand = true;
+                    if (player.CurrentLife < player.MaxLife)
+                    {
+                        UseInstantPoint(player);
+                        player.StackActivePlayer = ec1;
+                        player.StackTarget = ec1;
+                        player.StackPlayerAction = MainCharacter.PlayerAction.UseSpell;
+                        player.StackCommandString = Database.FRESH_HEAL;
+                        player.StackActivation = true;
+                        this.NowStackInTheCommand = true;
+                    }
                 }
             }
             #endregion
