@@ -1482,7 +1482,7 @@ namespace DungeonPlayer
         /// </summary>
         public static double BlueLightningValue(MainCharacter player, bool duelMode)
         {
-            return ConstructPhysicalDamage(player, 0.0f, 0, 1.5f, 0, 0, 200, 250, SpellSkillType.Standard, duelMode);
+            return ConstructMagicDamage(player, 2.0f, 0, 200, 250, SpellSkillType.Standard, false, duelMode);
         }
 
         /// <summary>

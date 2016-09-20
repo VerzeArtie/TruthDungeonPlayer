@@ -6046,6 +6046,10 @@ namespace DungeonPlayer
             {
                 player.CurrentArchetypeName = commandString;
             }
+            else
+            {
+                player.CurrentUsingItem = commandString;
+            }
             player.ActionLabel.text = TruthActionCommand.ConvertToJapanese(commandString);
         }
     }
