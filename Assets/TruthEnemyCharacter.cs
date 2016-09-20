@@ -3249,6 +3249,7 @@ namespace DungeonPlayer
                             break;
                     }
                     break;
+
                 case Database.DUEL_JEDA_ARUS:
                     if (this.CurrentSkillPoint < 25)
                     {
@@ -3466,52 +3467,39 @@ namespace DungeonPlayer
                         case 0:
                             if (AI_TacticsNumber == 1)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.FRESH_HEAL;
-                                this.ActionLabel.text = Database.FRESH_HEAL_JP;
-                                this.Target = this;
+                                SetupActionCommand(this, this, PlayerAction.UseSpell, Database.FRESH_HEAL);
                             }
                             else
                             {
-                                this.PA = PlayerAction.UseItem;
-                                this.CurrentUsingItem = Database.RARE_BLUE_LIGHTNING;
-                                this.ActionLabel.text = Database.RARE_BLUE_LIGHTNING;
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.UseItem, Database.RARE_BLUE_LIGHTNING);
                             }
                             break;
                     }
                     break;
+
                 case Database.DUEL_SCOTY_ZALGE:
                     switch (AP.Math.RandomInteger(1))
                     {
                         case 0:
-                            this.PA = PlayerAction.SpecialSkill;
-                            this.ActionLabel.text = "ザルゲ・スラッシュ";
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "ザルゲ・スラッシュ");
                             break;
                     }
                     break;
+
                 case Database.DUEL_PERMA_WARAMY:
                     if (this.CurrentHolyBreaker <= 0)
                     {
-                        this.PA = PlayerAction.UseSpell;
-                        this.CurrentSpellName = Database.HOLY_BREAKER;
-                        this.ActionLabel.text = Database.HOLY_BREAKER_JP;
-                        this.Target = this;
+                        SetupActionCommand(this, this, PlayerAction.UseSpell, Database.HOLY_BREAKER);
                     }
                     else
                     {
                         if (this.CurrentLife >= this.MaxLife)
                         {
-                            this.PA = PlayerAction.UseSpell;
-                            this.CurrentSpellName = Database.FLAME_STRIKE;
-                            this.ActionLabel.text = Database.FLAME_STRIKE_JP;
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.UseSpell, Database.FLAME_STRIKE);
                         }
                         else
                         {
-                            this.PA = PlayerAction.Defense;
-                            this.ActionLabel.text = Database.DEFENSE_JP;
+                            SetupActionCommand(this, this, PlayerAction.Defense, Database.DEFENSE_EN);
                         }
                     }
                     break;
@@ -3521,16 +3509,11 @@ namespace DungeonPlayer
                     {
                         if (this.CurrentSkillPoint > Database.STRAIGHT_SMASH_COST)
                         {
-                            this.PA = PlayerAction.UseSkill;
-                            this.CurrentSkillName = Database.STRAIGHT_SMASH;
-                            this.ActionLabel.text = Database.STRAIGHT_SMASH_JP;
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.UseSkill, Database.STRAIGHT_SMASH);
                         }
                         else
                         {
-                            this.PA = PlayerAction.NormalAttack;
-                            this.ActionLabel.text = Database.ATTACK_JP;
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
                         }
                         AI_TacticsNumber = 1;
                     }
@@ -3538,122 +3521,86 @@ namespace DungeonPlayer
                     {
                         if (this.CurrentMana > Database.BLUE_BULLET_COST)
                         {
-                            this.PA = PlayerAction.UseSpell;
-                            this.CurrentSpellName = Database.BLUE_BULLET;
-                            this.ActionLabel.text = Database.BLUE_BULLET_JP;
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.UseSpell, Database.BLUE_BULLET);
                         }
                         else
                         {
-                            this.PA = PlayerAction.NormalAttack;
-                            this.ActionLabel.text = Database.ATTACK_JP;
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
                         }
                         AI_TacticsNumber = 0;
                     }
                     break;
+
                 case Database.DUEL_BILLY_RAKI:
                     if (this.CurrentSkillPoint > Database.CARNAGE_RUSH_COST)
                     {
-                        this.PA = PlayerAction.UseSkill;
-                        this.CurrentSkillName = Database.CARNAGE_RUSH;
-                        this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSkillName);
-                        this.Target = target;
+                        SetupActionCommand(this, target, PlayerAction.UseSkill, Database.CARNAGE_RUSH);
                     }
                     else if (this.CurrentMana > Database.WORD_OF_POWER_COST)
                     {
-                        this.PA = PlayerAction.UseSpell;
-                        this.CurrentSpellName = Database.WORD_OF_POWER;
-                        this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                        this.Target = target;
+                        SetupActionCommand(this, target, PlayerAction.UseSpell, Database.WORD_OF_POWER);
                     }
                     else
                     {
-                        this.PA = PlayerAction.NormalAttack;
-                        this.Target = target;
+                        SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
                     }
                     break;
+
                 case Database.DUEL_ANNA_HAMILTON:
                     if (this.CurrentWordOfLife <= 0)
                     {
-                        this.PA = PlayerAction.UseSpell;
-                        this.CurrentSpellName = Database.WORD_OF_LIFE;
-                        this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                        this.Target = this;
+                        SetupActionCommand(this, this, PlayerAction.UseSpell, Database.WORD_OF_LIFE);
                     }
                     else
                     {
                         if (AI_TacticsNumber == 0)
                         {
-                            this.PA = PlayerAction.UseSpell;
-                            this.CurrentSpellName = Database.VOLCANIC_WAVE;
-                            this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.UseSpell, Database.VOLCANIC_WAVE);
                             AI_TacticsNumber = 1;
                         }
                         else if (AI_TacticsNumber == 1)
                         {
                             if (this.CurrentSkillPoint > Database.CRUSHING_BLOW_COST)
                             {
-                                this.PA = PlayerAction.UseSkill;
-                                this.CurrentSkillName = Database.CRUSHING_BLOW;
-                                this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSkillName);
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.UseSkill, Database.CRUSHING_BLOW);
                             }
                             else
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.VOLCANIC_WAVE;
-                                this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.UseSpell, Database.VOLCANIC_WAVE);
                             }
                             AI_TacticsNumber = 0;
                         }
                     }
                     break;
+
                 case Database.DUEL_CALMANS_OHN:
-                    this.PA = PlayerAction.Defense;
-                    this.ActionLabel.text = Database.DEFENSE_JP;
-                    this.Target = this;
+                    SetupActionCommand(this, this, PlayerAction.Defense, Database.DEFENSE_EN);
                     break;
+
                 case Database.DUEL_SUN_YU:
                     if (AI_TacticsNumber == 0)
                     {
                         if (this.CurrentLife < this.MaxLife / 2)
                         {
-                            this.PA = PlayerAction.UseSpell;
-                            this.CurrentSpellName = Database.SACRED_HEAL;
-                            this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                            this.Target = this;
+                            SetupActionCommand(this, this, PlayerAction.UseSpell, Database.SACRED_HEAL);
                         }
                         else
                         {
                             if (target.CurrentDarkenField <= 0)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.DARKEN_FIELD;
-                                this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.UseSpell, Database.DARKEN_FIELD);
                             }
                             else if (this.CurrentSaintPower <= 0)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.SAINT_POWER;
-                                this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                                this.Target = this;
+                                SetupActionCommand(this, this, PlayerAction.UseSpell, Database.SAINT_POWER);
                             }
                             else if (this.CurrentBloodyVengeance <= 0)
                             {
-                                this.PA = PlayerAction.UseSpell;
-                                this.CurrentSpellName = Database.BLOODY_VENGEANCE;
-                                this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                                this.Target = this;
+                                SetupActionCommand(this, this, PlayerAction.UseSpell, Database.BLOODY_VENGEANCE);
                             }
                             else
                             {
-                                this.PA = PlayerAction.NormalAttack;
-                                this.ActionLabel.text = Database.ATTACK_JP;
-                                this.Target = target;
+                                SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
                             }
                         }
                         AI_TacticsNumber = 1;
@@ -3662,10 +3609,7 @@ namespace DungeonPlayer
                     {
                         if (target.CurrentConcussiveHit <= 0 || target.CurrentConcussiveHitValue < 3)
                         {
-                            this.PA = PlayerAction.UseSkill;
-                            this.CurrentSkillName = Database.CONCUSSIVE_HIT;
-                            this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSkillName);
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.UseSkill, Database.CONCUSSIVE_HIT);
                         }
                         AI_TacticsNumber = 2;
                     }
@@ -3673,60 +3617,52 @@ namespace DungeonPlayer
                     {
                         if (this.CurrentSkillPoint > Database.SILENT_RUSH_COST)
                         {
-                            this.PA = PlayerAction.UseSkill;
-                            this.CurrentSkillName = Database.SILENT_RUSH;
-                            this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSkillName);
-                            this.Target = this.Target;
+                            SetupActionCommand(this, target, PlayerAction.UseSkill, Database.SILENT_RUSH);
                         }
                         else
                         {
-                            this.PA = PlayerAction.NormalAttack;
-                            this.ActionLabel.text = Database.ATTACK_JP;
-                            this.Target = target;
+                            SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
                         }
-
                         AI_TacticsNumber = 0;
                     }
                     break;
+
                 case Database.DUEL_SHUVALTZ_FLORE:
                     if (this.CurrentAetherDrive > 0 && this.CurrentWordOfFortune <= 0)
                     {
-                        this.PA = PlayerAction.UseSpell;
-                        this.CurrentSpellName = Database.WORD_OF_FORTUNE;
-                        this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                        this.Target = this;
+                        SetupActionCommand(this, this, PlayerAction.UseSpell, Database.WORD_OF_FORTUNE);
                     }
                     else if (this.CurrentInstantPoint >= this.MaxInstantPoint && this.CurrentExaltedField <= 0 && this.CurrentMana > Database.EXALTED_FIELD_COST)
                     {
-                        this.PA = PlayerAction.UseSpell;
-                        this.CurrentSpellName = Database.EXALTED_FIELD;
-                        this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
+                        SetupActionCommand(this, this, PlayerAction.UseSpell, Database.EXALTED_FIELD);
                     }
                     else if (this.CurrentInstantPoint >= this.MaxInstantPoint && this.CurrentRisingAura <= 0 && this.CurrentSkillPoint > Database.RISING_AURA_COST)
                     {
-                        this.PA = PlayerAction.UseSkill;
-                        this.CurrentSkillName = Database.RISING_AURA;
-                        this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSkillName);
+                        SetupActionCommand(this, this, PlayerAction.UseSkill, Database.RISING_AURA);
                     }
                     else if (this.CurrentAetherDrive > 0 && this.CurrentWordOfFortune > 0)
                     {
-                        this.PA = PlayerAction.UseSkill;
-                        this.CurrentSkillName = Database.NEUTRAL_SMASH;
-                        this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSkillName);
-                        this.Target = target;
+                        SetupActionCommand(this, target, PlayerAction.UseSkill, Database.NEUTRAL_SMASH);
                     }
                     else
                     {
-                        this.PA = PlayerAction.Defense;
-                        this.ActionLabel.text = Database.DEFENSE_JP;
+                        SetupActionCommand(this, this, PlayerAction.Defense, Database.DEFENSE_EN);
                     }
                     break;
 
                 case Database.DUEL_SINIKIA_KAHLHANZ:
-                    this.PA = PlayerAction.UseSpell;
-                    this.CurrentSpellName = Database.PIERCING_FLAME;
-                    this.ActionLabel.text = TruthActionCommand.ConvertToJapanese(this.CurrentSpellName);
-                    this.Target = target;
+                    if (this.currentMana >= Database.PIERCING_FLAME_COST)
+                    {
+                        SetupActionCommand(this, target, PlayerAction.UseSpell, Database.PIERCING_FLAME);
+                    }
+                    else if (this.CurrentBlackContract <= 0 && this.currentMana >= Database.BLACK_CONTRACT_COST)
+                    {
+                        SetupActionCommand(this, this, PlayerAction.UseSpell, Database.BLACK_CONTRACT);
+                    }
+                    else
+                    {
+                        SetupActionCommand(this, target, PlayerAction.NormalAttack, Database.ATTACK_EN);
+                    }
                     break;
 
                 case Database.DUEL_RVEL_ZELKIS:
@@ -3767,26 +3703,17 @@ namespace DungeonPlayer
                     if ((this.CurrentLife < this.MaxLife / 2) &&
                         (existRedPotion))
                     {
-                        this.PA = PlayerAction.UseItem;
-                        this.CurrentUsingItem = Database.COMMON_HUGE_RED_POTION;
-                        this.Target = this;
-                        this.ActionLabel.text = Database.COMMON_HUGE_RED_POTION;
+                        SetupActionCommand(this, this, PlayerAction.UseItem, Database.COMMON_HUGE_RED_POTION);
                     }
                     else if ((this.CurrentMana < Database.CHILL_BURN_COST) &&
                         (existBluePotion))
                     {
-                        this.PA = PlayerAction.UseItem;
-                        this.CurrentUsingItem = Database.COMMON_HUGE_BLUE_POTION;
-                        this.Target = this;
-                        this.ActionLabel.text = Database.COMMON_HUGE_BLUE_POTION;
+                        SetupActionCommand(this, this, PlayerAction.UseItem, Database.COMMON_HUGE_BLUE_POTION);
                     }
                     else if ((this.CurrentSkillPoint < Database.CARNAGE_RUSH_COST) &&
                         (existGreenPotion))
                     {
-                        this.PA = PlayerAction.UseItem;
-                        this.CurrentUsingItem = Database.COMMON_HUGE_GREEN_POTION;
-                        this.Target = this;
-                        this.ActionLabel.text = Database.COMMON_HUGE_GREEN_POTION;
+                        SetupActionCommand(this, this, PlayerAction.UseItem, Database.COMMON_HUGE_GREEN_POTION);
                     }
                     else if (this.AI_TacticsNumber == 0)
                     {
@@ -3838,9 +3765,7 @@ namespace DungeonPlayer
                 case Database.DUEL_VAN_HEHGUSTEL:
                     if (this.CurrentChargeCount <= 0)
                     {
-                        this.PA = PlayerAction.Charge;
-                        this.ActionLabel.text = Database.TAMERU_JP;
-                        this.Target = this;
+                        SetupActionCommand(this, this, PlayerAction.Charge, Database.TAMERU_EN);
                     }
                     else if (this.CurrentMana >= Database.PIERCING_FLAME_COST)
                     {
@@ -3848,11 +3773,10 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        this.PA = PlayerAction.Defense;
-                        this.ActionLabel.text = Database.DEFENSE_JP;
-                        this.Target = this;
+                        SetupActionCommand(this, this, PlayerAction.Defense, Database.DEFENSE_EN);
                     }
                     break;
+
                 case Database.DUEL_OHRYU_GENMA:
                     if ((this.CurrentOneAuthority <= 0) &&
                         (this.CurrentSkillPoint <= 30))
@@ -3965,6 +3889,7 @@ namespace DungeonPlayer
                         }
                     }
                     break;
+
                 case Database.DUEL_LADA_MYSTORUS:
                     if ((target.CurrentDamnation <= 0) &&
                         (this.CurrentMana >= Database.DAMNATION_COST))
@@ -3993,9 +3918,7 @@ namespace DungeonPlayer
                     }
                     else
                     {
-                        this.PA = PlayerAction.Defense;
-                        this.ActionLabel.text = Database.DEFENSE_JP;
-                        this.Target = this;
+                        SetupActionCommand(this, this, PlayerAction.Defense, Database.DEFENSE_EN);
                     }
                     break;
                 case Database.DUEL_SIN_OSCURETE:
@@ -4005,9 +3928,7 @@ namespace DungeonPlayer
                     }
                     else if (this.BattleBarPos <= 400)
                     {
-                        this.PA = PlayerAction.Defense;
-                        this.ActionLabel.text = Database.DEFENSE_JP;
-                        this.Target = this;
+                        SetupActionCommand(this, this, PlayerAction.Defense, Database.DEFENSE_EN);
                     }
                     else
                     {
