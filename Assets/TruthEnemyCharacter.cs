@@ -4009,7 +4009,7 @@ namespace DungeonPlayer
                     //}
                     break;
                 #endregion
-
+                #region "ダミー素振り"
                 case Database.DUEL_DUMMY_SUBURI:
                     if (this.CurrentProtection <= 0)
                     {
@@ -4255,7 +4255,7 @@ namespace DungeonPlayer
                             this.Target = target;
                             break;
                     }
-
+                    #endregion
                     break;
             }
         }

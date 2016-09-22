@@ -14,9 +14,6 @@ namespace DungeonPlayer
 
         public static int MAX_SAVEDATA = 10; // セーブデータ最大保持数
 
-        public static int DUNGEON_ROW = 20; // 行
-        public static int DUNGEON_COLUMN = 30; // 列
-
         public static int DUNGEON_MOVE_LEN = 1; // 25; change unity
         public static int DUNGEON_BASE_X = 0;
         public static int DUNGEON_BASE_Y = 0;

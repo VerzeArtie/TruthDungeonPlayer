@@ -203,7 +203,7 @@ namespace DungeonPlayer
             GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_FIRST_DUNGEON);
             if (Application.platform == RuntimePlatform.Android)
             {
-                MOVE_INTERVAL = 1;
+                MOVE_INTERVAL = 40;
                 this.groupArrow.SetActive(true);
             }
             else
@@ -1600,7 +1600,6 @@ namespace DungeonPlayer
         public override void Update()
         {
             base.Update();
-
             if (!this.firstAction)
             {
                 this.firstAction = true;
