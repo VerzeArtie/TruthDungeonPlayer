@@ -1613,6 +1613,7 @@ namespace DungeonPlayer
             if (this.nowAgilityRoomCounter > 0)
             {
                 nowAgilityFrameCount++;
+                this.txtTitle.text = nowAgilityFrameCount.ToString();
                 if (nowAgilityFrameCount >= this.nowAgilityRoomCounter)
                 {
                     if (agilityRoomTimer_Tick())
@@ -16047,15 +16048,15 @@ namespace DungeonPlayer
                     }
                     else if (!GroundOne.WE.dungeonEvent233_Fail2)
                     {
-                        this.nowAgilityRoomCounter = 20;
+                        this.nowAgilityRoomCounter = 15;
                     }
                     else if (!GroundOne.WE.dungeonEvent233_Fail3)
                     {
-                        this.nowAgilityRoomCounter = 30;
+                        this.nowAgilityRoomCounter = 20;
                     }
                     else
                     {
-                        this.nowAgilityRoomCounter = 40;
+                        this.nowAgilityRoomCounter = 30;
                     }
                     this.nowAgilityFrameCount = 0;
                 }
