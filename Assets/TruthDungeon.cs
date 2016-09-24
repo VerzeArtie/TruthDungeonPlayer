@@ -1613,7 +1613,7 @@ namespace DungeonPlayer
             if (this.nowAgilityRoomCounter > 0)
             {
                 nowAgilityFrameCount++;
-                this.txtTitle.text = nowAgilityFrameCount.ToString();
+                //this.txtTitle.text = nowAgilityFrameCount.ToString();
                 if (nowAgilityFrameCount >= this.nowAgilityRoomCounter)
                 {
                     if (agilityRoomTimer_Tick())
