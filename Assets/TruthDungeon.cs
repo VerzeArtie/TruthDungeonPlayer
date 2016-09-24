@@ -21,6 +21,7 @@ namespace DungeonPlayer
         private int MovementInterval = 0; // ダンジョンマップ全体を見ている時のインターバル
 
         // GUI
+        public Text txtTitle;
         public GameObject groupDayLabel;
         public Text dayLabel;
         public Text dungeonAreaLabel;
@@ -159,7 +160,8 @@ namespace DungeonPlayer
         private int stepCounter = 0; // 敵エンカウント率調整の値
 
         // 各種イベント発生時の変数群
-        int nowAgilityRoomCounter = 0;
+        private float nowAgilityRoomCounter = 0;
+        private float nowAgilityFrameCount = 0;
 
         bool nowDecisionFloor1OpenDoor = false; // １階ボス部屋を開く際のフラグ
         int nowDecisionFloor2EightAnswer = 0; // ２階TruthDecision2を呼び出すためのフラグ
@@ -1600,6 +1602,7 @@ namespace DungeonPlayer
         public override void Update()
         {
             base.Update();
+
             if (!this.firstAction)
             {
                 this.firstAction = true;
@@ -1609,11 +1612,11 @@ namespace DungeonPlayer
 
             if (this.nowAgilityRoomCounter > 0)
             {
-                //Debug.Log("agilitycounter: " + nowAgilityRoomCounter);
-                this.nowAgilityRoomCounter--;
-                if (this.nowAgilityRoomCounter <= 0)
+                nowAgilityFrameCount++;
+                if (nowAgilityFrameCount >= this.nowAgilityRoomCounter)
                 {
                     agilityRoomTimer_Tick();
+                    return;
                 }
             }
 
@@ -3747,7 +3750,7 @@ namespace DungeonPlayer
                     keyUp = false;
                     keyLeft = false;
                     keyRight = false;
-                    System.Threading.Thread.Sleep(200);
+                    //System.Threading.Thread.Sleep(200);
                     //debug.text += "check wall end.";
                     return;
                 }
@@ -16037,7 +16040,8 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart)
                 {
-                    this.nowAgilityRoomCounter = 30;
+                    this.nowAgilityRoomCounter = 20.0f;
+                    this.nowAgilityFrameCount = 0;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart2)
                 {
@@ -16101,6 +16105,7 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomUpdate4)
                 {
                     this.nowAgilityRoomCounter = 1;
+                    this.nowAgilityFrameCount = 0;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart5)
                 {
@@ -16120,10 +16125,12 @@ namespace DungeonPlayer
                     {
                         this.nowAgilityRoomCounter = 440;
                     }
+                    this.nowAgilityFrameCount = 0;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStop)
                 {
                     this.nowAgilityRoomCounter = 0;
+                    this.nowAgilityFrameCount = 0;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomFail1)
                 {

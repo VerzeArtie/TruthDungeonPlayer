@@ -6571,6 +6571,7 @@ MonoBehaviour:
   yesnoSystemMessage: {fileID: 2032365743}
   groupYesnoSystemMessage: {fileID: 1370020383}
   Filter: {fileID: 1983497975}
+  txtTitle: {fileID: 528219303}
   groupDayLabel: {fileID: 1159125709}
   dayLabel: {fileID: 52440679}
   dungeonAreaLabel: {fileID: 642382572}
@@ -6628,6 +6629,7 @@ MonoBehaviour:
   NoticeMessage: {fileID: 683747012}
   FirstMessage: {fileID: 228998560}
   SecondMessage: {fileID: 1925291783}
+  updateInterval: 0.5
 --- !u!222 &1408778865
 CanvasRenderer:
   m_ObjectHideFlags: 0
