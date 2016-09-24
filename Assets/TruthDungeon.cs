@@ -205,12 +205,12 @@ namespace DungeonPlayer
             GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_FIRST_DUNGEON);
             if (Application.platform == RuntimePlatform.Android)
             {
-                MOVE_INTERVAL = 40;
+                MOVE_INTERVAL = 10;
                 this.groupArrow.SetActive(true);
             }
             else
             {
-                MOVE_INTERVAL = 50;
+                MOVE_INTERVAL = 40;
                 this.groupArrow.SetActive(false);
             }
             this.interval = MOVE_INTERVAL;
@@ -1615,8 +1615,10 @@ namespace DungeonPlayer
                 nowAgilityFrameCount++;
                 if (nowAgilityFrameCount >= this.nowAgilityRoomCounter)
                 {
-                    agilityRoomTimer_Tick();
-                    return;
+                    if (agilityRoomTimer_Tick())
+                    {
+                        return; // 失敗した時は以下の処理を行わず即座にリターン
+                    }
                 }
             }
 
@@ -1983,8 +1985,7 @@ namespace DungeonPlayer
             else if (Input.GetKeyUp(KeyCode.Alpha8) || Input.GetKeyUp(KeyCode.UpArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha4) || Input.GetKeyUp(KeyCode.LeftArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha6) || Input.GetKeyUp(KeyCode.RightArrow) ||
-                    Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.DownArrow) ||
-                    (Application.platform == RuntimePlatform.Android && !this.arrowDown && !this.arrowUp && !this.arrowLeft && !this.arrowRight))
+                    Input.GetKeyUp(KeyCode.Alpha2) || Input.GetKeyUp(KeyCode.DownArrow))
             {
                 this.detectKeyUp = true; // ただし、iOS/Androidでこれはうまくいかない。
                 CancelKeyDownMovement();
@@ -16040,27 +16041,43 @@ namespace DungeonPlayer
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart)
                 {
-                    this.nowAgilityRoomCounter = 20.0f;
+                    if (!GroundOne.WE.dungeonEvent233_Fail1)
+                    {
+                        this.nowAgilityRoomCounter = 10;
+                    }
+                    else if (!GroundOne.WE.dungeonEvent233_Fail2)
+                    {
+                        this.nowAgilityRoomCounter = 20;
+                    }
+                    else if (!GroundOne.WE.dungeonEvent233_Fail3)
+                    {
+                        this.nowAgilityRoomCounter = 30;
+                    }
+                    else
+                    {
+                        this.nowAgilityRoomCounter = 40;
+                    }
                     this.nowAgilityFrameCount = 0;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart2)
                 {
                     if (!GroundOne.WE.dungeonEvent234_Fail1)
                     {
-                        this.nowAgilityRoomCounter = 300;
+                        this.nowAgilityRoomCounter = 30;
                     }
                     else if (!GroundOne.WE.dungeonEvent234_Fail2)
                     {
-                        this.nowAgilityRoomCounter = 500;
+                        this.nowAgilityRoomCounter = 50;
                     }
                     else if (!GroundOne.WE.dungeonEvent234_Fail3)
                     {
-                        this.nowAgilityRoomCounter = 700;
+                        this.nowAgilityRoomCounter = 70;
                     }
                     else
                     {
-                        this.nowAgilityRoomCounter = 1000;
+                        this.nowAgilityRoomCounter = 100;
                     }
+                    this.nowAgilityFrameCount = 0;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomStart3)
                 {
@@ -16069,6 +16086,7 @@ namespace DungeonPlayer
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomUpdate3)
                 {
                     this.nowAgilityRoomCounter = 75;
+                    this.nowAgilityFrameCount = 0;
                 }
                 else if (currentEvent == MessagePack.ActionEvent.DungeonAgilityRoomNormal4)
                 {
@@ -19033,22 +19051,25 @@ namespace DungeonPlayer
             }
         }
 
-        private void agilityRoomTimer_Tick()
+        private bool agilityRoomTimer_Tick()
         {
             if (!GroundOne.WE.dungeonEvent233_Complete)
             {
                 MessagePack.Message12019_fail(ref nowMessage, ref nowEvent);
                 tapOK();
+                return true;
             }
             else if (!GroundOne.WE.dungeonEvent234_Complete)
             {
                 MessagePack.Message12021_Fail(ref nowMessage, ref nowEvent);
                 tapOK();
+                return true;
             }
             else if (!GroundOne.WE.dungeonEvent235_Complete)
             {
                 MessagePack.Message12024_Fail(ref nowMessage, ref nowEvent);
                 tapOK();
+                return true;
             }
             else if (GroundOne.WE.dungeonEvent236 && !GroundOne.WE.dungeonEvent236_Complete)
             {
@@ -19085,7 +19106,7 @@ namespace DungeonPlayer
 
                     MessagePack.Message12027_Fail(ref nowMessage, ref nowEvent);
                     tapOK();
-                    return;
+                    return true;
                 }
 
                 // 正解タイル更新
@@ -19189,13 +19210,16 @@ namespace DungeonPlayer
                 }
 
                 this.Area4_ShadowTileNum = Method.GetTileNumber(this.Player.transform.position);
-                this.nowAgilityRoomCounter = 3;
+                this.nowAgilityRoomCounter = 1;
+                return false;
             }
             else if (GroundOne.WE.dungeonEvent237 && !GroundOne.WE.dungeonEvent237_Complete)
             {
                 MessagePack.Message12030_Fail(ref nowMessage, ref nowEvent);
                 tapOK();
+                return true;
             }
+            return true;
         }
 
         private void OpenTheDoor(int direction, Vector3 pos)
@@ -19289,6 +19313,12 @@ namespace DungeonPlayer
             this.arrowLeft = false;
             this.arrowRight = true;
         }
+        public void PointerUpArrow()
+        {
+            detectKeyUp = true;
+            CancelKeyDownMovement();
+        }
+
         
         public void CallHomeTown()
         {

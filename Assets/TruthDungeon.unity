@@ -6057,7 +6057,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1408778863}
-          m_MethodName: CancelKeyDownMovement
+          m_MethodName: PointerUpArrow
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6435,7 +6435,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1408778863}
-          m_MethodName: CancelKeyDownMovement
+          m_MethodName: PointerUpArrow
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6629,7 +6629,6 @@ MonoBehaviour:
   NoticeMessage: {fileID: 683747012}
   FirstMessage: {fileID: 228998560}
   SecondMessage: {fileID: 1925291783}
-  updateInterval: 0.5
 --- !u!222 &1408778865
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6931,7 +6930,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1408778863}
-          m_MethodName: CancelKeyDownMovement
+          m_MethodName: PointerUpArrow
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8027,7 +8026,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1408778863}
-          m_MethodName: CancelKeyDownMovement
+          m_MethodName: PointerUpArrow
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

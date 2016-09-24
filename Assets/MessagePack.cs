@@ -8351,9 +8351,18 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：レバーを傾ける方向に文字があるみたいね。どの方向にするの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうだなあ・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
                 }
                 else
                 {
@@ -8408,9 +8417,18 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：レバーを傾ける方向に文字があるみたいね。どの方向にするの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうだなあ・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
                 }
                 else
                 {
@@ -8508,9 +8526,18 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：レバーを傾ける方向に文字があるみたいね。どの方向にするの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうだなあ・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
                 }
                 else
                 {
@@ -8565,9 +8592,18 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：レバーを傾ける方向に文字があるみたいね。どの方向にするの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうだなあ・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
                 }
                 else
                 {
@@ -8652,9 +8688,18 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：レバーを傾ける方向に文字があるみたいね。どの方向にするの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうだなあ・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
                 }
                 else
                 {
@@ -8709,9 +8754,18 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：レバーを傾ける方向に文字があるみたいね。どの方向にするの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうだなあ・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
                 }
                 else
                 {
@@ -8796,9 +8850,18 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：レバーを傾ける方向に文字があるみたいね。どの方向にするの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうだなあ・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
                 }
                 else
                 {
@@ -8853,9 +8916,18 @@ namespace DungeonPlayer
 
                     messageList.Add("アイン：マジかよ！？　すげぇなおい・・・"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
+                    if (GroundOne.WE.AvailableThirdCharacter)
+                    {
+                        messageList.Add("ランディス：オラ。さっさとやれ、ザコが。"); eventList.Add(ActionEvent.None);
 
-                    messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                        messageList.Add("アイン：って、分かったって。ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
+                    else
+                    {
+                        messageList.Add("ラナ：レバーを傾ける方向に文字があるみたいね。どの方向にするの？"); eventList.Add(ActionEvent.None);
+
+                        messageList.Add("アイン：そうだなあ・・・ええっと・・・"); eventList.Add(ActionEvent.None);
+                    }
                 }
                 else
                 {
