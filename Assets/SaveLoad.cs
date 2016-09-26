@@ -578,75 +578,6 @@ namespace DungeonPlayer
                 xmlWriter.WriteEndElement();
                 xmlWriter.WriteWhitespace("\r\n");
 
-
-                // ダンジョン１階の制覇情報
-                // [警告]：作業落とし込みで終わるものの拡張性を考慮した設計に直してください。
-                // after revive
-                //if (this.knownTileInfo != null) // 後編追加
-                //{
-                //    xmlWriter.WriteStartElement("DungeonOneInfo");
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //    for (int ii = 0; ii < Database.DUNGEON_COLUMN * Database.DUNGEON_ROW; ii++)
-                //    {
-                //        xmlWriter.WriteElementString("tileOne" + ii, this.knownTileInfo[ii].ToString());
-                //        xmlWriter.WriteWhitespace("\r\n");
-                //    }
-                //    xmlWriter.WriteEndElement();
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //}
-
-                //if (this.knownTileInfo2 != null) // 後編追加
-                //{
-                //    xmlWriter.WriteStartElement("DungeonTwoInfo");
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //    for (int ii = 0; ii < Database.DUNGEON_COLUMN * Database.DUNGEON_ROW; ii++)
-                //    {
-                //        xmlWriter.WriteElementString("tileTwo" + ii, this.knownTileInfo2[ii].ToString());
-                //        xmlWriter.WriteWhitespace("\r\n");
-                //    }
-                //    xmlWriter.WriteEndElement();
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //}
-
-                //if (this.knownTileInfo3 != null) // 後編追加
-                //{
-                //    xmlWriter.WriteStartElement("DungeonThreeInfo");
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //    for (int ii = 0; ii < Database.DUNGEON_COLUMN * Database.DUNGEON_ROW; ii++)
-                //    {
-                //        xmlWriter.WriteElementString("tileThree" + ii, this.knownTileInfo3[ii].ToString());
-                //        xmlWriter.WriteWhitespace("\r\n");
-                //    }
-                //    xmlWriter.WriteEndElement();
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //}
-
-                //if (this.knownTileInfo4 != null) // 後編追加
-                //{
-                //    xmlWriter.WriteStartElement("DungeonFourInfo");
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //    for (int ii = 0; ii < Database.DUNGEON_COLUMN * Database.DUNGEON_ROW; ii++)
-                //    {
-                //        xmlWriter.WriteElementString("tileFour" + ii, this.knownTileInfo4[ii].ToString());
-                //        xmlWriter.WriteWhitespace("\r\n");
-                //    }
-                //    xmlWriter.WriteEndElement();
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //}
-
-                //if (this.knownTileInfo5 != null) // 後編追加
-                //{
-                //    xmlWriter.WriteStartElement("DungeonFiveInfo");
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //    for (int ii = 0; ii < Database.DUNGEON_COLUMN * Database.DUNGEON_ROW; ii++)
-                //    {
-                //        xmlWriter.WriteElementString("tileFive" + ii, this.knownTileInfo5[ii].ToString());
-                //        xmlWriter.WriteWhitespace("\r\n");
-                //    }
-                //    xmlWriter.WriteEndElement();
-                //    xmlWriter.WriteWhitespace("\r\n");
-                //}
-
                 // s 後編追加
                 if (GroundOne.Truth_KnownTileInfo != null)
                 {
@@ -836,6 +767,7 @@ namespace DungeonPlayer
             }
 
             xml.Load(Method.pathForDocumentsFile(targetFileName));
+            GroundOne.CurrentLoadFileName = targetFileName;
             Debug.Log("ExecLoad 2 " + DateTime.Now);
 
             try
@@ -944,34 +876,7 @@ namespace DungeonPlayer
             // e 後編追加
             Debug.Log("ExecLoad 3 " + DateTime.Now);
 
-            //for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
-            //{
-            //    XmlNodeList temp = xml.GetElementsByTagName("BackPack" + ii.ToString());
-            //    if (temp.Count <= 0)
-            //    {
-            //    }
-            //    else
-            //    {
-            //        foreach (XmlNode node in temp)
-            //        {
-            //            if (node.ParentNode.Name == Database.NODE_MAINPLAYERSTATUS)
-            //            {
-            //                GroundOne.MC.AddBackPack(new ItemBackPack(node.InnerText));
-            //            }
-            //            else if (node.ParentNode.Name == Database.NODE_SECONDPLAYERSTATUS)
-            //            {
-            //                GroundOne.SC.AddBackPack(new ItemBackPack(node.InnerText));
-            //            }
-            //            else if (node.ParentNode.Name == Database.NODE_THIRDPLAYERSTATUS)
-            //            {
-            //                GroundOne.TC.AddBackPack(new ItemBackPack(node.InnerText));
-            //            }
-            //        }
-            //    }
-            //}
-
             // s 後編編集
-
             for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
             {
                 XmlNodeList temp = xml.GetElementsByTagName("BackPack" + ii.ToString());
@@ -1195,27 +1100,21 @@ namespace DungeonPlayer
             Debug.Log("ExecLoad 76: " + list1.Count.ToString() + " " + GroundOne.Truth_KnownTileInfo.Length.ToString());
             Debug.Log(DateTime.Now.ToString());
 
-            // after (もう少し早くならないか？
+            // ここでは、ダンジョンタイルデータのロードは行わない。
+            // DungeonシーンのStartフェーズでLoadKnownTileInfoを呼び出す様にする。
             for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
             {
-                GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
+                GroundOne.Truth_KnownTileInfo[ii] = false;
+                GroundOne.Truth_KnownTileInfo2[ii] = false;
+                GroundOne.Truth_KnownTileInfo3[ii] = false;
+                GroundOne.Truth_KnownTileInfo4[ii] = false;
+                GroundOne.Truth_KnownTileInfo5[ii] = false;
             }
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                GroundOne.Truth_KnownTileInfo2[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonTwoInfo/truthTileTwo" + ii.ToString()).InnerText, null);
-            }
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                GroundOne.Truth_KnownTileInfo3[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonThreeInfo/truthTileThree" + ii.ToString()).InnerText, null);
-            }
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                GroundOne.Truth_KnownTileInfo4[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFourInfo/truthTileFour" + ii.ToString()).InnerText, null);
-            }
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                GroundOne.Truth_KnownTileInfo5[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFiveInfo/truthTileFive" + ii.ToString()).InnerText, null);
-            }
+            GroundOne.LoadKnownTileInfo1 = false;
+            GroundOne.LoadKnownTileInfo2 = false;
+            GroundOne.LoadKnownTileInfo3 = false;
+            GroundOne.LoadKnownTileInfo4 = false;
+            GroundOne.LoadKnownTileInfo5 = false;
             Debug.Log(DateTime.Now.ToString());
             Debug.Log("ExecLoad 8-1 " + DateTime.Now);
 
@@ -1229,6 +1128,41 @@ namespace DungeonPlayer
             Debug.Log("ExecLoad end");
         }
         // move-out(e) 後編追加
+
+        public void LoadKnownTileInfo(int floor)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.Load(Method.pathForDocumentsFile(GroundOne.CurrentLoadFileName));
+
+            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            {
+                if (floor == 1 && GroundOne.LoadKnownTileInfo1 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
+                    GroundOne.LoadKnownTileInfo1 = true;
+                }
+                else if (floor == 2 && GroundOne.LoadKnownTileInfo2 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo2[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonTwoInfo/truthTileTwo" + ii.ToString()).InnerText, null);
+                    GroundOne.LoadKnownTileInfo2 = true;
+                }
+                else if (floor == 3 && GroundOne.LoadKnownTileInfo3 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo3[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonThreeInfo/truthTileThree" + ii.ToString()).InnerText, null);
+                    GroundOne.LoadKnownTileInfo3 = true;
+                }
+                else if (floor == 4 && GroundOne.LoadKnownTileInfo4 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo4[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFourInfo/truthTileFour" + ii.ToString()).InnerText, null);
+                    GroundOne.LoadKnownTileInfo4 = true;
+                }
+                else if (floor == 5 && GroundOne.LoadKnownTileInfo5 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo5[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFiveInfo/truthTileFive" + ii.ToString()).InnerText, null);
+                    GroundOne.LoadKnownTileInfo5 = true;
+                }
+            }
+        }
 
         public void HideAllChild()
         {
