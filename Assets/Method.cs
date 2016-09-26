@@ -1478,6 +1478,41 @@ namespace DungeonPlayer
             Debug.Log("ExecLoad end");
         }
 
+        public static void LoadKnownTileInfo(int floor)
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.Load(Method.pathForDocumentsFile(GroundOne.CurrentLoadFileName));
+
+            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            {
+                if (floor == 1 && GroundOne.LoadKnownTileInfo1 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
+                }
+                else if (floor == 2 && GroundOne.LoadKnownTileInfo2 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo2[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonTwoInfo/truthTileTwo" + ii.ToString()).InnerText, null);
+                }
+                else if (floor == 3 && GroundOne.LoadKnownTileInfo3 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo3[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonThreeInfo/truthTileThree" + ii.ToString()).InnerText, null);
+                }
+                else if (floor == 4 && GroundOne.LoadKnownTileInfo4 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo4[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFourInfo/truthTileFour" + ii.ToString()).InnerText, null);
+                }
+                else if (floor == 5 && GroundOne.LoadKnownTileInfo5 == false)
+                {
+                    GroundOne.Truth_KnownTileInfo5[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFiveInfo/truthTileFive" + ii.ToString()).InnerText, null);
+                }
+            }
+            if (floor == 1) { GroundOne.LoadKnownTileInfo1 = true; }
+            else if (floor == 2) { GroundOne.LoadKnownTileInfo2 = true; }
+            else if (floor == 3) { GroundOne.LoadKnownTileInfo3 = true; }
+            else if (floor == 4) { GroundOne.LoadKnownTileInfo4 = true; }
+            else if (floor == 5) { GroundOne.LoadKnownTileInfo5 = true; }
+        }
+
         // 通常セーブ、現実世界の自動セーブ、タイトルSeekerモードの自動セーブを結合
         public static void AutoSaveTruthWorldEnvironment()
         {

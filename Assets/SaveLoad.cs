@@ -1092,14 +1092,6 @@ namespace DungeonPlayer
             Method.ReloadTruthWorldEnvironment();
             Debug.Log("ExecLoad 75 " + DateTime.Now);
 
-            XmlNodeList list1 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonOneInfo");
-            XmlNodeList list2 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonTwoInfo");
-            XmlNodeList list3 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonThreeInfo");
-            XmlNodeList list4 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFourInfo");
-            XmlNodeList list5 = xml.DocumentElement.SelectNodes("/Body/TruthDungeonFiveInfo");
-            Debug.Log("ExecLoad 76: " + list1.Count.ToString() + " " + GroundOne.Truth_KnownTileInfo.Length.ToString());
-            Debug.Log(DateTime.Now.ToString());
-
             // ここでは、ダンジョンタイルデータのロードは行わない。
             // DungeonシーンのStartフェーズでLoadKnownTileInfoを呼び出す様にする。
             for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
@@ -1128,42 +1120,7 @@ namespace DungeonPlayer
             Debug.Log("ExecLoad end");
         }
         // move-out(e) 後編追加
-
-        public void LoadKnownTileInfo(int floor)
-        {
-            XmlDocument xml = new XmlDocument();
-            xml.Load(Method.pathForDocumentsFile(GroundOne.CurrentLoadFileName));
-
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            {
-                if (floor == 1 && GroundOne.LoadKnownTileInfo1 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
-                    GroundOne.LoadKnownTileInfo1 = true;
-                }
-                else if (floor == 2 && GroundOne.LoadKnownTileInfo2 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo2[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonTwoInfo/truthTileTwo" + ii.ToString()).InnerText, null);
-                    GroundOne.LoadKnownTileInfo2 = true;
-                }
-                else if (floor == 3 && GroundOne.LoadKnownTileInfo3 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo3[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonThreeInfo/truthTileThree" + ii.ToString()).InnerText, null);
-                    GroundOne.LoadKnownTileInfo3 = true;
-                }
-                else if (floor == 4 && GroundOne.LoadKnownTileInfo4 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo4[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFourInfo/truthTileFour" + ii.ToString()).InnerText, null);
-                    GroundOne.LoadKnownTileInfo4 = true;
-                }
-                else if (floor == 5 && GroundOne.LoadKnownTileInfo5 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo5[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFiveInfo/truthTileFive" + ii.ToString()).InnerText, null);
-                    GroundOne.LoadKnownTileInfo5 = true;
-                }
-            }
-        }
-
+        
         public void HideAllChild()
         {
             this.groupYesnoSystemMessage.SetActive(false);

@@ -239,6 +239,7 @@ namespace DungeonPlayer
             this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.PLAYER_MARK);
             this.Player = Instantiate(this.prefab_TileElement, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 
+            Method.LoadKnownTileInfo(GroundOne.WE.DungeonArea);
             if (GroundOne.WE.DungeonArea == 0 || GroundOne.WE.DungeonArea == 1)
             {
                 ReadDungeonTileFromXmlFile(@"DungeonMapping_T_1");
@@ -16044,15 +16045,15 @@ namespace DungeonPlayer
                 {
                     if (!GroundOne.WE.dungeonEvent233_Fail1)
                     {
-                        this.nowAgilityRoomCounter = 10;
+                        this.nowAgilityRoomCounter = 2;
                     }
                     else if (!GroundOne.WE.dungeonEvent233_Fail2)
                     {
-                        this.nowAgilityRoomCounter = 15;
+                        this.nowAgilityRoomCounter = 4;
                     }
                     else if (!GroundOne.WE.dungeonEvent233_Fail3)
                     {
-                        this.nowAgilityRoomCounter = 20;
+                        this.nowAgilityRoomCounter = 6;
                     }
                     else
                     {
