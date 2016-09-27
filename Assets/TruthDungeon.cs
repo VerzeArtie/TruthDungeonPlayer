@@ -8457,12 +8457,15 @@ namespace DungeonPlayer
                         else if (!GroundOne.WE.dungeonEvent219)
                         {
                             MessagePack.Message12003_2(ref this.nowMessage, ref this.nowEvent);
-                            tapOK();                            
+                            tapOK();
                         }
                     #endregion
                     #region "知の部屋、メイン看板、サード：( >10 _6 <7 )  ( <11 ^3 )  ( _3 >7 )"
-                        MessagePack.Message12004(ref this.nowMessage, ref this.nowEvent);
-                        tapOK();
+                        else
+                        {
+                            MessagePack.Message12004(ref this.nowMessage, ref this.nowEvent);
+                            tapOK();
+                        }
                         return true;
                     #endregion
                     #region "知の部屋、フェーズ１"
