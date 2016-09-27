@@ -343,7 +343,7 @@ namespace DungeonPlayer
 
         public void Close_Click()
         {
-            SceneDimension.Back(this);
+            SceneDimension.BackSuddenly(this);
         }
     }
 }
