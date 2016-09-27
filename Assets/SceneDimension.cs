@@ -240,5 +240,17 @@ namespace DungeonPlayer
             }
             Application.UnloadLevel(sceneName);
         }
+        
+        public static void BackSuddenly(MotherForm scene)
+        {
+            Application.UnloadLevel(scene.GetType().Name);
+
+            if (GroundOne.Parent.Count > 0)
+            {
+                MotherForm current = GroundOne.Parent[GroundOne.Parent.Count - 1];
+                GroundOne.Parent.RemoveAt(GroundOne.Parent.Count - 1);
+                current.SceneBack();
+            }
+        }
     }
 }
