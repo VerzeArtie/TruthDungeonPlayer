@@ -3225,9 +3225,9 @@ namespace DungeonPlayer
 
 					messageList.Add("アイン：ッボグゥ・・・なぜ・・・"); eventList.Add(ActionEvent.None);
 
-					messageList.Add("ラナ：ええっと　「下３　上１２　左８」　だから・・・"); eventList.Add(ActionEvent.None);
+					messageList.Add("ラナ：ええっと　「下３０　上１２５６９　左８４７」　だから・・・"); eventList.Add(ActionEvent.None);
 
-					messageList.Add("ラナ：下側通路で３回レバー、上側で１２回レバー、左側で８回レバーやれって事ね♪"); eventList.Add(ActionEvent.None);
+					messageList.Add("ラナ：下側通路でレバーは３０、上側は１２５６９、左側は８４７でやれって事ね♪"); eventList.Add(ActionEvent.None);
 
 					messageList.Add("ラナ：簡単じゃない♪　とっとと行くわよ。ッホラホラ♪"); eventList.Add(ActionEvent.None);
 
@@ -3877,6 +3877,8 @@ namespace DungeonPlayer
             messageList.Add("アイン：・・・"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：看板、見に行こうぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっ・・・このタイミングで戻るの？"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：すまねえな、ちょっと気になってるんだ。すぐソコだし良いだろ？"); eventList.Add(ActionEvent.None);
 
