@@ -29,6 +29,9 @@ namespace DungeonPlayer
         {
             base.Start();
 
+            // debug
+            //GroundOne.SpellSkillName = Database.CATASTROPHE;
+
             this.txtSpellSkillDescription.text = GroundOne.playerName + "は" + TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName) + "を習得した";
 
             this.commandName.text = TruthActionCommand.ConvertToJapanese(GroundOne.SpellSkillName);
@@ -71,8 +74,8 @@ namespace DungeonPlayer
             string ARCHTYPE_PHISICAL = "開放型";
             string ARCHTYPE_INNER_MENTAL = "内在型";
 
-            string SKILL_ATTRIBUTE_TEXT = "スキル属性";
-            string SPELL_ATTRIBUTE_TEXT = "スペル属性";
+            string SKILL_ATTRIBUTE_TEXT = "スキル";
+            string SPELL_ATTRIBUTE_TEXT = "スペル";
 
             string ATTRIBUTE_LIGHT = "--- 聖 ---";
             string ATTRIBUTE_SHADOW = "--- 闇 ---";

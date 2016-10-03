@@ -12,7 +12,7 @@ namespace DungeonPlayer
     public class ControlSQL : MonoBehaviour
     {
         // debug
-        private bool DebugDisable = true;
+        private bool DebugDisable = false;
 
         public string connection = string.Empty;
 
