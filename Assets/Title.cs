@@ -28,6 +28,7 @@ namespace DungeonPlayer
         public Text account;
 
         // debug
+        public Text DebugLevel;
         public Text DebugStrength;
         public Text DebugAgility;
         public Text DebugIntelligence;
@@ -42,7 +43,8 @@ namespace DungeonPlayer
         public override void Start()
         {
             base.Start();
-            if (GroundOne.EnableBGM)
+            LoadGameSetting();
+            //if (GroundOne.EnableBGM > 0.0f)
             {
                 GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin); // 後編追加    
             }
@@ -73,7 +75,28 @@ namespace DungeonPlayer
                 GroupMenu.SetActive(false);
             }
         }
-        
+
+        private void LoadGameSetting()
+        {
+            try
+            {
+                XmlDocument xml = new XmlDocument();
+                xml.Load(Database.GameSettingFileName);
+                XmlNodeList node = xml.GetElementsByTagName("EnableBGM");
+                GroundOne.EnableBGM = Convert.ToInt32(node[0].InnerText);
+                XmlNodeList node2 = xml.GetElementsByTagName("EnableSoundEffect");
+                GroundOne.EnableSoundEffect = Convert.ToInt32(node2[0].InnerText);
+                //XmlNodeList node3 = xml.GetElementsByTagName("BattleSpeed");
+                //this.BattleSpeed = Convert.ToInt32(node3[0].InnerText);
+                //XmlNodeList node4 = xml.GetElementsByTagName("Difficulty");
+                //this.Difficulty = Convert.ToInt32(node4[0].InnerText);
+                //GroundOne.Difficulty = this.Difficulty;
+                //XmlNodeList node5 = xml.GetElementsByTagName("StoryMode"); // 後編追加
+                //this.StoryMode = Convert.ToInt32(node5[0].InnerText); // 後編追加
+            }
+            catch { }
+        }
+
         public void enemy_click(Text txtName)
         {
             GroundOne.WE.AvailableMixSpellSkill = true;
@@ -88,6 +111,16 @@ namespace DungeonPlayer
             GroundOne.MC.Stamina = Convert.ToInt32(DebugStamina.text);
             GroundOne.MC.Mind = Convert.ToInt32(DebugMind.text);
             GroundOne.MC.Dead = false;
+            //GroundOne.MC.Accessory = new ItemBackPack(Database.EPIC_ADILRING_OF_BLUE_BURN);
+            GroundOne.MC.Level = 0;
+            GroundOne.MC.BaseLife = 0;
+            GroundOne.MC.BaseMana = 0;
+            for (int ii = 0; ii < Convert.ToInt32(DebugLevel.text); ii++)
+            {
+                GroundOne.MC.BaseLife += GroundOne.MC.LevelUpLifeTruth;
+                GroundOne.MC.BaseMana += GroundOne.MC.LevelUpManaTruth;
+                GroundOne.MC.Level++;
+            }
 
             GroundOne.MC.FreshHeal = true;
             GroundOne.MC.Protection = true;
@@ -242,6 +275,7 @@ namespace DungeonPlayer
                 GroundOne.WE.AvailableSecondCharacter = true;
                 GroundOne.SC.FirstName = Database.RANA_AMILIA;
                 GroundOne.SC.FullName = Database.RANA_AMILIA_FULL;
+                GroundOne.SC.Level = Convert.ToInt32(DebugLevel.text);
                 GroundOne.SC.Strength = Convert.ToInt32(DebugStrength.text);
                 GroundOne.SC.Agility = Convert.ToInt32(DebugAgility.text);
                 GroundOne.SC.Intelligence = Convert.ToInt32(DebugIntelligence.text);
@@ -404,6 +438,7 @@ namespace DungeonPlayer
                 GroundOne.WE.AvailableThirdCharacter = true;
                 GroundOne.TC.FirstName = Database.OL_LANDIS;
                 GroundOne.TC.FullName = Database.OL_LANDIS_FULL;
+                GroundOne.TC.Level = Convert.ToInt32(DebugLevel.text);
                 GroundOne.TC.Strength = Convert.ToInt32(DebugStrength.text);
                 GroundOne.TC.Agility = Convert.ToInt32(DebugAgility.text);
                 GroundOne.TC.Intelligence = Convert.ToInt32(DebugIntelligence.text);
@@ -649,6 +684,7 @@ namespace DungeonPlayer
         public void Config_Click()
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_CONFIG, String.Empty, String.Empty);
+            SceneDimension.CallGameSetting(this);
         }
 
         public void Exit_Click()
