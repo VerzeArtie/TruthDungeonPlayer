@@ -58,8 +58,8 @@ namespace DungeonPlayer
         public static GameObject bgm = null; // BGM音源
         public static AudioSource bgmSource = null; // BGMソース
 
-        public static bool EnableBGM = false; // ミュージック、デフォルトはオン // debug
-        public static bool EnableSoundEffect = false; // 効果音、デフォルトはオン // debug
+        public static int EnableBGM = 100; // ミュージック、デフォルトは100 // debug
+        public static int EnableSoundEffect = 100; // 効果音、デフォルトは100 // debug
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 
@@ -606,11 +606,17 @@ namespace DungeonPlayer
         #region "BGM再生と効果音関連"
         public static void PlaySoundEffect(string soundName)
         {
-            if (GroundOne.EnableSoundEffect)
+            //if (GroundOne.EnableSoundEffect > 0.0f)
             {
                 soundSource.clip = Resources.Load<AudioClip>(Database.BaseSoundFolder + soundName);
+                soundSource.volume = (float)((float)GroundOne.EnableSoundEffect / 100.0f);
                 soundSource.Play();
             }
+        }
+
+        public static void ChangeSoundEffectVolume(float vol)
+        {
+            soundSource.volume = vol;
         }
 
         public static void PlayDungeonMusic(string targetMusicName, int loopBegin)
@@ -619,11 +625,12 @@ namespace DungeonPlayer
         }
         public static void PlayDungeonMusic(string targetMusicName, string targetMusicName2, int loopBegin)
         {
-            if (GroundOne.EnableBGM)
+            //if (GroundOne.EnableBGM > 0.0f)
             {
                 bgmSource.Stop();
                 bgmSource.clip = Resources.Load<AudioClip>(Database.BaseMusicFolder + targetMusicName);
                 bgmSource.loop = true;
+                bgmSource.volume = (float)((float)GroundOne.EnableBGM / 100.0f);
                 bgmSource.Play();
             }
         }
@@ -631,6 +638,11 @@ namespace DungeonPlayer
         public static void StopDungeonMusic()
         {
             bgmSource.Stop();
+        }
+
+        public static void ChangeDungeonMusicVolume(float vol)
+        {
+            bgmSource.volume = vol;
         }
 
         public static void TempStopDungeonMusic()

@@ -34,6 +34,12 @@ namespace DungeonPlayer
             GroundOne.Parent.Clear();
         }
 
+        public static void CallGameSetting( MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.GameSetting);
+        }
+
         public static void CallTruthBattleEnemy(string sceneName, bool duel, bool hiSpeed, bool final, bool lifecount)
         {
             GroundOne.DuelMode = duel;

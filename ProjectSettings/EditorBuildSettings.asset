@@ -8,6 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Title.unity
   - enabled: 1
+    path: Assets/GameSetting.unity
+  - enabled: 1
     path: Assets/TruthBattleSetting.unity
   - enabled: 1
     path: Assets/TruthBattleEnemy.unity
