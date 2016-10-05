@@ -1447,9 +1447,10 @@ namespace DungeonPlayer
             // プレイヤースキル・魔法習得に応じて、アクションボタンを登録
             UpdateBattleCommandSetting(player, actionButton, sorceryMark);
 
+            // ボス戦の場合、ネームラベルやBUFFの表示場所を変更します。
             #region "敵側、名前の色と各ＵＩポジションを再配置"
-            //if (player == ec1 || player == ec2 || player == ec3)
-            //{
+            if (player == ec1 || player == ec2 || player == ec3)
+            {
             //    if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Blue)
             //    {
             //        player.labelName.ForeColor = Color.Blue;
@@ -1474,25 +1475,60 @@ namespace DungeonPlayer
             //        }
 
             //    }
-            //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Gold)
-            //    {
-            //        player.labelName.ForeColor = Color.DarkOrange;
-            //        player.labelCurrentInstantPoint.BackColor = Color.Gold;
+                if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Gold)
+                {
+                    if (player.FirstName == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
+                    {
+                        player.labelName.text = "【一階の守護者】\r\n\r\n絡みつくフランシス";
+                    }
+                    else if (player.FirstName == Database.ENEMY_BOSS_LEVIATHAN)
+                    {
+                        player.labelName.text = "【二階の守護者】\r\n\r\n大海蛇リヴィアサン";
+                    }
+                    else if (player.FirstName == Database.ENEMY_BOSS_HOWLING_SEIZER)
+                    {
+                        player.labelName.text = "【三階の守護者】\r\n\r\n恐鳴主ハウリング・シーザー";
+                    }
+                    else if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1)
+                    {
+                        player.labelName.text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【瘴気】";
+                    }
+                    else if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2)
+                    {
+                        player.labelName.text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【無音】";
+                    }
+                    else if (player.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_3)
+                    {
+                        player.labelName.text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【深淵】";
+                    }
+                    else if (player.FirstName == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
+                    {
+                        player.labelName.text = "【五階の守護者】\r\n\r\n支　配　竜";
+                        //player.labelCurrentSkillPoint.Visible = false;
+                        //player.labelCurrentManaPoint.Visible = false;
+                    }
+                    player.labelName.color = UnityColor.DarkOrange;
 
-            //        // 640x480時代
-            //        // ボス戦の場合、ネームラベルやBUFFの表示場所を変更します。
-
-            //        //player.labelName.ForeColor = Color.DarkOrange;
-            //        //player.labelCurrentInstantPoint.BackColor = Color.Gold;
-
-            //        //if (player.Name == Database.ENEMY_BOSS_KARAMITUKU_FLANSIS)
-            //        //{
-            //        //    player.labelName.Text = "【１階の守護者】\r\n\r\n絡みつくフランシス";
-            //        //}
-            //        //if (player.Name == Database.ENEMY_BOSS_LEVIATHAN)
-            //        //{
-            //        //    player.labelName.Text = "【２階の守護者】\r\n\r\n大海蛇リヴィアサン";
-            //        //}
+                    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
+                    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
+                    player.labelCurrentLifePoint.fontSize = 42;
+                    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
+                    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                    player.labelName.fontSize = 28;
+                    player.labelName.alignment = TextAnchor.MiddleCenter;
+                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(115, 180, 0);
+                    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
+                    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                    player.ActionLabel.fontSize = 24;
+                    player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 55, 0);
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 30, 0);
+                    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                    player.labelCurrentInstantPoint.color = UnityColor.Gold;
 
             //        //player.MainObjectButton.Location = new Point(400, 182);
             //        //player.labelLife.Location = new Point(510, 186);
@@ -1559,35 +1595,14 @@ namespace DungeonPlayer
             //        player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
             //        player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 18, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
 
-            //        if (player.Name == Database.ENEMY_BOSS_HOWLING_SEIZER)
-            //        {
-            //            player.labelName.Text = "【三階の守護者】\r\n\r\n恐鳴主ハウリング・シーザー";
-            //        }
+
             //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_3)
             //        {
             //            player.labelCurrentManaPoint.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_MANA_LABEL_LOC_Y);
             //            player.labelCurrentManaPoint.Size = new Size(TruthLayout.BOSS_MANA_LABEL_WIDTH, TruthLayout.BOSS_MANA_LABEL_HEIGHT);
             //            player.labelCurrentManaPoint.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
             //        }
-            //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_1)
-            //        {
-            //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【瘴気】";
-            //        }
-            //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_2)
-            //        {
-            //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【無音】";
-            //        }
-            //        else if (player.Name == Database.ENEMY_BOSS_LEGIN_ARZE_3)
-            //        {
-            //            player.labelName.Text = "【四階の守護者】\r\n\r\n闇焔レギィン・アーゼ【深淵】";
-            //        }
-            //        else if (player.Name == Database.ENEMY_BOSS_BYSTANDER_EMPTINESS)
-            //        {
-            //            player.labelName.Text = "【五階の守護者】\r\n\r\n支　配　竜";
-            //            //player.labelCurrentSkillPoint.Visible = false;
-            //            //player.labelCurrentManaPoint.Visible = false;
-            //        }
-            //    }
+                }
             //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Purple)
             //    {
             //        player.labelName.ForeColor = Color.Purple;
@@ -1646,7 +1661,7 @@ namespace DungeonPlayer
             //            player.labelCurrentSpecialInstant.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
             //        }
             //    }
-            //}
+            }
             #endregion
 
             // 敵側、初期BUFFをセットアップ
@@ -1669,7 +1684,7 @@ namespace DungeonPlayer
                 player.DeadPlayer();
             }
         }
-
+        
         const int CURRENT_ACTION_NUM = 9;
         const int BASIC_ACTION_NUM = 8; // 基本行動
         const int MIX_ACTION_NUM = 45; // [警告] 暫定、本来Databaseに記載するべき
