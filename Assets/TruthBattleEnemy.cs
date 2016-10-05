@@ -1512,6 +1512,10 @@ namespace DungeonPlayer
                     player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
                     player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
                     player.labelCurrentLifePoint.fontSize = 42;
+                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                    player.CriticalLabel.fontSize = 38;
+                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                    player.DamageLabel.fontSize = 34;
                     player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
                     player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
                     player.labelName.fontSize = 28;
@@ -1529,19 +1533,6 @@ namespace DungeonPlayer
                     player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
                     player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
                     player.labelCurrentInstantPoint.color = UnityColor.Gold;
-
-            //        //player.MainObjectButton.Location = new Point(400, 182);
-            //        //player.labelLife.Location = new Point(510, 186);
-            //        //player.CriticalLabel.Location = new Point(393, 190);
-            //        //player.DamageLabel.Location = new Point(393, 213);
-            //        //player.ActionLabel.Location = new Point(503, 223);
-            //        //player.labelName.Location = new Point(430, 115);
-            //        //player.labelName.Size = new System.Drawing.Size(200, 100);
-            //        //player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 14, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
-            //        //player.labelCurrentInstantPoint.Location = new Point(400, 250);
-            //        //player.labelCurrentInstantPoint.Size = new System.Drawing.Size(200, 30);
-            //        //player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
-            //        //player.BuffPanel.Location = new Point(381, 300);
 
             //        //if (player.Name == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
             //        //{
