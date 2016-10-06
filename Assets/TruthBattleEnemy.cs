@@ -1449,7 +1449,68 @@ namespace DungeonPlayer
 
             // ボス戦の場合、ネームラベルやBUFFの表示場所を変更します。
             #region "敵側、名前の色と各ＵＩポジションを再配置"
-            if (player == ec1 || player == ec2 || player == ec3)
+            if (GroundOne.DuelMode)
+            {
+                if (player == ec1 || player == ec2 || player == ec3)
+                {
+                    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(640, 170, 0);
+                    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(540, 50);
+                    player.labelCurrentLifePoint.fontSize = 36;
+                    player.labelCurrentLifePoint.alignment = TextAnchor.MiddleLeft;
+                    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(640, 220, 0);
+                    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(560, 45);
+                    player.labelName.fontSize = 30;
+                    player.labelName.alignment = TextAnchor.MiddleCenter;
+                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, 24, 0);
+                    player.CriticalLabel.fontSize = 26;
+                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, -26, 0);
+                    player.DamageLabel.fontSize = 22;
+                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(130, 60, 0);
+                    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(635, 120, 0);
+                    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 30);
+                    player.ActionLabel.fontSize = 20;
+                    player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(80, 140, 0);
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(560, 10, 0);
+                    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(640, 70, 0);
+                    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 60);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(640, 25, 0);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 30);
+                }
+                else
+                {
+                    player.labelName.text = player.FullName;
+                    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(-640, 170, 0);
+                    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(540, 50);
+                    player.labelCurrentLifePoint.fontSize = 36;
+                    player.labelCurrentLifePoint.alignment = TextAnchor.MiddleRight;
+                    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(-640, 220, 0);
+                    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(560, 45);
+                    player.labelName.fontSize = 30;
+                    player.labelName.alignment = TextAnchor.MiddleCenter;
+                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, 24, 0);
+                    player.CriticalLabel.fontSize = 26;
+                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(0, -26, 0);
+                    player.DamageLabel.fontSize = 22;
+                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(-130, 60, 0);
+                    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(-635, 120, 0);
+                    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 30);
+                    player.ActionLabel.fontSize = 20;
+                    player.ActionLabel.alignment = TextAnchor.MiddleRight;
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().pivot = new Vector2(1, 0.5f);
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(-80, 140, 0);
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(560, 10, 0);
+                    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(-640, 70, 0);
+                    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 60);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().pivot = new Vector2(0, 0.5f);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(-640, 25, 0);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(450, 30);
+                }
+            }
+
+            else if (player == ec1 || player == ec2 || player == ec3)
             {
             //    if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Blue)
             //    {
@@ -1512,15 +1573,15 @@ namespace DungeonPlayer
                     player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
                     player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
                     player.labelCurrentLifePoint.fontSize = 42;
-                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
-                    player.CriticalLabel.fontSize = 38;
-                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
-                    player.DamageLabel.fontSize = 34;
                     player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
                     player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
                     player.labelName.fontSize = 28;
                     player.labelName.alignment = TextAnchor.MiddleCenter;
-                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(115, 180, 0);
+                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                    player.CriticalLabel.fontSize = 38;
+                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                    player.DamageLabel.fontSize = 34;
+                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(165, 130, 0);
                     player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
                     player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
                     player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
