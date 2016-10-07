@@ -352,6 +352,7 @@ namespace DungeonPlayer
                     duelWin = true;
                 }
                 GroundOne.BattleResult = GroundOne.battleResult.None;
+                Method.CopyShadowToMain();
 
                 // DUEL対戦相手、および、勝敗結果に応じた処理
                 if (GroundOne.enemyName1 == Database.DUEL_OL_LANDIS)
@@ -1558,6 +1559,8 @@ namespace DungeonPlayer
 
         private void BattleStart(string playerName)
         {
+            Method.CreateShadowData();
+
             GroundOne.enemyName1 = playerName;
             GroundOne.enemyName2 = string.Empty;
             GroundOne.enemyName3 = string.Empty;

@@ -39,7 +39,6 @@ namespace DungeonPlayer
             GroundOne.TC.Accessory = GroundOne.ShadowTC.Accessory;
             GroundOne.TC.Accessory2 = GroundOne.ShadowTC.Accessory2;
 
-            // after 再戦時、ポーションのスタック数などを実際に減らしてみて、数が減ったままにならないかどうか確認。
             if (GroundOne.WE.AvailableFirstCharacter)
             {
                 GroundOne.MC.DeleteBackPackAll();

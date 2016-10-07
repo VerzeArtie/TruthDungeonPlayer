@@ -7044,7 +7044,14 @@ namespace DungeonPlayer
         {
             this.backpack = null;
             this.backpack = new ItemBackPack[Database.MAX_BACKPACK_SIZE]; // 後編編集
-            this.backpack = item;
+            for (int ii = 0; ii < item.Length; ii++)
+            {
+                if (item[ii] != null)
+                {
+                    this.backpack[ii] = new ItemBackPack(item[ii].Name);
+                    this.backpack[ii].StackValue = item[ii].StackValue;
+                }
+            }
         }
 
         /// <summary>
