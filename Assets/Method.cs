@@ -18,6 +18,350 @@ namespace DungeonPlayer
             Lottery,
         }
 
+        // キャラクターシャドウデータをキャラクター本体データに戻す。
+        public static void CopyShadowToMain()
+        {
+            GroundOne.MC.MainWeapon = GroundOne.ShadowMC.MainWeapon;
+            GroundOne.MC.SubWeapon = GroundOne.ShadowMC.SubWeapon;
+            GroundOne.MC.MainArmor = GroundOne.ShadowMC.MainArmor;
+            GroundOne.MC.Accessory = GroundOne.ShadowMC.Accessory;
+            GroundOne.MC.Accessory2 = GroundOne.ShadowMC.Accessory2;
+
+            GroundOne.SC.MainWeapon = GroundOne.ShadowSC.MainWeapon;
+            GroundOne.SC.SubWeapon = GroundOne.ShadowSC.SubWeapon;
+            GroundOne.SC.MainArmor = GroundOne.ShadowSC.MainArmor;
+            GroundOne.SC.Accessory = GroundOne.ShadowSC.Accessory;
+            GroundOne.SC.Accessory2 = GroundOne.ShadowSC.Accessory2;
+
+            GroundOne.TC.MainWeapon = GroundOne.ShadowTC.MainWeapon;
+            GroundOne.TC.SubWeapon = GroundOne.ShadowTC.SubWeapon;
+            GroundOne.TC.MainArmor = GroundOne.ShadowTC.MainArmor;
+            GroundOne.TC.Accessory = GroundOne.ShadowTC.Accessory;
+            GroundOne.TC.Accessory2 = GroundOne.ShadowTC.Accessory2;
+
+            // after 再戦時、ポーションのスタック数などを実際に減らしてみて、数が減ったままにならないかどうか確認。
+            if (GroundOne.WE.AvailableFirstCharacter)
+            {
+                GroundOne.MC.DeleteBackPackAll();
+                ItemBackPack[] tempBackPack = GroundOne.ShadowMC.GetBackPackInfo();
+                for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
+                {
+                    if (tempBackPack[ii] != null)
+                    {
+                        int stack = tempBackPack[ii].StackValue;
+                        for (int jj = 0; jj < stack; jj++)
+                        {
+                            GroundOne.MC.AddBackPack(tempBackPack[ii]);
+                        }
+                    }
+                }
+            }
+
+            if (GroundOne.WE.AvailableSecondCharacter)
+            {
+                GroundOne.SC.DeleteBackPackAll();
+                ItemBackPack[] tempBackPack = GroundOne.ShadowSC.GetBackPackInfo();
+                for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
+                {
+                    if (tempBackPack[ii] != null)
+                    {
+                        int stack = tempBackPack[ii].StackValue;
+                        for (int jj = 0; jj < stack; jj++)
+                        {
+                            GroundOne.SC.AddBackPack(tempBackPack[ii]);
+                        }
+                    }
+                }
+            }
+
+            if (GroundOne.WE.AvailableThirdCharacter)
+            {
+                GroundOne.TC.DeleteBackPackAll();
+                ItemBackPack[] tempBackPack = GroundOne.ShadowTC.GetBackPackInfo();
+                for (int ii = 0; ii < Database.MAX_BACKPACK_SIZE; ii++)
+                {
+                    if (tempBackPack[ii] != null)
+                    {
+                        int stack = tempBackPack[ii].StackValue;
+                        for (int jj = 0; jj < stack; jj++)
+                        {
+                            GroundOne.TC.AddBackPack(tempBackPack[ii]);
+                        }
+                    }
+                }
+            }
+
+            Type type = GroundOne.MC.GetType();
+            foreach (PropertyInfo pi in type.GetProperties())
+            {
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.MC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowMC, null)), null);
+                        pi.SetValue(GroundOne.SC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowSC, null)), null);
+                        pi.SetValue(GroundOne.TC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowTC, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.MC, (string)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowMC, null)), null);
+                        pi.SetValue(GroundOne.SC, (string)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowSC, null)), null);
+                        pi.SetValue(GroundOne.TC, (string)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowTC, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.MC, (System.Boolean)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowMC, null)), null);
+                        pi.SetValue(GroundOne.SC, (System.Boolean)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowSC, null)), null);
+                        pi.SetValue(GroundOne.TC, (System.Boolean)(type.GetProperty(pi.Name).GetValue(GroundOne.ShadowTC, null)), null);
+                    }
+                    catch { }
+                }
+                // s 後編追加
+                else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.MC, (MainCharacter.AdditionalSpellType)(Enum.Parse(typeof(MainCharacter.AdditionalSpellType), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowMC, null).ToString())), null);
+                        pi.SetValue(GroundOne.SC, (MainCharacter.AdditionalSpellType)(Enum.Parse(typeof(MainCharacter.AdditionalSpellType), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowSC, null).ToString())), null);
+                        pi.SetValue(GroundOne.TC, (MainCharacter.AdditionalSpellType)(Enum.Parse(typeof(MainCharacter.AdditionalSpellType), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowTC, null).ToString())), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(MainCharacter.AdditionalSkillType))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.MC, (MainCharacter.AdditionalSkillType)(Enum.Parse(typeof(MainCharacter.AdditionalSkillType), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowMC, null).ToString())), null);
+                        pi.SetValue(GroundOne.SC, (MainCharacter.AdditionalSkillType)(Enum.Parse(typeof(MainCharacter.AdditionalSkillType), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowSC, null).ToString())), null);
+                        pi.SetValue(GroundOne.TC, (MainCharacter.AdditionalSkillType)(Enum.Parse(typeof(MainCharacter.AdditionalSkillType), type.GetProperty(pi.Name).GetValue(GroundOne.ShadowTC, null).ToString())), null);
+                    }
+                    catch { }
+                }
+                // e 後編追加
+            }
+
+            Type type2 = GroundOne.WE.GetType();
+            foreach (PropertyInfo pi in type2.GetProperties())
+            {
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE, (System.Int32)(type2.GetProperty(pi.Name).GetValue(GroundOne.shadowWE, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE, (string)(type2.GetProperty(pi.Name).GetValue(GroundOne.shadowWE, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE, (System.Boolean)(type2.GetProperty(pi.Name).GetValue(GroundOne.shadowWE, null)), null);
+                    }
+                    catch { }
+                }
+            }
+
+            Type type3 = GroundOne.WE2.GetType();
+            foreach (PropertyInfo pi in type3.GetProperties())
+            {
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, (System.Int32)(type3.GetProperty(pi.Name).GetValue(GroundOne.shadowWE2, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, (string)(type3.GetProperty(pi.Name).GetValue(GroundOne.shadowWE2, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.WE2, (System.Boolean)(type3.GetProperty(pi.Name).GetValue(GroundOne.shadowWE2, null)), null);
+                    }
+                    catch { }
+                }
+            }
+        }
+
+        // キャラクター本体データからキャラクターシャドウデータを生成する。
+        public static void CreateShadowData()
+        {
+            GameObject shadowObjMC = new GameObject();
+            GroundOne.ShadowMC = shadowObjMC.AddComponent<MainCharacter>();
+
+            GameObject shadowObjSC = new GameObject();
+            GroundOne.ShadowSC = shadowObjSC.AddComponent<MainCharacter>();
+
+            GameObject shadowObjTC = new GameObject();
+            GroundOne.ShadowTC = shadowObjTC.AddComponent<MainCharacter>();
+
+            GroundOne.ShadowMC.MainWeapon = GroundOne.MC.MainWeapon;
+            GroundOne.ShadowMC.SubWeapon = GroundOne.MC.SubWeapon;
+            GroundOne.ShadowMC.MainArmor = GroundOne.MC.MainArmor;
+            GroundOne.ShadowMC.Accessory = GroundOne.MC.Accessory;
+            GroundOne.ShadowMC.Accessory2 = GroundOne.MC.Accessory2;
+            GroundOne.ShadowMC.ReplaceBackPack(GroundOne.MC.GetBackPackInfo());
+
+            GroundOne.ShadowSC.MainWeapon = GroundOne.SC.MainWeapon;
+            GroundOne.ShadowSC.SubWeapon = GroundOne.SC.SubWeapon;
+            GroundOne.ShadowSC.MainArmor = GroundOne.SC.MainArmor;
+            GroundOne.ShadowSC.Accessory = GroundOne.SC.Accessory;
+            GroundOne.ShadowSC.Accessory2 = GroundOne.SC.Accessory2;
+            GroundOne.ShadowSC.ReplaceBackPack(GroundOne.SC.GetBackPackInfo());
+
+            GroundOne.ShadowTC.MainWeapon = GroundOne.TC.MainWeapon;
+            GroundOne.ShadowTC.SubWeapon = GroundOne.TC.SubWeapon;
+            GroundOne.ShadowTC.MainArmor = GroundOne.TC.MainArmor;
+            GroundOne.ShadowTC.Accessory = GroundOne.TC.Accessory;
+            GroundOne.ShadowTC.Accessory2 = GroundOne.TC.Accessory2;
+            GroundOne.ShadowTC.ReplaceBackPack(GroundOne.TC.GetBackPackInfo());
+
+            Type type = GroundOne.MC.GetType();
+            foreach (PropertyInfo pi in type.GetProperties())
+            {
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.ShadowMC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.MC, null)), null);
+                        pi.SetValue(GroundOne.ShadowSC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.SC, null)), null);
+                        pi.SetValue(GroundOne.ShadowTC, (System.Int32)(type.GetProperty(pi.Name).GetValue(GroundOne.TC, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.ShadowMC, (string)(type.GetProperty(pi.Name).GetValue(GroundOne.MC, null)), null);
+                        pi.SetValue(GroundOne.ShadowSC, (string)(type.GetProperty(pi.Name).GetValue(GroundOne.SC, null)), null);
+                        pi.SetValue(GroundOne.ShadowTC, (string)(type.GetProperty(pi.Name).GetValue(GroundOne.TC, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.ShadowMC, (System.Boolean)(type.GetProperty(pi.Name).GetValue(GroundOne.MC, null)), null);
+                        pi.SetValue(GroundOne.ShadowSC, (System.Boolean)(type.GetProperty(pi.Name).GetValue(GroundOne.SC, null)), null);
+                        pi.SetValue(GroundOne.ShadowTC, (System.Boolean)(type.GetProperty(pi.Name).GetValue(GroundOne.TC, null)), null);
+                    }
+                    catch { }
+                }
+                // s 後編追加
+                else if (pi.PropertyType == typeof(MainCharacter.AdditionalSpellType))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.ShadowMC, (MainCharacter.AdditionalSpellType)(Enum.Parse(typeof(MainCharacter.AdditionalSpellType), type.GetProperty(pi.Name).GetValue(GroundOne.MC, null).ToString())), null);
+                        pi.SetValue(GroundOne.ShadowSC, (MainCharacter.AdditionalSpellType)(Enum.Parse(typeof(MainCharacter.AdditionalSpellType), type.GetProperty(pi.Name).GetValue(GroundOne.SC, null).ToString())), null);
+                        pi.SetValue(GroundOne.ShadowTC, (MainCharacter.AdditionalSpellType)(Enum.Parse(typeof(MainCharacter.AdditionalSpellType), type.GetProperty(pi.Name).GetValue(GroundOne.TC, null).ToString())), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(MainCharacter.AdditionalSkillType))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.ShadowMC, (MainCharacter.AdditionalSkillType)(Enum.Parse(typeof(MainCharacter.AdditionalSkillType), type.GetProperty(pi.Name).GetValue(GroundOne.MC, null).ToString())), null);
+                        pi.SetValue(GroundOne.ShadowSC, (MainCharacter.AdditionalSkillType)(Enum.Parse(typeof(MainCharacter.AdditionalSkillType), type.GetProperty(pi.Name).GetValue(GroundOne.SC, null).ToString())), null);
+                        pi.SetValue(GroundOne.ShadowTC, (MainCharacter.AdditionalSkillType)(Enum.Parse(typeof(MainCharacter.AdditionalSkillType), type.GetProperty(pi.Name).GetValue(GroundOne.TC, null).ToString())), null);
+                    }
+                    catch { }
+                }
+                // e 後編追加
+            }
+
+            Type type2 = GroundOne.WE.GetType();
+            foreach (PropertyInfo pi in type2.GetProperties())
+            {
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.shadowWE, (System.Int32)(type2.GetProperty(pi.Name).GetValue(GroundOne.WE, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.shadowWE, (string)(type2.GetProperty(pi.Name).GetValue(GroundOne.WE, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.shadowWE, (System.Boolean)(type2.GetProperty(pi.Name).GetValue(GroundOne.WE, null)), null);
+                    }
+                    catch { }
+                }
+            }
+
+            Type type3 = GroundOne.WE2.GetType();
+            foreach (PropertyInfo pi in type3.GetProperties())
+            {
+                // [警告]：catch構文はSetプロパティがない場合だが、それ以外のケースも見えなくなってしまうので要分析方法検討。
+                if (pi.PropertyType == typeof(System.Int32))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.shadowWE2, (System.Int32)(type3.GetProperty(pi.Name).GetValue(GroundOne.WE2, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.String))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.shadowWE2, (string)(type3.GetProperty(pi.Name).GetValue(GroundOne.WE2, null)), null);
+                    }
+                    catch { }
+                }
+                else if (pi.PropertyType == typeof(System.Boolean))
+                {
+                    try
+                    {
+                        pi.SetValue(GroundOne.shadowWE2, (System.Boolean)(type3.GetProperty(pi.Name).GetValue(GroundOne.WE2, null)), null);
+                    }
+                    catch { }
+                }
+            }
+        }
+        
         public static int GetMaxLevel()
         {
             if (GroundOne.WE.TruthCompleteArea1 == false) { return Database.CHARACTER_MAX_LEVEL1; }
