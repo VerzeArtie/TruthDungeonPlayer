@@ -578,6 +578,14 @@ namespace DungeonPlayer
                 xmlWriter.WriteEndElement();
                 xmlWriter.WriteWhitespace("\r\n");
 
+                // 読み込んでいないダンジョンタイルデータはここで読み込み。
+                // セーブ処理が遅くなってしまうが、今はこれで行くしかない。
+                Method.LoadKnownTileInfo(1);
+                Method.LoadKnownTileInfo(2);
+                Method.LoadKnownTileInfo(3);
+                Method.LoadKnownTileInfo(4);
+                Method.LoadKnownTileInfo(5);
+
                 // s 後編追加
                 if (GroundOne.Truth_KnownTileInfo != null)
                 {
