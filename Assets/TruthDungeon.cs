@@ -203,7 +203,8 @@ namespace DungeonPlayer
             base.Start();
 
             GroundOne.SQL.UpdateArchivement(Database.ARCHIVEMENT_FIRST_DUNGEON);
-            if (Application.platform == RuntimePlatform.Android)
+            if (Application.platform == RuntimePlatform.Android ||
+                Application.platform == RuntimePlatform.IPhonePlayer)
             {
                 MOVE_INTERVAL = 10;
                 this.groupArrow.SetActive(true);
