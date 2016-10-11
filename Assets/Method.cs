@@ -713,6 +713,11 @@ namespace DungeonPlayer
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
                 // なし
+                string directory = Method.PathForSaveFile();
+                if (System.IO.Directory.Exists(directory) == false)
+                {
+                    System.IO.Directory.CreateDirectory(directory);
+                }
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
@@ -736,7 +741,8 @@ namespace DungeonPlayer
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')); // after (ios)
+                //return Application.persistentDataPath.Substring(0, Application.persistentDataPath.LastIndexOf('/')); // after (ios)
+                return Path.Combine(Application.persistentDataPath, "save");
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
@@ -753,9 +759,10 @@ namespace DungeonPlayer
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(Path.Combine(path, "Documents"), filename);
+                //string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
+                //path = path.Substring(0, path.LastIndexOf('/'));
+                //return Path.Combine(Path.Combine(path, "Documents"), filename);
+                return Path.Combine(PathForSaveFile(), filename);
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
@@ -771,7 +778,8 @@ namespace DungeonPlayer
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                return filename;
+                //return filename;
+                return Path.Combine(Application.persistentDataPath, filename);
             }
             else if (Application.platform == RuntimePlatform.Android)
             {
