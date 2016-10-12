@@ -49,9 +49,6 @@ namespace DungeonPlayer
         public static bool[] Truth_KnownTileInfo4 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
         public static bool[] Truth_KnownTileInfo5 = new bool[Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW];
 
-        public static int BattleSpeed = 3;
-        public static int Difficulty = 1; // ゲーム難易度 デフォルトは１：普通
-
         public static GameObject sound = null; // サウンド音源
         public static AudioSource soundSource = null; // サウンドソース
 
@@ -60,6 +57,8 @@ namespace DungeonPlayer
 
         public static int EnableBGM = 100; // ミュージック、デフォルトは100 // debug
         public static int EnableSoundEffect = 100; // 効果音、デフォルトは100 // debug
+        public static int BattleSpeed = 3;
+        public static int Difficulty = 2; // ゲーム難易度 デフォルトは２：普通
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 

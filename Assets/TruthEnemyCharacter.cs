@@ -5856,10 +5856,9 @@ namespace DungeonPlayer
 
             // after
             //float powerValue = 1.0f;
-            //if (GroundOne.Difficulty == 1)
-            //{
-            //    powerValue = 0.75f;
-            //}
+            //if (GroundOne.Difficulty == 1) { powerValue = 0.75f; }
+            //else if (GroundOne.Difficulty == 2) { powerValue = 1.00f; }
+            //else { powerValue = 1.25f; }
             //this.baseStrength = ((int)((float)this.baseStrength * powerValue)); if (this.baseStrength <= 1) this.baseStrength = 1;
             //this.baseAgility = ((int)((float)this.baseAgility * powerValue)); if (this.baseAgility <= 1) this.baseAgility = 1;
             //this.baseIntelligence = ((int)((float)this.baseIntelligence * powerValue)); if (this.baseIntelligence <= 1) this.baseIntelligence = 1;

@@ -10,6 +10,7 @@ namespace DungeonPlayer
     {
         public Slider BGMSlider = null;
         public Slider SoundSlider = null;
+        public Slider DifficultySilder = null;
 
         public override void Start()
         {
@@ -18,7 +19,7 @@ namespace DungeonPlayer
             this.BGMSlider.value = (float)((float)GroundOne.EnableBGM);
             this.SoundSlider.value = (float)((float)GroundOne.EnableSoundEffect);
             //this.battleSpeedBar.Value = this.battleSpeed;
-            //this.difficultyBar.Value = this.difficulty;
+            this.DifficultySilder.value = GroundOne.Difficulty;
         }
 
         public void ChangeBGMVolume(Slider sender)
@@ -31,6 +32,11 @@ namespace DungeonPlayer
         {
             GroundOne.EnableSoundEffect = (int)sender.value;
             GroundOne.ChangeSoundEffectVolume((float)(sender.value / 100.0f));
+        }
+
+        public void ChangeDifficulty(Slider sender)
+        {
+            GroundOne.Difficulty = (int)sender.value;
         }
 
         public void tapClose()
@@ -54,8 +60,8 @@ namespace DungeonPlayer
                 xmlWriter.WriteWhitespace("\r\n");
                 //xmlWriter.WriteElementString("BattleSpeed", this.battleSpeed.ToString());
                 //xmlWriter.WriteWhitespace("\r\n");
-                //xmlWriter.WriteElementString("Difficulty", this.difficulty.ToString());
-                //xmlWriter.WriteWhitespace("\r\n");
+                xmlWriter.WriteElementString("Difficulty", GroundOne.Difficulty.ToString());
+                xmlWriter.WriteWhitespace("\r\n");
                 xmlWriter.WriteEndElement();
 
                 xmlWriter.WriteEndDocument();

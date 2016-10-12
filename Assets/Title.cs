@@ -88,9 +88,8 @@ namespace DungeonPlayer
                 GroundOne.EnableSoundEffect = Convert.ToInt32(node2[0].InnerText);
                 //XmlNodeList node3 = xml.GetElementsByTagName("BattleSpeed");
                 //this.BattleSpeed = Convert.ToInt32(node3[0].InnerText);
-                //XmlNodeList node4 = xml.GetElementsByTagName("Difficulty");
-                //this.Difficulty = Convert.ToInt32(node4[0].InnerText);
-                //GroundOne.Difficulty = this.Difficulty;
+                XmlNodeList node4 = xml.GetElementsByTagName("Difficulty");
+                GroundOne.Difficulty = Convert.ToInt32(node4[0].InnerText);
                 //XmlNodeList node5 = xml.GetElementsByTagName("StoryMode"); // 後編追加
                 //this.StoryMode = Convert.ToInt32(node5[0].InnerText); // 後編追加
             }
