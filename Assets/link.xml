@@ -1,0 +1,14 @@
+<linker>
+  <assembly fullname="System">
+    <type fullname="System.Net" preserve="all"/>
+    <type fullname="System.Threading" preserve="all"/>
+    <type fullname="System.Net.Sockets" preserve="all"/>
+    <type fullname="System.IO" preserve="all"/>
+    <type fullname="System.Text" preserve="all"/>
+    <type fullname="System.Collections" preserve="all"/>
+    <type fullname="System.Collections.Generic" preserve="all"/>
+    <type fullname="System.Net.WebRequest" preserve="all"/>
+    <type fullname="System.Configuration.ExeConfigurationHost" preserve="all"/>
+    <type fullname="System.Configuration" preserve="all"/>
+  </assembly>
+</linker>
