@@ -117,11 +117,6 @@ namespace DungeonPlayer
         public static bool SaveMode = false; // false:Load true:Save
         public static bool SaveAndExit = false; // true:RealWorldSave and exit
         public static string CurrentLoadFileName = String.Empty; // 現在ロード対象となっているファイル名
-        public static bool LoadKnownTileInfo1 = false; // FLOOR1 false:未load状態  true:load済
-        public static bool LoadKnownTileInfo2 = false; // FLOOR2 false:未load状態  true:load済
-        public static bool LoadKnownTileInfo3 = false; // FLOOR3 false:未load状態  true:load済
-        public static bool LoadKnownTileInfo4 = false; // FLOOR4 false:未load状態  true:load済
-        public static bool LoadKnownTileInfo5 = false; // FLOOR5 false:未load状態  true:load済
 
         // TruthHomeTown
         public static bool TruthHomeTown_NowExit = false;

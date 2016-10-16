@@ -240,7 +240,6 @@ namespace DungeonPlayer
             this.prefab_TileElement.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Database.PLAYER_MARK);
             this.Player = Instantiate(this.prefab_TileElement, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
 
-            Method.LoadKnownTileInfo(GroundOne.WE.DungeonArea);
             if (GroundOne.WE.DungeonArea == 0 || GroundOne.WE.DungeonArea == 1)
             {
                 ReadDungeonTileFromXmlFile(@"DungeonMapping_T_1");

@@ -1829,39 +1829,73 @@ namespace DungeonPlayer
             Debug.Log("ExecLoad end");
         }
 
-        public static void LoadKnownTileInfo(int floor)
+        public static void LoadKnownTileInfo()
         {
             XmlDocument xml = new XmlDocument();
             xml.Load(Method.pathForDocumentsFile(GroundOne.CurrentLoadFileName));
 
-            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            //Debug.Log("LoadKnownTile: S1: " + DateTime.Now + DateTime.Now.Millisecond);
+            XmlNodeList listA = null;
+            listA = xml.DocumentElement.ChildNodes;
+
+            if (listA != null)
             {
-                if (floor == 1 && GroundOne.LoadKnownTileInfo1 == false)
+                //Debug.Log("listA.count: " + listA.Count);
+                for (int ii = 0; ii < listA.Count; ii++)
                 {
-                    GroundOne.Truth_KnownTileInfo[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonOneInfo/truthTileOne" + ii.ToString()).InnerText, null);
-                }
-                else if (floor == 2 && GroundOne.LoadKnownTileInfo2 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo2[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonTwoInfo/truthTileTwo" + ii.ToString()).InnerText, null);
-                }
-                else if (floor == 3 && GroundOne.LoadKnownTileInfo3 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo3[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonThreeInfo/truthTileThree" + ii.ToString()).InnerText, null);
-                }
-                else if (floor == 4 && GroundOne.LoadKnownTileInfo4 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo4[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFourInfo/truthTileFour" + ii.ToString()).InnerText, null);
-                }
-                else if (floor == 5 && GroundOne.LoadKnownTileInfo5 == false)
-                {
-                    GroundOne.Truth_KnownTileInfo5[ii] = Convert.ToBoolean(xml.DocumentElement.SelectSingleNode(@"/Body/TruthDungeonFiveInfo/truthTileFive" + ii.ToString()).InnerText, null);
+                    //Debug.Log("listA[ii].Name" + listA[ii].Name);
+
+                    if (listA[ii].Name == "TruthDungeonOneInfo")
+                    {
+                        XmlNodeList inner = listA[ii].ChildNodes;
+                        //Debug.Log("inner.count: " + inner.Count);
+                        for (int jj = 0; jj < inner.Count; jj++)
+                        {
+                            GroundOne.Truth_KnownTileInfo[jj] = Convert.ToBoolean(inner[jj].InnerText);
+                        }
+                    }
+                    else  if (listA[ii].Name == "TruthDungeonTwoInfo")
+                    {
+                        XmlNodeList inner = listA[ii].ChildNodes;
+                       // Debug.Log("inner.count: " + inner.Count);
+                        for (int jj = 0; jj < inner.Count; jj++)
+                        {
+                            GroundOne.Truth_KnownTileInfo2[jj] = Convert.ToBoolean(inner[jj].InnerText);
+                        }
+                    }
+                    else if (listA[ii].Name == "TruthDungeonThreeInfo")
+                    {
+                        XmlNodeList inner = listA[ii].ChildNodes;
+                        //Debug.Log("inner.count: " + inner.Count);
+                        for (int jj = 0; jj < inner.Count; jj++)
+                        {
+                            GroundOne.Truth_KnownTileInfo3[jj] = Convert.ToBoolean(inner[jj].InnerText);
+                        }
+                    }
+                    else if (listA[ii].Name == "TruthDungeonFourInfo")
+                    {
+                        XmlNodeList inner = listA[ii].ChildNodes;
+                        //Debug.Log("inner.count: " + inner.Count);
+                        for (int jj = 0; jj < inner.Count; jj++)
+                        {
+                            GroundOne.Truth_KnownTileInfo4[jj] = Convert.ToBoolean(inner[jj].InnerText);
+                        }
+                    }
+                    else if (listA[ii].Name == "TruthDungeonFiveInfo")
+                    {
+                        XmlNodeList inner = listA[ii].ChildNodes;
+                        //Debug.Log("inner.count: " + inner.Count);
+                        for (int jj = 0; jj < inner.Count; jj++)
+                        {
+                            GroundOne.Truth_KnownTileInfo5[jj] = Convert.ToBoolean(inner[jj].InnerText);
+                        }
+                    }
                 }
             }
-            if (floor == 1) { GroundOne.LoadKnownTileInfo1 = true; }
-            else if (floor == 2) { GroundOne.LoadKnownTileInfo2 = true; }
-            else if (floor == 3) { GroundOne.LoadKnownTileInfo3 = true; }
-            else if (floor == 4) { GroundOne.LoadKnownTileInfo4 = true; }
-            else if (floor == 5) { GroundOne.LoadKnownTileInfo5 = true; }
+            else
+            {
+                Debug.Log("listA null...");
+            }
         }
 
         // 通常セーブ、現実世界の自動セーブ、タイトルSeekerモードの自動セーブを結合
