@@ -1102,24 +1102,25 @@ namespace DungeonPlayer
 
             // ここでは、ダンジョンタイルデータのロードは行わない。
             // DungeonシーンのStartフェーズでLoadKnownTileInfoを呼び出す様にする。
-            //for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
-            //{
-            //    GroundOne.Truth_KnownTileInfo[ii] = false;
-            //    GroundOne.Truth_KnownTileInfo2[ii] = false;
-            //    GroundOne.Truth_KnownTileInfo3[ii] = false;
-            //    GroundOne.Truth_KnownTileInfo4[ii] = false;
-            //    GroundOne.Truth_KnownTileInfo5[ii] = false;
-            //}
-            //GroundOne.LoadKnownTileInfo1 = false;
-            //GroundOne.LoadKnownTileInfo2 = false;
-            //GroundOne.LoadKnownTileInfo3 = false;
-            //GroundOne.LoadKnownTileInfo4 = false;
-            //GroundOne.LoadKnownTileInfo5 = false;
-            Method.LoadKnownTileInfo(1);
-            Method.LoadKnownTileInfo(2);
-            Method.LoadKnownTileInfo(3);
-            Method.LoadKnownTileInfo(4);
-            Method.LoadKnownTileInfo(5);
+            for (int ii = 0; ii < Database.TRUTH_DUNGEON_COLUMN * Database.TRUTH_DUNGEON_ROW; ii++)
+            {
+                GroundOne.Truth_KnownTileInfo[ii] = false;
+                GroundOne.Truth_KnownTileInfo2[ii] = false;
+                GroundOne.Truth_KnownTileInfo3[ii] = false;
+                GroundOne.Truth_KnownTileInfo4[ii] = false;
+                GroundOne.Truth_KnownTileInfo5[ii] = false;
+            }
+            GroundOne.LoadKnownTileInfo1 = false;
+            GroundOne.LoadKnownTileInfo2 = false;
+            GroundOne.LoadKnownTileInfo3 = false;
+            GroundOne.LoadKnownTileInfo4 = false;
+            GroundOne.LoadKnownTileInfo5 = false;
+            // debug
+            //Method.LoadKnownTileInfo(1);
+            //Method.LoadKnownTileInfo(2);
+            //Method.LoadKnownTileInfo(3);
+            //Method.LoadKnownTileInfo(4);
+            //Method.LoadKnownTileInfo(5);
 
 
             Debug.Log(DateTime.Now.ToString());
