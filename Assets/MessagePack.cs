@@ -37949,7 +37949,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：ッウワ・・・ヤベ・・・"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　【受付嬢：闘技場内での勝手な対戦は、ルール厳禁となっております。　】"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　【受付嬢：闘技場内での勝手な対戦は、ルール上では禁止となっております。　】"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ランディス：ッチ、分かった分かったって、嬢ちゃん。"); eventList.Add(ActionEvent.None);
 
