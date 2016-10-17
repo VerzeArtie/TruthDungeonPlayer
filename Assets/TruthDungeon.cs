@@ -4171,7 +4171,6 @@ namespace DungeonPlayer
             string enemyName = "";
             string enemyName2 = "";
             string enemyName3 = "";
-            string[] monsterName = null;
             string[] monsterName2 = null;
             int enemyLevel = tileColor[Method.GetTileNumber(this.Player.transform.position)];
             // １階は左上：エリア１、左下：エリア２、右上：エリア３、右下：エリア４
@@ -4179,13 +4178,9 @@ namespace DungeonPlayer
             {
                 if (enemyLevel == 1)
                 {
-                    monsterName = new string[6];
-                    monsterName[0] = Database.ENEMY_HIYOWA_BEATLE;
-                    monsterName[1] = Database.ENEMY_HENSYOKU_PLANT;
-                    monsterName[2] = Database.ENEMY_GREEN_CHILD;
-                    monsterName[3] = Database.ENEMY_TINY_MANTIS;
-                    monsterName[4] = Database.ENEMY_KOUKAKU_WURM;
-                    monsterName[5] = Database.ENEMY_MANDRAGORA;
+                    string[] monsterName = { Database.ENEMY_HIYOWA_BEATLE, Database.ENEMY_HENSYOKU_PLANT,
+                                             Database.ENEMY_GREEN_CHILD,   Database.ENEMY_TINY_MANTIS,
+                                             Database.ENEMY_KOUKAKU_WURM,  Database.ENEMY_MANDRAGORA };
 
                     if (GroundOne.MC.Level <= 1)
                     {
@@ -4209,26 +4204,19 @@ namespace DungeonPlayer
                 }
                 else if (enemyLevel == 2)
                 {
-                    monsterName = new string[5];
-                    monsterName[0] = Database.ENEMY_SUN_FLOWER;
-                    monsterName[1] = Database.ENEMY_RED_HOPPER;
-                    monsterName[2] = Database.ENEMY_EARTH_SPIDER;
+                    string[] monsterName = { Database.ENEMY_SUN_FLOWER,   Database.ENEMY_RED_HOPPER,
+                                             Database.ENEMY_EARTH_SPIDER, Database.ENEMY_WILD_ANT,
+                                             Database.ENEMY_ALRAUNE,      Database.ENEMY_POISON_MARY };
+
                     if (GroundOne.MC.Level <= 2)
                     {
-                        monsterName[3] = monsterName[0];
-                    }
-                    else
-                    {
-                        monsterName[3] = Database.ENEMY_ALRAUNE;
+                        monsterName[4] = monsterName[0];
                     }
                     if (GroundOne.MC.Level <= 4)
                     {
-                        monsterName[4] = monsterName[1];
+                        monsterName[5] = monsterName[1];
                     }
-                    else
-                    {
-                        monsterName[4] = Database.ENEMY_POISON_MARY;
-                    }
+
                     monsterName2 = new string[3];
                     monsterName2[0] = monsterName[0];
                     monsterName2[1] = monsterName[1];
@@ -4236,58 +4224,43 @@ namespace DungeonPlayer
                 }
                 else if (enemyLevel == 3)
                 {
-                    monsterName = new string[5];
-                    monsterName[0] = Database.ENEMY_SPEEDY_TAKA;
-                    monsterName[1] = Database.ENEMY_ZASSYOKU_RABBIT;
+                    string[] monsterName = { Database.ENEMY_SPEEDY_TAKA, Database.ENEMY_ZASSYOKU_RABBIT,
+                                             Database.ENEMY_WONDER_SEED, Database.ENEMY_ASH_CREEPER,
+                                             Database.ENEMY_GIANT_SNAKE, Database.ENEMY_FLANSIS_KNIGHT,
+                                             Database.ENEMY_SHOTGUN_HYUI };
+
                     if (GroundOne.MC.Level <= 2)
                     {
                         monsterName[2] = monsterName[0];
                     }
-                    else
-                    {
-                        monsterName[2] = Database.ENEMY_WONDER_SEED;
-                    }
                     if (GroundOne.MC.Level <= 2)
                     {
-                        monsterName[3] = monsterName[1];
-                    }
-                    else
-                    {
-                        monsterName[3] = Database.ENEMY_FLANSIS_KNIGHT;
+                        monsterName[5] = monsterName[1];
                     }
                     if (GroundOne.MC.Level <= 4)
                     {
-                        monsterName[4] = monsterName[0];
+                        monsterName[6] = monsterName[0];
                     }
-                    else
-                    {
-                        monsterName[4] = Database.ENEMY_SHOTGUN_HYUI;
-                    }
+
                     monsterName2 = new string[2];
                     monsterName2[0] = monsterName[0];
                     monsterName2[1] = monsterName[1];
                 }
                 else if (enemyLevel == 4)
                 {
-                    monsterName = new string[4];
-                    monsterName[0] = Database.ENEMY_BRILLIANT_BUTTERFLY;
-                    monsterName[1] = Database.ENEMY_WAR_WOLF;
+                    string[] monsterName = { Database.ENEMY_BRILLIANT_BUTTERFLY, Database.ENEMY_WAR_WOLF,
+                                             Database.ENEMY_MIST_ELEMENTAL,      Database.ENEMY_WHISPER_DRYAD,
+                                             Database.ENEMY_BLOOD_MOSS,          Database.ENEMY_MOSSGREEN_DADDY };
+
                     if (GroundOne.MC.Level <= 2)
                     {
                         monsterName[2] = monsterName[0];
-                    }
-                    else
-                    {
-                        monsterName[2] = Database.ENEMY_BLOOD_MOSS;
                     }
                     if (GroundOne.MC.Level <= 4)
                     {
                         monsterName[3] = monsterName[0];
                     }
-                    else
-                    {
-                        monsterName[3] = Database.ENEMY_MOSSGREEN_DADDY;
-                    }
+
                     monsterName2 = new string[2];
                     monsterName2[0] = monsterName[0];
                     monsterName2[1] = monsterName[1];
@@ -4300,11 +4273,9 @@ namespace DungeonPlayer
             {
                 if (enemyLevel == 1)
                 {
-                    monsterName = new string[4];
-                    monsterName[0] = Database.ENEMY_DAGGER_FISH;
-                    monsterName[1] = Database.ENEMY_SIPPU_FLYING_FISH;
-                    monsterName[2] = Database.ENEMY_ORB_SHELLFISH;
-                    monsterName[3] = Database.ENEMY_SPLASH_KURIONE;
+                    string[] monsterName = { Database.ENEMY_DAGGER_FISH,   Database.ENEMY_SIPPU_FLYING_FISH,
+                                             Database.ENEMY_ORB_SHELLFISH, Database.ENEMY_SPLASH_KURIONE,
+                                             Database.ENEMY_TRANSPARENT_UMIUSHI };
 
                     monsterName2 = new string[3];
                     monsterName2[0] = monsterName[0];
@@ -4313,12 +4284,9 @@ namespace DungeonPlayer
                 }
                 else if (enemyLevel == 2)
                 {
-                    monsterName = new string[5];
-                    monsterName[0] = Database.ENEMY_ROLLING_MAGURO;
-                    monsterName[1] = Database.ENEMY_RANBOU_SEA_ARTINE;
-                    monsterName[2] = Database.ENEMY_BLUE_SEA_WASI;
-                    monsterName[3] = Database.ENEMY_GANGAME;
-                    monsterName[4] = Database.ENEMY_BIGMOUSE_JOE;
+                    string[] monsterName = { Database.ENEMY_ROLLING_MAGURO, Database.ENEMY_RANBOU_SEA_ARTINE,
+                                             Database.ENEMY_BLUE_SEA_WASI,  Database.ENEMY_BRIGHT_SQUID,
+                                             Database.ENEMY_GANGAME,        Database.ENEMY_BIGMOUSE_JOE };
 
                     monsterName2 = new string[3];
                     monsterName2[0] = monsterName[0];
@@ -4327,12 +4295,9 @@ namespace DungeonPlayer
                 }
                 else if (enemyLevel == 3)
                 {
-                    monsterName = new string[5];
-                    monsterName[0] = Database.ENEMY_MOGURU_MANTA;
-                    monsterName[1] = Database.ENEMY_FLOATING_GOLD_FISH;
-                    monsterName[2] = Database.ENEMY_GOEI_HERMIT_CLUB;
-                    monsterName[3] = Database.ENEMY_VANISHING_CORAL;
-                    monsterName[4] = Database.ENEMY_CASSY_CANCER;
+                    string[] monsterName = { Database.ENEMY_MOGURU_MANTA,     Database.ENEMY_FLOATING_GOLD_FISH,
+                                             Database.ENEMY_GOEI_HERMIT_CLUB, Database.ENEMY_ABARE_SHARK,
+                                             Database.ENEMY_VANISHING_CORAL,  Database.ENEMY_CASSY_CANCER };
 
                     monsterName2 = new string[2];
                     monsterName2[0] = monsterName[0];
@@ -4340,11 +4305,9 @@ namespace DungeonPlayer
                 }
                 else if (enemyLevel == 4)
                 {
-                    monsterName = new string[4];
-                    monsterName[0] = Database.ENEMY_BLACK_STARFISH;
-                    monsterName[1] = Database.ENEMY_RAINBOW_ANEMONE;
-                    monsterName[2] = Database.ENEMY_EDGED_HIGH_SHARK;
-                    monsterName[3] = Database.ENEMY_EIGHT_EIGHT;
+                    string[] monsterName = { Database.ENEMY_BLACK_STARFISH,  Database.ENEMY_RAINBOW_ANEMONE,
+                                             Database.ENEMY_MACHIBUSE_ANKOU, Database.ENEMY_EDGED_HIGH_SHARK,
+                                             Database.ENEMY_EIGHT_EIGHT };
 
                     monsterName2 = new string[2];
                     monsterName2[0] = monsterName[0];
@@ -4356,127 +4319,166 @@ namespace DungeonPlayer
             }
             else if (GroundOne.WE.DungeonArea == 3)
             {
-                System.Random rand = new System.Random();
                 if (enemyLevel == 1)
                 {
-                    int result = rand.Next(0, 4);
+                    string[] monsterName = { Database.ENEMY_TOSSIN_ORC,      Database.ENEMY_SNOW_CAT,
+                                             Database.ENEMY_WAR_MAMMOTH,     Database.ENEMY_WINGED_COLD_FAIRY,
+                                             Database.ENEMY_FREEZING_GRIFFIN };
+
+                    int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_WAR_MAMMOTH;
-                        enemyName2 = String.Empty;
+                        enemyName = monsterName[0];
+                        enemyName2 = monsterName[0];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_SNOW_CAT;
-                        enemyName2 = Database.ENEMY_SNOW_CAT;
+                        enemyName = monsterName[1];
+                        enemyName2 = monsterName[1];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_TOSSIN_ORC;
-                        enemyName2 = Database.ENEMY_TOSSIN_ORC;
+                        enemyName = monsterName[2];
+                        enemyName2 = String.Empty;
+                        enemyName3 = String.Empty;
+                    }
+                    else if (result == 3)
+                    {
+                        enemyName = monsterName[3];
+                        enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                     else
                     {
-                        enemyName = Database.ENEMY_WINGED_COLD_FAIRY;
+                        enemyName = monsterName[4];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                 }
                 else if (enemyLevel == 2)
                 {
-                    int result = rand.Next(0, 5);
+                    string[] monsterName = { Database.ENEMY_BRUTAL_OGRE,       Database.ENEMY_HYDRO_LIZARD,
+                                             Database.ENEMY_PENGUIN_STAR,      Database.ENEMY_ICEBERG_SPIRIT,
+                                             Database.ENEMY_SWORD_TOOTH_TIGER, Database.ENEMY_FEROCIOUS_RAGE_BEAR };
+
+                    int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_BRUTAL_OGRE;
-                        enemyName2 = Database.ENEMY_WINGED_COLD_FAIRY;
-                        enemyName3 = Database.ENEMY_BRUTAL_OGRE;
+                        enemyName = monsterName[0];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = String.Empty;
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_HYDRO_LIZARD;
-                        enemyName2 = Database.ENEMY_HYDRO_LIZARD;
-                        enemyName3 = Database.ENEMY_WINGED_COLD_FAIRY;
+                        enemyName = monsterName[1];
+                        enemyName2 = monsterName[1];
+                        enemyName3 = String.Empty;
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_PENGUIN_STAR;
-                        enemyName2 = Database.ENEMY_PENGUIN_STAR;
-                        enemyName3 = Database.ENEMY_PENGUIN_STAR;
+                        enemyName =  monsterName[2];
+                        enemyName2 =  monsterName[2];
+                        enemyName3 =  monsterName[2];
                     }
                     else if (result == 3)
                     {
-                        enemyName = Database.ENEMY_FEROCIOUS_RAGE_BEAR;
-                        enemyName2 = String.Empty;
+                        enemyName = monsterName[3];
+                        enemyName2 = monsterName[0];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 4)
                     {
-                        enemyName = Database.ENEMY_SWORD_TOOTH_TIGER;
+                        enemyName = monsterName[4];
+                        enemyName2 = String.Empty;
+                        enemyName3 = String.Empty;
+                    }
+                    else
+                    {
+                        enemyName = monsterName[5];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                 }
                 else if (enemyLevel == 3)
                 {
-                    int result = rand.Next(0, 5);
+                    string[] monsterName = { Database.ENEMY_WINTER_ORB,         Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI,
+                                             Database.ENEMY_MAJESTIC_CENTAURUS, Database.ENEMY_INTELLIGENCE_ARGONIAN,
+                                             Database.ENEMY_MAGIC_HYOU_RIFLE,   Database.ENEMY_PURE_BLIZZARD_CRYSTAL };
+
+                    int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_WINTER_ORB;
-                        enemyName2 = Database.ENEMY_WINGED_COLD_FAIRY;
-                        enemyName3 = Database.ENEMY_WINGED_COLD_FAIRY;
+                        enemyName = monsterName[0];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = String.Empty;
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI;
-                        enemyName2 = Database.ENEMY_PATHFINDING_LIGHTNING_AZARASI;
+                        enemyName = monsterName[1];
+                        enemyName2 = monsterName[1];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_INTELLIGENCE_ARGONIAN;
-                        enemyName2 = Database.ENEMY_PENGUIN_STAR;
-                        enemyName3 = Database.ENEMY_PENGUIN_STAR;
+                        enemyName = monsterName[2];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = String.Empty;
                     }
                     else if (result == 3)
                     {
-                        enemyName = Database.ENEMY_MAGIC_HYOU_RIFLE;
-                        enemyName2 = Database.ENEMY_WINTER_ORB;
+                        enemyName = monsterName[3];
+                        enemyName2 = monsterName[1];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 4)
                     {
-                        enemyName = Database.ENEMY_PURE_BLIZZARD_CRYSTAL;
+                        enemyName = monsterName[4];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = String.Empty;
+                    }
+                    else if (result == 5)
+                    {
+                        enemyName = monsterName[5];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                 }
                 else if (enemyLevel == 4)
                 {
-                    int result = rand.Next(0, 4);
+                    string[] monsterName = { Database.ENEMY_PURPLE_EYE_WARE_WOLF, Database.ENEMY_FROST_HEART,
+                                             Database.ENEMY_WHITENIGHT_GRIZZLY,   Database.ENEMY_WIND_BREAKER,
+                                             Database.ENEMY_TUNDRA_LONGHORN_DEER };
+
+                    int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_PURPLE_EYE_WARE_WOLF;
-                        enemyName2 = Database.ENEMY_FROST_HEART;
-                        enemyName3 = Database.ENEMY_PURPLE_EYE_WARE_WOLF;
+                        enemyName = monsterName[0];
+                        enemyName2 = monsterName[1];
+                        enemyName3 = monsterName[0];
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_FROST_HEART;
-                        enemyName2 = Database.ENEMY_PURPLE_EYE_WARE_WOLF;
-                        enemyName3 = Database.ENEMY_FROST_HEART;
+                        enemyName = monsterName[1];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = monsterName[1];
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_WIND_BREAKER;
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        enemyName = monsterName[2];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = monsterName[1];
                     }
                     else if (result == 3)
                     {
-                        enemyName = Database.ENEMY_TUNDRA_LONGHORN_DEER;
+                        enemyName = monsterName[3];
+                        enemyName2 = String.Empty;
+                        enemyName3 = String.Empty;
+                    }
+                    else if (result == 4)
+                    {
+                        enemyName = monsterName[4];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
@@ -4484,101 +4486,130 @@ namespace DungeonPlayer
             }
             else if (GroundOne.WE.DungeonArea == 4)
             {
-                System.Random rand = new System.Random();
                 if (enemyLevel == 1)
                 {
-                    int result = rand.Next(0, 4);
+                    string[] monsterName = { Database.ENEMY_GENAN_HUNTER,     Database.ENEMY_BEAST_MASTER,
+                                             Database.ENEMY_ELDER_ASSASSIN,   Database.ENEMY_FALLEN_SEEKER,
+                                             Database.ENEMY_MEPHISTO_RIGHTARM };
+
+                    int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_GENAN_HUNTER;
-                        enemyName2 = Database.ENEMY_BEAST_MASTER;
+                        enemyName = monsterName[0];
+                        enemyName2 = monsterName[1];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_BEAST_MASTER;
-                        enemyName2 = Database.ENEMY_ELDER_ASSASSIN;
+                        enemyName = monsterName[1];
+                        enemyName2 = monsterName[2];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_ELDER_ASSASSIN;
-                        enemyName2 = Database.ENEMY_GENAN_HUNTER;
+                        enemyName = monsterName[2];
+                        enemyName2 = monsterName[0];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 3)
                     {
-                        enemyName = Database.ENEMY_FALLEN_SEEKER;
+                        enemyName = monsterName[3];
+                        enemyName2 = String.Empty;
+                        enemyName3 = String.Empty;
+                    }
+                    else if (result == 4)
+                    {
+                        enemyName = monsterName[4];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                 }
                 else if (enemyLevel == 2)
                 {
-                    int result = rand.Next(0, 5);
+                    string[] monsterName = { Database.ENEMY_DARK_MESSENGER,         Database.ENEMY_MASTER_LOAD,
+                                             Database.ENEMY_EXECUTIONER,            Database.ENEMY_MARIONETTE_NEMESIS,
+                                             Database.ENEMY_BLACKFIRE_MASTER_BLADE, Database.ENEMY_SIN_THE_DARKELF };
+                    
+                    int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_MASTER_LOAD;
-                        enemyName2 = Database.ENEMY_DARK_MESSENGER;
+                        enemyName = monsterName[1];
+                        enemyName2 = monsterName[0];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_EXECUTIONER;
-                        enemyName2 = Database.ENEMY_DARK_MESSENGER;
+                        enemyName = monsterName[2];
+                        enemyName2 = monsterName[0];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_EXECUTIONER;
-                        enemyName2 = Database.ENEMY_MASTER_LOAD;
+                        enemyName = monsterName[2];
+                        enemyName2 = monsterName[1];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 3)
                     {
-                        enemyName = Database.ENEMY_BLACKFIRE_MASTER_BLADE;
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        enemyName = monsterName[3];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = monsterName[0];
                     }
                     else if (result == 4)
                     {
-                        enemyName = Database.ENEMY_SIN_THE_DARKELF;
-                        enemyName2 = Database.ENEMY_EXECUTIONER;
-                        enemyName3 = Database.ENEMY_DARK_MESSENGER;
+                        enemyName = monsterName[4];
+                        enemyName2 = String.Empty;
+                        enemyName3 = String.Empty;
+                    }
+                    else if (result == 5)
+                    {
+                        enemyName = monsterName[5];
+                        enemyName2 = monsterName[2];
+                        enemyName3 = String.Empty;
                     }
                 }
                 else if (enemyLevel == 3)
                 {
-                    int result = rand.Next(0, 5);
+                    string[] monsterName = { Database.ENEMY_SUN_STRIDER,      Database.ENEMY_ARC_DEMON,
+                                             Database.ENEMY_BALANCE_IDLE,     Database.ENEMY_UNDEAD_WYVERN,
+                                             Database.ENEMY_GO_FLAME_SLASHER, Database.ENEMY_DEVIL_CHILDREN };
+
+                    int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_SUN_STRIDER;
-                        enemyName2 = String.Empty;
+                        enemyName = monsterName[0];
+                        enemyName2 = monsterName[1];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_ARC_DEMON;
-                        enemyName2 = String.Empty;
+                        enemyName = monsterName[1];
+                        enemyName2 = monsterName[2];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_BALANCE_IDLE;
-                        enemyName2 = String.Empty;
+                        enemyName = monsterName[2];
+                        enemyName2 = monsterName[0];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 3)
                     {
-                        enemyName = Database.ENEMY_GO_FLAME_SLASHER;
-                        enemyName2 = String.Empty;
+                        enemyName = monsterName[3];
+                        enemyName2 = monsterName[1];
                         enemyName3 = String.Empty;
                     }
                     else if (result == 4)
                     {
-                        enemyName = Database.ENEMY_DEVIL_CHILDREN;
-                        enemyName2 = Database.ENEMY_SUN_STRIDER;
-                        enemyName3 = Database.ENEMY_ARC_DEMON;
+                        enemyName = monsterName[4];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = String.Empty;
+                    }
+                    else if (result == 5)
+                    {
+                        enemyName = monsterName[5];
+                        enemyName2 = monsterName[0];
+                        enemyName3 = monsterName[1];
                     }
                 }
                 else if (enemyLevel == 4)
@@ -4588,28 +4619,38 @@ namespace DungeonPlayer
                 }
                 else if (enemyLevel == 6) // 現実世界の中央部
                 {
-                    int result = rand.Next(0, 4);
+                    string[] monsterName = { Database.ENEMY_HOWLING_HORROR, Database.ENEMY_PAIN_ANGEL,
+                                             Database.ENEMY_CHAOS_WARDEN,   Database.ENEMY_DREAD_KNIGHT,
+                                             Database.ENEMY_DOOM_BRINGER };
+
+                    int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_PHOENIX;
+                        enemyName = monsterName[0];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_NINE_TAIL;
+                        enemyName = monsterName[1];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_JUDGEMENT;
+                        enemyName = monsterName[2];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                     else if (result == 3)
                     {
-                        enemyName = Database.ENEMY_EMERALD_DRAGON;
+                        enemyName = monsterName[3];
+                        enemyName2 = String.Empty;
+                        enemyName3 = String.Empty;
+                    }
+                    else if (result == 4)
+                    {
+                        enemyName = monsterName[4];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
@@ -4617,31 +4658,40 @@ namespace DungeonPlayer
             }
             else if (GroundOne.WE.DungeonArea == 5)
             {
-                System.Random rand = new System.Random();
+                    string[] monsterName = { Database.ENEMY_PHOENIX,        Database.ENEMY_NINE_TAIL,
+                                             Database.ENEMY_MEPHISTOPHELES, Database.ENEMY_JUDGEMENT,
+                                             Database.ENEMY_EMERALD_DRAGON };
+
                 //if (enemyLevel == 6) // 現実世界の中央部
                 {
-                    int result = rand.Next(0, 4);
+                    int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = Database.ENEMY_PHOENIX;
+                        enemyName = monsterName[0];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                     else if (result == 1)
                     {
-                        enemyName = Database.ENEMY_NINE_TAIL;
+                        enemyName = monsterName[1];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                     else if (result == 2)
                     {
-                        enemyName = Database.ENEMY_JUDGEMENT;
+                        enemyName = monsterName[2];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
                     else if (result == 3)
                     {
-                        enemyName = Database.ENEMY_EMERALD_DRAGON;
+                        enemyName = monsterName[3];
+                        enemyName2 = String.Empty;
+                        enemyName3 = String.Empty;
+                    }
+                    else if (result == 4)
+                    {
+                        enemyName = monsterName[4];
                         enemyName2 = String.Empty;
                         enemyName3 = String.Empty;
                     }
