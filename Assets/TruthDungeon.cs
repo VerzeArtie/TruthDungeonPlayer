@@ -4098,6 +4098,13 @@ namespace DungeonPlayer
             return newUpdate;
         }
 
+        private void SetupEnemyName(string enemy1, string enemy2, string enemy3)
+        {
+            GroundOne.enemyName1 = enemy1;
+            GroundOne.enemyName2 = enemy2;
+            GroundOne.enemyName3 = enemy3;
+        }
+
         private void EncountEnemy()
         {
             //return; // debug 敵を出さない状態
@@ -4168,10 +4175,6 @@ namespace DungeonPlayer
             }
 
             stepCounter = 0;
-            string enemyName = "";
-            string enemyName2 = "";
-            string enemyName3 = "";
-            string[] monsterName2 = null;
             int enemyLevel = tileColor[Method.GetTileNumber(this.Player.transform.position)];
             // １階は左上：エリア１、左下：エリア２、右上：エリア３、右下：エリア４
             if (GroundOne.WE.DungeonArea == 1)
@@ -4184,23 +4187,50 @@ namespace DungeonPlayer
 
                     if (GroundOne.MC.Level <= 1)
                     {
-                        monsterName[2] = Database.ENEMY_HIYOWA_BEATLE;
-                        monsterName[3] = Database.ENEMY_HENSYOKU_PLANT;
-                        monsterName[4] = Database.ENEMY_HIYOWA_BEATLE;
+                        SetupEnemyName(monsterName[AP.Math.RandomInteger(2)], String.Empty, String.Empty);
                     }
-
-                    if (GroundOne.MC.Level <= 5)
+                    else
                     {
-                        monsterName[5] = Database.ENEMY_HENSYOKU_PLANT;
+                        int result = AP.Math.RandomInteger(6);
+                        if (result == 0)
+                        {
+                            SetupEnemyName(monsterName[0], monsterName[0], String.Empty);
+                        }
+                        else if (result == 1)
+                        {
+                            SetupEnemyName(monsterName[1], monsterName[1], String.Empty);
+                        }
+                        else if (result == 2)
+                        {
+                            SetupEnemyName(monsterName[2], monsterName[0], String.Empty);
+                        }
+                        else if (result == 3)
+                        {
+                            SetupEnemyName(monsterName[3], monsterName[1], String.Empty);
+                        }
+                        else if (result == 4)
+                        {
+                            if (GroundOne.MC.Level <= 3)
+                            {
+                                SetupEnemyName(monsterName[1], monsterName[0], String.Empty);
+                            }
+                            else
+                            {
+                                SetupEnemyName(monsterName[4], monsterName[0], String.Empty);
+                            }
+                        }
+                        else if (result == 5)
+                        {
+                            if (GroundOne.MC.Level <= 5)
+                            {
+                                SetupEnemyName(monsterName[0], monsterName[1], String.Empty);
+                            }
+                            else
+                            {
+                                SetupEnemyName(monsterName[5], monsterName[1], String.Empty);
+                            }
+                        }
                     }
-
-                    monsterName2 = new string[6];
-                    monsterName2[0] = monsterName[0];
-                    monsterName2[1] = monsterName[1];
-                    monsterName2[2] = monsterName[2];
-                    monsterName2[3] = monsterName[3];
-                    monsterName2[4] = monsterName[4];
-                    monsterName2[5] = monsterName[5];
                 }
                 else if (enemyLevel == 2)
                 {
@@ -4208,19 +4238,45 @@ namespace DungeonPlayer
                                              Database.ENEMY_EARTH_SPIDER, Database.ENEMY_WILD_ANT,
                                              Database.ENEMY_ALRAUNE,      Database.ENEMY_POISON_MARY };
 
-                    if (GroundOne.MC.Level <= 2)
+                    int result = AP.Math.RandomInteger(6);
+                    if (result == 0)
                     {
-                        monsterName[4] = monsterName[0];
+                        SetupEnemyName(monsterName[0], monsterName[0], String.Empty);
                     }
-                    if (GroundOne.MC.Level <= 4)
+                    else if (result == 1)
                     {
-                        monsterName[5] = monsterName[1];
+                        SetupEnemyName(monsterName[1], monsterName[1], String.Empty);
                     }
-
-                    monsterName2 = new string[3];
-                    monsterName2[0] = monsterName[0];
-                    monsterName2[1] = monsterName[1];
-                    monsterName2[2] = monsterName[2];
+                    else if (result == 2)
+                    {
+                        SetupEnemyName(monsterName[2], monsterName[0], String.Empty);
+                    }
+                    else if (result == 3)
+                    {
+                        SetupEnemyName(monsterName[3], monsterName[1], String.Empty);
+                    }
+                    else if (result == 4)
+                    {
+                        if (GroundOne.MC.Level <= 6)
+                        {
+                            SetupEnemyName(monsterName[3], monsterName[0], String.Empty);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[1], String.Empty);
+                        }
+                    }
+                    else if (result == 5)
+                    {
+                        if (GroundOne.MC.Level <= 8)
+                        {
+                            SetupEnemyName(monsterName[2], monsterName[0], String.Empty);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[1], String.Empty);
+                        }
+                    }
                 }
                 else if (enemyLevel == 3)
                 {
@@ -4229,22 +4285,42 @@ namespace DungeonPlayer
                                              Database.ENEMY_GIANT_SNAKE, Database.ENEMY_FLANSIS_KNIGHT,
                                              Database.ENEMY_SHOTGUN_HYUI };
 
-                    if (GroundOne.MC.Level <= 2)
+                    int result = AP.Math.RandomInteger(7);
+                    if (result == 0)
                     {
-                        monsterName[2] = monsterName[0];
+                        SetupEnemyName(monsterName[0], monsterName[0], String.Empty);
                     }
-                    if (GroundOne.MC.Level <= 2)
+                    else if (result == 1)
                     {
-                        monsterName[5] = monsterName[1];
+                        SetupEnemyName(monsterName[1], monsterName[1], String.Empty);
                     }
-                    if (GroundOne.MC.Level <= 4)
+                    else if (result == 2)
                     {
-                        monsterName[6] = monsterName[0];
+                        SetupEnemyName(monsterName[2], monsterName[0], String.Empty);
                     }
-
-                    monsterName2 = new string[2];
-                    monsterName2[0] = monsterName[0];
-                    monsterName2[1] = monsterName[1];
+                    else if (result == 3)
+                    {
+                        SetupEnemyName(monsterName[3], monsterName[1], String.Empty);
+                    }
+                    else if (result == 4)
+                    {
+                        SetupEnemyName(monsterName[4], monsterName[0], String.Empty);
+                    }
+                    else if (result == 5)
+                    {
+                        SetupEnemyName(monsterName[5], monsterName[1], String.Empty);
+                    }
+                    else if (result == 6)
+                    {
+                        if (GroundOne.MC.Level <= 10)
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[0], String.Empty);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[6], monsterName[0], String.Empty);
+                        }
+                    }
                 }
                 else if (enemyLevel == 4)
                 {
@@ -4252,22 +4328,39 @@ namespace DungeonPlayer
                                              Database.ENEMY_MIST_ELEMENTAL,      Database.ENEMY_WHISPER_DRYAD,
                                              Database.ENEMY_BLOOD_MOSS,          Database.ENEMY_MOSSGREEN_DADDY };
 
-                    if (GroundOne.MC.Level <= 2)
+                    int result = AP.Math.RandomInteger(6);
+                    if (result == 0)
                     {
-                        monsterName[2] = monsterName[0];
+                        SetupEnemyName(monsterName[0], monsterName[0], String.Empty);
                     }
-                    if (GroundOne.MC.Level <= 4)
+                    else if (result == 1)
                     {
-                        monsterName[3] = monsterName[0];
+                        SetupEnemyName(monsterName[1], monsterName[1], String.Empty);
                     }
-
-                    monsterName2 = new string[2];
-                    monsterName2[0] = monsterName[0];
-                    monsterName2[1] = monsterName[1];
+                    else if (result == 2)
+                    {
+                        SetupEnemyName(monsterName[2], monsterName[0], String.Empty);
+                    }
+                    else if (result == 3)
+                    {
+                        SetupEnemyName(monsterName[3], monsterName[1], String.Empty);
+                    }
+                    else if (result == 4)
+                    {
+                        SetupEnemyName(monsterName[4], monsterName[0], String.Empty);
+                    }
+                    else if (result == 5)
+                    {
+                        if (GroundOne.MC.Level <= 12)
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[1], String.Empty);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[1], String.Empty);
+                        }
+                    }
                 }
-                enemyName = monsterName[AP.Math.RandomInteger(monsterName.Length)];
-                enemyName2 = monsterName2[AP.Math.RandomInteger(monsterName2.Length)];
-                enemyName3 = monsterName2[AP.Math.RandomInteger(monsterName2.Length)];
             }
             else if (GroundOne.WE.DungeonArea == 2)
             {
@@ -4276,22 +4369,72 @@ namespace DungeonPlayer
                     string[] monsterName = { Database.ENEMY_DAGGER_FISH,   Database.ENEMY_SIPPU_FLYING_FISH,
                                              Database.ENEMY_ORB_SHELLFISH, Database.ENEMY_SPLASH_KURIONE,
                                              Database.ENEMY_TRANSPARENT_UMIUSHI };
-
-                    monsterName2 = new string[3];
-                    monsterName2[0] = monsterName[0];
-                    monsterName2[1] = monsterName[1];
-                    monsterName2[2] = monsterName[2];
+                    int result = AP.Math.RandomInteger(5);
+                    if (result == 0)
+                    {
+                        SetupEnemyName(monsterName[0], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 1)
+                    {
+                        SetupEnemyName(monsterName[1], monsterName[1], monsterName[2]);
+                    }
+                    else if (result == 2)
+                    {
+                        SetupEnemyName(monsterName[2], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 3)
+                    {
+                        SetupEnemyName(monsterName[3], monsterName[1], monsterName[2]);
+                    }
+                    else if (result == 4)
+                    {
+                        if (GroundOne.MC.Level <= 23)
+                        {
+                            SetupEnemyName(monsterName[3], monsterName[0], monsterName[1]);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[0], monsterName[1]);
+                        }
+                    }
                 }
                 else if (enemyLevel == 2)
                 {
                     string[] monsterName = { Database.ENEMY_ROLLING_MAGURO, Database.ENEMY_RANBOU_SEA_ARTINE,
                                              Database.ENEMY_BLUE_SEA_WASI,  Database.ENEMY_BRIGHT_SQUID,
                                              Database.ENEMY_GANGAME,        Database.ENEMY_BIGMOUSE_JOE };
-
-                    monsterName2 = new string[3];
-                    monsterName2[0] = monsterName[0];
-                    monsterName2[1] = monsterName[1];
-                    monsterName2[2] = monsterName[2];
+                    int result = AP.Math.RandomInteger(6);
+                    if (result == 0)
+                    {
+                        SetupEnemyName(monsterName[0], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 1)
+                    {
+                        SetupEnemyName(monsterName[1], monsterName[1], monsterName[2]);
+                    }
+                    else if (result == 2)
+                    {
+                        SetupEnemyName(monsterName[2], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 3)
+                    {
+                        SetupEnemyName(monsterName[3], monsterName[1], monsterName[2]);
+                    }
+                    else if (result == 4)
+                    {
+                        SetupEnemyName(monsterName[4], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 5)
+                    {
+                        if (GroundOne.MC.Level <= 25)
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[0], monsterName[1]);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[1], monsterName[2]);
+                        }
+                    }
                 }
                 else if (enemyLevel == 3)
                 {
@@ -4299,9 +4442,38 @@ namespace DungeonPlayer
                                              Database.ENEMY_GOEI_HERMIT_CLUB, Database.ENEMY_ABARE_SHARK,
                                              Database.ENEMY_VANISHING_CORAL,  Database.ENEMY_CASSY_CANCER };
 
-                    monsterName2 = new string[2];
-                    monsterName2[0] = monsterName[0];
-                    monsterName2[1] = monsterName[1];
+                    int result = AP.Math.RandomInteger(6);
+                    if (result == 0)
+                    {
+                        SetupEnemyName(monsterName[0], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 1)
+                    {
+                        SetupEnemyName(monsterName[1], monsterName[1], monsterName[2]);
+                    }
+                    else if (result == 2)
+                    {
+                        SetupEnemyName(monsterName[2], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 3)
+                    {
+                        SetupEnemyName(monsterName[3], monsterName[1], monsterName[2]);
+                    }
+                    else if (result == 4)
+                    {
+                        SetupEnemyName(monsterName[4], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 5)
+                    {
+                        if (GroundOne.MC.Level <= 27)
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[0], monsterName[1]);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[1], monsterName[2]);
+                        }
+                    }
                 }
                 else if (enemyLevel == 4)
                 {
@@ -4309,13 +4481,39 @@ namespace DungeonPlayer
                                              Database.ENEMY_MACHIBUSE_ANKOU, Database.ENEMY_EDGED_HIGH_SHARK,
                                              Database.ENEMY_EIGHT_EIGHT };
 
-                    monsterName2 = new string[2];
-                    monsterName2[0] = monsterName[0];
-                    monsterName2[1] = monsterName[1];
+                    int result = AP.Math.RandomInteger(6);
+                    if (result == 0)
+                    {
+                        SetupEnemyName(monsterName[0], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 1)
+                    {
+                        SetupEnemyName(monsterName[1], monsterName[1], monsterName[2]);
+                    }
+                    else if (result == 2)
+                    {
+                        SetupEnemyName(monsterName[2], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 3)
+                    {
+                        SetupEnemyName(monsterName[3], monsterName[1], monsterName[2]);
+                    }
+                    else if (result == 4)
+                    {
+                        SetupEnemyName(monsterName[4], monsterName[0], monsterName[1]);
+                    }
+                    else if (result == 5)
+                    {
+                        if (GroundOne.MC.Level <= 29)
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[0], monsterName[1]);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[1], monsterName[2]);
+                        }
+                    }
                 }
-                enemyName = monsterName[AP.Math.RandomInteger(monsterName.Length)];
-                enemyName2 = monsterName2[AP.Math.RandomInteger(monsterName2.Length)];
-                enemyName3 = monsterName2[AP.Math.RandomInteger(monsterName2.Length)];
             }
             else if (GroundOne.WE.DungeonArea == 3)
             {
@@ -4328,33 +4526,30 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = monsterName[0];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[0], monsterName[0], String.Empty);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[1], monsterName[1], String.Empty);
                     }
                     else if (result == 2)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[2], String.Empty, String.Empty);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[3], String.Empty, String.Empty);
                     }
                     else
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        if (GroundOne.MC.Level <= 38)
+                        {
+                            SetupEnemyName(monsterName[3], String.Empty, String.Empty);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[4], String.Empty, String.Empty);
+                        }
                     }
                 }
                 else if (enemyLevel == 2)
@@ -4366,39 +4561,34 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        enemyName = monsterName[0];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[0], monsterName[0], String.Empty);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[1], monsterName[1], String.Empty);
                     }
                     else if (result == 2)
                     {
-                        enemyName =  monsterName[2];
-                        enemyName2 =  monsterName[2];
-                        enemyName3 =  monsterName[2];
+                        SetupEnemyName(monsterName[2], monsterName[2], monsterName[2]);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[3], monsterName[0], monsterName[1]);
                     }
                     else if (result == 4)
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[4], monsterName[1], monsterName[1]);
                     }
                     else
                     {
-                        enemyName = monsterName[5];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        if (GroundOne.MC.Level <= 40)
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[2], monsterName[2]);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[0], monsterName[1]);
+                        }
                     }
                 }
                 else if (enemyLevel == 3)
@@ -4410,39 +4600,34 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        enemyName = monsterName[0];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[0], monsterName[1], monsterName[1]);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[1], monsterName[0], monsterName[0]);
                     }
                     else if (result == 2)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[2], monsterName[0], monsterName[1]);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[3], monsterName[1], monsterName[2]);
                     }
                     else if (result == 4)
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[4], monsterName[0], monsterName[0]);
                     }
                     else if (result == 5)
                     {
-                        enemyName = monsterName[5];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        if (GroundOne.MC.Level <= 42)
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[1], monsterName[1]);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[2], monsterName[2]);
+                        }
                     }
                 }
                 else if (enemyLevel == 4)
@@ -4454,33 +4639,30 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = monsterName[0];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = monsterName[0];
+                        SetupEnemyName(monsterName[0], monsterName[1], monsterName[0]);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = monsterName[1];
+                        SetupEnemyName(monsterName[1], monsterName[0], monsterName[1]);
                     }
                     else if (result == 2)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = monsterName[1];
+                        SetupEnemyName(monsterName[2], monsterName[0], monsterName[1]);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[3], monsterName[1], monsterName[1]);
                     }
                     else if (result == 4)
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        if (GroundOne.MC.Level <= 44)
+                        {
+                            SetupEnemyName(monsterName[3], monsterName[0], monsterName[0]);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[2], monsterName[2]);
+                        }
                     }
                 }
             }
@@ -4495,33 +4677,30 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = monsterName[0];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[0], monsterName[1], String.Empty);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = monsterName[2];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[1], monsterName[2], String.Empty);
                     }
                     else if (result == 2)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[2], monsterName[0], String.Empty);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[3], monsterName[0], String.Empty);
                     }
                     else if (result == 4)
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        if (GroundOne.MC.Level <= 52)
+                        {
+                            SetupEnemyName(monsterName[3], monsterName[1], String.Empty);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[2], String.Empty);
+                        }
                     }
                 }
                 else if (enemyLevel == 2)
@@ -4533,39 +4712,34 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[0], monsterName[1], String.Empty);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[1], monsterName[2], String.Empty);
                     }
                     else if (result == 2)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[2], monsterName[1], String.Empty);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = monsterName[0];
+                        SetupEnemyName(monsterName[3], monsterName[0], String.Empty);
                     }
                     else if (result == 4)
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[4], monsterName[1], String.Empty);
                     }
                     else if (result == 5)
                     {
-                        enemyName = monsterName[5];
-                        enemyName2 = monsterName[2];
-                        enemyName3 = String.Empty;
+                        if (GroundOne.MC.Level <= 54)
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[1], String.Empty);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[2], String.Empty);
+                        }
                     }
                 }
                 else if (enemyLevel == 3)
@@ -4577,39 +4751,34 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(6);
                     if (result == 0)
                     {
-                        enemyName = monsterName[0];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[0], monsterName[1], String.Empty);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = monsterName[2];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[1], monsterName[2], String.Empty);
                     }
                     else if (result == 2)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[2], monsterName[0], String.Empty);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = monsterName[1];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[3], monsterName[0], String.Empty);
                     }
                     else if (result == 4)
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[4], monsterName[1], String.Empty);
                     }
                     else if (result == 5)
                     {
-                        enemyName = monsterName[5];
-                        enemyName2 = monsterName[0];
-                        enemyName3 = monsterName[1];
+                        if (GroundOne.MC.Level <= 56)
+                        {
+                            SetupEnemyName(monsterName[4], monsterName[0], String.Empty);
+                        }
+                        else
+                        {
+                            SetupEnemyName(monsterName[5], monsterName[2], String.Empty);
+                        }
                     }
                 }
                 else if (enemyLevel == 4)
@@ -4626,33 +4795,23 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = monsterName[0];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[0], String.Empty, String.Empty);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[1], String.Empty, String.Empty);
                     }
                     else if (result == 2)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[2], String.Empty, String.Empty);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[3], String.Empty, String.Empty);
                     }
                     else if (result == 4)
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[4], String.Empty, String.Empty);
                     }
                 }
             }
@@ -4667,82 +4826,39 @@ namespace DungeonPlayer
                     int result = AP.Math.RandomInteger(5);
                     if (result == 0)
                     {
-                        enemyName = monsterName[0];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[0], String.Empty, String.Empty);
                     }
                     else if (result == 1)
                     {
-                        enemyName = monsterName[1];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[1], String.Empty, String.Empty);
                     }
                     else if (result == 2)
                     {
-                        enemyName = monsterName[2];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[2], String.Empty, String.Empty);
                     }
                     else if (result == 3)
                     {
-                        enemyName = monsterName[3];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[3], String.Empty, String.Empty);
                     }
                     else if (result == 4)
                     {
-                        enemyName = monsterName[4];
-                        enemyName2 = String.Empty;
-                        enemyName3 = String.Empty;
+                        SetupEnemyName(monsterName[4], String.Empty, String.Empty);
                     }
                 }
             }
 
+            // 敵１はエントリー確定済み
+
             // 敵２、敵３を生成するかどうかの判定用オブジェクトを生成
             GameObject enemyObj1 = new GameObject("enemy1");
             TruthEnemyCharacter ec1 = enemyObj1.AddComponent<TruthEnemyCharacter>();
-            ec1.Initialize(enemyName);
+            ec1.Initialize(GroundOne.enemyName1);
 
-            // 敵１はエントリー確定
-            GroundOne.enemyName1 = enemyName;
-
-            // １階初期パーティが１人の場合を考慮して以下の形式
-            if ((GroundOne.WE.AvailableSecondCharacter && enemyName2 != String.Empty) &&
-                (ec1.Rare == TruthEnemyCharacter.RareString.Black || ec1.Rare == TruthEnemyCharacter.RareString.Blue))
-            {
-                GroundOne.enemyName2 = enemyName2;
-            }
-            else
+            if (GroundOne.WE.AvailableSecondCharacter == false)
             {
                 GroundOne.enemyName2 = String.Empty;
             }
-
-            // ２階初期パーティが２人の場合を考慮して以下の形式
-            if ((GroundOne.WE.AvailableThirdCharacter && enemyName3 != String.Empty) &&
-                (ec1.Rare == TruthEnemyCharacter.RareString.Black) || (ec1.Rare == TruthEnemyCharacter.RareString.Blue))
-            {
-                GroundOne.enemyName3 = enemyName3;
-            }
-            else
-            {
-                GroundOne.enemyName3 = String.Empty;
-            }
-
-            // ２階、力の部屋以降、ボスが２人以上を考慮して以下の形式
-            if (enemyName2 != String.Empty && ec1.Rare == TruthEnemyCharacter.RareString.Gold)
-            {
-                GroundOne.enemyName2 = enemyName2;
-            }
-            else
-            {
-                GroundOne.enemyName2 = String.Empty;
-            }
-
-            if (enemyName3 != String.Empty && ec1.Rare == TruthEnemyCharacter.RareString.Gold)
-            {
-                GroundOne.enemyName3 = enemyName3;
-            }
-            else
+            if (GroundOne.WE.AvailableThirdCharacter == false)
             {
                 GroundOne.enemyName3 = String.Empty;
             }
