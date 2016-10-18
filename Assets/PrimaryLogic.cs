@@ -177,10 +177,8 @@ namespace DungeonPlayer
             }
 
             // 心係数はここで増幅させる。
-            min = minFactor * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.50;
-            max = maxFactor * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.50;
-            //min = minFactor * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 1.00;
-            //max = maxFactor * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 1.00;
+            min = minFactor * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) * 0.50;
+            max = maxFactor * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) * 0.50;
 
             if (attr == DmgAttr.Physical)
             {
@@ -331,8 +329,8 @@ namespace DungeonPlayer
             double max = 0;
 
             // 力0.20
-            min = (player.TotalStrength) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20;
-            max = (player.TotalStrength) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20;
+            min = (player.TotalStrength) * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) * 0.20;
+            max = (player.TotalStrength) * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) * 0.20;
 
             // 鎧1.0
             if (player.MainArmor != null)
@@ -407,8 +405,8 @@ namespace DungeonPlayer
             double max = 0;
 
             // 知0.20
-            min = (player.TotalIntelligence) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20;
-            max = (player.TotalIntelligence) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20;
+            min = (player.TotalIntelligence) * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) * 0.20;
+            max = (player.TotalIntelligence) * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) * 0.20;
 
             // 鎧1.0
             if (player.MainArmor != null)
@@ -479,9 +477,9 @@ namespace DungeonPlayer
         public static double BattleSpeedValue(MainCharacter player, bool duelMode)
         {
             // 最大速度が速すぎるため以下のように調整。
-            // 最小1.0000000 ~ 最大8.2337514となるようにする。
-            // result = 1.00 + LN(agl) * (LN(mind) + 1.00) / 13.0
-            double result = 1.00f + Math.Log(Convert.ToInt32(player.TotalAgility), Math.Exp(1)) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) / 13.0f;
+            // 最小1.000 ~ 最大7.525となるようにする。
+            // result = 1.00 + LN(agl) * LN(mind) / 13.0
+            double result = 1.00f + Math.Log(Convert.ToInt32(player.TotalAgility), Math.Exp(1)) * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) / 13.0f;
 
             // 武器、防具、アクセサリからの増強
             if ((player.MainWeapon != null) && (player.MainWeapon.AmplifyBattleSpeed != 0.0f)) result = result * player.MainWeapon.AmplifyBattleSpeed;
@@ -533,33 +531,9 @@ namespace DungeonPlayer
         public static double BattleResponseValue(MainCharacter player, bool duelMode)
         {
             // 最大速度が速すぎるため以下のように調整。
-            // 最小が1.00、最大が31.00となるようにする。
-
-            // 技0.20 + 知0.05
-            //double result = (player.TotalAgility) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.20
-            //         + (player.TotalIntelligence) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 0.05
-            double result = (player.TotalAgility) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.20
-                + (player.TotalIntelligence) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 0.05;
-
-            // 技      [ 1 - 100 ] -->   1 + 技 / 100 * 5.0
-            //      [ 101 - 1000 ] -->   6 + 技 / 1000 * 10.0
-            //    [ 1001 - 10000 ] -->   16 + 技 / 9999 * 15.0
-            //技9999,知9999,心9999最大
-            if (0 <= player.TotalAgility && player.TotalAgility <= 100)
-            {
-                double MAX_VALUE = 33.01510075605090000;
-                result = 1.0F + result / MAX_VALUE * 5.0F;
-            }
-            else if (101 <= player.TotalAgility && player.TotalAgility <= 1000)
-            {
-                double MAX_VALUE = 616.08154697348000000;
-                result = 6.0F + result / MAX_VALUE * 10.0F;
-            }
-            else if (1001 <= player.TotalAgility && player.TotalAgility <= 9999)
-            {
-                double MAX_VALUE = 279282.28013817000000000;
-                result = 16.0F + result / MAX_VALUE * 15.0F;
-            }
+            // 最小1.000 ~ 最大22.207となるようにする。
+            // result = 1.00 + LN(agl) * LN(mind) / 4.0
+            double result = 1.00f + Math.Log(Convert.ToInt32(player.TotalAgility), Math.Exp(1)) * Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) / 4.0f;
 
             // 武器、防具、アクセサリからの増強
             if ((player.MainWeapon != null) && (player.MainWeapon.AmplifyBattleResponse != 0.0f)) result = result * player.MainWeapon.AmplifyBattleResponse;
@@ -617,11 +591,6 @@ namespace DungeonPlayer
         {
             // 最大値が大きすぎるため以下の様に調整
             // 最小が1.00、最大が4.00となるようにする。
-
-            // 心1.00
-            //double result = (player.TotalMind) * (Math.Log(Convert.ToInt32(player.TotalMind), Math.Exp(1)) + 1.00) * 1.00;
-            //double result = (player.TotalMind) * ((Math.Log(Database.MAX_PARAMETER, Math.Exp(1)) - Math.Log((Database.MAX_PARAMETER - Convert.ToInt32(player.TotalMind)), Math.Exp(1))) * 10 + 1.00) * 1.00;
-            // 指数関数的増大は戦闘速度が無限に膨れ上がってしまっては困る原因の元を作ってしまった。ここだけは線形増加に留める。
             double result = (double)(player.TotalMind);
 
             // 心      [ 1 - 100 ] -->   1.0 + 心 /  100 * 0.5
