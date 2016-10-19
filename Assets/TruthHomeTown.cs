@@ -1114,7 +1114,6 @@ namespace DungeonPlayer
         public void tapDuelClose()
         {
             HideAllChild();
-            GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
         }
 
         public void tapBattleSetting()
@@ -1801,6 +1800,10 @@ namespace DungeonPlayer
                 this.groupSelectCastleMenu.SetActive(false);
                 this.groupSelectDungeon.SetActive(false);
                 this.groupSelectGate.SetActive(false);
+                if (groupDuelSelect.activeInHierarchy)
+                {
+                    GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
+                }
                 this.groupDuelSelect.SetActive(false);
                 this.groupTicketChoice.SetActive(false);
                 this.groupYesnoSystemMessage.SetActive(false);
