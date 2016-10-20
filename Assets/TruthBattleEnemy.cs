@@ -665,52 +665,52 @@ namespace DungeonPlayer
             base.Update();
 
             // debug
-            if (GroundOne.MC != null)
-            {
-                this.debug1.text = GroundOne.MC.TotalStrength.ToString();
-                this.debug2.text = GroundOne.MC.TotalAgility.ToString();
-                this.debug3.text = GroundOne.MC.TotalIntelligence.ToString();
-                this.debug4.text = GroundOne.MC.TotalStamina.ToString();
-                this.debug5.text = GroundOne.MC.TotalMind.ToString();
-                this.debug21.text = PrimaryLogic.PhysicalAttackValue(GroundOne.MC, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false).ToString("F2");
-                this.debug22.text = PrimaryLogic.PhysicalDefenseValue(GroundOne.MC, PrimaryLogic.NeedType.Min, false).ToString("F2");
-                this.debug23.text = PrimaryLogic.MagicAttackValue(GroundOne.MC, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, PrimaryLogic.SpellSkillType.Standard, false, false).ToString("F2");
-                this.debug24.text = PrimaryLogic.MagicDefenseValue(GroundOne.MC, PrimaryLogic.NeedType.Min, false).ToString("F2");
-                this.debug25.text = PrimaryLogic.BattleSpeedValue(GroundOne.MC, false).ToString("F2");
-                this.debug26.text = PrimaryLogic.BattleResponseValue(GroundOne.MC, false).ToString("F2");
-                this.debug27.text = PrimaryLogic.PotentialValue(GroundOne.MC, false).ToString("F2");
-                this.debug31.text = GroundOne.MC.Target.FirstName;
-                //this.debug41.text = GroundOne.MC.MaxLife.ToString();
-                //this.debug42.text = GroundOne.MC.MaxMana.ToString();
-                //this.debug43.text = GroundOne.MC.MaxInstantPoint.ToString();
-                this.debug41.text = GroundOne.MC.CurrentLife.ToString();
-                this.debug42.text = GroundOne.MC.CurrentMana.ToString();
-                this.debug43.text = GroundOne.MC.CurrentSkillPoint.ToString();
-                this.debug51.text = GroundOne.MC.Gold.ToString();
-            }
-            if (ec1 != null)
-            {
-                this.debugB1.text = ec1.TotalStrength.ToString();
-                this.debugB2.text = ec1.TotalAgility.ToString();
-                this.debugB3.text = ec1.TotalIntelligence.ToString();
-                this.debugB4.text = ec1.TotalStamina.ToString();
-                this.debugB5.text = ec1.TotalMind.ToString();
-                this.debugB21.text = PrimaryLogic.PhysicalAttackValue(ec1, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false).ToString("F2");
-                this.debugB22.text = PrimaryLogic.PhysicalDefenseValue(ec1, PrimaryLogic.NeedType.Min, false).ToString("F2");
-                this.debugB23.text = PrimaryLogic.MagicAttackValue(ec1, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, PrimaryLogic.SpellSkillType.Standard, false, false).ToString("F2");
-                this.debugB24.text = PrimaryLogic.MagicDefenseValue(ec1, PrimaryLogic.NeedType.Min, false).ToString("F2");
-                this.debugB25.text = PrimaryLogic.BattleSpeedValue(ec1, false).ToString("F2");
-                this.debugB26.text = PrimaryLogic.BattleResponseValue(ec1, false).ToString("F2");
-                this.debugB27.text = PrimaryLogic.PotentialValue(ec1, false).ToString("F2");
-                this.debugB31.text = ec1.Target.FirstName;
-                //this.debugB41.text = ec1.MaxLife.ToString();
-                //this.debugB42.text = ec1.MaxMana.ToString();
-                //this.debugB43.text = ec1.MaxInstantPoint.ToString();
-                this.debugB41.text = ec1.CurrentLife.ToString();
-                this.debugB42.text = ec1.CurrentMana.ToString();
-                this.debugB43.text = ec1.CurrentSkillPoint.ToString();
-                this.debugB51.text = ec1.Gold.ToString();
-            }
+            //if (GroundOne.MC != null)
+            //{
+            //    this.debug1.text = GroundOne.MC.TotalStrength.ToString();
+            //    this.debug2.text = GroundOne.MC.TotalAgility.ToString();
+            //    this.debug3.text = GroundOne.MC.TotalIntelligence.ToString();
+            //    this.debug4.text = GroundOne.MC.TotalStamina.ToString();
+            //    this.debug5.text = GroundOne.MC.TotalMind.ToString();
+            //    this.debug21.text = PrimaryLogic.PhysicalAttackValue(GroundOne.MC, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false).ToString("F2");
+            //    this.debug22.text = PrimaryLogic.PhysicalDefenseValue(GroundOne.MC, PrimaryLogic.NeedType.Min, false).ToString("F2");
+            //    this.debug23.text = PrimaryLogic.MagicAttackValue(GroundOne.MC, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, PrimaryLogic.SpellSkillType.Standard, false, false).ToString("F2");
+            //    this.debug24.text = PrimaryLogic.MagicDefenseValue(GroundOne.MC, PrimaryLogic.NeedType.Min, false).ToString("F2");
+            //    this.debug25.text = PrimaryLogic.BattleSpeedValue(GroundOne.MC, false).ToString("F2");
+            //    this.debug26.text = PrimaryLogic.BattleResponseValue(GroundOne.MC, false).ToString("F2");
+            //    this.debug27.text = PrimaryLogic.PotentialValue(GroundOne.MC, false).ToString("F2");
+            //    this.debug31.text = GroundOne.MC.Target.FirstName;
+            //    //this.debug41.text = GroundOne.MC.MaxLife.ToString();
+            //    //this.debug42.text = GroundOne.MC.MaxMana.ToString();
+            //    //this.debug43.text = GroundOne.MC.MaxInstantPoint.ToString();
+            //    this.debug41.text = GroundOne.MC.CurrentLife.ToString();
+            //    this.debug42.text = GroundOne.MC.CurrentMana.ToString();
+            //    this.debug43.text = GroundOne.MC.CurrentSkillPoint.ToString();
+            //    this.debug51.text = GroundOne.MC.Gold.ToString();
+            //}
+            //if (ec1 != null)
+            //{
+            //    this.debugB1.text = ec1.TotalStrength.ToString();
+            //    this.debugB2.text = ec1.TotalAgility.ToString();
+            //    this.debugB3.text = ec1.TotalIntelligence.ToString();
+            //    this.debugB4.text = ec1.TotalStamina.ToString();
+            //    this.debugB5.text = ec1.TotalMind.ToString();
+            //    this.debugB21.text = PrimaryLogic.PhysicalAttackValue(ec1, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, 0.0F, 0.0F, 1.0F, PrimaryLogic.SpellSkillType.Standard, false).ToString("F2");
+            //    this.debugB22.text = PrimaryLogic.PhysicalDefenseValue(ec1, PrimaryLogic.NeedType.Min, false).ToString("F2");
+            //    this.debugB23.text = PrimaryLogic.MagicAttackValue(ec1, PrimaryLogic.NeedType.Min, 1.0F, 0.0F, PrimaryLogic.SpellSkillType.Standard, false, false).ToString("F2");
+            //    this.debugB24.text = PrimaryLogic.MagicDefenseValue(ec1, PrimaryLogic.NeedType.Min, false).ToString("F2");
+            //    this.debugB25.text = PrimaryLogic.BattleSpeedValue(ec1, false).ToString("F2");
+            //    this.debugB26.text = PrimaryLogic.BattleResponseValue(ec1, false).ToString("F2");
+            //    this.debugB27.text = PrimaryLogic.PotentialValue(ec1, false).ToString("F2");
+            //    this.debugB31.text = ec1.Target.FirstName;
+            //    //this.debugB41.text = ec1.MaxLife.ToString();
+            //    //this.debugB42.text = ec1.MaxMana.ToString();
+            //    //this.debugB43.text = ec1.MaxInstantPoint.ToString();
+            //    this.debugB41.text = ec1.CurrentLife.ToString();
+            //    this.debugB42.text = ec1.CurrentMana.ToString();
+            //    this.debugB43.text = ec1.CurrentSkillPoint.ToString();
+            //    this.debugB51.text = ec1.Gold.ToString();
+            //}
 
             System.Threading.Thread.Sleep(Database.BATTLE_CORE_SLEEP);
             #region "キー制御"

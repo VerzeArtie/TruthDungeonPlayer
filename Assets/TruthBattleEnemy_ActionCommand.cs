@@ -1650,11 +1650,8 @@ namespace DungeonPlayer
         private void PlayerSkillColorlessMove(MainCharacter player, MainCharacter target)
         {
             UpdateBattleText(player.GetCharacterSentence(156));
-            if (PlayerNormalAttack(player, target, 0, false, false))
-            {
-                GroundOne.PlaySoundEffect("AeroBlade");
-                PlayerBuffAbstract(player, player, Database.COLORLESS_MOVE);
-            }
+            GroundOne.PlaySoundEffect("AeroBlade");
+            PlayerBuffAbstract(player, player, Database.COLORLESS_MOVE);
         }
         /// <summary>
         /// フューチャー・ヴィジョンのメソッド

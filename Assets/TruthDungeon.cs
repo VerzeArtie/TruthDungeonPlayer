@@ -1977,12 +1977,7 @@ namespace DungeonPlayer
             else if (this.execEncountEnemy)
             {
                 this.execEncountEnemy = false;
-                if (this.ignoreCreateShadow == false)
-                {
-                    Method.CreateShadowData();
-                }
-                CancelKeyDownMovement();
-                SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false);
+                PrepareCallTruthBattleEnemy();
             }
             else if (Input.GetKeyUp(KeyCode.Alpha8) || Input.GetKeyUp(KeyCode.UpArrow) ||
                     Input.GetKeyUp(KeyCode.Alpha4) || Input.GetKeyUp(KeyCode.LeftArrow) ||
@@ -15798,8 +15793,8 @@ namespace DungeonPlayer
                         GroundOne.enemyName2 = Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU;
                         GroundOne.enemyName3 = Database.ENEMY_SEA_STAR_KNIGHT_AMARA;
                     }
-                    CancelKeyDownMovement();
-                    SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false);
+
+                    PrepareCallTruthBattleEnemy();
                 }
                 else if (currentEvent == MessagePack.ActionEvent.StopMusic)
                 {
@@ -18879,6 +18874,16 @@ namespace DungeonPlayer
                     this.Filter.SetActive(false);
                 }
             }
+        }
+
+        private void PrepareCallTruthBattleEnemy()
+        {
+            if (this.ignoreCreateShadow == false)
+            {
+                Method.CreateShadowData();
+            }
+            CancelKeyDownMovement();
+            SceneDimension.CallTruthBattleEnemy(Database.TruthDungeon, false, false, false, false);
         }
 
         private bool agilityRoomTimer_Tick()
