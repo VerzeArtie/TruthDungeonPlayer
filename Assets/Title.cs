@@ -42,8 +42,8 @@ namespace DungeonPlayer
 
         public override void Start()
         {
+            LoadGameSetting(); // 基底クラスの先頭でログ更新があるため、その前にログサポートのフラグを読み込む。
             base.Start();
-            LoadGameSetting();
             //if (GroundOne.EnableBGM > 0.0f)
             {
                 GroundOne.PlayDungeonMusic(Database.BGM12, Database.BGM12LoopBegin); // 後編追加    
@@ -90,8 +90,10 @@ namespace DungeonPlayer
                 //this.BattleSpeed = Convert.ToInt32(node3[0].InnerText);
                 XmlNodeList node4 = xml.GetElementsByTagName("Difficulty");
                 GroundOne.Difficulty = Convert.ToInt32(node4[0].InnerText);
-                //XmlNodeList node5 = xml.GetElementsByTagName("StoryMode"); // 後編追加
-                //this.StoryMode = Convert.ToInt32(node5[0].InnerText); // 後編追加
+                XmlNodeList node5 = xml.GetElementsByTagName("SupportLog");
+                GroundOne.SupportLog = Convert.ToBoolean(node5[0].InnerText);
+                //XmlNodeList node6 = xml.GetElementsByTagName("StoryMode"); // 後編追加
+                //this.StoryMode = Convert.ToInt32(node6[0].InnerText); // 後編追加
             }
             catch { }
         }

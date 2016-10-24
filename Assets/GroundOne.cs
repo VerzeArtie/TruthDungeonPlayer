@@ -23,8 +23,6 @@ namespace DungeonPlayer
             Abort, // 逃げる
         }
 
-        public static string OwnerName = "YuasaTomonori"; // ゲーム接続オーナー名 [todo] ゲーム開始時点でオーナーに名前を入れてもらい、記憶する必要がある。
-        public static string guid = "e9a30180-000e-4144-8130-c90c9f317c2f";
 		public static ClientSocket CS = null; // サーバー接続ソケット
 		public static bool IsConnect = false; // サーバー接続OKサイン
         public static List<string> playbackMessage = new List<string>(); // プレイバックメッセージテキスト
@@ -55,10 +53,11 @@ namespace DungeonPlayer
         public static GameObject bgm = null; // BGM音源
         public static AudioSource bgmSource = null; // BGMソース
 
-        public static int EnableBGM = 100; // ミュージック、デフォルトは100 // debug
-        public static int EnableSoundEffect = 100; // 効果音、デフォルトは100 // debug
+        public static int EnableBGM = 100; // ミュージック、デフォルトは100
+        public static int EnableSoundEffect = 100; // 効果音、デフォルトは100
         public static int BattleSpeed = 3;
         public static int Difficulty = 2; // ゲーム難易度 デフォルトは２：普通
+        public static bool SupportLog = true; // SQLサーバーに操作ログを残す　デフォルトはON
 
         public static bool AlreadyInitialize = false; // 既に一度InitializeGroundOneを呼んだかどうか
 

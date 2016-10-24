@@ -11,9 +11,6 @@ namespace DungeonPlayer
 {
     public class ControlSQL : MonoBehaviour
     {
-        // debug
-        private bool DebugDisable = false;
-
         public string connection = string.Empty;
 
         private string TABLE_OWNER_DATA = "owner_data";
@@ -21,27 +18,31 @@ namespace DungeonPlayer
         private string TABLE_DUEL = "duel";
         public void SetupSql()
         {
-            if (DebugDisable) return;
+            if (GroundOne.SupportLog == false) { return; }
 
             try
             {
                 string connection = string.Empty;
                 StringBuilder sb = new StringBuilder();
                 sb.Append("Server=133.242.151.26;");
-                sb.Append("Port=5432;");
+                sb.Append("Port=36712;");
                 sb.Append("User Id=postgres;");
-                sb.Append("Password=postgres;");
+                sb.Append("Password=volgan3612;");
                 sb.Append("Database=postgres;");
+                sb.Append("Timeout=1;");
 
                 connection = sb.ToString();
                 this.connection = connection;
+
             }
-            catch { } // ログ失敗時は、そのまま進む
+            catch {
+                Debug.Log("SetupSql error");
+            } // ログ失敗時は、そのまま進む
         }
 
         public string SelectOwner(string name)
         {
-            if (DebugDisable) { return String.Empty; }
+            if (GroundOne.SupportLog == false) { return String.Empty; }
 
             string table = TABLE_OWNER_DATA;
             string jsonData = String.Empty;
@@ -49,6 +50,7 @@ namespace DungeonPlayer
             {
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
+                    Debug.Log("SelectOwner timeout: " + con.ConnectionTimeout);
                     con.Open();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select to_json(" + table + ") from " + table + " where name = '" + name + "'", con);
                     var dataReader = cmd.ExecuteReader();
@@ -58,21 +60,26 @@ namespace DungeonPlayer
                     }
                 }
             }
-            catch { } // ログ失敗時は、そのまま進む
+            catch
+            {
+                Debug.Log("SelectOwner error");
+            } // ログ失敗時は、そのまま進む
 
             return jsonData;
         }
 
         public void UpdateOwner(string main_event, string sub_event, string current_field)
         {
-            if (DebugDisable) return;
+            if (GroundOne.SupportLog == false) return;
             if (GroundOne.SQL == null) { return; }
 
             try
             {
+                Debug.Log("UpdateOwner(S) " + DateTime.Now);
                 string name = GroundOne.WE2.Account;
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
+                    Debug.Log("UpdateOwner timeout: " + con.ConnectionTimeout);
                     con.Open();
                     DateTime update_time = DateTime.Now;
                     string updateCommand = @"update " + TABLE_OWNER_DATA + " set update_time = :update_time";
@@ -107,21 +114,26 @@ namespace DungeonPlayer
                     }
                     command.ExecuteNonQuery();
                 }
+                Debug.Log("UpdateOwner(E) " + DateTime.Now);
             }
-            catch { } // ログ失敗時は、そのまま進む
+            catch
+            {
+                Debug.Log("UpdateOwner error... " + DateTime.Now);
+            } // ログ失敗時は、そのまま進む
         }
 
         private void UpdateArchiveData(string table, string archive_name)
         {
-            if (DebugDisable) return;
+            if (GroundOne.SupportLog == false) return;
+            if (GroundOne.SQL == null) { return; }
+
             try
             {
-                if (GroundOne.SQL == null) { return; }
-
                 string guid = String.Empty;
 
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
+                    Debug.Log("UpdateArchiveData timeout: " + con.ConnectionTimeout);
                     con.Open();
                     NpgsqlCommand cmd = new NpgsqlCommand(@"select guid from " + TABLE_OWNER_DATA + " where name = '" + GroundOne.WE2.Account + "'", con);
                     var dataReader = cmd.ExecuteReader();
@@ -190,29 +202,32 @@ namespace DungeonPlayer
                     }
                 }
             }
-            catch { } // ログ失敗時は、そのまま進む
+            catch
+            {
+                Debug.Log("UpdateArchiveData error");
+            } // ログ失敗時は、そのまま進む
         }
 
         public void UpdateDuel(string archive_name)
         {
-            if (DebugDisable) return;
             UpdateArchiveData(TABLE_DUEL, archive_name);
         }
         public void UpdateArchivement(string archive_name)
         {
-            if (DebugDisable) return;
             UpdateArchiveData(TABLE_ARCHIVEMENT, archive_name);
         }
 
         public void CreateOwner(string name)
         {
-            if (DebugDisable) return;
+            if (GroundOne.SupportLog == false) return;
+
             try
             {
                 System.Guid guid = System.Guid.NewGuid();
                 DateTime create_time = DateTime.Now;
                 using (Npgsql.NpgsqlConnection con = new NpgsqlConnection(connection))
                 {
+                    Debug.Log("CreateOwner timeout: " + con.ConnectionTimeout);
                     con.Open();
                     string sqlCmd = "INSERT INTO " + TABLE_OWNER_DATA + " ( name, guid, create_time ) VALUES ( :name, :guid, :create_time )";
                     var cmd = new NpgsqlCommand(sqlCmd, con);
@@ -223,7 +238,10 @@ namespace DungeonPlayer
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch { } // ログ失敗時は、そのまま進む
+            catch
+            {
+                Debug.Log("CreateOwner error");
+            } // ログ失敗時は、そのまま進む
         }
     }
 }
