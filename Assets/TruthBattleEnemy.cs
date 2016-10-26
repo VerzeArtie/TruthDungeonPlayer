@@ -1761,7 +1761,7 @@ namespace DungeonPlayer
             popupInfo.transform.position = current;
             popupInfo.SetActive(true);
             CurrentInfo.text = currentImage.ImageName;
-            CurrentInfo.text += "\r\n" + TruthActionCommand.GetDescription(currentImage.ImageName);
+            CurrentInfo.text += "\r\n" + TruthActionCommand.GetDescriptionMini(currentImage.ImageName);
         }
         void PointerExit()
         {
@@ -7444,14 +7444,22 @@ namespace DungeonPlayer
                 targetLabel.text = Convert.ToString(this.nowAnimationDamage[0]);
             }
             
-            int waitTime = 60;
-            if (Database.BATTLE_CORE_SLEEP == 40) waitTime = 150;
-            else if (Database.BATTLE_CORE_SLEEP == 20) waitTime = 90;
-            else if (Database.BATTLE_CORE_SLEEP == 10) waitTime = 60;
-            else if (Database.BATTLE_CORE_SLEEP == 5) waitTime = 40;
-            else if (Database.BATTLE_CORE_SLEEP == 2) waitTime = 20;
-            if (this.HiSpeedAnimation) { waitTime = waitTime / 2; }
-            if (this.nowAnimationInterval[0] > 0) waitTime = this.nowAnimationInterval[0];
+            int[] waitTime = {150, 90, 60, 40, 20};
+
+            if (Application.platform == RuntimePlatform.Android ||
+                Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                waitTime[0] = 120; waitTime[1] = 70; waitTime[2] = 40; waitTime[3] = 20; waitTime[4] = 10;
+            }
+            int wait = waitTime[2];
+            if (Database.BATTLE_CORE_SLEEP == 40) wait = waitTime[0];
+            else if (Database.BATTLE_CORE_SLEEP == 20) wait = waitTime[1];
+            else if (Database.BATTLE_CORE_SLEEP == 10) wait = waitTime[2];
+            else if (Database.BATTLE_CORE_SLEEP == 5) wait = waitTime[3];
+            else if (Database.BATTLE_CORE_SLEEP == 2) wait = waitTime[4];
+
+            if (this.HiSpeedAnimation) { wait = wait / 2; }
+            if (this.nowAnimationInterval[0] > 0) wait = this.nowAnimationInterval[0];
 
             if (this.nowAnimationCounter <= 0)
             {
@@ -7481,7 +7489,7 @@ namespace DungeonPlayer
             System.Threading.Thread.Sleep(5);
 
             this.nowAnimationCounter++;
-            if (this.nowAnimationCounter > waitTime)
+            if (this.nowAnimationCounter > wait)
             {
                 targetLabel.gameObject.SetActive(false);
                 targetLabel.transform.position = ExecAnimation_basePoint;

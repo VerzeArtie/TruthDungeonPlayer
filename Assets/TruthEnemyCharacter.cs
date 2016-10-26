@@ -87,7 +87,7 @@ namespace DungeonPlayer
         public bool DetectCannotBeSlow { get; set; } // 敵が鈍化耐性があるかどうかを知るフラグ
         public bool DetectCannotBeBlind { get; set; } // 敵が暗闇耐性があるかどうかを知るフラグ
         public bool DetectCannotBeSlip { get; set; } // 敵がスリップ耐性があるかどうかを知るフラグ
-        public bool DetectCannotBeNoResurrection { get; set; } // 敵が復活不可耐性があるかどうかを知るフラグ
+        public bool DetectCannotBeNoResurrection { get; set; } // 敵が蘇生不可耐性があるかどうかを知るフラグ
         public bool DetectCannotBeNoGainLife { get; set; } // 敵がライフ回復不可耐性があるかどうかを知るフラグ
         public bool DetectDeath { get; set; } // 敵が自分が一旦死亡した事を知るフラグ（レギィンアーゼLv3専用）
 
@@ -4112,7 +4112,7 @@ namespace DungeonPlayer
                         //this.ActionLabel.text = "鈍化";
                         //this.ActionLabel.text = "暗闇";
                         //this.ActionLabel.text = "スリップ";
-                        this.ActionLabel.text = "復活不可";
+                        this.ActionLabel.text = "蘇生不可";
                         this.Target = target;
                     }
                     else if (this.CurrentAbsorbWater <= 0)
@@ -4210,7 +4210,7 @@ namespace DungeonPlayer
                             this.ActionLabel.text = "鈍化";
                             this.ActionLabel.text = "暗闇";
                             this.ActionLabel.text = "スリップ";
-                            this.ActionLabel.text = "復活不可";
+                            this.ActionLabel.text = "蘇生不可";
                             this.Target = target;
                             break;
                         case 9:

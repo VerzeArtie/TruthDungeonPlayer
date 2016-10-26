@@ -586,7 +586,7 @@ namespace DungeonPlayer
                 target.RemoveSlow();
                 target.RemoveBlind();
                 target.RemoveSlip();
-                //target.RemoveNoResurrection(); // 復活不可は負の影響という定義には当てはまらない。
+                //target.RemoveNoResurrection(); // 蘇生不可は負の影響という定義には当てはまらない。
                 //target.RemoveNoGainLife(); // ライフ回復不可は負の影響という定義には当てはまらない。
                 GroundOne.PlaySoundEffect("Cleansing");
                 UpdateBattleText(target.FirstName + "にかかっている負の影響が全て取り払われた。\r\n");
@@ -629,7 +629,7 @@ namespace DungeonPlayer
                 group[ii].DeBuff(group[ii].pbBlind);
                 group[ii].CurrentSlip = 0;
                 group[ii].DeBuff(group[ii].pbSlip);
-                //group[ii].CurrentNoResurrection = 0; // 復活不可は負の影響という定義には当てはまらない。
+                //group[ii].CurrentNoResurrection = 0; // 蘇生不可は負の影響という定義には当てはまらない。
                 //group[ii].DeBuff(group[ii].pbNoResurrection);
                 //group[ii].CurrentNoGainLife = 0;
                 //group[ii].DeBuff(player.pbNoGainLife);
@@ -666,7 +666,7 @@ namespace DungeonPlayer
             target.DeBuff(target.pbBlind);
             target.CurrentSlip = 0;
             target.DeBuff(target.pbSlip);
-            //target.CurrentNoResurrection = 0; // 復活不可は負の影響という定義には当てはまらない。
+            //target.CurrentNoResurrection = 0; // 蘇生不可は負の影響という定義には当てはまらない。
             //target.DeBuff(target.pbNoResurrection);
             //target.CurrentNoGainLife = 0;
             //target.DeBuff(target.pbNoGainLife);

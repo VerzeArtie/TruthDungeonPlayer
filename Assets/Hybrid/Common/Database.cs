@@ -184,7 +184,7 @@ namespace DungeonPlayer
         public const string STRING_SLOW = @"【鈍化】";
         public const string STRING_BLIND = @"【暗闇】";
         public const string STRING_SLIP = @"【スリップ】";
-        public const string STRING_NORESURRECTION = @"【復活不可】";
+        public const string STRING_NORESURRECTION = @"【蘇生不可】";
         public const string STRING_NOGAIN_LIFE = @"【ライフ回復不可】";
         // e 後編追加
 
@@ -1121,7 +1121,7 @@ namespace DungeonPlayer
         public const string EFFECT_SLOW = @"鈍化";
         public const string EFFECT_BLIND = @"暗闇";
         public const string EFFECT_SLIP = @"スリップ";
-        public const string EFFECT_NORESURRECTION = @"復活不可";
+        public const string EFFECT_NORESURRECTION = @"蘇生不可";
         public const string EFFECT_NOGAIN_LIFE = @"ライフ回復不可";
 
         public const string EFFECT_CANNOT_BUFF = @"封殺";
@@ -1139,7 +1139,7 @@ namespace DungeonPlayer
         public const string RESIST_SLOW = @"鈍化耐性！";
         public const string RESIST_BLIND = @"暗闇耐性！";
         public const string RESIST_SLIP = @"スリップ耐性！";
-        public const string RESIST_NORESURRECTION = @"復活不可耐性！";
+        public const string RESIST_NORESURRECTION = @"蘇生不可耐性！";
 
         public const string RESIST_LIFE_DOWN = @"ライフダウン耐性！";
 

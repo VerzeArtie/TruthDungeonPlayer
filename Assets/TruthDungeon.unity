@@ -7782,10 +7782,10 @@ RectTransform:
   - {fileID: 627230558}
   m_Father: {fileID: 1408778859}
   m_RootOrder: 12
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 805.7, y: -644.6}
-  m_SizeDelta: {x: 121, y: 40.8}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -585, y: 75.400024}
+  m_SizeDelta: {x: 190, y: 65}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1629672097
 MonoBehaviour:

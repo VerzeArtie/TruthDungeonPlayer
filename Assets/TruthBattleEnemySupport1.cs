@@ -4442,7 +4442,7 @@ namespace DungeonPlayer
             //                    {
             //                        NowSlip(player, target, 2);
             //                    }
-            //                    else if (player.ActionLabel.text == "復活不可")
+            //                    else if (player.ActionLabel.text == "蘇生不可")
             //                    {
             //                        NowNoResurrection(player, target, 2);
             //                    }

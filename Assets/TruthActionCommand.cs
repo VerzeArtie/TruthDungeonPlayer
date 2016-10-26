@@ -3734,6 +3734,137 @@ namespace DungeonPlayer
         {
             return "【恐怖】【スタン】【沈黙】【猛毒】【誘惑】【凍結】【麻痺】【スロウ】【暗闇】【スリップ】";
         }
+        public static string GetDescriptionMini(string command)
+        {
+            if (command == Database.ARCHETYPE_COMMAND) { return "潜在奥義【元核】"; }
+
+            if (command == Database.PROTECTION) { return "物理防御力ＵＰ"; }
+            if (command == Database.SAINT_POWER) { return "物理攻撃力ＵＰ"; }
+            if (command == Database.GLORY) { return "物理攻撃する度に回復"; }
+
+            if (command == Database.SHADOW_PACT) { return "魔法攻撃力ＵＰ"; }
+            if (command == Database.BLACK_CONTRACT) { return "毎ターンライフを失う。\r\nスキル、魔法の発動コスト０"; }
+            if (command == Database.BLOODY_VENGEANCE) { return "【力】パラメタＵＰ"; }
+            if (command == Database.DAMNATION) { return "毎ターン、ライフを失う。\r\n"; }
+
+            if (command == Database.FLAME_AURA) { return "物理攻撃する度に、追加で【火】ダメージ"; }
+            if (command == Database.HEAT_BOOST) { return "【技】パラメタＵＰ"; }
+            if (command == Database.IMMORTAL_RAVE) { return "魔法攻撃する度に、追加効果で【火】ダメージ"; }
+
+            if (command == Database.ABSORB_WATER) { return "魔法防御力ＵＰ"; }
+            if (command == Database.MIRROR_IMAGE) { return "魔法攻撃を反射"; }
+            if (command == Database.PROMISED_KNOWLEDGE) { return "【知】パラメタＵＰ"; }
+            if (command == Database.ABSOLUTE_ZERO) { return "ライフ・マナ・スキル回復不可、スペル詠唱不可、スキル使用不可、防御不可"; }
+
+            if (command == Database.GALE_WIND) { return "連続で２回行動"; }
+            if (command == Database.WORD_OF_LIFE) { return "毎ターン、ライフ回復"; }
+            if (command == Database.WORD_OF_FORTUNE) { return "必ずクリティカルヒット"; }
+            if (command == Database.AETHER_DRIVE) { return "自分への物理ダメージ半減。\r\n敵への物理ダメージを２倍。"; }
+            if (command == Database.ETERNAL_PRESENCE) { return "物理攻撃力／物理防御力／魔法攻撃力／魔法防御力ＵＰ"; }
+
+            if (command == Database.RISE_OF_IMAGE) { return "【心】パラメタＵＰ"; }
+            if (command == Database.DEFLECTION) { return "物理攻撃を反射"; }
+            if (command == Database.ONE_IMMUNITY) { return "防御体制で、全ダメージを無効化"; }
+            if (command == Database.TIME_STOP) { return "タイムストップ！"; }
+
+            if (command == Database.PSYCHIC_TRANCE) { return "魔法攻撃力ＵＰ＜強＞。\r\n魔法防御力ＤＯＷＮ。"; }
+            if (command == Database.BLIND_JUSTICE) { return "物理攻撃力ＵＰ＜強＞。\r\n物理防御力ＤＯＷＮ。"; }
+            if (command == Database.TRANSCENDENT_WISH) { return "力/技/知/体/心パラメタＵＰ。\r\n本効果が切れた場合、死亡する。"; }
+
+            if (command == Database.FLASH_BLAZE) { return "ターン終了時、【聖/火】ダメージ"; }
+
+            if (command == Database.SKY_SHIELD) { return "自分への魔法ダメージを０に軽減"; }
+            if (command == Database.EVER_DROPLET) { return "毎ターン、マナ回復"; }
+
+            if (command == Database.HOLY_BREAKER) { return "物理ダメージを受けた場合、攻撃者へ同等のダメージを与える。"; }
+            if (command == Database.EXALTED_FIELD) { return "物理防御力／魔法防御力ＵＰ"; }
+            if (command == Database.HYMN_CONTRACT) { return "毎ターンライフを失う。\r\n魔法／スキルはカウンターされない。"; }
+
+            if (command == Database.STAR_LIGHTNING) { return "【スタン】効果"; }
+
+            if (command == Database.BLACK_FIRE) { return "魔法防御力ＤＯＷＮ"; }
+            if (command == Database.BLAZING_FIELD) { return "毎ターン、【闇/火】ダメージ"; }
+            if (command == Database.DEMONIC_IGNITE) { return "【ライフ回復不可】効果"; }
+
+            if (command == Database.DEATH_DENY) { return "【蘇生不可】効果"; }
+
+            if (command == Database.WORD_OF_MALICE) { return "戦闘反応力ＤＯＷＮ"; }
+            if (command == Database.SIN_FORTUNE) { return "クリティカルダメージＵＰ"; }
+
+            if (command == Database.DARKEN_FIELD) { return "物理防御力／魔法防御力ＤＯＷＮ"; }
+            if (command == Database.ECLIPSE_END) { return "全ダメージを無効化"; }
+
+            if (command == Database.FROZEN_AURA) { return "直接攻撃する度に、追加で【水】ダメージ"; }
+            if (command == Database.CHILL_BURN) { return "【凍結】効果"; }
+
+            if (command == Database.ENRAGE_BLAST) { return "毎ターン、【火/理】ダメージ"; }
+            if (command == Database.SIGIL_OF_HOMURA) { return "【火】属性ダメージ発生時、追加で同等の【火】ダメージ。\r\n火属性防御による軽減無効。"; }
+
+            if (command == Database.IMMOLATE) { return "物理防御力ＤＯＷＮ"; }
+            if (command == Database.PHANTASMAL_WIND) { return "戦闘反応力ＵＰ"; }
+            if (command == Database.RED_DRAGON_WILL) { return "【火】属性ダメージＵＰ"; }
+
+            if (command == Database.STATIC_BARRIER) { return "自分への物理／魔法ダメージを半分"; }
+            if (command == Database.AUSTERITY_MATRIX) { return "正のＢＵＦＦ効果を無効"; }
+
+            if (command == Database.VANISH_WAVE) { return "【沈黙】効果"; }
+            if (command == Database.VORTEX_FIELD) { return "【鈍化】"; }
+            if (command == Database.BLUE_DRAGON_WILL) { return "【水】属性ダメージＵＰ"; }
+
+            if (command == Database.SEVENTH_MAGIC) { return "【力】と【知】を転換"; }
+            if (command == Database.PARADOX_IMAGE) { return "潜在能力ＵＰ"; }
+
+            // スキル
+            if (command == Database.CRUSHING_BLOW) { return "【スタン】効果"; }
+
+            if (command == Database.ANTI_STUN) { return "負のＢＵＦＦ耐性"; }
+            if (command == Database.STANCE_OF_DEATH) { return "死亡耐性（ライフ１で蘇生）"; }
+
+            if (command == Database.STANCE_OF_FLOW) { return "必ず後から行動"; }
+
+            if (command == Database.STANCE_OF_STANDING) { return "常に防御姿勢"; }
+
+            if (command == Database.TRUTH_VISION) { return "敵のダメージ減少ＢＵＦＦ効果を無効化"; }
+            if (command == Database.HIGH_EMOTIONALITY) { return "【体】パラメタＵＰ"; }
+            if (command == Database.PAINFUL_INSANITY) { return "毎ターン、それぞれの敵へ魔法ダメージ"; }
+
+            if (command == Database.VOID_EXTRACTION) { return "力／技／知／心の中で\r\n最も高いパラメタをＵＰ"; }
+            if (command == Database.NOTHING_OF_NOTHINGNESS) { return "魔法およびスキルへのカウンター無効\r\n正のＢＵＦＦ効果が解除無効\r\nAusterityMatrixのBUFF効果無効"; }
+
+            if (command == Database.STANCE_OF_DOUBLE) { return "メイン行動＋前回の行動"; }
+
+            if (command == Database.SWIFT_STEP) { return "戦闘速度ＵＰ"; }
+            if (command == Database.VIGOR_SENSE) { return "戦闘反応ＵＰ"; }
+
+            if (command == Database.RISING_AURA) { return "物理攻撃力ＵＰ"; }
+
+            if (command == Database.ONSLAUGHT_HIT) { return "物理攻撃力／魔法攻撃力ＤＯＷＮ"; }
+
+            if (command == Database.COLORLESS_MOVE) { return "戦闘速度０\r\n戦闘反応ＵＰ"; }
+            if (command == Database.ASCENSION_AURA) { return "魔法攻撃力ＵＰ"; }
+
+            if (command == Database.FUTURE_VISION) { return "敵のインスタント行動をカウンター"; }
+            if (command == Database.UNKNOWN_SHOCK) { return "【暗闇】効果"; }
+
+            if (command == Database.SHARP_GLARE) { return "【沈黙】効果"; }
+            if (command == Database.CONCUSSIVE_HIT) { return "物理防御力／魔法防御力ＤＯＷＮ"; }
+
+            if (command == Database.SURPRISE_ATTACK) { return "【麻痺】効果"; }
+            if (command == Database.STANCE_OF_MYSTIC) { return "物理攻撃／魔法攻撃を回避\r\n"; }
+
+            if (command == Database.NOURISH_SENSE) { return "ライフ回復量ＵＰ"; }
+
+            if (command == Database.IMPULSE_HIT) { return "戦闘速度／戦闘反応ＤＯＷＮ"; }
+
+            if (command == Database.ONE_AUTHORITY) { return "スキル消費コスト半分。\r\n毎ターン、スキルポイント回復"; }
+
+            if (command == Database.ARCHETYPE_EIN) { return "「物理/魔法」ダメージをＸ倍"; }
+            //if (command == Database.ARCHETYPE_RANA) { return "味方全体：ターン制依存のBUFF効果をＸターン追加で継続する。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
+            //if (command == Database.ARCHETYPE_OL) { return "敵全体：Ｘ回の物理ダメージ。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; }
+            //if (command == Database.ARCHETYPE_VERZE) { return "インスタント対象：自分のインスタント行動をＸ回行う。Ｘは心パラメタに依存する。一日に一度しか使用できない。"; } 
+            return string.Empty;
+        }
+
         public static string GetDescription(string command)
         {
             if (command == Database.ATTACK_EN) { return "通常攻撃を行う。"; }

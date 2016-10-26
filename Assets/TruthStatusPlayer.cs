@@ -2265,7 +2265,7 @@ namespace DungeonPlayer
             ResistAbnormalStatus[8].text = Database.STRING_SLIP;
             if (player.CheckResistSlip) ResistAbnormalStatusValue[8].text = "○";
             else ResistAbnormalStatusValue[8].text = "--";
-            // [コメント] 復活不可は特殊なので、ステータスとして見せない。
+            // [コメント] 蘇生不可は特殊なので、ステータスとして見せない。
             //ResistAbnormalStatus[9].Text = Database.STRING_NORESURRECTION;
             //if (player.CheckResistNoResurrection) ResistAbnormalStatusValue[9].Text += "　○";
         }
