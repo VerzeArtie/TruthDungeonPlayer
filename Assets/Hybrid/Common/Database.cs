@@ -1038,7 +1038,7 @@ namespace DungeonPlayer
         public static int SKILL_ONETYPE_MAX_NUM = 4;
         public static int SPELL_MAX_NUM = 42;
         public static int SKILL_MAX_NUM = 24;
-        public static int BATTLE_COMMAND_MAX = 7;
+        public static int BATTLE_COMMAND_MAX = 9;
 
         public static int MAX_PARAMETER = 10000; // パラメタ最大値（最後のボス仕様に影響があります）
         public static int TRUTH_FIRST_POS = DUNGEON_MOVE_LEN * 13 + 39; // 後編ダンジョン開始位置
