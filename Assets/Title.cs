@@ -598,6 +598,11 @@ namespace DungeonPlayer
             }
 
             GroundOne.enemyName1 = txtName.text;
+            GroundOne.enemyName2 = String.Empty;
+            if (GroundOne.enemyName1 == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+            {
+                GroundOne.enemyName2 = Database.ENEMY_JELLY_EYE_DEEP_BLUE;
+            }
             if (toggle2.isOn)
             {
                 GroundOne.enemyName2 = Database.DUEL_DUMMY_SUBURI;

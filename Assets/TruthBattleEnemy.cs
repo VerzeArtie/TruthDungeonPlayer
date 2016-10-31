@@ -1570,31 +1570,88 @@ namespace DungeonPlayer
                     }
                     player.labelName.color = UnityColor.DarkOrange;
 
-                    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
-                    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
-                    player.labelCurrentLifePoint.fontSize = 42;
-                    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
-                    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
-                    player.labelName.fontSize = 28;
-                    player.labelName.alignment = TextAnchor.MiddleCenter;
-                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
-                    player.CriticalLabel.fontSize = 38;
-                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
-                    player.DamageLabel.fontSize = 34;
-                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(165, 130, 0);
-                    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
-                    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
-                    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
-                    player.ActionLabel.fontSize = 24;
-                    player.ActionLabel.alignment = TextAnchor.MiddleLeft;
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 55, 0);
-                    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
-                    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 30, 0);
-                    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
-                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
-                    player.labelCurrentInstantPoint.color = UnityColor.Gold;
+                    if (player.FirstName == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
+                    {
+                        player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(185, 235, 0);
+                        player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 50);
+                        player.labelCurrentLifePoint.fontSize = 42;
+                        player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 255, 0);
+                        player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                        player.labelName.fontSize = 28;
+                        player.labelName.alignment = TextAnchor.MiddleCenter;
+                        player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                        player.CriticalLabel.fontSize = 38;
+                        player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                        player.DamageLabel.fontSize = 34;
+                        player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(234, 235, 0);
+                        player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 80);
+                        player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 215, 0);
+                        player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                        player.ActionLabel.fontSize = 22;
+                        player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                        player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 190, 0);
+                        player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                        player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 165, 0);
+                        player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, 135, 0);
+                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 20);
+                        player.labelCurrentInstantPoint.color = UnityColor.Gold;
 
+                    }
+                    else if (player.FirstName == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
+                    {
+                        player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(185, 75, 0);
+                        player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 50);
+                        player.labelCurrentLifePoint.fontSize = 42;
+                        player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 100, 0);
+                        player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                        player.labelName.fontSize = 28;
+                        player.labelName.alignment = TextAnchor.MiddleCenter;
+                        player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                        player.CriticalLabel.fontSize = 38;
+                        player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                        player.DamageLabel.fontSize = 34;
+                        player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(234, 75, 0);
+                        player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(80, 80);
+                        player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 65, 0);
+                        player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                        player.ActionLabel.fontSize = 22;
+                        player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                        player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 35, 0);
+                        player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                        player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 10, 0);
+                        player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -20, 0);
+                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 20);
+                        player.labelCurrentInstantPoint.color = UnityColor.Gold;
+                    }
+                    else
+                    {
+                        player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
+                        player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
+                        player.labelCurrentLifePoint.fontSize = 42;
+                        player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
+                        player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                        player.labelName.fontSize = 28;
+                        player.labelName.alignment = TextAnchor.MiddleCenter;
+                        player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                        player.CriticalLabel.fontSize = 38;
+                        player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                        player.DamageLabel.fontSize = 34;
+                        player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(165, 130, 0);
+                        player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                        player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
+                        player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                        player.ActionLabel.fontSize = 24;
+                        player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                        player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 55, 0);
+                        player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                        player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 30, 0);
+                        player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
+                        player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                        player.labelCurrentInstantPoint.color = UnityColor.Gold;
+                    }
             //        //if (player.Name == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
             //        //{
             //        //    player.labelName.Location = new Point(430, 70);
