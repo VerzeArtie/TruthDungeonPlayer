@@ -6050,6 +6050,15 @@ namespace DungeonPlayer
                 player.CurrentUsingItem = commandString;
             }
             player.ActionLabel.text = TruthActionCommand.ConvertToJapanese(commandString);
+
+            if (pa == PlayerAction.SpecialSkill)
+            {
+                player.MainObjectButton.image.sprite = Resources.Load<Sprite>(Database.ATTACK_EN);
+            }
+            else
+            {
+                player.MainObjectButton.image.sprite = Resources.Load<Sprite>(commandString);
+            }
         }
     }
 }

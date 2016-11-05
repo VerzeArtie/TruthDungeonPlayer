@@ -3252,7 +3252,7 @@ namespace DungeonPlayer
             if (command == Database.SACRED_HEAL) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.EVER_DROPLET) { return TimingType.Instant; }
 
-            if (command == Database.HOLY_BREAKER) { return TimingType.Sorcery; }
+            if (command == Database.HOLY_BREAKER) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.EXALTED_FIELD) { return TimingType.Normal; } // change unity (Sorcery -> Normal)
             if (command == Database.HYMN_CONTRACT) { return TimingType.Instant; } // change unity (Sorcery -> Instant)
 

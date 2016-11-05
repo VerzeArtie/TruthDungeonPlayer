@@ -2166,8 +2166,8 @@ namespace DungeonPlayer
         private void SetupAllyGroup(ref List<MainCharacter> group)
         {
             if (GroundOne.WE.AvailableFirstCharacter && GroundOne.MC != null && !GroundOne.MC.Dead) { group.Add(GroundOne.MC); }
-            if (GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
-            if (GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
+            if (!GroundOne.DuelMode && GroundOne.WE.AvailableSecondCharacter && GroundOne.SC != null && !GroundOne.SC.Dead) { group.Add(GroundOne.SC); }
+            if (!GroundOne.DuelMode && GroundOne.WE.AvailableThirdCharacter && GroundOne.TC != null && !GroundOne.TC.Dead) { group.Add(GroundOne.TC); }
         }
     }
 }
