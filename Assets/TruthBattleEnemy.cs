@@ -1625,6 +1625,12 @@ namespace DungeonPlayer
                         player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 20);
                         player.labelCurrentInstantPoint.color = UnityColor.Gold;
                     }
+                    else if (player.FirstName == Database.ENEMY_SEA_STAR_ORIGIN_KING ||
+                             player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU ||
+                             player.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA)
+                    {
+                        // レイアウト変更はしない。
+                    }
                     else
                     {
                         player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
@@ -1652,28 +1658,6 @@ namespace DungeonPlayer
                         player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
                         player.labelCurrentInstantPoint.color = UnityColor.Gold;
                     }
-            //        //if (player.Name == Database.ENEMY_JELLY_EYE_BRIGHT_RED)
-            //        //{
-            //        //    player.labelName.Location = new Point(430, 70);
-            //        //    player.labelLife.Location = new Point(514, 87);
-            //        //    player.MainObjectButton.Location = new Point(400, 89);
-            //        //    player.CriticalLabel.Location = new Point(393, 99);
-            //        //    player.DamageLabel.Location = new Point(393, 109);
-            //        //    player.ActionLabel.Location = new Point(503, 116);
-            //        //    player.labelCurrentInstantPoint.Location = new Point(400, 139);
-            //        //    player.BuffPanel.Location = new Point(390, 172); 
-            //        //}
-            //        //if (player.Name == Database.ENEMY_JELLY_EYE_DEEP_BLUE)
-            //        //{
-            //        //    player.labelName.Location = new Point(430, 207);
-            //        //    player.labelLife.Location = new Point(514, 228);
-            //        //    player.MainObjectButton.Location = new Point(400, 230);
-            //        //    player.CriticalLabel.Location = new Point(393, 240);
-            //        //    player.DamageLabel.Location = new Point(393, 250);
-            //        //    player.ActionLabel.Location = new Point(503, 257);
-            //        //    player.labelCurrentInstantPoint.Location = new Point(400, 280);
-            //        //    player.BuffPanel.Location = new Point(390, 310); 
-            //        //}
 
             //        //if (player.Name == Database.ENEMY_SEA_STAR_ORIGIN_KING)
             //        //{

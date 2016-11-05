@@ -4770,7 +4770,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU:
                     SetupParameterMonster(70, 900, 650, 300, 2662, 100, (int)(listExp[54]), (int)(listGold[54]));
                     this.baseInstantPoint = 5400;
-                    this.Rare = RareString.Red;
+                    this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss25;
                     break;
@@ -4778,7 +4778,7 @@ namespace DungeonPlayer
                 case Database.ENEMY_SEA_STAR_KNIGHT_AMARA:
                     SetupParameterMonster(70, 900, 680, 300, 2662, 100, (int)(listExp[55]), (int)(listGold[55]));
                     this.baseInstantPoint = 3600;
-                    this.Rare = RareString.Red;
+                    this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
                     this.Area = MonsterArea.Boss25;
                     break;
