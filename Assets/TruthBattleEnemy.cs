@@ -5466,17 +5466,11 @@ namespace DungeonPlayer
         public void tapActionButton2(Button obj)
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_COMMAND1, obj.name, String.Empty);
-            string command = obj.name;
-            player2MainObject.image.sprite = obj.image.sprite;
-
             ActionCommand(false, GroundOne.SC, obj.name);
         }
         public void tapActionButton3(Button obj)
         {
             GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_COMMAND1, obj.name, String.Empty);
-            string command = obj.name;
-            player3MainObject.image.sprite = obj.image.sprite;
-
             ActionCommand(false, GroundOne.TC, obj.name);
         }
 
