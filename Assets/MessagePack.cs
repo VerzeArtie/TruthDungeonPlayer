@@ -209,6 +209,7 @@ namespace DungeonPlayer
             HomeTownMessageDisplay,
             HomeTownYesNoMessageDisplay,
             HomeTownShowActiveSkillSpell,
+            HomeTownShowActiveSkillSpellSC,
             HomeTownCallPotionShop,
             HomeTownCallSaveLoad,
             HomeTownCallDuel,
@@ -32404,54 +32405,1221 @@ namespace DungeonPlayer
         // ラナ習得済み
         public static void Message40010_1(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            GroundOne.WE.Truth_CommunicationLana22 = true;
+
+            messageList.Add("アイン：っお、こんなトコに居たのかよ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アインじゃない。どうかしたの？　やけに嬉しそうだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：聞いてくれ、すげぇんだよこれが！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイハイ、またいつものバカ騒ぎね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあそう言わず、モノは一見にしかず！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：モノじゃなくて百聞よ。まあそれ以前に１つも聞いてないんだけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：堅い事言うなって。っじゃ、そこで見てろよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイハイ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・行くぜ、究極奥義！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：スーパー・ハイパー・アルティメット・ゴッド・サンダー！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ッバシュ！！（アインはフラッシュ・ブレイズを放った）　　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ！決まった！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハッハッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どうだ、ラナ。どうだどうだどうだ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：口が開いたまま塞がってねえようだな！　ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何かと思えば、今のフラッシュ・ブレイズでしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：基となる火属性のファイア・ボールに聖属性のダメージを追加効果で付けるやつよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：詠唱方法は、火属性の詠唱中に聖イメージを融合させるから、少し訓練が必要ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイン、直感バカだから無理だと思ってたんだけど、どこで習得したのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ッグ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ひょっとして独学で編み出したわけじゃないわよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ！　お前が何で知ってるんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：知ってるも何も、知ってるに決まってるじゃない♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：解せぬ！！　なぜだ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：「解せぬ」ってどこの台詞まわし使ってるのよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ホラ、私って聖フローラ女学院に飛び級で通ってたでしょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ファラ様が設立した学院ぐらい知ってるぜ、それがどうしたってんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そこで複合魔法および複合スキルの基礎を学んだのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ただし、飛び級やエリートクラスの生徒限定の話なんだけどね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナは複合魔法・スキルの基礎を習得済みだった！"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：・・・ック・・・そういや昔から頭は良かったよな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、既に習得してたって事か？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、それがね。そうでもないわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：学院内じゃ、実践行為は禁止されてたのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：一般生徒には教えてない内容だし、大っぴらな公開は禁止だったってトコかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあさ、今はどうなんだよ？複合魔法は詠唱できるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん・・・昔１回だけ学院内で試した事はあるぐらいね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：禁止じゃなかったのかよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、昔は良いって。今はどうなんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：コツを思い出すまでに少し時間はかかると思うけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：たぶん大丈夫よ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ・・・お前はやっぱすげえぜ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でもホント驚いたわ。さっきも聞いたけど、アインはどうやって習得したのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：悪いが秘密にしておきたい。　また今度話すぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そう、分かったわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、今度からは機会があれば少し訓練しておくわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、話が早くて助かるぜ。じゃあ、次からは頼んだぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：フフフ、任せておいて。こういうのは得意だから♪"); eventList.Add(ActionEvent.None);
         }
         // ブルー・バレット
         public static void Message40010_2(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：う～ん・・・このタイミングから・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お、どうしたラナ？　タイミングがどうしたんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アイン、ちょっとそこに居てちょうだい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：撃ち抜きなさい、氷の弾丸。　ブルーバレット！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ッドドド！！　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うおおぉぉぉ、待て待て待て！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：んだ今のは。　アイス・ニードルって連射不可能じゃねえのかよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：大きな氷の形状に対して、少しずつ闇魔法で分断する感じで詠唱するの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうすると、小さい弾丸上の氷が出来上がるわけよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どうでもいいが、俺を実験台にするんじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そんな事言っても、どうせ避けちゃうでしょ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：今のはたまたま避けられただけだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：避けないでちゃんと食らってよね、そうじゃないと威力が確認できないんだから♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まてまて、そういうのはもっと他のターゲットで・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　ッドドドドドドドドド！！　　"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.BlueBullet = true;
+
+            messageList.Add(Database.BLUE_BULLET); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // ヴァニッシュ・ウェイブ
         public static void Message40010_3(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：確かこんな感じだったかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っお、やってるなラナ。新技お披露か？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、ちょっと昨日ね、昔読んでた魔法辞典をまた読み返してたの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：辞典・・・ッグ、寒気が・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフ、まあちょっとやってみるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ行くわよ、ヴァニッシュ・ウェイヴ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ブ、ッフォオォォ・・・ミゾにもろに・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：今の・・・一体何したんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：さて、バカアインは今の状態で魔法が撃てるかしら♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲ、まさか！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・ッファイア！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ックソ、やっぱり！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・ッファイア、ファイア！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：その通り♪　魔法の詠唱部分だけが抜け落ちる沈黙効果よ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・ッファイア、ファイア、ファイア！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっとその辺でやめときなさいよ、すごく滑稽な姿よ、ッフフフ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ちくしょう・・・これいつまで続くんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そんなに長くは無いけどある程度は続くわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、何ターンなんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：３ターンじゃなかったかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうなのか・・・って、結構長いな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ、しばらくは諦めなさい♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・ファイア！）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.VanishWave = true;
+
+            messageList.Add(Database.VANISH_WAVE); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // ダーケン・フィールド
         public static void Message40010_4(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：フィールド展開型の詠唱形態は特定のターゲット方向へ向けて放出するのではなく・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：相変わらず、その難しそうな辞典を読んでるんだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私の場合、バカアインと違って知識をまず押さえるトコから始めるのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、悪い意味じゃねえって。良くそういうトコから出してこれるよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うーん、だって理屈が無いとどうにもならないと思わない？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ・・・最近はそう思える節も・・・。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ま、良いわ。とりあえずやってみるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：大地の恩恵を遮断せし闇、現れよダーケン・フィールド！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（アインの周辺一体が薄暗い闇が覆い始めた！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うわ・・・なんだこれ！？急に何か、ダウンする感じが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そのフィールドにいる間は、物理防御と魔法防御がダウンする状態となるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ、本当面倒くせえのが多いな、複合魔法ってのは。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃあ、・・・ダッシュでこのフィールドから！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（アインがダッシュすると、フィールド全体がアイン近辺を追従している！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何ぃ！？逃げられないのかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうね、フィールド展開は特定のターゲットを示すわけじゃないんだけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：発生時からフィールド内に居たものは全てターゲットに出来るみたい。全体魔法ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：２人いたとして、２人別々に逃げたらどうなるんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：２人分にちゃんと分割された状態でそのフィールドが追従するのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っな、なんてご都合主義な・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あ、そうそう。まだ試し撃ちしてなかったわね、本当に防御ダウンしてるのかしら♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っさて、俺はそろそろこの辺で・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：無駄よ、もうさっきダミー素振り君をアインにセットしておいたから♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ダミー素振り君は【潜在奥義：集中と断絶】を放ってきた！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・ッバタ）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.DarkenField = true;
+
+            messageList.Add(Database.DARKEN_FIELD); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // フューチャー・ヴィジョン
         public static void Message40010_5(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：う～ん、面倒くさいわね、ホント・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：珍しいな、ラナでも面倒くさがるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ダミー素振り君のセッティングよ。入力項目が多すぎて面倒なのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何だ、何か新しい技でも習得しようってのか？　何なら俺も手を貸すぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうなんだけど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアインだと・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何か否定的なためらい方だな。　俺じゃ助けにならないとでも？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、そういうわけじゃないわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃいいわ。ちょっとソコに立って。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ダメージ系は避けるぞ、良いよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：駄目よ。ダメージ系はちゃんと食らってよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ぐぬぬ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ今回はダメージじゃないわ。安心して♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ふう、そいつは助かるぜ。　で、どうだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと待っててね・・・ええと・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ラナは大きく深呼吸を一度行った。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、かかったわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：はい？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：かかったって言ってるのよ。発動成功よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何が？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：後、効果持続時間もあるから、早くやってよね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だから、何がだよ？　全然わかんねえぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何かインスタントで行動して。　きっと分かるから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っお、良いのかよ。　じゃあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ファイア！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っと！？　っげ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（アインはたちまち詠唱体制を崩し、ファイア・ボール詠唱に失敗した。）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：わ、悪い悪い。ちょっと待ってくれ。もう１回発動させるから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：フフ、もう良いわよ。アリガト♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、単に失敗しただけだからさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうじゃないのよ。トリガードイベント型スキルなのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っは？鳥が土居とベント？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ト・リ・ガ・－・ド・イ・ベ・ン・ト"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アンタのインスタント行動を検知してそれをカウンターするスキルよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：だから、今の詠唱失敗は私が仕掛けたトリガーが発動したってわけ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ分かったって。御託は良いからさ、もう１回発動させるから待ってろ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：もう～～・・・だからバカアインとはやりたくなかったのよ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃ良いわ、もう１回ファイア・ボールお願い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ！任せろ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ファイア！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ボシュウゥゥ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・で？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、稽古は終わりよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何かネタがよくわかんねえが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッホラホラ、じゃあまたね。今回はアリガト♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああぁ・・・"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.FutureVision = true;
+
+            messageList.Add(Database.FUTURE_VISION); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // リカバー
         public static void Message40010_6(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：（これって・・・ちょっと練習が難しいわね・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、じゃあ俺が相手になってやるぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッワ！アイン居たの？ビックリするじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナが珍しく考え込んでたからな。気づかなかっただろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうね、いつも気配ムンムンって感じだし・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あ、そうそう。良いかしら♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、いつでもいいぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、まずは私が習得する前に、試しにそのダミー素振り君の攻撃を食らってちょうだい♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ・・・じゃあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ボグッシャアァァァ・・・（アインは気絶した））"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：気絶したみたいね・・・じゃあ、私が習得するスキルをアインが仮発動するとして・・・"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("ラナ：ッハイ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（アインは気絶から回復した）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッツ、ツツツ・・・痛えな・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おいおい、ちょっとダミー君の攻撃が強すぎねえか？素振りレベルじゃねえだろ、今のは"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：良いじゃない、バカアインだし大丈夫♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、もう１回♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ボグッシャアァァァ・・・（アインは気絶した））"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：気絶したみたいね・・・じゃあ、ッハイ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（アインは気絶から回復した）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッ痛・・・お、おいおい待て待て、効果はなんとなくわかった！気絶解除のスキルだろ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：って、これは本来おまえがちゃんと気絶した上でやらないと意味が・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、もう１回♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：待て、待て待て待て！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ボグッシャアァァァ・・・（アインは気絶した））"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.Recover = true;
+
+            messageList.Add(Database.RECOVER); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // トラスト・サイレンス
         public static void Message40010_7(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：んっと、これはこうよね・・・で、それから・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・（コッソリ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ところで、バカアインは実験台にでもなってくれるのかしら♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：うおぉ！なんで分かったんだよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アンタその（コッソリ）感が出まくりでしょ。あんなの誰だって察知出来るわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（前のあの時は、上手く行ったのに・・・ナゼ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあでも・・・今回のも少しややこしいのよね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：大丈夫だ。キッチリ解説を付けてくれれば大丈夫！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アンタのそういうトコが余計ややこしいんじゃない・・・まあ良いわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：今回のは先に説明しておくわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：詠唱名「トラスト・サイレンス」"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：効果の対象は自分自身限定よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：効果の内容は、対象へ沈黙/暗闇/誘惑に対する耐性（効果を防ぐ）を付与する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：効果をかけられた時にそれがかかるのではなく、かかった瞬間に効果が取り除かれる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：言ってみれば、予め準備しておいて、体制を整えておくような感じになるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちなみに、この効果は一度キリ。一旦沈黙や暗闇効果がかけられた場合、即座に解消となるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：重ねがけも出来ないみたいだから、過度な期待は出来ないかも知れないわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：インスタントタイミングでも出来るからとっさにかけるのがベストなタイミングになりそうよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・って、ちょっと・・・そこ聞いてる？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハッハッハッハ！　どうしたラナ！　もちろん、大体オッケー！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッドゴォォォォン！！！』（ラナのサイクロイド・ブローがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.TrustSilence = true;
+
+            messageList.Add(Database.TRUST_SILENCE); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // スカイ・シールド
         public static void Message40010_8(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：ッフフ、これが出来れば相当よね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なんだずいぶんと楽しそうだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：『聖』魔法との複合魔法の詠唱基礎をようやく習得できた所よ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッバ、バカな！可能なのかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：可能ね、基礎さえ分かっていれば♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ・・・ッハハハ、さすがだぜ、ラナ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うん、『聖』『水』による強力な複合魔法よ。良い？　見ててよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、あぁ。お前さえ良ければ、いつまでも見ててやるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッシャゴオォォオォォ！！！』（ラナのライトニングキックがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：な・・・ナゼ・・・褒めたつもりが・・・（ッグホ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何かイライラさせる言い方だったからよ。　少しは考えて言葉を選びさいよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まあ良いわ、見てて。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ラナは歌に似たような感じで、綺麗な詠唱をし始めた・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・へぇ・・・あのラナがね・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：紺碧の天空より加護を授かる、スカイ・シールド！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ッパキィィン・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：まずまずの出来栄えね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っお、何か防御壁みたいなのが出来たな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アインのバカファイアでも撃ってみて♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：バカファイアではない、ファイアボールだ。　じゃあ行くぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ファイア！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ッパシイィィ！！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフフ、無傷よ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何ぃ！？マジかよそれ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：しかも、これはね。重ねがけが可能なの。見てて♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ラナは３回スカイ・シールドを詠唱した）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：合計３回まで魔法ダメージを無効化出来るのよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：オイオイオイ、反則じゃねえのかよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：戦闘では３回詠唱するタイミングは無いかも知れないし、そこまで反則じゃないわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ、そうかも知れねえけどさ・・・無効化って相変わらず嫌な感じだよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ところで、どんな魔法ダメージでも対象になるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうね、属性区別とかは特に無いわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：フレイム・オーラみたいな追加効果の魔法ダメージは？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：良い所に気づくわね、そういうのも対象よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナお得意のブルー・バレットは３回って事になるのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：そうね、ブルーバレットが来た場合、３回分消費してしまう事になるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：なるほど、解説いつもサンキューな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ヤケに素直よね、何か気味が悪いわよ。悪いものでも食べたの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや、無効化系のヤツだからな。入念に知っておきたかったのさ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ふ～ん、そうなんだ。まあ、後は戦術次第って感じね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちなみに、バカアインには絶対かけないから♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジかよ・・・ピンチな時は頼むぜ、ホント。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：考えておいてあげる♪"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.SkyShield = true;
+
+            messageList.Add(Database.SKY_SHIELD); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // スター・ライトニング
         public static void Message40010_9(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("アイン：ラナ、たまには飯でも食べに行くか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：うーん、行きたい所なんだけど、この魔法だけやっておきたいから。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おお、やるじゃねえか。っしゃ、トコトン付き合うぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：あ・・・じゃあ、終わってからでもいいなら、食べに行きましょ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、そんな飯ぐらいどうでもいいって、っさ！やろうぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：え、終わってから行くって言ってるじゃない！？　ソッチから誘ったくせに。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：い、いやいや。じゃあ終わってから行くか！　っな！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：もーイイわよ、面倒くさいし次で良いんじゃないかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいやいや・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ああぁ！イライラしてきたわ！！　行くわよ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ヒエェェ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：雷鳴鬼神、天空から大地へ無限なる雷光をそこのバカに放たん！！　スターライトニング！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：喰らいなさい！！　永遠に気絶してるが良いわ！！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ッバババババリバリバリバリ！！！（スーパークリティカルヒットが炸裂）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（アインは倒れる瞬間・・・）"); eventList.Add(ActionEvent.None);
+            
+            messageList.Add("      【話の流れには気を配ろう】と心底から誓った。。。）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.StarLightning = true;
+
+            messageList.Add(Database.STAR_LIGHTNING); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // サイキック・トランス
         public static void Message40010_10(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：っふぅ・・・これは本当に出来ないわね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：珍しいな、ラナが習得に苦戦するなんて。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アインはどうなの？逆属性に関しては。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうだな、俺も正直得意げにお披露目というわけにはいかねえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：カール爵に講義はしてもらってたんだが、あれだけがどうしても今ひとつだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ちょっと待ってよ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ん？何だよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ッハ！　俺、今なんて言った！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：カール爵ってどういう事よ、まさかシニキア・カールハンツ公爵じゃないでしょうね！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・ハイ、その通りですが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・本当に？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：な、何だよ。その不可思議なオーラは・・・ちょっと待った、殴るなよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：本当かどうかを聞いてるだけよ、本当なの？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああ・・・本当だ。あの威圧感、間違いなく本物だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ウソでしょ・・・何でバカアインがそんな所に通ってるのよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そりゃ、色々とワケがあってだな。"); eventList.Add(ActionEvent.None);
+
+            if (GroundOne.MC.Level >= 30)
+            {
+                messageList.Add("アイン：（待てよ、そういや一度連れて来いって言われてたな・・・）"); eventList.Add(ActionEvent.None);
+            }
+
+            messageList.Add("アイン：なんなら、ラナも一緒に来てみるか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、出来る事ならお願いしたいぐらいよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よし、分かった。じゃあこっちへ来てくれ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインとラナは転送装置でカール爵の元へと向かった。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
+            messageList.Add("アイン：おし、着いたぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：え？　本当にこんな所に居るわけ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴女はラナ・アミリアか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：カールハンツ公爵、本当だわ！　お初にお目にかかります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何だラナ、ヤケに仰々しいな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：（っちょっと、アンタどれだけバカ過ぎるのよ、控えてよね、ホンット）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、ていうか威圧感があり過ぎて、そんな控える暇なんか無いんだってマジで。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴女、失礼だが、少々拝見させてもらう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『擬眼がギョロリと動きはじめた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：至極光栄の極み、心して拝受仕ります。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：・・・　・・・　・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：スペル属性『闇  水  空』　典型的女性像"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：典型的！？　どこが！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：（良いから黙ってなさいよ・・・ホンットもう・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：スキル属性『静  柔  無心』　理路整然派"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：構えて攻撃するスタイルとは違い、敵の急所にターゲットを絞るのに専念。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：駆け引きや心理戦には持ち込まず、あくまで実践・実利を重視する傾向。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：魔法攻撃もしくは体術のダメージを主軸とし、前衛・後衛のいずれも可能。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：特定の波や流れに依存せず、キッチリとした理論で相手を仕留める。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：なるほど、確かにそこの貴君の相棒として、ふさわしいタイプではある。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『擬眼が更にギョロリと動いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ただし、瞬間的局面において、最適戦術の選択に乏しい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：パーティ連携や１人技巧はそこそこ出来るものの、柔軟な取り合わせではなくパターン動作に陥る傾向。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：普段出来るはずの行動が、その局面にして発動せず、致命傷に至るケースが存在。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：しかし、それほどの局面はそれほどなかろう。側に居るものがカバーしていれば尚更の事。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・冗談だろ・・・当たりすぎだ・・・何だこの人・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ふむ、その事に対しては、既に鍛錬する日々を積んでいるようだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：良き心構えだ。その鍛錬、忘れずに続けると良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：至らぬ我が身に対し、最善なる深慮。謹んで弛まぬ努力をさせていただきます。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：えっと・・・　・・・おい、ラナ。どうなってんだこりゃ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：シニキア・カールハンツ公爵は、聖フローラ女学院の独立執行機関の長よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：魔法の使用に関しては一般的な公の場において、今でこそ認められてるけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：本来の使い方から誤った手法で、人民に被害を加えたりする輩が居た時代もあるのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも、そういった彼らは現在ここにはいない。なぜだか分かる？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジか・・・そんな凄え人なのかよ。伝説のFiveSeekerっていう呼び名だけじゃなかったのか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：そのような話はどうでも良い事。忘れなさい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：失礼いたしました。え、ええっと・・・では、カ、カ、カールハン・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：今まで通りで良い。それから貴女も、もっと自然体で接していただこう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・ハイ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：要件はさしずめ、逆属性複合の習得といった所か。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おいおい、マジかよ・・・どんだけお見通しなんだよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴女は理論の矛盾の故、見出せないようだな。それはそれで正しい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ただ、この逆属性複合の場合に限り【理外の理】をイメージしなければならない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：精神の限界とは精神そのものに原因がある。それをイメージしてそれを超えるようにしなさい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：一度だけ見せよう。　見届けなさい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我が精神へ永遠なる飛躍をもたらせ、【サイキック・トランス】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（カールは目にも止まらぬ速さで詠唱を行った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（っな！　は、早ええぇぇ！！！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：完成だ。これで我が魔法攻撃力は更に増強された事となる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ただし代償として魔法防御力は格段に落ちる。使い所が肝心なので覚えておきなさい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ、ありがとうございました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：えっと・・・今の早すぎて全然見えなかったんだが・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：速さは重要ではない。イメージがもたらした原理を把握すると良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、はい。どうもです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：他に聞きたい事はあるかね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：えっ、じゃあ良いですか。あのさっきの詠唱タイミングのトコですけど"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：（ちょっと！　バカアイン、本当に無礼よねアンタ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：よい、続けなさい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：一瞬だけ両手の合わせ方向が逆に重ね合わせてたように見えたんですけど？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：逆方向と順方向をすり合わせる方向性を示したモノ、それ容として融合させたもの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君にもいずれ教えよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ありがとうござます！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：転送装置を復活させておいた。早々に戻ると良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：この度、ありがとうございました。また、お教えください。"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.PsychicTrance = true;
+
+            messageList.Add(Database.PSYCHIC_TRANCE); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
+
+            messageList.Add("アインとラナは転送装置で街へ戻ってきた。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("アイン：いや、しかし・・・あの速度はスゲェ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何言ってるのよ、あれで私やアンタに見える形にしてくれてたんじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ボケ師匠の場合もそうだけどさ。FiveSeekerって何か段違いのレベルだよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あの妙な威圧感とかも特別だが、基本的な全体能力が別次元すぎる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：FiveSeeker内で速度に特化する技系は確かヴェルゼ・アーティのはずだ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：「姿捕らえたもの存在せず」だから、たぶんそういう事になるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：だとすると、カール爵の手抜き動作でさえ、あのレベルって事は・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：正直ソッチの方を考えると、堪えるよな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私達なんて、まだまだこれからなんだし、そんなに焦る事ないわよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：まあ頑張り次第なんだろうけど。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフ、さっき公爵が見せてくれた手順の中の一つが見えたんでしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あ、ああ・・・なんとなくな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：１回で見切れてたら凄いわよ、その感覚を伸ばすしかないんじゃないかしら♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうだな、サンキュー。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私が習得しに行ったのに、何で私がアンタを励ましてんのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おお、そうだったな悪い悪い。で、出来そうなのか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、一度教えてもらったし、たぶん出来るようになってるわ。アリガト♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そか、そいつは良かった！　今後も頼むぜ、ラナ様！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ええ、バカアインがピンチな時に魔法防御を落としてあげるから♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッハッハッハ！　そのぐらいでちょうど良い、頼んだぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカはバカね・・・ハアァァァ・・・"); eventList.Add(ActionEvent.None);
         }
         // サイキック・ウェイヴ
         public static void Message40010_11(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：ふう・・・難しいわね、こういうのは・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：よお、ラナ。どうした苦戦してるみたいじゃねえか。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：どうもこうも無いわよ、体術としてのイメージが凄く掴みにくいわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：『柔』と『心眼』の合わせ技なんだけど、『心眼』は私にとって逆性質、だから余計大変なのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どういう内容なんだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：えっとね・・・なんて言うのかしら・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：魔法詠唱するのよ。体術を使ってね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・マジで？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：普通、体術を使う時はある特定のモーションからのクダリが必要でしょ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも、この体術だけは特別。魔法詠唱のモーションから入るの。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：体術による魔法の創出、ダメージ発生源は【力】ではなく【知】って事になるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・へえ・・・なるほど・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッホラ、こうやって・・・ここから・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：行くわよ、サイキック・ウェイブ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ッヴァシュウゥゥゥン！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っぬお！防御！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（しかし、アインが防御体制を取ったにも関わらず、アインに激痛が走った！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っグア！痛っつつ・・・防御不可かよ。チクショウ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ふう、一応出来たわね。でも、これ凄く難しいのよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：何かコレ・・・ワード・オブ・パワーみてえだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あれのちょうど反対と言うか・・・双子みたいなもんだな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：よくそういうトコにすぐ気づくわね。センスだけは一人前って事かしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：天才アイン様だからな。ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、問題よ。このスキルはミラー・イメージとデフレクションのどちらを貫通するかしら♪"); eventList.Add(ActionEvent.None);
+
+            // todo
+            //using (SelectAction sa = new SelectAction())
+            //{
+            //    sa.StartPosition = FormStartPosition.CenterParent;
+            //    sa.ForceChangeWidth = 300;
+            //    sa.ElementA = "ミラー・イメージだろ！";
+            //    sa.ElementB = "当然、デフレクションだな！";
+            //    sa.ElementC = "実は、ワン・イムーニティ！";
+            //    sa.ShowDialog();
+            //    if (sa.TargetNum == 1)
+            //    {
+            //        messageList.Add("アイン：当然、デフレクションだな！"); eventList.Add(ActionEvent.None);
+
+            //        messageList.Add("ラナ：そう・・・正解ね・・・"); eventList.Add(ActionEvent.None);
+
+            //        messageList.Add("アイン：お・・・おいおい、何だよ？そのテンションの下がり具合は。"); eventList.Add(ActionEvent.None);
+
+            //        messageList.Add("ラナ：ん、何でもないわよ♪　まあ、バカなりに考えたって事ね。"); eventList.Add(ActionEvent.None);
+
+            //        messageList.Add("アイン：俺だってヤマを張って、偶然当てる事もある。"); eventList.Add(ActionEvent.None);
+
+            //        messageList.Add("ラナ：やっぱりテキトーだったの！？　ちゃんと考えて答えなさいよね！？"); eventList.Add(ActionEvent.None);
+
+            //        messageList.Add("アイン：わわ、分かったって・・・次からちゃんと考えます・・・"); eventList.Add(ActionEvent.None);
+            //    }
+            //    else
+            //    {
+            //        messageList.Add("ラナ：ハ・ズ・レ♪　やっぱり、バカアインはバカで決定♪"); eventList.Add(ActionEvent.None);
+
+            //        messageList.Add("アイン：ぐぬぬぬ・・・"); eventList.Add(ActionEvent.None);
+            //    }
+            //}
+
+            GroundOne.SC.PsychicWave = true;
+
+            messageList.Add(Database.PSYCHIC_WAVE); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // シャープ・グレア
         public static void Message40010_12(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：・・・を狙うが如く・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ットト・・・ラナだ。何かブツブツ言ってるな・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ミゾオチを狙うが如く、敵の懐に入り込み、一気に突き上げる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：対象者へ一定のダメージを与え、かつ、一定期間の沈黙を付与する。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：なんだ、『心眼』絡みだから難しいかと思ったら、普段バカアインにやってるヤツじゃない♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（ッソォット・・・今回だけはサラバ・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：バカアイン、ハ・ッ・ケ・ン♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ックソ、見つかった！　ホーリー・ブレイカー！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ダメージ反転しても、効果は適用されるわよ。残念ね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ行くわよ、ッセイ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッズッドォォン！！』（ラナのシャープ・グレアがアインに炸裂）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：決まったわ♪　じゃあ、さっそく魔法詠唱してみて♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：無理です・・・勘弁してください・・・"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.SharpGlare = true;
+
+            messageList.Add(Database.SHARP_GLARE); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
         // スタンス・オブ・サッドネス
         public static void Message40010_13(ref List<string> messageList, ref List<ActionEvent> eventList)
         {
+            messageList.Add("ラナ：フゥ・・・疲れるわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ、あまりキリキリに詰めての練習は良くないぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも、まだ１回も成功してないから、出来るまでやってみるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：どんな内容なんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：『スタンス・オブ・サッドネス』、これも完全逆性質の類ね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：『心眼』と『無心』のコンビネーションだから、難しいのよホント。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：効果は？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：対象のインスタント行動をキャンセルさせる事が可能になるわ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：さらに、本インスタントに対して、追加でスタックは乗せられないって所よ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：マジで！？　何だその問答無用なアンチ活動は！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アンチ活動って語句がオカシイわよ・・・それは良いとして"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：タイミングの掴み方が何か分からないのよね・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そこでやはり、俺の協力が必要ってワケだな、任せろ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：じゃあ、一つお願い出来るかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っしゃ、来た！　任せておけ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：自分で自分にファイア・ボールを撃ち込んでみて。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッブフゥ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナに対して撃ったら駄目なのかよ！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：嫌よそんなの、許せるはずないじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：じゃ、じゃあフレッシュ・ヒールをお前に対して詠唱しよう、どうだ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何でライフ満タンの私にヒールかける必要があるのよ。止める必要も無いじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いや・・・とにかく、自爆ファイアは勘弁だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：う～ん、どうしようかしら・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：そうだ、またカール爵の所にでも行くか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：良いの？何度も行ったら失礼に当たらないかしら。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：大丈夫だって、ああ見えて寛大な人だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アンタのそういう言い方、ものすごーく失礼だから気をつけてよね・・・ホント。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：あっと、悪い悪い。じゃ早速行こうぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインとラナは転送装置でカール爵の元へと向かった。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownGoToKahlhanz);
+
+            messageList.Add("アイン：おし、着いたぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っとと・・・この転送装置、何か慣れないわね。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：その転送装置は本来、貴女のために用意されたものではない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：え、どういう意味ですか？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：転送装置は個々の性質に順応したモノに調整が必要だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：不適合であり、資質が低いモノが使えば、精神に支障をきたす。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ッゲゲ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：案ずるな、貴女が来る事を想定し、我が既に調整しておいた。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：多少のフラつきはあるだろうが、気に留める程ではない。安心して使うと良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：数多き思慮、控えを持って、以後謹むように致します。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：良い。以前にも言ったが自然体で接するようにせよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：・・・ハイ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：逆性質の『心眼』と『無心』による複合スキル『スタンス・オブ・サッドネス』に関してだが"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：っちょ待ってくれよ。だから、カール先生は何で要件が事前に分かってるんだよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：（っちょっと！　控えてよね、バカアイン！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（い、いいじゃねえか別に。気になるんだし・・・）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：良い、少しだけ教えよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：我の見切りでは、貴女ラナ・アミリアは完全逆属性または逆性質の扱いに苦しんでおる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：それって今来て分かったって事ですよね？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴君が初めに連れて来た時からである。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ウソ、マジか・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：論理展開力のある女性にとって、この概念は非常に苦痛となるであろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ、お前確かサイキック・トランス出来るようになってたよな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ん、あれは出来るようになったわね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：さすがラナだぜ、じゃあこのスキルの方も同じだろ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：控えよ、アイン・ウォーレンス。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　【【【　アインは突然、背筋に異常な威圧感を感じた！　】】】"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：・・・はい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ラナ・アミリアはお主とは性質が違う。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：アイン・ウォーレンス、貴君は先に帰るがよい。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：わっ・・・わかりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：非礼に対する意味ではない。場のケースを我がコントロールするため、悪く思うな。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、いえいえ。本当にスイマセンでした、今回はこれで失礼します。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アインは転送装置で街へと戻っていった。"); eventList.Add(ActionEvent.HomeTownMessageDisplay);
+
+            messageList.Add("カール：では、貴女ラナ・アミリアに問おう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：あえて意図して『心眼』を選択した根拠を述べたまえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『心眼』と『無心』の選択は、他の『静』『動』、または『柔』『剛』と比べても極めて困難。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：昔から、アインよりも私の方が優れていたんです。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも今は、そうじゃない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私、分かってるです、資質はアインの方が高いこと。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でも、こんな所で置いてけぼりにはなれない。私の方が難易度の高いのをやってのけなければ"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：でなければ、アインが私に対して、今以上に手加減をしてしまう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：それが嫌なんです。まるで私が単なる足枷みたいな感じがして・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴女の場合、未だサイキック・トランスの詠唱は苦しいと見受けられる、間違いはないな？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：『心眼』と『無心』への挑戦は、貴女の精神崩壊にも直結する内容である。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ゆえに、辛いと感じた場合、必ずあきらめの心得を持ち、時間を置くようにする事だ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴女に不足しているのは、純粋な休息の時間。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：今までの鍛錬、申し分無く賞賛される内容ではある。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ただし、それだけでは貴女の身が危険であることにも変わりはない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：知識とは即座に習得されるものではない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：一刻の集中的な導入から、幾ばくかの流れ行く時間が必要となる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：何か・・・苦しくなってしまって・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：私・・・アインに追いつけそうになかったし・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：す、すみません、何かこんな所で私・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　（　ラナはその場で顔を伏せ、わずかな水滴を地面に落とした ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：今までの無理な鍛錬とその成果、相当の苦労を重ねて来た事であろう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：だが、貴女が死と向き合うレベルの鍛錬は少々早すぎる。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：日々のスタイルを崩すこと無く、鍛錬するが良い。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：すみません、こんな所で泣いてしまって・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：よい。気に病む必要はない。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：アイン・ウォーレンスは逸材。近くでその成長を見届けるぐらいの心構えとせよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：同等や肩並べのつもりで励まぬように。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ、わかりました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：では、『心眼』と『無心』による『スタンス・オブ・サッドネス』、教えて進ぜよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ハイ、お願いします。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ラナは集中して講義の内容を聞いた！』"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：これで講義は終わりである。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ありがとうございました。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：貴女もよくぞここまで辿り着いた。その類稀なる努力を賞賛と敬意を評し、"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：一度『スタンス・オブ・サッドネス』の極意、見せるとしよう。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：っえ、本当ですか！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：構えたまえ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：アッ、ハイ！ではお願いいたします！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("カール：ゆくぞ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：放て氷の弾丸、ブルー・バレット！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownTurnToNormal);
+
+            messageList.Add("アイン：・・・おせえなあ・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ッバシュ！）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ふう、ただいま。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おおぉ、やっと帰ってきたか！　どうだったよ？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：ッフフフ、一回だけ、私にファイア・ボールをはなっても良いわよ♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：やっぱ出来たのかよ！　さすがだぜ、ラナ、ッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいや、本当ラナは最高だぜ！俺も正直付いていけねえぜホント！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：分かった分かったってホント暑苦しいわね・・・良いから、早く撃ってみなさいよ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ああ、そうだな・・・じゃあ行くぜ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ファイア！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：見切ったわ、ソレね！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：！！？"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　（ッシュッパァァァン・・・（ファイア・ボールが瞬時に空中ではじけ飛んだ）"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：す・・・スゲェスゲェ！　ッハッハッハッハ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：おいおいおい、何だよコレ！　マジかよラナ！！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：消費コストは結構多いみたいだから多用はできないけどね♪"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：いやいやそれでもこの問答無用の一発キャンセルはすげえ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：ラナ、期待してるぜ。"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：お前に出会えて俺は最高に幸せだ！　ッハッハッハ！"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("　　　『ッシャゴオォォオォォ！！！』（ラナのデバステイトブローがアインに炸裂した）　　"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("ラナ：言葉選びなさい・・・バカアイン"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：せ・・・せっかく褒めたのに・・・"); eventList.Add(ActionEvent.None);
+
+            messageList.Add("アイン：（・・・バタ）"); eventList.Add(ActionEvent.None);
+
+            GroundOne.SC.StanceOfSuddenness = true;
+
+            messageList.Add(Database.STANCE_OF_SUDDENNESS); eventList.Add(ActionEvent.HomeTownShowActiveSkillSpellSC);
         }
                 
         // イベントが特に無い場合

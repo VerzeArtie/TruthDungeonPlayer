@@ -953,6 +953,73 @@ namespace DungeonPlayer
                 NormalTapOK();
             }
             #endregion
+            #region "複合魔法習得"
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 20 && GroundOne.MC.FlashBlaze && !GroundOne.WE.Truth_CommunicationLana22)
+            {
+                MessagePack.Message40010_1(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 21 && !GroundOne.SC.BlueBullet)
+            {
+                MessagePack.Message40010_2(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 22 && !GroundOne.SC.VanishWave)
+            {
+                MessagePack.Message40010_3(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 23 && !GroundOne.SC.DarkenField)
+            {
+                MessagePack.Message40010_4(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 27 && !GroundOne.SC.FutureVision)
+            {
+                MessagePack.Message40010_5(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 28 && !GroundOne.SC.Recover)
+            {
+                MessagePack.Message40010_6(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 29 && !GroundOne.SC.TrustSilence)
+            {
+                MessagePack.Message40010_7(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 30 && !GroundOne.SC.SkyShield)
+            {
+                MessagePack.Message40010_8(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 31 && !GroundOne.SC.StarLightning)
+            {
+                MessagePack.Message40010_9(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 32 && !GroundOne.SC.PsychicTrance)
+            {
+                MessagePack.Message40010_10(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 33 && !GroundOne.SC.PsychicWave)
+            {
+                MessagePack.Message40010_11(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 34 && !GroundOne.SC.SharpGlare)
+            {
+                MessagePack.Message40010_12(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 35 && !GroundOne.SC.StanceOfSuddenness)
+            {
+                MessagePack.Message40010_13(ref nowMessage, ref nowEvent);
+                NormalTapOK();
+            }
+            #endregion
             #region "３階開始時"
             else if (GroundOne.WE.TruthCompleteArea2 && !GroundOne.WE.Truth_CommunicationLana31)
             {
@@ -1224,7 +1291,8 @@ namespace DungeonPlayer
                     systemMessage.text = "";
                     BattleStart(this.nowMessage[this.nowReading]);
                 }
-                else if (current == MessagePack.ActionEvent.HomeTownShowActiveSkillSpell)
+                else if (current == MessagePack.ActionEvent.HomeTownShowActiveSkillSpell ||
+                         current == MessagePack.ActionEvent.HomeTownShowActiveSkillSpellSC)
                 {
                     mainMessage.text = "";
                 }
@@ -1447,6 +1515,10 @@ namespace DungeonPlayer
                 {
                     ShowActiveSkillSpell(GroundOne.MC, this.nowMessage[this.nowReading]);
                 }
+                else if (current == MessagePack.ActionEvent.HomeTownShowActiveSkillSpellSC)
+                {
+                    ShowActiveSkillSpell(GroundOne.SC, this.nowMessage[this.nowReading]);
+                }
                 else if (current == MessagePack.ActionEvent.PlayMusic01)
                 {
                     GroundOne.PlayDungeonMusic(Database.BGM01, Database.BGM01LoopBegin);
@@ -1586,7 +1658,14 @@ namespace DungeonPlayer
 
         private void TurnToNormal()
         {
-            ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+            if (!GroundOne.WE.AlreadyRest)
+            {
+                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_EVENING);
+            }
+            else
+            {
+                ChangeBackgroundData(Database.BaseResourceFolder + Database.BACKGROUND_MORNING);
+            } 
             cam.backgroundColor = Color.white;
             groupMenu.gameObject.SetActive(true);
             buttonHanna.gameObject.SetActive(true);
