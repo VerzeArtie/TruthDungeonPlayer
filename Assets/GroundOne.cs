@@ -126,6 +126,7 @@ namespace DungeonPlayer
         public static string DecisionMainMessage = string.Empty;
         public static string DecisionFirstMessage = string.Empty;
         public static string DecisionSecondMessage = string.Empty;
+        public static string DecisionThirdMessage = string.Empty;
              
         // TruthDecision
         public static int DecisionChoice = 0;

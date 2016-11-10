@@ -214,6 +214,7 @@ namespace DungeonPlayer
             HomeTownCallSaveLoad,
             HomeTownCallDuel,
             HomeTownCallDecision,
+            HomeTownCallDecision3,
             HomeTownGotoRealDungeon,
             HomeTownAddNewCharacter,
             GetGreenPotionForLana,
@@ -32916,13 +32917,13 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：しかも、これはね。重ねがけが可能なの。見てて♪"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("　　　（ラナは３回スカイ・シールドを詠唱した）"); eventList.Add(ActionEvent.None);
+            messageList.Add("　　　（ラナはスカイ・シールドを詠唱した）"); eventList.Add(ActionEvent.None);
 
             messageList.Add("ラナ：合計３回まで魔法ダメージを無効化出来るのよ♪"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：オイオイオイ、反則じゃねえのかよ？"); eventList.Add(ActionEvent.None);
 
-            messageList.Add("ラナ：戦闘では３回詠唱するタイミングは無いかも知れないし、そこまで反則じゃないわよ。"); eventList.Add(ActionEvent.None);
+            messageList.Add("ラナ：戦闘では防御向けに詠唱するタイミングは難しいものだし、そこまで反則じゃないわよ。"); eventList.Add(ActionEvent.None);
 
             messageList.Add("アイン：まあ、そうかも知れねえけどさ・・・無効化って相変わらず嫌な感じだよな。"); eventList.Add(ActionEvent.None);
 
@@ -33030,7 +33031,7 @@ namespace DungeonPlayer
 
             messageList.Add("アイン：そりゃ、色々とワケがあってだな。"); eventList.Add(ActionEvent.None);
 
-            if (GroundOne.MC.Level >= 30)
+            if (GroundOne.MC.Level >= 30 && GroundOne.MC.WordOfAttitude)
             {
                 messageList.Add("アイン：（待てよ、そういや一度連れて来いって言われてたな・・・）"); eventList.Add(ActionEvent.None);
             }
@@ -33278,38 +33279,48 @@ namespace DungeonPlayer
 
             messageList.Add("ラナ：じゃあ、問題よ。このスキルはミラー・イメージとデフレクションのどちらを貫通するかしら♪"); eventList.Add(ActionEvent.None);
 
-            // todo
-            //using (SelectAction sa = new SelectAction())
-            //{
-            //    sa.StartPosition = FormStartPosition.CenterParent;
-            //    sa.ForceChangeWidth = 300;
-            //    sa.ElementA = "ミラー・イメージだろ！";
-            //    sa.ElementB = "当然、デフレクションだな！";
-            //    sa.ElementC = "実は、ワン・イムーニティ！";
-            //    sa.ShowDialog();
-            //    if (sa.TargetNum == 1)
-            //    {
-            //        messageList.Add("アイン：当然、デフレクションだな！"); eventList.Add(ActionEvent.None);
+            GroundOne.DecisionSequence = 1;
+            GroundOne.DecisionMainMessage = "【　このスキルはミラー・イメージとデフレクションのどちらを貫通するかしら♪　】";
+            GroundOne.DecisionFirstMessage = "ミラー・イメージだろ！";
+            GroundOne.DecisionSecondMessage = "当然、デフレクションだな！";
+            GroundOne.DecisionThirdMessage = "実は、ワン・イムーニティ！";
+            messageList.Add(""); eventList.Add(ActionEvent.HomeTownCallDecision3);
+        }
 
-            //        messageList.Add("ラナ：そう・・・正解ね・・・"); eventList.Add(ActionEvent.None);
+        public static void Message40010_11_2(int choiceNumber, ref List<string> messageList, ref List<ActionEvent> eventList)
+        {
+            if (choiceNumber == 1)
+            {
+                messageList.Add("アイン：ミラー・イメージだろ！"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：お・・・おいおい、何だよ？そのテンションの下がり具合は。"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：ハ・ズ・レ♪　やっぱり、バカアインはバカで決定♪"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("ラナ：ん、何でもないわよ♪　まあ、バカなりに考えたって事ね。"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：ぐぬぬぬ・・・"); eventList.Add(ActionEvent.None);
+            }
+            else if (choiceNumber == 2)
+            {
+                messageList.Add("アイン：当然、デフレクションだな！"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：俺だってヤマを張って、偶然当てる事もある。"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：そう・・・正解ね・・・"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("ラナ：やっぱりテキトーだったの！？　ちゃんと考えて答えなさいよね！？"); eventList.Add(ActionEvent.None);
+                messageList.Add("アイン：お・・・おいおい、何だよ？そのテンションの下がり具合は。"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：わわ、分かったって・・・次からちゃんと考えます・・・"); eventList.Add(ActionEvent.None);
-            //    }
-            //    else
-            //    {
-            //        messageList.Add("ラナ：ハ・ズ・レ♪　やっぱり、バカアインはバカで決定♪"); eventList.Add(ActionEvent.None);
+                messageList.Add("ラナ：ん、何でもないわよ♪　まあ、バカなりに考えたって事ね。"); eventList.Add(ActionEvent.None);
 
-            //        messageList.Add("アイン：ぐぬぬぬ・・・"); eventList.Add(ActionEvent.None);
-            //    }
-            //}
+                messageList.Add("アイン：俺だってヤマを張って、偶然当てる事もある。"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：やっぱりテキトーだったの！？　ちゃんと考えて答えなさいよね！？"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：わわ、分かったって・・・次からちゃんと考えます・・・"); eventList.Add(ActionEvent.None);
+            }
+            else
+            {
+                messageList.Add("アイン：実は、ワン・イムーニティ！"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("ラナ：ハ・ズ・レ♪　やっぱり、バカアインはバカで決定♪"); eventList.Add(ActionEvent.None);
+
+                messageList.Add("アイン：ぐぬぬぬ・・・"); eventList.Add(ActionEvent.None);
+            }
 
             GroundOne.SC.PsychicWave = true;
 

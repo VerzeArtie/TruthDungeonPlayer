@@ -129,6 +129,12 @@ namespace DungeonPlayer
             Application.LoadLevelAdditive(Database.TruthDecision);
         }
 
+        public static void CallTruthDecision3(MotherForm scene)
+        {
+            GroundOne.Parent.Add(scene);
+            Application.LoadLevelAdditive(Database.TruthDecision3);
+        }
+
         public static void CallTruthDecision2(MotherForm scene, string message, string textTop, string textLeft, string textRight, string textBottom, bool permutation)
         {
             GroundOne.Decision2_Message = message;

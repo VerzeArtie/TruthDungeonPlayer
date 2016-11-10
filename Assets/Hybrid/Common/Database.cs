@@ -2680,6 +2680,7 @@ namespace DungeonPlayer
         public const string TruthChooseCommand = @"TruthChooseCommand";
         public const string TruthDecision = @"TruthDecision";
         public const string TruthDecision2 = @"TruthDecision2";
+        public const string TruthDecision3 = @"TruthDecision3";
         public const string TruthDuelPlayerStatus = @"TruthDuelPlayerStatus";
         public const string TruthDuelRule = @"TruthDuelRule";
         public const string TruthDuelSelect = @"TruthDuelSelect";

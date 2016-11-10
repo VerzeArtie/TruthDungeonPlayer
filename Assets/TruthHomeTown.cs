@@ -1006,6 +1006,7 @@ namespace DungeonPlayer
             }
             else if (GroundOne.WE.AvailableMixSpellSkill && GroundOne.SC.Level >= 33 && !GroundOne.SC.PsychicWave)
             {
+                this.nowTalkingLanaAmiria = true;
                 MessagePack.Message40010_11(ref nowMessage, ref nowEvent);
                 NormalTapOK();
             }
@@ -1296,7 +1297,8 @@ namespace DungeonPlayer
                 {
                     mainMessage.text = "";
                 }
-                else if (current == MessagePack.ActionEvent.HomeTownCallDecision)
+                else if (current == MessagePack.ActionEvent.HomeTownCallDecision ||
+                         current == MessagePack.ActionEvent.HomeTownCallDecision3)
                 {
                     mainMessage.text = "";
                 }
@@ -1369,6 +1371,11 @@ namespace DungeonPlayer
                 {
                     this.Filter.SetActive(true);
                     SceneDimension.CallTruthDecision(this);
+                }
+                else if (current == MessagePack.ActionEvent.HomeTownCallDecision3)
+                {
+                    this.Filter.SetActive(true);
+                    SceneDimension.CallTruthDecision3(this);
                 }
                 else if (current == MessagePack.ActionEvent.HomeTownCallPotionShop)
                 {
@@ -2888,6 +2895,7 @@ namespace DungeonPlayer
                     GroundOne.DecisionFirstMessage = "";
                     GroundOne.DecisionMainMessage = "";
                     GroundOne.DecisionSecondMessage = "";
+                    GroundOne.DecisionThirdMessage = "";
                     GroundOne.DecisionSequence = 0;
                     GroundOne.DecisionChoice = 0;
                     this.nowTalkingOlRandis = false;
@@ -2925,6 +2933,35 @@ namespace DungeonPlayer
                         MessagePack.Message40003_3(ref nowMessage, ref nowEvent);
                         NormalTapOK();
                     }
+                }
+                else if (GroundOne.DecisionSequence == 1)
+                {
+                    if (GroundOne.DecisionChoice == 1)
+                    {
+                        MessagePack.Message40010_11_2(1, ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else if (GroundOne.DecisionChoice == 2)
+                    {
+                        MessagePack.Message40010_11_2(2, ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                    else
+                    {
+                        MessagePack.Message40010_11_2(3, ref nowMessage, ref nowEvent);
+                        NormalTapOK();
+                    }
+                }
+                else
+                {
+                    Debug.Log("else...");
+                    GroundOne.DecisionFirstMessage = "";
+                    GroundOne.DecisionMainMessage = "";
+                    GroundOne.DecisionSecondMessage = "";
+                    GroundOne.DecisionThirdMessage = "";
+                    GroundOne.DecisionSequence = 0;
+                    GroundOne.DecisionChoice = 0;
+                    this.nowTalkingLanaAmiria = false;
                 }
             }
             else
