@@ -598,6 +598,7 @@ namespace DungeonPlayer
                     (this.ec1.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AEGIRU) ||
                     (this.ec1.FirstName == Database.ENEMY_SEA_STAR_KNIGHT_AMARA) ||
                     (this.ec1.FirstName == Database.ENEMY_SEA_STAR_ORIGIN_KING) ||
+                    (this.ec1.FirstName == Database.ENEMY_BOSS_LEVIATHAN) ||
                     (this.ec1.FirstName == Database.ENEMY_BOSS_HOWLING_SEIZER) ||
                     (this.ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_1) ||
                     (this.ec1.FirstName == Database.ENEMY_BOSS_LEGIN_ARZE_2) ||
@@ -1658,23 +1659,6 @@ namespace DungeonPlayer
                         player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
                         player.labelCurrentInstantPoint.color = UnityColor.Gold;
                     }
-
-            //        //if (player.Name == Database.ENEMY_SEA_STAR_ORIGIN_KING)
-            //        //{
-            //        //    player.labelName.Location = new Point(496, 80);
-            //        //    player.ActionLabel.Location = new Point(503, 128);
-            //        //    player.MainObjectButton.Location = new Point(400, 97);
-            //        //    player.CriticalLabel.Location = new Point(393, 102);
-            //        //    player.DamageLabel.Location = new Point(393, 125);
-            //        //    player.labelLife.Location = new Point(514, 102);
-            //        //    player.labelName.Size = new System.Drawing.Size(200, 100);
-            //        //    player.labelName.Font = new System.Drawing.Font(player.labelName.Font.FontFamily, 14, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)128));
-            //        //    player.labelCurrentInstantPoint.Location = new Point(460, 145);
-            //        //    player.labelCurrentInstantPoint.Size = new System.Drawing.Size(150, 20);
-            //        //    player.labelCurrentInstantPoint.Font = new Font(player.labelCurrentInstantPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
-            //        //    player.BuffPanel.Location = new Point(377, 66);
-            //        //}
-
             //        // 1024 x 768
             //        player.MainObjectButton.Location = new Point(TruthLayout.BOSS_LINE_LOC_X, TruthLayout.BOSS_MAIN_OBJ_LOC_Y);
             //        player.labelLife.Location = new Point(TruthLayout.BOSS_STATUS_LOC_X, TruthLayout.BOSS_LIFE_LABEL_LOC_Y);
@@ -1696,37 +1680,59 @@ namespace DungeonPlayer
             //            player.labelCurrentManaPoint.Font = new Font(player.labelCurrentManaPoint.Font.FontFamily, 16, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), GraphicsUnit.Point, ((byte)128));
             //        }
                 }
-            //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Purple)
-            //    {
-            //        player.labelName.ForeColor = Color.Purple;
-            //        player.labelName.Visible = false;
-            //        pbMatrixDragon.Visible = true;
-            //        pbMatrixDragon.Size = new System.Drawing.Size(250, 100);
-            //        pbMatrixDragon.SizeMode = PictureBoxSizeMode.StretchImage;
-            //        if (player.Name == Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD)
-            //        {
-            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_BRIYARD);
-            //        }
-            //        else if (player.Name == Database.ENEMY_DRAGON_TINKOU_DEEPSEA)
-            //        {
-            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_DEEPSEA);
-            //        }
-            //        else if (player.Name == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
-            //        {
-            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_AZOLD);
-            //        }
-            //        else if (player.Name == Database.ENEMY_DRAGON_IDEA_CAGE_ZEED)
-            //        {
-            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_ZEED);
-            //        }
-            //        else if (player.Name == Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA)
-            //        {
-            //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_ETULA);
-            //        }
-            //        pbMatrixDragon.Location = new Point(700, 150);
-            //        player.labelName.ForeColor = Color.DarkOrange;
-            //        this.cannotRunAway = true;
-            //    }
+                else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Purple)
+                {
+                    player.labelName.color = UnityColor.Purple;
+                    player.labelCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(280, 220, 0);
+                    player.labelCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector2(230, 50);
+                    player.labelCurrentLifePoint.fontSize = 42;
+                    player.labelName.GetComponent<RectTransform>().localPosition = new Vector3(620, 170, 0);
+                    player.labelName.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220);
+                    player.labelName.fontSize = 28;
+                    player.labelName.alignment = TextAnchor.MiddleCenter;
+                    player.CriticalLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, 20, 0);
+                    player.CriticalLabel.fontSize = 38;
+                    player.DamageLabel.GetComponent<RectTransform>().localPosition = new Vector3(30, -40, 0);
+                    player.DamageLabel.fontSize = 34;
+                    player.MainObjectBack.GetComponent<RectTransform>().localPosition = new Vector3(165, 130, 0);
+                    player.MainObjectBack.GetComponent<RectTransform>().sizeDelta = new Vector2(100, 100);
+                    player.ActionLabel.GetComponent<RectTransform>().localPosition = new Vector3(600, 90, 0);
+                    player.ActionLabel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 50);
+                    player.ActionLabel.fontSize = 24;
+                    player.ActionLabel.alignment = TextAnchor.MiddleLeft;
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().localPosition = new Vector3(50, 55, 0);
+                    player.meterCurrentLifePoint.GetComponent<RectTransform>().sizeDelta = new Vector3(550, 10, 0);
+                    player.BuffPanel.GetComponent<RectTransform>().localPosition = new Vector3(600, 30, 0);
+                    player.BuffPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().localPosition = new Vector3(600, -10, 0);
+                    player.meterCurrentInstantPoint.GetComponent<RectTransform>().sizeDelta = new Vector2(550, 40);
+                    player.labelCurrentInstantPoint.color = UnityColor.Gold;
+
+                    //        player.labelName.Visible = false;
+                    //        if (player.Name == Database.ENEMY_DRAGON_SOKUBAKU_BRIYARD)
+                    //        {
+                    //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_BRIYARD);
+                    //        }
+                    //        else if (player.Name == Database.ENEMY_DRAGON_TINKOU_DEEPSEA)
+                    //        {
+                    //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_DEEPSEA);
+                    //        }
+                    //        else if (player.Name == Database.ENEMY_DRAGON_DESOLATOR_AZOLD)
+                    //        {
+                    //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_AZOLD);
+                    //        }
+                    //        else if (player.Name == Database.ENEMY_DRAGON_IDEA_CAGE_ZEED)
+                    //        {
+                    //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_ZEED);
+                    //        }
+                    //        else if (player.Name == Database.ENEMY_DRAGON_ALAKH_VES_T_ETULA)
+                    //        {
+                    //            pbMatrixDragon.Image = Image.FromFile(Database.BaseResourceFolder + Database.IMAGE_DRAGON_ETULA);
+                    //        }
+                    //        pbMatrixDragon.Location = new Point(700, 150);
+                    //        player.labelName.ForeColor = Color.DarkOrange;
+                            this.cannotRunAway = true;
+                }
             //    else if (((TruthEnemyCharacter)player).Rare == TruthEnemyCharacter.RareString.Legendary)
             //    {
             //        player.BuffPanel.Location = new Point(663, 80);
@@ -7373,7 +7379,7 @@ namespace DungeonPlayer
             GroundOne.SQL.UpdateOwner(Database.LOG_BATTLEENEMY_RUNAWAY, String.Empty, String.Empty);
             if (this.cannotRunAway)
             {
-                txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは今逃げられない状態に居る。\r\n");
+                txtBattleMessage.text = txtBattleMessage.text.Insert(0, "アインは今逃げられない状態にいる。\r\n");
                 return;
             }
 
@@ -7483,7 +7489,7 @@ namespace DungeonPlayer
             if (Application.platform == RuntimePlatform.Android ||
                 Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                waitTime[0] = 120; waitTime[1] = 70; waitTime[2] = 40; waitTime[3] = 20; waitTime[4] = 10;
+                waitTime[0] = 60; waitTime[1] = 36; waitTime[2] = 24; waitTime[3] = 16; waitTime[4] = 8;
             }
             int wait = waitTime[2];
             if (Database.BATTLE_CORE_SLEEP == 40) wait = waitTime[0];
