@@ -9234,6 +9234,8 @@ namespace DungeonPlayer
 
             messageList.Add("    『・・・ギギィ・・・ッバタン！』"); eventList.Add(ActionEvent.None);
 
+            GroundOne.WE.dungeonEvent263_KeyOpen = true;
+
             messageList.Add(""); eventList.Add(ActionEvent.Floor2DownstairGateOpen);
 
             messageList.Add("    【【【　その瞬間、アインは凄まじい精神干渉を感じ取った！　】】】"); eventList.Add(ActionEvent.None);
@@ -9329,8 +9331,6 @@ namespace DungeonPlayer
 
             }
             messageList.Add("アイン：おし、じゃあ階段を降りるとするぜ！"); eventList.Add(ActionEvent.None);
-
-            GroundOne.WE.dungeonEvent263_KeyOpen = true;
         }
         #endregion
         #region "下り階段"
