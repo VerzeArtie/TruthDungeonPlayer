@@ -21,6 +21,7 @@ namespace DungeonPlayer
         private int MovementInterval = 0; // ダンジョンマップ全体を見ている時のインターバル
 
         // GUI
+        public GameObject BlackoutFilter;
         public Text txtTitle;
         public GameObject groupDayLabel;
         public Text dayLabel;
@@ -154,6 +155,7 @@ namespace DungeonPlayer
         bool ignoreCreateShadow = false;
 
         bool firstAction = false;
+        int endAction = 0;
 
         private DungeonPlayer.MessagePack.ActionEvent currentEvent; // MessagePackのevent情報
 
@@ -1608,6 +1610,18 @@ namespace DungeonPlayer
             {
                 this.firstAction = true;
                 ShownEvent();
+                return;
+            }
+
+            if (this.endAction > 0)
+            {
+                GroundOne.WE.DungeonArea = this.endAction;
+                this.endAction = 0;
+                this.dungeonAreaLabel.text = GroundOne.WE.DungeonArea.ToString() + "　階";
+                this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
+                Application.UnloadLevel(Database.TruthDungeon);
+                // 全情報クリア、全情報再読み込みを行わず、Sceneの再ロードで実行したい。
+                SceneDimension.JumpToTruthDungeon(true);
                 return;
             }
 
@@ -19166,12 +19180,8 @@ namespace DungeonPlayer
 
         private void SetupDungeonMapping(int area)
         {
-            GroundOne.WE.DungeonArea = area;
-            this.dungeonAreaLabel.text = GroundOne.WE.DungeonArea.ToString() + "　階";
-            this.dayLabel.text = GroundOne.WE.GameDay.ToString() + "日目";
-            Application.UnloadLevel(Database.TruthDungeon);
-            // 全情報クリア、全情報再読み込みを行わず、Sceneの再ロードで実行したい。
-            SceneDimension.JumpToTruthDungeon(true);
+            this.BlackoutFilter.SetActive(true);
+            this.endAction = area;
         }
     }
 }
