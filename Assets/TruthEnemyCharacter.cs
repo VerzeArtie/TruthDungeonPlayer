@@ -1200,7 +1200,15 @@ namespace DungeonPlayer
                     switch (rand)
                     {
                         case 0:
-                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "バースト・クラウド");
+                            if ((this.CurrentLife <= this.MaxLife / 2) && (this.CurrentPhysicalAttackUp <= 0))
+                            {
+                                this.Target2 = this;
+                                SetupActionCommand(this, this.Target2, PlayerAction.SpecialSkill, "海王の咆哮");
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "バースト・クラウド");
+                            }
                             break;
 
                         case 1:
@@ -1216,7 +1224,15 @@ namespace DungeonPlayer
                             break;
 
                         case 2:
-                            SetupActionCommand(this, target, PlayerAction.SpecialSkill, "サージェティック・バインド");
+                            if ((this.CurrentLife <= this.MaxLife / 2) && (this.CurrentPhysicalAttackUp <= 0))
+                            {
+                                this.Target2 = this;
+                                SetupActionCommand(this, this.Target2, PlayerAction.SpecialSkill, "海王の咆哮");
+                            }
+                            else
+                            {
+                                SetupActionCommand(this, target, PlayerAction.SpecialSkill, "サージェティック・バインド");
+                            }
                             break;
 
                         case 3:
@@ -4788,7 +4804,7 @@ namespace DungeonPlayer
                 #region "ボス"
 
                 case Database.ENEMY_BOSS_LEVIATHAN:
-                    SetupParameterMonster(80, 1000, 800, 1200, 8142, 250, (int)(listExp[56]), (int)(listGold[56]));
+                    SetupParameterMonster(80, 850, 750, 750, 8142, 130, (int)(listExp[56]), (int)(listGold[56]));
                     this.baseInstantPoint = 55000;
                     this.Rare = RareString.Gold;
                     this.Armor = ArmorType.Normal;
